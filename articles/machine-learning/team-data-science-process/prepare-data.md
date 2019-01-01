@@ -1,6 +1,6 @@
 ---
-title: Bereinigen und Vorbereiten von Daten für Azure Machine Learning | Microsoft-Dokumentation
-description: Vorverarbeiten und Bereinigen von Daten als Vorbereitung für das Machine Learning.
+title: 'Bereinigen und Vorbereiten von Daten für Azure Machine Learning: Team Data Science-Prozess'
+description: Vorverarbeiten und Bereinigen von Daten als Vorbereitung für die effektive Verwendung in Machine Learning.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 52457e19cede5d8d2b74d9c3d81ebf35e3ad06c4
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a926edc3409290a0e8cd89fd909427833f9e1427
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446559"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134368"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Aufgaben zur Vorbereitung von Daten für erweitertes Machine Learning
 Die Vorverarbeitung und Bereinigung von Daten ist eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Team Data Science-Prozesses (TDSP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum TDSP-Prozess finden Sie in den Schritten, die unter [Team Data Science-Prozess](overview.md) beschrieben sind.
@@ -54,10 +54,10 @@ Wenn Sie Probleme für die Daten ermitteln, sind **Verarbeitungsschritte** erfor
 **In Azure Machine Learning werden wohlgeformte Tabellendaten verarbeitet.**  Wenn die Daten bereits in tabellarischer Form vorliegen, kann die Datenvorverarbeitung direkt in Azure Machine Learning in Machine Learning Studio ausgeführt werden.  Wenn Daten nicht in tabellarischer Form vorliegen, sondern z. B. als XML, ist eine Analyse erforderlich, um die Daten in eine tabellarische Form zu konvertieren.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Welches sind die wichtigsten Vorgänge bei der Datenvorverarbeitung?
-* **Datenbereinigung**: Auffüllen fehlender Werte, Erkennen und Entfernen überflüssiger Daten und Ausreißer.
-* **Datentransformation**: Normalisierung der Daten, um Umfang und Störungen zu verringern.
-* **Datenreduzierung**: Erstellen von Stichproben aus den Datensätzen oder Attributen zur einfacheren Datenverarbeitung.
-* **Datendiskretisierung**: Konvertieren kontinuierlicher Attribute in kategorische Attribute zur einfacheren Verwendung in bestimmten Machine Learning-Methoden.
+* **Datenbereinigung**:  Auffüllen fehlender Werte, Erkennen und Entfernen überflüssiger Daten und Ausreißer.
+* **Datentransformation**:  Normalisierung der Daten, um Umfang und Störungen zu verringern.
+* **Datenreduzierung**:  Erstellen von Stichproben aus den Datensätzen oder Attributen zur einfacheren Datenverarbeitung.
+* **Datendiskretisierung**:  Konvertieren kontinuierlicher Attribute in kategorische Attribute zur einfacheren Verwendung in bestimmten Machine Learning-Methoden.
 * **Textbereinigung**: Entfernen eingebetteter Zeichen, die zu einer falschen Datenausrichtung führen können, z. B. eingebetteter Tabstopps in tabstoppgetrennten Dateien oder eingebetteter Zeilenumbrüche, die Datensätze unterbrechen könnten, usw.
 
 In den folgenden Abschnitten werden einige dieser Schritte zur Datenverarbeitung beschrieben.
@@ -65,31 +65,31 @@ In den folgenden Abschnitten werden einige dieser Schritte zur Datenverarbeitung
 ## <a name="how-to-deal-with-missing-values"></a>Wie werden fehlende Daten behandelt?
 Bei fehlenden Werten empfiehlt es sich, zunächst den Grund für die fehlenden Werte zu ermitteln, um das Problem besser angehen zu können. Folgende Vorgehensweisen werden bei fehlenden Werten häufig angewendet:
 
-* **Löschen**: Entfernen Sie Datensätze mit fehlenden Werten.
-* **Ersetzen durch Platzhalterwerte**: Ersetzen Sie fehlende Werte durch Platzhalterwerte: z.B. *unbekannt* bei kategorischen oder „0“ bei numerischen Werten.
-* **Ersetzen durch Mittelwerte**: Ersetzen Sie fehlende numerische Daten durch Mittelwerte.
-* **Ersetzen durch häufige Werte**: Ersetzen Sie fehlende kategorische Daten durch den häufigsten Eintrag.
-* **Ersetzen durch Regressionswerte**: Verwenden Sie ein Regressionsverfahren, um fehlende Werte durch Regressionswerte zu ersetzen.  
+* **Löschen**: Entfernen von Datensätze mit fehlenden Werten.
+* **Ersetzen durch Platzhalterwerte**: Ersetzen fehlender Werte durch Platzhalterwerte: z.B. *unbekannt* bei kategorischen oder „0“ bei numerischen Werten.
+* **Ersetzen durch Mittelwerte**: Ersetzen fehlender numerischer Daten durch Mittelwerte.
+* **Ersetzen durch häufige Werte**: Ersetzen fehlender kategorischer Daten durch den häufigsten Eintrag.
+* **Ersetzen durch Regressionswerte**: Verwenden eines Regressionsverfahren, um fehlende Werte durch Regressionswerte zu ersetzen.  
 
 ## <a name="how-to-normalize-data"></a>Wie werden Daten normalisiert?
 Bei der Datennormalisierung werden numerische Werte in einen angegebenen Bereich neu skaliert. Folgende Normalisierungsverfahren werden häufig angewendet:
 
-* **Min-Max-Normalisierung**: Transformieren Sie die Daten linear in einen Bereich, z. B. zwischen 0 und 1. Der Mindestwert wird auf 0 skaliert und der Höchstwert auf 1.
-* **Z-Wert-Normalisierung**: Skalieren Sie die Daten basierend auf Mittelwert und Standardabweichung: Teilen Sie die Differenz aus Daten und Mittelwert durch die Standardabweichung.
-* **Dezimalskalierung**: Skalieren Sie die Daten durch Verschieben des Dezimaltrennzeichens des Attributwerts.  
+* **Min-Max-Normalisierung**: Lineares Transformieren der Daten in einen Bereich, z.B. zwischen 0 und 1. Der Mindestwert wird auf 0 skaliert und der Höchstwert auf 1.
+* **Z-Wert-Normalisierung**: Skalieren der Daten basierend auf Mittelwert und Standardabweichung: Teilen der Differenz aus Daten und Mittelwert durch die Standardabweichung.
+* **Dezimalskalierung**: Skalieren der Daten durch Verschieben des Dezimaltrennzeichens des Attributwerts.  
 
 ## <a name="how-to-discretize-data"></a>Wie werden Daten diskretisiert?
 Daten können durch die Konvertierung kontinuierlicher Werte in nominale Attribute oder Intervalle diskretisiert werden. Dazu gibt es u. a. folgende Möglichkeiten:
 
-* **Festbreitengruppierung**: Teilen Sie den Bereich aller möglichen Werte eines Attributs in N Gruppen derselben Größe auf, und weisen Sie den Werten in einer Gruppe die Gruppennummer zu.
-* **Festhöhengruppierung**Teilen Sie den Bereich aller möglichen Werte eines Attributs in N Gruppen mit derselben Anzahl von Instanzen auf, und weisen Sie den Werten in einer Gruppe die Gruppennummer zu.  
+* **Festbreitengruppierung**: Aufteilen des Bereichs aller möglichen Werte eines Attributs in N Gruppen derselben Größe und Zuweisen der Gruppennummer zu den Werten in einer Gruppe.
+* **Festhöhengruppierung**: Aufteilen des Bereichs aller möglichen Werte eines Attributs in N Gruppen mit derselben Anzahl von Instanzen und Zuweisen der Gruppennummer zu den Werten in einer Gruppe.  
 
 ## <a name="how-to-reduce-data"></a>Wie werden Daten reduziert?
 Es gibt verschiedene Methoden zum Reduzieren der Größe zur einfacheren Datenverarbeitung. Je nach Größe und Inhalt der Daten können folgende Verfahren angewendet werden:
 
-* **Datensatzstichproben**: Erstellen Sie Stichproben aus den Datensätzen, und wählen Sie nur eine repräsentative Teilmenge von Daten aus.
-* **Attributstichproben**: Wählen Sie nur eine Teilmenge der wichtigsten Attribute aus den Daten aus.  
-* **Aggregation**: Unterteilen Sie die Daten in Gruppen, und speichern Sie die Zahlen der einzelnen Gruppen. Beispielsweise können die Tageseinnahmen einer Restaurant-Kette aus den letzten 20 Jahren im monatlichen Umsatz zusammengefasst werden, um die Größe der Daten zu verringern.  
+* **Datensatzstichproben**: Erstellen von Stichproben aus den Datensätzen und Auswählen nur einer repräsentativen Teilmenge von Daten.
+* **Attributstichproben**: Auswählen nur einer Teilmenge der wichtigsten Attribute aus den Daten.  
+* **Aggregation**: Unterteilen der Daten in Gruppen und Speichern der Zahlen für jede Gruppe. Beispielsweise können die Tageseinnahmen einer Restaurant-Kette aus den letzten 20 Jahren im monatlichen Umsatz zusammengefasst werden, um die Größe der Daten zu verringern.  
 
 ## <a name="how-to-clean-text-data"></a>Wie werden Textdaten bereinigt?
 **Textfelder in Tabellendaten** können Zeichen enthalten, die sich auf die Spaltenausrichtung und/oder die Datensatzgrenzen auswirken. Eingebettete Tabstopps in einer tabstoppgetrennten Datei verursachen z. B. Fehlausrichtungen von Spalten, während eingebettete Zeilenumbrüche Datensatzzeilen beschädigen. Eine fehlerhafte Verarbeitung von Textcodierungen beim Schreiben oder Lesen von Text kann zu Datenverlusten und unbeabsichtigten Einfügungen von unlesbaren Zeichen, z. B. NULL-Werten, führen und möglicherweise auch Auswirkungen auf die Textanalyse haben. Es ist möglicherweise eine sorgfältige Analyse und Bearbeitung erforderlich, um Textfelder für die korrekte Ausrichtung zu bereinigen und um strukturierte Daten aus unstrukturierten oder teilweise strukturierten Textdaten zu extrahieren.
@@ -97,7 +97,7 @@ Es gibt verschiedene Methoden zum Reduzieren der Größe zur einfacheren Datenve
 **Durchsuchen von Daten** ermöglicht einen frühzeitigen Einblick in die Daten. Während dieses Schritts können bereits einige Probleme mit den Daten aufgedeckt und entsprechende Methoden angewendet werden, um diese Probleme zu beheben.  Es ist wichtig, Fragen wie die zur Ursache des Problems und dessen Ursprung zu stellen. Dadurch können Sie auch bessere Entscheidungen für die Verarbeitungsschritte treffen, die zum Lösen der Probleme erforderlich sind. Die Einblicke, die aus den Daten gewonnen werden sollen, können auch zum Festlegen von Prioritäten für die Datenverarbeitung verwendet werden.
 
 ## <a name="references"></a>Referenzen
-> *Data Mining: Concepts and Techniques*, 3. Auflage, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber und Jian Pei
+> *Datamining: Concepts and Techniques*, 3. Auflage, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber und Jian Pei
 > 
 > 
 

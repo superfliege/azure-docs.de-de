@@ -1,22 +1,21 @@
 ---
-title: Vorauszahlen für Azure Cosmos DB-Ressourcen zum Einsparen von Kosten | Microsoft-Dokumentation
+title: Optimieren der Kosten für Azure Cosmos DB-Ressourcen mit reservierter Kapazität
 description: Erfahren Sie, wie Sie reservierte Kapazitäten für Azure Cosmos DB kaufen, um Computekosten einzusparen.
 services: cosmos-db
 author: rimman
-manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d389b3b7e50c83246542fd6b446827055a5a002a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a1f5db6428a892e10a3591edb7542996ad1b3319
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583465"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386807"
 ---
-# <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>Vorauszahlen für Azure Cosmos DB-Ressourcen mit reservierter Kapazität
+# <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>Optimieren der Kosten für Azure Cosmos DB-Ressourcen mit reservierter Kapazität
 
 Die reservierte Kapazität von Azure Cosmos DB hilft Ihnen, Geld zu sparen, indem Sie die Ressourcen von Azure Cosmos DB entweder für ein Jahr oder für drei Jahre im Voraus bezahlen. Mit der reservierten Kapazität von Azure Cosmos DB können Sie einen Rabatt auf den Durchsatz erhalten, der für Cosmos DB-Ressourcen bereitgestellt wird. Beispiele für Ressourcen sind Datenbanken und Container (Tabellen, Sammlungen und Graphen).
 
@@ -55,10 +54,10 @@ Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den di
    |Feld  |BESCHREIBUNG  |
    |---------|---------|
    |NAME   |    Name der Reservierung. Dieses Feld wird automatisch mit der `CosmosDB_Reservation_<timeStamp>`-Angabe ausgefüllt. Sie können während der Erstellung der Reservierung einen anderen Namen angeben. Sie können die Reservierung auch umbenennen, nachdem sie erstellt wurde.      |
-   |Abonnement  |   Das Abonnement, das für die Bezahlung der reservierten Azure Cosmos DB-Kapazitäten verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird mit Vorauszahlungen belastet. Es muss einer der folgenden Abonnementtyp vorliegen: <br/><br/>  [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (Angebotsnummer: MS-AZR-0017P): Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> [Nutzungsbasierte Zahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) (Angebotsnummer: MS-AZR-0003P): Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.    |
+   |Abonnement  |   Das Abonnement, das für die Bezahlung der reservierten Azure Cosmos DB-Kapazitäten verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird mit Vorauszahlungen belastet. Es muss einer der folgenden Abonnementtyp vorliegen: <br/><br/>  [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (Angebotsnummer: MS-AZR-0017P): Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) (Angebotsnummer: MS-AZR-0003P): Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt.    |
    |Bereich   |   Eine Option, die steuert, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird.   <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, wird der Reservierungsrabatt auf Azure Cosmos DB-Instanzen im ausgewählten Abonnement angewendet. <br/><br/>  Wenn Sie **Gemeinsam** auswählen, wird der Reservierungsrabatt wird auf Azure Cosmos DB-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Reservierung dar und umfasst alle Abonnements (mit Ausnahme von Dev/Test-Abonnements) innerhalb der Reservierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.  <br/><br/> Sie können den Reservierungsumfang nach dem Kauf der reservierten Kapazität ändern.  |
    |Typ der reservierten Kapazität   |  Als Anforderungseinheiten bereitgestellter Durchsatz.|
-   |Einheiten für die reservierte Kapazität  |      Die Menge an Durchsatz, die Sie reservieren möchten. Sie können diesen Wert berechnen, indem Sie den Durchsatz für alle Ihre Cosmos DB-Ressourcen (z.B. Datenbanken oder Container) pro Region ermitteln. Sie multiplizieren diesen Wert dann mit der Anzahl der Regionen, die Sie mit Ihrer Cosmos DB-Datenbank verknüpfen.  <br/><br/> Beispiel: Wenn Sie fünf Regionen mit 1 Million RU/Sek. in jeder Region verwenden, wählen Sie 5 Millionen RU/Sek. für den Kauf von reservierten Kapazitäten aus.    |
+   |Einheiten für die reservierte Kapazität  |      Die Menge an Durchsatz, die Sie reservieren möchten. Sie können diesen Wert berechnen, indem Sie den Durchsatz für alle Ihre Cosmos DB-Ressourcen (z.B. Datenbanken oder Container) pro Region ermitteln. Sie multiplizieren diesen Wert dann mit der Anzahl der Regionen, die Sie mit Ihrer Cosmos DB-Datenbank verknüpfen.  <br/><br/> Beispiel:  Wenn Sie fünf Regionen mit 1 Million RU/Sek. in jeder Region verwenden, wählen Sie 5 Millionen RU/Sek. für den Kauf von reservierten Kapazitäten aus.    |
    |Begriff  |   Ein Jahr oder drei Jahre   |
 
 5. Überprüfen Sie den Preis der Reservierung im Abschnitt **Kosten**. Dieser Reservierungspreis gilt für Azure Cosmos DB-Ressourcen mit Durchsatz, die in allen Regionen bereitgestellt werden.  

@@ -1,20 +1,22 @@
 ---
-title: Nutzen von Webdienstbereitstellungen – Azure Machine Learning
-description: Informationen zur Nutzung eines Webdiensts, der durch die Bereitstellung eines Azure Machine Learning-Modells erstellt wird. Durch die Bereitstellung eines Azure Machine Learning-Modells wird ein Webdienst erstellt, der eine REST-API verfügbar macht. Sie können Clients für diese API mithilfe der Programmiersprache Ihrer Wahl erstellen. In diesem Dokument erfahren Sie, wie Sie über Python und C# auf die API zugreifen.
+title: Erstellen eines Clients zum Nutzen eines bereitgestellten Webdiensts
+titleSuffix: Azure Machine Learning service
+description: 'Erfahren Sie, wie ein Webdienst genutzt werden kann, der bei der Bereitstellung eines Modells mit dem Azure Machine Learning-Modell generiert wurde: der Webdienst, der eine REST-API bereitstellt. Erstellen Sie Clients für diese API mithilfe einer Programmiersprache Ihrer Wahl.'
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.author: raymondl
-author: raymondlaghaeian
+ms.author: aashishb
+author: aashishb
 ms.reviewer: larryfr
-ms.date: 10/30/2018
-ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/03/2018
+ms.custom: seodec18
+ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262898"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251129"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
@@ -100,7 +102,7 @@ Die REST-API erwartet als Hauptteil der Anforderung ein JSON-Dokument mit der fo
 > [!IMPORTANT]
 > Die Struktur der Daten muss dem entsprechen, was vom Bewertungsskript und vom Modell im Dienst erwartet wird. Die Daten können vor der Übergabe an das Modell vom Bewertungsskript geändert werden.
 
-Beispielsweise erwartet das Modell im Beispiel [Train within Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) ein Array mit 10 Ziffern. Das Bewertungsskript für dieses Beispiel erstellt ein numpy-Array aus der Anforderung und übergibt es an das Modell. Das folgende Beispiel zeigt die Daten, die von diesem Dienst erwartet werden:
+Beispielsweise erwartet das Modell im Beispiel [Train within Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) ein Array mit 10 Ziffern. Das Bewertungsskript für dieses Beispiel erstellt ein numpy-Array aus der Anforderung und übergibt es an das Modell. Das folgende Beispiel zeigt die Daten, die von diesem Dienst erwartet werden:
 
 ```json
 {
@@ -124,9 +126,46 @@ Beispielsweise erwartet das Modell im Beispiel [Train within Notebook](https://g
 
 Der Webdienst kann mehrere Sätze von Daten in einer Anforderung akzeptieren. Er gibt ein JSON-Dokument mit einem Array von Antworten zurück.
 
+### <a name="binary-data"></a>Binärdaten
+
+Wenn Ihr Modell Binärdaten (beispielsweise ein Bild) akzeptiert, müssen Sie die für Ihre Bereitstellung verwendete Datei `score.py` so ändern, dass sie HTTP-Rohanforderungen akzeptiert. Hier ist ein Beispiel für eine Datei `score.py`, die Binärdaten akzeptiert und die umgekehrten Bytes für POST-Anforderungen zurückgibt. Für GET-Anforderungen wird die vollständige URL im Antworttext zurückgegeben:
+
+```python 
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        respBody = bytearray(reqBody)
+        respBody.reverse()
+        respBody = bytes(respBody)
+        return AMLResponse(respBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> Die Dinge im Namespace `azureml.contrib` ändern sich häufig, während wir daran arbeiten, den Dienst zu verbessern. Daher sollte alles in diesem Namespace als Vorschau und als von Microsoft nicht vollständig unterstützt betrachtet werden.
+>
+> Wenn Sie dies in Ihrer lokalen Entwicklungsumgebung testen müssen, können Sie die Komponenten im contrib-Namespace mit dem folgenden Befehl installieren:
+> 
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
 ## <a name="call-the-service-c"></a>Aufrufen des Diensts (C#)
 
-In diesem Beispiel wird die Verwendung von C# zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) erstellt wurde:
+In diesem Beispiel wird die Verwendung von C# zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) erstellt wurde:
 
 ```csharp
 using System;
@@ -215,7 +254,7 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 
 ## <a name="call-the-service-go"></a>Aufrufen des Diensts (Go)
 
-In diesem Beispiel wird die Verwendung von Go zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) erstellt wurde:
+In diesem Beispiel wird die Verwendung von Go zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) erstellt wurde:
 
 ```go
 package main
@@ -307,7 +346,7 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 
 ## <a name="call-the-service-java"></a>Aufrufen des Diensts (Java)
 
-In diesem Beispiel wird die Verwendung von Java zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) erstellt wurde:
+In diesem Beispiel wird die Verwendung von Java zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) erstellt wurde:
 
 ```java
 import java.io.IOException;
@@ -387,7 +426,7 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 
 ## <a name="call-the-service-python"></a>Aufrufen des Diensts (Python)
 
-In diesem Beispiel wird die Verwendung von Python zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) erstellt wurde:
+In diesem Beispiel wird die Verwendung von Python zum Aufrufen des Webdiensts veranschaulicht, der im Beispiel [Train within notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) erstellt wurde:
 
 ```python
 import requests
@@ -446,7 +485,3 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Sie kennen jetzt die Vorgehensweise zum Erstellen eines Clients für ein bereitgestelltes Modell. Informieren Sie sich jetzt über das [Bereitstellen eines Modells für ein IoT Edge-Gerät](how-to-deploy-to-iot.md).

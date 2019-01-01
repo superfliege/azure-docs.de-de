@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: f9f26f14944986bc673a3b7529adb055ad16d058
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6a22a3dabf1aa71e0d092c4145523da9b0121c8c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003060"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322208"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Aktivieren der Azure-Diagnose in Azure Cloud Services
 Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über Azure-Diagnose](../azure-diagnostics.md) .
@@ -30,7 +30,7 @@ In dieser Anleitung wird beschrieben, wie Sie eine Azure-Workerrolle implementie
 ### <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie über ein Azure-Abonnement verfügen und Visual Studio mit dem Azure-SDK verwenden. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion][Free Trial] registrieren. [Installieren und konfigurieren Sie Azure PowerShell Version 0.8.7 oder höher][Install and configure Azure PowerShell version 0.8.7 or later].
 
-### <a name="step-1-create-a-worker-role"></a>Schritt 1: Erstellen einer Workerrolle
+### <a name="step-1-create-a-worker-role"></a>Schritt 1: Erstellen einer Workerrolle
 1. Starten Sie **Visual Studio**.
 2. Erstellen Sie ein **Azure Cloud Service**-Projekt mithilfe der **Cloudvorlage** für .NET Framework 4.5.  Geben Sie dem Projekt den Namen "WadExample", und klicken Sie auf "OK".
 3. Wählen Sie **Workerrolle** aus, und klicken Sie auf "OK". Das Projekt wird erstellt.
@@ -38,7 +38,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über ein Azure-Abonnement ve
 5. Deaktivieren Sie auf der Registerkarte **Konfiguration** die Option **Diagnose aktivieren**, um Diagnose 1.0 (Azure SDK 2.4 und früher) zu deaktivieren.
 6. Erstellen Sie die Projektmappe, um zu überprüfen, ob Fehler vorliegen.
 
-### <a name="step-2-instrument-your-code"></a>Schritt 2: Instrumentieren des Codes
+### <a name="step-2-instrument-your-code"></a>Schritt 2: Instrumentieren des Codes
 Ersetzen Sie den Inhalt von "WorkerRole.cs" durch den folgenden Code. Die von der [EventSource-Klasse][EventSource Class] geerbte SampleEventSourceWriter-Klasse implementiert vier Protokollierungsmethoden: **SendEnums**, **MessageMethod**, **SetOther** und **HighFreq**. Der erste Parameter für die **WriteEvent** -Methode definiert die ID für das betreffende Ereignis. Die Run-Methode implementiert eine Endlosschleife, die jede der in der **SampleEventSourceWriter** -Klasse implementierten Protokollierungsmethoden alle 10 Sekunden aufruft.
 
 ```csharp
@@ -122,7 +122,7 @@ namespace WorkerRole1
 ```
 
 
-### <a name="step-3-deploy-your-worker-role"></a>Schritt 3: Bereitstellen der Workerrolle
+### <a name="step-3-deploy-your-worker-role"></a>Schritt 3: Bereitstellen der Workerrolle
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -134,7 +134,7 @@ namespace WorkerRole1
 6. Ändern Sie unter **Einstellungen** weitere Einstellungen nach Bedarf, und klicken Sie dann auf **Veröffentlichen**.
 7. Überprüfen Sie nach Abschluss der Bereitstellung im Azure-Portal, ob Ihr Clouddienst den Status **Wird ausgeführt** aufweist.
 
-### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Schritt 4: Erstellen der Diagnosekonfigurationsdatei und Installieren der Erweiterung
+### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Schritt 4: Erstellen der Diagnosekonfigurationsdatei und Installieren der Erweiterung
 1. Laden Sie die Schemadefinition für die öffentliche Konfigurationsdatei mit dem folgenden PowerShell-Befehl herunter:
 
     ```powershell
@@ -170,8 +170,8 @@ namespace WorkerRole1
 </PublicConfig>
 ```
 
-### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Schritt 5: Installieren von Diagnose für die Workerrolle
-Für die Verwaltung von Diagnose in einer Web- oder Workerrolle werden folgende PowerShell-Cmdlets verwendet: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension und Remove-AzureServiceDiagnosticsExtension.
+### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Schritt 5: Installieren von Diagnose für die Workerrolle
+Die folgenden PowerShell-Cmdlets stehen zum Verwalten der Diagnose für eine Web- oder Workerrolle zur Verfügung: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension und Remove-AzureServiceDiagnosticsExtension.
 
 1. Öffnen Sie Azure PowerShell.
 2. Führen Sie das Skript zum Installieren der Diagnose in Ihrer Workerrolle aus. Ersetzen Sie dabei *StorageAccountKey* durch den Speicherkontoschlüssel für Ihr wadexample-Speicherkonto und *config_path* durch den Pfad zur Datei *WadExample.xml*:
@@ -185,7 +185,7 @@ $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -Sto
 Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Staging -Role WorkerRole1
 ```
 
-### <a name="step-6-look-at-your-telemetry-data"></a>Schritt 6: Betrachten der Telemetriedaten
+### <a name="step-6-look-at-your-telemetry-data"></a>Schritt 6: Anzeigen der Telemetriedaten
 Navigieren Sie in Visual Studio im **Server-Explorer** zum Speicherkonto „wadexample“. Wenn der Clouddienst etwa fünf (5) Minuten lang ausgeführt wurde, sollten die Tabellen **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** und **WADSetOtherTable** angezeigt werden. Doppelklicken Sie auf eine der Tabellen, um die erfassten Telemetriedaten anzuzeigen.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
@@ -197,7 +197,7 @@ Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim S
 Unter [Problembehandlung bei Azure-Diagnose](../azure-diagnostics-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
+[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

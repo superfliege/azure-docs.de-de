@@ -1,5 +1,6 @@
 ---
-title: 'Gewusst wie: Verwendung der Azure Machine Learning-CLI-Erweiterung'
+title: Machine Learning-CLI-Erweiterung
+titleSuffix: Azure Machine Learning service
 description: Hier erhalten Sie Informationen zur Azure Machine Learning-CLI-Erweiterung für die Azure CLI. Die Azure CLI ist ein plattformübergreifendes Befehlszeilenhilfsprogramm, das das Arbeiten mit Ressourcen in der Azure-Cloud ermöglicht. Die Machine Learning-Erweiterung ermöglicht Ihnen das Arbeiten mit dem Azure Machine Learning-Dienst.
 services: machine-learning
 ms.service: machine-learning
@@ -8,15 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 09/24/2018
-ms.openlocfilehash: 13d09471191deed670db97a9f18e15bc9577dd1a
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: e16506773e38f1732a55161cdd58ffb7523602d4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713417"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277283"
 ---
-# <a name="use-the-azure-machine-learning-cli-extension"></a>Verwendung der Azure Machine Learning-CLI-Erweiterung
+# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning Service
 
 Der Azure Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), eine plattformübergreifende Befehlszeilenschnittstelle für die Azure-Plattform. Diese Erweiterung unterstützt Befehle für die Arbeit mit dem Azure Machine Learning-Dienst über die Befehlszeile. Zudem können Sie Skripts erstellen, die Ihre Machine Learning-Workflows automatisieren. Beispielsweise können Sie Skripts erstellen, die die folgenden Aktionen ausführen:
 
@@ -40,17 +42,17 @@ Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein erg�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
-> [!NOTE]
-> Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
+* Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
+
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
 ## <a name="install-the-extension"></a>Installieren der Erweiterung
 
 Um die Machine Learning-CLI-Erweiterung zu installieren, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.2-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 Klicken Sie bei Aufforderung auf `y`, um die Erweiterung zu installieren.
@@ -79,22 +81,33 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
 
 + Hiermit erstellen Sie einen Azure Machine Learning-Dienstarbeitsbereich:
 
-   ```azurecli-interactive
-   az ml workspace create -n myworkspace -g myresourcegroup
-   ```
+    ```azurecli-interactive
+    az ml workspace create -n myworkspace -g myresourcegroup
+    ```
 
 + Hiermit legen Sie einen Standardarbeitsbereich fest:
 
-   ```azurecli-interactive
-   az configure --defaults aml_workspace=myworkspace group=myresourcegroup
-   ```
+    ```azurecli-interactive
+    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
+    ```
 
-+ Hiermit erstellen Sie eine DSVM (Data Science VM). Sie können auch BatchAI-Cluster für verteiltes Training oder AKS-Cluster für die Bereitstellung erstellen.
++ Erstellen Sie ein verwaltetes Computeziel für verteiltes Training:
 
+    ```azurecli-interactive
+    az ml computetarget create amlcompute -n mycompute --max_nodes 4 --size Standard_NC6
+    ```
 
-  ```azurecli-interactive
-  az ml computetarget setup dsvm -n mydsvm
-  ```
+* Aktualisieren Sie ein verwaltetes Computeziel:
+
+    ```azurecli-interactive
+    az ml computetarget update --name mycompute --workspace –-group --max_nodes 4 --min_nodes 2 --idle_time 300
+    ```
+
+* Fügen Sie ein nicht verwaltetes Computeziel für das Training oder die Bereitstellung an:
+
+    ```azurecli-interactive
+    az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
+    ```
 
 ## <a name="experiments"></a>Experimente
 

@@ -1,5 +1,6 @@
 ---
-title: Erstellen eines öffentlichen Lastenausgleichs – Azure-Vorlage | Microsoft-Dokumentation
+title: Erstellen eines öffentlichen Lastenausgleichs – Azure-Vorlage
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie einen öffentlichen Lastenausgleich mit Internetzugriff im Resource Manager mithilfe einer Vorlage erstellen.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: af638c01121aa3a7f1d533cd8b50403f909d6b8e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c77cdf23e73a174ca68744ea543a41ce0a1de9f7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235614"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095702"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Erstellen eines öffentlichen Lastenausgleichs mit einer Vorlage
 

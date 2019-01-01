@@ -1,12 +1,11 @@
 ---
-title: Erneutes Trainieren eines vorhandenen prädiktiven Webdiensts – Azure Machine Learning Studio | Microsoft-Dokumentation
+title: 'Erneutes Trainieren eines vorhandenen prädiktiven Studio-Webdiensts: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
 ms.service: machine-learning
@@ -16,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d24cfd8dce42ee920c87fa2c3593a860468a6160
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311295"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250551"
 ---
-# <a name="retrain-an-existing-predictive-web-service"></a>Einen vorhandenen prädiktiven Webdienst erneut trainieren
+# <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>Erneutes Trainieren eines vorhandenen prädiktiven Azure Machine Learning Studio-Webdiensts | Microsoft-Dokumentation
+
 Dieses Dokument beschreibt das erneute Trainieren für das folgende Szenario:
 
 * Sie haben ein Trainingsexperiment und ein Vorhersageexperiment, die Sie als operationalisierten Webdienst bereitgestellt haben.
@@ -66,7 +66,7 @@ In diesem Beispiel dient C# zum Erstellen der Anwendung für erneutes Trainieren
 
 So rufen Sie die APIs zum erneuten Trainieren auf:
 
-1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#** > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)**.
+1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** >  **Konsolen-App (.NET Framework)**.
 2. Melden Sie sich beim Machine Learning-Webdienstportal an.
 3. Klicken Sie auf den verwendeten Webdienst.
 4. Klicken Sie auf **Consume**.

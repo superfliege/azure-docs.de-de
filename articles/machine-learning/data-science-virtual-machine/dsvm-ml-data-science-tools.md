@@ -1,11 +1,12 @@
 ---
 title: Machine Learning- und Data Science-Tools – Azure | Microsoft-Dokumentation
-description: Machine Learning- und Data Science-Tools
+description: Erfahren Sie mehr über die Machine Learning-Tools und -Frameworks, die auf der Data Science Virtual Machine vorinstalliert sind.
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9308c51c0ff5fc7278eab632f9d23f23cf016a2a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d8c607b5f1d338ca3a2bd3844b26ef51d801c720
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901667"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086069"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine Learning- und Data Science-Tools
 Virtuelle Data Science-Computer in Azure verfügen über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning (ML) in gängigen Sprachen wie Python, R und Julia. 

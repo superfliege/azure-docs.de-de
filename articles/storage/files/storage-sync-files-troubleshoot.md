@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014277"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409461"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -68,7 +68,7 @@ Reset-StorageSyncServer
 Dieses Problem tritt auf, wenn die Richtlinie **Erhöhte Internet Explorer-Sicherheit** bei der Serverregistrierung aktiviert war. Weitere Informationen zum ordnungsgemäßen Deaktivieren der Richtlinie **Erhöhte Internet Explorer-Sicherheit** finden Sie unter [Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) und [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
 
 ## <a name="sync-group-management"></a>Verwaltung von Synchronisierungsgruppen
-<a id="cloud-endpoint-using-share"></a>**Fehler bei der Erstellung des Cloudendpunkts mit der Meldung: „The specified Azure FileShare is already in use by a different CloudEndpoint“ (Die angegebene Azure-Dateifreigabe wird bereits von einem anderen Cloudendpunkt verwendet)**  
+<a id="cloud-endpoint-using-share"></a>**Fehler beim Erstellen des Cloudendpunkts: „The specified Azure FileShare is already in use by a different CloudEndpoint“ (Die angegebene Azure-Dateifreigabe wird bereits von einem anderen Cloudendpunkt verwendet)**  
 Dieses Problem tritt auf, wenn die Azure-Dateifreigabe bereits von einem anderen Cloudendpunkt verwendet wird. 
 
 Wenn diese Nachricht erscheint und die Azure-Dateifreigabe derzeit von keinem Cloudendpunkt verwendet wird, sollten Sie die folgenden Schritte ausführen, um die Metadaten der Azure-Dateisynchronisierung auf der Azure-Dateifreigabe zu löschen:
@@ -84,10 +84,10 @@ Wenn diese Nachricht erscheint und die Azure-Dateifreigabe derzeit von keinem Cl
 Dieses Problem tritt auf, wenn Ihr Benutzerkonto nicht über die erforderlichen Rechte verfügt, um einen Cloudendpunkt zu erstellen. 
 
 Für die Erstellung eines Cloudendpunkts muss Ihr Benutzerkonto über die folgenden Microsoft-Autorisierungsberechtigungen verfügen:  
-* Lesen: Rollendefinition abrufen
-* Schreiben: Benutzerdefinierte Rollendefinition erstellen oder aktualisieren
-* Lesen: Rollenzuweisung abrufen
-* Schreiben: Rollenzuweisung erstellen
+* Lesen: Abrufen der Rollendefinition
+* Schreiben: Erstellen oder Aktualisieren von benutzerdefinierten Rollendefinition
+* Lesen: Beziehe Rollenzuweisung
+* Schreiben: Erstellen von Rollenzuweisungen
 
 Die folgenden integrierten Rollen verfügen über die erforderlichen Microsoft-Autorisierungsberechtigungen:  
 * Owner (Besitzer)
@@ -96,8 +96,9 @@ Die folgenden integrierten Rollen verfügen über die erforderlichen Microsoft-A
 So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen verfügt:  
 1. Wählen Sie im Azure-Portal **Ressourcengruppen** aus.
 2. Wählen Sie die Ressourcengruppe aus, in der sich das Speicherkonto befindet, und wählen Sie dann **Zugriffssteuerung (IAM)** aus.
-3. Wählen Sie die **Rolle** (z.B. Besitzer oder Mitwirkender) für Ihr Benutzerkonto aus.
-4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Microsoft-Autorisierung** aus. 
+3. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
+4. Wählen Sie die **Rolle** (z.B. Besitzer oder Mitwirkender) für Ihr Benutzerkonto aus.
+5. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Microsoft-Autorisierung** aus. 
     * **Rollenzuweisung** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
     * **Rollendefinition** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
 
@@ -131,7 +132,7 @@ Dieses Problem kann auftreten, wenn der Überwachungsprozess für die Speichersy
 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
-1. Öffnen Sie den Task-Manager auf dem Server und überprüfen Sie, ob der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) ausgeführt wird. Wenn der Prozess nicht ausgeführt wird, versuchen Sie zunächst, den Server neu zu starten. Wenn der Neustart des Servers das Problem nicht behebt, führen Sie ein Upgrade des Azure-Dateisynchronisierungs-Agents auf Version [3.3.0.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) durch, wenn diese nicht aktuell installiert ist.
+1. Öffnen Sie den Task-Manager auf dem Server und überprüfen Sie, ob der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) ausgeführt wird. Wenn der Prozess nicht ausgeführt wird, versuchen Sie zunächst, den Server neu zu starten. Wenn der Neustart des Servers das Problem nicht behebt, führen Sie ein Upgrade auf die [neueste Version](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) des Azure-Dateisynchronisierungs-Agents aus.
 2. Überprüfen Sie, ob Firewall- und Proxy-Einstellungen ordnungsgemäß konfiguriert sind:
     - Wenn sich der Server hinter einer Firewall befindet, überprüfen Sie, ob Port 443 für ausgehenden Datenverkehr zulässig ist. Wenn die Firewall den Datenverkehr auf bestimmte Domänen einschränkt, bestätigen Sie, dass die in der Firewall-[Dokumentation](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) aufgeführten Domänen zugänglich sind.
     - Wenn sich der Server hinter einem Proxy befindet, konfigurieren Sie die computerweiten oder App-spezifischen Proxyeinstellungen, indem Sie den Schritten in der Proxy-[Dokumentation](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy) folgen.
@@ -467,20 +468,17 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 | **Fehlerzeichenfolge** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Korrektur erforderlich** | JA |
 
-Dieser Fehler tritt häufig auf, weil die Serverzeit falsch oder das für die Authentifizierung verwendete Zertifikat abgelaufen ist. Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte durch, um das abgelaufene Zertifikat (falls abgelaufen) zu löschen und den Serverregistrierungszustand zurückzusetzen:
+Dieser Fehler tritt häufig auf, weil die Serverzeit falsch oder das für die Authentifizierung verwendete Zertifikat abgelaufen ist. Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte aus, um das abgelaufene Zertifikat zu erneuern:
 
 1. Öffnen Sie das Zertifikat-MMC-Snap-In, wählen Sie das Computerkonto aus, und navigieren Sie zu den Zertifikaten: „(Lokaler Computer)\Benutzer\Certificates“.
-2. Löschen Sie das Clientauthentifizierungszertifikat, sofern es abgelaufen ist, und schließen Sie das Zertifikat-MMC-Snap-In.
-3. Öffnen Sie Regedit, und löschen Sie den ServerSetting-Schlüssel in der Registrierung: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting
-4. Navigieren Sie im Azure-Portal zum Abschnitt „Registrierte Server“ des Speichersynchronisierungsdiensts. Klicken Sie mit der rechten Maustaste auf den Server mit dem abgelaufenen Zertifikat und anschließend auf „Registrierung für Server aufheben“.
-5. Führen Sie die folgenden PowerShell-Befehle auf dem Server aus:
+2. Überprüfen Sie, ob das Clientauthentifizierungszertifikat abgelaufen ist. Wenn das Zertifikat abgelaufen ist, schließen Sie das Zertifikate-MMC-Snap-In und fahren mit den restlichen Schritten fort. 
+3. Überprüfen Sie, ob die Version 4.0.1.0 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+4. Führen Sie die folgenden PowerShell-Befehle auf dem Server aus:
 
     ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Reset-StorageSyncServer
+    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-6. Registrieren Sie den Server erneut, indem Sie „ServerRegistration.exe“ ausführen (der Standardspeicherort befindet sich unter „C:\Programme\Microsoft Files\Azure\StorageSyncAgent“).
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Das Volume, auf dem sich der Serverendpunkt befindet, weist nicht genügend Speicherplatz auf dem Datenträger auf.**  
 | | |
@@ -705,8 +703,9 @@ if ($fileShare -eq $null) {
 
 <a id="troubleshoot-rbac"></a>**Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.**  
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-1. Klicken Sie auf **Zugriffssteuerung (IAM)** auf das Inhaltsverzeichnis auf der linken Seite, um zur Liste der Benutzer und Anwendungen (*Dienstprinzipale*) zu navigieren, die Zugriff auf Ihr Speicherkonto haben.
-2. Stellen Sie sicher, dass der **hybride Dateisynchronisierungsdienst** in der Liste mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
+1. Klicken Sie links im Inhaltsverzeichnis auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Liste der Benutzer und Anwendungen (*Dienstprinzipale*) anzuzeigen, die Zugriff auf Ihr Speicherkonto besitzen.
+1. Stellen Sie sicher, dass der **hybride Dateisynchronisierungsdienst** in der Liste mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
 
     ![Ein Screenshot des Dienstprinzipals des hybriden Dateisynchronisierungsdiensts auf der Registerkarte zur Zugriffssteuerung des Speicherkontos](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 

@@ -1,6 +1,7 @@
 ---
-title: Verwenden von Datenspeichern in Azure Machine Learning für den Zugriff auf Daten
-description: Verwenden von Datenspeichern für den Zugriff auf gespeicherte Daten während des Trainings
+title: Zugreifen auf Daten in Datenspeichern für das Training
+titleSuffix: Azure Machine Learning service
+description: Erfahren Sie, wie Sie mithilfe von Datenspeichern während des Trainings mit dem Azure Machine Learning Service auf den Datenspeicher zugreifen können.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +10,15 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ef183397cf7ca3f1f561f6951290b722df31e5ed
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.custom: seodec18
+ms.openlocfilehash: 235ad729be434c8329a74e71abfe713480756316
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620199"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187142"
 ---
-# <a name="how-to-access-data-during-training"></a>Zugreifen auf Daten während des Trainings
+# <a name="access-data-during-training-from-your-datastores"></a>Zugreifen auf Daten während des Trainings aus Ihren Datenspeichern
 Verwenden Sie einen Datenspeicher, um auf Ihre Daten in den Azure Machine Learning-Workflows zuzugreifen und mit diesen zu arbeiten.
 
 In Azure Machine Learning Services stellt ein Datenspeicher eine Abstraktion von [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) dar. Der Datenspeicher kann entweder auf einen [Azure-Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) oder eine [Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) als zugrunde liegenden Speicher verweisen. 

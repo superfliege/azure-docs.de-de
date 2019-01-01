@@ -1,5 +1,5 @@
 ---
-title: Projektplanung für einen Team Data Science-Prozess – Azure | Microsoft-Dokumentation
+title: Projektplanung für einen Team Data Science-Prozess
 description: Microsoft Project- und Excel-Vorlagen, die Sie beim Planen und Verwalten von Data Science-Projekten unterstützen.
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 702ea6152ce5bf90d1d1f61b566e91d1859e672b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3675d3cd8959d78270a491aeb443cb8e458d2472
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443099"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137910"
 ---
 # <a name="team-data-science-process-project-planning"></a>Projektplanung für einen Team Data Science-Prozess
 
@@ -35,7 +35,7 @@ Beschreibungen zu den einzelnen Phasen finden Sie unter [Lebenszyklus des Team D
  
 ## <a name="microsoft-project-template"></a>Microsoft Project-Vorlage
 
-Die Microsoft Project-Vorlage für den Team Data Science-Prozess ist hier verfügbar: [Microsoft Project-Vorlage](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp). 
+Die Microsoft Project-Vorlage für den Team Data Science-Prozess ist hier verfügbar: [Microsoft Project-Vorlage](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
 Wenn Sie den Plan öffnen, klicken Sie für die TDSP auf den ganz links stehenden Link. Ändern Sie den Namen und die Beschreibung, und fügen Sie dann weitere erforderliche Teamressourcen hinzu. Kalkulieren Sie die erforderlichen Daten anhand Ihrer Erfahrungen.
 

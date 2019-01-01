@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/11/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 023df222ee2e9ca6af1398dd70767938e61c90b7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ea81cb52b8492e429903de15a9ff0156c91abae2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824104"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309585"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -30,7 +30,7 @@ Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Blob S
 - Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks). 
 - Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird. 
 - Aktivierte BitLocker-Verschlüsselung auf dem Windows-System. Lesen Sie hierzu die [Schrittweise Anleitung zur Windows BitLocker-Laufwerkverschlüsselung](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-- [Laden Sie Version 1 von WAImportExport](https://www.microsoft.com/en-us/download/details.aspx?id=42659) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
+- [Laden Sie Version 1 von WAImportExport](https://aka.ms/waiev1) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
 - Sie benötigen ein FedEx/DHL-Konto.  
     - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
     - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
@@ -129,7 +129,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
     ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>Schritt 3: Senden der Laufwerke 
+## <a name="step-3-ship-the-drives"></a>Schritt 3: Versenden der Laufwerke 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 

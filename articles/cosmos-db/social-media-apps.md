@@ -1,21 +1,19 @@
 ---
-title: 'Azure Cosmos DB-Entwurfsmuster: Social Media Apps | Microsoft-Dokumentation'
+title: Azure Cosmos DB-Entwurfsmuster Apps für soziale Medien
 description: Erfahren Sie mehr über ein Entwurfsmuster für soziale Netzwerke durch die Nutzung des flexiblen Speichers von Azure Cosmos DB und anderen Azure-Diensten.
 keywords: Social Media Apps
 services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 6c2911ac65b95ea0a705944fdd8fb9288af28498
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 669cfdc59fc0b2f509db704afa4867d8f55d86f8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165678"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083970"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 
@@ -49,14 +47,14 @@ In diesem Artikel wird beschrieben, wie Sie die Daten Ihrer sozialen Plattform m
         "date":"2016-01-01",
         "body":"this is an awesome post stored on NoSQL",
         "createdBy":User,
-        "images":["http://myfirstimage.png","http://mysecondimage.png"],
+        "images":["https://myfirstimage.png","https://mysecondimage.png"],
         "videos":[
-            {"url":"http://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"http://mysecondvideo.mp4", "title":"The second video"}
+            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
         ],
         "audios":[
-            {"url":"http://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"http://mysecondaudio.mp3", "title":"The second audio"}
+            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
         ]
     }
 
@@ -210,13 +208,13 @@ Weitere Informationen zu Azure Search finden Sie im [Hitchhiker’s Guide to Sea
 
 Nachdem all diese täglich wachsenden Inhalte gespeichert wurden, stellen Sie sich womöglich die Frage: Wie kann ich den Informationsstrom meiner Benutzer verwenden?
 
-Die Antwort ist einfach: Lassen Sie ihn arbeiten und lernen Sie von ihm.
+Die Antwort ist einfach: Nutzen Sie ihn, und lernen Sie aus daraus.
 
 Aber was können Sie lernen? Einige einfache Beispiele sind die [Stimmungsanalyse](https://en.wikipedia.org/wiki/Sentiment_analysis), die Empfehlung von Inhalten auf Grundlage der Interessen eines Benutzers oder sogar ein automatischer Inhaltsmoderator, der sicherstellt, dass alle in Ihrem sozialen Netzwerk veröffentlichten Inhalte für Familien geeignet sind.
 
 Nun, da ich Ihr Interesse geweckt habe, glauben Sie wahrscheinlich, dass Sie eine Promotion in Mathematik benötigen, um einfachen Datenbanken und Dateien diese Muster und Informationen zu entlocken. Aber da liegen Sie falsch.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag & Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs verwenden können (z.B. [Textanalyse](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), Content Moderator oder [Empfehlungen](https://gallery.azure.ai/Solution/Recommendations-Solution)).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag & Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs (z. B.[Textanalyse](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), Content Moderator, oder [Empfehlungen](https://gallery.azure.ai/Solution/Recommendations-Solution)) verwenden können.
 
 Für die Umsetzung dieser Machine Learning-Szenarien können Sie [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) nutzen, um die Informationen aus unterschiedlichen Quellen zu erfassen. Sie können auch [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) verwenden, um die Informationen zu verarbeiten und eine Ausgabe zu generieren, die mit Azure Machine Learning verarbeitet werden kann.
 

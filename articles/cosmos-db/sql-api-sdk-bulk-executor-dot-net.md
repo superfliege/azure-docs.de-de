@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: .NET-API, SDK und Ressourcen für Bulk Executor | Microsoft Docs'
+title: 'Azure Cosmos DB: BulkExecutor – .NET-API, SDK und Ressourcen'
 description: Wichtige Informationen zur .NET-API und zum SDK für Bulk Executor, einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des .NET SDK für Azure Cosmos DB Bulk Executor.
 author: tknandu
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: ae9560296e37ff5492c07e69e6ba0eb5539915c8
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c239464a37637b21504227951d917977cfea6726
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308494"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343954"
 ---
-# <a name="net-bulk-executor-library-download-information"></a>Bulk Executor-Bibliothek für .NET: Informationen zum Download 
+# <a name="net-bulk-executor-library-download-information"></a>.NET-BulkExecutor-Bibliothek: Informationen zum Download 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -27,7 +27,7 @@ ms.locfileid: "52308494"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [Bulk Executor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 

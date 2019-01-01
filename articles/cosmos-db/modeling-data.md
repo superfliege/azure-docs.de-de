@@ -1,23 +1,22 @@
 ---
-title: Modellieren von Dokumentdaten für NoSQL-Datenbanken | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Modellierung von Daten für NoSQL-Datenbanken.
-keywords: Modellieren von Daten
-services: cosmos-db
+title: Modellieren von Dokumentdaten in einer NoSQL-Datenbank
+titleSuffix: Azure Cosmos DB
+description: Lernen Sie die Datenmodellierung in NoSQL-Datenbanken sowie die Unterschiede zwischen der Datenmodellierung in einer relationalen Datenbank und in einer Dokumentdatenbank kennen.
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2016
+ms.date: 12/06/2018
 ms.author: andrl
-ms.openlocfilehash: c577c9734490e3aacc148153f550162371ae482e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.custom: seodec18
+ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038184"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166641"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modellieren von Dokumentdaten für NoSQL-Datenbanken
+
 Schemafreie Datenbanken wie Azure Cosmos DB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie die Verwendung und Verarbeitung Ihrer Daten sorgfältig bedenken. 
 
 Wie werden die Daten gespeichert? Wie wird Ihre Anwendung Daten abrufen und abfragen? Ist Ihre Anwendung lese- und schreibintensiv? 
@@ -33,13 +32,13 @@ Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 ## <a name="embedding-data"></a>Einbetten von Daten
 Versuchen Sie beim ersten Modellieren von Daten in einer Dokumentenablage wie etwa Azure Cosmos DB Ihre Entitäten als **eigenständige Dokumente**, dargestellt im JSON-Format, zu behandeln.
 
-Bevor wir uns stärker damit befassen, sehen Sie sich zunächst einmal genau an, wie Sie eine Entität in einer relationalen Datenbank modellieren, ein Konzept, mit dem viele von uns bereits vertraut sind. Das folgende Beispiel zeigt, wie eine Person in einer relationalen Datenbank gespeichert werden kann. 
+Bevor wir uns intensiver damit befassen, sehen Sie sich zunächst einmal genau an, wie Sie eine Entität in einer relationalen Datenbank modellieren, ein Konzept, mit dem viele von uns bereits vertraut sind. Das folgende Beispiel zeigt, wie eine Person in einer relationalen Datenbank gespeichert werden kann. 
 
 ![Relationalen Datenbankmodell](./media/sql-api-modeling-data/relational-data-model.png)
 
 Bei der Arbeit mit relationalen Datenbanken galt viele Jahre lang das Motto: normalisieren, normalisieren, normalisieren.
 
-Beim Normalisieren von Daten wird in der Regel eine Entität, z.B. eine Person, in einzelne Datenelemente unterteilt. Im obigen Beispiel kann eine Person über mehrere Kontaktdetaildatensätze sowie mehrere Adressdatensätze verfügen. Wir gehen sogar noch einen Schritt weiter und unterteilen auch die Kontaktdetails, indem zusätzliche allgemeine Felder, wie z. B. Typ, extrahiert werden. Das Gleiche gilt für Adressen: Jeder Datensatz wird einem Typ wie *Privat* oder *Geschäftlich* zugeordnet. 
+Beim Normalisieren von Daten wird in der Regel eine Entität, z. B. eine Person, in einzelne Datenelemente unterteilt. Im obigen Beispiel kann eine Person über mehrere Kontaktdetaildatensätze sowie mehrere Adressdatensätze verfügen. Wir gehen sogar noch einen Schritt weiter und unterteilen auch die Kontaktdetails, indem zusätzliche allgemeine Felder, wie z. B. Typ, extrahiert werden. Das Gleiche gilt für Adressen: Jeder Datensatz wird einem Typ wie *Privat* oder *Geschäftlich* zugeordnet. 
 
 Die beim Normalisieren von Daten geltende Prämisse besteht darin, dass das **Speichern von redundanten Daten in jedem Datensatz zu vermeiden** ist und dass stattdessen auf die einzelnen Daten verwiesen werden soll. Um in diesem Beispiel eine Person mit allen ihren Kontaktdaten und Adressen zu lesen, müssen Sie Verknüpfungen verwenden, um die Daten effektiv zur Laufzeit zu aggregieren.
 
@@ -82,7 +81,7 @@ Durch das Denormalisieren von Daten muss Ihre Anwendung u. U. weniger Abfragen 
 ### <a name="when-to-embed"></a>Wann Sie einbetten sollten
 Verwenden Sie in der Regel eingebettete Datenmodelle in den folgenden Fällen:
 
-* Zwischen Entitäten gibt es **contains** -Beziehungen.
+* Zwischen Entitäten gibt es „contained**“-Beziehungen.
 * Zwischen Entitäten gibt es **eins-zu-viele** -Beziehungen.
 * Es gibt eingebettete Daten, die sich **selten ändern**.
 * Es gibt eingebettete Daten, die nicht **grenzenlos**wachsen.
@@ -94,7 +93,7 @@ Verwenden Sie in der Regel eingebettete Datenmodelle in den folgenden Fällen:
 > 
 
 ### <a name="when-not-to-embed"></a>Wann Sie nicht einbetten sollten
-In einer Dokumentendatenbank gilt zwar die Faustregel, dass alles denormalisiert wird und alle Daten in ein einzelnes Dokument eingebettet werden können, dies kann jedoch einige Situationen hervorrufen, die vermieden werden sollten.
+In einer Dokumentdatenbank gilt zwar die Faustregel, dass alles denormalisiert wird und alle Daten in ein einzelnes Dokument eingebettet werden sollen. Dies kann jedoch zu Situationen führen, die es zu vermeiden gilt.
 
 Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
 
@@ -175,12 +174,12 @@ Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
 
 Dabei kann es sich um das Aktienportfolio einer Person handeln. Wir haben uns dazu entschlossen, die Aktiendaten in jedes Portfoliodokument einzubetten. In einer Umgebung, in der verknüpfte Daten häufig geändert werden, wie z. B. eine Aktienhandelsanwendung, bedeutet das Einbetten von sich häufig ändernden Daten, dass Sie bei jedem Aktienhandel jedes Portfoliodokument aktualisieren müssen.
 
-Die Aktie *zaza* kann jeden Tag mehrere Hundert Mal gehandelt werden, und Tausende Benutzer besitzen *zaza* in ihrem Portfolio. Bei einem Datenmodell wie dem obigen müssten wir viele Tausend Portfoliodokumente mehrmals täglich aktualisieren, was zu einem schlecht skalierbaren System führt. 
+Die Aktie *zaza* kann jeden Tag mehrere Hundert Mal gehandelt werden, und Tausende Benutzer besitzen *zaza* in ihrem Portfolio. Bei einem Datenmodell wie dem obigen müssten wir zigtausend Portfoliodokumente mehrmals täglich aktualisieren, was zu einem schlecht skalierbaren System führt. 
 
 ## <a id="Refer"></a>Verweisen auf Daten
 Das Einbetten von Daten funktioniert somit in vielen Fällen gut, aber es ist klar, dass es Szenarien gibt, bei denen das Denormalisieren von Daten mehr Probleme verursacht als es wert ist. Was also können wir jetzt tun? 
 
-Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentendatenbank können sich die Informationen in einem Dokument befinden, das sich tatsächlich auf Daten in anderen Dokumenten bezieht. Ich befürworte nicht für eine Minute, dass wir Systeme in Azure Cosmos DB erstellen sollen, die besser für eine relationale Datenbank oder eine andere Dokumentendatenbank geeignet sind, aber einfache Beziehungen sind in Ordnung und können sehr nützlich sein. 
+Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentdatenbank können sich Informationen in einem Dokument befinden, die sich eigentlich auf Daten in anderen Dokumenten beziehen. Ich plädiere jetzt nicht eine Sekunde für das Erstellen von Systemen, die besser für eine relationale Datenbank in Azure Cosmos DB oder eine andere Dokumentdatenbank geeignet wären, aber einfache Beziehungen sind in Ordnung und können sehr nützlich sein. 
 
 Im JSON-Abschnitt unten verwenden wir das vorherige Beispiel eines Aktienportfolios, aber dieses Mal verweisen wir auf den Aktieneintrag im Portfolio, anstatt ihn einzubetten. Auf diese Weise müssen wir nur dieses eine Aktiendokument aktualisieren, wenn sich der Aktieneintrag mehrmals am Tag ändert. 
 
@@ -341,9 +340,9 @@ Betrachten Sie das folgende JSON-Beispiel.
         "countOfBooks": 3,
          "books": ["b1", "b2", "b3"],
         "images": [
-            {"thumbnail": "http://....png"}
-            {"profile": "http://....png"}
-            {"large": "http://....png"}
+            {"thumbnail": "https://....png"}
+            {"profile": "https://....png"}
+            {"large": "https://....png"}
         ]
     },
     {
@@ -353,7 +352,7 @@ Betrachten Sie das folgende JSON-Beispiel.
         "countOfBooks": 1,
         "books": ["b1"],
         "images": [
-            {"thumbnail": "http://....png"}
+            {"thumbnail": "https://....png"}
         ]
     }
 
@@ -362,25 +361,25 @@ Betrachten Sie das folgende JSON-Beispiel.
         "id": "b1",
         "name": "Azure Cosmos DB 101",
         "authors": [
-            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
-            {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "http://....png"}
+            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
+            {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "https://....png"}
         ]
     },
     {
         "id": "b2",
         "name": "Azure Cosmos DB for RDBMS Users",
         "authors": [
-            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
+            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
         ]
     }
 
 Hier haben wir (hauptsächlich) das eingebettete Modell verwendet, bei dem Daten aus anderen Entitäten im übergeordneten Dokument eingebettet sind, in dem jedoch auf andere Daten verwiesen wird. 
 
-Wenn Sie das Buchdokument betrachten, sehen Sie ein paar interessante Felder, wenn wir das Array der Autoren betrachten. Es gibt ein *id*-Feld, bei dem es sich um das Feld handelt, das für einen Rückverweis auf ein Autorendokument verwendet wird, üblicherweise in einem normalisierten Modell, es gibt jedoch auch die Felder *Name* und *ThumbnailUrl*. Wir hätten auch nur bei dem Feld *id* bleiben können, sodass sich die Anwendung alle zusätzlichen Informationen aus dem jeweiligen Autorendokument mithilfe der „Verknüpfung“ abruft, aber da unsere Anwendung den Namen des Autors und ein Miniaturbild mit jedem angezeigten Buch anzeigt, können wir einen Roundtrip zum Server pro Buch in einer Liste speichern, indem Sie **einige** Daten vom Autor denormalisieren.
+Wenn Sie das Buchdokument betrachten, sehen Sie ein paar interessante Felder, wenn wir das Array der Autoren betrachten. Es gibt ein *id*-Feld, bei dem es sich um das Feld handelt, das für einen Rückverweis auf ein Autorendokument verwendet wird (Standardmethode in einem normalisierten Modell). Es gibt aber auch die Felder *name* und *thumbnailUrl*. Wir hätten auch nur bei dem Feld *id* bleiben können, sodass die Anwendung alle zusätzlichen erforderlichen Informationen mithilfe des „Links“ aus dem jeweiligen Autorendokument abruft. Da unsere Anwendung jedoch zusammen mit jedem angezeigten Buch den Namen des Autors und ein Miniaturbild anzeigt, können wir pro Buch einen Roundtrip zum Server in einer Liste speichern, indem wir **einige** Daten vom Autor denormalisieren.
 
-Wenn sich der Name des Autors ändert oder das Foto aktualisiert werden soll, müssten wir jedes Buch, das von ihm je veröffentlicht wurde, aktualisieren. Bei unserer Anwendung ist dies jedoch, basierend auf der Annahme, dass die Autoren ihre Namen nicht sehr oft ändern, eine akzeptable Entwurfsentscheidung.  
+Sicherlich müssten wir, wenn sich der Name des Autors ändert oder das Foto aktualisiert werden soll, jedes jemals von ihm veröffentlichte Buch aktualisieren. Bei unserer Anwendung ist dies jedoch eine akzeptable Entwurfsentscheidung, da wir von der Annahme ausgehen, dass Autoren ihre Namen nicht sehr häufig ändern.  
 
-Im Beispiel gibt es vorab **berechnete Aggregatwerte** , um sich die teure Verarbeitung eines Lesevorgangs zu ersparen. Im Beispiel werden einige der im Autorendokument eingebetteten Daten zur Laufzeit berechnet. Jedes Mal, wenn ein neues Buch veröffentlicht wird, wird ein Buchdokument erstellt, **und** das Feld „CountOfBooks“ wird auf einen berechneten Wert festgelegt, basierend auf der Anzahl der Buchdokumente, die für einen bestimmten Autor vorhanden sind. Diese Optimierung wäre in schreibintensiven Systemen gut, in denen wir uns Berechnungen für Schreibvorgänge leisten können, um Lesevorgänge zu optimieren.
+Im Beispiel gibt es **vorab berechnete Aggregatwerte**, um die aufwändige Verarbeitung eines Lesevorgangs zu vermeiden. Im Beispiel werden einige der im Autorendokument eingebetteten Daten zur Laufzeit berechnet. Jedes Mal, wenn ein neues Buch veröffentlicht wird, wird ein Buchdokument erstellt, **und** das Feld „CountOfBooks“ wird auf einen berechneten Wert festgelegt, basierend auf der Anzahl der Buchdokumente, die für einen bestimmten Autor vorhanden sind. Diese Optimierung wäre in schreibintensiven Systemen gut, in denen wir uns Berechnungen für Schreibvorgänge leisten können, um Lesevorgänge zu optimieren.
 
 Die Möglichkeit über ein Modell mit vorab berechneten Felder zu verfügen, wird dank der Unterstützung von **Transaktionen mit mehreren Dokumenten** durch Azure Cosmos DB ermöglicht. Viele NoSQL-Speicher können keine Transaktionen über Dokumente hinweg durchführen und bevorzugen aufgrund dieser Einschränkung Entwurfsentscheidungen, wie z. B. "Immer alles einbetten". Mit Azure Cosmos DB können Sie serverseitige Trigger oder gespeicherte Prozeduren verwenden, mit denen Bücher eingefügt und Autoren in einer einzigen ACID-Transaktion aktualisiert werden. Sie **müssen** nicht alles in ein Dokument einbetten, nur um sicherzustellen, dass Ihre Daten konsistent bleiben.
 

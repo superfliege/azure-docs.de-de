@@ -1,11 +1,12 @@
 ---
 title: Toolübersicht für die Data Science-VM – Azure | Microsoft-Dokumentation
-description: Übersicht über die Tools für die Data Science-VM.
+description: Erfahren Sie mehr über die Tools und Hilfsprogramme, die in der Data Science Virtual Machine vorinstalliert sind.
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9f10c30c8619a32e65063bbc83fd885aee93a4fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7c51a44f7fcd46e9c15700fe91a4c86afbe02801
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407027"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100955"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Kennenlernen der Data Science-VM
 

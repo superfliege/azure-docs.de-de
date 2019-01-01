@@ -1,11 +1,11 @@
 ---
-title: Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer | Microsoft Docs
+title: Konfigurieren des TCP-Leerlauftimeouts in Azure für den Load Balancer
+titlesuffix: Azure Load Balancer
 description: Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer
 services: load-balancer
 documentationcenter: na
 author: kumudd
-manager: timlt
-ms.assetid: 4625c6a8-5725-47ce-81db-4fa3bd055891
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24a7d2354693e362d7709b8817c438555caae0e3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23020905"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256195"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurieren der TCP-Leerlauftimeout-Einstellungen für Azure Load Balancer
 
@@ -26,7 +26,7 @@ ms.locfileid: "23020905"
 
 In der Standardkonfiguration ist der Azure Load Balancer auf ein Leerlauftimeout von 4 Minuten eingestellt. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Clouddienst aufrechterhalten wird.
 
-Wenn die Verbindung geschlossen wird, erscheint in der Clientanwendung unter Umständen eine Fehlermeldung wie die folgende: „Die zugrunde liegende Verbindung wurde geschlossen: Eine Verbindung, deren Aufrechterhaltung erwartet wurde, ist vom Server geschlossen worden.“
+Sobald die Verbindung geschlossen wird, wird in der Clientanwendung möglicherweise die folgende Fehlermeldung angezeigt: „Die zugrunde liegende Verbindung wurde geschlossen: Eine Verbindung, deren Aufrechterhaltung erwartet wurde, wurde vom Server geschlossen.“
 
 Eine gängige Methode zur Aufrechterhaltung von Verbindungen ist TCP-Keep-Alive. Dadurch bleibt die Verbindung länger aktiv. Weitere Informationen finden Sie in [diesen .NET-Beispielen](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Bei aktivierter Keep-Alive-Funktion werden während inaktiver Phasen Pakete über die Verbindung gesendet. Diese Keep-Alive-Pakete sorgen dafür, dass der Wert für das Leerlauftimeout niemals erreicht und die Verbindung über einen langen Zeitraum aufrechterhalten wird.
 
@@ -76,7 +76,7 @@ Verwenden Sie den folgenden Befehl, um Ihre Leerlauftimeout-Konfiguration abzuru
 
 ## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Festlegen des TCP-Timeouts für einen Endpunktsatz mit Lastenausgleich
 
-Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss das TCP-Timeout für den Endpunktsatz mit Lastenausgleich festgelegt werden. Beispiel:
+Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss das TCP-Timeout für den Endpunktsatz mit Lastenausgleich festgelegt werden. Beispiel: 
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
@@ -115,11 +115,11 @@ Die Änderungen in der CSCFG-Datei für die Timeouteinstellung für öffentliche
 
 Sie können das TCP-Leerlauftimeout mithilfe der Dienstverwaltungs-API konfigurieren. Vergewissern Sie sich, dass der `x-ms-version`-Header mindestens auf Version `2014-06-01` festgelegt ist. Aktualisieren Sie die Konfiguration der angegebenen Eingabeendpunkte mit Lastenausgleich auf allen virtuellen Computern in einer Bereitstellung.
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 ```xml
 <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">

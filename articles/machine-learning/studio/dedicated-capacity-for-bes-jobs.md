@@ -1,12 +1,11 @@
 ---
-title: Dedizierte Kapazität für Machine Learning-Stapelausführungsdienst-Aufträge – Azure Machine Learning Studio | Microsoft-Dokumentation
-description: Übersicht über Azure Batch-Dienste für Machine Learning-Aufträge.
+title: Azure Batch-Dienst für Machine Learning Studio-Aufträge | Microsoft-Dokumentation
+description: Übersicht über Azure Batch-Dienste für Machine Learning-Aufträge. Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
 ms.component: studio
@@ -15,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 13e9921b15faff10ac250aa7c19d655ada782ce2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 44b63a51049e663e55cc59a623837cf65cab9ccc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308131"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275192"
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>Azure Batch-Dienst für Machine Learning-Aufträge
+# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Batch-Dienst für Azure Machine Learning Studio-Aufträge
 
 Die Machine Learning Batch-Poolverarbeitung ermöglicht für den Azure Machine Learning-Batchausführungsdienst eine vom Kunden verwaltete Skalierung. Klassische Batchverarbeitung für Machine Learning erfolgt in einer Umgebung mit mehreren Mandanten, wodurch die Anzahl gleichzeitiger Aufträge, die Sie senden können, begrenzt wird, und Aufträge werden auf FIFO-Basis in eine Warteschlange gestellt. Diese Unsicherheit bedeutet, dass Sie nicht genau vorhersagen können, wann Ihr Auftrag ausgeführt wird.
 

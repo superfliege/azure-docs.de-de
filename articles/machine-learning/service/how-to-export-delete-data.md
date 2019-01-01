@@ -1,6 +1,7 @@
 ---
-title: Exportieren oder Löschen von Arbeitsbereichsdaten – Azure Machine Learning | Microsoft-Dokumentation
-description: In Azure Machine Learning können Sie Ihren Arbeitsbereich mit dem Azure-Portal, der CLI, dem SDK und authentifizierten REST-APIs exportieren oder löschen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
+title: Exportieren oder Löschen von Arbeitsbereichsdaten
+titleSuffix: Azure Machine Learning service
+description: Erfahren Sie, wie Sie Ihren Arbeitsbereich mit dem Azure-Portal, der CLI, dem SDK und authentifizierten REST-APIs exportieren oder löschen können.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
 ms.date: 09/24/2018
-ms.openlocfilehash: 20c75b55e9b02f30e90ad40ea11383b91ae0a247
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.custom: seodec18
+ms.openlocfilehash: 81215058095acfeedd320025457feec73d3b0d23
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267300"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192344"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst 
 

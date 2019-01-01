@@ -1,12 +1,11 @@
 ---
-title: Erstellen von Textanalysemodellen in Azure Machine Learning Studio | Microsoft Docs
+title: 'Erstellen von Textanalysemodellen: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Erstellen von Textanalysemodellen in Azure Machine Learning Studio unter Verwendung von Modulen für Textvorverarbeitung, N-Gramme oder Feature Hashing
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=roastala, author=rastala)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: cgronlun
 editor: ''
 ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: 10b4f8a494a9effc04db731f05eeb010f4fb0b6a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 11f4ad4ff1e8e2eab688596d393e63009f7e5624
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262481"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255481"
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Erstellen von Textanalysemodellen in Azure Machine Learning Studio
 Mit Azure Machine Learning können Sie Textanalysemodelle erstellen und operationalisieren. Diese Modelle können Ihnen z.B. helfen, Probleme bei der Klassifizierung von Dokumenten oder Stimmungsanalyse zu lösen.
@@ -34,7 +33,7 @@ In einem Experiment zur Textanalyse würden Sie in der Regel Folgendes tun:
 4. Bewerten und Validieren des Modells
 5. Bereitstellen des Modells für die Produktion
 
-In diesem Tutorial lernen Sie diese Schritte anhand eines Stimmungsanalysemodells unter Verwendung eines Amazon Book Reviews-Datasets (weitere Informationen finden Sie im Forschungsbericht „Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification“ von John Blitzer, Mark Dredze und Fernando Pereira; Association of Computational Linguistics [ACL], 2007). Dieses Dataset besteht aus Beurteilungsergebnissen (1 - 2 oder 4 - 5) und einem Freiformtext. Das Ziel ist die Vorhersage des Beurteilungsergebnisses: niedrig (1 - 2) oder hoch (4 - 5).
+In diesem Tutorial erlernen Sie die erforderlichen Schritte, während wir ein Stimmungsanalysemodell mit dem Dataset „Amazon Book Reviews“ schrittweise durcharbeiten (weitere Informationen finden Sie in der Forschungsarbeit „Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification“ von John Blitzer, Mark Dredze und Fernando Pereira, Association of Computational Linguistics (ACL), 2007.) Dieses Dataset besteht aus Beurteilungsergebnissen (1 - 2 oder 4 - 5) und einem Freiformtext. Das Ziel ist die Vorhersage des Beurteilungsergebnisses: niedrig (1 - 2) oder hoch (4 - 5).
 
 Sie finden Experimente, die in diesem Tutorial behandelt werden, im Azure AI-Katalog:
 
@@ -55,7 +54,7 @@ Was geschieht, wenn Sie eine benutzerdefinierte Liste von Stoppwörtern verwende
 
 Nachdem die Vorverarbeitung abgeschlossen ist, teilen wir die Daten in Trainings- und Testgruppen auf.
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Schritt 2: Numerische Featurevektoren aus vorverarbeitetem Text extrahieren
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Schritt 2: Extrahieren numerischer Featurevektoren aus vorverarbeitetem Text
 Um ein Modell für Textdaten zu erstellen, müssen Sie in der Regel Freiformtext in numerische Featurevektoren konvertieren. In diesem Beispiel verwenden wir das Modul [Extract N-Gram Features from Text](https://msdn.microsoft.com/library/azure/mt762916.aspx), um die Textdaten in ein solches Format zu transformieren. Dieses Modul berechnet auf der Basis einer Spalte mit Leerzeichen getrennter Wörter ein Wörterbuch, bzw. N-Gramme von Wörtern, die in Ihrem Dataset vorkommen. Dann zählt es, wie oft jedes einzelne Wort – bzw. N-Gramm – in jedem Datensatz vorkommt, und erstellt auf der Basis dieser Zählungen Featurevektoren. In diesem Tutorial legen wir die N-Gramm-Größe auf 2 fest, damit unsere Featurevektoren einzelne Wörter und Kombinationen von zwei aufeinander folgenden Wörtern einbeziehen.
 
 ![N-Gramme extrahieren](./media/text-analytics-module-tutorial/extract-ngrams.png)

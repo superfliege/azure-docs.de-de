@@ -1,5 +1,5 @@
 ---
-title: Aufgaben einzelner Mitwirkender am Team Data Science-Prozess in Azure | Microsoft-Dokumentation
+title: Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess
 description: Überblick über die Aufgaben eines einzelnen Mitwirkenden an einem Data Science-Teamprojekt.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: d8e51dcf8434508664801f53391592aab34d7e4a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6684cc9a0166df9c6d230f6b2a8c05acec5f91b3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447060"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136760"
 ---
-# <a name="individual-contributor-tasks"></a>Aufgaben einzelner Mitwirkender
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess
 
 In diesem Thema werden die Aufgaben beschrieben, die ein einzelner Mitwirkender für sein Data Science-Team erfüllen muss. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science Process](overview.md) (TDSP) vereinheitlicht ist. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und die dazugehörigen Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
 
@@ -45,7 +45,7 @@ In diesem Tutorial werden abgekürzte Namen für Repositorys und Verzeichnisse v
 - **D5**: Das von R5 geklonte lokale Verzeichnis.
 
 
-## <a name="step-0-prerequisites"></a>Voraussetzungen
+## <a name="step-0-prerequisites"></a>Schritt 0: Voraussetzungen
 
 Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter zugewiesenen Aufgabe ausgeführt werden. Siehe dazu [Aufgaben des Gruppenleiters eines Data Science-Teams](group-manager-tasks.md). Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie mit den Aufgaben des Teamleiters beginnen: 
 - Ihr Gruppenleiter hat das Repository **GroupUtilities** (sofern vorhanden) eingerichtet. 
@@ -96,7 +96,7 @@ Vergewissern Sie sich, dass die drei Ordner in Ihrem Projektverzeichnis angezeig
 
 ![5](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>Schritte 4 und 5: Bereitstellen des Azure-Dateispeichers auf Ihrer DSVM (optional)
+## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>Schritt 4 bis 5: Bereitstellen des Azure-Dateispeichers auf Ihrer DSVM (optional)
 
 Zum Bereitstellen von Azure-Dateispeicher für Ihre DSVM lesen Sie die Anweisungen in Abschnitt 4 von [Aufgaben des Teamleiters eines Data Science-Teams](team-lead-tasks.md).
 

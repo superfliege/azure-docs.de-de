@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 93478e5d13ef649b86ebc047f4e53f1486e2ff68
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c2bb1c0147d38b4286e2cdfb2d161eaa0704e393
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493952"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271486"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.
@@ -47,8 +47,9 @@ Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.
 ## <a name="sfctl-partition-data-loss"></a>sfctl partition data-loss
 Diese API verursacht einen Datenverlust für die angegebene Partition.
 
-Sie löst einen Aufruf der OnDataLossAsync-API der Partition aus.  Diese API verursacht einen Datenverlust für die angegebene Partition. Sie löst einen Aufruf der OnDataLoss-API der Partition aus. Der tatsächliche Datenverlust hängt vom angegebenen DataLossMode ab. <br> PartialDataLoss: Es wird nur ein Quorum der Replikate entfernt und OnDataLoss für die Partition ausgelöst, jedoch hängt der tatsächliche Datenverlust vom Vorhandensein ausgeführter Replikationen ab. <br>FullDataLoss: Alle Replikate werden entfernt, weshalb alle Daten verloren gehen und OnDataLoss ausgelöst wird. <br>Diese API sollte nur mit einem zustandsbehafteten Dienst als Ziel aufgerufen werden. Es wird davon abgeraten, diese API mit einem Systemdienst als Ziel aufzurufen. 
-> [!NOTE]
+Sie löst einen Aufruf der OnDataLossAsync-API der Partition aus.  Diese API verursacht einen Datenverlust für die angegebene Partition. Sie löst einen Aufruf der OnDataLoss-API der Partition aus. Der tatsächliche Datenverlust hängt vom angegebenen DataLossMode ab.  <br> – PartialDataLoss: Es wird nur ein Quorum der Replikate entfernt und OnDataLoss für die Partition ausgelöst, jedoch hängt der tatsächliche Datenverlust vom Vorhandensein ausgeführter Replikationen ab.  <br> – FullDataLoss: Alle Replikate werden entfernt, weshalb alle Daten verloren gehen und OnDataLoss ausgelöst wird. Diese API sollte nur mit einem zustandsbehafteten Dienst als Ziel aufgerufen werden. Es wird davon abgeraten, diese API mit einem Systemdienst als Ziel aufzurufen.
+
+> [!NOTE] 
 > Sobald diese API aufgerufen wurde, kann es nicht rückgängig gemacht werden. Durch Aufrufen von CancelOperation wird lediglich die Ausführung beendet und der interne Systemzustand bereinigt. Es werden keine Daten wiederhergestellt, wenn der Befehl weit genug fortgeschritten ist, um einen Datenverlust zu verursachen. Rufen Sie die GetDataLossProgress-API mit der gleichen OperationId ab, um Informationen für den mit dieser API gestarteten Vorgang zurückzugeben.
 
 ### <a name="arguments"></a>Argumente
@@ -314,7 +315,7 @@ Meldet den Integritätszustand der angegebenen Service Fabric-Partition. Der Ber
 | --health-property [erforderlich] | Die Eigenschaft der Integritätsinformationen. <br><br> Eine Entität kann Integritätsberichte für verschiedene Eigenschaften enthalten. Die Eigenschaft ist eine Zeichenfolge und keine feste Enumeration, um dem Reporter Flexibilität zu ermöglichen und entsprechend die Zustandsbedingung zu kategorisieren, die den Bericht auslöst. Beispielsweise kann ein Reporter mit der SourceId „LocalWatchdog“ den Zustand des verfügbaren Datenträgers auf einem Knoten überwachen und folglich die AvailableDisk-Eigenschaft auf diesem Knoten melden. Der gleiche Reporter kann die Knotenkonnektivität überwachen und folglich eine Connectivity-Eigenschaft auf dem gleichen Knoten melden. Im Integritätsspeicher werden diese Berichte als separate Integritätsereignisse für den angegebenen Knoten behandelt. Zusammen mit der SourceId identifiziert die Eigenschaft eindeutig die Integritätsinformationen. |
 | --health-state [erforderlich] | Mögliche Werte sind\: „Invalid“, „Ok“, „Warning“, „Error“, „Unknown“. |
 | --partition-id [erforderlich] | Die Identität (ID) der Partition. |
-| --source-id [erforderlich] | Der Quellenname, mit dem die Client-, Watchdog- oder Systemkomponente identifiziert wird, die die Integritätsinformationen generiert hat. |
+| --source-id [erforderlich] | Der Quellenname, der die Client-, Watchdog- oder Systemkomponente identifiziert, die die Integritätsinformationen generiert hat. |
 | --description | Die Beschreibung der Integritätsinformationen. <br><br> Hierbei handelt es sich um Freitext, mit dem von Menschen lesbare Informationen über den Bericht hinzugefügt werden können. Die maximale Zeichenlänge für die Beschreibung beträgt 4096 Zeichen. Wenn die angegebene Zeichenfolge länger ist, wird sie automatisch abgeschnitten. Wird diese abgeschnitten, enthalten die letzten Zeichen der Beschreibung einen Marker „[abgeschnitten]“, und die gesamte Zeichenfolgenlänge beträgt 4096 Zeichen. Das Vorhandensein des Markers ist ein Hinweis für Benutzer, dass abgeschnittene Zeichenfolgen vorkommen. Beachten Sie, dass die Beschreibung bei abgeschnittenen Zeichenfolgen weniger als 4096 Zeichen von der ursprünglichen Zeichenfolge enthält. |
 | --immediate | Ein Flag, das angibt, ob der Bericht sofort gesendet werden soll. <br><br> Ein Integritätsbericht wird an eine Service Fabric-Gatewayanwendung gesendet, die diesen an den Integritätsspeicher weiterleitet. Wenn „Immediate“ auf „true“ festgelegt ist, wird der Bericht sofort vom HTTP-Gateway an den Integritätsspeicher gesendet, unabhängig von den Fabric-Clienteinstellungen, die die HTTP-Gatewayanwendung verwendet. Dies ist für kritische Berichte hilfreich, die schnellstmöglich gesendet werden sollen. Abhängig von der zeitlichen Steuerung und anderen Bedingungen können beim Senden des Berichts trotzdem möglicherweise Fehler auftreten, z.B., wenn das HTTP-Gateway geschlossen ist oder die Meldung das Gateway nicht erreicht. Wenn „Immediate“ auf „false“ festgelegt ist, wird der Bericht basierend auf den Integritätsclienteinstellungen vom HTTP-Gateway gesendet. Aus diesem Grund wird der Bericht entsprechend der HealthReportSendInterval-Konfiguration batchweise verarbeitet. Dies ist die empfohlene Einstellung, da der Integritätsclient die Optimierung von Meldungen des Integritätsberichts für den Integritätsspeicher sowie die Verarbeitung von Integritätsberichten ermöglicht. Standardmäßig werden Berichte nicht sofort gesendet. |
 | --remove-when-expired | Ein Wert, der angibt, ob der Bericht aus dem Integritätsspeicher entfernt wird, wenn er abläuft. <br><br> Wenn dieser Wert auf „true“ festgelegt ist, wird der Bericht aus dem Integritätsspeicher entfernt, nachdem er abgelaufen ist. Wenn dieser Wert auf „false“ festgelegt ist, wird der Bericht als Fehler behandelt, wenn er abgelaufen ist. Der Wert dieser Eigenschaft ist standardmäßig auf „false“ festgelegt. Wenn Clients in regelmäßigen Abständen Berichte erstellen, sollte RemoveWhenExpired auf „false“ (Standardwert) festgelegt sein. Denn falls der Reporter Probleme (z.B. Deadlocks) haben und keine Berichte erstellen können sollte, wird die Entität entsprechend auf Fehler ausgewertet, wenn der Integritätsbericht abläuft. Hierdurch wird die Entität nicht als in einem fehlerhaften Integritätszustand befindlich gekennzeichnet. |

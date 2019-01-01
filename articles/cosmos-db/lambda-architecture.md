@@ -1,22 +1,19 @@
 ---
-title: Lambda-Architektur mit Azure Cosmos DB und HDInsight (Apache Spark) | Microsoft-Dokumentation
+title: Lambda-Architektur mit Azure Cosmos DB und HDInsight (Apache Spark)
 description: In diesem Artikel wird beschrieben, wie Sie eine Lambda-Architektur mit Azure Cosmos DB, HDInsight und Spark verwenden.
 keywords: Lambda-Architektur
 services: cosmos-db
-author: tknandu
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.devlang: na
+author: tknandu
+ms.author: ramkris
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: ramkris
-ms.openlocfilehash: c926c67a330648e09c1fd8133164f64582ad9a34
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b6831e9c6b679d2fd4fa585331213290d67068c2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701074"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084011"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementieren einer Lambda-Architektur auf der Azure Platform 
 
@@ -37,7 +34,7 @@ Eine Lambda-Architektur ist eine generische, skalierbare und fehlertolerante Dat
 
 Quelle: http://lambda-architecture.net/
 
-Die grundlegenden Prinzipien einer Lambda-Architektur sind im obigen Diagramm gemäß [https://lambda-architecture.net](http://lambda-architecture.net/) dargestellt.
+Die grundlegenden Prinzipien einer Lambda-Architektur sind im obigen Diagramm gemäß [http://lambda-architecture.net](http://lambda-architecture.net/) dargestellt.
 
  1. Alle **Daten** werden per Pushvorgang *sowohl* auf die *Batchebene* als auch auf die *Geschwindigkeitsebene* übertragen.
  2. Die **Batchebene** verfügt über ein Masterdataset (unveränderlich, Nur-Anhängen-Satz mit Rohdaten), und es wird eine Vorabberechnung der Batchansichten durchgeführt.
@@ -108,7 +105,7 @@ Weitere Informationen zum Azure Cosmos DB-Änderungsfeed finden Sie hier:
 
 * [Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB](change-feed.md)
 * [Introducing the Azure Cosmos DB Change Feed Processor Library](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/) (Einführung in die Prozessorbibliothek für den Azure Cosmos DB-Änderungsfeed)
-* [Stream Processing Changes: Azure Cosmos DB change feed + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/) (Änderungen bei der Streamverarbeitung: Azure Cosmos DB-Änderungsfeed und Apache Spark)
+* [Änderungen bei der Streamverarbeitung: Azure Cosmos DB-Änderungsfeed und Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
 
 ## <a name="batch-and-serving-layers"></a>Batch- und Bereitstellungsebene
 Da die neuen Daten in Azure Cosmos DB geladen werden (wo der Änderungsfeed für die Geschwindigkeitsebene verwendet wird), befindet sich hier das **Masterdataset** (unveränderlich, Nur-Anhängen-Satz mit Rohdaten). Verwenden Sie ab jetzt HDInsight (Apache Spark) zum Durchführen der Funktionen für die Vorabberechnung von der **Batchebene** zur **Bereitstellungsebene**. Dies ist in der folgenden Abbildung dargestellt:
@@ -199,7 +196,7 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 Mit dieser letzten Anweisung wurde Ihr Spark DataFrame jetzt in einer neuen Azure Cosmos DB-Sammlung gespeichert. Aus Sicht einer Lambda-Architektur ist dies Ihre **Batchansicht** auf **Bereitstellungsebene**.
  
-#### <a name="resources"></a>angeben
+#### <a name="resources"></a>Ressourcen
 
 Vollständige Codebeispiele finden Sie unter [azure-cosmosdb-spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda), z.B.:
 * Lambda Architecture Rearchitected – Batch Layer (Neu gestaltete Lambda-Architektur – Batchebene) [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
@@ -261,12 +258,12 @@ Bei diesem Entwurf benötigen Sie nur zwei verwaltete Dienste: Azure Cosmos DB u
  4. Die Geschwindigkeitsebene sorgt für eine Kompensation der Verarbeitungszeit (für die Bereitstellungsebene) und ist nur für neuere Daten bestimmt.
  5. Alle Abfragen können beantwortet werden, indem Ergebnisse von Batchansichten und Echtzeitansichten zusammengeführt werden.
 
-### <a name="resources"></a>angeben
+### <a name="resources"></a>Ressourcen
 
  * **Neue Daten**: Der [Streamfeed von Twitter zu CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed). Dies ist der Mechanismus zum Übertragen von neuen Daten an Azure Cosmos DB per Pushvorgang.
  * **Batchebene:** Die Batchebene umfasst das *Masterdataset* (unveränderlich, Nur-Anhängen-Satz mit Rohdaten) und die Möglichkeit zum Vorabberechnen von Batchansichten der Daten, die per Pushvorgang an die **Bereitstellungsebene** übertragen werden.
     * Im Notebook **Lambda Architecture Rearchitected – Batch Layer** (Neu gestaltete Lambda-Architektur – Batchebene) [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) wird der *Masterdataset*-Satz mit den Batchansichten abgefragt.
- * **Bereitstellungsebene:** Die **Bereitstellungsebene** umfasst vorab berechnete Daten, aus denen sich Batchansichten (z.B. Aggregationen, bestimmte Slicer usw.) für schnelle Abfragen ergeben.
+ * **Bereitstellungsebene:** Die **Bereitstellungsebene** umfasst vorab berechnete Daten, aus denen sich Batchansichten (z. B. Aggregationen, bestimmte Slicer usw.) für schnelle Abfragen ergeben.
     * Im Notebook **Lambda Architecture Rearchitected – Batch to Serving Layer** (Neu gestaltete Lambda-Architektur – Batch- zu Bereitstellungsebene) [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) werden die Batchdaten per Pushvorgang an die Bereitstellungsebene übertragen. Dies bedeutet, dass Spark eine Batchsammlung mit Tweets abfragt, verarbeitet und in einer anderen Sammlung (berechneter Batch) speichert.
 * **Geschwindigkeitsebene:** Bei der **Geschwindigkeitsebene** wird für Spark der Azure Cosmos DB-Änderungsfeed verwendet. Er wird gelesen, und es werden sofort die entsprechenden Maßnahmen getroffen. Die Daten können auch als berechnete Echtzeitdaten (*Computed RT*) gespeichert werden, damit andere Systeme die verarbeiteten Echtzeitdaten abfragen können, anstatt selbst eine Echtzeitabfrage durchzuführen.
     * Mit dem Scala-Skript unter [Streaming Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) (Streamingabfrage für Cosmos DB-Änderungsfeed) wird eine Streamingabfrage aus dem Azure Cosmos DB-Änderungsfeed ausgeführt, um eine Intervallanzahl über die Spark-Shell zu berechnen.
@@ -281,4 +278,4 @@ Laden Sie – falls noch nicht geschehen – den Spark-Connector für Azure Cosm
 * [Change feed demos](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos) (Demos zu Änderungsfeeds)
 * [Stream processing changes using Azure Cosmos DB Change Feed and Apache Spark](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark) (Streamen von Verarbeitungsänderungen per Azure Cosmos DB-Änderungsfeed und Apache Spark)
 
-Es kann auch ratsam sein, die Informationen unter [Apache Spark SQL, DataFrames, and Datasets Guide](http://spark.apache.org/docs/latest/sql-programming-guide.html) (Leitfaden zu Apache Spark SQL, DataFrames und Datasets) und den Artikel [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) zu lesen.
+Es kann auch ratsam sein, die Informationen unter [Apache Spark SQL, DataFrames, and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html) (Leitfaden zu Apache Spark SQL, DataFrames und Datasets) und den Artikel [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) zu lesen.

@@ -1,5 +1,5 @@
 ---
-title: Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses in Azure | Microsoft-Dokumentation
+title: Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses in Azure
 description: Kombinieren von Cloud- und lokalen Tools und Diensten in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 28586d960bab75704a0aae6e39517ae83a74d60e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5a5a63bfdc9019afe292dd7623051123c3eb2dbf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495905"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132685"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses
 
@@ -42,5 +42,5 @@ Eine Erläuterung der Hauptkomponenten, die den Team Data Science-Prozess bilden
 
 Eine Erläuterung des Team Data Science-Prozesslebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können, finden Sie unter [Team Data Science-Prozesslebenszyklus](lifecycle.md). Im Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. 
 
-Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Data Science-Prozess](https://aka.ms/datascienceprocess). 
+Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
 

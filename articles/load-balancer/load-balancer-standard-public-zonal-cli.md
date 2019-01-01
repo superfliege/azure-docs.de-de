@@ -1,13 +1,11 @@
 ---
-title: Erstellen eines öffentlichen Standard-Lastenausgleichs mit einem Zonen-Front-End mit öffentlicher IP-Adresse mithilfe der Azure CLI | Microsoft-Dokumentation
+title: Erstellen eines Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie mithilfe der Azure CLI einen öffentlichen Standard-Lastenausgleich mit einem Zonen-Front-End mit öffentlicher IP-Adresse erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 52834e1ac9768f5207b64ba841a3761f153a9f87
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1a6777a99c2237fc4d201fa5c87eaea88117866
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984448"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185629"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Erstellen eines öffentlichen Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI
 
@@ -33,7 +31,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI installieren und lokal verwenden, achten Sie darauf, dass Sie die aktuelle Version von [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installiert haben und mit [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login) bei einem Azure-Konto angemeldet sind.
+Wenn Sie die CLI lokal installieren und verwenden, stellen Sie sicher, dass Sie die neueste Version der [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installiert haben und über [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login) bei einem Azure-Konto angemeldet sind.
 
 > [!NOTE]
  Unterstützung für Verfügbarkeitszonen ist für ausgewählte Azure-Ressourcen und -Regionen sowie VM-Größenkategorien verfügbar. Weitere Informationen zu den ersten Schritten sowie zu den Azure-Ressourcen, -Regionen und VM-Größenkategorien, die mit Verfügbarkeitszonen verwendet werden können, finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](https://docs.microsoft.com/azure/availability-zones/az-overview). Wenn Sie Unterstützung benötigen, können Sie über [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) Kontakt aufnehmen oder [ein Azure-Supportticket erstellen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
@@ -252,7 +250,7 @@ Geben Sie die öffentliche IP-Adresse in einem Webbrowser ein. Nicht vergessen: 
 Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Lastenausgleich den Datenverkehr auf die VMs in Zone 1 verteilt, auf denen Ihre App ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu [Standard Load Balancer](./load-balancer-standard-overview.md).
+- Weitere Informationen finden Sie unter [Load Balancer Standard](./load-balancer-standard-overview.md).
 
 
 

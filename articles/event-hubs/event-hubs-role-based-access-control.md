@@ -1,6 +1,6 @@
 ---
-title: Rollenbasierte Zugriffssteuerung in Azure Event Hubs (Vorschau) | Microsoft-Dokumentation
-description: Rollenbasierte Zugriffssteuerung in Azure Event Hubs
+title: 'Rollenbasierte Zugriffssteuerung (Vorschau): Azure Event Hubs | Microsoft-Dokumentation'
+description: Dieser Artikel enthält Informationen zur rollenbasierten Zugriffssteuerung für Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ef74600fdf5051394f8b7bfbdd71e144b3f26d8a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005737"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384257"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Rollenbasierte Zugriffssteuerung in Active Directory (Vorschau)
 
@@ -45,11 +46,7 @@ Wenn Sie dennoch ein spezifisches Konto für dieses Szenario erstellen möchten,
 
 Als Nächstes [erstellen Sie einen Event Hubs-Namespace](event-hubs-create.md) in einer der Azure-Regionen, die Vorschauunterstützung für die rollenbasierte Zugriffssteuerung für Event Hubs bieten: **USA, Osten**, **USA, Osten 2** oder **Europa, Westen**. 
 
-Wenn der Namespace erstellt wurde, navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Hinzufügen**, um das Azure AD-Benutzerkonto zur Rolle „Besitzer“ hinzuzufügen. Wenn Sie Ihr eigenes Benutzerkonto verwenden und den Namespace selbst erstellt haben, befinden Sie sich bereits in der Rolle „Besitzer“. Um der Rolle ein anderes Konto hinzuzufügen, suchen Sie im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
- 
-![](./media/event-hubs-role-based-access-control/rbac1.PNG)
-
-Das Benutzerkonto verfügt jetzt über Zugriff auf den Event Hubs-Namespace und den zuvor erstellten Event Hub.
+Wenn der Namespace erstellt wurde, navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Rollenzuweisung hinzufügen**, um das Azure AD-Benutzerkonto der Rolle „Besitzer“ hinzuzufügen. Wenn Sie Ihr eigenes Benutzerkonto verwenden und den Namespace selbst erstellt haben, befinden Sie sich bereits in der Rolle „Besitzer“. Um der Rolle ein anderes Konto hinzuzufügen, suchen Sie im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**. Das Benutzerkonto verfügt jetzt über Zugriff auf den Event Hubs-Namespace und den zuvor erstellten Event Hub.
  
 ### <a name="register-the-application"></a>Registrieren der Anwendung
 
@@ -63,14 +60,16 @@ Die detaillierten Schritte für die Registrierung werden in [diesem Tutorial](..
 
 Bevor Sie das Beispiel ausführen können, müssen Sie die Datei „App.config“ bearbeiten und gemäß Ihrem Szenario die folgenden Werte festlegen:
 
-- `tenantId`: Legen Sie diesen Parameter auf den Wert von **TenantId** fest.
-- `clientId`: Legen Sie diesen Parameter auf den Wert von **ApplicationId** fest. 
+- `tenantId`: Legen Sie diesen Parameter auf den Wert **TenantId** fest.
+- `clientId`: Legen Sie diesen Parameter auf den Wert **ApplicationId** fest. 
 - `clientSecret`: Wenn Sie beim Anmelden einen geheimen Clientschlüssel verwenden möchten, erstellen Sie diesen in Azure AD. Verwenden Sie zudem eine Web-App oder eine API anstelle einer nativen App. Fügen Sie die App außerdem unter **Zugriffssteuerung (IAM)** zum zuvor erstellten Namespace hinzu.
 - `eventHubNamespaceFQDN`: Legen Sie diesen Parameter auf den vollqualifizierten DNS-Namen Ihres neu erstellten Event Hubs-Namespace fest, z.B. `example.servicebus.windows.net`.
 - `eventHubName`: Legen Sie diesen Parameter auf den von Ihnen erstellten Event Hub fest.
 - Der Umleitungs-URI, den Sie in den vorherigen Schritten in Ihrer App angegeben haben.
  
 Wenn Sie die Konsolenanwendung ausführen, werden Sie aufgefordert, ein Szenario auszuwählen. Klicken Sie nach Eingabe der zugehörigen Zahl auf **Interaktive Benutzeranmeldung**, und drücken Sie die EINGABETASTE. Die Anwendung zeigt ein Anmeldefenster an, fordert Ihre Zustimmung zum Zugriff auf Event Hubs an und verwendet den Dienst dann, um das Senden/Empfangen-Szenario unter Verwendung der Anmeldeidentität auszuführen.
+
+Die App verwendet `ServiceAudience.EventHubsAudience` als Tokenzielgruppe. Bei Verwendung von anderen Sprachen oder SDKs, in denen die Zielgruppe nicht als Konstante verfügbar ist, ist `https://eventhubs.azure.net/` der richtige zu verwendende Wert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

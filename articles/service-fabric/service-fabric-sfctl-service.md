@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 84c2faaf137e19d78e7e17527feb50baebf8041b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dbe234b3c6aaeed90f0b95e5118c1ff2f9e2bb24
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494573"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276875"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Ermöglicht es, Dienste, Diensttypen und Dienstpakete zu erstellen, zu löschen und zu verwalten.
@@ -114,7 +114,7 @@ Erstellt den angegebenen Service Fabric-Dienst.
 | --dns-name | Der DNS-Name des Diensts, der erstellt werden soll. Für diese Einstellung muss der Service Fabric-DNS-Systemdienst aktiviert sein. |
 | --instance-count | Die Anzahl von Instanzen. Dies gilt für nur zustandslose Dienste. |
 | --int-scheme | Gibt an, dass der Dienst über einen Bereich von ganzen Zahlen ohne Vorzeichen einheitlich partitioniert werden muss. |
-| --int-scheme-count | Die Anzahl von Partitionen, die im Ganzzahlschlüsselbereich erstellt werden sollen, wenn ein einheitliches ganzzahliges Partitionsschema verwendet wird. |
+| --int-scheme-count | Die Anzahl von Partitionen, die im Ganzzahlschlüsselbereich erstellt werden sollen, wenn ein einheitliches ganzzahliges Partitionsschemas verwendet wird. |
 | --int-scheme-high | Das Ende des Ganzzahlschlüsselbereichs, wenn ein einheitliches ganzzahliges Partitionsschema verwendet wird. |
 | --int-scheme-low | Der Anfang des Ganzzahlschlüsselbereichs, wenn ein einheitliches ganzzahliges Partitionsschema verwendet wird. |
 | --load-metrics | JSON-codierte Liste der Metriken, die zum knotenübergreifenden Lastenausgleich für Dienste verwendet werden. |
@@ -491,7 +491,7 @@ Meldet den Integritätszustand des angegebenen Service Fabric-Diensts. Der Beric
 | --health-property [erforderlich] | Die Eigenschaft der Integritätsinformationen. <br><br> Eine Entität kann Integritätsberichte für verschiedene Eigenschaften enthalten. Die Eigenschaft ist eine Zeichenfolge und keine feste Enumeration, um dem Reporter Flexibilität zu ermöglichen und entsprechend die Zustandsbedingung zu kategorisieren, die den Bericht auslöst. Beispielsweise kann ein Reporter mit der SourceId „LocalWatchdog“ den Zustand des verfügbaren Datenträgers auf einem Knoten überwachen und folglich die AvailableDisk-Eigenschaft auf diesem Knoten melden. Der gleiche Reporter kann die Knotenkonnektivität überwachen und folglich eine Connectivity-Eigenschaft auf dem gleichen Knoten melden. Im Integritätsspeicher werden diese Berichte als separate Integritätsereignisse für den angegebenen Knoten behandelt. Zusammen mit der SourceId identifiziert die Eigenschaft eindeutig die Integritätsinformationen. |
 | --health-state [erforderlich] | Mögliche Werte sind\: „Invalid“, „Ok“, „Warning“, „Error“, „Unknown“. |
 | --service-id [erforderlich] | Die Identität (ID) des Diensts. <br><br> Dies ist üblicherweise der vollständige Name des Diensts ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric\:/meineapp/app1/svc1“, hat die Dienstidentität in 6.0 und höher den Wert „meineapp\~app1\~svc1“ und in früheren Versionen den Wert „meineapp/app1/svc1“. |
-| --source-id [erforderlich] | Der Quellenname, mit dem die Client-, Watchdog- oder Systemkomponente identifiziert wird, die die Integritätsinformationen generiert hat. |
+| --source-id [erforderlich] | Der Quellenname, der die Client-, Watchdog- oder Systemkomponente identifiziert, die die Integritätsinformationen generiert hat. |
 | --description | Die Beschreibung der Integritätsinformationen. <br><br> Hierbei handelt es sich um Freitext, mit dem von Menschen lesbare Informationen über den Bericht hinzugefügt werden können. Die maximale Zeichenlänge für die Beschreibung beträgt 4096 Zeichen. Wenn die angegebene Zeichenfolge länger ist, wird sie automatisch abgeschnitten. Wird diese abgeschnitten, enthalten die letzten Zeichen der Beschreibung einen Marker „[abgeschnitten]“, und die gesamte Zeichenfolgenlänge beträgt 4096 Zeichen. Das Vorhandensein des Markers ist ein Hinweis für Benutzer, dass abgeschnittene Zeichenfolgen vorkommen. Beachten Sie, dass die Beschreibung bei abgeschnittenen Zeichenfolgen weniger als 4096 Zeichen von der ursprünglichen Zeichenfolge enthält. |
 | --immediate | Ein Flag, das angibt, ob der Bericht sofort gesendet werden soll. <br><br> Ein Integritätsbericht wird an eine Service Fabric-Gatewayanwendung gesendet, die diesen an den Integritätsspeicher weiterleitet. Wenn „Immediate“ auf „true“ festgelegt ist, wird der Bericht sofort vom HTTP-Gateway an den Integritätsspeicher gesendet, unabhängig von den Fabric-Clienteinstellungen, die die HTTP-Gatewayanwendung verwendet. Dies ist für kritische Berichte hilfreich, die schnellstmöglich gesendet werden sollen. Abhängig von der zeitlichen Steuerung und anderen Bedingungen können beim Senden des Berichts trotzdem möglicherweise Fehler auftreten, z.B., wenn das HTTP-Gateway geschlossen ist oder die Meldung das Gateway nicht erreicht. Wenn „Immediate“ auf „false“ festgelegt ist, wird der Bericht basierend auf den Integritätsclienteinstellungen vom HTTP-Gateway gesendet. Aus diesem Grund wird der Bericht entsprechend der HealthReportSendInterval-Konfiguration batchweise verarbeitet. Dies ist die empfohlene Einstellung, da der Integritätsclient die Optimierung von Meldungen des Integritätsberichts für den Integritätsspeicher sowie die Verarbeitung von Integritätsberichten ermöglicht. Standardmäßig werden Berichte nicht sofort gesendet. |
 | --remove-when-expired | Ein Wert, der angibt, ob der Bericht aus dem Integritätsspeicher entfernt wird, wenn er abläuft. <br><br> Wenn dieser Wert auf „true“ festgelegt ist, wird der Bericht aus dem Integritätsspeicher entfernt, nachdem er abgelaufen ist. Wenn dieser Wert auf „false“ festgelegt ist, wird der Bericht als Fehler behandelt, wenn er abgelaufen ist. Der Wert dieser Eigenschaft ist standardmäßig auf „false“ festgelegt. Wenn Clients in regelmäßigen Abständen Berichte erstellen, sollte RemoveWhenExpired auf „false“ (Standardwert) festgelegt sein. Denn falls der Reporter Probleme (z.B. Deadlocks) haben und keine Berichte erstellen können sollte, wird die Entität entsprechend auf Fehler ausgewertet, wenn der Integritätsbericht abläuft. Hierdurch wird die Entität nicht als in einem fehlerhaften Integritätszustand befindlich gekennzeichnet. |
@@ -520,7 +520,7 @@ Lösen Sie eine Service Fabric-Dienstpartition auf, um die Endpunkte der Dienstr
 | --- | --- |
 | --service-id [erforderlich] | Die Identität (ID) des Diensts. Diese ID ist üblicherweise der vollständige Name des Diensts ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric\:/meineapp/app1/svc1“, weist die Dienstidentität in 6.0 und höher den Wert „meineapp\~app1\~svc1“ und in früheren Versionen den Wert „meineapp/app1/svc1“ auf. |
 | --partition-key-type | Schlüsseltyp für die Partition. Dieser Parameter ist erforderlich, wenn das Partitionsschema für den Dienst gleich „Int64Range“ oder „Named“ ist. Die folgenden Werte sind möglich. – None (1): Gibt an, dass der Parameter „PartitionKeyValue“ nicht angegeben ist. Dies ist für die Partitionen gültig, deren Partitionsschema als „Singleton“ festgelegt ist. Dies ist der Standardwert. Der Wert ist gleich „1“. – Int64Range (2): Gibt an, dass der Wert des Parameters „PartitionKeyValue“ ein int64-Partitionsschlüssel ist. Dies ist für die Partitionen gültig, deren Partitionsschema als „Int64Range“ festgelegt ist. Der Wert ist gleich „2“. – Named (3): Gibt an, dass der Wert des Parameters „PartitionKeyValue“ ein Name der Partition ist. Dies ist für die Partitionen gültig, deren Partitionsschema als „Named“ festgelegt ist. Der Wert ist gleich „3“. |
-| --partition-key-value | Der Partitionsschlüssel. Dieses Argument ist erforderlich, wenn das Partitionsschema für den Dienst gleich „Int64Range“ oder „Named“ ist. |
+| --partition-key-value | Der Partitionsschlüssel. Dieses Argument ist erforderlich, wenn das Partitionsschema für den Dienst gleich „Int64Range“ oder „Named“ ist. Dies ist nicht die Partitions-ID, sondern entweder der ganzzahlige Schlüsselwert oder der Name der Partitions-ID. Wenn Ihr Dienst beispielsweise Bereichspartitionen von 0 bis 10 verwendet, dann wäre PartitionKeyValue eine ganze Zahl in diesem Bereich. Fragen Sie die Dienstbeschreibung ab, auf den Bereich oder Namen anzuzeigen. |
 | --previous-rsp-version | Der Wert im „Version“-Feld der Antwort, die zuvor empfangen wurde. Dieses Argument ist erforderlich, wenn der Benutzer weiß, dass das zuvor abgerufene Ergebnis veraltet ist. |
 | --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 

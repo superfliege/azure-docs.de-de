@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: c6001b0c95186dff53f33c73833b4cea30688db2
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a19cdac54fff641f72d0628c7b0d47060baba9b4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094891"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384121"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure-Speicherdienstverschlüsselung für ruhende Daten
 Azure-Speicherdienstverschlüsselung für ruhende Daten unterstützt Sie dabei, Ihre Daten zu schützen, um die Sicherheits- und Complianceanforderungen Ihrer Organisation zu erfüllen. Mit dieser Funktion werden Ihre Daten auf der Azure Storage-Plattform automatisch vor dem Ablegen in Azure Managed Disks, Azure Blob Storage, Azure Queue Storage, Azure Table Storage oder Azure Files verschlüsselt und vor dem Abrufen entschlüsselt. Die Verarbeitung der Ver- und Entschlüsselung, der Verschlüsselung ruhender Daten und der Schlüsselverwaltung in Storage Service Encryption ist für Benutzer transparent. Sämtliche in die Azure-Speicherplattform geschriebene Daten werden mittels 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) verschlüsselt, einem der sichersten verfügbaren Blockchiffreverfahren.
@@ -81,7 +81,7 @@ Ja, alle Kopien des Speicherkontos werden verschlüsselt. Alle Redundanzoptionen
 Die Speicherdienstverschlüsselung ist in allen Regionen verfügbar.
 
 **Ist die Speicherdienstverschlüsselung mit FIPS 140-2 konform?**  
-Ja, die Speicherdienstverschlüsselung ist mit FIPS 140-2 konform.
+Ja, die Speicherdienstverschlüsselung ist mit FIPS 140-2 konform. Weitere Informationen z den kryptografischen Modulen, die der Speicherdienstverschlüsselung zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
 **An wen wende ich mich, wenn Probleme auftreten, oder wenn ich Feedback geben möchte?**  
 Wenden Sie sich bei Problemen oder Feedback in Bezug auf die Speicherdienstverschlüsselung an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com).

@@ -1,5 +1,6 @@
 ---
-title: Bereitstellen eines Lastenausgleichs für den Internetzugriff mit IPv6 – Azure-Vorlage | Microsoft-Dokumentation
+title: Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 – Azure-Vorlage
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und virtuelle Computer mit Lastenausgleich bereitstellen.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 14a28fb341692c309ff4f965628b38a767c56633
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2374df3a457e0f4730dcaa6d69ea3f2e0fa6e9cc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740741"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163207"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 

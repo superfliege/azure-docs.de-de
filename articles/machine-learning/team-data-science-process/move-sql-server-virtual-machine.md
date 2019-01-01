@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer | Microsoft Docs
+title: 'Verschieben von Daten auf einen virtuellen SQL Server-Computer: Team Data Science-Prozess'
 description: Verschieben von Daten aus Flatfiles oder von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 649c98c235adc2435840c6c43d3e2f9d5755265f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fbc23d53687b908245ffe25bdd418cbe64af080b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446193"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136187"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer
 
@@ -26,7 +26,7 @@ Ein Thema, in dem die Optionen für das Verschieben von Daten in eine Azure SQL-
 
 In der folgenden Tabelle sind die Optionen zum Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer zusammengefasst.
 
-| <b>QUELLE</b> | <b>ZIEL: SQL Server auf virtuellem Azure-Computer</b> |
+| <b>QUELLE</b> | <b>ZIEL: SQL Server auf virtuellen Azure-Computern</b> |
 | --- | --- |
 | <b>Flatfile</b> |1. <a href="#insert-tables-bcp">Befehlszeilenprogramm zum Massenkopieren (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">SQL-Abfrage zum Masseneinfügen </a><br> 3. <a href="#sql-builtin-utilities">Integrierte grafische Hilfsprogramme in SQL Server</a> |
 | <b>Lokaler SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer</a><br> 2. <a href="#export-flat-file">Exportieren in eine Flatfile </a><br> 3. <a href="#sql-migration">SQL-Datenbankmigrations-Assistent</a> <br> 4. <a href="#sql-backup">Datenbanksicherung und -wiederherstellung</a><br> |

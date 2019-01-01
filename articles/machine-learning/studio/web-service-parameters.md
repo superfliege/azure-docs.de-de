@@ -1,12 +1,11 @@
 ---
-title: Verwenden von Azure Machine Learning Studio-Webdienstparametern | Microsoft-Dokumentation
+title: 'Webdienstparameter: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: 'Anleitung: Verwenden von Azure Machine Learning Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 0e8a1a4bb90f935bf3890bd803b9375d10261aa7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b929608d64e747d6e768da4ee6627f9e6b09a83a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312009"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270082"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Verwenden von Azure Machine Learning Studio-Webdienstparametern
 Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
@@ -30,7 +29,7 @@ Ein typisches Beispiel ist das Einrichten des Moduls [Import Data][reader], dami
 
 Sie können Webdienstparameter definieren und einem oder mehreren Modulparametern im Experiment zuordnen, und Sie können angeben, ob diese Parameter erforderlich oder optional sind. Benutzer des Webdiensts können dann Werte für diese Parameter bereitstellen, wenn sie den Webdienst aufrufen. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="how-to-set-and-use-web-service-parameters"></a>Festlegen und Verwenden von Webdienstparametern
 Sie definieren einen Webdienstparameter, indem Sie auf das Symbol neben dem Parameter für ein Modul klicken und "Set as web service parameter" (Als Webdienstparameter festlegen) auswählen. Daraufhin wird ein neuer Webdienstparameter erstellt und mit diesem Modulparameter verbunden. Wenn auf den Webdienst zugegriffen wird, kann der Benutzer einen Wert für den Webdienstparameter angeben, der dann auf den Modulparameter angewendet wird.

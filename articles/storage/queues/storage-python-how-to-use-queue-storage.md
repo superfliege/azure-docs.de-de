@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 1e52f199847b9e03eb31da71f1f0577df92d2b51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 827d3ceac267c78be9740adba6c890460ca3f2e9
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230409"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162986"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Verwenden des Warteschlangenspeichers mit Python
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -47,9 +47,9 @@ pip install azure-storage-queue
 > 
 > 
 
-Informationen zu alternativen Installationsmethoden finden Sie im [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python/) auf GitHub.
+Informationen zu alternativen Installationsmethoden finden Sie im [Azure Storage SDK für Python auf GitHub](https://github.com/Azure/azure-storage-python/).
 
-## <a name="how-to-create-a-queue"></a>Erstellen einer Warteschlange
+## <a name="how-to-create-a-queue"></a>Anleitung: Erstellen einer Warteschlange
 Das Objekt **QueueService** ermöglicht es Ihnen, mit Warteschlangen zu arbeiten. Der folgende Code erstellt ein **QueueService** -Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure-Speicher zugreifen möchten, den folgenden Code hinzu:
 
 ```python
@@ -64,14 +64,14 @@ queue_service = QueueService(account_name='myaccount', account_key='mykey')
 queue_service.create_queue('taskqueue')
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Einfügen einer Nachricht in eine Warteschlange
+## <a name="how-to-insert-a-message-into-a-queue"></a>Anleitung: Einfügen einer Nachricht in eine Warteschlange
 Zum Einfügen einer Nachricht in eine Warteschlange verwenden Sie die **put\_message**-Methode, um eine neue Nachricht zu erstellen und zur Warteschlange hinzuzufügen.
 
 ```python
 queue_service.put_message('taskqueue', u'Hello World')
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Einsehen der nächsten Nachricht
+## <a name="how-to-peek-at-the-next-message"></a>Anleitung: Einsehen der nächsten Nachricht
 Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode **peek\_messages** aufrufen. Standardmäßig wird von **peek\_messages** jeweils nur eine Nachricht angeschaut.
 
 ```python
@@ -80,7 +80,7 @@ for message in messages:
     print(message.content)
 ```
 
-## <a name="how-to-dequeue-messages"></a>Gewusst wie: Entfernen von Nachrichten aus Warteschlangen
+## <a name="how-to-dequeue-messages"></a>Anleitung: Entfernen von Nachrichten aus Warteschlangen
 Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie **get\_messages** aufrufen, wird standardmäßig die nächste Nachricht aus der Warteschlange abgerufen. Die für **get\_messages** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem **delete\_message** aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. Der Code ruft **delete\_message** direkt nach der Verarbeitung der Nachricht auf.
 
 ```python
@@ -100,7 +100,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)        
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Ändern des Inhalts von Nachrichten in der Warteschlange
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Anleitung: Ändern des Inhalts von Nachrichten in der Warteschlange
 Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wenn die Nachricht eine Arbeitsaufgabe darstellt, können Sie diese Funktion verwenden, um den Status der Aufgabe zu aktualisieren. Im Code unten wird die **update\_message**-Methode zum Aktualisieren einer Nachricht verwendet. Das Sichtbarkeitstimeout ist auf 0 festgelegt, d. h., die Nachricht wird sofort angezeigt, und der Inhalt wird aktualisiert.
 
 ```python
@@ -109,7 +109,7 @@ for message in messages:
     queue_service.update_message('taskqueue', message.id, message.pop_receipt, 0, u'Hello World Again')
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Abrufen der Warteschlangenlänge
+## <a name="how-to-get-the-queue-length"></a>Anleitung: Abrufen der Warteschlangenlänge
 Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die Methode **get\_queue\_metadata** ruft Metadaten zur Warteschlange vom Warteschlangendienst sowie **approximate_message_count** ab. Die Anzahl ist nur ein ungefährer Wert, da seit der Antwort des Warteschlangendienstes möglicherweise bereits Nachrichten hinzugefügt oder gelöscht wurden.
 
 ```python
@@ -117,7 +117,7 @@ metadata = queue_service.get_queue_metadata('taskqueue')
 count = metadata.approximate_message_count
 ```
 
-## <a name="how-to-delete-a-queue"></a>Löschen von Warteschlangen
+## <a name="how-to-delete-a-queue"></a>Anleitung: Löschen einer Warteschlange
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **delete\_queue** auf.
 
 ```python

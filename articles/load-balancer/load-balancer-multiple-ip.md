@@ -1,5 +1,6 @@
 ---
-title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen in Azure | Microsoft-Dokumentation
+title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen in Azure
+titlesuffix: Azure Load Balancer
 description: Lastenausgleich in Konfigurationen mit primären und sekundären IP-Adressen
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0f092c471a7908eabe481adc8c722993818840b8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e6aff89fe45220e1642a91e6a2d31a9da422fdea
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219510"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163530"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -80,7 +82,7 @@ Fügen Sie für jeden virtuellen Computer in Ihrem virtuellen Netzwerk die IP-Ko
 
 Nachdem die zweite IP-Konfiguration für die sekundäre NIC abgeschlossen ist, wird sie in den Einstellungen unter **IP-Konfigurationen** für die betreffende NIC angezeigt.
 
-### <a name="step-2-create-the-load-balancer"></a>Schritt 2: Erstellen des Lastenausgleichs
+### <a name="step-2-create-the-load-balancer"></a>Schritt 2: Erstellen des Lastenausgleichs
 
 Erstellen Sie Ihren Lastenausgleich für die Konfiguration:
 
@@ -96,7 +98,7 @@ Erstellen Sie Ihren Lastenausgleich für die Konfiguration:
 
 Die Bereitstellung des Lastenausgleichs beginnt. Es kann einige Minuten dauern, bis die Bereitstellung abgeschlossen ist. Nach Abschluss der Bereitstellung wird der Lastenausgleich als Ressource in Ihrer Ressourcengruppe angezeigt.
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>Schritt 3: Konfigurieren des Front-End-IP-Pools
+### <a name="step-3-configure-the-front-end-ip-pool"></a>Schritt 3: Konfigurieren des Front-End-IP-Pools
 
 Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) den Front-End-IP-Pool für Ihren Lastenausgleich:
 

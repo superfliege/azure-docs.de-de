@@ -1,5 +1,5 @@
 ---
-title: DC/OS-Agent-Pools für Azure Container Service
+title: (VERALTET) DC/OS-Agent-Pools für Azure Container Service
 description: Funktionsweise öffentlicher und privater Agent-Pools mit einem Azure Container Service-DC/OS-Cluster
 services: container-service
 author: iainfoulds
@@ -9,20 +9,23 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9c614d18b96c182fa166a4bc43fb1bb2f8d5d6f5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: ee1a2a75d6a003a6bc53c5216dd01d379193ea77
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976729"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994939"
 ---
-# <a name="dcos-agent-pools-for-azure-container-service"></a>DC/OS-Agent-Pools für Azure Container Service
+# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(VERALTET) DC/OS-Agent-Pools für Azure Container Service
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
 DC/OS-Cluster in Azure Container Service enthalten die Agent-Knoten in zwei Pools, einem öffentlichen und einem privaten Pool. Die Bereitstellung einer Anwendung ist in beiden Pools möglich, der Pool hat jedoch Auswirkungen auf den Zugriff zwischen Computern in Ihrem Containerdienst. Die Computer können über Internetzugriff (öffentlich) verfügen oder nur intern (privat) verwendet werden. Dieser Artikel geht kurz darauf ein, warum ein öffentlicher und ein privater Pool zur Verfügung stehen.
 
 
-* **Private Agents:** Private Agentknoten werden über ein nicht routingfähiges Netzwerk ausgeführt. Über dieses Netzwerk kann nur von der Administratorzone oder über den Edgerouter der öffentlichen Zone zugegriffen werden. Standardmäßig startet DC/OS Apps auf privaten Agentknoten. 
+* **Private Agents**: Private Agentknoten werden über ein nicht routingfähiges Netzwerk ausgeführt. Über dieses Netzwerk kann nur von der Administratorzone oder über den Edgerouter der öffentlichen Zone zugegriffen werden. Standardmäßig startet DC/OS Apps auf privaten Agentknoten. 
 
-* **Öffentliche Agents:** Öffentliche Agent-Knoten führen DC/OS-Apps und -Dienste über ein öffentlich zugängliches Netzwerk aus. 
+* **Öffentliche Agents**: Öffentliche Agent-Knoten führen DC/OS-Apps und -Dienste über ein öffentlich zugängliches Netzwerk aus. 
 
 Weitere Informationen zur DC/OS-Netzwerksicherheit finden Sie in der [DC/OS-Dokumentation](https://dcos.io/docs/1.8/administration/securing-your-cluster/).
 

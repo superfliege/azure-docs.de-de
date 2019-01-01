@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: 'SQL Server-Daten in SQL Azure mit Azure Data Factory: Team Data Science-Prozess'
 description: Einrichten eine ADF-Pipeline, die aus zwei Datenmigrationsaktivitäten besteht, die zusammen täglich Daten zwischen lokalen Datenbanken und in die Cloud verschieben.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: bddb54d9a00c5ec88fcebe498d7f959c0f8e3dbf
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a1bb841c1218be0a418583af8ca95b2dff2f67d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447035"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309500"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory
 
@@ -24,7 +24,7 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe von Azure Data Factory (ADF) Da
 
 Eine Tabelle, in der verschiedene Optionen für das Verschieben von Daten in eine Azure SQL-Datenbank zusammengefasst sind, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](move-sql-azure.md).
 
-## <a name="intro"></a>Einführung: Was ist ADF und wann sollte es für die Migration von Daten eingesetzt werden?
+## <a name="intro"></a>Einführung: Was ist ADF und wann sollte ADF für die Migration von Daten verwendet werden?
 Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert. Das Hauptkonzept im ADF-Modell ist die Pipeline. Eine Pipeline ist eine logische Gruppierung von Aktivitäten, von denen jede die Aktionen definiert, die mit den in Datasets enthaltenen Daten auszuführen sind. Verknüpfte Dienste werden verwendet, um die Informationen zu definieren, die Data Factory benötigt, um eine Verbindung mit den Datenressourcen herzustellen.
 
 Mit ADF können vorhandene Datenverarbeitungsdienste zu Datenpipelines zusammengestellt werden, die hoch verfügbar sind und in der Cloud verwaltet werden. Diese Datenpipelines können geplant werden, um Daten zu erfassen, vorzubereiten, zu transformieren, zu analysieren und zu veröffentlichen, und die komplexen Daten und Verarbeitungsabhängigkeiten werden von ADF verwaltet und orchestriert. Lösungen lassen sich schnell in der Cloud erstellen und bereitstellen, wodurch eine wachsende Anzahl von lokalen und Clouddatenquellen miteinander verbunden werden.
@@ -43,7 +43,7 @@ Wir richten eine ADF-Pipeline ein, die zwei Aktivitäten für die Migration von 
 * Kopieren von Daten aus dem Azure Blob Storage-Konto in eine Azure SQL-Datenbank-Instanz
 
 > [!NOTE]
-> Die hier gezeigten Schritte wurden dem detaillierteren Tutorial [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../../data-factory/tutorial-hybrid-copy-portal.md) entnommen und angepasst, das vom ADF-Team bereitgestellt wurde. Verweise auf die entsprechenden Abschnitte dieses Tutorials werden an geeigneten Stellen angegeben.
+> Die hier gezeigten Schritte wurden aus dem detaillierteren Tutorial übernommen, das vom ADF-Team bereitgestellt wird: [Kopieren von Daten aus einer lokalen SQL Server-Datenbank in Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/). Verweise auf die relevanten Abschnitte dieses Themas werden gegebenenfalls angegeben.
 >
 >
 
@@ -68,15 +68,10 @@ Sie können entweder das hier beschriebene Verfahren auf einen Satz Ihrer eigene
 ## <a name="create-adf"></a> Erstellen einer Azure Data Factory
 Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://portal.azure.com/) finden Sie unter [Erstellen einer Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp* und die erstellte Ressourcengruppe *adfdsprg*.
 
-## <a name="install-and-configure-up-the-data-management-gateway"></a>Installieren und Konfigurieren das Datenverwaltungsgateways
-Damit Ihre Pipelines in einer Azure Data Factory mit einer lokalen SQL Server-Instanz zusammenarbeiten können, müssen Sie diesen der Data Factory als verknüpften Dienst hinzufügen. Führen Sie zum Erstellen eines verknüpften Diensts für die lokale SQL Server-Instanz die folgenden Schritte aus:
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Installieren und Konfigurieren von Azure Data Factory Integration Runtime 
+Integration Runtime ist eine vom Kunden verwaltete Datenintegrationsinfrastruktur, die von Azure Data Factory genutzt wird, um Datenintegrationsfunktionen in verschiedenen Netzwerkumgebungen bereitzustellen. Diese Runtime wurde früher als „Datenverwaltungsgateway“ bezeichnet. 
 
-* Herunterladen des Microsoft-Datenverwaltungsgateways und Installieren auf dem lokalen Computer.
-* Konfigurieren des verknüpften Diensts für die lokale Datenquelle zur Verwendung des Gateways
-
-Das Datenverwaltungsgateway serialisiert und deserialisiert die Quell- und Senkendaten auf dem Computer, auf dem sie gehostet werden.
-
-Setupanweisungen und Informationen zum Datenverwaltungsgateway finden Sie unter [Move data between on-premises sources and cloud with Data Management Gateway](../../data-factory/tutorial-hybrid-copy-portal.md)
+Zum Einrichten der Runtime [befolgen Sie die Anweisungen zum Erstellen einer Pipeline](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline).
 
 ## <a name="adflinkedservices"></a>Erstellen von verknüpften Diensten zum Herstellen einer Verbindung mit den Datenressourcen
 Ein verknüpfter Dienst definiert die Informationen, die Azure Data Factory für das Herstellen einer Verbindung mit einer Datenquelle benötigt. Wir haben drei Ressourcen in diesem Szenario, für die verknüpfte Dienste erforderlich sind:

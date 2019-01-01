@@ -1,37 +1,32 @@
 ---
-title: Verwalten von Azure Cosmos DB in Azure Storage-Explorer
-description: Erfahren Sie, wie Sie Azure Cosmos DB in Azure Storage-Explorer verwalten.
-Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
-services: cosmos-db
+title: Verwalten von Azure Cosmos DB-Ressourcen mit Azure Storage Explorer
+description: Erfahren Sie, wie Sie eine Verbindung mit Azure Cosmos DB herstellen und Ihre Ressourcen mithilfe von Azure Storage-Explorer verwalten.
 author: Jejiang
-manager: kfile
-editor: ''
 tags: Azure Cosmos DB
 ms.service: cosmos-db
-ms.custom: Azure Cosmos DB active
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 12/07/2018
 ms.author: jejiang
-ms.openlocfilehash: 4a50809c48ba03b7a12689d905e704d3f820ca8a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162397"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138125"
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB in Azure Storage-Explorer
+# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB-Ressourcen mit Azure Storage Explorer
 
 Mit der Verwendung von Azure Cosmos DB in Azure Storage-Explorer können Benutzer Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren. Nun können Sie mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten. Derzeit unterstützt Azure Storage-Explorer SQL-, MongoDB-, Graph- und Table-Konten.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure Cosmos DB-Konto für die SQL-API <!--or MongoDB API-->. Wenn Sie kein Konto besitzen, können Sie im Azure-Portal ein Konto erstellen, wie unter [Azure Cosmos DB: Erstellen einer SQL-API-Web-App mit .NET und dem Azure-Portal](create-sql-api-dotnet.md) beschrieben.
+Ein Azure Cosmos DB-Konto für die SQL-API <!--or MongoDB API-->. Wenn Sie kein Konto haben, können Sie im Azure-Portal ein Konto erstellen, wie unter [Azure Cosmos DB: Erstellen einer SQL-API-Web-App mit .NET und dem Azure-Portal](create-sql-api-dotnet.md) beschrieben.
 
 ## <a name="installation"></a>Installation
 
-Hier können Sie die neuesten Komponenten des Azure Storage-Explorers installieren: [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/). Nun werden Versionen für Windows, Linux und MAC unterstützt.
+Installieren Sie die neuesten Komponenten von Azure Storage Explorer, die Sie unter [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) finden. Unterstützt werden Windows-, Linux- und Macintosh-Versionen.
 
 ## <a name="connect-to-an-azure-subscription"></a>Herstellen einer Verbindung mit einem Azure-Abonnement
 
@@ -227,7 +222,7 @@ Wenn Storage-Explorer eines dieser „selbstsignierten Zertifikate“ erkennt, k
 
 1. Installieren Sie OpenSSL.
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (alle Light-Versionen sind geeignet)
-     - Mac und Linux: Sollte im Betriebssystem enthalten sein
+     - Mac und Linux: Sollte im Betriebssystem enthalten sein.
 2. Führen Sie OpenSSL aus.
     - Windows: Navigieren Sie zum Installationsverzeichnis und dann zu **/bin/**, und doppelklicken Sie anschließend auf **openssl.exe**.
     - Mac und Linux: Führen Sie **openssl** über ein Terminal aus.
@@ -242,11 +237,11 @@ Falls Sie mit den oben angegebenen Schritten keine selbstsignierten Zertifikate 
 
 Gehen Sie wie folgt vor, wenn Sie nach dem erfolgreichen Anmelden Ihre Abonnements nicht abrufen können:
 
-- Melden Sie sich am [Azure-Portal](http://portal.azure.com/) an, um zu überprüfen, ob Ihr Konto Zugriff auf die Abonnements hat.
-- Stellen Sie sicher, dass die Anmeldung mit der richtigen Umgebung ([Azure](http://portal.azure.com/), [Azure China](https://portal.azure.cn/), [Azure Deutschland](https://portal.microsoftazure.de/), [Azure US-Regierung](http://portal.azure.us/) oder „Benutzerdefinierte Umgebung/Azure Stack“) erfolgt ist.
+- Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an, um zu überprüfen, ob Ihr Konto Zugriff auf die Abonnements hat.
+- Stellen Sie sicher, dass die Anmeldung mit der richtigen Umgebung ([Azure](https://portal.azure.com/), [Azure China](https://portal.azure.cn/), [Azure Deutschland](https://portal.microsoftazure.de/), [Azure US-Regierung](https://portal.azure.us/) oder „Benutzerdefinierte Umgebung/Azure Stack“) erfolgt ist.
 - Wenn Sie sich hinter einem Proxy befinden, sollten Sie sicherstellen, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 - Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
-- Löschen Sie die folgenden Dateien aus Ihrem Basisverzeichnis (z.B. „C:\Users\ContosoUser“), und fügen Sie das Konto dann erneut hinzu:
+- Löschen Sie die folgenden Dateien aus Ihrem Basisverzeichnis (z. B. C:\Benutzer\ContosoUser), und fügen Sie dann das Konto wieder hinzu:
   - .adalcache
   - .devaccounts
   - .extaccounts
@@ -310,6 +305,6 @@ Falls Ihnen keine dieser Lösungen weiterhilft, können Sie eine E-Mail mit Deta
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Im folgenden Video erfahren Sie, wie Sie Azure Cosmos DB in Azure Storage-Explorer verwenden: [Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
+* Sehen Sie sich das folgende Video zur Verwendung von Azure Cosmos DB in Azure Storage-Explorer an: [Verwalten von Azure Cosmos DB in Azure Storage-Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Weitere Informationen zum Storage-Explorer und zum Herstellen einer Verbindung mit weiteren Diensten finden Sie unter [Erste Schritte mit dem Storage-Explorer (Vorschau)](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

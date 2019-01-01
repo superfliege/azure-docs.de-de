@@ -5,37 +5,39 @@ services: service-fabric-mesh
 keywords: ''
 author: rwike77
 ms.author: ryanwi
-ms.date: 07/12/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 6aa268cf56bfb8be9c27a9e0d9e5c9f4464b0c9d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+manager: jeconnoc
+ms.openlocfilehash: ecdb36af786d96a5b343d11cd689642d59528445
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075509"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888528"
 ---
 # <a name="state-management-with-service-fabric"></a>Zustandsverwaltung mit Service Fabric
+
 Service Fabric unterstützt viele verschiedene Optionen für die Zustandsspeicherung. Eine grundlegende Übersicht über die Zustandsverwaltungsmuster und Service Fabric finden Sie unter [Service Fabric-Konzepte: Zustand](/azure/service-fabric/service-fabric-concepts-state). Alle diese Konzepte gelten unabhängig davon, ob Ihre Dienste innerhalb oder außerhalb von Service Fabric Mesh ausgeführt werden. 
 
-## <a name="state-storage-options-in-azure-service-fabric-mesh"></a>Optionen für die Zustandsspeicherung in Azure Service Fabric Mesh
 Mit Service Fabric Mesh können Sie ganz einfach eine neue Anwendung bereitstellen und mit einem bestehenden Datenspeicher verbinden, der in Azure gehostet wird. Neben der Verwendung einer beliebigen Remotedatenbank gibt es weitere Möglichkeiten, Daten zu speichern, je nachdem, ob der Dienst lokal oder remote gespeichert werden soll. 
 
-* Lokal gespeicherte replizierte Daten
-  * Zuverlässige Sammlungen (nicht in der Vorschauversion verfügbar)
-    * Eine Bibliothek, die Datenstrukturen wie Warteschlangen und Schlüssel-Wert-Paare zur Verwendung im Dienst bereitstellt
-    * Die einfachste und schnellste Möglichkeit, mit Daten zu interagieren und gleichzeitig ein einfaches Partitionsrouting in Kombination mit intelligentem Routing in Service Fabric Mesh zu ermöglichen
-  * Service Fabric-Volumetreiber (nicht in der Vorschauversion verfügbar)
-    * Ein Docker-Volumetreiber, der ein lokales Volume in einem Container bereitstellt
-    * Bietet Ihnen die ultimative Flexibilität bei der lokalen Datenspeicherung über eine beliebige API, die Dateispeicherung unterstützt
+## <a name="volumes"></a>Volumes
 
-* Remotespeicher
-  * Azure Files-Volumetreiber
-    * Ein Docker-Volumetreiber, der eine Azure Files-Freigabe in einen Container einbindet
-    * Bietet Ihnen eine weniger leistungsstarke, dafür aber kostengünstigere, komplett flexible und zuverlässige Datenoption über jede beliebige API, die Dateispeicherung unterstützt
-    * [Anleitung: Bereitstellen einer App mit Azure Files-Volumes](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)
-    
+Container verwenden häufig temporäre Datenträger. Temporäre Datenträger sind jedoch flüchtig, sodass Sie einen neuen temporären Datenträger erhalten und die Informationen verlieren, wenn ein Container abstürzt. Außerdem ist es schwierig, Informationen auf temporären Datenträgern mit anderen Containern gemeinsam zu verwenden. Volumes sind Verzeichnisse, die in Ihre Containerinstanzen eingebunden werden, und mit denen Sie Zustände erhalten können. Volumes bieten Ihnen einen universellen Dateispeicher und ermöglichen das Lesen/Schreiben von Dateien über normale Datenträger-E/A-Datei-APIs. Die Volume-Ressource beschreibt, wie ein Verzeichnis bereitgestellt wird und welcher Hintergrundspeicher verwendet werden soll. Sie können Azure File Storage oder den Service Fabric Volume-Datenträger zum Speichern von Daten auswählen.
+
+![Volumes][image3]
+
+### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
+
+Service Fabric Reliable Volume ist ein Docker-Volumetreiber, der verwendet wird, um ein lokales Volume für einen Container bereitzustellen. Lese- und Schreibvorgänge sind lokale Vorgänge und sehr schnell. Daten werden auf sekundäre Knoten repliziert und werden damit hochverfügbar. Failover ist ebenfalls schnell. Wenn ein Container abstürzt, wird ein Failover auf einen Knoten ausgeführt, der bereits über eine Kopie Ihrer Daten verfügt. Ein Beispiel finden Sie unter [Bereitstellen einer App mit Service Fabric Reliable Volume](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/counter).
+
+### <a name="azure-files-volume"></a>Azure Files Volume
+
+Azure Files Volume ist ein Docker-Volumetreiber, der verwendet wird, um eine Azure Files-Freigabe in einen Container einzubinden. Azure Files Storage verwendet Netzwerkspeicher, sodass Lese- und Schreibvorgänge über das Netzwerk erfolgen. Im Vergleich zu Service Fabric Reliable Volume ist die Speicherung von Azure Files weniger leistungsstark, bietet aber eine kostengünstigere und absolut zuverlässige Datenoption. Ein Beispiel finden Sie unter [Bereitstellen einer App mit Azure Files Volume](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Anwendungsmodell finden Sie unter [Service Fabric-Ressourcen](service-fabric-mesh-service-fabric-resources.md).
+
+[image3]: ./media/service-fabric-mesh-storing-state/volumes.png

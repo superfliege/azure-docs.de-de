@@ -1,5 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen einer Load Balancer Standard-Instanz – Azure PowerShell | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Load Balancer Standard-Instanz – Azure PowerShell'
+titlesuffix: Azure Load Balancer
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit PowerShell eine Load Balancer Standard-Instanz erstellen.
 services: load-balancer
 documentationcenter: na
@@ -13,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: e4e66d18f9dcb7f020cdb881226f6e47118e5186
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms:custom: seodec18
+ms.openlocfilehash: 0db575ee6c04c0fb4639ea2e9e095200da781fe8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578551"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256314"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz mit Azure PowerShell
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Load Balancer Standard-Instanz erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Windows Server bereit und führen für eine Web-App zwischen den VMs einen Lastenausgleich durch. Weitere Informationen zu Load Balancer Standard finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md).

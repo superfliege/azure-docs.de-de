@@ -1,5 +1,5 @@
 ---
-title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschau) | Microsoft-Dokumentation
+title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric | Microsoft-Dokumentation
 description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 services: service-fabric
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2018
+ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: ef92212b84496802dc2464498a0b6789f79a729b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 57848a7a4d8e627e952a9f46d438b073c73d833a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246700"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725861"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschau)
+# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric 
 > [!div class="op_single_selector"]
 > * [Cluster in Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Eigenständige Cluster](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -38,13 +38,10 @@ Ein Dienst könnte Daten beispielsweise zum Schutz vor folgenden Szenarien siche
 - Fehler im Dienst, die zu einer Beschädigung von Daten führen. Dies kann beispielsweise bei einem Dienstcode-Upgrade geschehen, bei dem fehlerhafte Daten in eine Reliable Collection geschrieben werden. In diesem Fall müssen unter Umständen der Code und die Daten in einen früheren Zustand zurückversetzt werden.
 - Offline-Datenverarbeitung. Es kann zweckmäßig sein, Daten für Business Intelligence separat von dem Dienst, der die Daten generiert, offline zu verarbeiten.
 
-Service Fabric bietet eine integrierte API zum [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md) des Diensts zu einem bestimmten Zeitpunkt. Anwendungsentwickler können diese APIs verwenden, um den Zustand des Diensts in regelmäßigen Abständen zu sichern. Wenn Dienstadministratoren eine Sicherung zu einem bestimmten Zeitpunkt von außerhalb des Diensts auslösen möchten, wie z.B. vor dem Upgrade der Anwendung, müssen Entwickler zudem das Sichern (und Wiederherstellen) als API über den Dienst verfügbar machen. Für das Verwalten von Sicherungen fallen zusätzliche Kosten an. Beispiel: Sie möchten jede halbe Stunde fünf inkrementelle Sicherungen und dann eine vollständige Sicherung erstellen. Nach der vollständigen Sicherung können Sie die vorherigen inkrementellen Sicherungen löschen. Dieser Ansatz erfordert zusätzlichen Code, der zu zusätzlichen Kosten während der Anwendungsentwicklung führt.
+Service Fabric bietet eine integrierte API zum [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md) des Diensts zu einem bestimmten Zeitpunkt. Anwendungsentwickler können diese APIs verwenden, um den Zustand des Diensts in regelmäßigen Abständen zu sichern. Wenn Dienstadministratoren eine Sicherung zu einem bestimmten Zeitpunkt von außerhalb des Diensts auslösen möchten, wie z.B. vor dem Upgrade der Anwendung, müssen Entwickler zudem das Sichern (und Wiederherstellen) als API über den Dienst verfügbar machen. Für das Verwalten von Sicherungen fallen zusätzliche Kosten an. Sie möchten beispielsweise jede halbe Stunde fünf inkrementelle Sicherungen und dann eine vollständige Sicherung erstellen. Nach der vollständigen Sicherung können Sie die vorherigen inkrementellen Sicherungen löschen. Dieser Ansatz erfordert zusätzlichen Code, der zu zusätzlichen Kosten während der Anwendungsentwicklung führt.
 
-Die Sicherung der Anwendungsdaten in regelmäßigen Abständen ist eine grundlegende Notwendigkeit beim Verwalten einer verteilten Anwendung und zum Schutz vor Datenverlusten oder einer längeren Beeinträchtigung der Verfügbarkeit des Diensts. Service Fabric bietet einen optionalen Dienst für Sicherungen und Wiederherstellungen, mit dem Sie die regelmäßige Sicherung der statusbehafteten zuverlässigen Dienste (einschließlich der Actordienste) konfigurieren können, ohne zusätzlichen Code schreiben zu müssen. Damit wird auch das Wiederherstellen der zuvor erstellten Sicherungen vereinfacht. 
+Der Sicherungs- und Wiederherstellungsdienst in Service Fabric ermöglicht die einfache und automatische Sicherung von Informationen, die in zustandsbehafteten Diensten gespeichert sind. Die regelmäßige Sicherung von Anwendungsdaten ist von grundlegender Bedeutung für den Schutz vor Datenverlust und Nichtverfügbarkeit von Diensten. Service Fabric bietet einen optionalen Dienst für Sicherungen und Wiederherstellungen, mit dem Sie die regelmäßige Sicherung der statusbehafteten zuverlässigen Dienste (einschließlich der Actordienste) konfigurieren können, ohne zusätzlichen Code schreiben zu müssen. Damit wird auch das Wiederherstellen der zuvor erstellten Sicherungen vereinfacht. 
 
-> [!NOTE]
-> Das Feature für regelmäßige Sicherungen und Wiederherstellungen ist gegenwärtig in der **Vorschauversion** und wird für produktive Workloads nicht unterstützt. 
->
 
 Service Fabric stellt einen Satz von APIs für die folgende Funktionalität im Zusammenhang mit dem Feature für regelmäßige Sicherungen und Wiederherstellungen bereit:
 
@@ -58,7 +55,7 @@ Service Fabric stellt einen Satz von APIs für die folgende Funktionalität im Z
 - Verwalten der Aufbewahrung von Sicherungen (demnächst)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Service Fabric-Cluster mit Fabric-Version 6.2 und höher. Der Cluster muss mit Windows Server eingerichtet werden. Schritte zum Erstellen eines Service Fabric-Clusters mit der Azure-Ressourcevorlage finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
+* Service Fabric-Cluster mit Fabric-Version 6.2 und höher. Der Cluster muss unter Windows Server eingerichtet werden. Schritte zum Erstellen eines Service Fabric-Clusters mit der Azure-Ressourcevorlage finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
 * X.509-Zertifikat für die Verschlüsselung der Geheimnisse, die für die Verbindung mit dem Speicher zum Speichern von Sicherungen benötigt werden. Informationen zum Abrufen oder Erstellen eines X.509-Zertifikats finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
 * Service Fabric-Anwendung für statusbehaftete zuverlässige Dienste, die mit dem Service Fabric SDK, Version 3.0 oder höher, erstellt wurde. Für Anwendungen für .NET Core 2.0 muss die Anwendung mit dem Service Fabric SDK, Version 3.1 oder höher, erstellt werden.
 * Erstellen Sie ein Azure Storage-Konto zum Speichern von Anwendungssicherungen.
@@ -116,7 +113,7 @@ Jetzt erläutern wir schrittweise das Aktivieren der regelmäßigen Sicherung f�
 
 ### <a name="create-backup-policy"></a>Erstellen der Sicherungsrichtlinie
 
-Der erste Schritt ist das Erstellen der Sicherungsrichtlinie, die den Sicherungszeitplan, den Zielspeicher für Sicherungsdaten, den Richtliniennamen und die maximal zulässige Anzahl inkrementeller Sicherungen vor dem Auslösen einer vollständigen Sicherung beschreibt. 
+Der erste Schritt ist das Erstellen der Sicherungsrichtlinie, die den Sicherungszeitplan, den Zielspeicher für Sicherungsdaten, den Richtliniennamen und die maximal zulässige Anzahl inkrementeller Sicherungen vor dem Auslösen einer vollständigen Sicherung und die Aufbewahrungsrichtlinie für den Sicherungsspeicher beschreibt. 
 
 Verwenden Sie für den Sicherungsspeicher das oben erstellte Azure Storage-Konto. Container `backup-container` ist zum Speichern von Sicherungen konfiguriert. Ein Container mit diesem Namen wird während des Sicherungsuploads erstellt, wenn er nicht bereits vorhanden ist. Füllen Sie `ConnectionString` mit einer gültigen Verbindungszeichenfolge für das Azure Storage-Konto auf, und ersetzen Sie dabei `account-name` durch den Namen Ihres Speicherkontos und `account-key` durch Ihren Speicherkontoschlüssel.
 
@@ -134,15 +131,21 @@ $ScheduleInfo = @{
     ScheduleKind = 'FrequencyBased'
 }
 
+$RetentionPolicy = @{ 
+    RetentionPolicyType = 'Basic'
+    RetentionDuration =  'P10D'
+}
+
 $BackupPolicy = @{
     Name = 'BackupPolicy1'
     MaxIncrementalBackups = 20
     Schedule = $ScheduleInfo
     Storage = $StorageInfo
+    RetentionPolicy = $RetentionPolicy
 }
 
 $body = (ConvertTo-Json $BackupPolicy)
-$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.2-preview"
+$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
@@ -158,7 +161,7 @@ $BackupPolicyReference = @{
 }
 
 $body = (ConvertTo-Json $BackupPolicyReference)
-$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/EnableBackup?api-version=6.2-preview"
+$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/EnableBackup?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
@@ -176,7 +179,7 @@ Sicherungen, die mit allen Partitionen verknüpft sind, die zu zuverlässigen st
 Führen Sie das folgende PowerShell-Skript zum Aufrufen der HTTP-API aus, um die für alle Partitionen in der Anwendung `SampleApp` erstellten Sicherungen aufzulisten.
 
 ```powershell
-$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.2-preview"
+$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"
 
 $response = Invoke-WebRequest -Uri $url -Method Get -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 
@@ -223,10 +226,9 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
-## <a name="preview-limitation-caveats"></a>Einschränkungen der Vorschauversion
+## <a name="limitation-caveats"></a>Einschränkungen/ Vorbehalte
 - Keine in Service Fabric integrierten PowerShell-Cmdlets.
 - Keine Unterstützung für die Service Fabric-CLI.
-- Keine Unterstützung für das automatisierte Löschen von Sicherungen. Das [Skript für die Sicherungsaufbewahrung](https://github.com/Microsoft/service-fabric-scripts-and-templates/tree/master/scripts/BackupRetentionScript) kann auf eine externe Automatisierung basierend auf dem Setupskript für das Bereinigen von Sicherungen verwiesen werden.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,23 +6,21 @@ author: michaelhauss
 ms.service: storage
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be9254686eeb285fb4f0a5e29ba60023abee84ab
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261994"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961925"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
 In diesem Artikel wird die Ausführung gängiger Szenarien mit Microsoft Azure Blob Storage demonstriert. Die Beispiele sind in Objective-C geschrieben und greifen auf die [Azure-Speicherclientbibliothek für iOS](https://github.com/Azure/azure-storage-ios)zurück. Die behandelten Szenarien umfassen das Hochladen, Auflisten, Herunterladen und Löschen von Blobs. Weitere Informationen zu Blobs finden Sie im Abschnitt [Nächste Schritte](#next-steps) . Sie können auch die [Beispielapp](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) herunterladen, um eine schnelle Demonstration der Verwendung von Azure Storage in einer iOS-Anwendung zu sehen.
 
-## <a name="what-is-blob-storage"></a>Was ist Blobspeicher?
-
-[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
+Weitere Informationen zum Blob Storage finden Sie unter [Einführung in Azure Blob Storage](storage-blobs-introduction.md).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -132,7 +130,7 @@ Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, das
 Die Berechtigungen eines Containers werden standardmäßig für den **Privatzugriff** konfiguriert. Container bieten jedoch einige unterschiedliche Optionen für den Containerzugriff:
 
 * **Privat**: Container- und Blobdaten können nur vom Kontobesitzer gelesen werden.
-* **Blob**: Blobdaten innerhalb dieses Containers können über anonyme Anforderungen gelesen werden, aber die Containerdaten sind nicht verfügbar. Clients können keine Blobs innerhalb des Containers über anonyme Anforderungen aufzählen.
+* **Blob**: Blob-Daten innerhalb dieses Containers können über anonyme Anforderungen gelesen werden, Containerdaten sind aber nicht verfügbar. Clients können keine Blobs innerhalb des Containers über anonyme Anforderungen aufzählen.
 * **Container**: Container- und Blobdaten können über anonyme Anforderungen gelesen werden. Clients können Blobs innerhalb des Containers über eine anonyme Anforderung aufzählen, können aber keine Container innerhalb des Speicherkontos aufzählen.
 
 Das folgende Beispiel veranschaulicht das Erstellen eines Containers mit **Container**-Zugriffsberechtigungen, die allen Benutzern im Internet den öffentlichen, schreibgeschützten Zugriff gewähren:
@@ -218,12 +216,12 @@ Das folgende Beispiel zeigt, wie alle Blobs in einem Container aufgelistet werde
 * **prefix** – Sie können das Präfix angeben, das für die Blobliste verwendet werden soll. Nur Blobs, die mit diesem Präfix beginnen, werden aufgelistet.
 * **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blob-Dienst ein flaches Speicherschema ist. Allerdings wird derzeit die nicht-flache Auflistung nicht unterstützt. Diese Funktion ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: **JA**.
 * **blobListingDetails** – Sie können angeben, welche Elemente beim Auflisten der Blobs einbezogen werden sollen.
-  * _AZSBlobListingDetailsNone_: Nur zugesicherte Blobs auflisten und keine Blobmetadaten zurückgeben.
-  * _AZSBlobListingDetailsSnapshots_: Zugesicherte Blobs und Blobmomentaufnahmen auflisten.
-  * _AZSBlobListingDetailsMetadata_: Blobmetadaten für jeden Blob aufrufen, der in der Liste zurückgegeben wird.
-  * _AZSBlobListingDetailsUncommittedBlobs_: Zugesicherte und nicht zugesicherte Blobs auflisten.
-  * _AZSBlobListingDetailsCopy_: Kopieeigenschaften in die Auflistung einbeziehen.
-  * _AZSBlobListingDetailsAll_: Alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auflisten und alle Metadaten und Kopierstatus für diese Blobs zurückgeben.
+  * _AZSBlobListingDetailsNone_: Listen Sie nur zugesicherte Blobs auf, und geben Sie keine Blobmetadaten zurück.
+  * _AZSBlobListingDetailsSnapshots_: Listen Sie zugesicherte Blobs und Blobmomentaufnahmen auf.
+  * _AZSBlobListingDetailsMetadata_: Rufen Sie Blobmetadaten für jedes Blob auf, das in der Liste zurückgegeben wird.
+  * _AZSBlobListingDetailsUncommittedBlobs_: Listen Sie zugesicherte und nicht zugesicherte Blobs auf.
+  * _AZSBlobListingDetailsCopy_: Schließen Sie Kopiereigenschaften in die Liste ein.
+  * _AZSBlobListingDetailsAll_: Listen Sie alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auf, und geben Sie alle Metadaten und den Kopierstatus für diese Blobs zurück.
 * **maxResults** – Die maximale Anzahl von Ergebnissen, die für diesen Vorgang zurückgegeben werden. Verwenden Sie -1, um keinen Grenzwert festzulegen.
 * **completionHandler** – Der auszuführende Codeblock mit den Ergebnissen des Auflistungsvorgangs.
 

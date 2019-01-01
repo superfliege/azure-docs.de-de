@@ -1,10 +1,7 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET-API, -SDK und -Ressourcen | Microsoft-Dokumentation'
+title: 'Azure Cosmos DB: SQL .NET-API, -SDK und -Ressourcen'
 description: Erhalten Sie alle Informationen zu SQL .NET-API und -SDK, einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB .NET SDK.
-services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,12 +9,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7f8af635eb7d5449a242f3a7708d865c13bb448
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162805"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337936"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -30,7 +27,7 @@ ms.locfileid: "52162805"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -50,6 +47,24 @@ ms.locfileid: "52162805"
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
+* Preview 1 von [Version 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) des .NET SDKs als Public Preview.
+* Ziel: .NET Standard, unterstützt .NET Framework 4.6.1 und höher sowie .NET Core 2.0 und höher
+* Neues Objektmodell, bei dem CosmosClient und Methoden der obersten Ebene auf die entsprechenden Cosmos-Datenbanken, -Container und -Elementklassen aufgeteilt werden. 
+* Unterstützung von Streams. 
+* Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird. 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* Für die direkte/TCP-Transportdiagnose wurde eine Ausnahme vom Typ „TransportException“, ein interner Ausnahmetyp des SDKs, hinzugefügt. Wenn dieser Typ in Ausnahmemeldungen vorhanden ist, werden zusätzliche Informationen für die Behebung von Problemen mit der Clientkonnektivität ausgegeben.
+
+* Es wurde eine neue Konstruktorüberladung hinzugefügt, die einen HTTP-Meldungshandler, ein HTTP-Handlerstack zum Senden von HttpClient-Anforderungen (z. B. HttpClientHandler), verwendet.
+
+* Korrektur des Fehlers, durch den Header mit Null-Werten nicht ordnungsgemäß verarbeitet wurden.
+
+* Verbesserte Validierung des Caches für die Sammlung.
+
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
 * System.Net.Security in 4.3.2 aktualisiert.
@@ -101,7 +116,7 @@ ms.locfileid: "52162805"
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Korrektur eines Fehlers, der bei Verwendung der Sitzungskonsistenzebene unter bestimmten Racebedingungen zu vorübergehenden Fehlern vom Typ „Microsoft.Azure.Documents.NotFoundException: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar“ geführt hat.
+* Korrektur des Fehlers, der unter bestimmten Racebedingungen zu vorübergehenden Fehlern vom Typ „Microsoft.Azure.Documents.NotFoundException: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar“ geführt hat (bei Verwendung der Sitzungskonsistenzebene).
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -172,7 +187,7 @@ ms.locfileid: "52162805"
 * Es wurden Fehler behoben, um das SDK für automatische Failover unter bestimmten Bedingungen stabiler zu machen.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Behebung eines Problems, das bisweilen eine WebException verursacht: Der Remotename konnte nicht aufgelöst werden.
+* Korrektur eines Problems, das bisweilen eine WebException verursacht: Der Remotename konnte nicht aufgelöst werden.
 * Unterstützung zum direkten Lesen eines eingegebenen Dokuments durch Hinzufügen neuer Überladungen zur ReadDocumentAsync-API.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -217,7 +232,7 @@ ms.locfileid: "52162805"
 * Verschiedene Fehlerbehebungen im SDK.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Es wurde ein Problem behoben, dass die folgende Ausnahme vom Typ „Nicht gefunden“ („NotFoundException“) auslöste: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar. Diese Ausnahme trat in einigen Fällen bei Abfragen für die Leseregion eines geografisch verteilten Kontos auf.
+* Korrektur eines Problems, das die folgende Ausnahme vom Typ „Nicht gefunden“ („NotFoundException“) auslöste: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar. Diese Ausnahme trat in einigen Fällen bei Abfragen für die Leseregion eines geografisch verteilten Kontos auf.
 * Es wurde die ResponseStream-Eigenschaft in der ResourceResponse-Klasse verfügbar gemacht, die einen direkten Zugriff auf den zugrunde liegenden Datenstrom aus einer Antwort ermöglicht.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -225,7 +240,7 @@ ms.locfileid: "52162805"
 * Ein Problem wurde behoben, das einen falsch formatierten Partitionsschlüssel-Header verursacht hat, wenn für die Datenserialisierung ein benutzerdefiniertes JsonSerializerSettings-Objekt verwendet wird.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Es wurde ein Fehler behoben, der dazu führte, dass Abfragen mit langer Ausführungszeit mit folgendem Fehler abgebrochen wurden: Autorisierungstoken ist zum aktuellen Zeitpunkt ungültig.
+* Korrektur eines Fehlers, der dazu führte, dass Abfragen mit langer Ausführungszeit mit folgendem Fehler abgebrochen wurden: Autorisierungstoken ist zum aktuellen Zeitpunkt ungültig.
 * Es wurde ein Fehler behoben, durch den die ursprüngliche SqlParameterCollection aus partitionsübergreifenden top/order-by-Abfragen entfernt wurde.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -260,7 +275,7 @@ ms.locfileid: "52162805"
 * [Partitionierte Sammlungen](partition-data.md) und [benutzerdefinierte Leistungsstufen](performance-levels.md) implementiert. 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Behoben]** Die Abfrage des Azure Cosmos DB-Endpunkts löst Folgendes aus: „System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Stream“.
+* **[Korrigiert]** Die Abfrage des Azure Cosmos DB-Endpunkts löst Folgendes aus: „System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Stream“.
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Erweiterte LINQ-Unterstützung, einschließlich neuer Operatoren für Paging, bedingte Ausdrücke und Bereichsvergleiche.
@@ -335,6 +350,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |07. Dezember 2018 |--- |
 | [2.1.3](#2.1.3) |15. Oktober 2018 |--- |
 | [2.1.2](#2.1.2) |4. Oktober 2018 |--- |
 | [2.1.1](#2.1.1) |27. September 2018 |--- |

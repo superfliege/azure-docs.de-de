@@ -5,9 +5,8 @@ metakeywords: ''
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311057"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276673"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Verwenden der linearen Regression in Azure Machine Learning Studio
 > *Kate Baroni* und *Ben Boatman* sind Enterprise Solution Architects im Microsoft Data Insights Center of Excellence. In diesem Artikel beschreiben die beiden ihre Erfahrungen beim Migrieren einer vorhandenen Regressionsanalysesuite zu einer cloudbasierten Lösung mit Azure Machine Learning. 
@@ -31,7 +30,7 @@ ms.locfileid: "52311057"
 
 &nbsp; 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="goal"></a>Zielsetzung
 Unser Projekt begann zunächst mit zwei Zielsetzungen: 
@@ -73,7 +72,7 @@ Zunächst war das Excel-Modell dem Machine Learning Studio-Modell deutlich über
 Als wir unser Verfahren und die Ergebnisse den Entwicklern und Datenanalysten des Machine Learning-Teams zeigten, konnte man uns dort ein paar rasche Tipps geben. 
 
 * Bei Verwendung des Moduls [Linear Regression][linear-regression] in Machine Learning Studio werden zwei Methoden bereitgestellt:
-  * Online Gradient Descent: erscheint eher geeignet für umfangreichere Problemstellungen
+  * Online Gradient Descent: Erscheint eher geeignet für umfangreichere Problemstellungen.
   * Ordinary Least Squares: Diese Methode wird allgemein am häufigsten mit dem Stichwort lineare Regression assoziiert. Für kleine DataSets ist die "Ordinary Least Squares"-Methode möglicherweise besser geeignet.
 * Denken Sie an die Möglichkeit, den "L2 Regularization Weight"-Parameter anzupassen, um die Leistung zu verbessern. Standardmäßig ist er auf 0,001 eingestellt, aber für unser kleines Dataset haben wir durch Ändern des Werts auf 0,005 eine bessere Leistung erzielt. 
 
@@ -86,7 +85,7 @@ Als wir die Empfehlungen umgesetzt hatten, konnten wir in Machine Learning Studi
 | Lernender |Excel -> Data Analysis -> Regression |Lineare Regression |Linear Regression |
 | Lernmoduloptionen |N/V |Standardeinstellungen |Methode der kleinsten Quadrate<br />L2 = 0,005 |
 | Dataset |26 Zeilen, 3 Funktionen, 1 Bezeichnung Alle numerisch |identisch |identisch |
-| Split: trainieren |Excel mithilfe der ersten 18 Zeilen trainiert, mit den letzten 8 Zeilen getestet |identisch |identisch |
+| Split: Trainieren |Excel mithilfe der ersten 18 Zeilen trainiert, mit den letzten 8 Zeilen getestet |identisch |identisch |
 | Split: Test |Excels Regressionsformel auf die letzten 8 Zeilen angewendet |identisch |identisch |
 | **Leistung** | | | |
 | Adjusted R Square |0,96 |N/V | |
@@ -145,7 +144,7 @@ Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression:
 
 * Regression in Excel. Sie haben noch nie versucht, eine Regression in Excel durchzuführen? Dieses Tutorial vereinfacht sie: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
 * Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Ordinary Least Squares Linear Regression: Schwachstellen, Probleme und Stolperfallen. Einführung und Erläuterung der Regression: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Ordinary Least Squares Linear Regression: Unzulänglichkeiten, Probleme und Fallstricke. Einführung und Erläuterung der Regression: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

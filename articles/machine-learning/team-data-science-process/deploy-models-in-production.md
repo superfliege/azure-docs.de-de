@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Modellen in der Produktion – Azure Machine Learning | Microsoft-Dokumentation
+title: 'Bereitstellen von Modellen in der Produktion: Team Data Science-Prozess'
 description: Erfahren Sie, wie Sie Modelle in der Produktion bereitstellen, damit sie eine aktive Rolle bei geschäftlichen Entscheidungen spielen können.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5b1614f92f7633e008f4f7176723002dc7730b15
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 35f9f369e752fa7c86a6bd295a79b79b23104d23
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495971"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137870"
 ---
-# <a name="deploy-models-in-production"></a>Bereitstellen von Modellen in der Produktion
+# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Bereitstellen von Modellen in der Produktion, um eine aktive Rolle bei geschäftlichen Entscheidungen zu spielen
 
 Bei einer Produktionsbereitstellung kann ein Modell eine aktive Rolle in einem Unternehmen spielen. Vorhersagen aus einem bereitgestellten Modell können für Geschäftsentscheidungen verwendet werden.
 
