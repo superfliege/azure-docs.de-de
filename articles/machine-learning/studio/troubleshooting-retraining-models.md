@@ -4,9 +4,8 @@ description: Erfahren Sie, wie Sie häufige Probleme erkennen und beheben, die b
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0f12627e169af00f575347796d1f2e79fe1f6fa2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307201"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252778"
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning Studio-Webdiensts
 ## <a name="retraining-overview"></a>Erneutes Trainieren – Übersicht
@@ -41,8 +40,8 @@ Sie können anschließend den C#-Beispielcode von der API-Hilfeseite des Trainin
 
 Wenn alle Elemente vorhanden sind, können Sie diese Hauptschritte zu erneuten Trainieren des Modells ausführen:
 
-1. Aufrufen des Trainingswebdiensts: Hierbei wird der Stapelausführungsdienst (Batch Execution Service, BES) aufgerufen und nicht der Anforderung/Antwort-Dienst (Request Response Service, RRS). Sie können den C#-Beispielcode auf der API-Hilfeseite verwenden, um den Aufruf durchzuführen. 
-2. Suchen nach den Werten für *BaseLocation*, *RelativeLocation* und *SasBlobToken*: Diese Werte werden in der Ausgabe des Aufrufs des Trainingswebdiensts zurückgegeben. 
+1. Aufrufen des Trainingswebdiensts:  Hierbei wird nicht der Anforderung/Antwort-Dienst (Request Response Service, RRS) aufgerufen, sondern der Stapelausführungsdienst (Batch Execution Service, BES). Sie können den C#-Beispielcode auf der API-Hilfeseite verwenden, um den Aufruf durchzuführen. 
+2. Suchen Sie nach den Werten für *BaseLocation*, *RelativeLocation* und *SasBlobToken*: Diese Werte werden in der Ausgabe Ihres Aufrufs des Trainingswebdiensts zurückgegeben. 
    ![Ausgabe des Beispiels für das erneute Trainieren und Werte „BaseLocation“, „RelativeLocation“ und „SasBlobToken“][image6]
 3. Aktualisieren des hinzugefügten Endpunkts über den Bewertungswebdienst mit dem neuen trainierten Modell: Aktualisieren Sie mit dem Beispielcode aus „Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen“ den neuen Endpunkt, den Sie dem Bewertungsmodell mit dem neu trainierten Modell aus dem Trainingswebdienst hinzugefügt haben.
 
@@ -71,7 +70,7 @@ Gehen Sie wie folgt vor, um die richtige PATCH-URL abzurufen:
 7. Klicken Sie unter der **Patch**-URL auf **API-Hilfe**, um die Hilfeseite für das Patching zu öffnen.
 
 > [!NOTE]
-> Wenn Sie den Endpunkt nicht dem Vorhersagewebdienst, sondern dem Trainingswebdienst hinzugefügt haben, tritt beim Klicken auf den Link **Ressource aktualisieren** der folgende Fehler auf: „Sorry, but this feature is not supported or available in this context. This Web Service has no updatable resources. We apologize for the inconvenience and are working on improving this workflow.“ (Dieses Feature wird in diesem Kontext leider nicht unterstützt oder ist nicht verfügbar. Der Webdienst besitzt keine aktualisierbaren Ressourcen. Wir arbeiten bereits an einer Optimierung dieses Workflows.)
+> Falls Sie den Endpunkt nicht dem Vorhersagewebdienst, sondern dem Trainingswebdienst hinzugefügt haben, tritt beim Klicken auf den Link **Ressource aktualisieren** der folgende Fehler auf: „Sorry, but this feature is not supported or available in this context. This Web Service has no updatable resources. We apologize for the inconvenience and are working on improving this workflow.“ (Dieses Feature wird in diesem Kontext leider nicht unterstützt oder ist nicht verfügbar. Der Webdienst besitzt keine aktualisierbaren Ressourcen. Wir arbeiten bereits an einer Optimierung dieses Workflows.)
 > 
 > 
 

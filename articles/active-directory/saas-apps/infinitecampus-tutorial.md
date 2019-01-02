@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9f4adbacf2749e8c8ff2da8f331a007e8dcaaea3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632805"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Tutorial: Integration von Infinite Campus in Azure Active Directory
 
@@ -111,11 +111,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](common/editconfigure.png)
 
-5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** (Schritt **11.b**) verfügen:
+5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** (weiter mit Schritt **11.c**) verfügen:
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
-    ![image](common/b9_saml.png)
+        ![image](common/b9_saml.png)
 
     b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
 
@@ -128,9 +128,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     d. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein (die Domäne variiert je nach Hostingmodell): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
-    > Sie können die **Dienstanbieter-Metadatendatei** auf der Infinite Campus-Konfigurationsseite für den SSO-Dienstanbieter abrufen, die im weiteren Verlauf des Tutorials erläutert wird.
+    > Sie können die **Dienstanbieter-Metadatendatei** auf der Infinite Campus-Konfigurationsseite für den SSO-Dienstanbieter abrufen, die im weiteren Verlauf des Tutorials erläutert wird. Wenn Sie in Infinite Campus mit einer neuen SAML-Dienstanbieterkonfiguration beginnen, sollten Sie zu **Schritt 11** springen, um den Export der Dienstanbieter-Metadatendatei durchzuführen.
 
-6. Führen Sie die folgenden Schritte aus, wenn Sie keine **Dienstanbieter-Metadatendatei** haben:
+6. Führen Sie die folgenden Schritte aus, falls Sie keine **Dienstanbieter-Metadatendatei** haben (die Domäne variiert je nach Hostingmodell):
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`.
 
@@ -169,10 +169,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![SSO](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
     a. Wählen Sie **Enable SAML Single Sign On** (Einmaliges Anmelden per SAML aktivieren) aus.
+    
+    b. Wählen Sie im Bereich **Select an option to retrieve Identity Provider (IDP) server data** (Option zum Abrufen von IDP-Dienstanbieterdaten auswählen) die Option **Metadata URL** (Metadaten-URL), fügen Sie die **Verbundmetadaten-URL der App** in das Feld ein, und klicken Sie auf **Sync** (Synchronisieren).
 
-    b. Klicken Sie auf den Link **Service Provider Metadata** (Metadaten des Dienstanbieters), um die Datei mit den **Metadaten des Dienstanbieters** auf Ihrem Computer zu speichern. Laden Sie die Datei im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** hoch, damit die Werte **Bezeichner** und **Antwort-URL** automatisch aufgefüllt werden (siehe Schritt 5).
-
-    c. Wählen Sie im Bereich **Select an option to retrieve Identity Provider (IDP) server data** (Option zum Abrufen von IDP-Dienstanbieterdaten auswählen) die Option **Metadata URL** (Metadaten-URL) aus, fügen Sie die **Verbundmetadaten-URL der App** in das Textfeld ein, und klicken Sie auf **Sync** (Synchronisieren).
+    c. Klicken Sie auf den Link **Service Provider Metadata** (Metadaten des Dienstanbieters), um die Datei mit den **Metadaten des Dienstanbieters** auf Ihrem Computer zu speichern. Laden Sie die Datei im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** hoch, damit die Werte **Bezeichner** und **Antwort-URL** automatisch eingefügt werden (Schritt 4: Upload und automatisches Einfügen von Werten, Schritt 5: Manuelle Eingabe).
 
     d. Nach dem Klicken auf **Sync** (Synchronisieren) werden die Werte auf der Seite **SSO Service Provider Configuration** (SSO-Dienstanbieterkonfiguration) automatisch aufgefüllt.
 
