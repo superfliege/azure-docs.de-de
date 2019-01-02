@@ -10,17 +10,15 @@ ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 5e19c7c1ed15183fdb796a6fa4e537da946b40b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637335"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194231"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway
 In diesem Dokument wird beschrieben, wie Sie die Kommunikation mit Azure Automation und Log Analytics über das Log Analytics-Gateway konfigurieren, wenn direkt verbundene oder durch Operations Manager überwachte Computer nicht über Internetzugriff verfügen.  Das Log Analytics-Gateway ist ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, und kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  
@@ -82,15 +80,15 @@ Das Log Analytics-Gateway ist in folgenden Sprachen verfügbar:
 - Spanisch (international)
 
 ### <a name="supported-encryption-protocols"></a>Unterstützte Verschlüsselungsprotokolle
-Das Log Analytics-Gateway unterstützt nur Transport Layer Security (TLS) 1.0, 1.1 und 1.2.  Secure Sockets Layer (SSL) wird nicht unterstützt.  Um die Sicherheit von Daten bei der Übertragung an Log Analytics sicherzustellen, wird dringend empfohlen, das Gateway so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../../log-analytics/log-analytics-data-security.md#sending-data-securely-using-tls-12). 
+Das Log Analytics-Gateway unterstützt nur Transport Layer Security (TLS) 1.0, 1.1 und 1.2.  Secure Sockets Layer (SSL) wird nicht unterstützt.  Um die Sicherheit von Daten bei der Übertragung an Log Analytics sicherzustellen, wird dringend empfohlen, das Gateway so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Unterstützte Anzahl von Agent-Verbindungen
 Die folgende Tabelle zeigt die unterstützte Anzahl der Agents, die mit einem Gatewayserver kommunizieren können.  Diese Unterstützung basiert auf Agents, die alle 6 Sekunden ungefähr 200 KB Daten hochladen. Die Datenmenge pro getestetem Agent beträgt etwa 2,7 GB pro Tag.
 
 |Gateway |Ungefähre Anzahl unterstützter Agents|  
 |--------|----------------------------------|  
-|- CPU: Intel XEON CPU E5-2660 v3 \@ 2,6 GHz, 2 Kerne<br> - Arbeitsspeicher: 4 GB<br> - Netzwerkbandbreite: 1 GBit/s| 600|  
-|- CPU: Intel XEON CPU E5-2660 v3 \@ 2,6 GHz, 4 Kerne<br> - Arbeitsspeicher: 8 GB<br> - Netzwerkbandbreite: 1 GBit/s| 1000|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2,6 GHz, 2 Kerne<br> - Arbeitsspeicher: 4 GB<br> - Netzwerkbandbreite: 1 GBit/s| 600|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2,6 GHz, 4 Kerne<br> - Arbeitsspeicher: 8 GB<br> - Netzwerkbandbreite: 1 GBit/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Herunterladen des Log Analytics-Gateways
 
@@ -142,7 +140,7 @@ Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clu
 Im folgenden Abschnitt erfahren Sie, wie Sie direkt verbundene Log Analytics-Agents, eine Operations Manager-Verwaltungsgruppe oder Azure Automation Hybrid Runbook Worker mit dem Log Analytics-Gateway konfigurieren, um die Kommunikation mit Azure Automation und Log Analytics zu ermöglichen.  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>Konfigurieren eines eigenständigen Log Analytics-Agents
-Informationen zu den Anforderungen und Schritten zum Installieren des Log Analytics-Agents auf Windows-Computern mit Log Analytics-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](agent-windows.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden von Linux-Computern mit Log Analytics](../../log-analytics/log-analytics-quick-collect-linux-computer.md). Statt einen Proxyserver bei der Konfiguration des Agents anzugeben, ersetzen Sie diesen Wert durch die IP-Adresse und die Portnummer des Log Analytics-Gatewayservers.  Wenn Sie mehrere Gatewayserver hinter einem Netzwerklastenausgleich bereitgestellt haben, handelt es sich bei der Log Analytics-Agent-Proxykonfiguration um die virtuelle IP-Adresse des NLB.  
+Informationen zu den Anforderungen und Schritten zum Installieren des Log Analytics-Agents auf Windows-Computern mit Log Analytics-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](agent-windows.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden von Linux-Computern mit Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Statt einen Proxyserver bei der Konfiguration des Agents anzugeben, ersetzen Sie diesen Wert durch die IP-Adresse und die Portnummer des Log Analytics-Gatewayservers.  Wenn Sie mehrere Gatewayserver hinter einem Netzwerklastenausgleich bereitgestellt haben, handelt es sich bei der Log Analytics-Agent-Proxykonfiguration um die virtuelle IP-Adresse des NLB.  
 
 Informationen zum Automation Hybrid Runbook Worker finden Sie unter [Bereitstellen von Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).
 

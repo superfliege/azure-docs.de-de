@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3326ef4bba5649f5420c1d92b6117d44edba47b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 41c8315bab1b716f79b47afb77c6d371a757691d
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281981"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386428"
 ---
-# <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
+# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
-HDInsight-Cluster stellen zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Hadoop-Diensten und -Aufträgen zu verbessern.
+HDInsight-Cluster stellen zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Apache Hadoop-Diensten und -Aufträgen zu verbessern.
 
 Hadoop erzielt Hochverfügbarkeit und Zuverlässigkeit durch das Replizieren von Diensten und Daten über mehrere Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert. HDInsight bietet zwei Hauptknoten, um die Verfügbarkeit und Zuverlässigkeit von Hadoop zu verbessern.
 
@@ -29,23 +29,23 @@ Hadoop erzielt Hochverfügbarkeit und Zuverlässigkeit durch das Replizieren von
 
 Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden. 
 
-> [!NOTE]
+> [!NOTE]  
 > Es werden nicht alle Knotentypen für alle Clustertypen verwendet. Ein Hadoop-Cluster weist z.B. keine Nimbusknoten auf. Weitere Informationen zu den von den HDInsight-Clustertypen verwendeten Knoten finden Sie im Dokument [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) im Abschnitt „Clustertypen“.
 
 ### <a name="head-nodes"></a>Hauptknoten
 
-Zum Sicherstellen der Hochverfügbarkeit von Hadoop-Diensten stellt HDInsight zwei Hauptknoten bereit. Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des HDInsight-Clusters ausgeführt. Einige Dienste wie HDFS oder YARN sind jeweils nur auf einem Hauptknoten „aktiv“. Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
+Zum Sicherstellen der Hochverfügbarkeit von Hadoop-Diensten stellt HDInsight zwei Hauptknoten bereit. Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des HDInsight-Clusters ausgeführt. Einige Dienste wie Apache HDFS oder Apache Hadoop YARN sind jeweils nur auf einem Hauptknoten „aktiv“. Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
 
 Hauptknoten (und andere Knoten in HDInsight) verfügen über numerische Werte als Teil des Hostnamens des Knotens. Beispiel: `hn0-CLUSTERNAME` oder `hn4-CLUSTERNAME`.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Leiten Sie vom numerischen Wert nicht ab, ob ein Knoten primär oder sekundär ist. Der numerische Wert soll nur sicherstellen, dass jeder Knoten einen eindeutigen Namen hat.
 
 ### <a name="nimbus-nodes"></a>Nimbusknoten
 
-Nimbusknoten sind in Storm-Clustern verfügbar. Die Nimbusknoten stellen die gleiche Funktionalität für den Hadoop JobTracker bereit, indem sie die Verarbeitung auf Workerknoten verteilen und überwachen. HDInsight stellt zwei Nimbusknoten für Storm-Cluster zur Verfügung.
+Nimbusknoten sind in Apache Storm-Clustern verfügbar. Die Nimbusknoten stellen die gleiche Funktionalität für den Hadoop JobTracker bereit, indem sie die Verarbeitung auf Workerknoten verteilen und überwachen. HDInsight stellt zwei Nimbusknoten für Storm-Cluster zur Verfügung.
 
-### <a name="zookeeper-nodes"></a>Zookeeper-Knoten
+### <a name="apache-zookeeper-nodes"></a>Apache ZooKeeper-Knoten
 
 [ZooKeeper](http://zookeeper.apache.org/)-Knoten werden für die Auswahl der übergeordneten Dienste auf Hauptknoten verwendet. Sie werden auch verwendet, um sicherzustellen, dass die Dienste, Datenknoten (Worker) und Gateways wissen, auf welchem Hauptknoten ein übergeordneter Dienst aktiv ist. Standardmäßig stellt HDInsight drei ZooKeeper-Knoten bereit.
 
@@ -63,7 +63,7 @@ Informationen zur Verwendung eines Edgeknotens mit anderen Clustertypen finden S
 
 ## <a name="accessing-the-nodes"></a>Zugreifen auf die Knoten
 
-Zugriff auf den Cluster über das Internet ist über ein öffentliches Gateway möglich. Der Zugriff ist auf das Herstellen einer Verbindung mit den Hauptknoten und (falls vorhanden) dem Edgeknoten beschränkt. Der Zugriff auf Dienste, die auf den Hauptknoten ausgeführt werden, wird durch das Vorhandensein mehrerer Hauptknoten nicht beeinflusst. Das öffentliche Gateway leitet Anforderungen an den Hauptknoten, der den angeforderten Dienst hostet. Ein Beispiel: Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
+Zugriff auf den Cluster über das Internet ist über ein öffentliches Gateway möglich. Der Zugriff ist auf das Herstellen einer Verbindung mit den Hauptknoten und (falls vorhanden) dem Edgeknoten beschränkt. Der Zugriff auf Dienste, die auf den Hauptknoten ausgeführt werden, wird durch das Vorhandensein mehrerer Hauptknoten nicht beeinflusst. Das öffentliche Gateway leitet Anforderungen an den Hauptknoten, der den angeforderten Dienst hostet. Ein Beispiel: Apache Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
 
 Der Zugriff über das öffentliche Gateway ist auf die Ports 443 (HTTPS), 22 und 23 beschränkt.
 
@@ -79,7 +79,7 @@ Weitere Informationen zur Verwendung von SSH finden Sie im Dokument [Herstellen 
 
 Knoten in einem HDInsight-Cluster besitzen eine interne IP-Adresse und einen internen FQDN, auf die nur über den Cluster zugegriffen werden kann. Wenn Sie mit dem internen FQDN oder der internen IP-Adresse auf Dienste im Cluster zugreifen, sollten Sie die zu verwendende IP-Adresse oder den FQDN mithilfe von Ambari überprüfen.
 
-Der Oozie-Dienst kann z. B. nur auf einem Hauptknoten ausgeführt werden, und zur Verwendung des `oozie`-Befehls in einer SSH-Sitzung ist die URL des Diensts erforderlich. Diese URL kann mit dem folgenden Befehl aus Ambari abgerufen werden:
+Der Apache Oozie-Dienst kann z. B. nur auf einem Hauptknoten ausgeführt werden, und zur Verwendung des `oozie`-Befehls in einer SSH-Sitzung ist die URL des Diensts erforderlich. Diese URL kann mit dem folgenden Befehl aus Ambari abgerufen werden:
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
@@ -87,7 +87,7 @@ Dieser Befehl gibt einen dem folgenden Befehl ähnelnden Wert zurück, der die m
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
+Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 ### <a name="accessing-other-node-types"></a>Zugreifen auf andere Knotentypen
 
@@ -97,7 +97,7 @@ Mit den folgenden Methoden können Sie eine Verbindung mit Knoten herstellen, au
 
 * **SSH-Tunnel**: Wenn Sie auf einen Webdienst zugreifen müssen, der auf einem der nicht direkt mit dem Internet verbundenen Knoten gehostet wird, müssen Sie einen SSH-Tunnel verwenden. Weitere Informationen finden Sie im Dokument [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
 
-* **Virtuelles Azure-Netzwerk**: Wenn Ihr HDInsight-Cluster zu einem virtuellen Azure-Netzwerk gehört, können alle Ressourcen in diesem virtuellen Netzwerk direkt auf alle Knoten im Cluster zugreifen. Weitere Informationen finden Sie im Dokument [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
+* **Azure Virtual Network**: Wenn Ihr HDInsight-Cluster zu einem Azure Virtual Network gehört, können alle Ressourcen in diesem virtuellen Netzwerk direkt auf alle Knoten im Cluster zugreifen. Weitere Informationen finden Sie im Dokument [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
 ## <a name="how-to-check-on-a-service-status"></a>Überprüfen eines Dienststatus
 
@@ -121,7 +121,7 @@ Wenn Sie auf den Link für einen der Hauptknoten klicken, werden die auf diesem 
 
 ![Komponentenstatus](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
+Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
 ### <a name="ambari-rest-api"></a>Ambari-REST-API
 
@@ -158,7 +158,7 @@ Falls Sie nicht wissen, welche Dienste auf dem Cluster installiert sind, können
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
+Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 #### <a name="service-components"></a>Dienstkomponenten
 
@@ -191,12 +191,12 @@ Wenn die Verbindung hergestellt ist, wird Ihnen eine `sftp>`-Eingabeaufforderung
 
 Um eine Liste aller verfügbaren Befehle zu erhalten, geben Sie an der `sftp>`-Eingabeaufforderung den Befehlt `help` ein.
 
-> [!NOTE]
+> [!NOTE]  
 > Es gibt auch grafische Benutzeroberflächen, mit denen Sie das Dateisystem visuell anzeigen können, wenn eine Verbindung über SFTP hergestellt wurde. [MobaXTerm](http://mobaxterm.mobatek.net/) z. B. ermöglicht das Durchsuchen des Dateisystems in einer Benutzeroberfläche ähnlich Windows Explorer.
 
 ### <a name="ambari"></a>Ambari
 
-> [!NOTE]
+> [!NOTE]  
 > Um mit Ambari auf die Protokolldateien zuzugreifen, verwenden Sie einen SSH-Tunnel. Die Webschnittstellen für die einzelnen Dienste sind nicht im Internet veröffentlicht. Informationen zum Verwenden eines SSH-Tunnels finden Sie im Artikel [Verwenden von SSH-Tunneling](hdinsight-linux-ambari-ssh-tunnel.md).
 
 Wählen Sie auf der Ambari-Webbenutzeroberfläche den Dienst, für den Sie Protokolle anzeigen möchten (z.B. YARN). Wählen Sie dann mit **Quick Links** den Hauptknoten aus, dessen Protokolle Sie anzeigen möchten.
@@ -213,18 +213,18 @@ Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die fo
 
     ![Screenshot des Assistenten zur Clustererstellung mit der Auswahl der Knotengröße](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Klassische Azure CLI**: Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Befehls `azure hdinsight cluster create` mit den Parametern `--headNodeSize`, `--workerNodeSize` und `--zookeeperNodeSize` angegeben werden.
+* **Klassische Azure-Befehlszeilenschnittstelle**: Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Befehls `azure hdinsight cluster create` mit den Parametern `--headNodeSize`, `--workerNodeSize` und `--zookeeperNodeSize` festgelegt werden.
 
-* **Azure PowerShell**: Die Größe der Haupt-, Worker- und Zookeeper-Knoten kann bei Verwendung des Cmdlets `New-AzureRmHDInsightCluster` mit den Parametern `-HeadNodeVMSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` angegeben werden.
+* **Azure PowerShell:** Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Cmdlets `New-AzureRmHDInsightCluster` mit den Parametern `-HeadNodeVMSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` festgelegt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Über die folgenden Links erhalten Sie weiterführende Informationen.
 
-* [Ambari-REST-Referenz](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+* [Apache Ambari-REST-Referenz](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Installieren der klassischen Azure CLI](../cli-install-nodejs.md)
 * [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
-* [Verwalten von HDInsight mit Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Verwalten von HDInsight mit Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Bereitstellen Linux-basierter HDInsight-Cluster](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/

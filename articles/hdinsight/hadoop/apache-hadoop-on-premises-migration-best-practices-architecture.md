@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008180"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434003"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für die Architektur
 
@@ -57,7 +57,7 @@ HDInsight-Cluster werden möglicherweise über lange Zeiträume nicht verwendet.
 
 Wenn Sie einen Cluster löschen, werden das zugeordnete Speicherkonto und externe Metadaten nicht entfernt. Der Cluster kann später mit den gleichen Speicherkonten und Metastores neu erstellt werden.
 
-Mit Azure Data Factory kann die Erstellung bedarfsgesteuerter HDInsight-Cluster geplant werden. Weitere Informationen finden Sie im Artikel [Erstellen bedarfsgesteuerter Hadoop-Cluster in HDInsight mit Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
+Mit Azure Data Factory kann die Erstellung bedarfsgesteuerter HDInsight-Cluster geplant werden. Weitere Informationen finden Sie im Artikel [Erstellen bedarfsgesteuerter Apache Hadoop-Cluster in HDInsight mit Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
 ## <a name="decouple-storage-from-compute"></a>Entkoppeln von Speicher und Compute
 
@@ -68,20 +68,22 @@ Bei HDInsight-Clustern muss der Speicher nicht mit Compute am gleichen Ort vorha
 - Datenfreigabe zwischen Clustern
 - Verwendung kurzlebiger Cluster, da die Daten nicht vom Cluster abhängig sind
 - Reduzierte Speicherkosten
-- Separates Skalieren von Speichers und Compute
+- Separates Skalieren von Speicher und Compute
 - Regionsübergreifende Datenreplikation
 
 Computecluster werden in der Nähe von Speicherkontoressourcen in einer Azure-Region erstellt, um den Leistungsaufwand bei einer Trennung von Computer und Speicher zu verringern. Durch Hochgeschwindigkeitsnetzwerke können Computeknoten effizient auf die Daten im Azure-Speicher zugreifen.
 
 ## <a name="use-external-metadata-stores"></a>Verwenden von externen Metadatenspeichern
 
-Es gibt zwei wichtige Metastores, die mit HDInsight-Clustern verwendet werden können: Hive-Metastore und Oozie-Metastore. Der Hive-Metastore ist das zentrale Schemarepository, das von Datenverarbeitungsmodulen verwendet werden kann. Dazu gehören Hadoop, Spark, LLAP, Presto und Pig. Im Oozie-Metastore werden Details zur Zeitplanung sowie der Status von laufenden und abgeschlossenen Hadoop-Aufträgen gespeichert.
+
+Es gibt zwei wichtige Metastores, die mit HDInsight-Clustern verwendet werden können: [Apache Hive](https://hive.apache.org/) und [Apache Oozie](https://oozie.apache.org/). Der Hive-Metastore ist das zentrale Schemarepository, das von Datenverarbeitungsmodulen verwendet werden kann. Dazu gehören Hadoop, Spark, LLAP, Presto und Apache Pig. Im Oozie-Metastore werden Details zur Zeitplanung sowie der Status von laufenden und abgeschlossenen Hadoop-Aufträgen gespeichert.
+
 
 HDInsight verwendet Azure SQL-Datenbank für Hive- und Oozie-Metastores. Ein Metastore kann in HDInsight-Clustern auf zwei Arten eingerichtet werden:
 
 1. Standardmetastore
 
-    - Keine zusätzlichen Kosten
+    - Keine zusätzlichen Kosten.
     - Metastore wird gelöscht, wenn der Cluster gelöscht wird
     - Metastore kann nicht für verschiedene Cluster freigegeben werden
     - Verwendet die Azure SQL-Basisdatenbank, die auf fünf DTUs begrenzt ist
@@ -106,7 +108,7 @@ Es folgen einige bewährte Methoden für den Hive-Metastore in HDInsight:
 - Überwachen Sie den Metastore in Hinsicht auf Leistung und Verfügbarkeit. Verwenden Sie dazu Überwachungstools für die Azure SQL-Datenbank, z.B. das Azure-Portal oder Azure Log Analytics.
 - Führen Sie den Befehl **ANALYZE TABLE** nach Bedarf aus, um Statistiken für Tabellen und Spalten zu generieren. Beispiel: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
-## <a name="best-practices-for-different-types-of-workloads"></a>Bewährte Methoden für verschiedene Arten von Workloads
+## <a name="best-practices-for-different-workloads"></a>Bewährte Methoden für verschiedene Workloads
 
 - Verwenden Sie ggf. einen LLAP-Cluster für interaktive Hive-Abfragen mit verbesserter Antwortzeit. [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)  ist ein neues Feature in Hive 2.0, das ein speicherinternes Caching von Abfragen ermöglicht. LLAP macht Hive-Abfragen deutlich schneller –  [in einigen Fällen 26-mal schneller als Hive 1.x](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Ziehen Sie die Verwendung von Spark-Aufträgen anstelle von Hive-Aufträgen in Betracht.

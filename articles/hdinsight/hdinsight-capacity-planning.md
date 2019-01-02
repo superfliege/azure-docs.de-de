@@ -2,19 +2,19 @@
 title: Clusterkapazitätsplanung in Azure HDInsight
 description: Erfahren Sie, wie Sie Kapazität und Leistung eines HDInsight-Clusters angeben.
 services: hdinsight
-author: maxluk
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/22/2017
-ms.author: maxluk
-ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/04/2018
+ms.author: hrasheed
+ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499109"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193857"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -32,7 +32,7 @@ Die wichtigsten Fragen zur Kapazitätsplanung sind:
 
 Die Azure-Region bestimmt, wo Ihr Cluster physisch bereitgestellt wird. Um die Latenz der Lese- und Schreibvorgänge zu minimieren, sollte der Cluster sich in der Nähe Ihrer Daten befinden.
 
-HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region finden Sie unter dem Eintrag *HDInsight unter Linux* unter *Daten und Analysen* in [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region finden Sie unter dem Eintrag *HDInsight* unter *Analysen* in [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
 ## <a name="choose-storage-location-and-size"></a>Auswahl von Speicherort und -größe
 
@@ -97,17 +97,37 @@ Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Clu
 
 Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen auftreten und Komponenten auf einem Cluster mit mehreren Knoten reduzieren. Um das Problem zu isolieren, versuchen Sie, verteilte Tests durchzuführen, indem Sie gleichzeitig mehrere Aufträge auf einem Cluster mit einem einzelnen Knoten ausführen und diesen Ansatz dann zur gleichzeitigen Ausführung mehrerer Aufträge auf Clustern mit mehreren Knoten erweitern. Um einen Einzelknoten-HDInsight-Cluster in Azure zu erstellen, verwenden Sie die Option *erweitert*.
 
-Sie können auch eine Einzelknoten-Entwicklungsumgebung auf dem lokalen Computer installieren und die Lösung dort testen. Hortonworks bietet für Hadoop-basierten Lösungen eine für anfängliche Entwicklung, Proof of Concept und Testen hilfreiche lokale Einzelknoten-Entwicklungsumgebung. Weitere Informationen finden Sie unter [Starten Sie mit Hortonworks Sandbox](http://hortonworks.com/products/hortonworks-sandbox/).
+Sie können auch eine Einzelknoten-Entwicklungsumgebung auf dem lokalen Computer installieren und die Lösung dort testen. Hortonworks bietet für Hadoop-basierten Lösungen eine für anfängliche Entwicklung, Proof of Concept und Testen hilfreiche lokale Einzelknoten-Entwicklungsumgebung. Weitere Informationen finden Sie unter [Starten Sie mit Hortonworks Sandbox](https://hortonworks.com/products/hortonworks-sandbox/).
 
 Um das Problem auf einem lokalen Cluster mit einzelnem Knoten zu identifizieren, können Sie fehlgeschlagene Aufträge erneut ausführen und die Eingabedaten anpassen bzw. kleinere Datasets verwenden. Die Ausführung dieser Aufträge hängt von Plattform und Anwendungstyp ab.
 
 ## <a name="quotas"></a>Kontingente
 
-Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten horizontal hochskalieren. Am häufigsten wird die Grenze des CPU-Kernekontingents erreicht, das auf Abonnement-, Regions- und VM-Serienebene vorliegt. Beispielsweise kann Ihr Abonnement eine Höchstgrenze von 200 Kernen mit maximal 30 Kernen in Ihrer Region und maximal 30 Kernen auf VM-Instanzen aufweisen. Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten horizontal hochskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen. Wenn Sie eine Kontingenterhöhung anfordern müssen, gehen Sie wie folgt vor:
+
+1. Navigieren Sie zum Azure-Portal.
+1. Klicken Sie unten links auf der Seite auf **Hilfe und Support**.
+1. Klicken Sie auf **Neue Supportanfrage**.
+1. Wählen Sie auf der Seite **Neue Supportanfrage** unter der Registerkarte **Grundlagen** die folgenden Optionen aus:
+    - **Problemtyp**: **Grenzwerte für Dienste und Abonnements (Kontingente)**
+    - **Abonnement**: Das zu ändernde Abonnement.
+    - **Kontingenttyp**: **HDInsight**
+    
+    ![Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+
+1. Klicken Sie auf **Weiter**.
+1. Geben Sie auf der Seite **Details** eine Beschreibung des Problems ein, wählen Sie den Schweregrad des Problems und dann Ihre bevorzugte Kontaktmethode aus.
+1. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
+1. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.
+
+> [!Note]
+> Wenn Sie das HDInsight-Kernkontingent in einer privaten Region erhöhen müssen, [senden Sie eine Whitelist-Anforderung](https://aka.ms/canaryintwhitelist).
+
+Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes Azure-Abonnement höchstens 10.000 Kerne haben. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md): Erfahren Sie, wie Sie Cluster in HDInsight mit Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, ML Services oder Storm einrichten und konfigurieren.
-* [Monitor cluster performance](hdinsight-key-scenarios-to-monitor.md) (Überwachen der Leistung des Clusters): Lernen Sie wichtige Szenarien zur Überwachung des HDInsight-Clusters kennen, die sich auf die Kapazität des Clusters auswirken können.
+* [Überwachen der Clusterleistung](hdinsight-key-scenarios-to-monitor.md): Lernen Sie wichtige Szenarien zur Überwachung des HDInsight-Clusters kennen, die sich auf die Kapazität des Clusters auswirken können.

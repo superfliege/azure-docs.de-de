@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: b2adb2e69475b79324cad2d11a420cbefdf8b059
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a938e5d872d2c1602f7ce898f0d14e3e04feb759
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514484"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312561"
 ---
 # <a name="get-started-with-device-twins-java"></a>Erste Schritte mit Gerätezwillingen (Java)
 
@@ -228,7 +228,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die einen gemeldeten E
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.32</version>
+      <version>1.14.2</version>
     </dependency>
     ```
 
@@ -278,6 +278,17 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die einen gemeldeten E
 
     Diese Beispiel-App verwendet beim Instanziieren eines **DeviceClient**-Objekts die **protocol**-Variable. 
 
+1. Fügen Sie die der **App**-Klasse folgende Methode hinzu, um Informationen zu Zwillingsupdates zu drucken:
+
+    ```java
+    protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
+        @Override
+        public void execute(IotHubStatusCode status, Object context) {
+          System.out.println("IoT Hub responded to device twin operation with status " + status.name());
+        }
+      }
+    ```
+
 9. Fügen Sie den folgenden Code der **main**-Methode hinzu:
     * Erstellen Sie einen Geräteclient zur Kommunikation mit IoT Hub.
     * Erstellen Sie ein **Device**-Objekt, das die Gerätezwillingseigenschaften speichert.
@@ -310,7 +321,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die einen gemeldeten E
     catch (Exception e) {
       System.out.println("On exception, shutting down \n" + " Cause: " + e.getCause() + " \n" + e.getMessage());
       dataCollector.clean();
-      client.close();
+      client.closeNow();
       System.out.println("Shutting down...");
     }
     ```
@@ -327,7 +338,13 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die einen gemeldeten E
     client.close();
     ```
 
-12. Speichern und schließen Sie die `simulated-device\src\main\java\com\mycompany\app\App.java`-Datei.
+1. Ändern Sie die Signatur der **main** -Methode, um die Ausnahmen wie folgt einzufügen:
+
+    ```java
+    public static void main(String[] args) throws URISyntaxException, IOException
+    ```
+
+1. Speichern und schließen Sie die `simulated-device\src\main\java\com\mycompany\app\App.java`-Datei.
 
 13. Erstellen Sie die App **simulated-device**, und korrigieren Sie etwaige Fehler. Navigieren Sie an der Eingabeaufforderung zum `simulated-device`-Ordner, und führen Sie den folgenden Befehl aus:
 

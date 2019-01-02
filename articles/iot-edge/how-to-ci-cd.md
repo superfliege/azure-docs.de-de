@@ -1,47 +1,46 @@
 ---
-title: Continuous Integration und Continuous Deployment für Azure IoT Edge | Microsoft-Dokumentation
-description: Übersicht über Continuous Integration und Continuous Deployment für Azure IoT Edge
+title: Continuous Integration und Continuous Deployment – Azure IoT Edge | Microsoft-Dokumentation
+description: Einrichten von Continuous Integration und Continuous Deployment – Azure IoT Edge mit Azure DevOp, Azure Pipelines
 author: shizn
-manager: ''
+manager: philmea
 ms.author: xshi
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16dac996f871241b8c9b5e4c1b797d07d79aeb79
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.custom: seodec18
+ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632561"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386824"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge
 
-Sie können DevOps mit den integrierten Azure IoT Edge-Aufgaben in Azure Pipelines oder dem [Azure IoT Edge-Plug-In für Jenkins](https://plugins.jenkins.io/azure-iot-edge) auf Ihrem Jenkins-Server ganz einfach in Ihren Azure IoT Edge-Anwendungen übernehmen. In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Azure Pipelines und Azure DevOps Server zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge verwenden können. 
+Sie können DevOps mit den integrierten Azure IoT Edge-Aufgaben in Azure Pipelines oder dem [Azure IoT Edge-Plug-In für Jenkins](https://plugins.jenkins.io/azure-iot-edge) auf Ihrem Jenkins-Server ganz einfach in Ihren Azure IoT Edge-Anwendungen übernehmen. In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Azure Pipelines zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge verwenden können. 
 
 In diesem Artikel wird Folgendes behandelt:
 * Erstellen und Einchecken einer IoT Edge-Beispielprojektmappe
 * Konfigurieren von Continuous Integration (CI) zum Erstellen der Projektmappe
 * Konfigurieren von Continuous Deployment (CD) zum Bereitstellen der Projektmappe und Anzeigen von Antworten
 
-Das Ausführen der Schritte in diesem Artikel dauert ca. 20 Minuten.
-
-![CI und CD](./media/how-to-ci-cd/cd.png)
+![Diagramm – CI- und CD-Branches für Entwicklung und Produktion](./media/how-to-ci-cd/cd.png)
 
 
 ## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Erstellen einer Azure IoT Edge-Beispielprojektmappe mit Visual Studio Code
 
-In diesem Abschnitt erstellen Sie eine IoT Edge-Beispielprojektmappe mit Komponententests, die als Teil des Buildprozesses ausgeführt werden können. Führen Sie die Schritte unter [Entwickeln einer IoT Edge-Projektmappe mit mehreren Modulen in Visual Studio Code](tutorial-multiple-modules-in-vscode.md) aus, bevor Sie die Anleitung in diesem Abschnitt befolgen.
+In diesem Abschnitt erstellen Sie eine IoT Edge-Beispielprojektmappe mit Komponententests, die als Teil des Buildprozesses ausgeführt werden können. Führen Sie die Schritte unter [Entwickeln einer IoT Edge-Projektmappe mit mehreren Modulen in Visual Studio Code](how-to-develop-multiple-modules-vscode.md) aus, bevor Sie die Anleitung in diesem Abschnitt befolgen.
 
-1. Geben Sie in der Befehlspalette von VS Code den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Wählen Sie dann Ihren Arbeitsbereichsordner aus, geben Sie den Namen der Projektmappe ein (der Standardname ist **EdgeSolution**), und erstellen Sie ein C#-Modul (**FilterModule**) als erstes Benutzermodul in dieser Projektmappe. Sie müssen außerdem das Docker-Image-Repository für Ihr erstes Modul angeben. Das Image-Standardrepository basiert auf einer lokalen Docker-Registrierung (`localhost:5000/filtermodule`). Ändern Sie es in Azure Container Registry (`<your container registry address>/filtermodule`) oder Docker Hub für die weitere Continuous Integration.
+1. Geben Sie in der Befehlspalette von VS Code den Befehl **Azure IoT Edge:  New IoT Edge solution** ein, und führen Sie ihn aus. Wählen Sie dann Ihren Arbeitsbereichsordner aus, geben Sie den Namen der Projektmappe ein (der Standardname ist **EdgeSolution**), und erstellen Sie ein C#-Modul (**FilterModule**) als erstes Benutzermodul in dieser Projektmappe. Sie müssen außerdem das Docker-Image-Repository für Ihr erstes Modul angeben. Das Image-Standardrepository basiert auf einer lokalen Docker-Registrierung (`localhost:5000/filtermodule`). Ändern Sie es in Azure Container Registry (`<your container registry address>/filtermodule`) oder Docker Hub für die weitere Continuous Integration.
 
-    ![Einrichten von ACR](./media/how-to-ci-cd/acr.png)
+    ![Einrichten der Azure Container Registry](./media/how-to-ci-cd/acr.png)
 
-2. Das VS Code-Fenster lädt den Arbeitsbereich für Ihre IoT Edge-Projektmappe. Sie können optional den Befehl **Azure IoT Edge: Add IoT Edge module** eingeben und ausführen, um weitere Module hinzuzufügen. Im Stammordner befinden sich ein Ordner `modules`, ein Ordner `.vscode` und eine Bereitstellungsmanifest-Vorlagendatei. Jeglicher Code von Benutzermodulen wird in Unterordnern des Ordners `modules` gespeichert. `deployment.template.json` ist die Vorlage für das Bereitstellungsmanifest. Einige der Parameter in dieser Datei werden durch Analyse von `module.json` gewonnen, die in jedem Modulordner vorhanden ist.
+2. Das VS Code-Fenster lädt den Arbeitsbereich für Ihre IoT Edge-Projektmappe. Sie können optional den Befehl **Azure IoT Edge:  Add IoT Edge module** eingeben und ausführen, um weitere Module hinzuzufügen. Im Stammordner befinden sich ein Ordner `modules`, ein Ordner `.vscode` und eine Bereitstellungsmanifest-Vorlagendatei. Jeglicher Code von Benutzermodulen wird in Unterordnern des Ordners `modules` gespeichert. `deployment.template.json` ist die Vorlage für das Bereitstellungsmanifest. Einige der Parameter in dieser Datei werden durch Analyse von `module.json` gewonnen, die in jedem Modulordner vorhanden ist.
 
 3. Nun ist Ihre IoT Edge-Beispielprojektmappe bereit. Das C#-Standardmodul fungiert als Nachrichten-Pipe-Modul. In der `deployment.template.json` können Sie sehen, dass diese Projektmappe zwei Module enthält. Die Nachricht wird vom `tempSensor`-Modul generiert, direkt über `FilterModule` weitergeleitet und dann an Ihren IoT-Hub gesendet.
 
-4. Speichern Sie diese Projekte, und checken Sie sie dann in Ihr Azure Repos- oder Azure DevOps Server-Repository ein.
+4. Speichern Sie diese Projekte, und committen Sie sie dann in Ihr Azure Repos.
     
 > [!NOTE]
 > Weitere Informationen zur Verwendung von Azure Repos finden Sie unter [Freigeben von Code mit Visual Studio und Azure-Repositorys](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
@@ -52,19 +51,19 @@ In diesem Abschnitt erstellen Sie eine Buildpipeline, die so konfiguriert ist, d
 
 1. Melden Sie sich bei Ihrer Azure DevOps-Organisation (**https://dev.azure.com/{your organization}/**) an, und öffnen Sie das Projekt, in das Sie die Beispiel-App eingecheckt haben.
 
-    ![Einchecken von Code](./media/how-to-ci-cd/init-project.png)
+    ![Einchecken von Code in Azure Pipelines](./media/how-to-ci-cd/init-project.png)
 
 1. Öffnen Sie in Azure Pipelines die Registerkarte **Builds**, und wählen Sie **+ Neue Pipeline** aus. Wenn Sie bereits über Buildpipelines verfügen, wählen Sie die Schaltfläche **+ Neu** aus. Wählen Sie dann **Neue Buildpipeline** aus.
 
-    ![Neue Pipeline](./media/how-to-ci-cd/add-new-build.png)
+    ![Erstellen einer neuen Buildpipeline](./media/how-to-ci-cd/add-new-build.png)
 
-1. Wählen Sie bei der entsprechenden Aufforderung **Azure DevOps Git** als Quelltyp aus. Wählen Sie dann das Projekt, das Repository und den Branch aus, in dem sich der Code befindet. Klicken Sie auf **Weiter**.
+1. Wählen Sie bei der entsprechenden Aufforderung „Azure Repos“ als Ihre Quelle aus. Wählen Sie dann das Projekt, das Repository und den Branch aus, in dem sich der Code befindet. Klicken Sie auf **Weiter**.
 
-    ![Auswählen von Git](./media/how-to-ci-cd/select-vsts-git.png)
+    ![Auswählen von Azure Repos Git](./media/how-to-ci-cd/select-vsts-git.png)
 
     Wählen Sie im Fenster **Vorlage auswählen** die Option zum **Starten mit einem leeren Prozess** aus.
 
-    ![Vorlage auswählen](./media/how-to-ci-cd/start-with-empty.png)
+    ![Starten mit einem leeren Prozess](./media/how-to-ci-cd/start-with-empty.png)
 
 1. Wählen Sie im Pipeline-Editor den Agent-Pool aus. 
     
@@ -72,27 +71,27 @@ In diesem Abschnitt erstellen Sie eine Buildpipeline, die so konfiguriert ist, d
     * Wenn Sie Ihre Module auf der Plattform amd64 für Windows-Container erstellen möchten, wählen Sie **Hosted VS2017** aus. 
     * Wenn Sie Ihre Module auf der Plattform arm32v7 für Linux-Container erstellen möchten, müssen Sie einen eigenen Build-Agent einrichten, indem Sie auf die Schaltfläche **Verwalten** klicken.
     
-    ![Konfigurieren des Build-Agents](./media/how-to-ci-cd/configure-env.png)
+    ![Konfigurieren des Build-Agent-Pools](./media/how-to-ci-cd/configure-env.png)
 
 1. Klicken Sie unter „Agent-Auftrag“ auf „+“, um in der Buildpipeline drei Aufgaben hinzuzufügen. Die ersten beiden stammen von **Azure IoT Edge**. Die dritte stammt von **Buildartefakte veröffentlichen**.
     
-    ![Hinzufügen von Aufgaben](./media/how-to-ci-cd/add-tasks.png)
+    ![Hinzufügen von Aufgaben zur Buildpipeline](./media/how-to-ci-cd/add-tasks.png)
 
 1. Ändern Sie in der ersten **Azure IoT Edge**-Aufgabe den **Anzeigenamen** in **Azure IoT Edge - Build module images** (Azure IoT Edge - Modulimages erstellen), und wählen Sie in der Dropdownliste **Aktion** den Eintrag **Build module images** (Modulimages erstellen) aus. Wählen Sie im Feld **.template.json file** (.template.json-Datei) die Datei **deployment.template.json** aus, die Ihre IoT Edge-Projektmappe beschreibt. Wählen Sie dann **Standardplattform** aus. Achten Sie darauf, dass Sie die gleiche Plattform wie für das IoT Edge-Gerät auswählen. Mit dieser Aufgabe werden alle Module in der Projektmappe mit der angegebenen Zielplattform erstellt. Generieren Sie auch die Datei **deployment.json**. Den Dateipfad finden Sie unter „Ausgabevariablen“. Legen Sie den Alias für diese Variable auf `edge` fest.
     
-    ![Erstellen und Pushen](./media/how-to-ci-cd/build-and-push.png)
+    ![Konfigurieren der Aufgabe zum Erstellen von Modulimages](./media/how-to-ci-cd/build-and-push.png)
 
 1. Ändern Sie in der zweiten **Azure IoT Edge**-Aufgabe den **Anzeigenamen** in **Azure IoT Edge – Push module images** (Azure IoT Edge – Modulimages übertragen), und wählen Sie in der Dropdownliste **Aktion** den Eintrag **Push module images** (Modulimages übertragen) aus. Wählen Sie den Containerregistrierungstyp aus, und stellen Sie sicher, dass Sie die gleiche Registrierung in Ihrem Code konfigurieren und auswählen („module.json“). Wählen Sie im Feld **.template.json file** (.template.json-Datei) die Datei **deployment.template.json** aus, die Ihre IoT Edge-Projektmappe beschreibt. Wählen Sie dann **Standardplattform** aus. Achten Sie darauf, dass Sie die gleiche Plattform wie für die erstellten Modulimages auswählen. Mit dieser Aufgabe werden alle Modulimages in die ausgewählte Containerregistrierung übertragen. Fügen Sie die Anmeldeinformationen für die Containerregistrierung auch in der Datei **deployment.json** ein. Den Dateipfad finden Sie unter „Ausgabevariablen“. Legen Sie den Alias für diese Variable auf `edge` fest. Wenn Sie die Modulimages in mehreren Containerregistrierungen hosten können, müssen Sie diese Aufgabe duplizieren. Wählen Sie eine andere Containerregistrierung aus, und verwenden Sie **Bypass module(s)** (Modul(e) umgehen) in den erweiterten Einstellungen, um die Images auszulassen, die nicht für diese spezifische Registrierung bestimmt sind.
 
-    ![Push](./media/how-to-ci-cd/push.png)
+    ![Konfigurieren der Aufgabe zum Übertragen von Modulimages per Push](./media/how-to-ci-cd/push.png)
 
 1. In der Aufgabe **Buildartefakte veröffentlichen** geben Sie die Bereitstellungsdatei an, die von der Buildaufgabe generiert wurde. Legen Sie **Pfad für Veröffentlichung** auf `$(edge.DEPLOYMENT_FILE_PATH)` fest.
 
-    ![Veröffentlichen eines Artefakts](./media/how-to-ci-cd/publish-build-artifacts.png)
+    ![Konfigurieren der Aufgaben zum Veröffentlichen von Artefakten](./media/how-to-ci-cd/publish-build-artifacts.png)
 
 1. Öffnen Sie die Registerkarte **Trigger**, und aktivieren Sie den Trigger **Continuous Integration**. Stellen Sie sicher, dass der Branch mit Ihrem Code enthalten ist.
 
-    ![Konfigurieren des Triggers](./media/how-to-ci-cd/configure-trigger.png)
+    ![Aktivieren des Continuous Integration-Triggers](./media/how-to-ci-cd/configure-trigger.png)
 
     Speichern Sie die neue Buildpipeline. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -100,7 +99,7 @@ In diesem Abschnitt erstellen Sie eine Buildpipeline, die so konfiguriert ist, d
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Konfigurieren von Azure Pipelines für Continuous Deployment
 In diesem Abschnitt erstellen Sie eine Releasepipeline, die so konfiguriert ist, dass sie beim Ablegen von Artefakten durch Ihre Buildpipeline automatisch ausgeführt wird und Erstellungsprotokolle in Azure Pipelines anzeigt.
 
-1. Wählen Sie auf der Registerkarte **Releases** die Option **+ Neue Pipeline** aus. Wenn Sie bereits über Releasepipelines verfügen, wählen Sie stattdessen die Schaltfläche **+ Neu** aus.  
+1. Wählen Sie auf der Registerkarte **Releases** die Option **+ Neue Pipeline** aus. Wenn Sie bereits über Releasepipelines verfügen, wählen Sie die Schaltfläche **+ Neu** aus, und klicken Sie auf **+ Neue Releasepipeline**.  
 
     ![Hinzufügen einer Releasepipeline](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -110,7 +109,7 @@ In diesem Abschnitt erstellen Sie eine Releasepipeline, die so konfiguriert ist,
 
 2. Die Releasepipeline wird dann mit einer Phase initialisiert: **Phase 1**. Benennen Sie die **Phase 1** in **QA** um, und behandeln Sie sie als Testumgebung. In einer typischen Continuous Deployment-Pipeline sind in der Regel mehrere Phasen vorhanden. Sie können basierend auf Ihrem DevOps-Verfahren weitere erstellen.
 
-    ![Erstellen einer Phase](./media/how-to-ci-cd/QA-env.png)
+    ![Erstellen der Testumgebungsphase](./media/how-to-ci-cd/QA-env.png)
 
 3. Verknüpfen Sie das Release mit den Buildartefakten. Klicken Sie im Artefaktbereich auf **Hinzufügen**.
 
@@ -118,11 +117,11 @@ In diesem Abschnitt erstellen Sie eine Releasepipeline, die so konfiguriert ist,
     
     Wählen Sie auf der Seite **Artefakt hinzufügen** den Quellentyp **Build** aus. Wählen Sie dann das Projekt und die erstellte Buildpipeline aus. Klicken Sie anschließend auf **Hinzufügen**.
 
-    ![Hinzufügen eines Artefakts](./media/how-to-ci-cd/add-an-artifact.png)
+    ![Hinzufügen eines Buildartefakts](./media/how-to-ci-cd/add-an-artifact.png)
 
     Öffnen Sie einen Continuous Deployment-Trigger, sodass immer, wenn ein neuer Build verfügbar ist, ein neues Release erstellt wird.
 
-    ![Konfigurieren des Triggers](./media/how-to-ci-cd/add-a-trigger.png)
+    ![Konfigurieren des Continuous Deployment-Triggers](./media/how-to-ci-cd/add-a-trigger.png)
 
 4. Navigieren Sie zur Phase **QA**, und konfigurieren Sie die Aufgaben in dieser Phase.
 

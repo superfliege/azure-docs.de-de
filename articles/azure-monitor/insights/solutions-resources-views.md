@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 97e499612082d0d58cd75bb9f8854b8c4e0f669e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 6e0bab08e52233d10cff3ec936d024dcbb86d2a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635763"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188009"
 ---
 # <a name="views-in-management-solutions-preview"></a>Ansichten in Verwaltungslösungen (Vorschau)
 > [!NOTE]
@@ -90,7 +89,7 @@ Beachten Sie, dass Sie die gesamte Ansichtsressource aus Ihrer exportierten Ansi
 * Variablen sollten in der Lösung definiert und in den entsprechenden Eigenschaften verwendet werden.
 
 ### <a name="log-analytics-api-version"></a>Log Analytics-API-Version
-Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ansichten mit Abfragen, die die [ältere und die aktualisierte Abfragesprache](../../log-analytics/log-analytics-queries.md) verwenden.  
+Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ansichten mit Abfragen, die die [ältere und die aktualisierte Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) verwenden.  
 
  In der folgenden Tabelle werden die Log Analytics-API-Versionen für Ansichten in älteren und aktualisierten Arbeitsbereichen angegeben: 
 

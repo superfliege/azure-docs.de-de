@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 892fa32f73cec86e5d10a0d67da3d80bedd539aa
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 67fc3d733062867086cb4c208f2997d3490452bb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619860"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681924"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory-Dienstidentität
 
@@ -45,7 +45,7 @@ Sollte Ihrer Data Factory nach dem Schritt [Abrufen einer Dienstidentität](#ret
 
 - [Erstellen der Dienstidentität mit PowerShell](#generate-service-identity-using-powershell)
 - [Erstellen der Dienstidentität mit REST-API](#generate-service-identity-using-rest-api)
-- [Erstellen der Dienstidentität mithilfe einer Azure Resource Manager-Vorlage](#generate-service-identity-using-resource-management-template)
+- [Erstellen der Dienstidentität mithilfe einer Azure Resource Manager-Vorlage](#generate-service-identity-using-azure-resource-manager-template)
 - [Erstellen der Dienstidentität mit SDK](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -77,7 +77,7 @@ Rufen Sie die unten angegebene API mit dem Abschnitt „identity“ im Anforderu
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
 ```
 
-**Anforderungstext:** Fügen Sie „identity": { "type": "SystemAssigned" }‘“ hinzu.
+**Anforderungstext**: Fügen Sie Folgendes hinzu: „identity": { "type": "SystemAssigned" }.
 
 ```json
 {

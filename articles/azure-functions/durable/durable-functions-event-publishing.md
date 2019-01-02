@@ -8,26 +8,26 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 12/07/2018
 ms.author: glenga
-ms.openlocfilehash: 00735293d8fa8c6056f1ecf89fd312fe4b90bcac
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 78011e799fb4ddaf89fb1fd24c1f2a313ef49ba5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637575"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338106"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 
-In diesem Artikel wird gezeigt, wie Sie Azure Durable Functions so einrichten, dass Lebenszyklusereignisse einer Orchestrierung (z.B. Erstellen, Abschließen und Fehlschlagen) in einem benutzerdefinierten [Azure Event Grid-Thema](https://docs.microsoft.com/azure/event-grid/overview) veröffentlicht werden. 
+In diesem Artikel wird gezeigt, wie Sie Durable Functions so einrichten, dass Lebenszyklusereignisse einer Orchestrierung (z.B. Erstellen, Abschließen und Fehlschlagen) in einem benutzerdefinierten [Azure Event Grid-Thema](https://docs.microsoft.com/azure/event-grid/overview) veröffentlicht werden.
 
 Es folgen einige Szenarien, in denen diese Funktion hilfreich ist:
 
-* **DevOps-Szenarien wie Blau/Grün-Bereitstellungen**: Vor der Implementierung einer [parallelen Bereitstellungsstrategie](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments) möchten Sie möglicherweise wissen, ob irgendeine Aufgabe ausgeführt wird.
+* **DevOps-Szenarien wie Blau/Grün-Bereitstellungen**: Vor der Implementierung einer [parallelen Bereitstellungsstrategie](durable-functions-versioning.md#side-by-side-deployments) möchten Sie möglicherweise wissen, ob irgendeine Aufgabe ausgeführt wird.
 
-* **Erweiterte Unterstützung für Überwachung und Diagnose**: Sie können die Orchestrierungsstatusinformationen in einem externen, für Abfragen optimierten Speicher (z. B. SQL-Datenbank oder CosmosDB) verfolgen.
+* **Erweiterte Unterstützung für Überwachung und Diagnose**:  Sie können die Orchestrierungsstatusinformationen in einem externen, für Abfragen optimierten Speicher (z. B. SQL-Datenbank oder CosmosDB) verfolgen.
 
-* **Lang andauernde Hintergrundaktivität**: Bei Verwendung von Durable Functions für eine lang andauernde Hintergrundaktivität erleichtert diese Funktion Ihnen die Ermittlung des aktuellen Status.
+* **Lang andauernde Hintergrundaktivität**:  Bei Verwendung von Durable Functions für eine lang andauernde Hintergrundaktivität erleichtert diese Funktion Ihnen die Ermittlung des aktuellen Status.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,12 +39,12 @@ Es folgen einige Szenarien, in denen diese Funktion hilfreich ist:
 
 Erstellen Sie ein Event Grid-Thema zum Senden von Ereignissen aus Durable Functions. In den folgenden Anweisungen wird gezeigt, wie Sie ein Thema mithilfe der Azure-Befehlszeilenschnittstelle (CLI) erstellen. Informationen zur Vorgehensweise mit PowerShell oder im Azure-Portal finden Sie in folgenden Artikeln:
 
-* [EventGrid-Schnellstarts: Erstellen eines benutzerdefinierten Ereignisses mit PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
-* [EventGrid-Schnellstarts: Erstellen eines benutzerdefinierten Ereignisses im Azure-Portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid-Schnellstarts:  Erstellen eines benutzerdefinierten Ereignisses mit PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid-Schnellstarts:  Erstellen eines benutzerdefinierten Ereignisses im Azure-Portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl `az group create` eine Ressourcengruppe. Derzeit unterstützt Event Grid nicht alle Regionen. Informationen zu den unterstützten Regionen finden Sie unter [Event Grid – Übersicht](https://docs.microsoft.com/azure/event-grid/overview). 
+Erstellen Sie mit dem Befehl `az group create` eine Ressourcengruppe. Derzeit unterstützt Event Grid nicht alle Regionen. Informationen zu den unterstützten Regionen finden Sie unter [Event Grid – Übersicht](https://docs.microsoft.com/azure/event-grid/overview).
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -55,7 +55,7 @@ az group create --name eventResourceGroup --location westus2
 Ein Event Grid-Thema stellt einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse bereit. Ersetzen Sie `<topic_name>` durch einen eindeutigen Namen für Ihr Thema. Der Name des Themas muss eindeutig sein, da er als DNS-Eintrag verwendet wird.
 
 ```bash
-az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup 
+az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
 ## <a name="get-the-endpoint-and-key"></a>Abrufen von Endpunkt und Schlüssel
@@ -119,7 +119,7 @@ Erstellen Sie eine Funktions-App. Es wird empfohlen, sie in der gleichen Region 
 
 ### <a name="create-an-event-grid-trigger-function"></a>Erstellen einer Event Grid-Triggerfunktion
 
-Erstellen Sie eine Funktion zum Empfangen der Lebenszyklusereignisse. Wählen Sie **Benutzerdefinierte Funktion** aus. 
+Erstellen Sie eine Funktion zum Empfangen der Lebenszyklusereignisse. Wählen Sie **Benutzerdefinierte Funktion** aus.
 
 ![Wählen Sie „Erstellen einer benutzerdefinierten Funktion“ aus.](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -131,7 +131,7 @@ Geben Sie den Namen der Funktion ein, und wählen Sie dann `Create` aus.
 
 ![Erstellen Sie den Event Grid-Trigger.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-Es wird eine Funktion mit folgendem Code erstellt: 
+Es wird eine Funktion mit folgendem Code erstellt:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -153,11 +153,11 @@ Wählen Sie `Event Grid Topics` als **Thementyp** aus. Wählen Sie die Ressource
 
 ![Erstellen Sie ein Event Grid-Abonnement.](./media/durable-functions-event-publishing/eventsubscription.png)
 
-Sie können nun Lebenszyklusereignisse empfangen. 
+Sie können nun Lebenszyklusereignisse empfangen.
 
 ## <a name="create-durable-functions-to-send-the-events"></a>Erstellen Sie langlebige Funktionen (Durable Functions), um die Ereignisse zu senden.
 
-Starten Sie in Ihrem Durable Functions-Projekt das Debuggen auf Ihrem lokalen Computer.  Der folgende Code entspricht dem Beispielcode für die langlebigen Funktionen. `host.json` und `local.settings.json` haben Sie bereits auf dem lokalen Computer konfiguriert. 
+Starten Sie in Ihrem Durable Functions-Projekt das Debuggen auf Ihrem lokalen Computer.  Der folgende Code entspricht dem Beispielcode für die langlebigen Funktionen. `host.json` und `local.settings.json` haben Sie bereits auf dem lokalen Computer konfiguriert.
 
 ```csharp
 using System.Collections.Generic;
@@ -217,7 +217,7 @@ Wenn Sie `Sample_HttpStart` mit Postman oder in Ihrem Browser aufrufen, beginnt 
 ```
 2018-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
 2018-04-20T09:28:21.104 [Info] {
-    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",    
+    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",
     "subject": "durable/orchestrator/Running",
     "data": {
         "hubName": "DurableFunctionsHub",
@@ -258,19 +258,19 @@ Wenn Sie `Sample_HttpStart` mit Postman oder in Ihrem Browser aufrufen, beginnt 
 
 In der folgenden Liste wird das Schema für Lebenszyklusereignisse erläutert:
 
-* **id**: eindeutiger Bezeichner für das Event Grid-Ereignis.
+* **id**: Eindeutiger Bezeichner für das Event Grid-Ereignis.
 * **subject**: Pfad zum Ereignisbetreff. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` kann `Running`, `Completed`, `Failed` und `Terminated` sein.  
-* **data**: spezielle Durable Functions-Parameter.
-    * **hubName**: Name des [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs).
-    * **functionName**: Name der Orchestratorfunktion.
-    * **instanceId**: ID der Durable Functions-Instanz.
-    * **reason**: Zusätzliche Daten zum Nachverfolgungsereignis. Weitere Informationen finden Sie unter [Diagnose in Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics).
-    * **runtimeStatus**: Laufzeitstatus der Orchestrierung. „Running“, „Completed“, „Failed“, „Canceled“. 
+* **data**: Spezielle Durable Functions-Parameter.
+  * **hubName**:  Name des [TaskHub](durable-functions-task-hubs.md).
+  * **functionName**:  Name der Orchestratorfunktion.
+  * **instanceId**:  ID der Durable Functions-Instanz.
+  * **reason**:  Zusätzliche Daten zum Nachverfolgungsereignis. Weitere Informationen finden Sie unter [Diagnose in Durable Functions (Azure Functions)](durable-functions-diagnostics.md).
+  * **runtimeStatus**:  Laufzeitstatus der Orchestrierung. „Running“, „Completed“, „Failed“, „Canceled“.
 * **eventType**: "orchestratorEvent"
-* **eventTime**: Ereigniszeit (UTC).
-* **dataVersion**: Version des Lebenszyklusereignisschemas.
-* **metadataVersion**: Version der Metadaten.
-* **topic**: Ressource des EventGrid-Themas.
+* **eventTime**:  Ereigniszeit (UTC).
+* **dataVersion**:  Version des Lebenszyklus-Ereignisschemas.
+* **metadataVersion**:   Version der Metadaten.
+* **topic**:  Ressource des EventGrid-Themas.
 
 ## <a name="how-to-test-locally"></a>Lokales Testen
 

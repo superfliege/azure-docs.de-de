@@ -9,41 +9,46 @@ ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2016
+ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: 92cbd3570d48bf12d603f68593465aafed62985c
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852315"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407931"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
-Windows bietet eine Vielzahl von [Leistungsindikatoren](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) wie z.B. CPU-Belegung, Arbeitsspeicher, Datenträger und Netzwerkverwendung. Sie können auch eigene definieren. Diese Leistungsindikatoren können in [Application Insights](app-insights-overview.md) angezeigt werden, sofern Ihre Anwendung unter IIS auf einem lokalen Host oder auf einem virtuellen Computer ausgeführt wird, auf den Sie Administratorzugriff haben. In den Diagrammen werden die für Ihre aktive Anwendung verfügbaren Ressourcen angezeigt. Zudem können Sie anhand der Diagramme eine unausgeglichene Belastung der Serverinstanzen erkennen.
 
-Leistungsindikatoren werden auf dem Blatt „Server“ angezeigt, das eine nach Serverinstanzen segmentierte Tabelle enthält.
-
-![In Application Insights gemeldete Leistungsindikatoren](./media/app-insights-performance-counters/counters-by-server-instance.png)
-
-(Leistungsindikatoren sind für Azure-Web-Apps nicht verfügbar. Sie können jedoch [Azure-Diagnosedaten an Application Insights senden](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).)
+Windows bietet eine Vielzahl von [Leistungsindikatoren](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) wie z.B. CPU-Belegung, Arbeitsspeicher, Datenträger und Netzwerkverwendung. Sie können auch eigene Leistungsindikatoren definieren. Solange Ihre Anwendung unter IIS auf einem lokalen Host oder auf einem virtuellen Computer ausgeführt wird, auf den Sie Administratorzugriff haben.
 
 ## <a name="view-counters"></a>Anzeigen von Indikatoren
-Auf dem Blatt „Server“ wird ein Standardsatz von Leistungsindikatoren angezeigt. 
 
-Wenn Sie andere Leistungsindikatoren anzeigen möchten, können Sie entweder die Diagramme auf dem Blatt „Server“ bearbeiten oder im [Metrik-Explorer](app-insights-metrics-explorer.md) ein neues Blatt öffnen und neue Diagramme hinzufügen. 
+Im Bereich „Metriken“ wird der Standardsatz von Leistungsindikatoren angezeigt.
 
-Die verfügbaren Leistungsindikatoren werden beim Bearbeiten eines Diagramms als Metriken angezeigt.
+![In Application Insights gemeldete Leistungsindikatoren](./media/app-insights-performance-counters/performance-counters.png)
 
-![In Application Insights gemeldete Leistungsindikatoren](./media/app-insights-performance-counters/choose-performance-counters.png)
+Die aktuellen Standardleistungsindikatoren, die für .NET-Webanwendungen erfasst werden:
+
+         - % Process\\Processor Time
+         - % Process\\Processor Time Normalized
+         - Memory\\Available Bytes
+         - ASP.NET Requests/Sec
+         - .NET CLR Exceptions Thrown / sec
+         - ASP.NET ApplicationsRequest Execution Time
+         - Process\\Private Bytes
+         - Process\\IO Data Bytes/sec
+         - ASP.NET Applications\\Requests In Application Queue
+         - Processor(_Total)\\% Processor Time
 
 Damit die nützlichsten Diagramme an einer Stelle angezeigt werden, erstellen Sie ein [Dashboard](app-insights-dashboards.md) und heften Sie die Diagramme an das Dashboard.
 
 ## <a name="add-counters"></a>Hinzufügen von Leistungsindikatoren
-Wenn der gewünschte Leistungsindikator in der Liste der Metriken nicht angezeigt wird, liegt das daran, dass dieser vom Application Insights SDK auf Ihrem Webserver nicht erfasst wird. Sie können dies entsprechend konfigurieren.
 
-1. Ermitteln Sie mit dem folgenden PowerShell-Befehl, welche Indikatoren auf dem Server verfügbar sind:
+Wenn der gewünschte Leistungsindikator nicht in der Liste der Metriken enthalten ist, können Sie ihn hinzufügen.
+
+1. Welche Leistungsindikatoren in Ihrem Server verfügbar sind, können Sie ermitteln, indem Sie diesen PowerShell-Befehl auf dem lokalen Server verwenden:
    
     `Get-Counter -ListSet *`
    
@@ -114,13 +119,14 @@ Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `clo
 *Worin besteht der Unterschied zwischen der Ausnahmerate und der Ausnahmenmetrik?*
 
 * *Ausnahmerate* ist ein Systemleistungsindikator. Die CLR zählt alle behandelten und nicht behandelten Ausnahmen, die ausgelöst werden, und dividiert das Ergebnis innerhalb eines Samplingintervalls durch die Länge dieses Intervalls. Das Application Insights SDK sammelt dieses Ergebnis und sendet es an das Portal.
+
 * *Ausnahmen* ist die Anzahl der TrackException-Meldungen, die das Portal innerhalb des Samplingintervalls des Diagramms empfangen hat. Sie enthält nur die behandelten Ausnahmen, wo Sie TrackException-Aufrufe in Ihren Code geschrieben haben, und enthält nicht alle [nicht behandelten Ausnahmen](app-insights-asp-net-exceptions.md). 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Leistungsindikatoren in ASP.NET Core-Anwendungen
+## <a name="performance-counters-in-aspnet-core-applications"></a>Leistungsindikatoren in ASP.Net Core-Anwendungen
 Leistungsindikatoren werden nur unterstützt, wenn die Anwendung auf die Vollversion von .NET Framework ausgerichtet ist. Für .NET Core-Anwendungen können keine Leistungsindikatoren erfasst werden.
 
 ## <a name="alerts"></a>Alerts
-Wie bei anderen Metriken können Sie [eine Warnung festlegen](app-insights-alerts.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie das Blatt „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
+Wie bei anderen Metriken können Sie [eine Warnung festlegen](app-insights-alerts.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
 ## <a name="next"></a>Nächste Schritte
 * [Abhängigkeitsüberwachung](app-insights-asp-net-dependencies.md)

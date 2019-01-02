@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/10/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 44a5b32b68b0365e957d97a516f0d767e6501c0f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: dbced5cfa2a47dc2fdcf630d62104bb7ba8e7bc0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630323"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186649"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Zusammengeführte Registrierung für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication (öffentliche Vorschauversion)
 
@@ -74,6 +74,8 @@ Auf dieser Seite sehen Benutzer bereits registrierte Authentifizierungsmethoden 
 Überwachungsprotokolle für diese neue Oberfläche finden Sie in der Kategorie „Authentifizierungsmethode“ des Überwachungsprotokolls.  
 
 ## <a name="known-issues"></a>Bekannte Probleme
+
+Wir haben einen Fehler bei der zusammengeführten Registrierung ermittelt. Dabei können sich B2B-Gastbenutzer, die für die zusammengeführte Registrierung aktiviert sind, nicht für MFA registrieren. Wenn sie auf die Registrierungsseite weitergeleitet werden, funktioniert die Seite nicht mehr. Unsere Entwickler kennen dieses Problem und arbeiten an einer Lösung. Vorerst wird empfohlen, eine Gruppe zu erstellen und alle B2B-Benutzer aus dieser Gruppe auszuschließen.
 
 **Standardmäßige MFA-Methode wird auf „Telefonanruf“ festgelegt, wenn der Benutzer „Telefon“ per SMS registriert**
 

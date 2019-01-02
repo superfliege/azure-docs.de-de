@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: b590a6ce6d92c78f2020d5ef7cffe6d7f277433c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51827219"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187210"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Integration von Service Map in System Center Operations Manager
   > [!NOTE]
@@ -102,7 +101,7 @@ Der Ordner „Service Map“ umfasst vier Knoten:
 
     ![Das Diagramm der verteilten Anwendungen im Operations Manager](media/service-map-scom/scom-group-dad.png)
 
-* **Server Dependency Views** (Serverabhängigkeitsansichten): Listet alle Server auf, die von Service Map aus synchronisiert werden. Sie können auf einen beliebigen Server klicken, um das entsprechende Diagramm der verteilten Anwendungen anzuzeigen.
+* **Serverabhängigkeitsansichten**: Listet alle Server auf, die von Service Map aus synchronisiert werden. Sie können auf einen beliebigen Server klicken, um das entsprechende Diagramm der verteilten Anwendungen anzuzeigen.
 
     ![Das Diagramm der verteilten Anwendungen im Operations Manager](media/service-map-scom/scom-dad.png)
 

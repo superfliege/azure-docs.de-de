@@ -1,5 +1,5 @@
 ---
-title: Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
+title: Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken – Azure HDInsight
 description: Erfahren Sie, wie Sie die HBase-Replikation zwischen HDInsight-Versionen für Lastenausgleich, Hochverfügbarkeit, Migration und Updates ohne Ausfallzeit und Notfallwiederherstellung einrichten.
 services: hdinsight,virtual-network
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584178"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163826"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -261,11 +261,11 @@ sudo service bind9 status
 Erstellen Sie in jedem der beiden virtuellen Netzwerke einen [Apache HBase](http://hbase.apache.org/)-Cluster mit folgender Konfiguration:
 
 - **Name der Ressourcengruppe**: Verwenden Sie den gleichen Ressourcengruppennamen, wie beim Erstellen der virtuellen Netzwerke.
-- **Clustertyp**: HBase
+- **Clustertyp**: hbase
 - **Version**: HBase 1.1.2 (HDI 3.6)
-- **Standort**: Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.  Standardmäßig ist vnet1 *USA, Westen* und vnet2 ist *USA, Osten*.
+- **Standort**: Verwenden Sie denselben Standort wie das virtuelle Netzwerk.  Standardmäßig ist vnet1 *USA, Westen* und vnet2 ist *USA, Osten*.
 - **Speicher**: Erstellen Sie ein neues Speicherkonto für den Cluster.
-- **Virtuelles Netzwerk** (aus den erweiterten Einstellungen im Portal): Wählen Sie vnet1, das Sie in der vorherigen Prozedur erstellt haben.
+- **Virtuelles Netzwerk** (über die erweiterten Einstellungen im Portal): Wählen Sie „vnet1“ aus, das Sie im letzten Vorgang erstellt haben.
 - **Subnetz**: Der in der Vorlage verwendete Standardname lautet **subnet1**.
 
 Um sicherzustellen, dass die Umgebung korrekt konfiguriert ist, müssen Sie den FQDN des Hauptknotens zwischen den beiden Clustern pingen können.
@@ -274,7 +274,7 @@ Um sicherzustellen, dass die Umgebung korrekt konfiguriert ist, müssen Sie den 
 
 Wenn Sie einen Cluster replizieren, müssen Sie die Tabellen angeben, die Sie replizieren möchten. In diesem Abschnitt laden Sie einige Daten in den Quellcluster. Im nächsten Abschnitt aktivieren Sie die Replikation zwischen den beiden Clustern.
 
-Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight**.
+Wenn Sie eine Tabelle namens **Kontakte** erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter [Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
@@ -289,7 +289,7 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
 5. Wählen Sie folgende Informationen aus, oder geben Sie sie ein:
 
   1. **Name**: Geben Sie **Replikation aktivieren** ein.
-  2. **Bashskript-URL**: Geben Sie **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** ein.
+  2. **Bash-Skript-URL**: Geben Sie **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** ein.
   3.  **Hauptknoten**: Stellen Sie sicher, dass diese Option aktiviert ist. Deaktivieren Sie die anderen Knotentypen.
   4. **Parameter**: Die folgenden Beispielparameter aktivieren die Replikation für alle vorhandenen Tabellen und kopieren dann alle Daten aus dem Quellcluster in den Zielcluster:
 
