@@ -1,13 +1,12 @@
 ---
-title: 'Vorhersagen einer Antwort mit einem einfachen Regressionsmodell: Azure Machine Learning Studio | Microsoft-Dokumentation'
+title: Vorhersagen von Antworten mit Regressionsmodellen – Azure Machine Learning Studio | Microsoft-Dokumentation
 description: Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines Regressionsmodells zum Vorhersagen eines Preises. Enthält eine lineare Regression mit Zieldaten.
 keywords: Erstellen eines Modells,einfaches Modell,Preisvorhersage,einfaches Regressionsmodell
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
 ms.service: machine-learning
@@ -17,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 2862310623b2725cbeeaa4f5972a89ffcef44ff6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e2c49b9da215c038cfa47689f11da22b2dffc2dc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309775"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253574"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Vorhersagen einer Antwort mit einem einfachen Modell
-## <a name="video-4-data-science-for-beginners-series"></a>4. Video der Reihe „Data Science für Einsteiger“
+## <a name="video-4-data-science-for-beginners-series"></a>Video 4: Reihe „Data Science für Einsteiger“
 Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines einfachen Regressionsmodells zum Vorhersagen des Preises eines Diamanten. Wir zeichnen ein Regressionsmodell mit Zieldaten.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
@@ -38,13 +37,13 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur L
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-* 1. Video: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+* Video 1: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
 * Video 2: [Sind Ihre Daten für Data Science bereit?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
 * Video 3: [Stellen einer Frage, die Sie mit Daten beantworten können](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
 * Video 4: Vorhersagen einer Antwort mit einem einfachen Modell
 * Video 5: [Kopieren der Arbeit anderer für Ihre Data Science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Aufzeichnung: Vorhersagen einer Antwort mit einem einfachen Modell
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Transkript: Vorhersagen einer Antwort mit einem einfachen Modell
 Willkommen beim vierten Video der Reihe „Data Science für Einsteiger“. In diesem Video erstellen wir ein einfaches Modell, um eine Vorhersage zu treffen.
 
 Ein *Modell* ist eine vereinfachte, aber aussagekräftige Darstellung unserer Daten. Ich zeige Ihnen, was ich meine.
@@ -66,7 +65,7 @@ Wir haben soeben ein kleines Dataset erstellt, eine Tabelle. Beachten Sie, dass 
 * Und wie wir sehen werden, verfügen wir über **genügend** Daten, um unsere Frage zu beantworten.
 
 ## <a name="ask-a-sharp-question"></a>Stellen einer genauen Frage
-Nun stellen wir unsere Frage so genau wie möglich: „Wie viel kostet ein Diamant mit 1,35 Karat?“
+Wir stellen unsere Frage nun genau: „Wie viel kostet es, einen Diamanten mit 1,35 Karat zu kaufen?“
 
 Unsere Liste enthält keinen Diamanten mit 1,35 Karat, weshalb wir unsere restlichen Daten nutzen, um die Frage zu beantworten.
 
@@ -97,18 +96,18 @@ Die Tatsache, dass die Gerade nicht exakt durch alle Punkte verläuft, ist okay.
 Da wir die Frage *Wie viel?* beantworten möchten, wird dies als *Regression* bezeichnet. Und da wir eine Gerade verwenden, handelt es sich um eine *lineare Regression*.
 
 ## <a name="use-the-model-to-find-the-answer"></a>Verwenden des Modells zum Finden der Antwort
-Jetzt haben wir ein Modell, dem wir unsere Frage stellen: Was kostet ein Diamant mit 1,35 Karat?
+Jetzt verfügen wir über ein Modell, und wir stellen unsere Frage: Wie viel kostet ein Diamant mit 1,35 Karat?
 
-Um unsere Frage zu beantworten, machen wir 1,35 Karat aus und zeichnen eine vertikale Gerade. An der Stelle, an der sie die Modellgerade schneidet, zeichnen wir eine horizontale Gerade zur Dollar-Achse. Das Ergebnis liegt genau bei 10.000. Wow! Das ist die Antwort: ein Diamant mit 1,35 Karat kostet 10.000 US-Dollar.
+Um unsere Frage zu beantworten, machen wir 1,35 Karat aus und zeichnen eine vertikale Gerade. An der Stelle, an der sie die Modellgerade schneidet, zeichnen wir eine horizontale Gerade zur Dollar-Achse. Das Ergebnis liegt genau bei 10.000. Wow! Dies ist die Antwort: Ein Diamant mit 1,35 Karat kostet ungefähr 10.000 US-Dollar.
 
 ![Finden der Antwort im Modell](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Erstellen eines Konfidenzintervalls
-Es stellt sich natürlich die Frage, wie genau diese Vorhersage ist. Es ist hilfreich zu wissen, ob ein Diamant mit 1,35 Karat sehr nah bei 10.000 US-Dollar liegt oder sehr viel darüber oder darunter. Um das herauszufinden, wollen wir eine Umhüllungskurve um die Regressionsgerade zeichnen, die die meisten Punkte einschließt. Diese Umhüllungskurve bezeichnen wir als unser *Konfidenzintervall*: Wir sind zuversichtlich, dass sich Preise in dieser Umhüllungskurve befinden, da dies in der Vergangenheit meist der Fall war. Wir können zwei weitere horizontale Geraden zeichnen, und zwar an den Stellen, an denen die Gerade von 1,35 Karat den oberen und den unteren Rand der Umhüllungskurve schneidet.
+Es stellt sich natürlich die Frage, wie genau diese Vorhersage ist. Es ist hilfreich zu wissen, ob ein Diamant mit 1,35 Karat sehr nah bei 10.000 US-Dollar liegt oder sehr viel darüber oder darunter. Um das herauszufinden, wollen wir eine Umhüllungskurve um die Regressionsgerade zeichnen, die die meisten Punkte einschließt. Diese Umhüllungskurve wird als *Konfidenzintervall* bezeichnet: Wir sind zuversichtlich, dass die Preise in diese Umhüllungskurve fallen, weil dies in der Vergangenheit größtenteils der Fall war. Wir können zwei weitere horizontale Geraden zeichnen, und zwar an den Stellen, an denen die Gerade von 1,35 Karat den oberen und den unteren Rand der Umhüllungskurve schneidet.
 
 ![Konfidenzintervall](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
-Nun können wir etwas zu unserem Konfidenzintervall sagen, nämlich mit Bestimmtheit, dass der Preis eines Diamanten mit 1,35 Karat ca. 10.000 US-Dollar beträgt, jedoch auch nur 8.000 oder sogar 12.000 US-Dollar betragen kann.
+Jetzt können wir etwas zu unserem Konfidenzintervall sagen:  Wir können sicher sagen, dass der Preis eines Diamanten mit 1,35 Karat ungefähr bei 10.000 US-Dollar liegt. Er kann aber auch bei 8.000 oder bei 12.000 US-Dollar liegen.
 
 ## <a name="were-done-with-no-math-or-computers"></a>Wir sind fertig – ohne Berechnungen oder Computer.
 Wir haben das getan, wofür Data Scientist bezahlt werden, und mussten dazu nichts weiter tun als zeichnen:

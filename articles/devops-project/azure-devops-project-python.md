@@ -131,7 +131,7 @@ Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungspr
 1. Wählen Sie auf der rechten Seite **Releases anzeigen** aus, um einen Releaseverlauf anzuzeigen.  
         
 1. Wählen Sie neben einem Ihrer Releases die Auslassungspunkte (...) und dann die Option **Öffnen** aus.  
-        In dieser Ansicht finden Sie verschiedene Menüs, etwa eine Releasezusammenfassung, zugeordnete Arbeitsaufgaben und Tests.
+        In dieser Ansicht finden Sie verschiedene Menüs, etwa eine Releasezusammenfassung, zugeordnete Arbeitselemente und Tests.
 
 1. Wählen Sie **Commits** aus. 
         In dieser Ansicht werden die der jeweiligen Bereitstellung zugeordneten Codecommits angezeigt. 

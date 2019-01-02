@@ -182,7 +182,7 @@ Aus einem Verfügbarkeitstestergebnis können Sie die Transaktionsdetails für a
 
 * Untersuchen Sie die vom Server erhaltene Antwort.
 * Diagnostizieren Sie den Fehler mit korrelierten, serverseitigen Telemetriedaten, die während der Verarbeitung des fehlgeschlagenen Verfügbarkeitstests gesammelt wurden.
-* Protokollieren Sie in Git oder Azure Boards ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
+* Protokollieren Sie in Git oder Azure Boards ein Problem oder ein Arbeitselement, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
 * Öffnen Sie das Webtestergebnis in Visual Studio.
 
 Weitere Informationen zur End-to-End-Transaktionsdiagnoseerfahrung finden Sie [hier](app-insights-transaction-diagnostics.md).

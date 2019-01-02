@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: fa72765e02592b72efb09320958a0aa244ae8b08
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7cfb327a3eb6cbf2ae90c9d258a470797732acaa
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265286"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437502"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
 
 Dieser Artikel enthält Empfehlungen für Sicherheit und DevOps in Azure HDInsight-Systemen. Er ist Teil einer Reihe von Artikeln, die bewährte Methoden für die Migration von lokalen Apache Hadoop-Systemen zu Azure HDInsight enthalten.
 
-## <a name="use-the-enterprise-security-package-to-secure-and-govern-the-cluster"></a>Verwenden des Enterprise-Sicherheitspakets zum Sichern und Steuern des Clusters
+## <a name="secure-and-govern-cluster-with-enterprise-security-package"></a>Schützen und Steuern des Clusters mit dem Enterprise-Sicherheitspaket
 
-Das Enterprise-Sicherheitspaket (ESP) unterstützt die Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung. Bei ausgewählter ESP-Option wird der HDInsight-Cluster mit der Active Directory-Domäne verknüpft, und der Unternehmensadministrator kann mithilfe von Apache Ranger die rollenbasierte Zugriffskontrolle (Role-Based Access Control, RBAC) für Hive-Sicherheit konfigurieren. Der Administrator kann auch den Datenzugriff von Mitarbeitern und jegliche Änderungen der Zugriffssteuerungsrichtlinien überwachen.
+Das Enterprise-Sicherheitspaket (ESP) unterstützt die Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung. Bei ausgewählter ESP-Option wird der HDInsight-Cluster mit der Active Directory-Domäne verknüpft, und der Unternehmensadministrator kann mithilfe von Apache Ranger die rollenbasierte Zugriffskontrolle (Role-Based Access Control, RBAC) für Apache Hive-Sicherheit konfigurieren. Der Administrator kann auch den Datenzugriff von Mitarbeitern und jegliche Änderungen der Zugriffssteuerungsrichtlinien überwachen.
 
-ESP-Funktionen stehen auf den folgenden Clustertypen zur Verfügung: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka und Interactive Query (Hive LLAP). 
+Das ESP ist für die folgenden Clustertypen verfügbar: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka und Interactive Query (Hive LLAP). 
 
 Verwenden Sie die folgenden Schritte, um den in die Domäne eingebundenen HDInsight-Cluster bereitzustellen:
 
@@ -32,33 +32,36 @@ Verwenden Sie die folgenden Schritte, um den in die Domäne eingebundenen HDInsi
 - Stellen Sie Azure Active Directory Domain Services (AAD DS) bereit.
 - Erstellen Sie das erforderliche virtuelle Netzwerk und Subnetz.
 - Stellen Sie einen virtuellen Computer im virtuellen Netzwerk zur Verwaltung von AAD DS bereit.
-- Führen Sie den Beitritt des virtuellen Computers zur Domäne aus.
+- Führen Sie den Beitritt des virtuellen Computers zur Domäne durch.
 - Installieren Sie AD- und DNS-Tools.
 - Lassen Sie vom AAD DS-Administrator eine Organisationseinheit erstellen.
 - Aktivieren Sie LDAPS für AAD DS.
 - Erstellen Sie ein Dienstkonto in Azure Active Directory mit delegierter Administratorberechtigung für Lesen und Schreiben in der Organisationseinheit. Mit diesem Dienstkonto können dann Computer in die Domäne eingebunden und Computerprinzipale in der Organisationseinheit platziert werden. Hiermit können auch Dienstprinzipale in der Organisationseinheit erstellt werden, die Sie während der Clustererstellung angeben.
 
+
     > [!Note]
     > Das Dienstkonto muss kein Administratorkonto für die AD-Domäne sein.
+
 
 - Stellen Sie den HDInsight ESP-Cluster bereit, indem Sie die folgenden Parameter festlegen:
     - **Domänenname**: Der Domänenname, der Azure AD DS zugeordnet ist.
     - **Domänenbenutzername**: Das Dienstkonto in der vom Azure AD DS-Domänencontroller verwalteten Domäne, die im vorherigen Abschnitt erstellt wurde, z.B. `hdiadmin@contoso.onmicrosoft.com`. Dieser Domänenbenutzer wird der Administrator dieses HDInsight-Clusters.
-    - **Domain password** (Domänenkennwort): das Kennwort des Dienstkontos.
+    - **Domänenkennwort**: Das Kennwort des Dienstkontos.
     - **Organisationseinheit**: Der Distinguished Name der Organisationseinheit, die Sie mit dem HDInsight-Cluster verwenden möchten, z.B. `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Wenn diese Organisationseinheit nicht vorhanden ist, versucht der HDInsight-Cluster, sie mithilfe der Berechtigungen des Dienstkontos zu erstellen.
     - **LDAPS-URL**: Beispielsweise `ldaps://contoso.onmicrosoft.com:636`.
     - **Zugriff auf Benutzergruppe**: Die Sicherheitsgruppe, deren Benutzer Sie mit dem Cluster synchronisieren möchten, z.B. `HiveUsers`. Wenn Sie mehrere Benutzergruppen angeben möchten, trennen Sie diese durch Semikolons (;). Die Gruppen müssen vor dem Erstellen des ESP-Clusters im Verzeichnis vorhanden sein.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Einführung in die Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern](../domain-joined/apache-domain-joined-introduction.md)
-- [Planen von in die Azure-Domäne eingebundenen Hadoop-Clustern in HDInsight](../domain-joined/apache-domain-joined-architecture.md)
+- [Einführung in die Apache Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern](../domain-joined/apache-domain-joined-introduction.md)
+
+- [Planen von in die Azure-Domäne eingebundenen Apache Hadoop-Clustern in HDInsight](../domain-joined/apache-domain-joined-architecture.md)
 - [Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters mit Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 - [Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster](../hdinsight-sync-aad-users-to-cluster.md)
-- [Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung](../domain-joined/apache-domain-joined-run-hive.md)
+- [Konfigurieren von Apache Hive-Richtlinien in HDInsight mit Domänenverknüpfung](../domain-joined/apache-domain-joined-run-hive.md)
 - [Ausführen von Apache Oozie in in die Domäne eingebundenen HDInsight Hadoop-Clustern](../domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)
 
-## <a name="implement-end-to-end-enterprise-security-management"></a>Implementieren der End-to-End-Unternehmenssicherheitsverwaltung
+## <a name="implement-end-to-end-enterprise-security"></a>Implementieren der End-to-End-Unternehmenssicherheit
 
 End-to-End-Unternehmenssicherheit kann mithilfe der folgenden Steuerelemente erzielt werden:
 
@@ -66,8 +69,8 @@ End-to-End-Unternehmenssicherheit kann mithilfe der folgenden Steuerelemente erz
     - Sicherheit auf Umgebungsebene kann über virtuelle Azure-Netzwerke, Netzwerksicherheitsgruppen und den Gatewaydienst erzielt werden.
 
 - **Authentifizierung und Autorisierung für Datenzugriff**
-    - Erstellen Sie in die Domäne eingebundene HDInsight-Cluster mit Azure Active Directory Domain Services. (Enterprise-Sicherheitspaket)
-    - Verwenden Sie Ambari, um rollenbasierten Zugriff auf Clusterressourcen für AD-Benutzer bereitzustellen.
+    - Erstellen Sie in die Domäne eingebundene HDInsight-Cluster mit Azure Active Directory Domain Services. (Enterprise-Sicherheitspaket).
+    - Verwenden Sie Ambari, um für AD-Benutzer den rollenbasierten Zugriff auf Clusterressourcen bereitzustellen.
     - Verwenden Sie Apache Ranger, um Zugriffssteuerungsrichtlinien für Hive auf Tabellen-/Spalten-/Zeilenebene festzulegen.
     - Der SSH-Zugriff auf den Cluster kann nur auf den Administrator beschränkt werden.
 
@@ -106,7 +109,7 @@ Führen Sie regelmäßige Upgrades auf die neueste Version von HDInsight durch, 
 1. Importieren Sie alle vorübergehenden Daten, die gesichert wurden.
 1. Starten Sie Aufträge/Verarbeiten Sie weiterhin mithilfe des neuen Clusters.
 
-Weitere Informationen finden Sie im Artikel [Aktualisieren eines HDInsight-Clusters auf eine neuere Version](../hdinsight-upgrade-cluster.md).
+Weitere Informationen finden Sie im Artikel [Aktualisieren eines HDInsight-Clusters auf eine neue Version](../hdinsight-upgrade-cluster.md).
 
 ## <a name="patch-cluster-operating-systems"></a>Patchen von Clusterbetriebssystemen
 
@@ -122,4 +125,4 @@ Weitere Informationen finden Sie im Artikel [Patchen des Betriebssystems für HD
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)
+- Informieren Sie sich weiter über [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).

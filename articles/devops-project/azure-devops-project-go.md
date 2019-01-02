@@ -131,7 +131,7 @@ Mit DevOps Projects wird automatisch eine vollständige CI/CD-Pipeline in Azure 
 1. Wählen Sie auf der rechten Seite **Releases anzeigen** aus, um einen Releaseverlauf anzuzeigen.
 
 1. Wählen Sie neben einem Release die Auslassungspunkte (...) und anschließend **Öffnen** aus.  
-    Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitsaufgaben und Tests.
+    Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitselemente und Tests.
 
 1. Wählen Sie **Commits** aus.  
     In dieser Ansicht werden die dieser Bereitstellung zugeordneten Codecommits angezeigt. 

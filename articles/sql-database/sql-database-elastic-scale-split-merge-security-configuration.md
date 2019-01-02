@@ -3,21 +3,21 @@ title: Split-Merge-Sicherheitskonfiguration| Microsoft Docs
 description: Richten Sie X409-Zertifikate für die Verschlüsselung mit dem Split/Merge-Dienst für elastische Skalierung ein.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231396"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964831"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 Zur Verwendung des Split-Merge-Diensts müssen Sie die Sicherheit ordnungsgemäß konfigurieren. Der Dienst ist Teil der Funktion Elastic Scale von Microsoft Azure SQL-Datenbank. Weitere Informationen finden Sie im [Lernprogramm zum Split-Merge-Dienst für die elastische Skalierung](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -43,7 +43,7 @@ Wenn diese Optionen nicht verfügbar sind, können Sie **selbstsignierte Zertifi
     Falls installiert, gehen Sie zu:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Abrufen des WDK von [Windows 8.1: Herunterladen von Kits und Tools](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Abrufen des WDK unter [Windows 8.1: Herunterladen der Kits für die Windows-Hardwareentwicklung](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>So konfigurieren Sie das SSL-Zertifikat
 Ein SSL-Zertifikat ist zum Verschlüsseln der Kommunikation und Authentifizieren des Servers erforderlich. Wählen Sie das zutreffende unter den folgenden drei Szenarien, und führen Sie alle zugehörigen Schritte aus:
@@ -142,7 +142,7 @@ Es werden zwei unterschiedliche Mechanismen zum Erkennen und Verhindern von Dien
 Sie basieren auf den Funktionen, die unter der dynamischen IP-Sicherheit in IIS eingehender dokumentiert sind. Wenn Sie diese Konfiguration ändern, beachten Sie die folgenden Faktoren:
 
 * Das Verhalten der Proxys und Netzwerkadressübersetzungs-Geräte über die Remotehostinformationen
-* Jede Anforderung an eine Ressource in der Web-Rolle wird berücksichtigt(z. B. das Laden von Skripts, Images usw.).
+* Jede Anforderung an eine Ressource in der Webrolle wird berücksichtigt (z.B. das Laden von Skripts, Images usw.)
 
 ## <a name="restricting-number-of-concurrent-accesses"></a>Einschränken der Anzahl gleichzeitiger Zugriffe
 Dieses Verhalten wird über folgende Einstellungen konfiguriert:
@@ -166,7 +166,7 @@ Die folgende Einstellung konfiguriert die Antwort auf eine verweigerte Anforderu
 Weitere unterstützte Werte entnehmen Sie der Dokumentation für dynamische IP-Sicherheit in IIS.
 
 ## <a name="operations-for-configuring-service-certificates"></a>Vorgänge für das Konfigurieren von Dienstzertifikaten
-Dieses Thema dient nur zu Informationszwecken. Führen Sie die Konfigurationsschritte der folgenden Themen aus:
+Dieses Thema dient nur zu Informationszwecken. Führen Sie die Konfigurationsschritte aus, die in den folgenden Themen beschrieben sind:
 
 * Konfigurieren des SSL-Zertifikats
 * Konfigurieren von Clientzertifikaten
@@ -178,7 +178,7 @@ Führen Sie folgende Befehle aus:
       -n "CN=myservice.cloudapp.net" ^
       -e MM/DD/YYYY ^
       -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -sv MySSL.pvk MySSL.cer
 
 Zur Anpassung:
@@ -221,9 +221,9 @@ Führen Sie die folgenden Schritten für alle Konto/Computer aus, die mit dem Di
 * Importieren Sie das Zertifikat in den Speicher für vertrauenswürdige Stammzertifizierungsstellen.
 
 ## <a name="turn-off-client-certificate-based-authentication"></a>Deaktivieren der zertifikatbasierten Clientauthentifizierung
-Nur zertifikatbasierte Clientauthentifizierung wird unterstützt, und deren Deaktivierung lässt den öffentlichen Zugriff auf die Dienstendpunkte zu, sofern nicht andere Mechanismen eingerichtet wurden (z. B. Microsoft Azure Virtual Network).
+Es wird nur die zertifikatbasierte Clientauthentifizierung unterstützt, und deren Deaktivierung lässt den öffentlichen Zugriff auf die Dienstendpunkte zu, sofern nicht andere Mechanismen eingerichtet wurden (z.B. Microsoft Azure Virtual Network).
 
-Ändern Sie diese Einstellungen in der Dienstkonfigurationsdatei zu "false", um die Funktion zu deaktivieren:
+Ändern Sie diese Einstellungen in der Dienstkonfigurationsdatei in „false“, um die Funktion zu deaktivieren:
 
     <Setting name="SetupWebAppForClientCertificates" value="false" />
     <Setting name="SetupWebserverForClientCertificates" value="false" />
@@ -239,7 +239,7 @@ Führen Sie die folgenden Schritte aus, um ein selbstsigniertes Zertifikat zu er
     -n "CN=MyCA" ^
     -e MM/DD/YYYY ^
      -r -cy authority -h 1 ^
-     -a sha1 -len 2048 ^
+     -a sha256 -len 2048 ^
       -sr localmachine -ss my ^
       MyCA.cer
 
@@ -288,7 +288,7 @@ Die folgenden Schritte müssen auf demselben Computer ausgeführt werden, auf de
       -n "CN=My ID" ^
       -e MM/DD/YYYY ^
       -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -in "MyCA" -ir localmachine -is my ^
       -sv MyID.pvk MyID.cer
 
@@ -316,7 +316,7 @@ Geben Sie das Kennwort ein, und exportieren Sie dann das Zertifikat mit den folg
 * Die Person, für die dieses Zertifikat ausgestellt wird, muss das Exportkennwort auswählen.
 
 ## <a name="import-client-certificate"></a>Importieren des Clientzertifikats
-Jede Person, für die ein Clientzertifikat ausgestellt wurde, sollte das Schlüsselpaar auf den Computer importieren, den sie zur Kommunikation mit dem Dienst verwenden möchte:
+Jede Person, für die ein Clientzertifikat ausgestellt wurde, sollte das Schlüsselpaar auf den Computer importieren, den sie für die Kommunikation mit dem Dienst verwenden möchte:
 
 * Doppelklicken Sie auf die.PFX-Datei in Windows-Explorer.
 * Importieren Sie das Zertifikat mit mindestens dieser Option in den persönlichen Zertifikatspeicher:
@@ -339,7 +339,7 @@ Aktualisieren Sie den Wert für die folgende Einstellung in der Dienstkonfigurat
     <Setting name="AllowedClientCertificateThumbprints" value="" />
 
 ## <a name="configure-client-certificate-revocation-check"></a>Konfigurieren der Sperrprüfung für Clientzertifikate
-In der Standardeinstellung wird der Sperrstatus des Clientzertifikats bei der Zertifizierungsstelle nicht überprüft. Um die Überprüfungen zu aktivieren, falls die Zertifizierungsstelle, welche die Clientzertifikate ausgestellt hat, derartige Überprüfungen unterstützt, ändern Sie die folgende Einstellung mit einem der Werte, die in der X509RevocationMode-Enumeration definiert sind:
+In der Standardeinstellung wird der Sperrstatus des Clientzertifikats bei der Zertifizierungsstelle nicht überprüft. Um die Überprüfungen zu aktivieren (falls die Zertifizierungsstelle, von der die Clientzertifikate ausgestellt wurden, derartige Überprüfungen unterstützt), ändern Sie die folgende Einstellung mit einem der Werte, die in der X509RevocationMode-Enumeration definiert sind:
 
     <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
 

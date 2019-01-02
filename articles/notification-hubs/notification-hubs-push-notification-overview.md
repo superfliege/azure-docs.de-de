@@ -29,7 +29,7 @@ Azure Notification Hubs bietet ein benutzerfreundliches, horizontal skalierbares
 - Senden standortbasierter Gutscheine an interessierte Kundengruppen
 - Senden von Ereignisbenachrichtigungen an Benutzer oder Gruppen für Medien-/Sport-/Finanz-/Spieleanwendungen
 - Pushübertragung von Werbeinhalten an Anwendungen, um Kunden anzusprechen und zum Kauf anzuregen
-- Benachrichtigen von Benutzer zu Unternehmensereignissen wie neue Nachrichten und Arbeitsaufgaben
+- Benachrichtigen von Benutzer zu Unternehmensereignissen wie neue Nachrichten und Arbeitselementen
 - Senden von Codes für die mehrstufige Authentifizierung
 
 ## <a name="what-are-push-notifications"></a>Was sind Pushbenachrichtigungen?
