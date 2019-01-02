@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025258"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139264"
 ---
 <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 =================================
@@ -177,7 +177,7 @@ Mit diesem Parameter können Sie bei Bedarf die Sitzung der Testversion eindeuti
 
 Für einige Azure-Ressourcen, z.B. Speicherkonten oder DNS-Namen, müssen global eindeutige Namen verwendet werden.
 
-Das bedeutet, dass jedes Mal, wenn die Testversion die Resource Manager-Vorlage bereitstellt, eine **neue Ressourcengruppe mit einem eindeutigen Namen** für alle zugehörigen Ressourcen erstellt wird **.** Daher muss die Funktion [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) verwendet werden, die mit den Variablennamen für Ressourcengruppen-IDs verkettet ist, damit zufällige eindeutige Werte generiert werden:
+Das bedeutet, dass jedes Mal, wenn die Testversion die Resource Manager-Vorlage bereitstellt, eine **neue Ressourcengruppe mit einem eindeutigen Namen** für alle zugehörigen Ressourcen erstellt wird. Daher muss die Funktion [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) verwendet werden, die mit den Variablennamen für Ressourcengruppen-IDs verkettet ist, damit zufällige eindeutige Werte generiert werden:
 
       "variables": {
       ...
@@ -382,15 +382,13 @@ Klicken Sie auf Speichern. Im letzten Schritt wird die Anwendungs-ID für diese 
 Wenn die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet wird, muss die Anwendung im Abonnement als Mitwirkender hinzugefügt werden. Dazu müssen folgende Schritte ausgeführt werden:
 
 1. Navigieren Sie zum Blatt „Abonnements“, und wählen Sie das entsprechende Abonnement aus, das nur für die Testversion verwendet wird.
-2. Klicken Sie auf „Zugriffssteuerung (IAM)“.
-3. Klicken Sie im neuen Blatt auf „+ Hinzufügen“.
-4. Legen Sie die Rolle „Mitwirkender“ fest.
-5. Geben Sie den Namen der AAD-Anwendung ein, und wählen Sie die AAD-Anwendung aus, um die Rolle zuzuweisen.
-6. Klicken Sie auf „Speichern“.
-
-![Hinzufügen eines neuen Zugriffssteuerungsprinzipals](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Hinzufügen der Berechtigungen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.  ![Hinzufügen eines neuen Zugriffssteuerungsprinzipals](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klicken Sie auf **Rollenzuweisung hinzufügen**.
+1. Legen Sie die Rolle als **Mitwirkender** fest.
+1. Geben Sie den Namen der Azure AD-Anwendung ein, und wählen Sie die Anwendung aus, um die Rolle zuzuweisen.
+    ![Hinzufügen der Berechtigungen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klicken Sie auf **Speichern**.
 
 **Azure AD App Key** (Azure AD-App-Schlüssel): *Erforderlich* Im letzten Feld wird ein Authentifizierungsschlüssel generiert. Geben Sie unter „Schlüssel“ eine Beschreibung des Schlüssels an, legen Sie die Dauer so fest, dass er nie abläuft, und wählen Sie dann „Speichern“ aus. Es ist **wichtig**, dass der Schlüssel nicht abläuft, da dies andernfalls zu Fehlern der Testversion in der Produktion führt. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
 

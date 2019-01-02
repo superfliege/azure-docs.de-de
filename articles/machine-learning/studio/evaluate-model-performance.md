@@ -4,9 +4,8 @@ description: Dieser Artikel veranschaulicht, wie die Leistung eines Modells in A
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -16,21 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 501a9834e598fc8b1c11a86ef0ae9db1c19a66a7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311493"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269939"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Auswerten der Modellleistung in Azure Machine Learning
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Auswerten der Modellleistung in Azure Machine Learning Studio
+
 Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt: 
 
 * Regression
 * Binäre Klassifizierung 
 * Multiklassenklassifizierung
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Die Auswertung der Leistung eines Modells ist eine der wesentlichen Phasen im Datenanalyseprozess. Sie gibt an, wie erfolgreich die Bewertung (die Vorhersagen) eines Datasets eines trainierten Modells war. 
 
@@ -106,7 +106,7 @@ Verbinden Sie die Ports wie in Abbildung 5 dargestellt, und legen Sie für die S
 Abbildung 5. Auswerten eines binären Klassifizierungsmodells.
 
 ### <a name="inspecting-the-evaluation-results"></a>Überprüfen der Auswertungsergebnisse
-Nach dem Ausführen des Experiments können Sie auf den Ausgabeport des Moduls [Evaluate Model][evaluate-model] klicken und *Visualize* auswählen, um die Auswertungsergebnisse anzuzeigen (Abbildung 7). Für binäre Klassifizierungsmodelle stehen folgende Auswertungskennzahlen zur Verfügung: *Accuracy*, *Precision*, *Recall*, *F1 Score* und *AUC*. Darüber hinaus gibt das Modul eine Wahrheitsmatrix mit der Anzahl der Fälle „richtig positiv“, „falsch negativ“, „falsch positiv“ und „richtig negativ“ sowie den Kurven *ROC*, *Precision/Recall* und *Lift* aus.
+Nach dem Ausführen des Experiments können Sie auf den Ausgabeport des Moduls [Evaluate Model][evaluate-model] klicken und *Visualize* auswählen, um die Auswertungsergebnisse anzuzeigen (Abbildung 7). Für binäre Klassifikationsmodelle stehen folgende Auswertungskennzahlen zur Verfügung: *Accuracy*, *Precision*, *Recall*, *F1 Score* und *AUC*. Darüber hinaus gibt das Modul eine Wahrheitsmatrix mit der Anzahl der Fälle „richtig positiv“, „falsch negativ“, „falsch positiv“ und „richtig negativ“ sowie den Kurven *ROC*, *Precision/Recall* und *Lift* aus.
 
 Genauigkeit (Accuracy) ist dabei der Anteil der richtig klassifizierten Fälle. Sie ist normalerweise die erste Kennzahl, die Sie sich bei der Auswertung eines Klassifikators ansehen. Wenn die Testdaten jedoch unausgeglichen sind (die meisten Fälle einer der Klassen angehören) oder Sie überwiegend an der Leistung einer der beiden Klassen interessiert sind, wird mit der Genauigkeit die Effektivität eines Klassifikators nicht wirklich erfasst. Angenommen, beim Klassifizierungsszenario für das Einkommensniveau testen Sie Daten, bei denen 99 % der Fälle Mitarbeiter angeben, deren Einkommen pro Jahr kleiner oder gleich 50K ist. Bei der Vorhersage der Klasse "<=50K" für alle Fälle kann eine Genauigkeit von 0,99 erreicht werden. Der Klassifikator scheint in diesem Fall eine durchweg solide Leistung zu liefern, in Wirklichkeit werden aber alle Personen mit höherem Einkommen (die 1 %) nicht richtig klassifiziert.
 
@@ -116,13 +116,13 @@ Aus diesem Grund ist es nützlich, weitere Kennzahlen zu berechnen, die die spez
 
 Abbildung 6. Wahrheitsmatrix der binären Klassifizierung.
 
-Im Hinblick auf die Klassifizierung des Einkommens in unserem Beispiel sollen mehrere Auswertungsfragen gestellt werden, mit denen die Leistung des verwendeten Klassifikators bewertet werden kann. Eine sehr nahe liegende Frage ist: "Wie viele der Personen, für die im Modell vorhergesagt wurde, dass ihr Einkommen >50K beträgt (RP+FP), wurden richtig klassifiziert (RP)?" Diese Frage kann durch Prüfen der Genauigkeit (**Precision**) des Modells beantwortet werden, die den Anteil der positiven Fälle angibt, die richtig klassifiziert wurden: RP/(RP+FP). Eine weitere Frage lautet: "Wie viele aller besserverdienenden Mitarbeiter mit einem Einkommen von >50K (RP+FN) wurden mit dem Klassifikator richtig klassifiziert (RP)?" Dies ist die Sensitivität (**Recall**) oder die Richtig-Positiv-Rate: RP/(RP+FN) des Klassifikators. Sie können feststellen, dass ein offensichtlicher Zusammenhang zwischen Präzision und Sensitivität besteht. Ein relativ ausgeglichenes Dataset vorausgesetzt, weist ein Klassifikator, der überwiegend positive Fälle vorhersagt, eine hohe Sensitivität, jedoch eine eher geringe Präzision auf, da viele der negativen Fälle falsch klassifiziert werden, was zu einer hohen Anzahl falsch-negativer Fälle führt. Um grafisch darzustellen, wie diese beiden Metriken variieren, können Sie in der Ausgabeseite der Auswertungsergebnisse auf die Kurve **PRECISION/RECALL** klicken (links oben in Abbildung 7).
+Im Hinblick auf die Klassifizierung des Einkommens in unserem Beispiel sollen mehrere Auswertungsfragen gestellt werden, mit denen die Leistung des verwendeten Klassifikators bewertet werden kann. Eine sehr nahe liegende Frage ist: „Wie viele der Personen, für die im Modell vorhergesagt wurde, dass ihr Einkommen mehr als 50.000 beträgt (RP+FP), wurden richtig klassifiziert (RP)?“ Diese Frage kann durch Prüfen der Genauigkeit (**Precision**) des Modells beantwortet werden, die den Anteil der positiven Fälle angibt, die richtig klassifiziert wurden: RP/(RP+FP). Eine weitere Frage lautet: "Wie viele aller besserverdienenden Mitarbeiter mit einem Einkommen von >50K (RP+FN) wurden mit dem Klassifikator richtig klassifiziert (RP)?" Dies ist die Sensitivität (**Recall**) oder die Richtig-Positiv-Rate des Klassifikators: RP/(RP+FN). Sie können feststellen, dass ein offensichtlicher Zusammenhang zwischen Präzision und Sensitivität besteht. Ein relativ ausgeglichenes Dataset vorausgesetzt, weist ein Klassifikator, der überwiegend positive Fälle vorhersagt, eine hohe Sensitivität, jedoch eine eher geringe Präzision auf, da viele der negativen Fälle falsch klassifiziert werden, was zu einer hohen Anzahl falsch-negativer Fälle führt. Um grafisch darzustellen, wie diese beiden Metriken variieren, können Sie in der Ausgabeseite der Auswertungsergebnisse auf die Kurve **PRECISION/RECALL** klicken (links oben in Abbildung 7).
 
 ![Auswertungsergebnisse der binären Klassifizierung.](./media/evaluate-model-performance/7.png)
 
- Abbildung 7. Auswertungsergebnisse der binären Klassifizierung.
+Abbildung 7. Auswertungsergebnisse der binären Klassifizierung.
 
-Eine weitere zugehörige, häufig verwendete Kennzahl ist das sogenannte F-Maß (**F1 Score**), das sowohl Genauigkeit als auch Sensitivität berücksichtigt. Es handelt sich um das harmonische Mittel dieser 2 Kennzahlen, das wie folgt berechnet wird: F1 = 2 (Genauigkeit x Sensitivität) / (Genauigkeit + Sensitivität). Das F-Maß ist eine gute Möglichkeit, die Auswertung in einer Zahl zusammenzufassen. Es empfiehlt sich jedoch auch immer, die Präzision und Sensitivität zusammen zu betrachten, um besser einschätzen zu können, wie sich ein Klassifikator verhält.
+Eine weitere zugehörige, häufig verwendete Kennzahl ist das sogenannte F-Maß (**F1 Score**), das sowohl Genauigkeit als auch Sensitivität berücksichtigt. Es handelt sich um das harmonische Mittel dieser 2 Kennzahlen, das wie folgt berechnet wird: F1 = 2 (Genauigkeit x Sensitivität) / (Genauigkeit + Sensitivität). Das F-Maß ist eine gute Möglichkeit, die Auswertung in einer Zahl zusammenzufassen. Es empfiehlt sich jedoch auch immer, die Präzision und Sensitivität zusammen zu betrachten, um besser einschätzen zu können, wie sich ein Klassifikator verhält.
 
 Darüber hinaus können Sie mit der Grenzwertoptimierungskurve (**Receiver Operating Characteristic, ROC**) und dem entsprechenden Wert für die Fläche unter der Kurve (**Area Under the Curve, AUC**) die Richtig-Positiv-Rate im Vergleich zur Falsch-Positiv-Rate überprüfen. Je mehr sich diese Kurve der linken oberen Ecke nähert, desto höher ist die Leistung des Klassifikators (d. h., die Richtig-Positiv-Rate wird maximiert, während die Falsch-Positiv-Rate minimiert wird). Kurven, die sich der Diagonale in der Darstellung nähern, sind auf Klassifikatoren zurückzuführen, deren Vorhersagen auf bloßes Raten hinauslaufen.
 

@@ -1,24 +1,24 @@
 ---
-title: Azure Dedicated HSM | Microsoft-Dokumentation
-description: Azure Dedicated HSM bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
+title: Häufig gestellte Fragen – Azure Dedicated HSM | Microsoft-Dokumentation
+description: Häufig gestellte Fragen zu verschiedenen Themen in Azure Dedicated HSM
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
+ms.custom: mvc
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: concepts
-ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: 3179fd3cf7a595b4491aec77e221aca3960c8ecb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319039"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310238"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -30,13 +30,13 @@ Enthält Antworten auf häufige gestellte Fragen zu Microsoft Azure Dedicated HS
 
 Ein Hardwaresicherheitsmodul (HSM) ist ein physisches Computergerät, das zum Schützen und Verwalten von kryptografischen Schlüsseln verwendet wird. In HSMs gespeicherte Schlüsseln können für kryptografische Vorgänge verwendet werden. Das Schlüsselmaterial verbleibt sicher in manipulationssicheren, manipulationsgeschützten Hardwaremodulen. Das HSM erlaubt nur authentifizierten und autorisierten Anwendungen die Verwendung der Schlüssel. Das Schlüsselmaterial verlässt nie die HSM-Schutzgrenze.
 
-### <a name="q-what-is-azure-dedicated-hsm-offering"></a>F: Was bietet Azure Dedicated HSM?
+### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>F: Was bietet Azure Dedicated HSM?
 
 Azure Dedicated HSM ist ein cloudbasierter Dienst, der in Azure-Datencentern gehostete HSMs bereitstellt, die direkt mit dem virtuellen Netzwerk eines Kunden verbunden sind. Diese HSMs sind dedizierte Network Appliances (SafeNet Network HSM 7, Modell A790 von Gemalto). Sie werden direkt für den privaten IP-Adressraum eines Kunden bereitgestellt, und Microsoft besitzt keinen Zugriff auf die kryptografische Funktionalität der HSMs. Nur der Kunde verfügt über vollständige Verwaltungs- und Kryptografiekontrolle für diese Geräte. Kunden sind verantwortlich für die Verwaltung des Geräts, und sie können vollständige Aktivitätsprotokolle direkt von ihren Geräten erhalten. Dedizierte HSMs unterstützen Kunden bei der Erfüllung von Compliance- und gesetzlichen Anforderungen, z.B. von FIPS 140-2 Level 3, HIPAA, PCI-DSS, eIDAS usw.
 
-## <a name="what-hardware-is-used-for-dedicated-hsm"></a>Welche Hardware wird für dedizierte HSM verwendet?
+### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>F: Welche Hardware wird für dedizierte HSM verwendet?
 
-Microsoft ist eine Partnerschaft mit Gemalto eingegangen, um den Azure Dedicated HSM-Dienst anzubieten. Das dabei eingesetzte Gerät ist [SafeNet Luna Network HSM 7, Modell A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Dieses Gerät bietet nicht nur eine nach FIPS 140-2 Level 3 validierte Firmware, sondern auch niedrige Latenzzeiten, hohe Leistung und hohe Kapazität über 10 Partitionen. 
+Microsoft ist eine Partnerschaft mit Gemalto eingegangen, um den Azure Dedicated HSM-Dienst bereitzustellen. Das dabei eingesetzte Gerät ist [SafeNet Luna Network HSM 7, Modell A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Dieses Gerät bietet nicht nur eine nach FIPS 140-2 Level 3 validierte Firmware, sondern auch niedrige Latenzzeiten, hohe Leistung und hohe Kapazität über 10 Partitionen. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>F: Wofür wird ein HSM verwendet?
 
@@ -49,6 +49,18 @@ Kunden können HSMs in bestimmten Regionen über PowerShell oder die Befehlszeil
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>F: Welche Software wird mit dem Dedicated HSM-Dienst bereitgestellt?
 
 Gemalto ist Lieferant der gesamten Software für das HSM-Gerät nach der Bereitstellung durch Microsoft. Die Software ist über das [Gemalto-Kundensupportportal](https://supportportal.gemalto.com/csm/) verfügbar. Kunden, die den Dedicated HSM-Dienst nutzen, müssen für den Gemalto-Support registriert sein und über eine Kunden-ID verfügen, die den Zugriff auf Software und den Download von relevanter Software ermöglicht. Die unterstützte Clientsoftware ist Version 7.2, die mit der von FIPS 140-2 Level 3 validierten Firmwareversion 7.0.3 kompatibel ist. 
+
+### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>F: Bietet Azure Dedicated HSM kennwortbasierte und PED-basierte Authentifizierung?
+
+Im Moment stellt Azure Dedicated HSM nur HSMs mit kennwortbasierter Authentifizierung bereit.
+
+### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>F: Hostet Azure Dedicated HSM meine HSMs für mich?
+
+Microsoft bietet nur das Gemalto SafeNet Luna Network HSM über den Dedicated HSM-Dienst und kann keine vom Kunden bereitgestellten Geräte hosten.
+
+### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>F: Unterstützt Azure Dedicated HSM PIN/ETF-Funktionen, oder erfüllt er PCI HSM v1- oder v2-Zertifizierungsanforderungen?
+
+Der Azure Dedicated HSM-Dienst verwendet SafeNet Luna Network HSM 7-Geräte (Modell A790). Diese Geräte unterstützen keine für Bezahl-HSM spezifischen Funktionen (z. B. PIN oder ETF) oder Zertifizierungen. Wenn Sie möchten, dass der Azure Dedicated HSM-Dienst in Zukunft Bezahl-HSMs unterstützt, geben Sie uns unten bitte ein entsprechendes Feedback.
 
 ## <a name="interoperability"></a>Interoperabilität
 
@@ -66,7 +78,7 @@ Ja, Sie können lokale HSMs mit Dedicated HSM synchronisieren. [Point-to-Point-V
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>F: Kann ich Daten, die von anderen Azure-Diensten verwendet werden, mit Schlüsseln verschlüsseln, die in Dedicated HSM gespeichert sind?
 
- Nein. Auf Azure Dedicated HSMs kann nur von Ihrem virtuellen Netzwerk aus zugegriffen werden.
+Nein. Auf Azure Dedicated HSMs kann nur von Ihrem virtuellen Netzwerk aus zugegriffen werden.
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>F: Kann ich Schlüssel aus einem vorhandenen lokalen HSM in Dedicated HSM importieren?
 
@@ -112,7 +124,7 @@ Azure Dedicated HSM eignet sich am besten für Migrationsszenarien. Dies bedeute
 
 ### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>F: Kann Dedicated HSM mit Office 365 mit Kundenschlüssel, mit Azure Information Protection, Azure Data Lake Storage, Disk Encryption, der Azure Storage-Verschlüsselung oder Azure SQL-TDE verwendet werden?
 
- Nein. Dedicated HSM wird direkt im privaten IP-Adressraum eines Kunden bereitgestellt, sodass darauf nicht mit anderen Azure- oder Microsoft-Diensten zugegriffen werden kann.
+Nein. Dedicated HSM wird direkt im privaten IP-Adressraum eines Kunden bereitgestellt, sodass darauf nicht mit anderen Azure- oder Microsoft-Diensten zugegriffen werden kann.
 
 ## <a name="administration-access-and-control"></a>Verwaltung, Zugriff und Steuerung
 
@@ -126,7 +138,7 @@ Microsoft hat keine administrative oder kryptografische Kontrolle über das HSM.
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>F: Kann Microsoft oder ein Mitarbeiter von Microsoft auf Schlüssel in meinem Dedicated HSM zugreifen?
 
- Nein. Microsoft besitzt keinerlei Zugriff auf die im dem Kunden zugeordneten Dedicated HSM gespeicherten Schlüssel.
+Nein. Microsoft besitzt keinerlei Zugriff auf die im dem Kunden zugeordneten Dedicated HSM gespeicherten Schlüssel.
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>F: Kann ich ein Upgrade der Software/Firmware für mir zugeordnete HSMs vornehmen?
 
@@ -136,11 +148,11 @@ Um den besten Support zu erhalten, empfiehlt Microsoft dringend, keine Software/
 
 Sie können Dedicated HSMs verwalten, indem sie darauf über SSH zugreifen.
 
-### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>F: Wie verwalte ich Partitionen auf dem Dedicated HSM?
+### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>F: Wie verwalte ich Partitionen auf dem dedizierten HSM?
 
 Die Gemalto HSM-Clientsoftware wird zum Verwalten der HSMs und Partitionen verwendet.
 
-### <a name="q-how-do-i-monitor-my-hsm"></a>Wie überwache ich mein HSM?
+### <a name="q-how-do-i-monitor-my-hsm"></a>F: Wie überwache ich mein HSM?
 
 Ein Kunde besitzt über Syslog und SNMP vollständigen Zugriff auf die HSM-Aktivitätsprotokolle . Kunden müssen einen Syslog-Server oder SNMP-Server so einrichten, dass sie Protokolle oder Ereignisse von den HSMs erhalten.
 
@@ -160,7 +172,7 @@ Ja. Sie müssen die Anforderungen für Hochverfügbarkeit für SafeNet Luna Netw
 
 ### <a name="can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Kann ich Luna 5/6-HSMs aus lokalen Netzwerken einer Hochverfügbarkeitsgruppe mit Azure Dedicated HSM hinzufügen?
 
- Nein.
+Nein.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>F: Wie viele HSMs kann ich der gleichen Hochverfügbarkeitskonfiguration aus einer einzelnen Anwendung hinzufügen?
 
@@ -204,7 +216,7 @@ Ja, Dedicated HSM stellt SafeNet Network HSM 7-Appliances bereit, die FIPS 140-2
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>F: Welche kryptografischen Schlüssel und Algorithmen werden von Dedicated HSM unterstützt?
 
-Der Dedicated HSM-Dienst stellt SafeNet Network HSM 7-Appliances bereit. Sie unterstützen eine Vielzahl von kryptografischen Schlüsseltypen und Algorithmen, einschließlich: vollständige Suite B-Unterstützung
+Der Dedicated HSM-Dienst stellt SafeNet Network HSM 7-Appliances bereit. Sie unterstützen eine Vielzahl von kryptografischen Schlüsseltypen und Algorithmen, einschließlich: Vollständige Suite B-Unterstützung
 
 * Asymmetrisch:
   * RSA
@@ -223,8 +235,8 @@ Der Dedicated HSM-Dienst stellt SafeNet Network HSM 7-Appliances bereit. Sie unt
   * CAST
   * Hash/Message Digest/HMAC: SHA-1, SHA-2, SM3
   * Schlüsselableitung: SP800-108 Counter Mode
-  * Key-Wrapping: SP800-38F
-  * Zufallszahlengenerierung: FIPS 140-2 genehmigter DRBG (SP 800-90, CTR-Modus) unter Einhaltung von BSI DRG.4
+  * Key-Wrapping:  SP800-38F
+  * Zufallszahlengenerierung:  FIPS 140-2 genehmigter DRBG (SP 800-90, CTR-Modus) unter Einhaltung von BSI DRG.4
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>F: Ist Dedicated HSM FIPS 140-2 Level 3 validiert?
 
@@ -245,7 +257,7 @@ Bevor ein Kunde die Aufhebung der Bereitstellung anfordert, muss er das HSM mit 
 Dedicated HSM stellt SafeNet Network HSM 7-Appliances (Modell A790) bereit. Dies ist eine Zusammenfassung der maximalen Leistung für einige Vorgänge: 
 
 * RSA-2048: 10.000 Transaktionen pro Sekunde
-* ECC-P256: 20.000 Transaktionen pro Sekunde
+* ECC P256: 20.000 Transaktionen pro Sekunde
 * AES-GCM: 17.000 Transaktionen pro Sekunde
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>F: Wie viele Partitionen können in Dedicated HSM erstellt werden?

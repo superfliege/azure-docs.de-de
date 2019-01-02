@@ -1,6 +1,6 @@
 ---
-title: Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern | Microsoft Docs
-description: Erfahren Sie, wie Sie Daten aus SQL Azure-Datenbank mithilfe von Indexern in einen Azure Search-Index abrufen.
+title: Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Indexern – Azure Search
+description: Erfahren Sie, wie Sie Daten in Azure SQL-Datenbank mithilfe von Indexern für die Volltextsuche in Azure Search durchforsten. Dieser Artikel behandelt Verbindungen, Indexerkonfiguration und Datenerfassung.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,14 +9,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245646"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313393"
 ---
-# <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Azure Search-Indexern
 
 Bevor Sie einen [Azure Search-Index](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in einer Azure SQL-Datenbank befinden, können Sie mit dem neuen Feature **Azure Search-Indexer für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer**) den Indizierungsprozess automatisieren. Sie müssen also weniger Code schreiben und sich weniger Gedanken über die Infrastruktur machen.
 
@@ -338,7 +339,7 @@ Ja. Indexer werden auf einem der Knoten im Suchdienst ausgeführt, und die Resso
 
 Das ist unterschiedlich. Für die vollständige Indizierung einer Tabelle oder Sicht können Sie ein sekundäres Replikat verwenden. 
 
-Für eine inkrementelle Indizierung unterstützt Azure Search zwei Richtlinien zur Erkennung von Änderungen: integrierte SQL-Änderungsnachverfolgung und oberer Grenzwert.
+Für die inkrementelle Indizierung unterstützt Azure Search zwei Richtlinien zur Erkennung von Änderungen: die integrierte SQL-Änderungsnachverfolgung und den oberem Grenzwert.
 
 Bei schreibgeschützten Replikaten unterstützt SQL-Datenbank die integrierte Änderungsnachverfolgung nicht. Aus diesem Grund müssen Sie die Richtlinie mit oberem Grenzwert verwenden. 
 
