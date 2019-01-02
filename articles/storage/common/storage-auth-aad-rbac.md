@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 5da34e8e79c0df88cfad0b398aa8e1c22f158489
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: fce89cc754ac179054a60ce837949bb02b2102c6
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428877"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408696"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten von Azure mit RBAC (Vorschau)
 
@@ -27,10 +27,11 @@ Eine Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstpri
 
 Azure Storage unterstützt sowohl integrierte als auch benutzerdefinierte RBAC-Rollen. Azure Storage bietet diese integrierten RBAC-Rollen für die Verwendung mit Azure AD:
 
-- [Mitwirkender an Storage-Blobdaten (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
-- [Storage-Blobdatenleser (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
-- [Mitwirkender an Storage-Warteschlangendaten (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
-- [Storage-Warteschlangendatenleser (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
+- [Besitzer von Speicherblobdaten (Vorschau):](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview) Dient zum Festlegen des Besitzes sowie zum Verwalten der POSIX-Zugriffssteuerung für Azure Data Lake Storage Gen2 (Vorschauversion). Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](../blobs/data-lake-storage-access-control.md).
+- [Mitwirkender an Storage-Blobdaten (Vorschau):](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview) Dient zum Gewähren von Lese-/Schreib-/Löschberechtigungen für Blobspeicherressourcen.
+- [Storage-Blobdatenleser (Vorschau):](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview) Dient zum Gewähren von Leseberechtigungen für Blobspeicherressourcen.
+- [Mitwirkender an Storage-Warteschlangendaten (Vorschau):](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview) Dient zum Gewähren von Lese-/Schreib-/Löschberechtigungen für Azure-Warteschlangen.
+- [Storage-Warteschlangendatenleser (Vorschau):](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview) Dient zum Gewähren von Leseberechtigungen für Azure-Warteschlangen.
 
 Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 
@@ -40,14 +41,14 @@ Sie können für die Verwendung mit Containern und Warteschlangen auch eigene Ro
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Zuweisen einer Rolle zu einem Sicherheitsprinzipal
 
-Weisen Sie einer Azure-Identität eine RBAC-Rolle zu, um Berechtigungen für Container oder Warteschlangen in Ihrem Speicherkonto zu erteilen. Sie können die Rollenzuweisung auf das Speicherkonto oder auf einen bestimmten Container oder eine bestimmte Warteschlange begrenzen. In der folgenden Tabelle sind die von den integrierten Rollen gewährten Zugriffsrechte je nach Geltungsbereich zusammengefasst: 
+Weisen Sie einer Azure-Identität eine RBAC-Rolle zu, um Berechtigungen für Container oder Warteschlangen in Ihrem Speicherkonto zu erteilen. Sie können die Rollenzuweisung auf das Speicherkonto oder auf einen bestimmten Container oder eine bestimmte Warteschlange begrenzen. In der folgenden Tabelle sind die von den integrierten Rollen gewährten Zugriffsrechte je nach Geltungsbereich zusammengefasst:
 
-|                                 |     Mitwirkender an Blobdaten                                                 |     Leser von Blobdaten                                                |     Mitwirkender an Warteschlangendaten                                  |     Leser von Warteschlangendaten                                 |
-|---------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------|
-|    Auf Abonnement begrenzt       |    Lese-/Schreibzugriff auf alle Container und Blobs im Abonnement       |    Lesezugriff auf alle Container und Blobs im Abonnement       |    Lese-/Schreibzugriff auf alle Warteschlangen im Abonnement       |    Lesezugriff auf alle Warteschlangen im Abonnement         |
-|    Auf Ressourcengruppe begrenzt     |    Lese-/Schreibzugriff auf alle Container und Blobs in der Ressourcengruppe     |    Lesezugriff auf alle Container und Blobs in der Ressourcengruppe     |    Lese-/Schreibzugriff auf alle Warteschlangen in der Ressourcengruppe     |    Lesezugriff auf alle Warteschlangen in der Ressourcengruppe     |
-|    Auf Speicherkonto begrenzt    |    Lese-/Schreibzugriff auf alle Container und Blobs im Speicherkonto    |    Lesezugriff auf alle Container und Blobs im Speicherkonto    |    Lese-/Schreibzugriff auf alle Warteschlangen im Speicherkonto    |    Lesezugriff auf alle Warteschlangen im Speicherkonto    |
-|    Auf Container/Warteschlange begrenzt    |    Lese-/Schreibzugriff auf den angegebenen Container und seine Blobs              |    Lesezugriff auf den angegebenen Container und seine Blobs              |    Lese-/Schreibzugriff auf die angegebene Warteschlange                  |    Lesezugriff auf die angegebene Warteschlange                    |
+|Bereich|Blobdatenbesitzer|Mitwirkender an Blobdaten|Leser von Blobdaten|Mitwirkender an Warteschlangendaten|Leser von Warteschlangendaten|
+|---|---|---|---|---|---|
+|Abonnementebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für alle Container und Blobs im Abonnement|Lese-/Schreibzugriff auf alle Container und Blobs im Abonnement| Lesezugriff auf alle Container und Blobs im Abonnement|Lese-/Schreibzugriff auf alle Warteschlangen im Abonnement|Lesezugriff auf alle Warteschlangen im Abonnement|
+|Ressourcengruppenebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für alle Container und Blobs in der Ressourcengruppe|Lese-/Schreibzugriff auf alle Container und Blobs in der Ressourcengruppe|Lesezugriff auf alle Container und Blobs in der Ressourcengruppe|Lese-/Schreibzugriff auf alle Warteschlangen in der Ressourcengruppe|Lesezugriff auf alle Warteschlangen in der Ressourcengruppe|
+|Speicherkontoebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für alle Container und Blobs im Speicherkonto|Lese-/Schreibzugriff auf alle Container und Blobs im Speicherkonto|Lesezugriff auf alle Container und Blobs im Speicherkonto|Lese-/Schreibzugriff auf alle Warteschlangen im Speicherkonto|Lesezugriff auf alle Warteschlangen im Speicherkonto|
+|Container-/Warteschlangenebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für die angegebenen Container und die dazugehörigen Blobs|Lese-/Schreibzugriff auf den angegebenen Container und seine Blobs|Lesezugriff auf den angegebenen Container und seine Blobs|Lese-/Schreibzugriff auf die angegebene Warteschlange|Lesezugriff auf die angegebene Warteschlange|
 
 > [!NOTE]
 > Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Sie müssen sich selbst explizit eine RBAC-Rolle für Azure Storage zuweisen. Sie können sie auf der Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
@@ -61,38 +62,44 @@ In den folgenden Abschnitten wird gezeigt, wie Sie dem Speicherkonto eine Rolle 
 So weisen Sie im Azure-Portal eine integrierte Rolle zu, die Zugriff auf alle Container oder Warteschlangen im Speicherkonto gewährt
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
-2. Wählen Sie Ihr Speicherkonto und dann **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für das Konto anzuzeigen. Klicken Sie auf die Schaltfläche **Hinzufügen**, um eine neue Rolle hinzuzufügen.
+1. Wählen Sie Ihr Speicherkonto und dann **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für das Konto anzuzeigen. Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
 
     ![Screenshot mit Zugriffssteuerungseinstellungen für Speicher](media/storage-auth-aad-rbac/portal-access-control.png)
 
-3. Wählen Sie im Fenster **Berechtigungen hinzufügen** die Rolle aus, die einer Azure AD-Identität zugewiesen werden soll. Suchen Sie dann die Identität, der Sie diese Rolle zuweisen möchten. Die folgende Abbildung zeigt beispielsweise die einem Benutzer zugewiesene Rolle **Storage-Blobdatenleser (Vorschau)**.
+1. Klicken Sie auf die Schaltfläche **Rollenzuweisung hinzufügen**, um eine neue Rolle hinzuzufügen.
+1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** die Rolle aus, die einer Azure AD-Identität zugewiesen werden soll. Suchen Sie dann die Identität, der Sie diese Rolle zuweisen möchten. Die folgende Abbildung zeigt beispielsweise die einem Benutzer zugewiesene Rolle **Storage-Blobdatenleser (Vorschau)**.
 
     ![Screenshot, der das Zuweisen einer RBAC-Rolle zeigt](media/storage-auth-aad-rbac/add-rbac-role.png)
 
-4. Klicken Sie auf **Speichern**. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt z.B., dass die hinzugefügten Benutzer nun Leseberechtigungen für alle Blobdaten im Speicherkonto haben.
+1. Klicken Sie auf **Speichern**. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt beispielsweise, dass der hinzugefügte Benutzer nun über Leseberechtigungen für alle Blobdaten im Speicherkonto verfügt.
 
     ![Screenshot mit einer Liste von Benutzern, die einer Rolle zugewiesen sind](media/storage-auth-aad-rbac/account-scoped-role.png)
 
 ### <a name="assign-a-role-scoped-to-a-container-or-queue-in-the-azure-portal"></a>Zuweisen einer auf einen Container oder eine Warteschlange begrenzten Rolle im Azure-Portal
 
+> [!IMPORTANT]
+> Dies ist noch nicht möglich, wenn Sie ein Konto mit aktiviertem hierarchischem Namespace verwenden.
+
 Die Schritte zum Zuweisen einer auf einen Container oder eine Warteschlange begrenzten integrierten Rolle sind ähnlich. Die hier gezeigte Vorgehensweise weist eine auf einen Container begrenzte Rolle zu, aber Sie können die gleichen Schritte ausführen, um eine auf eine Warteschlange begrenzte Rolle zuzuweisen: 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und zeigen Sie die **Übersicht** für das Konto an.
-2. Wählen Sie unter „Blob-Dienst“ die Option **Blobs durchsuchen** aus. 
-3. Navigieren Sie zum Container, dem Sie eine Rolle zuweisen möchten, und zeigen Sie die Einstellungen des Containers an. 
-4. Wählen Sie **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Container anzuzeigen.
-5. Wählen Sie im Fenster **Berechtigungen hinzufügen** die Rolle aus, die Sie einer Azure AD-Identität zuweisen möchten. Suchen Sie dann die Identität, der Sie diese Rolle zuweisen möchten.
-6. Klicken Sie auf **Speichern**. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt z.B., dass der hinzugefügte Benutzer nun Leseberechtigungen für Daten im Container *sample-container* hat.
+1. Wählen Sie unter „Dienste“ die Option **Blobs** aus. 
+1. Navigieren Sie zum Container, dem Sie eine Rolle zuweisen möchten, und zeigen Sie die Einstellungen des Containers an. 
+1. Wählen Sie **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Container anzuzeigen. Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
+
+    ![Screenshot mit Zugriffssteuerungseinstellungen für den Container](media/storage-auth-aad-rbac/portal-access-control-container.png)
+1. Klicken Sie auf die Schaltfläche **Rollenzuweisung hinzufügen**, um eine neue Rolle hinzuzufügen.
+1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** die Rolle aus, die Sie einer Azure AD-Identität zuweisen möchten. Suchen Sie dann die Identität, der Sie diese Rolle zuweisen möchten.
+1. Klicken Sie auf **Speichern**. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt z.B., dass der hinzugefügte Benutzer nun Leseberechtigungen für Daten im Container *sample-container* hat.
 
     ![Screenshot mit einer Liste von Benutzern, die einer Rolle zugewiesen sind](media/storage-auth-aad-rbac/container-scoped-role.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur rollenbasierte Zugriffssteuerung finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+- Weitere Informationen zur rollenbasierte Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?](../../role-based-access-control/overview.md).
 - Informationen zum Zuweisen und Verwalten von RBAC-Rollenzuweisungen mit Azure PowerShell, Azure CLI oder der REST-API finden Sie in diesen Artikeln:
     - [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
     - [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
     - [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](../../role-based-access-control/role-assignments-rest.md)
 - Informationen zum Autorisieren des Zugriffs auf Container und Warteschlangen in Ihren Speicheranwendungen finden Sie unter [Verwenden von Azure AD mit Azure Storage-Anwendungen](storage-auth-aad-app.md).
 - Weitere Informationen zur Azure AD-Integration für Azure-Container und -Warteschlangen finden Sie im Blogbeitrag des Azure Storage-Teams [Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/) (Ankündigung der Vorschau der Azure AD-Authentifizierung für Azure Storage).
-- 

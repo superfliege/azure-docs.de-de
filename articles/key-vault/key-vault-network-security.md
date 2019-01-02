@@ -10,100 +10,107 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: 6315434c1e8acc82e02f5c9e5ae8ab2d1cacc887
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7dd768d3f0059f4b26f09298992483553f1508d2
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302052"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681245"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
-In dieser Anleitung wird schrittweise erklärt, wie Sie Key Vault-Firewalls und virtuelle Netzwerke konfigurieren, um den Zugriff auf Ihren Schlüsseltresor einzuschränken. Die [Virtual Network-Dienstendpunkte für Key Vault](key-vault-overview-vnet-service-endpoints.md) ermöglichen Ihnen, den Zugriff auf den Schlüsseltresor auf angegebene virtuelle Netzwerk und/oder eine Gruppe von IPv4-Adressbereichen (Internet Protocol, Version 4) zu beschränken.
+In diesem Artikel erhalten Sie schrittweise Anleitungen zum Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken, um den Zugriff auf Ihren Schlüsseltresor einzuschränken. Die [Dienstendpunkte virtueller Netzwerke für Key Vault](key-vault-overview-vnet-service-endpoints.md) ermöglichen Ihnen, den Zugriff auf angegebene virtuelle Netzwerke und eine Gruppe von IPv4-Adressbereichen (Internet Protocol, Version 4) zu beschränken.
 
 > [!IMPORTANT]
-> Sobald Firewalls und Regeln für virtuelle Netzwerke in Kraft sind, können alle Vorgänge auf Key Vault-[Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) NUR ausgeführt werden, wenn Aufruferanforderungen aus zulässigen virtuellen Netzwerken oder IPV4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor im Azure-Portal. Obwohl ein Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren kann, kann er möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn sein Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
+> Nachdem Firewallregeln in Kraft sind, können Benutzer nur Vorgänge auf Key Vault-[Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) ausführen, wenn ihre Anforderungen aus zulässigen virtuellen Netzwerken oder IPv4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor aus dem Azure-Portal. Obwohl Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren können, können sie möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn ihr Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
 
-## <a name="azure-portal"></a>Azure-Portal
+## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+
+Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls und virtuellen Netzwerken mithilfe des Azure-Portals:
 
 1. Navigieren Sie zum Schlüsseltresor, den Sie absichern möchten.
-2. Klicken Sie auf **Firewalls und virtuelle Netzwerke**.
-3. Klicken Sie unter **Zugriff erlauben von** auf **Ausgewählte Netzwerke**.
+2. Wählen Sie **Firewalls und virtuelle Netzwerke** aus.
+3. Wählen Sie unter **Zugriff erlauben von** den Eintrag **Ausgewählte Netzwerke** aus.
 4. Wenn Sie vorhandene virtuelle Netzwerke zu Firewalls und Regeln für virtuelle Netzwerke hinzufügen möchten, klicken Sie auf **+ Vorhandene virtuelle Netzwerke hinzufügen**.
-5. Wählen Sie auf dem eingeblendeten neuen Blatt das Abonnement, die virtuellen Netzwerke und Subnetze aus, denen Sie Zugriff auf diesen Schlüsseltresor gewähren möchten. Wenn bei den von Ihnen ausgewählten virtuellen Netzwerken und Subnetzen keine Dienstendpunkte aktiviert sind, wird die folgende Meldung angezeigt: „Bei den folgenden Netzwerken sind die Dienstendpunkte nicht aktiviert...“. Klicken Sie auf **Aktivieren**, nachdem Sie bestätigt haben, dass Sie Dienstendpunkte für die aufgeführten virtuellen Netzwerke und Subnetze aktivieren möchten. Dieser Vorgang kann bis zu 15 Minuten dauern.
-6. Sie können auch neue virtuelle Netzwerke und Subnetze hinzufügen und dann Dienstendpunkte für die neu erstellten virtuellen Netzwerke und Subnetze aktivieren, indem Sie auf **+ Neues virtuelles Netzwerk hinzufügen** klicken und die Anweisungen befolgen.
-7. Unter **IP-Netzwerke** können Sie IPv4-Adressbereiche hinzufügen, indem Sie IPv4-Adressbereiche in [CIDR-Notation (Classless Inter-Domain Routing)](https://tools.ietf.org/html/rfc4632) oder einzelne IP-Adressen eingeben.
-8. Klicken Sie auf **Speichern**.
+5. Wählen Sie auf dem angezeigten neuen Blatt das Abonnement, die virtuellen Netzwerke und Subnetze aus, denen Sie Zugriff auf diesen Schlüsseltresor gewähren möchten. Wenn für die von Ihnen ausgewählten virtuellen Netzwerke und Subnetze keine Dienstendpunkte aktiviert sind, bestätigen Sie, dass Sie Dienstendpunkte aktivieren möchten, und wählen Sie **Aktivieren** aus. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
+6. Fügen Sie unter **IP-Netzwerke** IPv4-Adressbereiche hinzu, indem Sie IPv4-Adressbereiche in [CIDR-Notation (Classless Inter-Domain Routing)](https://tools.ietf.org/html/rfc4632) oder einzelne IP-Adressen eingeben.
+7. Wählen Sie **Speichern**aus.
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
+Sie können auch neue virtuelle Netzwerke und Subnetze hinzufügen und dann Dienstendpunkte für die neu erstellten virtuellen Netzwerke und Subnetze aktivieren, indem Sie **+ Neues virtuelles Netzwerk hinzufügen** auswählen. Folgen Sie dann den Anweisungen.
+
+## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+
+Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls und virtuellen Netzwerken mithilfe der Azure CLI 2.0:
 
 1. [Installieren Sie Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli), und [melden Sie sich an](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
 
 2. Listen Sie die verfügbaren Regeln für virtuelle Netzwerke auf. Wenn Sie keine Regeln für diesen Schlüsselspeicher festgelegt haben, ist die Liste leer.
-```azurecli
-az keyvault network-rule list --resource-group myresourcegroup --name mykeyvault
-```
+   ```azurecli
+   az keyvault network-rule list --resource-group myresourcegroup --name mykeyvault
+   ```
 
 3. Aktivieren Sie den Dienstendpunkt für Key Vault in einem vorhandenen virtuellen Netzwerk und Subnetz.
-```azurecli
-az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.KeyVault"
-```
+   ```azurecli
+   az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.KeyVault"
+   ```
 
 4. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.
-```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
-az keyvault network-rule add --resource-group "demo9311" --name "demo9311premium" --subnet $subnetid
-```
+   ```azurecli
+   subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+   az keyvault network-rule add --resource-group "demo9311" --name "demo9311premium" --subnet $subnetid
+   ```
 
-5. Fügen Sie einen IP-Adressbereich hinzu, aus dem Datenverkehr zugelassen ist.
-```azurecli
-az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
-```
+5. Fügen Sie einen IP-Adressbereich hinzu, aus dem Datenverkehr zugelassen werden soll.
+   ```azurecli
+   az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
+   ```
 
-6. Wenn dieser Schlüsselspeicher für vertrauenswürdige Dienste zugänglich sein soll, legen Sie „bypass“ auf „AzureServices“ fest.
-```azurecli
-az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
-```
+6. Wenn dieser Schlüsselspeicher für vertrauenswürdige Dienste zugänglich sein sollte, legen Sie `bypass` auf `AzureServices` fest.
+   ```azurecli
+   az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
+   ```
 
-7. Nun ein letzter wichtiger Schritt: Aktivieren Sie die Netzwerkregeln, indem Sie die Standardaktion auf „deny“ festlegen.
-```azurecli
-az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
-```
+7. Aktivieren Sie die Netzwerkregeln, indem Sie die Standardaktion auf `Deny` festlegen.
+   ```azurecli
+   az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
+   ```
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
+
+Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls und virtuellen Netzwerken mithilfe der PowerShell:
 
 1. Installieren Sie die neueste Version von [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), und [melden Sie sich an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 2. Listen Sie die verfügbaren Regeln für virtuelle Netzwerke auf. Wenn Sie keine Regeln für diesen Schlüsselspeicher festgelegt haben, ist die Liste leer.
-```PowerShell
-(Get-AzureRmKeyVault -VaultName "mykeyvault").NetworkAcls
-```
+   ```PowerShell
+   (Get-AzureRmKeyVault -VaultName "mykeyvault").NetworkAcls
+   ```
 
 3. Aktivieren Sie den Dienstendpunkt für Key Vault in einem vorhandenen virtuellen Netzwerk und Subnetz.
-```PowerShell
-Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzureRmVirtualNetwork
-```
+   ```PowerShell
+   Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzureRmVirtualNetwork
+   ```
 
 4. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.
-```PowerShell
-$subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
-```
+   ```PowerShell
+   $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
+   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
+   ```
 
-5. Fügen Sie einen IP-Adressbereich hinzu, aus dem Datenverkehr zugelassen ist.
-```PowerShell
-Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
-```
+5. Fügen Sie einen IP-Adressbereich hinzu, aus dem Datenverkehr zugelassen werden soll.
+   ```PowerShell
+   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
+   ```
 
-6. Wenn dieser Schlüsselspeicher für vertrauenswürdige Dienste zugänglich sein soll, legen Sie „bypass“ auf „AzureServices“ fest.
-```PowerShell
-Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
-```
+6. Wenn dieser Schlüsselspeicher für vertrauenswürdige Dienste zugänglich sein sollte, legen Sie `bypass` auf `AzureServices` fest.
+   ```PowerShell
+   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
+   ```
 
-7. Nun ein letzter wichtiger Schritt: Aktivieren Sie die Netzwerkregeln, indem Sie die Standardaktion auf „deny“ festlegen.
-```PowerShell
-Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
-```
+7. Aktivieren Sie die Netzwerkregeln, indem Sie die Standardaktion auf `Deny` festlegen.
+   ```PowerShell
+   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
+   ```
 
 ## <a name="references"></a>Referenzen
 

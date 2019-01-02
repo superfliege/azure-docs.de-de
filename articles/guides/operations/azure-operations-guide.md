@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250780"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014734"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -107,7 +107,7 @@ Dienste zum Speichern und Verwalten von Daten:
 
 - Microsoft Azure StorSimple
 
-- Azure Redis Cache
+- Azure Cache for Redis
 
 ### <a name="application-services"></a>Anwendungsdienste
 
@@ -191,17 +191,17 @@ Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem A
 
 Bevor Sie Azure-Dienste verwenden können, benötigen Sie ein Abonnement. Es sind mehrere Abonnementypen verfügbar.
 
-**Kostenlose Konten**: Der Link zur Registrierung für ein kostenloses Konto befindet sich auf der [Azure-Website](https://azure.microsoft.com/). Sie erhalten damit eine Gutschrift für 30 Tage, damit Sie in Azure beliebige Kombinationen von Ressourcen ausprobieren können. Wenn Sie Ihren Gutschriftbetrag überschreiten, wird die Nutzung Ihres Kontos beendet. Am Ende des Testzeitraums werden Ihre Dienste außer Betrieb genommen und funktionieren nicht mehr. Sie können jederzeit ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen.
+**Kostenlose Konten:** Der Link zur Registrierung für ein kostenloses Konto befindet sich auf der [Azure-Website](https://azure.microsoft.com/). Sie erhalten damit eine Gutschrift für 30 Tage, damit Sie in Azure beliebige Kombinationen von Ressourcen ausprobieren können. Wenn Sie Ihren Gutschriftbetrag überschreiten, wird die Nutzung Ihres Kontos beendet. Am Ende des Testzeitraums werden Ihre Dienste außer Betrieb genommen und funktionieren nicht mehr. Sie können jederzeit ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen.
 
-**MSDN-Abonnements**: Wenn Sie über ein MSDN-Abonnement verfügen, erhalten Sie jeden Monat einen bestimmten Betrag als Azure-Gutschrift. Falls Sie beispielsweise das Abonnement „Microsoft Visual Studio Enterprise mit MSDN“ nutzen, erhalten Sie pro Monat eine Azure-Gutschrift in Höhe von \$150 US-Dollar.
+**MSDN-Abonnements:** Wenn Sie über ein MSDN-Abonnement verfügen, erhalten Sie jeden Monat einen bestimmten Betrag als Azure-Gutschrift. Falls Sie beispielsweise das Abonnement „Microsoft Visual Studio Enterprise mit MSDN“ nutzen, erhalten Sie pro Monat eine Azure-Gutschrift in Höhe von \$150 US-Dollar.
 
 Wenn der Gutschriftbetrag überschritten wird, wird Ihr Dienst bis zum Beginn des nächsten Monats deaktiviert. Sie können das Ausgabenlimit deaktivieren und die Daten für eine Kreditkarte angeben, die zum Begleichen der zusätzlichen Kosten verwendet werden soll. Für einige dieser Kosten gelten für MSDN-Konten Rabatte. Beispielsweise zahlen Sie den Linux-Preis für VMs, auf denen Windows Server ausgeführt wird, und es fallen keine weiteren Kosten für Microsoft-Server an, z.B. Microsoft SQL Server. Daher sind MSDN-Konten ideal für Entwicklungs- und Testszenarien geeignet.
 
-**BizSpark-Konten**: Das Microsoft BizSpark-Programm bietet für Startup-Unternehmen viele Vorteile. Einer dieser Vorteile ist der Zugriff auf die gesamte Microsoft-Software für Entwicklungs- und Testumgebungen für bis zu fünf MSDN-Konten. Sie erhalten für jedes dieser fünf MSDN-Konten eine Azure-Gutschrift in Höhe von 150 US-Dollar und zahlen für einige Azure-Dienste einen reduzierten Preis, z.B. Virtual Machines.
+**BizSpark-Konten:** Das Microsoft BizSpark-Programm bietet zahlreiche Vorteile für Startup-Unternehmen. Einer dieser Vorteile ist der Zugriff auf die gesamte Microsoft-Software für Entwicklungs- und Testumgebungen für bis zu fünf MSDN-Konten. Sie erhalten für jedes dieser fünf MSDN-Konten eine Azure-Gutschrift in Höhe von 150 US-Dollar und zahlen für einige Azure-Dienste einen reduzierten Preis, z.B. Virtual Machines.
 
-**Nutzungsbasierte Bezahlung**: Mit diesem Abonnement zahlen Sie nur für die tatsächliche Nutzung, indem Sie dem Konto eine Kredit- oder Debitkarte zuordnen. Wenn Sie für ein Unternehmen arbeiten, können Sie auch eine Genehmigung für die Zahlung auf Rechnung erhalten.
+**Nutzungsbasierte Bezahlung:** Mit diesem Abonnement zahlen Sie nur für die tatsächliche Nutzung, indem Sie dem Konto eine Kredit- oder Debitkarte zuordnen. Wenn Sie für ein Unternehmen arbeiten, können Sie auch eine Genehmigung für die Zahlung auf Rechnung erhalten.
 
-**Enterprise Agreements**: Mit einem Enterprise Agreement sagen Sie die Nutzung einer bestimmten Anzahl von Diensten in Azure für das nächste Jahr verbindlich zu und zahlen den entsprechenden Betrag im Voraus. Dieser verbindliche Betrag wird im Laufe des Jahres verbraucht. Falls Sie den zugesagten Betrag überschreiten, können Sie die Differenz im Nachhinein begleichen. Je nach Betrag der Zusage erhalten Sie für die Dienste in Azure einen Rabatt.
+**Enterprise Agreements:** Mit einem Enterprise Agreement sagen Sie die Nutzung einer bestimmten Anzahl von Diensten in Azure für das nächste Jahr verbindlich zu und zahlen den entsprechenden Betrag im Voraus. Dieser verbindliche Betrag wird im Laufe des Jahres verbraucht. Falls Sie den zugesagten Betrag überschreiten, können Sie die Differenz im Nachhinein begleichen. Je nach Betrag der Zusage erhalten Sie für die Dienste in Azure einen Rabatt.
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Gewähren des administrativen Zugriffs auf ein Azure-Abonnement
 
@@ -273,21 +273,21 @@ Mit Resource Manager-Vorlagen werden die Ressourcen und Ressourcenkonfiguratione
 
 Eine Resource Manager-Vorlage besteht aus vier Abschnitten:
 
-- **Parameter**: Dies sind Eingaben für die Bereitstellung. Parameterwerte können vom Benutzer oder automatisiert angegeben werden. Ein Beispielparameter ist ein Administratorbenutzername mit dem dazugehörigen Kennwort für eine Windows-VM. Die Parameterwerte werden nach dem Angeben für die gesamte Bereitstellung verwendet.
+- **Parameter:** Eingaben für die Bereitstellung. Parameterwerte können vom Benutzer oder automatisiert angegeben werden. Ein Beispielparameter ist ein Administratorbenutzername mit dem dazugehörigen Kennwort für eine Windows-VM. Die Parameterwerte werden nach dem Angeben für die gesamte Bereitstellung verwendet.
 
-- **Variablen**: Enthalten Werte, die für die gesamte Bereitstellung verwendet werden. Ein Variablenwert wird im Gegensatz zu Parametern nicht während der Bereitstellung angegeben. Stattdessen wird er hartcodiert oder dynamisch generiert.
+- **Variablen:** Enthalten Werte, die für die gesamte Bereitstellung verwendet werden. Ein Variablenwert wird im Gegensatz zu Parametern nicht während der Bereitstellung angegeben. Stattdessen wird er hartcodiert oder dynamisch generiert.
 
-- **Ressourcen**: In diesem Abschnitt der Vorlage werden die bereitzustellenden Ressourcen definiert, z.B. virtuelle Computer, Speicherkonten und virtuelle Netzwerke.
+- **Ressourcen:** In diesem Abschnitt der Vorlage werden die bereitzustellenden Ressourcen (virtuelle Computer, Speicherkonten, virtuelle Netzwerke und Ähnliches) definiert.
 
-- **Ausgabe**: Nach Abschluss einer Bereitstellung kann der Resource Manager Daten zurückgeben, z.B. dynamisch generierte Verbindungszeichenfolgen.
+- **Ausgabe:** Nach Abschluss einer Bereitstellung kann Resource Manager Daten zurückgeben (beispielsweise dynamisch generierte Verbindungszeichenfolgen).
 
 Die folgenden Mechanismen sind für die Automatisierung der Bereitstellung verfügbar:
 
-- **Funktionen**: Sie können in Resource Manager-Vorlagen mehrere Funktionen verwenden. Hierzu gehören Vorgänge wie das Konvertieren einer Zeichenfolge in Kleinbuchstaben, das Bereitstellen von mehreren Instanzen einer definierten Ressource und das dynamische Zurückgeben der Zielressourcengruppe. Resource Manager-Funktionen sind für das Erstellen von dynamischen Bereitstellungen hilfreich.
+- **Funktionen:** In Resource Manager-Vorlagen können mehrere Funktionen verwendet werden. Hierzu gehören Vorgänge wie das Konvertieren einer Zeichenfolge in Kleinbuchstaben, das Bereitstellen von mehreren Instanzen einer definierten Ressource und das dynamische Zurückgeben der Zielressourcengruppe. Resource Manager-Funktionen sind für das Erstellen von dynamischen Bereitstellungen hilfreich.
 
-- **Ressourcenabhängigkeiten**: Wenn Sie mehrere Ressourcen bereitstellen, sind einige Ressourcen von anderen Ressourcen abhängig. Zur Erleichterung der Bereitstellung können Sie eine Abhängigkeitsdeklaration verwenden, sodass abhängige Ressourcen vor anderen Ressourcen bereitgestellt werden.
+- **Ressourcenabhängigkeiten:** Wenn Sie mehrere Ressourcen bereitstellen, sind einige Ressourcen von anderen Ressourcen abhängig. Zur Erleichterung der Bereitstellung können Sie eine Abhängigkeitsdeklaration verwenden, sodass abhängige Ressourcen vor anderen Ressourcen bereitgestellt werden.
 
-- **Vorlagenlinks**: In einer Resource Manager-Vorlage können Sie einen Link zu einer anderen Vorlage einrichten. Auf diese Weise können Sie die Bereitstellung in eine Gruppe von zielgerichteten, zweckgebundenen Vorlagen unterteilen.
+- **Vorlagenlinks:** In einer Resource Manager-Vorlage können Sie einen Link zu einer anderen Vorlage einrichten. Auf diese Weise können Sie die Bereitstellung in eine Gruppe von zielgerichteten, zweckgebundenen Vorlagen unterteilen.
 
 Sie können Resource Manager-Vorlagen in jedem beliebigen Text-Editor erstellen. Das Azure SDK für Visual Studio enthält aber Tools, die hierfür hilfreich sind. Mit Visual Studio können Sie der Vorlage Ressourcen über einen Assistenten hinzufügen und die Vorlage dann direkt aus Visual Studio bereitstellen und debuggen. Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
 
@@ -301,11 +301,11 @@ Um Zugriff zu gewähren, weisen Sie dem Benutzer oder der Benutzergruppe eine Ro
 
 Im Folgenden werden einige Beispiele für [in Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md) aufgeführt:
 
-- **Besitzer**: Ein Benutzer mit dieser Rolle kann alles verwalten, z.B. auch den Zugriff.
+- **Besitzer:** Ein Benutzer mit dieser Rolle kann alles verwalten (unter anderem auch den Zugriff).
 
-- **Leser**: Eine Benutzer mit dieser Rolle kann Ressourcen jedes Typs (mit Ausnahme von Geheimnissen) lesen, aber keine Änderungen vornehmen.
+- **Leser:** Eine Benutzer mit dieser Rolle kann Ressourcen jeglicher Art (mit Ausnahme von Geheimnissen) lesen, aber keine Änderungen vornehmen.
 
-- **Mitwirkender für virtuelle Computer:** Ein Benutzer mit dieser Rolle kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk, mit dem er verbunden ist, oder das Speicherkonto, unter dem sich die VHD-Datei befindet.
+- **Mitwirkender für virtuelle Computer:** Ein Benutzer mit dieser Rolle kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk, mit dem sie verbunden sind, oder das Speicherkonto, in dem sich die VHD-Datei befindet.
 
 - **SQL-DB-Mitwirkender:** Ein Benutzer mit dieser Rolle kann SQL-Datenbanken verwalten, aber nicht ihre sicherheitsbezogenen Richtlinien.
 
@@ -481,9 +481,9 @@ Es gibt mehrere Optionen zum Bereitstellen eines virtuellen Netzwerks.
 
 - Azure Resource Manager-Vorlagen
 
->**Verwendung**: Immer dann, wenn Sie mit VMs in Azure arbeiten, verwenden Sie virtuelle Netzwerke. Dies ermöglicht eine Unterteilung Ihrer VMs in öffentliche und private Subnetze, ähnlich wie bei lokalen Rechenzentren.
+>**Verwendung:** Wenn Sie mit virtuellen Computern in Azure arbeiten, verwenden Sie auch virtuelle Netzwerke. Dies ermöglicht eine Unterteilung Ihrer VMs in öffentliche und private Subnetze, ähnlich wie bei lokalen Rechenzentren.
 
->**Erste Schritte**: Für die Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues virtuelles Netzwerk in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Wenn Sie im Portal einen neuen virtuellen Computer erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen. Informationen zum Einstieg finden Sie unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../../virtual-network/quick-create-portal.md).
+>**Erste Schritte:** Für die Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues virtuelles Netzwerk in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Wenn Sie im Portal einen neuen virtuellen Computer erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen. Informationen zum Einstieg finden Sie unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Zugriff und Sicherheit für virtuelle Netzwerke
 

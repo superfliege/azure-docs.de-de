@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 396dbfcfd13f508c33d8a1bb7370d9170b8f8a56
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499692"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410532"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -80,7 +80,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Ruft die benutzerdefinierte Einstellung für die Gesamtstruktur ab.<br>Beispiel: Namen von metrischen Zählern wie ldapsuccessfulbinds, ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes und ldapsearches.<br>Einstellungen für die Diagramme der Benutzeroberfläche (unter anderem). |
 > | Aktion | Microsoft.ADHybridHealthService/addsservices/forestsummary/read | Ruft die Zusammenfassung für die angegebene Gesamtstruktur ab, z.B. den Namen der Gesamtstruktur, die Anzahl der Domänen in dieser Gesamtstruktur, die Anzahl der Standorte, Informationen zu Standorten usw. |
 > | Aktion | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | Ruft die Liste der unterstützten Metriken für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst können dies z.B. Sperrungen von Extranet-Konten, die Gesamtanzahl der fehlgeschlagenen Anforderungen, ausstehende Tokenanforderungen (Proxy) oder Tokenanforderungen/Sekunde sein.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den ADSync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
-> | Aktion | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | Diese API ruft die Metrikinformationen für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, die Gesamtanzahl der fehlgeschlagenen Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
+> | Aktion | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | Diese API ruft die Metrikinformationen für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, Gesamtanzahl nicht erfolgreicher Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde und Ähnliches.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
 > | Aktion | Microsoft.ADHybridHealthService/addsservices/premiumcheck/read | Diese API ruft die Liste aller eingebundenen AD-Domänendienste für einen Premium-Mandanten ab. |
 > | Aktion | Microsoft.ADHybridHealthService/addsservices/read | Ruft Dienstdetails für den angegebenen Dienstnamen ab. |
 > | Aktion | Microsoft.ADHybridHealthService/addsservices/replicationdetails/read | Ruft Replikationsdetails für alle Server für den angegebenen Dienstnamen ab. |
@@ -115,9 +115,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.ADHybridHealthService/services/exportstatus/read | Ruft den Exportstatus für einen bestimmten Dienst ab. |
 > | Aktion | Microsoft.ADHybridHealthService/services/feedbacktype/feedback/read | Ruft Feedback zu Warnungen für einen bestimmten Dienst und Server ab. |
 > | Aktion | Microsoft.ADHybridHealthService/services/metricmetadata/read | Ruft die Liste der unterstützten Metriken für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst können dies z.B. Sperrungen von Extranet-Konten, die Gesamtanzahl der fehlgeschlagenen Anforderungen, ausstehende Tokenanforderungen (Proxy) oder Tokenanforderungen/Sekunde sein.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den ADSync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
-> | Aktion | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Diese API ruft anhand eines Diensts den Durchschnitt der Metriken für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, die Gesamtanzahl der fehlgeschlagenen Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
-> | Aktion | Microsoft.ADHybridHealthService/services/metrics/groups/read | Diese API ruft die Metrikinformationen für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, die Gesamtanzahl der fehlgeschlagenen Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
-> | Aktion | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Diese API ruft anhand eines Diensts die aggregierte Ansicht der Metriken für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, die Gesamtanzahl der fehlgeschlagenen Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
+> | Aktion | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Diese API ruft anhand eines Diensts den Durchschnitt der Metriken für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, Gesamtanzahl nicht erfolgreicher Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde und Ähnliches.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
+> | Aktion | Microsoft.ADHybridHealthService/services/metrics/groups/read | Diese API ruft die Metrikinformationen für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, Gesamtanzahl nicht erfolgreicher Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde und Ähnliches.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
+> | Aktion | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Diese API ruft anhand eines Diensts die aggregierte Ansicht der Metriken für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, Gesamtanzahl nicht erfolgreicher Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde und Ähnliches.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
 > | Aktion | Microsoft.ADHybridHealthService/services/monitoringconfiguration/write | Fügt die Überwachungskonfiguration für einen Dienst hinzu oder aktualisiert diese. |
 > | Aktion | Microsoft.ADHybridHealthService/services/monitoringconfigurations/read | Ruft Überwachungskonfigurationen für einen bestimmten Dienst ab. |
 > | Aktion | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | Fügt Überwachungskonfigurationen zu einem Dienst hinzu. |
@@ -130,7 +130,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.ADHybridHealthService/services/servicemembers/datafreshness/read | Diese API ruft für einen bestimmten Server die Liste der Datentypen, die von den Servern hochgeladen werden, sowie die letzte Uhrzeit für jeden Upload ab. |
 > | Aktion | Microsoft.ADHybridHealthService/services/servicemembers/delete | Löscht eine Dienstinstanz aus dem Dienst. |
 > | Aktion | Microsoft.ADHybridHealthService/services/servicemembers/exportstatus/read | Ruft Informationen zu Exportfehlern bei der Synchronisierung für einen bestimmten Synchronisierungsdienst ab. |
-> | Aktion | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | Diese API ruft die Metrikinformationen für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, die Gesamtanzahl der fehlgeschlagenen Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
+> | Aktion | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | Diese API ruft die Metrikinformationen für einen bestimmten Dienst ab.<br>Für den AD-Verbunddienst kann die API beispielsweise verwendet werden, um Informationen zu Folgendem abzurufen: Sperrungen von Extranet-Konten, Gesamtanzahl nicht erfolgreicher Anforderungen, ausstehende Tokenanforderungen (Proxy), Tokenanforderungen/Sekunde und Ähnliches.<br>Für den AD-Domänendienst können dies z.B. NTLM-Authentifizierungen/Sekunde, erfolgreiche LDAP-Bindungen/Sekunde, die Bindungszeit für LDAPs, aktive LDAP-Threads, Kerberos-Authentifizierungen/Sekunde oder die Gesamtanzahl der ATQ-Threads sein.<br>Für den Sync-Dienst können dies z.B. die Latenz des Ausführungsprofil, hergestellte TCP-Verbindungen, private Bytes des Insights-Agents oder Statistiken über Exporte in Azure AD sein. |
 > | Aktion | Microsoft.ADHybridHealthService/services/servicemembers/read | Liest die Dienstinstanz im Dienst. |
 > | Aktion | Microsoft.ADHybridHealthService/services/servicemembers/serviceconfiguration/read | Ruft die Dienstkonfiguration für einen bestimmten Mandanten ab. |
 > | Aktion | Microsoft.ADHybridHealthService/services/tenantwhitelisting/read | Ruft den Status eines Features für die Aufnahme in die Whitelist für einen bestimmten Mandanten ab. |
@@ -600,38 +600,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Batch/register/action | Registriert das Abonnement für den Batch-Ressourcenanbieter und ermöglicht die Erstellung von Batch-Konten. |
 > | Aktion | Microsoft.Batch/unregister/action | Hebt die Registrierung für das Abonnement für den Batch-Ressourcenanbieter auf und verhindert so die Erstellung von Batch-Konten. |
 
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-
-> [!div class="mx-tdCol2BreakAll"]
-> | Aktionstyp | Vorgang | Beschreibung |
-> | --- | --- | --- |
-> | Aktion | Microsoft.BatchAI/clusters/read | Listet Batch AI-Cluster auf oder ruft die Eigenschaften eines Batch AI-Clusters ab. |
-> | Aktion | Microsoft.BatchAI/fileservers/read | Listet Batch AI-Dateiserver auf oder ruft die Eigenschaften eines Batch AI-Dateiservers ab. |
-> | Aktion | Microsoft.BatchAI/locations/operationresults/read | Ruft das Ergebnis des asynchronen Azure Batch AI-Vorgangs in der angegebenen Azure-Region ab. |
-> | Aktion | Microsoft.BatchAI/locations/operationstatuses/read | Ruft den Status des asynchronen Azure Batch AI-Vorgangs in der angegebenen Azure-Region ab. |
-> | Aktion | Microsoft.BatchAI/locations/usages/read | Ruft Azure Batch AI-Verwendungen des angegebenen Abonnements in der angegebenen Azure-Region ab. |
-> | Aktion | Microsoft.BatchAI/register/action | Registriert das Abonnement für den Batch AI-Ressourcenanbieter und ermöglicht die Erstellung von Batch AI-Ressourcen. |
-> | Aktion | Microsoft.BatchAI/unregister/action | Hebt die Registrierung des Abonnements für den Azure Batch AI-Ressourcenanbieter auf, der die Erstellung von Azure Batch AI-Ressourcen verhindert. |
-> | Aktion | Microsoft.BatchAI/workspaces/clusters/delete | Löscht einen Batch AI-Cluster. |
-> | Aktion | Microsoft.BatchAI/workspaces/clusters/read | Listet Batch AI-Cluster auf oder ruft die Eigenschaften eines Batch AI-Clusters ab. |
-> | Aktion | Microsoft.BatchAI/workspaces/clusters/remoteLoginInformation/action | Listet Informationen zur Remoteanmeldung für einen Batch AI-Cluster auf. |
-> | Aktion | Microsoft.BatchAI/workspaces/clusters/write | Erstellt einen neuen Batch AI-Cluster oder aktualisiert einen vorhandenen Batch AI-Cluster. |
-> | Aktion | Microsoft.BatchAI/workspaces/delete | Löscht einen Azure Batch AI-Arbeitsbereich. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/delete | Löscht ein Azure Batch AI-Experiment. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/jobs/delete | Löscht einen Batch AI-Auftrag. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/jobs/listoutputfiles/action | Listet die Ausgabedateien für einen Azure Batch AI-Auftrag auf. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/jobs/read | Listet Batch AI-Aufträge auf oder ruft die Eigenschaften eines Batch AI-Auftrags ab. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/jobs/remoteLoginInformation/action | Listet Informationen zur Remoteanmeldung für einen Batch AI-Auftrag auf. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/jobs/terminate/action | Beendet einen Batch AI-Auftrag. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/jobs/write | Erstellt einen neues Batch AI-Auftrag oder aktualisiert einen vorhandenen Batch AI-Auftrag. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/read | Listet Azure Batch AI-Experimente auf oder ruft die Eigenschaften eines Azure Batch AI-Experiments ab. |
-> | Aktion | Microsoft.BatchAI/workspaces/experiments/write | Erstellt ein neues Azure Batch AI-Experiment oder aktualisiert ein vorhandenes Azure Batch AI-Experiment. |
-> | Aktion | Microsoft.BatchAI/workspaces/fileservers/delete | Löscht einen Batch AI-Dateiserver. |
-> | Aktion | Microsoft.BatchAI/workspaces/fileservers/read | Listet Batch AI-Dateiserver auf oder ruft die Eigenschaften eines Batch AI-Dateiservers ab. |
-> | Aktion | Microsoft.BatchAI/workspaces/fileservers/write | Erstellt einen neuen Batch AI-Dateiserver oder aktualisiert einen vorhandenen Batch AI-Dateiserver. |
-> | Aktion | Microsoft.BatchAI/workspaces/read | Listet Azure Batch AI-Arbeitsbereiche auf oder ruft die Eigenschaften eines Azure Batch AI-Arbeitsbereichs ab. |
-> | Aktion | Microsoft.BatchAI/workspaces/write | Erstellt einen neuen Azure Batch AI-Arbeitsbereich oder aktualisiert einen vorhandenen Azure Batch AI-Arbeitsbereich. |
-
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -695,31 +663,31 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > [!div class="mx-tdCol2BreakAll"]
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
-> | Aktion | Microsoft.Cache/checknameavailability/action | Prüft, ob ein Name für die Verwendung mit einer neuen Redis Cache-Instanz verfügbar ist. |
+> | Aktion | Microsoft.Cache/checknameavailability/action | Prüft, ob ein Name für die Verwendung mit einer neuen Azure Cache for Redis-Instanz verfügbar ist. |
 > | Aktion | Microsoft.Cache/locations/operationresults/read | Ruft das Ergebnis eines lange andauernden Vorgangs ab, dessen Location-Header zuvor an den Client zurückgegeben wurde. |
 > | Aktion | Microsoft.Cache/operations/read | Listet die Vorgänge auf, die der Microsoft.Cache-Anbieter unterstützt. |
-> | Aktion | Microsoft.Cache/redis/delete | Dient zum Löschen der gesamten Redis Cache-Instanz. |
+> | Aktion | Microsoft.Cache/redis/delete | Löscht die gesamte Azure Cache for Redis-Instanz. |
 > | Aktion | Microsoft.Cache/redis/export/action | Dient dazu, Redis-Daten im angegebenen Format in Speicherblobs mit Präfix zu exportieren. |
-> | Aktion | Microsoft.Cache/redis/firewallRules/delete | Dient zum Löschen der IP-Firewallregeln einer Redis Cache-Instanz. |
-> | Aktion | Microsoft.Cache/redis/firewallRules/read | Dient zum Abrufen der IP-Firewallregeln einer Redis Cache-Instanz. |
-> | Aktion | Microsoft.Cache/redis/firewallRules/write | Dient zum Bearbeiten der IP-Firewallregeln einer Redis Cache-Instanz. |
+> | Aktion | Microsoft.Cache/redis/firewallRules/delete | Dient zum Löschen von IP-Firewallregeln einer Azure Cache for Redis-Instanz. |
+> | Aktion | Microsoft.Cache/redis/firewallRules/read | Ruft die IP-Firewallregeln einer Azure Cache for Redis-Instanz ab. |
+> | Aktion | Microsoft.Cache/redis/firewallRules/write | Dient zum Bearbeiten der IP-Firewallregeln einer Azure Cache for Redis-Instanz. |
 > | Aktion | Microsoft.Cache/redis/forceReboot/action | Dient zum Erzwingen des Neustarts einer Cache-Instanz (ggf. mit Datenverlust). |
 > | Aktion | Microsoft.Cache/redis/import/action | Dient zum Importieren von Daten eines angegebenen Formats aus mehreren Blobs in Redis. |
-> | Aktion | Microsoft.Cache/redis/linkedservers/delete | Dient zum Löschen von Verbindungsservern aus einer Redis Cache-Instanz. |
-> | Aktion | Microsoft.Cache/redis/linkedservers/read | Dient zum Abrufen von Verbindungsservern, die einer Redis Cache-Instanz zugeordnet sind. |
-> | Aktion | Microsoft.Cache/redis/linkedservers/write | Dient zum Hinzufügen von Verbindungsservern zu einer Redis Cache-Instanz. |
-> | Aktion | Microsoft.Cache/redis/listKeys/action | Dient zum Anzeigen des Werts von Redis Cache-Zugriffsschlüsseln im Verwaltungsportal. |
+> | Aktion | Microsoft.Cache/redis/linkedservers/delete | Löscht den Verbindungsserver aus einer Azure Cache for Redis-Instanz. |
+> | Aktion | Microsoft.Cache/redis/linkedservers/read | Dient zum Abrufen von Verbindungsservern, die einer Azure Cache for Redis-Instanz zugeordnet sind. |
+> | Aktion | Microsoft.Cache/redis/linkedservers/write | Dient zum Hinzufügen eines Verbindungsservers zu einer Azure Cache for Redis-Instanz. |
+> | Aktion | Microsoft.Cache/redis/listKeys/action | Zeigt den Wert von Azure Cache for Redis-Zugriffsschlüsseln im Verwaltungsportal an. |
 > | Aktion | Microsoft.Cache/redis/listUpgradeNotifications/read | Dient zum Auflisten der neuesten Upgradebenachrichtigungen für den Cache-Mandanten. |
-> | Aktion | Microsoft.Cache/redis/metricDefinitions/read | Ruft die verfügbaren Metriken für eine Redis Cache-Instanz ab. |
-> | Aktion | Microsoft.Cache/redis/patchSchedules/delete | Dient zum Löschen des Patchzeitplans einer Redis Cache-Instanz. |
-> | Aktion | Microsoft.Cache/redis/patchSchedules/read | Ruft den Patchzeitplan einer Redis Cache-Instanz ab. |
-> | Aktion | Microsoft.Cache/redis/patchSchedules/write | Dient zum Ändern des Patchzeitplans einer Redis Cache-Instanz. |
-> | Aktion | Microsoft.Cache/redis/read | Dient zum Anzeigen der Redis Cache-Einstellungen und -Konfiguration im Verwaltungsportal. |
-> | Aktion | Microsoft.Cache/redis/recommendations/read | Dient zum Lesen der Empfehlungen für Azure Redis Cache. |
-> | Aktion | Microsoft.Cache/redis/regenerateKey/action | Dient zum Ändern des Werts von Redis Cache-Zugriffsschlüsseln im Verwaltungsportal. |
+> | Aktion | Microsoft.Cache/redis/metricDefinitions/read | Ruft die verfügbaren Metriken für eine Azure Cache for Redis-Instanz ab. |
+> | Aktion | Microsoft.Cache/redis/patchSchedules/delete | Löscht den Patchzeitplan einer Azure Cache for Redis-Instanz. |
+> | Aktion | Microsoft.Cache/redis/patchSchedules/read | Ruft den Patchzeitplan einer Azure Cache for Redis-Instanz ab. |
+> | Aktion | Microsoft.Cache/redis/patchSchedules/write | Dient zum Ändern des Patchzeitplans einer Azure Cache for Redis-Instanz. |
+> | Aktion | Microsoft.Cache/redis/read | Zeigt die Einstellungen und die Konfiguration einer Azure Cache for Redis-Instanz im Verwaltungsportal an. |
+> | Aktion | Microsoft.Cache/redis/recommendations/read | Liest Empfehlungen für Azure Cache for Redis. |
+> | Aktion | Microsoft.Cache/redis/regenerateKey/action | Dient zum Ändern des Werts von Azure Cache for Redis-Zugriffsschlüsseln im Verwaltungsportal. |
 > | Aktion | Microsoft.Cache/redis/start/action | Dient zum Starten einer Cache-Instanz. |
 > | Aktion | Microsoft.Cache/redis/stop/action | Dient zum Beenden einer Cache-Instanz. |
-> | Aktion | Microsoft.Cache/redis/write | Dient zum Ändern der Redis Cache-Einstellungen und -Konfiguration im Verwaltungsportal. |
+> | Aktion | Microsoft.Cache/redis/write | Dient zum Ändern der Einstellungen und der Konfiguration einer Azure Cache for Redis-Instanz im Verwaltungsportal. |
 > | Aktion | Microsoft.Cache/register/action | Registriert den Ressourcenanbieter „Microsoft.Cache“ bei einem Abonnement. |
 > | Aktion | Microsoft.Cache/unregister/action | Hebt die Registrierung des Ressourcenanbieters „Microsoft.Cache“ bei einem Abonnement auf. |
 
@@ -1229,7 +1197,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Consumption/pricesheets/read | Listet die Daten zu Preisblättern nach einem Abonnement oder einer Verwaltungsgruppe auf. |
 > | Aktion | Microsoft.Consumption/reservationDetails/read | Listet die Auslastungsdetails für reservierte Instanzen nach Reservierungsauftrag oder Verwaltungsgruppe auf. Die Detaildaten gelten pro Instanz und Tag. |
 > | Aktion | Microsoft.Consumption/reservationRecommendations/read | Führt einzelne oder freigegebene Empfehlungen für reservierte Instanzen für ein Abonnement ab. |
-> | Aktion | Microsoft.Consumption/reservationSummaries/read | Listet die Auslastungszusammenfassung für reservierte Instanzen nach Reservierungsauftrag oder Verwaltungsgruppe auf. Die Zusammenfassungsdaten gelten entweder pro Monat oder Tag. |
+> | Aktion | Microsoft.Consumption/reservationSummaries/read | Zeigt die Auslastungszusammenfassung für reservierte Instanzen nach Reservierungsauftrag oder Verwaltungsgruppe an. Die Zusammenfassungsdaten gelten entweder pro Monat oder Tag. |
 > | Aktion | Microsoft.Consumption/reservationTransactions/read | Listet den Transaktionsverlauf für reservierte Instanzen nach Verwaltungsgruppe auf. |
 > | Aktion | Microsoft.Consumption/tenants/register/action | Hiermit registrieren Sie eine Aktion für den Umfang von Microsoft.Consumption durch einen Mandanten. |
 > | Aktion | Microsoft.Consumption/terms/read | Liste die Bedingungen für ein Abonnement oder eine Verwaltungsgruppe auf. |
@@ -2680,24 +2648,24 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > [!div class="mx-tdCol2BreakAll"]
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
-> | Aktion | Microsoft.LocationBasedServices/accounts/delete | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Löscht ein standortbasiertes Dienstkonto. |
-> | Aktion | Microsoft.LocationBasedServices/accounts/listKeys/action | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Führt standortbasierte Schlüssel für Dienstkonten auf. |
-> | Aktion | Microsoft.LocationBasedServices/accounts/read | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Ruft ein standortbasiertes Dienstkonto ab. |
-> | Aktion | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Generiert einen neuen primären oder sekundären Schlüssel für ein standortbasiertes Dienstkonto. |
-> | Aktion | Microsoft.LocationBasedServices/accounts/write | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Erstellt oder aktualisiert ein standortbasiertes Dienstkonto. |
-> | Aktion | Microsoft.LocationBasedServices/register/action | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Registriert den Anbieter. |
+> | Aktion | Microsoft.LocationBasedServices/accounts/delete | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Löscht ein Location Based Services-Konto. |
+> | Aktion | Microsoft.LocationBasedServices/accounts/listKeys/action | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Listet Location Based Services-Kontoschlüssel auf. |
+> | Aktion | Microsoft.LocationBasedServices/accounts/read | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Ruft ein Location Based Services-Konto ab. |
+> | Aktion | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Generiert einen neuen primären oder sekundären Schlüssel für ein Location Based Services-Konto. |
+> | Aktion | Microsoft.LocationBasedServices/accounts/write | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Erstellt oder aktualisiert ein Location Based Services-Konto. |
+> | Aktion | Microsoft.LocationBasedServices/register/action | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Registriert den Anbieter. |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
-> | Aktion | Microsoft.LocationServices/accounts/delete | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Löscht ein standortbasiertes Dienstkonto. |
-> | Aktion | Microsoft.LocationServices/accounts/listKeys/action | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Führt standortbasierte Schlüssel für Dienstkonten auf. |
-> | Aktion | Microsoft.LocationServices/accounts/read | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Ruft ein standortbasiertes Dienstkonto ab. |
-> | Aktion | Microsoft.LocationServices/accounts/regenerateKey/action | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Generiert einen neuen primären oder sekundären Schlüssel für ein standortbasiertes Dienstkonto. |
-> | Aktion | Microsoft.LocationServices/accounts/write | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Erstellt oder aktualisiert ein standortbasiertes Dienstkonto. |
-> | Aktion | Microsoft.LocationServices/register/action | (Veraltet: Verwenden Sie /providers/Microsoft.Maps) Registriert den Anbieter. |
+> | Aktion | Microsoft.LocationServices/accounts/delete | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Löscht ein Location Based Services-Konto. |
+> | Aktion | Microsoft.LocationServices/accounts/listKeys/action | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Listet Location Based Services-Kontoschlüssel auf. |
+> | Aktion | Microsoft.LocationServices/accounts/read | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Ruft ein Location Based Services-Konto ab. |
+> | Aktion | Microsoft.LocationServices/accounts/regenerateKey/action | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Generiert einen neuen primären oder sekundären Schlüssel für ein Location Based Services-Konto. |
+> | Aktion | Microsoft.LocationServices/accounts/write | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Dient zum Erstellen oder Aktualisieren eines Location Based Services-Kontos. |
+> | Aktion | Microsoft.LocationServices/register/action | (Veraltet: Verwenden Sie „/providers/Microsoft.Maps“.) Registriert den Anbieter. |
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 

@@ -1,40 +1,40 @@
 ---
-title: Konfigurieren von Azure ExpressRoute Global Reach | Microsoft-Dokumentation
+title: 'Konfigurieren von Global Reach – ExpressRoute: Azure | Microsoft-Dokumentation'
 description: Dieser Artikel hilft Ihnen, ExpressRoute-Leitungen miteinander zu verbinden, um ein privates Netzwerk zwischen Ihren lokalen Netzwerken aufzubauen und Global Reach zu aktivieren.
-documentationcenter: na
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 12/13/2018
 ms.author: mialdrid
-ms.openlocfilehash: 67fbf9dc430d615efe3ef894add1a26bbce792bc
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3df107f8854469b50c5e8483515388b5c93fb244
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50237977"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383271"
 ---
-# <a name="configure-expressroute-global-reach-preview"></a>Konfigurieren von ExpressRoute Global Reach (Vorschau)
+# <a name="configure-expressroute-global-reach-preview"></a>Konfigurieren von ExpressRoute Global Reach (Vorschauversion)
 Dieser Artikel unterstützt Sie bei der Konfiguration von ExpressRoute Global Reach mit PowerShell. Weitere Informationen finden Sie unter [ExpressRoute Global Reach (Vorschau)](expressroute-global-reach.md).
  
 ## <a name="before-you-begin"></a>Voraussetzungen
 > [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Public Preview wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
 
 
-Stellen Sie vor Beginn der Konfiguration sicher, dass Sie mit den folgenden Anforderungen vertraut sind.
+Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie mit der Konfiguration beginnen:
 
-* Installieren Sie die neueste Version von Azure PowerShell. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps).
-* Machen Sie sich mit den [Workflows](expressroute-workflows.md) zur Bereitstellung von ExpressRoute-Leitungen vertraut.
-* Vergewissern Sie sich, dass Ihre ExpressRoute-Leitungen den Status „Bereitgestellt“ haben.
-* Stellen Sie sicher, dass für Ihre ExpressRoute-Leitungen das private Azure-Peering konfiguriert ist.  
+* Die neueste Version von Azure PowerShell ist installiert. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps).
+* Sie sind mit den [Workflows](expressroute-workflows.md) zur Bereitstellung von ExpressRoute-Leitungen vertraut.
+* Ihre ExpressRoute-Leitungen haben den Status „Bereitgestellt“.
+* Für Ihre ExpressRoute-Leitungen ist privates Azure-Peering konfiguriert.  
 
-### <a name="log-into-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
-Bevor Sie mit dieser Konfiguration beginnen, müssen Sie sich bei Ihrem Azure-Konto anmelden. 
+### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
+Um mit der Konfiguration zu beginnen, melden Sie sich zunächst bei Ihrem Azure-Konto an. 
 
-Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Sie werden vom Befehl zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert.  
+Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Sie werden zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert.  
 
 ```powershell
 Connect-AzureRmAccount
@@ -53,7 +53,9 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 ```
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Bestimmen der zu konfigurierenden ExpressRoute-Leitungen
-Sie können ExpressRoute Global Reach zwischen zwei beliebigen ExpressRoute-Leitungen aktivieren, solange sie sich in den unterstützten Ländern befinden und an verschiedenen Peeringstandorten erstellt werden. Wenn beide Leitungen Ihrem Abonnement zugewiesen sind, können Sie eine der beiden Leitungen auswählen, um die Konfiguration in den folgenden Abschnitten auszuführen. Wenn sich die beiden Leitungen in unterschiedlichen Azure-Abonnements befinden, benötigen Sie die Autorisierung eines Azure-Abonnements und müssen den Autorisierungsschlüssel übergeben, sofern Sie den Konfigurationsbefehl im anderen Azure-Abonnement ausführen.
+Sie können ExpressRoute Global Reach zwischen zwei beliebigen ExpressRoute-Leitungen aktivieren, solange sich diese in den unterstützten Ländern befinden und an verschiedenen Peeringstandorten erstellt wurden. Wenn beide Leitungen Ihrem Abonnement zugewiesen sind, können Sie eine der beiden Leitungen auswählen, um die Konfiguration in den folgenden Abschnitten auszuführen. 
+
+Wenn sich die beiden Leitungen in unterschiedlichen Azure-Abonnements befinden, benötigen Sie die Autorisierung eines der Azure-Abonnements. Den Autorisierungsschlüssel übergeben Sie, wenn Sie den Konfigurationsbefehl im anderen Azure-Abonnement ausführen.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Aktivieren der Konnektivität zwischen Ihren lokalen Netzwerken
 
@@ -64,33 +66,29 @@ $ckt_1 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGro
 $ckt_2 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
 ```
 
-Rufen Sie den folgenden Befehl für Leitung 1 auf, und geben Sie die private Peering-ID von Leitung 2 ein.
+Führen Sie den folgenden Befehl für Leitung 1 aus, und übergeben Sie die ID für das private Peering von Leitung 2. Beachten Sie dabei Folgendes:
 
-> [!NOTE]
-> Die ID für das private Peering sieht wie folgt aus: */subscriptions/{Ihre_Abonnement-ID}/resourceGroups/{Ihre_Ressourcengruppe}/providers/Microsoft.Network/expressRouteCircuits/{Name_Ihrer_Leitung}/peerings/AzurePrivatePeering*
-> 
->
+* Die ID für das private Peering sieht in etwa wie folgt aus: 
+
+  ```
+  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
+  ```
+* *-AddressPrefix* muss ein IPv4-Subnetz vom Typ „/29“ sein (Beispiel: 10.0.0.0/29). Wir verwenden IP-Adressen in diesem Subnetz, um eine Verbindung zwischen den beiden ExpressRoute-Leitungen herzustellen. Die Adressen in diesem Subnetz dürfen nicht in Ihren virtuellen Azure-Netzwerken oder in Ihrem lokalen Netzwerk verwendet werden.
 
 ```powershell
 Add-AzureRmExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
 ```
 
-> [!IMPORTANT]
-> *-AddressPrefix* muss ein IPv4-Subnetz des Typs „/29“ sein, z.B. „10.0.0.0/29“. Wir nutzen IP-Adressen in diesem Subnetz, um Konnektivität zwischen den beiden ExpressRoute-Leitungen herzustellen. Sie müssen keine Adressen in diesem Subnetz in Ihren Azure VNETs oder lokalen Netzwerken verwenden.
-> 
-
-
-
-Speichern Sie die Konfiguration für Leitung 1.
+Speichern Sie die Konfiguration für Leitung 1 wie folgt:
 ```powershell
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-Wenn der oben beschriebene Vorgang abgeschlossen ist, sollten Sie dank der beiden ExpressRoute-Leitungen auf beiden Seiten über Konnektivität zwischen Ihren lokalen Netzwerken verfügen.
+Wenn der vorherige Vorgang abgeschlossen ist, sollten Sie dank der beiden ExpressRoute-Leitungen auf beiden Seiten über Konnektivität zwischen Ihren lokalen Netzwerken verfügen.
 
 ### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>ExpressRoute-Leitungen in verschiedenen Azure-Abonnements
 
-Wenn die zwei Leitungen nicht im gleichen Azure-Abonnement enthalten sind, benötigen Sie eine Autorisierung. Bei der folgenden Konfiguration wird die Autorisierung im Abonnement von Leitung 2 generiert und der Autorisierungsschlüssel an Leitung 1 übergeben.
+Wenn sich die beiden Leitungen nicht im gleichen Azure-Abonnement befinden, benötigen Sie eine Autorisierung. Bei der folgenden Konfiguration wird die Autorisierung im Abonnement von Leitung 2 generiert und der Autorisierungsschlüssel an Leitung 1 übergeben.
 
 Generieren Sie einen Autorisierungsschlüssel. 
 ```powershell
@@ -100,7 +98,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_2
 ```
 Notieren Sie sich die ID für das private Peering von Leitung 2 sowie den Autorisierungsschlüssel.
 
-Führen Sie den folgenden Befehl für Leitung 1 aus. Übergeben Sie die ID für das private Peering von Leitung 2 sowie den Autorisierungsschlüssel. 
+Führen Sie den folgenden Befehl für Leitung 1 aus. Übergeben Sie die ID für das private Peering von Leitung 2 und den Autorisierungsschlüssel.
 ```powershell
 Add-AzureRmExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
 ```
@@ -110,21 +108,21 @@ Speichern Sie die Konfiguration für Leitung 1.
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-Wenn der oben beschriebene Vorgang abgeschlossen ist, sollten Sie dank der beiden ExpressRoute-Leitungen auf beiden Seiten über Konnektivität zwischen Ihren lokalen Netzwerken verfügen.
+Wenn der vorherige Vorgang abgeschlossen ist, sollten Sie dank der beiden ExpressRoute-Leitungen auf beiden Seiten über Konnektivität zwischen Ihren lokalen Netzwerken verfügen.
 
 ## <a name="get-and-verify-the-configuration"></a>Abrufen und Überprüfen der Konfiguration
 
-Verwenden Sie den folgenden Befehl, um die Konfiguration für die Leitung zu überprüfen, für die die Konfiguration vorgenommen wurde, z.B. Leitung 1 im obigen Beispiel.
+Verwenden Sie den folgenden Befehl, um die Konfiguration für die Leitung zu überprüfen, für die die Konfiguration vorgenommen wurde (Leitung 1 im obigen Beispiel).
 
 ```powershell
 $ckt1 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-Wenn Sie in PowerShell *$ckt1* ausführen, sehen Sie *CircuitConnectionStatus* in der Ausgabe. Sie erfahren, ob Konnektivität eingerichtet wurde bzw. ob der Status „Connected“ (Verbunden) oder „Disconnected“ (Nicht verbunden) ist. 
+Wenn Sie in PowerShell *$ckt1* ausführen, wird *CircuitConnectionStatus* in der Ausgabe angezeigt. So können Sie ermitteln, ob die Verbindung hergestellt wurde. Mögliche Werte: „Connected“ (Verbunden) und „Disconnected“ (Getrennt). 
 
 ## <a name="disable-connectivity-between-your-on-premises-networks"></a>Deaktivieren der Konnektivität zwischen Ihren lokalen Netzwerken
 
-Zum Deaktivieren führen Sie die Befehle für die Leitung aus, für die die Konfiguration vorgenommen wurde, z.B. Leitung 1 im obigen Beispiel.
+Führen Sie die Befehle zum Deaktivieren der Konnektivität für die Leitung aus, für die die Konfiguration vorgenommen wurde (Leitung 1 im obigen Beispiel).
 
 ```powershell
 $ckt1 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
@@ -134,7 +132,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 
 Sie können den Vorgang „Get“ ausführen, um den Status zu überprüfen. 
 
-Sobald der oben genannte Vorgang abgeschlossen ist, besteht über Ihre ExpressRoute-Leitungen keine Konnektivität mehr zwischen Ihren lokalen Netzwerken. 
+Nach Abschluss des obigen Vorgangs besteht zwischen Ihren lokalen Netzwerken keine Verbindung mehr über Ihre ExpressRoute-Leitungen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

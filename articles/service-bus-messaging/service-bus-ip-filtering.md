@@ -1,6 +1,6 @@
 ---
-title: 'Azure Service Bus: IP-Verbindungsfilter | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mithilfe der IP-Filterung Verbindungen von bestimmten IP-Adressen mit Azure Service Bus blockieren.
+title: Firewallregeln für Azure Service Bus | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Service Bus zulassen.
 services: service-bus
 documentationcenter: ''
 author: clemensv
@@ -10,29 +10,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f8771be9a96ae188a9610a1b19dfd6cbd49ba277
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884802"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270432"
 ---
-# <a name="use-ip-filters"></a>Verwenden von IP-Filtern
+# <a name="use-firewall-rules"></a>Verwenden von Firewallregeln
 
-Für Szenarien, in denen nur von bestimmten bekannten Websites aus auf Azure Service Bus zugegriffen werden kann, können Sie mithilfe des Features *IP-Filter* Regeln zum Ablehnen oder Akzeptieren von Datenverkehr konfigurieren, der von bestimmten IPv4-Adressen stammt. Bei diesen Adressen kann es sich beispielsweise um die Adressen eines unternehmenseigenen NAT-Gateways handeln.
+Für Szenarien, in denen Azure Service Bus nur von bestimmten bekannten Sites aus zugänglich sein soll, können Sie mithilfe von Firewallregeln Regeln für die Akzeptierung von Datenverkehr konfigurieren, der von bestimmten IPv4-Adressen stammt. Bei diesen Adressen kann es sich beispielsweise um die Adressen eines unternehmenseigenen NAT-Gateways handeln.
 
 ## <a name="when-to-use"></a>Einsatzgebiete
 
-Das Blockieren bestimmter IP-Adressen für Service Bus-Endpunkte ist in zwei spezifischen Anwendungsfällen hilfreich:
-
-- Service Bus soll nur Datenverkehr aus einem bestimmten IP-Adressbereich empfangen und jeglichen anderen Datenverkehr ablehnen. Ein Beispiel wäre etwa, wenn Sie Service Bus mit [Azure Express Route][express-route] verwenden, um private Verbindungen mit Ihrer lokalen Infrastruktur zu erstellen.
-- Sie müssen Datenverkehr von IP-Adressen ablehnen, die der Service Bus-Administrator als verdächtig eingestuft hat.
+Wenn Sie Ihre Umgebung so einrichten möchten, dass Service Bus nur Datenverkehr aus einem bestimmten IP-Adressbereich empfängt, können Sie eine *Firewall* verwenden, um andere IP-Adressen für Service Bus-Endpunkte zu blockieren. Ein Beispiel wäre etwa, wenn Sie Service Bus mit [Azure Express Route][express-route] verwenden, um private Verbindungen mit Ihrer lokalen Infrastruktur zu erstellen. 
 
 ## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
 
 Die IP-Filterregeln werden auf der Service Bus-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll.
 
-Alle Verbindungsversuche von einer IP-Adresse, die der IP-Ablehnungsregel für den Service Bus-Namespace entspricht, werden als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt.
+Jeder Verbindungsversuch über eine IP-Adresse, die nicht mit einer IP-Zulassungsregel im Service Bus-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt.
 
 ## <a name="default-setting"></a>Standardeinstellung
 
@@ -42,67 +39,107 @@ Das Raster **IP-Filter** im Portal ist für Service Bus standardmäßig leer. Di
 
 IP-Filterregeln werden der Reihenfolge nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
 
-Wenn Sie beispielsweise Adressen im Bereich 70.37.104.0/24 zulassen und alle anderen Adressen ablehnen möchten, sollte die erste Regel im Raster lauten, dass der Adressbereich 70.37.104.0/24 zulässig ist. Mit der nächsten Regel sollten alle Adressen abgelehnt werden, indem der Bereich 0.0.0.0/0 verwendet wird.
+>[!WARNING]
+> Durch Implementieren von Firewallregeln kann verhindert werden, dass andere Azure-Dienste mit Service Bus interagieren.
+>
+> Vertrauenswürdige Microsoft-Dienste werden bei der Implementierung der IP-Filterung (Firewallregeln) nicht unterstützt und in Kürze verfügbar gemacht.
+>
+> Im Anschluss finden Sie einige allgemeine Azure-Szenarien, in denen die IP-Filterung nicht funktioniert. (Hinweis: Die Liste ist **NICHT** vollständig.)
+> - Azure Monitor
+> - Azure Stream Analytics
+> - Integration in Azure Event Grid
+> - Azure IoT Hub-Routen
+> - Azure IoT Device Explorer
+> - Azure-Daten-Explorer
+>
+> Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
+> - Azure-Web-Apps 
+> - Azure-Funktionen
 
-> [!NOTE]
-> Das Ablehnen von IP-Adressen kann andere Azure-Dienste (etwa Azure Stream Analytics, Azure Virtual Machines oder den Device Explorer im Portal) an der Interaktion mit dem Service Bus hindern.
+### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET- und einer Firewallregel mit Azure Resource Manager-Vorlagen
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET-Regel mit Azure Resource Manager-Vorlagen
-
-> ![WICHTIG] Virtuelle Netzwerke werden nur im Tarif **Premium** von Service Bus unterstützt.
+> [!IMPORTANT]
+> Virtuelle Netzwerke werden nur im Tarif **Premium** von Service Bus unterstützt.
 
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzufügen.
 
 Vorlagenparameter:
 
-- **ipFilterRuleName** muss eine eindeutige alphanumerische Zeichenfolge ohne Beachtung von Groß-/Kleinschreibung sein, die bis zu 128 Zeichen umfassen kann.
-- **ipFilterAction** muss entweder auf **Reject** (Ablehnen) oder auf **Accept** (Akzeptieren) festgelegt werden, um die gewünschte Aktion für die IP-Filterregel anzugeben.
 - **ipMask** ist eine einzelne IPv4-Adresse oder ein Block von IP-Adressen in CIDR-Notation. In CIDR-Notation steht beispielsweise 70.37.104.0/24 für die 256 IPv4-Adressen von 70.37.104.0 bis 70.37.104.255. „24“ gibt dabei die Anzahl signifikanter Präfixbits für den Bereich an.
 
+> [!NOTE]
+> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **Zulassen** festgelegt. Dies schränkt die Verbindungen nicht ein.
+> Bei der Erstellung von Regeln für virtuelle Netzwerke oder Firewalls muss die Standardaktion (***defaultAction***) geändert werden.
+> 
+> Von:
+> ```json
+> "defaultAction": "Allow"
+> ```
+> In:
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
+
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "ipFilterRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "ipFilterAction":{  
-             "type":"string",
-             "allowedValues": ["Reject", "Accept"],
-             "metadata":{  
-                "description":"IP Filter Action"
-             }
-          },
-          "IpMask":{  
-             "type":"string",
-             "metadata":{  
-                "description":"IP Mask"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "servicebusNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Service Bus namespace"
+        }
       },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('servicebusNamespaceName'), concat('/', 'default'))]",
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('ipFilterRuleName'))]",
-            "type": "Microsoft.ServiceBus/Namespaces/IPFilterRules",
-            "properties": {
-                "FilterName":"[parameters('ipFilterRuleName')]",
-                "Action":"[parameters('ipFilterAction')]",              
-                "IpMask": "[parameters('IpMask')]"
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('servicebusNamespaceName')]",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": [<YOUR EXISTING VIRTUAL NETWORK RULES>],
+          "ipRules": 
+          [
+            {
+                "ipMask":"10.1.1.1",
+                "action":"Allow"
+            },
+            {
+                "ipMask":"11.0.0.0/24",
+                "action":"Allow"
             }
-        } 
-    ]
-}
+          ],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 Gehen Sie zum Bereitstellen der Vorlage gemäß der Anleitung für [Azure Resource Manager][lnk-deploy] vor.

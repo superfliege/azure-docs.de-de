@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: c19769dda281f4346c23b823ea00eac83790b618
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a110d14293b391a6856b56d0d8a84a24a90d33e1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582529"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341659"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
-Wenn Sie sich für Azure registrieren, sollten Sie sich einen Überblick über Ihre Ausgaben verschaffen. Der [Preisrechner](https://azure.microsoft.com/pricing/calculator/) kann eine Kostenschätzung bereitstellen, bevor Sie eine Azure-Ressource erstellen. Im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) erhalten Sie den aktuellen Kostenstrukturplan und die Prognose für Ihr Abonnement. Wenn Sie Kosten für unterschiedliche Projekte oder Teams zusammenfassen und verstehen möchten, beschäftigen Sie sich mit [Tags für Ressourcen](../azure-resource-manager/resource-group-using-tags.md). Falls Sie das Berichtssystem Ihrer Organisation verwenden möchten, informieren Sie sich über die [Abrechnung-APIs](billing-usage-rate-card-overview.md). 
+Wenn Sie sich für Azure registrieren, sollten Sie sich einen Überblick über Ihre Ausgaben verschaffen. Der [Preisrechner](https://azure.microsoft.com/pricing/calculator/) kann eine Kostenschätzung bereitstellen, bevor Sie eine Azure-Ressource erstellen. Im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) erhalten Sie den aktuellen Kostenstrukturplan und die Prognose für Ihr Abonnement. Wenn Sie Kosten für unterschiedliche Projekte oder Teams zusammenfassen und verstehen möchten, beschäftigen Sie sich mit [Tags für Ressourcen](../azure-resource-manager/resource-group-using-tags.md). Falls Sie das Berichtssystem Ihrer Organisation verwenden möchten, informieren Sie sich über die [Abrechnung-APIs](billing-usage-rate-card-overview.md).
 
 - Für Abonnements über Enterprise Agreement (EA) ist die öffentliche Vorschau zum Anzeigen Ihrer Kosten im Azure-Portal verfügbar. Einige der folgenden Features sind für Abonnements von CSP-Kunden (Cloud Solution Provider, Cloud-Lösungsanbieter) oder Azure Sponsorship-Kunden eventuell nicht relevant. Weitere Informationen finden Sie unter [Zusätzliche Ressourcen für EA, CSP und Sponsorship](#other-offers).
 
-- Wenn Sie ein Abonnement für eine kostenlose Testversion, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (AIO) oder BizSpark besitzen, wird Ihr Abonnement automatisch deaktiviert, sobald Ihr gesamtes Guthaben verbraucht ist. Erfahren Sie mehr über [Ausgabenlimits](#spending-limit), um zu vermeiden, dass Ihr Abonnement unerwartet deaktiviert wird.
+- Wenn Sie ein Abonnement für eine kostenlose Testversion, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (AIO) oder BizSpark besitzen, wird Ihr Abonnement automatisch deaktiviert, sobald Ihr gesamtes Guthaben verbraucht ist. Machen Sie sich mit [Ausgabenlimits](#spending-limit) vertraut, um zu vermeiden, dass Ihr Abonnement überraschend deaktiviert wird.
 
 - Wenn Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) angemeldet haben, [können Sie einige der beliebtesten Azure-Dienste kostenlos für 12 Monate nutzen](billing-create-free-services-included-free-account.md). Weitere Informationen finden Sie zusammen mit den unten aufgelisteten Empfehlungen unter [Vermeiden Sie, dass Ihnen für Ihr kostenloses Azure-Konto Gebühren angezeigt werden](billing-avoid-charges-free-account.md).
 
@@ -75,17 +75,17 @@ Mithilfe von Tags können Sie Abrechnungsdaten für unterstützte Dienste gruppi
 
 ![Screenshot zur Einrichtung von Tags im Portal](./media/billing-getting-started/tags.PNG)
 
-Die Tags werden in den unterschiedlichen Kostenberichtsansichten angezeigt. So sind sie beispielsweise sofort in der [Kostenanalyseansicht](#costs) und nach dem ersten Abrechnungszeitraum in der [CSV-Datei mit den Nutzungsdetails](#invoice-and-usage) zu sehen.
+Die Tags werden in den unterschiedlichen Kostenberichtsansichten angezeigt. So sind sie beispielsweise sofort in der [Kostenanalyseansicht](#costs) und nach dem ersten Abrechnungszeitraum in der CSV-Datei mit den Nutzungsdetails zu sehen.
 
 Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/resource-group-using-tags.md).
 
 ### <a name="costs"></a> Regelmäßiges Überprüfen der Kostenaufschlüsselung und Verbrauchsrate im Portal
 
-Überprüfen Sie regelmäßig die Kosten, die für Ihre aktiven Dienste anfallen. Die aktuellen Ausgaben sowie die Verbrauchsrate werden im Azure-Portal angezeigt. 
+Überprüfen Sie regelmäßig die Kosten, die für Ihre aktiven Dienste anfallen. Die aktuellen Ausgaben sowie die Verbrauchsrate werden im Azure-Portal angezeigt.
 
-1. Besuchen Sie das [Blatt „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
+1. Öffnen Sie [„Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
 
-2. Die Kostenaufschlüsselung und die Verbrauchsrate werden auf dem Popupblatt angezeigt. Sollte es für Ihr Angebot nicht unterstützt werden, erscheint im oberen Bereich eine entsprechende Warnung.
+2. Dort werden die Kostenaufschlüsselung und die Verbrauchsrate angezeigt (sofern dies für Ihr Abonnement unterstützt wird).
 
     ![Screenshot der Verbrauchsrate und der Kostenaufschlüsselung im Azure-Portal](./media/billing-getting-started/burn-rate.PNG)
 
@@ -95,11 +95,11 @@ Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von 
 
 4. Sie können nach verschiedenen Eigenschaften wie [Tags](#tags), Ressourcengruppe und Zeitraum filtern. Klicken Sie auf **Übernehmen**, um die Filter zu bestätigen, und auf **Herunterladen**, um die Ansicht in eine CSV-Datei zu exportieren.
 
-5. Darüber hinaus können Sie auf eine Ressource klicken, um den täglichen Ausgabenverlauf und die täglichen Kosten der Ressource anzuzeigen.
+5. Darüber hinaus können Sie auf eine Ressource klicken, um Ihren täglichen Ausgabenverlauf und die täglichen Kosten der Ressource anzuzeigen.
 
     ![Screenshot der Ausgabenverlaufsansicht im Azure-Portal](./media/billing-getting-started/costhistory.PNG)
 
-Es empfiehlt sich, die angezeigten Kosten mit den voraussichtlichen Kosten zu vergleichen, die beim Auswählen der Dienste angezeigt wurden. Sollten die Kosten stark von den Schätzungen abweichen, überprüfen Sie noch einmal den Tarif (etwa A1 im Vergleich zu A0), den Sie für Ihre Ressourcen ausgewählt haben. 
+Es empfiehlt sich, die angezeigten Kosten mit den voraussichtlichen Kosten zu vergleichen, die beim Auswählen der Dienste angezeigt wurden. Sollten die Kosten stark von den Schätzungen abweichen, überprüfen Sie noch einmal den Tarif, den Sie für Ihre Ressourcen ausgewählt haben.
 
 ### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>Aktivieren von Kostensenkungsfeatures wie dem automatischen Herunterfahren für virtuelle Computer
 
@@ -107,7 +107,7 @@ Abhängig von Ihrem Szenario können Sie im Azure-Portal ggf. das automatische H
 
 ![Screenshot der Option für automatisches Herunterfahren im Portal](./media/billing-getting-started/auto-shutdown.PNG)
 
-Das automatische Herunterfahren ist nicht dasselbe wie das Herunterfahren des virtuellen Computers über dessen Energieoptionen. Beim automatischen Herunterfahren werden Ihre virtuellen Computer beendet, und ihre Zuordnung wird aufgehoben, um zu verhindern, dass weitere Nutzungsgebühren anfallen. Weitere Informationen finden Sie in den häufig gestellten Fragen zu Preisen für [virtuelle Linux-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [virtuelle Windows-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+Das automatische Herunterfahren ist nicht dasselbe wie das Herunterfahren des virtuellen Computers über die Energieoptionen. Beim automatischen Herunterfahren werden Ihre virtuellen Computer beendet, und ihre Zuordnung wird aufgehoben, um zu verhindern, dass weitere Nutzungsgebühren anfallen. Weitere Informationen finden Sie in den häufig gestellten Fragen zu Preisen für [virtuelle Linux-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [virtuelle Windows-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
 Informationen zu weiteren Kostensenkungsfeatures für Ihre Entwicklungs- und Testumgebungen finden Sie unter [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
 
@@ -147,25 +147,26 @@ Für IT-Manager großer Organisationen empfehlen wir den Artikel zum [Azure-Unte
 #### <a name="EA"></a> Vorschau von Enterprise Agreement-Kostenansichten im Azure-Portal 
 
 Enterprise-Kostenansichten sind derzeit als öffentliche Vorschau verfügbar. Folgende Punkte sind zu beachten:
-- Abonnementkosten basieren auf der Nutzung. Bereits gezahlte Beträge, Überschreitungen, enthaltene Mengen, Anpassungen und Steuern werden nicht berücksichtigt. Die tatsächlichen Gebühren werden auf Registrierungsebene berechnet. 
-- Die im Azure-Portal angezeigten Beträge werden im Vergleich zu den Werten im Enterprise-Portal möglicherweise zeitverzögert angezeigt.  
-- Wenn keine Kosten angezeigt werden, kann das auf einen der folgenden Gründe zurückzuführen sein:
-    - Sie haben keine ausreichende RBAC-Berechtigung auf Abonnementebene. Um Übersichten der Unternehmenskosten anzuzeigen, müssen Sie ein Abrechnungsleser, Leser, Mitwirkender oder Besitzer auf Abonnementebene sein.
+
+- Abonnementkosten basieren auf der Nutzung. Bereits gezahlte Beträge, Überschreitungen, enthaltene Mengen, Anpassungen und Steuern werden nicht berücksichtigt. Die tatsächlichen Gebühren werden auf Registrierungsebene berechnet.
+- Die im Azure-Portal angezeigten Beträge weichen möglicherweise von den Angaben im Enterprise Portal ab. Nach einer Aktualisierung im Enterprise Portal dauert es unter Umständen ein paar Minuten, bis die Änderungen im Azure-Portal angezeigt werden.
+- Sollten keine Kosten angezeigt werden, kann das auf eine der folgenden Ursachen zurückzuführen sein:
+    - Sie verfügen über keine Berechtigungen auf Abonnementebene. Um Übersichten der Unternehmenskosten anzuzeigen, müssen Sie ein Abrechnungsleser, Leser, Mitwirkender oder Besitzer auf Abonnementebene sein.
     - Sie sind Kontobesitzer, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Kontobesitzer deaktiviert.  Wenden Sie sich an den Registrierungsadministrator, um Zugriff auf die Kosten zu erhalten. 
-    - Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Abteilungsadministratoren deaktiviert.  Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten. 
-    - Sie haben Azure über einen Channelpartner erworben, und der Partner hat die Preisinformationen nicht freigegeben.  
-- Wenn Einstellungen in Bezug auf den Zugriff auf die Kosten im Enterprise-Portal aktualisiert werden, werden die Änderungen erst nach einigen Minuten Verzögerung im Azure-Portal angezeigt.
+    - Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Abteilungsadministratoren deaktiviert.  Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten.
+    - Sie haben Azure über einen Channelpartner gekauft, und der Partner hat die Preisinformationen nicht freigegeben.  
+- Wenn Sie Einstellungen im Zusammenhang mit dem Kostenzugriff im Enterprise Portal aktualisieren, werden die Änderungen erst nach einigen Minuten im Azure-Portal angezeigt.
 - Das Ausgabelimit und die Rechnungsanleitungen gelten nicht für EA-Abonnements.
 
 ### <a name="check-your-subscription-and-access"></a>Überprüfen von Abonnement und Zugriff
 
-Zum Anzeigen der Kosten benötigen Sie [Zugriff auf Abrechnungsinformationen auf Abonnementebene](billing-manage-access.md), aber nur der Kontoadministrator kann auf das [Kontocenter](https://account.azure.com/Subscriptions) zugreifen, Abrechnungsinformationen ändern und Abonnements verwalten. Der Kontoadministrator ist die Person, die den Registrierungsprozess durchlaufen hat. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](billing-add-change-azure-subscription-administrator.md).
+Zum Anzeigen von Kosten müssen Sie über [Zugriff auf Abrechnungsinformationen auf Abonnementebene](billing-manage-access.md) verfügen. Nur der Kontoadministrator kann auf das [Kontocenter](https://account.azure.com/Subscriptions) zugreifen, Abrechnungsinformationen ändern und Abonnements verwalten. Der Kontoadministrator ist die Person, die den Registrierungsprozess durchlaufen hat. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](billing-add-change-azure-subscription-administrator.md).
 
-Um zu ermitteln, ob Sie der Kontoadministrator sind, [navigieren Sie im Azure-Portal zum Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und sehen Sie sich die Liste mit den Abonnements an, auf die Sie Zugriff haben. Ausschlaggebend ist die Angabe unter **Meine Rolle**. Wenn hier *Kontoadministrator* angegeben ist, ist alles in Ordnung. Bei einer Angabe wie *Besitzer* verfügen Sie nicht über sämtliche Berechtigungen.
+Um zu ermitteln, ob Sie der Kontoadministrator sind, navigieren Sie [im Azure-Portal zu „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Sehen Sie sich die Liste mit den Abonnements an, auf die Sie Zugriff haben. Ausschlaggebend ist die Angabe unter **Meine Rolle**. Wenn hier *Kontoadministrator* angegeben ist, ist alles in Ordnung. Bei einer Angabe wie *Besitzer* verfügen Sie nicht über sämtliche Berechtigungen.
 
 ![Screenshot Ihrer Rolle in der Ansicht „Abonnements“ im Azure-Portal](./media/billing-getting-started/sub-blade-view.PNG)
 
-Falls Sie nicht der Kontoadministrator sind, wurde Ihnen wahrscheinlich von einer anderen Person über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure Active Directory](../role-based-access-control/role-assignments-portal.md) eingeschränkter Zugriff gewährt. Um Abonnements verwalten und Abrechnungsinformationen ändern zu können, müssen Sie [den Kontoadministrator ermitteln](billing-subscription-transfer.md#whoisaa) und ihn bitten, die Aufgaben für Sie auszuführen oder das [Abonnement auf Sie zu übertragen](billing-subscription-transfer.md).
+Falls Sie nicht der Kontoadministrator sind, wurde Ihnen wahrscheinlich von einer anderen Person über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure Active Directory](../role-based-access-control/role-assignments-portal.md) eingeschränkter Zugriff gewährt. Um Abonnements verwalten und Abrechnungsinformationen ändern zu können, müssen Sie [den Kontoadministrator ermitteln](billing-subscription-transfer.md#whoisaa). Bitten Sie den Kontoadministrator, die Aufgaben für Sie auszuführen oder [das Abonnement auf Sie zu übertragen](billing-subscription-transfer.md).
 
 Falls der Kontoadministrator Ihre Organisation verlassen hat und Sie die Abrechnung verwalten müssen, [wenden Sie sich an uns](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
