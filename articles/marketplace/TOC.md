@@ -196,10 +196,6 @@
 #### [Registerkarte „Storefront Details“ (Storefrontdetails)](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
 ### [Veröffentlichen eines Beratungsdienstangebots](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
 
-## [Verwalten von Herausgeberprofilen](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [Verwalten von Benutzern](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [Einhaltung der DSGVO](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
-
 ## Testversion
 ### [Was ist die Testversion?](./cloud-partner-portal-orig/what-is-test-drive.md)
 ### [Azure Resource Manager-Testversion](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)

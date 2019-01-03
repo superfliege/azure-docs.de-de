@@ -34,7 +34,7 @@ items:
     href: video-sdk-python-quickstart.md
   - name: 'SDK-Schnellstartanleitung für die Videosuche: Java'
     href: video-sdk-java-quickstart.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Einzelseiten-Web-App
     href: tutorial-bing-video-search-single-page-app.md
@@ -64,6 +64,18 @@ items:
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference
   - name: Bing-Videosuche-API v5
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference
+  - name: SDKs
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvideo?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/videosearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/videosearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/videosearch?view=azure-node-latest
+    - name: Go
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch
 - name: Ressourcen
   items:
   - name: Preise
@@ -76,7 +88,7 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/
-  - name: Knowledge Base
+  - name: Wissensdatenbank
     href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
   - name: Abrufen des API-Schlüssels
     href: https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api
@@ -86,9 +98,9 @@ items:
     href: video-search-endpoints.md
   - name: Analyse für die Bing-Videosuche-API
     href: bing-video-stats.md
-ms.openlocfilehash: 893e77b356073bfdc7623351601dd95e280496d4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 35d6b2a216c0d400b3263c2b599a982c6f3db911
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35357352"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790128"

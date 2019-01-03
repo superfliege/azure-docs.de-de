@@ -66,7 +66,7 @@ Auf die serielle Konsole für virtuelle Computer kann nur über das Azure-Portal
 > Sie können auch das Administratorkennwort in Ihrem Konto zurücksetzen, indem Sie [GRUB verwenden, um im Einzelbenutzermodus zu starten](./serial-console-grub-single-user-mode.md).
 
 ## <a name="serial-console-linux-distribution-availability"></a>Verfügbarkeit der seriellen Konsole in Linux-Distributionen
-Damit die serielle Konsole ordnungsgemäß ausgeführt wird, muss das Gastbetriebssystem so konfiguriert werden, dass Konsolenmeldungen über den seriellen Anschluss gelesen und geschrieben werden. In den meisten [von Azure unterstützten Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) ist die serielle Konsole standardmäßig konfiguriert. Zugriff auf die serielle Konsole erhalten Sie, indem Sie im Azure-Portal im Bereich **Support + Problembehandlung****Serielle Konsole** auswählen. 
+Damit die serielle Konsole ordnungsgemäß ausgeführt wird, muss das Gastbetriebssystem so konfiguriert werden, dass Konsolenmeldungen über den seriellen Anschluss gelesen und geschrieben werden. In den meisten [von Azure unterstützten Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) ist die serielle Konsole standardmäßig konfiguriert. Zugriff auf die serielle Konsole erhalten Sie, indem Sie im Azure-Portal im Bereich **Support + Problembehandlung** **Serielle Konsole** auswählen. 
 
 Distribution      | Zugriff auf die serielle Konsole
 :-----------|:---------------------
