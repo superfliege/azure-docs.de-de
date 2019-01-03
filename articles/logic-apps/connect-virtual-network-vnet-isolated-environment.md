@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps über eine Integrationsdienstumgebung (ISE)
-description: Erstellen Sie eine Integrationsdienstumgebung (Integration Service Environment, ISE), damit Logik-Apps und Integrationskonten auf virtuelle Azure-Netzwerke zugreifen und dabei trotzdem privat und vom öffentlichen oder globalen Azure-Dienst isoliert bleiben können.
+description: Erstellen Sie eine Integrationsdienstumgebung (Integration Service Environment, ISE), damit Logik-Apps und Integrationskonten auf virtuelle Azure-Netzwerke (VNETs) zugreifen und dabei trotzdem privat und vom öffentlichen oder globalen Azure-Dienst isoliert bleiben können.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,20 +8,20 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/25/2018
-ms.openlocfilehash: d9a849fb5556332fab39467c270360c09c774cc9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 12/06/2018
+ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231779"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997537"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps über eine Integrationsdienstumgebung (ISE)
 
 > [!NOTE]
 > Diese Funktion befindet sich in der *privaten Vorschau*. Um den Zugriff anzufordern, [erstellen Sie Ihre Beitrittsanforderung hier](https://aka.ms/iseprivatepreview).
 
-Für Integrationsszenarien, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen, können Sie eine [*Integrationsdienstumgebung*  (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen. Hierbei handelt es sich um eine private, isolierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die vom öffentlichen oder *globalen* Logic Apps-Dienst getrennt sind. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Sie können diese ISE mit Ihrem virtuellen Azure-Netzwerk verknüpfen. Daraufhin wird der Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereitgestellt. Wählen Sie diese Integrationsdienstumgebung beim Erstellen einer Logik-App oder eines Integrationskontos als Standort aus. Ihre Logik-App bzw. Ihr Integrationskonto kann dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen. 
+Für Szenarios, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen, erstellen Sie eine [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Eine Integrationsdienstumgebung ist eine private und isolierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die getrennt vom öffentlichen oder *globalen* Logic Apps-Dienst gehalten werden. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Ihre ISE wird in Ihr virtuelles Azure-Netzwerk *eingefügt*. Daraufhin wird der Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereitgestellt. Wählen Sie diese Integrationsdienstumgebung beim Erstellen einer Logik-App oder eines Integrationskontos als Standort aus. Ihre Logik-App bzw. Ihr Integrationskonto kann dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen. 
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -35,16 +35,13 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 * Erstellen eines Integrationskontos für Ihre Logik-Apps in Ihrer Integrationsdienstumgebung.
 
-Weitere Informationen zu Integrationsdienstumgebungen finden Sie unter [Zugriff auf Azure Virtual Network-Ressourcen aus isolierten Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+Weitere Informationen zu Integrationsdienstumgebungen finden Sie unter [Zugriff auf Azure Virtual Network-Ressourcen aus Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
 
-* Wenn Sie kein Azure Virtual Network besitzen, erfahren Sie, wie Sie [ein Azure Virtual Network erstellen](../virtual-network/quick-create-portal.md). 
-
-  > [!IMPORTANT]
-  > Zwar benötigen Sie kein Azure Virtual Network, um Ihre Umgebung zu erstellen, doch können Sie *nur* ein virtuelles Netzwerk als Peer für Ihre Umgebung auswählen, wenn Sie diese Umgebung erstellen. 
+* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Wenn Sie kein virtuelles Netzwerk besitzen, erfahren Sie, wie Sie [ein virtuelles Azure-Netzwerk erstellen](../virtual-network/quick-create-portal.md). 
 
 * Um Ihren Logik-Apps direkten Zugriff auf Ihre Azure Virtual Network zu gewähren, [richten Sie rollenbasierte Zugriffssteuerungsberechtigungen ein](#vnet-access), damit der Logic Apps-Dienst über die Berechtigungen für den Zugriff auf Ihr virtuelles Netzwerk verfügt. 
 
@@ -54,75 +51,36 @@ Weitere Informationen zu Integrationsdienstumgebungen finden Sie unter [Zugriff 
 
 ## <a name="set-virtual-network-permissions"></a>Einrichten von virtuellen Netzwerkberechtigungen
 
-Wenn Sie Ihre Integrationsdienstumgebung erstellen, können Sie ein Azure Virtual Network als *Peer* für Ihre Umgebung auswählen. Sie können diesen Schritt, oder das *Peering*, jedoch nur ausführen, wenn Sie Ihre Umgebung erstellen. Diese Beziehung gestattet es dem Logic Apps-Dienst, direkt eine Verbindung mit Ressourcen in diesem virtuellen Netzwerk herzustellen, und gewährt Ihrer Umgebung den Zugriff auf diese Ressourcen. 
-
-Bevor Sie Ihr virtuelles Netzwerk auswählen können, müssen Sie rollenbasierte Zugriffssteuerungsberechtigungen in Ihrem virtuellen Netzwerk einrichten. Um diese Aufgabe abzuschließen, müssen Sie dem Azure Logic Apps-Dienst bestimmte Rollen zuweisen.
+Wenn Sie eine Integrationsdienstumgebung (ISE) erstellen, wählen Sie ein virtuelles Azure-Netzwerk aus, in das Sie Ihre Umgebung *einfügen*. Bevor Sie jedoch ein virtuelles Netzwerk auswählen können, um darin Ihre Umgebung einzufügen, müssen Sie rollenbasierte Zugriffssteuerungsberechtigungen in Ihrem virtuellen Netzwerk einrichten. Um Berechtigungen einzurichten, weisen Sie die folgenden spezifischen Rollen dem Azure Logic Apps-Dienst zu:
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrem virtuellen Netzwerk, und wählen Sie es aus. 
 
 1. Wählen Sie im Menü Ihres virtuellen Netzwerks **Zugriffssteuerung (IAM)** aus. 
 
-1. Wählen Sie unter **Zugriffssteuerung** die Option **Rollenzuweisung** aus, falls sie nicht bereits ausgewählt ist. Wählen Sie in der Symbolleiste **Rollenzuweisung** **Hinzufügen** aus. 
+1. Wählen Sie unter **Zugriffssteuerung (IAM)** die Option **Rollenzuweisung hinzufügen** aus. 
 
-   ![Hinzufügen von Rollenzuweisungen](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
+   ![Hinzufügen von Rollen](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
 
-1. Richten Sie im Bereich **Berechtigungen hinzufügen** jede Rolle in dieser Tabelle für den Azure Logic Apps-Dienst ein. Stellen Sie sicher, dass Sie **Speichern** auswählen, nachdem Sie jede Rolle fertig gestellt haben:
+1. Fügen Sie im Bereich **Rollenzuweisung hinzufügen**, wie beschrieben, dem Azure Logic Apps-Dienst die notwendige Rolle hinzu. 
 
-   | Rolle | Zugriff zuweisen zu | Select | 
-   |------|------------------|--------|
-   | **Mitwirkender von virtuellem Netzwerk** | **Azure AD-Benutzer, -Gruppe oder -Anwendung** | **Azure Logic Apps** eingeben. Nachdem die Mitgliederliste angezeigt wird, wählen Sie denselben Wert aus. <p>**Tipp**: Wenn Sie diesen Dienst nicht finden, geben Sie die App-ID des Logic Apps-Diensts ein: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` | 
-   | **Klassischer Mitwirkender** | **Azure AD-Benutzer, -Gruppe oder -Anwendung** | **Azure Logic Apps** eingeben. Nachdem die Mitgliederliste angezeigt wird, wählen Sie denselben Wert aus. <p>**Tipp**: Wenn Sie diesen Dienst nicht finden, geben Sie die App-ID des Logic Apps-Diensts ein: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` | 
-   |||| 
+   1. Wählen Sie unter **Rolle** die Option **Netzwerkmitwirkender** aus. 
+   
+   1. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.
+
+   1. Geben Sie unter **Auswählen** den Wert **Azure Logic Apps** ein. 
+
+   1. Nachdem die Mitgliederliste angezeigt wird, wählen Sie **Azure Logic Apps** aus. 
+
+      > [!TIP]
+      > Wenn Sie diesen Dienst nicht finden, geben Sie die App-ID des Logic Apps-Diensts ein: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` 
+   
+   1. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
    Beispiel: 
 
-   ![Hinzufügen von Berechtigungen](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
+   ![Rollenzuweisung hinzufügen](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
 
-   Weitere Informationen zu den für das Peering erforderlichen Rollenberechtigungen finden Sie im Abschnitt [„Berechtigungen“ unter „Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke“](../virtual-network/virtual-network-manage-peering.md#permissions). 
-
-Wenn Ihr virtuelles Netzwerk über Azure ExpressRoute, Azure Point-to-Site VPN oder Azure Site-to-Site VPN verbunden ist, fahren Sie mit dem nächsten Abschnitt fort, damit Sie das erforderliche Gatewaysubnetz hinzufügen können. Andernfalls fahren Sie mit [Erstellen Ihrer Umgebung](#create-environment) fort.
-
-<a name="add-gateway-subnet"></a>
-
-## <a name="add-gateway-subnet-for-virtual-networks-with-expressroute-or-vpns"></a>Hinzufügen des Gatewaysubnetzes für virtuelle Netzwerke mit ExpressRoute oder VPNs
-
-Nachdem Sie die vorherigen Schritte abgeschlossen haben, um Ihrer Integrationsdienstumgebung Zugriff auf ein Azure Virtual Network zu gewähren, das entweder über [Azure ExpressRoute](../expressroute/expressroute-introduction.md), [Azure Point-to-Site VPN](../vpn-gateway/point-to-site-about.md) oder [Azure Site-to-Site VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) verbunden ist, müssen Sie außerdem Ihrem virtuellen Netzwerk ein [ *Gatewaysubnetz* ](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsub) hinzufügen:
-
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrem virtuellen Netzwerk, und wählen Sie es aus. Wählen Sie im Menü Ihres virtuellen Netzwerks **Subnetze** aus, und wählen Sie dann **Gatewaysubnetz** > **OK** aus.
-
-   ![Gatewaysubnetz hinzufügen](./media/connect-virtual-network-vnet-isolated-environment/add-gateway-subnet.png)
-
-1. Erstellen Sie jetzt eine [ *Routingtabelle*](../virtual-network/manage-route-table.md), die Sie dem Gatewaysubnetz zuordnen, das Sie zuvor erstellt haben.
-
-   1. Wählen Sie im Hauptmenü von Azure **Ressource erstellen** > 
-   **Netzwerk** > **Routingtabelle** aus.
-
-      ![Erstellen einer Routingtabelle](./media/connect-virtual-network-vnet-isolated-environment/create-route-table.png)
-
-   1. Geben Sie Informationen zu der Routingtabelle an, z.B. den Namen, Ihr zu verwendendes Azure-Abonnement, die Azure-Ressourcengruppe und den Standort. Stellen Sie sicher, dass die Eigenschaft **BGP-Routenverteilung** auf **Aktiviert** festgelegt ist, und wählen Sie dann **Erstellen** aus.
-
-      ![Bereitstellen von Routingtabellendetails](./media/connect-virtual-network-vnet-isolated-environment/enter-route-table-information.png)
-
-   1. Wählen Sie im Routingtabellenmenü **Subnetze** aus, und wählen Sie dann **Zuordnen** aus. 
-
-      ![Verbinden der Routingtabelle mit dem Subnetz](./media/connect-virtual-network-vnet-isolated-environment/associate-route-table.png)
-
-   1. Wählen Sie **Virtuelles Netzwerk** und dann Ihr virtuelles Netzwerk aus.
-   
-   1. Wählen Sie **Subnetz** und dann Ihr zuvor erstelltes Gatewaysubnetz aus.
-
-   1. Wählen Sie **OK** aus, wenn Sie fertig sind.
-
-1. Wenn Sie ein Point-to-Site VPN haben, führen Sie auch diese Schritte aus:
-
-   1. Suchen Sie in Azure die Gatewayressource Ihres virtuellen Netzwerks, und wählen Sie sie aus.
-
-   1. Wählen Sie im Menü des Gateways **Point-to-Site-Konfiguration** aus. 
-   und wählen Sie dann **VPN-Client herunterladen** aus, damit Sie die aktuellste VPN-Clientkonfiguration haben.
-
-      ![Herunterladen des neuesten VPN-Clients](./media/connect-virtual-network-vnet-isolated-environment/download-vpn-client.png)
-
-Sie sind jetzt fertig mit dem Einrichten eines Gatewaysubnetzes für virtuelle Netzwerke, die ExpressRoute, Point-to-Site VPNs oder Site-to-Site VPNs verwenden. Um das Erstellen Ihrer Integrationsdienstumgebung fortzusetzen, befolgen Sie die nächsten Schritte.
+Weitere Informationen finden Sie unter [Berechtigungen für den Zugriff auf virtuelle Netzwerke](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 <a name="create-environment"></a>
 
@@ -141,24 +99,49 @@ Wählen Sie in der Ergebnisliste **Integrationsdienstumgebung (Preview)** und da
 
    ![Auswählen von „Erstellen“](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
-1. Geben Sie diese Details für Ihre Umgebung an:
+1. Geben Sie diese Details für Ihre Umgebung an, und wählen Sie dann **Bewerten + erstellen** aus, z. B.:
 
    ![Angeben von Umgebungsdetails](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
    | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
-   | **Name** | JA | <*Umgebungsname*> | Der Name für Ihre Umgebung | 
    | **Abonnement** | JA | <*Name des Azure-Abonnements*> | Das für Ihre Umgebung zu verwendende Azure-Abonnement | 
    | **Ressourcengruppe** | JA | <*Name der Azure-Ressourcengruppe*> | Die Azure-Ressourcengruppe, in der Sie Ihre Umgebung erstellen möchten. |
-   | **Location** | JA | <*Azure-Datencenterregion*> | Die Azure-Datencenterregion, in der Informationen zu Ihrer Umgebung gespeichert werden sollen. |
-   | **Peer-VNET** | Nein  | <*Azure-VNET-Name*> | Das Azure Virtual Network, das Ihrer Umgebung als *Peer* zugeordnet werden soll, damit Logik-Apps in dieser Umgebung auf Ihr virtuelles Netzwerk zugreifen können. Bevor Sie diese Beziehung erstellen können, stellen Sie sicher, dass Sie bereits [rollenbasierte Zugriffssteuerung in Ihrem virtuellen Netzwerk für Azure Logic Apps eingerichtet haben](#vnet-access). <p>**Wichtig**: Obwohl ein virtuelles Netzwerk nicht erforderlich ist, können Sie ein virtuelles Netzwerk *nur*auswählen, wenn Sie Ihre Umgebung erstellen. | 
-   | **Peeringname** | Ja, mit einem ausgewählten virtuellen Netzwerk | <*Peeringname*> | Der Name für die Peerbeziehung | 
-   | **VNET-IP-Bereich** | Ja, mit einem ausgewählten virtuellen Netzwerk | <*IP-Adressbereich*> | Der IP-Adressbereich zum Erstellen von Ressourcen in Ihrer Umgebung. Dieser Bereich muss das [CIDR-Format (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) verwenden, z. B. 10.0.0.1/16, und erfordert einen Class B-Adressraum. Der Bereich darf nicht innerhalb des Adressraums für das im **Peer-VNET** ausgewählte virtuelle Netzwerk vorhanden sein, noch innerhalb anderer privater IP-Adressen, mit denen das Peernetzwerk verbunden ist, sei es mittels Peering oder über Gateways. <p><p>**Wichtig**: Sie können diesen Adressbereich *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben. |
+   | **Name der Integrationsdienstumgebung** | JA | <*Umgebungsname*> | Der Name für Ihre Umgebung | 
+   | **Location** | JA | <*Azure-Datencenterregion*> | Die Azure-Datencenterregion, in der Sie Ihre Umgebung bereitstellen. | 
+   | **Capacity** | JA | 0, 1, 2, 3 | Die Anzahl der für diese ISE-Ressource zu verwendenden Verarbeitungseinheiten. | 
+   | **Virtuelles Netzwerk** | JA | <*Azure-virtual-network-name*> | Das virtuelle Azure-Netzwerk, in das Sie Ihre Umgebung einfügen möchten, damit Logik-Apps in dieser Umgebung auf Ihr virtuelles Netzwerk zugreifen können. Wenn Sie über kein Netzwerk verfügen, können Sie hier eins erstellen. <p>**Wichtig**: Sie können diese Einfügung *nur* einmalig durchführen, wenn Sie Ihre ISE erstellen. Bevor Sie diese Beziehung jedoch erstellen können, stellen Sie sicher, dass Sie bereits [rollenbasierte Zugriffssteuerung in Ihrem virtuellen Netzwerk für Azure Logic Apps eingerichtet haben](#vnet-access). | 
+   | **Subnetze** | JA | <*IP-Adressbereich*> | Eine ISE erfordert vier *leere* Subnetze. Diese Subnetze sind an keinen Dienst delegiert und dienen zum Erstellen von Ressourcen in Ihrer Umgebung. Sie können diese IP-Bereiche *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben. <p><p>Um jedes Subnetz zu erstellen, [führen Sie die Schritte unter dieser Tabelle aus](#create-subnet). Jedes Subnetz muss diese Kriterien erfüllen: <p>- Darf weder im selben Adressbereich für Ihr ausgewähltes virtuelles Netzwerk vorhanden sein, noch in jeglichen anderen privaten IP-Adressen, mit denen das virtuelle Netzwerk verbunden ist. <br>- Verwendet einen Namen, der weder mit einer Zahl noch mit einem Bindestrich beginnt. <br>- Verwendet das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>- Erfordert einen Klasse B-Adressraum. <br>- Umfasst ein `/27`. Beispielsweise gibt hier jedes Subnetz einen 32-Bit-Adressbereich an: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27` und `10.0.0.96/27`. <br>- Muss leer sein. |
    |||||
-   
-1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. 
 
-   Azure beginnt mit dem Bereitstellen Ihrer Umgebung, aber dieser Prozess kann *bis zu zwei Stunden* dauern, bevor er abgeschlossen ist. 
+   <a name="create-subnet"></a>
+
+   **Erstellen eines Subnetzes**
+
+   1. Wählen Sie unter der Liste **Subnetze** den Eintrag **Subnetzkonfiguration verwalten** aus.
+
+      ![Verwalten der Subnetzkonfiguration](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+
+   1. Wählen Sie im Bereich **Subnetze** den Eintrag **Subnetz** aus.
+
+      ![Hinzufügen des Subnetzes](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+
+   1. Geben Sie im Bereich **Subnetz hinzufügen** diese Informationen an.
+
+      * **Name**: Der Name für Ihr Subnetz.
+      * **Adressbereich (CIDR-Block)**: Der Bereich Ihres Subnetzes in Ihrem virtuellen Netzwerk und im CIDR-Format
+
+      ![Hinzufügen von Subnetzdetails](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
+
+   1. Wählen Sie **OK** aus, wenn Sie fertig sind.
+
+   1. Wiederholen Sie diese Schritte für drei weitere Subnetze.
+
+1. Nachdem Azure Ihre ISE-Informationen erfolgreich überprüft hat, wählen Sie **Erstellen** aus, z. B.:
+
+   ![Wählen Sie nach der erfolgreicher Überprüfung „Erstellen“ aus.](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
+
+   Azure beginnt mit der Bereitstellung Ihrer Umgebung, aber dieser Prozess *könnte* bis zu zwei Stunden dauern, bevor er abgeschlossen ist. 
    Um den Bereitstellungsstatus zu überprüfen, wählen Sie in Ihrer Azure-Symbolleiste das Symbol „Benachrichtigungen“ aus, wodurch der Benachrichtigungsbereich geöffnet wird.
 
    ![Überprüfen des Bereitstellungsstatus](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
@@ -167,31 +150,34 @@ Wählen Sie in der Ergebnisliste **Integrationsdienstumgebung (Preview)** und da
 
    ![Bereitstellung erfolgreich](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
+   > [!NOTE]
+   > Schlägt die Bereitstellung fehl, oder wenn Sie Ihre ISE löschen, *könnte* Azure bis zu eine Stunde benötigen, bis Ihre Subnetze freigegeben werden. Daher müssen Sie möglicherweise warten, bevor Sie diese Subnetzen in einer anderen ISE wiederverwenden können.
+
 1. Um Ihre Umgebung anzuzeigen, wählen Sie **Zu Ressource wechseln** aus, wenn Azure nach Abschluss der Bereitstellung nicht automatisch zu Ihrer Umgebung wechselt.  
 
 <a name="create-logic-apps-environment"></a>
 
 ## <a name="create-logic-app---ise"></a>Erstellen einer Logik-App – Integrationsdienstumgebung
 
-Um Logik-Apps zu erstellen, die Ihre Integrationsdienstumgebung verwenden, führen Sie die üblichen Schritte in [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) aus, jedoch mit folgenden Unterschieden und Überlegungen: 
+Um Logik-Apps zu erstellen, die Ihre Integrationsdienstumgebung verwenden, führen Sie die Schritte in [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) aus, jedoch mit folgenden Unterschieden: 
 
-* Wenn Sie Ihre Logik-App erstellen, listet die Eigenschaft **Standort** Ihre Integrationsdienstumgebungen unter **Integrationsdienstumgebungen** auf, zusammen mit den verfügbaren Regionen. Wählen Sie Ihre Integrationsdienstumgebung aus, statt einer Region, z. B.:
+* Wenn Sie Ihre Logik-App erstellen, wählen Sie unter der Eigenschaft **Standort** Ihre Integrationsdienstumgebung im Abschnitt **Integrationsdienstumgebungen** aus, z. B.:
 
   ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
-* Sie können dieselben Integrationen wie den HTTP-Trigger oder die HTTP-Aktion verwenden, die in derselben Integrationsdienstumgebung wie die übergeordnete Logik-App ausgeführt werden. Connectors mit der Bezeichnung **ISE** werden auch in derselben Integrationsdienstumgebung wie die übergeordnete Logik-App ausgeführt. Connectors ohne die Bezeichnung **ISE** werden im globalen Logic Apps-Dienst ausgeführt.
+* Sie können dieselben integrierten Trigger und Aktionen wie für HTTP verwenden, die in derselben Integrationsdienstumgebung wie Ihre Logik-App ausgeführt werden. Connectors mit der Bezeichnung **ISE** werden auch in derselben Integrationsdienstumgebung wie Ihre Logik-App ausgeführt. Connectors ohne die Bezeichnung **ISE** werden im globalen Logic Apps-Dienst ausgeführt.
 
   ![Auswählen der ISE-Connectors](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
 
-* Wenn Sie zuvor Ihre Integrationsdienstumgebung mit einem Azure Virtual Network als Peer eingerichtet haben, können die Logik-Apps in Ihrer Integrationsdienstumgebung direkt auf Ressourcen in diesem virtuellen Netzwerk zugreifen. Bei lokalen Systemen in einem virtuellen Netzwerk, das mit einer Integrationsdienstumgebung verknüpft ist, können Logik-Apps direkt auf diese Systeme zugreifen, indem sie eins der folgenden Elemente verwenden: 
+* Nachdem Sie Ihre Integrationsdienstumgebung in ein virtuelles Azure-Netzwerk eingefügt haben, können die Logik-Apps in Ihrer Integrationsdienstumgebung direkt auf Ressourcen in diesem virtuellen Netzwerk zugreifen. Bei lokalen Systemen, die mit einem virtuellen Netzwerk verbunden sind, fügen Sie eine Integrationsdienstumgebung in dieses Netzwerk ein, damit Ihre Logik-Apps direkt auf diese Systeme zugreifen können, indem sie eins der folgenden Elemente verwenden: 
 
   * ISE-Connector für dieses System, z.B. SQL Server
-
+  
   * HTTP-Aktion 
-
+  
   * Benutzerdefinierter Connector
 
-  Bei lokalen Systemen, die sich nicht in einem virtuellen Netzwerk befinden oder keine Integrationsdienstumgebungs-Connectors aufweisen, können Sie immer noch eine Verbindung herstellen, nachdem Sie [das lokale Datengateway eingerichtet haben und es verwenden](../logic-apps/logic-apps-gateway-install.md).
+  Für lokale Systeme, die sich nicht in einem virtuellen Netzwerk befinden oder die keine Integrationsdienstumgebungs-Connectors aufweisen, [richten Sie zuerst das lokale Datengateway ein](../logic-apps/logic-apps-gateway-install.md).
 
 <a name="create-integration-account-environment"></a>
 
@@ -199,7 +185,7 @@ Um Logik-Apps zu erstellen, die Ihre Integrationsdienstumgebung verwenden, führ
 
 Um ein Integrationskonto mit Logik-Apps in einer Integrationsdienstumgebung zu verwenden, muss dieses Integrationskonto *dieselbe Umgebung* wie die Logik-Apps verwenden. Logik-Apps in einer Integrationsdienstumgebung können nur auf Integrationskonten in derselben Integrationsdienstumgebung verweisen. 
 
-Führen Sie zum Erstellen eines Integrationskontos, das eine Integrationsdienstumgebung verwendet, die üblichen Schritte in [Erstellen von Integrationskonten](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) aus, mit Ausnahme der Eigenschaft **Standort**, die nun Ihre Integrationsdienstumgebungen unter **Integrationsdienstumgebungen** aufführt, zusammen mit den verfügbaren Regionen. Wählen Sie Ihre Integrationsdienstumgebung aus, statt einer Region, z. B.:
+Führen Sie zum Erstellen eines Integrationskontos, das eine Integrationsdienstumgebung verwendet, die Schritte in [Erstellen von Integrationskonten](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) aus, mit Ausnahme der Eigenschaft **Standort**, an deren Stelle nun der Abschnitt **Integrationsdienstumgebungen** angezeigt wird. Wählen Sie stattdessen Ihre Integrationsdienstumgebung aus, anstelle einer Region, z. B.:
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
