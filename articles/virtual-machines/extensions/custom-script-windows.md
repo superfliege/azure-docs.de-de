@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2018
+ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 2c8ac43d96c100f0c26281fea1d4e9eba41bc178
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282327"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963503"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -54,13 +54,13 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen gegebenenfalls noch w
 * Schreiben Sie idempotente Skripts, um Systemänderungen zu vermeiden, wenn das Skript versehentlich mehrmals ausgeführt wird.
 * Stellen Sie sicher, dass während der Skriptausführung keine Benutzereingaben erforderlich sind.
 * Die Skriptausführung darf maximal 90 Minuten dauern. Danach gilt die Bereitstellung der Erweiterung als nicht erfolgreich.
-* Das Skript darf keine Systemneustarts enthalten, da diese zu Problemen mit anderen Erweiterungen führen, die installiert werden. Außerdem wird die Erweiterung nach dem Neustart nicht fortgesetzt. 
-* Wenn Sie über ein Skript verfügen, das einen Neustart des Systems bewirkt, installieren Sie Anwendungen, und führen Sie Skripts usw. aus. Planen Sie den Neustart des Systems mithilfe eines geplanten Windows-Tasks oder mit einem Tool wie DSC oder Chef oder mit Puppet-Erweiterungen.
+* Das Skript darf keine Systemneustarts enthalten, da diese Aktion zu Problemen mit anderen Erweiterungen führt, die installiert werden. Außerdem wird die Erweiterung nach dem Neustart nicht fortgesetzt. 
+* Wenn Sie über ein Skript verfügen, das einen Neustart des Systems bewirkt, installieren Sie Anwendungen, und führen Sie Skripts usw. aus. Sie können den Neustart des Systems mithilfe eines geplanten Windows-Tasks oder mit einem Tool wie DSC oder Chef oder mit Puppet-Erweiterungen planen.
 * Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, müssen Sie die Erweiterung zum Erstellen eines geplanten Windows-Tasks verwenden.
 * Wenn Sie den Ausführungszeitpunkt eines Skripts planen möchten, erstellen Sie mithilfe der Erweiterung einen geplanten Windows-Task. 
 * Während der Skriptausführung wird im Azure-Portal sowie in der CLI nur ein Übergangsstatus für die Erweiterung angezeigt. Sollten Sie häufigere Statusaktualisierungen für ein ausgeführtes Skript benötigen, müssen Sie eine eigene Lösung erstellen.
 * Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *cURL*). 
-* Achten Sie auf nicht standardmäßige Verzeichnispfade, von denen Ihre Skripts oder Befehle gegebenenfalls abhängen, und verwenden Sie eine entsprechende Logik, um diese zu behandeln.
+* Achten Sie auf nicht standardmäßige Verzeichnispfade, von denen Ihre Skripts oder Befehle gegebenenfalls abhängen, und verwenden Sie eine entsprechende Logik, um diese Situation zu behandeln.
 
 
 ## <a name="extension-schema"></a>Erweiterungsschema
@@ -92,7 +92,8 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
         "settings": {
             "fileUris": [
                 "script location"
-            ]
+            ],
+            "timestamp":123456789
         },
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
@@ -113,6 +114,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 | type | CustomScriptExtension | Zeichenfolge |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (Beispiel) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | Array |
+| timestamp (Beispiel) | 123456789 | 32-Bit-Integer |
 | commandToExecute (Beispiel) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | Zeichenfolge |
 | storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |
 | storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Zeichenfolge |
@@ -123,13 +125,14 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 #### <a name="property-value-details"></a>Details zu Eigenschaftswerten
  * `commandToExecute` (**erforderlich**, Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, wenn der Befehl Geheimnisse (z.B. Kennwörter) enthält oder die „fileUris“ vertraulich sind.
 * `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien.
+* `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
 * `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden. Die Erweiterung lehnt jedoch jede Konfiguration ab, bei der die Werte sowohl in öffentlichen als auch in geschützten Einstellungen festgelegt sind.
 * `commandToExecute`
 
-Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sein, es wird jedoch dringend empfohlen, geschützte Einstellungen zu verwenden.
+Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sein, es wird jedoch empfohlen, geschützte Einstellungen zu verwenden.
 
 Öffentliche Einstellungen werden in Klartext an den virtuellen Computer gesendet, auf dem das Skript ausgeführt wird.  Geschützte Einstellungen werden mit einem Schlüssel verschlüsselt, der nur in Azure und auf dem virtuellen Computer bekannt ist. Die Einstellungen werden unverändert auf dem virtuellen Computer gespeichert. Waren die Einstellungen also verschlüsselt, werden sie auch verschlüsselt auf dem virtuellen Computer gespeichert. Das Zertifikat zum Entschlüsseln der verschlüsselten Werte wird auf dem virtuellen Computer gespeichert und gegebenenfalls zur Laufzeit zum Entschlüsseln der Einstellungen verwendet.
 
@@ -137,7 +140,7 @@ Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sei
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der benutzerdefinierten Skripterweiterung im Rahmen einer Azure Resource Manager-Bereitstellung verwendet werden. Die folgenden Beispiele veranschaulichen die Verwendung der Erweiterung für benutzerdefinierte Skripts:
 
-* [Tutorial: Deploy virtual machine extensions with Azure Resource Manager templates](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md) (Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen)
+* [Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Deploy Two Tier Application on Windows and Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows) (Bereitstellen einer Zwei-Ebenen-Anwendung unter Windows und Azure SQL-Datenbank)
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
@@ -199,9 +202,9 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 ```
 
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>Mehrmaliges Ausführen der Erweiterung für benutzerdefinierte Skripts über die Befehlszeilenschnittstelle
-Wenn Sie die Erweiterung für benutzerdefinierte Skripts mehrmals ausführen möchten, ist dies nur unter folgenden Bedingungen möglich:
+Wenn Sie die Erweiterung für benutzerdefinierte Skripts mehrmals ausführen möchten, ist diese Aktion nur unter folgenden Bedingungen möglich:
 1. Der Parameter „Name“ der Erweiterung ist identisch mit der vorherigen Bereitstellung der Erweiterung.
-2. Sie müssen die Konfiguration aktualisieren, andernfalls wird der Befehl nicht erneut ausgeführt. Sie können beispielsweise eine dynamische Eigenschaft im Befehl hinzufügen, etwa einen Zeitstempel. 
+2. Sie müssen die Konfiguration aktualisieren, andernfalls wird der Befehl nicht erneut ausgeführt.  Sie können eine dynamische Eigenschaft im Befehl hinzufügen, etwa einen Zeitstempel.
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
@@ -224,7 +227,7 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 Hierbei ist `<n>` eine dezimale Ganzzahl, die sich zwischen verschiedenen Ausführungen der Erweiterung ändern kann.  Der Wert `1.*` entspricht dem tatsächlichen aktuellen `typeHandlerVersion`-Wert der Erweiterung.  Das tatsächliche Verzeichnis könnte z.B. folgendermaßen lauten: `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
 
-Beim Ausführen des Befehls `commandToExecute` legt die Erweiterung dieses Verzeichnis (z.B. `...\Downloads\2`) als aktuelles Arbeitsverzeichnis fest. Dies ermöglicht die Verwendung relativer Pfade, um die heruntergeladenen Dateien mithilfe der `fileURIs`-Eigenschaft aufzufinden. Beispiele hierfür finden Sie in der unten stehenden Tabelle.
+Beim Ausführen des Befehls `commandToExecute` legt die Erweiterung dieses Verzeichnis (z.B. `...\Downloads\2`) als aktuelles Arbeitsverzeichnis fest. Dieser Prozess ermöglicht die Verwendung relativer Pfade, um die heruntergeladenen Dateien mithilfe der `fileURIs`-Eigenschaft aufzufinden. Beispiele hierfür finden Sie in der unten stehenden Tabelle.
 
 Da sich der absolute Downloadpfad im Lauf der Zeit ändern kann, empfiehlt es sich, in der Zeichenfolge `commandToExecute` nach Möglichkeit relative Pfade zu Skripts und Dateien zu verwenden. Beispiel: 
 ```json
@@ -244,4 +247,4 @@ Pfadinformationen nach dem ersten URI-Segment werden für Dateien beibehalten, d
 
 ### <a name="support"></a>Support
 
-Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
+Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Sie können auch einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
