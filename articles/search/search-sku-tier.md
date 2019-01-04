@@ -1,5 +1,5 @@
 ---
-title: Auswählen einer SKU oder eines Tarifs für den Azure Search-Dienst | Microsoft-Dokumentation
+title: Auswählen einer SKU oder eines Tarifs für den Azure Search-Dienst – Azure Search
 description: 'Azure Search kann unter folgenden SKUs bereitgestellt werden: Free, Basic und Standard. Standard ist mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar.'
 services: search
 author: HeidiSteen
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.custom: seodec2018
+ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785306"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315552"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -43,7 +44,7 @@ In Azure Search ist das wichtigste Abrechnungskonzept, das Sie kennen sollten, e
 
 SU ist das Produkt der von einem Dienst verwendeten *Replikate* und *Partitionen*: **`(R X P = SU)`**
 
-Jeder Dienst beginnt mit einer SU (ein Replikat multipliziert mit einer Partition) als Minimum. Das Maximum für jeden Dienst ist 36 SUs, was sich auf verschiedene Arten erreichen lässt: 6 Partitionen x 6 Replikat oder 3 Partitionen x 12 Replikate, um nur ein paar zu nennen. 
+Jeder Dienst beginnt mit einer SU (ein Replikat multipliziert mit einer Partition) als Minimum. Das Maximum für jeden Dienst liegt bei 36 SUs. Dies lässt sich auf verschiedene Arten erreichen – beispielsweise mit sechs Partitionen mal sechs Replikate oder drei Partitionen mal 12 Replikate. 
 
 Es ist üblich, weniger als die Gesamtkapazität zu verwenden. Z. B. ein Dienst mit 3 Replikaten und 3 Partitionen, abgerechnet als 9 SUs. 
 

@@ -155,7 +155,7 @@ items:
       - name: Arbeitsbereiche
         href: platform/manage-access.md
       - name: ANWENDUNGEN
-        href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
+        href: app/resources-roles-access-control.md
       - name: IP-Adressen
         href: app/ip-addresses.md
     - name: Überwachen von Anwendungen
@@ -273,7 +273,7 @@ items:
           - name: Übersicht
             href: ../application-insights/app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json
           - name: Aktivieren des Profilers für App Service
-            href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler.md
           - name: Aktivieren des Profilers für einen Clouddienst
             href: ../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json
           - name: Aktivieren des Profilers für eine Service Fabric-Anwendung
@@ -304,7 +304,7 @@ items:
           href: app/asp-net-core.md
           items:
           - name: Profiler für Linux-App-Dienste
-            href: ../application-insights/app-insights-profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-aspnetcore-linux.md
         - name: Konsole
           href: app/console.md
         - name: Anwendungsdashboard
@@ -324,7 +324,7 @@ items:
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
         - name: Debuggen von Momentaufnahmen
-          href: ../application-insights/app-insights-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+          href: app/snapshot-debugger.md
       - name: Java-Apps
         items:
         - name: Web-Apps
@@ -366,22 +366,22 @@ items:
         - name: SharePoint-Websites
           href: ../application-insights/app-insights-sharepoint.md?toc=/azure/azure-monitor/toc.json
         - name: Dynamics CRM
-          href: ../application-insights/app-insights-sample-mscrm.md?toc=/azure/azure-monitor/toc.json
+          href: app/sample-mscrm.md
       - name: Intelligente Erkennung
         href: ../application-insights/app-insights-proactive-diagnostics.md?toc=/azure/azure-monitor/toc.json
         items:
         - name: Anomalien bei Fehlern
-          href: ../application-insights/app-insights-proactive-failure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-failure-diagnostics.md
         - name: Leistungsanomalien
-          href: ../application-insights/app-insights-proactive-performance-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-performance-diagnostics.md
         - name: Ablaufverfolgung der Leistungsminderung
-          href: ../application-insights/app-insights-proactive-trace-severity.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-trace-severity.md
         - name: Ausnahmevolume
-          href: ../application-insights/app-insights-proactive-exception-volume.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-exception-volume.md
         - name: Arbeitsspeicherverlust
-          href: ../application-insights/app-insights-proactive-potential-memory-leak.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-potential-memory-leak.md
         - name: Ressourcenverwendung
-          href: ../application-insights/app-insights-proactive-low-utilization-cloud-resources.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-low-utilization-cloud-resources.md
         - name: Sicherheitserkennung
           href: app/proactive-application-security-detection-pack.md
         - name: Azure Cloud Services
@@ -433,7 +433,7 @@ items:
       - name: Konfigurations-Manager
         href: platform/collect-sccm.md
       - name: Überwachung der Anwendungsleistung mit SCOM
-        href: ../application-insights/app-insights-scom.md?toc=/azure/azure-monitor/toc.json
+        href: app/scom.md
     - name: Weiterleiten von Daten
       items:
       - name: Archivieren des Aktivitätsprotokolls
@@ -478,7 +478,7 @@ items:
         - name: Anwendungszuordnung
           href: app/app-map.md
         - name: Transaktionsdiagnose
-          href: ../application-insights/app-insights-transaction-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/transaction-diagnostics.md
         - name: HockeyApp-Daten
           href: app/hockeyapp-bridge-app.md
       - name: Visual Studio
@@ -880,7 +880,7 @@ items:
       - name: Filterung und Vorverarbeitung von Telemetriedaten
         href: app/api-filtering-sampling.md
       - name: Stichproben
-        href: ../application-insights/app-insights-sampling.md?toc=/azure/azure-monitor/toc.json
+        href: app/sampling.md
     - name: Überwachungslösungen
       items:
       - name: Entwerfen und Erstellen
@@ -989,9 +989,9 @@ items:
     - name: Log Analytics-Dienstupdates
       href: https://azure.microsoft.com/updates/?product=log-analytics
     - name: Anmerkungen zu dieser SDK-Version
-      href: ../application-insights/app-insights-release-notes.md
+      href: app/release-notes.md
     - name: Anmerkungen zu dieser Version der Developer Analytics Tools
-      href: ../application-insights/app-insights-release-notes-vsix.md
+      href: app/release-notes-vsix.md
   - name: Windows Analytics
     href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
   - name: Regionale Verfügbarkeit
@@ -1004,9 +1004,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 89f30238656021e02fe36fe3e0fede0bc0988cae
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0cfca3a41157065f2e64c0da8062ebd011375f70
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002126"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016109"

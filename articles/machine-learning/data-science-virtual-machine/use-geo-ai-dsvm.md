@@ -1,11 +1,12 @@
 ---
 title: Verwendung der Data Science VM für geografische KI – Azure | Microsoft-Dokumentation
-description: 'Gewusst wie: Verwenden einer VM für geografische KI in Azure'
-keywords: deep learning, AI, data science tools, data science virtual machine, Geospatial analytics
+description: Hier erfahren Sie, wie Sie die Data Science Virtual Machine für geografische KI verwenden, um Daten zu analysieren und geodatenbasierte Modelle zu erstellen.
+keywords: deep learning, KI, data science-tools, data science-VM, räumliche Analysen
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: f346b086a0269f247d64edf9346b01849ba3d0ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 872bfdfdef28dbb88861b723bd3186faea461cad
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408036"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410005"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Verwendung der Data Science VM für geografische KI
 
@@ -42,11 +43,11 @@ R-Bridge für ArcGIS wird als R-Bibliothek mit dem Namen [arcgisbinding](https:/
 Zusätzlich zu den auf dem Machine Learning- und Deep Learning-Framework basierenden Beispielen von der standardmäßigen Data Science VM wird auch eine Reihe von geografischen Beispielen als Teil der Data Science-VM mit geografischer KI bereitgestellt. Diese Beispiele ermöglichen Ihnen eine schnellen Einstieg in die Entwicklung von KI-Anwendungen mithilfe von geografischen Daten und der ArcGIS-Software. 
 
 
-1. [Erste Schritte mit geografischen Analysen mit Python](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Ein einführendes Beispiel zeigt, wie Sie mithilfe der von der [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)-Bibliothek bereitgestellten Python-Benutzeroberfläche für ArcGIS mit geografischen Daten arbeiten. Zudem zeigt es, wie Sie konventionelles Machine Learning mit geografischen Daten kombinieren und das Ergebnis auf einer Karte in ArcGIS visualisieren. 
+1. [Erste Schritte mit geografischen Analysen mit Python:](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb) Ein einführendes Beispiel zeigt, wie Sie mithilfe der von der [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)-Bibliothek bereitgestellten Python-Benutzeroberfläche für ArcGIS mit geografischen Daten arbeiten. Zudem zeigt es, wie Sie konventionelles Machine Learning mit geografischen Daten kombinieren und das Ergebnis auf einer Karte in ArcGIS visualisieren. 
 
-2. [Erste Schritte mit geografischen Analysen mit R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Ein einführendes Beispiel zeigt, wie Sie mithilfe der von der [arcgisbinding](https://github.com/R-ArcGIS/r-bridge)-Bibliothek bereitgestellten R-Benutzeroberfläche für ArcGIS mit geografischen Daten arbeiten. 
+2. [Erste Schritte mit geografischen Analysen mit R:](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb) Ein einführendes Beispiel zeigt, wie Sie mithilfe der von der [arcgisbinding](https://github.com/R-ArcGIS/r-bridge)-Bibliothek bereitgestellten R-Benutzeroberfläche für ArcGIS mit geografischen Daten arbeiten. 
 
-3. [Klassifizierung der Landnutzung auf Pixelebene](https://github.com/Azure/pixel_level_land_classification): Ein Tutorial, in dem das Erstellen eines neuronalen Deep Learning-Netzmodell gezeigt wird, das ein Luftbild als Eingabe akzeptiert und eine Beschriftung für einen Landstrich zurückgibt. Zu Beschriftungen für Landstriche zählen z.B. „Bewaldet“ oder „Wasser“. Das Modell gibt eine Beschriftung für jedes Pixel im Bild zurück. Das Modell wird mit dem Open Source-basierten Deep Learning-Framework [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) von Microsoft erstellt. Zudem zeigt das Beispiel, wie das Training in [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) horizontal hochskaliert werden kann. Verwendet werden die Modellvorhersagen in der ArcGIS Pro-Software. 
+3. [Klassifizierung der Landnutzung auf Pixelebene:](https://github.com/Azure/pixel_level_land_classification) Ein Tutorial, in dem das Erstellen eines neuronalen Deep Learning-Netzmodell gezeigt wird, das ein Luftbild als Eingabe akzeptiert und eine Beschriftung für einen Landstrich zurückgibt. Zu Beschriftungen für Landstriche zählen z.B. „Bewaldet“ oder „Wasser“. Das Modell gibt eine Beschriftung für jedes Pixel im Bild zurück. Das Modell wird mit dem Open Source-basierten Deep Learning-Framework [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) von Microsoft erstellt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

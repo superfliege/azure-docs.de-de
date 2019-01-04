@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388318"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017098"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Leitfaden für eine vertrauenswürdige Internetverbindung
 
@@ -40,10 +40,10 @@ Die Initiative umfasst auch Sicherheitsrichtlinien, Leitfäden und Rahmenbedingu
 
 Es gibt drei Hauptoptionen für die Verbindung mit Azure-Diensten:
 
-- Direkte Internetverbindung: Verbinden Sie sich direkt über eine offene Internetverbindung mit den Azure-Diensten. Das Medium und die Verbindung sind öffentlich. Der Datenschutz erfolgt durch eine Verschlüsselung auf Anwendungs- und Transportebene. Die Bandbreite wird von der Internetkonnektivität des Standorts beschränkt. Verwenden Sie mehrere aktive Anbieter, um Resilienz sicherzustellen.
-- Virtuelles privates Netzwerk (VPN): Verbinden Sie sich privat über ein VPN-Gateway mit Ihrem virtuellen Azure-Netzwerk.
+- Direkte Internetverbindung: Stellen Sie über eine offene Internetverbindung eine Direktverbindung mit Azure-Diensten her. Das Medium und die Verbindung sind öffentlich. Der Datenschutz erfolgt durch eine Verschlüsselung auf Anwendungs- und Transportebene. Die Bandbreite wird von der Internetkonnektivität des Standorts beschränkt. Verwenden Sie mehrere aktive Anbieter, um Resilienz sicherzustellen.
+- Virtuelles privates Netzwerk (VPN): Stellen Sie über ein VPN-Gateway eine private Verbindung mit Ihrem virtuellen Azure-Netzwerk her.
 Das Medium ist öffentlich, da es die Standardinternetverbindung eines Standorts durchläuft, aber die Verbindung wird in einem Tunnel verschlüsselt, um den Datenschutz zu gewährleisten. Die Bandbreite ist abhängig von den VPN-Geräten und wird durch die gewählte Konfiguration begrenzt. Azure-Point-to-Site-Verbindungen sind in der Regel auf 100 MBit/s beschränkt, und Site-to-Site-Verbindungen sind auf 1,25 GBit/s beschränkt.
-- Azure ExpressRoute: ExpressRoute ist eine direkte Verbindung mit Microsoft-Diensten. Da die Verbindung über einen isolierten Fiber-Channel erfolgt, kann sie je nach Konfiguration öffentlich oder privat sein. Die Bandbreite ist typischerweise auf höchstens 10 GBit/s beschränkt.
+- Azure ExpressRoute: Bei ExpressRoute handelt es sich um eine Direktverbindung mit Microsoft-Diensten. Da die Verbindung über einen isolierten Fiber-Channel erfolgt, kann sie je nach Konfiguration öffentlich oder privat sein. Die Bandbreite ist typischerweise auf höchstens 10 GBit/s beschränkt.
 
 Es gibt mehrere Möglichkeiten, die TIC-Anforderungen aus Anhang H (Überlegungen zur Cloud) zu erfüllen, die im Dokument „Trusted Internet Connections (TIC) Reference Architecture Document, Version 2.0“ (Dokument zur TIC-Referenzarchitektur, Version 2.0) des US-Heimatschutzministeriums angegeben sind. In diesem Artikel wird der DHS TIC-Leitfaden als **TIC 2.0** bezeichnet.
 
@@ -63,8 +63,8 @@ Die wichtigste Voraussetzung für die Konformität mit der TIC-Referenzarchitekt
 
 Die TIC-Konformität von Azure-IaaS ist in zwei Hauptschritte unterteilt:
 
-- Schritt 1: Konfiguration.
-- Schritt 2: Überwachung.
+- Schritt 1: Konfiguration
+- Schritt 2: Überwachung
 
 ### <a name="azure-iaas-tic-compliance-configuration"></a>TIC-Konformität von Azure-IaaS: Konfiguration
 
@@ -85,7 +85,7 @@ Azure erstellt automatisch Systemrouten und weist die Routen allen Subnetzen ein
 
 ![Erzwingen von Tunneln für TIC](media/tic-diagram-c.png)
 
-Der gesamte Datenverkehr, der das virtuelle Netzwerk verlässt, muss über die lokale Verbindung geleitet werden, um sicherzustellen, dass der gesamte Datenverkehr die vertrauenswürdige D/A-Internetverbindung durchläuft. Zum Anpassen von Routen können Sie benutzerdefinierte Routen erstellen oder BGP-Routen (Border Gateway Protocol) zwischen Ihrem lokalen Netzwerkgateway und einem Azure-VPN-Gateway austauschen. Weitere Informationen zu benutzerdefiniertem Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke: Benutzerdefinierte Routen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Weitere Informationen zum BGP finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
+Der gesamte Datenverkehr, der das virtuelle Netzwerk verlässt, muss über die lokale Verbindung geleitet werden, um sicherzustellen, dass der gesamte Datenverkehr die vertrauenswürdige D/A-Internetverbindung durchläuft. Zum Anpassen von Routen können Sie benutzerdefinierte Routen erstellen oder BGP-Routen (Border Gateway Protocol) zwischen Ihrem lokalen Netzwerkgateway und einem Azure-VPN-Gateway austauschen. Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke: Benutzerdefiniert](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Weitere Informationen zum BGP finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
 
 #### <a name="add-user-defined-routes"></a>Hinzufügen von benutzerdefinierten Routen
 
@@ -124,8 +124,8 @@ Azure-PaaS-Dienste wie Azure Storage sind über eine im Internet erreichbare URL
 
 Wenn Azure-PaaS-Dienste in ein virtuelles Netzwerk integriert sind, kann von diesem virtuellen Netzwerk privat auf den Dienst zugegriffen werden. Sie können das benutzerdefinierte Routing für 0.0.0.0/0 über benutzerdefinierte Routen oder BGP anwenden. Durch benutzerdefiniertes Routing wird sichergestellt, dass der gesamte Datenverkehr für das Internet lokal weiterleitet wird, um die vertrauenswürdige Internetverbindung zu durchlaufen. Integrieren Sie Azure-Dienste mit den folgenden Mustern in virtuelle Netzwerke:
 
-- **Bereitstellen einer dedizierten Instanz eines Diensts**: Immer mehr PaaS-Dienste können als dedizierte Instanzen bereitgestellt werden, deren Endpunkte mit virtuellen Netzwerken verbunden sind. Sie können eine App Service-Umgebung für PowerApps im Modus „Isoliert“ bereitstellen, damit der Netzwerkendpunkt auf ein virtuelles Netzwerk beschränkt wird. Die App Service-Umgebung kann dann viele Azure-PaaS-Dienste hosten, z.B. Azure-Web-Apps, Azure API Management und Azure Functions.
-- **Verwenden von Dienstendpunkten im virtuellen Netzwerk**: Immer mehr PaaS-Dienste bieten die Möglichkeit, ihren Endpunkt auf eine private IP-Adresse des virtuellen Netzwerks statt auf eine öffentliche Adresse zu verschieben.
+- **Bereitstellen einer dedizierten Instanz eines Diensts:** Immer mehr PaaS-Dienste können als dedizierte Instanzen bereitgestellt werden, deren Endpunkte mit virtuellen Netzwerken verbunden sind. Sie können eine App Service-Umgebung für PowerApps im Modus „Isoliert“ bereitstellen, damit der Netzwerkendpunkt auf ein virtuelles Netzwerk beschränkt wird. Die App Service-Umgebung kann dann viele Azure-PaaS-Dienste hosten, z.B. Azure-Web-Apps, Azure API Management und Azure Functions.
+- **Verwenden von Dienstendpunkten im virtuellen Netzwerk:** Immer mehr PaaS-Dienste bieten die Möglichkeit, ihren Endpunkt zu einer privaten IP-Adresse des virtuellen Netzwerks zu verschieben, anstatt eine öffentliche Adresse zu verwenden.
 
 Dienste, die seit Mai 2018 die Bereitstellung dedizierter Instanzen in einem virtuellen Netzwerk oder die Verwendung von Dienstendpunkten unterstützen, sind in den folgenden Tabellen aufgeführt.
 
@@ -157,7 +157,7 @@ Dienste, die seit Mai 2018 die Bereitstellung dedizierter Instanzen in einem vir
 |Azure Active Directory                | Allgemein verfügbar               |
 |Azure Batch                           | Allgemein verfügbar               |
 |App Service-Umgebung               | Allgemein verfügbar               |
-|Azure Redis Cache                     | Allgemein verfügbar               |
+|Azure Cache for Redis                     | Allgemein verfügbar               |
 |Azure HDInsight                       | Allgemein verfügbar               |
 |VM-Skalierungsgruppe             | Allgemein verfügbar               |
 |Azure Cloud Services                  | Allgemein verfügbar               |
@@ -263,11 +263,11 @@ Sie können den Zugriff für Microsoft Azure, Office 365 und Dynamics 365 proble
 | Datenbank | Azure Database for PostgreSQL | | | JA |
 | Datenbank | Azure SQL Data Warehouse | | | JA |
 | Datenbank | Azure Cosmos DB | | | JA |
-| Datenbank | Azure Redis Cache | | JA | |
-| Speicher | Azure Blob Storage | JA | | |
-| Speicher | Azure Files | JA | | |
-| Speicher | Azure Queue Storage | JA | | |
-| Speicher | Azure-Tabellenspeicher | JA | | |
-| Speicher | Azure Disk Storage | JA | | |
+| Datenbank | Azure Cache for Redis | | JA | |
+| Storage | Azure Blob Storage | JA | | |
+| Storage | Azure Files | JA | | |
+| Storage | Azure Queue Storage | JA | | |
+| Storage | Azure-Tabellenspeicher | JA | | |
+| Storage | Azure Disk Storage | JA | | |
 
 \* Öffentliche Vorschauversion in Azure Government, Mai 2018

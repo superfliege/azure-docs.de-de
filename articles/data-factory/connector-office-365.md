@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f76c1676e21e1abdc3f23e2e2c4a7f6f721fefdb
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955376"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386569"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory (Vorschauversion) 
 
@@ -34,7 +34,7 @@ Vorerst können Sie in einer einzelnen Kopieraktivität **Daten aus Office 365 n
 >- Das Azure-Abonnement mit der Data Factory und der Senkendatenspeicher müssen sich im gleichen Azure Active Directory-Mandanten (Azure AD) befinden wie der Office 365-Mandant.
 >- Stellen Sie sicher, dass die für die Kopieraktivität verwendete Azure Integration Runtime-Region und das Ziel in der gleichen Region sind, in der sich das Postfach der Benutzer des Office 365-Mandanten befindet. [Hier](concepts-integration-runtime.md#integration-runtime-location) erfahren Sie, wie der Azure Integration Runtime-Standort bestimmt wird. In [dieser Tabelle](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions) finden Sie die Liste der unterstützten Office-Regionen und die entsprechenden Azure-Regionen.
 >-  Wenn Sie Office 365-Daten in **Azure Blob Storage** als Ziel laden, stellen Sie sicher, dass Sie die **[Dienstprinzipalauthentifizierung](connector-azure-blob-storage.md#service-principal-authentication)** beim Definieren des verknüpften Diensts in Azure Blob Storage verwenden, nicht aber Authentifizierungen mit [Kontoschlüssel](connector-azure-blob-storage.md#account-key-authentication), [SAS](connector-azure-blob-storage.md#shared-access-signature-authentication) oder [verwalteten Identitäten für Azure-Ressourcen](connector-azure-blob-storage.md#managed-identity).
->-  Wenn Sie Office 365-Daten in **Azure Data Lake Storage Gen1** als Ziel laden, stellen Sie sicher, dass Sie die [**Dienstprinzipalauthentifizierung**](connector-azure-data-lake-store.md#using-service-principal-authentication) beim Definieren des verknüpften Diensts in Azure Data Lake Storage Gen1 verwenden, nicht aber die [Authentifizierung mit verwalteten Identitäten für Azure-Ressourcen](connector-azure-data-lake-store.md#managed-identity).
+>-  Wenn Sie Office 365-Daten in **Azure Data Lake Storage Gen1** als Ziel laden, stellen Sie sicher, dass Sie die [**Dienstprinzipalauthentifizierung**](connector-azure-data-lake-store.md#use-service-principal-authentication) beim Definieren des verknüpften Diensts in Azure Data Lake Storage Gen1 verwenden, nicht aber die [Authentifizierung mit verwalteten Identitäten für Azure-Ressourcen](connector-azure-data-lake-store.md#managed-identity).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -79,7 +79,7 @@ Folgende Eigenschaften werden für den mit Office 365 verknüpften Dienst unters
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **Office365** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Office 365** | JA |
 | office365TenantId | Die Azure-Mandanten-ID, zu der das Office 365-Konto gehört. | JA |
 | servicePrincipalTenantId | Geben Sie die Mandanteninformationen Ihrer Azure AD-Webanwendung an. | JA |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | JA |
@@ -119,7 +119,7 @@ Zum Kopieren von Daten aus Office 365 werden die folgenden Eigenschaften unterst
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf **Office365Table** festgelegt werden. | JA |
+| type | Die type-Eigenschaft des Datasets muss auf Folgendes festgelegt werden: **Office365Table** | JA |
 | tableName | Der Name des Datasets, das aus Office 365 extrahiert werden soll. [Hier](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) finden Sie die Liste der Office 365-Datasets, die für zum Extrahieren verfügbar sind. | JA |
 | predicate | Ein Prädikatausdruck, der zum Filtern der Zeilen verwendet werden kann, die aus Office 365 extrahiert werden sollen.  [Hier](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters) können Sie herausfinden, welche Spalten für die Prädikatfilter für jede Tabelle verwendet werden können und wie das Format des Filterausdrucks aussehen muss. | Nein <br>(Wenn kein Prädikat angegeben wird, ist die Standardeinstellung, Daten für die letzten 30 Tage zu extrahieren.) |
 

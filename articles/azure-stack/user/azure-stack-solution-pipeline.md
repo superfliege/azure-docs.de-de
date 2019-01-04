@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 36637137741aef6b34ab8e70109d692f5399043a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12f9ed6d5b5d4c8dc7e5b0b68a0a394749cc72bd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967060"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714609"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Tutorial: Bereitstellen von Apps in Azure und Azure Stack
 
@@ -72,7 +72,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits über Grundkenntniss
 ### <a name="azure-requirements"></a>Anforderungen für Azure
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-* Erstellen Sie eine [Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-overview) in Azure. Notieren Sie sich die Web-App-URL, die Sie im Tutorial benötigen.
+* Erstellen Sie eine [Web-App](https://docs.microsoft.com/azure/app-service/overview) in Azure. Notieren Sie sich die Web-App-URL, die Sie im Tutorial benötigen.
 
 ### <a name="azure-stack-requirements"></a>Anforderungen für Azure Stack
 
@@ -180,9 +180,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 3. Wählen Sie in Visual Studio Enterprise die Option **Zugriffssteuerung (IAM)**.
 
-    ![Zugriffssteuerung (IAM)](media/azure-stack-solution-hybrid-pipeline/000_12.png)
-
-4. Wählen Sie **Hinzufügen**.
+4. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
     ![Hinzufügen](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 

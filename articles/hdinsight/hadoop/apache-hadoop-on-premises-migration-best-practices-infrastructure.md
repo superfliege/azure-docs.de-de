@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 614fdae1865f008bdbc2cb8d5e8b96c0addcc112
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 6b0b047e74496fb9e58df05dc6118c5f376cb99d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036922"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437519"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 
-Dieser Artikel enthält Empfehlungen für die Verwaltung der Infrastruktur von Azure HDInsight-Clustern. Er ist Teil einer Reihe von Artikeln, die Best Practices für die Migration von lokalen Apache Hadoop-Systemen zu Azure HDInsight bieten.
+Dieser Artikel enthält Empfehlungen für die Verwaltung der Infrastruktur von Azure HDInsight-Clustern. Er ist Teil einer Reihe von Artikeln, die bewährte Methoden für die Migration von lokalen Apache Hadoop-Systemen zu Azure HDInsight enthalten.
 
-## <a name="plan-well-for-the-capacity-needed-for-hdinsight-clusters"></a>Gute Planung der für HDInsight-Cluster erforderlichen Kapazität
+## <a name="plan-for-hdinsight-cluster-capacity"></a>Planen der HDInsight-Clusterkapazität
 
 Die wichtigsten Entscheidungen für die Kapazitätsplanung von HDInsight-Clustern sind die folgenden:
 
@@ -31,15 +31,15 @@ Die wichtigsten Entscheidungen für die Kapazitätsplanung von HDInsight-Cluster
 
 Weitere Informationen finden Sie im Artikel [Kapazitätsplanung für HDInsight-Cluster](../hdinsight-capacity-planning.md).
 
-## <a name="use-the-recommended-virtual-machine-types-for-cluster-nodes"></a>Verwenden Sie die empfohlene VM-Typen für Clusterknoten
+## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Verwenden des empfohlenen VM-Typs den für Cluster
 
 In [Standardknotenkonfiguration und Standardgrößen von virtuellen Computern für Cluster](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) finden Sie Informationen zu empfohlenen VM-Typen für jeden Typ von HDInsight-Cluster.
 
-## <a name="check-the-availability-of-hadoop-components-in-hdinsight"></a>Überprüfen der Verfügbarkeit von Hadoop-Komponenten in HDInsight
+## <a name="check-hadoop-components-availability-in-hdinsight"></a>Überprüfen der Verfügbarkeit von Hadoop-Komponenten in HDInsight
 
 Jede HDInsight-Version ist eine Cloud-Distribution von Hortonworks Data Platform (HDP) und besteht aus einem Satz an Hadoop-Ökosystemkomponenten. Unter [HDInsight-Komponentenversionen](../hdinsight-component-versioning.md) finden Sie Einzelheiten zu allen HDInsight-Komponenten und deren aktuelle Versionen.
 
-Sie können auch Ambari UI oder der Ambari-REST-API verwenden, um den Hadoop-Komponenten und -Versionen in HDInsight zu überprüfen.
+Sie können auch die Benutzeroberfläche von Apache Ambari oder die Ambari-REST-API verwenden, um die Hadoop-Komponenten und -Versionen in HDInsight zu überprüfen.
 
 Anwendungen oder Komponenten, die in lokalen Clustern verfügbar waren, aber nicht Teil der HDInsight-Cluster sind, können auf einem Edgeknoten oder auf einer VM im gleichen VNet wie der HDInsight-Cluster hinzugefügt werden. Eine Hadoop-Anwendung eines Drittanbieters, die in Azure HDInsight nicht verfügbar ist, kann über die Option „Anwendungen“ im HDInsight-Cluster installiert werden. Benutzerdefinierte Hadoop-Anwendungen können auf dem HDInsight-Cluster mithilfe von „Skriptaktionen“ installiert werden. Die folgende Tabelle enthält einige allgemeine Anwendungen sowie die Optionen für die HDInsight-Integration:
 
@@ -90,14 +90,14 @@ HDInsight verfügt über vorgefertigte Skripts zum Installieren der folgenden Ko
 - Vorabladen von Hive-Bibliotheken
 - Installieren oder Aktualisieren von Mono
 
-> [!Note]
+> [!Note]  
 > HDInsight bietet keine direkte Unterstützung für benutzerdefinierte Hadoop-Komponenten oder Komponenten, die über Skriptaktionen installiert werden.
 
 Skriptaktionen können auch als HDInsight-Anwendung im Azure Marketplace veröffentlicht werden.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Installieren von Hadoop-Anwendungen von Drittanbietern in HDInsight](../hdinsight-apps-install-applications.md)
+- [Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight](../hdinsight-apps-install-applications.md)
 - [Anpassen von HDInsight-Clustern mit Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md)
 - [Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace](../hdinsight-apps-publish-applications.md)
 
@@ -130,7 +130,7 @@ New—AzureRmHDInsightCluster `
 
 Weitere Informationen finden Sie im Artikel [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="use-edge-nodes-on-hadoop-clusters-in-hdinsight-to-access-the-client-tools"></a>Verwenden von Edgeknoten in Hadoop-Clustern in HDInsight für den Zugriff auf die Clienttools
+## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Zugreifen auf Clienttools über Edgeknoten des HDInsight Hadoop-Clusters
 
 Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Clienttools installiert und konfiguriert sind wie auf den Hauptknoten, aber keine Hadoop-Dienste ausgeführt werden. Der Edgeknoten kann für folgende Zwecke verwendet werden:
 
@@ -140,9 +140,11 @@ Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Cl
 
 Edgeknoten können über das Azure-Portal erstellt und gelöscht und während oder nach der Clustererstellung verwendet werden. Nach der Erstellung eines Edgeknotens können Sie über SSH eine Verbindung zum Edgeknoten herstellen und Client-Tools ausführen, um auf den Hadoop-Cluster in HDInsight zuzugreifen. Der SSH-Endpunkt des Edgeknotens ist `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
-Weitere Informationen finden Sie im Artikel [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight](../hdinsight-apps-use-edge-node.md).
 
-## <a name="use-the-scale-up-and-scale-down-feature-of-clusters"></a>Verwenden des Features zum Hoch- und Herunterskalieren von Clustern
+Weitere Informationen finden Sie im Artikel [Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight](../hdinsight-apps-use-edge-node.md).
+
+
+## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Verwenden des Features zum Hoch- und Herunterskalieren von Clustern
 
 HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern.
 
@@ -186,9 +188,9 @@ Die Nutzung eines Azure Virtual Network mit HDInsight ermöglicht die folgenden 
 - Herstellen einer Verbindung für HDInsight mit Datenspeichern in einem Azure Virtual Network
 - Direktes Zugreifen auf Hadoop-Dienste, die nicht öffentlich über das Internet verfügbar sind (Beispiele: Kafka-APIs oder die HBase-Java-API)
 
-HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hinzugefügt werden. Wenn HDInsight zu einem bestehenden Virtual Network hinzugefügt wird, müssen die bestehenden Netzwerksicherheitsgruppen und benutzerdefinierten Routen aktualisiert werden, um uneingeschränkten Zugriff auf [mehrere IP-Adressen](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip-1) im Azure-Rechenzentrum zu ermöglichen. Stellen Sie außerdem sicher, dass Sie den Datenverkehr zu den [Ports](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports), die von HDInsight-Diensten verwendet werden, nicht blockieren.
+HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hinzugefügt werden. Wenn HDInsight zu einem bestehenden Virtual Network hinzugefügt wird, müssen die bestehenden Netzwerksicherheitsgruppen und benutzerdefinierten Routen aktualisiert werden, um uneingeschränkten Zugriff auf [mehrere IP-Adressen](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) im Azure-Rechenzentrum zu ermöglichen. Stellen Sie außerdem sicher, dass Sie den Datenverkehr zu den [Ports](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports), die von HDInsight-Diensten verwendet werden, nicht blockieren.
 
-> [!Note]
+> [!Note]  
 > Die Tunnelerzwingung wird derzeit von HDInsight nicht unterstützt. Die Tunnelerzwingung ist eine Subnetzeinstellung, bei der für ausgehenden Internetdatenverkehr der Umweg über ein Gerät zur Untersuchung und Protokollierung erzwungen wird. Entfernen Sie entweder die Tunnelerzwingung, bevor Sie HDInsight in einem Subnetz installieren, oder erstellen Sie ein neues Subnetz für HDInsight. HDInsight unterstützt auch keine Beschränkung der ausgehenden Netzwerkverbindung.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -196,7 +198,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Azure Virtual Networks – Übersicht](../../virtual-network/virtual-networks-overview.md)
 - [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md)
 
-## <a name="use-azure-virtual-network-service-endpoints-to-securely-connect-to-other-azure-services"></a>Verwenden von Azure Virtual Network-Dienstendpunkten für eine sichere Verbindung mit anderen Azure-Diensten
+## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Herstellen einer sicheren Verbindung mit Azure-Diensten unter Verwendung von Azure Virtual Network-Dienstendpunkten
 
 HDInsight unterstützt [Virtual Network-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) , mit denen Sie eine sichere Verbindung zu Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB und SQL-Datenbanken herstellen können. Durch die Aktivierung eines Dienstendpunkts für Azure HDInsight, durchläuft der Datenverkehr eine geschützte Route im Azure-Rechenzentrum. Dank dieser höheren Sicherheit in der Netzwerkschicht können Sie große Datenspeicherkonten auf ihre spezifischen Virtual Networks (VNETs) festlegen und dennoch HDInsight-Cluster nahtlos nutzen, um auf diese Daten zuzugreifen und sie zu verarbeiten.
 

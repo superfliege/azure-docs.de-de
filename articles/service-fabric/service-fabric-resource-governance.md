@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: twhitney, subramar
-ms.openlocfilehash: f2898de030a70d578eb45e81c9ccbef90bce96c8
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 66f651f921773f638b4493be70319d5d80b122db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300471"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956839"
 ---
-# <a name="resource-governance"></a>Ressourcenkontrolle 
+# <a name="resource-governance"></a>Ressourcenkontrolle
 
 Wenn Sie mehrere Dienste auf dem gleichen Knoten oder Cluster ausführen, kann ein Dienst mehr Ressourcen belegen und dadurch die Verfügbarkeit anderer Dienste im Prozess beeinträchtigen. Dieses Problem wird als „Noisy-Neighbor“-Problem bezeichnet. In Azure Service Fabric können Entwickler Reservierungen und Grenzwerte pro Dienst festlegen, um Ressourcen zu garantieren und die Ressourcennutzung zu beschränken.
 
 > Bevor Sie mit diesem Artikel fortfahren, sollten Sie sich mit dem [Service Fabric-Anwendungsmodell](service-fabric-application-model.md) und dem [Service Fabric-Hostingmodell](service-fabric-hosting-model.md) vertraut machen.
 >
 
-## <a name="resource-governance-metrics"></a>Ressourcenkontrollmetriken 
+## <a name="resource-governance-metrics"></a>Ressourcenkontrollmetriken
 
 Die Ressourcenkontrolle wird in Service Fabric gemäß dem [Dienstpaket](service-fabric-application-model.md) unterstützt. Die Ressourcen, die dem Dienstpaket zugewiesen sind, können weiter auf Codepakete aufgeteilt werden. Die festgelegten Ressourcengrenzwerte haben auch die Reservierung der Ressourcen zur Folge. Service Fabric unterstützt das Festlegen von CPU und Arbeitsspeicher pro Dienstpaket mithilfe von zwei integrierten [Metriken](service-fabric-cluster-resource-manager-metrics.md):
 
@@ -37,6 +37,7 @@ Die Ressourcenkontrolle wird in Service Fabric gemäß dem [Dienstpaket](service
 * *Arbeitsspeicher* (Metrikname `servicefabric:/_MemoryInMB`): Arbeitsspeicher wird in MB angegeben und entspricht dem auf dem Computer verfügbaren physischen Arbeitsspeicher.
 
 Für diese beiden Metriken werden vom [Cluster Resource Manager](service-fabric-cluster-resource-manager-cluster-description.md) die gesamte Clusterkapazität, die Last auf jedem Knoten im Cluster und die verbleibenden Ressourcen im Cluster nachverfolgt. Diese zwei Metriken entsprechen einem Benutzer oder einer benutzerdefinierten Metrik. Alle vorhandenen Features können mit diesen verwendet werden:
+
 * Der Cluster kann gemäß diesen beiden Metriken [ausbalanciert](service-fabric-cluster-resource-manager-balancing.md) werden (Standardverhalten).
 * Der Cluster kann gemäß diesen beiden Metriken [defragmentiert](service-fabric-cluster-resource-manager-defragmentation-metrics.md) werden.
 * Beim [Beschreiben eines Clusters](service-fabric-cluster-resource-manager-cluster-description.md) kann für diese beiden Metriken gepufferte Kapazität festgelegt werden.
@@ -55,17 +56,17 @@ An dieser Stelle entspricht die Summe der Grenzwerte der Kapazität des Knotens.
 
 Es gibt jedoch zwei Fälle, in denen andere Prozesse um CPU-Leistung konkurrieren können. In diesen Fällen kann bei einem Prozess und einem Container aus unserem Beispiel das „Noisy Neighbor“-Problem auftreten:
 
-* *Kombinieren von gesteuerten und nicht gesteuerten Diensten und Containern*: Wenn ein Benutzer einen Dienst erstellt, ohne eine Ressourcenkontrolle anzugeben, betrachtet die Laufzeit diesen so, als würde er keine Ressourcen in Anspruch nehmen, und kann ihn in unserem Beispiel auf dem Knoten platzieren. In diesem Fall verbraucht dieser neue Prozess einen Teil der CPU-Leistung, der den bereits auf dem Knoten ausgeführten Diensten dann fehlt. Für dieses Problem gibt es zwei Lösungen. Entweder können Sie vermeiden, nicht gesteuerte und gesteuerte Dienste im selben Cluster zu verwenden, oder Sie verwenden [Platzierungseinschränkungen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md), damit diese beiden Arten von Diensten nicht im selben Knotensatz platziert werden.
+* *Kombinieren von gesteuerten und nicht gesteuerten Diensten und Containern:* Wenn ein Benutzer einen Dienst erstellt, ohne eine Ressourcenkontrolle anzugeben, betrachtet die Laufzeit diesen so, als würde er keine Ressourcen in Anspruch nehmen, und kann ihn in unserem Beispiel auf dem Knoten platzieren. In diesem Fall verbraucht dieser neue Prozess einen Teil der CPU-Leistung, der den bereits auf dem Knoten ausgeführten Diensten dann fehlt. Für dieses Problem gibt es zwei Lösungen. Entweder können Sie vermeiden, nicht gesteuerte und gesteuerte Dienste im selben Cluster zu verwenden, oder Sie verwenden [Platzierungseinschränkungen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md), damit diese beiden Arten von Diensten nicht im selben Knotensatz platziert werden.
 
-* *Wenn ein anderer Prozess auf dem Knoten außerhalb von Service Fabric gestartet wird (z.B. ein Betriebssystemdienst)*: In diesem Fall konkurriert dieser Prozess außerhalb von Service Fabric ebenfalls mit den vorhandenen Diensten um CPU-Leistung. Zum Beheben dieses Problems können Sie Knotenkapazitäten einrichten, um den Mehraufwand des Betriebssystems abzufangen. Dieses Vorgehen wird im nächsten Abschnitt beschrieben.
+* *Wenn ein anderer Prozess auf dem Knoten außerhalb von Service Fabric gestartet wird (etwa ein Betriebssystemdienst):* In diesem Fall konkurriert dieser Prozess außerhalb von Service Fabric ebenfalls mit den vorhandenen Diensten um CPU-Leistung. Zum Beheben dieses Problems können Sie Knotenkapazitäten einrichten, um den Mehraufwand des Betriebssystems abzufangen. Dieses Vorgehen wird im nächsten Abschnitt beschrieben.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Clustereinrichtung zum Aktivieren der Ressourcenkontrolle
 
-Wenn ein Knoten gestartet wird und dem Cluster beitritt, erkennt Service Fabric den verfügbaren Arbeitsspeicher und die verfügbare Anzahl an Kernen und legt dann die Knotenkapazitäten für diese beiden Ressourcen fest. 
+Wenn ein Knoten gestartet wird und dem Cluster beitritt, erkennt Service Fabric den verfügbaren Arbeitsspeicher und die verfügbare Anzahl an Kernen und legt dann die Knotenkapazitäten für diese beiden Ressourcen fest.
 
-Um Pufferspeicher für das Betriebssystem und andere Prozesse, die auf dem Knoten ausgeführt werden könnten, zu behalten, nutzt Service Fabric nur 80 % der verfügbaren Ressourcen auf dem Knoten. Dieser Prozentsatz ist konfigurierbar und kann im Clustermanifest geändert werden. 
+Um Pufferspeicher für das Betriebssystem und andere Prozesse, die auf dem Knoten ausgeführt werden könnten, zu behalten, nutzt Service Fabric nur 80 % der verfügbaren Ressourcen auf dem Knoten. Dieser Prozentsatz ist konfigurierbar und kann im Clustermanifest geändert werden.
 
-Mit dem folgenden Beispiel weisen Sie Service Fabric an, 50 % der verfügbaren CPU-Leistung und 70 % des verfügbaren Arbeitsspeichers zu verwenden: 
+Mit dem folgenden Beispiel weisen Sie Service Fabric an, 50 % der verfügbaren CPU-Leistung und 70 % des verfügbaren Arbeitsspeichers zu verwenden:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -75,7 +76,7 @@ Mit dem folgenden Beispiel weisen Sie Service Fabric an, 50 % der verfügbaren C
 </Section>
 ```
 
-Wenn eine vollständig manuelle Einrichtung der Knotenkapazitäten erforderlich ist, können Sie mit regulären Mechanismen die Knoten im Cluster beschreiben. Im Folgenden finden Sie ein Beispiel für das Einrichten des Knotens mit vier Kernen und 2 GB Arbeitsspeicher: 
+Wenn eine vollständig manuelle Einrichtung der Knotenkapazitäten erforderlich ist, können Sie mit regulären Mechanismen die Knoten im Cluster beschreiben. Im Folgenden finden Sie ein Beispiel für das Einrichten des Knotens mit vier Kernen und 2 GB Arbeitsspeicher:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -87,6 +88,7 @@ Wenn eine vollständig manuelle Einrichtung der Knotenkapazitäten erforderlich 
 ```
 
 Wenn die automatische Erkennung der verfügbaren Ressourcen aktiviert ist und die Knotenkapazitäten manuell im Clustermanifest definiert werden, überprüft Service Fabric, ob der Knoten über genügend Ressourcen für die vom Benutzer definierten Kapazität verfügt:
+
 * Wenn die im Manifest definierten Knotenkapazitäten geringer sind als die verfügbaren Ressourcen auf dem Knoten oder mit diesen identisch sind, verwendet Service Fabric die im Manifest angegebenen Kapazitäten.
 
 * Wenn die im Manifest definierten Knotenkapazitäten größer sind als die verfügbaren Ressourcen, verwendet Service Fabric die verfügbaren Ressourcen als Knotenkapazitäten.
@@ -99,17 +101,16 @@ Die automatische Erkennung der verfügbaren Ressourcen kann deaktiviert werden, 
 </Section>
 ```
 
-Für eine optimale Leistung sollte auch die folgende Einstellung im Clustermanifest aktiviert werden: 
+Für eine optimale Leistung sollte auch die folgende Einstellung im Clustermanifest aktiviert werden:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
+    <Parameter Name="PreventTransientOvercommit" Value="true" />
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
 
-
-## <a name="specify-resource-governance"></a>Festlegen der Ressourcenkontrolle 
+## <a name="specify-resource-governance"></a>Festlegen der Ressourcenkontrolle
 
 Ressourcenkontrollgrenzwerte werden im Anwendungsmanifest (Abschnitt „ServiceManifestImport“) festgelegt, wie im folgenden Beispiel gezeigt:
 
@@ -131,8 +132,8 @@ Ressourcenkontrollgrenzwerte werden im Anwendungsmanifest (Abschnitt „ServiceM
     </Policies>
   </ServiceManifestImport>
 ```
-  
-In diesem Beispiel erhält das Dienstpaket mit dem Namen **ServicePackageA** einen Kern auf den Knoten, auf denen es platziert wurde. Dieses Dienstpaket enthält zwei Codepakete (**CodeA1** und **CodeA2**), und in beiden ist der Parameter `CpuShares` festgelegt. Der Anteil von CpuShares 512:256 teilt den Kern auf die zwei Codepakete auf. 
+
+In diesem Beispiel erhält das Dienstpaket mit dem Namen **ServicePackageA** einen Kern auf den Knoten, auf denen es platziert wurde. Dieses Dienstpaket enthält zwei Codepakete (**CodeA1** und **CodeA2**), und in beiden ist der Parameter `CpuShares` festgelegt. Der Anteil von CpuShares 512:256 teilt den Kern auf die zwei Codepakete auf.
 
 Daher erhält „CodeA1“ in diesem Beispiel zwei Drittel eines Kerns, und „CodeA2“ ein Drittel eines Kerns (sowie eine weiche Reservierungsgarantie desselben). Wenn für Codepakete keine CpuShares angegeben sind, teilt Service Fabric die Kerne gleichmäßig auf die Codepakete auf.
 
@@ -164,7 +165,7 @@ Beim Angeben der Ressourcenkontrolle können Sie [Anwendungsparameter](service-f
   </ServiceManifestImport>
 ```
 
-In diesem Beispiel werden Standardparameterwerte für die Produktionsumgebung festgelegt, in denen jedes Dienstpaket 4 Kerne und 2 GB Arbeitsspeicher erhalten würde. Es ist möglich, die Standardwerte mit Anwendungsparameterdateien zu ändern. In diesem Beispiel kann eine Parameterdatei für einen lokalen Test der Anwendung verwendet werden, bei dem diese weniger Ressourcen als in der Produktion erhält: 
+In diesem Beispiel werden Standardparameterwerte für die Produktionsumgebung festgelegt, in denen jedes Dienstpaket 4 Kerne und 2 GB Arbeitsspeicher erhalten würde. Es ist möglich, die Standardwerte mit Anwendungsparameterdateien zu ändern. In diesem Beispiel kann eine Parameterdatei für einen lokalen Test der Anwendung verwendet werden, bei dem diese weniger Ressourcen als in der Produktion erhält:
 
 ```xml
 <!-- ApplicationParameters\Local.xml -->
@@ -180,20 +181,21 @@ In diesem Beispiel werden Standardparameterwerte für die Produktionsumgebung fe
 </Application>
 ```
 
-> [!IMPORTANT]  Das Angeben der Ressourcenkontrolle mit Anwendungsparametern ist ab Service Fabric Version 6.1 möglich.<br> 
+> [!IMPORTANT]
+> Das Angeben der Ressourcenkontrolle mit Anwendungsparameter ist ab Service Fabric Version 6.1 möglich.<br>
 >
-> Wenn die Ressourcenkontrolle mithilfe von Anwendungsparameter angegeben wird, kann Service Fabric nicht auf eine Version vor 6.1 herabgestuft werden. 
-
+> Wenn die Ressourcenkontrolle mithilfe von Anwendungsparameter angegeben wird, kann Service Fabric nicht auf eine Version vor 6.1 herabgestuft werden.
 
 ## <a name="other-resources-for-containers"></a>Weitere Ressourcen für Container
-Neben CPU und Arbeitsspeicher ist es möglich, noch andere Ressourcengrenzwerte für Container anzugeben. Diese Grenzwerte werden auf Codepaketebene angegeben und angewendet, wenn der Container gestartet wird. Anders als bei CPU und Arbeitsspeicher sind diese Ressourcen im Cluster Resource Manager nicht bekannt, sodass dieser weder die Kapazität überprüft noch einen Lastenausgleich für sie ausführt. 
 
-* *MemorySwapInMB*: die Menge an Auslagerungsspeicher, die ein Container nutzen kann
-* *MemoryReservationInMB*: der weiche Grenzwert für die Arbeitsspeicherüberwachung, die nur erzwungen wird, wenn auf dem Knoten Arbeitsspeicherkonflikte erkannt werden
-* *CpuPercent*: der CPU-Prozentsatz, den der Container verwenden kann Wenn CPU-Grenzwerte für das Dienstpaket angegeben wurden, wird dieser Parameter ignoriert.
-* *MaximumIOps*: die maximale IOPS-Rate, die ein Container verwenden kann (lesen und schreiben)
-* *MaximumIOBytesps*: die maximale E/A-Rate (Byte/s), die ein Container verwenden kann (lesen und schreiben)
-* *BlockIOWeight*: die Block-E/A-Gewichtung relativ zu anderen Containern
+Neben CPU und Arbeitsspeicher ist es möglich, noch andere Ressourcengrenzwerte für Container anzugeben. Diese Grenzwerte werden auf Codepaketebene angegeben und angewendet, wenn der Container gestartet wird. Anders als bei CPU und Arbeitsspeicher sind diese Ressourcen im Cluster Resource Manager nicht bekannt, sodass dieser weder die Kapazität überprüft noch einen Lastenausgleich für sie ausführt.
+
+* *MemorySwapInMB:* die Menge an Auslagerungsspeicher, die ein Container nutzen kann
+* *MemoryReservationInMB:* der weiche Grenzwert für die Arbeitsspeicherüberwachung, die nur erzwungen wird, wenn auf dem Knoten Arbeitsspeicherkonflikte erkannt werden
+* *CpuPercent:* CPU-Prozentsatz, den der Container verwenden kann. Wenn CPU-Grenzwerte für das Dienstpaket angegeben wurden, wird dieser Parameter ignoriert.
+* *MaximumIOps:* maximale IOPS, die ein Container verwenden kann (lesen und schreiben)
+* *MaximumIOBytesps:* maximale E/A (Byte/s), die ein Container verwenden kann (lesen und schreiben)
+* *BlockIOWeight:* Block-E/A-Gewichtung relativ zu anderen Containern
 
 Diese Ressourcen können mit CPU und Arbeitsspeicher kombiniert werden. Hier ist ein Beispiel dafür, wie zusätzliche Ressourcen für Container angegeben werden:
 
@@ -208,5 +210,6 @@ Diese Ressourcen können mit CPU und Arbeitsspeicher kombiniert werden. Hier ist
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Weitere Informationen zum Cluster Resource Manager finden Sie im Artikel [Einführung in den Cluster Resource Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
 * Weitere Informationen zu Anwendungsmodell, Dienstpaketen und Codepaketen sowie zur Vorgehensweise zum Zuweisen von Replikaten finden Sie unter [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md).

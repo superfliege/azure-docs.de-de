@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 31eec9e146c64e2310ab27414952593140f11cb2
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8c4f14849c39414217837a3c86fb6e067cd87c90
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276921"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434340"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for MariaDB
 
@@ -33,13 +33,13 @@ Sie benötigen ein [virtuelles Netzwerk][vm-virtual-network-overview] (VNET) und
 
 ## <a name="terminology-and-description"></a>Terminologie und Beschreibung
 
-**Virtuelles Netzwerk:** Sie können mit Ihrem Azure-Abonnement virtuelle Netzwerke verknüpfen.
+**Virtuelles Netzwerk:** Sie können Ihrem Azure-Abonnement virtuelle Netzwerke zuordnen.
 
 **Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Ihre virtuellen Azure-Computer (VMs) sind Subnetzen zugewiesen. Ein Subnetz kann mehrere VMs oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
 
-**Dienstendpunkt eines virtuellen Netzwerks:** Ein [Dienstendpunkt eines virtuellen Netzwerks][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für den Azure Database for MariaDB-, Azure Database for MySQL- und Azure Database for PostgreSQL-Dienst. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL-Datenbank-, Azure Database for MariaDB-, Azure Database for MySQL- und Azure Database for PostgreSQL-Server im Subnetz konfiguriert.
+**Dienstendpunkt im virtuellen Netzwerk:** Ein [Dienstendpunkt im virtuellen Netzwerk][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für den Azure Database for MariaDB-, Azure Database for MySQL- und Azure Database for PostgreSQL-Dienst. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL-Datenbank-, Azure Database for MariaDB-, Azure Database for MySQL- und Azure Database for PostgreSQL-Server im Subnetz konfiguriert.
 
-**VNET-Regel:** Eine Regel für virtuelle Netzwerke für Ihren Azure Database for MariaDB-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for MariaDB-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for MariaDB-Server aufgeführt zu werden.
+**Regel für virtuelles Netzwerk:** Bei einer Regel für das virtuelle Netzwerk für Ihren Azure Database for MariaDB-Server handelt es sich um ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for MariaDB-Servers enthalten ist. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for MariaDB-Server aufgeführt zu werden.
 
 Eine Regel für ein virtuelles Netzwerk weist Ihren Azure Database for MariaDB-Server an, Nachrichten von jedem Knoten im Subnetz anzunehmen.
 
@@ -93,8 +93,8 @@ Jede VNET-Regel gilt für den gesamten Azure Database for MariaDB-Server und nic
 
 Bei der Verwaltung der Dienstendpunkte des virtuellen Netzwerks erfolgt eine Trennung von Sicherheitsrollen. Die folgenden Rollen müssen Aktionen ausführen:
 
-- **Netzwerkadministrator:**&nbsp; Aktivieren des Endpunkts.
-- **Datenbankadministrator:**&nbsp;Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for MariaDB-Server hinzuzufügen.
+- **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
+- **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for MariaDB-Server hinzuzufügen.
 
 *Alternative zur rollenbasierten Zugriffssteuerung:*
 
@@ -149,7 +149,7 @@ Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
 - [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-using-cli.md)
 -->
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

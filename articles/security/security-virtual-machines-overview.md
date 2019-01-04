@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: fb053cb646d433d1e326747a4b48ed430583b847
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259104"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969684"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 
@@ -47,15 +47,15 @@ Microsoft Antimalware für Azure ist eine Lösung mit einem einzelnen Agent für
 
 Wenn Sie Microsoft Antimalware für Azure bereitstellen und aktivieren, sind die folgenden Kernfunktionen verfügbar:
 
-* **Echtzeitschutz**: Überwacht die Aktivitäten in Cloud Services und Virtual Machines, um die Ausführung von Schadsoftware zu erkennen und zu blockieren.
+* **Echtzeitschutz**: Überwacht die Aktivitäten in Cloud Services und auf Virtual Machines, um die Ausführung von Schadsoftware zu erkennen und zu blockieren.
 * **Geplantes Scannen**: Führt regelmäßig gezielte Scans aus, um Schadsoftware, einschließlich aktiv ausgeführter Programme, zu erkennen.
 * **Schadsoftwarebehandlung**: Führt automatisch Aktionen für erkannte Schadsoftware aus, z.B. das Löschen schädlicher Dateien, das Unter-Quarantäne-Stellen schädlicher Dateien und das Bereinigen schädlicher Registrierungseinträge.
 * **Signaturaktualisierungen**: Installiert automatisch mit einer vordefinierten Häufigkeit die neuesten Schutzsignaturen (Virendefinitionen), um sicherzustellen, dass der Schutz auf dem neuesten Stand ist.
-* **Aktualisierungen der Antimalware-Engine**: Aktualisiert automatisch die Engine für Microsoft Antimalware für Azure.
-* **Aktualisierungen der Antimalware-Plattform**: Aktualisiert automatisch die Plattform für Microsoft Antimalware für Azure.
+* **Aktualisierungen des Antimalware-Moduls**: Führt eine automatische Aktualisierung des Microsoft Antimalware für Azure-Moduls durch.
+* **Aktualisierungen der Antimalware-Plattform**: Führt eine automatische Aktualisierung der Microsoft Antimalware für Azure-Plattform durch.
 * **Aktiver Schutz**: Meldet Telemetriemetadaten zu erkannten Bedrohungen und verdächtigen Ressourcen an Azure, um eine schnelle Reaktion zu gewährleisten. Ermöglicht die synchrone Signaturbereitstellung in Echtzeit über den Microsoft Active Protection Service (MAPS).
 * **Übermittlung von Stichproben**: Übermittelt Stichproben an den Microsoft Antimalware für Azure-Dienst, um den Dienst zu optimieren und die Problembehandlung zu ermöglichen.
-* **Ausschlüsse**: Ermöglicht Anwendungs- und Dienstadministratoren, aus Leistungs- und anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
+* **Ausschlüsse**: Ermöglicht es Anwendungs- und Dienstadministratoren, aus Leistungs- und anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
 * **Antischadsoftware-Ereigniserfassung**: Zeichnet die Integrität des Antischadsoftwarediensts, verdächtige Aktivitäten und durchgeführte Wiederherstellungsaktionen im Ereignisprotokoll des Betriebssystems auf und erfasst sie in Ihrem Azure Storage-Konto.
 
 Weitere Informationen zu Antischadsoftware zum Schutz Ihrer virtuellen Computer:
@@ -112,7 +112,6 @@ Azure Backup ist eine skalierbare Lösung, die Ihre Anwendungsdaten schützt –
 Weitere Informationen:
 
 * [Was ist Azure Backup?](../backup/backup-introduction-to-azure-backup.md)
-* [Azure Backup-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/backup/)
 * [Azure Backup-Dienst – Häufig gestellte Fragen](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -124,8 +123,8 @@ Site Recovery:
 * **Vereinfachung Ihrer BCDR-Strategie**: Site Recovery vereinfacht die Replikation, das Failover und die Wiederherstellung mehrerer Geschäftsworkloads und -Apps von einem einzelnen Standort. Site Recovery orchestriert die Replikation und das Failover, aber das Tool fängt keine Anwendungsdaten ab und besitzt auch keinerlei Informationen hierzu.
 * **Ermöglicht flexible Replikation**: Mithilfe von Site Recovery können Sie Workloads auf virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows-/Linux-Servern replizieren.
 * **Einfaches Failover und leichte Wiederherstellung werden unterstützt**: Site Recovery verfügt über Testfailover, mit denen Übungen zur Notfallwiederherstellung unterstützt werden, ohne dass sich dies auf Produktionsumgebungen auswirkt. Außerdem können Sie geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Nach dem Failover können Sie ein Failback zu Ihren primären Standorten durchführen. Site Recovery verfügt über Wiederherstellungspläne, die Skripts und Azure Automation-Arbeitsmappen enthalten können, sodass Sie das Failover und die Wiederherstellung von Anwendungen mit mehreren Ebenen anpassen können.
-* **Beseitigung sekundärer Datencenter**: Sie können die Replikation zu einem sekundären lokalen Standort oder zu Azure durchführen. Wenn Sie Azure als Ziel für die Notfallwiederherstellung nutzen, vermeiden Sie die Kosten und Komplexität, die mit der Verwaltung eines sekundären Standorts verbunden sind. Replizierte Daten werden in Azure Storage gespeichert.
-* **Integration in vorhandene BCDR-Technologien**: Site Recovery kann zusammen mit anderen BCDR-Features für Anwendungen eingesetzt werden. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen. Dies umfasst auch die native Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
+* **Beseitigung sekundärer Datencenter**: Sie können Daten an einem sekundären lokalen Standort oder in Azure replizieren. Wenn Sie Azure als Ziel für die Notfallwiederherstellung nutzen, vermeiden Sie die Kosten und Komplexität, die mit der Verwaltung eines sekundären Standorts verbunden sind. Replizierte Daten werden in Azure Storage gespeichert.
+* **Integration in vorhandene BCDR-Technologien**: Site Recovery wird zusammen mit den BCDR-Features anderer Anwendungen eingesetzt. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen. Dies umfasst auch die native Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
 
 Weitere Informationen:
 
@@ -166,7 +165,7 @@ Azure Virtual Machines ist für FISMA, FedRAMP, HIPAA, PCI DSS Level 1 und ander
 
 Weitere Informationen:
 
-* [Microsoft Trust Center – Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)
+* [Microsoft Trust Center: Compliance](https://www.microsoft.com/en-us/trustcenter/compliance).
 * [Die vertrauenswürdige Cloud: Sicherheit, Datenschutz und Compliance von Microsoft Azure](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
 ## <a name="confidential-computing"></a>Confidential Computing

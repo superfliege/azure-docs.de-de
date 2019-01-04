@@ -1,5 +1,5 @@
 ---
-title: Tipps zur Problembehandlung bei der kognitiven Suche in Azure Search | Microsoft-Dokumentation
+title: Tipps zur Problembehandlung bei der kognitiven Suche – Azure Search
 description: Tipps und Problembehandlung für die Einrichtung von kognitiven Suchpipelines in Azure Search.
 services: search
 manager: pablocas
@@ -10,27 +10,28 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575305"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316293"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipps zur Problembehandlung bei der kognitiven Suche
 
 Dieser Artikel enthält eine Liste mit Tipps und Tricks als Unterstützung bei Ihren ersten Schritten mit der kognitiven Suche in Azure Search. 
 
-Wenn noch nicht geschehen, durchlaufen Sie zunächst [Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten](cognitive-search-quickstart-blob.md), um mehr über die Anwendung von Datenanreicherungen mithilfe der kognitive Suche in einer Blobdatenquelle zu erfahren.
+Sofern noch nicht geschehen, machen Sie sich zunächst unter [Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten](cognitive-search-quickstart-blob.md) damit vertraut, wie Sie mithilfe der kognitive Suche Datenanreicherungen in einer Blobdatenquelle anwenden.
 
-## <a name="tip-1-start-with-a-small-dataset"></a>Tipp 1: Beginnen Sie mit einem kleinen Datensatz.
+## <a name="tip-1-start-with-a-small-dataset"></a>Tipp 1: Beginnen Sie mit einem kleinen Dataset.
 Am besten lassen sich Probleme schnell finden, wenn Sie diese möglichst schnell beheben können. Die einfachste Möglichkeit, die Indizierungszeit zu verkürzen, besteht darin, die Anzahl der zu indizierenden Dokumente zu verringern. 
 
 Beginnen Sie, indem Sie eine Datenquelle mit nur wenigen Dokumenten bzw. Datensätzen erstellen. Die zusammengestellten Dokumente sollten dabei möglichst die Vielfalt der zu indexierenden Dokumente widerspiegeln. 
 
 Führen Sie Ihre Dokumentenzusammenstellung durch die End-to-End-Pipeline und prüfen Sie, ob die Ergebnisse Ihre Anforderungen erfüllen. Sobald Sie mit den Ergebnissen zufrieden sind, können Sie weitere Dateien zu Ihrer Datenquelle hinzufügen.
 
-## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Tipp 2: Stellen Sie sicher, dass Ihre Anmeldeinformationen für die Datenquelle richtig sind.
+## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Tipp 2: Vergewissern Sie sich, dass Ihre Anmeldeinformationen für die Datenquelle korrekt sind.
 Die Datenquellenverbindung wird erst überprüft, wenn Sie einen Indexer definieren, der sie verwendet. Wenn Fehler angezeigt werden, die darauf hinweisen, dass der Indexer nicht auf die Daten zugreifen kann, stellen Sie Folgendes sicher:
 - Die Verbindungszeichenfolge ist korrekt. Insbesondere beim Erstellen von SAS-Token müssen Sie das von Azure Search erwartete Format verwenden. Weitere Informationen zu den verschiedenen unterstützten Formaten finden Sie im Abschnitt [Angeben von Anmeldeinformationen](
 https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials).
@@ -51,7 +52,7 @@ In diesem Fall sollten Sie den Indexer anweisen, Fehler zu ignorieren. Dazu setz
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tipp 4: Schauen Sie sich angereicherte Dokumente genauer an. 
+## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tipp 4: Sehen Sie sich angereicherte Dokumente genauer an. 
 Angereicherte Dokumente sind temporäre Strukturen, die während der Anreicherung erstellt und nach Abschluss der Verarbeitung gelöscht werden.
 
 Zum Erstellen einer Momentaufnahme des angereicherten Dokuments, das während der Indizierung erstellt wurde, fügen Sie ein Feld namens ```enriched``` zu Ihrem Index hinzu. Der Indexer gibt für alle Anreicherungen dieses Dokuments automatisch eine Zeichenfolgendarstellung im Feld aus.
@@ -79,15 +80,15 @@ Fügen Sie ein Feld ```enriched``` als Teil Ihrer Indexdefinition zu Debuzwecken
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>Tipp 5: Erwarteter Inhalt wird nicht angezeigt.
+## <a name="tip-5-expected-content-fails-to-appear"></a>Tipp 5: Prüfen Sie, ob die erwarteten Inhalte angezeigt werden.
 
 Fehlender Inhalt könnte das Ergebnis von Dokumenten sein, die während der Indizierung verworfen werden. Für die Preisstufen Free und Basic gibt es niedrige Grenzwerte für die Dokumentgröße. Jede Datei, die den Grenzwert überschreitet, wird während der Indizierung verworfen. Sie können im Azure-Portal nach verworfenen Dokumenten suchen. Doppelklicken Sie im Dashboard des Suchdiensts auf die Kachel des Indexers. Überprüfen Sie das Verhältnis der erfolgreichen indizierten Dokumente. Wenn es nicht 100% ist, können Sie auf darauf klicken, um mehr Details zu erhalten. 
 
-Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Der Blob <Dateiname> ist <Dateigröße> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihren aktuellen Diensttarif.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
+Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Das Blob <Dateiname> ist <Dateigröße> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihren aktuellen Diensttarif.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
 
 Ein zweiter Grund dafür, dass Inhalte nicht angezeigt werden, können Zuordnungsfehler bei der Eingabe/Ausgabe sein, die zusammenhängen. Ein Beispiel hierfür wäre, wenn ein Ausgabezielname „Personen“ lautet, aber der Indexfeldname kleingeschrieben ist („personen“). Das System könnte 201 Erfolgsmeldungen für die gesamte Pipeline zurückgeben, sodass der Eindruck entsteht, dass die Indizierung erfolgreich war, obwohl tatsächlich ein Feld leer ist. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tipp 6: Erweitern Sie die Verarbeitung über die maximale Laufzeit hinaus (24-Stunden-Fenster).
+## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tipp 6: Verlängern Sie die Verarbeitung über die maximale Laufzeit hinaus (24-Stunden-Fenster).
 
 Die Bildanalyse ist selbst für einfache Fälle rechenintensiv, sodass die Verarbeitungsdauer bei besonders großen oder komplexen Bildern die maximal zulässige Zeit überschreiten kann. 
 

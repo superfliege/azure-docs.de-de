@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: cb3584101dea4dc8d8d888632175415480a6a1b3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b37626fe899bf7ee49bd71021631e21dc36b3963
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581527"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315618"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Überprüfen der Verwendung der kostenlosen Dienste, die in Ihrem kostenlosen Azure-Konto enthalten sind 
 
@@ -27,7 +27,7 @@ Ihnen werden keine Gebühren für kostenlose Dienste, die in Ihrem kostenlosen A
 
 ## <a name="check-usage-on-the-azure-portal"></a>Überprüfen der Nutzung im Azure-Portal
 
-1.  Melden Sie sich beim [Azure-Portal]( http://portal.azure.com)an.
+1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2.  Wählen Sie im Navigationsbereich links **Alle Dienste** aus.
 
@@ -41,7 +41,7 @@ Ihnen werden keine Gebühren für kostenlose Dienste, die in Ihrem kostenlosen A
 
     ![Screenshot mit grundlegenden Abonnementinformationen](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
 
-6.  Scrollen Sie nach unten, um Informationen zu Ihren aktuellen und prognostizierten Kosten anzuzeigen. Die Kosten beinhalten die Nutzung der Dienste, die nicht in Ihrem kostenlosen Konto enthalten sind, und Nutzung, die die Grenzwerte der kostenlosen Dienste überschreitet. 
+6.  Scrollen Sie nach unten, um Informationen zu Ihren aktuellen und prognostizierten Kosten anzuzeigen. Die Kosten beinhalten die Nutzung der Dienste, die nicht in Ihrem kostenlosen Konto enthalten sind, sowie die Nutzung, die die Grenzwerte der kostenlosen Dienste überschreitet. 
 
     ![Screenshot mit Abonnementkosteninformationen](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
 
@@ -49,22 +49,21 @@ Ihnen werden keine Gebühren für kostenlose Dienste, die in Ihrem kostenlosen A
 
     ![Screenshot mit Verwendung der kostenlosen Dienste](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
 
-    Die Tabelle umfasst die folgenden Spalten:
+    Die Tabelle enthält folgende Spalten:
 
-* **Name der Verbrauchseinheit:** Gibt die Maßeinheit für die genutzte Verbrauchseinheit an. Informationen zur Zuordnung von Diensten zu Verbrauchseinheiten finden Sie unter [Understand free service to meter mapping](billing-understand-free-service-meter-mapping.md) (Grundlegendes zur Zuordnung kostenloser Dienste zu Verbrauchseinheiten). 
+* **Name der Verbrauchseinheit:** Gibt die Maßeinheit für die genutzte Verbrauchseinheit an. Informationen zur Zuordnung von Diensten zu Verbrauchseinheiten finden Sie unter [Grundlegendes zur Zuordnung kostenloser Dienste zu Verbrauchseinheiten](billing-understand-free-service-meter-mapping.md).
 * **Nutzung/Limit:** Nutzung und Grenzwert für die Verbrauchseinheit für den aktuellen Monat. Diese Informationen finden Sie auch in der Statusleiste.
 * **Status:** Verwendungsstatus der Verbrauchseinheit. Basierend auf Ihrem Nutzungsmuster können Sie einen dieser Status besitzen.
-  * **Nicht in Verwendung:** Sie haben diese Verbrauchseinheit nicht verwendet, oder die Verwendung der Verbrauchseinheit hat nicht das Abrechnungssystem erreicht.
+  * **Nicht in Verwendung:** Sie haben diese Verbrauchseinheit nicht verwendet, oder die Verwendung der Verbrauchseinheit hat das Abrechnungssystem nicht erreicht.
   * **Überschritten am \<Datum>:** Sie haben den Grenzwert für die Verbrauchseinheit am \<Datum> überschritten.
-  * **Überschreitung unwahrscheinlich:** Es ist unwahrscheinlich, dass Sie das Limit für diese Verbrauchseinheit überschreiten.
+  * **Überschreitung unwahrscheinlich:** Es ist unwahrscheinlich, dass Sie den Grenzwert für diese Verbrauchseinheit überschreiten.
   * **Überschreitung am \<Datum>:** Sie werden den Grenzwert für die Verbrauchseinheit voraussichtlich am \<Datum> überschreiten.
-
 
 ## <a name="check-usage-through-the-usage-file"></a>Überprüfen der Verwendung mit der Nutzungsdatendatei
 
-Ihre Nutzungsdatendatei enthält detaillierte Informationen über Ihr Azure-Abonnement. Sie können Ihre monatliche und tägliche Nutzungsdatendatei vom Azure-Kontocenter herunterladen. Informationen zum Herunterladen der Nutzungsdatendatei und erforderlichen Zugriffsrechten finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). Weitere Informationen zu Spalten in der Nutzungsdatendatei finden Sie unter [Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure](billing-understand-your-usage.md). 
+Ihre Nutzungsdatendatei enthält detaillierte Informationen über Ihr Azure-Abonnement. Sie können Ihre monatliche und tägliche Nutzungsdatendatei vom Azure-Kontocenter herunterladen. Informationen zum Herunterladen der Nutzungsdatendatei und erforderlichen Zugriffsrechten finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). Weitere Informationen zu Spalten in der Nutzungsdatendatei finden Sie unter [Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure](billing-understand-your-usage.md).
 
-Die Nutzungsdatendatei enthält Nutzungsinformationen zu kostenlosen und kostenpflichtigen Diensten. An das Ende des Namens kostenloser Dienstverbrauchseinheiten ist **Kostenlos** angefügt. Um kostenlose Verbrauchseinheiten zu suchen, öffnen Sie die Datei in Excel, und filtern Sie die **Spalte „Kategorie der Verbrauchseinheit“** nach Zellen, die den Text **– Kostenlos** enthalten (Textfilter &rarr; „Enthält“-Filter verwenden)&nbsp;.
+Die Nutzungsdatendatei enthält Nutzungsinformationen zu kostenlosen und kostenpflichtigen Diensten. An das Ende des Namens kostenloser Dienstverbrauchseinheiten ist **Kostenlos** angefügt. Um nach kostenlosen Verbrauchseinheiten zu suchen, öffnen Sie die Datei in Excel, und filtern Sie die Spalte **Kategorie der Verbrauchseinheit** nach Zellen, die den Text **– Kostenlos** enthalten („Textfilter“ &rarr; Filter „Enthält“). &nbsp;
 
 ![Screenshot mit Verwendung der kostenlosen Dienste](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 

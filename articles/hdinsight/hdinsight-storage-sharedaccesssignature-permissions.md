@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08ffc3a9eb4942cb21c0a800d493b87b016d7f87
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016173"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409920"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
 HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Cluster verbunden sind. Sie können Shared Access Signatures für den Blobcontainer verwenden, um den Zugriff auf die Daten einzuschränken. Shared Access Signatures (SAS) sind ein Feature von Azure Storage-Konten, das das Einschränken des Zugriffs auf Daten ermöglicht. Sie können beispielsweise einen schreibgeschützten Zugriff auf Daten bieten.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Erwägen Sie für eine Lösung mit Apache Ranger die Verwendung von in die Domäne eingebundenem HDInsight. Weitere Informationen finden Sie im Dokument [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](./domain-joined/apache-domain-joined-configure.md).
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight benötigt vollen Zugriff auf den Standardspeicher für den Cluster.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
@@ -34,9 +34,9 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
   * Die Visual Studio-Version 2013, 2015 oder 2017 ist erforderlich.
   * Die Python-Version 2.7 oder höher ist erforderlich.
 
-* Einen Linux-basierten HDInsight-Cluster ODER [Azure PowerShell][powershell] – Wenn Sie bereits über einen Linux-basierten Cluster verfügen, können mit Ambari eine Shared Access Signature zum Cluster hinzuzufügen. Falls nicht, können Sie mit Azure PowerShell einen Cluster erstellen und während der Clustererstellung eine Shared Access Signature hinzufügen.
+* Linux-basierter HDInsight-Cluster ODER [Azure PowerShell][powershell]. Wenn Sie bereits über einen Linux-basierten Cluster verfügen, können dem Cluster mit Apache Ambari eine Shared Access Signature hinzufügen. Falls nicht, können Sie mit Azure PowerShell einen Cluster erstellen und während der Clustererstellung eine Shared Access Signature hinzufügen.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Die Beispieldateien von [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Dieses Repository enthält die folgenden Elemente:
@@ -51,7 +51,7 @@ Es gibt zwei Arten von Shared Access Signatures:
 
 * Ad-hoc: Startzeit, Ablaufzeit und Berechtigungen für die SAS werden direkt im SAS-URI angegeben.
 
-* Gespeicherte Zugriffsrichtlinie: Eine gespeicherte Zugriffsrichtlinie ist für einen Ressourcencontainer definiert, z.B. einen Blobcontainer. Eine Richtlinie kann verwendet werden, um Einschränkungen für eine oder mehrere SAS zu verwalten. Wenn Sie eine SAS mit einer gespeicherten Zugriffsrichtlinie verknüpfen, erbt die SAS die Einschränkungen (Startzeit, Ablaufzeit und Berechtigungen) dieser gespeicherten Zugriffsrichtlinie.
+* Gespeicherte Zugriffsrichtlinie: Eine gespeicherte Zugriffsrichtlinie wird für einen Ressourcencontainer definiert (also etwa für einen Blobcontainer). Eine Richtlinie kann verwendet werden, um Einschränkungen für eine oder mehrere SAS zu verwalten. Wenn Sie eine SAS mit einer gespeicherten Zugriffsrichtlinie verknüpfen, erbt die SAS die Einschränkungen (Startzeit, Ablaufzeit und Berechtigungen) dieser gespeicherten Zugriffsrichtlinie.
 
 Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselszenario: Widerruf. Eine SAS ist eine URL und kann daher von beliebiger Stelle verwendet werden, unabhängig davon, wer die SAS ursprünglich angefordert hatte. Wenn eine SAS veröffentlicht wird, kann diese von beliebiger Stelle weltweit verwendet werden. Auf diese Weise verteilte SAS sind gültig, bis eines von vier Ereignissen eintritt:
 
@@ -66,7 +66,7 @@ Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselsze
 
 4. Der Kontoschlüssel, mit dem die SAS erstellt wurde, wird erneut generiert. Das Neugenerieren des Schlüssels lässt die Authentifizierung bei allen Anwendungen fehlschlagen, die den vorherigen Schlüssel verwenden. Aktualisieren Sie alle Komponenten auf den neuen Schlüssel.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ein SAS-URI wird dem Kontoschlüssel, mit dem die Signatur erstellt wurde, und der zugehörigen gespeicherten Zugriffsrichtlinie (sofern vorhanden) zugeordnet. Wenn keine gespeicherte Zugriffsrichtlinie angegeben wird, kann eine SAS nur durch Änderung des Kontoschlüssels aufgehoben werden.
 
 Es wird empfohlen, stets gespeicherte Zugriffsrichtlinien zu verwenden. Bei Verwendung gespeicherter Richtlinien können Sie Signaturen aufheben oder bei Bedarf das Ablaufdatum verlängern. In den Schritten in diesem Dokument werden gespeicherte Zugriffsrichtlinien zum Generieren von SAS verwendet.
@@ -85,7 +85,7 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen z
 
    * ContainerName: Der Container im Speicherkonto, auf den Sie den Zugriff beschränken möchten.
 
-   * SASPolicyName: Der Name der gespeicherten Richtlinie, die erstellt wird.
+   * SASPolicyName: Der zu verwendende Name für die gespeicherte Richtlinie, die erstellt wird.
 
    * FileToUpload: Der Pfad zu einer Datei, die in den Container hochgeladen wird.
 
@@ -105,7 +105,7 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen z
 
    * storage\_account\_key: Der Schlüssel für das Speicherkonto.
 
-   * storage\_container\_name: Der Container im Speicherkonto, für den Sie den Zugriff beschränken möchten.
+   * storage\_container\_name: Der Container im Speicherkonto, auf den Sie den Zugriff beschränken möchten.
 
    * example\_file\_path: Der Pfad zu einer Datei, die in den Container hochgeladen wird.
 
@@ -177,7 +177,7 @@ Ein Beispiel zum Erstellen eines HDInsight-Clusters, der die SAS verwendet, befi
 
     Wenn Sie einen Linux-basierten Cluster erstellen, werden Sie zur Angabe des Namens und Kennworts eines SSH-Benutzerkontos aufgefordert. Dieses Konto wird für eine Remoteanmeldung am Cluster verwendet.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Wenn Sie zur Angabe des HTTP/S- oder SSH-Benutzernamens und Kennworts aufgefordert werden, müssen Sie ein Kennwort angeben, das die folgenden Kriterien erfüllt:
    >
    > * Mindestens 10 Zeichen
@@ -208,7 +208,7 @@ Wenn Sie bereits einen Linux-basierten Cluster haben, können Sie die SAS der **
 
     Klicken Sie auf **OK** , wenn die Änderungen abgeschlossen sind.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Sie müssen mehrere Dienste neu starten, damit die Änderung wirksam wird.
 
 6. Wählen Sie auf der Ambari-Webbenutzeroberfläche in der Liste auf der linken Seite **HDFS** und dann in der Dropdownliste **Service Actions** (Dienstaktionen) auf der rechten Seite **Restart All Affected** (Alle betroffenen Dienste neu starten) aus. Klicken Sie bei entsprechender Aufforderung auf __Confirm Restart All__ (Neustart aller Dienste bestätigen).
@@ -277,7 +277,7 @@ Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folge
 
 ### <a name="a-task-was-canceled"></a>Eine Aufgabe wurde abgebrochen.
 
-**Symptome**: Beim Erstellen eines Clusters mithilfe des PowerShell-Skripts können Sie die folgende Fehlermeldung erhalten:
+**Symptome:** Beim Erstellen eines Clusters mithilfe des PowerShell-Skripts wird unter Umständen folgende Fehlermeldung angezeigt:
 
     New-AzureRmHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
@@ -286,9 +286,9 @@ Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folge
         + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
-**Ursache**: Dieser Fehler kann auftreten, wenn Sie ein Kennwort für den Administrator/HTTP-Benutzer für den Cluster, oder (bei Linux-basierten Clustern) für den SSH-Benutzer, verwenden.
+**Ursache:** Dieser Fehler kann auftreten, wenn Sie ein Kennwort für den Administrator/HTTP-Benutzer für den Cluster oder (bei Linux-basierten Clustern) für den SSH-Benutzer verwenden.
 
-**Lösung**: Verwenden Sie ein Kennwort ein, das die folgenden Kriterien erfüllt:
+**Lösung:** Verwenden Sie ein Kennwort, das folgende Kriterien erfüllt:
 
 * Mindestens 10 Zeichen
 * Mindestens eine Ziffer
@@ -299,8 +299,8 @@ Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folge
 
 Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingeschränktem Zugriff hinzufügen, können Sie sich mit anderen Möglichkeiten des Arbeitens mit Daten in Ihrem Cluster vertraut machen:
 
-* [Verwenden von Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
+* [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
+* [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs

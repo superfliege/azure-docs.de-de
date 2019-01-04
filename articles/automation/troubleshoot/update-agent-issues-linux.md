@@ -4,25 +4,25 @@ description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungs-Agent behebe
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/06/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: adaeb3087fca57a4a868f4525d588e014ff36fcf
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335826"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438641"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Linux-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
-Es gibt viele mögliche Gründe dafür, dass Ihr Azure-Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. Dieser Artikel erläutert, wie Sie die Problembehandlung im Azure-Portal und in Offlineszenarien ausführen.
+Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. Dieser Artikel erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Azure-fremde Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Indem Sie im Portal unter der Spalte **Update-Agent-Bereitschaft** auf den Link **Problembehandlung** klicken, starten Sie die Seite **Problembehandlung von Update-Agent**. Diese Seite zeigt Probleme mit dem Agent und einen Link zu einem Artikel, der Sie bei der Behandlung dieser Probleme unterstützt.
+Klicken Sie für Azure-Computer im Portal unter der Spalte **Update-Agent-Bereitschaft** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der [Offlineanleitung](#offline) erfahren Sie, wie Sie Probleme mit einem Azure-fremden Computer behandeln.
 
 ![Seite „VM-Liste“](../media/update-agent-issues-linux/vm-list.png)
 
@@ -54,12 +54,12 @@ Die Betriebssystemprüfung untersucht, ob der Hybrid Runbook Worker unter einem 
 
 ### <a name="oms-agent"></a>OMS-Agent
 
-Durch diese Überprüfungen wird sichergestellt, dass der OMS-Agent für Linux installiert ist. Anweisungen zum Installieren finden Sie unter [Installieren des Agents für Linux](../../log-analytics//log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux
+Durch diese Überprüfungen wird sichergestellt, dass der OMS-Agent für Linux installiert ist. Anweisungen zum Installieren finden Sie unter [Installieren des Agents für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="oms-agent-status"></a>OMS-Agent-Status
 
-Durch diese Überprüfungen wird sichergestellt, dass der OMS-Agent für Linux ausgeführt wird. Wenn der Agent nicht ausgeführt wird, können Sie den folgenden Befehl ausführen, um ihn neu zu starten. Weitere Informationen zur Problembehandlung für den Agent finden Sie unter [Problembehandlung für Linux-Hybrid Runbook Worker](hybrid-runbook-worker.md#linux).
+Durch diese Überprüfungen wird sichergestellt, dass der OMS-Agent für Linux ausgeführt wird. Wenn der Agent nicht aktiv ist, können Sie den folgenden Befehl ausführen, um ihn neu zu starten. Weitere Informationen zur Problembehandlung für den Agent finden Sie unter [Problembehandlung für Linux-Hybrid Runbook Worker](hybrid-runbook-worker.md#linux).
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -71,7 +71,7 @@ Durch diese Überprüfung wird ermittelt, ob der Agent Meldungen an mehrere Arbe
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Hiermit wird sichergestellt, dass der OMS-Agent für Linux über das Hybrid Runbook Worker-Paket verfügt. Dieses Paket ist erforderlich, damit die Updateverwaltung funktioniert.
+Hiermit wird überprüft, ob der OMS-Agent für Linux über das Hybrid Runbook Worker-Paket verfügt. Dieses Paket ist erforderlich, damit die Updateverwaltung funktioniert.
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker-Status
 

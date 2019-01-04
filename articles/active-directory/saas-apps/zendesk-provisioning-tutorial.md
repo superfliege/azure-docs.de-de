@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d8d6df221a8c520cea5e6e938447ffd881e7374c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347935"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322771"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zendesk für die automatische Benutzerbereitstellung
 
@@ -77,6 +77,10 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Zendesk
 
+*    Zendesk-Rollen werden aktuell automatisch und dynamisch auf der Benutzeroberfläche des Azure-Portals aufgefüllt. Vor dem Zuweisen von Zendesk-Rollen zu Benutzern muss eine Synchronisierung mit Zendesk ausgeführt worden sein, um die aktuellen Rollen Ihres Zendesk-Mandanten abzurufen.
+
+*    Es empfiehlt sich, Zendesk einen einzelnen Azure AD-Benutzer zuzuweisen, um die anfängliche Konfiguration der automatischen Benutzerbereitstellung zu testen. Nach erfolgreichem Abschluss der Tests können weitere Benutzer und/oder Gruppen zugewiesen werden.
+  
 *   Es wird empfohlen, Zendesk einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
 *   Beim Zuweisen eines Benutzers zu Zendesk müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
@@ -111,7 +115,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
     *   Geben Sie im Feld **Geheimes Token** das geheime Token wie in Schritt 6 beschrieben ein.
 
     *   Geben Sie im Feld **Domäne** die Unterdomäne Ihres Zendesk-Mandanten ein.
-    Beispiel: Für ein Konto mit der Mandanten-URL https://my-tenant.zendesk.com würde Ihre Unterdomäne **my-tenant** lauten.
+    Beispiel: Für ein Konto mit der Mandanten-URL https://my-tenant.zendesk.com lautet Ihre Unterdomäne **my-tenant**.
 
 6. Das **Geheime Token** für Ihr Zendesk-Konto finden Sie unter **Administrator > API > Einstellungen**. 
 

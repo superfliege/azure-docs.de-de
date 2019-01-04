@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 12/05/2018
 ms.author: genli
-ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238318"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994179"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Troubleshooting: Azure Point-to-Site-Verbindungsprobleme
 
 In diesem Artikel werden allgemeine Punkt-zu-Standort-Verbindungsprobleme aufgeführt, die auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme diskutiert.
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN-Clientfehler: Zertifikat wurde nicht gefunden
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Fehler des VPN-Clients: Ein Zertifikat wurde nicht gefunden.
 
 ### <a name="symptom"></a>Symptom
 
@@ -58,7 +58,7 @@ Weitere Informationen zum Installieren des Clientzertifikats finden Sie unter [G
 > [!NOTE]
 > Wenn Sie das Clientzertifikat importieren, wählen Sie nicht die Option **Verstärkte Sicherheit für den privaten Schlüssel aktivieren** aus.
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-Clientfehler: Das Format der empfangenen Nachricht war unerwartet oder fehlerhaft
+## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-Clientfehler: Das Format der empfangenen Nachricht war unerwartet oder fehlerhaft.
 
 ### <a name="symptom"></a>Symptom
 
@@ -81,7 +81,7 @@ Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
 1. Entfernen Sie die UDR für das Gatewaysubnetz. Stellen Sie sicher, dass die UDR sämtlichen Datenverkehr ordnungsgemäß weiterleitet.
 2. Überprüfen Sie den Status des Stammzertifikats im Azure-Portal, um festzustellen, ob es widerrufen wurde. Wenn es nicht widerrufen wurde, versuchen Sie, das Stammzertifikat zu löschen und es erneut hochzuladen. Weitere Informationen finden Sie unter [Erstellen von Zertifikaten](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-Clientfehler: Eine Zertifikatkette wurde verarbeitet, aber beendet 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-Clientfehler: Eine Zertifikatkette wurde verarbeitet, aber beendet. 
 
 ### <a name="symptom"></a>Symptom 
 
@@ -101,7 +101,7 @@ Wenn Sie versuchen, mithilfe des VPN-Client mit einem virtuellen Netzwerk von Az
 
 2. Wenn die Zertifikate bereits im Speicherort vorhanden sind, versuchen Sie, die Zertifikate zu löschen und neu zu installieren. Das Zertifikat **azuregateway-*GUID*.cloudapp.net** befindet sich im VPN-Clientkonfigurationspaket, das Sie aus dem Azure-Portal heruntergeladen haben. Sie können Dateiarchivierer verwenden, um die Dateien aus dem Paket zu extrahieren.
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>Dateidownloadfehler: Ziel-URI ist nicht angegeben
+## <a name="file-download-error-target-uri-is-not-specified"></a>Fehler beim Herunterladen der Datei: Ziel-URI ist nicht angegeben.
 
 ### <a name="symptom"></a>Symptom
 
@@ -117,7 +117,7 @@ Dieses Problem tritt aufgrund eines falschen Gatewaytyps auf.
 
 Der VPN-Gatewaytyp muss **VPN** sein, und der VPN-Typ muss als **RouteBased** festgelegt sein.
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN-Clientfehler: Azure-VPN benutzerdefinierter Skriptfehler 
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN-Clientfehler: Fehler des benutzerdefinierten Azure-VPN-Skripts 
 
 ### <a name="symptom"></a>Symptom
 
@@ -150,7 +150,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 5. Starten Sie den Computer neu. 
 6. Versuchen Sie eine erneute Installation des VPN-Clients.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure-Portal-Fehler: Fehler beim Speichern des VPN-Gateways, und die Daten sind ungültig
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Fehler im Azure-Portal: Fehler beim Speichern des VPN-Gateways, und die Daten sind ungültig.
 
 ### <a name="symptom"></a>Symptom
 
@@ -185,7 +185,7 @@ Stellen Sie sicher, dass die Daten im Zertifikat keine ungültigen Zeichen wie Z
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure-Portal-Fehler: Fehler beim Speichern des VPN-Gateways, und der Ressourcenname ist ungültig
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Fehler im Azure-Portal: Fehler beim Speichern des VPN-Gateways, und der Ressourcenname ist ungültig.
 
 ### <a name="symptom"></a>Symptom
 
@@ -197,7 +197,7 @@ Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu spei
 
 Dieses Problem tritt auf, da der Name des Zertifikats ein ungültiges Zeichen enthält, z.B. ein Leerzeichen. 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure-Portal-Fehler: Dateidownloadfehler 503 des VPN-Pakets
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Fehler im Azure-Portal: Dateidownloadfehler 503 des VPN-Pakets
 
 ### <a name="symptom"></a>Symptom
 
@@ -209,7 +209,7 @@ Wenn Sie versuchen, das VPN-Clientkonfigurationspaket herunterzuladen, erhalten 
 
 Dieser Fehler kann durch ein vorübergehendes Netzwerkproblem verursacht werden. Versuchen Sie, das VPN-Paket nach ein paar Minuten erneut herunterzuladen.
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway-Upgrade: Alle P2S-Clients können keine Verbindung herstellen
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway-Upgrade: Alle P2S-Clients können keine Verbindung herstellen.
 
 ### <a name="cause"></a>Ursache
 
@@ -300,9 +300,9 @@ Dieses Problem kann auftreten, wenn der VPN-Client nicht die Routen vom Azure-VP
 
 ### <a name="solution"></a>Lösung
 
-Um dieses Problem zu lösen, [setzen Sie das Azure-VPN-Gateway zurück](vpn-gateway-resetgw-classic.md).
+Um dieses Problem zu lösen, [setzen Sie das Azure-VPN-Gateway zurück](vpn-gateway-resetgw-classic.md). Wenn Sie sicherstellen möchten, dass die neuen Routen verwendet werden, müssen die Point-to-Site-VPN-Clients nach der erfolgreichen Konfiguration des Peerings in virtuellen Netzwerken erneut heruntergeladen werden.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Fehler: „Die Sperrfunktion konnte die Sperre nicht überprüfen, weil der Sperrserver offline war.(Fehler 0x80092013)“
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Fehler „Die Sperrfunktion konnte die Sperre nicht überprüfen, weil der Sperrserver offline war. (Fehler 0x80092013)“
 
 ### <a name="causes"></a>Ursachen
 Diese Fehlermeldung tritt auf, wenn der Client nicht auf http://crl3.digicert.com/ssca-sha2-g1.crl und http://crl4.digicert.com/ssca-sha2-g1.crl zugreifen kann.  Für die Sperrprüfung ist Zugriff auf diese beiden Websites erforderlich.  Dieses Problem tritt in der Regel auf dem Client auf, für den der Proxyserver konfiguriert wurde. In einigen Umgebungen wird diese an der Edgefirewall verweigert, wenn die Anforderungen nicht über den Proxyserver erfolgen.
@@ -343,7 +343,7 @@ Aktualisieren Sie den NIC-Treiber:
 4. Wenn Windows keinen neuen Treiber findet, können Sie auf der Website des Geräteherstellers nach Treibern suchen und sie gemäß den Anweisungen installieren.
 5. Starten Sie den Computer neu, und versuchen Sie erneut, eine Verbindung herzustellen.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Fehler: „Dateidownloadfehler. Ziel-URI ist nicht angegeben“
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Fehler Dateidownloadfehler. Ziel-URI ist nicht angegeben.
 
 ### <a name="cause"></a>Ursache
 

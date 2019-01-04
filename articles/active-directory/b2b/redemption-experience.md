@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7819ed3e18092e8b7bdf52225e7025b4b6d8146a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f580c78fa2114905a0ef28f51feee50361717a27
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981880"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435326"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -26,7 +26,7 @@ Wenn Sie über Azure Active Directory (Azure AD) B2B-Zusammenarbeit mit Benutzer
 
 ## <a name="redemption-through-a-direct-link"></a>Einlösung über einen direkten Link
 
-Ein Einladender kann einem Gastbenutzer als Einladung einen direkten Link zu einer freigegebenen App senden. Der Gastbenutzer muss sich lediglich bei der App anmelden, die für ihn freigegeben wurde. Er kann auf einen Link zu der App klicken, die Datenschutzrichtlinien prüfen und akzeptieren und anschließend nahtlos auf die App zugreifen. In den meisten Fällen müssen Gastbenutzer nicht mehr auf eine Einlösungs-URL in einer Einladungs-E-Mail klicken.
+Ein Einladender kann einem Gastbenutzer als Einladung einen [direkten Link zu einer freigegebenen App](../manage-apps/end-user-experiences.md#direct-sign-on-links) senden. Der Gastbenutzer muss sich lediglich bei der App anmelden, die für ihn freigegeben wurde. Er kann auf einen Link zu der App klicken, die Datenschutzrichtlinien prüfen und akzeptieren und anschließend nahtlos auf die App zugreifen. In den meisten Fällen müssen Gastbenutzer nicht mehr auf eine Einlösungs-URL in einer Einladungs-E-Mail klicken.
 
 Wenn Sie einen Gastbenutzer über die Benutzeroberfläche eingeladen oder ihm im Rahmen der PowerShell-Einladung eine E-Mail-Einladung gesendet haben, erhält der Eingeladene weiterhin eine Einladungs-E-Mail. Diese E-Mail ist in folgenden Sonderfällen hilfreich:
 
@@ -51,7 +51,13 @@ Wenn sich ein Gastbenutzer zum ersten Mal anmeldet, um auf Ressourcen in einer P
 
 ![Screenshot mit Benutzereinstellungen im Zugriffsbereich](media/redemption-experience/ConsentScreen.png) 
 
-Informationen dazu, wie Sie als Mandantenadministrator einen Link zu den Datenschutzbestimmungen Ihrer Organisation einrichten, finden Sie unter [Hinzufügen der Datenschutzinformationen Ihrer Organisation in Azure AD](https://aka.ms/adprivacystatement).
+Informationen dazu, wie Sie als Mandantenadministrator einen Link zu den Datenschutzbestimmungen Ihrer Organisation einrichten, finden Sie unter [Vorgehensweise: Hinzufügen der Datenschutzinformationen mit Azure Active Directory](https://aka.ms/adprivacystatement).
+
+## <a name="terms-of-use"></a>Nutzungsbedingungen
+
+Mithilfe des Nutzungsbedingungsfeatures von Azure AD können Sie dem Gastbenutzer im Rahmen der erstmaligen Einlösung Nutzungsbedingungen anzeigen. Dieses Feature befindet sich in Azure Active Directory unter **Verwalten** > **Organisationsbeziehungen** > **Nutzungsbedingungen** oder unter **Sicherheit** > **Bedingter Zugriff** > **Nutzungsbedingungen**. Ausführliche Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Active Directory](../governance/active-directory-tou.md).
+
+![Screenshot mit neuen Nutzungsbedingungen](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

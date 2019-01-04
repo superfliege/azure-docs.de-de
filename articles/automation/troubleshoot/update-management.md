@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092626"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434731"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -38,12 +38,55 @@ The components for the 'Update Management' solution have been enabled, and now t
 Dieser Fehler kann die folgenden Gründe haben:
 
 1. Die Kommunikation an das Automation-Konto wird blockiert.
-2. Die VM, die integriert wird, stammt womöglich von einem Cloudcomputer, dessen System nicht mit dem installierten Microsoft Monitoring Agent vorbereitet wurde.
+2. Die VM, die integriert wird, stammt möglicherweise von einem geklonten Cloudcomputer, dessen System nicht mit dem installierten Microsoft Monitoring Agent vorbereitet wurde.
 
 #### <a name="resolution"></a>Lösung
 
 1. Sehen Sie sich den Abschnitt [Konfigurieren des Netzwerks](../automation-hybrid-runbook-worker.md#network-planning) an, um zu erfahren, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.
 2. Wenn Sie ein geklontes Image verwenden, bereiten Sie mit Sysprep das Image zunächst vor, und installieren Sie den MMA-Agent anschließend.
+
+### <a name="multi-tenant"></a>Szenario: Sie erhalten einen Fehler aufgrund eines verknüpften Abonnements, wenn Sie eine Updatebereitstellung für Computer auf einem anderen Azure-Mandanten erstellen.
+
+#### <a name="issue"></a>Problem
+
+Sie erhalten beim Versuch, eine Updatebereitstellung für Computer auf einem anderen Azure-Mandanten zu erstellen, die folgende Fehlermeldung:
+
+```
+The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler tritt bei der Erstellung einer Updatebereitstellung auf, bei der virtuelle Azure-Computer eines anderen Mandanten in eine Updatebereitstellung einbezogen werden.
+
+#### <a name="resolution"></a>Lösung
+
+Sie müssen die folgende Problemumgehung nutzen, um die Planung durchzuführen. Verwenden Sie das Cmdlet [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) mit dem Schalter `-ForUpdate`, um einen Zeitplan zu erstellen, und das Cmdlet [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+), um die Computer aus dem anderen Mandanten an den Parameter `-NonAzureComputer` zu übergeben. Dies wird anhand des folgenden Beispiels veranschaulicht:
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
+
+### <a name="nologs"></a>Szenario: Die Daten der Updateverwaltung für einen Computer werden nicht in Log Analytics angezeigt.
+
+#### <a name="issue"></a>Problem
+
+Bei einigen Ihrer Computer wird **Nicht bewertet** unter **Compliance** angezeigt, es werden aber Heartbeatdaten für den Hybrid Runbook Worker, jedoch nicht für die Updateverwaltung angezeigt.
+
+#### <a name="cause"></a>Ursache
+
+Der Hybrid Runbook Worker muss eventuell erneut registriert und installiert werden.
+
+#### <a name="resolution"></a>Lösung
+
+Führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren (bzw. [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md) für Linux).
 
 ## <a name="windows"></a>Windows
 
@@ -51,7 +94,7 @@ Sollten Sie Probleme beim Integrieren der Lösung in einen virtuellen Computers 
 
 Der folgende Abschnitt enthält spezifische Fehlermeldungen und passende Lösungsvorschläge. Informationen zu anderen Integrationsproblemen finden Sie unter [Problembehandlung bei der Integration von Lösungen](onboarding.md).
 
-### <a name="machine-already-registered"></a>Szenario: Computer bereits bei einem anderen Konto registriert
+### <a name="machine-already-registered"></a>Szenario: Computer ist bereits bei einem anderen Konto registriert.
 
 #### <a name="issue"></a>Problem
 
@@ -69,7 +112,7 @@ Der Computer ist bereits in einen anderen Arbeitsbereich für Updateverwaltung i
 
 Bereinigen Sie alte Artefakte auf dem Computer durch [Löschen der Hybrid-Runbook-Gruppe](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group), und wiederholen Sie den Vorgang.
 
-### <a name="machine-unable-to-communicate"></a>Szenario: Computer kann nicht mit dem Dienst kommunizieren
+### <a name="machine-unable-to-communicate"></a>Szenario: Computer kann nicht mit dem Dienst kommunizieren.
 
 #### <a name="issue"></a>Problem
 
@@ -95,7 +138,7 @@ Es gibt möglicherweise einen Proxy, ein Gateway oder eine Firewall, durch den b
 
 Überprüfen Sie Ihr Netzwerk, und stellen Sie sicher, dass die entsprechenden Ports und Adressen zulässig sind. Unter [Netzwerkanforderungen](../automation-hybrid-runbook-worker.md#network-planning) finden Sie eine Liste der Ports und Adressen, die von Updateverwaltung und Hybrid Runbook Workers benötigt werden.
 
-### <a name="unable-to-create-selfsigned-cert"></a>Szenario: Selbstsigniertes Zertifikat kann nicht erstellt werden
+### <a name="unable-to-create-selfsigned-cert"></a>Szenario: Selbstsigniertes Zertifikat kann nicht erstellt werden.
 
 #### <a name="issue"></a>Problem
 
@@ -113,21 +156,7 @@ Der Hybrid Runbook Worker konnte kein selbstsigniertes Zertifikat generieren.
 
 Überprüfen Sie, ob das Systemkonto über Lesezugriff auf den Ordner **C:\ProgramData\Microsoft\Crypto\RSA** verfügt, und versuchen Sie es erneut.
 
-### <a name="nologs"></a>Szenario: Updateverwaltungsdaten für einen Computer werden nicht in Log Analytics angezeigt.
-
-#### <a name="issue"></a>Problem
-
-Bei einigen Ihrer Computer wird **Nicht bewertet** unter **Compliance** angezeigt, es werden aber Heartbeatdaten für den Hybrid Runbook Worker, jedoch nicht für die Updateverwaltung angezeigt.
-
-#### <a name="cause"></a>Ursache
-
-Der Hybrid Runbook Worker muss eventuell erneut registriert und installiert werden.
-
-#### <a name="resolution"></a>Lösung
-
-Führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker neu zu installieren.
-
-### <a name="hresult"></a>Szenario: Computer wird als nicht bewertet mit einer HResult-Ausnahme angezeigt
+### <a name="hresult"></a>Szenario: Computer wird als nicht bewertet mit einer HResult-Ausnahme angezeigt.
 
 #### <a name="issue"></a>Problem
 
@@ -135,7 +164,7 @@ Für Ihren Computer wird **Nicht bewertet** unter **Konformität** und darunter 
 
 #### <a name="cause"></a>Ursache
 
-Windows Update wurde auf dem Computer nicht ordnungsgemäß konfiguriert.
+Windows Update oder WSUS wurde auf dem Computer nicht richtig konfiguriert. Für die Updateverwaltung wird Windows Update oder WSUS benötigt, um die erforderlichen Updates, den Status des Patches und die Ergebnisse der bereitgestellten Patches bereitzustellen. Ohne diese Informationen kann die Updateverwaltung keine richtigen Meldungen für die Patches zurückgeben, die benötigt bzw. installiert werden.
 
 #### <a name="resolution"></a>Lösung
 
@@ -151,7 +180,7 @@ Doppelklicken Sie auf die rot angezeigte Ausnahme, um die vollständige Ausnahme
 
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-update-run-fails-to-start"></a>Szenario: Ausführung eines Updates kann nicht gestartet werden
+### <a name="scenario-update-run-fails-to-start"></a>Szenario: Ausführung eines Updates kann nicht gestartet werden.
 
 #### <a name="issue"></a>Problem
 
@@ -169,7 +198,7 @@ Erstellen Sie eine Kopie der folgenden Protokolldatei, und speichern Sie sie fü
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
-### <a name="scenario-update-run-starts-but-encounters-errors"></a>Szenario: Ausführung des Updates wird gestartet, es treten jedoch Fehler auf
+### <a name="scenario-update-run-starts-but-encounters-errors"></a>Szenario: Ausführung des Updates wird gestartet, aber es treten Fehler auf.
 
 #### <a name="issue"></a>Problem
 

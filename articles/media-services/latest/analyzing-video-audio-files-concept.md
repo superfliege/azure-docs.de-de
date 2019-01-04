@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 3af8aec6bb2fe08c4bd1ef65e4f272a6f85af50b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427420"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344311"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analysieren von Video- und Audiodateien
 
 Mit Azure Media Services (AMS) v3 können Sie Inhalte aus Video- und Audiodateien mit Video Indexer über die Voreinstellungen des AMS v3-Analysetools extrahieren. Die genaue Vorgehensweise beschreibt dieser Artikel. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt. Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Transformation**, und senden Sie einen **Auftrag**, der eine dieser Voreinstellungen verwendet: **AudioAnalyzerPreset** oder **VideoAnalyzerPreset**. Dieser Artikel veranschaulicht, wie Sie **VideoAnalyzerPreset** verwenden: [Tutorial: Analysieren von Videos mit Azure Media Services](analyze-videos-tutorial-with-api.md).
+Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Transformation**, und senden Sie einen **Auftrag**, der eine der folgenden Voreinstellungen verwendet: **AudioAnalyzerPreset** oder **VideoAnalyzerPreset**. Im folgenden Artikel wird die Verwendung von **VideoAnalyzerPreset** veranschaulicht: [Tutorial: Analysieren von Videos mit Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Wenn Sie Voreinstellungen eines Video- oder Audioanalysetools verwenden, legen Sie über das Azure-Portal für Ihr Konto zehn reservierte Einheiten für Medien (S3) fest. Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md).
@@ -33,7 +33,7 @@ Media Services unterstützt derzeit die folgenden integrierten Analysevoreinstel
 
 |**Name der Voreinstellung**|**Szenario**|**Details**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analysieren von Audioinhalten|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen Audiospur.<br/>Sie können die Sprache für die Audio-Nutzlast in der Eingabe angeben. Dazu verwenden Sie das BCP-47-Format des Tags zur Identifizierung von Sprache und Region (z. B. „en-US“). Folgende Sprachen werden unterstützt: „en-US“, „en-GB“, „es-ES“, „es-MX“, „fr-FR“, „It-IT“, „ja-JP“, „pt-BR“, „zh-CN“. Wenn die Sprache nicht angegeben oder auf Null festgelegt ist, wird die automatische Spracherkennung eingesetzt. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch.|
+|**AudioAnalyzerPreset**|Analysieren von Audioinhalten|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen Audiospur. Sie können die Sprache für die Audionutzlast in der Eingabe angeben. Verwenden Sie dazu das BCP-47-Format des Tags zur Identifizierung von Sprache und Region. Folgende Sprachen werden unterstützt: Englisch („en-US“ und „en-GB“), Spanisch („es-ES“ und „es-MX“), Französisch („fr-FR“), Italienisch („it-IT“), Japanisch („ja-JP“), Portugiesisch („pt-BR“), Chinesisch („zh-CN“), Deutsch („de-DE“), Arabisch („ar-EG“), Russisch („ru-RU“), Hindi („hi-IN“) und Koreanisch („ko-KR“).<br/><br/> Wenn die Sprache nicht angegeben oder auf NULL festgelegt ist, wird die automatische Spracherkennung verwendet. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch. Die automatische Spracherkennung funktioniert am besten mit Audioaufnahmen mit deutlicher Sprache. Kann die Sprache nicht automatisch erkannt werden, wird standardmäßig Englisch verwendet.|
 |**VideoAnalyzerPreset**|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

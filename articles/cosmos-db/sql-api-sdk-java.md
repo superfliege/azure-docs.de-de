@@ -1,25 +1,23 @@
 ---
-title: 'Azure Cosmos DB: SQL Java-API, SDK und Ressourcen | Microsoft-Dokumentation'
+title: 'Azure Cosmos DB: SQL Java-API, SDK und Ressourcen'
 description: Wichtige Informationen zur SQL Java-API und zum SDK, einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB SQL Java-SDK.
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/21/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c58c1972fee782a93f9641d00376db916021f95
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e5c733ecd65482e4b02a5d4e28784e84e63f2231
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634488"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340520"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für SQL-API: Versionshinweise und Ressourcen
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
@@ -30,7 +28,7 @@ ms.locfileid: "52634488"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -38,7 +36,7 @@ Das SQL API Java SDK unterstützt synchrone Vorgänge. Verwenden Sie für die Un
 
 <table>
 
-<tr><td>**SDK-Download**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
+<tr><td>**SDK-Download**</td><td>[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
 
 <tr><td>**API-Dokumentation**</td><td>[Java-API-Referenzdokumentation](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
@@ -48,10 +46,27 @@ Das SQL API Java SDK unterstützt synchrone Vorgänge. Verwenden Sie für die Un
 
 <tr><td>**Web-App-Tutorial**</td><td>[Entwicklung von Webanwendungen mit Azure Cosmos DB](sql-api-java-application.md)</td></tr>
 
-<tr><td>**Unterstützte Mindestlaufzeit**</td><td>[Java Development Kit (JDK) 7 und höher](https://aka.ms/azure-jdks)</td></tr>
+<tr><td>**Unterstützte Mindestlaufzeit**</td><td>[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Unterstützung von Schreibvorgängen in mehreren Regionen für den Direktmodus hinzugefügt.
+* Unterstützung der Behandlung von E/A-Ausnahmen (IOExceptions) hinzugefügt, die von einem Proxy als Ausnahmen vom Typ „ServiceUnavailable“ ausgelöst werden.
+* Fehler in der Wiederholungsrichtlinie für die Endpunktermittlung behoben.
+* Fehler behoben, um sicherzustellen, dass in „BaseDatabaseAccountConfigurationProvider“ keine NULL-Zeiger-Ausnahmen ausgelöst werden.
+* Fehler behoben, um sicherzustellen, dass der Abfrageenumerator keine NULL-Werte zurückgibt.
+* Fehler behoben, um große PartitionKey-Werte zuzulassen.
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* Unterstützung von Schreibvorgängen in mehreren Regionen für den Gatewaymodus hinzugefügt.
+
+### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
+* Fehler in „Lesen der Partitionsschlüsselbereiche“ für eine Abfrage behoben.
+
+### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
+* Fehler beim Festlegen der Fortsetzungstoken-Headergröße im Modus „DirectHttps“ behoben.
 
 ### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
 * Streaming-Failoverunterstützung hinzugefügt.
@@ -205,6 +220,10 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |21. November 2018 |--- |
+| [2.0.0](#2.0.0) |21. September 2018 |--- |
+| [1.16.4](#1.16.4) |10. September 2018 |--- |
+| [1.16.3](#1.16.3) |09. September 2018 |--- |
 | [1.16.2](#1.16.2) |29. Juni 2018 |--- |
 | [1.16.1](#1.16.1) |16. Mai 2018 |--- |
 | [1.16.0](#1.16.0) |15. März 2018 |--- |

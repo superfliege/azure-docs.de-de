@@ -1,13 +1,12 @@
 ---
-title: Die fünf Data Science-Fragen – Data Science für Einsteiger – Azure Machine Learning Studio | Microsoft-Dokumentation
-description: Data Science für Anfänger erläutert die grundlegenden Konzepte in fünf kurzen Videos, beginnend mit den fünf Fragen, die Data Science beantwortet. Aus Azure Machine Learning.
+title: Data Science für Einsteiger – Azure Machine Learning Studio | Microsoft-Dokumentation
+description: Data Science für Einsteiger erläutert die grundlegenden Konzepte in fünf kurzen Videos, beginnend mit den fünf Fragen, die Data Science beantwortet. Aus Azure Machine Learning.
 keywords: Ausführen von Data Science,Data Science-Einsteiger,Data Science für Einsteiger,Data Science-Grundlagen,Data Science-Fragen,Data Science-Video,Data Science-Einführung
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: c59b4783c59c44604738a3056b3484e11ff90363
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9f6d951dcbb0a0a01961bf3f6c924a0c40fd4d29
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314165"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252914"
 ---
-# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Data Science für Einsteiger, 1. Video: Die 5 Fragen, die Data Science beantwortet
+# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Data Science für Einsteiger – Video 1: Die 5 Fragen, die Data Science beantwortet
 In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* von einem Data Science-Experten erhalten Sie eine kurze Einführung in Data Science. In diesen Videos werden zwar nur die Grundlagen behandelt, sie sind aber hilfreich, wenn Sie sich selbst mit Data Science beschäftigen möchten oder mit Data Scientists arbeiten.
 
 In diesem ersten Video geht es um die Arten von Fragen, die Data Science beantworten kann. Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
@@ -43,7 +42,7 @@ In *Data Science für Einsteiger* erhalten Sie eine ca. 25 Minuten dauernde Schn
 * Video 4: [Vorhersagen einer Antwort mit einem einfachen Modell](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
 * Video 5: [Kopieren der Arbeit anderer für Ihre Data Science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
-## <a name="transcript-the-5-questions-data-science-answers"></a>Aufzeichnung: Die 5 Fragen, die Data Science beantwortet
+## <a name="transcript-the-5-questions-data-science-answers"></a>Transkript: Die 5 Fragen, die Data Science beantwortet
 Hallo! Willkommen bei der Videoreihe *Data Science für Einsteiger*.
 
 Data Science kann einschüchternd sein, weshalb ich hier die Grundlagen ohne jegliche Gleichungen oder Fachausdrücke von Programmierern vorstelle.
@@ -64,8 +63,8 @@ Jede dieser Fragen wird mithilfe einer eigenen Gruppe von Machine Learning-Metho
 
 Es ist hilfreich, sich einen Algorithmus als Rezept und Ihre Daten als die Zutaten vorzustellen. Ein Algorithmus gibt vor, wie die Daten zu kombinieren und zu mischen sind, um eine Antwort zu erhalten. Computer fungieren dabei als ein Mixer. Sie übernehmen einen Großteil der harten Arbeit des Algorithmus für Sie, und zwar ziemlich schnell.
 
-## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Für die 1. Frage „Ist dies A oder B?“ werden Klassifizierungsalgorithmen verwendet.
-Lassen Sie uns mit der Frage beginnen: Ist dies A oder B?
+## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Frage 1: Für „Ist dies A oder B?“ werden Klassifizierungsalgorithmen verwendet.
+Wir beginnen mit der Frage: Ist dies A oder B?
 
 ![Klassifizierungsalgorithmen: Ist dies A oder B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
 
@@ -75,29 +74,29 @@ Sie empfiehlt sich für Fragen, die nur zwei mögliche Antworten haben.
 
 Beispiel: 
 
-* Übersteht dieser Reifen die nächsten 1.500 km: ja oder nein?
+* Übersteht dieser Reifen die nächsten 1.600 km: Ja oder nein?
 * Was bringt mehr Kunden: ein 5-€-Gutschein oder ein Rabatt von 25 %?
 
 Diese Frage kann auch so umformuliert werden, dass es mehr als zwei Optionen gibt: Ist dies A oder B oder C oder D usw.?  Dies wird als Multiklassenklassifizierung bezeichnet und ist nützlich, wenn es mehrere (oder mehrere tausend) mögliche Antworten gibt. Die Multiklassenklassifizierung wählt die wahrscheinlichste Antwort.
 
-## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Für die 2. Frage „Ist dies merkwürdig?“ werden Algorithmen zur Erkennung von Anomalien verwendet.
+## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Frage 2: Für „Ist dies merkwürdig?“ werden Algorithmen zur Erkennung von Anomalien verwendet.
 Die nächste Frage, die Data Science beantworten kann, lautet: Ist dies merkwürdig? Diese Frage wird mithilfe einer Gruppe von Algorithmen zur Erkennung von Anomalien beantwortet.
 
-![Algorithmen zur Erkennung von Anomalien: Ist dies merkwürdig?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
+![Algorithmen für die Anomalieerkennung: Ist dies merkwürdig?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
 Wenn Sie eine Kreditkarte besitzen, haben Sie bereits von der Anomalieerkennung profitiert. Ihr Kreditkartenunternehmen analysiert Ihre Einkaufsmuster, damit es Sie bei einem möglichen Betrug warnen kann. „Merkwürdige“ Abrechnungspositionen sind z.B. ein Kauf in einem Geschäft, in dem Sie normalerweise nicht einkaufen, oder der Kauf eines ungewöhnlich teuren Artikels.
 
 Diese Frage kann auf viele Weisen nützlich sein. Beispiel:
 
-* Wenn Sie ein Auto mit Druckprüfern haben, möchten Sie ggf. wissen: Ist dieser Druckprüfermesswert normal?
-* Wenn Sie das Internet überwachen, möchten Sie vielleicht wissen: Ist diese Nachricht aus dem Internet typisch?
+* Wenn Sie über einen PKW mit Reifendruckkontrollsystem verfügen, möchten Sie ggf. Folgendes wissen: Stimmt der angezeigte Wert des Reifendruckkontrollsystems?
+* Bei der Internetüberwachung möchten Sie ggf. Folgendes wissen: Ist dies eine typische Nachricht aus dem Internet?
 
 Die Erkennung von Anomalien dient zum Kennzeichnen unerwarteter oder ungewöhnlicher Ereignisse oder Verhaltensweisen. Sie gibt Hinweise, wo nach Problemen zu suchen ist.
 
-## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>Für die 3. Frage „Wie viel? oder Wie viele?“ wird ein Regressionsalgorithmus verwendet.
+## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>Frage 3: Für „Wie viel bzw. wie viele?“ werden Regressionsalgorithmen verwendet.
 Machine Learning kann auch die Antwort auf die Fragen „Wie viel?“ oder „Wie viele?“ vorhersagen. Die Gruppe von Algorithmen, die diese Frage beantwortet, wird als Regression bezeichnet.
 
-![Regressionsalgorithmus: Wie viel? oder Wie viele?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
+![Regressionsalgorithmen: Wie viel bzw. wie viele?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
 
 Regressionsalgorithmen treffen numerische Vorhersagen, wie z.B.:
 
@@ -106,7 +105,7 @@ Regressionsalgorithmen treffen numerische Vorhersagen, wie z.B.:
 
 Diese Algorithmen helfen beim Beantworten von Fragen nach einer Zahl.
 
-## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>Für die 4. Frage „Wie wird dies organisiert?“ werden Clusteringalgorithmen verwendet.
+## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>Frage 4: Für „Wie ist dies organisiert?“ werden Clusteringalgorithmen verwendet.
 Die letzten beiden Fragen sind allerdings etwas komplexer.
 
 Mitunter möchten Sie die Struktur eines Datasets verstehen, d.h. wie es organisiert ist. Bei dieser Frage gibt es keine Beispiele, für die Sie bereits Ergebnisse kennen.
@@ -122,7 +121,7 @@ Gängige Beispiele für Clusteringfragen sind u.a.:
 
 Indem Sie verstehen, wie Daten organisiert sind, können Sie Verhalten und Ereignisse besser verstehen und vorhersagen.  
 
-## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>Für die 5. Frage „Was soll ich jetzt tun?“ werden Algorithmen für vertiefendes Lernen verwendet.
+## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>Frage 5: Für „Was soll ich jetzt tun?“ werden Algorithmen für vertiefendes Lernen verwendet.
 Für die letzte Frage „Was soll ich jetzt tun?“ wird eine Gruppe von Algorithmen mit der Bezeichnung „Vertiefendes Lernen“ verwendet.
 
 Vertiefendes Lernen wurde dadurch inspiriert, wie die Gehirne von Ratten und Menschen auf Bestrafung und Belohnungen reagieren. Diese Algorithmen lernen von Ergebnissen und entscheiden sich für die nächste Aktion.
@@ -133,8 +132,8 @@ Vertiefendes Lernen ist in der Regel gut für automatisierte Systeme geeignet, d
 
 Fragen, die beantwortet werden, drehen sich stets darum, welche Aktion ausgeführt werden sollte, meist von einer Maschine oder einem Roboter. Beispiele:
 
-* Wenn ich ein Temperaturregelsystem für ein Haus bin: Die Temperatur anpassen oder unverändert lassen?  
-* Wenn ich ein selbstfahrendes Auto bin: Bei Gelb bremsen oder beschleunigen?  
+* Bei einem Temperaturregelsystem für ein Haus: Soll die Temperatur angepasst oder unverändert gelassen werden?  
+* Bei einem selbstfahrenden PKW: Soll bei einer gelben Ampel gebremst oder beschleunigt werden?  
 * Für einen Staubsauger-Roboter: Weiter saugen oder zur Ladestation zurückkehren?
 
 Algorithmen für vertiefendes Lernen sammeln Daten im laufenden Betrieb und lernen durch systematisches Ausprobieren.

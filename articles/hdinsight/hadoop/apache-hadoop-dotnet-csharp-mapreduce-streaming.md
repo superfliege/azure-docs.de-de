@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a5f6f09ee6c8504b64cad7ef5313501a65907a90
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632590"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435309"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Verwenden von C# mit MapReduce-Streaming auf Apache Hadoop in HDInsight
 
@@ -29,7 +29,7 @@ Mit Apache Hadoop-Streaming können Sie MapReduce-Aufträge über ein Skript ode
 
 __Linux-basierte HDInsight__-Cluster nutzen [Mono (https://mono-project.com)](https://mono-project.com) für die Ausführung von .NET-Anwendungen. Mono-Version 4.2.1 ist in HDInsight Version 3.6 enthalten. Weitere Informationen zu der mit HDInsight bereitgestellten Version von Mono finden Sie unter [HDInsight-Komponentenversionen](../hdinsight-component-versioning.md). Informationen zum Verwenden einer bestimmten Version von Mono finden Sie im Dokument [Installieren oder Aktualisieren von Mono](../hdinsight-hadoop-install-mono.md).
 
-Weitere Informationen zur Kompatibilität von Mono mit .NET Framework-Versionen finden Sie unter [Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/) (Kompatibilität von Mono).
+Weitere Informationen zur Kompatibilität von Mono mit .NET Framework-Versionen finden Sie unter [Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/) (Kompatibilität von Mono).
 
 ## <a name="how-hadoop-streaming-works"></a>Funktionsweise von Hadoop-Datenströmen
 
@@ -157,7 +157,7 @@ Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/De
 
     * Wenn dieser Eintrag erweitert werden kann, verwenden Sie ein __Azure Storage-Konto__ als Standardspeicher für den Cluster. Um die Dateien im Standardspeicher für den Cluster anzuzeigen, erweitern Sie den Eintrag, und doppelklicken Sie dann auf den __(Standardcontainer)__.
 
-    * Wenn dieser Eintrag nicht erweitert werden kann, verwenden Sie ein __Azure Data Lake Store__ als Standardspeicher für den Cluster. Um die Dateien im Standardspeicher für den Cluster anzuzeigen, doppelklicken Sie auf den Eintrag __(Standardspeicherkonto)__.
+    * Wenn dieser Eintrag nicht erweitert werden kann, verwenden Sie __Azure Data Lake Storage__ als Standardspeicher für den Cluster. Um die Dateien im Standardspeicher für den Cluster anzuzeigen, doppelklicken Sie auf den Eintrag __(Standardspeicherkonto)__.
 
 5. Laden Sie die EXE-Dateien mithilfe einer der folgenden Methoden hoch:
 
@@ -165,7 +165,7 @@ Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/De
 
         ![Symbol für den Upload](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * Wenn Sie __Azure Data Lake Store__ verwenden, klicken Sie mit der rechten Maustaste auf einen leeren Bereich in der Dateiliste, und wählen Sie dann __Hochladen__. Wählen Sie anschließend die Datei **mapper.exe** aus, und klicken Sie auf **Öffnen**.
+    * Wenn Sie __Azure Data Lake Storage__ verwenden, klicken Sie mit der rechten Maustaste auf einen leeren Bereich in der Dateiliste, und wählen Sie dann __Hochladen__ aus. Wählen Sie anschließend die Datei **mapper.exe** aus, und klicken Sie auf **Öffnen**.
 
     Sobald der Upload der Datei __mapper.exe__ abgeschlossen ist, wiederholen Sie den Uploadvorgang für die Datei __reducer.exe__.
 
@@ -175,7 +175,7 @@ Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/De
 
 2. Verwenden Sie zum Starten des MapReduce-Auftrags einen der folgenden Befehle:
 
-    * Wenn Sie __Data Lake Store__ als Standardspeicher verwenden:
+    * Wenn Sie __Data Lake Storage__ als Standardspeicher verwenden:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -236,6 +236,6 @@ Dieses Skript fordert Sie auf den Kontonamen und das Kennwort für die Clusteran
 
 Weitere Informationen zum Verwenden von MapReduce mit HDInsight finden Sie unter [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md).
 
-Informationen zur Verwendung von C# mit Hive und Pig finden Sie unter [Verwenden einer benutzerdefinierten C#-Funktion mit Hive und Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md).
+Informationen zur Verwendung von C# mit Hive und Pig finden Sie unter [Verwenden benutzerdefinierter C#-Funktionen mit Apache Hive- und Apache Pig-Streaming für Apache Hadoop in HDInsight](apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-Informationen zum Verwenden von C# mit Storm in HDInsight finden Sie unter [Entwickeln von C#-Topologien für Storm in HDInsight](../storm/apache-storm-develop-csharp-visual-studio-topology.md).
+Informationen zum Verwenden von C# mit Storm in HDInsight finden Sie unter [Entwickeln von C#-Topologien für Apache Storm mithilfe von Data Lake-Tools für Visual Studio](../storm/apache-storm-develop-csharp-visual-studio-topology.md).

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739565"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339874"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Konvertieren einer Skalierungsgruppenvorlage in eine Skalierungsgruppenvorlage für verwaltete Datenträger
 
@@ -126,7 +126,7 @@ In der Skalierungsgruppenkonfiguration steht keine explizite Eigenschaft für di
 
 ## <a name="data-disks"></a>Datenträger
 
-Mit den obigen Änderungen verwendet die Skalierungsgruppe verwaltete Datenträger für den Betriebssystem-Datenträger, aber was ist mit „normalen“ Datenträgern? Wenn Sie Datenträger hinzufügen möchten, fügen Sie die dataDisks-Eigenschaft unter „storageProfile“ auf der gleichen Ebene hinzu wie „osDisk“. Der Wert der Eigenschaft ist eine JSON-Liste mit Objekten. Jedes dieser Objekte verfügt über die Eigenschaften „lun“ (muss für jeden Datenträger eines virtuellen Computers eindeutig sein), „createOption“ (einzige derzeit unterstütze Option: „empty“) und „diskSizeGB“ (Größe des Datenträgers in GB; muss größer0 und kleiner 1024 sein), wie im folgenden Beispiel zu sehen: 
+Mit den obigen Änderungen verwendet die Skalierungsgruppe verwaltete Datenträger für den Betriebssystem-Datenträger, aber was ist mit „normalen“ Datenträgern? Wenn Sie Datenträger hinzufügen möchten, fügen Sie die dataDisks-Eigenschaft unter „storageProfile“ auf der gleichen Ebene hinzu wie „osDisk“. Der Wert der Eigenschaft ist eine JSON-Liste mit Objekten. Jedes dieser Objekte verfügt über die Eigenschaften „lun“ (muss für jeden Datenträger eines virtuellen Computers eindeutig sein), „createOption“ (einzige derzeit unterstütze Option: „empty“) und „diskSizeGB“ (Größe des Datenträgers in GB; muss größer0 und kleiner 1024 sein), wie im folgenden Beispiel zu sehen:
 
 ```
 "dataDisks": [
@@ -144,7 +144,7 @@ Weitere Informationen zur Verwendung von Datenträgern mit Skalierungsgruppen fi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie Beispiele für Resource Manager-Vorlagen ansehen möchten, die Skalierungsgruppen verwenden, suchen Sie im [Github-Repository für Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates)nach „vmss“.
+Wenn Sie Beispiele für Resource Manager-Vorlagen ansehen möchten, die Skalierungsgruppen verwenden, suchen Sie im [GitHub-Repository für Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) nach „vmss“.
 
 Allgemeine Informationen finden Sie auf der [Hauptseite für Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 
