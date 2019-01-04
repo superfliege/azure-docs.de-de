@@ -1,34 +1,31 @@
 ---
-title: Azure Stream Analytics unter IoT Edge (Vorschau)
-description: Erstellen von Edge-Aufträgen in Azure Stream Analytics und Bereitstellung dieser Aufträge auf Geräten, auf denen Azure IoT Edge ausgeführt wird
+title: Azure Stream Analytics auf IoT Edge
+description: Erstellen von Edge-Aufträgen in Azure Stream Analytics und Bereitstellung dieser Aufträge auf Geräten, auf denen Azure IoT Edge ausgeführt wird.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/16/2017
-ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: bf290343634f9f9f836a87ab15f13cc1dac6f86f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687434"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141950"
 ---
-# <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics unter IoT Edge (Vorschau)
-
-> [!IMPORTANT]
-> Dieses Feature befindet sich in der Vorschauphase. Die Verwendung in einer Produktionsumgebung wird nicht empfohlen.
+# <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics auf IoT Edge
  
 Mit Azure Stream Analytics (ASA) unter IoT Edge können Entwickler Analyseinformationen nahezu in Echtzeit und näher an den IoT-Geräten bereitstellen, sodass die von den Geräten generierten Daten optimal verwertet werden können. Azure Stream Analytics ist für geringe Latenz, Resilienz, eine effiziente Bandbreitennutzung und Compliance konzipiert. So können Unternehmen jetzt eine Steuerlogik in der Nähe ihrer gewerblichen Betriebe bereitstellen und in der Cloud ausgeführte Big Data-Analysen ergänzen.  
 
-Azure Stream Analytics auf IoT Edge wird innerhalb des [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/)-Frameworks ausgeführt. Nach dem Erstellen des Auftrags in ASA können Sie ASA-Aufträge mithilfe von IoT Hub bereitstellen und verwalten. Dieses Feature befindet sich in der Vorschauphase. Wenn Sie Fragen oder Feedback haben, können Sie sich über [diese Umfrage](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) mit dem Produktteam in Verbindung setzen. 
+Azure Stream Analytics auf IoT Edge wird innerhalb des [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/)-Frameworks ausgeführt. Nach dem Erstellen des Auftrags in ASA können Sie ihn mithilfe von IoT Hub bereitstellen und verwalten.
 
 ## <a name="scenarios"></a>Szenarien
-![Übersichtsdiagramm](media/stream-analytics-edge/ASAedge_highlevel.png)
+![Übersichtsabbildung zu IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Latenzarme Befehls- und Steuerungsstruktur:** Systeme für die Fertigungssicherheit müssen beispielsweise im Bedarfsfall praktisch verzögerungsfrei auf Betriebsdaten reagieren. Mit ASA unter IoT Edge können Sie Sensordaten nahezu in Echtzeit analysieren und bei Erkennung von Anomalien Befehle ausgeben, um eine Maschine abzuschalten oder Warnungen auszugeben.
+* **Latenzarme Befehls- und Steuerungsstruktur**: Systeme für die Fertigungssicherheit müssen beispielsweise im Bedarfsfall praktisch verzögerungsfrei auf Betriebsdaten reagieren. Mit ASA unter IoT Edge können Sie Sensordaten nahezu in Echtzeit analysieren und bei Erkennung von Anomalien Befehle ausgeben, um eine Maschine abzuschalten oder Warnungen auszugeben.
 *   **Eingeschränkte Cloudkonnektivität**: Unternehmenswichtige Systeme wie beispielsweise ferngesteuerte Bergbaugeräte, vernetzte Schiffe oder Offshorebohrer müssen Daten auch dann analysieren und bei Bedarf reagieren können, wenn die Cloudverbindung nicht stabil ist. Mit ASA läuft Ihre Streaminglogik unabhängig von der Netzwerkkonnektivität, und Sie können auswählen, welche Daten Sie zur weiteren Verarbeitung oder Speicherung in die Cloud senden möchten.
 * **Eingeschränkte Bandbreite**: Das von Düsentriebwerken oder vernetzten Autos erzeugte Datenvolumen kann so groß werden, dass die Daten gefiltert oder vor dem Versand in die Cloud einer Vorverarbeitung unterzogen werden müssen. Mithilfe von ASA können Sie Daten, die in die Cloud gesendet werden sollen, filtern und aggregieren.
 * **Compliance**: Zur Einhaltung gesetzlicher Auflagen ist es möglicherweise erforderlich, einige Daten vor dem Senden in die Cloud lokal zu anonymisieren oder zu aggregieren.
@@ -36,23 +33,23 @@ Azure Stream Analytics auf IoT Edge wird innerhalb des [Azure IoT Edge](https://
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Edge-Aufträge in Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Was ist ein Edge-Auftrag?
 
-ASA-Edge-Aufträge werden als Module in der [Azure IoT Edge-Runtime](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works) ausgeführt. Sie bestehen aus zwei Teilen:
+ASA Edge-Aufträge werden in Containern ausgeführt, die auf [Azure IoT Edge-Geräten](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works) bereitgestellt sind. Sie bestehen aus zwei Teilen:
 1.  Einem Cloudteil, der für die Auftragsdefinition zuständig ist: Benutzer definieren Eingaben, Ausgaben, Abfragen und andere Einstellungen (Ereignisse in falscher Reihenfolge usw.) in der Cloud.
-2.  Dem ASA on IoT Edge-Modul, das lokal ausgeführt wird. Es enthält die ASA Complex Event Processing-Engine und empfängt die Auftragsdefinition aus der Cloud. 
+2.  Einem Modul, das auf Ihren IoT-Geräten ausgeführt wird. Es enthält die ASA-Engine und empfängt die Auftragsdefinition aus der Cloud. 
 
 ASA verwendet IoT Hub zur Bereitstellung von Edge-Aufträgen auf Geräten. Weitere Informationen zur IoT Edge-Bereitstellung [finden Sie hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
-![Edge-Auftrag](media/stream-analytics-edge/ASAedge_job.png)
+![Azure Stream Analytics-Edgeauftrag](media/stream-analytics-edge/stream-analytics-edge-job.png)
 
 
 ### <a name="installation-instructions"></a>Installationsanweisungen
 Die grundsätzlichen Schritte sind in der folgenden Tabelle beschrieben. Ausführliche Informationen finden Sie in den nachfolgenden Abschnitten.
-|      |Schritt   | Ort     | Notizen   |
-| ---   | ---   | ---       |  ---      |
-| 1   | **Erstellen eines Speichercontainers**   | Azure-Portal       | Speichercontainer werden verwendet, um die Auftragsdefinition zu speichern. Dort können Ihre IoT-Geräte darauf zugreifen. <br>  Sie können auch bereits vorhandene Speichercontainer verwenden.     |
-| 2   | **Erstellen eines ASA-Edge-Auftrags**   | Azure-Portal      |  Sie erstellen einen neuen Auftrag und wählen **Edge** als **Hostingumgebung** aus. <br> Diese Aufträge werden aus der Cloud heraus erstellt/verwaltet und auf Ihren IoT Edge-Geräten ausgeführt.     |
-| 3   | **Einrichten der IoT Edge-Umgebung auf Ihren Geräten**   | Geräte      | Anleitungen für [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) und [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)          |
-| 4   | **Bereitstellen von ASA auf Ihren IoT Edge-Geräten**   | Azure-Portal      |  Die ASA-Auftragsdefinition wird in den zuvor erstellten Speichercontainer exportiert.       |
+|      |Schritt   | Notizen   |
+| ---   | ---   |  ---      |
+| 1   | **Erstellen eines Speichercontainers**   | Speichercontainer werden verwendet, um die Auftragsdefinition zu speichern. Dort können Ihre IoT-Geräte darauf zugreifen. <br>  Sie können auch bereits vorhandene Speichercontainer verwenden.     |
+| 2   | **Erstellen eines ASA-Edge-Auftrags**   |  Sie erstellen einen neuen Auftrag und wählen **Edge** als **Hostingumgebung** aus. <br> Diese Aufträge werden aus der Cloud heraus erstellt/verwaltet und auf Ihren IoT Edge-Geräten ausgeführt.     |
+| 3   | **Einrichten der IoT Edge-Umgebung auf Ihren Geräten**   | Anleitungen für [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) und [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)          |
+| 4   | **Bereitstellen von ASA auf Ihren IoT Edge-Geräten**   |  Die ASA-Auftragsdefinition wird in den zuvor erstellten Speichercontainer exportiert.       |
 Führen Sie [dieses Schritttutorial](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) aus, um Ihren ersten ASA-Auftrag auf IoT Edge bereitzustellen. Anhand des folgenden Videos können Sie nachvollziehen, wie ein Stream Analytics-Auftrag auf einem IoT Edge-Gerät ausgeführt wird:  
 
 
@@ -73,7 +70,7 @@ Ein Speichercontainer ist erforderlich, um die kompilierte ASA-Abfrage und die A
 
 2. Wählen Sie auf dem Erstellungsbildschirm **Edge** als **Hostingumgebung** aus (siehe folgende Abbildung).
 
-   ![Auftragserstellung](media/stream-analytics-edge/ASAEdge_create.png)
+   ![Stream Analytics-Auftrag auf Edge erstellen](media/stream-analytics-edge/create-asa-edge-job.png)
 3. Auftragsdefinition
     1. **Definieren von Eingabedatenströmen**. Definieren Sie mindestens einen Eingabedatenstrom für Ihren Auftrag.
     2. Definieren von Verweisdaten (optional)
@@ -107,7 +104,7 @@ Diese Schritte sind in der IoT Edge-Dokumentation für [Windows](https://docs.mi
 - Öffnen Sie im Azure-Portal IoT Hub, navigieren Sie zu **IoT Edge**, und klicken Sie auf das Gerät, auf das sich diese Bereitstellung beziehen soll.
 - Wählen Sie **Module festlegen**, dann **+ Hinzufügen** und schließlich **Azure Stream Analytics-Modul** aus.
 - Wählen Sie das Abonnement und den erstellten ASA-Edge-Auftrag aus. Klicken Sie auf Speichern.
-![Hinzufügen des ASA-Moduls zu Ihrer Bereitstellung](media/stream-analytics-edge/set_module.png)
+![Hinzufügen des ASA-Moduls zu Ihrer Bereitstellung](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
@@ -123,7 +120,8 @@ IoT Edge bietet die Möglichkeit zum deklarativen Weiterleiten von Nachrichten z
 Namen der Eingaben und Ausgaben, die im ASA-Auftrag erstellt wurden, können als Endpunkte für das Routing verwendet werden.  
 
 ###### <a name="example"></a>Beispiel
-```
+
+```json
 {
 "routes": {                                              
     "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
@@ -134,7 +132,7 @@ Namen der Eingaben und Ausgaben, die im ASA-Auftrag erstellt wurden, können als
 
 ```
 Dieses Beispiel zeigt die Routen für das Szenario, das in der folgenden Abbildung skizziert ist. Es enthält einen Edge-Auftrag namens **ASA**, eine Eingabe namens **temperature** und eine Ausgabe namens **alert**.
-![Routingbeispiel](media/stream-analytics-edge/RoutingExample.png)
+![Beispieldiagramm zum Nachrichtenrouting](media/stream-analytics-edge/edge-message-routing-example.png)
 
 Im Beispiel sind folgende Routen definiert:
 - Jede von **tempSensor** versendete Nachricht wird an die Eingabe **temperature** des Moduls **ASA** gesendet.
@@ -143,15 +141,15 @@ Im Beispiel sind folgende Routen definiert:
 
 
 ## <a name="technical-information"></a>Technische Informationen
-### <a name="current-limitations-for-edge-jobs-compared-to-cloud-jobs"></a>Aktuelle Einschränkungen bei Edge-Aufträgen im Vergleich zu Cloudaufträgen
-Ziel ist die Herstellung einer Parität zwischen Edge- und Cloudaufträgen. Die meisten Funktionen unserer SQL-Abfragesprache werden bereits unterstützt.
+### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Aktuelle Einschränkungen bei IoT Edge-Aufträgen im Vergleich mit Cloudaufträgen
+Ziel ist die Herstellung von Parität zwischen IoT Edge- und Cloudaufträgen. Die meisten Funktionen unserer SQL-Abfragesprache werden bereits unterstützt.
 Allerdings werden die folgenden Funktionen für Edge-Aufträge noch nicht unterstützt:
-* Benutzerdefinierte Funktionen (UDF) und benutzerdefinierte Aggregate (UDA)
+* Benutzerdefinierte Funktionen (User-defined Functions, UDF) in JavaScript. UDF sind in [C# für IoT Edge-Aufträge](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-edge-csharp-udf) (Vorschau) verfügbar.
+* Benutzerdefinierte Aggregate (User-Defined Aggregates, UDA).
 * Azure ML-Funktionen
 * Verwendung von mehr als 14 Aggregaten in einem einzigen Schritt
 * AVRO-Format für die Eingabe/Ausgabe. Gegenwärtig werden nur CSV und JSON unterstützt.
 * Folgende SQL-Operatoren:
-    * AnomalyDetection
     * Räumliche Operatoren:
         * CreatePoint
         * CreatePolygon
@@ -197,9 +195,9 @@ Erstellen Sie in Edge wie folgt einen Auftrag mit Verweisdaten:
 
 3. Halten Sie auf dem Gerät eine Verweisdatendatei bereit. Ordnen Sie die Verweisdatendatei für einen Windows-Container auf dem lokalen Laufwerk an, und geben Sie das lokale Laufwerk mit dem Docker-Container frei. Erstellen Sie für einen Linux-Container ein Docker-Volume, und fügen Sie die Datendatei auf dem Volume ein.
 
-4. Legen Sie den Dateipfad fest. Verwenden Sie für ein Windows-Gerät den absoluten Pfad. Verwenden Sie für ein Linux-Gerät den Pfad auf dem Volume.
+4. Legen Sie den Dateipfad fest. Verwenden Sie bei einem Windows-Hostbetriebssystem und Windows-Containern den absoluten Pfad: `E:\<PathToFile>\v1.csv`. Verwenden Sie bei einem Windows-Hostbetriebssystem und Linux-Containern oder einem Linux-Betriebssystem mit Linux-Containern den Pfad im Volume: `<VolumeName>/file1.txt`.
 
-![Neue Verweisdateneingabe für Azure Stream Analytics-Auftrag in IoT Edge](./media/stream-analytics-edge/ReferenceDataNewInput.png)
+![Neue Verweisdateneingabe für Azure Stream Analytics-Auftrag in IoT Edge](./media/stream-analytics-edge/Reference-Data-New-Input.png)
 
 Die Aktualisierung der Verweisdaten in IoT Edge wird durch eine Bereitstellung ausgelöst. Nach dem Auslösen wählt das ASA-Modul die aktualisierten Daten aus, ohne die Ausführung des Auftrags zu beenden.
 
@@ -207,10 +205,9 @@ Es gibt zwei Möglichkeiten, die Verweisdaten zu aktualisieren:
 * Aktualisieren des Verweisdatenpfads für Ihren ASA-Auftrag im Azure-Portal
 * Aktualisieren der IoT Edge-Bereitstellung
 
-
 ## <a name="license-and-third-party-notices"></a>Lizenz- und Drittanbieterhinweise
-* [Lizenz zu Stream Analytics unter IoT Edge (Vorschau)](https://go.microsoft.com/fwlink/?linkid=862827) 
-* [Drittanbieterhinweis zu Azure Stream Analytics unter IoT Edge (Vorschau)](https://go.microsoft.com/fwlink/?linkid=862828).
+* [Azure Stream Analytics auf IoT Edge-Lizenz](https://go.microsoft.com/fwlink/?linkid=862827). 
+* [Drittanbieterhinweis zu Azure Stream Analytics auf IoT Edge](https://go.microsoft.com/fwlink/?linkid=862828).
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
@@ -220,8 +217,8 @@ Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://soci
 
 * [Weitere Informationen zu Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Tutorial zu ASA unter IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Füllen Sie diese Umfrage aus, um Feedback an das Team zu senden](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
 * [Entwickeln von Stream Analytics-Edge-Aufträgen mit Visual Studio-Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Implementieren von CI/CD für Stream Analytics mithilfe von APIs](stream-analytics-cicd-api.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

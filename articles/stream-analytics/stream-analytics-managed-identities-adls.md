@@ -1,20 +1,21 @@
 ---
-title: Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Data Lake Storage Gen1-Ausgabe (Vorschau)
-description: ''
+title: Authentifizieren eines Azure Stream Analytics-Auftrags für die Azure Data Lake Storage Gen1-Ausgabe
+description: In diesem Artikel wird die Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Data Lake Storage Gen1-Ausgabe beschrieben.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2018
-ms.openlocfilehash: 41b3dcc03f7cfbfee11798738a3b2daaf5e96741
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365287"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090430"
 ---
-# <a name="use-managed-identities-to-authenticate-azure-stream-analytics-jobs-to-azure-data-lake-storage-gen1-output-preview"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Data Lake Storage Gen1-Ausgabe (Vorschau)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten (Vorschau)
 
 Azure Stream Analytics unterstützt die Authentifizierung über verwaltete Identitäten für die Azure Data Lake Storage Gen1-Ausgabe. Bei einer Identität handelt es sich um eine in Azure Active Directory registrierte verwaltete Anwendung, die einen bestimmten Stream Analytics-Auftrag repräsentiert und für die Authentifizierung bei einer Zielressource verwendet werden kann. Verwaltete Identitäten beseitigen die Einschränkungen benutzerbasierter Authentifizierungsmethoden, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Token, die alle 90 Tage ablaufen. Darüber hinaus helfen verwaltete Identitäten bei der Automatisierung von Stream Analytics-Auftragsbereitstellungen, deren Ausgabe in Azure Data Lake Storage Gen1 erfolgt.
 
@@ -32,7 +33,7 @@ Dieser Artikel veranschaulicht zwei Methoden, um eine verwaltete Identität für
 
    Nach dem Speichern der Konfiguration wird die Objekt-ID (OIS) des Dienstprinzipals als Prinzipal-ID aufgeführt, wie hier gezeigt:
 
-   ![Prinzipal-ID von Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
+   ![Stream Analytics-Dienstprinzipal-ID](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
    Der Dienstprinzipal weist den gleichen Namen auf wie der Stream Analytics-Auftrag. Wenn der Name des Auftrags z.B. **MyASAJob** lautet, erhält auch der erstellte Dienstprinzipal den Namen **MyASAJob**.
 
@@ -56,11 +57,11 @@ Dieser Artikel veranschaulicht zwei Methoden, um eine verwaltete Identität für
  
 8. Aktivieren Sie im Bereich **Berechtigungen** die Berechtigungen **Schreiben** und **Ausführen**, und weisen Sie diese der Option **Diesen Ordner und alle untergeordneten Ordner** zu. Klicken Sie dann auf **OK**.
 
-   ![Auswählen einer Berechtigung](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
+   ![Auswählen von Schreib- und Ausführungsberechtigungen](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
 9. Der Dienstprinzipal wird im Bereich **Zugriff** unter **Zugewiesene Berechtigungen** aufgeführt, wie unten gezeigt. Sie können jetzt Ihren Stream Analytics-Auftrag starten.
 
-   ![Zugriffsliste](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
+   ![Stream Analytics-Zugriffsliste im Portal](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Weitere Informationen zu den Dateisystemberechtigungen von Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 

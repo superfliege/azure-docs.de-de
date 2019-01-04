@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: accd36c9e0d09da0073570301600b362fff85f6e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2c615dd781b40c3ebb78ae291453c5b4b2d2ef4d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647339"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971826"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Bereitstellen von VM-Skalierungsgruppen in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
   
 VM-Skalierungsgruppen sind eine Azure Stack-Computeressource. Verwenden Sie sie zum Bereitstellen und Verwalten eines Satzes identischer virtueller Computer. Da alle virtuellen Computer genauso konfiguriert sind, ist bei Skalierungsgruppen keine Vorabbereitstellung der virtuellen Computer erforderlich. Es ist einfacher, umfangreiche Dienste zu erstellen, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
 
@@ -33,8 +33,8 @@ In Azure Stack unterstützen VM-Skalierungsgruppen keine automatische Skalierung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Marketplace:** Registrieren Sie Azure Stack global für Azure, um Artikel im Marketplace verfügbar zu machen. Befolgen Sie die Anleitung unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
-- **Betriebssystemimage:** Bevor eine VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) erstellt werden kann, müssen Sie die VM-Images für die Verwendung in der VMSS vom [Azure Stack-Marketplace](azure-stack-download-azure-marketplace-item.md) herunterladen. Die Images müssen bereits vorhanden sein, bevor ein Benutzer eine neue VMSS erstellen kann. 
+- **Marketplace**: Registrieren Sie Azure Stack global für Azure, um Marketplace-Elemente verfügbar zu machen. Befolgen Sie die Anleitung unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
+- **Betriebssystemimage**: Bevor eine VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) erstellt werden kann, müssen Sie die VM-Images für die Verwendung in der VMSS aus [Azure Stack-Marketplace](azure-stack-download-azure-marketplace-item.md) herunterladen. Die Images müssen bereits vorhanden sein, bevor ein Benutzer eine neue VMSS erstellen kann. 
 
 ## <a name="use-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals 
 
@@ -97,7 +97,7 @@ Nach der Erstellung einer VM-Skalierungsgruppe können Benutzer Images in der Sk
 
     Wenn Sie ein Image einer neueren Version herunterladen (sodass sich die verfügbare Version ändert), kann die Skalierungsgruppe nicht zentral hochskaliert werden. Dies ist beabsichtigt, da die in der Skalierungsgruppenvorlage angegebene Imageversion verfügbar sein muss.  
 
-Weitere Informationen finden Sie unter [Einführung in virtuelle Azure Stack-Computer](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+Weitere Informationen finden Sie unter [Einführung in virtuelle Azure Stack-Computer](./user/azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
 ## <a name="scale-a-virtual-machine-scale-set"></a>Skalieren einer VM-Skalierungsgruppe
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: cf037000a047b02f3874c3bccc9678f2ea18ecec
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011197"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653797"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network
 Hier erfahren Sie, wie Sie Apache HBase-Cluster in Azure HDInsight in einem [virtuellen Azure-Netzwerk][1] erstellen.
@@ -34,7 +34,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Erstellen von Apache HBase-Clustern in einem virtuellen Netzwerk
 In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-template-deploy.md) einen Linux-basierten Apache HBase-Cluster mit dem abhängigen Azure Storage-Konto in einem virtuellen Azure-Netzwerk. Andere Methoden zur Erstellung von Clustern und Informationen zu den Einstellungen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung einer Vorlage zum Erstellen von Apache Hadoop-Clustern in HDInsight finden Sie unter [Erstellen Linux-basierter Apache Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Einige Eigenschaften sind in der Vorlage hartcodiert. Beispiel: 
 >
 > * **Standort:** USA (Ost) 2
@@ -74,10 +74,8 @@ Führen Sie die Schritte unter [Erste Schritte mit einem Apache HBase-Beispiel i
    * **Virtuelles Netzwerk:** &lt;Clustername>-vnet
    * **Subnetz**: subnet1
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Ersetzen Sie &lt;Clustername> durch den Namen, den Sie beim Erstellen des HDInsight-Clusters in den vorherigen Schritten verwendet haben.
-   >
-   >
 
    Mit diesen Werten wird der virtuelle Computer im selben virtuellen Netzwerk und Subnetz platziert wie der HDInsight-Cluster. Diese Konfiguration ermöglicht eine direkte Kommunikation zwischen virtuellem Computer und Cluster. Es gibt eine Möglichkeit zum Erstellen eines HDInsight-Clusters mit einem leeren Edgeknoten. Der Edgeknoten kann zum Verwalten des Clusters verwendet werden.  Weitere Informationen finden Sie unter [Use empty edge nodes in HDInsight](../hdinsight-apps-use-edge-node.md)(Verwenden leerer Edgeknoten in HDInsight).
 
@@ -232,10 +230,8 @@ Führen Sie die unter [Erstellen von Java-Anwendungen für die Apache-HBase](./a
         <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
     </property>
 
-> [!NOTE]
+> [!NOTE]  
 > Weitere Informationen zur Namensauflösung in virtuellen Azure-Netzwerken und Verwendung eigener DNS-Server finden Sie unter [Namensauflösung (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
->
->
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie gelernt, wie Sie einen Apache HBase-Cluster erstellen. Weitere Informationen finden Sie unter:

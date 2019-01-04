@@ -4,17 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie Diagnoseprotokolle in A
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/20/2017
-ms.openlocfilehash: 9001a2962806ee3e691fa448dde162d12c6ecdd2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: db3c9874676e3240f6896c1e1ff8f873360c20d5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905861"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090821"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
@@ -36,15 +36,15 @@ Diagnoseprotokolle sind standardmäßig **deaktiviert**. Um die Diagnoseprotokol
 
 1.  Melden Sie sich beim Azure-Portal an, und wechseln Sie zum Blatt „Streamingauftrag“. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus.
 
-    ![Blattnavigation zu Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/image1.png)  
+    ![Blattnavigation zu Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
 2.  Wählen Sie **Diagnose aktivieren**.
 
-    ![Aktivieren von Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/image2.png)
+    ![Aktivieren von Stream Analytics-Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/turn-on-diagnostic-logs.png)
 
 3.  Setzen Sie auf der Seite **Diagnoseeinstellungen** die Option **Status** auf **Ein**.
 
-    ![Ändern des Status für Diagnoseprotokolle](./media/stream-analytics-job-diagnostic-logs/image3.png)
+    ![Ändern des Status für Diagnoseprotokolle](./media/stream-analytics-job-diagnostic-logs/save-diagnostic-log-settings.png)
 
 4.  Richten Sie das gewünschte Archivierungsziel (Storage-Konto, Event Hub, Log Analytics) ein. Wählen Sie dann die Kategorien von Protokollen aus, die erfasst werden sollen (Ausführung, Erstellung). 
 
@@ -52,7 +52,7 @@ Diagnoseprotokolle sind standardmäßig **deaktiviert**. Um die Diagnoseprotokol
 
 Es dauert etwa 10 Minuten, bis die Diagnosekonfiguration angewendet wird. Anschließend werden die Protokolle nach und nach im konfigurierten Archivierungsziel (auf dem Blatt **Diagnoseprotokolle** zu sehen) angezeigt:
 
-![Blattnavigation zu Diagnoseprotokollen – Archivierungsziele](./media/stream-analytics-job-diagnostic-logs/image4.png)
+![Blattnavigation zu Diagnoseprotokollen – Archivierungsziele](./media/stream-analytics-job-diagnostic-logs/view-diagnostic-logs-page.png)
 
 Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Verwenden von Diagnosedaten Ihrer Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
@@ -77,7 +77,7 @@ NAME | BESCHREIBUNG
 time | Zeitstempel (UTC) des Protokolls.
 Ressourcen-ID | ID der Ressource, über die der Vorgang stattfand, in Großbuchstaben. Beinhaltet die Abonnement-ID, die Ressourcengruppe und den Auftragsnamen. Beispiel: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Protokollkategorie: **Ausführung** oder **Erstellung**.
-operationName | Der Name des protokollierten Vorgangs. Beispiel: **Ereignisse senden: Fehler beim Schreiben der SQL-Ausgabe nach mysqloutput**.
+operationName | Der Name des protokollierten Vorgangs. Beispielsweise **Ereignisse senden: Fehler beim Schreiben der SQL-Ausgabe nach mysqloutput**.
 status | Der Status des Vorgangs. Beispiele: **Fehlgeschlagen** oder **Erfolgreich**.
 level | Protokollebene. Beispiele: **Fehler**, **Warnung** oder **Information**.
 Eigenschaften | Spezifisches Detail des Protokolleintrags; als JSON-Zeichenfolge serialisiert. Weitere Informationen finden Sie in den folgenden Abschnitten.
@@ -99,8 +99,8 @@ Daten | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu 
 
 Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema:
 * **Serialisieren von Ereignissen**. Die Serialisierung von Ereignissen tritt bei Lesevorgängen von Ereignissen auf. Sie treten auf, wenn die Daten bei der Eingabe aus einem der folgenden Gründen nicht das Abfrageschema erfüllen:
-    * *Typenkonflikt während des (De-)Serialisierens von Ereignissen*: Identifiziert das Feld, das den Fehler verursacht hat.
-    * *Ein Ereignis kann nicht gelesen werden; ungültige Serialisierung*: Enthält Informationen über die Stelle in den Eingabedaten, an der der Fehler aufgetreten ist. Enthält den Blobnamen für die Eingabe mit formlosen Objekten, Offset und eine Stichprobe der Daten.
+    * *Typenkonflikt während des (De)serialisierens von Ereignissen*: Identifiziert das Feld, das den Fehler verursacht.
+    * *Ein Ereignis kann nicht gelesen werden, ungültige Serialisierung*: Enthält Informationen über die Stelle in den Eingabedaten, an der der Fehler aufgetreten ist. Enthält den Blobnamen für die Eingabe mit formlosen Objekten, Offset und eine Stichprobe der Daten.
 * **Senden von Ereignissen**. Das Senden von Ereignissen tritt bei Schreibvorgängen auf. Diese identifizieren das Streamingereignis, das den Fehler verursacht hat.
 
 ### <a name="generic-events"></a>Generische Ereignisse

@@ -13,12 +13,12 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7da0717273892893bec03c164b9b297f28e5218d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a0284675417ae31c2e16651a312f4c11c4e238ff
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995545"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969351"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problembehandlung in Analysetools für Benutzerverhalten in Application Insights
 Haben Sie Fragen zu [Analysetools für das Benutzerverhalten in Application Insights](app-insights-usage-overview.md): [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md), [Trichter](usage-funnels.md), [Benutzerabläufe](app-insights-usage-flows.md), [Vermerkdauer](app-insights-usage-retention.md) oder Kohorten? Hier finden Sie ein paar Antworten.
@@ -26,13 +26,13 @@ Haben Sie Fragen zu [Analysetools für das Benutzerverhalten in Application Insi
 ## <a name="counting-users"></a>Zählen von Benutzern
 **Die Analysetools für Benutzerverhalten zeigen an, dass meine App einen Benutzer/eine Sitzung aufweist. Ich weiß aber, dass es mehrere Benutzer/Sitzungen sind. Wie kann ich diesen falschen Zahlenwert korrigieren?**
 
-Alle Telemetrieereignisse in Application Insights weisen als Standardeigenschaften eine [anonyme Benutzer-ID](application-insights-data-model-context.md) und eine [Sitzungs-ID](application-insights-data-model-context.md) auf. Standardmäßig zählen alle Tools zur Nutzungsanalyse die Benutzer und Sitzungen auf der Grundlage dieser IDs. Wenn diese Standardeigenschaften nicht mit eindeutigen IDs für jeden Benutzer und jede Sitzung Ihrer App aufgefüllt werden, wird in den Tools zur Nutzungsanalyse eine falsche Anzahl für Benutzer und Sitzungen angezeigt.
+Alle Telemetrieereignisse in Application Insights weisen als Standardeigenschaften eine [anonyme Benutzer-ID](../azure-monitor/app/data-model-context.md) und eine [Sitzungs-ID](../azure-monitor/app/data-model-context.md) auf. Standardmäßig zählen alle Tools zur Nutzungsanalyse die Benutzer und Sitzungen auf der Grundlage dieser IDs. Wenn diese Standardeigenschaften nicht mit eindeutigen IDs für jeden Benutzer und jede Sitzung Ihrer App aufgefüllt werden, wird in den Tools zur Nutzungsanalyse eine falsche Anzahl für Benutzer und Sitzungen angezeigt.
 
-Wenn Sie eine Web-App überwachen, besteht die einfachste Lösung darin, Ihrer App das [Application Insights JavaScript-SDK](app-insights-javascript.md) hinzuzufügen und dafür zu sorgen, dass der Skriptcodeausschnitt auf jeder Seite geladen wird, die Sie überwachen möchten. Das JavaScript-SDK generiert automatisch anonyme Benutzer- und Sitzungs-IDs und füllt die Telemetrieereignisse dann automatisch mit diesen IDs auf, wenn sie von Ihrer App gesendet werden.
+Wenn Sie eine Web-App überwachen, besteht die einfachste Lösung darin, Ihrer App das [Application Insights JavaScript-SDK](../azure-monitor/app/javascript.md) hinzuzufügen und dafür zu sorgen, dass der Skriptcodeausschnitt auf jeder Seite geladen wird, die Sie überwachen möchten. Das JavaScript-SDK generiert automatisch anonyme Benutzer- und Sitzungs-IDs und füllt die Telemetrieereignisse dann automatisch mit diesen IDs auf, wenn sie von Ihrer App gesendet werden.
 
 Wenn Sie einen Webdienst (keine Benutzeroberfläche) überwachen, [erstellen Sie einen Telemetrieinitialisierer, der die Eigenschaften „anonyme Benutzer-ID“ und „Sitzungs-ID“](app-insights-usage-send-user-context.md) entsprechend den Auffassungen von eindeutigen Benutzern und Sitzungen Ihres Diensts auffüllt.
 
-Wenn Ihre App [authentifizierte Benutzer-IDs](app-insights-api-custom-events-metrics.md#authenticated-users) sendet, können Sie anhand von authentifizierten Benutzer-IDs im Tool Benutzer zählen. Wählen Sie in der Dropdownliste „Anzeigen“ „Authentifizierte Benutzer“ aus.
+Wenn Ihre App [authentifizierte Benutzer-IDs](../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) sendet, können Sie anhand von authentifizierten Benutzer-IDs im Tool Benutzer zählen. Wählen Sie in der Dropdownliste „Anzeigen“ „Authentifizierte Benutzer“ aus.
 
 Die Analysetools für Benutzerverhalten unterstützen das Zählen von Benutzern oder Sitzungen aktuell nur auf Grundlage der Eigenschaften „anonyme Benutzer-ID“, „authentifizierte Benutzer-ID“ oder „Sitzungs-ID“.
 

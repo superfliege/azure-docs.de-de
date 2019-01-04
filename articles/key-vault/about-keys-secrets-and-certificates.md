@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: c5677dc07326fa16960e0d748f88e26f259c0485
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262272"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384784"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
 Microsoft Azure-Anwendungen und -Benutzer können verschiedene Arten von Geheimnissen und Schlüsseldaten in Azure Key Vault speichern:
 
-- Kryptografische Schlüssel: Key Vault unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für sehr wichtige Schlüssel. 
-- Geheimnisse: Key Vault bietet einen sicheren Speicher für Geheimnisse wie z.B. Kennwörter und Datenbank-Verbindungszeichenfolgen.
-- Zertifikate: Key Vault unterstützt Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu.
-- Azure Storage: Key Vault kann die Schlüssel eines Azure Storage-Kontos für Sie verwalten. Intern kann Key Vault Schlüssel für ein Azure Storage-Konto auflisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren). 
+- Kryptografische Schlüssel: Unterstützen mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für Schlüssel von hohem Wert. 
+- Geheimnisse: Bieten einen sicheren Speicher für Geheimnisse wie Kennwörter und Datenbank-Verbindungszeichenfolgen.
+- Zertifikate: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu.
+- Azure Storage: Kann die Schlüssel eines Azure Storage-Kontos für Sie verwalten. Intern kann Key Vault Schlüssel für ein Azure Storage-Konto auflisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren). 
 
 Weitere allgemeine Informationen zu Key Vault finden Sie unter [Was ist Azure Key Vault?](/azure/key-vault/key-vault-whatis)
 
@@ -89,23 +89,23 @@ Hinweis:
 
 Kryptografische Schlüssel in Key Vault werden als JSON Web Key-Objekte (JWK) dargestellt. Die grundlegenden JWK/JWA-Spezifikationen wurden erweitert, um Schlüsseltypen zu ermöglichen, die für die Key Vault-Implementierung eindeutig sind. Das Importieren von Schlüsseln mit anbieterspezifischer HSM-Paketerstellung ermöglicht einen sicheren Transport von Schlüsseln, die nur in Key Vault-HSMs verwendet werden dürfen.  
 
-- **„Soft“-Schlüssel:** Schlüssel, die in der Software von Key Vault verarbeitet, aber im Ruhezustand unter Verwendung eines Systemschlüssels, der sich in einem HSM befindet, verschlüsselt werden. Clients können einen vorhandenen RSA- oder EC-Schlüssel (Elliptic Curve, elliptische Kurve) importieren oder anfordern, dass Key Vault einen solchen Schlüssel generiert.
-- **„Hard“-Schlüssel:** Schlüssel, die in einem HSM (Hardwaresicherheitsmodul) verarbeitet werden. Diese Schlüssel werden in einer der HSM Security Worlds von Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA- oder EC-Schlüssel importieren, entweder in „Soft“-Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Clients können auch anfordern, dass Key Vault einen Schlüssel generiert. Dieser Schlüsseltyp fügt dem JWK das T-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.
+- **„Soft“-Schlüssel**: Schlüssel, die in der Software von Key Vault verarbeitet, aber im Ruhezustand unter Verwendung eines Systemschlüssels, der sich in einem HSM befindet, verschlüsselt werden. Clients können einen vorhandenen RSA- oder EC-Schlüssel (Elliptic Curve, elliptische Kurve) importieren oder anfordern, dass Key Vault einen solchen Schlüssel generiert.
+- **„Hard“-Schlüssel:**  Schlüssel, die in einem HSM (Hardwaresicherheitsmodul) verarbeitet werden. Diese Schlüssel werden in einer der HSM Security Worlds von Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA- oder EC-Schlüssel importieren, entweder in „Soft“-Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Clients können auch anfordern, dass Key Vault einen Schlüssel generiert. Dieser Schlüsseltyp fügt dem JWK das T-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.
 
      Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](https://azure.microsoft.com/support/trust-center/privacy/).  
 
 Key Vault unterstützt nur RSA- und Elliptic Curve-Schlüssel. 
 
--   **EC:** „Soft“-Elliptic Curve-Schlüssel
--   **EC-HSM:** „Hard“-Elliptic Curve-Schlüssel
--   **RSA:** „Soft“-RSA-Schlüssel
--   **RSA-HSM:** „Hard“-RSA-Schlüssel
+-   **EC:**  „Soft“-Elliptic Curve-Schlüssel.
+-   **EC-HSM:**  „Hard“-Elliptic Curve-Schlüssel.
+-   **RSA**: „Soft“-RSA-Schlüssel.
+-   **RSA-HSM:**  „Hard“-RSA-Schlüssel.
 
 Key Vault unterstützt RSA-Schlüssel der Größen 2048, 3072 und 4096. Key Vault unterstützt die Elliptic Curve-Schlüsseltypen P-256, P-384, P-521 und P-256K (SECP256K1).
 
 ### <a name="cryptographic-protection"></a>Kryptografischer Schutz
 
-Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Software – sind FIPS-geprüft (Federal Information Processing Standards). Für die Ausführung im FIPS-Modus müssen Sie keine besonderen Maßnahmen ergreifen. Schlüssel, die als HSM-geschützt **erstellt** oder **importiert** wurden, werden in einem HSM verarbeitet und gemäß FIPS 140-2 Level 2 oder höher geprüft. Schlüssel, die als softwaregeschützt **erstellt** oder **importiert** wurden, werden in kryptografischen Modulen verarbeitet und gemäß FIPS 140-2 Level 1 oder höher geprüft. Weitere Informationen finden Sie unter [Schlüssel und Schlüsseltypen](#keys-and-key-types).
+Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Software – sind FIPS-geprüft (Federal Information Processing Standards). Für die Ausführung im FIPS-Modus müssen Sie keine besonderen Maßnahmen ergreifen. Schlüssel, die als HSM-geschützt **erstellt** oder **importiert** wurden, werden in einem HSM verarbeitet und gemäß FIPS 140-2 Level 2 geprüft. Schlüssel, die als softwaregeschützt **erstellt** oder **importiert** wurden, werden in kryptografischen Modulen verarbeitet und gemäß FIPS 140-2 Level 1 geprüft. Weitere Informationen finden Sie unter [Schlüssel und Schlüsseltypen](#keys-and-key-types).
 
 ###  <a name="ec-algorithms"></a>EC-Algorithmen
  Die folgenden Algorithmusbezeichner werden mit EC- und EC-HSM-Schlüsseln in Key Vault unterstützt. 
@@ -113,7 +113,7 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 #### <a name="curve-types"></a>Kurventypen
 
 -   **P-256**: Die NIST-Kurve P-256, definiert unter [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256K**: Die SEC-Kurve SECP256K1, definiert unter [SEC 2: Recommended Elliptic Curve Domain Parameters](http://www.secg.org/sec2-v2.pdf).
+-   **P-256K**: Die SEC-Kurve SECP256K1, definiert unter [SEC 2:  Recommended Elliptic Curve Domain Parameters](http://www.secg.org/sec2-v2.pdf).
 -   **P-384**: Die NIST-Kurve P-384, definiert unter [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 -   **P-521**: Die NIST-Kurve P-521, definiert unter [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
@@ -143,23 +143,23 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 
 Key Vault unterstützt die folgenden Vorgänge bei Schlüsselobjekten:  
 
--   **Erstellen**: Ermöglicht einem Client, einen Schlüssel in Key Vault zu erstellen. Der Wert des Schlüssels wird von Key Vault generiert und gespeichert und nicht für den Client freigegeben. In Key Vault können asymmetrische Schlüssel erstellt werden.  
--   **Importieren**: Ermöglicht einem Client, einen vorhandenen Schlüssel in Key Vault zu importieren. Asymmetrische Schlüssel können mithilfe einer Reihe unterschiedlicher Paketerstellungsmethoden in einem JWK-Konstrukt in Key Vault importiert werden. 
--   **Aktualisieren**: Ermöglicht einem Client mit ausreichenden Berechtigungen, die Metadaten (Schlüsselattribute) zu ändern, die einem zuvor in Key Vault gespeicherten Schlüssel zugeordnet sind.  
+-   **Erstellen**:  Ermöglicht einem Client, einen Schlüssel in Key Vault zu erstellen. Der Wert des Schlüssels wird von Key Vault generiert und gespeichert und nicht für den Client freigegeben. In Key Vault können asymmetrische Schlüssel erstellt werden.  
+-   **Importieren**:  Ermöglicht einem Client, einen vorhandenen Schlüssel in Key Vault zu importieren. Asymmetrische Schlüssel können mithilfe einer Reihe unterschiedlicher Paketerstellungsmethoden in einem JWK-Konstrukt in Key Vault importiert werden. 
+-   **Aktualisieren**:  Ermöglicht einem Client mit ausreichenden Berechtigungen, die Metadaten (Schlüsselattribute) zu ändern, die einem zuvor in Key Vault gespeicherten Schlüssel zugeordnet sind.  
 -   **Löschen**: Ermöglicht einem Client mit ausreichenden Berechtigungen das Löschen eines Schlüssels aus Key Vault.  
--   **Auflisten**: Ermöglicht einem Client das Auflisten aller Schlüssel in einem bestimmten Key Vault.  
--   **Auflisten von Versionen**: Ermöglicht einem Client das Auflisten aller Versionen eines bestimmten Schlüssels in einem bestimmten Key Vault.  
--   **Abrufen**: Ermöglicht einem Client das Abrufen des öffentlichen Teils eines bestimmten Schlüssels in einem Key Vault.  
--   **Sichern**: Exportiert einen Schlüssel in einer geschützten Form.  
--   **Wiederherstellen**: Importiert einen zuvor gesicherten Schlüssel.  
+-   **Auflisten**:  Ermöglicht einem Client das Auflisten aller Schlüssel in einem bestimmten Key Vault.  
+-   **Auflisten von Versionen**:  Ermöglicht einem Client das Auflisten aller Versionen eines bestimmten Schlüssels in einem bestimmten Key Vault.  
+-   **Abrufen**:  Ermöglicht einem Client das Abrufen des öffentlichen Teils eines bestimmten Schlüssels in einem Key Vault.  
+-   **Sichern**:  Exportiert einen Schlüssel in einer geschützten Form.  
+-   **Wiederherstellen**:  Importiert einen zuvor gesicherten Schlüssel.  
 
 Weitere Informationen finden Sie unter [Schlüsselvorgänge in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault).  
 
 Nachdem ein Schlüssel in Key Vault erstellt wurde, können die folgenden kryptografischen Vorgänge mit dem Schlüssel ausgeführt werden:  
 
--   **Signieren und Überprüfen**: Streng genommen handelt es sich um den Vorgang „Hash signieren“ oder „Hash überprüfen“, da Key Vault das Hashing von Inhalten im Rahmen der Signaturerstellung nicht unterstützt. Anwendungen sollten ein Hashing der Daten durchführen, die lokal signiert werden sollen, und dann anfordern, dass Key Vault den Hash signiert. Die Überprüfung signierter Hashes wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, stellen Sie sicher, dass die Vorgänge lokal ausgeführt werden.  
--   **Verschlüsselung mit Schlüssel / Umschließen**: Ein in Key Vault gespeicherter Schlüssel kann zum Schutz eines anderen Schlüssels verwendet werden, bei dem es sich in der Regel um einen symmetrischen Inhaltsverschlüsselungsschlüssel (Content Encryption Key, CEK) handelt. Wenn der Schlüssel in Key Vault asymmetrisch ist, wird die Schlüsselverschlüsselung verwendet. RSA-OAEP und die WRAPKEY/UNWRAPKEY-Vorgänge sind beispielsweise äquivalent zu ENCRYPT/DECRYPT. Wenn der Schlüssel in Key Vault symmetrisch ist, wird die Schlüsselumschließung verwendet. Beispiel: AES-KW. Der WRAPKEY-Vorgang wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, sollten WRAPKEY-Vorgänge lokal ausgeführt werden.  
--   **Verschlüsseln und Entschlüsseln**: Ein in Key Vault gespeicherter Schlüssel kann zum Verschlüsseln oder Entschlüsseln eines einzelnen Datenblocks verwendet werden. Die Größe des Blocks wird durch den Schlüsseltyp und den ausgewählten Verschlüsselungsalgorithmus bestimmt. Der ENCRYPT-Vorgang wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, sollten ENCRYPT-Vorgänge lokal ausgeführt werden.  
+-   **Signieren und Überprüfen**:  Streng genommen handelt es sich um den Vorgang „Hash signieren“ oder „Hash überprüfen“, da Key Vault das Hashing von Inhalten im Rahmen der Signaturerstellung nicht unterstützt. Anwendungen sollten ein Hashing der Daten durchführen, die lokal signiert werden sollen, und dann anfordern, dass Key Vault den Hash signiert. Die Überprüfung signierter Hashes wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, stellen Sie sicher, dass die Vorgänge lokal ausgeführt werden.  
+-   **Verschlüsselung mit Schlüssel / Umschließen**:  Ein in Key Vault gespeicherter Schlüssel kann zum Schutz eines anderen Schlüssels verwendet werden, bei dem es sich in der Regel um einen symmetrischen Inhaltsverschlüsselungsschlüssel (Content Encryption Key, CEK) handelt. Wenn der Schlüssel in Key Vault asymmetrisch ist, wird die Schlüsselverschlüsselung verwendet. RSA-OAEP und die WRAPKEY/UNWRAPKEY-Vorgänge sind beispielsweise äquivalent zu ENCRYPT/DECRYPT. Wenn der Schlüssel in Key Vault symmetrisch ist, wird die Schlüsselumschließung verwendet. Beispiel: AES-KW. Der WRAPKEY-Vorgang wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, sollten WRAPKEY-Vorgänge lokal ausgeführt werden.  
+-   **Verschlüsseln und Entschlüsseln**:  Ein in Key Vault gespeicherter Schlüssel kann zum Verschlüsseln oder Entschlüsseln eines einzelnen Datenblocks verwendet werden. Die Größe des Blocks wird durch den Schlüsseltyp und den ausgewählten Verschlüsselungsalgorithmus bestimmt. Der ENCRYPT-Vorgang wird aus Gründen der Vereinfachung für Anwendungen unterstützt, die möglicherweise keinen Zugriff auf (öffentliches) Schlüsselmaterial haben. Um eine optimale Anwendungsleistung zu erzielen, sollten ENCRYPT-Vorgänge lokal ausgeführt werden.  
 
 Obwohl WRAPKEY/UNWRAPKEY mit asymmetrischen Schlüsseln überflüssig erscheinen mögen (da die Vorgänge äquivalent zu ENCRYPT/DECRYPT sind), ist die Verwendung unterschiedlicher Vorgänge wichtig. Die Unterscheidung sorgt für eine semantische und autorisierungsbezogene Trennung dieser Vorgänge sowie für Konsistenz, wenn andere Schlüsseltypen vom Dienst unterstützt werden.  
 
@@ -174,13 +174,13 @@ Weitere Informationen zu JWK-Objekten finden Sie unter [JSON Web Key (JWK)](http
 Zusätzlich zum Schlüsselmaterial können die folgenden Attribute angegeben werden. In einer JSON-Anforderung sind die Attribute Schlüsselwort und Klammern, „{“ „}“, auch dann erforderlich, wenn keine Attribute angegeben werden.  
 
 - *enabled*: Boolesch, optional, Standardwert ist **true**. Gibt an, ob der Schlüssel aktiviert und für kryptografische Vorgänge verwendbar ist. Das Attribut *enabled* wird in Verbindung mit *nbf* und *exp* verwendet. Wenn ein Vorgang zwischen *nbf* und *exp* auftritt, wird er nur zugelassen, wenn *enabled* auf **true** gesetzt ist. Vorgänge außerhalb des *nbf* / *exp*-Fensters sind automatisch nicht zugelassen, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#date-time-controlled-operations).
-- *nbf*: IntDate, optional, Standardwert ist „now“. Das Attribut *nbf* („not before“, nicht vor) gibt den Zeitpunkt an, vor dem der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#date-time-controlled-operations). Die Verarbeitung des *nbf*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit mindestens dem Wert des *nbf*-Attributs entsprechen MUSS. Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als einigen wenigen Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
-- *exp*: IntDate, optional, Standardwert ist „forever“. Das Attribut *exp* („expiration time“, Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#date-time-controlled-operations). Die Verarbeitung des *exp*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit vor dem Wert des *exp*-Attributs liegen MUSS. Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als einigen wenigen Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
+- *nbf*:  IntDate, optional, Standardwert ist „now“. Das Attribut *nbf* („not before“, nicht vor) gibt den Zeitpunkt an, vor dem der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#date-time-controlled-operations). Die Verarbeitung des *nbf*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit mindestens dem Wert des *nbf*-Attributs entsprechen MUSS. Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als einigen wenigen Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
+- *exp*:  IntDate, optional, Standardwert ist „forever“. Das Attribut *exp* („expiration time“, Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#date-time-controlled-operations). Die Verarbeitung des *exp*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit vor dem Wert des *exp*-Attributs liegen MUSS. Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als einigen wenigen Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in alle Antworten einbezogen werden, die Schlüsselattribute enthalten:  
 
-- *created*: IntDate, optional. Das *created*-Attribut gibt an, wann diese Version des Schlüssels erstellt wurde. Der Wert ist NULL für Schlüssel, die vor dem Hinzufügen dieses Attributs erstellt wurden. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
-- *updated*: IntDate, optional. Das *updated*-Attribut gibt an, wann diese Version des Schlüssels aktualisiert wurde. Der Wert ist NULL für Schlüssel, die vor dem Hinzufügen dieses Attributs zuletzt aktualisiert wurden. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
+- *created*:  IntDate, optional. Das *created*-Attribut gibt an, wann diese Version des Schlüssels erstellt wurde. Der Wert ist NULL für Schlüssel, die vor dem Hinzufügen dieses Attributs erstellt wurden. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
+- *updated*:  IntDate, optional. Das *updated*-Attribut gibt an, wann diese Version des Schlüssels aktualisiert wurde. Der Wert ist NULL für Schlüssel, die vor dem Hinzufügen dieses Attributs zuletzt aktualisiert wurden. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
 
 Weitere Informationen zu IntDate und anderen Datentypen finden Sie unter [Datentypen](#data-types).  
 
@@ -206,26 +206,26 @@ Die Zugriffssteuerung für Schlüssel, die von Key Vault verwaltet werden, ist a
 Die folgenden Berechtigungen können auf Benutzer-/Dienstprinzipalbasis im Schlüsselzugriffssteuerungs-Eintrag für einen Tresor erteilt werden. Diese Berechtigungen spiegeln präzise die für ein Schlüsselobjekt zulässigen Vorgänge wider:  
 
 - Berechtigungen für Schlüsselverwaltungsvorgänge
-  - *get*: Lesen des öffentlichen Teils eines Schlüssels sowie seiner Attribute
-  - *list*: Auflisten der Schlüssel oder Versionen eines in einem Schlüsseltresor gespeicherten Schlüssels
-  - *update*: Aktualisieren der Attribute für einen Schlüssel
-  - *create*: Erstellen neuer Schlüssel
-  - *import*: Importieren eines Schlüssels in einen Schlüsseltresor
-  - *delete*: Löschen des Schlüsselobjekts
-  - *recover*: Wiederherstellen eines gelöschten Schlüssels
-  - *backup*: Sichern eines Schlüssels in einem Schlüsseltresor
-  - *restore*: Wiederherstellen eines gesicherten Schlüssels in einem Schlüsseltresor
+  - *get*:  Lesen des öffentlichen Teils eines Schlüssels sowie seiner Attribute
+  - *list*:  Auflisten der Schlüssel oder Versionen eines in einem Schlüsseltresor gespeicherten Schlüssels
+  - *update*:  Aktualisieren der Attribute für einen Schlüssel
+  - *create*:  Erstellen neuer Schlüssel
+  - *import*:  Importieren eines Schlüssels in einen Schlüsseltresor
+  - *delete*:  Löschen des Schlüsselobjekts
+  - *recover*:  Wiederherstellen eines gelöschten Schlüssels
+  - *backup*:  Sichern eines Schlüssels in einem Schlüsseltresor
+  - *restore*:  Wiederherstellen eines gesicherten Schlüssels in einem Schlüsseltresor
 
 - Berechtigungen für kryptografische Vorgänge
-  - *decrypt*: Verwenden des Schlüssels zum Aufheben des Schutzes einer Folge von Bytes
-  - *encrypt*: Verwenden des Schlüssels zum Schützen einer beliebigen Folge von Bytes
-  - *unwrapKey*: Verwenden des Schlüssels zum Aufheben des Schutzes eines umschlossenen symmetrischen Schlüssels
-  - *wrapKey*: Verwenden des Schlüssels zum Schützen eines symmetrischen Schlüssels
-  - *verify*: Verwenden des Schlüssels zum Überprüfen von Zusammenfassungen  
-  - *sign*: Verwenden des Schlüssels zum Signieren von Zusammenfassungen
+  - *decrypt*:  Verwenden des Schlüssels zum Aufheben des Schutzes einer Folge von Bytes
+  - *encrypt*:  Verwenden des Schlüssels zum Schützen einer beliebigen Folge von Bytes
+  - *unwrapKey*:  Verwenden des Schlüssels zum Aufheben des Schutzes eines umschlossenen symmetrischen Schlüssels
+  - *wrapKey*:  Verwenden des Schlüssels zum Schützen eines symmetrischen Schlüssels
+  - *verify*:  Verwenden des Schlüssels zum Überprüfen von Zusammenfassungen  
+  - *sign*:  Verwenden des Schlüssels zum Signieren von Zusammenfassungen
     
 - Berechtigungen für privilegierte Vorgänge
-  - *purge*: Bereinigen (dauerhaftes Löschen) eines gelöschten Schlüssels
+  - *purge*:  Bereinigen (dauerhaftes Löschen) eines gelöschten Schlüssels
 
 Weitere Informationen zum Arbeiten mit Schlüsseln finden Sie in der [REST-API-Referenz für Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -243,14 +243,14 @@ Key Vault unterstützt auch ein contentType-Feld für Geheimnisse. Clients könn
 
 Zusätzlich zu den Geheimnisdaten können die folgenden Attribute angegeben werden:  
 
-- *exp*: IntDate, optional, Standardwert ist **forever**. Das *exp*-Attribut (Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen die geheimen Daten – außer in [bestimmten Situationen](#date-time-controlled-operations) – NICHT abgerufen werden sollen. Dieses Feld dient nur zu **Informationszwecken**, da es die Benutzer des Azure Key Vault-Diensts darüber informiert, dass ein bestimmter geheimer Schlüssel möglicherweise nicht verwendet werden kann. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.   
-- *nbf*: IntDate, optional, Standardwert ist **now**. Das *nbf*-Attribut („not before“, nicht vor) gibt den Zeitpunkt an, vor dem die geheimen Daten – außer in [bestimmten Situationen](#date-time-controlled-operations) – NICHT abgerufen werden sollen. Dieses Feld dient nur zu **Informationszwecken**. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält. 
+- *exp*:  IntDate, optional, Standardwert ist **forever**. Das *exp*-Attribut (Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen die geheimen Daten – außer in [bestimmten Situationen](#date-time-controlled-operations) – NICHT abgerufen werden sollen. Dieses Feld dient nur zu **Informationszwecken**, da es die Benutzer des Azure Key Vault-Diensts darüber informiert, dass ein bestimmter geheimer Schlüssel möglicherweise nicht verwendet werden kann. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.   
+- *nbf*:  IntDate, optional, Standardwert ist **now**. Das *nbf*-Attribut („not before“, nicht vor) gibt den Zeitpunkt an, vor dem die geheimen Daten – außer in [bestimmten Situationen](#date-time-controlled-operations) – NICHT abgerufen werden sollen. Dieses Feld dient nur zu **Informationszwecken**. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält. 
 - *enabled*: Boolesch, optional, Standardwert ist **true**. Dieses Attribut gibt an, ob die Geheimnisdaten abgerufen werden können. Das enabled-Attribut wird in Verbindung mit *nbf* und *exp* verwendet. Wenn ein Vorgang zwischen *nbf* und *exp* auftritt, wird er nur zugelassen, wenn „enabled“ auf **true** festgelegt ist. Vorgänge außerhalb des *nbf*- und *exp*-Fensters sind automatisch unzulässig, [bestimmte Situationen](#date-time-controlled-operations) ausgenommen.  
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in alle Antworten einbezogen werden, die Geheimnisattribute enthalten:  
 
-- *created*: IntDate, optional. Das „created“-Attribut gibt an, wann diese Version des Geheimnisses erstellt wurde. Dieser Wert ist NULL für Geheimnisse, die vor dem Hinzufügen dieses Attributs erstellt wurden. Der Wert muss eine Zahl sein, die einen IntDate-Wert enthält.  
-- *updated*: IntDate, optional. Das updated-Attribut gibt an, wann diese Version des Geheimnisses aktualisiert wurde. Dieser Wert ist NULL für Geheimnisse, die vor dem Hinzufügen dieses Attributs zuletzt aktualisiert wurden. Der Wert muss eine Zahl sein, die einen IntDate-Wert enthält.
+- *created*:  IntDate, optional. Das „created“-Attribut gibt an, wann diese Version des Geheimnisses erstellt wurde. Dieser Wert ist NULL für Geheimnisse, die vor dem Hinzufügen dieses Attributs erstellt wurden. Der Wert muss eine Zahl sein, die einen IntDate-Wert enthält.  
+- *updated*:  IntDate, optional. Das updated-Attribut gibt an, wann diese Version des Geheimnisses aktualisiert wurde. Dieser Wert ist NULL für Geheimnisse, die vor dem Hinzufügen dieses Attributs zuletzt aktualisiert wurden. Der Wert muss eine Zahl sein, die einen IntDate-Wert enthält.
 
 #### <a name="date-time-controlled-operations"></a>Durch Datum und Uhrzeit gesteuerte Vorgänge
 
@@ -265,16 +265,16 @@ Die Zugriffssteuerung für Geheimnisse, die in Key Vault verwaltet werden, wird 
 Die folgenden Berechtigungen können pro Prinzipal im Zugriffssteuerungseintrag für Geheimnisse in einem Tresor verwendet werden und spiegeln die für ein Geheimnisobjekt zulässigen Vorgänge präzise wider:  
 
 - Berechtigungen für Geheimnisverwaltungsvorgänge
-  - *get*: Lesen eines Geheimnis  
-  - *list*: Auflisten der Geheimnisse oder Versionen eines in einem Schlüsseltresor gespeicherten Geheimnisses  
+  - *get*:  Lesen eines Geheimnisses  
+  - *list*:  Auflisten der Geheimnisse oder Versionen eines in einem Schlüsseltresor gespeicherten Geheimnisses  
   - *set*: Erstellen eines Geheimnisses  
-  - *delete*: Löschen eines Geheimnisses  
-  - *recover*: Wiederherstellen eines gelöschten Geheimnisses
-  - *backup*: Sichern eines Geheimnisses in einem Schlüsseltresor
-  - *restore*: Wiederherstellen eines gesicherten Geheimnisses in einem Schlüsseltresor
+  - *delete*:  Löschen eines Geheimnisses  
+  - *recover*:  Wiederherstellen eines gelöschten Geheimnisses
+  - *backup*:  Sichern eines Geheimnisses in einem Schlüsseltresor
+  - *restore*:  Wiederherstellen eines gesicherten Geheimnisses in einem Schlüsseltresor
 
 - Berechtigungen für privilegierte Vorgänge
-  - *purge*: Bereinigen (dauerhaftes Löschen) eines gelöschten Geheimnisses
+  - *purge*:  Bereinigen (dauerhaftes Löschen) eines gelöschten Geheimnisses
 
 Weitere Informationen zur Verwendung von Geheimnissen finden Sie unter den [Geheimnisvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -327,10 +327,10 @@ Ein Key Vault-Zertifikat weist folgende Attribute auf:
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in die Antwort einbezogen werden:
 
--   *created*: IntDate: Gibt an, wann diese Version des Zertifikats erstellt wurde.  
--   *updated*: IntDate: Gibt an, wann diese Version des Zertifikats aktualisiert wurde.  
--   *exp*: IntDate: Enthält den Wert des Ablaufdatums des X509-Zertifikats.  
--   *nbf*: IntDate: Enthält den Wert des Datums des X509-Zertifikats.  
+-   *created*:  IntDate: Gibt an, wann diese Version des Zertifikats erstellt wurde.  
+-   *updated*:  IntDate: Gibt an, wann diese Version des Zertifikats aktualisiert wurde.  
+-   *exp*:  IntDate: Enthält den Wert des Ablaufdatums des X509-Zertifikats.  
+-   *nbf*:  IntDate: Enthält den Wert des Datums des X509-Zertifikats.  
 
 > [!Note] 
 > Wenn ein Key Vault-Zertifikat abläuft, sind sein adressierbarer Schlüssel und sein Geheimnis nicht mehr funktionsfähig.  
@@ -350,7 +350,7 @@ Wenn ein Key Vault-Zertifikat von Grund auf neu erstellt wird, muss eine Richtli
 
 Auf hoher Ebene enthält eine Zertifikatsrichtlinie folgende Informationen:  
 
--   X.509-Zertifikateigenschaften: enthält den Namen sowie einen alternativen Namen des Antragstellers und weitere Eigenschaften zum Erstellen einer X.509-Zertifikatanforderung.  
+-   X.509-Zertifikateigenschaften:  enthält den Namen sowie einen alternativen Namen des Antragstellers und weitere Eigenschaften zum Erstellen einer X.509-Zertifikatanforderung.  
 -   Schlüsseleigenschaften: enthalten Schlüsseltyp, Schlüssellänge sowie Felder zur Exportierbarkeit und Wiederverwendung des Schlüssels. Diese Felder teilen Key Vault mit, wie ein Schlüssel generiert werden soll.  
 -   Geheimniseigenschaften: enthält Geheimniseigenschaften wie den Inhaltstyp eines adressierbaren Geheimnisses zum Generieren des Geheimniswerts, um das Zertifikat als Geheimnis abzurufen.  
 -   Lebensdaueraktionen: enthält Lebensdaueraktionen für das Key Vault-Zertifikat. Jede Lebensdaueraktion enthält:  
@@ -359,7 +359,7 @@ Auf hoher Ebene enthält eine Zertifikatsrichtlinie folgende Informationen:
 
      - Aktion: Angabe des Aktionstyps – *emailContacts* oder *autoRenew*  
 
--   Aussteller: Parameter über den zum Ausstellen von X509-Zertifikaten zu verwendenden Aussteller des Zertifikats.  
+-   Aussteller:  Parameter über den zum Ausstellen von X509-Zertifikaten zu verwendenden Aussteller des Zertifikats.  
 -   Richtlinienattribute: enthält Attribute, die der Richtlinie zugeordnet sind  
 
 #### <a name="x509-to-key-vault-usage-mapping"></a>Zuordnung von X509 zur Key Vault-Verwendung
@@ -422,24 +422,24 @@ Wenn für die Richtlinie eines Zertifikats eine automatische Verlängerung festg
  Die folgenden Berechtigungen können pro Prinzipal im Zugriffssteuerungseintrag für Geheimnisse in einem Schlüsseltresor verwendet werden und spiegeln die für ein Geheimnisobjekt zulässigen Vorgänge präzise wider:  
 
 - Berechtigungen für Zertifikatverwaltungsvorgänge
-  - *get*: Abrufen der aktuellen oder einer beliebigen anderen Version eines Zertifikats 
-  - *list*: Auflisten der aktuellen Zertifikate oder von Versionen eines Zertifikats  
-  - *update*: Aktualisieren eines Zertifikats
-  - *create*: Erstellen eines Key Vault-Zertifikats
-  - *import*: Importieren von Zertifikatmaterial in ein Key Vault-Zertifikat
-  - *delete*: Löschen eines Zertifikats, seiner Richtlinie und aller seiner Versionen  
-  - *recover*: Wiederherstellen eines gelöschten Zertifikats
-  - *backup*: Sichern eines Zertifikats in einem Schlüsseltresor
-  - *restore*: Wiederherstellen eines gesicherten Zertifikats in einem Schlüsseltresor
-  - *managecontacts*: Verwalten der Key Vault-Zertifikatkontakte  
-  - *manageissuers*: Verwalten von Key Vault-Zertifikatautoritäten/Zertifikatausstellern
-  - *getissuers*: Abrufen der Autoritäten/Aussteller eines Zertifikats
-  - *getissuers*: Auflisten der Autoritäten/Aussteller eines Zertifikats  
-  - *setissuers*: Erstellen oder Aktualisieren der Autoritäten/Aussteller eines Key Vault-Zertifikats  
-  - *setissuers*: Löschen der Autoritäten/Aussteller eines Key Vault-Zertifikats  
+  - *get*:  Abrufen der aktuellen oder einer beliebigen anderen Version eines Zertifikats 
+  - *list*:  Auflisten der aktuellen Zertifikate oder von Versionen eines Zertifikats  
+  - *update*:  Aktualisieren eines Zertifikats
+  - *create*:  Erstellen eines Key Vault-Zertifikats
+  - *import*:  Importieren von Zertifikatmaterial in ein Key Vault-Zertifikat
+  - *delete*:  Löschen eines Zertifikats, seiner Richtlinie und aller seiner Versionen  
+  - *recover*:  Wiederherstellen eines gelöschten Zertifikats
+  - *backup*:  Sichern eines Zertifikats in einem Schlüsseltresor
+  - *restore*:  Wiederherstellen eines gesicherten Zertifikats in einem Schlüsseltresor
+  - *managecontacts*:  Verwalten der Key Vault-Zertifikatkontakte  
+  - *manageissuers*:  Verwalten von Key Vault-Zertifikatautoritäten/Zertifikatausstellern
+  - *getissuers*:  Abrufen der Autoritäten/Aussteller eines Zertifikats
+  - *getissuers*:  Auflisten der Autoritäten/Aussteller eines Zertifikats  
+  - *setissuers*:  Erstellen oder Aktualisieren der Autoritäten/Aussteller eines Key Vault-Zertifikats  
+  - *setissuers*:  Löschen der Autoritäten/Aussteller eines Key Vault-Zertifikats  
  
 - Berechtigungen für privilegierte Vorgänge
-  - *purge*: Bereinigen (dauerhaftes Löschen) eines gelöschten Zertifikats
+  - *purge*:  Bereinigen (dauerhaftes Löschen) eines gelöschten Zertifikats
 
 Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -459,22 +459,22 @@ Weitere Informationen finden Sie unter [Azure Key Vault-Speicherkontoschlüssel]
 Die folgenden Berechtigungen können beim Autorisieren eines Benutzer- oder Anwendungsprinzipals zur Ausführung von Vorgängen in einem verwalteten Speicherkonto verwendet werden:  
 
 - Berechtigungen für Vorgänge in verwalteten Speicherkonten und SAS-Definitionen
-  - *get*: Abrufen der Informationen zu einem Speicherkonto 
-  - *list*: Auflisten der von einer Key Vault-Instanz verwalteten Speicherkonten
-  - *update*: Aktualisieren eines Speicherkontos
-  - *delete*: Löschen eines Speicherkontos  
-  - *recover*: Wiederherstellen eines gelöschten Speicherkontos
-  - *backup*: Sichern eines Speicherkontos
-  - *restore*: Wiederherstellen eines gesicherten Speicherkontos in einer Key Vault-Instanz
+  - *get*:  Abrufen der Informationen zu einem Speicherkonto 
+  - *list*:  Auflisten der von einer Key Vault-Instanz verwalteten Speicherkonten
+  - *update*:  Aktualisieren eines Speicherkontos
+  - *delete*: Löschen von Speicherkonten  
+  - *recover*:  Wiederherstellen eines gelöschten Speicherkontos
+  - *backup*:  Sichern eines Speicherkontos
+  - *restore*:  Wiederherstellen eines gesicherten Speicherkontos in einer Key Vault-Instanz
   - *set*: Erstellen oder Aktualisieren eines Speicherkontos
-  - *regeneratekey*: Erneutes Generieren eines angegebenen Schlüsselwerts für ein Speicherkonto
-  - *getsas*: Abrufen von Informationen über eine SAS-Definition für ein Speicherkonto
-  - *listsas*: Auflisten der Speicher-SAS-Definitionen für ein Speicherkonto
-  - *deletesas*: Löschen einer SAS-Definition aus einem Speicherkonto
-  - *setsas*: Erstellen oder Aktualisieren einer SAS-Definition bzw. von SAS-Attributen für ein Speicherkonto
+  - *regeneratekey*:  Erneutes Generieren eines angegebenen Schlüsselwerts für ein Speicherkonto
+  - *getsas*:  Abrufen von Informationen über eine SAS-Definition für ein Speicherkonto
+  - *listsas*:  Auflisten der Speicher-SAS-Definitionen für ein Speicherkonto
+  - *deletesas*:  Löschen einer SAS-Definition aus einem Speicherkonto
+  - *setsas*:  Erstellen oder Aktualisieren einer SAS-Definition bzw. von SAS-Attributen für ein Speicherkonto
 
 - Berechtigungen für privilegierte Vorgänge
-  - *purge*: Bereinigen (dauerhaftes Löschen) eines verwalteten Speicherkontos
+  - *purge*:  Bereinigen (dauerhaftes Löschen) eines verwalteten Speicherkontos
 
 Weitere Informationen finden Sie in der [REST-API-Referenz für Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 

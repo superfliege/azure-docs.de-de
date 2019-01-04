@@ -2,19 +2,19 @@
 title: Rotieren der Anmeldeinformationen in Azure Stream Analytics-Aufträgen
 description: In diesem Artikel wird beschrieben, wie Sie die Anmeldeinformationen für Eingabe- und Ausgabesenken in Azure Stream Analytics-Aufträgen aktualisieren.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 362fdca3b9a54ea0a8785ae37b32b88cbe0f67ba
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 14e24c1e9a61eb7ea73a949e17ffbf8c5b768f05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978765"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099068"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben eines Stream Analytics-Auftrags
 
@@ -27,20 +27,20 @@ In diesem Abschnitt werden Sie durch die Schritte geführt, in denen Sie die Anm
 ### <a name="blob-storagetable-storage"></a>Blob-Speicher/Tabellenspeicher
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu dem Speicherkonto, das Sie als Eingabe/Ausgabe für den Stream Analytics-Auftrag verwendet haben.    
 2. Öffnen Sie im Abschnitt „Einstellungen“ den Punkt **Zugriffsschlüssel**. Wählen Sie aus den beiden Standardschlüsseln (key1, key2) denjenigen aus, der nicht für Ihren Auftrag verwendet wird, und generieren Sie den Schlüssel neu:  
-   ![Schlüssel für Speicherkonto neu generieren](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+   ![Schlüssel für Speicherkonto neu generieren](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. Kopieren Sie den neu generierten Schlüssel.    
 4. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
 5. Suchen Sie nach der Blob-/Tabellespeichereingabe/-ausgabe, für die Sie die Anmeldeinformationen aktualisieren möchten.    
 6. Suchen Sie nach dem Feld **Speicherkontoschlüssel**, fügen Sie Ihren neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
 7. Wenn Sie die Änderungen speichern, wird automatisch ein Verbindungstest gestartet. Diesen können Sie sich auf der Registerkarte „Benachrichtigungen“ ansehen. Es gibt zwei Benachrichtigungen, wobei eine dem Speichern der Aktualisierung und die andere dem Testen der Verbindung entspricht:  
-   ![Benachrichtigungen nach einem Bearbeiten des Schlüssels](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+   ![Benachrichtigungen nach einem Bearbeiten des Schlüssels](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung](#start-your-job-from-the-last-stopped-time).
 
 ### <a name="event-hubs"></a>Event Hubs
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu dem Event Hub, den Sie als Eingabe/Ausgabe für den Stream Analytics-Auftrag verwendet haben.    
 2. Öffnen Sie im Abschnitt „Einstellungen“ die Option **SAS-Richtlinien**, und wählen Sie die erforderliche Zugriffsrichtlinie aus. Wählen Sie aus **Primärer Schlüssel** und **Sekundärer Schlüssel** denjenigen aus, der nicht für Ihren Auftrag verwendet wird, und generieren Sie ihn neu:  
-   ![Neugenerieren von Schlüsseln für Event Hub](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+   ![Neugenerieren von Schlüsseln für Event Hubs](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Kopieren Sie den neu generierten Schlüssel.    
 4. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
 5. Suchen Sie nach der Event Hubs-Eingabe/-Ausgabe, für die Sie die Anmeldeinformationen aktualisieren möchten.    
@@ -54,7 +54,7 @@ Sie müssen eine Verbindung mit der SQL-Datenbank herstellen, um die Anmeldeinfo
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu der SQL-Datenbank, die Sie als Ausgabe für den Stream Analytics-Auftrag verwendet haben.    
 2. Melden Sie sich aus **Daten-Explorer** bei der Datenbank an, wählen Sie als Autorisierungstyp den Typ **SQL Server-Authentifizierung** aus, geben Sie Ihren **Anmeldenamen** und Ihr  **Kennwort** ein, und wählen Sie **OK** aus.  
-   ![Neugenerieren von Anmeldeinformationen für SQL-Datenbank](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
+   ![Neugenerieren von Anmeldeinformationen für SQL-Datenbank](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. Ändern Sie auf der Registerkarte „Abfrage“ das Kennwort für einen der Benutzer, indem Sie die folgende Abfrage ausführen (ersetzen Sie `<user_name>` durch Ihren Benutzernamen und `<new_password>` durch Ihr neues Kennwort):  
 
@@ -79,7 +79,7 @@ Sie müssen eine Verbindung mit der SQL-Datenbank herstellen, um die Anmeldeinfo
 
 1. Navigieren Sie zum **Übersicht**-Bereich des Auftrags, und wählen Sie **Starten** aus, um den Auftrag zu starten.    
 2. Wählen Sie **Zeitpunkt der letzten Beendigung** aus, und klicken Sie auf **Starten**. Beachten Sie, dass die Option „Zeitpunkt der letzten Beendigung“ nur angezeigt wird, wenn Sie den Auftrag zuvor ausgeführt und dabei etwas Ausgabe generiert haben. Der Auftrag wird anhand des Zeitpunkts des letzten Ausgabewerts neu gestartet.
-   ![Starten des Auftrags](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
+   ![Starten des Stream Analytics-Auftrags](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

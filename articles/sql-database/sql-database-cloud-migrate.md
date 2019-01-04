@@ -8,17 +8,17 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: e87f8a0d168db02bf0e93216991767f5a9be584c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89cf69ba8bc88a40582ea795b6a17fab4f286d64
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863515"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651979"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 
@@ -35,7 +35,7 @@ In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.micr
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>Methode 1: Migration mit Ausfallzeit
 
- Verwenden Sie diese Methode zum Migrieren zu einer einfachen oder in einem Pool zusammengefassten Datenbank, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten. Ein Tutorial finden Sie unter [Migrieren einer SQL Server-Datenbank](sql-database-migrate-your-sql-server-database.md).
+ Verwenden Sie diese Methode zum Migrieren zu einer einfachen oder in einem Pool zusammengefassten Datenbank, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten. Ein Tutorial finden Sie unter [Migrieren einer SQL Server-Datenbank](../dms/tutorial-sql-server-to-azure-sql.md).
 
 Die folgende Liste enthält den allgemeinen Workflow für die Migration einer einfachen oder in einem Pool zusammengefassten Datenbank mit dieser Methode. Informationen zur Migration zu einer verwalteten Instanz finden Sie unter [Migration zu einer verwalteten Instanz](sql-database-managed-instance-migrate.md).
 

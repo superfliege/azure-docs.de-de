@@ -1,30 +1,31 @@
 ---
 title: Grundlegendes zur Auftragsüberwachung in Azure Stream Analytics
-description: In diesem Artikel wird beschrieben, wie Sie Aufträge in Azure Stream Analytics analysieren.
+description: In diesem Artikel wird das Überwachen von Azure Stream Analytics-Aufträgen im Azure-Portal beschrieben.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 200df7602f94f70f3fb9c62ad81a0710923184c7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291412"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096592"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen
 
-## <a name="introduction-the-monitor-page"></a>Einführung: die Seite „Überwachen“
+## <a name="introduction-the-monitor-page"></a>Einführung: Seite „Monitor“
 Im Azure-Portal werden wichtige Leistungsmetriken angezeigt, die zum Überwachen der Leistung Ihrer Abfragen und Aufträge sowie für die Problembehandlung verwendet werden können. Navigieren Sie zum Anzeigen dieser Metriken zum Stream Analytics-Auftrag, dessen Metriken Sie interessieren, und zeigen Sie auf der Seite „Übersicht“ den Abschnitt **Überwachung** an.  
 
-![Link „Überwachung“](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
+![Link zur Stream Analytics-Auftragsüberwachung](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
 Das Fenster wird wie folgt angezeigt:
 
-![Auftragsüberwachungs-Dashboard](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
+![Dashboard der Stream Analytics-Auftragsüberwachung](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Verfügbare Metriken für Stream Analytics
 | Metrik                 | Definition                               |
@@ -49,7 +50,7 @@ Das Fenster wird wie folgt angezeigt:
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Anpassen der Überwachung im Azure-Portal
 Sie können den Diagrammtyp, die angezeigten Metriken und den Uhrzeitbereich in den Einstellungen unter "Diagramm bearbeiten" anpassen. Weitere Informationen finden Sie unter [Anpassen der Überwachung](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
-  ![Zeitdiagramm für die Abfrageüberwachung](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
+  ![Zeitdiagramm für die Stream Analytics-Abfrageüberwachung](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
 
 ## <a name="latest-output"></a>Letzte Ausgabe

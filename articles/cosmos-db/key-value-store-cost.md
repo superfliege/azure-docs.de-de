@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3ab066cc3d2b06dc12c2399d718aeec6aac03b25
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8e04439d63646a8aebe224adbf629491cc2dfbc6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134181"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547217"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als Schlüsselwertspeicher – Kostenübersicht
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hochverfügbarer, umfangreicher Anwendungen. Standardmäßig indiziert Azure Cosmos DB automatisch alle erfassten Daten effizient. Dies ermöglicht schnelle und konsistente [SQL](how-to-sql-query.md)-Abfragen (und [JavaScript](programming.md)-Abfragen) für jede Art von Daten. 
+Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hochverfügbarer, umfangreicher Anwendungen. Standardmäßig indiziert Azure Cosmos DB automatisch alle erfassten Daten effizient. Dies ermöglicht schnelle und konsistente [SQL](how-to-sql-query.md)-Abfragen (und [JavaScript](stored-procedures-triggers-udfs.md)-Abfragen) für jede Art von Daten. 
 
 In diesem Artikel werden die Kosten von Azure Cosmos DB für einfache Schreib- und Lesevorgänge bei Verwendung als Schlüssel-/Wertspeicher beschrieben. Zu den Schreibvorgängen zählen Einfügungen, Ersetzungen, Löschungen und Upserts von Dokumenten. Neben der Garantie einer SLA mit einer Verfügbarkeit von 99,99 Prozent für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz sowie einer Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen bietet Azure Cosmos DB eine garantierte Wartezeit von weniger als 10 ms für Lesevorgänge bzw. von weniger als 15 ms für die (indizierten) Schreibvorgänge (im 99 Perzentil). 
 

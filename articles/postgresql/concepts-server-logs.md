@@ -1,19 +1,17 @@
 ---
 title: Serverprotokolle in Azure-Datenbank für PostgreSQL
 description: Dieser Artikel beschreibt, wie Azure Database for PostgreSQL Protokolle für Abfragen und Fehler generiert und wie die Protokollaufbewahrung konfiguriert wird.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2ee9f750ff52b8afe4be54233f1374f523a789f4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0e2dc2af6b4c7ddf531458136e6bcabb49be3b8f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845164"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538804"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure Database for PostgreSQL 
 Azure-Datenbank für PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
@@ -30,7 +28,7 @@ Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure 
 
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie diese an [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs oder Azure Storage ausgegeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
+Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie diese an [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs oder Azure Storage ausgegeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
 
 In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. Je nach dem ausgewählten Ausgabeendpunkt können die enthaltenen Felder und ihre Reihenfolge variieren. 

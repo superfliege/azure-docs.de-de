@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840204"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723670"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
@@ -30,7 +30,7 @@ Für die Schritte in diesem Artikel ist Folgendes erforderlich:
 
 - Ein HDInsight-Cluster. Informationen zum Erstellen eines Clusters finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
-- [Mono](http://www.mono-project.com/docs/getting-started/install/). Mono wird nur für Linux und macOS benötigt.
+- [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono wird nur für Linux und macOS benötigt.
 
 ## <a name="install-the-hdinsight-tools"></a>Installieren der HDInsight Tools
    
@@ -87,7 +87,7 @@ Bevor Sie Skripts aus VS Code an HDInsight-Cluster übermitteln können, müssen
 
     Nach dem Herstellen der Verbindung wird Ihr Azure-Kontoname links unten im Visual Studio Code-Fenster auf der Statusleiste angezeigt. 
 
-    > [!NOTE]
+    > [!NOTE]  
     > Aufgrund eines bekannten Azure-Authentifizierungsproblems müssen Sie einen Browser im privaten Modus oder im Inkognito-Modus öffnen. Wenn für Ihr Azure-Konto die zweistufige Authentifizierung aktiviert ist, sollten Sie anstelle der Authentifizierung per PIN die telefonische Authentifizierung verwenden.
   
 
@@ -113,7 +113,7 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen per [Apache Amba
    
    ![Dialogfeld „Cluster verknüpfen“](./media/hdinsight-for-vscode/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Der verknüpfte Benutzername und das Kennwort werden verwendet, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat. 
    
 3. Sie können einen verknüpften Cluster mithilfe des Befehls **List Cluster** (Cluster auflisten) anzeigen. Jetzt können Sie ein Skript an diesen verknüpften Cluster übermitteln.
@@ -231,7 +231,7 @@ Mit HDInsight Tools for Visual Studio Code können Sie interaktive Hive-Abfragen
 
    ![Übermitteln des Ergebnisses des Python-Auftrags](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Der Übertragungsstatus wird beim Ausführen von Abfragen links neben der unteren Statusleiste angezeigt. Übermitteln Sie keine weiteren Abfragen, wenn der Status **PySpark Kernel (busy)** (PySpark-Kernel (ausgelastet)) lautet. 
 
->[!NOTE]
+>[!NOTE]  
 >Die Cluster können Sitzungsinformationen speichern. Die definierte Variable, die Funktion und die entsprechenden Werte werden in der Sitzung gespeichert, sodass auf sie in mehreren Dienstaufrufen für den gleichen Cluster verwiesen werden kann. 
 
 ### <a name="to-disable-environment-check"></a>So deaktivieren Sie die Umgebungsüberprüfung

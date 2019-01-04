@@ -4,17 +4,17 @@ description: Dieser Artikel beschreibt, wie Sie Azure Stream Analytics-Aufträge
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2018
-ms.openlocfilehash: 9cc65fc5119bedc816f825b7aae6120f4bca3b12
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246839"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100998"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Überwachen und Verwalten von Stream Analytics-Aufträgen mithilfe von Visual Studio
 
@@ -31,14 +31,14 @@ Die **Auftragszusammenfassung** und **Auftragsmetriken** bieten einen schnellen 
 
 Sie können die **Auftragszusammenfassung** ausblenden und auf die Registerkarte **Auftragsmetriken** klicken, um ein Diagramm mit wichtigen Metriken anzuzeigen. Aktivieren und deaktivieren Sie Metriktypen, um sie dem Diagramm hinzuzufügen oder daraus zu entfernen.
 
-![Stream Analytics-Metrik](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Stream Analytics-Metriken in Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
 ## <a name="error-monitoring"></a>Fehlerüberwachung
 
 Sie können auch Fehler überwachen, indem Sie auf die Registerkarte **Fehler** klicken.
 
-![Stream Analytics-Fehler](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Stream Analytics-Fehler in Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Support

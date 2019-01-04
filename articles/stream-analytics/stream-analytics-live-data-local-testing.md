@@ -1,5 +1,5 @@
 ---
-title: Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio (Vorschauversion)
+title: Testen mit Livedaten mit Azure Stream Analytics für Visual Studio
 description: Informationen zum lokalen Testen Ihres Azure Stream Analytics-Auftrags mithilfe von Livestreamingdaten
 services: stream-analytics
 author: mamccrea
@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f0a8978a9c2e0538a2e7bc4eab202604913e700b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: ea55d2f96a87503d43a69d288ce85dcff32a39ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984159"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090328"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio (Vorschauversion)
 
@@ -33,28 +34,28 @@ Die folgenden lokalen Testoptionen werden unterstützt:
 
 1. Nachdem Sie ein [Azure Stream Analytics-Cloudprojekt in Visual Studio](stream-analytics-quick-create-vs.md) erstellt haben, öffnen Sie **script.asaql**. Die lokalen Tests verwendet standardmäßig lokale Ein- und Ausgaben.
 
-   ![Lokale Azure Stream Analytics-Tests in Visual Studio mit lokaler Ein- und Ausgabe](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
+   ![Azure Stream Analytics Visual Studio mit lokaler Ein- und Ausgabe](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
 2. Zum Testen von Livedaten wählen Sie im Dropdownfeld die Option **Use Cloud Input** (Cloudeingabe verwenden) aus.
 
-   ![Lokale Azure Stream Analytics-Tests in Visual Studio mit Live-Cloudeingabe](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
+   ![Azure Stream Analytics Visual Studio mit Live-Cloudeingabe](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
 
 
 3. Legen Sie die **Startzeit** fest, um zu definieren, wann der Auftrag mit der Verarbeitung von Eingabedaten beginnt. Der Auftrag muss Eingabedaten u.U. vorab lesen, um genaue Ergebnisse sicherzustellen. Die Standardzeit ist auf 30 Minuten in der Zukunft festgelegt.
 
-   ![Lokale Azure Stream Analytics-Tests in Visual Studio mit Livedaten-Startzeit](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
+   ![Azure Stream Analytics Visual Studio – Anfangszeit der Livedaten](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
 4. Klicken Sie auf **Lokal ausführen**. Ein Konsolenfenster mit dem Ausführungsfortschritt und Auftragsmetriken wird angezeigt. Wenn Sie den Prozess beenden möchten, können Sie das manuell tun. 
 
-   ![Lokale Azure Stream Analytics-Tests in Visual Studio mit Livedaten-Prozessfenster](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
+   ![Azure Stream Analytics Visual Studio – Livedaten-Prozessfenster](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
    Die Ausgabeergebnisse werden im Ergebnisfenster der lokalen Ausführung alle drei Sekunden mit den ersten 500 Ausgabezeilen aktualisiert, und die Ausgabedateien werden unter Ihrem Projektpfad im Ordner **ASALocalRun** abgelegt. Sie können die Ausgabedateien auch öffnen, indem Sie im Ergebnisfenster der lokalen Ausführung auf die Schaltfläche **Ergebnisordner öffnen** klicken.
 
-   ![Lokale Azure Stream Analytics-Tests in Visual Studio mit geöffnetem Livedaten-Ergebnisordner](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
+   ![Azure Stream Analytics Visual Studio mit geöffnetem Ergebnisordner](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
 
 5. Wenn die Ergebnisse in Ihren Cloudausgabesenken ausgegeben werden sollen, wählen Sie im zweiten Dropdownfeld die Option **Output to Cloud** (Ausgabe in der Cloud). Power BI und Azure Data Lake Storage sind keine unterstützten Ausgabesenken.
 
-   ![Lokale Azure Stream Analytics-Tests in Visual Studio mit Ausgabe von Livedaten in der Cloud](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
+   ![Azure Stream Analytics Visual Studio – Ausgabe von Livedaten in die Cloud](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
  
 ## <a name="limitations"></a>Einschränkungen
 
