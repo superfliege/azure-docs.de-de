@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a73e652c74f9d88f1e066de190834fc033c13cf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621087"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135525"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen
 
@@ -34,10 +34,10 @@ Verwenden Sie zum Veröffentlichen nativer Anwendungen die Active Directory Auth
 
 Dieser Artikel begleitet Sie durch die vier Schritte zum Veröffentlichen einer nativen Anwendung mit dem Anwendungsproxy und der Active Directory Authentication Library. 
 
-## <a name="step-1-publish-your-application"></a>Schritt 1: Veröffentlichen der Anwendung
-Veröffentlichen Sie Ihre Proxyanwendung wie jede andere Anwendung, und weisen Sie Benutzern den Zugriff auf Ihre Anwendung zu. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](application-proxy-publish-azure-portal.md).
+## <a name="step-1-publish-your-application"></a>Schritt 1: Veröffentlichen der Anwendung
+Veröffentlichen Sie Ihre Proxyanwendung wie jede andere Anwendung, und weisen Sie Benutzern den Zugriff auf Ihre Anwendung zu. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](application-proxy-add-on-premises-application.md).
 
-## <a name="step-2-configure-your-application"></a>Schritt 2: Konfigurieren der Anwendung
+## <a name="step-2-configure-your-application"></a>Schritt 2: Konfigurieren der Anwendung
 Konfigurieren Sie Ihre systemeigene Anwendung wie folgt:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -55,8 +55,8 @@ Ausführlichere Informationen zum Erstellen einer neuen App-Registrierung finden
 Machen Sie die systemeigene Anwendung für andere Anwendungen in Ihrem Verzeichnis verfügbar:
 
 1. Wählen Sie in **App-Registrierungen** die neue native Anwendung aus, die Sie gerade erstellt haben.
-2. Wählen Sie **Erforderliche Berechtigungen** aus.
-3. Wählen Sie **Hinzufügen**.
+2. Wählen Sie **API-Berechtigungen anfordern** aus.
+3. Wählen Sie **Berechtigung hinzufügen** aus.
 4. Öffnen Sie den ersten Schritt, **API auswählen**.
 5. Suchen Sie über die Suchleiste die Anwendungsproxy-App, die Sie im ersten Abschnitt veröffentlicht haben. Wählen Sie diese App, und klicken Sie auf **Auswählen**. 
 
@@ -68,7 +68,7 @@ Machen Sie die systemeigene Anwendung für andere Anwendungen in Ihrem Verzeichn
 8. Wählen Sie **Fertig**aus.
 
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>Schritt 4: Bearbeiten der Active Directory-Authentifizierungsbibliothek
+## <a name="step-4-edit-the-active-directory-authentication-library"></a>Schritt 4: Bearbeiten der Active Directory-Authentifizierungsbibliothek
 Bearbeiten Sie den Code für native Anwendungen im Authentifizierungskontext der Active Directory-Authentifizierungsbibliothek (ADAL, Active Directory Authentication Library), sodass er folgenden Text enthält:
 
 ```

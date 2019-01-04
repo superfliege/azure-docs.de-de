@@ -3,7 +3,7 @@ title: Verwalten horizontal hochskalierter Clouddatenbanken | Microsoft Docs
 description: Verwenden Sie den Auftragsdienst der elastischen Datenbank, um ein Skript für eine Gruppe von Datenbanken auszuführen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: f5878c510e048bea2ce1aedaf4e0e5dbb4611caf
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 9647522f4b3990d065f292f05934b8d19c691454
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242516"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865521"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Verwalten horizontal hochskalierter Clouddatenbanken
 
@@ -81,8 +81,8 @@ Definition benutzerdefinierter Gruppen von Azure SQL-Datenbanken sowie von Zeitp
 2. Verwenden Sie die PowerShell-APIs, um auf weitere Funktionen zuzugreifen, beispielsweise zum Erstellen von benutzerdefinierten Datenbanksammlungen, zum Hinzufügen von Zeitplänen und/oder dem Erfassen von Ergebnismengen. Verwenden Sie das Portal für die einfache Installation sowie die Erstellung und Überwachung von Aufträgen, die auf die Ausführung für einen **Pool für elastische Datenbanken** beschränkt sind.
 3. Erstellen Sie verschlüsselte Anmeldeinformationen für die Auftragsausführung und [fügen Sie den Benutzer (oder die Rolle) jeder Datenbank in der Gruppe hinzu](sql-database-security-overview.md).
 4. Erstellen Sie ein idempotentes T-SQL-Skript, das für jede Datenbank in der Gruppe ausgeführt werden kann.
-5. Führen Sie die im folgenden Artikel erläuterten Schritte aus, um Aufträge mithilfe des Azure-Portals zu erstellen: [Erstellen und Verwalten von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-create-and-manage.md).
-6. Alternativ können Sie auch PowerShell-Skripts verwenden: [Erstellen und Verwalten von Aufträgen für die elastische SQL-Datenbank mithilfe von PowerShell (Vorschau)](sql-database-elastic-jobs-powershell.md).
+5. Führen Sie die folgenden Schritte aus, um Aufträge im Azure-Portal zu erstellen: [Erstellen und Verwalten von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-create-and-manage.md).
+6. Sie können auch PowerShell-Skripts verwenden: [Erstellen und Verwalten von Aufträgen für die elastische SQL-Datenbank mithilfe von PowerShell (Vorschau)](sql-database-elastic-jobs-powershell.md).
 
 ## <a name="idempotent-scripts"></a>Idempotente Skripts
 
@@ -137,8 +137,8 @@ Die folgenden Komponenten arbeiten zusammen, um einen Azure-Clouddienst zu erste
 1. Einer Azure SQL-Datenbank wird eine **Steuerdatenbank** zugeordnet, die alle Meta- und Statusdaten enthält.
 2. Auf die Steuerdatenbank wird durch den **Auftragsdienst** sowohl zum Starten als auch zum Nachverfolgen der auszuführenden Aufträge zugegriffen.
 3. Zwei verschiedene Rollen kommunizieren mit der Steuerdatenbank:
-   - Controller: Bestimmt, welche Aufträge Aufgaben zum Durchführen des angeforderten Auftrags benötigen und führt Wiederholungsversuche bei Aufträgen mit Fehlern durch Erstellen neuer Auftragsaufgaben aus.
-   - Ausführung von Auftragsaufgaben: Führt die Auftragsaufgaben aus.
+   - Controller: Legt fest, welche Aufträge Aufgaben zum Durchführen des angeforderten Auftrags benötigen, und führt Wiederholungsversuche bei Aufträgen mit Fehlern durch Erstellen neuer Auftragsaufgaben aus.
+   - Ausführung von Auftragsaufgaben: Führt die Auftragsaufgaben durch.
 
 ### <a name="job-task-types"></a>Typen von Auftragsaufgaben
 

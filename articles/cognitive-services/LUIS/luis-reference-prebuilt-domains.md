@@ -1,23 +1,24 @@
 ---
-title: Referenz für vordefinierte Domänen – Azure | Microsoft Docs
+title: Vordefinierter Domänenverweis
 titleSuffix: Azure
 description: Referenz für die vordefinierten Domänen, die vordefinierte Sammlungen von Absichten und Entitäten aus LUIS (Language Understanding Intelligent Services) darstellen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 287a0986d921798bc7735e5a75d279f010712b16
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335622"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140964"
 ---
-# <a name="prebuilt-domain-reference"></a>Vordefinierter Domänenverweis
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vordefinierter Domänenverweis für die LUIS-App
 Diese Referenz enthält Informationen über die [vordefinierten Domänen](luis-how-to-use-prebuilt-domains.md), bei denen es sich um vordefinierte Sammlungen der von LUIS gebotenen Absichten und Entitäten handelt.
 
 [Benutzerdefinierte Domänen](luis-how-to-start-new-app.md) weisen im Gegensatz dazu anfänglich keine Absichten und Modelle auf. Sie können einem benutzerdefinierten Modell beliebige Absichten und Entitäten aus einer vordefinierten Domäne hinzufügen.
@@ -115,7 +116,7 @@ Die Communication-Domäne stellt Absichten und Entitäten im Zusammenhang mit E-
 | TurnForwardingOff| Tätigen eines Telefonanrufs|<br/><br/>|
 | Redial| Erneut wählen oder Nummer noch einmal wählen|Erneut wählen<br/>Wähle meinen letzten Anrufpartner noch einmal an.|
 | Reject| Abweisen eines eingehenden Anrufs.|Aufruf abweisen<br/>Ich kann jetzt nicht antworten.<br/>Ich bin im Moment nicht zu sprechen und komme später wieder.|
-| SendEmail| Senden von E-Mail. Diese Absicht betrifft E-Mail, aber keine Textnachrichten.|E-Mail an Hanno Simon: Hanno, das Essen bei Dir war überragend.<br/>Sende eine E-Mail an Tom<br/>|
+| SendEmail| Senden von E-Mail. Diese Absicht betrifft E-Mail, aber keine Textnachrichten.|Email to Mike Waters: Mike, that dinner last week was splendid (E-Mail an Mike Waters: Mike, das Essen letzte Woche war hervorragend)<br/>Sende eine E-Mail an Tom<br/>|
 | SendMessage| Senden einer Textnachricht oder Chatnachricht|Sende diesen Text an Chris und Helga.|
 | SetSpeedDial| Festlegen einer Kurzwahl für die Telefonnummer eines Kontakts|Lege Kurzwahl eins für Helga fest.<br/>Richte Kurzwahl für Mami ein.|
 | ShowNext| Anzeigen des nächsten Elements beispielsweise in einer Liste von Textnachrichten oder E-Mails|Nächstes anzeigen<br/>Gehe zur nächsten Seite.|
@@ -241,11 +242,12 @@ Die HomeAutomation-Domäne stellt Absichten und Entitäten zum Steuern von Gerä
 Die MovieTickets-Domäne stellt Absichten und Entitäten für das Buchen von Tickets für Filme in einem Kino bereit.
 
 ### <a name="examples"></a>Beispiele
-```
-Book me two tickets for Captain Omar and the two Musketeers
-Cancel tickets
-When is Captain Omar showing?
-```
+
+|Beispiele|
+|--|
+|Buche mir zwei Karten für Captain Omar und die zwei Musketiere|
+|Tickets stornieren|
+|Wann wird Captain Omar gezeigt?|
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -266,11 +268,12 @@ When is Captain Omar showing?
 Die Music-Domäne stellt Absichten und Entitäten für das Abspielen von Musik auf einem Musikabspielgerät bereit.
 
 ### <a name="examples"></a>Beispiele
-```
-play Beethoven
-Increase track volume
-Skip to the next song
-```
+
+|Beispiele|
+|--|
+|Beethoven abspielen|
+|Titel lauter stellen|
+|Zum nächsten Titel springen|
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -297,11 +300,12 @@ Skip to the next song
 Die Note-Domäne bietet Absichten und Entitäten im Zusammenhang mit dem Erstellen, Bearbeiten und Suchen von Notizen.
 
 ### <a name="examples"></a>Beispiele
-```
-Add to my groceries note lettuce tomato bread coffee
-Check off bananas from my grocery list
-Remove all items from my vacation list
-```
+
+|Beispiele|
+|--|
+|Zu meiner Einkaufsliste hinzufügen: Kopfsalat, Tomaten, Brot, Kaffee|
+|Bananen in meiner Einkaufsliste abhaken|
+|Entferne alle Elemente aus meiner Urlaubsliste|
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -330,11 +334,13 @@ Remove all items from my vacation list
 Die OnDevice-Domäne stellt Absichten und Entitäten bereit, die sich auf die Steuerung des Geräts beziehen.
 
 ### <a name="examples"></a>Beispiele
-```
-Close video player
-Cancel playback
-Can you make the screen brighter?
-```
+
+|Beispiele|
+|--|
+|Videoplayer schließen|
+|Wiedergabe abbrechen|
+|Machst du den Bildschirm heller?|
+
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -381,11 +387,13 @@ Can you make the screen brighter?
 Die Places-Domäne bietet Absichten für das Verarbeiten von Abfragen, die sich auf Orte wie Unternehmen, Institutionen, Restaurants, öffentliche Orte und Adressen beziehen.
 
 ### <a name="examples"></a>Beispiele
-```
-Save this location to my favorites
-How far away is Holiday Inn?
-At what time does Safeway close?
-```
+
+|Beispiele|
+|--|
+|Speichere diesen Ort in meinen Favoriten|
+|Wie weit ist es bis zum Holiday Inn?|
+|Um wie viel Uhr schließt Rewe?|
+
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -450,11 +458,13 @@ restart|
 Die Reminder-Domäne bietet Absichten und Entitäten zum Erstellen, Bearbeiten und Suchen von Erinnerungen.
 
 ### <a name="examples"></a>Beispiele
-```
-Change my interview to 9 am tomorrow
-Remind me to buy milk on my way back home
-Can you check if I have a reminder about Christine's birthday?
-```
+
+|Beispiele|
+|--|
+|Ändere mein Personalgespräch morgen auf 9 Uhr|
+|Erinnere mich daran, auf dem Heimweg Milch zu kaufen|
+|Kannst du nachsehen, ob ich eine Erinnerung für Christines Geburtstag eingerichtet habe?|
+
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -473,11 +483,12 @@ Can you check if I have a reminder about Christine's birthday?
 Die RestaurantReservation-Domäne enthält Absichten und Entitäten zum Verwalten von Restaurantreservierungen.
 
 ### <a name="examples"></a>Beispiele
-```
-Reserve at Zucca for two for tonight
-Book a table at BJ's for tomorrow
-Table for 3 in Palo Alto at 7
-```
+
+|Beispiele|
+|--|
+|Reserviere bei Zucca einen Tisch für zwei für heute Abend|
+|Buche einen Tisch bei BJ‘s für morgen|
+|Tisch für 3 in Garmisch-Partenkirchen um Sieben|
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -502,11 +513,12 @@ Table for 3 in Palo Alto at 7
 Die Taxi-Domäne enthält Absichten und Entitäten zum Erstellen und Verwalten von Taxibuchungen.
 
 ### <a name="examples"></a>Beispiele
-```
-Get me a cab at 3 pm
-How much longer do I have to wait for my taxi?
-Cancel my Uber
-```
+
+|Beispiele|
+|--|
+|Ruf mir zu 15.00 Uhr ein Taxi|
+|Wie lange muss ich noch auf mein Taxi warten?|
+|Bestelle den Funkmietwagen ab|
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -531,11 +543,13 @@ Cancel my Uber
 Die Translate-Domäne enthält Absichten und Entitäten im Zusammenhang mit der Übersetzung von Text in eine Zielsprache.
 
 ### <a name="examples"></a>Beispiele
-```
-Translate to French
-Translate hello to German
-Translate this sentence to English
-```
+
+|Beispiele|
+|--|
+|Übersetze ins Französische|
+|Übersetze „hello“ ins Deutsche|
+|Übersetze diesen Satz ins Englische|
+
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -554,11 +568,12 @@ Translate this sentence to English
 Die TV-Domäne enthält Absichten und Entitäten zum Steuern von Fernsehgeräten.
 
 ### <a name="examples"></a>Beispiele
-```
-Switch channel to BBC
-Show TV guide
-Watch National Geographic
-```
+
+|Beispiele|
+|--|
+|Wechsle den Kanal zu RTL|
+|TV-Programm anzeigen|
+|Zeige n-tv|
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -576,11 +591,13 @@ Watch National Geographic
 Die Utilities-Domäne enthält Absichten für Aufgaben, die vielen Aufgaben gemein sind, wie Begrüßung, Stornierung, Bestätigung, Hilfe, Wiederholung, Navigation, Starten und Beenden.
 
 ### <a name="examples"></a>Beispiele
-```
-Go back to Twitter
-Please help
-Repeat last question please
-```
+
+|Beispiele|
+|--|
+|Gehe zu Twitter zurück|
+|Hilfe, bitte|
+|Bitte wiederhole die letzte Frage|
+
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -600,11 +617,13 @@ Repeat last question please
 Die Weather-Domäne enthält Absichten und Entitäten zum Abrufen von Wetterberichten und -vorhersagen.
 
 ### <a name="examples"></a>Beispiele
-```
-weather in London in september
-What?s the 10 day forecast?
-What's the average temperature in India in september?
-```
+
+|Beispiele|
+|--|
+|Wetter in London im September|
+|Wie ist die Vorhersage für die nächsten 10 Tage?|
+|Was ist die Durchschnittstemperatur in Indien im September?|
+
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |
@@ -621,11 +640,12 @@ What's the average temperature in India in september?
 Die Web-Domäne bietet eine Absicht für das Navigieren zu einer Website.
 
 ### <a name="examples"></a>Beispiele
-```
-Navigate to facebook.com
-Go to www.twitter.com
-Navigate to www.bing.com
-```
+
+|Beispiele|
+|--|
+|Navigiere zu facebook.com|
+|Gehe zu www.twitter.com|
+|Navigiere zu www.bing.com|
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |

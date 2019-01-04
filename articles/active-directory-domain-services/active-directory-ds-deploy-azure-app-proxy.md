@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4621122d805f37be1578aa7b7c9ae059f3141c77
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155540"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840298"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.
@@ -42,7 +42,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 ## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>Aufgabe 1: Aktivieren des Azure AD-Anwendungsproxys für Ihr Azure AD-Verzeichnis
 Führen Sie die folgenden Schritte aus, um den Azure AD-Anwendungsproxy für Ihr Azure AD-Verzeichnis zu aktivieren.
 
-1. Melden Sie sich als Administrator beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich als Administrator beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Klicken Sie auf **Azure Active Directory**, um die Verzeichnisübersicht anzuzeigen. Klicken Sie auf **Unternehmensanwendungen**.
 
@@ -96,7 +96,7 @@ Zuvor haben Sie einen virtuellen Windows Server-Computer bereitgestellt und in d
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben den Azure AD-Anwendungsproxy eingerichtet und in Ihre verwaltete Azure AD Domain Services-Domäne integriert.
 
-* **Migrieren Ihrer Anwendungen zu virtuellen Azure-Computern:** Sie können Ihre Anwendungen per Lift &amp; Shift von lokalen Servern zu virtuellen Azure-Computern migrieren, die in die verwaltete Domäne eingebunden sind. Auf diese Weise können Sie die Infrastrukturkosten einsparen, die beim lokalen Ausführen von Servern anfallen.
+* **Migrieren Ihrer Anwendungen zu virtuellen Azure-Computern:** Sie können Ihre Anwendungen per Lift & Shift von lokalen Servern zu virtuellen Azure-Computern migrieren, die in die verwaltete Domäne eingebunden sind. Auf diese Weise können Sie die Infrastrukturkosten einsparen, die beim lokalen Ausführen von Servern anfallen.
 
 * **Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy:** Veröffentlichen Sie Anwendungen, die auf Ihren virtuellen Azure-Computern ausgeführt werden, über den Azure AD-Anwendungsproxy. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Aufzeichnen von Sprachbeispielen für das Erstellen einer benutzerdefinierten Stimme
+title: Aufzeichnen benutzerdefinierter Stimmbeispiele – Speech Services
 titleSuffix: Azure Cognitive Services
 description: Erstellen Sie eine benutzerdefinierte Stimme in Produktionsqualität, indem Sie ein überzeugendes Skript vorbereiten, einen guten Sprecher engagieren und professionell aufzeichnen.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 07/5/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: b1b189db56eb3f70f23940a8612d310d2ba8566f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 6aaa638504dd441240879050531952b269d02d15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471185"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081080"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme
 
@@ -50,7 +51,7 @@ Wählen Sie einen Sprecher aus, dessen natürliche Stimme Ihnen gefällt. Es ist
 > [!TIP]
 > Im Allgemeinen sollten Sie keine erkennbaren Stimmen zum Erstellen benutzerdefinierter Stimmen verwenden, es sei denn, Ihr Ziel ist es, eine prominente Stimme zu produzieren. Weniger bekannte Stimmen lenken die Benutzer in der Regel weniger ab.
 
-Der wichtigste Faktor für die Auswahl des Sprechers ist Konsistenz. Ihr Aufzeichnungen sollten alle so klingen, als ob sie am selben Tag im selben Raum erstellt wurden. Sie können dieses Ideal über gute Aufzeichnungsverfahren und eine geeignete Technik erreichen. 
+Der wichtigste Faktor für die Auswahl des Sprechers ist Konsistenz. Ihr Aufzeichnungen sollten alle so klingen, als ob sie am selben Tag im selben Raum erstellt wurden. Sie können dieses Ideal über gute Aufzeichnungsverfahren und eine geeignete Technik erreichen.
 
 Ihr Sprecher ist die andere Hälfte der Gleichung. Er muss mit einheitlicher Geschwindigkeit, Lautstärke, Tonhöhe und Klangfarbe sprechen können. Eine deutliche Aussprache ist ein Muss. Der Sprecher muss außerdem Tonhöhenabweichungen, Stimmungen und sprachliche Angewohnheiten genau kontrollieren können.
 
@@ -71,7 +72,7 @@ Die Äußerungen in Ihrem Skript können beliebigen Ursprungs sein: Fiktion, Fak
 
 Ihre Äußerungen müssen nicht aus der gleichen Quelle oder der gleichen Art von Quelle stammen. Sie können sogar vollständig unabhängig voneinander sein. Wenn Sie allerdings feste Ausdrücke (z.B. „Sie haben sich erfolgreich angemeldet“) in Ihrer Sprachanwendung verwenden, sollten Sie sie in Ihr Skript aufnehmen. Dadurch erhöht sich die Wahrscheinlichkeit, dass diese Ausdrücke von Ihrer benutzerdefinierten Stimme gut ausgesprochen werden. Und wenn Sie anstelle eines synthetisierten Texts eine Aufzeichnung verwenden möchten, liegt sie bereits mit der gleichen Stimme vor.
 
-Während Konsistenz der Schlüssel bei der Auswahl des Sprechers ist, ist Vielfalt das Kennzeichen eines guten Skripts. Das Skript sollte viele unterschiedliche Wörter und Sätze mit einer Vielzahl von Satzlängen, Strukturen und Stimmungen enthalten. Jeder Klang in der Sprache muss mehrere Male und in zahlreichen Kontexten vorhanden sein (dies wird als *phonetische Abdeckung* bezeichnet). 
+Während Konsistenz der Schlüssel bei der Auswahl des Sprechers ist, ist Vielfalt das Kennzeichen eines guten Skripts. Das Skript sollte viele unterschiedliche Wörter und Sätze mit einer Vielzahl von Satzlängen, Strukturen und Stimmungen enthalten. Jeder Klang in der Sprache muss mehrere Male und in zahlreichen Kontexten vorhanden sein (dies wird als *phonetische Abdeckung* bezeichnet).
 
 Darüber hinaus sollte der Text alle Möglichkeiten enthalten, mit denen ein bestimmter Klang schriftlich dargestellt werden kann, und jeder Klang sollte an unterschiedlichen Stellen in den Sätzen vorkommen. Aussagesätze und Fragen sollten enthalten sein und mit der entsprechenden Intonation vorgelesen werden.
 
@@ -188,9 +189,9 @@ Zeichnen Sie vor der ersten Aufnahme gute 5 Sekunden Stille auf, um den „Raumk
 > [!TIP]
 > Sie müssen eigentlich nur den Sprecher aufzeichnen, damit Sie von seinen Texten eine Monoaufzeichnung (ein Kanal) erstellen können. Wenn Sie jedoch in Stereo aufzeichnen, können Sie den zweiten Kanal zum Aufzeichnen der Gespräche im Kontrollraum verwenden, um Diskussionen zu bestimmten Texten oder Takes zu erfassen. Entfernen Sie diese Spur aus der Version, die in das Custom Voice-Portal hochgeladen wird.
 
-Hören Sie sich über Kopfhörer den Vortrag des Sprechers genau an. Achten Sie auf eine gute, aber natürliche Ausdrucksweise, die richtige Aussprache und darauf, dass wenige unerwünschte Töne vorhanden sind. Zögern Sie nicht, Ihren Sprecher zu bitten, eine Äußerung erneut aufzuzeichnen, die diese Standards nicht erfüllt. 
+Hören Sie sich über Kopfhörer den Vortrag des Sprechers genau an. Achten Sie auf eine gute, aber natürliche Ausdrucksweise, die richtige Aussprache und darauf, dass wenige unerwünschte Töne vorhanden sind. Zögern Sie nicht, Ihren Sprecher zu bitten, eine Äußerung erneut aufzuzeichnen, die diese Standards nicht erfüllt.
 
-> [!TIP] 
+> [!TIP]
 > Wenn Sie eine große Zahl von Äußerungen verwenden, hat eine einzelne Äußerung unter Umständen keine spürbaren Auswirkungen auf die resultierende benutzerdefinierte Stimme. Daher ist es möglicherweise zweckdienlicher, einfach alle Äußerungen mit Problemen zu notieren, sie aus Ihrem Dataset auszuschließen und herauszufinden, wie Ihre benutzerdefinierte Stimme klingt. Sie können immer wieder ins Studio gehen und die fehlenden Beispiele später aufzeichnen.
 
 Notieren Sie sich für jede Äußerung die Takenummer oder den Zeitcode im Skript. Bitten Sie den Techniker, jede Äußerung auch in den Metadaten der Aufzeichnung oder im Cuesheet zu markieren.

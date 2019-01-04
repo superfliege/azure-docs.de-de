@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Konvertieren von Text in Sprache, Python – Speech-Dienst'
+title: 'Schnellstart: Konvertieren von Text in Sprache, Python – Speech Services'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe von Python und der Text-to-Speech-REST-API Text in Sprache konvertieren. Der Beispieltext in diesem Leitfaden ist als SSML (Speech Synthesis Markup Language) strukturiert. Auf diese Weise können Sie die Stimme und Sprache für die Sprachantwort auswählen. Die REST-API unterstützt auch Nur-Text (ASCII oder UTF-8), jedoch wird die Antwort bei Bereitstellung von Nur-Text in der Standardstimme und Sprache des Sprachdienstes zurückgegeben.
+description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe von Python und der Text-to-Speech-REST-API Text in Sprache konvertieren. Der Beispieltext in diesem Leitfaden ist als SSML (Speech Synthesis Markup Language) strukturiert. Auf diese Weise können Sie die Stimme und Sprache für die Sprachantwort auswählen.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 38bcd67dfb6d9b1a1955658872fee7b8b7a14a0c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 7512c443c49f1518d6a6f7ace7e981d3508b1d7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447468"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090056"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Schnellstart: Konvertieren von Text in Sprache mit Python
 

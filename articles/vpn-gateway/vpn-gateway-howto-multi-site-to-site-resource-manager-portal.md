@@ -1,5 +1,5 @@
 ---
-title: 'Hinzufügen mehrerer VPN-Gateway-Standort-zu-Standort-Verbindungen zu einem VNet: Azure-Portal: Resource Manager | Microsoft-Dokumentation'
+title: 'Hinzufügen mehrerer VPN-Gateway-Site-to-Site-Verbindungen zu einem VNET: Azure-Portal: Resource Manager | Microsoft-Dokumentation'
 description: Fügen Sie mehrere S2S-Verbindungen zu einem VPN-Gateway hinzu, für das bereits eine Verbindung besteht
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a0074cf703c5d30dca3c8353f4821e71684a190c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a814834be3225764c3b6f237bd515ca087f975a7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164556"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873120"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Hinzufügen einer Site-to-Site-Verbindung (S2S) zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung
 
@@ -62,8 +62,8 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
     ![Schaltfläche „Verbindung hinzufügen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Add connection button")<br>
 5. Füllen Sie auf der Seite **Verbindung hinzufügen** folgende Felder aus:
    
-   * **Name:** Der Name, den Sie dem Standort zuweisen möchten, zu dem Sie die Verbindung herstellen.
-   * **Verbindungstyp:** Wählen Sie **Site-to-Site (IPSec)** aus.
+   * **Name:** Der Name, den Sie dem Standort, mit dem Sie die Verbindung herstellen, zuweisen möchten.
+   * **Verbindungstyp:** Wählen Sie **Site-to-Site (IPsec)** aus.
      
      ![Seite „Verbindung hinzufügen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Seite „Verbindung hinzufügen“")<br>
 
@@ -76,8 +76,8 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
     ![Seite „Lokales Netzwerkgateway erstellen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Lokales Netzwerkgateway erstellen")<br>
 3. Füllen Sie auf der Seite **Lokales Netzwerkgateway erstellen** die folgenden Felder aus:
    
-   * **Name:** Der Name, den Sie der lokalen Netzwerkgateway-Ressource geben möchten.
-   * **IP-Adresse:** Die öffentliche IP-Adresse des VPN-Geräts auf dem Standort, mit dem Sie eine Verbindung herstellen möchten.
+   * **Name:** Der Name, den Sie der lokalen Netzwerkgateway-Ressource zuweisen möchten.
+   * **IP-Adresse:** Die öffentliche IP-Adresse des VPN-Geräts an dem Standort, mit dem Sie eine Verbindung herstellen möchten.
    * **Adressraum:** Der Adressraum, der an den Standort des lokalen Netzwerks weitergeleitet werden soll.
 4. Klicken Sie auf der Seite **Lokales Netzwerkgateway erstellen** auf **OK**, um die Änderungen zu speichern.
 
@@ -94,4 +94,4 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter dem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) für virtuelle Computer.
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter dem [Lernpfad für virtuelle Computer](/learn/paths/deploy-a-website-with-azure-virtual-machines/).

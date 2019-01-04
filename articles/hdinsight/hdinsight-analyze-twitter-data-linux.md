@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 01d1ef428804838df4257a4c28dfcddbdd8f156b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a3687a4b8bb4e0d900ee96f52c40352db4e96df6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010993"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635560"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analysieren von Twitter-Daten mit Apache Hive und Apache Hadoop in HDInsight
 
 Hier erfahren Sie, wie Sie Twitter-Daten mit [Apache Hive](https://hive.apache.org/) verarbeiten. Als Ergebnis erhalten Sie eine Liste der Twitter-Benutzer, die die meisten Tweets mit einem bestimmten Begriff gesendet haben.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument wurden in HDInsight 3.6 getestet.
 >
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="get-the-data"></a>Abrufen von Daten
 
-Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object Notation-Dokument (JSON) über eine REST-API. [OAuth](http://oauth.net) ist für die Authentifizierung gegenüber der API erforderlich.
+Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object Notation-Dokument (JSON) über eine REST-API. [OAuth](https://oauth.net) ist für die Authentifizierung gegenüber der API erforderlich.
 
 ### <a name="create-a-twitter-application"></a>Erstellen einer Twitter-Anwendung
 
@@ -41,7 +41,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
    |:--- |:--- |
    | NAME |MyHDInsightApp |
    | BESCHREIBUNG |MyHDInsightApp |
-   | Website |http://www.myhdinsightapp.com |
+   | Website |https://www.myhdinsightapp.com |
 
 4. Aktivieren Sie **Yes, I agree**, und klicken Sie dann auf **Create your Twitter application**.
 
@@ -59,7 +59,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
 
 Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen und in einer Datei mit dem Namen **tweets.txt** gespeichert.
 
-> [!NOTE]
+> [!NOTE]  
 > Die folgenden Schritte werden auf dem HDInsight-Cluster ausgeführt, da Python bereits installiert ist.
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her:
@@ -70,7 +70,7 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen u
 
     Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Verwenden Sie die folgenden Befehle, um [Tweepy](http://www.tweepy.org/), [Progressbar](https://pypi.python.org/pypi/progressbar/2.2) und andere erforderliche Pakete zu installieren:
+3. Verwenden Sie die folgenden Befehle, um [Tweepy](https://www.tweepy.org/), [Progressbar](https://pypi.python.org/pypi/progressbar/2.2) und andere erforderliche Pakete zu installieren:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -145,7 +145,7 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen u
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Ersetzen Sie den Platzhaltertext für die folgenden Elemente durch die Informationen aus der Twitter-Anwendung:
     >
     > * `consumer_secret`
@@ -153,7 +153,7 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen u
     > * `access_token`
     > * `access_token_secret`
 
-    > [!TIP]
+    > [!TIP]  
     > Passen Sie den Themenfilter in der letzten Zeile zum Nachverfolgen von beliebten Schlüsselwörtern an. Verwenden Sie Schlüsselwörter, die zum Zeitpunkt der Skriptausführung häufig verwendet werden, um eine schnellere Erfassung von Daten zu ermöglichen.
 
 6. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y**
@@ -166,7 +166,7 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen u
 
     Eine Statusanzeige wird eingeblendet. Sie zählt beim Herunterladen der Tweets auf 100 %.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Wenn es lange dauert, bis in der Statusanzeige ein Fortschritt zu erkennen ist, sollten Sie den Filter zum Nachverfolgen von Trendthemen ändern. Wenn es viele Tweets zu dem Thema im Filter gibt, kommen die benötigten 10.000 Tweets sehr schnell zusammen.
 
 ### <a name="upload-the-data"></a>Hochladen der Daten
@@ -317,7 +317,7 @@ Mit diesen Befehlen werden die Daten an einem Speicherort gespeichert, auf den a
 
     Bei dieser Abfrage werden maximal 10 Tweets zurückgegeben, die den Begriff **Azure** im Meldungstext enthalten.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Wenn Sie den Filter im Skript `gettweets.py` geändert haben, ersetzen Sie **Azure** durch einen der von Ihnen verwendeten Filter.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -327,7 +327,7 @@ Sie haben gelernt, wie Sie ein unstrukturiertes JSON-Dataset in eine strukturier
 * [Erste Schritte mit HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Analysieren von Daten zu Flugverspätungen mit HDInsight](hdinsight-analyze-flight-delay-data-linux.md)
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial

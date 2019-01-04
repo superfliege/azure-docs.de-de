@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d5ef77ab0bbf00d4ddbb05b7a38516e3c3e7d800
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8b32a1eccfc90731d4c3458a0696a8e5900691aa
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968773"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727816"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definieren benutzerdefinierter Attribute in Azure Active Directory B2C
 
  Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Der Azure Active Directory (Azure AD) B2C-Mandant umfasst einen integrierten Satz von in Attributen gespeicherten Informationen, z.B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern. 
  
- Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und sie in Ihren Registrierungsrichtlinien, Registrierungs- oder Anmelderichtlinien oder Richtlinien zur Profilbearbeitung verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben. Benutzerdefinierte Attribute in Azure AD B2C verwenden die [Verzeichnisschemaerweiterungen der Azure AD Graph-API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+ Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und sie in den Benutzerflows für die Registrierung, den Benutzerflows für Registrierung und Anmeldung und den Benutzerflows für die Profilbearbeitung verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben. Benutzerdefinierte Attribute in Azure AD B2C verwenden die [Verzeichnisschemaerweiterungen der Azure AD Graph-API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 
 ## <a name="create-a-custom-attribute"></a>Erstellen eines benutzerdefinierten Attributs
 
@@ -41,16 +41,15 @@ ms.locfileid: "38968773"
 7. Geben Sie optional eine **Beschreibung** zu Informationszwecken ein. 
 8. Klicken Sie auf **Create**.
 
-Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute** zur Verfügung und kann in den Richtlinien verwendet werden. Ein benutzerdefiniertes Attribut wird nur erstellt, wenn es zum ersten Mal in einer Richtlinie verwendet wird, und nicht, wenn Sie es der Liste der **Benutzerattribute** hinzufügen.
+Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute** zur Verfügung und kann in den Benutzerflows verwendet werden. Ein benutzerdefiniertes Attribut wird nur erstellt, wenn es zum ersten Mal in einem Benutzerflow verwendet wird, und nicht, wenn Sie es der Liste der **Benutzerattribute** hinzufügen.
 
-## <a name="use-a-custom-attribute-in-your-policy"></a>Verwenden eines benutzerdefinierten Attributs in einer Richtlinie
+## <a name="use-a-custom-attribute-in-your-user-flow"></a>Verwenden eines benutzerdefinierten Attributs in einem Benutzerflow
 
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Registrierungs- oder Anmelderichtlinien** aus.
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 2. Wählen Sie eine Richtlinie aus (z.B. „B2C_1_SignupSignin“), um sie zu öffnen. 
-3. Klicken Sie auf **Edit**.
-4. Wählen Sie **Registrierungsattribute** und dann das benutzerdefinierte Attribut aus (z.B. „ShoeSize“). Klicken Sie auf **OK**.
-5. Wählen Sie **Anwendungsansprüche** und dann das benutzerdefinierte Attribut aus. Klicken Sie auf **OK**.
+4. Wählen Sie **Benutzerattribute** und dann das benutzerdefinierte Attribut aus (z.B. „ShoeSize“). Klicken Sie auf **Speichern**.
+5. Wählen Sie **Anwendungsansprüche** und dann das benutzerdefinierte Attribut aus. 
 6. Klicken Sie auf **Speichern**.
 
-Mit dem Feature **Jetzt ausführen** für die Richtlinie können Sie die Benutzerfreundlichkeit überprüfen. **ShoeSize** sollte jetzt in der Liste der Attribute, die während der Registrierung erfasst werden, sowie in dem Token angezeigt werden, das zurück an die Anwendung gesendet wird.
+Mit der Funktion **Benutzerflow ausführen** für den Benutzerflow können Sie die Benutzerfreundlichkeit überprüfen. **ShoeSize** sollte jetzt in der Liste der Attribute, die während der Registrierung erfasst werden, sowie in dem Token angezeigt werden, das zurück an die Anwendung gesendet wird.
 

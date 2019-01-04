@@ -10,41 +10,42 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 6ce3fc774d23914ab150e1dc1371391fc9fc548b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 5b0dfe1753686015c88bdc1214273354dd00c958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034384"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086306"
 ---
-# <a name="test-your-knowledge-base"></a>Testen Ihrer Wissensdatenbank
+# <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Interaktives Testen Ihrer Wissensdatenbank in QnA Maker
 
 Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterativen Prozesses zur Verbesserung der Genauigkeit zurückgegebener Antworten. Sie können die Wissensdatenbank über eine verbesserte Chatschnittstelle testen, die Ihnen auch Änderungen ermöglicht.
 
 ## <a name="test-answer-matching"></a>Testen der Übereinstimmung von Antworten
 
-1.  Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie den Namen auf der Seite **Meine Wissensdatenbanken** auswählen.
-2.  Um auf den einblendbaren Bereich „Test“ zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
+1.  Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie ihren Namen auf der Seite  **Meine Wissensdatenbanken** auswählen.
+2.  Um auf den Einblendbereich „Test“ zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung  **Test** aus.
 
-    ![Zugreifen auf „Test“](../media/qnamaker-how-to-test-kb/access-test.png)
+    ![Zugreifen auf den Testbereich](../media/qnamaker-how-to-test-kb/access-test.png)
 
 3.  Geben Sie eine Abfrage in das Textfeld ein, und drücken Sie die EINGABETASTE.
 
 4.  Die am besten passende Antwort aus der Wissensdatenbank wird als Antwort zurückgegeben.
 
-## <a name="clear-test-panel"></a>Löschen des Bereichs „Test“
+## <a name="clear-test-panel"></a>Leeren des Testbereichs
 
-Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option **Neu beginnen** aus.
+Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option  **Neu beginnen** aus.
 
-## <a name="close-test-panel"></a>Schließen des Bereichs „Test“
+## <a name="close-test-panel"></a>Schließen des Testbereichs
 
-Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
+Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche  **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
 
 ## <a name="inspect-score"></a>Überprüfen der Bewertung
 
 Sie überprüfen die Details des Testergebnisses im Bereich „Überprüfen“.
 
-1.  Wählen Sie bei geöffnetem Bereich „Test“ die Option **Überprüfen** aus, um weitere Details zu dieser Antwort zu erhalten.
+1.  Wählen Sie bei geöffnetem Bereich „Test“ die Option  **Überprüfen** aus, um weitere Details zu dieser Antwort zu erhalten.
 
     ![Überprüfen von Antworten](../media/qnamaker-how-to-test-kb/inspect.png)
 
@@ -54,13 +55,13 @@ Sie überprüfen die Details des Testergebnisses im Bereich „Überprüfen“.
 
 Wenn die Antwort mit der höchsten Bewertung falsch ist, wählen Sie die richtige Antwort aus der Liste aus, und wählen Sie dann **Speichern und trainieren** aus.
 
-![Zugreifen auf „Test“](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Korrigieren der Antwort mit der höchsten Bewertung](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ## <a name="add-alternate-questions"></a>Hinzufügen alternativer Fragen
 
 Sie können alternative Formen einer Frage für eine bestimmte Antwort hinzufügen. Geben Sie die alternativen Antworten in das Textfeld ein, und drücken Sie die EINGABETASTE, um sie hinzuzufügen. Wählen Sie **Speichern und trainieren** aus, um die Aktualisierungen zu speichern.
 
-![Zugreifen auf „Test“](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Hinzufügen alternativer Fragen](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ## <a name="add-a-new-answer"></a>Hinzufügen einer neuen Antwort
 
@@ -68,7 +69,7 @@ Sie können eine neue Antwort hinzufügen, wenn eine der als passend zurückgege
 
 Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt.
 
-![Zugreifen auf „Test“](../media/qnamaker-how-to-test-kb/add-answer.png)
+![Hinzufügen neuer Frage-Antwort-Paare](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
 > Alle Änderungen an der Wissensdatenbank werden nur gespeichert, wenn Sie auf die Schaltfläche **Speichern und trainieren** klicken.

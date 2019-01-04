@@ -10,16 +10,16 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b51067b9e854566991d49aeb1ff2b1ad13999a51
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127840"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957741"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Textübersetzungs-API 3.0: Wörterbuchsuche
 
-Die Suche stellt alternative Übersetzungen für ein Wort und eine kleine Anzahl von idiomatischen Ausdrücken bereit. Jede Übersetzung enthält die Wortart und eine Liste von Rückübersetzungen. Durch die Rückübersetzungen kann ein Benutzer die Übersetzung im Kontext nachvollziehen. Der Vorgang [Wörterbuchbeispiel](.\v3-0-dictionary-examples.md) ermöglicht das Ausführen eines Drilldowns, um Beispiele für die Verwendung jedes Übersetzungspaars anzuzeigen.
+Die Suche stellt alternative Übersetzungen für ein Wort und eine kleine Anzahl von idiomatischen Ausdrücken bereit. Jede Übersetzung enthält die Wortart und eine Liste von Rückübersetzungen. Durch die Rückübersetzungen kann ein Benutzer die Übersetzung im Kontext nachvollziehen. Der Vorgang [Wörterbuchbeispiel](./v3-0-dictionary-examples.md) ermöglicht das Ausführen eines Drilldowns, um Beispiele für die Verwendung jedes Übersetzungspaars anzuzeigen.
 
 ## <a name="request-url"></a>Anfrage-URL
 
@@ -42,11 +42,11 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
   <tr>
     <td>from</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Quellsprache auswählen.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Quellsprache auswählen.</td>
   </tr>
   <tr>
     <td>zu</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Zielsprache auswählen.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Zielsprache auswählen.</td>
   </tr>
 </table>
 
@@ -92,13 +92,13 @@ Es gelten die folgenden Einschränkungen:
 
 Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeichenfolge im Eingabearray. Ein Ergebnisobjekt enthält die folgenden Eigenschaften:
 
-  * `normalizedSource`: eine Zeichenfolge, die die normalisierte Form des Quellbegriffs angibt. Wenn die Anforderung beispielsweise „JOHN“ lautet, entspricht die normalisierte Form „john“. Der Inhalt dieses Felds wird zur Eingabe für das [Suchen von Beispielen](.\v3-0-dictionary-examples.md).
+  * `normalizedSource`: Eine Zeichenfolge, die die normalisierte Form des Ausgangsbegriffs angibt. Wenn die Anforderung beispielsweise „JOHN“ lautet, entspricht die normalisierte Form „john“. Der Inhalt dieses Felds wird zur Eingabe für das [Suchen von Beispielen](./v3-0-dictionary-examples.md).
     
-  * `displaySource`: Eine Zeichenfolge, die den Quellbegriff in der Form darstellt, die am besten für die Anzeige des Endbenutzers geeignet ist. Wenn die Eingabe beispielsweise „JOHN“ ist, entspricht die Anzeigeform der üblichen Schreibweise des Namens, „John“. 
+  * `displaySource`: Eine Zeichenfolge, die den Quellbegriff in der Form darstellt, die am besten für die Anzeige des Endbenutzers geeignet ist. Wenn die Eingabe beispielsweise „JOHN“ ist, entspricht die Anzeigeform der üblichen Schreibweise des Namens: „John“. 
 
   * `translations`: Eine Liste von Übersetzungen für den Quellbegriff. Jedes Listenelement ist ein Objekt mit den folgenden Zeichenfolgeneigenschaften:
 
-    * `normalizedTarget`: eine Zeichenfolge, die die normalisierte Form dieses Begriffs in der Zielsprache angibt. Dieser Wert sollte als Eingabe für das [Suchen von Beispielen](.\v3-0-dictionary-examples.md) verwendet werden.
+    * `normalizedTarget`: Eine Zeichenfolge, die die normalisierte Form dieses Begriffs in der Zielsprache angibt. Dieser Wert sollte als Eingabe für das [Suchen von Beispielen](./v3-0-dictionary-examples.md) verwendet werden.
 
     * `displayTarget`: Eine Zeichenfolge, die den Begriff in der Zielsprache und in der Form darstellt, die am besten für die Anzeige des Endbenutzers geeignet ist. Im Allgemeinen unterscheidet sich dies nur durch die Groß- und Kleinschreibung von `normalizedTarget`. Für einen Eigennamen wie „Juan“ werden beispielsweise `normalizedTarget = "juan"` und `displayTarget = "Juan"` verwendet.
 
@@ -125,13 +125,13 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
     
     * `backTranslations`: Eine Liste von Rückübersetzungen des Ziels. Diese enthält beispielsweise Quellwörter, in die das Ziel übersetzt werden kann. Es wird sichergestellt, dass die Liste das angeforderte Quellwort enthält. Wenn das gesuchte Quellwort beispielsweise „fly“ ist, befindet sich „fly“ garantiert in der Liste `backTranslations`. Es kann jedoch nicht sichergestellt werden, dass es sich an erster Stelle befindet. Häufig ist dies nicht der Fall. Jedes Element der `backTranslations`-Liste ist ein Objekt, das von folgenden Zeichenfolgeneigenschaften beschrieben wird:
 
-        * `normalizedText`: Eine Zeichenfolge, die die normalisierte Form des Quellbegriffs angibt, bei dem es sich um eine Rückübersetzung des Ziels handelt. Dieser Wert sollte als Eingabe für das [Suchen von Beispielen](.\v3-0-dictionary-examples.md) verwendet werden.        
+        * `normalizedText`: Eine Zeichenfolge, die die normalisierte Form des Quellbegriffs angibt, bei dem es sich um eine Rückübersetzung des Ziels handelt. Dieser Wert sollte als Eingabe für das [Suchen von Beispielen](./v3-0-dictionary-examples.md) verwendet werden.        
 
         * `displayText`: Eine Zeichenfolge, die den Quellbegriff, bei dem es sich um eine Rückübersetzung des Ziels handelt, in der Form angibt, die am besten für die Anzeige des Endbenutzers geeignet ist.
 
-        * `numExamples`: Eine ganze Zahl, die die Anzahl der für dieses Übersetzungspaar verfügbaren Beispiele angibt. Tatsächliche Beispiele müssen mit einem separaten Aufruf für das [Suchen von Beispielen](.\v3-0-dictionary-examples.md) abgerufen werden. Die Anzahl sollte in den meisten Fällen auf einer UX angezeigt werden. Auf der Benutzeroberfläche kann beispielsweise ein Link zur Rückübersetzung hinzugefügt werden, wenn die Anzahl der Beispiele größer als 0 (null) ist, und die Rückübersetzung kann als Nur-Text angezeigt werden, wenn es keine Beispiele gibt. Beachten Sie, dass die tatsächliche Anzahl von Beispielen, die von einem Aufruf für das [Suchen von Beispielen](.\v3-0-dictionary-examples.md) zurückgegeben werden, kleiner als `numExamples` sein kann, da zusätzliche Filter angewendet werden können, um „schlechte“ Beispiele zu entfernen.
+        * `numExamples`: Ein Integer, der die Anzahl der für dieses Übersetzungspaar verfügbaren Beispiele angibt. Tatsächliche Beispiele müssen mit einem separaten Aufruf für das [Suchen von Beispielen](./v3-0-dictionary-examples.md) abgerufen werden. Die Anzahl sollte in den meisten Fällen auf einer UX angezeigt werden. Auf der Benutzeroberfläche kann beispielsweise ein Link zur Rückübersetzung hinzugefügt werden, wenn die Anzahl der Beispiele größer als 0 (null) ist, und die Rückübersetzung kann als Nur-Text angezeigt werden, wenn es keine Beispiele gibt. Beachten Sie, dass die tatsächliche Anzahl von Beispielen, die von einem Aufruf für das [Suchen von Beispielen](./v3-0-dictionary-examples.md) zurückgegeben werden, kleiner als `numExamples` sein kann, da zusätzliche Filter angewendet werden können, um „schlechte“ Beispiele zu entfernen.
         
-        * `frequencyCount`: Eine ganze Zahl, die die Häufigkeit dieses Übersetzungspaars in den Daten anzeigt. Der Hauptzweck dieses Felds ist das Verbessern der Benutzeroberfläche, indem Rückübersetzungen so sortiert werden, dass die häufigsten Begriffe oben stehen.
+        * `frequencyCount`: Ein Integer, der die Häufigkeit dieses Übersetzungspaars in den Daten anzeigt. Der Hauptzweck dieses Felds ist das Verbessern der Benutzeroberfläche, indem Rückübersetzungen so sortiert werden, dass die häufigsten Begriffe oben stehen.
 
     > [!NOTE]
     > Wenn der gesuchte Begriff nicht im Wörterbuch vorhanden ist, lautet die Antwort zwar „200 (OK)“, aber die `translations`-Liste ist leer.

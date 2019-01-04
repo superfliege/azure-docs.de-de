@@ -1,5 +1,6 @@
 ---
-title: Übersicht über IPv6 für Azure Load Balancer | Microsoft Docs
+title: Übersicht über IPv6 für Azure Load Balancer
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich bereitstellen.
 services: load-balancer
 documentationcenter: na
@@ -8,22 +9,23 @@ keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: kumud
-ms.openlocfilehash: 379407c8d9e5c6a5a0476fd88ea2dda6e7994e0f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 894a56c2e51e8fa8a2d72253563d218416ace4cb
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739327"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161932"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
 
 
 >[!NOTE] 
->Azure Load Balancer unterstützt zwei verschiedene Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](load-balancer-standard-overview.md).
+>Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](load-balancer-standard-overview.md).
 
 Load Balancer mit Internetzugriff können mit einer IPv6-Adresse bereitgestellt werden. Zusätzlich zu IPv4-Konnektivität werden dadurch die folgenden Funktionen ermöglicht:
 

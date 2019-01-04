@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872844"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789210"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API
 
@@ -24,10 +24,10 @@ Erfahren Sie, wie Sie einen HDInsight-Cluster mit einer Azure Resource Manager-V
 
 Mit der Azure-REST-API können Sie Verwaltungsvorgänge für Dienste durchführen, die auf der Azure-Plattform gehostet werden. Beispielsweise können Sie neue Ressourcen wie etwa HDInsight-Cluster erstellen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-> [!NOTE]
+> [!NOTE]  
 > Bei den Schritten in diesem Dokument wird das Hilfsprogramm [curl (https://curl.haxx.se/)](https://curl.haxx.se/)) für die Kommunikation mit der Azure-REST-API verwendet.
 
 ## <a name="create-a-template"></a>Erstellen einer Vorlage
@@ -211,7 +211,7 @@ Das folgende JSON-Dokument ist eine Kombination aus den Vorlagen- und Parameterd
 
 Dieses Beispiel wird in den Schritten im vorliegenden Dokument verwendet. Ersetzen Sie die *value*-Beispiele im Abschnitt **Parameters** mit den Werten für Ihren Cluster.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Bei dieser Vorlage wird die Standardanzahl von Workerknoten (4) für einen HDInsight-Cluster verwendet. Wenn Sie mehr als 32 Workerknoten planen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
 >
 > Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -222,7 +222,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-> [!NOTE]
+> [!NOTE]  
 > Diese Schritte stellen eine verkürzte Version des Abschnitts *Erstellen eines Dienstprinzipals mit Kennwort* des Dokuments [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dar. Mit diesen Schritten wird ein Dienstprinzipal erstellt, der verwendet wird, um die Azure-REST-API zu authentifizieren.
 
 1. Führen Sie an einer Befehlszeile den folgenden Befehl aus, um Ihre Azure-Abonnements aufzulisten.
@@ -241,7 +241,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
     Ersetzen Sie die Werte für `--display-name`, `--homepage` und `--identifier-uris` durch Ihre eigenen Werte. Geben Sie ein Kennwort für den neuen Active Directory-Eintrag an.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Die Werte `--home-page` und `--identifier-uris` müssen nicht auf eine tatsächlich im Internet gehostete Webseite verweisen. Sie müssen eindeutige URIs sein.
 
    Der von diesem Befehl zurückgegebene Wert ist die __App-ID__ für die neue Anwendung. Speichern Sie diesen Wert.
@@ -323,14 +323,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -d "{set your body string to the template and parameters}"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Wenn Sie die Vorlage in einer Datei gespeichert haben, können Sie anstelle von `-d "{ template and parameters}"` den folgenden Befehl verwenden:
 >
 > `--data-binary "@/path/to/file.json"`
 
 Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text ein JSON-Dokument mit Informationen zum Bereitstellungsvorgang enthält.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Bereitstellung war bereits übermittelt, aber noch nicht abgeschlossen. Es kann mehrere Minuten dauern (in der Regel etwa 15), bis die Bereitstellung abgeschlossen ist.
 
 ## <a name="check-the-status-of-a-deployment"></a>Überprüfen des Bereitstellungsstatus
@@ -347,7 +347,7 @@ Dieser Befehl gibt ein JSON-Dokument mit Informationen zum Bereitstellungsvorgan
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-hadoop-create-linux-clusters-portal.md) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -357,7 +357,7 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
 * [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
-* [Verwenden von Apache Hadoop MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase Cluster
 

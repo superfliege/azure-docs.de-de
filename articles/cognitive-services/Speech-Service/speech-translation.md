@@ -1,25 +1,26 @@
 ---
-title: Informationen zur Sprachübersetzung
+title: Informationen zur Sprachübersetzung – Speech Services
 titlesuffix: Azure Cognitive Services
-description: Übersicht über die Funktionen der Sprachübersetzung
+description: Mit der Speech Services-API können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 9d94105377597ca8e79cc43ed0903371e185d510
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469142"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086707"
 ---
 # <a name="about-the-speech-translation-api"></a>Informationen zur Sprachübersetzungs-API
 
-Mit der Speech-Dienst-API können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
+Mit der Speech Services-API können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
 
 Mit der Sprachübersetzungs-API streamen Clientanwendungen Spracheingaben an den Dienst und empfangen einen Stream mit Ergebnissen. Diese Ergebnisse umfassen den erkannten Text in der Quellsprache und die zugehörige Übersetzung in der Zielsprache. Vorläufige Übersetzungen können so lange bereitgestellt werden, bis eine Äußerung vollständig ist. Zu diesem Zeitpunkt wird dann eine finale Übersetzung zur Verfügung gestellt.
 

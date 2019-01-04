@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 915f7d7d2d6be02dfef0cd6bb9a2fa156ed565bc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ae2f32a02005bc015d2521e576ea5625bef2d377
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214731"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846010"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
@@ -43,7 +43,7 @@ Wenn keine Verbindung hergestellt werden kann, lassen Sie den eingehenden Port 9
 
 Führen Sie andernfalls die folgenden Schritte aus:
 
-* **Prüfen Sie, ob der Prozessserver eine Verbindung mit Azure Blob herstellen kann**: Wählen Sie „cbengine.exe“ aus, und überprüfen Sie unter „TCP-Verbindungen“, ob zwischen dem Prozessserver und der Azure Storage Blob-URL eine Verbindung besteht.
+* **Überprüfen Sie, ob der Prozessserver eine Verbindung mit dem Azure-Blob herstellen kann:** Wählen Sie „cbengine.exe“ aus, und überprüfen Sie unter „TCP-Verbindungen“, ob zwischen dem Prozessserver und der Azure Storage-Blob-URL eine Verbindung besteht.
 
 ![Aktivieren der Replikation](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
 
@@ -59,7 +59,7 @@ Starten Sie alle nicht ausgeführten Dienste (bzw. starten Sie sie neu), und üb
 
 * **Prüfen Sie, ob der Prozessserver mithilfe von Port 443 eine Verbindung mit der öffentlichen Azure-IP-Adresse herstellen kann.**
 
-Öffnen Sie das aktuelle Fehlerprotokoll (CBEngineCurr.errlog) unter `%programfiles%\Microsoft Azure Recovery Services Agent\Temp`, und suchen Sie nach „443“ und „connection attempt failed“.
+Öffnen Sie das aktuelle Fehlerprotokoll („CBEngineCurr.errlog“) unter `%programfiles%\Microsoft Azure Recovery Services Agent\Temp`, und suchen Sie nach „443“ und „connection attempt failed“.
 
 ![Aktivieren der Replikation](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
 
@@ -69,9 +69,9 @@ Wenn Probleme auftreten, verwenden Sie in der Befehlszeile des Prozessservers Te
 Wenn Sie keine Verbindung herstellen können, prüfen Sie, ob das Zugriffsproblem durch die Firewall oder den Proxy verursacht wird.
 
 
-* **Prüfen Sie, ob die auf einer IP-Adresse basierende Firewall auf dem Prozessserver den Zugriff blockiert**: Wenn Sie auf IP-Adressen basierende Firewallregeln auf dem Server verwenden, laden Sie [hier](https://www.microsoft.com/download/details.aspx?id=41653) die vollständige Liste der IP-Bereiche für das Microsoft Azure-Rechenzentrum herunter, und fügen Sie diese Ihrer Firewallkonfiguration hinzu, um sicherzustellen, dass eine Kommunikation mit Azure (und dem HTTPS (443)-Port) zulässig ist.  Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
+* **Vergewissern Sie sich, dass die auf IP-Adressen basierende Firewall auf dem Prozessserver den Zugriff nicht blockiert:** Wenn Sie auf IP-Adressen basierende Firewallregeln auf dem Server verwenden, laden Sie [hier](https://www.microsoft.com/download/details.aspx?id=41653) die vollständige Liste der IP-Bereiche für das Microsoft Azure-Rechenzentrum herunter, und fügen Sie diese Ihrer Firewallkonfiguration hinzu, um sicherzustellen, dass eine Kommunikation mit Azure (und dem HTTPS-Port 443) zugelassen wird.  Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
 
-* **Prüfen Sie, ob eine URL-basierte Firewall auf dem Prozessserver den Zugriff blockiert**: Wenn Sie URL-basierte Firewallregeln auf dem Server verwenden, stellen Sie sicher, dass die folgenden URLs zur Firewallkonfiguration hinzugefügt wurden.
+* **Vergewissern Sie sich, dass die auf URLs basierende Firewall auf dem Prozessserver den Zugriff nicht blockiert:**  Wenn Sie URL-basierte Firewallregeln auf dem Server verwenden, stellen Sie sicher, dass der Firewallkonfiguration die folgenden URLs hinzugefügt wurden.
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -86,7 +86,7 @@ Suchen Sie nach „Microsoft Azure Backup“.
 Klicken Sie nach dem Öffnen auf „Aktion“ > „Eigenschaften ändern“. Auf der Registerkarte „Proxykonfiguration“ wird Ihnen die Proxyadresse angezeigt, die mit der unter den Registrierungseinstellungen angezeigten Adresse übereinstimmen muss. Wenn dies nicht der Fall ist, passen Sie die Adresse an.
 
 
-* **Prüfen Sie, ob die Bandbreite auf dem Prozessserver eingeschränkt ist**: Erhöhen Sie die Bandbreite, und überprüfen Sie, ob das Problem weiterhin besteht.
+* **Vergewissern Sie sich, dass die Bandbreite auf dem Prozessserver nicht eingeschränkt wird:**  Erhöhen Sie die Bandbreite, und überprüfen Sie, ob das Problem weiterhin besteht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie weitere Unterstützung benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker wird Sie bei Ihrem Problem unterstützen.

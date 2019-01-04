@@ -1,7 +1,7 @@
 ---
-title: Durchblättern der verfügbaren Bilder – Bing-Bildersuche-API
+title: Durchblättern der von der Bing-Bildersuche-API zurückgegebenen Bilder
 titleSuffix: Azure Cognitive Services
-description: Hier wird gezeigt, wie Sie alle Bilder durchblättern, die Bing zurückgeben kann.
+description: Blättern Sie seitenweise durch die von der Bing-Bildersuche-API zurückgegebenen Bilder.
 services: cognitive-services
 author: swhite-msft
 manager: cgonlun
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0db8c62bbb4da1a6fa1230b439c5074325bbe9c3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.custom: seodec2018
+ms.openlocfilehash: 69829066e543e5ab3badc4d1d3f77ff3c1d16ffd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739365"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259748"
 ---
-# <a name="paging-results"></a>Auslagerungsergebnisse
+# <a name="page-through-the-images-results"></a>Durchblättern der Ergebnisse der Bildersuche
 
 Wenn Sie die Bildersuche-API aufrufen, gibt Bing eine Liste mit Ergebnissen zurück. Bei der Liste handelt es sich um eine Teilmenge der gesamten Ergebnisse, die für die Abfrage relevant sind. Um die geschätzte Gesamtzahl der verfügbaren Ergebnisse aufzurufen, greifen Sie auf das Feld [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) des Antwortobjekts zu.  
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 1571480540baedd5910c4153caf23e0687d48922
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e448b367e574b044762fb1ee7eaa30e1bb3e1f8b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684976"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011736"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Sqoop mit Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -75,16 +75,16 @@ Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen
    
 2. Geben Sie die folgenden Eigenschaften ein:
 
-    - **Abonnement:** Geben Sie Ihr Azure-Abonnement ein.
+    - **Abonnement**: Geben Sie Ihr Azure-Abonnement ein.
     - **Ressourcengruppe**: Erstellen Sie eine neue Azure-Ressourcengruppe, oder wählen Sie eine vorhandene aus.  Eine Ressourcengruppe dient der Verwaltung.  Sie ist ein Container für Objekte.
     - **Standort**: Wählen Sie eine Region aus.
-    - **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein.
-    - **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet „admin“.
+    - **ClusterName:** Geben Sie einen Namen für den Hadoop-Cluster ein.
+    - **Clusteranmeldename und Kennwort:** Der Standardanmeldename lautet „admin“.
     - **SSH-Benutzername und -Kennwort**.
     - **Anmeldename und Kennwort für den SQL-Datenbankserver**.
-    - **_artifacts Location**: Verwenden Sie den Standardwert, außer Sie möchten eine eigene BACPAC-Datei an einem anderen Speicherort verwenden.
-    - **_artifacts Location Sas Token**: Lassen Sie diese Angabe leer.
-    - **Bacpac File Name**: Verwenden Sie den Standardwert, außer Sie möchten eine eigene BACPAC-Datei verwenden.
+    - **_artifacts Location** („_artifacts“-Speicherort): Verwenden Sie den Standardwert, sofern Sie nicht eine eigene BACPAC-Datei an einem anderen Speicherort verwenden möchten.
+    - **_artifacts Location Sas Token** (SAS-Token für „_artifacts“-Speicherort): Lassen Sie dieses Feld leer.
+    - **BACPAC-Dateiname:** Verwenden Sie den Standardwert, sofern Sie nicht eine eigene BACPAC-Datei verwenden möchten.
      
         Die folgenden Werte sind im Abschnitt mit den Variablen hartcodiert:
         
@@ -99,13 +99,13 @@ Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen
 
 Wenn Sie die vorhandene Azure SQL-Datenbank oder Microsoft SQL Server verwenden möchten:
 
-* **Azure SQL-Datenbank**: Sie müssen eine Firewall-Regel für den Azure SQL-Datenbankserver konfigurieren, um Zugriff auf Ihre Arbeitsstation zu erlauben. Anweisungen zur Erstellung einer Azure SQL-Datenbank und zur Konfiguration der Firewall erhalten Sie unter [Erste Schritte mit Azure SQL-Datenbank][sqldatabase-get-started]. 
+* **Azure SQL-Datenbank:** Sie müssen eine Firewall-Regel für den Azure SQL-Datenbankserver konfigurieren, um Zugriff auf Ihre Arbeitsstation zu erlauben. Anweisungen zur Erstellung einer Azure SQL-Datenbank und zur Konfiguration der Firewall erhalten Sie unter [Erste Schritte mit Azure SQL-Datenbank][sqldatabase-get-started]. 
   
   > [!NOTE]
   > Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn diese Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer Azure SQL-Datenbank-Instanz und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren von SQL-Datenbanken][sqldatabase-create-configure].
   > 
   > 
-* **SQL Server**: Falls sich Ihr HDInsight-Cluster im gleichen virtuellen Netzwerk in Azure wie ein SQL Server befindet, können Sie mit den hier beschriebenen Schritten Daten in einer SQL Server-Datenbank importieren und exportieren.
+* **SQL Server:** Wenn sich Ihr HDInsight-Cluster im selben virtuellen Netzwerk in Azure wie SQL Server befindet, können Sie mit den hier beschriebenen Schritten Daten in einer SQL Server-Datenbank importieren und exportieren.
   
   > [!NOTE]
   > HDInsight unterstützt nur standortbasierte virtuelle Netzwerke und kann momentan nicht mit affinitätsgruppenbasierten virtuellen Netzwerken verwendet werden.
@@ -147,9 +147,9 @@ HDInsight kann Sqoop-Aufträge mit verschiedenen Methoden ausführen. Die folgen
 
 | **Verwenden Sie dies**, wenn Sie Folgendes wünschen: | ... eine **interaktive** Shell | ...**Batchverarbeitung** | ...mit diesem **Clusterbetriebssystem** | ...von diesem **Clientbetriebssystem** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? | Linux |Linux, Unix, Mac OS X oder Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux |Linux, Unix, Mac OS X oder Windows |
 | [.NET SDK für Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |? |Linux oder Windows |Windows (vorläufig) |
-| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux oder Windows | Windows |
+| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux oder Windows |Windows |
 
 ## <a name="limitations"></a>Einschränkungen
 * Massenexport: Bei Linux-basiertem HDInsight unterstützt der zum Exportieren von Daten nach Microsoft SQL Server oder Azure SQL-Datenbank verwendete Sqoop-Connector derzeit keine Masseneinfügungen.
@@ -160,7 +160,7 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 
 * [Verwenden von Hive mit HDInsight](../hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](../hdinsight-use-pig.md)
-* [Hochladen von Daten in HDInsight][hdinsight-upload-data]: Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
+* [Hochladen von Daten in HDInsight:][hdinsight-upload-data] Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
 
 ## <a name="appendix-a---a-powershell-sample"></a>Anhang A – PowerShell-Beispiel
 Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
@@ -214,9 +214,9 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
    > [!NOTE]
    > Mit Ausnahme der Verbindungszeichenfolgen sollten die Schritte in diesem Abschnitt sowohl für Azure SQL-Datenbanken als auch für SQL Server funktionieren. Diese Schritte wurden mithilfe der folgenden Konfiguration getestet:
    > 
-   > * **Virtuelles Azure-Netzwerk mit Punkt-zu-Standort-Konfiguration**: Ein virtuelles Netzwerk verbindet das HDInsight-Cluster mit einem SQL Server in einem privaten Rechenzentrum. Weitere Informationen finden Sie unter [Konfigurieren eines Punkt-zu-Standort-VPN im Verwaltungsportal](../../vpn-gateway/vpn-gateway-point-to-site-create.md) .
+   > * **Punkt-zu-Site-Konfiguration für virtuelles Azure-Netzwerk:** Ein virtuelles Netzwerk verbindet den HDInsight-Cluster mit einem SQL Server in einem privaten Rechenzentrum. Weitere Informationen finden Sie unter [Konfigurieren eines Punkt-zu-Standort-VPN im Verwaltungsportal](../../vpn-gateway/vpn-gateway-point-to-site-create.md) .
    > * **Azure HDInsight:** Informationen zum Erstellen eines Clusters in einem virtuellen Netzwerk finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mit benutzerdefinierten Optionen](../hdinsight-hadoop-provision-linux-clusters.md).
-   > * **SQL Server 2014**: Konfiguriert für die Authentifizierung und mit dem Konfigurationspaket für VPN-Clients für eine sichere Verbindung zum virtuellen Netzwerk.
+   > * **SQL Server 2014:** Konfiguriert für die Authentifizierung und mit dem Konfigurationspaket für VPN-Clients für eine sichere Verbindung mit dem virtuellen Netzwerk.
    > 
    > 
 7. Exportieren Sie eine Hive-Tabelle in die Azure SQL-Datenbank.
@@ -638,8 +638,8 @@ Get-AzureRmHDInsightJobOutput `
 [sqldatabase-get-started]: ../../sql-database/sql-database-get-started.md
 [sqldatabase-create-configure]: ../../sql-database/sql-database-get-started.md
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/10/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3e3b608d3928536d654a594c42cbcc955d620d98
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 3a16977f2d3bc7321de2d2a1538276f182e7fa10
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321732"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190985"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -27,7 +27,7 @@ In diesem Artikel sind die Kennwortrichtlinien und Komplexitätsanforderungen be
 
 Mit einer Zwei-Gate-Richtlinie haben **Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden**.
 
-Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z.B. eine E-Mail-Adresse *und* eine Telefonnummer. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
+Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z.B. **E-Mail-Adresse**, **Authentifikator-App** oder **Telefonnummer**. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
 
 * Alle folgenden Administratorrollen sind betroffen:
   * Helpdesk-Administrator

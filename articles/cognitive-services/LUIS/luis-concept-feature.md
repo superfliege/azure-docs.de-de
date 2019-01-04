@@ -1,23 +1,24 @@
 ---
-title: Features in LUIS-Apps in Azure Cognitive Services
-titleSuffix: Azure Cognitive Services
-description: Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen. Features helfen LUIS bei der Erkennung von Absichten und Entitäten.
+title: Features
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 43b2b1485e6a33162f7fc08631094f3e975f8cdb
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638257"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271384"
 ---
-# <a name="phrase-list-features-in-luis"></a>Features für Ausdruckslisten in LUIS
+# <a name="phrase-list-features-in-your-luis-app"></a>Features für Begriffslisten in Ihrer LUIS-App
 
 Beim maschinellen Lernen ist ein *Feature* ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht. 
 
@@ -31,9 +32,17 @@ Eine Ausdrucksliste ist Teil des Vokabulars der App-Domäne als zweiter Hinweis 
 ## <a name="how-to-use-phrase-lists"></a>Verwenden von Ausdruckslisten
 Im [Tutorial für einfache Entität](luis-quickstart-primary-and-secondary-data.md) der Human Resource-App verwendet die App eine Begriffsliste **Job** mit Jobtypen wie z.B. Programmierer, Dachdecker und Sekretärin. Wenn Sie einen dieser Werte als durch maschinelles Lernen erworbene Entität bezeichnen, lernt LUIS, die anderen zu erkennen. 
 
-Eine Ausdrucksliste kann austauschbar oder nicht austauschbar sein. Eine *austauschbare* Ausdrucksliste wird für Werte verwendet, die synonym sind, und eine *nicht austauschbare* Ausdrucksliste ist für Werte vorgesehen, die keine Synonyme sind, aber dennoch ein zusätzliches Signal in der App benötigen. 
+Eine Ausdrucksliste kann austauschbar oder nicht austauschbar sein. Eine *austauschbare* Begriffsliste wird für Werte verwendet, die synonym sind, und eine *nicht austauschbare* Begriffsliste ist als Liste des spezifischen Vokabulars einer App vorgesehen. Wenn die Begriffsliste mit dem Vokabular Ihrer App anwächst, können einige Begriffe möglicherweise verschiedene Formen (Synonyme) aufweisen. Übertragen Sie diese in eine andere Begriffsliste, die austauschbar ist. 
+
+|Listentyp|Zweck|
+|--|--|
+|Austauschbar|Synonyme oder Wörter, die beim Austausch mit einem anderen Wort in der Liste dieselbe Absicht ausdrücken und in dieselben Entitäten extrahiert werden.|
+|Nicht austauschbar|App-Vokabular, das spezifisch für Ihre App ist und keinen allgemeinen Wörtern in der jeweiligen Sprache entspricht.|
+
+Begriffslisten helfen nicht nur bei der Erkennung von Entitäten, sondern auch bei der Klassifizierung von Absichten, die nicht austauschbar sind, z.B. durch das Hinzufügen von Wörtern aus dem Vokabular, die in der englischen Sprache nicht bekannt sind.
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
+
 ## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Begriffslisten helfen bei der Erkennung einfach austauschbarer Entitäten
 Austauschbare Begriffslisten sind eine gute Möglichkeit, die Leistung Ihrer LUIS-App zu optimieren. Wenn die App Probleme bei der Vorhersage von Äußerungen zu den richtigen Absichten oder der Erkennung von Entitäten hat, sollten Sie überlegen, ob die Äußerungen ungewöhnliche oder mehrdeutige Wörter enthalten. Diese Wörter sind gute Kandidaten für eine Ausdrucksliste.
 

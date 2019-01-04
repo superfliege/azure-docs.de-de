@@ -1,23 +1,24 @@
 ---
-title: Anwendungsdashboard für Language Understanding-Apps
-titleSuffix: Azure Cognitive Services
+title: App-Dashboard
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Erfahren Sie etwas über das Anwendungsdashboard, ein visualisiertes Berichterstellungstool, mit dem Sie Ihre Apps auf einen Blick überwachen können.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335009"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140607"
 ---
-# <a name="application-dashboard"></a>Anwendungsdashboard
+# <a name="model-and-usage-statistics-in-the-dashboard"></a>Modell- und Verbrauchsstatistiken im Dashboard
 Das App-Dashboard ermöglicht Ihnen, Ihre App auf einen Blick zu überwachen. Das **Dashboard** wird angezeigt, wenn Sie eine App öffnen, indem Sie auf der Seite **Meine Apps** auf den Namen der Anwendung klicken, und dann im oberen Bereich **Dashboard** auswählen. 
 
 > [!CAUTION]
@@ -70,7 +71,7 @@ Unter **Intent Breakdown** (Absichtsaufschlüsselung) wird eine Aufschlüsselung
 
 So steuern Sie, ob die Aufschlüsselung auf bezeichneten Äußerungen oder Endpunkttreffern basiert
 
-1. Klicken Sie auf **Zusätzliche Einstellungen** ![Schaltfläche „Zusätzliche Einstellungen“](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png), um auf die Liste zuzugreifen, wie in der folgenden Abbildung gezeigt:
+1. Klicken Sie auf **Zusätzliche Einstellungen** ![Schaltfläche „Zusätzliche Einstellungen“ für den Listenzugriff](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png), um auf die Liste zuzugreifen, wie in der folgenden Abbildung gezeigt:
 
     ![Liste mit Absichtsaufschlüsselung](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
 2. Wählen Sie einen Wert in der Liste aus, und klicken Sie dann auf den Pfeil „Zurück“, ![Pfeil „Zurück“](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) um das Diagramm anzuzeigen.
@@ -82,7 +83,7 @@ Im Dashboard wird eine Aufschlüsselung der Entitäten anhand der bezeichneten �
 
 So steuern Sie, ob die Aufschlüsselung auf bezeichneten Äußerungen oder Endpunkttreffern basiert
 
-1. Klicken Sie auf **Zusätzliche Einstellungen** ![Schaltfläche „Zusätzliche Einstellungen“](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png), um auf die Liste zuzugreifen, wie in der folgenden Abbildung gezeigt:
+1. Klicken Sie auf **Zusätzliche Einstellungen** ![Schaltfläche „Zusätzliche Einstellungen“ für den Listenabruf](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png), um auf die Liste zuzugreifen, wie in der folgenden Abbildung gezeigt:
 
     ![Liste der Entitätsaufschlüsselung](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
 2. Wählen Sie einen Wert in der Liste aus, und klicken Sie dann auf den Pfeil „Zurück“, ![Pfeil „Zurück“](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) um das Diagramm entsprechend anzuzeigen.

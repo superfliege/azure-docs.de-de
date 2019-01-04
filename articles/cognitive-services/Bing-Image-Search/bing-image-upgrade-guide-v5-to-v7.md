@@ -1,7 +1,7 @@
 ---
-title: Upgrade der Bing-Bildersuche-API von Version 5 auf Version 7 – Bing-Bildersuche-API-Bild
+title: Upgrade der Bing-Bildersuche-API von Version 5 auf Version 7
 titleSuffix: Azure Cognitive Services
-description: In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7 der Bing-Bildersuche-API angegeben. Anhand dieses Leitfadens können Sie die Teile Ihrer Anwendung ermitteln, die Sie zur Verwendung von Version 7 aktualisieren müssen.
+description: In diesem Upgradeleitfaden werden die Änderungen zwischen Version 5 und Version 7 der Bing-Bildersuche-API beschrieben. Anhand dieses Leitfadens können Sie die Teile Ihrer Anwendung ermitteln, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -11,14 +11,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 53713a629dbe2682ef393a3a5dbf7845b5075591
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2192e3d2a344a31717c59c813123ed0c807a2841
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296361"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256552"
 ---
-# <a name="image-search-api-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die Bildersuche-API
+# <a name="bing-image-search-api-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die Bing-Bildersuche-API
 
 In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7 der Bing-Bildersuche-API angegeben. Anhand dieses Leitfadens können Sie die Teile Ihrer Anwendung ermitteln, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 

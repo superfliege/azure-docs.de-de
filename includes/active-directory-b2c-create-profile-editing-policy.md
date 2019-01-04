@@ -2,50 +2,52 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 9ad715f47f2de9c6f9032ed07232f45fb33b0114
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0d9f0a24d84bd18bdf1fac84c744cc34a7d89ab3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133781"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742457"
 ---
-Wenn Sie die Profilbearbeitung in Ihrer Anwendung ermöglichen möchten, verwenden Sie eine Richtlinie für die **Profilbearbeitung**. Diese Richtlinie beschreibt die Benutzeroberflächen, die Kunden bei der Profilbearbeitung durchgehen, und den Inhalt der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
+Wenn Sie die Profilbearbeitung in Ihrer Anwendung ermöglichen möchten, verwenden Sie einen Benutzerflow für die **Profilbearbeitung**. Dieser Benutzerflow beschreibt die Benutzeroberflächen, die Kunden bei der Profilbearbeitung durchlaufen, und den Inhalt der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-Wählen Sie im Richtlinienabschnitt der Einstellungen die Option **Richtlinien zur Profilbearbeitung** aus, und klicken Sie auf **+ Hinzufügen**.
+Wählen Sie unter **Verwalten** die Option **Benutzerflows** aus, und klicken Sie auf **+Neuer Benutzerflow**.
 
-![„Richtlinien zur Profilbearbeitung“ auswählen und auf die Schaltfläche „Hinzufügen“ klicken](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-policy.png)
+![Auswählen von „Neuer Benutzerflow“](media/active-directory-b2c-create-profile-editing-policy/add-b2c-new-user-flow.png)
 
-Geben Sie einen **Richtliniennamen** an, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SiPe`.
+Wählen Sie auf der Registerkarte **Empfohlen** die Option **Profilbearbeitung** aus.
 
-Klicken Sie auf **Identitätsanbieter**, und aktivieren Sie das Kontrollkästchen **Anmeldung für lokales Konto**. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
+Geben Sie einen **Namen** für den Benutzerflow an, auf den in der App verwiesen werden kann. Geben Sie z. B. Folgendes ein: `SiPe`.
 
-![„Anmeldung für lokales Konto“ als Identitätsanbieter auswählen und auf die Schaltfläche „OK“ klicken](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-identity-providers.png)
+Aktivieren Sie unter **Identitätsanbieter** das Kontrollkästchen **Anmeldung mit lokalem Konto**. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert.
 
-Wählen Sie **Profilattribute** aus. Wählen Sie Attribute aus, die der Kunde in seinem Profil anzeigen und bearbeiten kann. Wählen Sie beispielsweise **Land/Region**, **Anzeigename** und **Postleitzahl** aus. Klicken Sie auf **OK**.
+![„Anmeldung für lokales Konto“ als Identitätsanbieter auswählen und auf die Schaltfläche „OK“ klicken](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-identity-providers.png)
 
-![Einige Attribute auswählen und auf die Schaltfläche „OK“ klicken](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-attributes.png)
+Klicken Sie unter **Benutzerattribute** auf **Mehr anzeigen**. Wählen Sie in der Spalte **Attribut sammeln** Attribute aus, die der Kunde in seinem Profil anzeigen und bearbeiten kann. Wählen Sie beispielsweise **Land/Region**, **Anzeigename** und **Postleitzahl** aus.
 
-Wählen Sie **Anwendungsansprüche** aus. Wählen Sie die Ansprüche aus, die nach einer erfolgreichen Profilbearbeitung in den an die Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename** und **Postleitzahl** aus.
+Wählen Sie in der Spalte **Anspruch zurückgeben** die Ansprüche aus, die nach einer erfolgreichen Profilbearbeitung in den an die Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename** und **Postleitzahl** aus.
 
-![Einige Anwendungsansprüche auswählen und auf die Schaltfläche „OK“ klicken](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-application-claims.png)
+Klicken Sie auf **OK**.
 
-Klicken Sie auf **Erstellen**, um die Richtlinie hinzuzufügen. Die Richtlinie wird als **B2C_1_SiPe** aufgeführt. Das Präfix **B2C_1_** wird an den Namen angehängt.
+![Einige Anwendungsansprüche auswählen und auf die Schaltfläche „OK“ klicken](media/active-directory-b2c-create-profile-editing-policy/add-b2c-user-attributes.png)
 
-Öffnen Sie die Richtlinie, indem Sie **B2C_1_SiPe** auswählen. Überprüfen Sie die in der Tabelle angegebenen Einstellungen, und klicken Sie anschließend auf **Jetzt ausführen**.
+Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Der Benutzerflow wird als **B2C_1_SiPe** aufgeführt. Das Präfix **B2C_1_** wird an den Namen angehängt.
 
-![Richtlinie auswählen und ausführen](media/active-directory-b2c-create-profile-editing-policy/run-b2c-editing-policy.png)
+Wählen Sie **Benutzerflow ausführen** aus. Überprüfen Sie die in der Tabelle angegebenen Einstellungen, und klicken Sie anschließend auf **Benutzerflow ausführen**.
+
+![Auswählen und Ausführen des Benutzerflows](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-run-user-flow.png)
 
 | Einstellung      | Wert  |
 | ------------ | ------ |
-| **Anwendungen** | Contoso B2C-App |
-| **Antwort-URL auswählen** | `https://localhost:44316/` |
+| **Anwendung** | Contoso B2C-App |
+| **Antwort-URL** | `https://localhost:44316/` |
 
 Eine neue Browserregisterkarte wird geöffnet, auf der Sie die Benutzeroberfläche für die konfigurierte Profilbearbeitung überprüfen können.
 
 > [!NOTE]
-> Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
+> Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Benutzerflows wirksam werden.
 >

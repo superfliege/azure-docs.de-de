@@ -5,14 +5,14 @@ author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210311"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310511"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Einrichten der Notfallwiederherstellung für eine Citrix XenDesktop- und XenApp-Bereitstellung mit mehreren Ebenen
 
@@ -131,16 +131,16 @@ In einem Wiederherstellungsplan werden virtuelle Computer mit ähnlichen Anforde
 1. Fügen Sie die virtuellen Computer der XenApp-Komponente im Wiederherstellungsplan hinzu.
 2. Klicken Sie auf „Wiederherstellungspläne“ > „+Wiederherstellungsplan“. Geben Sie einen aussagekräftigen Namen für den Wiederherstellungsplan ein.
 3. Virtuelle VMware-Computer: Wählen Sie als Quelle den VMware-Prozessserver, als Ziel Microsoft Azure und als Bereitstellungsmodell Ressourcen-Manager aus, und klicken Sie auf „Elemente auswählen“.
-4. Virtuelle Hyper-V-Computer: Wählen Sie als Quelle den VMM-Server, als Ziel Microsoft Azure und als Bereitstellungsmodell Resourcen-Manager aus. Klicken Sie auf „Elemente auswählen“, und wählen Sie dann die virtuellen Computer der XenApp-Bereitstellung aus.
+4. Virtuelle Hyper-V-Computer: Wählen Sie als Quelle den VMM-Server, als Ziel Microsoft Azure und als Bereitstellungsmodell Ressourcen-Manager aus. Klicken Sie auf „Elemente auswählen“, und wählen Sie dann die virtuellen Computer der XenApp-Bereitstellung aus.
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>Hinzufügen von virtuellen Computern zu Failovergruppen
 
 Wiederherstellungspläne können angepasst werden, um Failovergruppen für eine bestimmte Startreihenfolge, Skripts oder manuelle Aktionen hinzuzufügen. Die folgenden Gruppen müssen dem Wiederherstellungsplan hinzugefügt werden.
 
-1. Failovergruppe1: AD DNS
-2. Failovergruppe2: virtuelle SQL Server-Computer
-2. Failovergruppe3: virtueller VDA Master Image-Computer
-3. Failovergruppe4: Delivery Controller und virtuelle Computer für StoreFront-Server
+1. Failovergruppe 1: AD-DNS
+2. Failovergruppe 2: SQL Server-VMs
+2. Failovergruppe 3: Virtueller VDA-Masterimage-Computer
+3. Failovergruppe 4: Delivery Controller und virtuelle Computer für StoreFront-Server
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Hinzufügen von Skripts zum Wiederherstellungsplan
@@ -149,16 +149,17 @@ Skripts können vor oder nach einer bestimmten Gruppe in einem Wiederherstellung
 
 Unten wird der angepasste Wiederherstellungsplan dargestellt:
 
-1. Failovergruppe1: AD DNS
-2. Failovergruppe2: virtuelle SQL Server-Computer
-3. Failovergruppe3: virtueller VDA Master Image-Computer
+1. Failovergruppe 1: AD-DNS
+2. Failovergruppe 2: SQL Server-VMs
+3. Failovergruppe 3: Virtueller VDA-Masterimage-Computer
 
    >[!NOTE]     
    >Die Schritte 4, 6 und 7 mit manuellen oder Skriptaktionen gelten nur für eine lokale XenApp-Umgebung mit MCS/PVS-Katalogen.
 
-4. Manuelle oder Skriptaktion für Gruppe 3: Virtuellen VDA-Mastercomputer herunterfahren. Der virtuelle VDA-Mastercomputer, für den ein Failover nach Azure ausgeführt wird, befindet sich in einem ausgeführten Zustand. Zum Erstellen von neuen MCS-Katalogen mithilfe von Azure-Hostingfunktionen muss sich der virtuelle VDA-Mastercomputer im Zustand „Beendet“ (Zuordnung aufgehoben) befinden. Fahren Sie den virtuellen Computer über das Azure-Portal herunter.
+4. Manuelle oder Skriptaktion für Gruppe 3: Fahren Sie den virtuellen Master-VDA-Computer herunter.
+Nach dem Failover zu Azure befindet sich der virtuelle Master-VDA-Computer in einem ausführbaren Status. Zum Erstellen von neuen MCS-Katalogen mithilfe von Azure-Hostingfunktionen muss sich der virtuelle VDA-Mastercomputer im Zustand „Beendet“ (Zuordnung aufgehoben) befinden. Fahren Sie den virtuellen Computer über das Azure-Portal herunter.
 
-5. Failovergruppe4: Delivery Controller und virtuelle Computer für StoreFront-Server
+5. Failovergruppe 4: Delivery Controller und virtuelle Computer für StoreFront-Server
 6. Manuelle oder Skriptaktion 1 für Gruppe 3:
 
     ***Azure RM-Hostverbindung hinzufügen***

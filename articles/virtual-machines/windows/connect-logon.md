@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit einem virtuellen Windows Server-Computer | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit einem virtuellen Windows Server-Computer | Microsoft Docs
 description: Hier erfahren Sie, wie Sie unter Verwendung des Azure-Portals und des Resource Manager-Bereitstellungsmodells eine Verbindung mit einem virtuellen Windows-Computer herstellen und sich bei diesem Computer anmelden.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: cynthn
-ms.openlocfilehash: b9cce5658b705e9d3255d2662b2a0157a2e548c3
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fdd0c82f64b55c801ef04f1d533ed91683a07f9a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409030"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867068"
 ---
 # <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
 Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zunächst stellen Sie eine Verbindung mit dem virtuellen Computer her, danach melden Sie sich an.
@@ -39,11 +39,11 @@ Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzu
     ![Screenshot einer Warnung zu einem unbekannten Herausgeber](./media/connect-logon/rdp-warn.png)
 3. Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** und dann **Anderes Konto verwenden** aus. Geben Sie die Anmeldeinformationen eines Kontos auf dem virtuellen Computer ein, und klicken Sie anschließend auf **OK**.
    
-     **Lokales Konto**: Hierbei handelt es sich in der Regel um den Benutzernamen und das Kennwort des lokalen Kontos, den bzw. das Sie beim Erstellen des virtuellen Computers angegeben haben. In diesem Fall ist die Domäne der Name des virtuellen Computers. Das Eingabeformat lautet *VM-Name*&#92;*Benutzername*.  
+     **Lokales Konto:** Hierbei handelt es sich in der Regel um den Benutzernamen und das Kennwort des lokalen Kontos, den bzw. das Sie beim Erstellen des virtuellen Computers angegeben haben. In diesem Fall ist die Domäne der Name des virtuellen Computers. Das Eingabeformat lautet *VM-Name*&#92;*Benutzername*.  
    
-    **In die Domäne eingebundener virtueller Computer**: Wenn der virtuelle Computer zu einer Domäne gehört, geben Sie den Benutzernamen im Format *Domäne*&#92;*Benutzername* ein. Das Konto muss außerdem entweder zur Gruppe „Administratoren“ gehören oder über Remotezugriffsrechte für den virtuellen Computer verfügen.
+    **Domain joined VM (In die Domäne eingebundene VM):** Wenn der virtuelle Computer einer Domäne angehört, geben Sie den Benutzernamen im Format „*Domäne*&#92;*Benutzername*“ ein. Das Konto muss außerdem entweder zur Gruppe „Administratoren“ gehören oder über Remotezugriffsrechte für den virtuellen Computer verfügen.
    
-    **Domänencontroller**: Wenn der virtuelle Computer ein Domänencontroller ist, geben Sie den Benutzernamen und das Kennwort eines Domänenadministratorkontos für diese Domäne an.
+    **Domänencontroller:** Wenn der virtuelle Computer ein Domänencontroller ist, geben Sie den Benutzernamen und das Kennwort eines Domänenadministratorkontos für diese Domäne an.
 4. Klicken Sie auf **Ja**, um die Identität des virtuellen Computers zu bestätigen und den Anmeldevorgang abzuschließen.
    
    ![Screenshot mit einer Meldung zur Überprüfung der Identität des virtuellen Computers](./media/connect-logon/cert-warning.png)
@@ -54,6 +54,21 @@ Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzu
    > 
    > 
 
+## <a name="connect-to-the-virtual-machine-using-powershell"></a>Herstellen einer Verbindung mit dem virtuellen Computer über PowerShell
+
+Wenn Sie PowerShell verwenden und das AzureRM-Modul installiert haben, können Sie die Verbindung auch über das Cmdlet `Get-AzureRmRemoteDesktopFile` herstellen, wie unten dargestellt.
+
+Dieses Beispiel startet die RDP-Verbindung unverzüglich. Dabei werden ähnliche Eingabeaufforderungen angezeigt wie weiter oben.
+
+```powershell
+Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
+```
+
+Sie können die RDP-Datei auch zur zukünftigen Verwendung speichern.
+
+```powershell
+Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn beim Herstellen einer Verbindung Probleme auftreten, lesen Sie den Artikel [Problembehandlung bei Remotedesktopverbindungen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 

@@ -1,5 +1,5 @@
 ---
-title: Featureauswahl im Team Data Science-Prozess | Microsoft Docs
+title: Featureauswahl im Team Data Science-Prozess
 description: Erläutert den Grund zur Featureauswahl und stellt Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vor.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b439f7245dd09a2f8a7ffe5f3b3c5396786220af
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: de8070906f7b2470378fb631f2e94a96b4a2960d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442371"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138652"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Featureauswahl im Team Data Science-Prozess (TDSP)
 In diesem Artikel werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für maschinelles Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio. 
@@ -25,8 +25,8 @@ In diesem Artikel werden die Gründe zur Featureauswahl erläutert und Beispiele
 
 Entwicklung und Auswahl von Features gehören zum Team Data Science-Prozess (TDSP), der unter [Was ist der Team Data Science-Prozess?](overview.md) beschrieben wird. Entwicklung und Auswahl von Features sind Teile des Schritts **Entwickeln von Features** des TDSP.
 
-* **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
-* **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
+* **Featureentwicklung:** Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
+* **Featureauswahl:** Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
 
 Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
 
@@ -40,23 +40,23 @@ Obwohl die Featureauswahl die Anzahl von Features im Dataset reduzieren soll, di
 
 Eine unter anderem häufig angewendete Kategorie von Featureauswahlmethoden in einem überwachten Kontext wird als „filterbasierte Featureauswahl“ bezeichnet. Durch Auswerten der Korrelation zwischen den einzelnen Features und dem Zielattribut wenden diese Methoden ein statistisches Maß an, um jedem Feature eine Bewertung zuzuweisen. Die Features werden dann nach dem Ergebnis geordnet. Das kann helfen, den Schwellenwert zum Beibehalten oder Entfernen eines bestimmten Features festzulegen. Beispiele für die statistischen Mittel in diesen Methoden sind Pearson-Korrelation, gegenseitige Information und der Chi-Quadrat-Test.
 
-Azure Machine Learning Studio enthält Module zur Featureauswahl. Wie in der folgenden Abbildung gezeigt wird, gehören hierzu die Module [Filter-Based Feature Selection][filter-based-feature-selection] und [Fisher Linear Discriminant Analysis][fisher-linear-discriminant-analysis].
+Azure Machine Learning Studio enthält Module zur Featureauswahl. Hierzu gehören die Module [Filter-Based Feature Selection][filter-based-feature-selection] und [Fisher Linear Discriminant Analysis][fisher-linear-discriminant-analysis], wie in der folgenden Abbildung zu sehen.
 
-![Beispiel für Featureauswahl](./media/select-features/feature-Selection.png)
+![Featureauswahlmodule](./media/select-features/feature-Selection.png)
 
 Betrachten Sie beispielsweise die Verwendung des Moduls [Filter-Based Feature Selection][filter-based-feature-selection]. Verwenden Sie aus praktischen Gründen weiterhin das Textminingbeispiel. Nehmen wir an, dass Sie ein Regressionsmodell erstellen möchten, nachdem ein Satz von 256 Features über das Modul [Feature Hashing][feature-hashing] erstellt wurde, und dass die Antwortvariable „Col1“ lautet, die Buchbewertungen im Bereich von 1 bis 5 enthält. Setzen Sie die "Feature scoring method" (Featurebewertungsmethode) auf "Pearson Correlation" (Pearson-Korrelation), die "Target Column" (Zielspalte) auf "Col1" und die "Number of desired features" (Anzahl von gewünschten Features) auf 50. Dann erzeugt das Modul [Filter-Based Feature Selection][filter-based-feature-selection] ein Dataset mit 50 Features und dem Zieltattribut „Col1“. Die folgende Abbildung zeigt den Ablauf dieses Experiments und die Eingabeparameter:
 
-![Beispiel für Featureauswahl](./media/select-features/feature-Selection1.png)
+![Eigenschaften von filterbasierten Featureauswahlmodulen](./media/select-features/feature-Selection1.png)
 
 Die folgende Abbildung zeigt die resultierenden Datasets:
 
-![Beispiel für Featureauswahl](./media/select-features/feature-Selection2.png)
+![Resultierendes Dataset für das filterbasierte Featureauswahlmodul](./media/select-features/feature-Selection2.png)
 
 Jedes Feature wird auf Basis der Pearson-Korrelation zwischen sich selbst und dem Zielattribut "Col1" bewertet. Die Features mit den besten Werten werden beibehalten.
 
 Die entsprechenden Ergebnisse der ausgewählten Features sind in der folgenden Abbildung dargestellt:
 
-![Beispiel für Featureauswahl](./media/select-features/feature-Selection3.png)
+![Bewertungen für filterbasierte Featureauswahlmodule](./media/select-features/feature-Selection3.png)
 
 Durch Anwenden dieses Moduls [Filter-Based Feature Selection][filter-based-feature-selection] werden 50 von 256 Features ausgewählt, da sie die am meisten korrelierten Features mit der Zielvariable „Col1“ auf Grundlage der Bewertungsmethode „Pearson Correlation“ aufweisen.
 

@@ -1,5 +1,6 @@
 ---
-title: Erstellen eines öffentlichen Lastenausgleichs mit IPv6 – Azure CLI | Microsoft-Dokumentation
+title: Erstellen eines öffentlichen Lastenausgleichs mit IPv6 – Azure-Befehlszeilenschnittstelle
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie einen öffentlichen Lastenausgleich mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: e3d6611c8a5c6faf3d1e070d1bafa2027adfc0cb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739837"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142018"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -44,11 +46,11 @@ Die folgenden Schritte zeigen, wie Sie einen öffentlichen Lastenausgleich mithi
 
 Erstellen und konfigurieren Sie die folgenden Objekte, um einen Lastenausgleich bereitzustellen:
 
-* **Front-End-IP-Konfiguration**: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
-* **Back-End-Adresspool**: Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
-* **Lastenausgleichsregeln**: Enthält Regeln, die einen öffentlichen Port des Lastenausgleichs einem Port im Back-End-Adresspool zuordnen.
-* **NAT-Eingangsregeln**: Enthält Netzwerkadressübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
-* **Tests**: Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
+* **Front-End-IP-Konfiguration:** Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
+* **Back-End-Adresspool:** Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
+* **Lastenausgleichsregeln:** Enthält Regeln, mit denen ein öffentlicher Port auf dem Load Balancer einem Port im Back-End-Adresspool zugeordnet wird.
+* **NAT-Eingangsregeln:** Enthält Netzwerkadressenübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
+* **Tests:** Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
 
 ## <a name="set-up-azure-cli"></a>Einrichten der Azure-Befehlszeilenschnittstelle
 

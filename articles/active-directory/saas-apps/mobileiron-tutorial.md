@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in MobileIron | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit MobileIron | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und MobileIron konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8bdf49f4cea7c6f0ff30e37bcf1cf2fed3abc2bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584110"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963809"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Tutorial: Azure Active Directory-Integration in MobileIron
+# <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Tutorial: Azure Active Directory-Integration mit MobileIron
 
 In diesem Tutorial erfahren Sie, wie Sie MobileIron in Azure Active Directory (Azure AD) integrieren.
 
@@ -50,24 +50,27 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von MobileIron aus dem Katalog
 1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-mobileiron-from-the-gallery"></a>Hinzufügen von MobileIron aus dem Katalog
+
 Zum Konfigurieren der Integration von MobileIron in Azure AD müssen Sie MobileIron über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um MobileIron aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“][1]
 
 1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
-    
+
 1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
@@ -103,7 +106,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
 1. Führen Sie im Abschnitt **Domäne und URLs für MobileIron** die folgenden Schritte aus, wenn Sie die Anwendung im  **IDP** -initiierten Modus konfigurieren möchten:
@@ -119,12 +122,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![MobileIron-Domäne und URLs – einmaliges Anmelden](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
     Geben Sie im Textfeld  **Anmelde-URL**  eine URL im folgenden Format ein:  `https://<host>.mobileiron.com/user/login.html`.
-    
-    > [!NOTE]  Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Sie erhalten die Werte des Schlüssels und des Hosts aus dem Verwaltungsportal von MobileIron, das später in diesem Tutorial beschrieben wird.
+
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Sie erhalten die Werte des Schlüssels und des Hosts aus dem Verwaltungsportal von MobileIron, das später in diesem Tutorial beschrieben wird.
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png) 
+    ![Downloadlink für das Zertifikat](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png)
 
 1. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -134,7 +138,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Wechseln Sie zu **Admin** > **Identity**.
 
-   * Wählen Sie die Option **AAD** im Feld **Info on Cloud IDP Setup**.
+   - Wählen Sie die Option **AAD** im Feld **Info on Cloud IDP Setup**.
 
     ![Einmaliges Anmelden konfigurieren – Administratorschaltfläche](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -143,11 +147,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Einmaliges Anmelden konfigurieren – Administratorschaltfläche](./media/mobileiron-tutorial/key.png)
 
 1. Klicken Sie in **Metadatendatei aus AAD exportieren und in MobileIron-Cloudfeld importieren** auf **Datei auswählen**, um die heruntergeladenen Metadaten vom Azure-Portal hochzuladen. Klicken Sie nach dem Hochladen auf **Fertig**.
- 
+
     ![Einmaliges Anmelden konfigurieren – Administratormetadatenschaltfläche](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -203,20 +207,20 @@ Im Fall von MobileIron ist die Bereitstellung eine manuelle Aufgabe.
     1. Geben Sie im Textfeld **First Name** den Vornamen des Benutzers ein, z.B. „Britta“.
 
     1. Geben Sie im Textfeld **Last Name** den Nachnamen des Benutzers ein, z.B. „Simon“.
-    
-    1. Klicken Sie auf **Fertig**.  
+
+    1. Klicken Sie auf **Fertig**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf MobileIron gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+![Zuweisen der Benutzerrolle][200]
 
 **Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu MobileIron durchzuführen:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-    ![Benutzer zuweisen][201] 
+    ![Benutzer zuweisen][201]
 
 1. Wählen Sie in der Anwendungsliste **MobileIron** aus.
 
@@ -235,19 +239,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
+
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „MobileIron“ klicken, sollten Sie automatisch bei Ihrer MobileIron-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -262,4 +265,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/mobileiron-tutorial/tutorial_general_201.png
 [202]: ./media/mobileiron-tutorial/tutorial_general_202.png
 [203]: ./media/mobileiron-tutorial/tutorial_general_203.png
-

@@ -1,21 +1,22 @@
 ---
-title: Äußerungen in LUIS-Apps
-titleSuffix: Azure Cognitive Services
+title: Gute Beispieläußerungen
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Äußerungen sind Eingaben vom Benutzer, die Ihre App interpretieren muss. Sammeln Sie Ausdrücke, die Benutzer möglicherweise eingeben. Fügen Sie Äußerungen ein, die dieselbe Bedeutung haben, aber andere Wortlängen oder einen anderen Satzbau aufweisen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 4f6bb367e706771707b65445c91619d439257207
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638074"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014836"
 ---
 # <a name="utterances-in-luis"></a>Äußerungen in LUIS
 
@@ -55,6 +56,10 @@ Fügen Sie nicht jeder Iteration des Modells große Mengen von Äußerungen hinz
 Effektive LUIS-Modelle werden mit sorgfältig ausgewählten Äußerungen erstellt. Das Hinzufügen zu vieler Äußerungen ist nicht nützlich, da es zu Verwechslungen führen kann.  
 
 Es ist besser, mit nur wenigen Äußerungen anzufangen und anschließend die [Endpunktäußerungen zu überprüfen](luis-how-to-review-endoint-utt.md), um die richtige Vorhersage der Absicht und Extraktion der Entität zu gewährleisten.
+
+## <a name="punctuation-marks"></a>Interpunktion
+
+LUIS ignoriert Satzzeichen standardmäßig nicht, da einige Clientanwendungen diese unter Umständen als wichtig erachten. Stellen Sie sicher, dass Sie Beispieläußerungen mit und ohne Satzzeichen verwenden, damit beide Formate die gleichen relativen Ergebnisse zurückgeben. Wenn die Interpunktion in Ihrer Clientanwendung keine besondere Bedeutung hat, sollten Sie erwägen, [Satzzeichen zu ignorieren](#ignoring-words-and-punctuation), indem Sie Muster verwenden. 
 
 ## <a name="ignoring-words-and-punctuation"></a>Ignorieren von Wörtern und Interpunktion
 Wenn Sie bestimmte Wörter oder Satzzeichen in der Beispieläußerung ignorieren möchten, verwenden Sie ein [Muster](luis-concept-patterns.md#pattern-syntax) mit der Syntax zum _Ignorieren_. 

@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: ddbfdc9928122373b82d043fac0777576c5fe99e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7a4ff22bbb4c7c13d8c2feae3638ce8e33a8f7ad
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227476"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845823"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Behandeln von Problemen mit dem Azure Site Recovery-Agent
 
@@ -22,38 +22,38 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 ## <a name="azure-site-recovery-extension-time-out"></a>Timeout der Azure Site Recovery-Erweiterung  
 
 Fehlermeldung: „Timeout bei der Taskausführung beim Warten auf den Start des Erweiterungsvorgangs.“<br>
-Fehlercode: „151076“
+Fehlercode: 151076
 
  Azure Site Recovery installiert eine Erweiterung auf dem virtuellen Computer als Teil des Aktivierungsschutzes. Jede der folgenden Bedingungen kann verhindern, dass der Schutzvorgang ausgelöst wird und der Auftrag nicht ausgeführt wird. Führen Sie die folgenden Problembehandlungsschritte aus, und wiederholen Sie dann den Vorgang:
 
-**Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Ursache 3: [Die Site Recovery-Erweiterung kann nicht aktualisiert oder geladen werden.](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 Fehlermeldung: „Der vorherige Site Recovery-Erweiterungsvorgang nimmt mehr Zeit in Anspruch als erwartet.“<br>
-Fehlercode: „150066“<br>
+Fehlercode: 150066<br>
 
-**Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Ursache 3: [Der Status der Site Recovery-Erweiterung ist nicht korrekt.](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Fehler beim Schutzvorgang, weil der VM-Agent nicht reagiert
 
 Fehlermeldung: „Timeout bei der Taskausführung beim Warten auf den Start des Erweiterungsvorgangs.“<br>
-Fehlercode: „151099“<br>
+Fehlercode: 151099<br>
 
 Dieser Fehler kann auftreten, wenn der Azure-Gast-Agent auf dem virtuellen Computer nicht im Bereitschaftszustand befindet.
 Sie können den Status des Azure-Gast-Agents im [Azure-Portal](https://portal.azure.com/) überprüfen. Wechseln Sie zum virtuellen Computer, den Sie schützen möchten, und überprüfen Sie den Status unter „VM > Einstellungen > Eigenschaften > Agent-Status“. Meistens ist der Status des Agents nach dem Neustart des virtuellen Computers „Bereit“. Wenn jedoch ein Neustart nicht möglich ist, oder das Problem weiterhin besteht, führen Sie die folgenden Schritte zur Problembehebung aus.
 
-**Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
 Fehlermeldung: „Timeout bei der Taskausführung beim Warten auf den Start des Erweiterungsvorgangs.“<br>
-Fehlercode: „151095“<br>
+Fehlercode: 151095<br>
 
 Dieser Fehler tritt auf, wenn auf dem Linux-Computer eine alte Agent-Version installiert ist. Führen Sie folgenden Schritt aus, um das Problem zu beheben.<br>
-  **Ursache 1: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+  **Ursache 1: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)

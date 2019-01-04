@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210821"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838139"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Einrichten der Notfallwiederherstellung für eine Dynamics AX-Anwendung mit mehreren Ebenen 
 
@@ -126,7 +126,7 @@ Stellen Sie sicher, dass der gewählte Wiederherstellungspunkt sich so nah wie m
 * **Skript:** Fügen Sie einen Lastenausgleich hinzu (nur E/A).
 Fügen Sie (über Azure Automation) hinter der Application Object Server-VM-Gruppe ein Skript hinzu, um einen Lastenausgleich hinzuzufügen. Sie können ein Skript in diese Aufgabe einfügen. Weitere Informationen finden Sie unter [How to add a load balancer for multitier application disaster recovery](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/) (Hinzufügen eines Lastenausgleichs für die Notfallwiederherstellung für Anwendungen mit mehreren Schichten).
 
-* **Failovergruppe 2:** Führen Sie ein Failover für die virtuellen AX-Clientcomputer aus. Durchführen eines Failovers für VMs der Webschicht im Rahmen des Wiederherstellungsplans.
+* **Failovergruppe 2:** Führen Sie ein Failover für die virtuellen Dynamics AX-Clientcomputer aus. Durchführen eines Failovers für VMs der Webschicht im Rahmen des Wiederherstellungsplans.
 
 
 ### <a name="perform-a-test-failover"></a>Ausführen eines Testfailovers

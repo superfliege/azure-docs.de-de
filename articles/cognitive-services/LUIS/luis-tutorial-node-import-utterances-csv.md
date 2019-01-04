@@ -1,21 +1,22 @@
 ---
-title: Programmgesteuertes Erstellen einer LUIS-App mit Node.js | Microsoft-Dokumentation
+title: Importieren von Äußerungen mithilfe von Node.js
 titleSuffix: Azure
 description: Erfahren Sie, wie Sie mithilfe der LUIS-Erstellungs-API eine LUIS-App programmgesteuert aus bereits vorhandenen Daten im CSV-Format erstellen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 729e19deb5efc91fb874214299f34fbb46d9bbdc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: da638064b2ead1cd860f3b4f96ffa88026aab4ff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034041"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101174"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programmgesteuertes Erstellen einer LUIS-App mit Node.js
 
@@ -34,7 +35,7 @@ Selbst wenn Sie ein System haben, bei dessen Erstellung LUIS nicht berücksichti
 
 Öffnen Sie die Datei `IoT.csv` . Sie enthält ein Protokoll von Benutzerabfragen eines hypothetischen Heimautomatisierungsdiensts, einschließlich der Art ihrer Kategorisierung, und einiger Spalten mit nützlichen Informationen, die diesen entnommen wurden. 
 
-![CSV-Datei](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![CSV-Datei bereits vorhandener Daten](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 Sie sehen, dass es sich bei der Spalte **RequestType** um Absichten handeln könnte und dass die Spalte **Request** eine Beispieläußerung enthält. Bei den anderen Feldern könnte es sich um Entitäten handeln, wenn sie in der Äußerung auftreten. Da es Absichten, Entitäten und Beispieläußerungen gibt, sind alle Anforderungen an eine einfache Beispiel-App erfüllt.
 
@@ -106,9 +107,9 @@ Nachdem die Entitäten und Absichten in der LUIS-App definiert wurden, können S
 ### <a name="install-nodejs-dependencies"></a>Installieren von Node.js-Abhängigkeiten
 Installieren Sie die Node.js-Abhängigkeiten von NPM im Terminal bzw. an der Befehlszeile.
 
-````
+```console
 > npm install
-````
+```
 
 ### <a name="change-configuration-settings"></a>Ändern der Konfigurationseinstellungen
 Um diese Anwendung verwenden zu können, müssen Sie die Werte in der Datei „index.js“ in Ihren eigenen Endpunktschlüssel ändern und den gewünschten Namen für die App angeben. Sie können auch die Kultur der App festlegen oder die Versionsnummer ändern.
@@ -116,28 +117,31 @@ Um diese Anwendung verwenden zu können, müssen Sie die Werte in der Datei „i
 Öffnen Sie die Datei „Index.js“, und ändern Sie diese Werte am Anfang der Datei.
 
 
-````JavaScript
+```nodejs
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
-````
+```
+
 ### <a name="run-the-script"></a>Ausführen des Skripts
 Führen Sie das Skript über ein Terminal oder die Befehlszeile mit Node.js aus.
 
-````
+```console
 > node index.js
-````
+```
+
 oder
-````
+
+```console
 > npm start
-````
+```
 
 ### <a name="application-progress"></a>Anwendungsfortschritt
 Während die Anwendung ausgeführt wird, wird an der Befehlszeile der Fortschritt angezeigt. Die Befehlszeilenausgabe schließt das Format der Antworten von LUIS ein.
 
-````
+```console
 > node index.js
 intents: ["TurnOn","TurnOff","Dim","Other"]
 entities: ["Operation","Device","Room"]
@@ -157,7 +161,7 @@ retrying add examples...
 
 Results of add utterances = [{"response":[{"value":{"UtteranceText":"turn on the lights","ExampleId":-67649},"hasError":false},{"value":{"UtteranceText":"turn the heat on","ExampleId":-69067},"hasError":false},{"value":{"UtteranceText":"switch on the kitchen fan","ExampleId":-3395901},"hasError":false},{"value":{"UtteranceText":"turn off bedroom lights","ExampleId":-85402},"hasError":false},{"value":{"UtteranceText":"turn off air conditioning","ExampleId":-8991572},"hasError":false},{"value":{"UtteranceText":"kill the lights","ExampleId":-70124},"hasError":false},{"value":{"UtteranceText":"dim the lights","ExampleId":-174358},"hasError":false},{"value":{"UtteranceText":"hi how are you","ExampleId":-143722},"hasError":false},{"value":{"UtteranceText":"answer the phone","ExampleId":-69939},"hasError":false},{"value":{"UtteranceText":"are you there","ExampleId":-149588},"hasError":false},{"value":{"UtteranceText":"help","ExampleId":-81949},"hasError":false},{"value":{"UtteranceText":"testing the circuit","ExampleId":-11548708},"hasError":false}]}]
 upload done
-````
+```
 
 
 

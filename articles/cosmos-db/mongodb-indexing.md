@@ -1,24 +1,22 @@
 ---
-title: Durchführen der Indizierung in der Azure Cosmos DB-MongoDB-API | Microsoft-Dokumentation
+title: Durchführen der Indizierung in der Azure Cosmos DB-MongoDB-API
 description: Enthält eine Übersicht über die Indizierungsfunktionen in der Azure Cosmos DB-MongoDB-API.
 services: cosmos-db
 author: orestis-ms
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: ad04976136fc8db04dbe52bf78bea49a9149e5db
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: bdb2ceb45950b99b1a5a351c6301599a791ef8cc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312696"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875296"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Durchführen der Indizierung in der Azure Cosmos DB-MongoDB-API
+# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Durchführen der Indizierung in der Azure Cosmos DB- MongoDB-API
 
 Für die Azure Cosmos DB-MongoDB-API werden die Funktionen für die automatische Indexverwaltung von Azure Cosmos DB genutzt. Daher haben Benutzer Zugriff auf die Standard-Indizierungsrichtlinien von Azure Cosmos DB. Wenn vom Benutzer also keine Indizes definiert wurden oder keine Indizes gelöscht wurden, werden standardmäßig alle Felder beim Einfügen in die Sammlung automatisch indiziert. Für die meisten Szenarien empfehlen wir, die Standardindizierungsrichtlinie des Kontos zu verwenden.
 

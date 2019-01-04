@@ -1,5 +1,5 @@
 ---
-title: Identifizieren erweiterter Analyseszenarien für Azure Machine Learning | Microsoft-Dokumentation
+title: Identifizieren von Szenarien für Azure Machine Learning – Team Data Science-Prozess
 description: Wählen Sie die geeigneten Szenarien für den erweiterten Predictive Analytics-Prozess im Team Data Science-Prozess.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 16d8457e5605ce0e3c10ed95296b5a883a4c602c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 88c3be12647bd73296c214390d3d2fb1fe79ccb4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444833"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138890"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
@@ -42,7 +42,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 ## <a name="smalllocal"></a>Szenario \#1: Kleines bis mittelgroßes tabellarisches Dataset in lokalen Dateien
 ![Kleine bis mittelgroße lokale Dateien][1]
 
-#### <a name="additional-azure-resources-none"></a>Zusätzliche Azure-Ressourcen: keine
+#### <a name="additional-azure-resources-none"></a>Zusätzliche Azure-Ressourcen: Keine
 1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
 1. Laden Sie ein Dataset hoch.
 1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren hochgeladenen Datasets beginnt.
@@ -50,7 +50,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 ## <a name="smalllocalprocess"></a>Szenario \#2: Kleines bis mittelgroßes Dataset lokaler Dateien, die verarbeitet werden müssen
 ![Kleine bis mittelgroße lokale Dateien mit Verarbeitung][2]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (IPython Notebook-Server)
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der IPython Notebook ausgeführt wird.
 1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
 1. Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten aus dem Azure-Speichercontainer zugreifen.
@@ -63,7 +63,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 ## <a name="largelocal"></a>Szenario \#3: Großes Dataset lokaler Dateien, die auf Azure-Blobs ausgerichtet sind
 ![Große lokale Dateien][3]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (IPython Notebook-Server)
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der IPython Notebook ausgeführt wird.
 1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
 1. Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten aus Azure-Blobs zugreifen.
@@ -78,7 +78,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 ## <a name="smalllocaltodb"></a>Szenario \#4: Kleines bis mittelgroßes Dataset lokaler Dateien, das auf SQL Server in einer Azure-VM ausgerichtet ist
 ![Kleine bis mittelgroße lokale Dateien in SQL DB in Azure][4]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (SQL Server/IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der SQL Server und IPython Notebook ausgeführt werden.
 1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
 1. Bereiten Sie die Daten in einem Azure-Speichercontainer mithilfe von IPython Notebook vor, und bereinigen Sie sie.
@@ -93,7 +93,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
    * Erstellen Sie eine Datenbank und Zieltabellen.
    * Verwenden Sie eine der Methoden für den Massenimport, um Daten aus lokalen VM-Dateien zu laden.
    
-   Option\# 2: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
+   Option \#2: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
    
    <!-- -->    
    * Verwenden Sie die ODBC-Verbindungszeichenfolge, um von der VM auf SQL Server zuzugreifen.
@@ -105,10 +105,10 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
-## <a name="largelocaltodb"></a>Szenario \#5: Großes Dataset in lokalen Dateien, Ziel-SQL Server in Azure VM
+## <a name="largelocaltodb"></a>Szenario \#5: Großes Dataset in lokalen Dateien, Ziel-SQL Server-Instanz in Azure-VM
 ![Große lokale Dateien in SQL DB in Azure][5]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (SQL Server/IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der SQL Server und der IPython Notebook-Server ausgeführt werden.
 1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
 1. (Optional) Bereiten Sie Daten vor, und bereinigen Sie sie.
@@ -149,7 +149,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 ## <a name="largedbtodb"></a>Szenario \#6: Großes Dataset in einer lokalen SQL Server-Datenbank, das auf SQL Server auf einem virtuellen Azure-Computer ausgerichtet ist
 ![Große lokale SQL DB in SQL DB in Azure][6]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (SQL Server/IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der SQL Server und der IPython Notebook-Server ausgeführt werden.
 1. Verwenden Sie eine der Datenexportmethoden, um die Daten aus SQL Server in Dumpdateien zu exportieren.
    
@@ -185,7 +185,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 ### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternative Methode zum Kopieren einer vollständigen Datenbank aus einem lokalen SQL Server in Azure SQL-Datenbank
 ![Trennen lokaler DB und Anfügen an SQL DB in Azure][7]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (SQL Server/IPython Notebook-Server)
 Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu replizieren, kopieren Sie eine Datenbank von einem Speicherort/Server auf einen anderen, vorausgesetzt, dass die Datenbank vorübergehend offline geschaltet werden kann. Hierzu verwenden Sie den Objekt-Explorer von SQL Server Management Studio oder die entsprechenden Transact-SQL-Befehle.
 
 1. Trennen Sie die Datenbank am Quellspeicherort. Weitere Informationen finden Sie unter [Trennen einer Datenbank](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).

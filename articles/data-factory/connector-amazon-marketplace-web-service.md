@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: bcda662790c1af72e28b8968142bab15f62e83bf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c58b956a0fc1899b12050daf0fbf61514ca24407
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127176"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095136"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory (Vorschau)
 
@@ -45,7 +45,7 @@ Folgende Eigenschaften werden für den mit Amazon Marketplace Web Service verkn�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **AmazonMWS** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AmazonMWS** | JA |
 | endpoint | Der Endpunkt des Amazon MWS-Servers (mws.amazonservices.com).  | JA |
 | marketplaceID | Die Amazon Marketplace-ID, aus der Daten abgerufen werden sollen. Um Daten von mehreren Marketplace-IDs abzurufen, trennen Sie diese durch ein Komma (`,`). (d.h. A2EUQ1WTGCTBG2)  | JA |
 | sellerID | Die Amazon-Verkäufer-ID.  | JA |
@@ -85,7 +85,12 @@ Folgende Eigenschaften werden für den mit Amazon Marketplace Web Service verkn�
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Amazon Marketplace Web Service-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service die „type“-Eigenschaft des Datasets auf **AmazonMWSObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service die „type“-Eigenschaft des Datasets auf **AmazonMWSObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AmazonMWSObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -97,7 +102,8 @@ Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service die „type�
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -107,14 +113,14 @@ Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service die „type�
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Amazon Marketplace Web Service-Quelle unterstützt werden.
 
-### <a name="amazonmwssource-as-source"></a>AmazonMWSSource als Quelle
+### <a name="amazon-mws-as-source"></a>Amazon MWS als Quelle
 
 Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service den Quelltyp in der Kopieraktivität auf **AmazonMWSSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **AmazonMWSSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AmazonMWSSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340442"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259425"
 ---
 # <a name="translator-speech-api"></a>Sprachübersetzungs-API
 
@@ -28,13 +28,13 @@ Mit der Sprachübersetzungs-API streamen Clientanwendungen Audio an den Dienst u
 Die Sprachübersetzungs-API nutzt für die Bereitstellung eines Vollduplex-Kommunikationskanals zwischen dem Client und dem Server das WebSocket-Protokoll. Für die Verwendung des Diensts müssen in einer Anwendung die folgenden Schritte ausgeführt werden:
 
 ## <a name="1-getting-started"></a>1. Erste Schritte
-Für den Zugriff auf die Textübersetzungs-API müssen Sie sich [bei Microsoft Azure registrieren](translator-speech-how-to-signup.md).
+Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft Azure registrieren](translator-speech-how-to-signup.md).
 
 ## <a name="2-authentication"></a>2. Authentifizierung
 
 Authentifizieren Sie sich mithilfe des Abonnementschlüssels. Die Sprachübersetzungs-API unterstützt zwei Authentifizierungsmodi:
 
-* **Verwendung eines Zugriffstokens:** Rufen Sie in Ihrer Anwendung ein Zugriffstoken von dem Tokendienst ab. Rufen Sie mithilfe Ihres Abonnementschlüssels für die Sprachübersetzungs-API ein Zugriffstoken vom Azure Cognitive Services-Authentifizierungsdienst ab. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie weiterhin das gleiche Zugriffstoken für wiederholte Anforderungen innerhalb dieser 10 Minuten.
+* **Verwendung eines Zugriffstokens:** Rufen Sie in Ihrer Anwendung ein Zugriffstoken vom Tokendienst ab. Rufen Sie mithilfe Ihres Abonnementschlüssels für die Sprachübersetzungs-API ein Zugriffstoken vom Azure Cognitive Services-Authentifizierungsdienst ab. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie weiterhin das gleiche Zugriffstoken für wiederholte Anforderungen innerhalb dieser 10 Minuten.
 
 * **Direkte Verwendung eines Abonnementschlüssels:** Übergeben Sie Ihren Abonnementschlüssel in Ihrer Anwendung als Wert im Header `Ocp-Apim-Subscription-Key`.
 
@@ -89,17 +89,20 @@ Beachten Sie, dass die Gesamtgröße der Datei (Bytes 4 – 7) und die Größe d
 
 Nach dem Senden des WAV-Headers (RIFF) sendet der Client Blöcke der Audiodaten. Der Client streamt in der Regel Blöcke mit einer festen Größe, die eine feste Dauer darstellen (z.B. ein Stream mit jeweils 100 ms Audio).
 
+### <a name="signal-the-end-of-the-utterance"></a>Signalisieren des Endes einer Äußerung
+Die Sprachübersetzungs-API gibt das Transkript und die Übersetzung des Audiostreams zurück, während Sie die Audiodaten übermitteln. Das letzte Transkript, die letzte Übersetzung und die übersetzten Audiodaten werden erst nach dem Ende der Äußerung zurückgegeben. In einigen Fällen ist es eventuell notwendig, das Ende der Äußerung zu erzwingen. Übermitteln Sie 2,5 Sekunden Stille, um damit das Ende der Äußerung zu erzwingen. 
+
 ### <a name="final-result"></a>Endergebnis
 Ein finales Spracherkennungsergebnis wird am Ende einer Äußerung generiert. Der Dienst überträgt ein Ergebnis mit einer WebSocket-Nachricht vom Typ „Text“ an den Client. Die Nachricht beinhaltet die JSON-Serialisierung eines Objekts mit den folgenden Eigenschaften:
 
 * `type`: Zeichenfolgenkonstante zur Ermittlung des Ergebnistyps. Der Wert ist für die Endergebnisse final.
 * `id`: Dem Erkennungsergebnis zugewiesener Zeichenfolgebezeichner.
-* `recognition`: Erkannter Text in der Quellsprache. Im Falle einer falschen Erkennung besteht der Text möglicherweise aus einer leeren Zeichenfolge.
+* `recognition`: Erkannter Text in der Ausgangssprache. Im Falle einer falschen Erkennung besteht der Text möglicherweise aus einer leeren Zeichenfolge.
 * `translation`: In die Zielsprache übersetzter erkannter Text.
 * `audioTimeOffset`: Zeitoffset des Beginns der Erkennung in Takten (1 Takt = 100 Nanosekunden). Der Offsetwert ist relativ zum Anfang des Streamings.
 * `audioTimeSize`: Dauer der Erkennung in Takten (100 Nanosekunden).
-* `audioStreamPosition`: Byte-Offset des Anfangs der Erkennung. Der Offsetwert ist relativ zum Anfang des Streams.
-* `audioSizeBytes`: Größe der Erkennung in Bytes.
+* `audioStreamPosition`: Byteoffset des Anfangs der Erkennung. Der Offsetwert ist relativ zum Anfang des Streams.
+* `audioSizeBytes`: Größe der Erkennung in Byte.
 
 Beachten Sie, dass die Positionierung der Erkennung im Audiostream in den Ergebnissen standardmäßig nicht inbegriffen ist. Die Funktion `TimingInfo` muss vom Client ausgewählte werden (siehe Parameter `features`).
 
@@ -125,12 +128,12 @@ Der Dienst überträgt ein Teilergebnis mit einer WebSocket-Nachricht vom Typ �
 
 * `type`: Zeichenfolgenkonstante zur Ermittlung des Ergebnistyps. Der Wert bei Teilergebnissen lautet „partiell“.
 * `id`: Dem Erkennungsergebnis zugewiesener Zeichenfolgebezeichner.
-* `recognition`: Erkannter Text in der Quellsprache.
+* `recognition`: Erkannter Text in der Ausgangssprache.
 * `translation`: In die Zielsprache übersetzter erkannter Text.
 * `audioTimeOffset`: Zeitoffset des Beginns der Erkennung in Takten (1 Takt = 100 Nanosekunden). Der Offsetwert ist relativ zum Anfang des Streamings.
 * `audioTimeSize`: Dauer der Erkennung in Takten (100 Nanosekunden).
-* `audioStreamPosition`: Byte-Offset des Anfangs der Erkennung. Der Offsetwert ist relativ zum Anfang des Streams.
-* `audioSizeBytes`: Größe der Erkennung in Bytes.
+* `audioStreamPosition`: Byteoffset des Anfangs der Erkennung. Der Offsetwert ist relativ zum Anfang des Streams.
+* `audioSizeBytes`: Größe der Erkennung in Byte.
 
 Beachten Sie, dass die Positionierung der Erkennung im Audiostream in den Ergebnissen standardmäßig nicht inbegriffen ist. Die Funktion „TimingInfo“ muss vom Client ausgewählte werden (siehe Parameter „features“).
 
@@ -178,8 +181,8 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 |subscription-key|(leer)   |Alternative Möglichkeit für die Übergabe eines Abonnementschlüssels. In einigen WebSocket-Bibliotheken dürfen mit Clientcode keine Header festgelegt werden. In diesem Fall kann der Client den Abfrageparameter `subscription-key` für die Übergabe eines gültigen Abonnementschlüssels verwenden. Wenn Sie einen Abonnementschlüssel für die Authentifizierung verwenden, muss „subscription-key“ festgelegt werden, wenn der Header `Ocp-Apim-Subscription-Key` nicht festgelegt ist. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert. Clients sollten nur eine Methode für die Übergabe des `subscription key` verwenden.|query|Zeichenfolge|
 |X-ClientTraceId    |(leer)    |Eine vom Client generierte GUID zur Ablaufverfolgung einer Anforderung. Zur ordnungsgemäßen Problembehandlung sollten Clients mit jeder Anforderung einen neuen Wert angeben und protokollieren.<br/>Dieser Wert kann anstelle der Verwendung eines Headers mit dem Abfrageparameter `X-ClientTraceId` übergeben werden. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert.|Header|Zeichenfolge|
 |X-CorrelationId|(leer)    |Ein vom Client generierter Bezeichner zum Korrelieren mehrere Kanäle in einer Konversation. Es können mehrere Sitzungen zur Sprachübersetzung erstellt werden, um Konversationen zwischen Benutzern zu ermöglichen. In solchen Szenarios wird in allen Sitzungen zur Sprachübersetzung die gleiche Korrelations-ID zur Verbindung der Kanäle verwendet. Dies erleichtert die Ablaufverfolgung und die Diagnose. Der Bezeichner sollte `^[a-zA-Z0-9-_.]{1,64}$` entsprechen.<br/>Dieser Wert kann anstelle der Verwendung eines Headers mit dem Abfrageparameter `X-CorrelationId` übergeben werden. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert.|Header|Zeichenfolge|
-|X-ClientVersion|(leer)    |Gibt die Version der Clientanwendung an. Example: „2.1.0.123“.<br/>Dieser Wert kann anstelle der Verwendung eines Headers mit dem Abfrageparameter `X-ClientVersion` übergeben werden. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert.|Header|Zeichenfolge|
-|X-OsPlatform|(leer)   |Gibt den Namen und Version des Betriebssystems an, unter dem die Clientanwendung ausgeführt wird. Beispiele: „Android 5.0“, „iOs 8.1.3“, „Windows 8.1“.<br/>Dieser Wert kann anstelle der Verwendung eines Headers mit dem Abfrageparameter `X-OsPlatform` übergeben werden. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert.|Header|Zeichenfolge|
+|X-ClientVersion|(leer)    |Gibt die Version der Clientanwendung an. Beispiel: „2.1.0.123“.<br/>Dieser Wert kann anstelle der Verwendung eines Headers mit dem Abfrageparameter `X-ClientVersion` übergeben werden. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert.|Header|Zeichenfolge|
+|X-OsPlatform|(leer)   |Gibt den Namen und Version des Betriebssystems an, unter dem die Clientanwendung ausgeführt wird. Beispiele: „Android 5.0“, „iOS 8.1.3“, „Windows 8.1“.<br/>Dieser Wert kann anstelle der Verwendung eines Headers mit dem Abfrageparameter `X-OsPlatform` übergeben werden. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
@@ -189,7 +192,7 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter, und stellen Sie sicher, dass sie gültig sind. Das Antwortobjekt enthält eine ausführlichere Beschreibung des Fehlers.|||
 |401    |Nicht autorisiert. Stellen Sie sicher, dass Anmeldeinformationen festgelegt sind, dass diese gültig sind und dass es bei Ihrem Abonnement für den Azure-Datenmarkt keine Probleme gibt und ein Saldo verfügbar ist.|||
 |500    |Ein Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
-|503    |Der Server ist vorübergehend nicht verfügbar. Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
+|503    |Der Server ist vorübergehend nicht verfügbar.  Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
 
     
 

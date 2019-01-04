@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250732"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837170"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup).
@@ -108,7 +108,11 @@ Für [RMS for Individuals](/azure/information-protection/rms-for-individuals) we
 
 Die Schlüssel und die Vorlagen werden nicht verschoben, wenn sich der nicht verwaltete Mandant in einer anderen Region befindet. Angenommen, der nicht verwaltete Mandant befindet sich in Europa, und der Mandant, den Sie besitzen, befindet sich in Nordamerika. 
 
-Obwohl RMS for Individuals so konzipiert ist, dass es die Azure AD-Authentifizierung unterstützt, um geschützte Inhalte zu öffnen, hindert es Benutzer nicht daran, ebenfalls Inhalte zu schützen. Haben Benutzer Inhalte mit dem RMS for Individuals-Abonnement geschützt, und wurden die Schlüssel und die Vorlagen nicht verschoben, kann nach der Domänenübernahme nicht auf diese Inhalte zugegriffen werden.    
+Obwohl RMS for Individuals so konzipiert ist, dass es die Azure AD-Authentifizierung unterstützt, um geschützte Inhalte zu öffnen, hindert es Benutzer nicht daran, ebenfalls Inhalte zu schützen. Haben Benutzer Inhalte mit dem RMS for Individuals-Abonnement geschützt, und wurden die Schlüssel und die Vorlagen nicht verschoben, kann nach der Domänenübernahme nicht auf diese Inhalte zugegriffen werden.
+
+#### <a name="more-information-about-power-bi"></a>Weitere Informationen zu Power BI
+
+Beim Ausführen einer externen Übernahme werden Power BI-Inhalte, die vor der Übernahme erstellt wurden, in einem [archivierten Arbeitsbereich in Power BI](/power-bi/service-admin-power-bi-archived-workspace) platziert. Sie müssen alle Inhalte manuell migrieren, die im neuen Mandanten verwendet werden sollen.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD-PowerShell-Cmdlets für die ForceTakeover-Option
 Diese Cmdlets werden im [PowerShell-Beispiel](#powershell-example) verwendet.

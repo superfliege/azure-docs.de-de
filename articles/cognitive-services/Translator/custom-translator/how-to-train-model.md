@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 9ec8cbe3d2467714a4b2586db79566aaef30d6d7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 60e0485c28d90050a6ff775db41f8696a09fe033
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626768"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165757"
 ---
 # <a name="train-a-model"></a>Trainieren eines Modells
 
@@ -28,19 +28,15 @@ Trainieren Sie ein Modell wie folgt:
 
     -  Dokumentname: Name des Dokuments.
 
-    -  Kopplung: Gibt an, ob es sich um ein paralleles oder einsprachiges Dokument handelt.
-
-    - Einsprachige Dokumente werden für das Training derzeit nicht verwendet.
+    -  Kopplung: Gibt an, ob es sich um ein paralleles oder einsprachiges Dokument handelt. Einsprachige Dokumente werden für das Training derzeit nicht verwendet.
 
     -  Dokumenttyp: Hier kann Trainieren, Optimieren, Testen oder Wörterbuch als Typ angegeben werden.
 
     -  Sprachpaar: Gibt die Ausgangs- und Zielsprache für das Projekt an.
 
-    -  Source sentences (Ausgangssätze): Gibt die Anzahl von Sätzen an, die aus der
-    - Quelldatei extrahiert werden.
+    -  Ausgangssätze: Gibt die Anzahl von Sätzen an, die aus der Quelldatei extrahiert werden.
 
-    -  Target sentences (Zielsätze): Gibt die Anzahl von Sätzen an, die aus der
-    - Zieldatei extrahiert werden.
+    -  Zielsätze: Gibt die Anzahl von Sätzen an, die aus der Zieldatei extrahiert werden.
 
     ![Trainieren eines Modells](media/how-to/how-to-train-model.png)
 
@@ -67,11 +63,11 @@ Sie können ein Modell bearbeiten, indem Sie auf der Seite „Modelldetails“ d
 
 2.  Ändern Sie im Dialogfeld
 
-    1.  den Modellnamen (erforderlich): Geben Sie Ihrem Modell einen aussagekräftigen Namen.
+    1.  Modellname (erforderlich): Geben Sie Ihrem Modell einen aussagekräftigen Namen.
 
         ![Dialogfeld für Bearbeitung](media/how-to/how-to-edit-model-dialog.png)
 
-3.  Klicken Sie auf „Speichern“.
+3.  Klicken Sie auf Speichern.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

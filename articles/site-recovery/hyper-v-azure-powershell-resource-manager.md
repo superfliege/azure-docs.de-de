@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c20f61788086806d3eebb62d35b7ac9fbcbd6fb9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229406"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846928"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -47,7 +47,7 @@ Darüber hinaus gelten für das in diesem Artikel beschriebene Beispiel die folg
 
 1. Öffnen Sie eine PowerShell-Konsole, und führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Konto anzumelden. Das Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert: **Connect-AzureRmAccount**.
     - Alternativ können Sie die Kontoanmeldeinformationen als Parameter im Cmdlet **Connect-AzureRmAccount** mit dem Parameter **-Credential** einschließen.
-    - Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel: **Connect-AzureRmAccount -Tenant "fabrikam.com"**
+    - Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel:  **Connect-AzureRmAccount -Tenant "fabrikam.com"**
 2. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
@@ -84,7 +84,7 @@ Legen Sie den Tresorkontext wie folgt fest:
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>Schritt 4: Erstellen eines Hyper-V-Standorts
+## <a name="step-4-create-a-hyper-v-site"></a>Schritt 4: Erstellen einer Hyper-V-Site
 
 1. Erstellen Sie einen neuen Hyper-V-Standort wie folgt:
 
@@ -102,7 +102,7 @@ Legen Sie den Tresorkontext wie folgt fest:
 
 5. Kopieren Sie den heruntergeladenen Schlüssel in den Hyper-V-Host. Sie benötigen den Schlüssel, um den Hyper-V-Host am Standort zu registrieren.
 
-## <a name="step-5-install-the-provider-and-agent"></a>Schritt 5: Installieren des Anbieters und des Agents
+## <a name="step-5-install-the-provider-and-agent"></a>Schritt 5: Installieren Sie den Anbieter und den Agent.
 
 1. Laden Sie bei [Microsoft](https://aka.ms/downloaddra)das Installationsprogramm für die neueste Version des Anbieters herunter.
 2. Führen Sie das Installationsprogramm auf dem Hyper-V-Host aus.
@@ -175,7 +175,7 @@ Bevor Sie beginnen, muss sich das angegebene Speicherkonto in der gleichen Azure
 
 
 
-## <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
+## <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
 1. Führen Sie ein Testfailover wie folgt aus:
 
         $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

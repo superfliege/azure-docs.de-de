@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 34011144d4f960413e78f13c999dfddf6d2660bf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c4a289d1aeefc35f07e7598adf3780620b11f0da
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50742945"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252200"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter
 
@@ -36,7 +36,7 @@ Zum Konfigurieren der benutzerdefinierten Liste gesperrter Kennwörter ist eine 
    * Die benutzerdefinierte Liste gesperrter Kennwörter kann bis zu 1000 Wörter umfassen.
    * Bei der benutzerdefinierten Liste gesperrter Kennwörter wird die Groß- und Kleinschreibung nicht beachtet.
    * Die benutzerdefinierte Liste gesperrter Kennwörter berücksichtigt die Ersetzung häufiger Zeichen.
-      * Beispiel: „o“ und „0“ oder „a“ und „@“
+      * Beispiel: „o“ und „0“ oder „a“ und „\@“
    * Die Zeichenfolgen müssen mindestens vier und höchstens 16 Zeichen lang sein.
 1. Wenn Sie alle Zeichenfolgen hinzugefügt haben, klicken Sie auf **Speichern**.
 

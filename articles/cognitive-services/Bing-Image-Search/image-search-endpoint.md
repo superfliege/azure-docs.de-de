@@ -1,5 +1,5 @@
 ---
-title: Bildersuche-Endpunkte – Bing-Bildersuche-API
+title: Endpunkte für die Bing-Bildersuche-API
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der verfügbaren Endpunkte für die Bing-Bildersuche-API.
 services: cognitive-services
@@ -10,25 +10,25 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: ca38943908bf3eee04c40cf4decf81fd20b08a1f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb6213bbb27fc1a7086ccecafa7ae7b12040ac0a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295919"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250619"
 ---
-# <a name="image-search-endpoints"></a>Endpunkte für die Bildersuche
+# <a name="endpoints-for-the-bing-image-search-api"></a>Endpunkte für die Bing-Bildersuche-API
 
 Die **Bildersuche-API**  umfasst drei Endpunkte.  Endpunkt 1 gibt Bilder aus dem Internet basierend auf einer Abfrage zurück. Endpunkt 2 gibt [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) zurück.  Endpunkt 3 gibt beliebte Videos zurück.
 ## <a name="endpoints"></a>Endpunkte
 Um mithilfe der Bing-API Bildergebnisse zu erhalten, senden Sie eine Anforderung an einen der folgenden Endpunkte. Verwenden Sie die Header und die URL-Parameter, um Spezifikationen genauer zu definieren.
 
-**Endpunkt 1:** gibt Entitäten Bilder, die für die von `?q=""` definierte Suchabfrage des Benutzers relevant sind
+**Endpunkt 1:** Gibt Bilder, die für die von `?q=""` definierte Suchabfrage des Benutzers relevant sind, zurück.
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**Endpunkt 2:** gibt entweder mit `GET` oder `POST` Einblicke zum Bild zurück.
+**Endpunkt 2:** Gibt entweder mit `GET` oder `POST` Erkenntnisse zum Bild zurück.
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -37,7 +37,7 @@ Eine GET-Anforderung gibt Einblicke zu einem Bild zurück, z.B. Webseiten, die d
 Oder Sie können ein Binärbild in den Text einer `POST`-Anforderung einfügen und den [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested)-Parameter auf `RecognizedEntities` setzen. Dies gibt einen [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#insightstoken)-Parameter zurück, der in einer nachfolgenden `GET`-Anforderung verwendet wird, die Informationen über Personen im Bild zurückgibt.  Setzen Sie `modules` auf `All`, um alle Einblicke zu erhalten, außer `RecognizedEntities` in den Ergebnissen von `POST`, ohne einen weiteren Aufruf mit `insightsToken` zu machen.
 
 
-**Endpunkt 3:** gibt Bilder zurück, die auf der Grundlage von Suchanfragen anderer beliebt sind. Die Bilder sind in verschiedene Kategorien eingeteilt, z.B. nach Personen oder Ereignissen.
+**Endpunkt 3:** Gibt Bilder zurück, die auf der Grundlage von Suchanfragen anderer beliebt sind. Die Bilder sind in verschiedene Kategorien eingeteilt, z.B. nach Personen oder Ereignissen.
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 ```
@@ -49,7 +49,7 @@ Weitere Informationen zu Headern, Parametern, Marktcodes, Antwortobjekten, Fehle
 Die Antwort auf eine Bildersuchanforderung enthält die Ergebnisse als JSON-Objekten. Beispiele für die Analyse der Ergebnisse finden Sie unter [Tutorial](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) und [Quellcode](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die **Bing**-APIs unterstützen Suchaktionen, die Ergebnisse gemäß ihrem Typ zurückgeben. Alle Suchendpunkte geben Ergebnisse als JSON-Antwortobjekte zurück.  Alle Endpunkte unterstützen Abfragen, die eine bestimmte Sprache und/oder einen bestimmten Ort nach Längengrad, Breitengrad und Suchradius zurückgeben.
+Die **Bing**-APIs unterstützen Suchaktionen, die Ergebnisse gemäß ihrem Typ zurückgeben. Alle Suchendpunkte geben Ergebnisse als JSON-Antwortobjekte zurück.  Alle Endpunkte unterstützen Abfragen, die eine bestimmte Sprache und/oder einen bestimmten Ort nach Längengrad, Breitengrad und Suchradius zurückgeben.
 
 Vollständige Informationen zu den Parametern, die von jedem Endpunkt unterstützt werden, finden Sie auf den Referenzseiten für jeden Typ.
 Beispiele für grundlegende Anforderung mithilfe der Bildersuche-API finden Sie in den [Bildersuche-Schnellstarts](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web).

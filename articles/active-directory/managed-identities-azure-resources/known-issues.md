@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632788"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720183"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -94,8 +94,8 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 ```
 
 Hinweis: 
-- Der Erweiterungsname und Typ für Windows lautet: ManagedIdentityExtensionForWindows
-- Der Erweiterungsname und Typ für Linux lautet: ManagedIdentityExtensionForLinux
+- Erweiterungsname und -typ für Windows: ManagedIdentityExtensionForWindows
+- Erweiterungsname und -typ für Linux: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -113,9 +113,9 @@ Wenn die Schemaexportfunktion für die VM-Erweiterung für verwaltete Identität
 
 Wenn das Blatt „VM-Konfiguration“ auf Ihrem virtuellen Computer nicht angezeigt wird, wurden die verwalteten Identitäten für Azure-Ressourcen in Ihrer Region noch nicht im Portal aktiviert.  Überprüfen Sie dies später erneut.  Sie können die verwalteten Identitäten für Azure-Ressourcen auch mithilfe von [PowerShell](qs-configure-powershell-windows-vm.md) oder [Azure-Befehlszeilenschnittstelle](qs-configure-cli-windows-vm.md) auf Ihrem virtuellen Computer aktivieren.
 
-### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Zuweisen des Zugriffs auf virtuelle Computer im Blatt „Zugriffssteuerung (IAM)“ ist nicht möglich
+### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Zuweisen des Zugriffs auf virtuelle Computer auf dem Blatt „Zugriffssteuerung (IAM)“ ist nicht möglich
 
-Wenn im Azure-Portal unter **Zugriffssteuerung (IAM)** > **Berechtigungen hinzufügen** unter **Zugriff zuweisen zu** die Option **Virtueller Computer** nicht angezeigt wird, wurden in Ihrer Region verwaltete Identitäten für Azure-Ressourcen noch nicht im Portal aktiviert. Überprüfen Sie dies später erneut.  Sie können die Identität für den virtuellen Computer dennoch für die Rollenzuweisung auswählen, indem Sie nach dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen suchen.  Geben Sie den Namen des virtuellen Computers im Feld **Auswählen** ein, und der Dienstprinzipal wird im Suchergebnis angezeigt.
+Wenn im Azure-Portal unter **Zugriffssteuerung (IAM)** > **Rollenzuweisung hinzufügen** unter **Zugriff zuweisen zu** die Option **Virtueller Computer** nicht angezeigt wird, wurden in Ihrer Region verwaltete Identitäten für Azure-Ressourcen noch nicht im Portal aktiviert. Überprüfen Sie dies später erneut.  Sie können die Identität für den virtuellen Computer dennoch für die Rollenzuweisung auswählen, indem Sie nach dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen suchen.  Geben Sie den Namen des virtuellen Computers im Feld **Auswählen** ein, und der Dienstprinzipal wird im Suchergebnis angezeigt.
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Der virtuelle Computer kann nicht gestartet werden, nachdem er aus der Ressourcengruppe oder dem Abonnement verschoben wurde
 

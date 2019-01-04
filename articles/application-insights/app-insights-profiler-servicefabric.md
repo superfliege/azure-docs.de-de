@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 071d1acb592220f7da83a47fd7dffa757ef81a95
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3eb5b2300ea2af7bc778e0831d105f286eab247c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142866"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721407"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Erstellen von Profilen für Azure Service Fabric-Liveanwendungen mit Application Insights
 
@@ -30,7 +29,7 @@ Application Insights Profiler kann auch für diese Dienste bereitgestellt werden
 
 ## <a name="set-up-the-environment-deployment-definition"></a>Einrichten der Definition für die Umgebungsbereitstellung
 
-Application Insights Profiler ist in der Microsoft Azure-Diagnose enthalten. Die Erweiterung „Microsoft Azure-Diagnose“ kann mithilfe einer Azure RM-Vorlage für Ihren Service Fabric-Cluster installiert werden. Hier finden Sie eine Beispielvorlage: [**Vorlage zur Installation der Microsoft Azure-Diagnose auf einem Service Fabric-Cluster.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
+Application Insights Profiler ist in der Microsoft Azure-Diagnose enthalten. Die Erweiterung „Microsoft Azure-Diagnose“ kann mithilfe einer Azure RM-Vorlage für Ihren Service Fabric-Cluster installiert werden. Hier finden Sie eine Beispielvorlage: [**Vorlage zur Installation von Microsoft Azure-Diagnose auf einem Service Fabric-Cluster.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
 Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
 1. Zum Sicherstellen, dass [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwendet wird, ist es ausreichend, zu bestätigen, dass das bereitgestellte Betriebssystem `Windows Server 2012 R2` oder höher ist.

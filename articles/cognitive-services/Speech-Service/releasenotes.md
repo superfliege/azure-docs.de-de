@@ -1,21 +1,22 @@
 ---
-title: 'Spracherkennungsdienst-SDK: Dokumentation'
+title: Versionshinweise – Speech Services
 titlesuffix: Azure Cognitive Services
-description: Versionshinweise – Änderungen in den neuesten Versionen
+description: Hier finden Sie eine fortlaufende Liste von veröffentlichten Features, Verbesserungen, Fehlerbehebungen und bekannten Problemen bei Azure Speech Services.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: c99f1691618765e8997ef442a506c83b9a7bd4fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317890"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088300"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -58,13 +59,13 @@ Verbesserte Zuverlässigkeit und Fehlerbehebungen:
 * Ein potenziell schwerwiegender Fehler bei einer nicht festgelegten Eigenschaft wurde behoben.
 * Zusätzliche Fehler- und Parameterüberprüfungen wurden hinzugefügt.
 * Objective-C: Ein potenziell schwerwiegender Fehler durch Namensüberschreibungen in NSString wurde behoben.
-* Objective-C: Sichtbarkeit der API wurde angepasst.
+* Objective-C: Sichtbarkeit der API wurde angepasst
 * JavaScript: Korrektur in Bezug auf Ereignisse und deren Nutzlasten.
 * Verbesserungen bei der Dokumentation.
 
 Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispiel für JavaScript hinzugefügt.
 
-## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0: 2018-September-Release
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0: Release von September 2018
 
 **Neue Features**
 
@@ -76,14 +77,14 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 * Mit diesem Release werden einige Breaking Changes eingeführt.
   Ausführliche Informationen finden Sie auf [dieser Seite](https://aka.ms/csspeech/breakingchanges_1_0_0).
 
-## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: 2018-August-Release
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: Release von August 2018
 
 **Neue Features**
 
 * Mit dem Speech SDK erstellte UWP-Apps erfüllen nun die Anforderungen des Windows App Certification Kit (WACK).
   Sehen Sie sich den [UWP-Schnellstart](quickstart-csharp-uwp.md) an.
 * Unterstützung für .NET Standard 2.0 unter Linux (Ubuntu 16.04 x 64)
-* Experimentell: Unterstützung für Java 8 unter Windows (64 Bit) und Linux (Ubuntu 16.04 x 64).
+* Experimentell: Unterstützung für Java 8 unter Windows (64 Bit) und Linux (Ubuntu 16.04 x64).
   Sehen Sie sich den [Schnellstart zur Java Runtime Environment](quickstart-java-jre.md) an.
 
 **Funktionale Änderung**
@@ -102,11 +103,11 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 * Ein Problem wurde behoben, das dazu führen konnte, dass lange ausgeführte Erkennungen während der Übertragung beendet wurden.
 * Eine Racebedingung beim Herunterfahren der Erkennung wurde behoben.
 
-## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0: 2018-July-Release
+## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0: Release von Juli 2018
 
 **Neue Features**
 
-* Unterstützung für die Android-Plattform (API 23: Android 6.0 Marshmallow oder höher). Sehen Sie sich den [Android-Schnellstart](quickstart-java-android.md) an.
+* Unterstützung für Android-Plattform (API 23: Android 6.0 Marshmallow oder höher). Sehen Sie sich den [Android-Schnellstart](quickstart-java-android.md) an.
 * Unterstützung für .NET Standard 2.0 unter Windows. Sehen Sie sich den [.NET Core-Schnellstart](quickstart-csharp-dotnetcore-windows.md) an.
 * Experimentell: Unterstützung für UWP unter Windows (Version 1709 oder höher).
   * Sehen Sie sich den [UWP-Schnellstart](quickstart-csharp-uwp.md) an.
@@ -139,7 +140,7 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 * Das Speech SDK für Android meldet die Ergebnisse der Sprachsynthese für Übersetzungen nicht. Dieses Problem wird im nächsten Release behoben.
 
-## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services Speech SDK 0.4.0: 2018-June-Release
+## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services Speech SDK 0.4.0: Release von Juni 2018
 
 **Funktionale Änderungen**
 
@@ -175,6 +176,6 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 Weitere Beispiele wurden hinzugefügt und werden regelmäßig aktualisiert. Die Sammlung der aktuellsten Beispiele finden Sie im [GitHub-Repository mit Beispielen für das Speech SDK](https://aka.ms/csspeech/samples).
 
-## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Cognitive Services Speech SDK 0.2.12733: 2018-May-Release
+## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Cognitive Services Speech SDK 0.2.12733: Release von Mai 2018
 
 Dieses Release ist erste öffentliche Vorschauversion des Cognitive Services Speech SDK.

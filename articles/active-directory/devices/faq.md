@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3fd0dfb327e925ecb28a7ca12e03b79c873118dc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a0cfd65aa2444956336e5363d20acab61a404c68
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309343"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309177"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
-**F: Ich habe das Gerät vor kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen? Oder: Warum ist der Gerätebesitzer für in Azure AD eingebundene Hybridgeräte als „N/V“ markiert?**
-**A:** Windows 10-Geräte, die als Hybridgeräte in Azure AD eingebunden sind, werden nicht unter den BENUTZER-Geräten aufgeführt.
+**F: Ich habe das Gerät vor Kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen? Oder warum ist der Gerätebesitzer für in Azure AD eingebundene Hybridgeräte als „N/V“ markiert?**
+**A:** Windows 10-Geräte, die in Azure AD eingebundene Hybridgeräte sind, werden nicht unter den BENUTZER-Geräten angezeigt.
 Sie müssen die Ansicht „Alle Geräte“ im Azure-Portal verwenden. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) verwenden.
 
 Nur die folgenden Geräte werden unter den BENUTZER-Geräten aufgeführt:
@@ -38,20 +38,20 @@ Nur die folgenden Geräte werden unter den BENUTZER-Geräten aufgeführt:
 
 **F: Wie ermittle ich den Geräteregistrierungsstatus des Clients?**
 
-**A**: Sie können im Azure-Portal zu „Alle Geräte“ navigieren und mithilfe der Geräte-ID nach dem Gerät suchen. Überprüfen Sie den Wert in der Spalte „Jointyp“. In einigen Fällen wurde das Gerät zurückgesetzt oder ein neues Image wurde davon erstellt. Daher ist es wichtig, den Geräteregistrierungsstatus auch auf dem Gerät zu überprüfen:
+**A:** Sie können im Azure-Portal zu „Alle Geräte“ navigieren und mithilfe der Geräte-ID nach dem Gerät suchen. Überprüfen Sie den Wert in der Spalte „Jointyp“. In einigen Fällen wurde das Gerät zurückgesetzt oder ein Reimaging durchgeführt. Daher ist es wichtig, den Geräteregistrierungsstatus auch auf dem Gerät zu überprüfen:
 
 - Führen Sie für Geräte mit Windows 10, Windows Server 2016 oder höher „dsregcmd.exe /status“ aus.
 - Führen Sie für frühere Betriebssystemversionen das Programm „%programFiles%\Microsoft Workplace Join\autoworkplace.exe“ aus.
 
 ---
 
-**F: Ich sehe den Gerätedatensatz im Azure-Portal in den Informationen unter BENUTZER und sehe, dass der Status auf dem Gerät „registriert“ lautet. Sind diese Einstellungen für den bedingten Zugriff richtig?**
+**F: Ich sehe den Gerätedatensatz im Azure-Portal in den Informationen unter BENUTZER, und dass der Status auf dem Gerät „Registriert“ lautet. Sind diese Einstellungen für den bedingten Zugriff richtig?**
 
-**A:** Der Verknüpfungsstatus des Geräts, der in „deviceID“ festgehalten ist, muss mit dem Status in Azure AD übereinstimmen und alle Bewertungskriterien für bedingten Zugriff erfüllen. Weitere Informationen finden Sie unter [Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](../conditional-access/require-managed-devices.md).
+**A:** Der Verknüpfungsstatus des Geräts, der in „deviceID“ angegeben ist, muss mit dem Status in Azure AD übereinstimmen und alle Bewertungskriterien für den bedingten Zugriff erfüllen. Weitere Informationen finden Sie unter [Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](../conditional-access/require-managed-devices.md).
 
 ---
 
-**F: Ich habe im Azure-Portal oder mithilfe von Windows PowerShell ein Gerät gelöscht, aber der lokale Status für das Gerät besagt, dass es weiterhin registriert ist. Ist dies in Ordnung?**
+**F: Ich habe im Azure-Portal oder mithilfe von Windows PowerShell ein Gerät gelöscht, aber der lokale Status für das Gerät gibt an, dass es weiterhin registriert ist. Ist dies in Ordnung?**
 
 **A:** Dies ist beabsichtigt. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. 
 
@@ -96,7 +96,7 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 ---
 
-# <a name="azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Join
+## <a name="azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Join
 
 **F: Wie entferne ich ein in Azure AD eingebundenes Gerät lokal auf dem Gerät?**
 
@@ -110,31 +110,31 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 **F: Können sich meine Benutzer bei in Azure AD eingebundenen Geräten anmelden, die in Azure AD gelöscht oder deaktiviert wurden?**
 **A:** Ja. Windows bietet die Möglichkeit der zwischengespeicherten Anmeldung, um zuvor angemeldeten Benutzern auch ohne Netzwerkverbindung das schnelle Zugreifen auf den Desktop zu ermöglichen. Ein in Azure AD gelöschtes oder deaktiviertes Gerät wird vom Windows-Gerät nicht erkannt. Zuvor angemeldete Benutzer können daher über die zwischengespeicherte Anmeldung weiterhin auf den Desktop zugreifen. Wenn das Gerät gelöscht oder deaktiviert wird, können die Benutzer jedoch nicht auf durch den gerätebasierten bedingten Zugriff geschützte Ressourcen zugreifen. 
 
-Benutzer, die noch nicht angemeldet waren, können nicht auf das Gerät zugreifen, weil für sie keine zwischengespeicherte Anmeldung aktiviert ist. 
+Benutzer, die noch nicht angemeldet waren, können nicht auf das Gerät zugreifen, da für sie keine zwischengespeicherte Anmeldung aktiviert ist. 
 
 ---
 
 **F: Können sich deaktivierte oder gelöschte Benutzer bei in Azure AD eingebundenen Geräten anmelden?**
 **A:** Ja, aber nur für einen begrenzten Zeitraum. Ein in Azure AD gelöschter oder deaktivierter Benutzer wird vom Windows-Gerät nicht sofort erkannt. Zuvor angemeldete Benutzer können daher über die zwischengespeicherte Anmeldung auf den Desktop zugreifen. Sobald das Gerät den Benutzerstatus erkannt hat (in der Regel in weniger als 4 Stunden), hindert Windows diese Benutzer am Zugriff auf den Desktop. Wenn Benutzer in Azure AD gelöscht oder deaktiviert werden, erfolgt ein Widerruf aller zugehörigen Token, damit sie auf keine Ressourcen zugreifen können. 
 
-Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, können nicht auf ein Gerät zugreifen, weil für sie keine zwischengespeicherte Anmeldung aktiviert ist. 
+Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, können nicht auf ein Gerät zugreifen, da für sie keine zwischengespeicherte Anmeldung aktiviert ist. 
 
 ---
 
-**F: Meine Benutzer können von in Azure AD eingebundenen Geräten aus keine Drucker durchsuchen. Wie kann ich das Drucken von in Azure AD eingebundenen Geräten aktivieren?**
+**F: Meine Benutzer können über in Azure AD eingebundene Geräte keine Drucker suchen. Wie kann ich das Drucken über in Azure AD eingebundene Geräte aktivieren?**
 
 **A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Drucken in Hybrid Clouds](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
 
 ---
 
-**F: Wie kann ich eine Verbindung zu einem in einen Azure AD-Remoteserver eingebundenen Gerät herstellen?**
+**F: Wie kann ich eine Verbindung mit einem in Azure AD eingebundenen Remotegerät herstellen?**
 **A:** Weitere Informationen finden Sie im Artikel https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc.
 
 ---
 
 **F: Warum wird meinen Benutzern angezeigt: „You can’t get there from here“ (Von hier haben Sie darauf keinen Zugriff)?**
 
-**A:** Wenn Sie bestimmte Regeln für bedingten Zugriff konfiguriert haben, die einen spezifischen Gerätestatus erfordern, und das Gerät die Kriterien nicht erfüllt, werden Benutzer blockiert, und sie erhalten diese Meldung. Bitte werten Sie die Richtlinien zum bedingten Zugriff aus, und stellen Sie sicher, dass das Gerät die Kriterien erfüllen kann, damit diese Meldung nicht mehr angezeigt wird.
+**A:** Wenn Sie bestimmte Regeln für bedingten Zugriff konfiguriert haben, die einen spezifischen Gerätestatus erfordern, und das Gerät die Kriterien nicht erfüllt, werden Benutzer blockiert, und sie erhalten diese Meldung. Werten Sie die Richtlinien zum bedingten Zugriff aus, und stellen Sie sicher, dass das Gerät die Kriterien erfüllen kann, damit diese Meldung nicht mehr angezeigt wird.
 
 ---
 
@@ -144,7 +144,7 @@ Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, k�
 
 ---
 
-**F: Warum erscheint die Meldung „Benutzername oder Kennwort ist falsch“ für ein Gerät, das ich vor kurzem in Azure AD eingebunden habe?**
+**F: Warum wird die Meldung „Benutzername oder Kennwort ist falsch“ für ein Gerät angezeigt, das ich vor Kurzem in Azure AD eingebunden habe?**
 
 **A:** Häufige Ursachen für dieses Szenario:
 
@@ -166,13 +166,13 @@ Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, k�
 
 **F: Warum konnte ich meinen PC nicht in Azure AD einbinden, obwohl ich keine Fehlerinformationen erhalten habe?**
 
-**A**: Wahrscheinlich ist der Benutzer mit dem lokalen integrierten Administratorkonto beim Gerät angemeldet. Erstellen Sie ein anderes lokales Konto, bevor Sie Azure Active Directory Join verwenden, um die Einrichtung abzuschließen. 
+**A:** Wahrscheinlich ist der Benutzer mit dem lokalen integrierten Administratorkonto beim Gerät angemeldet. Erstellen Sie ein anderes lokales Konto, bevor Sie Azure Active Directory Join verwenden, um die Einrichtung abzuschließen. 
 
 ---
 
-# <a name="hybrid-azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Hybrid Join
+## <a name="hybrid-azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Hybrid Join
 
-**F: Wo finde ich Problembehandlungsinformationen für das Diagnostizieren bei Azure AD Hybrid Join-Fehlern?**
+**F: Wo finde ich Problembehandlungsinformationen für die Diagnose von Azure AD Hybrid Join-Fehlern?**
 
 **A:** Informationen zur Problembehandlung finden Sie unter:
 
@@ -183,7 +183,7 @@ Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, k�
 
 ---
 
-# <a name="azure-ad-register-faq"></a>Häufig gestellte Fragen zur Azure AD-Registrierung
+## <a name="azure-ad-register-faq"></a>Häufig gestellte Fragen zur Azure AD-Registrierung
 
 **F: Kann ich Android- oder iOS-BYOD-Geräte registrieren?**
 
@@ -191,7 +191,7 @@ Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, k�
 
 **F: Wie kann ich ein macOS-Gerät registrieren?**
 
-**A:** So registrieren Sie ein macOS-Gerät:
+**A:** So registrieren Sie ein macOS-Gerät
 
 1.  [Erstellen Sie eine Konformitätsrichtlinie](https://docs.microsoft.com/intune/compliance-policy-create-mac-os).
 2.  [Definieren Sie eine Richtlinie zum bedingten Zugriff für macOS-Geräte](../active-directory-conditional-access-azure-portal.md). 

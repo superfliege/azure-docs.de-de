@@ -1,21 +1,22 @@
 ---
-title: Zusammenarbeit mit anderen Mitwirkenden an LUIS-Apps
-titleSuffix: Azure Cognitive Services
+title: Zusammenarbeit mit anderen Benutzern
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ein App-Besitzer kann einer App Projektmitarbeiter hinzufügen. Diese Projektmitarbeiter können das Modell ändern und die App trainieren und veröffentlichen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b7d108bfc0c4283e7856b93daba3f4f92af4cc5b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042192"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086418"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Gewusst wie: Verwalten von Erstellern und Mitwirkenden 
 
@@ -31,7 +32,7 @@ Eine App hat einen einzelnen Autor, den Besitzer, sie kann aber viele Mitarbeite
 
 2. Wählen Sie auf der Symbolleiste **Projektmitarbeiter hinzufügen** aus.
 
-    [![](./media/luis-how-to-collaborate/add-collaborator.png "Projektmitarbeiter hinzufügen")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+    [![Hinzufügen von Projektmitarbeitern](./media/luis-how-to-collaborate/add-collaborator.png "Hinzufügen von Projektmitarbeitern")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
 3. Geben Sie die E-Mail-Adresse ein, die der Projektmitarbeiter für die Anmeldung beim LUIS-Portal verwendet.
 

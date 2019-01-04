@@ -1,6 +1,7 @@
 ---
-title: Ändern der Größe und Zuschneiden von Bing-Miniaturbildern – Bing-Bildersuche-API
-description: Erfahren Sie, wie Sie die Größe von Miniaturbildern ändern und sie zuschneiden, die in einer Antwort der Bing-Bildersuche-API enthalten sind.
+title: Ändern der Größe und Zuschneiden von Miniaturbildern – Bing-Bildersuche-API
+titleSuffix: Azure Cognitive Services
+description: Ändern Sie die Größe von Miniaturbildern, die in einer Antwort der Bing-Bildersuche-API enthalten sind, und schneiden Sie sie zu.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: de82cc5554af91294dda3826dfb394cc94dbf3d0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 3bb360cd95dcbfb95464b2b259dcebfce7065256
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296226"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256385"
 ---
-# <a name="resizing-and-cropping-thumbnail-images"></a>Ändern der Größe und Zuschneiden von Miniaturbildern
+# <a name="resize-and-crop-thumbnail-images"></a>Ändern der Größe und Zuschneiden von Miniaturbildern
 
 Bei der Verarbeitung einer Suchabfrage generiert Bing Miniaturansichtsinformationen für alle Bilder in der [Antwort](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format). Diese Informationen können zum Anzeigen aller oder eine Teilmenge der zurückgegebenen Miniaturansichten verwendet werden. Wenn Sie eine Teilmenge anzeigen, stellen Sie eine Möglichkeit bereit, die restlichen Bilder anzuzeigen.
 

@@ -1,7 +1,7 @@
 ---
 title: Häufig gestellte Fragen (FAQ) – Bing-Websuche-API
 titleSuffix: Azure Cognitive Services
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Bing-Websuche-API.
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung der Bing-Websuche-API.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: bing-web-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: aahi
-ms.openlocfilehash: dbff161f96949100703451a64875079288574014
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec2018
+ms.openlocfilehash: 9098ddc780e6adefa8430fe601e3f4d06634972a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162420"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252982"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -65,4 +66,4 @@ Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? S
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [Stapelüberlauf: Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow: Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)

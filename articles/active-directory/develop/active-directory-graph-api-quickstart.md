@@ -18,14 +18,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7a3c3e39792119d296c849c012d4798ec85a0e03
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687349"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845481"
 ---
-# <a name="how-to-use-the-azure-ad-graph-api"></a>Gewusst wie: Verwenden der Azure AD Graph-API
+# <a name="how-to-use-the-azure-ad-graph-api"></a>Gewusst wie: Verwenden der Azure AD-Graph-API
 
 Die Azure Active Directory (Azure AD) Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über OData-REST-API-Endpunkte. Anwendungen können die Azure AD Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen. Beispielsweise können Sie die Azure AD Graph-API verwenden, um einen neuen Benutzer zu erstellen, Eigenschaften des Benutzers anzuzeigen oder zu aktualisieren, das Kennwort des Benutzers zu ändern, die Gruppenmitgliedschaft für den rollenbasierten Zugriff zu überprüfen und den Benutzer zu deaktivieren oder zu löschen. Weitere Informationen zu den Azure AD Graph-API-Features und Anwendungsszenarios finden Sie unter [Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) und [Voraussetzungen für die Azure AD Graph-API](https://msdn.microsoft.com/library/hh974476.aspx).
 
@@ -40,7 +40,7 @@ In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (
 
 * **Dienststamm:** In der Azure AD Graph-API ist der Dienststamm immer https://graph.windows.net.
 * **Mandanten-ID:** Dieser Abschnitt kann ein überprüfter (registrierter) Domänenname sein, im Beispiel oben ist dies „contoso.com“. Es kann aber auch eine Objekt-ID des Mandanten oder der Alias „myorganization“ oder „me“ sein. Weitere Informationen finden Sie unter [Adressieren von Entitäten und Vorgängen in der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
-* **Ressourcenpfad:** Dieser Abschnitt einer URL identifiziert die Ressource, mit der interagiert werden soll (Benutzer, Gruppen, ein bestimmter Benutzer oder eine bestimmte Gruppe usw.). Im obigen Beispiel ist es die oberste Ebene „groups“ zum Adressieren dieses Ressourcensatzes. Sie können auch eine bestimmte Entität adressieren, beispielsweise "users/{objectId}" oder "users/userPrincipalName".
+* **Ressourcenpfad**: Dieser Abschnitt einer URL identifiziert die Ressource, mit der interagiert werden soll (Benutzer, Gruppen, ein bestimmter Benutzer, eine bestimmte Gruppe usw.). Im obigen Beispiel ist es die oberste Ebene „groups“ zum Adressieren dieses Ressourcensatzes. Sie können auch eine bestimmte Entität adressieren, beispielsweise "users/{objectId}" oder "users/userPrincipalName".
 * **Abfrageparameter:** Ein Fragezeichen (?) trennt den Abschnitt für den Ressourcenpfad vom Abschnitt für Abfrageparameter. Der Abfrageparameter „api-version“ ist für alle Anforderungen in der Azure AD Graph-API erforderlich. Die Azure AD Graph-API unterstützt außerdem die folgenden OData-Abfrageoptionen: **$filter**, **$orderby**, **$expand**, **$top** und **$format**. Die folgenden Abfrageoptionen werden zurzeit nicht unterstützt: **$count**, **$inlinecount** und **$skip**. Weitere Informationen finden Sie unter [Unterstützte Abfragen, Filter und Paginierungsoptionen in der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
 ## <a name="graph-api-versions"></a>Graph-API-Versionen
@@ -66,9 +66,9 @@ Im folgenden Screenshot wird die Ausgabe angezeigt, die Sie sehen würden, wenn 
 
 ![Azure AD Graph-API-Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**Laden des Azure AD Graph-Explorers**: Navigieren Sie zu [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/), um das Tool zu laden. Klicken Sie auf **Anmelden**, um sich mit den Anmeldeinformationen Ihres Azure AD-Kontos anzumelden und den Azure AD Graph-Explorer für Ihren Mandanten auszuführen. Wenn Sie den Azure AD Graph-Explorer für Ihren eigenen Mandanten ausführen, müssen Sie oder Ihr Administrator während der Anmeldung zustimmen. Wenn Sie ein Office 365-Abonnement haben, verfügen Sie automatisch über einen Azure AD-Mandanten. Die Anmeldeinformationen, die Sie verwenden, um sich bei Office 365 anzumelden, sind tatsächlich Azure AD-Konten, und Sie können diese Anmeldeinformationen mit dem Azure AD Graph-Explorer verwenden.
+**Laden des Azure AD Graph-Testers:** Navigieren Sie zu [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/), um das Tool zu laden. Klicken Sie auf **Anmelden**, um sich mit den Anmeldeinformationen Ihres Azure AD-Kontos anzumelden und den Azure AD Graph-Explorer für Ihren Mandanten auszuführen. Wenn Sie den Azure AD Graph-Explorer für Ihren eigenen Mandanten ausführen, müssen Sie oder Ihr Administrator während der Anmeldung zustimmen. Wenn Sie ein Office 365-Abonnement haben, verfügen Sie automatisch über einen Azure AD-Mandanten. Die Anmeldeinformationen, die Sie verwenden, um sich bei Office 365 anzumelden, sind tatsächlich Azure AD-Konten, und Sie können diese Anmeldeinformationen mit dem Azure AD Graph-Explorer verwenden.
 
-**Ausführen einer Abfrage:** Um eine Abfrage auszuführen, geben Sie Ihre Abfrage in das Textfeld für die Anforderung ein, und klicken Sie auf **GET**, oder drücken Sie die **EINGABETASTE**. Die Ergebnisse werden im Antwortfeld angezeigt. Beispielsweise listet `https://graph.windows.net/myorganization/groups?api-version=1.6` alle Gruppenobjekte im Verzeichnis des angemeldeten Benutzers auf.
+**Ausführen einer Abfrage:** Um eine Abfrage auszuführen, geben Sie Ihre Abfrage im Textfeld für die Anforderung ein, und klicken Sie auf **GET**, oder drücken Sie die **EINGABETASTE**. Die Ergebnisse werden im Antwortfeld angezeigt. Beispielsweise listet `https://graph.windows.net/myorganization/groups?api-version=1.6` alle Gruppenobjekte im Verzeichnis des angemeldeten Benutzers auf.
 
 Beachten Sie die folgenden Funktionen und Einschränkungen für den Azure AD Graph-Explorer:
 
@@ -82,13 +82,13 @@ Beachten Sie die folgenden Funktionen und Einschränkungen für den Azure AD Gra
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>Verwenden von Fiddler zum Schreiben in das Verzeichnis
 
-Im Rahmen dieses Schnellstarthandbuchs können Sie den Fiddler-Webdebugger verwenden, um Schreibvorgänge in das Azure AD-Verzeichnis zu üben. Sie können z.B. das Profilfoto eines Benutzers abrufen und hochladen (dies ist mit dem Azure AD Graph-Explorer nicht möglich). Weitere Informationen – auch zur Installation – von Fiddler finden Sie unter [http://www.telerik.com/fiddler](http://www.telerik.com/fiddler).
+Im Rahmen dieses Schnellstarthandbuchs können Sie den Fiddler-Webdebugger verwenden, um Schreibvorgänge in das Azure AD-Verzeichnis zu üben. Sie können z.B. das Profilfoto eines Benutzers abrufen und hochladen (dies ist mit dem Azure AD Graph-Explorer nicht möglich). Weitere Informationen – auch zur Installation – von Fiddler finden Sie unter [https://www.telerik.com/fiddler](https://www.telerik.com/fiddler).
 
 Im folgenden Beispiel verwenden Sie den Fiddler-Webdebugger, um die neue Sicherheitsgruppe „MyTestGroup“ in Ihrem Azure AD-Verzeichnis zu erstellen.
 
-**Abrufen eines Zugriffstokens**: Für den Zugriff auf Azure AD Graph müssen sich Clients zuerst bei Azure AD authentifizieren. Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md).
+**Abrufen eines Zugriffstokens:** Für den Zugriff auf Azure AD Graph müssen sich Clients zuerst bei Azure AD authentifizieren. Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md).
 
-**Erstellen und Ausführen einer Abfrage**: Führen Sie die folgenden Schritte aus:
+**Erstellen und Ausführen einer Abfrage:** Führen Sie die folgenden Schritte aus:
 
 1. Öffnen Sie den Fiddler-Webdebugger, und wechseln Sie zur Registerkarte **Composer** .
 2. Da Sie eine neue Sicherheitsgruppe erstellen möchten, wählen Sie **Post** als HTTP-Methode aus dem Dropdownmenü aus. Weitere Informationen zu Vorgängen und Berechtigungen für eine Gruppe finden Sie unter [Gruppe](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity) in der [Azure AD Graph-REST-API-Referenz](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).

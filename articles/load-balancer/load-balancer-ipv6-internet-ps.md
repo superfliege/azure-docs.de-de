@@ -1,23 +1,25 @@
 ---
-title: Erstellen eines Azure-Lastenausgleichs für den Internetzugriff mit IPv6 – PowerShell | Microsoft-Dokumentation
+title: Erstellen eines Load Balancers mit Internetzugriff und IPv6 – PowerShell
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 71164899de9e4351e2da5ce469f0d7ae0373829f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c62ef62a4a16f78003087347548c12793d61b10f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741333"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162408"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager
 

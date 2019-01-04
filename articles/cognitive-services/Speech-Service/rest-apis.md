@@ -1,5 +1,5 @@
 ---
-title: REST-APIs des Speech-Diensts – Speech-Dienst
+title: Speech Services-REST-APIs – Speech Services
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Spracherkennungs- und Text-to-Speech-REST-APIs verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: ce9b3df5093d51eac0a151269b486b5f1310700c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584858"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338889"
 ---
 # <a name="speech-service-rest-apis"></a>REST-APIs des Speech-Diensts
 
@@ -30,10 +31,10 @@ Bevor Sie REST-APIs verwenden, müssen Sie Folgendes wissen:
 
 Jede Anforderung an die Spracherkennungs- oder Text-to-Speech-REST-API erfordert einen Autorisierungsheader. Diese Tabelle zeigt, welche Header für welchen Dienst unterstützt werden:
 
-| Unterstützte Autorisierungsheader | Spracherkennung | Text-to-Speech |
+| Unterstützte Autorisierungsheader | Spracherkennung | Text-zu-Sprache |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | JA | Nein  |
-| Authorization: Bearer | JA | JA |
+| Autorisierung: Bearer | JA | JA |
 
 Wenn Sie den Header `Ocp-Apim-Subscription-Key` verwenden, müssen Sie nur Ihren Abonnementschlüssel angeben. Beispiel: 
 
@@ -321,9 +322,20 @@ Die segmentierte Übertragung (`Transfer-Encoding: chunked`) kann die Erkennungs
 Dieses Codebeispiel zeigt, wie Sie Audio in Blöcken senden. Nur der erste Block sollte den Header der Audiodatei enthalten. `request` ist ein HTTPWebRequest-Objekt, das mit dem entsprechenden REST-Endpunkt verbunden ist. `audioFile` ist der Pfad zu einer Audiodatei auf dem Datenträger.
 
 ```csharp
+
+    HttpWebRequest request = null;
+    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+    request.SendChunked = true;
+    request.Accept = @"application/json;text/xml";
+    request.Method = "POST";
+    request.ProtocolVersion = HttpVersion.Version11;
+    request.Host = host;
+    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
+    request.AllowWriteStreamBuffering = false;
+
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-
     /*
     * Open a request stream and write 1024 byte chunks in the stream one at a time.
     */
@@ -423,20 +435,10 @@ Hier sehen Sie eine typische Antwort für die Erkennung `detailed`.
 
 ## <a name="text-to-speech-api"></a>Text-to-Speech-API
 
-Diese Regionen werden für die Konvertierung von Text in Sprache über die REST-API unterstützt. Achten Sie darauf, dass Sie den Endpunkt für Ihre Abonnementregion auswählen.
+Die Text-to-Speech-REST-API unterstützt neuronale und Standardstimmen für die Sprachsynthese. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
-
-Der Speech-Dienst unterstützt 24-KHz-Audioausgabe zusätzlich zu der 16-KHz-Ausgabe, die von der Bing-Spracheingabe unterstützt wird. Es werden vier 24-KHz-Ausgabeformate und zwei 24-KHz-Stimmen unterstützt.
-
-### <a name="voices"></a>Stimmen
-
-| Gebietsschema | Sprache   | Geschlecht | Zuordnung |
-|--------|------------|--------|---------|
-| en-US  | Englisch (USA) | Female | Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS) |
-| en-US  | Englisch (USA) | Male   | Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS) |
-
-Eine vollständige Liste der verfügbaren Stimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
+* Eine vollständige Liste der Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+* Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#text-to-speech).
 
 ### <a name="request-headers"></a>Anforderungsheader
 
@@ -451,7 +453,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 
 ### <a name="audio-outputs"></a>Audioausgaben
 
-Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben.
+Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Speech-Dienst unterstützt Audioausgaben mit 24 kHz und 16 kHz.
 
 |||
 |-|-|

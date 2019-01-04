@@ -1,5 +1,5 @@
 ---
-title: Lizenzbedingungen für das SDK für sprachaktivierte Geräte
+title: Lizenzbedingungen für das Speech-Geräte-SDK – Speech Services
 titleSuffix: Azure Cognitive Services
 description: Lizenzbedingungen für das SDK für sprachaktivierte Geräte.
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: dea27d7363210580d5f040de7ea1db770701d9c9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: b1605337a810c635bfa40cd05e2f9b15d2e5a7e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466119"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078513"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Lizenzbedingungen für das SDK für sprachaktivierte Geräte
 
-## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>MICROSOFT-SOFTWARE-LIZENZBEDINGUNGEN<br>SOFTWARE DEVELOPMENT KIT (SDK) FÜR SPRACHAKTIVIERTE GERÄTE 
+## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>MICROSOFT-SOFTWARE-LIZENZBEDINGUNGEN<br>SOFTWARE DEVELOPMENT KIT (SDK) FÜR SPRACHAKTIVIERTE GERÄTE
 
 > WENN SICH IHR WOHNSITZ (ODER BEI EINEM UNTERNEHMEN DER HAUPTSITZ) IN DEN USA BEFINDET, LESEN SIE DEN ABSCHNITT „VERBINDLICHE SCHIEDSKLAUSEL UND VERZICHT AUF SAMMELKLAGEN“ WEITER UNTEN. DIESER BEZIEHT SICH AUF DIE BEILEGUNG VON STREITIGKEITEN.
 
@@ -57,7 +58,7 @@ f) Sie dürfen die Software nur in Verbindung mit Microsoft Azure Cognitive Serv
 
 **5\. FEEDBACK.** Wenn Sie Microsoft Feedback zu der Software zukommen lassen, gewähren Sie Microsoft unentgeltlich das Recht, Ihr Feedback auf beliebige Weise und zu beliebigen Zwecken zu nutzen, freizugeben und zu kommerzialisieren. Sie geben kein Feedback ab, das einer Lizenz unterliegt, durch die Microsoft seine Software oder Dokumentation gegenüber Drittparteien lizenzieren muss, da Microsoft Ihr Feedback darin verwendet. Diese Rechte gelten über diese Vereinbarung hinaus.
 
-**6\. ZEITRAUM.** Diese Vereinbarung tritt mit Ihrer Zustimmung in Kraft und kann von Ihnen oder Microsoft jederzeit beendet werden. 
+**6\. ZEITRAUM.** Diese Vereinbarung tritt mit Ihrer Zustimmung in Kraft und kann von Ihnen oder Microsoft jederzeit beendet werden.
 
 **7\. KÜNDIGUNG.** Unbeschadet sonstiger Rechte kann Microsoft diese Vereinbarung kündigen, wenn Sie eine der Bedingungen nicht einhalten. In diesem Fall müssen Sie alle Kopien der Software und aller ihrer Komponenten vernichten.
 

@@ -10,32 +10,32 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 73c65aa5c95887c8b1f6eb5e4cf91e19815eba15
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345202"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741877"
 ---
-# <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Languages-Methode
+# <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Sprachen
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 Die Sprachübersetzung erweitert ständig die Liste der von den Diensten unterstützten Sprachen. Verwenden Sie diese API, um die Sprachen zu ermitteln, die zur Verwendung mit dem Sprachübersetzungsdienst verfügbar sind.
 
-Codebeispiele, die die Verwendung der API zum Abrufen der verfügbaren Sprachen veranschaulichen finden Sie auf der [GitHub-Website zu Microsoft Translator](https://github.com/MicrosoftTranslator).
+Codebeispiele, die die Verwendung der API zum Abrufen der verfügbaren Sprachen veranschaulichen, finden Sie auf der [GitHub-Website zu Microsoft Translator](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Hinweise zur Implementierung
 
-GET /languages 
+### <a name="get-languages"></a>GET /languages 
 
 Eine umfangreiche Auswahl an Sprachen ist zum Transkribieren von Sprache, Übersetzen der transkribierten Sprache und Erzeugen synthetisierter Sprache der Übersetzung verfügbar.
 
 Ein Client verwendet den Abfrageparameter `scope`, um zu definieren, an welchen Sprachen er interessiert ist.
 
-* **Spracherkennung:** Verwenden Sie den Abfrageparameter `scope=speech`, um die Sprachen abzurufen, die zum Transkribieren der gesprochenen Sprache verfügbar sind.
-* **Textübersetzung:** Verwenden Sie den Abfrageparameter `scope=text`, um die Sprachen abzurufen, die zum Übersetzen des transkribierten Texts verfügbar sind.
-* **Sprachsynthese:** Verwenden Sie den Abfrageparameter `scope=tts`, um die Sprachen und Stimmen abzurufen, die für die Sprachsynthese des übersetzten Texts in Sprache verfügbar sind.
+* **Spracherkennung:** Verwenden Sie den Abfrageparameter `scope=speech`, um die Sprachen abzurufen, die zum Transkribieren gesprochener Sprache verfügbar sind.
+* **Textübersetzung:** Verwenden Sie den Abfrageparameter `scope=text`, um die Sprachen abzurufen, die zum Übersetzen von transkribierten Texten verfügbar sind.
+* **Sprachsynthese:**  Verwenden Sie den Abfrageparameter `scope=tts`, um die Sprachen und Stimmen abzurufen, die für die Sprachsynthese von übersetzten Texten in Sprache verfügbar sind.
 
 Ein Client kann mehrere Gruppen gleichzeitig abrufen, indem er eine durch Trennzeichen getrennte Liste der Optionen angibt. Beispiel: `scope=speech,text,tts`.
 
@@ -63,7 +63,7 @@ Der Wert, der mit jeder Eigenschaft bereitgestellt wird, lautet wie folgt.
 
 Der Wert, der der Spracherkennungseigenschaft (`speech`) zugeordnet ist, entspricht einem Wörterbuch von Paaren (Schlüssel und Wert). Jeder Schlüssel bestimmt eine Sprache, die für die Spracherkennung unterstützt wird. Der Schlüssel ist der Bezeichner, den der Client an die API übergibt. Der Wert, der dem Schlüssel zugeordnet ist, ist ein Objekt mit den folgenden Eigenschaften:
 
-* `name`: Anzeigename der Sprache
+* `name`: Anzeigename der Sprache.
 * `language`: Sprachtag der zugeordneten geschriebenen Sprache. Informationen finden Sie unten unter „Textübersetzung“.
 Im folgenden Code wird ein Beispiel veranschaulicht:
 
@@ -79,7 +79,7 @@ Im folgenden Code wird ein Beispiel veranschaulicht:
 
 Der Wert, der der `text`-Eigenschaft zugeordnet ist, ist ebenfalls ein Wörterbuch, bei dem jeder Schlüssel eine für die Textübersetzung unterstützte Sprache bestimmt. Der Wert, der dem Schlüssel zugeordnet ist, beschreibt die Sprache:
 
-* `name`: Anzeigename der Sprache
+* `name`: Anzeigename der Sprache.
 * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
 
 Im folgenden Code wird ein Beispiel veranschaulicht:
@@ -96,12 +96,12 @@ Im folgenden Code wird ein Beispiel veranschaulicht:
 
 Der Wert, der der tts-Eigenschaft zugeordnet ist, ist ebenfalls ein Wörterbuch, bei dem jeder Schlüssel eine unterstützte Stimme identifiziert. Die Attribute eines Stimmenobjekts sind:
 
-* `displayName`: Der Anzeigename für die Stimme
-* `gender`: Geschlecht der Stimme (männlich oder weiblich)
-* `locale`: Sprachtag der Stimme mit der primären Sprache und der Region als untergeordnete Tags
+* `displayName`: Der Anzeigename für die Stimme.
+* `gender`: Geschlecht der Stimme (männlich oder weiblich).
+* `locale`: Sprachtag der Stimme mit der primären Sprache und der Region als untergeordnete Tags.
 * `language`: Sprachtag der zugeordneten geschriebenen Sprache.
-* `languageName`: Anzeigename der Sprache
-* `regionName`: Anzeigename der Region für diese Sprache
+* `languageName`: Anzeigename der Sprache.
+* `regionName`: Anzeigename der Region für diese Sprache.
 
 Im folgenden Code wird ein Beispiel veranschaulicht:
 
@@ -151,4 +151,4 @@ X-RequestId|Ein Wert, der vom Server generiert wird, um die Anforderung zu ident
 |400|Ungültige Anforderung. Überprüfen Sie die Eingabeparameter, und stellen Sie sicher, dass sie gültig sind. Das Antwortobjekt enthält eine ausführlichere Beschreibung des Fehlers.|
 |429|Too many requests. (Zu viele Anforderungen.)|
 |500|An error occured. (Ein Fehler ist aufgetreten.) Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|
-|503|Der Server ist vorübergehend nicht verfügbar. Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|
+|503|Der Server ist vorübergehend nicht verfügbar.  Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|

@@ -1,7 +1,7 @@
 ---
-title: Kostenloses Testen des Speech-Diensts
+title: Kostenloses Testen von Speech Services
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie den Speech-Dienst kostenlos testen können.
+description: Die ersten Schritte mit dem Speech-Dienst sind einfach und erschwinglich. Mit einer 30-tägigen kostenlosen Testversion können Sie die Funktionen des Diensts kennenlernen und feststellen, ob er sich für Ihre Anwendungen eignet.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 4e29f2e77ad2b4e993fbe6a39b90325a0738f538
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 69e2c094e1fca57d0dddc662cc1dae6453897c38
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471389"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079108"
 ---
 # <a name="try-the-speech-service-for-free"></a>Kostenloses Testen des Speech-Diensts
 
@@ -36,7 +37,7 @@ So registrieren Sie sich für eine 30-tägige kostenlose Testversion:
 1. Wählen Sie die Registerkarte **Spracheingabe-APIs** aus.
 
    ![Registerkarte „Sprachdienste“](media/index/try-speech-api-free-trial1.png)
-   
+
 1. Wählen Sie unter **Sprachdienste** die Schaltfläche **API-Schlüssel abrufen** aus.
 
    ![API-Schlüssel](media/index/try-speech-api-free-trial2.png)

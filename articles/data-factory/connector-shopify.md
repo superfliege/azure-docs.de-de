@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8d2550d6a1f99adaec7423997365412eb61ffbdf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e9271081b36681c4011d96b329de5058aeaf8472
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124694"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090617"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Kopieren von Daten aus Shopify mithilfe von Azure Data Factory (Vorschau)
 
@@ -45,7 +45,7 @@ Folgende Eigenschaften werden für den mit Shopify verknüpften Dienst unterstü
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Shopify** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Shopify** | JA |
 | host | Der Endpunkt des Shopify-Servers. (mystore.myshopify.com)  | JA |
 | accessToken | Das API-Zugriffstoken, das für den Zugriff auf Shopify-Daten verwendet werden kann. Das Token läuft nicht ab, wenn es sich im Offlinemodus befindet. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
@@ -74,7 +74,12 @@ Folgende Eigenschaften werden für den mit Shopify verknüpften Dienst unterstü
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Shopify-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Shopify die „type“-Eigenschaft des Datasets auf **ShopifyObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Shopify die „type“-Eigenschaft des Datasets auf **ShopifyObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **ShopifyObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -86,7 +91,8 @@ Legen Sie zum Kopieren von Daten aus Shopify die „type“-Eigenschaft des Data
         "linkedServiceName": {
             "referenceName": "<Shopify linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -95,14 +101,14 @@ Legen Sie zum Kopieren von Daten aus Shopify die „type“-Eigenschaft des Data
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Shopify-Quelle unterstützt werden.
 
-### <a name="shopifysource-as-source"></a>ShopifySource als Quelle
+### <a name="shopify-as-source"></a>Shopify als Quelle
 
 Legen Sie zum Kopieren von Daten aus Shopify den Quellentyp in der Kopieraktivität auf **ShopifySource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ShopifySource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **ShopifySource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

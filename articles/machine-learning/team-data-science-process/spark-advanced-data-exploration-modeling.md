@@ -1,5 +1,5 @@
 ---
-title: Erweitertes Untersuchen von Daten und Modellierung mit Spark | Microsoft Docs
+title: Erweitertes Untersuchen und Modellieren von Daten mit Spark –Team Data Science-Prozess
 description: Verwenden Sie HDInsight Spark zum Untersuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression mithilfe der Kreuzvalidierung und Hyperparameteroptimierung.
 services: machine-learning
 author: marktab
@@ -10,17 +10,17 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: e0fa3d481e18cdb15095968e791bd9eee630f8af
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 4aa7e8b45f3791212280226b396ed9eb0f86538c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446329"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135473"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
 
-In dieser exemplarischen Vorgehensweise wird HDInsight Spark für das Durchsuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression verwendet. Hierbei werden die Kreuzvalidierung und Hyperparameteroptimierung für eine Stichprobe des Datasets der NYC-Taxifahrten und Fahrpreise von 2013 genutzt. Sie werden schrittweise unter Verwendung eines HDInsight Spark-Clusters für die Verarbeitung und von Azure-Blobs zum Speichern der Daten und Modelle durch den gesamten [Data Science-Prozess](https://aka.ms/datascienceprocess)geführt. In diesem Prozess werden Daten aus einem Azure Storage-Blob untersucht sowie visualisiert und anschließend für das Erstellen von Vorhersagemodellen vorbereitet. Python wurde verwendet, um die Lösung zu codieren und die entsprechenden Diagramme anzuzeigen. Diese Modelle werden mithilfe des Spark MLlib-Toolkits erstellt, um Aufgaben zur binären Klassifizierung und Regressionsmodellierung ausführen. 
+In dieser exemplarischen Vorgehensweise wird HDInsight Spark für das Durchsuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression verwendet. Hierbei werden die Kreuzvalidierung und Hyperparameteroptimierung für eine Stichprobe des Datasets der NYC-Taxifahrten und Fahrpreise von 2013 genutzt. Sie werden schrittweise unter Verwendung eines HDInsight Spark-Clusters für die Verarbeitung und von Azure-Blobs zum Speichern der Daten und Modelle durch den gesamten [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)geführt. In diesem Prozess werden Daten aus einem Azure Storage-Blob untersucht sowie visualisiert und anschließend für das Erstellen von Vorhersagemodellen vorbereitet. Python wurde verwendet, um die Lösung zu codieren und die entsprechenden Diagramme anzuzeigen. Diese Modelle werden mithilfe des Spark MLlib-Toolkits erstellt, um Aufgaben zur binären Klassifizierung und Regressionsmodellierung ausführen. 
 
 * Die Aufgabe zur **binären Klassifizierung** besteht darin, vorherzusagen, ob ein Trinkgeld für eine Fahrt bezahlt wird. 
 * Die Aufgabe zur **Regression** besteht darin, die Höhe des Trinkgelds basierend auf anderen Trinkgeldfunktionen vorherzusagen. 
@@ -52,11 +52,11 @@ Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise be
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6-Notebooks
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Themen im Notebook 1 sowie zur Modellentwicklung über die Hyperparameteroptimierung und Kreuzvalidierung.
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Enthält Themen im Notebook 1 und Modellentwicklung mit Hyperparameteroptimierung und Kreuzvalidierung.
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern.
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Diese Datei bietet Informationen zum Durchführen von Datenuntersuchungen, Modellieren und Bewerten in Spark 2.0-Clustern.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -187,7 +187,7 @@ Hier ist der Code für die Datenerfassung.
 
 **AUSGABE**
 
-Time taken to execute above cell: 276.62 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 276,62 Sekunden
 
 ## <a name="data-exploration--visualization"></a>Durchsuchen und Visualisierung von Daten
 Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Data Science-Prozess darin, durch Durchsuchen und Visualisieren eine tiefer gehende Einsicht in die Daten zu erhalten. In diesem Abschnitt untersuchen wir die Taxidaten mit SQL-Abfragen und zeichnen Diagramme der Zielvariablen und künftigen Merkmale zur Sichtprüfung. Insbesondere stellen wir die Häufigkeit der Fahrgastzahlen bei Taxifahrten, die Häufigkeit der Trinkgeldbeträge und die Variation der Trinkgelder nach Zahlungsbetrag und -art im Diagramm dar.
@@ -383,7 +383,7 @@ Hier ist der Code zum Indizieren und Codieren von kategorischen Features:
 
 **AUSGABE**
 
-Time taken to execute above cell: 3.14 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 3,14 Sekunden
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Erstellen von bezeichneten Punktobjekten für die Eingabe in ML-Funktionen
 Dieser Abschnitt enthält Code, der zeigt, wie kategorische Textdaten als bezeichneter Punktdatentyp indiziert und codiert werden. Dies dient zur Vorbereitung auf das Trainieren der logistischen MLlib-Regressions- und anderer Klassifizierungsmodelle. Bezeichnete Punktobjekte sind robuste verteilte Datasets (RDD), die in einer Weise formatiert sind, die von den meisten ML-Algorithmen in MLlib als Eingabedaten benötigt wird. Ein [bezeichneter Punkt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) ist ein lokaler Vektor, entweder dicht oder platzsparend, der mit einer Bezeichnung/Antwort verknüpft ist.
@@ -476,7 +476,7 @@ Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verw
 
 **AUSGABE**
 
-Time taken to execute above cell: 0.31 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 0,31 Sekunden
 
 ### <a name="feature-scaling"></a>Featureskalierung
 Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (Stochastic Gradient Descent, SGD) bereitgestellt. SGD ist ein beliebter Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z.B. normalisierte Regressionen oder Support Vector Machines (SVM).   
@@ -517,7 +517,7 @@ Im Folgenden finden Sie den Code zum Skalieren von Variablen für die Verwendung
 
 **AUSGABE**
 
-Time taken to execute above cell: 11.67 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 11,67 Sekunden
 
 ### <a name="cache-objects-in-memory"></a>Zwischenspeichern von Objekten im Arbeitsspeicher
 Die Zeit zum Trainieren und Testen von ML-Algorithmen kann durch Zwischenspeichern der Eingabedatenrahmen-Objekte für Klassifizierung, Regression und skalierte Features verwendet werden.
@@ -548,7 +548,7 @@ Die Zeit zum Trainieren und Testen von ML-Algorithmen kann durch Zwischenspeiche
 
 **AUSGABE** 
 
-Time taken to execute above cell: 0.13 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 0,13 Sekunden
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Vorhersage, ob ein Trinkgeld bezahlt wird, mit Modellen zur binären Klassifizierung
 Dieser Abschnitt beschreibt die Verwendung von drei Modellen für die Aufgabe der binären Klassifizierung der Vorhersage, ob für eine Taxifahrt ein Trinkgeld bezahlt wird. Die präsentierten Modelle sind:
@@ -667,7 +667,7 @@ Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.481245780
 
 Intercept: -0.0111216486893
 
-Time taken to execute above cell: 14.43 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 14,43 Sekunden
 
 **Evaluieren des binären Klassifizierungsmodells mit Standardmetriken**
 
@@ -728,7 +728,7 @@ Recall = 0.984174341679
 
 F1 Score = 0.984174341679
 
-Time taken to execute above cell: 2.67 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 2,67 Sekunden
 
 **Plotten Sie die ROC-Kurve.**
 
@@ -796,7 +796,7 @@ Der Code in diesem Abschnitt zeigt, wie das logistische Regressionsmodell für d
 
 **AUSGABE**
 
-Time taken to execute above cell: 34.57 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 34,57 Sekunden
 
 ### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>Verwenden der CrossValidator-Pipeline-Funktion von MLlib mit dem logistischen Regressionsmodell (elastische Regression)
 Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im Dataset der Taxifahrten und Fahrpreise in NYC vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit der MLlib CrossValidator-Pipeline-Funktion für die Kreuzvalidierung mit Hyperparameter-Sweeping implementiert.   
@@ -852,7 +852,7 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das 
 
 **AUSGABE**
 
-Time taken to execute above cell: 107.98 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 107,98 Sekunden
 
 **Plotten Sie die ROC-Kurve.**
 
@@ -939,7 +939,7 @@ Der Code in diesem Abschnitt zeigt, wie eine Regression der Random Forest, die i
 
 Area under ROC = 0.985336538462
 
-Time taken to execute above cell: 26.72 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 26,72 Sekunden
 
 ### <a name="gradient-boosting-trees-classification"></a>Klassifizierung von Gradient-Boosted-Strukturen
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das vorhersagt, ob ein Trinkgeld für eine Fahrt im NYC-Taxifahrten- und Fahrpreisedataset gezahlt wird, trainiert, evaluiert und gespeichert werden kann.
@@ -983,7 +983,7 @@ Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das
 
 Area under ROC = 0.985336538462
 
-Time taken to execute above cell: 28.13 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 28,13 Sekunden
 
 ## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>Vorhersage von Trinkgeldbeträgen mit Regressionsmodellen (ohne Kreuzvalidierung)
 Dieser Abschnitt zeigt Ihnen die Verwendung von drei Modellen für die Regressionsaufgabe: Vorhersage des Trinkgeldbetrags, der für eine Taxifahrt gezahlt wird, auf der Basis anderer Trinkgeldfeatures. Die präsentierten Modelle sind:
@@ -1000,7 +1000,7 @@ Diese Modelle wurden in der Einführung beschrieben. Jeder Codeabschnitt zur Mod
 
 > AZURE-HINWEIS: Die Kreuzvalidierung wird für die drei Regressionsmodelle in diesem Abschnitt nicht verwendet, da dies für die logistischen Regressionsmodelle ausführlich gezeigt wurde. Ein Beispiel dazu, wie die Kreuzvalidierung mit Elastic Net für die lineare Regression verwendet wird, finden Sie im Anhang zu diesem Thema.
 > 
-> AZURE-HINWEIS: Nach unserer Erfahrung können Probleme mit der Konvergenz von LinearRegressionWithSGD-Modellen auftreten, und Parameter müssen sorgfältig geändert/optimiert werden, um ein gültiges Modell zu erhalten. Das Skalieren von Variablen ist bei der Konvergenz hilfreich. Die Elastic Net-Regression, die im Anhang dieses Themas veranschaulicht wird, kann auch anstelle von LinearRegressionWithSGD verwendet werden.
+> AZURE-HINWEIS: Nach unserer Erfahrung können Probleme mit der Konvergenz von LinearRegressionWithSGD-Modellen auftreten, und die Parameter müssen sorgfältig geändert/optimiert werden, um ein gültiges Modell zu erhalten. Das Skalieren von Variablen ist bei der Konvergenz hilfreich. Die Elastic Net-Regression, die im Anhang dieses Themas veranschaulicht wird, kann auch anstelle von LinearRegressionWithSGD verwendet werden.
 > 
 > 
 
@@ -1060,7 +1060,7 @@ RMSE = 1.23485131376
 
 R-sqr = 0.597963951127
 
-Time taken to execute above cell: 38.62 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 38,62 Sekunden
 
 ### <a name="random-forest-regression"></a>Regression der Random Forest
 Der Code in diesem Abschnitt zeigt, wie ein Random Forest-Modell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.   
@@ -1116,7 +1116,7 @@ RMSE = 0.931981967875
 
 R-sqr = 0.733445485802
 
-Time taken to execute above cell: 25.98 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 25,98 Sekunden
 
 ### <a name="gradient-boosting-trees-regression"></a>Gradient-Boosted-Strukturenregression
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
@@ -1167,7 +1167,7 @@ RMSE = 0.928172197114
 
 R-sqr = 0.732680354389
 
-Time taken to execute above cell: 20.9 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 20,9 Sekunden
 
 **Diagrammausgabe**
 
@@ -1376,7 +1376,7 @@ RMSE = 0.906972198262
 
 R-sqr = 0.740751197012
 
-Time taken to execute above cell: 69.17 seconds
+Für die Ausführung der obigen Zelle benötigte Zeit: 69,17 Sekunden
 
 ### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Bereinigen von Objekten aus dem Arbeitsspeicher und Drucken von Modellspeicherorten
 Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeicher.
@@ -1438,5 +1438,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>Wie geht es weiter?
 Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt haben, können Sie jetzt lernen, wie diese Modelle bewertet und evaluiert werden.
 
-**Modellnutzung:** Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md).
+**Nutzung von Modellen:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md).
 

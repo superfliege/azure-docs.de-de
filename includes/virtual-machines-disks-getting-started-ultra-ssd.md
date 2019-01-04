@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b28830ac2634ad2238d834238de83c9184bcd6f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec8fa6c06dff0091627a800c895d45fd3b0e778e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010390"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53381492"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Aktivieren von Azure Ultra SSDs
 
@@ -31,7 +31,7 @@ Die Antwort wird dem unten gezeigten Formular ähneln, wobei X für die Zone ste
 
 |ResourceType  |NAME  |Standort  |Zones  |Einschränkung  |Funktion  |Wert  |
 |---------|---------|---------|---------|---------|---------|---------|
-|Datenträger     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 Wenn der Befehl keine Antwort zurückgegeben hat, bedeutet das, dass Ihre Registrierung bei dem Feature entweder noch aussteht oder noch nicht genehmigt ist.
 
@@ -84,6 +84,6 @@ Nachdem der virtuelle Computer bereitgestellt wurde, können Sie die Datenträge
 - SSD Ultra unterstützt die Anpassung der Datenträgerleistungsattribute (IOPS und Durchsatz) zur Laufzeit, ohne den Datenträger vom virtuellen Computer zu trennen. Nachdem ein Vorgang zur Größenänderung der Datenträgerleistung auf einem Datenträger gestartet wurde, kann es bis zu einer Stunde dauern, bis die Änderung tatsächlich wirksam wird.
 - Das Erhöhen der Datenträgerkapazität erfordert das Aufheben der Zuordnung eines virtuellen Computers.
 
-# <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie den neuen Datenträgertyp testen möchten und sich noch nicht für die Preview registriert haben, [fordern Sie den Zugriff über diese Umfrage an](https://aka.ms/UltraSSDPreviewSignUp).

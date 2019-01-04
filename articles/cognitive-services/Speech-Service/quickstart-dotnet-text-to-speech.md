@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Konvertieren von Text in Sprache, .NET Core – Speech-Dienst'
+title: 'Schnellstart: Konvertieren von Text in Sprache, .NET Core – Speech Services'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart erfahren Sie, wie Sie mit der Text-to-Speech-REST-API Text in Sprache konvertieren. Der Beispieltext in diesem Leitfaden ist als SSML (Speech Synthesis Markup Language) strukturiert. Auf diese Weise können Sie die Stimme und Sprache für die Sprachantwort auswählen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: erhopf
-ms.openlocfilehash: 4f424e73fbe1f05155e7f051d90dd72d57405adf
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641570"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089869"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Schnellstart: Konvertieren von Text in Sprache mit .NET Core
 
@@ -28,7 +28,7 @@ Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor Ihrer Wahl
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst
 
 ## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
@@ -193,7 +193,6 @@ using (var client = new HttpClient())
         // Update your resource name
         request.Headers.Add("User-Agent", "YOUR_RESOURCE_NAME");
         request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
-        request.Headers.Add("Connection", "Keep-Alive");
         // Create a request
         Console.WriteLine("Calling the TTS service. Please wait... \n");
         using (var response = await client.SendAsync(request).ConfigureAwait(false))
@@ -237,4 +236,5 @@ Wenn Sie den Abonnementschlüssel in Ihrem Programm hartcodiert haben, entfernen
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Tutorial: Erkennen von Sprachabsichten](how-to-recognize-intents-from-speech-csharp.md)
+* [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)
+* [Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme](record-custom-voice-samples.md)

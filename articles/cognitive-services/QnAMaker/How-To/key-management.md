@@ -10,22 +10,23 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
-ms.openlocfilehash: 1fe39cf9e4a1e58a0d37cc8ebf9fe02c6ad7eed5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 25b23d280aca9ef13b8820596686a1f9dbecd2a1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334617"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085942"
 ---
-# <a name="key-management"></a>Schlüsselverwaltung
+# <a name="how-to-manage-keys-in-qna-maker"></a>Verwalten von Schlüsseln in QnA Maker
 
 Ihr QnA Maker-Dienst verwendet zwei Arten von Schlüsseln, **Abonnementschlüssel** und **Endpunktschlüssel**.
 
 ![Schlüsselverwaltung](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Abonnementschlüssel**: Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) zuzugreifen. Mit diesen APIs können Sie verschiedene CRUD-Vorgänge für Ihre Wissensdatenbank ausführen.  
+1. **Abonnementschlüssel:** Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) zuzugreifen. Mit diesen APIs können Sie verschiedene CRUD-Vorgänge für Ihre Wissensdatenbank ausführen.  
 
-2. **Endpunktschlüssel**: Diese Schlüssel werden für den Zugriff auf den Endpunkt der Wissensdatenbank verwendet, um eine Antwort für eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Endpunkt in Ihrem Chatbot/App-Code, der den QnA Maker-Dienst nutzt.
+2. **Endpunktschlüssel:** Diese Schlüssel werden für den Zugriff auf den Endpunkt der Wissensdatenbank verwendet, um eine Antwort für eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Endpunkt in Ihrem Chatbot/App-Code, der den QnA Maker-Dienst nutzt.
  
 ## <a name="subscription-keys"></a>Abonnementschlüssel
 Sie können Ihre Abonnementschlüssel im Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker-Ressource erstellt haben. 

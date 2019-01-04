@@ -1,20 +1,19 @@
 ---
-title: Verwenden von Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Schlüssel | Microsoft-Dokumentation
+title: Verwenden von Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Schlüssel
 description: Verwenden Sie Azure Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Zeichenfolgen, -Schlüssel und -URLs.
 services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f5d494006ebafab37bd10591ad02671e192d73e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053083"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837391"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Verwenden von Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Schlüssel
 
@@ -33,8 +32,8 @@ Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.  
 2. Wählen Sie **Ressource erstellen > Sicherheit > Key Vault** aus.  
 3. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:  
-   * **Name**: Geben Sie einen eindeutigen Namen für Ihren Key Vault an.  
-   * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.  
+   * **Name:** Geben Sie einen eindeutigen Namen für Ihren Schlüsseltresor an.  
+   * **Abonnement:** Wählen Sie das zu verwendende Abonnement aus.  
    * Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.  
    * Wählen Sie im Pulldownmenü „Standort“ einen Standort aus.  
    * Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.  

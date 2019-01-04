@@ -1,5 +1,5 @@
 ---
-title: Zugriff auf Datasets mit der Machine Learning-Python-Clientbibliothek | Microsoft Docs
+title: Zugreifen auf Datasets mit der Python-Clientbibliothek – Team Data Science-Prozess
 description: Installieren und verwenden Sie die Python-Clientbibliothek und verwalten Sie Azure Machine Learning-Daten sicher aus einer lokalen Python-Umgebung.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 43812b68b10f9e4f8510d24cb08c8bb368b3b8f8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445760"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140029"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
 Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann einen sicheren Zugriff auf Ihre Azure Machine Learning-Datasets aus einer lokalen Python-Umgebung aktivieren und ermöglicht die Erstellung und Verwaltung von Datasets im Arbeitsbereich.
@@ -61,7 +61,7 @@ Wenn Sie Git auf Ihrem Computer installiert haben, können Sie mit Pip direkt vo
 ## <a name="datasetAccess"></a>Verwenden von Studio Codeausschnitten, um auf Datasets zuzugreifen
 Mit der Python-Clientbibliothek erhalten Sie programmgesteuerten Zugriff auf Ihre vorhandenen Datasets aus durchgeführten Experimenten.
 
-Von der Studio Web-Schnittstelle können Sie Codeausschnitte generieren, die alle notwendigen Informationen zum Laden und Deserialisieren von Datasets als Pandas DataFrame-Objekte auf Ihrem Standortcomputer enthalten.
+Über die Studio Web-Schnittstelle können Sie Codeausschnitte generieren, die alle notwendigen Informationen zum Herunterladen und Deserialisieren von Datasets als Pandas DataFrame-Objekte auf Ihrem lokalen Computer enthalten.
 
 ### <a name="security"></a>Sicherheit für den Datenzugriff
 Die von Studio bereitgestellten Codeausschnitte zur Verwendung mit Python-Clientbibliotheken umfassen Ihre Arbeitsbereichs-ID und Authentifizierungstoken. Diese bieten vollständigen Zugriff auf den Arbeitsbereich und müssen wie ein Kennwort geschützt werden.
@@ -92,10 +92,10 @@ Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTEL
     ![Datasets][datasets]
 4. Wählen Sie den Codeausschnitt aus dem Fenster, das angezeigt wird und kopieren Sie ihn in die Zwischenablage.
    
-    ![Zugriffscode][dataset-access-code]
+    ![Schaltfläche „Generate data access code“ (Datei für den Datenzugriffscode generieren)][dataset-access-code]
 5. Fügen Sie den Code in das Notebook Ihrer lokalen Python-Anwendung ein.
    
-    ![Notizbuch][ipython-dataset]
+    ![Einfügen von Code in das Notebook][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Zugriff auf Zwischen-Datasets von Machine Learning-Experimenten
 Nachdem ein Experiment in Machine Learning Studio ausgeführt wurde, ist es möglich, von den Ausgabeknoten der Module auf die Zwischen-Datasets zuzugreifen. Zwischen-Datasets sind Daten, die für Zwischenschritte erstellt und verwendet wurden, wenn ein Modell-Werkzeug ausgeführt wurde.
@@ -133,10 +133,10 @@ Die folgenden Schritte zeigen ein Beispiel, das ein Experiment erstellt, dieses 
     ![Kontextmenü][experiment]
 8. Wählen Sie im eingeblendeten Fenster den Codeausschnitt aus, und kopieren Sie ihn in die Zwischenablage.
    
-    ![Zugriffscode][intermediate-dataset-access-code]
+    ![Generieren eines Zugriffscodes über das Kontextmenü][intermediate-dataset-access-code]
 9. Fügen Sie den Code in Ihrem Notizbuch ein.
    
-    ![Notizbuch][ipython-intermediate-dataset]
+    ![Einfügen von Code in ein Notebook][ipython-intermediate-dataset]
 10. Sie können die Daten mithilfe von Matplotlib visualisieren. Dies zeigt ein Histogramm für die Spalte „Alter“:
     
     ![Histogramm][ipython-histogram]

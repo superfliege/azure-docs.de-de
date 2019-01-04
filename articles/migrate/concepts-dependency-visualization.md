@@ -4,19 +4,21 @@ description: Bietet eine Übersicht über Bewertungsberechnungen im Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010319"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257969"
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
 Der [Azure Migrate](migrate-overview.md)-Dienst bewertet Gruppen von lokalen Computern für die Migration zu Azure. Sie können die Funktionalität zur Visualisierung von Abhängigkeiten in Azure Migrate zum Erstellen von Gruppen nutzen. Dieser Artikel enthält Informationen zu diesem Feature.
 
+> [!NOTE]
+> Die Funktion zur Visualisierung von Abhängigkeiten ist in Azure Government nicht verfügbar.
 
 ## <a name="overview"></a>Übersicht
 
@@ -31,7 +33,13 @@ Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnu
 
     ![Zuordnen von Log Analytics-Arbeitsbereichen](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
+- Beim Zuordnen eines Arbeitsbereichs erhalten Sie die Möglichkeit, einen neuen Arbeitsbereich zu erstellen oder einen vorhandenen anzufügen:
+      - Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
+      - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Leserzugriff auf den Arbeitsbereich haben.
+
+  > [!NOTE]
+  > Nachdem Sie einem Projekt einen Arbeitsbereich hinzugefügt haben, können Sie ihn nicht mehr ändern.
+
 - Der zugeordnete Arbeitsbereich wird mit dem Schlüssel **Migration Project** (Migrationsprojekt) und dem Wert **project name** (Projektname) markiert, die Sie für die Suche im Azure-Portal verwenden können.
 - Um zum Arbeitsbereich zu navigieren, der dem Projekt zugeordnet ist, können Sie den Abschnitt **Essentials** (Zusammenfassung) der Seite **Übersicht** des Projekts öffnen und auf den Arbeitsbereich zugreifen.
 
@@ -39,11 +47,11 @@ Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnu
 
 Zur Verwendung der Abhängigkeitsvisualisierung müssen Sie Agents auf alle lokalen Computer, die Sie analysieren möchten, herunterladen und dort installieren.  
 
-- Der [Microsoft Monitoring Agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) muss auf jedem Computer installiert werden.
+- Der [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) muss auf jedem Computer installiert werden.
 - Der [Dependency-Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) muss auf jedem Computer installiert werden.
-- Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das Log Analytics-Gateway herunterzuladen und zu installieren.
+- Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, auf diesen das Log Analytics-Gateway herunterzuladen und zu installieren.
 
-Sie benötigen diese Agenten nicht auf Computern, die Sie bewerten möchten, sofern Sie keine Abhängigkeitsvisualisierung verwenden.
+Sie benötigen diese Agents auf Computern nur, wenn Sie die Abhängigkeitsvisualisierung verwenden.
 
 ## <a name="do-i-need-to-pay-for-it"></a>Fallen dadurch Kosten an?
 
@@ -63,7 +71,7 @@ Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https:/
 
 ## <a name="how-do-i-manage-the-workspace"></a>Wie verwalte ich den Arbeitsbereich?
 
-Sie können den Log Analytics-Arbeitsbereich außerhalb von Azure Migrate verwalten. Er wird nicht gelöscht, wenn Sie das Migrationsprojekt löschen, in dem er erstellt wurde. Wenn Sie den Arbeitsbereich nicht mehr benötigen, [löschen Sie ihn](../log-analytics/log-analytics-manage-access.md) manuell.
+Sie können den Log Analytics-Arbeitsbereich außerhalb von Azure Migrate verwalten. Er wird nicht gelöscht, wenn Sie das Migrationsprojekt löschen, in dem er erstellt wurde. Wenn Sie den Arbeitsbereich nicht mehr benötigen, [löschen Sie ihn](../azure-monitor/platform/manage-access.md) manuell.
 
 Löschen den von Azure Migrate erstellten Arbeitsbereich nur, wenn Sie auch das Migrationsprojekt löschen. Wenn Sie dies tun, funktioniert die Abhängigkeitsvisualisierung nicht wie erwartet.
 

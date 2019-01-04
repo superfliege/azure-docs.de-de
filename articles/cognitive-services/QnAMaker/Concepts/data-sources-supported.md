@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: ee88c8dca1521f4cdc2e3ea141d5c1d497061bb4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422353"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082236"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Datenquellen für QnA Maker-Inhalt
 
@@ -36,7 +36,7 @@ Nur öffentliche URLs sind für alle Datenquellen gültig. Senden Sie keine Date
 
 ## <a name="faq-urls"></a>FAQ-URLs
 
-QnA Maker kann FAQ-Webseiten in 3 verschiedenen Formaten unterstützen: einfache FAQ-Seiten, FAQ-Seiten mit Links, FAQ-Seiten mit einer Themenstartseite.
+QnA Maker kann Webseiten mit häufig gestellten Fragen auf drei Arten unterstützen: Einfache FAQ-Seiten, FAQ-Seiten mit Links, FAQ-Seiten mit einer Themenstartseite.
 
 ### <a name="plain-faq-pages"></a>Einfache FAQ-Seiten
 
@@ -44,7 +44,7 @@ Dies ist der am häufigsten verwendete Typ einer FAQ-Seite, bei der auf der glei
 
 Unten sehen Sie ein Beispiel für eine einfache FAQ-Seite:
 
-![Einfache FAQ-Seite](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![Beispiel für eine einfache FAQ-Seite für eine Wissensdatenbank](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
 ### <a name="faq-pages-with-links"></a>FAQ-Seiten mit Links 
@@ -53,7 +53,7 @@ Bei diesem FAQ-Seitentyp sind Fragen zusammengefasst und mit Antworten verknüpf
 
 Unten sehen Sie ein Beispiel für eine FAQ-Seite mit Links in Abschnitten, die sich auf derselben Seite befinden:
 
- ![FAQ-Seite mit Abschnittsverknüpfung](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![Beispiel für eine FAQ-Seite mit Abschnittsverknüpfung für eine Wissensdatenbank](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>FAQ-Seiten mit einer Themenstartseite
@@ -62,7 +62,7 @@ Dieser Typ von FAQ weist eine Startseite mit den Themen auf, wobei jedes Thema e
 
 Unten sehen Sie ein Beispiel für eine FAQ-Seite, auf der eine Themenstartseite Links zu FAQ-Abschnitten auf verschiedenen Seiten enthält. 
 
- ![FAQ-Seite mit Deep-Link](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![Beispiel für eine FAQ-Seite mit Deep-Link für eine Wissensdatenbank](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
 ## <a name="pdf-doc-files"></a>PDF-/DOC-Dateien
@@ -77,14 +77,14 @@ Bei einem Handbuch handelt es sich in der Regel um Anleitungen, die mit einem Pr
 
 Unten sehen Sie ein Beispiel für ein Handbuch mit einer Indexseite und hierarchischen Inhalten.
 
- ![Beispiel für ein Produkthandbuch](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![Beispiel für ein Produkthandbuch für eine Wissensdatenbank](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > Das Extrahieren funktioniert am besten bei Handbüchern, die über ein Inhaltsverzeichnis und/oder eine Indexseite verfügen und eine klare Struktur mit hierarchischen Überschriften aufweisen.
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>Broschüren, Richtlinien, Artikel und andere Dateien
 
-Viele andere Arten von Dokumenten können ebenfalls verarbeitet werden, um QA-Paare zu generieren, vorausgesetzt, sie weisen eine klare Struktur und ein klares Layout auf. Dazu gehören: Broschüren, Leitfäden, Berichte, Whitepaper, wissenschaftliche Veröffentlichungen, Richtlinien, Bücher usw. Ein Beispiel finden Sie [hier](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Viele andere Arten von Dokumenten können ebenfalls verarbeitet werden, um QA-Paare zu generieren, vorausgesetzt, sie weisen eine klare Struktur und ein klares Layout auf. Das umfasst: Broschüren, Leitfäden, Berichte, Whitepaper, wissenschaftliche Veröffentlichungen, Richtlinien, Bücher usw. Ein Beispiel finden Sie [hier](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
 Unten sehen Sie ein Beispiel für ein semistrukturiertes Dokument ohne Index:
 
@@ -106,7 +106,7 @@ Answer2
 
 Unten sehen Sie ein Beispiel für ein strukturiertes QnA-Word-Dokument:
 
- ![Strukturiertes QnA-Dokument](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![Beispiel für ein strukturiertes QnA-Dokument für eine Wissensdatenbank](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>Strukturierte *TXT*-, *TSV*- und *XLS*-Dateien
 
@@ -121,7 +121,7 @@ Alle weiteren Spalten in der Quelldatei werden ignoriert.
 
 Unten sehen Sie ein Beispiel für eine strukturierte QnA-*XLS*-Datei mit HTML-Inhalten:
 
- ![Strukturierte QnA-Excel-Datei](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Beispiel für eine strukturierte QnA-Excel-Datei für eine Wissensdatenbank](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ## <a name="structured-data-format-through-import"></a>Strukturiertes Datenformat durch Import
 

@@ -1,21 +1,19 @@
 ---
-title: Änderungsfeed für HL7 FHIR-Ressourcen – Azure Cosmos DB | Microsoft-Dokumentation
+title: Änderungsfeed für HL7 FHIR-Ressourcen – Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Logic Apps, Azure Cosmos DB und Service Bus Änderungsbenachrichtigungen für HL7 FHIR-Krankenakten einrichten.
 keywords: HL7 FHIR
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: aab6e5247830ee444bcab0b15bda34e4464aaad1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565478"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089223"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Benachrichtigen von Patienten über Änderungen an HL7 FHIR-Krankenakten mithilfe von Logic Apps und Azure Cosmos DB
 
@@ -25,7 +23,7 @@ In diesem Artikel wird die Änderungsfeed-Benachrichtigungslösung erläutert, d
 
 ## <a name="project-requirements"></a>Anforderungen des Projekts
 - Anbieter senden HL7-Ressourcen als C-CDA-Dokumente (Consolidated-Clinical Document Architecture) im XML-Format. Zu C-CDA-Dokumenten zählen nahezu alle Arten von klinischen Dokumenten – etwa Informationen zu Familienanamnese und Impfungen, aber auch Verwaltungs-, Workflow- und Finanzdokumente. 
-- C-CDA-Dokumente werden in [HL7 FHIR-Ressourcen](http://hl7.org/fhir/2017Jan/resourcelist.html) im JSON-Format konvertiert.
+- C-CDA-Dokumente werden in [HL7 FHIR-Ressourcen](https://hl7.org/fhir/2017Jan/resourcelist.html) im JSON-Format konvertiert.
 - Geänderte FHIR-Ressourcendokumente werden per E-Mail im JSON-Format gesendet.
 
 ## <a name="solution-workflow"></a>Lösungsworkflow 
@@ -40,9 +38,9 @@ Für das Projekt waren folgende allgemeine Workflowschritte erforderlich:
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 Für diese Lösung sind drei Logik-Apps erforderlich, um die oben genannten Anforderungen zu erfüllen und den Lösungsworkflow abzuschließen. Folgende Logik-Apps werden benötigt:
-1. **HL7 FHIR-Zuordnungs-App**: Empfängt das HL7-C-CDA-Dokument, transformiert es in die FHIR-Ressource und speichert es in Azure Cosmos DB.
-2. **EGA-App**: Fragt das Azure Cosmos DB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Diese Logik-App verwendet eine [API-App](#api-app), um neue und geänderte Dokumente abzurufen.
-3. **Prozessbenachrichtigungs-App**: Sendet eine E-Mail-Benachrichtigung mit den FHIR-Ressourcendokumenten als Nachrichtentext.
+1. **HL7 FHIR-Zuordnungs-App:** Empfängt das HL7 C-CDA-Dokument, transformiert es in die FHIR-Ressource und speichert es in Azure Cosmos DB.
+2. **EGA-App:** Fragt das Azure Cosmos DB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Diese Logik-App verwendet eine [API-App](#api-app), um neue und geänderte Dokumente abzurufen.
+3. **Prozessbenachrichtigungs-App:** Sendet eine E-Mail-Benachrichtigung mit den FHIR-Ressourcendokumenten als Nachrichtentext.
 
 ![Die drei Logik-Apps dieser FHIR HL7-Lösung für das Gesundheitswesen](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
@@ -59,16 +57,16 @@ Azure Cosmos DB ist das Repository für die FHIR-Ressourcen, wie in der folgende
 Logik-Apps wickeln den Workflowprozess ab. Die folgenden Screenshots zeigen die für diese Lösung erstellten Logik-Apps. 
 
 
-1. **HL7 FHIR-Zuordnungs-App**: Empfängt das HL7-C-CDA-Dokument und transformiert es unter Verwendung des Enterprise Integration Packs für Logic Apps in eine FHIR-Ressource. Das Enterprise Integration Pack wickelt die Zuordnung von C-CDA zu FHIR ab.
+1. **HL7 FHIR-Zuordnungs-App:** Empfängt das HL7 C-CDA-Dokument und transformiert es unter Verwendung des Enterprise Integration Packs für Logic Apps in eine FHIR-Ressource. Das Enterprise Integration Pack wickelt die Zuordnung von C-CDA zu FHIR ab.
 
     ![Die Logik-App zum Empfangen von HL7 FHIR-Krankenakten](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **EGA-App**: Fragt das Azure Cosmos DB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Den Code für die GetNewOrModifiedFHIRDocuments-App finden Sie weiter unten.
+2. **EGA-App:** Fragt das Azure Cosmos DB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Den Code für die GetNewOrModifiedFHIRDocuments-App finden Sie weiter unten.
 
     ![Die Logik-App zum Abfragen von Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-3. **Prozessbenachrichtigungs-App**: Sendet eine E-Mail-Benachrichtigung mit den FHIR-Ressourcendokumenten als Nachrichtentext.
+3. **Prozessbenachrichtigungs-App:** Sendet eine E-Mail-Benachrichtigung mit den FHIR-Ressourcendokumenten als Nachrichtentext.
 
     ![Die Logik-App zum Senden von Patienten-E-Mails mit der HL7 FHIR-Ressource als Text](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
@@ -90,12 +88,12 @@ Wir verwenden die [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/l
 - Datenbank-ID (DatabaseId)
 - Sammlungs-ID (CollectionId)
 - Name des HL7 FHIR-Ressourcentyps
-- Boolescher Wert: am Anfang beginnen
-- Ganze Zahl: Anzahl zurückgegebener Dokumente
+- Boolescher Wert: Am Anfang beginnen
+- Integer: Anzahl zurückgegebener Dokumente
 
 **Ausgaben**
-- Erfolg: Statuscode 200; Antwort: Liste mit Dokumenten (JSON-Array)
-- Fehler: Statuscode 404; Antwort: „No Documents found for '*resource name'* Resource“ (Für die Ressource „<Ressourcenname>“ wurden keine Dokumente gefunden.)
+- Erfolg: Statuscode: 200, Antwort: Liste mit Dokumenten (JSON-Array)
+- Fehler: Statuscode: 404, Antwort: „No Documents found for '*resource name'* Resource“ (Für die Ressource „Ressourcenname“ wurden keine Dokumente gefunden)
 
 <a id="api-app-source"></a>
 

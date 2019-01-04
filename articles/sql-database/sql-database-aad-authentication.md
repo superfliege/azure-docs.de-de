@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: ff9011dda4a94f323b430a3860eadc8d970a23f7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244072"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838615"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL
 
-Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure Active Directory (Azure AD). 
+Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Azure [SQL-Datenbank](sql-database-technical-overview.md), [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) oder der [verwalteten Instanz](sql-database-managed-instance.md) unter Verwendung von Identitäten in Azure Active Directory (Azure AD). 
 
 > [!NOTE]
 > Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
@@ -79,20 +79,12 @@ Für die Erstellung eines eigenständigen Datenbankbenutzers in Azure SQL-Datenb
 
 Die folgenden Elemente von Azure AD können in Azure SQL Server und SQL Data Warehouse bereitgestellt werden:
 
-- Systemeigene Elemente: ein in Azure AD erstelltes Element in der verwalteten Domäne oder einer Kundendomäne. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Domänennamen zum Vereinfachen des Anmeldevorgangs für Benutzer](../active-directory/active-directory-domains-add-azure-portal.md).
-- Mitglieder der Verbunddomäne: in Azure AD mit einer Verbunddomäne erstellte Mitglieder. Weitere Informationen finden Sie unter [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)(Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory).
+- Native Elemente: In Azure AD erstellte Mitglieder in der verwalteten Domäne oder einer Kundendomäne. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Domänennamen zum Vereinfachen des Anmeldevorgangs für Benutzer](../active-directory/active-directory-domains-add-azure-portal.md).
+- Mitglieder der Verbunddomäne: In Azure AD mit einer Verbunddomäne erstellte Mitglieder. Weitere Informationen finden Sie unter [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)(Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory).
 - Aus anderen Azure AD-Instanzen importierte Mitglieder, die native Mitglieder oder Mitglieder der Verbunddomäne sind.
 - Active Directory-Gruppen, die als Sicherheitsgruppen erstellt wurden.
 
-Azure AD-Einschränkungen im Zusammenhang mit der verwalteten Instanz:
-
-- Nur der Azure AD-Administrator kann Datenbanken erstellen. Azure AD-Benutzer sind auf eine einzelne Datenbank beschränkt und verfügen nicht über diese Berechtigung.
-- Datenbankbesitz:
-  - Der Azure AD-Prinzipal kann den Besitz der Datenbank (ALTER AUTHORIZATION ON DATABASE) nicht ändern und kann nicht als Besitzer festgelegt werden.
-  - Für Datenbanken, die vom Azure AD-Administrator erstellt werden, ist kein Besitz festgelegt. (Für das Feld „owner_sid“ in „sys.sysdatabases“ ist „0x1“ angegeben.)
-- SQL Agent kann bei einer Anmeldung mit Azure AD-Prinzipalen nicht verwaltet werden.
-- Die Identität des Azure AD-Administrators kann nicht mithilfe von „EXECUTE AS“ angenommen werden.
-- DAC-Verbindungen werden mit Azure AD-Prinzipalen nicht unterstützt.
+Azure AD-Anmeldungen und -Benutzer werden als Previewfunktion für [verwaltete Instanzen](sql-database-managed-instance.md) unterstützt.
 
 Diese Systemfunktionen geben bei der Ausführung unter Azure AD-Prinzipalen NULL-Werte zurück:
 

@@ -1,23 +1,24 @@
 ---
-title: Referenz zur vordefinierten Entität „datetimeV2“ in LUIS – Azure | Microsoft-Dokumentation
+title: Vordefinierte DatetimeV2-Entitäten
 titleSuffix: Azure
 description: In diesem Artikel erhalten Sie Informationen zur vordefinierten Entität „datetimeV2“ in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: bd28981ae0c5b4d6ccff3168f92f0f99be768b10
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 0e2353107d6554a8ecbbd2e4d9850f8d8b5fda5c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335775"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165179"
 ---
-# <a name="datetimev2-entity"></a>DatetimeV2-Entität
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte DatetimeV2-Entität für eine LUIS-App
 
 Die vordefinierte Entität **datetimeV2** extrahiert Datums- und Uhrzeitwerte. Diese Werte werden in ein standardisiertes Format aufgelöst, um in Clientprogrammen verwendet werden zu können. Wenn eine Äußerung ein unvollständiges Datum oder eine unvollständige Uhrzeit enthält, fügt LUIS _vergangene und zukünftige Werte_ in die Endpunktantwort ein. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit datetimeV2 hinzufügen. 
 
@@ -27,7 +28,7 @@ DatetimeV2 wird über das GitHub-Repository [Recognizers-text](https://github.co
 ## <a name="example-json"></a>JSON-Beispiel 
 Die folgende JSON-Beispielantwort enthält eine `datetimeV2`-Entität mit einem `datetime`-Untertyp. Beispiele für andere Typen von datetimeV2-Entitäten finden Sie unter [Untertypen von datetimeV2](#subtypes-of-datetimev2)</a>.
 
-```JSON
+```json
 "entities": [
   {
     "entity": "8am on may 2nd 2017",
@@ -103,7 +104,7 @@ Betrachten Sie das Beispiel „May 2nd“:
 Im folgenden Beispiel wird die Auflösung der Entität „may 2nd“ veranschaulicht. Bei der Auflösung wird davon ausgegangen, dass das heutige Datum ein Datum zwischen dem 2. Mai 2017 und dem 1. Mai 2018 ist.
 Die `X`-Zeichen im `timex`-Feld stellen die Teile des Datums dar, die in der Äußerung nicht explizit angegeben wurden.
 
-```JSON
+```json
   "entities": [
     {
       "entity": "may 2nd",
@@ -132,7 +133,7 @@ Die `X`-Zeichen im `timex`-Feld stellen die Teile des Datums dar, die in der Äu
 
 Die `datetimeV2`-Entität extrahiert Datumsbereiche und Zeiträume. Die Felder `start` und `end` geben den Anfang und das Ende des Bereichs an. Für die Äußerung „May 2nd to May 5th“ stellt LUIS **daterange**-Werte für das aktuelle und das nächste Jahr bereit. Der `XXXX`-Wert im `timex`-Feld gibt die Mehrdeutigkeit des Jahrs an. `P3D` gibt an, dass der Zeitraum drei Tage beträgt.
 
-```JSON
+```json
 "entities": [
     {
       "entity": "may 2nd to may 5th",
@@ -163,7 +164,7 @@ Die `datetimeV2`-Entität extrahiert Datumsbereiche und Zeiträume. Die Felder `
 
 Im folgenden Beispiel wird veranschaulicht, wie LUIS **datetimeV2** verwendet, um die Äußerung „Tuesday to Thursday“ (Dienstag bis Donnerstag) aufzulösen. Im folgenden Beispiel ist der 19. Juni das aktuelles Datum. LUIS fügt **daterange**-Werte für die Datumsbereiche ein, die vor und nach dem aktuellen Datum liegen.
 
-```JSON
+```json
   "entities": [
     {
       "entity": "tuesday to thursday",
@@ -196,7 +197,7 @@ Das Array des Werts enthält zwei time-Elemente, wenn die Uhrzeit oder der Zeitr
 
 Im folgenden Beispiel wird veranschaulicht, wie LUIS **datetimeV2** verwendet, um die Äußerung mit dem Zeitraum aufzulösen.
 
-```
+```json
   "entities": [
     {
       "entity": "6pm to 7pm",

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272234"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631124"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio
 
@@ -388,7 +388,7 @@ Das Beispiel veranschaulicht die Verwendung einiger grundlegender Befehle wie fo
 
 + Die erste Zeile definiert die Eingabeschicht (mit dem Namen `Data`). Wenn Sie das Schlüsselwort `auto` verwenden, bezieht das neuronale Netzwerk automatisch alle Featurespalten in die Eingabebeispiele ein. 
 + In der zweiten Zeile wird die verdeckte Schicht erstellt. Die verdeckte Schicht hat 200 Knoten und erhält den Namen `H`. Diese Schicht ist vollständig mit der Eingabeschicht verbunden.
-+ In der dritten Zeile wird die Ausgabeschicht definiert. Sie erhält den Namen `O` und enthält zehn Ausgabeknoten. Wenn das neuronale Netzwerk für die Klassifizierung verwendet wird, ist ein Ausgabeknoten pro Klasse vorhanden. Das Schlüsselwort **sigmoid** gibt die auf die Ausgabeschicht angewendete Ausgabefunktion an.
++ In der dritten Zeile wird die Ausgabeschicht definiert. Sie erhält den Namen `Out` und enthält zehn Ausgabeknoten. Wenn das neuronale Netzwerk für die Klassifizierung verwendet wird, ist ein Ausgabeknoten pro Klasse vorhanden. Das Schlüsselwort **sigmoid** gibt die auf die Ausgabeschicht angewendete Ausgabefunktion an.
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Definieren von mehreren verborgenen Schichten: Beispiel Computer Vision
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/25/2017
+ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 5f999a17cd375a3338aa936e2f405c36f6021ebc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984810"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996625"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -23,33 +23,45 @@ Ein Azure Active Directory (Azure AD) Business-to-Business (B2B)-Zusammenarbeits
 
 Je nach Anforderungen der einladenden Organisation kann ein Azure AD B2B-Zusammenarbeitsbenutzer einen der folgenden Kontozustände aufweisen:
 
-- Zustand 1: befindet sich in einer externen Instanz von Azure AD und wird als Gastbenutzer in der einladenden Organisation dargestellt. In diesem Fall meldet sich der B2B-Benutzer mit einem Azure AD-Konto an, das zum eingeladenen Mandanten gehört. Wenn die Partnerorganisation nicht Azure AD verwendet, werden die Gastbenutzer trotzdem in Azure AD erstellt. Voraussetzung ist, dass sie ihre Einladung einlösen und Azure AD ihre E-Mail-Adressen überprüft. Eine solche Vereinbarung wird auch als Just-in-Time-Mandant (JIT) oder „viraler“ Mandant bezeichnet.
+- Zustand 1: Befindet sich in einer externen Instanz von Azure AD und wird als Gastbenutzer in der einladenden Organisation dargestellt. In diesem Fall meldet sich der B2B-Benutzer mit einem Azure AD-Konto an, das zum eingeladenen Mandanten gehört. Wenn die Partnerorganisation nicht Azure AD verwendet, werden die Gastbenutzer trotzdem in Azure AD erstellt. Voraussetzung ist, dass sie ihre Einladung einlösen und Azure AD ihre E-Mail-Adressen überprüft. Eine solche Vereinbarung wird auch als Just-in-Time-Mandant (JIT) oder „viraler“ Mandant bezeichnet.
 
-- Zustand 2: Befindet sich in einem Microsoft-Konto und wird als Gastbenutzer in der Hostorganisation dargestellt. In diesem Fall meldet sich der Gastbenutzer mit einem Microsoft-Konto an. Die soziale Identität eines eingeladenen Benutzers, bei der es sich nicht um ein Microsoft-Konto handelt (also z.B. google.com), wird während der Einlösung des Angebots als Microsoft-Konto erstellt.
+- Zustand 2: Befindet sich in einem Microsoft-Konto oder anderen Konto und wird als Gastbenutzer in der Hostorganisation dargestellt. In diesem Fall meldet sich der Gastbenutzer mit einem Microsoft-Konto oder einem Konto eines sozialen Netzwerks (z.B. google.com) an. Die Identität eines eingeladenen Benutzers wird während der Einlösung des Angebots im Verzeichnis der einladenden Organisation als Microsoft-Konto erstellt.
 
-- Zustand 3: Befindet sich im lokalen Active Directory der Hostorganisation und wird mit dem Azure AD der Hostorganisation synchronisiert. In dieser Version müssen Sie die Eigenschaft „UserType“ solcher Benutzer in der Cloud mithilfe von PowerShell manuell ändern.
+- Zustand 3: Befindet sich im lokalen Active Directory der Hostorganisation und wird mit der Azure AD-Instanz der Hostorganisation synchronisiert. Sie können mithilfe von Azure AD Connect die Partnerkonten als Azure AD B2B-Benutzer mit „UserType = Guest“ mit der Cloud synchronisieren. Siehe [Gewähren des Zugriffs auf Cloudressourcen für lokal verwaltete Partnerkonten](hybrid-on-premises-to-cloud.md).
 
 - Zustand 4: Befindet sich im Azure AD der Hostorganisation mit dem Benutzertyp „Gast“, und die Anmeldeinformationen werden von der Hostorganisation verwaltet.
 
   ![Anzeigen der Initialen des einladenden Benutzers](media/user-properties/redemption-diagram.png)
 
 
-Sehen wir uns an, wie ein Azure AD B2B-Zusammenarbeitsbenutzer mit Zustand 1 in Azure AD aussieht.
+Sehen wir uns nun an, wie ein Azure AD B2B-Kollaborationsbenutzer in Azure AD aussieht.
 
 ### <a name="before-invitation-redemption"></a>Vor dem Einlösen der Einladung
+
+Bei Konten mit den Zuständen 1 und 2 werden Gastbenutzer unter Verwendung ihrer eigenen Anmeldeinformationen zur Kollaboration eingeladen. Beim ursprünglichen Senden der Einladung an den Gastbenutzer wird ein Konto in Ihrem Verzeichnis erstellt. Diesem Konto sind keine Anmeldeinformationen zugeordnet, da die Authentifizierung durch den Identitätsanbieter des Gastbenutzers erfolgt. Die Eigenschaft **Quelle** für das Gastbenutzerkonto in Ihrem Verzeichnis ist auf **Eingeladene Benutzer** festgelegt. 
 
 ![Vor dem Einlösen des Angebots](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Nach dem Einlösen der Einladung
 
-![Nach dem Einlösen des Angebots](media/user-properties/after-redemption.png)
+Wenn der Gastbenutzer die Einladung annimmt, wird die Eigenschaft **Quelle** basierend auf dem Identitätsanbieter des Gastbenutzers aktualisiert.
+
+Für Gastbenutzer mit dem Zustand 1 wird **Externes Azure Active Directory** als **Quelle** festgelegt.
+
+![Gastbenutzer mit dem Zustand 1 nach dem Einlösen des Angebots](media/user-properties/after-redemption-state1.png)
+
+Für Gastbenutzer mit dem Zustand 2 wird **Microsoft-Konto** als **Quelle** festgelegt.
+
+![Gastbenutzer mit dem Zustand 2 nach dem Einlösen des Angebots](media/user-properties/after-redemption-state2.png)
+
+Für Gastbenutzer mit einem der Zustände 3 oder 4 wird die Eigenschaft **Quelle** auf **Azure Active Directory** bzw. **Windows Server Active Directory** festgelegt (siehe Beschreibung im nächsten Abschnitt).
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Wichtige Eigenschaften von Azure AD B2B-Zusammenarbeitsbenutzern
 ### <a name="usertype"></a>UserType
 Diese Eigenschaft gibt die Beziehung des Benutzers zum Hostmandanten an. Diese Eigenschaft kann zwei Werte aufweisen:
-- Mitglied: Dieser Wert weist auf einen Mitarbeiter der Hostorganisation und einen Benutzer auf der Gehaltsliste der Organisation hin. Für diesen Benutzer sollte beispielsweise Zugriff auf rein interne Websites möglich sein. Ein solcher Benutzer wird nicht als externer Projektmitarbeiter betrachtet.
+- Mitglied: Dieser Wert weist auf einen Mitarbeiter der Hostorganisation und einen Benutzer auf der Gehaltsliste der Organisation hin. Für diesen Benutzer sollte beispielsweise Zugriff auf rein interne Websites möglich sein. Dieser Benutzer wird nicht als externer Projektmitarbeiter betrachtet.
 
-- Gast: Dieser Wert gibt einen Benutzer an, der im Unternehmen nicht als intern gilt, z.B. ein externer Mitarbeiter, Partner, Kunde oder ähnlicher Benutzer. Diese Benutzer sind z.B. nicht für den Empfang interner Memos vom CEO oder von Unternehmensvorteilen vorgesehen.
+- Gast: Dieser Wert gibt einen Benutzer an, der im Unternehmen nicht als intern gilt, z.B. ein externer Mitarbeiter, Partner oder Kunde. Diese Benutzer sind z.B. nicht für den Empfang interner Memos vom CEO oder von Unternehmensvorteilen vorgesehen.
 
   > [!NOTE]
   > Die Eigenschaft „UserType“ steht in keinem Zusammenhang damit, wie sich der Benutzer anmeldet, welche Verzeichnisrolle er hat usw. Die Eigenschaft gibt einfach nur die Beziehung des Benutzers zur Hostorganisation an und ermöglicht der Organisation, Richtlinien basierend auf dieser Eigenschaft zu erzwingen.
@@ -63,7 +75,7 @@ Diese Eigenschaft gibt an, wie sich der Benutzer anmeldet.
 
 - Microsoft-Konto: Dieser Benutzer befindet sich in einem Microsoft-Konto und authentifiziert sich mit einem Microsoft-Konto. Diese Art der Anmeldung entspricht Zustand 2.
 
-- Windows Server Active Directory: Dieser Benutzer wird aus einem lokalen Active Directory angemeldet, das zu dieser Organisation gehört. Diese Art der Anmeldung entspricht Zustand 3.
+- Windows Server Active Directory: Dieser Benutzer wird über ein lokales Active Directory angemeldet, das zu dieser Organisation gehört. Diese Art der Anmeldung entspricht Zustand 3.
 
 - Azure Active Directory: Dieser Benutzer authentifiziert sich mit einem Azure AD-Konto, das zu dieser Organisation gehört. Diese Art der Anmeldung entspricht Zustand 4.
   > [!NOTE]
@@ -77,17 +89,17 @@ Diese Eigenschaft gibt an, wie sich der Benutzer anmeldet.
 ![Filtern nach Gastbenutzern](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Konvertieren des Benutzertyps
-Derzeit können Benutzer mithilfe von PowerShell die Eigenschaft „UserType“ von „Mitglied“ in „Gast“ ändern und umgekehrt. Diese Eigenschaft ist jedoch dafür gedacht, die Beziehung eines Benutzers zur Organisation darzustellen. Daher sollte ihr Wert nur dann geändert werden, wenn sich die Beziehung des Benutzers zur Organisation ändert. Wenn sich die Beziehung des Benutzers ändert, sind dann auch andere Punkte zu berücksichtigen, wie etwa ob der Benutzerprinzipalname (UPN) geändert werden muss? Soll der Benutzer weiterhin Zugriff auf die gleichen Ressourcen haben? Muss ein Postfach zugewiesen werden? Es empfiehlt sich daher nicht, die Eigenschaft „UserType“ in PowerShell als alleinige Aktivität zu ändern. Wenn diese Eigenschaft durch die Verwendung von PowerShell unveränderlich wird, empfiehlt es sich nicht, Abhängigkeiten von diesem Wert einzurichten.
+Mithilfe von PowerShell kann die Eigenschaft „UserType“ von „Mitglied“ in „Gast“ geändert werden und umgekehrt. Die Eigenschaft „UserType“ gibt jedoch die Beziehung eines Benutzers zu der Organisation an. Daher sollten Sie diese Eigenschaft nur ändern, wenn sich die Beziehung des Benutzers zur Organisation ändert. Wenn sich die Beziehung des Benutzers ändert, muss dann der Benutzerprinzipalname (UPN) geändert werden? Soll der Benutzer weiterhin Zugriff auf die gleichen Ressourcen haben? Muss ein Postfach zugewiesen werden? Es empfiehlt sich nicht, die Eigenschaft „UserType“ in PowerShell als alleinige Aktivität zu ändern. Wenn diese Eigenschaft durch die Verwendung von PowerShell unveränderlich wird, empfiehlt es sich nicht, Abhängigkeiten von diesem Wert einzurichten.
 
 ## <a name="remove-guest-user-limitations"></a>Aufheben von Einschränkungen für Gastbenutzer
 Es gibt eine Vielzahl von Situationen, in denen Sie Ihren Gastbenutzern höhere Berechtigungen einräumen möchten. Sie können Gastbenutzer beliebigen Rollen hinzufügen und sogar die standardmäßigen Einschränkungen für Gastbenutzer im Verzeichnis aufheben, um diesen die gleichen Berechtigungen zu gewähren wie Mitgliedern.
 
-Sie können die standardmäßigen Einschränkungen für Gastbenutzer aufheben, sodass Gastbenutzer im Unternehmensverzeichnis die gleichen Verzeichnisberechtigungen erhalten wie Mitgliedsbenutzer.
+Sie können die standardmäßigen Einschränkungen aufheben, sodass Gastbenutzer im Unternehmensverzeichnis die gleichen Berechtigungen erhalten wie Mitgliedsbenutzer.
 
 ![Aufheben von Einschränkungen für Gastbenutzer](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
-Ja. Standardmäßig sind Gastobjekte in der globalen Adressliste Ihres Unternehmens nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Can I make guest objects visible in the global address list? (Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?)** im Artikel [Gastzugriff in Office 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ). 
+Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Can I make guest objects visible in the global address list? (Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?)** im Artikel [Gastzugriff in Office 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

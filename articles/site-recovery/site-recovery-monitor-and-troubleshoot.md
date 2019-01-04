@@ -5,14 +5,14 @@ author: bsiva
 manager: abhemra
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 07/19/2018
+ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: dc089e29889b12a5a6d3fcb17328cfc13fe8d0c9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e34409490f9e120cb39daf99b280cc52c59f54e2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211807"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845639"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Überwachung und Problembehandlung für Site Recovery
 
@@ -154,12 +154,12 @@ Darüber hinaus können Sie Computer auf der Seite „Virtuelle Computer“ übe
 5. Klicken Sie mit der rechten Maustaste auf einen Computer, um für ihn Vorgänge wie Testfailover zu initiieren oder bestimmte Fehlerdetails anzuzeigen.
 6. Klicken Sie auf einen Computer, um weitere Details zu ihm anzuzeigen. Zu den Details gehören:
       - **Replikationsinformationen:** Aktueller Status und Integrität des Computers.
-      - **RPO** (Recovery Point Objective): Aktuelle RPO für den virtuellen Computer und die Uhrzeit, an dem die RPO zuletzt berechnet wurde.
-      - **Wiederherstellungspunkte**: Neueste verfügbare Wiederherstellungspunkte für den Computer.
-      - **Failoverbereitschaft**: Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
-      - **Fehler**: Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
-      - **Ereignisse**: Eine chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
-      - **Infrastrukturansicht**: Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
+      - **RPO** (Recovery Point Objective): Aktuelles RPO für den virtuellen Computer und die Uhrzeit, an dem das RPO zuletzt berechnet wurde.
+      - **Wiederherstellungspunkte:** Letzte verfügbare Wiederherstellungspunkte für den Computer.
+      - **Failoverbereitschaft:** Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
+      - **Fehler:** Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
+      - **Ereignisse:** Chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
+      - **Infrastrukturansicht:** Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
 
     ![Details/Übersicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 

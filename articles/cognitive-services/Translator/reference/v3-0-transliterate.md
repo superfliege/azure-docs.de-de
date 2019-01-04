@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018620"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967332"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Textübersetzungs-API 3.0: Transliterate
 
@@ -42,15 +42,15 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
   <tr>
     <td>Language</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Texts an, der von einem Skript in ein anderes konvertiert werden soll. Mögliche Sprachen sind im `transliteration`-Bereich aufgeführt, der durch Abfrage des Diensts nach den [unterstützten Sprachen](.\v3-0-languages.md) abgerufen wird.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Texts an, der von einem Skript in ein anderes konvertiert werden soll. Mögliche Sprachen sind im `transliteration`-Bereich aufgeführt, der durch Abfrage des Diensts nach den [unterstützten Sprachen](./v3-0-languages.md) abgerufen wird.</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt das vom Eingabetext verwendete Skript an. Suchen Sie mithilfe des `transliteration`-Bereichs nach [unterstützten Sprachen](.\v3-0-languages.md), um Eingabeskripts zu finden, die für die ausgewählte Sprache verfügbar sind.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt das vom Eingabetext verwendete Skript an. Suchen Sie mithilfe des `transliteration`-Bereichs nach [unterstützten Sprachen](./v3-0-languages.md), um Eingabeskripts zu finden, die für die ausgewählte Sprache verfügbar sind.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt das Ausgabeskript an. Suchen Sie mithilfe des `transliteration`-Bereichs nach [unterstützten Sprachen](.\v3-0-languages.md), um Ausgabeskripts zu finden, die für die ausgewählte Kombination aus Sprache und Eingabeskript verfügbar sind.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt das Ausgabeskript an. Suchen Sie mithilfe des `transliteration`-Bereichs nach [unterstützten Sprachen](./v3-0-languages.md), um Ausgabeskripts zu finden, die für die ausgewählte Kombination aus Sprache und Eingabeskript verfügbar sind.</td>
   </tr>
 </table> 
 
@@ -98,9 +98,9 @@ Es gelten die folgenden Einschränkungen:
 
 Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jedes Element im Eingabearray. Ein Ergebnisobjekt enthält die folgenden Eigenschaften:
 
-  * `text`: Dies ist eine Zeichenfolge, die aus der Konvertierung der Eingabezeichenfolge in das Ausgabeskript resultiert.
+  * `text`: Eine Zeichenfolge, die aus der Konvertierung der Eingabezeichenfolge in das Ausgabeskript resultiert.
   
-  * `script`: Dies ist eine Zeichenfolge, die das in der Ausgabe verwendete Skript angibt.
+  * `script`: Eine Zeichenfolge, die das in der Ausgabe verwendete Skript angibt.
 
 Eine JSON-Beispielantwort lautet wie folgt:
 

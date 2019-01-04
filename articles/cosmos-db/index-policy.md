@@ -1,37 +1,37 @@
 ---
-title: Indizierungsrichtlinien für Azure Cosmos DB | Microsoft-Dokumentation
+title: Indizierungsrichtlinien für Azure Cosmos DB
 description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB. In diesem Artikel wird das Konfigurieren und Ändern der Indizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung erläutert.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: ffb70ce8c26b7774e90801271c55cd8a80906c90
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2153f0a16df9e79b3f5324ce19880e2708855196
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628652"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847999"
 ---
 # <a name="indexing-policy-in-azure-cosmos-db"></a>Indizierungsrichtlinie in Azure Cosmos DB
 
 Sie können die standardmäßige Indizierungsrichtlinie für einen Azure Cosmos-Container überschreiben, indem Sie die folgenden Parameter konfigurieren:
 
-* **Ein- oder Ausschließen von Elementen und Pfaden aus dem Index**: Sie können bestimmte Elemente ausschließen oder in den Index aufnehmen, wenn Sie die Elemente in einen Container einfügen oder ersetzen. Sie können auch bestimmte Pfade/Eigenschaften, die über Container hinweg indiziert werden sollen, ein- oder ausschließen. Pfade können Platzhaltermuster enthalten, z.B. *.
+* **Ein- oder Ausschließen von Elementen und Pfaden im Index:** Sie können bestimmte Elemente aus dem Index ausschließen oder im Index einschließen, wenn Sie die Elemente in einem Container einfügen oder ersetzen. Sie können auch bestimmte Pfade/Eigenschaften, die über Container hinweg indiziert werden sollen, ein- oder ausschließen. Pfade können Platzhaltermuster enthalten, z.B. *.
 
-* **Indexarten konfigurieren**: Zusätzlich zu den bereichsindizierten Pfaden können Sie weitere Arten von Indizes hinzufügen, z.B. räumliche.
+* **Konfigurieren von Indextypen:** Zusätzlich zu den bereichsindizierten Pfaden können Sie weitere Indextypen hinzufügen, z.B. den räumlichen Index.
 
-* **Indizierungsmodi konfigurieren**: Durch die Verwendung der Indizierungsrichtlinie für einen Container können Sie verschiedene Indizierungsmodi wie *Konsistent* oder *Keine* konfigurieren.
+* **Konfigurieren von Indizierungsmodi:** Durch die Verwendung der Indizierungsrichtlinie für einen Container können Sie verschiedene Indizierungsmodi wie *Konsistent* oder *Kein* konfigurieren.
 
 ## <a name="indexing-modes"></a>Indizierungsmodi 
 
 Azure Cosmos DB unterstützt zwei Indizierungsmodi, die Sie in einem Azure Cosmos-Container konfigurieren können. Sie können die folgenden zwei Indizierungsmodi über die Indizierungsrichtlinie konfigurieren: 
 
-* **Konsistent**: Wenn die Richtlinie eines Azure Cosmos Containers „Konsistent“ ist, folgen die Abfragen für einen bestimmten Container derselben Konsistenzebene wie für die Punktlesevorgänge angegeben (z.B. „stark“, „begrenzte Veraltung“, „Sitzung“ oder „letztlich“). 
+* **Konsistent:** Wenn die Richtlinie eines Azure Cosmos-Containers auf „Konsistent“ festgelegt ist, gilt für die Abfragen für einen bestimmten Container die gleiche Konsistenzebene wie die für Punktlesevorgänge angegebene Ebene (z.B. „stark“, „begrenzte Veraltung“, „Sitzung“ oder „letztlich“). 
 
   Der Index wird synchron aktualisiert, wenn Sie die Elemente aktualisieren. Beispielsweise führen Einfüge-, Ersetzungs-, Aktualisierungs- und Löschvorgänge an einem Element zum Aktualisieren des Index. Die konsistente Indizierung unterstützt konsistente Abfragen auf Kosten einer möglichen Verringerung des Schreibdurchsatzes. Die Reduzierung des Schreibdurchsatzes hängt von den "Pfaden der Indizierung“ und der "Konsistenzebene" ab. Der konsistente Indizierungsmodus ist für Workloads mit schnellem Schreiben und sofortigem Abfragen vorgesehen.
 
-* **Keine**: Einem Container mit dem Indexmodus „Keine“ ist kein Index zugeordnet. Diese Option wird häufig verwendet, wenn Azure Cosmos DB als Schlüssel-Wert-Speicher genutzt wird und auf Elemente nur nach ihrer ID-Eigenschaft zugegriffen wird.
+* **Kein:** Einem Container mit dem Indizierungsmodus „Kein“ ist kein Index zugeordnet. Diese Option wird häufig verwendet, wenn Azure Cosmos DB als Schlüssel-Wert-Speicher genutzt wird und auf Elemente nur nach ihrer ID-Eigenschaft zugegriffen wird.
 
   > [!NOTE]
   > Das Konfigurieren des Indizierungsmodus als „Keine“ hat die Nebenwirkung, dass alle vorhandenen Indizes gelöscht werden. Verwenden Sie diese Option, wenn Ihre Zugriffsmuster nur „ID“ oder „Self-Link“ erfordern.

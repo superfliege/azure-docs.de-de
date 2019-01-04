@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 6898b007287e4f4c87010649c6f0b66c03f7cf8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389716"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086265"
 ---
 # <a name="create-a-qna-maker-service"></a>Erstellen eines QnA Maker-Diensts
 
@@ -27,7 +28,7 @@ Bei diesem Setup werden einige Azure-Ressourcen bereitgestellt. In Kombination v
 
 2.  Klicken Sie auf **Neue Ressource hinzufügen**, geben Sie im Suchfeld „qna maker“ ein, und wählen Sie die QnA Maker-Ressource aus.
 
-    ![Erstellen eines neuen QnA Maker-Diensts](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+    ![Erstellen eines QnA Maker-Diensts – Hinzufügen neuer Ressourcen](../media/qnamaker-how-to-setup-service/create-new-resource.png)
 
 3.  Klicken Sie auf **Erstellen**, nachdem Sie die Geschäftsbedingungen gelesen haben.
 
@@ -35,7 +36,7 @@ Bei diesem Setup werden einige Azure-Ressourcen bereitgestellt. In Kombination v
 
 4. Wählen Sie in **QnA Maker** die geeigneten Tarife und Regionen aus.
 
-    ![Erstellen eines neuen QnA Maker-Diensts](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Erstellen eines neuen QnA Maker-Diensts – Tarif und Regionen](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * Setzen Sie in **Name** einen eindeutigen Namen zur Identifizierung dieses QnA Maker-Diensts ein. Dieser Name kennzeichnet darüber hinaus den QnA Maker-Endpunkt, dem Ihre Wissensdatenbanken zugeordnet werden.
     * Wählen Sie das **Abonnement** aus, in dem die QnA Maker-Ressource bereitgestellt werden soll.
@@ -57,7 +58,7 @@ Bei diesem Setup werden einige Azure-Ressourcen bereitgestellt. In Kombination v
 
 6.  Nachdem die Bereitstellung abgeschlossen ist, sehen Sie die folgenden neu erstellten Ressourcen in Ihrem Abonnement.
 
-    ![Erstellen eines neuen QnA Maker-Diensts](../media/qnamaker-how-to-setup-service/resources-created.png)
+    ![Im neuen QnA Maker-Dienst erstellte Ressource](../media/qnamaker-how-to-setup-service/resources-created.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

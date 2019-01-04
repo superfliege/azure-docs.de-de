@@ -3,7 +3,7 @@ title: Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center | Mi
 description: Es wird beschrieben, wie Sie in Azure Security Center mandantenweite Sichtbarkeit erzielen.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2018
-ms.author: terrylan
-ms.openlocfilehash: caab7e3d15f6d82ee4daf6eb343601ff849bfde5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298777"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964116"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 Dieser Artikel erleichtert Ihnen den Einstieg, indem Sie mehrere Aktionen durchführen, mit denen die Vorteile von Azure Security Center maximiert werden. Mit diesen Aktionen können Sie Sichtbarkeit für alle Azure-Abonnements erzielen, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind, und den Sicherheitsstatus Ihrer Organisation bedarfsabhängig effektiv verwalten. Hierzu wenden Sie auf aggregierende Weise Sicherheitsrichtlinien übergreifend auf mehrere Abonnements an.
@@ -38,7 +38,7 @@ Eine ausführliche Übersicht über Verwaltungsgruppen finden Sie im Artikel [Or
 Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governancerichtlinien auf die Verwaltungsgruppen anwenden. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. Für das Security Center-Onboarding sind Verwaltungsgruppen zwar nicht erforderlich, aber es wird dringend empfohlen, mindestens eine Verwaltungsgruppe zu erstellen, damit die Stammverwaltungsgruppe erstellt wird. Nachdem die Gruppe erstellt wurde, werden alle Abonnements unter Ihrem Azure AD-Mandanten damit verknüpft. Eine Anleitung für PowerShell und weitere Informationen finden Sie unter [Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen](../azure-resource-manager/management-groups-create.md).
 
  
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**.
 3. Klicken Sie auf der Hauptseite auf **New Management group** (Neue Verwaltungsgruppe). 
 
@@ -93,13 +93,16 @@ Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministrato
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Weisen Sie Benutzern RBAC-Rollen über das Azure-Portal zu: 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-2. Wählen Sie zum Anzeigen von Verwaltungsgruppen **Alle Dienste** im Azure-Hauptmenü und dann **Verwaltungsgruppen** aus.
-3.  Wählen Sie eine Verwaltungsgruppe aus, und klicken Sie auf **Details**.
+1. Wählen Sie zum Anzeigen von Verwaltungsgruppen **Alle Dienste** im Azure-Hauptmenü und dann **Verwaltungsgruppen** aus.
+1.  Wählen Sie eine Verwaltungsgruppe aus, und klicken Sie auf **Details**.
 
     ![Screenshot der Verwaltungsgruppendetails](./media/security-center-management-groups/management-group-details.PNG)
  
-4. Klicken Sie auf **Zugriffssteuerung (IAM)** und dann auf **Hinzufügen**.
-5. Wählen Sie die zuzuweisende Rolle und den Benutzer aus, und klicken Sie dann auf **Speichern**.  
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** und dann auf **Rollenzuweisungen**.
+
+1. Klicken Sie auf **Rollenzuweisung hinzufügen**.
+
+1. Wählen Sie die zuzuweisende Rolle und den Benutzer aus, und klicken Sie dann auf **Speichern**.  
    
    ![Screenshot zum Hinzufügen der Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“](./media/security-center-management-groups/asc-security-reader.png)
 

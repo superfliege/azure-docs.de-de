@@ -1,21 +1,22 @@
 ---
 title: Abrufen des SDK für sprachaktivierte Geräte
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Zugriff auf das Speech-Geräte-SDK erhalten.
+description: Der Speech-Dienst kann mit verschiedensten Geräten und Audioquellen verwendet werden. Jetzt können Sie einen Schritt weiter gehen und Ihre Sprachanwendungen mit angepasster Hardware und Software nutzen. In diesem Artikel erfahren Sie, wie Sie auf das Speech-Geräte-SDK zugreifen und mit dem Entwickeln beginnen.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 822c4bdc6bb47d51bcd264c9093e7d07308d2b11
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: bc9497ff8d48cd1c5fd045f12908234462a7a2f8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468771"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095052"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Abrufen des Cognitive Services Speech-Geräte-SDK
 
@@ -29,14 +30,14 @@ So erhalten Sie Zugriff auf das Speech-Geräte-SDK
 1. Lesen Sie die [Lizenzbedingungen](speech-devices-sdk-license.md).
 1. Wenn Sie den Lizenzbedingungen zustimmen, wählen Sie **Ich stimme zu** aus.
 1. Beantworten Sie die Fragen im Formular.
-1. Senden Sie das Formular ab. 
+1. Senden Sie das Formular ab.
 1. Wenn Ihre E-Mail-Adresse noch nicht in Azure Active Directory (Azure AD) vorhanden ist, erhalten Sie nach der Zugriffsgenehmigung eine Einladungs-E-Mail ähnlich der folgenden. Wenn Ihre E-Mail-Adresse bereits in Azure AD vorhanden ist, erhalten Sie nach der Zugriffsgenehmigung eine E-Mail-Nachricht vom Microsoft Speech-Team und können direkt mit dem [Herunterladen des Speech-Geräte-SDK](#download-the-speech-devices-sdk) fortfahren.
 
 ## <a name="approval-e-mail"></a>Genehmigungs-E-Mail
 
 ```
-From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com> 
-Subject: You're invited to the Microsoft organization 
+From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com>
+Subject: You're invited to the Microsoft organization
 ```
 
 ![E-Mail-Nachricht](media/speech-devices-sdk/get-sdk-1.png)
@@ -58,16 +59,16 @@ Führen Sie die folgenden Schritte aus, um die E-Mail-Adresse, die Sie während 
 4. Wählen Sie **Weiter** aus, um ein Kennwort zu erstellen.
 
 5. Wenn Sie dazu aufgefordert werden, Ihre E-Mail-Adresse zu bestätigen, nutzen Sie den Überprüfungscode aus der Einladungs-E-Mail.
- 
+
 7. Fügen Sie den Sicherheitscode aus der E-Mail-Nachricht im Dialogfeld ein, oder geben Sie ihn ein. In diesem Beispiel wird der Sicherheitscode **8406** verwendet. Klicken Sie auf **Weiter**.
 
     ![Bestätigen der E-Mail-Adresse](media/speech-devices-sdk/get-sdk-6.png)
- 
+
 8. Wenn im Browser die Zugriffsbereichsanwendung angezeigt wird, haben Sie bestätigt, dass Ihre E-Mail-Adresse in Azure AD vorhanden ist. Damit haben Sie Zugriff auf die Downloadwebsite für das Speech-Geräte-SDK.
 
 ## <a name="download-the-speech-devices-sdk"></a>Herunterladen des Speech-Geräte-SDK
 
-Navigieren Sie zur [Downloadwebsite für das Speech-Geräte-SDK](https://shares.datatransfer.microsoft.com/). Melden Sie sich mit dem Microsoft-Konto an, das Sie zuvor erstellt haben. 
+Navigieren Sie zur [Downloadwebsite für das Speech-Geräte-SDK](https://shares.datatransfer.microsoft.com/). Melden Sie sich mit dem Microsoft-Konto an, das Sie zuvor erstellt haben.
 
 ![Downloadwebsite für das SDK](media/speech-devices-sdk/get-sdk-7.png)
 
@@ -76,20 +77,20 @@ So laden Sie das Speech-Geräte-SDK, den zugehörigen Beispielcode und Referenzm
 1. Laden Sie das Tool Aspera Connect herunter, und installieren Sie es, wenn Sie im Browser dazu aufgefordert werden.
 
     ![Herunterladen von Aspera Connect](media/speech-devices-sdk/get-sdk-8.png)
- 
+
 1. Wählen Sie **Ja** aus, um zu Aspera Connect zu wechseln.
 
     ![Wechseln zu Aspera Connect](media/speech-devices-sdk/get-sdk-9.png)
- 
+
 1. Wählen Sie **Zulassen** aus, um das Herunterladen der Dateien mit Aspera Connect zu bestätigen.
 
     ![Herunterladen mithilfe von Aspera Connect](media/speech-devices-sdk/get-sdk-10.png)
- 
+
 1. Schließen Sie das Übertragungsfenster von Aspera Connect, nachdem die Dateien heruntergeladen wurden.
 
     ![Übertragungsfenster von Aspera Connect](media/speech-devices-sdk/get-sdk-11.png)
- 
-Standardmäßig werden die Dateien in Ihren Ordner **Downloads** heruntergeladen. Sie können sich jetzt von dieser Website abmelden. 
+
+Standardmäßig werden die Dateien in Ihren Ordner **Downloads** heruntergeladen. Sie können sich jetzt von dieser Website abmelden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

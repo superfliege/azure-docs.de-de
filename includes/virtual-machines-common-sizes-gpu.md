@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: b6df4ada1aa13e20c7ad52d2b58cdf9c783f9e24
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: bc311ca5c49584ae3715fa4507e1fd678bcc93bb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716188"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53007937"
 ---
 GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einzelnen oder mehreren NVIDIA-GPUs verfügbar. Diese Größen sind für rechenintensive, grafikintensive und visualisierungsorientierte Workloads vorgesehen. Dieser Artikel enthält Informationen über die Anzahlen und Typen von GPUs, vCPUs, Datenträgern und NICs. Der Speicherdurchsatz und die Netzwerkbandbreite sind für die jeweiligen Größen in dieser Gruppe ebenfalls enthalten. 
 
@@ -23,11 +23,11 @@ GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einze
 
 ## <a name="nc-series"></a>NC-Serie
 
-Storage Premium: nicht unterstützt
+Storage Premium  Nicht unterstützt
 
-Storage Premium-Zwischenspeicherung: nicht unterstützt
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
-NC-Serien-VMs werden mit der NVIDIA-Grafikkarte [Tesla K80](http://images.nvidia.com/content/pdf/kepler/Tesla-K80-BoardSpec-07317-001-v05.pdf) betrieben. Benutzer können Daten schneller analysieren, indem sie CUDA für Anwendungen zur Energieuntersuchung, Absturzsimulationen, Rendering mit Raytracing, Deep Learning und mehr verwenden. Die NC24r-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Wartezeit und hohem Durchsatz, die sich ideal für die Verarbeitung eng gekoppelter paralleler Computingworkloads eignet.
+NC-Serien-VMs werden mit der NVIDIA-Grafikkarte [Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) betrieben. Benutzer können Daten schneller analysieren, indem sie CUDA für Anwendungen zur Energieuntersuchung, Absturzsimulationen, Rendering mit Raytracing, Deep Learning und mehr verwenden. Die NC24r-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Wartezeit und hohem Durchsatz, die sich ideal für die Verarbeitung eng gekoppelter paralleler Computingworkloads eignet.
 
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs |
@@ -43,9 +43,9 @@ NC-Serien-VMs werden mit der NVIDIA-Grafikkarte [Tesla K80](http://images.nvidia
 
 ## <a name="ncv2-series"></a>NCv2-Serie
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung:  Unterstützt
 
 NCv2-Serien-VMs werden mit [NVIDIA Tesla P100](http://images.nvidia.com/content/tesla/pdf/nvidia-tesla-p100-datasheet.pdf)-GPUs betrieben. Im Vergleich zur NC-Serie können diese GPUs eine mehr als doppelte Rechenleistung erzielen. Kunden können diese neuen GPUs für herkömmliche HPC-Workloads wie Modellierung von Lagerstätten, DNA-Sequenzierung, Proteinanalysen, Monte Carlo-Simulationen und Ähnliches nutzen. Die NC24rs v2-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Wartezeit und hohem Durchsatz, die sich ideal für die Verarbeitung eng gekoppelter paralleler Computingworkloads eignet.
 
@@ -66,9 +66,9 @@ Eine GPU entspricht einer P100-Karte.
 
 ## <a name="ncv3-series"></a>NCv3-Serie
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung:  Unterstützt
 
 NCv3-Serien-VMs werden mit [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF/Volta-Datasheet.pdf)-GPUs betrieben. Diese GPUs können eine 1,5-mal so hohe Rechenleistung erzielen wie die NCv2-Serie. Kunden können diese neuen GPUs für herkömmliche HPC-Workloads wie Modellierung von Lagerstätten, DNA-Sequenzierung, Proteinanalysen, Monte Carlo-Simulationen und Ähnliches nutzen. Die NC24rs v3-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Wartezeit und hohem Durchsatz, die sich ideal für die Verarbeitung eng gekoppelter paralleler Computingworkloads eignet.
 
@@ -90,11 +90,11 @@ Eine GPU entspricht einer V100-Karte.
 ## <a name="ndv2-series-preview"></a>NDv2-Serie (Vorschau)
 
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung:  Unterstützt
 
-InfiniBand: nicht unterstützt
+InfiniBand: Nicht unterstützt
 
 
 Die virtuellen Computer der NDv2-Serie sind neu in der Familie von GPUs, die auf die Anforderungen von HPC-, KI- und Machine Learning-Workloads ausgelegt sind. Die Serie umfasst 8 miteinander verbundene NVIDIA Tesla V100 NVLINK-GPUs, 40 Intel Skylake-Kerne und 672 GiB Systemarbeitsspeicher. Eine NDv2-Instanz bietet herausragende FP32- und FP64-Leistung für HPC- und KI-Workloads und nutzt dabei CUDA, TensorFlow, Pytorch, Caffe und andere Frameworks.
@@ -109,9 +109,9 @@ Die virtuellen Computer der NDv2-Serie sind neu in der Familie von GPUs, die auf
 
 ## <a name="nd-series"></a>ND-Serie
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung:  Unterstützt
 
 Die virtuellen Computer der ND-Serie sind eine neue Ergänzung der GPU-Familie und für Workloads in den Bereichen KI und Deep Learning konzipiert. Sie bieten eine ausgezeichnete Leistung für Training und Rückschluss. ND-Instanzen werden mit NVIDIA-GPUs vom Typ [Tesla P40](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) betrieben. Diese Instanzen bieten eine ausgezeichnete Leistung für Gleitkommavorgänge mit einfacher Genauigkeit, für KI-Workloads mit Microsoft Cognitive Toolkit sowie für TensorFlow, Caffe und andere Frameworks. Die ND-Serie bietet auch einen wesentlich größeren GPU-Arbeitsspeicher (24 GB) und eignet sich somit für deutlich umfangreichere neurale Netzmodelle. Genau wie die NC-Serie bietet auch die ND-Serie eine Konfiguration mit einem sekundären, RDMA-basierten Netzwerk mit geringer Wartezeit und hohem Durchsatz sowie InfiniBand-Konnektivität, sodass Sie umfangreiche Trainingsaufträge über mehrere GPUs hinweg ausführen können.
 
@@ -132,9 +132,9 @@ Eine GPU entspricht einer P40-Karte.
 
 ## <a name="nv-series"></a>NV-Serie
 
-Storage Premium: nicht unterstützt
+Storage Premium  Nicht unterstützt
 
-Storage Premium-Zwischenspeicherung: nicht unterstützt
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
 Die virtuellen Computer der NV-Serie nutzen NVIDIA-GPUs vom Typ [Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie und ermöglichen die Verwendung beschleunigter Desktopanwendungen und virtueller Desktops, mit denen Kunden ihre Daten oder Simulationen visualisieren können. Benutzer können ihre grafikintensiven Workflows mit den NV-Instanzen visualisieren, um überragende Grafikfunktionen zu erhalten, und darüber hinaus Workloads mit einfacher Genauigkeit ausführen (beispielsweise Codierung und Rendering). 
 
@@ -150,9 +150,9 @@ Alle GPUs in NV-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihnen
 
 ## <a name="nvv2-series-preview"></a>NVv2-Serie (Preview)
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung:  Unterstützt
 
 Die virtuellen Computer der NVv2-Serie verfügen über GPUs vom Typ [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie mit Intel Broadwell CPUs. Diese virtuellen Computer wurden für GPU-beschleunigte Grafikanwendungen und virtuelle Desktops entwickelt, um Kunden die Datenvisualisierung, Ergebnissimulation, CAD oder das Rendering und Streaming von Inhalten zu erleichtern. Außerdem können diese virtuellen Computer Workloads mit einfacher Genauigkeit wie Codierung und Rendering ausführen. Virtuelle Computer der NVv2-Serie unterstützen Storage Premium und verfügen im Vergleich zur NV-Vorgängerserie über doppelt so viel Systemspeicher (RAM).  
 

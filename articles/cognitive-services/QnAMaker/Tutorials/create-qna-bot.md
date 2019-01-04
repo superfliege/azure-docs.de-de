@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial: QnA-Bot mit Azure Bot Service: QnA Maker'
+title: QnA-Bot – Azure Bot Service – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial wird erläutert, wie Sie einen QnA-Bot mit Azure Bot Service v3 im Azure-Portal erstellen.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker`
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 19c56cf05e307deca52808b0eeba65b8949ffc0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f5587e14a0250e7312f1c95598b481bd052931c3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212739"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094830"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Tutorial: Erstellen eines QnA-Bots mit Azure Bot Service v3
 
@@ -60,11 +61,11 @@ Für dieses Tutorial benötigen Sie eine veröffentlichte Wissensdatenbank. Besi
 
 5. Wählen Sie die Vorlage **Frage und Antwort** für das Feld „Bot-Vorlage“ aus, und speichern Sie die Vorlageneinstellungen, indem Sie **Auswählen** auswählen.
 
-    ![Auswahl des Botdiensts](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+    ![Speichern der Bot Service-Vorlagenauswahl](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
 
 6. Überprüfen Sie Ihre Einstellungen, und wählen Sie dann **Erstellen** aus. Dadurch wird der Botdienst erstellt und in Azure bereitgestellt.
 
-    ![Auswahl des Botdiensts](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+    ![Erstellen eines Bots](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
 
 7. Vergewissern Sie sich, dass der Botdienst bereitgestellt wurde.
 

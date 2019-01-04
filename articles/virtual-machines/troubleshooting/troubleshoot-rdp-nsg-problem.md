@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: cb9058d4f68b2dc202edeeaa6cafb2eefa82470b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284726"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954611"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Remoteverbindung mit einer VM kann nicht hergestellt werden, da der RDP-Port in der NSG nicht aktiviert ist
 
@@ -26,7 +26,7 @@ In diesem Artikel wird die Lösung eines Problems beschrieben, bei dem Sie keine
 
 
 > [!NOTE] 
-> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../../azure-resource-manager/resource-manager-deployment-model.md). Wir empfehlen Ihnen, für neue Bereitstellungen anstelle des klassischen Bereitstellungsmodells das Resource Manager-Bereitstellungsmodell zu verwenden. 
+> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Wir empfehlen Ihnen, für neue Bereitstellungen anstelle des klassischen Bereitstellungsmodells das Resource Manager-Bereitstellungsmodell zu verwenden. 
 
 ## <a name="symptom"></a>Symptom
 
@@ -42,16 +42,16 @@ Führen Sie diese Schritte aus, um den RDP-Port in einer NSG zu aktivieren:
 3. Wählen Sie unter **Einstellungen** die Option **Netzwerk**. 
 4. Überprüfen Sie unter **Regeln für eingehende Ports**, ob der Port für RDP richtig festgelegt ist. Hier ist ein Beispiel für die Konfiguration angegeben: 
 
-    **Priorität**: 300 </br>
-    **Port**: 3389 </br>
-    **Name**: Port_3389 </br>
-    **Port**: 3389 </br>
-    **Protokoll**: TCP </br>
-    **Quelle**: Beliebig </br>
-    **Ziele**:Beliebig </br>
-    **Aktion**: Zulassen </br>
+    **Priorität:** 300 </br>
+    **Port:** 3389 </br>
+    **Name:** Port_3389 </br>
+    **Port:** 3389 </br>
+    **Protokoll:** TCP </br>
+    **Quelle:** Beliebig </br>
+    **Ziele:** Beliebig </br>
+    **Aktion:** ZULASSEN </br>
 
-Wenn Sie die IP-Quelladresse angeben, wird mit dieser Einstellung nur Datenverkehr von einer bestimmten IP-Adresse bzw. einem IP-Adressbereich zugelassen, um die Verbindung mit der VM herzustellen. Stellen Sie sicher, dass sich der Computer, den Sie zum Starten der RDP-Sitzung verwenden, in diesem Bereich befindet.
+Wenn Sie die IP-Quelladresse angeben, wird mit dieser Einstellung nur Datenverkehr von einer bestimmten IP-Adresse bzw. einem IP-Adressbereich für die Verbindung mit der VM zugelassen. Stellen Sie sicher, dass sich der Computer, den Sie zum Starten der RDP-Sitzung verwenden, in diesem Bereich befindet.
 
 Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md).
 

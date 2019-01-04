@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: f6d343d42bf9d918bf23c9f5f442d977a5caca96
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 34177cb2ea1650c4b7130d8c5a2a886655852783
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343716"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555029"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -416,7 +416,7 @@ public class WorkItem
 
 Der Standardbereich für eine Sperre ist `SingletonScope.Function`. Dies bedeutet, dass der Sperrenbereich (der Blob-Leasepfad) an den vollqualifizierten Funktionsnamen gebunden ist. Um funktionenübergreifende Sperren festzulegen, geben Sie `SingletonScope.Host` an, und verwenden Sie eine Bereichs-ID, die für alle Funktionen, die nicht gleichzeitig ausgeführt werden sollen, gleich ist. Im folgenden Beispiel wird jeweils nur eine Instanz von `AddItem` oder `RemoveItem` ausgeführt:
 
-```charp
+```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
 public static void AddItem([QueueTrigger("add-item")] string message)
 {

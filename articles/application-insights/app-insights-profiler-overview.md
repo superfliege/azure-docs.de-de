@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7e0734790a0b33a52ace01ad961b1bc3127fa3d4
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 7780c10233a0ce256ee6e9015f40ea789516c25b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976518"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726898"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilerstellung für Produktionsanwendungen in Azure mit Application Insights Profiler
 ## <a name="enable-profiler-for-your-application"></a>Aktivieren von Profiler für Ihre Anwendung
@@ -50,10 +49,10 @@ Wählen Sie ein Beispiel aus, um eine Aufschlüsselung des Zeitaufwands für die
 
 Im Ablaufverfolgungs-Explorer werden die folgenden Informationen angezeigt:
 
-* **Langsamsten Pfad anzeigen**: Öffnet den größten Blattknoten (oder etwas in der Nähe). In den meisten Fällen befindet sich dieser Knoten in der Nähe eines Leistungsengpasses.
-* **Bezeichnung**: Der Name der Funktion oder des Ereignisses. Die Struktur enthält eine Mischung aus Code und aufgetretenen Ereignissen (wie SQL- und HTTP-Ereignissen). Das oberste Ereignis stellt die Gesamtdauer der Anforderung dar.
-* **Verstrichen**: Das Zeitintervall zwischen Beginn und Ende des Vorgangs.
-* **Wann:** der Zeitpunkt, an dem die Funktion oder das Ereignis relativ zu anderen Funktionen aktiv war.
+* **Langsamsten Pfad anzeigen:** Öffnet den größten Blattknoten (oder etwas in der Nähe). In den meisten Fällen befindet sich dieser Knoten in der Nähe eines Leistungsengpasses.
+* **Bezeichnung:** Der Name der Funktion oder des Ereignisses. Die Struktur enthält eine Mischung aus Code und aufgetretenen Ereignissen (wie SQL- und HTTP-Ereignissen). Das oberste Ereignis stellt die Gesamtdauer der Anforderung dar.
+* **Verstrichen:** Das Zeitintervall zwischen Beginn und Ende des Vorgangs.
+* **Wann:** Der Zeitpunkt, an dem die Funktion oder das Ereignis relativ zu anderen Funktionen aktiv war.
 
 ## <a name="how-to-read-performance-data"></a>Lesen von Leistungsdaten
 

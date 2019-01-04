@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2af5ed294c4a53e38690991f1f65b3f7d2f46c73
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c26f9c319a8260f4c19933d640310923b9c36db7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354810"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134827"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -62,7 +62,7 @@ Der Fehler „Ungültiges Gateway“ gibt an, dass der Connector die Back-End-An
 
 Wenn der Fehler „Verboten“ angezeigt wird, wurde der Benutzer der Anwendung nicht zugewiesen. Dieser Fehler kann entweder Azure Active Directory oder die Back-End-Anwendung betreffen.
 
-Informationen über das Zuweisen von Benutzern zur Anwendung in Azure finden Sie in der [Konfigurationsdokumentation](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
+Informationen über das Zuweisen von Benutzern zur Anwendung in Azure finden Sie in der [Konfigurationsdokumentation](https://docs.microsoft.com/azure/active-directory/application-proxy-add-on-premises-application#add-a-test-user).
 
 Wenn Sie bestätigen, dass der Benutzer der Anwendung in Azure zugewiesen ist, überprüfen Sie die Benutzerkonfiguration in der Back-End-Anwendung. Wenn Sie die eingeschränkte Kerberos-Delegierung bzw. integrierte Windows-Authentifizierung verwenden, finden Sie nützliche Informationen auf der Seite zur KCD-Problembehandlung.
 
@@ -82,7 +82,7 @@ So überprüfen Sie, ob die Anwendung einer funktionierenden Connectorgruppe zug
 
 4.  Hier stehen Ihnen mehrere Möglichkeiten zur weiteren Problembehebung zur Verfügung:
 
-  * Verschieben eines aktiven Connectors in die Gruppe: Wenn Sie über einen aktiven Connector verfügen, der dieser Gruppe angehören sollte und uneingeschränkten Zugriff auf die Back-End-Anwendung hat, können Sie den Connector in die zugewiesene Gruppe verschieben. Klicken Sie hierzu auf den Connector. Verwenden Sie im Feld „Connectorgruppe“ die Dropdownliste, um die richtige Gruppe auszuwählen, und klicken Sie dann auf „Speichern“.
+  * Verschieben Sie einen aktiven Connector in die Gruppe: Wenn Sie über einen aktiven Connector verfügen, der dieser Gruppe angehören sollte und uneingeschränkten Zugriff auf die Back-End-Anwendung hat, können Sie den Connector in die zugewiesene Gruppe verschieben. Klicken Sie hierzu auf den Connector. Verwenden Sie im Feld „Connectorgruppe“ die Dropdownliste, um die richtige Gruppe auszuwählen, und klicken Sie dann auf „Speichern“.
 
   * Herunterladen eines neuen Connectors für diese Gruppe: Auf dieser Seite finden Sie den Link zum [Herunterladen eines neuen Connectors](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Installieren Sie den Connector auf einem Computer mit direktem Zugriff auf die Back-End-Anwendung. In der Regel ist der Connector auf demselben Server wie die Anwendung installiert. Verwenden Sie den Downloadlink, um einen Connector auf den Zielcomputer herunterzuladen. Als Nächstes klicken Sie auf den Connector und verwenden die Dropdownliste „Connectorgruppe“, um sicherzustellen, dass er der richtigen Gruppe angehört.
 

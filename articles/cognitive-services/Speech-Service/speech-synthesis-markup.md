@@ -1,5 +1,5 @@
 ---
-title: Markupsprache für Sprachsynthese
+title: Speech Synthesis Markup Language – Speech Services
 titleSuffix: Azure Cognitive Services
 description: Verwenden der Markupsprache für Sprachsynthese zum Steuern der Aussprache und des Satzrhythmus in Text-zu-Sprache
 services: cognitive-services
@@ -8,22 +8,26 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/08/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: b32be520adeee2de50c8f49c2884dc9dc92c0ddd
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: f6a2d6a35200bc4dec169aae72415c1c2904c465
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469281"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341132"
 ---
 # <a name="speech-synthesis-markup-language"></a>Markupsprache für Sprachsynthese
 
-Die Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML) ist eine XML-basierte Markupsprache, die eine Möglichkeit zum Steuern der Aussprache und des *Satzrhythmus* von Text-zu-Sprache bietet. Satzrhythmus bezieht sich auf den Rhythmus und die Tonhöhe der Sprache – sozusagen ihren „musikalischen“ Aspekt. Sie können Wörter phonetisch angeben, Hinweise zum Interpretieren von Zahlen bereitstellen, Pausen einfügen, die Tonhöhe, Lautstärke und Rate steuern und vieles mehr.
+Die Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML) ist eine XML-basierte Markupsprache, die eine Möglichkeit zum Steuern der Aussprache und des *Satzrhythmus* von Text-zu-Sprache bietet. Satzrhythmus bezieht sich auf den Rhythmus und die Tonhöhe der Sprache – sozusagen ihren „musikalischen“ Aspekt. Sie können Wörter phonetisch angeben, Hinweise zum Interpretieren von Zahlen bereitstellen, Pausen einfügen, die Tonhöhe, Lautstärke und Rate steuern und vieles mehr. Weitere Informationen finden Sie unter [Speech Synthesis Markup Language (SSML) Version 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
 
-Weitere Informationen finden Sie unter [Speech Synthesis Markup Language (SSML) Version 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) auf der W3C-Website.
+Eine vollständige Liste der unterstützten Sprachen, Gebietsschemas und Stimmen (neuronal und Standard) finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 
-Die folgenden Beispiele zeigen, wie SSML für allgemeine Sprachsyntheseanforderungen verwendet wird:
+Die folgenden Abschnitte enthalten Beispiele für allgemeine Sprachsyntheseaufgaben.
+
+>[!IMPORTANT]
+> Derzeit stehen Intonationstags nur für Standardstimmen zur Verfügung.
 
 ## <a name="add-a-break"></a>Hinzufügen einer Pause
 ```xml
@@ -89,5 +93,4 @@ Die folgenden Beispiele zeigen, wie SSML für allgemeine Sprachsyntheseanforderu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+* [Sprachunterstützung: Stimmen, Gebietsschemas, Sprachen](language-support.md)

@@ -1,23 +1,24 @@
 ---
-title: Erläuterungen zu Ihren LUIS-Schlüsseln
-titleSuffix: Azure Cognitive Services
-description: 'LUIS verwendet zwei Schlüssel: Erstellungs- und Endpunktschlüssel. Der Erstellungsschlüssel wird automatisch erstellt, wenn Sie Ihr LUIS-Konto erstellen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, müssen Sie den Endpunktschlüssel erstellen, ihn Ihrer LUIS-App zuweisen und ihn für Endpunktabfragen verwenden.'
+title: Abonnementschlüssel
+titleSuffix: Language Understadning - Azure Cognitive Services
+description: 'LUIS verwendet zwei Schlüssel: den kostenlosen Erstellungsschlüssel zum Erstellen Ihres Modells und den berechneten Endpunktschlüssel für das Abfragen des Vorhersageendpunkts mit Benutzeräußerungen.'
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: f7c1753e71025d3ce39b1b6e3fb7362f2df212f5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6816fa3705348d07eced92c64e0c7020a08d01d5
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637830"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132379"
 ---
-# <a name="keys-in-luis"></a>Schlüssel in LUIS
+# <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS
 LUIS verwendet zwei Schlüssel: [Erstellungs-](#programmatic-key) und [Endpunktschlüssel](#endpoint-key). Der Erstellungsschlüssel wird automatisch erstellt, wenn Sie Ihr LUIS-Konto erstellen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, müssen Sie den [Endpunktschlüssel erstellen](luis-how-to-azure-subscription.md#create-luis-endpoint-key), ihn Ihrer LUIS-App [zuweisen](luis-how-to-manage-keys.md#assign-endpoint-key) und ihn [für Endpunktabfragen verwenden](#use-endpoint-key-in-query). 
 
 |Schlüssel|Zweck|

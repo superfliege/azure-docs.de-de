@@ -1,5 +1,5 @@
 ---
-title: Regionen des Speech-Diensts
+title: Regionen – Speech Services
 titlesuffix: Azure Cognitive Services
 description: Referenz zu den Regionen des Speech-Diensts.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.author: mahilleb
-ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712890"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091644"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -23,7 +24,7 @@ Mithilfe des Speech-Diensts kann Ihre Anwendung Sprache in Text konvertieren, Sp
 
 Stellen Sie sicher, dass Sie den Endpunkt verwenden, der mit der Region für Ihr Abonnement übereinstimmt.
 
-## <a name="speech-sdk"></a>Speech SDK
+## <a name="speech-sdk"></a>Sprach-SDK
 
 Im [Speech-Dienst-SDK](speech-sdk.md) werden Regionen als Zeichenfolge angegeben (z.B. als Parameter für `SpeechConfig.FromSubscription` im Speech-SDK für C#).
 
@@ -45,7 +46,7 @@ Das Speech SDK ist in den folgenden Regionen für **Spracherkennung** und **Übe
 
 ### <a name="intent-recognition"></a>Absichtserkennung
 
-Die **Absichtserkennung** für das Speech SDK weist die gleiche Unterstützung für Regionen wie LUIS auf. Eine vollständige Liste der verfügbaren Regionen finden Sie unter [Veröffentlichen von Regionen und Endpunkten – LUIS](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions).
+Die **Absichtserkennung** für das Speech SDK weist die gleiche Unterstützung für Regionen wie LUIS auf. Eine vollständige Liste der verfügbaren Regionen finden Sie unter [Veröffentlichen von Regionen und Endpunkten – LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions).
 
 Verfügbare Regionen für die **Absichtserkennung** über das Speech SDK finden Sie auf der [Seite mit den Regionen des Language Understanding-Diensts](/azure/cognitive-services/luis/luis-reference-regions).
 
@@ -61,7 +62,7 @@ Die Referenzdokumentation zur Spracherkennung finden Sie unter [REST-APIs](https
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
-### <a name="text-to-speech"></a>Sprachsynthese
+### <a name="text-to-speech"></a>Text-zu-Sprache
 
 Die Referenzdokumentation zur Sprachsynthese finden Sie unter [REST-APIs](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
 

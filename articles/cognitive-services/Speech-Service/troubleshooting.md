@@ -1,33 +1,34 @@
 ---
-title: Beheben von Problemen mit dem Speech-Geräte-SDK
+title: Beheben von Problemen mit dem Speech SDK – Speech Services
 titleSuffix: Azure Cognitive Services
-description: Beheben Sie Probleme mit dem Speech-Geräte-SDK.
+description: Dieser Artikel enthält Informationen zum Beheben von Problemen, die bei Verwendung des Speech-Geräte-SDK auftreten können.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 9f0cea263262d83d9a95012f6cd09fa9acdc0141
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464570"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095482"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Beheben von Problemen mit dem Speech-Geräte-SDK
 
 Dieser Artikel enthält Informationen zum Beheben von Problemen, die bei Verwendung des Speech-Geräte-SDK auftreten können.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fehler: Authentifizierungsfehler beim WebSocket-Upgrade (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fehler Authentifizierungsfehler beim WebSocket-Upgrade (403)
 
-Sie verwenden möglicherweise den falschen Endpunkt für Ihre Region oder den Dienst. Prüfen Sie den URI, um sicherzustellen, dass er korrekt ist. 
+Sie verwenden möglicherweise den falschen Endpunkt für Ihre Region oder den Dienst. Prüfen Sie den URI, um sicherzustellen, dass er korrekt ist.
 
 Außerdem kann ein Problem mit Ihrem Abonnementschlüssel oder Autorisierungstoken auftreten. Weitere Informationen finden Sie im nächsten Abschnitt.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fehler: „HTTP 403 Verboten“ oder „HTTP 401 Nicht autorisiert“
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fehler „HTTP 403 Verboten“ oder „HTTP 401 Nicht autorisiert“
 
 Dieser Fehler wird häufig durch Authentifizierungsprobleme verursacht. Verbindungsanforderungen ohne gültigen `Ocp-Apim-Subscription-Key` oder `Authorization`-Header werden mit dem Status 403 oder 401 abgelehnt.
 
@@ -78,19 +79,19 @@ Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, führen S
     ```Powershell
     $SpeechServiceURI =
     'https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US'
-    
+
     # $OAuthToken is the authorization token returned by the token service.
     $RecoRequestHeader = @{
       'Authorization' = 'Bearer '+ $OAuthToken
       'Transfer-Encoding' = 'chunked'
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
-    
+
     # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
-    
+
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
-    
+
     # Show the result.
     $RecoResponse
     ```
@@ -103,11 +104,11 @@ Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, führen S
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Fehler: HTTP 400 Ungültige Anforderung
+## <a name="error-http-400-bad-request"></a>Fehler HTTP 400 Ungültige Anforderung
 
 Dieser Fehler tritt gewöhnlich auf, wenn der Anforderungstext ungültige Audiodaten enthält. Nur das WAV-Format wird unterstützt. Prüfen Sie auch die Anforderungsheader, um sicherzustellen, dass geeignete Werte für `Content-Type` und `Content-Length` angegeben sind.
 
-## <a name="error-http-408-request-timeout"></a>Fehler: HTTP 408 Anforderungstimeout
+## <a name="error-http-408-request-timeout"></a>Fehler HTTP 408 Anforderungstimeout
 
 Der Fehler tritt wahrscheinlich auf, weil keine Audiodaten an den Dienst gesendet werden. Dieser Fehler kann auch durch Netzwerkprobleme verursacht werden.
 
@@ -122,4 +123,3 @@ Dieses Problem wird in der Regel durch Audiodaten verursacht. Dieser Fehler wird
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Lesen Sie die Anmerkungen zu dieser Version](releasenotes.md)
-

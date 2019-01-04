@@ -1,23 +1,24 @@
 ---
-title: Konzepte zur Datenänderung in LUIS – Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Ändern von Daten
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Erfahren Sie, wie Daten vor der Vorhersage in Language Understanding Intelligent Service (LUIS) geändert werden können.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6db7fd2474688608eb029fce1529ba1d3f00c5d3
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6f3f1ba47ec4dbdd09f6c9e3962b2102fc366136
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637169"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099116"
 ---
-# <a name="data-alterations"></a>Datenänderungen
+# <a name="alter-utterance-data-before-or-during-prediction"></a>Ändern von Äußerungsdaten vor oder während der Vorhersage
 LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine Korrektur der Rechtschreibung und das Beheben von Zeitzonenproblemen für Prebuild-datetimeV2. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Korrigieren von Rechtschreibfehlern in Äußerungen

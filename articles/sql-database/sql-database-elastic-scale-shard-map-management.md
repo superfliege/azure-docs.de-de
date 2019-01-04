@@ -3,7 +3,7 @@ title: Horizontales Hochskalieren einer Azure SQL-Datenbank | Microsoft-Dokument
 description: Erfahren Sie, wie Sie "ShardMapManager" und die Clienbtbibliothek für elastische Datenbanken verwenden.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/16/2018
-ms.openlocfilehash: 71496a11deff5236161931d572e75d4a84b75c5f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 28387c1487c506173cba2eaaf3364dab36c7f70f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162065"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865851"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontales Skalieren von Datenbanken mit dem Shardzuordnungs-Manager
 Verwenden Sie einen Shardzuordnungs-Manager, um Datenbanken in SQL Azure problemlos horizontal zu skalieren. Der Shardzuordnungs-Manager ist eine spezielle Datenbank, die globale Zuordnungsinformationen zu allen Shards (Datenbanken) in einer Shardgruppe verwaltet. Die Metadaten ermöglichen einer Anwendung die Verbindung mit der richtigen Datenbank basierend auf dem Wert des **Sharding-Schlüssels**. Darüber hinaus enthält jeder Shard in der Gruppe Zuordnungen, die die lokalen Sharddaten (als **Shardlets**bezeichnet) nachverfolgen. 
@@ -55,7 +55,7 @@ Die elastische Skalierung unterstützt die folgenden Typen als Shardingschlüsse
 | lang |lang |
 | GUID |uuid |
 | Byte[]  |Byte[] |
-| Datetime | timestamp |
+| Datetime |  timestamp |
 | Zeitraum | duration|
 | datetimeoffset |offsetdatetime |
 
@@ -91,14 +91,14 @@ Jede der obigen Tabellen ist ein grundlegendes Beispiel für ein **ShardMap** -O
 ## <a name="shard-map-manager"></a>Shard-Zuordnungs-Manager
 In der Clientbibliothek stellt der Shardzuordnungs-Manager eine Sammlung von Shardzuordnungen dar. Die von einer **ShardMapManager** -Instanz verwalteten Daten werden an drei Orten gespeichert: 
 
-1. **Globale Shardzuordnung (Global Shard Map, GSM)**: Sie geben eine Datenbank als Repository für alle Shardkarten und -zuordnungen an. Spezielle Tabellen und gespeicherte Prozeduren werden automatisch zur Verwaltung der Informationen erstellt. Hierfür wird üblicherweise eine kleine Datenbank verwendet, auf die einfach zugegriffen werden kann. Diese sollte jedoch nicht für andere Anforderungen der Anwendung verwendet werden. Die Tabellen befinden sich in einem speziellen Schema namens **__ShardManagement**. 
-2. **Lokale Shardzuordnung (Local Shard Map, LSM)**: Jede Datenbank, die Sie als Shard angeben, wird dahingehend geändert, dass sie mehrere kleine Tabellen und spezielle gespeicherte Prozeduren enthält, die Shardzuordnungsinformationen speziell für diesen Shard enthalten und verwalten. Diese Informationen sind für die Informationen in der GSM redundant, jedoch kann die Anwendung die zwischengespeicherten Shardzuordnungsinformationen überprüfen, ohne dass Last auf der GSM anfällt. Die Anwendung verwendet die LSM, um festzustellen, ob eine zwischengespeicherte Zuordnung noch gültig ist. Die Tabellen für die LSM zu jedem Shard sind auch im Schema **__ShardManagement** enthalten.
-3. **Anwendungscache**: Jede Anwendungsinstanz, die Zugriff auf ein **ShardMapManager**-Objekt hat, verwaltet lokal einen speicherinternen Cache ihrer Zuordnungen. Sie speichert die Routinginformationen, die zuletzt abgerufen wurden. 
+1. **Globale Shardzuordnung (GSM):** Sie geben eine Datenbank als Repository für alle Shardzuordnungen und -mappings an. Spezielle Tabellen und gespeicherte Prozeduren werden automatisch zur Verwaltung der Informationen erstellt. Hierfür wird üblicherweise eine kleine Datenbank verwendet, auf die einfach zugegriffen werden kann. Diese sollte jedoch nicht für andere Anforderungen der Anwendung verwendet werden. Die Tabellen befinden sich in einem speziellen Schema namens **__ShardManagement**. 
+2. **Lokale Shardzuordnung (LSM):** Jede Datenbank, die Sie als Shard angeben, wird dahin gehend geändert, dass sie mehrere kleine Tabellen und spezielle gespeicherte Prozeduren enthält, die Shardzuordnungsinformationen speziell für diesen Shard enthalten und verwalten. Diese Informationen sind für die Informationen in der GSM redundant, jedoch kann die Anwendung die zwischengespeicherten Shardzuordnungsinformationen überprüfen, ohne dass Last auf der GSM anfällt. Die Anwendung verwendet die LSM, um festzustellen, ob eine zwischengespeicherte Zuordnung noch gültig ist. Die Tabellen für die LSM zu jedem Shard sind auch im Schema **__ShardManagement** enthalten.
+3. **Anwendungscache:** Jede Anwendungsinstanz, die Zugriff auf ein **ShardMapManager**-Objekt hat, verwaltet lokal einen speicherinternen Cache ihrer Zuordnungen. Sie speichert die Routinginformationen, die zuletzt abgerufen wurden. 
 
 ## <a name="constructing-a-shardmapmanager"></a>Erstellen eines ShardMapManager
 Ein **ShardMapManager**-Objekt wird mit einem Factorymuster ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)) erstellt. Die **ShardMapManagerFactory.GetSqlShardMapManager**-Methode ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.getsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) nimmt Anmeldeinformationen (einschließlich Server- und Datenbankname mit der GSM) in Form einer **ConnectionString** entgegen und gibt eine Instanz eines **ShardMapManager** zurück.  
 
-**Hinweis**: Das **ShardMapManager**-Element sollte innerhalb des Initialisierungscodes für eine Anwendung nur einmal pro Anwendungsdomäne instanziiert werden. Das Erstellen zusätzlicher Instanzen von ShardMapManager in derselben Anwendungsdomäne führt zu mehr Arbeitsspeicher- und CPU-Auslastung der Anwendung. Ein **ShardMapManager**-Element kann eine beliebige Anzahl von Shardzuordnungen enthalten. Während eine einzelne Shardzuordnung für viele Anwendungen ausreichend sein kann, werden in einigen Fällen unterschiedliche Sätze von Datenbanken für ein anderes Schema oder einen eindeutigen Zweck verwendet. In diesen Fällen sind möglicherweise mehrfache Shardzuordnungen vorzuziehen. 
+**Hinweis:** Das **ShardMapManager**-Objekt sollte innerhalb des Initialisierungscodes für eine Anwendung nur einmal pro Anwendungsdomäne instanziiert werden. Das Erstellen zusätzlicher Instanzen von ShardMapManager in derselben Anwendungsdomäne führt zu mehr Arbeitsspeicher- und CPU-Auslastung der Anwendung. Ein **ShardMapManager**-Element kann eine beliebige Anzahl von Shardzuordnungen enthalten. Während eine einzelne Shardzuordnung für viele Anwendungen ausreichend sein kann, werden in einigen Fällen unterschiedliche Sätze von Datenbanken für ein anderes Schema oder einen eindeutigen Zweck verwendet. In diesen Fällen sind möglicherweise mehrfache Shardzuordnungen vorzuziehen. 
 
 In diesem Code versucht eine Anwendung, ein bestehendes **ShardMapManager**-Element mit der TryGetSqlShardMapManager-Methode ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) zu öffnen. Wenn Objekte, die ein globales **ShardMapManager**-Element darstellen, in der Datenbank noch nicht vorhanden sind, erstellt die Clientbibliothek sie dort mithilfe der CreateSqlShardMapManager-Methode ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)).
 

@@ -1,53 +1,54 @@
 ---
-title: Konsistenzebenen und Azure Cosmos DB-APIs | Microsoft-Dokumentation
+title: Konsistenzebenen und Azure Cosmos DB-APIs
 description: Grundlegendes zu den Konsistenzebenen von APIs in Azure Cosmos DB.
 keywords: Konsistenz, Azure Cosmos DB, Azure, Modelle, MongoDB, Cassandra, Diagramm, Tabelle, Microsoft Azure
 services: cosmos-db
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: mjbrown
-ms.openlocfilehash: 974531cd5907e4f69e7d064125d3e51fa4974949
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 277a064d93e2ebcea82f3909b3fd16328a775105
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50956382"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832495"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konsistenzebenen und Azure Cosmos DB-APIs
 
-Die fünf von Azure Cosmos DB bereitgestellten Konsistenzmodelle werden nativ von der Cosmos DB-SQL-API unterstützt, der Standard-API bei Verwendung von Cosmos DB. Zusätzlich zur SQL-API bietet Cosmos DB auch native Unterstützung für Wire Protocol-kompatible APIs für gängige Datenbanken wie MongoDB, Apache Cassandra, Gremlin und Azure Tables. Diese Datenbanken bieten weder genau definierte Konsistenzmodelle noch von der SLA unterstützte Garantien für die Konsistenzstufen. Diese Datenbanken bieten in der Regel nur eine Teilmenge der fünf von Cosmos DB angebotenen Konsistenzmodelle. Für die SQL-, Gremlin und Tabellen-API wird die im Cosmos-Konto konfigurierte Standardkonsistenzebene verwendet.
+Die fünf in Azure Cosmos DB bereitgestellten Konsistenzmodelle werden nativ von der Azure Cosmos DB-SQL-API unterstützt. Bei Verwendung von Azure Cosmos DB ist die SQL-API die Standard-API. 
 
-Die folgenden Abschnitte zeigen das Mapping zwischen der von einem OSS-Clienttreiber angeforderten Datenkonsistenz für Apache Cassandra 4.x und MongoDB 3.4 bei Verwendung der Cassandra-API bzw. MongoDB-API und die entsprechenden Cosmos DB-Konsistenzebenen.
+Azure Cosmos DB bietet auch native Unterstützung für Wire Protocol-kompatible APIs für gängige Datenbanken. Dazu zählen MongoDB, Apache Cassandra, Gremlin und Azure Table Storage. Diese Datenbanken bieten keine genau definierten Konsistenzmodelle und keine von der SLA unterstützten Garantien für Konsistenzebenen. Sie umfassen in der Regel nur eine Teilmenge der fünf in Azure Cosmos DB bereitgestellten Konsistenzmodelle. Für die SQL-API, die Gremlin-API und die Tabellen-API wird die im Azure Cosmos DB-Konto konfigurierte Standardkonsistenzebene verwendet. 
 
-## <a id="cassandra-mapping"></a>Mapping zwischen Apache Cassandra und Cosmos DB-Konsistenzebenen
+In den folgenden Abschnitten wird die Zuordnung der von einem OSS-Clienttreiber angeforderten Datenkonsistenz für Apache Cassandra 4.x und MongoDB 3.4 gezeigt. Zudem sind die entsprechenden Azure Cosmos DB-Konsistenzebenen für Apache Cassandra und MongoDB aufgeführt.
 
-Die folgende Tabelle zeigt das Mapping für die Lesekonsistenz zwischen dem Apache Cassandra 4.x-Client und der Cosmos DB-Standardkonsistenzebene für Bereitstellungen in mehreren Regionen sowie in einer einzelnen Region.
+## <a id="cassandra-mapping"></a>Zuordnung zwischen Apache Cassandra- und Azure Cosmos DB-Konsistenzebenen
 
-| **Apache Cassandra 4.x** | **Cosmos DB (mehrere Regionen)** | **Cosmos DB (einzelne Region)** |
+In dieser Tabelle ist die Zuordnung für die Lesekonsistenz zwischen dem Apache Cassandra 4.x-Client und der Standardkonsistenzebene in Azure Cosmos DB aufgeführt. Es sind Bereitstellungen in mehreren Regionen sowie in einer einzelnen Region aufgeführt.
+
+| **Apache Cassandra 4.x** | **Azure Cosmos DB (mehrere Regionen)** | **Azure Cosmos DB (einzelne Region)** |
 | - | - | - |
-| ONE, TWO, THREE | Präfixkonsistenz | Präfixkonsistenz |
-| LOCAL_ONE | Präfixkonsistenz | Präfixkonsistenz |
-| QUORUM, ALL, SERIAL | Begrenzte Veraltung (Standard) oder stark (in der privaten Vorschau) | STARK (Strong) |
-| LOCAL_QUORUM | Begrenzte Veraltung (Bounded staleness) | STARK (Strong) |
-| LOCAL_SERIAL | Begrenzte Veraltung (Bounded staleness) | STARK (Strong) |
+| ONE, TWO, THREE | Konsistentes Präfix | Konsistentes Präfix |
+| LOCAL_ONE | Konsistentes Präfix | Konsistentes Präfix |
+| QUORUM, ALL, SERIAL | Begrenzte Veraltung (Bounded staleness) ist die Standardeinstellung. Stark (Strong) befindet sich in der privaten Vorschau. | STARK (Strong) |
+| LOCAL_QUORUM | Bounded staleness | STARK (Strong) |
+| LOCAL_SERIAL | Bounded staleness | STARK (Strong) |
 
-## <a id="mongo-mapping"></a>Zuordnung zwischen MongoDB 3.4- und Cosmos DB-Konsistenzebenen
+## <a id="mongo-mapping"></a>Zuordnung zwischen MongoDB 3.4- und Azure Cosmos DB-Konsistenzebenen
 
-Die folgende Tabelle zeigt das Mapping für das Leseinteresse zwischen dem MongoDB 3.4-Client und der Cosmos DB-Standardkonsistenzebene für Bereitstellungen in mehreren Regionen sowie in einer einzelnen Region.
+In der folgenden Tabelle ist die Zuordnung für das Leseinteresse zwischen dem MongoDB 3.4-Client und der Standardkonsistenzebene in Azure Cosmos DB aufgeführt. Es sind Bereitstellungen in mehreren Regionen sowie in einer einzelnen Region aufgeführt.
 
-| **MongoDB 3.4** | **Cosmos DB (mehrere Regionen)** | **Cosmos DB (einzelne Region)** |
+| **MongoDB 3.4** | **Azure Cosmos DB (mehrere Regionen)** | **Azure Cosmos DB (einzelne Region)** |
 | - | - | - |
 | Linearisierbar | STARK (Strong) | STARK (Strong) |
-| Mehrheit | Begrenzte Veraltung (Bounded staleness) | STARK (Strong) |
-| Lokal | Präfixkonsistenz | Präfixkonsistenz |
+| Mehrheit | Bounded staleness | STARK (Strong) |
+| Lokal | Konsistentes Präfix | Konsistentes Präfix |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie in den folgenden Artikeln mehr über die Konsistenzebenen und die Kompatibilität zwischen Cosmos DB-APIs und Open-Source-APIs:
+Erfahren Sie mehr über die Konsistenzebenen und die Kompatibilität zwischen Azure Cosmos DB-APIs und Open-Source-APIs. Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
 * [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
-* [Von der MongoDB-API von Cosmos DB unterstützte MongoDB-Features](mongodb-feature-support.md)
-* [Von der Cassandra-API von Cosmos DB unterstützte Apache Cassandra-Features](cassandra-support.md)
+* [MongoDB-Features, die von der MongoDB-API für Azure Cosmos DB unterstützt werden](mongodb-feature-support.md)
+* [Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden](cassandra-support.md)

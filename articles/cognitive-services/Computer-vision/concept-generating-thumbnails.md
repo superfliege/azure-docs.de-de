@@ -8,32 +8,35 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 9cb82b40d1fbec513b0219f26d1959fbd7f64570
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343961"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966737"
 ---
 # <a name="generating-thumbnails"></a>Generieren von Miniaturbildern
 
-Ein Miniaturbild ist eine kleine Darstellung eines Bilds. Verschiedene Geräte wie Smartphones, Tablets und PCs machen verschiedene Layouts der Benutzeroberfläche sowie unterschiedliche Miniaturbildgrößen erforderlich. Durch intelligente Zuschneidefunktionen bietet diese Maschinelles Sehen-Feature Hilfe bei der Lösung dieses Problems.
+Ein Miniaturbild ist eine verkleinerte Darstellung eines Bilds. Miniaturbilder werden verwendet, um Bilder und andere Daten auf wirtschaftliche und layoutfreundliche Weise darzustellen. Die Maschinelles Sehen-API verwendet intelligente Funktionen zum Zuschneiden und Ändern der Größe von Bildern, um intuitive Miniaturbilder für ein bestimmtes Bild zu erstellen.
 
-Nach dem Hochladen eines Bilds generiert das maschinelle Sehen ein hochwertiges Miniaturbild und analysiert dann die Objekte im Bild, um den *relevanten Bereich* (Region Of Interest, ROI) zu ermitteln. Optional kann das Bild an die Anforderungen des relevanten Bereichs angepasst werden. Das generierte Miniaturbild kann mit einem anderen Seitenverhältnis als dem des ursprünglichen Bilds angezeigt werden, um so Ihren Anforderungen zu entsprechen.
+Der Algorithmus zum Generieren der Miniaturbilder der Maschinelles Sehen-API funktioniert wie folgt:
+1. Entfernen störender Elemente aus dem Bild und Identifizieren des _relevanten Bereichs_ &mdash; das ist der Bildbereich, in dem die wichtigsten Objekte enthalten sind.
+1. Das Bild wird auf Grundlage des erkannten _relevanten Bereichs_ zugeschnitten.
+1. Das Seitenverhältnis wird entsprechend den Abmessungen des Zielminiaturbilds geändert.
 
-Der Miniaturbildalgorithmus funktioniert wie folgt:
+## <a name="area-of-interest"></a>Relevanter Bereich
 
-1. Störende Elemente werden aus dem Bild entfernt, und das Hauptobjekt (der Interessensbereich) wird ermittelt.
-2. Das Bild wird auf Grundlage des erkannten Interessensbereichs zugeschnitten.
-3. Das Seitenverhältnis wird entsprechend den Abmessungen des Zielminiaturbilds geändert.
+Wenn Sie ein Bild hochladen, analysiert die Maschinelles Sehen-API dieses, um den *relevanten Bereich* zu ermitteln. Anhand dieser Region kann dann bestimmt werden, wie das Bild zugeschnitten werden muss. Das Zuschneiden wird jedoch immer gemäß dem gewünschten Seitenverhältnis durchgeführt, sofern dieses angegeben wurde.
+
+Sie können die Koordinaten des unbearbeiteten umgebenden Felds dieses *relevanten Bereichs* stattdessen auch durch Aufrufen der **areaOfInterest**-API abrufen. Mithilfe dieser Informationen können Sie dann das ursprüngliche Bild ändern, wie Sie möchten.
+
+## <a name="examples"></a>Beispiele
 
 Das generierte Miniaturbild kann je nach den Angaben für Höhe, Breite und intelligenter Zuschneidefunktion stark variieren, wie im folgenden Bild dargestellt.
 
 ![Miniaturbilder](./Images/thumbnail-demo.png)
-
-## <a name="thumbnail-generation-examples"></a>Beispiele zum Generieren von Miniaturbildern
 
 In der folgenden Tabelle sind typische Miniaturbilder dargestellt, die vom maschinellen Sehen für die Beispielbilder generiert wurden. Die Miniaturbilder wurden für eine bestimmte Zielhöhe und -breite von 50 Pixel generiert, wobei die intelligente Zuschneidefunktion aktiviert ist.
 
@@ -45,4 +48,4 @@ In der folgenden Tabelle sind typische Miniaturbilder dargestellt, die vom masch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Konzepte zum [Taggen von Bildern](concept-tagging-images.md) und [Kategorisieren von Bildern](concept-categorizing-images.md).
+Erfahren Sie mehr über das [Taggen von Bildern](concept-tagging-images.md) und das [Kategorisieren von Bildern](concept-categorizing-images.md).

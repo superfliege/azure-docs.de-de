@@ -1,20 +1,17 @@
 ---
 title: Beheben von Problemen mit der Abfrageleistung in Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, wie Sie Probleme mit der Abfrageleistung in Azure Database for MySQL mithilfe von EXPLAIN beheben.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 72b047c37ac88e4b33c8723f8df14c6794e84399
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266175"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537663"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Verwenden von EXPLAIN zum Analysieren der Abfrageleistung in Azure Database for MySQL
 **EXPLAIN** ist ein praktisches Tool zum Optimieren von Abfragen. Mit einer EXPLAIN-Anweisung können Sie Informationen zur Ausführung von SQL-Anweisungen abrufen. Die folgende Ausgabe zeigt ein Beispiel für die Ausführung einer EXPLAIN-Anweisung.
@@ -57,10 +54,10 @@ possible_keys: id
 ```
 
 Aus der neuen EXPLAIN-Anweisung geht hervor, dass MySQL jetzt einen Index verwendet, um die Anzahl von Zeilen auf 1 zu begrenzen, wodurch sich wiederum die Suchzeit erheblich verkürzt.
- 
+ 
 ## <a name="covering-index"></a>Abdeckender Index
 Ein abdeckender Index besteht aus allen Spalten einer Abfrage im Index, sodass das Abrufen von Werten aus Datentabellen reduziert wird. Hier sehen Sie eine Abbildung in der folgenden **GROUP BY**-Anweisung.
- 
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -79,10 +76,10 @@ possible_keys: NULL
 ```
 
 Wie aus der Ausgabe hervorgeht, verwendet MySQL keine Indizes, weil keine richtigen Indizes verfügbar sind. Außerdem wird *Using temporary; Using filesort* angezeigt, was bedeutet, dass MySQL eine temporäre Tabelle erstellt, um die **GROUP BY**-Klausel zu erfüllen.
- 
+ 
 Das Erstellen eines Index für Spalte **c2** allein macht keinen Unterschied, und MySQL muss trotzdem eine temporäre Tabelle erstellen:
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -102,7 +99,7 @@ possible_keys: NULL
 
 In diesem Fall kann ein **Index mit vollständiger Abdeckung** für **c1** und **c2** erstellt werden, wobei der Wert von **c2** direkt im Index hinzugefügt wird, um eine weitere Datensuche zu vermeiden.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -123,7 +120,7 @@ possible_keys: covered
 Wie aus der obigen EXPLAIN-Anweisung hervorgeht, verwendet MySQL jetzt den Index mit vollständiger Abdeckung, und das Erstellen einer temporären Tabelle wird vermieden. 
 
 ## <a name="combined-index"></a>Kombinierter Index
-Ein kombinierter Index besteht aus Werten aus mehreren Spalten und kann als Array von Zeilen betrachtet werden, die durch Verketten der Werte der indizierten Spalten sortiert werden. Diese Methode kann in einer **GROUP BY**-Anweisung nützlich sein.
+Ein kombinierter Index besteht aus Werten aus mehreren Spalten und kann als Array von Zeilen betrachtet werden, die durch Verketten der Werte der indizierten Spalten sortiert werden. Diese Methode kann in einer **GROUP BY**-Anweisung nützlich sein.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -144,7 +141,7 @@ possible_keys: NULL
 
 MySQL führt eine *Dateisortierung* aus. Dieser Vorgang ist ziemlich langsam, insbesondere, wenn viele Zeilen sortiert werden müssen. Zur Optimierung dieser Abfrage kann ein kombinierter Index für beide Spalten erstellt werden, die sortiert werden.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -163,9 +160,9 @@ possible_keys: NULL
 ```
 
 Aus der EXPLAIN-Anweisung geht jetzt hervor, dass MySQL einen kombinierten Index verwenden kann, um eine zusätzliche Sortierung zu vermeiden, weil der Index bereits sortiert ist.
- 
+ 
 ## <a name="conclusion"></a>Zusammenfassung
- 
+ 
 Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Leistung erheblich gesteigert werden. Nur weil Sie über einen Index für die Tabelle verfügen, bedeutet das nicht zwangsläufig, dass MySQL in der Lage ist, ihn für Ihre Abfragen zu verwenden. Überprüfen Sie Ihre Annahmen immer mit EXPLAIN, und optimieren Sie Ihre Abfragen mithilfe von Indizes.
 
 

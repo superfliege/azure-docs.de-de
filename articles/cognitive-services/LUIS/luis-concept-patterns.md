@@ -1,27 +1,28 @@
 ---
-title: Erfahren Sie mehr über das Verbessern der Vorhersagegenauigkeit mit Mustern
-titleSuffix: Azure Cognitive Services
-description: Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind. Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben.
+title: Unterstützen der Vorhersage durch Muster
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 46c9eb99d808874e0f49dee5fa4865a4867873f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300369"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271520"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Verbessern der Vorhersagegenauigkeit mit Mustern
 Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind.  Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Muster als Weg bei wenig vertrauenswürdigen Absichten
-Stellen Sie sich eine Personalwesen-App vor, die das Organigramm bezogen auf einen Mitarbeiter auswertet. Bei Angabe des Namens und der Beziehungen eines Mitarbeiters gibt LUIS die beteiligten Mitarbeiter zurück. Sehen wir uns einen Mitarbeiter Tom mit einer Vorgesetzten Alice und einem Team von ihm Unterstellten mit den Namen Michael, Rebekka und Karl an.
+Stellen Sie sich eine Personalwesen-App vor, die das Organigramm bezogen auf einen Mitarbeiter auswertet. Bei Angabe des Namens und der Beziehungen eines Mitarbeiters gibt LUIS die beteiligten Mitarbeiter zurück. Sehen wir uns einen Mitarbeiter Tom mit einer Vorgesetzten Alice und einem Team von ihm Unterstellten mit den Namen Michael, Rebecca und Carl an.
 
 ![Bild des Organigramms](./media/luis-concept-patterns/org-chart.png)
 
@@ -43,6 +44,8 @@ Muster verwenden eine Kombination von Vorhersagetechnologien. Das Festlegen eine
 ## <a name="patterns-do-not-improve-entity-detection"></a>Muster verbessern nicht die Entitätserkennung
 Zwar sind Entitäten Voraussetzung für Muster, Muster helfen beim Erkennen einer Entität aber nicht weiter. Ein Muster ist nur zur Unterstützung der Vorhersage bei Absichten und Rollen vorgesehen.  
 
+Erwarten Sie keine verbesserte Vorhersage von Entitäten, wenn Sie mehrere Äußerungen in einem einzelnen Muster zusammenfassen. Damit einfache Entitäten ausgelöst werden, müssen Sie Äußerungen hinzufügen oder Listenentitäten verwenden, da Ihr Muster andernfalls nicht ausgelöst wird.
+
 ## <a name="patterns-use-entity-roles"></a>Muster verwenden Entitätsrollen
 Wenn zwei oder mehr Entitäten in einem Muster kontextverwandt sind, setzen Muster [Entitätsrollen](luis-concept-roles.md) ein, um Kontextinformationen zu den Entitäten zu extrahieren. Dies ist hierarchisch gleichbedeutend mit untergeordneten Entitäten, steht aber **nur** in Mustern zur Verfügung. 
 
@@ -50,7 +53,7 @@ Wenn zwei oder mehr Entitäten in einem Muster kontextverwandt sind, setzen Must
 Eine ausreichende Anzahl von Beispieläußerungen vorausgesetzt, wäre LUIS imstande, die Vorhersagezuverlässigkeit ohne Muster zu steigern. Mithilfe von Mustern lässt sich die Zuverlässigkeitsbewertung steigern, ohne so viele Äußerungen zur Verfügung stellen zu müssen.  
 
 ## <a name="pattern-matching"></a>Musterabgleich
-Ein Musterabgleich erfolgt so, dass zuerst die Entitäten innerhalb des Musters erkannt und dann der Rest der Wörter und die Wortstellung bewertet werden. Entitäten sind im Muster erforderlich, damit ein Musterabgleich erfolgen kann. 
+Ein Musterabgleich erfolgt so, dass zuerst die Entitäten innerhalb des Musters erkannt und dann der Rest der Wörter und die Wortstellung bewertet werden. Entitäten sind im Muster erforderlich, damit ein Musterabgleich erfolgen kann. Das Muster wird auf Tokenebene, nicht auf Zeichenebene angewandt. 
 
 ## <a name="pattern-syntax"></a>Mustersyntax
 Die Mustersyntax ist eine Vorlage für eine Äußerung. Die Vorlage sollte sowohl Wörter und Entitäten enthalten, die abgeglichen werden sollen, als auch Wörter und Interpunktion, die ignoriert werden sollen. Sie ist **kein** regulärer Ausdruck. 

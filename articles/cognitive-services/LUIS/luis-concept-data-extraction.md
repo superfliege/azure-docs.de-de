@@ -1,23 +1,24 @@
 ---
-title: Konzepte zur Datenextraktion in LUIS – Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Extrahieren von Daten
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Erfahren Sie, welche Art von Daten von LUIS (Language Understanding Intelligent Service) extrahiert werden können.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 284cc8ec6c2325df069d06039a6a22169c3107e7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638340"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098645"
 ---
-# <a name="data-extraction"></a>Extrahieren von Daten
+# <a name="data-extraction-from-intents-and-entities"></a>Extrahieren von Daten aus Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
 
 Am schwierigsten sind Daten zu extrahieren, die maschinell gelernt wurden, da es sich nicht um genaue Textübereinstimmungen handelt. Das Extrahieren von Daten aus maschinell erlernten [Entitäten](luis-concept-entity-types.md) muss als Teil des [Erstellungszyklus](luis-concept-app-iteration.md) durchgeführt werden, bis Sie sicher sind, dass Sie die erwarteten Daten erhalten.

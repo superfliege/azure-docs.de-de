@@ -1,23 +1,24 @@
 ---
-title: 'Batchtests der LUIS-App: Language Understanding'
-titleSuffix: Azure Cognitive Services
+title: Testen in Batches
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Verwenden Sie Batchtests, um Ihre Anwendung fortlaufend zu optimieren und ihr Sprachverständnis zu verbessern.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 44abadc653c4679f37152e6592c882475b139bdd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333903"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133145"
 ---
-# <a name="batch-testing-in-luis"></a>Batchtests in LUIS
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testen von Batches mit 1.000 Äußerungen im LUIS-Portal
 
 Mit Batchtests wird Ihr [aktives](luis-concept-version.md#active-version) trainiertes Modell überprüft, um seine Vorhersagegenauigkeit zu messen. Mithilfe eines Batchtests können Sie die Genauigkeit der einzelnen Absichten und Entitäten in Ihrem aktuellen trainierten Modell in einem Diagramm anzeigen. Überprüfen Sie die Ergebnisse des Batchtests, um geeignete Maßnahmen zum Verbessern der Genauigkeit einzuleiten, etwa indem Sie einer Absicht weitere Beispieläußerungen hinzufügen, wenn Ihre App häufig Fehler beim Erkennen der korrekten Absicht macht.
 

@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2a6744bdec48e59b820605bb4d1cc01d32702bcf
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2ee9f750ff52b8afe4be54233f1374f523a789f4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867762"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845164"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure Database for PostgreSQL 
 Azure-Datenbank für PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
@@ -26,11 +26,11 @@ Sie können die Protokollierung auf dem Server mithilfe von Serverparametern fü
 Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu PostgreSQL unter [Fehlerberichterstattung und -protokollierung](https://www.postgresql.org/docs/current/static/runtime-config-logging.html). Weitere Informationen dazu, wie Sie Azure Database for PostgreSQL-Parameter konfigurieren, finden Sie in der Dokumentation zum [Portal](howto-configure-server-parameters-using-portal.md) bzw. zur [Befehlszeilenschnittstelle](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Zugreifen auf Serverprotokolle über das Portal oder die Befehlszeilenschnittstelle
-Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure Database for PostgreSQL über das [Azure-Portal](howto-configure-server-logs-in-portal.md), die [Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-using-cli.md) und die Azure-REST-APIs auf sie zugreifen. Die Protokolldateien rotieren jede Stunde oder bei einer Größe von 100 MB, je nachdem, welcher Fall zuerst eintritt. Mithilfe des mit Ihrem Server verknüpften Parameters **log\_retention\_period** können Sie die Beibehaltungsdauer für diesen Protokollspeicher festlegen. Der Standardwert ist 3 Tage. Der Maximalwert beträgt 7 Tage. Ihrem Server muss genügend Speicher zugewiesen sein, damit die Protokolldateien gespeichert werden können. (Dieser retention-Parameter steuert nicht Azure-Diagnoseprotokolle.)
+Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure Database for PostgreSQL über das [Azure-Portal](howto-configure-server-logs-in-portal.md), die [Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-using-cli.md) und die Azure-REST-APIs auf sie zugreifen. Die Protokolldateien rotieren jede Stunde oder bei einer Größe von 100 MB, je nachdem, welcher Fall zuerst eintritt. Mithilfe des mit Ihrem Server verknüpften Parameters  **log\_retention\_period** können Sie den Aufbewahrungszeitraum für diesen Protokollspeicher festlegen. Der Standardwert ist 3 Tage. Der Maximalwert beträgt 7 Tage. Ihrem Server muss genügend Speicher zugewiesen sein, damit die Protokolldateien gespeichert werden können. (Dieser retention-Parameter steuert nicht Azure-Diagnoseprotokolle.)
 
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie diese an [Log Analytics](../log-analytics/log-analytics-queries.md), Event Hubs oder Azure Storage ausgegeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
+Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie diese an [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs oder Azure Storage ausgegeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
 
 
 In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. Je nach dem ausgewählten Ausgabeendpunkt können die enthaltenen Felder und ihre Reihenfolge variieren. 
@@ -49,7 +49,7 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | Ressource | Name des Servers |
 | Category (Kategorie) | `PostgreSQLLogs` |
 | NameVorgang | `LogEvent` |
-| errorLevel | Protokollierungsstufe, z.B.: LOG, ERROR, NOTICE |
+| errorLevel | Beispiel für die Protokollierungsstufe: LOG, ERROR, NOTICE |
 | Message | Primäre Protokollmeldung | 
 | Domäne | Serverversion, Beispiel: postgres-10 |
 | Detail | Sekundäre Protokollmeldung (falls zutreffend) |

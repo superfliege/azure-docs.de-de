@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 847794d46addc7f3cba09437c2d2c6e8a3a04e89
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165423"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956979"
 ---
 # <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
@@ -42,11 +42,11 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
   <tr>
     <td>from</td>
-    <td>*Optionaler Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die [unterstützten Sprachen](.\v3-0-languages.md) mithilfe des`translation`-Bereichs. Wenn kein `from`-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.</td>
+    <td>*Optionaler Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die [unterstützten Sprachen](./v3-0-languages.md) mithilfe des`translation`-Bereichs. Wenn kein `from`-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.</td>
   </tr>
   <tr>
     <td>zu</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `translation`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Zielsprache auswählen. Verwenden Sie z.B. `to=de` für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. `to=de&to=it` für die Übersetzung ins Deutsche und Italienische.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `translation`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Zielsprache auswählen. Verwenden Sie z.B. `to=de` für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. `to=de&to=it` für die Übersetzung ins Deutsche und Italienische.</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -137,11 +137,11 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
       * `language`: Eine Zeichenfolge, die den Code der erkannten Sprache darstellt.
 
-      * `score`:Ein Floatwert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
+      * `score`: Ein float-Wert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
 
     Die `detectedLanguage`-Eigenschaft ist nur im Ergebnisobjekt enthalten, wenn die automatische Spracherkennung angefordert wird.
 
-  * `translations`: Eine Array von Übersetzungsergebnissen. Die Größe des Arrays entspricht der Anzahl der durch den `to`-Abfrageparameter angegebenen Zielsprachen. Jedes Element im Array enthält:
+  * `translations`: Ein Array von Übersetzungsergebnissen. Die Größe des Arrays entspricht der Anzahl der durch den `to`-Abfrageparameter angegebenen Zielsprachen. Jedes Element im Array enthält:
 
     * `to`: Eine Zeichenfolge, die den Sprachcode der Zielsprache darstellt.
 
@@ -157,11 +157,11 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
     * `alignment`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `proj`, das dem übersetzten Text Eingabetext zuordnet. Die Informationen für die Ausrichtung werden nur bereitgestellt, wenn der Anforderungsparameter `includeAlignment` `true` ist. Die Ausrichtung wird als Zeichenfolgenwert mit dem folgenden Format zurückgegeben: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Der Doppelpunkt trennt Start- und Endindex, der Bindestrich trennt die Sprachen, und Leerzeichen trennen die Wörter. Ein Wort kann mit Null, einem oder mehreren Wörtern in der anderen Sprache übereinstimmen, und die ausgerichteten Wörter sind möglicherweise nicht zusammenhängend. Wenn keine Informationen für die Ausrichtung verfügbar sind, ist das Ausrichtungselement leer. Beispiele und Einschränkungen finden Sie in Abschnitt [Abrufen von Ausrichtungsinformationen](#obtain-alignment-information).
 
-    * `sentLen`: Ein Objekt, das Satzgrenzen in die Eingabe- und Ausgabetexten zurückgibt.
+    * `sentLen`: Ein Objekt, das Satzgrenzen in den Eingabe- und Ausgabetexten zurückgibt.
 
-      * `srcSentLen`: Ein Ganzzahlarray, das die Länge der Sätze im Eingabetext darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
+      * `srcSentLen`: Ein Integer-Array, das die Länge der Sätze im Eingabetext darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
 
-      * `transSentLen`: Ein Ganzzahlarray, das die Länge der Sätze im übersetzten Text darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
+      * `transSentLen`:  Ein Integer-Array, das die Länge der Sätze im übersetzten Text darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
 
     Satzgrenzen sind nur enthalten, wenn der Anforderungsparameter `includeSentenceLength` `true` ist.
 
@@ -377,14 +377,14 @@ Wenn Sie möchten, dass die Übersetzung keine Obszönitäten enthält, auch wen
     <td>`NoAction`</td>
     <td>Dies ist das Standardverhalten. Die Obszönitäten werden von der Quell- in die Zielsprache übertragen.<br/><br/>
     **Beispielquelle (Japanisch)**: 彼はジャッカスです。<br/>
-    **Beispielübersetzung (Englisch)**: He is a jackass.
+    **Beispielübersetzung (Englisch):** Er ist ein Trottel.
     </td>
   </tr>
   <tr>
     <td>`Deleted`</td>
     <td>Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.<br/><br/>
     **Beispielquelle (Japanisch)**: 彼はジャッカスです。<br/>
-    **Beispielübersetzung (Englisch)**: He is a.
+    **Beispielübersetzung (Englisch):** He is a. (Er ist ein.)
     </td>
   </tr>
   <tr>
@@ -392,10 +392,10 @@ Wenn Sie möchten, dass die Übersetzung keine Obszönitäten enthält, auch wen
     <td>Obszöne Wörter werden durch einen Marker in der Ausgabe ersetzt. Der Marker hängt von dem Parameter `ProfanityMarker` ab.<br/><br/>
 Bei Verwendung von `ProfanityMarker=Asterisk` werden obszöne Wörter durch `***` ersetzt:<br/>
     **Beispielquelle (Japanisch)**: 彼はジャッカスです。<br/>
-    **Beispielübersetzung (Englisch)**: He is a \*\*\*.<br/><br/>
+    **Beispielübersetzung (Englisch):** He is a \*\*\*.<br/><br/>
 Bei Verwendung von `ProfanityMarker=Tag` werden obszöne Wörter von den XML-Tags &lt;profanity&gt; und &lt;/profanity&gt; umschlossen:<br/>
     **Beispielquelle (Japanisch)**: 彼はジャッカスです。<br/>
-    **Beispielübersetzung (Englisch)**: He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
+    **Beispielübersetzung (Englisch):** He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 

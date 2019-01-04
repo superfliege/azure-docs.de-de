@@ -1,21 +1,22 @@
 ---
 title: Konfigurieren von Containern
-titlesuffix: Text Analytics - Cognitive Services - Azure
-description: Konfigurationseinstellungen für Container für die Textanalyse
+titlesuffix: Text Analytics - Azure Cognitive Services
+description: Die Textanalyse stellt für jeden Container ein allgemeines Konfigurationsframework bereit, sodass Sie ganz einfach Aspekte wie Speicher, Protokollierung und Telemetrie sowie Sicherheitseinstellungen für Ihre Container konfigurieren und verwalten können.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 0f6b8fa27d2db45be2c677a52c53cff5847acf4a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7e993b9ccc57359ac64186765b7b704535eb5a57
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634895"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086673"
 ---
 # <a name="configure-containers"></a>Konfigurieren von Containern
 
@@ -92,7 +93,7 @@ In der folgenden Tabelle werden die Konfigurationseinstellungen beschrieben, die
 
 ## <a name="billing-configuration-setting"></a>Konfigurationseinstellung „Billing“
 
-Die Konfigurationseinstellung `Billing` gibt den Endpunkt-URI der Textanalyseressource in Azure an, der zum Nachverfolgen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine Textanalyseressource in Azure handeln.
+Die Konfigurationseinstellung `Billing` gibt den Endpunkt-URI der Textanalyseressource in Azure an, der zum Erfassen von Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine Textanalyseressource in Azure handeln.
 
 > [!IMPORTANT]
 > Die Konfigurationseinstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-configuration-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](how-tos/text-analytics-how-to-install-containers.md#billing).
@@ -103,6 +104,8 @@ Die Konfigurationseinstellung `Eula` gibt an, dass Sie die Lizenz für den Conta
 
 > [!IMPORTANT]
 > Die Konfigurationseinstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-configuration-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](how-tos/text-analytics-how-to-install-containers.md#billing).
+
+Cognitive Services-Container werden unter [Ihrer Vereinbarung](https://go.microsoft.com/fwlink/?linkid=2018657) lizenziert und legen Ihre Nutzung von Azure fest. Wenn Sie über keine Vereinbarung zur Nutzung von Azure verfügen, bestätigen Sie, dass Ihre Vereinbarung zur Nutzung von Azure der [Microsoft Online-Abonnementvertrag](https://go.microsoft.com/fwlink/?linkid=2018755) ist (der die [Nutzungsbedingungen für Onlinedienste](https://go.microsoft.com/fwlink/?linkid=2018760) umfasst). Für Vorschauversionen stimmen Sie auch den [ergänzenden Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://go.microsoft.com/fwlink/?linkid=2018815) zu. Durch die Nutzung von Containern stimmen Sie diesen Bedingungen zu.
 
 ## <a name="fluentd-configuration-settings"></a>Konfigurationseinstellungen für Fluentd
 

@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 11/19/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: fe51419106f1164f9a9b5993261c61bad63333b5
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ecaceea42d64ab15676a9cb5a42ee8659e40d517
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262957"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847285"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -42,12 +42,12 @@ Azure AD ermöglicht Ihnen die interne Zusammenarbeit mit Mitarbeitern in Ihrer 
 ## <a name="when-to-use-access-reviews"></a>In welchen Fällen sollten Zugriffsüberprüfungen verwendet werden?
 
 - **Zu viele Benutzer in privilegierten Rollen:** Sie sollten überprüfen, wie viele Benutzer über Administratorzugriff verfügen, wie viele dieser Benutzer globale Administratoren sind und ob es eingeladene Gäste oder Partner gibt, die nicht entfernt wurden, nachdem ihnen eine administrative Aufgabe zugewiesen wurde. Sie können die Rollenzuweisung für Benutzer in [Azure AD-Verzeichnisrollen](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie globale Administratoren oder in [Azure-Ressourcenrollen](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie Benutzerzugriffsadministratoren in [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) erneut bestätigen.
-- **Wenn eine Automatisierung nicht möglich ist:** Sie können Regeln für dynamische Mitgliedschaften für Sicherheits- oder Office 365-Gruppen erstellen, aber was geschieht, wenn die Personaldaten nicht in Azure AD gespeichert sind oder die Benutzer nach dem Verlassen der Gruppe weiterhin Zugriff benötigen, um ihre Nachfolger einzuarbeiten? Dann können Sie eine Überprüfung für diese Gruppe erstellen, um sicherzustellen, dass die Benutzer, die weiterhin Zugriff benötigen, auch weiterhin Zugriff haben.
-- **Wenn eine Gruppe zu einem neuen Zweck verwendet wird:** Wenn Sie über eine Gruppe verfügen, die mit Azure AD synchronisiert wird, oder wenn Sie die Salesforce-Anwendung für alle Benutzer in der Gruppe „Vertriebsteam“ aktivieren möchten, wäre es sinnvoll, den Besitzer der Gruppe zu bitten, die Gruppenmitgliedschaft zu überprüfen, bevor die Gruppe in einem anderen Risikoinhalt verwendet wird.
+- **Wenn eine Automatisierung nicht möglich ist:** Sie können Regeln für dynamische Mitgliedschaften für Sicherheits- oder Office 365-Gruppen erstellen. Was geschieht aber, wenn die Personaldaten nicht in Azure AD gespeichert sind oder die Benutzer nach dem Verlassen der Gruppe weiterhin Zugriff benötigen, um ihre Nachfolger einzuarbeiten? Dann können Sie eine Überprüfung für diese Gruppe erstellen, um sicherzustellen, dass die Benutzer, die weiterhin Zugriff benötigen, auch weiterhin Zugriff haben.
+- **Wenn eine Gruppe zu einem neuen Zweck verwendet wird:** Wenn Sie über eine Gruppe verfügen, die mit Azure AD synchronisiert wird, oder wenn Sie die Salesforce-Anwendung für alle Benutzer in der Gruppe „Vertriebsteam“ aktivieren möchten, wäre es sinnvoll, den Besitzer der Gruppe zu bitten, die Gruppenmitgliedschaft zu überprüfen, bevor die Gruppe in einem anderen Risikokontext verwendet wird.
 - **Unternehmenskritischer Datenzugriff:** Bei bestimmten Ressourcen kann es zu Überwachungszwecken erforderlich sein, die Mitarbeiter außerhalb der IT-Abteilung zu bitten, sich regelmäßig abzumelden und zu begründen, warum sie Zugriff benötigen.
 - **Zum Verwalten einer Richtlinienausnahmeliste:** Im Idealfall halten sich alle Benutzer an die Zugriffsrichtlinien, um den Zugriff auf die Ressourcen Ihrer Organisation zu schützen. Es kann aber auch Geschäftsszenarien geben, in denen Ausnahmen erforderlich sind. Als IT-Administrator können Sie diese Aufgabe verwalten, das Übersehen von Richtlinienausnahmen vermeiden und Prüfern den Nachweis erbringen, dass diese Ausnahmen regelmäßig überprüft werden.
-- **Auffordern von Gruppenbesitzern zum Bestätigen, dass sie weiterhin Gäste in ihren Gruppen benötigen:** Der Mitarbeiterzugriff kann mit lokalem Identity & Access Management (IAM) automatisiert werden. Dies trifft jedoch nicht auf die Zugriffsrechte eingeladener Gäste zu. Wenn eine Gruppe Gästen Zugriff auf vertrauliche Unternehmensinhalte gewährt, muss der Besitzer der Gruppe bestätigen, dass für die Gäste immer noch eine berechtigte geschäftliche Notwendigkeit des Zugriffs besteht.
-- **Regelmäßige Durchführung von Überprüfungen:** Sie können die Häufigkeit der regelmäßigen Durchführung von Zugriffsüberprüfungen für Benutzer (z. B. wöchentlich, monatlich, vierteljährlich oder jährlich) einrichten. Die Prüfer werden zu Beginn jeder Überprüfung benachrichtigt. Prüfer können den Zugriff über eine benutzerfreundliche Oberfläche und mithilfe intelligenter Empfehlungen genehmigen oder verweigern.
+- **Auffordern von Gruppenbesitzern zur Bestätigung, dass sie weiterhin Gäste in ihren Gruppen benötigen:** Der Mitarbeiterzugriff kann mit lokalem Identity & Access Management (IAM) automatisiert werden. Dies trifft jedoch nicht auf die Zugriffsrechte eingeladener Gäste zu. Wenn eine Gruppe Gästen Zugriff auf vertrauliche Unternehmensinhalte gewährt, muss der Besitzer der Gruppe bestätigen, dass für die Gäste immer noch eine berechtigte geschäftliche Notwendigkeit des Zugriffs besteht.
+- **Regelmäßige Durchführung von Überprüfungen:** Sie können die Häufigkeit der regelmäßigen Durchführung von Zugriffsüberprüfungen für Benutzer (z.B. wöchentlich, monatlich, vierteljährlich oder jährlich) einrichten. Die Prüfer werden zu Beginn jeder Überprüfung benachrichtigt. Prüfer können den Zugriff über eine benutzerfreundliche Oberfläche und mithilfe intelligenter Empfehlungen genehmigen oder verweigern.
 
 ## <a name="where-do-you-create-reviews"></a>Wo erstellen Sie Überprüfungen?
 
@@ -67,7 +67,7 @@ Um Zugriffsüberprüfungen verwenden zu können, müssen Sie über eine der folg
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5-Lizenz
 
-Weitere Informationen finden Sie unter [Gewusst wie: Registrieren für Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) oder [Enterprise Mobility + Security E5-Testversion](http://aka.ms/emse5trial).
+Weitere Informationen finden Sie unter [Gewusst wie: Registrieren für Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) oder [Enterprise Mobility + Security E5-Testversion](https://aka.ms/emse5trial).
 
 ## <a name="get-started-with-access-reviews"></a>Erste Schritte mit Zugriffsüberprüfungen
 

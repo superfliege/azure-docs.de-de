@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 6a63099bf2a8bc818c88ccec1d5f44bb9ffc32de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 81699764952e50cb18c1f299c9c4f7c524b0a332
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798205"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011685"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden (klassisch) in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden: öffentliche und private.
@@ -30,10 +30,10 @@ Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit ande
 Private IP-Adressen werden für die Kommunikation innerhalb eines virtuellen Azure-Netzwerks (VNet), Clouddiensts und Ihres lokalen Netzwerks verwendet, wenn Sie Ihr Netzwerk mithilfe eines VPN-Gateways oder einer ExpressRoute-Verbindung auf Azure ausdehnen.
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung von Resource Manager. Informationen zu IP-Adressen in Resource Manager finden Sie im Artikel [IP-Adressen](virtual-network-ip-addresses-overview-arm.md).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen:  [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung von Resource Manager. Informationen zu IP-Adressen in Resource Manager finden Sie im Artikel [IP-Adressen](virtual-network-ip-addresses-overview-arm.md).
 
 ## <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
-Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md) und [Azure Storage](../storage/common/storage-introduction.md).
+Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Cache for Redis](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md) und [Azure Storage](../storage/common/storage-introduction.md).
 
 Eine öffentliche IP-Adresse wird folgenden Ressourcentypen zugeordnet:
 
@@ -92,10 +92,10 @@ Die folgende Tabelle gibt Aufschluss über die einzelnen Ressourcentypen, die m�
 
 | Ressource | Dynamisch | statischen | Mehrere IP-Adressen |
 | --- | --- | --- | --- |
-| Clouddienst |Ja |Ja |Ja |
-| IaaS-VM oder PaaS-Rolleninstanz |Ja |Nein  |Nein  |
-| VPN-Gateway |Ja |Nein  |Nein  |
-| Anwendungsgateway |Ja |Nein  |Nein  |
+| Clouddienst |JA |Ja |JA |
+| IaaS-VM oder PaaS-Rolleninstanz |JA |Nein  |Nein  |
+| VPN-Gateway |JA |Nein  |Nein  |
+| Anwendungsgateway |JA |Nein  |Nein  |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem Clouddienst oder [virtuellen Netzwerk](virtual-networks-overview.md)(VNet) oder mit einem lokalen Netzwerk (über ein VPN-Gateway oder eine ExpressRoute-Verbindung) ohne Verwendung einer über das Internet erreichbaren IP-Adresse.
@@ -142,10 +142,10 @@ Die folgende Tabelle gibt Aufschluss über die einzelnen Ressourcentypen, die m�
 
 | Ressource | Dynamisch | statischen | Mehrere IP-Adressen |
 | --- | --- | --- | --- |
-| VMs (in einem *eigenständigen* Clouddienst oder VNET) |Ja |Ja |Ja |
-| PaaS-Rolleninstanz (in einem *eigenständigen* Clouddienst oder VNET) |Ja |Nein  |Nein  |
-| Front-End für internen Lastenausgleich |Ja |Ja |Ja |
-| Application Gateway-Front-End |Ja |Ja |Ja |
+| VMs (in einem *eigenständigen* Clouddienst oder VNET) |JA |Ja |JA |
+| PaaS-Rolleninstanz (in einem *eigenständigen* Clouddienst oder VNET) |JA |Nein  |Nein  |
+| Front-End für internen Lastenausgleich |JA |Ja |JA |
+| Application Gateway-Front-End |JA |Ja |JA |
 
 ## <a name="limits"></a>Einschränkungen
 Folgende Tabelle zeigt die Einschränkungen für die IP-Adressierung in Azure gemäß Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.

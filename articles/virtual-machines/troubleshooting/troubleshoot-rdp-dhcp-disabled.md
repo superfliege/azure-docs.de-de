@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: a469fe0d6057d865ec006d9eb14ad95f2d4b7005
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308438"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138159"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Eine RDP-Verbindung mit Azure Virtual Machines ist nicht möglich, da der DHCP-Clientdienst deaktiviert ist
 
@@ -26,7 +26,7 @@ In diesem Artikel wird ein Problem beschrieben, bei dem Sie keine Remotedesktopv
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="symptoms"></a>Symptome 
+## <a name="symptoms"></a>Symptome
 
 Sie können keine RDP-Verbindung eines virtuellen Computers in Azure herstellen, weil der DHCP-Clientdienst auf dem virtuellen Computer deaktiviert ist. Im Screenshot im Azure-Portal unter [Startdiagnose](../troubleshooting/boot-diagnostics.md) ist zu erkennen, dass die VM normal gestartet und auf dem Anmeldebildschirm auf die Anmeldeinformationen gewartet wird. Sie können die Ereignisprotokolle in der VM mit der Ereignisanzeige remote anzeigen. Sie sehen, dass der DHCP-Clientdienst nicht gestartet wurde oder nicht gestartet werden kann. Es folgt ein Beispielprotokoll:
 
@@ -35,11 +35,11 @@ Sie können keine RDP-Verbindung eines virtuellen Computers in Azure herstellen,
 **Datum:** 12/16/2015 11:19:36 AM </br>
 **Ereignis-ID:** 7022 </br>
 **Aufgabenkategorie:** Keine </br>
-**Ebene:** Fehler </br>
-**Schlüsselwörter:** Klassisch</br> 
-**Benutzer**: N/V </br>
+**Ebene:** Error </br>
+**Schlüsselwörter:** Klassisch</br>
+**Benutzer:** N/V </br>
 **Computer**: myvm.cosotos.com</br>
-**Beschreibung**: Der DHCP-Clientdienst wurde nicht ordnungsgemäß gestartet.</br>
+**Beschreibung:** Der DHCP-Clientdienst wurde nicht ordnungsgemäß gestartet.</br>
 
 Bei Resource Manager-VMs können Sie die serielle Zugriffskonsole verwenden, um die Ereignisprotokolle 7022 mithilfe des folgenden Befehls abzufragen:
 
@@ -49,12 +49,12 @@ Bei klassischen virtuellen Computern müssen Sie im OFFLINE-Modus arbeiten und d
 
 ## <a name="cause"></a>Ursache
 
-Der DHCP-Clientdienst wird nicht auf der VM ausgeführt. 
+Der DHCP-Clientdienst wird nicht auf der VM ausgeführt.
 
 > [!NOTE]
-> Dieser Artikel gilt nur für den DHCP-Clientdienst und nicht den DHCP-Server. 
+> Dieser Artikel gilt nur für den DHCP-Clientdienst und nicht den DHCP-Server.
 
-## <a name="solution"></a>Lösung 
+## <a name="solution"></a>Lösung
 
 Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
@@ -62,7 +62,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 
 ### <a name="use-serial-control"></a>Verwenden der seriellen Konsole
 
-1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](reset-network-interface.md) weiter.
 2. Überprüfen Sie, ob DHCP für die Netzwerkschnittstelle deaktiviert ist:
 
@@ -70,7 +70,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 3. Wenn DHCP beendet wurde, versuchen Sie, den Dienst zu starten.
 
         sc start DHCP
-        
+
 4. Fragen Sie den Dienst erneut ab, um sicherzustellen, dass der Dienst erfolgreich gestartet wurde.
 
         sc query DHCP
@@ -89,9 +89,9 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
     |1069 – ERROR_SERVICE_LOGON_FAILED   |  Siehe [Fehler beim DHCP-Clientdienst aufgrund eines Anmeldefehlers](#dhcp-client-service-fails-because-of-logon-failure). |
     | 1070 – ERROR_SERVICE_START_HANG  | Weitere Informationen finden Sie unter [DHCP-Clientdienst stürzt ab oder reagiert nicht](#dhcp-client-service-crashes-or-hangs).  |
     | 1077 – ERROR_SERVICE_NEVER_STARTED  | Siehe [DHCP-Clientdienst ist deaktiviert](#dhcp-client-service-is-disabled).  |
-    |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  | 
+    |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
     |1.053 | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
-    
+
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>DHCP-Clientdienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet
 
@@ -99,18 +99,18 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 2. Laden Sie das Tool Process Monitor herunter, indem Sie das folgende Skript ausführen:
 
    ```
-   remove-module psreadline  
-   $source = "https://download.sysinternals.com/files/ProcessMonitor.zip" 
-   $destination = "c:\temp\ProcessMonitor.zip" 
-   $wc = New-Object System.Net.WebClient 
-   $wc.DownloadFile($source,$destination) 
+   remove-module psreadline
+   $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
+   $destination = "c:\temp\ProcessMonitor.zip"
+   $wc = New-Object System.Net.WebClient
+   $wc.DownloadFile($source,$destination)
    ```
 3. Starten Sie dann eine **procmon**-Ablaufverfolgung:
 
    ```
-   procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
+   procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML
    ```
-4. Reproduzieren Sie das Problem, indem Sie den Dienst starten, der die Meldung **Zugriff verweigert** verursacht hat: 
+4. Reproduzieren Sie das Problem, indem Sie den Dienst starten, der die Meldung **Zugriff verweigert** verursacht hat:
 
    ```
    sc start DHCP
@@ -118,8 +118,8 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 
    Wenn der Fehler auftritt, beenden Sie die Prozessüberwachungs-Ablaufverfolgung:
 
-   ```   
-   procmon /Terminate 
+   ```
+   procmon /Terminate
    ```
 5. Erfassen Sie die Datei **c:\temp\ProcMonTrace.PML**:
 
@@ -132,7 +132,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 
     ![Filtern nach Ergebnissen in der Prozessüberwachung](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
-7. Beheben Sie Probleme mit den Registrierungsschlüsseln, Ordnern oder Dateien, die in der Ausgabe aufgeführt sind. Normalerweise tritt dieses Problem auf, wenn das im Dienst verwendete Anmeldekonto keine ACL-Berechtigung für den Zugriff auf diese Objekte hat. Um die entsprechende ACL-Berechtigung für das Anmeldekonto zu bestimmen, können Sie auf einer fehlerfreien VM suchen. 
+7. Beheben Sie Probleme mit den Registrierungsschlüsseln, Ordnern oder Dateien, die in der Ausgabe aufgeführt sind. Normalerweise tritt dieses Problem auf, wenn das im Dienst verwendete Anmeldekonto keine ACL-Berechtigung für den Zugriff auf diese Objekte hat. Um die entsprechende ACL-Berechtigung für das Anmeldekonto zu bestimmen, können Sie auf einer fehlerfreien VM suchen.
 
 #### <a name="dhcp-client-service-is-disabled"></a>DHCP-Clientdienst ist deaktiviert
 
@@ -158,7 +158,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 
 #### <a name="dhcp-client-service-fails-because-of-logon-failure"></a>Fehler beim DHCP-Clientdienst aufgrund eines Anmeldefehlers
 
-1. Da dieses Problem auftritt, wenn das Startkonto dieses Diensts geändert wurde, stellen Sie den Standardstatus dieses Kontos wieder her: 
+1. Da dieses Problem auftritt, wenn das Startkonto dieses Diensts geändert wurde, stellen Sie den Standardstatus dieses Kontos wieder her:
 
         sc config DHCP obj= 'NT Authority\Localservice'
 2. Starten Sie den Dienst:
@@ -167,7 +167,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 3. Versuchen Sie, über Remotedesktop eine Verbindung mit der VM herzustellen.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP-Clientdienst stürzt ab oder reagiert nicht
-1. Wenn der Dienst im Status **Wird gestartet** oder **Wird beendet** verbleibt, versuchen Sie, den Dienst zu beenden: 
+1. Wenn der Dienst im Status **Wird gestartet** oder **Wird beendet** verbleibt, versuchen Sie, den Dienst zu beenden:
 
         sc stop DHCP
 2. Isolieren Sie den Dienst auf seinem eigenen „svchost“-Container:
@@ -184,12 +184,12 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 
 1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her. Stellen Sie sicher, dass der angefügte Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
-3.  Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie dann das folgende Skript aus. Dieses Skript setzt voraus, dass der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugeordnet ist, **F** ist. Ersetzen Sie den Buchstaben durch den entsprechenden Wert auf dem virtuellen Computer. 
+3.  Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie dann das folgende Skript aus. Dieses Skript setzt voraus, dass der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugeordnet ist, **F** ist. Ersetzen Sie den Buchstaben durch den entsprechenden Wert auf dem virtuellen Computer.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM
 
-    REM Set default values back on the broken service 
+    REM Set default values back on the broken service
     reg add "HKLM\BROKENSYSTEM\ControlSet001\services\DHCP" /v start /t REG_DWORD /d 2 /f
     reg add "HKLM\BROKENSYSTEM\ControlSet001\services\DHCP" /v ObjectName /t REG_SZ /d "NT Authority\LocalService" /f
     reg add "HKLM\BROKENSYSTEM\ControlSet001\services\DHCP" /v type /t REG_DWORD /d 16 /f

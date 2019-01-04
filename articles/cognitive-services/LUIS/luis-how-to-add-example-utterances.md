@@ -1,21 +1,22 @@
 ---
-title: Hinzufügen von Beispieläußerungen in LUIS-Apps
-titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Äußerungen in Language Understanding-Anwendungen (LUIS) hinzufügen.
+title: Hinzufügen von Beispieläußerungen
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Beispieläußerungen sind Textbeispiele für Benutzerfragen oder -befehle. Fügen Sie einer Absicht Beispieläußerungen hinzu, um Language Understanding-Apps zu trainieren.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: caf8628569481149ee41e8253f4759e15e49150f
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139122"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139167"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Hinzufügen einer Entität zu Beispieläußerungen 
 
@@ -89,7 +90,7 @@ Der Mitarbeitername „John Smith“ ist eine vordefinierte Entität vom Typ [pe
 
 1. Geben Sie den Namen der zusammengesetzten Entität in der Dropdownliste ein.
 
-    ![Screenshot: Eingeben des Entitätsnamens](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
+    ![Screenshot der Eingabe des Namens der zusammengesetzten Entität in der Dropdownliste ein.](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     Wenn Sie die Entitäten ordnungsgemäß umschließen, wird eine grüne Linie unter dem gesamten Ausdruck angezeigt.
 
@@ -117,7 +118,7 @@ In der Äußerung `Move John Smith from Seattle to Cairo` ist Seattle der Abflug
 
 1. Das Wort in der Äußerung wurde mit der hierarchischen übergeordneten Entität beschriftet. Sie müssen das Wort einer untergeordneten Entität zuweisen. Kehren Sie zur Äußerung auf der Seite der Absichtsdetails zurück. Wählen Sie das Wort aus. Wählen Sie anschließend aus der Dropdownliste den von Ihnen erstellten Entitätsnamen aus, und folgen Sie dann der Menüstruktur nach rechts, um die richtige untergeordnete Entität auszuwählen.
 
-    ![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit der hervorgehobenen Option „ToLocation“ (zum Zielort)](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
+    ![Screenshot der Detailseite „Absichten“, auf der Sie das Wort einer untergeordneten Entität zuweisen](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >Die Namen untergeordneter Entitäten müssen für alle Entitäten einer einzelnen App eindeutig sein. Zwei unterschiedliche hierarchische Entitäten dürfen keine untergeordneten Elemente mit dem gleichen Namen enthalten. 
@@ -134,7 +135,7 @@ Wählen Sie die rot unterstrichenen Wörter in der Äußerung aus.
 
 Im Entitätsfeld wird der **Entitätsstatus** mit einem roten Ausrufezeichen angezeigt, wenn eine Abweichung zur Vorhersage vorliegt. Wählen Sie zum Anzeigen des Entitätsstatus mit Informationen zu den Unterschieden zwischen den bezeichneten und vorhergesagten Entitäten die Option **Entitätsstatus** und dann das Element auf der rechten Seite aus.
 
-![Screenshot der Vorhersageabweichung für den Entitätsstatus](./media/luis-how-to-add-example-utterances/entity-status.png)
+![Screenshot der Auswahl des richtigen Elements zum Beheben der Abweichung bei der Vorhersage](./media/luis-how-to-add-example-utterances/entity-status.png)
 
 Die rote Linie kann in folgenden Situationen angezeigt werden:
 

@@ -3,7 +3,7 @@ title: Upgrade auf die neueste Clientbibliothek für elastische Datenbanken | Mi
 description: Verwenden Sie NuGet, um ein Upgrade der Clientbibliothek für elastische Datenbanken durchzuführen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 9fb29b18397be83f5dc56464b3366d91c47f43b3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e54a2cf40bb03ef573348f276b4c24e20965009f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160790"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866138"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken
 Neue Versionen der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) stehen über NuGet und die NuGetPackage Manager-Benutzeroberfläche in Visual Studio zur Verfügung. Upgrades bieten Fehlerkorrekturen und Unterstützung für die neuen Funktionen der Clientbibliothek.
 
-**Die neueste Version** erhalten Sie unter [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+**Aktuelle Version:** Besuchen Sie [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 Erstellen Sie die Anwendung mit der neuen Bibliothek neu, und ändern Sie Ihre vorhandenen Shard Map Manager-Metadaten, die in Ihren Azure SQL-Datenbanken gespeichert sind, um neue Funktionen zu unterstützen.
 
@@ -68,7 +68,7 @@ Erstellen Sie alternativ eine Visual Studio-Anwendung, die Ihren ShardMapManager
 
 Diese Techniken für die Metadatenaktualisierung können ohne Probleme mehrmals angewendet werden. Wenn beispielsweise eine ältere Clientversion versehentlich einen Shard erstellt, den Sie bereits aktualisiert haben, können Sie die Aktualisierung für alle Shards wiederholen, um sicherzustellen, dass die neueste Metadatenversion in der gesamten Infrastruktur vorhanden ist. 
 
-**Hinweis:** Bis dato veröffentlichte neue Versionen der Clientbibliothek funktionieren weiterhin mit früheren Versionen der Shardzuordnungs-Manager-Metadaten für Azure SQL-Datenbank und umgekehrt.   Doch um einige der neuen Features im neuesten Client nutzen zu können, müssen Metadaten aktualisiert werden.   Beachten Sie, dass Aktualisierungen von Metadaten keine benutzer- oder anwendungsspezifischen Daten betreffen, sondern nur Objekte, die von Shard Map Manager erstellt und verwendet werden.  Zudem setzen Anwendungen ihren Betrieb während der zuvor beschriebenen Upgradesequenz fort. 
+**Hinweis:**  Bis dato veröffentlichte neue Versionen der Clientbibliothek funktionieren weiterhin mit früheren Versionen der Shard Map Manager-Metadaten für Azure SQL-Datenbank und umgekehrt.   Doch um einige der neuen Features im neuesten Client nutzen zu können, müssen Metadaten aktualisiert werden.   Beachten Sie, dass Aktualisierungen von Metadaten keine benutzer- oder anwendungsspezifischen Daten betreffen, sondern nur Objekte, die von Shard Map Manager erstellt und verwendet werden.  Zudem setzen Anwendungen ihren Betrieb während der zuvor beschriebenen Upgradesequenz fort. 
 
 ## <a name="elastic-database-client-version-history"></a>Elastischer Datenbank-Client – Versionsverlauf
 Einen Versionsverlauf erhalten Sie unter [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)

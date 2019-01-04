@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1df8f7025787eb864b7e9ad6f41105df8fb2cc8a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4aec31acf5a279f5ac887788d7e1554c31dfe342
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213337"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846622"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die Hyper-V-Notfallwiederherstellung in Azure
 
@@ -45,8 +45,8 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 
 ### <a name="getvmlist-discovery"></a>GetVMList-Ermittlung
 
-- **Hyper-V-Cluster**: Wenn in der Datei mit der Serverliste der Name des Hyper-V-Clusters angegeben wird, ermittelt das Tool alle Hyper-V-Knoten des Clusters und ruft die VMs der einzelnen Hyper-V-Hosts ab.
-**Hyper-V-Host**: Wenn der Name des Hyper-V-Hosts angegeben wird, prüft das Tool zuerst, ob dieser zu einem Cluster gehört. Wenn ja, ruft das Tool die Knoten ab, die zum jeweiligen Cluster gehören. Anschließend werden die VMs jedes Hyper-V-Hosts abgerufen. 
+- **Hyper-V-Cluster:** Wenn in der Datei mit der Serverliste der Name des Hyper-V-Clusters angegeben wird, ermittelt das Tool alle Hyper-V-Knoten des Clusters und ruft die VMs der einzelnen Hyper-V-Hosts ab.
+**Hyper-V-Host:** Wenn der Name des Hyper-V-Hosts angegeben wird, überprüft das Tool zuerst, ob dieser zu einem Cluster gehört. Wenn ja, ruft das Tool die Knoten ab, die zum jeweiligen Cluster gehören. Anschließend werden die VMs jedes Hyper-V-Hosts abgerufen. 
 
 Sie können in einer Datei die Anzeigenamen oder IP-Adressen der VMs, für die die Profilerstellung durchgeführt werden soll, auch manuell auflisten.
 
@@ -96,7 +96,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|(Optional) Das Kennwort zum Herstellen der Verbindung mit dem Hyper-V-Host. Wenn Sie es nicht als Parameter angeben, werden Sie beim Ausführen des Befehls zum Eingeben aufgefordert.|
 |-StorageAccountName|(Optional) Der Name des Speicherkontos zur Ermittlung des Durchsatzes, der für die Replikation von Daten aus der lokalen Umgebung in Azure erreichbar ist. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um den Durchsatz zu berechnen. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein.|
 |-StorageAccountKey|(Optional) Der Schlüssel, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu **Speicherkonten** > *<Name des Speicherkontos>* > **Einstellungen** > **Zugriffsschlüssel** > **Key1** (oder der primäre Zugriffsschlüssel für ein klassisches Speicherkonto).|
-|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China“ nutzen.|
+|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Dies kann einer von drei Werten sein: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China“ nutzen.|
 
 Es wird empfohlen, die Profilerstellung für Ihre VMs länger als 7 Tage durchzuführen. Wenn sich das Muster der Datenänderung innerhalb eines Monats ändert, ist es ratsam, die Profilerstellung in die Woche mit der höchsten Datenänderung zu legen. Die beste Möglichkeit besteht darin, die Profilerstellung 31 Tage lang durchzuführen, um eine bessere Empfehlung zu erhalten. 
 
@@ -177,7 +177,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -StartDate | (Optional) Das Startdatum und die Uhrzeit im Format MM-TT-JJJJ:HH:MM (24-Stunden-Format). „StartDate“ muss zusammen mit „EndDate“ angegeben werden. Wenn „StartDate“ angegeben ist, wird der Bericht für die Profilerstellungsdaten erstellt, die zwischen „StartDate“ und „EndDate“ erfasst wurden. |
 | -EndDate | (Optional) Das Enddatum und die Uhrzeit im Format MM-TT-JJJJ:HH:MM (24-Stunden-Format). „EndDate“ muss zusammen mit „StartDate“ angegeben werden. Wenn „EndDate“ angegeben ist, wird der Bericht für die Profilerstellungsdaten erstellt, die zwischen „StartDate“ und „EndDate“ erfasst wurden. |
 | -GrowthFactor | (Optional) Der Zuwachsfaktor als Prozentsatz. Der Standardwert ist 30 Prozent. |
-| -UseManagedDisks | (Optional) UseManagedDisks: Ja/Nein. Die Standardeinstellung ist „Yes“ (Ja). Die Anzahl von virtuellen Computern, die in einem einzelnen Speicherkonto angeordnet werden können, wird basierend darauf berechnet, ob das Failover bzw. Testfailover von virtuellen Computern auf einem verwalteten Datenträger anstatt auf einem nicht verwalteten Datenträger erfolgt. |
+| -UseManagedDisks | (Optional:) UseManagedDisks: Ja/Nein. Die Standardeinstellung ist „Yes“ (Ja). Die Anzahl von virtuellen Computern, die in einem einzelnen Speicherkonto angeordnet werden können, wird basierend darauf berechnet, ob das Failover bzw. Testfailover von virtuellen Computern auf einem verwalteten Datenträger anstatt auf einem nicht verwalteten Datenträger erfolgt. |
 |-SubscriptionId |(Optional) Die GUID für das Abonnement. Verwenden Sie diesen Parameter, um den Bericht zur Kostenvorkalkulation mit dem aktuellen Preis zu generieren, der auf Ihrem Abonnement, dem Angebot zu Ihrem Abonnement und Ihrer Azure-Zielregion in der gewählten Währung basiert.|
 |-TargetRegion|(Optional) Die Azure-Zielregion für die Replikation. Verwenden Sie diesen Parameter, um einen Bericht mit der jeweiligen Azure-Zielregion zu erstellen, da Azure über unterschiedliche Kosten pro Region verfügt. Die Standardeinstellung ist „USA, Westen 2“ bzw. die zuletzt verwendete Zielregion. Weitere Informationen finden Sie in der Liste mit den [unterstützten Zielregionen](hyper-v-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Optional) Das Angebot, das dem Abonnement zugeordnet ist. Die Standardeinstellung ist MS-AZR-0003P (nutzungsbasierte Bezahlung).|
@@ -279,7 +279,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -StorageAccountName | Der Name des Speicherkontos zur Ermittlung der Bandbreite, die für die Replikation von Daten aus der lokalen Umgebung in Azure verbraucht wird. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um die verbrauchte Bandbreite zu ermitteln. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein.|
 | -StorageAccountKey | Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie zum Azure-Portal und dann zu **Speicherkonten** > *Name des Speicherkontos* > **Einstellungen** > **Zugriffsschlüssel** > **Key1**.|
 | -VMListFile | Die Datei mit der Liste der VMs, für die Profile erstellt werden sollen, um die verbrauchte Bandbreite zu berechnen. Der Dateipfad kann absolut oder relativ sein. Für Hyper-V ist diese Datei die Ausgabedatei des Vorgangs GetVMList. Falls Sie die Vorbereitung manuell durchführen, sollte die Datei einen Servernamen oder eine IP-Adresse gefolgt vom VM-Namen (mit dem Trennzeichen „\“ pro Zeile) enthalten. Der in der Datei angegebene VM-Name sollte dem VM-Namen auf dem Hyper-V-Host entsprechen.<br><br>**Beispiel:** „VMList.txt“ enthält die folgenden VMs:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Azure-Zielregion „Azure US Government“ oder „Azure China“ nutzen.|
+|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Dies kann einer von drei Werten sein: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Azure-Zielregion „Azure US Government“ oder „Azure China“ nutzen.|
 
 ### <a name="example"></a>Beispiel
 ```

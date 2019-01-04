@@ -1,5 +1,5 @@
 ---
-title: Was ist die gruppenbasierte Lizenzierung in Azure Active Directory? | Microsoft-Dokumentation
+title: Was ist die gruppenbasierte Lizenzierung? – Azure Active Directory | Microsoft-Dokumentation
 description: Lernen Sie mehr über die gruppenbasierte Lizenzierung in Azure Active Directory, ihre Funktionsweise und die entsprechenden Best Practices.
 services: active-directory
 keywords: Azure AD-Lizenzierung
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 3f23b28c1b20155e50fddf17db90cd2a53c04855
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 47d04f6e73d95a7cb1ba63c437b97468041af57f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209818"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189862"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?
 
@@ -28,6 +28,15 @@ Bislang konnten Lizenzen nur auf Ebene einzelner Benutzer zugewiesen werden, was
 
 Um diese Probleme zu beheben, enthält Azure AD jetzt die gruppenbasierte Lizenzierung. Sie können einer Gruppe eine oder mehrere Produktlizenzen zuweisen. Azure AD stellt sicher, dass die Lizenzen allen Mitgliedern der Gruppe zugewiesen werden. Allen neuen Mitgliedern, die der Gruppe beitreten, werden die entsprechenden Lizenzen zugewiesen. Wenn sie die Gruppe verlassen, werden diese Lizenzen entfernt. Dadurch ist keine automatisierte Lizenzverwaltung über PowerShell mehr erforderlich, um Änderungen in der Organisations- und Abteilungsstruktur benutzerbezogen widerzuspiegeln.
 
+## <a name="licensing-requirements"></a>Lizenzanforderungen
+Zur Verwendung der gruppenbasierten Lizenzierung müssen Sie über eine der folgenden Lizenzen verfügen:
+
+- Kostenpflichtiges oder Testabonnement für Azure AD Basic
+
+- Kostenpflichtige oder Office 365 Enterprise E3 oder Office 365 A3 und höher
+
+### <a name="required-number-of-licenses"></a>Erforderliche Anzahl von Lizenzen
+Für alle Gruppen, denen eine Lizenz zugewiesen ist, müssen Sie auch über eine Lizenz für jedes einzelne Mitglied verfügen. Sie müssen zwar nicht jedem Mitglied der Gruppe eine Lizenz zuweisen, aber Sie müssen mindestens über genügend Lizenzen für alle Mitglieder verfügen. Bei 1.000 einzelnen Mitgliedern, die lizenzierten Gruppen in Ihrem Mandanten angehören, müssen Sie beispielsweise über mindestens 1.000 Lizenzen verfügen, um den Lizenzvertrag zu erfüllen.
 
 ## <a name="features"></a>Features
 
@@ -35,7 +44,7 @@ Hier die Hauptmerkmale der gruppenbasierten Lizenzierung:
 
 - Lizenzen können beliebigen Sicherheitsgruppen in Azure AD zugewiesen werden. Sicherheitsgruppen können mithilfe von Azure AD Connect aus einer lokalen Umgebung synchronisiert werden. Sie können Sicherheitsgruppen auch direkt in Azure AD Connect (auch als reine Cloudgruppen bezeichnet) oder automatisch über das Azure AD-Feature „Dynamische Gruppe“ erstellen.
 
-- Wenn eine Produktlizenz einer Gruppe zugewiesen wird, kann der Administrator einen oder mehrere Servicepläne im Produkt deaktivieren. In der Regel erfolgt dies, wenn die Organisation noch nicht für die Verwendung eines Dienstes in einem Produkt bereit ist. Beispielsweise könnte der Administrator Office 365 einer Abteilung zuweisen, aber den Yammer-Dienst vorübergehend deaktivieren.
+- Wenn eine Produktlizenz einer Gruppe zugewiesen wird, kann der Administrator einen oder mehrere Servicepläne im Produkt deaktivieren. In der Regel erfolgt diese Zuweisung, wenn die Organisation einen in einem Produkt enthaltenen Dienst noch nicht verwenden kann. Beispielsweise könnte der Administrator Office 365 einer Abteilung zuweisen, aber den Yammer-Dienst vorübergehend deaktivieren.
 
 - Alle Microsoft-Clouddienste, die eine Lizenzierung auf Benutzerebene erfordern, werden unterstützt. Dazu zählen alle Office 365-Produkte, Enterprise Mobility + Security und Dynamics 365.
 
@@ -47,11 +56,9 @@ Hier die Hauptmerkmale der gruppenbasierten Lizenzierung:
 
 - In manchen Fällen können Benutzern keine Lizenzen zugewiesen werden. Mögliche Gründe sind das Fehlen verfügbarer Lizenzen im Mandanten oder in Konflikt stehende Dienste, die gleichzeitig zugewiesen wurden. Administratoren haben Zugriff auf Informationen zu Benutzern, für die Azure AD Gruppenlizenzen nicht vollständig verarbeiten konnte. Sie können anhand dieser Informationen Korrekturmaßnahmen vornehmen.
 
-- Um die gruppenbasierte Lizenzverwaltung nutzen zu können, ist ein kostenpflichtiges Abonnement oder Testabonnement für Azure AD Basic oder eine kostenpflichtige Edition oder Testversion von Office 365 Enterprise E3, Office 365 A3 oder höher erforderlich. Dieses Feature erfordert eine Lizenz für jeden eindeutigen Benutzer, der Mitglied von Gruppen ist, denen Lizenzen zugewiesen wurden. Sie müssen den Benutzern keine Lizenzen zuweisen, damit sie Mitglieder von Gruppen mit zugewiesenen Lizenzen werden können, aber Sie müssen über die Mindestanzahl von Lizenzen im Mandanten verfügen, um all diese Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen Gruppen Ihres Mandanten mit zugewiesenen Lizenzen verfügen, benötigen Sie mindestens 1.000 Lizenzen, um die Lizenzanforderung zu erfüllen.
-
 ## <a name="your-feedback-is-welcome"></a>Wir freuen uns auf Ihr Feedback!
 
-Wenn Sie Feedback hinterlassen oder Features vorschlagen möchten, nutzen Sie [das Azure AD-Administratorforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
+Wenn Sie Feedback oder Vorschläge zu Features haben, verwenden Sie [das Azure AD-Administratorforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

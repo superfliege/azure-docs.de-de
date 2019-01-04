@@ -8,22 +8,21 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 445e607b6b0a21f840ab633b3a5a3779f49fdd98
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 28e21180fde50d19154830694cd4959795ae9d5c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142792"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789380"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Erstellen von Profilen für Azure Cloud Services-Liveinstanzen mit Application Insights
 
 Application Insights Profiler kann auch für diese Dienste bereitgestellt werden:
-* [Azure-Web-Apps](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric-Anwendungen](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuelle Computer](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
@@ -31,7 +30,7 @@ Application Insights Profiler wird mit der Erweiterung „Microsoft Azure-Diagno
 
 ## <a name="enable-profiler-for-your-azure-cloud-service"></a>Aktivieren von Profiler für Ihren Azure-Clouddienst
 1. Stellen Sie sicher, dass [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwendet wird.  Dazu ist es ausreichend zu bestätigen, dass die *ServiceConfiguration.\*.cscfg*-Dateien einen `osFamily`-Wert von „5“ oder höher haben.
-1. Fügen Sie dem Clouddienst das [Application Insights SDK](app-insights-cloudservices.md?toc=/azure/azure-monitor/toc.json) hinzu.
+1. Fügen Sie dem Clouddienst das [Application Insights SDK](../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) hinzu.
 1. Verfolgen Sie Anforderungen mit Application Insights:
 
     Für ASP.NET-Webrollen kann Application Insights die Anforderungen automatisch verfolgen.
@@ -64,7 +63,7 @@ Application Insights Profiler wird mit der Erweiterung „Microsoft Azure-Diagno
       </WadCfg>
       ```
 
-    >   **HINWEIS:** Wenn die Datei *diagnostics.wadcfgx* auch eine andere Senke vom Typ `ApplicationInsights` enthält, müssen alle drei der folgenden Instrumentierungsschlüssel übereinstimmen:  
+    >   **HINWEIS:** Wenn die Datei diagnostics.wadcfgx* auch eine andere Senke vom Typ `ApplicationInsights` enthält, müssen alle drei der folgenden Instrumentierungsschlüssel übereinstimmen:  
     >  * Der von Ihrer Anwendung verwendete Schlüssel  
     >  * Der von der `ApplicationInsights`-Senke verwendete Schlüssel  
     >  * Der von der `ApplicationInsightsProfiler`-Senke verwendete Schlüssel  

@@ -1,7 +1,7 @@
 ---
 title: 'Migrieren von Vorschauwissensdatenbanken: Qna Maker'
 titleSuffix: Azure Cognitive Services
-description: Importieren einer Knowledge Base
+description: Die mit der kostenlosen Vorschauversion von QnA Maker erstellten Knowledge Bases müssen zur allgemein verfügbaren Version von Maker migriert werden. Die Vorschauversion von QnA Maker wird im Januar 2019 eingestellt.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,15 +10,16 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 6eaa4859ea6346390514325980835750d8e4b6d5
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.custom: seodec18
+ms.openlocfilehash: 261d42a6c21681ee8015edfe73ad78b4458eb0ee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365559"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078809"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
-Auf der \\\Build\-Konferenz am 7. Mai 2018 wurde die allgemeine Verfügbarkeit von QnA Maker angekündigt. Für die allgemein verfügbare Version von QnA Maker wurde eine neue Architektur in Azure erstellt. Die mit der kostenlosen Vorschauversion von QnA Maker erstellten Knowledge Bases müssen zur allgemein verfügbaren Version von Maker migriert werden. Die Vorschauversion von QnA Maker wird im November 2018 eingestellt. Weitere Informationen zu den Änderungen in der allgemein verfügbaren Version von QnA Maker finden Sie im [Blogbeitrag](https://aka.ms/qnamakerga-blog) zur Ankündigung der allgemeinen Verfügbarkeit von QnA Maker.
+Auf der \\\Build\-Konferenz am 7. Mai 2018 wurde die allgemeine Verfügbarkeit von QnA Maker angekündigt. Für die allgemein verfügbare Version von QnA Maker wurde eine neue Architektur in Azure erstellt. Die mit der kostenlosen Vorschauversion von QnA Maker erstellten Knowledge Bases müssen zur allgemein verfügbaren Version von Maker migriert werden. Die Vorschauversion von QnA Maker wird im Januar 2019 eingestellt. Weitere Informationen zu den Änderungen in der allgemein verfügbaren Version von QnA Maker finden Sie im [Blogbeitrag](https://aka.ms/qnamakerga-blog) zur Ankündigung der allgemeinen Verfügbarkeit von QnA Maker.
 
 QnA Maker verfügt jetzt über ein [Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/).
 

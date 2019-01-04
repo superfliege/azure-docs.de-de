@@ -1,27 +1,28 @@
 ---
-title: Referenz zur vorgefertigten Nummernentität in LUIS – Azure | Microsoft-Dokumentation
+title: Vordefinierte Number-Entität
 titleSuffix: Azure
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten Nummernentität in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: b3ac42f5ecd1dc14055b0767e057a1da093042f9
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: bd42fbb85468ab652741573731515e499fe453da
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334566"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165672"
 ---
-# <a name="number-entity"></a>Nummernentität
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Number-Entität für eine LUIS-App
 Es gibt verschiedene Möglichkeiten, numerische Werte zu verwenden, um Informationen zu quantifizieren, auszudrücken und zu beschreiben. In diesem Artikel werden nur einige Beispiele aufgeführt. LUIS interpretiert die Variationen verschiedener Benutzeräußerungen und gibt einheitliche numerische Werte zurück. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Nummern hinzufügen. 
 
 ## <a name="types-of-number"></a>Nummerntypen
-Die Nummernentität wird über das GitHub-Repository [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) verwaltet.
+Die Entität „number“ wird über das GitHub-Repository [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) verwaltet.
 
 ## <a name="examples-of-number-resolution"></a>Beispiele für Nummernauflösungen
 
@@ -42,7 +43,7 @@ LUIS fügt den anerkannten Wert einer **`builtin.number`**-Entität in das `reso
 ## <a name="resolution-for-prebuilt-number"></a>Auflösung der vorgefertigten Nummer
 Im folgenden Beispiel wird eine JSON-Antwort von LUIS gezeigt, die die Auflösung des Werts „24“ für die Äußerung „two dozen“ enthält.
 
-```JSON
+```json
 {
   "query": "order two dozen eggs",
   "topScoringIntent": {

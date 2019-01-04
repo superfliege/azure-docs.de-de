@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6c1307fcb472f6c66a95b76ad3c1b1686ce4f998
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: cf037000a047b02f3874c3bccc9678f2ea18ecec
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308936"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011197"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network
 Hier erfahren Sie, wie Sie Apache HBase-Cluster in Azure HDInsight in einem [virtuellen Azure-Netzwerk][1] erstellen.
@@ -37,14 +37,14 @@ In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../
 > [!NOTE]
 > Einige Eigenschaften sind in der Vorlage hartcodiert. Beispiel: 
 >
-> * **Standort:** USA, Osten 2
-> * **Clusterversion**: 3.6
-> * **Anzahl von Workerknoten im Cluster**: 2
+> * **Standort:** USA (Ost) 2
+> * **Clusterversion:** 3.6
+> * **Anzahl der Workerknoten im Cluster:** 2
 > * **Standard-Speicherkonto**: eine eindeutige Zeichenfolge
-> * **Name des virtuellen Netzwerks**: &lt;Clustername&gt;-vnet
-> * **Adressraum des virtuellen Netzwerks**: 10.0.0.0/16
+> * **Name des virtuellen Netzwerks:** &lt;Clustername>-vnet
+> * **Adressraum des virtuellen Netzwerks:** 10.0.0.0/16
 > * **Subnetzname**: subnet1
-> * **Subnetzadressbereich**: 10.0.0.0/24
+> * **Subnetzadressbereich:** 10.0.0.0/24
 >
 > &lt;Clustername&gt; wird durch den Clusternamen ersetzt, den Sie bei Verwendung der Vorlage angeben.
 >
@@ -55,13 +55,13 @@ In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Geben Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** die folgenden Eigenschaften ein:
 
-   * **Abonnement**: Wählen Sie ein Azure-Abonnement, um den HDInsight-Cluster, das abhängige Speicherkonto und das virtuelle Azure-Netzwerk zu erstellen.
-   * **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
-   * **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus.
-   * **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein, der erstellt wird.
-   * **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
-   * **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**.  Sie können auch einen anderen Namen festlegen.
-   * **Ich stimme den oben genannten Geschäftsbedingungen zu**: (Auswählen)
+   * **Abonnement**: Wählen Sie ein Azure-Abonnement aus, um den HDInsight-Cluster, das abhängige Speicherkonto und das virtuelle Azure-Netzwerk zu erstellen.
+   * **Ressourcengruppe:** Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen ein.
+   * **Standort:** Wählen Sie einen Speicherort für die Ressourcengruppe aus.
+   * **ClusterName:** Geben Sie einen Namen für den zu erstellenden Hadoop-Cluster ein.
+   * **Clusteranmeldename und Kennwort:** Der Standardanmeldename lautet **admin**.
+   * **SSH-Benutzername und Kennwort:** Der Standardbenutzername lautet **sshuser**.  Sie können auch einen anderen Namen festlegen.
+   * **Ich stimme den oben genannten Geschäftsbedingungen zu:** (Auswählen)
 3. Klicken Sie auf **Kaufen**. Das Erstellen eines Clusters dauert ca. 20 Minuten. Wenn der Cluster erstellt wurde, öffnen Sie ihn, indem Sie im Portal auf das Clusterblatt klicken.
 
 Löschen Sie den Cluster, wenn Sie das Tutorial beendet haben. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. Anweisungen zum Löschen eines Clusters finden Sie unter [Verwalten von Windows-basierten Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](../hdinsight-administer-use-management-portal.md#delete-clusters).
@@ -71,7 +71,7 @@ Führen Sie die Schritte unter [Erste Schritte mit einem Apache HBase-Beispiel i
 ## <a name="connect-to-the-apache-hbase-cluster-using-apache-hbase-java-rpc-apis"></a>Herstellen einer Verbindung mit dem Apache HBase-Cluster mithilfe von Apache HBase-Java-RPC-APIs
 1. Erstellen Sie einen virtuellen IaaS-Computer (Infrastructure-as-a-Service) im gleichen virtuellen Azure-Netzwerk und im gleichen Subnetz. Anweisungen zum Erstellen eines neuen virtuellen IaaS-Computers finden Sie im Abschnitt zum [Erstellen eines virtuellen Computers unter Windows Server](../../virtual-machines/windows/quick-create-portal.md). Beim Ausführen der in diesem Dokument beschriebenen Schritte müssen Sie die folgenden Werte für die Netzwerkkonfiguration verwenden:
 
-   * **Virtuelles Netzwerk**: &lt;Clustername&gt;-vnet
+   * **Virtuelles Netzwerk:** &lt;Clustername>-vnet
    * **Subnetz**: subnet1
 
    > [!IMPORTANT]
@@ -247,7 +247,7 @@ In diesem Tutorial haben Sie gelernt, wie Sie einen Apache HBase-Cluster erstell
 * [Erste Schritte mit einem Apache HBase-Beispiel in HDInsight](./apache-hbase-tutorial-get-started-linux.md)
 * [Virtuelle Netzwerke im Überblick](../../virtual-network/virtual-networks-overview.md)
 
-[1]: http://azure.microsoft.com/services/virtual-network/
-[2]: http://technet.microsoft.com/library/ee176961.aspx
-[3]: http://technet.microsoft.com/library/hh847889.aspx
+[1]: https://azure.microsoft.com/services/virtual-network/
+[2]: https://technet.microsoft.com/library/ee176961.aspx
+[3]: https://technet.microsoft.com/library/hh847889.aspx
 

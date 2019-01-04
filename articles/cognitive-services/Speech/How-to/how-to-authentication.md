@@ -10,12 +10,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e3bfdcfaaf752321997636811b282ea920e6144a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 205eff6c79ba4699516a8898c5b1268eb3dfe644
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344199"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754015"
 ---
 # <a name="authenticate-to-the-speech-api"></a>Authentifizieren bei der Sprach-API
 
@@ -72,7 +72,7 @@ https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 
 Das folgende Codebeispiel veranschaulicht die Vorgehensweise zum Abrufen eines Zugriffstokens. Ersetzen Sie `YOUR_SUBSCRIPTION_KEY` durch Ihren eigenen Abonnementschlüssel:
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -96,7 +96,7 @@ Das Beispiel verwendet curl unter Linux mit Bash. Sollte curl auf Ihrer Plattfor
 curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
     /*
@@ -159,7 +159,7 @@ Das folgende Beispiel veranschaulicht die Verwendung eines Autorisierungstokens 
 > [!NOTE]
 > Ersetzen Sie `YOUR_AUDIO_FILE` durch den Pfad Ihrer aufgezeichneten Audiodatei. Ersetzen Sie `YOUR_ACCESS_TOKEN` durch das Autorisierungstoken, das Sie im vorherigen Schritt ([Abrufen eines Autorisierungstokens](#get-an-authorization-token)) erhalten haben.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 
@@ -189,7 +189,7 @@ $RecoResponse
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 HttpWebRequest request = null;

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e2dabc66a906d35525f51bf9a1c09b62430ded55
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a1e9647e64556a7c7f2444fa2711a2eb61d230a3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434006"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874564"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 
@@ -147,7 +147,7 @@ Die [Azure-Diagnose](https://docs.microsoft.com/azure/azure-diagnostics) ist ein
 
 ![VM-Protokolle mit der Azure-Diagnose](./media/azure-log-audit/azure-log-audit-fig3.png)
 
-### <a name="azure-virtual-machineshttpsazuremicrosoftcomdocumentationlearning-pathsvirtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>[Azure Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/), die unter Microsoft Windows und [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) ausgeführt werden
+### <a name="azure-virtual-machineslearnpathsdeploy-a-website-with-azure-virtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>[Azure Virtual Machines](/learn/paths/deploy-a-website-with-azure-virtual-machines/), die unter Microsoft Windows und [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) ausgeführt werden
 
 Sie können die Azure-Diagnose wie folgt auf einem virtuellen Computer aktivieren:
 
@@ -187,9 +187,9 @@ Die folgenden Typen authentifizierter und anonymer Anforderungen werden von Stor
 ### <a name="azure-networking-logs"></a>Azure-Netzwerkprotokolle
 Die Netzwerkprotokollierung und -überwachung in Azure ist umfassend und unterteilt sich in zwei übergeordnete Kategorien:
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Die szenariobasierte Netzwerküberwachung wird mit den Features in Network Watcher bereitgestellt. Dieser Dienst umfasst die Paketerfassung, „Nächster Hop“, die IP-Datenflussüberprüfung, die Sicherheitsgruppenansicht und NSG-Datenflussprotokolle. Die Überwachung auf Szenarioebene bietet im Gegensatz zur Überwachung einzelner Netzwerkressourcen eine End-to-End-Ansicht der Netzwerkressourcen.
+* [Network Watcher:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) Die szenariobasierte Netzwerküberwachung wird über Features in Network Watcher bereitgestellt. Dieser Dienst umfasst die Paketerfassung, „Nächster Hop“, die IP-Datenflussüberprüfung, die Sicherheitsgruppenansicht und NSG-Datenflussprotokolle. Die Überwachung auf Szenarioebene bietet im Gegensatz zur Überwachung einzelner Netzwerkressourcen eine End-to-End-Ansicht der Netzwerkressourcen.
 
-* [Ressourcenüberwachung](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Die Überwachung auf Ressourcenebene umfasst vier Features: Diagnoseprotokolle, Metriken, Problembehandlung und Resource Health. Alle diese Features arbeiten auf Netzwerkressourcenebene.
+* [Ressourcenüberwachung:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring) Die Überwachung auf Ressourcenebene umfasst vier Features: Diagnoseprotokolle, Metriken, Problembehandlung und Ressourcenintegrität. Alle diese Features arbeiten auf Netzwerkressourcenebene.
 
 ![Azure-Netzwerkprotokolle](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -219,19 +219,19 @@ Network Watcher enthält eine Ansicht für die Diagnoseprotokolle. Diese Ansicht
 
 
 Zusätzlich zu den oben aufgeführten Protokollierungsfunktionen umfasst Network Watcher derzeit die folgenden Funktionen:
-- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Bietet eine Ansicht auf Netzwerkebene mit verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen innerhalb einer Ressourcengruppe.
+- [Topologie:](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview) Bietet eine Ansicht auf Netzwerkebene mit verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen innerhalb einer Ressourcengruppe.
 
-- [Variable Paketerfassung](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Erfasst Paketdaten, die im virtuellen Computer ein- und ausgehen. Erweiterte Filteroptionen und präzise Steuerelemente, wie z.B. das Festlegen von Zeit- und Größeneinschränkungen, bieten Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im *CAP-Dateiformat* gespeichert werden.
+- [Variable Paketerfassung:](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) Erfasst die auf dem virtuellen Computer ein- und ausgehenden Paketdaten. Erweiterte Filteroptionen und präzise Steuerelemente, wie z.B. das Festlegen von Zeit- und Größeneinschränkungen, bieten Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im *CAP-Dateiformat* gespeichert werden.
 
-* [IP-Datenflussüberprüfung](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Überprüft basierend auf 5-Tupel-Paketparametern (d.h. Ziel-IP, Quell-IP, Zielport, Quellport und Protokoll) anhand der Datenflussinformationen, ob ein Paket zugelassen oder verweigert wird. Wenn das Paket durch eine Sicherheitsgruppe verweigert wird, werden die Namen der Regel und der Gruppe, die das Paket verweigert haben, zurückgegeben.
+* [IP-Datenflussüberprüfung:](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) Überprüft basierend auf 5-Tupel-Paketparametern (d.h. Ziel-IP, Quell-IP, Zielport, Quellport und Protokoll) anhand der Datenflussinformationen, ob ein Paket zugelassen oder verweigert wird. Wenn das Paket durch eine Sicherheitsgruppe verweigert wird, werden die Namen der Regel und der Gruppe, die das Paket verweigert haben, zurückgegeben.
 
-* [Nächster Hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose zur Ermittlung von falsch konfigurierten benutzerdefinierten Routen durchführen können.
+* [Nächster Hop:](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) Ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose zur Ermittlung von falsch konfigurierten benutzerdefinierten Routen durchführen können.
 
-* [Sicherheitsgruppenansicht](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Ruft die geltenden und angewendeten Sicherheitsregeln ab, die auf einen virtuellen Computer angewendet werden.
+* [Sicherheitsgruppenansicht:](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) Ruft die geltenden und angewendeten Sicherheitsregeln ab, die auf einen virtuellen Computer angewendet werden.
 
-* [Problembehandlung für virtuelle Netzwerkgateways und -verbindungen](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Unterstützt Sie bei der Behebung von Problemen, die bei virtuellen Netzwerkgateways und -verbindungen auftreten können.
+* [Gateway des virtuellen Netzwerks und Problembehandlung für Verbindungen:](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) Hilft Ihnen bei der Problembehandlung von Gateways für virtuelle Netzwerke und von Verbindungen.
 
-* [Grenzwerte für Netzwerkabonnements](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
+* [Grenzwerte für Netzwerkabonnements:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits) Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -245,25 +245,25 @@ Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen, wie z.B. 
 
 Application Insights ist für Entwicklerteams konzipiert und hilft Ihnen dabei, die Leistung und Verwendung Ihrer App nachzuvollziehen. Der Dienst überwacht:
 
-* **Anforderungsraten, Antwortzeiten und Fehlerraten**: Finden Sie heraus, welche Seiten zu welchen Tageszeiten am häufigsten verwendet werden und wo Ihre Benutzer sind. Stellen Sie fest, welche Seiten die beste Leistung aufweisen. Wenn die Antwortzeiten und Fehlerraten bei mehr Anforderungen ansteigen, haben Sie möglicherweise ein Ressourcenproblem.
+* **Anforderungsraten, Antwortzeiten und Fehlerraten:** Finden Sie heraus, welche Seiten zu welchen Tageszeiten am häufigsten verwendet werden und wo sich Ihre Benutzer befinden. Stellen Sie fest, welche Seiten die beste Leistung aufweisen. Wenn die Antwortzeiten und Fehlerraten bei mehr Anforderungen ansteigen, haben Sie möglicherweise ein Ressourcenproblem.
 
-* **Abhängigkeitsraten, Antwortzeiten und Fehlerraten**: Finden Sie heraus, ob Sie von externen Diensten verlangsamt werden.
+* **Abhängigkeitsraten, Antwortzeiten und Fehlerraten:** Finden Sie heraus, ob externe Dienste die Geschwindigkeit beeinträchtigen.
 
-* **Ausnahmen**: Analysieren Sie die aggregierten Statistiken, oder wählen Sie bestimmte Instanzen aus, und untersuchen Sie die Stapelüberwachung und die zugehörigen Anforderungen. Sowohl die Server- als auch die Browserausnahmen werden gemeldet.
+* **Ausnahmen:** Analysieren Sie die aggregierten Statistiken, oder wählen Sie bestimmte Instanzen aus, und untersuchen Sie die Stapelüberwachung und die zugehörigen Anforderungen. Sowohl die Server- als auch die Browserausnahmen werden gemeldet.
 
-* **Seitenansichten und Ladeleistung**: Erhalten Sie Berichte von den Browsern der Benutzer.
+* **Seitenaufrufe und Ladeleistung:** Rufen Sie Berichte von den Browsern der Benutzer ab.
 
-* **AJAX-Aufrufe**: Erhalten Sie Raten, Antwortzeiten und Fehlerraten von Webseiten.
+* **AJAX-Aufrufe:** Erhalten Sie Raten, Antwortzeiten und Fehlerraten von Webseiten.
 
 * **Anzahl von Benutzern und Sitzungen**.
 
-* **Leistungsindikatoren**: Erhalten Sie Daten von Ihren Windows- oder Linux-Servercomputern, z.B. CPU, Arbeitsspeicher und Netzwerkverwendung.
+* **Leistungsindikatoren:** Erhalten Sie Daten von Ihren Windows- oder Linux-Servercomputern, z.B. CPU, Arbeitsspeicher und Netzwerknutzung.
 
-* **Hostdiagnose**: Erhalten Sie Daten von Docker oder Azure.
+* **Hostdiagnose:** Erhalten Sie Daten von Docker oder Azure.
 
-* **Diagnose-Ablaufverfolgungsprotokolle**: Erhalten Sie Daten aus Ihrer App, sodass Sie Ablaufverfolgungsereignisse mit Anforderungen korrelieren können.
+* **Diagnose-Ablaufverfolgungsprotokolle:** Erhalten Sie Daten von Ihrer App, sodass Sie Ablaufverfolgungsereignisse mit Anforderungen korrelieren können.
 
-* **Benutzerdefinierte Ereignisse und Metriken**: Erhalten Sie Daten, die Sie selbst im Client- oder Servercode schreiben, um Geschäftsereignisse zu verfolgen, wie z.B. verkaufte oder gewonnene Spiele.
+* **Benutzerdefinierte Ereignisse und Metriken:** Erhalten Sie Daten, die Sie selbst in den Client- oder Servercode schreiben, um Geschäftsereignisse zu verfolgen, z.B. verkaufte Objekte oder gewonnene Spiele.
 
 Die folgende Tabelle enthält eine Liste der Integrationsszenarien und eine entsprechende Beschreibung:
 
@@ -288,11 +288,11 @@ Bei der Bedrohungserkennung von Azure Security Center werden automatisch Sicherh
 
 Für Security Center werden professionelle Sicherheitsanalysen genutzt, die weit über signaturbasierte Ansätze hinausgehen. Es werden Durchbrüche in umfangreichen Daten und [Machine Learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)-Technologien angewendet, um Ereignisse über die gesamte Cloudfabric auswerten. Auf diese Weise werden Bedrohungen erkannt, die mit manuellen Ansätzen und der Vorhersage zur Entwicklung von Angriffen nicht identifiziert werden können. Zu diesen Sicherheitsanalysen gehört Folgendes:
 
-* **Integrierte Informationen zu Bedrohungen**: Es wird nach bekannten Angreifern gesucht. Hierzu werden globale Bedrohungsinformationen (Threat Intelligence) von Microsoft-Produkten und -Diensten, von der Microsoft Digital Crimes Unit (DCU), vom Microsoft Security Response Center (MSRC) sowie von externen Feeds angewendet.
+* **Integrierte Informationen zu Bedrohungen:** Es wird nach bekannten Angreifern gesucht, indem globale Bedrohungsinformationen (Threat Intelligence) von Microsoft-Produkten und -Diensten, von der Microsoft Digital Crimes Unit (DCU), vom Microsoft Security Response Center (MSRC) sowie von externen Feeds angewandt werden.
 
-* **Verhaltensanalyse**: Es werden bekannte Muster angewendet, um schädliches Verhalten zu erkennen.
+* **Verhaltensanalyse:** Es werden bekannte Muster angewandt, um schädliches Verhalten zu erkennen.
 
-* **Anomalieerkennung**: Es werden statistische Profile erstellt, um typische Verlaufsdaten zu erhalten. Sie werden benachrichtigt, wenn es zu Abweichungen von der Baseline kommt, die einem potenziellen Angriffsvektor entsprechen.
+* **Anomalieerkennung:** Es werden statistische Profile erstellt, um typische Verlaufsdaten zu erhalten. Sie werden benachrichtigt, wenn es zu Abweichungen von der Baseline kommt, die einem potenziellen Angriffsvektor entsprechen.
 
 Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mit Azure Log Integration können Sie Security Center-Warnungen sowie von der Azure-Diagnose und Überwachungsprotokollen gesammelte Sicherheitsereignisse für den virtuellen Computer nahezu in Echtzeit mit ihrer Log Analytics- oder SIEM-Lösung synchronisieren.
 
@@ -323,7 +323,7 @@ Es gibt vier Möglichkeiten, [Protokolle und Metriken für Azure-Dienste](https:
 |Application Insights||     Connector|  Connector|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)-[Connector (Vorschau)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Azure Automation-Kontos| Microsoft.Automation/<br>AutomationAccounts|    Diagnose||       [Weitere Informationen](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Azure Batch-Kontos|  Microsoft.Batch/<br>batchAccounts|  Diagnose|    Diagnose||
-|Klassische Clouddienste||       Speicher||       [Weitere Informationen](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
+|Klassische Clouddienste||       Storage||       [Weitere Informationen](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
 |Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       Diagnose|||
 |Azure Data Lake Analytics| Microsoft.DataLakeAnalytics/<br>accounts|   Diagnose|||
 |Azure Data Lake Store| Microsoft.DataLakeStore/<br>accounts|   Diagnose|||
@@ -337,10 +337,10 @@ Es gibt vier Möglichkeiten, [Protokolle und Metriken für Azure-Dienste](https:
 |Recovery-Tresore|   Microsoft.RecoveryServices/<br>vaults|||[Azure Recovery Services Analytics (Vorschau)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Suchdienste|   Microsoft.Search/<br>searchServices|    Diagnose|    Diagnose||
 |Service Bus-Namespace| Microsoft.ServiceBus/<br>namespaces|    Diagnose|Diagnose|    [Service Bus Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-|Service Fabric||       Speicher||    [Service Fabric-Analysen (Vorschau)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
+|Service Fabric||       Storage||    [Service Fabric-Analysen (Vorschau)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>servers/<br>Datenbanken||       Diagnose||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
-|Speicher|||         Skript| [Azure Storage Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
+|Storage|||         Skript| [Azure Storage Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
 |Azure Virtual Machines|    Microsoft.Compute/<br>virtualMachines|  Durchwahl|  Durchwahl||
 ||||Diagnose||
 |VM-Skalierungsgruppen|    Microsoft.Compute/<br>virtualMachines    ||Diagnose||
@@ -367,24 +367,24 @@ Log Integration unterstützt derzeit die Integration von Azure-Aktivitätsprotok
 |Diagnoseprotokolle (Ressourcenprotokolle)|  JA|
 |VM-Protokolle|   Ja, über weitergeleitete Ereignisse und nicht über JSON|
 
-[Erste Schritte mit der Azure Log Integration:](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started) In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure-Speicher sowie Azure-Aktivitätsprotokolle, Azure Security Center-Warnungen und Azure AD-Überwachungsprotokolle integrieren.
+[Erste Schritte mit Azure Log Integration:](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started) In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Azure Log Integration installieren und Protokolle aus Azure Storage sowie Azure-Aktivitätsprotokolle, Azure Security Center-Warnungen und Azure AD-Überwachungsprotokolle integrieren.
 
 Integrationsszenarien für SIEM:
 
-* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner, in englischer Sprache): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
+* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie Azure Log Integration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
 
-* [Azure-Protokollintegration – Häufig gestellte Fragen](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): In diesem Artikel werden Fragen zur Azure-Protokollintegration beantwortet.
+* [Häufig gestellte Fragen zu Azure Log Integration:](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq) In diesem Artikel werden Fragen zur Azure-Protokollintegration beantwortet.
 
-* [Integrieren von Security Center-Warnungen mithilfe von Azure Log Integration](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): In diesem Artikel erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Log Analytics- oder SIEM-Lösung synchronisieren.
+* [Integrieren von Security Center-Warnungen mithilfe von Azure Log Integration:](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) In diesem Artikel erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von Azure-Diagnose und Azure-Überwachungsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Log Analytics- oder SIEM-Lösung synchronisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Überwachung und Protokollierung](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): Schützen von Daten durch Beibehalten der Sichtbarkeit und schnelles Reagieren auf zeitnahe Sicherheitswarnungen.
+- [Überwachung und Protokollierung:](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview) Schützen Sie Daten durch Sichtbarkeit und eine schnelle Reaktion auf frühzeitige Sicherheitswarnhinweise.
 
-- [Sicherheitsprotokollierung und Sammeln von Überwachungsprotokollen in Azure](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): Erzwingen Sie diese Einstellungen, um sicherzustellen, dass Ihre Azure-Instanzen die richtige Sicherheits- und überwachungsprotokolle sammeln.
+- [Sicherheitsprotokollierung und Überwachungprotokollsammlung in Azure:](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/) Erzwingen Sie diese Einstellungen, um sicherzustellen, dass Ihre Azure-Instanzen die richtigen Sicherheits- und Überwachungsprotokolle sammeln.
 
-- [Konfigurieren von Überwachungseinstellungen für eine Websitesammlung](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Wenn Sie Administrator einer Websitesammlung sind, können Sie den Verlauf der Aktionen für einzelne Benutzer und den Verlauf von Aktionen, die während eines bestimmten Zeitraums ausgeführt wurden, abrufen. 
+- [Konfigurieren von Überwachungseinstellungen für eine Websitesammlung:](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US) Wenn Sie Administrator einer Websitesammlung sind, können Sie den Verlauf der Aktionen für einzelne Benutzer und den Verlauf von Aktionen, die während eines bestimmten Zeitraums ausgeführt wurden, abrufen. 
 
-- [Durchsuchen des Überwachungsprotokolls im Office 365 Security & Compliance Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Mit dem Office 365 Security & Compliance Center können Sie das vereinheitlichte Überwachungsprotokoll suchen, um Benutzer- und Administratoraktivitäten in Ihrer Office 365-Organisation anzuzeigen.
+- [Durchsuchen des Überwachungsprotokolls im Office 365 Security & Compliance Center:](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US) Durchsuchen Sie mit dem Office 365 Security & Compliance Center das vereinheitlichte Überwachungsprotokoll, um Benutzer- und Administratoraktivitäten in Ihrer Office 365-Organisation anzuzeigen.
 
 

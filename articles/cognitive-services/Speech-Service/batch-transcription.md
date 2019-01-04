@@ -1,32 +1,36 @@
 ---
-title: Verwenden der Azure Batch-Transkriptions-API
+title: Verwenden von Batch-Transkriptionen – Speech Services
 titlesuffix: Azure Cognitive Services
-description: Beispiele für das Transkribieren großer Mengen von Audioinhalten.
+description: Batch-Transkriptionen eignen sich besonders, wenn Sie eine große Menge von Audiodaten in einen Speicher wie z.B. Azure-Blobs transkribieren möchten. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: b4e7c11a6077104e874d67b75f5d00e8f481f739
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495592"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086928"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
-Die Batch-Transkription ist optimal geeignet, wenn Sie in Storage über große Audiodatenmengen verfügen. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
+Batch-Transkriptionen eignen sich besonders, wenn Sie eine große Menge von Audiodaten in einen Speicher wie z.B. Azure-Blobs transkribieren möchten. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
+
+>[!NOTE]
+> Für die Verwendung von Batch-Transkriptionen ist ein Standardabonnement (S0) für Speech Services erforderlich. Kostenlose Abonnementschlüssel (F0) funktionieren nicht. Weitere Informationen finden Sie unter [Preise und Einschränkungen](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/).
 
 ## <a name="the-batch-transcription-api"></a>Die Batch-Transkriptions-API
 
 Die Batch-Transkriptions-API bietet asynchrone Transkription von Sprache in Text sowie zusätzliche Funktionen. Es handelt sich um eine REST-API, die Methoden für Folgendes verfügbar macht:
 
 1. Erstellen von Anforderungen für Batch-Verarbeitungen
-1. Abfragestatus 
+1. Abfragestatus
 1. Herunterladen von Transkriptionen
 
 > [!NOTE]
@@ -75,7 +79,7 @@ Diese Parameter können in der Abfragezeichenfolge der REST-Anforderung enthalte
 
 ## <a name="authorization-token"></a>Autorisierungstoken
 
-Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung unter [Erste Schritte](get-started.md) einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com). Wenn Sie das Abrufen von Transkriptionen aus unseren Basismodellen planen, müssen Sie außer der Schlüsselerstellung nichts weiter tun. 
+Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung unter [Erste Schritte](get-started.md) einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com). Wenn Sie das Abrufen von Transkriptionen aus unseren Basismodellen planen, müssen Sie außer der Schlüsselerstellung nichts weiter tun.
 
 Wenn Sie planen, ein eigenes Modell zu erstellen und zu verwenden, fügen Sie den Abonnementschlüssel mithilfe der folgenden Schritte zum Custom Speech-Portal hinzu:
 
@@ -106,19 +110,19 @@ Passen Sie den folgenden Beispielcode mit einem Abonnementschlüssel und einem A
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-         
+
             return new CrisClient(client);
         }
 ```
 
-Nachdem Sie das Token abgerufen haben, geben Sie die SAS-URI an, die auf die Audiodatei zeigt, für die eine Transkription erforderlich ist. Der Rest des Codes durchläuft den Status und zeigt die Ergebnisse an. Zuerst richten Sie den Schlüssel, die Region, die zu verwendenden Modelle und die Sicherheitszuordnung ein, wie im folgenden Codeausschnitt gezeigt. Als Nächstes instanziieren Sie den Client und die POST-Anforderung. 
+Nachdem Sie das Token abgerufen haben, geben Sie die SAS-URI an, die auf die Audiodatei zeigt, für die eine Transkription erforderlich ist. Der Rest des Codes durchläuft den Status und zeigt die Ergebnisse an. Zuerst richten Sie den Schlüssel, die Region, die zu verwendenden Modelle und die Sicherheitszuordnung ein, wie im folgenden Codeausschnitt gezeigt. Als Nächstes instanziieren Sie den Client und die POST-Anforderung.
 
 ```cs
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
-    
-            // SAS URI 
+
+            // SAS URI
             private const string RecordingsBlobUri = "SAS URI pointing to the file in Azure Blob Storage";
 
             // adapted model Ids
@@ -127,14 +131,14 @@ Nachdem Sie das Token abgerufen haben, geben Sie die SAS-URI an, die auf die Aud
 
             // Creating a Batch Transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
-            
+
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
 ```
 
 Nachdem Sie die Anforderung gesendet haben, können Sie nun die Transkriptionsergebnisse abfragen und herunterladen, wie im folgenden Codeausschnitt gezeigt:
 
 ```cs
-  
+
             // get all transcriptions for the user
             transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
 
@@ -152,9 +156,9 @@ Nachdem Sie die Anforderung gesendet haben, können Sie nun die Transkriptionser
                             // not created from here, continue
                             continue;
                         }
-                            
+
                         completed++;
-                            
+
                         // if the transcription was successful, check the results
                         if (transcription.Status == "Succeeded")
                         {
@@ -166,7 +170,7 @@ Nachdem Sie die Anforderung gesendet haben, können Sie nun die Transkriptionser
                             Console.WriteLine("Transcription succeeded. Results: ");
                             Console.WriteLine(results);
                         }
-                    
+
                     break;
                     case "Running":
                     running++;
@@ -174,7 +178,7 @@ Nachdem Sie die Anforderung gesendet haben, können Sie nun die Transkriptionser
                     case "NotStarted":
                     notStarted++;
                     break;
-                    
+
                     }
                 }
             }
@@ -188,7 +192,7 @@ Vollständige Informationen zu den vorherigen Aufrufen finden Sie in unserer [Sw
 
 Beachten Sie das asynchrone Setup für das Senden von Audiodaten und das Empfangen des Transkriptionsstatus. Der von Ihnen erstellte Client ist ein .NET-HTTP-Client. Es gibt eine `PostTranscriptions`-Methode für das Senden der Audiodateidetails und eine `GetTranscriptions`-Methode zum Empfangen der Ergebnisse. `PostTranscriptions` gibt ein Handle zurück, und `GetTranscriptions` verwendet dieses Handle, um ein Handle zum Abrufen des Transkriptionsstatus zu erstellen.
 
-Im aktuellen Beispielcode ist kein benutzerdefiniertes Modell angegeben. Der Dienst verwendet die Basismodelle zum Transkribieren der Datei bzw. Dateien. Zum Angeben der Modelle können Sie dieselbe Methode wie bei den Modell-IDs für das Akustikmodell und das Sprachmodell übergeben. 
+Im aktuellen Beispielcode ist kein benutzerdefiniertes Modell angegeben. Der Dienst verwendet die Basismodelle zum Transkribieren der Datei bzw. Dateien. Zum Angeben der Modelle können Sie dieselbe Methode wie bei den Modell-IDs für das Akustikmodell und das Sprachmodell übergeben.
 
 Wenn Sie die Basismodelle nicht verwenden möchten, übergeben Sie Modell-IDs sowohl für das Akustikmodell als auch für das Sprachmodell.
 

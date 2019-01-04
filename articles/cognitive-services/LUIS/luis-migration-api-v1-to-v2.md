@@ -1,24 +1,25 @@
 ---
-title: API-Migrationshandbuch von v1 zu v2
+title: Migration von API-Version 1 zu API-Version 2
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie zum neuesten API-Satz migrieren.
+description: Die Endpunkt- und Erstellungs-APIs der Version 1 sind veraltet. In dieser Anleitung erfahren Sie, wie Sie zu den Endpunkt- und Erstellungs-APIs der Version 2 migrieren.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646574"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138822"
 ---
-# <a name="api-v2-migration-guide"></a>API v2-Migrationshandbuch
-Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind demnächst veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://aka.ms/luis-endpoint-apis)- und [Erstellungs](https://aka.ms/luis-authoring-apis)-APIs der Version 2 migrieren. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Anleitung zur Migration von API-Version 1 zu API-Version 2 für LUIS-Apps
+Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://aka.ms/luis-endpoint-apis)- und [Erstellungs](https://aka.ms/luis-authoring-apis)-APIs der Version 2 migrieren. 
 
 ## <a name="new-azure-regions"></a>Neue Azure-Regionen
 LUIS stellt neue [Regionen](https://aka.ms/LUIS-regions) für die LUIS-APIs bereit. LUIS bietet eine eigene Website für Regionsgruppen. Die Anwendung muss in derselben Region erstellt werden, die Sie abfragen möchten. Regionen werden von Anwendungen nicht automatisch migriert. Sie exportieren die App aus einer Region und importieren sie dann in eine andere, damit sie in einer neuen Region verfügbar ist.
@@ -43,7 +44,7 @@ Die Endpunkt-API weist neue QueryString-Parameter sowie eine andere Antwort auf.
 
 
 Erfolgsantwort v1-Endpunkt:
-```JSON
+```json
 {
   "odata.metadata":"https://dialogice.cloudapp.net/odata/$metadata#domain","value":[
     {
@@ -54,7 +55,7 @@ Erfolgsantwort v1-Endpunkt:
 ```
 
 Erfolgsantwort v2-Endpunkt:
-```JSON
+```json
 {
   "query": "forward to frank 30 dollars through HSBC",
   "topScoringIntent": {

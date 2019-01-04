@@ -1,21 +1,22 @@
 ---
-title: Hinzufügen von Mustervorlagen anstelle weiterer Äußerungen in LUIS-Apps
-titleSuffix: Azure Cognitive Services
+title: Steigern der Genauigkeit mit Mustern
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Erfahren Sie, wie Sie Mustervorlagen in LUIS-Anwendungen (Language Understanding Intelligent Service) hinzufügen, um die Vorhersagegenauigkeit zu verbessern.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6c15fc256a330c7de154c551c1ef4c78913f470a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885885"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134997"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit
 Nachdem eine LUIS-App Endpunktäußerungen empfängt, verbessern Sie mithilfe des [Konzepts](luis-concept-patterns.md) von Mustern die Vorhersagegenauigkeit für Äußerungen, die ein Muster in der Wortreihenfolge und Wortwahl zeigen. Muster verwenden [Entitäten](luis-concept-entity-types.md) und deren Rollen zum Extrahieren von Daten mithilfe einer spezifischen Mustersyntax. 
@@ -95,7 +96,7 @@ Um mehrere Muster einer anderen Absicht neu zuzuweisen, aktivieren Sie die Kontr
 
 2. Das Bestätigungsdialogfeld **Delete patterns** (Muster löschen) wird angezeigt. Wählen Sie **OK** aus, um den Löschvorgang abzuschließen.
 
-    ![Screenshot des Löschens mehrerer Muster](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![Screenshot des Bestätigungsdialogfelds zum Löschen mehrerer Muster](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
 ## <a name="filter-pattern-list-by-entity"></a>Filtern der Musterliste nach Entität
 
@@ -116,7 +117,7 @@ Nach dem Anwenden des Filters wird der Absichtsname unter der Symbolleiste angez
 ## <a name="remove-entity-or-intent-filter"></a>Entfernen eines Entitäts- oder Absichtsfilters
 Wenn die Liste gefiltert wurde, wird der Name der Entität oder Absicht unter der Symbolleiste angezeigt. Um den Filter zu entfernen, wählen Sie den Namen aus.
 
-![Screenshot von nach Entität gefilterten Mustern](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![Screenshot zum Entfernen einer Entität aus dem Filter](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
 Der Filter wird entfernt, und alle Muster werden angezeigt. 
 
@@ -125,7 +126,7 @@ Sie können auf einer der Seiten **Intent** (Absicht) oder **Entity** (Entität)
 
 1. Wählen Sie in der ausgewählten Zeile der Äußerung die Auslassungspunkte (**...**) rechts neben der Äußerung und dann ***Als Muster hinzufügen*** aus.
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Screenshot der Äußerungstabelle mit hervorgehobener Option „Add as pattern“ (Als Muster hinzufügen) im Menü „Optionen“")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![Screenshot der Tabelle mit Äußerungen mit hervorgehobener Option „Hinzufügen“ für Muster im Menü](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Screenshot der Tabelle mit Äußerungen mit hervorgehobener Option „Hinzufügen“ für Muster im Menü")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
 2. Ändern Sie das Muster gemäß den [Syntaxregeln](luis-concept-patterns.md#pattern-syntax). Wenn die ausgewählte Äußerung mit Entitäten bezeichnet ist, befinden sich diese Entitäten bereits mit der richtigen Syntax im Muster.
 

@@ -1,23 +1,24 @@
 ---
-title: 'Erstellen einer Wissensdatenbank: QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Das Hinzufügen von Geplauder zu Ihrem Bot macht ihn unterhaltsamer und interessanter. Mit QnA Maker können Sie auf einfache Weise ein vordefiniertes Dataset mit wichtigen Geplauderelementen in Ihrer Wissensdatenbank hinzufügen. Dies kann ein Ausgangspunkt für das Geplauder Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben.
+title: Erstellen einer Wissensdatenbank
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: Verwenden Sie das QnA Maker-Portal, um eine Wissensdatenbank mit Geplauder hinzuzufügen und zu erstellen. Dadurch wird Ihre App ansprechender. Fügen Sie einen vorkonfigurierten Satz beliebter Themen als Ausgangspunkt für das Geplauder Ihres Bots hinzu, und sparen Sie damit die Zeit und Kosten, diese Elemente von Grund auf neu zu schreiben.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 12/11/2018
 ms.author: tulasim
-ms.openlocfilehash: c9d36014bc364d8b016221e6b9ff380b0bd4b8ed
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 4a4f3d44454e7851f74bbeb072a9d4dcd600a6ef
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854166"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338123"
 ---
-# <a name="create-a-knowledge-base"></a>Erstellen einer Wissensdatenbank
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>Schnellstart: Erstellen einer Wissensdatenbank über das QnA Maker-Portal
 
 Mit QnA Maker ist es einfach, Ihre vorhandenen Datenquellen beim Erstellen einer Wissensdatenbank hinzuzufügen. Aus den folgenden Dokumenttypen können Sie eine neue QnA Maker-Wissensdatenbank erstellen:
 
@@ -26,17 +27,21 @@ Mit QnA Maker ist es einfach, Ihre vorhandenen Datenquellen beim Erstellen einer
 * Produkthandbücher
 * Strukturierte Dokumente
 
-## <a name="steps"></a>Schritte
+Fügen Sie eine Persönlichkeit für Geplauder ein, um Ihre Informationen für Ihre Benutzer ansprechender zu machen.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+
+## <a name="create-a-new-knowledge-base"></a>Erstellen einer neuen Wissensdatenbank
 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen am [QnA Maker-Portal](https://qnamaker.ai) an, und wählen Sie **Wissensdatenbank erstellen** aus.
 
-2. Wenn Sie noch keinen QnA Maker-Dienst erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. 
+1. Wenn Sie noch keinen QnA Maker-Dienst erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. 
 
-3. Wählen Sie Ihren Azure-Mandanten, den Azure-Abonnementnamen und den dem QnA Maker-Dienst zugeordneten Azure-Ressourcennamen aus den Listen in **Schritt 2** im QnA Maker-Portal aus. Wählen Sie einen Azure QnA Maker-Dienst als Host für die Wissendatenbank aus.
+1. Wählen Sie Ihren Azure-Mandanten, den Azure-Abonnementnamen und den dem QnA Maker-Dienst zugeordneten Azure-Ressourcennamen aus den Listen in **Schritt 2** im QnA Maker-Portal aus. Wählen Sie einen Azure QnA Maker-Dienst als Host für die Wissendatenbank aus.
 
     ![Einrichten eines QnA-Diensts](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
 
-4. Geben Sie den Namen Ihrer Wissensdatenbank und die Datenquellen für die neue Wissensdatenbank ein.
+1. Geben Sie den Namen Ihrer Wissensdatenbank und die Datenquellen für die neue Wissensdatenbank ein.
 
     ![Festlegen von Datenquellen](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
@@ -45,21 +50,23 @@ Mit QnA Maker ist es einfach, Ihre vorhandenen Datenquellen beim Erstellen einer
     - Laden Sie Dateien für die Daten hoch, die extrahiert werden sollen. Unter [Preise](https://aka.ms/qnamaker-pricing) erfahren Sie, wie viele Dokumente Sie hinzufügen können.
     - Wenn Sie QnAs manuell hinzufügen möchten, können Sie **Schritt 4**, der in der vorhergehenden Abbildung gezeigt wird, überspringen.
 
-5. Fügen Sie Ihrer Wissensdatenbank **Geplauder** hinzu. Fügen Sie Geplauderunterstützung für Ihren Bot hinzu, indem Sie eine der 3 vordefinierten Persönlichkeiten auswählen. 
+1. Fügen Sie Ihrer Wissensdatenbank **Geplauder** hinzu. Fügen Sie Geplauderunterstützung für Ihren Bot hinzu, indem Sie eine der drei Persönlichkeiten auswählen. 
 
-    <!-- TBD: add back in when chit chat how-to is merged
-    ![Add chit-chat to KB ](../media/qnamaker-how-to-chitchat/create-kb-chit-chat.png)
-    -->
+    ![Hinzufügen von Geplauder zu Wissensdatenbanken ](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 
-6. Wählen Sie **Wissensdatenbank erstellen** aus.
+1. Wählen Sie **Wissensdatenbank erstellen** aus.
 
     ![Erstellen der Knowledge Base](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-7. Das Extrahieren der Daten dauert einige Minuten.
+1. Das Extrahieren der Daten dauert einige Minuten.
 
     ![Extraktion](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-8. Wenn Ihre Wissensdatenbank erfolgreich erstellt wurde, werden Sie auf die Seite **Wissensdatenbank** weitergeleitet.
+1. Wenn Ihre Wissensdatenbank erfolgreich erstellt wurde, werden Sie auf die Seite **Wissensdatenbank** weitergeleitet.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie mit der Wissensdatenbank fertig sind, entfernen Sie sie im QnA Maker-Portal.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

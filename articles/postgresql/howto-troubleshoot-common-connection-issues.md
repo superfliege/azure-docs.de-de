@@ -3,19 +3,19 @@ title: Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL | Micr
 description: Erfahren Sie, wie Sie Verbindungsprobleme mit Azure Database for PostgreSQL beheben.
 keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
 services: postgresql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: fea4c376f73afe2ef36948c59e95a2b679dbd7e8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 67383db4bd1d57d194e10de2dc1964532b3619a4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285482"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53160810"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL
 
@@ -49,9 +49,9 @@ Vorübergehende Fehler treten auf, wenn eine Wartung durchgeführt wird, wenn da
 
 Wenn die Anwendung dauerhaft keine Verbindung mit Azure Database for PostgreSQL herstellen kann, weist dies in der Regel auf Probleme der folgenden Art hin:
 
-* Konfiguration der Firewall: Der Azure Database for PostgreSQL-Server oder eine clientseitige Firewall blockiert Verbindungen.
-* Netzwerkneukonfiguration auf Clientseite: Es wurde eine neue IP-Adresse oder ein Proxyserver hinzugefügt.
-* Benutzerfehler: Sie haben beispielsweise Verbindungsparameter wie den Servernamen in der Verbindungszeichenfolge falsch geschrieben, oder es fehlt das Suffix *@servername* im Benutzernamen.
+* Konfiguration der Serverfirewall: Stellen Sie sicher, dass die Firewall auf dem Azure Database for PostgreSQL-Server so konfiguriert ist, dass Verbindungen von Ihrem Client zulässig sind, einschließlich Proxyserver und Gateways.
+* Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. IP-Adressen und Ports des Servers, mit dem Sie eine Verbindung herstellen, sowie Anwendungsnamen wie PostgreSQL müssen in einigen Firewalls zugelassen sein.
+* Benutzerfehler: Sie haben möglicherweise Verbindungsparameter wie den Servernamen in der Verbindungszeichenfolge falsch geschrieben, oder es fehlt das Suffix *@servername* im Benutzernamen.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
 

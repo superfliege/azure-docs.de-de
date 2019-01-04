@@ -3,16 +3,15 @@ title: Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosm
 description: Dieses Dokument beschreibt die Schritte, die zum Einrichten eines VNET-Dienstendpunkts für Azure Cosmos DB erforderlich sind.
 author: kanshiG
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 4e8891302346fa2655a4b1280b65fdd969f12909
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 73858cac4176c10ff8ce14347acb9b869471ebc2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620590"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838088"
 ---
 # <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke
 
@@ -37,11 +36,11 @@ Die folgenden Abschnitte beschreiben, wie Sie den eine Dienstendpunkt eines virt
 
 1. Wählen Sie aus dem Einstellungsmenü die Option **Firewalls und virtuelle Netzwerke**, und aktivieren Sie **Ausgewählte Netzwerke**, um den Zugriff über ausgewählte Netzwerke zuzulassen.
 
-1. Um Zugriff auf das Subnetz eines vorhandenen virtuellen Netzwerks zu gewähren, wählen Sie unter **Virtuelle Netzwerke** die Option **Vorhandenes virtuelles Azure-Netzwerk hinzufügen** aus.
+1. Um Zugriff auf das Subnetz eines vorhandenen virtuellen Netzwerks zu gewähren, wählen Sie unter **Virtuelle Netzwerke** die Option **Vorhandenes Azure Virtual Network hinzufügen** aus.
 
 1. Wählen Sie das **Abonnement** aus, aus dem ein virtuelles Azure-Netzwerk hinzugefügt werden soll. Wählen Sie für **Virtuelle Netzwerke** und **Subnetze** die virtuellen Azure-Netzwerke und Subnetze aus, denen Sie Zugriff auf Ihr Azure Cosmos DB-Konto gewähren möchten. Klicken Sie als Nächstes auf **Aktivieren**, um die ausgewählten Netzwerke mit Dienstendpunkten für „Microsoft.AzureCosmosDB“ zu aktivieren. Wenn der Vorgang abgeschlossen ist, klicken Sie auf **Hinzufügen**. 
 
-   ![Auswählen des virtuellen Netzwerks und des Subnetzes](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   ![Auswählen des Virtual Network und des Subnetzes](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
 
 1. Nachdem das Azure Cosmos DB-Konto für den Zugriff aus einem virtuellen Netzwerk aktiviert wurde, lässt es nur den Datenverkehr aus diesem ausgewählten Subnetz zu. Das von Ihnen hinzugefügte virtuelle Netzwerk und das Subnetz sollten wie im folgenden Screenshot angezeigt werden:
@@ -77,7 +76,7 @@ Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreif
 
 3. Um eine Regel für ein virtuelles Netzwerk oder ein Subnetz zu entfernen, klicken Sie neben dem virtuellen Netzwerk oder dem Subnetz auf **...**, und wählen Sie **Entfernen** aus.
 
-   ![Entfernen eines virtuellen Netzwerks](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
+   ![Entfernen eines Virtual Network](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
 4.  Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
@@ -90,7 +89,7 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
 
 1. Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), und [melden Sie sich an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
 
-1. Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines virtuellen Netzwerks.  
+1. Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines Virtual Network.  
 
    ```powershell
    $rgname = "<Resource group name>"
@@ -168,7 +167,7 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
      -Properties $CosmosDBProperties
    ```
 
-1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Azure Cosmos DB-Konto mit dem VNET-Dienstendpunkt aktualisiert wurde, das Sie im vorherigen Schritt konfiguriert haben:
+1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Azure Cosmos DB-Konto mit dem Virtual Network-Dienstendpunkt aktualisiert wurde, das Sie im vorherigen Schritt konfiguriert haben:
 
    ```powershell
    $UpdatedcosmosDBConfiguration = Get-AzureRmResource `
@@ -278,7 +277,7 @@ Sobald ein Dienstendpunkt für das Azure Cosmos DB-Konto für ein Subnetz aktivi
 
 1.  Warten Sie 15 Minuten, und aktualisieren Sie dann das Subnetz, um den Dienstendpunkt zu aktivieren.
 
-1.  Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines virtuellen Netzwerks.
+1.  Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines Virtual Network.
 
     ```powershell
     $rgname= "<Resource group name>"

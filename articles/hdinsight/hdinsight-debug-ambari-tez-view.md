@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d2f55538517881ce6cc237885f3bcadfa084520
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494972"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012350"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Debuggen von Apache Tez-Aufträgen in HDInsight mithilfe von Apache Ambari-Ansichten
 
@@ -92,7 +92,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen:
 
     * **Abfragedetails:** Details zu der Hive-Abfrage
     * **Zeitachse:** Informationen zur Ausführungsdauer der einzelnen Verarbeitungsphasen
-    * **Konfigurationen:** die für diese Abfrage verwendete Konfiguration
+    * **Konfigurationen:** Die für diese Abfrage verwendete Konfiguration
 
     Sie können über die Links in __Abfragedetails__ Informationen zur __Anwendung__ oder dem __DAG__ (gerichteter azyklischer Graph) für diese Abfrage suchen.
     
@@ -103,6 +103,6 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen:
 
 Nachdem Sie nun mit der Verwendung der Apache Tez-Ansicht vertraut sind, können Sie sich als Nächstes genauer über die [Verwendung von Apache Hive in HDInsight](hadoop/hdinsight-use-hive.md) informieren.
 
-Ausführlichere technische Informationen zu Apache Tez finden Sie auf der [Seite zu Apache Tez bei Hortonworks](http://hortonworks.com/hadoop/tez/).
+Ausführlichere technische Informationen zu Apache Tez finden Sie auf der [Seite zu Apache Tez bei Hortonworks](https://hortonworks.com/hadoop/tez/).
 
 Weitere Informationen zur Verwendung von Apache Ambari mit HDInsight finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).

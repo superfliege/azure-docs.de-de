@@ -1,23 +1,24 @@
 ---
-title: Iterative App-Entwicklung in Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
-description: LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen.  LUIS-Apps erfordern den Entwurf von Iterationen zum Trainieren von LUIS für eine optimale Datenextraktion.
+title: Iteratives App-Design
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 2bd30aad995e9d1f334988652477f8b017c187b9
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: c86805527d6ac79fa31496fe06695d448a8b835b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638289"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134079"
 ---
-# <a name="authoring-cycle"></a>Erstellungszyklus
+# <a name="authoring-cycle-for-your-luis-app"></a>Erstellungszyklus für Ihre LUIS-App
 LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
 
 ![Erstellungszyklus](./media/luis-concept-app-iteration/iteration.png)

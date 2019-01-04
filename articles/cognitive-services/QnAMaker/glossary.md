@@ -1,7 +1,7 @@
 ---
 title: 'Glossar: QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Glossar
+description: Der QnA Maker-Dienst enthält viele neue Begriffe aus dem maschinellen Lernen und der Verarbeitung natürlicher Sprache sowie dienstspezifische Begriffe. Diese Liste hilft Ihnen, diese Begriffe zu verstehen.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: b22ec27b2999d322945e37c5a38d2b1d1532e7e3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 832bf85087b706451a6ee58c538d7a163ef18203
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166043"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079941"
 ---
-# <a name="glossary"></a>Glossar
+# <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>Glossar für QnA Maker-Wissensdatenbank und -Dienst
 
 ## <a name="qna-maker-service"></a>QnA Maker Service
 Ein QnA Maker-Dienst ist eine Voraussetzung für die Verwendung von QnA Maker. Durch Erwerb eines QnA Maker-Tarifs werden Ressourcen in Ihrem Azure-Abonnement für das Erstellen und Verwalten Ihrer Wissensdatenbank eingerichtet. Jedes QnA Maker-Benutzerkonto kann mehrere QnA Maker-Dienste in seinem Azure-Abonnement erstellen.

@@ -9,21 +9,31 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a4b6b1d267e9c86a03644129ee639b74ed214d88
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901326"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408356"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
+
+
+## <a name="december-12-2018"></a>12. Dezember 2018
+- Unterstützung für den Export von Objekterkennungsmodellen (Einführung der kompakten Domäne der Objekterkennung).
+- Eine Reihe von Probleme mit der Barrierefreiheit für verbesserte Sprachausgabe und Tastaturnavigation wurde behoben. 
+- Updates an der Benutzeroberfläche für den Image Viewer und verbesserte Objekterkennungserfahrung für schnelleres Tagging.  
+- Das Basismodell für die Objekterkennungsdomäne wurde für eine bessere Qualität bei der Objekterkennung aktualisiert. 
+- Fehlerbehebungen.
+
+## <a name="november-6-2018"></a>6. November 2018
+- Unterstützung für Logo-Domäne in der Objekterkennung wurde hinzugefügt.
 
 ## <a name="october-9-2018"></a>9. Oktober 2018
 - Objekterkennung geht in die kostenpflichtige Vorschauphase. Sie können jetzt Objekterkennungsprojekte mit einer Azure-Ressource erstellen.
 - Der Website wurde die Funktion „In Azure verschieben“ hinzugefügt, um das Upgrade eines begrenzten Testprojekts zu vereinfachen, sodass es mit einem Azure- Ressourcenlinkprojekt (F0 oder S0) verknüpft werden kann. Sie finden diese Funktion auf der Seite „Einstellungen“ für Ihr Produkt.  
 - Export nach ONNX 1.2 wurde hinzugefügt, um die Windows 2018-Oktober-Update-Version von Windows-ML zu unterstützen.
 Fehlerbehebungen, einschließlich für den ONNX-Export mit Sonderzeichen. 
-
 
 ## <a name="august-14-2018"></a>14. August 2018
 - Widget „Erste Schritte“ zur Website customvision.ai hinzugefügt, um Benutzer durch das Projekttraining zu begleiten. 

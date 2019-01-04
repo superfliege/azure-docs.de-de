@@ -15,16 +15,16 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 428f094dae2b9a69b58912190d2959a7dfc467ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ec5c75b5de912988efeb5167107f6d0dfe07da2e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365261"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139951"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen
 
-Heutzutage möchten Mitarbeiter an jedem Ort, zu jeder Zeit und mit jedem Gerät produktiv arbeiten können. Sie möchten auf ihren eigenen Geräten arbeiten, z.B. Tablet-PCs, Smartphones oder Laptops. Und sie erwarten, sowohl auf SaaS-Apps in der Cloud als auch auf lokale Unternehmens-Apps zugreifen zu können. Für die Bereitstellung des Zugriffs auf lokale Anwendungen wurden bisher virtuelle private Netzwerke (VPNs) oder Umkreisnetzwerke (demilitarisierte Zonen, DMZs) eingesetzt. Diese Lösungen sind aber nicht nur komplex und schwer zu schützen, sondern können außerdem nur mit hohem Kostenaufwand eingerichtet und verwaltet werden.
+Heutzutage möchten Mitarbeiter an jedem Ort, zu jeder Zeit und mit jedem Gerät produktiv arbeiten können. Sie möchten auf ihren eigenen Geräten arbeiten, z.B. Tablet-PCs, Smartphones oder Laptops. Und sie erwarten, sowohl auf SaaS-Apps in der Cloud als auch auf lokale Unternehmens-Apps zugreifen zu können. Für die Bereitstellung des Zugriffs auf lokale Anwendungen wurden bisher virtuelle private Netzwerke (VPNs) oder demilitarisierte Zonen (DMZs) eingesetzt. Diese Lösungen sind aber nicht nur komplex und schwer zu schützen, sondern können außerdem nur mit hohem Kostenaufwand eingerichtet und verwaltet werden.
 
 Es gibt eine bessere Möglichkeit!
 
@@ -59,16 +59,16 @@ Mit dem Azure AD-Anwendungsproxy können Sie auf verschiedene Arten von internen
 * Rich Client-Apps, die in der Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library (ADAL)) integriert sind
 
 ## <a name="how-does-application-proxy-work"></a>Wie funktioniert der Anwendungsproxy?
-Es gibt zwei Komponenten, die Sie konfigurieren müssen, damit der Anwendungsproxy funktioniert: ein Connector und ein externer Endpunkt. 
+Sie müssen zwei Komponenten konfigurieren, damit der Anwendungsproxy funktioniert: einen Connector und einen Endpunkt. 
 
 Der Connector ist ein einfacher Agent, der sich auf einem Windows-Server innerhalb Ihres Netzwerks befindet. Der Connector erleichtert den Datenfluss vom Anwendungsproxydienst in der Cloud zu Ihren lokalen Anwendungen. Es werden nur ausgehende Verbindungen verwendet, also müssen Sie keine eingehenden Ports öffnen oder Ressourcen in der DMZ anordnen. Connectors sind zustandslos und rufen alle Informationen nach Bedarf aus der Cloud ab. Weitere Informationen zu Connectors, z.B. wie der Lastenausgleich und die Authentifizierung funktioniert, finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md). 
 
-Der externe Endpunkt bedeutet, wie Ihre Benutzer Ihre Anwendungen erreichen, während sie sich selbst außerhalb des Netzwerks befinden. Sie können direkt zu einer externen URL wechseln, die Sie bestimmen, oder auf die Anwendung über das MyApps-Portal zugreifen. Wenn Benutzer einen dieser Endpunkte erreichen, authentifizieren sie sich in Azure AD und werden dann über den Connector an die lokale Anwendung geleitet.
+Der Endpunkt kann eine URL oder ein [Endbenutzerportal](end-user-experiences.md) sein. Benutzer können außerhalb Ihres Netzwerks über eine externe URL auf Anwendungen zugreifen. Benutzer in Ihrem Netzwerk können über eine URL oder ein Endbenutzerportal auf die Anwendung zugreifen. Wenn Benutzer einen dieser Endpunkte erreichen, authentifizieren sie sich in Azure AD und werden dann über den Connector an die lokale Anwendung geleitet.
 
  ![Azure AD-Anwendungsproxy – Diagramm](./media/application-proxy/azureappproxxy.png)
 
-1. Der Benutzer greift auf die Anwendung über den Anwendungsproxydienst zu und wird zur Authentifizierung an die Azure AD-Anmeldeseite geleitet.
-2. Nach der erfolgreichen Anmeldung wird ein Token generiert und an das Clientgerät gesendet.
+1. Nachdem der Benutzer über einen Endpunkt auf die Anwendung zugegriffen hat, wird er an die Azure AD-Anmeldeseite umgeleitet. 
+2. Nach der erfolgreichen Anmeldung wird ein Token generiert und an das Clientgerät des Benutzers gesendet.
 3. Der Client sendet das Token an den Anwendungsproxydienst, der den Benutzerprinzipalnamen (UPN) und den Sicherheitsprinzipalnamen (SPN) aus dem Token abruft und die Anforderung dann an den Anwendungsproxyconnector leitet.
 4. Wenn Sie das SSO konfiguriert haben, führt der Connector jede weitere erforderliche Authentifizierung im Namen des Benutzers durch.
 5. Der Connector sendet die Anforderung an die lokale Anwendung.  
@@ -88,8 +88,8 @@ Bevor Sie den Anwendungsproxy konfigurieren, stellen Sie sicher, dass Sie über 
 
 Starten mit dem Anwendungsproxy in zwei Schritten:
 
-1. [Aktivieren des Anwendungsproxys und Konfigurieren des Connectors](application-proxy-enable.md).    
-2. [Veröffentlichen von Anwendungen](application-proxy-publish-azure-portal.md) – Verwenden Sie den schnell und einfach einzusetzenden Assistenten, um Ihre lokalen Apps zu veröffentlichen und den Remotezugriff darauf zu ermöglichen.
+1. [Aktivieren des Anwendungsproxys und Konfigurieren des Connectors](application-proxy-add-on-premises-application.md).    
+2. [Veröffentlichen von Anwendungen](application-proxy-add-on-premises-application.md) – Verwenden Sie den schnell und einfach einzusetzenden Assistenten, um Ihre lokalen Apps zu veröffentlichen und den Remotezugriff darauf zu ermöglichen.
 
 ## <a name="whats-next"></a>Wie geht es weiter?
 Sobald Sie Ihre erste App veröffentlicht haben, bietet Ihnen der Anwendungsproxy noch viele weitere Möglichkeiten:
@@ -100,5 +100,5 @@ Sobald Sie Ihre erste App veröffentlicht haben, bietet Ihnen der Anwendungsprox
 * [Arbeiten mit vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md) 
 * [Festlegen einer benutzerdefinierten Startseite](application-proxy-configure-custom-home-page.md)
 
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)
+Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](https://blogs.technet.com/b/applicationproxyblog/)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: dbf21c7c22a9b3273a65f7e186a2ac02ccae6ba2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b933bc5f5ecb39c3462e4e9bd300f1e07fd718c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436206"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838770"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Tutorial: Azure Active Directory-Integration mit Symantec Web Security Service (WSS)
 
@@ -131,7 +131,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Weitere Informationen zum Konfigurieren des einmaligen Anmeldens auf Seiten von Symantec Web Security Service (WSS) finden Sie in der WSS-Onlinedokumentation. Die heruntergeladene **Metadaten-XML**-Datei muss in das WSS-Portal importiert werden. Wenden Sie sich an das [Supportteam von Symantec Web Security Service (WSS)](https://www.symantec.com/contact-us), wenn Sie Unterstützung bei der Konfiguration im WSS-Portal benötigen.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -170,7 +170,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 In diesem Abschnitt erstellen Sie in Symantec Web Security Service (WSS) einen Benutzer namens Britta Simon. Der entsprechende Endbenutzername kann manuell im WSS-Portal erstellt werden. Sie können aber auch warten, bis die Benutzer/Gruppen in Azure AD bereitgestellt und nach wenigen Mitnuten (~15 Minuten) mit dem WSS-Portal synchronisiert werden. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. Die öffentliche IP-Adresse des Endbenutzercomputers, der zum Browsen zu Websites verwendet wird, muss ebenfalls im Portal von Symantec Web Security Service (WSS) bereitgestellt werden.
 
 > [!NOTE]
-> [Klicken Sie hier](http://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1), um die öffentliche IP-Adresse Ihres Computers zu erhalten.
+> [Klicken Sie hier](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1), um die öffentliche IP-Adresse Ihres Computers zu erhalten.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

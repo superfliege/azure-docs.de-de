@@ -2,36 +2,40 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 19e7c919345c0f56b274737840f8150f7d710501
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0ab34d6234db9c13ffe82ccd0e8580217085f631
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133961"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742319"
 ---
-Wenn Sie nur die Anmeldung bei Ihrer Anwendung ermöglichen möchten, verwenden Sie eine Richtlinie für die **Anmeldung**. Diese Richtlinie beschreibt die Benutzeroberflächen, die Kunden bei der Anmeldung durchlaufen, und den Inhalt der Token, die die Anwendung bei erfolgreichen Anmeldungen erhält.
+Wenn Sie nur die Anmeldung bei Ihrer Anwendung ermöglichen möchten, verwenden Sie einen Benutzerflow für die **Anmeldung**. Dieser Benutzerflow beschreibt die Benutzeroberflächen, die Kunden bei der Anmeldung durchlaufen, und den Inhalt der Token, die die Anwendung bei erfolgreichen Anmeldungen erhält.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
-Klicken Sie auf **Anmelderichtlinien**.
+Wählen Sie unter **Verwalten** die Option **Benutzerflows** aus.
 
-Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
+Klicken Sie oben auf dem Blatt auf **+Neuer Benutzerflow**.
 
-Der **Name** bestimmt den Namen der Anmelderichtlinie, die von der Anwendung verwendet wird. Geben Sie beispielsweise **SiIn** ein.
+Wählen Sie unter **Benutzerflowtyp auswählen** die Option **Alle** und dann die zu verwendende Version der **Anmeldung** aus.
 
-Klicken Sie auf **Identitätsanbieter**, und wählen Sie **Anmeldung für lokales Konto** aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
+Der **Name** bestimmt den in Ihrer Anwendung verwendeten Namen des Benutzerflows für die Anmeldung. Geben Sie beispielsweise **SiIn** ein.
 
-Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den Token nach einer erfolgreichen Anmeldung an die Anwendung zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename**, **Identitätsanbieter**, **Postleitzahl** und **Objekt-ID des Benutzers** aus. Klicken Sie auf **OK**.
+Wählen Sie unter **Identitätsanbieter** eine Option aus. Sie können auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
 
-Klicken Sie auf **Create**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C_1_SiIn** (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Anmelderichtlinien** angezeigt wird.
+Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
 
-Öffnen Sie die Richtlinie, indem Sie auf **B2C_1_SiIn** klicken.
+Wählen Sie in der Spalte **Anspruch zurückgeben** die Ansprüche aus, die nach einer erfolgreichen Anmeldung in den an die Anwendung gesendeten Token zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename**, **Identitätsanbieter**, **Postleitzahl** und **Objekt-ID des Benutzers** aus. Klicken Sie auf **OK**.
 
-Wählen Sie in der Dropdownliste **Anwendungen** die App **Contoso B2C** und `https://localhost:44321/` in der Dropdownliste **Reply URL/Redirect URI** aus.
+Klicken Sie auf **Create**. Beachten Sie, dass der soeben erstellte Benutzerflow als **B2C_1_SiIn** angezeigt wird. (Das Fragment **B2C\_1\_** wird automatisch hinzugefügt.)
 
-Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Anmeldung bei Ihrer Anwendung durchgehen.
+Klicken Sie auf **Benutzerflow ausführen**.
+
+Wählen Sie in der Dropdownliste **Anwendung** die App **Contoso B2C** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL** aus.
+
+Klicken Sie auf **Benutzerflow ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Anmeldung bei Ihrer Anwendung durchgehen.
 
 > [!NOTE]
-> Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
+> Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Benutzerflows wirksam werden.
 >

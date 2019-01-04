@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184945"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540241"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics
 
 ![Symbol „Azure-Aktivitätsprotokolle“](./media/collect-activity-logs/activity-log-analytics.png)
 
-Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Aktivitätsprotokoll](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokolle* oder *Vorgangsprotokolle* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
+Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokolle* oder *Vorgangsprotokolle* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
 
 Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen *Was*, *Wer* und *Wann* für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Bereitstellungsmodell verwenden.
 

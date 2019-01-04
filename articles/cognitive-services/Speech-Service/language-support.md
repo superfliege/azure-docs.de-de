@@ -1,25 +1,26 @@
 ---
 title: 'Sprachunterstützung: API für den Spracherkennungsdienst'
 titleSuffix: Azure Cognitive Services
-description: Eine Liste der natürlichen Sprachen, die vom Spracherkennungsdienst unterstützt werden.
+description: Azure Speech Services unterstützen neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache zu Text und Text zu Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienste.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284760"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342090"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Sprach- und Regionsunterstützung für die API für den Spracherkennungsdienst
 
-Für verschiedene Funktionen des Spracherkennungsdiensts werden verschiedene Sprachen unterstützt. In den folgenden Tabellen wird die Sprachunterstützung zusammengefasst.
+Für verschiedene Funktionen von Speech Services werden verschiedene Sprachen unterstützt. In den folgenden Tabellen wird die Sprachunterstützung zusammengefasst.
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
@@ -37,7 +38,7 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
  en-IN | Englisch (Indien) | JA | Ja | JA
  en-NZ | Englisch (Neuseeland) | Nein  | Ja | JA  
  en-US | Englisch (USA) | JA | Ja | JA
- es-ES | Spanisch (Spanien) | Nein  | Ja | Nein 
+ es-ES | Spanisch (Spanien) | JA | JA | Nein 
  es-MX | Spanisch (Mexiko) | Nein  | Ja | Nein 
  fi-FI | Finnisch (Finnland) | Nein  | Nein  | Nein 
  fr-CA | Französisch (Kanada) | Nein  | Ja | Nein 
@@ -49,7 +50,7 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
  nb-NO | Norwegisch, Bokmål (Norwegen) | Nein  | Nein  | Nein 
  nl-NL | Niederländisch (Niederlande) | Nein  | Ja | Nein 
  pl-PL | Polnisch (Polen) | Nein  | Nein  | Nein 
- pt-BR | Portugiesisch (Brasilien) | Nein  | Ja | Nein 
+ pt-BR | Portugiesisch (Brasilien) | JA | JA | Nein 
  pt-PT | Portugiesisch (Portugal) | Nein  | Ja | Nein 
  ru-RU | Russisch (Russland) | JA | JA | Nein 
  sv-SE | Schwedisch (Schweden) | Nein  | Nein  | Nein 
@@ -61,7 +62,24 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
 
 ## <a name="text-to-speech"></a>Text-zu-Sprache
 
-Die Sprachsynthese-API bietet die folgenden Stimmen. Jede steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
+Die Text-to-Speech-REST-API unterstützt diese Stimmen. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
+
+### <a name="neural-voices-preview"></a>Neuronale Stimmen (Vorschau)
+
+Die neuronale Sprachsynthese ist eine neue Art der Sprachsynthese mithilfe von Deep Neural Networks. Wenn Sie eine neuronale Stimme verwenden, kann die synthetisierte Sprache kaum von menschlichen Aufzeichnungen unterschieden werden.
+
+Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und virtuellen Helfern noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern.
+
+Eine vollständige Liste der neuronalen Stimmen mit der regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#neural-voices).
+
+| Gebietsschema | Sprache | Geschlecht | Dienstnamenzuordnung|
+|--------|----------|---------|--------------------|
+| en-US | Englisch (USA) | Male | „Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)“ |
+| en-US | Englisch (USA) | Female | „Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)“ |
+
+### <a name="standard-voices"></a>Standardstimmen
+
+Es stehen mehr als 75 Standardstimmen in mehr als 45 Sprachen und Gebietsschemas zur Verfügung, mit denen Sie Text in Sprache umwandeln können. Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-voices).
 
 Gebietsschema | Sprache | Geschlecht | Dienstnamenzuordnung
 -------|----------|---------|--------------------
@@ -158,7 +176,7 @@ Die Stimmanpassung ist für US-amerikanisches Englisch (en-US), vereinfachtes Ch
 
 ## <a name="speech-translation"></a>Sprachübersetzung
 
-Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übersetzung von Sprache in Sprache und Sprache in Text. Die Ausgangssprache muss immer eine der Sprachen aus der folgenden Sprachtabelle sein. Welche Zielsprachen verfügbar sind, richtet sich danach, ob es sich beim Übersetzungsziel um Sprache oder Text handelt. Sie können Spracheingaben in mehr als [60 Sprachen](https://www.microsoft.com/translator/business/languages/) übersetzen. Eine Teilmenge dieser Sprachen steht für die [Sprachsynthese](language-support.md#text-languages) zur Verfügung. 
+Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übersetzung von Sprache in Sprache und Sprache in Text. Die Ausgangssprache muss immer eine der Sprachen aus der folgenden Sprachtabelle sein. Welche Zielsprachen verfügbar sind, richtet sich danach, ob es sich beim Übersetzungsziel um Sprache oder Text handelt. Sie können Spracheingaben in mehr als [60 Sprachen](https://www.microsoft.com/translator/business/languages/) übersetzen. Eine Teilmenge dieser Sprachen steht für die [Sprachsynthese](language-support.md#text-languages) zur Verfügung.
 
 ### <a name="speech-languages"></a>Sprachen für Sprachausgabe
 

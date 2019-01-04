@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0c14055209c6094585e0d1df892fea24a3f3ea55
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633528"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721067"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -352,7 +352,7 @@ Die folgenden Geräteattribute können verwendet werden.
  deviceCategory | ein gültiger Gerätekategoriename | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | Jeder string-Wert. | (device.deviceManufacturer -eq "Samsung")
  deviceModel | Jeder string-Wert. | (device.deviceModel -eq "iPad Air")
- deviceOwnership | Personal, Corporate, Unknown | (device.deviceOwnership -eq "Corporate")
+ deviceOwnership | Personal, Unternehmen, Unbekannt | (device.deviceOwnership -eq "Company")
  domainName | Jeder string-Wert. | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Profilname für Apple-Geräteregistrierung oder für Windows AutoPilot | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
@@ -360,6 +360,9 @@ Die folgenden Geräteattribute können verwendet werden.
  deviceId | eine gültige Azure AD-Geräte-ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | eine gültige Azure AD-Objekt-ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | Eine beliebige Zeichenfolge, die mit der Intune-Geräteeigenschaft zum Kennzeichnen von Geräten der modernen Arbeitswelt übereinstimmt | (device.systemLabels -contains „M365Managed“)
+
+> [!Note]  
+> Für das Geräteattribut „deviceOwnership“ müssen Sie beim Erstellen dynamischer Gruppen für Geräte den Wert auf „Company“ festlegen. In Intune wird der Gerätebesitz dagegen mit „Corporate“ angegeben. Weitere Informationen finden Sie unter [OwnerTypes](https://docs.microsoft.com/en-us/intune/reports-ref-devices#ownertypes). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

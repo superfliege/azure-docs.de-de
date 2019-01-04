@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: fa5b5e1998d54c7b22d01e7cc70e84059d482cfb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623545"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086605"
 ---
-# <a name="edit-a-knowledge-base"></a>Bearbeiten einer Wissensdatenbank
+# <a name="edit-a-knowledge-base-in-qna-maker"></a>Bearbeiten einer Wissensdatenbank in QnA Maker
 
 Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
 

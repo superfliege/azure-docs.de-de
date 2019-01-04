@@ -1,21 +1,22 @@
 ---
 title: Installieren und Ausführen von Containern
-titlesuffix: Face - Cognitive Services - Azure
+titlesuffix: Face - Azure Cognitive Services
 description: Informationen zum Herunterladen, Installieren und Ausführen von Containern für die Gesichtserkennung in diesem Schritt-für-Schritt-Tutorial.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 1d13e2ccbbc1d5c1bc80dffc260a3759fe378d7d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 556cf755890f49e540afe64de6e485d9ebde2147
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634539"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086435"
 ---
 # <a name="install-and-run-containers"></a>Installieren und Ausführen von Containern
 
@@ -33,11 +34,11 @@ Zur Verwendung des Containers für die Gesichtserkennung müssen die folgenden V
 
 Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können.
 
-**Kenntnisse von Microsoft Container Registry und Docker:** Sie sollten über Grundkenntnisse der Konzepte von Microsoft Container Registry und Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.  
+**Kenntnisse von Microsoft Container Registry und Docker:** Sie sollten über Grundkenntnisse der Konzepte von Microsoft Container Registry und Docker verfügen, einschließlich Registrierungen, Repositorys, Container und Containerimages, und die grundlegenden `docker`-Befehle kennen.  
 
 Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
 
-### <a name="server-requirements-and-recommendations"></a>Serveranforderungen und Empfehlungen
+### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
 Für den Container für die Gesichtserkennung sind mindestens 1 CPU-Kern, mindestens 2,6 Gigahertz (GHz) und 4 Gigabyte (GB) zugewiesener Arbeitsspeicher erforderlich. Wir empfehlen jedoch mindestens 2 CPU-Kerne und eine Speicherzuweisung von 6 GB.
 
@@ -57,7 +58,7 @@ Sie müssen in Azure eine Gesichtserkennungsressource erstellen, wenn Sie den Co
 Führen Sie die folgenden Schritte aus, um eine Gesichtserkennungsressource zu erstellen und daraus Informationen abzurufen:
 
 1. Erstellen Sie eine Gesichtserkennungsressource im Azure-Portal.  
-   Wenn Sie den Container für die Gesichtserkennung verwenden möchten, müssen Sie zuerst im Azure-Portal eine entsprechende Gesichtserkennungsressource erstellen. Weitere Informationen hierzu finden Sie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md).
+   Wenn Sie den Container für die Gesichtserkennung verwenden möchten, müssen Sie zuerst im Azure-Portal eine entsprechende Gesichtserkennungsressource erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md).
 
 1. Rufen Sie die Endpunkt-URL und den Abonnementschlüssel für die Azure-Ressource ab.  
    Nachdem die Azure-Ressource erstellt wurde, müssen Sie die Endpunkt-URL und den Abonnementschlüssel aus dieser Ressource verwenden, um den entsprechenden Container für die Gesichtserkennung zu instanziieren. Sie können die Endpunkt-URL und den Abonnementschlüssel im Azure-Portal auf den Seiten „Schnellstart“ bzw. „Schlüssel“ der Gesichtserkennungsressource kopieren.
@@ -167,7 +168,9 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 * Containerimages werden in Docker ausgeführt.
 * Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Gesichtserkennung über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.
-* ** Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (z.B. das analysierte Bild oder den analysierten Text) an Microsoft.  
+
+> [!IMPORTANT]
+> Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (z.B. das analysierte Bild oder den analysierten Text) an Microsoft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981483"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53215962"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Anzeigen der virtuellen Computer mit geplanter Wartung im Portal
 
@@ -29,7 +29,7 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
 4. Wählen Sie die folgenden Spalten aus, und fügen Sie sie hinzu:
 
-   **Wartung:** enthält den Wartungsstatus für den virtuellen Computer. Mögliche Werte:
+   **Wartung:** Zeigt den Wartungsstatus für den virtuellen Computer an. Mögliche Werte:
       
       | Wert | BESCHREIBUNG |
       |-------|-------------|
@@ -41,15 +41,15 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
       | - | Ihre VM ist nicht Teil einer geplanten Wartung. |
       
 
-   **Wartung – Self-Service-Fenster:** zeigt das Zeitfenster an, in dem Sie die Wartung für Ihre virtuellen Computer selbst starten können.
+   **Wartung – Self-Service-Fenster:** Zeigt das Zeitfenster an, in dem Sie die Wartung für Ihre virtuellen Computer selbst starten können.
    
-   **Wartung – geplantes Fenster:** zeigt das Zeitfenster an, in dem Azure auf Ihrem virtuellen Computer die Wartung abschließt. 
+   **Wartung – geplantes Fenster:** Zeigt das Zeitfenster an, in dem Azure auf Ihrem virtuellen Computer die Wartung abschließt. 
 
 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Benachrichtigungen und Warnungen im Portal
 
-Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
+Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 Stellen Sie sicher, dass Sie den **Ereignistyp** als **Planmäßige Wartung** und **Dienste** als **VM-Skalierungsgruppe** und/oder **VM** einstellen.
     

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Reward Gateway | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Reward Gateway | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Reward Gateway konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d5cda8830b480e9ef9dff18cb3d7b99e1db55590
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0339889228c80cc3675fd7fde52e75cb84521ab6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442794"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Tutorial: Azure Active Directory-Integration mit Reward Gateway
 
@@ -129,7 +129,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden für Azure AD im Azu
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Richten Sie zum Abrufen dieser Werte eine Integration im Reward Manager-Portal ein. Ausführliche Informationen finden Sie unter http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Richten Sie zum Abrufen dieser Werte eine Integration im Reward Manager-Portal ein. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration.
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -139,10 +139,10 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden für Azure AD im Azu
 
     ![Configure single sign-on](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. Wenn Sie einmaliges Anmelden in **Reward Gateway** konfigurieren möchten, richten Sie zunächst eine Integration im Reward Manager-Portal ein. Verwenden Sie die heruntergeladenen Metadaten, um Ihr Signaturzertifikat zu erhalten und es während der Konfiguration hochzuladen. Ausführliche Informationen finden Sie unter http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration.
+1. Wenn Sie einmaliges Anmelden in **Reward Gateway** konfigurieren möchten, richten Sie zunächst eine Integration im Reward Manager-Portal ein. Verwenden Sie die heruntergeladenen Metadaten, um Ihr Signaturzertifikat zu erhalten und es während der Konfiguration hochzuladen. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers

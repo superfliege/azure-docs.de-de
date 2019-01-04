@@ -1,29 +1,23 @@
 ---
-title: 'Partitionierung in Azure Cosmos DB: Gremlin-API | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie in Azure Cosmos DB einen partitionierten Graphen verwenden können.
-services: cosmos-db
+title: 'Datenpartitionierung in Azure Cosmos DB: Gremlin-API'
+description: Erfahren Sie, wie Sie in Azure Cosmos DB einen partitionierten Graphen verwenden können. In diesem Artikel werden auch die Anforderungen und bewährten Methoden für einen partitionierten Graphen beschrieben.
 author: luisbosquez
-manager: kfile
+ms.author: lbosq
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.author: lbosq
-ms.openlocfilehash: 7e9de68866b5e5849d0e48ad5073fc7b89fbb1ca
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7fc6068ccdc0c089b222fc8282063d526e862a38
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239303"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139434"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Verwenden eines partitionierten Graphen in Azure Cosmos DB
 
-Eines der Hauptmerkmale der Gremlin-API in Azure Cosmos DB ist die Fähigkeit, große Graphen mittels horizontaler Skalierbarkeit zu verarbeiten. Dieser Prozess erfolgt mithilfe der [Partitionierungsmöglichkeiten in Azure Cosmos DB](partition-data.md), bei denen auf Container zurückgegriffen wird, die in Bezug auf Speicherung und Durchsatz unabhängig skaliert werden können. Microsoft Azure Cosmos DB unterstützt die folgenden Containertypen in sämtlichen APIs:
-
-- **Fester Container**: Diese Container können eine bis zu 10 GB große Graphdatenbank mit einem Maximum von 10.000 zugeordneten Anforderungseinheiten pro Sekunde speichern. Zum Erstellen eines festen Containers ist es nicht notwendig, eine Partitionsschlüsseleigenschaft in den Daten anzugeben.
-
-- **Unbegrenzter Container**: Diese Container können automatisch so skaliert werden, dass ein mehr als 10 GB großer Graph mittels horizontaler Partitionierung gespeichert wird. Jede Partition speichert 10 GB, und die Daten werden automatisch auf Grundlage des **angegebenen Partitionsschlüssels** abgestimmt, der ein Pflichtparameter bei Verwendung eines unbegrenzten Containers ist. Dieser Containertyp kann eine praktisch unbegrenzte Datengröße speichern und bis zu 100.000 Anforderungseinheiten pro Sekunde ermöglichen. Wenn Sie mehr wünschen, [ kontaktieren Sie den Support](https://aka.ms/cosmosdbfeedback?subject=Cosmos%20DB%20More%20Throughput%20Request).
+Eines der Hauptmerkmale der Gremlin-API in Azure Cosmos DB ist die Funktion, große Graphen mittels horizontaler Skalierung zu verarbeiten. Die horizontale Skalierung erfolgt über die [Partitionierungsfunktionen in Azure Cosmos DB](partition-data.md). Die Container können in Bezug auf Speicher und Durchsatz unabhängig skaliert werden. Sie können Container in Azure Cosmos DB erstellen, die automatisch so skaliert werden können, dass die Daten eines Graphen gespeichert werden. Die Daten werden basierend auf dem angegebenen **Partitionsschlüssel** automatisch abgeglichen.
 
 In diesem Dokument werden die Besonderheiten der Partitionierung von Graphendatenbanken und ihre Auswirkungen auf Knoten und Kanten beschrieben.
 
@@ -31,13 +25,13 @@ In diesem Dokument werden die Besonderheiten der Partitionierung von Graphendate
 
 Die folgenden Details sind zu beachten, wenn Sie einen Container mit einem partitionierten Graphen erstellen:
 
-- **Die Einrichtung einer Partitionierung ist erforderlich**, wenn der Container voraussichtlich mehr als 10 GB groß ist bzw. wenn mehr als 10.000 Anforderungseinheiten pro Sekunde zugeordnet werden müssen.
+- **Die Partitionierung ist erforderlich**, wenn im Container voraussichtlich Daten mit einer Größe von über 10 GB gespeichert werden oder wenn mehr als 10.000 Anforderungseinheiten (Request Units, RUs) pro Sekunde zugeordnet werden sollen.
 
-- **Knoten und Kanten werden als JSON-Dokumente gespeichert**, und zwar im Back-End eines Azure Cosmos DB-Gremlin-API-Containers.
+- **Knoten und Kanten werden als JSON-Dokumente gespeichert**.
 
-- **Knoten erfordern einen Partitionsschlüssel**. Dieser Schlüssel bestimmt, in welcher Partition der Knoten mithilfe eines Hashalgorithmus gespeichert wird. Der Name dieses Partitionsschlüssels ist eine Zeichenfolge mit einem Wort ohne Leer- und Sonderzeichen und wird beim Erstellen eines neuen Containers im Format `/partitioning-key-name` im Portal definiert.
+- **Knoten erfordern einen Partitionsschlüssel**. Dieser Schlüssel bestimmt, in welcher Partition der Knoten mithilfe eines Hashalgorithmus gespeichert wird. Der Name dieses Partitionsschlüssels ist eine Zeichenfolge mit einem Wort ohne Leer- und Sonderzeichen. Der Partitionsschlüssel wird beim Erstellen eines neuen Containers definiert und hat folgendes Format: `/partitioning-key-name`.
 
-- **Kanten werden mit ihren Quellknoten gespeichert**. Das heißt, dass für jeden Knoten dessen Partitionsschlüssel definiert, wo er zusammen mit seinen ausgehenden Kanten gespeichert wird. Dies erfolgt, um bei der Verwendung der Kardinalität `out()` in Graphenabfragen partitionsübergreifende Abfragen zu vermeiden.
+- **Kanten werden mit ihren Quellknoten gespeichert**. Das heißt, dass über den jeweiligen Partitionsschlüssel für jeden Knoten definiert wird, wo dieser zusammen mit den zugehörigen ausgehenden Kanten gespeichert wird. Dies erfolgt, um bei der Verwendung der Kardinalität `out()` in Graphenabfragen partitionsübergreifende Abfragen zu vermeiden.
 
 - **Abfragen von Graphen müssen einen Partitionsschlüssel angeben**. Um die Vorteile der horizontalen Partitionierung in Azure Cosmos DB voll auszunutzen, muss bei Auswahl eines einzelnen Knotens nach Möglichkeit der Partitionsschlüssel angegeben werden. Es folgen Abfragen zur Auswahl eines oder mehrerer Knoten in einem partitionierten Graphen:
 
@@ -70,18 +64,19 @@ Die folgenden Details sind zu beachten, wenn Sie einen Container mit einem parti
 
 ## <a name="best-practices-when-using-a-partitioned-graph"></a>Bewährte Methoden bei der Verwendung eines partitionierten Graphen
 
-Die folgenden Richtlinien sollten befolgt werden, um eine möglichst effiziente Leistung und Skalierbarkeit bei der Verwendung partitionierter Graphen in unbegrenzten Containern sicherzustellen:
+Befolgen Sie folgende Richtlinien, um die Leistung und Skalierbarkeit bei der Verwendung partitionierter Graphen in unbegrenzten Containern sicherzustellen:
 
-- **Geben Sie bei der Abfrage eines Knotens immer den Partitionsschlüsselwert an**. Das Abrufen eines Knotens aus einer bekannten Partition ist im Hinblick auf die Leistung am effizientesten.
+- **Geben Sie bei der Abfrage eines Knotens immer den Partitionsschlüsselwert an**. Das Abrufen eines Knotens aus einer bekannten Partition ist eine Möglichkeit zur Leistungssteigerung.
 
-- **Verwenden Sie beim Abfragen von Kanten nach Möglichkeit die Ausgangsrichtung**. Wie bereits erwähnt, werden Kanten mit ihren Quellknoten in Ausgangsrichtung gespeichert. Dies bedeutet, dass die Chancen eines Rückgriffs auf partitiongsübergreifende Abfragen minimiert werden, wenn die Daten und Abfragen unter Berücksichtigung dieses Musters entworfen werden.
+- **Verwenden Sie beim Abfragen von Kanten nach Möglichkeit die Ausgangsrichtung**. Wie bereits erwähnt, werden Kanten mit ihren Quellknoten in Ausgangsrichtung gespeichert. So wird die Wahrscheinlichkeit eines Rückgriffs auf partitionsübergreifende Abfragen minimiert, wenn die Daten und Abfragen unter Berücksichtigung dieses Musters entworfen werden.
 
 - **Wählen Sie einen Partitionsschlüssel, der die Daten gleichmäßig auf die Partitionen verteilt**. Diese Entscheidung hängt stark vom Datenmodell der Lösung ab. Weitere Informationen zum Erstellen eines geeigneten Partitionsschlüssels finden Sie unter [Partitionierung und Skalierung in Azure Cosmos DB](partition-data.md).
 
-- **Optimieren Sie Abfragen, um nach Möglichkeit Daten innerhalb der Grenzen einer Partition zu erhalten**. Eine optimale Partitionierungsstrategie ist auf die Abfragemuster abgestimmt. Abfragen, die Daten aus einer einzelnen Partition abrufen, bieten die bestmögliche Leistung.
+- **Optimieren Sie Abfragen, um Daten innerhalb der Grenzen einer Partition abzurufen**. Eine optimale Partitionierungsstrategie ist auf die Abfragemuster abgestimmt. Abfragen, die Daten aus einer einzelnen Partition abrufen, bieten die bestmögliche Leistung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie eine Übersicht über Konzepte und bewährte Methoden für die Partitionierung mit einer Azure Cosmos DB-Gremlin-API erhalten. 
+
+Sie können nun mit den folgenden Artikeln fortfahren:
 
 * Erfahren Sie mehr über das [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md).
 * Erfahren Sie mehr über die [Gremlin-Unterstützung in der Gremlin-API](gremlin-support.md).

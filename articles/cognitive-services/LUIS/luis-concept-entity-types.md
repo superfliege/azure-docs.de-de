@@ -1,23 +1,24 @@
 ---
-title: Entitätstypen in LUIS-Apps – Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Entitätstypen
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Hinzufügen von Entitäten (Schlüsseldaten in Ihrer Anwendungsdomäne) in LUIS-Apps (Language Understanding Intelligent Service)
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f0e543263c7a9890abc485d0f0cd6bec88f16dd4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085854"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135191"
 ---
-# <a name="entities-in-luis"></a>Entitäten in LUIS
+# <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
 
 Entitäten sind Wörter oder Ausdrücke in Äußerungen, die wichtige Daten in Ihrer Anwendungsdomäne darstellen.
 
@@ -71,7 +72,7 @@ LUIS bietet viele Typen von Entitäten: vordefinierte Entitäten, benutzerdefini
 | NAME | Bezeichnung möglich | BESCHREIBUNG |
 | -- |--|--|
 | **Vordefiniert** <br/>[Benutzerdefiniert](#prebuilt)| |  **Definition**<br>Integrierte Typen, die allgemeine Konzepte darstellen <br><br>**Liste**<br/>key phrase number, ordinal, temperature, dimension, money, age, percentage, email, URL, phone number und key phrase. <br><br>Vordefinierte Entitätsnamen sind reserviert. <br><br>Alle vordefinierten Entitäten, die der Anwendung hinzugefügt wurden, werden in der Abfrage an den [Endpunkt](luis-glossary.md#endpoint) zurückgegeben. Weitere Informationen finden Sie unter [Vordefinierte Entitäten](./luis-prebuilt-entities.md). <br/><br/>[Beispielantwort für Entität](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Regulärer Ausdruck**<br/>[RegEx](#regex)||**Definition**<br>Benutzerdefinierter regulärer Ausdruck für die formatierte Nur-Text-Äußerung. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  <br><br>Diese Entität eignet sich für Wörter oder Ausdrücke, die konsistent mit einer Variante formatiert sind, die ebenfalls einheitlich ist.<br><br>Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung angewandt. <br><br>Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. <br><br>**Beispiel**<br>`kb[0-9]{6,}` entspricht kb123456.<br/><br/>[Schnellstart](luis-quickstart-intents-regex-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **Regulärer Ausdruck**<br/>[RegEx](#regex)||**Definition**<br>Benutzerdefinierter regulärer Ausdruck für die formatierte Nur-Text-Äußerung. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  <br><br>Diese Entität eignet sich für Wörter oder Ausdrücke, die konsistent mit einer Variante formatiert sind, die ebenfalls einheitlich ist.<br><br>Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt. Es wird ein Teil der [.Net Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek.<br><br>Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. <br><br>**Beispiel**<br>`kb[0-9]{6,}` entspricht kb123456.<br/><br/>[Schnellstart](luis-quickstart-intents-regex-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md)|
 | **Einfach** <br/>[durch maschinelles Lernen erworben](#machine-learned) | ✔ | **Definition**<br>Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernen erworben wurde. Der Kontext umfasst die Wortwahl, die Wortanordnung und die Länge der Äußerung.<br/><br/>Diese Entität eignet sich gut für Wörter oder Ausdrücke, die nicht konsistent formatiert sind, jedoch dasselbe angeben. <br/><br/>[Schnellstart](luis-quickstart-primary-and-secondary-data.md)<br/>[Beispielantwort für Entität](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Liste** <br/>[Genaue Übereinstimmung](#exact-match)|| **Definition**<br>Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen in Ihrem System dar. <br><br>Jede Listenentität kann eine oder mehrere Formen aufweisen. Sie werden am besten für einen bekannten Satz von Variationen angewandt, um dasselbe Konzept darzustellen.<br/><br/>LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste.<br/><br>Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. <br/><br/>[Schnellstart](luis-quickstart-intent-and-list-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Gemischt](#mixed) | ✔|**Definition**<br>Pattern.any ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  <br><br>**Beispiel**<br>Wenn Sie eine Suche zu einer Äußerung für Bücher basierend auf dem Titel durchführen, extrahiert Pattern.any den vollständigen Titel. Eine Vorlagenäußerung mit Pattern.any ist `Who wrote {BookTitle}[?]`.<br/><br/>[Tutorial](luis-tutorial-pattern.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)|  

@@ -1,6 +1,6 @@
 ---
-title: 'DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker, Kubernetes und der Python Flask-Anwendung'
-description: 'DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker und Kubernetes'
+title: Erstellen einer Azure-Pipeline für Continuous Integration – Team Data Science-Prozess
+description: 'DevOps für KI-Anwendungen (Künstliche Intelligenz): Erstellen einer Continuous Integration-Pipeline in Azure mit Docker und Kubernetes'
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: tdsp
-ms.custom: (previous author=jainr, ms.author=jainr)
-ms.openlocfilehash: c232680d5d1bf0eb761ff974ebf6608b67922f33
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
+ms.openlocfilehash: a3c570d3d22742afcbba86f35a9dd1f6a85c0b8f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496748"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134283"
 ---
-# <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker und Kubernetes
+# <a name="creating-continous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Erstellen einer Continuous Integration-Pipeline in Azure mit Docker, Kubernetes und der Python Flask-Anwendung
 Für eine KI-Anwendung gibt es häufig zwei Arbeitsbereiche: Data Scientists, die Modelle für maschinelles Lernen erstellen, und App-Entwickler, die die Anwendung programmieren und den Endbenutzern zur Verfügung stellen. In diesem Artikel wird veranschaulicht, wie Sie eine Pipeline für Continuous Integration (CI) bzw. Continuous Delivery (CD) für eine KI-Anwendung implementieren. Eine KI-Anwendung ist eine Kombination aus Anwendungscode, der mit einem vortrainierten Modell für maschinelles Lernen (MK) eingebettet ist. In diesem Artikel wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto genutzt, wobei auch ein AWS S3-Konto verwendet werden könnte. Zudem wird eine einfache Python Flask-Webanwendung in diesem Artikel verwendet.
 
 > [!NOTE]

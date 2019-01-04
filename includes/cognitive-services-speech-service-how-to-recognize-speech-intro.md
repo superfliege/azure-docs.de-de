@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 3394fc2f6395799a252b645635d982b4573296c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 31482cc7850c574b952c454021af729da324ba15
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47000704"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978859"
 ---
 <!-- N.B. no header, no intents here, language-agnostic -->
 
@@ -21,7 +21,7 @@ Das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) von
 
 1. Falls gewünscht, können Sie die Ereignisse für asynchrone Vorgänge binden. Die Erkennung ruft dann nach erhaltener Rückgabe von Zwischen- und Endergebnissen die Ereignishandler auf. Andernfalls erhält die Anwendung nur ein Transkriptionsendergebnis.
 
-1. Starten Sie die Erkennung. Verwenden Sie für Einzelerkennungen, wie eine Befehls- oder Abfrageerkennungen, die `RecognizeOnceAsync()`-Methode. Diese Methode gibt die erste erkannte Äußerung zurück. Verwenden Sie für länger andauernde Erkennungen (z.B. bei Transkriptionen) die `StartContinuousRecognitionAsync()`-Methode. Sie können die Ereignisse für asynchrone Erkennungsergebnisse binden.
+1. Starten Sie die Erkennung. Verwenden Sie für Einzelerkennungen wie Befehls- oder Abfrageerkennungen die `RecognizeOnceAsync()`-Methode (oder die Entsprechung in der jeweiligen Sprache). Diese Methode gibt die erste erkannte Äußerung zurück. Verwenden Sie für länger andauernde Erkennungen (z.B. bei Transkriptionen) die `StartContinuousRecognitionAsync()`-Methode (oder die Entsprechung in der jeweiligen Sprache). Sie können die Ereignisse für asynchrone Erkennungsergebnisse binden.
 
 Sehen Sie sich die folgenden Codeausschnitte für Spracherkennungsszenarien an, in denen das Speech SDK verwendet wird.
 

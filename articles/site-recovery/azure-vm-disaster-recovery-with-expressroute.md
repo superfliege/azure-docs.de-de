@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: af57dc50dd156a3398c2c685e436d22ba3daea95
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567765"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875398"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -28,8 +28,8 @@ Site Recovery ermöglicht die Notfallwiederherstellung von Azure-VMs durch Repli
 
 Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Microsoft Azure Cloud ausdehnen. Wenn Sie ExpressRoute konfiguriert haben, integriert es sich wie folgt mit Site Recovery:
 
-- **Während der Replikation zwischen Azure-Regionen**: Replikationsdatenverkehr für die Notfallwiederherstellung von virtuellen Azure-Computern erfolgt nur innerhalb von Azure, und ExpressRoute ist für die Replikation nicht erforderlich bzw. wird dafür nicht verwendet. Wenn Sie jedoch von einem lokalen Standort aus eine Verbindung mit den Azure-VMs im primären Azure-Standort herstellen, gibt es eine Reihe von Problemen zu beachten, wenn Sie die Notfallwiederherstellung für Azure-VMs einrichten.
-- **Failover zwischen Azure-Regionen**: Bei Ausfällen führen Sie ein Failover von virtuellen Azure-Computern aus der primären in die sekundäre Azure-Region durch. Nach einem Failover in eine sekundäre Region müssen Sie eine Reihe von Schritten unternehmen, um auf die Azure-VMs in der sekundären Region per ExpressRoute zuzugreifen.
+- **Während der Replikation zwischen Azure-Regionen:** Replikationsdatenverkehr für die Notfallwiederherstellung von virtuellen Azure-Computern erfolgt nur innerhalb von Azure. ExpressRoute ist für die Replikation nicht erforderlich bzw. wird dafür nicht verwendet. Wenn Sie jedoch von einem lokalen Standort aus eine Verbindung mit den Azure-VMs im primären Azure-Standort herstellen, gibt es eine Reihe von Problemen zu beachten, wenn Sie die Notfallwiederherstellung für Azure-VMs einrichten.
+- **Failover zwischen Azure-Regionen:** Bei Ausfällen führen Sie ein Failover von virtuellen Azure-Computern aus der primären in die sekundäre Azure-Region durch. Nach einem Failover in eine sekundäre Region müssen Sie eine Reihe von Schritten unternehmen, um auf die Azure-VMs in der sekundären Region per ExpressRoute zuzugreifen.
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -37,7 +37,7 @@ Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindun
 Stellen Sie zunächst sicher, dass Sie mit den folgenden Konzepten vertraut sind:
 
 - ExpressRoute-[Verbindungen](../expressroute/expressroute-circuit-peerings.md)
-- ExpressRoute-[Routingdomänen](../expressroute/expressroute-circuit-peerings.md#expressroute-routing-domains)
+- ExpressRoute-[Routingdomänen](../expressroute/expressroute-circuit-peerings.md#routingdomains)
 - ExpressRoute-[Standorte](../expressroute/expressroute-locations.md).
 - [Architektur der Replikation](azure-to-azure-architecture.md) von Azure-VMs
 - Vorgehensweise zum [Einrichten der Replikation](azure-to-azure-tutorial-enable-replication.md) für Azure-VMs.
@@ -87,15 +87,15 @@ Die Workloads herkömmlicher Enterprise-Bereitstellungen werden normalerweise au
 
 - **Region**. Apps sind in der Azure-Region „Asien, Osten“ bereitgestellt.
 - **Spoke-vNets**. Apps sind in zwei Spoke-vNets bereitgestellt:
-    - **Quell-vNet1**: 10.1.0.0/24.
-    - **Quell-vNet2**: 10.2.0.0/24.
+    - **Quell-VNET 1:** 10.1.0.0/24.
+    - **Quell-VNET 2:** 10.2.0.0/24.
     - Jedes virtuelle Spoke-Netzwerk ist mit **Hub-vNet** verbunden.
-- **Hub-vNet**. Es gibt ein Hub-vNet **Quell-Hub-vNet**: 10.10.10.0/24.
+- **Hub-vNet**. Es gibt ein **Quell-Hub-VNET**: 10.10.10.0/24.
     - Dieses Hub-vNet fungiert als Gatekeeper.
     - Die gesamte Kommunikation über mehrere Subnetze hinweg erfolgt über diesen Hub.
  - ****Hub-vNet-Subnetze**. Das Hub-vNet verfügt über zwei Subnetze:
-     - **NVA-Subnetz**: 10.10.10.0/25. Dieses Subnetz enthält ein virtuelles Netzwerkgerät (NVA, 10.10.10.10).
-     - **Gateway-Subnetz**: 10.10.10.128/25. Dieses Subnetz enthält ein ExpressRoute-Gateway mit einer ExpressRoute-Verbindung. Diese dient dem Routing an den lokalen Standort über eine private Peering-Routingdomäne.
+     - **NVA-Subnetz:** 10.10.10.0/25. Dieses Subnetz enthält ein virtuelles Netzwerkgerät (NVA, 10.10.10.10).
+     - **Gatewaysubnetz**: 10.10.10.128/25. Dieses Subnetz enthält ein ExpressRoute-Gateway mit einer ExpressRoute-Verbindung. Diese dient dem Routing an den lokalen Standort über eine private Peering-Routingdomäne.
 - Das lokale Datencenter besitzt eine ExpressRoute-Leitungsverbindung über einen Partner-Edge in Hongkong.
 - Das gesamte Routing wird mittels Azure-Routingtabellen (UDR) gesteuert.
 - Der gesamte ausgehende Datenverkehr zwischen VNets oder zum lokalen Datencenter wird über die NVA weitergeleitet.
@@ -136,7 +136,7 @@ In unserem Beispiel sollte Folgendes passieren, wenn die Replikation für Azure-
 
 ## <a name="fail-over-azure-vms-when-using-expressroute"></a>Failover von Azure-VMs bei Verwendung von ExpressRoute
 
-Nach dem Failover von Azure-VMS in die Azure-Zielregion mittels Site Recovery können Sie auf diese zugreifen, indem Sie [privates Peering](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) von ExpressRoute verwenden.
+Nach dem Failover von Azure-VMS in die Azure-Zielregion mittels Site Recovery können Sie auf diese zugreifen, indem Sie [privates Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) von ExpressRoute verwenden.
 
 - Sie müssen ExpressRoute mittels einer neuen Verbindung mit dem Ziel-vNet verbinden. Die vorhandene ExpressRoute-Verbindung wird nicht automatisch übertragen.
 - Die Art, in der Sie Ihre ExpressRoute-Verbindung mit dem Ziel-vNet einrichten, hängt von Ihrer ExpressRoute-Topologie ab.

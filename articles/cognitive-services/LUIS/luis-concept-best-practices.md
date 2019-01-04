@@ -1,21 +1,22 @@
 ---
-title: Bewährte Methoden zum Erstellen von Apps mit LUIS – Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mit bewährten Methoden bei LUIS die besten Ergebnisse erzielen.
+title: Bewährte Methoden
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Erfahren Sie, wie Sie mit bewährten Methoden bei LUIS die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6b7b9c8a2a3e7da1628ef3e6f93a4b632ce38615
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e63d6ed584c0e8afc823bbcdc6e70ceabbf43db6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637779"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085279"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App. 
@@ -50,12 +51,12 @@ Wenn das Vokabular bei zwei Absichten gleich ist, fassen Sie die Absichten zusam
 
 Erwägen Sie die folgenden Beispieläußerungen:
 
-```
-Book a flight
-Book a hotel
-```
+|Beispiele für Äußerungen|
+|--|
+|Book a flight|
+|Book a hotel|
 
-„Buche einen Flug“ und „Buche ein Hotelzimmer“ verwenden das gleiche Vokabular „Buche“. Dies stellt eine Überlappung dar. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
+„Book a flight“ und „Book a hotel“ verwenden das gleiche Vokabular „Book a “. Dies stellt eine Überlappung dar. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Streben Sie eine Balance zwischen Absichten an
 Verwenden Sie die Vorhersagedaten von LUIS, um zu bestimmen, ob die Absichten überlappen. Überlappende Absichten verwirren LUIS. Im Ergebnis ist die Absicht mit der höchsten Bewertung zu nah an einer anderen Absicht. Da LUIS nicht bei jedem Training genau denselben Pfad durch die Daten anwendet, kann eine überlappende Absicht beim Training den ersten oder zweiten Platz erreichen. Damit dieser Fall nicht eintritt, sollten Sie das Ergebnis der Äußerung für jede Absicht weiter voneinander trennen. Bei einer guten Unterscheidung der Absichten sollte das Ergebnis jedes Mal die erwartete bestbewertete Absicht sein. 

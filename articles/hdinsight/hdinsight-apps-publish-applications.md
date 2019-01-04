@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8b54631f0d37e0e90135dd9e23ff85591cead1b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495367"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653916"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
 Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -53,7 +53,7 @@ Die Veröffentlichung von Anwendungen im Marketplace erfolgt in zwei Schritten. 
 ## <a name="application-installation-script"></a>Anwendungsinstallationsskript
 Wenn eine Anwendung auf einem Cluster (entweder einem bestehenden oder einem neuen) installiert ist, wird ein Edgeknoten erstellt. Das Installationsskript für die Anwendung wird auf dem Edgeknoten ausgeführt.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Der Name des Installationsskripts der Anwendung muss für einen bestimmten Cluster eindeutig sein. Der Skriptname muss das folgende Format aufweisen:
   > 
   > "name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
@@ -81,9 +81,8 @@ Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HD
 * mainTemplate.json (Ein Beispiel finden Sie unter [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsigh](hdinsight-apps-install-custom-applications.md).)
 * Alle erforderlichen Skripts
 
-> [!NOTE]
+> [!NOTE]  
 > Sie können die Dateien der Anwendung (einschließlich aller Web-App-Dateien) auf allen öffentlich zugänglichen Endpunkten hosten.
-> 
 
 ## <a name="publish-the-application"></a>Veröffentlichen der Anwendung
 So veröffentlichen Sie eine HDInsight-Anwendung:

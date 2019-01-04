@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442422"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847659"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Schützen einer Web-API mit „Node.js“
+# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Schützen einer Web-API mit Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Mit Azure Active Directory (Azure AD) B2C können Sie eine Web-API mithilfe von OAuth 2.0-Zugriffstoken sichern. Mit diesen Token können Ihre Client-Apps, die Azure AD B2C verwenden, sich bei der API authentifizieren. In diesem Artikel erfahren Sie, wie Sie eine Art Aufgabenlisten-API erstellen, mit der Benutzer Aufgaben hinzufügen und auflisten können. Die Web-API wird mit Azure AD B2C geschützt, und nur authentifizierte Benutzer können ihre Aufgabenliste verwalten.
@@ -47,7 +47,7 @@ Als nächstes müssen Sie eine App in Ihrem B2C-Verzeichnis erstellen, sodass Az
 * Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Diese Daten benötigen Sie später noch.
 
 ## <a name="create-your-policies"></a>Erstellen der Richtlinien
-In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält zwei identitätsbezogene Erfahrungen: Registrieren und Anmeldung. Sie müssen eine Richtlinie jedes Typs erstellen, wie im [Richtlinienreferenzartikel](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)beschrieben.  Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
+In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält zwei identitätsbezogene Erfahrungen: Registrieren und Anmeldung. Sie müssen eine Richtlinie jedes Typs erstellen, wie im [Richtlinienreferenzartikel](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)beschrieben.  Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
 
 * Wählen Sie den **Anzeigenamen** und andere Registrierungsattribute in der Registrierungsrichtlinie aus.
 * Wählen Sie den **Anzeigenamen** und die **Objekt-ID** als Anwendungsansprüche in jeder Richtlinie aus.  Sie können auch andere Ansprüche auswählen.
@@ -71,12 +71,12 @@ Die fertige App ist ebenfalls als [ZIP-Datei](https://github.com/AzureADQuickSta
 ## <a name="download-nodejs-for-your-platform"></a>Herunterladen der Datei „node.js“ für Ihre Plattform
 Für die Verwendung dieses Beispiels benötigen Sie eine funktionierende Installation von Node.js.
 
-Installieren Sie Node.js über [nodejs.org](http://nodejs.org).
+Installieren Sie Node.js über [nodejs.org](https://nodejs.org).
 
 ## <a name="install-mongodb-for-your-platform"></a>Installieren von MongoDB für Ihre Plattform
 Für die Verwendung dieses Beispiels benötigen Sie eine funktionierende Installation von MongoDB. Durch die Verwendung von MongoDB bleibt die REST-API über Serverinstanzen hinweg persistent.
 
-Installieren Sie MongoDB über [mongodb.org](http://www.mongodb.org).
+Installieren Sie MongoDB über [mongodb.org](https://www.mongodb.org).
 
 > [!NOTE]
 > In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie die Standardinstallation und die standardmäßigen Serverendpunkte für MongoDB verwenden: `mongodb://localhost` (korrekte Angabe zum Zeitpunkt der Artikelerstellung)
@@ -269,7 +269,7 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 
 `audience`: Der URI (Uniform Resource Identifier) aus dem Portal, der Ihre aufrufende Anwendung identifiziert.
 
-`tenantName`: Der Name Ihres Mandanten (etwa **contoso.onmicrosoft.com**).
+`tenantName`: Der Name Ihres Mandanten (z.B. **contoso.onmicrosoft.com**).
 
 `policyName`: Die Richtlinie zur Überprüfung der auf Ihrem Server eingehenden Token. Hierbei muss es sich um die gleiche Richtlinie handeln, die Sie auch in der Clientanwendung für die Anmeldung verwenden.
 

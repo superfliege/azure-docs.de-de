@@ -14,37 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2018
+ms.date: 12/22/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 042be0b818ba448d64aa5e8631926420f00f4b5e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 367a9b2bd7b4a32d69974639a13f67340ea56518
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679663"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745005"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory? 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?
 
-Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („do this“) für den Grund der Auslösung Ihrer Richtlinie („when this happens“). 
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („do this“) für den Grund der Auslösung Ihrer Richtlinie („when this happens“).
 
 ![Kontrolle](./media/controls/10.png)
 
-
-Im Kontext des bedingten Zugriffs gilt: 
+Im Kontext des bedingten Zugriffs gilt:
 
 - „**When this happens**“ fällt unter **Bedingungen**.
 
 - „**Then do this**“ fällt unter **Zugriffssteuerungen**.
 
-
 Die Kombination aus Bedingungsanweisung und Ihren Kontrollen ergibt eine Richtlinie für den bedingten Zugriff.
 
 ![Kontrolle](./media/controls/61.png)
 
-Jedes Steuerelement ist entweder eine Anforderung, die von der Person oder dem System erfüllt werden muss, die bzw. das sich anmeldet, oder eine Einschränkung der Aktionen, die der Benutzer nach der Anmeldung durchführen kann. 
+Jedes Steuerelement ist entweder eine Anforderung, die von der Person oder dem System erfüllt werden muss, die bzw. das sich anmeldet, oder eine Einschränkung der Aktionen, die der Benutzer nach der Anmeldung durchführen kann.
 
-Es gibt zwei Arten von Steuerelementen: 
+Es gibt zwei Arten von Steuerelementen:
 
 - **Gewährungssteuerelemente**: Zum Steuern des Zugriffs
 
@@ -56,24 +54,20 @@ In diesem Thema werden die verschiedenen Steuerelemente beschrieben, die beim be
 
 Mit Gewährungssteuerelementen können Sie entweder den gesamten Zugriff sperren oder den Zugriff mit zusätzlichen Anforderungen gewähren, indem Sie die gewünschten Steuerelemente auswählen. Bei mehreren Steuerelementen können Sie folgenden Anforderungen verwenden:
 
-- Alle ausgewählten Steuerelemente müssen erfüllt werden (*AND*) 
+- Alle ausgewählten Steuerelemente müssen erfüllt werden (*AND*)
 - Ein ausgewähltes Steuerelement muss erfüllt werden (*OR*)
 
 ![Kontrolle](./media/controls/17.png)
 
-
-
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Mithilfe dieses Steuerelements können Sie die mehrstufige Authentifizierung für den Zugriff auf die angegebene Cloud-App erforderlich machen. Dieses Steuerelement unterstützt die folgenden Anbieter für die mehrstufige Authentifizierung: 
+Mithilfe dieses Steuerelements können Sie die mehrstufige Authentifizierung für den Zugriff auf die angegebene Cloud-App erforderlich machen. Dieses Steuerelement unterstützt die folgenden Anbieter für die mehrstufige Authentifizierung:
 
-- Azure Multi-Factor Authentication 
+- Azure Multi-Factor Authentication
 
 - Ein lokaler Anbieter für die mehrstufige Authentifizierung in Kombination mit Active Directory-Verbunddiensten (AD FS).
- 
+
 Die mehrstufige Authentifizierung unterstützt den Schutz Ihrer Ressourcen vor dem Zugriff durch einen nicht autorisierten Benutzer, der möglicherweise Zugriff auf die primären Anmeldeinformationen eines gültigen Benutzers erlangt hat.
-
-
 
 ### <a name="compliant-device"></a>Kompatibles Gerät
 
@@ -87,25 +81,18 @@ Ein hybrid in Azure AD eingebundenes Gerät zu verlangen, ist eine weitere Optio
 
 Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](require-managed-devices.md).
 
-
-
-
-
 ### <a name="approved-client-app"></a>Genehmigte Client-App
 
 Da Ihre Mitarbeiter mobile Geräte sowohl für private als auch für berufliche Zwecke verwenden, sollten Sie die Möglichkeit haben, Unternehmensdaten, auf die mit den Geräten zugegriffen wird, auch dann zu schützen, wenn diese Geräte nicht von Ihnen verwaltet werden.
 Sie können [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden, um die Daten Ihres Unternehmens unabhängig von der jeweiligen MDM-Lösung (Mobile Device Management, mobile Geräteverwaltung) zu schützen.
 
-
 Wenn Sie genehmigte Client-Apps verwenden, können Sie die Anforderung festlegen, dass eine Client-App, die auf Ihre Cloud-Apps zugreifen möchte, die [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) unterstützen muss. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken. Eine Richtlinie für den bedingten Zugriff, die genehmigte Client-Apps erfordert, wird auch als [Richtlinie für den App-basierten bedingten Zugriff](app-based-conditional-access.md) bezeichnet. Eine Liste der unterstützten genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement).
-
 
 ### <a name="terms-of-use"></a>Terms of Use (Nutzungsbedingungen)
 
-Sie können einen Benutzer in Ihrem Mandanten anfordern, den Nutzungsbedingungen zuzustimmen, bevor der Zugriff auf eine Ressource gewährt wird. Als Administrator können Sie Nutzungsbedingungen durch Hochladen eines PDF-Dokuments konfigurieren und anpassen. Fällt ein Benutzer in den Anwendungsbereich dieses Steuerelements, wird der Zugriff auf eine Anwendung nur gewährt, wenn die Nutzungsbedingungen akzeptiert wurden. 
+Sie können einen Benutzer in Ihrem Mandanten anfordern, den Nutzungsbedingungen zuzustimmen, bevor der Zugriff auf eine Ressource gewährt wird. Als Administrator können Sie Nutzungsbedingungen durch Hochladen eines PDF-Dokuments konfigurieren und anpassen. Fällt ein Benutzer in den Anwendungsbereich dieses Steuerelements, wird der Zugriff auf eine Anwendung nur gewährt, wenn die Nutzungsbedingungen akzeptiert wurden.
 
-
-### <a name="custom-controls-preview"></a>Benutzerdefinierte Steuerelemente (Vorschau) 
+### <a name="custom-controls-preview"></a>Benutzerdefinierte Steuerelemente (Vorschau)
 
 Sie können benutzerdefinierte Steuerelemente für den bedingten Zugriff erstellen, die Ihre Benutzer zu einem kompatiblen Dienst umleiten, um weiteren Anforderungen außerhalb von Azure Active Directory zu genügen. Dadurch können Sie bestimmte externe mehrstufige Authentifizierungs- und Überprüfungsanbieter verwenden, um Regeln für den bedingten Zugriff zu erzwingen, oder zur Erstellung Ihres eigenen benutzerdefinierten Diensts. Um die Bedingungen dieses Steuerelements zu erfüllen, wird der Browser eines Benutzers auf den externen Dienst umgeleitet, führt alle erforderlichen Authentifizierungs- oder Überprüfungsaktivitäten durch und wird dann wieder an Azure Active Directory umgeleitet. Wenn der Benutzer erfolgreich authentifiziert oder überprüft wurde, bleibt der Benutzer im Vorgangsfluss des bedingten Zugriffs. 
 
@@ -121,6 +108,7 @@ Zu den Anbietern, die derzeit einen kompatiblen Dienst anbieten gehören:
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
+- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
@@ -138,9 +126,7 @@ Die Option zum Erstellen eines benutzerdefinierten Steuerelements befindet sich 
 
 Wenn Sie auf **New custom control** (Neues benutzerdefiniertes Steuerelement) klicken, wird ein Blatt geöffnet und ein Textfeld für die JSON-Daten des Steuerelements angezeigt.  
 
-
 ![Kontrolle](./media/controls/81.png)
-
 
 ### <a name="deleting-custom-controls"></a>Löschen von benutzerdefinierten Steuerelementen
 
@@ -156,9 +142,6 @@ Um ein benutzerdefiniertes Steuerelement zu löschen, müssen Sie zunächst sich
 
 Um ein benutzerdefiniertes Steuerelement zu bearbeiten, müssen Sie das aktuelle Steuerelement löschen und ein neues Steuerelement mit den aktualisierten Informationen erstellen.
 
-
-
-
 ## <a name="session-controls"></a>Sitzungssteuerelemente
 
 Sitzungssteuerelemente ermöglichen das Einschränken der Benutzeroberfläche innerhalb einer Cloud-App. Die Sitzungssteuerelemente werden von Cloud-Apps erzwungen und verlassen sich auf zusätzliche Informationen über die Sitzung, die der App von Azure AD bereitgestellt werden.
@@ -171,15 +154,12 @@ Sie können dieses Steuerelement verwenden, um von Azure AD anzufordern, die Ger
 
 Weitere Informationen finden Sie unter:
 
-- [Aktivieren des eingeschränkten Zugriffs mit SharePoint Online](https://aka.ms/spolimitedaccessdocs) 
+- [Aktivieren des eingeschränkten Zugriffs mit SharePoint Online](https://aka.ms/spolimitedaccessdocs)
 
 - [Aktivieren des eingeschränkten Zugriffs mit Exchange Online](https://aka.ms/owalimitedaccess)
-
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
 
-- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md) nach. 
+- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md) nach.

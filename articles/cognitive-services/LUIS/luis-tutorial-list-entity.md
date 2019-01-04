@@ -1,5 +1,5 @@
 ---
-title: Automatisches Bezeichnen von Entitäten mit einer Listenentität mithilfe von Node.js | Microsoft-Dokumentation
+title: Extrahieren von Entitäten mit Textübereinstimmungen
 description: Erfahren Sie, wie Sie eine Listenentität hinzufügen, um den LUIS bei der Bezeichnung von Varianten eines Worts oder Ausdrucks zu unterstützen.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036778"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259238"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
 Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  
@@ -81,15 +81,16 @@ Erstellen Sie eine Node.js-Datei, und fügen Sie folgenden Code ein. Ändern Sie
 
 Verwenden Sie den folgenden Befehl, um NPM-Abhängigkeiten zu installieren und den Code zum Erstellen der Listenentität auszuführen:
 
-```Javascript
+```console
 npm install && node add-entity-list.js
 ```
 
 Die Ausgabe der Ausführung ist die ID der Listenentität:
 
-```Javascript
+```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
+
 ## <a name="train-the-model"></a>Modelltraining
 Trainieren Sie den LUIS, damit die neue Liste auf die Abfrageergebnisse angewendet wird. Das Training besteht aus zwei Teilen: dem Training selbst und der Prüfung, ob das Training erfolgt ist. Es kann eine Weile dauern, bis eine App mit vielen Modellen trainiert ist. Der folgende Code trainiert die App und wartet, bis das Training erfolgreich ist. Der Code verwendet eine Warte- und Wiederholungsstrategie, um zu verhindern, dass zu viele 429-Fehler („Zu viele Anforderungen“) auftreten. 
 
@@ -99,13 +100,13 @@ Erstellen Sie eine Node.js-Datei, und fügen Sie folgenden Code ein. Ändern Sie
 
 Führen Sie den Code zum Trainieren der App mithilfe des folgenden Befehls aus:
 
-```Javascript
+```console
 node train.js
 ```
 
 Die Ausgabe der Ausführung ist der Status jeder Iteration des Trainings der LUIS Modelle. Die folgende Ausführung erforderte nur eine Überprüfung des Trainings:
 
-```Javascript
+```console
 1 trained = true
 [ { modelId: '2c549f95-867a-4189-9c35-44b95c78b70f',
     details: { statusId: 2, status: 'UpToDate', exampleCount: 45 } },
@@ -130,13 +131,13 @@ Erstellen Sie eine Node.js-Datei, und fügen Sie folgenden Code ein. Ändern Sie
 
 Führen Sie den Code zum Abfragen der App mithilfe des folgenden Befehls aus:
 
-```Javascript
+```console
 node publish.js
 ```
 
 Die folgende Ausgabe enthält die Endpunkt-URL für alle Abfragen. Echte JSON-Ergebnisse würden die echte appID einschließen. 
 
-```JSON
+```json
 { 
   versionId: null,
   isStaging: false,
@@ -157,13 +158,13 @@ Erstellen Sie eine Node.js-Datei, und fügen Sie folgenden Code ein. Ändern Sie
 
 Führen Sie den Code mithilfe des folgenden Befehls aus, und fragen Sie die App ab:
 
-```Javascript
+```console
 node train.js
 ```
 
 Die Ausgabe enthält die Abfrageergebnisse. Da der Code den **ausführlichen** Name-Wert-Paar zur Abfragezeichenfolge hinzugefügt hat, umfasst die Ausgabe alle Intents und deren Ergebnisse:
 
-```JSON
+```json
 {
   "query": "turn up the heat",
   "topScoringIntent": {

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7d76827a4e4ba4ccb7a146c5f8282000d143eb35
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4de4a5a659f38577c1261b169a43df560bf05495
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624436"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971265"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Vorschau)
 
@@ -67,7 +67,7 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 2. Laden Sie das VPN-Profil für das Gateway herunter. Dies kann auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal oder über „New-AzureRmVpnClientConfiguration“ in PowerShell erfolgen.
 3. Entzippen Sie das Profil. Öffnen Sie in Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
 4. Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Unter [Exportieren des öffentlichen Schlüssels](vpn-gateway-certificates-point-to-site.md#cer) finden Sie Informationen dazu, wie Sie ein Zertifikat exportieren können, um den codierten öffentlichen Schlüssel zu erhalten.
-5. Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in base64 aus. Informationen dazu, wie Sie den privaten Schlüssel extrahieren, finden Sie unter [Exportieren des privaten Schlüssels](https://www.geotrust.eu/en/support/manuals/microsoft/all+windows+servers/export+private+key+or+certificate/).
+5. Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in Base64 aus. Informationen zum Extrahieren privater Schlüssel finden Sie unter [Exportieren des privaten Schlüssels](https://openvpn.net/community-resources/how-to/#pki).
 6. Ändern Sie keine anderen Felder. Verwenden Sie die ausgefüllte Konfiguration in der Clienteingabe, um eine Verbindung mit dem VPN herzustellen.
 7. Doppelklicken Sie auf die Profildatei, um das Profil in Tunnelblick zu erstellen.
 8. Starten Sie Tunnelblick im Anwendungsordner.

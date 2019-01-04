@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: b60be3db14a756407e62540bb89f3b0924597067
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 87e197821be7c7c72ca1704d6b0123d76d41b30f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959792"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721084"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -36,7 +36,7 @@ Wir beginnen gleich mit der Erstellung der Identität. Falls ein Problem auftrit
 1. Wählen Sie **Azure Active Directory**.
 1. Wählen Sie **App-Registrierungen** aus.
 
-   ![Auswählen von „App-Registrierungen“](./media/howto-create-service-principal-portal/select-app-registrations.png)
+   ![Auswählen von App-Registrierungen](./media/howto-create-service-principal-portal/select-app-registrations.png)
 
 1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
 
@@ -54,7 +54,7 @@ Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung ein
 
 Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
 
-1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um beispielsweise einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Alle Dienste** und **Abonnements**.
+1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um z. B. einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Alle Dienste** und **Abonnements** aus.
 
    ![Wählen Sie das Abonnement aus.](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -65,9 +65,9 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
    Falls Sie das gesuchte Abonnement nicht finden können, können Sie den **globalen Abonnementfilter** verwenden. Stellen Sie sicher, dass das gewünschte Abonnement für das Portal ausgewählt ist. 
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)**.
-1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
-   ![„Hinzufügen“ auswählen](./media/howto-create-service-principal-portal/select-add.png)
+   ![Auswählen von „Rollenzuweisung hinzufügen“](./media/howto-create-service-principal-portal/select-add.png)
 
 1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie die Rolle **Mitwirkender**, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten**, **Starten** und **Beenden** von Instanzen durchzuführen. Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus.
 
@@ -128,7 +128,7 @@ Sie müssen über ausreichende Berechtigungen verfügen, um eine Anwendung bei I
 
    ![Suchen nach Benutzern](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. Wählen Sie **Benutzereinstellungen**.
+1. Wählen Sie **Benutzereinstellungen** aus.
 
    ![Auswählen von Benutzereinstellungen](./media/howto-create-service-principal-portal/select-user-settings.png)
 
@@ -148,7 +148,7 @@ So überprüfen Sie die Berechtigungen Ihres Abonnements
 
    ![Auswählen von Benutzerberechtigungen](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
-1. Wählen Sie in der Dropdownliste das Abonnement aus, unter dem Sie den Dienstprinzipal erstellen möchten. Wählen Sie anschließend **Klicken Sie hier, um die vollständigen Zugangsdaten für dieses Abonnement anzuzeigen**.
+1. Wählen Sie in der Dropdownliste das Abonnement aus, unter dem Sie den Dienstprinzipal erstellen möchten. Wählen Sie anschließend **Klicken Sie hier, um die vollständigen Zugangsdaten für dieses Abonnement anzuzeigen** aus.
 
    ![Suchen nach Benutzern](./media/howto-create-service-principal-portal/view-details.png)
 

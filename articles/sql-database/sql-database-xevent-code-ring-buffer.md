@@ -3,7 +3,7 @@ title: Code für XEvent-Ringpuffer für SQL-Datenbank | Microsoft Docs
 description: Zeigt ein Transact-SQL-Codebeispiel (für Azure SQL-Datenbank), das durch die Verwendung des Ringpufferziels eine einfache und schnelle Methode zum Erfassen und Ausgeben von Daten bietet.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0da4626943a7223b24baac80121b5da0062c0d73
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 522561d8afcf6fe1bdd2887f7fd5180b79565a61
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237076"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874616"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank
 
@@ -348,7 +348,7 @@ Hauptthemen für erweiterte Ereignisse in Azure SQL-Datenbank:
 
 Weitere Themen mit Codebeispielen für erweiterte Ereignisse finden Sie unter den folgenden Links. Allerdings müssen Sie routinemäßig alle Beispiele dahingehend prüfen, ob das Beispiel für Microsoft SQL Server oder Azure SQL-Datenbank gilt. Dann können Sie entscheiden, ob kleinere Änderungen erforderlich sind, um das Beispiel auszuführen.
 
-* Codebeispiel für Azure SQL-Datenbank: [Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank](sql-database-xevent-code-event-file.md)
+* Codebeispiel für Azure SQL-Datenbank: [Code des Ziels "Ereignisdatei" für erweiterte Ereignisse in SQL-Datenbank](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

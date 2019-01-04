@@ -3,7 +3,7 @@ title: Erste Schritte mit Aufträgen für die elastische Datenbank | Microsoft D
 description: Verwenden Sie Aufträgen für elastische Datenbanken zum Ausführen von T-SQL-Skripts, die sich über mehrere Datenbanken erstrecken.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,27 +12,27 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: ada95f9fc09aeb7e8dac67bc5f9c4af96f9700df
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241360"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863532"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
 
-
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
 
 Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu den Features von Aufträgen für die elastische Datenbank finden Sie unter [Elastische Aufträge](sql-database-elastic-jobs-overview.md).
 
 Dieser Artikel erweitert das Beispiel unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md). Wenn Sie das Beispiel durchgearbeitet haben, haben Sie gelernt, wie Sie Aufträge zum Verwalten einer Gruppe aufeinander bezogener Datenbanken erstellen und verwalten können. Es ist nicht erforderlich, die Tools für die elastische Skalierung zu verwenden, um die Vorteile der elastischen Aufträge zu nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Laden Sie das Beispiel [Erste Schritte mit den Tools für die elastische Datenbank](sql-database-elastic-scale-get-started.md)herunter, und führen Sie es aus.
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Erstellen eines Shardzuordnungs-Managers mithilfe der Beispiel-App
+
 Hier erstellen Sie einen Shardzuordnungs-Manager und mehrere Shards und fügen anschließend Daten in die Shards ein. Wenn Sie bereits über Shards verfügen, die Shardingdaten enthalten, können Sie die folgenden Schritte überspringen und zum nächsten Abschnitt wechseln.
 
 1. Erstellen Sie die Beispielanwendung aus **Erste Schritte mit den Tools für die elastische Datenbank** , und führen Sie sie aus. Führen Sie die Schritte bis Schritt 7 im Abschnitt [Herunterladen und Ausführen der Beispiel-App](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) aus. Am Ende von Schritt 7 wird die folgende Eingabeaufforderung angezeigt:
@@ -49,7 +49,8 @@ Hier erstellen Sie einen Shardzuordnungs-Manager und mehrere Shards und fügen a
 Wir würden hier normalerweise ein Shardzuordnungsziel mithilfe des Cmdlets **New-AzureSqlJobTarget** erstellen. Die Datenbank des Shardzuordnungs-Managers muss dann als Datenbankziel festgelegt werden, anschließend wird die bestimmte Shardzuordnung als Ziel angegeben. Stattdessen zählen wir alle Datenbanken auf dem Server auf, und fügen die Datenbanken mit Ausnahme der Masterdatenbank der neuen benutzerdefinierten Sammlung hinzu.
 
 ## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Erstellt eine benutzerdefinierte Sammlung und fügt ihr alle Datenbanken auf dem Server mit Ausnahme der Masterdatenbank hinzu.
-   ```
+
+   ```Powershell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -261,14 +262,14 @@ Ausführungsrichtlinien lassen aktuell die folgenden Definitionen zu:
 * Auftragstimeout: Gesamtzeit bis zum Abbruch eines Auftrags durch die Aufträge für die elastische Datenbank.
 * Anfängliches Wiederholungsintervall: Wartezeit vor dem ersten Wiederholungsversuch.
 * Maximales Wiederholungsintervall: Höchstmenge der zu durchlaufenden Wiederholungsintervalle.
-* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen.  Dazu wird diese Formel verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Intervallbackoffkoeffizient), (Anzahl der Wiederholungsversuche) - 2).
+* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen.  Die folgende Formel wird verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Backoffkoeffizient des Intervalls), (Anzahl der Wiederholungsversuche) - 2).
 * Versuche maximal: Die Höchstzahl der im Rahmen eines Auftrags auszuführenden Wiederholungsversuche.
 
 Für die standardmäßige Ausführungsrichtlinie werden diese Werte verwendet:
 
 * Name: Standardausführungsrichtlinie
 * Auftragstimeout: 1 Woche
-* Anfängliches Wiederholungsintervall: 100 Millisekunden
+* Anfängliches Wiederholungsintervall:  100 ms
 * Maximales Wiederholungsintervall: 30 Minuten
 * Wiederholungsintervallkoeffizient: 2
 * Versuche maximal: 2.147.483.647
@@ -301,23 +302,25 @@ Aktualisieren Sie die gewünschte Ausführungsrichtlinie:
    ```
 
 ## <a name="cancel-a-job"></a>Abbrechen eines Auftrags
+
 Aufträge für die elastische Datenbank unterstützen Abbruchanforderungen für Aufträge.  Wenn Aufträge für die elastische Datenbank eine Abbruchanforderung für einen aktuell ausgeführten Auftrag erkennen, wird versucht, den Auftrag zu beenden.
 
 Der Abbruch kann von Aufträgen für die elastische Datenbank auf zwei verschiedene Arten ausgeführt werden:
 
-1. Abbruch aktuell ausgeführter Aufgaben: Wenn ein Abbruch erkannt wird, während eine Aufgabe aktuell ausgeführt wird, wird ein Abbruch innerhalb des aktuell ausgeführten Aspekts der Aufgabe versucht.  Beispiel: Wenn ein versuchter Abbruch sich auf eine aktuell ausgeführte Abfrage mit langer Laufzeit bezieht, wird versucht, die Abfrage abzubrechen.
-2. Abbruch von Aufgabenwiederholungen: Wird vom Steuerthread ein Abbruch erkannt, bevor die Ausführung einer Aufgabe gestartet wurde, verhindert der Steuerthread das Starten der Aufgabe und erklärt die Anforderung für abgebrochen.
+1. Abbruch aktuell ausgeführter Aufgaben: Wenn ein Abbruch erkannt wird, während eine Aufgabe aktuell ausgeführt wird, wird ein Abbruch innerhalb des aktuell ausgeführten Aspekts der Aufgabe versucht.  Beispiel:  Wenn ein versuchter Abbruch sich auf eine aktuell ausgeführte Abfrage mit langer Laufzeit bezieht, wird versucht, die Abfrage abzubrechen.
+2. Abbruch von Aufgabenwiederholungen: Wird vom Steuerthread ein Abbruch erkannt, bevor die Ausführung einer Aufgabe gestartet wurde, verhindert der Steuerthread das Starten der Aufgabe und erklärt die Anforderung als abgebrochen.
 
 Wenn für einen übergeordneten Auftrag ein Auftragsabbruch angefordert wird, wird die Abbruchanforderung für den übergeordneten Auftrag und für alle seine untergeordneten Aufträge berücksichtigt.
 
 Verwenden Sie zum Senden von Abbruchanforderungen das Cmdlet **Stop-AzureSqlJobExecution**, und legen Sie den Parameter **JobExecutionId** fest.
 
-   ```
+   ```Powershell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>Löschen eines Auftrags anhand seines Namens und seines Verlaufs
+
 Aufträge für die elastische Datenbank unterstützen die asynchrone Löschung von Aufträgen. Ein Auftrag kann für die Löschung markiert werden, und das System löscht den Auftrag und seinen gesamten Verlauf, nachdem die gesamte Ausführung von Unteraufträgen für den Auftrag abgeschlossen wurde. Das System bricht aktiv ausgeführte Aufträge nicht automatisch ab.  
 
 Stattdessen muss „Stop-AzureSqlJobExecution“ aufgerufen werden, um die Ausführung aktiver Aufträge abzubrechen.

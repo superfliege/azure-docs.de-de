@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 5b8db52623eead2800b0a5d8154a222573808750
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192429"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810269"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -124,4 +124,4 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum Sammeln, Verarbeiten und Schützen von Daten in Log Analytics finden Sie unter [Log Analytics – Datensicherheit](../../azure-monitor/platform/data-security.md).
-- Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten in Application Insights finden Sie unter [Application Insights – Datensicherheit](../../application-insights/app-insights-data-retention-privacy.md).
+- Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten in Application Insights finden Sie unter [Application Insights – Datensicherheit](../../azure-monitor/app/data-retention-privacy.md).

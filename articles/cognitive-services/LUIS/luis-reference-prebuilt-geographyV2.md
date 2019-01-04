@@ -1,23 +1,24 @@
 ---
-title: Vordefinierte geographyV2-Entität – LUIS-Referenz
+title: Vordefinierte GeographyV2-Entität
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten geographyV2-Entität in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cjgronlund
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 3559bc02944f88f486104d4d9553f0c45a1f1754
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a81c97cf8883d2a3629d1eb1b9f6137609c6edda
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983411"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135099"
 ---
-# <a name="geographyv2-entity"></a>geographyV2-Entität
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte GeographyV2-Entität für eine LUIS-App
 Die vordefinierte geographyV2-Entität erkennt Orte. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit geographyV2 hinzufügen. Die geographyV2-Entität wird in der [Kultur](luis-reference-prebuilt-entities.md) Englisch unterstützt.
 
 ## <a name="subtypes"></a>Untertypen
@@ -35,7 +36,7 @@ Die geografischen Standorte weisen Untertypen auf:
 ## <a name="resolution-for-geographyv2-entity"></a>Auflösung für die geographyV2-Entität
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.geographyV2** veranschaulicht.
 
-```JSON
+```json
 {
     "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
     "topScoringIntent": {

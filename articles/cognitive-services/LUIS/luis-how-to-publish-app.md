@@ -1,21 +1,22 @@
 ---
-title: Veröffentlichen Ihrer LUIS-App am Vorhersageendpunkt
+title: App veröffentlichen
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie das Erstellen und Testen Ihrer aktiven LUIS-App abgeschlossen haben, stellen Sie sie Ihrer Clientanwendung zur Verfügung, indem Sie sie am Endpunkt veröffentlichen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6eb48fd0f3290fbc3a249bc3880c809ace9f9ddb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886483"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136646"
 ---
 # <a name="publish-your-trained-app"></a>Veröffentlichen der trainierten App
 
@@ -37,7 +38,7 @@ Die App wird in allen Regionen veröffentlicht, die den im LUIS-Portal hinzugef�
 
 Wenn Ihre App erfolgreich veröffentlicht wurde, wird eine grüne Erfolgsmeldung am oberen Rand des Browsers angezeigt. Die grüne Benachrichtigungsleiste enthält außerdem einen Link zu den Endpunkten. 
 
-![Popup-Fenster „Veröffentlichung“](./media/luis-how-to-publish-app/publish-success.png)
+![Popupfenster „Veröffentlichung“ mit Link zum Endpunkt](./media/luis-how-to-publish-app/publish-success.png)
 
 Wenn Sie die Endpunkt-URL benötigen, wählen Sie den Link aus. Ferner können Sie an die Endpunkt-URLs gelangen, indem Sie im oberen Menü **Verwalten** und dann in linken Menü **Schlüssel und Endpunkte** auswählen. 
 

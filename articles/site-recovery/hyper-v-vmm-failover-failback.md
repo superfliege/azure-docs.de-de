@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 80a26f7f2c97fdbc5342d8845277facd79f22a62
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ef360fd56c3530a49c2f36846db34b29ca1cf444
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210005"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788017"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover und Failback von Hyper-V-VMs, die nach Ihrem sekundären lokalen Standort repliziert werden
 
@@ -30,8 +30,8 @@ In diesem Artikel wird beschrieben, wie ein Failover einer Hyper-V-VM, die in ei
 
 Failover und Failback weisen drei Phasen auf:
 
-1. **Failover zum sekundären Standort**: Ausführen eines Failovers der Computer vom primären auf den sekundären Standort.
-2. **Failback vom sekundären Standort**: Replizieren der VMs vom sekundären nach dem primären Standort und Ausführen eines geplanten Failovers, um ein Failback auszuführen.
+1. **Failover zum sekundären Standort:** Ausführen eines Failovers der Computer vom primären zum sekundären Standort.
+2. **Failover vom sekundären Standort:** Replizieren der VMs vom sekundären zum primären Standort und Ausführen eines geplanten Failovers zum Ausführen eines Failbacks.
 3. Starten Sie nach dem geplanten Failover optional erneut die Replikation vom primären nach dem sekundären Standort.
 
 
@@ -58,7 +58,7 @@ In diesem Verfahren erfahren Sie, wie Sie ein reguläres Failover durchführen.
 3. Nachdem Sie die VM überprüft haben, **committen** Sie das Failover. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
+> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Bevor das Failover gestartet wird, wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>„Umgekehrt replizieren“ und „Failover“

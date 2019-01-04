@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 5ddd28838e7db7b7f2798b18028aba56246fda4c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b8ff27413888e1745bd9a83e2e2e8c7b77fba34
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437789"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Tutorial: Azure Active Directory-Integration mit MCM
 
@@ -117,7 +117,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://myaba.co.uk/<companyname>`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von MCM](http://mcmtechnology.com/support/), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von MCM](https://mcmtechnology.com/support/), um diese Werte zu erhalten. 
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -127,10 +127,10 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     ![Configure single sign-on](./media/mcm-tutorial/tutorial_general_400.png) 
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **MCM** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [MCM-Supportteam](http://mcmtechnology.com/support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **MCM** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [MCM-Supportteam](https://mcmtechnology.com/support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -166,7 +166,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-mcm-test-user"></a>Erstellen eines MCM-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in MCM einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der MCM-Plattform ggf. vom [MCM-Supportteam](http://mcmtechnology.com/support/) unterstützen.
+In diesem Abschnitt erstellen Sie in MCM einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der MCM-Plattform ggf. vom [MCM-Supportteam](https://mcmtechnology.com/support/) unterstützen.
 
 > [!NOTE]
 > Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von MCM-Benutzerkonten oder mithilfe der von MCM bereitgestellten APIs erstellen.

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c2924380ef5175b330deb5052a962bfecf820ae
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399870"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594347"
 ---
 Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/application-insights/app-insights-overview.md) und [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -43,23 +43,23 @@ Sie können [Warnungen](../articles/azure-monitor/platform/alerts-overview.md) a
 
 ## <a name="logs"></a>Protokolle
 
-Das [Azure-Aktivitätsprotokoll](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieses Protokoll schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Sie können im Azure-Portal auf „Aktivitätsprotokoll“ klicken, um das Protokoll für Ihre VM anzuzeigen.
+Das [Azure-Aktivitätsprotokoll](../articles/azure-monitor/platform/activity-logs-overview.md) ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieses Protokoll schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Sie können im Azure-Portal auf „Aktivitätsprotokoll“ klicken, um das Protokoll für Ihre VM anzuzeigen.
 
 Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgeführt:
 
-- [Erstellen einer Warnung zu einem Aktivitätsprotokollereignis](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
-- Streamen an einen [Event Hub](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI
+- [Erstellen einer Warnung zu einem Aktivitätsprotokollereignis](../articles/azure-monitor/platform/activity-logs-overview.md)
+- Streamen an einen [Event Hub](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI
 - [Analysieren in Power BI mit dem Power BI-Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)
 - [Speichern unter einem Speicherkonto](../articles/azure-monitor/platform/archive-activity-log.md) zur Archivierung oder manuellen Untersuchung Sie können die Aufbewahrungsdauer (in Tagen) mithilfe des Protokollprofils angeben.
 
 Außerdem können Sie auf die Daten des Aktivitätsprotokolls zugreifen, indem Sie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), die [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) oder [Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/) verwenden.
 
-[Azure-Diagnoseprotokolle](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) sind von Ihrer VM ausgegebene Protokolle, die umfassende häufig verwendete Daten zum Betrieb der VM enthalten. Diagnoseprotokolle unterscheiden sich vom Aktivitätsprotokoll, indem sie Einblick in Vorgänge gewähren, die auf der VM durchgeführt wurden.
+[Azure-Diagnoseprotokolle](../articles/azure-monitor/platform/diagnostic-logs-overview.md) sind von Ihrer VM ausgegebene Protokolle, die umfassende häufig verwendete Daten zum Betrieb der VM enthalten. Diagnoseprotokolle unterscheiden sich vom Aktivitätsprotokoll, indem sie Einblick in Vorgänge gewähren, die auf der VM durchgeführt wurden.
 
 Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
 - Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](../articles/azure-monitor/platform/archive-diagnostic-logs.md) gespeichert werden. Mithilfe der Diagnoseeinstellungen für Ressourcen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
-- Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an [Event Hubs streamen](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
+- Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an [Event Hubs streamen](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
 - Sie können Diagnoseprotokolle mit [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) analysieren.
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung

@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen oder Löschen von Benutzern in Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie mithilfe von Azure Active Directory neue Benutzer hinzugefügt oder bestehende gelöscht werden.
+title: Hinzufügen oder Löschen von Benutzern – Azure Active Directory | Microsoft-Dokumentation
+description: Anweisungen zum Hinzufügen neuer Benutzer oder Löschen vorhandener Benutzer mithilfe von Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: dd4a9132d5f04870239be3127f723afb60b3ecef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295103"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104678"
 ---
-# <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>Vorgehensweise: Hinzufügen oder Löschen von Benutzern in Azure Active Directory
-Fügen Sie Ihrem Azure Active Directory-Mandanten (Azure AD) neue Benutzer hinzu, oder löschen Sie vorhandene aus ihm, mithilfe von Azure AD.
+# <a name="add-or-delete-users-using-azure-active-directory"></a>Hinzufügen oder Löschen von Benutzern in Azure Active Directory
+In Ihrem Azure Active Directory-Mandanten (Azure AD) können Sie neue Benutzer hinzufügen oder vorhandene Benutzer löschen.
 
 ## <a name="add-a-new-user"></a>Hinzufügen eines neuen Benutzers
-Sie können mithilfe von Azure Active Directory einen neuen Benutzer erstellen.
+Sie können einen neuen Benutzer im Azure Active Directory-Portal erstellen.
 
 ### <a name="to-add-a-new-user"></a>So fügen Sie einen neuen Benutzer hinzu
 1. Melden Sie sich als globaler Administrator oder Benutzeradministrator für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
@@ -58,7 +58,7 @@ Sie können mithilfe von Azure Active Directory einen neuen Benutzer erstellen.
 Wenn Sie eine Umgebung mit sowohl Azure Active Directory (Cloud) als auch Windows Server Active Directory (lokal) haben, können Sie neue Benutzer hinzufügen, indem Sie die vorhandenen Benutzerkontodaten synchronisieren. Weitere Informationen zu Hybridumgebungen und Benutzern finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="delete-a-user"></a>Löschen eines Benutzers
-Sie können einen vorhandenen Benutzer mithilfe von Azure Active Directory löschen.
+Sie können einen vorhandenen Benutzer im Azure Active Directory-Portal löschen.
 
 ### <a name="to-delete-a-user"></a>So löschen Sie einen Benutzer
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
@@ -72,7 +72,7 @@ Sie können einen vorhandenen Benutzer mithilfe von Azure Active Directory lösc
     Der Benutzer wird gelöscht und nicht mehr auf der Seite **Benutzer – Alle Benutzer** angezeigt. Sie können den Benutzer für die nächsten 30 Tage auf der Seite **Gelöschte Benutzer** anzeigen und während dieses Zeitraums wiederherstellen. Weitere Informationen zum Wiederherstellen eines Benutzers finden Sie unter [Wiederherstellen oder endgültiges Entfernen eines kürzlich gelöschten Benutzers](active-directory-users-restore.md).
 
     >[!Note]
-    >Sie müssen Windows Server Active Directory verwenden, um die Identität, Kontaktinformationen oder Jobinformationen für Benutzer zu aktualisieren, deren Quelle der Autorität Windows Server Active Directory ist. Nachdem Sie Ihre Aktualisierung abgeschlossen haben, müssen Sie bis zum Abschluss des nächsten Synchronisierungszyklus warten, bevor die Änderungen angezeigt werden.
+    >Sie müssen Windows Server Active Directory verwenden, um die Identität, Kontaktinformationen oder Jobinformationen für Benutzer zu aktualisieren, deren Quelle der Autorität Windows Server Active Directory ist. Nachdem Sie das Update abgeschlossen haben, müssen Sie bis zum Abschluss des nächsten Synchronisierungszyklus warten, bevor die Änderungen angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Ihre Benutzer hinzugefügt haben, können Sie die folgenden grundlegenden Prozesse ausführen:

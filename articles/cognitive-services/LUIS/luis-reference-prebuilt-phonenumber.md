@@ -1,32 +1,33 @@
 ---
-title: Referenz zur vorgefertigten Telefonnummernentität in LUIS – Azure | Microsoft-Dokumentation
+title: Vordefinierte PhoneNumber-Entitäten
 titleSuffix: Azure
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten Telefonnummernentität in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8fcbaf946f936d7a6d6d883a0416fce9d0c158
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 3a538886b0137e1069af1fa680374b749a9b3f92
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441709"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165407"
 ---
-# <a name="phonenumber-entity"></a>Telefonnummernentität
+# <a name="phonenumber-prebuilt-entity-for-a-luis-app"></a>Vordefinierte PhoneNumber-Entität für eine LUIS-App
 Die `phonenumber` extrahiert verschiedene Telefonnummern mit Ländervorwahl. Da diese Entität bereits trainiert wurde, müssen Sie der Anwendung keine Beispieläußerungen mit Telefonnummern hinzufügen. Die `phonenumber` wird nur in der Kultur `en-us` unterstützt. 
 
 ## <a name="types-of-phonenumber"></a>Telefonnummertypen
-Die Telefonnummernentität wird über das GitHub-Repository [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) verwaltet.
+Die Entität „phonenumber“ wird über das GitHub-Repository [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) verwaltet.
 
 ## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Auflösung der vorgefertigten Telefonnummernentität
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.phonenumber** veranschaulicht.
 
-```JSON
+```json
 {
   "query": "my mobile is 00 44 161 1234567",
   "topScoringIntent": {

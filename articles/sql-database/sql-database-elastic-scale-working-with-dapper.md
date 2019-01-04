@@ -3,7 +3,7 @@ title: Verwenden der Clientbibliothek für elastische Datenbanken mit Dapper | M
 description: Verwenden der Clientbibliothek für elastische Datenbanken.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3a25d68b0f0bdd97b204906af87fac8013ad3cff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253022"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866303"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Verwenden der Clientbibliothek für elastische Datenbanken
 Dieses Dokument ist für Entwickler bestimmt, die Anwendungen mithilfe von Dapper erstellen, aber auch mithilfe von [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md) Anwendungen erstellen möchten, die zum horizontalen Hochskalieren ihrer Datenebene Sharding implementieren.  Dieses Dokument veranschaulicht, welche Änderungen in Dapper-basierten Anwendungen erforderlich sind, um Tools für elastische Datenbanken zu integrieren. Wir konzentrieren uns darauf, die Shardverwaltung für elastische Datenbanken und das datenabhängige Routing in Dapper zu integrieren. 
 
-**Beispielcode**: [Elastic DB Tools for Azure SQL - Dapper Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)(in englischer Sprache).
+**Beispielcode:** [Elastic DB Tools for Azure SQL – Dapper Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f) (Elastische Datenbanktools für Azure SQL – Dapper-Integration).
 
 Die Integration von **Dapper** und **DapperExtensions** in die Clientbibliothek für elastische Datenbanken für Azure SQL-Datenbank ist einfach. Für Ihre Anwendungen können Sie das datenabhängige Routing verwenden, indem Sie das Erstellen und Öffnen neuer [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)-Objekte so ändern, dass der [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx)-Aufruf aus der [Clientbibliothek](https://msdn.microsoft.com/library/azure/dn765902.aspx) verwendet wird. Dadurch werden die Änderungen in der Anwendung auf Situationen beschränkt, in denen neue Verbindungen erstellt und geöffnet werden. 
 
@@ -49,9 +49,9 @@ Anstatt Dapper-Verbindungen auf die herkömmliche Weise zu erstellen, müssen Si
 ### <a name="requirements-for-dapper-integration"></a>Anforderungen an die Dapper-Integration
 Bei gleichzeitiger Verwendung der Clientbibliothek für elastische Datenbanken und der Dapper-APIs sollten die folgenden Eigenschaften beibehalten werden:
 
-* **Horizontales Hochskalieren:** Datenbanken sollen entsprechend den Kapazitätsanforderungen der partitionierten Anwendung der Datenbankebene der Anwendung hinzugefügt oder daraus entfernt werden können. 
+* **Horizontales Skalieren:** Wir möchten Datenbanken werden der Datenschicht der Shardanwendung entsprechend den Kapazitätsanforderungen der Anwendung hinzufügen oder aus dieser entfernen. 
 * **Konsistenz:** Da die Anwendung mithilfe von Sharding horizontal hochskaliert wird, müssen Sie datenabhängiges Routing ausführen. Wir möchten zu diesem Zweck das datenabhängige Routing der Bibliothek verwenden. Vor allem sollten Sie die Überprüfungs- und Konsistenzzusicherungen der Verbindungen beibehalten, die über den Shardzuordnungs-Manager vermittelt werden. Dies hilft dabei, Datenverfälschung oder falsche Abfrageergebnisse zu vermeiden. Dadurch wird sichergestellt, dass Verbindungen mit einem bestimmten Shardlet zurückgewiesen oder unterbrochen werden, wenn das Shardlet z. B. gerade mithilfe von Split/Merge-APIs auf einen anderen Shard verschoben wird.
-* **Objekt-Zuordnung:** Wir möchten die programmierfreundlichen Dapper-Zuordnungen beibehalten, um Code zwischen Klassen in der Anwendung und den zugrunde liegenden Datenbankstrukturen zu übersetzen. 
+* **Objektzuordnung:** Wir möchten die programmierfreundlichen Dapper-Zuordnungen beibehalten, um Code zwischen Klassen in der Anwendung und den zugrunde liegenden Datenbankstrukturen zu übersetzen. 
 
 Der folgende Abschnitt erläutert, wie Sie diese Anforderungen für Anwendungen auf Grundlage von **Dapper** und **DapperExtensions** erfüllen.
 
@@ -137,7 +137,7 @@ Im Folgenden finden Sie das Codebeispiel für die Abfrage:
     }
 
 ### <a name="handling-transient-faults"></a>Behandeln vorübergehender Fehler
-Das Microsoft Patterns & Practices-Team hat den [Transient Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx) veröffentlicht, um Anwendungsentwicklern zu ermöglichen, häufig bei der Ausführung in der Cloud auftretende vorübergehende Fehler zu verringern. Weitere Informationen finden Sie unter [Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block](https://msdn.microsoft.com/library/dn440719.aspx)(Hartnäckigkeit, das Geheimnis aller Erfolge: Verwenden des Anwendungsblocks für die Behandlung vorübergehender Fehler, in englischer Sprache).
+Das Microsoft Patterns & Practices-Team hat den [Transient Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx) veröffentlicht, um Anwendungsentwicklern zu ermöglichen, häufig bei der Ausführung in der Cloud auftretende vorübergehende Fehler zu verringern. Weitere Informationen finden Sie unter [Hartnäckigkeit, das Geheimnis aller Erfolge: Verwenden des Anwendungsblocks zum Behandeln vorübergehender Fehler](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Zum Schutz vor vorübergehenden Fehlern verwendet das Codebeispiel die entsprechende TFH (Transient Fault Handling)-Bibliothek. 
 

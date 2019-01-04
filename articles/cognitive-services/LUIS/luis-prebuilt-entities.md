@@ -1,21 +1,22 @@
 ---
-title: Vordefinierte Entitäten für Language Understanding (LUIS)
+title: Vordefinierte Entitäten
 titleSuffix: Azure Cognitive Services
 description: LUIS umfasst eine Reihe von vordefinierten Entitäten zur Erkennung allgemeiner Informationstypen, z.B. Datumsangaben, Zeitangaben, Zahlen, Maße und Währungen. Die Unterstützung von vordefinierten Entität variiert je nach Kultur Ihrer LUIS-App.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 0fe9dbed302fd2d61305167a3bda25b1b403b761
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139973"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103930"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Vordefinierte Entitäten zum Erkennen allgemeiner Datentypen
 
@@ -54,6 +55,12 @@ Testen Sie die neue Absicht am Endpunkt, indem Sie einen Wert für den **q**-Par
 |Sage Termin am 3. März ab|LUIS hat den letzten 3. März (3.3.2018) und den nächsten 3. März (3.3.2019) zurückgegeben, da in der Äußerung kein Jahr angegeben wurde.|
 |Plane eine Besprechung um 10 Uhr|10:00:00|
 
+## <a name="marking-entities-containing-a-prebuilt-entity-token"></a>Markieren von Entitäten mit einem vordefinierten Entitätstoken
+ Wenn Sie Text wie z.B. `HH-1234` als benutzerdefinierte Entität markieren möchten _und_ dem Modell eine [vordefinierte Anzahl](luis-reference-prebuilt-number.md) hinzugefügt haben, können Sie die benutzerdefinierte Entität nicht im LUIS-Portal markieren. Sie können sie mit der API markieren. 
+
+ Um diese Art von Token, bei der ein Teil bereits mit einer vordefinierten Entität markiert ist, zu markieren, entfernen Sie die vordefinierte Entität aus der LUIS-App. Sie müssen die App nicht trainieren. Markieren Sie anschließend das Token mit Ihrer eigenen benutzerdefinierten Entität. Fügen Sie danach die vordefinierte Entität wieder in die LUIS-App ein.
+
+ Betrachten Sie als weiteres Beispiel die Äußerung als eine Liste von Klasseneinstellungen: `I want first year spanish, second year calculus, and fourth year english lit.` Wenn der LUIS-App die vordefinierte Ordnungszahl hinzugefügt wurde, sind `first`, `second` und `fourth` bereits mit Ordnungszahlen markiert. Wenn Sie die Ordnungszahl und die Klasse erfassen möchten, können Sie eine zusammengesetzte Entität erstellen und die vordefinierte Ordnungszahl und die benutzerdefinierte Entität als Klassennamen umschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

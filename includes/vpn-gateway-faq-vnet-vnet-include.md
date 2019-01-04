@@ -5,29 +5,29 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30921307"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111621"
 ---
-Die häufig gestellten Fragen zu VNet-zu-VNet-Verbindungen gelten für VPN Gateway-Verbindungen. Informationen zum VNet-Peering finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md).
+Die häufig gestellten Fragen zu VNET-zu-VNET-Verbindungen gelten für VPN Gateway-Verbindungen. Informationen zum VNET-Peering finden Sie unter [Peering virtueller Netzwerke](../articles/virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>Fallen bei Azure Kosten für den Datenverkehr zwischen VNets an?
 
-VNET-zu-VNET-Datenverkehr innerhalb einer Region ist bei Verwendung einer VPN-Gatewayverbindung in beide Richtungen kostenlos. Für regionsübergreifenden VNet-zu-VNet-Datenverkehr in ausgehender Richtung werden Gebühren für ausgehende Datenübertragungen zwischen VNets basierend auf den Quellregionen berechnet. Angaben zu den Preisen finden Sie auf der Seite [VPN Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway/). Wenn Sie zum Herstellen einer Verbindung zwischen Ihren VNETs VNET-Peering anstelle von VPN Gateway verwenden, lesen Sie die Informationen auf der Seite [Virtual Network – Preise](https://azure.microsoft.com/pricing/details/virtual-network/).
+VNET-zu-VNET-Datenverkehr innerhalb einer Region ist bei Verwendung einer VPN-Gatewayverbindung in beide Richtungen kostenlos. Für regionsübergreifenden VNET-zu-VNET-Datenverkehr in ausgehender Richtung werden Gebühren für ausgehende Datenübertragungen zwischen VNETs basierend auf den Quellregionen berechnet. Weitere Informationen finden Sie unter [VPN Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway/). Wenn Sie eine Verbindung zwischen Ihren VNETs mittels VNET-Peering anstelle eines VPN Gateways herstellen, finden Sie weitere Informationen auf der Seite [Virtual Network – Preise](https://azure.microsoft.com/pricing/details/virtual-network/).
 
-### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>Wird VNet-zu-VNet-Datenverkehr über das Internet übertragen?
+### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>Wird VNET-zu-VNET-Datenverkehr über das Internet übertragen?
 
-Nein. VNet-zu-VNet-Datenverkehr wird über den Microsoft Azure-Backbone übertragen, nicht über das Internet.
+ Nein. VNET-zu-VNET-Datenverkehr wird über den Microsoft Azure-Backbone übertragen, nicht über das Internet.
 
-### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>Kann ich eine VNet-zu-VNet-Verbindung zwischen AAD-Mandanten herstellen?
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-azure-active-directory-aad-tenants"></a>Kann ich eine VNET-zu-VNET-Verbindung zwischen Azure Active Directory-Mandanten (AAD) herstellen?
 
-Ja. VNet-zu-VNet-Verbindungen mit Azure-VPN-Gateways können übergreifend für AAD-Mandanten verwendet werden.
+Ja. VNET-zu-VNET-Verbindungen mit Azure-VPN-Gateways können übergreifend für AAD-Mandanten verwendet werden.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>Ist VNet-zu-VNet-Datenverkehr sicher?
 
@@ -35,19 +35,19 @@ Ja, er wird mittels IPsec-/IKE-Verschlüsselung geschützt.
 
 ### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>Benötige ich ein VPN-Gerät, umVNets miteinander zu verbinden?
 
-Nein. Für das Verbinden mehrerer virtueller Azure-Netzwerke sind keine VPN-Geräte erforderlich. Diese werden nur benötigt, wenn standortübergreifende Konnektivität erforderlich ist.
+ Nein. Für das Verbinden mehrerer virtueller Azure-Netzwerke sind keine VPN-Geräte erforderlich. Diese werden nur benötigt, wenn standortübergreifende Konnektivität erforderlich ist.
 
 ### <a name="do-my-vnets-need-to-be-in-the-same-region"></a>Müssen sich meine VNets in der gleichen Region befinden?
 
-Nein. Die virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen (Standorte) befinden.
+ Nein. Die virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen (Standorte) befinden.
 
-### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>Müssen die Abonnements demselben AD-Mandanten zugeordnet sein, wenn sich die VNets nicht in demselben Abonnement befinden?
+### <a name="if-the-vnets-arent-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-active-directory-tenant"></a>Müssen die Abonnements demselben Active Directory-Mandanten zugeordnet sein, wenn sich die VNETs nicht im selben Abonnement befinden?
 
-Nein.
+ Nein.
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>Kann ich VNet-zu-VNet verwenden, um virtuelle Netzwerke in separaten Azure-Instanzen zu verbinden? 
 
-Nein. Für VNet-zu-VNet wird die Verbindungsherstellung von virtuellen Netzwerken in derselben Azure-Instanz unterstützt. Beispielsweise ist es nicht möglich, eine Verbindung zwischen der öffentlichen Azure-Instanz und den Azure-Instanzen für China, Deutschland oder US Gov herzustellen. Erwägen Sie für diese Szenarien die Verwendung einer Site-to-Site-VPN-Verbindung.
+ Nein. Für VNet-zu-VNet wird die Verbindungsherstellung von virtuellen Netzwerken in derselben Azure-Instanz unterstützt. Beispielsweise ist es nicht möglich, eine Verbindung zwischen Azure global und den Azure-Instanzen für China, Deutschland oder die US-Regierung herzustellen. Erwägen Sie für diese Szenarien die Verwendung einer Site-to-Site-VPN-Verbindung.
 
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>Kann ich VNet-zu-VNet zusammen mit Verbindungen mit mehreren Standorten verwenden?
 
@@ -55,23 +55,23 @@ Ja. Virtuelle Netzwerkverbindungen können simultan mit VPNs mit mehreren Stando
 
 ### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to"></a>Mit wie vielen lokalen Standorten und virtuellen Netzwerken kann ein virtuelles Netzwerk verbunden werden?
 
-Informationen dazu finden Sie in der Tabelle mit [Gatewayanforderungen](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements).
+Informationen dazu finden Sie in der Tabelle [Gatewayanforderungen](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements).
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>Kann ich VNet-zu-VNet für die Verbindung von virtuellen Computern oder Clouddiensten außerhalb eines VNet verwenden?
 
-Nein. VNet-zu-VNet unterstützt das Verbinden virtueller Netzwerke. Nicht unterstützt hingegen werden Verbindungen virtueller Computer oder Clouddienste, die sich nicht in einem virtuellen Netzwerk befinden.
+ Nein. VNet-zu-VNet unterstützt das Verbinden virtueller Netzwerke. Nicht unterstützt werden Verbindungen virtueller Computer oder Clouddienste, die sich nicht in einem virtuellen Netzwerk befinden.
 
-### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>Kann sich ein Clouddienst oder eine Lastenausgleichs-Endpunkt über mehrere VNets erstrecken?
+### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>Kann sich ein Clouddienst oder ein Lastenausgleichs-Endpunkt über mehrere VNETs erstrecken?
 
-Nein. Ein Clouddienst oder Endpunkt mit Lastenausgleich darf auch dann nicht mehrere virtuelle Netzwerke umfassen, wenn diese verbunden sind.
+ Nein. Ein Clouddienst oder Endpunkt mit Lastenausgleich kann nicht mehrere virtuelle Netzwerke umfassen, selbst wenn diese verbunden sind.
 
-### <a name="can-i-used-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Kann ich den VPN-Typ „PolicyBased“ für VNet-zu-VNet oder standortübergreifende Verbindungen verwenden?
+### <a name="can-i-use-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Kann ich den VPN-Typ „PolicyBased“ für VNET-zu-VNET- oder standortübergreifende Verbindungen verwenden?
 
-Nein. VNet-zu-VNet- und standortübergreifende Verbindungen erfordern Azure-VPN Gateways mit routenbasierten VPN-Typen (früher als „dynamisches Routing“ bezeichnet).
+ Nein. VNET-zu-VNET- und standortübergreifende Verbindungen erfordern Azure-VPN Gateways mit routenbasierten VPN-Typen (zuvor als „dynamisches Routing“ bezeichnet).
 
 ### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>Kann ich ein VNet mit einem routenbasierten VPN-Typ (RouteBased) mit einem anderen VNet mit einem richtlinienbasierten VPN (PolicyBased) verbinden?
 
-Nein. Beide virtuellen Netzwerke müssen routenbasierte VPNs (früher als „dynamisches Routing“ bezeichnet) verwenden.
+Nein. Beide virtuellen Netzwerke müssen routenbasierte VPNs (zuvor als „dynamisches Routing“ bezeichnet) verwenden.
 
 ### <a name="do-vpn-tunnels-share-bandwidth"></a>Verwenden VPN-Tunnel Bandbreite gemeinsam?
 
@@ -83,11 +83,11 @@ Redundante Tunnel zwischen einem Paar virtueller Netzwerke werden unterstützt, 
 
 ### <a name="can-i-have-overlapping-address-spaces-for-vnet-to-vnet-configurations"></a>Kann ich für VNet-zu-VNet-Konfigurationen Adressräume verwenden, die sich überschneiden?
 
-Nein. IP-Adressbereiche dürfen sich nicht überschneiden.
+ Nein. IP-Adressbereiche dürfen sich nicht überschneiden.
 
 ### <a name="can-there-be-overlapping-address-spaces-among-connected-virtual-networks-and-on-premises-local-sites"></a>Dürfen sich die Adressräume der verbundenen virtuellen Netzwerke und der lokalen Standorte überschneiden?
 
-Nein. IP-Adressbereiche dürfen sich nicht überschneiden.
+ Nein. IP-Adressbereiche dürfen sich nicht überschneiden.
 
 
 

@@ -1,21 +1,22 @@
 ---
-title: FAQ – Häufig gestellte Fragen – Language Understanding (LUIS)
+title: Häufig gestellte Fragen (FAQ)
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 9e5b132a7946bdc648e051c9f7327cc7159f291e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284369"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163632"
 ---
 # <a name="language-understanding-faq"></a>Häufig gestellte Fragen zu Language Understanding
 
@@ -196,9 +197,9 @@ Die [Sprachoptimierung ](https://docs.microsoft.com/bot-framework/bot-service-ma
 
 ## <a name="luis-service"></a>LUIS-Dienst
 
-### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Kann LUIS lokal oder in einer privaten Cloud genutzt werden?
- Nein.
+### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Kann LUIS (Language Understanding) lokal oder in einer privaten Cloud genutzt werden?
 
+Ja, Sie können die LUIS-[Container](luis-container-howto.md) für diese Szenarien verwenden, wenn Sie über die erforderliche Konnektivität zum Messen des Verbrauchs verfügen. 
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Bei der Build 2018-Konferenz wurde ein Language Understanding-Feature oder eine Language Understanding-Demo erwähnt, aber ich erinnere mich nicht mehr an den Namen. Um welche Features oder Demos handelte es sich?
 
@@ -214,13 +215,13 @@ Die folgenden Features wurden bei der Build 2018-Konferenz veröffentlicht:
 Zusätzliche [API-Erstellungsrouten](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) wurden hinzugefügt.
 
 Videos:
-* [Azure Friday At Build 2018: Cognitive Services - Language (LUIS) (Azure Friday bei der Build 2018-Konferenz: Cognitive Services – Language Understanding (LUIS))](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
+* [Azure Friday bei der Build 2018: Cognitive Services – Sprache (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 AI Show - What’s New with Language Understanding Service (Build 2018 AI Show: Neuerungen bei Language Understanding Service (LUIS))](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
 * [Build 2018 Session – Bot Intelligence, Speech Capabilities, and NLU Best Practices (Build 2018 Session – Bot-Intelligence, Sprachfunktionen und bewährte Methoden für NLU)](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - LUIS Updates (Build 2018: Neue LUIS-Features)](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekte:
-* Demo zum [Contoso Cafe Bot](https://github.com/botbuilderbuild2018/build2018demo) (Quellcode auf Github)
+* Demo zum [Contoso Cafe-Bot](https://github.com/botbuilderbuild2018/build2018demo) – Quellcode auf GitHub
 
 ## <a name="next-steps"></a>Nächste Schritte
 

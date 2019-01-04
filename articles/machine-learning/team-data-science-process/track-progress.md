@@ -1,6 +1,6 @@
 ---
-title: Ausführung von Data Science-Projekten – Azure Machine Learning | Microsoft-Dokumentation
-description: Erfahren Sie, wie ein Datenspezialist den Fortschritt eines Data Science-Projekts nachverfolgen kann.
+title: Nachverfolgen des Fortschritts von Data Science-Projekten – Team Data Science-Prozess
+description: Wie Data Science-Gruppenmanager, Teamleiter und Projektleiter den Status eines Data Science-Projekts nachverfolgen können.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 202ac89b8a281012dbcf5f4c4df11e97ba2c8c65
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441467"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134300"
 ---
-# <a name="track-progress-of-data-science-projects"></a>Nachverfolgen des Fortschritts von Data Science-Projekten
+# <a name="tracking-the-progress-of-data-science-projects"></a>Nachverfolgen des Fortschritts von Data Science-Projekten
 
 Data Science-Gruppenmanager, Teamleiter und Projektleiter müssen den Fortschritt ihrer Projekte nachverfolgen: welche Arbeit von welchen Personen ausgeführt wurde und was in den Aufgabenlisten verbleibt. 
 
@@ -39,7 +39,7 @@ Dies ist ein einfaches Beispieldashboard, das zum Nachverfolgen der Sprintaktivi
 
 Die verbleibenden Elemente zeigen das kumulative Flussdiagramm (CFD), den Burndown und den Burnup für ein Projekt:
 
-- **Links unten:** CFD der Menge an Arbeit in einem bestimmten Zustand mit genehmigten Elementen in Grau, committeten in Blau und erledigten in Grün
+- **Links unten:**  CFD der Menge an Arbeit in einem bestimmten Zustand mit genehmigten Elementen in Grau, committeten in Blau und erledigten in Grün
 - **Rechts oben:** Burndowndiagramm der Arbeit, die noch abgeschlossen werden muss, gegenüber der verbleibenden Zeit
 - **Rechts unten:** Burnupdiagramm der abgeschlossenen Arbeit gegenüber der Gesamtmenge der Arbeit
 

@@ -1,5 +1,6 @@
 ---
-title: Erstellen einer Azure Load Balancer-Instanz mit der REST-API | Microsoft-Dokumentation
+title: Erstellen einer Azure Load Balancer-Instanz mit der REST-API
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie eine Azure Load Balancer-Instanz mit der REST-API erstellen.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
-ms.openlocfilehash: 2f5d3584a429ce35e6905b14bb412c3782fb0185
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416918"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079720"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Erstellen einer Azure Basic Load Balancer-Instanz mit der REST-API
 
@@ -49,7 +51,7 @@ Der einzige erforderliche Parameter ist `location`. Wenn Sie die *SKU*-Version n
 | location | Zeichenfolge | Ressourcenspeicherort Rufen Sie mit dem Vorgang [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) eine aktuelle Liste der Standorte auf. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Beispiel: Erstellen und Aktualisieren einer Basic Load Balancer-Instanz
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Beispiel: Erstellen und Aktualisieren einer Load Balancer-Instanz im Tarif „Basic“
 
 In diesem Beispiel erstellen Sie zunächst eine Basic Load Balancer-Instanz zusammen mit den zugehörigen Ressourcen. Anschließend konfigurieren Sie die Load Balancer-Ressourcen, darunter eine Front-End-IP-Konfiguration, einen Back-End-Adresspool, eine Lastenausgleichsregel, einen Integritätstest und eine eingehende NAT-Regel.
 

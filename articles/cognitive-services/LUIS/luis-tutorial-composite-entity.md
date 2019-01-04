@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 6: Extrahieren von zusammengesetzten Daten mit der zusammengesetzten LUIS-Entität'
+title: Entität vom Typ „Composite“
 titleSuffix: Azure Cognitive Services
 description: Hinzufügen einer zusammengesetzten Entität, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8f7edecf1abd1f01a2f40f1420a6a85224271239
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423500"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079210"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Tutorial 6: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
@@ -57,7 +58,7 @@ Erstellen Sie eine zusammengesetzte Entität, wenn die einzelnen Entitäten logi
 
 In dieser App ist der Name des Mitarbeiters in der Listenentität **Employee** definiert, und er umfasst Synonyme zum Namen, E-Mail-Adresse, die Durchwahl der Firmentelefonnummer, die Mobiltelefonnummer und die US-amerikanische Steuernummer. 
 
-Die Absicht **MoveEmployee** weist Beispieläußerungen auf, um anzufordern, dass ein Mitarbeiter von einem Gebäude oder Büro in ein anderes verlegt wird. Gebäudenamen enthalten Buchstaben („A“, „B“ usw.), während Büros Nummern („1234“, „13245“) enthalten. 
+Die Absicht **MoveEmployee** weist Beispieläußerungen auf, um anzufordern, dass ein Mitarbeiter von einem Gebäude oder Büro in ein anderes verlegt wird. Gebäudenamen sind alphabetisch: „A“, „B“ usw., während die Büros numerisch sind: „1234“, „13245“. 
 
 Zu Beispieläußerungen in der Absicht **MoveEmployee** zählen Folgende:
 
@@ -70,7 +71,7 @@ Die Anforderung zur Verlegung sollte den Mitarbeiter (mit sämtlichen Synonymen)
 
 Die aus dem Endpunkt extrahierten Daten sollten diese Informationen enthalten und in einer zusammengesetzten Entität namens `RequestEmployeeMove` zurückgeben:
 
-```JSON
+```json
 "compositeEntities": [
   {
     "parentType": "RequestEmployeeMove",
@@ -103,22 +104,22 @@ Die aus dem Endpunkt extrahierten Daten sollten diese Informationen enthalten un
 
 3. Wählen Sie das Lupensymbol auf der Symbolleiste aus, um die Liste von Äußerungen zu filtern. 
 
-    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Screenshot der LUIS-App zur Absicht „MoveEmployee“ mit hervorgehobenem Lupensymbol")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Lupensymbol](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Lupensymbol")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
 4. Geben Sie `tomorrow` in das Filtertextfeld ein, um nach der Äußerung `shift x12345 to h-1234 tomorrow` zu suchen.
 
-    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Screenshot der LUIS-App zur Absicht „MoveEmployee“ mit hervorgehobenem Filter „tomorrow“")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Filter „tomorrow“](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Filter „tomorrow“")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
     Eine andere Methode besteht darin, die Entität nach „datetimeV2“ zu filtern und dabei **Entitätsfilter** und dann **datetimeV2** aus der Liste auszuwählen. 
 
 5. Wählen Sie als erste Entität `Employee` aus, und klicken Sie dann in der Liste des Popupmenüs auf **Zusammengesetzte Entität umschließen**. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Screenshot der LUIS-App zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
 6. Wählen Sie dann die letzte Entität `datetimeV2` in der Äußerung aus. Die markierten Wörter werden grün unterstrichen, was auf eine zusammengesetzte Entität hinweist. Geben Sie im Popupmenü den zusammengesetzten Namen `RequestEmployeeMove` ein, und drücken Sie die EINGABETASTE. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Screenshot der LUIS-App zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität und Hervorhebung der Schaltfläche „Neue zusammengesetzte Entität erstellen“")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität und Hervorhebung der Schaltfläche „Neue zusammengesetzte Entität erstellen“](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität und Hervorhebung der Schaltfläche „Neue zusammengesetzte Entität erstellen“")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. Unter **Welche Arten von Entitäten möchten Sie erstellen?** sind fast alle Pflichtfelder in der Liste aufgeführt. Nur der Ursprungsort fehlt. Klicken Sie auf **Untergeordnete Entität hinzufügen**, auf **Locations::Origin** in der Liste der vorhandenen Entitäten und anschließend auf **Fertig**. 
 
@@ -135,15 +136,15 @@ Die aus dem Endpunkt extrahierten Daten sollten diese Informationen enthalten un
 
 1. Wählen Sie in jeder Beispieläußerung die Entität ganz links aus, die sich in der zusammengesetzten Entität befinden sollte. Klicken Sie dann auf **Zusammengesetzte Entität umschließen**.
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Screenshot der LUIS-App zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
 2. Wählen Sie das letzte Wort in der zusammengesetzten Entität und im Popupmenü dann **RequestEmployeeMove** aus. 
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Screenshot der LUIS-App zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
+    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
 3. Überprüfen Sie, ob alle Äußerungen in der Absicht mit der zusammengesetzten Entität bezeichnet sind. 
 
-    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Screenshot der LUIS-App zu „MoveEmployee“ mit allen bezeichneten Äußerungen")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
+    [![Screenshot von LUIS zu „MoveEmployee“ mit allen bezeichneten Äußerungen](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Screenshot von LUIS zu „MoveEmployee“ mit allen bezeichneten Äußerungen")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train"></a>Trainieren
 
@@ -161,7 +162,7 @@ Die aus dem Endpunkt extrahierten Daten sollten diese Informationen enthalten un
 
     Da mit diesem Test überprüft werden soll, ob die zusammengesetzte Entität korrekt extrahiert wurde, kann ein Test entweder eine vorhandene Beispieläußerung oder eine neue Äußerung enthalten. Ein guter Test beinhaltet alle untergeordneten Entitäten in der zusammengesetzten Entität.
 
-    ```JSON
+    ```json
     {
       "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
       "topScoringIntent": {

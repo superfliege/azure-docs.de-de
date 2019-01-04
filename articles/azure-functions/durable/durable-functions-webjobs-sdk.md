@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343155"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713268"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
 
-[Azure Functions](../functions-overview.md) und die Erweiterung [Durable Functions](durable-functions-overview.md) bauen auf dem [WebJobs SDK](../../app-service/web-sites-create-web-jobs.md) auf. Der `JobHost` im WebJobs SDK ist die Runtime in Azure Functions. Wenn Sie das Verhalten von `JobHost` auf eine Weise steuern müssen, die in Azure Functions nicht möglich ist, können Sie Durable Functions entwickeln und ausführen, indem Sie das WebJobs SDK selbst verwenden. Sie können dann Ihre Durable Functions in einem Azure WebJob oder überall dort ausführen, wo Sie eine Konsolenanwendung verwenden können.
+[Azure Functions](../functions-overview.md) und die Erweiterung [Durable Functions](durable-functions-overview.md) bauen auf dem [WebJobs SDK](../../app-service/webjobs-create.md) auf. Der `JobHost` im WebJobs SDK ist die Runtime in Azure Functions. Wenn Sie das Verhalten von `JobHost` auf eine Weise steuern müssen, die in Azure Functions nicht möglich ist, können Sie Durable Functions entwickeln und ausführen, indem Sie das WebJobs SDK selbst verwenden. Sie können dann Ihre Durable Functions in einem Azure WebJob oder überall dort ausführen, wo Sie eine Konsolenanwendung verwenden können.
 
 Das Beispiel für die Verkettung von Durable Functions ist in einer WebJobs SDK-Version verfügbar: Laden Sie das [Durable Functions-Repository](https://github.com/azure/azure-functions-durable-extension/) herunter oder klonen Sie es, und navigieren Sie zum Ordner *samples\\webjobssdk\\chaining*.
 

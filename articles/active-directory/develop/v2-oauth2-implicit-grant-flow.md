@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 878c2596a1d884e26a4b4a4ed4764cfd9ce6b39b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424099"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962578"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
 
@@ -36,7 +36,7 @@ Mit dem v2.0-Endpunkt können Sie Benutzer sowohl mit persönlichen Konten als a
 
 Bei diesen Anwendungen (AngularJS, Ember.js, React.js usw.) unterstützt Azure Active Directory (Azure AD) den Fluss für die implizite OAuth 2.0-Gewährung. Der implizite Fluss wird in der [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-4.2) beschrieben. Der größte Vorteil besteht darin, dass die App Token aus Azure AD abrufen kann, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes. Bei der Verwendung des impliziten Flusses gibt es einige wichtige Sicherheitsaspekte zu beachten, insbesondere in Bezug auf [Clients](https://tools.ietf.org/html/rfc6749#section-10.3) und [Identitätswechsel](https://tools.ietf.org/html/rfc6749#section-10.3).
 
-Wenn Sie mit dem impliziten Fluss und Azure AD Ihrer JavaScript-App eine Authentifizierungsmöglichkeit hinzufügen möchten, sollten Sie die Open Source-JavaScript-Bibliothek [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)verwenden. 
+Wenn Sie mit dem impliziten Fluss und Azure AD Ihrer JavaScript-App eine Authentifizierungsmöglichkeit hinzufügen möchten, sollten Sie die Open Source-JavaScript-Bibliothek [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)verwenden.
 
 Wenn Sie jedoch in Ihrer Single-Page-App keine Bibliothek verwenden und Protokollmeldungen selbst senden möchten, führen Sie die folgenden allgemeinen Schritte aus.
 
@@ -71,7 +71,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Klicken Sie zum Testen der Anmeldung mit dem impliziten Fluss auf <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> Nach der Anmeldung sollte der Browser mit einem `id_token` in der Adressleiste zu `https://localhost/myapp/` umgeleitet werden.
-> 
+>
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |

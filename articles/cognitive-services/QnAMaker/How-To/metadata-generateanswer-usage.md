@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim88
-ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031083"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166590"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Verwenden von Metadaten und der GenerateAnswer-API
 
@@ -58,12 +58,12 @@ Sie rufen GenerateAnswer über eine HTTP POST-Anforderung auf. Beispielcode, der
     - **QnAMaker endpoint** (Zeichenfolge): Hostname des Endpunkts, der in Ihrem Azure-Abonnement bereitgestellt wurde
 - **Anforderungsheader**
     - **Content-Type** (Zeichenfolge): Medientyp des an die API gesendeten Texts
-    - **Autorisierung** (Zeichenfolge): Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+    - **Authorization** (Zeichenfolge): Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
 - **Anforderungstext**
     - **question** (Zeichenfolge): Benutzerfrage, nach der die Knowledge Base abgefragt werden soll
     - **top** (optional, Integer): Anzahl der priorisierten Ergebnisse für die Ausgabe Der Standardwert ist 1.
-    - **userId** (optional, Zeichenfolge): eindeutige ID zur Identifizierung des Benutzers. Diese ID wird in den Chatprotokollen aufgezeichnet.
-    - **strictFilters** (optional, Zeichenfolge): weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben. Weitere Informationen finden Sie unten.
+    - **userId** (optional, Zeichenfolge): Eindeutige ID zur Identifizierung des Benutzers. Diese ID wird in den Chatprotokollen aufgezeichnet.
+    - **strictFilters** (optional, Zeichenfolge): Weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben. Weitere Informationen finden Sie unten.
     ```json
     {
         "question": "qna maker and luis",
@@ -83,12 +83,12 @@ Sie rufen GenerateAnswer über eine HTTP POST-Anforderung auf. Beispielcode, der
     - **answers:** Liste von Antworten auf die Benutzerfrage, sortiert in absteigender Rangfolge
         - **score:** Rangfolgewert zwischen 0 und 100
         - **questions:** Fragen des Benutzers
-        - **answer**: Die Antwort auf die Frage.
-        - **source:** Name der Quelle, aus der die Antwort extrahiert oder in der Knowledge Base gespeichert wurde
-        - **metadata:** die der Antwort zugeordneten Metadaten
+        - **answer:** Die Antwort auf die Frage
+        - **source:** Name der Quelle, aus der die Antwort extrahiert oder in der Wissensdatenbank gespeichert wurde
+        - **metadata:** Die der Antwort zugeordneten Metadaten
             - name: Metadatenname (Zeichenfolge, maximale Länge: 100, erforderlich)
             - value: Metadatenwert (Zeichenfolge, maximale Länge: 100, erforderlich)
-        - **Id:** die der Antwort zugewiesene eindeutige ID
+        - **Id:** Die der Antwort zugewiesene eindeutige ID
     ```json
     {
         "answers": [
@@ -167,6 +167,8 @@ Die Antwort auf den GenerateAnswer-Aufruf enthält die entsprechenden Metadateni
 Diese Informationen können verwendet werden, um den Kontext der vorherigen Konversation für die Verwendung in späteren Konversationen aufzuzeichnen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Die Veröffentlichungsseite enthält auch Informationen zum Generieren einer Antwort mit [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) und [cURL](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
 > [Erstellen einer Wissensdatenbank](./create-knowledge-base.md)

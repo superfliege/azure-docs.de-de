@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Vornehmen einer Konfigurationsänderung in der Azure AD Connect-Synchronisierung | Microsoft-Dokumentation'
+title: 'Azure AD Connect-Synchronisierung: Ändern der Konfiguration der Azure AD Connect-Synchronisierung | Microsoft-Dokumentation'
 description: Erläutert Schritt für Schritt, wie Sie eine Änderung an der Konfiguration in der Azure AD Connect-Synchronisierung vornehmen.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8aa337be2dd3c4209a3095d8733893d78f6cb74
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6579e2ced3742eb1a70ccca96b9608fc6da628ee
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310049"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190628"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
@@ -59,13 +59,13 @@ Der [Scheduler](how-to-connect-sync-feature-scheduler.md) wird standardmäßig a
 1. Klicken Sie auf **Neue Regel hinzufügen**.
 2. Geben Sie auf der Seite **Beschreibung** Folgendes ein:  
    ![Filterung für die eingehende Regel](./media/how-to-connect-sync-change-the-configuration/description2.png)  
-   * **Name**: Geben Sie einen beschreibenden Namen für die Regel ein.
-   * **Beschreibung**: Fügen Sie Informationen hinzu, denen andere Benutzer entnehmen können, wozu die Regel dient.
-   * **Verbundenes System**: Das System, in dem sich das Objekt befindet. Wählen Sie in diesem Fall **Active Directory Connector** aus.
-   * **Objekttyp für das verbundene System bzw. die Metaverse**: Wählen Sie **Benutzer** bzw. **Person** aus.
-   * **Verknüpfungstyp**: Ändern Sie diesen Wert zu **Join**.
-   * **Rangfolge**: Geben Sie einen Wert an, der im System eindeutig ist. Ein niedrigerer numerischer Wert steht für eine höhere Rangfolge.
-   * **Tag**: Lassen Sie dieses Feld leer. Dieses Feld sollte nur bei vordefinierten Regeln von Microsoft einen Wert enthalten.
+   * **Name:** Geben Sie einen beschreibenden Namen für die Regel ein.
+   * **Beschreibung:** Fügen Sie Informationen hinzu, damit andere Benutzer wissen, wozu die Regel dient.
+   * **Verbundenes System:** Das System, in dem sich das Objekt befindet. Wählen Sie in diesem Fall **Active Directory Connector** aus.
+   * **Verbundenes System/Metaverse-Objekttyp:** Wählen Sie **Benutzer** bzw. **Person** aus.
+   * **Verknüpfungstyp:** Ändern Sie diesen Wert in **Join**.
+   * **Rangfolge:** Geben Sie einen Wert an, der im System eindeutig ist. Ein niedrigerer numerischer Wert steht für eine höhere Rangfolge.
+   * **Tag:** Lassen Sie dieses Feld leer. Dieses Feld sollte nur bei vordefinierten Regeln von Microsoft einen Wert enthalten.
 3. Geben Sie auf der Seite **Bereichsfilter** den Wert **givenName ISNOTNULL** ein.  
    ![Bereichsfilter für die eingehende Regel](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    Dieser Abschnitt wird verwendet, um zu definieren, auf welche Objekte die Regel angewendet werden soll. Wenn Sie den Abschnitt leer lassen, gilt die Regel für alle Benutzerobjekte. Damit würden jedoch auch Konferenzräume, Dienstkonten und andere nicht personenbezogene Benutzerobjekte einbezogen.
@@ -91,7 +91,7 @@ Nachdem Sie diese Änderung vorgenommen haben, möchten Sie sicherstellen, dass 
    2. Wählen Sie unter **Aktionen** die Option **Ausführen** aus.
    3. Wählen Sie **Vollständige Synchronisierung** und danach **OK** aus.
    ![Vollständige Synchronisierung](./media/how-to-connect-sync-change-the-configuration/fullsync.png)  
-   Die Objekte sind jetzt in der Metaverse aktualisiert. Überprüfen Sie Ihre Änderungen, indem Sie sich das Objekt in der Metaverse ansehen.
+    Die Objekte sind jetzt in der Metaverse aktualisiert. Überprüfen Sie Ihre Änderungen, indem Sie sich das Objekt in der Metaverse ansehen.
 
 **Vorschau und vollständige Synchronisierung eines einzelnen Objekts**  
 
@@ -100,7 +100,7 @@ Nachdem Sie diese Änderung vorgenommen haben, möchten Sie sicherstellen, dass 
    3. Verwenden Sie den **Bereich**, um nach einem Objekt zu suchen, das Sie zum Testen der Änderung verwenden möchten. Wählen Sie das Objekt aus, und klicken Sie auf **Vorschau**. 
    4. Wählen Sie auf dem neuen Bildschirm **Commitvorschau** aus.  
    ![Commit preview](./media/how-to-connect-sync-change-the-configuration/commitpreview.png)  
-   Die Änderung wird jetzt an die Metaverse übergeben.
+    Die Änderung wird jetzt an die Metaverse übergeben.
 
 **Anzeigen des Objekts in der Metaverse**  
 
@@ -211,7 +211,7 @@ Vor dem Aktivieren der Synchronisierung des UserType-Attributs müssen Sie entsc
 
     Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie vor dem Aktivieren der Synchronisierung des UserType-Attributs sicherstellen, dass das ausgewählte Attribut mit dem richtigen Wert für alle vorhandenen Benutzerobjekte im lokalen Active Directory, die mit Azure AD synchronisiert werden, aufgefüllt wird.
 
-- Alternativ können Sie den Wert für das UserType-Attribut auch aus anderen Eigenschaften ableiten. Angenommen, Sie möchten alle Benutzer als **Guest** synchronisieren, wenn ihr lokales AD-Attribut „UserPrincipalName“ mit dem Domänenteil *@partners.fabrikam123.org* endet. 
+- Alternativ können Sie den Wert für das UserType-Attribut auch aus anderen Eigenschaften ableiten. Angenommen, Sie möchten alle Benutzer als **Guest** synchronisieren, wenn ihr lokales AD-Attribut „UserPrincipalName“ mit dem Domänenteil <em>@partners.fabrikam123.org</em> endet. 
 
     Wie bereits erwähnt, erlaubt Azure AD Connect das Ändern des UserType-Attributs vorhandener Azure AD-Benutzer durch Azure AD Connect nicht. Aus diesem Grund müssen Sie sicherstellen, dass die verwendete Logik mit der bereits vorhandenen Konfiguration des UserType-Attributs für alle vorhandenen Azure AD-Benutzer in Ihrem Mandanten konsistent ist.
 
@@ -289,7 +289,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
     | --- | --- | --- | --- | --- |
     | Direkt | UserType | extensionAttribute1 | Deaktiviert | Aktualisieren |
 
-    Ein weiteres Beispiel: Sie möchten den Wert für das UserType-Attribut aus anderen Eigenschaften ableiten. Angenommen, Sie möchten alle Benutzer als „Guest“ synchronisieren, wenn ihr lokales AD-Attribut „UserPrincipalName“ mit dem Domänenteil *@partners.fabrikam123.org* endet. Sie können einen Ausdruck wie den folgenden implementieren:
+    Ein weiteres Beispiel: Sie möchten den Wert für das UserType-Attribut aus anderen Eigenschaften ableiten. Angenommen, Sie möchten alle Benutzer als „Guest“ synchronisieren, wenn ihr lokales AD-Attribut „UserPrincipalName“ mit dem Domänenteil <em>@partners.fabrikam123.org</em> endet. Sie können einen Ausdruck wie den folgenden implementieren:
 
     | Attributflusstyp | Zielattribut | Quelle | Einmal anwenden | Mergetyp |
     | --- | --- | --- | --- | --- |
@@ -349,7 +349,7 @@ Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während
    4. Warten Sie, bis der Vorgang abgeschlossen wurde.
 
     > [!NOTE]
-    > Sie können den vollständigen Import im lokalen AD-Connector überspringen, wenn das Quellattribut bereits in der Liste der importierten Attribute enthalten ist. Anders gesagt: Sie mussten bei [Schritt 2: Hinzufügen des Quellattributs zum lokalen AD-Connectorschema](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema) keine Änderungen vornehmen.
+    > Sie können den vollständigen Import im lokalen AD-Connector überspringen, wenn das Quellattribut bereits in der Liste der importierten Attribute enthalten ist. Anders gesagt: Sie mussten in [Schritt 2: Hinzufügen des Quellattributs zum lokalen AD-Connectorschema](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema) keine Änderungen vornehmen.
 
 2. Führen Sie im **Azure AD-Connector** einen **vollständigen Import** aus:
 
@@ -375,7 +375,7 @@ Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während
    2. Gehen Sie im Popupdialogfeld **Connectorbereich durchsuchen** wie folgt vor:
 
       - Legen Sie den **Bereich** auf **Ausstehender Export** fest.
-      - Wählen Sie alle drei Kontrollkästchen aus: **Hinzufügen**, **Ändern** und **Löschen**.
+      - Aktivieren Sie alle drei Kontrollkästchen: **Hinzufügen**, **Ändern** und **Löschen**.
       - Klicken Sie auf die Schaltfläche **Durchsuchen**, um die Liste von Objekten mit Änderungen, die exportiert werden sollen, abzurufen. Um die Änderungen für ein bestimmtes Objekt zu untersuchen, doppelklicken Sie auf das Objekt.
       - Stellen Sie sicher, dass die Änderungen Ihren Erwartungen entsprechen.
 

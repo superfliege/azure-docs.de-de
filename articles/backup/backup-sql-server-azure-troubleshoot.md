@@ -3,7 +3,7 @@ title: Anleitung für die Azure Backup-Problembehandlung für SQL Server-VMs | M
 description: Informationen zur Problembehandlung zum Sichern von SQL Server-VMs in Azure.
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: ''
@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: markgal;anuragm
+ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 1c87382c2aae70b022fb391f80f7c75b0a4e5fe6
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296957"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339517"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Problembehandlung zum Sichern von SQL Server in Azure
 
@@ -79,13 +78,13 @@ In den folgenden Tabellen sind nach Fehlercode geordnet.
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Sicherung nicht möglich, da das Transaktionsprotokoll für die Datenquelle voll ist. | Das Transaktionsprotokoll der Datenbank ist voll. | Um dieses Problem zu beheben, lesen Sie die[SQL-Dokumentation](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
-| Diese SQL-Datenbank unterstützt nicht den angeforderten Sicherungstyp. | Sekundäre Always On-Verfügbarkeitsgruppen-Replikate unterstützen keine vollständigen und differenziellen Sicherungen. | <ul><li>Wenn Sie eine Ad-hoc-Sicherung ausgelöst haben, lösen Sie die Sicherungen auf dem primären Knoten aus.</li><li>Wenn die Sicherung gemäß einer Richtlinie geplant wurde, stellen Sie sicher, dass der primäre Knoten registriert ist. Um den Knoten zu registrieren,[führen Sie die Schritte zum Ermitteln einer SQL Server-Datenbank](backup-azure-sql-database.md#discover-sql-server-databases) aus.</li></ul> | 
+| Diese SQL-Datenbank unterstützt nicht den angeforderten Sicherungstyp. | Sekundäre Always On-Verfügbarkeitsgruppen-Replikate unterstützen keine vollständigen und differenziellen Sicherungen. | <ul><li>Wenn Sie eine Ad-hoc-Sicherung ausgelöst haben, lösen Sie die Sicherungen auf dem primären Knoten aus.</li><li>Wenn die Sicherung gemäß einer Richtlinie geplant wurde, stellen Sie sicher, dass der primäre Knoten registriert ist. Um den Knoten zu registrieren,[führen Sie die Schritte zum Ermitteln einer SQL Server-Datenbank](backup-azure-sql-database.md#discover-sql-server-databases) aus.</li></ul> |
 
 ## <a name="restore-failures"></a>Wiederherstellen von Fehlern
 
 Die folgenden Fehlercodes werden angezeigt, wenn in Wiederherstellungsaufträgen Fehler auftreten.
 
-### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite 
+### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
@@ -108,7 +107,7 @@ Die folgenden Fehlercodes werden angezeigt, wenn in Wiederherstellungsaufträgen
 
 Die folgenden Fehlercodes werden bei Fehlern bei der Registrierung angezeigt.
 
-### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError 
+### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
@@ -125,6 +124,16 @@ Die folgenden Fehlercodes werden bei Fehlern bei der Registrierung angezeigt.
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Der Azure Backup-Dienst verwendet den Azure VM-Gast-Agent für die Sicherung, der Gast-Agent ist auf dem Zielserver jedoch nicht verfügbar. | Gast-Agent nicht aktiviert oder ist fehlerhaft. | [Installieren Sie den VM-Gast-Agent](../virtual-machines/extensions/agent-windows.md) manuell. |
+
+## <a name="configure-backup-failures"></a>Fehler beim Konfigurieren der Sicherung
+
+Die folgenden Fehlercodes gelten für Fehler, die beim Konfigurieren der Sicherung auftreten.
+
+### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
+
+| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
+|---|---|---|
+| Der beabsichtigte automatische Schutz wurde entweder entfernt oder ist nicht mehr gültig. | Wenn Sie den automatischen Schutz für eine SQL-Instanz aktivieren, werden Aufträge des Typs **Sicherung konfigurieren** für alle Datenbanken in dieser Instanz ausgeführt. Wenn Sie den automatischen Schutz während der Ausführung der Aufträge deaktivieren, werden die Aufträge des Typs **In Bearbeitung** mit diesem Fehlercode abgebrochen. | Aktivieren Sie den automatischen Schutz erneut, um alle restlichen Datenbanken zu schützen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

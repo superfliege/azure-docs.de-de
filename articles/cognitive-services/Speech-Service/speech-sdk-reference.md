@@ -1,21 +1,22 @@
 ---
-title: API-Referenz zum Speech-SDK
+title: API-Referenz zum Speech-SDK – Speech Services
 titleSuffix: Azure Cognitive Services
-description: Referenz zum Speech-SDK.
+description: Das Speech-SDK (Software Development Kit) gewährt Ihren Anwendungen Zugriff auf die Funktionen des Speech-Diensts, sodass die Entwicklung sprachaktivierter Software erleichtert wird. Derzeit stellen die SDKs den Zugriff auf die Spracherkennung, die Sprachübersetzung und die Absichtserkennung bereit.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0eae4cd9919e555453bfc6d44e2ddee51f30e809
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: c962fce8b8b05a977ac7d666a53b93aeda8c5357
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257361"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099851"
 ---
 # <a name="speech-sdk-api-reference"></a>API-Referenz zum Speech-SDK
 

@@ -11,76 +11,93 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 09/07/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303063"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846894"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
-Wenn in Azure AD Privileged Identity Management (PIM) wichtige Ereignisse auftreten, werden E-Mail-Benachrichtigungen gesendet. PIM sendet E-Mail-Benachrichtigungen z.B. bei folgenden Ereignissen:
+Mit Azure AD Privileged Identity Management (PIM) wissen Sie, wann wichtige Ereignisse erfolgen, z.B. wenn eine Rolle zugewiesen oder aktiviert wird. Mit PIM werden E-Mail-Benachrichtigungen an Sie und andere Teilnehmer gesendet. Diese E-Mail-Benachrichtigungen können auch Links zu relevanten Aufgaben, z.B. Aktivieren oder Erneuern einer Rolle, enthalten. In diesem Artikel wird beschrieben, wie diese E-Mails aussehen, wann sie gesendet werden und wer sie erhält.
 
-- Wenn die Genehmigung für die Aktivierung einer privilegierten Rolle aussteht
-- Wenn die Aktivierungsanforderung einer privilegierten Rolle abgeschlossen wird
-- Wenn eine privilegierte Rolle aktiviert wird
-- Wenn eine privilegierte Rolle zugewiesen wird
-- Wenn Azure AD PIM aktiviert wird
+## <a name="sender-email-address-and-subject-line"></a>Absender-E-Mail-Adresse und Betreffzeile
 
-E-Mail-Benachrichtigungen werden an die folgenden Administratoren gesendet:
-
-- Administrator für privilegierte Rollen
-- Sicherheitsadministrator
-
-E-Mail-Benachrichtigungen werden auch an den Endbenutzer gesendet, der die privilegierte Rolle für die folgenden Ereignisse hat:
-
-- Wenn die Aktivierungsanforderung einer privilegierten Rolle abgeschlossen wird
-- Wenn eine privilegierte Rolle zugewiesen wird
-
-Ab Ende Juli 2018 weisen über PIM versendete E-Mail-Benachrichtigungen eine neue Absender-E-Mail-Adresse und ein neues Layout auf. Dieses Update wirkt sich sowohl auf PIM für Azure AD als auch auf PIM für Azure-Ressourcen aus. Bei allen Ereignissen, die zuvor eine E-Mail-Benachrichtigung ausgelöst haben, wird auch weiterhin eine gesendet. Einige E-Mails werden über aktualisierten Inhalt verfügen, der gezieltere Informationen bietet.
-
-## <a name="sender-email-address"></a>E-Mail-Adresse des Absenders
-
-Ab Ende Juli 2018 weisen E-Mail-Benachrichtigungen die folgende Adresse auf:
+Die von PIM für Azure AD- und Azure-Ressourcenrollen gesendeten E-Mails haben folgende Absender-E-Mail-Adresse:
 
 - E-Mail-Adresse: **azure-noreply@microsoft.com**
 - Anzeigename: Microsoft Azure
 
-Zuvor wurden E-Mail-Benachrichtigungen über die folgende Adresse versendet:
-
-- E-Mail-Adresse: **azureadnotifications@microsoft.com**
-- Anzeigename: Microsoft Azure AD-Benachrichtigungsdienst
-
-## <a name="email-subject-line"></a>E-Mail-Betreffzeile
-
-Ab Ende Juli 2018 werden E-Mail-Benachrichtigungen für Azure AD- und Azure-Ressourcenrollen in der Betreffzeile ein **PIM**-Präfix aufweisen. Hier sehen Sie ein Beispiel:
+Diese E-Mails enthalten in der Betreffzeile das Präfix **PIM**. Hier sehen Sie ein Beispiel:
 
 - PIM: Alain Charon wurde permanent die Rolle des Benutzers mit Leseberechtigung für Sicherungsfunktionen zugewiesen.
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>PIM-E-Mails für Azure AD-Rollen
 
-Ab Ende Juli 2018 weisen die PIM-E-Mail-Benachrichtigungen für Azure AD-Rollen ein aktualisiertes Layout auf. Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn ein Benutzer eine privilegierte Rolle für die fiktive Organisation Contoso aktiviert.
+PIM sendet E-Mails bei folgenden Ereignissen für Azure AD-Rollen:
+
+- Wenn die Genehmigung für die Aktivierung einer privilegierten Rolle aussteht
+- Wenn die Aktivierungsanforderung einer privilegierten Rolle abgeschlossen wird
+- Wenn eine privilegierte Rolle als berechtigt zugewiesen wird
+- Wenn Azure AD PIM aktiviert wird
+
+Wer diese E-Mails für Azure AD-Rollen erhält, hängt von der Rolle, dem Ereignis und der Einstellung für Benachrichtigungen ab:
+
+| Benutzer | Für die Rollenaktivierung steht Genehmigung aus | Anforderung zur Rollenaktivierung ist abgeschlossen | Rolle wird als berechtigt zugewiesen | PIM ist aktiviert |
+| --- | --- | --- | --- | --- |
+| Administrator für privilegierte Rollen</br>(Aktiviert/Berechtigt) | JA</br>(nur, wenn keine expliziten genehmigenden Personen angegeben sind) | Ja* | JA | JA |
+| Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA | JA |
+| Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA | JA |
+
+\* Wenn die [Einstellung **Benachrichtigungen**](pim-how-to-change-default-settings.md#notifications) auf **Aktivieren** festgelegt ist.
+
+Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn ein Benutzer eine Azure AD-Rolle für die fiktive Organisation Contoso aktiviert.
 
 ![Neue PIM-E-Mail für Azure AD-Rollen](./media/pim-email-notifications/email-directory-new.png)
 
-Wenn ein Benutzer früher eine privilegierte Rolle aktivierte, erhielt er eine Nachricht wie die folgende.
+### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Wöchentliche PIM-Zusammenfassung für Azure AD-Rollen per E-Mail
 
-![Alte PIM-E-Mail für Azure AD-Rollen](./media/pim-email-notifications/email-directory-old.png)
+Eine wöchentliche PIM-Zusammenfassung für Azure AD-Rollen wird per E-Mail an Administratoren für privilegierte Rollen, Sicherheitsadministratoren und globale Administratoren gesendet, die PIM aktiviert haben. Diese wöchentliche E-Mail enthält eine Momentaufnahme der PIM-Aktivitäten der Woche sowie der Zuweisungen privilegierter Rollen. Sie ist nur für Mandanten in der öffentlichen Cloud verfügbar. Hier sehen Sie eine Beispiel-E-Mail:
+
+![Wöchentliche PIM-Zusammenfassung für Azure AD-Rollen per E-Mail](./media/pim-email-notifications/email-directory-weekly.png)
+
+Die E-Mail enthält vier Kacheln:
+
+| Kachel | BESCHREIBUNG |
+| --- | --- |
+| **Users activated** (Benutzer aktiviert) | Zeigt an, wie oft Benutzer ihre berechtigte Rolle im Mandanten aktiviert haben. |
+| **Users made permanent** (Benutzer als permanent festgelegt) | Zeigt an, wie oft Benutzer mit einer berechtigten Zuweisung als permanent festgelegt werden. |
+| **Role assignments in PIM** (Rollenzuweisungen in PIM) | Zeigt an, wie oft Benutzern eine berechtigte Rolle in PIM zugewiesen wird. |
+| **Role assignments outside of PIM** (Rollenzuweisungen außerhalb von PIM) | Zeigt an, wie oft Benutzern eine permanente Rolle außerhalb von PIM (innerhalb von Azure AD) zugewiesen wird. |
+
+Im Abschnitt **Overview of your top roles** (Übersicht über Ihre wichtigsten Rollen) sind die fünf wichtigsten Rollen in Ihrem Mandanten basierend auf der Gesamtzahl der permanenten und berechtigten Administratoren für jede Rolle aufgeführt. Über den Link **Aktion ausführen** wird der [PIM-Assistent](pim-security-wizard.md) geöffnet, in dem Sie permanente Administratoren in Batches in berechtigte Administratoren umwandeln können.
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>PIM-E-Mails für Azure-Ressourcenrollen
 
-Ab Ende Juli 2018 weisen die PIM-E-Mail-Benachrichtigungen für Azure-Ressourcenrollen ein aktualisiertes Layout auf. Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn einem Benutzer eine privilegierte Rolle für die fiktive Organisation Contoso zugewiesen wird.
+PIM sendet bei folgenden Ereignissen für Azure-Ressourcenrollen E-Mails an Besitzer und Benutzerzugriffsadministratoren:
+
+- Wenn die Genehmigung für eine Rollenzuweisung aussteht
+- Wenn eine Rolle zugewiesen wird
+- Wenn eine Rolle bald abläuft
+- Wenn eine Rolle erweitert werden kann
+- Wenn eine Rolle von einem Endbenutzer erneuert wird
+- Wenn die Anforderung zur Rollenaktivierung abgeschlossen wird
+
+PIM sendet bei folgenden Ereignissen für Azure-Ressourcenrollen E-Mails an Endbenutzer:
+
+- Wenn dem Benutzer eine Rolle zugewiesen wird
+- Wenn die Rolle eines Benutzers abgelaufen ist
+- Wenn die Rolle eines Benutzers erweitert wird
+- Wenn die Anforderung zur Rollenaktivierung eines Benutzers abgeschlossen wird
+
+Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn einem Benutzer eine Azure-Ressourcenrolle für die fiktive Organisation Contoso zugewiesen wird.
 
 ![Neue PIM-E-Mails für Azure-Ressourcenrollen](./media/pim-email-notifications/email-resources-new.png)
-
-Wenn einem Benutzer früher eine privilegierte Rolle zugewiesen wurde, erhielt er eine Nachricht wie die folgende.
-
-![Alte PIM-E-Mail für Azure-Ressourcenrollen](./media/pim-email-notifications/email-resources-old.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

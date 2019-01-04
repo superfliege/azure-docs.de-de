@@ -6,19 +6,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 10/29/2018
-ms.openlocfilehash: 1a8396f91f1e6f863d99be17dc8d00133a1bdd3a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.date: 12/12/2018
+ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162549"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314396"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
-Die Installation von Mobility Service ist ein wichtiger Schritt bei der Aktivierung der Replikation. Der Erfolg dieses Schritts hängt ausschließlich davon ab, ob Sie die Voraussetzungen erfüllen und mit unterstützten Konfigurationen arbeiten. Im Folgenden werden die Gründe für die häufigsten Fehler aufgeführt, die bei der Installation von Mobility Service auftreten.
+Die Installation von Mobility Service ist ein wichtiger Schritt bei der Aktivierung der Replikation. Der Erfolg dieses Schritts hängt ausschließlich davon ab, ob Sie die Voraussetzungen erfüllen und mit unterstützten Konfigurationen arbeiten. Im Folgenden werden die Gründe für die häufigsten Fehler aufgeführt, die bei der Installation von Mobility Service auftreten:
 
 * Fehler bei Anmeldeinformationen/Berechtigungen
+* Anmeldefehler
 * Verbindungsfehler
 * Nicht unterstützte Betriebssysteme
 * Fehler bei der VSS-Installation
@@ -28,23 +29,63 @@ Wenn Sie die Replikation aktivieren, versucht Azure Site Recovery, die Pushinsta
 ## <a name="credentials-check-errorid-95107--95108"></a>Überprüfung der Anmeldeinformationen (Fehler-ID: 95107 & 95108)
 
 * Überprüfen Sie, ob das beim Aktivieren der Replikation ausgewählte Benutzerkonto **gültig und korrekt** ist.
-* Azure Site Recovery benötigt **Administratorberechtigungen**, um die Pushinstallation ausführen zu können.
-  * Überprüfen Sie unter Windows, ob das Benutzerkonto auf dem Quellcomputer über lokalen oder domänenspezifischen Administratorzugriff verfügt.
+* Azure Site Recovery benötigt ein **ROOT**-Konto oder ein Benutzerkonto mit **Administratorberechtigungen**, um die Pushinstallation ausführen zu können. Andernfalls wird die Pushinstallation auf dem Quellcomputer blockiert.
+  * Überprüfen Sie unter Windows (**Fehler 95107**), ob das Benutzerkonto auf dem Quellcomputer über lokalen oder domänenspezifischen Administratorzugriff verfügt.
   * Wenn Sie kein Domänenkonto verwenden, müssen Sie die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer deaktivieren.
     * Fügen Sie zum Deaktivieren der Remote-Benutzerzugriffssteuerung unter dem Registrierungsschlüssel „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System“ einen neuen DWORD-Eintrag hinzu: „LocalAccountTokenFilterPolicy“. Legen Sie den Wert auf 1 fest. Führen Sie zur Ausführung dieses Schritts den folgenden Befehl an der Eingabeaufforderung aus:
 
          `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
-  * Unter Linux müssen Sie das Stammkonto auswählen, um die Installation des Mobility Service-Agents erfolgreich ausführen zu können.
+  * Unter Linux (**Fehler 95108**) müssen Sie das root-Konto auswählen, um die Installation des Mobility-Agents erfolgreich ausführen zu können. Außerdem müssen die SFTP-Dienste ausgeführt werden. Gehen Sie wie folgt vor, um das SFTP-Subsystem und die Kennwortauthentifizierung in der Datei „sshd_config“ zu aktivieren:
+    1. Melden Sie sich als Root-Benutzer an.
+    2. Wechseln Sie zur Datei „/etc/ssh/sshd_config“, und suchen Sie die Zeile, die mit „PasswordAuthentication“ beginnt.
+    3. Heben Sie die Auskommentierung der Zeile auf, und ändern Sie den Wert in „yes“.
+    4. Suchen Sie die Zeile, die mit „Subsystem“ beginnt, und heben Sie die Auskommentierung der Zeile auf.
+    5. Starten Sie den SSHD-Dienst neu.
 
 Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möchten, folgen Sie den [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) angegebenen Anweisungen.
 
-## <a name="connectivity-check-errorid-95117--97118"></a>**Konnektivitätsprüfung (Fehler-ID: 95117 & 97118)**
+## <a name="insufficient-privileges-failure-errorid-95517"></a>Fehler durch unzureichende Berechtigungen (Fehler-ID: 95517)
+
+Wenn der zum Installieren des Mobilitäts-Agents ausgewählte Benutzer nicht über Administratorberechtigungen verfügt, wird dem Konfigurationsserver/Prozessserver für horizontales Hochskalieren das Kopieren der Mobility-Agent-Software auf den Quellcomputer untersagt. Dieser Fehler ist somit das Ergebnis eines Fehlers durch verweigerten Zugriff. Stellen Sie sicher, dass das Benutzerkonto über Administratorberechtigungen verfügt.
+
+Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möchten, folgen Sie den [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) angegebenen Anweisungen.
+
+## <a name="insufficient-privileges-failure-errorid-95518"></a>Fehler durch unzureichende Berechtigungen (Fehler-ID: 95518)
+
+Wenn beim Versuch, sich beim Quellcomputer anzumelden, ein Fehler bei der Einrichtung der Vertrauensstellung zwischen der primären Domäne und der Arbeitsstation auftritt, tritt bei der Installation des Mobility-Agents ein Fehler mit der ID 95518 auf. Stellen Sie daher sicher, dass das Benutzerkonto zum Installieren des Mobility-Agents über Administratorberechtigungen für die Anmeldung über die primäre Domäne des Quellcomputers verfügt.
+
+Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möchten, folgen Sie den [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) angegebenen Anweisungen.
+
+## <a name="login-failure-errorid-95519"></a>Fehler bei der Anmeldung (Fehler-ID: 95519)
+
+Das beim Aktivieren der Replikation ausgewählte Benutzerkonto wurde deaktiviert. Um das Benutzerkonto zu aktivieren, lesen Sie [diesen](https://aka.ms/enable_login_user) Artikel, oder führen Sie den folgenden Befehl aus, wobei Sie *username* durch den tatsächlichen Benutzernamen ersetzen.
+`net user 'username' /active:yes`
+
+## <a name="login-failure-errorid-95520"></a>Fehler bei der Anmeldung (Fehler-ID: 95520)
+
+Durch mehrfache fehlerhafte Versuche des Zugriffs auf einen Computer wird das Benutzerkonto gesperrt. Der Fehler kann folgende Ursachen haben:
+
+* Die bei der Konfiguration angegebene Anmeldeinformationen sind falsch, oder
+* Das beim Aktivieren der Replikation ausgewählte Benutzerkonto ist falsch.
+
+Ändern Sie daher die ausgewählten Anmeldeinformationen, indem Sie die [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) angegebenen Anweisungen befolgen, und wiederholen Sie den Vorgang nach einiger Zeit.
+
+## <a name="login-failure-errorid-95521"></a>Fehler bei der Anmeldung (Fehler-ID: 95521)
+
+Dieser Fehler tritt auf, wenn die Anmeldeserver auf dem Quellcomputer nicht verfügbar sind. Die Nichtverfügbarkeit von Anmeldeservern führt zu einem Fehler bei der Anmeldeanforderung, sodass der Mobility-Agent nicht installiert werden kann. Um sich erfolgreich anzumelden, stellen Sie sicher, dass die Anmeldeserver auf dem Quellcomputer verfügbar sind, und starten Sie den Anmeldedienst. Ausführliche Anweisungen finden Sie [hier](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
+
+## <a name="login-failure-errorid-95522"></a>Fehler bei der Anmeldung (Fehler-ID: 95522)
+
+Der Anmeldedienst wird auf dem Quellcomputer nicht ausgeführt. Dies führte zu einem Fehler bei der Anmeldeanforderung. Der Mobility-Agent kann daher nicht installiert werden. Um dieses Problem zu beheben, stellen Sie sicher, dass für eine erfolgreiche Anmeldung der Anmeldedienst auf dem Quellcomputer ausgeführt wird. Um den Anmeldedienst zu starten, führen Sie den Befehl „net start Logon“ an einer Eingabeaufforderung aus, oder starten Sie den Dienst NetLogon im Task-Manager.
+
+## <a name="connectivity-failure-errorid-95117--97118"></a>**Konnektivitätsfehler (Fehler-ID: 95117 & 97118)**
+
+Der Konfigurationsserver/Prozessserver für horizontales Hochskalieren versucht, eine Verbindung mit dem virtuellen Quellcomputer herzustellen, um den Mobility-Agent zu installieren. Dieser Fehler tritt auf, wenn der Quellcomputer aufgrund von Problemen mit der Netzwerkverbindung nicht erreichbar ist. Behebung:
 
 * Stellen Sie sicher, dass Sie Ihren Quellcomputer über den Konfigurationsserver pingen können. Wenn Sie beim Aktivieren der Replikation einen Prozessserver für horizontales Skalieren ausgewählt haben, stellen Sie sicher, dass Sie Ihren Quellcomputer über den Prozessserver pingen können.
   * Verwenden Sie in der Befehlszeile des Quellservercomputers wie unten gezeigt Telnet zum Pingen des Konfigurationsservers oder Prozessservers für horizontales Skalieren mit dem HTTPS-Port (135), um festzustellen, ob Netzwerkkonnektivitätsprobleme bestehen oder der Port durch die Firewall blockiert wird.
 
      `telnet <CS/ scale-out PS IP address> <135>`
-  * Überprüfen Sie den Status des Diensts **InMage Scout VX Agent – Sentinel/Outpost**. Starten Sie den Dienst, wenn er nicht ausgeführt wird.
 * Darüber hinaus gilt für **Linux-VMs** Folgendes:
   * Überprüfen Sie, ob die aktuellen Versionen der Pakete openssh, openssh-server und openssl installiert sind.
   * Stellen Sie unbedingt sicher, dass Secure Shell (SSH) auf Port 22 aktiviert ist und ausgeführt wird.
@@ -57,9 +98,13 @@ Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möch
 * Ein Verbindungsversuch könnte fehlschlagen, wenn nach einer bestimmten Zeit keine ordnungsgemäße Antwort erfolgt ist, oder es ist ein Fehler bei einer hergestellten Verbindung aufgetreten, weil der verbundene Host nicht reagiert hat.
 * Es kann sich um ein Verbindungs-, Netzwerk- oder Domänenproblem handeln. Es könnte sich auch um ein Problem beim Auflösen von DNS-Namen oder um ein Auslastungsproblem des TCP-Ports handeln. Überprüfen Sie, ob in Ihrer Domäne derartige bekannte Probleme vorkommen.
 
+## <a name="connectivity-failure-errorid-95523"></a>Konnektivitätsfehler (Fehler-ID: 95523)
+
+Dieser Fehler tritt auf, wenn das Netzwerk, in dem sich der Quellcomputer befindet, nicht gefunden wurde. Möglicherweise wurde er gelöscht oder ist nicht mehr verfügbar. Dieser Fehler kann nur behoben werden, indem Sie sicherstellen, dass das Netzwerk vorhanden ist.
+
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Überprüfung der Datei- und Druckerfreigabedienste (Fehler-ID: 95105 & 95106)
 
-Überprüfen Sie nach der Konnektivitätsprüfung, ob der Datei- und Druckerfreigabedienst auf Ihrem virtuellen Computer aktiviert ist.
+Überprüfen Sie nach der Konnektivitätsprüfung, ob der Datei- und Druckerfreigabedienst auf Ihrem virtuellen Computer aktiviert ist. Diese Einstellungen sind erforderlich, um den Mobility-Agent auf den Quellcomputer zu kopieren.
 
 **Windows 2008 R2 und vorherige Versionen**:
 
@@ -73,11 +118,11 @@ Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möch
 
 Um die Datei- und Druckerfreigabe in **höheren Versionen** zu aktivieren, befolgen Sie die [hier](vmware-azure-install-mobility-service.md) angegebenen Anweisungen.
 
-## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Überprüfung der Konfiguration der Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI)
+## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Überprüfung der Konfiguration der Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI) (Fehlercode: 95103)
 
-Aktivieren Sie nach der Überprüfung der Datei- und Druckerfreigabedienste den WMI-Dienst über die Firewall.
+Aktivieren Sie nach der Überprüfung der Datei- und Druckerfreigabedienste den WMI-Dienst für private, öffentliche und Domänenprofile über die Firewall. Diese Einstellungen sind erforderlich, um die Remoteausführung auf dem Quellcomputer abzuschließen. Aktivieren:
 
-* Klicken Sie in der Systemsteuerung auf „Sicherheit“, und klicken Sie dann auf „Windows-Firewall“.
+* Wechseln Sie zur Systemsteuerung, klicken Sie auf „Sicherheit“, und klicken Sie dann auf „Windows-Firewall“.
 * Klicken Sie auf „Einstellungen ändern“, und klicken Sie dann auf die Registerkarte „Ausnahmen“.
 * Aktivieren Sie im Fenster „Ausnahmen“ das Kontrollkästchen für die Windows-Verwaltungsinstrumentation (WMI), um den WMI-Datenverkehr durch die Firewall zu aktivieren. 
 
@@ -93,6 +138,24 @@ Weitere Artikel zur WMI-Problembehandlung finden Sie unter den folgenden Links.
 Eine andere häufige Ursache für Fehler ist ein nicht unterstütztes Betriebssystem. Stellen Sie sicher, dass Sie ein unterstütztes Betriebssystem/eine unterstützte Kernel-Version verwenden, um eine erfolgreiche Installation von Mobility Service zu ermöglichen.
 
 Informationen zu den von Azure Site Recovery unterstützten Betriebssystemen finden Sie in unserem [Dokument zur Unterstützungsmatrix](vmware-physical-azure-support-matrix.md#replicated-machines).
+
+## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Start- und Systempartitionen/Volumes sind nicht derselbe Datenträger (Fehler-ID: 95309)
+
+Vor Version 9.20 wurden Start- und Systempartitionen/Volumes auf verschiedenen Datenträgern als Konfiguration nicht unterstützt. Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) wird diese Konfiguration unterstützt. Verwenden Sie für diese Unterstützung die neueste Version.
+
+## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systempartition auf mehreren Datenträgern (Fehler-ID: 95313)
+
+Vor Version 9.20 wurden Stammpartitionen oder Volumes auf mehreren Datenträgern als Konfiguration nicht unterstützt. Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) wird diese Konfiguration unterstützt. Verwenden Sie für diese Unterstützung die neueste Version.
+
+## <a name="lvm-support-from-920-version"></a>LVM-Unterstützung ab Version 9.20
+
+Vor Version 9.20 wurde LVM nur für Datenträger für Daten unterstützt. /boot muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.
+
+Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) werden [Betriebssystemdatenträger auf LVM](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) unterstützt. Verwenden Sie für diese Unterstützung die neueste Version.
+
+## <a name="insufficient-space-errorid-95524"></a>Nicht genügend Speicherplatz (Fehler-ID: 95524)
+
+Zum Kopieren des Mobility-Agents auf den Quellcomputer ist ein freier Speicherplatz von mindestens 100 MB erforderlich. Stellen Sie daher sicher, dass der Quellcomputer über den erforderlichen freien Speicherplatz verfügt, und wiederholen Sie den Vorgang.
 
 ## <a name="vss-installation-failures"></a>Fehler bei der VSS-Installation
 

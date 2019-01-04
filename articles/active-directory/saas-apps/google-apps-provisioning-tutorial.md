@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 48a835bf8c63ffa5512173b600fb85abd5c6cb45
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346388"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840349"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -67,7 +67,7 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 > [!NOTE]
 > Eine weitere Option für die Automatisierung der Benutzerbereitstellung für G Suite ist die Verwendung von [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS stellt Ihre lokalen Active Directory-Identitäten für G Suite bereit. Im Gegensatz dazu stellt die Lösung in diesem Tutorial Ihre Azure Active Directory-Benutzer (Cloud) und E-Mail-fähigen Gruppen für G Suite bereit. 
 
-1. Melden Sie sich bei der [Google Apps-Verwaltungskonsole](http://admin.google.com/) mit Ihrem Administratorkonto an, und wählen Sie **Sicherheit** aus. Sollte der Link nicht zu sehen sein, befindet er sich möglicherweise unter dem Menü **Weitere Steuerelemente** am unteren Bildschirmrand.
+1. Melden Sie sich bei der [Google Apps-Verwaltungskonsole](https://admin.google.com/) mit Ihrem Administratorkonto an, und wählen Sie **Sicherheit** aus. Sollte der Link nicht zu sehen sein, befindet er sich möglicherweise unter dem Menü **Weitere Steuerelemente** am unteren Bildschirmrand.
    
     ![Wählen Sie „Sicherheit“ aus.][10]
 
@@ -110,7 +110,7 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 
 1. Nachdem Sie alle Ihre Domänen mit Azure AD überprüft haben, müssen Sie sie mit Google Apps erneut überprüfen. Führen Sie für jede Domäne, die noch nicht für Google registriert ist, die folgenden Schritte aus:
    
-    a. Wählen Sie in der [Google Apps-Verwaltungskonsole](http://admin.google.com/) die Option **Domänen** aus.
+    a. Wählen Sie in der [Google Apps-Verwaltungskonsole](https://admin.google.com/) die Option **Domänen** aus.
      
      ![Auswählen von „Domänen“][20]
 
@@ -129,7 +129,7 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
      > [!WARNING]
      > Wenn Sie die primäre Domäne für Ihren G Suite-Mandanten ändern und das einmalige Anmelden mit Azure AD bereits konfiguriert haben, müssen Sie Schritt 3 unter [Schritt 2: Aktivieren der einmaligen Anmeldung](#step-two-enable-single-sign-on) wiederholen.
        
-1. Wählen Sie in der [Google Apps-Verwaltungskonsole](http://admin.google.com/) die Option **Administratorrollen** aus.
+1. Wählen Sie in der [Google Apps-Verwaltungskonsole](https://admin.google.com/) die Option **Administratorrollen** aus.
    
      ![Auswählen von „Google Apps“][26]
 

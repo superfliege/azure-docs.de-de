@@ -1,21 +1,22 @@
 ---
-title: Hinzufügen von Absichten in LUIS-Anwendungen
-titleSuffix: Azure Cognitive Services
+title: Hinzufügen von Absichten
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Fügen Sie Ihrer LUIS-App Absichten hinzu, um Gruppen von Fragen oder Befehlen zu identifizieren, die den gleichen Zweck verfolgen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.component: language-understanding
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3e6064b4c202c36e4b63d6e06edfbf3149f6665f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139919"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139857"
 ---
 # <a name="add-intents"></a>Hinzufügen von Absichten 
 
@@ -57,7 +58,7 @@ Beispieläußerungen sind Textbeispiele für Benutzerfragen oder -befehle. Füge
 
 Eine Äußerung in einer Absicht kann eine Abweichung bei der Absichtsvorhersage zwischen der ausgewählten Absicht und dem Vorhersageergebnis aufweisen. LUIS gibt diese Abweichung mit einem roten Kasten an, mit dem in der Zeile mit der Beispieläußerung die **bezeichnete Absicht** gekennzeichnet wird. 
 
-![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobener Äußerung](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+![Screenshot der Detailseite „Absichten“ mit Abweichungsfehlern für die Äußerungsvorhersage](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
 Wählen Sie im oberen Navigationsbereich die Option **Trainieren**. Die Abweichung der Vorhersage ist nun nicht mehr vorhanden.
 
