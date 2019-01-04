@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961602"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714320"
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
 Mit der [Allgemeine Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
@@ -376,25 +376,25 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 [App Service pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatische Skalierung]: ../app-service/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-web-overview.md
+[Azure App Service]: ../app-service/overview.md
 [Klassisches Azure-Portal]: https://manage.windowsazure.com
 [Azure-Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Azure Scheduler-Pläne]: ../scheduler/scheduler-plans-billing.md
-[fortlaufend bereitstellen]: ../app-service/app-service-continuous-deployment.md
+[fortlaufend bereitstellen]: ../app-service/deploy-continuous-deployment.md
 [Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: https://curl.haxx.se/
 [benutzerdefinierten Domänennamen]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: https://www.telerik.com/fiddler
 [Allgemeine Verfügbarkeit von Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[Protokollierung]: ../app-service/web-sites-enable-diagnostic-log.md
+[Protokollierung]: ../app-service/troubleshoot-diagnostic-logs.md
 [Mobile Apps-Node.js-SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services im Vergleich mit App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Leistungsüberwachung]: ../app-service/web-sites-monitor.md
 [Postman]: https://www.getpostman.com/
-[Stagingslots]: ../app-service/web-sites-staged-publishing.md
+[Stagingslots]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [Funktionen]: ../azure-functions/functions-overview.md

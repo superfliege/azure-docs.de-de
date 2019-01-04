@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 432f1a89979829bd43596d0d6a3ab7a2a3bfb996
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2b427669fe692704343d5a3c2096df92cffb8d76
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336481"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583985"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -98,7 +98,7 @@ Quell-IP-Adressbereiche
     - 13.106.38.148
     - 13.106.57.196
 
-Um Updates über Änderungen an diesen IP-Adressen zu erhalten, empfehlen wir Ihnen, eine [Service Health-Warnung](./../../monitoring-and-diagnostics/monitoring-service-notifications.md) zu konfigurieren, die eine Überwachung auf Informationsbenachrichtigungen des Aktionsgruppendiensts ausführt.
+Um Updates über Änderungen an diesen IP-Adressen zu erhalten, empfehlen wir Ihnen, eine [Service Health-Warnung](./../../azure-monitor/platform/service-notifications.md) zu konfigurieren, die eine Überwachung auf Informationsbenachrichtigungen des Aktionsgruppendiensts ausführt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte ##

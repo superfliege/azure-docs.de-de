@@ -1,23 +1,22 @@
 ---
-title: 'Azure Cosmos DB: .NET Change Feed Processor-API, -SDK und -Ressourcen | Microsoft-Dokumentation'
+title: 'Azure Cosmos DB: .NET Change Feed Processor-API, -SDK und -Ressourcen'
 description: Wichtige Informationen zur Change Feed Processor-API und zum Change Feed Processor-SDK, einschließlich Terminen für Veröffentlichung und Außerbetriebnahme sowie Änderungen an den einzelnen Versionen des .NET Change Feed Processor-SDK.
 services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7b6fefd575901648a99bb3a67a05e705622bb74a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632482"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407863"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
@@ -28,7 +27,7 @@ ms.locfileid: "52632482"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -42,6 +41,10 @@ ms.locfileid: "52632482"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+* Unterstützung für die Verarbeitung von Aufteilungen von Sammlungen, die gemeinsam genutzten Datenbankdurchsatz verwenden, wurde hinzugefügt.
+  * Diese Version behebt ein Problem, das u. U. bei einer Aufteilung von Sammlungen bei gemeinsam genutztem Datenbankdurchsatz entsteht, wenn die Aufteilung zu einem Partitionsausgleich (Partition Rebalancing) führt, bei dem nur ein untergeordneter Partitionsschlüsselbereich (statt zwei) erstellt wird. In diesem Fall kann der Change Feed Processor beim Löschen der Lease für den alten Partitionsschlüsselbereich hängen bleiben und erstellt keine neuen Leases mehr. Dieses Problem wurde in diesem Release behoben.
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Die Eigenschaft ChangeFeedProcessorOptions.StartContinuation wurde hinzugefügt, um das Starten des Änderungsfeeds über das Fortsetzungstoken für die Anforderung zu unterstützen. Dies wird nur verwendet, wenn die Leasesammlung leer ist oder für eine Lease kein ContinuationToken festgelegt wurde. Bei Leases in einer Leasesammlung, für die ein ContinuationToken festgelegt wurde, wird dieses verwendet und ChangeFeedProcessorOptions.StartContinuation ignoriert.
@@ -155,6 +158,10 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.5](#2.2.5) |13. Dezember 2018 |--- |
+| [2.2.4](#2.2.4) |29. November 2018 |--- |
+| [2.2.3](#2.2.3) |19. November 2018 |--- |
+| [2.2.2](#2.2.2) |31. Oktober 2018 |--- |
 | [2.2.1](#2.2.1) |24. Oktober 2018 |--- |
 | [1.3.3](#1.3.3) |8. Mai 2018 |--- |
 | [1.3.2](#1.3.2) |18. April 2018 |--- |

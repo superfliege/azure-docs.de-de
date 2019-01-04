@@ -1,26 +1,24 @@
 ---
-title: Load Balancer mit TCP-Rücksetzung bei Leerlauf | Microsoft-Dokumentation
+title: Load Balancer mit TCP-Rücksetzung bei Leerlauf
+titlesuffix: Azure Load Balancer
 description: Load Balancer mit bidirektionalen TCP-RST-Paketen bei Leerlauftimeout
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/08/2018
+ms.date: 12/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9aa3811eb03d38a4c6ab8203512f3e6699098122
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883634"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257290"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer mit TCP-Rücksetzung bei Leerlauf (öffentliche Vorschau)
 
@@ -76,7 +74,17 @@ Dieser Parameter gilt zurzeit in den folgenden Regionen.  In hier nicht aufgefü
 | Region |
 |---|
 | Asien, Südosten |
+| Brasilien Süd |
+| Kanada, Mitte |
 | Europa, Westen |
+| Indien, Mitte |
+| Indien, Westen |
+| Japan, Westen |
+| Korea, Mitte |
+| Korea, Süden |
+| Großbritannien, Norden |
+| Großbritannien, Süden 2 |
+| USA, Osten |
 | USA (Ost 2) |
 | Vereinigtes Königreich, Norden |
 | USA, Westen |

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6ce51dc9bbcdc7b46593a4800c4fce07a42f3171
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345066"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972170"
 ---
 # <a name="offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“
 
@@ -42,9 +42,6 @@ Dieser Bezeichner bezieht sich auf Ihr Konto. Wenn Sie sich mit Ihrem Organisati
 *Name*
 
 Dies ist die Zeichenfolge, die als Angebotsname in AppSource oder Azure Marketplace angezeigt wird. Das Feld *Name* ist auf 50 Zeichen begrenzt.  Der Prüfer muss Ihren Titel ggf. bearbeiten, damit die Dauer und der Angebotstyp an den Angebotsnamen angefügt werden können.
-
->[!Note]
->Wichtig: Geben Sie hier nur den Namen des eigentlichen Diensts ein. Fügen Sie weder die Dauer noch den Typ des Diensts hinzu.
 
 Das folgende Beispiel von Edgewater Fullscope zeigt, wie der Angebotsname aufgebaut ist. Der Angebotsname wird wie folgt angezeigt:
 

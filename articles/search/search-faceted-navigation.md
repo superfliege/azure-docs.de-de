@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 3/10/2017
+ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313937"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632432"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.
@@ -34,7 +34,7 @@ Bei Ihrer Anwendungsentwicklung entfällt ein Großteil der Arbeit auf die Erste
 ## <a name="sample-code-and-demo"></a>Beispielcode und Demo
 In diesem Artikel wird ein Stellenportal als Beispiel verwendet. Das Beispiel wird als eine ASP.NET MVC-Anwendung implementiert.
 
--   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](http://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+-   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](https://azjobsdemo.azurewebsites.net/) anzeigen und testen.
 
 -   Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 
@@ -371,7 +371,7 @@ Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für Azure Search](https
 ## <a name="try-the-demo"></a>Testen Sie die Demo
 Die Azure Search-Demo „Job Portal“ enthält die Beispiele, auf die in diesem Artikel Bezug genommen wird.
 
--   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](http://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+-   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](https://azjobsdemo.azurewebsites.net/) anzeigen und testen.
 
 -   Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 
@@ -396,12 +396,12 @@ Achten Sie bei der Arbeit mit Suchergebnissen auf die Veränderung der Abfrageko
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Weitere Informationen
-[Azure Search Deep Dive](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410) ist in diesem Zusammenhang interessant. Ab 45:25 wird die Implementierung von Facetten vorgeführt.
+[Azure Search Deep Dive](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410) ist in diesem Zusammenhang interessant. Ab 45:25 wird die Implementierung von Facetten vorgeführt.
 
 Weitere Einblicke in die Entwurfsprinzipien der Facettennavigation erhalten Sie unter folgenden Links:
 
 * [Designing for Faceted Search](http://www.uie.com/articles/faceted_search/)
-* [Entwurfsmuster: Facettennavigation](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [Entwurfsmuster: Facettennavigation](https://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
@@ -431,7 +431,7 @@ Weitere Einblicke in die Entwurfsprinzipien der Facettennavigation erhalten Sie 
 
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/

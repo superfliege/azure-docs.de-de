@@ -1,12 +1,11 @@
 ---
-title: 'Übersicht: Azure Standard Load Balancer | Microsoft-Dokumentation'
+title: Was ist Azure Load Balancer Standard?
+titlesuffix: Azure Load Balancer
 description: 'Übersicht: Features von Azure Standard Load Balancer'
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161640"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438760"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Übersicht: Azure Standard Load Balancer
 
@@ -58,7 +57,7 @@ Lesen Sie [Dienstgrenzwerte für Load Balancer](https://aka.ms/lblimits) sowie [
 
 ### <a name="backend"></a>Back-End-Pool
 
-Ein Standard Load Balancer-Back-End-Pool wird um jede Ressource eines virtuellen Computers in einem virtuellen Netzwerk erweitert.  Er kann bis zu 1000 Back-End-Instanzen enthalten.  Eine Back-End-Instanz ist eine IP-Konfiguration, die eine Eigenschaft einer NIC-Ressource ist.
+Ein Load Balancer Standard-Back-End-Pool wird um beliebige Ressourcen eines virtuellen Computers in einem virtuellen Netzwerk erweitert.  Er kann bis zu 1000 Back-End-Instanzen enthalten.  Eine Back-End-Instanz ist eine IP-Konfiguration, die eine Eigenschaft einer NIC-Ressource ist.
 
 Der Back-End-Pool kann eigenständige virtuelle Computer, Verfügbarkeitsgruppen oder VM-Skalierungsgruppen enthalten.  Ressourcen können im Back-End-Pool auch gemischt werden. Pro Load Balancer-Ressource können Sie bis zu 150 Ressourcen im Back-End-Pool kombinieren.
 
@@ -103,9 +102,9 @@ Lesen Sie die [ausführliche Erläuterung zu Standard Load Balancer-Diagnosen](l
 
 Standard Load Balancer unterstützt einen neuen Typ von Regel.  
 
-Sie können Lastenausgleichsregeln konfugurieren, damit die Anwendung skaliert werden kann und hohe Zuverlässigkeit bietet. Wenn Sie eine HA-Ports-Lastenausgleichsregel verwenden, stellt Standard Load Balancer einen Lastausgleich pro Datenfluss an jedem kurzlebigen Port der Front-End-IP-Adresse eines internen Standard Load Balancers bereit.  Das Feature ist auch für andere Szenarien hilfreich, in denen es unpraktisch oder nicht erwünscht ist, einzelne Port anzugeben.
+Sie können Lastenausgleichsregeln konfigurieren, damit die Anwendung skaliert werden kann und hohe Zuverlässigkeit bietet. Wenn Sie eine Lastenausgleichsregel für Hochverfügbarkeitsports verwenden, stellt Standard Load Balancer einen Lastausgleich pro Datenfluss an jedem kurzlebigen Port der Front-End-IP-Adresse eines internen Load Balancer Standard bereit.  Das Feature ist auch für andere Szenarien hilfreich, in denen es unpraktisch oder nicht erwünscht ist, einzelne Port anzugeben.
 
-Eine HA-Ports-Lastenausgleichsregel ermöglicht es Ihnen, aktiv-passive oder aktiv-aktive n+1-Szenarien für virtuelle Netzwerkgeräte und jede Anwendung zu erstellen, die große eingehende Portbereiche erfordert.  Ein Integritätstest kann verwendet werden, um zu bestimmen, welche Back-Ends neue Datenflüsse empfangen sollen.  Sie können eine Netzwerksicherheitsgruppe verwenden, um ein Portbereichsszenario zu emulieren.
+Eine Lastenausgleichsregel für Hochverfügbarkeitsports ermöglicht es Ihnen, aktiv-passive oder aktiv-aktive n+1-Szenarien für virtuelle Netzwerkgeräte und jede Anwendung zu erstellen, die große Portbereiche für eingehende Verbindungen erfordert.  Ein Integritätstest kann verwendet werden, um zu bestimmen, welche Back-Ends neue Datenflüsse empfangen sollen.  Sie können eine Netzwerksicherheitsgruppe verwenden, um ein Portbereichsszenario zu emulieren.
 
 >[!IMPORTANT]
 > Wenn Sie beabsichtigen, ein virtuelles Netwerkgerät zu verwenden, fragen Sie Ihren Anbieter danach, ob sein Produkt mit HA-Ports getestet wurde, und befolgen Sie dessen spezielle Anweisungen für die Implementierung. 
@@ -120,7 +119,7 @@ Weitere Informationen zu NSGs und ihrer Verwendung in Ihrem Szenario finden Sie 
 
 ### <a name="outbound"></a> Ausgehende Verbindungen
 
-Load Balancer unterstützt Szenarien mit eingehenden und ausgehenden Verbindungen.  Standard Load Balancer unterscheidet sich hinsichtlich ausgehender Verbindungen deutlich von Basic Load Balancer.
+Load Balancer unterstützt Szenarien mit eingehenden und ausgehenden Verbindungen.  Load Balancer Standard unterscheidet sich hinsichtlich ausgehender Verbindungen deutlich von Load Balancer Basic.
 
 SNAT (Source Network Address Translation) wird verwendet, um interne private IP-Adressen in Ihrem virtuellen Netzwerk auf öffentliche IP-Adressen auf Load Balancer-Front-Ends abzubilden.
 
@@ -132,13 +131,13 @@ Dies sind die wichtigsten Grundsätze, die beim Arbeiten mit Standard Load Balan
 - Wenn mehrere Front-Ends verfügbar sind, werden alle Front-Ends verwendet, und jedes Front-End multipliziert die Anzahl der verfügbaren SNAT-Ports.
 - Sie können für ein bestimmtes Front-End festlegen, dass es nicht für ausgehende Verbindungen verwendet werden darf.
 - Szenarien mit ausgehenden Verbindungen sind explizit, und ausgehende Verbindungen sind nicht vorhanden, bis sie angegeben wurden.
-- Lastenausgleichsregeln folgen dem, wie SNAT programmiert ist. Lastenausgleichsregeln sind protokollspezifisch. SNAT ist protokollspezifisch, und dies sollte sich in der Konfiguration wiederfinden, statt einen Nebeneffekt zu erstellen.
+- Lastenausgleichsregeln folgen der SNAT-Programmierung. Lastenausgleichsregeln sind protokollspezifisch. SNAT ist protokollspezifisch, und dies sollte sich in der Konfiguration wiederfinden, statt einen Nebeneffekt zu erstellen.
 
 #### <a name="multiple-frontends"></a>Mehrere Front-Ends
 Wenn Sie weitere SNAT-Ports benötigen, weil Sie einen hohen Bedarf an ausgehenden Verbindungen erwarten oder bereits feststellen, können Sie auch einen inkrementellen SNAT Portvorrat hinzufügen, indem Sie zusätzliche Front-Ends, Regeln und Back-End-Pools für dieselben Ressourcen der virtuellen Computer konfigurieren.
 
 #### <a name="control-which-frontend-is-used-for-outbound"></a>Steuern, welches Front-End für ausgehende Verbindungen verwendet wird
-Wenn Sie ausgehende Verbindungen so einschränken möchten, dass sie nur von einer bestimmten Front-End-IP-Adresse stammen, können Sie ausgehende SNAT in der Regel deaktivieren, in der die ausgehende Zuordnung formuliert ist.
+Wenn Sie ausgehende Verbindungen so einschränken möchten, dass sie nur von einer bestimmten Front-End-IP-Adresse stammen, können Sie optional ausgehende SNAT-Ports in der Regel deaktivieren, in der die Zuordnung für ausgehende Verbindungen formuliert ist.
 
 #### <a name="control-outbound-connectivity"></a>Steuern von ausgehenden Verbindungen
 Standard Load Balancer ist im Kontext des virtuellen Netzwerks vorhanden.  Ein virtuelles Netzwerk ist ein isoliertes privates Netzwerk.  Solange es keine Zuordnung zu einer öffentlichen IP-Adresse gibt, sind öffentliche Verbindungen nicht zulässig.  Sie können [VNet-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) erreichen, da sie sich in Ihrem virtuellen Netzwerk befinden und zu diesem lokal sind.  Wenn Sie eine ausgehende Verbindung zu einem Ziel außerhalb Ihres virtuellen Netzwerks herstellen möchten, haben Sie zwei Möglichkeiten:
@@ -154,7 +153,7 @@ Ausgehende Verbindungen für eine Ressource eines virtuellen Computers, die kein
 Lesen Sie die [ausführliche Erläuterung zu ausgehenden Verbindungen](load-balancer-outbound-connections.md).
 
 ### <a name="multife"></a>Mehrere Front-Ends
-Load Balancer unterstützt mehrere Regeln mit mehreren Front-Ends.  Für Standard Load Balancer wird dies auf Szenarien mit ausgehenden Verbindungen erweitert.  Szenarien mit ausgehenden Verbindungen sind im Prinzip die Umkehrung einer Regel für eingehenden Lastenausgleich.  Die Regel für eingehenden Lastenausgleich erstellt auch eine Zuordnung für ausgehende Verbindungen. Standard Load Balancer verwendet alle Front-Ends, die einer Ressource eines virtuellen Computers zugeordnet sind, über eine Lastenausgleichsregel.  Darüber hinaus gibt es einen Parameter für Lastenausgleichsregeln, mit dem Sie eine Lastenausgleichsregel bezüglich ausgehender Verbindungen unterdrücken können, wodurch es möglich ist, bestimmte Front-Ends auszuwählen.
+Load Balancer unterstützt mehrere Regeln mit mehreren Front-Ends.  Für Standard Load Balancer wird dies auf Szenarien mit ausgehenden Verbindungen erweitert.  Szenarien mit ausgehenden Verbindungen sind im Prinzip die Umkehrung einer Lastenausgleichsregel für eingehende Verbindungen.  Mit der Lastenausgleichsregel für eingehende Verbindungen wird auch eine Zuordnung für ausgehende Verbindungen erstellt. Load Balancer Standard verwendet über eine Lastenausgleichsregel alle Front-Ends, die einer virtuellen Computerressource zugeordnet sind.  Darüber hinaus gibt es einen Parameter in der Lastenausgleichsregel, mit dem Sie eine Lastenausgleichsregel bezüglich ausgehender Verbindungen unterdrücken und bestimmte Front-Ends (oder auch keins) auswählen können.
 
 Zum Vergleich: Basic Load Balancer wählt ein einzelnes Front-End nach dem Zufallsprinzip aus, und es gibt keine Möglichkeit, zu steuern, welches ausgewählt wird.
 
@@ -162,7 +161,7 @@ Lesen Sie die [ausführliche Erläuterung zu ausgehenden Verbindungen](load-bala
 
 ### <a name="operations"></a> Verwaltungsvorgänge
 
-Standard Load Balancer-Ressourcen sind nur auf einer vollständig neuen Infrastrukturplattform vorhanden.  Dies ermöglicht deutlich schnellere Verwaltungsvorgänge für Standard-SKUs, und die Ausführungszeiten sind in der Regel kürzer als 30 Sekunden pro Standard-SKU-Ressource.  Es ist zu beachten, dass sich mit der Vergrößerung von Back-End-Pools auch die Dauer verlängert, die für Back-End-Pool-Änderungen erforderlich ist.
+Standard Load Balancer-Ressourcen sind nur auf einer vollständig neuen Infrastrukturplattform vorhanden.  Dies ermöglicht schnellere Verwaltungsvorgänge für Standard-SKUs, und die Ausführungszeiten liegen in der Regel unter 30 Sekunden pro Standard-SKU-Ressource.  Mit der Vergrößerung von Back-End-Pools erhöht sich auch die Dauer, die für Änderungen von Back-End-Pools erforderlich ist.
 
 Sie können viel schneller Standard Load Balancer-Ressourcen ändern und eine öffentliche Standard-IP-Adresse von einem virtuellen Computer zu einem anderen verschieben.
 
@@ -211,7 +210,7 @@ Standard Load Balancer sind mit einer SLA von 99,99 % verfügbar.  Lesen Sie die
 
 ## <a name="pricing"></a>Preise
 
-Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurierten Lastenausgleichsregeln und aller verarbeiteten eingehenden und ausgehenden Daten in Rechnung gestellt wird. Informationen zu den Standard Load Balancer-Preisen finden Sie auf der Seite [Load Balancer – Preise](https://aka.ms/lbpricing).
+Load Balancer Standard ist ein Produkt, das nach der Anzahl der konfigurierten Lastenausgleichsregeln und nach den insgesamt verarbeiteten eingehenden und ausgehenden Daten in Rechnung gestellt wird. Informationen zu den Standard Load Balancer-Preisen finden Sie auf der Seite [Load Balancer – Preise](https://aka.ms/lbpricing).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -230,7 +229,7 @@ Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurie
 - Informationen zu [Integritätstests](load-balancer-custom-probe-overview.md)
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md).
 - Weitere Informationen zu [Diagnosen für Standard Load Balancer](load-balancer-standard-diagnostics.md).
-- Weitere Informationen zu [unterstützten mehrdimensionalen Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) für Diagnosen in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
+- Weitere Informationen zu [unterstützten mehrdimensionalen Metriken](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) für Diagnosen in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - Informationen zur Verwendung von [Load Balancer für ausgehende Verbindungen](load-balancer-outbound-connections.md)
 - Informationen zu [Ausgangsregeln](load-balancer-outbound-rules-overview.md).
 - Informationen zur [TCP-Zurücksetzung bei Leerlauf](load-balancer-tcp-reset.md).

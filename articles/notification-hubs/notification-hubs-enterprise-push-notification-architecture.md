@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 962bc996a86340bb10a28b90ef6340a98c5d9275
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1c9161f6d31a3fcff8f8926c8bf188f1bdc14799
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430605"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725860"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Anleitung für eine unternehmensbezogene Pusharchitektur
 Unternehmen gehen mehr und mehr dazu über, mobile Anwendungen entweder für ihre Endbenutzer (extern) oder für ihre Mitarbeiter (intern) zu erstellen. Sie verfügen über Back-End-Systeme – beispielsweise Mainframecomputer oder Branchenanwendungen –, die in die Architektur der mobilen Anwendungen integriert werden müssen. Dieser Leitfaden zeigt, wie sich diese Integration am besten umsetzen lässt, und empfiehlt mögliche Lösungen für allgemeine Szenarien.
@@ -264,6 +264,6 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
 [Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [WindowsAzure.ServiceBus]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
+[Azure WebJob]: ../app-service/webjobs-create.md
 [Erste Schritte mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure-Portal]: https://portal.azure.com/
