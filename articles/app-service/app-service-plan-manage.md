@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8f8e5f3d184073a73ca30764542dc56e45974120
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262128"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715656"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
-Ein [Azure App Service-Plan](azure-web-sites-web-hosting-plans-in-depth-overview.md) stellt Ressourcen bereit, die zum Ausführen einer App Service-App erforderlich sind. Diese Anleitung veranschaulicht das Verwalten eines App Service-Plans.
+Ein [Azure App Service-Plan](overview-hosting-plans.md) stellt Ressourcen bereit, die zum Ausführen einer App Service-App erforderlich sind. Diese Anleitung veranschaulicht das Verwalten eines App Service-Plans.
 
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 

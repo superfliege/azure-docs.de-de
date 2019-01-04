@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: f8771be9a96ae188a9610a1b19dfd6cbd49ba277
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b08540787fc61b9bb38ed921bd42e0f3065cf8f4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270432"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653831"
 ---
 # <a name="use-firewall-rules"></a>Verwenden von Firewallregeln
 
@@ -53,7 +53,7 @@ IP-Filterregeln werden der Reihenfolge nach angewendet, und die erste Regel, die
 > - Azure-Daten-Explorer
 >
 > Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
-> - Azure-Web-Apps 
+> - Azure App Service
 > - Azure-Funktionen
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET- und einer Firewallregel mit Azure Resource Manager-Vorlagen
@@ -71,11 +71,11 @@ Vorlagenparameter:
 > Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **Zulassen** festgelegt. Dies schränkt die Verbindungen nicht ein.
 > Bei der Erstellung von Regeln für virtuelle Netzwerke oder Firewalls muss die Standardaktion (***defaultAction***) geändert werden.
 > 
-> Von:
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```
-> In:
+> zu
 > ```json
 > "defaultAction": "Deny"
 > ```

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: b961dadbe8743f1485ef0d13a44a1bb0f3ce32b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 6cd42675fa70f338fd4e1223d6a48bf8c6773915
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321374"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579310"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 In diesem Artikel wird beschrieben, wie Sie Azure [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/) mit oder ohne erneute Bereitstellung vertikal skalieren können. Informationen zur vertikalen Skalierung von VMs, die sich nicht in Skalierungsgruppen befinden, finden Sie unter [Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -119,7 +119,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 
 Weitere Informationen zum Erstellen von Warnungen finden Sie in den folgenden Artikeln:
 
-* [Azure Monitor – PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md)
+* [Azure Monitor – PowerShell-Schnellstartbeispiele](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Zusammenfassung

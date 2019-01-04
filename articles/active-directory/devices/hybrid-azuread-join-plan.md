@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274563"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993285"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -146,9 +146,9 @@ Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfigur
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Unterstützung für alternative Anmelde-IDs in Azure AD Hybrid Join
 
-Unter Windows 10 bietet Azure AD Hybrid Join eingeschränkte Unterstützung für [alternative Anmelde-IDs](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) basierend auf dem Typ der alternativen Anmelde-ID, der [Authentifizierungsmethode](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version. Es gibt zwei Typen von alternativen Anmelde-IDs, die in Ihrer Umgebung vorhanden sein können.
+Unter Windows 10 bietet Azure AD Hybrid Join eingeschränkte Unterstützung für [alternative Anmelde-IDs](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) basierend auf dem Typ der alternativen Anmelde-ID, der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version. Es gibt zwei Typen von alternativen Anmelde-IDs, die in Ihrer Umgebung vorhanden sein können.
 
- - Routingfähige alternative Anmelde-ID: Eine routingfähige alternative Anmelde-ID verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, sind „contoso.org“ und „contoso.co.uk“ gültige Domänen, die Contoso gehören und [in Azure AD überprüft werden](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain).
+ - Routingfähige alternative Anmelde-ID: Eine routingfähige alternative Anmelde-ID verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, sind „contoso.org“ und „contoso.co.uk“ gültige Domänen, die Contoso gehören und [in Azure AD überprüft werden](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
  
  - Nicht routingfähige alternative Anmelde-ID: Eine nicht routingfähige alternative Anmelde-ID verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, stellt „contoso.local“ keine überprüfbare Domäne im Internet dar, wird aber im Netzwerk von Contoso verwendet.
  

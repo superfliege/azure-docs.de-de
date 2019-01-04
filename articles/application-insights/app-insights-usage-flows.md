@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 05853cb494ef6cc615bea7eecb1cfac288b46f3b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 54155346c7f417be8beb0ced8ef825ec22a08237
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721951"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971612"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analysieren von Benutzernavigationsmustern mit Benutzerabläufen in Application Insights
 
@@ -34,7 +34,7 @@ Das Tool für Benutzerabläufe visualisiert die Navigation von Benutzern zwische
 Das Tool für Benutzerabläufe startet bei einem Seitenaufruf, einem benutzerdefinierten Ereignis oder einer von Ihnen angegebenen Ausnahme. Nach einem Ausgangsereignis dieser Art werden für die Benutzerabläufe die Ereignisse angezeigt, die im Verlauf von Benutzersitzungen vorher und nachher aufgetreten sind. Linien mit unterschiedlicher Stärke geben Aufschluss darüber, wie oft Benutzer den einzelnen Pfaden folgen. Mit speziellen Knoten vom Typ **Sitzung gestartet** wird angezeigt, wo die nachfolgenden Knoten mit einer Sitzung begonnen haben. Mit speziellen Knoten vom Typ **Sitzung beendet** wird angezeigt, wie viele Benutzer nach dem vorherigen Knoten keine Seitenaufrufe oder benutzerdefinierten Ereignisse mehr gesendet haben. Hierdurch wird deutlich, wo Benutzer Ihre Website wahrscheinlich verlassen haben.
 
 > [!NOTE]
-> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, um das Tool für Benutzerabläufe verwenden zu können. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](app-insights-javascript.md).
+> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, um das Tool für Benutzerabläufe verwenden zu können. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](../azure-monitor/app/javascript.md).
 >
 >
 
@@ -59,7 +59,7 @@ Sollten bestimmte Seitenaufrufe oder benutzerdefinierte Ereignisse nicht wie erw
 * Überprüfen Sie im Menü **Bearbeiten** den Abschnitt **Ausgeschlossene Ereignisse**.
 * Verwenden Sie die Schaltflächen mit dem Pluszeichen für Knoten vom Typ **Andere**, um weniger häufige Ereignisse in die Visualisierung einzubinden.
 * Wenn der erwartete Seitenaufruf oder das erwartete benutzerdefinierte Ereignis nur selten von Benutzern gesendet wird, können Sie versuchen, den Zeitbereich der Visualisierung über das Menü **Bearbeiten** zu vergrößern.
-* Vergewissern Sie sich, dass der erwartete Seitenaufruf, das benutzerdefinierte Ereignis oder die Ausnahme im Quellcode Ihrer Website so eingerichtet ist, dass dies vom Application Insights SDK erfasst wird. Informationen zum Erfassen benutzerdefinierter Ereignisse finden Sie [hier](app-insights-api-custom-events-metrics.md).
+* Vergewissern Sie sich, dass der erwartete Seitenaufruf, das benutzerdefinierte Ereignis oder die Ausnahme im Quellcode Ihrer Website so eingerichtet ist, dass dies vom Application Insights SDK erfasst wird. Informationen zum Erfassen benutzerdefinierter Ereignisse finden Sie [hier](../azure-monitor/app/api-custom-events-metrics.md).
 
 Verwenden Sie die Dropdownmenüs **Previous steps** (Vorherige Schritte) und **Next steps** (Nächste Schritte) oberhalb der Visualisierung, wenn Sie mehr Schritte anzeigen möchten.
 
@@ -99,4 +99,4 @@ Verwenden Sie im Menü **Bearbeiten** die Optionen unter **Teilen nach**:
 * [Nutzungsübersicht](app-insights-usage-overview.md)
 * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](app-insights-usage-segmentation.md)
 * [Bindung](app-insights-usage-retention.md)
-* [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
+* [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../azure-monitor/app/api-custom-events-metrics.md)

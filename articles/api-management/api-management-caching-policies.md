@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52bdeb5fe517430497c57a5c34b822df5933e3ff
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310435"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608884"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -118,8 +118,8 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 | cache-preference               | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
 | downstream-caching-type        | Dieses Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> –   none: Downstreamzwischenspeicherung ist unzulässig.<br />–   private: Private Downstreamzwischenspeicherung ist zulässig.<br />–   public: Private und gemeinsam genutzte Downstreamzwischenspeicherung ist zulässig.                                                                                                          | Nein        | none              |
 | must-revalidate                | Wenn die Downstreamzwischenspeicherung aktiviert ist, aktiviert oder deaktiviert dieses Attribut die `must-revalidate`-Cachesteuerungsanweisung in Gatewayantworten.                                                                                                                                                                                                                      | Nein        | true              |
-| vary-by-developer              | Legen Sie diese Option auf `true` fest, um Antworten [pro Abonnementschlüssel](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                         | JA      |                   |
-| vary-by-developer-groups       | Legen Sie diese Option auf `true` fest, um Antworten [pro Benutzergruppe](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                             | JA      |                   |  
+| vary-by-developer              | Legen Sie diese Option auf `true` fest, um Antworten [pro Abonnementschlüssel](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                         | JA      |         False          |
+| vary-by-developer-groups       | Legen Sie diese Option auf `true` fest, um Antworten [pro Benutzergruppe](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                             | JA      |       False            |  
 
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  

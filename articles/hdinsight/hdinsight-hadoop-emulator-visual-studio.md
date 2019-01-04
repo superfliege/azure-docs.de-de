@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012758"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726628"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Verwenden der Azure Data Lake-Tools für Visual Studio mit der Hortonworks Sandbox
 
@@ -60,13 +60,13 @@ Stellen Sie sicher, dass Hortonworks Sandbox ausgeführt wird. Führen Sie dann 
 
     ![Screenshot des Dialogfelds mit der hervorgehobenen Schaltfläche „Aktualisieren“](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Während des Aktualisierungsprozess wird Ambari verwendet, um die Hortonworks Sandbox-Konfiguration so zu ändern, dass die Erwartungen der Data Lake-Tools für Visual Studio erfüllt werden.
 
 6. Wählen Sie nach Abschluss der Überprüfung die Option **Fertig stellen**, um die Konfiguration abzuschließen.
     ![Screenshot des Dialogfelds mit der hervorgehobenen Schaltfläche „Fertig stellen“](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-     >[!NOTE]
+     >[!NOTE]  
      > Je nach Geschwindigkeit Ihrer Entwicklungsumgebung und der Arbeitsspeichermenge, die dem virtuellen Computer zugewiesen wurde, kann das Konfigurieren und Überprüfen der Dienste mehrere Minuten dauern.
 
 Nach dem Ausführen dieser Schritte enthält der Server-Explorer im Abschnitt **HDInsight** jetzt den Eintrag **HDInsight local cluster** (Lokaler HDInsight-Cluster).
@@ -99,7 +99,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
     Nachdem der **Auftragsstatus** in **Beendet** geändert wurde, wird ein gerichteter azyklischer Graph (Directed Acyclic Graph, DAG) angezeigt. Dieses Diagramm beschreibt den Ausführungspfad, der von Tez beim Verarbeiten der Hive-Abfrage bestimmt wurde. Tez ist die Standard-Ausführungs-Engine für Hive auf dem lokalen Cluster.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Apache Tez ist auch die Standardeinstellung, wenn Sie Linux-basierte HDInsight-Cluster verwenden. Es ist nicht die Standardeinstellung auf Windows-basiertem HDInsight. Um es zu verwenden, müssen Sie die Zeile `set hive.execution.engine = tez;` auf Anfang der Hive-Abfrage einfügen.
 
     Verwenden Sie den Link **Auftragsausgabe**, um die Ausgabe anzuzeigen. In diesem Fall ist dies 823, also die Anzahl von Zeilen in der Tabelle „sample_08“. Sie können Diagnoseinformationen zum Auftrag anzeigen, indem Sie die Links **Auftragsprotokoll** und **YARN-Protokoll herunterladen** verwenden.
@@ -110,7 +110,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
     Das Ausgabeprotokoll, das während der Verarbeitung generiert wurde, wird von einer interaktiven Abfrage an das Fenster **HiveServer2-Ausgabe** gestreamt.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Dies sind die gleichen Informationen, die über den Link **Auftragsprotokoll** zur Verfügung stehen, nachdem ein Auftrag abgeschlossen wurde.
 
     ![Screenshot des Ausgabeprotokolls](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)

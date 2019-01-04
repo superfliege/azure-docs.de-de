@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344226"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539720"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Tutorial: Erstellen einer Java EE- und Postgres-Web-App in Azure
 
@@ -170,7 +170,7 @@ Es wird dringend empfohlen, die Inhalte dieser Dateien zu lesen, insbesondere _j
 
 ### <a name="ftp-the-configuration-files"></a>Übertragen der Konfigurationsdateien per FTP
 
-Wir müssen die Inhalte von `wildfly_config/` per FTP an unsere App Service-Instanz übertragen. Zum Abrufen Ihrer FTP-Anmeldeinformationen klicken Sie im Azure-Portal auf dem Blatt „App Service“ auf die Schaltfläche **Veröffentlichungsprofil abrufen**. Ihr FTP-Benutzername und das Kennwort sind im heruntergeladenen XML-Dokument enthalten. Weitere Informationen zum Veröffentlichungsprofil finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+Wir müssen die Inhalte von `wildfly_config/` per FTP an unsere App Service-Instanz übertragen. Zum Abrufen Ihrer FTP-Anmeldeinformationen klicken Sie im Azure-Portal auf dem Blatt „App Service“ auf die Schaltfläche **Veröffentlichungsprofil abrufen**. Ihr FTP-Benutzername und das Kennwort sind im heruntergeladenen XML-Dokument enthalten. Weitere Informationen zum Veröffentlichungsprofil finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 Übertragen Sie die vier Dateien in `wildfly_config/` mithilfe eines FTP-Tools Ihrer Wahl an `/home/site/deployments/tools/`. (Hinweis: Übertragen Sie nicht das Verzeichnis, nur die Dateien selbst.)
 

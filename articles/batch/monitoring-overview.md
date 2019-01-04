@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 3053e136ab08c38d9460d60f64464a17f6f61574
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824080"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543409"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
@@ -26,7 +26,7 @@ Eine Übersicht über die verfügbaren Azure-Komponenten und -Dienste zur Überw
 
 ## <a name="subscription-level-monitoring"></a>Überwachung auf Abonnementebene
 
-Auf der Abonnementebene (die auch Batch-Konten einschließt) werden im [Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) Betriebsereignisdaten in [verschiedenen Kategorien](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log) gesammelt.
+Auf der Abonnementebene (die auch Batch-Konten einschließt) werden im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md) Betriebsereignisdaten in [verschiedenen Kategorien](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log) gesammelt.
 
 Speziell für Batch-Konten werden Ereignisse im Zusammenhang mit der Kontoerstellung/-löschung und der Schlüsselverwaltung erfasst.
 
@@ -34,7 +34,7 @@ Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsproto
 
 ## <a name="batch-account-level-monitoring"></a>Überwachung auf Batch-Kontoebene
 
-Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-collection.md#metrics) und optional [Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
+Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-collection.md#metrics) und optional [Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
  
 > [!NOTE]
 > Metriken sind standardmäßig ohne zusätzliche Konfiguration in Ihrem Batch-Konto verfügbar und decken jeweils die letzten 30 Tage ab. Sie müssen die Diagnoseprotokollierung für ein Batch-Konto aktivieren, und durch die Speicherung oder Verarbeitung von Diagnoseprotokolldaten entstehen unter Umständen zusätzliche Kosten. 

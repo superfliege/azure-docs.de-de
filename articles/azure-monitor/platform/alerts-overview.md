@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: cf01ddd53741a77df61e3dc1946eb836640034d0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b24b98760e276c207bb360687f32ae902b3306fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345142"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976952"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -56,7 +56,7 @@ Die wichtigsten Attribute einer Warnungsregel sind:
 
 ## <a name="what-you-can-alert-on"></a>Wofür Sie Warnungen ausgeben können
 
-Sie können Warnungen gemäß der Beschreibung in [Überwachen von Datenquellen](../../monitoring-and-diagnostics/monitoring-data-sources.md) für Metriken und Protokolle ausgeben. Dazu gehören unter anderem folgende Ansprüche:
+Sie können Warnungen gemäß der Beschreibung in [Überwachen von Datenquellen](../../azure-monitor/platform/data-sources-reference.md) für Metriken und Protokolle ausgeben. Dazu gehören unter anderem folgende Ansprüche:
 - Metrikwerte
 - Protokollsuchabfragen
 - Aktivitätsprotokollereignisse
@@ -131,7 +131,7 @@ Früher verfügten Azure Monitor, Application Insights, Log Analytics und Servic
 | **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** | 
 |-------------|----------------|-------------|
 | Dienstintegrität | Aktivitätsprotokoll  | Nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Webverfügbarkeitstests | Nicht unterstützt. Siehe [Webtestwarnungen](../../application-insights/app-insights-monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
+| Application Insights | Webverfügbarkeitstests | Nicht unterstützt. Siehe [Webtestwarnungen](../../azure-monitor/app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
 
 
 ## <a name="all-alerts-page"></a>Seite „Alle Warnungen“ 

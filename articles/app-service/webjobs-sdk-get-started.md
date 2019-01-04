@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9f3d84b1f2e179d265c811faf2d35bd55bc1410f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339806"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606980"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -54,7 +54,7 @@ Die Anweisungen beschreiben, wie Sie ein WebJobs SDK Version 2.x-Projekt erstell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird vorausgesetzt, dass Sie über [ein Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) und Erfahrungen im Umgang mit [Apps in Azure App Service](app-service-web-overview.md) verfügen. Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
+In diesem Artikel wird vorausgesetzt, dass Sie über [ein Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) und Erfahrungen im Umgang mit [Apps in Azure App Service](overview.md) verfügen. Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
 
 * [Installieren Sie Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/) mit der Workload **Azure-Entwicklung**. Wenn Sie bereits über Visual Studio, jedoch nicht über diese Workload verfügen, müssen Sie die Workload hinzufügen, indem Sie **Tools > Tools und Features abrufen** auswählen.
 * [Erstellen Sie eine App Service-App](app-service-web-get-started-dotnet-framework.md). Wenn Sie bereits über eine App verfügen, für die Sie einen WebJob bereitstellen können, haben Sie die Möglichkeit, diese zu verwenden, statt eine neue zu erstellen.
@@ -330,7 +330,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 1. Ersetzen Sie *{Instrumentierungsschlüssel}* durch den Instrumentierungsschlüssel aus der Application Insights-Ressource, die Sie verwenden.
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 1. Fügen Sie in der Datei *App.config* den folgenden XML-Code unmittelbar nach der Auflistung der Verbindungszeichenfolgen hinzu.
 

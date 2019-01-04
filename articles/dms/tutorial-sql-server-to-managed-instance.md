@@ -5,18 +5,18 @@ services: dms
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: e1cce6231fbb31dac6526a01ec402533b3861a21
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e9baf8c838da2201fbb588d278cbf1ce5bbe6354
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956498"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713318"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>Tutorial: Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (offline)
 Mit Azure Database Migration Service können Sie die Datenbanken aus einer lokalen SQL Server-Instanz zu einer [verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance.md) migrieren. Informationen zu weiteren Methoden, für die etwas manueller Aufwand erforderlich ist, finden Sie im Artikel [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-migrate.md).
@@ -126,13 +126,13 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
    ![Quellendetails](media/tutorial-sql-server-to-managed-instance/dms-source-details1.png)
 
-3. Wählen Sie **Speichern**aus.
+3. Wählen Sie **Speichern** aus.
 
 4. Wählen Sie auf dem Bildschirm **Quelldatenbanken auswählen** die Datenbank **Adventureworks2012** für die Migration aus.
 
    ![Auswählen von Quelldatenbanken](media/tutorial-sql-server-to-managed-instance/dms-source-database1.png)
 
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 
 ## <a name="specify-target-details"></a>Angeben von Zieldetails
 
@@ -142,7 +142,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
  
        ![Auswählen des Ziels](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
-2.  Wählen Sie **Speichern**aus.
+2.  Wählen Sie **Speichern** aus.
 
 ## <a name="select-source-databases"></a>Auswählen von Quelldatenbanken
 
@@ -150,7 +150,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
     ![Auswählen von Quelldatenbanken](media/tutorial-sql-server-to-managed-instance/select-source-databases.png)
 
-2. Wählen Sie **Speichern**aus.
+2. Wählen Sie **Speichern** aus.
 
 ## <a name="select-logins"></a>Auswählen von Benutzernamen
  
@@ -161,7 +161,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
     ![Auswählen von Benutzernamen](media/tutorial-sql-server-to-managed-instance/select-logins.png)
 
-2. Wählen Sie **Speichern**aus.
+2. Wählen Sie **Speichern** aus.
  
 ## <a name="configure-migration-settings"></a>Konfigurieren von Migrationseinstellungen
  
@@ -178,7 +178,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
     
     ![Konfigurieren von Migrationseinstellungen](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)
 
-2. Wählen Sie **Speichern**aus.
+2. Wählen Sie **Speichern** aus.
  
 ## <a name="review-the-migration-summary"></a>Überprüfen der Migrationszusammenfassung
 
@@ -190,7 +190,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
  
     ![Zusammenfassung des Migrationsprojekts](media/tutorial-sql-server-to-managed-instance/dms-project-summary2.png)
 
-4.  Wählen Sie **Speichern**aus.   
+4.  Wählen Sie **Speichern** aus.   
 
 ## <a name="run-the-migration"></a>Ausführen der Migration
 

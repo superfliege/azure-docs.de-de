@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e65fa21eefcc103f553f8e1bc47792ac372c59e3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093455"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975439"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Tutorial: Erstellen eines benutzerdefinierten Sprachmodells
 
@@ -100,9 +100,7 @@ Das entsprechende Gebietsschema muss ausgewählt werden, bevor Aktionen durchgef
 
 Geben Sie auf der Seite „Sprachmodell erstellen“ einen **Namen** und eine **Beschreibung** ein, um wichtige Informationen zu diesem Modell (etwa das verwendete Dataset) zu erfassen. Wählen Sie im nächsten Schritt das **Basissprachmodell** im Dropdownmenü aus. Dieses Modell bildet den Ausgangspunkt für Ihre Anpassung.
 
-Sie können zwischen zwei Basissprachmodellen wählen: Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet.
-
-Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. Ein neues Modell mit dem Namen „Universell“ ist ebenfalls öffentlich verfügbar. „Universell“ soll für alle Szenarien gelten und die Modelle vom Typ „Suche und Diktieren“ und „Konversation“ letztendlich ersetzen.
+Sie können zwischen zwei Basissprachmodellen wählen: Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. Ein neues Modell mit dem Namen „Universell“ ist ebenfalls öffentlich verfügbar. „Universell“ soll für alle Szenarien gelten und die Modelle vom Typ „Suche und Diktieren“ und „Konversation“ letztendlich ersetzen.
 
 Verwenden Sie (wie im folgenden Beispiel gezeigt) nach dem Angeben des Basissprachmodells das Dropdownmenü **Sprachdaten**, um das Sprachdataset auszuwählen, das Sie für die Anpassung verwenden möchten.
 

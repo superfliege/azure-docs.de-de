@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 2f4bc578b567462c2591c28b270f863ba5756815
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193908"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976017"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
 
@@ -121,7 +121,7 @@ Weitere Informationen zu StorSimple Snapshot Manager finden Sie unter [Was ist d
 Es wird empfohlen, die folgenden Richtlinien zu befolgen, um sicherzustellen, dass die StorSimple-Kennwörter sicher und ausreichend geschützt sind:
 
 * Ändern Sie Ihre Kennwörter alle drei Monate. Ein Ändern der Kennwörter wird jährlich erzwungen.
-* Verwenden Sie sichere Kennwörter. Weitere Informationen finden Sie unter [Create stronger passwords and protect them](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/)(in englischer Sprache).
+* Verwenden Sie sichere Kennwörter. Weitere Informationen finden Sie unter [Create stronger passwords and protect them](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/)(in englischer Sprache).
 * Wählen Sie für verschiedene Zugriffsmechanismen stets unterschiedliche Kennwörter. Jedes gewählte Kennwort muss eindeutig sein.
 * Teilen Sie Kennwörter nicht mit Personen, die nicht für den Zugriff auf das StorSimple-Gerät autorisiert sind.
 * Erwähnen Sie Kennwörter nicht in Gegenwart anderer Personen, und geben Sie keine Hinweise zum Format eines Kennworts.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 84a8a0687a1da0eaf7842a9bf6115c1d0f5d3fd1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338140"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718094"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Erstellen einer Web-App in einer App Service-Umgebung v1
 
@@ -51,7 +51,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
     *Ressourcengruppen* ermöglichen Ihnen, verwandte Azure-Ressourcen als Einheit zu verwalten, und sind hilfreich beim Einrichten von *RBAC-Regeln* (Role-Based Access Control, rollenbasierte Zugriffssteuerung) für Ihre Apps. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager][ResourceGroups]. 
 4. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen.
    
-    Bei *App Service-Plänen* handelt es sich um einen verwalteten Satz von Web-Apps.  Bei Auswählen der Preise gelten diese normalerweise nicht für die einzelnen Apps, sondern für den App Service-Plan. In einer ASE zahlen Sie für die zugeordneten Serverinstanzen, und nicht das, was in Ihrem ASP aufgelistet ist.  Um die Anzahl von Instanzen einer Web-App zentral hochzuskalieren, skalieren Sie die Anzahl von Instanzen Ihres App Service-Plans. Dies wirkt sich auf sämtliche Web-Apps innerhalb des betroffenen Plans aus.  Für einige Funktionen wie Websiteslots oder die VNET-Integration gelten innerhalb des Plans ebenfalls Mengenbeschränkungen.  Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../azure-web-sites-web-hosting-plans-in-depth-overview.md).
+    Bei *App Service-Plänen* handelt es sich um einen verwalteten Satz von Web-Apps.  Bei Auswählen der Preise gelten diese normalerweise nicht für die einzelnen Apps, sondern für den App Service-Plan. In einer ASE zahlen Sie für die zugeordneten Serverinstanzen, und nicht das, was in Ihrem ASP aufgelistet ist.  Um die Anzahl von Instanzen einer Web-App zentral hochzuskalieren, skalieren Sie die Anzahl von Instanzen Ihres App Service-Plans. Dies wirkt sich auf sämtliche Web-Apps innerhalb des betroffenen Plans aus.  Für einige Funktionen wie Websiteslots oder die VNET-Integration gelten innerhalb des Plans ebenfalls Mengenbeschränkungen.  Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../overview-hosting-plans.md).
    
     Sie können die App Service-Pläne in Ihrer ASE anhand des Standorts identifizieren, der unter dem Plannamen angegeben ist.  
    
@@ -108,7 +108,7 @@ Nach dem Erstellen der Web-App und des App Service-Plans sollten Sie eine zentra
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[Appserviceplans]: ../overview-hosting-plans.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md

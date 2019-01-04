@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 815b792f8584e984ff77c32265de65f9b633adb1
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 25e8d0aafc8593c9c759dd8ac1d7d1d495c9e026
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322788"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001769"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -39,7 +39,7 @@ Application Insights bietet bereits standardmäßig umfassende Service Fabric-Fu
 
 ![Application Insights-Übersicht](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-Die Liste im rechten Bereich der vorherigen Abbildung enthält hauptsächlich zwei Arten von Einträgen: Anforderungen und Ereignisse. Anforderungen sind an die API der App gerichtete Aufrufe (in diesem Fall über HTTP-Anforderungen). Ereignisse sind benutzerdefinierte Ereignisse und fungieren als Telemetrie, die Sie an einer beliebigen Stelle in Ihrem Code hinzufügen können. Weitere Informationen zur Instrumentierung Ihrer Anwendungen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../application-insights/app-insights-api-custom-events-metrics.md). Wenn Sie auf eine Anforderung klicken, werden weitere Details angezeigt, wie in der folgenden Abbildung zu sehen. Sie umfassen unter anderem Service Fabric-spezifische Daten, die im Application Insights Service Fabric-NuGet-Paket erfasst werden. Diese Informationen können zur Problembehandlung und zur Ermittlung des Anwendungszustands herangezogen sowie in Application Insights durchsucht werden.
+Die Liste im rechten Bereich der vorherigen Abbildung enthält hauptsächlich zwei Arten von Einträgen: Anforderungen und Ereignisse. Anforderungen sind an die API der App gerichtete Aufrufe (in diesem Fall über HTTP-Anforderungen). Ereignisse sind benutzerdefinierte Ereignisse und fungieren als Telemetrie, die Sie an einer beliebigen Stelle in Ihrem Code hinzufügen können. Weitere Informationen zur Instrumentierung Ihrer Anwendungen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../azure-monitor/app/api-custom-events-metrics.md). Wenn Sie auf eine Anforderung klicken, werden weitere Details angezeigt, wie in der folgenden Abbildung zu sehen. Sie umfassen unter anderem Service Fabric-spezifische Daten, die im Application Insights Service Fabric-NuGet-Paket erfasst werden. Diese Informationen können zur Problembehandlung und zur Ermittlung des Anwendungszustands herangezogen sowie in Application Insights durchsucht werden.
 
 ![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
@@ -47,7 +47,7 @@ Application Insights bietet eine eigene Ansicht zum Abfragen sämtlicher eingehe
 
 ![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Weitere Informationen zu den Funktionen des Application Insights-Portals finden Sie in der [Dokumentation zum Application Insights-Portal](../application-insights/app-insights-dashboards.md).
+Weitere Informationen zu den Funktionen des Application Insights-Portals finden Sie in der [Dokumentation zum Application Insights-Portal](../azure-monitor/app/app-insights-dashboards.md).
 
 ### <a name="configuring-application-insights-with-wad"></a>Konfigurieren von Application Insights mit WAD
 
@@ -114,17 +114,17 @@ Es empfiehlt sich, EventFlow und WAD als Aggregationslösungen zu verwenden, da 
 
 Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/blog/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit Application Insights verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren Lokalisierung eines Problems im Workflow einer Anwendung oder eines Diensts bei).
 
-Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und Application Insights als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, empfiehlt es sich, das Application Insights SDK für den Workflow der Überwachung und Diagnose zu verwenden. Informationen zu den ersten Schritten mit Application Insights zum Sammeln und Anzeigen Ihrer Protokolle finden Sie [hier](../application-insights/app-insights-asp-net-more.md) und [hier](../application-insights/app-insights-asp-net-trace-logs.md).
+Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und Application Insights als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, empfiehlt es sich, das Application Insights SDK für den Workflow der Überwachung und Diagnose zu verwenden. Informationen zu den ersten Schritten mit Application Insights zum Sammeln und Anzeigen Ihrer Protokolle finden Sie [hier](../azure-monitor/app/asp-net-more.md) und [hier](../azure-monitor/app/asp-net-trace-logs.md).
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigieren zur Application Insights-Ressource im Azure-Portal
 
 Wenn Sie Application Insights als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der Application Insights-Ressource angezeigt werden. Navigieren Sie zur Application Insights-Ressource, um zum Dashboard für die Ressource zu gelangen. Klicken Sie auf der Application Insights-Taskleiste auf **Suchen**, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und zu filtern.
 
-*Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../application-insights/app-insights-metrics-explorer.md).
+*Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../azure-monitor/app/metrics-explorer.md).
 
-Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-Portal, in dem Sie Ereignisse und Ablaufverfolgungen in größerem Umfang und mit mehr Optionen abfragen können. Weitere Informationen hierzu finden Sie unter [Analytics in Application Insights](../application-insights/app-insights-analytics.md).
+Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-Portal, in dem Sie Ereignisse und Ablaufverfolgungen in größerem Umfang und mit mehr Optionen abfragen können. Weitere Informationen hierzu finden Sie unter [Analytics in Application Insights](../azure-monitor/app/analytics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Richten Sie Warnungen in AI ein](../application-insights/app-insights-alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
+* [Richten Sie Warnungen in AI ein](../azure-monitor/app/alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../application-insights/app-insights-proactive-diagnostics.md) führt eine proaktive Analyse der an Application Insights gesendeten Telemetriedaten durch, um Sie vor potenziellen Leistungsproblemen zu warnen.

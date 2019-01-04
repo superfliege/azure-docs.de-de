@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434007"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715425"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Ausführen von Apache Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
@@ -101,7 +101,7 @@ Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster r
 
 Sobald der Status des Auftrags in **SUCCEEDED** wechselt, können Sie die Ergebnisse des Auftrags abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies `/example/pigcurl`.
 
-HDInsight kann als Standarddatenspeicher entweder Azure Storage oder Azure Data Lake Storage verwenden. Je nach verwendetem Standardspeicher gibt es verschiedene Möglichkeiten, die Daten abzurufen. Weitere Informationen finden Sie im Abschnitt „Speicher“ des Dokuments [Linux-basierte HDInsight-Informationen](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store).
+HDInsight kann als Standarddatenspeicher entweder Azure Storage oder Azure Data Lake Storage verwenden. Je nach verwendetem Standardspeicher gibt es verschiedene Möglichkeiten, die Daten abzurufen. Weitere Informationen finden Sie im Abschnitt „Speicher“ des Dokuments [Linux-basierte HDInsight-Informationen](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-storage).
 
 ## <a id="summary"></a>Zusammenfassung
 

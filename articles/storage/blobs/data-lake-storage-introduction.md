@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0b3c4a4c21bc9b124a98b1f204f85e6e78ff233e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099561"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994333"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Einführung in Azure Data Lake Storage Gen2 Preview
 
-Azure Data Lake Storage Gen2 (Vorschau) setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. Azure Data Lake Storage Gen2 führt die Funktionen unserer beiden vorhandenen Speicherdienste Azure Blob Storage und Azure Data Lake Storage Gen1 zusammen. Features von [Azure Data Lake Storage Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/index) (z.B. Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene und Skalierbarkeit) werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](storage-blobs-introduction.md) kombiniert.
+Azure Data Lake Storage Gen2 (Vorschau) setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. Azure Data Lake Storage Gen2 führt die Funktionen unserer beiden vorhandenen Speicherdienste Azure Blob Storage und Azure Data Lake Storage Gen1 zusammen. Features von [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) (z.B. Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene und Skalierbarkeit) werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](storage-blobs-introduction.md) kombiniert.
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Für Big Data-Analysen in Großunternehmen entwickelt
 

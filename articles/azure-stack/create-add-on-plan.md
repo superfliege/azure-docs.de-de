@@ -16,12 +16,12 @@ ms.custom: mvc
 ms.date: 07/30/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: f6b85d2197a4db9cdfc526e5857e4b6ce707beb2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e84e72157726311281994b0e287eda7dfc4b144a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076790"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716753"
 ---
 # <a name="azure-stack-add-on-plans"></a>Add-On-Pläne für Azure Stack
 
@@ -32,7 +32,7 @@ Manchmal besteht die optimale Lösung darin, alles in einem einzelnen Plan zu ko
 Ein weiterer Grund für die Verwendung von Add-On-Plänen besteht darin, die Benutzer dabei zu unterstützen, auf ihre Ressourcennutzung zu achten. Hierfür können Sie mit einem Basisplan beginnen, der relativ kleine Kontingente enthält (je nach den erforderlichen Diensten). Wenn die Benutzer die Kapazitätsgrenze erreichen, werden sie darüber benachrichtigt, dass sie die Zuordnung von Ressourcen ausgehend von ihrem zugewiesenen Plan erreicht haben. Davon ausgehend können die Benutzer einen Add-On-Plan auswählen, der die zusätzlichen Ressourcen bereitstellt.
 
 > [!NOTE]
-> Wenn Sie keinen Add-On-Plan verwenden möchten, um ein Kontingent zu erweitern, können Sie [die ursprüngliche Konfiguration des Kontingents bearbeiten](azure-stack-quota-types.md#to-edit-a-quota). 
+> Wenn Sie keinen Add-On-Plan verwenden möchten, um ein Kontingent zu erweitern, können Sie [die ursprüngliche Konfiguration des Kontingents bearbeiten](azure-stack-quota-types.md#edit-a-quota). 
 
 Wenn ein Benutzer einen Add-On-Plan einem vorhandenen Angebotsabonnement hinzufügt, kann es bis zu eine Stunde dauern, bis die zusätzlichen Ressourcen angezeigt werden. 
 

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 77c0baba1c30153730e87181e24137d9a20ea6b1
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a1ca63007a9b0f733f2cf06022a0db98ac7e9e7d
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012469"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002160"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Trennen der Telemetriedaten von Entwicklung, Test und Produktion
 
 Wenn Sie die nächste Version einer Webanwendung entwickeln, möchten Sie die [Application Insights](app-insights-overview.md)-Telemetriedaten der neuen Version nicht mit denen der bereits veröffentlichten Version verwechseln. Um Verwirrung zu vermeiden, senden Sie die Telemetriedaten aus verschiedenen Entwicklungsphasen mit separaten Instumentierungsschlüsseln (ikeys) an getrennte Application Insights-Ressourcen. Um das Ändern des Instrumentierungsschlüssels beim Fortschreiten einer Version von einer Phase zur nächsten zu erleichtern, kann es sinnvoll sein, den ikey im Code statt in der Konfigurationsdatei zu platzieren. 
 
-(Wenn Ihr System ein Azure-Clouddienst ist, gibt es [eine weitere Methode zum Festlegen von separaten iKeys](app-insights-cloudservices.md).)
+(Wenn Ihr System ein Azure-Clouddienst ist, gibt es [eine weitere Methode zum Festlegen von separaten iKeys](../azure-monitor/app/cloudservices.md).)
 
 ## <a name="about-resources-and-instrumentation-keys"></a>Informationen zu Ressourcen und Instrumentierungsschlüsseln
 
@@ -32,7 +32,7 @@ Wenn Sie Application Insights-Überwachung für Ihre Web App einrichten, erstell
 Normalerweise entscheiden Sie sich in unterschiedlichen Szenarien für die Verwendung von getrennten Ressourcen oder einer einzelnen, geteilten Ressource:
 
 * Verschiedene, unabhängige Anwendungen: Verwenden Sie eine separate Ressource und einen separaten ikey für jede App.
-* Mehrere Komponenten oder Rollen der gleichen Geschäftsanwendung – Verwenden Sie eine [einzelne geteilte Ressource](app-insights-app-map.md) für alle Komponentenanwendungen. Die Telemetrie kann anhand der cloud_RoleName-Eigenschaft gefiltert oder aufgeteilt werden.
+* Mehrere Komponenten oder Rollen der gleichen Geschäftsanwendung – Verwenden Sie eine [einzelne geteilte Ressource](../azure-monitor/app/app-map.md) für alle Komponentenanwendungen. Die Telemetrie kann anhand der cloud_RoleName-Eigenschaft gefiltert oder aufgeteilt werden.
 * Entwicklung, Testen und Release: Verwenden Sie eine separate Ressource und separate ikeys für Versionen des Systems je nach Produktionsabschnitt oder -phase.
 * A | B-Tests: Verwenden Sie eine einzelne Ressource. Erstellen Sie einen Telemetrie-Initialisierer, um den Telemetriedaten eine Eigenschaft zum Identifizieren der Varianten hinzuzufügen.
 
@@ -56,7 +56,7 @@ Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "globa
 In diesem Beispiel werden die iKeys für die verschiedenen Ressourcen in verschiedenen Versionen der Webkonfigurationsdatei platziert. Wenn Sie die Webkonfigurationsdatei austauschen – z.B. im Rahmen des Releaseskripts – wird die Zielressource ausgetauscht.
 
 ### <a name="web-pages"></a>Webseiten
-Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie auf dem Blatt "Schnellstart" erhalten haben](app-insights-javascript.md). Statt ihn direkt im Skript zu programmieren, generieren Sie ihn über den Serverzustand. Beispielsweise in einer ASP.NET-App:
+Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie auf dem Blatt "Schnellstart" erhalten haben](../azure-monitor/app/javascript.md). Statt ihn direkt im Skript zu programmieren, generieren Sie ihn über den Serverzustand. Beispielsweise in einer ASP.NET-App:
 
 *JavaScript in Razor*
 
@@ -78,7 +78,7 @@ Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Applicati
 
 ![Klicken Sie auf "Neu > Application Insights"](./media/app-insights-separate-resources/01-new.png)
 
-* **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer](app-insights-metrics-explorer.md)verfügbaren Eigenschaften. Wenn Ihr App-Typ nicht angezeigt wird, wählen Sie einen der Webtypen für Webseiten aus.
+* **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer](../azure-monitor/app/metrics-explorer.md)verfügbaren Eigenschaften. Wenn Ihr App-Typ nicht angezeigt wird, wählen Sie einen der Webtypen für Webseiten aus.
 * **Ressourcengruppe** ist eine benutzerfreundliche Möglichkeit zum Verwalten von Eigenschaften wie der [Zugriffssteuerung](app-insights-resources-roles-access-control.md)gespeichert und verarbeitet. Sie können separate Ressourcengruppen für Entwicklungs-, Test- und Produktionsumgebungen verwenden.
 * **Abonnement** ist Ihr Zahlungskonto in Azure.
 * **Speicherort** ist der Ort, an dem Ihre Daten aufbewahrt werden. Dieser kann derzeit nicht geändert werden. 
@@ -86,7 +86,7 @@ Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Applicati
 
 Das Erstellen der Ressource dauert einige Sekunden. Wenn es abgeschlossen ist, sehen Sie eine Warnung.
 
-(Sie können ein [PowerShell-Skript](app-insights-powershell-script-create-resource.md) schreiben, um eine Ressource automatisch zu erstellen.)
+(Sie können ein [PowerShell-Skript](../azure-monitor/app/powershell-script-create-resource.md) schreiben, um eine Ressource automatisch zu erstellen.)
 
 ### <a name="getting-the-instrumentation-key"></a>Abrufen des Instrumentierungsschlüssels
 Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt haben. 
@@ -98,7 +98,7 @@ Sie benötigen die Instrumentierungsschlüssel aller Ressourcen, an die Ihre App
 ## <a name="filter-on-build-number"></a>Filtern nach Buildnummer
 Wenn Sie eine neue Version Ihrer App veröffentlichen, sollten Sie die Telemetrie aus verschiedenen Builds trennen können.
 
-Sie können die Eigenschaft „Anwendungsversion“ festlegen, sodass Sie die Ergebnisse in der [Suche](app-insights-diagnostic-search.md) und im [Metrik-Explorer](app-insights-metrics-explorer.md) filtern können.
+Sie können die Eigenschaft „Anwendungsversion“ festlegen, sodass Sie die Ergebnisse in der [Suche](../azure-monitor/app/diagnostic-search.md) und im [Metrik-Explorer](../azure-monitor/app/metrics-explorer.md) filtern können.
 
 ![Filtern nach einer Eigenschaft](./media/app-insights-separate-resources/050-filter.png)
 
@@ -107,7 +107,7 @@ Es gibt verschiedene Methoden, um die Eigenschaft "Anwendungsversion" festzulege
 * Direktes Festlegen:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Umschließen Sie diese Zeile in einem [Telemetrieinitialisierer](app-insights-api-custom-events-metrics.md#defaults) , um sicherzustellen, dass alle TelemetryClient-Instanzen einheitlich festgelegt werden.
+* Umschließen Sie diese Zeile in einem [Telemetrieinitialisierer](../azure-monitor/app/api-custom-events-metrics.md#defaults) , um sicherzustellen, dass alle TelemetryClient-Instanzen einheitlich festgelegt werden.
 * [ASP.NET] Legen Sie die Version in `BuildInfo.config`fest. Das Webmodul übernimmt die Version aus dem Knoten "BuildLabel". Schließen Sie diese Datei in Ihr Projekt ein, und denken Sie daran, die Eigenschaft "Immer kopieren" im Projektmappen-Explorer festzulegen.
 
     ```XML
@@ -148,15 +148,15 @@ Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinf
     </PropertyGroup>
 ```
 
-Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach der Version zu filtern, wenn Sie [Diagnosesuchen](app-insights-diagnostic-search.md) durchführen oder [Metriken untersuchen](app-insights-metrics-explorer.md).
+Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach der Version zu filtern, wenn Sie [Diagnosesuchen](../azure-monitor/app/diagnostic-search.md) durchführen oder [Metriken untersuchen](../azure-monitor/app/metrics-explorer.md).
 
 Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engine generiert wird, und nicht vom Entwicklerbuild in Visual Studio.
 
 ### <a name="release-annotations"></a>Versionsanmerkungen
-Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](app-insights-annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
+Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](../azure-monitor/app/annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
 
 ![Screenshot eines Beispiels für eine Versionsanmerkung in einem Diagramm](media/app-insights-separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Freigegebene Ressourcen für mehrere Rollen](app-insights-monitor-multi-role-apps.md)
-* [Erstellen eines Telemetrie-Initialisierers zur Unterscheidung von A|B-Varianten](app-insights-api-filtering-sampling.md#add-properties)
+* [Freigegebene Ressourcen für mehrere Rollen](../azure-monitor/app/app-map.md)
+* [Erstellen eines Telemetrie-Initialisierers zur Unterscheidung von A|B-Varianten](../azure-monitor/app/api-filtering-sampling.md#add-properties)

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 85bbd59cb921e5f20feb7b1cf1073fd7b695864f
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7f50d6f6417764a20125f85398dd9cbf93f3a4a1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393569"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542109"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus-Diagnoseprotokolle
 
 Sie können zwei Typen von Protokollen für Azure Service Bus anzeigen:
-* **[Aktivitätsprotokolle](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert.
-* **[Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Sie können Diagnoseprotokolle konfigurieren, um umfangreichere Informationen zu sämtlichen Vorgängen innerhalb des Auftrags zu erhalten. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
+* **[Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md)**. Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert.
+* **[Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md)**. Sie können Diagnoseprotokolle konfigurieren, um umfangreichere Informationen zu sämtlichen Vorgängen innerhalb des Auftrags zu erhalten. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
 
 ## <a name="turn-on-diagnostic-logs"></a>Aktivieren der Diagnoseprotokolle
 
@@ -52,7 +52,7 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie die folgenden S
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel auf dem Blatt **Diagnoseprotokolle** angezeigt.
 
-Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="diagnostic-logs-schema"></a>Schema „Diagnoseprotokolle“
 
@@ -96,5 +96,5 @@ Hier ein Beispiel für eine JSON-Zeichenfolge im Betriebsprotokoll:
 
 Unter den folgenden Links erfahren Sie mehr über Service Bus:
 
-* [Einführung in Service Bus](service-bus-messaging-overview.md)
+* [Einführung in Servicebus](service-bus-messaging-overview.md)
 * [Erste Schritte mit Service Bus](service-bus-dotnet-get-started-with-queues.md)

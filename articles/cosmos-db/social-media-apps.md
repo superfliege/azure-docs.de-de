@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 669cfdc59fc0b2f509db704afa4867d8f55d86f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 494566cc7d49d502fd0bd864e70b338b8d6e0788
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083970"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726781"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 
@@ -100,7 +100,7 @@ Die Erstellung von Feeds ist nunmehr lediglich eine Frage der Erstellung von Dok
 
 Sie können einen Datenstrom „Aktuell“ mit den Beiträgen verwenden, die nach dem Erstellungsdatum sortiert sind. Oder Sie können den Datenstrom „Am beliebtesten“ mit den Beiträgen verwenden, die in den letzten 24 Stunden die meisten „Gefällt mir“-Markierungen erhalten haben. Sie können sogar für jeden Benutzer basierend auf einer Logik, z.B. Follower und Interessen, einen benutzerdefinierten Datenstrom implementieren. Es handelt sich dabei dann immer noch um eine Liste mit Beiträgen. Relevant ist an dieser Stelle, wie diese Listen erstellt werden. Die Leseleistung bleibt davon unberührt. Sobald Sie eine dieser Listen erhalten, schicken Sie mit dem [IN-Operator](how-to-sql-query.md#WhereClause) eine einzelne Abfrage an Cosmos DB, um Seiten mit Beiträgen gleichzeitig abzurufen.
 
-Die Feeddatenströme könnten mithilfe von [Azure App Services](https://azure.microsoft.com/services/app-service/)-Hintergrundprozessen erstellt werden: [WebJobs](../app-service/web-sites-create-web-jobs.md). Nach der Erstellung eines Beitrags kann die Hintergrundverarbeitung mit [Azure Storage](https://azure.microsoft.com/services/storage/)-[Warteschlangen](../storage/queues/storage-dotnet-how-to-use-queues.md) und WebJobs mithilfe des [Azure WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) ausgelöst werden. Diese Funktionen implementieren die Verteilung der Beiträge innerhalb der Streams, basierend auf Ihrer eigenen benutzerdefinierten Logik.
+Die Feeddatenströme könnten mithilfe von [Azure App Services](https://azure.microsoft.com/services/app-service/)-Hintergrundprozessen erstellt werden: [WebJobs](../app-service/webjobs-create.md). Nach der Erstellung eines Beitrags kann die Hintergrundverarbeitung mit [Azure Storage](https://azure.microsoft.com/services/storage/)-[Warteschlangen](../storage/queues/storage-dotnet-how-to-use-queues.md) und WebJobs mithilfe des [Azure WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) ausgelöst werden. Diese Funktionen implementieren die Verteilung der Beiträge innerhalb der Streams, basierend auf Ihrer eigenen benutzerdefinierten Logik.
 
 Punkte und Likes zu einem Beitrag können mithilfe dieser Technik verzögert verarbeitet werden, um eine letztendlich konsistente Umgebung zu erstellen.
 

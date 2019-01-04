@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/19/2018
 ms.author: victorh
-ms.openlocfilehash: 9c0ccb7c5ccb3eced32ea5bcd9f1961c5ccd2110
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 8e8a09ede66213247b306c77938dbff30651fee5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173842"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727147"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
@@ -116,7 +116,7 @@ Nachdem der Vorgang durchgeführt wurde, führen Sie **nslookup** aus, um sicher
 
 Weitere Informationen, wie Sie eine benutzerdefinierte Domäne zu App Service zuordnen, finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
 
-Wenn Sie eine benutzerdefinierte Domäne erwerben möchten, lesen Sie die Informationen zu App Service-Domänen unter [Erwerben eines Namens für eine benutzerdefinierte Domäne für Azure-Web-Apps](../app-service/custom-dns-web-site-buydomains-web-app.md).
+Wenn Sie eine benutzerdefinierte Domäne erwerben möchten, lesen Sie die Informationen zu App Service-Domänen unter [Erwerben eines Namens für eine benutzerdefinierte Domäne für Azure-Web-Apps](../app-service/manage-custom-dns-buy-domain.md).
 
 ## <a name="blob-storage"></a>Blob Storage
 

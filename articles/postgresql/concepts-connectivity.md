@@ -1,21 +1,18 @@
 ---
-title: Behandeln vorübergehender Konnektivitätsfehler für Azure Database for PostgreSQL | Microsoft-Dokumentation
+title: Behandeln vorübergehender Konnektivitätsfehler für Azure Database for PostgreSQL
 description: Erfahren Sie, wie Sie vorübergehende Konnektivitätsfehler für Azure Database for PostgreSQL behandeln.
 keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
-services: postgresql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 021fad5e59e76444351711fb529c542d428af189
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 264656da38608026e3f9e866e2184ff55ba102d8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890059"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536218"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-postgresql"></a>Behandeln vorübergehender Konnektivitätsfehler für Azure Database for PostgreSQL
 

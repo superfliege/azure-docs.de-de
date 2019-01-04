@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 5f03f4fe1422f1665d857269c98a50827ed75d55
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958357"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999168"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualisieren Ihrer älteren Java Service Fabric-Anwendung für den Abruf von Java-Bibliotheken aus Maven
 Vor Kurzem wurden Service Fabric-Java-Binärdateien vom Service Fabric-Java-SDK auf Maven-Hosting umgestellt. Nun können Sie die neuesten Service Fabric-Java-Abhängigkeiten mithilfe von **mavencentral** abrufen. In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre vorhandenen Java-Anwendungen, die Sie zuvor für die Verwendung mit dem Service Fabric-Java-SDK erstellt haben, unter Verwendung einer Yeoman-Vorlage oder mithilfe von Eclipse aktualisieren, sodass sie mit dem Maven-basierten Build kompatibel sind.
@@ -220,7 +220,7 @@ task copyDeps <<{
     }
 }
 ```
-Die Beispiele für Einsteiger vermitteln jeweils einen allgemeinen Eindruck davon, wie ein Buildskript für einen zustandslosen Service Fabric-Java-Dienst aussieht. Die Datei „build.gradle“ für das EchoServer-Beispiel finden Sie [hier](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle).
+Die Beispiele für Einsteiger vermitteln jeweils einen allgemeinen Eindruck davon, wie ein Buildskript für einen zustandslosen Service Fabric-Java-Dienst aussieht. Die Datei „build.gradle“ für das EchoServer-Beispiel finden Sie [hier](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle).
 
 ## <a name="migrating-service-fabric-actor-service"></a>Migrieren des Service Fabric-Akteurdiensts
 

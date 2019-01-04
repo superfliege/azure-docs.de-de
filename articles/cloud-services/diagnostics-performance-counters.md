@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d332a792f693b099ce925e9b5705f09e52507522
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322942"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000239"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Erfassen von Leistungsindikatoren für Ihren Azure-Clouddienst
 
@@ -84,7 +84,7 @@ Ein Leistungsindikator kann Ihrem Clouddienst entweder für die Azure-Diagnose o
 
 ### <a name="application-insights"></a>Application Insights
 
-In Azure Application Insights für Clouddienste können Sie angeben, welche Leistungsindikatoren Sie erfassen möchten. Nachdem Sie [Application Insights zu Ihrem Projekt hinzugefügt](../application-insights/app-insights-cloudservices.md#sdk) haben, wird Ihrem Visual Studio-Projekt eine Konfigurationsdatei namens **ApplicationInsights.config** hinzugefügt. Diese Konfigurationsdatei definiert, welche Arten von Informationen Application Insights erfasst und an Azure sendet.
+In Azure Application Insights für Clouddienste können Sie angeben, welche Leistungsindikatoren Sie erfassen möchten. Nachdem Sie [Application Insights zu Ihrem Projekt hinzugefügt](../azure-monitor/app/cloudservices.md#sdk) haben, wird Ihrem Visual Studio-Projekt eine Konfigurationsdatei namens **ApplicationInsights.config** hinzugefügt. Diese Konfigurationsdatei definiert, welche Arten von Informationen Application Insights erfasst und an Azure sendet.
 
 Öffnen Sie die Datei **ApplicationInsights.config**, und suchen Sie nach dem Element **ApplicationInsights** > **TelemetryModules**. Jedes Unterelement `<Add>` definiert einen Telemetrietyp, der erfasst werden soll, gemeinsam mit der zugehörigen Konfiguration. Der Leistungsindikator-Telemetriemodultyp lautet `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Wenn dieses Element bereits definiert ist, fügen Sie es nicht noch mal hinzu. Jeder zu erfassende Leistungsindikator ist unter einem Knoten namens `<Counters>` definiert. Hier sehen Sie ein Beispiel zur Erfassung von Leistungsindikatoren zu einem Laufwerk:
 
@@ -116,7 +116,7 @@ Application Insights erfasst die folgenden Leistungsindikatoren automatisch:
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\%Prozessorzeit
 
-Weitere Informationen finden Sie unter [Systemleistungsindikatoren in Application Insights](../application-insights/app-insights-performance-counters.md) und [Application Insights für Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters).
+Weitere Informationen finden Sie unter [Systemleistungsindikatoren in Application Insights](../azure-monitor/app/performance-counters.md) und [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
 
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 
@@ -294,7 +294,7 @@ Wie zuvor erwähnt, werden die zu erfassenden Leistungsindikatoren in der Datei 
 
 ## <a name="more-information"></a>Weitere Informationen
 
-- [Application Insights für Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters)
-- [Systemleistungsindikatoren in Application Insights](../application-insights/app-insights-performance-counters.md)
+- [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
+- [Systemleistungsindikatoren in Application Insights](../azure-monitor/app/performance-counters.md)
 - [Angeben eines Indikatorpfads](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

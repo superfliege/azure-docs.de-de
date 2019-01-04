@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: e3159ac4074e7ff437e052e0e2c1ae7d31378abe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8fd7161208f6303e03deaacca6a1e2fad24ec45e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345090"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580875"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrieren von Azure-Warnungen für Verwaltungsereignisse zu Aktivitätsprotokollwarnungen
 
@@ -110,9 +110,9 @@ Zuvor erstellte Warnungen für Verwaltungsereignisse werden nicht automatisch zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Aktivitätsprotokollen](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+* Weitere Informationen zu [Aktivitätsprotokollen](../../azure-monitor/platform/activity-logs-overview.md)
 * Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](../../azure-monitor/platform/activity-log-alerts.md)
 * Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](../../azure-monitor/platform/alerts-activity-log.md)
 * Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* Weitere Informationen zu [Dienstbenachrichtigungen](../../monitoring-and-diagnostics/monitoring-service-notifications.md)
+* Weitere Informationen zu [Dienstbenachrichtigungen](../../azure-monitor/platform/service-notifications.md)
 * Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md)

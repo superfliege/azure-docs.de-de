@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77fafb3f3a4c834c5a7f185d129a1c651db58089
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950521"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719845"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
@@ -126,7 +126,7 @@ Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen
    1. Wählen Sie die Abfrage aus, indem Sie im Text-Editor an eine beliebige Stelle in der Abfrage klicken.
    2. Klicken Sie auf **Los**, um die Abfrage auszuführen. 
 
-   Erfahren Sie mehr zu [Application Insights Analytics](app-insights-analytics.md) und zur [Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference).
+   Erfahren Sie mehr zu [Application Insights Analytics](../azure-monitor/app/analytics.md) und zur [Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference).
 
 
 2. **Segmentieren und filtern Sie die Telemetriedaten zu benutzerdefinierten Ereignissen.** Klicken Sie auf der Seite **Übersicht** in Application Insights im Inhaltsverzeichnis auf **Benutzer**.

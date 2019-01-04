@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 42aa275e692e4e2e9b7ca38825c828c1f56247fb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e81b8fb06240d566e46ca0b45a0910e014dee329
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628140"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995698"
 ---
 Rollenbasierte Zugriffssteuerung ist eine vererbungsbasierte Sicherheitsstrategie zum Verwalten von Zugriffen, Berechtigungen und Rollen. Untergeordnete Rollen erben Berechtigungen von übergeordneten Rollen. Berechtigungen können auch zugewiesen werden, ohne dass sie von einer übergeordneten Rolle geerbt wurden. Sie können auch zugewiesen werden, um eine Rolle nach Bedarf anzupassen.
 
@@ -25,7 +25,7 @@ In jedem Fall werden Rollen *genau die Zugriffsberechtigungen* erteilt, die sie 
 * Eine Rolle, die für das Ausführen ihrer Aufgabe geeignet und darauf beschränkt ist.
 
 >[!IMPORTANT]
-> Beachten Sie immer das Prinzip der geringsten Rechte.
+> Befolgen Sie immer das Prinzip der geringsten Rechte.
 
 Zwei weitere wichtige Aspekte einer rollenbasierten Zugriffssteuerung, die zu beachten sind:
 

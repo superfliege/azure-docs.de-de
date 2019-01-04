@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 65e0fed29909ad5714b35659a7dd453e095a3eeb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012809"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713718"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Verwenden der Apache Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight
 Auf der [Apache Tez](https://tez.apache.org/)-Benutzeroberfläche können Sie [Apache Hive](https://hive.apache.org/)-Aufträge debuggen, die Tez als Ausführungsengine verwenden. Die Tez-Benutzeroberfläche ermöglicht das Visualisieren des Auftrags als Graphen verbundener Elemente, eine Detailsuche in den einzelnen Elementen und das Abrufen von Statistiken und Protokollinformationen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Windows. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Windows-basierter HDInsight-Cluster Anweisungen zum Erstellen eines neuen Clusters finden Sie unter [Erste Schritte mit Windows-basiertem HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md).
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Die Apache Tez-Benutzeroberfläche ist nur in Windows-basierten HDInsight-Clustern verfügbar, die nach dem 8. Februar 2016 erstellt wurden.
-  >
-  >
+
 * Ein Windows-basierter Remotedesktopclient.
 
 ## <a name="understanding-apache-tez"></a>Grundlegendes zu Apache Tez
@@ -65,10 +64,8 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
         en-GB   Nairobi Area    Kenya
 
 ## <a name="use-the-tez-ui"></a>Verwenden der Tez-Benutzeroberfläche
-> [!NOTE]
+> [!NOTE]  
 > Die Tez-Benutzeroberfläche ist nur auf dem Desktop der Hauptknoten des Clusters verfügbar, weshalb Sie über Remotedesktop eine Verbindung mit den Hauptknoten herstellen müssen.
->
->
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren HDInsight-Cluster aus. Wählen Sie oben im Blatt „HDInsight“ das Symbol **Remotedesktop** aus. Über diesen Link wird das Blatt „Remotedesktop“ angezeigt.
 
@@ -77,10 +74,9 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
 
     ![Symbol „Remotedesktopverbindung“](./media/hdinsight-debug-tez-ui/remotedesktopconnect.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Wenn Sie die Remotedesktopverbindung nicht aktiviert haben, geben Sie einen Benutzernamen, ein Kennwort und Ablaufdatum ein, und wählen Sie dann **Aktivieren** aus, um Remotedesktop zu aktivieren. Führen Sie nach der Aktivierung die zuvor genannten Schritte zum Herstellen der Verbindung aus.
-   >
-   >
+
 3. Sobald die Verbindung steht, öffnen Sie auf dem Remotedesktop Internet Explorer. Wählen Sie rechts oben im Browser das Zahnradsymbol und dann **Einstellungen der Kompatibilitätsansicht** aus.
 4. Deaktivieren Sie unten in **Einstellungen der Kompatibilitätsansicht** die Kontrollkästchen **Intranetsites in Kompatibilitätsansicht anzeigen** und **Kompatibilitätslisten von Microsoft verwenden**, und wählen Sie dann **Schließen** aus.
 5. Navigieren Sie in Internet Explorer zu http://headnodehost:8188/tezui/#/. Die Tez-Benutzeroberfläche wird angezeigt.
@@ -101,10 +97,8 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
    * **All Tasks** (Alle Aufgaben) zeigt eine Liste der Aufgaben für alle Scheitelpunkte in diesem DAG.
    * **All TaskAttempts** (Alle Aufgabenversuche) zeigt Informationen zu den Versuchen der Ausführung von Aufgaben für diesen DAG.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Wenn Sie die Spaltenanzeige für „Vertices“, „Tasks“ und „TaskAttempts“ durchlaufen, sehen Sie Links zum Anzeigen von **Leistungsindikatoren** und **Anzeigen oder Herunterladen von Protokollen** für jede Zeile.
-     >
-     >
 
      Wenn beim Auftrag ein Fehler aufgetreten ist, werden in „DAG Details“ der Status FAILED sowie Informationen zur fehlerhaften Aufgabe angezeigt. Diagnoseinformationen werden unter den DAG-Details angezeigt.
 8. Wählen Sie **Graphical View**aus. Es wird eine grafische Darstellung des DAG gezeigt. Sie können den Mauszeiger über jedem Scheitelpunkt in der Ansicht platzieren, um Informationen dazu anzuzeigen.
@@ -115,20 +109,17 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
     ![Vertex Details](./media/hdinsight-debug-tez-ui/vertexdetails.png)
 10. Beachten Sie, dass sich nun oben auf der Seite Links befinden, die sich auf Scheitelpunkte und Aufgaben beziehen.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Sie können auch auf diese Seite gelangen, indem Sie zu **DAG Details** zurückkehren, die **Scheitelpunktdetails** und dann den Scheitelpunkt **Map 1** auswählen.
-    >
-    >
 
     * **Vertex Counters** (Scheitelpunkt-Leistungsindikatoren) zeigt Leistungsindikatorinformationen für diesen Scheitelpunkt an.
     * **Tasks** (Aufgaben) zeigt Aufgaben für diesen Scheitelpunkt an.
     * **Task Attempts** (Aufgabenversuche) zeigt Informationen zu Versuchen der Ausführung von Aufgaben für diesen Scheitelpunkt an.
     * **Sources &amp; Sinks** (Quellen und Senken) zeigt Datenquellen und Senken für diesen Scheitelpunkt an.
 
-      > [!NOTE]
+      > [!NOTE]  
       > Wie beim vorherigen Menü können Sie die Spaltenanzeige für „Tasks“, „Task Attempts“ und „Sources & Sinks“ durchlaufen, um Links zu weiteren Informationen zu den einzelnen Elementen anzuzeigen.
-      >
-      >
+
 11. Wählen Sie **Tasks** und dann das Element mit dem Namen **00_000000** aus. Über diesen Link werden **Taskdetails** für diesen Task angezeigt. Auf diesem Bildschirm können Sie **Leistungsindikatoren für Aufgaben** und **Aufgabenversuche** anzeigen.
 
     ![Taskdetails](./media/hdinsight-debug-tez-ui/taskdetails.png)

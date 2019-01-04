@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2d58a39efca8733902d157083489e59bf22ef161
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386535"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002279"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -33,8 +33,8 @@ Um die Transparenz in Ihrer gesamten Umgebung sicherzustellen, müssen Sie die �
 
 - [Azure DevOps Projects](../devops-project/overview.md) bietet eine vereinfachte Umgebung mit Ihrem vorhandenen Code und dem Git-Repository, oder wählen Sie eine der Beispielanwendungen aus, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen.
 - Die [kontinuierliche Überwachung in Ihrer DevOps-Releasepipeline](../application-insights/app-insights-vsts-continuous-monitoring.md) ermöglicht es Ihnen, Ihre Bereitstellung auf der Grundlage von Überwachungsdaten zu steuern oder zurückzusetzen.
-- Der [Statusmonitor](../application-insights/app-insights-monitor-performance-live-website-now.md) ermöglicht es Ihnen, eine .NET-Live-App unter Windows mit Azure Application Insights zu instrumentieren, ohne Ihren Code ändern oder neu bereitstellen zu müssen.
-- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](../application-insights/app-insights-overview.md), indem Sie das Azure Monitor Application Insights-SDK für [.NET](../application-insights/quick-monitor-portal.md), [Java](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md) oder [alle anderen Programmiersprachen](../application-insights/app-insights-platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
+- Der [Statusmonitor](../azure-monitor/app/monitor-performance-live-website-now.md) ermöglicht es Ihnen, eine .NET-Live-App unter Windows mit Azure Application Insights zu instrumentieren, ohne Ihren Code ändern oder neu bereitstellen zu müssen.
+- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](../application-insights/app-insights-overview.md), indem Sie das Azure Monitor Application Insights-SDK für [.NET](../application-insights/quick-monitor-portal.md), [Java](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md) oder [alle anderen Programmiersprachen](../azure-monitor/app/platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
 
 
 
@@ -56,7 +56,7 @@ Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. D
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Kombinieren von Ressourcen in Azure-Ressourcengruppen
 Eine typische Anwendung in Azure umfasst heute mehrere Ressourcen wie VMs und App Services oder Microservices, die in Cloud Services, AKS-Clustern oder Service Fabric gehostet werden. Diese Anwendungen nutzen häufig Abhängigkeiten wie Event Hubs, Storage, SQL und Service Bus.
 
-- Kombinieren Sie Ressourcen in Azure-Ressourcengruppen, um eine vollständige Sichtbarkeit über Ihre gesamten Ressourcen zu erhalten, aus denen sich Ihre verschiedenen Anwendungen zusammensetzen. [Azure Monitor für Ressourcengruppen](../monitoring-and-diagnostics/resource-group-insights.md) bietet eine einfache Möglichkeit, die Integrität und Leistung Ihrer gesamten systemübergreifenden Anwendung zu verfolgen und ermöglicht es, für Untersuchungen oder Debugging einen Drilldown in die entsprechenden Komponenten auszuführen.
+- Kombinieren Sie Ressourcen in Azure-Ressourcengruppen, um eine vollständige Sichtbarkeit über Ihre gesamten Ressourcen zu erhalten, aus denen sich Ihre verschiedenen Anwendungen zusammensetzen. [Azure Monitor für Ressourcengruppen](../azure-monitor/insights/resource-group-insights.md) bietet eine einfache Möglichkeit, die Integrität und Leistung Ihrer gesamten systemübergreifenden Anwendung zu verfolgen und ermöglicht es, für Untersuchungen oder Debugging einen Drilldown in die entsprechenden Komponenten auszuführen.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Sicherstellen der Qualität durch Continuous Deployment
 Mit Continuous Integration/Continuous Deployment können Sie Codeänderungen automatisch in Ihre Anwendung auf Basis der Ergebnisse automatisierter Tests integrieren und bereitstellen. Es optimiert den Bereitstellungsprozess und sichert die Qualität aller Änderungen, bevor sie in die Produktionsumgebung übernommen werden.
@@ -74,7 +74,7 @@ Ein kritischer Aspekt der Überwachung ist die proaktive Benachrichtigung von Ad
 - Definieren Sie Aktionen für Warnungen, um die effektivsten Mittel zur Benachrichtigung Ihrer Administratoren zu nutzen. Verfügbare [Aktionen für Benachrichtigungen](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) sind SMS, E-Mails, Pushbenachrichtigungen oder Sprachanrufe.
 - Verwenden Sie erweiterte Aktionen, um [eine Verbindung zu Ihrem ITSM-Tool](platform/itsmc-overview.md) oder anderen Warnungsverwaltungssystemen über [Webhooks](platform/activity-log-alerts-webhook.md) herzustellen.
 - Beheben Sie Situationen, die in Warnungen identifiziert wurden, auch mit [Azure Automation Runbooks](../automation/automation-webhooks.md) oder [Logic Apps](/connectors/custom-connectors/create-webhook-trigger), die mithilfe von Webhooks aus einer Warnung heraus gestartet werden können. 
-- Verwenden Sie die [automatische Skalierung](../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md), um Ihre Computeressourcen basierend auf gesammelten Metriken dynamisch zu erhöhen und zu verringern.
+- Verwenden Sie die [automatische Skalierung](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md), um Ihre Computeressourcen basierend auf gesammelten Metriken dynamisch zu erhöhen und zu verringern.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Vorbereiten von Dashboards und Arbeitsmappen
 Die Sicherstellung, dass Entwicklung und Betrieb Zugriff auf dieselbe Telemetrie und dieselben Tools haben, ermöglicht es ihnen, Muster in der gesamten Umgebung anzuzeigen und die mittlere Zeit bis zur Erkennung (MTTD) und die mittlere Zeit bis zur Wiederherstellung (MTTR) zu minimieren.

@@ -3,27 +3,26 @@ title: Erstellen eines Dienstprinzipals für Azure Stack | Microsoft-Dokumentati
 description: Beschreibt das Erstellen eines Dienstprinzipals, der mit der rollenbasierten Zugriffssteuerung in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: mattbriggs
 manager: femila
-ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
-ms.author: sethm
+ms.date: 12/12/2018
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4c205055239b7bf16bbb73448c21818de419e623
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958313"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715826"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können einer Anwendung Zugriff auf Azure Stack-Ressourcen gewähren, indem Sie einen Dienstprinzipal erstellen, der Azure Resource Manager verwendet. Mit einem Dienstprinzipal können Sie mithilfe der [rollenbasierten Zugriffssteuerung](azure-stack-manage-permissions.md) bestimmte Berechtigungen delegieren.
 
@@ -52,7 +51,7 @@ Die Konfiguration von Active Directory für Azure Stack bestimmt die Vorgehenswe
 
 Die Schritte zum Zuweisen eines Dienstprinzipals zu einer Rolle sind für Azure AD und AD FS identisch. Nach der Erstellung des Dienstprinzipals können Sie durch Zuweisung zu einer Rolle [Berechtigungen delegieren](azure-stack-create-service-principals.md#assign-role-to-service-principal).
 
-## <a name="create-a-service-principal-for-azure-ad"></a>Erstellen eines Dienstprinzipals für Azure AD
+## <a name="create-service-principal-for-azure-ad"></a>Erstellen des Dienstprinzipals für Azure AD
 
 Wenn Azure Stack Azure AD als Identitätsspeicher nutzt, können Sie mit dem Azure-Portal anhand der gleichen Schritte wie in Azure einen Dienstprinzipal erstellen.
 
@@ -95,7 +94,7 @@ Wenn Sie Azure Stack mit AD FS als Identitätsspeicher bereitgestellt haben, kö
 * Zuweisen eines Dienstprinzipals zu einer Rolle
 * Anmelden mithilfe der Identität des Dienstprinzipals
 
-Einzelheiten zur Erstellung des Dienstprinzipals finden Sie unter [Erstellen eines Dienstprinzipals für AD FS](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
+Einzelheiten zur Erstellung des Dienstprinzipals finden Sie unter [Erstellen eines Dienstprinzipals für AD FS](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Zuweisen des Dienstprinzipals zu einer Rolle
 
@@ -114,9 +113,7 @@ Verwenden Sie die folgenden Schritte als Leitfaden für das Zuweisen einer Rolle
 
 3. Wählen Sie für das Abonnement die Option **Zugriffssteuerung (IAM)**.
 
-     ![Auswählen der Zugriffssteuerung](./media/azure-stack-create-service-principal/image17.png)
-
-4. Wählen Sie **Hinzufügen**.
+4. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
 5. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten.
 

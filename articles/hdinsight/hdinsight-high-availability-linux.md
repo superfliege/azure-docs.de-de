@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 41c8315bab1b716f79b47afb77c6d371a757691d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386428"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743662"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -47,7 +47,7 @@ Nimbusknoten sind in Apache Storm-Clustern verfügbar. Die Nimbusknoten stellen 
 
 ### <a name="apache-zookeeper-nodes"></a>Apache ZooKeeper-Knoten
 
-[ZooKeeper](http://zookeeper.apache.org/)-Knoten werden für die Auswahl der übergeordneten Dienste auf Hauptknoten verwendet. Sie werden auch verwendet, um sicherzustellen, dass die Dienste, Datenknoten (Worker) und Gateways wissen, auf welchem Hauptknoten ein übergeordneter Dienst aktiv ist. Standardmäßig stellt HDInsight drei ZooKeeper-Knoten bereit.
+[ZooKeeper](https://zookeeper.apache.org/)-Knoten werden für die Auswahl der übergeordneten Dienste auf Hauptknoten verwendet. Sie werden auch verwendet, um sicherzustellen, dass die Dienste, Datenknoten (Worker) und Gateways wissen, auf welchem Hauptknoten ein übergeordneter Dienst aktiv ist. Standardmäßig stellt HDInsight drei ZooKeeper-Knoten bereit.
 
 ### <a name="worker-nodes"></a>Workerknoten
 
@@ -192,7 +192,7 @@ Wenn die Verbindung hergestellt ist, wird Ihnen eine `sftp>`-Eingabeaufforderung
 Um eine Liste aller verfügbaren Befehle zu erhalten, geben Sie an der `sftp>`-Eingabeaufforderung den Befehlt `help` ein.
 
 > [!NOTE]  
-> Es gibt auch grafische Benutzeroberflächen, mit denen Sie das Dateisystem visuell anzeigen können, wenn eine Verbindung über SFTP hergestellt wurde. [MobaXTerm](http://mobaxterm.mobatek.net/) z. B. ermöglicht das Durchsuchen des Dateisystems in einer Benutzeroberfläche ähnlich Windows Explorer.
+> Es gibt auch grafische Benutzeroberflächen, mit denen Sie das Dateisystem visuell anzeigen können, wenn eine Verbindung über SFTP hergestellt wurde. [MobaXTerm](https://mobaxterm.mobatek.net/) z. B. ermöglicht das Durchsuchen des Dateisystems in einer Benutzeroberfläche ähnlich Windows Explorer.
 
 ### <a name="ambari"></a>Ambari
 

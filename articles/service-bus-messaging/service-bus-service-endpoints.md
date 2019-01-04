@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 3e1bdcc9340cc6cf997bebcdf1567bf676521ea5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276127"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651434"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Verwenden von VNET-Dienstendpunkten mit Azure Service Bus
 
@@ -39,7 +39,7 @@ Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, di
 > - Azure-Daten-Explorer
 >
 > Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
-> - Azure-Web-Apps 
+> - Azure App Service
 > - Azure-Funktionen
 
 > [!IMPORTANT]
@@ -76,7 +76,7 @@ Vorlagenparameter:
 
 > [!NOTE]
 > Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.
-> Wenn Sie Regeln für virtuelle Netzwerke oder Firewalls erstellen, müssen Sie die ***„defaultAction“*** ändern.
+> Bei der Erstellung von Regeln für virtuelle Netzwerke oder Firewalls muss die Standardaktion (***defaultAction***) geändert werden.
 > 
 > from
 > ```json

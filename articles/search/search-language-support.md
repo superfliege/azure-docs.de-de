@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 3f88965e0d48a9ed3e9a91b4df42a79b83d2a79b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313325"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631548"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Erstellen eines Index für Dokumente in mehreren Sprachen in Azure Search
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Nachfolgend finden Sie Screenshots der Azure-Portalblätter für Azure Search, �
 ![][2]
 *Wählen Sie für jedes Feld eine der unterstützten Analysen aus*.
 
-Standardmäßig verwenden alle durchsuchbaren Felder die sprachunabhängige [Lucene-Standardanalyse](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) . Die vollständige Liste der unterstützten Analysen finden Sie unter [Sprachunterstützung in Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+Standardmäßig verwenden alle durchsuchbaren Felder die sprachunabhängige [Lucene-Standardanalyse](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) . Die vollständige Liste der unterstützten Analysen finden Sie unter [Sprachunterstützung in Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
 
 Sobald die Sprachanalyse für ein Feld ausgewählt wurde, wird sie für jede Indizierungs- und Suchanfrage für dieses Feld verwendet. Wenn eine Abfrage mithilfe verschiedener Analysen für mehrere Felder ausgegeben wird, wird sie von der richtigen Analyse unabhängig für das jeweilige Feld verarbeitet.
 
@@ -81,7 +81,7 @@ Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
-Wenn Sie .NET-Entwickler sind, können Sie Sprachanalysen mit dem [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search)konfigurieren. Die neueste Version unterstützt auch die Microsoft-Sprachanalysen.
+Wenn Sie .NET-Entwickler sind, können Sie Sprachanalysen mit dem [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search)konfigurieren. Die neueste Version unterstützt auch die Microsoft-Sprachanalysen.
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png

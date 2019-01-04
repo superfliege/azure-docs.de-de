@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399875"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594229"
 ---
 Sie können Ihre [virtuellen Computer (VMs)](../articles/virtual-machines/windows/overview.md) leicht [automatisch skalieren](../articles/azure-monitor/platform/autoscale-best-practices.md), indem Sie [VM-Skalierungsgruppen](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) und das [Feature für die automatische Skalierung von Azure Monitor](../articles/azure-monitor/platform/autoscale-overview.md) verwenden. Ihre VMs müssen Mitglieder einer Skalierungsgruppe sein, um automatisch skaliert werden zu können. Dieser Artikel enthält Informationen, mit denen Sie besser verstehen, wie Sie Ihre VMs mit automatischen und manuellen Methoden sowohl vertikal als auch horizontal skalieren können.
 
@@ -29,7 +29,7 @@ Skalierungsgruppen erleichtern Ihnen die Bereitstellung und Verwaltung von ident
 
 Bei der automatischen Skalierung wird die richtige Anzahl von VMs bereitgestellt, um die Last für Ihre Anwendung zu bewältigen. Sie können VMs hinzufügen, um einen Anstieg der Auslastung auszugleichen, und Kosten sparen, indem Sie ungenutzte VMs entfernen. Sie geben basierend auf einer Gruppe von Regeln eine minimale und maximale Anzahl von VMs an, die ausgeführt werden sollen. Eine minimale Anzahl sorgt dafür, dass Ihre Anwendung auch dann immer ausgeführt wird, wenn keine Last vorhanden ist. Bei Verwendung eines Höchstwerts können Sie eine Obergrenze für die Gesamtkosten pro Stunde festlegen.
 
-Sie können die automatische Skalierung aktivieren, wenn Sie die Skalierungsgruppe erstellen, indem Sie [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) oder [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) verwenden. Die Aktivierung ist auch nach der Erstellung der Skalierungsgruppe möglich. Sie können eine Skalierungsgruppe erstellen, die Erweiterung installieren und die automatische Skalierung mit einer [Azure Resource Manager-Vorlage](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) konfigurieren. Aktivieren Sie im Azure-Portal die automatische Skalierung über Azure Monitor, oder führen Sie die Aktivierung dafür über die Einstellungen für die Skalierungsgruppe durch.
+Sie können die automatische Skalierung aktivieren, wenn Sie die Skalierungsgruppe erstellen, indem Sie [Azure PowerShell](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) oder [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) verwenden. Die Aktivierung ist auch nach der Erstellung der Skalierungsgruppe möglich. Sie können eine Skalierungsgruppe erstellen, die Erweiterung installieren und die automatische Skalierung mit einer [Azure Resource Manager-Vorlage](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) konfigurieren. Aktivieren Sie im Azure-Portal die automatische Skalierung über Azure Monitor, oder führen Sie die Aktivierung dafür über die Einstellungen für die Skalierungsgruppe durch.
 
 ![Aktivieren der automatischen Skalierung](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  

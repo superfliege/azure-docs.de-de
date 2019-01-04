@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 18675737dd03dd6c95a8f57a8f8bcdaed6c8b93d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a6833e2a492a9fb0a6a73a24c9f9d17638958dca
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837323"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975728"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -70,7 +70,7 @@ Zum Einrichten des Konfigurationsservers als hoch verfügbaren virtuellen VMware
 > In diesem Tutorial wird eine OVA-Vorlage verwendet, um den virtuellen Computer für den VMware-Konfigurationsserver zu erstellen. Kann sie nicht verwendet werden, können Sie [den Konfigurationsserver manuell einrichten](physical-manage-configuration-server.md).
 
 > [!TIP]
-> In diesem Tutorial lädt Site Recovery MySQL herunter und installiert MySQL auf dem Konfigurationsserver. Falls Site Recovery diese Schritte nicht ausführen soll, können Sie die Einrichtung manuell vornehmen. [Weitere Informationen](vmware-azure-deploy-configuration-server.md#configure-settings).
+> In diesem Tutorial lädt Site Recovery MySQL herunter und installiert MySQL auf dem Konfigurationsserver. Falls Site Recovery diese Schritte nicht ausführen soll, können Sie die Einrichtung manuell vornehmen. [Weitere Informationen](vmware-azure-deploy-configuration-server.md#configure-settings)
 
 
 ### <a name="download-the-vm-template"></a>Herunterladen der Vorlage

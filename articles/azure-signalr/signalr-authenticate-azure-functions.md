@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 34cbb4d2c8a1e84499961802ca7bd07408375345
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0cd0dcaf200b1248204efc2d2c0011a94d3c41d3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409383"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720967"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions
 
@@ -298,7 +298,7 @@ Sie haben die Funktions-App und die Chatanwendung lokal ausgeführt. Nun stellen
 
 ### <a name="configure-function-app-for-authentication"></a>Konfigurieren der Funktions-App für die Authentifizierung
 
-Bisher funktioniert die Chat-App anonym. In Azure verwenden Sie zum Authentifizieren von Benutzern die [App Service-Authentifizierung](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview). Die Benutzer-ID oder der Benutzername des authentifizierten Benutzers kann an die *SignalRConnectionInfo*-Bindung übergeben werden, um Verbindungsinformationen zu generieren, die als der entsprechende Benutzer authentifiziert sind.
+Bisher funktioniert die Chat-App anonym. In Azure verwenden Sie zum Authentifizieren von Benutzern die [App Service-Authentifizierung](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization). Die Benutzer-ID oder der Benutzername des authentifizierten Benutzers kann an die *SignalRConnectionInfo*-Bindung übergeben werden, um Verbindungsinformationen zu generieren, die als der entsprechende Benutzer authentifiziert sind.
 
 Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen Clients oder nur an die Clients gesendet werden soll, die für einen bestimmten Benutzer authentifiziert wurde.
 

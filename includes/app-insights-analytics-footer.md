@@ -4,15 +4,15 @@ ms.service: application-insights
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: edd7492dba1352484e1a1e5c361c8041bcd966b0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 669aac4903b2de03fe845193b55e6538a3bf9d6c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572156"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53730688"
 ---
 ## <a name="analytics"></a>Analytics
-* [Übersicht](../articles/application-insights/app-insights-analytics.md)
+* [Übersicht](../articles/azure-monitor/app/analytics.md)
 * [Überblick über Analytics](../articles/application-insights/app-insights-analytics-tour.md)
   * Beginnen Sie hier Dieses Tutorial behandelt die wichtigsten Funktionen.
 * [Abfragen](../articles/application-insights/app-insights-analytics-reference.md)
@@ -25,5 +25,5 @@ ms.locfileid: "51572156"
   * Verwenden von Analytics
 * [Sprachreferenz](../articles/application-insights/app-insights-analytics-reference.md)
   * Referenz auf einer Seite.
-* [Problembehandlung](../articles/application-insights/app-insights-analytics-troubleshooting.md)
+* [Problembehandlung](../articles/azure-monitor/app/analytics-troubleshooting.md)
 

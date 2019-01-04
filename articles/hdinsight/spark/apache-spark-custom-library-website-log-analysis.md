@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 26ee51da0065b15191c6a02bcd10597c1190dd0a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f8b479f55ea5ee22ae2510fad6279cac0aaa9c0d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497296"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608799"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analysieren von Websiteprotokollen mithilfe einer benutzerdefinierten Python-Bibliothek mit Apache Spark-Cluster unter HDInsight
 
 Dieses Notebook veranschaulicht das Analysieren von Protokolldaten unter Verwendung einer benutzerdefinierten Bibliothek mit Apache Spark unter HDInsight. Als benutzerdefinierte Bibliothek verwenden wir eine Python-Bibliothek namens **iislogparser.py**.
 
-> [!TIP]
+> [!TIP]  
 > Dieses Tutorial steht auch als Jupyter Notebook für einen Spark-Cluster (Linux) zur Verfügung, den Sie in HDInsight erstellen. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Wenn Sie das Tutorial innerhalb eines Notebooks ausführen möchten, erstellen Sie einen Spark-Cluster, starten Sie ein Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), und führen Sie dann das Notebook **Analyze logs with Spark using a custom library.ipynb** im Ordner **PySpark** aus.
 >
 >
@@ -176,7 +176,7 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   Durch den Befehl `%%sql` gefolgt von `-o averagetime` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](http://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **averagetime**beibehalten.
+   Durch den Befehl `%%sql` gefolgt von `-o averagetime` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](https://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **averagetime**beibehalten.
 
    Folgendes sollte angezeigt werden:
 
@@ -208,7 +208,7 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
 
 ### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
 * [Erstellen einer eigenständigen Anwendung mit Scala](apache-spark-create-standalone-application.md)
-* [Ausführen von Remoteaufträgen auf einem Apache Spark-Cluster mit Livy](apache-spark-livy-rest-interface.md)
+* [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Apache Spark Scala-Anwendungen](apache-spark-intellij-tool-plugin.md)

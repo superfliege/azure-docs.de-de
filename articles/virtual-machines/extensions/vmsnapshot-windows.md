@@ -5,32 +5,25 @@ services: backup, virtual-machines-windows
 documentationcenter: ''
 author: trinadhk
 manager: jeconnoc
-editor: ''
-ms.assetid: 57759670-0baa-44db-ae14-8cdc00d3a906
 ms.service: backup, virtual-machines-windows
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 3/26/2018
+ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8426a2472a28cf287dfe574cb80da56108394ae8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4d942e21afbf1d87ab67d79e90119a4122d889da
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944862"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632194"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>VM-Momentaufnahmenerweiterung unter Windows für Azure Backup
-
-## <a name="overview"></a>Übersicht
 
 Azure Backup bietet Unterstützung für die Sicherung von Workloads von einer lokalen Umgebung in der Cloud sowie die Sicherung von Cloudressourcen in einem Recovery Services-Tresor. Azure Backup führt mithilfe der VM-Momentaufnahmenerweiterung eine anwendungskonsistente Sicherung der virtuellen Azure-Computer durch, ohne dass die VM heruntergefahren werden muss. Die VM-Momentaufnahmenerweiterung wird von Microsoft im Rahmen des Azure Backup-Diensts veröffentlicht und unterstützt. Azure Backup installiert die Erweiterung als Teil der ersten geplanten Sicherung, die nach der Aktivierung der Sicherung ausgelöst wird. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die VM-Momentaufnahmenerweiterung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="operating-system"></a>Betriebssystem
-Eine Liste der unterstützten Betriebssysteme finden Sie unter [Von Azure Backup unterstützte Betriebssysteme](../../backup/backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup).
+Eine Liste der unterstützten Betriebssysteme finden Sie unter [Von Azure Backup unterstützte Betriebssysteme](../../backup/backup-azure-arm-vms-prepare.md#before-you-start).
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 

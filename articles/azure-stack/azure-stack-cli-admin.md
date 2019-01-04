@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: e9309f8cb46b31ded46b705308465ac6f6c89204
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c2827a4badd61aeb8de556795834dee39769e85e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585185"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554502"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Aktivieren der Azure CLI für Azure Stack-Benutzer
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können das CA-Stammzertifikat Benutzern in Azure Stack zur Verfügung stellen, damit sie die Azure CLI auf ihren Entwicklungscomputern verwenden können. Ihre Benutzer benötigen das Zertifikat, um Ressourcen über die CLI zu verwalten.
 
@@ -38,7 +38,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie diese Werte abrufen.
 Sie finden das Azure Stack CA-Stammzertifikat im Development Kit und auf einem virtuellen Mandantencomputer, der innerhalb der Development Kit-Umgebung ausgeführt wird. Um das Azure Stack-Stammzertifikat im PEM-Format zu exportieren, melden Sie sich bei Ihrem Development Kit oder dem virtuellen Mandantencomputer an, und führen Sie das folgende Skript aus:
 
 ```powershell
-$label = "AzureStackSelfSignedRootCert"
+$label = "<Your Azure Stack CA root certificate name>"
 Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
 $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
 if (-not $root)

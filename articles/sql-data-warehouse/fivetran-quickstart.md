@@ -80,5 +80,5 @@ Um sich bei Fivetran anzumelden, geben Sie die Anmeldeinformationen ein, die Sie
 * Host (Ihr Servername).
 * Port.
 * Datenbank.
-* Benutzer (der Benutzername sollte **fivetran@_server_name_** sein, wobei *server_name* Teil Ihres Azure-Host-URIs ist: ***server_name*.database.windows.net**).
+* Benutzer (der Benutzername sollte **fivetran@_server_name_** sein, wobei *server_name* Teil Ihres Azure-Host-URIs ist: **server_name.database.windows.net**).
 * Password:

@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261754"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726730"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Erstellen von Azure App Service-Web-Apps mit Ansible
-[Azure App Service-Web-Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (oder einfach Web-Apps) dient zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. Sie können in Ihrer bevorzugten Sprache entwickeln: .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python.
+[Azure App Service-Web-Apps](https://docs.microsoft.com/azure/app-service/overview) (oder einfach Web-Apps) dient zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. Sie können in Ihrer bevorzugten Sprache entwickeln: .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python.
 
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. In diesem Artikel wird veranschaulicht, wie Sie Ansible verwenden, um eine Web-App mit der Java-Runtime zu erstellen. 
 
@@ -93,7 +93,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>Erstellen einer App Service-Instanz mithilfe von Traffic Manager
 Mit [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) können Sie steuern, wie Anforderungen von Webclients auf Apps in Azure App Service verteilt werden. Wenn einem Azure Traffic Manager-Profil App Service-Endpunkte hinzugefügt werden, überwacht Traffic Manager den Status Ihrer App Service-Apps. Mögliche Statuswerte sind „Ausgeführt“, „Beendet“ und „Gelöscht“. So kann Traffic Manager entscheiden, welcher der Endpunkte Datenverkehr empfangen soll.
 
-In App Service wird eine App in einem [App Service-Plan](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
+In App Service wird eine App in einem [App Service-Plan](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
 ) ausgeführt. Mit einem App Service-Plan wird ein Satz mit Computeressourcen für eine auszuführende Web-App definiert. Sie können Ihren App Service-Plan und die Web-App in unterschiedlichen Gruppen verwalten.
 
 In diesem Abschnitt finden Sie ein Beispielplaybook für Ansible, das die folgenden Ressourcen definiert:

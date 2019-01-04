@@ -1,5 +1,5 @@
 ---
-title: Business Intelligence-Partner für SQL Data Warehouse | Microsoft-Dokumentation
+title: Business Intelligence-Partner für SQL Data Warehouse | Microsoft Docs
 description: Liste der externen Business Intelligence-Partner mit Lösungen, die SQL Data Warehouse unterstützen.
 services: sql-data-warehouse
 author: jrowlandjones
@@ -10,18 +10,18 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 9880afb6c4fd2b7fe1e97b5390c4769c8cafb4ed
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e293c27faa69fe5c79b776a98bcae0f72e85c3ee
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634617"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811153"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Business Intelligence-Partner für SQL Data Warehouse
 Für die Erstellung Ihrer eigenen End-to-End-Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen.  In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Business Intelligence-Lösungen (BI) für die Datenverwaltung anbieten, die Azure SQL Data Warehouse unterstützen.
 
 ## <a name="our-business-intelligence-partners"></a>Unsere Business Intelligence-Partner
-| Partner | Beschreibung | Links | Videos |
+| Partner | BESCHREIBUNG | Links | Videos |
 | --- | --- | --- | --- |
 | ![Birst][1] |**Birst**<br>Birst ist ein weltweit führender Anbieter von Business Intelligence und Analysen in der Cloud. Unternehmen können eine vertrauenswürdige Datenquelle im Kontext der einzelnen wichtigen Geschäftskunden erstellen. Geschäftskunden im gesamten Unternehmen können dann Informationen mit erstklassigen BI-Tools protokollieren und analysieren. |[Marketplace][birst_marketplace]<br>[Website][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
 | ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data ermöglicht Analysen mit kurzen Zyklen für unterschiedliche in SQL Data Warehouse gespeicherte Daten. Die integrierte Spark-basierte Plattform und Analyseanwendung von ClearStory beschleunigt den Datenzugriff und die Harmonisierung von unterschiedlichen Datasets. Sie ermöglichen die schnelle und übergreifende Datendurchsuchung, anhand der Geschäftskunden sich selbständig einen detaillierten Einblick verschaffen können. |[Website][clearstory_website]<br>[Datenblatt][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
@@ -95,12 +95,17 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Partner für
 
 [tableau_datasheet]:http://www.tableau.com/stories/workbook/azure-sql-data
 
-<!--[targit_datasheet]:--> [yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
+<!--[targit_datasheet]:-->
+
+[yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
+
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 
-<!--[clearstory_marketplace]:--> [dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
+<!--[clearstory_marketplace]:-->
+
+[dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
 
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
 
@@ -118,15 +123,24 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Partner für
 
 <!--Press links-->
 
-<!--[birst_press]:--> [clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
+<!--[birst_press]:-->
 
-<!--[dell_statistica_press]:--> [dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+[clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
 
-<!--[jinfonet_press]:--> [logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/ [looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
+<!--[dell_statistica_press]:-->
+
+[dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+
+<!--[jinfonet_press]:-->
+
+[logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/
+[looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
 
 <!--[qlik_press]:-->
 
-<!--[sisense_press]:--> [tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
+<!--[sisense_press]:-->
+
+[tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
 
 <!--[targit_press]:-->
 <!--[yellowfin_press]:-->

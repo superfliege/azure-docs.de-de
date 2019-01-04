@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 17c1cce5c20570f36505ce67a472280b03ef8f0e
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991626"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744530"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -33,7 +33,7 @@ So führen Sie diesen Schnellstart durch:
 - [Installieren Sie das .NET Core 2.0 SDK](https://www.microsoft.com/net/core).
 - Sie benötigen ein Azure-Abonnement und eine vorhandene .NET Core-Webanwendung.
 
-Wenn Sie keine ASP.NET Core-Webanwendung haben, können mithilfe unserer schrittweise Anleitung [eine ASP.NET Core-App erstellen und Application Insights hinzufügen.](app-insights-asp-net-core.md)
+Wenn Sie keine ASP.NET Core-Webanwendung haben, können mithilfe unserer schrittweise Anleitung [eine ASP.NET Core-App erstellen und Application Insights hinzufügen.](../azure-monitor/app/asp-net-core.md)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

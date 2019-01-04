@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c9b1f3570ae3f9b945c87c2ce316c3f72e32b4ad
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191579"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792049"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Erstellen von HDInsight-Clustern mit der klassischen Azure CLI
 
@@ -70,7 +70,7 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
 
     * Ersetzen Sie `storagename` durch einen eindeutigen Namen für das Speicherkonto.
 
-        > [!NOTE]
+        > [!NOTE]  
         > Verwenden Sie `azure storage account create -h`, um sich in der Hilfe zu diesem Befehl weitere Informationen zu den verwendeten Parametern anzeigen zu lassen.
 
 5. Rufen Sie den Schlüssel ab, der für den Zugriff auf das Speicherkonto verwendet wird.
@@ -90,7 +90,7 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
 
     * Ersetzen Sie `Hadoop` durch den zu erstellenden Clustertyp. Beispiel: `Hadoop`, `HBase`, `Kafka`, `Spark` oder `Storm`.
 
-      > [!IMPORTANT]
+      > [!IMPORTANT]  
       > HDInsight-Cluster gibt es in verschiedenen Typen, die der Workload oder Technologie entsprechen, für die der Cluster optimiert ist. Es ist keine unterstützte Methode zum Erstellen eines Clusters vorhanden, bei der mehrere Typen kombiniert werden, z.B. Storm und HBase in einem Cluster.
 
     * Ersetzen Sie `location` durch den gleichen Ort, den Sie in den vorherigen Schritten verwendet haben.
@@ -105,7 +105,7 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
 
     * Ersetzen Sie `sshuser` und `sshuserpassword` durch den Benutzernamen und das Kennwort, die Sie für den Zugriff auf den Cluster per SSH verwenden möchten.
 
-      > [!IMPORTANT]
+      > [!IMPORTANT]  
       > In diesem Beispiel wird ein Cluster mit zwei Workerknoten erstellt. Sie können die Anzahl der Workerknoten auch nach der Erstellung ändern, indem Sie Skalierungsvorgänge durchführen. Wenn Sie die Verwendung von mehr als 32 Workerknoten planen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen. Sie können die Hauptknotengröße während der Clustererstellung mit dem Parameter `--headNodeSize` festlegen.
       >
       > Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -114,7 +114,7 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-hadoop-create-linux-clusters-portal.md) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -124,7 +124,7 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich mithilfe der klassischen CLI ers
 
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
 * [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
-* [Verwenden von Apache Hadoop MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase Cluster
 
