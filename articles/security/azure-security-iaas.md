@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: d4a2daf10fd864f13982f4d327868ad62d1309b3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321459"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540251"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -137,7 +137,7 @@ Ressourcenmissbrauch kann problematisch sein, wenn Prozesse von virtuellen Compu
 
 Sie sollten sich mit [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) Einblick in den Zustand Ihrer Ressourcen verschaffen. Azure Monitor umfasst:
 
-- [Protokolldateien zur Ressourcendiagnose](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md): Ihre VM-Ressourcen werden überwacht und potenzielle Probleme erkannt, die unter Umständen Leistung und Verfügbarkeit beeinträchtigen.
+- [Protokolldateien zur Ressourcendiagnose](../azure-monitor/platform/diagnostic-logs-overview.md): Ihre VM-Ressourcen werden überwacht und potenzielle Probleme erkannt, die unter Umständen Leistung und Verfügbarkeit beeinträchtigen.
 - [Azure-Diagnoseerweiterung](../azure-monitor/platform/diagnostics-extension-overview.md): Stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md) einbeziehen.
 
 Organisationen, die die Leistung virtueller Computer nicht überwachen, können nicht ermitteln, ob bestimmte Veränderungen bei Leistungsmustern normal sind. Wenn ein virtueller Computer mehr Ressourcen beansprucht als normal, kann dies auf einen Angriff über eine externe Ressource oder die Ausführung eines kompromittierten Prozesses auf diesem virtuellen Computer hindeuten.

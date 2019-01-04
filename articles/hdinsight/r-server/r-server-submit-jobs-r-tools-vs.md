@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497125"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604530"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Übermitteln von Aufträgen über R Tools für Visual Studio
 
@@ -35,7 +35,7 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](https:/
 
 4. Installieren Sie [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) auf Ihrem Computer. ML Server stellt die Funktionen [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) und `RxSpark` bereit.
 
-5. Installieren Sie [PuTTY](http://www.putty.org/), um einen Computekontext für die Ausführung von `RevoScaleR`-Funktionen zwischen Ihrem lokalen Client und Ihrem HDInsight-Cluster bereitzustellen.
+5. Installieren Sie [PuTTY](https://www.putty.org/), um einen Computekontext für die Ausführung von `RevoScaleR`-Funktionen zwischen Ihrem lokalen Client und Ihrem HDInsight-Cluster bereitzustellen.
 
 6. Sie haben die Möglichkeit, die Data Science-Einstellungen auf Ihre Visual Studio-Umgebung anzuwenden. Dadurch erhalten Sie ein neues Layout für Ihren Arbeitsbereich für die R Tools.
     1. Wenn Sie Ihre aktuellen Visual Studio-Einstellungen speichern möchten, verwenden Sie den Befehl **Tools > Einstellungen importieren/exportieren**, klicken Sie auf **Ausgewählte Umgebungseinstellungen exportieren**, und geben Sie einen Dateinamen an. Wenn Sie die Einstellungen wiederherstellen möchten, verwenden Sie den gleichen Befehl, und klicken Sie auf **Ausgewählte Umgebungseinstellungen importieren**.
@@ -44,7 +44,7 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](https:/
 
         ![Data Science-Einstellungen...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Mit der Vorgehensweise in Schritt 1 können Sie auch Ihr personalisiertes Data Scientist-Layout speichern und wiederherstellen, anstatt den Befehl **Data Science-Einstellungen** zu wiederholen.
 
 ## <a name="execute-local-r-methods"></a>Ausführen lokaler R-Methoden

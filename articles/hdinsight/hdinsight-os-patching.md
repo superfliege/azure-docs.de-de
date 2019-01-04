@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434044"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741588"
 ---
 # <a name="os-patching-for-hdinsight"></a>Patchen des Betriebssystems für HDInsight 
 Als verwalteter Apache Hadoop-Dienst erledigt HDInsight das Patchen des Betriebssystems für die zugrundeliegenden virtuellen Computer, die von HDInsight-Clustern verwendet werden. Mit Wirkung ab dem 1. August 2016 haben wir die Richtlinie für das Patchen von Gastbetriebssystemen für Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters. Patches werden wirksam, sobald die virtuellen Computer neu gestartet werden.
@@ -33,7 +33,6 @@ Mithilfe der in diesem Artikel beschriebenen Skriptaktion können Sie den Zeitpl
 
 > [!NOTE]  
 > Diese Skriptaktion funktioniert nur mit Linux-basierten HDInsight-Clustern, die nach dem 1. August 2016 erstellt wurden. Patches werden nur wirksam, wenn die virtuellen Computer neu gestartet werden. 
->
 
 ## <a name="how-to-use-the-script"></a>Verwendung des Skripts 
 

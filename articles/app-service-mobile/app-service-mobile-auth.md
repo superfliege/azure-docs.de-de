@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: de501b79107aafa61c489db607c37d086a5f4ed4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408016"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715784"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Authentifizierung und Autorisierung in Azure App Service für mobile Apps
 
@@ -26,7 +26,7 @@ In diesem Artikel wird beschrieben, wie die Authentifizierung und Autorisierung 
 
 In diesem Artikel geht es um die Entwicklung von mobilen Apps. Beim schnellen Einstieg in die App Service-Authentifizierung und -Autorisierung für Ihre mobile App helfen Ihnen die folgenden Tutorials weiter: [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] (bzw. [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova]). 
 
-Informationen zur Funktionsweise der Authentifizierung und Autorisierung in App Service finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md).
+Informationen zur Funktionsweise der Authentifizierung und Autorisierung in App Service finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../app-service/overview-authentication-authorization.md).
 
 ## <a name="authentication-with-provider-sdk"></a>Authentifizierung mit Anbieter-SDK
 
@@ -44,7 +44,7 @@ Bei Verwendung eines Anbieter-SDKs können sich die Benutzer in einer Umgebung a
 
 Das abgerufene Anbietertoken muss zur Überprüfung an App Service gesendet werden. Nach der Tokenüberprüfung durch App Service wird ein neues App Service-Token erstellt und an den Client zurückgegeben. Im Mobile Apps-Client-SDK stehen Hilfsmethoden zur Verfügung, um diesen Austausch zu verwalten und das Token automatisch an alle Anforderungen anzufügen, die an das Anwendungs-Back-End gerichtet werden. Entwickler können auch einen Verweis auf das Anbietertoken speichern.
 
-Weitere Informationen zum Authentifizierungsablauf finden Sie unter [Authentication flow](../app-service/app-service-authentication-overview.md#authentication-flow) (Authentifizierungsablauf). 
+Weitere Informationen zum Authentifizierungsablauf finden Sie unter [Authentication flow](../app-service/overview-authentication-authorization.md#authentication-flow) (Authentifizierungsablauf). 
 
 ## <a name="authentication-without-provider-sdk"></a>Authentifizierung ohne Anbieter-SDK
 
@@ -52,10 +52,10 @@ Wenn Sie kein Anbieter-SDK einrichten möchten, können Sie die Anmeldung dem Mo
 
 Den Code zum Starten dieses Datenflusses finden Sie im entsprechenden plattformspezifischen Authentifizierungstutorial. Am Ende des Datenflusses verfügt das Client-SDK über ein App Service-Token, und das Token wird automatisch an alle Anforderungen angefügt, die an das Anwendungs-Back-End gerichtet werden.
 
-Weitere Informationen zum Authentifizierungsablauf finden Sie unter [Authentication flow](../app-service/app-service-authentication-overview.md#authentication-flow) (Authentifizierungsablauf). 
+Weitere Informationen zum Authentifizierungsablauf finden Sie unter [Authentication flow](../app-service/overview-authentication-authorization.md#authentication-flow) (Authentifizierungsablauf). 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-In den folgenden Tutorials erfahren Sie, wie Sie Ihren mobilen Clients die Authentifizierung mit [servergesteuertem Datenfluss](../app-service/app-service-authentication-overview.md#authentication-flow) hinzufügen:
+In den folgenden Tutorials erfahren Sie, wie Sie Ihren mobilen Clients die Authentifizierung mit [servergesteuertem Datenfluss](../app-service/overview-authentication-authorization.md#authentication-flow) hinzufügen:
 
 * [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS]
 * [Hinzufügen der Authentifizierung zu Ihrer Android-App][Android]
@@ -65,21 +65,21 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihren mobilen Clients die Authe
 * [Hinzufügen der Authentifizierung zu Ihrer Xamarin.Forms-App][Xamarin.Forms]
 * [Hinzufügen der Authentifizierung zu Ihrer Cordova-App][Cordova]
 
-Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/app-service-authentication-overview.md#authentication-flow) für Azure Active Directory finden Sie hier:
+Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/overview-authentication-authorization.md#authentication-flow) für Azure Active Directory finden Sie hier:
 
 * [Verwenden der Active Directory-Authentifizierungsbibliothek für iOS][ADAL-iOS]
 * [Verwenden der Active Directory-Authentifizierungsbibliothek für Android][ADAL-Android]
 * [Verwenden der Active Directory-Authentifizierungsbibliothek für Windows und Xamarin][ADAL-dotnet]
 
-Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/app-service-authentication-overview.md#authentication-flow) für Facebook finden Sie in den folgenden Ressourcen:
+Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/overview-authentication-authorization.md#authentication-flow) für Facebook finden Sie in den folgenden Ressourcen:
 
 * [Verwenden des Facebook-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/app-service-authentication-overview.md#authentication-flow) für Twitter finden Sie in den folgenden Ressourcen:
+Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/overview-authentication-authorization.md#authentication-flow) für Twitter finden Sie in den folgenden Ressourcen:
 
 * [Verwenden von Twitter Fabric für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/app-service-authentication-overview.md#authentication-flow) für Google finden Sie in den folgenden Ressourcen:
+Informationen zur Verwendung des [clientgesteuerten Datenflusses](../app-service/overview-authentication-authorization.md#authentication-flow) für Google finden Sie in den folgenden Ressourcen:
 
 * [Verwenden des Google-Anmelde-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 

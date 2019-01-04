@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 23003859b9a75fb986fe65f5528004f3dd150f9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312186"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633043"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Aktualisieren auf die aktuelle Version der REST-API für den Azure-Suchdienst
 Wenn Sie eine frühere Version der [REST-API für den Azure Search-Dienst](https://docs.microsoft.com/rest/api/searchservice/) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die aktuelle allgemein verfügbare API-Version 2017-11-11.
@@ -59,7 +59,7 @@ Wenn der Code diese Features verwendet, können Sie erst auf 2017-11-11 aktualis
 ## <a name="conclusion"></a>Zusammenfassung
 Weitere Informationen zur Verwendung der REST-API für den Azure Search-Dienst finden Sie in der kürzlich aktualisierten [API-Referenz](https://docs.microsoft.com/rest/api/searchservice/) auf MSDN.
 
-Wir freuen uns auf Ihr Feedback zu Azure Search. Wenn Probleme auftreten, können Sie sich gerne über das [Azure Search-MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) oder [StackOverflow](http://stackoverflow.com/) an uns wenden. Wenn Sie eine Frage zu Azure Search auf StackOverflow stellen, müssen Sie sie mit `azure-search` kennzeichnen.
+Wir freuen uns auf Ihr Feedback zu Azure Search. Wenn Probleme auftreten, können Sie sich gerne über das [Azure Search-MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) oder [StackOverflow](https://stackoverflow.com/) an uns wenden. Wenn Sie eine Frage zu Azure Search auf StackOverflow stellen, müssen Sie sie mit `azure-search` kennzeichnen.
 
 Vielen Dank für die Nutzung von Azure Search!
 

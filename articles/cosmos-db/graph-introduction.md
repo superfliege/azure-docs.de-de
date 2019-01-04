@@ -8,12 +8,12 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 833b9e7ce65a566757c739feebdfc8e0f1d268e9
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077443"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976340"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Einführung in Azure Cosmos DB: Gremlin-API
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält eine Übersicht über die Gremlin-API von Azure Cosmos D
 ## <a name="what-is-a-graph-database"></a>Was ist eine Graphdatenbank?
 Daten sind in der Praxis naturgemäß vernetzt. Bei der konventionellen Datenmodellierung liegt der Schwerpunkt auf Entitäten. Bei vielen Anwendungen besteht auch die Notwendigkeit, sowohl Entitäten als auch Beziehungen natürlich zu modellieren.
 
-Ein [Diagramm](https://mathworld.wolfram.com/Graph.html) ist eine Struktur aus [Vertices](http://mathworld.wolfram.com/GraphVertex.html) und [Edges](http://mathworld.wolfram.com/GraphEdge.html). Sowohl Vertices als auch Edges können eine beliebige Anzahl von Eigenschaften aufweisen. 
+Ein [Diagramm](http://mathworld.wolfram.com/Graph.html) ist eine Struktur aus [Vertices](http://mathworld.wolfram.com/GraphVertex.html) und [Edges](http://mathworld.wolfram.com/GraphEdge.html). Sowohl Vertices als auch Edges können eine beliebige Anzahl von Eigenschaften aufweisen. 
 
 * **Vertices** – Als Vertices werden diskrete Objekte wie etwa eine Person, ein Ort oder ein Ereignis bezeichnet. 
 

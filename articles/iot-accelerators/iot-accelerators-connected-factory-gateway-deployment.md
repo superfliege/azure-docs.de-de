@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ce2391014eb5e15650c0a81ebb8e2fd4a08ca96b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139223"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599943"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Bereitstellen eines Edge-Gateways für den Solution Accelerator für verbundene Factorys unter Windows oder Linux
 
@@ -70,7 +70,7 @@ Weitere Informationen finden Sie unter [Use volumes](https://docs.docker.com/eng
 
 Bevor Sie die OPC-Komponenten installieren, führen Sie die folgenden Schritte aus, um die Umgebung vorzubereiten:
 
-1. Um die Gatewaybereitstellung abzuschließen, benötigen Sie die **iothubowner**-Verbindungszeichenfolge des IoT Hub in Ihrer Bereitstellung mit verbundener Factory. Navigieren Sie im [Azure-Portal](http://portal.azure.com/) zu Ihrem IoT Hub in der Ressourcengruppe, die bei der Bereitstellung der Lösung für verbundene Factorys erstellt wurde. Klicken Sie auf **Freigegebene Zugriffsrichtlinien**, um auf die Verbindungszeichenfolge  **iothubowner** zuzugreifen:
+1. Um die Gatewaybereitstellung abzuschließen, benötigen Sie die **iothubowner**-Verbindungszeichenfolge des IoT Hub in Ihrer Bereitstellung mit verbundener Factory. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem IoT Hub in der Ressourcengruppe, die bei der Bereitstellung der Lösung für verbundene Factorys erstellt wurde. Klicken Sie auf **Freigegebene Zugriffsrichtlinien**, um auf die Verbindungszeichenfolge  **iothubowner** zuzugreifen:
 
     ![Suchen der IoT Hub-Verbindungszeichenfolge](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 

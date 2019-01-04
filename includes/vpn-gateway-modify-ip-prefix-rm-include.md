@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8803aada61ae58f1e221767aeb382f7d74c63eb4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 58acd2d0ed422f296e82cae5a30c79b339a66e01
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30326495"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444125"
 ---
 ### <a name="noconnection"></a>So ändern Sie die IP-Adresspräfixe eines Gateways des lokalen Netzwerks: Keine Gatewayverbindung
 
@@ -41,37 +41,37 @@ Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn eine
 
 1. Entfernen Sie die Verbindung.
 
-  ```azurepowershell-interactive
-  Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
+   ```
 2. Ändern Sie die IP-Adresspräfixe für das lokale Netzwerkgateway.
    
-  Legen Sie die Variable für das lokale Netzwerkgateway (LocalNetworkGateway) fest.
+   Legen Sie die Variable für das lokale Netzwerkgateway (LocalNetworkGateway) fest.
 
-  ```azurepowershell-interactive
-  $local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   $local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
+   ```
    
-  Ändern Sie die Präfixe.
+   Ändern Sie die Präfixe.
    
-  ```azurepowershell-interactive
-  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
-  ```
+   ```azurepowershell-interactive
+   Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+   -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
+   ```
 3. Erstellen Sie die Verbindung. In diesem Beispiel konfigurieren wir einen IPsec-Verbindungstyp. Verwenden Sie beim erneuten Erstellen der Verbindung den für Ihre Konfiguration angegebenen Verbindungstyp. Weitere Verbindungstypen finden Sie auf der Seite [PowerShell-Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) .
    
-  Legen Sie die Variable für das virtuelle Netzwerkgateway (VirtualNetworkGateway) fest.
+   Legen Sie die Variable für das virtuelle Netzwerkgateway (VirtualNetworkGateway) fest.
 
-  ```azurepowershell-interactive
-  $gateway1 = Get-AzureRmVirtualNetworkGateway -Name VNet1GW  -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name VNet1GW  -ResourceGroupName TestRG1
+   ```
    
-  Erstellen Sie die Verbindung. In diesem Beispiel wird die in Schritt 2 festgelegte Variable „$local“ verwendet.
+   Erstellen Sie die Verbindung. In diesem Beispiel wird die in Schritt 2 festgelegte Variable „$local“ verwendet.
 
-  ```azurepowershell-interactive
-  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
-  -ResourceGroupName TestRG1 -Location 'East US' `
-  -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
-  -ConnectionType IPsec `
-  -RoutingWeight 10 -SharedKey 'abc123'
-  ```
+   ```azurepowershell-interactive
+   New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+   -ResourceGroupName TestRG1 -Location 'East US' `
+   -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
+   -ConnectionType IPsec `
+   -RoutingWeight 10 -SharedKey 'abc123'
+   ```

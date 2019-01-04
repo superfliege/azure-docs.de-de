@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7e63fa75f473d5da911fbf845f0662d8eec5c70
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249633"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717397"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurieren Ihrer Python-App für Azure App Service unter Linux
 
@@ -110,7 +110,7 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Befehl anzu
 
     Alternativ hierzu können Sie den Befehl auch in einer Textdatei im Stamm Ihres Projekts speichern, z.B. *startup.txt* (oder ein beliebiger anderer Name). Stellen Sie diese Datei dann in App Service bereit, und geben Sie stattdessen diesen Namen im Feld **Startdatei** an. Mit dieser Option können Sie den Befehl in Ihrem Quellcoderepository verwalten, anstatt über das Azure-Portal.
 
-1. Wählen Sie **Speichern**aus. App Service wird automatisch neu gestartet, und nach einigen Sekunden sollten Sie erkennen können, dass der benutzerdefinierte Startbefehl angewendet wird.
+1. Wählen Sie **Speichern** aus. App Service wird automatisch neu gestartet, und nach einigen Sekunden sollten Sie erkennen können, dass der benutzerdefinierte Startbefehl angewendet wird.
 
 > [!Note]
 > App Service ignoriert alle Fehler, die beim Verarbeiten einer benutzerdefinierten Befehlsdatei auftreten, und setzt den Startprozess dann fort, indem nach Django- und Flask-Apps gesucht wird. Wenn das erwartete Verhalten nicht zu beobachten ist, sollten Sie überprüfen, ob Ihre Startdatei für App Service bereitgestellt wird und keine Fehler enthält.
@@ -132,4 +132,4 @@ Wenn App Service keinen benutzerdefinierten Befehl und keine Django-App oder Fla
 - **Im Browser wird die Meldung „Dienst nicht verfügbar“ angezeigt.** Für den Browser ist ein Timeout aufgetreten, während auf eine Antwort von App Service gewartet wurde. Dies weist darauf hin, dass App Service den Gunicorn-Server gestartet hat, aber die Argumente, mit denen der App-Code angegeben wird, fehlerhaft sind.
   - Aktualisieren Sie den Browser. Dies gilt besonders, wenn Sie in Ihrem App Service-Plan die niedrigsten Tarife nutzen. Bei Verwendung von Free-Tarifen kann das Starten der App beispielsweise länger dauern. Sie reagiert dann wieder, nachdem Sie den Browser aktualisiert haben.
   - Überprüfen Sie, ob Ihre App so strukturiert ist, wie App Service dies für [Django](#django-app) oder [Flask](#flask-app) erwartet, oder verwenden Sie einen [benutzerdefinierten Startbefehl](#custom-startup-command).
-  - Verwenden Sie SSH oder die Kudu-Konsole, um eine Verbindung mit App Service herzustellen, und untersuchen Sie dann die im Ordner *LogFiles* gespeicherten Diagnoseprotokolle. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](../web-sites-enable-diagnostic-log.md).
+  - Verwenden Sie SSH oder die Kudu-Konsole, um eine Verbindung mit App Service herzustellen, und untersuchen Sie dann die im Ordner *LogFiles* gespeicherten Diagnoseprotokolle. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](../troubleshoot-diagnostic-logs.md).

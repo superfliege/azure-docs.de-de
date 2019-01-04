@@ -1,20 +1,17 @@
 ---
 title: Beheben von Problemen mit der Abfrageleistung in Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie Probleme mit der Abfrageleistung in Azure Database for MariaDB mithilfe von EXPLAIN beheben.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 6bbaffeccbca77f1cab3058152f8c001f721332e
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347466"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53541080"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Verwenden von EXPLAIN zum Analysieren der Abfrageleistung in Azure Database for MariaDB
 **EXPLAIN** ist ein praktisches Tool zum Optimieren von Abfragen. Mit einer EXPLAIN-Anweisung können Sie Informationen zur Ausführung von SQL-Anweisungen abrufen. Die folgende Ausgabe zeigt ein Beispiel für die Ausführung einer EXPLAIN-Anweisung.

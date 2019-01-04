@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: c95c40404bb52f739c407eca3c0d48be5e0a86e6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ff6a3f32d9163be01483e8b8c743caa4e5bb573c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262434"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581248"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
@@ -359,7 +359,7 @@ Klicken Sie auf **Warnregeln**, um Warnungen basierend auf Azure Cache for Redis
 Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-collection.md#metrics) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
 
 >[!NOTE]
->Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Log Analytics senden](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+>Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Log Analytics senden](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 >
 >
 

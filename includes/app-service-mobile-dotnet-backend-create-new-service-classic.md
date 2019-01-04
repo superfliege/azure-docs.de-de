@@ -4,19 +4,19 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 30b5ae499d29b8b78b5852074362841ac1ceb49f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e087a1db008422aeec8fd4e073a7476eebe4d54b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133807"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729406"
 ---
 1. Melden Sie sich beim [Azure-Portal] an.
 2. Wählen Sie **+ NEU** > **Web + Mobil** > **Mobile App** aus, und geben Sie einen Namen für Ihr Mobile Apps-Back-End an.
 3. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. (Verwenden Sie dabei den gleichen Namen wie für die App.) 
 4. Für den **App Service-Plan** ist der Standardplan (im Tarif [Standard](https://azure.microsoft.com/pricing/details/app-service/)) ausgewählt. Sie können auch einen anderen Plan auswählen oder [einen neuen Plan erstellen](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
 
-   Die Einstellungen für den App Service-Plan bestimmen [den Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App. Weitere Informationen zu App Service-Plänen sowie zum Erstellen eines neuen Plans in einem anderen Tarif und am gewünschten Standort finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+   Die Einstellungen für den App Service-Plan bestimmen [den Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App. Weitere Informationen zu App Service-Plänen sowie zum Erstellen eines neuen Plans in einem anderen Tarif und am gewünschten Standort finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../articles/app-service/overview-hosting-plans.md).
    
 5. Klicken Sie auf **Erstellen**. In diesem Schritt wird das Back-End für Mobile Apps erstellt. 
 6. Klicken Sie im Bereich **Einstellungen** für das neue Mobile Apps-Back-End auf **Schnellstart** > Ihre Client-App-Plattform > **Datenbank verbinden**. 

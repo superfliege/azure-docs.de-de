@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: af85975fce20a87af8365f8fe6ea73ed1e6e1416
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868938"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998913"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligente Erkennung in Application Insights
  Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
@@ -54,12 +54,12 @@ Es gibt drei Arten der Erkennung:
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen:
 
-* [Metrik-Explorer](app-insights-metrics-explorer.md)
-* [Suchexplorer](app-insights-diagnostic-search.md)
+* [Metrik-Explorer](../azure-monitor/app/metrics-explorer.md)
+* [Suchexplorer](../azure-monitor/app/diagnostic-search.md)
 * [Analytics: Leistungsfähige Abfragesprache](../azure-monitor/log-query/get-started-portal.md)
 
 Die intelligente Erkennungen erfolgt vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
-* [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
-* [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) 
+* [Einrichten von Warnungen in Application Insights](../azure-monitor/app/alerts.md)
+* [Verfügbarkeitswebtests](../azure-monitor/app/monitor-web-app-availability.md) 
 

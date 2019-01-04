@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 76ed904a90b84e7b0bac86b2ed5380289d7802c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 79375dbbc7c966f2e972389788cefe8a0fe3692d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387944"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582676"
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Überwachen und Empfangen von Benachrichtigungen zu wichtigen Aktionen im Azure-Abonnement
 
@@ -98,4 +98,4 @@ Löschen Sie die Ressourcengruppe und Netzwerksicherheitsgruppe, wenn Sie sie ni
 In diesem Schnellstart haben Sie einen Vorgang zum Generieren eines Aktivitätsprotokollereignisses generiert und anschließend eine Aktivitätsprotokollwarnung erstellt, um benachrichtigt zu werden, wenn dieser Vorgang in Zukunft erneut auftreten sollte. Danach haben Sie die Warnung durch erneutes Ausführen dieses Vorgangs getestet. Azure stellt die Aktivitätsprotokollereignisse der letzten 90 Tage zur Verfügung. Falls Sie Ereignisse länger als 90 Tage beibehalten müssen, archivieren Sie Ihre Aktivitätsprotokolldaten zusammen mit anderen Überwachungsdaten.
 
 > [!div class="nextstepaction"]
-> [Archivieren von Überwachungsdaten](./../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md)
+> [Archivieren von Überwachungsdaten](./../../azure-monitor/learn/tutorial-archive-data.md)

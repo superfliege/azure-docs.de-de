@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer einseitigen Azure Time Series Insights-Web-App | Microsoft-Dokumentation
+title: 'Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie eine einseitige Webanwendung erstellen, die Daten aus einer TSI-Umgebung abfragt und rendert.
 author: ashannon7
 ms.service: time-series-insights
@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: fccd509d4f16cee86d30feb0e838f1493cae4e0b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275838"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540145"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App
 

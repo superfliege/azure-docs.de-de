@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f3a3261fa1b7aa2075a05d7b87ea3fc29c5b9fab
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f2e0767e78119b224f7be9256ab7050deca37e32
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385872"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546979"
 ---
 # <a name="setup-diagnostic-logging"></a>Einrichten der Diagnoseprotokollierung
 
-Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/), einem Dienst von [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite), exportieren. 
+Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../azure-monitor/platform/diagnostic-logs-overview.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/), einem Dienst von [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite), exportieren. 
 
 ![Diagnoseprotokollierung für Storage, Event Hubs oder Log Analytics](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -304,6 +304,6 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zur [Diagnoseprotokollierung auf Azure-Ressourcenebene](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Erfahren Sie mehr zur [Diagnoseprotokollierung auf Azure-Ressourcenebene](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 Weitere Informationen finden Sie in der PowerShell-Hilfe unter [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/Set-AzureRmDiagnosticSetting).

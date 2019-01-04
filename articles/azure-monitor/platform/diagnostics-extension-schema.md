@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 42ed050606dd242e43903ed980a5670b4aa6f3df
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 064c1b8100e165627d5227b9f24b87aefae2e769
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343172"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790757"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
 Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerweiterung, die zusammen mit dem Microsoft Azure SDK bereitgestellt werden.  
@@ -175,7 +175,7 @@ Speichertyp zu PublicConfig hinzugefügt. StorageType kann *Table*, *Blob* oder 
 Möglichkeit zum Routen an EventHub hinzugefügt.
 
 ### <a name="diagnostics-extension-15"></a>Diagnoseerweiterung 1.5
-Das Element „sinks“ wurde hinzugefügt, ebenso die Möglichkeit, Diagnosedaten an [Application Insights](../../application-insights/app-insights-cloudservices.md) zu senden. Dies vereinfacht die Diagnose von Problemen sowohl in Ihrer gesamten Anwendung als auch auf System- und Infrastrukturebene.
+Das Element „sinks“ wurde hinzugefügt, ebenso die Möglichkeit, Diagnosedaten an [Application Insights](../../azure-monitor/app/cloudservices.md) zu senden. Dies vereinfacht die Diagnose von Problemen sowohl in Ihrer gesamten Anwendung als auch auf System- und Infrastrukturebene.
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 und Diagnoseerweiterung 1.3
 Für Clouddienstprojekte in Visual Studio wurden die folgenden Änderungen vorgenommen. (Diese Änderungen gelten auch für spätere Versionen des Azure SDK.)

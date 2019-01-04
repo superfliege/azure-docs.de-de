@@ -1,5 +1,5 @@
 ---
-title: Notfallwiederherstellungsverfahren für SQL-Datenbank | Microsoft-Dokumentation
+title: Notfallwiederherstellungsverfahren für SQL-Datenbank | Microsoft Docs
 description: Hier erhalten Sie Anleitungen und Best Practices dazu, wie Sie Azure SQL-Datenbank verwenden, um Übungen zur Notfallwiederherstellung durchzuführen.
 services: sql-database
 ms.service: sql-database
@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f73340c9c350fd65b18e73bea2e1607f5eee83fa
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cffafa68d155273de3b747c0399ce435f609b9fb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277147"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602204"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Ausführen von Notfallwiederherstellungsverfahren
 

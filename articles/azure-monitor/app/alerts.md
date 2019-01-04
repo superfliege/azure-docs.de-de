@@ -1,0 +1,114 @@
+---
+title: Einrichten von Warnungen in Azure Application Insights | Microsoft Docs
+description: Legen Sie fest, dass Sie über längere Reaktionszeiten, Ausnahmen und andere Leistungs- oder Nutzungsänderungen in Ihrer Web-App informiert werden.
+services: application-insights
+documentationcenter: ''
+author: mrbullwinkle
+manager: carmonm
+ms.reviewer: lagayhar
+ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.topic: conceptual
+ms.date: 03/14/2017
+ms.author: mbullwin
+ms.openlocfilehash: 3ed4039ae17828959f00de27c839454b63a7be6d
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998267"
+---
+# <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
+[Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
+
+Application Insights überwacht die Live-App auf einer [Vielzahl von Plattformen][platforms], um Sie bei der Diagnose von Leistungsproblemen und beim Auswerten von Nutzungsmustern zu unterstützen.
+
+Es gibt drei Arten von Warnungen:
+
+* **Metrikwarnungen** informieren Sie darüber, wenn eine Metrik für einen bestimmten Zeitraum einen Schwellenwert überschreitet – z.B. in Bezug auf Reaktionszeiten, Anzahl von Ausnahmen, CPU-Nutzung oder Seitenaufrufe. 
+* [**Webtests**][availability] informieren Sie, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability].
+* Die [**Proaktive Diagnose**](../../application-insights/app-insights-proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
+
+In diesem Artikel werden Metrikwarnungen beschrieben.
+
+## <a name="set-a-metric-alert"></a>Festlegen einer Metrikwarnung
+Öffnen Sie das Blatt „Warnungsregeln“, und verwenden Sie dann die Schaltfläche „Hinzufügen“. 
+
+![Klicken Sie auf dem Blatt "Warnungsregeln" auf "Warnung hinzufügen". Legen Sie Ihre App als zu messende Ressource fest, geben Sie einen Namen für die Warnung ein, und wählen Sie eine Metrik.](./media/alerts/01-set-metric.png)
+
+* Legen Sie die Ressource vor den anderen Eigenschaften fest. **Wählen Sie die Ressource "(Komponenten)" aus** , wenn Sie Benachrichtigungen für Leistungs- oder Nutzungsmetriken festlegen möchten.
+* Der Name, den Sie der Warnung zuweisen, muss innerhalb der Ressourcengruppe (nicht nur in Ihrer Anwendung) eindeutig sein.
+* Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sind.
+* Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressourcengruppe haben. Wenn Sie diese Personengruppe erweitern möchten, fügen Sie die entsprechenden Benutzer der [Ressourcengruppe oder dem Abonnement](../../application-insights/app-insights-resources-roles-access-control.md) (nicht der Ressource) hinzu.
+* Wenn Sie „Weitere E-Mail-Adressen“ angeben, werden Warnungen an diese Einzelpersonen oder Gruppen gesendet (unabhängig davon, ob Sie das Kontrollkästchen „E-Mail an Besitzer...“ aktiviert haben). 
+* Legen Sie eine [Webhookadresse](../../azure-monitor/platform/alerts-webhooks.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
+* Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen finden Sie oben auf dem Blatt.
+
+*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.* 
+
+* Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich das Blatt „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
+
+> [!NOTE]
+> Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung eingerichtet ist: [Proaktive Diagnose](../../application-insights/app-insights-proactive-failure-diagnostics.md). Dies ist eine automatische Warnung zur Überwachung einer bestimmten Metrik: der Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese proaktive Warnung zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen. 
+> 
+> 
+
+## <a name="see-your-alerts"></a>Anzeigen Ihrer Warnungen
+Sie erhalten eine E-Mail, wenn sich ein Warnungsstatus von "Inaktiv" in "Aktiv" ändert und umgekehrt. 
+
+Der aktuelle Status jeder Warnung wird im Fenster "Warnungsregeln" angezeigt.
+
+Die Dropdownliste "Warnungen" enthält einen Überblick über die letzten Aktivitäten:
+
+![Dropdownliste „Warnungen“](./media/alerts/010-alert-drop.png)
+
+Der Verlauf von Statusänderungen befindet sich im Aktivitätsprotokoll:
+
+![Klicken Sie auf dem Blatt „Übersicht“ auf „Einstellungen“, „Überwachungsprotokolle“.](./media/alerts/09-alerts.png)
+
+## <a name="how-alerts-work"></a>Funktionsweise von Warnungen
+* Eine Warnung kann drei Zustände annehmen: „Nie aktiviert“, „Aktiviert“ und „Aufgelöst“. „Aktiviert“ bedeutet, dass die angegebene Bedingung bei der letzten Auswertung erfüllt wurde.
+* Wenn sich der Status einer Warnung ändert, wird eine Benachrichtigung generiert. (Wenn die Bedingung für die Warnung bereits erfüllt war, als Sie die Warnung erstellt haben, erhalten Sie möglicherweise erst dann eine Benachrichtigung, wenn die Bedingung nicht mehr erfüllt wird.)
+* Jede Benachrichtigung generiert eine E-Mail-Nachricht, wenn Sie das E-Mail-Feld aktiviert oder E-Mail-Adressen angegeben haben. Sie können auch die Dropdownliste „Benachrichtigungen“ überprüfen.
+* Eine Warnung wird jedes Mal ausgewertet, wenn eine Metrik empfangen wird, sonst aber aus keinem anderen Grund.
+* Durch die Auswertung wird die Metrik über den vorangegangenen Zeitraum aggregiert und mit dem Schwellenwert verglichen, um den neuen Zustand zu ermitteln.
+* Der von Ihnen ausgewählte Zeitraum gibt das Intervall an, über das Metriken aggregiert werden. Der Zeitraum hat keinen Einfluss darauf, wie häufig die Warnung ausgewertet wird: Dies hängt davon ab, wie häufig Metriken empfangen werden.
+* Wenn eine Zeit lang kein Daten für eine bestimmte Metrik empfangen wurden, wirkt sich diese Lücke unterschiedlich auf die Auswertung von Warnungen und die Diagramme im Metrik-Explorer aus. Wenn länger als durch das Samplingintervall des Diagramms vorgegeben keine Daten empfangen werden, hat das Diagramm im Metrik-Explorer den Wert 0. Eine auf der gleichen Metrik basierende Warnung wird aber nicht erneut ausgewertet, und der Zustand der Warnung bleibt unverändert. 
+  
+    Sobald dann Daten empfangen werden, springt das Diagramm auf einen Wert ungleich 0 (null) zurück. Die Warnung wird auf Grundlage der Daten ausgewertet, die für den angegebenen Zeitraum zur Verfügung stehen. Wenn der neue Datenpunkt der einzige in diesem Zeitraum verfügbare Datenpunkt ist, basiert das Aggregat auf diesem Datenpunkt.
+* Eine Warnung kann häufig zwischen den Zuständen "Warnung" und "Fehlerfrei" hin und her wechseln, auch wenn Sie einen langen Zeitraum festlegen. Dies kann vorkommen, wenn sich der metrische Wert um den Schwellenwert herum bewegt. Der Schwellenwert weist keine Hysterese auf: Der Übergang zur Warnung erfolgt beim selben Wert wie der Übergang zum fehlerfreien Zustand.
+
+## <a name="what-are-good-alerts-to-set"></a>Welche Warnungen sollten festgelegt werden?
+Das hängt von Ihrer Anwendung ab. Zunächst einmal sollten Sie nicht zu viele Metriken festlegen. Beobachten Sie Ihre Metrikdiagramme eine Zeitlang, während die App ausgeführt wird, um ein Gefühl für das Normalverhalten zu erhalten. Diese Übung unterstützt Sie bei der Verbesserung der Leistung. Richten Sie dann Warnungen ein, die Ihnen mitteilen, wenn die Metriken den Normalbereich verlassen. 
+
+Zu den gängigen Warnungen zählen Folgende:
+
+* [Browsermetriken][client], insbesondere **Browser-Seitenladezeiten**, eignen sich für Webanwendungen. Wenn Ihre Seite über viele Skripts verfügt, suchen Sie nach **Browserausnahmen**. Um diese Metriken und Warnungen zu erhalten, müssen Sie die [Webseitenüberwachung][client] einrichten.
+* **Serverantwortzeit** für die Serverseite von Webanwendungen. Achten Sie neben der Einrichtung von Warnungen auf diese Metrik, um festzustellen, ob sie bei hohen Anforderungsraten unverhältnismäßig stark variiert: Dies kann darauf hindeuten, dass für Ihre App nicht genügend Systemressourcen vorhanden sind. 
+* **Serverausnahmen** erfordern ein [zusätzliches Setup](../../azure-monitor/app/asp-net-exceptions.md), damit sie angezeigt werden.
+
+Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../application-insights/app-insights-proactive-failure-diagnostics.md) automatisch die Rate überwacht wird, mit der Ihre App auf Anforderungen mit Fehlercodes reagiert. 
+
+## <a name="automation"></a>Automation
+* [Verwenden von PowerShell zum Automatisieren der Einrichtung von Warnungen](../../azure-monitor/app/powershell-alerts.md)
+* [Verwenden von Webhooks zum Automatisieren der Reaktion auf Warnungen](../../azure-monitor/platform/alerts-webhooks.md)
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
+## <a name="see-also"></a>Weitere Informationen
+* [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Automatisieren der Einrichtung von Warnungen](../../azure-monitor/app/powershell-alerts.md)
+* [Proaktive Diagnose](../../application-insights/app-insights-proactive-diagnostics.md) 
+
+<!--Link references-->
+
+[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
+[client]: ../../azure-monitor/app/javascript.md
+[platforms]: ../../azure-monitor/app/platforms.md
+[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[start]: ../../application-insights/app-insights-overview.md
+

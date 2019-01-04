@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ef55f25657d1decb09e438d443e7c289823f7d9d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353740"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605907"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
 
@@ -27,7 +27,7 @@ Der Quellcode ist im folgenden GitHub-Repository gespeichert:
 
 ### <a name="what-is-opc-ua"></a>Was ist OPC UA?
 
-Die OPC Unified Architecture (UA), die 2008 veröffentlicht wurde, ist ein plattformunabhängiger, dienstorientierter Interoperabilitätsstandard. Die OPC UA wird von verschiedenen Industriesystemen und -geräten wie z.B. Industrie-PCs, -PLCs und -sensoren verwendet. Die OPC UA integriert alle Funktionen der klassischen OPC-Spezifikationen in ein erweiterbares Framework mit integrierter Sicherheit. Der Standard wird von der OPC Foundation verwaltet. Die [OPC Foundation](http://opcfoundation.org/) ist eine gemeinnützige Organisation mit über 440 Mitgliedern. Das Ziel der Organisation ist die Verwendung der OPC-Spezifikationen, um eine sichere und zuverlässige Interoperabilität über mehrere Anbieter und Plattformen hinweg zu ermöglichen. Folgende Elemente werden dabei berücksichtigt:
+Die OPC Unified Architecture (UA), die 2008 veröffentlicht wurde, ist ein plattformunabhängiger, dienstorientierter Interoperabilitätsstandard. Die OPC UA wird von verschiedenen Industriesystemen und -geräten wie z.B. Industrie-PCs, -PLCs und -sensoren verwendet. Die OPC UA integriert alle Funktionen der klassischen OPC-Spezifikationen in ein erweiterbares Framework mit integrierter Sicherheit. Der Standard wird von der OPC Foundation verwaltet. Die [OPC Foundation](https://opcfoundation.org/) ist eine gemeinnützige Organisation mit über 440 Mitgliedern. Das Ziel der Organisation ist die Verwendung der OPC-Spezifikationen, um eine sichere und zuverlässige Interoperabilität über mehrere Anbieter und Plattformen hinweg zu ermöglichen. Folgende Elemente werden dabei berücksichtigt:
 
 * Infrastruktur
 * Spezifikationen
@@ -78,7 +78,7 @@ Wenn Sie die Lösung über www.azureiotsolutions.com bereitgestellt haben, könn
 1. Um alle Simulationscontainer zu starten, gehen Sie folgendermaßen vor:
     * Exporten Sie eine Shellvariable mit dem Namen **IOTHUB_CONNECTIONSTRING**. Verwenden Sie den Wert der **IotHubOwnerConnectionString**-Einstellung in der Datei `<name of your deployment>.config.user`. Beispiel: 
 
-        ```
+        ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
@@ -142,7 +142,7 @@ Wenn Sie feststellen, dass keine Daten an IoT Hub gesendet werden, liegt ein Pro
 
 Um in Ihrer Connected Factory-Lösung eine interaktive Karte aktivieren zu können, müssen Sie über ein Azure Maps-Konto verfügen.
 
-Bei einer Bereitstellung aus [www.azureiotsolutions.com](http://www.azureiotsolutions.com) fügt der Bereitstellungsprozess der Ressourcengruppe, die die Solution Accelerator-Dienste enthält, ein Azure Maps-Konto hinzu.
+Bei einer Bereitstellung aus [www.azureiotsolutions.com](https://www.azureiotsolutions.com) fügt der Bereitstellungsprozess der Ressourcengruppe, die die Solution Accelerator-Dienste enthält, ein Azure Maps-Konto hinzu.
 
 Wenn Sie eine Bereitstellung mithilfe des `build.ps1`-Skripts im Connected Factory GitHub-Repository durchführen, legen Sie die Umgebungsvariable `$env:MapApiQueryKey` im Buildfenster auf den [Schlüssel Ihres Azure Maps-Kontos](../azure-maps/how-to-manage-account-keys.md) fest. Die interaktive Karte wird dann automatisch aktiviert.
 
@@ -174,15 +174,15 @@ Gehen Sie wie folgt vor, um Telemetriedaten von OPC UA-fremden Geräten an eine 
 
     ```json
     [
-      {
-        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
-        "DisplayName": "<name_of_the_datapoint>",
-        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
-        "Value": {
-          "Value": <datapoint_value>,
-          "SourceTimestamp": "<timestamp>"
-        }
-      }
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
     ]
     ```
 

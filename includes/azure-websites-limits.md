@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 515aeac3531a45080824df126ad674353f70cdb8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 6bb7db5d57508d448f88a30623b7f30e88a0a821
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279641"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53736769"
 ---
 | Ressource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup>|
-| [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
+| [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [App Service-Plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup>|
+| [App Service-Plan](../articles/app-service/overview-hosting-plans.md) |1 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
 | Serverinstanztyp |Shared |Shared |Dediziert<sup>3</sup> |Dediziert<sup>3</sup> |Dediziert<sup>3</sup></p> |Dediziert<sup>3</sup>|
 | [Horizontal skalieren](../articles/app-service/web-sites-scale.md) (max. Instanzen) |1 freigegebene |1 freigegebene |3 dedizierte<sup>3</sup> |10 dedizierte<sup>3</sup> |20 dedizierte<sup>3</sup>|100 dedizierte<sup>4</sup>|
 | Speicher<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
@@ -24,18 +24,18 @@ ms.locfileid: "52279641"
 | Bandbreite |165 MB |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |
 | Anwendungsarchitektur |32 Bit |32 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |
 | Websockets pro Instanz<sup>7</sup> |5 |35 |350 |Unbegrenzt |Unbegrenzt |Unbegrenzt |
-| Gleichzeitige [Debuggerverbindungen](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |5 |
+| Gleichzeitige [Debuggerverbindungen](../articles/app-service/troubleshoot-dotnet-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |5 |
 | App Service Certificates pro Abonnement<sup>10</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nicht unterstützt. Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt. Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
 | Integrierter Lastenausgleich | |X |X |X |X |X<sup>9</sup> |
 | [Immer aktiviert](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
-| [Geplante Sicherungen](../articles/app-service/web-sites-backup.md) | | | | Geplante Sicherungen alle 2 Stunden, höchstens 12 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) |
+| [Geplante Sicherungen](../articles/app-service/manage-backup.md) | | | | Geplante Sicherungen alle 2 Stunden, höchstens 12 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) |
 | [Automatische Skalierung](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
-| [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>8</sup> |X |X |X |X |X |X |
+| [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) -Unterstützung: | |X |X |X |X |X |
 | [Endpunktüberwachung](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [Stagingslots](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
+| [Stagingslots](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
 | SLA | |  |99,9 % |99,95 %|99,95 %|99,95 %|  
 
 <sup>1</sup> Sofern nicht anderweitig vermerkt, gelten Apps- und Speicherkontingente gemäß dem App Service-Plan.  

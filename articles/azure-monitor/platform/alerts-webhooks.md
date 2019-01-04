@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b1bea9b1a2bdb04a60fa6a8fa1d92bfbaf80c6d6
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2df24cfe217a9955a3abb08d042836821b083946
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320828"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580636"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Benachrichtigung eines nicht unter Azure ausgeführten Systems durch eine klassische Metrikwarnung mithilfe eines Webhooks
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, um Fehler zu protokollieren, um ein Team per Chat-/Messagingdienst zu benachrichtigen oder um verschiedene andere Aktionen auszuführen. 
@@ -27,7 +27,7 @@ Sie können den Webhook-URI im [Azure-Portal](https://portal.azure.com/) unter *
 
 ![Hinzufügen eines Warnungsregelbereichs](./media/alerts-webhooks/Alertwebhook.png)
 
-Sie können auch [Azure PowerShell-Cmdlets](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts), eine [plattformübergreifende Befehlszeilenschnittstelle](../../azure-monitor/platform/cli-samples.md#work-with-alerts) oder [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
+Sie können auch [Azure PowerShell-Cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), eine [plattformübergreifende Befehlszeilenschnittstelle](../../azure-monitor/platform/cli-samples.md#work-with-alerts) oder [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
 
 ## <a name="authenticate-the-webhook"></a>Authentifizieren des Webhooks
 Die Authentifizierung des Webhooks kann mithilfe der tokenbasierten Autorisierung erfolgen. Der Webhook-URI wird mit einer Token-ID gespeichert. Beispiel: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -73,7 +73,7 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 |:--- |:--- |:--- |:--- |
 | status |J |Activated, Resolved |Der Status der Warnung auf der Grundlage der festgelegten Bedingungen. |
 | context |J | |Der Warnungskontext. |
-|  timestamp |J | |Der Zeitpunkt, an dem die Warnung ausgelöst wurde. |
+| timestamp |J | |Der Zeitpunkt, an dem die Warnung ausgelöst wurde. |
 | id |J | |Jede Warnungsregel verfügt über eine eindeutige ID. |
 | name |J | |Der Name der Warnung. |
 | Beschreibung |J | |Eine Beschreibung der Warnung. |

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 06135ff77cb9c2a5b8fa2ae674206406469ed293
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 52f67d21c3a130df4d85c220baca9c6af8eb06c1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870604"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793477"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "52870604"
 
 Hier erfahren Sie, wie Sie mit dem .NET SDK einen [Apache Hadoop](https://hadoop.apache.org/)-Cluster in einem Azure HDInsight-Cluster erstellen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Mithilfe der Schritte in diesem Dokument können Sie einen Cluster mit einem Workerknoten erstellen. Wenn Sie mehr als 32 Workerknoten planen (entweder bei Erstellung des Clusters oder durch eine Skalierung des Clusters nach der Erstellung), müssen Sie eine Hauptknotengröße von mindestens acht Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
 >
 > Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -367,7 +367,7 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-hadoop-create-linux-clusters-portal.md) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die folgenden Informationen, um zu erfahren, wie Sie mit Ihrem Cluster arbeiten. 
@@ -375,7 +375,7 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop-Cluster
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
 * [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
-* [Verwenden von Apache Hadoop MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase Cluster
 * [Erste Schritte mit Apache HBase in HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)

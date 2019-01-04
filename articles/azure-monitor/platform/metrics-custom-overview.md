@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 2b3e8877713fde088be2147bbfa8969e351a3f06
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325600"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605584"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
 
@@ -25,7 +25,7 @@ Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor
 - Instrumentieren Ihrer Anwendung mit dem Azure Application Insights SDK und Senden benutzerdefinierter Telemetriedaten an Azure Monitor 
 - Installieren der WAD-Erweiterung (Windows Azure-Diagnose) auf Ihrer [Azure-VM](collect-custom-metrics-guestos-resource-manager-vm.md), [VM-Skalierungsgruppe](collect-custom-metrics-guestos-resource-manager-vmss.md), [klassischen VM](collect-custom-metrics-guestos-vm-classic.md) oder Ihrem [klassischen Clouddienst](collect-custom-metrics-guestos-vm-cloud-service-classic.md) und Senden der Leistungsindikatoren an Azure Monitor 
 - Installieren des [InfluxData Telegraf-Agents](collect-custom-metrics-linux-telegraf.md) auf Ihrer Azure-Linux-VM und Senden der Metriken mithilfe des Ausgabe-Plug-Ins von Azure Monitor
-- Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
 Wenn Sie benutzerdefinierte Metriken an Azure Monitor senden, muss jeder gemeldete Datenpunkt (oder Wert) die folgenden Informationen enthalten.
 
@@ -193,6 +193,6 @@ Verwenden benutzerdefinierter Metriken von verschiedenen Diensten:
  - [VM-Skalierungsgruppe](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassisch)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtueller Linux-Computer mit Telegraf-Agent](collect-custom-metrics-linux-telegraf.md)
- - [REST-API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md)
+ - [REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Cloud Services (klassisch)](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

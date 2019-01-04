@@ -1,21 +1,18 @@
 ---
-title: 'Vorgehensweise: Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL | Microsoft-Dokumentation'
+title: Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL
 description: Erfahren Sie, wie Sie einen Server in Azure-Datenbank for PostgreSQL mit Azure CLI sichern und wiederherstellen.
-services: postgresql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: e73fe4929d889da768328be22a3e23603dab5be6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 93bece582975f5149ea8ab5cb85d4d508613d066
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970752"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536354"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Gewusst wie: Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL mit Azure CLI
 
@@ -71,9 +68,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 Für den Befehl `az postgres server restore` sind folgende Parameter erforderlich:
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
+| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2018-03-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
@@ -110,7 +107,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 ```
 
 Für den Befehl `az postgres server georestore` sind folgende Parameter erforderlich:
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Der Name der Ressourcengruppe, zu der der neue Server gehören soll.|
 |name | mydemoserver-georestored | Der Name des neuen Servers. |

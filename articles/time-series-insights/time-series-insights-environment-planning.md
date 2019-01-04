@@ -1,5 +1,5 @@
 ---
-title: 'Azure Time Series Insights: Planen – Planen der Skalierung Ihrer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation'
+title: Planen der Skalierung Ihrer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
 description: In diesem Artikel werden bewährte Methoden bei der Planung einer Azure Time Series Insights-Umgebung beschrieben, einschließlich Speicherkapazität, Datenaufbewahrung, Eingangskapazität, Überwachung und Business Disaster Recovery (BCDR).
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6541363eb2ac19cfa4359fe85bde5fa39157055e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ce31b22dcbf3fbe79192647e9a21983911e77a9c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273764"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556032"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planen Ihrer Azure Time Series Insights-Umgebung
 

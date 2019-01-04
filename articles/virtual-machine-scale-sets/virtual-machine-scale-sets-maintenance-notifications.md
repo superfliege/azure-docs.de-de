@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 4e30b143a11e35fc83103abfa03e3fb7f29cf9dc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270126"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546860"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -32,7 +32,7 @@ Azure führt regelmäßig Updates aus, um die Zuverlässigkeit, Leistung und Sic
 
 Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle bezieht sich auf einen anderen Umfang (Regionen):
 
-- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
+- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-logs-overview.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
 - Mit der Benachrichtigung wird ein *Self-Service-Zeitfenster* bereitgestellt. Während dieses Zeitfensters können Sie ermitteln, welche Ihrer virtuellen Computer in der Welle enthalten sind. Sie können die Wartung proaktiv gemäß ihren eigenen Zeitplanungsanforderurngen starten.
 - Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
@@ -95,7 +95,7 @@ Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgrup
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Benachrichtigungen und Warnungen im Portal
 
-Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie die Option **Überwachen** im Menü auf der linken Seite aus. 

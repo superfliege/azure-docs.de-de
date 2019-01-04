@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 48f178b7a94e8989f8a0154bea6195834b1ec35f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d199275d6c17dff72c020bd3a9807f50af8af1e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438675"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544038"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-V
 
 Die Methode zum Aktivieren von Diagnoseprotokollen mithilfe einer Resource Manager-Vorlage hängt vom Ressourcentyp ab.
 
-* **computefremden Ressourcen** (Netzwerksicherheitsgruppen, Logik-Apps, Automation oder Ähnliches) verwendeten Diagnoseeinstellungen finden Sie in [diesem Artikel](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+* **computefremden Ressourcen** (Netzwerksicherheitsgruppen, Logik-Apps, Automation oder Ähnliches) verwendeten Diagnoseeinstellungen finden Sie in [diesem Artikel](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
 * **Computeressourcenressourcen** (WAD-LAD-basierte Ressourcen) verwendete WAD-/LAD-Konfigurationsdatei wird in [diesem Artikel](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 In diesem Artikel erfahren Sie, wie Sie die Diagnose mit diesen Methoden konfigurieren.
@@ -266,6 +266,6 @@ Führen Sie die folgenden Schritte aus, um die Diagnose für eine Computeressour
 Der gesamte Prozess wird in [diesem Dokument](../../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)beschrieben (einschließlich Beispielen).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-* [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 

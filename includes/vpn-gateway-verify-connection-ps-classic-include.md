@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 03dc6d8bb95a952a77be31f79df36a2c1ddc8ffc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c1b5560e16b68565c37365ac9c2cba217d9b1b90
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458634"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444143"
 ---
 Mit dem Cmdlet „Get-AzureVNetConnection“ können Sie überprüfen, ob die Verbindung erfolgreich hergestellt wurde.
 
 1. Verwenden Sie das folgende Cmdlet-Beispiel, und konfigurieren Sie die Werte so, dass sie Ihren eigenen Werten entsprechen. Der Name des virtuellen Netzwerks muss in Anführungszeichen gesetzt werden, wenn er Leerstellen enthält.
 
-  ```azurepowershell
-  Get-AzureVNetConnection "Group ClassicRG ClassicVNet"
-  ```
+   ```azurepowershell
+   Get-AzureVNetConnection "Group ClassicRG ClassicVNet"
+   ```
 2. Sehen Sie sich nach Abschluss des Cmdlets die Werte an. Im Beispiel weiter unten ist der Verbindungsstatus als „Connected“ (Verbunden) angegeben, und Sie sehen die Eingangs- und Ausgangsbytes.
 
         ConnectivityState         : Connected

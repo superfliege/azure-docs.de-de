@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: b32ea4293daa9206c6b0da4bdee777677c5d340d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 22dbe9b29059ff351cd1937f72f6dc742b24c690
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685513"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993891"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Erstellen einer freigegebenen, selbstgehosteten Integration Runtime in Azure Data Factory mit PowerShell
 
@@ -33,7 +33,7 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
 
 - **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
 
-- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
+- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
 
 > [!NOTE]  
 > Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auswählen: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -75,7 +75,7 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
     > [!NOTE]  
     > Dieser Schritt ist optional. Wenn Sie bereits eine Data Factory verwenden, überspringen Sie diesen Schritt. 
 
-    Erstellen Sie mit dem Befehl [New-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort „WestEurope“ erstellt: 
+    Erstellen Sie mit dem Befehl [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort „WestEurope“ erstellt: 
 
     ```powershell
     New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -192,6 +192,6 @@ Remove-AzureRmDataFactoryV2IntegrationRuntime `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Integration Runtime-Konzepte in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime).
+- Lesen Sie [Integration Runtime-Konzepte in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
 
-- Informieren Sie sich über das [Erstellen einer selbstgehosteten Integration Runtime im Azure-Portal](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime).
+- Informieren Sie sich über das [Erstellen einer selbstgehosteten Integration Runtime im Azure-Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).

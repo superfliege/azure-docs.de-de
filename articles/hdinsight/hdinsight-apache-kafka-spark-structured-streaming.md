@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4ac341d780a3c348f9ba9f8fd0241c351bd5fdc5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162428"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652863"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight
 
 Dieses Tutorial veranschaulicht die Verwendung des [strukturierten Apache Spark-Streamings](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) zum Lesen und Schreiben von Daten mit [Apache Kafka](https://kafka.apache.org/) in Azure HDInsight.
 
-Strukturiertes Spark-Streaming ist eine auf Spark SQL basierende Stream-Verarbeitungs-Engine. Sie können damit Streamingberechnungen genauso wie Batchberechnung auf statischen Daten ausdrücken. 
+Strukturiertes Spark-Streaming ist eine auf Spark SQL basierende Stream-Verarbeitungs-Engine. Sie können damit Streamingberechnungen genauso wie Batchberechnung auf statischen Daten ausdrücken.  
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -41,7 +41,7 @@ Denken Sie nach dem Ausführen der Schritte in diesem Dokument daran, die Cluste
 
 * Kenntnisse im Erstellen von Kafka-Themen. Weitere Informationen finden Sie im Dokument [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](kafka/apache-kafka-get-started.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Für die in diesem Dokument beschriebenen Schritte wird eine Azure-Ressourcengruppe benötigt, die sowohl einen Spark- und einen Kafka-Cluster in HDInsight beinhaltet. Die Cluster befinden sich innerhalb eines virtuellen Azure-Netzwerks, wodurch Spark- und Kafka-Cluster direkt miteinander kommunizieren können.
 > 
 > Der Einfachheit halber enthält dieses Dokument Links zu einer Vorlage, mit der die erforderlichen Azure-Ressourcen erstellt werden können. 
@@ -118,7 +118,7 @@ Das folgende Diagramm zeigt den Kommunikationsfluss zwischen Spark und Kafka:
 
 ![Diagramm der Spark- und Kafka-Cluster in einem virtuellen Azure-Netzwerk](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Der Kafka-Dienst ist auf die Kommunikation innerhalb des virtuellen Netzwerks beschränkt. Auf andere Dienste auf dem Cluster, wie z.B. SSH und Ambari, kann über das Internet zugegriffen werden. Weitere Informationen zu den öffentlichen Ports, die für HDInsight verfügbar sind, finden Sie unter [Von HDInsight verwendete Ports und URIs](hdinsight-hadoop-port-settings-for-services.md).
 
 Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließenden Erstellen der Kafka- und Spark-Cluster in diesem die folgenden Schritte aus:
@@ -135,7 +135,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     * Einen Spark 2.2.0-Cluster in HDInsight 3.6.
     * Ein Azure Virtual Network, das die HDInsight-Cluster enthält.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Das in diesem Tutorial für strukturiertes Streaming verwendete Notebook benötigt Spark 2.2.0 in HDInsight 3.6. Bei Verwendung einer früheren Version von Spark auf HDInsight erhalten Sie Fehlermeldungen, wenn Sie das Notebook verwenden.
 
 2. Geben Sie im Abschnitt **Benutzerdefinierte Vorlage** folgende Informationen an:
@@ -158,7 +158,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
 4. Aktivieren Sie zum Schluss **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus. 
 
-> [!NOTE]
+> [!NOTE]  
 > Die Clustererstellung kann bis zu 20 Minuten dauern.
 
 ## <a name="upload-the-notebook"></a>Hochladen des Notebooks
@@ -198,7 +198,7 @@ So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
 3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
 
-> [!WARNING]
+> [!WARNING]  
 > Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden.
 > 
 > Wenn Sie einen Kafka-Cluster in HDInsight löschen, werden auch alle in Kafka gespeicherten Daten gelöscht.

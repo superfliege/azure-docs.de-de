@@ -16,16 +16,16 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816836"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720253"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
 
-Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](../../app-service/choose-web-site-cloud-service-vm.md), die von Azure angeboten werden. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. In diesem Artikel erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
+Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](../../app-service/overview-compare.md), die von Azure angeboten werden. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. In diesem Artikel erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
 
 Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit der der virtuelle Computer betrieben wird. Der virtuelle Computer muss allerdings weiterhin verwaltet werden – beispielsweise durch Konfigurieren, Patchen und Verwalten der darauf ausgeführten Software.
 

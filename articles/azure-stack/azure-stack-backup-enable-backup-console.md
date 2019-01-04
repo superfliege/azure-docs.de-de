@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: d8d88484181c3c38f64cf8f00f9d8feaa3b0217a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f5610f03cb613c7da2f89da1a38b6bf058a4e0cc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962561"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714405"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Aktivieren der Sicherung für Azure Stack über das Verwaltungsportal
 Aktivieren Sie den Dienst für die Infrastruktursicherung über das Verwaltungsportal, sodass Azure Stack Sicherungen generieren kann. Mit diesen Sicherungen können Sie bei einem [schwerwiegenden Fehler](./azure-stack-backup-recover-data.md) Ihre Umgebung mittels einer Cloudwiederherstellung wiederherstellen. Die Cloudwiederherstellung soll sicherstellen, dass die Anbieter und Benutzer sich nach Abschluss der Wiederherstellung wieder im Portal anmelden können. Auf diese Weise können Benutzer ihre Abonnements wiederherstellen, einschließlich RBAC-Berechtigungen (Role-Based Access Control) und -Rollen, ursprünglichen Plänen, Angeboten und zuvor definierten Compute-, Speicher- und Netzwerkkontingenten.
@@ -30,7 +30,7 @@ Allerdings sichert der Infrastructure Backup-Dienst keine IaaS-VMs, Netzwerkkonf
 Administratoren und Benutzer sind für die Sicherung und Wiederherstellung von IaaS- und PaaS-Ressourcen verantwortlich, die separat von den Infrastruktursicherungsprozessen erfolgen muss. Informationen zum Sichern von IaaS- und PaaS-Ressourcen finden Sie unter folgenden Links:
 
 - [Virtuelle Computer](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-protect)
-- [App Service](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+- [App Service](https://docs.microsoft.com/azure/app-service/manage-backup)
 - [SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
 
 

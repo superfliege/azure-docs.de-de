@@ -7,16 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 20d3d3d755a35927550064ddfdf3b983348f93d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110849"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605550"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Containerimageverwaltung und Sicherheit in Azure Kubernetes Service (AKS)
-
-Beim Entwickeln und Ausführen von Anwendungen in Azure Kubernetes Service (AKS) ist die Sicherheit Ihrer Container ein wichtiger Aspekt. Container, die veraltete Basisimages oder Anwendungsruntimes enthalten, bergen ein Sicherheitsrisiko und einen möglichen Angriffsvektor. Um diese Risiken zu minimieren, sollten Sie Tools integrieren, die Probleme in Ihren Containern suchen und beheben.
 
 Beim Entwickeln und Ausführen von Anwendungen in Azure Kubernetes Service (AKS) ist die Sicherheit Ihrer Container und Containerimages ein wichtiger Aspekt. Container, die veraltete Basisimages oder nicht gepatchte Anwendungsruntimes enthalten, bergen ein Sicherheitsrisiko und einen möglichen Angriffsvektor. Um diese Risiken zu minimieren, sollten Sie Tools integrieren, die Probleme in Ihren Containern zur Buildzeit und auch zur Laufzeit suchen und beheben. Je früher im Prozess die Schwachstelle oder das veraltete Basisimage erkannt wird, desto sicherer ist der Cluster. In diesem Artikel bezeichnet *Container* sowohl die in einer Containerregistrierung gespeicherten Containerimages als auch die ausgeführten Container.
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 820f43a8caa5e0d6d9960985fd1d46271071b0fb
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084008"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742829"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -39,7 +39,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     - Azure-Entwicklung
 - Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
 - Aktivieren Sie [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
-- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](app-insights-asp-net.md). 
+- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../azure-monitor/app/asp-net.md). 
 - Das Tutorial verfolgt die Identifikation einer Ausnahme in Ihrer Anwendung, ändern Sie also den Code in Ihrer Entwicklungs- oder Testumgebung, um eine Ausnahme zu generieren. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure

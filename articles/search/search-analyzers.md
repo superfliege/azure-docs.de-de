@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310537"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631941"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analysetools für Textverarbeitung in Azure Search
 
@@ -76,7 +76,7 @@ Wenn eine Suche nicht die erwarteten Ergebnisse zurückgibt, ist das wahrscheinl
 
 ### <a name="compare-english-analyzers"></a>Vergleichen von englischen Analyzern
 
-Die [Search Analyzer Demo](http://alice.unearth.ai/) ist eine Demo eines Drittanbieters, die eine Gegenüberstellung der Lucene-Standardanalyse, der Lucene-Englischanalyse und der Verarbeitung natürlicher Sprache (Englisch) von Microsoft zeigt. Der Index ist vorgegeben. Er enthält Text aus einer bekannten Geschichte. Für jede von Ihnen bereitgestellte Sucheingabe werden Ergebnisse der einzelnen Analyzer in angrenzenden Bereichen angezeigt. Dadurch erhalten Sie einen Eindruck davon, wie dieselbe Zeichenfolge von den einzelnen Analyzern verarbeitet wird. 
+Die [Search Analyzer Demo](https://alice.unearth.ai/) ist eine Demo eines Drittanbieters, die eine Gegenüberstellung der Lucene-Standardanalyse, der Lucene-Englischanalyse und der Verarbeitung natürlicher Sprache (Englisch) von Microsoft zeigt. Der Index ist vorgegeben. Er enthält Text aus einer bekannten Geschichte. Für jede von Ihnen bereitgestellte Sucheingabe werden Ergebnisse der einzelnen Analyzer in angrenzenden Bereichen angezeigt. Dadurch erhalten Sie einen Eindruck davon, wie dieselbe Zeichenfolge von den einzelnen Analyzern verarbeitet wird. 
 
 ## <a name="examples"></a>Beispiele
 
@@ -244,13 +244,13 @@ Für Felder mit Zeichenfolgen in unterschiedlichen Sprachen kann eine Sprachanal
 
 + Lesen Sie unsere umfassende Erläuterung der [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md). In diesem Artikel werden anhand von Beispielen Verhaltensweisen erklärt, die auf den ersten Blick vielleicht nicht intuitiv erscheinen.
 
-+ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
++ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
 
 + Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](https://docs.microsoft.com/rest/api/searchservice/language-support) anwenden.
 
 + [Konfigurieren Sie benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) für eine minimale oder besondere Verarbeitung einzelner Felder.
 
-+ Vergleichen Sie auf [dieser Demowebsite](http://alice.unearth.ai/) die Standard- und die Englischanalyse in einer Gegenüberstellung. 
++ Vergleichen Sie auf [dieser Demowebsite](https://alice.unearth.ai/) die Standard- und die Englischanalyse in einer Gegenüberstellung. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 39e2f136e30ebb6dcfc003c435382f3384af1052
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4b608f9237b9f7f98173168e055b5e83635bc2d7
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23659343"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753760"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Überwachen der Anwendungsintegrität und Senden entsprechender Warnungen mit Azure Application Insights
 
@@ -34,16 +34,16 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
-    - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](app-insights-asp-net.md). 
+    - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../azure-monitor/app/asp-net.md). 
 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-availability-test"></a>Erstellen eines Verfügbarkeitstests
 Verfügbarkeitstests in Application Insights ermöglichen Ihnen das automatische Testen Ihrer Anwendung an verschiedenen Standorten auf der ganzen Welt.   In diesem Tutorial führen Sie einen einfachen Test durch, um sicherzustellen, dass die Anwendung verfügbar ist.  Sie könnten auch eine vollständige exemplarische Vorgehensweise erstellen, um ihren Betrieb im Detail zu testen. 
 
-1. Wählen Sie zuerst **Application Insights** und anschließend Ihr Abonnement aus.  
+1. Klicken Sie auf **Application Insights**, und wählen Sie anschließend Ihr Abonnement aus.  
 1. Wählen Sie im Menü **Untersuchen** die Option **Verfügbarkeit** aus, und klicken Sie dann auf **Test hinzufügen**.
  
     ![Verfügbarkeitstest hinzufügen](media/app-insights-tutorial-alert/add-test.png)
@@ -88,7 +88,7 @@ Zusätzlich zum Senden von Warnungen durch einen Verfügbarkeitstest können Sie
 ## <a name="proactively-send-information"></a>Proaktiv Informationen senden
 Warnungen werden als Reaktion auf eine bestimmte Gruppe von Problemen erstellt, die in der Anwendung erkannt wurden, und in der sind Warnungen kritischen Bedingungen vorbehalten, die sofortige Aufmerksamkeit erfordern.  Mit einer Logik-App, die automatisch nach einem Zeitplan ausgeführt wird, können Sie proaktiv Informationen über Ihre Anwendung erhalten.  Beispielsweise kann täglich eine E-Mail mit zusammengefassten Informationen, die einer weiteren Auswertung bedürfen, an Administratoren gesendet werden.
 
-Ausführliche Informationen zum Erstellen einer Logik-App mit Application Insights finden Sie unter [Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps](automate-with-logic-apps.md)
+Ausführliche Informationen zum Erstellen einer Logik-App mit Application Insights finden Sie unter [Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps](../azure-monitor/app/automate-with-logic-apps.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit dem Erstellen von Warnungen bei Problemen vertraut gemacht haben, erfahren Sie im nächsten Tutorial, wie die Interaktion von Benutzern mit Ihrer Anwendung analysiert wird.

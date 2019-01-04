@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 3c9514e39e061067b7332570e0eb6273924529e0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: be86e961d04b600f112a173c041b60cbe50ea00d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339211"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725054"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor  
 
@@ -23,7 +23,7 @@ In diesem Artikel wird erläutert, wie Sie im Azure-Portal mithilfe der Oberflä
 - Kriterien: Eine bestimmte Bedingung oder Logik, die beim Vorkommen in einem Signal eine Aktion auslösen soll
 - Aktion: Eine bestimmte Form der Kontaktaufnahme, die an einen Empfänger einer Benachrichtigung (z. B. E-Mail, SMS oder Webhook usw.) gesendet wird.
 
-Der Begriff **Protokollwarnungen** beschreibt Warnungen basierend auf [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) oder [Application Insights](../../application-insights/app-insights-analytics.md), bei denen das Signal eine benutzerdefinierte Abfrage darstellt. Erfahren Sie mehr über Funktionen, Terminologie und Typen von [Protokollwarnungen – Übersicht](../../azure-monitor/platform/alerts-unified-log.md).
+Der Begriff **Protokollwarnungen** beschreibt Warnungen basierend auf [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/analytics.md), bei denen das Signal eine benutzerdefinierte Abfrage darstellt. Erfahren Sie mehr über Funktionen, Terminologie und Typen von [Protokollwarnungen – Übersicht](../../azure-monitor/platform/alerts-unified-log.md).
 
 > [!NOTE]
 > Gängige Protokolldaten aus [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) sind nun auch auf der Metrikplattform in Azure Monitor verfügbar. Eine Detailansicht finden Sie unter [Metrikwarnung für Protokolle](../../azure-monitor/platform/alerts-metric-logs.md).
@@ -245,6 +245,6 @@ Bei erfolgreicher Ausführung wird 201 zurückgegeben, wenn eine neue Warnungsre
 
 * Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](../../azure-monitor/platform/alerts-unified-log.md).
 * Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](../../azure-monitor/platform/alerts-log-webhook.md) vertraut.
-* Weitere Informationen zu [Application Insights](../../application-insights/app-insights-analytics.md)
+* Weitere Informationen zu [Application Insights](../../azure-monitor/app/analytics.md)
 * Erfahren Sie mehr über [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights-URLs – Teilen von benutzerdefinierten Azure Time Series Insights-Ansichten mit parametrisierten URLs | Microsoft-Dokumentation
+title: Teilen von benutzerdefinierten Azure Time Series Insights-Ansichten mit parametrisierten URLs | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie parametrisierte URLs in Azure Time Series Insights entwickeln, damit eine Kundenansicht schnell geteilt werden kann.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 5b43ba4c3f88c678b160e8aec442fa92b4822a3d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274359"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558463"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
 

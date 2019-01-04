@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336470"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584306"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
@@ -33,7 +33,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
 
 3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, die Sie ändern möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
 
-4. Wenn die ausgewählte Ressource über Metriken verfügt, für die Sie Warnungen erstellen können, enthält die Option **Verfügbare Signale** unten rechts entsprechende Metriken. Sie können die vollständige Liste der für Metrikwarnungen unterstützten Ressourcentypen in diesem [Artikel](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported) einsehen.
+4. Wenn die ausgewählte Ressource über Metriken verfügt, für die Sie Warnungen erstellen können, enthält die Option **Verfügbare Signale** unten rechts entsprechende Metriken. Sie können die vollständige Liste der für Metrikwarnungen unterstützten Ressourcentypen in diesem [Artikel](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) einsehen.
 
 5. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Kriterien hinzufügen**.
 
@@ -130,4 +130,4 @@ In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Po
 
 - [Erstellen von Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-enable-template.md)
 - [Informationen zur Funktionsweise von Metrikwarnungen](alerts-metric-overview.md)
-- [Informationen zum Webhook-Schema für Metrikwarnungen](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)
+- [Informationen zum Webhook-Schema für Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

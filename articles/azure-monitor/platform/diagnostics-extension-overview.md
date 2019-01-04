@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3b7b06b7ab9076b992e6e3349763d633f9b255ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338157"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789755"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md).
@@ -42,7 +42,7 @@ Die Azure-Diagnoseerweiterung kann die folgenden Datentypen erfassen:
 ## <a name="data-storage"></a>Datenspeicher
 Die Erweiterung speichert ihre Daten in einem von Ihnen angegebenen [Azure Storage-Konto](diagnostics-extension-to-storage.md).
 
-Sie können auch an [Application Insights](../../application-insights/app-insights-cloudservices.md) gesendet werden. Als weitere Option können sie auch an [Event Hub](../../event-hubs/event-hubs-about.md) gestreamt werden, was Ihnen wiederum ermöglicht, sie an Überwachungsdienste außerhalb von Azure zu senden.
+Sie können auch an [Application Insights](../../azure-monitor/app/cloudservices.md) gesendet werden. Als weitere Option können sie auch an [Event Hub](../../event-hubs/event-hubs-about.md) gestreamt werden, was Ihnen wiederum ermöglicht, sie an Überwachungsdienste außerhalb von Azure zu senden.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Sie können Ihre Daten auch an Azure Monitor senden. Zur Zeit ist diese Senke nur für Leistungsindikatoren anwendbar. Sie ermöglicht es Ihnen, Leistungsindikatoren, die auf Ihrem virtuellen Computer, Ihrer VMSS oder in Ihrem Clouddienst gesammelt wurden, als benutzerdefinierte Metriken an Azure Monitor zu senden. Die Azure Monitor-Senke unterstützt Folgendes:
@@ -66,7 +66,7 @@ Wählen Sie, zu welchem Dienst Sie Diagnoseinformationen erfassen möchten, und 
 
 Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
 
-* [Verwenden der Azure-Diagnose mit Application Insights für Cloud Services](../../application-insights/app-insights-cloudservices.md)
+* [Verwenden der Azure-Diagnose mit Application Insights für Cloud Services](../../azure-monitor/app/cloudservices.md)
 * [Verfolgen des Ablaufs einer Cloud Services-Anwendung mit der Azure-Diagnose](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [Verwenden von PowerShell zum Einrichten der Diagnose für Cloud Services](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

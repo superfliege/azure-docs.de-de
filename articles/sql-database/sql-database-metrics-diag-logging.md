@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 245372b39f4b730128c593ddd04225bd82875393
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387096"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601558"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
@@ -32,7 +32,7 @@ Azure SQL-Datenbank, Pools für elastische Datenbanken, die verwaltete Instanz u
 Weitere Informationen zu den Metriken und Protokollkategorien, die von verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
 * [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Übersicht über Azure-Diagnose](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Dieser Artikel enthält Anleitungen zum Aktivieren der Diagnosetelemetrie für Datenbanken, Pools für elastische Datenbanken und die verwaltete Instanz. Zudem erfahren Sie, wie Sie die Azure SQL-Analyse als Überwachungstool zum Anzeigen der Diagnosetelemetriedaten für eine Datenbank konfigurieren.
 
@@ -95,7 +95,7 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
 1. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
 1. Aktivieren Sie für die standardmäßige, ereignisbasierte Überwachungsoberfläche die folgenden Kontrollkästchen für Datenbankdiagnoseprotokoll-Telemetrie: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **Errors**, **DatabaseWaitStatistics**, **Timeouts**, **Blocks** und **Deadlocks**.
 1. Aktivieren Sie für eine erweiterte Überwachungsoberfläche mit einem Aktualisierungsintervall von einer Minute das Kontrollkästchen für **AllMetrics**.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
    ![Konfigurieren der Diagnose für SQL-Datenbank](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
@@ -122,7 +122,7 @@ Um das Streaming von Diagnosetelemetriedaten für Datenbanken in der verwalteten
 1. Geben Sie einen Einstellungsnamen zu Referenzzwecken ein.
 1. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
 1. Aktivieren Sie die Kontrollkästchen für die Datenbankdiagnosetelemetrie: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** und **Errors**.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
    ![Konfigurieren der Diagnose für die Datenbank in einer verwalteten Instanz](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
@@ -155,7 +155,7 @@ Um das Streaming von Diagnosetelemetriedaten für eine Ressource des Pools für 
 1. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
 1. Wählen Sie für Log Analytics **Konfigurieren** aus, und erstellen Sie einen neuen Arbeitsbereich, indem Sie auf **+ Neuen Arbeitsbereich erstellen** klicken, oder wählen Sie einen vorhandenen Arbeitsbereich aus.
 1. Aktivieren Sie das Kontrollkästchen für Diagnosetelemetrie des Pools für elastische Datenbanken: **AllMetrics**.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
    ![Konfigurieren der Diagnose für Pools für elastische Datenbanken](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
@@ -184,7 +184,7 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
 1. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
 1. Wählen Sie für Log Analytics **Konfigurieren** aus, und erstellen Sie einen neuen Arbeitsbereich, indem Sie auf **+ Neuen Arbeitsbereich erstellen** klicken, oder verwenden Sie einen vorhandenen Arbeitsbereich.
 1. Aktivieren Sie das Kontrollkästchen für Diagnosetelemetrie der Instanz: **ResourceUsageStats**.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
    ![Konfigurieren der Diagnose für verwaltete Instanzen](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
@@ -691,7 +691,7 @@ Weitere Informationen zum [Protokollformat von Intelligent Insights](sql-databas
 Weitere Informationen zum Aktivieren der Protokollierung und zu den Metriken und Protokollkategorien, die von den verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
 * [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Übersicht über Azure-Diagnose](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Weitere Informationen zu Event Hubs finden Sie hier:
 
