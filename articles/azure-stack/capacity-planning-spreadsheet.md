@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 3b07485d4168e38736c12a74b0d36bcc8a276748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7b8276281b8b550492fed17adc516e9539380987
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233064"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269735"
 ---
 # <a name="azure-stack-capacity-planner"></a>Azure Stack Capacity Planner
 Der Azure Stack-Kapazitätsplaner ist eine Kalkulationstabelle, die für die Ressourcenplanung von Azure Stack verwendet wird. Der Kapazitätsplaner bietet Ihnen die Möglichkeit, verschiedene Zuordnungen von Computeressourcen zu entwerfen und herauszufinden, wie diese für eine Auswahl von Hardwareangeboten passen würden. Detaillierte Anweisungen für die Verwendung der Azure Stack-Berechnung finden Sie unten.
@@ -61,7 +61,7 @@ Um ein Modell mit einer einzigen Sammlung von VMs unterschiedlicher Größe und 
 3. Sie können nun damit beginnen, Ihrem Modell virtuelle Computer mit verschiedener Größe hinzuzufügen. Um einen bestimmten VM-Typ einzuschließen, geben Sie einen Mengenwert in das blau umrandete Feld links neben diesem VM-Eintrag ein.
 
   > [!NOTE]
-  > Jeder virtuelle Computer beginnt mit einer anfangs zugewiesenen Speichergröße. Die Speichergröße wird über ein Listenfeld angezeigt und kann für jede Azure Stack-VM an die gewünschte Speicherressourcenebene angepasst werden. Wenn die gewünschte Speichergröße nicht angegeben ist, können Sie sie hinzufügen, indem Sie eine der 10 Anfangsgrößen aus der Liste „Available Storage Configurations“ (Verfügbare Speicherkonfigurationen) auf der rechten Seite der Seite ändern.<br><br>Jeder virtuelle Computer beginnt mit einem anfangs zugewiesenen lokalen Speicher. Um die schlanke Bereitstellung von temporärem Speicher widerzuspiegeln, kann der Wert von „local-temp“ in jede beliebige Angabe im Dropdownmenü geändert werden, einschließlich der maximal zulässigen Menge an temporärem Speicher.
+  > „Total VM Storage“ (VM-Gesamtspeicher) bezieht sich auf die Gesamtkapazität des Datenträgers für den virtuellen Computer (Anzahl der unterstützten Datenträger * maximale Kapazität eines einzelnen Datenträgers (1 TB)). Basierend auf den Konfigurationsindikatoren haben wir die Tabelle „Available Storage Configurations“ (Verfügbare Speicherkonfigurationen) aufgefüllt, damit Sie Ihre gewünschte Speicherressourcenebene für jeden virtuellen Azure Stack-Computer auswählen können. Wichtig zu wissen: Sie können die Tabelle „Available Storage Configurations“ nach Bedarf hinzufügen oder ändern.<br><br>Jeder virtuelle Computer beginnt mit einem anfangs zugewiesenen lokalen Speicher. Um die schlanke Bereitstellung von temporärem Speicher widerzuspiegeln, kann der Wert von „local-temp“ in jede beliebige Angabe im Dropdownmenü geändert werden, einschließlich der maximal zulässigen Menge an temporärem Speicher.
 
 4. Wenn Sie virtuelle Computer hinzufügen, sehen Sie die Diagramme, die zeigen, wie sich die verfügbaren SKU-Ressourcen ändern. Auf diese Weise können Sie die Auswirkungen des Hinzufügens verschiedener Größen und Mengen von VMs während des Modellierungsprozesses erkennen. Eine weitere Möglichkeit, die Auswirkungen von Änderungen zu erkennen, besteht darin, die Werte für „Consumed“ (Genutzt) und „Still Available“ (Noch Verfügbar) direkt unter der Liste der verfügbaren VMs anzuzeigen. Diese Zahlen entsprechen geschätzten Werten auf der Grundlage der aktuell ausgewählten Hardware-SKU.
 5. Nachdem Sie Ihre VM-Gruppe erstellt haben, können Sie die vorgeschlagene Hardware-SKU ermitteln, indem Sie auf die Schaltfläche „Suggested SKU“ (Empfohlene SKU) in der oberen rechten Ecke der Seite direkt unter der Bezeichnung „Current SKU“ (Aktuelle SKU) klicken. Mit dieser Schaltfläche können Sie dann Ihre VM-Konfigurationen ändern und sehen, welche Hardware jede Konfiguration unterstützt.

@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 5714257fce53fafa148b8ae4d5a3addf3b872c6f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035474"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276246"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu nicht mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
 Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-connection-models.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
 
-Sie können Azure Stack ohne Verbindung mit dem Internet bereitstellen und verwenden. Bei einer nicht mit Azure verbundenen Bereitstellung sind Sie jedoch auf einen AD FS-Identitätsspeicher und das kapazitätsbasierte Abrechnungsmodell beschränkt. 
+Sie können Azure Stack ohne Verbindung mit dem Internet bereitstellen und verwenden. Bei einer nicht mit Azure verbundenen Bereitstellung sind Sie jedoch auf einen AD FS-Identitätsspeicher und das kapazitätsbasierte Abrechnungsmodell beschränkt. Weil für Mehrinstanzenfähigkeit Azure AD verwendet werden muss, wird sie bei nicht verbundenen Bereitstellungen nicht unterstützt. 
 
 Wählen Sie diese Option in den folgenden Fällen:
 - Es gelten Sicherheits- oder andere Einschränkungen, die es erforderlich machen, Azure Stack in einer Umgebung bereitzustellen, die nicht mit dem Internet verbunden ist.

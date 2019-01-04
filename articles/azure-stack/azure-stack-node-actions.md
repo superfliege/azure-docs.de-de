@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f299cca57e3eaddd2a9d4868f3bae822392e45a0
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a792bc083c3a2c78b24d5895c34420b86b0863bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944935"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959766"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Knotenaktionen für Skalierungseinheiten in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel beschreibt das Anzeigen des Status einer Skalierungseinheit und der zugehörigen Knoten und das Verwenden der verfügbaren Knotenaktionen. Knotenaktionen sind Ein-/Ausschalten, Entladen, Fortsetzen und Reparieren. Normalerweise verwenden Sie diese Knotenaktionen für den Austausch von Teilen im Betrieb oder bei Wiederherstellungsszenarien für Knoten.
 
@@ -148,9 +148,9 @@ Beim Ausführen der Reparaturaktion müssen Sie die BMC-IP-Adresse angeben.
 So führen Sie die Reparaturaktion mithilfe von PowerShell aus
 
   ````PowerShell
-  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
+  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
   ````
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Fabric-Administratormodul von Azure Stack finden Sie unter [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.4.0).
+Weitere Informationen zum Fabric-Administratormodul von Azure Stack finden Sie unter [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.5.0).

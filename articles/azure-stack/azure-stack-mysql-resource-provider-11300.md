@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 6354212eb95fbefb217dd5339613d050da55f4ba
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.reviewer: georgel
+ms.openlocfilehash: 2f300e496873c0b048ccc1acc078bf1650e6bd9c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688269"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166284"
 ---
 # <a name="mysql-resource-provider-11300--release-notes"></a>Versionshinweise zum MySQL-Ressourcenanbieter 1.1.30.0
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In diesen Versionshinweisen werden die Verbesserungen und bekannten Probleme in Version 1.1.30.0 des MySQL-Ressourcenanbieters beschrieben.
 
@@ -56,13 +56,26 @@ Diese Version des Azure Stack-MySQL-Ressourcenanbieters enthält die folgenden V
 
 - **Dauer von bis zu einer Stunde bis zur Anzeige von MySQL SKUs im Portal**. Es kann bis zu einer Stunde dauern, bis die neu erstellten SKUs beim Erstellen neuer MySQL-Datenbanken angezeigt werden. 
 
-    **Problemumgehung**: Keine.
+    **Problemumgehung**: None (Keine):
 
 - **Wiederverwendung von MySQL-Anmeldungen**. Der Versuch einer neuen MySQL-Anmeldung mit dem gleichen Benutzernamen wie eine vorhandene Anmeldung unter demselben Abonnement führt dazu, dass die gleiche Anmeldung und das vorhandene Kennwort wiederverwendet werden. 
 
     **Problemumgehung**: Nutzen Sie unterschiedliche Benutzernamen, wenn Sie neue Anmeldungen unter demselben Abonnement oder Anmeldungen mit dem gleichen Benutzernamen unter unterschiedlichen Abonnements erstellen.
 
+- **TLS 1.2-Supportanforderung**. Wenn Sie versuchen, den MySQL-Ressourcenanbieter über einen Computer, bei dem TLS 1.2 nicht aktiviert ist, bereitzustellen oder zu aktualisieren, schlägt der Vorgang möglicherweise fehl. Führen Sie den folgenden PowerShell-Befehl auf dem Computer aus, der zum Bereitstellen oder Aktualisieren des Ressourcenanbieters verwendet wird, um sicherzustellen, dass TLS 1.2 als unterstützt zurückgegeben wird:
 
+  ```powershell
+  [System.Net.ServicePointManager]::SecurityProtocol
+  ```
+
+  Wenn **Tls12** in der Ausgabe des Befehls nicht enthalten ist, ist TLS 1.2 auf dem Computer nicht aktiviert.
+
+    **Problemumgehung**: Führen Sie den folgenden PowerShell-Befehl aus, um TLS 1.2 zu aktivieren. Starten Sie dann die Bereitstellung des Ressourcenanbieters, oder aktualisieren Sie das Skript aus derselben PowerShell-Sitzung:
+
+    ```powershell
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    ```
+ 
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Bekannte Probleme von Cloudadministratoren, die Azure Stack betreiben
 Lesen Sie die Dokumentation in den [Versionshinweisen zu Azure Stack](azure-stack-servicing-policy.md).
 

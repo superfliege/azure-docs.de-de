@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568232"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098091"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack-Update 1808
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel beschreibt den Inhalt des Updatepakets 1808. Das Updatepaket enthält Verbesserungen, Fehlerbehebungen und bekannten Probleme für diese Version von Azure Stack. Dieser Artikel enthält auch einen Link, damit Sie das Update herunterladen können. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -163,7 +163,7 @@ Dieses Update enthält auch die Minderung des Sicherheitsrisikos für die spekul
 > Bereiten Sie Ihre Azure Stack-Bereitstellung auf den Erweiterungshost vor. Bereiten Sie Ihr System mithilfe der folgenden Anleitung vor: [Vorbereiten auf den Erweiterungshost für Azure Stack](azure-stack-extension-host-prepare.md).
 
 Installieren Sie nach der Installation dieses Updates alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md). 
-- [KB 4468920 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/)
+- [KB 4481066 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/)
 
 
 ## <a name="known-issues-post-installation"></a>Bekannte Probleme (nach der Installation)
@@ -220,19 +220,19 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
    
   Führen Sie das Cmdlet [Test-AzureStack](azure-stack-diagnostic-test.md) aus, um die Integrität der Infrastrukturrolleninstanzen und Skalierungseinheitenknoten zu überprüfen. Wenn von [Test-AzureStack](azure-stack-diagnostic-test.md) keine Probleme gefunden werden, können Sie diese Warnungen ignorieren. Wenn ein Problem erkannt wird, können Sie versuchen, die Infrastrukturrolleninstanz oder den Knoten über das Verwaltungsportal oder PowerShell zu starten.
 
-  Dieses Problem wurde im aktuellen [Hotfixrelease 1808](https://support.microsoft.com/help/4471992/) behoben. Sie sollten diesen Hotfix daher unbedingt installieren, falls das Problem auftritt.
+  Dieses Problem wurde im aktuellen [Hotfixrelease 1808](https://support.microsoft.com/help/4481066/) behoben. Sie sollten diesen Hotfix daher unbedingt installieren, falls das Problem auftritt.
 
 <!-- 1264761 - IS ASDK --> 
 - Möglicherweise werden Warnungen für die **Health Controller**-Komponente mit folgenden Details angezeigt:  
 
    Warnung 1:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
 
   Warnung 2:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
@@ -269,25 +269,31 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
       1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Klicken Sie auf **Ressourcenanbieter**, klicken Sie dann auf **Microsoft.Compute**, und klicken Sie anschließend auf **Erneut registrieren**.
       2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **Azure Stack – Verwalteter Datenträger** aufgeführt wird.
    2. Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, kann die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, mit einer internen Fehlermeldung fehlschlagen. Gehen Sie folgendermaßen vor, um den Fehler zu beheben:
-      1. Wenden Sie den [Azure Stack-Hotfix 1808](https://support.microsoft.com/help/4471992/) an.
+      1. Wenden Sie den [Azure Stack-Hotfix 1808](https://support.microsoft.com/help/4481066/) an.
       2. Führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
       
 <!-- 3179561 - IS --> 
 - Die Verwendung von Managed Disks wird in Stunden gemeldet, wie in den [häufig gestellte Fragen zur Azure Stack-Nutzung](azure-stack-usage-related-faq.md#managed-disks) beschrieben. Bei der Azure Stack-Abrechnung wird jedoch der monatliche Preis verwendet, sodass die Managed Disks-Nutzung bis zum 27. September eventuell nicht ordnungsgemäß in Rechnung gestellt werden kann. Wir haben die Gebühren für Managed Disks nach dem 27. September vorübergehend unterbrochen, bis auf das Abrechnungsproblem eingegangen werden kann. Wenn Ihnen Ihre Managed Disks-Nutzung nicht ordnungsgemäß berechnet wurde, wenden Sie sich an den Abrechnungssupport von Microsoft.
 Von den Azure Stack-Nutzungs-APIs erstellte Nutzungsberichte zeigen richtige Mengen an und können verwendet werden.
 
+<!-- 3507629 - IS, ASDK --> 
+- Managed Disks erstellt zwei neue [Computekontingenttypen](azure-stack-quota-types.md#compute-quota-types) zur Begrenzung der maximalen Kapazität von verwalteten Datenträgern, die bereitgestellt werden können. Standardmäßig werden für jeden Kontingenttyp von verwalteten Datenträgern 2.048 GiB zugeordnet. Allerdings können die folgenden Probleme auftreten:
+
+   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal für das "Managed Disks"-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
+   - Wenn Sie den Kontingentwert auf „0“ aktualisieren, entspricht dies dem Standardwert 2.048 GiB. Als Problemumgehung können Sie den Kontingentwert auf „1“ festlegen.
+
 <!-- 2869209 – IS, ASDK --> 
-- Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit dem folgenden Fehler fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status „Fehler“*. 
+- Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit der folgenden Fehlermeldung fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status „Fehler“*. 
 
 <!--  2966665 – IS, ASDK --> 
-- Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern der Größe „Premium“ (DS, DSv2, Fs, Fs_V2) schlägt mit dem folgenden Fehler fehl: *Fehler beim Aktualisieren der Datenträger für den virtuellen Computer "vmname". Fehler: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp "Premium_LRS" für die VM-Größe "Standard_DS/Ds_V2/FS/Fs_v2" nicht unterstützt wird.*
+- Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern von Premiumgröße (DS, DSv2, Fs, Fs_V2) schlägt mit der folgenden Fehlermeldung fehl:  *Fehler beim Aktualisieren von Datenträgern für den virtuellen Computer ‚vmName‘: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp ‚Premium_LRS‘ für die VM-Größe (‘Standard_DS/Ds_V2/FS/Fs_v2)‘ nicht unterstützt wird*
 
    Um dieses Problem zu umgehen, verwenden Sie Datenträger vom Typ *Standard_LRS* anstelle von *Premium_LRS*. Das Verwenden von Datenträgern des Typs *Standard_LRS* ändert IOPs oder die Abrechnungskosten nicht. 
 
 <!--  2795678 – IS, ASDK --> 
 - Wenn Sie das Portal zum Erstellen virtueller Computer in einer Premium-VM-Größe (DS, Ds_v2, FS, FSv2) verwenden, wird der virtuelle Computer in einem Standardspeicherkonto erstellt. Die Erstellung in einem Standardspeicherkonto wirkt sich nicht auf die Funktionalität, IOPs oder die Abrechnung aus. 
 
-   Sie können die Warnung ignorieren, die folgendes besagt: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
+   Sie können die folgende Warnung problemlos ignorieren: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
 
 <!-- 2967447 - IS, ASDK --> 
 - Die Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen (VMSS) bietet als Option für die Bereitstellung eine CentOS 7.2-basierte Bereitstellung an. Da dieses Image in Azure Stack nicht verfügbar ist, wählen Sie entweder ein anderes Betriebssystem für Ihre Bereitstellung aus, oder verwenden Sie eine Azure Resource Manager-Vorlage mit einem anderen CentOS-Image, das vor der Bereitstellung vom Operator aus dem Marketplace heruntergeladen wurde.  

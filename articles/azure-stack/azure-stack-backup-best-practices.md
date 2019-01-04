@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: cca5fe492032c74a9922780f197065e9c2b40ad3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035100"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966117"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Bewährte Methoden für den Infrastructure Backup-Dienst
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Bei der Bereitstellung und Verwaltung von Azure Stack in Ihrem Rechenzentrum können Sie bewährte Methoden anwenden, um den Verlust von Daten im Fall eines schwerwiegenden Fehlers zu minimieren.
 
@@ -46,7 +46,7 @@ Der Verschlüsselungsschlüssel wird zum Verschlüsseln der Sicherungsdaten verw
 
 Der Schlüssel muss in einem sicheren Speicherort (z.B. öffentliches Azure Key Vault-Geheimnis) gespeichert werden. Dieser Schlüssel muss während der erneuten Bereitstellung von Azure Stack verwendet werden. 
 
-![Speichern des Schlüssels an einem sicheren Speicherort](media\azure-stack-backup\azure-stack-backup-encryption2.png)
+![Speichern des Schlüssels an einem sicheren Speicherort](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
 ## <a name="operational-best-practices"></a>Bewährte Methoden für den Betrieb
 

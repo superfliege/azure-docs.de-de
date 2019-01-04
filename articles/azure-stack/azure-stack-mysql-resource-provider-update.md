@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 36d37adff6d45b7d154511c11888aad090c54638
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ee76d71f89fb94c8c05c6a733dac241a9e4fa13c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853675"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965137"
 ---
 # <a name="update-the-mysql-resource-provider"></a>Aktualisieren des MySQL-Ressourcenanbieters 
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme.*
 
 Unter Umständen wird ein neuer SQL-Ressourcenanbieteradapter veröffentlicht, wenn Azure Stack-Builds aktualisiert werden. Der vorhandene Adapter funktioniert zwar weiterhin, aber es ist ratsam, so schnell wie möglich das Update auf den aktuellen Build durchzuführen. 
 
 > [!IMPORTANT]
-> Sie müssen die Updates in der Reihenfolge installieren, in der sie veröffentlicht werden. Es können keine Versionen ausgelassen werden. Informationen hierzu finden Sie in der Versionsliste unter [Bereitstellen des Ressourcenanbieters – Voraussetzungen](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
+> Sie müssen die Updates in der Reihenfolge installieren, in der sie veröffentlicht werden. Es können keine Versionen ausgelassen werden. Informationen hierzu finden Sie in der Versionsliste unter [Bereitstellen des Ressourcenanbieters – Voraussetzungen](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Update des MySQL-Ressourcenanbieteradapters (nur für integrierte Systeme)
 

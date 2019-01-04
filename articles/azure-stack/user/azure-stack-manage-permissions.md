@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/06/2018
 ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: ef9c096989eeb37159d0deb705e7870afe2eff8b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 70641084d2213b50803800a64000611d139facec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975395"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075766"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Verwalten des Zugriffs auf Ressourcen mit der rollenbasierten Zugriffssteuerung in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack unterstützt die rollenbasierte Zugriffssteuerung (RBAC), das gleiche von Microsoft Azure verwendete [Sicherheitsmodell für die Zugriffsverwaltung](https://docs.microsoft.com/azure/role-based-access-control/overview). Anhand der RBAC können Sie den Benutzer-, Gruppen- oder Anwendungszugriff auf Abonnements, Ressourcen und Dienste verwalten.
 
@@ -91,9 +91,9 @@ In den folgenden Schritte wird beschrieben, wie Berechtigungen für einen Benutz
 1. Melden Sie sich mit einem Konto an, das Besitzerberechtigungen für die Ressource hat, die Sie verwalten möchten.
 2. Wählen Sie im linken Navigationsbereich die Option **Ressourcengruppen** aus.
 3. Wählen Sie den Namen der Ressourcengruppe, der Sie Berechtigungen erteilen möchten.
-4. Wählen Sie im Navigationsbereich der Ressourcengruppe **Zugriffssteuerung (IAM)**. Die Ansicht **Zugriffssteuerung** enthält die Elemente, die über Zugriff auf die Ressourcengruppe verfügen. Sie können diese Ergebnisse filtern und über eine Menüleiste Berechtigungen hinzufügen oder entfernen.
-5. Wählen Sie in der Menüleiste **Zugriffssteuerung** die Option **+ Hinzufügen** aus.
-6. Führen Sie unter **Berechtigungen hinzufügen** folgende Schritte aus:
+4. Wählen Sie im Navigationsbereich der Ressourcengruppe **Zugriffssteuerung (IAM)**. Die Ansicht **Rollenzuweisungen** enthält die Elemente, die über Zugriff auf die Ressourcengruppe verfügen. Sie können die Ergebnisse filtern und gruppieren.
+5. Wählen Sie in der Menüleiste **Zugriffssteuerung** die Option **Rollenzuweisung hinzufügen** aus.
+6. Führen Sie im Bereich **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
 
    * Wählen Sie aus der Dropdownliste **Rolle** die Rolle aus, die Sie zugewiesen werden soll.
    * Wählen Sie aus der Dropdownliste **Zugriff zuweisen an** die Ressource aus, die Sie zugewiesen werden soll.

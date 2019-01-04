@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 35329468ee01d5b70d654c1eb4a908db9d3fcb5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: cfebbdb9b88a1de6a05f06e6ed72ebc9cddddcf6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184401"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074450"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit .NET in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Das .NET SDK für Azure Stack Resource Manager umfasst Tools zum Erstellen und Verwalten Ihrer Infrastruktur. Zu den Ressourcenanbietern im SDK zählen Compute, Netzwerk, Speicher, App-Dienste und [KeyVault](../../key-vault/key-vault-whatis.md). Das .NET SDK umfasst 14 NuGet-Pakete, welche die Profilinformationen einbinden und jedes Mal in Ihre Projektmappe heruntergeladen werden müssen. Sie können jedoch speziell den Ressourcenanbieter herunterladen, den Sie für das Profil „2018-03-01-hybrid“ oder „2017-03-09-profile“ verwenden werden, um den Arbeitsspeicher für Ihre Anwendung zu optimieren. Jedes Paket besteht aus einem Ressourcenanbieter, der entsprechenden API-Version und dem API-Profil, zu dem es gehört. API-Profile im .NET SDK ermöglichen die Entwicklung einer Hybrid Cloud, indem sie das Wechseln zwischen globalen Azure-Ressourcen und Ressourcen in Azure Stack leicht machen.
 
@@ -125,11 +125,11 @@ JSON-Beispieldatei:
 
 ## <a name="existing-api-profiles"></a>Vorhandene API-Profile
 
-1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.*ResourceProvider*.0.9.0-preview.nupkg**: Aktuelles, für Azure Stack erstelltes Profil. Verwenden Sie dieses Profil für Dienste für die höchste Kompatibilität mit Azure Stack, sofern Sie bei Stempel 1808 oder weiter sind.
+1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.*ResourceProvider*.0.9.0-preview.nupkg**: Für Azure Stack erstelltes aktuelles Profil. Verwenden Sie dieses Profil für Dienste für die höchste Kompatibilität mit Azure Stack, sofern Sie bei Stempel 1808 oder weiter sind.
 
-2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09.*ResourceProvider*.0.9.0-preview.nupkg**: Wenn Sie bei einem niedrigeren Stempel als dem 1808-Build sind, verwenden Sie dieses Profil.
+2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09.*ResourceProvider*.0.9.0-preview.nupkg**: Wenn Sie mit einem Zeitstempel kleiner als der Build 1808 arbeiten, verwenden Sie dieses Profil.
 
-3.  **Aktuell**: Profil, das aus den aktuellen Versionen aller Dienste besteht. Verwenden Sie die neuesten Versionen aller Dienste. Dieses Profil ist Teil des NuGet-Pakets **Microsoft.Azure.Management**.
+3.  **Aktuell**: Profil, das aus den neuesten Versionen aller Dienste besteht. Verwenden Sie die neuesten Versionen aller Dienste. Dieses Profil ist Teil des NuGet-Pakets **Microsoft.Azure.Management**.
 
 Weitere Informationen zu Azure Stack und API-Profilen finden Sie unter [Zusammenfassung zu API-Profilen][].
 
@@ -193,7 +193,9 @@ Sie können die folgenden Beispiele aus GitHub-Repositorys als Referenz zum Erst
 
 1.  Klonen Sie das Repository mit dem folgenden Befehl:
 
-    `git clone <https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject>`
+    ```shell
+    git clone https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm.git
+    ```
 
 2.  Erstellen Sie einen Azure-Dienstprinzipal, und weisen Sie eine Rolle zu, um auf das Abonnement zuzugreifen. Eine Anleitung zur Erstellung eines Dienstprinzipals finden Sie unter [Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat][].
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 326fd38f7cb738540a389c93de2a9b5be015e0d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034336"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968731"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Wiederherstellen nach schwerwiegendem Datenverlust
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme.*
 
 Azure Stack führt Azure-Dienste in Ihrem Rechenzentrum aus. Azure Stack kann in so kleinen Umgebungen wie vier in einem Rack installierten Knoten ausgeführt werden. Im Gegensatz dazu wird Azure in mehr als 40 Regionen in mehreren Rechenzentren und mehreren Zonen in jeder Region ausgeführt. Benutzerressourcen können mehrere Server, Racks, Rechenzentren und Regionen umfassen. Mit Azure Stack haben Sie derzeit nur die Möglichkeit, Ihre gesamte Cloud in einem einzelnen Rack bereitzustellen. Dadurch wird Ihre Cloud dem Risiko von Katastrophenfällen in Ihrem Rechenzentrum oder Ausfällen aufgrund von Produktfehlern ausgesetzt. Bei einem Notfall wird die Azure Stack-Instanz offline geschaltet. Alle Daten sind möglicherweise nicht mehr wiederherstellbar.
 
@@ -40,11 +40,11 @@ Das folgende Szenario betrifft die Wiederherstellung Ihrer gesamten Installation
 
 Der Schutz von Azure Stack beginnt mit der getrennten Sicherung der Infrastrukturdaten und der Anwendungs-/Mandantendaten. In diesem Dokument wird erläutert, wie die Infrastruktur gesichert wird. 
 
-![Erste Bereitstellung von Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Erste Bereitstellung von Azure Stack](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 Im ungünstigsten Fall, bei dem alle Daten verloren gehen, besteht die Wiederherstellung von Azure Stack darin, die spezifischen Infrastrukturdaten dieser Bereitstellung von Azure Stack und alle Benutzerdaten wiederherzustellen. 
 
-![Erneutes Bereitstellen von Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![Erneutes Bereitstellen von Azure Stack](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>Restore
 

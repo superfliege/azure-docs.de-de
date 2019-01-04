@@ -11,55 +11,74 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/07/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 530b2a1909ec198ddff5abfe4fd5bb7c645f7582
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1f9d5325522f8ec40af99059651a00f6cdc0e8e0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261581"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089616"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Herstellen einer Verbindung mit Azure Stack über PowerShell als Operator
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können Azure Stack für die Verwendung von PowerShell zum Verwalten von Ressourcen konfigurieren, z.B. die Erstellung von Angeboten, Plänen, Kontingenten und Warnungen. In diesem Thema können Sie die Betreiberumgebung konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die folgenden erforderlichen Schritte entweder über das [Development Kit](.\asdk\asdk-connect.md#connect-with-rdp) oder auf einem Windows-basierten externen Client aus, sofern [eine VPN-Verbindung mit dem ASDK](.\asdk\asdk-connect.md#connect-with-vpn) besteht. 
+Führen Sie die folgenden erforderlichen Schritte entweder über das [Development Kit](./asdk/asdk-connect.md#connect-with-rdp) oder auf einem Windows-basierten externen Client aus, sofern [eine VPN-Verbindung mit dem ASDK](./asdk/asdk-connect.md#connect-with-vpn) besteht. 
 
  - Installieren Sie [mit Azure Stack kompatible Azure PowerShell-Module](azure-stack-powershell-install.md).  
  - Laden Sie die [Tools herunter, die für die Arbeit mit Azure Stack benötigt werden](azure-stack-powershell-download.md).  
 
-## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Konfigurieren Sie die Betreiberumgebung, und melden Sie sich bei Azure Stack an.
+## <a name="connect-with-azure-ad"></a>Herstellen einer Verbindung mit Azure AD
 
-Konfigurieren Sie die Azure Stack-Betreiberumgebung mit PowerShell. Führen Sie eines der folgenden Skripts aus: Ersetzen Sie die Azure AD-Werte für tenantName, GraphAudience-Endpunkt und ArmEndpoint durch Ihre eigene Umgebungskonfiguration.
+Konfigurieren Sie die Azure Stack-Betreiberumgebung mit PowerShell. Führen Sie eines der folgenden Skripts aus: Ersetzen Sie darin den Azure Active Directory (Azure AD) tenantName und die Endpunktwerte von Azure Resource Manager durch ihre eigene Umgebungskonfiguration. <!-- GraphAudience endpoint -->
 
-````PowerShell  
-    # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external.
-    # To get this value for Azure Stack integrated systems, contact your service provider.
-    $ArmEndpoint = "<Admin Resource Manager endpoint for your environment>"
-
+```PowerShell  
+    # Set your tenant name
     $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
+    $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"
     $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
-
-    $TenantID = Get-AzsDirectoryTenantId `
-      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-      -EnvironmentName AzureStackAdmin
 
     # After signing in to your environment, Azure Stack cmdlets
     # can be easily targeted at your Azure Stack instance.
-    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $tenantId
-````
+    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
+```
+
+## <a name="connect-with-ad-fs"></a>Herstellen einer Verbindung mit AD FS
+
+Verbinden Sie die Azure Stack-Betreiberumgebung mit PowerShell mit Azure Active Directory-Verbunddiensten (Azure AD FS). Beim Azure Stack Development Kit wird dieser Azure Resource Manager-Endpunkt auf `https://adminmanagement.local.azurestack.external` festgelegt. Um den Azure Resource Manager-Endpunkt für integrierte Azure Stack-Systeme zu erhalten, wenden Sie sich an Ihren Dienstanbieter.
+
+<!-- GraphAudience endpoint -->
+
+  ```PowerShell  
+  # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
+  Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+
+  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
+  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
+
+  # Sign in to your environment
+
+  $cred = get-credential
+
+  Login-AzureRmAccount `
+    -EnvironmentName "AzureStackAdmin" `
+    -TenantId $tenantId `
+    -Credential $cred
+  ```
+
+
 
 ## <a name="test-the-connectivity"></a>Testen der Konnektivität
 
 Nachdem Sie nun alles eingerichtet haben, können Sie mit PowerShell Ressourcen in Azure Stack erstellen. Sie können beispielsweise eine Ressourcengruppe für eine Anwendung erstellen und einen virtuellen Computer hinzufügen. Verwenden Sie den folgenden Befehl, um eine Ressourcengruppe mit dem Namen **MyResourceGroup** zu erstellen.
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 

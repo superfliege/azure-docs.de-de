@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: ee6e4397345b4cb169e7e22d951d4c4fdff5b7b7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 632cf506477bdc6f35c66a473963168f81e22351
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078714"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971894"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 1
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Diese Versionshinweise beschreiben die Verbesserungen und Fehlerbehebungen in Update 1 für Azure App Service in Azure Stack und bekannte Probleme. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf die Bereitstellung und den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -102,7 +102,7 @@ Update 1 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 
 - Der Fehler, dass beim Löschen eines Abonnements, dass Ressourcen im Microsoft.Web-Namespace enthielt, ein falscher Status an den Azure Resource Manager zurückgegeben wurde, wurde behoben.
 
-### <a name="known-issues-with-the-deployment-process"></a>Bekannte Probleme mit dem Bereitsellungsprozess
+### <a name="known-issues-with-the-deployment-process"></a>Bekannte Probleme mit dem Bereitstellungsprozess
 
 - Fehler beim Überprüfen des Zertifikats
 
@@ -145,7 +145,7 @@ Die Funktion zum Austauschen von Slots funktioniert in dieser Version nicht. Um 
 
       # Commit the changes back to NSG
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
-      ```
+    ```
 
 2. Navigieren Sie zur **CN0-VM** unter „Virtuelle Computer“ im Azure Stack-Administratorportal, und klicken Sie auf **Verbinden**, um eine Remotedesktopsitzung mit der Controllerinstanz zu öffnen. Verwenden Sie die bei der Bereitstellung von App Service angegebenen Anmeldeinformationen.
 3. Starten Sie **PowerShell als Administrator**, und führen Sie folgendes Skript aus:
@@ -197,18 +197,20 @@ Die Funktion zum Austauschen von Slots funktioniert in dieser Version nicht. Um 
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- Worker können den Dateiserver nicht erreichen, wenn der App Service in einem bestehenden virtuellen Netzwerk bereitgestellt wird und der Dateiserver nur im privaten Netzwerk verfügbar ist.
- 
+
+6. Worker können den Dateiserver nicht erreichen, wenn der App Service in einem bestehenden virtuellen Netzwerk bereitgestellt wird und der Dateiserver nur im privaten Netzwerk verfügbar ist.
+
 Wenn Sie sich für die Bereitstellung in einem bestehenden virtuellen Netzwerk und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver entschieden haben, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen, die den SMB-Verkehr zwischen dem Workersubnetz und dem Dateiserver ermöglicht. Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
- * Quelle: Beliebig
- * Quellportbereich: *
- * Ziel: IP-Adressen
- * Ziel-IP-Adressbereich: Bereich der IPs für Ihren Dateiserver
- * Zielportbereich: 445
- * Protokoll: TCP
- * Aktion: Zulassen
- * Priorität: 700
- * Name: Outbound_Allow_SMB445
+
+- Quelle: Beliebig
+- Quellportbereich: *
+- Ziel: IP-Adressen
+- IP-Zieladressbereich: Bereich der IPs für Ihren Dateiserver
+- Zielportbereich: 445
+- Protokoll: TCP
+- Aktion: ZULASSEN
+- Priorität: 700
+- Name: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Bekannte Probleme von Cloudadministratoren, die Azure App Service in Azure Stack betreiben
 

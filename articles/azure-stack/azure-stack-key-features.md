@@ -12,38 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959025"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185731"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Wichtige Features und Konzepte in Azure Stack
 Wenn Sie mit Microsoft Azure Stack noch nicht vertraut sind, können diese Begriffe und Featurebeschreibungen möglicherweise hilfreich sein.
 
 ## <a name="personas"></a>Personas
-Es gibt zwei Arten von Benutzern für Microsoft Azure Stack: den Cloudbetreiber (Anbieter) und den Mandanten (Verbraucher).
+Es gibt zwei Arten von Benutzern für Microsoft Azure Stack: den Betreiber und den Benutzer.
 
-* Ein **Cloudbetreiber** kann Azure Stack konfigurieren und Angebote, Pläne, Dienste, Kontingente und Preise verwalten, um Ressourcen für ihre Mandanten bereitzustellen.  Cloudbetreiber können auch die Kapazität verwalten und auf Warnungen reagieren.  
-* Ein **Mandant** (auch als „Benutzer“ bezeichnet) nutzt Dienste, die der Cloudadministrator anbietet. Mandanten können Dienste, die sie abonniert haben – z.B. Web-Apps, Speicher und virtuelle Computer – bereitstellen, überwachen und verwalten.
+* Ein Azure Stack-**Betreiber** kann Azure Stack konfigurieren, indem er Angebote, Pläne, Dienste, Kontingente und Preise verwaltet, um Ressourcen für seine Mandantenbenutzer bereitzustellen. Betreiber können auch die Kapazität verwalten und auf Warnungen reagieren.  
+* Ein Azure Stack-**Benutzer** (auch als „Mandant“ bezeichnet) nutzt Dienste, die der Betreiber anbietet. Benutzer können Dienste, die sie abonniert haben – z.B. Web-Apps, Speicher und virtuelle Computer – bereitstellen, überwachen und verwalten.
 
 ## <a name="portal"></a>Portal
 Die Hauptmethoden der Interaktion mit Microsoft Azure Stack sind das Administratorportal, das Benutzerportal und PowerShell.
 
-Alle Azure Stack-Portale basieren jeweils auf separaten Azure Resource Manager-Instanzen.  Ein Cloudbetreiber verwendet das Administratorportal zum Verwalten von Azure Stack und für Aktionen wie das Erstellen von Mandantenangeboten.  Das Benutzerportal (auch als „Mandantenportal“ bezeichnet) bietet eine Self-Service-Benutzeroberfläche für die Nutzung von Cloudressourcen wie virtuelle Computern, Speicherkonten und Web-Apps. Weitere Informationen finden Sie unter [Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md) (Verwenden der Azure Stack-Administrator und -Benutzerportale).
+Alle Azure Stack-Portale basieren jeweils auf separaten Azure Resource Manager-Instanzen. Ein Betreiber verwendet das Administratorportal zum Verwalten von Azure Stack und für Aktionen wie das Erstellen von Mandantenangeboten. Das Benutzerportal (auch als „Mandantenportal“ bezeichnet) bietet eine Self-Service-Benutzeroberfläche für die Nutzung von Cloudressourcen wie virtuelle Computer, Speicherkonten und Web-Apps. Weitere Informationen finden Sie unter [Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md) (Verwenden der Azure Stack-Administrator und -Benutzerportale).
 
 ## <a name="identity"></a>Identity 
-Azure Stack verwendet entweder Azure Active Directory (AAD) oder Active Directory-Verbunddienste (AD FS) als Identitätsanbieter.  
+Azure Stack verwendet entweder Azure Active Directory (Azure AD) oder Active Directory-Verbunddienste (AD FS) als Identitätsanbieter.  
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory ist der cloudbasierte, mehrinstanzenfähige Identitätsanbieter von Microsoft.  Die meisten Hybridszenarien verwenden Azure Active Directory als Identitätsspeicher.
+Azure AD ist der cloudbasierte, mehrinstanzenfähige Identitätsanbieter von Microsoft. Die meisten Hybridszenarien verwenden Azure AD als Identitätsspeicher.
 
 ### <a name="active-directory-federation-services"></a>Active Directory-Verbunddienste (AD FS)
-Sie können Active Directory-Verbunddienste (AD FS) für nicht verbundene Bereitstellungen von Azure Stack verwenden.  Azure Stack, Ressourcenanbieter und anderen Anwendungen verwenden AD FS ähnlich wie Azure Active Directory. Azure Stack umfasst eine eigene AD FS- und Active Directory-Instanz sowie eine Active Directory Graph-API. Azure Stack Development Kit unterstützt die folgenden AD FS-Szenarien:
+Sie können Active Directory-Verbunddienste (AD FS) für nicht verbundene Bereitstellungen von Azure Stack verwenden. Azure Stack-Ressourcenanbieter und andere Anwendungen verwenden AD FS ähnlich wie Azure AD. Azure Stack umfasst eine eigene Active Directory-Instanz und eine Active Directory Graph-API. Azure Stack Development Kit unterstützt die folgenden AD FS-Szenarien:
 
 - Anmelden bei der Bereitstellung mithilfe von AD FS
 - Erstellen eines virtuellen Computers mit Geheimnissen in Key Vault
@@ -93,9 +93,9 @@ Für den Administrator wird während der Bereitstellung ein Standardanbieterabon
 Mithilfe von Azure Resource Manager können Sie in einem vorlagenbasierten, deklarativen Modell mit Ihren Infrastrukturressourcen arbeiten.   Er bietet eine zentrale Benutzeroberfläche, auf der Sie Ihre Lösungskomponenten bereitstellen und verwalten können. Umfassende Informationen und Anleitungen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="resource-groups"></a>Ressourcengruppen
-Ressourcengruppen sind Sammlungen von Ressourcen, Diensten und Anwendungen. Jede Ressource weist einen Typ auf, z.B. virtueller Computer, virtuelles Netzwerk öffentliche IP-Adresse, Speicherkonto oder Website. Jede Ressource muss einer Ressourcengruppe angehören, damit Ressourcen z.B. nach Workload oder Standort logisch organisiert werden können.  In Microsoft Azure Stack werden Ressourcen wie Pläne und Angebote auch in Ressourcengruppen verwaltet.
+Ressourcengruppen sind Sammlungen von Ressourcen, Diensten und Anwendungen. Jede Ressource weist einen Typ auf, z.B. virtueller Computer, virtuelles Netzwerk öffentliche IP-Adresse, Speicherkonto oder Website. Jede Ressource muss einer Ressourcengruppe angehören, damit Ressourcen z.B. nach Workload oder Standort logisch organisiert werden können. In Azure Stack werden Ressourcen wie Pläne und Angebote auch in Ressourcengruppen verwaltet.
 
-Anders als bei [Azure](../azure-resource-manager/resource-group-move-resources.md) können Sie keine Ressourcen zwischen Ressourcengruppen verschieben. Wenn Sie die Eigenschaften einer Ressource oder Ressourcengruppe im Azure Stack-Verwaltungsportal anzeigen, ist die Schaltfläche *Verschieben* abgeblendet und nicht verfügbar. 
+Anders als bei [Azure](../azure-resource-manager/resource-group-move-resources.md) können Sie keine Azure Stack-Ressourcen zwischen Ressourcengruppen verschieben. Wenn Sie die Eigenschaften einer Ressource oder Ressourcengruppe im Azure Stack-Verwaltungsportal anzeigen, ist die Schaltfläche *Verschieben* abgeblendet und nicht verfügbar. Auch die Verwendung der Aktionen **Ressourcengruppe ändern** und **Abonnement ändern** aus Eigenschaften einer Ressourcengruppe oder eines Ressourcengruppenelements wird nicht unterstützt. Alle versuchten Verschiebevorgänge werden fehlschlagen.
  
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 Mit Azure Resource Manager können Sie eine Vorlage (im JSON-Format) erstellen, mit der die Bereitstellung und Konfiguration Ihrer Anwendung definiert wird. Diese Vorlage wird als Azure Resource Manager-Vorlage bezeichnet und ist eine deklarative Möglichkeit zum Definieren der Bereitstellung. Mit einer Vorlage können Sie die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
@@ -129,7 +129,7 @@ Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. 
 Der KeyVault-Ressourcenanbieter stellt die Verwaltung und Überwachung von Geheimnissen wie Kennwörtern und Zertifikaten bereit. Beispielsweise kann ein Mandant den KeyVault-Ressourcenanbieter während der Bereitstellung eines virtuellen Computers zum Angeben von Administratorkennwörtern oder Schlüsseln verwenden.
 
 ## <a name="high-availability-for-azure-stack"></a>Hochverfügbarkeit für Azure Stack
-*Gilt für: Azure Stack 1802 oder höhere Versionen*
+*Anwendungsbereich: Azure Stack 1802 oder höhere Versionen*
 
 Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren VMs in Azure werden die VMs in einer Verfügbarkeitsgruppe angeordnet, um sie auf mehrere Fehlerdomänen und Updatedomänen zu verteilen. Auf diese Weise werden [in Verfügbarkeitsgruppen bereitgestellte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) in separaten Serverracks physisch voneinander isoliert, um Ausfallresilienz zu ermöglichen. Dies ist im folgenden Diagramm dargestellt:
 
@@ -150,7 +150,7 @@ Für VM-Skalierungsgruppen wird eine Verfügbarkeitsgruppe intern mit einer Stan
 ## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung
 Mit der rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC) können Sie autorisierten Benutzern, Gruppen und Diensten Systemzugriff gewähren, indem Sie ihnen Rollen auf Abonnement-, Ressourcengruppen- oder Ressourcenebene zuweisen. Jede Rolle definiert die Zugriffsebene, die ein Benutzer, eine Gruppe oder ein Dienst auf Microsoft Azure Stack-Ressourcen hat.
 
-Die rollenbasierte Zugriffssteuerung in Azure verfügt über drei grundlegende Rollen, die für alle Ressourcentypen gelten: Besitzer, Mitwirkender und Leser. Besitzer verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. Mitwirkende können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren. Leser können nur vorhandene Azure-Ressourcen anzeigen. Die verbleibenden RBAC-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Beispielsweise ermöglicht die Rolle "Mitwirkender für virtuelle Computer" die Erstellung und Verwaltung von virtuellen Computern, nicht jedoch des virtuellen Netzwerks oder des Subnetzes, mit dem der virtuelle Computer eine Verbindung herstellt.
+Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentypen gelten: Besitzer, Mitwirkender und Leser. Besitzer verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. Mitwirkende können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren. Leser können nur vorhandene Azure-Ressourcen anzeigen. Die verbleibenden RBAC-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Beispielsweise ermöglicht die Rolle "Mitwirkender für virtuelle Computer" die Erstellung und Verwaltung von virtuellen Computern, nicht jedoch des virtuellen Netzwerks oder des Subnetzes, mit dem der virtuelle Computer eine Verbindung herstellt.
 
 ## <a name="usage-data"></a>Nutzungsdaten
 Microsoft Azure Stack erfasst und aggregiert Nutzungsdaten für sämtliche Ressourcenanbieter und übermittelt sie an Azure für die Verarbeitung durch Azure Commerce. Die in Azure Stack gesammelten Nutzungsdaten können über eine REST-API angezeigt werden. Es gibt eine mit Azure übereinstimmende Mandanten-API sowie APIs für Anbieter und delegierte Anbieter, mit denen die Nutzungsdaten für alle Mandantenabonnements abgerufen werden können. Diese Daten können in ein externes Tool oder einen Dienst integriert oder für die Abrechnung oder verbrauchsbasierte Kostenzuteilung verwendet werden. Sobald die Nutzungsdaten von Azure Commerce verarbeitet wurden, können sie im Azure-Abrechnungsportal angezeigt werden.

@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f7f23a6d645a1d8e16e42e751050d8d91b49e2b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 472dfc04cea65cab39d177bb214c417d229b71d2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007824"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956719"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Problembehandlung der Bereitstellung von Kubernetes in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!Note]  
 > Kubernetes in Azure Stack befindet sich in der Vorschauphase.
@@ -45,10 +45,10 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
 1. Erfassen Sie die Eingabeparameter aus dem Marketplace-Element.
 
     Geben Sie die Werte ein, die Sie für die Einrichtung des Kubernetes-Clusters benötigen, einschließlich:
-    -  **Benutzername**: Der Benutzername für die virtuellen Linux-Computer, die Teil des Kubernetes-Clusters und der DVM (Deployment Virtual Machine, virtueller Computer für die Bereitstellung) sind.
+    -  **Benutzername**: Hierbei handelt es sich um den Benutzernamen für die virtuellen Linux-Computer, die Teil des Kubernetes-Clusters und des DVM (Deployment Virtual Machine, virtueller Computer für die Bereitstellung) sind.
     -  **Öffentlicher SSH-Schlüssel**: Der Schlüssel, der für die Autorisierung bei allen Linux-Computern verwendet wird, die als Teil des Kubernetes-Clusters und der DVM erstellt werden.
     -  **Dienstprinzipal**: Die ID, die vom Kubernetes Azure-Cloudanbieter verwendet wird. Die als Anwendungs-ID identifizierte Client-ID, wenn Sie Ihren Dienstprinzipal erstellt haben. 
-    -  **Clientgeheimnis**: Der Schlüssel, den Sie beim Erstellen Ihres Dienstprinzipals erstellt haben.
+    -  **Geheimer Clientschlüssel**: Der Schlüssel, den Sie beim Erstellen Ihres Dienstprinzipals erstellt haben.
 
 2. Erstellen Sie die Bereitstellungs-VM und die benutzerdefinierte Skripterweiterung.
     -  Erstellen Sie die Linux-Bereitstellungs-VM mit dem Marketplace-Linux-Image **Ubuntu Server 16.04-LTS**.
@@ -178,6 +178,6 @@ Führen Sie zum Abrufen der Protokolle die folgenden Schritte aus:
 
 [Bereitstellen von Kubernetes in Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)
 
-[Hinzufügen eines Kubernetes-Clusters zum Marketplace (für Azure Stack-Bediener)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Hinzufügen eines Kubernetes-Clusters zum Marketplace (für Azure Stack-Bediener)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes in Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

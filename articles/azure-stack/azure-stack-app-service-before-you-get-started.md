@@ -12,18 +12,18 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615873"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275668"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Vor den ersten Schritten mit App Service in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Bevor Sie Azure App Service in Azure Stack bereitstellen, müssen die erforderlichen vorbereitenden Schritte in diesem Artikel ausgeführt werden.
 
@@ -152,6 +152,12 @@ Das Zertifikat für die Identität muss einen Antragsteller enthalten und dem fo
 | Format | Beispiel |
 | --- | --- |
 | sso.appservice.\<Region\>.\<Domänenname\>.\<Erweiterung\> | sso.appservice.redmond.azurestack.external |
+
+
+### <a name="validate-certificates"></a>Überprüfen von Zertifikaten
+Vor der Bereitstellung des App-Dienst-Ressourcenanbieters sollten Sie [die zu verwendenden Zertifikate überprüfen](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation). Verwenden Sie dazu das Azure Stack Readiness Checker-Tool, das im [PowerShell-Katalog](https://aka.ms/AzsReadinessChecker) zur Verfügung steht. Das Azure Stack Readiness Checker-Tool überprüft, ob die generierten PKI-Zertifikate für die App-Services-Bereitstellung geeignet sind. 
+
+Als bewährte Methode sollten Sie bei der Arbeit mit einem der erforderlichen [Azure Stack PKI-Zertifikate](azure-stack-pki-certs.md) ausreichend Zeit zum Testen und (bei Bedarf) erneuten Ausstellen von Zertifikaten einplanen. 
 
 ## <a name="virtual-network"></a>Virtuelles Netzwerk
 
@@ -347,7 +353,7 @@ Folgen Sie diesen Schritten:
 | AzureStackAdminCredential | Erforderlich | Null | Administratoranmeldeinformationen für den Azure AD-Dienst |
 | CertificateFilePath | Erforderlich | Null | **Vollständiger Pfad** zur zuvor generierten Zertifikatsdatei für die Identitätsanwendung |
 | CertificatePassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |
-| Environment | Optional | AzureCloud | Der Name der unterstützten Cloudumgebung, in welcher der Azure Active Directory-Zielgraphdienst verfügbar ist  Zulässige Werte: „AzureCloud“, „AzureChinaCloud“, „AzureUSGovernment“, „AzureGermanCloud“.|
+| Environment | Optional | AzureCloud | Der Name der unterstützten Cloudumgebung, in welcher der Azure Active Directory-Zielgraphdienst verfügbar ist  Zulässige Werte: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Erstellen einer Active Directory-Verbunddienste-Anwendung
 

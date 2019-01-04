@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: f853bb32f7c452f1b09ca337db2a866bd0890b82
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a4be229e1c491c3062b14e631cfec5b14185bb82
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427249"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957656"
 ---
 # <a name="asdk-release-notes"></a>Versionshinweise zum ASDK  
-Dieser Artikel bietet Informationen zu Verbesserungen, Fehlerbehebungen und bekannten Problemen in Azure Stack Development Kit (ASDK). Wenn Sie nicht sicher sind, welche Version ausgeführt wird, können Sie diese im [Portal überprüfen](.\.\azure-stack-updates.md#determine-the-current-version).
+Dieser Artikel bietet Informationen zu Verbesserungen, Fehlerbehebungen und bekannten Problemen in Azure Stack Development Kit (ASDK). Wenn Sie nicht sicher sind, welche Version ausgeführt wird, können Sie diese im [Portal überprüfen](../azure-stack-updates.md#determine-the-current-version).
 
 > Abonnieren Sie den [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)-[Feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#), um in Bezug auf Neuerungen im ASDK auf dem Laufenden zu bleiben.
 
@@ -46,32 +46,11 @@ Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](../azu
 <!-- TBD - IS ASDK --> 
 - Folgendes Problem wurde behoben: Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigte das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
 
-- Die folgenden Probleme mit verwalteten Datenträgern wurden in Version 1809 und im [Azure Stack Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/) für Version 1808 behoben: 
-
-   <!--  2966665 – IS, ASDK --> 
-   - Beim Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern einer Premium-Größe (DS, DSv2, Fs, Fs_V2) trat folgender Fehler auf: *Fehler beim Aktualisieren der Datenträger für den virtuellen Computer "vmname". Fehler: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp "Premium_LRS" für die VM-Größe "Standard_DS/Ds_V2/FS/Fs_v2" nicht unterstützt wird*. 
-   
-   - Beim Erstellen einer VM mit verwalteten Datenträgern mithilfe von **createOption**: **Attach** trat folgender Fehler auf: *Fehler bei Vorgang mit langer Ausführungsdauer. Status: "Fehler". Zusätzliche Information: "Interner Ausführungsfehler".*
-   ErrorCode: InternalExecutionError ErrorMessage: Interner Ausführungsfehler.
-   
-   Dieses Problem wurde jetzt behoben.
-
 - <!-- 2702741 -  IS, ASDK --> Ein Problem mit öffentlichen IP-Adressen, die mithilfe der dynamischen Zuordnungsmethode bereitgestellt wurden und nach der Ausgabe eines Befehls zum Beenden und Aufheben der Zuordnung nicht unbedingt beibehalten werden, wurde behoben. Sie werden jetzt beibehalten.
 
 - <!-- 3078022 - IS, ASDK --> Wenn eine VM vor Version 1808 beendet und ihre Zuordnung aufgehoben wurde, konnte sie nach dem Update auf 1808 nicht neu zugeordnet werden.  Dieses Problem wurde in Version 1809 behoben. Instanzen, die sich in diesem Zustand befanden und nicht gestartet werden konnten, können in Version 1809 mit dieser Lösung gestartet werden. Die Lösung verhindert außerdem, dass dieses Problem erneut auftritt.
 
-<!-- 3090289 – IS, ASDK --> 
-- Ein Problem wurde behoben, bei dem nach dem Anwenden des Updates 1808 beim Bereitstellen von virtuellen Computern mit Managed Disks die folgenden Probleme auftreten können:
-
-   1. Wenn das Abonnement vor dem Update 1808 erstellt wurde, kann die Bereitstellung eines virtuellen Computers mit Managed Disks mit einer internen Fehlermeldung fehlschlagen. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
-      1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Klicken Sie auf **Ressourcenanbieter**, klicken Sie dann auf **Microsoft.Compute**, und klicken Sie anschließend auf **Erneut registrieren**.
-      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **Azure Stack – Verwalteter Datenträger** aufgeführt wird.
-   2. Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, kann die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, mit einer internen Fehlermeldung fehlschlagen. Gehen Sie folgendermaßen vor, um den Fehler zu beheben:
-      1. Wenden Sie den [Azure Stack-Hotfix 1808](https://support.microsoft.com/help/4471992) an.
-      2. Führen Sie die in [diesem Artikel](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
-
 - Es wurden **verschiedene Fehlerbehebungen** hinsichtlich der Leistung, Stabilität, Sicherheit und des von Azure Stack eingesetzten Betriebssystems vorgenommen.
-
 
 ### <a name="changes"></a>Änderungen
 
@@ -91,13 +70,13 @@ Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](../azu
 - Möglicherweise werden Warnungen für die *Health Controller*-Komponente mit folgenden Details angezeigt:  
 
    Warnung 1:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
 
   Warnung 2:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
@@ -120,17 +99,17 @@ Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](../azu
 - Wenn Sie einen neuen virtuellen Computer (VM) über das Azure Stack-Portal erstellen und die VM-Größe auswählen, wird die Spalte „USD/Monat“ mit der Meldung **Nicht verfügbar** angezeigt. Diese Spalte sollte nicht angezeigt werden. Die Anzeige der VM-Preisspalte wird in Azure Stack nicht unterstützt.
 
 <!-- 2869209 – IS, ASDK --> 
-- Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit dem folgenden Fehler fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status „Fehler“*. 
+- Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit der folgenden Fehlermeldung fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status ‚Fehler‘*. 
 
 <!--  2966665 – IS, ASDK --> 
-- Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern der Größe „Premium“ (DS, DSv2, Fs, Fs_V2) schlägt mit dem folgenden Fehler fehl: *Fehler beim Aktualisieren der Datenträger für den virtuellen Computer "vmname". Fehler: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp "Premium_LRS" für die VM-Größe "Standard_DS/Ds_V2/FS/Fs_v2" nicht unterstützt wird.*
+- Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern von Premiumgröße (DS, DSv2, Fs, Fs_V2) schlägt mit der folgenden Fehlermeldung fehl:  *Fehler beim Aktualisieren von Datenträgern für den virtuellen Computer ‚vmName‘: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp ‚Premium_LRS‘ für die VM-Größe ‘Standard_DS/Ds_V2/FS/Fs_v2) nicht unterstützt wird.*
 
    Um dieses Problem zu umgehen, verwenden Sie Datenträger vom Typ *Standard_LRS* anstelle von *Premium_LRS*. Das Verwenden von Datenträgern des Typs *Standard_LRS* ändert IOPs oder die Abrechnungskosten nicht.  
 
 <!--  2795678 – IS, ASDK --> 
 - Wenn Sie das Portal zum Erstellen virtueller Computer in einer Premium-VM-Größe (DS, Ds_v2, FS, FSv2) verwenden, wird der virtuelle Computer in einem Standardspeicherkonto erstellt. Die Erstellung in einem Standardspeicherkonto wirkt sich nicht auf die Funktionalität, IOPs oder die Abrechnung aus. 
 
-   Sie können die Warnung ignorieren, die folgendes besagt: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
+   Sie können die folgende Warnung problemlos ignorieren: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
 
 <!-- 2967447 - IS, ASDK --> 
 - Die Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen (VMSS) bietet als Option für die Bereitstellung eine CentOS 7.2-basierte Bereitstellung an. Da dieses Image in Azure Stack nicht verfügbar ist, wählen Sie entweder ein anderes Betriebssystem für Ihre Bereitstellung aus, oder verwenden Sie eine Azure Resource Manager-Vorlage mit einem anderen CentOS-Image, das vor der Bereitstellung vom Operator aus dem Marketplace heruntergeladen wurde.
@@ -201,13 +180,13 @@ Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](../azu
 Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azure Stack.  
 
 <!-- 1658937 | ASDK, IS --> 
-- **Starten von Sicherungen anhand eines vordefinierten Zeitplans**: Als Appliance kann Azure Stack nun automatisch Infrastruktursicherungen regelmäßig auslösen, um Benutzereingriffe zu eliminieren. Zudem bereinigt Azure Stack auch automatisch die externe Freigabe für Sicherungen, die älter als die definierte Aufbewahrungsdauer sind. Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Starten von Sicherungen anhand eines vordefinierten Zeitplans**: Als Appliance kann Azure Stack nun automatisch Infrastruktursicherungen regelmäßig auslösen, um Benutzereingriffe zu eliminieren. Zudem bereinigt Azure Stack auch automatisch die externe Freigabe für Sicherungen, die älter als die definierte Aufbewahrungsdauer sind. Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
 <!-- 2496385 | ASDK, IS -->  
-- **Zur Gesamtsicherungszeit wurde die Datenübertragungszeit addiert.** Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Zur Gesamtsicherungszeit wurde die Datenübertragungszeit addiert.** Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
 <!-- 1702130 | ASDK, IS --> 
-- **Die externe Kapazität für Sicherungen zeigt jetzt die richtige Kapazität der externen Freigabe an.** (Zuvor war diese hardcodiert und zeigte 10 GB an.) Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Die externe Kapazität für Sicherungen zeigt jetzt die richtige Kapazität der externen Freigabe an.** (Zuvor war diese hardcodiert und zeigte 10 GB an.) Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](../azure-stack-backup-enable-backup-powershell.md).
  
 <!-- 2753130 |  IS, ASDK   -->  
 - **Azure Resource Manager-Vorlagen unterstützen jetzt das condition-Element**: Sie können jetzt eine Ressource in einer Azure Resource Manager-Vorlage mit einer Bedingung bereitstellen. Sie können Ihre Vorlage für die Bereitstellung einer Ressource auf Grundlage einer Bedingung (beispielsweise das Vorhandensein eines Parameterwerts) entwerfen. Informationen zur Verwendung einer Vorlage als Bedingung finden Sie unter [Bedingtes Bereitstellen einer Ressource](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) und [Abschnitt „Variablen“ von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) in der Azure-Dokumentation. 
@@ -215,7 +194,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
    Sie können Vorlagen auch zum [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment) verwenden.  
 
 <!--2753073 | IS, ASDK -->  
-- **Die Unterstützung der Microsoft.Network-API-Ressourcenversion wurde aktualisiert** und umfasst nun Unterstützung für die API-Version 2017-10-01 von 2015-06-15 für Azure Stack-Netzwerkressourcen. Die Unterstützung für Ressourcenversionen zwischen 2017-10-01 und 2015-06-15 ist nicht in diesem Release enthalten. Weitere Informationen zu den Funktionsunterschieden finden Sie unter [Überlegungen zu Azure Stack-Netzwerken](.\.\user\azure-stack-network-differences.md).
+- **Die Unterstützung der Microsoft.Network-API-Ressourcenversion wurde aktualisiert** und umfasst nun Unterstützung für die API-Version 2017-10-01 von 2015-06-15 für Azure Stack-Netzwerkressourcen. Die Unterstützung für Ressourcenversionen zwischen 2017-10-01 und 2015-06-15 ist nicht in diesem Release enthalten. Weitere Informationen zu den Funktionsunterschieden finden Sie unter [Überlegungen zu Azure Stack-Netzwerken](../user/azure-stack-network-differences.md).
 
 <!-- 2272116 | IS, ASDK   -->  
 - **Azure Stack bietet jetzt Unterstützung für Reverse-DNS-Lookups für extern zugängliche Azure Stack-Infrastrukturendpunkte** (d.h. für Portal, Verwaltungsportal, Verwaltung und Administratorverwaltung). Dies ermöglicht die Auflösung der Namen von externen Azure Stack-Endpunkten über eine IP-Adresse.
@@ -243,7 +222,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 - **Azure Resource Manager enthält den Namen der Region.** In diesem Release enthalten aus der Azure Resource Manager-Vorlage abgerufene Objekte jetzt das Attribut „Regionsname“. Wenn ein vorhandenes PowerShell-Skript das Objekt direkt an ein anderes Cmdlet übergibt, kann bei der Ausführung des Skripts ein Fehler auftreten. Dies ist das mit Azure Resource Manager konforme Verhalten und erfordert, dass der aufrufende Client das Attribut „Region“ subtrahiert. Weitere Informationen zum Azure Resource Manager finden Sie in der [Dokumentation zum Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/).
 
 <!-- TBD | IS, ASDK -->  
-- **Verschieben von Abonnements zwischen delegierten Anbietern.** Sie können jetzt Abonnements zwischen neuen oder vorhandenen delegierten Anbieterabonnements verschieben, die zu demselben Verzeichnismandanten gehören. Abonnements, die zum Standardabonnement des Anbieters gehören, können auch in die delegierten Anbieterabonnements im gleichen Verzeichnismandanten verschoben werden. Weitere Informationen finden Sie unter [Delegieren von Angeboten in Azure Stack](.\.\azure-stack-delegated-provider.md).
+- **Verschieben von Abonnements zwischen delegierten Anbietern.** Sie können jetzt Abonnements zwischen neuen oder vorhandenen delegierten Anbieterabonnements verschieben, die zu demselben Verzeichnismandanten gehören. Abonnements, die zum Standardabonnement des Anbieters gehören, können auch in die delegierten Anbieterabonnements im gleichen Verzeichnismandanten verschoben werden. Weitere Informationen finden Sie unter [Delegieren von Angeboten in Azure Stack](../azure-stack-delegated-provider.md).
  
 <!-- 2536808 IS ASDK --> 
 - **Kürzere VM-Erstellungszeit** für VMs, die mit aus dem Azure Marketplace heruntergeladenen Images erstellt werden.
@@ -267,7 +246,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 - Die Sicherungsliste wird nun aktualisiert, wenn Sie die Sicherung manuell von der externen Freigabe löschen.
 
 <!-- 2360715 |  ASDK, IS -->  
-- Wenn Sie die Rechenzentrumsintegration einrichten, greifen Sie nicht mehr von einer Freigabe auf die AD FS-Metadatendatei zu. Weitere Informationen finden Sie unter [Einrichten der AD FS-Integration durch Bereitstellen einer Verbundmetadatendatei](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- Wenn Sie die Rechenzentrumsintegration einrichten, greifen Sie nicht mehr von einer Freigabe auf die AD FS-Metadatendatei zu. Weitere Informationen finden Sie unter [Einrichten der AD FS-Integration durch Bereitstellen einer Verbundmetadatendatei](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 <!-- 2388980 | ASDK, IS --> 
 - Es wurde ein Problem behoben, das verhinderte, dass Benutzer eine vorhandene öffentliche IP-Adresse, die zuvor einer Netzwerkschnittstelle oder einem Load Balancer zugewiesen war, einer neuen Netzwerkschnittstelle oder einem neuen Load Balancer zuweisen.  
@@ -290,7 +269,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 <!--  TBD ASDK --> 
 - Die VM, die den privilegierten Endpunkt (PEP) hostet, wurde auf 4 GB vergrößert. In der ASDK heißt dieser virtueller Computer AzS-ERCS01.
 
-- <!--  TBD – IS, ASDK --> Die VM-Größen *Basic A* stehen für das [Erstellen von VM-Skalierungsgruppen](.\.\azure-stack-compute-add-scalesets.md) (VMSS) über das Portal nicht mehr zur Verfügung. Verwenden Sie PowerShell oder eine Vorlage, um eine VMSS mit dieser Größe zu erstellen. 
+- <!--  TBD – IS, ASDK --> Die VM-Größen *Basic A* stehen für das [Erstellen von VM-Skalierungsgruppen](../azure-stack-compute-add-scalesets.md) (VMSS) über das Portal nicht mehr zur Verfügung. Verwenden Sie PowerShell oder eine Vorlage, um eine VMSS mit dieser Größe zu erstellen. 
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
@@ -304,7 +283,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 - Pläne, die einem Benutzerabonnement als Add-On-Plan hinzugefügt wurden, können nicht gelöscht werden, auch wenn Sie den Plan aus dem Benutzerabonnement entfernen. Der Plan ist so lange vorhanden, bis die Abonnements gelöscht werden, die auf den Add-On-Plan verweisen. 
 
 <!--2760466 – IS  ASDK --> 
-- Bei der Installation einer neuen Azure Stack-Umgebung, die diese Version ausführt, wird die Warnung, dass eine *Aktivierung erforderlich* ist, möglicherweise nicht angezeigt. Die [Aktivierung](.\.\azure-stack-registration.md) ist erforderlich, damit Sie die Marketplace-Syndikation verwenden können. 
+- Bei der Installation einer neuen Azure Stack-Umgebung, die diese Version ausführt, wird die Warnung, dass eine *Aktivierung erforderlich* ist, möglicherweise nicht angezeigt. Die [Aktivierung](../azure-stack-registration.md) ist erforderlich, damit Sie die Marketplace-Syndikation verwenden können. 
 
 <!-- TBD - IS ASDK --> 
 - Die zwei administrativen Abonnementtypen, die in Version 1804 eingeführt wurden, sollten nicht verwendet werden. Die Abonnementtypen sind **Messungsabonnement** und **Verbrauchsabonnement**. Diese Abonnementtypen sind **Messungsabonnement** und **Verbrauchsabonnement**. Diese Abonnementtypen sind in neuen Azure Stack-Umgebungen ab Version 1804 sichtbar, aber noch nicht zur Verwendung bereit. Sie sollten weiterhin den Typ **Standardabonnement des Anbieters** verwenden.
@@ -327,13 +306,13 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 - Möglicherweise werden Warnungen für die *Health Controller*-Komponente mit folgenden Details angezeigt:  
 
    Warnung 1:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
 
   Warnung 2:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
@@ -348,20 +327,20 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 
 #### <a name="compute"></a>Compute
 <!-- 2494144 - IS, ASDK --> 
-- Bei der Auswahl der Größe des virtuellen Computers für die Bereitstellung eines virtuellen Computers sind einige VM-Größen der Serie F beim Erstellen einer VM nicht als Teil der Größenauswahl sichtbar. Folgende VM-Größen werden im Selektor nicht angezeigt: *F8s_v2*, *F16s_v2*, *F32s_v2* und *F64s_v2*.  
+- Bei der Auswahl der Größe des virtuellen Computers für die Bereitstellung eines virtuellen Computers sind einige VM-Größen der Serie F beim Erstellen einer VM nicht als Teil der Größenauswahl sichtbar. Die folgenden VM-Größen werden in der Auswahl nicht angezeigt: *F8s_v2*, *F16s_v2*, *F32s_v2* und *F64s_v2*.  
   Um das Problem zu umgehen, verwenden Sie eine der folgenden Methoden zum Bereitstellen einer VM. Bei jeder Methode müssen Sie die gewünschte VM-Größe angeben.
 
 - <!-- 3099544 – IS, ASDK --> Wenn Sie im Azure Stack-Portal eine neue VM erstellen und die VM-Größe auswählen, wird die Spalte „USD/Monat“ mit der Meldung **Nicht verfügbar** angezeigt. Diese Spalte sollte nicht angezeigt werden. Die Anzeige der VM-Preisspalte wird in Azure Stack nicht unterstützt.
 
-- <!-- 2869209 – IS, ASDK --> Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit dem folgenden Fehler fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status „Fehler“*. 
+- <!-- 2869209 – IS, ASDK --> Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit der folgenden Fehlermeldung fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status ‚Fehler‘*. 
 
-- <!--  2966665 – IS, ASDK --> Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern der Größe „Premium“ (DS, DSv2, Fs, Fs_V2) schlägt mit dem folgenden Fehler fehl: *Fehler beim Aktualisieren der Datenträger für den virtuellen Computer "vmname". Fehler: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp "Premium_LRS" für die VM-Größe "Standard_DS/Ds_V2/FS/Fs_v2" nicht unterstützt wird.*
+- <!--  2966665 – IS, ASDK --> Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern von Premiumgröße (DS, DSv2, Fs, Fs_V2) schlägt mit der folgenden Fehlermeldung fehl:  *Fehler beim Aktualisieren von Datenträgern für den virtuellen Computer ‚vmName‘: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp ‚Premium_LRS‘ für die VM-Größe ‘Standard_DS/Ds_V2/FS/Fs_v2) nicht unterstützt wird.*
 
    Um dieses Problem zu umgehen, verwenden Sie Datenträger vom Typ *Standard_LRS* anstelle von *Premium_LRS*. Das Verwenden von Datenträgern des Typs *Standard_LRS* ändert IOPs oder die Abrechnungskosten nicht.  
 
 - <!--  2795678 – IS, ASDK --> Wenn Sie das Portal zum Erstellen virtueller Computer in einer Premium-VM-Größe (DS, Ds_v2, FS, FSv2) verwenden, wird der virtuelle Computer in einem Standardspeicherkonto erstellt. Die Erstellung in einem Standardspeicherkonto wirkt sich nicht auf die Funktionalität, IOPs oder die Abrechnung aus. 
 
-   Sie können die Warnung ignorieren, die folgendes besagt: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
+   Sie können die folgende Warnung problemlos ignorieren: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
 
 - <!-- 2967447 - IS, ASDK --> Die Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen (VMSS) bietet als Option für die Bereitstellung eine CentOS 7.2-basierte Bereitstellung an. Da dieses Image in Azure Stack nicht verfügbar ist, wählen Sie entweder ein anderes Betriebssystem für Ihre Bereitstellung aus, oder verwenden Sie eine ARM-Vorlage mit einem anderen CentOS-Image, das vor der Bereitstellung aus Marketplace durch den Operator heruntergeladen wurde.
 
@@ -438,17 +417,17 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 ### <a name="new-features"></a>Neue Funktionen
 Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azure Stack.  
 
-- <!-- 1658937 | ASDK, IS --> **Starten von Sicherungen anhand eines vordefinierten Zeitplans**: Als Appliance kann Azure Stack nun automatisch Infrastruktursicherungen regelmäßig auslösen, um Benutzereingriffe zu eliminieren. Zudem bereinigt Azure Stack auch automatisch die externe Freigabe für Sicherungen, die älter als die definierte Aufbewahrungsdauer sind. Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- <!-- 1658937 | ASDK, IS --> **Starten von Sicherungen anhand eines vordefinierten Zeitplans**: Als Appliance kann Azure Stack nun automatisch Infrastruktursicherungen regelmäßig auslösen, um Benutzereingriffe zu eliminieren. Zudem bereinigt Azure Stack auch automatisch die externe Freigabe für Sicherungen, die älter als die definierte Aufbewahrungsdauer sind. Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
-- <!-- 2496385 | ASDK, IS --> **Zur Gesamtsicherungszeit wurde die Datenübertragungszeit addiert.** Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- <!-- 2496385 | ASDK, IS --> **Zur Gesamtsicherungszeit wurde die Datenübertragungszeit addiert.** Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
--   <!-- 1702130 | ASDK, IS --> **Die externe Kapazität für Sicherungen zeigt jetzt die richtige Kapazität der externen Freigabe an.** (Zuvor war diese hardcodiert und zeigte 10 GB an.) Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+-   <!-- 1702130 | ASDK, IS --> **Die externe Kapazität für Sicherungen zeigt jetzt die richtige Kapazität der externen Freigabe an.** (Zuvor war diese hardcodiert und zeigte 10 GB an.) Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](../azure-stack-backup-enable-backup-powershell.md).
  
 - <!-- 2753130 |  IS, ASDK   --> **Azure Resource Manager-Vorlagen unterstützen jetzt das condition-Element:** Sie können jetzt eine Ressource in einer Azure Resource Manager-Vorlage mit einer Bedingung bereitstellen. Sie können Ihre Vorlage für die Bereitstellung einer Ressource auf Grundlage einer Bedingung (beispielsweise das Vorhandensein eines Parameterwerts) entwerfen. Informationen zur Verwendung einer Vorlage als Bedingung finden Sie unter [Bedingtes Bereitstellen einer Ressource](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) und [Abschnitt „Variablen“ von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) in der Azure-Dokumentation. 
 
    Sie können Vorlagen auch zum [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment) verwenden.  
 
-- <!--2753073 | IS, ASDK --> **Die Unterstützung der Microsoft.Network-API-Ressourcenversion wurde aktualisiert** und umfasst nun Unterstützung für die API-Version 2017-10-01 von 2015-06-15 für Azure Stack-Netzwerkressourcen.  Die Unterstützung für Ressourcenversionen zwischen 2017-10-01 und 2015-06-15 ist nicht in diesem Release enthalten, wird jedoch in einem zukünftigen Release verfügbar sein.  Weitere Informationen zu den Funktionsunterschieden finden Sie unter [Überlegungen zu Azure Stack-Netzwerken](.\.\user\azure-stack-network-differences.md).
+- <!--2753073 | IS, ASDK --> **Die Unterstützung der Microsoft.Network-API-Ressourcenversion wurde aktualisiert** und umfasst nun Unterstützung für die API-Version 2017-10-01 von 2015-06-15 für Azure Stack-Netzwerkressourcen.  Die Unterstützung für Ressourcenversionen zwischen 2017-10-01 und 2015-06-15 ist nicht in diesem Release enthalten, wird jedoch in einem zukünftigen Release verfügbar sein.  Weitere Informationen zu den Funktionsunterschieden finden Sie unter [Überlegungen zu Azure Stack-Netzwerken](../user/azure-stack-network-differences.md).
 
 - <!-- 2272116 | IS, ASDK   --> **Azure Stack bietet jetzt Unterstützung für Reverse-DNS-Lookups für extern zugängliche Azure Stack-Infrastrukturendpunkte** (d.h. für Portal, Verwaltungsportal, Verwaltung und Administratorverwaltung). Dies ermöglicht die Auflösung der Namen von externen Azure Stack-Endpunkten über eine IP-Adresse.
 
@@ -465,11 +444,11 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 
   Da sich das Feature noch in der Vorschauphase befindet, sollten Sie es nicht in Produktionsumgebungen verwenden.
 
-  Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](.\.\azure-stack-integrate-security.md).
+  Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](../azure-stack-integrate-security.md).
 
 - <!-- ####### | IS, ASDK --> **Azure Resource Manager enthält den Namen der Region.** In diesem Release enthalten aus der Azure Resource Manager-Vorlage abgerufene Objekte jetzt das Attribut „Regionsname“. Wenn ein vorhandenes PowerShell-Skript das Objekt direkt an ein anderes Cmdlet übergibt, kann bei der Ausführung des Skripts ein Fehler auftreten. Dies ist das mit Azure Resource Manager konforme Verhalten und erfordert, dass der aufrufende Client das Attribut „Region“ subtrahiert. Weitere Informationen zum Azure Resource Manager finden Sie in der [Dokumentation zum Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/).
 
-- <!-- TBD | IS, ASDK --> **Verschieben von Abonnements zwischen delegierten Anbietern.** Sie können jetzt Abonnements zwischen neuen oder vorhandenen delegierten Anbieterabonnements verschieben, die zu demselben Verzeichnismandanten gehören. Abonnements, die zum Standardabonnement des Anbieters gehören, können auch in die delegierten Anbieterabonnements im gleichen Verzeichnismandanten verschoben werden. Weitere Informationen finden Sie unter [Delegieren von Angeboten in Azure Stack](.\.\azure-stack-delegated-provider.md).
+- <!-- TBD | IS, ASDK --> **Verschieben von Abonnements zwischen delegierten Anbietern.** Sie können jetzt Abonnements zwischen neuen oder vorhandenen delegierten Anbieterabonnements verschieben, die zu demselben Verzeichnismandanten gehören. Abonnements, die zum Standardabonnement des Anbieters gehören, können auch in die delegierten Anbieterabonnements im gleichen Verzeichnismandanten verschoben werden. Weitere Informationen finden Sie unter [Delegieren von Angeboten in Azure Stack](../azure-stack-delegated-provider.md).
  
 - <!-- 2536808 IS ASDK --> **Kürzere VM-Erstellungszeit** für VMs, die mit aus dem Azure Marketplace heruntergeladenen Images erstellt werden.
 
@@ -485,7 +464,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 
 - <!-- 2215948 |  ASDK, IS --> Die Sicherungsliste wird nun aktualisiert, wenn Sie die Sicherung manuell von der externen Freigabe löschen.
 
-- <!-- 2360715 |  ASDK, IS --> Wenn Sie die Rechenzentrumsintegration einrichten, greifen Sie nicht mehr von einer Freigabe auf die AD FS-Metadatendatei zu. Weitere Informationen finden Sie unter [Einrichten der AD FS-Integration durch Bereitstellen einer Verbundmetadatendatei](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- <!-- 2360715 |  ASDK, IS --> Wenn Sie die Rechenzentrumsintegration einrichten, greifen Sie nicht mehr von einer Freigabe auf die AD FS-Metadatendatei zu. Weitere Informationen finden Sie unter [Einrichten der AD FS-Integration durch Bereitstellen einer Verbundmetadatendatei](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 - <!-- 2388980 | ASDK, IS --> Es wurde ein Problem behoben, das verhinderte, dass Benutzer eine vorhandene öffentliche IP-Adresse, die zuvor einer Netzwerkschnittstelle oder einem Load Balancer zugewiesen war, einer neuen Netzwerkschnittstelle oder einem neuen Load Balancer zuweisen.  
 
@@ -532,7 +511,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 - Sie können mit dieser Version von Azure Stack keine Treiberupdates mit einem OEM-Erweiterungspaket durchführen.  Dafür gibt es keine Problemumgehung.
  
 <!-- TBD - IS ASDK --> 
-- Die Funktion, mit der innerhalb des Administratorportals [eine neue Supportanfrage über die Dropdownliste geöffnet wird](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support), ist nicht verfügbar. Verwenden Sie stattdessen den folgenden Link:     
+- Die Funktion, mit der innerhalb des Administratorportals [eine neue Supportanfrage über die Dropdownliste geöffnet wird](../azure-stack-manage-portals.md#quick-access-to-help-and-support), ist nicht verfügbar. Verwenden Sie stattdessen den folgenden Link:     
     - Verwenden Sie https://aka.ms/azurestackforum für das Azure Stack Development Kit.    
 
 <!-- 2403291 - IS ASDK --> 
@@ -552,13 +531,13 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 - Möglicherweise werden Warnungen für die *Health Controller*-Komponente mit folgenden Details angezeigt:  
 
    Warnung 1:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
 
   Warnung 2:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
@@ -574,10 +553,10 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 
 #### <a name="compute"></a>Compute
 <!-- TBD - IS, ASDK --> 
-- Bei der Auswahl der Größe des virtuellen Computers für die Bereitstellung eines virtuellen Computers sind einige VM-Größen der Serie F beim Erstellen einer VM nicht als Teil der Größenauswahl sichtbar. Folgende VM-Größen werden im Selektor nicht angezeigt: *F8s_v2*, *F16s_v2*, *F32s_v2* und *F64s_v2*.  
+- Bei der Auswahl der Größe des virtuellen Computers für die Bereitstellung eines virtuellen Computers sind einige VM-Größen der Serie F beim Erstellen einer VM nicht als Teil der Größenauswahl sichtbar. Die folgenden VM-Größen werden in der Auswahl nicht angezeigt: *F8s_v2*, *F16s_v2*, *F32s_v2* und *F64s_v2*.  
   Um das Problem zu umgehen, verwenden Sie eine der folgenden Methoden zum Bereitstellen einer VM. Bei jeder Methode müssen Sie die gewünschte VM-Größe angeben.
 
-  - **Azure Resource Manager-Vorlage**: Wenn Sie eine Vorlage verwenden, legen Sie *vmSize* in der Vorlage entsprechend der gewünschten VM-Größe fest. Der folgende Eintrag z.B. wird zum Bereitstellen einer VM mit der Größe *F32s_v2* verwendet:  
+  - **Azure Resource Manager-Vorlage:** Wenn Sie eine Vorlage verwenden, legen Sie darin *vmSize* entsprechend der gewünschten VM-Größe fest. Der folgende Eintrag z.B. wird zum Bereitstellen einer VM mit der Größe *F32s_v2* verwendet:  
 
     ```
         "properties": {
@@ -585,9 +564,9 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI**: Sie können den Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) verwenden und die VM-Größe als Parameter angeben, ähnlich wie `--size "Standard_F32s_v2"`.
+  - **Azure-Befehlszeilenschnittstelle:** Sie können den Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) verwenden und die VM-Größe als Parameter angeben, ähnlich wie `--size "Standard_F32s_v2"`.
 
-  - **PowerShell**: Mit PowerShell können Sie [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) mit dem Parameter verwenden, der die VM-Größe angibt, ähnlich wie `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** Bei PowerShell können Sie [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) mit dem Parameter verwenden, der die VM-Größe angibt, ähnlich wie `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD -  IS ASDK --> 
@@ -626,7 +605,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 <!-- 2292271 - IS ASDK --> 
 - Wenn Sie eine Kontingentgrenze für eine Netzwerkressource heraufsetzen, die Teil eines Angebots und eines Plans ist, das bzw. der mit einem Mandantenabonnement verbunden ist, wird die neue Grenze nicht auf dieses Abonnement angewendet. Der neue Grenzwert gilt jedoch für neue Abonnements, die nach Heraufsetzen der Kontingentgrenze erstellt werden.
 
-  Um dieses Problem zu umgehen, verwenden Sie einen Skalierungsplan, um ein Netzwerkkontingent zu erhöhen, wenn der Plan bereits einem Abonnement zugeordnet ist. Weitere Informationen finden Sie in der Beschreibung der Vorgehensweise zum [Bereitstellen eines Skalierungsplans](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
+  Um dieses Problem zu umgehen, verwenden Sie einen Skalierungsplan, um ein Netzwerkkontingent zu erhöhen, wenn der Plan bereits einem Abonnement zugeordnet ist. Weitere Informationen finden Sie in der Beschreibung der Vorgehensweise zum [Bereitstellen eines Skalierungsplans](../azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
 
 <!-- 2304134 IS ASDK --> 
 - Ein Abonnement, dem DNS-Zonen- oder Routingtabellenressourcen zugeordnet wurden, kann nicht gelöscht werden. Um das Abonnement erfolgreich zu löschen, müssen Sie zuerst die DNS-Zonen- und Routingtabellenressourcen aus dem Mandantenabonnement löschen.

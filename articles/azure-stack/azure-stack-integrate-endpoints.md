@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: e6f7d255fbfbcd740d9f3a7c2743f57cecea1abf
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 1800ab19e2d99eb639ef4064e64d7bc475aa0c36
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298754"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014860"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten
 
@@ -79,10 +79,14 @@ Azure Stack unterstützt nur transparente Proxyserver. In einer Bereitstellung m
 |NTP|(IP des für die Bereitstellung bereitgestellten NTP-Servers)|UDP|123|
 |DNS|(IP des für die Bereitstellung bereitgestellten DNS-Servers)|TCP<br>UDP|53|
 |CRL|(URL unter CRL-Verteilungspunkten auf Ihrem Zertifikat)|HTTP|80|
+|Infrastructure Backup|(IP oder FQDN des externen Zieldateiservers)|SMB|445|
 |     |     |     |     |
 
 > [!Note]  
 > Für ausgehende URLs erfolgt ein Lastenausgleich mithilfe von Azure Traffic Manager, um bestmögliche Konnektivität basierend auf dem geografischen Standort zu bieten. Durch URLs mit Lastenausgleich kann Microsoft Back-End-Endpunkte ohne Auswirkungen auf Kunden aktualisieren und ändern. Microsoft gibt die Liste der IP-Adressen für die URLs mit Lastenausgleich nicht frei. Sie sollten ein Gerät verwenden, das ein Filtern nach URL und nicht nach IP-Adresse unterstützt.
+
+> [!Note]  
+> In 1809 kommuniziert der Dienst für die Infrastruktursicherung mit dem externen Dateiserver aus dem öffentlichen VIP-Netzwerk. Vor 1809 hat der Dienst über das öffentliche Infrastrukturnetzwerk kommuniziert. Wenn Ihre Umgebung den Zugriff auf Infrastrukturressourcen aus dem öffentlichen VIP-Netzwerk nicht zulässt, wenden Sie den neuesten [Hotfix 1809](azure-stack-update-1809.md#post-update-steps) für Azure Stack an. Dieser Hotfix verschiebt den Dienst für die Infrastruktursicherung zurück in das öffentliche Infrastrukturnetzwerk. Wenn Sie in 1811 den Hotfix 1809 anwenden, verbleibt der Dienst für die Infrastruktursicherung im öffentlichen Infrastrukturnetzwerk. Wenn Sie den Hotfix nicht anwenden, verschiebt das Update den Dienst zurück in das öffentliche Infrastrukturnetzwerk.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

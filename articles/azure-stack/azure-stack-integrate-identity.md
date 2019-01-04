@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: b59d503b8aadef9e8f9c2d7db71ff60aee3b6387
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300709"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257375"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -131,7 +131,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 
 |Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
-|CustomAdfsName|Der Name des Anspruchsanbieters.<cr>Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
+|CustomAdfsName|Der Name der Anspruchsanbieter-Vertrauensstellung.<br>Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|Verbundmetadatenlink|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
@@ -215,7 +215,7 @@ Verwenden Sie für diese Prozedur einen Computer, der mit dem privilegierten End
 
 Microsoft stellt ein Skript zur Verfügung, das die Vertrauensstellung der vertrauenden Seite (einschließlich der Anspruchstransformationsregeln) konfiguriert. Die Verwendung des Skripts ist optional, da Sie die Befehle auch manuell ausführen können.
 
-Sie können das Hilfsskript unter [Azure Stack-Tools](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) auf Github herunterladen.
+Sie können das Hilfsskript unter [Azure Stack-Tools](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) auf GitHub herunterladen.
 
 Wenn Sie die Befehle manuell ausführen möchten, gehen Sie folgendermaßen vor:
 

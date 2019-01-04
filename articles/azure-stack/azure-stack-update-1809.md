@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314671"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088050"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack-Update 1809
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel beschreibt den Inhalt des Updatepakets 1809. Das Updatepaket enthält Verbesserungen, Fehlerbehebungen und bekannten Probleme für diese Version von Azure Stack. Dieser Artikel enthält auch einen Link, damit Sie das Update herunterladen können. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -57,12 +57,12 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
 <!-- TBD - IS ASDK --> 
 - Folgendes Problem wurde behoben: Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigte das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
 
-- Die folgenden Probleme mit verwalteten Datenträgern wurden in Version 1809 und im [Azure Stack Hotfix 1.1808.5.110](https://support.microsoft.com/help/4468920/) für Version 1808 behoben: 
+- Die folgenden Probleme mit verwalteten Datenträgern wurden in Version 1809 und im [Azure Stack-Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/) für Version 1808 behoben: 
 
    <!--  2966665 – IS, ASDK --> 
-   - Beim Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern einer Premium-Größe (DS, DSv2, Fs, Fs_V2) trat folgender Fehler auf: *Fehler beim Aktualisieren der Datenträger für den virtuellen Computer "vmname". Fehler: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp "Premium_LRS" für die VM-Größe "Standard_DS/Ds_V2/FS/Fs_v2" nicht unterstützt wird*. 
+   - Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern von Premiumgröße (DS, DSv2, Fs, Fs_V2) schlug mit der folgenden Fehlermeldung fehl:  *Fehler beim Aktualisieren von Datenträgern für den virtuellen Computer ‚vmName‘: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp ‚Premium_LRS‘ für die VM-Größe ‘Standard_DS/Ds_V2/FS/Fs_v2) nicht unterstützt wird*. 
    
-   - Beim Erstellen einer VM mit verwalteten Datenträgern mithilfe von **createOption**: **Attach** trat folgender Fehler auf: *Fehler bei Vorgang mit langer Ausführungsdauer. Status: "Fehler". Zusätzliche Information: "Interner Ausführungsfehler".*
+   - Das Erstellen eines virtuellen Computers mit verwalteten Datenträgern mithilfe von **createOption**: **Attach** schlägt mit der folgenden Fehlermeldung fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status ‚Fehler‘. Zusätzliche Information: "Interner Ausführungsfehler".*
    ErrorCode: InternalExecutionError ErrorMessage: Interner Ausführungsfehler.
    
    Dieses Problem wurde jetzt behoben.
@@ -71,21 +71,10 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
 
 - <!-- 3078022 - IS, ASDK --> Wenn eine VM vor Version 1808 beendet und ihre Zuordnung aufgehoben wurde, konnte sie nach dem Update auf 1808 nicht neu zugeordnet werden.  Dieses Problem wurde in Version 1809 behoben. Instanzen, die sich in diesem Zustand befanden und nicht gestartet werden konnten, können in Version 1809 mit dieser Lösung gestartet werden. Die Lösung verhindert außerdem, dass dieses Problem erneut auftritt.
 
-<!-- 3090289 – IS, ASDK --> 
-- Das Problem wurde behoben, bei dem nach dem Anwenden des Updates 1808 beim Bereitstellen von virtuellen Computern mit Managed Disks die folgenden Probleme auftreten können:
-
-   1. Wenn das Abonnement vor dem Update 1808 erstellt wurde, kann die Bereitstellung eines virtuellen Computers mit Managed Disks mit einer internen Fehlermeldung fehlschlagen. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
-      1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Klicken Sie auf **Ressourcenanbieter**, klicken Sie dann auf **Microsoft.Compute**, und klicken Sie anschließend auf **Erneut registrieren**.
-      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **Azure Stack – Verwalteter Datenträger** aufgeführt wird.
-   2. Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, kann die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, mit einer internen Fehlermeldung fehlschlagen. Gehen Sie folgendermaßen vor, um den Fehler zu beheben:
-      1. Wenden Sie den [Azure Stack-Hotfix 1808](https://support.microsoft.com/help/4471992) an.
-      2. Führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
-
-
 ### <a name="changes"></a>Änderungen
 
 <!-- 2635202 - IS, ASDK -->
-- Der Infrastruktursicherungsdienst wird aus dem [öffentlichen Infrastrukturnetzwerk](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) in das [öffentliche VIP-Netzwerk](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network) verschoben. Kunden müssen sicherstellen, dass der Dienst aus dem öffentlichen VIP-Netzwerk auf den Sicherungsspeicherort zugreifen kann.  
+- Der Infrastruktursicherungsdienst wird aus dem [öffentlichen Infrastrukturnetzwerk](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) in das [öffentliche VIP-Netzwerk](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network) verschoben. Kunden müssen sicherstellen, dass der Dienst aus dem öffentlichen VIP-Netzwerk auf den Sicherungsspeicherort zugreifen kann.  
 
 > [!IMPORTANT]  
 > Sollten Sie über eine Firewall verfügen, die aus dem öffentlichen VIP-Netzwerk keine Verbindungen mit dem Dateiserver zulässt, führt diese Änderung dazu, dass bei Infrastruktursicherungen der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) auftritt. Hierbei handelt es sich um einen Breaking Change ohne sinnvolle Problemumgehung. Aufgrund von Kundenfeedback wird die Änderung von Microsoft per Hotfix zurückgesetzt. Weitere Informationen zu verfügbaren Hotfixes für 1809 finden Sie im [Abschnitt mit den Schritten nach dem Updatevorgang](#post-update-steps). Wenden Sie den bereitgestellten Hotfix nach dem Update auf 1809 nur an, wenn das öffentliche VIP-Netzwerk aufgrund Ihrer Netzwerkrichtlinien nicht auf Infrastrukturressourcen zugreifen kann. In 1811 wird diese Änderung auf alle Systeme angewendet. Wenn Sie den Hotfix in 1809 angewendet haben, ist keine weitere Aktion erforderlich.  
@@ -143,7 +132,7 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Installieren Sie das neueste Azure Stack-Hotfix für 1808, bevor Sie 1809 anwenden. Weitere Informationen finden Sie hier: [KB 4471992 – Azure Stack Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/).
+- Installieren Sie das neueste Azure Stack-Hotfix für 1808, bevor Sie 1809 anwenden. Weitere Informationen finden Sie hier: [KB 4481066 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/).
 
   > [!TIP]  
   > Abonnieren Sie die folgenden *RRS*- oder *Atom*-Feeds, um im Hinblick auf Azure Stack-Hotfixes auf dem neuesten Stand zu bleiben:
@@ -173,7 +162,7 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 > Bereiten Sie Ihre Azure Stack-Bereitstellung für den Erweiterungshost vor, der mit dem nächsten Updatepaket aktiviert wird. Bereiten Sie Ihr System mithilfe der folgenden Anleitung vor: [Vorbereiten auf den Erweiterungshost für Azure Stack](azure-stack-extension-host-prepare.md).
 
 Installieren Sie nach der Installation dieses Updates alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).  
-- [KB 4477849 – Azure Stack Hotfix Azure Stack Hotfix 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
+- [KB 4481548 – Azure Stack Hotfix Azure Stack Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
 
 ## <a name="known-issues-post-installation"></a>Bekannte Probleme (nach der Installation)
 
@@ -226,19 +215,19 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
    
   Führen Sie das Cmdlet [Test-AzureStack](azure-stack-diagnostic-test.md) aus, um die Integrität der Infrastrukturrolleninstanzen und Skalierungseinheitenknoten zu überprüfen. Wenn von [Test-AzureStack](azure-stack-diagnostic-test.md) keine Probleme gefunden werden, können Sie diese Warnungen ignorieren. Wenn ein Problem erkannt wird, können Sie versuchen, die Infrastrukturrolleninstanz oder den Knoten über das Verwaltungsportal oder PowerShell zu starten.
 
-  Dieses Problem wurde im aktuellen [Hotfixrelease 1809](https://support.microsoft.com/help/4477849/) behoben. Sie sollten diesen Hotfix daher unbedingt installieren, falls das Problem auftritt. 
+  Dieses Problem wurde im aktuellen [Hotfixrelease 1809](https://support.microsoft.com/help/4481548/) behoben. Sie sollten diesen Hotfix daher unbedingt installieren, falls das Problem auftritt. 
 
 <!-- 1264761 - IS ASDK -->  
 - Möglicherweise werden Warnungen für die **Health Controller**-Komponente mit folgenden Details angezeigt:  
 
    Warnung 1:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
 
   Warnung 2:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
@@ -268,12 +257,12 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 - Wenn Sie einen neuen virtuellen Computer (VM) über das Azure Stack-Portal erstellen und die VM-Größe auswählen, wird die Spalte „USD/Monat“ mit der Meldung **Nicht verfügbar** angezeigt. Diese Spalte sollte nicht angezeigt werden. Die Anzeige der VM-Preisspalte wird in Azure Stack nicht unterstützt.
 
 <!-- 2869209 – IS, ASDK --> 
-- Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit dem folgenden Fehler fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status „Fehler“*. 
+- Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit der folgenden Fehlermeldung fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status ‚Fehler‘*. 
 
 <!--  2795678 – IS, ASDK --> 
 - Wenn Sie das Portal zum Erstellen virtueller Computer in einer Premium-VM-Größe (DS, Ds_v2, FS, FSv2) verwenden, wird der virtuelle Computer in einem Standardspeicherkonto erstellt. Die Erstellung in einem Standardspeicherkonto wirkt sich nicht auf die Funktionalität, IOPs oder die Abrechnung aus. 
 
-   Sie können die Warnung ignorieren, die folgendes besagt: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
+   Sie können die folgende Warnung problemlos ignorieren: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
 
 <!-- 2967447 - IS, ASDK --> 
 - Die Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen bietet „CentOS 7.2-basiert“ als Option für die Bereitstellung an. Da dieses Image in Azure Stack nicht verfügbar ist, wählen Sie entweder ein anderes Betriebssystem für Ihre Bereitstellung aus, oder verwenden Sie eine Azure Resource Manager-Vorlage mit einem anderen CentOS-Image, das vor der Bereitstellung vom Operator aus dem Marketplace heruntergeladen wurde.  
@@ -292,7 +281,18 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
    Navigieren Sie zum Anzeigen von Metrikdaten (etwa das Diagramm „CPU-Prozentsatz“ für den virtuellen Computer) zum Fenster „Metriken“, und zeigen Sie alle unterstützten Metriken für Windows-VM-Gäste an.
 
+<!-- 3507629 - IS, ASDK --> 
+- Managed Disks erstellt zwei neue [Computekontingenttypen](azure-stack-quota-types.md#compute-quota-types) zur Begrenzung der maximalen Kapazität von verwalteten Datenträgern, die bereitgestellt werden können. Standardmäßig werden für jeden Kontingenttyp von verwalteten Datenträgern 2.048 GiB zugeordnet. Allerdings können die folgenden Probleme auftreten:
 
+   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal als Managed Disks-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
+   - Wenn Sie den Kontingentwert auf "0" aktualisieren, entspricht dies dem Standardwert 2.048 GiB. Als Problemumgehung können Sie den Kontingentwert auf "1" festlegen.
+
+<!-- TBD - IS ASDK --> Nach dem Anwenden des Updates 1809 können beim Bereitstellen von virtuellen Computern mit Managed Disks die folgenden Probleme auftreten:
+
+   - Wenn das Abonnement vor dem Update 1808 erstellt wurde, schlägt die Bereitstellung eines virtuellen Computers mit Managed Disks möglicherweise mit einer internen Fehlermeldung fehl. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
+      1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Klicken Sie auf **Ressourcenanbieter**, klicken Sie dann auf **Microsoft.Compute**, und klicken Sie anschließend auf **Erneut registrieren**.
+      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **Azure Stack – Verwalteter Datenträger** aufgeführt wird.
+   2. Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, schlägt die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, möglicherweise mit einer internen Fehlermeldung fehl. Zum Beheben des Fehlers führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
 
 ### <a name="networking"></a>Netzwerk  
 

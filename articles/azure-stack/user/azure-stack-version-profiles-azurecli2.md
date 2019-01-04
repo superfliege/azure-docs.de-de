@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277272"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969956"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI in Azure Stack
 
@@ -36,7 +36,7 @@ Daraufhin sollten die Version der Azure-CLI und die anderen abhängigen Biblioth
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Einstufen des Zertifizierungsstellen-Stammzertifikats für Azure Stack als vertrauenswürdig
 
-1. Beschaffen Sie das Zertifizierungsstellen-Stammzertifikat für Azure Stack von [Ihrem Azure Stack-Betreiber](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate), und stufen Sie es als vertrauenswürdig ein. Zum Einstufen des Zertifizierungsstellen-Stammzertifikats für Azure Stack als vertrauenswürdig fügen Sie es an das vorhandene Python-Zertifikat an.
+1. Beschaffen Sie das Zertifizierungsstellen-Stammzertifikat für Azure Stack von [Ihrem Azure Stack-Betreiber](../azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate), und stufen Sie es als vertrauenswürdig ein. Zum Einstufen des Zertifizierungsstellen-Stammzertifikats für Azure Stack als vertrauenswürdig fügen Sie es an das vorhandene Python-Zertifikat an.
 
 1. Suchen Sie den Speicherort des Zertifikats auf Ihrem Computer. Der Speicherort kann je nachdem, wo Sie Python installiert haben, variieren. Es müssen die Module [pip](https://pip.pypa.io) und [certifi](https://pypi.org/project/certifi/) installiert sein. Sie können den folgenden Python-Befehl über die Bash-Aufforderung verwenden:
 
@@ -181,7 +181,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
 1. Melden Sie sich bei der Azure Stack-Umgebung an, indem Sie den Befehl `az login` ausführen. Sie können sich entweder als Benutzer oder als [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects) an der Azure Stack-Umgebung anmelden. 
 
     * AAD-Umgebungen
-      * Anmeldung als *Benutzer*: Sie können entweder den Benutzernamen und das Kennwort direkt im Befehl `az login` eingeben oder die Authentifizierung über einen Browser ausführen. Sie müssen das letztgenannte Verfahren wählen, wenn für Ihr Konto mehrstufige Authentifizierung (Multi-Factor Authentication) aktiviert ist.
+      * Anmelden als *Benutzer*: Sie können entweder den Benutzernamen und das Kennwort direkt im Befehl `az login` eingeben oder die Authentifizierung über einen Browser ausführen. Sie müssen das letztgenannte Verfahren wählen, wenn für Ihr Konto mehrstufige Authentifizierung (Multi-Factor Authentication) aktiviert ist.
 
       ```azurecli
       az login \
@@ -192,7 +192,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
       > [!NOTE]
       > Wenn für Ihr Benutzerkonto die mehrstufige Authentifizierung aktiviert ist, können Sie den Befehl `az login command` verwenden, ohne den Parameter `-u` anzugeben. Durch die Ausführung des Befehls erhalten Sie eine URL und einen Code für die Authentifizierung.
    
-      * Anmeldung als *Dienstprinzipal*: [Erstellen Sie einen Dienstprinzipal über das Azure-Portal](azure-stack-create-service-principals.md) oder die CLI, und weisen Sie ihm eine Rolle zu, bevor Sie sich anmelden. Melden Sie sich anschließend mit dem folgenden Befehl an:
+      * Melden Sie sich als *Dienstprinzipal* an: [Erstellen Sie einen Dienstprinzipal über das Azure-Portal](azure-stack-create-service-principals.md) oder die CLI, und weisen Sie ihm eine Rolle zu, bevor Sie sich anmelden. Melden Sie sich anschließend mit dem folgenden Befehl an:
 
       ```azurecli
       az login \
@@ -242,6 +242,6 @@ Beachten Sie bei der Verwendung der CLI in Azure Stack folgende bekannte Problem
 
 [Bereitstellen von Vorlagen mit der Azure CLI](azure-stack-deploy-template-command-line.md)
 
-[Aktivieren der Azure CLI für Azure Stack-Benutzer (Betreibern)](..\azure-stack-cli-admin.md)
+[Aktivieren der Azure CLI für Azure Stack-Benutzer (Betreibern)](../azure-stack-cli-admin.md)
 
 [Verwalten von Benutzerberechtigungen](azure-stack-manage-permissions.md)
