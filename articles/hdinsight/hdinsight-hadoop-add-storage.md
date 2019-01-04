@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a86a965a746ed659b73c359ee44fb9be250aae97
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015754"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714282"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
 Erfahren Sie, wie Sie Skriptaktionen verwenden, um HDInsight zusätzliche Azure-Speicherkonten hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen Linux-basierten HDInsight-Cluster ein Speicherkonto hinzu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlichen Speichers zu einem Cluster, nachdem es erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka und anderen](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="how-it-works"></a>So funktioniert's
@@ -45,7 +45,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 * Beendet die Dienste [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) und [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) und startet sie neu. Durch das Beenden und Starten dieser Dienste wird ihnen die Verwendung des neuen Speicherkontos ermöglicht.
 
-> [!WARNING]
+> [!WARNING]  
 > Die Verwendung eines Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
 
 ## <a name="the-script"></a>Das Skript
@@ -60,7 +60,7 @@ __Anforderungen__:
 
 Das Skript kann über das Azure-Portal, über Azure PowerShell oder über die klassische Azure-Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie im Dokument [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Verwenden Sie beim Ausführen der Schritte im Anpassungsdokument die folgenden Informationen, um dieses Skript anzuwenden:
 >
 > * Ersetzen Sie alle Beispielskriptaktions-URIs durch den URI für dieses Skript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)).
@@ -85,14 +85,14 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$storageAccountName.blob.core.windows.net"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Legen Sie `$clusterName` auf den Namen des HDInsight-Clusters fest. Legen Sie `$storageAccountName` auf den Namen des Speicherkontos fest. Geben Sie bei der entsprechenden Aufforderung das Anmeldekonto (Administrator) und für den Cluster das entsprechende Kennwort ein.
 
 ```Bash
 curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Legen Sie `$PASSWORD` auf das Kennwort des Anmeldekontos (Administrator) für den Cluster fest. Legen Sie `$CLUSTERNAME` auf den Namen des HDInsight-Clusters fest. Legen Sie `$STORAGEACCOUNTNAME` auf den Namen des Speicherkontos fest.
 >
 > Dieses Beispiel verwendet [curl (https://curl.haxx.se/)](https://curl.haxx.se/)) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/)) zum Abrufen und Analysieren von JSON-Daten.
@@ -132,14 +132,14 @@ Um dieses Problem zu umgehen, müssen Sie den vorhandenen Eintrag für das Speic
 
 Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, könnten Sie eine schlechte Leistung feststellen. Der Zugriff auf Daten in einer anderen Region ist mit Netzwerkdatenverkehr außerhalb des regionalen Azure-Rechenzentrums und über das öffentliche Internet verbunden, was zu Latenz führen kann.
 
-> [!WARNING]
+> [!WARNING]  
 > Die Verwendung eines Speicherkontos in einer anderen Region als dem HDInsight-Cluster wird nicht unterstützt.
 
 ### <a name="additional-charges"></a>Zusätzliche Gebühren
 
 Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, fallen Ihnen möglicherweise zusätzliche Ausgangsgebühren in Ihrer Azure-Abrechnung auf. Eine Ausgangsgebühr wird fällig, wenn Daten ein regionales Rechenzentrum verlassen. Diese Gebühr fällt auch dann an, wenn das Ziel des Datenverkehrs ein anderes Azure-Rechenzentrum in einer anderen Region ist.
 
-> [!WARNING]
+> [!WARNING]  
 > Die Verwendung eines Speicherkontos in einer anderen Region als dem HDInsight-Cluster wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
