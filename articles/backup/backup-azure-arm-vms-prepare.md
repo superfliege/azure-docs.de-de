@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d24b2773aa056b33a4067d5d84677d186d25b195
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422795"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255073"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Vorbereiten der Sicherung virtueller Azure-Computer
 
@@ -34,12 +34,12 @@ Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit d
 
 ## <a name="supported-operating-systems-for-backup"></a>Unterstützte Betriebssystems für die Sicherung
 
- * **Linux**: Azure Backup unterstützt [eine Liste mit von Azure empfohlenen Distributionen](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (mit Ausnahme von CoreOS Linux und 32-Bit-Betriebssystem). Eine Liste mit den Linux-Betriebssystemen, die die Dateiwiederherstellung unterstützen, finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md#for-linux-os).
+ * **Linux:** Azure Backup unterstützt [eine Reihe der von Azure unterstützten Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (mit Ausnahme von CoreOS Linux und 32-Bit-Betriebssystemen). Eine Liste mit den Linux-Betriebssystemen, die die Dateiwiederherstellung unterstützen, finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md#for-linux-os).
 
     > [!NOTE]
     > Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Allerdings werden diese Distributionen nicht unterstützt.
     >
- * **Windows Server**, **Windows-Client**: Versionen vor Windows Server 2008 R2 oder Windows 7 werden nicht unterstützt.
+ * **Windows Server**, **Windows-Client**:  Versionen vor Windows Server 2008 R2 oder Windows 7 werden nicht unterstützt.
 
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
@@ -177,14 +177,14 @@ Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtu
 
 Die folgenden Informationen werden für Situationen bereitgestellt, in denen Sie *keinen* in Azure Marketplace erstellten virtuellen Computer verwenden. **Angenommen, Sie haben einen virtuellen Computer aus einem lokalen Rechenzentrum migriert. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.**
 
-**Hinweis:** Nach der Installation des VM-Agents müssen Sie Azure PowerShell verwenden, um auch die ProvisionGuestAgent-Eigenschaft zu aktualisieren, damit Azure weiß, dass der Agent auf dem virtuellen Computer installiert ist.
+**Hinweis**: Nach der Installation des VM-Agents müssen Sie Azure PowerShell verwenden, um die „ProvisionGuestAgent“-Eigenschaft zu aktualisieren, damit Azure weiß, dass der Agent auf dem virtuellen Computer installiert ist.
 
 Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, vergewissern Sie sich mithilfe der folgenden Tabelle, dass der Azure-VM-Agent auf dem virtuellen Computer ordnungsgemäß installiert ist. Die Tabelle enthält weitere Informationen zum VM-Agent für virtuelle Windows- und Linux-Computer.
 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
 | Installieren des VM-Agent |Laden Sie den [Agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. |<li> Installieren Sie den neuesten [Linux-Agent](../virtual-machines/extensions/agent-linux.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu installieren.  |
-| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu aktualisieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu aktualisieren.<br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu aktualisieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt über GitHub zu aktualisieren.<br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation |<li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\WindowsAzure\Packages*. <li>Dieser Ordner enthält die Datei "WaAppAgent.exe".<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |N/V |
 
 ### <a name="backup-extension"></a>Backup-Erweiterung
@@ -238,7 +238,7 @@ Führen Sie die folgenden Schritte aus, um einen HTTP-Proxy für die Kommunikati
 > [!NOTE]
 > In diesen Schritten werden spezifische Namen und Werte für dieses Beispiel verwendet. Verwenden Sie beim Eingeben bzw. Ausschneiden und Einfügen von Informationen in Ihren Code die Namen und Werte für Ihre Bereitstellung.
 
-#### <a name="step-1-configure-outgoing-network-connections"></a>Schritt 1. Ausgehende Netzwerkverbindungen konfigurieren
+#### <a name="step-1-configure-outgoing-network-connections"></a>Schritt 1: Ausgehende Netzwerkverbindungen konfigurieren 
 ###### <a name="for-windows-machines"></a>Für Windows-Computer
 Mit diesem Verfahren wird die Proxyserverkonfiguration für das lokale Systemkonto eingerichtet.
 

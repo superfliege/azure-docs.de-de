@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a9b4de73c04d7c7c753f007c02c775366b882e81
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 39b5a7a99f56c33aee0b0db9211f4f45a058f418
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047308"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094337"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopieren von Daten aus Spark mithilfe von Azure Data Factory 
 
@@ -42,12 +42,12 @@ Folgende Eigenschaften werden für den mit Spark verknüpften Dienst unterstütz
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Spark** festgelegt werden. | Ja |
-| host | IP-Adresse oder Hostname des Spark-Servers  | Ja |
-| port | Der TCP-Port, den der Spark-Server verwendet, um auf Clientverbindungen zu lauschen. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Ja |
-| serverType | Der Typ des Spark-Servers. <br/>Zulässige Werte: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nein  |
-| thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte: **Binary**, **SASL**, **HTTP** | Nein  |
-| authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Spark-Server. <br/>Zulässige Werte: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Spark** | JA |
+| host | IP-Adresse oder Hostname des Spark-Servers  | JA |
+| port | Der TCP-Port, den der Spark-Server verwendet, um auf Clientverbindungen zu lauschen. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | JA |
+| serverType | Der Typ des Spark-Servers. <br/>Zulässige Werte sind: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nein  |
+| thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte sind: **Binary**, **SASL**, **HTTP** | Nein  |
+| authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Spark-Server. <br/>Zulässige Werte sind: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | JA |
 | username | Der Benutzername für den Zugriff auf den Spark-Server.  | Nein  |
 | password | Das Kennwort für den Benutzer. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 | httpPath | Die Teil-URL, die dem Spark-Server entspricht.  | Nein  |
@@ -83,7 +83,12 @@ Folgende Eigenschaften werden für den mit Spark verknüpften Dienst unterstütz
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Spark-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Spark die „type“-Eigenschaft des Datasets auf **SparkObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Spark die „type“-Eigenschaft des Datasets auf **SparkObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SparkObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -95,7 +100,8 @@ Legen Sie zum Kopieren von Daten aus Spark die „type“-Eigenschaft des Datase
         "linkedServiceName": {
             "referenceName": "<Spark linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -104,14 +110,14 @@ Legen Sie zum Kopieren von Daten aus Spark die „type“-Eigenschaft des Datase
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Spark-Quelle unterstützt werden.
 
-### <a name="sparksource-as-source"></a>SparkSource als Quelle
+### <a name="spark-as-source"></a>Spark als Quelle
 
 Legen Sie zum Kopieren von Daten aus Spark den Quelltyp in der Kopieraktivität auf **SparkSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **SparkSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SparkSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

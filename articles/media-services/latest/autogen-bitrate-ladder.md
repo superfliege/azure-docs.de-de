@@ -1,6 +1,6 @@
 ---
-title: Verwenden des Standard-Encoders in Azure Media Services zum Codieren von Videos mithilfe einer automatisch generierten Reihe von Bitraten-/Auflösungs-Paaren | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie Sie in Media Services mit dem Standard-Encoder ein Eingabevideo mithilfe einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren auf Basis der eingegebenen Auflösung und Bitrate codieren können. Eingegebene Auflösung und Bitrate werden nie überschritten. Ist die Eingabe beispielsweise 720p bei 3MBit/s, bleibt die Ausgabe bestenfalls bei 720p, und es beginnt mit niedrigeren Raten als 3MBit/s.
+title: 'Codieren von Videos mit dem Standard-Encoder in Media Services: Azure | Microsoft-Dokumentation'
+description: In diesem Thema wird gezeigt, wie Sie in Media Services mit dem Standard-Encoder ein Eingabevideo mithilfe einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren auf Basis der eingegebenen Auflösung und Bitrate codieren können.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: ec1b4b88e5b9639c3ee9debbd8ac7d48544344dc
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: 976e1ea013c6a30615bdc742ed79e76ec35258a1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378957"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132805"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren
 

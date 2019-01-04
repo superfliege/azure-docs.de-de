@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229638"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725147"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps
 
@@ -128,13 +128,13 @@ Um der vom System zugewiesenen verwalteten Identität Ihrer Logik-App den Zugrif
 
 1. Öffnen Sie im Azure-Portal die Azure-Ressource, wo Sie den Zugriff für Ihre verwaltete Identität zuweisen möchten. 
 
-1. Wählen Sie im Ressourcenmenü **Zugriffssteuerung (IAM)** und dann **Hinzufügen** aus. 
+1. Wählen Sie im Ressourcenmenü **Zugriffssteuerung (IAM)** und dann **Rollenzuweisung hinzufügen** aus. 
 
-   ![Hinzufügen von Berechtigungen](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![Rollenzuweisung hinzufügen](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. Wählen Sie unter **Berechtigungen hinzufügen** die **Rolle** aus, die Sie für die Identität wünschen. 
+1. Wählen Sie unter **Rolle hinzufügen** die **Rolle** aus, die Sie für die Identität wünschen. 
 
-1. Wählen Sie in der Eigenschaft **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus, falls sie nicht bereits ausgewählt ist.
+1. Wählen Sie in der Eigenschaft **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus, falls sie nicht bereits ausgewählt ist.
 
 1. Geben Sie im Feld **Auswählen** beginnend mit dem ersten Zeichen des Namens Ihrer Logik-App den Namen Ihrer Logik-App ein. Wenn Ihre Logik-App angezeigt wird, wählen Sie die Logik-App aus.
 

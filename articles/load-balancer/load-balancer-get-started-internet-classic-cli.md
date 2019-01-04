@@ -1,22 +1,24 @@
 ---
-title: Erstellen eines Load Balancers mit Internetzugriff – klassische Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Erstellen eines Load Balancers mit Internetzugriff – klassische Azure-Befehlszeilenschnittstelle
+titlesuffix: Azure Load Balancer
 description: Hier erfahren Sie, wie Sie mithilfe der klassischen Azure-Befehlszeilenschnittstelle im Rahmen des klassischen Bereitstellungsmodells einen Load Balancer mit Internetzugriff erstellen.
 services: load-balancer
 documentationcenter: na
 author: genlin
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a0640e3d0b7ccc11ee5603a9b1f21daf53318266
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: fa89117e85bc3d3c9664e6aa037fac923b7432ce
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740500"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135745"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-classic-cli"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff (klassisch) mithilfe der klassischen Azure-Befehlszeilenschnittstelle
 

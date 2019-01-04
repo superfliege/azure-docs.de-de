@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: ef805ff82b8f44f4caeeafdc8867d851f4501894
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c0b1ed5aff7f22000a179983396239c24d21a311
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852651"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101329"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Tutorial: Entwickeln einer ASP.NET MVC-Webanwendung mit Azure Cosmos DB unter Verwendung der Vorschauversion des .NET SDK 
 
@@ -47,7 +47,7 @@ In diesem Lernprogramm wird Folgendes behandelt:
 
 Vergewissern Sie sich zunächst, dass Sie über die folgenden Ressourcen verfügen:
 
-* **Ein aktives Azure-Konto:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+* **Ein aktives Azure-Konto**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -71,7 +71,7 @@ Im nächsten Abschnitt erstellen Sie eine neue ASP.NET MVC-Anwendung.
 
 1. Wählen Sie in Visual Studio im Menü **Datei** die Option **Neu** und anschließend **Projekt** aus. Das Dialogfeld **Neues Projekt** wird angezeigt.
 
-2. Erweitern Sie im Fenster **Neues Projekt** die installierten**** Vorlagen, erweitern Sie **Visual C#** und **Web**, und wählen Sie anschließend **ASP.NET-Webanwendung** aus. 
+2. Erweitern Sie im Fenster **Neues Projekt** die installierten**Vorlagen**, erweitern Sie **Visual C#** und **Web**, und wählen Sie anschließend **ASP.NET-Webanwendung** aus. 
 
    ![Erstellen eines neuen ASP.NET-Webanwendungsprojekts](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-new-project-dialog.png)
 
@@ -93,7 +93,7 @@ Nachdem Sie nun über den Großteil des ASP.NET MVC-Frameworkcodes verfügen, de
    
    ![Screenshot der Kontextmenüoptionen für das Webanwendungsprojekt im Projektmappen-Explorer mit Hervorhebung von „NuGet-Pakete verwalten“](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-manage-nuget.png)
    
-2. Das Dialogfeld **NuGet-Pakete verwalten** wird geöffnet. Geben Sie im NuGet-Feld **Durchsuchen** die Zeichenfolge **Microsoft.Azure.Cosmos** ein. Installieren Sie die in den Ergebnissen enthaltene Version 3.0.0.1-preview von **Microsoft.Azure.Cosmos**. Dadurch werden das Azure Cosmos DB-Paket sowie alle Abhängigkeiten (etwa „Newtonsoft.Json“) heruntergeladen und installiert. Wählen Sie im Vorschaufenster**** die Option **OK** und im Fenster **Zustimmung zur Lizenz** die Option **Ich stimme zu** aus, um die Installation abzuschließen.
+2. Das Dialogfeld **NuGet-Pakete verwalten** wird geöffnet. Geben Sie im NuGet-Feld **Durchsuchen** die Zeichenfolge **Microsoft.Azure.Cosmos** ein. Installieren Sie die in den Ergebnissen enthaltene Version 3.0.0.1-preview von **Microsoft.Azure.Cosmos**. Dadurch werden das Azure Cosmos DB-Paket sowie alle Abhängigkeiten (etwa „Newtonsoft.Json“) heruntergeladen und installiert. Wählen Sie im **Vorschaufenster**die Option **OK** und im Fenster **Zustimmung zur Lizenz** die Option **Ich stimme zu** aus, um die Installation abzuschließen.
    
    Alternativ können Sie die Paketverwaltungskonsole verwenden, um das NuGet-Paket zu installieren. Wählen Sie dafür im Menü **Extras** die Option **NuGet-Paket-Manager** und anschließend **Paket-Manager-Konsole** aus. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein:
    
@@ -113,7 +113,7 @@ Fügen Sie der MVC-Anwendung als Nächstes die Modelle, Ansichten und Controller
 
 ### <a name="add-a-model"></a> Hinzufügen eines Modells
 
-1. Klicken Sie im**** Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Modelle**, und wählen Sie **Hinzufügen** > **Klasse** aus. Das Dialogfeld **Neues Element hinzufügen** wird angezeigt.
+1. Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Modelle**, und wählen Sie **Hinzufügen** > **Klasse** aus. Das Dialogfeld **Neues Element hinzufügen** wird angezeigt.
 
 1. Nennen Sie die neue Klasse **TodoItem.cs**, und wählen Sie **Hinzufügen** aus. 
 
@@ -125,7 +125,7 @@ Fügen Sie der MVC-Anwendung als Nächstes die Modelle, Ansichten und Controller
 
 ### <a name="add-a-controller"></a>Hinzufügen eines Controllers
 
-1. Klicken Sie im**** Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie **Hinzufügen** > **Controller** aus. Das Dialogfeld **Gerüst hinzufügen** wird angezeigt.
+1. Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie **Hinzufügen** > **Controller** aus. Das Dialogfeld **Gerüst hinzufügen** wird angezeigt.
 
 1. Wählen Sie **MVC 5-Controller – Leer** und anschließend **Hinzufügen** aus.
 
@@ -149,7 +149,7 @@ Erstellen Sie als Nächstes die drei folgenden Ansichten:
 
 #### <a name="AddItemIndexView"></a>Hinzufügen einer Ansicht zum Auflisten von Elementen
 
-1. Erweitern Sie im**** Projektmappen-Explorer den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf den leeren Ordner **Item**, der zuvor beim Hinzufügen des Elements **ItemController** von Visual Studio erstellt wurde, und klicken Sie auf **Hinzufügen** und dann auf **Ansicht**.
+1. Erweitern Sie im**Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf den leeren Ordner **Item**, der zuvor beim Hinzufügen des Elements **ItemController** von Visual Studio erstellt wurde, und klicken Sie auf **Hinzufügen** und dann auf **Ansicht**.
    
    ![Screenshot des Projektmappen-Explorers, in dem der von Visual Studio erstellte Ordner "Element" gezeigt wird und die Befehle "Hinzufügen" > "Ansicht" hervorgehoben sind](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view.png)
 
@@ -168,7 +168,7 @@ Erstellen Sie als Nächstes die drei folgenden Ansichten:
 
 Gehen Sie wie folgt vor, um eine neue Ansicht für die Elementerstellung zu erstellen:
 
-1. Klicken Sie im**** Projektmappen-Explorer mit der rechten Maustaste wieder auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht** aus.
+1. Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste wieder auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht** aus.
 
 1. Aktualisieren Sie im Dialogfeld **Ansicht hinzufügen** folgende Werte:
    
@@ -182,7 +182,7 @@ Gehen Sie wie folgt vor, um eine neue Ansicht für die Elementerstellung zu erst
 
 Fügen Sie abschließend eine Ansicht für die Elementbearbeitung hinzu:
 
-1. Klicken Sie im**** Projektmappen-Explorer mit der rechten Maustaste wieder auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht** aus.
+1. Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste wieder auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht** aus.
 
 1. Gehen Sie im Dialogfeld **Ansicht hinzufügen** folgendermaßen vor:
    
@@ -194,7 +194,7 @@ Fügen Sie abschließend eine Ansicht für die Elementbearbeitung hinzu:
 
 Schließen Sie nach Abschluss dieses Vorgangs alle CSHTML-Dokumente in Visual Studio. Sie werden erst später benötigt.
 
-## <a name="connect-to-cosmosdb"></a>Schritt 5: Herstellen einer Verbindung mit Azure Cosmos DB 
+## <a name="connect-to-cosmosdb"></a>Schritt 5: Herstellen der Verbindung mit Azure Cosmos DB 
 
 Nachdem Sie sich nun um alle grundlegenden MVC-Elemente gekümmert haben, können Sie den Code für die Verbindungsherstellung mit Azure Cosmos DB sowie für die Ausführung von CRUD-Vorgängen hinzufügen. 
 
@@ -202,7 +202,7 @@ Nachdem Sie sich nun um alle grundlegenden MVC-Elemente gekümmert haben, könne
 
 Hier muss zunächst eine Klasse hinzugefügt werden, die die Logik zur Verbindungsherstellung mit bzw. zur Verwendung von Azure Cosmos DB enthält. In diesem Tutorial wird die entsprechende Logik in einer Klasse namens „TodoItemService.cs“ gekapselt. Dieser Code liest die Azure Cosmos DB-Endpunktwerte aus der Konfigurationsdatei und führt CRUD-Vorgänge wie etwa das Auflisten unvollständiger Elemente sowie das Erstellen, Bearbeiten und Löschen der Elemente aus. 
 
-1. Erstellen Sie über den**** Projektmappen-Explorer unter Ihrem Projekt einen neuen Ordner namens **Services**.
+1. Erstellen Sie über den**Projektmappen-Explorer** unter Ihrem Projekt einen neuen Ordner namens **Services**.
 
 1. Klicken Sie mit der rechten Maustaste auf den Ordner **Services**, und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse **TodoItemService**, und wählen Sie **Hinzufügen** aus.
 
@@ -267,7 +267,7 @@ Gehen Sie wie folgt vor, um die Anwendung lokal zu testen:
 ## <a name="deploy-the-application-to-azure"></a>Schritt 7: Bereitstellen der Anwendung 
 Nachdem die vollständige Anwendung korrekt mit Azure Cosmos DB zusammenarbeitet, stellen wir diese Web-App in Azure App Service bereit.  
 
-1. Klicken Sie zum Veröffentlichen der Anwendung im**** Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
+1. Klicken Sie zum Veröffentlichen der Anwendung im**Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
    
 2. Wählen Sie im Dialogfeld **Veröffentlichen** die Option **Microsoft Azure App Service** und anschließend **Neu erstellen** aus, um ein App Service-Profil zu erstellen, oder wählen Sie **Vorhandenes auswählen** aus, um ein vorhandenes Profil zu verwenden.
 
@@ -288,8 +288,8 @@ In diesem Tutorial haben Sie gelernt, wie Sie eine ASP.NET MVC-Webanwendung erst
 > [Erstellen einer Java-Webanwendung mithilfe von Azure Cosmos DB und der SQL-API]( sql-api-java-application.md)
 
 
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-todo-app

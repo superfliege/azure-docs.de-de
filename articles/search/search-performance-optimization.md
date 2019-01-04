@@ -1,6 +1,6 @@
 ---
-title: Überlegungen zur Leistung und Optimierung von Azure Search | Microsoft Docs
-description: Optimieren der Leistung von Azure Search und Konfigurieren der optimalen Skalierung
+title: Überlegungen zur Leistung und Optimierung von Azure Search – Azure Search
+description: Lernen Sie Techniken und bewährte Methoden zum Optimieren der Leistung von Azure Search und zum Konfigurieren der optimalen Skalierung kennen.
 author: LiamCavanagh
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: 89c0352723f1ed00784250b566902028af853d10
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 0a98e7f05e766d47a5ea9293409a74a6fafbf837
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797762"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310222"
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Überlegungen zur Leistung und Optimierung von Azure Search
 Eine hervorragende Suchfunktion ist ein Schlüssel zum Erfolg für viele mobile und Webanwendungen. Vom Immobilienmarkt über Gebrauchtwagenmärkte bis hin zu Onlinekatalogen – schnelle Suchvorgänge und relevante Ergebnisse sind sehr wichtig für die Kundenzufriedenheit. Dieses Dokument stellt bewährte Methoden vor, mit deren Hilfe Sie optimal von Azure Search profitieren können. Dies gilt insbesondere für Szenarien mit hohen Anforderungen an die Skalierbarkeit, die Unterstützung mehrerer Sprachen oder benutzerdefinierte Rangfolgen.  Darüber hinaus beschreibt dieses Dokument interne Merkmale und erläutert verschiedene Vorgehensweisen, die in realen Kunden-Apps effektiv funktionieren.
@@ -42,8 +43,8 @@ Beim Erstellen dieser Testworkloads müssen Sie einige Merkmale von Azure Search
 ## <a name="scaling-azure-search-for-high-query-rates-and-throttled-requests"></a>Skalieren von Azure Search für hohe Abfrageraten und gedrosselte Anforderungen
 Wenn Sie zu viele gedrosselte Anforderungen empfangen oder die Ziellatenzraten aufgrund einer erhöhten Abfragelast überschreiten, können Sie die Latenzraten auf zwei Arten senken:
 
-1. **Erhöhen der Anzahl der Replikate:** Ein Replikat ist eine Kopie Ihrer Daten und ermöglicht Azure Search, die Anforderungslast auf die verschiedenen Kopien zu verteilen.  Der gesamte Lastenausgleich und die Replikation der Daten auf die Kopien werden von Azure Search verwaltet. Sie können die Anzahl der Replikate, die Ihrem Dienst zugeordnet sind, jederzeit ändern.  In einem Suchdienst mit Tarif „Standard“ können Sie bis zu 12 Replikate zuordnen, im Tarif „Basic“ bis zu drei. Replikate können über das [Azure-Portal](search-create-service-portal.md) oder mithilfe von [PowerShell](search-manage-powershell.md) angepasst werden.
-2. **Wechseln zu einem höheren Search-Tarif:** Für Azure Search stehen [verschiedene Tarife](https://azure.microsoft.com/pricing/details/search/) zur Verfügung, von denen jeder eine andere Leistungsstufe bietet.  Zuweilen treten so viele Abfragen auf, dass Ihr aktueller Tarif keine ausreichend niedrigen Latenzraten mehr bieten kann, selbst wenn Sie bereits die maximale Anzahl von Replikaten zugewiesen haben.  In diesem Fall sollten Sie in Erwägung ziehen, in einen höheren Tarif zu wechseln, wie z.B. zu Azure Search S3, der sich sehr gut für Szenarien mit einer großen Anzahl von Dokumenten und extrem hohen Abfrageworkloads eignet.
+1. **Erhöhen der Anzahl der Replikate:**  Ein Replikat ist eine Kopie Ihrer Daten und ermöglicht Azure Search, die Anforderungslast auf die verschiedenen Kopien zu verteilen.  Der gesamte Lastenausgleich und die Replikation der Daten auf die Kopien werden von Azure Search verwaltet. Sie können die Anzahl der Replikate, die Ihrem Dienst zugeordnet sind, jederzeit ändern.  In einem Suchdienst mit Tarif „Standard“ können Sie bis zu 12 Replikate zuordnen, im Tarif „Basic“ bis zu drei. Replikate können über das [Azure-Portal](search-create-service-portal.md) oder mithilfe von [PowerShell](search-manage-powershell.md) angepasst werden.
+2. **Wechseln zu einem höheren Search-Tarif:**  Für Azure Search stehen [verschiedene Tarife](https://azure.microsoft.com/pricing/details/search/) zur Verfügung, von denen jeder eine andere Leistungsstufe bietet.  Zuweilen treten so viele Abfragen auf, dass Ihr aktueller Tarif keine ausreichend niedrigen Latenzraten mehr bieten kann, selbst wenn Sie bereits die maximale Anzahl von Replikaten zugewiesen haben.  In diesem Fall sollten Sie in Erwägung ziehen, in einen höheren Tarif zu wechseln, wie z.B. zu Azure Search S3, der sich sehr gut für Szenarien mit einer großen Anzahl von Dokumenten und extrem hohen Abfrageworkloads eignet.
 
 ## <a name="scaling-azure-search-for-slow-individual-queries"></a>Skalieren von Azure Search für langsame Einzelabfragen
 Ein weiterer Grund für hohe Latenzraten kann darin liegen, dass eine einzelne Abfrage zu lange dauert.  In diesem Fall lässt sich die Latenzrate nicht durch Hinzufügen weiterer Replikate verbessern.  Für diesen Fall sind zwei Optionen verfügbar:
@@ -51,8 +52,8 @@ Ein weiterer Grund für hohe Latenzraten kann darin liegen, dass eine einzelne A
 1. **Erhöhen der Anzahl der Partitionen:** Eine Partition ist ein Mechanismus, mit dem Ihre Daten auf zusätzliche Ressourcen aufgeteilt werden.  Wenn Sie eine zweite Partition hinzufügen, werden Ihre Daten und der Index in zwei Teile geteilt.  Bei einer dritten Partition werden Daten und Index in drei Teile geteilt usw.  Dies führt auch dazu, dass aufgrund der Parallelisierung langsame Abfragen in einigen Fällen schneller ausgeführt werden.  Es gibt einige Beispiele dafür, dass diese Parallelisierung extrem gut funktioniert, etwa bei Abfragen mit geringer Selektivität.  Hierbei handelt es sich um Abfragen, denen viele Dokumente entsprechen, oder um Abfragen, bei denen aufgrund von Facets Zählungen über eine große Anzahl von Dokumenten erfolgen müssen.  Da für die Bewertung der Relevanz von Dokumenten oder die Ermittlung der Anzahl von Dokumenten ein hoher Berechnungsaufwand erforderlich ist, kann das Hinzufügen weiterer Partitionen für zusätzliche Berechnungsressourcen sorgen.  
    
    In einem Suchdienst mit Tarif „Standard“ können maximal 12 Partitionen eingerichtet werden, im Tarif „Basic“ nur eine.  Partitionen können über das [Azure-Portal](search-create-service-portal.md) oder mithilfe von [PowerShell](search-manage-powershell.md) angepasst werden.
-2. **Begrenzen von Feldern mit hoher Kardinalität:** Ein Feld mit hoher Kardinalität ist ein Feld, in dem Facets oder Filter verwendet werden können und das eine beträchtliche Anzahl von eindeutigen Werten besitzt. Daher erfordert die Berechnung von Ergebnissen für dieses Feld viele Ressourcen.   Wenn Sie z.B. ein Feld mit einer Produkt-ID oder einer Beschreibung zur Verwendung von Facets oder Filtern einrichten, ist die Kardinalität hoch, da die meisten Werte für jedes Dokument eindeutig sind. Verwenden Sie so wenig Felder mit Kardinalität wie irgend möglich.
-3. **Wechseln zu einem höheren Search-Tarif:** Der Wechsel in einen anderen Azure Search-Tarif ist eine weitere Möglichkeit, die Leistung langsamer Abfragen zu verbessern.  Jeder höhere Tarif bietet auch schnellere CPUs und mehr Arbeitsspeicher, was sich positiv auf die Abfrageleistung auswirken kann.
+2. **Begrenzen von Feldern mit hoher Kardinalität:** Ein Feld mit hoher Kardinalität ist ein Feld, in dem Facetten oder Filter verwendet werden können und das eine beträchtliche Anzahl von eindeutigen Werten besitzt. Daher erfordert die Berechnung von Ergebnissen für dieses Feld viele Ressourcen.   Wenn Sie z.B. ein Feld mit einer Produkt-ID oder einer Beschreibung zur Verwendung von Facets oder Filtern einrichten, ist die Kardinalität hoch, da die meisten Werte für jedes Dokument eindeutig sind. Verwenden Sie so wenig Felder mit Kardinalität wie irgend möglich.
+3. **Wechseln zu einem höheren Search-Tarif:**  Der Wechsel in einen anderen Azure Search-Tarif ist eine weitere Möglichkeit, die Leistung langsamer Abfragen zu verbessern.  Jeder höhere Tarif bietet auch schnellere CPUs und mehr Arbeitsspeicher, was sich positiv auf die Abfrageleistung auswirken kann.
 
 ## <a name="scaling-for-availability"></a>Skalieren zur Erhöhung der Verfügbarkeit
 Replikate können nicht nur zur Verringerung von Abfragelatenzen beitragen, sondern auch Hochverfügbarkeit ermöglichen.  Mit einem einzigen Replikat müssen Sie mit regelmäßigen Ausfallzeiten aufgrund von Serverneustarts nach Softwareupdates oder anderen Wartungsereignissen rechnen.  Daher müssen Sie überlegen, ob Ihre Anwendung Hochverfügbarkeit sowohl für Suchvorgänge (Abfragen) als auch für Schreibvorgänge (Indizierungsereignisse) erfordert.  Azure Search bietet SLA-Optionen in allen kostenpflichtigen Tarifen mit den folgenden Attributen:

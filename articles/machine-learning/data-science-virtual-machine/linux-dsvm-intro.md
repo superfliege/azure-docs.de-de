@@ -1,10 +1,12 @@
 ---
-title: Bereitstellen einer Linux CentOS Data Science-VM in Azure | Microsoft-Dokumentation
+title: Erstellen einer CentOS Linux Data Science Virtual Machine
+titleSuffix: Azure
 description: Konfigurieren und erstellen Sie eine Linux Data Science Virtual Machine in Azure, um Analysen und Machine Learning-Vorgänge durchzuführen.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -14,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: ca3a0e9a8c63ddc9a5c2ca34faffc683d0324321
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 253934d450619ca67e429fbf396a5fed5b71a267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262552"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081862"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Bereitstellen einer Linux CentOS Data Science-VM in Azure
 
@@ -36,9 +38,9 @@ Die Linux Data Science Virtual Machine ist ein auf CentOS basierender virtueller
 * PostgreSQL-Datenbank
 * Machine Learning-Tools
   * [Cognitive Toolkit](https://github.com/Microsoft/CNTK): Deep Learning-Softwaretoolkit von Microsoft Research.
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Ein schnelles Machine Learning-System, das verschiedene Verfahren unterstützt, wie z.B. Online, Hashing, Allreduce, Reductions, Learning2Search, Active und Interactive Learning.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Ein schnelles Machine Learning-System, das verschiedene Verfahren unterstützt, z.B. Online, Hashing, Allreduce, Reductions, Learning2Search, Active und Interactive Learning.
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Ein Tool, das eine schnelle und präzise Boosted Tree-Implementierung ermöglicht.
-  * [Rattle](https://togaware.com/rattle/) (R Analytical Tool To Learn Easily, R-Analysetool zum einfachen Lernen): Ein Tool, das die ersten Schritte von Datenanalysen und Machine Learning in R vereinfacht, indem eine GUI-basierte Datenuntersuchung und -modellierung mit automatischer R-Codegenerierung verwendet wird.
+  * [Rattle](https://togaware.com/rattle/), (R Analytical Tool To Learn Easily, R-Analysetool zum einfachen Lernen): Ein Tool, das die ersten Schritte von Datenanalysen und Machine Learning in R vereinfacht. Es umfasst eine GUI-basierte Datenuntersuchung und -modellierung mit automatischer R-Codegenerierung.
 * Azure SDK in Java, Python, node.js, Ruby, PHP
 * Bibliotheken in R und Python zur Verwendung in Azure Machine Learning und anderen Azure-Diensten
 * Entwicklungstools und -editoren (RStudio, PyCharm, IntelliJ, Emacs, gedit, vi)
@@ -63,7 +65,7 @@ Ein [Ubuntu](dsvm-ubuntu-intro.md)-Image ist ebenfalls verfügbar, das viele gle
 Bevor Sie eine Linux Data Science Virtual Machine erstellen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**: Informationen zum Bezug finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/).
-* **Ein Azure-Speicherkonto**: Informationen zur Erstellung finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-quickstart-create-account.md). Alternativ dazu kann das Speicherkonto im Rahmen des Erstellungsprozesses der VM erstellt werden, wenn Sie kein vorhandenes Konto verwenden möchten.
+* **Ein Azure-Speicherkonto**: Informationen zur Erstellung eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-quickstart-create-account.md). Alternativ dazu kann das Speicherkonto im Rahmen des Erstellungsprozesses der VM erstellt werden, wenn Sie kein vorhandenes Konto verwenden möchten.
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Erstellen Ihrer Linux Data Science Virtual Machine
 Es folgen die Schritte zum Erstellen einer Instanz der Linux Data Science Virtual Machine:
@@ -74,12 +76,12 @@ Es folgen die Schritte zum Erstellen einer Instanz der Linux Data Science Virtua
    
    a. **Grundlagen**:
    
-   * **Name**: Name des Data Science-Servers, den Sie erstellen.
+   * **Name**: Der Name des Data Science-Servers, den Sie erstellen.
    * **Benutzername**: Die ID für die erste Kontoanmeldung.
    * **Kennwort**: Das erste Kontokennwort (Sie können anstelle eines Kennworts einen öffentlichen SSH-Schlüssel verwenden).
-   * **Abonnement:** Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
+   * **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
    * **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
-   * **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise handelt es sich dabei um das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
+   * **Standort**: Wählen Sie das Datencenter aus, das am besten geeignet ist. Normalerweise handelt es sich dabei um das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
    
    b. **Größe**:
    
@@ -89,7 +91,7 @@ Es folgen die Schritte zum Erstellen einer Instanz der Linux Data Science Virtua
    
    * **Datenträgertyp**: Wählen Sie **Premium** aus, wenn Sie ein SSD (Solid State Drive) bevorzugen. Andernfalls wählen Sie **Standard**aus.
    * **Speicherkonto**: Sie können ein neues Azure-Speicherkonto in Ihrem Abonnement erstellen oder ein vorhandenes Konto an dem Standort verwenden, der im Schritt **Grundlagen** des Assistenten ausgewählt wurde.
-   * **Andere Parameter**: In den meisten Fällen verwenden Sie einfach die Standardeinstellungen. Bewegen Sie den Mauszeiger über den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch nicht standardmäßige Einstellungen verwenden möchten.
+   * **Weitere Parameter**: In den meisten Fällen verwenden Sie einfach die Standardwerte. Bewegen Sie den Mauszeiger über den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch nicht standardmäßige Einstellungen verwenden möchten.
    
    d. **Zusammenfassung**:
    
@@ -115,12 +117,12 @@ Die Linux-VM wird mit X2Go-Server bereits bereitgestellt und ist zum Akzeptieren
 1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
 1. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
-     * **Host:** Hostname oder IP-Adresse Ihrer Linux Data Science VM.
-     * **Anmeldung:** Benutzername für die Linux-VM.
-     * **SSH-Port:** Übernehmen Sie den Standardwert 22.
-     * **Sitzungstyp:** Ändern Sie den Wert in „XFCE“. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
-   * **Registerkarte „Medien“**: Sie können die Soundunterstützung und das Clientdrucken deaktivieren, wenn Sie diese Funktionen nicht benötigen.
-   * **Freigegebene Ordner:** Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
+     * **Host**: Der Hostname oder die IP-Adresse Ihrer Linux Data Science VM.
+     * **Anmeldung**: Der Benutzername für die Linux-VM.
+     * **SSH-Port**: Übernehmen Sie den Standardwert 22.
+     * **Sitzungstyp**: Ändern Sie den Wert in XFCE. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
+   * **Registerkarte „Medien“**: Sie können die Soundunterstützung und die Clientausgabe deaktivieren, wenn Sie diese Funktionen nicht benötigen.
+   * **Freigegebene Ordner**: Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
 
 Nachdem Sie sich bei der VM angemeldet haben, indem Sie entweder den SSH-Client oder den grafischen XFCE-Desktop über den X2Go-Client nutzen, können Sie die Tools verwenden, die auf der VM installiert und konfiguriert sind. Auf dem XFCE-Desktop können Sie Anwendungsmenü-Tastenkombinationen und Desktopsymbole für viele Tools anzeigen.
 
@@ -225,11 +227,11 @@ Weitere Informationen finden Sie unter [SQuirrel SQL](http://squirrel-sql.source
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Befehlszeilentools für den Zugriff auf Microsoft SQL Server
 Das ODBC-Treiberpaket für SQL Server verfügt auch über zwei Befehlszeilentools:
 
-**bcp:** Mit diesem Hilfsprogramm werden Daten per Massenkopiervorgang zwischen einer Instanz von Microsoft SQL Server und einer Datendatei in einem vom Benutzer angegebenen Format kopiert. Das Hilfsprogramm bcp kann zum Importieren großer Mengen an neuen Zeilen in SQL Server-Tabellen oder zum Exportieren von Daten aus Tabellen in Datendateien verwendet werden. Zum Importieren von Daten in eine Tabelle müssen Sie entweder eine Formatdatei verwenden, die für diese Tabelle erstellt wurde, oder die Struktur der Tabelle und die Arten von Daten verstehen, die für die Tabellenspalten gültig sind.
+**bcp**: Mit diesem Hilfsprogramm werden Daten per Massenkopiervorgang zwischen einer Instanz von Microsoft SQL Server und einer Datendatei in einem vom Benutzer angegebenen Format kopiert. Das Hilfsprogramm bcp kann zum Importieren großer Mengen an neuen Zeilen in SQL Server-Tabellen oder zum Exportieren von Daten aus Tabellen in Datendateien verwendet werden. Zum Importieren von Daten in eine Tabelle müssen Sie entweder eine Formatdatei verwenden, die für diese Tabelle erstellt wurde, oder die Struktur der Tabelle und die Arten von Daten verstehen, die für die Tabellenspalten gültig sind.
 
 Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**sqlcmd:** Mit dem Hilfsprogramm sqlcmd können Sie Transact-SQL-Anweisungen, Systemprozeduren und Skriptdateien an der Eingabeaufforderung eingeben. Für dieses Hilfsprogramm wird ODBC verwendet, um Transact-SQL-Batches auszuführen.
+**sqlcmd**: Mit dem Hilfsprogramm sqlcmd können Sie Transact-SQL-Anweisungen, Systemprozeduren und Skriptdateien an der Eingabeaufforderung eingeben. Für dieses Hilfsprogramm wird ODBC verwendet, um Transact-SQL-Batches auszuführen.
 
 Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
@@ -247,13 +249,13 @@ In R und Python sind Bibliotheken für den Zugriff auf Datenbanken verfügbar.
 So greifen Sie auf **Postgres**zu
 
 * Aus R: Verwenden Sie das Paket **RPostgreSQL**.
-* Aus Python: Verwenden Sie die Bibliothek **psycopg2** .
+* Aus Python: Verwenden Sie die Bibliothek **psycopg2**.
 
 ### <a name="azure-tools"></a>Azure-Tools
 Die folgenden Azure-Tools werden auf dem virtuellen Computer installiert:
 
-* **Azure-Befehlszeilenschnittstelle:** Mit der Azure-Befehlszeilenschnittstelle können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie zum Aufrufen der Azure-Tools einfach **azure help**ein. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure Storage-Explorer:** Der Microsoft Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure Storage-Konto gespeichert haben, und zum Hoch- und Herunterladen der Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell aufrufen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
+* **Azure-Befehlszeilenschnittstelle**: Mit der Azure-Befehlszeilenschnittstelle können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie zum Aufrufen der Azure-Tools einfach **azure help**ein. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Microsoft Azure Storage-Explorer**: Microsoft Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure Storage-Konto gespeichert haben, und zum Hoch- und Herunterladen der Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell aufrufen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
 * **Azure-Bibliotheken**: Im Folgenden finden Sie einige der vorinstallierten Bibliotheken.
   
   * **Python**: Die installierten zu Azure gehörenden Bibliotheken in Python sind **azure**, **azureml**, **pydocumentdb** und **pyodbc**. Mit den ersten drei Bibliotheken können Sie auf Azure-Speicherdienste, Azure Machine Learning und Azure Cosmos DB (eine NoSQL-Datenbank in Azure) zugreifen. Mit der vierten Bibliothek, pyodbc (zusammen mit dem Microsoft ODBC-Treiber für SQL Server), können Sie unter Verwendung einer ODBC-Schnittstelle über Python auf SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse zugreifen. Geben Sie **pip list** ein, um alle aufgeführten Bibliotheken anzuzeigen. Achten Sie darauf, dass dieser Befehl sowohl in der Python 2.7- als auch in der Python 3.5-Umgebung ausgeführt wird.
@@ -281,7 +283,7 @@ Die VM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompilier
 
 * **Microsoft Cognitive Toolkit**: Ein Deep Learning-Toolkit.
 * **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.
-* **xgboost**: Tool mit optimierten Boosted Tree-Algorithmen.
+* **xgboost**: Ein Tool, das optimierte Boosted Tree-Algorithmen bereitstellt.
 * **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie den `pip install` -Befehl verwenden.
 * **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Einige Bibliotheken sind vorinstalliert, z.B. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie Folgendes ausführen:
   

@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495127"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274903"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Führt containerbezogene Befehle auf einem Clusterknoten aus.
@@ -28,22 +28,22 @@ Führt containerbezogene Befehle auf einem Clusterknoten aus.
 
 |Get-Help|BESCHREIBUNG|
 | --- | --- |
-| invoke-api | Ruft die Container-REST-API auf. |
-| Protokolle | Ruft Containerprotokolle ab. |
+| invoke-api | Ruft die Container-API für einen Container auf, der auf einem Service Fabric-Knoten für das jeweilige Codepaket bereitgestellt wurde. |
+| Protokolle | Ruft die Containerprotokolle für Container ab, die auf einem Service Fabric-Knoten für das jeweilige Codepaket bereitgestellt wurden. |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
-Ruft die Container-REST-API auf.
+Ruft die Container-API für einen Container auf, der auf einem Service Fabric-Knoten für das jeweilige Codepaket bereitgestellt wurde.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --application-id           [erforderlich] | Anwendungsidentität. |
-| --code-package-instance-id [erforderlich] | Instanz-ID des Codepakets, die mit „service code-package-list“ abgerufen werden kann. |
-| --code-package-name        [erforderlich] | Name des Codepakets. |
+| --application-id           [erforderlich] | Die Identität (ID) der Anwendung. <br><br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
+| --code-package-instance-id [erforderlich] | Eine ID, die eine Codepaketinstanz eindeutig identifiziert, die auf einem Service Fabric-Knoten bereitgestellt wird. <br><br> Kann über „service code-package-list“ abgerufen werden. |
+| --code-package-name        [erforderlich] | Der Name des Codepakets, das im Dienstmanifest angegeben ist, das als Bestandteil eines Anwendungstyps in einem Service Fabric-Cluster registriert ist. |
 | --container-api-uri-path   [erforderlich] | Pfad zum URI der Container-REST-API: Verwenden Sie „{id}“ anstatt des Namens bzw. der ID des Containers. |
 | --node-name [erforderlich] | Der Name des Knotens. |
-| --service-manifest-name [erforderlich] | Name des Dienstmanifests. |
+| --service-manifest-name [erforderlich] | Der Name eines Dienstmanifests, das als Bestandteil eines Anwendungstyps in einem Service Fabric-Cluster registriert ist. |
 | --container-api-body | HTTP-Anforderungstext für die Container-REST-API. |
 | --container-api-content-type | Inhaltstyp der Container-REST-API, Standardwert ist „application/json“. |
 | --container-api-http-verb | HTTP-Verb für die Container-REST-API, Standardwert ist GET. |
@@ -60,18 +60,18 @@ Ruft die Container-REST-API auf.
 | --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
 
 ## <a name="sfctl-container-logs"></a>sfctl container logs
-Ruft Containerprotokolle ab.
+Ruft die Containerprotokolle für Container ab, die auf einem Service Fabric-Knoten für das jeweilige Codepaket bereitgestellt wurden.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --application-id           [erforderlich] | Anwendungsidentität. |
+| --application-id           [erforderlich] | Die Identität (ID) der Anwendung. <br><br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --code-package-instance-id [erforderlich] | Instanz-ID des Codepakets, die mit „service code-package-list“ abgerufen werden kann. |
-| --code-package-name        [erforderlich] | Name des Codepakets. |
+| --code-package-name        [erforderlich] | Der Name des Codepakets, das im Dienstmanifest angegeben ist, das als Bestandteil eines Anwendungstyps in einem Service Fabric-Cluster registriert ist. |
 | --node-name [erforderlich] | Der Name des Knotens. |
-| --service-manifest-name [erforderlich] | Name des Dienstmanifests. |
-| --tail | Gibt nur diese Anzahl von Protokollzeilen vom Ende der Protokolle zurück. Wird als Ganzzahl angegeben; geben Sie „all“ an, um alle Protokollzeilen auszugeben. Der Standardwert lautet „all“. |
+| --service-manifest-name [erforderlich] | Der Name eines Dienstmanifests, das als Bestandteil eines Anwendungstyps in einem Service Fabric-Cluster registriert ist. |
+| --tail | Die Anzahl der Zeilen, die am Ende der Protokolle angezeigt werden sollen. Der Standardwert ist 100. „all“, um die vollständige Protokolle anzuzeigen. |
 | --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente

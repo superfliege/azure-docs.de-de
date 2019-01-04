@@ -1,6 +1,7 @@
 ---
-title: Handbuch zur Problembehandlung bei der Bereitstellung des Azure Machine Learning-Diensts
-description: Erfahren Sie, wie Sie die häufigen Docker-Bereitstellungsfehler für den Azure Machine Learning-Dienst umgehen, lösen und beheben können.
+title: Leitfaden zur Problembehandlung bei der Bereitstellung
+titleSuffix: Azure Machine Learning service
+description: Erfahren Sie, wie Sie die häufigen Docker-Bereitstellungsfehler mit AKS und ACI mithilfe von Azure Machine Learning Service umgehen, lösen und beheben können.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +9,18 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: jmartens
-ms.date: 10/01/2018
-ms.openlocfilehash: a10b05e95fa719b80775191e48bd4117e3a785fd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6bd3bc86aa828ab28462de9d45f660889634cbd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321681"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100513"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Problembehandlung von Bereitstellungen des Azure Machine Learning-Diensts
+# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI
 
-In diesem Artikel erfahren Sie, wie Sie die häufigen Docker-Bereitstellungsfehler für den Azure Machine Learning-Dienst umgehen oder lösen.
+In diesem Artikel erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Container Instances (ACI) und Azure Kubernetes Service (AKS) mit Azure Machine Learning Service umgehen oder beheben können.
 
 Bei der Bereitstellung eines Modells im Azure Machine Learning-Dienst führt das System eine Reihe von Aufgaben aus. Hierbei handelt es sich um eine komplexe Abfolge von Ereignissen, und manchmal treten Probleme auf. Dies sind die Aufgaben bei der Bereitstellung:
 
@@ -117,7 +119,7 @@ print(ws.webservices()['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>Lokales Debuggen des Docker-Images
-Manchmal gibt das Docker-Protokoll nicht genügend Informationen dazu her, was schief läuft. Sie können einen Schritt weiter gehen, das erstellte Docker-Image herunterladen und direkt interaktiv im Live-Container debuggen. Um einen lokalen Container zu starten, muss eine Docker-Engine lokal ausgeführt werden, und es erleichtert Ihnen die Arbeit erheblich, wenn Sie außerdem [azure-cli](/cli/azure/install-azure-cli?view=azure-cli-latest) installiert haben.
+Manchmal gibt das Docker-Protokoll nicht genügend Informationen dazu her, was schief läuft. Sie können einen Schritt weiter gehen, das erstellte Docker-Image herunterladen und direkt interaktiv im Live-Container debuggen. Um einen lokalen Container zu starten, muss eine Docker-Engine lokal ausgeführt werden, und es erleichtert Ihnen die Arbeit erheblich, wenn Sie außerdem [azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installiert haben.
 
 Zunächst müssen wir den Speicherort des Images ermitteln:
 
@@ -216,16 +218,12 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-**Hinweis**: Das Zurückgeben von Fehlermeldungen aus dem Aufruf `run(input_data)` sollte nur zu Debugzwecken erfolgen. Aus Sicherheitsgründen empfiehlt sich dieses Vorgehen nicht in Produktionsumgebungen.
+**Hinweis**: Die Rückgabe von Fehlermeldungen aus dem Aufruf `run(input_data)` sollte nur zu Debugzwecken erfolgen. Aus Sicherheitsgründen empfiehlt sich dieses Vorgehen nicht in Produktionsumgebungen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Bereitstellung finden Sie hier: 
-* [Bereitstellen für ACI](how-to-deploy-to-aci.md)
+* [Bereitstellung: wie und wo?](how-to-deploy-and-where.md)
 
-* [Bereitstellen für AKS](how-to-deploy-to-aks.md)
-
-* [Tutorial Teil 1: Trainieren des Modells](tutorial-train-models-with-aml.md)
-
-* [Tutorial Teil 2: Bereitstellen des Modells](tutorial-deploy-models-with-aml.md)
+* [Tutorial: Trainieren und Bereitstellen von Modellen](tutorial-train-models-with-aml.md)

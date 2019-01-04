@@ -1,12 +1,11 @@
 ---
-title: Definieren von benutzerdefinierten R-Modulen für Azure Machine Learning Studio| Microsoft-Dokumentation
-description: In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning Studio-Arbeitsbereich registriert wird.
+title: 'Definieren von benutzerdefinierten R-Modulen: Azure Machine Learning Studio| Microsoft-Dokumentation'
+description: In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -16,18 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: b8ab22f1567102ed79ccf6e0bf49dbdbc3f42ea9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308430"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277929"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definieren von benutzerdefinierten R-Modulen für Azure Machine Learning Studio
 
 In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning Studio bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning-Arbeitsbereich registriert wird. Die in der Definition des benutzerdefinierten Moduls verwendeten Elemente und Attribute werden dann ausführlicher beschrieben. Ebenfalls wird erläutert, wie zusätzliche Funktionen und Dateien sowie mehrere Ausgaben zu verwenden sind. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="what-is-a-custom-r-module"></a>Was ist ein benutzerdefiniertes R-Modul?
 Ein **benutzerdefiniertes Modul** ist ein vom Benutzer bestimmtes Modul, dass in Ihrem Arbeitsbereich hochgeladen und als Teil eines Azure Machine Learning Experiments ausgeführt werden kann. Ein **benutzerdefiniertes R-Modul** ist ein benutzerdefiniertes Modul, das eine vom Benutzer erstellte R-Funktion ausführt. **R** ist eine Programmiersprache für statistische Berechnungen und Grafiken, die häufig von Statistikern und Datenanalysten für die Implementierung von Algorithmen verwendet wird. Derzeit wird in benutzerdefinierten Modulen ausschließlich R unterstützt, für zukünftige Versionen sind jedoch bereits weitere Sprachen geplant.
@@ -96,7 +95,7 @@ Um diese `CustomAddRows` Funktion als Azure Machine Learning-Modul offenzulegen,
     </Module>
 
 
-Wichtig: Der Wert der **id**-Attribute der **Input**- und **Arg**-Elemente in der XML-Datei muss EXAKT mit den Funktionsparameternamen des R-Codes in der Datei „CustomAddRows.R“ übereinstimmen (im Beispiel: *dataset1*, *dataset2* und *swap*). Entsprechend muss der Wert des **entryPoint**-Attributs des **Language**-Elements EXAKT mit dem Namen der Funktion im R-Skript übereinstimmen (im Beispiel: *CustomAddRows*). 
+Wichtig: Der Wert der **id**-Attribute der **Input**- und **Arg**-Elemente in der XML-Datei muss EXAKT mit den Funktionsparameternamen des R-Codes in der Datei „CustomAddRows.R“ übereinstimmen (im Beispiel: *dataset1*, *dataset2* und *swap*). Entsprechend muss der Wert des **entryPoint**-Attributs des **Language**-Elements EXAKT mit dem Namen der Funktion im R-Skript übereinstimmen: (*CustomAddRows* im Beispiel). 
 
 Das **id**-Attribut für das **Output**-Element muss hingegen keiner Variablen im R-Skript entsprechen. Sind mehrere Ausgaben erforderlich, geben Sie mithilfe der R-Funktion einfach eine Liste mit Ergebnissen zurück, und achten Sie darauf, dass die Ergebnisse *in der gleichen Reihenfolge* angegeben sind wie die in der XML-Datei deklarierten **Output** -Elemente.
 
@@ -159,7 +158,7 @@ Jeder Eingabe- und Ausgabeport kann optional über ein untergeordnetes **Descrip
 Das**ID**-Attribut, das jedem **DataTable** Eingangsport zugeordnet ist, muss einen eindeutigen Wert haben, der mit seinem entsprechenden benannten Parameter in der R-Funktion übereinstimmen muss.
 Für optionale **DataTable**-Ports, die nicht als Eingabe in einem Experiment übergeben werden, wird der Wert **NULL** an die R-Funktion übergeben, und optionale ZIP-Ports werden ignoriert, wenn die Eingabe nicht verbunden ist. Das **isOptional**-Attribut ist für die Typen **DataTable** und **Zip** optional und standardmäßig *false*.
 
-**Zip** : Benutzerdefinierte Module können ZIP-Dateien als Eingabe akzeptieren. Diese Eingabe wird im R-Arbeitsverzeichnis Ihrer Funktion entpackt.
+**Zip:** Benutzerdefinierte Module können ZIP-Dateien als Eingabe akzeptieren. Diese Eingabe wird im R-Arbeitsverzeichnis Ihrer Funktion entpackt.
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
@@ -177,7 +176,7 @@ Bei benutzerdefinierten R-Modulen muss die ID für einen ZIP-Port keinem Paramet
 * Der Wert des **isOptional**-Attributs des **Eingabe**-Elements ist nicht erforderlich (und standardmäßig *false*, wenn nicht angegeben); aber wenn er angegeben wird, muss er *true* oder *false* sein.
 
 ### <a name="output-elements"></a>Ausgabe-Elemente
-**Standard-Ausgabeports:** Ausgabeports sind den Rückgabewerten Ihrer R-Funktion zugeordnet, die anschließend von nachfolgenden Modulen verwendet werden können. *DataTable* ist zurzeit der einzige unterstützte Standardtyp für Ausgabeports. (Unterstützung für *Learners* und *Transforms* ist in Kürze zu erwarten.) Eine *DataTable*-Ausgabe wird wie folgt definiert:
+**Standardausgabeports:** Ausgabeports sind den Rückgabewerten Ihrer R-Funktion zugeordnet, die anschließend von nachfolgenden Modulen verwendet werden können. *DataTable* ist zurzeit der einzige unterstützte Standardtyp für Ausgabeports. (Unterstützung für *Learners* und *Transforms* ist in Kürze zu erwarten.) Eine *DataTable*-Ausgabe wird wie folgt definiert:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -215,7 +214,7 @@ Geben Sie dann die Liste der Objekte in einer Liste in der richtigen Reihenfolge
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Visualisierungsausgabe:** Sie können auch einen Ausgabeport vom Typ *Visualization*angeben, der die Ausgabe des R-Grafikgeräts und die Konsolenausgabe anzeigt. Dieser Port ist nicht Teil der R-Funktionsausgabe und hat keinerlei Auswirkungen auf die Reihenfolge der anderen Ausgabeporttypen. Um den benutzerdefinierten Modulen einen Visualisierungsport hinzuzufügen, fügen Sie ein **Ausgabe**-Element mit einem *Visualisierungswert* für sein **Typen**-Attribut hinzu:
+**Visualisierungsausgabe:** Sie können auch einen Ausgabeport vom Typ *Visualization* angeben, der die Ausgabe des R-Grafikgeräts und die Konsolenausgabe anzeigt. Dieser Port ist nicht Teil der R-Funktionsausgabe und hat keinerlei Auswirkungen auf die Reihenfolge der anderen Ausgabeporttypen. Um den benutzerdefinierten Modulen einen Visualisierungsport hinzuzufügen, fügen Sie ein **Ausgabe**-Element mit einem *Visualisierungswert* für sein **Typen**-Attribut hinzu:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -372,6 +371,6 @@ Die Ausführungsumgebung für das R-Skript verwendet die gleiche Version von R w
 
 **Einschränkungen der Ausführungsumgebung** umfassen:
 
-* Nicht beständiges Dateisystem: Dateien, die beim Ausführen des benutzerdefinierten Moduls geschrieben werden, können nicht über mehrere Ausführungen des gleichen Moduls hinweg beibehalten werden.
+* Nicht beständiges Dateisystem: Dateien, die beim Ausführen des benutzerdefinierten Moduls geschrieben werden, können nicht über mehrere Ausführungen des gleichen Moduls hinweg persistent gespeichert werden.
 * Kein Netzwerkzugriff
 

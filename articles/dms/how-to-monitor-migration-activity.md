@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 8c30af5023cb83ee1f9ca0f41db5b7f977cc4bc7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 12/14/2018
+ms.openlocfilehash: a315e8b42ab8e0df659a3388a50fedf5dd3a54d2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883906"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413063"
 ---
 # <a name="monitor-migration-activity"></a>Überwachen der Migrationsaktivität
 In diesem Artikel erfahren Sie, wie der Fortschritt einer Migration auf Datenbankebene und Tabellenebene überwacht wird.
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie der Fortschritt einer Migration auf Datenban
 ## <a name="monitor-at-the-database-level"></a>Überwachung auf Datenbankebene
 Zur Überwachung der Aktivität auf Datenbankebene zeigen Sie das Blatt auf Datenbankebene an:
 
-![Blatt auf Datenbankebene](media\how-to-monitor-migration-activity\dms-database-level-blade.png)
+![Blatt auf Datenbankebene](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
 > Wählen den Link für die Datenbank aus, um die Liste der Tabellen und ihren Migrationsfortschritt anzuzeigen.
@@ -104,7 +104,7 @@ Zur Überwachung der Aktivität auf Tabellenebene zeigen Sie das Blatt auf Tabel
 
 Im unteren Bereich des Blatts sind die Tabellen aufgeführt, und eine kurze Zusammenfassung der Migrationsfortschritt wird angezeigt.
 
-![Blatt auf Tabellenebene: Kurze Übersicht](media\how-to-monitor-migration-activity\dms-table-level-blade-summary.png)
+![Blatt auf Tabellenebene: Kurze Übersicht](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
 In der folgenden Tabelle sind die in den Details auf Tabellenebene angezeigten Felder beschrieben.
 
@@ -123,9 +123,9 @@ In der folgenden Tabelle sind die in den Details auf Tabellenebene angezeigten F
 ## <a name="monitor-at-table-level--detailed-summary"></a>Überwachung auf Tabellenebene: Detaillierte Zusammenfassung
 Der Migrationsfortschritt wird auf zwei Registerkarten – einmal im vollständigen Ladevorgang und einmal in der inkrementellen Synchronisierung – angezeigt.
     
-![Registerkarte „Vollständiger Ladevorgang“](media\how-to-monitor-migration-activity\dms-full-load-tab.png)
+![Registerkarte „Vollständiger Ladevorgang“](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![Registerkarte „Inkrementelle Datensynchronisierung“](media\how-to-monitor-migration-activity\dms-incremental-data-sync-tab.png)
+![Registerkarte „Inkrementelle Datensynchronisierung“](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
 In der folgenden Tabelle sind die im Migrationsfortschritt auf Tabellenebene angezeigten Felder beschrieben.
 
@@ -136,7 +136,7 @@ In der folgenden Tabelle sind die im Migrationsfortschritt auf Tabellenebene ang
 | **Aktualisieren** | Anzahl von auf das Ziel angewendete CDC-Updates in Zeilen.      |
 | **Löschen**      | Anzahl von auf das Ziel angewendete CDC-Löschungen in Zeilen. |
 | **Angewendet gesamt**      | Gesamtanzahl von auf das Ziel angewendeten CDC-Updates, -Einfügungen und -Löschungen in Zeilen. |
-| **Datenfehler** | Anzahl der in dieser Tabelle aufgetretenen Datenfehler. Einige Beispiele für Fehler sind *511: Eine Zeile der Größe %d kann nicht erstellt werden, da sie länger als die zulässige maximale Zeilengröße von %d wäre, 8114: Fehler beim Konvertieren des %ls-Datentyps in %ls*.  Kunden sollten eine Abfrage von Tabelle „attms_apply_exceptions“ im Azure-Ziel durchführen, um die Fehlerdetails anzuzeigen.    |
+| **Datenfehler** | Anzahl der in dieser Tabelle aufgetretenen Datenfehler. Einige Beispiele für Fehler sind *511: Eine Zeile der Größe %d kann nicht erstellt werden, da sie länger als die zulässige maximale Zeilengröße von %d wäre, 8114: Fehler beim Konvertieren des %ls-Datentyps in %ls.*  Kunden sollten eine Abfrage von Tabelle „dms_apply_exceptions“ im Azure-Ziel durchführen, um die Fehlerdetails anzuzeigen.    |
 
 > [!NOTE]
 > Die CDC-Werte „Einfügen“, „Aktualisieren“, „Löschen“ und „Angewendet gesamt“ verringern sich möglicherweise, wenn die Datenbank umgestellt oder die Migration neu gestartet wird.

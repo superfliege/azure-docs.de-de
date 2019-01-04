@@ -1,5 +1,5 @@
 ---
-title: Der Skill „Benannte Entität erkennen“ der kognitiven Suche (Azure Search) | Microsoft-Dokumentation
+title: Die Qualifikation „Benannte Entität erkennen“ der kognitiven Suche – Azure Search
 description: Extrahieren Sie benannte Entitäten für Personen, Orte und Organisationen aus Text in einer Pipeline der kognitiven Suche in Azure Search.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: e63354152f8821c5ce975563639c8b87fb332bd4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442028"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313988"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Der kognitive Skill „Benannte Entität erkennen“
 
@@ -23,7 +24,9 @@ Der Skill **Benannte Entitäten erkennen** extrahiert benannte Entitäten aus Te
 
 > [!NOTE]
 > <ul>
-> <li>Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen, das Extrahieren von Bildern und die Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. </li>
+> <li>
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).</li>
 > <li> Die Qualifikation zur Erkennung benannter Entitäten gilt als veraltet und wird ab 15. Februar 2019 nicht mehr offiziell unterstützt. Migrieren Sie unter Berücksichtigung der Empfehlungen auf der Seite <a href="cognitive-search-skill-deprecated.md">Veraltete Qualifikationen für die kognitive Suche</a> zu einer unterstützten Qualifikation.</li>
 
 ## <a name="odatatype"></a>@odata.type  

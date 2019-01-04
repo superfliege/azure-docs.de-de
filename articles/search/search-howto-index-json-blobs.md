@@ -1,6 +1,6 @@
 ---
-title: Indizierung der JSON-Blobs mit Azure Search-Blobindexer
-description: Indizierung der JSON-Blobs mit Azure Search-Blobindexer
+title: Indizieren von JSON-Blobs aus Azure Blob-Indexer für die Volltextsuche – Azure Search
+description: Durchforsten Sie Azure JSON-Blobs mithilfe des Azure Search-Blobindexers nach Textinhalten. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Blob Storage.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 0dbf8a44007fbba39f6ac4c20e375a6d13ac9021
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec2018
+ms.openlocfilehash: 7eb215271a8d5d21403cc7c5a49028bb366e61fd
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711071"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312526"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indizierung der JSON-Blobs mit Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Blobindexer konfigurieren, um strukturierten Inhalt aus JSON-Blobs in Azure Blob Storage zu extrahieren.

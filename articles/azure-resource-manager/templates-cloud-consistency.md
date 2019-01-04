@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz | Microsoft-Dokumentation
-description: Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz Erstellen Sie neue, oder aktualisieren Sie vorhandene Vorlagen für Azure Stack.
+title: Wiederverwenden von Vorlagen in Clouds – Azure Resource Manager
+description: Entwickeln von Azure Resource Manager-Vorlagen, die in unterschiedlichen Cloudumgebungen konsistent funktionieren. Erstellen Sie neue, oder aktualisieren Sie vorhandene Vorlagen für Azure Stack.
 services: azure-resource-manager
 documentationcenter: na
 author: marcvaneijk
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/09/2018
 ms.author: mavane
-ms.openlocfilehash: f1ff151c0b8d89910949d961b732c10901f19293
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.custom: seodec18
+ms.openlocfilehash: 28542bb66fe1e523201967a9dd67fd7e41fed7a0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723372"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135626"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz
 
@@ -434,7 +435,7 @@ Ressourcen können Verweise auf andere Dienste auf der Plattform aufweisen. Beis
 Die beiden folgenden Beispiele sind gängige Namespaces für Endpunkte, die beim Anlegen einer Ressource explizit angegeben werden müssen:
 
 * Speicherkonten (Blob, Warteschlange, Tabelle und Datei)
-* Verbindungszeichenfolgen für Datenbanken und Redis Cache
+* Verbindungszeichenfolgen für Datenbanken und Azure Cache for Redis
 
 Namespaces für Endpunkte können auch in der Ausgabe einer Vorlage als Information für den Benutzer verwendet werden, sobald die Bereitstellung abgeschlossen ist. Im Folgenden sind allgemeine Beispiele aufgeführt:
 
@@ -490,7 +491,7 @@ Um eine Liste der an einem Standort verfügbaren VM-Images abzurufen, führen Si
 az vm image list -all
 ```
 
-Sie können die gleiche Liste mit dem Azure PowerShell-Cmdlet [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) abrufen und den gewünschten Standort mit dem Parameter `-Location` angeben. Beispiel:
+Sie können die gleiche Liste mit dem Azure PowerShell-Cmdlet [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) abrufen und den gewünschten Standort mit dem Parameter `-Location` angeben. Beispiel: 
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRMVMImage

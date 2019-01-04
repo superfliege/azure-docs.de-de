@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: da270792c8987ff43c422c5b03eb8b789b8bda5e
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1e638bd348b7a5272dd8bfbe25aa841f38a51b9a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634588"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409699"
 ---
 # <a name="run-apache-hive-queries-using-the-query-console"></a>Ausführen von Apache Hive-Abfragen mithilfe der Abfragekonsole
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Apache Hive-Abfragen auf einem Hadoop-Cluster in HDInsight in Ihrem Browser ausführen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die HDInsight-Abfragekonsole ist nur auf Windows-basierten HDInsight-Clustern verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> Informationen zum Ausführen von Hive-Abfragen über einen Webbrowser für HDInsight 3.4 oder höher finden Sie unter [Ausführen von Hive-Abfragen in Ambari Hive View](apache-hadoop-use-hive-ambari-view.md).
+> Informationen zum Ausführen von Hive-Abfragen über einen Webbrowser für HDInsight 3.4 oder höher finden Sie unter [Ausführen von Apache Hive-Abfragen in Ambari Hive View](apache-hadoop-use-hive-ambari-view.md).
 
 ## <a id="prereq"></a>Voraussetzungen
 Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
@@ -32,7 +32,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
 * Einen Windows-basierten Hadoop-Cluster in HDInsight
 * Einen zeitgemäßen Webbrowser
 
-## <a id="run"></a> Ausführen von Hive-Abfragen mithilfe der Abfragekonsole
+## <a id="run"></a> Ausführen von Apache Hive-Abfragen mithilfe der Abfragekonsole
 1. Öffnen Sie einen Webbrowser, und navigieren Sie zu **https://CLUSTERNAME.azurehdinsight.net**, wobei **CLUSTERNAME** der Name des HDInsight-Clusters ist. Geben Sie nach der entsprechenden Aufforderung den Benutzernamen samt Kennwort ein, den Sie beim Erstellen des Clusters eingegeben haben.
 2. Wählen Sie am Seitenanfang in den Links die Option **Hive-Editor**aus. Dadurch wird ein Formular angezeigt, mit dem Sie HiveQL-Anweisungen eingeben können, die Sie auf dem HDInsight-Cluster ausführen möchten.
 
@@ -49,17 +49,17 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
 
     Diese Anweisungen führen die folgenden Aktionen aus:
 
-   * **TABELLE LÖSCHEN**: Löscht Tabelle und Datendatei, falls die Tabelle bereits vorhanden ist.
+   * **DROP TABLE**: Löscht die Tabelle und Datendatei, falls die Tabelle bereits vorhanden ist.
    * **CREATE EXTERNAL TABLE**: Erstellt eine neue „externe“ Tabelle in Hive. Externe Tabellen dienen nur zum Speichern der Tabellendefinition in Hive. Die Daten verbleiben am ursprünglichen Speicherort.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Wenn erwartet wird, dass die zugrunde liegenden Daten über eine externe Quelle (z. B. einen automatisierten Prozess zum Hochladen von Daten) oder über einen anderen MapReduce-Vorgang aktualisiert, aber von Hive immer die neuesten Daten verwendet werden, sollten externe Tabellen verwendet werden.
      >
      > Durch das Löschen einer externen Tabelle werden **nicht** die Daten, sondern nur die Tabellendefinitionen gelöscht.
      >
      >
-   * **ZEILENFORMAT**: Teilt Hive mit, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
-   * **SPEICHERORT DER TEXTDATEI**: Teilt Hive den Speicherort der Daten (das Verzeichnis "Beispiel/Daten") und die Information mit, dass die Speicherung als Text erfolgt.
+   * **ROW FORMAT**: Teilt Hive mit, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
+   * **STORED AS TEXTFILE LOCATION**: Teilt Hive den Speicherort der Daten (das Verzeichnis „example/data“) und die Information mit, dass die Speicherung als Text erfolgt.
    * **SELECT**: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Dadurch sollte der Wert **3** zurückgegeben werden, da dieser Wert in drei Zeilen enthalten ist.
    * **INPUT__FILE__NAME LIKE '%.log'**: Teilt Hive mit, dass nur Daten aus Dateien mit der Erweiterung „.log“ zurückgeben werden sollen. Dies schränkt die Suche auf die Datei "sample.log" ein, die die Daten enthält, und verhindert, dass Daten aus anderen Beispieldatendateien zurückgegeben werden, die nicht dem von uns definierten Schema entsprechen.
 3. Klicken Sie auf **Submit**. Die **Auftragssitzung** am unteren Seitenrand sollte Details für den Auftrag anzeigen.
@@ -73,29 +73,29 @@ Um weitere Informationen zu Hive mithilfe der Abfragekonsole zu erhalten, wähle
 ## <a id="nextsteps"></a>Nächste Schritte
 Allgemeine Informationen zu Hive in HDInsight:
 
-* [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
 
 Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
-* [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
+* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
 Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Informationen zum Debuggen:
 
-* [Verwenden der Tez-Benutzeroberfläche in Windows-basiertem HDInsight](../hdinsight-debug-tez-ui.md)
-* [Verwenden der Ambari-Tez-Ansicht in Linux-basiertem HDInsight](../hdinsight-debug-ambari-tez-view.md)
+* [Verwenden der Apache Tez-Benutzeroberfläche in Windows-basiertem HDInsight](../hdinsight-debug-tez-ui.md)
+* [Verwenden der Apache Ambari-Tez-Ansicht in Linux-basiertem HDInsight](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -111,7 +111,7 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png

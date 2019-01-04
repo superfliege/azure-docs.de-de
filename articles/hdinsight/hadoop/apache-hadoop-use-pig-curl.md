@@ -9,37 +9,38 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633698"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434007"
 ---
-# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Ausführen von Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
+# <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Ausführen von Apache Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster richten, um Apache Pig Latin-Aufträge auszuführen. Curl dient zur Veranschaulichung der Interaktion mit HDInsight über die WebHCat REST-API.
 
-> [!NOTE]
+> [!NOTE]  
 > Falls Sie bereits mit der Verwendung von Linux-basierten Apache Hadoop-Servern vertraut sind, aber noch keine Erfahrung mit HDInsight haben, finden Sie weitere Informationen unter [Tipps zu Linux-basiertem HDInsight](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Voraussetzungen
 
 * Einen Azure HDInsight-Cluster (Hadoop in HDInsight), der auf Linux oder Windows basiert
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* [Curl](http://curl.haxx.se/)
+* [Curl](https://curl.haxx.se/)
 
-* [jq](http://stedolan.github.io/jq/)
+* [jq](https://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Ausführen von Pig-Aufträgen mit Curl
+## <a id="curl"></a>Ausführen von Apache Pig-Aufträgen mit Curl
+
 
 > [!NOTE]
-> Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Stellen Sie Anforderungen immer über HTTPS (Secure HTTP), um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
+> Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Stellen Sie Anforderungen immer über HTTPS (Secure HTTP), um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 >
 > Ersetzen Sie beim Verwenden der Befehle in diesem Abschnitt die Option `USERNAME` zur Authentifizierung im Cluster durch den Benutzer und `PASSWORD` durch das Kennwort für das Benutzerkonto. Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres Clusters.
 >
@@ -57,7 +58,7 @@ Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster r
 
     Folgende Parameter werden in diesem Befehl verwendet:
 
-    * **-u**– Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
+    * **-u**: Der Benutzername und das Kennwort für die Authentifizierung der Anforderung.
     * **-G**: Gibt an, dass diese Anforderung eine GET-Anforderung ist.
 
      Der Anfang der URL (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) ist für alle Anforderungen gleich. Der Pfad **/status** gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt.
@@ -72,11 +73,11 @@ Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster r
 
     * **-d**: Da `-G` nicht verwendet wird, verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
 
-    * **user.name**: Der Benutzer, der den Befehl ausführt
-    * **execute**: Die auszuführenden Pig Latin-Anweisungen
-    * **statusdir**: Das Verzeichnis, in das die Statusangaben für diesen Auftrag geschrieben werden.
+    * **user.name**: Der Benutzer, der den Befehl ausführt.
+    * **execute**: Die auszuführenden Pig Latin-Anweisungen.
+    * **statusdir**: Das Verzeichnis, in das der Status für diesen Auftrag geschrieben wird.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Beachten Sie, dass die Leerzeichen in Pig Latin-Anweisungen bei Curl durch das Zeichen `+` ersetzt werden.
 
     Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann. Beispiel:
@@ -93,14 +94,14 @@ Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster r
 
     Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH** angezeigt.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück, und mithilfe von "jq" wird nur der Statuswert abgerufen.
 
 ## <a id="results"></a>Anzeigen der Ergebnisse
 
 Sobald der Status des Auftrags in **SUCCEEDED** wechselt, können Sie die Ergebnisse des Auftrags abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies `/example/pigcurl`.
 
-HDInsight kann als Standarddatenspeicher entweder Azure Storage oder Azure Data Lake Store verwenden. Je nach verwendetem Standardspeicher gibt es verschiedene Möglichkeiten, die Daten abzurufen. Weitere Informationen finden Sie im Abschnitt „Speicher“ des Dokuments [Linux-basierte HDInsight-Informationen](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store).
+HDInsight kann als Standarddatenspeicher entweder Azure Storage oder Azure Data Lake Storage verwenden. Je nach verwendetem Standardspeicher gibt es verschiedene Möglichkeiten, die Daten abzurufen. Weitere Informationen finden Sie im Abschnitt „Speicher“ des Dokuments [Linux-basierte HDInsight-Informationen](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store).
 
 ## <a id="summary"></a>Zusammenfassung
 
@@ -112,9 +113,9 @@ Weitere Informationen zur REST-Schnittstelle, die in diesem Artikel verwendet wi
 
 Allgemeine Informationen zu Pig in HDInsight:
 
-* [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
 
 Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
-* [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
-* [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
+* [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)

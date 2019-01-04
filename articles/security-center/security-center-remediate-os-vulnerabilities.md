@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d77e5265349db2fc433d2bb9a42140a6a4209ba1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5de0c975b21131b50155a6e86f5710f741a3c7f7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317494"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344141"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
@@ -49,7 +49,7 @@ In diesem Beispiel betrachten wir unter **Compute und Apps** die Empfehlung „S
 
   Im unteren Bereich des Dashboards werden alle Regelfehler für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt. Die Liste enthält die folgenden Elemente:
 
-  - **CCIED**: Der eindeutige CCE-Bezeichner für die Regel. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
+  - **CCEID**: Der eindeutige CCE-Bezeichner für die Regel. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
   - **Name**: Der Name des Regelfehlers.
   - **Regeltyp**: Der Regeltyp *Registrierungsschlüssel*, *Sicherheitsrichtlinie*, *Überwachungsrichtlinie* oder *IIS*.
   - **Anzahl von VMs und Computern**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler.
@@ -72,8 +72,8 @@ In diesem Beispiel betrachten wir unter **Compute und Apps** die Empfehlung „S
    - **Schweregrad der Regel**: Der CCE-Schweregrad *Kritisch*, *Wichtig* oder *Warnung*.
    - **Vollständige Beschreibung**: Die Beschreibung der Regel.
    - **Sicherheitsrisiko**: Die Erläuterung des Sicherheitsrisikos, wenn die Regel nicht angewendet wird.
-   - **Potenzielle Auswirkung**: Die geschäftliche Auswirkung, wenn die Regel angewendet wird.
-   - **Gegenmaßnahme**: Die Schritte zur Behebung.
+   - **Potenzielle Auswirkung**: Geschäftliche Auswirkung, wenn die Regel angewendet wird.
+   - **Gegenmaßnahme**: Die Schritte zur Bereinigung.
    - **Erwarteter Wert**: Der erwartete Wert, wenn Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht.
    - **Tatsächlicher Wert**: Der zurückgegebene Wert, nachdem Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgeglichen hat.
    - **Regelvorgang**: Von Security Center verwendeter Regelvorgang, wenn Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht.
@@ -101,7 +101,7 @@ Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden
 Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 
 * Eine Liste mit unterstützten Windows- und Linux-VMs finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
-* Anweisungen zum Konfigurieren von Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-azure-policy.md).
+* Anweisungen zum Konfigurieren von Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md).
 * Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen: [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 * Anweisungen zum Überwachen der Integrität Ihrer Azure-Ressourcen finden Sie unter [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md).
 * Erfahren Sie im Artikel [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md), wie Sie Sicherheitswarnungen verwalten und darauf reagieren.

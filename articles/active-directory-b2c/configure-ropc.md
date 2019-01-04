@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2ea9356f1292669f115d2bb482419435320f644c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 1b07825bd3ff46267764467bba815c1097278084
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978824"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726286"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -35,14 +35,17 @@ Folgende Flüsse werden nicht unterstützt:
 - **Server-zu-Server**: Das Identitätsschutzsystem benötigt eine zuverlässige IP-Adresse, die vom Aufrufer (dem nativen Client) im Rahmen der Interaktion erfasst wurde. Bei einem serverseitigen API-Aufruf wird nur die IP-Adresse des Servers verwendet. Wenn der dynamische Schwellenwert einer fehlgeschlagenen Authentifizierung überschritten wird, identifiziert das System für den Identitätsschutz eine wiederholt auftretende IP-Adresse als Angreifer.
 - **Flow für vertraulichen Client**: Die Anwendungsclient-ID wird überprüft, der geheime Anwendungsschlüssel wird jedoch nicht überprüft.
 
-##  <a name="create-a-resource-owner-policy"></a>Erstellen von Richtlinien für Ressourcenbesitzer
+##  <a name="create-a-resource-owner-user-flow"></a>Erstellen eines Benutzerflows für Ressourcenbesitzer
 
-1. Melden Sie sich beim Azure-Portal als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-2. Wählen Sie für einen Wechsel zu Ihrem Azure AD B2C-Mandanten in der oberen rechten Ecke des Portals das B2C-Verzeichnis aus.
-3. Wählen Sie unter **Richtlinien** die Option **Richtlinien für Ressourcenbesitzer** aus.
-4. Geben Sie einen Namen für die Richtlinie ein, z.B. *ROPC_Auth*, und wählen Sie anschließend **Anwendungsansprüche** aus.
-5. Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. benötigen *Anzeigename*, *E-Mail-Adresse* und *Identitätsanbieter*.
-6. Wählen Sie **OK** und anschließend **Erstellen**.
+1.  Melden Sie sich beim Azure-Portal als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+2.  Wählen Sie für einen Wechsel zu Ihrem Azure AD B2C-Mandanten in der oberen rechten Ecke des Portals das B2C-Verzeichnis aus.
+3.  Klicken Sie auf **Benutzerflows**, und wählen Sie **Neuer Benutzerflow** aus.
+4.  Klicken Sie auf die Registerkarte **Alle**, und wählen Sie **Ressourcenbesitzer** aus.
+5.  Geben Sie einen Namen für den Benutzerflow an, z. B. *ROPC_Auth*.
+6.  Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
+7.  Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. „Anzeigename“, „E-Mail-Adresse“ und „Identitätsanbieter“.
+8.  Wählen Sie **OK** und anschließend **Erstellen**.
+9.  Klicken Sie auf **Benutzerflow ausführen**.
 
    Es wird dann ein Endpunkt angezeigt (wie das folgende Beispiel):
 
@@ -57,9 +60,9 @@ Folgende Flüsse werden nicht unterstützt:
 4. Lassen Sie die anderen Werte unverändert, und wählen Sie anschließend **Erstellen** aus.
 5. Wählen Sie die neue Anwendung aus, und notieren Sie sich die Anwendungs-ID zur späteren Verwendung.
 
-## <a name="test-the-policy"></a>Testen der Richtlinie
+## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
-Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu generieren, und überprüfen Sie die Antwort, um Ihre Richtlinie zu debuggen. Erstellen Sie einen Aufruf wie den folgenden, wobei Sie die Informationen aus der folgenden Tabelle als Hauptteil der POST-Anforderung verwenden:
+Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu generieren, und überprüfen Sie die Antwort, um Ihren Benutzerflow zu debuggen. Erstellen Sie einen Aufruf wie den folgenden, wobei Sie die Informationen aus der folgenden Tabelle als Hauptteil der POST-Anforderung verwenden:
 - Ersetzen Sie *\<yourtenant.onmicrosoft.com>* durch den Namen Ihres B2C-Mandanten.
 - Ersetzen Sie *\<B2C_1A_ROPC_Auth>* durch den vollständigen Namen der Richtlinie für Ihren Ressourcenbesitzer für Kennwortanmeldeinformationen.
 - Ersetzen Sie *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* durch die Anwendungs-ID aus der Registrierung.

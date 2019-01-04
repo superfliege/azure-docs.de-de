@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d1c9101f10342f98803a4ace420abbed5d49ba23
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339976"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880113"
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Referenz zu Azure AD B2C-Token
+# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Tokenreferenz
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -30,9 +30,9 @@ Ein Bearertoken ist ein einfaches Sicherheitstoken, das dem Inhaber, dem „Bear
 
 Wird ein Bearertoken außerhalb eines sicheren Kanals gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abrufen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Bearertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert.
 
-Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
+Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](https://tools.ietf.org/html/rfc6750).
 
-Viele der von Azure AD B2C ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. JWTs enthalten Informationen, die als „Ansprüche“ bezeichnet werden. Dies sind Assertionen von Informationen zum Träger und zum Antragsteller des Tokens. Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden. Da die von Azure AD B2C ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos untersuchen und debuggen. Dafür stehen mehrere Tools zur Verfügung, beispielsweise [jwt.ms](https://jwt.ms). Weitere Informationen zu JWTs finden Sie unter [JWT-Spezifikationen](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+Viele der von Azure AD B2C ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. JWTs enthalten Informationen, die als „Ansprüche“ bezeichnet werden. Dies sind Assertionen von Informationen zum Träger und zum Antragsteller des Tokens. Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden. Da die von Azure AD B2C ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos untersuchen und debuggen. Dafür stehen mehrere Tools zur Verfügung, beispielsweise [jwt.ms](https://jwt.ms). Weitere Informationen zu JWTs finden Sie unter [JWT-Spezifikationen](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ### <a name="id-tokens"></a>ID-Token
 
@@ -66,9 +66,9 @@ Wenn Ihre API ein Zugriffstoken empfängt, muss sie die [Signatur überprüfen](
 
 ### <a name="claims-in-id-and-access-tokens"></a>Ansprüche in ID- und Zugriffstoken
 
-Bei der Verwendung von Azure AD B2C verfügen Sie über eine präzise Kontrolle über den Inhalt Ihrer Token. Sie können [Richtlinien](active-directory-b2c-reference-policies.md) zum Senden bestimmter Gruppen von Benutzerdaten in Ansprüchen konfigurieren, die von der App für den Betrieb benötigt werden. Diese Ansprüche können Standardeigenschaften des Benutzers enthalten, z.B. `displayName` und `emailAddress`. Sie können auch [benutzerdefinierte Attribute](active-directory-b2c-reference-custom-attr.md) enthalten, die Sie in Ihrem B2C-Verzeichnis definieren. Jedes ID- und Zugriffstoken, das Sie empfangen, enthält einen bestimmten Satz sicherheitsbezogener Ansprüche. Diese können von Ihren Anwendungen genutzt werden, um Benutzer und Anforderungen sicher zu authentifizieren.
+Bei der Verwendung von Azure AD B2C verfügen Sie über eine präzise Kontrolle über den Inhalt Ihrer Token. Sie können [Benutzerflows](active-directory-b2c-reference-policies.md) und benutzerdefinierte Richtlinien zum Senden bestimmter Gruppen von Benutzerdaten in Ansprüchen konfigurieren, die von Ihrer App für die jeweiligen Vorgänge benötigt werden. Diese Ansprüche können Standardeigenschaften des Benutzers enthalten, z.B. `displayName` und `emailAddress`. Sie können auch [benutzerdefinierte Attribute](active-directory-b2c-reference-custom-attr.md) enthalten, die Sie in Ihrem B2C-Verzeichnis definieren. Jedes ID- und Zugriffstoken, das Sie empfangen, enthält einen bestimmten Satz sicherheitsbezogener Ansprüche. Diese können von Ihren Anwendungen genutzt werden, um Benutzer und Anforderungen sicher zu authentifizieren.
 
-Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfolge zurückgegeben werden. Darüber hinaus können jederzeit neue Ansprüche in ID-Token eingeführt werden Ihre App darf nicht unterbrochen werden, wenn neue Ansprüche eingeführt werden. Im Folgenden finden Sie die Ansprüche, von denen Sie erwarten, dass sie in den von Azure AD B2C ausgegebenen ID- und Zugriffstoken enthalten sind. Alle weiteren Ansprüche werden anhand von Richtlinien bestimmt. Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie sie in [jwt.ms](https://jwt.ms) einfügen. Weitere Informationen finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).
+Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfolge zurückgegeben werden. Darüber hinaus können jederzeit neue Ansprüche in ID-Token eingeführt werden Ihre App darf nicht unterbrochen werden, wenn neue Ansprüche eingeführt werden. Im Folgenden finden Sie die Ansprüche, von denen Sie erwarten, dass sie in den von Azure AD B2C ausgegebenen ID- und Zugriffstoken enthalten sind. Alle weiteren Ansprüche werden anhand von Richtlinien bestimmt. Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie sie in [jwt.ms](https://jwt.ms) einfügen. Weitere Informationen finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html).
 
 | NAME | Anspruch | Beispielwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
@@ -78,8 +78,8 @@ Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfo
 | Ablaufzeit |`exp` |`1438539443` |Der Ablaufzeit-Anspruch ist die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit) Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
 | Nicht vor |`nbf` |`1438535543` |Dieser Anspruch ist die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Dieser Wert ist normalerweise mit dem Ausstellungszeitpunkt des Tokens identisch. Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
 | Version |`ver` |`1.0` |Dies ist die Version des ID-Tokens, wie in Azure AD definiert. |
-| Codehash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Ein Codehash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mithilfe eines Codehashs kann die Authentizität eines Autorisierungscodes überprüft werden. Weitere Einzelheiten zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).  |
-| Zugriffstokenhash |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Ein Zugriffstokenhash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mithilfe des Zugriffstokenhashs kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Einzelheiten zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html)  |
+| Codehash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Ein Codehash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mithilfe eines Codehashs kann die Authentizität eines Autorisierungscodes überprüft werden. Weitere Einzelheiten zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html).  |
+| Zugriffstokenhash |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Ein Zugriffstokenhash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mithilfe des Zugriffstokenhashs kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Einzelheiten zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce |`nonce` |`12345` |Eine Nonce ist eine Strategie zum Abwehren von Tokenwiedergabeangriffe. Ihre App kann eine Nonce in einer Autorisierungsanforderung mithilfe des `nonce`-Abfrageparameters angeben. Der in der Anforderung angegebene Wert wird nur im `nonce`-Anspruch eines ID-Tokens unverändert ausgegeben. Dadurch kann Ihre App den Wert anhand des Werts überprüfen, der in der Anforderung angegeben ist. Dabei wird die Sitzung der App einem bestimmten ID-Token zugeordnet. Ihre App sollte diese Überprüfung während des Überprüfungsvorgangs des ID-Tokens ausführen. |
 | Antragsteller |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |Dies ist der Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md). |
 | Klassenreferenz des Anwendungskontexts |`acr` |Nicht zutreffend |Derzeit nicht verwendet, außer bei älteren Richtlinien. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md). |
@@ -89,7 +89,7 @@ Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfo
 ### <a name="refresh-tokens"></a>Aktualisierungstoken
 Aktualisierungstoken sind Sicherheitstoken, mit denen Ihre App neue ID-Token und Zugriffstoken in einem OAuth 2.0-Fluss abrufen kann. Sie ermöglichen Ihrer App langfristig Zugriff auf Ressourcen im Auftrag von Benutzern, ohne dass eine Interaktion mit diesen erforderlich ist.
 
-Um bei einer Tokenantwort ein Aktualisierungstoken zu erhalten, muss Ihre App den `offline_acesss` -Bereich anfordern. Weitere Informationen zum `offline_access` -Bereich finden Sie in der [Azure AD B2C-Protokollreferenz](active-directory-b2c-reference-protocols.md).
+Um bei einer Tokenantwort ein Aktualisierungstoken zu erhalten, muss Ihre App den `offline_access` -Bereich anfordern. Weitere Informationen zum `offline_access` -Bereich finden Sie in der [Azure AD B2C-Protokollreferenz](active-directory-b2c-reference-protocols.md).
 
 Der Inhalt von Aktualisierungstoken ist für Ihre App niemals zugänglich. Sie werden von Azure AD ausgestellt und können nur von Azure AD untersucht und interpretiert werden. Obwohl sie lange gültig sind, darf beim Schreiben Ihrer App nicht von der bestimmten Gültigkeitsdauer eines Aktualisierungstokens ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung für Azure AD aus.
 
@@ -138,9 +138,9 @@ Die Beschreibung der Signaturüberprüfung geht über den Rahmen dieses Dokument
 ### <a name="validate-the-claims"></a>Überprüfen der Ansprüche
 Wenn Ihre App oder API ein ID-Token empfängt, sollte sie auch die Ansprüche im ID-Token mehrfach überprüfen. Dazu gehören unter anderem folgende Ansprüche:
 
-* Anspruch **Zielgruppe**: Hiermit wird überprüft, ob das ID-Token an Ihre App übergeben werden sollte.
-* Ansprüche **Nicht vor** und **Ablaufzeit**: Diese stellen sicher, dass das ID-Token nicht abgelaufen ist.
-* Anspruch **Aussteller**: Hiermit wird überprüft, ob das Token von Azure AD für Ihre App ausgestellt wurde.
+* Der Anspruch **Zielgruppe**: Hiermit wird überprüft, ob das ID-Token an Ihre App übergeben werden sollte.
+* Die Ansprüche **Nicht vor** und **Ablaufzeit**: Diese stellen sicher, dass das ID-Token nicht abgelaufen ist.
+* Der Anspruch **Aussteller**: Hiermit wird überprüft, ob das Token von Azure AD für Ihre App ausgestellt wurde.
 * **Nonce**: Dies ist eine Strategie zum Abwehren von Tokenwiedergabeangriffen.
 
 Eine vollständige Liste mit Validierungen, die von Ihrer App ausgeführt werden sollten, finden Sie in der [OpenID Connect-Spezifikation](https://openid.net). Details zu den erwarteten Werten für diese Ansprüche finden Sie im vorhergehenden Abschnitt zu [Token](#types-of-tokens).  

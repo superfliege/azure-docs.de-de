@@ -1,5 +1,5 @@
 ---
-title: 'Machine Learning-App: Anomaly Detection-API | Microsoft-Dokumentation'
+title: 'Machine Learning-App: Anomaly Detection-API: Team Data Science-Prozess'
 description: Die Anomaly Detection-API ist ein mit Microsoft Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
-ms.custom: (previous author=alokkirpal, ms.author=alok)
-ms.openlocfilehash: 485cf6af9f019bc43ee862627db8549240690247
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
+ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443924"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134793"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 ## <a name="overview"></a>Übersicht
@@ -25,7 +25,7 @@ Die [Anomaly Detection-API](https://gallery.cortanaintelligence.com/MachineLearn
 Diese API kann die folgenden Arten anomaler Muster in Zeitreihendaten erkennen:
 
 * **Positive und negative Trends**: Bei der Überwachung der Arbeitsspeichernutzung kann ein Aufwärtstrend in Bezug auf das Computing interessant sein, da dies ein Hinweis auf einen Speicherverlust sein kann.
-* **Änderungen im dynamischen Wertebereich**: Bei der Überwachung der durch einen Clouddienst ausgelösten Ausnahmen können Änderungen im dynamischen Wertebereich z.B. auf eine Instabilität der Dienstintegrität hinweisen.
+* **Änderungen in den dynamischen Wertebereich**: Bei der Überwachung der durch einen Clouddienst ausgelösten Ausnahmen können Änderungen im dynamischen Wertebereich z.B. auf eine Instabilität der Dienstintegrität hinweisen.
 * **Spitzen und Abfälle**: Beim Überwachen der Anzahl von fehlerhaften Anmeldeversuchen bei einem Dienst oder der Anzahl von Auscheckvorgängen in einer E-Commerce-Website könnten Spitzen oder Abfälle z.B. auf anormales Verhalten hinweisen.
 
 Diese Machine Learning-Erkennungselemente verfolgen diese Art von Wertänderungen in Abhängigkeit der Zeit und melden fortlaufende Änderungen der Werte als Anomaliebewertungen. Sie benötigen keine Ad-hoc-Schwellenwertanpassung, und ihre Bewertungen können verwendet werden, um falsch positive Raten zu steuern. Die Anomaly Detection-API ist beispielsweise in den folgenden Szenarios nützlich: Dienstüberwachung durch Nachverfolgen von KPIs in Abhängigkeit der Zeit, Nutzungsüberwachung anhand von Metriken wie der Anzahl von Suchvorgängen oder der Anzahl von Klicks, Leistungsüberwachung anhand von Indikatoren wie Arbeitsspeicher, CPU, Dateilesevorgänge usw. in Abhängigkeit der Zeit.
@@ -37,9 +37,9 @@ Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Sc
 > [!NOTE]
 > Probieren Sie die **IT Anomaly Insights-Lösung**, die von [dieser API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) unterstützt wird.
 > 
-> Um diese Komplettlösung in Ihrem Azure-Abonnement bereitzustellen,<a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank"> **starten Sie hier >**</a>.
-> 
->
+<!-- This Solution is no longer available
+> To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
+--> 
 
 ## <a name="api-deployment"></a>API-Bereitstellung
 Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies aus dem [Azure AI-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei AzureML-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs von der [AzureML-Webdienste](https://services.azureml.net/webservices/) Seite aus verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
@@ -108,10 +108,10 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 
 | Kategorie des Erkennungsmoduls | Erkennungsmodul | BESCHREIBUNG | Eingabeparameter | Ausgaben |
 | --- | --- | --- | --- | --- |
-| Spitzenerkennungsmodule |TSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Werte vom ersten und dritten Quartil |*tspikedetector.sensitivity:* Verwendet einen Ganzzahlwert im Bereich 1-10, Standard: 3. Mit höheren Werten werden Extremwerte erfasst, wodurch die Empfindlichkeit abnimmt. |TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
-| Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.sensitivity:* Verwendet einen Ganzzahlwert im Bereich 1-10, Standard: 3. Mit höheren Werten werden Extremwerte erfasst, wodurch die Empfindlichkeit abnimmt. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. | |
-| Erkennungsmodul für langsame Trends |Erkennungsmodul für langsame Trends |Erkennen von langsamen positiven Trends anhand der festgelegten Empfindlichkeit |*trenddetector.sensitivity:* Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25. 3,25 – 5 ist ein geeigneter Bereich; je höher der Wert, desto geringer die Empfindlichkeit). |tscore: Gleitzahl, die für die Anomaliebewertung des Trends steht. |
-| Erkennungsmodule für Pegeländerungen | Erkennungsmodul für bidirektionale Pegeländerungen |Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit |*bileveldetector.sensitivity:* Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25. 3,25 – 5 ist ein geeigneter Bereich; je höher der Wert, desto geringer die Empfindlichkeit). |rpscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht. | |
+| Spitzenerkennungsmodule |TSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Werte vom ersten und dritten Quartil |*tspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
+| Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. | |
+| Erkennungsmodul für langsame Trends |Erkennungsmodul für langsame Trends |Erkennen von langsamen positiven Trends anhand der festgelegten Empfindlichkeit |*trenddetector.Sensitivity:* Schwellenwert für den Erkennungswert (Standardwert: 3,25. 3,25 bis 5 ist ein geeigneter Bereich für die Auswahl. Je höher der Wert ist, desto geringer ist die Empfindlichkeit). |tscore: Gleitzahl, die für die Anomaliebewertung des Trends steht. |
+| Erkennungsmodule für Pegeländerungen | Erkennungsmodul für bidirektionale Pegeländerungen |Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit |*bileveldetector.Sensitivity:* Schwellenwert für den Erkennungswert (Standardwert: 3,25. 3,25 bis 5 ist ein geeigneter Bereich für die Auswahl. Je höher der Wert ist, desto geringer ist die Empfindlichkeit). |rpscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht. | |
 
 ### <a name="parameters"></a>Parameter
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:

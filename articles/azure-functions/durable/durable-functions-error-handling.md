@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 61496d91c9ec2cd1dcf498df04d2dab6629e009c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7a55e28f34f36cd02b67e56c6262b9e1f06dde8f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637515"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338191"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Fehlerbehandlung in Durable Functions (Azure Functions)
 
@@ -27,7 +27,7 @@ Jede Ausnahme, die in einer Aktivitätsfunktion ausgelöst wird, wird zurück zu
 
 Betrachten Sie beispielsweise die folgende Orchestratorfunktion, die Guthaben von einem Konto auf ein anderes überträgt:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -38,16 +38,16 @@ public static async Task Run(DurableOrchestrationContext context)
 
     await context.CallActivityAsync("DebitAccount",
         new
-        { 
+        {
             Account = transferDetails.SourceAccount,
             Amount = transferDetails.Amount
         });
 
     try
     {
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.DestinationAccount,
                 Amount = transferDetails.Amount
             });
@@ -56,9 +56,9 @@ public static async Task Run(DurableOrchestrationContext context)
     {
         // Refund the source account.
         // Another try/catch could be used here based on the needs of the application.
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.SourceAccount,
                 Amount = transferDetails.Amount
             });
@@ -66,7 +66,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -108,7 +108,7 @@ Wenn der Aufruf der **CreditAccount**-Funktion (Kreditkonto) für das Zielkonto 
 
 Wenn Sie Aktivitätsfunktionen oder untergeordnete Orchestrierungsfunktionen aufrufen, können Sie eine Richtlinie für automatische Wiederholungen angeben. Im folgenden Beispiel wird versucht, eine Funktion bis zu 3-mal mit je 5 Sekunden Wartezeit zwischen den einzelnen Wiederholungsversuchen aufzurufen:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -118,41 +118,41 @@ public static async Task Run(DurableOrchestrationContext context)
         maxNumberOfAttempts: 3);
 
     await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
-    
+
     // ...
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const retryOptions = new df.RetryOptions(5000, 3);
-    
+
     yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
 
     // ...
 });
 ```
 
-Die `CallActivityWithRetryAsync`-API (C#) oder die `callActivityWithRetry`-API (JS) erstellt einen `RetryOptions`-Parameter. Untergeordnete Orchestrierungsaufrufe, die die `CallSubOrchestratorWithRetryAsync`-API (C#) oder `callSubOrchestratorWithRetry`-API (JS) verwenden, können dieselben Wiederholungsrichtlinien verwenden.
+Die `CallActivityWithRetryAsync`-API (.NET) oder die `callActivityWithRetry`-API (JavaScript) erstellt einen `RetryOptions`-Parameter. Untergeordnete Orchestrierungsaufrufe, die die `CallSubOrchestratorWithRetryAsync`-API (.NET) oder `callSubOrchestratorWithRetry`-API (JavaScript) verwenden, können dieselben Wiederholungsrichtlinien verwenden.
 
 Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrichtlinie anzupassen. Dazu zählen:
 
-* **Max number of attempts** (Maximale Anzahl von Versuchen): Die maximale Anzahl von Wiederholungsversuchen.
-* **First retry interval** (Erstes Wiederholungsintervall): Die Zeitspanne bis zum Ablauf des ersten Wiederholungsversuchs.
-* **Backoff-Koeffizient**: Der Koeffizient, der verwendet wird, um den Anstieg der Backoff-Intervalle zu bestimmen. Der Standardwert lautet 1.
-* **Max retry interval** (Maximales Wiederholungsintervall): die maximale Zeitspanne zwischen den Wiederholungsversuchen.
-* **Retry timeout** (Timeout wiederholen): die maximale Zeitspanne für das Ausführen von Wiederholungsversuchen. Das Standardverhalten ist das Wiederholen auf unbestimmte Zeit.
-* **Handle:** Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob ein Funktionsaufruf wiederholt werden soll.
+* **Max number of attempts** (Maximale Anzahl von Versuchen):  Die maximale Anzahl von Wiederholungsversuchen.
+* **First retry interval** (Erstes Wiederholungsintervall):  Die Zeitspanne bis zum Ablauf des ersten Wiederholungsversuchs.
+* **Backoff-Koeffizient**:  Der Koeffizient, der verwendet wird, um den Anstieg der Backoff-Intervalle zu bestimmen. Der Standardwert lautet 1.
+* **Max retry interval** (Maximales Wiederholungsintervall):  Die maximale Zeitspanne zwischen den Wiederholungsversuchen.
+* **Retry timeout** (Timeout wiederholen):  Die maximale Zeitspanne für das Ausführen von Wiederholungsversuchen. Das Standardverhalten ist das Wiederholen auf unbestimmte Zeit.
+* **Handle**: Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob ein Funktionsaufruf wiederholt werden soll.
 
 ## <a name="function-timeouts"></a>Funktion-Timeouts
 
-Vielleicht möchten Sie einen Funktionsaufruf innerhalb einer Orchestratorfunktion verwerfen, wenn der Vorgang zu lange dauert. Die richtige Vorgehensweise ist das Erstellen eines [durable timer](durable-functions-timers.md) (permanenter Timer) mit `context.CreateTimer` in Verbindung mit `Task.WhenAny`, wie im folgenden Beispiel:
+Vielleicht möchten Sie einen Funktionsaufruf innerhalb einer Orchestratorfunktion verwerfen, wenn der Vorgang zu lange dauert. Die richtige Vorgehensweise ist das Erstellen eines [durable timer](durable-functions-timers.md) (permanenter Timer) mithilfe von `context.CreateTimer` (.NET) oder `context.df.createTimer` (JavaScript) in Verbindung mit `Task.WhenAny` (.NET) oder `context.df.Task.any` (JavaScript), wie im folgenden Beispiel:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -181,7 +181,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```javascript
 const df = require("durable-functions");

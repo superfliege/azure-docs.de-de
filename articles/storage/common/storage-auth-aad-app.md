@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 03dd056363cd99f5354dc10ed5ae328eb39c3ec2
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: b817723120f07de9159e47c1259a68eb95b9c2e3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291061"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140777"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen (Vorschauversion)
 
@@ -66,7 +66,7 @@ Im Fenster **Erforderliche Berechtigungen** wird jetzt angezeigt, dass Ihre Azur
 
 ![Screenshot mit Berechtigungen der registrierten App](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET Codebeispiel: Erstellen eines Blockblobs
+## <a name="net-code-example-create-a-block-blob"></a>Codebeispiel für .NET: Erstellen eines Blockblobs
 
 Das Codebeispiel veranschaulicht, wie Sie ein Zugriffstoken aus Azure AD abrufen. Mit dem Zugriffstoken wird der angegebene Benutzer authentifiziert und anschließend eine Anforderung zum Erstellen eines Blockblobs autorisiert. Damit dieses Beispiel funktioniert, führen Sie zunächst die in den vorherigen Abschnitten beschriebenen Schritte aus.
 
@@ -79,11 +79,11 @@ Das Codebeispiel veranschaulicht, wie Sie ein Zugriffstoken aus Azure AD abrufen
 
 Um einen Sicherheitsprinzipal bei Azure AD zu authentifizieren, müssen Sie einige bekannte Werte in den Code aufnehmen.
 
-#### <a name="azure-ad-oauth-endpoint"></a>Azure AD-OAuth-Endpunkt
+#### <a name="azure-ad-authority"></a>Azure AD-Autorität
 
-Der Azure AD-Basisautoritätsendpunkt für OAuth 2.0 lautet wie unten angegeben. Dabei steht *tenant-id* für Ihre Active Directory-Mandanten-ID (oder Verzeichnis-ID):
+Für die öffentliche Microsoft-Cloud lautet die Azure AD-Autorität wie unten angegeben. Dabei steht *tenant-id* für Ihre Active Directory-Mandanten-ID (oder Verzeichnis-ID):
 
-`https://login.microsoftonline.com/<tenant-id>/oauth2/token`
+`https://login.microsoftonline.com/<tenant-id>/`
 
 Die Mandanten-ID identifiziert den zur Authentifizierung zu verwendenden Azure AD-Mandanten. Führen Sie zum Abrufen der Mandanten-ID die Schritte unter **Abrufen der Mandanten-ID für Ihr Azure Active Directory** aus.
 
@@ -138,11 +138,11 @@ Fügen Sie als Nächstes eine Methode hinzu, die ein Token von Azure AD anforder
 static string GetUserOAuthToken()
 {
     const string ResourceId = "https://storage.azure.com/";
-    const string AuthEndpoint = "https://login.microsoftonline.com/{0}/oauth2/token";
+    const string AuthInstance = "https://login.microsoftonline.com/{0}/";
     const string TenantId = "<tenant-id>"; // Tenant or directory ID
 
     // Construct the authority string from the Azure AD OAuth endpoint and the tenant ID. 
-    string authority = string.Format(CultureInfo.InvariantCulture, AuthEndpoint, TenantId);
+    string authority = string.Format(CultureInfo.InvariantCulture, AuthInstance, TenantId);
     AuthenticationContext authContext = new AuthenticationContext(authority);
 
     // Acquire an access token from Azure AD. 

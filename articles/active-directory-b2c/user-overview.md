@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2354bf02b47c9fbc74dbc0dab07e30ca321279cf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670104"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725759"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -25,11 +25,11 @@ Die folgenden Arten von Konten sind verfügbar:
 
 - **Geschäftskonto**: Ein Geschäftskonto kann auf Ressourcen in einem Mandanten zugreifen und mit einer Administratorrolle Mandanten verwalten.
 - **Gastkonto**: Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann. 
-- **Consumerkonto** Ein Consumerkonto wird erstellt, indem ein Registrierungsprozess in einer Azure AD B2C-Anwendung durchlaufen oder die Azure AD Graph-API verwendet wird, und wird von Benutzern der Anwendungen verwendet, die bei Azure AD B2C registriert sind. 
+- **Consumerkonto**: Ein Consumerkonto wird erstellt, indem ein Benutzerflow für die Registrierung in einer Azure AD B2C-Anwendung durchlaufen oder die Azure AD Graph-API verwendet wird. Ein Consumerkonto wird von Benutzern der Anwendungen verwendet, die bei Azure AD B2C registriert sind. 
 
 ## <a name="work-account"></a>Geschäftskonto
 
-Ein Geschäftskonto wird für alle Mandanten auf die gleiche Weise basierend auf Azure AD angelegt. Um ein Geschäftskonto zu erstellen, befolgen Sie die Anweisungen unter [Schnellstart: Hinzufügen neuer Benutzer zu Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Ein Geschäftskonto wird im Azure-Portal mit der Option **Neuer Benutzer** erstellt.
+Ein Geschäftskonto wird für alle Mandanten auf die gleiche Weise basierend auf Azure AD angelegt. Informationen zum Erstellen eines Geschäftskontos finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer zu Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Ein Geschäftskonto wird im Azure-Portal mit der Option **Neuer Benutzer** erstellt.
 
 Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigurationseinstellungen berücksichtigen:
 
@@ -73,7 +73,7 @@ Sie können auch mit der [Microsoft Graph-API](https://developer.microsoft.com/e
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 
-Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen.  Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird mithilfe eines [Registrierungs- oder Anmeldungsprozesses](../active-directory-b2c/active-directory-b2c-reference-policies.md) erstellt.
+Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen.  Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird mithilfe eines [Benutzerflows für die Registrierung oder Anmeldung](../active-directory-b2c/active-directory-b2c-reference-policies.md) erstellt.
 
 Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden, indem Sie benutzerdefinierte Benutzerattribute verwenden. Weitere Informationen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

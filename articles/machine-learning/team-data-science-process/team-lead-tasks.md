@@ -1,6 +1,6 @@
 ---
-title: Aufgaben des Teamleiters eines Team Data Science-Prozesses - Azure | Microsoft-Dokumentation
-description: In diesem Artikel erhalten Sie einen Überblick über die Aufgaben des Teamleiters eines Data Science-Teamprojekts.
+title: Aufgaben für die Teamleitung im Team Data Science-Prozessteam
+description: Eine Übersicht über die Aufgaben, die ein Teamleiter bei einem Data Science-Teamprojekt für sein Data Science-Team erfüllen muss.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2004396266d4bde9f3be540408524b668bbb863d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: faf0e06a0649c31cec840a5043a11af601ba5c47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443848"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139638"
 ---
-# <a name="team-lead-tasks"></a>Aufgaben des Teamleiters
+# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Aufgaben für die Teamleitung im Team Data Science-Prozessteam
 
 In diesem Thema werden die Aufgaben beschrieben, die ein Teamleiter für sein Data Science-Team zu erfüllen hat. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science-Prozess](overview.md) (TDSP) vereinheitlicht ist. Der TDSP ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Er soll die Zusammenarbeit und die Lernprozesse im Team verbessern. Der Prozess fasst die bewährten Methoden und Strukturen von Microsoft sowie aus der gesamten Branche zusammen, die für eine erfolgreiche Implementierung von Data Science-Initiativen erforderlich sind, mit denen Unternehmen maximalen Nutzen aus ihren Analyseprogrammen ziehen können. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
 
@@ -46,11 +46,11 @@ Nachdem vom Gruppenleiter verschiedene vorab erforderliche Aufgaben ausgeführt 
 In diesem Thema werden abgekürzte Namen für Repositorys und Verzeichnisse verwendet. Diese Namen erleichtern es, den Vorgängen zwischen den Repositorys und Verzeichnissen zu folgen. Diese Notation (**R** für Git-Repositorys und **D** für lokale Verzeichnisse auf Ihrer DSVM) wird in den folgenden Abschnitten verwendet:
 
 - **R1**: Das Repository **GroupProjectTemplate** auf Git, das Ihr Gruppenleiter auf Ihrem Azure DevOps-Gruppenserver eingerichtet hat.
-- **R3**: Das Team-Repository **ProjectTemplate** auf Git, das Sie eingerichtet haben.
+- **R3**: Das Teamrepository **ProjectTemplate** auf Git, das Sie eingerichtet haben.
 - **R4**: Das Repository **TeamUtilities** auf Git, das Sie eingerichtet haben.
-- **D1**: Das von R1 geklonte lokale Verzeichnis, das zu D3 kopiert wurde.
-- **D3**: Das von R3 geklonte lokale Verzeichnis, das angepasst und zurück zu R3 kopiert wurde.
-- **D4**: Das von R4 geklonte lokale Verzeichnis, das angepasst und zurück zu R4 kopiert wurde.
+- **D1**: Das lokale Verzeichnis, das von R1 geklont und in D3 kopiert wurde.
+- **D3**: Das von R3 geklonte lokale Verzeichnis, das angepasst und zurück in R3 kopiert wurde.
+- **D4**: Das von R4 geklonte lokale Verzeichnis, das angepasst und zurück in R4 kopiert wurde.
 
 Die Namen für die Repositorys und Verzeichnisse in diesem Tutorial wurden unter der Annahme angegeben, dass Sie ein separates Projekt für Ihr eigenes Team innerhalb einer umfassenderen Data Science-Gruppe erstellen möchten. Ihnen als Teamleiter stehen jedoch weitere Möglichkeiten offen:
 
@@ -142,7 +142,7 @@ Für das Seeding-Verfahren werden die Verzeichnisse auf Ihrem lokalen DSVM als S
 - Klonen der Team-Repositorys in lokale Verzeichnisse: Team-R3 und -R4 – geklont zu –> lokales D3 und D4
 - Kopieren des Inhalts der Gruppenprojektvorlage in den lokalen Teamordner:  D1 – Inhalt kopiert in –> D3
 - (Optional) Anpassung von lokalem D3 und D4
-- Übertragen des Inhalts des lokalen Verzeichnisses in die Team-Repositorys: D3 und D4 – Inhalt hinzufügen zu –> Team-R3 und -R4
+- Pushen des Inhalts des lokalen Verzeichnisses in Teamrepositorys: D3 und D4 – Inhalt hinzufügen -> Team R3 und R4
 
 
 ### <a name="initialize-the-team-repositories"></a>Initialisieren der Team-Repositorys
@@ -158,7 +158,7 @@ Zum Starten dieses Verfahrens:
 
 - Erstellen Sie Verzeichnisse auf dem lokalen Computer:
     - Für **Windows**: **C:\GitRepos\GroupCommon** und **C:\GitRepos\MyTeam**
-    - Für **Linux**: **GitRepos\GroupCommon** und **GitRepos\MyTeam** in Ihrem Basisverzeichnis 
+    - Für **Linux**: **GitRepos\GroupCommon** und **GitRepos\MyTeam** in Ihrem Stammverzeichnis 
 - Wechseln Sie zum Verzeichnis **GitRepos\GroupCommon**.
 - Führen Sie den folgenden Befehl im Betriebssystem des lokalen Computers aus.
 
@@ -355,7 +355,7 @@ Vergewissern Sie sich, dass ein neues Laufwerk „F“ erfolgreich auf dem Compu
 
 ![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
 
-**Manuelles Eingeben von Azure File Storage-Informationen:** Wenn Sie die Azure File Storage-Informationen nicht in einer Textdatei gespeichert haben, können Sie die Anweisungen im folgenden Bildschirm befolgen und die erforderlichen Informationen zu Abonnement, Speicherkonto und Azure File Storage einzugeben:
+**Manuelles Eingeben der Azure File Storage-Informationen:** Wenn Sie die Azure File Storage-Informationen nicht in einer Textdatei gespeichert haben, können Sie die Anweisungen im folgenden Bildschirm befolgen und die erforderlichen Informationen zu Abonnement, Speicherkonto und Azure File Storage einzugeben:
 
 ![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
 
@@ -384,7 +384,7 @@ Vergewissern Sie sich, dass ein neues Laufwerk „F“ erfolgreich auf dem Compu
 
 ![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
 
-**Manuelles Eingeben von Azure File Storage-Informationen:** Wenn Sie die Azure File Storage-Informationen nicht in einer Textdatei gespeichert haben, können Sie die Anweisungen im folgenden Bildschirm befolgen und die erforderlichen Informationen zu Abonnement, Speicherkonto und Azure File Storage einzugeben:
+**Manuelles Eingeben der Azure File Storage-Informationen:** Wenn Sie die Azure File Storage-Informationen nicht in einer Textdatei gespeichert haben, können Sie die Anweisungen im folgenden Bildschirm befolgen und die erforderlichen Informationen zu Abonnement, Speicherkonto und Azure File Storage einzugeben:
 
 - Eingabe **n**.
 - Wählen Sie den Index für den Namen des Abonnements aus, unter dem der Azure File Storage im vorherigen Schritt erstellt wurde:

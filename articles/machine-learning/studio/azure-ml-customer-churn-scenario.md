@@ -1,12 +1,11 @@
 ---
-title: Analysieren der Kundenabwanderung mithilfe von Microsoft Azure Machine Learning Studio | Microsoft-Dokumentation
+title: 'Analysieren der Kundenabwanderung: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Fallstudie zur Entwicklung eines integrierten Modells für die Analyse und Bewertung der Kundenbindung unter Verwendung von Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 0ab398cc87472e3ede361f48f8e755ef294746da
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 48e3ca0b9910b673491e20e834b38170308aa132
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314983"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272166"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Microsoft Azure Machine Learning Studio
 ## <a name="overview"></a>Übersicht
@@ -31,11 +30,11 @@ Dieser Artikel bietet eine Referenzimplementierung eines Projekts zur Analyse de
 Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
 
 > [!NOTE]
-> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1).
+> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Azure AI Gallery](http://gallery.cortanaintelligence.com/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1).
 > 
 > 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="the-problem-of-customer-churn"></a>Das Problem der Kundenabwanderung
 Firmen müssen sich sowohl auf dem Verbrauchermarkt als auch in allen Unternehmenssektoren mit der Kundenabwanderung auseinandersetzen. Gelegentlich kann es zur übermäßigen Abwanderung kommen, die dann Grundsatzentscheidungen beeinflusst. Die traditionelle Lösung besteht darin, eine starke Abwanderungsbereitschaft von Kunden vorherzusagen und sich über einen Concierge-Dienst, Marketingkampagnen oder Sonderregelungen mit ihren Bedürfnissen auseinanderzusetzen. Die jeweilige Vorgehensweise variiert je nach Branche. Auch innerhalb einer einzigen Branche (z.B. Telekommunikation) kann das Vorgehen je nach Verbrauchergruppe variieren.
@@ -112,7 +111,7 @@ Die folgenden Diagramme veranschaulichen die verwendeten Daten.
  
 
 > Beachten Sie, dass diese Daten privat sind, weshalb Modell und Daten nicht freigegeben werden dürfen.
-> Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) unter [Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment in der [Azure AI Gallery](http://gallery.cortanaintelligence.com/): [Kundenabwanderung in der Telekommunikationsbranche](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Weitere Informationen zum Implementieren eines Abwanderungsanalysemodells mit Cortana Intelligence Suite finden Sie auch in [diesem Video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) von Senior Program Manager Wee Hyong Tok. 
 > 
@@ -147,7 +146,7 @@ Die wichtigste Kennzahl in Codeänderung ist jedoch die Rate der falschen Klassi
 
 ![][7]
 
-*Abbildung 9: Fläche unter der Kurve für den Passauer Prototyp*
+*Abbildung 9: Area Under Curve (AUC, Fläche unter der Kurve) für den Passauer Prototyp*
 
 ### <a name="using-auc-to-compare-results"></a>Verwenden von AUC zum Vergleichen von Ergebnissen
 „Area Under Curve“ (AUC) ist eine Metrik, die eine globale Maßeinheit für die *Trennbarkeit* zwischen den Verteilungen von Punktzahlen für positive und negative Bestände. Sie ähnelt dem traditionellen ROC-Diagramm (Receiver Operator Characteristic), aber ein wesentlicher Unterschied ist, dass die AUC-Kennzahl von Ihnen keinen Schwellenwert erfordert. Stattdessen fasst sie die Ergebnisse über **alle** möglichen Optionen zusammen. Im Gegensatz dazu zeigt das traditionelle ROC-Diagramm den positiven Wert an der vertikalen und den falsch positiven Wert an der horizontalen Achse an, wobei der Schwellenwert für die Klassifizierung variiert.   
@@ -217,9 +216,9 @@ In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen
  
 
 ## <a name="references"></a>Referenzen
-[1]Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, Juli/August 2011, S. 18-20.  
+[1] Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, Juli/August 2011, S. 18-20.  
 
-[2] Wikipedia-Artikel: [Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision) (in englischer Sprache)
+[2] Wikipedia-Artikel: [Richtigkeit und Genauigkeit](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
 [3] [CRISP-DM 1.0: Step-by-Step Data Mining Guide](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 

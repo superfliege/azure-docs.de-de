@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7df61cad250663d4b08c8c8d32257718e2f37db
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012844"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384230"
 ---
-# <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen
-Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung in Java mithilfe von Apache Maven erstellen und entwickeln. Setzen Sie anschließend die Anwendung mit Azure HDInsight (Hadoop) ein.
+# <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>Verwenden von Apache Maven zur Entwicklung von Java-Anwendungen, die Apache HBase mit Windows-basiertem HDInsight (Apache Hadoop) nutzen
+Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung in Java mithilfe von Apache Maven erstellen und entwickeln. Setzen Sie anschließend die Anwendung mit Azure HDInsight (Apache Hadoop) ein.
 
-[Maven](http://maven.apache.org/) ist ein Projektmanagement- und Verständnistool, mit dem Sie Software, Dokumentationen und Berichte für Java-Projekte erstellen können. In diesem Artikel erfahren Sie, wie Sie es für das Erstellen einer einfachen Java-Anwendung verwenden, die eine HBase-Tabelle in einem Azure HDInsight-Cluster erstellt, abfragt und löscht.
+[Apache Maven](http://maven.apache.org/) ist ein Projektmanagement- und Verständnistool, mit dem Sie Software, Dokumentationen und Berichte für Java-Projekte erstellen können. In diesem Artikel erfahren Sie, wie Sie es für das Erstellen einer einfachen Java-Anwendung verwenden, die eine HBase-Tabelle in einem Azure HDInsight-Cluster erstellt, abfragt und löscht.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Windows. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 * [Java-Plattform JDK](https://aka.ms/azure-jdks) 7 oder höher
-* [Maven](http://maven.apache.org/)
+* [Apache Maven](http://maven.apache.org/)
 * Ein Windows-basierter HDInsight-Cluster mit HBase
 
-    > [!NOTE]
+    > [!NOTE]  
     > Die Schritte in diesem Dokument wurden mit HDInsight-Clustern der Versionen 3.2 und 3.3 getestet. Die Standardwerte in den Beispielen gelten für einen Cluster mit HDInsight 3.3.
 
 ## <a name="create-the-project"></a>Erstellen des Projekts
@@ -40,7 +40,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung i
 
     Mit diesem Befehl wird ein Verzeichnis am aktuellen Speicherort erstellt, das den Namen trägt, der mit dem Parameter **artifactID** (in diesem Beispiel **hbaseapp**) festgelegt wurde. Dieses Verzeichnis enthält die folgenden Elemente:
 
-   * **pom.xml**: Das Projektobjektmodell ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) enthält Informationen und Konfigurationsdetails zum Erstellen des Projekts.
+   * **pom.xml**:  Das Projektobjektmodell ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) enthält Informationen und Konfigurationsdetails zum Erstellen des Projekts.
    * **src**: Das Verzeichnis mit dem Verzeichnis **main\java\com\microsoft\examples**, in dem Sie die Anwendung erstellen.
 3. Löschen Sie die Datei **src\test\java\com\microsoft\examples\apptest.java**, da sie in diesem Beispiel nicht verwendet wird.
 
@@ -53,9 +53,9 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung i
           <version>1.1.2</version>
         </dependency>
 
-    In diesem Abschnitt wird Maven informiert, dass das Projekt den **hbase-Client** in der Version **1.1.2** benötigt. Beim Kompilieren wird diese Abhängigkeit aus dem Maven-Standardrepository heruntergeladen. Sie können die [Suche im zentralen Maven-Repository](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) verwenden, wenn Sie weitere Informationen zu dieser Abhängigkeit erhalten möchten.
+    In diesem Abschnitt wird Maven informiert, dass das Projekt den **hbase-Client** in der Version **1.1.2** benötigt. Beim Kompilieren wird diese Abhängigkeit aus dem Maven-Standardrepository heruntergeladen. Sie können die [Suche im zentralen Apache Maven-Repository](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) verwenden, wenn Sie weitere Informationen zu dieser Abhängigkeit erhalten möchten.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Die Versionsnummer muss mit der Version von HBase übereinstimmen, die mit Ihrem HDInsight-Cluster bereitgestellt wird. Suchen Sie die richtige Versionsnummer mithilfe der folgenden Tabelle.
    >
    >
@@ -65,7 +65,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung i
    | 3.2 |0.98.4-hadoop2 |
    | 3.3 |1.1.2 |
 
-    Weitere Informationen zu HDInsight-Versionen und Komponenten finden Sie unter [Was sind die verschiedenen Hadoop-Komponenten, die in HDInsight verfügbar sind?](hdinsight-component-versioning.md).
+    Weitere Informationen zu HDInsight-Versionen und Komponenten finden Sie unter [Was sind die verschiedenen Apache Hadoop-Komponenten, die in HDInsight verfügbar sind?](hdinsight-component-versioning.md).
 2. Wenn Sie einen HDInsight 3.3-Cluster verwenden, müssen Sie dem `<dependencies>` -Abschnitt auch Folgendes hinzufügen:
 
         <dependency>
@@ -122,12 +122,12 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung i
 
     Mit dem Abschnitt `<resources>` wird eine Ressource (**conf/hbase-site.xml**) konfiguriert, die die Konfigurationsinformationen für HBase enthält.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Sie können die Konfigurationswerte auch per Code festlegen. Wie Sie hierbei vorgehen, erfahren Sie in den Kommentaren im Beispiel **CreateTable** weiter unten.
    >
    >
 
-    Mit diesem Abschnitt `<plugins>` werden auch das [Maven Compiler-Plug-In](http://maven.apache.org/plugins/maven-compiler-plugin/) und das [Maven Shade-Plug-In](http://maven.apache.org/plugins/maven-shade-plugin/) konfiguriert. Das Compiler-Plug-In wird zum Kompilieren der Topologie verwendet. Das Shade-Plug-In wird verwendet, um die Lizenzduplizierung in dem von Maven erstellten JAR-Paket zu verhindern. Es wird deshalb verwendet, weil die doppelten Lizenzdateien bei der Laufzeit einen Fehler auf dem HDInsight-Cluster verursachen. Wenn das Maven-Shade-Plug-In mit der `ApacheLicenseResourceTransformer` -Implementierung verwendet wird, wird dieser Fehler verhindert.
+    Mit diesem Abschnitt `<plugins>` werden auch das [Apache Maven Compiler-Plug-In](http://maven.apache.org/plugins/maven-compiler-plugin/) und das [Apache Maven Shade-Plug-In](http://maven.apache.org/plugins/maven-shade-plugin/) konfiguriert. Das Compiler-Plug-In wird zum Kompilieren der Topologie verwendet. Das Shade-Plug-In wird verwendet, um die Lizenzduplizierung in dem von Maven erstellten JAR-Paket zu verhindern. Es wird deshalb verwendet, weil die doppelten Lizenzdateien bei der Laufzeit einen Fehler auf dem HDInsight-Cluster verursachen. Wenn das Maven-Shade-Plug-In mit der `ApacheLicenseResourceTransformer` -Implementierung verwendet wird, wird dieser Fehler verhindert.
 
     Das Maven-Shade-Plug-In erzeugt außerdem ein Uberjar (oder Fatjar), das alle Abhängigkeiten enthält, die von der Anwendung benötigt werden.
 4. Speichern Sie die Datei **pom.xml** .
@@ -173,7 +173,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung i
 
     Diese Datei wird zum Laden der HBase-Konfiguration für einen HDInsight-Cluster verwendet.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Dies ist eine kompakte Datei vom Typ „hbase-site.xml“, die nur die wichtigsten Einstellungen für den HDInsight-Cluster enthält.
 
 6. Speichern Sie die Datei **hbase-site.xml**.
@@ -357,11 +357,11 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung i
     Damit werden etwaige frühere Erstellungsartefakte entfernt, alle noch nicht installierten Abhängigkeiten heruntergeladen und dann die Anwendung erstellt und gepackt.
 3. Nachdem dieser Befehl ausgeführt wurde, enthält das Verzeichnis **hbaseapp\target** eine Datei namens **hbaseapp-1.0-SNAPSHOT.jar**.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Die Datei **hbaseapp-1.0-SNAPSHOT.jar** ist ein Uberjar (manchmal auch Fatjar genannt) mit allen Abhängigkeiten, die für das Ausführen der Anwendung erforderlich sind.
 
 ## <a name="upload-the-jar-file-and-start-a-job"></a>Hochladen der JAR-Datei und Starten eines Auftrags
-Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen, wie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md)beschrieben. Für die folgenden Schritte wird Azure PowerShell verwendet.
+Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen, wie unter [Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md) beschrieben. Für die folgenden Schritte wird Azure PowerShell verwendet.
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 

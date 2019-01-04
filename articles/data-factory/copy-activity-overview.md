@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457081"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082645"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -55,7 +55,7 @@ Die Kopieraktivität durchläuft die folgenden Phasen, um Daten aus einer Quelle
 
 Sie können die Kopieraktivität verwenden, um **Dateien unverändert** zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten effizient ohne Serialisierung/Deserialisierung kopiert.
 
-Die Kopieraktivität unterstützt auch das Lesen und Schreiben von Dateien in den folgenden Formaten: **Text, JSON, Avro, ORC und Parquet**. Außerdem unterstützt sie folgende Komprimierungscodecs: **„GZip“, „Deflate“, „BZip2“ und „ZipDeflate“**. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
+Die Kopieraktivität unterstützt auch das Lesen von und Schreiben in Dateien in bestimmten Formaten: **Text, JSON, Avro, ORC und Parquet** sowie die Komprimierungscodecs **GZip, Deflate, BZip2 und ZipDeflate** werden unterstützt. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
 
 Sie können z.B. folgende Kopieraktivitäten ausführen:
 
@@ -130,7 +130,7 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die Eigenschaft „type“ einer Kopieraktivität muss auf **Copy** festgelegt werden | JA |
+| type | Die type-Eigenschaft einer Kopieraktivität muss auf Folgendes festgelegt werden: **Copy** | JA |
 | inputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Quelldaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Eingabe. | JA |
 | outputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Senkendaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Ausgabe. | JA |
 | typeProperties | Eine Gruppe von Eigenschaften zum Konfigurieren der Kopieraktivität. | JA |
@@ -173,6 +173,7 @@ Ausführungsdetails der Kopieraktivität und Leistungsmerkmale werden auch im Au
 | dataRead | Größe der Daten, die aus der Quelle gelesen werden | Int64-Wert in **Bytes** |
 | dataWritten | Größe der Daten, die in die Senke geschrieben werden | Int64-Wert in **Bytes** |
 | filesRead | Die Anzahl von Dateien, die beim Kopieren von Daten aus dem Dateispeicher kopiert werden. | Int64-Wert (ohne Einheit) |
+| fileScanned | Anzahl Dateien, die vom Quelldateispeicher gescannt werden. | Int64-Wert (ohne Einheit) |
 | filesWritten | Die Anzahl von Dateien, die beim Kopieren von Daten in den Dateispeicher kopiert werden. | Int64-Wert (ohne Einheit) |
 | rowsCopied | Anzahl der Zeilen, die kopiert werden (gilt nicht für eine Binärkopie). | Int64-Wert (ohne Einheit) |
 | rowsSkipped | Anzahl der übersprungenen, nicht kompatiblen Zeilen. Sie können das Feature aktivieren, indem Sie „enableSkipIncompatibleRow“ auf „true“ festlegen. | Int64-Wert (ohne Einheit) |

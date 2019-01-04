@@ -1,5 +1,5 @@
 ---
-title: Erstellen dynamischer Blaupausen mithilfe von Parametern in Azure Blueprint
+title: Verwenden von Parametern für das Erstellen dynamischer Blaupausen
 description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie deren Verwendung zur Erstellung dynamischer Blaupausen führt.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f6485b01c391ba336799ceb35ee67402b3603585
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 0eef85fe92682eb3a6fd1dbc036cf547b163db97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093750"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310316"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
@@ -237,6 +238,6 @@ Artefakte für eine Ressourcengruppe werden mit einem Vorlagennamen und den Eige
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
 - Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen.
-- Erfahren Sie, wie Sie [Ressourcen in Blueprints sperren](resource-locking.md) können.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blueprintzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).
+- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

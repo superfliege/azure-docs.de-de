@@ -7,27 +7,32 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: seguler
-ms.openlocfilehash: 50378fd7739567b0cc56066168ddd33c3ea14141
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2374875512bba55409ef43906acb20238c77158f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957053"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268460"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Einbinden von Blob Storage als Dateisystem mit blobfuse
 
 ## <a name="overview"></a>Übersicht
-[blobfuse](https://github.com/Azure/azure-storage-fuse) ist ein virtueller Dateisystemtreiber für Azure Blob Storage, der Ihnen den Zugriff auf vorhandene Blockblobdaten in Ihrem Storage-Konto über das Linux-Dateisystem ermöglicht. Azure Blob Storage ist ein Objektspeicherdienst und verfügt daher nicht über einen hierarchischen Namespace. Blobfuse stellt diesen Namespace mithilfe des Schemas für virtuelle Verzeichnisse bereit. Dabei wird als Trennzeichen ein Schrägstrich (/) verwendet.  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) ist ein virtueller Dateisystemtreiber für Azure Blob Storage. Sie können Blobfuse verwenden, um über das Linux-Dateisystem auf die vorhandenen Blockblobdaten in Ihrem Speicherkonto zuzugreifen. Azure Blob Storage ist ein Objektspeicherdienst und verfügt nicht über einen hierarchischen Namespace. Blobfuse stellt diesen Namespace mithilfe des Schemas für virtuelle Verzeichnisse bereit. Dabei wird als Trennzeichen ein Schrägstrich (/) verwendet.  
 
 In diesem Handbuch wird gezeigt, wie Sie blobfuse verwenden, einen Blobspeichercontainer unter Linux einbinden und auf Daten zugreifen. Weitere Informationen zu blobfuse finden Sie im [blobfuse-Repository](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
-> blobfuse garantiert keine 100-prozentige Konformität mit POSIX, da Anforderungen einfach in [Blob-REST-APIs](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) übersetzt werden. Umbenennungsvorgänge sind in POSIX beispielsweise atomisch, in blobfuse jedoch nicht.
+> Blobfuse garantiert keine 100-prozentige Konformität mit POSIX, da Anforderungen einfach in [Blob-REST-APIs](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) übersetzt werden. Umbenennungsvorgänge sind in POSIX beispielsweise atomisch, in blobfuse jedoch nicht.
 > Eine vollständige Liste der Unterschiede zwischen einem nativen Dateisystem und blobfuse finden Sie im [blobfuse-Quellcoderepository](https://github.com/azure/azure-storage-fuse).
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Installieren von blobfuse unter Linux
-blobfuse-Binärdateien befinden sich für Ubuntu- und RHEL-Distributionen in den [Microsoft-Softwarerepositorys für Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software). Um blobfuse in diesen Distributionen zu installieren, konfigurieren Sie eins der Repositorys aus der Liste. Sie können die Binärdateien auch gemäß [dieser](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) Installationsschritte aus dem Quellcode erstellen, wenn für Ihre Distribution keine Binärdateien verfügbar sind.
+blobfuse-Binärdateien befinden sich für Ubuntu- und RHEL-Distributionen in den [Microsoft-Softwarerepositorys für Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software). Um Blobfuse in diesen Distributionen zu installieren, konfigurieren Sie eines der Repositorys aus der Liste. Sie können die Binärdateien auch gemäß den [Azure Storage-Installationsschritten](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) aus dem Quellcode erstellen, wenn für Ihre Distribution keine Binärdateien verfügbar sind.
+
+Blobfuse unterstützt die Installation unter Ubuntu 14.04 und 16.04. Führen Sie diesen Befehl aus, um sicherzustellen, dass Sie eine dieser Versionen bereitgestellt haben:
+```
+lsb_release -a
+```
 
 ### <a name="configure-the-microsoft-package-repository"></a>Konfigurieren des Microsoft-Paketrepositorys
 Konfigurieren Sie das [Linux-Paketrepository für Microsoft-Produkte](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
@@ -39,14 +44,14 @@ sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-pr
 
 Analog dazu ändern Sie die URL in `.../rhel/7/...`, um auf eine Enterprise Linux 7-Distribution zu verweisen.
 
-Ein weiteres Beispiel für eine Konfiguration für Ubuntu 14.04:
+Ein weiteres Beispiel für eine Konfiguration für eine Ubuntu 14.04-Distribution:
 ```bash
 wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Analog dazu ändern Sie die URL in `.../ubuntu/16.04/...`, um auf eine Ubuntu 16.04-Distribution zu verweisen.
+Analog dazu ändern Sie die URL in `.../ubuntu/16.04/...` so, dass sie auf eine Ubuntu 16.04-Distribution verweist.
 
 ### <a name="install-blobfuse"></a>Installieren von blobfuse
 
@@ -56,27 +61,27 @@ sudo apt-get install blobfuse
 ```
 
 In einer Enterprise Linux-Distribution:
-```bash
+```bash    
 sudo yum install blobfuse
 ```
 
 ## <a name="prepare-for-mounting"></a>Vorbereiten der Einbindung
-blobfuse erfordert einen temporären Pfad im Dateisystem zum Puffern und Zwischenspeichern geöffneter Dateien, wodurch nahezu die gleiche Leistung wie bei einer nativen Lösung erreicht wird. Wählen Sie für diesen temporären Pfad den leistungsstärksten Datenträger aus, oder verwenden Sie eine RAM-Disk, um eine optimale Leistung zu erzielen. 
+Blobfuse erfordert einen temporären Pfad im Dateisystem zum Puffern und Zwischenspeichern geöffneter Dateien, wodurch nahezu die gleiche Leistung wie bei einer nativen Lösung erreicht wird. Wählen Sie für diesen temporären Pfad den leistungsstärksten Datenträger aus, oder verwenden Sie eine RAM-Disk, um eine optimale Leistung zu erzielen. 
 
 > [!NOTE]
 > Blobfuse speichert die Inhalte aller geöffneten Dateien am temporären Pfad. Stellen Sie sicher, dass ausreichend Speicher für alle geöffneten Dateien verfügbar ist. 
 > 
 
 ### <a name="optional-use-a-ramdisk-for-the-temporary-path"></a>(Optional) Verwenden einer RAM-Disk für den temporären Pfad
-Das folgende Beispiel erstellt eine RAM-Disk mit 16 GB sowie ein Verzeichnis für blobfuse. Wählen Sie basierend auf Ihren Anforderungen die Größe aus. Diese RAM-Disk ermöglicht blobfuse das Öffnen von Dateien mit einer Größe von bis zu 16 GB. 
+Das folgende Beispiel erstellt eine RAM-Disk mit 16 GB sowie ein Verzeichnis für Blobfuse. Wählen Sie basierend auf Ihren Anforderungen die Größe aus. Diese RAM-Disk ermöglicht blobfuse das Öffnen von Dateien mit einer Größe von bis zu 16 GB. 
 ```bash
 sudo mount -t tmpfs -o size=16g tmpfs /mnt/ramdisk
 sudo mkdir /mnt/ramdisk/blobfusetmp
 sudo chown <youruser> /mnt/ramdisk/blobfusetmp
 ```
 
-### <a name="use-an-ssd-for-temporary-path"></a>Verwenden eines SSD für den temporären Pfad
-In Azure können Sie die auf Ihren virtuellen Computern verfügbaren kurzlebigen Datenträger (SSD) nutzen, um für blobfuse einen Puffer mit geringer Latenz bereitzustellen. In Ubuntu-Distributionen wird dieser kurzlebige Datenträger unter „/mnt“, in Red Hat- und CentOS-Distributionen unter „/mnt/resource/“ bereitgestellt.
+### <a name="use-an-ssd-as-a-temporary-path"></a>Verwenden eines SSD-Datenträgers als temporärer Pfad
+In Azure können Sie die auf Ihren virtuellen Computern verfügbaren kurzlebigen Datenträger (SSD) nutzen, um für blobfuse einen Puffer mit geringer Latenz bereitzustellen. In Ubuntu-Distributionen wird dieser kurzlebige Datenträger mit „/mnt“ bereitgestellt. In Red Hat- und CentOS-Distributionen wird der Datenträger mit „mnt/resource/“ bereitgestellt.
 
 Stellen Sie sicher, dass Benutzer auf den temporären Pfad zugreifen können:
 ```bash
@@ -113,13 +118,13 @@ mkdir ~/mycontainer
 > Eine vollständige Liste der Einbindungsoptionen finden Sie im [blobfuse-Repository](https://github.com/Azure/azure-storage-fuse#mount-options).  
 > 
 
-Führen Sie zum Einbinden von blobfuse den folgenden Befehl für den Benutzer aus. Dieser Befehl bindet den unter „/path/to/fuse_connection.cfg“ angegebenen Container am Speicherort „/mycontainer“ ein.
+Führen Sie zum Einbinden von Blobfuse den folgenden Befehl für den Benutzer aus. Dieser Befehl bindet den unter „/path/to/fuse_connection.cfg“ angegebenen Container am Speicherort „/mycontainer“ ein.
 
 ```bash
-blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
+sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Sie sollten jetzt über die regulären Dateisystem-APIs auf Ihre Blockblobs zugreifen können. Beachten Sie, dass zur Sicherung des Zugriffs auf das eingebundene Verzeichnis nur von dem Benutzer zugegriffen werden kann, der es eingebunden hat. Wenn Sie den Zugriff für alle Benutzer zulassen möchten, können Sie für die Einbindung die Option ```-o allow_other``` verwenden. 
+Sie sollten jetzt über die regulären Dateisystem-APIs auf Ihre Blockblobs zugreifen können. Der Benutzer, der das Verzeichnis bereitstellt, ist die einzige Person, die standardmäßig darauf zugreifen kann, sodass der Zugriff gesichert ist. Um den Zugriff für alle Benutzer zuzulassen, können Sie für die Einbindung die Option ```-o allow_other``` verwenden. 
 
 ```bash
 cd ~/mycontainer

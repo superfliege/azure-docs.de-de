@@ -1,28 +1,22 @@
 ---
-title: 'Azure ExpressRoute: Überprüfen der Konnektivität | Microsoft-Dokumentation'
+title: 'Überprüfen der Konnektivität – ExpressRoute-Handbuch zur Problembehandlung: Azure | Microsoft-Dokumentation'
 description: Diese Seite enthält Anleitungen für die Problembehandlung und Überprüfung der lückenlosen Konnektivität einer ExpressRoute-Verbindung.
-documentationcenter: na
 services: expressroute
 author: rambk
-manager: tracsman
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/26/2017
-ms.author: cherylmc
-ms.openlocfilehash: 10d4779d05d95822ffd487db1ce8992d199c495f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: rambala
+ms.custom: seodec18
+ms.openlocfilehash: a64aa59b205e8986b80a575c50041f826606e16f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753444"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272812"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
-Mit ExpressRoute wird ein lokales Netzwerk über eine private Verbindung, die über einen Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitert. ExpressRoute umfasst die drei folgenden separaten Netzwerkzonen:
+Dieser Artikel hilft Ihnen beim Sicherstellen der ExpressRoute-Konnektivität und beim Beheben von Problemen. Mit ExpressRoute wird ein lokales Netzwerk über eine private Verbindung, die über einen Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitert. ExpressRoute umfasst die drei folgenden separaten Netzwerkzonen:
 
 -   Kundennetzwerk
 -   Anbieternetzwerk
@@ -44,7 +38,7 @@ Im obigen Diagramm stehen die Zahlen für wichtige Netzwerkpunkte. Auf die Netzw
 Je nach ExpressRoute-Konnektivitätsmodell (Cloud Exchange Co-Location, Point-to-Point-Ethernet-Verbindung oder Any-to-Any (IPVPN)) können die Netzwerkpunkte 3 und 4 Switches (Layer 2-Geräte) sein. Die wichtigen dargestellten Netzwerkpunkte sind:
 
 1.  Computegerät des Kunden (z.B. ein Server oder PC)
-2.  „CEs“: Edge-Router des Kunden 
+2.  CEs: Edge-Router des Kunden 
 3.  PEs (mit CE-Verbindung): Edge-Router/-Switches des Anbieters mit Verbindung mit Edge-Routern des Kunden. Sie werden in diesem Dokument als „PE-CEs“ bezeichnet.
 4.  PEs (mit MSEE-Verbindung): Edge-Router/-Switches des Anbieters mit Verbindung mit MSEEs. Sie werden in diesem Dokument als „PE-MSEEs“ bezeichnet.
 5.  MSEEs: MSEE-ExpressRoute-Router (Microsoft Enterprise Edge)
@@ -161,7 +155,7 @@ Eine Beispielantwort lautet:
     Sku                              : Standard
     Status                           : Enabled
 
-Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine ExpressRoute-Verbindung betriebsbereit ist: ServiceProviderProvisioningState : Provisioned Status                           : Enabled
+Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine ExpressRoute-Verbindung betriebsbereit ist: ServiceProviderProvisioningState: Status der Bereitstellung                           : Aktiviert
 
 >[!NOTE]
 >Wenden Sie sich an den [Microsoft Support][Support], wenn die Option *Status* nicht auf „Enabled“ festgelegt ist. Wenden Sie sich an Ihren Service Provider, wenn *ServiceProviderProvisioningState* nicht auf „Provisioned“ festgelegt ist.

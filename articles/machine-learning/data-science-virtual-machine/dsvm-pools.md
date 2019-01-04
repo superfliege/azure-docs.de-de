@@ -6,6 +6,7 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -13,36 +14,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 12/10/2018
 ms.author: gokuma
-ms.openlocfilehash: 0740ff7542d066442146b8e80e188ad5ba49a2b5
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 648b0818f07aca8763fa4af01380076ae307b0a2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309397"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408951"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Erstellen eines freigegebenen Pools von Data Science Virtual Machine-Instanzen
 
 In diesem Artikel erfahren Sie, wie Sie einen freigegebenen Pool von Data Science Virtual Machine-Instanzen (DSVMs) für die Verwendung durch ein Team erstellen können. Die Vorteile der Verwendung eines freigegebenen Pools sind die bessere Ressourcennutzung, die Vereinfachung von Freigaben und Zusammenarbeit und die effektivere Verwaltung der DSVM-Ressourcen. 
 
-Zum Erstellen eines DSVM-Pools können Sie zahlreiche Methoden und Technologien verwenden. Die Schwerpunkte dieses Artikels liegen auf Pools für die Batchverarbeitung und interaktiven VMs.
-
-## <a name="batch-processing-pool"></a>Pool für die Batchverarbeitung
-Wenn Sie einen Pool von DSVM-Instanzen hauptsächlich für die Offlineausführung von Aufträgen in einem Batch einrichten möchten, können Sie den Dienst [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) oder [Azure Batch](https://docs.microsoft.com/azure/batch/) verwenden. In diesem Artikel wird Azure Batch AI genauer betrachtet.
-
-Die Ubuntu-Edition der DSVM wird als eines der Images in Azure Batch AI unterstützt. In Azure CLI oder im Python SDK, in der bzw. dem Sie den Azure Batch AI-Cluster erstellen, geben Sie den `image`-Parameter an und legen ihn auf `UbuntuDSVM` fest. Sie können die gewünschte Art von Verarbeitungsknoten festlegen: GPU-basierte Instanzen oder einfache CPU-Instanzen, Anzahl der CPUs und Arbeitsspeicher aus einer [großen Auswahl von VM-Instanzen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/), die in Azure verfügbar sind. 
-
-Wenn Sie das Ubuntu-DSVM-Image in Batch AI mit GPU-basierten Knoten verwenden, sind die erforderlichen GPU-Treiber und Deep Learning-Frameworks vorinstalliert. Dadurch sparen Sie sehr viel Zeit bei der Vorbereitung der Batchknoten. Wenn Sie auf einer Ubuntu-DSVM-Instanz interaktiv entwickeln, werden Sie bemerken, dass die Batch AI-Knoten genau das gleiche Setup und die gleiche Konfiguration wie die Umgebung aufweisen. 
-
-Beim Erstellen eines Batch AI-Clusters erstellen Sie normalerweise auch eine Dateifreigabe, die von allen Knoten eingebunden wird. Die Dateifreigabe dient der Ein- und Ausgabe von Daten sowie der Speicherung des Batchauftragscodes bzw. -skripts. 
-
-Nachdem dem Erstellen eines Batch AI-Clusters können Sie die gleiche CLI oder das Python SDK verwenden, um auszuführende Aufträge zu übermitteln. Sie zahlen nur für die Zeit, die zum Ausführen der Batchaufträge aufgewendet wird. 
-
-Weitere Informationen:
-* Schrittweise exemplarische Vorgehensweise zur Verwendung von [Azure CLI](https://docs.microsoft.com/azure/batch-ai/quickstart-cli) für die Verwaltung von Batch AI
-* Schrittweise exemplarische Vorgehensweise zur Verwendung von [Python](https://docs.microsoft.com/azure/batch-ai/quickstart-python) für die Verwaltung von Batch AI
-* [Batch AI-Anleitungen](https://github.com/Azure/BatchAI) zur Verwendung verschiedener KI- und Deep Learning-Frameworks mit Batch AI
+Zum Erstellen eines DSVM-Pools können Sie zahlreiche Methoden und Technologien verwenden. Die Schwerpunkte dieses Artikels liegen auf Pools für interaktive VMs. Eine alternative verwaltete Computeinfrastruktur ist Azure Machine Learning Compute. Weitere Informationen finden Sie unter [Einrichten von Computezielen](../service/how-to-set-up-training-targets.md#amlcompute).
 
 ## <a name="interactive-vm-pool"></a>Interaktiver VM-Pool
 

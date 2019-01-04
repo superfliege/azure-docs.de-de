@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2aa4545aa79260bea792392e1bebf4166253fc87
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fa9b6821e1e35f7631907a029a2576d5949ac6d3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315714"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339636"
 ---
 # <a name="security-center-settings"></a>Security Center-Einstellungen
 Dieser Artikel enthält eine Übersicht über die Einstellungen in Security Center.
 
 Unter „Sicherheitsrichtlinie“ stehen folgende Einstellungen zur Verfügung:
 
-- **Datensammlung:** Bestimmt die Einstellungen für die Agent-Bereitstellung und die [Datensammlung](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection).
-- **Sicherheitsrichtlinie:** Bestimmt, welche Maßnahmen Security Center überwacht und empfiehlt. Die [Sicherheitsrichtlinie](security-center-azure-policy.md) kann in Security Center bearbeitet werden. Außerdem können Sie [Azure Policy](security-center-azure-policy.md) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifend Richtlinien zuzuweisen. 
-- **E-Mail-Benachrichtigungen:** Bestimmt Sicherheitskontakte und Einstellungen für [E-Mail-Benachrichtigungen](security-center-provide-security-contact-details.md).
-- **Tarif:** Definiert die [Tarifauswahl](security-center-pricing.md) (Free oder Standard). Der gewählte Tarif beeinflusst, welche Security Center-Features für betroffene Ressourcen verfügbar sind. Sie können einen Tarif für Abonnements, Ressourcengruppen und Arbeitsbereiche angeben.
+- **Datensammlung**: Bestimmt die Einstellungen für die Agent-Bereitstellung und die [Datensammlung](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection).
+- **Sicherheitsrichtlinie**: Bestimmt, welche Maßnahmen Security Center überwacht und empfiehlt. Die [Sicherheitsrichtlinie](tutorial-security-policy.md) kann in Security Center bearbeitet werden. Außerdem können Sie [Azure Policy](tutorial-security-policy.md) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifend Richtlinien zuzuweisen. 
+- **E-Mail-Benachrichtigungen**: Bestimmt Sicherheitskontakte und Einstellungen für [E-Mail-Benachrichtigungen](security-center-provide-security-contact-details.md).
+- **Tarif**: Definiert die [Tarifauswahl](security-center-pricing.md) (Free oder Standard). Der gewählte Tarif beeinflusst, welche Security Center-Features für betroffene Ressourcen verfügbar sind. Sie können einen Tarif für Abonnements, Ressourcengruppen und Arbeitsbereiche angeben.
 
 > [!NOTE]
 > Sie können alle diese Einstellungen pro Abonnement vornehmen. Für Arbeitsbereiche können Sie nur „Datensammlung“ und „Tarif“ festlegen. Für Ressourcengruppen können Sie nur „Tarif“ festlegen.
@@ -39,18 +39,18 @@ Unter „Sicherheitsrichtlinie“ stehen folgende Einstellungen zur Verfügung:
 ## <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
 Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Dabei werden integrierte Rollen bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Das bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement oder die Ressourcengruppe einer Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
-- **Benutzer mit Leseberechtigung für Sicherheitsfunktionen:** Können Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
-- **Sicherheitsadministrator:** Verfügt über die gleichen Anzeigeberechtigungen wie ein *Benutzer mit Leseberechtigung für Sicherheitsfunktionen*, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
+- **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
+- **Sicherheitsadministrator**: Verfügt über dieselben Anzeigeberechtigungen wie ein *Benutzer mit Leseberechtigung für Sicherheitsfunktionen*, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie sich über Sicherheitsrichtlinien in Azure Security Center informiert. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Artikeln:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-* [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Security Center-Empfehlungen zum Schutz Ihrer Azure-Ressourcen beitragen.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
-- [Azure Security Center-Datensicherheit:](security-center-data-security.md) Hier erfahren Sie, wie Daten von Security Center verwaltet und geschützt werden.
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie Antworten auf häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md): Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md): Erfahren Sie, wie Security Center-Empfehlungen Ihnen beim Schutz Ihrer Azure-Ressourcen helfen.
+* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Azure Security Center-Datensicherheit](security-center-data-security.md): Erfahren Sie, wie Security Center Daten verwaltet und schützt.
+* [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.

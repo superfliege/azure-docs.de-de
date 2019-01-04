@@ -1,12 +1,11 @@
 ---
-title: Nutzen eines Azure Machine Learning Studio-Webdiensts | Microsoft-Dokumentation
+title: 'Nutzen eines Webdiensts: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Nachdem ein Machine Learning-Dienst über Azure Machine Learning Studio bereitgestellt wurde, kann der RESTFul-Webdienst als Anforderung/Antwort-Dienst in Echtzeit oder als Stapelausführungsdienst genutzt werden.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: df837c64cf0e40f3bfc1c596b2950a9d23c74a90
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d7a48dcb56d2bed0e84714087bb9fda3fae65fc1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309105"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273781"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Nutzen eines Azure Machine Learning Studio-Webdiensts
 
@@ -33,7 +32,7 @@ Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Web
 * Ausführliche Informationen zum Bereitstellen eines Webdiensts finden Sie unter [Bereitstellen eines Machine Learning-Webdiensts](publish-a-machine-learning-web-service.md).
 * Allgemeine Informationen zu Machine Learning finden Sie im [Machine Learning-Dokumentationscenter](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>Übersicht
 Mit dem Azure Machine Learning-Webdienst kommunizieren externe Anwendungen in Echtzeit mit einem Machine Learning-Workflow-Bewertungsmodell. Ein Machine Learning-Webdienstaufruf gibt Vorhersageergebnisse an eine externe Anwendung zurück. Zur Durchführung eines Machine Learning-Webdienstaufrufs übergeben Sie einen API-Schlüssel, der beim Bereitstellen einer Vorhersage erstellt wird. Der Machine Learning-Webdienst basiert auf REST, einer verbreiteten Architektur für Webprogrammierungsprojekte.
@@ -102,13 +101,13 @@ Für die Verbindung mit einem Machine Learning-Webdienst muss das NuGet-Paket **
 
 **Installieren von Microsoft.AspNet.WebApi.Client NuGet in Visual Studio**
 
-1. Veröffentlichen Sie das Dataset Download von Webdienst „UCI:  Adult 2 class dataset“.
+1. Veröffentlichen Sie den „Download Dataset from UCI: Adult 2 class dataset“-Webdienst.
 2. Klicken Sie auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 3. Wählen Sie **Install-Package Microsoft.AspNet.WebApi.Client aus**.
 
 **So führen Sie das Codebeispiel aus**
 
-1. Veröffentlichen Sie das Experiment „Sample 1: Download dataset from UCI: Adult 2 class dataset“, Teil der Machine Learning-Beispielauflistung.
+1. Stellen Sie das Experiment „Sample 1: Download dataset from UCI: Adult 2 class dataset“ bereit, das Teil der Machine Learning-Beispielsammlung ist.
 2. Weisen Sie „apiKey“ den Schlüssel von einem Webdienst zu. Siehe oben: **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning** .
 3. Weisen Sie "serviceUri" die Anforderungs-URI zu.
 
@@ -204,7 +203,7 @@ Verwenden Sie für eine Verbindung mit einem Machine Learning-Webdienst die Bibl
 
 **So führen Sie das Codebeispiel aus**
 
-1. Stellen Sie das Experiment „Sample 1: Download dataset from UCI: Adult 2 class dataset“ bereit, das Teil der Machine Learning-Beispielsammlung ist.
+1. Stellen Sie „Sample 1: Download dataset from UCI: Adult 2 class dataset“ bereit, das Teil der Machine Learning-Beispielsammlung ist.
 2. Weisen Sie „apiKey“ den Schlüssel von einem Webdienst zu. Im Abschnitt **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning** zu Beginn dieses Artikels finden Sie weitere Informationen.
 3. Weisen Sie "serviceUri" die Anforderungs-URI zu.
 

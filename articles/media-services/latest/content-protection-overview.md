@@ -1,5 +1,5 @@
 ---
-title: Schützen Ihrer Inhalte mit Azure Media Services | Microsoft-Dokumentation
+title: 'Schützen Ihrer Inhalte mit Media Services: Azure | Microsoft-Dokumentation'
 description: In diesem Artikel finden Sie eine Übersicht über die Content Protection mit Media Services.
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 1c7454aead07c728d55ff2c309cca83a792aac88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: cb7e867ea4304cf8b8741eac183e60d325c752c7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238348"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141848"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -59,7 +60,7 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
 
     Zum Testen von mit AES oder CENC (Widevine und/oder PlayReady) verschlüsselten Inhalten können Sie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) verwenden. Stellen Sie sicher, dass Sie auf „Erweiterte Optionen“ klicken und Ihre Verschlüsselungsoptionen angeben.
 
-    Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome, Opera oder Firefox für Widevine, MS Edge oder IE11 für PlayReady, Safari unter macOS für FairPlay.
+    Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome/Opera/Firefox für Widevine, MS Edge/IE11 für PlayReady, Safari unter macOS für FairPlay.
 
 3. Sicherheitstokendienst (STS), der JSON Web Token (JWT) als Zugriffstoken für den Zugriff auf die Back-End-Ressource ausgibt. Sie können die AMS-Lizenzbereitstellungsdienste als Back-End-Ressource verwenden. Ein Sicherheitstokendienst muss Folgendes definieren:
 

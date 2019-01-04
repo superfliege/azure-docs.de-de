@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 164ec0898e2f7ad461ab63ce0fcaf47a87998797
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428010"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997827"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -40,9 +40,9 @@ Die folgende Tabelle enthält Informationen zu verschiedenen Sicherungs- und Wie
 
 In den folgenden Abschnitten wird jede Option ausführlicher beschrieben. Der letzte Abschnitt dieses Artikels enthält eine Zusammenfassung in Form einer Funktionsmatrix.
 
-## <a id="autoamted"></a> Automatisierte Sicherung
+## <a id="automated"></a> Automatisierte Sicherung
 
-Die automatisierte Sicherung ist ein automatischer Sicherungsdienst für die SQL Server Standard- und Enterprise-Editionen, die auf einem virtuellen Windows-Computer in Azure ausgeführt werden. Dieser Dienst wird von der [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) bereitgestellt, die auf SQL Server Windows-VM-Images im Azure-Portal automatisch installiert wird.
+Die automatisierte Sicherung ist ein automatischer Sicherungsdienst für die SQL Server-Editionen Standard und Enterprise, die auf einem virtuellen Windows-Computer in Azure ausgeführt werden. Dieser Dienst wird von der [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) bereitgestellt, die auf SQL Server Windows-VM-Images im Azure-Portal automatisch installiert wird.
 
 Alle Datenbanken werden in einem von Ihnen konfigurierten Azure-Speicherkonto gesichert. Sicherungen können verschlüsselt und bis zu 30 Tage lang aufbewahrt werden.
 
@@ -70,8 +70,8 @@ Informationen zum Konfigurieren der automatisierten Sicherung für SQL-VMs finde
 - **Richtliniengesteuerte Sicherung und Aufbewahrung**: Erstellen Sie standardmäßige Sicherungsrichtlinien für regelmäßige Sicherungen. Richten Sie Aufbewahrungsrichtlinien ein, um Sicherungen auf Jahre hinaus zu speichern.
 - **Unterstützung für SQL Always On**: Ermitteln und schützen Sie eine SQL Server Always On-Konfiguration, und berücksichtigen Sie die Sicherungseinstellungen der Sicherungsverfügbarkeitsgruppe.
 - **Recovery Point Objective (RPO) von 15 Minuten**: Konfigurieren Sie Sicherungen der SQL-Transaktionsprotokolle so, dass die Sicherung alle 15 Minuten erfolgt.
-- **Point-in-Time-Wiederherstellung**: Verwenden Sie das Portal, um Datenbanken auf einen bestimmten Zeitpunkt wiederherzustellen, ohne mehrere vollständige, differenzielle und Protokollsicherungen manuell wiederherstellen zu müssen.
-- **Konsolidierte E-Mail-Benachrichtigungen bei Fehlern**: Konfigurieren Sie konsolidierte E-Mail-Benachrichtigungen für jede Art von Fehlern.
+- **Point-in-Time-Wiederherstellung**: Verwenden Sie das Portal, um für Datenbanken den Stand zu einem bestimmten Zeitpunkt wiederherzustellen, ohne mehrere vollständige, differenzielle und Protokollsicherungen manuell wiederherstellen zu müssen.
+- **Konsolidierte E-Mail-Benachrichtigungen bei Fehlern**: Konfigurieren Sie konsolidierte E-Mail-Benachrichtigungen für jede Art von Fehler.
 - **Rollenbasierte Zugriffssteuerung**: Legen Sie fest, wer Sicherungs- und Wiederherstellungsvorgänge über das Portal verwalten darf.
 
 Eine kurze Übersicht und Demo der Funktionsweise finden Sie im folgenden Video:
@@ -109,9 +109,9 @@ Ab SQL Server 2012 SP1 CU2 können Sie Sicherungen und Wiederherstellungen direk
 
 Weitere Informationen finden Sie in einem der folgenden Artikel, je nachdem, welche Version von SQL Server Sie verwenden:
 
-- **SQL Server 2016/2017**: [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob Storage Service](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014**: [SQL Server-Sicherung und -Wiederherstellung mit dem Windows Azure-BLOB-Speicherdienst](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
-- **SQL Server 2012**: [SQL Server-Sicherung und -Wiederherstellung mit dem Windows Azure-BLOB-Speicherdienst](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
+- **SQL Server 2016/2017**: [SQL Server-Sicherung über URLs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**: [SQL Server 2014-Sicherung über URLs](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
+- **SQL Server 2012**: [SQL Server 2012-Sicherung über URLs](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
 
 ### <a name="managed-backup"></a>Managed Backup
 
@@ -150,6 +150,6 @@ In der folgenden Tabelle sind die Funktionen jeder Sicherungs- und Wiederherstel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Ihre Bereitstellung von SQL Server auf einem virtuellen Azure-Computer planen, finden Sie im folgenden Leitfaden Informationen zur Bereitstellung: [Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
+Beim Planen Ihrer Bereitstellung von SQL Server auf einer Azure-VM sind die Informationen im folgenden Leitfaden hilfreich: [Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
 Obwohl Sie Ihre Daten durch Sicherung und Wiederherstellung migrieren können, sind möglicherweise einfachere Migrationspfade für SQL Server auf einer Azure-VM verfügbar. Eine vollständige Erläuterung der Migrationsoptionen und Empfehlungen finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-migrate-sql.md).

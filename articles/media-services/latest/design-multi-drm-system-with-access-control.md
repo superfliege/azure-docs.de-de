@@ -1,5 +1,5 @@
 ---
-title: Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung mit Azure Media Services | Microsoft-Dokumentation
+title: Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung – Azure Media Services | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Lizenzierung des Microsoft Smooth Streaming Client Porting Kit.
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: willzhan
-ms.openlocfilehash: d65007ed2a0ce5a827eadca31dd9df8704e2c905
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958192"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136272"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung 
 
@@ -28,7 +29,7 @@ Das Entwerfen und Erstellen eines DRM-Subsystems (Digital Rights Management) fü
 
 Zielgruppe sind Entwickler, die an einem DRM-Subsystem für OTT- oder Onlinestreaming-/Multibildschirmlösungen arbeiten, oder Leser, die sich für ein DRM-Subsystem interessieren. Es wird angenommen, dass Leser mit mindestens einer der DRM-Technologien auf dem Markt vertraut sind, wie z.B. PlayReady, Widevine, FairPlay oder Adobe Access.
 
-In dieser Erörterung beinhaltet das Multi-DRM-System die drei von Azure Media Services unterstützten DRM-Systeme: Common Encryption (CENC) für PlayReady und Widevine, FairPlay sowie AES-128-Verschlüsselung mit einem unverschlüsselten Schlüssel. Beim Onlinestreaming und in der OTT-Branche lässt sich immer mehr der Trend feststellen, dass native DRM-Systeme auf verschiedenen Clientplattformen verwendet werden. Dieser Trend löst die vorherige Vorgehensweise ab, bei der ein einzelnes DRM-System und das zugehörige Client-SDK für verschiedene Clientplattformen verwendet wurden. Bei Verwenden von CENC mit mehreren nativen DRM-Systemen sind PlayReady und Widevine gemäß der Spezifikation [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) verschlüsselt.
+In dieser Beschreibung werden die drei DRMs behandelt, die von Azure Media Services unterstützt werden (Multi-DRM): Common Encryption (CENC) für PlayReady und Widevine, FairPlay sowie Verschlüsselung mit unverschlüsseltem AES-128-Schlüssel. Beim Onlinestreaming und in der OTT-Branche lässt sich immer mehr der Trend feststellen, dass native DRM-Systeme auf verschiedenen Clientplattformen verwendet werden. Dieser Trend löst die vorherige Vorgehensweise ab, bei der ein einzelnes DRM-System und das zugehörige Client-SDK für verschiedene Clientplattformen verwendet wurden. Bei Verwenden von CENC mit mehreren nativen DRM-Systemen sind PlayReady und Widevine gemäß der Spezifikation [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) verschlüsselt.
 
 Die Verwendung eines nativen Multi-DRM-Systems für den Inhaltsschutz bietet folgende Vorteile:
 
@@ -246,7 +247,7 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Erteilen Sie Berechtigungen in Form von Gruppenmitgliedschaftsansprüchen. Vergewissern Sie sich, dass die Azure AD-Anwendungsmanifestdatei Folgendes enthält: 
 
-    „groupMembershipClaims“: „All“ (der Standardwert ist NULL)
+    „groupMembershipClaims“: „All“    (Standardwert ist „null“)
 
 * Legen Sie beim Erstellen der Einschränkungsanforderungen den richtigen TokenType fest.
 
@@ -365,7 +366,7 @@ Es gibt zwei Arten von Sicherheitsschlüsseln:
 > [!NOTE]
 > Bei Verwendung von .NET Framework/C# als Entwicklungsplattform muss das X.509-Zertifikat für einen asymmetrischen Sicherheitsschlüssel eine Schlüssellänge von mindestens 2048 aufweisen. Dies ist eine Voraussetzung für die „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“--Klasse in .NET Framework. Andernfalls wird die folgende Ausnahme ausgelöst:
 
-> IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als 2048 Bits sein.
+> IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als 2.048 Bit sein.
 
 ## <a name="the-completed-system-and-test"></a>Das fertige System und Tests
 Dieser Abschnitt beschreibt die folgenden Szenarien im fertig gestellten, vollständigen System, sodass Sie sich ein grundlegendes Bild des Verhaltens machen können, bevor Sie ein Anmeldekonto erhalten:
@@ -401,15 +402,15 @@ Die folgenden Screenshots zeigen verschiedene Anmeldeseiten, die von verschieden
 
 **Benutzerdefiniertes Azure AD-Mandantendomänenkonto**: Die angepasste Anmeldeseite der benutzerdefinierten Azure AD-Mandantendomäne.
 
-![Benutzerdefiniertes Azure AD-Mandantendomänenkonto](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![Benutzerdefiniertes Azure AD-Mandantendomänenkonto 1](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
 **Microsoft-Domänenkonto mit Smartcard**: Die von der IT-Abteilung von Microsoft angepasste Anmeldeseite mit zweistufiger Authentifizierung.
 
-![Benutzerdefiniertes Azure AD-Mandantendomänenkonto](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
+![Benutzerdefiniertes Azure AD-Mandantendomänenkonto 2](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft-Konto**: Die Anmeldeseite des Microsoft-Kontos für Endbenutzer.
 
-![Benutzerdefiniertes Azure AD-Mandantendomänenkonto](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
+![Benutzerdefiniertes Azure AD-Mandantendomänenkonto 3](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>Verwenden von Encrypted Media Extensions für PlayReady
 In einem modernen Browser mit Encrypted Media Extensions (EME) für die PlayReady-Unterstützung, z.B. Internet Explorer 11 unter Windows 8.1 oder höher sowie Microsoft Edge unter Windows 10, ist PlayReady das zugrunde liegende DRM-System für EME.

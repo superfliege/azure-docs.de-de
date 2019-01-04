@@ -30,16 +30,8 @@ items:
   items:
   - name: Migrieren von v2 zu v3
     href: migrate-from-v2-to-v3.md
-  - name: Analysieren von Inhalt
-    href: analyzing-video-audio-files-concept.md
-  - name: Codieren von Inhalt
-    href: encoding-concept.md
-    items:
-    - name: Media Encoder Standard-Formate
-      href: media-encoder-standard-formats.md
-    - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
-      href: autogen-bitrate-ladder.md
-  - name: Untersuchen von Entitäten
+  - name: Entitäten
+    href: entities-overview.md
     items:
     - name: Konto- und Medienobjektfilter
       href: filters-dynamic-manifest-overview.md
@@ -47,6 +39,8 @@ items:
       href: assets-concept.md
     - name: Richtlinien für Inhaltsschlüssel
       href: content-key-policy-concept.md
+    - name: LiveEvents und LiveOutputs
+      href: live-events-outputs-concept.md
     - name: Streamingendpunkte
       href: streaming-endpoint-concept.md
     - name: Streaminglocators
@@ -55,8 +49,13 @@ items:
       href: streaming-policy-concept.md
     - name: Transformationen und Aufträge
       href: transforms-jobs-concept.md
-  - name: Untersuchen von Speicherkonten
-    href: storage-account-concept.md
+  - name: Codieren von Inhalt
+    href: encoding-concept.md
+    items:
+    - name: Media Encoder Standard-Formate
+      href: media-encoder-standard-formats.md
+    - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
+      href: autogen-bitrate-ladder.md
   - name: Behandeln von Event Grid-Ereignissen
     href: reacting-to-media-services-events.md
   - name: Schützen von Inhalten
@@ -65,6 +64,8 @@ items:
       href: content-protection-overview.md
     - name: Multi-DRM-System mit Zugriffssteuerung
       href: design-multi-drm-system-with-access-control.md
+  - name: Analysieren von Inhalt
+    href: analyzing-video-audio-files-concept.md
   - name: Streamen von Liveveranstaltungen
     href: live-streaming-overview.md
     items:
@@ -78,6 +79,8 @@ items:
       href: live-event-states-billing.md
     - name: Latency
       href: live-event-latency.md
+  - name: Speicherkonten
+    href: storage-account-concept.md
 - name: Anleitungen
   items:
   - name: 'Erstellen eines Kontos: CLI'
@@ -182,9 +185,9 @@ items:
     href: limits-quotas-constraints.md
   - name: Häufig gestellte Fragen
     href: frequently-asked-questions.md
-ms.openlocfilehash: aafc49b10a012bab6c3dc3d455480deca44fde32
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 660052b4e82f6e005c096b5ac1edd7a80c2d5339
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631990"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744971"

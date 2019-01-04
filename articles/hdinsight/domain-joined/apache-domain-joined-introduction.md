@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 270227204af9cf50f0244b8aa11ebf9aa8cdc3ce
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b120d50b6b0f72b5977d238866cfdf26fd9be5ff
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631998"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436890"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket
 
@@ -22,10 +22,10 @@ Azure HDInsight unterstützte bislang nur einen einzelnen lokalen Administratorb
 
 Mit dem Enterprise-Sicherheitspaket können Sie einen HDInsight-Cluster erstellen, der in eine Active Directory-Domäne eingebunden ist. Sie können dann eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die eine Authentifizierung per Azure Active Directory für die Anmeldung am HDInsight-Cluster durchführen können. Externe Benutzer können sich nicht bei dem HDInsight-Cluster anmelden oder darauf zugreifen. 
 
-Der Unternehmensadministrator kann mithilfe von [Apache Ranger](http://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) für Apache Hive-Sicherheit konfigurieren. und so den Datenzugriff nur auf die erforderlichen Informationen beschränken. Darüber hinaus kann der Administrator den Datenzugriff von Mitarbeitern und jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen. Der Administrator kann dann ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen.
+Der Unternehmensadministrator kann mithilfe von [Apache Ranger](https://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) für Apache Hive-Sicherheit konfigurieren. und so den Datenzugriff nur auf die erforderlichen Informationen beschränken. Darüber hinaus kann der Administrator den Datenzugriff von Mitarbeitern und jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen. Der Administrator kann dann ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen.
 
-> [!NOTE]
-> Oozie ist nun für Enterprise-Sicherheitspaket-Cluster aktiviert. Benutzer müssen [Tunneln](../hdinsight-linux-ambari-ssh-tunnel.md) aktivieren, um auf die Oozie-Webbenutzeroberfläche zugreifen zu können.
+> [!NOTE]  
+> Apache Oozie ist nun für ESP-Cluster aktiviert. Benutzer müssen [Tunneln](../hdinsight-linux-ambari-ssh-tunnel.md) aktivieren, um auf die Oozie-Webbenutzeroberfläche zugreifen zu können.
 
 Die Unternehmenssicherheit basiert auf vier Hauptsäulen: Umgebungssicherheit, Authentifizierung, Autorisierung und Verschlüsselung.
 
@@ -39,19 +39,19 @@ Durch die Verwendung eines VPN Gateway-Diensts lässt sich die Umgebungssicherhe
 ## <a name="authentication"></a>Authentifizierung
 Ein Unternehmensadministrator kann einen HDInsight-Cluster mit Enterprise-Sicherheitspaket in einem [virtuellen Netzwerk](https://azure.microsoft.com/services/virtual-network/) bereitstellen. Alle Knoten des HDInsight-Clusters werden in die vom Unternehmen verwaltete Domäne eingebunden. Hierzu wird [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) verwendet. 
 
-In dieser Konfiguration können sich Mitarbeiter des Unternehmens mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie sich mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie Ambari Views, ODBC, JDBC, PowerShell und REST-APIs authentifizieren, um mit dem Cluster zu interagieren. Der Administrator hat uneingeschränkte Kontrolle über die Begrenzung der Anzahl von Benutzern, die über diese Endpunkte mit dem Cluster interagieren.
+In dieser Konfiguration können sich Mitarbeiter des Unternehmens mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie sich mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie Apache Ambari Views, ODBC, JDBC, PowerShell und REST-APIs authentifizieren, um mit dem Cluster zu interagieren. Der Administrator hat uneingeschränkte Kontrolle über die Begrenzung der Anzahl von Benutzern, die über diese Endpunkte mit dem Cluster interagieren.
 
 ## <a name="authorization"></a>Autorisierung
 In den meisten Unternehmen hat es sich bewährt, dass nicht jeder Mitarbeiter Zugriff auf alle Unternehmensressourcen hat. Analog dazu kann der Administrator für die Clusterressourcen Richtlinien für die rollenbasierte Zugriffssteuerung definieren. 
 
-So kann der Administrator etwa [Apache Ranger](http://hortonworks.com/apache/ranger/) zum Festlegen von Zugriffssteuerungsrichtlinien für Hive konfigurieren. Dadurch wird sichergestellt, dass Mitarbeiter nur auf Daten zugreifen können, die sie für ihre Arbeit benötigen. SSH-Zugriff auf den Cluster ist allein dem Administrator vorbehalten.
+So kann der Administrator etwa [Apache Ranger](https://hortonworks.com/apache/ranger/) zum Festlegen von Zugriffssteuerungsrichtlinien für Hive konfigurieren. Dadurch wird sichergestellt, dass Mitarbeiter nur auf Daten zugreifen können, die sie für ihre Arbeit benötigen. SSH-Zugriff auf den Cluster ist allein dem Administrator vorbehalten.
 
 ## <a name="auditing"></a>Überwachung
 Die Überwachung des gesamten Zugriffs auf die Clusterressourcen und der Daten ist erforderlich, um unbefugten oder versehentlichen Zugriff auf die Ressourcen nachzuverfolgen. Dies ist ebenso wichtig wie der Schutz der HDInsight-Clusterressourcen vor nicht autorisierten Benutzern und das Sichern von Daten. 
 
 Der Administrator kann sämtliche Zugriffe auf die Ressourcen und Daten des HDInsight-Clusters anzeigen und entsprechende Berichte erstellen. Außerdem kann er sämtliche Änderungen an den Zugriffssteuerungsrichtlinien anzeigen, die an von Apache Ranger unterstützten Endpunkten vorgenommen werden, und entsprechende Berichte erstellen. 
 
-Ein HDInsight-Cluster mit Enterprise-Sicherheitspaket verwendet für die Suche nach Überwachungsprotokollen die vertraute Apache Ranger-Benutzeroberfläche. Im Back-End werden die Protokolle von Ranger mithilfe von [Apache Solr](http://hortonworks.com/apache/solr/) gespeichert und gesucht.
+Ein HDInsight-Cluster mit Enterprise-Sicherheitspaket verwendet für die Suche nach Überwachungsprotokollen die vertraute Apache Ranger-Benutzeroberfläche. Im Back-End werden die Protokolle von Ranger mithilfe von [Apache Solr](https://hortonworks.com/apache/solr/) gespeichert und gesucht.
 
 ## <a name="encryption"></a>Verschlüsselung
 Der Schutz von Daten ist wichtig, um die Sicherheits- und Compliance-Anforderungen des Unternehmens zu erfüllen. Sie sollten den Zugriff auf Daten durch nicht autorisierte Mitarbeitern nicht nur beschränken, sondern Sie sollten diesen auch verschlüsseln. 
@@ -62,7 +62,7 @@ Beide Datenspeicher für HDInsight-Cluster – Azure Blob Storage und Azure Data
 
 * [Planen für HDInsight-Cluster mit Enterprise-Sicherheitspaket](apache-domain-joined-architecture.md)
 * [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md)
-* [Verwalten von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-manage.md)
-* [Konfigurieren von Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket](apache-domain-joined-run-hive.md)
+* [Verwalten von HDInsight-Clustern mit ESP](apache-domain-joined-manage.md)
+* [Konfigurieren von Apache Hive-Richtlinien für HDInsight-Cluster mit ESP](apache-domain-joined-run-hive.md)
 * [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
 

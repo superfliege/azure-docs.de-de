@@ -3,7 +3,7 @@ title: ReliableConcurrentQueue in Azure Service Fabric
 description: ReliableConcurrentQueue ist eine Warteschlange mit hohem Durchsatz, die ein gleichzeitiges Einreihen in und Entfernen aus der Warteschlange ermöglicht.
 services: service-fabric
 documentationcenter: .net
-author: sangarg
+author: tylermsft
 manager: timlt
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: sangarg
-ms.openlocfilehash: e04123f7870921a2979564d0f6c68424d4d7711c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: 61b53a23fdbb08b226878d9b702ec6bb2879f8bc
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206576"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185034"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Einführung in ReliableConcurrentQueue in Azure Service Fabric
 ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und replizierte Warteschlange, die ein hohes Maß an Parallelität für Einreihungs- und Entfernungsvorgänge bietet. Die Warteschlange bietet hohen Durchsatz und niedrige Latenz, indem die strikte FIFO-Reihenfolge von [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx) gelockert wird. Stattdessen wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet.
@@ -55,7 +55,7 @@ Sehen wir uns einige Codeausschnitte und die zugehörigen erwarteten Ausgaben an
 ### <a name="enqueueasync"></a>EnqueueAsync
 Hier finden Sie einige Codeausschnitte für die Verwendung von EnqueueAsync sowie die erwarteten Ausgaben.
 
-- *Fall 1: einzelner Einreihungstask*
+- *Fall 1: Einzelner Einreihungstask*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -74,7 +74,7 @@ Wir gehen davon aus, dass der Task erfolgreich abgeschlossen wurde und es keine 
 > 20, 10
 
 
-- *Fall 2: paralleler Einreihungstask*
+- *Fall 2: Paralleler Einreihungstask*
 
 ```
 // Parallel Task 1
@@ -103,7 +103,7 @@ Wir gehen davon aus, dass die Tasks erfolgreich abgeschlossen wurden, die Tasks 
 Hier finden Sie einige Codeausschnitte für die Verwendung von „TryDequeueAsync“ sowie die erwarteten Ausgaben. Wir gehen davon aus, dass die Warteschlange bereits mit den folgenden Elementen aufgefüllt wurde:
 > 10, 20, 30, 40, 50, 60
 
-- *Fall 1: einzelner Entfernungstask*
+- *Fall 1: Einzelner Entfernungstask*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -118,7 +118,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Wir gehen davon aus, dass der Task erfolgreich abgeschlossen wurde und es keine gleichzeitigen Transaktionen gab, die zu einer Änderung der Warteschlange geführt haben. Da ein Rückschluss auf die Reihenfolge der Elemente in der Warteschlange nicht möglich ist, können alle drei Elemente in beliebiger Reihenfolge entfernt werden. Die Warteschlange versucht, die ursprüngliche Reihenfolge der Elemente (in der sie eingereiht wurden) beizubehalten, wird jedoch aufgrund von Fehlern oder gleichzeitigen Vorgängen möglicherweise gezwungen, die Reihenfolge zu ändern.  
 
-- *Fall 2: paralleler Entfernungstask*
+- *Fall 2: Paralleler Entfernungstask*
 
 ```
 // Parallel Task 1

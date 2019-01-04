@@ -2,22 +2,22 @@
 title: Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
 description: Wichtige Aspekte beim Planen der Sicherung virtueller Computer in Azure
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: Sichern virtueller Computer, Sichern von VMs
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
-ms.author: markgal
-ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: e38f245197f2b1bdb22a2866028ad10f4ec39ec1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232459"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343496"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
-Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-arm-vms-prepare.md) haben, ist die Planung der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-arm-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). 
+Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-arm-vms-prepare.md) haben, ist die Planung der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-arm-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
 > [!NOTE]
 > Dieser Artikel ist auf die Verwendung mit verwalteten und nicht verwalteten Datenträgern ausgelegt. Wenn Sie nicht verwaltete Datenträger verwenden, stehen Ihnen Empfehlungen für Speicherkonten zur Verfügung. Wenn Sie [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) verwenden, müssen Sie keine Probleme bei der Leistung oder der Ressourcenauslastung befürchten. Azure optimiert die Speicherauslastung für Sie.
@@ -96,7 +96,19 @@ Die Gesamtdauer der Sicherung von weniger als 24 Stunden gilt für inkrementelle
 
 ### <a name="why-are-backup-times-longer-than-12-hours"></a>Warum beträgt die Sicherungszeit mehr als 12 Stunden?
 
-Die Sicherung besteht aus zwei Phasen: Erstellen von Momentaufnahmen und Übertragen der Momentaufnahmen in den Tresor. Der Backup-Dienst ist für Speicher optimiert. Wenn die Daten einer Momentaufnahme in den Tresor übertragen werden, überträgt der Dienst nur inkrementelle Änderungen aus den vorherigen Momentaufnahmen.  Um inkrementelle Änderungen zu bestimmen, berechnet der Dienst die Prüfsumme der Blöcke. Wenn ein Block geändert wird, wird der Block als Block identifiziert, der in den Tresor gesendet werden soll. Der Dienst untersucht jeden identifizierten Block noch näher und sucht nach Möglichkeiten, die Menge der zu übertragenden Daten zu verringern. Nach dem Evaluieren aller geänderten Blöcke fügt der Dienst die Änderungen wieder zusammen und sendet sie an den Tresor. Bei einigen Legacyanwendungen sind kleine, fragmentierte Schreibvorgänge nicht optimal für die Speicherung. Wenn die Momentaufnahme viele kleine, fragmentierte Schreibvorgänge enthält, verbringt der Dienst zusätzliche Zeit mit dem Verarbeiten der Daten, die von den Anwendungen geschrieben wurden. Bei Anwendungen, die im virtuellen Computer ausgeführt werden, beträgt der von Azure empfohlene Anwendungsschreibblock mindestens 8 KB. Wenn Ihre Anwendung einen Block von weniger als 8 KB verwendet, wird die Sicherungsleistung beeinflusst. Hilfe bei der Optimierung Ihrer Anwendung zur Verbesserung der Sicherungsleistung finden Sie unter [Anwendungen für die optimale Leistung mit Azure Storage optimieren](../virtual-machines/windows/premium-storage-performance.md). Obwohl der Artikel über die Sicherungsleistung Storage Premium-Beispiele verwendet, kann dieser Leitfaden auch für Standard-Datenträger angewendet werden.
+Die Sicherung besteht aus zwei Phasen: Erstellen von Momentaufnahmen und Übertragen der Momentaufnahmen in den Tresor. Der Backup-Dienst ist für Speicher optimiert. Wenn die Daten einer Momentaufnahme in den Tresor übertragen werden, überträgt der Dienst nur inkrementelle Änderungen aus den vorherigen Momentaufnahmen.  Um inkrementelle Änderungen zu bestimmen, berechnet der Dienst die Prüfsumme der Blöcke. Wenn ein Block geändert wird, wird der Block als Block identifiziert, der in den Tresor gesendet werden soll. Der Dienst untersucht jeden identifizierten Block noch näher und sucht nach Möglichkeiten, die Menge der zu übertragenden Daten zu verringern. Nach dem Evaluieren aller geänderten Blöcke fügt der Dienst die Änderungen wieder zusammen und sendet sie an den Tresor. Bei einigen Legacyanwendungen sind kleine, fragmentierte Schreibvorgänge nicht optimal für die Speicherung. Wenn die Momentaufnahme viele kleine, fragmentierte Schreibvorgänge enthält, verbringt der Dienst zusätzliche Zeit mit dem Verarbeiten der Daten, die von den Anwendungen geschrieben wurden. Bei Anwendungen, die im virtuellen Computer ausgeführt werden, beträgt der von Azure empfohlene Anwendungsschreibblock mindestens 8 KB. Wenn Ihre Anwendung einen Block von weniger als 8 KB verwendet, wird die Sicherungsleistung beeinflusst. Hilfe bei der Optimierung Ihrer Anwendung zur Verbesserung der Sicherungsleistung finden Sie unter [Anwendungen für die optimale Leistung mit Azure Storage optimieren](../virtual-machines/windows/premium-storage-performance.md). Obwohl der Artikel über die Sicherungsleistung Storage Premium-Beispiele verwendet, kann dieser Leitfaden auch für Standard-Datenträger angewendet werden.<br>
+Für die lange Dauer der Sicherung kann es mehrere Gründe geben:
+  1. **Erste Sicherung für einen zu einem bereits geschützten virtuellen Computer neu hinzugefügten Datenträger** <br>
+    Wenn ein virtueller Computer die Erstsicherung abgeschlossen hat und eine inkrementelle Sicherung ausführt. Beim Hinzufügen eines neuen Datenträgers kann je nach Größe des neuen Datenträgers ein Tag (SLA) verloren gehen.
+  2. **Fragmentierung** <br>
+    Wenn die auf dem virtuellen Computer ausgeführte Workload (Anwendung) kleine, fragmentierte Schreibvorgänge ausführt, kann sich dies negativ auf die Sicherungsleistung auswirken. <br>
+  3. **Überlastetes Speicherkonto** <br>
+      a. Wenn die Sicherung zu Zeiten der Spitzenauslastung der Anwendung geplant ist.  
+      b. Wenn mehr als 5 bis 10 Datenträger über das gleiche Speicherkonto gehostet werden.<br>
+  4. **Konsistenzüberprüfungsmodus** <br>
+      Wenn die Sicherung bei Datenträgern mit einer Größe von mehr als 1 TB aus den unten genannten Gründen im Konsistenzüberprüfungsmodus erfolgt:<br>
+        a. Der verwaltete Datenträger wird als Teil des VM-Neustarts verschoben.<br>
+        b. Momentaufnahme wird an Basis-BLOB höher gestuft.<br>
 
 ## <a name="total-restore-time"></a>Gesamtzeit der Wiederherstellung
 

@@ -12,12 +12,12 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 04/06/2018
 manager: craigg
-ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055525"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958816"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Verwenden Sie den ActiveDirectoryInteractive Modus zum Herstellen der Verbindung mit Azure SQL-Datenbank
 
@@ -66,23 +66,23 @@ Um Azure AD-Authentifizierung verwenden zu können, muss Ihr C#-Clientprogramm e
 
 1. Azure-Portal &gt; **Azure Active Directory** &gt; **App-Registrierung**
 
-    ![App-Registrierung](media\active-directory-interactive-connect-azure-sql-db\sshot-create-app-registration-b20.png)
+    ![App-Registrierung](media/active-directory-interactive-connect-azure-sql-db/sshot-create-app-registration-b20.png)
 
 2. Der **Anwendungs-ID**-Wert wird generiert und angezeigt.
 
-    ![Angezeigte App-ID](media\active-directory-interactive-connect-azure-sql-db\sshot-application-id-app-regis-mk49.png)
+    ![Angezeigte App-ID](media/active-directory-interactive-connect-azure-sql-db/sshot-application-id-app-regis-mk49.png)
 
 3. **Registrierte App** &gt; **Einstellungen** &gt; **Erforderliche Berechtigungen** &gt; **Hinzufügen**
 
-    ![Berechtigungseinstellungen für die registrierte App](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
+    ![Berechtigungseinstellungen für die registrierte App](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
 4. **Erforderliche Berechtigungen**  &gt; **API hinzufügen** &gt; **Eine API auswählen** &gt; **Azure SQL-Datenbank**
 
-    ![Hinzufügen von Zugriff auf eine API für Azure SQL-Datenbank](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![Hinzufügen von Zugriff auf eine API für Azure SQL-Datenbank](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
 5. **API-Zugriff** &gt; **Berechtigungen auswählen** &gt; **Delegierte Berechtigungen**
 
-    ![Delegieren von Berechtigungen an die API für Azure SQL-Datenbank](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![Delegieren von Berechtigungen an die API für Azure SQL-Datenbank](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B: Festlegen des Azure AD-Administrators auf dem SQL-Datenbankserver

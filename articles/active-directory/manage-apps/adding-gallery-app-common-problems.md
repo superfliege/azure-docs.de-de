@@ -110,7 +110,7 @@ Weitere Informationen über Benachrichtigungen finden Sie in den folgenden Absch
 
 ### <a name="detailed-notification-items"></a>Detaillierte Benachrichtigungselemente
 
--   **Anzeigename:****(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
+-   **Anzeigename:** **(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
 
     -   Beispiel: **Anwendungsproxyeinstellungen**
 

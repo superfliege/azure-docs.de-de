@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 12/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6d58a62ef70cb5bacb44a3a9832516a30fc91ffa
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: fcc81c8eb3a34b0bda5d91a1a67dd2e04e052967
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248058"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967758"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aktivieren von „Angemeldet bleiben“ in Azure Active Directory B2C
 
@@ -25,11 +25,11 @@ Sie können die Funktion „Angemeldet bleiben“ für Ihre Webanwendungen und n
 
 Benutzer sollten diese Option nicht auf öffentlichen Computern aktivieren. 
 
-![Aktivieren von „Angemeldet bleiben“](./media/active-directory-b2c-reference-kmsi-custom/kmsi.PNG)
+![Aktivieren des Angemeldetbleibens](./media/active-directory-b2c-reference-kmsi-custom/kmsi.PNG)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure AD B2C-Mandant ist zur Zulassung der Registrierung/Anmeldung für ein lokales Konto konfiguriert. Wenn Sie über keinen Mandanten verfügen, können Sie mithilfe der Schritte unter [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) einen Mandanten erstellen.
+Ein Azure AD B2C-Mandant ist zur Zulassung der Registrierung/Anmeldung für ein lokales Konto konfiguriert. Falls Sie noch keinen Mandanten besitzen, können Sie zum Erstellen die Schritte unter [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) ausführen.
 
 ## <a name="add-a-content-definition-element"></a>Hinzufügen eines Inhaltsdefinitionselements 
 
@@ -152,7 +152,9 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
 
     Die Option „Angemeldet bleiben“ wird mit dem Element **UserJourneyBehaviors** konfiguriert. Das Attribut **KeepAliveInDays** steuert, wie lange der Benutzer angemeldet bleibt. Im folgenden Beispiel läuft die Sitzung „Angemeldet bleiben“ nach `7` Tagen automatisch ab – unabhängig davon, wie häufig der Benutzer die Authentifizierung im Hintergrund ausführt. Durch Festlegen des Werts **KeepAliveInDays** auf `0` wird die Funktionalität „Angemeldet bleiben“ deaktiviert. Standardmäßig ist dieser Wert auf `0` festgelegt. Wenn **SessionExpiryType** auf den Wert `Rolling` festgelegt ist, wird die Sitzung „Angemeldet bleiben“ jedes Mal um `7` Tage erweitert, wenn der Benutzer die Authentifizierung im Hintergrund durchführt.  Bei Auswahl von `Rolling` sollten Sie die Anzahl von Tagen auf ein Minimum beschränken. 
 
-    Der Wert von **SessionExpiryInSeconds** repräsentiert die Ablaufzeit einer SSO-Sitzung. Anhand dieses Werts wird intern von Azure AD B2C überprüft, ob die Sitzung für „Angemeldet bleiben“ abgelaufen ist oder nicht. Der Wert von **KeepAliveInDays** bestimmt den Expires/Max-Age-Wert des SSO-Cookies im Webbrowser. Im Gegensatz zu **SessionExpiryInSeconds** wird **KeepAliveInDays** verwendet, um den Browser daran zu hindern, das Cookie zu löschen, wenn der Browser geschlossen wird. Ein Benutzer kann nur dann eine Anmeldung im Hintergrund durchführen, wenn das SSO-Sitzungscookie vorhanden (dies wird über **KeepAliveInDays** gesteuert) und nicht abgelaufen ist (dies wird über **SessionExpiryInSeconds** gesteuert). Es wird empfohlen, den Wert von **SessionExpiryInSeconds** auf den gleichen Zeitraum (in Sekunden) festzulegen wie **KeepAliveInDays**, wie im folgenden Beispiel gezeigt.
+    Der Wert von **SessionExpiryInSeconds** repräsentiert die Ablaufzeit einer SSO-Sitzung. Anhand dieses Werts wird intern von Azure AD B2C überprüft, ob die Sitzung für „Angemeldet bleiben“ abgelaufen ist oder nicht. Der Wert von **KeepAliveInDays** bestimmt den Expires/Max-Age-Wert des SSO-Cookies im Webbrowser. Im Gegensatz zu **SessionExpiryInSeconds** wird **KeepAliveInDays** verwendet, um den Browser daran zu hindern, das Cookie zu löschen, wenn der Browser geschlossen wird. Ein Benutzer kann nur dann eine Anmeldung im Hintergrund durchführen, wenn das SSO-Sitzungscookie vorhanden (per **KeepAliveInDays** gesteuert) und nicht abgelaufen ist (per **SessionExpiryInSeconds** gesteuert). 
+    
+    Wenn ein Benutzer auf der Seite für die Registrierung und Anmeldung die Option **Angemeldet bleiben** nicht aktiviert, läuft eine Sitzung ab, nachdem der unter **SessionExpiryInSeconds** angegebene Zeitraum abgelaufen ist oder wenn der Browser geschlossen wird. Falls ein Benutzer die Option **Angemeldet bleiben** aktiviert, überschreibt der Wert von **KeepAliveInDays** den Wert von **SessionExpiryInSeconds** und gibt den Ablaufzeitpunkt für die Sitzung vor. Auch wenn Benutzer den Browser schließen und dann erneut öffnen, ist die Anmeldung im Hintergrund möglich, solange dies innerhalb des Zeitraums von **KeepAliveInDays** erfolgt. Es wird empfohlen, den Wert von **SessionExpiryInSeconds** auf einen kurzen Zeitraum (1.200 Sekunden) und den Wert von **KeepAliveInDays** auf einen relativ langen Zeitraum (7 Tage) festzulegen. Dies ist im folgenden Beispiel dargestellt:
 
     ```XML
     <RelyingParty>
@@ -160,7 +162,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
       <UserJourneyBehaviors>
         <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
         <SessionExpiryType>Absolute</SessionExpiryType>
-        <SessionExpiryInSeconds>604800</SessionExpiryInSeconds>
+        <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
       </UserJourneyBehaviors>
       <TechnicalProfile Id="PolicyProfile">
         <DisplayName>PolicyProfile</DisplayName>

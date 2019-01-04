@@ -1,6 +1,6 @@
 ---
-title: 'Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse | Microsoft Docs'
-description: Advanced Analytics Process and Technology in Aktion
+title: 'Erstellen und Bereitstellen eines Modells mit SQL Data Warehouse: Team Data Science-Prozess'
+description: Erstellen und Bereitstellen eines Machine Learning-Modell mithilfe von SQL Data Warehouse mit einem öffentlich verfügbaren Dataset.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445705"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139119"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
@@ -117,7 +117,7 @@ Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../../
 
 Nach erfolgreicher Ausführung ändert sich Ihr aktuelles Arbeitsverzeichnis in *-DestDir*. Ihnen sollte in etwa der folgende Bildschirm angezeigt werden:
 
-![][19]
+![Das aktuelle Arbeitsverzeichnis ändert sich.][19]
 
 Führen Sie im *-DestDir*das folgende PowerShell-Skript im Administratormodus aus:
 
@@ -321,7 +321,7 @@ Sie müssen entscheiden, was erfolgen soll, wenn Sie über doppelte Quell- und Z
 > 
 > 
 
-![Grafik 21][21]
+![Ausgabe von AzCopy][21]
 
 Sie können Ihre eigenen Daten verwenden. Wenn Ihre Daten auf Ihrem lokalen Computer in einer realen Anwendung gespeichert sind, können Sie AzCopy dennoch zum Hochladen lokaler Daten in Ihren privaten Azure Blob Storage verwenden. Sie müssen im AzCopy-Befehl der PowerShell-Skriptdatei nur den Speicherort von **Source**, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, in das lokale Verzeichnis ändern, das Ihre Daten enthält.
 
@@ -334,7 +334,7 @@ Dieses Powershell-Skript bindet auch die Azure SQL Data Warehouse-Informationen 
 
 Nach erfolgreicher Ausführung wird folgender Bildschirm angezeigt:
 
-![][20]
+![Ausgabe von einer erfolgreichen Skriptausführung][20]
 
 ## <a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure SQL Data Warehouse
 In diesem Abschnitt durchsuchen wir Daten und generieren Features durch das direkte Ausführen von SQL-Abfragen für Azure SQL Data Warehouse mit **Visual Studio Data Tools**. Alle in diesem Abschnitt verwendeten SQL-Abfragen finden Sie im Beispielskript *SQLDW_Explorations.sql*. Diese Datei wurde bereits vom PowerShell-Skript in das lokale Verzeichnis heruntergeladen. Sie können sie auch aus [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) abrufen. In die Datei in GitHub sind jedoch keine Azure SQL Data Warehouse-Informationen eingebunden.
@@ -363,9 +363,9 @@ Diese Abfragen ermöglichen eine schnelle Überprüfung der Anzahl der Zeilen un
     -- Report number of columns in table <nyctaxi_trip>
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
-**Ausgabe** : Sie sollten 173.179.759 Zeilen und 14 Spalten erhalten.
+**Ausgabe:** Sie sollten 173.179.759 Zeilen und 14 Spalten erhalten.
 
-### <a name="exploration-trip-distribution-by-medallion"></a>Durchsuchen: Verteilung der Fahrten nach "medallion"
+### <a name="exploration-trip-distribution-by-medallion"></a>Untersuchung: Verteilung der Fahrten nach „medallion“
 In diesem Beispiel werden die „medallions“ (Taxinummern) mit mehr als 100 abgeschlossenen Fahrten innerhalb eines bestimmten Zeitraums abgefragt. Die Abfrage profitiert vom Zugriff auf die partitionierte Tabelle, da sie vom Partitionsschema **pickup\_datetime** abhängig ist. Abfragen an das vollständige DataSet nutzen ebenfalls die partitionierte Tabelle und/oder den Indexscan.
 
     SELECT medallion, COUNT(*)
@@ -376,7 +376,7 @@ In diesem Beispiel werden die „medallions“ (Taxinummern) mit mehr als 100 a
 
 **Ausgabe:** Die Abfrage sollte eine Tabelle mit Zeilen zurückgeben, die 13.369 Taxinummern und die Anzahl der mit diesen 2013 erfolgten Fahrten enthalten. Die letzte Spalte enthält die Anzahl erfolgter Fahrten.
 
-### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Durchsuchen: Verteilung der Fahrten nach "medallion" und "hack_license"
+### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Untersuchung: Verteilung der Fahrten nach „medallion“ und „hack_license“
 In diesem Beispiel werden die Taxinummern („medallions“) und Fahrer („hack_license“) mit mehr als 100 abgeschlossenen Fahrten innerhalb eines bestimmten Zeitraums ermittelt.
 
     SELECT medallion, hack_license, COUNT(*)
@@ -401,7 +401,7 @@ In diesem Beispiel wird untersucht, ob die Felder "longitude" und/oder "latitude
 
 **Ausgabe:** Die Abfrage gibt 837.467 Fahrten mit ungültigen Feldern für „longitude“ und/oder „latitude“ zurück.
 
-### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Durchsuchen: Vergleich der Verteilung von Fahrten mit bzw. ohne Trinkgeld
+### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Untersuchung: Vergleich der Verteilung von Fahrten mit bzw. ohne Trinkgeld
 Dieses Beispiel ermittelt die Anzahl von Fahrten mit und ohne Trinkgeld in einem bestimmten Zeitraum (oder im vollständigen Dataset, wenn wie hier das ganze Jahr verwendet wird). Diese Verteilung spiegelt die binäre Bezeichnerverteilung wider, die später für die Modellierung der binären Klassifizierung verwendet wird.
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -410,9 +410,9 @@ Dieses Beispiel ermittelt die Anzahl von Fahrten mit und ohne Trinkgeld in einem
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**Ausgabe** : Die Abfrage sollte die folgenden Werte für Trinkgeldzahlungen für 2013 zurückgeben: 90.447.622 Fälle mit Trinkgeld und 82.264.709 Fälle ohne.
+**Ausgabe:** Die Abfrage sollte die folgenden Werte für Trinkgeldzahlungen für 2013 zurückgeben: 90.447.622 Fälle mit Trinkgeld und 82.264.709 Fälle ohne. 90.447.622 Fälle mit Trinkgeldzahlung und 82.264.709 ohne.
 
-### <a name="exploration-tip-classrange-distribution"></a>Durchsuchen: Verteilung von Trinkgeld nach Klasse/Bereich
+### <a name="exploration-tip-classrange-distribution"></a>Untersuchung: Verteilung von Trinkgeld nach Klasse/Bereich
 In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird) berechnet. Dies ist die Verteilung der Bezeichnerklassen, die später für die Modellierung der Multiklassenklassifizierung verwendet wird.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
@@ -437,7 +437,7 @@ In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmte
 | 0 |82264625 |
 | 4 |85765 |
 
-### <a name="exploration-compute-and-compare-trip-distance"></a>Durchsuchen: Berechnen und Vergleichen der Fahrtlängen
+### <a name="exploration-compute-and-compare-trip-distance"></a>Untersuchung: Berechnen und Vergleichen der Fahrtlängen
 In diesem Beispiel werden die Werte von „longitude“ und „latitude“ für Start- und Zielort in SQL-Geografiepunkte konvertiert. Anschließend werden anhand dieser SQL-Geografiepunkte die Fahrtentfernung berechnet und eine zufällige Stichprobe der Ergebnisse für den Vergleich ausgegeben. Im Beispiel werden die Ergebnisse anhand der zuvor durchgeführten Bewertung der Datenqualität auf gültige Koordinaten begrenzt.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
@@ -571,16 +571,16 @@ Wenn Sie bereits einen AzureML-Arbeitsbereich eingerichtet haben, können Sie da
 
 1. Melden Sie sich bei Ihrem AzureML-Arbeitsbereich an, klicken Sie oben auf „Studio“, und klicken Sie auf der linken Seite der Webseite auf „NOTEBOOKS“.
    
-    ![Grafik 22][22]
+    ![Klicken auf „Studio“ und dann auf „NOTEBOOKS“][22]
 2. Klicken Sie in der linken unteren Ecke der Webseite auf „NEW“, und wählen Sie „Python 2“ aus. Geben Sie dann einen Namen für das Notebook ein, und klicken Sie auf das Häkchen, um das neue, leere IPython Notebook zu erstellen.
    
-    ![Grafik 23][23]
+    ![Klicken auf „Neu“ und Auswählen von „Python 2“][23]
 3. Klicken Sie auf das Symbol „Jupyter“ in der linken oberen Ecke des neuen IPython Notebook.
    
-    ![Grafik 24][24]
+    ![Klicken auf das Jupyter-Symbol][24]
 4. Ziehen Sie das IPython Notebook-Beispiel auf die **Strukturseite** Ihres AzureML IPython Notebook-Diensts, und klicken Sie auf **Upload**. Das IPython Notebook-Beispiel wird dann in den AzureML IPython Notebook-Dienst hochgeladen.
    
-    ![Grafik 25][25]
+    ![Klicken Sie auf „Hochladen“.][25]
 
 Zum Ausführen des IPython Notebook-Beispiels oder der Python-Skriptdatei sind die folgenden Python-Pakete erforderlich. Wenn Sie den AzureML IPython Notebook-Dienst verwenden, wurden diese Pakete bereits vorinstalliert.
 
@@ -679,14 +679,14 @@ Jetzt können die erfassten Daten durchsucht werden. Wir beginnen mit einem Blic
 
     df1['trip_distance'].describe()
 
-### <a name="visualization-box-plot-example"></a>Visualisierung: Beispiel für ein Boxplotdiagramm
+### <a name="visualization-box-plot-example"></a>Visualisierung: Boxplotbeispiel
 Als Nächstes sehen wir uns das Boxplotdiagramm für die Fahrtentfernungen an, um die Quantile zu visualisieren.
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![Grafik 1][1]
+![Boxplotausgabe][1]
 
-### <a name="visualization-distribution-plot-example"></a>Visualisierung: Beispiel für ein Verteilungsdiagramm
+### <a name="visualization-distribution-plot-example"></a>Visualisierung: Verteilungsdiagrammbeispiel
 Diagramme, die die Verteilung und ein Histogramm für die Stichproben der Fahrtentfernungen visualisieren.
 
     fig = plt.figure()
@@ -695,7 +695,7 @@ Diagramme, die die Verteilung und ein Histogramm für die Stichproben der Fahrte
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![Grafik 2][2]
+![Verteilungsdiagrammausgabe][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>Visualisierung: Balken- und Liniendiagramme
 In diesem Beispiel teilen wir die Fahrtentfernungen in fünf Klassifizierungen auf und visualisieren die Klassifizierungsergebnisse.
@@ -709,38 +709,38 @@ Die oben genannte Klassifizierungsverteilung können wir wie folgt in einem Balk
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![Grafik 3][3]
+![Balkendiagrammausgabe][3]
 
-and
+und
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![Grafik 4][4]
+![Liniendiagrammausgabe][4]
 
-### <a name="visualization-scatterplot-examples"></a>Visualisierung: Beispiele für ein Punktdiagramm
+### <a name="visualization-scatterplot-examples"></a>Visualisierung: Punktdiagrammbeispiele
 Wir zeigen ein Punktdiagramm zwischen **trip\_time\_in\_secs** und **trip\_distance**, um zu ermitteln, ob es Korrelationen gibt.
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![Grafik 6][6]
+![Punktdiagrammausgabe der Beziehung zwischen Zeit und Entfernung][6]
 
 Auf ähnliche Weise können wir die Beziehung zwischen **rate\_code** und **trip\_distance** überprüfen.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![Grafik 8][8]
+![Punktdiagrammausgabe der Beziehung zwischen Code und Entfernung][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>Durchsuchen von Stichprobendaten mit SQL-Abfragen in IPython Notebook
 In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichprobendaten in der zuvor neu erstellten Tabelle. Beachten Sie, dass ähnliche Suchvorgänge anhand der ursprünglichen Tabellen ausgeführt werden können.
 
-#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Durchsuchen: Melden der Anzahl von Zeilen und Spalten in der Stichprobentabelle
+#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Untersuchung: Melden der Anzahl von Zeilen und Spalten in der Stichprobentabelle
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
     print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
     ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
     print 'Number of columns in sample = %d' % ncols.iloc[0,0]
 
-#### <a name="exploration-tippednot-tripped-distribution"></a>Durchsuchen: Verteilung von Fahrten mit/ohne Trinkgeld
+#### <a name="exploration-tippednot-tripped-distribution"></a>Untersuchung: Verteilung von Fahrten mit/ohne Trinkgeld
     query = '''
         SELECT tipped, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -749,7 +749,7 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>Durchsuchen: Verteilung von Trinkgeld nach Klasse
+#### <a name="exploration-tip-class-distribution"></a>Untersuchung: Trinkgeldklassenverteilung
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -758,12 +758,12 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Durchsuchen: Darstellen der Trinkgeldverteilung nach Klasse
+#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Untersuchung: Darstellen der Trinkgeldverteilung nach Klasse
     tip_class_dist['tip_freq'].plot(kind='bar')
 
 ![Grafik 26][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Durchsuchen: Tägliche Verteilung der Fahrten
+#### <a name="exploration-daily-distribution-of-trips"></a>Untersuchung: Tägliche Verteilung der Fahrten
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -772,7 +772,7 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Durchsuchen: Verteilung der Fahrten nach "medallion"
+#### <a name="exploration-trip-distribution-per-medallion"></a>Untersuchung: Verteilung der Fahrten nach „medallion“
     query = '''
         SELECT medallion,count(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -781,20 +781,20 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“ und „hack_license“
+#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Untersuchung: Verteilung der Fahrten nach „medallion“ und „hack_license“
     query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
     pd.read_sql(query,conn)
 
 
-#### <a name="exploration-trip-time-distribution"></a>Durchsuchen: Verteilung der Fahrtzeit
+#### <a name="exploration-trip-time-distribution"></a>Untersuchung: Verteilung der Fahrtzeit
     query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distance-distribution"></a>Durchsuchen: Verteilung der Fahrtentfernungen
+#### <a name="exploration-trip-distance-distribution"></a>Untersuchung: Verteilung der Fahrtentfernung
     query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-payment-type-distribution"></a>Durchsuchen: Verteilung der Zahlungsart
+#### <a name="exploration-payment-type-distribution"></a>Untersuchung: Zahlungsartverteilung
     query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
     pd.read_sql(query,conn)
 
@@ -805,7 +805,7 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 ## <a name="mlmodel"></a>Entwickeln von Modellen in Azure Machine Learning
 Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine Learning](https://studio.azureml.net)fortfahren. Die Daten können jetzt für die oben beschriebenen Vorhersageprobleme verwendet werden:
 
-1. **Binäre Klassifizierung**: Zur Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wird.
+1. **Binäre Klassifizierung**: Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wurde.
 2. **Multiklassenklassifizierung**: Zur Vorhersage des Trinkgeldbereichs gemäß den zuvor definierten Klassen.
 3. **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für eine Fahrt.  
 

@@ -1,6 +1,6 @@
 ---
-title: Indizierung von CSV-Blobs mit Azure Search-Blobindexer | Microsoft Docs
-description: Erfahren Sie, wie Sie CSV-Blobs mit Azure Search indizieren können.
+title: Indizierung von CSV-Blobs mit Azure Search-Blobindexer – Azure Search
+description: Durchforsten Sie CSV-Blobs im Azure Blob Storage für die Volltextsuche mithilfe eines Azure Search-Index. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Blob Storage.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: b1f97b5e9542e32096bb060bce40e7b9620d0f49
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 2bd89432a15f6960b07102ede317acca5864b773
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406074"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310894"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indizierung von CSV-Blobs mit Azure Search-Blobindexer
 In der Standardeinstellung analysiert der [Azure Search-Blobindexer](search-howto-indexing-azure-blob-storage.md) durch Trennzeichen getrennte Blobs als ein einzelnes Textsegment. Bei Blobs mit CSV-Daten sollen die einzelnen Zeilen im Blob jedoch häufig als separates Dokument behandelt werden. Angenommen, Sie möchten den folgenden durch Trennzeichen getrennten Text in zwei Dokumente analysieren, die jeweils die Felder „Id“, „DatePublished“ und „Tags“ enthalten: 

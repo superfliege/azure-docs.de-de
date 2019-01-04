@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: df69406bd0a6e09f66262ce66f8eeb7cada2422a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: eb4057b4cfc6a68fb3489a7ab6fb1ee6b5f41d7d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393980"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338461"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -76,7 +76,7 @@ Zusätzlich zu den vom System bereitgestellten Features für unzustellbare Nachr
 
 Nachrichten werden in den folgenden Situationen an die Warteschlange für unzustellbare Nachrichten übermittelt:
 
-- Eine Meldung durchläuft mehr als drei Warteschlangen oder Themen, die [miteinander verkettet](service-bus-auto-forwarding.md) sind.
+- Eine Meldung durchläuft mehr als vier Warteschlangen oder Themen, die [miteinander verkettet](service-bus-auto-forwarding.md) sind.
 - Die Zielwarteschlange oder das Zielthema wurde deaktiviert oder gelöscht.
 - Die Zielwarteschlange oder das Zielthema überschreitet die maximale Entitätsgröße.
 

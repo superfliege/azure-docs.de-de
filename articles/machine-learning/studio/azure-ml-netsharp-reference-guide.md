@@ -4,9 +4,8 @@ description: Enthält die Syntax für die Net#-Spezifikationssprache für neuron
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315306"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272234"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio
 
@@ -29,8 +28,8 @@ Net# ist eine Programmiersprache, die von Microsoft zur Definition von Architekt
 
 Sie können eine Net#-Architekturspezifikation in den folgenden Kontexten verwenden:
 
-+ Alle Modulen für neuronale Netzwerke in Microsoft Azure Machine Learning Studio: [Neuronales Netzwerk mit mehreren Klassen](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Neuronales Netzwerk mit zwei Klassen](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), and [Regression mit neuronalen Netzwerken](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funktionen für neuronale Netzwerke in MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache „R“ und [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
++ Alle neuronalen Netzwerke in Microsoft Azure Machine Learning Studio: [Mehrklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Zweiklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network) und [Regression mit neuralen Netzwerken](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Funktionen neuronaler Netzwerke in MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache R und [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
 
 
 In diesem Artikel werden die grundlegenden Konzepte und die Syntax beschrieben, die zum Entwickeln eines benutzerdefinierten neuronalen Netzwerks mit Net# benötigt werden: 
@@ -39,7 +38,7 @@ In diesem Artikel werden die grundlegenden Konzepte und die Syntax beschrieben, 
 + Syntax und Schlüsselwörter der Net#-Spezifikationssprache
 + Beispiele von mit Net# erstellten benutzerdefinierten neuronalen Netzwerken 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>Neuronale Netzwerke – Grundlagen
 
@@ -219,7 +218,7 @@ Es gibt zwei Gruppen von Eigenschaften zum Steuern der Auffüllung, die sich geg
     
     Wenn der Wert einer Dimension "False" ist, werden die Kernel so definiert, dass die Anzahl der ausgelassenen Knoten auf jeder Seite gleich ist (bis zu einer Differenz von 1). Der Standardwert dieses Attributs ist ein Tupel, in dem alle Komponenten "False" sind.
 
-+ **UpperPad** und **LowerPad** (optional): Ermöglichen eine bessere Steuerung des zu verwendenden Umfangs der Auffüllung. **Wichtig:** Diese Attribute können nur dann definiert werden, wenn die **Padding**-Eigenschaft oben ***nicht*** definiert wurde. Die Werte sollten Tupel ganzer Zahlen sein, deren Längen der Arität des Bündels entsprechen. Wenn diese Attribute angegeben werden, werden am unteren und oberen Ende jeder Dimension der Eingabeschicht „Dummy“-Knoten hinzugefügt. Die Anzahl der Knoten, die dem unteren und oberen Ende der Dimension hinzugefügt werden, wird durch **LowerPad**[i] bzw. **UpperPad**[i] festgelegt. 
++ **UpperPad** und **LowerPad** (optional): Ermöglichen eine bessere Steuerung des zu verwendenden Umfangs der Auffüllung. **Wichtig:** Diese Attribute können nur dann definiert werden, wenn die oben genannte **Padding**-Eigenschaft ***nicht*** definiert wurde. Die Werte sollten Tupel ganzer Zahlen sein, deren Längen der Arität des Bündels entsprechen. Wenn diese Attribute angegeben werden, werden am unteren und oberen Ende jeder Dimension der Eingabeschicht „Dummy“-Knoten hinzugefügt. Die Anzahl der Knoten, die dem unteren und oberen Ende der Dimension hinzugefügt werden, wird durch **LowerPad**[i] bzw. **UpperPad**[i] festgelegt. 
 
     Um sicherzustellen, dass Kernel nur "realen" Knoten und nicht "Dummy"-Knoten entsprechen, müssen die folgenden Bedingungen erfüllt sein:
       - Jede Komponente von **LowerPad** muss kleiner als (aber nicht gleich) `KernelShape[d]/2` sein. 
@@ -375,7 +374,7 @@ Die Kurzform kann nur verwendet werden, wenn die Schichten ein einziges Bündel 
 
 In diesem Abschnitt finden Sie einige Beispiele dafür, wie Sie mit Net# verdeckte Schichten hinzufügen, die Interaktion der verdeckten Schichten mit anderen Schichten definieren und Konvolutionsnetzwerke erstellen können.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definieren eines einfachen benutzerdefinierten neuronalen Netzwerks: "Hello World"-Beispiel
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definieren eines einfachen benutzerdefinierten neuronalen Netzwerks: „Hello World“-Beispiel
 
 Dieses einfache Beispiel zeigt, wie ein neuronales Netzwerkmodell mit einer einzigen verdeckten Schicht erstellt wird.
 

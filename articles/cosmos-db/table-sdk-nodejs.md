@@ -1,10 +1,8 @@
 ---
-title: Table-API von Azure Cosmos DB für Node.js | Microsoft-Dokumentation
-description: Hier finden Sie sämtliche Informationen zur Table-API von Azure Cosmos DB – einschließlich Veröffentlichungs- und Deaktivierungsterminen sowie Änderungen in den einzelnen Versionen.
+title: Azure Cosmos DB-Tabellen-API für Node.js
+description: Wichtige Informationen zur Azure Cosmos DB-Tabellen-API einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen in den einzelnen Versionen.
 services: cosmos-db
 author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: nodejs
@@ -12,14 +10,14 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 4bdcb7c587ef05ced3c163136c52c81433a98cf4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 04e4337581337a467fc49927f0f353d42c7b801a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468703"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089666"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Table-API von Azure Cosmos DB für Node.js: Versionshinweise und Ressourcen
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB-Tabellen-API für Node.js: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -31,7 +29,7 @@ ms.locfileid: "49468703"
 |   |   |
 |---|---|
 |**SDK-Download**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API-Dokumentation**|[Actor-API-Referenzdokumentation](http://azure.github.io/azure-storage-node/)|
+|**API-Dokumentation**|[Actor-API-Referenzdokumentation](https://azure.github.io/azure-storage-node/)|
 |**Am SDK mitwirken**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]

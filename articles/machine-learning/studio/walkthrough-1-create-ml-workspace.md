@@ -1,12 +1,11 @@
 ---
-title: 'Schritt 1: Erstellen eines Machine Learning Studio-Arbeitsbereichs | Microsoft-Dokumentation'
-description: 'Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 1: Erfahren Sie, wie Sie einen neuen Azure Machine Learning Studio-Arbeitsbereich einrichten.'
+title: 'Schritt 1: Erstellen eines Arbeitsbereichs: Azure Machine Learning Studio | Microsoft-Dokumentation'
+description: 'Schritt 1 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Erfahren Sie, wie Sie einen neuen Azure Machine Learning Studio-Arbeitsbereich einrichten.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 0990fb6f8166be516b32e1f457f868be16dedcb2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: bc83fa6e3fa7d5ef31515309f5c1cd0b025c8906
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316959"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256365"
 ---
-# <a name="walkthrough-step-1-create-a-machine-learning-studio-workspace"></a>Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Machine Learning Studio-Arbeitsbereichs
+# <a name="walkthrough-step-1-create-an-azure-machine-learning-studio-workspace"></a>Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs
 Dies ist der erste Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 
 1. **Erstellen eines Machine Learning-Arbeitsbereichs**

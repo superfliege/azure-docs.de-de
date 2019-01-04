@@ -1,6 +1,6 @@
 ---
-title: Übersicht über Azure Event Hubs-Authentifizierung und -Sicherheitsmodell | Microsoft Docs
-description: Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell.
+title: 'Authentifizierung und Sicherheitsmodell: Azure Event Hubs | Microsoft-Dokumentation'
+description: Dieser Artikel beschreibt die Authentifizierung und das Sicherheitsmodell von Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0e8dcf9eede744d52e38b742946a59944988f199
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 6f4abd9f826864914abee0b5d513d5b1c530d416
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140986"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104151"
 ---
-# <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)
+# <a name="azure-event-hubs---authentication-and-security-model"></a>Azure Event Hubs: Authentifizierung und Sicherheitsmodell
 
 Das Sicherheitsmodell von Azure Event Hubs erfüllt die folgenden Voraussetzungen:
 
@@ -113,9 +114,9 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 
 * [Übersicht über Event Hubs]
 * [Overview of Shared Access Signatures (Übersicht von Shared Access Signatures)]
-* [Sample applications that use Event Hubs (Beispielanwendung mit Verwendung von Event Hubs)]
+* [Beispielanwendungen mit Event Hubs]
 
 [Übersicht über Event Hubs]: event-hubs-what-is-event-hubs.md
-[Sample applications that use Event Hubs (Beispielanwendung mit Verwendung von Event Hubs)]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Beispielanwendungen mit Event Hubs]: https://github.com/Azure/azure-event-hubs/tree/master/samples
 [Overview of Shared Access Signatures (Übersicht von Shared Access Signatures)]: ../service-bus-messaging/service-bus-sas.md
 

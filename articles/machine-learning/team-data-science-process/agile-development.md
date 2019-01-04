@@ -1,5 +1,5 @@
 ---
-title: Agile Entwicklung von Data Science-Projekten – Azure Machine Learning | Microsoft-Dokumentation
+title: 'Agile Entwicklung von Data Science-Projekten: Team Data Science-Prozess'
 description: Erfahren Sie, wie Entwickler ein Data Science-Projekt auf systematische Weise mit Versionskontrolle und Zusammenarbeit innerhalb eines Projektteams über den Team Data Science-Prozess ausführen können.
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9fd8714e4c9fdc89036a3b05ba835b140363c0e3
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ee8e3e3ef33a8b09b92d4dfc262fce26dd60abb3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443371"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134402"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agile Entwicklung von Data Science-Projekten
 
@@ -23,11 +23,11 @@ Dieses Dokument beschreibt, wie Entwickler ein Data Science-Projekt auf systemat
 
 Dieser Artikel enthält Anweisungen zu folgenden Aufgaben: 
 
-1. Durchführen einer **Sprintplanung** für Arbeitsaufgaben in einem Projekt.<br> Wenn Sie mit der Sprintplanung nicht vertraut sind, finden Sie allgemeine Informationen und Details [hier](https://en.wikipedia.org/wiki/Sprint_(software_development) "hier"). 
+1. Durchführen einer **Sprintplanung** für Arbeitselemente in einem Projekt.<br> Wenn Sie mit der Sprintplanung nicht vertraut sind, finden Sie allgemeine Informationen und Details [hier](https://en.wikipedia.org/wiki/Sprint_(software_development) "hier"). 
 2. **Hinzufügen von Arbeitselementen** zu Sprints. 
 
 > [!NOTE]
-> Die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung mithilfe von Azure DevOps Services werden in den folgenden Anweisungen beschrieben. Sie geben an, wie diese Aufgaben mit Azure DevOps Services erledigt werden können, da TDSP auf diese Weise bei Microsoft implementiert wird.  Die Punkte (3) und (4) in der vorherigen Liste sind Vorteile, die Sie mit Azure DevOps Services immer erhalten. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen aber auf andere Weise ausgeführt werden. Beispielsweise lässt sich der Punkt **Verknüpfen einer Arbeitsaufgabe mit einem Git-Branch** in Abschnitt 6 möglicherweise nicht so einfach umsetzen wie mit Azure DevOps Services.
+> Die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung mithilfe von Azure DevOps Services werden in den folgenden Anweisungen beschrieben. Sie geben an, wie diese Aufgaben mit Azure DevOps Services erledigt werden können, da TDSP auf diese Weise bei Microsoft implementiert wird.  Die Punkte (3) und (4) in der vorherigen Liste sind Vorteile, die Sie mit Azure DevOps Services immer erhalten. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen aber auf andere Weise ausgeführt werden. Beispielsweise lässt sich der Punkt **Verknüpfen eines Arbeitselements mit einem Git-Branch** in Abschnitt 6 möglicherweise nicht so einfach umsetzen wie mit Azure DevOps Services.
 >
 >
 
@@ -40,18 +40,18 @@ Die folgende Abbildung veranschaulicht einen typischen Workflow mit Sprintplanun
 
 Im TDSP-Sprintplanungsframework gibt es vier häufig verwendete Typen von **Arbeitselementen**: **Feature**, **User Story**, **Aufgabe** und **Fehler**. Jedes Projekt verwaltet ein einzelnes Backlog für alle Arbeitselemente. Es gibt kein Backlog auf Git-Repositoryebene unter einem Projekt. Hier sind die Definitionen:
 
-- **Feature:** Ein Feature entspricht einem Projektauftrag. Andere Aufträge eines Kunden werden als unterschiedliche Features betrachtet. Ebenso werden verschiedene Phasen eines Projekts bei einem Kunden am besten als unterschiedliche Features betrachtet. Wenn Sie zum Benennen Ihrer Features ein Schema wie ***Kundenname-Auftragsname*** verwenden, können Sie den Kontext des Projekts/Auftrags dem Namen entnehmen.
-- **Story:** Storys sind unterschiedliche Arbeitselemente, die zum vollständigen Abschließen eines Features (Projekts) erforderlich sind. Beispiele für Storys sind:
+- **Feature**: Ein Feature entspricht einem Projektauftrag. Andere Aufträge eines Kunden werden als unterschiedliche Features betrachtet. Ebenso werden verschiedene Phasen eines Projekts bei einem Kunden am besten als unterschiedliche Features betrachtet. Wenn Sie zum Benennen Ihrer Features ein Schema wie ***Kundenname-Auftragsname*** verwenden, können Sie den Kontext des Projekts/Auftrags dem Namen entnehmen.
+- **Story**: Storys sind unterschiedliche Arbeitselemente, die zum vollständigen Abschließen eines Features (Projekts) erforderlich sind. Beispiele für Storys sind:
     - Abrufen von Daten 
     - Durchsuchen von Daten 
     - Generieren von Features
     - Erstellen von Modellen
     - Operationalisieren von Modellen 
     - Erneutes Trainieren von Modellen
-- **Aufgabe:** Aufgaben sind zuweisbare Code- oder Dokumentarbeitselemente oder andere Aktivitäten, die zum Abschließen einer bestimmten Story abgeschlossen werden müssen. Beispiele für Aufgaben in der Story *Abrufen von Daten* sind:
+- **Aufgabe**: Aufgaben sind zuweisbare Code- oder Dokumentarbeitselemente oder andere Aktivitäten, die zum Abschließen einer bestimmten Story abgeschlossen werden müssen. Beispiele für Aufgaben in der Story *Abrufen von Daten* sind:
     -  Abrufen von Anmeldeinformationen von SQL Server 
     -  Hochladen von Daten in SQL Data Warehouse 
-- **Fehler:** Als Fehler werden in der Regel Korrekturen bezeichnet, die für einen vorhandenen Code oder ein Dokument erforderlich sind und zum Abschließen einer Aufgabe ausgeführt werden. Wenn der Fehler durch fehlende Phasen oder Aufgaben verursacht wird, kann dies bis zu einer Story oder Aufgabe eskaliert werden. 
+- **Fehler**: Als Fehler werden in der Regel Korrekturen bezeichnet, die für vorhandenen Code oder ein Dokument erforderlich sind und zum Abschließen einer Aufgabe ausgeführt werden. Wenn der Fehler durch fehlende Phasen oder Aufgaben verursacht wird, kann dies bis zu einer Story oder Aufgabe eskaliert werden. 
 
 > [!NOTE]
 > Konzepte werden von Features, Storys, Aufgaben und Fehlern aus der Softwarecodeverwaltung (Software Code Management, SCM) für die Verwendung in Data Science entlehnt. Sie können von den herkömmlichen SCM-Definitionen leicht abweichen.
@@ -133,20 +133,20 @@ In diesem Artikel wird erläutert, wie Sie eine Agile Data Science-Prozessvorlag
 
     ![12](./media/agile-development/12-disable.png)
 
-4. Navigieren Sie zur Registerkarte **AgileDataScienceProcess** -> **Backlogebenen**. Benennen Sie „Epics“ in „TDSP-Projekte“ um, indem Sie auf **Konfigurieren** -> **Bearbeiten/Umbenennen** klicken. Klicken Sie im gleichen Dialogfeld unter „Data Science-Projekt“ auf **+ Neuer Arbeitsaufgabentyp**, und legen Sie den Wert von **Standardmäßiger Arbeitsaufgabentyp** auf „TDSP-Projekt“ fest. 
+4. Navigieren Sie zur Registerkarte **AgileDataScienceProcess** -> **Backlogebenen**. Benennen Sie „Epics“ in „TDSP-Projekte“ um, indem Sie auf **Konfigurieren** -> **Bearbeiten/Umbenennen** klicken. Klicken Sie im gleichen Dialogfeld unter „Data Science-Projekt“ auf **+ Neuer Arbeitselementtyp**, und legen Sie den Wert von **Standardmäßiger Arbeitselementtyp** auf „TDSP-Projekt“ fest. 
 
     ![13](./media/agile-development/13-rename.png)  
 
-5. Ändern Sie entsprechend den Backlognamen „Features“ in „TDSP-Phasen“, und fügen Sie für **Neuer Arbeitsaufgabentyp** Folgendes ein:
+5. Ändern Sie entsprechend den Backlognamen „Features“ in „TDSP-Phasen“, und fügen Sie für **Neuer Arbeitselementtyp** Folgendes ein:
 
     - Geschäftliche Aspekte
     - Datenerfassung
     - Modellierung
     - Bereitstellung
 
-6. Benennen Sie „User Story“ in „TDSP-Unterphasen“ um, wobei der standardmäßige Arbeitsaufgabentyp auf den neu erstellten Typ „TDSP-Unterphase“ festgelegt wird.
+6. Benennen Sie „User Story“ in „TDSP-Unterphasen“ um, wobei der standardmäßige Arbeitselementtyp auf den neu erstellten Typ „TDSP-Unterphase“ festgelegt wird.
 
-7. Legen Sie für „Tasks“ den neu erstellten Arbeitsaufgabentyp „TDSP-Task“ fest. 
+7. Legen Sie für „Tasks“ den neu erstellten Arbeitselementtyp „TDSP-Task“ fest. 
 
 8. Nach diesen Schritten sollten folgende Backlogebenen vorhanden sein:
 
@@ -183,7 +183,7 @@ Unter [Gemeinsames Schreiben von Code mit Git](collaborative-coding-with-git.md)
 Hier finden Sie zusätzliche Links zu Ressourcen für Agile-Prozesse.
 
 - Agiler Prozess   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- Arbeitsaufgabentypen und Workflow für agile Prozesse   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- Arbeitselementtypen und Workflow für agile Prozesse   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
 
 
 Exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Artikel [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 

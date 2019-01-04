@@ -10,39 +10,39 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/22/2017
+ms.date: 02/22/2017
 ms.author: cwatson
-ms.openlocfilehash: be74714667c2fed57a797a972ddcd7949cae5933
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 434f717d9590eff39df161a74931477bdf71bb67
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274669"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309565"
 ---
-# <a name="troubleshoot-enterprise-cost-views"></a>Problembehandlung bei Unternehmenskostenansichten 
+# <a name="troubleshoot-enterprise-cost-views"></a>Problembehandlung bei Unternehmenskostenansichten
 
-Bei Unternehmensanmeldungen gibt es mehrere Einstellungen, die verhindern können, dass Benutzer der Anmeldung Kosten nicht anzeigen können.  Diese Einstellungen werden durch den Registrierungsadministrator verwaltet, oder den Partner, wenn die Registrierung nicht direkt bei Microsoft erworben wird.  In diesem Artikel erfahren Sie, um welche Einstellungen es geht, und wie sie sich auf die Anmeldung auswirken. Diese Einstellungen sind unabhängig von den [Azure-RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
-
+In Unternehmensregistrierungen gibt es mehrere Einstellungen, die dazu führen können, dass Benutzer in der Anmeldung keine Kosten sehen können.  Diese Einstellungen werden vom Registrierungsadministrator verwaltet. Wurde die Registrierung nicht direkt über Microsoft gekauft, werden die Einstellungen vom Partner verwaltet.  In diesem Artikel erfahren Sie, um welche Einstellungen es geht, und wie sie sich auf die Anmeldung auswirken. Diese Einstellungen sind unabhängig von den„Rollenbasierte Zugriffssteuerung in Azure“-Rollen.
 
 ## <a name="enabling-access-to-costs"></a>Aktivieren des Zugriffs auf Kosten
 
-Erhalten Sie die Meldung „Nicht autorisiert“ oder *Kostenansichten sind in Ihrer Registrierung deaktiviert*, wenn Sie Kosteninformationen suchen? ![Nicht autorisiert](media/billing-enterprise-mgmt-groups/unauthorized.png)
+Erhalten Sie die Meldung „Nicht autorisiert“ oder *Kostenansichten sind in Ihrer Registrierung deaktiviert*, wenn Sie nach Kosteninformationen suchen?
+![Screenshot mit „Nicht autorisiert“ im Feld „Aktuelle Kosten“ für das Abonnement](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
-Dies kann einen der folgenden Gründe haben:
+Hierfür kann es einen der folgenden Gründe geben:
 
-1. Sie haben Azure über einen Enterprise-Partner erworben, und der Partner hat die Preisinformationen noch nicht freigegeben. Bitten Sie den Partner, die Einstellung im [Enterprise Portal](https://ea.azure.com) zu aktualisieren, um die Preisinformationen freizugeben.
-2. Wenn Sie alternativ ein EA-Direktkunde sind, haben Sie eine Reihe von Möglichkeiten:
-    * Sie sind Kontobesitzer, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Kontobesitzer deaktiviert.  
-    * Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Abteilungsadministratoren deaktiviert.
-    * Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten. Der Registrierungsadministrator kann die Einstellung im [Enterprise Portal](https://ea.azure.com/manage/enrollment) wie hier gezeigt aktualisieren:
+1. Sie haben Azure über einen Enterprise-Partner gekauft, und der Partner hat die Preisinformationen noch nicht freigegeben. Bitten Sie den Partner, die Preiseinstellung im [Enterprise Portal](https://ea.azure.com) zu aktualisieren.
+2. Wenn Sie ein EA-Direktkunde sind, haben Sie mehrere Möglichkeiten:
+    * Sie sind Kontobesitzer, und der Registrierungsadministrator hat die Einstellung **Gebühren anzeigen** für Kontobesitzer deaktiviert.  
+    * Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung **Gebühren anzeigen** für Abteilungsadministratoren deaktiviert.
+    * Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten. Der Registrierungsadministrator kann die Einstellungen im [Enterprise Portal](https://ea.azure.com/manage/enrollment) aktualisieren.
 
-![Einstellungen im Enterprise Portal](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
+      ![Screenshot mit den Enterprise Portal-Einstellungen für das Anzeigen von Gebühren.](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
 
+## <a name="asset-is-unavailable"></a>Asset ist nicht verfügbar
 
-## <a name="asset-is-unavailable"></a>Asset ist nicht verfügbar? 
-Wenn Sie beim Versuch, auf ein Abonnement oder eine Verwaltungsgruppe zuzugreifen, die Fehlermeldung „Dieses Asset ist nicht verfügbar“ erhalten, dann besitzen Sie nicht die richtige Rolle, um dieses Element anzuzeigen.  
+Wenn Sie bei dem Versuch, auf ein Abonnement oder eine Verwaltungsgruppe zuzugreifen, die Fehlermeldung „Dieses Asset ist nicht verfügbar“ erhalten, haben Sie nicht die richtige Rolle, um dieses Element anzuzeigen.  
 
-![Asset nicht gefunden](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![Screenshot mit der Meldung „Asset ist nicht verfügbar“.](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
-Wenden Sie sich an den Administrator des Abonnements oder der Verwaltungsgruppe, um Zugriff zu erhalten.  
-* Nutzen Sie für Abonnements das Dokument [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) als Referenz, um zu ermitteln, welche Rolle erforderlich ist.
+Bitten Sie Ihren Azure-Abonnement- oder -Verwaltungsgruppenadministrator, Ihnen Zugriff zu gewähren. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).

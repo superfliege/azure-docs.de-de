@@ -5,46 +5,42 @@ items:
   items:
   - name: Was ist die API für die visuelle Bing-Suche?
     href: overview.md
-- name: REST-API-Schnellstartanleitungen
+- name: Schnellstarts
   items:
-  - name: Erste Abfrage in C#
-    href: quickstarts/csharp.md
-  - name: Erste Abfrage in Java
-    href: quickstarts/java.md
-  - name: Erste Abfrage für Node.js
-    href: quickstarts/nodejs.md
-  - name: Erste Abfrage in Python
-    href: quickstarts/python.md
-  expanded: true
-- name: SDK
-  items:
-  - name: Übersicht über SDK-Beispiele
-    href: sdk.md
-  - name: SDK in C#
-    href: visual-search-sdk-c-sharp.md
-  - name: SDK in Node
-    href: visual-search-sdk-node.md
-  - name: SDK in Python
-    href: visual-search-sdk-python.md
-  expanded: true
+  - name: REST-API
+    items:
+    - name: Verwenden von C#
+      href: quickstarts/csharp.md
+    - name: Verwenden von Java
+      href: quickstarts/java.md
+    - name: Verwenden von Node.js
+      href: quickstarts/nodejs.md
+    - name: Verwenden von Python
+      href: quickstarts/python.md
+    expanded: true
+  - name: SDK
+    items:
+    - name: Verwenden von C#
+      href: visual-search-sdk-c-sharp.md
+    - name: Verwenden von Node.js
+      href: visual-search-sdk-node.md
+    - name: Verwenden von Python
+      href: visual-search-sdk-python.md
+    expanded: true
 - name: Lernprogramme
   items:
-  - name: Bildupload-Web-App
+  - name: Hochladen eines Bilds
     href: tutorial-visual-search-image-upload.md
-  - name: Einzelseiten-Web-App
-    href: tutorial-bing-visual-search-single-page-app.md
-  - name: Einzelseiten-Web-App (Quellcode)
-    href: tutorial-bing-visual-search-single-page-app-source.md
-  - name: 'SDK für die visuelle Bing-Suche: Bildzuschneidebereich und Ergebnisse'
+  - name: Zuschneiden und Durchsuchen eines Bildbereichs
     href: tutorial-visual-search-crop-area-results.md
-  - name: 'SDK für die visuelle Bing-Suche: ImageInsightsToken und Ergebnisse'
-    href: tutorial-visual-search-insights-token.md
 - name: Beispiele
   items:
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search
 - name: Konzepte
   items:
+  - name: Senden von Abfragen
+    href: concepts/sending-queries.md
   - name: Standardbildauswertungen
     href: default-insights-tag.md
   - name: Nutzung von Bing-Erkenntnissen
@@ -59,11 +55,22 @@ items:
     href: use-and-display-requirements.md
   - name: Ändern der Größe und Zuschneiden von Miniaturansichten
     href: resize-and-crop-thumbnails.md
+  - name: Suchen nach einem Bild mithilfe von Bildauswertungstoken
+    href: tutorial-visual-search-insights-token.md
+  - name: Erstellen einer Einzelseiten-Web-App
+    href: tutorial-bing-visual-search-single-page-app.md
 - name: Verweis
   items:
   - name: REST-API v7
     href: https://aka.ms/bingvisualsearchreferencedoc
-  expanded: true
+  - name: SDKs
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python
 - name: Ressourcen
   items:
   - name: Sprach- und Regionsunterstützung
@@ -76,9 +83,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/bing-search
   - name: Aussagen von Benutzern
     href: https://cognitive.uservoice.com/forums/555907-bing-search
-ms.openlocfilehash: f33e0fe7c13a7686c244d10297fd23e7ca59d452
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6291b480d8c1ba44f6c0306c090cdee3df1fec95
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432425"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789176"

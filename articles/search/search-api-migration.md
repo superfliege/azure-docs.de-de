@@ -1,6 +1,6 @@
 ---
-title: Aktualisieren auf die aktuelle Version der REST-API für den Azure Search-Dienst | Microsoft-Dokumentation
-description: Aktualisieren auf die aktuelle Version der REST-API für den Azure Search-Dienst
+title: Aktualisieren auf die aktuelle Version der REST-API für den Azure-Suchdienst – Azure Search
+description: Überprüfen Sie die Unterschiede in den API-Versionen, und erfahren Sie, welche Aktionen erforderlich sind, um vorhandenen Code zur neuesten Version der REST-API für den Azure-Suchdienst zu migrieren.
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,14 +9,15 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 2efe7769f68988f3c0d52c8806b78c1b96d8c639
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.custom: seodec2018
+ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620228"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312186"
 ---
-# <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>Aktualisieren auf die aktuelle Version der REST-API für den Azure Search-Dienst
+# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Aktualisieren auf die aktuelle Version der REST-API für den Azure-Suchdienst
 Wenn Sie eine frühere Version der [REST-API für den Azure Search-Dienst](https://docs.microsoft.com/rest/api/searchservice/) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die aktuelle allgemein verfügbare API-Version 2017-11-11.
 
 Version 2017-11-11 der REST-API enthält einige Änderungen im Vergleich zu früheren Versionen. Sie sind größtenteils abwärtskompatibel, daher sollte das Ändern von Code nur minimalen Aufwand bedeuten, abhängig davon, welche Version Sie zuvor verwendet haben. Anweisungen zum Ändern Ihres Codes, um die neue API-Version zu verwenden, finden Sie unter [Schritte zum Upgrade](#UpgradeSteps).

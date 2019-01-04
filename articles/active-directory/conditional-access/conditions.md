@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143628"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410063"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory? 
 
-Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („Then do this“) für den Grund der Auslösung Ihrer Richtlinie („When this happens“). 
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) können Sie den Zugriff von Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („Then do this“) für den Grund der Auslösung Ihrer Richtlinie („When this happens“). 
 
 ![Ursache und Reaktion](./media/conditions/10.png)
 
@@ -50,7 +50,7 @@ Wenn Sie **Alle Benutzer** auswählen, wird Ihre Richtlinie auf alle Benutzer (e
 
 Wenn Sie **Benutzer und Gruppen auswählen** auswählen, können Sie die folgenden Optionen festlegen:
 
-* Mit **Alle Gastbenutzer** können Sie eine Richtlinie auf B2B-Gastbenutzer anwenden. Diese Bedingung gilt für jedes Benutzerkonto, dessen Attribut **userType** **guest** entspricht. Sie können diese Einstellung verwenden, damit eine Richtlinie angewendet wird, sobald das Konto in einem Einladungsfluss in Azure AD erstellt wurde.
+* Mit **Alle Gastbenutzer** können Sie eine Richtlinie auf B2B-Gastbenutzer anwenden. Diese Bedingung gilt für jedes Benutzerkonto, dessen Attribut **userType** **guest** entspricht. Verwenden Sie diese Einstellung, wenn eine Richtlinie angewendet werden muss, sobald das Konto in einem Einladungsfluss in Azure AD erstellt wurde.
 
 * Mit **Verzeichnisrollen** können Sie eine Richtlinie basierend auf der zugewiesenen Benutzerrolle anwenden. Diese Bedingung unterstützt Verzeichnisrollen wie **Globaler Administrator** oder **Kennwortadministrator**.
 
@@ -74,7 +74,7 @@ Auswahl:
 
 - **Alle Cloud-Apps** als Basisoption für Richtlinien, die auf die gesamte Organisation angewandt werden sollen. Verwenden Sie diese Auswahl für Richtlinien, die eine mehrstufige Authentifizierung erfordern, wenn für eine Cloud-App ein Anmelderisiko erkannt wird. Eine auf **Alle Cloud-Apps** angewendete Richtlinie gilt für den Zugriff auf alle Websites und Dienste. Diese Einstellung beschränkt sich nicht auf die Cloud-Apps in der Liste **Cloud-Apps auswählen**. 
 
-- Einzelne Cloud-Apps zur Ausrichtung auf bestimmte Dienste anhand der Richtlinie. Sie können beispielsweise vorgeben, dass Benutzer über ein [konformes Gerät](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) verfügen müssen, um auf SharePoint Online zuzugreifen. Diese Richtlinie wird auch auf andere Dienste angewendet, wenn diese auf SharePoint-Inhalte zugreifen. Ein Beispiel ist Microsoft Teams. 
+- **Apps auswählen**, um bestimmte Dienste als Ziel der Richtlinie festzulegen. Sie können beispielsweise vorgeben, dass Benutzer über ein [konformes Gerät](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) verfügen müssen, um auf SharePoint Online zuzugreifen. Diese Richtlinie wird auch auf andere Dienste angewendet, wenn diese auf SharePoint-Inhalte zugreifen. Ein Beispiel ist Microsoft Teams. 
 
 Sie können bestimmte Apps von einer Richtlinie ausschließen. Diese Apps unterliegen jedoch weiterhin den Richtlinien, die für die Dienste gelten, auf die sie zugreifen. 
 
@@ -82,7 +82,7 @@ Sie können bestimmte Apps von einer Richtlinie ausschließen. Diese Apps unterl
 
 ## <a name="sign-in-risk"></a>Anmelderisiko
 
-Ein Anmelderisiko ist ein Indikator für die Wahrscheinlichkeit (hoch, mittel oder gering), dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Azure AD berechnet die Stufe des Anmelderisikos bei der Benutzeranmeldung. Sie können die berechnete Anmelderisikostufe als Bedingung in einer Richtlinie für den bedingten Zugriff verwenden.
+Ein Anmelderisiko ist ein Indikator für die Wahrscheinlichkeit (hoch, mittel oder gering), dass eine Anmeldung nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Azure AD berechnet die Stufe des Anmelderisikos bei der Benutzeranmeldung. Sie können die berechnete Anmelderisikostufe als Bedingung in einer Richtlinie für den bedingten Zugriff verwenden.
 
 ![Anmelderisikostufen](./media/conditions/22.png)
 
@@ -93,7 +93,7 @@ Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die folgen
 - Blockieren von Benutzern mit einem hohen Anmelderisiko. Diese Schutzmaßnahme verhindert, dass potenziell unrechtmäßige Benutzer auf Ihre Cloud-Apps zugreifen. 
 - Erzwingen der mehrstufigen Authentifizierung für Benutzer mit einem mittleren Anmelderisiko. Durch das Erzwingen der mehrstufigen Authentifizierung erhalten Sie zusätzliche Sicherheit, dass die Anmeldung vom rechtmäßigen Besitzer eines Kontos durchgeführt wird.
 
-Weitere Informationen finden Sie unter [Riskante Anmeldungen](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins).  
+Weitere Informationen finden Sie unter [Blockieren des Zugriffs, wenn ein Sitzungsrisiko erkannt wird](app-sign-in-risk.md).  
 
 ## <a name="device-platforms"></a>Geräteplattformen
 
@@ -111,13 +111,12 @@ Ein häufiger Anwendungsfall für diese Bedingung ist eine Richtlinie, mit der d
 
 ## <a name="device-state"></a>Gerätestatus
 
-Die Gerätestatusbedingung schließt in Hybrid-Azure AD eingebundene und als konform gekennzeichnete Geräte von einer Richtlinie für bedingten Zugriff aus. Diese Bedingung ist hilfreich, wenn eine Richtlinie nur auf ein nicht verwaltetes Gerät angewendet werden soll, um zusätzliche Sitzungssicherheit zu bieten. Erzwingen Sie z.B. nur dann die Microsoft Cloud App Security-Sitzungssteuerung, wenn ein Gerät nicht verwaltet wird. 
+Die Gerätestatusbedingung schließt in Hybrid-Azure AD eingebundene und als konform gekennzeichnete Geräte von einer Richtlinie für bedingten Zugriff aus. 
 
 
 ![Konfigurieren des Gerätstatus](./media/conditions/112.png)
 
-Wenn Sie den Zugriff für nicht verwaltete Geräte blockieren möchten, implementieren Sie den [gerätebasierten bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
-
+Diese Bedingung ist hilfreich, wenn eine Richtlinie nur auf ein nicht verwaltetes Gerät angewendet werden soll, um zusätzliche Sitzungssicherheit zu bieten. Erzwingen Sie z.B. nur dann die Microsoft Cloud App Security-Sitzungssteuerung, wenn ein Gerät nicht verwaltet wird. 
 
 ## <a name="locations"></a>Standorte
 
@@ -136,98 +135,67 @@ Weitere Informationen finden Sie unter [Was sind Standortbedingungen beim beding
 
 ## <a name="client-apps"></a>Client-Apps
 
-Durch das Verwenden der Bedingung für Client-Apps können Sie eine Richtlinie auf unterschiedliche Arten von Anwendungen anwenden. Beispiele sind Websites, Dienste, mobile Apps und Desktopanwendungen. 
+Standardmäßig wird eine Richtlinie für bedingten Zugriff auf die folgenden Apps angewendet:
+
+- **[Browser-Apps](technical-reference.md#supported-browsers)**: Hierzu zählen Websites mit den SAML-, WS-Verbund- oder OpenID Connect-Web-SSO-Protokollen. Dies umfasst auch alle Websites oder Webdienste, die als vertraulicher OAuth-Client registriert wurden. Ein Beispiel hierfür ist eine Office 365 SharePoint-Website. 
+
+- **[Mobile Apps und Desktop-Apps mit moderner Authentifizierung](technical-reference.md#supported-mobile-applications-and-desktop-clients)**: Hierzu zählen die Office-Desktop-Apps und -Smartphone-Apps. 
 
 
+Darüber hinaus können Sie eine Richtlinie auf bestimmte Client-Apps anwenden, die keine moderne Authentifizierung verwenden, beispielsweise:
 
-Eine Anwendung wird wie folgt klassifiziert:
+- **[Exchange ActiveSync-Clients](conditions.md#exchange-activesync-clients)**: Wenn eine Richtlinie Exchange ActiveSync blockiert, erhalten betroffene Benutzer eine einzelne Quarantäne-E-Mail mit Informationen zum Grund für die Blockierung. Bei Bedarf enthält die E-Mail Anweisungen für die Registrierung des Geräts bei Intune.
 
-- Als Website oder Dienst, wenn Web-SSO-Protokolle, SAML, WS-Fed oder OpenID Connect für einen vertraulichen Client verwendet werden.
+- **[Andere Clients](block-legacy-authentication.md)**: Zu diesen Apps zählen Clients, die die Standardauthentifizierung mit E-Mail-Protokollen wie IMAP, MAPI, POP und SMTP nutzen, sowie ältere Office-Apps, die keine moderne Authentifizierung verwenden. Weitere Informationen finden Sie unter [So funktioniert die moderne Authentifizierung für Office 2013- und Office 2016-Client-Apps](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
 
-- Als mobile App oder Desktopanwendung, wenn für einen nativen Client OpenID Connect für eine mobile App verwendet wird.
+![Client-Apps](./media/conditions/41.png)
 
-Eine vollständige Liste der Client-Apps, die Sie in der Richtlinie für bedingten Zugriff verwenden können, finden Sie in der technischen Referenz zum bedingten Zugriff in Azure Active Directory unter [Client-Apps-Bedingung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#client-apps-condition).
+Gängige Anwendungsfälle für diese Bedingung sind Richtlinien mit den folgenden Anforderungen:
 
-Häufige Anwendungsfälle für diese Bedingung sind Richtlinien mit den folgenden Schutzmaßnahmen: 
+- **[Erfordern eines verwalteten Geräts](require-managed-devices.md)** für mobile Apps und Desktopanwendungen, die Daten auf ein Gerät herunterladen. Der Browserzugriff ist dabei mit jedem Gerät zulässig. In diesem Szenario wird das Speichern und Synchronisieren von Dokumenten auf bzw. mit einem nicht verwalteten Gerät verhindert. Mit dieser Methode können Sie die Wahrscheinlichkeit von Datenverlusten verringern, wenn das Gerät verloren geht oder gestohlen wird.
 
-- Erzwingen der Nutzung eines [konformen Geräts](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) für mobile Apps und Desktopanwendungen, mit denen große Datenmengen auf das Gerät heruntergeladen werden. Der Browserzugriff ist dabei mit jedem Gerät zulässig.
+- **[Erfordern eines verwalteten Geräts](require-managed-devices.md)** für Apps, die ActiveSync für den Zugriff auf Exchange Online verwenden.
+
+- **[Blockieren der Legacyauthentifizierung](block-legacy-authentication.md)** bei Azure AD (andere Clients).
 
 - Blockieren des Zugriffs über Webanwendungen und Zulassen des Zugriffs über mobile Apps und Desktopanwendungen.
 
-Sie können diese Bedingung auf Web-SSO und moderne Authentifizierungsprotokolle anwenden. Außerdem können Sie sie auch auf E-Mail-Apps anwenden, die Microsoft Exchange ActiveSync verwenden. Ein Beispiel sind native E-Mail-Apps auf den meisten Smartphones. 
 
-Sie können die Client-Apps-Bedingung nur auswählen, wenn Microsoft Office 365 Exchange Online die einzige ausgewählte Cloud-App ist.
 
-![Cloud-Apps](./media/conditions/32.png)
+### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-Clients
 
-Die Auswahl von **Exchange ActiveSync** als Client-App-Bedingung wird nur unterstützt, wenn Sie keine anderen Bedingungen in einer Richtlinie konfiguriert haben. Sie können diese Bedingung aber so eingrenzen, dass sie nur für unterstützte Plattformen gilt.
+Sie können **Exchange ActiveSync-Clients** nur auswählen, wenn Folgendes zutrifft:
 
+
+- Microsoft Office 365 Exchange Online ist die einzige Cloud-App, die Sie ausgewählt haben.
+
+    ![Cloud-Apps](./media/conditions/32.png)
+
+- Sie haben keine anderen Bedingungen in einer Richtlinie konfiguriert. Sie können den Geltungsbereich dieser Bedingung jedoch so eingrenzen, dass sie nur für [unterstützte Plattformen](technical-reference.md#device-platform-condition) gilt.
  
-![Anwendend er Richtlinie nur auf unterstützte Plattformen](./media/conditions/33.png)
-
-Das ausschließliche Anwenden dieser Bedingung auf unterstützte Plattformen entspricht der Verwendung von allen Geräteplattformen bei einer [Geräteplattformbedingung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
-
-![Konfigurieren von Geräteplattformen](./media/conditions/34.png)
+    ![Anwendend er Richtlinie nur auf unterstützte Plattformen](./media/conditions/33.png)
 
 
- Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
+Wenn der Zugriff blockiert wird, weil ein [verwaltetes Gerät](require-managed-devices.md) erforderlich ist, erhalten die betroffenen Benutzer eine einzelne E-Mail mit Anweisungen zur Verwendung von Intune. 
+
+Wenn eine genehmigte App erforderlich ist, erhalten die betroffenen Benutzer Anleitungen zum Installieren und Verwenden des mobilen Outlook-Clients.
+
+In anderen Fällen, z. B. wenn eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erforderlich ist, werden die betroffenen Benutzer blockiert, weil Clients, die die Standardauthentifizierung verwenden, MFA nicht unterstützen.
+
+Diese Einstellung kann nur auf Benutzer und Gruppen angewendet werden. Gäste und Rollen werden nicht unterstützt. Wenn eine Gast- oder Rollenbedingung konfiguriert ist, werden alle Benutzer blockiert, da der bedingte Zugriff nicht bestimmen kann, ob die Richtlinie für den Benutzer gelten soll oder nicht.
+
+
+ Weitere Informationen finden Sie unter
 
 - [Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication)
  
 - [App-basierter bedingter Zugriff mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) 
 
 
-### <a name="legacy-authentication"></a>Legacyauthentifizierung  
-
-Der bedingte Zugriff gilt nun auch für ältere Microsoft Office-Clients, die keine moderne Authentifizierung unterstützen. Dies gilt auch für Clients, die E-Mail-Protokolle wie POP, IMAP und SMTP verwenden. Durch die Verwendung von Legacyauthentifizierung können Sie Richtlinien wie **Zugriff über andere Clients blockieren** konfigurieren.
-
-
-![Konfigurieren von Client-Apps](./media/conditions/160.png)  
-
-
-#### <a name="known-issues"></a>Bekannte Probleme
-
-- Durch das Konfigurieren einer Richtlinie für **Andere Clients** wird die gesamte Organisation für bestimmte Clients blockiert, z.B. SPConnect. Dies tritt ein, weil sich ältere Clients auf unerwartete Weise authentifizieren. Dieses Problem gilt nicht für Office-Hauptanwendungen wie ältere Office-Clients. 
-
-- Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird. 
-
-
-#### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-**F:** Blockiert diese Authentifizierung die Microsoft Exchange-Webdienste?
-
-Dies hängt vom Authentifizierungsprotokoll ab, das die Exchange-Webdienste verwenden. Wenn die Anwendung der Exchange-Webdienste eine moderne Authentifizierung nutzt, wird dies von der Client-App **Mobile Apps und Desktopclients** abgedeckt. Die Standardauthentifizierung wird durch die Client-App **Andere Clients** abgedeckt.
-
-
-**F:** Welche Steuerelemente kann ich für **Andere Clients** verwenden?
-
-Für **Andere Clients** können alle Steuerelemente konfiguriert werden. Allerdings wird in der Endbenutzerumgebung der Zugriff für alle Fälle blockiert. **Andere Clients** unterstützt nicht Steuerelemente wie „MFA“, „Konformes Gerät“, „Domänenbeitritt“. 
- 
-**F:** Welche Bedingungen kann ich für **Andere Clients** verwenden?
-
-Für **Andere Clients** können alle Bedingungen konfiguriert werden.
-
-**F:** Unterstützt Exchange ActiveSync alle Bedingungen und Steuerelemente?
-
-Nein. Die folgende Liste enthält weitere Informationen zur Exchange ActiveSync-Unterstützung: 
-
-- Exchange ActiveSync unterstützt nur Zielgruppenadressierung für Benutzer und Gruppen. Gäste und Rollen werden nicht unterstützt. Wenn eine Gast- oder Rollenbedingung konfiguriert wird, werden alle Benutzer blockiert. Exchange ActiveSync blockiert alle Benutzer, weil das Protokoll nicht ermittelt kann, ob die Richtlinie für einen Benutzer gilt.
-
-- Exchange ActiveSync funktioniert nur mit Microsoft Exchange Online als Cloud-App. 
-
-- Exchange ActiveSync unterstützt keine Bedingungen, mit Ausnahme der Client-App selbst. 
-
-- Exchange ActiveSync kann mit jedem Steuerelement konfiguriert werden. Alle Steuerelemente mit Ausnahme der Gerätecompliance werden blockiert.
-
-**F:** Gelten die Richtlinien standardmäßig für alle zukünftigen Client-Apps?
-
-Nein. Es ist gibt keine Änderung beim Standardverhalten von Richtlinien. Die Richtlinien gelten weiterhin standardmäßig für Browser, mobile Apps und Desktopclients.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
+- Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
 
 - Wie Sie Richtlinien für bedingten Zugriff für Ihre Umgebung konfigurieren, erfahren Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md). 
 

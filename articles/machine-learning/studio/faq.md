@@ -1,11 +1,11 @@
 ---
 title: Häufig gestellte Fragen (FAQs) zu Machine Learning Studio – Azure | Microsoft-Dokumentation
-description: 'Azure Machine Learning Studio: häufig gestellte Fragen (FAQs) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung.'
+description: Azure Machine Learning Studio Häufig gestellte Fragen (FAQs) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung.
 keywords: Einführung in maschinelles Lernen,Vorhersagemodellierung,was ist maschinelles Lernen
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309139"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091284"
 ---
-# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Häufig gestellte Fragen zu Azure Machine Learning Studio: Abrechnung, Funktionen, Einschränkungen und Support
+# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning Studio FAQ: Abrechnung, Funktionen, Einschränkungen und Support
 Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworten zu Azure Machine Learning aufgeführt. Bei Azure Machine Learning handelt es sich um einen Clouddienst zum Entwickeln von Vorhersagemodellen und Operationalisieren von Lösungen mithilfe von Webdiensten. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
 
 **Haben Sie eine Frage, die hier nicht aufgeführt ist?**
@@ -32,7 +32,7 @@ Für Azure Machine Learning gibt es ein Forum auf MSDN, in dem Mitglieder der Da
 ## <a name="general-questions"></a>Allgemeine Fragen
 **Was ist Machine Learning Studio?**
 
-Machine Learning Studio ist eine Workbench-Umgebung, auf die Sie über einen Webbrowser zugreifen. Machine Learning Studio enthält eine Palette von Modulen in einer visuellen Kompositionsoberfläche, in der Sie durchgängige Datenworkflows in Form von Experimenten erstellen können.
+Machine Learning Studio ist eine Drag & Drop-Canvas-Umgebung, auf die Sie mit einem Webbrowser zugreifen. Machine Learning Studio enthält eine Palette von Modulen in einer visuellen Kompositionsoberfläche, in der Sie durchgängige Datenworkflows in Form von Experimenten erstellen können.
 
 Weitere Informationen zu Machine Learning Studio finden Sie unter [Was ist Machine Learning Studio?](what-is-ml-studio.md)
 
@@ -55,8 +55,8 @@ Machine Learning-Webdienste stellen eine Schnittstelle zwischen einer Anwendung 
 
 Azure Machine Learning verfügt über zwei Arten von Webdiensten:
 
-* Anforderung/Antwort-Dienst (Request-Response Service, RRS): Ein hochskalierbarer Webdienst mit kurzer Wartezeit, der eine Schnittstelle für zustandslose Modelle bereitstellt, die mit Machine Learning Studio erstellt und bereitgestellt wurden.
-* Batch Execution Service (BES): Ein asynchroner Dienst für die Bewertung eines Stapels für Datensätze.
+* Anforderung-/Antwort-Dienst (Request-Response Service, RRS): Ein hochskalierbarer Webdienst mit kurzer Wartezeit, der eine Schnittstelle für zustandslose Modelle bereitstellt, die mit Machine Learning Studio erstellt und bereitgestellt wurden.
+* Batchausführungsdienst (Batch Execution Service, BES): Ein asynchroner Dienst für die Bewertung eines Batches für Datensätze.
 
 Es gibt mehrere Möglichkeiten, die REST-API zu nutzen und auf den Webdienst zuzugreifen. Beispielsweise können Sie eine Anwendung in C#, R oder Python schreiben und dabei den Beispielcode verwenden, der für Sie beim Bereitstellen des Webdiensts generiert wurde.
 
@@ -96,8 +96,8 @@ Die folgenden Module sind auf Datasets mit einer Größe von unter 10 GB beschr�
 
 * Empfohlene Module
 * Modul „Synthetic Minority Oversampling Technique (SMOTE)“
-* Skripting-Module: R, Python, SQL
-* Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z.B. Join oder Feature-Hashing.
+* Skriptingmodule: R, Python, SQL
+* Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z.B. Join oder Feature Hashing.
 * Kreuzvalidierung, Tune Model Hyperparameters, Ordinal Regression und One-vs-All Multiclass, wenn eine sehr große Anzahl von Iterationen durchgeführt wird.
 
 #### <a id="UploadLimit"></a>Was sind die Limits für Datenuploads?
@@ -168,7 +168,7 @@ Nein, derzeit wird nur programmgesteuertes erneutes Trainieren unterstützt.
 
 **Können die Ebenen eines Modells für ein neuronales Netz mit dem integrierten Modul visualisiert werden?**
 
- Nein.
+Nein.
 
 **Kann ich eigene Module in C# oder einer anderen Sprache erstellen?**
 
@@ -205,7 +205,7 @@ Verwenden Sie die APIs für das erneute Trainieren. Weitere Informationen finden
 ### <a name="create"></a>Erstellen
 **Kann ich das Modell lokal oder in einer Anwendung ohne Internetverbindung bereitstellen?**
 
- Nein.
+Nein.
 
 **Gibt es eine Grundlatenz, die für alle Webdienste erwartet wird?**
 
@@ -246,7 +246,7 @@ Derzeit wird der Standardendpunkt mit 20 gleichzeitigen RRS-Anforderungen pro En
 
 **Werden R-Aufträge auf die Knoten verteilt?**
 
- Nein.  
+Nein.  
 
 **Wie viele Daten kann ich für das Training verwenden?**
 
@@ -263,7 +263,7 @@ Die folgenden Module sind auf Datasets mit einer Größe von unter 10 GB beschr�
 
 * Empfohlene Module
 * Modul „Synthetic Minority Oversampling Technique (SMOTE)“
-* Skripting-Module: R, Python, SQL
+* Skriptingmodule: R, Python, SQL
 * Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z.B. Join oder Feature Hashing.
 * Cross-Validate, Tune Model Hyperparameters, Ordinal Regression und One-vs-All Multiclass, wenn eine sehr große Anzahl von Iterationen durchgeführt wird.
 
@@ -275,7 +275,7 @@ Zeilen und Spalten sind jeweils auf die .NET-Einschränkung für Ganzzahlen besc
 
 **Kann ich die Größe des virtuellen Computers anpassen, auf dem der Webdienst ausgeführt wird?**
 
- Nein.  
+Nein.  
 
 ## <a name="security-and-availability"></a>Sicherheit und Verfügbarkeit
 **Wer hat standardmäßig Zugriff auf den HTTP-Endpunkt für den Webdienst? Wie kann ich den Zugriff auf den Endpunkt einschränken?**
@@ -438,7 +438,7 @@ Die neuen Abrechnungspläne sind in den drei Produktionsregionen verfügbar, in 
 
 Ja. Die Preise der Pläne variieren je nach Region. Wenn Sie einen Webdienst in einer anderen Region bereitstellen, müssen Sie dafür einen regionsspezifischen Plan zuweisen. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region]( https://azure.microsoft.com/regions/services/).
 
-### <a name="new-web-services-overages"></a>Neue Webdienste – Überschreitungen
+### <a name="new-web-services-overages"></a>Neue Webdienste: Überschreitungen
 **Wie kann ich überprüfen, ob ich die Grenzen für meine Webdienstnutzung überschritten habe?**
 
 Sie können die Nutzung Ihrer Pläne im Azure Machine Learning-Webdienste-Portal auf der Seite „Pläne“ anzeigen. Melden Sie sich am Portal an, und klicken Sie anschließend auf die Menüoption **Pläne**.
@@ -483,16 +483,16 @@ Die Berechnung des Azure Machine Learning-API-Diensts richtet sich danach, ob es
 
 Die unten angegebenen Kosten werden pro Arbeitsbereich für Ihr Abonnement aggregiert.
 
-* Machine Learning-Arbeitsbereich-Abonnement: Das Machine Learning-Arbeitsbereich-Abonnement umfasst eine Monatsgebühr, die Zugriff auf einen Machine Learning-Arbeitsbereich ermöglicht. Das Abonnement ist zum Ausführen von Experimenten in Studio sowie für die Nutzung der Produktions-APIs erforderlich.
+* Machine Learning-Arbeitsbereichabonnement: Das Machine Learning-Arbeitsbereichabonnement umfasst eine Monatsgebühr, die Zugriff auf einen Machine Learning-Arbeitsbereich ermöglicht. Das Abonnement ist zum Ausführen von Experimenten in Studio sowie für die Nutzung der Produktions-APIs erforderlich.
 * Studio-Versuchstunden: Hierbei werden alle Computegebühren zusammengefasst, die durch laufende Experimente in Machine Learning Studio und laufende Produktions-API-Aufrufe in der Stagingumgebung anfallen.
 * Greifen Sie auf Daten zu, indem Sie eine Verbindung mit einem lokalen Server, auf dem SQL Server ausgeführt wird, in Ihren Modellen für Training und Bewertung herstellen.
 * Für klassische Webdienste:
-  * Produktions-API-Berechnungsstunden: Dieser Zähler umfasst Computegebühren, die durch in der Produktion ausgeführte Webdienste anfallen.
-  * Produktions-API-Transaktionen (in 1000): Dieser Zähler umfasst die Gebühren, die pro Aufruf Ihres Produktionswebdiensts anfallen.
+  * Produktions-API-Computestunden: Dieser Zähler umfasst Computegebühren, die durch in der Produktion ausgeführte Webdienste anfallen.
+  * Produktions-API-Transaktionen (in 1.000): Dieser Zähler umfasst die Gebühren, die pro Aufruf Ihres Produktionswebdiensts anfallen.
 
 Abgesehen von den oben genannten Gebühren werden die Gebühren für neue (Resource Manager-basierte) Webdienste anhand des ausgewählten Plans aggregiert:
 
-* API-Plan Standard-S1/S2/S3 (Einheiten): Dieser Zähler steht für den Typ der Instanz, der für Resource Manager-basierte Webdienste ausgewählt wurde.
+* API-Plan Standard-S1/S2/S3 (Einheiten) Dieser Zähler steht für den Typ der Instanz, der für Resource Manager-basierte Webdienste ausgewählt wurde.
 * Überschreitung API-Computestunden Standard-S1/S2/S3 (Einheiten): Enthält Computegebühren, die für die in der Produktion ausgeführten Resource Manager-basierten Webdienste anfallen, nachdem die enthaltenen Mengen in vorhandenen Instanzen aufgebraucht sind. Die zusätzliche Nutzung wird anhand der Überschreitungsrate berechnet, die dem Tarif des S1/S2/S3-Plans zugeordnet ist.
 * Überschreitung API-Transaktionen Standard-S1/S2/S3 (in 1.000): Enthält Gebühren, die pro Aufruf Ihres Resource Manager-basierten Webdiensts für die Produktion anfallen, nachdem die enthaltenen Mengen in vorhandenen Instanzen aufgebraucht sind. Die zusätzliche Nutzung wird anhand der Überschreitungsrate berechnet, die dem Tarif des S1/S2/S3-Plans zugeordnet ist.
 * Enthaltene Menge an API-Computestunden: Umfasst bei Resource Manager-basierten Webdiensten die enthaltene Menge von API-Computestunden.

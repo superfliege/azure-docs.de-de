@@ -1,5 +1,5 @@
 ---
-title: Teilen von benutzerdefinierten Azure Time Series Insights-Ansichten mit parametrisierten URLs | Microsoft-Dokumentation
+title: Azure Time Series Insights-URLs – Teilen von benutzerdefinierten Azure Time Series Insights-Ansichten mit parametrisierten URLs | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie parametrisierte URLs in Azure Time Series Insights entwickeln, damit eine Kundenansicht schnell geteilt werden kann.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: dbd717d79230c5dc2fc823484376267e7b7b8ab1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 5b43ba4c3f88c678b160e8aec442fa92b4822a3d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628799"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274359"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
 
@@ -70,7 +71,7 @@ Mit dem Parameter `timeSeriesDefinitions=<collection of term objects>` werden di
   - Der Spaltenname des *Measure*.
 - "predicate":"<string>"
   - Die *where*-Klausel für die serverseitige Filterung.
--  "useSum":"true"
+- "useSum":"true"
   - Dieser optionale Parameter gibt die Verwendung von „Summe“ für Ihr Measure an.  Hinweis: Wenn „Ereignisse“ als Measure ausgewählt ist, ist standardmäßig „Anzahl“ ausgewählt.  Wenn „Ereignisse“ nicht ausgewählt ist, ist standardmäßig „Durchschnitt“ ausgewählt.  
 
 Der Parameter „multiChartStack=<true/false>“ aktiviert das Stapeln. Der Parameter „multiChartSameScale=<true/false>“ aktiviert die gleiche Y-Achsenskala ausdrucksübergreifend innerhalb eines optionalen Parameters.  

@@ -3,7 +3,7 @@ title: Einführung in Reliable Collections in zustandsbehafteten Azure Service F
 description: Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Auflistungen, die Ihnen das Schreiben hochverfügbarer, skalierbarer Cloudanwendungen mit kurzer Latenz ermöglichen.
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
+author: tylermsft
 manager: timlt
 editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/6/2017
-ms.author: mcoskun
-ms.openlocfilehash: 2876d90c02995394104009d1b2d62d5b3ed6a8d9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: caca297afb9ed4e2d85f1068ad3c1122db60c1d7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212924"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191987"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
 Reliable Collections ermöglichen es Ihnen, hoch verfügbare, skalierbare Cloudanwendungen mit geringer Latenz auf die gleiche Weise wie Anwendungen für einen einzelnen Computer zu schreiben. Die Klassen im Namespace **Microsoft.ServiceFabric.Data.Collections** stellen eine Reihe von Sammlungen bereit, die automatisch einen hochverfügbaren Zustand ermöglichen. Als Entwickler programmieren Sie lediglich die Reliable Collections-APIs. Reliable Collections verwalten anschließend den replizierten lokalen Zustand automatisch.
@@ -34,9 +34,9 @@ Der Hauptunterschied zwischen zuverlässigen Auflistungen und anderen Hochverfü
 Reliable Collections können als natürliche Weiterentwicklung der **System.Collections** -Klassen betrachtet werden: Der neue Satz von Auflistungen wurde für Cloudanwendungen und Umgebungen mit mehreren Computern konzipiert, ohne die Komplexität für den Entwickler zu erhöhen. Reliable Collections sind damit:
 
 * Repliziert: Zustandsänderungen werden für Hochverfügbarkeit repliziert.
-* Persistent gespeichert: Daten werden persistent auf Datenträgern gespeichert, um sie vor größeren Ausfällen (z. B. einem Stromausfall im Rechenzentrum) zu schützen.
+* Persistent gespeichert: Daten werden persistent auf Datenträgern gespeichert, um sie vor größeren Ausfällen (z.B. einem Stromausfall im Datencenter) zu schützen.
 * Asynchron: APIs sind asynchron, um sicherzustellen, dass Threads bei einer E/A nicht blockiert werden.
-* Transaktional: APIs nutzen die Abstraktion von Transaktionen, damit Sie mehrere Reliable Collections auf einfache Weise in einem Dienst verwalten können.
+* Transaktional: APIs nutzen die Abstraktion von Transaktionen, damit Sie mehrere Reliable Collections (zuverlässige Sammlungen) auf einfache Weise in einem Dienst verwalten können.
 
 Reliable Collections zeichnen sich durch von Anfang an starke Konsistenzgarantien aus, was die Argumentation hinsichtlich Anwendungszuständen erleichtert.
 Eine starke Konsistenz wird erreicht, indem Transaktionscommits erst abgeschlossen werden, nachdem die gesamte Transaktion in einem Mehrheitsquorum von Replikaten (einschließlich des primären Replikats) protokolliert wurde.
@@ -45,14 +45,14 @@ Um eine schwächere Konsistenz zu erreichen, können Anwendungen eine Bestätigu
 Die Reliable Collections-APIs sind eine Weiterentwicklung der APIs für gleichzeitige Auflistungen (im Namespace **System.Collections.Concurrent** ):
 
 * Asynchron: Gibt eine Aufgabe zurück, da die Vorgänge im Gegensatz zu gleichzeitigen Auflistungen repliziert und persistent gespeichert werden.
-* Keine out-Parameter: Gibt mithilfe von `ConditionalValue<T>` anstelle von out-Parametern "Bool" und einen Wert zurück. `ConditionalValue<T>` entspricht `Nullable<T>`, erfordert aber für „struct“ nicht „T“.
+* Keine out-Parameter: Gibt mithilfe von `ConditionalValue<T>` anstelle von out-Parametern einen booleschen Wert und einen Wert zurück. `ConditionalValue<T>` entspricht `Nullable<T>`, erfordert aber für „struct“ nicht „T“.
 * Transaktionen: Verwendet ein Transaktionsobjekt, um dem Benutzer Gruppenaktionen für mehrere zuverlässige Auflistungen in einer Transaktion zu ermöglichen.
 
 Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** drei Sammlungen:
 
-* [Zuverlässiges Wörterbuch](https://msdn.microsoft.com/library/azure/dn971511.aspx): stellt eine replizierte, transaktionale und asynchrone Auflistung von Schlüsselwertpaaren dar. Ähnlich wie bei **ConcurrentDictionary**können der Schlüssel und der Wert von beliebigem Typ sein.
-* [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): Stellt eine replizierte, transaktionale und asynchrone strenge FIFO (First In, First Out)-Warteschlange dar. Ähnlich wie bei **ConcurrentQueue**kann der Wert von beliebigem Typ sein.
-* [Reliable Concurrent Queue:](service-fabric-reliable-services-reliable-concurrent-queue.md) stellt eine replizierte, transaktionale und asynchrone Warteschlange dar, die für einen hohen Durchsatz eine optimale Reihenfolge herstellt. Ähnlich wie bei **ConcurrentQueue** kann der Wert einen beliebigem Typ aufweisen.
+* [Zuverlässiges Wörterbuch](https://msdn.microsoft.com/library/azure/dn971511.aspx): Stellt eine replizierte, transaktionale und asynchrone Auflistung von Schlüssel-Wert-Paaren dar. Ähnlich wie bei **ConcurrentDictionary**können der Schlüssel und der Wert von beliebigem Typ sein.
+* [Zuverlässige Warteschlange](https://msdn.microsoft.com/library/azure/dn971527.aspx): Stellt eine replizierte, transaktionale und asynchrone strenge FIFO-Warteschlange (First In, First Out) dar. Ähnlich wie bei **ConcurrentQueue**kann der Wert von beliebigem Typ sein.
+* [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md): Stellt eine replizierte, transaktionale und asynchrone Warteschlange dar, die für einen hohen Durchsatz eine optimale Reihenfolge herstellt. Ähnlich wie bei **ConcurrentQueue** kann der Wert einen beliebigem Typ aufweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Reliable Collections – Richtlinien und Empfehlungen](service-fabric-reliable-services-reliable-collections-guidelines.md)

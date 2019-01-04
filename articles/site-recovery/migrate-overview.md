@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 6f510ac394b939996defe0a7ed49317ec0aabe3b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9a5c45b66e775ce83625e1f6d9507aaf456c7c7b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211994"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843987"
 ---
 # <a name="about-migration"></a>Informationen zur Migration
 
@@ -22,7 +22,7 @@ In diesem Artikel finden Sie einen schnellen Überblick darüber, wie der Dienst
 Mit Site Recovery können Sie wie folgt migrieren:
 
 - **Migrieren vom lokalen Standort in Azure**: Migrieren Sie lokale Hyper-V-VMs, VMware-VMs und physische Server in Azure. Nach der Migration werden Workloads, die auf den lokalen Computern ausgeführt werden, auf Azure-VMs ausgeführt. 
-- **Migrieren in Azure**: Migrieren Sie Azure-VMs zwischen Azure-Regionen. 
+- **Migrieren in Azure**: Migrieren von Azure-VMs zwischen Azure-Regionen. 
 - **Migrieren von AWS**: Migrieren Sie AWS Windows-Instanzen zu Azure IaaS-VMs. 
 
 

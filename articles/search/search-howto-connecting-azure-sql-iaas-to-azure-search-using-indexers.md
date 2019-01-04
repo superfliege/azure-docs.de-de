@@ -1,5 +1,5 @@
 ---
-title: SQL-VM-Verbindung mit Azure Search | Microsoft-Dokumentation
+title: Virtueller Azure SQL-Computer, VM-Verbindung für Suchindizierung – Azure Search
 description: Aktivieren Sie verschlüsselte Verbindungen, und konfigurieren Sie die Firewall für Verbindungen mit SQL Server auf einem virtuellen Azure-Computer (VM) über einen Azure Search-Indexer.
 author: HeidiSteen
 manager: cgronlun
@@ -8,17 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.custom: seodec2018
+ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366459"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312023"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurieren einer Verbindung eines Azure Search-Indexers mit SQL Server auf einer Azure-VM
 Wie in [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq) erläutert, wird das Erstellen von Indexern für **SQL Server auf Azure-VMs** (oder kurz **SQL Azure-VMs**) von Azure Search unterstützt. Zunächst müssen aber einige sicherheitsbezogene Voraussetzungen erfüllt werden. 
 
-**Aufgabendauer**: Ca. 30 Minuten, vorausgesetzt, Sie haben auf der VM bereits ein Zertifikat installiert.
+**Aufgabendauer:** Ca. 30 Minuten, vorausgesetzt, Sie haben auf der VM bereits ein Zertifikat installiert.
 
 ## <a name="enable-encrypted-connections"></a>Aktivieren von verschlüsselten Verbindungen
 Für Azure Search ist für alle Indexeranforderungen über eine öffentliche Internetverbindung ein verschlüsselter Kanal erforderlich. In diesem Abschnitt sind die entsprechenden Schritte angegeben.

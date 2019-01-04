@@ -1,18 +1,18 @@
 ---
-title: Ausführen von Aufgaben in Containern in Azure Container Instances mit Neustartrichtlinien
+title: Verwenden von Neustartrichtlinien mit Aufgaben in Containern in Azure Container Instances
 description: Hier erfahren Sie, wie Sie mit Azure Container Instances Aufgaben ausführen, die bis zum Abschluss ausgeführt werden, z.B. bei Build-, Test- oder Image-Rendering-Aufträgen.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 12/10/2018
 ms.author: danlep
-ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853888"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321032"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Ausführen von Aufgaben in Containern mit Neustartrichtlinien
 
@@ -24,7 +24,7 @@ In den Beispielen in diesem Artikel wird die Azure-Befehlszeilenschnittstelle (A
 
 ## <a name="container-restart-policy"></a>Container-Neustartrichtlinie
 
-Wenn Sie einen Container in Azure Container Instances erstellen, können Sie eine von drei Einstellungen für Neustartrichtlinien festlegen.
+Wenn Sie eine [Containergruppe](container-instances-container-groups.md) in Azure Container Instances erstellen, können Sie eine von drei Einstellungen für Neustartrichtlinien festlegen.
 
 | Neustartrichtlinie   | BESCHREIBUNG |
 | ---------------- | :---------- |
@@ -93,6 +93,24 @@ Ausgabe:
 
 Dieses Beispiel zeigt die Ausgabe, die das Skript an STDOUT gesendet hat. Die in Containern ausgeführten Aufgaben schreiben ihre Ausgabe allerdings möglicherweise in permanenten Speicher, um sie später abrufen zu können. Dies kann beispielsweise eine [Azure-Dateifreigabe](container-instances-mounting-azure-files-volume.md) sein.
 
+## <a name="manually-stop-and-start-a-container-group"></a>Manuelles Beenden und Starten einer Containergruppe
+
+Unabhängig von der Neustartrichtlinie, die für eine [Containergruppe](container-instances-container-groups.md) konfiguriert ist, möchten Sie ggf. eine Containergruppe manuell beenden oder starten.
+
+* **Beenden**: Sie können eine ausgeführte Containergruppe jederzeit manuell beenden, z.B. mit dem Befehl [az container stop][az-container-stop]. Für bestimmte Containerworkloads möchten Sie möglicherweise eine Containergruppe nach einem definierten Zeitraum beenden, um Kosten zu sparen. 
+
+  Durch das Beenden einer Containergruppe werden die Container in der Gruppe beendet und wiederverwendet. Der Containerzustand bleibt dabei nicht erhalten. 
+
+* **Starten**: Wenn eine Containergruppe beendet wird (weil die Container einzeln beendet wurden oder weil Sie die Gruppe manuell beendet haben), können Sie die [Containerstart-API](/rest/api/container-instances/containergroups/start) oder das Azure-Portal verwenden, um die Container in der Gruppe manuell zu starten. Wenn das Containerimage für einen Container aktualisiert wird, wird ein neues Image gepullt. 
+
+  Durch das Starten einer Containergruppe beginnt eine neue Bereitstellung mit der gleichen Containerkonfiguration. Diese Aktion kann Ihnen helfen, eine bekannte Containergruppenkonfiguration, die wie erwartet funktioniert, schnell wiederzuverwenden. Sie müssen keine neue Containergruppe erstellen, um die gleiche Workload auszuführen.
+
+* **Neu starten**: Sie können eine Containergruppe neu starten, während sie ausgeführt wird, z.B. mit dem Befehl [az container restart][az-container-restart]. Diese Aktion startet alle Container in der Containergruppe neu. Wenn das Containerimage für einen Container aktualisiert wird, wird ein neues Image gepullt. 
+
+  Der Neustart einer Containergruppe ist hilfreich, wenn Sie ein Bereitstellungsproblem beheben möchten. Wenn beispielsweise eine temporäre Ressourcenbeschränkung die erfolgreiche Ausführung Ihrer Container verhindert, kann ein Neustart der Gruppe das Problem beheben.
+
+Nachdem Sie eine Containergruppe manuell gestartet oder neu gestartet haben, wird die Containergruppe gemäß der konfigurierten Neustartrichtlinie ausgeführt.
+
 ## <a name="configure-containers-at-runtime"></a>Konfigurieren von Containern zur Laufzeit
 
 Wenn Sie eine Containerinstanz erstellen, können Sie **Umgebungsvariablen** festlegen sowie eine benutzerdefinierte **Befehlszeile** angeben, die beim Starten des Containers ausgeführt wird. Sie können diese Einstellungen in Batchaufträgen verwenden, um die einzelnen Container mit einer aufgabenspezifischen Konfiguration vorzubereiten.
@@ -131,6 +149,8 @@ Ausgabe:
  ('ROSENCRANTZ', 69),
  ('GUILDENSTERN', 54)]
 ```
+
+
 
 ## <a name="command-line-override"></a>Außerkraftsetzung der Befehlszeile
 
@@ -174,5 +194,7 @@ Details zum dauerhaften Speichern der Ausgabe von Containern, die bis zum Abschl
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

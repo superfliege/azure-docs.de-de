@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Ändern des Azure AD Connect-Synchronisierungsdienstkontos | Microsoft-Dokumentation'
+title: 'Azure AD Connect-Synchronisierung:  Ändern des Azure AD Connect-Synchronisierungsdienstkontos | Microsoft-Dokumentation'
 description: Dieses Themendokument beschreibt den Verschlüsselungsschlüssel und führt aus, wie Sie ihn nach dem Ändern des Kennworts verwerfen können.
 services: active-directory
 keywords: Azure AD-Synchronisierungsdienstkonto, Kennwort
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a0cdaa54d0da58a02cbe9fcda36cbaff6b1fab4a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747251"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184898"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Ändern des Kennworts für das Azure AD Connect-Synchronisierungsdienstkonto
 Wenn Sie das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung ändern, kann der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung erneut initialisiert wurde. 
@@ -39,12 +39,12 @@ Zunächst müssen Sie das Kennwort im Windows-Dienststeuerungs-Manager ändern. 
 
 
 - Wenn Sie versuchen, den Synchronisierungsdienst im Windows-Dienststeuerungs-Manager zu starten, erhalten Sie den Fehler **Der Microsoft Azure AD-Synchronisierungsdienst konnte auf dem lokalen Computer nicht gestartet werden**. **Fehler 1069: Der Dienst wurde aufgrund eines Anmeldefehlers nicht gestartet.**
-- In der Windows-Ereignisanzeige enthält das Systemereignisprotokoll einen Fehler mit **Ereignis-ID 7038** und die Meldung **Der ADSync-Dienst konnte sich mit dem aktuellen Kennwort aufgrund des folgenden Fehlers nicht anmelden: Der Benutzername oder das Kennwort ist falsch.**
+- In der Windows-Ereignisanzeige enthält das Systemereignisprotokoll einen Fehler mit der **Ereignis-ID 7038** und die Meldung „**Der ADSync-Dienst konnte sich mit dem aktuellen Kennwort aufgrund des folgenden Fehlers nicht anmelden: Der Benutzername oder das Kennwort ist falsch.**“
 
 Zweitens kann der Synchronisierungsdienst unter bestimmten Bedingungen bei Aktualisierung des Kennworts nicht mehr über DPAPI auf den Verschlüsselungsschlüssel zugreifen. Ohne den Verschlüsselungsschlüssel kann der Synchronisierungsdienst die Kennwörter nicht entschlüsseln, die zum Synchronisieren nach/aus dem lokalen AD und Azure AD erforderlich sind.
 Ihnen werden beispielsweise folgende Fehler angezeigt:
 
-- Wenn Sie im Windows-Dienststeuerungs-Manager versuchen, den Synchronisierungsdienst zu starten, und der Verschlüsselungsschlüssel kann nicht abgerufen werden, erhalten Sie den Fehler **Der Microsoft Azure AD-Synchronisierungsdienst konnte auf dem lokalen Computer nicht gestartet werden. Weitere Informationen finden Sie im Systemereignisprotokoll. **Setzen Sie sich mit dem Diensthersteller in Verbindung, wenn es sich um einen Nicht-Microsoft-Dienst handelt. Beziehen Sie sich auf den dienstspezifischen Fehlercode \*\*-21451857952**\*\*.
+- Wenn Sie im Windows-Dienststeuerungs-Manager versuchen, den Synchronisierungsdienst zu starten, und der Verschlüsselungsschlüssel nicht abgerufen werden kann, erhalten Sie die Fehlermeldung <strong>Der Microsoft Azure AD-Synchronisierungsdienst konnte auf dem lokalen Computer nicht gestartet werden. Weitere Informationen finden Sie im Systemereignisprotokoll. Setzen Sie sich mit dem Diensthersteller in Verbindung, wenn es sich um einen Nicht-Microsoft-Dienst handelt. Beziehen Sie sich auf den dienstspezifischen Fehlercode -21451857952</strong>.
 - In der Windows-Ereignisanzeige enthält das Anwendungsereignisprotokoll einen Fehler mit der **Ereignis-ID 6028** und die Fehlermeldung *„**Auf den Serververschlüsselungsschlüssel kann nicht zugegriffen werden**“*.
 
 Um sicherzustellen, dass Sie diese Fehler nicht erhalten, führen Sie beim Ändern des Kennworts die Verfahren unter [Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung](#abandoning-the-azure-ad-connect-sync-encryption-key) aus.

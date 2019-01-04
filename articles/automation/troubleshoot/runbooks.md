@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Probleme mit Azure Automation-Runbooks behebe
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 41eb31ecabb20ec9eec3db13d5eda9f9cfbe6c69
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094863"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015465"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um zu ermitteln, ob die Authentifizierun
    Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
     ```
 
-### <a name="auth-failed-mfa"></a>Szenario: Fehler bei der Authentifizierung bei Azure, da die mehrstufige Authentifizierung aktiviert ist
+### <a name="auth-failed-mfa"></a>Szenario: Fehler beim Authentifizieren bei Azure, da die mehrstufige Authentifizierung aktiviert ist
 
 #### <a name="issue"></a>Problem
 
@@ -123,7 +123,7 @@ Falls für Ihr Azure-Konto die mehrstufige Authentifizierung eingerichtet ist, k
 
 #### <a name="resolution"></a>Lösung
 
-Informationen zum Verwenden eines Zertifikats mit den klassischen Azure-Bereitstellungsmodell finden Sie unter [Managing Azure Services with the Microsoft Azure Automation Preview Service](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) (Verwalten von Azure Services mit dem Microsoft Azure Automation Preview-Dienst). Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Erstellen eines Dienstprinzipals mit dem Azure-Portal](../../active-directory/develop/howto-create-service-principal-portal.md) und [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Informationen zum Verwenden eines Zertifikats mit den klassischen Azure-Bereitstellungsmodell finden Sie unter [Managing Azure Services with the Microsoft Azure Automation Preview Service](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) (Verwalten von Azure Services mit dem Microsoft Azure Automation Preview-Dienst). Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Erstellen eines Dienstprinzipals mit dem Azure-Portal](../../active-directory/develop/howto-create-service-principal-portal.md) und [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Häufige Fehler beim Verwenden von Runbooks
 
@@ -208,7 +208,7 @@ Wenn es sich bei dem Modul um ein Azure-Modul handelt, finden Sie weitere Inform
 
 Wenn es ein separates Modul ist, sollten Sie sicherstellen, dass es in Ihr Automationkonto importiert wird.
 
-### <a name="job-attempted-3-times"></a>Szenario: Es wurde dreimal ohne Erfolg versucht, den Runbookauftrag zu starten
+### <a name="job-attempted-3-times"></a>Szenario: Es wurde dreimal erfolglos versucht, den Runbookauftrag zu starten
 
 #### <a name="issue"></a>Problem
 
@@ -338,6 +338,45 @@ Die PowerShell-Cmdlets für dieses Szenario, die das untergeordnete Runbook akti
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – Mit diesem Cmdlet können Sie den Auftragsstatus für jedes untergeordnete Element überprüfen, wenn Vorgänge vorhanden sind, die nach Abschluss des untergeordneten Runbooks durchgeführt werden müssen.
 
+### <a name="expired webhook"></a>Szenario: Status 400 (ungültige Anforderung) beim Aufrufen eines Webhooks
+
+#### <a name="issue"></a>Problem
+
+Beim Versuch, einen Webhook für ein Azure Automation-Runbook aufzurufen, tritt der folgende Fehler auf:
+
+```error
+400 Bad Request : This webhook has expired or is disabled
+```
+
+#### <a name="cause"></a>Ursache
+
+Der Webhook, den Sie aufrufen möchten, ist entweder deaktiviert oder abgelaufen.
+
+#### <a name="resolution"></a>Lösung
+
+Falls der Webhook deaktiviert ist, können Sie ihn über das Azure-Portal wieder aktivieren. Falls der Webhook abgelaufen ist, muss er gelöscht und neu erstellt werden. Das [Verlängern eines Webhooks](../automation-webhooks.md#renew-webhook) ist nur möglich, solange er noch nicht abgelaufen ist.
+
+### <a name="429"></a>Szenario: 429: The request rate is currently too large. Please try again (Die Anforderungsrate ist derzeit zu hoch. Versuchen Sie es noch mal.)
+
+#### <a name="issue"></a>Problem
+
+Beim Ausführen des Cmdlets `Get-AzureRmAutomationJobOutput` wird folgende Fehlermeldung angezeigt:
+
+```
+429: The request rate is currently too large. Please try again
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler kann beim Abrufen der Auftragsausgabe eines Runbooks auftreten, das über zahlreiche [ausführliche Datenströme](../automation-runbook-output-and-messages.md#verbose-stream) verfügt.
+
+#### <a name="resolution"></a>Lösung
+
+Es gibt zwei Möglichkeiten, diesen Fehler zu beheben:
+
+* Bearbeiten Sie das Runbook, und verringern Sie die Anzahl ausgegebener Auftragsdatenströme.
+* Verringern Sie die Anzahl von Datenströmen, die beim Ausführen des Cmdlets abgerufen werden. Hierzu können Sie den Parameter `-Stream Output` für das Cmdlet `Get-AzureRmAutomationJobOutput` angeben, um ausschließlich Ausgabedatenströme abzurufen. 
+
 ## <a name="common-errors-when-importing-modules"></a>Häufige Fehler beim Importieren von Modulen
 
 ### <a name="module-fails-to-import"></a>Szenario: Fehler beim Modulimport oder Ausführung von Cmdlets nach Import nicht möglich
@@ -359,7 +398,7 @@ Es folgen häufige Ursachen, warum ein Modul nicht erfolgreich in Azure Automati
 
 Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 
-* Stellen Sie sicher, dass das Modul dem folgenden Format entspricht: Modulname.Zip **->** Modulname oder Versionsnummer **->** (Modulname.psm1, Modulname.psd1)
+* Stellen Sie sicher, dass das Modul das folgende Format beachtet: Modulname.Zip **->** Modulname oder Versionsnummer **->** (Modulname.psm1, Modulname.psd1)
 * Öffnen Sie die PSD1-Datei, und prüfen Sie, ob für das Modul Abhängigkeiten bestehen. Wenn ja, laden Sie diese Module in das Automation-Konto hoch.
 * Stellen Sie sicher, dass alle referenzierten DLLs im Modulordner vorhanden sind.
 

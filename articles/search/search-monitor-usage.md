@@ -1,5 +1,5 @@
 ---
-title: Überwachen der Nutzung und Statistiken in einem Azure Search-Dienst | Microsoft Docs
+title: Überwachen der Nutzung und Statistiken für einen Suchdienst – Azure Search
 description: Verfolgen Sie die Ressourcennutzung und Indexgröße für Azure Search nach, einem in Microsoft Azure gehosteten Cloudsuchdienst.
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 286569eef8e17909ecab017b67b0ffc044a4bfe4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795108"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314158"
 ---
-# <a name="monitoring-an-azure-search-service"></a>Überwachen eines Diensts von Azure Search
+# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Überwachen eines Azure Search-Diensts im Azure-Portal
 
 Azure Search bietet verschiedene Ressourcen zum Nachverfolgen der Verwendung und Leistung von Suchdiensten. Sie haben Zugriff auf Metriken, Protokolle, Indexstatistiken und erweiterte Überwachungsfunktionen von Power BI. Dieser Artikel beschreibt das Aktivieren der verschiedenen Überwachungsstrategien und das Interpretieren der resultierenden Daten.
 
@@ -26,9 +27,9 @@ Mit Metriken haben Sie nahezu einen Echtzeiteinblick in Ihren Suchdienst, und si
 
 Azure Search sammelt Daten für drei verschiedene Metriken:
 
-* Wartezeit bei Suchvorgängen: Die Zeit, die der Suchdienst für die Verarbeitung von Suchabfragen benötigt hat, auf Minutenbasis aggregiert.
-* Suchabfragen pro Sekunde (Queries Per Second, QPS): Anzahl der pro Sekunde empfangenen Suchabfragen, auf Minutenbasis aggregiert.
-* Prozentsatz gedrosselter Suchabfragen: Prozentsatz der gedrosselten Suchabfragen, auf Minutenbasis aggregiert.
+* Suchlatenz: Die Zeit, die der Suchdienst für die Verarbeitung von Suchabfragen benötigt hat, auf Minutenbasis aggregiert.
+* Suchabfragen pro Sekunde (QPS): Anzahl der pro Sekunde empfangenen Suchabfragen, auf Minutenbasis aggregiert.
+* Gedrosselte Suchabfragen in Prozent: Prozentsatz der Suchabfragen, die gedrosselt wurden, zusammengefasst pro Minute.
 
 ![Screenshot der QPS-Aktivität][1]
 
@@ -71,7 +72,7 @@ Sie können die Vorgangsprotokolle für den Dienst und die unformatierten Daten 
 ### <a name="enabling-monitoring"></a>Aktivieren der Überwachung
 Öffnen Sie Ihren Dienst von Azure Search im [Azure-Portal](http://portal.azure.com) unter der Option „Überwachung aktivieren“.
 
-Wählen Sie die Daten, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Log Analytics exportieren.
+Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Log Analytics exportieren.
 
 ![Aktivieren der Überwachung im Portal][3]
 
@@ -95,16 +96,17 @@ Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde
 | NAME | Typ | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | time |Datetime |„2015-12-07T00:00:43.6872559Z“ |Zeitstempel des Vorgangs |
-| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | operationName |Zeichenfolge |„Query.Search“ |Der Name des Vorgangs |
 | operationVersion |Zeichenfolge |„2015-02-28“ |Die verwendete API-Version |
 | category |Zeichenfolge |„OperationLogs“ |Konstante |
-| resultType |Zeichenfolge |„Success“ |Mögliche Werte: „Success“ oder „Failure“ |
+| resultType |Zeichenfolge |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
 | resultSignature |int |200 |HTTP-Ergebniscode |
 | durationMS |int |50 |Dauer des Vorgangs in Millisekunden |
 | Eigenschaften |object |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
 
 **Eigenschaftsschema**
+
 | NAME | Typ | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | BESCHREIBUNG |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
@@ -113,9 +115,10 @@ Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde
 | IndexName |Zeichenfolge |„testindex“ |Name des Indexes, der dem Vorgang zugeordnet ist |
 
 #### <a name="metrics-schema"></a>Metrikenschema
+
 | NAME | Typ | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
 | in |Datetime |„2015-12-07T00:00:43.6872559Z“ |Der Zeitstempel des Vorgangs |
 | average |int |64 |Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |

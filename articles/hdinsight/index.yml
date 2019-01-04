@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bf2b326b6e0003b9a690e560d5a312f16659dad9
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 52f96a97aaf4ced4cf7b0e1170014f327ff6e192
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406742"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975798"
 documentType: LandingData
 title: Azure HDInsight-Dokumentation
 metadata:
@@ -75,7 +75,7 @@ sections:
     - html: Apache Kafka &#58; <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturiertes Streaming mit Kafka</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Verwenden mit Storm in HDInsight</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Verwenden der Producer- und Consumer-APIs von Kafka</a>
     - html: Apache HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Erstellen von HBase-Clustern in einem VNET</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Verwenden von Apache Phoenix</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Verbinden mit Spark</a>
     - html: Interaktive Abfrage &#58; <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Verbinden mit Power BI mithilfe einer direkten Abfrage</a>
-    - html: Apache Storm &#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Erstellen einer Storm-Topologie in Java</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Bereitstellen von Storm-Topologien in HDInsight</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Schreiben von Daten aus Storm in Data Lake Store</a>
+    - html: Apache Storm &#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Erstellen einer Storm-Topologie in Java</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Bereitstellen von Storm-Topologien in HDInsight</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Schreiben von Daten aus Storm in Data Lake Storage</a>
     - html: ML Services &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Verwenden von R Tools für Visual Studio</a>
 - title: Verweis
   items:

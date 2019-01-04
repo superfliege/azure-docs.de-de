@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77f1d0f9d1f9ad07b977750e7701b660781d63e5
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c615188e5f198cb8707b12643e0942e8d8821983
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499381"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725181"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -64,7 +64,7 @@ Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein Azure-Abonnement ang
     1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     2. Klicken Sie im linken Menü auf **Ressourcengruppen**, um eine Liste der Ressourcengruppen anzuzeigen.
     3. Klicken Sie auf die Ressourcengruppe, die Sie zum Erstellen Ihres HDInsight-Clusters verwenden möchten.
-    4. Klicken Sie auf **Zugriffssteuerung (IAM)**, und vergewissern Sie sich, dass Sie oder eine Gruppe, der Sie angehören, mindestens über den Zugriffstyp „Mitwirkender“ für die Ressourcengruppe verfügen/verfügt.
+    4. Klicken Sie auf **Zugriffssteuerung (IAM)** und **Rollenzuweisungen**, und vergewissern Sie sich, dass Sie oder eine Gruppe, der Sie angehören, mindestens über den Zugriffstyp „Mitwirkender“ für die Ressourcengruppe verfügen/verfügt.
 
 Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegistration“ angezeigt wird, lesen Sie [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
@@ -78,52 +78,52 @@ Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegis
     * **Dashboard**: Öffnet die Ambari-Webbenutzeroberfläche für den Cluster.
     * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
     * **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
-    * **Verschieben:** Verschiebt den Cluster in eine andere Ressourcengruppe oder ein anderes Abonnement.
+    * **Verschieben**: Verschiebt den Cluster in eine andere Ressourcengruppe oder ein anderes Abonnement.
     * **Löschen**: Löscht den Cluster.
 
 **Menü auf der linken Seite:**
-    * **Aktivitätsprotokoll**: Dient zum Anzeigen und Abfragen von Aktivitätsprotokollen.
-    * **Zugriffssteuerung (IAM)**: Dient zum Verwenden von Rollenzuweisungen.  Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md).
+    * **Aktivitätsprotokolle:** Dient zum Anzeigen und Abfragen von Aktivitätsprotokollen.
+    * **Zugriffssteuerung (IAM)**: Verwenden Sie Rollenzuweisungen.  Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md).
     * **Tags**: Dient zum Festlegen von Schlüssel-Wert-Paaren, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen **Projekt** erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
 * **Diagnose und Problembehandlung**: Dient zum Anzeigen von Informationen zur Problembehandlung.
-    * **Schnellstart**: Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
+    * **Schnellstart**:  Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
     * **Tools für HDInsight**: Hilfeinformationen für HDInsight-bezogene Tools.
 **Einstellungen**
 * **Clustergröße**: Dient zum Überprüfen, Erhöhen und Verringern der Anzahl von Workerknoten im Cluster. Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-management-portal.md#scale-clusters).
     * **Kontingentgrenzen**: Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.
-    * **SSH + Clusteranmeldung:** zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
-* **Data Lake Storage Gen1**: Konfiguriert den Zugriff auf Data Lake Storage Gen1.  Siehe [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+    * **SSH + Clusteranmeldung**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Data Lake Store Gen1**: Dient zum Konfigurieren des Data Lake Store Gen1-Zugriffs.  Weitere Informationen finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
     * **Speicherkonten**: Dient zum Anzeigen der Speicherkonten und Schlüssel. Die Speicherkonten werden während der Clustererstellung konfiguriert.
     * **Anwendungen**: Dient zum Hinzufügen und Entfernen von HDInsight-Anwendungen.  Weitere Informationen finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
-    * **Skriptaktionen**: Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
-    * **HDInsight-Partner**: Hinzufügen/Entfernen des aktuellen HDInsight-Partners.
-    * **Eigenschaften**: Anzeigen der Clustereigenschaften
+    * **Skriptaktionen**: Dienst zum Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+    * **HDInsight-Partner**: Dient zum Hinzufügen/Entfernen des aktuellen HDInsight-Partners.
+    * **Eigenschaften**: Dient zum Anzeigen der Clustereigenschaften.
 * **Sperren**: Dient zum Hinzufügen einer Sperre, um zu verhindern, dass der Cluster geändert oder gelöscht wird.
     * **Automatisierungsskript**: Dient zum Anzeigen und Exportieren der Azure Resource Manager-Vorlage für den Cluster. Derzeit können Sie nur das abhängige Azure-Speicherkonto exportieren. Weitere Informationen finden Sie unter [Erstellen Linux-basierter Apache Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 **Überwachung**
 * **Warnungen**: Dient zum Verwalten der Warnungen und Aktionen.
     * **Metriken**: Dient zum Überwachen der Clustermetriken in Azure Log Analytics.
 * **Diagnoseeinstellungen**: Einstellungen zum Ort, an dem die Diagnosemetriken gespeichert werden. **Support + Problembehandlung**
-    * **Resource Health:** siehe [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md)
+    * **Ressourcenintegrität**: Weitere Informationen finden Sie unter [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).
     * **Neue Supportanfrage**: Ermöglicht die Erstellung eines Supporttickets für den Microsoft-Support.
-
+    
 6. Klicken Sie auf **Eigenschaften**.
 
     Die Eigenschaften sind:
 
-   * **Hostname**: Der Clustername
+   * **Hostname**: Clustername
    * **Cluster-URL**: Dies ist die URL für die Ambari-Weboberfläche.
    * **Secure Shell (SSH)**: Der Benutzername und der Hostname für den Zugriff auf den Cluster über SSH.
-   * **Status**: Einer der folgenden: Aborted, Accepted, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Deleting, Deleted, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization.
-   * **Region**: Der Azure-Standort. Eine Liste der unterstützten Azure-Standorte, finden Sie im Dropdown-Listenfeld **Region** unter [HDInsight Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
+   * **Status**: Eine der folgenden Optionen: Aborted, Accepted, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Deleting, Deleted, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization.
+   * **Region**: Azure-Standort. Eine Liste der unterstützten Azure-Standorte, finden Sie im Dropdown-Listenfeld **Region** unter [HDInsight Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Erstellungsdatum**: Das Datum der Clusterbereitstellung.
-   * **Betriebssystem**: Entweder **Windows** oder **Linux**
-   * **Typ**: Hadoop, HBase, Storm, Spark
+   * **Betriebssystem**: Entweder **Windows** oder **Linux**.
+   * **Typ**: Hadoop, HBase, Storm, Spark.
    * **Version**. Siehe [HDInsight-Versionen](hdinsight-component-versioning.md).
-   * **Abonnement**: Name des Abonnements.
+   * **Abonnement**: Abonnementname.
    * **Standarddatenquelle**: Das Standardcluster-Dateisystem.
    * **Workerknotengröße**: Die ausgewählte VM-Größe des Workerknotens.
-   * **Hauptknotengröße**: Die ausgewählte VM-Größe des Hauptknotens.
+   * **Hauptknotengröße**: Die ausgewählte VM-Größe der Hauptknoten.
    * **Virtuelles Netzwerk**: Der Name des virtuellen Netzwerks, für das der Cluster bereitgestellt wird, wenn eines zum Zeitpunkt der Bereitstellung ausgewählt wurde.
 
 ## <a name="delete-clusters"></a>Löschen von Clustern

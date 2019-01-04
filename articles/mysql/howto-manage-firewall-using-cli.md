@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 45df284d29ea2d5eb799697b22deeab03cb66622
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ece07d2be605f51e08274649f3ea15e3bbba472
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956657"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134885"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI
 Mithilfe von Firewallregeln auf Serverebene können Administratoren den Zugriff auf eine Azure Database for MySQL-Serverinstanz über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank für MySQL finden Sie unter [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md) (Firewallregeln des Servers für Azure-Datenbank für MySQL).
@@ -30,17 +30,17 @@ Der Befehl **az mysql server firewall-rule** wird in der Azure CLI zum Erstellen
 Befehle:
 - **create**: Dient zum Erstellen einer Firewallregel für den Azure MySQL-Server.
 - **delete**: Dient zum Löschen einer Firewallregel für den Azure MySQL-Server.
-- **list**: Dient zum Auflisten der Serverfirewallregeln für Azure MySQL-Server.
+- **list**: Dient zum Auflisten der Firewallregeln für den Azure MySQL-Server.
 - **show**: Dient zum Anzeigen der Details einer Firewallregel für den Azure MySQL-Server.
-- **update**: Dient zum Aktualisieren der Firewallregel für den Azure MySQL-Server.
+- **update**: Dient zum Aktualisieren einer Firewallregel für den Azure MySQL-Server.
 
 ## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Anmelden bei Azure und Auflisten Ihrer Azure Database for MySQL-Serverinstanzen
 Stellen Sie mit dem Befehl **az login** eine sichere Verbindung zwischen der Azure CLI und Ihrem Azure-Konto her.
 
 1. Führen Sie an der Befehlszeile den folgenden Befehl aus:
-```azurecli
-az login
-```
+    ```azurecli
+    az login
+    ```
 Dieser Befehl gibt einen Code aus, der im nächsten Schritt verwendet wird.
 
 2. Verwenden Sie zum Öffnen der Seite [https://aka.ms/devicelogin](https://aka.ms/devicelogin) einen Webbrowser, und geben Sie dann den Code ein.
@@ -48,21 +48,21 @@ Dieser Befehl gibt einen Code aus, der im nächsten Schritt verwendet wird.
 3. Melden Sie sich an der Eingabeaufforderung mit Ihren Azure-Anmeldeinformationen an.
 
 4. Nachdem Ihre Anmeldung autorisiert wurde, wird eine Liste der Abonnements in der Konsole ausgegeben. Kopieren Sie die ID des gewünschten Abonnements, um das aktuelle Abonnement festzulegen, das verwendet werden soll. Verwenden Sie den Befehl [az account set](/cli/azure/account#az-account-set).
-   ```azurecli-interactive
-   az account set --subscription <your subscription id>
-   ```
+    ```azurecli-interactive
+    az account set --subscription <your subscription id>
+    ```
 
 5. Listen Sie die Server für Azure-Datenbanken für MySQL für Ihr Abonnement und die Ressourcengruppe auf, wenn Sie sich in Bezug auf die Namen unsicher sind. Verwenden Sie den Befehl [az mysql server list](/cli/azure/mysql/server#az-mysql-server-list).
 
-   ```azurecli-interactive
-   az mysql server list --resource-group myresourcegroup
-   ```
+    ```azurecli-interactive
+    az mysql server list --resource-group myresourcegroup
+    ```
 
    Notieren Sie das Attribut „Name“ in der Auflistung. Mit diesem Attribut wird angegeben, welche Serverinstanz von MySQL verwendet werden soll. Bestätigen Sie ggf. die Details für diesen Server, um mithilfe des name-Attributs die Richtigkeit des Namens zu überprüfen. Verwenden Sie den Befehl [az mysql server show](/cli/azure/mysql/server#az-mysql-server-show).
 
-   ```azurecli-interactive
-   az mysql server show --resource-group myresourcegroup --name mydemoserver
-   ```
+    ```azurecli-interactive
+    az mysql server show --resource-group myresourcegroup --name mydemoserver
+    ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Auflisten der Firewallregeln für die Azure Database for MySQL-Instanz 
 Listen Sie mithilfe des Servernamens und des Ressourcengruppennamens die vorhandenen Firewallregeln auf dem Server auf. Verwenden Sie den Befehl [az mysql server firewall list](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list).  Beachten Sie, dass das Attribut mit dem Servernamen im Switch **--server** und nicht im Switch **--name** angegeben ist. 

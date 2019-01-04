@@ -1,5 +1,5 @@
 ---
-title: Verwalten gleichzeitiger Schreibvorgänge bei Ressourcen in Azure Search
+title: Verwalten gleichzeitiger Schreibvorgänge bei Ressourcen – Azure Search
 description: Verwenden Sie die optimistische Nebenläufigkeit, um während der Ausführung von Update- und Löschvorgängen Konflikte in Azure Search-Indizes, Indexern und Datenquellen zu vermeiden.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
-ms.openlocfilehash: f5fa495c1266c847cabc0eb4e35b85132550bc3c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 017f665f3d0d19746854e2cf566034f801b32a04
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796379"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310221"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Verwalten der Parallelität in Azure Search
 
@@ -24,9 +25,9 @@ Beim Verwalten von Azure Search-Ressourcen wie Indizes und Datenquellen ist es w
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Die optimistische Nebenläufigkeit ist über Prüfungen von Zugriffsbedingungen in API-Aufrufen implementiert, die in Indizes, Indexer, Datenquellen und synonymMap-Ressourcen schreiben. 
+Die optimistische Nebenläufigkeit ist über Prüfungen von Zugriffsbedingungen in API-Aufrufen implementiert, die in Indizes, Indexer, Datenquellen und synonymMap-Ressourcen schreiben.
 
-Alle Ressourcen verfügen über ein [*Entity Tag (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag), das Informationen zur Objektversion bereitstellt. Indem Sie zuerst das ETag überprüfen, können Sie in typischen Workflows (abrufen, lokal ändern, aktualisieren) gleichzeitige Updates vermeiden, indem Sie sicherstellen, dass das ETag der Ressource mit dem der lokalen Kopie übereinstimmt. 
+Alle Ressourcen verfügen über ein [*Entity Tag (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag), das Informationen zur Objektversion bereitstellt. Indem Sie zuerst das ETag überprüfen, können Sie in typischen Workflows (abrufen, lokal ändern, aktualisieren) gleichzeitige Updates vermeiden, indem Sie sicherstellen, dass das ETag der Ressource mit dem der lokalen Kopie übereinstimmt.
 
 + Die REST-API verwendet ein [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) im Anforderungsheader.
 + Das ETag wird vom .NET SDK über ein accessCondition-Objekt festgelegt, wobei der [If-Match | If-Match-None-Header](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) für die Ressource gesetzt wird. Alle Objekte, die von [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) erben, besitzen ein accessCondition-Objekt.
@@ -34,7 +35,7 @@ Alle Ressourcen verfügen über ein [*Entity Tag (ETag)*](https://en.wikipedia.o
 Jedes Mal, wenn Sie eine Ressource aktualisieren, ändert sich dessen ETag automatisch. Wenn Sie die Parallelitätsverwaltung implementieren, fügen Sie lediglich eine Vorbedingung für die Updateanforderung hinzu, die verlangt, dass die Remoteressource das gleiche ETag wie die Kopie der Ressource hat, die Sie auf dem Client geändert haben. Wenn ein gleichzeitig ausgeführter Prozess die Remoteressource bereits geändert hat, stimmt das ETag nicht mit der Vorbedingung überein und die Anforderung gibt den Fehler „HTTP 412“ aus. Wenn Sie das .NET SDK verwenden, erfolgt dies in Form einer `CloudException`, bei der die `IsAccessConditionFailed()`-Erweiterungsmethode „true“ zurückgibt.
 
 > [!Note]
-> Es gibt nur einen Mechanismus für die Parallelität. Dieser wird immer verwendet, unabhängig von der für Ressourcenupdates verwendeten API. 
+> Es gibt nur einen Mechanismus für die Parallelität. Dieser wird immer verwendet, unabhängig von der für Ressourcenupdates verwendeten API.
 
 <a name="samplecode"></a>
 ## <a name="use-cases-and-sample-code"></a>Anwendungsfälle und Beispielcode
@@ -111,7 +112,7 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
             {
                 indexForClient2.Fields.Add(new Field("b", DataType.Boolean));
                 serviceClient.Indexes.CreateOrUpdate(
-                    indexForClient2, 
+                    indexForClient2,
                     accessCondition: AccessCondition.IfNotChanged(indexForClient2));
 
                 Console.WriteLine("Whoops; This shouldn't happen");
@@ -167,9 +168,9 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
 
 ## <a name="design-pattern"></a>Entwurfsmuster
 
-Ein Entwurfsmuster für die Implementierung der optimistischen Nebenläufigkeit muss eine Schleife enthalten, in der die Zugriffsbedingungsprüfung, ein Test der Zugriffsbedingung und optional ein Abruf der aktualisierten Ressource wiederholt werden, bevor versucht wird, die Änderungen erneut anzuwenden. 
+Ein Entwurfsmuster für die Implementierung der optimistischen Nebenläufigkeit muss eine Schleife enthalten, in der die Zugriffsbedingungsprüfung, ein Test der Zugriffsbedingung und optional ein Abruf der aktualisierten Ressource wiederholt werden, bevor versucht wird, die Änderungen erneut anzuwenden.
 
-Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Der Code stammt aus [Synonyme (Vorschauversion) – C#-Tutorial für Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk). 
+Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Der Code stammt aus [Synonyme (Vorschauversion) – C#-Tutorial für Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk).
 
 Im Codeausschnitt wird der Index „hotels“ abgerufen, in einem Updatevorgang die Objektversion überprüft, eine Ausnahme ausgelöst, wenn der Vorgang fehlschlägt, und der Vorgang dann (bis zu drei Mal) wiederholt, wobei zunächst der Index vom Server abgerufen wird, um die aktuelle Version zu erhalten.
 
@@ -211,10 +212,11 @@ Weitere Informationen zum sicheren Aktualisieren eines vorhandenen Index im Kont
 
 Versuchen Sie, eines der folgenden Beispiele so zu ändern, dass es ETags oder AccessCondition-Objekte enthält.
 
-+ [REST-API-Beispiel auf Github](https://github.com/Azure-Samples/search-rest-api-getting-started) 
-+ [.NET SDK-Beispiel auf Github](https://github.com/Azure-Samples/search-dotnet-getting-started). Diese Lösung umfasst das Projekt „DotNetEtagsExplainer“ mit dem in diesem Artikel vorgestellten Code.
++ [REST-API-Beispiel auf GitHub](https://github.com/Azure-Samples/search-rest-api-getting-started)
++ [.NET SDK-Beispiel auf GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started). Diese Lösung umfasst das Projekt „DotNetEtagsExplainer“ mit dem in diesem Artikel vorgestellten Code.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-  [Allgemeine HTTP-Anforderungs- und -Antwortheader](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)    
-  [HTTP-Statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)[Indexvorgänge (REST-API)](https://docs.microsoft.com/\rest/api/searchservice/index-operations)
+[Allgemeine HTTP-Anforderung und Antwort-Header](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP-Statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+[Indexvorgänge (REST-API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

@@ -3,19 +3,19 @@ title: Beheben von Verbindungsproblemen mit Azure Database for MySQL | Microsoft
 description: Erfahren Sie, wie Sie Verbindungsprobleme mit Azure Database for MySQL beheben.
 keywords: MySQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
 services: mysql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 7688ddd28dfab2ebb8eb0b5e8d9bb1189ec62564
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 901c8f0c903a7e26e82d89209ea4b0ec69057d23
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285302"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165406"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Beheben von Verbindungsproblemen mit Azure Database for MySQL
 
@@ -49,9 +49,9 @@ Vorübergehende Fehler treten auf, wenn eine Wartung durchgeführt wird, wenn da
 
 Wenn die Anwendung dauerhaft keine Verbindung mit Azure Database for MySQL herstellen kann, weist dies in der Regel auf Probleme der folgenden Art hin:
 
-* Konfiguration der Firewall: Der Azure Database for MySQL-Server oder eine clientseitige Firewall blockiert Verbindungen.
-* Netzwerkneukonfiguration auf Clientseite: Es wurde eine neue IP-Adresse oder ein Proxyserver hinzugefügt.
-* Benutzerfehler: Sie haben beispielsweise Verbindungsparameter wie den Servernamen in der Verbindungszeichenfolge falsch geschrieben, oder es fehlt das Suffix *@servername* im Benutzernamen.
+* Konfiguration der Serverfirewall: Stellen Sie sicher, dass die Azure Database for MySQL-Serverfirewall so konfiguriert ist, dass Verbindungen von Ihrem Client zulässig sind, einschließlich Proxyserver und Gateways.
+* Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. IP-Adressen und Ports des Servers, mit dem Sie eine Verbindung herstellen, sowie Anwendungsnamen wie MySQL müssen in einigen Firewalls zugelassen sein.
+* Benutzerfehler: Sie haben möglicherweise Verbindungsparameter wie den Servernamen in der Verbindungszeichenfolge falsch geschrieben, oder es fehlt das Suffix *@servername* im Benutzernamen.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
 

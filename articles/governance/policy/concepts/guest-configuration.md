@@ -1,20 +1,20 @@
 ---
-title: Informationen zum Durchführen von Überprüfungen in einem virtuellen Computer mithilfe von Azure Policy
+title: Informationen zum Durchführen von Überprüfungen in einem virtuellen Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe von Guest Configuration Einstellungen in einem virtuellen Azure-Computer überprüft.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: ca96aea8f359f1df7da48f84a3317a2d8c7b52e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 1ea87dc01048a2747a668db7a5b1f22b37ed9213
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167721"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310061"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -29,7 +29,7 @@ Zur Überprüfung von Einstellungen in einem virtuellen Computer wird eine [VM-E
 
 ### <a name="register-guest-configuration-resource-provider"></a>Registrieren des Guest Configuration-Ressourcenanbieters
 
-Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren. Hierfür können Sie das Portal oder PowerShell verwenden.
+Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren. Hierfür können Sie über das Portal oder mit PowerShell registrieren.
 
 #### <a name="registration---portal"></a>Registrierung – Portal
 
@@ -54,7 +54,7 @@ Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguratio
 
 ### <a name="validation-tools"></a>Überprüfungstools
 
-Im virtuellen Computer verwendet der Guest Configuration-Client lokale Tools zum Durchführen der Überprüfung.
+Im virtuellen Computer verwendet der Guest Configuration-Client lokale Tools zum Ausführen der Überprüfung.
 
 In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jeweiligen unterstützten Betriebssystemen verwendet werden:
 
@@ -90,30 +90,30 @@ In der folgenden Tabelle werden die Betriebssysteme aufgelistet, die nicht unter
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
-Für jede mit Guest Configuration durchgeführte Überprüfung werden die beiden Richtliniendefinitionen **DeployIfNotExists** und **AuditIfNotExists** benötigt. **DeployIfNotExists** dient zum Vorbereiten des virtuellen Computers mit dem Guest Configuration-Agent und anderen Komponenten zur Unterstützung der [Überprüfungstools](#validation-tools).
+Für jede mit Guest Configuration ausgeführte Überprüfung werden die beiden Richtliniendefinitionen **DeployIfNotExists** und **AuditIfNotExists** benötigt. **DeployIfNotExists** dient zum Vorbereiten des virtuellen Computers mit dem Guest Configuration-Agent und anderen Komponenten zur Unterstützung der [Überprüfungstools](#validation-tools).
 
-Mit der Richtliniendefinition **DeployIfNotExists** wird Folgendes überprüft und korrigiert:
+Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Elemente überprüft und korrigiert:
 
 - Stellen Sie sicher, dass dem virtuellen Computer eine auszuwertende Konfiguration zugewiesen wurde. Wenn derzeit keine Zuweisung vorhanden ist, gehen Sie wie folgt vor, um die Zuweisung abzurufen und den virtuellen Computer vorzubereiten:
   - Authentifizieren Sie sich beim virtuellen Computer mithilfe einer [verwalteten Identität](../../../active-directory/managed-identities-azure-resources/overview.md).
   - Installieren Sie die neueste Version der Erweiterung **Microsoft.GuestConfiguration**.
   - Installieren Sie [Überprüfungstools](#validation-tools) und ggf. Abhängigkeiten.
 
-Sobald die Richtliniendefinition **DeployIfNotExists** konform ist, wird die Richtliniendefinition **AuditIfNotExists** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die zugewiesene Konfiguration konform ist. Die Ergebnisse werden dem Guest Configuration-Client vom Überprüfungstool bereitgestellt. Dieser leitet sie an die Erweiterung Guest Configuration weiter, damit sie über den Guest Configuration-Ressourcenanbieter verfügbar werden.
+Sobald die Richtliniendefinition **DeployIfNotExists** konform ist, wird die Richtliniendefinition **AuditIfNotExists** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die zugewiesene Konfiguration konform ist. Das Überprüfungstool stellt die Ergebnisse dem Guest Configuration-Client zur Verfügung. Der Client leitet die Ergebnisse an die Guest-Erweiterung weiter, die sie über den Guest Configuration-Ressourcenanbieter bereitstellt.
 
 Azure Policy verwendet die Eigenschaft **complianceStatus** des Guest Configuration-Ressourcenanbieters, um die Konformität im Knoten **Konformität** zu melden. Weitere Informationen finden Sie unter [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
 > Für jede Guest Configuration-Definition müssen die beiden Richtliniendefinitionen **DeployIfNotExists** und **AuditIfNotExists** vorhanden sein.
 
-Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Die integrierte Initiative mit dem Namen *[Vorschau]: Überprüfen der Sicherheitseinstellungen für Kennwörter in virtuellen Computern unter Linux und Windows* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
+Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf virtuellen Linux- und Windows-Computern überwachen* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele.
+- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele
 - Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](definition-structure.md).
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](effects.md).
-- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
+- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md)
 - Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
-- Entdecken Sie, wie Sie [nicht konforme Ressourcen](../how-to/remediate-resources.md) korrigieren können.
+- Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/index.md).

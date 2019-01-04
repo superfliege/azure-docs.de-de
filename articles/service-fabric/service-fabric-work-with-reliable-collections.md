@@ -3,7 +3,7 @@ title: Arbeiten mit Reliable Collections | Microsoft Docs
 description: Lernen Sie die bewährten Methoden für die Arbeit mit Reliable Collections kennen.
 services: service-fabric
 documentationcenter: .net
-author: rajak
+author: tylermsft
 manager: timlt
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
-ms.author: rajak
-ms.openlocfilehash: 2568e116fdb3f80976d49787877d2ecf68f128ef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: 86e1370bb5241dbe14b34cebe2f2ee6d71a0a323
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210816"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193534"
 ---
 # <a name="working-with-reliable-collections"></a>Arbeiten mit Reliable Collections
 Service Fabric bietet .NET-Entwicklern über Reliable Collections ein zustandsbehaftetes Programmiermodell. Service Fabric umfasst z. B. Reliable Dictionary- und Reliable Queue-Klassen. Wenn Sie diese Klassen verwenden, wird Ihr Zustand partitioniert (für Skalierbarkeit), repliziert (für Verfügbarkeit) und innerhalb einer Partition durchgeführt (für ACID-Semantik). Sehen wir uns nun die typische Nutzung eines Reliable Dictionary-Objekts an.
@@ -198,7 +198,7 @@ public struct ItemId {
 ```
 
 ## <a name="schema-versioning-upgrades"></a>Schema-Versionsverwaltung (Upgrades)
-Intern serialisieren die Reliable Collections Ihre Objekte mit dem .NET DataContractSerializer. Die serialisierten Objekte werden auf der lokalen Festplatte des primären Replikats übernommen und auch an die sekundären Replikate übermittelt. Im Zuge der Entwicklung Ihres Dienstes möchten Sie möglicherweise die Art der erforderlichen Daten (Schema) ändern. Lassen Sie bei der Versionsverwaltung Ihrer Daten große Vorsicht walten. Höchste Priorität hat, dass Sie stets in der Lage sein müssen, alte Daten zu deserialisieren. Ihr Deserialisierungscode muss daher unendlich abwärtskompatibel sein: Version 333 Ihres Dienstcodes muss mit Daten arbeiten können, die vor 5 Jahren mit der Version 1 Ihres Dienstcodes zu einer Reliable Collection hinzugefügt wurden.
+Intern serialisieren die Reliable Collections Ihre Objekte mit dem .NET DataContractSerializer. Die serialisierten Objekte werden auf der lokalen Festplatte des primären Replikats übernommen und auch an die sekundären Replikate übermittelt. Im Zuge der Entwicklung Ihres Dienstes möchten Sie möglicherweise die Art der erforderlichen Daten (Schema) ändern. Lassen Sie bei der Versionsverwaltung Ihrer Daten große Vorsicht walten. Höchste Priorität hat, dass Sie stets in der Lage sein müssen, alte Daten zu deserialisieren. Ihr Deserialisierungscode muss daher unendlich abwärtskompatibel sein: Version 333 Ihres Dienstcodes muss mit Daten arbeiten können, die vor 5 Jahren mit der Version 1 Ihres Dienstcodes zu einer zuverlässigen Sammlung hinzugefügt wurden.
 
 Zudem wird der Dienstcode auf jeder Upgradedomäne einzeln aktualisiert. Während der Aktualisierung müssen also zwei verschiedene Versionen Ihres Dienstcodes gleichzeitig ausgeführt werden. Sie müssen vermeiden, dass die neue Version Ihres Dienstcodes das neue Schema wie alte Versionen Ihres Dienstcodes verwendet, da dieser das neue Schema möglicherweise nicht verarbeiten kann. Nach Möglichkeit sollten Sie jede Version des Diensts um 1 Version aufwärtskompatibel entwickeln. Insbesondere bedeutet dies, dass V1 des Dienstcodes einfach alle Elemente des Schemas ignorieren sollte, die sie nicht explizit behandelt. Allerdings muss sie alle Daten, die ihr nicht explizit bekannt sind, speichern und einfach zurückschreiben können, wenn ein Dictionary-Schlüssel oder -Wert aktualisiert wird.
 

@@ -1,6 +1,7 @@
 ---
-title: FPGA-Paket für die Hardwarebeschleunigung für Azure Machine Learning
-description: Hier finden Sie Informationen zu den Python-Paketen, die Benutzern von Azure Machine Learning zur Verfügung stehen.
+title: FPGA-Paket für Hardwarebeschleunigung
+titleSuffix: Azure Machine Learning service
+description: Dieser Artikel ist veraltet.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,13 +10,14 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
+ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 83c5a788f85fcc47c221f5c8f9e6944c4448fbf9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 44c0818d7ddb418e34e6e124ddc0b27460bb24a0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712125"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262077"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Hardwarebeschleunigungspaket für Azure Machine Learning
 
@@ -32,7 +34,8 @@ Das Hardwarebeschleunigungspaket für Azure Machine Learning ist eine über pip 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
+>[!Note]
+>Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
 1. Sie benötigen ein Azure Machine Learning-Konto zur Modellverwaltung. Weitere Informationen zum Erstellen des Kontos finden Sie unter [Azure Machine Learning: Schnellstart und Workbench-Installation](../desktop-workbench/quickstart-installation.md). 
 

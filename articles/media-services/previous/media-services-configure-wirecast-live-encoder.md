@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 6cc4c0b01511309766e48c3d671ee897e5d6f326
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e0e41714f6979a9cd699df70498b9c89a44d5ee1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669112"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138923"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
 > [!div class="op_single_selector"]
@@ -69,21 +69,21 @@ Während der Kanal gestartet wird, können Sie [den Encoder konfigurieren](media
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-aconfigure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" /a>Konfigurieren des Telestream Wirecast-Encoders
+## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Konfigurieren des Telestream Wirecast-Encoders
 In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restlichen Teil dieses Abschnitts werden die Konfigurationsschritte im Detail beschrieben.
 
 **Video**:
 
 * Codec: H.264
-* Profil: Hoch (Level 4.0)
-* Bitrate: 5.000 KBit/s
+* Profil: Hoch (Ebene 4.0)
+* Bitrate: 5.000 KBit/s
 * Keyframe: 2 Sekunden (60 Sekunden)
 * Bildfrequenz: 30
 
 **Audio**:
 
 * Codec: AAC (LC)
-* Bit Rate: 192 Kbit/s
+* Bitrate: 192 KBit/s
 * Abtastrate: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Konfigurationsschritte
@@ -104,14 +104,14 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
     **Video**
 
    * Encoder: MainConcept h. 264
-   * Bilder pro Sekunde: 30
-   * Durchschnittliche Bitrate: 5000 Kbit/s (kann basierend auf Netzwerkbeschränkungen angepasst werden)
+   * Frames pro Sekunde: 30
+   * Durchschnittliche Bitrate: 5.000 KBit/s (kann je nach Netzwerkeinschränkungen angepasst werden)
    * Profil: Main
    * Keyframe alle: 60 Bilder
 
     **Audio**
 
-   * Zielbitrate: 192 Kbit/s
+   * Zielbitrate: 192 KBit/s
    * Abtastrate: 44,100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)

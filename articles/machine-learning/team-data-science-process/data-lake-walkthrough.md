@@ -1,5 +1,5 @@
 ---
-title: 'Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise | Microsoft-Dokumentation'
+title: 'Skalierbare Data Science mit Azure Data Lake: Team Data Science-Prozess'
 description: Informationen zum Verwenden von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf ein Dataset.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 52518f8c9295f00b93dee0ea356513605450aed7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8549a35eed0c1f61c087b9056e4564577170f5f6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443558"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141814"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise
 Diese exemplarische Vorgehensweise veranschaulicht die Nutzung von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf das Dataset „NYC Taxi Trip and Fare“, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld gezahlt wird. Sie werden lückenlos durch die Schritte des [Data Science-Prozesses](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)begleitet – von der Datenerfassung über das Training des Modells bis zur Bereitstellung eines Webdiensts zum Veröffentlichen des Modells.
@@ -146,7 +146,7 @@ Zum Ausführen von U-SQL öffnen Sie Visual Studio, klicken auf **Datei--> Neu--
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
+### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus einem öffentlichen Blob
 Der Speicherort der Daten im Azure-Blob wird als **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen das gleiche Format haben, kann **trip\_data_{\*\}.csv** verwendet werden, um alle 12 Fahrtendateien einzulesen. 
 
     ///Read in Trip data
@@ -300,7 +300,7 @@ Suchen Sie die Verteilung von Fahrten mit und ohne Trinkgeld:
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
     USING Outputters.Csv(); 
 
-Suchen Sie die Verteilung des Trinkgeldbetrags mithilfe der Bezugswerte 0, 5, 10 und 20 Dollar.
+Suchen Sie die Verteilung des Trinkgeldbetrags mithilfe der Bezugswerte: 0, 5, 10 und 20 USD.
 
     //tip class/range distribution
     @tip_class =

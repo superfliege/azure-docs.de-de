@@ -1,5 +1,6 @@
 ---
-title: Erstellen eines öffentlichen Load Balancer Standard mit zonenredundantem öffentlichen IP-Adressen-Front-End mithilfe von Azure CLI | Microsoft-Dokumentation
+title: Erstellen eines Load Balancer Standard mit zonenredundanter Front-End-IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie einen öffentlichen Load Balancer Standard mit zonenredundantem öffentlichen IP-Adressen-Front-End mithilfe von Azure CLI erstellen.
 services: load-balancer
 documentationcenter: na
@@ -7,18 +8,19 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 169c440c8fb64923da537f391d2b5f64746162ce
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 8c396e72a8c8471be4214bf1b461210e2e61a805
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739123"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138913"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-frontend-using-azure-cli"></a>Erstellen eines öffentlichen Load Balancer Standard mit zonenredundantem Front-End mithilfe von Azure CLI
+#  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Erstellen eines Load Balancer Standard mit zonenredundantem Front-End mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
 In diesem Artikel wird die Erstellung eines öffentlichen [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) mit zonenredundantem Front-End mithilfe einer öffentlichen IP-Standard-Adresse erläutert.
 

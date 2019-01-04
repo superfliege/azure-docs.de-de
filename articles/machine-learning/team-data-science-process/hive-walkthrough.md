@@ -1,5 +1,5 @@
 ---
-title: Untersuchen von Daten in einem Hadoop-Cluster und Erstellen von Modellen in Azure Machine Learning | Microsoft-Dokumentation
+title: 'Untersuchen von Daten in einem Hadoop-Cluster: Team Data Science-Prozess'
 description: Verwenden des Team Data Science-Prozesses für ein End-to-End-Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1b494f78998a03d39b18d4f9bba80642c04c483e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444204"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139621"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 
@@ -61,7 +61,7 @@ Bestimmen Sie die Art der Vorhersagen, die Sie anhand von Datenanalysen vornehme
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für die Fahrt.  
+- **Regressionsaufgabe:** Vorhersage des Trinkgeldbetrags für die Fahrt.  
 
 ## <a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für die erweiterte Analyse
 > [!NOTE]
@@ -76,7 +76,7 @@ Sie können in drei Schritten eine Azure-Umgebung für die erweiterte Analyse ei
    
    * Verknüpfen Sie das in Schritt 1 erstellte Speicherkonto mit dem HDInsight-Cluster, wenn Sie diesen erstellen. Dieses Speicherkonto greift auf Daten zu, die innerhalb des Clusters verarbeitet werden.
    * Sie müssen nach dem Erstellen den Remotezugriff auf den Hauptknoten des Clusters aktivieren. Navigieren Sie zur Registerkarte **Konfiguration**, und wählen Sie **Remote aktivieren** aus. Mit diesem Schritt werden die Benutzeranmeldeinformationen für die Remoteanmeldung angegeben.
-3. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md): Mithilfe dieses Arbeitsbereichs entwickeln Sie Machine Learning-Modelle. Diese Aufgabe wird ausgeführt, nachdem Sie mit dem HDInsight-Cluster eine anfängliche Datenuntersuchung und ein Downsampling durchgeführt haben.
+3. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md): Sie verwenden diesen Arbeitsbereich zum Erstellen von Machine Learning-Modellen. Diese Aufgabe wird ausgeführt, nachdem Sie mit dem HDInsight-Cluster eine anfängliche Datenuntersuchung und ein Downsampling durchgeführt haben.
 
 ## <a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
 > [!NOTE]
@@ -286,7 +286,7 @@ Mithilfe von Hive-Abfragen können Sie Datenuntersuchungen durchführen und Feat
 * Generieren von Bezeichnungen für binäre und Multiklassenklassifizierungen auf der Grundlage des Trinkgelds
 * Generieren von Funktionen durch Berechnung der direkten Fahrtentfernungen
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Untersuchung: Anzeigen der ersten 10 Datensätze in der Tabelle "trip"
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Untersuchung: Anzeigen der ersten 10 Datensätze in der Tabelle „trip“
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Data Scientist ausgeführt.
 > 
@@ -306,7 +306,7 @@ Sie können die Datensätze zur bequemen Anzeige in einer Datei speichern. Eine 
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Untersuchung: Anzeigen der Anzahl von Datensätzen in jeder der 12 Partitionen
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Untersuchung: Anzeigen der Anzahl von Datensätzen in jeder der 12 Partitionen
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Data Scientist ausgeführt.
 > 
@@ -376,7 +376,7 @@ Dies ergibt:
 
 Die Gesamtzahl der Datensätze in beiden Tabellen stimmt ebenfalls überein. Dies liefert einen zweiten Beweis dafür, dass die Daten korrekt geladen wurden.
 
-### <a name="exploration-trip-distribution-by-medallion"></a>Durchsuchen: Verteilung der Fahrten nach "medallion"
+### <a name="exploration-trip-distribution-by-medallion"></a>Untersuchung: Verteilung der Fahrten nach „medallion“
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Data Scientist ausgeführt.
 > 
@@ -410,7 +410,7 @@ Führen Sie über die Hive-Eingabeaufforderung den folgenden Befehl aus:
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“ und „hack_license“
+### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Untersuchung: Verteilung der Fahrten nach „medallion“ und „hack_license“
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Data Scientist ausgeführt.
 > 
@@ -723,13 +723,13 @@ Hier finden Sie einige Details zum [Import Data][import-data]-Modul und zu den P
 
 **HCatalog-Server-URI**: Wenn der Clustername **abc123** lautet, ist dies einfach https://abc123.azurehdinsight.net.
 
-**Hadoop-Benutzerkontoname**: Der für den Cluster gewählte Benutzername (nicht der Benutzername für den Remotezugriff)
+**Hadoop-Benutzerkontoname**: Der für den Cluster ausgewählte Benutzername (nicht der Benutzername für den Remotezugriff).
 
-**Hadoop-Kontokennwort**: Das für den Cluster gewählte Kennwort (nicht das Kennwort für den Remotezugriff)
+**Kennwort des Hadoop-Benutzerkontos**: Das für den Cluster ausgewählte Kennwort (nicht das Kennwort für den Remotezugriff).
 
-**Speicherort der Ausgabedaten**: Wird von Azure festgelegt.
+**Speicherort der Ausgabedaten**: Wählen Sie „Azure“ aus.
 
-**Azure-Speicherkontoname**: Der Name des dem Cluster zugeordneten Standardspeicherkontos
+**Azure-Speicherkontoname**: Der Name des dem Cluster zugeordneten Standardspeicherkontos.
 
 **Azure-Containername**: Dies ist der standardmäßige Containername für den Cluster. Dieser stimmt üblicherweise mit dem Clusternamen überein. Wenn der Cluster **abc123** heißt, lautet dieser Name „abc123“.
 
@@ -757,7 +757,7 @@ Das Dataset kann jetzt als Startpunkt für die Entwicklung von Machine Learning-
 ### <a name="mlmodel"></a>Entwickeln von Modellen in Machine Learning
 Sie können nun mit der Modellentwicklung und -bereitstellung in [Machine Learning](https://studio.azureml.net) fortfahren. Die Daten sind jetzt für die zuvor festgelegten Vorhersageprobleme vorbereitet:
 
-- **Binäre Klassifizierung**: Zur Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wird.
+- **Binäre Klassifizierung**: Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wurde.
 
   **Verwendeter Lernansatz:** Logistische Regression mit zwei Klassen
 
@@ -765,7 +765,7 @@ Sie können nun mit der Modellentwicklung und -bereitstellung in [Machine Learni
 
   Das folgende Diagramm zeigt unser Experiment zur Vorhersage, ob für eine bestimmte Fahrt ein Trinkgeld gezahlt wurde oder nicht:
 
-  ![Diagramm zum Experiment](./media/hive-walkthrough/QGxRz5A.png)
+  ![Diagramm zum Experiment zur Vorhersage, ob Trinkgeld gezahlt wurde](./media/hive-walkthrough/QGxRz5A.png)
 
   b. Bei diesem Experiment ergibt sich für die Zielbezeichner eine Verteilung von etwa 1:1.
 
@@ -785,7 +785,7 @@ Sie können nun mit der Modellentwicklung und -bereitstellung in [Machine Learni
 
   Das folgende Diagramm zeigt das Experiment zur Vorhersage des Trinkgeldbetrags. Es gibt folgende Möglichkeiten: Class 0: tip = $0, Class 1: tip > $0 und tip <= $5, Class 2: tip > $5 und tip <= $10, Class 3: tip > $10 und tip <= $20 sowie Class 4: tip > $20.
 
-  ![Diagramm zum Experiment](./media/hive-walkthrough/5ztv0n0.png)
+  ![Diagramm zum Experiment zur Vorhersage der Klasse für das Trinkgeld](./media/hive-walkthrough/5ztv0n0.png)
 
   Nachstehend wird gezeigt, wie die tatsächliche Testklassenverteilung aussieht. Während Klasse 0 und Klasse 1 sehr häufig vorkommen, sind die weiteren Klassen eher selten.
 
@@ -797,15 +797,15 @@ Sie können nun mit der Modellentwicklung und -bereitstellung in [Machine Learni
 
   Beachten Sie Folgendes: Während die Klassengenauigkeit bei den häufig vorkommenden Klassen recht gut ist, zeigt das Modell keine gute „Lernkurve“ bei den selteneren Klassen.
 
-- **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für eine Fahrt.
+- **Regressionsaufgabe:** Vorhersage des Trinkgeldbetrags für eine Fahrt.
 
-  **Verwendeter Lernansatz:** Gewichteter Entscheidungsbaum
+  **Verwendeter Lernansatz:** Boosted Decision Tree (Verstärkter Entscheidungsbaum)
 
   a. Für dieses Problem lautet die Zielbezeichnung (oder die Zielklasse) **tip\_amount**. Die Ziellecks lauten in diesem Fall: **tipped**, **tip\_class** und **total\_amount**. Sämtliche dieser Variablen enthalten Informationen zum Trinkgeldbetrag, die zum Testzeitpunkt normalerweise nicht zur Verfügung stehen. Entfernen Sie diese Spalten mithilfe des [Select Columns in Dataset][select-columns]-Moduls.
 
   Das folgende Diagramm zeigt das Experiment zur Vorhersage des Trinkgeldbetrags:
 
-  ![Diagramm zum Experiment](./media/hive-walkthrough/11TZWgV.png)
+  ![Diagramm zum Experiment zur Vorhersage der Höhe des Trinkgelds](./media/hive-walkthrough/11TZWgV.png)
 
   b. Bei Regressionsproblemen messen wir die Genauigkeit der Vorhersage, indem wir die quadratische Abweichung in den Vorhersagen und den Bestimmungskoeffizienten betrachten:
 

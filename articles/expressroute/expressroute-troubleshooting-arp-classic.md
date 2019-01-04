@@ -1,25 +1,19 @@
 ---
-title: 'Abrufen von ARP-Tabellen: klassisch: Azure ExpressRoute-Problembehandlung | Microsoft-Dokumentation'
-description: Diese Seite enthält Anweisungen zum Abrufen der ARP-Tabellen für eine ExpressRoute-Verbindung.
-documentationcenter: na
+title: 'Abrufen von ARP-Tabellen –Problembehandlung für ExpressRoute: klassisches Modell: Azure | Microsoft-Dokumentation'
+description: Diese Seite enthält Anweisungen zum Abrufen der ARP-Tabellen für eine ExpressRoute-Verbindung im klassischen Bereitstellungsmodell.
 services: expressroute
 author: ganesr
-manager: carolz
-editor: tysonn
-ms.assetid: b5856acf-03c2-4933-8111-6ce12998d92a
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.custom: seodec18
+ms.openlocfilehash: 367a79b04a8736e2eafb6851b682f2c244e80522
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23013165"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272285"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Abrufen von ARP-Tabellen im klassischen Bereitstellungsmodell
 > [!div class="op_single_selector"]
@@ -31,7 +25,7 @@ ms.locfileid: "23013165"
 Dieser Artikel führt Sie durch die Schritte zum Abrufen der ARP-Tabellen (Address Resolution Protocol) für Ihre Azure ExpressRoute-Verbindung.
 
 > [!IMPORTANT]
-> Dieses Dokument soll Ihnen helfen, einfache Probleme zu untersuchen und zu beheben. Es dient nicht als Ersatz für Microsoft-Support. Wenn Sie das Problem anhand der folgenden Anleitung nicht beheben können, öffnen Sie beim [Microsoft Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)eine Supportanfrage.
+> Dieses Dokument soll Ihnen helfen, einfache Probleme zu untersuchen und zu beheben. Es dient nicht als Ersatz für Microsoft Support. Wenn Sie das Problem anhand der folgenden Anleitung nicht beheben können, öffnen Sie beim [Microsoft Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)eine Supportanfrage.
 > 
 > 
 

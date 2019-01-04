@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7602524675edbf0e3ca96c74a2aba2eac48c417b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416935"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084072"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -70,7 +70,7 @@ Beachten Sie Folgendes:
     </tr>
     <tr>
         <td>Netzwerk</td>
-        <td>Internetschnittstelle: 10 Gbit/s; Intranetschnittstelle: 40 Gbit/s</td>
+        <td>Internetschnittstelle: 10 Gbit/s; Intranetschnittstelle: 40 GBit/s</td>
     </tr>
     </table>
 
@@ -192,9 +192,12 @@ Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, u
 | Eigenschaft | Beschreibung | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
 | **enableStaging** |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
-| **linkedServiceName** |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
-| **path** |Geben Sie den gewünschten Blob Storage-Pfad für die bereitgestellten Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Geben Sie nur dann einen Pfad an, wenn Sie Storage mit einer Shared Access Signature verwenden oder sich die temporären Daten an einem bestimmten Speicherort befinden müssen. |– |Nein |
-| **enableCompression** |Gibt an, ob die Daten komprimiert werden sollen, bevor sie an das Ziel kopiert werden. Durch diese Einstellung wird die Menge der übertragenen Daten reduziert. |False |Nein |
+| **linkedServiceName** |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/>  Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
+| **path** |Geben Sie den gewünschten Blob Storage-Pfad für die bereitgestellten Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/>  Geben Sie nur dann einen Pfad an, wenn Sie Storage mit einer Shared Access Signature verwenden oder sich die temporären Daten an einem bestimmten Speicherort befinden müssen. |– |Nein |
+| **enableCompression** |Gibt an, ob die Daten komprimiert werden sollen, bevor sie an das Ziel kopiert werden. Durch diese Einstellung wird die Menge der übertragenen Daten reduziert. |False |Nein  |
+
+>[!NOTE]
+> Wenn Sie das gestaffelte Kopieren mit aktivierter Komprimierung verwenden, wird die Dienstprinzipal- oder MSI-Authentifizierung für das Staging eines verknüpften Blobdiensts nicht unterstützt.
 
 Hier sehen Sie eine Beispieldefinition der Kopieraktivität mit den Eigenschaften aus der obigen Tabelle:
 
@@ -279,12 +282,12 @@ Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifische
 ### <a name="file-based-data-stores"></a>Dateibasierte Datenspeicher
 
 * **Durchschnittliche Größe und Anzahl von Dateien:** Die Kopieraktivität überträgt Daten als einzelne Dateien. Aufgrund der Bootstrap-Phase für die einzelnen Dateien ist der Gesamtdurchsatz bei gleicher zu verschiebender Datenmenge geringer, wenn die Daten nicht aus einer geringen Anzahl großer Dateien, sondern aus zahlreichen kleinen Dateien bestehen. Kombinieren Sie kleine Dateien daher möglichst zu größeren Dateien, um einen höheren Durchsatz zu erzielen.
-* **Dateiformat und Komprimierung:** Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
+* **Dateiformat und Komprimierung**: Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
 
 ### <a name="relational-data-stores"></a>Relationale Datenspeicher
 
-* **Datenmuster:** Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
-* **Abfrage oder gespeicherte Prozedur:** Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
+* **Datenmuster**: Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
+* **Abfrage oder gespeicherte Prozedur**: Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
 
 ## <a name="considerations-for-the-sink"></a>Hinweise zur Senke
 
@@ -300,12 +303,12 @@ Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifische
 
 ### <a name="file-based-data-stores"></a>Dateibasierte Datenspeicher
 
-* **Kopierverhalten**: Wenn Sie Daten aus einem anderen dateibasierten Datenspeicher kopieren, stehen über die **copyBehavior**-Eigenschaft drei Optionen für die Kopieraktivität zur Verfügung: Das Beibehalten oder Abflachen der Hierarchie verursacht nur einen geringen oder gar keinen Zusatzaufwand. Das Zusammenführen von Dateien ist hingegen mit einem gesteigerten Zusatzaufwand verbunden.
-* **Dateiformat und Komprimierung:** Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
+* **Kopierverhalten:** Wenn Sie Daten aus einem anderen dateibasierten Datenspeicher kopieren, stehen über die **copyBehavior**-Eigenschaft drei Optionen für die Kopieraktivität zur Verfügung. Das Beibehalten oder Abflachen der Hierarchie verursacht nur einen geringen oder gar keinen Zusatzaufwand. Das Zusammenführen von Dateien ist hingegen mit einem gesteigerten Zusatzaufwand verbunden.
+* **Dateiformat und Komprimierung**: Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
 
 ### <a name="relational-data-stores"></a>Relationale Datenspeicher
 
-* **Kopierverhalten**: Daten werden von der Kopieraktivität abhängig von den für **sqlSink** konfigurierten Eigenschaften auf unterschiedliche Weise in die Zieldatenbank geschrieben.
+* **Kopierverhalten:** Daten werden von der Kopieraktivität abhängig von den für **sqlSink** konfigurierten Eigenschaften auf unterschiedliche Weise in die Zieldatenbank geschrieben.
   * Standardmäßig verwendet der Datenverschiebungsdienst die API für Massenkopieren, um Daten im Anfügemodus einzufügen. Damit wird die beste Leistung erzielt.
   * Wenn Sie in der Senke eine gespeicherte Prozedur konfigurieren, wendet die Datenbank die Daten nicht mittels Massenladen, sondern zeilenweise an. Dadurch verschlechtert sich die Leistung erheblich. Bei umfangreichen Datasets empfiehlt sich daher die Verwendung der Eigenschaft **preCopyScript**.
   * Wenn Sie die Eigenschaft **preCopyScript** für jede Kopieraktivitätsausführung konfigurieren, löst der Dienst das Skript aus, und Sie fügen die Daten über die API für Massenkopieren ein. Beispiel: Um die gesamte Tabelle mit den neuesten Daten zu überschreiben, können Sie zunächst ein Skript zum Löschen aller Datensätze angeben und dann die neuen Daten durch Massenladen aus der Quelle einfügen.
@@ -338,7 +341,7 @@ Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopierakti
 
 **Codec**: Jeder Komprimierungscodec hat seine Vorteile. BZIP2 bietet etwa den geringsten Durchsatz, im Gegenzug aber die beste Hive-Abfrageleistung, da sich dieser Typ für die Verarbeitung aufteilen lässt. GZIP ist die ausgewogenste Option und wird am häufigsten verwendet. Entscheiden Sie sich für den Codec, der am besten für Ihr End-to-End-Szenario geeignet ist.
 
-**Ebene:** Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
+**Ebene**: Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
 
 **Hinweis**: Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. das [gestaffelte Kopieren](#staged-copy) mit aktivierter Komprimierung. einen Blobzwischenspeicher mit Komprimierung.
 
@@ -360,28 +363,28 @@ Seien Sie vorsichtig bei der Anzahl von Datasets und Kopieraktivitäten, für Da
 
 **Szenario:** Es wird eine Pipeline erstellt, um Daten aus einer lokalen SQL Server-Instanz im CSV-Format in Blob Storage zu kopieren. Zur Beschleunigung des Kopierauftrags sollen die CSV-Dateien im BZIP2-Format komprimiert werden.
 
-**Test und Analyse:** Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
+**Test und Analyse**: Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
 
-**Leistungsanalyse und -optimierung:** Zur Behebung des Leistungsproblems sehen wir uns zunächst einmal an, wie die Daten verarbeitet und verschoben werden:
+**Leistungsanalyse und -optimierung**: Zur Behebung des Leistungsproblems sehen wir uns zunächst einmal an, wie die Daten verarbeitet und verschoben werden.
 
 1. **Lesen der Daten**: Integration Runtime stellt eine Verbindung mit SQL Server her und sendet die Abfrage. SQL Server sendet daraufhin den Datenstrom über das Intranet an Integration Runtime.
-2. **Serialisieren und Komprimieren der Daten:**: Integration Runtime serialisiert den Datenstrom im CSV-Format und komprimiert die Daten zu einem BZIP2-Datenstrom.
-3. **Schreiben der Daten**: Integration Runtime lädt den BZIP2-Datenstrom über das Internet in den Blob-Speicher hoch.
+2. **Serialisieren und Komprimieren der Daten**: Integration Runtime serialisiert den Datenstrom im CSV-Format und komprimiert die Daten zu einem BZIP2-Datenstrom.
+3. **Schreiben der Daten**: Integration Runtime lädt den BZIP2-Datenstrom über das Internet in Blob Storage hoch.
 
-Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und verschoben: SQL Server -> LAN-> Integration Runtime > WAN -> Blob-Speicher. **Die Gesamtleistung wird durch den minimalen Durchsatz der gesamten Pipeline begrenzt.**
+Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und verschoben: SQL Server -> LAN-> Gateway > WAN -> Blob Storage. **Die Gesamtleistung wird durch den minimalen Durchsatz der gesamten Pipeline begrenzt.**
 
 ![Datenfluss](./media/copy-activity-performance/case-study-pic-1.png)
 
 Der Leistungsengpass kann auf folgende Faktoren zurückzuführen sein:
 
-* **Quelle:** SQL Server selbst hat aufgrund einer hohen Auslastung einen geringen Durchsatz.
+* **Quelle**: SQL Server selbst hat aufgrund einer hohen Auslastung einen geringen Durchsatz.
 * **Selbstgehostete Integration Runtime-Infrastruktur**:
   * **LAN**: Integration Runtime ist weit vom SQL Server-Computer entfernt, und es wird eine Verbindung mit geringer Bandbreite verwendet.
   * **Integration Runtime**: Integration Runtime hat das Auslastungslimit erreicht, um die folgenden Vorgänge durchzuführen:
-    * **Serialisierung:** Der Datenstrom lässt sich nur mit geringem Durchsatz in das CSV-Format serialisieren.
-    * **Komprimierung:** Sie haben sich für einen langsamen Komprimierungscodec entschieden – etwa für BZIP2 (2,8 MB/s mit Core i7).
+    * **Serialisierung**: Der Datenstrom lässt sich nur mit geringem Durchsatz in das CSV-Format serialisieren.
+    * **Komprimierung**: Sie haben sich für einen langsamen Komprimierungscodec entschieden (z. B. für BZIP2, das 2,8 MB/s mit Core i7 entspricht).
   * **WAN**: Zwischen dem Unternehmensnetzwerk und Ihren Azure-Diensten steht nur eine geringe Bandbreite zur Verfügung. (Beispiele: T1 = 1,544 KBit/s; T2 = 6,312 KBit/s).
-* **Senke:** Der Durchsatz von Blob Storage ist gering. (Dieses Szenario ist eher unwahrscheinlich, da das entsprechende SLA mindestens 60 MB/s garantiert.)
+* **Senke**: Der Durchsatz von Blob Storage ist gering. (Dieses Szenario ist eher unwahrscheinlich, da das entsprechende SLA mindestens 60 MB/s garantiert.)
 
 In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die gesamte Pipeline. Dieser Engpass lässt sich möglicherweise durch einen Wechsel zum GZIP-Komprimierungscodec beheben.
 
@@ -392,9 +395,9 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 * Azure Storage (einschließlich Blob Storage und Table Storage): [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/common/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/common/storage-performance-checklist.md)
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
 * Azure SQL Data Warehouse: Die Leistung wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
-* Azure Cosmos DB: [Leistungsstufen in Azure Cosmos DB](../cosmos-db/performance-levels.md)
-* Lokale SQL Server-Instanz: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
-* Lokaler Dateiserver: [Performance Tuning for File Servers](https://msdn.microsoft.com/library/dn567661.aspx)
+* Azure Cosmos DB: [Leistungsebenen in Azure Cosmos DB](../cosmos-db/performance-levels.md)
+* Lokaler SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
+* Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:

@@ -7,13 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 450eac3613df18997c5b0f9189555555da20cfcf
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585398"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433088"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor: Einstellung der APIs des klassischen Bereitstellungsmodells für Metriken und Autoskalierung
 
@@ -25,7 +24,7 @@ Die gleichen Vorgänge werden seit über einem Jahr durch eine Reihe von Azure R
 
 Wenn Sie Autoskalierung über das Azure-Portal, das [neue Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), PowerShell, die CLI oder Resource Manager-Vorlagen verwalten, ist keine Aktion erforderlich.  
 
-Wenn Sie Metriken über das Azure-Portal oder über verschiedene [Partnerüberwachungsdienste](../../monitoring-and-diagnostics/monitoring-partners.md) nutzen, ist keine Aktion erforderlich. Microsoft arbeitet mit den Überwachungspartnern zusammen, um zu den neuen APIs zu migrieren.
+Wenn Sie Metriken über das Azure-Portal oder über verschiedene [Partnerüberwachungsdienste](../../azure-monitor/platform/partners.md) nutzen, ist keine Aktion erforderlich. Microsoft arbeitet mit den Überwachungspartnern zusammen, um zu den neuen APIs zu migrieren.
 
 ## <a name="who-is-affected"></a>Wer ist betroffen?
 
@@ -76,7 +75,7 @@ Es gibt keine direkten Auswirkungen auf Ihre Azure-Dienste oder deren Workloads.
 
 Jeder Aufruf der oben aufgeführten klassischen APIs schlägt fehl und gibt Fehlermeldungen ähnlich den folgenden zurück:
 
-Für Autoskalierung: *Diese API ist veraltet. Verwenden Sie das Azure-Portal, das Azure Monitor SDK, PowerShell, die CLI oder Resource Manager-Vorlagen zum Verwalten von Einstellungen für Autoskalierung*.  
+Für die automatische Skalierung: *Diese API ist veraltet. Verwenden Sie das Azure-Portal, das Azure Monitor SDK, PowerShell, die CLI oder Resource Manager-Vorlagen zum Verwalten von Einstellungen für Autoskalierung*.  
 
 Für Metriken: *Diese API ist veraltet. Verwenden Sie das Azure-Portal, das Azure Monitor SDK, PowerShell oder die CLI zum Abfragen von Metriken*.
 

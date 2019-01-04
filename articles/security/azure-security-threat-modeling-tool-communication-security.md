@@ -1,6 +1,6 @@
 ---
 title: Kommunikationssicherheit – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: jegeib
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247380"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013184"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -34,7 +34,7 @@ ms.locfileid: "51247380"
 | **Mobiler Client** | <ul><li>[Implementieren Sie das Anheften von Zertifikaten.](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[Aktivieren Sie den sicheren HTTPS-Transportkanal.](#https-transport)</li><li>[WCF: Legen Sie die Schutzebene für die Nachrichtensicherheit auf „EncryptAndSign“ fest.](#message-protection)</li><li>[WCF: Führen Sie den WCF-Dienst mit einem Konto mit möglichst wenigen Berechtigungen aus.](#least-account-wcf)</li></ul> |
 | **Web-API** | <ul><li>[Erzwingen Sie, dass der gesamte an Web-APIs gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#webapi-https)</li></ul> |
-| **Azure Redis Cache** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Redis Cache über SSL abgewickelt wird.](#redis-ssl)</li></ul> |
+| **Azure Cache for Redis** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Cache for Redis über SSL abgewickelt wird.](#redis-ssl)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Schützen Sie die Kommunikation zwischen Gerät und zwischengeschaltetem Gateway.](#device-field)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Schützen Sie die Kommunikation zwischen Gerät und Cloudgateway mithilfe von SSL/TLS.](#device-cloud)</li></ul> |
 
@@ -372,16 +372,16 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a id="redis-ssl"></a>Stellen Sie sicher, dass die Kommunikation mit Azure Redis Cache über SSL abgewickelt wird.
+## <a id="redis-ssl"></a>Stellen Sie sicher, dass die Kommunikation mit Azure Cache for Redis über SSL abgewickelt wird.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Komponente**               | Azure Redis Cache | 
+| **Komponente**               | Azure Cache for Redis | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [Wann sollte ich den Nicht-SSL-Port für die Verbindungsherstellung mit Redis verwenden?](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **Schritte** | Der Redis-Server bietet keine integrierte SSL-Unterstützung, Azure Redis Cache hingegen schon. Wenn Sie eine Verbindung mit Azure Redis Cache herstellen und Ihr Client SSL unterstützt (z. B. StackExchange.Redis), dann sollten Sie SSL verwenden. Bei neuen Azure Redis Cache-Instanzen ist der Nicht-SSL-Port standardmäßig deaktiviert. Die sicheren Standardeinstellungen sollten nur geändert werden, wenn Redis-Clients auf SSL-Unterstützung angewiesen sind. |
+| **Schritte** | Der Redis-Server bietet keine integrierte SSL-Unterstützung, Azure Cache for Redis dagegen schon. Wenn Sie eine Verbindung mit Azure Cache for Redis herstellen und Ihr Client SSL unterstützt (wie etwa StackExchange.Redis), sollten Sie SSL verwenden. Bei neuen Azure Cache for Redis-Instanzen ist der SSL-fremde Port standardmäßig deaktiviert. Die sicheren Standardeinstellungen sollten nur geändert werden, wenn Redis-Clients auf SSL-Unterstützung angewiesen sind. |
 
 Redis ist für den Zugriff durch vertrauenswürdige Clients in vertrauenswürdigen Umgebungen konzipiert. Es empfiehlt sich daher in der Regel nicht, die Redis-Instanz direkt dem Internet auszusetzen (oder ganz allgemein einer Umgebung, in der nicht vertrauenswürdige Clients direkt auf den Redis-TCP-Port oder UNIX-Socket zugreifen können). 
 

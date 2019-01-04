@@ -2,18 +2,18 @@
 title: Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
 description: Befehle und Supportinformationen zur Durchführung eines Upgrades für Ihren Sicherungstresor in Azure auf einen Recovery Services-Tresor.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 431ca75a653b93342b61a9b39dc42a93270519f1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228520"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880045"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
 
@@ -37,7 +37,7 @@ Verwenden Sie die Referenz zu PowerShell-Cmdlets für das [Resource Manager-Bere
 
 Überprüfen Sie vor dem Upgrade Ihrer Sicherungstresore auf Recovery Service-Tresore folgende Punkte.
 
-- **Minimale Agent-Version:** Stellen Sie für das Upgrade Ihres Tresors sicher, dass der MARS-Agent (Microsoft Azure Recovery Services) mindestens die Version 2.0.9083.0 aufweist. Wenn der MARS-Agent älter ist als 2.0.9083.0, aktualisieren Sie den Agent, bevor Sie den Upgradevorgang starten.
+- **Agent-Mindestversion**: Stellen Sie für das Upgrade Ihres Tresors sicher, dass der Microsoft Azure Recovery Services-Agent (MARS-Agent) mindestens die Version 2.0.9083.0 aufweist. Wenn der MARS-Agent älter ist als 2.0.9083.0, aktualisieren Sie den Agent, bevor Sie den Upgradevorgang starten.
 - **Instanzbasiertes Abrechnungsmodell**: Recovery Service-Tresore unterstützen nur das instanzbasierte Abrechnungsmodell. Wenn Sie einen Sicherungstresor mit dem veralteten speicherbasierten Abrechnungsmodell verwenden, konvertieren Sie das Abrechnungsmodell beim Upgrade.
 - **Keine Konfigurationsvorgänge für laufende Sicherungen**: Während des Upgrades ist der Zugriff auf die Verwaltungsebene eingeschränkt. Schließen Sie alle Aktionen auf Verwaltungsebene ab, und starten Sie dann das Upgrade.
 
@@ -81,7 +81,7 @@ Das PowerShell-Skript fordert Sie zur Eingabe Ihrer Anmeldeinformationen auf. Ge
 Wenn Sie Ihre Azure-Anmeldeinformationen eingegeben haben, überprüft Azure, ob Ihre Umgebung die folgenden Voraussetzungen erfüllt:
 
 - **Minimale Agent-Version:** Für Upgrades von Sicherungstresoren auf Recovery Services-Tresore muss der MARS-Agent mindestens die Version 2.0.9083.0 aufweisen. Wenn Elemente bei einem Sicherungstresor mit einem Agent registriert sind, der eine ältere Version als 2.0.9083.0 aufweist, führt die Überprüfung der Voraussetzungen zu einem Fehler. Wenn die Überprüfung der Voraussetzungen fehlschlägt, aktualisieren Sie den Agent, und wiederholen Sie das Upgrade des Tresors. Sie können die neueste Version des Agent [hier http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) herunterladen.
-- **Laufende Konfigurationsaufträge**: Wenn ein Benutzer einen Auftrag für einen Sicherungstresor konfiguriert, für den ein Upgrade durchgeführt werden soll, oder ein Element registriert, schlägt die Überprüfung der Voraussetzungen fehl. Schließen Sie die Konfiguration ab, oder stellen Sie die Registrierung des Elements fertig, und starten Sie dann den Vorgang für das Tresorupgrade.
+- **Laufende Konfigurationsaufträge**: Wenn ein Benutzer einen Auftrag für einen Sicherungstresor konfiguriert, für den ein Upgrade durchgeführt werden soll, oder ein Element registriert, schlägt die Voraussetzungsüberprüfung fehl. Schließen Sie die Konfiguration ab, oder stellen Sie die Registrierung des Elements fertig, und starten Sie dann den Vorgang für das Tresorupgrade.
 - **Speicherbasiertes Abrechnungsmodell**: Recovery Services-Tresore unterstützen das instanzbasierte Abrechnungsmodell. Wenn Sie das Tresorupgrade in einem Sicherungstresor durchführen, der das speicherbasierte Abrechnungsmodell verwendet, werden Sie aufgefordert, ein Upgrade für Ihr Abrechnungsmodell zusammen mit dem Tresor durchzuführen. Anderenfalls können Sie zuerst Ihr Abrechnungsmodell aktualisieren, und anschließend das Tresorupgrade durchführen.
 - Identifizieren Sie eine Ressourcengruppe für den Recovery Services-Tresor. Um von den Resource Manager-Bereitstellungsfunktionen profitieren zu können, müssen Sie einen Recovery Services-Tresor in eine Ressourcengruppe einfügen. Wenn Sie nicht wissen, welche Ressourcengruppe Sie verwenden sollen, geben Sie einen Namen an. Die Ressourcengruppe wird dann automatisch beim Upgradevorgang für Sie erstellt. Beim Upgradevorgang wird der Tresor auch mit der neuen Ressourcengruppe verknüpft.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959986"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274563"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -112,7 +112,6 @@ Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden
 
 Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. Es kann auch vorkommen, dass Sie nicht alle Ihre Geräte automatisch registrieren möchten. In diesem Fall finden Sie weitere Informationen unter [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md).
 
-
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Steuern von Azure AD Hybrid Join für Ihre Geräte
 
 Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. In einigen Fällen sollten Sie nicht alle Ihre Geräte automatisch registrieren. Dies gilt beispielsweise während des anfänglichen Rollouts, um sicherzustellen, dass alles wie erwartet funktioniert.
@@ -130,9 +129,9 @@ Sie können Azure AD-Hybrideinbindungen für die folgenden Szenarien konfigurier
 
 Wenn Ihre Umgebung verwaltete Domänen umfasst, unterstützt die Azure AD-Hybrideinbindung:
 
-- Passthroughauthentifizierung mit nahtlosem einmaligen Anmelden 
+- Passthrough-Authentifizierung (PTA)
 
-- Kennworthashsynchronisierung mit nahtlosem einmaligen Anmelden (Single Sign-On, SSO) 
+- Kennworthashsynchronisierung (Password Hash Sync, PHS)
 
 Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten können Sie den Konfigurationsprozess erheblich vereinfachen. Weitere Informationen finden Sie unter
 
@@ -145,7 +144,22 @@ Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfigur
  Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](../device-management-hybrid-azuread-joined-devices-setup.md). 
 
 
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Unterstützung für alternative Anmelde-IDs in Azure AD Hybrid Join
 
+Unter Windows 10 bietet Azure AD Hybrid Join eingeschränkte Unterstützung für [alternative Anmelde-IDs](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) basierend auf dem Typ der alternativen Anmelde-ID, der [Authentifizierungsmethode](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version. Es gibt zwei Typen von alternativen Anmelde-IDs, die in Ihrer Umgebung vorhanden sein können.
+
+ - Routingfähige alternative Anmelde-ID: Eine routingfähige alternative Anmelde-ID verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, sind „contoso.org“ und „contoso.co.uk“ gültige Domänen, die Contoso gehören und [in Azure AD überprüft werden](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain).
+ 
+ - Nicht routingfähige alternative Anmelde-ID: Eine nicht routingfähige alternative Anmelde-ID verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, stellt „contoso.local“ keine überprüfbare Domäne im Internet dar, wird aber im Netzwerk von Contoso verwendet.
+ 
+Die folgende Tabelle enthält Details zur Unterstützung für diese alternativen Anmelde-IDs in Azure AD Hybrid Join unter Windows 10
+
+|Typ der alternativen Anmelde-ID|Domänentyp|Windows 10-Version|BESCHREIBUNG|
+|-----|-----|-----|-----|
+|Routingfähig|Im Verbund |Version 1703|Allgemein verfügbar|
+|Routingfähig|Verwaltet|Version 1709|Derzeit in der privaten Vorschau. Azure AD SSPR wird nicht unterstützt. |
+|Nicht routingfähig|Im Verbund|Version 1803|Allgemein verfügbar|
+|Nicht routingfähig|Verwaltet|Nicht unterstützt||
 
 
 

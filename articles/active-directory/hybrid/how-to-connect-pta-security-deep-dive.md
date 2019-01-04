@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284879"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185068"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -50,10 +50,10 @@ Dies sind die wichtigsten Sicherheitsaspekte des Features:
 
 Allgemeine Informationen zur Betriebs-, Dienst- und Datensicherheit von Azure AD finden Sie im [Trust Center](https://azure.microsoft.com/support/trust-center/). Die folgenden Komponenten sind beteiligt, wenn Sie Passthrough-Authentifizierung für Benutzeranmeldungen verwenden:
 - **Azure AD STS**: Ein zustandsloser Sicherheitstokendienst (Security Token Service, STS) zum Verarbeiten von Anmeldeanforderungen und Ausstellen von Sicherheitstoken für Browser, Clients oder Dienste von Benutzern nach Bedarf.
-- **Azure Service Bus**: Ermöglicht die cloudfähige Kommunikation mit Messagingfunktionen für Unternehmen und die Weiterleitung der Kommunikation, um Sie bei der Verbindungsherstellung für Ihre lokalen Lösungen mit der Cloud zu unterstützen.
-- **Azure AD Connect-Authentifizierungs-Agent**: Eine lokale Komponente, die auf Anforderungen zur Kennwortvalidierung lauscht und darauf antwortet.
-- **Azure SQL-Datenbank**: Enthält Informationen zu den Authentifizierungs-Agents Ihrer Mandanten, wozu auch deren Metadaten und Verschlüsselungsschlüssel gehören.
-- **Active Directory (AD)**: Lokale Active Directory-Instanz, in der Ihre Benutzerkonten und die dazugehörigen Kennwörter gespeichert sind.
+- **Azure Service Bus**: Ermöglicht die cloudfähige Kommunikation mit Messagingfunktionen für Unternehmen und die Weiterleitung der Kommunikation, um Sie beim Verbinden Ihrer lokalen Lösungen mit der Cloud zu unterstützen.
+- **Azure AD Connect-Authentifizierungs-Agent**: Eine lokale Komponente, die Kennwortüberprüfungsanforderungen überwacht und darauf reagiert.
+- **Azure SQL-Datenbank**: Enthält Informationen zu den Authentifizierungs-Agents Ihrer Mandanten, einschließlich der zugehörigen Metadaten und Verschlüsselungsschlüssel.
+- **Active Directory**: Lokale Active Directory-Instanz, in der Ihre Benutzerkonten und die zugehörigen Kennwörter gespeichert sind.
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Installation und Registrierung der Authentifizierungs-Agents
 
@@ -97,8 +97,8 @@ Die Authentifizierungs-Agents führen die folgenden Schritte aus, um sich bei Az
 5. Azure AD signiert dann ein Zertifikat zur digitalen Identität und sendet dieses Zertifikat an den Authentifizierungs-Agent.
     - Die Stammzertifizierungsstelle (Stamm-CA) in Azure AD wird verwendet, um das Zertifikat zu signieren. 
 
-     >[!NOTE]
-     > Diese Zertifizierungsstelle ist _nicht_ im Store mit den vertrauenswürdigen Stammzertifizierungsstellen von Windows enthalten.
+      > [!NOTE]
+      > Diese Zertifizierungsstelle ist _nicht_ im Store mit den vertrauenswürdigen Stammzertifizierungsstellen von Windows enthalten.
     - Die Zertifizierungsstelle wird nur von der Passthrough-Authentifizierung verwendet. Die Zertifizierungsstelle wird verwendet, um CSRs während der Registrierung eines Authentifizierungs-Agents zu signieren.
     -  Keiner der anderen Azure AD-Dienste verwendet diese Zertifizierungsstelle.
     - Der Antragsteller des Zertifikats (Distinguished Name, DN) ist auf Ihre Mandanten-ID festgelegt. Dieser DN ist eine GUID, mit der Ihr Mandant eindeutig identifiziert wird. Dieser DN beschränkt die Verwendung des Zertifikats auf Ihren Mandanten.
@@ -207,11 +207,11 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Aktuelle Einschränkungen:](how-to-connect-pta-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
-- [Schnellstart:](how-to-connect-pta-quick-start.md) Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
+- [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Informieren Sie sich darüber, welche Szenarien unterstützt werden.
+- [Schnellstart](how-to-connect-pta-quick-start.md): Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD.
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://aka.ms/adfstoptadpdownload): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
-- [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
-- [Funktionsweise](how-to-connect-pta-how-it-works.md): Grundlegende Funktionsweise der Passthrough-Authentifizierung von Azure AD
-- [Häufig gestellte Fragen](how-to-connect-pta-faq.md): Antworten auf häufig gestellte Fragen
-- [Problembehandlung](tshoot-connect-pass-through-authentication.md): Informationen zum Beheben von allgemeinen Problemen, die es bei der Passthrough-Authentifizierung geben kann
-- [Nahtloses einmaliges Anmelden mit Azure AD](how-to-connect-sso.md): Informationen zu dieser Ergänzungsfunktion
+- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren Sie die Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen.
+- [Funktionsweise](how-to-connect-pta-how-it-works.md): Lernen Sie die grundlegende Funktionsweise der Passthrough-Authentifizierung von Azure AD kennen.
+- [Häufig gestellte Fragen](how-to-connect-pta-faq.md): Finden Sie Antworten auf häufig gestellte Fragen.
+- [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.
+- [Nahtloses SSO mit Azure AD](how-to-connect-sso.md): Hier finden Sie Informationen zu dieser Ergänzungsfunktion.

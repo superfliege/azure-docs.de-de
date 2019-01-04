@@ -1,5 +1,5 @@
 ---
-title: Canary-Release mit Vamp im Azure-DC/OS-Cluster
+title: (VERALTET) Canary-Release mit Vamp im Azure-DC/OS-Cluster
 description: 'Gewusst wie: Verwendung von VAMP mit Canary-Releasediensten und Anwendung von intelligenten Datenverkehrsfiltern in einem Azure Container Service-DC/OS-Cluster'
 services: container-service
 author: gggina
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 116f8ad1760f8e61c70b34d614a0265d11e3ae65
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975855"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002072"
 ---
-# <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
+# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(VERALTET) Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 In dieser exemplarischen Vorgehensweise richten wir VAMP in Azure Container Service mit einem DC/OS-Cluster ein. Wir führen ein Canary-Releasing für den VAMP-Demodienst „sava“ durch, und beheben dann eine Inkompatibilität des Diensts mit Firefox durch intelligente Datenverkehrsfilter. 
 

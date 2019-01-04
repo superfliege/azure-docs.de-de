@@ -1,12 +1,11 @@
 ---
-title: Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen | Microsoft Docs
+title: 'FAQ zu Cortana Intelligence-Wettbewerben: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Häufig gestellte Fragen zu Microsoft Cortana Intelligence-Wettbewerben.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=haining, author=hning86)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 8782af26056f8341ee68ed87f003bc585e0c4e69
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265102"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268902"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
 **Was sind Cortana Intelligence-Wettbewerbe?**
@@ -56,7 +55,7 @@ Die Wettbewerbsteilnehmer verwenden Azure Machine Learning Studio, ein cloudbasi
 
 **Muss ich ein Datenexperte sein, um teilnehmen zu dürfen?**
 
- Nein. Wir ermutigen Datenbegeisterte, jeden Data Science-Interessierten und andere angehende Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Zur Zielgruppe gehören:
+Nein. Wir ermutigen Datenbegeisterte, jeden Data Science-Interessierten und andere angehende Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Zur Zielgruppe gehören:
 
 * **Datenentwickler**, **Datenexperten**, **BI**- und **Analyseexperten**: Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind
 * **Data Stewards**: Personen, die sich mit den Daten auskennen und wissen, was sie bedeuten und welchem Zweck sie dienen
@@ -70,7 +69,7 @@ Die Wettbewerbsplattform unterstützt derzeit keine Teilnahme als Team. Jeder We
 
 Die Teilnahme an Wettbewerben ist kostenlos. Jedoch ist für die Teilnahme der Zugriff auf einen Azure Machine Learning-Arbeitsbereich erforderlich. Sie können einen kostenlosen Arbeitsbereich ohne eine Kreditkarte erstellen, indem Sie sich einfach mit einem gültigen Microsoft- oder Office 365-Konto anmelden. Wenn Sie bereits Azure- oder Cortana Intelligence Suite-Kunde sind, können Sie innerhalb desselben Azure-Abonnements einen Standardarbeitsbereich erstellen und verwenden. Auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing) können Sie ein Azure-Abonnement erwerben. Beachten Sie, dass die üblichen Gebühren anfallen, wenn Sie einen Standardarbeitsbereich zum Erstellen von Experimenten verwenden. Weitere Informationen finden Sie unter [Machine Learning Studio – Preise](https://azure.microsoft.com/pricing/details/machine-learning/). 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 **Was sind öffentliche und private Bewertungen?**
 
@@ -107,7 +106,7 @@ In einem solchen Fall wird nach dem Zeitpunkt der Einreichung entschieden. Der f
 
 **Kann ich für die Teilnahme einen Gast-Arbeitsbereich verwenden?**
 
- Nein. Sie müssen für die Teilnahme einen kostenlosen oder einen Standardarbeitsbereich verwenden. Sie können das Starterexperiment des Wettbewerbs in einem Gast-Arbeitsbereich öffnen, aber es ist nicht möglich, über diesen Arbeitsbereich einen gültigen Beitrag für die Einreichung zu erstellen. 
+Nein. Sie müssen für die Teilnahme einen kostenlosen oder einen Standardarbeitsbereich verwenden. Sie können das Starterexperiment des Wettbewerbs in einem Gast-Arbeitsbereich öffnen, aber es ist nicht möglich, über diesen Arbeitsbereich einen gültigen Beitrag für die Einreichung zu erstellen. 
 
 **Kann ich für die Teilnahme einen Arbeitsbereich in jeder beliebigen Azure-Region verwenden?**
 

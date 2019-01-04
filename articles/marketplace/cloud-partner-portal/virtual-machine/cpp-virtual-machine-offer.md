@@ -12,23 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3682d18fb849b2d851bae0986f9e61f216aaf2c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d51fffad897ba2658c7bee51c26e7e3be9f10e88
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639133"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188757"
 ---
 # <a name="virtual-machine-offer"></a>VM-Angebot
 
-Dieser Abschnitt enthält eine Übersicht über die Veröffentlichung eines virtuellen Computers und ist als Herausgeberleitfaden für den [Azure Marketplace](https://azuremarketplace.microsoft.com) konzipiert.  Aus diesem Grund ist er in folgende Hauptbereiche unterteilt:
+|    |    |
+|-----------------------------------------------------------------|------------------------------------------|
+| In diesem Abschnitt wird erläutert, wie Sie ein neues VM-Angebot im [Azure Marketplace](https://azuremarketplace.microsoft.com) veröffentlichen. Es werden sowohl Windows- als auch Linux-basierte virtuelle Computer unterstützt, wobei jeder Computer eine virtuelle Festplatte (VHD) mit Betriebssystem und null oder mehr Daten-VHDs umfasst. | ![Symbol für virtuellen Computer](./media/virtual-machine-icon.png)  |
 
-- [Voraussetzungen:](./cpp-prerequisites.md) Listet die technischen und geschäftlichen Anforderungen auf, die zum Erstellen oder Veröffentlichen eines VM-Angebots erfüllt sein müssen.
-- [Erstellen eines VM-Angebots:](./cpp-create-offer.md) Hier werden die Schritte aufgelistet, die ausgeführt werden müssen, um über das [Cloud-Partnerportal](https://cloudpartner.azure.com) ein neues VM-Angebot zu erstellen.
-- [Erstellen technischer VM-Ressourcen:](./cpp-create-technical-assets.md) Hier erfahren Sie, wie Sie die technischen Ressourcen für eine VM-Lösung erstellen und dieses Paket als VM-Angebot im Azure Marketplace konfigurieren.
-- [Veröffentlichen des VM-Angebots](./cpp-publish-offer.md) Hier erfahren Sie, wie Sie das Angebot zur Veröffentlichung an den Azure Marketplace übermitteln.
+
+## <a name="publishing-overview"></a>Übersicht über die Veröffentlichung
+
+Das folgende Video, [Optimize Your Azure Marketplace Offer](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), gibt einen umfassenden Überblick über den Azure Marketplace. Dazu gehören Informationen, wie in diesem Marketplace veröffentlicht wird (über eine Lösung für virtuelle Computer), wie die Bedienbarkeit Ihrer Produktseite und, optional, die Testversionsoberfläche optimiert werden können, wie Benutzerleads generiert werden und wie Sie diese nutzen sowie die Kundenbindung optimieren können.
+
+> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026]
 
 
 ## <a name="vm-publishing-process-flow"></a>Ablauf des VM-Veröffentlichungsprozesses

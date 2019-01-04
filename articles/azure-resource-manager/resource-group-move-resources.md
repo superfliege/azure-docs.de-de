@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15ec028046b7c2b21f1892c460d53c73499680fe
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c589d1a11903f761fa791f36014fe235c1973514
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312536"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386899"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -35,7 +35,7 @@ Sie können den Speicherort der Ressource nicht ändern. Wenn Sie ein Ressource 
 
 ## <a name="checklist-before-moving-resources"></a>Checkliste vor dem Verschieben von Ressourcen
 
-Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen: Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
+Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt werden. Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
 
 1. Quell- und Zielabonnement müssen im selben [Azure Active Directory-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md) vorhanden sein. Um zu überprüfen, ob beide Abonnements die gleiche Mandanten-ID aufweisen, verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle.
 
@@ -58,7 +58,7 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   * [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md)
   * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde.
+1. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieser Fehler kann auftreten, wenn eine Ressource in ein neues Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde.
 
   Verwenden Sie für PowerShell die folgenden Befehle zum Abrufen des Registrierungsstatus:
 
@@ -93,7 +93,7 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
 
 1. Überprüfen Sie vor dem Verschieben der Ressource die Abonnementkontingente für das Abonnement, zu dem Sie die Ressourcen verschieben. Wenn das Verschieben der Ressourcen bedeutet, dass das Abonnement seine Einschränkungen überschreitet, müssen Sie prüfen, ob Sie eine Erhöhung des Kontingents anfordern können. Eine vollständige Liste zu diesen Einschränkungen und Informationen zur Anforderung einer Kontingenterhöhung finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
-1. Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschiebevorgänge. Resource Manager gibt bei Versuchen, mehr als 800 Ressourcen in einem einzigen Vorgang zu verschieben, sofort einen Fehler aus. Beim Verschieben von weniger als 800 Ressourcen kann jedoch ebenfalls ein Fehler durch ein Timeout auftreten.
+1. Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschiebevorgänge. Resource Manager gibt sofort einen Fehler aus, wenn ein einziger Vorgang mehr als 800 Ressourcen umfasst. Beim Verschieben von weniger als 800 Ressourcen kann jedoch ebenfalls ein Fehler durch ein Timeout auftreten.
 
 1. Der Dienst muss die Möglichkeit bieten, Ressourcen zu verschieben. Um zu ermitteln, ob die Verschiebung erfolgreich verläuft, [überprüfen Sie Ihre Verschiebungsanforderung](#validate-move). In den nachstehenden Abschnitten in diesem Artikel wird erläutert, welche [Dienste das Verschieben von Ressourcen](#services-that-can-be-moved) ermöglichen und welche [nicht](#services-that-cannot-be-moved).
 
@@ -130,7 +130,7 @@ Mit dem Anforderungstext:
 
 ```json
 {
- "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "resources": ["<resource-id-1>", "<resource-id-2>"],
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
@@ -169,7 +169,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Analysis Services
 * API Management
 * App Service-Apps (Web-Apps) – siehe [App Service-Einschränkungen](#app-service-limitations)
-* App Service-Zertifikate
+* App Service-Zertifikate – siehe [Einschränkungen von App Service Certificate](#app-service-certificate-limitations)
 * Application Insights
 * Automation
 * Azure Active Directory B2C
@@ -215,7 +215,8 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
-* Redis Cache – Wenn die Redis Cache-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
+* Recovery Services-Tresor – Sie müssen für eine private Vorschauversion registriert sein. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
+* Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Scheduler
 * Suchen,
 * Service Bus
@@ -225,7 +226,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Storage – Speicherkonten in verschiedenen Regionen können nicht im selben Vorgang verschoben werden. Stattdessen müssen Sie für jede Region einen separaten Vorgang durchführen.
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
-* SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
+* SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
 * Time Series Insights
 * Traffic Manager
 * Virtual Machines – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations) bei VMs mit verwalteten Datenträgern.
@@ -244,7 +245,6 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Azure-Datenbankmigration
 * Azure Databricks
 * Azure Migrate
-* Batch AI
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
 * Container Instances
 * Container Service
@@ -259,7 +259,6 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Microsoft Genomics
 * NetApp
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
-* Recovery Services-Tresor – Verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
 * SAP HANA in Azure
 * Sicherheit
 * Site Recovery
@@ -309,19 +308,11 @@ Mit dieser Unterstützung können Sie auch Folgendes verschieben:
 * Verwaltete Momentaufnahmen
 * Verfügbarkeitsgruppen mit virtuellen Computern mit verwalteten Datenträgern
 
-Im Folgenden werden Einschränkungen aufgeführt, die noch nicht unterstützt werden:
+Die folgenden Einschränkungen werden noch nicht unterstützt:
 
 * Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
-* Mit Azure Backup konfigurierte virtuelle Computer. Verwenden Sie die folgende Problemumgehung, um diese virtuellen Computer zu verschieben:
-  * Ermitteln Sie den Speicherort Ihres virtuellen Computers.
-  * Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<location of your VM>_1`, z.B. „AzureBackupRG_westus2_1“
-  * Wenn Sie das Azure-Portal verwenden, aktivieren Sie die Option „Ausgeblendete Typen anzeigen“
-  * Wenn Sie PowerShell verwenden, verwenden Sie das Cmdlet `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`
-  * Wenn Sie die CLI (Befehlszeilenschnittstelle) verwenden, verwenden Sie den Befehl `az resource list -g AzureBackupRG_<location of your VM>_1`
-  * Suchen Sie jetzt nach der Ressource mit dem Typ `Microsoft.Compute/restorePointCollections` und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`
-  * Löschen Sie diese Ressource
-  * Nach Abschluss des Löschvorgangs können Sie Ihren virtuellen Computer verschieben
-* VM-Skalierungsgruppen mit dem Lastenausgleich der Standard-SKU oder der öffentlichen IP-Adresse der Standard-SKU können nicht verschoben werden
+* Wenn Ihre VM für die Sicherung konfiguriert ist, finden Sie unter [Einschränkungen von Recovery Services](#recovery-services-limitations) weitere Informationen.
+* Eine Virtual Machine Scale Sets-Instanz mit Load Balancer der Standard-SKU oder einer öffentlichen IP-Adresse der Standard-SKU kann nicht verschoben werden.
 * Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
 
 ## <a name="virtual-networks-limitations"></a>Einschränkungen von virtuellen Netzwerken
@@ -330,23 +321,21 @@ Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige
 
 Um ein mittels Peering verknüpftes virtuelles Netzwerk zu verschieben, müssen Sie zunächst das Peering des virtuellen Netzwerks deaktivieren. Nach der Deaktivierung können Sie das virtuelle Netzwerk verschieben. Aktivieren Sie nach der Verschiebung das Peering des virtuellen Netzwerks wieder.
 
-Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, wenn das virtuelle Netzwerk ein Subnetz mit Navigationslinks für Ressourcen enthält. Beispiel: Wenn eine Redis Cache-Ressource in einem Subnetz bereitgestellt wird, enthält dieses Subnetz einen Navigationslink für die Ressource.
+Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, wenn das virtuelle Netzwerk ein Subnetz mit Navigationslinks für Ressourcen enthält. Beispiel: Wenn eine Azure Cache for Redis-Ressource in einem Subnetz bereitgestellt wird, verfügt dieses Subnetz über einen Navigationslink für die Ressource.
 
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 
-Die Einschränkungen beim Verschieben von App Service-Ressourcen unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben.
-
-Die in diesen Abschnitten beschriebenen Einschränkungen gelten für hochgeladene Zertifikate (nicht für App Service-Zertifikate). App Service-Zertifikate können ohne Einschränkungen in eine neue Ressourcengruppe oder in ein neues Abonnement verschoben werden. Wenn Sie über mehrere Web-Apps verfügen, die das gleiche App Service-Zertifikat verwenden, verschieben Sie zuerst die Web-Apps und dann das Zertifikat.
+Die Einschränkungen beim Verschieben von App Service-Ressourcen unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. Wenn Ihre Web-App ein App Service-Zertifikat verwendet, finden Sie unter [Einschränkungen von App Service Certificate](#app-service-certificate-limitations) weitere Informationen.
 
 ### <a name="moving-within-the-same-subscription"></a>Verschieben innerhalb desselben Abonnements
 
-Beim Verschieben einer Web-App _innerhalb desselben Abonnements_ können Sie die hochgeladenen SSL-Zertifikate nicht verschieben. Allerdings können Sie eine Web-App in die neue Ressourcengruppe verschieben, ohne ihr hochgeladenes SSL-Zertifikat zu verschieben, und die SSL-Funktionalität Ihrer App wird davon nicht beeinträchtigt.
+Beim Verschieben einer Web-App _innerhalb desselben Abonnements_ können SSL-Zertifikate von Drittanbietern nicht verschoben werden. Sie können eine Web-App jedoch in die neue Ressourcengruppe verschieben, ohne das zugehörige SSL-Zertifikat eines Drittanbieters zu verschieben. Die SSL-Funktionalität Ihrer App wird in diesem Fall nicht beeinträchtigt.
 
 Wenn Sie das SSL-Zertifikat mit der Web-App verschieben möchten, gehen Sie folgendermaßen vor:
 
-1. Löschen Sie das hochgeladene Zertifikat aus der Web-App.
+1. Löschen Sie das Zertifikat des Drittanbieters aus der Web-App, bewahren Sie aber eine Kopie des Zertifikats auf.
 2. Verschieben Sie die Web-App.
-3. Laden Sie das Zertifikat in die verschobene Web-App hoch.
+3. Laden Sie das Zertifikat des Drittanbieters in die verschobene Web-App hoch.
 
 ### <a name="moving-across-subscriptions"></a>Abonnementübergreifendes Verschieben
 
@@ -359,6 +348,10 @@ Beim Verschieben einer Web-App _zwischen Abonnements_ gelten die folgenden Einsc
     - App Service-Umgebungen
 - Alle App Service-Ressourcen in der Ressourcengruppe müssen zusammen verschoben werden.
 - App Service-Ressourcen können nur aus der Ressourcengruppe verschoben werden, in der sie ursprünglich erstellt wurden. Wenn eine App Service-Ressource sich nicht mehr in ihrer ursprünglichen Ressourcengruppe befindet, muss sie erst zurück in die ursprüngliche Ressourcengruppe verschoben werden, bevor sie zwischen Abonnements verschoben werden kann.
+
+## <a name="app-service-certificate-limitations"></a>Einschränkungen von App Service Certificate
+
+Sie können Ihr App Service-Zertifikat in eine neue Ressourcengruppe oder ein neues Abonnement verschieben. Wenn Ihr App Service-Zertifikat an eine Web-App gebunden ist, müssen Sie einige Schritte ausführen, bevor Sie die Ressourcen in ein neues Abonnement verschieben. Löschen Sie die SSL-Bindung und das private Zertifikat vor dem Verschieben der Ressourcen aus der Web-App. Das App Service-Zertifikat muss nicht gelöscht werden, nur das private Zertifikat in der Web-App.
 
 ## <a name="classic-deployment-limitations"></a>Einschränkungen bei der klassischen Bereitstellung
 
@@ -446,15 +439,23 @@ Dieser Vorgang kann einige Minuten dauern.
 
 ## <a name="recovery-services-limitations"></a>Einschränkungen von Recovery Services
 
-Das Verschieben von Speicher-, Netzwerk- und Computeressourcen, die dazu dienen, eine Notfallwiederherstellung mit Azure Site Recovery einzurichten, ist nicht möglich.
+Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine private Vorschauversion registrieren. Schreiben Sie an AskAzureBackupTeam@microsoft.com, um die Vorschauversion zu testen.
 
-Angenommen, Sie haben die Replikation Ihrer lokalen Computer in ein Speicherkonto (Storage1) eingerichtet, und möchten, dass der geschützte Computer nach einem Failover zu Azure als virtueller Computer (VM1) angezeigt wird, der an ein virtuelles Netzwerk (Network1) angeschlossen ist. Sie können dann die Azure-Ressourcen „Storage1“, „VM1“ und „Network1“ nicht zwischen Ressourcengruppen im selben Abonnement oder zwischen Abonnements verschieben.
+Derzeit können Sie jeweils einen Recovery Services-Tresor pro Region verschieben. Tresore, die Azure Files, die Azure-Dateisynchronisierung oder SQL auf IaaS-VMs sichern, können nicht verschoben werden. 
 
-So verschieben Sie einen in **Azure Backup** registrierten virtuellen Computer zwischen Ressourcengruppen:
- 1. Halten Sie die Sicherung vorübergehend an, und bewahren Sie Sicherungsdaten auf.
- 2. Verschieben Sie den virtuellen Computer in die Zielressourcengruppe.
- 3. Schützen Sie ihn erneut im gleichen/in einem neuen Tresor. Benutzer können eine Wiederherstellung mithilfe der verfügbaren Wiederherstellungspunkte durchführen, die vor dem Verschiebevorgang erstellt wurden.
-Wenn der Benutzer den gesicherten virtuellen Computer zwischen Abonnements verschiebt, bleiben Schritt 1 und 2 gleich. In Schritt 3 müssen Benutzer den virtuellen Computers in einem neuen Tresor schützen, der im Zielabonnement bereits vorhanden ist oder erstellt wurde. Der Recovery Services-Tresor unterstützt keine abonnementübergreifenden Sicherungen.
+Wenn eine VM nicht zusammen mit dem Tresor verschoben wird, verbleiben die aktuellen VM-Wiederherstellungspunkte bis zu ihrem Ablauf im Tresor. Unabhängig davon, ob die VM mit dem Tresor verschoben wird oder nicht, können Sie die VM anhand des Sicherungsverlaufs im Tresor wiederherstellen.
+
+Der Recovery Services-Tresor unterstützt keine abonnementübergreifenden Sicherungen. Wenn Sie einen Tresor mit VM-Sicherungsdaten abonnementübergreifend verschieben, müssen Sie Ihre VMs in das gleiche Abonnement verschieben und die gleiche Zielressourcengruppe verwenden, um weiterhin Sicherungen durchführen zu können.
+
+Für den Tresor definierte Sicherungsrichtlinien bleiben nach dem Verschieben des Tresors erhalten. Die Berichterstellung und Überwachung müssen nach dem Verschieben erneut für den Tresor eingerichtet werden.
+
+So verschieben Sie eine VM in ein neues Abonnement, ohne den Recovery Services-Tresor zu verschieben:
+
+ 1. Halten Sie die Sicherung vorübergehend an.
+ 2. Verschieben Sie die VMs in das neue Abonnement.
+ 3. Schützen Sie die VMs erneut unter einem neuen Tresor in diesem Abonnement.
+
+Das Verschieben von Speicher-, Netzwerk- und Computeressourcen, die dazu dienen, eine Notfallwiederherstellung mit Azure Site Recovery einzurichten, ist nicht möglich. Angenommen, Sie haben die Replikation Ihrer lokalen Computer in ein Speicherkonto (Storage1) eingerichtet, und möchten, dass der geschützte Computer nach einem Failover zu Azure als virtueller Computer (VM1) angezeigt wird, der an ein virtuelles Netzwerk (Network1) angeschlossen ist. Sie können dann die Azure-Ressourcen „Storage1“, „VM1“ und „Network1“ nicht zwischen Ressourcengruppen im selben Abonnement oder zwischen Abonnements verschieben.
 
 ## <a name="hdinsight-limitations"></a>HDInsight-Einschränkungen
 
@@ -464,7 +465,7 @@ Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zu
 
 ## <a name="search-limitations"></a>Sucheinschränkungen
 
-Sie können nicht mehrere Suchressourcen, die sich in verschiedenen Regionen befinden, gleichzeitig verschieben.
+Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben.
 In diesem Fall müssen Sie sie separat verschieben.
 
 ## <a name="lb-limitations"></a> Load Balancer-Einschränkungen
@@ -479,7 +480,7 @@ Load Balancer der SKU „Standard“ kann nicht verschoben werden.
 
 ## <a name="use-portal"></a>Mithilfe des Portals
 
-Um Ressourcen zu verschieben, wählen Sie die Ressourcengruppe mit diesen Ressourcen und dann die Schaltfläche **Verschieben** aus.
+Um Ressourcen zu verschieben, wählen Sie die Ressourcengruppe mit den jeweiligen Ressourcen aus, und klicken Sie dann auf die Schaltfläche **Verschieben**.
 
 ![Verschieben von Ressourcen](./media/resource-group-move-resources/select-move.png)
 
@@ -499,7 +500,7 @@ Sobald der Vorgang abgeschlossen ist, werden Sie über das Ergebnis informiert.
 
 ## <a name="use-powershell"></a>Verwenden von PowerShell
 
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) . Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden:
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) . Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden.
 
 ```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
@@ -511,7 +512,7 @@ Um Ressourcen in ein neues Abonnement zu verschieben, schließen Sie einen Wert 
 
 ## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden: Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden. Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

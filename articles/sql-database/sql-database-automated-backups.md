@@ -3,7 +3,7 @@ title: Automatische, georedundante Azure SQL-Datenbank-Sicherungen | Microsoft-D
 description: SQL-Datenbank erstellt alle paar Minuten automatisch eine lokale Datenbanksicherung und verwendet georedundanten Azure-Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS), um für Georedundanz zu sorgen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.date: 12/10/2018
+ms.openlocfilehash: 2d6df569a2b5b813bd832adf5ef2e1d193de9364
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422509"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187567"
 ---
-# <a name="learn-about-automatic-sql-database-backups"></a>Informationen zu automatischen Sicherungen von SQL-Datenbank
+# <a name="automated-backups"></a>Automatisierte Sicherungen
 
-SQL-Datenbank erstellt automatisch Datenbanksicherungen und verwendet georedundanten Azure-Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS), um für Georedundanz zu sorgen. Diese Sicherungen werden automatisch und ohne zusätzliche Kosten erstellt. Sie müssen keinerlei Aktionen durchführen. Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es für Ihre Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind, können Sie eine Richtlinie für die langfristige Aufbewahrung von Sicherungen konfigurieren. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
+SQL-Datenbank erstellt automatisch Datenbanksicherungen, die zwischen 7 und 35 Tage lang gespeichert werden, und verwendet georedundanten Azure-Speicher mit Lesezugriff (RA-GRS), um sicherzustellen, dass sie auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungen werden automatisch und ohne zusätzliche Kosten erstellt. Sie müssen keinerlei Aktionen durchführen, und Sie können [den Zeitraums für die Aufbewahrung von Sicherungen ändern](#how-to-change-the-pitr-backup-retention-period). Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es für Ihre Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie eine [langfristige Aufbewahrung](sql-database-long-term-retention.md) konfigurieren.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -33,8 +33,8 @@ Sie können diese Sicherungen für Folgendes verwenden:
 
 - Stellen Sie eine Datenbank innerhalb der Aufbewahrungsdauer auf einen Zeitpunkt wieder her. Dieser Vorgang wird eine neue Datenbank auf dem gleichen Server wie die ursprüngliche Datenbank erstellen.
 - Wiederherstellen einer gelöschten Datenbank auf den Zeitpunkt, zu dem sie gelöscht wurde, oder auf einen beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums. Die gelöschte Datenbank kann nur auf dem Server wiederhergestellt werden, auf dem die ursprüngliche Datenbank erstellt wurde.
-- Wiederherstellen einer Datenbank in einer anderen geografischen Region. Dies ermöglicht die Wiederherstellung nach dem Ausfall einer geografischen Region, wenn Sie keinen Zugriff auf Ihren Server und Ihre Datenbank haben. Dabei wird eine neue Datenbank auf einem beliebigen Server an einem beliebigen Ort der Welt erstellt.
-- Wiederherstellen einer Datenbank auf der Grundlage einer spezifischen langfristigen Sicherung, wenn die Datenbank mit einer Richtlinie zur langfristigen Aufbewahrung (Long-Term Retention, LTR) konfiguriert wurde. Dadurch können Sie eine alte Version der Datenbank wiederherstellen, um eine Konformitätsanforderung zu erfüllen oder eine alte Version der Anwendung auszuführen. Weitere Informationen hierzu finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
+- Wiederherstellen einer Datenbank in einer anderen geografischen Region. Die Geowiederherstellung ermöglicht die Wiederherstellung nach dem Ausfall einer geografischen Region, wenn Sie keinen Zugriff auf Ihren Server und Ihre Datenbank haben. Dabei wird eine neue Datenbank auf einem beliebigen Server an einem beliebigen Ort der Welt erstellt.
+- Wiederherstellen einer Datenbank auf der Grundlage einer spezifischen langfristigen Sicherung, wenn die Datenbank mit einer Richtlinie zur langfristigen Aufbewahrung (Long-Term Retention, LTR) konfiguriert wurde. Mit LTR können Sie eine alte Version der Datenbank wiederherstellen, um eine Konformitätsanforderung zu erfüllen oder eine alte Version der Anwendung auszuführen. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 - Informationen zum Durchführen einer Wiederherstellung finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -42,16 +42,16 @@ Sie können diese Sicherungen für Folgendes verwenden:
 
 ## <a name="how-long-are-backups-kept"></a>Wie lange werden Sicherungen aufbewahrt?
 
-Der Zeitraum zur Beibehaltung der Sicherung beträgt standardmäßig für jede SQL-Datenbank-Instanz zwischen 7 und 35 Tagen, was von [Kaufmodell und Dienstebene](#pitr-retention-period) abhängt. Sie können den Zeitraum zur Beibehaltung der Sicherung für eine Datenbank auf Azure Logical Server aktualisieren (dieses Feature wird bald in einer verwalteten Instanz aktiviert sein). Ausführlichere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-backup-retention-period).
+Der Zeitraum zur Beibehaltung der Sicherung beträgt standardmäßig für jede SQL-Datenbank-Instanz zwischen 7 und 35 Tagen, was von [Kaufmodell und Dienstebene](#pitr-retention-period) abhängt. Sie können den Zeitraum zur Beibehaltung der Sicherung für eine Datenbank auf Azure Logical Server aktualisieren. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
 
 Wenn Sie eine Datenbank löschen, bewahrt SQL-Datenbank die Sicherungen auf die gleiche Weise wie für eine Onlinedatenbank auf. Beim Löschen einer Datenbank vom Typ „Basic“, für die eine Aufbewahrungsdauer von sieben Tagen gilt, wird eine vier Tage alte Sicherung weitere drei Tage lang aufbewahrt.
 
-Falls Sie die Sicherungen länger als die maximale PITR-Aufbewahrungsdauer beibehalten müssen, können Sie die Sicherungseigenschaften so ändern, dass Ihrer Datenbank eine oder mehrere Zeiträume für die langfristige Aufbewahrung hinzugefügt werden. Ausführlichere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
+Falls Sie die Sicherungen länger als die maximale Aufbewahrungsdauer beibehalten müssen, können Sie die Sicherungseigenschaften so ändern, dass Ihrer Datenbank eine oder mehrere Zeiträume für die langfristige Aufbewahrung hinzugefügt werden. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 
 > [!IMPORTANT]
 > Wenn Sie die Azure SQL Server-Instanz löschen, auf der die SQL-Datenbanken gehostet werden, werden alle Pools für elastische Datenbanken und Datenbanken, die zum Server gehören, ebenfalls gelöscht und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen. Wenn Sie aber die langfristige Aufbewahrung konfiguriert haben, werden die Sicherungen für die Datenbanken mit LTR nicht gelöscht, und diese Datenbanken können wiederhergestellt werden.
 
-### <a name="pitr-retention-period"></a>PITR-Aufbewahrungszeitraum
+### <a name="default-backup-retention-period"></a>Standardaufbewahrungsdauer für Sicherungen
 
 #### <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
 
@@ -63,12 +63,10 @@ Die Standardaufbewahrungsdauer für eine Datenbank, die mit dem DTU-basierten Ka
 
 #### <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
-Bei Verwendung des [auf virtuellen Kernen basierenden Kaufmodells](sql-database-service-tiers-vcore.md) beträgt die Standardaufbewahrungszeit 7 Tage (für logische Server und verwaltete Instanzen).
+Bei Verwendung des [auf virtuellen Kernen basierenden Kaufmodells](sql-database-service-tiers-vcore.md) beträgt die Standardaufbewahrungszeit 7 Tage (für Einzeldatenbanken, in einem Pool zusammengefasste Datenbanken und Datenbanken der verwalteten Instanz). Sie können für alle Azure SQL-Datenbanken (Einzeldatenbanken, in einem Pool zusammengefasste Datenbanken und Datenbanken der verwalteten Instanz) die [Aufbewahrungsdauer für Sicherungen in bis zu 35 Tage ändern](#how-to-change-the-pitr-backup-retention-period).
 
-- Für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken können Sie die [Aufbewahrungsdauer für Sicherungen in bis zu 35 Tage ändern](#how-to-change-backup-retention-period).
-- Das Ändern der Aufbewahrungszeit für Sicherungen ist bei verwalteten Instanzen nicht verfügbar.
-
-Wenn Sie die aktuelle Aufbewahrungsdauer reduzieren, sind alle vorhandenen Sicherungen, die außerhalb der neuen Aufbewahrungsdauer liegen, nicht mehr verfügbar. Wenn Sie die aktuelle Aufbewahrungsdauer erhöhen, behält SQL-Datenbank die vorhandenen Sicherungen bei, bis die längere Aufbewahrungsdauer erreicht ist.
+> [!WARNING]
+> Wenn Sie die aktuelle Aufbewahrungsdauer reduzieren, sind alle vorhandenen Sicherungen, die außerhalb der neuen Aufbewahrungsdauer liegen, nicht mehr verfügbar. Wenn Sie die aktuelle Aufbewahrungsdauer erhöhen, behält SQL-Datenbank die vorhandenen Sicherungen bei, bis die längere Aufbewahrungsdauer erreicht ist.
 
 ## <a name="how-often-do-backups-happen"></a>Wie oft erfolgen Sicherungen?
 
@@ -96,21 +94,24 @@ Wenn Ihre Datenbank mit TDE verschlüsselt ist, werden die Sicherungen im Ruhezu
 
 Fortlaufend testet das Entwicklungsteam von Azure SQL-Datenbank automatisch die Wiederherstellung von automatischen Sicherungen von Datenbanken über den Dienst. Bei der Wiederherstellung werden die Datenbanken außerdem mithilfe von DBCC CHECKDB Integritätsprüfungen unterzogen. Mögliche Probleme, die bei der Integritätsprüfung gefunden werden, führen zu einer Warnung des Entwicklungsteams. Weitere Informationen zur Integrität der Daten in Azure SQL-Datenbank finden Sie unter [Datenintegrität in Azure SQL-Datenbank](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-my-compliance"></a>Wie wirken sich automatisierte Sicherungen auf meine Konformität aus?
+## <a name="how-do-automated-backups-impact-compliance"></a>Wie wirken sich automatisierte Sicherungen auf die Konformität aus?
 
-Wenn Sie Ihre Datenbank von einem DTU-basierten Diensttarif mit einer PITR-Standardaufbewahrung von 35 Tagen zu einem Diensttarif auf V-Kern-Basis migrieren, wird die PITR-Aufbewahrung beibehalten. So soll sichergestellt werden, dass die Datenwiederherstellungsrichtlinie Ihrer Anwendung nicht kompromittiert wird. Falls die Standardaufbewahrung Ihre Konformitätsanforderungen nicht erfüllt, können Sie die PITR-Aufbewahrungsdauer per PowerShell oder REST-API ändern. Ausführlichere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-backup-retention-period).
+Wenn Sie Ihre Datenbank von einem DTU-basierten Diensttarif mit einer PITR-Standardaufbewahrung von 35 Tagen zu einem Diensttarif auf V-Kern-Basis migrieren, wird die PITR-Aufbewahrung beibehalten. So soll sichergestellt werden, dass die Datenwiederherstellungsrichtlinie Ihrer Anwendung nicht kompromittiert wird. Falls die Standardaufbewahrung Ihre Konformitätsanforderungen nicht erfüllt, können Sie die PITR-Aufbewahrungsdauer per PowerShell oder REST-API ändern. Ausführlichere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-backup-retention-period"></a>Ändern des Zeitraums für die Aufbewahrung von Sicherungen
+## <a name="how-to-change-the-pitr-backup-retention-period"></a>Ändern des Zeitraums für die Aufbewahrung von PITR-Sicherungen
 
-> [!Note]
-> Die Standardaufbewahrungszeit für Sicherungen (7 Tage) kann für eine verwaltete Instanz nicht geändert werden.
-
-Sie können die Standardaufbewahrungsdauer per REST-API oder PowerShell ändern. Die unterstützten Werte sind: 7, 14, 21, 28 oder 35 Tage. In den folgenden Beispielen wird veranschaulicht, wie Sie die PITR-Aufbewahrungsdauer in 28 Tage ändern.
+Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen mit dem Azure-Portal, PowerShell oder der REST-API ändern. Die unterstützten Werte sind: 7, 14, 21, 28 oder 35 Tage. In den folgenden Beispielen wird veranschaulicht, wie Sie die PITR-Aufbewahrungsdauer in 28 Tage ändern.
 
 > [!NOTE]
-> Diese APIs wirken sich nur auf die PITR-Aufbewahrungsdauer aus. Falls Sie für Ihre Datenbank LTR konfiguriert haben, ergeben sich keine Auswirkungen. Ausführliche Informationen zum Ändern von LTR-Aufbewahrungsdauern finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
+> Diese APIs wirken sich nur auf die PITR-Aufbewahrungsdauer aus. Falls Sie für Ihre Datenbank LTR konfiguriert haben, ergeben sich keine Auswirkungen. Weitere Informationen zum Ändern von LTR-Aufbewahrungsdauern finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
+
+### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Ändern der PITR-Aufbewahrungsdauer über das Azure-Portal
+
+Zum Ändern des Zeitraums für die Aufbewahrung von PITR-Sicherungen über das Azure-Portal navigieren Sie zu der Datenbank, deren Aufbewahrungsdauer Sie ändern möchten, und klicken Sie dann auf **Übersicht**.
+
+![Ändern von PITR im Azure-Portal](./media/sql-database-automated-backup/configure-backup-retention.png)
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Ändern der PITR-Aufbewahrungsdauer mit PowerShell
 
@@ -154,7 +155,7 @@ Statuscode: 200
 }
 ```
 
-Weitere Informationen finden Sie unter [Backup Short Term Retention Policies](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies) (Richtlinien für die kurzfristige Aufbewahrung von Sicherungen).
+Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Sicherungen](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

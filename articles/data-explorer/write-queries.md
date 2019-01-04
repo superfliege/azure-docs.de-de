@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 71e39c6430231ae8d175f9c09a9059c3da4c9a1e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0a2b56164662a13d8254d8956712077e5f8a83a9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854253"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961519"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Schreiben von Abfragen für den Azure-Daten-Explorer
 
@@ -26,9 +26,9 @@ Sie können die Abfragen in diesem Artikel auf zwei Arten ausführen:
 - Im *Hilfecluster* für Azure-Daten-Explorer, den wir eingerichtet haben, um den Lernprozess zu unterstützen.
     [Melden Sie sich bei dem Cluster](https://dataexplorer.azure.com/clusters/help/databases/samples) mit einem Organisations-E-Mail-Konto an, das Mitglied von Azure Active Directory ist.
 
-- In Ihrem eigenen Cluster, der die StormEvents-Beispieldaten enthält. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md) und [Erfassen von Beispieldaten in Azure-Daten-Explorer](ingest-sample-data.md).
+- In Ihrem eigenen Cluster, der die StormEvents-Beispieldaten enthält. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md) und [Erfassen von Beispieldaten in Azure Data Explorer](ingest-sample-data.md).
 
-[!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+    [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="overview-of-the-query-language"></a>Übersicht der Abfragesprache
 
@@ -113,7 +113,7 @@ StormEvents
 
 ### <a name="where"></a>Hierbei gilt:
 
-[**where**](https://docs.microsoft.com/azure/kusto/query/whereoperator): Filtert eine Tabelle auf die Teilmenge von Zeilen, die ein Prädikat erfüllen.
+[**where**](https://docs.microsoft.com/azure/kusto/query/whereoperator): Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
 Die folgende Abfrage filtert die Daten nach `EventType` und `State`.
 
@@ -128,7 +128,7 @@ StormEvents
 
 ### <a name="sort"></a>sort
 
-[**sort**](https://docs.microsoft.com/azure/kusto/query/sortoperator): sortiert die Zeilen der Eingabetabelle in der Reihenfolge nach einer oder mehreren Spalten.
+[**sort**](https://docs.microsoft.com/azure/kusto/query/sortoperator): Sortiert die Zeilen der Eingabetabelle in Reihenfolge nach einer oder mehreren Spalten.
 
 Die folgende Abfrage sortiert die Daten in absteigender Reihenfolge nach `DamageProperty`.
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator): gibt die ersten  *N*  Datensätze nach den angegebenen Spalten sortiert zurück.
+[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator): Gibt die ersten  *N*  Datensätze nach den angegebenen Spalten sortiert zurück.
 
 Die folgende Abfrage gibt dieselben Ergebnisse wie oben mit einem Operator weniger zurück.
 
@@ -162,7 +162,7 @@ StormEvents
 
 ### <a name="extend"></a>extend
 
-[**extend**](https://docs.microsoft.com/azure/kusto/query/extendoperator):Berechnet abgeleitete Spalte.
+[**extend**](https://docs.microsoft.com/azure/kusto/query/extendoperator): Berechnet abgeleitete Spalten.
 
 Die folgende Abfrage erstellt eine neue Spalte, indem ein Wert in jeder Zeile berechnet wird.
 
@@ -271,7 +271,7 @@ In diesem Abschnitt werden einige der wichtigsten Skalar-Operatoren behandelt.
 
 ### <a name="bin"></a>bin()
 
-[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): rundet Werte auf ein ganzzahliges Vielfaches einer angegebenen Klassengröße (bin) ab.
+[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): Rundet Werte auf eine ganze Zahl ab, die ein Vielfaches der angegebenen bin-Größe ist.
 
 Die folgende Abfrage berechnet die Anzahl mit einer Bucketgröße von einem Tag.
 
@@ -512,7 +512,7 @@ Wir haben einfache Aggregationen wie **count** und **summarize** weiter oben in 
 
 [**top-nested**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): Erzeugt oberste, hierarchische Ergebnisse, wobei jede Ebene einen Drilldown, basierend auf Werten der vorherigen Ebene, darstellt.
 
-Dieser Operator ist für Szenarien zur Dashboardvisualisierung nützlich, oder wenn Sie eine Fragestellung haben wie „Finde die obersten N Werte von K1 (unter Verwendung von Aggregation); finden für jeden von ihnen die obersten M Werte von K2 (mithilfe einer anderen Aggregation);...“.
+Dieser Operator ist nützlich für Dashboardvisualisierungsszenarien oder wenn es erforderlich ist, eine Frage wie die folgende zu beantworten: „Finden Sie die Top-N-Werte von K1 (mithilfe einer Aggregation); für jeden dieser Werte finden Sie die Top-M-Werte von K2 (mithilfe einer anderen Aggregation); ...“
 
 Die folgende Abfrage gibt eine hierarchische Tabelle mit `State` auf der obersten Ebene, gefolgt von `Sources`, zurück.
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): berechnet die  **dcount**  aus HyperLogLog-Ergebnissen (generiert mit  [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)  oder  [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Berechnet  **dcount**  aus HyperLogLog-Ergebnissen (generiert mit  [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)  oder  [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction)).
 
 Die folgende Abfrage verwendet den HLL-Algorithmus, um die Anzahl zu generieren.
 
@@ -600,7 +600,7 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): gibt ein dynamisches(JSON) Array der Gruppe unterschiedlicher Werte zurück, die ein Ausdruck in der Gruppe annimmt.
+[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): Gibt ein dynamisches(JSON) Array der Gruppe unterschiedlicher Werte zurück, die ein Ausdruck in der Gruppe annimmt.
 
 Die folgende Abfrage gibt alle Zeiten zurück, zu denen eine Flut von jedem Bundesstaat gemeldet wurde, und erstellt ein Array aus der Gruppe der unterschiedlichen Werte.
 
@@ -615,7 +615,7 @@ StormEvents
 
 ### <a name="mvexpand"></a>mvexpand
 
-[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): erweitert mehrwertige Sammlungen aus einer Spalte des Typs „dynamisch“, sodass jeder Wert in der Sammlung eine gesonderte Zeile erhält. Alle anderen Spalten in einer erweiterten Zeile werden dupliziert. Ist das Gegenteil von makelist.
+[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): Erweitert mehrwertige Sammlungen aus einer Spalte des Typs „dynamisch“, sodass jeder Wert in der Sammlung eine gesonderte Zeile erhält. Alle anderen Spalten in einer erweiterten Zeile werden dupliziert. Ist das Gegenteil von makelist.
 
 Die folgende Abfrage generiert die Beispieldaten, indem ein Satz erstellt wird, der dann zur Veranschaulichung der **mvexpand**-Funktionen verwendet wird.
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): gibt eine Schätzung für den angegebenen  [**nächsten Perzentilrang**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)  der durch einen Ausdruck definierten Grundgesamtheit. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Perzentils ab. Kann nur im Kontext der Aggregation in  [**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) verwendet werden.
+[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Gibt eine Schätzung für den angegebenen  [**nächsten Perzentilrang**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)  der durch einen Ausdruck definierten Grundgesamtheit. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Perzentils ab. Kann nur im Kontext der Aggregation in  [**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) verwendet werden.
 
 Die folgende Abfrage berechnet Perzentile für die Sturmdauer.
 
@@ -741,7 +741,7 @@ StormEvents
 
 ### <a name="cross-database-and-cross-cluster-queries"></a>Datenbankübergreifende und clusterübergreifende Abfragen
 
-[Datenbankübergreifende und clusterübergreifende Abfragen](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): Sie können eine Datenbank im selben Cluster abfragen, indem Sie auf sie als `database("MyDatabase").MyTable` verweisen. Sie können eine Datenbank in einem Remotecluster abfragen, indem Sie auf sie als `cluster("MyCluster").database("MyDatabase").MyTable` verweisen.
+[Datenbankübergreifende und clusterübergreifende Abfragen](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): Sie können eine Datenbank in demselben Cluster abfragen, indem Sie auf sie als `database("MyDatabase").MyTable` verweisen. Sie können eine Datenbank in einem Remotecluster abfragen, indem Sie auf sie als `cluster("MyCluster").database("MyDatabase").MyTable` verweisen.
 
 Die folgende Abfrage wird aus einem Cluster aufgerufen und fragt Daten von dem Cluster `MyCluster` ab. Um diese Abfrage auszuführen, verwenden Sie den Namen Ihres eigenen Clusters und den Ihrer Datenbank.
 
@@ -864,7 +864,7 @@ range Day from _start to _end step 1d
 
 ### <a name="sessioncount-plugin"></a>session_count-Plug-In
 
-[**Session_count-Plug-Ins**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): berechnet die Anzahl der Sitzungen auf Grundlage der ID-Spalte über eine Zeitachse.
+[**session_count-Plug-In**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Berechnet die Anzahl der Sitzungen auf Grundlage der ID-Spalte über eine Zeitachse.
 
 Die folgende Abfrage gibt die Anzahl der Sitzungen zurück. Eine Sitzung gilt als aktiv, wenn eine Benutzer-ID mindestens einmal in einem Zeitraum von 100 Zeitfenstern vorkommt, während das Sitzungsrückschaufenster 41 Zeitfenster groß ist.
 

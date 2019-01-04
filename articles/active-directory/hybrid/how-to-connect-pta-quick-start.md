@@ -2,7 +2,7 @@
 title: Azure AD-Passthrough-Authentifizierung – Schnellstart | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die ersten Schritte für die Azure AD-Passthrough-Authentifizierung (Azure Active Directory) ausführen.
 services: active-directory
-keywords: Azure AD Connect-Passthrough-Authentifizierung, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
+keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
 documentationcenter: ''
 author: billmath
 manager: mtillman
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95083ec1d909333596fd36ad998022778a4f9ec9
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 831e5bff412f80f2140f6fd1b935a57bd412ccba
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582739"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188128"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -58,13 +58,13 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 4. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
    - Stellen Sie sicher, dass Authentifizierung-Agents *ausgehende* Anforderungen an Azure AD über die folgenden Ports senden können:
 
-    | Portnummer | Wie diese verwendet wird |
-    | --- | --- |
-    | **80** | Herunterladen der Zertifikatssperrlisten (CRL) bei der Überprüfung des SSL-Zertifikats |
-    | **443** | Verarbeitung der gesamten ausgehende Kommunikation mit dem Dienst |
-    | **8080** (optional) | Authentifizierungs-Agents melden ihren Status alle zehn Minuten über Port 8080, wenn Port 443 verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. Port 8080 wird _nicht_ für Benutzeranmeldungen verwendet. |
-
-    Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
+     | Portnummer | Wie diese verwendet wird |
+     | --- | --- |
+     | **80** | Herunterladen der Zertifikatssperrlisten (CRL) bei der Überprüfung des SSL-Zertifikats |
+     | **443** | Verarbeitung der gesamten ausgehende Kommunikation mit dem Dienst |
+     | **8080** (optional) | Authentifizierungs-Agents melden ihren Status alle zehn Minuten über Port 8080, wenn Port 443 verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. Port 8080 wird _nicht_ für Benutzeranmeldungen verwendet. |
+     
+     Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
    - Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie Verbindungen mit **\*.msappproxy.net** und **\*.servicebus.windows.net** mittels Whitelist. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
    - Ihre Authentifizierungs-Agents benötigen für den anfänglichen Registrierungsprozess Zugriff auf **login.windows.net** und **login.microsoftonline.com**. Öffnen Sie Ihre Firewall auch für diese URLs.
    - Geben Sie für die Überprüfung des Zertifikats folgende URLs frei: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80** und **www.microsoft.com:80**. Da diese URLs für die Überprüfung des Zertifikats in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
@@ -97,7 +97,7 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die Passthrough-Authentif
 4. Überprüfen Sie, ob das Feature **Passthrough-Authentifizierung** als **aktiviert** angezeigt wird.
 5. Wählen Sie **Passthrough-Authentifizierung** aus. Im Bereich **Passthrough-Authentifizierung** werden die Server aufgelistet, auf denen Ihre Authentifizierungs-Agents installiert sind.
 
-![Azure Active Directory Admin Center: Azure AD Connect-Bereich](./media/how-to-connect-pta-quick-start/pta7.png)
+![Azure Active Directory Admin Center: Bereich „Azure AD Connect“](./media/how-to-connect-pta-quick-start/pta7.png)
 
 ![Azure Active Directory Admin Center: Bereich „Passthrough-Authentifizierung“](./media/how-to-connect-pta-quick-start/pta8.png)
 
@@ -117,9 +117,9 @@ Befolgen Sie diese Anweisungen zum Herunterladen der Authentifizierungs-Agent-So
 3. Klicken Sie auf **Azure AD Connect**, **Passthrough-Authentifizierung** und dann auf **Agent herunterladen**.
 4. Klicken Sie auf die Schaltfläche **Bedingungen akzeptieren und herunterladen**.
 
-![Azure Active Directory Admin Center: Schaltfläche zum Herunterladen des Authentifizierungs-Agents](./media/how-to-connect-pta-quick-start/pta9.png)
+![Azure Active Directory Admin Center: Schaltfläche „Authentifizierungs-Agent herunterladen“](./media/how-to-connect-pta-quick-start/pta9.png)
 
-![Azure Active Directory Admin Center: Bereich „Agent herunterladen“](./media/how-to-connect-pta-quick-start/pta10.png)
+![Azure Active Directory Admin Center: Bereich für das Herunterladen des Agents](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
 >Sie können die [Authentifizierungs-Agent-Software auch direkt herunterladen](https://aka.ms/getauthagent). Lesen und akzeptieren Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) für den Authentifizierungs-Agent, _bevor_ Sie ihn installieren.
@@ -143,11 +143,11 @@ Zweitens können Sie auch ein unbeaufsichtigtes Bereitstellungsskript erstellen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://aka.ms/adfstoptadp): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
-- [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
-- [Aktuelle Einschränkungen:](how-to-connect-pta-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien mit Passthrough-Authentifizierung
-- [Technische Einzelheiten:](how-to-connect-pta-how-it-works.md) Informationen zur Funktionsweise des Features für die Passthrough-Authentifizierung
-- [Häufig gestellte Fragen:](how-to-connect-pta-faq.md) Antworten auf häufig gestellte Fragen
-- [Problembehandlung:](tshoot-connect-pass-through-authentication.md) Informationen zum Beheben von allgemeinen Problemen, die mit der Funktion für Passthrough-Authentifizierung auftreten können
-- [Ausführliche Informationen zur Sicherheit:](how-to-connect-pta-security-deep-dive.md) Technische Informationen zur Passthrough-Authentifizierung
-- [Nahtloses SSO mit Azure AD:](how-to-connect-sso.md) Informationen zu dieser Ergänzungsfunktion
-- [UserVoice:](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Anfordern neuer Features über das Azure Active Directory-Forum
+- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Erfahren Sie, wie Sie die Smart Lockout-Funktion für Ihren Mandanten zum Schutz von Benutzerkonten konfigurieren.
+- [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Hier finden Sie Informationen zu den unterstützten und nicht unterstützten Szenarien für die Passthrough-Authentifizierung.
+- [Technische Einzelheiten](how-to-connect-pta-how-it-works.md): Hier finden Sie Informationen zur Funktionsweise der Passthrough-Authentifizierung.
+- [Häufig gestellte Fragen](how-to-connect-pta-faq.md): Finden Sie Antworten auf häufig gestellte Fragen.
+- [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.
+- [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): Hier erhalten Sie technische Informationen zur Passthrough-Authentifizierung.
+- [Nahtloses SSO mit Azure AD](how-to-connect-sso.md): Hier finden Sie Informationen zu dieser Ergänzungsfunktion.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: fe6199aea91bbb7518ccdbfe640848a59edcee49
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2198d7520d660904423eabbec8df71e55e3011dd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215462"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338633"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Einrichten der Notfallwiederherstellung für lokale virtuelle VMware-Computer oder physische Server an einem sekundären Standort
 
@@ -103,10 +103,10 @@ Laden Sie die ZIP-Datei für das [Update](https://aka.ms/asr-scout-update6) heru
 3. **Konfigurationsserver und Prozessserver**: Kopieren Sie **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** auf den Konfigurationsserver und den Prozessserver. Doppelklicken Sie auf die Datei, um sie auszuführen.<br>
 4. **Windows-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** auf den Server. Doppelklicken Sie auf die Datei, um sie auszuführen. Das gleiche Update für den vereinheitlichten Agent ist auch für den Quellserver anwendbar. Wenn die Quelle nicht auf Update 4 aktualisiert wurde, müssen Sie den vereinheitlichten Agent aktualisieren.
   Das Update muss nicht auf das mit **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** vorbereitete Masterziel angewendet werden, da es sich dabei um einen allgemein verfügbaren Installer mit allen aktuellen Änderungen handelt.
-5. **vContinuum-Server**: Kopieren Sie **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** auf den Server.  Stellen Sie sicher, dass Sie den vContinuum-Assistenten geschlossen haben. Doppelklicken Sie auf die Datei, um sie auszuführen.
+5. **vContinuum-Server**:  Kopieren Sie **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** auf den Server.  Stellen Sie sicher, dass Sie den vContinuum-Assistenten geschlossen haben. Doppelklicken Sie auf die Datei, um sie auszuführen.
     Das Update muss nicht auf das mit **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** vorbereitete Masterziel angewendet werden, da es sich dabei um einen allgemein verfügbaren Installer mit allen aktuellen Änderungen handelt.
 6. **Linux-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** auf den Masterzielserver, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install**aus.
-7. **Windows-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** auf den Quellserver. Doppelklicken Sie auf die Datei, um sie auszuführen. 
+7. **Windows-Quellserver**: Um den einheitlichen Agent zu aktualisieren, kopieren Sie **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** auf den Quellserver. Doppelklicken Sie auf die Datei, um sie auszuführen. 
     Der Update 5-Agent muss nicht auf dem Quellserver installiert werden, wenn dieser bereits auf Update 4 aktualisiert wurde oder wenn der Quell-Agent mit dem aktuellen Base Installer **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** installiert wird.
 8. **Linux-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie die entsprechende Version der Datei des vereinheitlichten Agent auf den Linux-Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install**aus.  Beispiel: Kopieren Sie für den RHEL 6.7 64-Bit-Server die Datei **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** auf den Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install**aus.
 
@@ -142,7 +142,7 @@ Scout Update 6 ist ein kumulatives Update. Es enthält sämtliche Fixes aus Upda
 > [!NOTE]
 > * Der Base Installer für den vereinheitlichten Agent für Windows wurde aktualisiert, um Windows Server 2016 zu unterstützen. Der neue Installer **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** ist im GA-Basispaket für Scout (**InMage_Scout_Standard_8.0.1 GA-Oct17.zip**) enthalten. Der gleiche Installer wird für alle unterstützten Windows-Version verwendet. 
 > * Der Base Installer für Windows vContinuum und das Masterziel wurde aktualisiert, um Windows Server 2016 zu unterstützen. Der neue Installer **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** ist im GA-Basispaket für Scout (**InMage_Scout_Standard_8.0.1 GA-Oct17.zip**) enthalten. Der gleiche Installer wird zum Bereitstellen des Windows 2016-Masterziels und des Windows 2012R2-Masterziels verwendet.
-> * Laden Sie das GA-Paket aus dem Portal herunter; dieser Vorgang wird im Abschnitt zum [Erstellen eines Tresors](#create-a-vault) beschrieben.
+> * Windows Server 2016 auf physischem Server wird von ASR Scout nicht unterstützt. Es wird nur die Windows Server 2016 VMware-VM unterstützt. 
 >
 
 #### <a name="bug-fixes-and-enhancements"></a>Programmfehlerbehebungen und Verbesserungen
@@ -203,7 +203,7 @@ Scout Update 4 ist ein kumulatives Update. Es enthält sämtliche Fixes aus Upda
 * Zusätzliche Prüfungen und Protokolle wurden für Netzwerkkonfigurationsänderungen während Failover und Notfallwiederherstellung hinzugefügt.
 * Ein Fix für ein Problem, das bewirkte, dass Aufbewahrungsinformationen nicht an den Konfigurationsserver übermittelt werden.  
 * Für physische Cluster ein Fix für ein Problem, welches das Fehlschlagen der Größenänderung von Volumes im vContinuum-Assistenten bewirkte, wenn der Quelldatenträger verkleinert wurde.
-* Ein Fix für ein Clusterschutz-Problem mit dem Fehler „Failed to find the disk signature“ (Datenträgersignatur nicht gefunden), wenn es sich beim Clusterdatenträger um einen PRDM-Datenträger handelt.
+* Ein Fix für ein Clusterschutz-Problem mit dem Fehler  „Failed to find the disk signature“ (Datenträgersignatur nicht gefunden), wenn es sich beim Clusterdatenträger um einen PRDM-Datenträger handelt.
 * Ein Fix für einen Absturz des cxps-Transportservers aufgrund einer Ausnahme vom Typ „Außerhalb des Bereichs“.
 * Auf der Seite für die **Push-Installation** des vContinuum-Assistenten kann nun die Größe der Spalten für Servername und IP-Adresse geändert werden.
 * RX-API-Verbesserungen:
@@ -246,7 +246,7 @@ Mit Update 3 werden die folgenden Probleme behoben:
   * CentOS 6 Update 7
 * In den Konfigurationsserver- und RX-Konsolen werden nun Benachrichtigungen für das Paar angezeigt, das in den Bitmap-Modus wechselt.
 * Die folgenden Sicherheitsfixes wurden in RX hinzugefügt:
-    * Umgehung der Autorisierung durch manipulierte Parameter: Der Zugriff für unzulässige Benutzer wurde beschränkt.
+    * Autorisierungsumgehung per Parametermanipulation: Der Zugriff auf unzulässige Benutzer wurde beschränkt.
     * Websiteübergreifende Anforderungsfälschung: Das Konzept des Seiten-Tokens wurde implementiert, und es wird nach dem Zufallsprinzip für jede Seite generiert. Das heißt, es gibt für einen Benutzer nur eine einzige Anmeldeinstanz, und die Seitenaktualisierung funktioniert nicht. Stattdessen erfolgt eine Umleitung zum Dashboard.
     * Hochladen bösartiger Dateien: Dateien sind auf bestimmte Erweiterungen beschränkt: z, aiff, asf, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, log, mid, mov, mp3, mp4, mpc, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, ram, rar, rm, rmi, rmvb, rtf, sdc, sitd, swf, sxc, sxw, tar, tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml und zip.
     * Persistentes websiteübergreifendes Scripting: Eingabevalidierungen wurden hinzugefügt.

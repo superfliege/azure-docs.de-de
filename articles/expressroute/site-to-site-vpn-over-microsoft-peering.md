@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren eines Site-to-Site-VPN über Microsoft-Peering für Azure ExpressRoute | Microsoft-Dokumentation
+title: Konfigurieren eines Site-to-Site-VPN über Microsoft-Peering ExpressRoute – Azure | Microsoft-Dokumentation
 description: Konfigurieren Sie IPsec-/IKE-Verbindungen mit Azure über eine ExpressRoute-/Microsoft-Peeringverbindung mithilfe eines Site-to-Site-VPN-Gateways.
 services: expressroute
 author: cherylmc
@@ -7,25 +7,25 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240905"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094201"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering
 
-Dieser Artikel hilft Ihnen bei der Konfiguration einer sicheren, verschlüsselten Verbindung zwischen Ihrem lokalen Netzwerk und Ihren virtuellen Azure-Netzwerken (VNets) über eine private ExpressRoute-Verbindung. Die Konfiguration eines sicheren Tunnels über ExpressRoute ermöglicht den Datenaustausch unter Beachtung von Vertraulichkeit, Authentizität und Integrität ohne Wiedergabe.
+Dieser Artikel hilft Ihnen bei der Konfiguration einer sicheren, verschlüsselten Verbindung zwischen Ihrem lokalen Netzwerk und Ihren virtuellen Azure-Netzwerken (VNets) über eine private ExpressRoute-Verbindung. Sie können Microsoft-Peering nutzen, um einen Site-to-Site-IPsec/IKE-VPN-Tunnel zwischen den von Ihnen ausgewählten lokalen Netzwerken und Azure VNets einzurichten. Die Konfiguration eines sicheren Tunnels über ExpressRoute ermöglicht den Datenaustausch unter Beachtung von Vertraulichkeit, Authentizität und Integrität ohne Wiedergabe.
 
-## <a name="architecture"></a>Architektur
-
-Sie können Microsoft-Peering nutzen, um einen Site-to-Site-IPsec/IKE-VPN-Tunnel zwischen den von Ihnen ausgewählten lokalen Netzwerken und Azure VNets einzurichten.
-
-  >[!NOTE]
+>[!NOTE]
 >Wenn Sie ein Site-to-Site-VPN über Microsoft-Peering einrichten, werden Ihnen die Kosten für das VPN-Gateway und den VPN-Ausgang in Rechnung gestellt. Weitere Informationen finden Sie unter [VPN Gateway: Preise](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
+
+## <a name="architecture"></a>Architektur
+
 
   ![Übersicht über die Konnektivität](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 

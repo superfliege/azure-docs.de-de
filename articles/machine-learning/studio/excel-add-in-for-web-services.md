@@ -1,10 +1,10 @@
 ---
-title: Excel-Add-In für Machine Learning-Webdienste | Microsoft Docs
+title: 'Excel-Add-In für Webdienste: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Hier wird erläutert, wie Sie Azure Machine Learning-Webdienste direkt in Excel ohne Erstellung von Code verwenden.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=marthalc, author=marthalc)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 2/1/2018
-ms.openlocfilehash: debe3165a60cd0da866842a425c1ca8c52eab644
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 02/01/2018
+ms.openlocfilehash: e836323ad452b86d89eee62936b574b2cc9d0337
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262022"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269487"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-Add-In für Azure Machine Learning Studio-Webdienste
 Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne dafür Code erstellen zu müssen.
@@ -41,7 +41,7 @@ Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne d
    
     ![Abschnitt „Predict“][02]
 
-Stellen Sie einen Webdienst bereit, oder verwenden Sie einen vorhandenen Webdienst. Weitere Informationen zum Bereitstellen eines Webdiensts finden Sie unter [Exemplarische Vorgehensweise – Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts](walkthrough-5-publish-web-service.md).
+Stellen Sie einen Webdienst bereit, oder verwenden Sie einen vorhandenen Webdienst. Weitere Informationen zum Bereitstellen eines Webdiensts finden Sie unter [Exemplarische Vorgehensweise, Schritt 5: Bereitstellen eines Azure Machine Learning-Webdiensts](walkthrough-5-publish-web-service.md).
 
 Rufen Sie den API-Schlüssel Ihres Webdiensts ab. Wo diese Aktion durchgeführt wird hängt davon ab, ob Sie einen klassischen oder neuen Machine Learning-Webdienst veröffentlicht haben.
 
@@ -69,7 +69,7 @@ Rufen Sie den API-Schlüssel Ihres Webdiensts ab. Wo diese Aktion durchgeführt 
 
 ## <a name="steps-to-add-a-new-web-service"></a>Schritte zum Hinzufügen eines neuen Webdiensts
 
-1. Stellen Sie einen Webdienst bereit, oder verwenden Sie einen vorhandenen Webdienst. Weitere Informationen zum Bereitstellen eines Webdiensts finden Sie unter [Exemplarische Vorgehensweise – Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts](walkthrough-5-publish-web-service.md).
+1. Stellen Sie einen Webdienst bereit, oder verwenden Sie einen vorhandenen Webdienst. Weitere Informationen zum Bereitstellen eines Webdiensts finden Sie unter [Exemplarische Vorgehensweise, Schritt 5: Bereitstellen eines Azure Machine Learning-Webdiensts](walkthrough-5-publish-web-service.md).
 2. Klicken Sie auf **Consume**.
 3. Wechseln Sie zum Abschnitt **Basic consumption info** . Kopieren und speichern Sie den **Primary Key** und die URL für **Request-Response**.
 4. Navigieren Sie in Excel zum Abschnitt **Web Services** (wenn Sie sich im Abschnitt **Predict** befinden, klicken Sie auf den Zurück-Pfeil, um zur Liste der Webdienste zu gelangen).

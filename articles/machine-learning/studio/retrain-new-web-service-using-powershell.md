@@ -4,9 +4,8 @@ description: Hier erfahren Sie, wie Sie mithilfe der PowerShell-Cmdlets für die
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 59d12ae91f8c75ab0fdd2058057cc8de158897e7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0dc41b001ecca26239c0a9e8f69e2709d6927fcd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314183"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250573"
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-studio-management-powershell-cmdlets"></a>Erneutes Trainieren eines neuen auf Resource Manager basierenden Webdiensts mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning Studio
+# <a name="retrain-a-new-resource-manager-based-studio-web-service-using-powershell"></a>Erneutes Trainieren eines neuen Resource Manager-basierten Studio-Webdiensts mithilfe von PowerShell
 Beim erneuten Trainieren eines neuen Webdiensts wird die Definition des Vorhersagewebdiensts so aktualisiert, dass sie auf das neue trainierte Modell verweist.
 
 ## <a name="prerequisites"></a>Voraussetzungen

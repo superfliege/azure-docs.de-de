@@ -6,23 +6,21 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/17/2018
-ms.openlocfilehash: 8103c06e3fec51316e367de903ed84d0023568bc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/11/2018
+ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308153"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322293"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Zugreifen auf Grafana in Azure HDInsight
 
 
 [Grafana](https://grafana.com/) ist ein verbreiteter Open-Source-Generator für Diagramme und Dashboards. Mit dem umfangreichen Funktionssatz von Grafana können Benutzer nicht nur anpassbare und gemeinsam nutzbare Dashboards erstellen, sondern u.a. auch von Dashboards mit Vorlagen bzw. Skripts, LDAP-Integration und verschiedenen Datenquellen profitieren.
 
-Derzeit wird Grafana nur vom Clustertyp Interactive Query in Azure HDInsight unterstützt.
-
+Derzeit wird Grafana in Azure HDInsight mit den Clustertypen Hbase und Interactive Query unterstützt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -76,16 +74,22 @@ In diesem Abschnitt erstellen Sie einen Interactive Query-Cluster in HDInsight m
 ## <a name="access-the-grafana-dashboard"></a>Zugreifen auf das Grafana-Dashboard
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
 2. Wählen Sie **HDInsight-Cluster** und im letzten Abschnitt dann den Namen des von Ihnen erstellten Clusters aus.
+
 3. Klicken Sie unter **Quicklinks** auf **Clusterdashboard**.
 
     ![HDInsight-Clusterdashboard im Portal](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight cluster dashboard on the portal")
 
-4. Klicken Sie auf dem Dashboard auf die Kachel **Grafana**.
+4. Klicken Sie auf dem Dashboard auf die Kachel **Grafana**. Navigieren Sie alternativ zum `/grafana/`-Pfad Ihrer Cluster-URL. Beispiel: `https://<clustername>.azurehdinsight.net/grafana/`.
+
 5. Geben Sie die Benutzeranmeldeinformationen für den Hadoop-Cluster ein.
-6. Das Grafana-Dashboard sieht folgendermaßen aus:
+
+6. Das Grafana-Dashboard wird angezeigt und sieht wie in diesem Beispiel aus:
 
     ![HDInsight-Cluster auf dem Grafana-Dashboard](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana dashboard")
+
+   
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Nach Abschluss des Artikels kann es ratsam sein, den Cluster zu löschen. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. 
@@ -137,5 +141,3 @@ Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden 
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-

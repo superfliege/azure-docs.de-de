@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261070"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081539"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die Marketplace-GTM-Vorteile. Wichtiger ist, dass die Auswahl von Veröffentlichungsoption und Angebotstyp im Cloud-Partnerportal die Interaktion von Benutzern mit Ihrem Marketplace-Angebot definiert.
 
 Sie können Veröffentlichungsoptionen durch Auswahl eines Angebotstyps und anschließendes Erstellen eines Marketplace-Angebots im Cloud-Partnerportal aktivieren. Zu diesem Zweck müssen Sie die folgenden wesentlichen Marketplace-Konzepte verstehen: Veröffentlichungsoptionen, Angebotstypen und -konfiguration sowie Aktionsaufrufe, die regeln, wie und wo Ihr Angebot in den Marketplace-Storefronts präsentiert wird.
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/options-table/articles/marketplace/media/marketplace-publishers-guide/storefronts_options_table.png?raw=true)
+![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
 >[!Note]
 >In der obigen Tabelle wird beschrieben, wie Ihre Lösung oder Ihr Dienst der Storefront, der Veröffentlichungsoption und dem Angebotstyp zugeordnet ist, mit denen Ihr Angebot im Marketplace präsentiert wird.
@@ -44,7 +44,7 @@ Bevor Sie eine Veröffentlichungsoption auswählen, müssen Sie die erforderlich
 
 **Azure Marketplace**-Anwendungen sind auf Azure aufbauende oder für Azure erstellte technische „Baustein“-Lösungen. Azure Marketplace-Beratungsdienste sind professionelle Dienstangebote, die Kunden beim Einstieg in die Nutzung von Azure oder deren Optimierung unterstützen.
 
-**AppSource**-Anwendungen sind auf Azure aufbauende oder für Azure erstellte Branchenlösungen: Dynamics 365, Office 365, Power BI und Power Apps. AppSource-Beratungsdienste sind professionelle Dienstangebote, die Kunden beim Einstieg in die Nutzung von Dynamics 365 und Power BI oder deren Optimierung unterstützen.
+**AppSource**-Anwendungen sind Branchenlösungen, die unter Azure oder für folgende Produkte erstellt werden können: Dynamics 365, Office 365, Power BI und Power Apps. AppSource-Beratungsdienste sind professionelle Dienstangebote, die Kunden beim Einstieg in die Nutzung von Dynamics 365 und Power BI oder deren Optimierung unterstützen.
 
 Sobald Sie sich als Herausgeber registriert und Zugriff auf das Cloud-Partnerportal zum Erstellen, Konfigurieren und Veröffentlichen von Marketplace-Angeboten erhalten haben, werden Sie:
 
@@ -67,7 +67,7 @@ Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kun
 | **Veröffentlichungsoption**    | **Beschreibung**  |
 | :------------------- | :-------------------|
 | **Liste** | Einfache Auflistung Ihrer Anwendung oder Ihres Diensts, sodass Marketplace-Benutzer Sie über die Handlungsaufforderung **Kontakt mit mir aufnehmen** bitten können, sich mit dem Kunden in Verbindung zu setzen. |
-| **Testversion** | Verwenden Sie Marketplace, um die Auffindbarkeit zu verbessern und die Bereitstellung einer Testversion Ihrer Anwendung zu automatisieren, sodass potenzielle Benutzer vor dem Kauf für einen begrenzten Zeitraum kostenlos einen Eindruck von Ihrer SaaS-, IaaS- oder Microsoft-In-App-Erfahrung gewinnen können. Für die Veröffentlichungsoption „Testen“ werden folgende Aktionsaufrufe verwendet: **Kostenlose Testversion** oder **Testversion**. |
+| **Testversion** | Verwenden Sie Marketplace, um die Auffindbarkeit zu verbessern und die Bereitstellung einer Testversion Ihrer Anwendung zu automatisieren, sodass potenzielle Benutzer vor dem Kauf für einen begrenzten Zeitraum kostenlos einen Eindruck von Ihrer SaaS-, IaaS- oder Microsoft-In-App-Erfahrung gewinnen können. Für die Veröffentlichungsoption „Testen“ wird folgender Aktionsaufruf verwendet: **Kostenlose Testversion** oder **Testversion**. |
 | **Transaktion** | Ihre Anwendung wird in Azure ausgeführt und kann direkt als Ressource im Azure-Abonnement des Kunden bereitgestellt werden, wenn der Kunde die Handlungsaufforderung „Jetzt anfordern“ auswählt. Optional kann eine Lizenz für Ihre Software erworben und gemäß der gewünschten Zahlungsmittel und Bedingungen des Kunden abgerechnet werden, und Sie können wahlweise auch zeitlich begrenzten Zugriff auf Ihre **kostenlose Testversion** bieten (nur verfügbar für Azure Marketplace). |
 
 >[!Note]

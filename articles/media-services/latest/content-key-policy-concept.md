@@ -1,5 +1,5 @@
 ---
-title: Richtlinien für Inhaltsschlüssel in Azure Media Services | Microsoft-Dokumentation
+title: 'Richtlinien für Inhaltsschlüssel in Media Services: Azure | Microsoft-Dokumentation'
 description: In diesem Artikel wird erläutert, was Richtlinien für Inhaltsschlüssel sind und wie sie in Azure Media Services verwendet werden.
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 541713677184d93eb78856e3c3373ab432d5f0cf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085955"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141525"
 ---
 # <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
@@ -79,9 +80,9 @@ Die folgende Tabelle zeigt, wie diese Optionen auf die StreamingPolicy-Eigenscha
 Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
 
 > [!TIP]
-> Sie sollten immer den Link „Weiter“ verwenden, um die Sammlung zu durchlaufen, und keine bestimmte Seitengröße als Referenz verwenden.
+> Verwenden Sie immer den Link „Weiter“ zum Enumerieren der Auflistung und keine bestimmte Seitengröße als Referenz.
 
-Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine \@odata.nextLink-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
+Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
 
 Wenn während des Durchlaufens der Sammlung StreamingPolicy-Objekte erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde.) 
 

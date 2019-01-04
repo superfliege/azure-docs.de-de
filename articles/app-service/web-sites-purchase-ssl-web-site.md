@@ -1,5 +1,5 @@
 ---
-title: Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service | Microsoft-Dokumentation
+title: Kaufen und Konfigurieren eines SSL-Zertifikats von Azure – Azure App Service | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein App Service-Zertifikat erwerben und es an Ihre App Service-App binden.
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351353"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268715"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
@@ -59,7 +60,7 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 
 Sobald der Zertifikatkaufvorgang abgeschlossen ist, müssen Sie noch ein paar Schritte ausführen, bevor Sie das Zertifikat verwenden können. 
 
-Wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann auf **Zertifikatkonfiguration** > **Schritt 1: Speichern**.
+Wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann auf **Zertifikatkonfiguration** > **Schritt 1:  Speichern**.
 
 ![Bild von Bereitschaft zum Speichern in KV einfügen](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -80,7 +81,7 @@ Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repo
 
 ## <a name="verify-domain-ownership"></a>Überprüfen des Domänenbesitzes
 
-Klicken Sie auf der Seite **Zertifikatkonfiguration**, die Sie im letzten Schritt verwendet haben, auf **Schritt 2: Überprüfen**.
+Klicken Sie auf der Seite **Zertifikatkonfiguration**, die Sie im letzten Schritt verwendet haben, auf **Schritt 2:  Überprüfen**.
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -114,7 +115,7 @@ Konfigurieren Sie mithilfe der folgende Tabelle die Bindung im Dialogfeld **SSL-
 |-|-|
 | Hostname | Der Domänenname, der für die SSL-Bindung hinzugefügt werden soll. |
 | Fingerabdruck des privaten Zertifikats | Das zu bindende Zertifikat. |
-| SSL-Typ | <ul><li>**SNI SSL**: Es können mehrere SNI-basierte SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse zugehörige Domänen durch mehrere SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen zur Browserunterstützung finden Sie unter [Servernamensanzeige](http://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP-basiertes SSL** : Möglicherweise kann nur eine IP-basierte SSL-Bindung hinzugefügt werden. Bei dieser Option kann eine dedizierte öffentliche IP-Adresse nur durch ein SSL-Zertifikat geschützt werden. Führen Sie nach dem Konfigurieren der Bindung die Schritte unter [Neuzuordnen eines Datensatzes für IP-SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl) durch. </li></ul> |
+| SSL-Typ | <ul><li>**SNI SSL**: Es können mehrere SNI-basierte SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse zugehörige Domänen durch mehrere SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen zur Browserunterstützung finden Sie unter [Servernamensanzeige](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP-basiertes SSL** : Möglicherweise kann nur eine IP-basierte SSL-Bindung hinzugefügt werden. Bei dieser Option kann eine dedizierte öffentliche IP-Adresse nur durch ein SSL-Zertifikat geschützt werden. Führen Sie nach dem Konfigurieren der Bindung die Schritte unter [Neuzuordnen eines Datensatzes für IP-SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl) durch. </li></ul> |
 
 ## <a name="verify-https-access"></a>Überprüfen des HTTPS-Zugriffs
 
@@ -147,15 +148,15 @@ Um das Zertifikat stattdessen manuell zu verlängern, klicken Sie auf **Manuelle
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
 * [Erzwingen von HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [Erzwingen von TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](app-service-web-ssl-cert-load.md)
-* [Häufig gestellte Fragen: App Service-Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [Häufig gestellte Fragen:  App Service-Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

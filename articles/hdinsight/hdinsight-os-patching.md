@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140965"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434044"
 ---
 # <a name="os-patching-for-hdinsight"></a>Patchen des Betriebssystems für HDInsight 
-Als verwalteter Hadoop-Dienst erledigt HDInsight das Patchen des Betriebssystems für die zugrundeliegenden virtuellen Computer, die von HDInsight-Clustern verwendet werden. Mit Wirkung ab dem 1. August 2016 haben wir die Richtlinie für das Patchen von Gastbetriebssystemen für Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters. Patches werden wirksam, sobald die virtuellen Computer neu gestartet werden.
+Als verwalteter Apache Hadoop-Dienst erledigt HDInsight das Patchen des Betriebssystems für die zugrundeliegenden virtuellen Computer, die von HDInsight-Clustern verwendet werden. Mit Wirkung ab dem 1. August 2016 haben wir die Richtlinie für das Patchen von Gastbetriebssystemen für Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters. Patches werden wirksam, sobald die virtuellen Computer neu gestartet werden.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurieren des Zeitplans für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster
 Die virtuellen Computer in einem HDInsight-Cluster müssen gelegentlich neu gestartet werden, damit wichtige Sicherheitspatches installiert werden können. Seit dem 1. August 2016 werden neue Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) gemäß dem folgenden Zeitplan neu gestartet:
@@ -31,7 +31,7 @@ Mithilfe der in diesem Artikel beschriebenen Skriptaktion können Sie den Zeitpl
 2. Festlegen der Häufigkeit von Neustarts (in Tagen zwischen Neustarts)
 3. Festlegen des Wochentags, an dem Neustarts vorgenommen werden
 
-> [!NOTE]
+> [!NOTE]  
 > Diese Skriptaktion funktioniert nur mit Linux-basierten HDInsight-Clustern, die nach dem 1. August 2016 erstellt wurden. Patches werden nur wirksam, wenn die virtuellen Computer neu gestartet werden. 
 >
 
@@ -45,17 +45,15 @@ Zur Verwendung des Skripts benötigen Sie die folgenden Informationen:
 
 3.  Parameter: Dieses Skript akzeptiert drei numerische Parameter:
 
-    | -Parameter enthalten. | Definition |
+    | Parameter | Definition |
     | --- | --- |
     | Aktivieren/Deaktivieren des automatischen Neustarts |0 oder 1. Der Wert 0 deaktiviert den automatischen Neustart, 1 aktiviert ihn. |
     | Frequency |7 bis 90 (einschließlich). Die Anzahl der Tage, die vor dem Neustart zum Patchen von virtuellen Computern, für die ein Neustart erforderlich ist, gewartet wird. |
     | Wochentag |1 bis 7 (einschließlich). Der Wert 1 gibt an, dass der Neustart an einem Montag stattfinden soll, 7 gibt den Sonntag an. Die Parameter 1 60 2 bewirken beispielsweise einen automatischen Neustart alle 60 Tage (höchstens) am Dienstag. |
     | Persistenz |Wenn Sie eine Skriptaktion auf einen vorhandenen Cluster anwenden, können Sie das Skript als permanent kennzeichnen. Permanente Skripts werden angewendet, wenn dem Cluster durch Skalierungsvorgänge neue Arbeitsknoten hinzugefügt werden. |
 
-> [!NOTE]
-> Sie müssen dieses Skript als permanent kennzeichnen, wenn Sie es auf einen vorhandenen Cluster anwenden. Andernfalls verwenden durch Skalierungsvorgänge erstellte neue Knoten den Standardpatchzeitplan.
-Wenn Sie das Skript im Rahmen der Clustererstellung anwenden, ist es automatisch permanent.
->
+> [!NOTE]  
+> Sie müssen dieses Skript als permanent kennzeichnen, wenn Sie es auf einen vorhandenen Cluster anwenden. Andernfalls verwenden durch Skalierungsvorgänge erstellte neue Knoten den Standardpatchzeitplan.  Wenn Sie das Skript im Rahmen der Clustererstellung anwenden, ist es automatisch permanent.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

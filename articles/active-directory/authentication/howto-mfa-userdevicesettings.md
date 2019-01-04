@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8d3ffa2664c747f5fbbd4269b23ae54850e0d750
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496898"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320998"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
 
@@ -30,8 +30,8 @@ Durch diese Einstellung wird der Benutzer gezwungen, den Registrierungsprozess e
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>Benutzer dazu bringen, Kontaktmethoden erneut bereitzustellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
-3. Wählen Sie **Multi-Factor Authentication** aus. Die Seite „Multi-Factor Authentication“ wird geöffnet. 
+2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+3. Wählen Sie auf der rechten Seite auf der Symbolleiste die Option **Multi-Factor Authentication** aus. Die Seite „Multi-Factor Authentication“ wird geöffnet. 
 4. Aktivieren Sie das Kontrollkästchen neben den Benutzern, die Sie verwalten möchten. Auf der rechten Seite wird eine Liste mit Optionen für schnelle Schritte angezeigt. 
 5. Wählen Sie **Benutzereinstellungen verwalten** aus.
 6. Aktivieren Sie das Kontrollkästchen **Bereitstellen der Kontaktmethoden bei ausgewählten Benutzern erneut anfordern**.
@@ -44,8 +44,8 @@ Diese Einstellung löscht alle App-Kennwörter, die ein Benutzer erstellt hat. N
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Löschen vorhandener App-Kennwörter eines Benutzers
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
-3. Wählen Sie **Multi-Factor Authentication** aus. Die Seite „Multi-Factor Authentication“ wird geöffnet. 
+2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+3. Wählen Sie auf der rechten Seite auf der Symbolleiste die Option **Multi-Factor Authentication** aus. Die Seite „Multi-Factor Authentication“ wird geöffnet. 
 6. Aktivieren Sie das Kontrollkästchen neben den Benutzern, die Sie verwalten möchten. Auf der rechten Seite wird eine Liste mit Optionen für schnelle Schritte angezeigt. 
 7. Wählen Sie **Benutzereinstellungen verwalten** aus.
 8. Aktivieren Sie das Kontrollkästchen **Alle vorhandenen App-Kennwörter löschen, die von den ausgewählten Benutzern erstellt wurden**.
@@ -62,8 +62,8 @@ Die Einstellung **Mehrstufige Authentifizierung für alle gespeicherten Geräte 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>MFA auf allen ausgesetzten Geräten für einen Benutzer wiederherstellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
-3. Wählen Sie **Multi-Factor Authentication** aus. Die Seite „Multi-Factor Authentication“ wird geöffnet. 
+2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+3. Wählen Sie auf der rechten Seite auf der Symbolleiste die Option **Multi-Factor Authentication** aus. Die Seite „Multi-Factor Authentication“ wird geöffnet. 
 6. Aktivieren Sie das Kontrollkästchen neben den Benutzern, die Sie verwalten möchten. Auf der rechten Seite wird eine Liste mit Optionen für schnelle Schritte angezeigt. 
 7. Wählen Sie **Benutzereinstellungen verwalten** aus.
 8. Aktivieren Sie das Kontrollkästchen **Mehrstufige Authentifizierung für alle gespeicherten Geräte wiederherstellen**

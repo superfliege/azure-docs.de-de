@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zum Lebenszyklus von Azure Blueprint
-description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und die einzelnen Phasen.
+title: Grundlegendes zum Lebenszyklus einer Blaupause
+description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und Details zu jeder einzelnen Phase.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,19 +8,20 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 882279019a5f321c6af9beab1f4d0f220781bc5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094158"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309805"
 ---
-# <a name="understand-the-life-cycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprint
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
-Wie viele Ressourcen in Azure weist eine Blaupause in Azure Blueprint einen typischen und natürlichen Lebenszyklus auf. Sie werden erstellt, bereitgestellt und schließlich gelöscht, wenn sie nicht mehr benötigt werden oder nicht mehr von Relevanz sind.
-Blaupausen unterstützen Vorgänge für Standardlebenszyklen. Auf deren Grundlage werden dann zusätzliche Statusebenen bereitgestellt, die allgemeine Continuous Integration- und Continuous Deployment-Pipelines für Organisationen unterstützen, die ihre Infrastruktur als Code verwalten – ein zentraler Aspekt von DevOps.
+Wie viele Ressourcen in Azure weist eine Blaupause in Azure Blueprints einen typischen und natürlichen Lebenszyklus auf. Sie werden erstellt, bereitgestellt und schließlich gelöscht, wenn sie nicht mehr benötigt werden oder nicht mehr von Relevanz sind.
+Blueprints unterstützt Vorgänge für Standardlebenszyklen. Auf deren Grundlage werden dann zusätzliche Statusebenen bereitgestellt, die allgemeine Continuous Integration- und Continuous Deployment-Pipelines für Organisationen unterstützen, die ihre Infrastruktur als Code verwalten – ein zentraler Aspekt von DevOps.
 
-Um einen Überblick über Blaupausen und die Phasen zu vermitteln, wird ein Standardlebenszyklus vorgestellt:
+Um einen Überblick über Blaupausen und ihre einzelnen Phasen zu vermitteln, wird ein Standardlebenszyklus vorgestellt:
 
 > [!div class="checklist"]
 > - Erstellen und Bearbeiten einer Blaupause

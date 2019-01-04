@@ -1,5 +1,5 @@
 ---
-title: Onboarding von Azure Monitor für Container (Vorschauversion) | Microsoft-Dokumentation
+title: Onboardingmethoden für Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie das Onboarding und die Konfiguration von Azure Monitor für Container durchführen, damit Sie erfahren können, wie gut die Leistung Ihrer Container ist und welche leistungsbezogenen Probleme erkannt wurden.
 services: azure-monitor
 documentationcenter: ''
@@ -8,40 +8,39 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/05/2018
+ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 4893141ec199d21e09bfa2b6a790473d983acd32
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 26337f8d1112c4903ee84e8b4300667b49d1d916
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165406"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186598"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Onboarding von Azure Monitor für Container (Vorschauversion) 
+# <a name="how-to-onboard-azure-monitor-for-containers"></a>Onboardingmethoden für Azure Monitor für Container  
 In diesem Artikel wird beschrieben, wie Azure Monitor für Container eingerichtet und verwendet wird, um die Leistung von Workloads zu überwachen, die in Kubernetes-Umgebungen bereitgestellt und von [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) gehostet werden.
 
-Azure Monitor für Container kann für neue Bereitstellungen von AKS mit den folgenden unterstützten Methoden aktiviert werden:
+Azure Monitor für Container kann für neue oder mindestens eine vorhandene Bereitstellung von AKS mit den folgenden unterstützten Methoden aktiviert werden:
 
-* Bereitstellen eines verwalteten Kubernetes-Clusters über das Azure-Portal oder mit der Azure-Befehlszeilenschnittstelle
-* Erstellen eines Kubernetes-Clusters mithilfe von [Terraform und AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
-
-Darüber hinaus können Sie über das Azure-Portal oder mit der Azure-Befehlszeilenschnittstelle die Überwachung für einen oder mehrere AKS-Cluster aktivieren. 
+* Über das Azure-Portal oder mit der Azure-Befehlszeilenschnittstelle
+* Verwenden von [Terraform und AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
-- Einen Log Analytics-Arbeitsbereich. Sie können ihn beim Aktivieren der Überwachung des neuen AKS-Clusters erstellen oder beim Onboarding einen Standardarbeitsbereich in der Standardressourcengruppe des AKS-Clusterabonnements erstellen lassen. Wenn Sie ihn selbst erstellen möchten, können Sie dies über den [Azure Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../log-analytics/log-analytics-quick-create-workspace.md) erledigen.
-- Sie müssen der Rolle „Log Analytics-Mitwirkender“ angehören, um die Containerüberwachung aktivieren zu können. Weitere Informationen zur Zugriffssteuerung auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../../log-analytics/log-analytics-manage-access.md).
+- Einen Log Analytics-Arbeitsbereich Sie können ihn beim Aktivieren der Überwachung des neuen AKS-Clusters erstellen oder beim Onboarding einen Standardarbeitsbereich in der Standardressourcengruppe des AKS-Clusterabonnements erstellen lassen. Wenn Sie ihn selbst erstellen möchten, können Sie dies über den [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md) erledigen.
+- Sie müssen der Rolle „Log Analytics-Mitwirkender“ angehören, um die Containerüberwachung aktivieren zu können. Weitere Informationen zur Zugriffssteuerung auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../../azure-monitor/platform/manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 ## <a name="components"></a>Komponenten 
 
-Die Leistungsüberwachung beruht auf einem containerbasierten Log Analytics-Agent für Linux, der Leistungs- und Ereignisdaten von allen Knoten im Cluster sammelt. Der Agent wird automatisch bereitgestellt und beim angegebenen Log Analytics-Arbeitsbereich registriert, nachdem Sie Azure Monitor für Container aktiviert haben. Dabei wird die Version „microsoft/oms:ciprod04202018“ oder eine höhere Version bereitgestellt (dargestellt im Format *mmttjjjj*). 
+Ihre Möglichkeit zum Überwachen der Leistung hängt von einem containerbasierten Log Analytics-Agent für Linux ab, der speziell für Azure Monitor für Container entwickelt wurde. Dieser spezialisierte Agent sammelt Leistungs- und Ereignisdaten von allen Knoten im Cluster, und der Agent wird während der Bereitstellung automatisch bereitgestellt und mit dem angegebenen Log Analytics-Arbeitsbereich registriert. Dabei wird die Agent-Version „microsoft/oms:ciprod04202018“ oder eine höhere Version bereitgestellt (dargestellt im Format *mmttjjjj*). 
+
+Wenn eine neue Version des Agents veröffentlicht wird, wird er in Ihren Managed Kubernetes-Clustern, die unter Azure Kubernetes Service (AKS) gehostet werden, automatisch aktualisiert. Informationen zu den freigegebenen Versionen finden Sie unter [Agent-Versionsankündigungen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). 
 
 >[!NOTE] 
 >Wenn Sie bereits einen AKS-Cluster bereitgestellt haben, können Sie die Überwachung mithilfe der Azure-Befehlszeilenschnittstelle oder einer bereitgestellten Azure Resource Manager-Vorlage aktivieren (siehe weiter unten in diesem Artikel). Sie können mit `kubectl` kein Upgrade für den Agent durchführen oder diesen löschen, bereitstellen oder erneut bereitstellen. Die Vorlage muss in derselben Ressourcengruppe wie der Cluster bereitgestellt werden.
@@ -52,13 +51,20 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 ## <a name="enable-monitoring-for-a-new-cluster"></a>Aktivieren der Überwachung für einen neuen Cluster
 Sie können die Überwachung eines neuen AKS-Clusters im Rahmen der Bereitstellung über das Azure-Portal, mit der Azure-Befehlszeilenschnittstelle oder mit Terraform aktivieren.  Wenn Sie ihn über das Portal aktivieren möchten, führen Sie die Schritte im Schnellstartartikel [Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)](../../aks/kubernetes-walkthrough-portal.md) durch. Legen Sie auf der Seite **Überwachung** für die Option **Überwachung aktivieren** **Ja** fest, und wählen Sie dann einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen. 
 
+### <a name="enable-using-azure-cli"></a>Aktivieren mithilfe der Azure-Befehlszeilenschnittstelle
 Um die Überwachung eines mit der Azure-Befehlszeilenschnittstelle erstellten neuen AKS-Clusters zu aktivieren, führen Sie die Schritte im Schnellstartartikel im Abschnitt [Erstellen eines AKS-Clusters](../../aks/kubernetes-walkthrough.md#create-aks-cluster) durch.  
 
 >[!NOTE]
 >Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.43 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
 
-Wenn Sie [einen AKS-Cluster mithilfe von Terraform bereitstellen](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), können Sie auch Azure Monitor für Container aktivieren, indem Sie das Argument [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) einschließen und **oms_agent** angeben.  
+### <a name="enable-using-terraform"></a>Aktivieren mithilfe von Terraform
+Wenn Sie [einen neuen AKS-Cluster mit Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md) bereitstellen, geben Sie die Argumente an, die im Profil [zum Erstellen eines Log Analytics-Arbeitsbereichs](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) erforderlich sind, wenn Sie kein vorhandenes Argument angeben. 
+
+>[!NOTE]
+>Wenn Sie sich für Terraform entscheiden, müssen Sie den Terraform Azure RM-Anbieter, Version 1.17.0 oder höher, verwenden.
+
+Informationen zum Hinzufügen von Azure Monitor für Container zum Arbeitsbereich finden Sie unter [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html), und vervollständigen Sie das Profil, indem Sie [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) einbeziehen und **oms_agent** angeben. 
 
 Nachdem Sie die Überwachung aktiviert haben, und alle Konfigurationsaufgaben erfolgreich abgeschlossen wurden, haben Sie zwei Möglichkeiten, die Leistung Ihres Clusters zu überwachen:
 
@@ -97,20 +103,34 @@ Die Ausgabe ähnelt der folgenden:
 provisioningState       : Succeeded
 ```
 
+### <a name="enable-monitoring-using-terraform"></a>Aktivieren der Überwachung mithilfe von Terraform
+1. Fügen Sie das Add-On-Profil **oms_agent** zur vorhandenen [azurerm_kubernetes_cluster resource](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile) hinzu.
+
+   ```
+   addon_profile {
+    oms_agent {
+      enabled                    = true
+      log_analytics_workspace_id = "${azurerm_log_analytics_workspace.test.id}"
+     }
+   }
+   ```
+
+2. Fügen Sie die [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) hinzu, wie in der Terraform-Dokumentation beschrieben.
+
 ### <a name="enable-monitoring-from-azure-monitor"></a>Aktivieren der Überwachung aus Azure Monitor
 Führen Sie die folgenden Schritte aus, um die Überwachung Ihres AKS-Clusters im Azure-Portal aus Azure Monitor zu aktivieren:
 
 1. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
-2. Wählen Sie in der Liste **Container (Vorschau)** aus.
-3. Wählen Sie auf der Seite **Überwachung – Container (Vorschau)** **Nicht überwachte Cluster** aus.
+2. Wählen Sie in der Liste **Container** aus.
+3. Wählen Sie auf der Seite **Überwachung – Container** die Option **Nicht überwachte Cluster** aus.
 4. Suchen Sie in der Liste der nicht überwachten Cluster den Container, und klicken Sie auf **Aktivieren**.   
-5. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Containerintegrität und Protokollen** aus der Dropdownliste aus.  
+5. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Azure Monitor für Container** aus der Dropdownliste aus.  
     Die Liste wählt Standardarbeitsbereich und Speicherort vorab aus, in dem der AKS-Container im Abonnement bereitgestellt wird. 
 
     ![Aktivieren der AKS-Containereinblicküberwachung](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus dem Cluster erstellen möchten, befolgen Sie die Anweisungen in [Erstellen eines Log Analytics-Arbeitsbereichs](../../log-analytics/log-analytics-quick-create-workspace.md). Achten Sie darauf, dass Sie den Arbeitsbereich in demselben Abonnement erstellen, in dem der AKS-Container bereitgestellt wird. 
+    >Wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus dem Cluster erstellen möchten, befolgen Sie die Anweisungen in [Erstellen eines Log Analytics-Arbeitsbereichs](../../azure-monitor/learn/quick-create-workspace.md). Achten Sie darauf, dass Sie den Arbeitsbereich in demselben Abonnement erstellen, in dem der AKS-Container bereitgestellt wird. 
  
 Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden. 
 
@@ -125,14 +145,14 @@ Führen Sie die folgenden Schritte aus, um die Überwachung des AKS-Containers �
     ![Link zu Kubernetes-Diensten](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. Wählen Sie in der Containerliste einen Container aus.
-5. Wählen Sie auf der Containerübersichtsseite **Containerintegrität überwachen** aus.  
-6. Wenn Sie im selben Abonnement wie der Cluster einen Log Analytics-Arbeitsbereich haben, wählen Sie ihn auf der Seite **Onboarding in Containerintegrität und Protokolle** aus der Dropdownliste aus.  
+5. Wählen Sie auf der Containerübersichtsseite **Container überwachen** aus.  
+6. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Azure Monitor für Container** aus der Dropdownliste aus.  
     Die Liste wählt Standardarbeitsbereich und Speicherort vorab aus, in dem der AKS-Container im Abonnement bereitgestellt wird. 
 
     ![Aktivieren der AKS-Containerintegritätsüberwachung](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus dem Cluster erstellen möchten, befolgen Sie die Anweisungen in [Erstellen eines Log Analytics-Arbeitsbereichs](../../log-analytics/log-analytics-quick-create-workspace.md). Achten Sie darauf, dass Sie den Arbeitsbereich in demselben Abonnement erstellen, in dem der AKS-Container bereitgestellt wird. 
+    >Wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus dem Cluster erstellen möchten, befolgen Sie die Anweisungen in [Erstellen eines Log Analytics-Arbeitsbereichs](../../azure-monitor/learn/quick-create-workspace.md). Achten Sie darauf, dass Sie den Arbeitsbereich in demselben Abonnement erstellen, in dem der AKS-Container bereitgestellt wird. 
  
 Nachdem Sie die Überwachung aktiviert haben, kann es ca. 15 Minuten dauern, bis Sie die operativen Daten für den Cluster ansehen können. 
 
@@ -147,7 +167,7 @@ Diese Methode umfasst zwei JSON-Vorlagen. Eine Vorlage gibt die Konfiguration zu
 >Die Vorlage muss in derselben Ressourcengruppe wie der Cluster bereitgestellt werden.
 >
 
-Der Log Analytics-Arbeitsbereich muss manuell erstellt werden. Arbeitsbereiche können über den [Azure Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../log-analytics/log-analytics-quick-create-workspace.md) eingerichtet werden.
+Der Log Analytics-Arbeitsbereich muss manuell erstellt werden. Arbeitsbereiche können über den [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md) eingerichtet werden.
 
 Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vertraut sind, finden Sie weitere Informationen unter:
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)

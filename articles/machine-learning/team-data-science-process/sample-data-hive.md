@@ -1,6 +1,6 @@
 ---
-title: Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen | Microsoft Docs
-description: Komprimieren von Daten in Azure HDInsight (Hadoop) Hive-Tabellen
+title: 'Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen: Team Data Science-Prozess'
+description: Downsampling von in Azure HDInsight Hive-Tabellen gespeicherten Daten mithilfe von Hive-Abfragen, um Daten auf eine für die Analyse besser verwaltbare Größe zu reduzieren.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 793431e6e81712bae5033eff1eecddbf448ce120
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6d833dc41677ddb027964ff535b27324e2b0c3da
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446924"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133076"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen
 In diesem Artikel wird das Downsampling von in Azure HDInsight Hive-Tabellen gespeicherten Daten mithilfe von Hive-Abfragen beschrieben, um Daten auf eine für die Analyse besser verwaltbare Größe zu reduzieren. Dabei werden drei häufig verwendete Samplingmethoden behandelt:
@@ -28,7 +28,7 @@ In diesem Artikel wird das Downsampling von in Azure HDInsight Hive-Tabellen ges
 **Warum eine Datenstichprobe entnehmen?**
 Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Downsampling erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Team Data Science-Prozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
 
-Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Gewusst wie: Übermitteln von Hive-Abfragen
 Hive-Abfragen können in der Hadoop-Befehlszeilenkonsole auf dem Hauptknoten des Hadoop-Clusters übermittelt werden. Dazu melden Sie sich beim Hauptknoten des Hadoop-Clusters an, öffnen die Hadoop-Befehlszeilenkonsole und übermitteln die Hive-Abfragen von dort aus. Informationen zum Übermitteln von Hive-Abfragen in der Hadoop-Befehlszeilenkonsole finden Sie unter [Übermitteln von Hive-Abfragen](move-hive-tables.md#submit).
@@ -81,7 +81,7 @@ Dies ist eine Beispielabfrage für das Erstellen einer Stichprobe nach Gruppe:
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Geschichtete Stichproben
-Zufällige Stichproben sind in Bezug auf eine kategorische Variable geschichtet, wenn die abgerufenen Beispieldaten kategorische Werte enthalten, die im gleichen Verhältnis wie in der übergeordneten Datenmenge vorliegen. Bei dem oben genannten Beispiel besitzen Ihre Daten beispielsweise die folgenden Vorkommen nach Bundesstaat: „NJ“ hat 100 Vorkommen, „NY“ 60 und „WA“ 300. Wenn Sie die Rate für die geschichtete Stichprobe auf 0,5 festlegen, sollte die abgerufene Stichprobe ungefähr 50, 30 und 150 Vorkommen für "NJ", "NY" und "WA" aufweisen.
+Zufällige Stichproben sind in Bezug auf eine kategorische Variable geschichtet, wenn die abgerufenen Beispieldaten kategorische Werte enthalten, die im gleichen Verhältnis wie in der übergeordneten Datenmenge vorliegen. Verwenden Sie das gleiche Beispiel wie oben beschrieben. Angenommen, Ihre Daten weisen die folgenden Beobachtungen nach Zuständen auf: NJ hat 100 Beobachtungen, NY hat 60 Beobachtungen, und WA hat 300 Beobachtungen. Wenn Sie die Rate für die geschichtete Stichprobe auf 0,5 festlegen, sollte die abgerufene Stichprobe ungefähr 50, 30 und 150 Vorkommen für "NJ", "NY" und "WA" aufweisen.
 
 Dies ist eine Beispielabfrage:
 

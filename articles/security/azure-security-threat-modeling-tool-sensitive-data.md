@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262368"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002053"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -130,7 +130,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [How To: Encrypt Configuration Sections in ASP.NET 2.0 Using DPAPI](https://msdn.microsoft.com/library/ff647398.aspx) (Gewusst wie: Verschlüsseln von Konfigurationsabschnitten in ASP.NET 2.0 mithilfe von DPAPI), [Angeben eines geschützten Konfigurationsanbieters](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Using Azure Key Vault to protect application secrets](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) (Schützen von Anwendungsgeheimnissen mithilfe von Azure Key Vault) |
+| **Referenzen**              | [How To: Encrypt Configuration Sections in ASP.NET 2.0 Using DPAPI](https://msdn.microsoft.com/library/ff647398.aspx) (Gewusst wie: Verschlüsseln von Konfigurationsabschnitten in ASP.NET 2.0 mithilfe von DPAPI), [Angeben eines geschützten Konfigurationsanbieters](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Verwenden von Azure Key Vault zum Schützen von Anwendungsgeheimnissen](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **Schritte** | In Konfigurationsdateien wie „web.config“ und „appsettings.json“ werden häufig sensible Informationen wie Benutzernamen, Kennwörter, Datenbankverbindungszeichenfolgen und Verschlüsselungsschlüssel gespeichert. Wenn Sie diese Informationen nicht schützen, können Angreifer oder böswillige Benutzer an sensible Informationen wie Kontobenutzernamen und Kennwörter, Datenbanknamen und Servernamen gelangen. Verschlüsseln Sie daher die sensiblen Abschnitte von Konfigurationsdateien basierend auf dem Bereitstellungstyp (Azure/lokal) mithilfe von DPAPI oder mithilfe von Diensten wie Azure Key Vault. |
 
 ## <a id="autocomplete-input"></a>Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen
@@ -193,7 +193,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | SQL-Version: Alle |
-| **Referenzen**              | [Checkliste: Verschlüsseln sensibler Daten](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [Verschlüsseln einer Datenspalte](https://msdn.microsoft.com/library/ms179331), [ENCRYPTBYCERT (Transact-SQL)](https://msdn.microsoft.com/library/ms188061) |
+| **Referenzen**              | [Checkliste: Verschlüsseln sensibler Daten](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [Vorgehensweise: Verschlüsseln einer Datenspalte](https://msdn.microsoft.com/library/ms179331), [ENCRYPTBYCERT (Transact-SQL)](https://msdn.microsoft.com/library/ms188061) |
 | **Schritte** | Sensible Daten, z.B. Kreditkartennummern, müssen in der Datenbank verschlüsselt sein. Daten können verschlüsselt werden, indem die Verschlüsselung auf Spaltenebene oder eine Anwendungsfunktion für die Verschlüsselung verwendet wird. |
 
 ## <a id="tde-enabled"></a>Sicherstellen, dass die Verschlüsselung auf Datenbankebene (TDE) aktiviert ist
@@ -429,7 +429,7 @@ Legen Sie „clientCredentialType“ auf „Certificate“ oder „Windows“ fe
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Generisch, .NET Framework 3 |
 | **Attribute**              | Sicherheitsmodus: Transport, Sicherheitsmodus: Nachricht |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [Fundamentals of WCF Security CoDe Magazine](http://www.codemag.com/article/0611051) (Grundlagen der WCF-Sicherheit – CoDe Magazine) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [Fundamentals of WCF Security CoDe Magazine](http://www.codemag.com/article/0611051) (Grundlagen der WCF-Sicherheit – CoDe Magazine) |
 | **Schritte** | Es wurde keine Transport- oder Nachrichtensicherheit definiert. Für Anwendungen, die Nachrichten ohne Transport- oder Nachrichtensicherheit übertragen, kann die Integrität oder Vertraulichkeit der Nachrichten nicht garantiert werden. Wenn eine WCF-Sicherheitsbindung auf „None“ festgelegt ist, wird sowohl die Transport- als auch die Nachrichtensicherheit deaktiviert. |
 
 ### <a name="example"></a>Beispiel

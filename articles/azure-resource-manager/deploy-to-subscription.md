@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Ressourcen in Azure-Abonnements | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die Ressourcen im Abonnementbereich bereitstellt.
+title: Erstellen einer Ressourcengruppe und von Ressourcen für das Abonnement – Azure Resource Manager-Vorlage
+description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,22 +9,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 12/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d281ebe80c6089c559cfaa77f4875a856566092
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 5b8247533a8bf51017767aac3a04e47ce6348a60
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079377"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435292"
 ---
-# <a name="deploy-resources-to-an-azure-subscription"></a>Bereitstellen von Ressourcen in einem Azure-Abonnement
+# <a name="create-resource-groups-and-resources-for-an-azure-subscription"></a>Erstellen von Ressourcengruppen und Ressourcen für ein Azure-Abonnement
 
-In der Regel stellen Sie Ressourcen in einer Ressourcengruppe im Azure-Abonnement bereit. Allerdings können einige Ressourcen direkt auf der Azure-Abonnementebene bereitgestellt werden. Diese Ressourcen gelten für das gesamte Abonnement. [Richtlinien](../azure-policy/azure-policy-introduction.md), [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Azure Security Center](../security-center/security-center-intro.md) sind Dienste, die Sie ggf. auf Abonnementebene – statt auf Ressourcengruppenebene – anwenden möchten.
+In der Regel stellen Sie Ressourcen in einer Ressourcengruppe im Azure-Abonnement bereit. Sie können aber die Bereitstellungen auf Abonnementebene verwenden, um Ressourcengruppen und Ressourcen zu erstellen, die übergreifend für Ihr gesamtes Abonnement gelten.
 
-In diesem Artikel werden Vorlagen über die Azure CLI und PowerShell bereitgestellt.
+Um eine Ressourcengruppe in einer Azure Resource Manager-Vorlage zu erstellen, definieren Sie eine Ressource **Microsoft.Resources/resourceGroups** mit einem Namen und einem Speicherort für die Ressourcengruppe. Sie können eine Ressourcengruppe erstellen und Ressourcen für diese Ressourcengruppe in derselben Vorlage bereitstellen.
 
-## <a name="name-and-location-for-deployment"></a>Name und Speicherort für die Bereitstellung
+[Richtlinien](../azure-policy/azure-policy-introduction.md), [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Azure Security Center](../security-center/security-center-intro.md) sind Dienste, die Sie ggf. auf Abonnementebene – statt auf Ressourcengruppenebene – anwenden möchten.
+
+In diesem Artikel wird veranschaulicht, wie Sie Ressourcengruppen und dann Ressourcen erstellen, die für das gesamte Abonnement gelten. Die Vorlagen werden mit der Azure CLI und mit PowerShell bereitgestellt. Sie können das Portal nicht zum Bereitstellen der Vorlagen nutzen, da die Portaloberfläche in der Ressourcengruppe und nicht unter dem Azure-Abonnement bereitgestellt wird.
+
+## <a name="schema-and-commands"></a>Schema und Befehle
+
+Das Schema und die Befehle, die Sie für Bereitstellungen auf Abonnementebene verwenden, unterscheiden sich von Ressourcengruppenbereitstellungen. 
+
+Verwenden Sie für das Schema `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`.
+
+Verwenden Sie als Azure CLI-Bereitstellungsbefehl [az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create).
+
+Verwenden Sie als PowerShell-Bereitstellungsbefehl [New-AzureRmDeployment](/powershell/module/azurerm.resources/new-azurermdeployment).
+
+## <a name="name-and-location"></a>Name und Speicherort
 
 Bei einer Bereitstellung in Ihrem Abonnement müssen Sie einen Speicherort für die Bereitstellung angeben. Sie können auch einen Namen für die Bereitstellung angeben. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlage als Bereitstellungsname verwendet. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
 
@@ -37,6 +51,207 @@ Bei Bereitstellungen auf Abonnementebene sind einige wichtige Aspekte der Verwen
 * Die Funktion [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) wird **nicht** unterstützt.
 * Die Funktion [resourceId()](resource-group-template-functions-resource.md#resourceid) wird unterstützt. Verwenden sie diese Funktion zum Abrufen der Ressourcen-ID für Ressourcen, die in Bereitstellungen auf Abonnementebene verwendet werden. Rufen Sie beispielsweise die Ressourcen-ID für eine Richtliniendefinition mit `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` ab.
 * Die Funktionen [reference()](resource-group-template-functions-resource.md#reference) und [list()](resource-group-template-functions-resource.md#list) werden unterstützt.
+
+## <a name="create-resource-group"></a>Ressourcengruppe erstellen
+
+Im folgenden Beispiel wird eine leere Ressourcengruppe erstellt.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "location": "[parameters('rgLocation')]",
+            "name": "[parameters('rgName')]",
+            "properties": {}
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Stellen Sie diese Vorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az deployment create \
+  -n demoEmptyRG \
+  -l southcentralus \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
+  --parameters rgName=demoRG rgLocation=northcentralus
+```
+
+Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoEmptyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus
+```
+
+## <a name="create-several-resource-groups"></a>Erstellen von mehreren Ressourcengruppen
+
+Verwenden Sie das [copy-Element](resource-group-create-multiple.md) mit Ressourcengruppen, um mehrere Ressourcengruppen erstellen zu können. 
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "rgNamePrefix": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        },
+        "instanceCount": {
+            "type": "int"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "location": "[parameters('rgLocation')]",
+            "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
+            "copy": {
+                "name": "rgCopy",
+                "count": "[parameters('instanceCount')]"
+            },
+            "properties": {}
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Um diese Vorlage mit der Azure CLI bereitzustellen und drei Ressourcengruppen zu erstellen, verwenden Sie Folgendes:
+
+```azurecli-interactive
+az deployment create \
+  -n demoCopyRG \
+  -l southcentralus \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json \
+  --parameters rgNamePrefix=demoRG rgLocation=northcentralus instanceCount=3
+```
+
+Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoCopyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json `
+  -rgNamePrefix demogroup `
+  -rgLocation northcentralus `
+  -instanceCount 3
+```
+
+## <a name="create-resource-group-and-deploy-resource"></a>Erstellen einer Ressourcengruppe und Bereitstellen einer Ressource
+
+Verwenden Sie zum Erstellen der Ressourcengruppe und Bereitstellen von Ressourcen für diese eine geschachtelte Vorlage. Die geschachtelte Vorlage definiert die Ressourcen, die für die Ressourcengruppe bereitgestellt werden sollen. Legen Sie die geschachtelte Vorlage vor der Ressourcenbereitstellung als von der Ressourcengruppe abhängig fest, um sicherzustellen, dass die Ressourcengruppe vorhanden ist.
+
+Das folgende Beispiel erstellt eine Ressourcengruppe und stellt ein Speicherkonto in der Ressourcengruppe bereit.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        },
+        "storagePrefix": {
+            "type": "string",
+            "maxLength": 11
+        }
+    },
+    "variables": {
+        "storageName": "[concat(parameters('storagePrefix'), uniqueString(subscription().id, parameters('rgName')))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "location": "[parameters('rgLocation')]",
+            "name": "[parameters('rgName')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "storageDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Storage/storageAccounts",
+                            "apiVersion": "2017-10-01",
+                            "name": "[variables('storageName')]",
+                            "location": "[parameters('rgLocation')]",
+                            "kind": "StorageV2",
+                            "sku": {
+                                "name": "Standard_LRS"
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Stellen Sie diese Vorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az deployment create \
+  -n demoRGStorage \
+  -l southcentralus \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json \
+  --parameters rgName=rgStorage rgLocation=northcentralus storagePrefix=storage
+```
+
+Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoRGStorage `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json `
+  -rgName rgStorage `
+  -rgLocation northcentralus `
+  -storagePrefix storage
+```
 
 ## <a name="assign-policy"></a>Zuweisen der Richtlinie
 
@@ -257,7 +472,5 @@ New-AzureRmDeployment `
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) finden Sie ein Beispiel für die Bereitstellung von Arbeitsbereichseinstellungen für Azure Security Center.
-* Informationen zum Erstellen einer Ressourcengruppe finden Sie unter [Erstellen von Ressourcengruppen in Azure Resource Manager-Vorlagen](create-resource-group-in-template.md).
 * Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md). 
 * Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
-

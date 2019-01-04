@@ -1,6 +1,6 @@
 ---
-title: Indizieren einer Azure Cosmos DB-Datenquelle für Azure Search | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Indexer mit einer Azure Cosmos DB-Datenquelle erstellen.
+title: Indizieren einer Azure Cosmos DB-Datenquelle – Azure Search
+description: Durchforsten Sie eine Azure Cosmos DB-Datenquelle, und erfassen Sie Daten in einem durchsuchbaren Volltextindex in Azure Search. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Cosmos DB.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec2018
+ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747540"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311812"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Verbinden von Cosmos DB mit Azure Search mithilfe von Indexern
 
@@ -96,10 +97,10 @@ Führen Sie einen POST aus, um eine Datenquelle zu erstellen:
 Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Felder enthalten sollte:
 
 * **Name**: Wählen Sie einen beliebigen Namen für Ihre Datenbank.
-* **type**: Muss `documentdb` lauten.
+* **Typ**: Muss `documentdb`lauten.
 * **Anmeldeinformationen**:
   
-  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen zu Ihrer Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`. Fügen Sie für MongoDB-Sammlungen **ApiKind=MongoDb** der Verbindungszeichenfolge hinzu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`.
+  * **connectionString**: Erforderlich. Geben Sie die Verbindungsinformationen für Ihre Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` Für MongoDB-Sammlungen fügen Sie **ApiKind=MongoDb** zur Verbindungszeichenfolge hinzu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   Vermeiden Sie Portnummern in der Endpunkt-URL. Wenn Sie die Portnummer einfügen, kann Azure Search Ihre Azure Cosmos DB-Datenbank nicht indizieren.
 * **Container**:
   
@@ -187,7 +188,7 @@ Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Que
 | Zeichenfolge |Edm.String |
 | Arrays primitiver Typen, z.B. ["a", "b", "c"] |Collection(Edm.String) |
 | Zeichenfolgen, die wie Datumsangaben aussehen |Edm.DateTimeOffset, Edm.String |
-| GeoJSON-Objekte, z.B. { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
+| GeoJSON-Objekte, z. B. { „type“: “Point“, „coordinates“: [long, lat] } |Edm.GeographyPoint |
 | Andere JSON-Objekte |N/V |
 
 <a name="CreateIndexer"></a>

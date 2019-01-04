@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: a564e72cc695830edfa5092eddc1f4f9b80ba519
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b4f38d80bfddc342d83a3552efe5d4a60cf6350f
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583532"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680122"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Grundlegendes zum Azure-Ausgabenlimit und zu dessen Entfernung
 
@@ -29,7 +29,7 @@ Mit dem Ausgabenlimit in Azure wird verhindert, dass Sie Ihren Gutschriftbetrag 
 
 Wenn durch Ihre Nutzung Gebühren anfallen, die die monatlichen Gutschriften Ihres Abonnements überschreiten, werden die von Ihnen bereitgestellten Dienste für den verbleibenden Zeitraum des jeweiligen Abrechnungszeitraums deaktiviert. 
 
-Wenn Sie beispielsweise die gesamte in Ihrem Abonnement enthaltene Gutschrift verbrauchen, werden die von Ihnen bereitgestellten Clouddienste aus der Produktion entfernt sowie Ihre virtuellen Azure-Computer angehalten und die entsprechende Zuordnung aufgehoben. Die Daten in Ihren Speicherkonten und Datenbanken sind in diesem Fall nur schreibgeschützt verfügbar.
+Wenn Sie beispielsweise die gesamte in Ihrem Abonnement enthaltene Gutschrift verbrauchen, werden die von Ihnen bereitgestellten Clouddienste aus der Produktion entfernt sowie Ihre virtuellen Azure-Computer angehalten und die entsprechende Zuordnung aufgehoben. Die Daten in Ihren Speicherkonten sind in diesem Fall nur schreibgeschützt verfügbar.
 
 Wenn Ihr Abonnementangebot Gutschriften für mehrere Monate beinhaltet, wird Ihr Abonnement zu Beginn des nächsten Abrechnungszeitraums automatisch erneut aktiviert. Sie können dann Ihre Cloud Services-Instanzen erneut bereitstellen und haben Vollzugriff auf Ihre Speicherkonten und Datenbanken.
 
@@ -46,7 +46,7 @@ Wenn eine gültige Zahlungsmethode für Ihr Abonnement festgelegt wurde, können
 Führen Sie die folgenden Schritte aus, um das Ausgabenlimit zu entfernen:
 
 1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/Subscriptions) an.
-1. Wählen Sie ein Abonnement aus. Wenn das Abonnement deaktiviert wurde, weil das Ausgabenlimit erreicht wurde, klicken Sie auf die Benachrichtigung „Abonnement hat das Ausgabenlimit erreicht und wurde deaktiviert, um zu verhindern, dass Kosten anfallen.“ Klicken Sie andernfalls im Bereich **ABONNEMENTSTATUS** auf **Ausgabenlimit entfernen**.
+1. Wählen Sie ein Abonnement aus. Ist das Abonnement deaktiviert, weil das Ausgabenlimit erreicht wurde, klicken Sie auf die folgende Benachrichtigung: „Das Abonnement wurde deaktiviert, um zu verhindern, dass Gebühren anfallen.“ Klicken Sie andernfalls im Bereich **ABONNEMENTSTATUS** auf **Ausgabenlimit entfernen**.
 1. Wählen Sie die gewünschte Option aus.
 
 ![Auswählen einer Option zum Entfernen des Ausgabenlimits](./media/billing-spending-limit/remove-spending-limit.PNG)

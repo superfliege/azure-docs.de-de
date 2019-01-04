@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: v-jysur
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1d077fc8a853f145d271fa69d453ea2ea70ab696
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ff66b386a6293c11ad67ec90e165b927ad6669b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319079"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870553"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Anmerkungen zu dieser Version für Microsoft Azure Backup Server
 Dieser Artikel enthält Informationen über die bekannten Probleme und Problemumgehungen für Microsoft Azure Backup Server (MABS) V3.
 
 ##  <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Sicherung und Wiederherstellung ist für gruppierte Workloads nicht möglich
 
-**Beschreibung:** Bei Sicherung/Wiederherstellung gruppierter Datenquellen wie z.B. Hyper-V-Cluster oder SQL-Cluster (SQL AlwaysOn) oder Exchange in einer Datenbankverfügbarkeitsgruppe (Database Availability Group, DAG) tritt nach dem Upgrade von MABS V2 auf MABS V3 ein Fehler auf.
+**Beschreibung:** Beim Sichern/Wiederherstellen gruppierter Datenquellen wie z.B. Hyper-V-Cluster oder SQL-Cluster (SQL AlwaysOn) oder Exchange in einer Datenbankverfügbarkeitsgruppe (Database Availability Group, DAG) tritt nach dem Upgrade von MABS V2 auf MABS V3 ein Fehler auf.
 
-**Problemumgehung:** Um dies zu verhindern, öffnen Sie SQL Server Management Studio (SSMS), und führen Sie das folgende SQL-Skript auf der DPM-Datenbank aus:
+**Problemumgehung:** Um dies zu verhindern, öffnen Sie SQL Server Management Studio (SSMS), und führen Sie das folgende SQL-Skript für die DPM-Datenbank aus:
 
 
     IF EXISTS (SELECT * FROM dbo.sysobjects
@@ -56,7 +56,7 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 
 **Beschreibung:** Beim Upgrade von MABS V2 auf MABS V3 tritt im russischen Gebietsschema ein Fehler mit dem Fehlercode **4387** auf.
 
-**Problemumgehung:** Führen Sie zum Upgrade auf MABS V3 mithilfe des russischen Installationspakets die folgenden Schritte aus:
+**Problemumgehung:** Führen Sie zum Durchführen des Upgrades auf MABS V3 mithilfe des russischen Installationspakets die folgenden Schritte aus:
 
 1.  [Sichern](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) Sie Ihre SQL-Datenbank, und deinstallieren Sie MABS V2 (wählen Sie das Beibehalten der geschützten Daten während der Deinstallation aus).
 2.  Führen Sie ein Upgrade auf SQL 2017 (Enterprise) durch, und deinstallieren Sie die Berichterstellung als Teil des Upgrades.
@@ -77,4 +77,4 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Neuerungen in Microsoft Azure Backup Server](backup-mabs-whats-new-mabs.md)
+[Neuerungen in MABS V3](backup-mabs-whats-new-mabs.md)

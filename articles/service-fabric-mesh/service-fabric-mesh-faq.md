@@ -5,18 +5,19 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 06/25/2018
+ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+manager: jeanpaul.connock
+ms.openlocfilehash: 7103557d19b367be0b9f0aa6f4a4642800c14558
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278309"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314828"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
+
 Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der es Entwicklern ermöglicht, Microservicesanwendungen zu implementieren, ohne virtuelle Computer, Speicher oder Netzwerke verwalten zu müssen. Dieser Artikel bietet Antworten auf häufig gestellte Fragen.
 
 ## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Wie melde ich ein Problem oder stelle ich eine Frage?
@@ -25,31 +26,33 @@ Im [GitHub-Repository service-fabric-mesh-preview](https://aka.ms/sfmeshissues) 
 
 ## <a name="quota-and-cost"></a>Kontingent und Kosten
 
-**Wie hoch sind die Kosten für die Teilnahme an der Vorschauversion?**
+### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Wie hoch sind die Kosten für die Teilnahme an der Vorschauversion?
 
 Es fallen derzeit keine Kosten für die Bereitstellung von Anwendungen oder Containern in der Vorschauversion von Mesh an. Sie werden jedoch gebeten, die von Ihnen bereitgestellten Ressourcen zu löschen und nicht weiter auszuführen, es sei denn, Sie testen sie aktiv.
 
-**Gibt es eine Kontingentgrenze für die Anzahl der Kerne und den Arbeitsspeicher?**
+### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Gibt es eine Kontingentgrenze für die Anzahl der Kerne und den Arbeitsspeicher?
 
-Ja, die Kontingente für jedes Abonnement sind wie folgt festgelegt:
+Ja. Die Kontingente für jedes Abonnement sind wie folgt:
 
-- Anzahl von Anwendungen: 5 
-- Kerne pro Anwendung: 12 
-- RAM insgesamt pro Anwendung: 48 GB 
-- Netzwerk- und Eingangsendpunkte: 5  
-- Anfügbare Azure-Volumes: 10 
-- Anzahl der Dienstreplikate: 3 
+- Anzahl von Anwendungen: 5
+- Kerne pro Anwendung: 12
+- RAM insgesamt pro Anwendung: 48 GB
+- Netzwerk- und Eingangsendpunkte: 5
+- Anfügbare Azure-Volumes: 10
+- Anzahl der Dienstreplikate: 3
 - Der größte Container, den Sie bereitstellen können, ist auf 4 Kerne und 16 GB RAM beschränkt.
 - Sie können Ihren Containern Teilkerne in Schritten von 0,5 Kernen bis maximal 6 Kernen zuweisen.
 
-**Wie lange kann ich meine Anwendung bereitgestellt lassen?**
+### <a name="how-long-can-i-leave-my-application-deployed"></a>Wie lange kann ich meine Anwendung bereitgestellt lassen?
 
-Wir haben die Lebensdauer einer Anwendung zurzeit auf zwei Tage beschränkt. Dadurch soll die Verwendung der für die Vorschau reservierten freien Kerne maximiert werden. Daher dürfen Sie eine bestimmten Bereitstellung nur für 48 Stunden durchgehend ausführen. Nach Ablauf dieser Zeit wird sie durch das System heruntergefahren. Wenn dies geschieht, können Sie bestätigen, dass das System sie heruntergefahren hat, indem Sie in der Azure-Befehlszeilenschnittstelle den Befehl `az mesh app show` ausführen und überprüfen, ob er `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` zurückgibt. 
+Wir haben die Lebensdauer einer Anwendung zurzeit auf zwei Tage beschränkt. Dadurch soll die Verwendung der für die Vorschau reservierten freien Kerne maximiert werden. Daher dürfen Sie eine bestimmten Bereitstellung nur für 48 Stunden durchgehend ausführen. Danach wird sie heruntergefahren.
+
+Wenn dies geschieht, können Sie bestätigen, dass das System sie heruntergefahren hat, indem Sie in der Azure CLI den Befehl `az mesh app show` ausführen. Überprüfen Sie, ob er `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` zurückgibt. 
 
 Beispiel:  
 
 ```cli
-chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -72,28 +75,73 @@ chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name hello
 }
 ```
 
-Um dieselbe Anwendung in Mesh weiterhin bereitzustellen, sollten Sie die der Anwendung zugeordnete Ressourcengruppe löschen oder die Anwendung und alle zugehörigen Mesh-Ressourcen (einschließlich des Netzwerks) einzeln entfernen. 
-
-Um die Ressourcengruppe zu löschen, verwenden Sie den Befehl `az group delete <nameOfResourceGroup>`. 
+Um die Ressourcengruppe zu löschen, verwenden Sie den Befehl `az group delete <nameOfResourceGroup>`.
 
 ## <a name="supported-container-os-images"></a>Unterstützte Images von Containerbetriebssystemen
-Die folgenden Images von Containerbetriebssystemen können beim Bereitstellen von Diensten verwendet werden.
+
+Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows Fall Creators Update (Version 1709) installiert ist, können Sie nur Docker-Images für die Windows-Version 1709 verwenden.
+
+Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows 10-Update vom April 2018 (Version 1803) installiert ist, können Sie entweder Docker-Images für Windows-Version 1709 oder 1803 verwenden.
+
+Die folgenden Images von Containerbetriebssystemen können beim Bereitstellen von Diensten verwendet werden:
 
 - Windows: windowsservercore und nanoserver
-    - Windows Server 2016
     - Windows Server, Version 1709
+    - Windows Server, Version 1803
 - Linux
     - Keine bekannten Einschränkungen
 
-## <a name="features-gaps-and-known-issues"></a>Funktionslücken und bekannte Probleme
+## <a name="developer-experience-issues"></a>Probleme der Entwicklerumgebung
 
-**Nach der Bereitstellung meiner Anwendung scheint die damit verbundene Netzwerkressource keine IP-Adresse zu haben**
+### <a name="dns-resolution-from-an-outbound-container-doesnt-work"></a>DNS-Auflösung von einem ausgehenden Container funktioniert nicht
 
-Es gibt derzeit ein bekanntes Problem mit der IP-Adresse, das nach einer Verzögerung auftritt. Überprüfen Sie den Status der Netzwerkressource nach wenigen Minuten. Die zugehörige IP-Adresse wird dann angezeigt.
+Die Dienst-zu-Dienst-Kommunikation kann unter bestimmten Umständen fehlschlagen. Dies wird zurzeit untersucht. So minimieren Sie die Auswirkungen des Problems:
 
-**Meine Anwendung kann nicht auf die richtige Netzwerk-/Volumeressource zugreifen**
+- Verwenden Sie Windows Fall Creators Update (Version 1709) oder höher als Basiscontainerimage.
+- Wenn der Dienstname allein nicht funktioniert, versuchen Sie es mit dem vollqualifizierten Namen: ServiceName.ApplicationName.
+- Fügen Sie in der Docker-Datei für Ihren Dienst `EXPOSE <port>` hinzu. Dabei ist „port“ der Port, über den Ihr Dienst bereitgestellt wird. Beispiel: 
 
-In Ihrem Anwendungsmodell müssen Sie die vollständige Ressourcen-ID für Netzwerke und Volumes verwenden, um auf die zugehörige Ressource zugreifen zu können. So sieht dies im Schnellstartbeispiel aus:
+```
+EXPOSE 80
+```
+
+### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>DNS funktioniert nicht so wie in meinen Service Fabric-Entwicklungsclustern und in Mesh
+
+Möglicherweise müssen Sie auf Dienste in Ihrem lokalen Entwicklungscluster anders als in Azure Mesh verweisen.
+
+Verwenden Sie in Ihrem lokalen Entwicklungscluster `{serviceName}.{applicationName}`. Verwenden Sie in Azure Service Fabric Mesh `{servicename}`. 
+
+Azure Mesh unterstützt zurzeit keine anwendungsübergreifende DNS-Auflösung.
+
+Informationen zu anderen bekannten DNS-Problemen bei der Ausführung eines Service Fabric-Entwicklungsclusters unter Windows 10 finden Sie hier: [Debuggen von Windows-Containern](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) und [Bekannte DNS-Probleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+
+### <a name="networking"></a>Netzwerk
+
+Die ServiceFabric-Netzwerk-NAT wird möglicherweise nicht mehr angezeigt, während Sie Ihre Anwendung auf Ihrem lokalen Computer ausführen. Um zu festzustellen, ob dies der Fall ist, führen Sie Folgendes an einer Eingabeaufforderung aus:
+
+`docker network ls`. Achten Sie darauf, ob `servicefabric_nat` aufgeführt wird.  Wenn dies nicht der Fall ist, führen Sie den folgenden Befehl aus: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+
+Dadurch wird das Problem behoben, auch wenn die App bereits lokal bereitgestellt wurde und einen nicht integren Zustand aufweist.
+
+### <a name="issues-running-multiple-apps"></a>Probleme beim Ausführen mehrerer Apps
+
+Es kann vorkommen, dass die CPU-Verfügbarkeit und Einschränkungen für alle Anwendungen festgelegt sind. So minimieren Sie die Auswirkungen des Problems:
+- Erstellen Sie einen Cluster mit fünf Knoten.
+- Verringern Sie die CPU-Auslastung in Diensten der App, die bereitgestellt wird. Ändern Sie z.B. in der Datei „service.yaml“ Ihres Diensts `cpu: 1.0` in `cpu: 0.5`.
+
+Mehrere Anwendungen können nicht in einem Cluster mit einem Knoten bereitgestellt werden. So minimieren Sie die Auswirkungen des Problems:
+- Verwenden Sie einen Cluster mit fünf Knoten, wenn Sie mehrere Apps in einem lokalen Cluster bereitstellen.
+- Entfernen Sie Apps, die Sie zurzeit nicht testen.
+
+## <a name="feature-gaps-and-other-known-issues"></a>Featurelücken und andere bekannte Probleme
+
+### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Nach der Bereitstellung meiner Anwendung weist die damit verbundene Netzwerkressource keine IP-Adresse auf
+
+Es gibt ein bekanntes Problem, durch das die IP-Adresse nicht sofort zur Verfügung gestellt wird. Überprüfen Sie den Status der Netzwerkressource nach wenigen Minuten. Die zugehörige IP-Adresse wird dann angezeigt.
+
+### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Meine Anwendung kann nicht auf die richtige Netzwerk-/Volumeressource zugreifen
+
+Verwenden Sie in Ihrem Anwendungsmodell die vollständige Ressourcen-ID für Netzwerke und Volumes, um auf die zugehörige Ressource zugreifen zu können. Dieses Beispiel stammt aus dem Schnellstartbeispiel:
 
 ```json
 "networkRefs": [
@@ -103,49 +151,9 @@ In Ihrem Anwendungsmodell müssen Sie die vollständige Ressourcen-ID für Netzw
 ]
 ```
 
-**Ich kann nicht erkennen, wie das gegenwärtige Anwendungsmodell meine Geheimnisse verschlüsseln kann**
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Wenn ich horizontal hochskalieren, sind alle meine Container betroffen, einschließlich derjenigen, die aktuell ausgeführt werden
 
-Die Verschlüsselung von Geheimnissen wird in der aktuellen privaten Vorschau nicht unterstützt. 
-
-**DNS funktioniert in meinem Service Fabric-Entwicklungscluster und in Mesh nicht gleich**
-
-Es gibt ein bekanntes Problem, aufgrund dessen Sie auf Dienste in Ihrem lokalen Entwicklungscluster und in Azure Mesh ggf. anders verweisen müssen. Verwenden Sie in Ihrem lokalen Entwicklungscluster {Dienstname}.{Anwendungsname}. Verwenden Sie in Azure Service Fabric Mesh {Dienstname}. Azure Mesh unterstützt derzeit nicht die anwendungsübergreifende DNS-Auflösung.
-
-Informationen zu anderen bekannten DNS-Problemen bei der Ausführung eines Service Fabric-Entwicklungsclusters unter Windows 10 finden Sie hier: [Debuggen von Windows-Containern](/azure/service-fabric/service-fabric-how-to-debug-windows-containers).
-
-**Beim Verwenden des CLI-Moduls erhalte ich diese Fehlermeldung: _ImportError: cannot import name 'sdk_no_wait'**
-
-Wenn Sie eine ältere CLI-Version als 2.0.30 verwenden, können Sie diese Fehlermeldung erhalten.
-
-```
-cannot import name 'sdk_no_wait'
-Traceback (most recent call last):
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\knack\cli.py", line 193, in invoke cmd_result = self.invocation.execute(args)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core\commands_init_.py", line 241, in execute self.commands_loader.load_arguments(command)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core_init_.py", line 201, in load_arguments self.command_table[command].load_arguments() # this loads the arguments via reflection
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core\commands_init_.py", line 142, in load_arguments super(AzCliCommand, self).load_arguments()
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\knack\commands.py", line 76, in load_arguments cmd_args = self.arguments_loader()
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core_init_.py", line 332, in default_arguments_loader op = handler or self.get_op_handler(operation)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core_init_.py", line 375, in get_op_handler op = import_module(mod_to_import)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\importlib_init_.py", line 126, in import_module return _bootstrap._gcd_import(name[level:], package, level)
-File "", line 978, in _gcd_import
-File "", line 961, in _find_and_load
-File "", line 950, in _find_and_load_unlocked
-File "", line 655, in _load_unlocked
-File "", line 678, in exec_module
-File "", line 205, in _call_with_frames_removed
-File "C:\Users\annayak.azure\cliextensions\azure-cli-sbz\azext_sbz\custom.py", line 18, in 
-from azure.cli.core.util import get_file_json, shell_safe_json_parse, sdk_no_wait
-ImportError: cannot import name 'sdk_no_wait'.
-```
-
-**Ich erhalte einen Fehler beim Installieren des CLI-Erweiterungspakets aufgrund eines nicht übereinstimmenden Distributionsnamens**
-
-Dies bedeutet nicht, dass die Erweiterung nicht installiert wurde. Sie sollten die CLI-Befehle weiterhin problemlos verwenden können.
-
-**Wenn ich horizontal hochskalieren, sehe ich, dass alle meine Container betroffen sind, einschließlich derjenigen, die gerade ausgeführt werden**
-
-Dies ist ein Programmfehler, der mit der nächsten Aktualisierung behoben werden sollte.
+Dies ist ein Fehler, und eine Lösung wird zurzeit implementiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

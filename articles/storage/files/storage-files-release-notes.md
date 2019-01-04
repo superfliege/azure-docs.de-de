@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/10/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 45f77c3065feeb011a10bc345c22082b6a89529c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5bea4c655e9a8970d8d0d946827cc3e46e7efa7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582818"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255158"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -25,7 +25,9 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 | Meilenstein | Agent-Versionsnummer | Herausgabedatum | Status |
 |----|----------------------|--------------|------------------|
-| Release V4 | 4.0.1.0 | 13. November 2018 | Unterstützt (empfohlene Version) |
+| Updaterollup aus Dezember: [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. Dezember 2018 | Unterstützt (empfohlene Version) |
+| Updaterollup aus Dezember | 4.1.0.0 | 4. Dezember 2018 | Unterstützt |
+| Release V4 | 4.0.1.0 | 13. November 2018 | Unterstützt |
 | Updaterollup von September | 3.3.0.0 | 24. September 2018 | Unterstützt |
 | Updaterollup aus August | 3.2.0.0 | 15. August 2018 | Unterstützt |
 | Allgemeine Verfügbarkeit | 3.1.0.0 | 19. Juli 2018 | Unterstützt |
@@ -42,6 +44,22 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-4200"></a>Agent-Version 4.2.0.0
+Die folgenden Versionshinweise gelten für Version 4.2.0.0 des Azure-Dateisynchronisierungs-Agents (Veröffentlichung: 10. Dezember 2018). Diese Anmerkungen gelten zusätzlich zu den Anmerkungen zu dieser Version, die für Version 4.0.1.0 angegeben sind.
+
+Liste der in dieser Version behobenem Probleme:  
+- Ein Abbruchfehler vom Typ „0x3B“ oder „0x1E“ kann auftreten, wenn eine VSS-Momentaufnahme erstellt wird.  
+- Ein Arbeitsspeicherverlust kann auftreten, wenn Cloudtiering aktiviert ist.  
+
+## <a name="agent-version-4100"></a>Agent-Version 4.1.0.0
+Die folgenden Versionshinweise gelten für Version 4.1.0.0 des Azure-Dateisynchronisierungs-Agents (Veröffentlichung: 4. Dezember 2018). Diese Anmerkungen gelten zusätzlich zu den Anmerkungen zu dieser Version, die für Version 4.0.1.0 angegeben sind.
+
+Liste der in dieser Version behobenem Probleme:  
+- Der Server reagiert ggf. aufgrund eines Cloudtiering-Speicherverlusts nicht mehr.  
+- Fehler bei der Agent-Installation: Fehler 1921. Der Dienst „Speichersynchronisierungs-Agent“ (FileSyncSvc) konnte nicht beendet werden.  Überprüfen Sie, ob Sie über ausreichend Rechte verfügen, um Systemdienste zu beenden.  
+- Der Speichersynchronisierungs-Agent-Dienst (FileSyncSvc) stürzt möglicherweise ab, wenn die Speicherauslastung hoch ist.  
+- Verschiedene Zuverlässigkeitverbesserungen für Cloudtiering und Synchronisierung.
 
 ## <a name="agent-version-4010"></a>Agent-Version 4.0.1.0
 Die folgenden Versionshinweise gelten für Version 4.0.1.0 des Azure-Dateisynchronisierungs-Agents (Veröffentlichung: 13. November 2018).
@@ -107,10 +125,10 @@ Folgende Elemente werden nicht synchronisiert, aber der restliche Systembetrieb 
 ## <a name="agent-version-3300"></a>Agent-Version 3.3.0.0
 Die folgenden Anmerkungen zu dieser Version gelten für Version 3.3.0.0 des Azure-Dateisynchronisierungs-Agents, die am 24. September 2018 veröffentlicht wurde. Diese Anmerkungen gelten zusätzlich zu den Anmerkungen zu dieser Version, die für Version 3.1.0.0 angegeben sind.
 
-Diese Version umfasst die folgende Fehlerbehebung:
+Liste der in dieser Version behobenem Probleme:
 - Status des registrierten Servers ist nach dem Upgrade des Azure-Dateisynchronisierungs-Agents auf Version 3.1 oder 3.2 „Anscheinend offline“.
 - Speichersynchronisierungs-Agent-Dienst (FileSyncSvc) stürzt aufgrund von Dateien mit langen Pfaden ab.
-- Fehler bei der Serverregistrierung mit Fehlermeldung: Datei oder Assembly „Kailani.Afs.StorageSyncProtocol.V3“ konnte nicht geladen werden.
+- Fehler bei der Serverregistrierung: Datei oder Assembly „Kailani.Afs.StorageSyncProtocol.V3“ konnte nicht geladen werden.
 
 ## <a name="agent-version-3200"></a>Agent-Version 3.2.0.0
 Die folgenden Anmerkungen zu dieser Version gelten für Version 3.2.0.0 des Azure-Dateisynchronisierungs-Agents (Veröffentlichung: 15. August 2018). Diese Anmerkungen gelten zusätzlich zu den Anmerkungen zu dieser Version, die für Version 3.1.0.0 angegeben sind.

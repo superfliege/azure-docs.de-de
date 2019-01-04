@@ -2,22 +2,22 @@
 title: Verwenden von Modern Backup Storage mit Azure Backup Server
 description: In diesem Artikel erfahren Sie mehr über die neuen Features in Azure Backup Server. Dieser Artikel beschreibt, wie Sie Ihre Backup-Server-Installation aktualisieren.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: markgal; adigan; kasinh
-ms.openlocfilehash: da9b3d22dce3f92ff6d1a588d283d47f22fca736
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: adigan
+ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612966"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251112"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Hinzufügen von Speicher zu Azure Backup Server
 
-Azure Backup Server v2 und höhere Versionen bieten die System Center 2016 Data Protection Manager-Funktion Modern Backup Storage. Modern Backup Storage ermöglicht Speichereinsparungen von bis zu 50 %, dreimal schnellere Sicherungen und eine effizientere Speicherung. Zudem wird workloadorientierter Speicher geboten.
+Azure Backup Server v2 und höhere Versionen unterstützen Modern Backup Storage. Dieses Feature ermöglicht Speichereinsparungen von bis zu 50 %, dreimal schnellere Sicherungen und eine effizientere Speicherung. Zudem wird workloadorientierter Speicher geboten.
 
 > [!NOTE]
 > Zum Verwenden von Modern Backup Storage müssen Sie Backup Server v2 oder v3 unter Windows Server 2016 oder v3 unter Windows Server 2019 ausführen.
@@ -75,7 +75,7 @@ Mithilfe von workloadorientiertem Speicher können Sie die Volumes auswählen, a
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Sie können workloadorientierten Speicher mithilfe des PowerShell-Cmdlets „Update-DPMDiskStorage“ einrichten, das die Eigenschaften eines Volumes im Speicherpool auf einem Data Protection Manager-Server aktualisiert.
+Sie können workloadorientierten Speicher mithilfe des PowerShell-Cmdlets „Update-DPMDiskStorage“ einrichten, das die Eigenschaften eines Volumes im Speicherpool einer Azure Backup Server-Instanz aktualisiert. 
 
 Syntax:
 

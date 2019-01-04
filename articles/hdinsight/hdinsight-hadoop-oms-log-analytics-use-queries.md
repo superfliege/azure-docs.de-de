@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a4c4017d7fa798559817c281d159148ec675d158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281352"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386501"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Abfragen von Azure Log Analytics zum Überwachen von HDInsight-Clustern
 
@@ -46,7 +46,7 @@ Erfahren Sie, wie Sie nach bestimmten Metriken für Ihren HDInsight-Cluster such
 
 5. Wählen Sie im linken Bereich unter **Typ** eine Metrik aus, die Sie näher untersuchen möchten, und anschließend **Anwenden**. Im folgenden Screenshot ist der Typ `metrics_resourcemanager_queue_root_default_CL` ausgewählt.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Unter Umständen müssen Sie die Schaltfläche **[+]Weitere** wählen, um die gesuchte Metrik zu finden. Außerdem befindet sich die Schaltfläche **Übernehmen** am unteren Rand der Liste, sodass Sie nach unten scrollen müssen, um sie anzuzeigen.
 
     Beachten Sie, dass die Abfrage im Textfeld jetzt in die Abfrage geändert wird, die im folgenden Screenshot im hervorgehoben Feld angezeigt wird:
@@ -115,7 +115,7 @@ Bearbeiten oder löschen Sie eine vorhandene Warnung wie folgt:
 1. Öffnen Sie im Azure-Portal den Log Analytics-Arbeitsbereich.
 2. Wählen Sie im Menü auf der linken Seite die Option **Warnung**.
 3. Wählen Sie die Warnung aus, die Sie bearbeiten oder löschen möchten.
-4. Sie haben folgende Optionen: **Speichern**, **Verwerfen**, **Deaktivieren** und **Löschen**.
+4. Folgende Optionen stehen zur Auswahl: **Speichern**, **Verwerfen**, **Deaktivieren** und **Löschen**.
 
     ![HDInsight Log Analytics – Warnung – Löschen/Bearbeiten](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

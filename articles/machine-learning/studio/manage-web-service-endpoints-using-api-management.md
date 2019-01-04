@@ -1,13 +1,12 @@
 ---
 title: Verwalten von Machine Learning Studio-Webdiensten mit API Management – Azure | Microsoft-Dokumentation
-description: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten.
+description: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten. Verwalten Sie Ihre REST-API-Endpunkte, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren.
 keywords: Maschinelles Lernen,API Management
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8f82332b02d2e7bbf937a84de42714392e3fccd6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308238"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258184"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Verwalten von Azure Machine Learning Studio-Webdiensten mit API Management
 ## <a name="overview"></a>Übersicht
@@ -224,7 +223,7 @@ Klicken Sie auf **Yes** , um das Experiment zu veröffentlichen.
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Testen des Webdiensts
-Ein Azure ML-Webdienst besteht aus RRS-Endpunkten (Request/Response Service, Anforderungs-/Antwortdienst) und BES-Endpunkten (Batch Execution Service, Batchausführungsdienst). RRS dient zur synchronen Ausführung. BES dient zur asynchronen Auftragsausführung. Um Ihren Webdienst mit dem unten aufgeführten Python-Beispielcode zu testen, müssen Sie möglicherweise das Azure-SDK für Python herunterladen und installieren (siehe [Installieren von Python und SDK](../../python-how-to-install.md)).
+Ein Azure ML-Webdienst besteht aus RRS-Endpunkten (Request/Response Service, Anforderungs-/Antwortdienst) und BES-Endpunkten (Batch Execution Service, Batchausführungsdienst). RRS dient zur synchronen Ausführung. BES dient zur asynchronen Auftragsausführung. Um Ihren Webdienst mit dem unten aufgeführten Python-Beispielcode zu testen, müssen Sie möglicherweise das Azure-SDK für Python herunterladen und installieren (siehe: [Installieren von Python](../../python-how-to-install.md)).
 
 Sie benötigen auch den **Arbeitsbereich**, den **Dienst** und den **API-Schlüssel** Ihres Experiments für den unten stehenden Beispielcode. Sie finden den Arbeitsbereich und den Dienst, indem Sie im Webdienstdashboard für Ihr Experiment entweder auf **Anforderung/Antwort** oder **Batchausführung** klicken.
 

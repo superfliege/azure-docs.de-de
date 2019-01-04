@@ -1,5 +1,5 @@
 ---
-title: 'Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset | Microsoft-Dokumentation'
+title: 'Verwenden eines Azure HDInsight Hadoop-Clusters für ein Dataset mit 1 TB: Team Data Science-Prozess'
 description: Verwenden des Team Data Science-Prozesses für ein vollständiges Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines (1 TB) großen öffentlich zugänglichen Datasets
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 3aef1b85a462eea74fbe977e9a48054f11acf47a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447026"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135813"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
@@ -33,7 +33,7 @@ Alle Datensätze im DataSet enthalten je 40 Spalten:
 * Die nächsten 13 Spalten sind numerische und
 * die letzten 26 nach Kategorien sortierte Spalten.
 
-Die Spalten werden anonymisiert und mit Aufzählungsnamen versehen: "Col1" (für die Bezeichnungsspalte) bis "Col40" (für die letzte Kategoriespalte).            
+Die Spalten werden anonymisiert und verwenden eine Reihe aufgezählter Namen: „Col1“ (für die Bezeichnungsspalte) bis „Col40“ (für die letzte kategorische Spalte).            
 
 Hier finden Sie einen Auszug der ersten 20 Spalten der zwei Beobachtungen (Zeilen) aus diesem DataSet:
 
@@ -44,28 +44,28 @@ Hier finden Sie einen Auszug der ersten 20 Spalten der zwei Beobachtungen (Zeil
 
 Sowohl in den numerischen als auch den Kategoriespalten dieses DataSets fehlen Werte. Eine einfache Methode zum Umgang mit den fehlenden Werten wird beschrieben. Weitere Details der Daten werden beim Speichern in Hive-Tabellen untersucht.
 
-**Definition:***Durchklickrate (Clickthrough Rate, CTR):* Dies ist der Prozentsatz an Klicks in den Daten. In diesem Criteo-DataSet beträgt die CTR etwa 3,3 % oder 0,033.
+**Definition:** *Durchklickrate (Clickthrough rate, CTR):* Dies ist der Prozentsatz der Klicks in den Daten. In diesem Criteo-DataSet beträgt die CTR etwa 3,3 % oder 0,033.
 
 ## <a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprobleme behandelt:
 
-1. **Binäre Klassifikation:** sagt vorher, ob ein Benutzer auf eine Anzeige geklickt hat:
+1. **Binäre Klassifizierung**: Sagt vorher, ob ein Benutzer auf eine Anzeige geklickt hat:
    
    * Klasse 0: Kein Klick
    * Klasse 1: Klick
-2. **Regression:** sagt anhand der Benutzerfunktionen die Wahrscheinlichkeit eines Anzeigenklicks vorher.
+2. **Regression:** Sagt anhand der Benutzerfunktionen die Wahrscheinlichkeit eines Anzeigenklicks vorher.
 
 ## <a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für Data Science
-**Hinweis**: Dies ist normalerweise eine **Admin**-Aufgabe.
+**Hinweis:** Diese Aufgabe wird typischerweise von einem **Administrator** ausgeführt.
 
 Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen für Vorhersageanalysen mit HDInsight-Clustern zu erstellen:
 
-1. [Erstellen eines Speicherkontos:](../../storage/common/storage-quickstart-create-account.md)Mit diesem Speicherkonto werden Daten in Azure Blob Storage gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
-2. [Anpassen von Azure HDInsight Hadoop-Clustern für Data Science:](customize-hadoop-cluster.md)Mit diesem Schritt wird ein Azure HDInsight Hadoop-Cluster mit 64-Bit-Anaconda Python 2.7 auf allen Knoten erstellt. Beim Anpassen des HDInsight-Clusters müssen zwei (in diesem Thema beschriebene) wichtige Schritte durchgeführt werden.
+1. [Erstellen Sie ein Speicherkonto](../../storage/common/storage-quickstart-create-account.md): Mit diesem Speicherkonto werden Daten in Azure Blob Storage gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
+2. [Passen Sie Azure HDInsight Hadoop-Cluster für Data Science an](customize-hadoop-cluster.md): In diesem Schritt erstellen Sie einen Azure HDInsight Hadoop-Cluster, bei dem auf allen Knoten 64-Bit-Anaconda Python 2.7 installiert ist. Beim Anpassen des HDInsight-Clusters müssen zwei (in diesem Thema beschriebene) wichtige Schritte durchgeführt werden.
    
    * Verknüpfen Sie das in Schritt 1 erstellte Speicherkonto mit dem HDInsight-Cluster. Mit diesem Speicherkonto wird auf Daten zugegriffen, die innerhalb des Clusters verarbeitet werden können.
    * Sie müssen nach dem Erstellen den Remotezugriff auf den Hauptknoten des Clusters aktivieren. Merken Sie sich die hier angegebenen RAS-Anmeldeinformationen (die sich von denen beim Erstellen des Clusters unterscheiden). Sie benötigen diese später, um die folgenden Schritte auszuführen.
-3. [Erstellen eines Azure ML-Arbeitsbereichs:](../studio/create-workspace.md)Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
+3. [Erstellen eines Azure ML-Arbeitsbereichs](../studio/create-workspace.md): Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
 
 ## <a name="getdata"></a>Abrufen und Verwenden von Daten aus einer öffentlichen Quelle
 Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) -DataSet zuzugreifen, klicken Sie auf den Link, akzeptieren Sie die Nutzungsbedingungen, und geben Sie einen Namen an. Hier sehen Sie eine Momentaufnahme:
@@ -157,7 +157,7 @@ Da all diese Tabellen extern sind, können Sie einfach auf ihren Azure Blob Stor
 
 **ALLE Hive-Abfragen können auf zwei Arten ausgeführt werden:**
 
-1. **Über die Hive REPL-Befehlszeile:** Zunächst wird ein „hive“-Befehl ausgegeben sowie eine Abfrage kopiert und in die Hive REPL-Befehlszeile kopiert. Gehen Sie hierfür folgendermaßen vor:
+1. **Über die Hive REPL-Befehlszeile**: Zunächst wird ein „hive“-Befehl ausgegeben sowie eine Abfrage kopiert und in die Hive REPL-Befehlszeile kopiert. Gehen Sie hierfür folgendermaßen vor:
    
         cd %hive_home%\bin
         hive
@@ -435,13 +435,13 @@ Für das Modul **Daten importieren** sind die Werte der in der Grafik enthaltene
 
 1. Auswählen von „Hive-Abfrage“ als **Datenquelle**
 2. Im Feld **Hive database query** reicht „SELECT * FROM <Name_Ihrer_\_Datenbank\_.Name_Ihrer\_Tabelle\_> -“ aus.
-3. **Hcatalog-Server-URI**: Wenn Ihr Cluster „abc“ ist, lautet dieser einfach: https://abc.azurehdinsight.net.
+3. **Hcatalog server URI**: Wenn Ihr Cluster „abc“ ist, lautet dieser einfach: https://abc.azurehdinsight.net.
 4. **Hadoop user account name**: Der bei der Bereitstellung des Clusters ausgewählte Benutzername. (NICHT der Benutzername für den Remotezugriff!)
-5. **Hadoop-Benutzerkontokennwort**: Das Kennwort für den bei der Bereitstellung des Clusters ausgewählten Benutzernamen. (NICHT das Kennwort für den Remotezugriff!)
-6. **Speicherort der Ausgabedaten**: Wählen Sie „Azure“ aus.
-7. **Azure-Speicherkontoname**: Das dem Cluster zugeordnete Speicherkonto
-8. **Azure-Speicherkontoschlüssel**: Der dem Cluster zugeordnete Speicherschlüssel
-9. **Azure-Containername**: Wenn der Clustername „abc“ ist, gilt in der Regel einfach „abc“.
+5. **Hadoop user account password**: Das bei der Bereitstellung des Clusters für den Benutzernamen ausgewählte Kennwort. (NICHT das Kennwort für den Remotezugriff!)
+6. **Location of output data**: Wählen Sie „Azure“ aus.
+7. **Azure storage account name**: Das Speicherkonto, das dem Cluster zugeordnet ist.
+8. **Azure storage account key**: Der dem Cluster zugeordnete Speicherschlüssel.
+9. **Azure container name**: Wenn der Clustername „abc“ ist, gilt in der Regel einfach „abc“.
 
 Sobald **Import Data** das Abrufen von Daten beendet (das grüne Häkchen für das Modul wird angezeigt), speichern Sie diese Daten als DataSet (mit einem Namen Ihrer Wahl). Dies sieht folgendermaßen aus:
 
@@ -454,11 +454,11 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 ![Ziehen des Datasets in den Hauptbereich](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.**
+> Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.\*\*
 > 
 > 
 
-### <a name="step2"></a> Schritt 2: Erstellen eines einfachen Experiments in Azure Machine Learning, um Klicks/keine Klicks vorherzusagen
+### <a name="step2"></a> Schritt 2: Erstellen eines einfachen Experiments in Azure Machine Learning, um Klicks/keine Klicks vorherzusagen
 Unser Azure ML-Experiment sieht wie folgt aus:
 
 ![Machine Learning-Experiment](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -478,7 +478,7 @@ Für einige kategorische Features von großen DataSets können Millionen von ein
 ##### <a name="building-counting-transforms"></a>Erstellen von Zähltransformationen
 Zum Erstellen von Zählfunktionen verwenden Sie das **Build Counting Transform**-Modul in Azure Machine Learning. Das Modul sieht wie folgt aus:
 
-![Build Counting Transform-Modul](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+![Build Counting Transform-Moduleigenschaften](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![Build Counting Transform-Modul](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT] 
@@ -554,7 +554,7 @@ Sobald Sie über ein Trainingsmodell verfügen, können Sie das Testdataset und 
 
 ![Modul Modell bewerten](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a> Schritt 4: Bewerten des Modells
+### <a name="step4"></a> Schritt 4: Auswerten des Modells
 Nun müssen Sie die Modelleistung analysieren. Wenn bei zwei Klassen (binäre) Klassifizierungsprobleme auftreten, eignet sich AUC gewöhnlich als Maßstab. Ordnen Sie zum Visualisieren das **Score Model**-Modul einem **Evaluate Model**-Modul zu. Wenn Sie im Modul **Evaluate Model** auf **Visualize** klicken, ergibt dies ungefähr folgende Grafik:
 
 !["Evaluate"-Modul für BDT-Modell](./media/hive-criteo-walkthrough/0Tl0cdg.png)

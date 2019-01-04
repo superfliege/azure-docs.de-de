@@ -2,30 +2,30 @@
 title: Azure Backup Server schützt den Systemstatus und stellt Bare-Metal-Sicherungen wieder her
 description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern und Bare-Metal-Recovery-Schutz (BMR) zu bieten.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal
-ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238810"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880096"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sichern des Systemstatus und Bare-Metal-Wiederherstellung mit Azure Backup Server
 
 Azure Backup Server sichert den Systemstatus und bietet Bare-Metal-Recovery-Schutz (BMR).
 
-*   **Systemstatussicherung**: Diese Option dient zum Sichern von Betriebssystemdateien, sodass eine Wiederherstellung erfolgen kann, wenn ein Computer gestartet wird, aber die Systemdateien und die Registrierung gehen verloren. Eine Systemstatussicherung umfasst Folgendes:
+*   **Systemstatussicherung**: Sichert Betriebssystemdateien, sodass eine Wiederherstellung erfolgen kann, wenn ein Computer gestartet wird, aber die Systemdateien und die Registrierung gehen verloren. Eine Systemstatussicherung umfasst Folgendes:
     * Domänenmitglied: Startdateien, COM+-Klassenregistrierungsdatenbank, Registrierung
     * Domänencontroller: Windows Server Active Directory (NTDS), Startdateien, COM+-Klassenregistrierungsdatenbank, Registrierung, Systemvolume (SYSVOL)
-    * Computer, auf dem Cluster Services ausgeführt wird: Metadaten des Clusterservers
-    * Computer, auf dem Zertifikatdienste ausgeführt wird: Zertifikatdaten
-* **Bare-Metal-Sicherung**: Dient zum Sichern von Betriebssystemdateien und allen Daten auf wichtigen Volumes (mit Ausnahme von Benutzerdaten). Laut Definition umfasst eine BMR-Sicherung eine Systemstatussicherung. Sie bietet Schutz, wenn ein Computer nicht gestartet werden kann und Sie alles wiederherstellen müssen.
+    * Computer, auf dem Clusterdienste ausgeführt werden: Metadaten des Clusterservers
+    * Computer, auf dem Zertifikatdienste ausgeführt werden: Zertifikatdaten
+* **Bare-Metal-Sicherung**: Sichert Betriebssystemdateien und allen Daten auf wichtigen Volumes (mit Ausnahme von Benutzerdaten). Laut Definition umfasst eine BMR-Sicherung eine Systemstatussicherung. Sie bietet Schutz, wenn ein Computer nicht gestartet werden kann und Sie alles wiederherstellen müssen.
 
 In der folgenden Tabelle wird zusammengefasst, was Sie sichern und wiederherstellen können. Ausführliche Informationen zu App-Versionen, die mit der Systemstatus- und BMR-Sicherung geschützt werden können, finden Sie im Artikel dazu, [was mit Azure Backup Server gesichert wird](backup-mabs-protection-matrix.md).
 

@@ -1,13 +1,12 @@
 ---
-title: Verwenden eines Machine Learning-Webdiensts mit einer Web-App-Vorlage – Azure Machine Learning Studio | Microsoft-Dokumentation
+title: 'Nutzen eines Studio-Webdiensts mit einer Web-App-Vorlage: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Verwenden Sie eine Web-App-Vorlage in Azure Marketplace, um einen Vorhersagewebdienst in Azure Machine Learning zu nutzen.
 keywords: Webdienst, Operationalisierung, REST-API, Machine Learning
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 2c0bba4a442b73b82ebc271c3516f65954d6d8a4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311567"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273883"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Verwenden eines Azure Machine Learning-Webdiensts mithilfe einer Web-App-Vorlage
+# <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Verwenden eines Azure Machine Learning Studio-Webdiensts mit einer Web-App-Vorlage
 
 Sie können ein Vorhersagemodell entwickeln und als Azure-Webdienst bereitstellen, indem Sie Folgendes verwenden:
 - Azure Machine Learning Studio
@@ -36,7 +35,7 @@ Es gibt eine Reihe von Möglichkeiten, die REST-API zu nutzen und auf den Webdie
 
 Aber die schnellste und einfachste Möglichkeit, auf Ihren Webdienst zuzugreifen, bieten die Web-App-Vorlagen, die im [Azure Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/) verfügbar sind.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Azure Machine Learning-Web-App-Vorlagen
 Die Web-App-Vorlagen, die auf dem Azure Marketplace verfügbar sind, können eine benutzerdefinierte Web-App erstellen, der die Eingabedaten und die erwarteten Ergebnisse des Webdiensts bekannt sind. Dafür müssen Sie nur der Web-App Zugriff auf den Webdienst und die Daten gewähren, und die Vorlage übernimmt den Rest.

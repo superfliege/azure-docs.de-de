@@ -1,13 +1,11 @@
 ---
-title: Diagnose von Azure Standard Load Balancer | Microsoft-Dokumente
+title: Diagnose von Azure Load Balancer Standard
+titlesuffix: Azure Load Balancer
 description: Verwenden Sie die verfügbaren Metriken und Integritätsinformationen zur Diagnose für Azure Standard Load Balancer.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 258e093acd50946e95360416f89b2ceb96ee35d3
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426467"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189046"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriken und Integritätsdiagnosen für Standard Load Balancer
 
 Azure Load Balancer Standard bietet Ihren Ressourcen die folgenden Diagnosefunktionen:
 * **Mehrdimensionale Metriken**: Stellt neue mehrdimensionale Diagnosefunktionen über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) sowohl für öffentliche als auch für interne Load Balancer-Konfigurationen bereit. Sie können Ihre Load Balancer-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
 
-* **Ressourcenintegrität**: Die Seite „Load Balancer“ im Azure-Portal und die Seite „Ressourcenintegrität“ (unter „Monitor“) stellen den Abschnitt „Ressourcenintegrität“ für die öffentliche Load Balancer-Konfiguration von Standard Load Balancer bereit.
+* **Ressourcenintegrität**: Die Seite „Load Balancer“ im Azure-Portal und die Seite „Ressourcenintegrität“ (unter „Monitor“) stellen den Abschnitt „Ressourcenintegrität“ für die öffentliche Load Balancer-Konfiguration von Load Balancer Standard bereit.
 
 Dieser Artikel enthält einen kurzen Überblick über diese Funktionen und zeigt Möglichkeiten auf, wie diese für Standard Load Balancer verwendet werden können.
 
@@ -59,7 +57,7 @@ So zeigen Sie die Metriken für Ihre Standard Load Balancer-Ressourcen an
 
 ![Metrikenvorschau für Standard Load Balancer](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
 
-*Abbildung: Metrik für DIP-Verfügbarkeit und Integritätsteststatus für Standard Load Balancer*
+*Abbildung: Metrik für DIP-Verfügbarkeit und Integritätsteststatus für Load Balancer Standard*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Programmgesteuertes Abrufen von mehrdimensionalen Metriken über APIs
 
@@ -169,7 +167,7 @@ Sie können einen Schritt weiter gehen und VIP-Verfügbarkeit-Metriken verwenden
 
 ![VIP-Diagnose](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
 
-*Abbildung: Kombinieren von DIP- und VIP-Verfügbarkeit-Metriken*
+*Abbildung: Kombinieren von DIP- und VIP-Verfügbarkeitsmetriken*
 
 Im Diagramm werden die folgenden Informationen angezeigt:
 - Die Infrastruktur selbst war fehlerfrei, die Infrastruktur, in der Ihr virtueller Computer gehostet wird, war erreichbar, und im Back-End waren mehrere virtuelle Computer platziert. Diese Informationen sind durch die blaue Ablaufverfolgung für VIP-Verfügbarkeit gekennzeichnet, die 100 Prozent beträgt. 
@@ -205,7 +203,7 @@ So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressour
 
     ![Load Balancer-Integritätsstatus](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *Abbildung: Ansicht des Load Balancer-Integritätsstatus*
+   *Abbildung: Load Balancer-Integritätsanzeige für Ressource*
  
 In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und deren Beschreibungen aufgeführt: 
 

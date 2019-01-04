@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage| Microsoft-Dokumentation
-description: Erstellen von Hive-Tabellen und Laden von Daten aus Blobs in Hive-Tabellen
+title: 'Erstellen von Hive-Tabellen und Laden von Daten aus Blob Storage: Team Data Science-Prozess'
+description: Verwenden von Hive-Abfragen zum Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage. Partitionieren Sie Hive-Tabellen, und verwenden Sie das ORC-Format (Optimized Row Columnar) zur Verbesserung der Abfrageleistung.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 42911c347cd055f37f7fe8f31b6d22cc18a78662
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442879"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134946"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -65,14 +65,14 @@ Sie haben drei Möglichkeiten zum Übermitteln von Hive-Abfragen über die Hadoo
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Übermitteln der Hive-Abfragen direkt an der Hadoop-Befehlszeile
 Sie können einen Befehl wie `hive -e "<your hive query>;` ausführen, um einfache Hive-Abfragen direkt an der Hadoop-Befehlszeile zu übermitteln. Hier ist ein Beispiel. Das rote Kästchen enthält den Befehl, der die Hive-Abfrage übermittelt, und das grüne Kästchen umschließt die Ausgabe der Hive-Abfrage.
 
-![Arbeitsbereich erstellen](./media/move-hive-tables/run-hive-queries-1.png)
+![Befehl zum Übermitteln der Hive-Abfrage mit Ausgabe aus der Hive-Abfrage](./media/move-hive-tables/run-hive-queries-1.png)
 
 #### <a name="submit-hive-queries-in-hql-files"></a>Übermitteln der Hive-Abfragen in HQL-Dateien
 Wenn die Hive-Abfrage sehr komplex ist und aus mehreren Zeilen besteht, ist das direkte Bearbeiten der Abfragen an der Befehlszeile oder an der Hive-Konsole nicht sehr praktikabel. Alternativ können die Hive-Abfragen mit einem Text-Editor auf dem Hauptknoten des Hadoop-Clusters in einer HQL-Datei in einem lokalen Verzeichnis auf dem Hauptknoten gespeichert werden. Anschließend kann die Hive-Abfrage in der HQL-Datei mithilfe des `-f` -Arguments wie folgt übermittelt werden:
 
     hive -f "<path to the .hql file>"
 
-![Arbeitsbereich erstellen](./media/move-hive-tables/run-hive-queries-3.png)
+![Hive-Abfrage in einer HQL-Datei](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Unterdrücken der Fortschrittsanzeige bei Hive-Abfragen**
 
@@ -84,7 +84,7 @@ Standardmäßig wird bei Hive-Abfragen, die über die Hadoop-Befehlszeile überm
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Übermitteln von Hive-Abfragen an der Hive-Befehlskonsole
 Sie können auch zunächst die Hive-Befehlskonsole starten, indem Sie den Befehl `hive` an der Hadoop-Befehlszeile eingeben und dann die Hive-Abfragen über die Hive-Befehlskonsole übermitteln. Beispiel: In diesem Beispiel kennzeichnen die beiden roten Kästchen die Befehle, die zum Starten der Hive-Befehlskonsole verwendet werden, und die Hive-Abfrage, die über die Hive-Befehlskonsole übermittelt wird. Das grüne Kästchen markiert die Ausgabe der Hive-Abfrage.
 
-![Arbeitsbereich erstellen](./media/move-hive-tables/run-hive-queries-2.png)
+![Öffnen der Hive-Befehlskonsole und Eingeben des Befehls, Anzeigen der Ausgabe der Hive-Abfrage](./media/move-hive-tables/run-hive-queries-2.png)
 
 In den vorherigen Beispielen wurden die Ergebnisse der Hive-Abfrage direkt auf den Bildschirm ausgeben. Sie können die Ausgabe aber auch in eine lokale Datei auf dem Hauptknoten oder in ein Azure-Blob schreiben. Sie können dann andere Tools verwenden, um die Ausgabe der Hive-Abfragen weiter zu analysieren.
 
@@ -95,7 +95,7 @@ Für die Ausgabe der Hive-Abfrageergebnisse in ein lokales Verzeichnis auf dem H
 
 Im folgenden Beispiel wird die Ausgabe der Hive-Abfrage in die Datei `hivequeryoutput.txt` im Verzeichnis `C:\apps\temp` geschrieben.
 
-![Arbeitsbereich erstellen](./media/move-hive-tables/output-hive-results-1.png)
+![Ausgabe aus der Hive-Abfrage](./media/move-hive-tables/output-hive-results-1.png)
 
 **Ausgeben der Hive-Abfrageergebnisse in ein Azure-Blob**
 
@@ -105,11 +105,11 @@ Sie können die Hive-Abfrageergebnisse auch in ein Azure-Blob im Standardcontain
 
 Im folgenden Beispiel wird die Ausgabe der Hive-Abfrage in das Blob-Verzeichnis `queryoutputdir` innerhalb des Standardcontainer des Hadoop-Cluster geschrieben. Hier müssen Sie nur den Namen des Verzeichnisses ohne den Namen des Blobs angeben. Es wird ein Fehler ausgelöst, wenn Sie sowohl den Verzeichnis- als auch den Blobnamen angeben, wie z. B. `wasb:///queryoutputdir/queryoutput.txt`.
 
-![Arbeitsbereich erstellen](./media/move-hive-tables/output-hive-results-2.png)
+![Ausgabe aus der Hive-Abfrage](./media/move-hive-tables/output-hive-results-2.png)
 
 Wenn Sie den Standardcontainer des Hadoop-Clusters mit Tools wie Azure Storage-Explorer öffnen, wird die Ausgabe der Hive-Abfrage wie in der folgenden Abbildung angezeigt. Sie können Filter (markiert durch den roten Kasten) anwenden, um nur das Blob mit den angegebenen Buchstaben im Namen abzurufen.
 
-![Arbeitsbereich erstellen](./media/move-hive-tables/output-hive-results-3.png)
+![Azure Storage-Explorer zeigt die Ausgabe der Hive-Abfrage an](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. Übermitteln von Hive-Abfragen mit dem Hive-Editor
 Sie können auch die Abfragekonsole (Hive-Editor) verwenden, indem Sie in einem Webbrowser eine URL im Format *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* eingeben. Sie müssen angemeldet sein, um diese Konsole anzeigen zu können, weshalb hier Ihre Hadoop-Clusteranmeldeinformationen erforderlich sind.

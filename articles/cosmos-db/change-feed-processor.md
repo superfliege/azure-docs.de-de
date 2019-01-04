@@ -2,18 +2,17 @@
 title: Arbeiten mit der Änderungsfeed-Prozessorbibliothek in Azure Cosmos DB
 description: Verwenden der Änderungsfeed-Prozessorbibliothek von Azure Cosmos DB
 author: rafats
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: 9d427a8001112e4994597b86579d85156f94a870
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: eee80563a838e6d453278735abf96fa5a6996f19
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628717"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835495"
 ---
 # <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Verwenden der Änderungsfeed-Prozessorbibliothek von Azure Cosmos DB
 
@@ -43,7 +42,7 @@ Die Implementierung der Änderungsfeed-Prozessorbibliothek umfasst vier Hauptkom
 
    * Zeitstempel: Zeitpunkt der letzten Aktualisierung der Lease. Mithilfe des Zeitstempels kann überprüft werden, ob die Lease als abgelaufen betrachtet wird.
 
-1. **Prozessorhost:** Jeder Host bestimmt basierend auf der Anzahl anderer Hostinstanzen mit aktiven Leases, wie viele Partitionen verarbeitet werden.
+1. **Prozessorhost:** Jeder Host bestimmt, wie viele Partitionen verarbeitet werden, je nachdem, wie viele andere Instanzen des Hosts aktive Leases aufweisen.
 
    * Wenn ein Host gestartet wird, erhält er Leases, um die Workloads gleichmäßig auf alle Hosts zu verteilen. Ein Host erneuert in regelmäßigen Abständen Leases, damit die Leases aktiv bleiben.
 
@@ -53,7 +52,7 @@ Die Implementierung der Änderungsfeed-Prozessorbibliothek umfasst vier Hauptkom
 
    Gegenwärtig darf die Anzahl von Hosts nicht die Anzahl von Partitionen (Leases) überschreiten.
 
-1. **Consumer:** Consumer oder Worker sind Threads, die die von jedem Host initiierte Verarbeitung des Änderungsfeeds ausführen. Jeder Prozessor-Host kann mehrere Consumer besitzen. Jeder Consumer liest den Änderungsfeed aus der Partition, der er zugewiesen wurde, und benachrichtigt seinen Host bei Änderungen und abgelaufenen Leases.
+1. **Consumer:** Consumer oder Worker sind Threads, welche die von jedem Host initiierte Änderungsfeedverarbeitung ausführen. Jeder Prozessor-Host kann mehrere Consumer besitzen. Jeder Consumer liest den Änderungsfeed aus der Partition, der er zugewiesen wurde, und benachrichtigt seinen Host bei Änderungen und abgelaufenen Leases.
 
 Um besser zu verstehen, wie diese vier Elemente von Change Feed Processor zusammenarbeiten, sehen wir uns ein Beispiel in der folgenden Abbildung an. Die überwachte Sammlung speichert Dokumente und verwendet „City“ als Partitionsschlüssel. Sie sehen, dass die blaue Partition Dokumente mit dem Feld „City“ aus „A-E“ usw. enthält. Es gibt zwei Hosts mit jeweils zwei Consumern, die aus den vier Partitionen gleichzeitig lesen. Die Pfeile zeigen die Consumer beim Lesen aus einer bestimmten Stelle im Änderungsfeed. In der ersten Partition stellt das dunklere Blau ungelesene Änderungen dar, während das Hellblau die bereits gelesenen Änderungen im Änderungsfeed darstellt. Die Hosts verwenden die Lease-Sammlung zum Speichern eines „Fortsetzungs“-Werts der aktuellen Leseposition für jeden Consumer.
 

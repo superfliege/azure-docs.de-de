@@ -1,5 +1,5 @@
 ---
-title: Geografisch verteilte Skalierung mit App Service-Umgebungen
+title: Geografisch verteilte Skalierung mit App Service-Umgebungen – Azure
 description: Erfahren Sie, wie Apps mit geografischer Verteilung mit Traffic Manager und App Service-Umgebungen horizontal hochskaliert werden.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.openlocfilehash: bc85139dfa3589baf6505fac2269f8755dcaddc8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.custom: seodec18
+ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213247"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273866"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geografisch verteilte Skalierung mit App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -42,18 +43,18 @@ Im weiteren Verlauf dieses Themas werden die Schritte zum Einrichten einer verte
 ## <a name="planning-the-topology"></a>Planen der Topologie
 Vor der Erstellung einer verteilten App ist es hilfreich, über einige Informationen zu verfügen.
 
-* **Benutzerdefinierte Domäne für die App:** Wie lautet der Name der benutzerdefinierten Domäne, über die Kunden auf die App zugreifen?  Für die Beispiel-App lautet der Name der benutzerdefinierten Domäne *www.scalableasedemo.com*
-* **Traffic Manager-Domäne:** Ein Domänenname muss ausgewählt werden, wenn Sie ein [Azure Traffic Manager-Profil][AzureTrafficManagerProfile] erstellen.  Dieser Name wird mit dem Suffix *trafficmanager.net* kombiniert, um einen Domäneneintrag zu registrieren, der von Traffic Manager verwaltet wird.  Für die Beispiel-App ist der ausgewählte Name *scalable-ase-demo*.  Der vollständige Domänenname, der von Traffic Manager verwaltet wird, lautet also *scalable-ase-demo.trafficmanager.net*.
-* **Strategie für die Skalierung der App:** Wird die Anwendung über mehrere App Service-Umgebungen in einer Region verteilt?  Über mehrere Regionen?  Eine Kombination beider Ansätze?  Die Entscheidung sollte darauf basieren, woher der Kundendatenverkehr erwartet wird, aber auch darauf, wie gut der Rest der Back-End-Infrastruktur zur Unterstützung einer App skaliert werden kann.  Bei einer zu 100 % statusfreien Anwendung kann eine App beispielsweise hochgradig skaliert werden, indem eine Kombination von mehreren App Service-Umgebungen pro Azure-Region verwendet und dies mit App Service-Umgebungen, die in mehreren Azure-Regionen bereitgestellt sind, multipliziert wird.  Da Kunden aus mehr als 15 öffentlichen Azure-Regionen auswählen können, ist tatsächlich die Erstellung einer weltweiten, enorm skalierbaren Anwendung möglich.  Für die Beispiel-App in diesem Artikel wurden drei App Service-Umgebungen in einer einzelnen Azure-Region (USA (Mitte/Süden)) erstellt.
-* **Benennungskonvention für die App Service-Umgebungen:** Jede App Service-Umgebung erfordert einen eindeutigen Namen.  Mit mehr als einer oder zwei App Service-Umgebungen ist es hilfreich, über eine Benennungskonvention zu verfügen, um die Identifizierung der einzelnen App Service-Umgebungen zu vereinfachen.  Für die Beispiel-App wurde eine einfache Benennungskonvention verwendet.  Die Namen der drei App Service-Umgebungen sind *fe1ase*, *fe2ase* und *fe3ase*.
-* **Benennungskonvention für die Apps:** Da mehrere Instanzen der App bereitgestellt werden, ist ein Name für jede Instanz der bereitgestellten App erforderlich.  Eine sehr praktische, aber wenig bekannte Funktion von App Service-Umgebungen ist, dass der gleiche App-Name in mehreren App Service-Umgebungen verwendet werden kann.  Da jede App Service-Umgebung ein eindeutiges Domänensuffix aufweist, können Entwickler den gleichen App-Namen in jeder Umgebung verwenden.  Ein Entwickler kann Apps beispielsweise wie folgt benennen: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net* usw.  Bei der Beispiel-App hat jedoch jede Instanz der App auch einen eindeutigen Namen.  Die verwendeten Namen für die App-Instanzen sind *webfrontend1*, *webfrontend2*, und *webfrontend3*.
+* **Benutzerdefinierte Domäne für die App:**   Wie lautet der Name der benutzerdefinierten Domäne, mit dem Kunden auf die App zugreifen?  Für die Beispiel-App lautet der Name der benutzerdefinierten Domäne *www.scalableasedemo.com*
+* **Traffic Manager-Domäne:**   Ein Domänenname muss ausgewählt werden, wenn Sie ein [Azure Traffic Manager-Profil][AzureTrafficManagerProfile] erstellen.  Dieser Name wird mit dem Suffix *trafficmanager.net* kombiniert, um einen Domäneneintrag zu registrieren, der von Traffic Manager verwaltet wird.  Für die Beispiel-App ist der ausgewählte Name *scalable-ase-demo*.  Der vollständige Domänenname, der von Traffic Manager verwaltet wird, lautet also *scalable-ase-demo.trafficmanager.net*.
+* **Strategie für die Skalierung der App:**   Wird die Anwendung über mehrere App Service-Umgebungen in einer Region verteilt?  Über mehrere Regionen?  Eine Kombination beider Ansätze?  Die Entscheidung sollte darauf basieren, woher der Kundendatenverkehr erwartet wird, aber auch darauf, wie gut der Rest der Back-End-Infrastruktur zur Unterstützung einer App skaliert werden kann.  Bei einer zu 100 % statusfreien Anwendung kann eine App beispielsweise hochgradig skaliert werden, indem eine Kombination von mehreren App Service-Umgebungen pro Azure-Region verwendet und dies mit App Service-Umgebungen, die in mehreren Azure-Regionen bereitgestellt sind, multipliziert wird.  Da Kunden aus mehr als 15 öffentlichen Azure-Regionen auswählen können, ist tatsächlich die Erstellung einer weltweiten, enorm skalierbaren Anwendung möglich.  Für die Beispiel-App in diesem Artikel wurden drei App Service-Umgebungen in einer einzelnen Azure-Region (USA (Mitte/Süden)) erstellt.
+* **Benennungskonvention für die App Service-Umgebungen:**   Jede App Service-Umgebung erfordert einen eindeutigen Namen.  Mit mehr als einer oder zwei App Service-Umgebungen ist es hilfreich, über eine Benennungskonvention zu verfügen, um die Identifizierung der einzelnen App Service-Umgebungen zu vereinfachen.  Für die Beispiel-App wurde eine einfache Benennungskonvention verwendet.  Die Namen der drei App Service-Umgebungen sind *fe1ase*, *fe2ase* und *fe3ase*.
+* **Benennungskonvention für die Apps:**  Da mehrere Instanzen der App bereitgestellt werden, ist ein Name für jede Instanz der bereitgestellten App erforderlich.  Eine sehr praktische, aber wenig bekannte Funktion von App Service-Umgebungen ist, dass der gleiche App-Name in mehreren App Service-Umgebungen verwendet werden kann.  Da jede App Service-Umgebung ein eindeutiges Domänensuffix aufweist, können Entwickler den gleichen App-Namen in jeder Umgebung verwenden.  Ein Entwickler kann Apps beispielsweise wie folgt benennen: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net* usw.  Bei der Beispiel-App hat jedoch jede Instanz der App auch einen eindeutigen Namen.  Die verwendeten Namen für die App-Instanzen sind *webfrontend1*, *webfrontend2*, und *webfrontend3*.
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>Einrichten des Traffic Manager-Profils
 Wenn mehrere Instanzen einer App in mehreren App Service-Umgebungen bereitgestellt werden, können die einzelnen App-Instanzen bei Traffic Manager registriert werden.  Für die Beispiel-App ist ein Traffic Manager-Profil für *scalable-ase-demo.trafficmanager.net* erforderlich, das die Kunden an die folgenden bereitgestellten App-Instanzen weiterleiten kann:
 
-* **webfrontend1.fe1ase.p.azurewebsites.net:** Eine Instanz der Beispiel-App, die in der ersten App Service-Umgebung bereitgestellt ist.
-* **webfrontend2.fe2ase.p.azurewebsites.net:** Eine Instanz der Beispiel-App, die in der zweiten App Service-Umgebung bereitgestellt ist.
-* **webfrontend3.fe3ase.p.azurewebsites.net:** Eine Instanz der Beispiel-App, die in der dritten App Service-Umgebung bereitgestellt ist.
+* **webfrontend1.fe1ase.p.azurewebsites.net:**  Eine Instanz der Beispiel-App, die in der ersten App Service-Umgebung bereitgestellt ist.
+* **webfrontend2.fe2ase.p.azurewebsites.net:**  Eine Instanz der Beispiel-App, die in der zweiten App Service-Umgebung bereitgestellt ist.
+* **webfrontend3.fe3ase.p.azurewebsites.net:**  Eine Instanz der Beispiel-App, die in der dritten App Service-Umgebung bereitgestellt ist.
 
 Am einfachsten können Sie mehrere Azure App Service-Endpunkte, die alle in der **gleichen** Azure-Region ausgeführt werden, mithilfe der [Unterstützung von Azure Resource Manager für Azure Traffic Manager][ARMTrafficManager] von PowerShell registrieren.  
 

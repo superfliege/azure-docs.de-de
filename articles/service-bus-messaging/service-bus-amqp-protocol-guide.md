@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 0801e3a0e9217ab0855d09df8a054926b488d759
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821547"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961143"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -94,7 +94,7 @@ Der Container, der die Verknüpfung initiiert hat, bittet den anderen Container,
 
 Verknüpfungen werden benannt und Knoten zugeordnet. Wie am Anfang erwähnt, sind Knoten die kommunizierenden Entitäten in einem Container.
 
-In Service Bus entspricht ein Knoten direkt einer Warteschlange, einem Thema, einem Abonnement oder einer Unterwarteschlange für unzustellbare Nachrichten, die einer Warteschlange oder einem Abonnement zugeordnet ist. Der in AMQP verwendete Knotenname ist daher der relative Name der Entität im Service Bus-Namespace. Wenn eine Warteschlange den Namen `myqueue` hat, ist dies gleichzeitig ihr AMQP-Knotenname. Ein Themenabonnement folgt der HTTP-API-Konvention, indem es in einer Ressourcensammlung vom Typ „subscriptions“ angeordnet wird. Daher verfügt das Abonnement **sub** oder das Thema **mytopic** über den AMQP-Knotennamen **mytopic/subscriptions/sub**.
+In Service Bus entspricht ein Knoten direkt einer Warteschlange, einem Thema, einem Abonnement oder einer Unterwarteschlange für unzustellbare Nachrichten, die einer Warteschlange oder einem Abonnement zugeordnet ist. Der in AMQP verwendete Knotenname ist daher der relative Name der Entität im Service Bus-Namespace. Wenn eine Warteschlange den Namen `myqueue` hat, ist dies gleichzeitig ihr AMQP-Knotenname. Ein Themenabonnement folgt der HTTP-API-Konvention, indem es in einer Ressourcensammlung vom Typ „subscriptions“ angeordnet wird. Daher verfügt das Abonnement **sub** für ein Thema **mytopic** über den AMQP-Knotennamen **mytopic/subscriptions/sub**.
 
 Der verbindende Client ist auch zum Verwenden eines lokalen Knotennamens zum Erstellen von Verknüpfungen erforderlich. Service Bus schreibt diese Knotennamen nicht vor und interpretiert sie auch nicht. AMQP 1.0-Clientstapel verwenden im Allgemeinen ein Schema, um sicherzustellen, dass diese flüchtigen Knotennamen im Bereich des Clients eindeutig sind.
 
@@ -351,7 +351,7 @@ Die SASL-Integration von AMQP hat zwei Nachteile:
 * Alle Anmeldeinformationen und Token gelten für die Verbindung. Eine Messaginginfrastruktur könnte eine differenzierte Zugriffssteuerung auf Pro-Entität-Basis bereitstellen; beispielsweise kann einem Bearer eines Tokens das Senden an die Warteschlange A erlaubt werden, das Senden an Warteschlange B aber nicht. Wenn der Autorisierungskontext in der Verbindung verankert ist, ist es nicht möglich, eine einzelne Verbindung und unterschiedliche Zugriffstoken für Warteschlange A und Warteschlange B zu verwenden.
 * Zugriffstoken sind meist nur für einen bestimmten Zeitraum gültig. Der Benutzer muss daher für Gültigkeit regelmäßig Token neu beschaffen. Dies stellt für den Tokenaussteller eine Gelegenheit dar, das Ausstellen eines neuen Tokens zu verweigern, wenn sich die Zugriffsberechtigungen des Benutzers geändert haben. AMQP-Verbindungen weisen unter Umständen eine sehr lange Lebensdauer auf. Das SASL-Modell bietet nur zur Verbindungszeit die Möglichkeit, ein Token festzulegen. Dies bedeutet, dass die Messaginginfrastruktur entweder die Verbindung des Clients trennen muss, wenn das Token abläuft, oder es muss das Risiko einer zugelassenen fortgesetzten Kommunikation mit einem Client eingegangen werden, dessen Zugriffsrechte in der Zwischenzeit unter Umständen widerrufen wurden.
 
-Die von Service Bus implementierte AMQP-CBS-Spezifikation ermöglicht für beide Probleme eine elegante Umgehung: Ein Client kann jedem Knoten Zugriffstoken zuordnen und diese Token aktualisieren, bevor sie ablaufen, ohne den Nachrichtenfluss zu unterbrechen.
+Die AMQP CBS-Spezifikation, die von Service Bus implementiert wird, ermöglicht eine elegante Problemumgehung für diese beiden Probleme: Sie ermöglicht es einem Client, jedem Knoten Zugriffstoken zuzuordnen und diese Token vor ihrem Ablauf zu aktualisieren, ohne den Nachrichtenfluss zu unterbrechen.
 
 CBS definiert einen virtuellen Verwaltungsknoten mit dem Namen *$cbs*, der von der Messaginginfrastruktur bereitgestellt wird. Der Verwaltungsknoten akzeptiert Knoten im Namen aller anderen Knoten in der Messaginginfrastruktur.
 
@@ -364,7 +364,7 @@ Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 | operation |Nein  |Zeichenfolge |**put-token** |
 | type |Nein  |Zeichenfolge |Der Typ des abgelegten Tokens. |
 | name |Nein  |Zeichenfolge |Die Zielgruppe, für die das Token gilt. |
-| expiration |JA | timestamp |Der Ablaufzeitpunkt des Tokens. |
+| expiration |JA |timestamp |Der Ablaufzeitpunkt des Tokens. |
 
 Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
 
@@ -374,7 +374,7 @@ Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werd
 | amqp:swt |Einfaches Webtoken (Simple Web Token, SWT) |AMQP-Wert (Zeichenfolge) |Wird nur für von AAD/ACS ausgestellte SWTs unterstützt. |
 | servicebus.windows.net:sastoken |Service Bus-SAS-Token |AMQP-Wert (Zeichenfolge) |- |
 
-Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Abhören“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Von AAD/ACS ausgestellte SWTs enthalten diese Rechte als Ansprüche. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das Token, das einer Entität mithilfe von *put-token* zugeordnet wurde, ermöglicht dem verbundenen Client, gemäß den Tokenrechten mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des Absenders (*sender*) übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des Empfängers (*receiver*) wird das Recht „Lauschen“ benötigt.
+Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Lauschen“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Von AAD/ACS ausgestellte SWTs enthalten diese Rechte als Ansprüche. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das Token, das einer Entität mithilfe von *put-token* zugeordnet wurde, ermöglicht dem verbundenen Client, gemäß den Tokenrechten mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des Absenders (*sender*) übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des Empfängers (*receiver*) wird das Recht „Lauschen“ benötigt.
 
 Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integrieren einer einzelnen AD-Gesamtstruktur mit Kennworthashsynchronisierung (Password Hash Sync, PHS) | Microsoft-Dokumentation'
+title: 'Tutorial:  Integrieren einer einzelnen AD-Gesamtstruktur mit Kennworthashsynchronisierung (Password Hash Sync, PHS) in Azure | Microsoft-Dokumentation'
 description: In diesem Artikel wird veranschaulicht, wie Sie eine Hybrididentitätsumgebung mithilfe der Kennworthashsynchronisierung einrichten.
 services: active-directory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426909"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164693"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Tutorial: Integrieren einer einzelnen AD-Gesamtstruktur mit Kennworthashsynchronisierung (Password Hash Sync, PHS)
+# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Tutorial:  Integrieren einer einzelnen AD-Gesamtstruktur mit Kennworthashsynchronisierung (Password Hash Sync, PHS)
 
 ![Erstellen](media/tutorial-password-hash-sync/diagram.png)
 
@@ -81,7 +81,7 @@ Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Instal
 5. Klicken Sie auf **Jetzt installieren**.
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
 7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
-8. Wählen Sie **Benutzerdefiniert: Nur Windows installieren (erweitert)** aus.
+8. Wählen Sie **Benutzerdefiniert:  Nur Windows installieren (Erweitert)** aus.
 9. Klicken Sie unten auf der Seite auf **Weiter**
 10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 

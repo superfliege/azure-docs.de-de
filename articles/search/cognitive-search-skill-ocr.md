@@ -1,6 +1,6 @@
 ---
-title: Der Skill „OCR“ der kognitiven Suche (Azure Search) | Microsoft-Dokumentation
-description: Extrahieren Sie Text aus Bilddateien in einer Azure Search-Anreicherungspipeline.
+title: Die Qualifikation „OCR“ der kognitiven Suche – Azure Search
+description: Extrahieren Sie Text aus Bilddateien mithilfe der optischen Zeichenerkennung (OCR) in einer Azure Search-Anreicherungspipeline.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 97d594a232c3576d0a0163b2d6847f06328bcd7b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 097fd93955a4ca3fd96ae6452fa3b503b029ffc3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167510"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313223"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
@@ -29,7 +30,12 @@ Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden 
 + .GIF
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen sowie die Bildextraktion und Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
+>
+>  Die Qualifikation „OCR“ ist den folgenden Funktionen der kognitiven Suche zugeordnet: Wenn „textExtractionAlgorithmus“ auf „handwritten“ festgelegt ist, wird die Funktion [„RecognizeText“](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) verwendet.
+>  Wenn „textExtractionAlgorithmus“ auf „printed“ festgelegt ist, wird die Funktion [„OCR“](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) für andere Sprachen als Englisch verwendet. Für Englisch wird die neue Funktion [„Texterkennung“](../cognitive-services/computer-vision/concept-recognizing-text.md) für gedruckten Text verwendet.
 
 ## <a name="skill-parameters"></a>Skillparameter
 

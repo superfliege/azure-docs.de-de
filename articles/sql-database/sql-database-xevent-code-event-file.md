@@ -1,9 +1,9 @@
 ---
-title: Code für XEvent-Ereignisdatei für SQL-Datenbank | Microsoft Docs
+title: Code für XEvent-Ereignisdatei für SQL-Datenbank | Microsoft-Dokumentation
 description: Stellt ein PowerShell- und ein Transact-SQL-Skript für ein zweiphasiges Codebeispiel zur Veranschaulichung des Ereignisdateiziels in einem erweiterten Ereignis in Azure SQL-Datenbank bereit. Azure Storage ist ein erforderlicher Bestandteil in diesem Szenario.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 33bd4e39018f9789464d213ccf7921993e2da142
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232075"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864715"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank
 
@@ -50,7 +50,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
   
   * Die Module umfassen verschiedene Befehle, z.B. **New-AzureStorageAccount**.
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell-Code für den Azure-Speichercontainer
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell-Code für den Azure-Speichercontainer
 
 Dieser PowerShell-Code wird in Phase 1 des zweiphasigen Codebeispiels erstellt.
 
@@ -230,7 +230,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 Beachten Sie die benannten Werte, die beim Beenden des PowerShell-Skripts ausgegeben werden. Diese Werte müssen Sie im Transact-SQL-Skript bearbeiten, das als Phase 2 folgt.
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL-Code zum Verwenden des Azure-Speichercontainers
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL-Code zum Verwenden des Azure-Speichercontainers
 
 * In Phase 1 dieses Codebeispiels haben Sie ein PowerShell-Skript zum Erstellen eines Azure-Speichercontainers ausgeführt.
 * In Phase 2 muss das folgende Transact-SQL-Skript nun diesen Container verwenden.

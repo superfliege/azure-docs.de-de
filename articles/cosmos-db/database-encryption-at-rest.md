@@ -1,20 +1,18 @@
 ---
-title: Verschlüsselung ruhender Daten von Datenbanken – Azure Cosmos DB | Microsoft-Dokumentation
-description: Erfahren Sie, wie Azure Cosmos DB eine Standardverschlüsselung für alle Daten bereitstellt.
-services: cosmos-db
+title: Verschlüsselung ruhender Daten in Azure Cosmos DB
+description: Erfahren Sie, wie Azure Cosmos DB eine Verschlüsselung ruhender Daten bereitstellt und wie diese implementiert wird.
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: rafats
-ms.openlocfilehash: 2b54f8c7d9f6427f3104d3c64c65cc555f68738a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: 8138a7dcae427d5f5f622170a7825306a7bf8dae
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038145"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140318"
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Verschlüsselung ruhender Daten von Datenbanken mit Azure Cosmos DB
 
@@ -38,7 +36,7 @@ Der grundlegende Ablauf bei einer Benutzeranforderung sieht wie folgt aus:
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>F: Wie hoch sind die Mehrkosten für Azure Storage, wenn Storage Service Encryption aktiviert ist?
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>F: Wie hoch sind die Mehrkosten für Azure Storage, wenn die Speicherdienstverschlüsselung aktiviert ist?
 A: Es fallen keine zusätzlichen Kosten an.
 
 ### <a name="q-who-manages-the-encryption-keys"></a>F: Wer verwaltet die Verschlüsselungsschlüssel?
@@ -48,7 +46,7 @@ A: Die Schlüssel werden von Microsoft verwaltet.
 A: Microsoft verfügt über eine Reihe von internen Richtlinien für die Rotation der Verschlüsselungsschlüssel, die auch für Cosmos DB gelten. Die spezifischen Richtlinien werden nicht veröffentlicht. Microsoft veröffentlicht den [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), der als eine Teilmenge der internen Richtlinien gilt und nützliche bewährte Methoden für Entwickler enthält.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>F: Kann ich meine eigenen Verschlüsselungsschlüssel verwenden?
-A: Cosmos DB ist ein PaaS-Dienst, und wir haben hart daran gearbeitet, den Dienst benutzerfreundlich zu gestalten. Wir haben festgestellt, dass diese Frage häufig stellvertretend zur Einhaltung von Complianceanforderungen wie PCI-DSS gestellt wird. Im Rahmen der Erstellung dieses Features haben wir mit Complianceprüfern zusammengearbeitet, um sicherzustellen, dass Kunden, die Cosmos DB verwenden, ihre Anforderungen erfüllen können, ohne selbst Schlüssel verwalten zu müssen.
+A: Cosmos DB ist ein PaaS-Dienst, und wir haben uns sehr bemüht, den Dienst benutzerfreundlich zu gestalten. Wir haben festgestellt, dass diese Frage häufig stellvertretend zur Einhaltung von Complianceanforderungen wie PCI-DSS gestellt wird. Im Rahmen der Erstellung dieses Features haben wir mit Complianceprüfern zusammengearbeitet, um sicherzustellen, dass Kunden, die Cosmos DB verwenden, ihre Anforderungen erfüllen können, ohne selbst Schlüssel verwalten zu müssen.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>F: Für welche Regionen ist die Verschlüsselung aktiviert?
 A: Die Verschlüsselung ist für alle Azure Cosmos DB-Regionen und für alle Benutzerdaten aktiviert.

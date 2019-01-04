@@ -1,12 +1,11 @@
 ---
-title: Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio | Microsoft-Dokumentation
+title: 'Vorbereiten des Modells für die Bereitstellung: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Sie erfahren, wie Sie das trainierte Modell für die Bereitstellung als Webdienst vorbereiten, indem Sie Ihr Machine Learning Studio-Trainingsexperiment in ein Vorhersageexperiment konvertieren.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 7849a21e2d005584030375e2193f74a99b3977bd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ef54281b91147060e9c00bcc6e45e0db0fb8933a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265235"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273101"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio
 
@@ -29,11 +28,11 @@ Azure Machine Learning Studio bietet Ihnen die Tools, die Sie benötigen, um ein
 
 Dabei verwenden Sie Studio zum Erstellen eines als *Trainingsexperiment* bezeichneten Experiments, in dem Sie das Modell trainieren, bewerten und bearbeiten. Sobald Sie zufrieden sind, bereiten Sie das Modell auf die Bereitstellung vor, indem Sie Ihr Trainingsexperiment in ein *Vorhersageexperiment* konvertieren, das zum Bewerten von Benutzerdaten konfiguriert ist.
 
-Sie sehen ein Beispiel dieses Prozesses in [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+Ein Beispiel für diesen Vorgang finden Sie unter [Exemplarische Vorgehensweise: Entwickeln einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 
 Dieser Artikel bietet fundierte Einblicke in die Details des Vorgangs, mit dem ein Trainingsexperiment in ein Vorhersageexperiment konvertiert wird, und in die Bereitstellung dieses Vorhersageexperiments. Wenn Sie diese Details verstehen, können Sie lernen, wie Sie das bereitgestellte Modell so konfigurieren, dass es wirksamer ist.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>Übersicht 
 

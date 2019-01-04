@@ -5,16 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/12/2018
 ms.author: raynew
-ms.openlocfilehash: bc671a598d975fb732b668d579561a253f04ded3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 50f9027301e4a04cd5624deee084429c803e04f4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317720"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342713"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -41,9 +40,9 @@ In diesem Artikel sind unterstützte Konfigurationen und Komponenten zusammengef
 **Migrieren von VMs zwischen Regionen innerhalb von unterstützten geografischen Clustern (innerhalb von Abonnements und übergreifend)** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
 **Migrieren von VMs in derselben Region** | Nicht unterstützt.
 
-# <a name="region-support"></a>Unterstützung für Regionen
+## <a name="region-support"></a>Unterstützung für Regionen
 
-Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geografischen Cluster replizieren.
+Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geografischen Cluster replizieren. Geographische Cluster werden unter Berücksichtigung von Datenlatenz und Souveränität definiert.
 
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
@@ -53,21 +52,21 @@ Asien | Indien, Süden; Indien, Mitte; Asien, Südosten; Asien, Osten; Japan, Os
 Australien   | Australien, Osten; Australien, Südosten; Australien, Mitte; Australien, Mitte 2
 Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“
 Deutschland | „Deutschland, Mitte“; „Deutschland, Nordosten“
-China | „China, Osten“, „China, Norden“
+China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
 
 >[!NOTE]
 >
-> Für die Region „Brasilien, Süden“ sind die Replikation und das Failover für folgende Regionen möglich: „USA, Süden-Mitte“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“ und „USA, Norden-Mitte“.
+> Für die Region „Brasilien, Süden“ können Sie eine Replikation und ein Failover auf eine der folgenden Regionen durchführen: USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2 und USA, Norden-Mitte.</br>
+> Es sei darauf hingewiesen, dass in Site Recovery „Brasilien, Süden“ nur als Quellregion ausgewählt werden kann, aus der VMs geschützt werden können. Die Region kann nicht als Zielregion für die Notfallwiederherstellung anderer Azure-Regionen wie „USA, Süden-Mitte“ verwendet werden. Da aufgrund der geografischen Entfernung eine Latenz auftritt, wird empfohlen, eine andere amerikanische Region als „Brasilien, Süden“ auszuwählen.  
 
 ## <a name="cache-storage"></a>Cachespeicher
 
 In dieser Tabelle ist die Unterstützung für das Cachespeicherkonto zusammengefasst, das von Site Recovery während der Replikation verwendet wird.
 
-**Einstellung** | **Details**
---- | ---
+**Einstellung** | **Unterstützung** | **Details**
+--- | --- | ---
 Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nicht unterstützt. | Die Einschränkung ist für den Cachespeicher vorhanden, da die Transaktionskosten für V2 erheblich höher als für V1-Speicherkonten sind.
-Azure Storage-Firewalls für virtuelle Netzwerke  | Nein  | Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke unter Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt.
-
+Azure Storage-Firewalls für virtuelle Netzwerke  | Unterstützt | Wenn Sie ein Cache- oder Zielspeicherkonto mit aktivierter Firewall verwenden, müssen Sie [vertrauenswürdigen Microsoft-Diensten den Zugriff erlauben](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions), indem Sie die entsprechende Option auswählen.
 
 
 ## <a name="replicated-machine-operating-systems"></a>Replizierte Computerbetriebssysteme
@@ -128,16 +127,16 @@ Debian 8 | 9.17, 9.18 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 b
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.20 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.140-94.69-default |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.20 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.19 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default bis 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.18 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default bis 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.17 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default bis 4.4.126-94.22-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replizierte Computer – Linux-Dateisystem/Gastspeicher
 
-* Dateisysteme: ext3, ext4, ReiserFS (nur Suse Linux Enterprise Server), XFS
+* Dateisysteme: ext3, ext4, ReiserFS (nur Suse Linux Enterprise Server), XFS, BTRFS
 * Volume-Manager: LVM2
-* Multipfadsoftware: Gerätemapper
+* Multipfadsoftware: Gerätezuordnung
 
 
 ## <a name="replicated-machines---compute-settings"></a>Replizierte Computer – Compute-Einstellungen
@@ -146,7 +145,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.17 | SP1 3.12.49-11-default 
 --- | --- | ---
 Größe | Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM | Überprüfen Sie die [Größen der virtuellen Azure-Computer](../virtual-machines/windows/sizes.md).
 Verfügbarkeitsgruppen | Unterstützt | Wenn Sie die Replikation für eine Azure-VM mit den Standardoptionen aktivieren, wird basierend auf den Einstellungen der Quellregion automatisch eine Verfügbarkeitsgruppe erstellt. Sie können diese Einstellungen ändern.
-Verfügbarkeitszonen | Nicht unterstützt | Sie können derzeit keine VMs replizieren, die in Verfügbarkeitszonen bereitgestellt werden.
+Verfügbarkeitszonen | Unterstützt |  
 Hybridnutzungsvorteil (Hybrid Use Benefit, HUB) | Unterstützt | Wenn für den virtuellen Quellcomputer eine HUB-Lizenz aktiviert wurde, verwendet auch die Testfailover- oder Failover-VM die HUB-Lizenz.
 VM-Skalierungsgruppen | Nicht unterstützt |
 Azure-Katalogimages – von Microsoft veröffentlicht | Unterstützt | Wird unterstützt, wenn auf der VM ein unterstütztes Betriebssystem ausgeführt wird.
@@ -180,6 +179,7 @@ Datenträger – Standard-Speicherkonto | Unterstützt |
 Datenträger – Storage Premium-Konto | Unterstützt | Wenn ein virtueller Computer Datenträger in Premium- und Standard-Speicherkonten aufweist, können Sie für jeden Datenträger ein eigenes Zielspeicherkonto auswählen, um sicherzustellen, dass die gleiche Speicherkonfiguration in der Zielregion vorhanden ist.
 Verwalteter Datenträger – Standard | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. |  
 Verwalteter Datenträger – Premium | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. |
+SSD Standard | Nicht unterstützt |
 Redundanz | LRS und GRS werden unterstützt.<br/><br/> ZRS wird nicht unterstützt.
 Kalter und heißer Speicher | Nicht unterstützt | VM-Datenträger werden für kalten und heißen Speicher nicht unterstützt
 Speicherplätze | Unterstützt |         
@@ -195,12 +195,24 @@ GRS | Unterstützt |
 RA-GRS | Unterstützt |
 ZRS | Nicht unterstützt |  
 Kalter und heißer Speicher | Nicht unterstützt | Datenträger für virtuelle Computer werden auf kaltem und heißem Speicher nicht unterstützt.
-Azure Storage-Firewalls für virtuelle Netzwerke  | JA | Wenn Sie den Zugriff auf virtuelle Netzwerke in Speicherkonten einschränken, stellen Sie sicher, dass den vertrauenswürdigen Microsoft-Diensten Zugriff auf das Speicherkonto gewährt wird.
+Azure Storage-Firewalls für virtuelle Netzwerke  | Unterstützt | Wenn Sie den Zugriff auf virtuelle Netzwerke in Speicherkonten einschränken, stellen Sie sicher, dass den [vertrauenswürdigen Microsoft-Diensten Zugriff gewährt wird](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nein  | Die Transaktionskosten steigen gegenüber allgemeinen V1-Speicherkonten erheblich an.
 
 >[!IMPORTANT]
 > Stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für VM-Datenträger für virtuelle [Linux](../virtual-machines/linux/disk-scalability-targets.md)- oder [Windows](../virtual-machines/windows/disk-scalability-targets.md)-Computer beachten, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, achten Sie darauf, die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer einzuhalten.
 
+## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Azure Site Recovery-Grenzwerte zur Replikation von Datenänderungsraten
+Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. Diese Grenzwerte basieren auf unseren Tests, können aber nicht alle möglichen E/A-Kombinationen für Anwendungen abdecken. Die tatsächlichen Ergebnisse können je nach Ihrer E/A-Mischung für die Anwendungen variieren. Außerdem sollte erwähnt werden, dass es zwei Grenzwerte zu beachten gilt, nämlich jene für Datenänderungen bei Datenträgern und jene für Datenänderungen bei virtuellen Computern.
+Bei dem Premium P20-Datenträger beispielsweise in der folgenden Tabelle können Sie sehen, dass Site Recovery Datenänderungen pro Datenträger von 5 MB/s mit maximal fünf solcher Datenträger pro VM verarbeiten kann. Denn der Grenzwert für die Gesamtänderungsrate liegt bei 25 MB/s pro VM.
+
+**Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
+---|---|---|---
+Standardspeicher | 8 KB | 2 MB/s | 168 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MB/s | 168 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 16 KB | 4 MB/s |  336 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MB/s | 672 GB pro Datenträger
+Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MB/s | 421 GB pro Datenträger
+Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MB/s | 842 GB pro Datenträger
 ## <a name="replicated-machines---networking"></a>Replizierte Computer – Netzwerk
 **Konfiguration** | **Unterstützung** | **Details**
 --- | --- | ---

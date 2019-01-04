@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 04/05/2018
+ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61db5e9eedc57ef6316cb760499362ed856e38c6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 8efa8088bca3eb6221c49ec5f14334342149795d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822754"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438437"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
  
-In diesem Artikel wird erläutert, wie Sie ein Batch-Konto mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md) überwachen. Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-collection.md#metrics) und [Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) für Ressourcen in Ihrem Batch-Konto. Sie können mithilfe verschiedener Methoden diese Daten sammeln und nutzen, um Ihr Batch-Konto zu überwachen und Probleme zu diagnostizieren. Sie können auch [Metrikwarnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) konfigurieren, um Benachrichtigungen zu erhalten, wenn eine Metrik einen angegebenen Wert erreicht. 
+In diesem Artikel wird erläutert, wie Sie ein Batch-Konto mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md) überwachen. Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-collection.md#metrics) und [Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) für Ressourcen in Ihrem Batch-Konto. Sie können mithilfe verschiedener Methoden diese Daten sammeln und nutzen, um Ihr Batch-Konto zu überwachen und Probleme zu diagnostizieren. Sie können auch [Metrikwarnungen](../azure-monitor/platform/alerts-overview.md) konfigurieren, um Benachrichtigungen zu erhalten, wenn eine Metrik einen angegebenen Wert erreicht. 
 
 ## <a name="batch-metrics"></a>Batch-Metriken
 
-Bei Metriken handelt es sich um von Azure-Ressourcen ausgegebene Azure-Telemetriedaten (auch als Leistungsindikatoren bezeichnet), die vom Azure Monitor-Dienst verwendet werden. Zu den Beispielmetriken in einem Batch-Konto zählen „Poolerstellungsereignisse“, „Anzahl der Knoten mit niedriger Priorität“ und „Taskabschlussereignisse“. 
+Bei Metriken handelt es sich um von Azure-Ressourcen ausgegebene Azure-Telemetriedaten (auch als Leistungsindikatoren bezeichnet), die vom Azure Monitor-Dienst verwendet werden. Zu den Beispielmetriken in einem Batch-Konto zählen: Poolerstellungsereignisse, Anzahl der Knoten mit niedriger Priorität und Taskabschlussereignisse. 
 
-Sehen Sie sich die [Liste der unterstützten Batch-Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts) an.
+Sehen Sie sich die [Liste der unterstützten Batch-Metriken](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts) an.
 
 Für Metriken gilt Folgendes:
 
@@ -53,11 +53,17 @@ So zeigen Sie alle Metriken für Batch-Konten an
 
 Verwenden Sie zum programmgesteuerten Abrufen von Metriken die Azure Monitor-APIs. Sehen Sie sich beispielsweise die Informationen unter [Retrieve Azure Monitor metrics with .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) (Abrufen von Azure Monitor-Metriken mit .NET) an.
 
+## <a name="batch-metric-reliability"></a>Zuverlässigkeit von Batch-Metriken
+
+Metriken dienen zum Erstellen von Trends und zum Durchführen von Datenanalysen. Die Metrikbereitstellung ist nicht garantiert und unterliegt der außerordentlichen Bereitstellung und dem Verlust bzw. der Duplizierung von Daten. Es wird nicht empfohlen, einzelne Ereignisse zu verwenden, um Warnungen anzuzeigen oder Funktionen auszulösen. Im Abschnitt [Batch-Metrikwarnungen](#batch-metric-alerts) finden Sie weitere Details zum Festlegen von Schwellenwerten für Warnungen.
+
+Metriken, die innerhalb der letzten drei Minuten ausgegeben wurden, werden ggf. noch aggregiert. Innerhalb dieses Zeitraums werden die Metrikwerte unter Umständen zu niedrig angegeben.
+
 ## <a name="batch-metric-alerts"></a>Batch-Metrikwarnungen
 
-Konfigurieren Sie optional *Metrikwarnungen* nahezu in Echtzeit, die ausgelöst werden, wenn der Wert für eine bestimmte Metrik einen von Ihnen definierten Schwellenwert überschreitet. Die Warnung generiert eine [Benachrichtigung](../monitoring-and-diagnostics/insights-alerts-portal.md), wenn die Warnung den Status „Aktiviert“ (nach Überschreitung des Schwellenwerts und Erfüllung der Warnungsbedingung) oder „Aufgelöst“ (nach der erneuten Überschreitung des Schwellenwerts und Nichterfüllung der Bedingung) hat. 
+Konfigurieren Sie optional *Metrikwarnungen* nahezu in Echtzeit, die ausgelöst werden, wenn der Wert für eine bestimmte Metrik einen von Ihnen definierten Schwellenwert überschreitet. Die Warnung generiert eine [Benachrichtigung](../monitoring-and-diagnostics/insights-alerts-portal.md), wenn die Warnung den Status „Aktiviert“ (nach Überschreitung des Schwellenwerts und Erfüllung der Warnungsbedingung) oder „Aufgelöst“ (nach der erneuten Überschreitung des Schwellenwerts und Nichterfüllung der Bedingung) hat. Das Bereitstellen von Warnungen basierend auf einzelnen Datenpunkten wird nicht empfohlen, da Metriken der außerordentlichen Bereitstellung und dem Verlust bzw. der Duplizierung von Daten unterliegen. Beim Bereitstellen von Warnungen sollten Schwellenwerte genutzt werden, um diese Inkonsistenzen zu berücksichtigen.
 
-Beispiel: Es empfiehlt sich, eine Metrikwarnung für den Fall zu konfigurieren, dass die Anzahl für Kerne mit niedriger Priorität auf einen bestimmten Wert sinkt, sodass Sie die Zusammensetzung der Pools anpassen können.
+Beispiel: Es empfiehlt sich, eine Metrikwarnung für den Fall zu konfigurieren, dass die Anzahl für Kerne mit niedriger Priorität auf einen bestimmten Wert sinkt, sodass Sie die Zusammensetzung der Pools anpassen können. Es wird empfohlen, einen Zeitraum von zehn oder mehr Minuten festzulegen, in dem Warnungen ausgelöst werden, wenn die durchschnittliche Anzahl von Kernen mit niedriger Priorität unter den Schwellenwert für den gesamten Zeitraum fällt. Es wird nicht empfohlen, Warnungen für einen Zeitraum von ein bis fünf Minuten bereitzustellen, da Metriken ggf. noch aggregiert werden.
 
 So konfigurieren Sie eine Metrikwarnung im Portal:
 
@@ -65,7 +71,7 @@ So konfigurieren Sie eine Metrikwarnung im Portal:
 2. Klicken Sie unter **Überwachung** auf **Warnungsregeln** > **Metrikwarnung hinzufügen**.
 3. Wählen Sie eine Metrik, eine Warnungsbedingung (etwa für den Fall, dass eine Metrik während eines Zeitraums einen bestimmten Wert überschreitet) und mindestens eine Benachrichtigung aus.
 
-Sie können auch mithilfe der [REST-API](https://docs.microsoft.com/rest/api/monitor/) eine Warnung nahezu in Echtzeit konfigurieren. Weitere Informationen finden Sie unter [Übersicht über Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Sie können auch mithilfe der [REST-API](https://docs.microsoft.com/rest/api/monitor/) eine Warnung nahezu in Echtzeit konfigurieren. Weitere Informationen finden Sie unter [Übersicht über Warnungen](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="batch-diagnostics"></a>Batch-Diagnose
 
@@ -103,7 +109,7 @@ Andere optionale Ziele für Diagnoseprotokolle:
 
     ![Batch-Diagnose](media/batch-diagnostics/diagnostics-portal.png)
 
-Andere Optionen zum Aktivieren der Protokollerfassung: Konfigurieren von Diagnoseeinstellungen mithilfe von Azure Monitor im Portal, Verwenden einer [Resource Manager-Vorlage](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md) oder Verwenden von Azure PowerShell bzw. der Azure-Befehlszeilenschnittstelle. Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
+Andere Optionen zum Aktivieren der Protokollerfassung: Konfigurieren von Diagnoseeinstellungen mithilfe von Azure Monitor im Portal, Verwenden einer [Resource Manager-Vorlage](../azure-monitor/platform/diagnostic-logs-stream-template.md) oder Verwenden von Azure PowerShell bzw. der Azure-Befehlszeilenschnittstelle. Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Zugreifen auf Diagnoseprotokolle im Speicher
@@ -127,7 +133,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 Jede Blobdatei vom Typ „PT1H.json“ enthält Ereignisse im JSON-Format, die innerhalb der in der Blob-URL angegebenen Stunde (Beispiel: h=12) aufgetreten sind. Während der aktuellen Stunde werden Ereignisse an die Datei „PT1H.json“ angefügt, sobald sie auftreten. Der Minutenwert (m=00) ist immer „00“, da Diagnoseprotokollereignisse stundenweise in einzelne Blobs unterteilt werden. (Alle Zeitangaben sind in UTC.)
 
 
-Weitere Informationen zum Schema der Diagnoseprotokolle im Speicherkonto finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+Weitere Informationen zum Schema der Diagnoseprotokolle im Speicherkonto finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
 
 Verwenden Sie zum programmgesteuerten Zugriff auf die Protokolle in Ihrem Speicherkonto die Storage-APIs. 
 

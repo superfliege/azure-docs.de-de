@@ -1,5 +1,5 @@
 ---
-title: Qualifikation „Entitätserkennung“ für die kognitive Suche (Azure Search) | Microsoft-Dokumentation
+title: Die Qualifikation „Entität erkennen“ der kognitiven Suche – Azure Search
 description: Extrahieren Sie in Azure Search in einer Pipeline für die kognitive Suche verschiedene Entitätstypen aus Text.
 services: search
 manager: pablocas
@@ -10,27 +10,31 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 7599ab7eb7a6ff247548d988c57bdc6c501a5a6b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 9745934891cd7ba99fa821377318e38134b7d2a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447586"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311863"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
 
 Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. 
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen, das Extrahieren von Bildern und die Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
+
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Datengrenzwerte
-Die maximale Größe eines Datensatzes ist 50.000 Zeichen, gemessen durch `String.Length`. Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Schlüsselbegriffserkennung senden, denken Sie daran, die [Qualifikation „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
+Die maximale Größe eines Datensatzes ist 50.000 Zeichen, gemessen durch `String.Length`. Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Schlüsselbegriffserkennung senden, denken Sie daran, den [Skill „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
 
-## <a name="skill-parameters"></a>Qualifikationsparameter
+## <a name="skill-parameters"></a>Skillparameter
 
 Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beachtet.
 
@@ -42,16 +46,16 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 |includeTypelessEntites | Wenn dieser Parameter auf „True“ festgelegt ist und der Text eine bekannte Entität enthält, die aber keiner der unterstützten Kategorien zugeordnet werden kann, wird sie als Teil des komplexen Ausgabefelds `"entities"` zurückgegeben. Der Standardwert ist `false`. |
 
 
-## <a name="skill-inputs"></a>Eingaben für die Qualifikation
+## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | languageCode  | Optional. Der Standardwert ist `"en"`.  |
 | text          | Der zu analysierende Text          |
 
-## <a name="skill-outputs"></a>Ausgaben der Qualifikation
+## <a name="skill-outputs"></a>Skillausgaben
 
-**Hinweis**: Nicht alle Entitätskategorien werden für alle Sprachen unterstützt.
+**HINWEIS**: Nicht alle Entitätskategorien werden für alle Sprachen unterstützt.
 Die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` wird nur für _en_ und _es_ unterstützt.
 
 | Ausgabename     | BESCHREIBUNG                   |
@@ -64,7 +68,7 @@ Die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` wird nur
 | urls | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine URL darstellt. |
 | emails | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine E-Mail-Adresse darstellt. |
 | namedEntities | Ein Array von komplexen Typen mit den folgenden Feldern: <ul><li>category</li> <li>value (der tatsächliche Entitätsname)</li><li>offset (die Fundstelle im Text)</li><li>confidence (derzeit nicht verwendet; wird auf einen Wert von -1 festgelegt)</li></ul> |
-| entities | Ein Array von komplexen Typen, die umfangreiche Informationen zu den aus dem Text extrahierten Entitäten enthalten, mit den folgenden Feldern: <ul><li> name (der tatsächliche Entitätsname; stellt eine „normalisierte“ Form dar)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Link zur Wikipedia-Seite für die Entität)</li><li>bingId</li><li>type (Kategorie der erkannten Entität)</li><li>subtype (nur für bestimmte Kategorien verfügbar; ermöglicht eine präzisere Ansicht des Entitätstyps)</li><li> matches (eine komplexe Sammlung mit:)<ul><li>text (unformatierter Text für die Entität)</li><li>offset (Fundstelle)</li><li>length (Länge des unformatierten Texts für die Entität)</li></ul></li></ul> |
+| entities | Ein Array von komplexen Typen, die umfangreiche Informationen zu den aus dem Text extrahierten Entitäten enthalten, mit den folgenden Feldern: <ul><li> name (der tatsächliche Entitätsname; stellt eine „normalisierte“ Form dar)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Link zur Wikipedia-Seite für die Entität)</li><li>bingId</li><li>type (Kategorie der erkannten Entität)</li><li>subType (nur für bestimmte Kategorien verfügbar; ermöglicht eine präzisere Ansicht des Entitätstyps)</li><li> matches (eine komplexe Sammlung mit:)<ul><li>text (unformatierter Text für die Entität)</li><li>offset (Fundstelle)</li><li>length (Länge des unformatierten Texts für die Entität)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Beispieldefinition
 
@@ -191,5 +195,5 @@ Wird der Sprachcode für das Dokument nicht unterstützt, wird ein Fehler zurüc
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Qualifikationen](cognitive-search-predefined-skills.md)
-+ [Definieren einer Qualifikationsgruppe](cognitive-search-defining-skillset.md)
++ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Definieren eines Skillsets](cognitive-search-defining-skillset.md)

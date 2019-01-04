@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer externen Azure App Service-Umgebung
+title: Erstellen einer externen App Service-Umgebung – Azure
 description: Hier wird erläutert, wie Sie beim Erstellen einer App oder bei einer eigenständigen Aktion eine App Service-Umgebung erstellen.
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 0ee2654b313f453f7485c89c789edc8efc068d7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 98d534e20b8e4c6bf6bcc3f483f59b796dc85073
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442648"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274468"
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
 
@@ -64,27 +65,27 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
     ![Erstellung der Web-App][1]
 
-1. Wählen Sie Ihr Abonnement aus. App und ASE werden im gleichen Abonnement erstellt.
+2. Wählen Sie Ihr Abonnement aus. App und ASE werden im gleichen Abonnement erstellt.
 
-1. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie. Mithilfe von Ressourcengruppen können Sie verwandte Azure-Ressourcen als Einheit verwalten. Ressourcengruppen sind auch nützlich, wenn Sie Regeln für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre Apps einrichten. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager][ARMOverview].
+3. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie. Mithilfe von Ressourcengruppen können Sie verwandte Azure-Ressourcen als Einheit verwalten. Ressourcengruppen sind auch nützlich, wenn Sie Regeln für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre Apps einrichten. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager][ARMOverview].
 
-1. Wählen Sie Ihr Betriebssystem aus (Windows, Linux oder Docker). 
+4. Wählen Sie Ihr Betriebssystem aus (Windows, Linux oder Docker). 
 
-1. Klicken Sie auf den App Service-Plan, und wählen Sie anschließend die Option **Neu erstellen**. Linux-Web-Apps und Windows-Web-Apps können sich nicht im selben App Service-Plan befinden, jedoch in derselben App Service-Umgebung. 
+5. Klicken Sie auf den App Service-Plan, und wählen Sie anschließend die Option **Neu erstellen**. Linux-Web-Apps und Windows-Web-Apps können sich nicht im selben App Service-Plan befinden, jedoch in derselben App Service-Umgebung. 
 
     ![Neuer App Service-Plan][2]
 
-1. Wählen Sie in der Dropdownliste **Speicherort** die Region aus, in der Sie die ASE erstellen möchten. Wenn Sie eine vorhandene ASE auswählen, wird keine neue ASE erstellt. Der App Service-Plan wird in der von Ihnen ausgewählten ASE erstellt. 
+6. Wählen Sie in der Dropdownliste **Speicherort** die Region aus, in der Sie die ASE erstellen möchten. Wenn Sie eine vorhandene ASE auswählen, wird keine neue ASE erstellt. Der App Service-Plan wird in der von Ihnen ausgewählten ASE erstellt. 
 
-1. Wählen Sie **Tarif**, und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated**-SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
+7. Wählen Sie **Tarif**, und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated**-SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
 
     ![Auswahl des Tarifs][3]
 
-1. Geben Sie den Namen für Ihre ASE ein. Dieser Name wird im aufrufbaren Namen für Ihre Apps verwendet. Wenn der Name der ASE _appsvcenvdemo_ ist, lautet der Domänenname *.appsvcenvdemo.p.azurewebsites.net*. Wenn Sie eine App namens *mytestapp* erstellen, kann sie unter der Adresse „mytestapp.appsvcenvdemo.p.azurewebsites.net“ aufgerufen werden. Sie dürfen keine Leerzeichen im Namen verwenden. Bei Verwendung von Großbuchstaben wird der entsprechende Domänenname dennoch vollständig in Kleinbuchstaben geschrieben.
+8. Geben Sie den Namen für Ihre ASE ein. Dieser Name wird im aufrufbaren Namen für Ihre Apps verwendet. Wenn der Name der ASE _appsvcenvdemo_ ist, lautet der Domänenname *.appsvcenvdemo.p.azurewebsites.net*. Wenn Sie eine App namens *mytestapp* erstellen, kann sie unter der Adresse „mytestapp.appsvcenvdemo.p.azurewebsites.net“ aufgerufen werden. Sie dürfen keine Leerzeichen im Namen verwenden. Bei Verwendung von Großbuchstaben wird der entsprechende Domänenname dennoch vollständig in Kleinbuchstaben geschrieben.
 
     ![Name für den neuen App Service-Plan][4]
 
-1. Geben Sie die Informationen für Ihr virtuelles Azure-Netzwerk an. Wählen Sie entweder **Neu erstellen** oder **Vorhandenes auswählen**. Sie können nur dann ein vorhandenes VNET auswählen, wenn Sie in der ausgewählten Region über ein VNET verfügen. Wenn Sie **Neu erstellen** ausgewählt haben, geben Sie einen Namen für das VNET ein. Es wird ein neues Resource Manager-VNET mit diesem Namen erstellt. Das VNET verwendet den Adressraum `192.168.250.0/23` in der ausgewählten Region. Bei Auswahl von **Vorhandene auswählen** gehen Sie wie folgt vor:
+9. Geben Sie die Informationen für Ihr virtuelles Azure-Netzwerk an. Wählen Sie entweder **Neu erstellen** oder **Vorhandenes auswählen**. Sie können nur dann ein vorhandenes VNET auswählen, wenn Sie in der ausgewählten Region über ein VNET verfügen. Wenn Sie **Neu erstellen** ausgewählt haben, geben Sie einen Namen für das VNET ein. Es wird ein neues Resource Manager-VNET mit diesem Namen erstellt. Das VNET verwendet den Adressraum `192.168.250.0/23` in der ausgewählten Region. Bei Auswahl von **Vorhandene auswählen** gehen Sie wie folgt vor:
 
     a. Wählen Sie den Adressblock des virtuellen Netzwerks aus, falls Sie mehr als ein VNET verwenden.
 
@@ -94,7 +95,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
     d. Wählen Sie den IP-Bereich des Subnetzes aus.
 
-1. Wählen Sie **Erstellen**, um die ASE zu erstellen. Dieser Prozess erstellt auch den App Service-Plan und die App. Die ASE, der App Service-Plan und die App befinden sich im gleichen Abonnement und in der gleichen Ressourcengruppe. Wenn für Ihre ASE eine separate Ressourcengruppe erforderlich ist oder Sie eine ILB-ASE benötigen, führen Sie die Schritte zum Erstellen einer eigenständigen ASE aus.
+10. Wählen Sie **Erstellen**, um die ASE zu erstellen. Dieser Prozess erstellt auch den App Service-Plan und die App. Die ASE, der App Service-Plan und die App befinden sich im gleichen Abonnement und in der gleichen Ressourcengruppe. Wenn für Ihre ASE eine separate Ressourcengruppe erforderlich ist oder Sie eine ILB-ASE benötigen, führen Sie die Schritte zum Erstellen einer eigenständigen ASE aus.
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Gemeinsames Erstellen einer ASE und einer Linux-Web-App mit einem benutzerdefinierten Docker-Image
 
@@ -199,5 +200,5 @@ Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-
 [webapps]: ../app-service-web-overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md

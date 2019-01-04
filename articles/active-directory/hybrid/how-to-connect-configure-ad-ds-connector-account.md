@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f57a5a2413103ddcf7484f3b1fc5b4170b7bdc98
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 97352cdc89aabe312bf500901347acaf5238e871
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412855"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436992"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren von AD DS-Connector-Kontoberechtigungen 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
 Mit Build 1.1.880.0 (August 2018 veröffentlicht) wurde ein neues PowerShell-Modul namens [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) eingeführt, das eine Sammlung von Cmdlets enthält, die Ihnen bei der Konfiguration der richtigen Active Directory-Berechtigungen für Ihre Azure AD Connect-Bereitstellung helfen sollen. 
 
@@ -205,12 +205,12 @@ Dieses Cmdlet legt die folgenden Berechtigungen fest:
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn Gruppenrückschreiben verwendet wird, führen Sie Folgendes aus: 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 oder 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
@@ -225,14 +225,14 @@ Dieses Cmdlet legt die folgenden Berechtigungen fest:
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn eine Exchange-Hybridbereitstellung verwendet wird, führen Sie Folgendes aus: 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
 oder 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest:  

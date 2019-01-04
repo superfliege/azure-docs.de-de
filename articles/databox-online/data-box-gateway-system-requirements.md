@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157359"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256671"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Systemanforderungen für Microsoft Azure Data Box Gateway (Vorschauversion)
 
@@ -26,6 +26,19 @@ Für das virtuelle Data Box Gateway-Gerät gelten die folgenden Systemanforderun
 
 > [!IMPORTANT]
 > Data Box Gateway ist in der Vorschauphase. Lesen Sie [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen. 
+
+## <a name="specifications-for-the-virtual-device"></a>Spezifikationen für das virtuelle Gerät
+
+Das dem Data Box Gateway zugrunde liegende Hostsystem ist in der Lage, die folgenden Ressourcen für die Bereitstellung Ihres virtuellen Geräts zuzuordnen:
+
+| Spezifikationen                                          | BESCHREIBUNG              |
+|---------------------------------------------------------|--------------------------|
+| Virtuelle Prozessoren (Kerne)   | Mindestens 4 |            
+| Arbeitsspeicher  | Mindestens 8 GB|
+| Verfügbarkeit|Einzelner Knoten|
+| Datenträger| Betriebssystemdatenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
+| Netzwerkschnittstellen|Mindestens eine virtuelle Netzwerkschnittstelle|
+
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Unterstütztes Betriebssystem für Clients, die mit dem Gerät verbunden sind
 

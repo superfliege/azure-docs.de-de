@@ -13,17 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0b6fae59fbe0fa86cb16b176eb1df47e031d04f1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259087"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317185"
 ---
-<a id="preparemachines"></a>
-
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planen und Vorbereiten der Bereitstellung eines eigenständigen Service Fabric-Clusters
-Führen Sie die folgenden Schritte aus, bevor Sie den Cluster erstellen.
+
+<a id="preparemachines"></a>Führen Sie die folgenden Schritte aus, bevor Sie den Cluster erstellen.
 
 ## <a name="plan-your-cluster-infrastructure"></a>Planen der Clusterinfrastruktur
 Da Sie im Begriff sind, auf Ihren eigenen Computern einen Service Fabric-Cluster zu erstellen, können Sie entscheiden, welche Arten von Fehlern der Cluster überstehen soll. Benötigen Sie beispielsweise separate Stromversorgungsleitungen oder Internetverbindungen zur Versorgung dieser Computer? Berücksichtigen Sie darüber hinaus auch die physische Sicherheit der Computer. Wo befinden sich die Computer, und wer benötigt Zugang zu ihnen? Nachdem Sie diese Entscheidungen getroffen haben, können Sie die Computer logisch den verschiedenen Fehlerdomänen zuordnen (siehe nächster Schritt). Die Infrastrukturplanung für Produktionscluster ist komplizierter als für Testcluster.
@@ -43,10 +42,10 @@ Die einfachste Möglichkeit, sich diese Konzepte vorzustellen, besteht darin, FD
 
 Beim Angeben von UDs in „ClusterConfig.json“ können Sie jeweils den Namen der UD wählen. Beispielsweise sind die folgenden Namen zulässig:
 
-* „upgradeDomain“: „UD0“
-* „upgradeDomain“: „UD1A“
-* „upgradeDomain“: „DomainRed“
-* „upgradeDomain“: „Blue“
+* "upgradeDomain": "UD0"
+* "upgradeDomain": "UD1A"
+* "upgradeDomain": "DomainRed"
+* "upgradeDomain": "Blue"
 
 Ausführlichere Informationen zu FDs und UDs finden Sie im Artikel [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
 
@@ -83,6 +82,7 @@ Um einen eigenständigen Cluster zu erstellen, müssen Sie eine ClusterConfig.js
 Ausführliche Informationen zu den Abschnitten in dieser Datei finden Sie im Artikel [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md).
 
 Öffnen Sie eine der „ClusterConfig.json“-Dateien aus dem Paket, das Sie heruntergeladen haben, und ändern Sie die folgenden Einstellungen:
+
 | **Konfigurationseinstellung** | **Beschreibung** |
 | --- | --- |
 | **NodeTypes** |Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale: <br> **Name**: Dies ist der Knotentypname. <br>**Endpunktports**: Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Elementen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem (virtuellen) Computer verwendet wird. <br> **Platzierungseigenschaften**: Eigenschaften für diesen Knotentyp, die Sie später als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften wären etwa die Angabe, ob der Knoten über eine Festplatte oder Grafikkarte verfügt, die Anzahl von Spindeln des Festplattenlaufwerks, die Anzahl von Kernen und andere physische Eigenschaften. <br> **Kapazitäten**: Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Diese Kapazitäten werden zur Laufzeit verwendet, um sicherzustellen, dass Dienste, die bestimmte Ressourcenmengen beanspruchen, auf Knoten mit den verfügbaren Ressourcen in der benötigten Menge platziert werden.<br>**IsPrimary**: Wenn Sie mehr als ein NodeType-Element definiert haben, sollten Sie sicherstellen, dass nur ein Element mit dem Wert *TRUE* als primäres Element festgelegt ist. Auf diesem Element werden die Systemdienste ausgeführt. Alle anderen Knotentypen sollten auf den Wert *FALSE* festgelegt werden. |
@@ -97,20 +97,20 @@ Wenn in der Clusterkonfiguration alle Einstellungen für die Umgebung konfigurie
 Wenn ein Clusteradministrator einen eigenständigen Service Fabric-Cluster konfiguriert, muss die Umgebung mit den folgenden Kriterien eingerichtet werden: <br>
 1. Der Benutzer, der den Cluster erstellt, muss über Administratorberechtigungen auf allen Computern verfügen, die in der Clusterkonfigurationsdatei als Knoten aufgeführt sind.
 2. Für den Computer, auf dem der Cluster erstellt wird, sowie für jeden anderen Computerknoten gilt Folgendes:
-* Das Service Fabric-SDK muss deinstalliert sein.
-* Die Service Fabric-Laufzeit muss deinstalliert sein. 
-* Der Windows-Firewalldienst (mpssvc) muss aktiviert sein.
-* Der Remoteregistrierungsdienst (Remoteregistrierung) muss aktiviert sein.
-* Die Dateifreigabe (SMB) muss aktiviert sein.
-* Die erforderlichen Ports müssen geöffnet sein, basierend auf den Ports der Clusterkonfiguration.
-* Die erforderlichen Ports für den Windows SMB-Dienst und den Remoteregistrierungsdienst müssen geöffnet sein: 135, 137, 138, 139 und 445.
-* Die Computer müssen über das Netzwerk miteinander verbunden sein.
+   * Das Service Fabric-SDK muss deinstalliert sein.
+   * Die Service Fabric-Laufzeit muss deinstalliert sein. 
+   * Der Windows-Firewalldienst (mpssvc) muss aktiviert sein.
+   * Der Remoteregistrierungsdienst (Remoteregistrierung) muss aktiviert sein.
+   * Die Dateifreigabe (SMB) muss aktiviert sein.
+   * Die erforderlichen Ports müssen geöffnet sein, basierend auf den Ports der Clusterkonfiguration.
+   * Die erforderlichen Ports für den Windows SMB-Dienst und den Remoteregistrierungsdienst müssen geöffnet sein: 135, 137, 138, 139 und 445.
+   * Die Computer müssen über das Netzwerk miteinander verbunden sein.
 3. Keiner der Clusterknotencomputer darf ein Domänencontroller sein.
 4. Wenn es sich bei dem bereitzustellenden Cluster um einen sicheren Cluster handelt, überprüfen Sie, ob die Sicherheitsvoraussetzungen erfüllt und ordnungsgemäß konfiguriert sind.
 5. Wenn die Clustercomputer nicht über das Internet erreichbar sind, legen Sie in der Clusterkonfiguration Folgendes fest:
-* Telemetrie deaktivieren: Legen Sie unter *properties* die Option *"enableTelemetry": false* fest.
-* Automatisches Herunterladen von Fabric-Versionen und Benachrichtigungen zum nahenden Supportende der aktuellen Clusterversion deaktivieren: Legen Sie unter *properties* die Option *"fabricClusterAutoupgradeEnabled": false* fest.
-* Selbst wenn der Netzwerk-/Internetzugriff auf die in der Whitelist aufgeführten Domänen beschränkt ist, sind die unten stehenden Domänen für ein automatisches Upgrade erforderlich:   go.microsoft.com   download.microsoft.com
+   * Deaktivieren der Telemetrie: Legen Sie unter *properties* die Option *"enableTelemetry": false* fest.
+   * Automatisches Herunterladen von Fabric-Versionen und Benachrichtigungen zum nahenden Supportende der aktuellen Clusterversion deaktivieren: Legen Sie unter *properties* die Option *"fabricClusterAutoupgradeEnabled": true* fest.
+   * Selbst wenn der Netzwerk-/Internetzugriff auf die in der Whitelist aufgeführten Domänen beschränkt ist, sind die unten aufgeführten Domänen für ein automatisches Upgrade erforderlich: go.microsoft.com, download.microsoft.com.
 
 6. Legen Sie geeignete Service Fabric-Virenschutzausschlüsse fest:
 

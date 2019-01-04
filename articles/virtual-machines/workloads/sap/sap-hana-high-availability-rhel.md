@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 77f4eeec1aa87f42c90d4e93f98f460a8b54b9a9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167408"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338521"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux
 
@@ -87,9 +87,9 @@ Um hohe Verfügbarkeit zu erreichen, ist SAP HANA auf zwei virtuellen Computern 
 
 Das Setup der SAP HANA-Systemreplikation verwendet einen dedizierten virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein Lastenausgleich erforderlich. Die folgende Liste zeigt die Konfiguration des Lastenausgleichs:
 
-* Front-End-Konfiguration: IP-Adresse 10.0.0.13 für hn1-db
-* Back-End-Konfiguration: mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil der HANA-Systemreplikation sein sollen
-* Testport: 62503
+* Front-End-Konfiguration: IP-Adresse 10.0.0.13 für „hn1-db“
+* Back-End-Konfiguration: Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil der HANA-Systemreplikation sein sollen.
+* Testport: Port 62503
 * Lastenausgleichsregeln: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
 
 ## <a name="deploy-for-linux"></a>Bereitstellen für Linux
@@ -103,13 +103,13 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 1. Öffnen Sie die [Datenbankvorlage][template-multisid-db] im Azure-Portal.
 1. Legen Sie die folgenden Parameter fest:
-    * **SAP-System-ID:** Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
-    * **Betriebssystemtyp:** Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel die Option **RHEL 7** aus.
-    * **Datenbanktyp:** Wählen Sie **HANA** aus.
-    * **SAP-Systemgröße:** Geben Sie die SAPS-Anzahl an, die das neue System bereitstellen soll. Wenn Sie nicht sicher sind, welche SAPS-Anzahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
-    * **Systemverfügbarkeit**: Wählen Sie **HA**.
-    * **Administratorbenutzername, Administratorkennwort oder SSH-Schlüssel**: Es wird ein neuer Benutzer erstellt, der verwendet werden kann, um sich auf dem Computer anzumelden.
-    * **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**. Lassen Sie das Feld leer, wenn Sie ein neues virtuelles Netzwerk erstellen möchten.
+    * **SAP-System-ID**: Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
+    * **Betriebssystemtyp**: Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel die Option **RHEL 7** aus.
+    * **DB-Typ**: Wählen Sie **HANA** aus.
+    * **SAP-Systemgröße**: Geben Sie die SAPS-Anzahl an, die das neue System bereitstellen soll. Wenn Sie nicht sicher sind, welche SAPS-Anzahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
+    * **Systemverfügbarkeit**: Wählen Sie **HA** (Hohe Verfügbarkeit).
+    * **Administratorbenutzername, Administratorkennwort oder SSH-Schlüssel**: Es wird ein neuer Benutzer erstellt, der sich am Computer anmelden kann.
+    * **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**. Lassen Sie das Feld leer, wenn Sie ein neues virtuelles Netzwerk erstellen möchten.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 
@@ -120,9 +120,9 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 1. Erstellen Sie einen Lastenausgleich (intern).
    * Wählen Sie das virtuelle Netzwerk aus, das Sie in Schritt 2 erstellt haben.
 1. Erstellen Sie den virtuellen Computer 1.  
-   Verwenden Sie Red Hat Enterprise Linux 7.4 oder höher für SAP HANA. Dieses Beispiel verwendet das Image für Red Hat Enterprise Linux 7.4 für SAP HANA <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM>. Wählen Sie die in Schritt 3 erstellte Verfügbarkeitsgruppe aus.
+   Verwenden Sie Red Hat Enterprise Linux 7.4 oder höher für SAP HANA. Dieses Beispiel verwendet das Image für Red Hat Enterprise Linux 7.4 für SAP HANA <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM>. Wählen Sie die in Schritt 3 erstellte Verfügbarkeitsgruppe aus.
 1. Erstellen Sie den virtuellen Computer 2.  
-   Verwenden Sie Red Hat Enterprise Linux 7.4 oder höher für SAP HANA. Dieses Beispiel verwendet das Image für Red Hat Enterprise Linux 7.4 für SAP HANA <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM>. Wählen Sie die in Schritt 3 erstellte Verfügbarkeitsgruppe aus.
+   Verwenden Sie Red Hat Enterprise Linux 7.4 oder höher für SAP HANA. Dieses Beispiel verwendet das Image für Red Hat Enterprise Linux 7.4 für SAP HANA <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM>. Wählen Sie die in Schritt 3 erstellte Verfügbarkeitsgruppe aus.
 1. Fügen Sie Datenträger hinzu.
 1. Konfigurieren Sie den Lastenausgleich. Erstellen Sie zunächst einen Front-End-IP-Pool:
 
@@ -187,11 +187,11 @@ Weitere Informationen zu den erforderlichen Ports für SAP HANA finden Sie im Ka
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
-* **[A]:** Der Schritt gilt für alle Knoten.
-* **[1]:** Der Schritt gilt nur für den Knoten 1.
-* **[2]:** Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+* **[A]**: Der Schritt gilt für alle Knoten.
+* **[1]**: Der Schritt gilt nur für den Knoten 1.
+* **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
-1. **[A]** Richten Sie das Datenträgerlayout **Logical Volume Manager (LVM)** ein.
+1. **[A]** Richten Sie das Datenträgerlayout  **Logical Volume Manager (LVM)** ein.
 
    Es wird empfohlen, LVM für Volumes zu verwenden, die Daten- und Protokolldateien speichern. Im folgenden Beispiel wird davon ausgegangen, dass die virtuellen Computer über vier Datenträger verfügen, die zum Erstellen von zwei Volumes verwendet werden.
 
@@ -257,7 +257,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** Richten Sie das Datenträgerlayout **Einfache Datenträger** ein.
+1. **[A]** Richten Sie das Datenträgerlayout  **Einfache Datenträger** ein.
 
    Für Demosysteme können Sie Ihre HANA-Daten- und Protokolldateien auf einem Datenträger platzieren. Erstellen Sie auf „/dev/disk/azure/scsi1/lun0“ eine Partition, und formatieren Sie sie mit XFS:
 
@@ -303,31 +303,31 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    Befolgen Sie die Anweisungen unter <https://access.redhat.com/articles/3004101>, um die SAP HANA-Systemreplikation zu installieren.
 
    * Führen Sie das Programm **hdblcm** von der HANA-DVD aus. Geben Sie an der Eingabeaufforderung folgende Werte ein:
-   * Choose installation: Geben Sie **1** ein.
-   * Select additional components for installation: Geben Sie **1** ein.
-   * Enter Installation Path [/hana/shared]: Drücken Sie die EINGABETASTE.
-   * Enter Local Host Name [..]: Drücken Sie die EINGABETASTE.
-   * Möchten Sie dem System weitere Hosts hinzufügen? (y/n) [n]: Drücken Sie die EINGABETASTE.
-   * Enter SAP HANA System ID: Geben Sie die HANA-SID ein, z.B. **HN1**.
-   * Enter Instance Number [00]: Geben Sie die HANA-Instanznummer ein. Verwenden Sie **03**, wenn Sie die Azure-Vorlage verwendet oder die in diesem Artikel beschriebene manuelle Bereitstellung durchgeführt haben.
-   * Select Database Mode / Enter Index [1]: Drücken Sie die EINGABETASTE.
-   * Select System Usage / Enter Index [4]: Wählen Sie einen Wert für die Systemnutzung aus.
-   * Enter Location of Data Volumes [/hana/data/HN1]: Drücken Sie die EINGABETASTE.
-   * Enter Location of Log Volumes [/hana/log/HN1]: Drücken Sie die EINGABETASTE.
+   * Wählen Sie die Installation aus: Geben Sie **1** ein.
+   * Wählen Sie weitere Komponenten für die Installation aus: Geben Sie **1** ein.
+   * Geben Sie den Installationspfad ein [/hana/shared]: Drücken Sie die EINGABETASTE.
+   * Geben Sie den Namen des lokalen Hosts ein [..]: Drücken Sie die EINGABETASTE.
+   * Möchten Sie dem System weitere Hosts hinzufügen? (j/n) [n]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die SAP HANA-System-ID ein: Geben Sie die HANA-SID ein, z.B.: **HN1**.
+   * Geben Sie die Instanznummer ein [00]: Geben Sie die HANA-Instanznummer ein. Verwenden Sie **03**, wenn Sie die Azure-Vorlage verwendet oder die in diesem Artikel beschriebene manuelle Bereitstellung durchgeführt haben.
+   * Wählen Sie den Datenbankmodus / geben Sie den Index ein [1]: Drücken Sie die EINGABETASTE.
+   * Wählen Sie die Systemnutzung / geben Sie den Index [ein 4]: Wählen Sie den Systemnutzungswert aus.
+   * Geben Sie den Speicherort der Datenvolumes ein [/hana/data/HN1]: Drücken Sie die EINGABETASTE.
+   * Geben Sie den Speicherort der Protokollvolumes ein [/hana/log/HN1]: Drücken Sie die EINGABETASTE.
    * Möchten Sie die maximale Speicherbelegung beschränken? [n]: Drücken Sie die EINGABETASTE.
-   * Enter Certificate Host Name For Host '...' [...]: Drücken Sie die EINGABETASTE.
-   * Enter SAP Host Agent User (sapadm) Password: Geben Sie das Benutzerkennwort des Host-Agents ein.
-   * Confirm SAP Host Agent User (sapadm) Password: Geben Sie das Benutzerkennwort des Host-Agents zur Bestätigung erneut ein.
-   * Enter System Administrator (hdbadm) Password: Geben Sie das Kennwort für den Systemadministrator ein.
-   * Confirm System Administrator (hdbadm) Password: Geben Sie das Benutzerkennwort des Host-Agents zur Bestätigung erneut ein.
-   * Enter System Administrator Home Directory [/usr/sap/HN1/home]: Drücken Sie die EINGABETASTE.
-   * Enter System Administrator Login Shell [/bin/sh]: Drücken Sie die EINGABETASTE.
-   * Enter System Administrator User ID [1001]: Drücken Sie die EINGABETASTE.
-   * Enter ID of User Group (sapsys) [79]: Drücken Sie die EINGABETASTE.
-   * Enter Database User (SYSTEM) Password: Geben Sie das Benutzerkennwort für die Datenbank ein.
-   * Confirm Database User (SYSTEM) Password: Geben Sie das Benutzerkennwort für die Datenbank zur Bestätigung erneut ein.
+   * Geben Sie den Zertifikathostnamen für Host „...“ ein [...]: Drücken Sie die EINGABETASTE.
+   * Geben Sie das Kennwort für den SAP-Host-Agent-Benutzer ein (sapadm): Geben Sie das Kennwort für den Host-Agent-Benutzer ein.
+   * Bestätigen Sie das Kennwort für den SAP-Host-Agent-Benutzer (sapadm): Geben Sie das Kennwort für den Host-Agent-Benutzer erneut ein, um es zu bestätigen.
+   * Geben Sie das Kennwort für den Systemadministrator ein (hdbadm): Geben Sie das Systemadministratorkennwort ein.
+   * Bestätigen Sie das Kennwort für den Systemadministrator (hdbadm): Geben Sie das Systemadministratorkennwort erneut ein, um es zu bestätigen.
+   * Geben Sie das Basisverzeichnis für den Systemadministrator ein [/usr/sap/HN1/home]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die Anmelde-Shell für den Systemadministrator ein [/ bin/sh]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die Benutzer-ID für den Systemadministrator ein [1001]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die ID der Benutzergruppe ein (sapsys) [79]: Drücken Sie die EINGABETASTE.
+   * Geben Sie das Datenbankbenutzer-Kennwort ein (SYSTEM): Geben Sie das Kennwort für Datenbankbenutzer ein.
+   * Bestätigen Sie das Datenbankbenutzer-Kennwort (SYSTEM): Geben Sie das Kennwort für Datenbankbenutzer erneut ein, um es zu bestätigen.
    * Soll das System nach dem Neustart des Computers neu starten? [n]: Drücken Sie die EINGABETASTE.
-   * Möchten Sie fortfahren? (y/n): Überprüfen Sie die Zusammenfassung. Geben Sie **y** ein, um fortzufahren.
+   * Möchten Sie fortfahren? (j/n): Überprüfen Sie die Zusammenfassung. Geben Sie **y** ein, um fortzufahren.
 
 1. **[A]** Führen Sie ein Upgrade für den SAP-Host-Agent durch.
 
@@ -348,9 +348,9 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
-* **[A]:** Der Schritt gilt für alle Knoten.
-* **[1]:** Der Schritt gilt nur für den Knoten 1.
-* **[2]:** Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+* **[A]**: Der Schritt gilt für alle Knoten.
+* **[1]**: Der Schritt gilt nur für den Knoten 1.
+* **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
 1. **[A]** Konfigurieren Sie die Firewall.
 
@@ -439,9 +439,9 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
-* **[A]:** Der Schritt gilt für alle Knoten.
-* **[1]:** Der Schritt gilt nur für den Knoten 1.
-* **[2]:** Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+* **[A]**: Der Schritt gilt für alle Knoten.
+* **[1]**: Der Schritt gilt nur für den Knoten 1.
+* **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
 1. **[A]** Konfigurieren Sie die Firewall.
 

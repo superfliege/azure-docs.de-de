@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/07/2018
+ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e2d0d5073ffbeaed1c0215386a0c2c9f22a67d9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288644"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435683"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – Oracle-DBMS-Bereitstellung für SAP-Workload
 
@@ -321,13 +321,13 @@ Die nachstehenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem 
 
 | Hinweisnummer | Titel |
 | --- | --- |
-| [1928533] |SAP Applications on Azure: Supported Products and Azure VM types (SAP-Anwendungen in Azure: Unterstützte Produkte und Azure-VM-Typen) |
-| [2015553] |SAP on Microsoft Azure: Support Prerequisites (SAP in Microsoft Azure: Voraussetzungen für die Unterstützung) |
+| [1928533] |SAP Applications on Azure: Supported Products and Azure VM types (SAP-Anwendungen in Azure:  Unterstützte Produkte und Azure-VM-Typen) |
+| [2015553] |SAP on Microsoft Azure: Support Prerequisites (SAP in Microsoft Azure:  Voraussetzungen für die Unterstützung) |
 | [1999351] |Problembehandlung für die erweiterte Azure-Überwachung für SAP |
 | [2178632] |Wichtige Überwachungsmetriken für SAP in Microsoft Azure |
-| [2191498] |SAP on Linux with Azure: Enhanced Monitoring (SAP unter Linux mit Azure: Erweiterte Überwachung) |
-| [2039619] |SAP Applications on Microsoft Azure using the Oracle Database: Supported Products and Versions (SAP-Anwendungen in Microsoft Azure mit der Oracle-Datenbank: Unterstützte Produkte und Versionen) |
-| [2243692] |Linux auf Microsoft Azure-VMs (IaaS): SAP-Lizenzprobleme |
+| [2191498] |SAP unter Linux mit Azure:  erweiterte Überwachung |
+| [2039619] |SAP Applications on Microsoft Azure using the Oracle Database: Supported Products and Versions (SAP-Anwendungen in Microsoft Azure mit der Oracle-Datenbank:  Unterstützte Produkte und Versionen) |
+| [2243692] |Linux auf Microsoft Azure-VMs (IaaS):  SAP-Lizenzprobleme |
 | [2069760] |Oracle Linux 7.x SAP: Installation und Upgrade |
 | [1597355] |Empfehlung zu Auslagerungsbereichen für Linux |
 | [2171857] |Oracle Database 12c – Dateisystemunterstützung unter Linux |
@@ -428,7 +428,9 @@ In Übereinstimmung mit den SAP-Installationshandbüchern sollten keine Oracle-b
 
 ### <a name="storage-configuration"></a>Speicherkonfiguration
 
-Die Dateisysteme ext4, xfs oder Oracle ASMOnly werden für Oracle-Datenbankdateien in Azure unterstützt. Sämtliche Datenbankdateien müssen in diesen Dateisystemen auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder [verwalteten Azure-Datenträgern](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Die Dateisysteme ext4, xfs oder Oracle ASM werden für Oracle-Datenbankdateien in Azure unterstützt. Sämtliche Datenbankdateien müssen in diesen Dateisystemen auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder [verwalteten Azure-Datenträgern](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+
+Für Oracle Linux UEK-Kernels ist mindestens die UEK-Version 4 erforderlich, um [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms) unterstützen zu können.
 
 Es wird ausdrücklich empfohlen, [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) zu nutzen. Außerdem wird dringend empfohlen, [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) für Ihre Oracle Database-Bereitstellungen zu verwenden.
 
@@ -454,7 +456,7 @@ Mindestkonfiguration:
 | /oracle/<SID>/oraarch | Standard | Keine | Nicht erforderlich |
 | Oracle Home, saptrace, ... | Betriebssystem-Datenträger | | Nicht erforderlich |
 
-*Striping: LVM-Stripe oder MDADM mit RAID 0
+*Striping:  LVM-Stripe oder MDADM mit RAID 0
 
 Die Datenträgerauswahl für das Hosten von Onlinewiederholungsprotokollen von Oracle sollte durch IOPs-Anforderungen gesteuert werden. Alle sapdata1...n (Tabellenbereiche) können auf einem einzelnen eingebundenen Datenträger gespeichert werden, solange Volumen, IOPS und Durchsatz die Anforderungen erfüllen. 
 
@@ -470,7 +472,7 @@ Leistungskonfiguration:
 | /oracle/<SID>/oraarch* | Premium | Keine | Nicht erforderlich |
 | Oracle Home, saptrace, ... | Betriebssystem-Datenträger | Nicht erforderlich |
 
-*Striping: LVM-Stripe oder MDADM mit RAID 0*(n+1) – Hosting der Tabellenbereiche SYSTEM, TEMP und UNDO. Die E/A-Muster der System- und Undo-Tabellenbereiche unterscheiden sich von anderen Tabellenbereichen, die Anwendungsdaten hosten. Um die Leistung der System- und Undo-Tabellenbereiche zu optimieren, ist das Auslassen der Zwischenspeicherung die beste Option.
+*Striping:  LVM-Stripe oder MDADM mit RAID 0*(n+1) – Hosting der Tabellenbereiche SYSTEM, TEMP und UNDO. Die E/A-Muster der System- und Undo-Tabellenbereiche unterscheiden sich von anderen Tabellenbereichen, die Anwendungsdaten hosten. Um die Leistung der System- und Undo-Tabellenbereiche zu optimieren, ist das Auslassen der Zwischenspeicherung die beste Option.
 *oraarch – Ein Speicherpool ist aus Leistungsperspektive nicht erforderlich. Er kann verwendet werden, um mehr Speicherplatz zu erhalten.
 
 
@@ -493,7 +495,7 @@ Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwieder
 Weitere Informationen zur Notfallwiederherstellung für Oracle-Datenbanken in Azure finden Sie im Artikel [Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
 ### <a name="accelerated-networking"></a>Beschleunigter Netzwerkbetrieb
-Unterstützung für den beschleunigten Azure-Netzwerkbetrieb unter Oracle Linux stellt Oracle Linux 7 Update 5 (Oracle Linux 7.5) bereit. Wenn Sie nicht auf die neueste Version von Oracle Linux 7.5 aktualisieren können, können Sie das Problem umgehen, indem Sie den Red Hat Compatible Kernel (RHCK) anstelle des Oracle UEK-Kernels verwenden. Die Verwendung des RHEL-Kernels in Oracle Linux wird gemäß SAP-Hinweis [1565179](https://launchpad.support.sap.com/#/notes/1565179) unterstützt. Beim beschleunigten Azure-Netzwerkbetrieb muss die minimale RHCKL-Kernelversion 3.10.0-862.13.1.el7 sein.
+Unterstützung für den beschleunigten Azure-Netzwerkbetrieb unter Oracle Linux stellt Oracle Linux 7 Update 5 (Oracle Linux 7.5) bereit. Wenn Sie nicht auf die neueste Version von Oracle Linux 7.5 aktualisieren können, können Sie das Problem umgehen, indem Sie den Red Hat Compatible Kernel (RHCK) anstelle des Oracle UEK-Kernels verwenden. Die Verwendung des RHEL-Kernels in Oracle Linux wird gemäß SAP-Hinweis [1565179](https://launchpad.support.sap.com/#/notes/1565179) unterstützt. Beim beschleunigten Azure-Netzwerkbetrieb muss die minimale RHCKL-Kernelversion 3.10.0-862.13.1.el7 sein. Für die Verwendung des UEK-Kernels unter Oracle Linux in Verbindung mit [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) müssen Sie Version 5 des Oracle UEK-Kernels verwenden.
 
 Wenn Sie keine VMs über das Image bereitstellen, die auf dem Azure Marketplace basieren, müssen zusätzliche Konfigurationsdateien auf die VM kopiert werden. Dies kann durch Ausführung des folgenden Befehls erreicht werden: 
 <pre><code># Copy settings from github to correct place in VM

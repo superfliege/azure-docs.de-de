@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/2/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: f6a818e0f628924342ddd50322bb54bf1d1d6079
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976657"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082447"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.
@@ -261,7 +261,7 @@ Damit Security Center Sicherheitsdaten auf Ihren virtuellen Computern erfassen u
     a.  [Installieren der OMS-Azure-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md)
     
     b.  [Installieren der OMS-Azure-VM-Erweiterung für Linux](../virtual-machines/extensions/oms-linux.md)
-5.  Folgen Sie den Anweisungen in [Sammeln von Daten über virtuelle Azure-Computer](../log-analytics/log-analytics-quick-collect-azurevm.md), um die Erweiterungen auf vorhandenen virtuellen Computern bereitzustellen.
+5.  Folgen Sie den Anweisungen in [Sammeln von Daten über virtuelle Azure-Computer](../azure-monitor/learn/quick-collect-azurevm.md), um die Erweiterungen auf vorhandenen virtuellen Computern bereitzustellen.
 
   > [!NOTE]
   > Der Abschnitt **Sammeln von Ereignis- und Leistungsdaten** ist optional.

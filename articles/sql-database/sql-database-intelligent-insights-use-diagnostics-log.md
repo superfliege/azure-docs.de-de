@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: fb18507cc9b7aef92a07e6c34c99403e47be1c88
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: a0eac4344f1294ad2eddd4e05520c1f030a0c4d7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977096"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278218"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank
 
-Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu dessen Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Sie können dieses Diagnoseprotokoll an [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen senden.
+Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu dessen Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Sie können dieses Diagnoseprotokoll an [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen senden.
 
 ## <a name="log-header"></a>Protokollheader
 

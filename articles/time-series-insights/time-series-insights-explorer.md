@@ -1,5 +1,5 @@
 ---
-title: Erkunden von Daten mit dem Azure Time Series Insights-Explorer | Microsoft-Dokumentation
+title: 'Azure Time Series Insights-Explorer: Durchsuchen von Daten – Durchsuchen von Daten mithilfe von Azure Time Series Insights-Explorer | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure Time Series Insights-Explorers im Webbrowser schnell eine globale Ansicht Ihrer Big Data anzeigen und die IoT-Umgebung überprüfen können.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 7508db8bd4b7f21308f2e7b0e92c44570dfc7b18
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364228"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273135"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
 In diesem Artikel werden die verschiedenen in der Web-App des Time Series Insights-Explorers verfügbaren Funktionen und Optionen vorgestellt. Sie verwenden den Time Series Insights-Explorer in Ihrem Webbrowser, um Visualisierungen Ihrer Daten zu erstellen.
@@ -55,15 +56,15 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
 5. Als Nächstes sehen Sie ein Diagramm, in dem die Anzahl aller Ereignisse in der ausgewählten Zeitspanne angezeigt wird.  Hier stehen mehrere Steuerelemente zur Verfügung:
 
-    **Editor-Bereich für Begriffe:** Im Begriffsbereich führen Sie Abfragen in Ihrer Umgebung durch.  Er befindet sich auf der linken Seite des Bildschirms und umfasst folgende Optionen: 
-      - **Measure:** In dieser Dropdownliste werden alle numerischen Spalten (Doubles) angezeigt.
-      - **Split By** (Teilen nach): In dieser Dropdownliste werden Kategoriespalten (Strings) angezeigt.
+    **Editor-Bereich für Begriffe:**   Im Begriffsbereich führen Sie Abfragen in Ihrer Umgebung durch.  Er befindet sich auf der linken Seite des Bildschirms und umfasst folgende Optionen: 
+      - **Measure:**   In dieser Dropdownliste werden alle numerischen Spalten (Doubles) angezeigt.
+      - **Split By** (Teilen nach):  In dieser Dropdownliste werden Kategoriespalten (Strings) angezeigt.
       - Über die Systemsteuerung neben „Measure“ können Sie die Schrittinterpolation aktivieren, Mindest- und Höchstwerte anzeigen und die Y-Achse anpassen.  Zudem können Sie festlegen, ob die angezeigten Daten als Anzahl, Durchschnitt oder Summe der Daten angezeigt wird.
       - Sie können bis zu fünf Begriffe hinzufügen, die auf derselben X-Achse angezeigt werden.  Verwenden Sie die Schaltfläche **copy-down** (Kopieren), um einen zusätzlichen Begriff hinzuzufügen, oder klicken Sie auf **Hinzufügen**, um einen neuen Begriff hinzuzufügen.
      
         ![Editor-Bereich für Begriffe](media/time-series-insights-explorer/explorer2.png)
 
-      - **Prädikat:** Über das Prädikat können Sie die Ereignisse mithilfe der unten aufgeführten Operanden schnell filtern. Wenn Sie eine Suche durch Auswählen/Klicken durchführen, wird das Prädikat basierend auf dieser Suche automatisch aktualisiert.      Folgende Operandentypen werden unterstützt:
+      - **Prädikat:**   Über das Prädikat können Sie die Ereignisse mithilfe der unten aufgeführten Operanden schnell filtern. Wenn Sie eine Suche durch Auswählen/Klicken durchführen, wird das Prädikat basierend auf dieser Suche automatisch aktualisiert.      Folgende Operandentypen werden unterstützt:
 
          |Vorgang  |Unterstützte Typen  |Notizen  |
          |---------|---------|---------|
@@ -102,7 +103,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
    ![Wärmebild](media/time-series-insights-explorer/explorer6.png)
 
-12. **Ereignisse:** Wenn Sie oben beim Auswählen oder Klicken mit der rechten Maustaste Ereignisse untersuchen möchten, wird der Ereignisbereich angezeigt.  Hier können Sie alle Ihre Rohereignisse anzeigen und die Ereignisse als JSON- oder CSV-Dateien exportieren. Beachten Sie, dass in Time Series Insights alle Rohdaten gespeichert werden.
+12. **Ereignisse:**   Wenn Sie oben beim Auswählen oder Klicken mit der rechten Maustaste Ereignisse untersuchen möchten, wird der Ereignisbereich angezeigt.  Hier können Sie alle Ihre Rohereignisse anzeigen und die Ereignisse als JSON- oder CSV-Dateien exportieren. Beachten Sie, dass in Time Series Insights alle Rohdaten gespeichert werden.
 
    ![Ereignisse](media/time-series-insights-explorer/explorer7.png)
 
@@ -110,7 +111,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
    - **Muster:** Mit diesem Feature werden die meisten statistisch signifikanten Muster in einer ausgewählten Datenregion angezeigt. So müssen Sie nicht Tausende von Ereignissen prüfen, um festzustellen, welche Muster am meisten Zeit und Energie rechtfertigen. Darüber hinaus können Sie in Time Series Insights direkt in diese statistisch signifikanten Muster springen und dann eine Analyse durchführen. Dieses Feature ist auch nützlich für nachträgliche Überprüfungen von Verlaufsdaten. 
 
-   - **Column Stats** (Spaltenstatistik): Mit dieser Funktion werden Diagramme und Tabellen angezeigt, in denen Daten aus den einzelnen Spalten der ausgewählten Datenreihe über die ausgewählte Zeitspanne unterteilt sind.  
+   - **Column Stats** (Spaltenstatistik):   Mit dieser Funktion werden Diagramme und Tabellen angezeigt, in denen Daten aus den einzelnen Spalten der ausgewählten Datenreihe über die ausgewählte Zeitspanne unterteilt sind.  
  
       ![STATISTIK](media/time-series-insights-explorer/explorer8.png) 
 

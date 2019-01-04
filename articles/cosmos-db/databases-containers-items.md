@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684851"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409540"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Arbeiten mit Azure Cosmos-Datenbanken, -Containern und -Elementen
 
@@ -26,10 +26,10 @@ Unter Ihrem Konto können Sie mehrere Azure Cosmos-Datenbanken erstellen. Eine D
 
 | **Azure Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-Datenbank | Datenbank | Keyspace | Datenbank | Nicht verfügbar | Nicht verfügbar |
+|Azure Cosmos-Datenbank | Datenbank | Keyspace | Datenbank | Datenbank | Nicht verfügbar |
 
 > [!NOTE]
-> Wenn Sie in Gremlin- und Tabellen-API-Konten den ersten Graph oder die erste Tabelle erstellen, wird in Ihrem Azure Cosmos-Konto automatisch eine Standarddatenbank erstellt.
+> Wenn Sie in Tabellen-API-Konten die erste Tabelle erstellen, wird in Ihrem Azure Cosmos-Konto automatisch eine Standarddatenbank erstellt.
 
 ### <a name="operations-on-an-azure-cosmos-database"></a>Vorgänge in einer Azure Cosmos-Datenbank
 
@@ -49,11 +49,11 @@ Ein Azure Cosmos-Container ist die Skalierungseinheit für den bereitgestellten 
 
 Beim Erstellen eines Azure Cosmos-Containers konfigurieren Sie den Durchsatz in einem der folgenden Modi:
 
-* Modus **Dedizierter bereitgestellter Durchsatz**: Der für einen Container bereitgestellte Durchsatz ist ausschließlich dafür reserviert und wird durch die SLAs unterstützt. Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos DB-Container](how-to-provision-container-throughput.md).
+* Modus **Dedizierter bereitgestellter Durchsatz**: Der für einen Container bereitgestellte Durchsatz ist ausschließlich für diesen reserviert und wird durch die SLAs zugesichert. Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos DB-Container](how-to-provision-container-throughput.md).
 
-* Modus **Freigegebener bereitgestellter Durchsatz**: Die Container nutzen den bereitgestellten Durchsatz mit anderen Containern in der gleichen Datenbank (mit Ausnahme der Container, die mit dediziertem bereitgestellten Durchsatz konfiguriert wurden). Das heißt, der bereitgestellte Durchsatz für die Datenbank wird von allen freigegebenen Containern genutzt. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
+* Modus **Bereitgestellter, gemeinsam genutzter Durchsatz**: Die Container teilen sich den bereitgestellten Durchsatz mit anderen Containern in der gleichen Datenbank (mit Ausnahme der Container, die mit dediziert bereitgestelltem Durchsatz konfiguriert wurden). Das heißt, der bereitgestellte Durchsatz für die Datenbank wird von allen Containern gemeinsam genutzt. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
 
-Ein Azure Cosmos-Container kann elastisch skaliert werden, unabhängig davon, ob Sie Container mit freigegebenem oder dediziertem bereitgestellten Durchsatz erstellen, d.h., die Container können über unbegrenzten Speicher und unbegrenzten bereitgestellten Durchsatz verfügen.  
+Ein Azure Cosmos-Container kann elastisch skaliert werden, und zwar unabhängig davon, ob Sie Container mit gemeinsam genutztem oder dediziert bereitgestelltem Durchsatz erstellen.
 
 Ein Azure Cosmos-Container ist ein schemaunabhängiger Container für Elemente. Elemente innerhalb eines Containers können beliebige Schemas aufweisen. Beispielsweise können ein Element, das eine Person darstellt, und ein Element, das ein Fahrzeug darstellt, im selben Container platziert werden. Standardmäßig werden alle Elemente, die Sie einem Container hinzufügen, automatisch indiziert, ohne dass eine explizite Index- oder Schemaverwaltung erforderlich ist. Sie können das Indizierungsverhalten anpassen, indem Sie die Indizierungsrichtlinie für einen Container konfigurieren. 
 
@@ -69,7 +69,7 @@ Ein Azure Cosmos-Container wird wie folgt in API-spezifische Entitäten kategori
 
 | **Azure Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-Container | Container | Table | Sammlung | Graph | Table |
+|Azure Cosmos-Container | Sammlung | Table | Sammlung | Graph | Table |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Eigenschaften eines Azure Cosmos-Containers
 
@@ -105,7 +105,7 @@ Abhängig von der API-Auswahl kann ein Azure Cosmos-Element ein Dokument in eine
 
 | **Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-Element | Item | Zeile | Dokument | Knoten oder Edge | Item |
+|Azure Cosmos-Element | Dokument | Zeile | Dokument | Knoten oder Edge | Item |
 
 ### <a name="properties-of-an-item"></a>Eigenschaften eines Elements
 

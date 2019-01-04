@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 52157797bb01fc73c551ca9654b2360d161b653d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2a55e39414cd691c48b015b3aae73f93cbb95aab
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354965"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134657"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 
@@ -32,7 +32,7 @@ In diesem Artikel wird ein zentraler Anlaufpunkt bereitgestellt, mit dem einige 
 
 Dieser Artikel geht von den folgenden Annahmen aus:
 
--   Die Bereitstellung des Azure AD-Anwendungsproxys gemäß [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](application-proxy-enable.md) und der allgemeine Zugriff auf Nicht-KCD-Anwendungen funktionieren wie erwartet.
+-   Die Bereitstellung des Azure AD-Anwendungsproxys gemäß [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](application-proxy-add-on-premises-application.md) und der allgemeine Zugriff auf Nicht-KCD-Anwendungen funktionieren wie erwartet.
 
 -   Die veröffentlichte Zielanwendung basiert auf den Internetinformationsdiensten (Internet Information Services, IIS) und der Microsoft-Implementierung von Kerberos.
 
@@ -64,7 +64,7 @@ Wodurch lässt sich ein Problem bei der KCD erkennen? Es gibt einige häufige An
 
    ![Fehler bei der Autorisierung aufgrund fehlender Berechtigungen](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Beide Abbildungen veranschaulichen einen SSO-Fehler. Der Benutzerzugriff auf die Anwendung wurde verweigert.
+Beide Abbildungen veranschaulichen das gleiche Symptom: SSO-Fehler. Der Benutzerzugriff auf die Anwendung wurde verweigert.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

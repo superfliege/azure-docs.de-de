@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: spelluru
-ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409760"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312881"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 
@@ -32,9 +32,9 @@ Die Verwendung von Warteschlangen als Zwischenglied zwischen Nachrichtenproducer
 
 ### <a name="create-queues"></a>Erstellen von Warteschlangen
 
-Sie können Warteschlangen über das [Azure-Portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md) oder eine [Resource Manager-Vorlage](service-bus-resource-manager-namespace-queue.md) erstellen. Daraufhin werden Ihre Nachrichten mit einem [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)-Objekt versendet und empfangen. 
+Sie können Warteschlangen über das [Azure-Portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md) oder eine [Resource Manager-Vorlage](service-bus-resource-manager-namespace-queue.md) erstellen. Daraufhin werden Ihre Nachrichten mit einem [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)-Objekt versendet und empfangen.
 
-Die [Schnellstarts](service-bus-quickstart-portal.md) bieten einen umfassenden Überblick über die diversen Möglichkeiten, eine Warteschlange zu erstellen, und dann Nachrichten an die Warteschlange zu senden und von dieser zu empfangen. Ein ausführlicheres Tutorial zum Verwenden von Warteschlangen finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md). 
+Die [Schnellstarts](service-bus-quickstart-portal.md) bieten einen umfassenden Überblick über die diversen Möglichkeiten, eine Warteschlange zu erstellen, und dann Nachrichten an die Warteschlange zu senden und von dieser zu empfangen. Ein ausführlicheres Tutorial zum Verwenden von Warteschlangen finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
 
 Ein Anwendungsbeispiel finden Sie auf GitHub unter [BasicSendReceiveUsingQueueClient](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient).
 
@@ -56,9 +56,9 @@ Zum Vergleich: Die Sendefunktionalität einer Warteschlange ist direkt einem The
 
 ### <a name="create-topics-and-subscriptions"></a>Erstellen von Themen und Abonnements
 
-Das Erstellen eines Themas ähnelt dem Erstellen einer Warteschlange (siehe vorheriger Abschnitt). Nachdem das geschehen ist, senden Sie Nachrichten mithilfe der [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)-Klasse. Erstellen Sie mindestens ein Abonnement für das Thema, um Nachrichten zu empfangen. Ähnlich wie bei Warteschlangen werden Nachrichten von einem Abonnement nicht mit einem [QueueClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient)-Objekt, sondern mit einem [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.queueclient)-Objekt empfangen. Erstellen Sie den Abonnementclient, und übergeben Sie dabei den Namen des Themas, den Namen des Abonnements und (optional) den Empfangsmodus als Parameter. 
+Das Erstellen eines Themas ähnelt dem Erstellen einer Warteschlange (siehe vorheriger Abschnitt). Nachdem das geschehen ist, senden Sie Nachrichten mithilfe der [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)-Klasse. Erstellen Sie mindestens ein Abonnement für das Thema, um Nachrichten zu empfangen. Ähnlich wie bei Warteschlangen werden Nachrichten von einem Abonnement nicht mit einem [QueueClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient)-Objekt, sondern mit einem [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.queueclient)-Objekt empfangen. Erstellen Sie den Abonnementclient, und übergeben Sie dabei den Namen des Themas, den Namen des Abonnements und (optional) den Empfangsmodus als Parameter.
 
-Ein Anwendungsbeispiel finden Sie auf Github unter [BasicSendReceiveUsingTopicSubscriptionClient](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient).
+Ein Anwendungsbeispiel finden Sie auf GitHub unter [BasicSendReceiveUsingTopicSubscriptionClient](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient).
 
 ### <a name="rules-and-actions"></a>Regeln und Aktionen
 
@@ -66,7 +66,7 @@ In vielen Fällen müssen Nachrichten mit bestimmten Merkmalen auf unterschiedli
 
 Ein Anwendungsbeispiel finden Sie auf GitHub unter [TopicSubscriptionWithRuleOperationsSample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample).
 
-Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentation zu den Klassen [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) und [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction). 
+Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentation zu den Klassen [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) und [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -74,6 +74,6 @@ Weitere Informationen und Beispiele für die Verwendung von Service Bus-Messagin
 
 * [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 * [Schnellstart: Senden und Empfangen von Nachrichten mit dem Azure-Portal und .NET](service-bus-quickstart-portal.md)
-* [Tutorial: Aktualisieren des Bestands mit dem Azure-Portal und mit Themen/Abonnements](service-bus-tutorial-topics-subscriptions-portal.md)
+* [Tutorial: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements](service-bus-tutorial-topics-subscriptions-portal.md)
 
 

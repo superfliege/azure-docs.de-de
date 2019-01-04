@@ -1,5 +1,5 @@
 ---
-title: Exemplarische Vorgehensweisen mit HDInsight Spark unter Verwendung von PySpark und Scala in Azure | Microsoft-Dokumentation
+title: 'Analysen für HDInsight Spark mit PySpark, Scala: Team Data Science-Prozess'
 description: Beispiele des Team Data Science-Prozesses mit exemplarischer Vorgehensweise der Nutzung von PySpark und Scala in Azure HDInsight Spark für Predictive Analytics.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: a7697d2be1a43af93109bb7bbdab50828275f5aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: f96e273e27e8d9d6a40370c4ed2161c4a828c5c8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446397"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135898"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Exemplarische Data Science-Vorgehensweisen mit HDInsight Spark unter Verwendung von PySpark und Scala in Azure
 
@@ -40,7 +40,7 @@ Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-d
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Vorhersagen von Taxitrinkgeldern mithilfe von Scala in Azure Spark
 
-Die exemplarische Vorgehensweise [Verwenden von Scala in Azure](scala-walkthrough.md) arbeitet mit Daten zu New Yorker Taxis, um vorherzusagen, ob ein Trinkgeld (und in welcher Höhe) gezahlt wird. Gezeigt wird die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der Machine Learning-Bibliothek (MLlib) von Spark und SparkML-Paketen in einem Azure HDInsight Spark-Cluster. Sie führt Sie durch die Aufgaben, aus denen der [Data Science-Prozess](https://aka.ms/datascienceprocess)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die erstellten Modelle umfassen logistische und lineare Regression, Random Forests und Gradient-Boosted-Strukturen.
+Die exemplarische Vorgehensweise [Verwenden von Scala in Azure](scala-walkthrough.md) arbeitet mit Daten zu New Yorker Taxis, um vorherzusagen, ob ein Trinkgeld (und in welcher Höhe) gezahlt wird. Gezeigt wird die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der Machine Learning-Bibliothek (MLlib) von Spark und SparkML-Paketen in einem Azure HDInsight Spark-Cluster. Sie führt Sie durch die Aufgaben, aus denen der [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die erstellten Modelle umfassen logistische und lineare Regression, Random Forests und Gradient-Boosted-Strukturen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

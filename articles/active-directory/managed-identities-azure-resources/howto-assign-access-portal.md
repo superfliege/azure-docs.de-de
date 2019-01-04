@@ -1,6 +1,6 @@
 ---
-title: Zuweisen von MSI-Zugriff zu einer Azure-Ressource über das Azure-Portal
-description: Ausführliche Anweisungen für das Zuweisen von MSI zu einer Ressource und das Zuweisen des Zugriffs für eine andere Ressource über das Azure-Portal.
+title: Zuweisen des Zugriffs einer verwalteten Identität auf eine Azure-Ressource im Azure-Portal
+description: Hier finden Sie Schritt-für-Schritt-Anleitungen für das Zuweisen einer verwalteten Identität für eine Ressource und für das Zuweisen des Zugriffs auf eine andere Ressource über das Azure-Portal.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,61 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: c2048583cde397ac3325fd149982b3a3db475566
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: e50a7b0aa80bff36a67ea52514d6b85099bfdf8c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157278"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081437"
 ---
-# <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Zuweisen des MSI-Zugriffs (MSI = Managed Service Identity, verwaltete Dienstidentität) zu einer Ressource über das Azure-Portal
+# <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource über das Azure-Portal
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Nachdem Sie eine Azure-Ressource mit einer MSI konfiguriert haben, können Sie der MSI genau wie bei allen anderen Sicherheitsprinzipalen den Zugriff auf eine andere Ressource erteilen. In diesem Artikel wird gezeigt, wie Sie der MSI eines virtuellen Azure-Computers über das Azure-Portal den Zugriff auf ein Azure-Speicherkonto oder eine VM-Skalierungsgruppe gewähren.
+Nachdem Sie eine Azure-Ressource mit einer verwalteten Identität konfiguriert haben, können Sie der verwalteten Identität genau wie bei allen anderen Sicherheitsprinzipalen Zugriff auf eine andere Ressource erteilen. In diesem Artikel wird gezeigt, wie Sie der verwalteten Identität eines virtuellen Azure-Computers oder einer VM-Skalierungsgruppe über das Azure-Portal den Zugriff auf ein Azure-Speicherkonto gewähren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Verwenden Sie RBAC, um der MSI den Zugriff auf eine andere Ressource zuzuweisen.
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Verwenden von RBAC zum Zuweisen des Zugriffs einer verwalteten Identität auf eine andere Ressource
 
-Nachdem Sie die MSI für eine Azure-Ressource wie einer [Azure-VM](qs-configure-portal-windows-vm.md) oder [Azure-VMSS](qs-configure-portal-windows-vmss.md) aktiviert haben, gehen Sie wie folgt vor:
+Nachdem Sie die verwaltete Identität für eine Azure-Ressource aktiviert haben, zum Beispiel für einen [virtuellen Azure-Computer](qs-configure-portal-windows-vm.md) oder [Azure-VMSS](qs-configure-portal-windows-vmss.md), gehen Sie wie folgt vor:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, unter dem Sie die MSI konfiguriert haben.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, unter dem Sie die verwaltete Identität konfiguriert haben.
 
-2. Navigieren Sie zu der gewünschten Ressource, für die Sie die Zugriffssteuerung ändern möchten. In diesem Beispiel wird einem virtuellen Azure-Computer und einer Azure-VM-Skalierungsgruppe Zugriff auf ein Speicherkonto gewährt. Aus diesem Grund navigieren wir zu dem Speicherkonto.
+2. Navigieren Sie zu der gewünschten Ressource, für die Sie die Zugriffssteuerung ändern möchten. In diesem Beispiel wird einem virtuellen Azure-Computer Zugriff auf ein Speicherkonto gewährt. Aus diesem Grund navigieren wir zu dem Speicherkonto.
 
-3. Wählen Sie für einen virtuellen Azure-Computer die Seite **Zugriffssteuerung (IAM)** der Ressource und anschließend **+ Hinzufügen** aus. Geben Sie anschließend die **Rolle** an, **weisen Sie den Zugriff auf den virtuellen Computer zu**, und geben Sie das entsprechende **Abonnement** und die **Ressourcengruppe** an, in der sich die Ressource befindet. Unter dem Bereich mit den Suchkriterien sollte die Ressource nun angezeigt werden. Wählen Sie die Ressource und anschließend **Speichern** aus. 
+3. Wählen Sie die Seite **Zugriffssteuerung (IAM)** der Ressource aus, und wählen Sie dann **+ Rollenzuweisung hinzufügen** aus. Geben Sie dann die **Rolle**, **Zugriff zuweisen zu** und das entsprechende **Abonnement** an. Unter dem Bereich mit den Suchkriterien sollte die Ressource nun angezeigt werden. Wählen Sie die Ressource und anschließend **Speichern** aus. 
 
    ![Screenshot von „Zugriffssteuerung (IAM)“](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
-   Wählen Sie für eine Azure-VM-Skalierungsgruppe die Seite **Zugriffssteuerung (IAM)** der Ressource und anschließend **+ Hinzufügen** aus. Legen Sie dann die Felder **Rolle** und **Zuweisen des Zugriffs auf** fest. Suchen Sie im Suchkriterienbereich nach Ihrer VM-Skalierungsgruppe. Wählen Sie die Ressource und anschließend **Speichern** aus.
-   
-   ![Screenshot von „Zugriffssteuerung (IAM)“](./media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
+     
+## <a name="next-steps"></a>Nächste Schritte
 
-4. Sie sind zur Hauptseite **Zugriffssteuerung (IAM)** zurückgekehrt, auf der ein neuer Eintrag für die MSI der Ressource angezeigt wird.
-
-    Virtueller Azure-Computer:
-
-   ![Screenshot von „Zugriffssteuerung (IAM)“](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
-
-    Azure-VM-Skalierungsgruppe:
-
-    ![Screenshot von „Zugriffssteuerung (IAM)“](./media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
-
-## <a name="troubleshooting"></a>Problembehandlung
-
-Wenn die MSI für die Ressource nicht in der Liste der verfügbaren Identitäten angezeigt wird, stellen Sie sicher, dass die MSI ordnungsgemäß aktiviert wurde. In unserem Fall können wir zurück zum virtuellen Azure-Computer wechseln und Folgendes überprüfen:
-
-- Überprüfen Sie auf der Seite **Konfiguration**, ob der Wert für **MSI enabled** (MSI aktiviert) auf **Ja** festgelegt ist.
-- Zeigen Sie die Seite **Erweiterungen** an, und überprüfen Sie, ob die MSI-Erweiterung erfolgreich bereitgestellt wurde (die Seite **Erweiterungen** ist nicht für eine Azure-VM-Skalierungsgruppe verfügbar).
-
-Wenn einer dieser Punkte nicht zutrifft, müssen Sie die MSI möglicherweise erneut für die Ressource bereitstellen oder den Fehler bei der Bereitstellung beheben.
-
-## <a name="related-content"></a>Verwandte Inhalte
-
-- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](overview.md).
-- Informationen zum Aktivieren der MSI auf einem virtuellen Azure-Computer finden Sie unter [Konfigurieren einer Azure-VM-MSI (Managed Service Identity) über das Azure-Portal](qs-configure-portal-windows-vm.md).
-- Informationen zum Aktivieren der MSI in einer Azure-VM-Skalierungsgruppe finden Sie unter [Konfigurieren einer Azure-VM-MSI (Managed Service Identity) über das Azure-Portal](qs-configure-portal-windows-vmss.md).
+- [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](overview.md)
+- Informationen zum Aktivieren einer verwalteten Identität auf einem virtuellen Azure-Computer finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md).
+- Informationen zum Aktivieren einer verwalteten Identität in einer Azure-VM-Skalierungsgruppe finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe über das Azure-Portal](qs-configure-portal-windows-vmss.md).
 
 

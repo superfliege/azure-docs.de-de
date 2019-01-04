@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321987"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409019"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Vorlage für Azure Security and Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure-Blaupausen zu Sicherheit und Compliance
 
@@ -79,7 +79,7 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Alle Benutzer für die Lösung wurden in Azure Active Directory erstellt, so auch die Benutzer, die auf die SQL-Datenbank zugreifen.
 - Die Authentifizierung gegenüber der Webanwendung für den Bediener und der Zugriff zur Verwaltung der Azure-Ressourcen wird über Azure AD durchgeführt. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Für die Verschlüsselung der Datenbankspalten wird Azure AD verwendet, um die Anwendung für Azure SQL-Datenbank zu authentifizieren. Weitere Informationen finden Sie unter [Always Encrypted: Schützen von vertraulichen Daten in SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- Für die Verschlüsselung der Datenbankspalten wird Azure AD verwendet, um die Anwendung für Azure SQL-Datenbank zu authentifizieren. Weitere Informationen finden Sie unter [Always Encrypted: Schützen von vertraulichen Daten in einer SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - Die für Bürger bestimmte Webanwendung wird für den öffentlichen Zugriff konfiguriert. Um die Kontoerstellung und Authentifizierung per Active Directory oder einen Anbieter von Social Media-Identitäten zuzulassen, kann bei Bedarf [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) integriert werden.
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) erkennt potenzielle Sicherheitsrisiken und risikobehaftete Konten, stellt Empfehlungen zur Verbesserung des Sicherheitsstatus der Identitäten Ihrer Organisation bereit, konfiguriert automatisierte Antworten auf erkannte verdächtige Aktionen, die im Zusammenhang mit Identitäten Ihrer Organisation stehen, untersucht verdächtige Vorfälle und führt die entsprechenden Aktionen zu deren Behebung aus.
 - Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) ermöglicht eine präzise Zugriffsverwaltung für Azure. Der Zugriff auf das Abonnement ist auf den Abonnementadministrator beschränkt, und der Zugriff auf Azure Key Vault ist nur auf Benutzer beschränkt, die aufgrund der Schlüsselverwaltung Zugriff benötigen.
@@ -104,7 +104,7 @@ Bei [Azure-Ratgeber](https://docs.microsoft.com/azure/advisor/advisor-overview) 
 
 Für Azure-Web-Apps wird eine vollständig verwaltete Webhostingumgebung für Webanwendungen bereitgestellt, die in Java, PHP, Node.js, Python, HTML und C# entwickelt werden, ohne dass die Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) oder ein anderes Git-Repository.
 
-App Service ist [mit ISO, SOC und PCI konform](https://www.microsoft.com/TrustCenter/) und kann Benutzer per [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) oder Anmeldung für soziale Netzwerke ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication) und [Microsoft-Authentifizierung](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)) authentifiziert werden.
+App Service ist [mit ISO, SOC und PCI konform](https://www.microsoft.com/TrustCenter/) und kann Benutzer per [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) oder Anmeldung für soziale Netzwerke ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter) und [Microsoft-Authentifizierung](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)) authentifiziert werden.
 
 Die Pläne „Basic“, „Standard“ und „Premium“ eignen sich für Produktionsworkloads und werden auf dedizierten virtuellen Computerinstanzen ausgeführt. Jede Instanz kann mehrere Anwendungen und Domänen unterstützen. Außerdem unterstützt App Service [Einschränkungen für IP-Adressen](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), um den Datenverkehr für vertrauenswürdige IP-Adressen zu schützen, falls dies erforderlich ist. Darüber hinaus werden die [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) unterstützt, um für eine sichere Verbindung mit anderen PaaS-Diensten zu sorgen, z. B. [Key Vault](https://azure.microsoft.com/services/key-vault/) und [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/). Wenn zusätzliche Sicherheit benötigt wird, werden Ihre Apps unter dem Isolated-Plan in einer privaten, dedizierten Azure-Umgebung gehostet. Er eignet sich ideal für Apps, die eine sichere Verbindung mit dem lokalen Netzwerk oder zusätzliche Leistung und Skalierung erfordern.
 
@@ -230,9 +230,9 @@ Diese Azure Security and Compliance Blueprint-Automatisierung besteht aus JSON-K
 Es gibt drei Ansätze für die Bereitstellung: Einen einfachen Expressansatz per [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), der für die schnelle Erstellung einer Testumgebung geeignet ist, einen Ansatz per [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) mit Parametrisierung, der eine bessere Konfiguration für Workloadumgebungen ermöglicht, und eine auf dem Azure-Portal basierende Bereitstellung, bei der der Bediener die Bereitstellungsparameter über das Azure-Portal angeben kann. 
 
 1.  Klonen oder laden Sie [dieses](https://aka.ms/ukofficial-paaswa-repo) GitHub-Repository auf die lokale Arbeitsstation herunter.
-2.  Lesen Sie [Method 1: Azure CLI 2 (Express version)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) (Methode 1: Azure CLI 2 (Express-Version)), und führen Sie die angegebenen Befehle aus.
-3.  Lesen Sie [Method 1a: Azure CLI 2 (Configuring the deployment via script arguments)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) (Methode 1a: Azure CLI 2 (Konfigurieren der Bereitstellung über Skriptargumente)), und führen Sie die angegebenen Befehle aus.
-4.  Lesen Sie [Method 2: Azure Portal Deployment Process](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) (Methode 2: Azure Portal-Bereitstellungsprozess), und führen Sie die angegebenen Befehle aus.
+2.  Lesen Sie [Method 1: Azure CLI 2 (Express version)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version), und führen Sie die bereitgestellten Befehle aus.
+3.  Lesen Sie [Method 1a: Azure CLI 2 (Configuring the deployment via script arguments)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments), und führen Sie die bereitgestellten Befehle aus.
+4.  Lesen Sie [Method 2: Azure Portal Deployment Process](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process), und führen Sie die aufgeführten Befehle aus.
 
 ## <a name="guidance-and-recommendations"></a>Anleitungen und Empfehlungen
 

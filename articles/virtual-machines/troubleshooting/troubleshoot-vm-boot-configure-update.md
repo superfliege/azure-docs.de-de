@@ -1,5 +1,5 @@
 ---
-title: VM-Start bleibt bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. in Azure | Microsoft-Dokumentation
+title: VM-Start bleibt in Azure bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. | Microsoft-Dokumentation
 description: 'Hier werden die Schritte zur Behebung des Problems erläutert, bei dem der virtuelle Computer beim Starten hängen bleibt und die folgende Meldung angezeigt wird: „Windows wird vorbereitet. Computer nicht ausschalten.“'
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 2bcdb2b458327a5e87dc36e4a5f50f0ac46bf96a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: eb27b4e6c60f23a55a58cd2aae3cff927ffeaf03
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621026"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316096"
 ---
-# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM-Start bleibt bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. in Azure
+# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM-Start bleibt in Azure bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.
 
-In diesem Artikel wird beschrieben, wie Sie das Problem beheben, wenn Ihr virtueller Computer (Virtual Machine, VM) in der Startphase hängen bleibt und die Meldung „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. angezeigt wird.
+In diesem Artikel erfahren Sie, was Sie tun können, wenn Ihr virtueller Computer (Virtual Machine, VM) in der Startphase bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen bleibt.
 
 ## <a name="symptoms"></a>Symptome
 
-Beim Verwenden der **Startdiagnose** zum Anzeigen des Screenshots eines virtuellen Computers wird das Betriebssystem nicht vollständig gestartet. Darüber hinaus wird auf dem virtuellen Computer die Meldung **„Windows wird vorbereitet. Computer nicht ausschalten.“** Meldung.
+Wenn Sie die **Startdiagnose** verwenden, um die Momentaufnahme eines virtuellen Computers zu erhalten, wird das Betriebssystem nicht vollständig gestartet. Der virtuelle Computer zeigt die Meldung „Windows wird vorbereitet. Computer nicht ausschalten.“ an.
 
-![Meldungsbeispiel](./media/troubleshoot-vm-configure-update-boot/message1.png)
+![Beispielmeldung für Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
 ![Meldungsbeispiel](./media/troubleshoot-vm-configure-update-boot/message2.png)
 
 ## <a name="cause"></a>Ursache
 
-Dieses Problem tritt in der Regel auf, wenn der Server nach einer Änderung der Konfiguration den letzten Neustart ausführt. Die Konfigurationsänderung könnte durch Windows-Updates oder durch Änderungen an den Rollen/Features des Servers initiiert werden. Wenn im Falle von Windows Update die Updates groß waren, benötigt das Betriebssystem mehr Zeit, um die Änderungen neu zu konfigurieren.
+Dieses Problem tritt in der Regel auf, wenn der Server nach einer Änderung der Konfiguration den letzten Neustart ausführt. Die Konfigurationsänderung wurde möglicherweise durch Windows-Updates oder durch Änderungen an den Rollen/Features des Servers initiiert. Bei großen Windows-Updates benötigt das Betriebssystem mehr Zeit, um die Änderungen neu zu konfigurieren.
 
 ## <a name="back-up-the-os-disk"></a>Sichern des Betriebssystemdatenträgers
 
-Sichern Sie den Betriebssystemdatenträger, bevor Sie versuchen, das Problem zu beheben:
+Sichern Sie den Betriebssystemdatenträger, bevor Sie versuchen, das Problem zu beheben.
 
 ### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>Bei VMs mit einem verschlüsselten Datenträger müssen Sie die Datenträger zuerst entsperren (entschlüsseln)
 
-Überprüfen Sie, ob es sich bei dem virtuellen Computer um einen verschlüsselten VM handelt. Gehen Sie dazu folgendermaßen vor:
+Gehen Sie wie folgt vor, um zu ermitteln, ob der virtuelle Computer verschlüsselt ist:
 
-1. Öffnen Sie im Portal Ihren virtuellen Computer, und navigieren Sie dann zu den Datenträgern.
+1. Öffnen Sie im Azure-Portal Ihren virtuellen Computer, und navigieren Sie zu den Datenträgern.
 
-2. Es wird eine Spalte mit dem Namen „Verschlüsselung“ angezeigt, der Sie entnehmen können, ob die Verschlüsselung aktiviert ist.
+2. In der Spalte **Verschlüsselung** sehen Sie, ob die Verschlüsselung aktiviert ist.
 
-Wenn der Betriebssystemdatenträger verschlüsselt ist, entsperren (entschlüsseln) Sie den verschlüsselten Datenträger. Gehen Sie dazu folgendermaßen vor:
+Ist der Betriebssystemdatenträger verschlüsselt, entsperren Sie den verschlüsselten Datenträger. Gehen Sie dazu wie folgt vor:
 
 1. Erstellen Sie einen Wiederherstellungs-VM, der sich in der gleichen Ressourcengruppe, im gleichen Speicherkonto und am gleichen Speicherort befindet wie der betroffene virtuelle Computer.
 
@@ -83,7 +83,7 @@ Wenn der Betriebssystemdatenträger verschlüsselt ist, entsperren (entschlüsse
 6. Konvertieren Sie den Base64-codierten Wert in Bytes, und schreiben Sie die Ausgabe in eine Datei. 
 
     > [!Note]
-    > Wenn Sie die USB-Entsperrungsoption verwenden, muss der Name der BEK-Datei dem ursprünglichen BEK-GUID entsprechen. Darüber hinaus müssen Sie auf dem Laufwerk „C:“ einen Ordner mit dem Namen „BEK“ erstellen, bevor Sie die folgenden Schritte ausführen können.
+    > Wenn Sie die USB-Entsperroption verwenden, muss der Name der BEK-Datei dem ursprünglichen BEK-GUID entsprechen. Erstellen Sie auf dem Laufwerk C: einen Ordner mit dem Namen „BEK“, bevor Sie die nächsten Schritte ausführen.
     
     ```Powershell
     New-Item -ItemType directory -Path C:\BEK
@@ -98,22 +98,22 @@ Wenn der Betriebssystemdatenträger verschlüsselt ist, entsperren (entschlüsse
     manage-bde -status F:
     manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
     ```
-    **Optional**: In einigen Szenarien müssen Sie ggf. auch den Datenträger mit dem folgenden Befehl entschlüsseln.
+    **Optional:** In bestimmten Szenarien muss der Datenträger ggf. mithilfe des folgenden Befehls entschlüsselt werden:
    
     ```Powershell
     manage-bde -off F:
     ```
 
     > [!Note]
-    > Hierbei wird davon ausgegangen, dass sich der verschlüsselte Datenträger auf Laufwerk „F:“ befindet.
+    > Bei dem obigen Befehl wird davon ausgegangen, dass der zu entschlüsselnde Datenträger den Buchstaben F hat.
 
-8. Wenn Sie Protokolle sammeln müssen, können Sie zum Pfad **LAUFWERKBUCHSTABE:\Windows\System32\winevt\Logs** navigieren.
+8. Falls Sie Protokolle benötigen, navigieren zum Pfad **LAUFWERKBUCHSTABE:\Windows\System32\winevt\Logs**.
 
 9. Trennen Sie das Laufwerk vom Wiederherstellungscomputer.
 
 ### <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
-Wenn Sie eine Momentaufnahme erstellen möchten, führen Sie die unter [Erstellen einer Momentaufnahme eines Datenträgers](..\windows\snapshot-copy-managed-disk.md) beschriebenen Schritte aus.
+Wenn Sie eine Momentaufnahme erstellen möchten, führen Sie die unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md) beschriebenen Schritte aus.
 
 ## <a name="collect-an-os-memory-dump"></a>Erfassen eines Betriebssystemspeicherabbilds
 
@@ -121,17 +121,17 @@ Führen Sie die im Abschnitt [Sammeln der Speichersicherungsdatei](troubleshoot-
 
 ## <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 
-Nachdem Sie die Abbilddatei erfasst haben, können Sie sich an den [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden, um die Grundursache analysieren zu lassen.
+Nachdem Sie die Abbilddatei erfasst haben, können Sie sich an den [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden, um die Grundursache zu analysieren.
 
 
-## <a name="rebuild-the-vm-using-powershell"></a>Neuerstellen des virtuellen Computers mithilfe von PowerShell
+## <a name="rebuild-the-vm-by-using-powershell"></a>Neuerstellen des virtuellen Computers mithilfe von PowerShell
 
-Führen Sie nach dem Erfassen der Speicherabbilddatei die folgenden Schritte aus, um den virtuellen Computer neu zu erstellen.
+Führen Sie nach Erfassung der Speicherabbilddatei die folgenden Schritte aus, um den virtuellen Computer neu zu erstellen:
 
 **Nicht verwaltete Datenträger**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -162,7 +162,7 @@ New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
 **Verwaltete Datenträger**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -183,7 +183,7 @@ $avName = "AvailabilitySetName";
 $osDiskName = "OsDiskName";
 $DataDiskName = "DataDiskName"
 
-#This can be found by selecting the Managed Disks you wish you use in the Azure Portal if the format below doesn't match
+#This can be found by selecting the Managed Disks you wish you use in the Azure portal if the format below doesn't match
 $osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
 $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
 

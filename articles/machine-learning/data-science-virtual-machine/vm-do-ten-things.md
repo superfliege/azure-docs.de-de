@@ -1,11 +1,13 @@
 ---
-title: Zehn Dinge, die Sie mit der Data Science Virtual Machine in Azure machen können | Microsoft-Dokumentation
+title: Durchsuchen und Modellieren von Daten mit Data Science Virtual Machine
+titleSuffix: Azure
 description: Führen Sie verschiedene Durchsuchungen von Daten und Modellierungsaufgaben auf der Data Science Virtual Machine aus.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52f0a298b1a9e9f3f209f51c1bc0362b8ddf2c4e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250916"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075681"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können
 
@@ -62,7 +64,7 @@ Für Python können Sie eine IDE wie Visual Studio Community Edition verwenden, 
 
 So sieht das benutzerdefinierte Umgebungssetup in Visual Studio aus.
 
-![PTVS-Setup](./media/vm-do-ten-things/PTVSSetup.png)
+![Screenshot von Visual Studio mit ausgewählten Python Tools für Visual Studio](./media/vm-do-ten-things/PTVSSetup.png)
 
 In der [PTVS-Dokumentation](https://aka.ms/ptvsdocs) finden Sie zusätzliche Informationen zum Erstellen der Python-Umgebungen.
 
@@ -249,7 +251,7 @@ Zum Herunterladen von Code aus einem GitHub-Repository verwenden Sie den Befehl 
 
 In Visual Studio können Sie den gleichen Klonvorgang ausführen. Im folgenden Screenshot sehen Sie, wie Sie in Visual Studio auf Git- und GitHub-Tools zugreifen können.
 
-![Git in Visual Studio](./media/vm-do-ten-things/VSGit.PNG)
+![Screenshot von Visual Studio mit angezeigter GitHub-Verbindung](./media/vm-do-ten-things/VSGit.PNG)
 
 Weitere Informationen zur Verwendung von Git zur Arbeit mit Ihrem GitHub-Repository finden Sie in verschiedenen Quellen, die unter github.com verfügbar sind. Der [Spickzettel](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) ist eine nützliche Referenz.
 
@@ -261,14 +263,14 @@ Azure Blob ist ein zuverlässiger, wirtschaftlicher Cloudspeicher für große un
 
 * **Erstellen Sie ein Azure Blob Storage-Konto im [Azure-Portal](https://portal.azure.com).**
 
-![Create_Azure_Blob](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Screenshot des Erstellungsvorgangs des Speicherkontos im Azure-Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Stellen Sie sicher, dass sich das vorinstallierte Befehlszeilentool AzCopy in ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` befindet. Das Verzeichnis, in dem „azcopy.exe“ enthalten ist, befindet sich bereits in Ihrer PATH-Umgebungsvariablen, damit Sie beim Ausführen des Tools nicht den ganzen Befehlspfad eingeben müssen. Weitere Informationen zu AzCopy finden Sie in der [AzCopy-Dokumentation](../../storage/common/storage-use-azcopy.md).
 * Starten Sie das Tool Azure Storage-Explorer. Das Tool kann von der Seite [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) heruntergeladen werden. 
 
-![AzureStorageExplorer_v4](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
+![Screenshot des Azure Storage-Explorers mit Zugriff auf ein Speicherkonto](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Verschieben von Daten vom virtuellen Computer in den Azure-Blobspeicher: AzCopy**
+**Verschieben von Daten vom virtuellen Computer in Azure Blob: AzCopy**
 
 Zum Verschieben von Daten zwischen Ihren lokalen Dateien und dem Blobspeicher können Sie AzCopy in der Befehlszeile oder PowerShell verwenden:
 
@@ -276,7 +278,7 @@ Zum Verschieben von Daten zwischen Ihren lokalen Dateien und dem Blobspeicher k�
 
 Ersetzen Sie **C:\myfolder** mit dem Pfad, in dem Ihre Datei gespeichert wird, **mystorageaccount** durch Ihren Blobspeicher-Kontonamen, **mycontainer** durch den Containernamen, **storage account key** durch Ihren Blobspeicher-Zugriffsschlüssel. Sie finden die Anmeldeinformationen für Ihr Speicherkonto im [Azure-Portal](https://portal.azure.com).
 
-![StorageAccountCredential_v2](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
+![Screenshot der Speicherkontoschlüssel und Containerinformationen im Azure-Portal](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 Führen Sie den AzCopy-Befehl in PowerShell oder im Eingabeaufforderungsfenster aus. Hier sehen Sie ein Beispiel für die Nutzung des AzCopy-Befehls:
 
@@ -291,22 +293,22 @@ Führen Sie den AzCopy-Befehl in PowerShell oder im Eingabeaufforderungsfenster 
 
 Kurz nachdem Sie den AzCopy-Befehl zum Kopieren in ein Azure-Blob ausgeführt haben, werden Ihre Dateien im Azure Storage-Explorer angezeigt.
 
-![AzCopy_run_finshed_Storage_Explorer_v3](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
+![Screenshot des Speicherkontos, das die hochgeladene CSV-Datei anzeigt](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Verschieben von Daten vom virtuellen Computer in den Azure-Blobspeicher: Azure Storage-Explorer**
+**Verschieben von Daten vom virtuellen Computer in Azure Blob: Azure Storage-Explorer**
 
 Außerdem können Sie Daten aus der lokalen Datei auf Ihrem virtuellen Computer mit dem Azure Storage-Explorer hochladen:
 
-* Um Daten in einen Container hochzuladen, wählen Sie den Zielcontainer aus, und klicken Sie auf die Schaltfläche **Hochladen**.![Hochladen in den Storage-Explorer](./media/vm-do-ten-things/storage-accounts.png)
-* Klicken Sie rechts neben dem Feld **Dateien** auf die Schaltfläche **...**, wählen Sie im Dateisystem eine oder mehrere Dateien zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen.![Hochladen von Dateien in das Blob](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Um Daten in einen Container hochzuladen, wählen Sie den Zielcontainer aus und klicken Sie dann auf die Schaltfläche **Hochladen**.![Screenshot der Schaltfläche „Hochladen“ in Azure Storage-Explorer](./media/vm-do-ten-things/storage-accounts.png).
+* Klicken Sie rechts neben dem Feld **Dateien** auf die Schaltfläche **...**, wählen Sie im Dateisystem eine oder mehrere Dateien zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen.![Screenshot des Dialogfelds „Dateien hochladen“](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Lesen von Daten aus dem Azure-Blob: Machine Learning-Readermodul**
+**Lesen von Daten aus Azure Blob: Machine Learning-Readermodul**
 
 In Azure Machine Learning Studio können Sie mit einem **„Import Data“-Modul** Daten aus Ihrem Blob lesen.
 
-![AML_ReaderBlob_Module_v3](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Screenshot des Moduls „Daten importieren“ in Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Lesen von Daten aus dem Azure-Blobspeicher: Python ODBC**
+**Lesen von Daten aus Azure Blob: Python ODBC**
 
 Sie können die **BlobService** -Bibliothek verwenden, um Daten direkt aus dem Blob in einem Jupyter Notebook- oder Python-Programm zu lesen.
 
@@ -352,7 +354,7 @@ Geben Sie dann Ihre Anmeldeinformationen für den Azure-Blobspeicher an, und les
 
 Die Daten werden als Datenrahmen eingelesen:
 
-![IPNB_data_readin](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![Screenshot der ersten 10 Datenzeilen](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Store ist ein Repository mit Hyperskalierung für Big Data-Analyseworkloads und ist mit dem Hadoop Distributed File System (HDFS) kompatibel. Das Repository funktioniert mit Hadoop, Spark und Azure Data Lake Analytics. In diesem Abschnitt wird beschrieben, wie Sie Daten nach Azure Data Lake Store verschieben und Analysen mithilfe von Azure Data Lake Analytics durchführen.
@@ -361,29 +363,29 @@ Azure Data Lake Store ist ein Repository mit Hyperskalierung für Big Data-Analy
 
 * Erstellen Sie Azure Data Lake Analytics im [Azure-Portal](https://portal.azure.com).
 
-![Azure_Data_Lake_Create_v2](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+![Screenshot zum Erstellen von Data Lake Analytics im Azure-Portal](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
 * Die **Azure Data Lake-Tools** in **Visual Studio**, die Sie unter diesem [Link](https://www.microsoft.com/download/details.aspx?id=49504) finden, sind bereits in der Visual Studio Community Edition auf dem virtuellen Computer installiert. Wenn Sie sich nach dem Start von Visual Studio bei Ihrem Azure-Abonnement angemeldet haben, sollten Ihr Azure Data Analytics-Konto und der zugehörige Speicher im linken Bereich von Visual Studio angezeigt werden.
 
-![Azure_Data_Lake_PlugIn_v2](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
+![Screenshot des Data Lake-Tools in Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Verschieben von Daten vom virtuellen Computer in Data Lake: Azure Data Lake Explorer**
+**Verschieben von Daten vom virtuellen Computer in Data Lake: Azure Data Lake-Explorer**
 
 Sie können **Azure Data Lake Explorer** zum Hochladen von Daten aus den lokalen Dateien auf Ihrem virtuellen Computer in den Data Lake Store verwenden.
 
-![Azure_Data_Lake_UploadData](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+![Screenshot der Verwendung von Data Lake-Explorer zum Hochladen von Dateien](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
 Sie können auch eine Datenpipeline erstellen, um die Datenverschiebung zu oder von Azure Data Lake mithilfe der [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) zu operationalisieren. In [diesem Artikel](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) finden Sie eine Anleitung zum Erstellen einer Datenpipeline.
 
-**Lesen von Daten aus dem Azure-Blobspeicher in Data Lake: U-SQL**
+**Lesen von Daten aus Azure Blob in Data Lake: U-SQL**
 
 Wenn Ihre Daten sich in Azure Blob Storage befinden, können Sie die Daten mit einer U-SQL-Abfrage direkt aus Azure Blob Storage lesen. Stellen Sie vor dem Formulieren der U-SQL-Abfrage sicher, dass Ihr Blobspeicherkonto mit Azure Data Lake verknüpft ist. Rufen Sie das **Azure-Portal** auf, klicken Sie auf Ihrem Azure Data Lake Analytics-Dashboard auf **Datenquelle hinzufügen**, wählen Sie als Speichertyp **Azure Storage** aus, und geben Sie den Namen und den Schlüssel Ihres Azure Storage-Kontos an. Anschließend können Sie auf die auf dem Speicherkonto gespeicherten Daten verweisen.
 
-![Eingeben von Speicherkonto und Schlüssel](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![Screenshot des Dialogfelds „Datenquelle hinzufügen“](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 In Visual Studio können Sie Daten aus dem Blobspeicher lesen, einige Datenmanipulationen ausführen, Features entwickeln und die resultierenden Daten entweder in Azure Data Lake oder in Azure Blob Storage ausgeben. Wenn Sie auf die Daten im Blobspeicher verweisen, verwenden Sie **wasb://**; wenn Sie auf die Daten in Azure Data Lake verweisen, verwenden Sie **swbhdfs://**.
 
-![Datenrahmen](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![Screenshot der Abfrage mit hervorgehobenem WASB-Eintrag](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Sie können die folgenden U-SQL-Abfragen in Visual Studio verwenden:
 
@@ -429,19 +431,19 @@ Sie können die folgenden U-SQL-Abfragen in Visual Studio verwenden:
 
 Nachdem Ihre Abfrage an den Server gesendet wurde, wird ein Diagramm mit dem Status des Auftrags angezeigt.
 
-![Auftragsstatusdiagramm](./media/vm-do-ten-things/USQL_Job_Status.PNG)
+![Screenshot des Dialogfelds „Auftragsstatus“](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-**Datenabfragen in Data Lake: U-SQL**
+**Abfragen von Daten in Data Lake: U-SQL**
 
 Nachdem das Dataset in Azure Data Lake aufgenommen wurde, können Sie die [U-SQL-Sprache](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) zum Abfragen und Durchsuchen der Daten verwenden. Die U-SQL-Sprache ähnelt T-SQL, kombiniert aber einige Funktionen von C#, sodass Benutzer angepasste Module, benutzerdefinierte Funktionen usw. schreiben können. Sie können die Skripts aus dem vorherigen Schritt verwenden.
 
 Nachdem die Abfrage an den Server gesendet wurde, finden Sie nach kurzer Zeit die Datei „tripdata_summary.CSV“ in **Azure Data Lake Explorer**. Zur Datenvorschau können Sie mit der rechten Maustaste auf die Datei klicken.
 
-![Datei in Azure Data Lake Explorer](./media/vm-do-ten-things/USQL_create_summary.png)
+![Screenshot der CSV-Datei in Data Lake Explorer](./media/vm-do-ten-things/USQL_create_summary.png)
 
 So zeigen Sie die Dateiinformationen an:
 
-![Dateizusammenfassung](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![Screenshot der Zusammenfassungsdateiinformationen](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop-Cluster
 Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Dienst in der Cloud. Sie können problemlos mit Azure HDInsight-Clustern der Data Science Virtual Machine arbeiten.
@@ -450,7 +452,7 @@ Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Die
 
 * Erstellen Sie ein Azure Blob Storage-Konto im [Azure-Portal](https://portal.azure.com). Dieses Speicherkonto wird zum Speichern von Daten für HDInsight-Cluster verwendet.
 
-![Erstellen des Azure Blob Storage-Kontos](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Screenshot zum Erstellen von HDInsight im Azure-Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Passen Sie Azure HDInsight Hadoop-Cluster im [Azure-Portal](../team-data-science-process/customize-hadoop-cluster.md)
   
@@ -460,7 +462,7 @@ Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Die
 
 * Aktivieren Sie nach dem Erstellen den **Remotezugriff** auf den Hauptknoten des Clusters. Notieren Sie sich die hier angegebenen Anmeldeinformationen für den Remotezugriff, da Sie sie im nachfolgenden Verfahren benötigen.
 
-![Aktivieren des Remotezugriffs](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![Aktivieren des Remotezugriffs auf den HDInsight-Cluster](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
 * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich. Ihre Machine Learning-Experimente werden in diesem Machine Learning-Arbeitsbereich gespeichert. Wählen Sie die hervorgehobenen Optionen im Portal aus, wie im folgenden Screenshot dargestellt:
 
@@ -569,7 +571,7 @@ Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Die
 
 Nachdem die Daten in den HDI-Cluster geladen wurden, können Sie Ihre Daten im Azure Storage-Explorer überprüfen. Und Sie besitzen eine im HDI-Cluster erstellte Datenbank „nyctaxidb“.
 
-**Durchsuchen von Daten: Hive-Abfragen in Python**
+**Datenuntersuchung: Hive-Abfragen in Python**
 
 Da sich die Daten im Hadoop-Cluster befinden, können Sie das Paket „pyodbc“ verwenden, um Verbindungen mit Hadoop-Clustern herzustellen und die Datenbank mit Hive abzufragen, um Durchsuchungsvorgänge und Funktionsverarbeitungen durchzuführen. Sie können die vorhandenen Tabellen anzeigen, die wir im erforderlichen Schritt erstellt haben.
 
@@ -638,7 +640,7 @@ Außerdem können Sie die Entfernung zwischen dem Aufnahmestandort und dem Abset
     results.head(5)
 
 
-![Aufnahme- und Absetztabelle](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![Oberste Zeilen der Aufnahme- und Absetztabelle](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -782,7 +784,7 @@ Nach einer Weile können Sie sehen, dass die Daten in Hadoop-Cluster geladen wur
     pd.read_sql(queryString,connection)
 
 
-![Datentabelle](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![Oberen Zeilen der Daten aus der Tabelle](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 **Lesen von Daten aus HDI mithilfe von Machine Learning: Readermodul**
 

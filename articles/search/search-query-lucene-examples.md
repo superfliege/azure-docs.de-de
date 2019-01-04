@@ -1,5 +1,5 @@
 ---
-title: Lucene-Abfragebeispiele für Azure Search | Microsoft Docs
+title: Lucene-Abfragebeispiele – Azure Search
 description: Die Lucene-Abfragesyntax für Fuzzysuche, NEAR-Suche, Term Boosting, Suche mit regulären Ausdrücken und Platzhaltersuche in einem Azure Search-Dienst.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.custom: seodec2018
+ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42139844"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317154"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Beispiele für die Lucene-Abfragesyntax zum Erstellen von erweiterten Abfragen in Azure Search
 Beim Erstellen von Abfragen für Azure Search können Sie den standardmäßigen [einfachen Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) durch den umfangreicheren [Lucene-Abfrageparser in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) ersetzen, um spezialisierte und erweiterte Abfragedefinitionen zu formulieren. 
@@ -29,7 +30,7 @@ Der Lucene-Abfrageparser unterstützt komplexe Abfragekonstrukte, z.B. feldbezog
 
 Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://opendata.cityofnewyork.us/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Dies bedeutet, dass Sie kein Azure-Abonnement und keine Azure Search-Instanz benötigen, um diese Abfragen auszuprobieren.
 
-Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Untersuchen von REST-Clients](search-fiddler.md).
+Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Untersuchen mit REST-Clients](search-fiddler.md).
 
 ### <a name="set-the-request-header"></a>Festlegen des Anforderungsheaders
 
@@ -65,7 +66,7 @@ Fügen Sie als Überprüfungsschritt die folgende Anforderung in GET ein, und kl
 
 Die Abfragezeichenfolge **`search=*`** entspricht einer Suche ohne Angaben, die einer NULL-Suche oder leeren Suche gleicht. Dies hat keinen besonderen Nutzen, aber es ist die einfachste Suche, die Sie durchführen können.
 
-Optional können Sie der URL **`$count=true`** hinzufügen, um eine Anzahl für die Dokumente zurückzugeben, die die Suchkriterien erfüllen. In einer leeren Suchzeichenfolge entspricht dies allen Dokumenten im Index (ca. 2800 für „NYC Jobs“).
+Optional können Sie der URL **`$count=true`** hinzufügen, um eine Anzahl für die Dokumente zurückzugeben, die die Suchkriterien erfüllen. In einer leeren Suchzeichenfolge entspricht dies allen Dokumenten im Index (ca. 2.800 für „NYC Jobs“).
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>Aufrufen der vollständigen Lucene-Analyse
 
@@ -77,7 +78,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 In allen Beispielen in diesem Artikel wird der Suchparameter **queryType=full** verwendet. Damit wird angegeben, dass die vollständige Syntax vom Lucene-Abfrageparser verarbeitet wird. 
 
-## <a name="example-1-field-scoped-query"></a>Beispiel 1: Feldbezogene Abfrage
+## <a name="example-1-field-scoped-query"></a>Beispiel 1: Feldbezogene Abfrage
 
 Dieses erste Beispiel ist nicht parserspezifisch, wir beginnen jedoch mit diesem Beispiel, um das erste Grundkonzept für Abfragen vorzustellen: die Eingrenzung. In diesem Beispiel beschränken sich die Abfrageausführung und die Antwort auf nur wenige bestimmte Felder. Bei Verwendung des Tools Postman oder Suchexplorer ist es wichtig, zu wissen, wie eine lesbare JSON-Antwort strukturiert wird. 
 
@@ -91,9 +92,9 @@ Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
 
   ![Postman-Beispielantwort](media/search-query-lucene-examples/postman-sample-results.png)
 
-Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer einheitlichen Bewertung von „1“ kommt es, wenn kein Rang vorhanden ist, weil es entweder keine Volltextsuche war oder weil keine anzuwendenden Kriterien vorhanden waren. Bei einer NULL-Suche ohne Kriterien werden Zeilen in willkürlicher Reihenfolge zurückgegeben. Wenn Sie tatsächliche Kriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
+Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer einheitlichen Bewertung von „1“ kommt es, wenn kein Rang vorhanden ist, weil es entweder keine Volltextsuche war oder weil keine Kriterien angewandt wurden. Bei einer NULL-Suche ohne Kriterien werden Zeilen in willkürlicher Reihenfolge zurückgegeben. Wenn Sie tatsächliche Kriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
 
-## <a name="example-2-intra-field-filtering"></a>Beispiel 2: Filterung in einem Feld
+## <a name="example-2-intra-field-filtering"></a>Beispiel 2: Filterung in einem Feld
 
 Die vollständige Lucene-Syntax unterstützt Ausdrücke in einem Feld. Diese Abfrage sucht nach Geschäftstiteln, in denen der Begriff „Senior“, jedoch nicht der Begriff „Junior“ enthalten ist:
 
@@ -112,7 +113,7 @@ Achten Sie darauf, dass Sie mehrere Zeichenfolgen in Anführungszeichen setzen, 
 
 Das in **Feldname:Suchbegriff** angegebene Feld muss durchsuchbar sein. Einzelheiten zur Verwendung von Indexattributen in Felddefinitionen finden Sie unter [Index erstellen (REST-API in Azure Search-Dienst)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
 
-## <a name="example-3-fuzzy-search"></a>Beispiel 3: Fuzzysuche
+## <a name="example-3-fuzzy-search"></a>Beispiel 3: Fuzzysuche
 
 Die vollständige Lucene-Syntax unterstützt auch die Fuzzysuche, bei der sich Übereinstimmungen für Begriffe ergeben, die über eine ähnliche Konstruktion verfügen. Hängen Sie für eine Fuzzysuche das Tildesymbol `~` an das Ende eines einzelnen Worts mit einem optionalen Parameter an, einem Wert zwischen 0 und 2, der die Editierdistanz angibt. Beispielsweise würden bei `blue~` oder `blue~1` die Werte „blue“, „blues“ und „glue“ zurückgegeben.
 
@@ -171,7 +172,7 @@ Betrachten Sie ein Bewertungsprofil, das Übereinstimmungen in einem bestimmten 
 Je höher beim Festlegen der Faktorebene der Verstärkungsfaktor ist, desto relevanter wird der Begriff im Verhältnis zu anderen Suchbegriffen. Der Standardverstärkungsfaktor ist 1. Der Verstärkungsfaktor muss zwar positiv, kann jedoch kleiner als 1 sein (z. B. „0.2“).
 
 
-## <a name="example-6-regex"></a>Beispiel 6: Regulärer Ausdruck
+## <a name="example-6-regex"></a>Beispiel 6: RegEx
 
 Bei einer Suche mit regulärem Ausdruck werden Übereinstimmungen basierend auf dem Inhalt zwischen Schrägstrichen „/“ gefunden, wie in der [RegExp-Klasse](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)dokumentiert.
 

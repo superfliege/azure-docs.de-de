@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306144"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844650"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -107,7 +107,7 @@ ms.locfileid: "43306144"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
-| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA512“ als Algorithmusnamen.)</li><li>SHA384Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA384“ als Algorithmusnamen.)</li><li>SHA256Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA256“ als Algorithmusnamen.)</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
+| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA512“ als Algorithmusname.)</li><li>SHA384Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA384“ als Algorithmusnamen.)</li><li>SHA256Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA256“ als Algorithmusname.)</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
 
 ## <a id="strong-db"></a>Verwenden von sicheren Verschlüsselungsalgorithmen zum Verschlüsseln von Daten in der Datenbank
 
@@ -140,7 +140,7 @@ ms.locfileid: "43306144"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **Schritte** | In Fällen, in denen die Integrität eines kritischen sicherungsfähigen Elements von Datenbanken überprüft werden muss, müssen digitale Signaturen verwendet werden. Sicherungsfähige Elemente von Datenbanken, z.B. gespeicherte Prozedur, Funktion, Assembly oder Trigger, können digital signiert werden. Unten ist ein Beispiel dafür angegeben, wann dies hilfreich ist: Angenommen, ein unabhängiger Softwarehersteller (Independent Software Vendor, ISV) leistet Support für eine Software, die an einen Kunden geliefert wurde. Vor der Supportleistung möchte der ISV sicherstellen, dass ein sicherungsfähiges Element der Datenbank in der Software nicht versehentlich oder in böser Absicht bewusst manipuliert wurde. Wenn das sicherungsfähige Element digital signiert ist, kann der ISV die digitale Signatur prüfen und die Integrität bestätigen.| 
+| **Schritte** | In Fällen, in denen die Integrität eines kritischen sicherungsfähigen Elements von Datenbanken überprüft werden muss, müssen digitale Signaturen verwendet werden. Sicherungsfähige Elemente von Datenbanken, z.B. gespeicherte Prozedur, Funktion, Assembly oder Trigger, können digital signiert werden. Es folgt ein Beispiel dazu, wann dies nützlich sein kann: Angenommen, ein unabhängiger Softwarehersteller (Independent Software Vendor, ISV) leistet Support für eine Software, die an einen seiner Kunden geliefert wurde. Vor der Supportleistung möchte der ISV sicherstellen, dass ein sicherungsfähiges Element der Datenbank in der Software nicht versehentlich oder in böser Absicht bewusst manipuliert wurde. Wenn das sicherungsfähige Element digital signiert ist, kann der ISV die digitale Signatur prüfen und die Integrität bestätigen.| 
 
 ## <a id="ekm-keys"></a>Verwenden der erweiterbaren Schlüsselverwaltung von SQL Server zum Schützen von Verschlüsselungsschlüsseln
 
@@ -172,8 +172,8 @@ ms.locfileid: "43306144"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Gerätebetriebssystem: Windows IoT Core, Gerätekonnektivität: Azure IoT-Geräte-SDKs |
-| **Referenzen**              | [TPM on Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm) (TPM unter Windows IoT Core), [Set up TPM on Windows IoT Core](https://developer.microsoft.com/windows/iot/win10/setuptpm) (Einrichten von TPM unter Windows IoT Core), [Azure IoT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) (Azure IoT-Geräte-SDK – TPM) |
-| **Schritte** | Legen Sie private symmetrische oder Zertifikatschlüssel sicher in einem per Hardware geschützten Speicher ab, z.B. TPM oder Smartcardchips. Windows 10 IoT Core unterstützt die Verwendung eines TPM, und Sie können mehrere kompatible TPMs nutzen: https://developer.microsoft.com/windows/iot/win10/tpm. Es wird empfohlen, ein Firmware-TPM oder diskretes TPM zu verwenden. Ein Software-TPM sollte nur zu Entwicklungs- und Testzwecken eingesetzt werden. Nachdem ein TPM verfügbar ist und die Schlüssel darin bereitgestellt wurden, sollte der Code zum Generieren des Tokens geschrieben werden, ohne dass darin enthaltene sensible Informationen hartcodiert werden. | 
+| **Referenzen**              | [TPM on Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm) (TPM unter Windows IoT Core), [Set up TPM on Windows IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm) (Einrichten von TPM unter Windows IoT Core), [Azure IoT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) (Azure IoT-Geräte-SDK – TPM) |
+| **Schritte** | Legen Sie private symmetrische oder Zertifikatschlüssel sicher in einem per Hardware geschützten Speicher ab, z.B. TPM oder Smartcardchips. Windows 10 IoT Core unterstützt die Verwendung eines TPM, und Sie können mehrere kompatible TPMs nutzen: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. Es wird empfohlen, ein Firmware-TPM oder diskretes TPM zu verwenden. Ein Software-TPM sollte nur zu Entwicklungs- und Testzwecken eingesetzt werden. Nachdem ein TPM verfügbar ist und die Schlüssel darin bereitgestellt wurden, sollte der Code zum Generieren des Tokens geschrieben werden, ohne dass darin enthaltene sensible Informationen hartcodiert werden. | 
 
 ### <a name="example"></a>Beispiel
 ```

@@ -10,31 +10,57 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: acbba991e6dcce56fad7f27c45f85214cc8fc707
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637005"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339721"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Erstellen von dauerhaften Funktionen mit dem Azure-Portal
 
-Die Erweiterung [Durable Functions](durable-functions-overview.md) für Azure Functions finden Sie im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Diese Erweiterung muss in Ihrer Funktions-App installiert werden. In diesem Artikel wird gezeigt, wie Sie dieses Paket installieren, um dauerhafte Funktionen im Azure-Portal zu entwickeln.
+Die Erweiterung [Durable Functions ](durable-functions-overview.md) für Azure Functions finden Sie im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Diese Erweiterung muss in Ihrer Funktions-App installiert werden. In diesem Artikel wird gezeigt, wie Sie dieses Paket installieren, um dauerhafte Funktionen im Azure-Portal zu entwickeln.
 
 >[!NOTE]
 >
 >* Wenn Sie dauerhafte Funktionen in C# entwickeln, sollten Sie stattdessen die [Entwicklung in Visual Studio 2017](durable-functions-create-first-csharp.md) in Betracht ziehen.
-* Wenn Sie dauerhafte Funktionen in JavaScript entwickeln, erwägen Sie stattdessen eine **Entwicklung in Visual Studio Code**.
->
->Das Erstellen dauerhafter Funktionen unter Verwendung von JavaScript wird im Portal noch nicht unterstützt. Verwenden Sie stattdessen Visual Studio Code.
+* Wenn Sie dauerhafte Funktionen in JavaScript entwickeln, erwägen Sie stattdessen eine [Entwicklung in Visual Studio Code](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-Sie müssen über eine Funktions-App zum Hosten der Ausführung einer Funktion verfügen. Mit einer Funktions-App können Sie Funktionen in logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Sie müssen eine C#-Funktions-App erstellen, weil JavaScript-Vorlagen für dauerhafte Funktionen noch nicht unterstützt werden.  
+Sie müssen über eine Funktions-App zum Hosten der Ausführung einer Funktion verfügen. Mit einer Funktions-App können Sie Funktionen in logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Sie können eine .NET- oder JavaScript-App erstellen.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Standardmäßig verwendet die erstellte Funktions-App Version 2.x der Azure Functions-Runtime. Die Durable Functions-Erweiterung funktioniert sowohl mit den Versionen 1.x als auch mit dem Versionen 2.x der Azure Functions-Runtime. Vorlagen sind jedoch nur verfügbar, wenn Version 2.x der Runtime als Zielversion verwendet wird.
+Standardmäßig verwendet die erstellte Funktions-App Version 2.x der Azure Functions-Runtime. Die Durable Functions-Erweiterung funktioniert sowohl mit der Version 1.x als auch mit der Version 2.x der Azure Functions-Runtime in C# sowie mit Version 2.x in JavaScript. Vorlagen sind jedoch nur verfügbar, wenn Version 2.x der Runtime als Zielversion verwendet wird, unabhängig von der ausgewählten Sprache.
+
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Installieren des npm-Pakets „durable-functions“ (nur JavaScript)
+
+Wenn Sie Durable Functions in JavaScript erstellen, müssen Sie das npm-Paket [ `durable-functions` installieren](https://www.npmjs.com/package/durable-functions).
+
+1. Wählen Sie den Namen Ihrer Funktions-App aus, gefolgt von **Plattformfeatures** und dann **Erweiterte Tools (Kudu)**.
+
+   ![„Plattformfeatures“ für Funktionen, „Kudu“ auswählen](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+
+2. Wählen Sie in der Kudu-Konsole den Eintrag **Debugkonsole** und dann **CMD** aus.
+
+   ![Kudu-Debugkonsole](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+3. Die Dateiverzeichnisstruktur Ihrer Funktions-App sollte angezeigt werden. Navigieren Sie zum Ordner `site/wwwroot`. Von dort aus können Sie eine `package.json` Datei hochladen, indem Sie sie in das Dateiverzeichnisfenster ziehen und dort ablegen. Unten finden Sie eine `package.json`-Beispieldatei:
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.1.2"
+      }
+    }
+    ```
+
+   ![Kudu-Upload von „package.json“](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+4. Sobald Ihre `package.json` hochgeladen ist, führen Sie den `npm install`-Befehl in der Kudu-Remoteausführungskonsole aus.
+
+   ![Ausführen von „npm install“ in Kudu](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Erstellen einer Orchestratorfunktion
 
@@ -42,7 +68,7 @@ Standardmäßig verwendet die erstellte Funktions-App Version 2.x der Azure Func
 
    ![Schnellstartseite für Funktionen im Azure-Portal](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
-1. Klicken Sie auf **Weitere Vorlagen** und anschließend auf Vorlagen fertigstellen und anzeigen**.
+1. Klicken Sie auf **More templates** (Weitere Vorlagen) und anschließend auf **Finish and view templates** (Fertig stellen und Vorlagen anzeigen).
 
     ![Functions-Schnellstartanleitung: Auswählen weiterer Vorlagen](./media/durable-functions-create-portal/add-first-function.png)
 
@@ -92,7 +118,7 @@ Standardmäßig verwendet die erstellte Funktions-App Version 2.x der Azure Func
         }
     ```
 
-1. Setzen Sie den Aufruf des `statusQueryGetUri`-Endpunkts fort, bis sich der Status in **Completed** ändert. Daraufhin wird eine Antwort ähnlich wie im folgenden Beispiel angezeigt: 
+1. Setzen Sie den Aufruf des `statusQueryGetUri`-Endpunkts fort, bis sich der Status in **Completed** ändert. Daraufhin wird eine Antwort ähnlich wie im folgenden Beispiel angezeigt:
 
     ```json
     {

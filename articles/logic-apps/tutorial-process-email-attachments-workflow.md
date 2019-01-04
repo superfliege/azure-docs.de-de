@@ -1,25 +1,25 @@
 ---
-title: 'Erstellen von Workflows zum Verarbeiten von E-Mails und Anlagen: Azure Logic Apps | Microsoft Docs'
-description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps, Azure Storage und Azure Functions automatisierte Workflows für die Verarbeitung von E-Mails und Anlagen erstellen.
+title: 'Tutorial: Automatisieren der Verarbeitung von E-Mails und Anlagen – Azure Logic Apps | Microsoft-Dokumentation'
+description: 'Tutorial: Erstellen automatisierter Workflows für die Verarbeitung von E-Mails und Anlagen mit Azure Logic Apps, Azure Storage und Azure Functions'
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.reviewer: klam, LADocs
-ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: cc3a2e96222e06324500e2203d870c06d0f3e8c0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231967"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140505"
 ---
-# <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Verarbeiten von E-Mails und Anlagen mit Azure Logic Apps
+# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Tutorial: Automatisieren der Verarbeitung von E-Mails und Anlagen mit Azure Logic Apps
 
-Mit Azure Logic Apps können Sie Workflows automatisieren und Daten übergreifend in Azure-Dienste, Microsoft-Dienste, andere SaaS-Apps (Software-as-a-Service) und lokale Systeme integrieren. In diesem Tutorial erfahren Sie, wie Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) erstellen, die eingehende E-Mails und deren Anlagen verarbeitet. Die Logik-App verarbeitet den Inhalt, speichert ihn in Azure Storage und sendet Benachrichtigungen zur Prüfung des Inhalts. 
+Mit Azure Logic Apps können Sie Workflows automatisieren und Daten übergreifend in Azure-Dienste, Microsoft-Dienste, andere SaaS-Apps (Software-as-a-Service) und lokale Systeme integrieren. In diesem Tutorial erfahren Sie, wie Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) erstellen, die eingehende E-Mails und deren Anlagen verarbeitet. Diese Logik-App analysiert den E-Mail-Inhalt, speichert ihn in Azure Storage und sendet Benachrichtigungen zwecks Überprüfung des Inhalts. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -246,11 +246,11 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
 ## <a name="monitor-incoming-email"></a>Überwachen eingehender E-Mails
 
-1. Geben Sie im Designer in das Suchfeld „Wenn eine neue E-Mail empfangen wird“ als Filter ein. Wählen Sie diesen Trigger für Ihren E-Mail-Anbieter aus: **Wenn eine neue E-Mail empfangen wird – <*Ihr E-Mail-Anbieter*>**
+1. Geben Sie im Designer in das Suchfeld „Wenn eine neue E-Mail empfangen wird“ als Filter ein. Wählen Sie den folgenden Trigger für Ihren E-Mail-Anbieter aus: **When a new email arrives - <*your-email-provider*>** (Wenn eine neue E-Mail eingeht – <Ihr E-Mail-Anbieter>)
 
    Beispiel: 
 
-   ![Auswählen des Triggers „Wenn eine neue E-Mail empfangen wird“ für den E-Mail-Anbieter](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
+   ![Wählen Sie den folgenden Trigger für den E-Mail-Anbieter aus: „When a new email arrives“ (Wenn eine neue E-Mail eingeht)](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
    * Wählen Sie für Geschäfts-, Schul- oder Unikonten für Azure die Option „Office 365 Outlook“. 
    * Wählen Sie für persönliche Microsoft-Konten die Option „Outlook.com“. 
@@ -313,7 +313,7 @@ Nun fügen Sie eine Bedingung hinzu, die nur E-Mails auswählt, die über Anlage
 
    2. Behalten Sie im mittleren Feld den Operator **gleich** bei.
 
-   3. Geben Sie im rechten Feld **TRUE** als Wert für den Vergleich mit dem Eigenschaftswert **Hat Anlage** aus dem Trigger ein.
+   3. Geben Sie im rechten Feld **true** als Wert für den Vergleich mit dem Eigenschaftswert **Hat Anlage** aus dem Trigger ein.
 
       ![Erstellen der Bedingung](./media/tutorial-process-email-attachments-workflow/finished-condition.png)
 
@@ -328,7 +328,7 @@ Nun fügen Sie eine Bedingung hinzu, die nur E-Mails auswählt, die über Anlage
          "and": [ {
             "equals": [
                "@triggerBody()?['HasAttachment']",
-                 "True"
+                 "true"
             ]
          } ]
       },
@@ -377,15 +377,15 @@ Dieser Schritt fügt Ihre zuvor erstellte Azure-Funktion der Logik-App hinzu und
 
    ![Hinzufügen einer Aktion in „Bei TRUE“](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-2. Suchen Sie im Suchfeld nach „Azure Functions“, und wählen Sie die folgende Aktion aus: **Azure-Funktion auswählen: Azure Functions**
+2. Suchen Sie mithilfe des Suchfelds nach „Azure-Funktionen“, und wählen Sie die folgende Aktion aus: **Azure-Funktion auswählen – Azure Functions**
 
    ![Auswählen einer Aktion für „Azure-Funktion auswählen“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
-3. Wählen Sie die Funktions-App **CleanTextFunctionApp** aus, die Sie zuvor erstellt haben.
+3. Wählen Sie die Funktions-App aus, die Sie zuvor erstellt haben: **CleanTextFunctionApp**
 
    ![Auswählen Ihrer Azure-Funktions-App](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function-app.png)
 
-4. Wählen Sie nun Ihre Funktion (**RemoveHTMLFunction**) aus.
+4. Wählen Sie nun Ihre Funktion aus: **RemoveHTMLFunction**
 
    ![Auswählen Ihrer Azure-Funktion](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
@@ -419,7 +419,7 @@ Fügen Sie im nächsten Schritt eine Aktion hinzu, die in Ihrem Speichercontaine
 
 1. Wählen Sie im Block **Bei TRUE** und unter Ihrer Azure-Funktion **Aktion hinzufügen** aus. 
 
-2. Geben Sie in das Suchfeld „Blob erstellen“ als Filter ein, und wählen Sie diese Aktion aus: **Blob erstellen: Azure Blob Storage**.
+2. Geben Sie in das Suchfeld „Blob erstellen“ als Filter ein, und wählen Sie die folgende Aktion aus: **Blob erstellen – Azure Blob Storage**
 
    ![Hinzufügen einer Aktion zum Erstellen eines Blobs für E-Mail-Text](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-email-body.png)
 
@@ -518,7 +518,7 @@ Fügen Sie als Nächstes die Aktion hinzu, die jede Anlage als Blob in Ihrem Spe
 
    ![Hinzufügen einer Aktion zur Schleife](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-2. Geben Sie in das Suchfeld „Blob erstellen“ als Filter ein, und wählen Sie dann diese Aktion aus: **Blob erstellen: Azure Blob Storage**.
+2. Geben Sie in das Suchfeld „Blob erstellen“ als Filter ein, und wählen Sie anschließend die folgende Aktion aus: **Blob erstellen – Azure Blob Storage**
 
    ![Hinzufügen einer Aktion zum Erstellen eines Blobs](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
@@ -572,7 +572,7 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
 
 ## <a name="send-email-notifications"></a>Senden von E-Mail-Benachrichtigungen
 
-1. Klicken Sie in der Verzweigung **Bei TRUE** unter der Schleife **For each email attachment** auf **Aktion hinzufügen**. 
+1. Klicken Sie in der Verzweigung **Bei TRUE** unter der Schleife **für jede E-Mail-Anlage**auf **Aktion hinzufügen**. 
 
    ![Hinzufügen einer Aktion unter der For Each-Schleife](./media/tutorial-process-email-attachments-workflow/add-action-send-email.png)
 
@@ -593,7 +593,7 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
 
    ![Senden von E-Mail-Benachrichtigungen](./media/tutorial-process-email-attachments-workflow/send-email-notification.png)
 
-   Sollte die Liste mit den dynamischen Inhalten ein erwartetes Feld nicht enthalten, wählen Sie neben **Wenn eine neue E-Mail empfangen wird** die Option **Mehr anzeigen** aus. 
+   Sollte die Liste mit den dynamischen Inhalten ein erwartetes Feld nicht enthalten, wählen Sie neben **Wenn eine neue E-Mail empfangen wird** die Option**Mehr anzeigen** aus. 
 
    | Einstellung | Wert | Notizen | 
    | ------- | ----- | ----- | 

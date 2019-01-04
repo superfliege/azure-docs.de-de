@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 288ee46e9a5741a49ddcec1ef155c6f08b7b6cbc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016170"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408322"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
-Der Hive-Metastore in HDInsight ist ein wesentlicher Bestandteil der Hadoop-Architektur. Ein Metastore ist das zentrale Schemarepository, das von anderen Tools für den Zugriff auf Big Data wie Spark, Interactive Query (LLAP), Presto oder Pig verwendet werden kann. HDInsight verwendet eine Azure SQL-Datenbank als Hive-Metastore.
+Der Apache Hive-Metastore in HDInsight ist ein wesentlicher Bestandteil der Apache Hadoop-Architektur. Ein Metastore ist das zentrale Schemarepository, das von anderen Tools für den Zugriff auf Big Data wie Apache Spark, Interactive Query (LLAP), Presto oder Apache Pig verwendet werden kann. HDInsight verwendet eine Azure SQL-Datenbank als Hive-Metastore.
 
 ![Architektur des Hive-Metadatenspeichers in HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -72,12 +72,12 @@ Es folgen einige allgemeine bewährte Methoden für den Hive-Metastore in HDInsi
 - Wenn eine neue, höhere Version von Azure HDInsight anhand einer vorhandenen benutzerdefinierten Metastoredatenbank erstellt wird, aktualisiert das System das Metastoreschema unwiderruflich, ohne die Datenbank aus der Sicherung wiederherzustellen.
 - Falls Sie einen Metastore für mehrere Cluster freigeben, achten Sie darauf, dass alle Cluster die gleiche HDInsight-Version haben. Verschiedene Hive-Versionen verwenden unterschiedliche Schemas der Metastoredatenbank. So können Sie beispielsweise einen Metastore nicht für Hive 1.2- und Hive 2.1-Cluster freigeben. 
 
-## <a name="oozie-metastore"></a>Oozie-Metastore
+##  <a name="apache-oozie-metastore"></a>Apache Oozie Metastore
 
 Apache Oozie ist ein Koordinationssystem für Workflows zur Verwaltung von Hadoop-Aufträgen.  Oozie unterstützt Hadoop-Aufträge für Apache MapReduce, Pig, Hive und andere.  Oozie verwendet einen Metastore zum Speichern von Details zu aktuellen und abgeschlossenen Workflows. Zur Leistungssteigerung bei Verwendung von Oozie können Sie eine Azure SQL-Datenbank als benutzerdefinierten Metastore verwenden. Der Metastore kann auch Zugriff auf Oozie-Auftragsdaten bieten, nachdem Sie Ihren Cluster gelöscht haben.
 
-Anleitungen zum Erstellen eines Oozie-Metastore mit einer Azure SQL-Datenbank finden Sie unter [Verwenden von Oozie für Workflows](hdinsight-use-oozie-linux-mac.md).
+Anleitungen zum Erstellen eines Oozie-Metastore mit einer Azure SQL-Datenbank finden Sie unter [Verwenden von Apache Oozie für Workflows](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.](./hdinsight-hadoop-provision-linux-clusters.md)

@@ -51,7 +51,7 @@ Das IT-Führungsteam arbeitet eng mit den jeweiligen Unternehmen zusammen, um zu
 Das Cloudteam von Contoso hat sich folgende Ziele für die Migration zu Azure DevOps Services gesetzt:
 
 - Das Team benötigt ein Tool, um die Daten in die Cloud zu migrieren. Wenige manuelle Prozesse sollten erforderlich sein.
-- Arbeitsaufgabendaten und der Verlauf für das letzte Jahr müssen migriert werden.
+- Arbeitselementdaten und der Verlauf für das letzte Jahr müssen migriert werden.
 - Neue Benutzernamen und Kennwörter sollen nicht eingerichtet werden müssen. Alle aktuellen Systemzuweisungen müssen beibehalten werden.
 - Für die Quellcodeverwaltung soll eine Umstellung von der Team Foundation-Versionskontrolle (Team Foundation Version Control, TFVC) auf Git durchgeführt werden.
 - Die Umstellung auf Git stellt eine „abgespeckte Migration“ dar, bei der nur die neueste Version des Quellcodes importiert wird. Sie wird während einer Ausfallzeit durchgeführt, in der alle Aufgaben bei der Migration der Codebasis angehalten werden. Allen Beteiligten ist bewusst, dass nur der aktuelle Masterbranchverlauf nach der Migration zur Verfügung steht.
@@ -65,7 +65,7 @@ Das Cloudteam von Contoso hat sich folgende Ziele für die Migration zu Azure De
 - Contoso migriert seine TFS-Projekte in die Cloud und hostet Projekte oder die Quellcodeverwaltung nicht mehr lokal.
 - TFS wird zu Azure DevOps Services migriert.
 - Contoso verfügt aktuell über eine TFS-Sammlung mit dem Namen **ContosoDev**, die zu einer Azure DevOps Services-Organisation namens **contosodevmigration.visualstudio.com** migriert wird.
-- Die Projekte, Arbeitsaufgaben, Fehler und Iterationen aus dem letzten Jahr werden zu Azure DevOps Services migriert.
+- Die Projekte, Arbeitselemente, Fehler und Iterationen aus dem letzten Jahr werden zu Azure DevOps Services migriert.
 - Contoso nutzt Azure Active Directory, das bei der [Bereitstellung der Azure-Infrastruktur](contoso-migration-infrastructure.md) zu Beginn der Migrationsplanung eingerichtet wird. 
 
 
@@ -400,7 +400,7 @@ Die Contoso-Administratoren beginnen mit einer Probelaufmigration, um sicherzust
 
     ![Probelauf](./media/contoso-migration-tfs-vsts/test9.png)
 
-14. Der Entwicklungsleiter öffnet eines der Projekte und navigiert zu **Arbeitsaufgaben** > **Mir zugewiesen**. Dies weist darauf hin, dass die Arbeitselementdaten zusammen mit der zugehörigen Identität migriert wurden.
+14. Der Entwicklungsleiter öffnet eines der Projekte und navigiert zu **Arbeitselemente** > **Mir zugewiesen**. Dies weist darauf hin, dass die Arbeitselementdaten zusammen mit der zugehörigen Identität migriert wurden.
 
     ![Probelauf](./media/contoso-migration-tfs-vsts/test10.png)
 
@@ -439,7 +439,7 @@ Wenn der Probelauf abgeschlossen ist, fahren die Contoso-Administratoren mit der
 
     ![Bereitstellung](./media/contoso-migration-tfs-vsts/full6.png)
 
-8. Der Entwicklungsleiter öffnet eines der Projekte und navigiert zu **Arbeitsaufgaben** > **Mir zugewiesen**. Dies weist darauf hin, dass die Arbeitselementdaten zusammen mit der zugehörigen Identität migriert wurden.
+8. Der Entwicklungsleiter öffnet eines der Projekte und navigiert zu **Arbeitselemente** > **Mir zugewiesen**. Dies weist darauf hin, dass die Arbeitselementdaten zusammen mit der zugehörigen Identität migriert wurden.
 
     ![Bereitstellung](./media/contoso-migration-tfs-vsts/full7.png)
 

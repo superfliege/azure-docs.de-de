@@ -10,25 +10,23 @@ ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: bbf38d17f2f411fde240a67f6666953b275fb788
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec56e21a989fb0e8db7b8bafb1357c6ed64eae75
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637245"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192249"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics
-Mithilfe des Ansicht-Designers in [Azure Log Analytics](../../log-analytics/log-analytics-queries.md) können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
+Mithilfe des Ansicht-Designers in [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 
 Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 
-* [Kachelreferenz:](view-designer-tiles.md) Referenzleitfaden zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
-* [Referenz der Visualisierungskomponenten:](view-designer-parts.md) Referenzleitfaden zu den Einstellungen für die in den benutzerdefinierten Ansichten verfügbaren Visualisierungskomponenten.
+* [Kachelreferenz](view-designer-tiles.md): Referenzleitfaden zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
+* [Referenz zur Visualisierungskomponente](view-designer-parts.md): Bietet einen Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungkomponenten.
 
 
 ## <a name="concepts"></a>Konzepte
@@ -42,7 +40,7 @@ Die mit dem Ansicht-Designer erstellten Ansichten enthalten die in der folgenden
 |:--- |:--- |
 | Kacheln | Werden auf der Seite **Übersicht** Ihres Log Analytics-Arbeitsbereichs angezeigt. In jeder Kachel wird eine visuelle Zusammenfassung der jeweils dargestellten benutzerdefinierten Ansicht angezeigt. Jeder Kacheltyp enthält eine unterschiedliche Visualisierung Ihrer Datensätze. Zum Anzeigen einer benutzerdefinierten Ansicht wählen Sie die entsprechende Kachel aus. |
 | Benutzerdefinierte Ansicht | Wird angezeigt, wenn Sie eine Kachel auswählen. Jede Ansicht enthält eine oder mehrere Visualisierungskomponenten. |
-| Visualisierungskomponenten | Stellen eine Visualisierung von Daten im Log Analytics-Arbeitsbereich basierend auf einem oder mehreren [Protokollsuchvorgängen](../../log-analytics/log-analytics-queries.md) dar. Die meisten Komponenten weisen eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste mit den wichtigsten Ergebnissen auf. Die einzelnen Komponententypen enthalten unterschiedliche Visualisierungen der Datensätze im Log Analytics-Arbeitsbereich. Sie wählen Elemente in der Komponente aus, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
+| Visualisierungskomponenten | Stellen eine Visualisierung von Daten im Log Analytics-Arbeitsbereich basierend auf einem oder mehreren [Protokollsuchvorgängen](../../azure-monitor/log-query/log-query-overview.md) dar. Die meisten Komponenten weisen eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste mit den wichtigsten Ergebnissen auf. Die einzelnen Komponententypen enthalten unterschiedliche Visualisierungen der Datensätze im Log Analytics-Arbeitsbereich. Sie wählen Elemente in der Komponente aus, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
 
 
 ## <a name="work-with-an-existing-view"></a>Verwenden einer vorhandenen Ansicht
@@ -55,7 +53,7 @@ Die Optionen sind in der folgenden Tabelle beschrieben:
 | Option | BESCHREIBUNG |
 |:--|:--|
 | Aktualisieren   | Aktualisiert die Ansicht mit den neuesten Daten. | 
-| Analytics | Öffnet das [Advanced Analytics-Portal](../../log-analytics/log-analytics-log-search-portals.md) zum Analysieren von Daten mit Protokollabfragen. |
+| Analytics | Öffnet das [Advanced Analytics-Portal](../../azure-monitor/log-query/portals.md) zum Analysieren von Daten mit Protokollabfragen. |
 | Edit (Bearbeiten)       | Öffnet die Ansicht im Ansicht-Designer zum Bearbeiten der zugehörigen Inhalte und der Konfiguration.  |
 | Klonen      | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
 | Datumsbereich | Legt einen Datums- und Uhrzeitfilterbereich für die in der Ansicht enthaltenen Daten fest. Dieser Datumsbereich wird vor allen Datumsbereichen angewendet, die in Abfragen in der Ansicht festgelegt werden.  |
@@ -72,9 +70,9 @@ Sie können eine neue Ansicht im Ansicht-Designer erstellen, indem Sie im Menü 
 Mithilfe des Ansicht-Designers können Sie neue Ansichten erstellen oder vorhandene Ansichten bearbeiten. 
 
 Der Ansicht-Designer verfügt über drei Bereiche: 
-* **Entwurf:** enthält die benutzerdefinierte Ansicht, die Sie erstellen oder bearbeiten. 
-* **Steuerung:** enthält die Kacheln und Komponenten, die Sie im Bereich **Entwurf** hinzufügen. 
-* **Eigenschaften:** zeigt die Eigenschaften der Kacheln oder ausgewählten Komponenten an.
+* **Entwurf**: Enthält die benutzerdefinierte Ansicht, die Sie erstellen oder bearbeiten. 
+* **Steuerung**: Enthält die Kacheln und Komponenten, die Sie im Bereich **Entwurf** hinzufügen. 
+* **Eigenschaften**: Zeigt die Eigenschaften der Kacheln oder ausgewählten Komponenten an.
 
 ![Ansicht-Designer](media/view-designer/view-designer-screenshot.png)
 

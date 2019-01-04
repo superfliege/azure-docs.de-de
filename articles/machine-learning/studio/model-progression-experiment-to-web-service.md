@@ -4,9 +4,8 @@ description: Ein Überblick darüber, wie Ihr Azure Machine Learning-Modell sich
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 1254f41d4961956acc8f7abc7d5490fedbb8c5d0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310098"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253866"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Entwicklung eines Machine Learning Studio-Modells von einem Experiment zu einem betriebsbereiten Webdienst
 Azure Machine Learning Studio bietet einen interaktiven Arbeitsbereich, in dem Sie ein ***Experiment*** entwickeln, ausführen, testen und durchlaufen können, das ein Vorhersageanalysemodell darstellt. Es gibt eine Vielzahl von Modulen, die Folgendes ermöglichen:
@@ -95,7 +94,7 @@ Das hängt davon ab, was Sie aktualisieren möchten:
 
 Wenn Sie nicht das Modell ändern möchten, sondern nur die Art und Weise, wie Daten vom Webdienst verarbeitet werden, können Sie das Vorhersageexperiment bearbeiten, erneut auf **Deploy Web Service** klicken und dann **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** auswählen. Der Webdienst wird beendet, das aktualisierte Vorhersageexperiment bereitgestellt und der Webdienst neu gestartet.
 
-Beispiel: Angenommen, das Vorhersageexperiment gibt die gesamte Zeile der Eingabedaten mit dem vorhergesagten Ergebnis zurück. Sie beschließen, dass der Webdienst nur das Ergebnis zurückgeben soll. Sie können im Vorhersageexperiment direkt vor dem Ausgabeport ein Modul **Project Columns** hinzufügen, um andere Spalten außer dem Ergebnis auszuschließen. Wenn Sie auf **Deploy Web Service** klicken und erneut **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** wählen, wird der Webdienst aktualisiert.
+Hier ist ein Beispiel angegeben: Angenommen, das Vorhersageexperiment gibt die gesamte Zeile der Eingabedaten mit dem vorhergesagten Ergebnis zurück. Sie beschließen, dass der Webdienst nur das Ergebnis zurückgeben soll. Sie können im Vorhersageexperiment direkt vor dem Ausgabeport ein Modul **Project Columns** hinzufügen, um andere Spalten außer dem Ergebnis auszuschließen. Wenn Sie auf **Deploy Web Service** klicken und erneut **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** wählen, wird der Webdienst aktualisiert.
 
 **Sie möchten das Modell mit neuen Daten neu trainieren**
 
@@ -119,6 +118,6 @@ Weitere Informationen zum Prozess des Entwickelns und Experimentierens finden Si
 
 Beispiele für den gesamten Prozess finden Sie unter:
 
-* [Lernprogramm für maschinelles Lernen: Erstellen Ihres ersten Experiments im Azure Machine Learning Studio](create-experiment.md)
-* [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+* [Machine Learning-Tutorial: Ein erstes Experiment in Azure Machine Learning Studio erstellen](create-experiment.md)
+* [Exemplarische Vorgehensweise: Entwickeln einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 

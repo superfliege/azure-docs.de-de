@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 36516030741678ec66b4211f49ede35cfdb98605
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 9973635593f7a8143ac1f3980b6e09caba44710b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706448"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413607"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -75,6 +75,7 @@ In Visual Studio:
 
     ![Screenshot des Dialogfelds „Tools > Optionen“](media/common/VerbositySetting.PNG)
     
+### <a name="multi-stage-dockerfiles"></a>Mehrstufige Dockerfiles:
 Dieser Fehler tritt möglicherweise auf, wenn Sie versuchen, eine mehrstufige Dockerfile zu verwenden. Die ausführliche Ausgabe sieht dann wie folgt aus:
 
 ```cmd
@@ -91,6 +92,21 @@ Service cannot be started.
 ```
 
 Dies liegt daran, dass AKS-Knoten eine ältere Version von Docker ausführen, die mehrstufige Builds nicht unterstützt. Sie müssen Ihre Dockerfile neu schreiben, um mehrstufige Builds zu vermeiden.
+
+### <a name="re-running-a-service-after-controller-re-creation"></a>Erneutes Ausführen eines Diensts nach der Neuerstellung des Controllers
+Dieser Fehler wird eventuell angezeigt, wenn Sie versuchen, einen Dienst erneut auszuführen, nachdem Sie den Azure Dev Spaces-Controller entfernt und dann neu erstellt haben, der diesem Cluster zugeordnet ist. Die ausführliche Ausgabe sieht dann wie folgt aus:
+
+```cmd
+Installing Helm chart...
+Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+```
+
+Das liegt daran, dass durch das Entfernen des Dev Spaces-Controllers keine zuvor von diesem Controller installierten Dienste entfernt werden. Die Neuerstellung des Controllers und der anschließende Versuch, die Dienste mithilfe des neuen Controllers auszuführen, schlagen fehl, da die alten Diensten immer noch vorhanden sind.
+
+Um dies zu beheben, verwenden Sie den Befehl `kubectl delete`, um die alten Diensten manuell aus Ihrem Cluster zu entfernen, und führen Sie dann Dev Spaces erneut aus, um die neuen Dienste zu installieren.
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Bei der DNS-Namensauflösung tritt für eine öffentliche URL, die einem Dev Spaces-Dienst zugeordnet ist, ein Fehler auf.
 
@@ -121,6 +137,18 @@ Der Fehler weist darauf hin, dass „azds.exe“ nicht in der PATH-Umgebungsvari
 ### <a name="try"></a>Versuchen Sie Folgendes:
 
 Starten Sie Visual Studio Code über eine Eingabeaufforderung, wo die PATH-Umgebungsvariable ordnungsgemäß eingerichtet ist.
+
+## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Fehler „Erforderliche Tools zum Erstellen und Debuggen von ‚Projektname‘ sind veraltet.“
+
+Dieser Fehler wird in Visual Studio Code angezeigt, wenn Sie über eine neuere Version der Visual Studio Code-Erweiterung für Azure Dev Spaces verfügen, aber eine ältere Version der Azure Dev Spaces-Befehlszeilenschnittstelle (CLI).
+
+### <a name="try"></a>Testen
+
+Laden Sie die neueste Version der Azure Dev Spaces-CLI herunter, und installieren Sie sie:
+
+* [Windows](http://aka.ms/get-azds-windows)
+* [Mac](http://aka.ms/get-azds-mac)
+* [Linux](https://aka.ms/get-azds-linux)
 
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Fehler: „azds“ wird nicht als interner oder externer Befehl, ausführbares Programm oder Batchdatei erkannt.
  
@@ -156,8 +184,8 @@ Der Containerport ist nicht verfügbar. Dieses Problem kann auftreten, weil:
 ### <a name="try"></a>Versuchen Sie Folgendes:
 1. Wenn der Container gerade erstellt/bereitgestellt wird, können Sie 2 bis 3 Sekunden warten und dann erneut versuchen, auf den Dienst zuzugreifen. 
 1. Überprüfen Sie Ihre Portkonfiguration. Die angegebenen Portnummern müssen in den folgenden Ressourcen **identisch** sein:
-    * **Dockerfile:** Festgelegt durch die `EXPOSE`-Anweisung.
-    * **[Helm-Diagramm](https://docs.helm.sh):** Festgelegt durch die `externalPort`- und `internalPort`-Werte für einen Dienst (oft in einer `values.yml`-Datei),
+    * **Dockerfile:** Angegeben durch die `EXPOSE`-Anweisung.
+    * **[Helm-Chart](https://docs.helm.sh):** Angegeben durch die `externalPort`- und `internalPort`-Werte für einen Dienst (oft in einer `values.yml`-Datei).
     * Alle Ports, die im Anwendungscode geöffnet werden (z. B. in Node.js): `var server = app.listen(80, function () {...}`
 
 
@@ -171,7 +199,7 @@ Führen Sie `azds up` aus dem Stammverzeichnis des auszuführenden Codes aus, un
 1. Ändern Sie das aktuelle Verzeichnis in den Stammordner, der Dienstcode enthält. 
 1. Wenn im Codeordner keine _azds.yaml_-Datei vorhanden ist, führen Sie `azds prep` aus, um Docker-, Kubernetes- und Azure Dev Spaces-Objekte zu generieren.
 
-## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Fehler: „Das Pipe-Programm ‚azds‘ wurde unerwartet mit Code 126 beendet.“
+## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Fehler „Das Pipe-Programm ‚azds‘ wurde unerwartet mit Code 126 beendet.“
 Das Starten des VS Code-Debuggers kann in einigen Fällen zu diesem Fehler führen.
 
 ### <a name="try"></a>Versuchen Sie Folgendes:
@@ -195,6 +223,15 @@ Auf Ihrem Entwicklungscomputer ist die VS Code-Erweiterung für Azure Dev Spaces
 
 ### <a name="try"></a>Versuchen Sie Folgendes:
 Installieren Sie die [VS Code-Erweiterung für Azure Dev Spaces](get-started-netcore.md).
+
+## <a name="debugging-error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Debugfehler „Ungültiger ‚cwd‘-Wert ‚/src‘. Das System kann die angegebene Datei nicht finden.“ oder „launch: program ‚/src/[Pfad zur Projektbinärdatei]‘ ist nicht vorhanden“.
+Bei der Ausführung des VS Code-Debuggers wird der folgende Fehler gemeldet: `Invalid 'cwd' value '/src'. The system cannot find the file specified.` und/oder `launch: program '/src/[path to project executable]' does not exist`.
+
+### <a name="reason"></a>Grund
+Standardmäßig verwendet die VS Code-Erweiterung `src` als Arbeitsverzeichnis für das Projekt im Container. Wenn Sie Ihre `Dockerfile` aktualisiert haben, um ein anderes Arbeitsverzeichnis anzugeben, kann dieser Fehler angezeigt werden.
+
+### <a name="try"></a>Versuchen Sie Folgendes:
+Aktualisieren Sie die Datei `launch.json` unter dem Unterverzeichnis `.vscode` Ihres Projektordners. Ändern Sie die `configurations->cwd`-Anweisung so, dass sie auf das selbe Verzeichnis verweist, wie die `WORKDIR`-Variable, die in der `Dockerfile` Ihres Projekts definiert ist. Möglicherweise müssen Sie auch die `configurations->program`-Anweisung aktualisieren.
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Der Typ- oder Namespacename „MyLibrary“ konnte nicht gefunden werden
 
@@ -236,7 +273,7 @@ Ein Neustart der Agent-Knoten in Ihrem Cluster behebt in der Regel dieses Proble
 ### <a name="reason"></a>Grund
 Wenn Sie Dev Spaces auf einem Namespace in Ihrem AKS-Cluster aktivieren, wird ein zusätzlicher Container namens _mindaro-proxy_ in jedem Pod installiert, der in diesem Namespace ausgeführt wird. Dieser Container fängt Aufrufe an die Dienste im Pod ab. Dies ist eine wesentliche Entwicklungsfunktion des Dev Spaces-Teams.
 
-Leider kann dieser Vorgang bestimmte Dienste beeinträchtigen, die in diesen Pods ausgeführt werden. Insbesondere betrifft dies Pods, in denen Redis Cache ausgeführt wird. Es treten Verbindungsfehler und Fehler bei der Kommunikation zwischen Primär- und Sekundärgerät auf.
+Leider kann dieser Vorgang bestimmte Dienste beeinträchtigen, die in diesen Pods ausgeführt werden. Insbesondere betrifft dies Pods, in denen Azure Cache for Redis ausgeführt wird. Es treten Verbindungsfehler und Fehler bei der Kommunikation zwischen Primär- und Sekundärgerät auf.
 
 ### <a name="try"></a>Versuchen Sie Folgendes:
 Sie können die betroffenen Pods in einen Namespace im Cluster verschieben, für das Dev Spaces _nicht_ aktiviert ist, während Sie den Rest Ihrer Anwendung weiterhin in einem Namespace ausführen, für das Dev Spaces aktiviert ist. Dev Spaces installiert den Container _mindaro-proxy_ nicht in Namespaces, für die Dev Spaces nicht aktiviert ist.

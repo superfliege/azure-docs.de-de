@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Bereitstellen eines Machine Learning-Modells mithilfe von SQL Server auf einer Azure-VM | Microsoft-Dokumentation
-description: Advanced Analytics Process and Technology in Aktion
+title: Erstellen und Bereitstellen eines Modells auf einem virtuellen SQL Server-Computer – Team Data Science-Prozess
+description: Erstellen Sie ein Machine Learning-Modell unter Verwendung von SQL Server, und stellen Sie es auf einem virtuellen Azure-Computer mit einem öffentlich verfügbaren Dataset bereit.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: cad56d2e8de071feb9a02e0cfc6bcc884eebe91a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445462"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141406"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -46,15 +46,15 @@ Der eindeutige Schlüssel für die Zusammenführung von „trip\_data“ und „
 ## <a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 Wir werden drei Vorhersageprobleme formulieren, die auf *tip\_amount* basieren, nämlich:
 
-1. Binäre Klassifizierung: Vorhersagen, ob ein Trinkgeld bezahlt wurde. Ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
-2. Multi-Klassen-Klassifizierung: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
+1. Binäre Klassifizierung: Vorhersagen, ob Trinkgeld für eine Fahrt bezahlt wurde. Das bedeutet: *tip\_amount* größer 0 ist ein Positivbeispiel, *tip\_amount* gleich 0 ist ein Negativbeispiel.
+2. Multiklassenklassifizierung: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. Regressionsaufgabe: Vorhersage des Trinkgeldbetrags für die Fahrt.  
+3. Regressionsaufgabe: Vorhersage des Trinkgeldbetrags für eine Fahrt.  
 
 ## <a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
 Wie Sie unter [Planen Ihrer Umgebung](plan-your-environment.md) sehen können, gibt es mehrere Möglichkeiten für die Arbeit mit dem DataSet "NYC Taxi Trips" in Azure:
@@ -79,7 +79,7 @@ So richten Sie Ihre Azure Data Science-Umgebung ein:
    > 
    > 
 
-Basierend auf der Größe des Datasets, dem Speicherort der Datenquelle und der ausgewählten Azure-Zielumgebung ähnelt dieses Szenario dem [Szenario \#5: Große Datasets in einem Ziel-SQL-Server mit lokalen Dateien in Azure VM](plan-sample-scenarios.md#largelocaltodb).
+Basierend auf der Größe des Datasets, dem Speicherort der Datenquelle und der ausgewählten Azure-Zielumgebung ähnelt dieses Szenario dem [Szenario \#5: Großes Dataset in lokalen Dateien, Ziel-SQL Server in Azure VM](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
 Sie können zum Abrufen des Datasets [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) von seinem öffentlichen Speicherort eine der Methoden, die unter [Verschieben von Daten in und aus Azure Blob Storage](move-azure-blob.md) beschrieben werden, zum Kopieren der Daten auf den neuen virtuellen Computer verwenden.
@@ -87,7 +87,7 @@ Sie können zum Abrufen des Datasets [NYC Taxi Trips](http://www.andresmh.com/ny
 So kopieren Sie die Daten mit AzCopy:
 
 1. Melden Sie sich an dem virtuellen Computer an.
-2. Erstellen Sie ein neues Verzeichnis auf dem VM-Datenträger (Hinweis: Verwenden Sie nicht den temporären Datenträger, der als Datenträger auf dem virtuellen Computer enthalten ist).
+2. Erstellen Sie ein neues Verzeichnis auf dem VM-Datenträger. (Hinweis: Verwenden Sie nicht den temporären Datenträger, der als Datenträger auf dem virtuellen Computer enthalten ist.)
 3. Führen Sie in einem Eingabeaufforderungsfenster die folgende AzCopy-Befehlszeile aus, und ersetzen Sie „<path_to_data_folder>“ durch den in (2) erstellten Datenordner:
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -137,7 +137,7 @@ Die Leistung beim Laden/Übertragen großer Datenmengen in eine SQL-Datenbank un
 12. Die "NYC Taxi Trips"-Daten werden in zwei separate Tabellen geladen. Zur Verbesserung der Join-Vorgänge empfiehlt es sich dringend, die Tabellen zu indizieren. Das Beispielskript **create\_partitioned\_index.sql** erstellt partitionierte Indizes für den zusammengesetzten Verknüpfungsschlüssel **medallion, hack\_license und pickup\_datetime**.
 
 ## <a name="dbexplore"></a>Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server
-In diesem Abschnitt durchsuchen wir Daten und generieren Funktionen durch Ausführen von SQL-Abfragen direkt in **SQL Server Management Studio**. Wir verwenden dazu die zuvor erstellte SQL Server-Datenbank. Das Beispielskript **sample\_queries.sql** ist im Ordner **Sample Scripts** enthalten. Ändern Sie das Skript zum Ändern des Datenbanknamens, wenn er vom Standardwert abweicht: **TaxiNYC**.
+In diesem Abschnitt durchsuchen wir Daten und generieren Funktionen durch Ausführen von SQL-Abfragen direkt in **SQL Server Management Studio**. Wir verwenden dazu die zuvor erstellte SQL Server-Datenbank. Das Beispielskript **sample\_queries.sql** ist im Ordner **Sample Scripts** enthalten. Ändern Sie das Skript, um den Datenbanknamen zu ändern, falls er nicht dem Standardwert entspricht: **TaxiNYC**.
 
 In dieser Übung führen Sie die folgenden Aktionen durch:
 
@@ -163,7 +163,7 @@ Für eine schnelle Überprüfung der Anzahl von Zeilen und Spalten in den Tabell
     -- Report number of columns in table nyctaxi_trip
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
-#### <a name="exploration-trip-distribution-by-medallion"></a>Untersuchung: Verteilung der Fahrten nach "medallion"
+#### <a name="exploration-trip-distribution-by-medallion"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“
 In diesem Beispiel wird die Taxinummer ("medallion") mit mehr als 100 Fahrten innerhalb eines bestimmten Zeitraums ermittelt. Die Abfrage profitiert vom Zugriff auf die partitionierte Tabelle, da sie vom Partitionsschema **pickup\_datetime** abhängig ist. Abfragen an das vollständige DataSet nutzen ebenfalls die partitionierte Tabelle und/oder den Indexscan.
 
     SELECT medallion, COUNT(*)
@@ -172,14 +172,14 @@ In diesem Beispiel wird die Taxinummer ("medallion") mit mehr als 100 Fahrten i
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Durchsuchen: Verteilung der Fahrten nach "medallion" und "hack_license"
+#### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“ und „hack_license“
     SELECT medallion, hack_license, COUNT(*)
     FROM nyctaxi_fare
     WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Bewertung der Datenqualität: Überprüfen der Einträge auf falsche Werte für "longitude" und/oder "latitude"
+#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Bewertung der Datenqualität: Überprüfen der Einträge auf falsche Werte für „longitude“ und/oder „latitude“
 In diesem Beispiel wird untersucht, ob die Felder "longitude" und/oder "latitude" entweder einen ungültigen Wert enthalten (die Gradzahl sollte zwischen –90 und 90 liegen) oder als Koordinaten (0,0) aufweisen.
 
     SELECT COUNT(*) FROM nyctaxi_trip
@@ -191,7 +191,7 @@ In diesem Beispiel wird untersucht, ob die Felder "longitude" und/oder "latitude
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Durchsuchen: Vergleich von Fahrten mit und ohne Trinkgeld
+#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Durchsuchen: Vergleich der Verteilung von Fahrten mit und ohne Trinkgeld
 Dieses Beispiel ermittelt die Anzahl von Fahrten mit und ohne Trinkgeld in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird). Diese Verteilung spiegelt die binäre Bezeichnerverteilung wider, die später für die Modellierung der binären Klassifizierung verwendet wird.
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -215,7 +215,7 @@ In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmte
     WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tip_class
 
-#### <a name="exploration-compute-and-compare-trip-distance"></a>Durchsuchen: Berechnen und Vergleichen der Fahrtlängen
+#### <a name="exploration-compute-and-compare-trip-distance"></a>Durchsuchen: Berechnen und Vergleichen der Fahrtentfernungen
 In diesem Beispiel werden die Werte von „longitude“ und „latitude“ für Start- und Zielort in SQL-Geografiepunkte konvertiert. Anschließend werden anhand dieser SQL-Geografiepunkte die Fahrtentfernung berechnet und eine zufällige Stichprobe der Ergebnisse für den Vergleich ausgegeben. Im Beispiel werden die Ergebnisse anhand der zuvor durchgeführten Bewertung der Datenqualität auf gültige Koordinaten begrenzt.
 
     SELECT
@@ -328,14 +328,14 @@ Jetzt können die erfassten Daten durchsucht werden. Wir beginnen mit einem Blic
 
     df1['trip_distance'].describe()
 
-#### <a name="visualization-box-plot-example"></a>Visualisierung: Boxplot-Beispiel
+#### <a name="visualization-box-plot-example"></a>Visualisierung: Boxplotbeispiel
 Als Nächstes zeigen wir das Boxplot-Diagramm für die Fahrtentfernungen an, um die Quantile zu visualisieren.
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
 ![Grafik 1][1]
 
-#### <a name="visualization-distribution-plot-example"></a>Visualisierung: Verteilungsdiagramm-Beispiel
+#### <a name="visualization-distribution-plot-example"></a>Visualisierung: Verteilungsdiagrammbeispiel
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
     ax2 = fig.add_subplot(1,2,2)
@@ -362,7 +362,7 @@ Die oben genannte Klassifizierungsverteilung können wir wie unten gezeigt in ei
 
 ![Grafik 4][4]
 
-#### <a name="visualization-scatterplot-example"></a>Visualisierung: Punktdiagramm-Beispiel
+#### <a name="visualization-scatterplot-example"></a>Visualisierung: Punktdiagrammbeispiel
 Wir zeigen ein Punktdiagramm zwischen **trip\_time\_in\_secs** und **trip\_distance**, um zu ermitteln, ob es Korrelationen gibt.
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
@@ -416,7 +416,7 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der 1 % Stichp
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Durchsuchen: Verteilung der Fahrten nach "medallion"
+#### <a name="exploration-trip-distribution-per-medallion"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“
     query = '''
         SELECT medallion,count(*) AS c
         FROM nyctaxi_one_percent
@@ -514,7 +514,7 @@ In diesem Beispiel wird ein kontinuierliches numerisches Feld in vordefinierte K
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Funktionsverarbeitung: Extrahieren von Ortsfunktionen aus den Dezimalwerten für "latitude" und "longitude"
+#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Funktionsverarbeitung: Extrahieren von Ortsfunktionen aus den Dezimalwerten für „latitude“ und „longitude“
 In diesem Beispiel wird die dezimale Darstellung eines Felds "latitude" und/oder "longitude" in mehrere Regionsfelder unterschiedlicher Granularität aufgeteilt, wie z. B. Land, Stadt, Stadtteil, Straße usw. Beachten Sie, dass die neuen Geocode-Felder keinen tatsächlichen Positionen zugeordnet sind. Informationen über die Zuordnung von Geocode-Positionen finden Sie in den [REST-Diensten für Bing Maps](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
@@ -546,9 +546,9 @@ In diesem Beispiel wird die dezimale Darstellung eines Felds "latitude" und/oder
 
 Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine Learning](https://studio.azureml.net)fortfahren. Die Daten sind für die oben beschriebenen Vorhersageprobleme vorbereitet:
 
-1. Binäre Klassifizierung: Zur Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wird.
-2. Multi-Klassen-Klassifizierung: Zur Vorhersage des Trinkgeldbereichs gemäß den zuvor definierten Klassen.
-3. Regressionsaufgabe: Vorhersage des Trinkgeldbetrags für die Fahrt.  
+1. Binäre Klassifizierung: Vorhersage, ob Trinkgeld für eine Fahrt bezahlt wurde.
+2. Multiklassenklassifizierung: Vorhersage des Trinkgeldbereichs gemäß den zuvor definierten Klassen.
+3. Regressionsaufgabe: Vorhersage des Trinkgeldbetrags für eine Fahrt.  
 
 ## <a name="mlmodel"></a>Erstellen von Modellen in Azure Machine Learning
 Melden Sie sich zum Starten der Modellierungsübung im Azure Machine Learning-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md).

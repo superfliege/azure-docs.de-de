@@ -1,9 +1,9 @@
 ---
-title: VHD-Bereitstellungsvorlage (JSON) für Microsoft Azure | Microsoft-Dokumentation
-description: Hier finden Sie eine Beispielvorlage für die VHD-Bereitstellung für das Azure-Portal.
+title: Azure-VHD-Bereitstellungsvorlage | Microsoft-Dokumentation
+description: Listet die Azure Resource Manager-Vorlage auf, die erforderlich ist, um einen neuen virtuellen Computers aus einer virtuellen Festplatte des Benutzers bereitzustellen.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: pbutlerm
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -11,22 +11,21 @@ ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
-ms.topic: reference
-ms.date: 09/25/2018
+ms.topic: article
+ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 283eb1a7ce9bfcf7f57c7a2770b7b51bddc0be23
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5b338f0b829a337bccf41af5ab9449a6b39b665d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639173"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186955"
 ---
-# <a name="vhd-deployment-template-json"></a>VHD-Bereitstellungsvorlage (JSON) 
+# <a name="virtual-hard-disk-deployment-template"></a>Bereitstellungsvorlage für eine virtuelle Festplatte 
 
-Der folgende JSON-Code stellt eine Bereitstellungsvorlage dar, mit der Sie ein VM-Image in Microsoft Azure bereitstellen können.  Zum Erstellen eines VM-Angebots im Azure Marketplace ist eine VM-Ressource erforderlich. 
+Über die folgende Azure Resource Manager-Vorlage wird eine neue Instanz eines virtuellen Azure-Computers definiert, der aus einer lokalen virtuellen Festplatte (VHD) erstellt wurde.  Diese Vorlage wird in dem Artikel [Bereitstellen einer Azure-VM aus einer Benutzer-VHD](./cpp-deploy-vm-user-image.md) verwendet. 
 
-
-``` json
+```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
@@ -47,7 +46,7 @@ Der folgende JSON-Code stellt eine Bereitstellungsvorlage dar, mit der Sie ein V
         },
         "adminPassword": {
             "type": "securestring",
-            "defaultValue": ""
+            "defaultValue": "Password@123"
         },
         "osType": {
             "type": "string",
@@ -77,7 +76,25 @@ Der folgende JSON-Code stellt eine Bereitstellungsvorlage dar, mit der Sie ein V
         },
         "nicName": {
             "type": "string"
-        },        
+        },
+        "vaultName": {
+            "type": "string",            
+            "metadata": {
+                "description": "Name of the KeyVault"
+            }
+        },
+        "vaultResourceGroup": {
+            "type": "string",           
+            "metadata": {
+                "description": "Resource Group of the KeyVault"
+            }
+        },
+        "certificateUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "Url of the certificate with version in KeyVault e.g. https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7"
+            }
+        },
         "vhdUrl": {
             "type": "string",
             "metadata": {
@@ -177,7 +194,35 @@ Der folgende JSON-Code stellt eine Bereitstellungsvorlage dar, mit der Sie ein V
                     "osProfile": {
                         "computername": "[parameters('vmName')]",
                         "adminUsername": "[parameters('adminUsername')]",
-                        "adminPassword": "[parameters('adminPassword')]"                       
+                        "adminPassword": "[parameters('adminPassword')]",
+                        "secrets": [
+                            {
+                                "sourceVault": {
+                                    "id": "[resourceId(parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+                                },
+                                "vaultCertificates": [
+                                    {
+                                        "certificateUrl": "[parameters('certificateUrl')]",
+                                        "certificateStore": "My"
+                                    }
+                                ]
+                            }
+                        ],
+                        "windowsConfiguration": {
+                            "provisionVMAgent": "true",
+                            "winRM": {
+                                "listeners": [
+                                    {
+                                        "protocol": "http"
+                                    },
+                                    {
+                                        "protocol": "https",
+                                        "certificateUrl": "[parameters('certificateUrl')]"
+                                    }
+                                ]
+                            },
+                            "enableAutomaticUpdates": "true"
+                        }
                     },
                     "storageProfile": {
                         "osDisk": {
@@ -199,9 +244,17 @@ Der folgende JSON-Code stellt eine Bereitstellungsvorlage dar, mit der Sie ein V
                                 "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
                             }
                         ]
-                    }                
+                    },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('http://', parameters('userStorageAccountName'), '.blob.core.windows.net')]"
+                    }
+                }
+                
                 }
             }
         ]
     }
+
 ```

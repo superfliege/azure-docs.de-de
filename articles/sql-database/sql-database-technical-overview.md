@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 74e963abe5d2798f72bce8212c9f761f8f3297d1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256934"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270007"
 ---
 # <a name="the-azure-sql-database-service"></a>Der Azure SQL-Datenbank-Dienst
 
@@ -60,7 +60,7 @@ Bei SQL-Datenbank ist jede Datenbank isoliert und somit portabel, außerdem besi
 
 SQL-Datenbank bietet ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) sowie das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md).
 
-- Das DTU-basierte Kaufmodell bietet zur Unterstützung einfacher bis komplexer Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen in drei Dienstebenen: Basic, Standard und Premium. Die Computegrößen der einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, denen Sie zusätzliche Speicherressourcen hinzufügen können.
+- Das DTU-basierte Kaufmodell bietet zur Unterstützung von einfachen bis hin zu komplexen Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen auf drei Dienstebenen: Basic, Standard und Premium. Die Computegrößen der einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, denen Sie zusätzliche Speicherressourcen hinzufügen können.
 - Beim V-Kern-basierten Kaufmodell können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen.
 
 Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleinen Einzeldatenbank im Diensttarif „Universell“ erstellen und diesen dann jederzeit manuell oder programmgesteuert in den Tarif „Unternehmenskritisch“ ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
@@ -93,9 +93,9 @@ Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und Pools f
 
 Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
 
-- **Azure Storage:** für die Archivierung großer Mengen von Telemetriedaten zu einem kleinen Preis
-- **Azure Event Hub:** für die Integration von Telemetriedaten von SQL-Datenbank in Ihrer benutzerdefinierte Überwachungslösung oder Hotpipelines
-- **Azure Log Analytics:** Ermöglicht die Verwendung einer integrierten Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung.
+- **Azure Storage**: Ermöglicht die kostengünstige Archivierung großer Mengen von Telemetriedaten.
+- **Azure Event Hub**: Ermöglicht die Integration von Telemetriedaten von SQL-Datenbank in Ihre benutzerdefinierte Überwachungslösung oder in Hotpipelines.
+- **Azure Log Analytics**: Ermöglicht die Verwendung einer integrierten Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung.
 
     ![Architektur](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -109,10 +109,10 @@ Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rech
 - **[Point-in-Time-Wiederherstellungen:](sql-database-recovery-using-backups.md)**
 
   SQL-Datenbank unterstützt die Wiederherstellung zu einem beliebigen Zeitpunkt innerhalb der Beibehaltungsdauer für automatische Sicherungen.
-- **[Aktive Georeplikation:](sql-database-geo-replication-overview.md)**
+- **[Aktive Georeplikation:](sql-database-active-geo-replication.md)**
 
   Mit SQL-Datenbank können Sie bis zu vier lesbare sekundäre Datenbanken konfigurieren – entweder im gleichen Azure-Rechenzentrum oder in weltweit verteilten Azure-Rechenzentren.  Wenn Sie beispielsweise über eine SaaS-Anwendung mit einer Katalogdatenbank verfügen, die eine große Anzahl gleichzeitiger schreibgeschützter Transaktionen umfasst, können Sie mithilfe der aktiven Georeplikation eine globale Skalierung für das Lesen aktivieren und so Engpässe in der primären Datenbank beseitigen, die durch hohe Workloads aufgrund der Lesevorgänge verursacht werden.
-- **[Failovergruppen:](sql-database-geo-replication-overview.md)**
+- **[Autofailover-Gruppen](sql-database-auto-failover-group.md)**:
 
   SQL-Datenbank bietet eine hohe Verfügbarkeit und einen Lastenausgleich auf globaler Ebene, einschließlich transparenter Georeplikation und des Failovers großer Mengen von Datenbanken und Pools für elastische Datenbanken. Failovergruppen und die aktive Georeplikation erlauben das Erstellen von weltweit verteilten SaaS-Anwendungen mit minimalem Verwaltungsaufwand, bei dem alle komplexen Aufgaben für Überwachung, Weiterleitung und Failoverorchestrierung von SQL-Datenbank erledigt werden.
 - **[Zonenredundante Datenbanken:](sql-database-high-availability.md)**
@@ -135,7 +135,7 @@ Bereits heute verlassen sich viele unserer Partner, die [mehrinstanzenfähige Sa
 
 Es gibt zwei Aspekte der automatischen Optimierung, die [in SQL-Datenbank verfügbar](sql-database-automatic-tuning.md) sind:
 
-- **Automatische Indexverwaltung**: Diese Funktion identifiziert Indizes, die der Datenbank hinzugefügt oder von dieser entfernt werden sollten.
+- **Automatische Indexverwaltung**: Diese Funktion identifiziert Indizes, die der Datenbank hinzugefügt, und solche, die entfernt werden sollten.
 - **Automatische Plankorrektur**: Diese Funktion erkennt problematische Pläne und korrigiert Leistungsprobleme mit SQL-Plänen (in Kürze, in SQL Server 2017 bereits verfügbar).
 
 ### <a name="adaptive-query-processing"></a>Adaptive Abfrageverarbeitung

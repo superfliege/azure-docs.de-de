@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496308"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015754"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
@@ -27,9 +27,9 @@ Erfahren Sie, wie Sie Skriptaktionen verwenden, um HDInsight zusätzliche Azure-
 
 Diesem Skript werden die folgenden Parameter übergeben:
 
-* __Azure-Speicherkontoname__: der Name des Speicherkontos, das dem HDInsight-Cluster hinzugefügt werden soll. Nach dem Ausführen des Skripts kann HDInsight Daten lesen und schreiben, die in diesem Speicherkonto gespeichert werden.
+* __Azure-Speicherkontoname__: Der Name des Speicherkontos, das dem HDInsight-Cluster hinzugefügt werden soll. Nach dem Ausführen des Skripts kann HDInsight Daten lesen und schreiben, die in diesem Speicherkonto gespeichert werden.
 
-* __Azure-Speicherkontoschlüssel__: ein Schlüssel, der Zugriff auf das Speicherkonto gewährt.
+* __Azure-Speicherkontoschlüssel__: Ein Schlüssel, der Zugriff auf das Speicherkonto gewährt.
 
 * __-p__ (optional): Bei Angabe wird der Schlüssel nicht verschlüsselt und wird in der core-site.xml-Datei als Nur-Text gespeichert.
 
@@ -95,7 +95,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Legen Sie `$PASSWORD` auf das Kennwort des Anmeldekontos (Administrator) für den Cluster fest. Legen Sie `$CLUSTERNAME` auf den Namen des HDInsight-Clusters fest. Legen Sie `$STORAGEACCOUNTNAME` auf den Namen des Speicherkontos fest.
 >
-> Dieses Beispiel verwendet [curl (http://curl.haxx.se/)](http://curl.haxx.se/)) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/)) zum Abrufen und Analysieren von JSON-Daten.
+> Dieses Beispiel verwendet [curl (https://curl.haxx.se/)](https://curl.haxx.se/)) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/)) zum Abrufen und Analysieren von JSON-Daten.
 
 Ersetzen Sie bei Verwendung dieses Befehls __CLUSTERNAME__ durch den Namen des HDInsight-Clusters. Ersetzen Sie __PASSWORD__ mit dem HTTP-Anmeldekennwort für den Cluster. Ersetzen Sie __STORAGEACCOUNT__ mit dem Namen des Speicherkontos, das mit der Skriptaktion hinzugefügt wurde. Die Ausgabe dieses Befehls entspricht in etwa dem folgenden Text:
 

@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie eine Bewertung verfeinern, indem Sie f
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634301"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255260"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -25,6 +25,9 @@ Dieser Artikel beschreibt, wie Sie eine Gruppe verfeinern, indem Sie die Abhäng
 ## <a name="prepare-for-dependency-visualization"></a>Vorbereiten für die Visualisierung der Abhängigkeiten
 Azure Migrate nutzt für die Visualisierung von Computerabhängigkeiten die Dienstzuordnungslösung in Log Analytics.
 
+> [!NOTE]
+> Die Funktion zur Visualisierung von Abhängigkeiten ist in Azure Government nicht verfügbar.
+
 ### <a name="associate-a-log-analytics-workspace"></a>Zuordnen eines Log Analytics-Arbeitsbereichs
 Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zuordnen, um die Abhängigkeitsvisualisierung nutzen zu können. Sie können einen Arbeitsbereich nur in dem Abonnement erstellen oder anfügen, in dem das Migrationsprojekt erstellt wird.
 
@@ -32,8 +35,9 @@ Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analyti
 
     ![Zuordnen von Log Analytics-Arbeitsbereichen](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in demselben Abonnement erstellt wie das Migrationsprojekt und in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/), in der auch das Migrationsprojekt erstellt wurde.
-- Die Option **Use existing** (Vorhandene verwenden) listet nur diejenigen Arbeitsbereiche auf, die in Regionen erstellt wurden, in denen eine Dienstzuordnung verfügbar ist. Wenn Sie über einen Arbeitsbereich in einer Region ohne Dienstzuordnung verfügen, wird dieser in der Dropdown-Liste nicht angezeigt.
+- Beim Zuordnen eines Arbeitsbereichs erhalten Sie die Möglichkeit, einen neuen Arbeitsbereich zu erstellen oder einen vorhandenen anzufügen:
+    - Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
+    - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Leserzugriff auf den Arbeitsbereich haben.
 
 > [!NOTE]
 > Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.
@@ -63,7 +67,6 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 2. Installieren Sie das Bundle mit dem Argument „--install“.
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
-
 
 ### <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 1. Doppelklicken Sie zum Installieren des Abhängigkeits-Agents auf einem Windows-Computer auf die Setupdatei, und befolgen Sie die Schritte im Assistenten.

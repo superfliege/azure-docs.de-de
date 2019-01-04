@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Sicherheit für den Zugriff und die Verwaltung von Azure Time Series Insights | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Sie die Sicherheit und Berechtigungen als Verwaltungszugriffsrichtlinien und Datenzugriffsrichtlinien konfigurieren, um Azure Time Series Insights zu schützen.
+title: Azure Time Series Insights Preview-Sicherheit – Konfigurieren der Sicherheit für Zugriff auf und Verwaltung von Azure Time Series Insights Preview | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie Sie die Sicherheit und Berechtigungen als Verwaltungszugriffsrichtlinien und Datenzugriffsrichtlinien konfigurieren, um Azure Time Series Insights Preview zu schützen.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -9,134 +9,130 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/15/2017
-ms.openlocfilehash: c9bddf8e20524433b31793e277efd954a5d1320e
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.date: 11/26/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7f8eb66feecd58b766b3414b1bbc6bd4e27bf4f7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423373"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275464"
 ---
-# <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Gewähren von Datenzugriff für eine Time Series Insights-Umgebung über das Azure-Portal
+# <a name="grant-data-access-to-an-environment"></a>Gewähren von Datenzugriff für eine Umgebung
 
-In diesem Artikel werden die beiden Arten von Zugriffsrichtlinien für Azure Time Series Insights thematisiert.
-
-## <a name="video"></a>Video: 
-
-### <a name="in-this-video-we-cover-creating-and-managing-access-policies-within-time-series-insights-br"></a>In diesem Video erfahren Sie, wie Sie Zugriffsrichtlinien für Time Series Insights erstellen und verwalten. </br>
-
-> [!VIDEO https://www.youtube.com/embed/5zTIdyHMJW8]
-
-Time Series Insights-Umgebungen verfügen über zwei unabhängige Typen von Zugriffsrichtlinien:
-
-* Verwaltungszugriffsrichtlinien
-* Datenzugriffsrichtlinien
-
-Beide Richtlinien gewähren Azure Active Directory-Prinzipalen (Benutzern und Apps) diverse Berechtigungen für eine bestimmte Umgebung. Die Prinzipale (Benutzer und Apps) müssen dem Active Directory (bezeichnet als „Azure-Mandant“) angehören, das dem Abonnement mit der Umgebung zugeordnet ist.
-
-Verwaltungszugriffsrichtlinien gewähren Berechtigungen im Zusammenhang mit der Konfiguration der Umgebung. Hierzu zählt beispielsweise Folgendes:
-*   Erstellung und Löschung der Umgebung, Ereignisquellen und Verweisdatasets sowie
-*   Verwaltung der Datenzugriffsrichtlinien.
-
-Datenzugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datenabfragen, für die Bearbeitung von Verweisdaten in der Umgebung und für die Freigabe gespeicherter Abfragen und Perspektiven, die der Umgebung zugeordnet sind.
-
-Die beiden Arten von Richtlinien ermöglichen eine klare Trennung zwischen dem Zugriff auf die Umgebungsverwaltung und dem Zugriff auf die Daten in der Umgebung. Dadurch können Sie eine Umgebung beispielsweise so einrichten, dass der Besitzer/Ersteller der Umgebung keinen Datenzugriff hat. Zudem können Sie Benutzern und Diensten, die über die Berechtigung zum Lesen von Daten aus der Umgebung verfügen, den Zugriff auf die Konfiguration der Umgebung verweigern.
+In diesem Artikel werden die beiden Arten von Zugriffsrichtlinien für Azure Time Series Insights Preview thematisiert.
 
 ## <a name="grant-data-access"></a>Gewähren des Datenzugriffs
-Führen Sie die folgenden Schritte aus, um einem Benutzerprinzipal Datenzugriff zu gewähren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+Führen Sie die folgenden Schritte aus, um einem Benutzerprinzipal Datenzugriff zu gewähren.
 
-2. Suchen Sie Ihre Time Series Insights-Umgebung. Geben Sie **Time Series** im **Suchfeld** ein. Wählen Sie **Time Series Environment** (Time Series-Umgebung) in den Suchergebnissen aus. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Suchen Sie Ihre Time Series Insights-Umgebung. Geben Sie in das **Suchfeld** `Time Series` ein. Wählen Sie **Time Series Environment** (Time Series-Umgebung) in den Suchergebnissen aus.
+1. Wählen Sie Ihre Time Series Insights-Umgebung in der Liste aus.
+1. Wählen Sie **Datenzugriffsrichtlinien** und dann **+ Hinzufügen** aus.
 
-3. Wählen Sie Ihre Time Series Insights-Umgebung in der Liste aus.
-   
-4. Wählen Sie **Datenzugriffsrichtlinien** und dann **+ Hinzufügen** aus.
-  ![Verwalten der Time Series Insights-Quelle – Umgebung](media/data-access/getstarted-grant-data-access1.png)
+    ![Data-access-one][1]
 
-5. Wählen Sie **Benutzer auswählen** aus.  Suchen Sie den Benutzernamen oder die E-Mail-Adresse des Benutzers, den Sie hinzufügen möchten. Klicken Sie auf **Auswählen**, um die Auswahl zu bestätigen. 
+1. Wählen Sie **Benutzer auswählen** aus. Suchen Sie den Benutzernamen oder die E-Mail-Adresse des Benutzers, den Sie hinzufügen möchten. Klicken Sie auf **Auswählen**, um die Auswahl zu bestätigen.
 
-   ![Verwalten der Time Series Insights-Quelle – Hinzufügen](media/data-access/getstarted-grant-data-access2.png)
+    ![Data-access-two][2]
 
-6. Wählen Sie **Rolle auswählen** aus. Wählen Sie die geeignete Zugriffsrolle für den Benutzer aus:
-   - Wählen Sie **Mitwirkender** aus, wenn Sie dem Benutzer das Ändern von Verweisdaten und das Freigeben gespeicherter Abfragen und Perspektiven für andere Benutzer der Umgebung ermöglichen möchten. 
-   - Wählen Sie andernfalls **Leser** aus, um dem Benutzer das Abfragen von Daten und das Speichern persönlicher (nicht freigegebener) Abfragen in der Umgebung zu ermöglichen.
-
-   Wählen Sie **OK** aus, um die Rollenauswahl zu bestätigen.
-
-   ![Verwalten der Time Series Insights-Quelle – Benutzer auswählen](media/data-access/getstarted-grant-data-access3.png)
-
-8. Wählen Sie auf der Seite **Benutzerrolle auswählen** die Option **OK** aus.
-
-   ![Verwalten der Time Series Insights-Quelle – Rolle auswählen](media/data-access/getstarted-grant-data-access4.png)
-
-9. Auf der Seite **Datenzugriffsrichtlinien** sind die Benutzer und die Rollen der einzelnen Benutzer aufgeführt.
-
-   ![Verwalten der Time Series Insights-Quelle – Ergebnisse](media/data-access/getstarted-grant-data-access5.png)
-
-## <a name="provide-guest-access-to-a-user-from-another-aad-tenant"></a>Bereitstellen eines Gastzugriffs über einen anderen AAD-Mandanten für einen Benutzer
-
-Der Begriff „Gast“ bezeichnet keine Verwaltungsrolle, sondern ein Konto, das von einem Mandanten zu einem anderem Mandanten eingeladen wurde. Wenn das Gastkonto in das Verzeichnis des Mandanten eingeladen wird, kann diesem die gleiche Zugriffssteuerung zugewiesen werden wie jedem anderen Konto, um entweder einer TSI-Umgebung über das Blatt „Access Control (IAM)“ Verwaltungszugriff zu gewähren, oder um in der Umgebung über das Blatt „Datenzugriffsrichtlinien“ Zugriff auf die Daten zu gewähren. Weitere Informationen zum Gastzugriff für den AAD-Mandanten finden Sie in diesem [Dokument](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
-
-Führen Sie die folgenden Schritte aus, um einem AAD-Benutzer über einen anderen Mandanten Zugriff auf die Time Series Insights-Umgebung zu gewähren:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-2. Suchen Sie Ihre Time Series Insights-Umgebung. Geben Sie **Time Series** im **Suchfeld** ein. Wählen Sie **Time Series Environment** (Time Series-Umgebung) in den Suchergebnissen aus.
-
-3. Wählen Sie Ihre Time Series Insights-Umgebung in der Liste aus.
-
-4. Klicken Sie erst auf **Datenzugriffsrichtlinien** und dann auf +**Einladen**.
-
-    ![Verwalten der Time Series Insights-Quelle: Benutzer einladen](media/data-access/getstarted-grant-data-access6.png)
-
-5. Geben Sie die E-Mail-Adresse des Benutzers an, den Sie einladen möchten. Diese E-Mail sollte mit Azure AD verknüpft sein. Sie können der Einladung eine persönliche Nachricht hinzufügen.
-
-    ![Verwalten der Time Series Insights-Quelle – Benutzer auswählen](media/data-access/getstarted-grant-data-access7.png)
-
-6. Dann sollte auf dem Bildschirm eine Bestätigungsmeldung angezeigt werden.
-
-    ![Verwalten der Time Series Insights-Quelle: Benutzer bestätigen](media/data-access/getstarted-grant-data-access8.png)
-
-7. Wählen Sie **Benutzer auswählen** aus. Suchen Sie nach der E-Mail-Adresse des Gastbenutzers, den Sie zuvor eingeladen haben, um diesen hinzuzufügen. Klicken Sie auf **Auswählen**, um die Auswahl zu bestätigen.
-  
-    ![Verwalten der Time Series Insights-Quelle: Benutzer bestätigen](media/data-access/getstarted-grant-data-access9.png)
-
-8. Wählen Sie **Rolle auswählen** aus. Wählen Sie eine geeignete Zugriffsrolle für den Gastbenutzer aus:
+1. Wählen Sie **Rolle auswählen** aus. Wählen Sie die geeignete Zugriffsrolle für den Benutzer aus:
 
     * Wählen Sie **Mitwirkender** aus, wenn Sie dem Benutzer das Ändern von Verweisdaten und das Freigeben gespeicherter Abfragen und Perspektiven für andere Benutzer der Umgebung erlauben möchten.
 
     * Wählen Sie andernfalls **Leser** aus, um dem Benutzer das Abfragen von Daten und das Speichern persönlicher (nicht freigegebener) Abfragen in der Umgebung zu ermöglichen.
 
-    Wählen Sie **OK** aus, um die Rollenauswahl zu bestätigen.
+   Wählen Sie **OK** aus, um die Rollenauswahl zu bestätigen.
 
-    ![Verwalten der Time Series Insights-Quelle – Rolle auswählen](media/data-access/getstarted-grant-data-access10.png)
+    ![Data-access-three][3]
 
-9. Wählen Sie auf der Seite **Benutzerrolle auswählen** die Option **OK** aus.
+1. Wählen Sie auf der Seite **Benutzerrolle auswählen** die Option **OK** aus.
 
-10. Auf der Seite **Datenzugriffsrichtlinien** werden dann die Gastbenutzer mit denen ihnen zugewiesenen Rollen aufgeführt.
+    ![Data-access-four][4]
 
-    ![Verwalten der Time Series Insights-Quelle: Rolle bestätigen](media/data-access/getstarted-grant-data-access11.png)
+1. Vergewissern Sie sich, dass auf der Seite **Datenzugriffsrichtlinien** die Benutzer und die Rollen der einzelnen Benutzer aufgeführt werden.
 
-11. Anschließend muss der Gastbenutzer einige Schritte ausführen, um auf die Umgebung zuzugreifen, die sich in dem Azure-Mandanten befindet, zu dem Sie ihn zuvor eingeladen haben. Zunächst müssen sie die Einladung annehmen. Diese wird an die E-Mail-Adresse gesendet, die Sie in Schritt 5 angegeben haben. Der Benutzer muss auf „Get Started“ (Erste Schritte) klicken, um die Einladung anzunehmen.
+    ![Data-access-five][5]
 
-    ![Verwalten der Time Series Insights-Quelle: Benutzer einladen](media/data-access/getstarted-grant-data-access12.png)
+## <a name="provide-guest-access-to-a-user-from-another-azure-active-directory-tenant"></a>Bereitstellen eines Gastzugriffs über einen anderen Azure Active Directory-Mandanten für einen Benutzer
 
-12. Anschließend muss er die Berechtigungen annehmen, die der Organisation des Administrators zugeordnet sind.
+`Guest` ist keine Verwaltungsrolle. Es ist ein Begriff, der ein Konto bezeichnet, das von einem Mandanten zu einem anderem Mandanten eingeladen wird. Nachdem das Gastkonto in das Mandantenverzeichnis eingeladen wurde, kann darauf dieselbe Zugriffssteuerung angewendet werden, wie auf jedes andere Konto. Sie können einer Time Series Insights-Umgebung Verwaltungszugriff gewähren, indem Sie das Blatt „Zugriffssteuerung (IAM)“ verwenden. Oder Sie können den Zugriff auf die Daten in der Umgebung über das Blatt „Datenzugriffsrichtlinien“ gewähren. Weitere Informationen zum Mandantengastzugriff in Azure Active Directory (Azure AD) finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
 
-    ![Verwalten der Time Series Insights-Quelle: Berechtigungen annehmen](media/data-access/getstarted-grant-data-access13.png)
+Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen anderen Mandanten Zugriff auf die Time Series Insights-Umgebung zu gewähren.
 
-13. Wenn sich der Gastbenutzer bei dem E-Mail-Postfach anmeldet, an das Sie die Einladung gesendet haben und dieser die Einladung annimmt, wird er auf insights.azure.com weitergeleitet. Auf dieser Seite muss er auf den Avatar klicken, der neben der E-Mail-Adresse auf der rechten Seite angezeigt wird. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Suchen Sie Ihre Time Series Insights-Umgebung. Geben Sie **Time Series** in das **Suchfeld** ein. Wählen Sie **Time Series Environment** (Time Series-Umgebung) in den Suchergebnissen aus.
+1. Wählen Sie Ihre Time Series Insights-Umgebung in der Liste aus.
+1. Wählen Sie **Datenzugriffsrichtlinien** und dann **+ Einladen** aus.
 
-    ![Verwalten der Time Series Insights-Quelle: Berechtigungen annehmen](media/data-access/getstarted-grant-data-access14.png)
+    ![Data-access-six][6]
 
-14. Anschließend muss der Gastbenutzer Ihren Azure-Mandanten aus dem Dropdownmenü für das Verzeichnis auswählen. Dabei handelt es sich dann um den Mandanten, zu dem Sie ihn eingeladen haben. 
+1. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie einladen möchten. Diese E-Mail-Adresse muss Azure AD zugeordnet sein. Sie können der Einladung eine persönliche Nachricht hinzufügen.
 
-    ![Verwalten der Time Series Insights-Quelle: Berechtigungen annehmen](media/data-access/getstarted-grant-data-access15.png)
+    ![Data-access-seven][7]
 
-15. Wenn der Gastbenutzer schließlich Ihren Mandanten auswählt, wird diesem die Time Series Insights-Umgebung angezeigt, zu der Sie diesem zuvor Zugriff gewährt haben. Dann sollte er Zugriff auf alle Funktionen haben, die der Rolle zugeordnet sind, die Sie in Schritt 8 ausgewählt haben.
+1. Suchen Sie nach der Bestätigungsmeldung, die am Bildschirm angezeigt wird.
+
+    ![Data-access-eight][8]
+
+1. Wählen Sie **Benutzer auswählen** aus. Suchen Sie nach der E-Mail-Adresse des Gastbenutzers, den Sie eingeladen haben, um diesen hinzuzufügen. Klicken Sie auf **Auswählen**, um die Auswahl zu bestätigen.
+
+    ![Data-access-nine][9]
+
+1. Wählen Sie **Rolle auswählen** aus. Wählen Sie eine geeignete Zugriffsrolle für den Gastbenutzer aus:
+
+    * Wählen Sie **Mitwirkender** aus, wenn Sie dem Benutzer das Ändern von Verweisdaten und das Freigeben gespeicherter Abfragen und Perspektiven für andere Benutzer der Umgebung erlauben möchten.
+
+    * Wählen Sie andernfalls **Leser** aus, um dem Benutzer das Abfragen von Daten und das Speichern persönlicher (nicht freigegebener) Abfragen in der Umgebung zu ermöglichen.
+
+   Wählen Sie **OK** aus, um die Rollenauswahl zu bestätigen.
+
+    ![Data-access-ten][10]
+
+1. Wählen Sie auf der Seite **Benutzerrolle auswählen** die Option **OK** aus.
+
+1. Vergewissern Sie sich, dass auf der Seite **Datenzugriffsrichtlinien** die Gastbenutzer mit denen ihnen zugewiesenen Rollen aufgeführt werden.
+
+    ![Data-access-eleven][11]
+
+1. Anschließend muss der Gastbenutzer einige Schritte ausführen, um auf die Umgebung zuzugreifen, die sich in dem Azure-Mandanten befindet, zu dem Sie ihn eingeladen haben. Zunächst muss er die Einladung annehmen, die Sie ihm gesendet haben. Diese Einladung wird per E-Mail an die E-Mail-Adresse gesendet, die Sie in Schritt 5 verwendet haben. Der Benutzer wählt **Get Started** (Erste Schritte) aus, um die Einladung anzunehmen.
+
+    ![Data-access-twelve][12]
+
+1. Anschließend muss er die Berechtigungen annehmen, die der Organisation des Administrators zugeordnet sind.
+
+    ![Data-access-thirteen][13]
+
+1. Nachdem sich der Gastbenutzer bei der E-Mail-Adresse angemeldet hat, mit der Sie ihn eingeladen hatten, und dieser die Einladung annimmt, wechselt er zu „insights.azure.com“. Auf dieser Seite wählt er dann den Avatar aus, der neben seiner E-Mail-Adresse in der rechten oberen Ecke des Bildschirms angezeigt wird.
+
+    ![Data-access-fourteen][14]
+
+1. Anschließend muss der Gastbenutzer Ihren Azure-Mandanten aus dem Dropdownmenü für das Verzeichnis auswählen. Dies ist der Mandant, zu dem Sie ihn eingeladen haben.
+
+    ![Data-access-fifteen][15]
+
+Nachdem der Gastbenutzer Ihren Mandanten ausgewählt hat, wird ihm die Time Series Insights-Umgebung angezeigt, zu der Sie ihm Zugriff gewährt haben. Jetzt hat er Zugriff auf alle Funktionen, die der Rolle zugeordnet sind, die Sie ihm in Schritt 8 bereitgestellt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Hinzufügen einer Event Hub-Ereignisquelle zu Ihrer Azure Time Series Insights-Umgebung](time-series-insights-how-to-add-an-event-source-eventhub.md)
-* [Senden von Ereignissen](time-series-insights-send-events.md) an die Ereignisquelle
-* Anzeigen Ihrer Umgebung im [Time Series Insights-Explorer](https://insights.timeseries.azure.com)
+
+* Erfahren Sie, wie Sie Ihrer Time Series Insights-Umgebung [Azure Event Hubs-Ereignisquelle hinzufügen](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+* Senden [von Ereignissen an die Ereignisquelle](./time-series-insights-send-events.md).
+* Anzeigen [Ihrer Umgebung im Times Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
+
+<!-- Images -->
+[1]: media/data-access/data-access-one.png
+[2]: media/data-access/data-access-two.png
+[3]: media/data-access/data-access-three.png
+[4]: media/data-access/data-access-four.png
+[5]: media/data-access/data-access-five.png
+[6]: media/data-access/data-access-six.png
+[7]: media/data-access/data-access-seven.png
+[8]: media/data-access/data-access-eight.png
+[9]: media/data-access/data-access-nine.png
+[10]: media/data-access/data-access-ten.png
+[11]: media/data-access/data-access-eleven.png
+[12]: media/data-access/data-access-twelve.png
+[13]: media/data-access/data-access-thirteen.png
+[14]: media/data-access/data-access-fourteen.png
+[15]: media/data-access/data-access-fifteen.png

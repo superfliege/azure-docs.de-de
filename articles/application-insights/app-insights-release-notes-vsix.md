@@ -96,7 +96,7 @@ ms.locfileid: "53000686"
 ## <a name="version-75-visual-studio-2015"></a>Version 7.5 (Visual Studio 2015)
 
 * Produktionstelemetriedaten für Anforderungen in Diagnosetools
-* Erstellung von Arbeitsaufgaben anhand von „Verwandte Elemente“ im Suchtool
+* Erstellung von Arbeitselementen anhand von „Verwandte Elemente“ im Suchtool
 * Fehlerbehebungen
 
 ## <a name="version-74-visual-studio-2015"></a>Version 7.4 (Visual Studio 2015)

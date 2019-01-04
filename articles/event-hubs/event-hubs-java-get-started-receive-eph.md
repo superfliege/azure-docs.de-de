@@ -1,20 +1,21 @@
 ---
-title: Empfangen von Ereignissen von Azure Event Hubs mithilfe von Java | Microsoft-Dokumentation
-description: Erste Schritte zum Empfangen von Event Hubs mit Java
+title: 'Empfangen von Ereignissen unter Verwendung von Java: Azure Event Hubs | Microsoft-Dokumentation'
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Java-Anwendung, die Ereignisse von Azure Event Hubs empfängt.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 08/26/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: dce7c4067ba6d96bf14f4e3300d951b594afe930
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240631"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081958"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Empfangen von Ereignissen von Azure Event Hubs mithilfe von Java
 
@@ -44,11 +45,11 @@ Um EventProcessorHost verwenden zu können, benötigen Sie ein [Azure Storage-Ko
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an, und klicken Sie auf der linken Seite des Bildschirms auf **+ Ressource erstellen**.
 2. Klicken Sie auf **Storage** und anschließend auf **Speicherkonto**. Geben Sie im Fenster **Speicherkonto erstellen** einen Namen für das Speicherkonto ein. Füllen Sie die restlichen Felder aus, wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Erstellen**.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Speicherkonto erstellen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
 3. Klicken Sie auf das neu erstellte Speicherkonto und anschließend auf **Zugriffsschlüssel**:
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Abrufen von Zugriffsschlüsseln](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
     Kopieren Sie den Wert von „key1“ an einen temporären Speicherort. Sie benötigen ihn später in diesem Tutorial.
 
@@ -277,7 +278,7 @@ Erstellen Sie eine Klasse, die die Schnittstelle „com.microsoft.azure.eventpro
 
 Verwenden Sie Ihre benutzerdefinierte Implementierung des Prüfpunkts-Managers (com.microsoft.azure.eventprocessorhost.ICheckpointManager).
 
-In Ihrer Implementierung können Sie den standardmäßigen Prüfpunktmechanismus außer Kraft setzen und Ihre eigenen Prüfpunkte basierend auf Ihrem eigenen Datenspeicher (SQL Server, CosmosDB, Redis Cache usw.) implementieren. Es wird empfohlen, dass der zum Sichern Ihrer Prüfpunkt-Manager-Implementierung verwendete Speicher für alle EPH-Instanzen zugänglich ist, die Ereignisse für die Consumergruppe verarbeiten.
+In Ihrer Implementierung können Sie den standardmäßigen Prüfpunktmechanismus außer Kraft setzen und Ihre eigenen Prüfpunkte basierend auf Ihrem eigenen Datenspeicher (SQL Server, CosmosDB, Azure-Cache für Redis usw.) implementieren. Es wird empfohlen, dass der zum Sichern Ihrer Prüfpunkt-Manager-Implementierung verwendete Speicher für alle EPH-Instanzen zugänglich ist, die Ereignisse für die Consumergruppe verarbeiten.
 
 Sie können einen beliebigen Datenspeicher verwenden, der in Ihrer Umgebung verfügbar ist.
 

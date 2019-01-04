@@ -5,16 +5,15 @@ services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 84462b98e1006cadf34adecf948efd39ad4f69d6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308123"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313971"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
 
@@ -61,37 +60,37 @@ Führen Sie diese Schritte aus, da SuSE Linux zum Verwalten einer Zertifikatlist
 
       ``# cd /etc/ssl/certs``
 
-3. Überprüfen Sie, ob das Symantec-Zertifikat der Stammzertifizierungsstelle vorhanden ist:
+1. Überprüfen Sie, ob das Symantec-Zertifikat der Stammzertifizierungsstelle vorhanden ist:
 
       ``# ls VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-4. Wurde das Symantec-Zertifikat der Stammzertifizierungsstelle nicht gefunden, führen Sie den folgenden Befehl aus, um die Datei herunterzuladen. Überprüfen Sie, ob Fehler aufgetreten sind, und führen Sie die empfohlenen Maßnahmen für Netzwerkfehler aus.
+2. Wurde das Symantec-Zertifikat der Stammzertifizierungsstelle nicht gefunden, führen Sie den folgenden Befehl aus, um die Datei herunterzuladen. Überprüfen Sie, ob Fehler aufgetreten sind, und führen Sie die empfohlenen Maßnahmen für Netzwerkfehler aus.
 
       ``# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-5. Überprüfen Sie, ob das Baltimore-Zertifikat der Stammzertifizierungsstelle vorhanden ist:
+3. Überprüfen Sie, ob das Baltimore-Zertifikat der Stammzertifizierungsstelle vorhanden ist:
 
       ``# ls Baltimore_CyberTrust_Root.pem``
 
-6. Wurde das Baltimore-Zertifikat der Stammzertifizierungsstelle nicht gefunden, laden Sie das Zertifikat herunter.  
+4. Wurde das Baltimore-Zertifikat der Stammzertifizierungsstelle nicht gefunden, laden Sie das Zertifikat herunter.  
 
     ``# wget http://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
 
-7. Überprüfen Sie, ob das Zertifikat „DigiCert_Global_Root_CA“ vorhanden ist:
+5. Überprüfen Sie, ob das Zertifikat „DigiCert_Global_Root_CA“ vorhanden ist:
 
     ``# ls DigiCert_Global_Root_CA.pem``
 
-8. Wurde „DigiCert_Global_Root_CA“ nicht gefunden, führen Sie die folgenden Befehle aus, um das Zertifikat herunterzuladen:
+6. Wurde „DigiCert_Global_Root_CA“ nicht gefunden, führen Sie die folgenden Befehle aus, um das Zertifikat herunterzuladen:
 
     ``# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt``
 
     ``# openssl x509 -in DigiCertGlobalRootCA.crt -inform der -outform pem -out DigiCert_Global_Root_CA.pem``
 
-9. Führen Sie das Skript für das erneute Ausführen von Hashvorgängen aus, um die Zertifikatantragstellerhashes für die neu heruntergeladenen Zertifikate zu aktualisieren.
+7. Führen Sie das Skript für das erneute Ausführen von Hashvorgängen aus, um die Zertifikatantragstellerhashes für die neu heruntergeladenen Zertifikate zu aktualisieren.
 
     ``# c_rehash``
 
-10. Überprüfen Sie, ob die Antragstellerhashes als Symlinks für die Zertifikate erstellt werden.
+8.  Überprüfen Sie, ob die Antragstellerhashes als Symlinks für die Zertifikate erstellt werden.
 
     - Get-Help
 
@@ -120,11 +119,11 @@ Führen Sie diese Schritte aus, da SuSE Linux zum Verwalten einer Zertifikatlist
       ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
       -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
 
-11. Erstellen Sie eine Kopie der Datei „VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem“ mit dem Dateinamen „b204d74a.0“.
+9.  Erstellen Sie eine Kopie der Datei „VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem“ mit dem Dateinamen „b204d74a.0“.
 
     ``# cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0``
 
-12. Erstellen Sie eine Kopie der Datei „Baltimore_CyberTrust_Root.pem“ mit dem Dateinamen „653b494a.0“.
+10. Erstellen Sie eine Kopie der Datei „Baltimore_CyberTrust_Root.pem“ mit dem Dateinamen „653b494a.0“.
 
     ``# cp Baltimore_CyberTrust_Root.pem 653b494a.0``
 
@@ -185,15 +184,16 @@ Damit die Site Recovery-Replikation funktioniert, ist für die VM die ausgehende
 
 
  - **Lösung**
-  1.    Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von Internet Explorer unter Windows und /etc/environment unter Linux.
-  2.  Wenn nur für ASR Mobility Service ein Proxy festgelegt werden soll, können Sie die Proxydetails in ProxyInfo.conf angeben, die sich hier befinden:</br>
-      - ``/usr/local/InMage/config/`` unter ***Linux***
-      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` unter ***Windows***
-  3.    ProxyInfo.conf sollte die Proxyeinstellungen im folgenden INI-Format aufweisen. </br>
+   1.   Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von Internet Explorer unter Windows und /etc/environment unter Linux.
+   2.  Wenn nur für ASR Mobility Service ein Proxy festgelegt werden soll, können Sie die Proxydetails in ProxyInfo.conf angeben, die sich hier befinden:</br>
+       - ``/usr/local/InMage/config/`` unter ***Linux***
+       - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` unter ***Windows***
+   3.   ProxyInfo.conf sollte die Proxyeinstellungen im folgenden INI-Format aufweisen.</br>
                    *[proxy]*</br>
                    *Address=http://1.2.3.4*</br>
                    *Port=567*</br>
-  4. Der ASR Mobility Service-Agent unterstützt nur ***nicht authentifizierte Proxys***.
+   4. Der ASR Mobility Service-Agent unterstützt nur ***nicht authentifizierte Proxys***.
+ 
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](site-recovery-azure-to-azure-networking-guidance.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) auf eine Positivliste zu setzen.
@@ -204,12 +204,12 @@ Es muss ein neuer Datenträger initialisiert werden, der an die VM angefügt ist
 
 **Fehlercode** | **Mögliche Ursachen** | **Empfehlungen**
 --- | --- | ---
-150039<br></br>**Meldung**: Der Azure-Datenträger (DiskName) (DiskURI) mit der logischen Gerätenummer (LUN) (LUNValue) wurde keinem entsprechenden Datenträger zugeordnet, der vom virtuellen Computer gemeldet wird und denselben LUN-Wert aufweist. | - Es wurde ein neuer Datenträger an den virtuellen Computer angefügt, aber der Datenträger wurde nicht initialisiert.</br></br>- Der Datenträger innerhalb des virtuellen Computers meldet nicht den richtigen LUN-Wert, mit dem der Datenträger an den virtuellen Computer angefügt wurde.| Stellen Sie sicher, dass die Datenträger initialisiert wurden, und wiederholen Sie den Vorgang.</br></br>Für Windows: [Anfügen und Initialisieren eines neuen Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)</br></br>Für Linux: [Initialisieren eines neuen Datenträgers unter Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)
+150039<br></br>**Meldung**: Der Azure-Datenträger (DiskName) (DiskURI) mit der logischen Gerätenummer (LUN) (LUNValue) wurde keinem entsprechenden Datenträger zugeordnet, der vom virtuellen Computer gemeldet wird und denselben LUN-Wert aufweist. | - Es wurde ein neuer Datenträger an den virtuellen Computer angefügt, aber der Datenträger wurde nicht initialisiert.</br></br>- Der Datenträger innerhalb des virtuellen Computers meldet nicht den richtigen LUN-Wert, mit dem der Datenträger an den virtuellen Computer angefügt wurde.| Stellen Sie sicher, dass die Datenträger initialisiert wurden, und wiederholen Sie den Vorgang.</br></br>Windows: [Anfügen und Initialisieren eines neuen Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Linux: [Initialisieren eines neues Datenträgers unter Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 Stellen Sie sicher, dass die Datenträger initialisiert wurden, und wiederholen Sie den Vorgang:
 
-- Für Windows: [Anfügen und Initialisieren eines neuen Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)
+- Windows: [Anfügen und Initialisieren eines neuen Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 - Für Linux: [Hinzufügen eines neuen Datenträgers in Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)
 
 Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
@@ -217,7 +217,7 @@ Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
 
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Azure-VM wird für „Replikation aktivieren“ nicht zur Auswahl angezeigt
 
- **Ursache 1: Ressourcengruppe und der virtuelle Quellcomputer befinden sich jeweils an einem anderen Speicherort.** <br>
+ **Ursache 1:  Ressourcengruppe und der virtuelle Quellcomputer befinden sich jeweils an einem anderen Speicherort.** <br>
 Azure Site Recovery gibt derzeit vor, dass sich die Quellressourcengruppe für die Region und der virtuelle Computer im gleichen Speicherort befinden müssen. Wenn das nicht der Fall ist, können Sie den virtuellen Computer während des Schutzzeitraums nicht finden.
 
 **Ursache 2: Diese Ressourcengruppe ist nicht Teil des ausgewählten Abonnements.** <br>
@@ -234,9 +234,9 @@ Wird der virtuelle Computer, für den Sie die Replikation aktivieren möchten, n
 Sie können das [Skript zum Entfernen veralteter ASR-Konfigurationen](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) verwenden und die veraltete Site Recovery-Konfiguration auf der Azure-VM entfernen. Nach dem Entfernen der veralteten Konfiguration sollte der virtuelle Computer angezeigt werden.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Auswählen des virtuellen Computers zum Schutz nicht möglich 
- **Ursache 1: Auf dem virtuellen Computer ist eine fehlerhafte oder nicht reagierende Erweiterung installiert.** <br>
+ **Ursache 1:  Auf dem virtuellen Computer ist eine fehlerhafte oder nicht reagierende Erweiterung installiert.** <br>
  Wechseln Sie zum virtuellen Computer > Einstellung > Erweiterungen und überprüfen Sie, ob es fehlerhafte Erweiterungen gibt. Deinstallieren Sie die fehlerhafte Erweiterung, und wiederholen Sie den Schutzvorgang für den virtuellen Computer.<br>
- **Ursache 2: [Der Bereitstellungsstatus des virtuellen Computers ist ungültig.](#vms-provisioning-state-is-not-valid-error-code-150019)**
+ **Ursache 2:  [Der Bereitstellungsstatus des virtuellen Computers ist ungültig.](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>Der Bereitstellungsstatus des virtuellen Computers ist ungültig (Fehlercode 150019)
 
@@ -272,7 +272,7 @@ Um die Replikation auf dem virtuellen Computer zu aktivieren, muss der Bereitste
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/Volumeschattenkopie: Dienstfehler (Fehlercode 151025)
 **Fehlercode** | **Mögliche Ursachen** | **Empfehlungen**
 --- | --- | ---
-151025<br></br>**Meldung:** Fehler beim Installieren der Site Recovery-Erweiterung | - Der Dienst „COM+-Systemanwendung“ ist deaktiviert.</br></br>- Der Dienst „Volumeschattenkopie“ ist deaktiviert.| Legen Sie für „COM+-Systemanwendung“ und „Volumeschattenkopie“ den automatischen oder manuellen Startmodus fest.
+151025<br></br>**Meldung**: Fehler beim Installieren der Site Recovery-Erweiterung | - Der Dienst „COM+-Systemanwendung“ ist deaktiviert.</br></br>- Der Dienst „Volumeschattenkopie“ ist deaktiviert.| Legen Sie für „COM+-Systemanwendung“ und „Volumeschattenkopie“ den automatischen oder manuellen Startmodus fest.
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 

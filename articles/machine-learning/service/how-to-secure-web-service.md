@@ -1,5 +1,6 @@
 ---
-title: Sichere Azure Machine Learning-Webdienste mit SSL
+title: Sichern von Webdiensten mit SSL
+titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie einen mit dem Azure Machine Learning-Dienst bereitgestellten Webdienst schützen. Mithilfe von SSL (Secure Sockets Layer) und schlüsselbasierter Authentifizierung können Sie den Zugriff auf Webdienste einschränken und die von Clients übermittelten Daten schützen.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.custom: seodec18
+ms.openlocfilehash: 14350a04326ba22dcc5c8608b6ac6b9180666832
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344483"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101180"
 ---
-# <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Sichere Azure Machine Learning-Webdienste mit SSL
+# <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Verwenden von SSL zum Schützen von Webdiensten mit Azure Machine Learning Service
 
 In diesem Artikel erfahren Sie, wie Sie einen mit dem Azure Machine Learning-Dienst bereitgestellten Webdienst schützen. Mithilfe von SSL (Secure Sockets Layer) und schlüsselbasierter Authentifizierung können Sie den Zugriff auf Webdienste einschränken und die von Clients übermittelten Daten schützen.
 
@@ -118,7 +120,7 @@ Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst ver
 
   Aktualisieren Sie den DNS auf der Registerkarte „Konfiguration“ unter „öffentliche IP-Adresse“ des AKS-Clusters, wie in der Abbildung dargestellt. Sie finden die öffentliche IP-Adresse als einen der Ressourcentypen, die unter der Ressourcengruppe erstellt wurden, die die AKS-Agent-Knoten und weitere Netzwerkressourcen enthält.
 
-  ![Azure Machine Learning-Dienst: Schützen von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)Selbst
+  ![Azure Machine Learning Service: Sichern von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

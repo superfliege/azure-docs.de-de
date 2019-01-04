@@ -3,7 +3,7 @@ title: Transaktionen und Sperrmodi in Azure Service Fabric Reliable Collections 
 description: Transaktionen und Sperren in Azure Service Fabric Reliable State Manager und Reliable Collections.
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
+author: tylermsft
 manager: timlt
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: mcoskun
-ms.openlocfilehash: 79be861a70abb0331d971b00e753691e77642637
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: a7e2bfba736e3b6cee738d5a2b5283f51f60d7c5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207365"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185392"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transaktionen und Sperrmodi in Azure Service Fabric Reliable Collections
 
 ## <a name="transaction"></a>Transaktion
 Eine Transaktion ist eine Folge von Vorgängen, die als einzelne logische Arbeitseinheit ausgeführt werden.
 Eine Transaktion muss die folgenden ACID-Eigenschaften aufweisen. (Siehe https://technet.microsoft.com/library/ms190612).)
-* **Atomarität**: Eine Transaktion muss eine unteilbare Arbeitseinheit sein. Dies bedeutet, dass entweder alle oder keine Datenänderungen ausgeführt werden.
+* **Unteilbarkeit**: Eine Transaktion muss eine unteilbare Arbeitseinheit sein. Dies bedeutet, dass entweder alle oder keine Datenänderungen ausgeführt werden.
 * **Konsistenz**: Nach dem Abschluss der Transaktion müssen alle Daten in einem konsistenten Zustand belassen werden. Alle internen Datenstrukturen müssen am Ende der Transaktion korrekt sein.
-* **Isolation**: Änderungen, die von parallelen Transaktionen durchgeführt werden, müssen von den Änderungen aller anderen parallelen Transaktionen separiert werden. Die Isolationsstufe, die innerhalb einer ITransaction für einen Vorgang verwendet wird, ist durch den IReliableState festgelegt, der den betreffenden Vorgang ausführt.
-* **Dauerhaftigkeit**: Nach dem Abschluss einer Transaktion sind deren Wirkungen dauerhaft im System vorhanden. Die Änderungen bleiben sogar auch bei Systemausfällen erhalten.
+* **Isolation:**: Änderungen, die von parallelen Transaktionen durchgeführt werden, müssen von den Änderungen aller anderen parallelen Transaktionen isoliert werden. Die Isolationsstufe, die innerhalb einer ITransaction für einen Vorgang verwendet wird, ist durch den IReliableState festgelegt, der den betreffenden Vorgang ausführt.
+* **Dauerhaftigkeit**: Nach dem Abschluss einer Transaktion sind deren Auswirkungen dauerhaft im System vorhanden. Die Änderungen bleiben sogar auch bei Systemausfällen erhalten.
 
 ### <a name="isolation-levels"></a>Isolationsgrade
 Isolationsstufen definiert den Grad, zu dem eine Transaktion von Änderungen isoliert werden muss, die von anderen Transaktionen ausgeführt werden.

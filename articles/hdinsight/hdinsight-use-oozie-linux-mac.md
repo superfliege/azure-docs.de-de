@@ -9,35 +9,35 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 4ea8ded6abcdee397511272c539f9be6cdd12c0e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 14b849a46701ab19c76ee175717c3715cc89f411
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685530"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408900"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
+# <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Informationen zum Verwenden von Apache Oozie mit Hadoop auf Azure HDInsight. Oozie ist ein Workflow- und Koordinationssystem zur Verwaltung von Hadoop-Aufträgen. Oozie ist in den Hadoop-Stack integriert und unterstützt die folgenden Aufträge:
+Hier erfahren Sie, wie Sie Apache Oozie mit Apache Hadoop in Azure HDInsight verwenden. Oozie ist ein Workflow- und Koordinationssystem zur Verwaltung von Hadoop-Aufträgen. Oozie ist in den Hadoop-Stack integriert und unterstützt die folgenden Aufträge:
 
-* Apache MapReduce
+* Apache Hadoop MapReduce
 * Apache Pig
 * Apache Hive
 * Apache Sqoop
 
 Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu planen, beispielsweise Java-Programme oder Shellskripts.
 
-> [!NOTE]
-> Eine weitere Option zum Definieren von Workflows mit HDInsight ist die Verwendung von Azure Data Factory. Weitere Informationen zu Data Factory finden Sie unter [Verwenden von Pig und Hive mit Data Factory][azure-data-factory-pig-hive]. Informationen zur Verwendung von Oozie in Clustern mit dem Enterprise-Sicherheitspaket finden Sie unter [Ausführen von Apache Oozie in in die Domäne eingebundenen HDInsight Hadoop-Clustern](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
+> [!NOTE]  
+> Eine weitere Option zum Definieren von Workflows mit HDInsight ist die Verwendung von Azure Data Factory. Weitere Informationen zu Data Factory finden Sie unter [Verwenden von Apache Pig und Apache Hive mit Data Factory][azure-data-factory-pig-hive]. Informationen zur Verwendung von Oozie in Clustern mit dem Enterprise-Sicherheitspaket finden Sie unter [Ausführen von Apache Oozie in in die Domäne eingebundenen HDInsight Hadoop-Clustern](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Ein normaler HDInsight-Cluster**: Siehe [Erste Schritte mit HDInsight unter Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **Ein normaler HDInsight-Cluster.** Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="example-workflow"></a>Beispielworkflow
@@ -54,9 +54,9 @@ Der in diesem Dokument verwendeten Workflows weist zwei Aktionen auf. Aktionen s
 
     Das in diesem Dokument verwendete Hive-Skript zählt die gesamten Besuche jeder Plattform (z.B. Android oder iPhone) und speichert die Werte in einer neuen Hive-Tabelle.
 
-    Weitere Informationen zu Hive finden Sie unter [Verwenden von Hive mit HDInsight][hdinsight-use-hive].
+    Weitere Informationen zu Hive finden Sie unter [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive].
 
-2. Die Sqoop-Aktion exportiert den Inhalt der neuen Hive-Tabelle in eine Tabelle, die in Azure SQL-Datenbank erstellt wurde. Weitere Informationen über Sqoop finden Sie unter [Verwenden von Hadoop Sqoop mit HDInsight][hdinsight-use-sqoop].
+2. Die Sqoop-Aktion exportiert den Inhalt der neuen Hive-Tabelle in eine Tabelle, die in Azure SQL-Datenbank erstellt wurde. Weitere Informationen zu Sqoop finden Sie unter [Verwenden von Apache Sqoop mit HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
 > Informationen zu den unterstützten Oozie-Versionen in HDInsight-Clustern finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen][hdinsight-versions].
@@ -90,7 +90,7 @@ Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben 
 
     Ersetzen Sie `username` durch Ihren SSH-Benutzernamen.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Sie können Fehler ignorieren, die besagen, dass der Benutzer bereits Mitglied der Gruppe `users` ist.
 
 ## <a name="add-a-database-driver"></a>Hinzufügen eines Datenbanktreibers
@@ -101,7 +101,7 @@ Da dieser Workflow Sqoop zum Exportieren von Daten in die SQL-Datenbank verwende
 hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Möglicherweise erhalten Sie eine Meldung, dass die Datei bereits vorhanden ist.
 
 Wenn Ihr Workflow andere Ressourcen wie z.B. eine JAR-Datei mit einer MapReduce-Anwendung verwendet hat, müssen Sie diese Ressourcen ebenfalls hinzufügen.
@@ -127,9 +127,9 @@ Verwenden Sie die folgenden Schritte, um ein Skript der Hive-Abfragesprache (Hiv
 
     Im Skript werden zwei Variablen verwendet:
 
-    * `${hiveTableName}`: enthält den Namen der zu erstellenden Tabelle
+    * `${hiveTableName}`: Enthält den Namen der zu erstellenden Tabelle.
 
-    * `${hiveDataFolder}`: enthält den Speicherort der Datendateien für die Tabelle
+    * `${hiveDataFolder}`: Enthält den Speicherort der Datendateien für die Tabelle.
 
     Die Workflowdefinitionsdatei („workflow.xml“ in diesem Tutorial) übergibt diese Werte zur Laufzeit an das HiveQL-Skript.
 
@@ -210,7 +210,7 @@ Oozie-Workflowdefinitionen sind in der Sprache der Hadoop-Prozessdefinition (hPD
 
     Im Workflow sind zwei Aktionen definiert:
 
-   * `RunHiveScript`: Diese Aktion ist die Startaktion, die das Hive-Skript `useooziewf.hql` ausführt.
+   * `RunHiveScript`: Diese Aktion ist die Startaktion und führt das Hive-Skript `useooziewf.hql` aus.
 
    * `RunSqoopExport`: Diese Aktion exportiert die vom Hive-Skript erstellten Daten mithilfe von Sqoop in die SQL-Datenbank. Diese Aktion wird nur ausgeführt, wenn die Aktion `RunHiveScript` erfolgreich war.
 
@@ -232,7 +232,7 @@ Um eine SQL-Datenbank zu erstellen, befolgen Sie die Schritte im Dokument [Erste
 
 ### <a name="create-the-table"></a>Erstellen der Tabelle
 
-> [!NOTE]
+> [!NOTE]  
 > Es gibt viele Möglichkeiten, zum Erstellen einer Tabelle eine Verbindung mit SQL Database herzustellen. Die folgenden Schritte verwenden [FreeTDS](http://www.freetds.org/) aus dem HDInsight-Cluster.
 
 
@@ -300,7 +300,7 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
     <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Falls der HDInsight-Cluster Azure Storage als Standardspeicher verwendet, beginnt der Inhalt des Elements `<value>` mit `wasb://`. Wenn stattdessen Azure Data Lake Store verwendet wird, beginnt er mit `adl://`.
 
     Speichern Sie den Inhalt des Elements `<value>`. Dieser wird im nächsten Schritt verwendet.
@@ -376,7 +376,7 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
 
    * Ersetzen Sie alle Vorkommen von `wasb://mycontainer@mystorageaccount.blob.core.windows.net` durch den Wert, den Sie zuvor für den Standardspeicher erhalten haben.
 
-     > [!WARNING]
+     > [!WARNING]  
      > Wenn der Pfad ein Pfad des Typs `wasb` ist, müssen Sie den vollständigen Pfad verwenden. Verkürzen Sie ihn nicht bloß auf `wasb:///`.
 
    * Ersetzen Sie `YourName` durch Ihren Anmeldenamen für den HDInsight-Cluster.
@@ -384,7 +384,7 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
 
      Die meisten der Informationen in dieser Datei dienen zum Auffüllen der Werte, die in der Datei „workflow.xml“ oder „ooziewf.hql“ (z.B. `${nameNode}`) verwendet werden.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Der Eintrag `oozie.wf.application.path` definiert, wo die Datei „workflow.xml“ zu finden ist. Diese Datei enthält den Workflow, der von diesem Auftrag ausgeführt wurde.
 
 5. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.
@@ -393,7 +393,7 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
 
 Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten von Oozie-Workflows im Cluster. Der Oozie-Befehl ist eine benutzerfreundliche Schnittstelle, die über die [Oozie-REST-API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html)zur Verfügung steht.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenn Sie den Oozie-Befehl verwenden, müssen Sie den vollqualifizierten Domänennamen (FQDN) des HDInsight-Hauptknotens verwenden. Auf diesen FQDN kann nur innerhalb des Clusters zugegriffen werden. Wenn der Cluster sich in einem virtuellen Azure-Netzwerk befindet, ist der Zugriff von anderen Computern im selben Netzwerk möglich.
 
 
@@ -435,7 +435,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
     oozie job -info <JOBID>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ersetzen Sie `<JOBID>` durch die ID, die im vorherigen Schritt zurückgegeben wurde.
 
     Die Ausgabe sieht in etwa wie der folgende Text aus:
@@ -463,7 +463,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
     oozie job -start JOBID
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ersetzen Sie `<JOBID>` durch die zuvor zurückgegebene ID.
 
     Wenn Sie nach diesem Befehl den Status überprüfen, lautet dieser „Wird ausgeführt“, und Informationen für die Aktionen innerhalb des Auftrags werden zurückgegeben.
@@ -492,21 +492,21 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
         Windows Phone   1791
         (6 rows affected)
 
-Weitere Informationen zum Oozie-Befehl finden Sie unter [Oozie-Befehlszeilentool](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
+Weitere Informationen zum Oozie-Befehl finden Sie unter [Apache Oozie-Befehlszeilentool](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 
 ## <a name="oozie-rest-api"></a>Oozie-REST-API
 
 Mit der Oozie-REST-API können Sie eigene Tools erstellen, die mit Oozie arbeiten. Die folgenden Informationen zur Verwendung der Oozie-REST-API sind HDInsight-spezifisch:
 
-* **URI**: Sie können unter `https://CLUSTERNAME.azurehdinsight.net/oozie` auf die REST-API von außerhalb des Clusters zugreifen.
+* **URI:** Unter `https://CLUSTERNAME.azurehdinsight.net/oozie` können Sie von außerhalb des Clusters auf die REST-API zugreifen.
 
-* **Authentifizierung**: Verwenden Sie die API mit dem HTTP-Clusteradministratorkonto und -kennwort, um sich zu authentifizieren. Beispiel: 
+* **Authentifizierung:** Verwenden Sie die API mit dem HTTP-Clusteradministratorkonto und -kennwort, um sich zu authentifizieren. Beispiel: 
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
     ```
 
-Weitere Informationen zur Verwendung der Oozie-REST-API finden Sie unter [Oozie-Webdienste-API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+Weitere Informationen zur Verwendung der Oozie-REST-API finden Sie unter [Apache Oozie-Webdienste-API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
 ## <a name="oozie-web-ui"></a>Oozie-Webbenutzeroberfläche
 
@@ -540,11 +540,11 @@ Um auf die Oozie-Webbenutzeroberfläche zuzugreifen, gehen Sie folgendermaßen v
 
 6. Auf der Registerkarte **Auftragsinformationen** können Sie die grundlegenden Auftragsinformationen und die einzelnen Aktionen innerhalb des Auftrags anzeigen. Auf den Registerkarten am oberen Rand können Sie die **Auftragsdefinition** und **Auftragskonfiguration** anzeigen, auf das **Auftragsprotokoll** zugreifen oder einen gerichteten azyklischen Graph (Directed Acyclic Graph, DAG) unter **DAG des Auftrags** anzeigen.
 
-   * **Auftragsprotokoll**: Klicken Sie auf die Schaltfläche **Get Logs** (Protokolle abrufen), um alle Protokolle für den Auftrag abzurufen, oder verwenden Sie zum Filtern von Protokollen das Feld **Suchfilter eingeben**.
+   * **Auftragsprotokoll:** Wählen Sie die Schaltfläche **Get Logs** (Protokolle abrufen) aus, um alle Protokolle für den Auftrag abzurufen, oder filtern Sie die Protokolle mithilfe des Felds **Suchfilter eingeben**.
 
        ![Auftragsprotokoll](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
-   * **Auftrags-DAG**: Der DAG ist eine grafische Übersicht über die Datenpfade, die im Workflow gewählt wurden.
+   * **Auftrags-DAG:** Der DAG ist eine grafische Übersicht über die Datenpfade, die im Workflow gewählt wurden.
 
        ![DAG des Auftrags](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
 
@@ -579,11 +579,11 @@ Sie können den Koordinator verwenden, um den Start, das Ende und die Häufigkei
     > [!NOTE]
     > Die `${...}`-Variablen werden zur Laufzeit durch Werte in der Auftragsdefinition ersetzt. Die Variablen heißen wie folgt:
     >
-    > * `${coordFrequency}`: Zeit zwischen ausgeführten Instanzen des Auftrags
-    > * `${coordStart}`: Startzeit des Auftrags
-    > * `${coordEnd}`: Endzeit des Auftrags.
-    > * `${coordTimezone}`: Koordinatoraufträge erfolgen in einer festen Zeitzone ohne Sommerzeit (in der Regel in UTC dargestellt). Diese Zeitzone wird als *Oozie-Verarbeitungszeitzone* bezeichnet.
-    > * `${wfPath}`: Pfad zur Datei „workflow.xml“.
+    > * `${coordFrequency}`: Die Zeit zwischen der Ausführung von Instanzen des Auftrags.
+    > * `${coordStart}`: Die Startzeit des Auftrags.
+    > * `${coordEnd}`: Die Endzeit des Auftrags.
+    > * `${coordTimezone}`: Für Koordinatoraufträge wird eine feste Zeitzone ohne Sommerzeit verwendet (in der Regel in UTC). Diese Zeitzone wird als *Oozie-Verarbeitungszeitzone* bezeichnet.
+    > * `${wfPath}`: Der Pfad der Datei „workflow.xml“.
 
 2. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.
 
@@ -660,7 +660,7 @@ Sie können den Koordinator verwenden, um den Start, das Ende und die Häufigkei
 
     ![Informationen zu Koordinatoraufträgen](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > In dieser Abbildung werden nur erfolgreiche Ausführungen des Auftrags und nicht einzelne Aktionen innerhalb des geplanten Workflows angezeigt. Um die einzelnen Aktionen anzuzeigen, wählen Sie eine der **Aktionseinträge** aus.
 
     ![Aktionsinformationen](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
@@ -679,38 +679,38 @@ Im Folgenden sehen Sie Fehlermeldungen, die auftreten können, und Möglichkeite
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: Cluster kann nicht initialisiert werden.
 
-**Symptome**: Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
+**Symptome:** Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Ursache:** Die in der Datei **job.xml** verwendeten Azure Blob Storage-Adressen enthalten nicht den Namen des Speichercontainers oder des Speicherkontos. Das Format der Blob-Speicheradresse muss `wasb://containername@storageaccountname.blob.core.windows.net` sein.
+**Ursache:** Die in der Datei **job.xml** verwendeten Azure-Blobspeicheradressen enthalten nicht den Namen des Speichercontainers oder des Speicherkontos. Das Format der Blob-Speicheradresse muss `wasb://containername@storageaccountname.blob.core.windows.net` sein.
 
-**Lösung**: Ändern Sie die Blob-Speicheradressen, die vom Auftrag verwendet werden.
+**Lösung:** Ändern Sie die Blobspeicheradressen für den Auftrag.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie darf nicht die Identität von &lt;USER> annehmen.
 
-**Symptome**: Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
+**Symptome:** Der Auftragsstatus ändert sich in **SUSPENDED**. In den Auftragsdetails wird der Status von `RunHiveScript` als **START_MANUAL** angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
-**Ursache**: Die aktuellen Berechtigungseinstellungen lassen nicht zu, dass Oozie die Identität des angegebenen Benutzerkontos annimmt.
+**Ursache:** Die aktuellen Berechtigungseinstellungen lassen nicht zu, dass Oozie die Identität des angegebenen Benutzerkontos annimmt.
 
-**Lösung**: Oozie kann die Identität von Benutzern in der Gruppe **users** annehmen. Verwenden Sie `groups USERNAME` , um die Gruppen anzuzeigen, denen das Benutzerkonto als Mitglied angehört. Wenn der Benutzer nicht Mitglied der Gruppe **users** ist, verwenden Sie den folgenden Befehl, um den Benutzer der Gruppe hinzuzufügen:
+**Lösung:** Oozie kann die Identität von Benutzern in der Gruppe **users** annehmen. Verwenden Sie `groups USERNAME` , um die Gruppen anzuzeigen, denen das Benutzerkonto als Mitglied angehört. Wenn der Benutzer nicht Mitglied der Gruppe **users** ist, verwenden Sie den folgenden Befehl, um den Benutzer der Gruppe hinzuzufügen:
 
     sudo adduser USERNAME users
 
-> [!NOTE]
+> [!NOTE]  
 > Es kann einige Minuten dauern, bis HDInsight erkennt, dass der Benutzer der Gruppe hinzugefügt wurde.
 
 ### <a name="launcher-error-sqoop"></a>Launcher ERROR (Sqoop)
 
-**Symptome**: Der Auftragsstatus ändert sich in **KILLED**. In den Auftragsdetails wird der Status von `RunSqoopExport` als **ERROR** (Fehler) angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
+**Symptome:** Der Auftragsstatus ändert sich in **KILLED**. In den Auftragsdetails wird der Status von `RunSqoopExport` als **ERROR** (Fehler) angezeigt. Wenn Sie die Aktion auswählen, wird die folgende Fehlermeldung angezeigt:
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**Ursache**: Sqoop kann den Datenbanktreiber nicht laden, der für den Zugriff auf die Datenbank erforderlich ist.
+**Ursache:** Sqoop kann den Datenbanktreiber nicht laden, der für den Zugriff auf die Datenbank erforderlich ist.
 
-**Lösung**: Bei Verwendung von Sqoop in einem Oozie-Auftrag müssen Sie den Datenbanktreiber zusammen mit den anderen vom Auftrag verwendeten Ressourcen (z.B. „workflow.xml“) angeben. Verweisen Sie im Abschnitt `<sqoop>...</sqoop>` von „workflow.xml“ auf das Archiv mit dem Datenbanktreiber.
+**Lösung:** Bei Verwendung von Sqoop in einem Oozie-Auftrag müssen Sie den Datenbanktreiber zusammen mit den anderen vom Auftrag verwendeten Ressourcen (beispielsweise die Datei „workflow.xml“) angeben. Verweisen Sie im Abschnitt `<sqoop>...</sqoop>` von „workflow.xml“ auf das Archiv mit dem Datenbanktreiber.
 
 Für den Auftrag in diesem Dokument würden Sie z. B. folgendermaßen die folgenden Schritte ausführen:
 
@@ -730,11 +730,11 @@ Für den Auftrag in diesem Dokument würden Sie z. B. folgendermaßen die folgen
 
 In diesem Lernprogramm haben Sie gelernt, wie ein Oozie-Workflow definiert und ein Oozie-Auftrag ausgeführt wird. Weitere Informationen zum Arbeiten mit HDInsight finden Sie in den folgenden Artikeln:
 
-* [Verwenden des zeitbasierten Oozie-Koordinators mit HDInsight][hdinsight-oozie-coordinator-time]
+* [Verwenden des zeitbasierten Oozie-Koordinators mit Hadoop in HDInsight zum Definieren von Workflows und Koordinieren von Aufträgen][hdinsight-oozie-coordinator-time]
 * [Hochladen von Daten für Hadoop-Aufträge in HDInsight][hdinsight-upload-data]
-* [Verwenden von Sqoop mit Hadoop in HDInsight][hdinsight-use-sqoop]
-* [Verwenden von Hive mit Hadoop in HDInsight][hdinsight-use-hive]
-* [Verwenden von Pig mit Hadoop in HDInsight][hdinsight-use-pig]
+* [Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop][hdinsight-use-sqoop]
+* [Was sind Apache Hive und HiveQL in Azure HDInsight?][hdinsight-use-hive]
+* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight][hdinsight-use-pig]
 * [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
@@ -761,13 +761,13 @@ In diesem Lernprogramm haben Sie gelernt, wie ein Oozie-Workflow definiert und e
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
 [apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
 
-[powershell-download]: http://azure.microsoft.com/downloads/
+[powershell-download]: https://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
 
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [img-workflow-diagram]: ./media/hdinsight-use-oozie/HDI.UseOozie.Workflow.Diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.Preparation.Output1.png
