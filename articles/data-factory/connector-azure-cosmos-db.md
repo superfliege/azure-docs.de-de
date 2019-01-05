@@ -22,7 +22,7 @@ ms.locfileid: "53103794"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Cosmos DB (SQL-API) mithilfe von Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Aktuelle Version](connector-azure-cosmos-db.md)
 
