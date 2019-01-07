@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 3ed38ce75e5ee7c9f05533d64b28171482bfec51
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2dbc2b4e316155e880d3baa900196d5cdd31be72
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725931"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011775"
 ---
 # <a name="liveevent-types-comparison"></a>Vergleich der LiveEvent-Typen
 
@@ -28,7 +28,7 @@ In Azure Media Services gibt es zwei [LiveEvent](https://docs.microsoft.com/rest
 
 In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglichen.
 
-| Feature | LiveEvent „Pass-Through“ | LiveEvent „Standard“ |
+| Feature | LiveEvent „Pass-Through“ | LiveEvent „Standard“ (Basic) |
 | --- | --- | --- |
 | Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |JA |
 | Maximale Videoauflösung für Beitragsfeeds |4K (4096 × 2160 bei 60 Frames/Sekunde) |1080p (1920 x 1088 bei 30 Frames/Sekunde)|
