@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: c25bc5d577096078694e3af0de74debe0f906251
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51827260"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186496"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -38,7 +37,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 2. Geben Sie in der Suchleiste **Dienstzuordnung** ein, und drücken Sie die **EINGABETASTE**.
 3. Wählen Sie auf der Marketplace-Suchergebnisseite **Dienstzuordnung** in der Liste aus.<br><br> ![Lösung Dienstzuordnung aus Azure Marketplace-Suchergebnissen auswählen](./media/service-map/marketplace-search-results.png)<br>
 4. Überprüfen Sie im Übersichtsbereich der **Dienstzuordnung** die Lösungsdetails, und klicken Sie dann auf **Erstellen**, um den Onboarding-Prozess zu Ihrem Log Analytics-Arbeitsbereich einzuleiten.<br><br> ![Integrieren Sie die Lösung Dienstzuordnung](./media/service-map/service-map-onboard.png).
-5. Wählen Sie im Bereich **Lösung konfigurieren** einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen.  Weitere Informationen zum Erstellen eines neuen Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../log-analytics/log-analytics-quick-create-workspace.md). Klicken Sie nach Eingabe der erforderlichen Informationen auf **Erstellen**.  
+5. Wählen Sie im Bereich **Lösung konfigurieren** einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen.  Weitere Informationen zum Erstellen eines neuen Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md). Klicken Sie nach Eingabe der erforderlichen Informationen auf **Erstellen**.  
 
 Während die Informationen überprüft werden und die Lösung bereitgestellt wird, können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
 
@@ -277,7 +276,7 @@ Im Bereich für **Computerupdates** werden Daten aus der Updateverwaltungslösun
 ![Bereich für die Änderungsnachverfolgung auf einem Computer](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
-Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../../log-analytics/log-analytics-queries.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Onboarding in Service Map generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und jeden eindeutigen Prozess generiert. Die Eigenschaften der Datensätze sind in den folgenden Tabellen aufgeführt. Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API (Azure Resource Manager) zugeordnet. Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet. Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. 
 
@@ -504,7 +503,7 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie mehr über [Protokollsuchvorgänge](../../log-analytics/log-analytics-queries.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
+Erfahren Sie mehr über [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
 
 
 ## <a name="troubleshooting"></a>Problembehandlung

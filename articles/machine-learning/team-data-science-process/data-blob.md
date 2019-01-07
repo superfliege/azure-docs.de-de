@@ -1,6 +1,6 @@
 ---
-title: Verarbeiten von Azure-Blobdaten mit erweiterter Analyse | Microsoft Docs
-description: Verarbeiten von Daten in Azure Blob Storage
+title: Verarbeiten von Azure-Blobdaten mit erweiterter Analyse – Team Data Science-Prozess
+description: Erfahren Sie, wie Sie mithilfe der erweiterten Analyse Daten untersuchen und Features aus Daten generieren, die in Azure Blob Storage gespeichert sind.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: ef5a3decec3ddd87bb73d513981bdfe081fadf74
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 36e3512caa8922f8bc1a65f13ea41d6873b51e5e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442377"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140530"
 ---
 # <a name="heading"></a>Verarbeiten von Azure-Blobdaten mit erweiterter Analyse
 In diesem Dokument werden das Durchsuchen von Daten und Generieren von Funktionen aus Daten in Azure Blob Storage beschrieben. 
@@ -130,7 +130,7 @@ Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
-Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt haben, können Sie die Daten (als Stichproben oder über Funktionen) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden. Beachten Sie, dass in Azure Machine Learning Studio ebenfalls weitere Funktionen erstellt werden können. 
+Nachdem Sie die Daten untersucht und die erforderlichen Features erstellt haben, können Sie die Daten (als Stichproben oder Features) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden: Beachten Sie, dass zusätzliche Features auch in Azure Machine Learning Studio erstellt werden können. 
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:
    

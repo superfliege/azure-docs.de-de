@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 00dd74ccd317799ca3afcbe0ed1ca85e19bb3cbe
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: cee04bd3901db7136a877643979832ed8a70cbd8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123875"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076146"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopieren von Daten aus Concur mithilfe von Azure Data Factory (Vorschau)
 
@@ -48,7 +48,7 @@ Folgende Eigenschaften werden für den mit Concur verknüpften Dienst unterstüt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Concur** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Concur** | JA |
 | clientId | Die von der Concur-App-Verwaltung bereitgestellte Client-ID der Anwendung.  | JA |
 | username | Der Benutzername für den Zugriff auf den Concur Service.  | JA |
 | password | Das Kennwort, das dem Benutzernamen entspricht, den Sie im Feld „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
@@ -79,7 +79,13 @@ Folgende Eigenschaften werden für den mit Concur verknüpften Dienst unterstüt
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Concur-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Concur die „type“-Eigenschaft des Datasets auf **ConcurObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Concur die „type“-Eigenschaft des Datasets auf **ConcurObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **ConcurObject**. | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+
 
 **Beispiel**
 
@@ -91,7 +97,8 @@ Legen Sie zum Kopieren von Daten aus Concur die „type“-Eigenschaft des Datas
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -106,8 +113,8 @@ Legen Sie zum Kopieren von Daten aus Concur den Quellentyp in der Kopieraktivit�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ConcurSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Opportunities where Id = xxx "`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **ConcurSource**. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Opportunities where Id = xxx "`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

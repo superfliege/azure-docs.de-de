@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 3450a2ba4a0bf4b1f38806ad4aacf5772c13ed9f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 179d8fc0f17bf43792db6a9b0e15a6f63349f002
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317788"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890941"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps
 
@@ -265,7 +265,7 @@ Sie können für die Arbeit mit URIs (Uniform Resource Identifiers) und das Abru
 
 <a name="manipulation-functions"></a>
 
-## <a name="manipulation-functions-json--xml"></a>Bearbeitungsfunktionen: JSON und XML
+## <a name="manipulation-functions-json--xml"></a>Manipulationsfunktionen: JSON & XML
 
 Für die Arbeit mit JSON-Objekten und XML-Knoten können Sie folgende Bearbeitungsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
@@ -691,7 +691,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | JA | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält | 
 | <*interval*> | JA | Ganze Zahl  | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen | 
-| <*timeUnit*> | JA | Zeichenfolge | Die Zeiteinheit, die mit *interval* verwendet werden soll: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“, „Year“ | 
+| <*timeUnit*> | JA | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year | 
 | <*format*> | Nein  | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 ||||| 
 
@@ -1895,7 +1895,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | Parameter | Erforderlich | Typ | BESCHREIBUNG | 
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | JA | Ganze Zahl  | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen | 
-| <*timeUnit*> | JA | Zeichenfolge | Die Zeiteinheit, die mit *interval* verwendet werden soll: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“, „Year“ | 
+| <*timeUnit*> | JA | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year | 
 | <*format*> | Nein  | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. | 
 ||||| 
 
@@ -1937,7 +1937,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | Parameter | Erforderlich | Typ | BESCHREIBUNG | 
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | JA | Ganze Zahl  | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen | 
-| <*timeUnit*> | JA | Zeichenfolge | Die Zeiteinheit, die mit *interval* verwendet werden soll: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“, „Year“ | 
+| <*timeUnit*> | JA | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year | 
 | <*format*> | Nein  | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. | 
 ||||| 
 
@@ -3294,7 +3294,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | JA | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält | 
 | <*interval*> | JA | Ganze Zahl  | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen | 
-| <*timeUnit*> | JA | Zeichenfolge | Die Zeiteinheit, die mit *interval* verwendet werden soll: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“, „Year“ | 
+| <*timeUnit*> | JA | Zeichenfolge | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year | 
 | <*format*> | Nein  | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. | 
 ||||| 
 
@@ -4026,7 +4026,7 @@ xml('<value>')
 
 In diesem Beispiel wird die XML-Version für diese Zeichenfolge erstellt, die ein JSON-Objekt enthält: 
 
-`xml( '{ \"name\": \"Sophia Owen\" }' )`
+`xml(json('{ \"name\": \"Sophia Owen\" }'))`
 
 Dies ist das zurückgegebene XML-Objekt:  
 
@@ -4049,7 +4049,7 @@ Angenommen, Sie haben dieses JSON-Objekt:
 
 In diesem Beispiel wird das XML-Objekt für eine Zeichenfolge erstellt, die dieses JSON-Objekt enthält:
 
-`xml( '{ \"person\": { \"name\": \"Sophia Owen\", \"city\": \"Seattle\" } }' )`
+`xml(json('{\"person\": {\"name\": \"Sophia Owen\", \"city\": \"Seattle\"}}'))`
 
 Dies ist das zurückgegebene XML-Objekt:  
 

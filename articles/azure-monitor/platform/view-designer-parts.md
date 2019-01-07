@@ -10,22 +10,20 @@ ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: cdf3fda4228eadc2921c8fbc1bc72702461d04e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637735"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193874"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
 
-Weitere Informationen zum Ansicht-Designer finden Sie hier:
+Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 
 * [Ansicht-Designer](view-designer.md): Bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 * [Kachelreferenz](view-designer-tiles.md): Dient als Referenz zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
@@ -143,7 +141,7 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Ring** |**&gt; Mitte** |
 | Text |Der Text, der unter dem Wert innerhalb des Ringdiagramms angezeigt wird. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie als Einzelwert zusammenzufassen.<ul><li>Summe: Addiert die Werte aller Datensätze.</li><li>Prozentsatz: Das Verhältnis der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, von der Gesamtanzahl der Datensätze in der Abfrage.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie als Einzelwert zusammenzufassen.<ul><li>Summe: Addiert die Werte aller Datensätze.</li><li>Prozentsatz: Das Verhältnis der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, zu der Gesamtanzahl der Datensätze in der Abfrage.</li></ul> |
 | Vom Vorgang in der Mitte verwendete Ergebniswerte |Klicken Sie optional auf das Pluszeichen (+), um einen oder mehrere Werte hinzuzufügen. Die Ergebnisse der Abfrage werden auf Datensätze mit den von Ihnen angegebenen Eigenschaftswerten beschränkt. Wenn keine Werte hinzugefügt werden, werden alle Datensätze in die Abfrage aufgenommen. |
 | **Weitere Optionen** |**&gt; Farben** |
 | Farbe 1<br>Farbe 2<br>Farbe 3 |Wählen Sie die Farbe für jeden der im Ring angezeigten Werte aus. |
@@ -182,7 +180,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 | Legende |Der Text, der unter der Legende für die erste Datenreihe angezeigt wird. |
 | Farbe |Die Farbe, die für die Säulen in der Reihe verwendet wird. |
 | Abfragen |Die Abfrage, die für die erste Reihe ausgeführt wird. Die Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Summe: Die Summe der Werte aller Datensätze.</li><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Erstes Beispiel: Der Wert aus dem ersten Intervall im Diagramm.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Summe: Die Summe der Werte aller Datensätze.</li><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Letztes Beispiel: Der Wert aus dem ersten Intervall im Diagramm.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li></ul> |
 | **Liste** | |
 | Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
@@ -238,7 +236,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | **Liniendiagramm** |**&gt; Legende** |
 | Legendentitel |Der Text, der über dem Legendenwert angezeigt wird. |
 | Reihenname |Eigenschaftswert für die Reihe, die für den Wert der Legende verwendet wird. Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
 | **Liniendiagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
@@ -324,7 +322,7 @@ Die Trennlinie für Name und Wert ist ein einstelliges Trennzeichen, um die Text
 Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude 12* auf. Sie können eine Bindestrich (-) als Trennlinie für Name und Wert festlegen und *Ort-Gebäude* als Namen angeben. Durch diesen Ansatz wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* gliedert.
 
 ### <a name="click-through-navigation"></a>Click-through navigation (Navigation per Klick)
-Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage im [Portal für die Protokollsuche](../../log-analytics/log-analytics-log-search-portals.md) geöffnet oder eine andere Ansicht gestartet.
+Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage im [Portal für die Protokollsuche](../../azure-monitor/log-query/portals.md) geöffnet oder eine andere Ansicht gestartet.
 
 In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
 
@@ -363,4 +361,4 @@ In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 | Farbe |Die Farbe, die den Schwellenwert angibt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollsuchvorgänge](../../log-analytics/log-analytics-queries.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.
+* Erfahren Sie mehr über [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.

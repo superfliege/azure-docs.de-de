@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie einen Linux-Masterzielserver für ein Fa
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212368"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833311"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -38,10 +38,10 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Größenrichtlinien für das Erstellen von Masterzielservern
 
 Erstellen Sie das Masterziel gemäß den folgenden Richtlinien zum Festlegen der Größe:
-- **RAM:** 6 GB oder mehr
-- **Größe des Betriebssystemdatenträgers:** 100 GB oder mehr (für die Betriebssysteminstallation)
-- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk:** 1 TB
-- **CPU-Kerne:** mindestens 4 Kerne
+- **RAM**: 6 GB oder mehr
+- **Größe des Betriebssystemdatenträgers**: 100 GB oder mehr (für die Betriebssysteminstallation)
+- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk**: 1 TB
+- **CPU-Kerne**: 4 Kerne oder mehr
 
 Folgende Ubuntu-Kernels werden unterstützt:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: ac1b9dbbb5739dd015c0bda5f1ea82fe26bb0c70
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625945"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184099"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -32,7 +32,7 @@ Azure Resource Health informiert Sie über den aktuellen und den vergangenen Int
 Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab einige Komponenten einrichten:
 
 1. Sie müssen das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`) installieren.
-2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../monitoring-and-diagnostics/monitoring-action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
+2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../azure-monitor/platform/action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
 
 ## <a name="instructions"></a>Anleitung
 1. Melden Sie sich unter Verwendung von PowerShell und Ihres Kontos bei Azure an, und wählen Sie das gewünschte Abonnement aus.
@@ -233,7 +233,7 @@ Wenn Sie bei allen vier Phasen der Integritätsereignisse informiert werden möc
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Anpassen der Resource Health-Warnungen, um Ereignisse vom Typ „Unknown“ (Unbekannt) zu vermeiden
 
-Azure Resource Health führt zur Überwachung Ihrer Ressourcen kontinuierlich Testläufe durch und hält Sie so über die aktuelle Integrität Ihrer Ressourcen auf dem Laufenden. Die relevanten gemeldeten Integritätsstatus lauten wie folgt: „Available“ (Verfügbar), „Unavailable“ (Nicht verfügbar) und „Degraded“ (Heruntergestuft). Wenn der Testlauf und die Azure-Ressource nicht kommunizieren können, wird für die Ressource der Integritätsstatus „Unknown“ gemeldet, und dieser Status wird als Integritätsereignis vom Typ „Active“ (Aktiv) betrachtet.
+Azure Resource Health führt zur Überwachung Ihrer Ressourcen kontinuierlich Testläufe durch und hält Sie so über die aktuelle Integrität Ihrer Ressourcen auf dem Laufenden. Die relevanten gemeldeten Integritätsstatus lauten: „Verfügbar“, „Nicht verfügbar“ und „Heruntergestuft“. Wenn der Testlauf und die Azure-Ressource nicht kommunizieren können, wird für die Ressource der Integritätsstatus „Unknown“ gemeldet, und dieser Status wird als Integritätsereignis vom Typ „Active“ (Aktiv) betrachtet.
 
 Wenn für eine Ressource jedoch „Unknown“ gemeldet wird, besteht die Wahrscheinlichkeit, dass sich ihr Integritätsstatus seit dem letzten korrekten Bericht nicht geändert hat. Wenn Sie Warnungen für Ereignisse vom Typ „Unknown“ vermeiden möchten, können Sie die folgende Logik in die Vorlage aufnehmen:
 
@@ -435,4 +435,4 @@ Erfahren Sie mehr über Resource Health:
 -  [Über Azure Resource Health verfügbare Ressourcentypen und Integritätsüberprüfungen](resource-health-checks-resource-types.md)
 
 Erstellen von Service Health-Warnungen:
--  [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 
+-  [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

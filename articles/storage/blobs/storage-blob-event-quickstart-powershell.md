@@ -1,5 +1,5 @@
 ---
-title: Weiterleiten von Azure Blob Storage-Ereignissen an einen benutzerdefinierten Web-Endpunkt – PowerShell | Microsoft-Dokumentation
+title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – PowerShell | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
 services: storage,event-grid
 author: david-stanford
@@ -8,14 +8,15 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 8482678a9c42fa2d960dee54c9810593cd820553
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec18
+ms.openlocfilehash: c7c8fd487bef0da7da84a23e18a4e999645106b3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731998"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076422"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Web-Endpunkt mit PowerShell
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per PowerShell
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonnieren Sie mithilfe von Azure PowerShell Blob Storage-Ereignisse, lösen ein Ereignis aus und zeigen das Ergebnis an. 
 
@@ -29,7 +30,7 @@ Am Ende sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 
 Dieser Artikel setzt voraus, dass Sie die aktuelle Version von Azure PowerShell verwenden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich mit dem Befehl `Connect-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Authentifizierungsanweisungen auf dem Bildschirm.
 

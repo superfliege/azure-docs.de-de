@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304236"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089700"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen für die Bereitstellung von Logik-Apps
 
@@ -27,11 +27,11 @@ Weitere Informationen zu Resource Manager-Vorlagen finden Sie unter [Erstellen v
 
 Eine Logik-App besteht aus drei grundlegenden Komponenten:
 
-* **Logik-App-Ressource:** Enthält Informationen zu Tarifen, Speicherort und Workflowdefinition.
-* **Workflowdefinition:** Beschreibt die Workflowschritte Ihrer Logik-App und gibt an, wie die Logik-Apps-Engine den Workflow ausführen soll.
+* **Logik-App-Ressource**: Enthält Informationen zu Tarifen, Standort, Workflowdefinition usw.
+* **Workflowdefinition**: Beschreibt die Workflowschritte Ihrer Logik-App und gibt an, wie die Logic Apps-Engine den Workflow ausführen soll.
 Sie können diese Definition im Fenster **Codeansicht** Ihrer Logik-App anzeigen.
 In der Logik-App-Ressource finden Sie diese Definition in der `definition`-Eigenschaft.
-* **Verbindungen:** Bezieht sich auf separate Ressourcen, um Metadaten für alle Connectorverbindungen wie Verbindungszeichenfolgen und Zugriffstoken sicher zu speichern.
+* **Verbindungen**: Bezieht sich auf separate Ressourcen, um Metadaten für alle Connectorverbindungen, wie Verbindungszeichenfolgen und Zugriffstoken, sicher zu speichern.
 In der Logik-App-Ressource verweist Ihre Logik-App auf diese Ressourcen im Abschnitt `parameters`.
 
 Mithilfe eines Tools wie dem [Azure-Ressourcen-Explorer](http://resources.azure.com) können Sie diese Informationen für vorhandene Logik-Apps anzeigen.
@@ -173,7 +173,7 @@ Wenn Sie über ein vorhandenes Ressourcengruppenprojekt verfügen, können Sie I
 
 ## <a name="deploy-a-logic-app-template"></a>Bereitstellen einer Logik-App-Vorlage
 
-Sie können Ihre Vorlage mithilfe beliebiger Tools bereitstellen, wie etwa PowerShell, REST-API, [Azure DevOps Release Management](#team-services) oder die Vorlagenbereitstellung über das Azure-Portal.
+Sie können Ihre Vorlage mithilfe beliebiger Tools bereitstellen, wie etwa PowerShell, REST-API, [Azure DevOps Azure Pipelines](#team-services) oder die Vorlagenbereitstellung über das Azure-Portal.
 Es empfiehlt sich auch, eine [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) zu erstellen, um die Werte für den Parameter zu speichern.
 Erfahren Sie mehr über das [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und PowerShell](../azure-resource-manager/resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
@@ -185,11 +185,11 @@ Um OAuth-Verbindungen zu autorisieren, öffnen Sie die Logik-App im Designer fü
 Ein Beispielskript hierfür finden Sie auf GitHub im Projekt [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) .
 
 <a name="team-services"></a>
-## <a name="azure-devops-release-management"></a>Azure DevOps Release Management
+## <a name="azure-devops-azure-pipelines"></a>Azure DevOps Azure Pipelines
 
-Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist die Verwendung eines Tools wie Azure DevOps Release Management mit einer Bereitstellungsvorlage für Logik-Apps. Azure DevOps enthält eine Aufgabe für die [Bereitstellung von Azure-Ressourcengruppen](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup), die jeder Build- oder Releasepipeline hinzugefügt werden kann. Sie benötigen einen [Dienstprinzipal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), um die Bereitstellung zu autorisieren. Anschließend können Sie die Releasepipeline generieren.
+Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist die Verwendung eines Tools wie Azure Pipelines in Azure DevOps mit einer Bereitstellungsvorlage für Logik-Apps. Azure DevOps enthält eine Aufgabe für die [Bereitstellung von Azure-Ressourcengruppen](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup), die jeder Build- oder Releasepipeline hinzugefügt werden kann. Sie benötigen einen [Dienstprinzipal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), um die Bereitstellung zu autorisieren. Anschließend können Sie die Releasepipeline generieren.
 
-1. Wählen Sie in Release Management **Leer** aus, um eine leere Pipeline zu erstellen.
+1. Wählen Sie in Azure Pipelines **Leer** aus, um eine leere Pipeline zu erstellen.
 
     ![Erstellen einer leeren Pipeline][1]
 

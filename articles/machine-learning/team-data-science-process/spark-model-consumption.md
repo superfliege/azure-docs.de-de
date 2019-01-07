@@ -1,5 +1,5 @@
 ---
-title: Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden | Microsoft-Dokumentation
+title: Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden – Team Data Science-Prozess
 description: Laden und Bewerten von in Azure Blob Storage (WASB) gespeicherten Learning-Modellen mit Python.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 6ffe1dd960b6fd09539d093d8a632efc99452c00
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 543ae7cecf9edcb5997a0bae66e0722d258a4523
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442488"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135304"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
 
@@ -120,7 +120,7 @@ Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Erfassen von Daten und Erstellen eines bereinigten Datenrahmens
 Dieser Abschnitt enthält den Code für eine Reihe erforderlicher Aufgaben zum Erfassen der Daten, die bewertet werden sollen. Lesen Sie eine verknüpfte 0,1 %-Stichprobe der Datei für Taxifahrten und Fahrpreise (gespeichert als TSV-Datei) ein, formatieren und bereinigen Sie die Daten, und erstellen Sie einen bereinigten Datenrahmen.
 
-Die Dateien für Taxifahrten und Fahrpreise wurden basierend auf dem Verfahren verknüpft, das im Thema [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](hive-walkthrough.md) behandelt wird.
+Die Taxifahrten und Fahrpreise wurden basierend auf dem Verfahren verknüpft, das in folgendem Thema beschrieben wird: [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](hive-walkthrough.md).
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -524,7 +524,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Verwenden von Spark-Modellen über eine Weboberfläche
-Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie unter [Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie hier: [Remoteübermittlung von Spark-Aufträgen mithilfe von Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Livy können Sie zur Remoteübermittlung eines Auftrags verwenden, der eine Datei im Batch bewertet, die in einem Azure-Blob gespeichert ist, und dann die Ergebnisse in einen anderen Blob schreibt. Laden Sie zu diesem Zweck das Python-Skript von   
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können zum Kopieren des Skripts in das Clusterblob ein Tool wie **Microsoft Azure Storage-Explorer** oder **AzCopy** verwenden. In unserem Fall haben wir das Skript in ***wasb:///example/python/ConsumeGBNYCReg.py*** hochgeladen.   
@@ -587,5 +587,5 @@ Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie [Azure Logic A
 ![Designer für Logik-Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Wie geht es weiter?
-**Kreuzvalidierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
+**Kreuzvalidierung und Hyperparameter-Sweeping**: Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 

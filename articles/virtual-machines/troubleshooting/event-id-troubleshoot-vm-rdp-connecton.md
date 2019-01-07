@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: b84992f5deea1135692c368900f63773b51453bb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669367"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959681"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID 
 
@@ -37,7 +37,7 @@ Um dieses Problem zu behandeln, überprüfen Sie die Ereignisprotokolle auf der 
 
 ### <a name="create-a-backup-snapshot"></a>Erstellen einer Momentaufnahme für die Sicherung
 
-Wenn Sie eine Momentaufnahme für die Sicherung erstellen möchten, führen Sie die unter [Erstellen einer Momentaufnahme eines Datenträgers](..\windows\snapshot-copy-managed-disk.md) beschriebenen Schritte aus.
+Wenn Sie eine Momentaufnahme für die Sicherung erstellen möchten, führen Sie die unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md) beschriebenen Schritte aus.
 
 ### <a name="connect-to-the-vm-remotely"></a>Herstellen einer Remoteverbindung mit dem virtuellen Computer
 
@@ -54,34 +54,34 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Protokollname:**      System <br />
+**Protokollname**:      System <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *Uhrzeit* <br />
 **Ereignis-ID:**      1058 <br />
 **Aufgabenkategorie:** Keine <br />
-**Stufe:**         Fehler <br />
+**Ebene:**         Error <br />
 **Schlüsselwörter:**      Klassisch <br />
 **Benutzer:**          N/V <br />
 **Computer:**      *Computer* <br />
-**Beschreibung:** Beim Ersetzen des abgelaufenen selbstsignierten Zertifikats, das für die Authentifizierung des RD-Sitzungshostservers bei SSL-Verbindungen verwendet wird, ist beim RD-Sitzungshostserver ein Fehler aufgetreten. Der relevante Statuscode war „Zugriff verweigert“.
+**Beschreibung:** Der RD-Sitzungshostserver konnte das abgelaufene selbstsignierte Zertifikat nicht ersetzen, das für die Authentifizierung des RD-Sitzungshostservers bei SSL-Verbindungen verwendet wird. Der relevante Statuscode war „Zugriff verweigert“.
 
-**Protokollname:**      System <br />
+**Protokollname**:      System <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *Uhrzeit* <br />
 **Ereignis-ID:**      1058 <br />
 **Aufgabenkategorie:** Keine <br />
-**Stufe:**         Fehler <br />
+**Ebene:**         Error <br />
 **Schlüsselwörter:**      Klassisch <br />
 **Benutzer:**          N/V <br />
 **Computer:**      *Computer* <br />
 **Beschreibung:** Der RD-Sitzungshostserver konnte kein neues selbstsigniertes Zertifikat für die Authentifizierung des RD-Sitzungshostservers bei SSL-Verbindungen erstellen, der relevante Statuscode war „Objekt bereits vorhanden“.
 
-**Protokollname:**      System <br />
+**Protokollname**:      System <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *Uhrzeit* <br />
 **Ereignis-ID:**      1057 <br />
 **Aufgabenkategorie:** Keine <br />
-**Stufe:**         Fehler <br />
+**Ebene:**         Error <br />
 **Schlüsselwörter:**      Klassisch <br />
 **Benutzer:**          N/V <br />
 **Computer:**      *Computer* <br />
@@ -94,12 +94,12 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Protokollname:**      System <br />
+**Protokollname**:      System <br />
 **Quelle:**        Schannel <br />
 **Datum:**          — <br />
 **Ereignis-ID:**      36870 <br />
 **Aufgabenkategorie:** Keine <br />
-**Stufe:**         Fehler <br />
+**Ebene:**         Error <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          SYSTEM <br />
 **Computer:**      *Computer* <br />
@@ -216,12 +216,12 @@ Führen Sie in einer CMD-Instanz die folgenden Befehle aus, um zu überprüfen, 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Protokollname:**      System <br />
+**Protokollname**:      System <br />
 **Quelle:**        Schannel <br />
 **Datum:**          — <br />
 **Ereignis-ID:**      36871 <br />
 **Aufgabenkategorie:** Keine <br />
-**Stufe:**         Fehler <br />
+**Ebene:**         Error <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          SYSTEM <br />
 **Computer:**      *Computer* <br />
@@ -246,32 +246,32 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Protokollname:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
+**Protokollname**:      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
 **Datum:**          *Uhrzeit* <br />
 **Ereignis-ID:**      2056 <br />
 **Aufgabenkategorie:** (109) <br />
-**Stufe:**         Fehler <br />
+**Ebene:**         Error <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          NETZWERKDIENST <br />
 **Computer:**      *Computer fqdn* <br />
-**Beschreibung:** Die Beschreibung für Ereignis-ID 2056 aus der Quelle Microsoft-Windows-TerminalServices-SessionBroker konnte nicht gefunden werden. Entweder ist die Komponente, die dieses Ereignis auslöst, auf Ihrem lokalen Computer nicht installiert, oder die Installation ist beschädigt. Sie können die Komponente auf dem lokalen Computer installieren oder reparieren. <br />
+**Beschreibung:** Die Beschreibung für Ereignis-ID 2056 aus der Quelle „Microsoft-Windows-TerminalServices-SessionBroker“ wurde nicht gefunden. Entweder ist die Komponente, die dieses Ereignis auslöst, auf Ihrem lokalen Computer nicht installiert, oder die Installation ist beschädigt. Sie können die Komponente auf dem lokalen Computer installieren oder reparieren. <br />
 Würde das Ereignis von einem anderen Computer stammen, hätten die Anzeigeinformationen zusammen mit dem Ereignis gespeichert werden müssen. <br />
 Das Ereignis beinhaltet die folgenden Informationen: <br />
 NULL <br />
 NULL <br />
 Fehler bei der Anmeldung bei der Datenbank.
 
-**Protokollname:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
+**Protokollname**:      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Quelle:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **Datum:**          *Uhrzeit* <br />
 **Ereignis-ID:**      1296 <br />
 **Aufgabenkategorie:** (104) <br />
-**Stufe:**         Fehler <br />
+**Ebene:**         Error <br />
 **Schlüsselwörter:**       <br />
 **Benutzer:**          NETZWERKDIENST <br />
 **Computer:**      *Computer fqdn* <br />
-**Beschreibung:** Die Beschreibung für Ereignis-ID 1296 aus der Quelle Microsoft-Windows-TerminalServices-SessionBroker-Client konnte nicht gefunden werden. Entweder ist die Komponente, die dieses Ereignis auslöst, auf Ihrem lokalen Computer nicht installiert, oder die Installation ist beschädigt. Sie können die Komponente auf dem lokalen Computer installieren oder reparieren.
+**Beschreibung:** Die Beschreibung für Ereignis-ID 1296 aus der Quelle „Microsoft-Windows-TerminalServices-SessionBroker-Client“ wurde nicht gefunden. Entweder ist die Komponente, die dieses Ereignis auslöst, auf Ihrem lokalen Computer nicht installiert, oder die Installation ist beschädigt. Sie können die Komponente auf dem lokalen Computer installieren oder reparieren.
 Würde das Ereignis von einem anderen Computer stammen, hätten die Anzeigeinformationen zusammen mit dem Ereignis gespeichert werden müssen.
 Das Ereignis beinhaltet die folgenden Informationen:  <br />
 *text* <br />

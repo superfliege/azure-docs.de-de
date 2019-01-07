@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Draft mit Azure Container Service und Azure Container Registry
+title: (VERALTET) Verwenden von Draft mit Azure Container Service und Azure Container Registry
 description: Erstellen Sie einen ACS Kubernetes-Cluster und eine Azure Container Registry-Instanz, um Ihre erste Anwendung in Azure mit Draft zu erstellen.
 services: container-service
 author: squillace
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: c635a869506918ab7ee032df349eb307987c1284
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 42bd12b9479cd1b4f57a7f3ae73f3c32061fed65
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432278"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996520"
 ---
-# <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Verwenden von Draft mit Azure Container Service und Azure Container Registry zum Erstellen und Bereitstellen einer Anwendung in Kubernetes
+# <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(VERALTET) Verwenden von Draft mit Azure Container Service und Azure Container Registry zum Erstellen und Bereitstellen einer Anwendung in Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Artikels, in der Azure Kubernetes Service verwendet wird, finden Sie unter [Verwenden von Draft mit Azure Kubernetes Service (AKS)](../../aks/kubernetes-draft.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 [Draft](https://aka.ms/draft) ist ein neues Open-Source-Tool, mit dem containerbasierte Anwendungen auf einfache Weise entwickelt und in Kubernetes-Clustern bereitgestellt werden können, ohne dass umfassende Kenntnisse über Docker und Kubernetes erforderlich sind oder diese installiert werden müssen. Durch Verwendung von Tools wie Draft können Sie und Ihre Teams sich auf die Erstellung der Anwendung mit Kubernetes konzentrieren und der Infrastruktur dabei etwas weniger Beachtung schenken.
 

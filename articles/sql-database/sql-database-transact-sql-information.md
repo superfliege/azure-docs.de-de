@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: fc8336a46f61a7c9ab7c174b5f24d907369f481c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/03/2018
+ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567569"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997682"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank
 
@@ -45,25 +45,37 @@ Die zentralen DDL-Anweisungen sind verfügbar, aber einige DDL-Anweisungen haben
 
 Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Features beziehen, die unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md) beschrieben sind, werden die folgenden Anweisungen und Gruppen von Anweisungen nicht unterstützt. Wenn die zu migrierende Datenbank eine der folgenden Funktionen verwendet, müssen Sie deshalb T-SQL so umstrukturieren, dass diese T-SQL-Funktionen und -Anweisungen beseitigt werden.
 
-- Sortierung von Systemobjekten - Verbindungsbezogen: Endpunktanweisungen. SQL-Datenbank unterstützt keine Windows-Authentifizierung, jedoch die ähnliche Azure Active Directory-Authentifizierung. Einige Authentifizierungstypen erfordern die neueste Version von SSMS. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
-- Plattformübergreifende Datenbankabfragen mit drei oder vier Teilnamen. (Schreibgeschützte datenbankübergreifende Abfragen werden unterstützt, indem [elastische Datenbankabfragen](sql-database-elastic-query-overview.md) verwendet werden.) - Datenbankübergreifende Besitzverkettung, Einstellung `TRUSTWORTHY`  - `EXECUTE AS LOGIN` Verwenden Sie stattdessen „EXECUTE AS USER“.
-- Verschlüsselung wird unterstützt, mit Ausnahme der erweiterbaren Schlüsselverwaltung - Ereignisse: Ereignisse, Ereignisbenachrichtigungen, Abfragebenachrichtigungen - Ablage von Dateien: Syntax im Zusammenhang mit der Ablage von Datenbankdateien, Größe und Datenbankdateien, die automatisch von Microsoft Azure verwaltet werden.
-- Hochverfügbarkeit: Syntax im Zusammenhang mit hoher Verfügbarkeit, die über Ihr Microsoft Azure-Konto verwaltet wird. Dies schließt die Syntax für die Sicherung, Wiederherstellung, für Always On, die Datenbankspiegelung, den Protokollversand und Wiederherstellungsmodi ein.
-- Protokollleser: Syntax, die vom Protokollleser abhängig ist, der nicht in der SQL-Datenbank verfügbar ist: Pushreplikation, Erfassung geänderter Daten. Die SQL-Datenbank kann ein Abonnent eines Pushreplikationsartikels sein.
-- Funktionen: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes` - Hardware: Syntax im Zusammenhang mit hardwarebezogenen Servereinstellungen: Arbeitsspeicher, Arbeitsthreads, CPU-Affinität, Ablaufverfolgungskennzeichen usw. Verwenden Sie stattdessen Diensttarife und Computegrößen.
-- `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` und vierteilige Namen - .NET Framework: CLR -Integration mit SQL Server - Semantische Suche - Serveranmeldeinformationen: Verwenden Sie stattdessen [datenbankweit gültige Anmeldeinformationen](https://msdn.microsoft.com/library/mt270260.aspx).
-- Elemente auf Serverebene: Serverrollen, `sys.login_token`. `GRANT`, `REVOKE` und `DENY` der Berechtigungen auf Serverebene sind nicht verfügbar, obwohl einige durch Berechtigungen auf Datenbankebene ersetzt wurden. Einige nützliche DMVs auf Serverebene verfügen über entsprechende DMVs auf Datenbankebene.
-- `SET REMOTE_PROC_TRANSACTIONS`
-- `SHUTDOWN`
-- `sp_addmessage`
-- `sp_configure` -Optionen und  `RECONFIGURE`. Einige Optionen sind verfügbar mit [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
-- `sp_helpuser`
-- `sp_migrate_user_to_contained`
+- Sortierung von Systemobjekten
+- Verbindungsbezogen: Endpunktanweisungen. SQL-Datenbank unterstützt keine Windows-Authentifizierung, jedoch die ähnliche Azure Active Directory-Authentifizierung. Einige Authentifizierungstypen erfordern die neueste Version von SSMS. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
+- Plattformübergreifende Datenbankabfragen mit drei oder vier Teilnamen. (Schreibgeschützte datenbankübergreifende Abfragen werden durch die Verwendung einer [Abfrage von elastischen Datenbanken](sql-database-elastic-query-overview.md)unterstützt.)
+- Datenbankübergreifende Besitzverkettung, `TRUSTWORTHY`-Einstellung
+- `EXECUTE AS LOGIN` Verwenden Sie stattdessen „EXECUTE AS USER“.
+- Die Verschlüsselung wird mit Ausnahme der erweiterbaren Schlüsselverwaltung unterstützt.
+- Ereignisse: Ereignisse, Ereignisbenachrichtigungen, Abfragebenachrichtigungen
+- Dateiplatzierung: Syntax im Zusammenhang mit der Ablage von Datenbankdateien, Größe und Datenbankdateien, die automatisch von Microsoft Azure verwaltet werden.
+- Hochverfügbarkeit: Syntax im Zusammenhang mit Hochverfügbarkeit, die über Ihr Microsoft Azure-Konto verwaltet wird. Dies schließt die Syntax für die Sicherung, Wiederherstellung, für Always On, die Datenbankspiegelung, den Protokollversand und Wiederherstellungsmodi ein.
+- Protokollleser: Syntax, die vom Protokollleser abhängig ist, der nicht in der SQL-Datenbank-Instanz verfügbar ist: Pushreplikation, Erfassung geänderter Daten. Die SQL-Datenbank kann ein Abonnent eines Pushreplikationsartikels sein.
+- Funktionen: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
+- Hardware: Syntax im Zusammenhang mit hardwarebezogenen Servereinstellungen: Arbeitsspeicher, Worker-Threads, CPU-Affinität, Ablaufverfolgungskennzeichen usw. Verwenden Sie stattdessen Diensttarife und Computegrößen.
+- `KILL STATS JOB`
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` und vierteilige Namen
+- .NET Framework: CLR-Integration in SQL Server
+- Semantische Suche
+- Serveranmeldeinformationen: Verwenden Sie stattdessen [datenbankbezogene Anmeldeinformationen](https://msdn.microsoft.com/library/mt270260.aspx).
+- Elemente auf Serverebene: Serverrollen, `sys.login_token`. `GRANT`, `REVOKE` und `DENY` der Berechtigungen auf Serverebene sind nicht verfügbar, obwohl einige durch Berechtigungen auf Datenbankebene ersetzt wurden. Einige nützliche DMVs auf Serverebene verfügen über entsprechende DMVs auf Datenbankebene.
+- `SET REMOTE_PROC_TRANSACTIONS`
+- `SHUTDOWN`
+- `sp_addmessage`
+- `sp_configure`-Optionen und `RECONFIGURE`. Einige Optionen sind verfügbar mit [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
+- `sp_helpuser`
+- `sp_migrate_user_to_contained`
 - SQL Server-Agent: Syntax, die auf dem SQL Server-Agent oder der MSDB-Datenbank beruht: Warnungen, Operatoren, zentrale Verwaltungsserver. Verwenden Sie stattdessen Skripterstellung, z.B. Azure PowerShell.
 - SQL Server-Überwachung: Verwenden Sie stattdessen die SQL-Datenbank-Überwachung.
-- SQL Server-Ablaufverfolgung - Ablaufverfolgungskennzeichen: Einige Ablaufverfolgungskennzeichen-Elemente wurden in Kompatibilitätsmodi verschoben.
-- Transact-SQL-Debuggen - Trigger: Serverweit gültige oder Anmeldetrigger - `USE` -Anweisung: Zum Ändern des Datenbankkontexts in eine andere Datenbank müssen Sie eine neue Verbindung mit der neuen Datenbank herstellen.
+- SQL Server-Ablaufverfolgung
+- Ablaufverfolgungsflags: Einige Ablaufverfolgungskennzeichen-Elemente wurden in Kompatibilitätsmodi verschoben.
+- Transact-SQL-Debugging
+- Trigger: Auf Server begrenzt oder Anmeldetrigger
+- `USE`-Anweisung: Sie müssen eine neue Verbindung mit der neuen Datenbank herstellen, um den Datenbankkontext in eine andere Datenbank zu ändern.
 
 ## <a name="full-transact-sql-reference"></a>Vollständige Transact-SQL-Referenz
 

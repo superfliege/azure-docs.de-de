@@ -9,16 +9,15 @@ ms.assetid: 106ba99b-b57a-43b8-8866-e02f626c8190
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 461b1f4e72f0a47da4ccb560bfb4cfb7d0f3ccd2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 850ff2cfb02b5a968a40e0cd43b5c65d9d4e3490
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096434"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001721"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Manuelles Konfigurieren von Application Insights für .NET-Anwendungen
 
@@ -30,14 +29,14 @@ Sie können [Application Insights](app-insights-overview.md) für die Überwachu
 
 Erforderlich:
 
-* Ein Abonnement für [Microsoft Azure](http://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](http://live.com)hinzufügen.
+* Ein Abonnement für [Microsoft Azure](https://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](https://live.com)hinzufügen.
 * Visual Studio 2013 oder höher
 
 ## <a name="add"></a>1. Auswählen einer Application Insights-Ressource
 
 Die „Ressource“ ist das Element, in dem Ihre Daten erfasst und im Azure-Portal angezeigt werden. Sie müssen entscheiden, ob Sie eine neue Ressource erstellen oder eine vorhandene freigeben.
 
-### <a name="part-of-a-larger-app-use-existing-resource"></a>Teil einer größeren App: Verwenden einer vorhandenen Ressource
+### <a name="part-of-a-larger-app-use-existing-resource"></a>Teil einer größeren App: Vorhandene Ressource verwenden
 
 Wenn Ihre Webanwendung aus mehreren Komponenten besteht – beispielsweise einer Front-End-Web-App und mindestens einem Back-End-Dienst –, sollten Sie Telemetriedaten von allen Komponenten an die gleiche Ressource senden. So können alle Daten in einer einzigen Anwendungszuordnung angezeigt werden, und Sie können eine Anforderung über verschiedene Komponenten hinweg verfolgen.
 
@@ -45,7 +44,7 @@ Wenn Sie also bereits andere Komponenten Ihrer App überwachen, verwenden Sie ei
 
 Öffnen Sie die Ressource im [Azure-Portal](https://portal.azure.com/). 
 
-### <a name="self-contained-app-create-a-new-resource"></a>Eigenständige App: Erstellen einer neuen Ressource
+### <a name="self-contained-app-create-a-new-resource"></a>Eigenständige App: Neue Ressource erstellen
 
 Wenn die neue App von anderen Anwendungen unabhängig ist, sollte sie eine eigene Ressource erhalten.
 

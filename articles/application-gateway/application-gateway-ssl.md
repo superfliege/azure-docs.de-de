@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
-ms.openlocfilehash: 782e5c4b33cc62ab5af80e823dc63b3e79a707b3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89a88d79b6b93a233dbd4f335d0eb449e49d5289
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980524"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001783"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurieren eines Application Gateways für SSL-Auslagerung mit klassischem Bereitstellungsmodell
 
@@ -27,7 +27,7 @@ ms.locfileid: "46980524"
 > * [Azure-Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-ssl.md)
-> * [Azure-CLI](application-gateway-ssl-cli.md)
+> * [Azure-Befehlszeilenschnittstelle](application-gateway-ssl-cli.md)
 
 Azure Application Gateway kann so konfiguriert werden, dass damit die Secure Sockets Layer-Sitzung (SSL) auf dem Gateway beendet wird. Auf diese Weise wird die aufwändige SSL-Entschlüsselung in der Webfarm vermieden. Die SSL-Auslagerung vereinfacht zudem die Einrichtung und Verwaltung der Webanwendung auf dem Front-End-Server.
 
@@ -99,17 +99,17 @@ Eine Anwendungsgatewaykonfiguration besteht aus mehreren Werten. Die Werte könn
 
 Die Werte sind:
 
-* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse oder eine VIP-Adresse sein.
-* **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls eine SSL-Auslagerung konfiguriert wird).
-* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
+* **Back-End-Serverpool**: Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse oder eine VIP-Adresse sein.
+* **Einstellungen für den Back-End-Serverpool**: Jeder Pool besitzt Einstellungen wie Port, Protokoll und cookiebasierte Affinität. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
+* **Front-End-Port**: Der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+* **Listener**: Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
+* **Regel**: Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
 
 **Zusätzliche Konfigurationshinweise**
 
 Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in **Https** (Groß-/Kleinschreibung beachten) geändert werden. Fügen Sie das **SslCert**-Element zu **HttpListener** hinzu. Dabei muss der Wert auf den Namen festgelegt werden, der im Abschnitt [Hochladen von SSL-Zertifikaten](#upload-ssl-certificates) verwendet wurde. Der Front-End-Port sollte auf **443** aktualisiert werden.
 
-**So aktivieren Sie cookiebasierte Affinität**: Sie können ein Anwendungsgateway so konfigurieren, dass sicherstellt ist, dass eine Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Fügen Sie dazu ein Sitzungscookie ein, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf **Enabled** fest.
+**So aktivieren Sie die cookiebasierte Affinität**: Sie können ein Anwendungsgateway so konfigurieren, dass sicherstellt ist, dass eine Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Fügen Sie dazu ein Sitzungscookie ein, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf **Enabled** fest.
 
 Sie können die Konfiguration erzeugen, indem Sie ein Konfigurationsobjekt erstellen oder eine XML-Konfigurationsdatei verwenden.
 Um die Konfiguration mithilfe einer XML-Konfigurationsdatei zu erstellen, geben Sie das folgende Beispiel ein:
@@ -117,7 +117,7 @@ Um die Konfiguration mithilfe einer XML-Konfigurationsdatei zu erstellen, geben 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+<ApplicationGatewayConfiguration xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
     <FrontendIPConfigurations />
     <FrontendPorts>
         <FrontendPort>

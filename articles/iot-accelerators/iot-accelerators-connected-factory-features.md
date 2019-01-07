@@ -8,18 +8,20 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: 3478217771418ab31772d6a42a7ed8d8a2e8069a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: af2a2c84f9eb420a7ca9a8bd5909cbf856d29a5e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626495"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309194"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Was ist der IoT Solution Accelerator für Connected Factory?
 
 Connected Factory ist eine Open Source-Lösung und dient zur Implementierung der Azure IoT-Referenz von Microsoft in der Industrie. Sie können sie als Grundlage für ein kommerzielles Produkt verwenden. Über [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/#solutions/types/CF) können Sie eine vorgefertigte Version der Connected Factory-Lösung in Ihrem Azure-Abonnement bereitstellen.
 
 ![Dashboard der Connected Factory-Lösung](./media/iot-accelerators-connected-factory-features/dashboard.png)
+
+Der zum Solution Accelerator „Verbundene Factory“ gehörige [Code ist auf GitHub verfügbar](https://github.com/Azure/azure-iot-connected-factory).
 
 Connected Factory beinhaltet die folgenden Features:
 

@@ -9,12 +9,12 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: fa77e117b8045be4ef0566e388c4e8df08c95fe2
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4016471be05c1062eb389ab4851330f3a80dbcb2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42144279"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969025"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung eines Node.js-Back-Ends und eines Node.js-Geräts
 
@@ -35,19 +35,18 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Einen IoT Hub.
 * Eine Installation der neuesten Version des [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node).
 
-
 Sie haben nun Ihren IoT-Hub erstellt und verfügen über den Hostnamen und die IoT Hub-Verbindungszeichenfolge, die Sie für die weiteren Schritte in diesem Tutorial benötigen.
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Erstellen einer Geräteidentität und einer Modulidentität in IoT Hub
 
 In diesem Abschnitt erstellen Sie eine Node.js-App, mit der eine Geräte- und eine Modulidentität in der Identitätsregistrierung Ihres IoT Hub erstellt wird. Ein Gerät oder Modul kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity] im Abschnitt zur Identitätsregistrierung. Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und einen eindeutigen Schlüssel für das Gerät und das Modul. Ihr Gerät und Ihr Modul verwenden diese Werte, um sich beim Senden von D2C-Nachrichten an IoT Hub zu identifizieren. Bei den IDs gilt Groß-/Kleinschreibung.
 
-1.  Erstellen Sie ein Verzeichnis zum Speichern Ihres Codes.
-2. Führen Sie in diesem Verzeichnis zuerst **npm init -y** aus, um eine leere Datei „package.json“ mit Standardwerten zu erstellen. Dies ist die Projektdatei für Ihren Code.
-3. Führen Sie **npm install -S azure-iothub@modules-preview** aus, um das Dienst-SDK im Unterverzeichnis **node_modules** zu installieren. 
+1. Erstellen Sie ein Verzeichnis zum Speichern Ihres Codes.
+2. Führen Sie in diesem Verzeichnis zuerst  **npm init -y**  aus, um eine leere Datei „package.json“ mit Standardwerten zu erstellen. Dies ist die Projektdatei für Ihren Code.
+3. Führen Sie  **npm install -S azure-iothub@modules-preview** aus, um das Dienst-SDK im Unterverzeichnis  **node_modules**  zu installieren.
 
-    > [!NOTE] 
-    > Beim Namen des Unterverzeichnisses „node_modules“ steht das Wort „module“ für Node-Bibliotheken. Hier hat der Begriff nichts mit IoT Hub-Modulen zu tun.
+    > [!NOTE]
+    > Im Namen des Unterverzeichnisses „node_modules“ steht das Wort „module“ für eine Node-Bibliothek. Hier hat der Begriff nichts mit IoT Hub-Modulen zu tun.
 
 4. Erstellen Sie die folgende JS-Datei in Ihrem Verzeichnis. Geben Sie ihr den Namen **add.js**. Kopieren Sie Ihre Hub-Verbindungszeichenfolge und den Hub-Namen, und fügen Sie sie ein.
 
@@ -108,7 +107,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App, mit der eine Geräte- und ei
 
 Diese App erstellt eine Geräteidentität mit der ID **myFirstDevice** und ein Identitätsmodul mit der ID **myFirstModule** unter dem Gerät **myFirstDevice**. (Falls diese Modul-ID in der Identitätsregistrierung bereits vorhanden ist, werden mit dem Code lediglich die vorhandenen Modulinformationen abgerufen.) Anschließend zeigt die App den Primärschlüssel für diese Identität an. Sie verwenden diesen Schlüssel in der simulierten Modul-App, um eine Verbindung mit Ihrem IoT Hub herzustellen.
 
-5. Führen Sie sie mit „node add.js“ aus. Dadurch erhalten Sie eine Verbindungszeichenfolge für Ihre Geräteidentität und eine weitere für Ihre Modulidentität.
+5. Verwenden Sie zur Ausführung „node add.js“. Dadurch erhalten Sie eine Verbindungszeichenfolge für Ihre Geräteidentität und eine weitere für Ihre Modulidentität.
 
     > [!NOTE]
     > Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity].
@@ -126,8 +125,8 @@ In diesem Abschnitt erstellen Sie eine Node.js-App auf Ihrem simulierten Gerät,
     > [!NOTE]
     > Der NPM-Installationsbefehl kann längere Zeit in Anspruch nehmen. Sie müssen etwas Geduld haben, da sehr viel Code aus dem Paketrepository übertragen wird.
 
-    > [!NOTE] 
-    > Wenn eine Fehlermeldung mit dem Inhalt, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren. Wenn eine Fehlermeldung mit dem Inhalt, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren.
+    > [!NOTE]
+    > Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, können Sie diese ignorieren. Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, können Sie diese ignorieren.
 
 3. Erstellen Sie eine Datei namens „twin.js“. Kopieren Sie die Modulidentitätszeichenfolge, und fügen Sie sie ein.
 
@@ -180,7 +179,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App auf Ihrem simulierten Gerät,
     });
     ```
 
-2. Führen Sie die dann mit dem Befehl **node twin.js** aus.
+2. Verwenden Sie bei der anschließenden Ausführung den Befehl  **node twin.js**.
 
     ```
     F:\temp\module_twin>node twin.js
@@ -200,9 +199,8 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen 
 * [Erste Schritte mit der Geräteverwaltung][lnk-device-management]
 * [Erste Schritte mit IoT Edge][lnk-iot-edge]
 
-
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

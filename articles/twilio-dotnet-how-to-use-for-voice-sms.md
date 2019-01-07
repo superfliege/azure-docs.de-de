@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 087dcfd10b191dcd80ec4a70be8eb2e373e1d56b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 254128d212dec3e6f51a98dc4435894e08377eb0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427539"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955223"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen aus Azure
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anweisungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -115,7 +115,7 @@ Standardmäßig installiert Microsoft Visual Studio 2010 NuGet Version 1.2. Für
 5. Geben Sie in das Onlinesuchfeld *twilio*ein.
 6. Klicken Sie auf **Install** für das Twilio-Paket.
 
-## <a id="howto_make_call"></a>Tätigen von ausgehenden Anrufen
+## <a id="howto_make_call"></a>Gewusst wie: Tätigen von ausgehenden Anrufen
 Nachfolgend wird erläutert, wie Sie einen ausgehenden Anruf mit der **CallResource**-Klasse tätigen. Dieser Code verwendet eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort (Twilio Markup Language). Geben Sie Ihre Werte für die Telefonnummern **to** und **rom** ein, und stellen Sie sicher, dass Sie die **from**-Telefonnummer für Ihr Twilio-Konto verifizieren, bevor Sie den Code ausführen.
 
 ```csharp
@@ -143,9 +143,9 @@ var call = CallResource.Create(
 
 Weitere Informationen zu den an die **CallResource.Create**-Methode übergebenen Parametern finden Sie unter [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls].
 
-Wie bereits erwähnt, verwendet dieser Code eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort. Stattdessen können Sie die TwiML-Antwort auch von Ihrer eigenen Website bereitstellen lassen. Weitere Informationen finden Sie unter [Bereitstellen von TwiML-Antworten von der eigenen Website](#howto_provide_twiml_responses).
+Wie bereits erwähnt, verwendet dieser Code eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort. Stattdessen können Sie die TwiML-Antwort auch von Ihrer eigenen Website bereitstellen lassen. Weitere Informationen finden Sie unter [Gewusst wie: Bereitstellen von TwiML-Antworten von der eigenen Website](#howto_provide_twiml_responses).
 
-## <a id="howto_send_sms"></a>Senden von SMS-Nachrichten
+## <a id="howto_send_sms"></a>Gewusst wie: Senden einer SMS-Nachricht
 Der folgende Screenshot zeigt, wie Sie eine SMS-Nachricht mit der **MessageResource**-Klasse senden. Die **from** -Nummer wird von Twilio für Testkonten zum Senden von SMS-Nachrichten bereitgestellt. Die **to** -Nummer muss für Ihr Twilio-Konto verifiziert werden, bevor Sie den Code ausführen.
 
 ```csharp
@@ -172,8 +172,8 @@ catch (TwilioException ex)
 }
 ```
 
-## <a id="howto_provide_twiml_responses"></a>Vorgehensweise: Bereitstellen von TwiML-Antworten von der eigenen Website
-Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert – z.B. über die **CallResource.Create**-Methode –, sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das Beispiel in [Tätigen von ausgehenden Anrufen](#howto_make_call) verwendet die von Twilio bereitgestellte URL [https://twimlets.com/message][twimlet_message_url] für die Rückgabe der Antwort.
+## <a id="howto_provide_twiml_responses"></a>Gewusst wie: Bereitstellen von TwiML-Antworten von der eigenen Website
+Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert – z.B. über die **CallResource.Create**-Methode –, sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das Beispiel unter [Gewusst wie: Tätigen von ausgehenden Anrufen](#howto_make_call) verwendet die von Twilio bereitgestellte URL [https://twimlets.com/message][twimlet_message_url] für die Rückgabe der Antwort.
 
 > [!NOTE]
 > TwiML wurde für die Verwendung durch Webdienste konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie z. B. auf [https://twimlets.com/message][twimlet_message_url], um ein leeres `<Response>`-Element anzuzeigen. Ein weiteres Beispiel: Klicken Sie auf [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World), um ein `<Response>`-Element mit einem &lt;Say&gt;-Element anzuzeigen.
@@ -277,7 +277,7 @@ Weitere Informationen zur Verwendung von Twilio in Azure mit ASP.NET finden Sie 
 
 [twilio_rest_making_calls]: https://www.twilio.com/docs/api/rest/making-calls
 
-[vs_project]:https://msdn.microsoft.com/library/windowsazure/ee405487.aspx
+[vs_project]:https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-azure-project-create
 [nuget]:https://nuget.org/
 [twilio_github_repo]:https://github.com/twilio/twilio-csharp
 

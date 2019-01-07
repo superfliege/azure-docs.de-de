@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 77387b52003923dffce7519df9cca47fad8f6e6c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 64464772b82a64324a706d1e09e7d2a75b7eb66a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007432"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834314"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektur für die Replikation von VMware- oder physischen Servern an einem sekundären lokalen Standort
 
@@ -37,7 +37,7 @@ Dieser Artikel beschreibt die Architektur und Prozesse, die beim Einrichten der 
 2. Nach der ersten Replikation sendet der Agent auf jedem Computer die Deltareplikationsänderungen an den Prozessserver.
 3. Der Prozessserver optimiert die Daten und überträgt sie an den Masterzielserver am sekundären Standort. Der Konfigurationsserver verwaltet den Replikationsprozess.
 
-**Abbildung 6: Replikation von VMware in VMware**
+**Abbildung 6: Replikation von VMware zu VMware**
 
 ![VMware zu VMware](./media/site-recovery-components/vmware-to-vmware.png)
 

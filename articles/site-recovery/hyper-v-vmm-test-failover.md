@@ -1,18 +1,18 @@
 ---
 title: Ausführen einer Übung für die Notfallwiederherstellung von Hyper-V-VMs an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Übung für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Rechenzentrum mit Azure Site Recovery ausführen.
-author: ponatara
-manager: abhemraj
+author: rajani-janaki-ram
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
-ms.author: ponatara
-ms.openlocfilehash: 3f7e534e9c698e31e1061c35aec713d20c7e570f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: rajanaki
+ms.openlocfilehash: 5e6d155a3efebfc8289263ac703a87e9aa3287cd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211348"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834756"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Ausführen eines DR-Drills für Hyper-V-VMs an einen sekundären Standort
 
@@ -31,10 +31,10 @@ Sie führen ein Testfailover vom primären Standort an den sekundären Standort 
     - Führen Sie das Failover aus, und lassen Sie Site Recovery automatisch ein Testnetzwerk erstellen. In diesem Fall erstellt Site Recovery das Netzwerk automatisch und bereinigt es, nachdem das Testfailover abgeschlossen wurde.
 - Sie müssen einen Wiederherstellungspunkt für das Testfailover auswählen: 
     - **Letzte Verarbeitung**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
-    - **Letzte App-Konsistenz**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. 
-    - **Neueste**: Diese Option verarbeitet zuerst alle Daten, die an einen Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jede VM zu erstellen. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+    - **Letzter anwendungskonsistenter Zeitpunkt**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. 
+    - **Letzter Zeitpunkt**: Diese Option verarbeitet zuerst alle Daten, die an den Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jede VM zu erstellen. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
     - **Letzte Verarbeitung mit mehreren VMs**: Verfügbar für Wiederherstellungspläne mit mindestens einer VM, für die Multi-VM-Konsistenz aktiviert ist. VMs, für die die Einstellung aktiviert ist, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere VMs führen ein Failover auf den letzten verarbeiteten Wiederherstellungspunkt durch.
-    - **Letzte App-Konsistenz mit mehreren VMs**: Diese Option steht nur für Wiederherstellungspläne mit einer oder mehreren VMs zur Verfügung, bei denen Multi-VM-Konsistenz aktiviert ist. VMs, die Teil einer Replikationsgruppe sind, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere VMs führen ein Failover auf ihren letzten anwendungskonsistenten Wiederherstellungspunkt durch.
+    - **Letzter anwendungskonsistenter Zeitpunkt (mehrere VMs)**: Diese Option steht nur für Wiederherstellungspläne mit einer oder mehreren VMs zur Verfügung, bei denen Multi-VM-Konsistenz aktiviert ist. VMs, die Teil einer Replikationsgruppe sind, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere VMs führen ein Failover auf ihren letzten anwendungskonsistenten Wiederherstellungspunkt durch.
     - **Benutzerdefinierte**: Verwenden Sie diese Option für ein Failover einer bestimmten VM auf einen bestimmten Wiederherstellungspunkt.
 
 

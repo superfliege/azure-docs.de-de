@@ -1,5 +1,5 @@
 ---
-title: Übersicht über das Livestreaming mit Azure Media Services | Microsoft-Dokumentation
+title: Übersicht über Livestreaming mit Azure Media Services | Microsoft Docs
 description: Dieser Artikel bietet eine Übersicht über das Livestreaming mit Azure Media Services v3.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 634563a2010562e20691abae132dc7540ef8faf2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632701"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000255"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -34,7 +34,7 @@ Dieser Artikel bietet einen detaillierten Überblick und umfasst einen Leitfaden
 
 Um On-Demand- oder Livestreams mit Media Services bereitstellen zu können, benötigen Sie mindestens einen [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard-StreamingEndpoint** im Zustand **Beendet** hinzugefügt. Sie müssen den StreamingEndpoint starten, von dem aus Sie Inhalt an Ihre Zuschauer streamen möchten. Sie können den standardmäßigen **StreamingEndpoint** verwenden oder einen weiteren angepassten **StreamingEndpoint** mit den gewünschten Konfigurations- und CDN-Einstellungen erstellen. Sie können mehrere StreamingEndpoint-Objekte aktivieren, die jeweils auf ein anderes CDN ausgerichtet sind und einen eindeutigen Hostnamen für die Inhaltsbereitstellung angeben. 
 
-In Media Services sorgen [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für das Erfassen und Verarbeiten von Livevideofeeds. Wenn Sie ein LiveEvent erstellen, wird ein Eingangsendpunkt erstellt, mit dem Sie ein Livesignal von einem Remoteencoder senden können. Der Remoteliveencoder sendet den Datenfeed an diesen Eingangsendpunkt, entweder über [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) oder über das [Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming#Microsoft_Smooth_Streaming)-Protokoll (fragmentiertes MP4).  
+In Media Services sorgen [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für das Erfassen und Verarbeiten von Livevideofeeds. Wenn Sie ein LiveEvent erstellen, wird ein Eingangsendpunkt erstellt, mit dem Sie ein Livesignal von einem Remoteencoder senden können. Der Remoteliveencoder sendet den Datenfeed an diesen Eingangsendpunkt, entweder über [RTMP](https://www.adobe.com/devnet/rtmp.html) oder über das [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx)-Protokoll (fragmentiertes MP4).  
 
 Sobald das **LiveEvent** Daten aus dem Feed empfängt, können Sie über den zugehörigen Vorschauendpunkt (die Vorschau-URL) eine Vorschau anzeigen und den Empfang des Livestreams bestätigen, bevor Sie mit der Veröffentlichung fortfahren. Nachdem Sie sich von der Qualität des Vorschaustreams überzeugt haben, können Sie das LiveEvent verwenden, um den Livestream über einen oder mehrere (vorab erstellte) **StreamingEndpoints** zur Übertragung verfügbar zu machen. Hierzu erstellen Sie ein neues [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs)-Objekt für das **LiveEvent**. 
 
@@ -42,7 +42,7 @@ Das **LiveOutput**-Objekt verhält sich wie ein Tonbandgerät, das den Livestrea
 
 Mit Media Services können Sie die **dynamische Paketierung** nutzen, mit der Sie Ihre Livestreams im [MPEG DASH-, HLS- und Smooth Streaming-Format](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) aus dem an den Dienst gesendeten Beitragsfeed als Vorschau anzeigen und übertragen können. Ihre Zuschauer können den Livestream mit einem beliebigen Player wiedergeben, der mit HLS, DASH oder Smooth Streaming kompatibel ist. Sie können den [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) in Ihren Webanwendungen oder mobilen Anwendungen nutzen, um Ihren Stream mit einem beliebigen dieser Protokolle bereitzustellen.
 
-Mit Media Services können Sie Ihre zu übermittelnden Inhalte mithilfe der (**dynamischen Verschlüsselung**) mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme (Digital Rights Management, Verwaltung digitaler Rechte) verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet außerdem einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen an autorisierte Clients. Weitere Informationen zum Verschlüsseln Ihrer Inhalte mit Media Services finden Sie unter [Übersicht über den Inhaltsschutz](content-protection-overview.md).
+Mit Media Services können Sie Ihre zu übermittelnden Inhalte dynamisch (mithilfe der **dynamischen Verschlüsselung**) mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme (Digital Rights Management, Verwaltung digitaler Rechte) verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet außerdem einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen an autorisierte Clients. Weitere Informationen zum Verschlüsseln Ihrer Inhalte mit Media Services finden Sie unter [Übersicht über den Inhaltsschutz](content-protection-overview.md).
 
 Auf Wunsch können Sie auch die dynamische Filterung anwenden, mit der Sie die Anzahl von Spuren, Formaten und Bitraten sowie die Präsentationszeitfenster steuern können, die an die Player gesendet werden. 
 
@@ -107,7 +107,7 @@ Für ein LiveEvent beginnt die Berechnung von Gebühren, sobald der Zustand in *
 
 Ausführliche Informationen finden Sie unter [Zustandswerte und Abrechnung](live-event-states-billing.md).
 
-## <a name="latency"></a>Latenz
+## <a name="latency"></a>Latency
 
 Ausführliche Informationen zur LiveEvent-Latenz finden Sie unter [Latenz](live-event-latency.md).
 

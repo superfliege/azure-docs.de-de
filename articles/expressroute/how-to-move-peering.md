@@ -1,33 +1,23 @@
 ---
-title: Umstellen eines öffentlichen Peerings über Azure ExpressRoute auf Microsoft-Peering | Microsoft-Dokumentation
+title: Umstellen eines öffentlichen Peerings auf das Microsoft-Peering – Azure ExpressRoute | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie Ihr öffentliches Peering über ExpressRoute auf Microsoft-Peering umstellen.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: f34fabc95d5b56edc6e37c323bebf60bd98c8b90
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: seodec18
+ms.openlocfilehash: 6b2bce6b488698db0a72c9a17f67c2555c6afa5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314298"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100020"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
-ExpressRoute unterstützt die Verwendung von Microsoft-Peering und Routenfiltern für Azure-PaaS-Dienste wie Azure Storage und Azure SQL-Datenbank. Für den Zugriff auf PaaS- und SaaS-Dienste von Microsoft ist nun nur noch eine einzelne Routingdomäne erforderlich. Mit Routenfiltern können Sie selektiv die PaaS-Dienstpräfixe für die zu verwendenden Azure-Regionen ankündigen.
-
-Dieser Artikel erklärt, wie Sie ohne Ausfallzeiten von einer öffentlichen Peeringkonfiguration auf Microsoft-Peering umsteigen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md).
-
+Dieser Artikel erklärt, wie Sie ohne Ausfallzeiten von einer öffentlichen Peeringkonfiguration auf Microsoft-Peering umsteigen. ExpressRoute unterstützt die Verwendung von Microsoft-Peering und Routenfiltern für Azure-PaaS-Dienste wie Azure Storage und Azure SQL-Datenbank. Für den Zugriff auf PaaS- und SaaS-Dienste von Microsoft ist nun nur noch eine einzelne Routingdomäne erforderlich. Mit Routenfiltern können Sie selektiv die PaaS-Dienstpräfixe für die zu verwendenden Azure-Regionen ankündigen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md).
 
 ## <a name="before"></a>Voraussetzungen
 
@@ -51,13 +41,13 @@ Vergewissern Sie sich, dass Microsoft-Peering aktiviert ist und die angekündigt
 
   * [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)
   * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)
-  * [Azure-CLI](howto-routing-cli.md#getmsft)
+  * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md#getmsft)
 
 ## <a name="routefilter"></a>3. Konfigurieren eines Routenfilters und Anfügen des Routenfilters an die Verbindung
 
 Standardmäßig kündigen neue Microsoft-Peerings keine Präfixe an, solange kein Routenfilter an die Verbindung angefügt wurde. Beim Erstellen einer Routenfilterregel können Sie die Liste der Dienstcommunitys für Azure-Regionen angeben, die Sie für Azure-PaaS-Dienste nutzen möchten, wie im folgenden Screenshot zu sehen:
 
-![Zusammenführen des öffentlichen Peerings](.\media\how-to-move-peering\public.png)
+![Zusammenführen des öffentlichen Peerings](./media/how-to-move-peering/public.png)
 
 Gehen Sie zum Konfigurieren von Routenfiltern gemäß einem der folgenden Artikel vor:
 

@@ -1,25 +1,25 @@
 ---
-title: Verwalten von Azure Analysis Services | Microsoft Docs
+title: Verwalten von Azure Analysis Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Azure einen Analysis Services-Server verwalten.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7ca97c52d81af2c224d27025266a628c28c0af78
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428900"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993920"
 ---
 # <a name="manage-analysis-services"></a>Verwalten von Analysis Services
 Nachdem Sie in Azure einen Analysis Services-Server erstellt haben, müssen Sie möglicherweise sofort oder zu einem späteren Zeitpunkt einige Verwaltungsaufgaben ausführen. Sie können z. B. Daten aktualisieren, steuern, wem Zugriff auf die Modelle auf dem Server gewährt wird, oder die Integrität des Servers überwachen. Einige Verwaltungsaufgaben können nur im Azure-Portal, andere in SQL Server Management Studio (SSMS) und bestimmte sowohl im Portal als auch in SSMS ausgeführt werden.
 
 ## <a name="azure-portal"></a>Azure-Portal
-Im [Azure-Portal](http://portal.azure.com/) können Sie Server erstellen und löschen, Serverressourcen überwachen, die Größe ändern und steuern, wer Zugriff auf die Server hat.  Wenn Probleme auftreten, können Sie eine Supportanfrage senden.
+Im [Azure-Portal](https://portal.azure.com/) können Sie Server erstellen und löschen, Serverressourcen überwachen, die Größe ändern und steuern, wer Zugriff auf die Server hat.  Wenn Probleme auftreten, können Sie eine Supportanfrage senden.
 
 ![Abrufen von Servernamen in Azure](./media/analysis-services-manage/aas-manage-portal.png)
 
@@ -35,7 +35,7 @@ Verwenden Sie die neueste Version von SSMS, um alle aktuellen Features zu erhalt
 
 
 ### <a name="to-connect-with-ssms"></a>So stellen Sie eine Verbindung mit SSMS her
- Wenn Sie SSMS verwenden, stellen Sie sicher, dass Ihr Benutzername in der Analysis Services-Administratoren-Gruppe enthalten ist, bevor Sie das erste Mal eine Verbindung mit dem Server herstellen. Weitere Informationen finden Sie in diesem Artikel weiter unten unter [Serveradministratoren](#server-administrators).
+ Wenn Sie SSMS verwenden, stellen Sie sicher, dass Ihr Benutzername in der Analysis Services-Administratoren-Gruppe enthalten ist, bevor Sie das erste Mal eine Verbindung mit dem Server herstellen. Weitere Informationen finden Sie im weiteren Verlauf dieses Artikels unter [Serveradministratoren und Datenbankbenutzer](#server-administrators-and-database-users).
 
 1. Bevor Sie eine Verbindung herstellen, müssen Sie den Namen des Servers abrufen. Kopieren Sie den Servernamen über **Azure-Portal** > Server > **Übersicht** > **Servername**.
    

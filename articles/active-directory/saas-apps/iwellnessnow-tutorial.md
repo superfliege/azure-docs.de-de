@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c260b32dc6f659ca4cc1b4c3f59859f75ba999d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b02a5ec5a68743e148bcfef3c631d7777fd0a067
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447372"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871683"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Tutorial: Azure Active Directory-Integration in iWellnessNow
 
@@ -179,7 +179,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-an-iwellnessnow-test-user"></a>Erstellen eines iWellnessNow-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in iWellnessNow eine Benutzerin namens Britta Simon. Das [iWellnessNow-Supportteam](mailto:info@iwellnessnow.com) kann Sie dabei unterstützen, Benutzer der iWellnessNow-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in iWellnessNow eine Benutzerin namens Britta Simon. Das  [iWellnessNow-Supportteam](mailto:info@iwellnessnow.com) kann Sie dabei unterstützen, Benutzer der iWellnessNow-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

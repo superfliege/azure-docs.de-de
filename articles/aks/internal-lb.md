@@ -7,21 +7,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 042d2ee0f615ce5216fc11152f0f65518ff9bd5c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5fe1739fa341a5e3bd2f4d26ef1e94d725b74a61
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376378"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001234"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 
 Zum Einschränken des Zugriffs auf Ihre Anwendungen in Azure Kubernetes Service (AKS) können Sie einen internen Lastenausgleich erstellen und verwenden. Durch einen internen Lastenausgleich können nur Anwendungen, die im gleichen virtuellen Netzwerk wie der Kubernetes-Cluster ausgeführt werden, auf einen Kubernetes-Dienst zugreifen. In diesem Artikel erfahren Sie, wie Sie einen internen Lastenausgleich mit Azure Kubernetes Service (AKS) erstellen und verwenden.
 
 > [!NOTE]
-> Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Weitere Informationen finden Sie unter [Vergleich der Azure Load Balancer-SKUs][azure-lb-comparison]. AKS unterstützt derzeit die *Basic*-SKU. Wenn Sie die *Standard*-SKU verwenden möchten, können Sie die Upstream-[acs-engine][acs-engine] verwenden.
+> Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Weitere Informationen finden Sie unter [Vergleich der Azure Load Balancer-SKUs][azure-lb-comparison]. AKS unterstützt derzeit die *Basic*-SKU. Wenn Sie die *Standard*-SKU verwenden möchten, können Sie die Upstream-[aks-engine][aks-engine] verwenden.
 
-## <a name="create-an-internal-load-balancer"></a>Erstellen eines internen Lastenausgleichs
+## <a name="create-an-internal-load-balancer"></a>Erstellen eines internen Load Balancers
 
 Erstellen Sie, wie im folgenden Beispiel gezeigt, ein Dienstmanifest namens `internal-lb.yaml` mit dem Diensttyp *LoadBalancer* und der Anmerkung *azure-load-balancer-internal*, um einen internen Lastenausgleich zu erstellen:
 
@@ -128,7 +128,7 @@ Erfahren Sie mehr über Kubernetes-Dienste in der [Kubernetes-Dienstdokumentatio
 
 <!-- LINKS - External -->
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 
 <!-- LINKS - Internal -->
 [advanced-networking]: configure-advanced-networking.md

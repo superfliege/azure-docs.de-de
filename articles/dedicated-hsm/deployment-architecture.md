@@ -1,24 +1,25 @@
 ---
-title: Azure Dedicated HSM-Bereitstellungsarchitektur | Microsoft-Dokumentation
-description: Azure Dedicated HSM bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
+title: Bereitstellungsarchitektur – Azure-Dienst für dedizierte HSMs | Microsoft-Dokumentation
+description: Grundlegende Entwurfsüberlegungen zur Verwendung des Azure-Dienst für dedizierte HSMs als Teil einer Anwendungsarchitektur
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 8481f444464135a24d42612f334ac6096cba7b21
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 913be9d1ee6ce92d71f5f0c7eda46a618483ce8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318989"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078292"
 ---
-# <a name="deployment-architecture"></a>Bereitstellungsarchitektur
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Bereitstellungsarchitektur für Azure-Dienst für dedizierte HSMs
 
 Azure Dedicated HSM bietet Speicherung von kryptografischen Schlüsseln in Azure. Azure Dedicated HSM erfüllt strenge Sicherheitsanforderungen. Kunden profitieren von der Verwendung von Azure Dedicated HSM, wenn sie:
 

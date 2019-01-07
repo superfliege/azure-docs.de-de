@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.author: ramamill
-ms.openlocfilehash: 50d1170f64ae199f4a1bf4b852c1ed3232df4d42
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974800"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253679"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Skalieren für das Failback mit zusätzlichen Prozessservern
 
@@ -23,6 +23,9 @@ Wenn Sie VMware-VMs oder physische Server mithilfe von [Site Recovery](site-reco
 ### <a name="capacity-planning"></a>Kapazitätsplanung
 
 Stellen Sie sicher, dass Sie eine [Kapazitätsplanung](site-recovery-plan-capacity-vmware.md) für die VMware-Replikation durchgeführt haben. Dadurch können Sie feststellen, wie und wann Sie zusätzliche Prozessserver bereitstellen sollten.
+
+>[!NOTE]
+Die Verwendung einer geklonten Prozessserverkomponente wird nicht unterstützt. Befolgen Sie die Schritte in diesem Artikel für jede PS-Hochskalierung.
 
 ### <a name="sizing-requirements"></a>Größenanforderungen 
 

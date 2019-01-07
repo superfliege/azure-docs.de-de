@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Panorama9 | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Panorama9 | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Panorama9 konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 77e370e80e423446d17a074b9458e7002f8627dd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ad2a9dba54df3ae7a3e2604437c8a65c88dcca94
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448345"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850889"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Tutorial: Azure Active Directory-Integration mit Panorama9
 
@@ -115,7 +115,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://dashboard.panorama9.com/saml/access/3262`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `http://www.panorama9.com/saml20/<tenant-name>`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.panorama9.com/saml20/<tenant-name>`
 
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Panorama9-Client](https://support.panorama9.com), um diese Werte zu erhalten. 
@@ -124,7 +124,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_general_400.png)
 
@@ -151,7 +151,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Klicken Sie auf **Speichern**.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -183,7 +183,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-a-panorama9-test-user"></a>Erstellen eines Panorama9-Testbenutzers
 

@@ -3,7 +3,7 @@ title: Erstellen und Verwalten von Aufträgen für die elastische Datenbank in A
 description: Führen Sie Skripts für eine Vielzahl von Datenbanken mit dem Agent für Aufträge für die elastische Datenbank mit Transact-SQL (T-SQL) aus.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3c40c6721651864b9e0d64d4eeda415bfd3e181a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056786"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164516"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -210,9 +210,9 @@ EXEC jobs.sp_add_jobstep
 @credential_name='myjobcred',
 @target_group_name='PoolGroup',
 @output_type='SqlDatabase',
-@output_credential_name=’myjobcred’,
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’<resultsdb>',
+@output_credential_name='myjobcred',
+@output_server_name='server1.database.windows.net',
+@output_database_name='<resultsdb>',
 @output_table_name='<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
@@ -257,8 +257,8 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 @target_group_name='MasterGroup',
 @output_type='SqlDatabase',
 @output_credential_name='myjobcred',
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’resultsdb',
+@output_server_name='server1.database.windows.net',
+@output_database_name='resultsdb',
 @output_table_name='resutlstable'
 ```
 
@@ -330,7 +330,7 @@ Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.
 ```sql
 --Connect to the job database specified when creating the job agent
 
---View top-level execution status for the job named ‘ResultsPoolJob’
+--View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
 ORDER BY start_time DESC
@@ -339,7 +339,7 @@ ORDER BY start_time DESC
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
 ORDER BY start_time DESC
 
---View all execution statuses for job named ‘ResultsPoolsJob’
+--View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' 
 ORDER BY start_time DESC
@@ -644,10 +644,10 @@ Wenn dieses Argument angegeben ist, muss der Wert „Inline“ sein.
 [ **@command =** ] 'command'  
 Der Befehl muss ein gültiges T-SQL-Skript sein und wird dann bei diesem Auftragsschritt ausgeführt. „command“ ist vom Datentyp „nvarchar(max)“ mit dem NULL-Standardwert.
 
-[ **@credential_name =** ] ‘credential_name’  
+[ **@credential_name =** ] 'credential_name'  
 Der Name der datenbankweit gültigen Anmeldeinformationen, die in dieser Auftragssteuerungsdatenbank gespeichert sind und mit denen eine Verbindung mit den Zieldatenbanken in der Zielgruppe hergestellt wird, wenn dieser Schritt ausgeführt wird. „credential_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ **@target_group_name =** ] 'target-group_name'  
 Der Name der Zielgruppe, die die Zieldatenbanken enthält, in denen der Auftragsschritt ausgeführt wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“.
 
 [ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -774,10 +774,10 @@ Wenn dieses Argument angegeben ist, muss der Wert „Inline“ sein.
 [ **@command =** ] 'command'  
 Die Befehle müssen ein gültiges T-SQL-Skript sein und werden dann bei diesem Auftragsschritt ausgeführt. „command“ ist vom Datentyp „nvarchar(max)“ mit dem NULL-Standardwert.
 
-[ **@credential_name =** ] ‘credential_name’  
+[ **@credential_name =** ] 'credential_name'  
 Der Name der datenbankweit gültigen Anmeldeinformationen, die in dieser Auftragssteuerungsdatenbank gespeichert sind und mit denen eine Verbindung mit den Zieldatenbanken in der Zielgruppe hergestellt wird, wenn dieser Schritt ausgeführt wird. „credential_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ **@target_group_name =** ] 'target-group_name'  
 Der Name der Zielgruppe, die die Zieldatenbanken enthält, in denen der Auftragsschritt ausgeführt wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“.
 
 [ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -1011,14 +1011,14 @@ Fügt einer Zielgruppe eine Datenbank oder eine Gruppe von Datenbanken hinzu.
 
 ```sql
 [jobs].sp_add_target_group_member [ @target_group_name = ] 'target_group_name'
-         [ @membership_type = ] ‘membership_type’ ]   
-        [ , [ @target_type = ] ‘target_type’ ]   
-        [ , [ @refresh_credential_name = ] ‘refresh_credential_name’ ]   
-        [ , [ @server_name = ] ‘server_name’ ]   
-        [ , [ @database_name = ] ‘database_name’ ]   
-        [ , [ @elastic_pool_name = ] ‘elastic_pool_name’ ]   
-        [ , [ @shard_map_name = ] ‘shard_map_name’ ]   
-        [ , [ @target_id = ] ‘target_id’ OUTPUT ]
+         [ @membership_type = ] 'membership_type' ]   
+        [ , [ @target_type = ] 'target_type' ]   
+        [ , [ @refresh_credential_name = ] 'refresh_credential_name' ]   
+        [ , [ @server_name = ] 'server_name' ]   
+        [ , [ @database_name = ] 'database_name' ]   
+        [ , [ @elastic_pool_name = ] 'elastic_pool_name' ]   
+        [ , [ @shard_map_name = ] 'shard_map_name' ]   
+        [ , [ @target_id = ] 'target_id' OUTPUT ]
 ```
 
 #### <a name="arguments"></a>Argumente
@@ -1040,10 +1040,10 @@ Der Name des logischen Servers, der der angegebenen Zielgruppe hinzugefügt werd
 [ **@database_name =** ] 'database_name'  
 Der Name der Datenbank, die der angegebenen Zielgruppe hinzugefügt werden soll. „database_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlDatabase“ aufweist. „database_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@elastic_pool_name =** ] ‘elastic_pool_name'  
+[ **@elastic_pool_name =** ] 'elastic_pool_name'  
 Der Name des Pools für elastische Datenbanken, die der angegebenen Zielgruppe hinzugefügt werden soll. „elastic_pool_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlElasticPool“ aufweist. „elastic_pool_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@shard_map_name =** ] ‘shard_map_name'  
+[ **@shard_map_name =** ] 'shard_map_name'  
 Der Name des Pools der Shardzuordnung, die der angegebenen Zielgruppe hinzugefügt werden soll. „elastic_pool_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlSqlShardMap“ aufweist. „shard_map_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **@target_id =** ] target_group_id OUTPUT  
@@ -1101,7 +1101,7 @@ Entfernt ein Zielgruppenmitglied aus einer Zielgruppe.
 
 ```sql
 [jobs].sp_delete_target_group_member [ @target_group_name = ] 'target_group_name'
-        [ , [ @target_id = ] ‘target_id’]
+        [ , [ @target_id = ] 'target_id']
 ```
 
 

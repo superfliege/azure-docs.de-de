@@ -1,5 +1,6 @@
 ---
-title: Ausgangsregeln in Azure Load Balancer| Microsoft-Dokumentation
+title: Ausgangsregeln in Azure Load Balancer
+titlesuffix: Azure Load Balancer
 description: Verwenden Sie Ausgangsregeln, um ausgehende Netzwerkadressenübersetzungen zu definieren.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219374"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185017"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -67,9 +69,9 @@ Die API-Version „2018-07-01“ lässt eine Ausgangsregeldefinition mit der fol
 
 Ausgangsregeln können jeweils mit nur einer einzigen öffentlichen IP-Adresse verwendet werden und erleichtern die Konfiguration beim Skalieren der NAT für ausgehenden Datenverkehr. Sie können mehrere IP-Adressen verwenden, um umfangreiche Szenarien zu planen. Mithilfe von Ausgangsregeln lassen sich außerdem die für die [SNAT-Überlastung](load-balancer-outbound-connections.md#snatexhaust) anfälligen Muster reduzieren.  
 
-Jede zusätzliche IP-Adresse, die von einem Front-End bereitgestellt wird, stellt 64.000 kurzlebige Ports zur Verfügung, die Load Balancer als SNAT-Ports verwenden kann. Beim Lastenausgleich und bei NAT-Eingangsregeln steht ein einziges Front-End zur Verfügung. Die Ausgangsregel erweitert das Front-End-Konzept und lässt mehrere Front-Ends pro Regel zu.  Bei mehreren Front-Ends pro Regel wird die Anzahl von verfügbaren SNAT-Ports mit jeder öffentlichen IP-Adresse multipliziert. So können auch umfangreiche Szenarien unterstützt werden.
+Jede zusätzliche IP-Adresse, die von einem Front-End bereitgestellt wird, stellt 51.200 kurzlebige Ports zur Verfügung, die Load Balancer als SNAT-Ports verwenden kann. Beim Lastenausgleich und bei NAT-Eingangsregeln steht ein einziges Front-End zur Verfügung. Die Ausgangsregel erweitert das Front-End-Konzept und lässt mehrere Front-Ends pro Regel zu.  Bei mehreren Front-Ends pro Regel wird die Anzahl von verfügbaren SNAT-Ports mit jeder öffentlichen IP-Adresse multipliziert. So können auch umfangreiche Szenarien unterstützt werden.
 
-Darüber hinaus können Sie ein [Präfix für öffentliche IP-Adressen](https://aka.ms/lbpublicipprefix) direkt mit einer Ausgangsregel verwenden.  Durch die Verwendung von öffentlichen IP-Präfixen ist es einfacher, Datenflüsse aus Ihrer Azure-Bereitstellung zu skalieren und auf die Whitelist zu setzen. Sie können eine Front-End-IP-Konfiguration innerhalb der Load Balancer-Ressource konfigurieren, um direkt auf den Präfix einer öffentlichen IP-Adresse zu verweisen.  Dies ermöglicht Load Balancer die exklusive Steuerung über das Präfix für öffentliche IP-Adressen, und die Ausgangsregel verwendet automatisch alle öffentlichen IP-Adressen, die im Präfix für öffentliche IP-Adressen für ausgehende Verbindungen enthalten sind.  Jede IP-Adresse im Präfixbereich für öffentliche IP-Adressen bietet 64.000 kurzlebige Ports pro IP-Adresse, die Load Balancer als SNAT-Ports verwenden kann.   
+Darüber hinaus können Sie ein [Präfix für öffentliche IP-Adressen](https://aka.ms/lbpublicipprefix) direkt mit einer Ausgangsregel verwenden.  Durch die Verwendung von öffentlichen IP-Präfixen ist es einfacher, Datenflüsse aus Ihrer Azure-Bereitstellung zu skalieren und auf die Whitelist zu setzen. Sie können eine Front-End-IP-Konfiguration innerhalb der Load Balancer-Ressource konfigurieren, um direkt auf den Präfix einer öffentlichen IP-Adresse zu verweisen.  Dies ermöglicht Load Balancer die exklusive Steuerung über das Präfix für öffentliche IP-Adressen, und die Ausgangsregel verwendet automatisch alle öffentlichen IP-Adressen, die im Präfix für öffentliche IP-Adressen für ausgehende Verbindungen enthalten sind.  Jede IP-Adresse im Präfixbereich für öffentliche IP-Adressen bietet 51.200 kurzlebige Ports pro IP-Adresse, die Load Balancer als SNAT-Ports verwenden kann.   
 
 Wenn Sie diese Option nutzen, können Sie keine einzelnen Ressourcen für öffentliche IP-Adressen aus dem Präfix für öffentliche IP-Adressen erstellen, da die Ausgangsregel die vollständige Kontrolle über das Präfix haben muss.  Wenn Sie eine differenziertere Steuerung wünschen, können Sie aus dem Präfix für öffentliche IP-Adressen eine individuelle öffentliche IP-Adressressource erstellen und mehrere öffentliche IP-Adressen einzeln dem Front-End einer Ausgangsregel zuweisen.
 
@@ -82,7 +84,7 @@ Verwenden Sie den folgenden Parameter, um 10.000 SNAT-Ports pro VM zuzuordnen (N
 
           "allocatedOutboundPorts": 10000
 
-Jede öffentliche IP-Adresse aller Front-Ends einer Ausgangsregel stellt bis zu 64.000 kurzlebige Ports als SNAT-Ports bereit.  Load Balancer weist SNAT-Ports als ein Vielfaches von 8 zu. Wenn Sie einen Wert angeben, der nicht durch 8 teilbar ist, wird der Konfigurationsvorgang abgelehnt.  Wenn Sie versuchen, mehr SNAT-Ports zuzuordnen als öffentliche IP-Adressen vorhanden sind, wird der Konfigurationsvorgang abgelehnt.  Wenn Sie beispielsweise 10.000 Ports pro VM zuweisen und 7 VMs in einem Back-End-Pool eine einzige öffentliche IP-Adresse teilen würden, wird die Konfiguration zurückgewiesen (7 x 10.0000 SNAT-Ports > 64.000 SNAT-Ports).  Dem Front-End der Ausgangsregel lassen sich weitere öffentliche IP-Adressen hinzufügen, um das Szenario zu ermöglichen.
+Jede öffentliche IP-Adresse aller Front-Ends einer Ausgangsregel stellt bis zu 51.200 kurzlebige Ports als SNAT-Ports bereit.  Load Balancer weist SNAT-Ports als ein Vielfaches von 8 zu. Wenn Sie einen Wert angeben, der nicht durch 8 teilbar ist, wird der Konfigurationsvorgang abgelehnt.  Wenn Sie versuchen, mehr SNAT-Ports zuzuordnen als öffentliche IP-Adressen vorhanden sind, wird der Konfigurationsvorgang abgelehnt.  Wenn Sie beispielsweise 10.000 Ports pro VM zuweisen und 7 VMs in einem Back-End-Pool eine einzige öffentliche IP-Adresse teilen würden, wird die Konfiguration zurückgewiesen (7 x 10.000 SNAT-Ports > 51.200 SNAT-Ports).  Dem Front-End der Ausgangsregel lassen sich weitere öffentliche IP-Adressen hinzufügen, um das Szenario zu ermöglichen.
 
 Sie können die [automatische SNAT-Portzuordnung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) wiederherstellen, indem Sie als Portanzahl „0“ angeben.
 
@@ -160,7 +162,7 @@ Wenn die Lastenausgleichsregel nicht für den ausgehenden Datenverkehr verwendet
 
 Sie können Ausgangsregeln verwenden, um die [automatische SNAT-Portzuweisung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) anzupassen.
 
-Wenn Sie beispielsweise zwei VMs haben, die sich eine einzige öffentliche IP-Adresse für NAT für ausgehenden Datenverkehr teilen, können Sie im Fall einer SNAT-Überlastung die Anzahl von SNAT-Ports, die von den standardmäßigen 1.024 Ports zugeordnet wurden, erhöhen. Jede öffentliche IP-Adresse kann bis zu 64.000 kurzlebige Ports bereitstellen.  Wenn Sie eine Ausgangsregel mit einem einzigen öffentlichen IP-Adressen-Front-End konfigurieren, können Sie insgesamt 64.000 SNAT-Ports auf VMs im Back-End-Pool verteilen.  Bei zwei VMs können maximal 32.000 SNAT-Ports mit einer Ausgangsregel (2 x 32.000 = 64.000) zugeordnet werden.
+Wenn Sie beispielsweise zwei VMs haben, die sich eine einzige öffentliche IP-Adresse für NAT für ausgehenden Datenverkehr teilen, können Sie im Fall einer SNAT-Überlastung die Anzahl von SNAT-Ports, die von den standardmäßigen 1.024 Ports zugeordnet wurden, erhöhen. Jede öffentliche IP-Adresse kann bis zu 51.200 kurzlebige Ports bereitstellen.  Wenn Sie eine Ausgangsregel mit einem einzigen öffentlichen IP-Adressen-Front-End konfigurieren, können Sie insgesamt 51.200 SNAT-Ports auf VMs im Back-End-Pool verteilen.  Bei zwei VMs können maximal 25.600 SNAT-Ports mit einer Ausgangsregel (2 × 25.600 = 51.200) zugeordnet werden.
 
 Erfahren Sie mehr über [ausgehende Verbindungen](load-balancer-outbound-connections.md) und darüber, wie [SNAT](load-balancer-outbound-connections.md#snat)-Ports zugeordnet und verwendet werden.
 
@@ -191,18 +193,18 @@ Beim Verwenden einer internen Load Balancer Standardinstanz ist die NAT für aus
    1. Deaktivieren Sie SNAT für ausgehenden Datenverkehr in der Lastenausgleichsregel.
    2. Konfigurieren Sie eine Ausgangsregel in derselben Load Balancer-Instanz.
    3. Verwenden Sie erneut den Back-End-Pool, den Ihre VMs bereits verwenden.
-   4. Geben Sie „Protokoll“ an: „Alle“ als Teil der Ausgangsregel.
+   4. Geben Sie „Protokoll“: „Alle“ als Teil der Ausgangsregel an.
 
 - Wenn nur NAT-Eingangsregeln verwendet werden, wird keine NAT für ausgehenden Datenverkehr bereitgestellt.
 
    1. Stellen Sie die VMs in einem Back-End-Pool bereit.
    2. Definieren Sie mindestens eine Front-End-IP-Konfiguration mit mindestens einer öffentlichen IP-Adresse oder einem Präfix für öffentliche IP-Adressen.
    3. Konfigurieren Sie eine Ausgangsregel in derselben Load Balancer-Instanz.
-   4. Geben Sie „Protokoll“ an: „Alle“ als Teil der Ausgangsregel.
+   4. Geben Sie „Protokoll“: „Alle“ als Teil der Ausgangsregel an.
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Die maximale Anzahl von verwendbaren kurzlebigen Ports pro Front-End-IP-Adresse beträgt 64.000.
+- Die maximale Anzahl von verwendbaren kurzlebigen Ports pro Front-End-IP-Adresse beträgt 51.200.
 - Das konfigurierbare Leerlauftimeout für ausgehenden Datenverkehr beträgt zwischen 4 und 66 Minuten (240 bis 4.000 Sekunden).
 - Load Balancer unterstützt kein ICMP für die NAT ausgehenden Datenverkehrs.
 - Sie können Ausgangsregeln im Portal weder konfigurieren noch ansehen.  Verwenden Sie stattdessen Vorlagen, die REST-API, die Azure CLI 2.0 oder PowerShell.

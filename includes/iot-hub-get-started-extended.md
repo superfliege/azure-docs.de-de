@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: cc182c46486d81196056953d20de74bbedc1e152
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 8da233088389797271541b1aae55ec2e842f252d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345865"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53381488"
 ---
 ## <a name="extended-iot-scenarios"></a>Erweiterte IoT-Szenarien
 
@@ -21,9 +21,9 @@ Verwenden Sie andere Azure-Dienste und -Tools. Wenn Sie Ihr Gerät mit IoT Hub v
 
 | Szenario                                                   | Azure-Dienst oder -Tool              |
 |----------------------------------------------------------- |------------------------------------|
-| [Verwalten von IoT Hub-Nachrichten](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | Azure IoT-Toolkit-Erweiterung für VS Code|
+| [Verwalten von IoT Hub-Nachrichten](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | Azure IoT Hub-Toolkiterweiterung für VS Code|
 | [Verwalten von IoT-Geräten](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI und die IoT-Erweiterung    |
-| [Verwalten von IoT-Geräten](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | Azure IoT-Toolkit-Erweiterung für VS Code|
+| [Verwalten von IoT-Geräten](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | Azure IoT Hub-Toolkiterweiterung für VS Code|
 | [Speichern von IoT Hub-Nachrichten in Azure Storage](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
 | [Visualisieren von Sensordaten](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
 | [Visualisieren von Sensordaten](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure-Web-Apps                      |

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 95e09532616b4aff05dad7440dcda6872fd27484
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2fe78efc8d85da2a8cd38a217c25f89ca7aefd22
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645523"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012996"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuelle Optimierung der Abfrageleistung in Azure SQL-Datenbank
 
@@ -258,7 +258,7 @@ Einige Anwendungen sind mit vielen Schreibvorgängen verbunden. In einigen Fäll
 
 ### <a name="application-tier-caching"></a>Zwischenspeichern auf Anwendungsebene
 
-Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von Lesevorgängen. Cachingschichten können zu einer Reduzierung der Datenbanklast und ggf. auch der Computegröße beitragen, die zum Unterstützen einer Datenbank mit Azure SQL-Datenbank erforderlich ist. Wenn Sie [Azure Redis Cache](https://azure.microsoft.com/services/cache/) verwenden und über Workloads mit vielen Lesevorgängen verfügen, können Sie Daten einmalig lesen (oder je nach Konfiguration ggf. einmal pro Computer auf Anwendungsebene) und dann außerhalb von Azure SQL-Datenbank speichern. Dies ist eine Möglichkeit zur Reduzierung der Datenbanklast (CPU- und Lesevorgang-E/A), aber es kommt zu einer Auswirkung auf die Transaktionskonsistenz, da die aus dem Cache ausgelesenen Daten gegenüber den Daten in der Datenbank ggf. nicht mehr synchron sind. Es gibt zwar viele Anwendungen, bei denen ein gewisser Inkonsistenzgrad akzeptabel ist, aber dies gilt nicht für alle Workloads. Sie sollten sich daher vollständig mit den Anwendungsanforderungen vertraut machen, bevor Sie eine Cachingstrategie auf Anwendungsebene implementieren.
+Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von Lesevorgängen. Cachingschichten können zu einer Reduzierung der Datenbanklast und ggf. auch der Computegröße beitragen, die zum Unterstützen einer Datenbank mit Azure SQL-Datenbank erforderlich ist. Wenn Sie [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) verwenden und über Workloads mit vielen Lesevorgängen verfügen, können Sie Daten einmalig lesen (oder je nach Konfiguration ggf. einmal pro Computer auf Anwendungsebene) und dann außerhalb von Azure SQL-Datenbank speichern. Dies ist eine Möglichkeit zur Reduzierung der Datenbanklast (CPU- und Lesevorgang-E/A), aber es kommt zu einer Auswirkung auf die Transaktionskonsistenz, da die aus dem Cache ausgelesenen Daten gegenüber den Daten in der Datenbank ggf. nicht mehr synchron sind. Es gibt zwar viele Anwendungen, bei denen ein gewisser Inkonsistenzgrad akzeptabel ist, aber dies gilt nicht für alle Workloads. Sie sollten sich daher vollständig mit den Anwendungsanforderungen vertraut machen, bevor Sie eine Cachingstrategie auf Anwendungsebene implementieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

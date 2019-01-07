@@ -3,17 +3,17 @@ title: Problembehandlung bei HBase mit Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit HBase und Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: nitinver
-ms.author: nitinver
-ms.custom: hdinsightactive
+author: hrasheed-msft
+ms.author: hrasheed
+ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
-ms.date: 7/7/2017
-ms.openlocfilehash: 771f01f18c5cb54a0458d624a65ec1a69345cadd
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/06/2018
+ms.openlocfilehash: b39c01e76ba3ec21f0cd2d16b86da5664e1d5002
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317227"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014667"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Problembehandlung bei Apache HBase mit Azure HDInsight
 
@@ -288,7 +288,7 @@ In *hbase: meta* ist für Region xxx keine Serveradresse aufgelistet.
 
 ### <a name="detailed-description"></a>Detaillierte Beschreibung
 
-Möglicherweise wird eine Meldung im Linux-Cluster angezeigt, in der darauf hingewiesen wird, dass die Tabelle *hbase: meta* nicht online ist. Beim Ausführen von `hbck` kann folgende Meldung angezeigt werden: „hbase: meta table replicaId 0 is not found on any region“ (hbase: Metatabelle mit replicaId 0 wurde für keine Region gefunden). Das Problem besteht möglicherweise darin, dass HMaster nach dem Neustarten von HBase nicht initialisiert werden konnte. In den HMaster-Protokollen wird möglicherweise folgende Meldung angezeigt: „No server address listed in hbase: meta for region hbase: backup \<region name\>“ (Keine Serveradresse in hbase aufgelistet: Metadaten für Regions-hbase: Region sichern).  
+Möglicherweise wird eine Meldung im Linux-Cluster angezeigt, in der darauf hingewiesen wird, dass die Tabelle *hbase: meta* nicht online ist. Beim Ausführen von `hbck` kann folgende Meldung angezeigt werden: „hbase: meta table replicaId 0 is not found on any region“ (hbase: Metatabelle mit replicaId 0 wurde für keine Region gefunden). Das Problem besteht möglicherweise darin, dass HMaster nach dem Neustarten von HBase nicht initialisiert werden konnte. In den HMaster-Protokollen könnte diese Meldung angezeigt werden: „Keine Serveradresse in ‚hbase:meta‘ aufgelistet für Region ‚hbase: backup \<Regionsname\>‘“.  
 
 ### <a name="resolution-steps"></a>Lösungsschritte
 
@@ -319,7 +319,7 @@ Möglicherweise wird eine Meldung im Linux-Cluster angezeigt, in der darauf hing
 
 ### <a name="error"></a>Error
 
-Bei HMaster tritt ein Timeout mit schwerwiegendem Ausnahmefehler wie „java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned“ (java.io.IOException: Timeout nach 300.000 ms Warten auf die Zuweisung der Namespace-Tabelle).
+HMaster Timeout mit schwerwiegendem Ausnahmefehler ähnlich „java.io.IOException: Timeout 300.000ms beim Warten auf Zuweisung der Namespacetabelle“.
 
 ### <a name="detailed-description"></a>Detaillierte Beschreibung
 
@@ -344,7 +344,7 @@ Dies ist ein bekanntes Problem mit dem HMaster-Dienst. Allgemeine Cluster-Starta
 
 ### <a name="issue"></a>Problem
 
-Ein Neustartfehler auf einem Regionsserver kann durch Befolgen der folgenden bewährten Methoden vermieden werden. Es wird empfohlen, hohe Workload-Aktivitäten zu unterbrechen, wenn Sie einen Neustart von HBase-Regionsservern planen. Wenn die Anwendung während des Herunterfahrens weiterhin versucht, Verbindungen mit Regionsservern herzustellen, wird der Regionsserver-Neustart um einige Minuten verlangsamt. Zudem empfiehlt es sich, zuvor alle Tabellen zu leeren. Eine Anleitung zum Leeren von Tabellen finden Sie unter [HDInsight HBase: How to Improve HBase cluster restart time by Flushing tables?](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) (HDInsight HBase: Verbessern der Neustartdauer von HBase-Clustern durch Leeren von Tabellen).
+Ein Neustartfehler auf einem Regionsserver kann durch Befolgen der folgenden bewährten Methoden vermieden werden. Es wird empfohlen, hohe Workload-Aktivitäten zu unterbrechen, wenn Sie einen Neustart von HBase-Regionsservern planen. Wenn die Anwendung während des Herunterfahrens weiterhin versucht, Verbindungen mit Regionsservern herzustellen, wird der Regionsserver-Neustart um einige Minuten verlangsamt. Zudem empfiehlt es sich, zuvor alle Tabellen zu leeren. Eine Referenz zum Leeren von Tabellen finden Sie unter [HDInsight HBase: How to improve the Apache HBase cluster restart time by flushing tables (HDInsight HBase: Verbessern der Neustartzeit für den Apache HBase-Cluster durch Leeren der Tabellen)](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
 Wenn Sie den Neustartvorgang auf HBase-Regionsservern über die Apache Ambari-Benutzeroberfläche initiieren, stellen Sie sofort fest, dass die Regionsserver heruntergefahren wurden, aber nicht sofort neu gestartet werden. 
 

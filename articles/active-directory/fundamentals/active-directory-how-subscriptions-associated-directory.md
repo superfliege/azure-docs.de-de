@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihrem Azure Active Directory-Mandanten ein vorhandenes Azure-Abonnement hinzufügen.
+title: Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Mandanten – Azure Active Directory | Microsoft-Dokumentation
+description: Anleitungen zum Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: dd62b22eca40a214c5b08a9bc48815e40fe90e47
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 4e4d4d9f34c8220ba70c64f073557f0293881c3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984082"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083868"
 ---
-# <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory
+# <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 Azure-Abonnements haben eine Vertrauensstellung mit Azure Active Directory (Azure AD). Das bedeutet, sie vertrauen Azure AD beim Authentifizieren von Benutzern, Diensten und Geräten. Mehrere Abonnements können demselben Azure AD-Verzeichnis vertrauen, aber ein Abonnement vertraut immer nur einem einzigen Verzeichnis.
 
 Wenn Ihr Abonnement abläuft, verlieren Sie auch den Zugriff auf alle Ressourcen, die dem Abonnement zugwiesen sind. Das Azure AD-Verzeichnis bleibt jedoch in Azure, sodass Sie das Verzeichnis mit einem anderen Azure-Abonnement zuweisen und verwalten können.
@@ -65,6 +65,6 @@ Das Ändern des Abonnementverzeichnisses erfolgt auf Dienstebene, sodass sich de
 
 - Wie Sie einen neuen Mandanten erstellen, erfahren Sie unter [Zugreifen auf Azure Active Directory zum Erstellen eines neuen Mandanten](active-directory-access-create-new-tenant.md).
 
-- Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+- Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
 - Weitere Informationen zum Zuweisen von Rollen in Azure AD finden Sie unter [Zuweisen von Verzeichnisrollen zu Benutzern in Azure Active Directory](active-directory-users-assign-role-azure-portal.md).

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 83fbebc07be3a61d7fd54953f842a320a537a7ac
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985011"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091042"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -51,7 +51,7 @@ Power BI, SQL und SQL Data Warehouse-Ausgaben unterstützen keine Partitionierun
 Weitere Informationen zu den Partitionen finden Sie in den folgenden Artikeln:
 
 * [Event Hubs-Features im Überblick](../event-hubs/event-hubs-features.md#partitions)
-* [Datenpartitionierung](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)
+* [Datenpartitionierung](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>Hochgradig parallele Aufträge
@@ -80,9 +80,11 @@ In den folgenden Abschnitten werden einige Beispielszenarien für hochgradige Pa
 
 Abfrage:
 
+```SQL
     SELECT TollBoothId
     FROM Input1 Partition By PartitionId
     WHERE TollBoothId > 100
+```
 
 Diese Abfrage stellt einen einfachen Filter dar. Daher ist keine Partitionierung der Eingabe erforderlich, die an den Event Hub gesendet wird. Beachten Sie, dass die Abfrage **Partition by PartitionId** enthält, daher erfüllt sie die zweite weiter oben genannte Anforderung. Für die Ausgabe muss die Event Hub-Ausgabe im Auftrag so konfiguriert werden, dass der Partitionsschlüssel auf **PartitionId** festgelegt ist. Eine letzte Prüfung besteht darin, sicherzustellen, dass die Anzahl der Eingabepartitionen mit der Anzahl der Ausgabepartitionen identisch ist.
 
@@ -93,9 +95,11 @@ Diese Abfrage stellt einen einfachen Filter dar. Daher ist keine Partitionierung
 
 Abfrage:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Diese Abfrage enthält einen Gruppierungsschlüssel. Aus diesem Grund müssen die gruppierten Ereignisse an dieselbe Event Hub-Partition gesendet werden. Da in diesem Beispiel nach TollBoothID gruppiert wird, müssen wir sicher sein, dass TollBoothID als Partitionsschlüssel verwendet wird, wenn die Ereignisse an Event Hub gesendet werden. Anschließend können wir in ASA **Partition by PartitionId** verwenden, um von diesem Partitionsschema zu erben und vollständige Parallelisierung zu aktivieren. Da es sich bei der Ausgabe um Blob Storage handelt, muss laut der vierten Anforderung kein Wert für den Partitionsschlüssel konfiguriert werden.
 
@@ -111,7 +115,7 @@ In diesem Fall spielt es keine Rolle, um welche Abfrage es sich handelt. Wenn di
 
 ### <a name="query-using-non-partitioned-output"></a>Abfragen mit nicht partitionierter Ausgabe
 * Eingabe: Event Hub mit 8 Partitionen
-* Ausgabe: Power BI
+* Ausgabe: PowerBI
 
 Bei der Power BI-Ausgabe wird derzeit keine Partitionierung unterstützt. Daher besteht in diesem Szenario keine hochgradige Parallelität.
 
@@ -121,6 +125,7 @@ Bei der Power BI-Ausgabe wird derzeit keine Partitionierung unterstützt. Daher 
 
 Abfrage:
 
+```SQL
     WITH Step1 AS (
     SELECT COUNT(*) AS Count, TollBoothId, PartitionId
     FROM Input1 Partition By PartitionId
@@ -130,6 +135,7 @@ Abfrage:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 Wie Sie sehen, wird im zweiten Schritt **TollBoothId** als Partitionierungsschlüssel verwendet. Dieser Schritt entspricht nicht dem ersten Schritt, und deshalb muss eine Umschichtung durchgeführt werden. 
 
@@ -143,6 +149,7 @@ Eine Abfrage kann einen oder mehrere Schritte umfassen. Jeder Schritt besteht au
 
 Abfrage:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -151,6 +158,7 @@ Abfrage:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute,3), TollBoothId
+```
 
 Die Abfrage umfasst zwei Schritte.
 
@@ -182,20 +190,25 @@ In der nachstehenden Tabelle werden einige **Beispiele** angegeben.
 
 Mit der folgenden Abfrage wird die Anzahl der Fahrzeuge berechnet, die in einem Zeitraum von drei Minuten eine Mautstation mit drei Mautstellen passieren. Diese Abfrage kann auf bis zu sechs SUs skaliert werden.
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Um weitere SUs für die Abfrage zu verwenden, müssen sowohl der Eingabedatenstrom als auch die Abfrage partitioniert werden. Da die Datenstrompartition auf „3“ festgelegt ist, kann die folgende geänderte Abfrage auf bis zu 18 SUs skaliert werden:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Wenn eine Abfrage partitioniert ist, werden die Eingabeereignisse verarbeitet und in separaten Partitionsgruppen aggregiert. Zudem werden für die einzelnen Gruppen Ausgabeereignisse generiert. Die Partitionierung kann zu unerwarteten Ergebnissen führen, wenn das Feld **GROUP BY** nicht den Partitionsschlüssel im Eingabedatenstrom enthält. Beispielsweise enthält das Feld **TollBoothId** in der vorherigen Abfrage nicht den Partitionsschlüssel von **Input1**. Das Ergebnis: Die Daten aus der Mautstation 1 können auf mehrere Partitionen verteilt werden.
 
 Alle Partitionen von **Input1** werden separat von Stream Analytics verarbeitet. Folglich werden im selben rollierenden Fenster mehrere Einträge von der Anzahl der Autos für dieselbe Mautstation erstellt. Falls der Eingabepartitionsschlüssel nicht geändert werden kann, kann dieses Problem durch Hinzufügen eines nicht partitionierten Schritts zum partitionsübergreifenden Sammeln von Werten behoben werden, wie im folgenden Beispiel gezeigt wird:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -205,6 +218,7 @@ Alle Partitionen von **Input1** werden separat von Stream Analytics verarbeitet.
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 Diese Abfrage kann auf bis zu 24 SUs skaliert werden.
 

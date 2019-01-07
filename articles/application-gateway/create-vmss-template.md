@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 24f834c907fee6f2ddae766ae7494f73a31447c5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d6180156e1a8f3fa053c7fbb247e38831f86e76a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202805"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998400"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure-Ressourcen-Manager-Vorlage
 
@@ -77,7 +77,7 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "addressPrefix": {
@@ -114,11 +114,11 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
     }
     ```
 
-1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](http://www.jslint.com/)testen.
+1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](https://www.jslint.com/)testen.
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
 
-Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
 1. Anmeldung bei PowerShell
 
@@ -226,9 +226,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren der SSL-Auslagerung finden Sie unter [Konfigurieren eines Anwendungsgateways für SSL-Auslagerung mit klassischem Bereitstellungsmodell](tutorial-ssl-cli.md).
+Wenn Sie die SSL-Auslagerung konfigurieren möchten, besuchen Sie: [Konfigurieren eines Application Gateways für die SSL-Auslagerung](tutorial-ssl-cli.md).
 
-Informationen zum Konfigurieren eines Anwendungsgateways für die Verwendung mit einem internen Lastenausgleich finden Sie unter [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](redirect-internal-site-cli.md).
+Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, besuchen Sie: [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](redirect-internal-site-cli.md).
 
 Weitere grundsätzliche Informationen zu Lastenausgleichsoptionen finden Sie unter:
 

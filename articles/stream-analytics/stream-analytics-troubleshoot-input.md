@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 2b2dc3ba78cfa682c4a326754bdddfa9bc81f836
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346254"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164380"
 ---
 # <a name="troubleshoot-input-connections"></a>Problembehandlung für Eingangsverbindungen
 
@@ -35,7 +36,7 @@ Deserialisierungsprobleme werden verursacht, wenn der Eingabedatenstrom Ihres St
  
 Wenn ein Stream Analytics-Auftrag eine falsch formatierte Nachricht aus einer Eingabe empfängt, wird diese gelöscht und Sie werden mit einer Warnung benachrichtigt. Auf der Kachel **Eingaben** des Stream Analytics-Auftrags wird ein Warnsymbol angezeigt. Dieses Warnzeichen existiert, solange sich der Auftrag im Ausführungszustand befindet:
 
-![Azure Stream Analytics-Kachel „Eingaben“](media/stream-analytics-malformed-events/inputs_tile.png)
+![Azure Stream Analytics-Kachel „Eingaben“](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Aktivieren Sie die Diagnoseprotokolle, um Details zur Warnung anzuzeigen. Bei falsch formatierten Eingabeereignissen enthalten die Ausführungsprotokolle einen Eintrag mit der Meldung, die etwa wie folgt aussieht: 
 <code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
@@ -47,8 +48,8 @@ Sie können die folgenden Schritte durchführen, um die Eingabeereignisse im Det
 
 2. Auf der Kachel „Eingabedetails“ wird eine Liste von Warnungen mit Details zu den einzelnen Problemen angezeigt. Die folgende exemplarische Warnmeldung enthält die Partitions-, Offset- und Sequenznummern, bei denen falsch formatierte JSON-Daten vorliegen. 
 
-   ![Warnmeldung mit Offset](media/stream-analytics-malformed-events/warning_message_with_offset.png)
-
+   ![Stream Analytics-Warnmeldung mit Offset](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   
 3. Um die JSON-Daten mit dem falschen Format zu finden, führen Sie den Code in „CheckMalformedEvents.cs“ aus. Diese Datei ist über das [GitHub-Beispielrepository](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH) verfügbar. Dieser Code liest die Partitions-ID und den Offset und gibt die Daten aus dem Offset aus. 
 
 4. Nach dem Lesen der Daten können Sie das Serialisierungsformat analysieren und korrigieren.
@@ -101,7 +102,7 @@ Die WITH-Klausel gibt ein temporäres benanntes Resultset an, auf das in der Abf
 
 Verwenden Sie beispielsweise anstelle dieser Abfrage:
 
-```
+```SQL
 SELECT foo 
 INTO output1
 FROM inputEventHub
@@ -114,7 +115,7 @@ FROM inputEventHub
 
 Diese Abfrage:
 
-```
+```SQL
 WITH data AS (
    SELECT * FROM inputEventHub
 )

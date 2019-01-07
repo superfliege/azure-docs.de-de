@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1d49403ec04b2ec35291869385c316cb5ab3b0da
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044908"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724059"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Data Lake Analytics-Konten, -D
 3. Wählen Sie Werte für die folgenden Elemente: 
    1. **Name**: Der Name des Data Lake Analytics-Kontos.
    2. **Abonnement**: Das für das Konto verwendete Azure-Abonnement.
-   3. **Ressourcengruppe**: Die Azure-Ressourcengruppe, in der das Konto erstellt werden soll. 
+   3. **Ressourcengruppe**: Der Name der Azure-Ressourcengruppe, in der das Konto erstellt werden soll. 
    4. **Standort**: Das Azure-Rechenzentrum für das Data Lake Analytics-Konto. 
    5. **Data Lake Store**: Der Standardspeicher, der für das Data Lake Analytics-Konto verwendet werden soll. Das Data Lake Store-Konto und das Data Lake Analytics-Konto müssen sich am selben Ort befinden.
 4. Klicken Sie auf **Create**. 
@@ -98,8 +98,8 @@ Sie können den **Assistent für das Hinzufügen von Benutzern** verwenden, um e
 Wie andere Azure-Dienste können Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwenden, um zu steuern, wie Benutzer mit dem Dienst interagieren.
 
 Die standardmäßigen RBAC-Rollen haben die folgenden Funktionen:
-* **Besitzer**: Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von allen Benutzern abbrechen und das Konto konfigurieren.
-* **Mitwirkender**: Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von allen Benutzern abbrechen und das Konto konfigurieren.
+* **Besitzer**: Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von beliebigen Benutzern abbrechen und das Konto konfigurieren.
+* **Mitwirkender**: Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von beliebigen Benutzern abbrechen und das Konto konfigurieren.
 * **Leser**: Kann Aufträge überwachen.
 
 Verwenden Sie die Rolle „Data Lake Analytics-Entwickler“, um U-SQL-Entwicklern das Verwenden des Data Lake Analytics-Diensts zu ermöglichen. Sie können die Rolle „Data Lake Analytics-Entwickler“ für Folgendes verwenden:
@@ -111,7 +111,7 @@ Verwenden Sie die Rolle „Data Lake Analytics-Entwickler“, um U-SQL-Entwickle
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Hinzufügen von Benutzern oder Sicherheitsgruppen zu einem Data Lake Analytics-Konto
 
 1. Gehen Sie im Azure-Portal zu Ihrem Data Lake Analytics-Konto.
-2. Klicken Sie auf **Zugriffssteuerung (IAM)** > **Hinzufügen**.
+2. Klicken Sie auf **Zugriffssteuerung (IAM)** > **Rollenzuweisung hinzufügen**.
 3. Wählen Sie eine Rolle aus.
 4. Fügen Sie einen Benutzer hinzu.
 5. Klicken Sie auf **OK**.
@@ -132,8 +132,8 @@ Verwenden Sie die Rolle „Data Lake Analytics-Entwickler“, um U-SQL-Entwickle
 2. Klicken Sie auf **Neuer Auftrag**. Konfigurieren Sie für jeden Auftrag Folgendes:
 
     1. **Auftragsname**: Der Name des Auftrags.
-    2. **Priorität**: Niedrigere Zahlen haben eine höhere Priorität. Wenn sich zwei Aufträge in der Warteschlange befinden, wird zuerst der Auftrag mit dem niedrigeren Prioritätswert ausgeführt.
-    3. **Parallelität**: Die maximale Anzahl von Compute-Vorgängen, die für diesen Auftrag reserviert werden sollen.
+    2. **Priorität**: Niedrigere Zahlen stehen für eine höhere Priorität. Wenn sich zwei Aufträge in der Warteschlange befinden, wird zuerst der Auftrag mit dem niedrigeren Prioritätswert ausgeführt.
+    3. **Parallelität**: Die maximale Anzahl von Computevorgängen, die für diesen Auftrag reserviert werden sollen.
 
 3. Klicken Sie auf **Auftrag senden**.
 

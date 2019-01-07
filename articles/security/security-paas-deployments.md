@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee62e81b8c75200f26dfb5f7303083190f83eb8e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262181"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016843"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -133,7 +133,7 @@ Folgende Methoden haben sich bei der Verwendung von App Service bewährt.
 **Detail**: Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Mit Key Vault können Sie Schlüssel und Geheimnisse (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem Sie Schlüssel verwenden, die durch Hardwaresicherheitsmodule (HSMs) geschützt werden. Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Weitere Informationen finden Sie unter [Azure Key Vault](../key-vault/key-vault-whatis.md). Sie können auch Key Vault zum Verwalten Ihrer TLS-Zertifikate mit der automatischen Verlängerung verwenden.
 
 **Bewährte Methode**: Schränken Sie eingehende Quell-IP-Adressen ein.   
-**Detail**: Die [App Service-Umgebung ](../app-service/environment/intro.md) verfügt über ein Feature zur Integration virtueller Netzwerke, mit dem Sie eingehende Quell-IP-Adressen über Netzwerksicherheitsgruppen einschränken können. Mit virtuellen Netzwerken können Sie Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Weitere Informationen hierzu finden Sie unter [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).
+**Detail**: Die [App Service-Umgebung](../app-service/environment/intro.md) verfügt über ein Feature zur Integration virtueller Netzwerke, mit dem Sie eingehende Quell-IP-Adressen über Netzwerksicherheitsgruppen einschränken können. Mit virtuellen Netzwerken können Sie Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Weitere Informationen hierzu finden Sie unter [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).
 
 **Bewährte Methode**: Überwachen Sie den Sicherheitsstatus Ihrer App Service-Umgebungen.   
 **Detail**: Verwenden Sie Azure Security Center, um Ihre App Service-Umgebungen zu überwachen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center [Empfehlungen](../security-center/security-center-virtual-machine-recommendations.md), die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.
@@ -163,7 +163,7 @@ In diesem Artikel standen die Sicherheitsvorteile einer Azure-PaaS-Bereitstellun
 - [Azure App Service](security-paas-applications-using-app-services.md)
 - [Azure SQL-Datenbank und Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
 - [Azure Storage (in englischer Sprache)](security-paas-applications-using-storage.md)
-- Azure Redis Cache
+- Azure Cache for Redis
 - Azure-Servicebus
 - Web Application Firewalls
 

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 10/20/2018
+ms.date: 12/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b1550fc07ee4edfe98482a2e880f201ceb66705f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254515"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995697"
 ---
 ### <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -37,7 +37,7 @@ Sie können Azure Firewall in einem virtuellen Netzwerk bereitstellen, Kunden st
 
 ### <a name="how-can-i-install-the-azure-firewall"></a>Wie kann ich Azure Firewall installieren?
 
-Sie können Azure Firewall über das Azure-Portal, PowerShell, die REST-API oder Vorlagen einrichten. Schrittanleitungen finden Sie im [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](../articles/firewall/tutorial-firewall-deploy-portal.md).
+Sie können Azure Firewall über das Azure-Portal, PowerShell, die REST-API oder Vorlagen einrichten. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](../articles/firewall/tutorial-firewall-deploy-portal.md).
 
 ### <a name="what-are-some-azure-firewall-concepts"></a>Wie lauten einige der Azure Firewall-Konzepte?
 
@@ -45,7 +45,7 @@ Azure Firewall unterstützt-Regeln und Regelsammlungen. Eine Regelsammlung ist e
 
 Es gibt zwei Arten von Regelsammlungen:
 
-* *Anwendungsregeln*: Ermöglichen Ihnen das Konfigurieren vollqualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs), auf die von einem Subnetz aus zugegriffen werden kann.
+* *Anwendungsregeln*: Ermöglichen das Konfigurieren vollqualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs), auf die von einem Subnetz aus zugegriffen werden kann.
 * *Netzwerkregeln*: Ermöglichen Ihnen das Konfigurieren von Regeln mit Quelladressen, Protokollen, Zielports und Zieladressen.
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Unterstützt Azure Firewall das Filtern des eingehenden Datenverkehrs?
@@ -92,7 +92,7 @@ Beispiel:
 ```azurepowershell
 # Stop an exisitng firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name” -ResourceGroupName "RG Name"
+$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```
@@ -117,10 +117,14 @@ Die Einschränkungen des Azure Firewall-Diensts finden Sie unter [Einschränkung
 
 Ja, Sie können Azure Firewall in einem virtuellen Hubnetzwerk verwenden, um den Datenverkehr zwischen zwei virtuellen Spoke-Netzwerken weiterzuleiten und zu filtern. Subnetze in jedem der virtuellen Spoke-Netzwerke müssen über eine UDR verfügen, die auf die Azure Firewall als Standardgateway verweist, damit dieses Szenario ordnungsgemäß funktioniert.
 
-### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Kann Azure Firewall den Netzwerkdatenverkehr zwischen Subnetzen im selben virtuellen Netzwerk weiterleiten und filtern?
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Kann Azure Firewall den Netzwerkdatenverkehr zwischen Subnetzen im selben virtuellen Netzwerk oder über mittels Peering verknüpfte virtuelle Netzwerke weiterleiten und filtern?
 
 Datenverkehr zwischen Subnetzen im selben virtuellen Netzwerk oder in einem direkt mittels Peering verknüpften virtuellen Netzwerk wird direkt weitergeleitet, selbst wenn die UDR auf Azure Firewall als Standardgateway verweist. Die empfohlene Methode für die interne Netzwerksegmentierung ist die Verwendung von Netzwerksicherheitsgruppen. Um in diesem Szenario Subnetz-zu-Subnetz-Datenverkehr an die Firewall zu senden, muss die UDR explizit den Zielsubnetzwerk-Präfix in beiden Subnetzen enthalten.
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Gibt es Einschränkungen bei Ressourcengruppen?
 
 Ja. Firewall, Subnetz, VNET und die öffentliche IP-Adresse müssen sich in der gleichen Ressourcengruppe befinden.
+
+### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Muss ich bei der Konfiguration von DNAT für den eingehenden Netzwerkverkehr auch eine entsprechende Netzwerkregel konfigurieren, um diesen Verkehr zu ermöglichen?
+
+ Nein. Mit NAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Sie können dieses Verhalten außer Kraft setzen, indem Sie explizit eine Netzwerkregelsammlung mit Ablehnungsregeln hinzufügen, die für den übersetzten Datenverkehr geeignet sind. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](../articles/firewall/rule-processing.md).

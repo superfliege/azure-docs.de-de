@@ -5,22 +5,22 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/04/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: efbbe048456c969f0045a0588bc5b64d1138ee15
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976960"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956515"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
 Wenn Sie die Notfallwiederherstellung für VMware-VMs und physische Server mithilfe von [Azure Site Recovery](site-recovery-overview.md) einrichten, installieren Sie den Site Recovery-Mobilitätsdienst auf jedem lokalen virtuellen VMware-Computer und physischen Server.  Der Mobilitätsdienst erfasst Datenschreibvorgänge auf dem Computer und leitet sie an den Site Recovery-Prozessserver weiter. Sie können die den Mobilitätsdienst mithilfe der folgenden Methoden bereitstellen:
 
 [Pushinstallation](vmware-azure-install-mobility-service.md): Konfigurieren Sie Site Recovery, um eine Pushinstallation des Mobilitätsdienstes durchzuführen: Dazu richten Sie bei der Einrichtung der Notfallwiederherstellung auch ein Konto ein, mit dem der Site Recovery-Prozessserver für die Installation des Dienstes auf die VM oder den physischen Server zugreifen kann.
-[Manuelles Installieren](vmware-physical-mobility-service-install-manual.md): Über die Benutzeroberfläche oder die Eingabeaufforderung können Sie den Mobilitätsdienst manuell auf jedem Computer installieren.
-[Automatisierte Bereitstellung](vmware-azure-mobility-install-configuration-mgr.md): Sie können die Installation mit Softwarebereitstellungstools, wie System Center Configuration Manager, automatisieren.
+[Manuelle Installation](vmware-physical-mobility-service-install-manual.md): Über die Benutzeroberfläche oder die Eingabeaufforderung können Sie den Mobilitätsdienst manuell auf jedem Computer installieren.
+[Automatisierte Bereitstellung](vmware-azure-mobility-install-configuration-mgr.md): Sie können die Installation mithilfe von Softwarebereitstellungstools wie System Center Configuration Manager automatisieren.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-VM-Agent
 
@@ -56,11 +56,11 @@ Wenn auf Computern, die Sie replizieren möchten, aktive Virenschutzsoftware aus
 2. Öffnen Sie im Portal den Tresor > **Replizierte Elemente**.
 3. Wenn der Konfigurationsserver bereits die neueste Version verwendet, wird eine Benachrichtigung angezeigt, dass ein neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Sie können es per Klick installieren.
 
-     ![Fenster „Replizierte Elemente“](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![Fenster „Replizierte Elemente“](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
 4. Klicken Sie auf die Benachrichtigung, und wählen Sie in **Agent-Update** den Computer, auf dem Sie den Mobilitätsdienst aktualisieren möchten. Klicken Sie dann auf **OK**.
 
-     ![VM-Liste mit replizierten Elementen](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![VM-Liste mit replizierten Elementen](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. Der Aktualisierungsauftrag für Mobility Service wird für jeden ausgewählten Computer gestartet.
 
@@ -74,8 +74,8 @@ Wenn Sie Site Recovery eingesetzt haben, um die Pushinstallation des Mobilitäts
 
 Die Deinstallation erfolgt über die Benutzeroberfläche oder eine Eingabeaufforderung.
 
-- **Über die Benutzeroberfläche**: Wählen Sie in der Systemsteuerung des Computers **Programme**. Wählen Sie **Microsoft Azure Site Recovery Mobility Service/Masterzielserver** > **Deinstallieren**.
-- **Über eine Eingabeaufforderung**: Öffnen Sie ein Eingabeaufforderungsfenster als Administrator auf dem Computer. Führen Sie den folgenden Befehl aus: 
+- **Über die Benutzeroberfläche**: Wählen Sie in der Systemsteuerung des Computers **Programme** aus. Wählen Sie **Microsoft Azure Site Recovery Mobility Service/Masterzielserver** > **Deinstallieren**.
+- **Über eine Eingabeaufforderung**: Öffnen Sie als Administrator ein Eingabeaufforderungsfenster auf dem Computer. Führen Sie den folgenden Befehl aus: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```

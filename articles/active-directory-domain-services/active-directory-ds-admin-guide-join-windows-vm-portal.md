@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne | Microsoft-Dokumentation'
 description: Einbinden eines virtuellen Windows Server-Computers in Azure AD DS
 services: active-directory-ds
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158325"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957668"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 In diesem Artikel wird veranschaulicht, wie Sie mit dem Azure-Portal einen neuen virtuellen Windows Server-Computer bereitstellen. Anschließend erfahren Sie, wie Sie den virtuellen Computer in eine verwaltete Domäne von Azure Active Directory Domain Services (Azure AD DS) einbinden.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="step-1-create-a-windows-server-virtual-machine"></a>Schritt 1: Erstellen eines virtuellen Windows Server-Computers
+## <a name="step-1-create-a-windows-server-virtual-machine"></a>Schritt 1: Erstellen einer Windows-VM
 Führen Sie folgende Schritte durch, um einen virtuellen Windows-Computer zu erstellen, der in das virtuelle Netzwerk eingebunden wird, in dem Sie Azure AD DS aktiviert haben:
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie oben im linken Bereich die Option **Neu**.
 3. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**.
 
@@ -67,7 +67,7 @@ Führen Sie folgende Schritte durch, um einen virtuellen Windows-Computer zu ers
 10. Nach Abschluss der Bereitstellung können Sie auf der Seite **Übersicht** Informationen zur VM anzeigen.
 
 
-## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>Schritt 2: Herstellen einer Verbindung mit dem virtuellen Windows Server-Computer über das lokale Administratorkonto
+## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>Schritt 2: Herstellen einer Verbindung mit der Windows-VM über das lokale Administratorkonto
 Stellen Sie als Nächstes eine Verbindung mit dem neu erstellten virtuellen Windows Server-Computer her, damit dieser der Domäne beitreten kann. Verwenden Sie die Anmeldeinformationen des lokalen Administrators, die Sie beim Erstellen des virtuellen Computers angegeben haben.
 
 Um eine Verbindung mit dem virtuellen Computer herzustellen, führen Sie die folgenden Schritte durch:
@@ -84,7 +84,7 @@ Um eine Verbindung mit dem virtuellen Computer herzustellen, führen Sie die fol
 Sie sollten Sie mit Ihren Anmeldeinformationen für den lokalen Administrator am neu erstellten virtuellen Windows-Computer angemeldet werden. Der nächste Schritt besteht darin, den virtuellen Computer in die Domäne einzubinden.
 
 
-## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>Schritt 3: Einbinden des virtuellen Windows Server-Computers in die per Azure AD DS verwaltete Domäne
+## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>Schritt 3: Einbinden der Windows-VM in die mit Azure AD DS verwaltete Domäne
 Um den virtuellen Windows Server-Computer in die mit Azure AD DS verwalteten Domäne einzubinden, führen Sie folgende Schritte durch:
 
 1. Stellen Sie eine Verbindung mit dem virtuellen Windows Server-Computer her, wie in Schritt 2 gezeigt. Öffnen Sie auf dem **Startbildschirm** den **Server-Manager**.
@@ -107,7 +107,7 @@ Um den virtuellen Windows Server-Computer in die mit Azure AD DS verwalteten Dom
 
 7. Sie können Anmeldeinformationen auf eine der folgenden Arten eingeben:
 
-   * **UPN-Format (empfohlen)**: Geben Sie das Benutzerprinzipalnamen-Suffix für das Benutzerkonto an, wie in Azure AD konfiguriert. In diesem Beispiel ist *bob@domainservicespreview.onmicrosoft.com* das UPN-Suffix des Benutzers *bob*.
+   * **UPN-Format** (empfohlen): Geben Sie das Benutzerprinzipalnamen-Suffix für das Benutzerkonto an, wie in Azure AD konfiguriert. In diesem Beispiel ist *bob@domainservicespreview.onmicrosoft.com* das UPN-Suffix des Benutzers *bob*.
 
    * **SAMAccountName-Format**: Sie können den Kontonamen im Format „SAMAccountName“ angeben. Der Benutzer *bob* würde in diesem Beispiel *CONTOSO100\bob* eingeben.
 

@@ -1,20 +1,18 @@
 ---
-title: Informationen zum sicheren Zugriff auf Daten in Azure Cosmos DB | Microsoft-Dokumentation
+title: Informationen zum sicheren Zugriff auf Daten in Azure Cosmos DB
 description: Informationen zu Zugriffssteuerungskonzepten in Azure Cosmos DB, darunter Hauptschlüssel, Schlüssel mit Leseberechtigung, Benutzer und Berechtigungen.
 services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621444"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878329"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Sichern des Zugriffs auf Azure Cosmos DB-Daten
 Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gespeicherte Daten.
@@ -180,8 +178,8 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 Um Ihrem Benutzerkonto Azure Cosmos DB-Kontoleserzugriff hinzuzufügen, lassen Sie den Besitzer eines Abonnements die folgenden Schritte im Azure-Portal ausführen.
 
 1. Öffnen Sie das Azure-Portal, und wählen Sie Ihr Azure Cosmos DB-Konto aus.
-2. Klicken Sie auf die Registerkarte **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **Hinzufügen**.
-3. Wählen Sie im Bereich **Berechtigungen hinzufügen** im Feld **Rolle** die Option **Cosmos DB-Rolle "Kontoleser"** aus.
+2. Klicken Sie auf die Registerkarte **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **+ Rollenzuweisung hinzufügen**.
+3. Wählen Sie im Bereich **Rollenzuweisung hinzufügen** im Feld **Rolle** die Option **Cosmos DB-Rolle „Kontoleser“** aus.
 4. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus.
 5. Wählen Sie den Benutzer, die Gruppe oder die Anwendung aus, dem oder der Sie Zugriff gewähren möchten.  Sie können das Verzeichnis nach Anzeigename, E-Mail-Adresse oder Objektbezeichner durchsuchen.
     Der ausgewählten Benutzer, die Gruppe oder die Anwendung wird in der Liste der ausgewählten Elemente angezeigt.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139508"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841624"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien
 
@@ -31,7 +31,7 @@ Ein reibungslose Benutzeroberfläche ist für jede B2C-Lösung (Business to Cons
 
 Mit Azure AD B2C können Sie das Aussehen und Verhalten der Benutzeroberfläche auf den unterschiedlichen Seiten anpassen, die von Azure AD B2C über Ihre benutzerdefinierten Richtlinien bereitgestellt und angezeigt werden.
 
-Zu diesem Zweck wird von Azure AD B2C Code im Browser des Kunden ausgeführt und der moderne Standardansatz [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](http://www.w3.org/TR/cors/) verwendet, um für benutzerdefinierten Inhalt von einer bestimmten URL, die Sie in einer benutzerdefinierten Richtlinie angeben, auf Ihre HTML5/CSS-Vorlagen zu verweisen. CORS ist ein Mechanismus, mit dem eingeschränkte Ressourcen, z.B. Schriftarten, auf einer Webseite von einer anderen Domäne aus angefordert werden können, die sich außerhalb der Ursprungsdomäne der Ressource befindet.
+Zu diesem Zweck wird von Azure AD B2C Code im Browser des Kunden ausgeführt und der moderne Standardansatz [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://www.w3.org/TR/cors/) verwendet, um für benutzerdefinierten Inhalt von einer bestimmten URL, die Sie in einer benutzerdefinierten Richtlinie angeben, auf Ihre HTML5/CSS-Vorlagen zu verweisen. CORS ist ein Mechanismus, mit dem eingeschränkte Ressourcen, z.B. Schriftarten, auf einer Webseite von einer anderen Domäne aus angefordert werden können, die sich außerhalb der Ursprungsdomäne der Ressource befindet.
 
 Im Vergleich zum herkömmlichen Ansatz, bei dem sich Vorlagenseiten im Besitz der Lösung befinden, nur eingeschränkte Textelemente und Bilder bereitgestellt werden und eine eingeschränkte Steuerung des Layouts und Aussehens möglich war und sich Schwierigkeiten in Bezug auf die Bereitstellung einer reibungslosen Oberfläche ergeben haben, werden beim CORS-Ansatz HTML5 und CSS unterstützt. Dies eröffnet Ihnen folgende Möglichkeiten:
 
@@ -69,10 +69,10 @@ Führen Sie folgende Schritte aus, um dafür zu sorgen, dass alles wie gewünsch
 - Verwenden Sie absolute URLs, z.B. https://yourdomain/content, für alle Links und CSS-Inhalte.
 
 > [!TIP]
-> Sie können die Website http://test-cors.org/ verwenden, um sicherzustellen, dass die von Ihnen gehostete Website für Ihren Inhalt über eine CORS-Aktivierung verfügt, und um CORS-Anforderungen zu testen. Dank dieser Website können Sie die CORS-Anforderung an einen Remoteserver senden (um zu testen, ob CORS unterstützt wird). Sie können die CORS-Anforderung auch an einen Testserver senden (um bestimmte Features von CORS auszuprobieren).
+> Sie können die Website https://test-cors.org/ verwenden, um sicherzustellen, dass die von Ihnen gehostete Website für Ihren Inhalt über eine CORS-Aktivierung verfügt, und um CORS-Anforderungen zu testen. Dank dieser Website können Sie die CORS-Anforderung an einen Remoteserver senden (um zu testen, ob CORS unterstützt wird). Sie können die CORS-Anforderung auch an einen Testserver senden (um bestimmte Features von CORS auszuprobieren).
 
 > [!TIP]
-> Auch die Website http://enable-cors.org/ ist eine sehr nützliche Ressource für CORS.
+> Auch die Website https://enable-cors.org/ ist eine sehr nützliche Ressource für CORS.
 
 Dank dieses CORS-basierten Ansatzes kommen die Endbenutzer sowohl bei Ihrer Anwendung als auch bei den von Azure AD B2C bereitgestellten Seiten in den Genuss eines konsistenten Benutzererlebnisses.
 
@@ -111,7 +111,7 @@ Als Voraussetzung hierfür müssen Sie ein Speicherkonto erstellen. Sie benötig
     c.  Den Namen Ihres Blobspeichercontainers (*containerName*), z.B. *b2c*.
     d.  Den Pfad der *Starter-Pack*-Beispieldateien, z.B. *..\B2CTemplates\wingtiptoys*.
 
-Wenn Sie die obigen Schritte ausgeführt haben, verweisen die HTML5- und CSS-Dateien des *UI-Customization-Pack* für das fiktive Unternehmen **wingtiptoys** jetzt auf Ihr Speicherkonto.  Sie können sich vergewissern, dass der Inhalt richtig hochgeladen wurde, indem Sie im Azure-Portal den entsprechenden Containerbereich öffnen. Alternativ dazu können Sie das richtige Hochladen des Inhalts auch überprüfen, indem Sie über einen Browser auf die Seite zugreifen. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Ein Hilfsprogramm, mit dem das Anpassungsfeature für die Seitenbenutzeroberfläche (UI) veranschaulicht werden kann](active-directory-b2c-reference-ui-customization-helper-tool.md).
+Wenn Sie die obigen Schritte ausgeführt haben, verweisen die HTML5- und CSS-Dateien des *UI-Customization-Pack* für das fiktive Unternehmen **wingtiptoys** jetzt auf Ihr Speicherkonto.  Sie können sich vergewissern, dass der Inhalt richtig hochgeladen wurde, indem Sie im Azure-Portal den entsprechenden Containerbereich öffnen. Alternativ dazu können Sie das richtige Hochladen des Inhalts auch überprüfen, indem Sie über einen Browser auf die Seite zugreifen. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Hilfsprogramm zur Veranschaulichung des Anpassungsfeatures für die Seitenbenutzeroberfläche (UI)](active-directory-b2c-reference-ui-customization-helper-tool.md).
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>Sicherstellen der CORS-Aktivierung für das Speicherkonto
 
@@ -120,13 +120,13 @@ CORS (Cross-Origin Resource Sharing) muss auf Ihrem Endpunkt aktiviert sein, dam
 Führen Sie die folgenden Schritte aus, um sicherzustellen, dass für den Speicher, in dem Sie Ihren Inhalt hosten, CORS aktiviert ist:
 
 1. Öffnen Sie eine Browsersitzung, und navigieren Sie zur Seite *unified.html*, indem Sie die vollständige URL des Standorts in Ihrem Speicherkonto verwenden: `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Beispiel: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Navigieren Sie zu http://test-cors.org. Mit dieser Website können Sie überprüfen, ob für die verwendete Seite CORS aktiviert ist.  
+2. Navigieren Sie zu https://test-cors.org. Mit dieser Website können Sie überprüfen, ob für die verwendete Seite CORS aktiviert ist.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->
 
 3. Geben Sie unter **Remote-URL** die vollständige URL für Ihren „unified.html“-Inhalt an, und klicken Sie auf **Anforderung senden**.
-4. Vergewissern Sie sich, dass die Ausgabe im Abschnitt **Ergebnisse** den Text *XHR status: 200* enthält, was darauf hinweist, dass CORS aktiviert ist.
+4. Vergewissern Sie sich, dass die Ausgabe im Abschnitt **Ergebnisse** den Text *XHR status: 200* enthält. Hiermit wird angegeben, dass CORS aktiviert ist.
 <!--
 ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
 -->
@@ -168,4 +168,4 @@ Die folgende Tabelle beschreibt die IDs der Inhaltsdefinitionen, die von der Azu
 | *api.signuporsignin* | **Einheitliche Seite für Registrierung oder Anmeldung**:  Auf dieser Seite wird sowohl die Registrierung als auch die Anmeldung von Benutzern verarbeitet, die dafür Unternehmensidentitätsanbieter, Identitätsanbieter sozialer Netzwerke, z.B. Facebook oder Google+, oder lokale Konten verwenden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Reference: Understand how custom policies work with the Identity Experience Framework in B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md) (Referenz: Funktionsweise von benutzerdefinierten Richtlinien mit Identity Experience Framework in B2C)
+[Referenz: Grundlegendes zur Funktionsweise der benutzerdefinierten Richtlinien mit dem Identity Experience Framework in B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md)

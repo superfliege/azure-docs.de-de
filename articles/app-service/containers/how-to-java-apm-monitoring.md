@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Java-APM- und Überwachungstools mit Azure App Service unter Linux
+title: Konfigurieren von Java-APM- und Überwachungstools unter Linux – Azure App Service
 description: Es wird beschrieben, wie Sie Protokolle und Metriken für Ihre Java-Anwendungen, die unter App Service Linux ausgeführt werden, an NewRelic- und App Dynamics-APM-Anbieter senden.
 services: app-service\web
 author: rloutlaw
@@ -9,12 +9,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: astay;routlaw
-ms.openlocfilehash: 06ae71fea1b85a74d87588d2635038c64c8540cc
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: b730c30d51a9f86adc889a9d6718d003674dbc27
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52577103"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260462"
 ---
 # <a name="how-to-application-performance-monitoring-tools-with-java-apps-on-azure-app-service-on-linux"></a>Gewusst wie: Tools für die Überwachung der Anwendungsleistung mit Java-Apps in Azure App Service unter Linux
 
@@ -22,12 +23,12 @@ In diesem Artikel wird veranschaulicht, wie Sie Java-Anwendungen, die in Azure A
 
 ## <a name="configure-new-relic"></a>Konfigurieren von NewRelic
 1. Erstellen Sie ein NewRelic-Konto unter [NewRelic.com](https://newrelic.com/signup).
-1. Laden Sie den Java-Agent von NewRelic herunter. Der Dateiname hat etwa das Format `newrelic-java-x.x.x.zip`.
-1. Kopieren Sie Ihren Lizenzschlüssel. Sie benötigen ihn später zum Konfigurieren des Agents.
-1. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](/azure/app-service/containers/app-service-linux-ssh-support), und erstellen Sie das neue Verzeichnis `/home/site/wwwroot/apm`. 
-1. Laden Sie die entpackten Dateien für den NewRelic-Java-Agent in ein Verzeichnis unter `/home/site/wwwroot/apm` herunter. Die Dateien für Ihren Agent sollten sich in `/home/site/wwwroot/apm/newrelic` befinden.
-1. Ändern Sie die YAML-Datei unter `/home/site/wwwroot/apm/newrelic/newrelic.yml`, und ersetzen Sie den Platzhalter-Lizenzwert durch Ihren eigenen Lizenzschlüssel.
-1. Navigieren Sie im Azure-Portal zu Ihrer Anwendung in App Service, und erstellen Sie eine neue Anwendungseinstellung.
+2. Laden Sie den Java-Agent von NewRelic herunter. Der Dateiname hat etwa das Format `newrelic-java-x.x.x.zip`.
+3. Kopieren Sie Ihren Lizenzschlüssel. Sie benötigen ihn später zum Konfigurieren des Agents.
+4. [Stellen Sie eine SSH-Verbindung mit Ihrer App Service-Instanz her](/azure/app-service/containers/app-service-linux-ssh-support), und erstellen Sie das neue Verzeichnis `/home/site/wwwroot/apm`. 
+5. Laden Sie die entpackten Dateien für den NewRelic-Java-Agent in ein Verzeichnis unter `/home/site/wwwroot/apm` herunter. Die Dateien für Ihren Agent sollten sich in `/home/site/wwwroot/apm/newrelic` befinden.
+6. Ändern Sie die YAML-Datei unter `/home/site/wwwroot/apm/newrelic/newrelic.yml`, und ersetzen Sie den Platzhalter-Lizenzwert durch Ihren eigenen Lizenzschlüssel.
+7. Navigieren Sie im Azure-Portal zu Ihrer Anwendung in App Service, und erstellen Sie eine neue Anwendungseinstellung.
     - Wenn für Ihre App **Java SE** verwendet wird, sollten Sie die Umgebungsvariable `JAVA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` erstellen.
     - Wenn **Tomcat** verwendet wird, sollten Sie die Umgebungsvariable `CATALINA_OPTS` mit dem Wert `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` erstellen.
     - Falls Sie bereits über eine Umgebungsvariable für `JAVA_OPTS` oder `CATALINA_OPTS` verfügen, können Sie die Option `javaagent` am Ende des aktuellen Werts anhängen.

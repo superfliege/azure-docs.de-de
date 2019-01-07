@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 104fe53271e04980f2bd68876e0edb22f76a1d8c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f907e8c0d10c2972bde852192883e7268f78baaa
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34684520"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387793"
 ---
 Das Paket kann mithilfe von FedEx, UPS oder DHL an das Azure-Rechenzentrum gesendet werden. 
 
@@ -23,3 +23,4 @@ Das Paket kann mithilfe von FedEx, UPS oder DHL an das Azure-Rechenzentrum gesen
     - Eine DHL-Kontonummer wird bevorzugt, um den Rückversand für Festplatten von Standorten in Asien und Australien durchzuführen. 
     - Wenn Sie keine Kontonummer haben, erstellen Sie ein [FedEx](http://www.fedex.com/us/oadr/)- oder [DHL](http://www.dhl.com/)-Spediteurkonto.
 - Beim Versand Ihrer Pakete müssen Sie die [Microsoft Azure-Nutzungsbedingungen](https://azure.microsoft.com/support/legal/services-terms/) einhalten.
+- Verpacken Sie Ihre Datenträger ordnungsgemäß, um mögliche Schäden oder Verzögerungen bei der Verarbeitung zu vermeiden.

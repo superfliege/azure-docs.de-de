@@ -1,21 +1,19 @@
 ---
-title: Bereitstellen einer Web-App mit einer Vorlage – Azure Cosmos DB | Microsoft-Dokumentation
+title: Bereitstellen einer Web-App mit einer Vorlage – Azure Cosmos DB
 description: Erfahren Sie, wie Sie ein Azure Cosmos DB-Konto, eine Azure App Service-Web-App und eine Beispielwebanwendung mithilfe einer Vorlage des Azure Resource Managers bereitstellen.
 services: cosmos-db, app-service\web
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 29a2335a3a4077866b71e4303c240ad8352371ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8af76c64e755b9c72ae4ebcc223e5f69549b92b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243776"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076718"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), eine [Azure App Service-Web-App](https://go.microsoft.com/fwlink/?LinkId=529714) und eine Beispielwebanwendung bereitstellen und integrieren.
@@ -82,7 +80,7 @@ Jetzt stellen wir unsere erste Vorlage bereit.
 
 <a id="Build"></a> 
 
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>Schritt 3: Bereitstellen des Dokument-Kontos und Web-App-Beispiels
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>Schritt 3: Bereitstellen des Dokumentkontos und Web-App-Beispiels
 Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr anschaulich, wie Sie Azure Cosmos DB-Verbindungsinformationen, z. B. Kontoendpunkt und Hauptschlüssel, mit Anwendungseinstellungen oder als benutzerdefinierte Verbindungszeichenfolge in eine Web-App einfügen können. Sie möchten vielleicht eine eigene Webanwendung mit einem Azure Cosmos DB-Konto bereitstellen, und die Verbindungsinformationen sollen während der Bereitstellung automatisch aufgefüllt werden.
 
 > [!TIP]
@@ -121,12 +119,12 @@ Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr 
 ## <a name="next-steps"></a>Nächste Schritte
 Glückwunsch! Sie haben Azure Cosmos DB, eine App Service-Web-App und eine Beispielwebanwendung mithilfe von Vorlagen des Azure Resource Managers bereitgestellt.
 
-* Um weitere Informationen zu Azure Cosmos DB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
+* Um weitere Informationen zu Azure Cosmos DB zu erhalten, klicken Sie [hier](https://azure.microsoft.com/services/cosmos-db/).
 * Weitere Informationen zu Azure App Service Web-Apps erhalten Sie, indem Sie [hier](https://go.microsoft.com/fwlink/?LinkId=325362)klicken.
 * Weitere Informationen zu Vorlagen des Azure-Ressourcen-Managers erhalten Sie, indem Sie [hier](https://msdn.microsoft.com/library/azure/dn790549.aspx)klicken.
 
 ## <a name="whats-changed"></a>Änderungen
-* Hinweise zu den Veränderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](https://go.microsoft.com/fwlink/?LinkId=529714)
+* Eine Anleitung zur Änderung von Websites in App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.

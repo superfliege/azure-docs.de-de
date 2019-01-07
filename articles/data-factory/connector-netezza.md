@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1b7499990a049f276bf1af9e31b639ea4944d8f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 8e2b65f83395c9e8991338864d2037d0572dd269
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167567"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078005"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopieren von Daten aus Netezza mithilfe von Azure Data Factory 
 
@@ -50,7 +50,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| SecurityLevel | Der Sicherheitsgrad (SSL/TLS), den der Treiber für die Verbindung mit dem Datenspeicher verwendet. Beispiel: `SecurityLevel=preferredSecured`. Folgende Werte werden unterstützt:<br/>- **Nur ungesichert** (**onlyUnSecured**): Der Treiber verwendet kein SSL.<br/>- **Bevorzugt ungesichert (preferredUnSecured) (Standardeinstellung)**: Wenn der Server eine Wahl bietet, verwendet der Treiber kein SSL. <br/>- **Bevorzugt gesichert (preferredSecured)**: Wenn der Server eine Wahl bietet, verwendet der Treiber SSL. <br/>- **Nur gesichert (OnlySecured)**: Der Treiber stellt nur eine Verbindung her, wenn eine SSL-Verbindung verfügbar ist. | Nein  |
+| SecurityLevel | Der Sicherheitsgrad (SSL/TLS), den der Treiber für die Verbindung mit dem Datenspeicher verwendet. Beispiel: `SecurityLevel=preferredSecured`. Folgende Werte werden unterstützt:<br/>- **Nur ungesichert** (**onlyUnSecured**): Der Treiber verwendet SSL nicht.<br/>- **Bevorzugt ungesichert (preferredUnSecured) (Standard)**: Wenn der Server die Wahl zulässt, verwendet der Treiber SSL nicht. <br/>- **Bevorzugt gesichert (preferredSecured)**: Wenn der Server die Wahl zulässt, verwendet der Treiber SSL. <br/>- **Nur gesichert (onlySecured)**: Der Treiber stellt nur dann eine Verbindung her, wenn eine SSL-Verbindung verfügbar ist. | Nein  |
 | CaCertFile | Der vollständige Pfad zum vom Server verwendeten SSL-Zertifikat. Beispiel: `CaCertFile=<cert path>;`| Ja, wenn SSL aktiviert ist |
 
 **Beispiel**
@@ -80,7 +80,12 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die das Netezza-Dataset 
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets](concepts-datasets-linked-services.md). 
 
-Legen Sie zum Kopieren von Daten aus Netezza die **type**-Eigenschaft des Datasets auf **NetezzaTable** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Netezza die **type**-Eigenschaft des Datasets auf **NetezzaTable** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **NetezzaTable** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -92,7 +97,8 @@ Legen Sie zum Kopieren von Daten aus Netezza die **type**-Eigenschaft des Datase
         "linkedServiceName": {
             "referenceName": "<Netezza linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -110,7 +116,7 @@ Legen Sie zum Kopieren von Daten aus Netezza den **Quelltyp** in der Kopieraktiv
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **NetezzaSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"` | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"` | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

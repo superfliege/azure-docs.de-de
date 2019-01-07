@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 12/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 33fce88e7108ee45236e20b1f20dde56bb7446b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5f2f262d5ec4b9e8884e47c6c064927da2af4790
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616383"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876148"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Bereitstellen von Azure Blockchain Workbench
 
@@ -43,6 +43,9 @@ Im Folgenden wird eine Beispielbereitstellung gezeigt, die in der Ressourcengrup
 ![Beispielbereitstellung](media/deploy/example-deployment.png)
 
 Die Kosten für Blockchain Workbench stellen eine Aggregation der Kosten der zugrunde liegenden Azure-Dienste dar. Preise zu Azure-Dienste können mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/) berechnet werden.
+
+> [!IMPORTANT]
+> Wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. ein Azure-Abonnement im Free-Tarif, ist die Bereitstellung möglicherweise nicht möglich, weil das Kontingent von VM-Kernen nicht ausreicht. Überprüfen Sie vor der Bereitstellung Ihr Kontingent anhand der Anleitung aus dem Artikel [vCPU-Kontingente für virtuelle Computer](../../virtual-machines/windows/quotas.md). Für die VM-Standardauswahl sind sechs VM-Kerne erforderlich. Wenn Sie die Auswahl auf eine kleinere VM-Größe wie *Standard DS1 v2* ändern, verringert sich die Anzahl der Kerne auf vier.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,8 +101,8 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
     | Überwachung | Wählen Sie, ob Sie Azure Monitor zur Überwachung Ihres Blockchainnetzwerks aktivieren möchten. |
-    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie festgelegt haben, [Azure AD vorab zu konfigurieren](#azure-ad-configuration) oder erneut bereitzustellen, klicken Sie auf *Jetzt hinzufügen*. |
-    | VM-Auswahl | Wählen Sie die bevorzugte VM-Größe für Ihr Blockchainnetzwerk. |
+    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
+    | VM-Auswahl | Wählen Sie die bevorzugte VM-Größe für Ihr Blockchainnetzwerk. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
     Für **Vorhandene verwenden**:
 
@@ -117,7 +120,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
     | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt beginnt mit „https://“ oder „http://“ und endet mit einer Portnummer. Zum Beispiel, `https://network.westus.cloudapp.com:8540` |
-    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie festgelegt haben, [Azure AD vorab zu konfigurieren](#azure-ad-configuration) oder erneut bereitzustellen, klicken Sie auf *Jetzt hinzufügen*. |
+    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
     | VM-Auswahl | Wählen Sie die bevorzugte VM-Größe für Ihr Blockchainnetzwerk. |
 
 9. Klicken Sie auf **OK**, um die Konfiguration der erweiterten Einstellungen abzuschließen.

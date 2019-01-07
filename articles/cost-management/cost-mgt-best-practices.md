@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/09/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 77a5b455e3ef86484119983af24b6461a2fba229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273798"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074485"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -64,7 +64,7 @@ Ergreifen Sie notwendige Maßnahmen, um Ihre Ausgaben zu senken. Optimieren Sie 
 
 Alle Personen in Ihrer Organisation müssen in den Lebenszyklus des Kostenmanagements eingebunden werden. Sie müssen auf dem Laufenden bleiben, um die Kosten zu optimieren. Seien Sie strikt, was diesen iterativen Prozess angeht, und machen Sie ihn zu einem Hauptanliegen verantwortlicher Cloudgovernance in Ihrer Organisation.
 
-![Wichtige Prinzipien](./media/cost-mgt-best-practices/principles.png)
+![Diagramm mit wichtigen Prinzipien zu Sichtbarkeit, Verantwortlichkeit und Optimierung](./media/cost-mgt-best-practices/principles.png)
 
 ## <a name="plan-with-cost-in-mind"></a>Kostenbewusste Planung
 
@@ -140,7 +140,7 @@ Weitere Informationen finden Sie unter [Kostenanalyse](quick-acm-cost-analysis.m
 
 ### <a name="export-billing-data-on-a-schedule"></a>Exportieren der Abrechnungsdaten nach einem Zeitplan
 
-Müssen Sie Ihre Abrechnungsdaten in ein externes System wie z.B. ein Dashboard oder ein Finanzsystem importieren? Sie können die tägliche automatisierte Berichterstellung planen, um zu vermeiden, dass jeden Monat Dateien heruntergeladen werden müssen. Sie können Abrechnungsdaten auch in ein Azure Storage-Konto exportieren und sich in [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md) darüber benachrichtigen lassen. Dann können Sie Ihre Azure-Daten mit benutzerdefinierten Daten kombinieren, die Sie in Ihren eigenen Systemen verwenden können.
+Müssen Sie Ihre Abrechnungsdaten in ein externes System wie z.B. ein Dashboard oder ein Finanzsystem importieren? Richten Sie automatisierter Exporte in Azure Storage ein, und vermeiden Sie das monatliche manuelle Herunterladen von Dateien. Sie können dann einfach automatische Integrationen in andere Systeme einrichten, um Ihre Abrechnungsdaten synchron zu halten.
 
 Weitere Informationen zum Exportieren von Abrechnungsdaten finden Sie unter [Erstellen und Verwalten von exportierten Daten](tutorial-export-acm-data.md).
 

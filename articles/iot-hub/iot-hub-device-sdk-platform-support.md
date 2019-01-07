@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 078f6bcd7aa48f2a63118e6dfb625d9b2c69fbb3
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248022"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879365"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT-SDKs – Plattformunterstützung
 
@@ -20,7 +20,7 @@ Bei den [Azure IoT-SDKs](iot-hub-devguide-sdks.md) handelt es sich um Bibliothek
 
 Microsoft unterstützt zahlreiche Betriebssysteme, Plattformen und Frameworks, und eine Erweiterung zur Verwendung des Azure IoT-C-SDK ist ebenfalls möglich. Einige werden offiziell vom Team unterstützt und in Ebenen gruppiert, die für die für Benutzer zu erwartende Supportebene stehen. *Vollständig unterstützte Plattformen* bedeutet, dass Microsoft für Folgendes sorgt:
 
-    * Microsoft erstellt kontinuierlich End-to-End-Tests für den Master und die Versionen mit LTS-Unterstützung und führt diese Tests aus.
+    * Microsoft erstellt kontinuierlich End-to-End-Tests für den Master und die Versionen mit LTS-Unterstützung und führt diese Tests aus.  Um eine Testabdeckung in verschiedenen Versionen zu gewährleisten, führen wir Tests in der Regel für die neueste LTS-Version und für die am häufigsten verwendete Version durch.  Andere Versionen derselben Plattform werden möglicherweise über die Plattformversionskompatibilität unterstützt.
     * Microsoft stellt ggf. Installationsleitfäden oder -pakete bereit.
     * Microsoft unterstützt die Plattformen auf GitHub vollständig.
 
@@ -31,7 +31,6 @@ Darüber hinaus haben einige Partner unser C-SDK auf weitere Plattformen portier
 * Windows CE 2013 (veraltet ab Oktober 2018)
 * .NET Standard 1.3 mit .NET Core 2.1 und .NET Framework 4.7
 * Xamarin iOS, Android, UWP
-* Android mit Java
 
 ## <a name="supported-platforms"></a>Unterstützte Plattformen
 
@@ -83,6 +82,7 @@ Es werden verschiedene Plattformen unterstützt.
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
+| Android API 28 | X64  | Java 8       |
 
 ## <a name="partner-supported-platforms"></a>Unterstützte Partnerplattformen
 

@@ -1,18 +1,19 @@
 ---
 title: Ausschließen von Datenträgern bei der Replikation für die VMware-Notfallwiederherstellung zu Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
-description: Beschreibt, warum und wie Sie VM-Datenträger bei der Replikation für die VMWare-Notfallwiederherstellung zu Azure ausschließen.
+description: Beschreibt, warum und wie Sie VM-Datenträger bei der Replikation für die VMware-Notfallwiederherstellung zu Azure ausschließen.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 667cbbbcc0a74550b389d7a75e17cecd00b88d06
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.topic: conceptual
+ms.openlocfilehash: af610aaec238e1b2ae8ec2387e5a8f71225cab8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976612"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848164"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Ausschließen von Datenträgern bei der Replikation von VMware-VMs zu Azure
 
@@ -55,8 +56,8 @@ Folgen Sie dem Workflow für [Replikation aktivieren](vmware-azure-enable-replic
 > * Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Sie können kein Betriebssystem und keine dynamischen Datenträger ausschließen.
 > * Nach Aktivierung der Replikation können Sie keine Datenträger für die Replikation hinzufügen oder entfernen. Wenn Sie einen Datenträger hinzufügen oder entfernen möchten, müssen Sie den Schutz für den Computer deaktivieren und anschließend wieder aktivieren.
 > * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie den Datenträger nach dem Failover auf Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
-> * Virtueller Windows-Computer: Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback durchgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, erfolgt nur für die drei Datenträger, für die das Failover durchgeführt wurde, ein Failback. Manuell erstellte Datenträger können nicht in das Failback oder in den erneuten Schutz vom lokalen Standort auf Azure einbezogen werden.
-> * Virtueller Linux-Computer: Für Datenträger, die Sie manuell in Azure erstellen, wird ein Failback durchgeführt. Wenn Sie beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, wird für alle fünf ein Failback ausgeführt. Sie können keine Datenträger von einem Failback ausschließen, die manuell erstellt wurden.
+> * Windows-VM: Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback durchgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, erfolgt nur für die drei Datenträger, für die das Failover durchgeführt wurde, ein Failback. Manuell erstellte Datenträger können nicht in das Failback oder in den erneuten Schutz vom lokalen Standort auf Azure einbezogen werden.
+> * Linux-VM: Für Datenträger, die Sie manuell in Azure erstellen, wird ein Failback durchgeführt. Wenn Sie beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, wird für alle fünf ein Failback ausgeführt. Sie können keine Datenträger von einem Failback ausschließen, die manuell erstellt wurden.
 >
 
 
@@ -66,7 +67,7 @@ Betrachten wir zwei Szenarien, damit Sie sich besser mit der Funktion zum Aussch
 - tempdb-Datenträger von SQL Server
 - Datenträger für Auslagerungsdatei (pagefile.sys)
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Beispiel 1: Ausschließen des tempdb-Datenträgers von SQL Server
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Beispiel 1: Ausschließen des tempdb-Datenträgers von SQL Server
 Angenommen, Sie verwenden einen virtuellen SQL Server-Computer mit einer tempdb, der ausgeschlossen werden kann.
 
 Der Name des virtuellen Datenträgers lautet „SalesDB“.
@@ -167,7 +168,7 @@ DISK0 | C:\ | Betriebssystem-Datenträger
 Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 Disk2 | G:\ | Benutzerdatenbank 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Beispiel 2: Ausschließen des Datenträgers der Auslagerungsdatei (pagefile.sys)
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Beispiel 2: Ausschließen des Datenträgers der Auslagerungsdatei (pagefile.sys)
 
 Angenommen, Sie verwenden einen virtuellen Computer mit einem Datenträger für die Auslagerungsdatei, der ausgeschlossen werden kann.
 Es gibt zwei Fälle.

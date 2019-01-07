@@ -3,7 +3,7 @@ title: Verteilte Transaktionen über Clouddatenbanken
 description: Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257468"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877183"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Verteilte Transaktionen über Clouddatenbanken
 Mithilfe elastischer Datenbanktransaktionen für Azure SQL-Datenbank (SQL-DB) können Sie übergreifende Transaktionen für mehrere Datenbanken in SQL-DB ausführen. Elastische Datenbanktransaktionen für SQL-DB stehen für .NET-Anwendungen über ADO.NET zur Verfügung und lassen sich mithilfe der Klassen vom Typ [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) in die vertraute Programmierumgebung integrieren. Informationen zum Abrufen der Bibliothek finden Sie unter [.NET Framework 4.6.1 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -122,12 +122,12 @@ Elastische Datenbanktransaktionen werden auf verschiedenen logischen Servern in 
 
 Verwenden Sie die folgenden PowerShell-Cmdlets, um serverübergreifende Kommunikationsbeziehungen für elastische Transaktionen zu verwalten:
 
-* **New-AzureRmSqlServerCommunicationLink:** Mit diesem Cmdlet können Sie eine neue Kommunikationsbeziehung zwischen zwei logischen Servern in Azure SQL-Datenbank erstellen. Die Beziehung ist symmetrisch, sodass beide Server Transaktionen mit dem jeweils anderen Server initiieren können.
-* **Get-AzureRmSqlServerCommunicationLink:** Mit diesem Cmdlet können Sie vorhandene Kommunikationsbeziehungen und die zugehörigen Eigenschaften abrufen.
-* **Remove-AzureRmSqlServerCommunicationLink:** Mit diesem Cmdlet können Sie eine vorhandene Kommunikationsbeziehung entfernen. 
+* **New-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie eine neue Kommunikationsbeziehung zwischen zwei logischen Servern in Azure SQL-Datenbank erstellen. Die Beziehung ist symmetrisch, sodass beide Server Transaktionen mit dem jeweils anderen Server initiieren können.
+* **Get-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie vorhandene Kommunikationsbeziehungen und die zugehörigen Eigenschaften abrufen.
+* **Remove-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie eine vorhandene Kommunikationsbeziehung entfernen. 
 
 ## <a name="monitoring-transaction-status"></a>Überwachen des Transaktionsstatus
-Verwenden Sie DMVs (Dynamic Management Views) in  SQL-SB, um Status und Fortschritt laufender elastischer Datenbanktransaktionen zu überwachen. Für verteilte Transaktionen in SQL-DB sind alle transaktionsbezogenen DMVs relevant. Die entsprechende DMV-Liste finden Sie hier: [Dynamische Verwaltungssichten und -funktionen im Zusammenhang mit Transaktionen (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Verwenden Sie DMVs (Dynamic Management Views) in  SQL-SB, um Status und Fortschritt laufender elastischer Datenbanktransaktionen zu überwachen. Für verteilte Transaktionen in SQL-DB sind alle transaktionsbezogenen DMVs relevant. Die entsprechende DMV-Liste finden Sie hier: [Dynamische Verwaltungssichten für Transaktionen und Funktionen (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
 
 Folgende DMVs sind besonders hilfreich:
 

@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 56747179c69e6495e9a764f81e0827e29cb077e6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015586"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017405"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Verwenden von HDInsight-Tools für IntelliJ mit Hortonworks Sandbox
 
-Erfahren Sie, wie Sie die HDInsight-Tools für IntelliJ verwenden, um Apache Scala-Anwendungen zu entwickeln und die Anwendungen in [Hortonworks Sandbox](http://hortonworks.com/products/sandbox/) auf Ihrem Computer zu testen. 
+Erfahren Sie, wie Sie die HDInsight-Tools für IntelliJ verwenden, um Apache Scala-Anwendungen zu entwickeln und die Anwendungen in [Hortonworks Sandbox](https://hortonworks.com/products/sandbox/) auf Ihrem Computer zu testen. 
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) ist eine integrierte Java-Entwicklungsumgebung (Integrated Development Environment, IDE) zum Entwickeln von Computersoftware. Nachdem Sie Ihre Anwendungen in Hortonworks Sandbox entwickelt und getestet haben, können Sie sie in [Azure HDInsight](apache-hadoop-introduction.md) verschieben.
 
@@ -29,7 +29,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - Ausführung von Hortonworks Data Platform 2.4 (HDP) in Hortonworks Sandbox auf Ihrem lokalen Computer. Informationen zur Einrichtung von HDP finden Sie unter [Erste Schritte im Hadoop-Ökosystem mit einer Hadoop-Sandbox auf einem virtuellen Computer](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
-    > HDInsight-Tools für IntelliJ wurde nur mit HDP 2.4 getestet. Um HDP 2.4 zu erhalten, erweitern Sie auf der **Website für den Download von Hortonworks Sandbox** die Option [Hortonworks Sandbox Archive](http://hortonworks.com/downloads/#sandbox).
+    > HDInsight-Tools für IntelliJ wurde nur mit HDP 2.4 getestet. Um HDP 2.4 zu erhalten, erweitern Sie auf der **Website für den Download von Hortonworks Sandbox** die Option [Hortonworks Sandbox Archive](https://hortonworks.com/downloads/#sandbox).
 
 - [Java Developer Kit (JDK) Version 1.8 oder höher](https://aka.ms/azure-jdks). Azure Toolkit für IntelliJ erfordert JDK.
 
@@ -53,8 +53,8 @@ In diesem Abschnitt erstellen Sie mit IntelliJ IDEA ein Scala-Beispielprojekt. I
    1. Wählen Sie **HDInsight** > **Spark auf HDInsight (Scala)** aus.
    2. Wählen Sie in der Liste **Build-Tool** basierend auf Ihrem Szenario einen der folgenden Einträge aus:
 
-    * **Maven** für die Unterstützung des Scala-Projekterstellungs-Assistenten.
-    * **SBT** zum Verwalten von Abhängigkeiten und Erstellen für das Scala-Projekt.
+    * **Maven**: für die Unterstützung des Scala-Projekterstellungs-Assistenten.
+    * **SBT**: zum Verwalten von Abhängigkeiten und Erstellen für das Scala-Projekt.
 
    ![Dialogfeld „Neues Projekt“](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 

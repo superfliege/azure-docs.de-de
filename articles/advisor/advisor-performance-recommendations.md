@@ -3,23 +3,22 @@ title: Azure Advisor-Empfehlungen zur Leistung | Microsoft Docs
 description: Nutzen Sie den Advisor, um die Leistung Ihrer Azure-Bereitstellungen zu optimieren.
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 9516534216c4a2c0f61e33ea3cbf1bbcb2ab58c7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: kasparks
+ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301309"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013235"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-Empfehlungen zur Leistung
 
@@ -33,16 +32,16 @@ Azure Advisor ermittelt Traffic Manager-Profile mit einer längeren Gültigkeits
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Verbessern der Datenbankleistung mit SQL DB Advisor
 
-Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen. Azure Advisor und Azure SQL Database Advisor sind integriert, um Ihnen Empfehlungen zum Verbessern der Leistung Ihrer SQL Azure-Datenbank zu bieten. SQL Database Advisor bewertet die Leistung durch eine Analyse des Nutzungsverlaufs Ihrer SQL Azure-Datenbank. Anschließend werden Empfehlungen gegeben, die für die typische Workload der Datenbank am besten geeignet sind. 
+Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen. Azure Advisor und Azure SQL Database Advisor sind integriert, um Ihnen Empfehlungen zum Verbessern der Leistung Ihrer SQL Azure-Datenbank zu bieten. SQL Database Advisor bewertet die Leistung durch eine Analyse des Nutzungsverlaufs Ihrer SQL Azure-Datenbank. Anschließend werden Empfehlungen gegeben, die für die typische Workload der Datenbank am besten geeignet sind. 
 
 > [!NOTE]
 > Um Empfehlungen zu erhalten, muss eine Datenbank ungefähr eine Woche lang genutzt werden, und innerhalb dieser Woche müssen durchweg Aktivitäten erfolgen. SQL Database Advisor kann leichter für einheitliche Abfragemuster als für zufällige Aktivitätsspitzen optimiert werden.
 
 Weitere Informationen zu SQL Database Advisor finden Sie unter [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-redis-cache-performance-and-reliability"></a>Verbessern der Leistung und Zuverlässigkeit von Redis-Cache
+## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>Verbessern der Leistung und Zuverlässigkeit von Azure Cache for Redis
 
-Der Advisor ermittelt Redis Cache-Instanzen, bei denen die Leistung ggf. durch eine hohe Auslastung von Arbeitsspeicher oder Netzwerkbandbreite, Serverlast oder große Anzahl von Clientverbindungen beeinträchtigt wird. Darüber hinaus empfiehlt der Advisor bewährte Methoden, um potenzielle Probleme zu vermeiden. Weitere Informationen zu Redis Cache-Empfehlungen finden Sie unter [Redis Cache Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
+Der Advisor ermittelt Azure Cache for Redis-Instanzen, bei denen die Leistung ggf. durch eine hohe Auslastung von Arbeitsspeicher oder Netzwerkbandbreite, Serverlast oder große Anzahl von Clientverbindungen beeinträchtigt wird. Darüber hinaus empfiehlt der Advisor bewährte Methoden, um potenzielle Probleme zu vermeiden. Weitere Informationen zu Azure Cache for Redis-Empfehlungen finden Sie unter [Azure Cache for Redis-Ratgeber](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
 
 
 ## <a name="improve-app-service-performance-and-reliability"></a>Verbessern der Leistung und Zuverlässigkeit von App Services

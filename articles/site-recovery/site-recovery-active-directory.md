@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232170"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851014"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Einrichten der Notfallwiederherstellung für Active Directory und DNS
 
@@ -165,7 +165,7 @@ Wenn die oben genannten Bedingungen erfüllt sind, ist es wahrscheinlich, dass d
 1. Führen Sie eine autoritative Wiederherstellung des Domänencontrollers durch. Beachten Sie Folgendes:
     * Wir empfehlen zwar nicht die [FRS-Replikation](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), doch führen Sie bei Verwendung der FRS-Replikation die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Verwenden des BurFlags-Registrierungsschlüssels zur erneuten Initialisierung des Dateireplikationsdiensts](https://support.microsoft.com/kb/290762) beschrieben.
 
-        Weitere Informationen zu BurFlags finden Sie im Blogbeitrag [D2 and D4: What is it for? (D2 und D4: Wofür ist das gut?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+        Weitere Informationen zu BurFlags finden Sie im Blogbeitrag [D2 and D4: What is it for? (D2 und D4: Wozu dient es?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
     * Wenn Sie die DFSR-Replikation verwenden, führen Sie die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Eine autorisierende und nicht autorisierende Synchronisierung für DFSR-repliziertes SYSVOL erzwingen (wie „D4/D2“ für FRS)](https://support.microsoft.com/kb/2218556) beschrieben.
 
         Sie können auch die PowerShell-Funktionen verwenden. Weitere Informationen finden Sie unter [DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions (DFSR-SYSVOL: PowerShell-Funktionen für autorisierende/nicht autorisierende Wiederherstellung)](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
@@ -174,7 +174,7 @@ Wenn die oben genannten Bedingungen erfüllt sind, ist es wahrscheinlich, dass d
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    Weitere Informationen finden Sie unter [Problembehandlung bei DNS-Ereignis-ID 4013: Der DNS-Server konnte die Active Directory-integrierten DNS-Zonen nicht laden](https://support.microsoft.com/kb/2001093).
+    Weitere Informationen finden Sie unter [Problembehandlung bei DNS-Ereignis-ID 4013: Der DNS-Server konnte die in AD integrierten DNS-Zonen nicht laden](https://support.microsoft.com/kb/2001093).
 
 3. Deaktivieren Sie die Anforderung, dass ein globaler Katalogserver zur Überprüfung der Benutzeranmeldung verfügbar sein muss. Legen Sie hierzu auf dem lokalen Domänencontroller für den folgenden Registrierungsschlüssel **1** fest. Wenn dieses DWORD-Element nicht vorhanden ist, können Sie es unter dem Knoten **Lsa** erstellen.
 

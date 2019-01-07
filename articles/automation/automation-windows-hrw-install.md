@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a0e0000c4baa22ccc1c26c0e40ec62bb277104af
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252223"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993901"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Bereitstellen eines Windows Hybrid Runbook Workers
 
@@ -53,11 +53,11 @@ Führen Sie die folgenden Schritte aus, um die Installation und Konfiguration de
 
    Das Skript „New-OnPremiseHybridWorker.ps1“ erfordert während der Ausführung die folgenden Parameter:
 
-   * *AutomationAccountName* (verbindlich): Der Name Ihres Automation-Kontos.
-   * *AAResourceGroupName* (verbindlich): Der Name der Ressourcengruppe, die Ihrem Automation-Konto zugeordnet ist.
+   * *AutomationAccountName* (erforderlich): Der Name Ihres Automation-Kontos.
+   * *AAResourceGroupName* (erforderlich): Der Name der Ressourcengruppe, die Ihrem Automation-Konto zugeordnet ist.
    * *OMSResourceGroupName* (optional): Der Name der Ressourcengruppe für den Log Analytics-Arbeitsbereich. Wenn diese Ressourcengruppe nicht angegeben wird, wird *AAResourceGroupName* verwendet.
-   * *HybridGroupName* (verbindlich): Der Name einer Hybrid Runbook Worker-Gruppe, die Sie als Ziel für die Runbooks angeben, die dieses Szenario unterstützen.
-   * *SubscriptionID* (verbindlich): Die Azure-Abonnement-ID Ihres Automation-Kontos.
+   * *HybridGroupName* (erforderlich): Der Name einer Hybrid Runbook Worker-Gruppe, die Sie als Ziel für die Runbooks angeben, die dieses Szenario unterstützen.
+   * *SubscriptionID* (erforderlich): Die Azure-Abonnement-ID Ihres Automation-Kontos.
    * *WorkspaceName* (optional): Der Name des Log Analytics-Arbeitsbereichs. Falls kein Log Analytics-Arbeitsbereich vorhanden ist, wird dieser durch das Skript erstellt und konfiguriert.
 
      > [!NOTE]
@@ -85,7 +85,7 @@ Führen Sie die ersten beiden Schritte ein Mal für Ihre Automation-Umgebung aus
 
 #### <a name="1-create-a-log-analytics-workspace"></a>1. Erstellen eines Log Analytics-Arbeitsbereichs
 
-Sofern Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, erstellen Sie diesen mithilfe der Anweisungen unter [Verwalten von Arbeitsbereichen](../log-analytics/log-analytics-manage-access.md). Wenn Sie bereits über einen Arbeitsbereich verfügen, können Sie diesen verwenden.
+Sofern Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, erstellen Sie diesen mithilfe der Anweisungen unter [Verwalten von Arbeitsbereichen](../azure-monitor/platform/manage-access.md). Wenn Sie bereits über einen Arbeitsbereich verfügen, können Sie diesen verwenden.
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Hinzufügen der Automation-Lösung zum Log Analytics-Arbeitsbereich
 

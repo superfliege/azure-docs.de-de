@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 936c9198eebfa229db6ac34426e435c9e6ed96e8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254604"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978739"
 ---
-## <a name="quickstarts-and-tutorials"></a>Schnellstarts und Tutorials
+## <a name="quickstarts-and-tutorials"></a>Schnellstartanleitungen und Tutorials
 
 Verwenden Sie die folgenden Schnellstartanleitungen und Tutorials, um zu erfahren, wie Sie Resource Manager-Vorlagen entwickeln:
 
@@ -45,6 +45,7 @@ Verwenden Sie die folgenden Schnellstartanleitungen und Tutorials, um zu erfahre
     |[Erstellen verknüpfter Vorlagen](../articles/azure-resource-manager/resource-manager-tutorial-create-linked-templates.md)|Enthält Informationen zum Modularisieren von Vorlagen und Aufrufen von anderen Vorlagen aus einer Vorlage. In diesem Tutorial erstellen Sie ein virtuelles Netzwerk, einen virtuellen Computer und die abhängigen Ressourcen.  Das abhängige Speicherkonto wird in einer verknüpften Vorlage definiert. |
     |[Bereitstellen von Erweiterungen für virtuelle Computer](../articles/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)|Führen Sie Aufgaben nach der Bereitstellung mithilfe von Erweiterungen durch. In diesem Tutorial stellen Sie eine Skripterweiterung eines Kunden bereit, um Webserver auf dem virtuellen Computer zu installieren. |
     |[Bereitstellen von SQL-Erweiterungen](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|Führen Sie Aufgaben nach der Bereitstellung mithilfe von Erweiterungen durch. In diesem Tutorial stellen Sie eine Skripterweiterung eines Kunden bereit, um Webserver auf dem virtuellen Computer zu installieren. |
+    |[Schützen von Artefakten](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|Schützen Sie die Artefakte, die zum Abschließen der Bereitstellungen erforderlich sind. In diesem Tutorial erfahren Sie, wie Sie das im Tutorial zum Bereitstellen von SQL-Erweiterungen verwendete Artefakt schützen. |
     |[Verwenden von sicheren Bereitstellungsmethoden](../articles/azure-resource-manager/deployment-manager-tutorial.md)|Enthält Informationen zum Azure-Bereitstellungs-Manager. |
 
 Diese Tutorials können einzeln oder als Serie verwendet werden, um die wichtigsten Entwicklungskonzepte für Resource Manager-Vorlagen kennenzulernen.

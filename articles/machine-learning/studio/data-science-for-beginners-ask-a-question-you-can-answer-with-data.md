@@ -4,10 +4,9 @@ description: Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wi
 keywords: Data Science-Probleme,Data Science-Fragen,Formulieren von Fragen,Regressionsfragen,Klassifizierungsfragen,genaue Frage
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
@@ -17,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: c6d42ed7920b634994adf5313656c77e2df6dd5b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310836"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250976"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stellen einer Frage, die Sie mit Daten beantworten können
-## <a name="video-3-data-science-for-beginners-series"></a>3. Video der Reihe „Data Science für Einsteiger“
+## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Reihe „Data Science für Einsteiger“
 Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie ein Data Science-Problem in einer Frage formulieren. Dieses Video enthält einen Vergleich von Fragen zu Klassifizierungs- und Regressionsalgorithmen.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
@@ -38,18 +37,18 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur L
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-* 1. Video: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+* Video 1: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
 * Video 2: [Sind Ihre Daten für Data Science bereit?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
 * Video 3: Stellen einer Frage, die Sie mit Daten beantworten können
-* 4. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
+* Video 4: [Vorhersagen einer Antwort mit einem einfachen Modell](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
 * Video 5: [Kopieren der Arbeit anderer für Ihre Data Science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Aufzeichnung: Stellen einer Frage, die Sie mit Daten beantworten können
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Transkript: Stellen einer Frage, die Sie mit Daten beantworten können
 Willkommen beim dritten Video der Reihe „Data Science für Einsteiger“.  
 
 In diesem Artikel erhalten Sie einige Tipps zum Formulieren einer Frage, die Sie mit Daten beantworten können.
 
-Dieses Video ist für Sie ggf. noch nützlicher, wenn Sie sich zuerst die beiden vorherigen Videos dieser Reihe „Die 5 Fragen, die Data Science beantworten kann“ und „Sind Ihre Daten für Data Science bereit?“ ansehen.
+Sie lernen mehr bei diesem Video, wenn Sie sich zuerst die vorherigen beiden Videos der Reihe ansehen: „Die 5 Fragen, die Data Science beantwortet“ und „Sind Ihre Daten für Data Science bereit?“
 
 ## <a name="ask-a-sharp-question"></a>Stellen einer genauen Frage
 Wir haben darüber gesprochen, dass es sich bei Data Science um den Prozess der Verwendung von Namen (bzw. von Kategorien oder Bezeichnungen) und Zahlen zum Vorhersagen einer Antwort auf eine Frage handelt. Dabei darf es sich nicht um eine beliebige Frage handeln, sondern es muss eine *genaue Frage* sein.

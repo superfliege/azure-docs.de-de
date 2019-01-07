@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2306c03480956a63859355428cbffe0706f43cbc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306639"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999233"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -30,12 +30,12 @@ Nachdem Sie Azure AD Connect ausgeführt haben, um Ihre Organisation für die Hy
 Alle in die Domäne eingebundenen Geräte, auf denen Windows 10 und Windows Server 2016 ausgeführt wird, werden automatisch bei Azure AD registriert, nachdem alle Konfigurationsschritte abgeschlossen sind. Falls Sie anstelle dieser automatischen Registrierung einen kontrollierten Rollout vorziehen, können Sie die Gruppenrichtlinie verwenden, um den automatischen Rollout selektiv zu aktivieren oder zu deaktivieren.  Diese Gruppenrichtlinie sollte festgelegt werden, bevor mit den weiteren Konfigurationsschritten begonnen wird: Azure AD
 * Erstellen Sie ein Gruppenrichtlinienobjekt in Ihrer Active Directory-Instanz.
 * Geben Sie ihm einen Namen (z.B. „Hybrid-Azure AD-Einbindung“).
-* Führen Sie die Bearbeitung durch, und navigieren Sie zu „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
+* Bearbeiten Sie und navigieren Sie zu:  „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
 
 >[!NOTE]
 >Für 2012R2 befinden sich die Richtlinieneinstellungen unter **Computerkonfiguration > Richtlinien > Administrative Vorlagen > Windows-Komponenten > Arbeitsbereichverknüpfung > Clientcomputer automatisch in Arbeitsbereich einbinden**
 
-* Deaktivieren Sie die Einstellung „In die Domäne eingebundene Computer als Geräte registrieren“.
+* Deaktivieren Sie diese Einstellung:  „In die Domäne eingebundene Computer als Geräte registrieren“.
 * Übernehmen Sie die Änderung, und klicken Sie auf „OK“.
 * Verknüpfen Sie das GPO mit dem Speicherort Ihrer Wahl (Organisationseinheit, Sicherheitsgruppe oder Domäne für alle Geräte).
 
@@ -69,7 +69,7 @@ Wenn Sie in Ihrer Organisation die Kennworthashsynchronisierung oder die Passthr
 Zum Registrieren von kompatiblen Windows-Geräten müssen Sie sicherstellen, dass für die Azure AD-Richtlinie das Registrieren von Geräten durch Benutzer zulässig ist. 
 
 * Melden Sie sich im Azure-Portal an Ihrem Konto an.
-* Navigieren Sie zu „Azure Active Directory“ > „Geräte“ > „Geräteeinstellungen“.
+* Wechseln Sie zu:  „Azure Active Directory“ > „Geräte“ > „Geräteeinstellungen“.
 * Legen Sie „Benutzer dürfen ihre Geräte für Azure AD registrieren“ auf „ALLE“ fest.
 * Klicken Sie auf Speichern.
 
@@ -77,7 +77,7 @@ Zum Registrieren von kompatiblen Windows-Geräten müssen Sie sicherstellen, das
 
 Fügen Sie den Endpunkt für die Azure AD-Geräteauthentifizierung den lokalen Intranetzonen auf Ihren kompatiblen Windows-Geräten hinzu, um beim Authentifizieren des Geräts Zertifikataufforderungen zu vermeiden: https://device.login.microsoftonline.com 
 
-Aktivieren Sie bei Verwendung des [nahtlosen einmaligen Anmeldens](https://aka.ms/hybrid/sso) auch die Option „Statusleistenupdates über Skript zulassen“ für diese Zone, und fügen Sie den folgenden Endpunkt hinzu: https://autologon.microsoftazuread-sso.com. 
+Aktivieren Sie bei Verwendung des [nahtlosen einmaligen Anmeldens](how-to-connect-sso.md) auch die Option „Statusleistenupdates über Skript zulassen“ für diese Zone, und fügen Sie den folgenden Endpunkt hinzu: https://autologon.microsoftazuread-sso.com. 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Installieren von Microsoft Workplace Join auf kompatiblen Windows-Geräten
 
@@ -87,8 +87,8 @@ Dieses Installationsprogramm erstellt einen geplanten Task auf dem Gerätesystem
 
 * Erstellen Sie ein Gruppenrichtlinienobjekt in Ihrer Active Directory-Instanz, falls Sie dies nicht bereits getan haben.
 * Geben Sie ihm einen Namen (z.B. „Hybrid-Azure AD-Einbindung“).
-* Führen Sie die Bearbeitung durch, und navigieren Sie zu „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
-* Aktivieren Sie die Option „In die Domäne eingebundene Computer als Geräte registrieren“.
+* Bearbeiten Sie und navigieren Sie zu:  „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
+* Aktivieren Sie:  „In die Domäne eingebundene Computer als Geräte registrieren“.
 * Übernehmen Sie die Änderung, und klicken Sie auf „OK“.
 * Verknüpfen Sie das GPO mit dem Speicherort Ihrer Wahl (Organisationseinheit, Sicherheitsgruppe oder Domäne für alle Geräte).
 

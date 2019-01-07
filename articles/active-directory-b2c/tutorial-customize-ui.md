@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 588ce454248f0577a52515a4327d1e43013d34a5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f8ebb282d3f6abbc37739891c0f7228bef110d82
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581798"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842678"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C
 
-Für weitere gängige Benutzererfahrungen wie Registrierung, Anmeldung und Profilbearbeitung können Sie [integrierte Richtlinien](active-directory-b2c-reference-policies.md) in Azure Active Directory (Azure AD) B2C verwenden. Die Informationen in diesem Tutorial helfen Ihnen beim [Anpassen der Benutzeroberfläche (UI)](customize-ui-overview.md) dieser Erfahrungen unter Verwendung Ihrer eigenen HTML- und CSS-Dateien.
+Für weitere gängige Benutzerfunktionen wie etwa Registrierung, Anmeldung und Profilbearbeitung können Sie [Benutzerflows](active-directory-b2c-reference-policies.md) in Azure Active Directory (Azure AD) B2C verwenden. Die Informationen in diesem Tutorial helfen Ihnen beim [Anpassen der Benutzeroberfläche (UI)](customize-ui-overview.md) dieser Erfahrungen unter Verwendung Ihrer eigenen HTML- und CSS-Dateien.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen von Dateien für die Benutzeroberflächenanpassung
-> * Erstellen einer Registrierungs- und Anmelderichtlinie, die die Dateien verwendet
+> * Erstellen eines Benutzerflows für Registrierung und Anmeldung, der die Dateien verwendet
 > * Testen der angepassten Benutzeroberfläche
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -61,7 +61,7 @@ Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutori
 
 ### <a name="enable-cors"></a>Aktivieren von CORS
 
- Azure AD B2C-Code in einem Browser verwendet einen modernen Standardansatz zum Laden benutzerdefinierter Inhalte über eine URL, die Sie in einer Richtlinie angeben. Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) ermöglicht, dass eingeschränkte Ressourcen auf einer Webseite aus anderen Domänen angefordert werden können.
+ Azure AD B2C-Code in einem Browser verwendet einen modernen Standardansatz zum Laden benutzerdefinierter Inhalte über eine URL, die Sie in einem Benutzerflow angeben. Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) ermöglicht, dass eingeschränkte Ressourcen auf einer Webseite aus anderen Domänen angefordert werden können.
 
 1. Wählen Sie im Menü **CORS** aus.
 2. Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `https://fabrikam.b2clogin.com`. Sie dürfen bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben verwenden.
@@ -137,9 +137,9 @@ In diesem Tutorial speichern Sie die Dateien, die Sie im Speicherkonto erstellt 
 4. Kopieren Sie die URL für die Datei, die Sie hochgeladen haben, um sie später in diesem Tutorial zu verwenden.
 5. Wiederholen Sie Schritt 3 und 4 für die Datei *style.css*.
 
-## <a name="create-a-sign-up-and-sign-in-policy"></a>Erstellen einer Registrierungs- und Anmelderichtlinie
+## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Erstellen eines Benutzerflows für Registrierung und Anmeldung
 
-Um die Schritte in diesem Tutorial abzuschließen, müssen Sie eine Testanwendung und eine Registrierungs- oder Anmelderichtlinie in Azure AD B2C erstellen. Sie können die in diesem Tutorial beschriebenen Prinzipien auf die anderen Erfahrungen anwenden, z. B. die Profilbearbeitung.
+Um die Schritte in diesem Tutorial auszuführen, müssen Sie eine Testanwendung und einen Benutzerflow für Registrierung und Anmeldung in Azure AD B2C erstellen. Sie können die in diesem Tutorial beschriebenen Prinzipien auf die anderen Erfahrungen anwenden, z. B. die Profilbearbeitung.
 
 ### <a name="create-an-azure-ad-b2c-application"></a>Erstellen einer Azure AD B2C-Anwendung
 
@@ -153,29 +153,34 @@ Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihre
 6. Wählen Sie für **Web-App/Web-API** die Option `Yes` aus, und geben Sie dann für die **Antwort-URL** die Zeichenfolge `https://jwt.ms` ein.
 7. Klicken Sie auf **Create**.
 
-### <a name="create-the-policy"></a>Erstellen der Richtlinie
+### <a name="create-the-user-flow"></a>Erstellen des Benutzerflows
 
-Um Ihre Anpassungsdateien zu testen, erstellen Sie eine integrierte Registrierungs- oder Anmelderichtlinie, die die Anwendung verwendet, die Sie zuvor erstellt haben.
+Um Ihre Anpassungsdateien zu testen, erstellen Sie einen integrierten Benutzerflow für Registrierung oder Anmeldung, der die zuvor erstellte Anwendung verwendet.
 
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Registrierungs- oder Anmelderichtlinien** aus, und klicken Sie dann auf **Hinzufügen**.
-2. Geben Sie einen Namen für die Richtlinie ein. Z. B. *signup_signin*. Das Präfix *B2C_1* wird dem Namen automatisch hinzugefügt, wenn die Richtlinie erstellt wird.
-3. Wählen Sie **Identitätsanbieter** aus, legen Sie **E-Mail-Registrierung** für ein lokales Konto fest, und klicken Sie dann auf **OK**.
-4. Wählen Sie **Registrierungsattribute** aus, und wählen Sie die Attribute aus, die Sie vom Kunden bei der Registrierung erfassen möchten. Legen Sie z. B. **Land/Region**, **Anzeigename** und **Postleitzahl** fest, und klicken Sie dann auf **OK**.
-5. Wählen Sie **Anwendungsansprüche** aus, wählen Sie die Ansprüche aus, die in den Autorisierungstoken nach einer erfolgreichen Registrierung oder Anmeldung an Ihre Anwendung zurückgegeben werden sollen. Wählen Sie z.B. **Anzeigename**, **Identitätsanbieter**, **Postleitzahl**, **Benutzer ist neu** und **Objekt-ID des Benutzers** aus, und klicken Sie dann auf **OK**.
-6. Wählen Sie **Seite für die Benutzeroberflächenanpassung** aus, wählen Sie **Seite für einheitliche Registrierung oder Anmeldung** aus, und klicken Sie dann auf **Ja** für **Benutzerdefinierte Seite verwenden**.
-7. Geben Sie in **Benutzerdefinierter Seiten-URI** die URL für die Datei *custom-ui.html* ein, die Sie zuvor aufgezeichnet haben, und klicken Sie dann auf **OK**.
-8. Klicken Sie auf **Create**.
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** aus, und klicken Sie dann auf **Neuer Benutzerflow**.
+2. Klicken Sie auf der Registerkarte **Empfohlen** auf **Registrierung und Anmeldung**.
+3. Geben Sie einen Namen für den Benutzerflow ein. Beispiel: *signup_signin*. Bei Erstellung des Benutzerflows wird dem Namen automatisch das Präfix *B2C_1* hinzugefügt.
+4. Wählen Sie unter **Identitätsanbieter** die Option **E-Mail-Registrierung** aus.
+5. Klicken Sie unter **Benutzerattribute und Ansprüche** auf **Mehr anzeigen**.
+6. Wählen Sie in der Spalte **Attribut sammeln** die Attribute aus, die Sie während der Registrierung vom Kunden erfassen möchten. Wählen Sie z.B. **Land/Region**, **Anzeigename** und **Postleitzahl** aus.
+7. Wählen Sie in der Spalte **Anspruch zurückgeben** die Ansprüche aus, die nach einer erfolgreichen Registrierung oder Anmeldung in den Autorisierungstoken an Ihre Anwendung zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename**, **Identitätsanbieter**, **Postleitzahl**, **Benutzer ist neu** und **Objekt-ID des Benutzers** aus.
+8. Klicken Sie auf **OK**.
+9. Klicken Sie auf **Erstellen**.
+10. Wählen Sie unter **Anpassen** die Option **Seitenlayouts** aus. Wählen Sie **Einheitliche Seite für Registrierung oder Anmeldung** aus, und klicken Sie dann für **Benutzerdefinierten Seiteninhalt verwenden** auf **Ja**.
+11. Geben Sie in **Benutzerdefinierter Seiten-URI** die URL für die Datei *custom-ui.html* ein, die Sie zuvor aufgezeichnet haben.
+12. Klicken Sie oben auf der Seite auf **Speichern**.
 
-## <a name="test-the-policy"></a>Testen der Richtlinie
+## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Registrierungs- oder Anmelderichtlinien** aus, und wählen Sie dann die Richtlinie aus, die Sie erstellt haben. Z. B. *B2C_1_signup_signin*.
-2. Stellen Sie sicher, dass die von Ihnen erstellte Anwendung im Feld **Anwendung auswählen** ausgewählt ist, und klicken Sie dann auf **Jetzt ausführen**.
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** und dann den Benutzerflow aus, den Sie erstellt haben. Beispiel: *B2C_1_signup_signin*.
+2. Klicken Sie im oberen Bereich der Seite auf **Benutzerflow ausführen**.
+3. Klicken Sie auf die Schaltfläche **Benutzerflow ausführen**.
 
-    ![Ausführen der Registrierungs- oder Anmelderichtlinie](./media/tutorial-customize-ui/signup-signin.png)
+    ![Ausführen des Benutzerflows für Registrierung oder Anmeldung](./media/tutorial-customize-ui/run-user-flow.png)
 
     Es sollte eine Seite ähnlich dem folgenden Beispiel mit den zentrierten Elementen angezeigt werden, basierend auf der CSS-Datei, die Sie erstellt haben:
 
-    ![Richtlinienergebnisse](./media/tutorial-customize-ui/run-now.png) 
+    ![Ergebnisse des Benutzerflows](./media/tutorial-customize-ui/run-now.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -183,7 +188,7 @@ In diesem Artikel haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen von Dateien für die Benutzeroberflächenanpassung
-> * Erstellen einer Registrierungs- und Anmelderichtlinie, die die Dateien verwendet
+> * Erstellen eines Benutzerflows für Registrierung und Anmeldung, der die Dateien verwendet
 > * Testen der angepassten Benutzeroberfläche
 
 > [!div class="nextstepaction"]

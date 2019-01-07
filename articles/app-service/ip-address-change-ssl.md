@@ -1,5 +1,5 @@
 ---
-title: Vorbereitung auf eine Änderung der SSL-IP-Adresse – Azure
+title: Vorbereiten auf eine Änderung der SSL-IP-Adresse – Azure App Service
 description: Erfahren Sie, wie Sie vorgehen, wenn Ihre SSL-IP-Adresse geändert werden soll, damit Ihre App nach der Änderung weiterhin funktioniert.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: e8558b4c3c7dafca8d4fff7e2aae0597a66c031d
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: 4de20ba46d3c16d6cd7bde8e17efb0a6212bc771
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576541"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270789"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Vorbereitung auf eine Änderung der SSL-IP-Adresse
 
@@ -31,7 +32,7 @@ Wenn Sie eine Benachrichtigung erhalten haben, dass die SSL-IP-Adresse Ihrer Azu
 
 4.  Klicken Sie unter der Überschrift **Einstellungen** im linken Navigationsbereich auf **SSL-Einstellungen**.
 
-5. Wählen Sie im Abschnitt „SSL-Bindungen“ den Eintrag für den Hostnamen aus. Wählen Sie in dem geöffneten Editor im Dropdownmenü **SSL-Typ** die Option **SNI SSL** aus, und klicken Sie auf **Bindung hinzufügen**. Wenn die Meldung zum erfolgreich durchgeführten Vorgang angezeigt wird, wurde die vorhandene IP-Adresse freigegeben.
+1. Wählen Sie im Abschnitt „SSL-Bindungen“ den Eintrag für den Hostnamen aus. Wählen Sie in dem geöffneten Editor im Dropdownmenü **SSL-Typ** die Option **SNI SSL** aus, und klicken Sie auf **Bindung hinzufügen**. Wenn die Meldung zum erfolgreich durchgeführten Vorgang angezeigt wird, wurde die vorhandene IP-Adresse freigegeben.
 
 6.  Wählen Sie im Abschnitt **SSL-Bindungen** wieder den gleichen Eintrag für den Hostnamen mit dem Zertifikat aus. Wählen Sie nun im Editor im Dropdownmenü **SSL-Typ** die Option **IP-basierte SSL** aus, und klicken Sie auf **Bindung hinzufügen**. Wenn die Meldung zum erfolgreich durchgeführten Vorgang angezeigt wird, haben Sie eine neue IP-Adresse abgerufen.
 

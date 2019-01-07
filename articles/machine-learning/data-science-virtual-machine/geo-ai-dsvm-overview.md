@@ -1,11 +1,13 @@
 ---
-title: Einführung in die Data Science-VM für geografische KI – Azure | Microsoft-Dokumentation
-description: Beschreibung der Data Science-VM für geografische KI und ihrer Komponenten.
+title: Übersicht über Data Science Virtual Machine für geografische KI
+titleSuffix: Azure
+description: Data Science Virtual Machine für geografische KI umfasst ArcGIS Pro für die Arbeit mit geografischen Daten. Darüber hinaus werden Python, R und Data Science-Tookits für die Arbeit mit maschinellem Lernen und künstlicher Intelligenz bereitgestellt.
 keywords: deep learning, KI, data science-tools, data science-VM, räumliche Analysen
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2fb49212b8480fa550558e14e890cbf7395406da
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0152056dcb8716a407e022d2b30c48e6b534b2a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407451"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074569"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Einführung in die Data Science-VM für geografische KI
 

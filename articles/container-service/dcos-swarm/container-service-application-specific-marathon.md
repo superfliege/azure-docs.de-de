@@ -1,5 +1,5 @@
 ---
-title: Anwendungs- oder benutzerspezifischer Marathon-Dienst
+title: (VERALTET) Anwendungs- oder benutzerspezifischer Marathon-Dienst
 description: Erstellen eines anwendungs- oder benutzerspezifischen Marathon-Diensts
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 4ff263fe0ca4f435199127ed64faadee1c2527f9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164539"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996115"
 ---
-# <a name="create-an-application-or-user-specific-marathon-service"></a>Erstellen eines anwendungs- oder benutzerspezifischen Marathon-Diensts
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(VERALTET) Erstellen eines anwendungs- oder benutzerspezifischen Marathon-Diensts
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Für Azure Container Service wird eine Gruppe von Masterservern bereitgestellt, auf denen wir Apache Mesos und Marathon vorkonfigurieren. Diese Komponenten können zum Orchestrieren Ihrer Anwendungen im Cluster verwendet werden, aber es ist ratsam, die Masterserver nicht für diese Zwecke zu nutzen. Zum Optimieren der Konfiguration von Marathon ist beispielsweise das Anmelden an den Masterservern selbst und das Vornehmen von Änderungen erforderlich. Dies führt zu speziellen Masterservern, die sich vom Standard leicht unterscheiden und unabhängig gepflegt und verwaltet werden müssen. Außerdem ist eine Konfiguration, die für ein Team erforderlich ist, für ein anderes möglicherweise ungeeignet.
 

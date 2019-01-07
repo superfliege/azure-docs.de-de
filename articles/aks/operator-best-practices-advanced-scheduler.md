@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3fa2183a5bb3239059c349e8417aeb52553829cf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 395b0cadf3ba3313a9a1304d9244f1fe72a8209c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430585"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016877"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -151,14 +151,14 @@ Weitere Informationen finden Sie unter [Affinität und Antiaffinität][k8s-affin
 
 Ein letzter Ansatz für den Kubernetes-Scheduler zur logischen Isolation von Workloads ist die Verwendung von Pod-interner Affinität oder Antiaffinität. Diese Einstellungen definieren, dass Pods *nicht* auf einem Knoten mit einem übereinstimmenden Pod geplant werden sollten, oder dass sie geplant werden *sollten*. Standardmäßig versucht der Kubernetes-Scheduler mehrere Pods knotenübergreifend in einer Replikatgruppe zu planen. Sie können für dieses Verhalten spezifischer Regeln definieren.
 
-Ein gutes Beispiel ist eine Webanwendung, die auch einen Redis Cache verwendet. Sie können Regeln für die Pod-Antiaffinität verwenden, um anzufordern, dass der Kubernetes-Scheduler Replikate über Knoten verteilt. Sie können dann Affinitätsregeln verwenden, um sicherzustellen, dass jede Komponente der Webanwendung auf dem gleichen Host wie ein entsprechender Cache geplant ist. Die Verteilung der Pods auf die Knoten sieht beispielsweise wie folgt aus:
+Ein gutes Beispiel ist eine Webanwendung, die auch eine Azure Cache for Redis-Instanz verwendet. Sie können Regeln für die Pod-Antiaffinität verwenden, um anzufordern, dass der Kubernetes-Scheduler Replikate über Knoten verteilt. Sie können dann Affinitätsregeln verwenden, um sicherzustellen, dass jede Komponente der Webanwendung auf dem gleichen Host wie ein entsprechender Cache geplant ist. Die Verteilung der Pods auf die Knoten sieht beispielsweise wie folgt aus:
 
 | **Knoten 1** | **Knoten 2** | **Knoten 3** |
 |------------|------------|------------|
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-Dieses Beispiel ist eine komplexere Bereitstellung als die Verwendung von Knotenselektoren oder Knotenaffinität. Mit der Bereitstellung können Sie kontrollieren, wie Kubernetes Pods auf Knoten plant und Ressourcen logisch isolieren kann. Ein vollständiges Beispiel dieser Webanwendung mit Redis Cache-Beispiel finden Sie unter [Zusammenstellen von Pods auf demselben Knoten][k8s-pod-affinity].
+Dieses Beispiel ist eine komplexere Bereitstellung als die Verwendung von Knotenselektoren oder Knotenaffinität. Mit der Bereitstellung können Sie kontrollieren, wie Kubernetes Pods auf Knoten plant und Ressourcen logisch isolieren kann. Ein vollständiges Beispiel dieser Webanwendung mit Azure Cache for Redis-Beispiel finden Sie unter [Zusammenstellen von Pods auf demselben Knoten][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Promapp | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Promapp | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Promapp konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6bcd1add3985112fe60aab22f1799e40ad8889b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6ed07ea3cc625c518d6733f7a86f4542f91f425c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421861"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Tutorial: Azure Active Directory-Integration mit Promapp
 
@@ -113,6 +113,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Configure single sign-on](./media/promapp-tutorial/tutorial_promapp_url.png)
 
     a. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+    
     | |
     |--|
     | `https://go.promapp.com/TENANTNAME/`|
@@ -171,7 +172,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     c. Öffnen Sie das heruntergeladene Zertifikat in Editor, kopieren Sie den Zertifikatsinhalt mit Ausnahme der ersten Zeile (-----**BEGIN CERTIFICATE**-----) und der letzten Zeile (-----**END CERTIFICATE**-----), und fügen Sie ihn in das Textfeld **SSO-x.509-Zertifikat** ein. Klicken Sie anschließend auf **Speichern**.
         
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers

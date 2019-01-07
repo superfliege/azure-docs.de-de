@@ -1,19 +1,20 @@
 ---
-title: Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten | Microsoft-Dokumentation
-description: Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Active Directory-Identitäten
-author: revitalbarletz
+title: Sicherheitsfilter zum Einschränken von Ergebnissen mit Active Directory-Identitäten – Azure Search
+description: Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Azure Active Directory-Identitäten (AAD).
+author: brjohnstmsft
 manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
-ms.author: revitalb
-ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: brjohnst
+ms.custom: seodec2018
+ms.openlocfilehash: 2d1ac36341ef47ac95317c583005b675f31f1265
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684631"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308820"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten
 

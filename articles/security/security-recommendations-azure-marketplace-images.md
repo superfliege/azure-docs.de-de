@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: barclayn
-ms.openlocfilehash: 4ae36f87c29975c82bb99f713893a9dc78a249e6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 9c02dc386852a32814669d38df6260822a5e4f99
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
-ms.locfileid: "23465405"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308792"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Sicherheitsempfehlungen für Azure Marketplace-Images
 
@@ -39,7 +39,7 @@ Diese Empfehlungen sind auch für Organisationen hilfreich, die keine Images im 
 | Sicherheit                                                     | Es wird empfohlen, LVM nicht zu verwenden.                                                                                                                                                                                                                                            |
 | Sicherheit                                                     | Neueste Versionen der erforderlichen Bibliotheken: </br> - OpenSSL v1.0 oder höher </br> - Python 2.5 oder höher (Python 2.6+ wird dringend empfohlen) </br> - Python-Paket pyasn1, falls nicht bereits installiert </br> - d.OpenSSL v1.0 oder höher                                                                |
 | Sicherheit                                                     | Bash-/Shell-Verlaufseinträge müssen gelöscht werden.                                                                                                                                                                                                                                             |
-| Netzwerk                                                   | Ein SSH-Server sollte standardmäßig enthalten sein. Fügen Sie SSH-Keep-Alive mit der folgenden Option der Datei „sshd_config“ hinzu: „ClientAliveInterval 180“.                                                                                                                                                        |
+| Netzwerk                                                   | Ein SSH-Server sollte standardmäßig enthalten sein. Legen Sie SSH-Keep-Alive mit der folgenden Option auf „sshd config“ fest: ClientAliveInterval 180                                                                                                                                                        |
 | Netzwerk                                                   | Das Image darf keine benutzerdefinierte Netzwerkkonfiguration enthalten. Löschen Sie die Datei „resolv.conf“: `rm /etc/resolv.conf`                                                                                                                                                                                |
 | Bereitstellung                                                   | Der neueste VM-Agent muss installiert sein. </br> - Der Agent sollte mithilfe des RPM- oder Deb-Pakets installiert werden.  </br> - Sie können auch den manuellen Installationsprozess verwenden, aber die Installationspakete werden empfohlen und bevorzugt. </br> - Wenn der Agent manuell aus dem GitHub-Repository installiert wird, kopieren Sie zunächst die Datei `waagent` nach `/usr/sbin`, und führen Sie (als root) Folgendes aus: </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Die Agent-Konfigurationsdatei wird unter `/etc/waagent.conf` gespeichert.    |
 | Bereitstellung                                                   | Stellt sicher, dass der Azure-Support unseren Partnern bei Bedarf die serielle Konsolenausgabe übermitteln kann und ein geeignetes Timeout für die Einbindung von Betriebssystem-Datenträgern aus Cloudspeicher bereitstellen kann. Der Startzeile für den Kernel des Images müssen außerdem folgende Parameter hinzugefügt werden: `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` |

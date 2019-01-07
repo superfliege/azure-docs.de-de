@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Azure ExpressRoute Direct | Microsoft-Dokumentation
+title: Konfigurieren von ExpressRoute Direct – Azure | Microsoft-Dokumentation
 description: Diese Seite unterstützt Sie beim Konfigurieren von ExpressRoute Direct (Vorschau).
 services: expressroute
 author: jaredr80
@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
-ms.openlocfilehash: 857602cf9c3c743e91ea6dace64e71e03cdd879b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: 9dadd61c8c4c2d1cd2305aa852e4528bfb9a1421
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959666"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076609"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>Konfigurieren von ExpressRoute Direct (Vorschau)
 
@@ -228,7 +229,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
 
 Sie können standardmäßig 10 Leitungen im Abonnement erstellen, in dem sich die ExpressRoute Direct-Ressource befindet. Dieser Wert kann vom Support erhöht werden. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreite aller Leitungen in der ExpressRoute Direct-Ressource, und die belegte Bandbreite ist die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
 
-Es gibt zusätzliche Leitungsbandbreiten, die für ExpressRoute Direct nur zur Unterstützung der oben beschriebenen Szenarien genutzt werden können. Hierbei handelt es sich um 40 Gbit/s und 100 Gbit/s.
+Es gibt zusätzliche Leitungsbandbreiten, die für ExpressRoute Direct nur zur Unterstützung der oben beschriebenen Szenarien genutzt werden können. Dies sind: 40Gbit/s und 100Gbit/s.
 
 Standard- oder Premium-Leitungen können erstellt werden. Standardleitungen sind in den Kosten enthalten, während Premium-Leitungen Kosten auf Basis der gewählten Bandbreite verursachen. Leitungen können nur in gemessener Form erstellt werden, da Unbegrenztheit von ExpressRoute Direct nicht unterstützt wird.
 
@@ -238,7 +239,7 @@ Erstellen Sie in der ExpressRoute-Direct-Ressource eine Leitung.
   New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Andere Bandbreiten entsprechen 5 GBit/s, 10 GBit/s und 40 GBit/s.
+  Andere Bandbreiten entsprechen 5,0, 10,0 und 40,0.
 
   **Beispielausgabe:**
 

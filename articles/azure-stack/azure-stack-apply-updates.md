@@ -6,40 +6,42 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: 8e4c86a3c9ff40f23a2a758b450d685b81dabc1a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.reviewer: wfayed
+ms.openlocfilehash: 2a835e7cd9d4c45c1c39c3c135705cb4dff0e6fb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091899"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842185"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Anwenden von Updates in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Als Azure Stack-Betreiber können Sie im Administratorportal über die Kachel „Aktualisieren“ Microsoft- oder OEM-Updatepakete für Azure Stack anwenden. Sie müssen das Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren. 
+Sie können im Verwaltungsportal über die Kachel **Aktualisieren** Microsoft- oder OEM-Updatepakete für Azure Stack anwenden. Sie müssen das Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren.
 
 ## <a name="download-the-update-package"></a>Herunterladen des Updates
 
 Wenn ein Microsoft- oder OEM-Updatepaket für Azure Stack verfügbar ist, laden Sie das Paket an einen Speicherort herunter, auf den von Azure Stack aus zugegriffen werden kann. Überprüfen Sie den Paketinhalt. Ein Updatepaket besteht in der Regel aus folgenden Dateien:
 
-- Einer selbstextrahierenden EXE-Datei mit folgendem Benennungsmuster: *Paketname.exe*. Diese Datei enthält die Nutzlast für das Update, beispielsweise das aktuelle kumulative Update für Windows Server.   
-- Entsprechenden BIN-Dateien mit folgendem Benennungsmuster: *Paketname.bin*. Diese Dateien dienen zum Komprimieren der Nutzlast, die der Datei *Paketname.exe* zugeordnet ist. 
-- Der Datei „Metadata.xml“. Diese Datei enthält wichtige Informationen zum Update, etwa Herausgeber, Name, Voraussetzungen, Größe und Supportpfad-URL.
+- Eine selbstextrahierende `<PackageName>.exe`-Datei. Diese Datei enthält die Nutzlast für das Update, beispielsweise das aktuelle kumulative Update für Windows Server.
+
+- Entsprechende `<PackageName>.bin`-Dateien. Diese Dateien dienen zum Komprimieren der Nutzlast, die der Datei *Paketname.exe* zugeordnet ist.
+
+- Eine `Metadata.xml`-Datei. Diese Datei enthält wichtige Informationen zum Update, etwa Herausgeber, Name, Voraussetzungen, Größe und Supportpfad-URL.
 
 ## <a name="import-and-install-updates"></a>Importieren und Installieren von Updates
 
 Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert und installiert werden.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Es wird dringend empfohlen, dass Sie die Benutzer über alle Wartungsvorgänge unterrichten und normale Wartungsfenster so weit wie möglich außerhalb der Geschäftszeiten planen. Wartungsvorgänge können sowohl Benutzerworkloads als auch Portalvorgänge beeinträchtigen.
 
 1. Wählen Sie im Administratorportal **Alle Dienste** aus. Wählen Sie anschließend in der Kategorie **Daten und Speicher** die Option **Speicherkonten** aus. (Oder beginnen Sie im Filterfeld mit der Eingabe von **Speicherkonten**, und wählen Sie dann die entsprechende Option aus.)
@@ -53,7 +55,7 @@ Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert
 3. Klicken Sie in den Speicherkontodetails unter **Dienste** auf **Blobs**.
  
     ![Hier sehen Sie, wie Sie „Blobs“ für das Speicherkonto auswählen.](media/azure-stack-apply-updates/ApplyUpdates3.png) 
- 
+ 
 4. Klicken Sie unter **Blob-Dienst** auf **+ Container**, um einen Container zu erstellen. Geben Sie einen Namen (etwa *Update-1709*) ein, und klicken Sie dann auf **OK**.
  
      ![Hier sehen Sie, wie Sie einen Container im Speicherkonto hinzufügen.](media/azure-stack-apply-updates/ApplyUpdates4.png)
@@ -64,12 +66,12 @@ Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert
 
 6. Klicken Sie unter **Blob hochladen** auf das Ordnersymbol, navigieren Sie zur EXE-Datei des Updatepakets, und klicken Sie dann im Explorer-Fenster auf **Öffnen**.
   
-7. Klicken Sie unter **Blob hochladen** auf **Hochladen**. 
+7. Klicken Sie unter **Blob hochladen** auf **Hochladen**. 
   
     ![Hier sehen Sie, wo die einzelnen Paketdateien hochgeladen werden.](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Wiederholen Sie die Schritte 6 und 7 für die Dateien *Paketname.bin* und „Metadata.xml“. Falls die Datei „Supplemental Notice.txt“ enthalten ist, importieren Sie sie nicht.
-9. Anschließend können Sie die Benachrichtigungen (Glockensymbol in der oberen rechten Ecke des Portals) überprüfen. In den Benachrichtigungen sollte angegeben sein, dass der Upload abgeschlossen ist. 
+8. Wiederholen Sie die Schritte 6 und 7 für die Dateien *Paketname.bin* und „Metadata.xml“. Falls die Datei „Supplemental Notice.txt“ enthalten ist, importieren Sie sie nicht.
+9. Anschließend können Sie die Benachrichtigungen (Glockensymbol in der oberen rechten Ecke des Portals) überprüfen. In den Benachrichtigungen sollte angegeben sein, dass der Upload abgeschlossen ist. 
 10. Kehren Sie zur Kachel „Aktualisieren“ auf dem Dashboard zurück. Auf der Kachel sollte angegeben sein, dass ein Update verfügbar ist. Klicken Sie auf die Kachel, um das neu hinzugefügte Updatepaket zu überprüfen.
 11. Um das Update zu installieren, wählen Sie das als **Bereit** markierte Paket aus. Klicken Sie dann entweder mit der rechten Maustaste auf das Paket, und wählen Sie **Jetzt aktualisieren**, oder klicken Sie im oberen Bereich auf die Aktion **Jetzt aktualisieren**.
 12. Wenn Sie auf „Update wird installiert...“ klicken, können Sie den Status im Bereich **Update run details** (Updateausführungsdetails) anzeigen. Hier können Sie auch auf **Download full logs** (Vollständige Protokolle herunterladen) klicken, um die Protokolldateien herunterzuladen.

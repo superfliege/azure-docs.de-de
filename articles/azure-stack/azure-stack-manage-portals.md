@@ -12,18 +12,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4453516626c39f73deea8fce0d744fcecbd5c3fc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 58856875fa7d7bb3ba63c489fb17790e68f99aec
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085813"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872185"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Verwenden des Administratorportals in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In Azure Stack stehen zwei Portale zur Verfügung: das Administratorportal und das Benutzerportal (manchmal auch als *Mandantenportal* bezeichnet). Als Azure Stack-Betreiber können Sie mit dem Administratorportal tägliche Verwaltungsaufgaben und Vorgänge in Azure Stack ausführen.
 
@@ -86,6 +86,10 @@ Wenn Sie oben rechts im Administratorportal das Hilfe- und Supportsymbol (Fragez
 
 - Bei Verwendung eines integrierten Systems wird mit dieser Aktion eine Website geöffnet, auf der Sie direkt ein Supportticket beim Microsoft-Kundensupport (Microsoft Customer Support Services, CSS) öffnen können. Informationen dazu, wann Sie den Microsoft-Support und wann den Support des OEM-Hardwareanbieters kontaktieren sollten, finden Sie unter [Supportquellen](azure-stack-manage-basics.md#where-to-get-support).
 - Bei Verwendung des Development Kits wird mit dieser Aktion direkt die Website mit den Azure Stack-Foren geöffnet. Diese Foren werden regelmäßig überprüft. Da das Development Kit eine Evaluierungsumgebung ist, wird über den Microsoft CSS kein offizieller Support angeboten.
+
+### <a name="quick-access-to-the-azure-roadmap"></a>Schneller Zugriff auf die Azure-Roadmap
+
+Wenn Sie in der oberen rechten Ecke des Administratorportals **Hilfe und Unterstützung** (das Fragezeichen) und dann **Azure-Roadmap** auswählen, wird eine neue Browserregisterkarte geöffnet, über die Sie zur Azure-Roadmap gelangen. Durch Eingabe von **Azure Stack** in das Suchfeld **Produkte** werden alle Updates von Azure Stack-Roadmap angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,9 +1,9 @@
 ---
-title: Horizontales Hochskalieren mit Azure SQL-Datenbank | Microsoft Docs
+title: Horizontales Hochskalieren mit Azure SQL-Datenbank | Microsoft-Dokumentation
 description: SaaS-Entwickler (Software-as-a-Service) können mit diesen Tools problemlos elastische und skalierbare Datenbanken in der Cloud erstellen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,21 +12,21 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: ab787e8f659d2f57f23bb87397608736e7f6848a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a36c5cfc977920f43b7f73e3e7cf9176de7c1f8a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164912"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867085"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontales Hochskalieren mit Azure SQL-Datenbank
 Mithilfe der Tools für **elastische Datenbanken** können Sie Azure SQL-Datenbanken problemlos horizontal hochskalieren. Mit diesen Tools und Features können Sie Datenbankressourcen von **Azure SQL-Datenbank** zum Erstellen von Lösungen für transaktionale Workloads und insbesondere SaaS-Anwendungen (Software-as-a-Service) verwenden. Die Features für elastische Datenbanken umfassen folgende:
 
-* [Clientbibliothek für elastische Datenbanken:](sql-database-elastic-database-client-library.md)Die Clientbibliothek ist ein Feature, mit dem Sie Sharddatenbanken erstellen und verwalten können.  Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
+* [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md): Die Clientbibliothek ist ein Feature, mit dem Sie Sharddatenbanken erstellen und verwalten können.  Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
 * [Split-Merge-Tool für elastische Datenbanken:](sql-database-elastic-scale-overview-split-and-merge.md)Zum Verschieben von Daten zwischen Sharddatenbanken. Dieses Tool ist nützlich zum Verschieben von Daten aus einer mehrinstanzenfähigen Datenbank in eine Datenbank mit einzelnem Mandanten (oder umgekehrt). Siehe [Tutorial zum Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Auftrag für elastische Datenbanken](sql-database-elastic-jobs-overview.md) (Vorschau): Verwalten Sie eine große Anzahl von Azure SQL-Datenbanken mithilfe von Aufträgen. Führen Sie mithilfe von Aufträgen ganz einfach administrative Vorgänge aus, z.B. Schemaänderungen, die Verwaltung von Anmeldeinformationen, Verweisdatenupdates, die Leistungsdatensammlung oder die Mandanten(Kunden)-Telemetrieerfassung.
-* [Abfrage für elastische Datenbanken](sql-database-elastic-query-overview.md) (Vorschauversion): Mit der Abfrage können Sie eine Transact-SQL-Abfrage für mehrere Datenbanken ausführen. Dies ermöglicht eine Verknüpfung mit Berichtstools wie Excel, Power BI, Tableau usw.
-* [Elastische Transaktionen:](sql-database-elastic-transactions-overview.md)Dieses Feature ermöglicht das Ausführen von Transaktionen, die sich über mehrere Datenbanken in Azure SQL-Datenbank erstrecken. Elastische Datenbanktransaktionen stehen für .NET-Anwendungen über ADO.NET zur Verfügung und lassen sich mithilfe der Klassen vom Typ [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx)in die vertraute Programmierumgebung integrieren.
+* [Aufträge für die elastische Datenbank](sql-database-elastic-jobs-overview.md) (Vorschau): Verwalten Sie eine große Anzahl von Azure SQL-Datenbanken mithilfe von Aufträgen. Führen Sie mithilfe von Aufträgen ganz einfach administrative Vorgänge aus, z.B. Schemaänderungen, die Verwaltung von Anmeldeinformationen, Verweisdatenupdates, die Leistungsdatensammlung oder die Mandanten(Kunden)-Telemetrieerfassung.
+* [Abfrage für elastische Datenbanken](sql-database-elastic-query-overview.md) (Vorschau): Mit diesem Feature können Sie eine Transact-SQL-Abfrage über mehrere Datenbanken hinweg ausführen. Dies ermöglicht eine Verknüpfung mit Berichtstools wie Excel, Power BI, Tableau usw.
+* [Elastische Transaktionen](sql-database-elastic-transactions-overview.md): Mit diesem Feature können Sie Transaktionen über mehrere Datenbanken in Azure SQL-Datenbank hinweg ausführen. Elastische Datenbanktransaktionen stehen für .NET-Anwendungen über ADO.NET zur Verfügung und lassen sich mithilfe der Klassen vom Typ [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx)in die vertraute Programmierumgebung integrieren.
 
 Die folgende Grafik zeigt eine Architektur mit den **Features für elastische Datenbanken** im Kontext einer Sammlung von Datenbanken.
 

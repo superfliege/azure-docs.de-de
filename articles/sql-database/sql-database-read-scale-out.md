@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: deadbc8186d80b050fdb40879ecf29fd229c8709
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 12/05/2018
+ms.openlocfilehash: 16737ed525147968c97ca20a9f4e674a0dee34fc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465447"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955053"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads (Vorschau)
 
 **Mit der horizontalen Leseskalierung** können Sie mithilfe der Kapazität eines schreibgeschützten Replikats einen Lastenausgleich für schreibgeschützte Azure SQL-Datenbank-Workloads durchführen.
-
-## <a name="overview-of-read-scale-out"></a>Übersicht über die horizontale Leseskalierung
 
 Jede Datenbank im Premium-Tarif ([DTU-basiertes Einkaufsmodell](sql-database-service-tiers-dtu.md)) oder im unternehmenskritischen Tarif ([auf virtuellen Kernen basierendes Einkaufsmodell](sql-database-service-tiers-vcore.md)) wird automatisch mit verschiedenen Always On-Replikaten bereitgestellt, um die Verfügbarkeits-SLA zu unterstützen.
 
@@ -47,7 +45,7 @@ Einer der Vorteile von Replikaten besteht darin, dass die Replikate sich immer i
 > [!NOTE]
 > Replikationslatenzen innerhalb der Region sind gering, und diese Situation tritt selten ein.
 
-## <a name="connecting-to-a-read-only-replica"></a>Herstellen einer Verbindung zu einem schreibgeschützten Replikat
+## <a name="connect-to-a-read-only-replica"></a>Herstellen einer Verbindung mit einem schreibgeschützten Replikat
 
 Wenn Sie die horizontale Leseskalierung für eine Datenbank aktivieren, bestimmt die Option `ApplicationIntent` in der vom Client bereitgestellten Verbindungszeichenfolge, ob eine Verbindung an das Replikat mit Schreibzugriff oder an ein schreibgeschütztes Replikat weitergeleitet wird. Wenn der `ApplicationIntent`-Wert `ReadWrite` lautet (der Standardwert), wird die Verbindung an das Datenbankreplikat mit Lese-/Schreibzugriff weitergeleitet. Dies ist identisch mit dem vorhandenen Verhalten. Wenn der `ApplicationIntent`-Wert `ReadOnly` lautet, wird die Verbindung an ein schreibgeschütztes Replikat weitergeleitet.
 
@@ -65,6 +63,8 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Sicherstellen einer Verbindung mit einem schreibgeschützten Replikat
+
 Sie können durch Ausführen der folgenden Abfrage überprüfen, ob Sie mit einem schreibgeschützten Replikat verbunden sind. Bei Verbindung mit einem schreibgeschützten Replikat wird READ_ONLY zurückgegeben.
 
 ```SQL
@@ -76,9 +76,9 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ## <a name="enable-and-disable-read-scale-out"></a>Aktivieren und Deaktivieren der horizontalen Leseskalierung
 
-Im Tarif „Unternehmenskritisch“ (Vorschauversion) ist die horizontale Leseskalierung für [verwaltete Instanzen](sql-database-managed-instance.md) standardmäßig aktiviert. Für die Tarife „Premium“ und „Unternehmenskritisch“ sollte sie in [Datenbanken auf einem logischen Server](sql-database-logical-servers.md) explizit aktiviert werden. Hier werden die Methoden zum Aktivieren und Deaktivieren der horizontalen Leseskalierung beschrieben.
+Im Tarif „Unternehmenskritisch“ ist die horizontale Leseskalierung für [verwaltete Instanzen](sql-database-managed-instance.md) standardmäßig aktiviert. Für die Tarife „Premium“ und „Unternehmenskritisch“ sollte sie in [Datenbanken auf einem logischen Server](sql-database-logical-servers.md) explizit aktiviert werden. Hier werden die Methoden zum Aktivieren und Deaktivieren der horizontalen Leseskalierung beschrieben.
 
-### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Aktivieren und Deaktivieren der horizontalen Leseskalierung mithilfe von Azure PowerShell
+### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell: Aktivieren und Deaktivieren der horizontalen Leseskalierung
 
 Für die Verwaltung der horizontalen Leseskalierung in Azure PowerShell ist das Azure PowerShell-Release von Dezember 2016 oder eine neuere Version erforderlich. Das neueste PowerShell-Release finden Sie unter [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
@@ -102,7 +102,7 @@ So erstellen Sie eine neue Datenbank mit aktivierter horizontaler Leseskalierung
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Aktivieren und Deaktivieren der horizontalen Leseskalierung mithilfe der Azure SQL-Datenbank-REST-API
+### <a name="rest-api-enable-and-disable-read-scale-out"></a>REST-API: Aktivieren und Deaktivieren der horizontalen Leseskalierung
 
 Um eine Datenbank mit aktivierter horizontaler Leseskalierung zu erstellen oder die horizontale Leseskalierung für eine vorhandene Datenbank zu aktivieren oder zu deaktivieren, erstellen oder aktualisieren Sie die entsprechende Datenbankentität, und legen Sie die `readScale`-Eigenschaft auf `Enabled` oder `Disabled` fest, wie in der folgenden Beispielanforderung gezeigt.
 

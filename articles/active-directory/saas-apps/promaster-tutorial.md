@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 13bb128836590fb43e0c6a2f7131f83a99a23eaf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 871abffc07ee29df388205395110e89a85dd7344
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507801"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017653"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Tutorial: Azure Active Directory-Integration mit ProMaster (von Inlogik)
 
@@ -111,6 +111,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     ![SSO-Informationen zur Domäne und zu den URLs für ProMaster (von Inlogik)](./media/promaster-tutorial/tutorial_promaster_url1.png)
 
     a. Verwenden Sie im Textfeld **Bezeichner** eines der folgenden URL-Formate:
+
     | |
     | - |-|
     |  `https://secure.inlogik.com/<COMPANYNAME>`|
@@ -118,6 +119,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     | |
 
     b. Verwenden Sie im Textfeld **Antwort-URL** eines der folgenden URL-Formate:
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
@@ -129,6 +131,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     ![SSO-Informationen zur Domäne und zu den URLs für ProMaster (von Inlogik)](./media/promaster-tutorial/tutorial_promaster_url2.png)
 
     Verwenden Sie im Textfeld **Anmelde-URL** eines der folgenden URL-Formate:
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs `|
@@ -182,7 +185,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-a-promaster-by-inlogik-test-user"></a>Erstellen eines Testbenutzers für ProMaster (von Inlogik)
 
-In diesem Abschnitt erstellen Sie in ProMaster (von Inlogik) einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam von ProMaster (von Inlogik)](mailto:michael.boldiston@inlogik.com) zusammen, um die Benutzer der Plattform von ProMaster (von Inlogik) hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ProMaster (von Inlogik) einen Benutzer namens Britta Simon. Arbeiten Sie mit dem  [Supportteam von ProMaster (von Inlogik)](mailto:michael.boldiston@inlogik.com)  zusammen, um die Benutzer der Plattform von ProMaster (von Inlogik) hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -1,25 +1,19 @@
 ---
-title: Konfigurieren von BFD über ExpressRoute | Microsoft-Dokumentation
-description: Dieses Dokument enthält Anweisungen zum Konfigurieren von BFD über das private Peering einer ExpressRoute-Leitung.
-documentationcenter: na
+title: Konfigurieren von BFD über ExpressRoute – Azure | Microsoft-Dokumentation
+description: Dieser Artikel enthält Anweisungen zum Konfigurieren von BFD (Bidirectional Forwarding Detection) über das private Peering einer ExpressRoute-Leitung.
 services: expressroute
 author: rambk
-manager: tracsman
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 8/17/2018
 ms.author: rambala
-ms.openlocfilehash: 6d941bf810a45e8808f83c4df701a856f664c7ef
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631658"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083783"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurieren von BFD über ExpressRoute
 
@@ -27,7 +21,7 @@ ExpressRoute unterstützt Bidirectional Forwarding Detection (BFD) über private
 
 ## <a name="need-for-bfd"></a>Notwendigkeit von BFD
 
-Das folgende Diagramm zeigt den Vorteil der Aktivierung von BFD über die ExpressRoute-Leitung: [ ![1]][1]
+Das folgende Diagramm zeigt den Vorteil der Aktivierung von BFD über die ExpressRoute-Leitung: [![1]][1]
 
 Sie können die ExpressRoute-Leitung entweder über Layer 2-Verbindungen oder über verwaltete Layer 3-Verbindungen aktivieren. In beiden Fällen ist das darüber liegende BGP für die Erkennung von Verbindungsfehlern in dem Pfad verantwortlich, wenn sich im ExpressRoute-Verbindungspfad mehrere Layer 2-Geräte befinden.
 

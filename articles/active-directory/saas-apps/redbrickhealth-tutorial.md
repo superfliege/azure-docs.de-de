@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration von RedBrick Health in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit RedBrick Health | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und RedBrick Health konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 11452dfb94a5a1c8cf4734b1ef21a44cccafbea1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bccc7abed9a86bcba74a5d994664a20313f3282a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430507"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833804"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Tutorial: Integration von RedBrick Health in Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Tutorial: Azure Active Directory-Integration mit RedBrick Health
 
 In diesem Tutorial erfahren Sie, wie Sie RedBrick Health in Azure Active Directory (Azure AD) integrieren.
 
@@ -110,7 +110,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für RedBrick Health](./media/redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `http://www.redbrickhealth.com`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://www.redbrickhealth.com`
     
     b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
@@ -158,7 +158,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Downloadlink für das Zertifikat](./media/redbrickhealth-tutorial/tutorial_redbrickhealth_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/redbrickhealth-tutorial/tutorial_general_400.png)
 
@@ -169,7 +169,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens auf der Seite von **RedBrick Health** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die **SAML-Entitäts-ID** an das [RedBrick Health-Supportteam](https://home.redbrickhealth.com/contact/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -201,11 +201,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
   
 ### <a name="create-a-redbrick-health-test-user"></a>Erstellen eines RedBrick Health-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in RedBrick Health eine Benutzerin namens Britta Simon. Wenden Sie sich an das [RedBrick Health-Supportteam](https://home.redbrickhealth.com/contact/), um die Benutzer zur RedBrick Health-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in RedBrick Health eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem  [RedBrick Health-Supportteam](https://home.redbrickhealth.com/contact/)  zusammen, um die Benutzer zur RedBrick Health-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

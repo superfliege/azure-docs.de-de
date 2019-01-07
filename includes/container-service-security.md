@@ -4,14 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f4acec3db7d74b969c55e725d9ec1c5f063b552c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cc72fb39bf62915be10493a780538121f26ca835
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628141"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002270"
 ---
-# <a name="securing-docker-containers-in-azure-container-service"></a>Sichern von Docker-Containern in Azure Container Service
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(VERALTET) Schützen von Docker-Containern in Azure Container Service
+
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 Dieser Artikel enthält Überlegungen und Empfehlungen zum Sichern von Docker-Containern, die in Azure Container Service bereitgestellt wurden. Viele dieser Überlegungen gelten allgemein für Docker-Container, die in Azure oder anderen Umgebungen bereitgestellt wurden. 
 
@@ -56,11 +58,11 @@ Für jeden in Azure Container Service verfügbaren Orchestrator gelten eigene Si
 
 Weitere orchestratorspezifische Informationen zur Sicherheit finden Sie in den folgenden Ressourcen:
 
-* **Kubernetes**: [Security Best Practices for Kubernetes Deployment](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/) (Bewährte Methoden für die Sicherheit für eine Kubernetes-Bereitstellung)
+* **Kubernetes**: [Bewährte Methoden für die Sicherheit einer Kubernetes-Bereitstellung](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
-* **DC/OS**: [Securing Your Cluster](https://dcos.io/docs/1.8/administration/securing-your-cluster/) (Sichern Ihres Clusters)
+* **DC/OS**: [Schützen Ihres Clusters](https://dcos.io/docs/1.8/administration/securing-your-cluster/)
 
-* **Docker Swarm**: [Docker Security](https://www.docker.com/docker-security) (Docker-Sicherheit)
+* **Docker Swarm**: [Docker-Sicherheit](https://www.docker.com/docker-security)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

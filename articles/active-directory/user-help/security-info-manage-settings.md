@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4cd88490118343a9a00dbd919d7820f0334df92e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162715"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016145"
 ---
 # <a name="manage-your-security-info-preview"></a>Verwalten der Sicherheitsinformation (Vorschauversion)
 
@@ -67,7 +67,7 @@ Wenn Sie Ihr Gerät verlieren oder Ihr Gerät kompromittiert wird, müssen Sie d
 
 3. Klicken Sie im Bereich **Konto verwalten** auf **Forget MFA on remembered devices** (MFA auf gespeicherten Geräten löschen).
     
-    Wenn Sie diese Option auswählen, müssen Sie den Prozess für Multi-Factor Authentication nach der Anmeldung erneut durchlaufen.
+    Wenn Sie diese Option auswählen, müssen Sie den Prozess für Multi-Factor Authentication (MFA) nach der Anmeldung erneut durchlaufen.
 
     ![Bildschirm „Profil“ mit hervorgehobenem Link zum Löschen](media/security-info/security-info-forget.png)
 
@@ -77,7 +77,7 @@ Dieser Artikel unterstützt Sie beim Beheben von Problemen mit der Sicherheitsin
 
 |Problem|Lösung|
 |-------|--------|
-|Ich habe mein Smartphone nicht bei mir.|Möglicherweise haben Sie Ihr Smartphone nicht immer dabei, möchten sich aber dennoch bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden. Um dieses Problem zu beheben, können Sie sich mit einer anderen Authentifizierungsmethode anmelden, für die Ihr Smartphone nicht erforderlich ist, beispielsweise mit Ihrer E-Mail-Adresse oder der Bürotelefonnummer. Um weitere Methoden zur Sicherheitsinformation hinzuzufügen, können Sie die Schritte im Abschnitt [Ändern der Information](#change-your-info) ausführen.|
+|Ich habe mein Smartphone nicht bei mir.|Möglicherweise haben Sie Ihr Smartphone nicht immer dabei, möchten sich aber dennoch bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden. Um dieses Problem zu beheben, können Sie sich mit einer anderen Authentifizierungsmethode anmelden, für die Ihr Smartphone nicht erforderlich ist, beispielsweise mit Ihrer Bürotelefonnummer. Um weitere Methoden zur Sicherheitsinformation hinzuzufügen, können Sie die Schritte im Abschnitt [Ändern der Information](#change-your-info) ausführen.|
 |Ich habe mein Telefon verloren, oder es wurde mir gestohlen|Leider kann Ihr Telefon verloren gehen oder gestohlen werden. In diesem Fall wird dringend empfohlen, Ihre Organisation zu informieren, damit das IT-Team Ihre App-Kennwörter zurücksetzen und alle gespeicherten Geräte aus der Liste der vertrauenswürdigen Geräte löschen kann. Sie können auch Ihre eigenen vertrauenswürdigen Geräte löschen, indem Sie die Schritte im Abschnitt [Verwalten Ihrer Sicherheitsinformation für ein verlorenes oder möglicherweise kompromittiertes Gerät](#manage-your-security-info-for-a-lost-or-potentially-compromised-device) ausführen.|
 |Ich habe eine neue Telefonnummer.|Es gibt zwei Möglichkeiten, dieses Problem zu beheben. Sie können sich mit einer anderen Authentifizierungsmethode anmelden, für die Ihre Telefonnummer nicht erforderlich ist (etwa mit einer E-Mail-Adresse). Ist dies nicht möglich, können Sie das IT-Team Ihrer Organisation bitten, Ihre Einstellungen zu löschen. Um weitere Methoden zur Sicherheitsinformation hinzuzufügen, können Sie die Schritte im Abschnitt [Ändern der Information](#change-your-info) ausführen.|
 |Meine Standardmethode ist falsch.|Sie können die Standardmethode in den Sicherheitsoptionen aktualisieren. Spezifische Details finden Sie im Abschnitt [Ändern der Information](#change-your-info).|

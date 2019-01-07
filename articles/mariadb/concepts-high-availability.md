@@ -3,20 +3,18 @@ title: Hochverfügbarkeitskonzepte in Azure Database for MariaDB
 description: Dieses Thema biete Informationen zur Hochverfügbarkeit beim Verwenden von Azure Database for MariaDB.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2f06c9515c6ee79ea7475452b7000d1babdbecfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: e1e4103360c2864f6a63f2eb0c7f146cac779cb6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956522"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538156"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Hochverfügbarkeitskonzepte in Azure Database for MariaDB
-Der Dienst Azure Database for MariaDB garantiert eine hohe Verfügbarkeit. Die finanziell abgesicherte Vereinbarung zum Servicelevel (SLA) beträgt 99,99 % bei allgemeiner Verfügbarkeit. Die SLA gilt nicht für die Public Preview. Es gibt praktisch keine Ausfallzeiten bei der Nutzung dieses Diensts.
+Der Dienst Azure Database for MariaDB garantiert eine hohe Verfügbarkeit. Die finanziell abgesicherte Vereinbarung zum Servicelevel (SLA) beträgt 99,99 % bei allgemeiner Verfügbarkeit. Es gibt praktisch keine Ausfallzeiten bei der Nutzung dieses Diensts.
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 Das Hochverfügbarkeitsmodell (HA) basiert auf integrierten Failovermechanismen, die bei einer Unterbrechung auf Knotenebene greifen. Eine Unterbrechung auf Knotenebene kann aufgrund eines Hardwarefehlers oder als Reaktion auf eine Dienstbereitstellung auftreten.
@@ -34,4 +32,4 @@ Wenn Azure Database for MariaDB zentral hoch- oder herunterskaliert wird, wird �
 Während des Skalierungsvorgangs tritt eine Unterbrechung der Datenbankverbindungen auf. Die Verbindung der Clientanwendungen wird getrennt, und offene Transaktionen ohne Commit werden abgebrochen. Sobald die Clientanwendung die Verbindung wiederherstellt oder eine neue Verbindung herstellt, leitet das Gateway die Verbindung an die Instanz mit der neuen Größe weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Eine Dienstübersicht finden Sie im [ Überblick über Azure Database for MariaDB](overview.md).
+- Eine Dienstübersicht finden Sie im  [Überblick über Azure Database for MariaDB](overview.md).

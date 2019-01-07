@@ -10,17 +10,15 @@ ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: d0156ccc3caea2f47296740d57422ccc706f84f1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634233"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184117"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Überwachen des Active Directory-Replikationsstatus mit Log Analytics
 
@@ -33,7 +31,7 @@ Mit dem AD-Replikationsstatusmonitor-Lösungspaket wird die Active Directory-Umg
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-* Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind. Alternativ müssen Sie Agents auf Mitgliedsservern installieren und für das Senden von AD-Replikationsdaten an Log Analytics konfigurieren. Informationen zur Verbindung von Windows-Computern mit Log Analytics finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](../../azure-monitor/platform/agent-windows.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit Log Analytics verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../../log-analytics/log-analytics-om-agents.md) weiter.
+* Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind. Alternativ müssen Sie Agents auf Mitgliedsservern installieren und für das Senden von AD-Replikationsdaten an Log Analytics konfigurieren. Informationen zur Verbindung von Windows-Computern mit Log Analytics finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](../../azure-monitor/platform/agent-windows.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit Log Analytics verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../../azure-monitor/platform/om-agents.md) weiter.
 * Fügen Sie mithilfe des unter [Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses die Active Directory-Replikationsstatusmonitor-Lösung Ihrem Log Analytics-Arbeitsbereich hinzu.  Es ist keine weitere Konfiguration erforderlich.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Details der AD-Replikationsstatus-Datensammlung
@@ -48,7 +46,7 @@ Wenn Sie Ihre Domänencontroller nicht direkt mit Log Analytics verbinden möcht
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an Log Analytics
 1. Stellen Sie sicher, dass der Computer Mitglied der Domäne ist, die Sie mit der AD-Replikationsstatus-Lösung überwachen möchten.
-2. [Verbinden Sie den Windows-Computer mit Log Analytics](../../log-analytics/log-analytics-om-agents.md), oder [stellen Sie die Verbindung mit Log Analytics über die vorhandene Operations Manager-Umgebung her](../../log-analytics/log-analytics-om-agents.md), falls die Verbindung noch nicht besteht.
+2. [Verbinden Sie den Windows-Computer mit Log Analytics](../../azure-monitor/platform/om-agents.md), oder [stellen Sie die Verbindung mit Log Analytics über die vorhandene Operations Manager-Umgebung her](../../azure-monitor/platform/om-agents.md), falls die Verbindung noch nicht besteht.
 3. Legen Sie auf diesem Computer den folgenden Registrierungsschlüssel fest:
 
    * Schlüssel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<Verwaltungsgruppenname>\Solutions\ADReplication**
@@ -110,7 +108,7 @@ Wenn Sie in einer der Listen auf ein Element klicken, werden weitere Details zur
 
 ![AD-Replikationsstatus-Fehler in Suchergebnissen](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Hier können Sie weiter filtern, die Suchabfrage ändern usw. Weitere Informationen zur Verwendung der Protokollsuche finden Sie unter [Protokollsuchvorgänge](../../log-analytics/log-analytics-queries.md).
+Hier können Sie weiter filtern, die Suchabfrage ändern usw. Weitere Informationen zur Verwendung der Protokollsuche finden Sie unter [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md).
 
 Im Feld **HelpLink** wird die URL einer TechNet-Seite mit zusätzlichen Details zum jeweiligen Fehler angezeigt. Sie können diesen Link kopieren und in das Browserfenster einfügen, um Informationen zur Problembehandlung und Fehlerbehebung anzuzeigen.
 
@@ -119,29 +117,29 @@ Sie können auch auf **Exportieren** klicken, um die Ergebnisse nach Excel zu ex
 ![Exportierte AD-Replikationsstatus-Fehler in Excel](./media/ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>AD-Replikationsstatus – Häufig gestellte Fragen
-**F: Wie oft werden AD-Replikationsstatus-Daten aktualisiert?**
+**F: Wie oft werden AD-Replikationsstatusdaten aktualisiert?**
 A: Die Informationen werden alle fünf Tage aktualisiert.
 
 **F: Kann konfiguriert werden, wie oft die Daten aktualisiert werden?**
- A: Derzeit leider nicht.
+A: Derzeit leider nicht.
 
-**F: Muss ich alle meine Domänencontroller meinem Log Analytics-Arbeitsbereich hinzufügen, um den Replikationsstatus sehen zu können?**
-A: Nein. Sie müssen nur einen einzelnen Domänencontroller hinzufügen. Wenn Sie in Ihrem Log Analytics-Arbeitsbereich mehrere Domänencontroller verwenden, werden Daten von allen Domänencontrollern an Log Analytics gesendet.
+**F: Muss ich all meine Domänencontroller zu meinem Log Analytics-Arbeitsbereich hinzufügen, um den Replikationsstatus sehen zu können?**
+A: Nein. Sie müssen nur einen einzigen Domänencontroller hinzufügen. Wenn Sie in Ihrem Log Analytics-Arbeitsbereich mehrere Domänencontroller verwenden, werden Daten von allen Domänencontrollern an Log Analytics gesendet.
 
 **F: Ich möchte meinem Log Analytics-Arbeitsbereich keine Domänencontroller hinzufügen. Kann ich die AD-Replikationsstatus-Lösung trotzdem verwenden?**
 A: Ja. Sie können den Wert eines Registrierungsschlüssels festlegen, um ihn zu aktivieren. Informationen finden Sie unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 **F: Wie lautet der Name des Prozesses, der die Daten sammelt?**
- A: Der Prozess hat den Namen „AdvisorAssessment.exe“.
+A: AdvisorAssessment.exe
 
 **F: Wie lange dauert das Sammeln der Daten?**
- A: Die Dauer der Datensammlung hängt von der Größe der Active Directory-Umgebung ab, aber normalerweise dauert der Vorgang nicht länger als 15 Minuten.
+A: Die Dauer der Datensammlung hängt von der Größe der Active Directory-Umgebung ab, aber normalerweise dauert der Vorgang nicht länger als 15 Minuten.
 
 **F: Welche Arten von Daten werden gesammelt?**
- A: Replikationsinformationen werden per LDAP gesammelt.
+A: Es werden Replikationsinformationen per LDAP gesammelt.
 
 **F: Gibt es eine Möglichkeit, den Zeitpunkt der Datensammlung zu konfigurieren?**
- A: Derzeit leider nicht.
+A: Derzeit leider nicht.
 
 **F: Welche Berechtigungen benötige ich, um Daten sammeln zu können?**
 A: Normale Benutzerberechtigungen für Active Directory sind ausreichend.
@@ -149,9 +147,9 @@ A: Normale Benutzerberechtigungen für Active Directory sind ausreichend.
 ## <a name="troubleshoot-data-collection-problems"></a>Problembehandlung bei der Datensammlung
 Zum Sammeln von Daten ist für das AD-Replikationsstatusmonitor-Lösungspaket mindestens ein Domänencontroller erforderlich, der mit Ihrem Log Analytics-Arbeitsbereich verbunden ist. Nachdem Sie eine Verbindung mit einem Domänencontroller hergestellt haben, wird eine Meldung angezeigt, die besagt, dass **nach wie vor Daten erfasst werden**.
 
-Falls Sie Informationen zum Herstellen der Verbindung für einen Domänencontroller benötigen, können Sie die Dokumentation unter [Verbinden von Windows-Computern mit Log Analytics](../../log-analytics/log-analytics-om-agents.md)anzeigen. Wenn der Domänencontroller bereits mit einer vorhandenen System Center Operations Manager-Umgebung verbunden ist, können Sie alternativ dazu die Dokumentation unter [Verbinden von System Center Operations Manager mit Log Analytics](../../log-analytics/log-analytics-om-agents.md)verwenden.
+Falls Sie Informationen zum Herstellen der Verbindung für einen Domänencontroller benötigen, können Sie die Dokumentation unter [Verbinden von Windows-Computern mit Log Analytics](../../azure-monitor/platform/om-agents.md)anzeigen. Wenn der Domänencontroller bereits mit einer vorhandenen System Center Operations Manager-Umgebung verbunden ist, können Sie alternativ dazu die Dokumentation unter [Verbinden von System Center Operations Manager mit Log Analytics](../../azure-monitor/platform/om-agents.md)verwenden.
 
 Falls Sie keinen Domänencontroller direkt mit Log Analytics oder System Center Operations Manager verbinden möchten, helfen Ihnen die Informationen unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms) weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollsuchen in Log Analytics](../../log-analytics/log-analytics-queries.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
+* Verwenden Sie [Protokollsuchen in Log Analytics](../../azure-monitor/log-query/log-query-overview.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.

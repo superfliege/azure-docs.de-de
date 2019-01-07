@@ -7,34 +7,33 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/10/2018
 ms.author: juliako
-ms.openlocfilehash: 2261b8fa496beaf2a14c9b949047b6a5cbc6ea32
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: f29adb500401c9f5d6e177a0740ce54719c36a34
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291827"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253203"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
-In diesem Artikel wird gezeigt, wie Sie ein Video mit Azure Video Indexer hochladen. Die Video Indexer-API bietet zwei Optionen für das Hochladen: 
+Beim Hochladen von Videos mit der Video Indexer-API haben Sie zwei Optionen: 
 
 * Hochladen des Videos von einer URL (bevorzugt)
 * Senden der Videodatei als Bytearray im Hauptteil der Anforderung
 * Verwenden Sie ein vorhandenes Azure Media Services-Medienobjekt, indem Sie die [Medienobjekt-ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) angeben (wird nur in kostenpflichtigen Konten unterstützt).
 
-In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Videos ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) verwenden, um Ihre Videos über eine URL hochzuladen und zu indizieren. Das Codebeispiel in diesem Artikel schließt den auskommentierten Code ein, der zeigt, wie Sie das Bytearray hochladen.  
+In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Videos ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) verwenden, um Ihre Videos über eine URL hochzuladen und zu indizieren. Das Codebeispiel in diesem Artikel schließt den auskommentierten Code ein, der zeigt, wie Sie das Bytearray hochladen. <br/>Außerdem werden in diesem Artikel einige Parameter beschrieben, die Sie für die API festlegen können, um den Prozess und die Ausgabe der API zu ändern.
 
-Außerdem werden in diesem Artikel einige Parameter beschrieben, die Sie für die API festlegen können, um den Prozess und die Ausgabe der API zu ändern.
-
-> [!Note]
-> Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). <br/>Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
+Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
 
 ## <a name="uploading-considerations"></a>Überlegungen zum Hochladen
     
 - Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
-- Die Option für das Bytearray ist auf 2 GB bei einem Zeitlimit von 30 Minuten beschränkt.
+- Die Uploadgröße mit der URL-Option ist auf 10 GB begrenzt.
+- Die Uploadgröße mit der Bytearray-Option ist auf 2 GB begrenzt. 
+- Die Bytearray-Option umfasst ein Timeout nach 30 Minuten.
 - Die im Parameter `videoURL` angegebene URL muss codiert sein.
 
 > [!Tip]
@@ -91,7 +90,7 @@ Der Preis richtet sich nach der gewählten Indizierungsoption.
 
 ### <a name="priority"></a>priority
 
-Videos werden von Video Indexer gemäß ihrer Priorität indiziert. Geben Sie mithilfe des Parameters **priority** die Indexpriorität an. Die folgenden Werte sind zulässig: **Niedrig**, **Normal** (Standardeinstellung) und **Hoch**.
+Videos werden von Video Indexer gemäß ihrer Priorität indiziert. Geben Sie mithilfe des Parameters **priority** die Indexpriorität an. Die folgenden Werte sind gültig: **Niedrig**, **Normal** (Standard) und **Hoch**.
 
 Der Parameter **priority** wird nur in kostenpflichtigen Konten unterstützt.
 

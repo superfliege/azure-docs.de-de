@@ -1,5 +1,5 @@
 ---
-title: Continuous Integration und Continuous Deployment (CI/CD) mit Azure Container Service und Swarm
+title: (VERALTET) Continuous Integration und Continuous Deployment (CI/CD) mit Azure Container Service und Swarm
 description: Verwenden Sie Azure Container Service mit Docker Swarm, einer Azure Container Registry-Instanz und Azure DevOps zum fortlaufenden Bereitstellen einer .NET Core-Anwendung mit mehreren Containern.
 services: container-service
 author: jcorioland
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 3b91c269104e740add1d3a5b8ecaee93ca269188
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302825"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992542"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit Docker Swarm mithilfe von Azure DevOps Services
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit Docker Swarm mithilfe von Azure DevOps Services
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Eine der größten Herausforderungen bei der Entwicklung moderner Anwendungen für die Cloud ist die Fähigkeit, diese Anwendungen fortlaufend bereitzustellen. In diesem Artikel erfahren Sie, wie Sie eine vollständige CI/CD-Pipeline (Continuous Integration/Continuous Deployment) mithilfe von Azure Container Service mit Docker Swarm, Azure Container Registry und der Azure Pipelines-Verwaltung implementieren.
 

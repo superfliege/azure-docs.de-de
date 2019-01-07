@@ -11,19 +11,22 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 102a00ac79c91ac4d571c0254570f14e8f2af46f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: d801ed309b0d79dd6655c7dd59ebd17bd37de222
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239082"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164397"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Kaufmodelle für Azure SQL-Datenbank
 
 Mit Azure SQL-Datenbank können Sie problemlos eine vollständig verwaltete PaaS-Datenbank-Engine erwerben, die an Ihre Anforderungen an Leistung und Kosten angepasst ist. Je nach Bereitstellungsmodell von Azure SQL-Datenbank können Sie das Kaufmodell auswählen, das Ihren Anforderungen entspricht:
+- Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) (empfohlen), mit dem Sie die genaue Menge an Speicherkapazität und Computeressourcen auswählen können, die Sie für Ihre Workload benötigen.
+- Das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md), mit dem Sie Compute- und Speicherressourcen in Paketen auswählen können, die für gängige Workloads zusammengestellt wurden.
 
-- [Logische Server](sql-database-logical-servers.md) in [Azure SQL-Datenbank](sql-database-technical-overview.md) verfügen über zwei Kaufmodelle für Compute-, Speicher- und E/A-Ressourcen: ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und ein [V-Kern-basiertes Kaufmodel](sql-database-service-tiers-vcore.md). Innerhalb dieses Kaufmodells können Sie [Einzeldatenbanken](sql-database-single-databases-manage.md) oder [Pools für elastische Datenbanken](sql-database-elastic-pool.md) auswählen.
+In Azure SQL-Datenbank-Bereitstellungsmodellen sind verschiedene Kaufmodelle verfügbar:
+- [Logische Server](sql-database-logical-servers.md) in [Azure SQL-Datenbank](sql-database-technical-overview.md) bieten sowohl das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) als auch das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) an. Innerhalb dieses Kaufmodells können Sie [Einzeldatenbanken](sql-database-single-databases-manage.md) oder [Pools für elastische Datenbanken](sql-database-elastic-pool.md) auswählen.
 - [Verwaltete Instanzen](sql-database-managed-instance.md) in Azure SQL-Datenbank bieten nur das auf [virtuellen Kernen basierende Kaufmodell](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
@@ -51,7 +54,7 @@ Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen 
 
 > [!IMPORTANT]
 > Compute, E/A-Vorgänge, Daten und Protokollspeicher werden pro Datenbank oder Pool für elastische Datenbanken berechnet. Sicherungsspeicher wird pro Datenbank berechnet. Ausführlichere Informationen zur verwalteten SQL-Datenbank-Instanz finden Sie unter [Was ist eine verwaltete Instanz (Vorschauversion)?](sql-database-managed-instance.md).
-> **Regionale Einschränkungen:** Das V-Kern-basierte Kaufmodell ist in folgenden Regionen noch nicht verfügbar: „Europa, Westen“, „Frankreich, Mitte“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“ und „Australien, Südosten“.
+> **Regionseinschränkungen:** Das V-Kern-basierte Kaufmodell ist in den folgenden Regionen noch nicht verfügbar: „Europa, Westen“, „Frankreich, Mitte“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“ und „Australien, Südosten“.
 
 Wenn Ihre Datenbank oder der Pool für elastische Datenbanken mehr als 300 DTUs verbraucht, können Sie mit der Umstellung auf V-Kerne unter Umständen Ihre Kosten senken. Sie können für die Umstellung die API Ihrer Wahl oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeit kommt. Die Umstellung ist aber nicht zwingend erforderlich. Wenn das DTU-Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen. Falls Sie sich für die Umstellung vom DTU-Modell auf das Modell mit virtuellen Kernen entscheiden, sollten Sie zum Auswählen der Computegröße die folgende Faustregel anwenden: Für 100 DTUs im Standard-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Universell“ erforderlich, und für 125 DTUs im Premium-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Unternehmenskritisch“ erforderlich.
 

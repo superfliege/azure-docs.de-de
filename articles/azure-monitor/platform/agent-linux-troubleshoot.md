@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: c9445793061b84a1bd1632d00b64ea99800bc2d1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 1f772e1a3e5b3e121b968d358166e9018c80d573
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638005"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192690"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -62,9 +60,9 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 | NOT_DEFINED | Da die erforderlichen Abhängigkeiten nicht installiert sind, wird das Plug-In „auoms auditd“ nicht installiert. | Bei der Installation von auoms ist ein Fehler aufgetreten. Installieren Sie das auditd-Paket. |
 | 2 | Für das Shellbündel wurde eine ungültige Option angegeben. Führen Sie `sudo sh ./omsagent-*.universal*.sh --help` aus, um Informationen zur Verwendung anzuzeigen. |
 | 3 | Für das Shellbündel wurde keine Option angegeben. Führen Sie `sudo sh ./omsagent-*.universal*.sh --help` aus, um Informationen zur Verwendung anzuzeigen. |
-| 4 | Ungültiger Pakettyp ODER ungültige Proxyeinstellungen. omsagent-*rpm*.sh-Pakete können nur auf RPM-basierten Systemen installiert werden, und omsagent-*deb*.sh-Pakete können nur auf Debian-basierten Systemen installiert werden. Es wird empfohlen, den universellen Installer der [aktuellen Version](../../log-analytics/log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux) zu verwenden. Überprüfen Sie auch wie [hier](#issue:-unable-to-connect-through-proxy-to-log-analytics) beschrieben Ihre Proxyeinstellungen. |
-| 5 | Das Shellbündel muss als Root-Benutzer ausgeführt werden, ODER während des Onboardings wurde ein 403-Fehler zurückgegeben. Führen Sie den Befehl mit `sudo` aus. |
-| 6 | Ungültige Paketarchitektur ODER während des Onboardings wurde ein 200-Fehler zurückgegeben. omsagent-*x64.sh-Pakete können nur auf 64-Bit-Systemen installiert werden, und omsagent-* x86.sh-Pakete können nur auf 32-Bit-Systemen installiert werden. Laden Sie das richtige Paket für Ihre Architektur aus der [aktuellen Version](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest) herunter. |
+| 4 | Ungültiger Pakettyp ODER ungültige Proxyeinstellungen. omsagent-*rpm*.sh-Pakete können nur auf RPM-basierten Systemen installiert werden, und omsagent-*deb*.sh-Pakete können nur auf Debian-basierten Systemen installiert werden. Es wird empfohlen, den universellen Installer der [aktuellen Version](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux) zu verwenden. Überprüfen Sie auch wie [hier](#issue:-unable-to-connect-through-proxy-to-log-analytics) beschrieben Ihre Proxyeinstellungen. |
+| 5 | Das Shellbündel muss als Root-Benutzer ausgeführt werden, ODER während des Onboardings wurde ein Fehler 403 zurückgegeben. Führen Sie den Befehl mit `sudo` aus. |
+| 6 | Ungültige Paketarchitektur ODER während des Onboardings wurde ein Fehler 200 zurückgegeben. omsagent-*x64.sh-Pakete können nur auf 64-Bit-Systemen installiert werden, und omsagent-* x86.sh-Pakete können nur auf 32-Bit-Systemen installiert werden. Laden Sie das richtige Paket für Ihre Architektur aus der [aktuellen Version](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest) herunter. |
 | 17 | Fehler bei der Installation des OMS-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
 | 19 | Fehler bei der Installation des OMI-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
 | 20 | Fehler bei der Installation des SCX-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
@@ -86,8 +84,8 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 | 2 | Im omsadmin-Skript wurde eine ungültige Option angegeben. Führen Sie `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` aus, um Informationen zur Verwendung anzuzeigen. |
 | 3 | Im omsadmin-Skript wurde eine ungültige Konfiguration angegeben. Führen Sie `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` aus, um Informationen zur Verwendung anzuzeigen. |
 | 4 | Im omsadmin-Skript wurde ein ungültiger Proxy angegeben. Überprüfen Sie den Proxy, und lesen Sie die [Dokumentation zur Verwendung eines HTTP-Proxys](log-analytics-agent.md#network-firewall-requirements). |
-| 5 | Vom Log Analytics-Dienst wurde ein 403-HTTP-Fehler empfangen. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
-| 6 | Vom Log Analytics-Dienst wurde ein Fehler empfangen, der kein 200-HTTP-Fehler ist. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
+| 5 | Vom Log Analytics-Dienst wurde ein HTTP-Fehler 403 empfangen. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
+| 6 | Vom Log Analytics-Dienst wurde ein Fehler empfangen, der kein HTTP-Fehler 200 ist. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
 | 7 | Mit dem Log Analytics-Dienst kann keine Verbindung hergestellt werden. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
 | 8 | Fehler beim Onboarding im Log Analytics-Arbeitsbereich. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
 | 30 | Interner Skriptfehler. Melden Sie ein [GitHub-Problem](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) mit Details aus der Ausgabe. |
@@ -155,7 +153,7 @@ Heben Sie unter dem Ausgabe-Plug-In die Auskommentierung des folgenden Abschnitt
 </match>
 ```
 
-## <a name="issue-unable-to-connect-through-proxy-to-log-analytics"></a>Problem: keine Verbindung über den Proxy mit Log Analytics möglich
+## <a name="issue-unable-to-connect-through-proxy-to-log-analytics"></a>Problem: Es ist keine Verbindung über den Proxy mit Log Analytics möglich.
 
 ### <a name="probable-causes"></a>Mögliche Ursachen
 * Der während der Integration angegebene Proxy war falsch.
@@ -175,7 +173,7 @@ Heben Sie unter dem Ausgabe-Plug-In die Auskommentierung des folgenden Abschnitt
     |*.blob.core.windows.net | Port 443| Eingehend und ausgehend |  
     |*.azure-automation.net | Port 443| Eingehend und ausgehend | 
 
-## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problem: Beim Versuch der Integration erhalten Sie einen 403-Fehler.
+## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problem: Beim Onboardingversuch erhalten Sie einen 403-Fehler.
 
 ### <a name="probable-causes"></a>Mögliche Ursachen
 * Das Datum und die Uhrzeit auf dem Linux-Server sind falsch. 
@@ -295,7 +293,7 @@ Dieser Fehler weist darauf hin, dass die Linux-Diagnoseerweiterung (LAD) paralle
 5. In einigen Azure-Verteilungssystemen wird der omid-OMI-Serverdaemon nach dem Neustart der VM nicht gestartet. Dies führt dazu, dass keine Daten im Zusammenhang mit Audit-, ChangeTracking- oder UpdateManagement-Lösungen angezeigt werden. Die Problemumgehung besteht darin, den OMI-Server durch Ausführen von `sudo /opt/omi/bin/service_control restart`manuell zu starten.
 6. Nachdem das OMI-Paket manuell auf eine neuere Version aktualisiert wurde, muss es manuell neu gestartet werden, damit der Log Analytics-Agent weiterhin funktioniert. Dieser Schritt ist für einige Distributionen erforderlich, bei denen der OMI-Server nach einem Upgrade nicht automatisch gestartet wird. Führen Sie `sudo /opt/omi/bin/service_control restart` aus, um OMI neu zu starten.
 7. Falls ein DSC-Ressourcenfehler vom Typ *Klasse nicht gefunden* in der Datei „omsconfig.log“ angezeigt wird, führen Sie `sudo /opt/omi/bin/service_control restart` aus.
-8. In einigen Fällen, wenn der Log Analytics-Agent für Linux nicht mit dem Log Analytics-Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße von 50 MB gesichert. Der Agent sollte mit dem folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart`.
+8. In einigen Fällen, wenn der Log Analytics-Agent für Linux nicht mit dem Log Analytics-Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße gesichert: 50 MB. Der Agent sollte mit dem folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
     >Dieses Problem wurde ab der Agent-Version 1.1.0-28 behoben.
@@ -401,7 +399,7 @@ sudo sh ./onboard_agent.sh --purge
 
 Sie können das erneute Onboarding nach der Verwendung der Option `--purge` fortsetzen.
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Die Log Analytics-Agent-Erweiterung im Azure-Portal ist mit einem Fehlerstatus markiert: Fehler bei der Bereitstellung
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Die Log Analytics-Agent-Erweiterung im Azure-Portal ist mit einem Fehlerstatus markiert: Fehler bei der Bereitstellung.
 
 ### <a name="probable-causes"></a>Mögliche Ursachen
 * Der Log Analytics-Agent wurde aus dem Betriebssystem entfernt.
@@ -410,7 +408,7 @@ Sie können das erneute Onboarding nach der Verwendung der Option `--purge` fort
 ### <a name="resolution"></a>Lösung 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben.
 1. Entfernen Sie die Erweiterung aus dem Azure-Portal.
-2. Installieren Sie den Agent gemäß den [Anweisungen](../../log-analytics/log-analytics-quick-collect-linux-computer.md).
+2. Installieren Sie den Agent gemäß den [Anweisungen](../../azure-monitor/learn/quick-collect-linux-computer.md).
 3. Starten Sie den Agent neu, indem Sie den folgenden Befehl ausführen: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 * Warten Sie einige Minuten. Der Bereitstellungsstatus ändert sich dann in **Bereitstellung erfolgreich**.
 

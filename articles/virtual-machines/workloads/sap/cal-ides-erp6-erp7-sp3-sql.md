@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 93824c8f0e7667fcb58fd6b8292cddfa2b4a482a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441458"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194197"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
 In diesem Artikel wird beschrieben, wie Sie ein SAP IDES-System mit SQL Server und einem Windows-Betriebssystem über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Führen Sie die gleichen Schritte aus, um eine andere Lösung bereitzustellen.
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie ein SAP IDES-System mit SQL Server u
 Informationen zu Ihren ersten Schritten mit der SAP Cloud Appliance Library finden Sie auf der Website [SAP Cloud Appliance Library](https://cal.sap.com/). SAP bietet auch einen Blog zur neuen [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell für die Bereitstellung der SAP CAL nutzen. Wir empfehlen allerdings, das neue Resource Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
+> Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell für die Bereitstellung der SAP CAL nutzen. Wir empfehlen allerdings, das neue Resource Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
 
 Wenn Sie bereits ein SAP CAL-Konto erstellt haben, das das klassische Modell verwendet, *müssen Sie ein anderes SAP CAL-Konto verwenden*. Bei diesem Konto muss die Bereitstellung ausschließlich in Azure mithilfe des Resource Manager-Modells erfolgen.
 
@@ -104,7 +104,7 @@ Bevor Sie Ihre auf Windows und SQL Server basierende SAP IDES-Lösung bereitstel
 
     c.  Geben Sie das **Masterkennwort** für die Lösung ein:
 
-    ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL Basic Mode: Create Instance (Instanz erstellen)](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. Klicken Sie auf **Create**. Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt: 
 

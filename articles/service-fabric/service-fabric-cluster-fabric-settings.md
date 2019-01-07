@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 9da213525a5921295d6271adfd473b7a05a049a4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14513e23aafd05796767e1ae08d4d4c14cecdfbc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497920"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728309"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -41,7 +41,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DefaultHttpRequestTimeout |Zeit in Sekunden. Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Anforderungstimeout für die HTTP-Anforderungen an, die im HTTP-App-Gateway verarbeitet werden. |
 |ForwardClientCertificate|Boolesch, Standardwert FALSE|Dynamisch|Wenn auf FALSE gesetzt, fordert der Reverseproxy das Clientzertifikat nicht an. Wenn auf TRUE festgelegt, fordert der Reverseproxy das Clientzertifikat beim SSL-Handshake an und leitet die base64-verschlüsselte PEM-Formatzeichenfolge an den Dienst in einem Header namens „X-Client-Certificate“ weiter. Die Anforderung kann mit dem entsprechenden Statuscode für den Dienst fehlschlagen, nachdem die Zertifikatsdaten überprüft wurden. Wenn dies der Fall ist und der Client kein Zertifikat vorlegt, leitet der Reverseproxy einen leeren Header weiter und lässt den Dienst den Fall bearbeiten. Der Reverseproxy fungiert als transparente Ebene. Weitere Informationen finden Sie unter [Einrichten der Authentifizierung mit Clientzertifikat](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |string, Standardwert „None“ |statischen| Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind None/X509. |
-|GatewayX509CertificateFindType |string, Standardwert „FindByThumbprint“ |Dynamisch| Gibt an, wie nach dem Zertifikat im durch GatewayX509CertificateStoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+|GatewayX509CertificateFindType |string, Standardwert „FindByThumbprint“ |Dynamisch| Gibt an, wie nach dem Zertifikat im durch GatewayX509CertificateStoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | string, Standardwert "" |Dynamisch| Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn nicht vorhanden, wird nach FindValueSecondary gesucht. |
 |GatewayX509CertificateFindValueSecondary | string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn nicht vorhanden, wird nach FindValueSecondary gesucht.|
 |GatewayX509CertificateStoreName |string, Standardwert „My“ |Dynamisch| Name des X.509-Zertifikatspeichers, der das Zertifikat für das HTTP-App-Gateway enthält. |
@@ -139,6 +139,13 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PartitionPrefix|Zeichenfolge, Standardwert „--“|statischen|Steuert den Wert der Partitionspräfix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Darf keine leere Zeichenfolge sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
 |PartitionSuffix|string, Standardwert ""|statischen|Steuert den Wert der Partitionssuffix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md). |
 
+## <a name="eventstore"></a>EventStore
+| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|MinReplicaSetSize|Ganze Zahl, Standardwert 0|statischen|MinReplicaSetSize für den EventStore-Dienst |
+|PlacementConstraints|Zeichenfolge, Standardwert „“|statischen|  PlacementConstraints für den EventStore-Dienst |
+|TargetReplicaSetSize|Ganze Zahl, Standardwert 0|statischen| TargetReplicaSetSize für den EventStore-Dienst |
+
 ## <a name="fabricclient"></a>FabricClient
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
@@ -168,22 +175,22 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="fabricnode"></a>FabricNode
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|ClientAuthX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Zertifikat im durch ClientAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+|ClientAuthX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Zertifikat im durch ClientAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint; FindBySubjectName. |
 |ClientAuthX509FindValue |string, Standardwert "" | Dynamisch|Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Administratorrolle verwendet wird. |
 |ClientAuthX509FindValueSecondary |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Administratorrolle verwendet wird. |
 |ClientAuthX509StoreName |string, Standardwert „My“ |Dynamisch|Der Name des X.509-Zertifikatspeichers, der das Zertifikat für die standardmäßige FabricClient-Administratorrolle enthält. |
-|ClusterX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Clusterzertifikat im durch ClusterX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: „FindByThumbprint“, „FindBySubjectName“. Wenn es bei „FindBySubjectName“ mehrere Übereinstimmungen gibt, wird das Zertifikat mit dem längsten Ablaufdatum verwendet. |
+|ClusterX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Clusterzertifikat im durch ClusterX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: „FindByThumbprint“; „FindBySubjectName“ mit „FindBySubjectName“; wenn es mehrere Übereinstimmungen gibt, wird der Datensatz mit dem längsten Ablaufdatum verwendet. |
 |ClusterX509FindValue |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Clusterzertifikats verwendet wird. |
 |ClusterX509FindValueSecondary |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Clusterzertifikats verwendet wird. |
 |ClusterX509StoreName |string, Standardwert „My“ |Dynamisch|Der Name des X.509-Zertifikatspeichers, der das Clusterzertifikat zum Sichern der Kommunikation innerhalb des Clusters enthält. |
 |EndApplicationPortRange |Ganze Zahl, Standardwert 0 |statischen|Ende (nicht inklusiv) der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
-|ServerAuthX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Serverzertifikat im durch ServerAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+|ServerAuthX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Serverzertifikat im durch ServerAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint; FindBySubjectName. |
 |ServerAuthX509FindValue |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Serverzertifikats verwendet wird. |
 |ServerAuthX509FindValueSecondary |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Serverzertifikats verwendet wird. |
 |ServerAuthX509StoreName |string, Standardwert „My“ |Dynamisch|Name des X.509-Zertifikatspeichers, der das Serverzertifikat für den Zugangsdienst enthält. |
 |StartApplicationPortRange |Ganze Zahl, Standardwert 0 |statischen|Start der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
 |StateTraceInterval |Zeit in Sekunden, Standardwert 300 |statischen|Geben Sie die Zeitspanne in Sekunden an. Das Intervall für die Ablaufverfolgung des Knotenstatus auf allen Knoten und aktiven Knoten in FM/FMM. |
-|UserRoleClientX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Zertifikat im durch UserRoleClientX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+|UserRoleClientX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Zertifikat im durch UserRoleClientX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint; FindBySubjectName. |
 |UserRoleClientX509FindValue |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
 |UserRoleClientX509FindValueSecondary |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
 |UserRoleClientX509StoreName |string, Standardwert „My“ |Dynamisch|Der Name des X.509-Zertifikatspeichers, der das Zertifikat für die standardmäßige FabricClient-Benutzerrolle enthält. |
@@ -456,12 +463,12 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|AffinityConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Affinitätseinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
-|ApplicationCapacityConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Kapazitätseinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
+|AffinityConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Affinitätseinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
+|ApplicationCapacityConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Kapazitätseinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |AutoDetectAvailableResources|Boolesch, Standardwert TRUE|statischen|Diese Konfiguration löst eine automatische Erkennung der verfügbaren Ressourcen auf dem Knoten (CPU und Arbeitsspeicher) aus. Wenn diese Konfiguration auf TRUE festgelegt ist, lesen wir reale Kapazitäten aus und korrigieren sie, wenn der Benutzer fehlerhafte Knotenkapazitäten angegeben oder keine Kapazitäten definiert hat. Wenn diese Konfiguration auf FALSE festgelegt ist, geben wir eine Warnung aus, dass der Benutzer fehlerhafte Knotenkapazitäten angegeben hat; korrigieren diese aber nicht. Dies bedeutet, dass der Benutzer die Kapazitäten nutzen möchte, die als größer als die tatsächlichen Kapazitäten des Knotens angegeben wurden, oder wenn Kapazitäten nicht definiert sind; wird von einer unbegrenzten Kapazität ausgegangen. |
 |BalancingDelayAfterNewNode | Zeit in Sekunden, Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Starten Sie keine Aktivitäten zum Lastenausgleich innerhalb dieses Zeitraums nach dem Hinzufügen eines neuen Knotens. |
 |BalancingDelayAfterNodeDown | Zeit in Sekunden, Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Starten Sie keine Aktivitäten zum Lastenausgleich innerhalb dieses Zeitraums nach einem Knotenausfall. |
-|CapacityConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Kapazitätseinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
+|CapacityConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Kapazitätseinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Ganze Zahl, Standardwert 20 | Dynamisch|Definiert die Anzahl der aufeinanderfolgenden Male, die von ResourceBalancer ausgegebene Datenverschiebungen verworfen werden, bevor eine Diagnose durchgeführt wird und Integritätswarnungen ausgegeben werden. Negativ: Unter dieser Bedingung werden keine Warnungen ausgegeben. |
 |ConstraintFixPartialDelayAfterNewNode | Zeit in Sekunden, Standardwert 120 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beheben Sie keine FaultDomain- und UpgradeDomain-Einschränkungsverletzungen innerhalb dieses Zeitraums nach dem Hinzufügen eines neuen Knotens. |
 |ConstraintFixPartialDelayAfterNodeDown | Zeit in Sekunden, Standardwert 120 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beheben Sie keine FaultDomain- und UpgradeDomain-Einschränkungsverletzungen innerhalb dieses Zeitraums nach einem Knotenausfall. |
@@ -471,7 +478,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DetailedNodeListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Knoten pro Einschränkung, die vor der Kürzung in Berichte zu nicht platzierten Replikaten aufgenommen werden. |
 |DetailedPartitionListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Partitionen pro Diagnoseeintrag für eine Einschränkung, die vor der Kürzung in die Diagnose aufgenommen werden. |
 |DetailedVerboseHealthReportLimit | Ganze Zahl, Standardwert 200 | Dynamisch|Definiert, wie häufig ein nicht platziertes Replikat dauerhaft nicht platziert bleiben muss, bevor detaillierte Integritätsberichte ausgegeben werden. |
-|FaultDomainConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Fehlerdomäneneinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
+|FaultDomainConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Fehlerdomäneneinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |GlobalMovementThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |statischen| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Domänenreplikat nachverfolgt werden sollen (wird zusammen mit GlobalMovementThrottleThreshold verwendet). Kann auf 0 festgelegt werden, um die globale Drosselung vollständig zu ignorieren. |
 |GlobalMovementThrottleThreshold | Uint, Standardwert 1000 |Dynamisch| Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. |
 |GlobalMovementThrottleThresholdForBalancing | Uint, Standardwert 0 | Dynamisch|Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. Bei 0 gilt keine Begrenzung. |
@@ -491,18 +498,18 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MoveParentToFixAffinityViolation | Boolesch, Standardwert „false“ |Dynamisch| Einstellung, die festlegt, ob übergeordnete Replikate verschoben werden können, um Affinitätseinschränkungen zu beheben.|
 |PartiallyPlaceServices | Boolesch, Standardwert „true“ |Dynamisch| Bestimmt, ob alle Dienstreplikate im Cluster „ganz oder gar nicht“ platziert werden, wenn nur beschränkt geeignete Knoten vorhanden sind.|
 |PlaceChildWithoutParent | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die festlegt, ob untergeordnete Dienstreplikate platziert werden können, wenn kein übergeordnetes Replikat ausgeführt wird. |
-|PlacementConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Platzierungseinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
+|PlacementConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Platzierungseinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |PlacementConstraintValidationCacheSize | Ganze Zahl, Standardwert 10000 |Dynamisch| Schränkt die Größe der Tabelle für die schnelle Überprüfung und Zwischenspeicherung von Einschränkungsausdrücken für die Platzierung ein. |
 |PlacementSearchTimeout | Zeit in Sekunden, Standardwert 0,5 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beim Platzieren von Diensten wird für maximal diese Zeitspanne gesucht, bevor ein Ergebnis zurückgegeben wird. |
 |PLBRefreshGap | Zeit in Sekunden, Standardwert 1 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Definiert die minimale Zeitspanne, die verstreichen muss, bevor PLB den Zustand erneut aktualisiert. |
-|PreferredLocationConstraintPriority | Ganze Zahl, Standardwert 2| Dynamisch|Bestimmt die Priorität der bevorzugten Speicherorteinschränkung: 0: stark; 1: schwach; 2: Optimierung; negativ: Ignorieren. |
+|PreferredLocationConstraintPriority | Ganze Zahl, Standardwert 2| Dynamisch|Bestimmt die Priorität der Einschränkung für den bevorzugten Speicherort: 0: Stark; 1: Schwach; 2: Optimierung; negativ: Ignorieren |
 |PreventTransientOvercommit | Boolesch, Standardwert „false“ | Dynamisch|Bestimmt, ob PLB sofort Ressourcen nutzen soll, die von den initiierten Datenverschiebungen freigegeben werden. Standardmäßig kann PLB Datenverschiebungen aus und in einen Knoten initiieren, sodass eine vorübergehende Überlastung entstehen kann. Wenn dieser Parameter auf TRUE festgelegt wird, wird diese Art von Überlastungen verhindert, und eine bedarfsgesteuerte Defragmentierung (placementWithMove) wird deaktiviert. |
-|ScaleoutCountConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Einschränkung für den Umfang der horizontalen Hochskalierung: 0: stark; 1: schwach; negativ: Ignorieren. |
+|ScaleoutCountConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Einschränkung für den Umfang der horizontalen Hochskalierung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |SwapPrimaryThrottlingAssociatedMetric | string, Standardwert ""|statischen| Der zugehörige Metrikname für diese Drosselung. |
 |SwapPrimaryThrottlingEnabled | Boolesch, Standardwert „false“|Dynamisch| Bestimmen Sie, ob die Drosselung beim Austausch des primären Replikats aktiviert wird. |
 |SwapPrimaryThrottlingGlobalMaxValue | Ganze Zahl, Standardwert 0 |Dynamisch| Die maximale, global zulässige Anzahl von primären Replikaten für den Austausch. |
 |TraceCRMReasons |Boolesch, Standardwert „true“ |Dynamisch|Gibt an, ob Gründe für von CRM ausgegebene Datenverschiebungen zum Kanal für Betriebsereignisse verfolgt werden sollen. |
-|UpgradeDomainConstraintPriority | Ganze Zahl, Standardwert 1| Dynamisch|Bestimmt die Priorität der Upgradedomäneneinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
+|UpgradeDomainConstraintPriority | Ganze Zahl, Standardwert 1| Dynamisch|Bestimmt die Priorität der Einschränkung für die Upgradedomäne: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |UseMoveCostReports | Boolesch, Standardwert „false“ | Dynamisch|Weist LB an, das Kostenelement der Bewertungsfunktion zu ignorieren. Dies führt möglicherweise zu mehr Datenverschiebungen für eine Platzierung mit besserem Lastenausgleich. |
 |UseSeparateSecondaryLoad | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die festlegt, ob eine andere sekundäre Last verwendet werden soll. |
 |ValidatePlacementConstraint | Boolesch, Standardwert „true“ |Dynamisch| Gibt an, ob der PlacementConstraint-Ausdruck für einen Dienst überprüft wird, wenn ServiceDescription für einen Dienst aktualisiert wird. |
@@ -587,7 +594,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |CertificateHealthReportingInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600 * 8)|statischen|Geben Sie die Zeitspanne in Sekunden an. Gibt das Intervall für Zertifikatintegritätsberichte an. Der Standardwert ist 8 Stunden. Bei Festlegung auf 0 werden Zertifikatintegritätsberichte deaktiviert. |
 |ClientCertThumbprints|string, Standardwert ""|Dynamisch|Fingerabdrücke von Zertifikaten, die vom Clients für die Kommunikation mit dem Cluster verwendet werden. Cluster verwenden diese Angabe, um eingehende Verbindungen zu autorisieren. Es handelt sich um eine durch Kommas getrennte Liste. |
 |ClientClaimAuthEnabled|Boolesch, Standardwert FALSE|statischen|Gibt an, ob auf Clients anspruchsbasierte Authentifizierung aktiviert ist. Durch Festlegung auf TRUE wird implizit ClientRoleEnabled festlegt. |
-|ClientClaims|string, Standardwert ""|Dynamisch|Alle möglichen Ansprüche, die von Clients zum Herstellen einer Verbindung mit dem Gateway erwartet werden. Dies ist eine ODER-Liste: ClaimsEntry \|\| Claims Entry \|\| ClaimsEntry... Jeder ClaimsEntry ist eine UND-Liste: ClaimType=ClaimValue && ClaimType=ClaimValue && ClaimType=ClaimValue... |
+|ClientClaims|string, Standardwert ""|Dynamisch|Alle möglichen Ansprüche, die von Clients zum Herstellen einer Verbindung mit dem Gateway erwartet werden. Dies ist eine „OR“-Liste: ClaimsEntry \|\| ClaimsEntry \|\| ClaimsEntry ... jeder ClaimsEntry ist eine „AND“-Liste: ClaimType=ClaimValue && ClaimType=ClaimValue && ClaimType=ClaimValue ... |
 |ClientIdentities|string, Standardwert ""|Dynamisch|Windows-Identitäten von FabricClient. Naming Gateway verwendet diese Angaben zum Autorisieren eingehender Verbindungen. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. Der Einfachheit halber ist das Konto, das „fabric.exe“ ausführt, automatisch zulässig. Dies gilt auch für die Gruppen ServiceFabricAllowedUsers und ServiceFabricAdministrators. |
 |ClientRoleEnabled|Boolesch, Standardwert FALSE|statischen|Gibt an, ob die Rolle „Client“ aktiviert ist. Bei Festlegung auf TRUE werden Clients anhand ihrer Identitäten Rollen zugewiesen. Für V2 bedeutet die Aktivierung, dass Clients, die nicht in AdminClientCommonNames/AdminClientIdentities enthalten sind, nur schreibgeschützte Vorgänge ausführen können. |
 |ClusterCertThumbprints|string, Standardwert ""|Dynamisch|Fingerabdrücke von Zertifikaten, die dem Cluster beitreten dürfen. Eine durch Kommas getrennte Liste. |
@@ -755,7 +762,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="tokenvalidationservice"></a>TokenValidationService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|Anbieter |string, Standardwert „DSTS“ |statischen|Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS, AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
+|Anbieter |string, Standardwert „DSTS“ |statischen|Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS; AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
 
 ## <a name="traceetw"></a>Trace/Etw
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |

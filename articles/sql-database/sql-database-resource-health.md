@@ -3,7 +3,7 @@ title: Überwachen der Integrität von SQL-Datenbank mithilfe von Azure Resource
 description: Überwachen Sie mithilfe von Resource Health die Integrität von SQL-Datenbank, um Probleme zu diagnostizieren und Unterstützung zu erhalten, wenn sich ein Azure-bezogenes Problem auf Ihre SQL-Ressourcen auswirkt.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 9cbe88a44ba598a22fab628ae01605ac9d63bece
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 12/06/2018
+ms.openlocfilehash: dc20ffb0ce8add08a396a4c0ba5b496e80d04aa1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632627"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083885"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Behandeln von Konnektivitätsproblemen für Azure SQL-Datenbank mithilfe von Resource Health
 
@@ -39,11 +39,11 @@ Der Status **Verfügbar** bedeutet, dass Resource Health für Ihre SQL-Ressource
 
 ![Verfügbar](./media/sql-database-resource-health/sql-resource-health-available.jpg)
 
-### <a name="degraded"></a>Beeinträchtigt
+### <a name="degraded"></a>Heruntergestuft
 
 Der Status **Beeinträchtigt** bedeutet, dass der Großteil der Anmeldungen erfolgreich war, bei einigen aber auch ein Fehler aufgetreten ist. Dabei handelt es sich wahrscheinlich um vorübergehende Anmeldefehler. Implementieren Sie in Ihrem Code eine [Wiederholungslogik](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), um die Auswirkungen von Verbindungsproblemen zu verringern, die durch vorübergehende Anmeldefehler verursacht werden.
 
-![Beeinträchtigt](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
+![Heruntergestuft](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
 ### <a name="unavailable"></a>Nicht verfügbar
 
@@ -51,7 +51,7 @@ Der Status **Nicht verfügbar** bedeutet, dass Resource Health konstant Anmeldef
 
 ![Nicht verfügbar](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
-### <a name="unknown"></a>Unbekannt
+### <a name="unknown"></a>Unknown
 
 Der Integritätsstatus **Unbekannt** gibt an, dass Resource Health seit mehr als 10 Minuten keine Informationen mehr zu dieser Ressource empfangen hat. Dieser Status ist zwar keine definitive Angabe des Ressourcenzustands, aber ein wichtiger Datenpunkt im Problembehandlungsprozess.
 Wenn die Ressource wie erwartet ausgeführt wird, wird der Status der Ressource nach wenigen Minuten in „Verfügbar“ geändert.
@@ -67,11 +67,11 @@ Im Falle von Downtime für Ihre SQL-Datenbank wird eine Analyse durchgeführt, u
 
 #### <a name="planned-maintenance"></a>Geplante Wartung
 
-Für die Azure-Infrastruktur werden in regelmäßigen Abständen geplante Wartungsmaßnahmen (Hardware- oder Softwareupgrades im Rechenzentrum) durchgeführt. Während die Datenbank gewartet wird, werden von SQL unter Umständen einige bestehende Verbindungen getrennt und neue Verbindungen abgelehnt. Anmeldefehler während einer geplanten Wartung sind in der Regel vorübergehend, und deren Auswirkungen lassen sich durch eine Wiederholungslogik reduzieren. Sollten weiterhin Anmeldefehler auftreten, wenden Sie sich an den Support.
+Für die Azure-Infrastruktur werden in regelmäßigen Abständen geplante Wartungsmaßnahmen (Hardware- oder Softwareupgrades im Rechenzentrum) durchgeführt. Während die Datenbank gewartet wird, werden von SQL unter Umständen einige bestehende Verbindungen getrennt und neue Verbindungen abgelehnt. Anmeldefehler während einer geplanten Wartung sind in der Regel vorübergehend, und deren Auswirkungen lassen sich durch eine [Wiederholungslogik](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) reduzieren. Sollten weiterhin Anmeldefehler auftreten, wenden Sie sich an den Support.
 
-#### <a name="reconfiguration"></a>Neukonfiguration
+#### <a name="reconfiguration"></a>Reconfiguration
 
-Neukonfigurationen gelten als vorübergehende Bedingungen und werden von Zeit zu Zeit erwartet. Diese Ereignisse können durch den Lastenausgleich oder durch Software-/Hardwarefehler ausgelöst werden. Jede Clientproduktionsanwendung, die eine Verbindung mit einem Clouddatenbankdienst herstellt, sollte eine stabile Logik für erneute Verbindungsversuche mit einer Backoff-Logik implementieren, da dies dazu beiträgt, die Auswirkungen solcher Situationen zu verringern und die Fehler für den Endbenutzer transparent zu machen.
+Neukonfigurationen gelten als vorübergehende Bedingungen und werden von Zeit zu Zeit erwartet. Diese Ereignisse können durch den Lastenausgleich oder durch Software-/Hardwarefehler ausgelöst werden. Jede Clientproduktionsanwendung, die eine Verbindung mit einer Clouddatenbank herstellt, sollte eine stabile [Wiederholungslogik](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) für Verbindungen implementieren, da dies dazu beiträgt, die Auswirkungen solcher Situationen zu verringern und die Fehler für den Endbenutzer transparent zu machen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ee0cd90b8d1b901f9e8a506674b3f04167b48899
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045686"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968782"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +43,7 @@ Data Factory unterstützt derzeit nur das Verschieben von Daten aus Amazon Redsh
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools und APIs aus einer Amazon Redshift-Quelle verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten von Azure Data Factory. Unter [Tutorial: Erstellen einer Pipeline mithilfe des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Kopier-Assistenten.
+Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten von Azure Data Factory. Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Kopier-Assistenten finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
 Sie können auch das Azure-Portal, Visual Studio, Azure PowerShell oder andere Tools verwenden, um eine Pipeline zu erstellen. Azure Resource Manager-Vorlagen, die .NET API oder die REST-API können ebenfalls zur Erstellung der Pipeline verwendet werden. Eine ausführliche Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
@@ -53,7 +53,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen Sie DataSets zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
 3. Erstellen Sie eine Pipeline mit einer Kopieraktivität, die ein DataSet als Eingabe und ein DataSet als Ausgabe akzeptiert. 
 
-Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Das [JSON-Beispiel: Kopieren von Daten aus Amazon Redshift nach Azure Blob Storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) zeigt die JSON-Definitionen für die Data Factory-Entitäten an, die zum Kopieren von Daten aus einem Amazon Redshift-Datenspeicher verwendet werden.
+Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Das [JSON-Beispiel: Kopieren von Daten aus Amazon Redshift nach Azure Blob Storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) zeigt die JSON-Definitionen für die Data Factory-Entitäten, die zum Kopieren von Daten aus einem Amazon Redshift-Datenspeicher verwendet werden.
 
 Die folgenden Abschnitte beschreiben die JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten für Amazon Redshift verwendet werden.
 
@@ -63,12 +63,12 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für einen m
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| **type** |Diese Eigenschaft muss auf **AmazonRedshift** festgelegt sein. |Ja |
-| **server** |Die IP-Adresse oder der Hostname des Amazon Redshift-Servers. |Ja |
+| **type** |Diese Eigenschaft muss auf **AmazonRedshift** festgelegt sein. |JA |
+| **server** |Die IP-Adresse oder der Hostname des Amazon Redshift-Servers. |JA |
 | **port** |Die Nummer des TCP-Ports, den der Amazon Redshift-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein (der Standardwert lautet 5439) |
-| **database** |Der Name der Amazon Redshift-Datenbank. |Ja |
-| **username** |Der Name des Benutzers, der Zugriff auf die Datenbank hat. |Ja |
-| **password** |Das Kennwort für das Benutzerkonto |Ja |
+| **database** |Der Name der Amazon Redshift-Datenbank. |JA |
+| **username** |Der Name des Benutzers, der Zugriff auf die Datenbank hat. |JA |
+| **password** |Das Kennwort für das Benutzerkonto |JA |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
@@ -109,7 +109,7 @@ Dieses Beispiel kopiert Daten aus Amazon Redshift in ein Azure SQL Data Warehous
 
 Für diesen Anwendungsfall entlädt die Kopieraktivität zuerst die Daten aus Amazon Redshift nach Amazon S3, entsprechend der Konfiguration der **redshiftUnloadSettings**-Option. Als Nächstes werden die Daten von Amazon S3 nach Azure Blob Storage kopiert, gemäß der **stagingSettings**-Option. Zum Schluss lädt PolyBase die Daten in SQL Data Warehouse. Sämtliche vorläufigen Formate werden von der Kopieraktivität verarbeitet.
 
-![Workflow beim Kopieren aus Amazon Redshift nach SQL Data Warehouse](media\data-factory-amazon-redshift-connector\redshift-to-sql-dw-copy-workflow.png)
+![Workflow beim Kopieren aus Amazon Redshift nach SQL Data Warehouse](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {

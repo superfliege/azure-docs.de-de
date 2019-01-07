@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155982"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998089"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Sie können moderne, portierbare, auf Microservices basierende Anwendungen erste
 
 Als offene Plattform ermöglicht Kubernetes Ihnen, Ihre Anwendungen mit Ihren bevorzugten Programmiersprachen, Betriebssystemen, Bibliotheken oder Messagingbussen zu erstellen. Vorhandene CI/CD-Tools (Continuous Integration/Continuous Delivery) können in Kubernetes integriert werden, um Releases zu planen und bereitzustellen.
 
-Azure Kubernetes Service (AKS) ist ein Managed Kubernetes-Dienst, der die Komplexität von Bereitstellungs- und wichtigen Verwaltungsaufgaben reduziert – beispielsweise die Koordination von Upgrades. Die AKS-Clustermaster werden von der Azure-Plattform verwaltet, und Sie zahlen nur für die AKS-Knoten, die Ihre Anwendungen ausführen. AKS baut auf der Open Source-Engine von Azure Container Service (acs-engine) auf.
+Azure Kubernetes Service (AKS) ist ein Managed Kubernetes-Dienst, der die Komplexität von Bereitstellungs- und wichtigen Verwaltungsaufgaben reduziert – beispielsweise die Koordination von Upgrades. Die AKS-Clustermaster werden von der Azure-Plattform verwaltet, und Sie zahlen nur für die AKS-Knoten, die Ihre Anwendungen ausführen. AKS baut auf der Open Source-Engine von Azure Kubernetes Service (aks-engine) auf.
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes-Cluster – Architektur
 
@@ -54,7 +54,7 @@ AKS stellt einen Clustermaster mit Einzelmandant, einem dedizierten API-Server, 
 
 Dieser verwaltete Clustermaster bedeutet, dass Sie Komponenten wie einen hoch verfügbaren *etcd*-Speicher nicht konfigurieren müssen. Er bedeutet aber auch, dass Sie nicht direkt auf den Clustermaster zugreifen können. Upgrades für Kubernetes werden über die Azure CLI oder das Azure-Portal orchestriert. Ein Upgrade erfolgt erst auf dem Clustermaster, dann auf den Knoten. Zum Beheben möglicher Probleme können Sie über Azure Log Analytics die Clustermasterprotokolle überprüfen.
 
-Wenn Sie den Clustermaster auf eine bestimmte Weise konfigurieren müssen oder direkten Zugriff benötigen, können Sie mit [acs-engine][acs-engine] selbst einen Kubernetes-Cluster bereitstellen.
+Wenn Sie den Clustermaster auf eine bestimmte Weise konfigurieren müssen oder direkten Zugriff benötigen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen.
 
 ## <a name="nodes-and-node-pools"></a>Knoten und Knotenpools
 
@@ -70,7 +70,7 @@ Die Größe der Azure-VMs für Ihre Knoten definiert die Anzahl der CPUs, die Gr
 
 In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten zentral hochskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen.
 
-Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benötigen oder benutzerdefinierte Pakete verwenden müssen, können Sie mit [acs-engine][acs-engine] selbst einen Kubernetes-Cluster bereitstellen. Die `acs-engine`-Upstreamreleases stellen Konfigurationsoptionen bereit, bevor diese offiziell in AKS-Clustern unterstützt werden. Wenn Sie z.B. Windows-Container oder eine andere Containerruntime als Docker verwenden möchten, können Sie mithilfe von `acs-engine` einen Kubernetes-Cluster konfigurieren und bereitstellen, der Ihre aktuellen Anforderungen erfüllt.
+Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benötigen oder benutzerdefinierte Pakete verwenden müssen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen. Die `aks-engine`-Upstreamreleases stellen Konfigurationsoptionen bereit, bevor diese offiziell in AKS-Clustern unterstützt werden. Wenn Sie z.B. Windows-Container oder eine andere Containerruntime als Docker verwenden möchten, können Sie mithilfe von `aks-engine` einen Kubernetes-Cluster konfigurieren und bereitstellen, der Ihre aktuellen Anforderungen erfüllt.
 
 ### <a name="resource-reservations"></a>Ressourcenreservierungen
 
@@ -218,7 +218,7 @@ In diesem Artikel wurden einige der wichtigsten Kubernetes-Komponenten sowie der
 - [Kubernetes/AKS: Skalierung][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 [kubernetes-deployments]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/

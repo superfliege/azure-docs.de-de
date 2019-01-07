@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: 8b4ed19ede70c3c9b768cfd368e22b0df3e71212
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: de9e6d5c8c6b4dc9652ae64c9a4fd0e38d7a7b87
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430535"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184762"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netzwerkleistungsmonitor-Lösung: Leistungsüberwachung
 
@@ -137,4 +135,4 @@ In der folgenden Abbildung werden die Grundursachen für die Problembereiche des
 ![Topologiekarte mit ausgewählten Knoteneigenschaften](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](../../log-analytics/log-analytics-queries.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.

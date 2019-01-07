@@ -1,19 +1,19 @@
 ---
-title: 'Generieren und Exportieren von Zertifikaten für Punkt-zu-Site-Verbindungen: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen: PowerShell: Azure | Microsoft-Dokumentation'
 description: Hier erhalten Sie Informationen zum Erstellen selbstsignierter Stammzertifikate, Exportieren des öffentlichen Schlüssels und Generieren von Clientzertifikaten mit PowerShell unter Windows 10 oder Windows Server 2016.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/05/2018
+ms.topic: conceptual
+ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18d705f68ff06621e30c051dac9fb9607fd043ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300935"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850957"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell
 
@@ -27,7 +27,7 @@ Wenn Sie keinen Zugriff auf einen Windows 10- oder Windows Server 2016-Computer 
 
 Verwenden Sie das Cmdlet „New-SelfSignedCertificate“, um ein selbstsigniertes Stammzertifikat zu erstellen. Zusätzliche Informationen zu den Parametern finden Sie in der Beschreibung zu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-1. Öffnen Sie auf einem Computer unter Windows 10 oder Windows Server 2016 eine Windows PowerShell-Konsole mit erhöhten Rechten.
+1. Öffnen Sie auf einem Computer unter Windows 10 oder Windows Server 2016 eine Windows PowerShell-Konsole mit erhöhten Rechten. Diese Beispiele funktionieren nicht in der Testversion von Azure Cloud Shell. Sie müssen diese Beispiele lokal ausführen.
 2. Verwenden Sie das folgende Beispiel, um das selbstsignierte Stammzertifikat zu erstellen. Das folgende Beispiel erstellt ein selbstsigniertes Stammzertifikat mit dem Namen P2SRootCert, das automatisch in „Certificates-Current User\Personal\Certificates“ installiert wird. Sie können das Zertifikat anzeigen, indem Sie *certmgr.msc* öffnen oder die Option *Benutzerzertifikate verwalten* auswählen.
 
   ```powershell

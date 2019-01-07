@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 974ef7a51736c2e2b0a0de3c13d23ddc37fa13b7
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 76bfcd5e1b7e0215cfea7fbbfe1c51726d305fbc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855016"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969838"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Gewusst wie: Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics  
 
@@ -41,8 +41,8 @@ Vergewissern Sie sich vor dem Einrichten eines Buildtasks für ein U-SQL-Projekt
 
 Wenn dies nicht der Fall ist, stehen zwei Optionen zur Verfügung, um das Projekt zu migrieren:
 
-- Option 1: Ändern des alten in das vorherige Importelement.
-- Option 2: Öffnen des alten Projekts in Azure Data Lake Tools für Visual Studio. Verwenden Sie eine neuere Version als 2.3.3000.0. Die alte Projektvorlage wird automatisch auf die neueste Version aktualisiert. Neue Projekte, die mit höheren Versionen als 2.3.3000.0 erstellt wurden, verwenden die neue Vorlage.
+- Option 1: Ändern Sie das alte Importelement in das vorherige Importelement.
+- Option 2: Öffnen Sie das alte Projekt in Azure Data Lake Tools für Visual Studio. Verwenden Sie eine neuere Version als 2.3.3000.0. Die alte Projektvorlage wird automatisch auf die neueste Version aktualisiert. Neue Projekte, die mit höheren Versionen als 2.3.3000.0 erstellt wurden, verwenden die neue Vorlage.
 
 ### <a name="get-nuget"></a>Abrufen von NuGet
 
@@ -99,7 +99,7 @@ Neben der Befehlszeile können Sie auch den Visual Studio Build- oder einen MSBu
     ![Definieren von CI/CD-MSBuild-Variablen für ein U-SQL-Projekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
     ```
-    /p:USQLSDKPath=/p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
+    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
 ### <a name="u-sql-project-build-output"></a>Buildausgabe für das U-SQL-Projekt
@@ -335,7 +335,7 @@ Neben der Befehlszeile können Sie auch Visual Studio Build oder einen MSBuild-T
    ![Definieren von CI/CD-MSBuild-Variablen für ein U-SQL-Datenbankprojekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
     ```
-    /p:USQLSDKPath=/p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
+    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
     ```
  
 ### <a name="u-sql-database-project-build-output"></a>Buildausgabe für das U-SQL-Datenbankprojekt
@@ -452,22 +452,22 @@ Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitst
 
 #### <a name="common-parameters"></a>Allgemeine Parameter
 
-| Parameter | BESCHREIBUNG | Standardwert | Erforderlich |
+| Parameter | Beschreibung | Standardwert | Erforderlich |
 |---------|-----------|-------------|--------|
 |Paket|Der Pfad des bereitzustellenden U-SQL-Datenbankbereitstellungspakets.|null|true|
 |Datenbank|Der Name der Datenbank, in der die Bereitstellung erfolgt oder die erstellt wird.|master|false|
 |LogFile|Der Pfad der Datei für die Protokollierung, standardmäßig zur Standardausgabe (Konsole).|null|false|
-|LogLevel|Protokollebene: Ausführlich, Normal, Warnung oder Fehler.|LogLevel.Normal|false|
+|LogLevel|Protokollierungsgrad: „Ausführlich“, „Normal“, „Warnung“ oder „Fehler“.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Parameter für die lokale Bereitstellung
 
-|Parameter|BESCHREIBUNG|Standardwert|Erforderlich|
+|Parameter|Beschreibung|Standardwert|Erforderlich|
 |---------|-----------|-------------|--------|
 |DataRoot|Der Pfad des lokalen Datenstammordners.|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parameter für die Bereitstellung von Azure Data Lake Analytics
 
-|Parameter|BESCHREIBUNG|Standardwert|Erforderlich|
+|Parameter|Beschreibung|Standardwert|Erforderlich|
 |---------|-----------|-------------|--------|
 |Konto|Gibt per Kontonamen an, in welchem Azure Data Lake Analytics-Konto die Einrichtung erfolgen soll.|null|true|
 |ResourceGroup|Der Name der Azure-Ressourcengruppe für das Azure Data Lake Analytics-Konto.|null|true|

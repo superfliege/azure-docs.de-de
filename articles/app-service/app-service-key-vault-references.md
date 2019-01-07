@@ -1,5 +1,5 @@
 ---
-title: Key Vault-Verweise in App Service und Azure Functions | Microsoft-Dokumentation
+title: Key Vault-Referenzen – Azure App Service | Microsoft-Dokumentation
 description: Konzeptverweis und Einrichtungsleitfaden für Azure Key Vault-Referenzen in Azure App Service und Azure Functions
 services: app-service
 author: mattchenderson
@@ -11,12 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 6f7a05638e9893c989276c61355a301e4a67a6ed
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: c47de9fbe1b9923ff8ce1c38a9a9695af4311858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447610"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723143"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Verwenden von Key Vault-Verweisen in App Service und Azure Functions (Vorschauversion)
 
@@ -31,7 +32,7 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
 
 1. Erstellen Sie einen Schlüsseltresor anhand dieser [Key Vault-Schnellstartanleitung](../key-vault/quick-create-cli.md).
 
-1. Erstellen Sie eine [systemseitig zugewiesene verwaltete Identität](app-service-managed-service-identity.md) für Ihre App.
+1. Erstellen Sie eine [systemseitig zugewiesene verwaltete Identität](overview-managed-identity.md) für Ihre App.
 
    > [!NOTE] 
    > Key Vault-Verweise unterstützen derzeit nur systemseitig zugewiesene verwaltete Identitäten. Vom Benutzer zugewiesene Identitäten können nicht verwendet werden.

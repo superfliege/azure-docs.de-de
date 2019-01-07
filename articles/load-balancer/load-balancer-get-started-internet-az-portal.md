@@ -1,24 +1,26 @@
 ---
-title: Erstellen eines öffentlichen Load Balancer Standard mit zonenredundantem öffentlichen IP-Adressen-Front-End mithilfe des Azure-Portals | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen öffentlichen Load Balancer Standard mit zonenredundantem öffentlichen IP-Adressen-Front-End mithilfe des Azure-Portals erstellen.
+title: Erstellen einer Load Balancer Standard-Instanz mit zonenredundantem Front-End über das Azure-Portal
+titlesuffix: Azure Load Balancer
+description: Erfahren Sie, wie Sie im Azure-Portal eine öffentlichen Load Balancer Standard-Instanz mit zonenredundantem öffentlichem IP-Adressen-Front-End erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 70514433d11bbe7606d75a3e2c1f6dffc251621f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: fc5dcd76ca8ecfb820a8d157fee9cc0a92bd2d5b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740942"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135684"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Erstellen eines öffentlichen Load Balancer Standard mit zonenredundantem öffentlichen IP-Adressen-Front-End mithilfe des Azure-Portals
+#  <a name="create-a-public-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Erstellen einer öffentlichen Load Balancer Standard-Instanz mit zonenredundantem Front-End über das Azure-Portal
 
 In diesem Artikel wird die Erstellung eines öffentlichen [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) mit zonenredundantem Front-End mithilfe einer öffentlichen IP-Standard-Adresse erläutert. Eine einzelne Front-End-IP-Adresse auf einem standardmäßigen Load Balancer ist standardmäßig zonenredundant.
 

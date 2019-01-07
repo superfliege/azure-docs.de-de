@@ -1,6 +1,6 @@
 ---
 title: Beispiel für eine Azure API Management-Richtlinie – Implementieren von X-CSRF-Mustern | Microsoft-Dokumentation
-description: Das Beispiel für eine Azure API Management-Richtlinie veranschaulicht, wie Sie ein von APIs verwendetes X-CSRF-Muster implementieren. Dieses Beispiel bezieht sich speziell auf das SAP-Gateway.
+description: Das Beispiel für eine Azure API Management-Richtlinie veranschaulicht, wie Sie ein von vielen APIs verwendetes X-CSRF-Muster implementieren. Dieses Beispiel bezieht sich speziell auf das SAP-Gateway.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 3a2067836a1488d117dced96f3935f2d1f8b1b48
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 2f4d26702443ef3113dad98cde1d13b292fe657a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946022"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870009"
 ---
 # <a name="implement-x-csrf-pattern"></a>Implementieren von X-CSRF-Mustern
 

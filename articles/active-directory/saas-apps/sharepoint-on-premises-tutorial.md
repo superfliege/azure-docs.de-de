@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 954eec8566173dd4707926d5f713a5cd509bdd9b
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 9c63808af8d883badd379cf8bc3372a1d65d6624
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620063"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory-Integration in lokales SharePoint
 
@@ -76,7 +76,7 @@ Zum Konfigurieren der Integration der lokalen SharePoint-Instanz in Azure AD mü
 
 4. Geben Sie im Suchfeld **lokales SharePoint** ein, wählen Sie im Ergebnisbereich **lokales SharePoint** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Lokales SharePoint in der Ergebnisliste](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
+    ![Lokales SharePoint in der Ergebnisliste](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -104,11 +104,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Dialogfeld „Einmaliges Anmelden“](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
+    ![Dialogfeld „Einmaliges Anmelden“](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für lokale SharePoint-Instanz** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für die lokale SharePoint-Instanz](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für die lokale SharePoint-Instanz](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YourSharePointServerURL>/_trust/default.aspx`.
 
@@ -118,21 +118,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
+    ![Downloadlink für das Zertifikat](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
     > [!Note]
     > Notieren Sie sich den Dateipfad, in den Sie die Zertifikatdatei heruntergeladen haben. Sie benötigen ihn später im PowerShell-Skript für die Konfiguration.
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Lokale SharePoint-Konfiguration** auf **Lokale SharePoint-Instanz konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**. Verwenden Sie für **Dienst-URL für einmalige Anmeldung** einen Wert im folgenden Format: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
     > [!Note]
     > _my_directory_id_ ist die Mandanten-ID des Azure AD-Abonnements.
 
-    ![Lokale SharePoint-Konfiguration](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
+    ![Lokale SharePoint-Konfiguration](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > Die lokale SharePoint-Anwendung verwendet SAML 1.1-Token, sodass Azure AD eine WS-Fed-Anforderung vom SharePoint-Server erwartet und nach der Authentifizierung SAML 1.1-Token ausstellt.
@@ -171,7 +171,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Klicken Sie auf **OK**.
 
-    ![Konfigurieren des Authentifizierungsanbieters](./media\sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+    ![Konfigurieren des Authentifizierungsanbieters](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
     > Einige externe Benutzer können diese SSO-Integration nicht nutzen, da ihr UPN einen beschädigten Wert wie `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com` enthält. Wir arbeiten bereits an der Möglichkeit, eine benutzertypabhängige Behandlung des UPN in der Kunden-App zu konfigurieren. Anschließend sollten alle Gastbenutzer SSO genauso problemlos wie Mitarbeiter der Organisation verwenden können.
@@ -186,19 +186,19 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Azure Active Directory“](./media/sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
 2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
 3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
-    ![Schaltfläche „Hinzufügen“](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
+    ![Schaltfläche „Hinzufügen“](./media/sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
 4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
-    ![Dialogfeld „Benutzer“](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
+    ![Dialogfeld „Benutzer“](./media/sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
     a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
 
@@ -220,7 +220,7 @@ Die Benutzer, die sich bei Azure AD anmelden und auf SharePoint zugreifen, müss
 
 4. Klicken Sie in der Richtlinie für die Webanwendung auf **Benutzer hinzufügen**.
 
-    ![Suchen eines Benutzer anhand seines Namensanspruchs](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
+    ![Suchen eines Benutzer anhand seines Namensanspruchs](./media/sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
 5. Klicken Sie im Dialogfeld **Benutzer hinzufügen** unter **Zonen** auf die entsprechende Zone und dann auf **Weiter**.
 
@@ -232,7 +232,7 @@ Die Benutzer, die sich bei Azure AD anmelden und auf SharePoint zugreifen, müss
 
 9. Klicken Sie in den Berechtigungen auf **Vollzugriff**.
 
-    ![Gewähren des Vollzugriffs für Benutzer mit Ansprüchen](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
+    ![Gewähren des Vollzugriffs für Benutzer mit Ansprüchen](./media/sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. Klicken Sie auf **Fertig stellen** und dann auf **OK**.
 
@@ -263,7 +263,7 @@ Die Konfiguration funktioniert für eine einzelne Webanwendung, benötigt jedoch
 
 Benutzer können sich jetzt mit Azure AD-Identitäten bei SharePoint 2016 anmelden. Allerdings kann die Benutzerfreundlichkeit noch weiter verbessert werden. Beispielsweise liefert die Suche nach einem Benutzer mehrere Suchergebnisse in der Personenauswahl. Es gibt ein Suchergebnis für jeden der drei Anspruchstypen, der in der Anspruchszuordnung erstellt wurde. Um einen Benutzer mit der Personenauswahl auszuwählen, geben Sie seinen genauen Benutzernamen ein, und wählen Sie das Anspruchsergebnis **Name** aus.
 
-![Suchergebnisse für Ansprüche](./media\sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+![Suchergebnisse für Ansprüche](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 
 Die gesuchten Werte werden nicht überprüft, sodass möglicherweise Rechtschreibfehler auftreten, oder Benutzer versehentlich den falschen Anspruchstyp zum Zuweisen auswählen, z.B. den Anspruch **SurName**. Folglich können Benutzer nicht auf Ressourcen zugreifen.
 
@@ -283,7 +283,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf die lokale SharePoint
 
 2. Wählen Sie in der Anwendungsliste **lokales SharePoint** aus.
 
-    ![SharePoint-Link in der Anwendungsliste](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
+    ![SharePoint-Link in der Anwendungsliste](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

@@ -3,7 +3,7 @@ title: Verwenden des Azure-Portals zum Erstellen von SQL-Datenbankwarnungen | Mi
 description: Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind.
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978994"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273340"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure SQL-Datenbanken und Data Warehouse
 
@@ -38,8 +38,8 @@ Sie können konfigurieren, dass bei einer Warnung Folgendes erfolgt, wenn sie au
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen zugehöriger Informationen:
 
 * [Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [Befehlszeilenschnittstelle (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [Befehlszeilenschnittstelle (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik mit dem Azure-Portal
@@ -48,7 +48,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
    
      ![Überwachung](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **Nur SQL DW**: Klicken Sie auf den Graphen **DWU-Nutzung**. Wählen Sie **Klassische Warnungen anzeigen** aus.
+   - **NUR SQL DW**: Klicken Sie auf den Graphen **DWU-Nutzung**. Wählen Sie **Klassische Warnungen anzeigen** aus.
 
 3. Wählen Sie die Schaltfläche **Metrikwarnung hinzufügen (klassisch)** aus, und füllen Sie die Felder aus.
    
@@ -116,6 +116,6 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
-* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
 * Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

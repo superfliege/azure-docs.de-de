@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Qualtrics | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Qualtrics | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Qualtrics konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 27f972ce789ae5bccf173138fe93de33de0d3932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b7dedef2075ea9877a55a52a3f9a392f79c52300
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446458"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>Tutorial: Azure Active Directory-Integration mit Qualtrics
 
@@ -113,6 +113,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.qualtrics.com`.
 
     b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+    
     | |
     |--|
     | `https://<companyname>.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
@@ -132,7 +133,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **Qualtrics** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Qualtrics-Supportteam](https://www.qualtrics.com/support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers

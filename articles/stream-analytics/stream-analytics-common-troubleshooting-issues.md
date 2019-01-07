@@ -2,19 +2,19 @@
 title: Behandlung allgemeiner Probleme in Azure Stream Analytics
 description: In diesem Artikel werden einige allgemeine Probleme in Azure Stream Analytics und Schritte beschrieben, um diese Probleme zu beheben.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 2fe180873f8f410d80b06d29d16881eb49f7fc2a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: a2c7ceae342124f06fcfe8dc18b1a69f7176f4e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978438"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090974"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Häufig auftretende Probleme bei Stream Analytics und Schritten zur Problembehandlung
 
@@ -24,9 +24,9 @@ ms.locfileid: "50978438"
  
  Wenn ein Stream Analytics-Auftrag eine falsch formatierte Nachricht aus einer Eingabe empfängt, wird diese gelöscht und der Benutzer mit einer Warnung benachrichtigt. Ein Warnsymbol wird auf der Kachel **Eingaben** des Stream Analytics-Auftrags angezeigt (dieses Warnzeichen wird so lange angezeigt, wie sich der Auftrag im Ausführungsstatus befindet):
 
-![Kachel „Eingaben“](media/stream-analytics-malformed-events/inputs_tile.png)
+![Kachel „Eingaben“ im Azure Stream Analytics-Dashboard](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-Weitere Informationen können Sie sehen, wenn Sie die Diagnoseprotokolle aktivieren, um Details zur Warnung anzuzeigen. Bei Ereignissen zu falsch formatierten Eingaben enthalten die Ausführungsprotokolle einen Eintrag mit einer Meldung ähnlich der folgenden: „Meldung: Fehler beim Deserialisieren der Eingabeereignisse von der Ressource <blob URI> als JSON“. 
+Weitere Informationen können Sie sehen, wenn Sie die Diagnoseprotokolle aktivieren, um Details zur Warnung anzuzeigen. Bei falsch formatierten Eingabeereignissen enthalten die Ausführungsprotokolle einen Eintrag mit der Meldung, die etwa wie folgt aussieht: „Meldung: Die Eingabeereignisse aus Ressource ’<blob URI>’ konnten nicht als JSON deserialisiert werden.“ 
 
 ### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
@@ -34,7 +34,7 @@ Weitere Informationen können Sie sehen, wenn Sie die Diagnoseprotokolle aktivie
 
 2. Auf der Kachel „Eingabedetails“ werden Warnungen mit Details zum Problem angezeigt. Nachfolgend sehen Sie ein Beispiel für eine Warnmeldung. Diese Warnmeldung enthält die Partition, den Offset und die Sequenznummern mit falsch formatierten JSON-Daten. 
 
-   ![Warnmeldung mit Offset](media/stream-analytics-malformed-events/warning_message_with_offset.png)
+   ![Eingabewarnmeldung mit Offset](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
 3. Führen Sie zum Abrufen der JSON-Daten mit falschem Format den Code „CheckMalformedEvents.cs“ aus. In diesem Beispiel finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Dieser Code liest die Partitions-ID und den Offset und gibt die Daten aus dem Offset aus. 
 

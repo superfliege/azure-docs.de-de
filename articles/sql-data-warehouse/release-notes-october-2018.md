@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/14/2018
+ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 1edac9f7eac1f47974f4c94f3cae5bb3451f92fd
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705377"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966822"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Neuerungen in Azure SQL Data Warehouse Oktober 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im Oktober 2018 eingeführt wurden.
@@ -57,11 +57,12 @@ Azure SQL Data Warehouse (SQL DW) verfügt jetzt über native Integration in Azu
 
 ## <a name="bug-fixes"></a>Fehlerbehebungen
 
-| Titel | BESCHREIBUNG |
+| Titel | Beschreibung |
 |:---|:---|
 | **Fehler bei CETAS zu PARQUET in kleinen Ressourcenklassen in Data Warehouses vom Typ DW2000 und vieles mehr** | Durch diese Fehlerbehebung wird ein Nullverweis im Codepfad von CREATE EXTERNAL TABLE AS zu PARQUET korrekt identifiziert. |
 |**Wert der Identitätsspalte kann in einigen CTAS-Vorgängen verloren gehen.** | Der Wert einer Identitätsspalte kann nicht beibehalten werden, wenn CTAS auf eine andere Tabelle angewendet wird. In einem Blog gemeldet: [https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |
 | **Interner Fehler in einigen Fällen, wenn während der Ausführung einer Abfrage eine Sitzung beendet wird** | Dieser Fehlerbehebung löst eine InvalidOperationException aus, wenn eine Sitzung beendet wird, während die Abfrage weiterhin ausgeführt wird. |
+| **(Bereitgestellt im November 2018) Kunden meldeten eine beeinträchtige Leistung beim Versuch, mithilfe von Polybase mehrere kleine Dateien aus ADLS (Gen1) zu laden.** | Die Validierung von AAD-Sicherheitstoken führte zu einem Engpass bei der Systemleistung. Die Leistungsprobleme konnten durch eine Aktivierung der Zwischenspeicherung für Sicherheitstoken abgemildert werden. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
-ms.openlocfilehash: 82c5fb0f3f3e8edad948b82f77c9c336636f3077
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442740"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961109"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 
@@ -27,7 +27,7 @@ ms.locfileid: "42442740"
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Azure Blob Storage ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte oder Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Azure Blob Storage ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte oder Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet. Weitere Informationen zum Blob Storage finden Sie unter [Einführung in Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md).
 
 In diesem Tutorial wird gezeigt, wie Sie ASP.NET Core-Code für einige häufige Szenarien schreiben, die Blobspeicher verwenden. Zu den Szenarien zählen das Erstellen eines Blobcontainers sowie das Hochladen, Auflisten, Herunterladen und Löschen von Blobs.
 
@@ -36,8 +36,6 @@ In diesem Tutorial wird gezeigt, wie Sie ASP.NET Core-Code für einige häufige 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-
-[!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 ## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
 

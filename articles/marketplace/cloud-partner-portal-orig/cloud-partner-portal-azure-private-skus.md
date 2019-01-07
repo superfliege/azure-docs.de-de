@@ -1,5 +1,5 @@
 ---
-title: Private SKUs | Microsoft-Dokumentation
+title: Private SKUs und Pläne | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie private SKUs verwenden, um die Angebotsverfügbarkeit zu verwalten.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519f0354f2a19e106ca1072170721b27357d173e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230239"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849206"
 ---
-<a name="private-skus"></a>Private SKUs
+<a name="private-skus-and-plans"></a>Private SKUs und Pläne
 ============
 
 Private SKUs ermöglichen das Beschränken der Verfügbarkeit von SKUs auf bestimmte Kunden. Wird eine SKU als privat gekennzeichnet, ist sie nicht in jedem öffentlichen Katalog verfügbar. Dies gilt auch für den [Azure Marketplace](https://azuremarketplace.microsoft.com) und das [Azure-Portal](http://portal.azure.com). Im Azure-Portal wird die SKU nur Kunden mit Zugriff auf die SKU angezeigt. Darüber hinaus werden sie auch darüber informiert, dass sie Zugriff auf private Angebote haben.
@@ -90,6 +90,11 @@ Beispielinhalt der CSV-Datei:
             SubscriptionId,7738d703-3135-4e8d-8b81-1e70379abd9d,Private Customer
 
 Beim Wechsel von der manuellen Eingabe zum Hochladen einer CSV-Datei oder von einer CSV-Datei zur manuellen Eingabe wird die alte Liste mit den Abonnement-IDs mit Zugriff auf die SKU nicht beibehalten. Es wird eine Warnung angezeigt, und die Liste wird erst nach dem Speichern des Angebots überschrieben.
+
+<a name="sync-private-subscriptions"></a>Synchronisieren privater Abonnements
+-------------------------
+
+Wenn Sie Abonnements zu einem veröffentlichten Angebot mit privaten SKUs oder Plänen hinzufügen, müssen Sie das Angebot nicht erneut veröffentlichen, um Zielgruppeninformationen hinzuzufügen. Verwenden Sie einfach eine Azure-Abonnement-ID (Pläne und SKUs) oder eine Mandanten-ID (nur Pläne), um die Zielgruppe hinzuzufügen.
 
 <a name="previewing-private-offers"></a>Anzeigen einer Vorschau für private Angebote
 -------------------------

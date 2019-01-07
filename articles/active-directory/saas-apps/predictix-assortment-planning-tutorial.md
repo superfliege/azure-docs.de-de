@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Predictix Assortment Planning | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Predictix Assortment Planning | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Predictix Assortment Planning konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 1069b7f9bdc0301f840e796f49fdb4031d297cf2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6040300b4cb569d0e78503d7e5a36507e79de67c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436239"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Tutorial: Azure Active Directory-Integration mit Predictix Assortment Planning
 
@@ -111,19 +111,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![SSO-Informationen zur Domäne und zu den URLs für Predictix Assortment Planning](./media/predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
+
     | |
     |--|--|
     | `https://<sub-domain>.ap.predictix.com/sso/request`|
     | `https://<sub-domain>.dev.ap.predictix.com/`|
 
     b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+    
     | |
     |--|--|
     | `https://<sub-domain>.ap.predictix.com`|
     | `https://<sub-domain>.dev.ap.predictix.com`|
     
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Predictix Assortment Planning](http://www.infor.com/support), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Predictix Assortment Planning](https://www.infor.com/support), um diese Werte zu erhalten. 
  
 
 
@@ -139,10 +141,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Predictix Assortment Planning-Konfiguration](./media/predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_configure.png) 
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Predictix Assortment Planning** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie **SAML-Entitäts-ID**, **URL für den SAML-SSO-Dienst** und **Abmelde-URL** an das [Predictix Assortment Planning-Supportteam](http://www.infor.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **Predictix Assortment Planning** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie **SAML-Entitäts-ID**, **URL für den SAML-SSO-Dienst** und **Abmelde-URL** an das [Predictix Assortment Planning-Supportteam](https://www.infor.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -179,7 +181,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-predictix-assortment-planning-test-user"></a>Erstellen eines Predictix Assortment Planning-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Predictix Assortment Planning einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Predictix Assortment Planning](http://www.infor.com/contact/), um die Benutzer in der Predictix Assortment Planning-Plattform hinzufügen zu lassen.
+In diesem Abschnitt erstellen Sie in Predictix Assortment Planning einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Predictix Assortment Planning](https://www.infor.com/contact/), um die Benutzer in der Predictix Assortment Planning-Plattform hinzufügen zu lassen.
  > [!NOTE]
  > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 

@@ -4,14 +4,14 @@ description: Dieser Artikel beschreibt, wie Sie VM-Datenträger während der Not
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 851da02ebd7486c0e96451a14086eb95d81968b4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7de9dc497b1c9ee29b46aa0d645b7b28676cb22d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213201"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849019"
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 In diesem Artikel wird beschrieben, wie Datenträger von der Replikation ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden.
@@ -160,7 +160,7 @@ DB-Disk2 (ausgeschlossener Datenträger) | Disk2 | E:\ | Temporäre Dateien
 DB-Disk3 (ausgeschlossener Datenträger) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad F:\MSSQL\Data\)
 DB-Disk4 | Disk4 | G:\ | Benutzerdatenbank 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Beispiel 2: Ausschließen des Datenträgers der Auslagerungsdatei (pagefile.sys)
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Beispiel 2: Ausschließen des Datenträgers der Auslagerungsdatei (pagefile.sys)
 
 Angenommen, Sie verwenden einen virtuellen Computer mit einem Datenträger für die Auslagerungsdatei, der ausgeschlossen werden kann.
 Es gibt zwei Fälle.

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3e71c4e31c6d57cb54a654e0e1c28dcb0fa82cda
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212487"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875330"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -55,11 +55,11 @@ Ja, sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung in A
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Was kann ich mit der Hyper-V-zu-Azure-Replikation tun?
 
-- **Wiederherstellung im Notfall**: Sie können die vollständige Notfallwiederherstellung einrichten. In diesem Szenario replizieren Sie lokale Hyper-V-VMs zu Azure-Speicher:
+- **Notfallwiederherstellung**: Sie können die vollständige Notfallwiederherstellung einrichten. In diesem Szenario replizieren Sie lokale Hyper-V-VMs zu Azure-Speicher:
     - Sie können VMs in Azure replizieren. Wenn Ihre lokale Infrastruktur nicht verfügbar ist, führen Sie ein Failover zu Azure aus.
     - Wenn Sie ein Failover ausführen, werden Azure-VMs aus replizierten Daten erstellt. Sie können auf Apps und Workloads auf den Azure-VMs zugreifen.
     - Wenn Ihr lokales Datencenter wieder verfügbar ist, können Sie ein Failback von Azure zu Ihrem lokalen Standort ausführen.
-- **Migration:** Sie können mit Site Recovery lokale Hyper-V-VMs zum Azure-Speicher migrieren. Dann führen Sie ein Failover vom lokalen Standort zu Azure aus. Nach dem Failover sind Ihre Apps und Workloads verfügbar und werden auf virtuellen Azure-Computern ausgeführt.
+- **Migration**: Sie können mit Site Recovery lokale Hyper-V-VMs zum Azure-Speicher migrieren. Dann führen Sie ein Failover vom lokalen Standort zu Azure aus. Nach dem Failover sind Ihre Apps und Workloads verfügbar und werden auf virtuellen Azure-Computern ausgeführt.
 
 
 ### <a name="what-do-i-need-on-premises"></a>Was benötige ich lokal?
@@ -124,7 +124,7 @@ Site Recovery repliziert Daten über einen öffentlichen Endpunkt oder mittels �
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Kann ich mit ExpressRoute zu Azure replizieren?
 
-Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repliziert die Daten über einen öffentlichen Endpunkt zu einem Azure Storage-Konto, und Sie müssen [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) für die Site Recovery-Replikation einrichten. Nach dem Failover virtueller Computer zu einem virtuellen Azure-Netzwerk können Sie mit [privatem Peering](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) auf sie zugreifen.
+Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repliziert die Daten über einen öffentlichen Endpunkt zu einem Azure Storage-Konto, und Sie müssen [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) für die Site Recovery-Replikation einrichten. Nach dem Failover virtueller Computer zu einem virtuellen Azure-Netzwerk können Sie mit [privatem Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) auf sie zugreifen.
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Warum kann ich nicht über VPN replizieren?
@@ -197,7 +197,7 @@ Sobald Ihre lokale Infrastruktur wieder funktioniert und ausgeführt werden kann
 
 1. Starten Sie ein geplantes Failover von Azure zum lokalen Standort. Hierzu haben Sie verschiedene Möglichkeiten:
 
-    - Downtime minimieren: Wenn Sie diese Option verwenden, synchronisiert Site Recovery Daten vor dem Failover. und überprüft auf geänderte Datenblocks. Diese werden dann an den lokalen Standort heruntergeladen, während die Azure-VM weiterhin ausgeführt wird und die Downtime minimiert. Wenn Sie manuell angeben, dass das Failover abgeschlossen werden soll, wird die Azure-VM heruntergefahren, endgültige Deltaänderungen werden kopiert und das Failover startet.
+    - Weniger Ausfallzeiten: Wenn Sie diese Option verwenden, synchronisiert Site Recovery Daten vor dem Failover. und überprüft auf geänderte Datenblocks. Diese werden dann an den lokalen Standort heruntergeladen, während die Azure-VM weiterhin ausgeführt wird und die Downtime minimiert. Wenn Sie manuell angeben, dass das Failover abgeschlossen werden soll, wird die Azure-VM heruntergefahren, endgültige Deltaänderungen werden kopiert und das Failover startet.
     - Vollständiger Download: Bei dieser Option werden Daten während des Failovers synchronisiert. Mit dieser Option wird der gesamte Datenträger heruntergeladen. Dies erfolgt schneller, da keine Prüfsummen berechnet werden. Jedoch kommt es zu mehr Downtime. Verwenden Sie diese Option, wenn Sie die Azure-Replikat-VMs für einige Zeit ausgeführt haben oder die lokale VM gelöscht wurde.
 
 2. Sie können wählen, ob Sie das Failback zur gleichen VM oder zu einer alternativen VM ausführen. Sie können angeben, dass Site Recovery die VM erstellen sollte, wenn sie nicht bereits vorhanden ist.

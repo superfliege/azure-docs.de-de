@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 4e89664bf980717dbfd7994d6469fc4a412307a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bb964308e11d238def4eed3f194ffc9ef8ab086
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840162"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Leadverwaltung für Cloud Marketplace
 
@@ -39,15 +39,15 @@ Um Leads zu erhalten, ist der Leadverwaltungsconnector im Cloud-Partnerportal so
 
 Nachfolgend finden Sie eine schrittweise Anleitung, wie Sie die einzelnen möglichen Leadziele verbinden:
 
-**Dynamics CRM Online** - [ Klicken Sie hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics), um die Anweisungen zur Konfiguration von Dynamics CRM Online für den Erhalt von Leads abzurufen.
+**Dynamics CRM Online** - [ Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics), um die Anweisungen zur Konfiguration von Dynamics CRM Online für den Erhalt von Leads abzurufen.
 
-**Marketo** - [ Klicken Sie hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-marketo), um Anweisungen zum Einrichten der Marketo-Leadkonfiguration zum Abrufen von Leads zu erhalten.
+**Marketo** - [ Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo), um Anweisungen zum Einrichten der Marketo-Leadkonfiguration zum Abrufen von Leads zu erhalten.
 
-**Salesforce** - [ Klicken Sie hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-salesforce), um Anweisungen zum Einrichten Ihrer Salesforce-Instanz zum Abrufen von Leads zu erhalten.
+**Salesforce** - [ Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce), um Anweisungen zum Einrichten Ihrer Salesforce-Instanz zum Abrufen von Leads zu erhalten.
 
-**Azure-Tabelle** – [Klicken Sie hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-azure-table), um Anweisungen zum Einrichten Ihres Azure Storage-Kontos zum Abrufen von Leads in einer Azure-Tabelle zu erhalten.
+**Azure-Tabelle** – [Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table), um Anweisungen zum Einrichten Ihres Azure Storage-Kontos zum Abrufen von Leads in einer Azure-Tabelle zu erhalten.
 
-**HTTPS-Endpunkt** – [Klicken Sie hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-https), um Anweisungen zum Einrichten Ihres HTTPS-Endpunkts zum Abrufen von Leads zu erhalten.
+**HTTPS-Endpunkt** – [Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https), um Anweisungen zum Einrichten Ihres HTTPS-Endpunkts zum Abrufen von Leads zu erhalten.
 
 Nachdem Sie Ihr Leadziel ordnungsgemäß konfiguriert und in Ihrem Angebot auf „Veröffentlichen“ geklickt haben, überprüfen wir die Verbindung und senden Ihnen einen Testlead zu. Wenn Sie das Angebot vor der Liveschaltung anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu erwerben. Es muss unbedingt sichergestellt werden, dass Ihre Leadeinstellungen auf dem neuesten Stand sind, damit Sie keine Leads verlieren. Aktualisieren Sie daher immer diese Verbindungen, wenn sich bei Ihnen etwas geändert hat.
 
@@ -62,36 +62,36 @@ Nach der technischen Einrichtung sollten Sie diese Leads in Ihre aktuelle Vertri
 
 **Lead konnte nicht in Dynamics CRM gespeichert werden. Überprüfen Sie die Einstellungen des Dynamics CRM-Kontos. LastCRMError: Anmeldung bei Dynamics CRM nicht möglich, LastCRMException:** 
 
-> Wenn die O365-Authentifizierung ausgewählt wurde, überprüfen Sie, ob Benutzerkonto und Kennwort gültig sind. Wenn AAD ausgewählt wurde, überprüfen Sie, ob Mandanten-ID, Anwendungs-ID und Anwendungsgeheimnis mit den für AAD eingerichteten Werten übereinstimmen. Folgen Sie den Anweisungen [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Wenn der Benutzername und das Kennwort des Kontos gültig sind, stellen Sie sicher, dass es Zugriff auf Dynamics 365 hat und eine Lizenz zugewiesen ist (Schritte 11-15 bei Verwendung von Azure Active Directory oder Sicherheitseinstellungen bei Verwendung eines Office-Benutzers). 
+> Wenn die O365-Authentifizierung ausgewählt wurde, überprüfen Sie, ob Benutzerkonto und Kennwort gültig sind. Wenn AAD ausgewählt wurde, überprüfen Sie, ob Mandanten-ID, Anwendungs-ID und Anwendungsgeheimnis mit den für AAD eingerichteten Werten übereinstimmen. Folgen Sie den Anweisungen [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Wenn der Benutzername und das Kennwort des Kontos gültig sind, stellen Sie sicher, dass es Zugriff auf Dynamics 365 hat und eine Lizenz zugewiesen ist (Schritte 11-15 bei Verwendung von Azure Active Directory oder Sicherheitseinstellungen bei Verwendung eines Office-Benutzers). 
 
  
 **Lead konnte nicht in Dynamics CRM gespeichert werden. Der Benutzer hat keine Erstellungsberechtigungen für das Attribut „leadsourcecode“ in der Leadentität**. 
 
-> Der Anwendung bzw. dem Benutzer fehlen die Sicherheitsrollen für den Microsoft Marketplace-Leadschreibdienst. Führen Sie die Schritte 11-15 aus, wenn Sie Azure Active Directory verwenden oder Sicherheitseinstellungen, wenn Sie einen Office-Benutzer [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) verwenden.
+> Der Anwendung bzw. dem Benutzer fehlen die Sicherheitsrollen für den Microsoft Marketplace-Leadschreibdienst. Führen Sie die Schritte 11-15 aus, wenn Sie Azure Active Directory verwenden oder Sicherheitseinstellungen, wenn Sie einen Office-Benutzer [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) verwenden.
 
 **Lead konnte nicht mit AAD in Dynamics CRM gespeichert werden. Ausnahme:: Mandant wurde nicht gefunden. Diese Instanz kann auftreten, wenn es für den Mandanten keine aktiven Abonnements gibt.**  
 
-> Die im Abschnitt zur Leadverwaltung angegebene Verzeichnis-ID ist kein gültiges Verzeichnis. Rufen Sie die Verzeichnis-ID basierend auf den Anweisungen in Schritt 2 ab (unter Azure Active Directory, von [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+> Die im Abschnitt zur Leadverwaltung angegebene Verzeichnis-ID ist kein gültiges Verzeichnis. Rufen Sie die Verzeichnis-ID basierend auf den Anweisungen in Schritt 2 ab (unter Azure Active Directory, von [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Lead konnte nicht in Dynamics CRM gespeichert werden. LastCRMError: SecLib::RetrievePrivilegeForUser fehlgeschlagen – dem Benutzer sind keine Rollen zugewiesen.**  
+**Lead konnte nicht in Dynamics CRM gespeichert werden. LastCRMError: Fehler bei SecLib::RetrievePrivilegeForUser – dem Benutzer sind keine Rollen zugewiesen.**  
 
-> Lösung: Weisen Sie dem Microsoft Marketplace-Leadschreibdienst eine Sicherheitsrolle zu. Folgen Sie den Anweisungen [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) unter Sicherheitseinstellungen. 
+> Lösung: Weisen Sie dem Microsoft Marketplace-Leadschreibdienst eine Sicherheitsrolle zu. Folgen Sie den Anweisungen [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) unter Sicherheitseinstellungen. 
 
 **Lead konnte nicht mit AAD in Dynamics CRM gespeichert werden. Ausnahme:: Die Anwendung mit dem Bezeichner wurde im Verzeichnis nicht gefunden**. 
 
-> Die im Abschnitt zur Leadverwaltung angegebene Anwendungs-ID ist kein gültiges Verzeichnis. Rufen Sie die Verzeichnis-ID basierend auf den Anweisungen in Schritt 8 ab (unter Azure Active Directory, von [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+> Die im Abschnitt zur Leadverwaltung angegebene Anwendungs-ID ist kein gültiges Verzeichnis. Rufen Sie die Verzeichnis-ID basierend auf den Anweisungen in Schritt 8 ab (unter Azure Active Directory, von [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
 **Lead konnte nicht mit AAD in Dynamics CRM gespeichert werden. Ausnahme:: Angeforderter Mandantenbezeichner ist nicht gültig und weist kein gültiges externes Domänenformat auf**. 
 
-> Die im Abschnitt zur Leadverwaltung angegebene Verzeichnis-ID ist kein gültiges Verzeichnis. Rufen Sie die Verzeichnis-ID basierend auf den Anweisungen in Schritt 2 ab (unter Azure Active Directory, von [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+> Die im Abschnitt zur Leadverwaltung angegebene Verzeichnis-ID ist kein gültiges Verzeichnis. Rufen Sie die Verzeichnis-ID basierend auf den Anweisungen in Schritt 2 ab (unter Azure Active Directory, von [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Lead konnte nicht mit AAD in Dynamics CRM gespeichert werden. Ausnahme:: Fehler beim Überprüfen der Anmeldeinformationen: Ungültiger geheimer Clientschlüssel bereitgestellt.** 
+**Lead konnte nicht mit AAD in Dynamics CRM gespeichert werden. Ausnahme:: Fehler beim Überprüfen der Anmeldeinformationen: Ungültiges Clientgeheimnis bereitgestellt.** 
 
-> Lösung: Melden Sie sich beim Azure-Portal an, überprüfen Sie, ob der Anwendungsschlüssel mit dem übereinstimmt, was im Cloud-Partnerportal vorhanden ist. Generieren Sie das Kennwort basierend auf den Anweisungen in Schritt 10 (unter Azure Active Directory, von [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+> Lösung: Melden Sie sich beim Azure-Portal an, und überprüfen Sie, ob der Anwendungsschlüssel mit der Angabe im Cloud-Partnerportal übereinstimmt. Generieren Sie das Kennwort basierend auf den Anweisungen in Schritt 10 (unter Azure Active Directory, von [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Lead konnte nicht in Dynamics CRM gespeichert werden. LastCRMError: Zeitlimit beim Anforderungskanal beim Warten auf eine Antwort nach 00:02:00 überschritten. Erhöhen Sie den Zeitlimitwert, der an den Aufruf der Anforderung übergeben wird, oder erhöhen Sie den SendTimeout-Wert bei der Binding. Der für diesen Vorgang zugewiesene Zeitraum war möglicherweise ein Teil eines längeren Zeitlimits.**  
+**Lead konnte nicht in Dynamics CRM gespeichert werden. LastCRMError: Timeout beim Anforderungskanal beim Warten auf eine Antwort nach 00:02:00. Erhöhen Sie den Zeitlimitwert, der an den Aufruf der Anforderung übergeben wird, oder erhöhen Sie den SendTimeout-Wert bei der Binding. Der für diesen Vorgang zugewiesene Zeitraum war möglicherweise ein Teil eines längeren Zeitlimits.**  
 
-> Lösung: Melden Sie sich beim Cloud-Partnerportal an, überprüfen Sie die Storefrontdetails >> Leadziel >> URL, und überprüfen Sie, ob es sich um eine gültige Dynamic CRM-Instanz handelt.
+> Lösung: Melden Sie sich beim Cloud-Partnerportal an, überprüfen Sie „Storefrontdetails“ > „Leadziel“ > „URL“, und überprüfen Sie, ob es sich um eine gültige Dynamic CRM-Instanz handelt.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -102,7 +102,7 @@ Leads sind Kunden, die Ihre Produkte über Marketplace bereitstellen. Ganz gleic
 
 **Wo erhalte ich Hilfe bei der Einrichtung meines Leadziels?** 
 
-Die Dokumentation finden Sie hier: https://cloudpartner.azure.com/#documentation/get-customer-leads. Sie können auch ein Supportticket über „aka.ms/marketplacepublishersupport“ übermitteln, indem Sie Angebotsart und Leadverwaltung auswählen. 
+Hier finden Sie die Dokumentation: [Rufen Sie die Kundenleads ab](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads), oder übermitteln Sie ein Supportticket über „aka.ms/marketplacepublishersupport“, indem Sie Angebotsart und Leadverwaltung auswählen. 
 
 
 
@@ -199,7 +199,7 @@ Für jeden Lead werden Daten in Feldern des ausgewählten Leadziels übergeben. 
 
     } 
 
-Weitere Informationen finden Sie unter [Leadinformationen](https://cloudpartner.azure.com/#documentation/get-customer-leads). 
+Weitere Informationen finden Sie unter [Leadinformationen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads). 
 
 
 **Ich habe Azure BLOB als Leadziel konfiguriert. Warum sehe ich den Lead nicht?** 
@@ -219,7 +219,7 @@ Sie können auf den Blob oder die Tabelle über das Azure-Portal zugreifen, oder
 
 **Ich habe die Azure-Tabelle als Leadziel konfiguriert. Kann ich mich benachrichtigen lassen, wenn ein neuer Lead vom Marketplace gesendet wird?** 
 
-Ja, befolgen Sie [hier](https://cloudpartner.azure.com/#documentation/lead-management-instructions-azure-table) die Anweisungen zur Einrichtung der Azure-Tabelle und -Funktion für die Dokumentation. 
+Ja, befolgen Sie [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) die Anweisungen zur Einrichtung der Azure-Tabelle und -Funktion für die Dokumentation. 
 
 
 

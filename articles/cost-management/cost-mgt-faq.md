@@ -1,21 +1,21 @@
 ---
 title: Häufig gestellte Fragen zu Cloudyn in Azure | Microsoft-Dokumentation
-description: Enthält Antworten auf einige der häufig gestellten Fragen zu Cloudyn.
+description: Dieser Artikel bietet Antworten auf einige der häufig gestellten Fragen zu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/14/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 3b137a170edf2be13fa4999947994ee12a374aa9
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276277"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098083"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Häufig gestellte Fragen zu Cloudyn
 
@@ -128,7 +128,7 @@ Cloudyn verfügt über die folgenden Zeitachsen für die Datenaktualisierung:
 
 - **Initial** (Anfang): Nach dem Einrichten kann es bis zu 24 Stunden dauern, bis Kostendaten in Cloudyn angezeigt werden. Es kann auch bis zu zehn Tage dauern, bis Cloudyn genügend Daten gesammelt hat, um Größenempfehlungen anzeigen zu können.
 - **Daily** (Täglich): Vom 10. bis zum Ende jedes Monats sollte der aktuelle Stand Ihrer Daten in Cloudyn jeweils bis zum vorherigen Tag angezeigt werden (ab ca. UTC+3 am nächsten Tag).
-- **Monthly** (Monatlich): Vom 1. bis zum 10. des Monats werden Ihre Daten in Cloudyn ggf. nur bis zum Ende des vorherigen Monats angezeigt.
+- **Monthly** (Monatlich): Vom 1. bis zum 10. des Monats werden Ihre Daten in Cloudyn möglicherweise nur bis zum Ende des Vormonats angezeigt.
 
 In Cloudyn werden Daten für den vorherigen Tag verarbeitet, wenn alle Daten des vorherigen Tags verfügbar sind. Die Daten des vorherigen Tags stehen in Cloudyn normalerweise jeweils ab ca. UTC+3 zur Verfügung. Die Verarbeitung einiger Daten, z.B. von Tags, kann 24 Stunden länger dauern.
 

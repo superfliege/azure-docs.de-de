@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsoft Docs
+title: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsoft-Dokumentation
 description: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über das Azure-Portal oder PowerShell
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243708"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834127"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -31,7 +31,7 @@ Der Zugriff in Azure DevTest Labs wird durch die [rollenbasierte Zugriffssteueru
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Aktionen, die in jeder Rolle ausgeführt werden können
 Es gibt drei wichtige Rollen, die Sie einem Benutzer zuweisen können:
 
-* Owner (Besitzer)
+* Besitzer
 * DevTest Labs-Benutzer
 * Mitwirkender
 
@@ -41,19 +41,19 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 | --- | --- | --- | --- |
 | **Lab-Aufgaben** | | | |
 | Benutzer zu einem Lab hinzufügen |Nein  |Ja |Nein  |
-| Kosteneinstellungen aktualisieren |Nein  |Ja |JA |
+| Kosteneinstellungen aktualisieren |Nein  |Ja |Ja |
 | **Grundlegende Aufgaben für virtuelle Computer** | | | |
-| Benutzerdefinierte Images hinzufügen und entfernen |Nein  |Ja |JA |
-| Formeln hinzufügen, aktualisieren und löschen |JA |Ja |JA |
-| Azure Marketplace-Images in eine Positivliste aufnehmen |Nein  |Ja |JA |
+| Benutzerdefinierte Images hinzufügen und entfernen |Nein  |Ja |Ja |
+| Formeln hinzufügen, aktualisieren und löschen |Ja |Ja |Ja |
+| Azure Marketplace-Images in eine Positivliste aufnehmen |Nein  |Ja |Ja |
 | **Aufgaben für virtuelle Computer** | | | |
-| Virtuelle Computer erstellen |JA |Ja |JA |
-| Virtuelle Computer starten, beenden und löschen |Nur vom Benutzer erstellte virtuelle Computer |JA |JA |
-| VM-Richtlinien aktualisieren |Nein  |Ja |JA |
-| Datenträgern zu virtuellen Computern hinzufügen bzw. davon entfernen |Nur vom Benutzer erstellte virtuelle Computer |JA |JA |
+| Virtuelle Computer erstellen |Ja |Ja |Ja |
+| Virtuelle Computer starten, beenden und löschen |Nur vom Benutzer erstellte virtuelle Computer |Ja |Ja |
+| VM-Richtlinien aktualisieren |Nein  |Ja |Ja |
+| Datenträgern zu virtuellen Computern hinzufügen bzw. davon entfernen |Nur vom Benutzer erstellte virtuelle Computer |Ja |Ja |
 | **Artefakt-Aufgaben** | | | |
-| Artefaktrepositorys hinzufügen und entfernen |Nein  |Ja |JA |
-| Artefakte anwenden |JA |Ja |JA |
+| Artefaktrepositorys hinzufügen und entfernen |Nein  |Ja |Ja |
+| Artefakte anwenden |Ja |Ja |Ja |
 
 > [!NOTE]
 > Wenn ein Benutzer einen virtuellen Computer erstellt, wird diesem Benutzer automatisch die **Besitzer** -Rolle des virtuellen Computers zugewiesen.
@@ -69,15 +69,11 @@ Die folgenden Schritte führen Sie durch den Prozess des Hinzufügens eines Besi
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 4. Wählen Sie auf dem Blatt des Labs die Option **Konfiguration und Richtlinien** aus. 
 5. Klicken Sie auf der Seite **Konfiguration und Richtlinien** im Menü auf der linken Seite auf **Zugriffssteuerung (IAM)**. 
-6. Klicken Sie auf der Symbolleiste auf **Hinzufügen**, um einen Benutzer einer Rolle hinzuzufügen.
-
-    ![Benutzer hinzufügen](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
+6. Klicken Sie auf der Symbolleiste auf **Rollenzuweisung hinzufügen**, um einen Benutzer einer Rolle hinzuzufügen.
 1. Gehen Sie im Fenster **Berechtigungen hinzufügen** wie folgt vor: 
     1. Wählen Sie eine Rolle aus (beispielsweise „DevTest Labs-Benutzer“). Im Abschnitt [Aktionen, die in jeder Rolle ausgeführt werden können](#actions-that-can-be-performed-in-each-role) finden Sie die verschiedenen Aktionen, die Benutzer in den Rollen „Besitzer“, „DevTest-Benutzer“ und „Beitragender“ ausführen können.
     2. Wählen Sie den Benutzer aus, den Sie der Rolle hinzufügen möchten. 
     3. Wählen Sie **Speichern**aus. 
-
-        ![Hinzufügen des Benutzers zur Rolle](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Wenn Sie zum Blatt **Benutzer** zurückkehren, wurde der Benutzer hinzugefügt.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Hinzufügen eines externen Benutzers zu einem Lab mit PowerShell

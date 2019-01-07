@@ -1,28 +1,22 @@
 ---
-title: ExpressRoute-Beispiele für die Konfiguration von Kundenroutern | Microsoft Docs
+title: Beispiele für die Routerkonfiguration – Azure ExpressRoute | Microsoft-Dokumentation
 description: Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 564826bc-017a-4683-a385-37c9fa814948
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013105"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079958"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings
-Diese Seite enthält Schnittstellen- und Routingkonfigurationsbeispiele für Router der Reihen Cisco IOS-XE und Juniper MX. Diese Beispiele dienen nur als Leitfaden und müssen nicht wie angegeben verwendet werden. Sie können mit Ihrem Anbieter an der Ausarbeitung geeigneter Konfigurationen für Ihr Netzwerk zusammenarbeiten. 
+Diese Seite enthält Schnittstellen- und Routingkonfigurationsbeispiele für Router der Reihen Cisco IOS-XE und Juniper MX für die Arbeit mit ExpressRoute. Diese Beispiele dienen nur als Leitfaden und müssen nicht wie angegeben verwendet werden. Sie können mit Ihrem Anbieter an der Ausarbeitung geeigneter Konfigurationen für Ihr Netzwerk zusammenarbeiten. 
 
 > [!IMPORTANT]
 > Die Beispiele auf dieser Seite sind ausschließlich als Leitfaden konzipiert. Sie müssen mit dem Vertriebsteam/Technikteam Ihres Anbieters und Ihrem Netzwerkteam zusammenarbeiten, um für Ihre Anforderungen geeignete Konfigurationen zu bestimmen. Microsoft bietet keine Unterstützung bei Problemen im Zusammenhang mit Konfigurationen, die auf dieser Seite aufgeführt sind. Sie müssen sich bei Problemen an den Gerätehersteller wenden.

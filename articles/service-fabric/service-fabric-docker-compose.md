@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 743fedd35bc45618f728ba71056f5dabc2fc1ed9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e4eb26ab91261d1888d3c756d611db1b31801e8f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300641"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720226"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker Compose-Bereitstellungsunterstützung in Azure Service Fabric (Vorschau)
 
@@ -64,6 +64,12 @@ Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade über 
 Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
 ```
 
+Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade über PowerShell zurückzusetzen:
+
+```powershell
+Start-ServiceFabricComposeDeploymentRollback -DeploymentName TestContainerApp
+```
+
 Nachdem das Upgrade akzeptiert wurde, kann der Upgradestatus mit dem folgenden Befehl nachverfolgt werden:
 
 ```powershell
@@ -94,6 +100,12 @@ Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade zu sta
 
 ```azurecli
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
+```
+
+Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade zurückzusetzen:
+
+```azurecli
+sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Nachdem das Upgrade akzeptiert wurde, kann der Upgradestatus mit dem folgenden Befehl nachverfolgt werden:

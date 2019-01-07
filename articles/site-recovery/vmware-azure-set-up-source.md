@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 5f7d3bb51b2d1c05083645ccc5bca4f668d4a661
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7d81b7f0d84eb8751e4e95a31be58ed49a96bb2d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160519"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834995"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Einrichten der Quellumgebung für die Replikation von VMware in Azure
 
@@ -69,7 +69,7 @@ Schließen Sie für eine reibungslose Replikation und zur Vermeidung von Konnekt
  - C:\ProgramData\ASRSetupLogs
  - C:\ProgramData\LogUploadServiceLogs
  - C:\inetpub
- - Installationsverzeichnis des ASR-Servers. Beispiel: E:\Programme (x86)\Microsoft Azure Site Recovery
+ - Installationsverzeichnis des ASR-Servers. Beispiel:  E:\Programme (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Aktive Antivirensoftware auf Prozessserver/Masterziel mit horizontaler Skalierung
 

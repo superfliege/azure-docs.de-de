@@ -1,11 +1,12 @@
 ---
 title: Beispiele und exemplarische Vorgehensweisen für Data Science Virtual Machines – Azure | Microsoft-Dokumentation
-description: Beispiele und exemplarische Vorgehensweisen für Data Science Virtual Machines.
+description: Erfahren Sie mehr über die Beispiele und exemplarischen Vorgehensweisen, mit denen Sie allgemeine Aufgaben und Szenarios mit Data Science Virtual Machine bewältigen können.
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 74d5893a377fb67dbec7b185525e74ac248deede
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 64be6af340aa02c6c0b094013d2cbd286286aca7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902755"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101989"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Beispiele auf Data Science Virtual Machines
 
@@ -38,7 +39,7 @@ Azure Data Science Virtual Machines umfassen eine umfangreiche Sammlung von Beis
 | PyTorch-Notebooks  | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von PyTorch verwenden. Mit Notebooks von Einsteiger- bis zu fortgeschrittenen Szenarien.  <br/> [PyTorch-Notebooks](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
 | TensorFlow  |  Verschiedene Beispiele und Techniken für neuronale Netzwerke, die mithilfe des TensorFlow-Frameworks implementiert werden. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
 | Microsoft Cognitive Toolkit <br/>   | Deep Learning-Beispiele des Cognitive Toolkit-Teams von Microsoft.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
-| caffe2 | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von caffe2 verwenden. Verschiedene Notebooks machen Benutzer mit caffe2 und seinem effektiven Einsatz vertraut. Zu den Beispielen gehören Bildvorverarbeitung und Dataseterstellung. Regression und die Verwendung vortrainierter Modelle werden ebenfalls behandelt. <br/> [caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
+| Caffe2 | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von caffe2 verwenden. Verschiedene Notebooks machen Benutzer mit caffe2 und seinem effektiven Einsatz vertraut. Zu den Beispielen gehören Bildvorverarbeitung und Dataseterstellung. Regression und die Verwendung vortrainierter Modelle werden ebenfalls behandelt. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
 | H2O   | Python-basierte Beispiele, die H2O für praxisorientierte Aufgabenstellungen einsetzen. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
 | SparkML (Programmiersprache)  | Beispiele, die Features des Spark MLLib-Toolkits mithilfe von pySpark und MMLSpark nutzen – Microsoft Machine Learning für Apache Spark in Apache Spark 2.x.  <br/> [SparkML (Programmiersprache)](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
 | XGBoost | Machine Learning-Standardbeispiele in XGBoost für Szenarien wie Klassifizierung, Regression und dergleichen. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
@@ -65,7 +66,7 @@ Melden Sie sich mit dem gleichen Kennwort an, das Sie für den Zugriff auf Data 
 <br/>![Beispiele für R](./media/r-language-samples.png)<br/>
 
 ## <a name="python-language"></a>Python (Programmiersprache)
-<br/>![Beispiele für Python](./media/python-language-samples.png)<br/>
+<br/>![Python-Beispiele](./media/python-language-samples.png)<br/>
 
 ## <a name="julia-language"></a>Julia (Programmiersprache) 
 <br/>![Beispiele für Julia](./media/julia-samples.png)<br/>
@@ -84,7 +85,7 @@ Melden Sie sich mit dem gleichen Kennwort an, das Sie für den Zugriff auf Data 
 <br/>![Beispiele für CNTK](./media/cntk-samples.png)<br/>
 
 
-## <a name="caffe2"></a>caffe2 
+## <a name="caffe2"></a>Caffe2 
 <br/>![Beispiele für caffe2](./media/caffe2-samples.png)<br/>
 
 ## <a name="h2o"></a>H2O 

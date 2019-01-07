@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584097"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141498"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 
@@ -35,6 +35,7 @@ ms.locfileid: "47584097"
 | Abfragen von Geräte- und Modulzwillingen | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 512 Byte berechnet. |
 | Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | Keine Gebühren. |
 | Vorgänge vom Typ „Aufträge pro Gerät“ | Auftragsvorgänge (z.B. Zwillingsupdates und Methoden) werden normal berechnet. Ein Auftrag, der zu 1000 Methodenaufrufen mit 1-KB-Anforderungen und Antworten mit leerem Textbereich führt, wird als 1000 Nachrichten berechnet. |
+| Keep-Alive-Nachrichten | Wenn Sie AMQP- oder MQTT-Protokolle verwenden, werden Nachrichten zum Herstellen der Verbindung und bei der Aushandlung ausgetauschte Nachrichten nicht in Rechnung gestellt. |
 
 > [!NOTE]
 > Bei allen Berechnungen der Größen wird die Nutzlastgröße in Byte berücksichtigt (Protokollframing wird ignoriert). Bei Nachrichten, die über Eigenschaften und Text verfügen, wird die Größe unabhängig vom Protokoll berechnet. Weitere Informationen finden Sie unter [IoT Hub-Nachrichtenformat](iot-hub-devguide-messages-construct.md).

@@ -1,5 +1,5 @@
 ---
-title: Beispiel für eine Azure API Management-Richtlinie – Autorisieren des Zugriffs mithilfe von Google-OAuth-Token | Microsoft-Dokumentation
+title: Beispiel für eine Azure API Management-Richtlinie – Autorisieren des Zugriffs mithilfe eines Google-OAuth-Tokens | Microsoft-Dokumentation
 description: Das Beispiel für eine Azure API Management-Richtlinie veranschaulicht, wie Sie den Zugriff auf Ihre Endpunkte mithilfe von Google als OAuth-Tokenanbieter autorisieren.
 services: api-management
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 22aed976ef69288aa0e49215a739174786843527
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 430f9e57df163ad345f0740e5bd5beca6e892a4c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284588"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869299"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Autorisieren des Zugriffs mithilfe von Google-OAuth-Token
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: a97032344b904442ed3606c6297251578c3b4ff7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263892"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075351"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Bereitstellen des Durchsatzes für Azure Cosmos-Container und -Datenbanken
 
@@ -19,7 +19,7 @@ Eine Azure Cosmos-Datenbank ist eine Verwaltungseinheit für eine Gruppe von Con
 
 Mit Azure Cosmos DB können Sie den Durchsatz in zwei Größenordnungen konfigurieren: **Azure Cosmos-Container** und **Azure Cosmos-Datenbanken**.
 
-# <a name="setting-throughput-on-a-azure-cosmos-container"></a>Festlegen des Durchsatzes für einen Azure Cosmos-Container  
+## <a name="setting-throughput-on-a-container"></a>Festlegen des Durchsatzes für einen Container  
 
 Der für einen Azure Cosmos-Container bereitgestellte Durchsatz ist ausschließlich für diesen Container reserviert. Der Container erhält den bereitgestellten Durchsatz durchgängig. Der bereitgestellte Durchsatz für einen Container wird finanziell durch SLAs gesichert. Informationen zum Konfigurieren des Durchsatzes für einen Container finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos DB-Container](how-to-provision-container-throughput.md).
 
@@ -31,7 +31,7 @@ Der für einen Azure Cosmos-Container bereitgestellte Durchsatz wird gleichmäß
 
 ![Ressourcenpartition](./media/set-throughput/resource-partition.png)
 
-# <a name="setting-throughput-on-a-azure-cosmos-database"></a>Festlegen des Durchsatzes für eine Azure Cosmos-Datenbank
+## <a name="setting-throughput-on-a-database"></a>Festlegen des Durchsatzes für eine Datenbank
 
 Wenn Sie Durchsatz für eine Azure Cosmos-Datenbank bereitstellen, wird der Durchsatz von allen Containern in der Datenbank gemeinsam genutzt, sofern Sie nicht einen bereitgestellten Durchsatz für bestimmte Container angegeben haben. Die gemeinsame Nutzung des Datenbankdurchsatzes durch die Container entspricht dem Hosten einer Datenbank in einem Computercluster. Da alle Container in einer Datenbank die auf einem Computer verfügbaren Ressourcen gemeinsam nutzen, erhalten Sie natürlich keine vorhersagbare Leistung für einen bestimmten Container. Informationen zum Konfigurieren des Durchsatzes für eine Datenbank finden Sie unter [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
 
@@ -53,7 +53,7 @@ Sie können mehrere logische Partitionen, die den für eine Datenbank bereitgest
 
 ![Ressourcenpartition](./media/set-throughput/resource-partition2.png)
 
-## <a name="setting-throughput-on-a-azure-cosmos-database-and-a-container"></a>Festlegen des Durchsatzes für eine Azure Cosmos-Datenbank und einen Container
+## <a name="setting-throughput-on-a-database-and-a-container"></a>Festlegen des Durchsatzes für eine Datenbank und einen Container
 
 Sie können die beiden Modelle kombinieren und Durchsatz sowohl auf Datenbank- als auch auf Containerebene bereitstellen. Das folgende Beispiel zeigt die Vorgehensweise bei der Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank und einen Container:
 
@@ -67,7 +67,7 @@ Sie können die beiden Modelle kombinieren und Durchsatz sowohl auf Datenbank- a
 
 |**Kontingent**  |**Bereitgestellter Durchsatz für eine Datenbank**  |**Bereitgestellter Durchsatz für einen Container**|
 |---------|---------|---------|
-|Minimale RUs |400 |400|
+|Minimale RUs |400 (Nach den ersten vier Containern benötigt jeder weitere Container mindestens 100 RU/s.) |400|
 |Minimale RUs pro Container|100|400|
 |Erforderliche minimale RUs für die Nutzung von 1 GB Speicher|40|40|
 |Maximale RUs|Unbegrenzt, in der Datenbank|Unbegrenzt, im Container|

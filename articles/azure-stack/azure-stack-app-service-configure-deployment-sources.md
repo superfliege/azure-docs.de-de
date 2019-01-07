@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: d65c8653bc039b591f1c0fb711dfe68e3fbacd88
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 66688ae762aa646fc72045836c4ec4671bf4b7b4
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353560"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888510"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurieren von Bereitstellungsquellen
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 App Service in Azure Stack unterstützt die bedarfsgesteuerte Bereitstellung aus mehreren Quellcodeverwaltungsanbietern. Dieses Feature ermöglicht Anwendungsentwicklern eine Bereitstellung direkt aus ihren Repositorys zur Quellcodeverwaltung. Damit Benutzer App Service für das Herstellen einer Verbindung mit ihren Repositorys konfigurieren können, muss ein Cloudadministrator zunächst die Integration zwischen App Service in Azure Stack und dem Quellcodeverwaltungsanbieter konfigurieren.  
 
@@ -38,7 +38,8 @@ Neben lokalem Git werden die folgenden Quellcodeverwaltungsanbieter unterstützt
 ## <a name="view-deployment-sources-in-app-service-administration"></a>Anzeigen der Bereitstellungsquellen in der App Service-Verwaltung
 
 1. Melden Sie sich am Azure Stack-Verwaltungsportal (https://adminportal.local.azurestack.external)) als Dienstadministrator an.
-2. Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus.  ![App Service Resource Provider Admin][1] (Administrator von App Service-Ressourcenanbieter)
+2. Navigieren Sie zu **Alle Dienste**, und wählen Sie den **App Service** aus.
+    ![App Service Resource Provider Admin][1] (Administrator von App Service-Ressourcenanbieter)
 3. Klicken Sie auf **Source control configuration** (Konfiguration der Quellcodeverwaltung). Die Liste aller konfigurierten Bereitstellungsquellen wird angezeigt.
     ![App Service Resource Provider Admin: Source Control Configuration][2] (Administrator von App Service-Ressourcenanbieter: Konfiguration der Quellcodeverwaltung)
 
@@ -73,8 +74,8 @@ Sie benötigen ein Bitbucket-Konto, um diese Aufgabe abzuschließen. Möglicherw
 5. Geben Sie in **Callback URL** die Rückruf-URL ein. In einer Standardbereitstellung von Azure Stack weist die Rückruf-URL das Format https://portal.local.azurestack.external/TokenAuthorize auf. Wenn die Ausführung in einer anderen Domäne erfolgt, ersetzen Sie „azurestack.local“ durch Ihren Domänennamen. Die URL muss die hier aufgeführte Groß-/Kleinschreibung befolgen, damit die BitBucket-Integration erfolgreich ist.
 6. Geben Sie die **URL** ein. Diese URL muss die des Azure Stack-Portals sein, z.B. https://portal.local.azurestack.external.
 7. Wählen Sie unter **Permissions** die erforderlichen Berechtigungen aus:
-    - **Repositories**: *Read*
-    - **Webhooks**: *Read and write*
+    - **Repositorys**: *Lesen*
+    - **Webhooks**: *Lesen und Schreiben*
 8. Klicken Sie auf **Speichern**. Unter **OAuth consumers** (OAuth-Consumer) wird diese neue Anwendung nun zusammen mit **Key** (Schlüssel) und **Secret** (Geheimnis) angezeigt.
     ![BitBucket: Anwendungsliste][9]
 9.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster am Azure Stack-Verwaltungsportal (https://adminportal.local.azurestack.external)) als Dienstadministrator an.

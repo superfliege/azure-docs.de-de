@@ -1,22 +1,22 @@
 ---
-title: 'Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor'
+title: 'Erster Einblick: Schützen von Azure-VMs mit einem Recovery Services-Tresor'
 description: Es wird beschrieben, wie Sie Azure-VMs mit einem Recovery Services-Tresor schützen. Verwenden Sie Sicherungen von mit Resource Manager bereitgestellten virtuellen Computern, klassischen bereitgestellten Computern und virtuellen Storage Premium-Computern, verschlüsselten virtuellen Computer und virtuellen Computern auf verwalteten Datenträgern, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
 keywords: Sicherungen; VM-Sicherungen
-ms.openlocfilehash: daa2355d028af9b61b0b14a453452c1a96487403
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233540"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869927"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresor
 
@@ -36,8 +36,8 @@ Informationen darüber, was Sie sichern und was Sie nicht sichern können, finde
 
 > [!NOTE]
 > Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren.
-Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe lautet: AzureBackupRG_`<Geo>`_`<number>`.
-<br>Z.B.: AzureBackupRG_northeurope_1
+Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: AzureBackupRG_`<Geo>`_`<number>`
+<br>Beispiel: AzureBackupRG_northeurope_1
 >
 >
 

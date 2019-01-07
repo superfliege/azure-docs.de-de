@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c8edaba8de597e3e76e760e1f5109006338a663c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 2f426ab85d9ab15dd080a487337b8d48358ed040
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238819"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888459"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
-Azure Maps stellt vier verschiedene integrierte Kartenstile bereit. Die Stile und ihre Beschreibungen werden nachfolgend aufgeführt.
+Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
 
 ## <a name="road"></a>Straße
 Der Kartenstil **Straße** ist eine Standardkarte, die Straßen, natürliche und künstliche Strukturen zusammen mit den Bezeichnungen für diese Strukturen anzeigt.
@@ -49,6 +49,14 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 **grayscale_dark** ist eine dunkle Version des Kartenstils „Straße“.
 
 ![Gray_Scale](./media/supported-map-styles/grayscale_dark.png)
+
+**Anwendbare APIs:**
+* JS-Kartensteuerelement 
+
+## <a name="night"></a>Nacht
+**Nacht** ist eine dunkle Version des Kartenstils „Straße“ mit farbigen Straßen und Symbolen.
+
+![Nacht](./media/supported-map-styles/night.PNG)
 
 **Anwendbare APIs:**
 * JS-Kartensteuerelement 

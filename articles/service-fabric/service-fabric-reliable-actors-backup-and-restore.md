@@ -12,16 +12,21 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: c72aea9d104264243ef0654aea01e0a41f33ed6f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d5922e21dd464b8cbd0075e7bd2515ffa73607e6
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206865"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726932"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Reliable Actors
+
+> [!NOTE]
+> Microsoft empfiehlt die Verwendung von [Regelmäßigen Sicherungen und Wiederherstellungen](service-fabric-backuprestoreservice-quickstart-azurecluster.md) für die Konfiguration der Datensicherung von Reliable Stateful Services und Reliable Actors. 
+> 
+
 Im folgenden Beispiel stellt der benutzerdefinierte Actordienst eine Methode zum Sichern von Actordaten bereit. Diese nutzt die Vorteile des Remoting-Listeners, der bereits in `ActorService` enthalten ist:
 
 ```csharp
@@ -113,7 +118,7 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Weitere Informationen zu Reliable Actors finden Sie hier:
+Weitere Informationen zu Reliable Actors finden Sie in den folgenden Artikeln:
 * [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
 * [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
 * [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)

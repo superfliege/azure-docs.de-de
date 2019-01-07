@@ -2,18 +2,18 @@
 title: Automatische Installation von Azure Backup Server V2
 description: Verwenden Sie ein PowerShell-Skript für die automatische Installation von Azure Backup Server v2. Diese Art der Installation wird auch als unbeaufsichtigte Installation bezeichnet.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: markgal
-ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: raynew
+ms.openlocfilehash: dd66710a24ca28b78c6b3e0a8197a078f17524db
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612694"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868139"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Ausführen einer unbeaufsichtigten Installation von Azure Backup Server
 
@@ -56,9 +56,9 @@ Diese Schritte gelten nicht, wenn Sie Azure Backup Server V1 installieren.
 
 Sie können diese Flags für die Installation verwenden:</br>
 **/f:** Pfad der INI-Datei</br>
-**/l:** Protokollpfad</br>
-**/i:** Installationspfad</br>
-**/x:** Deinstallationspfad</br>
+**/l**: Protokollpfad</br>
+**/i**: Installationspfad</br>
+**/x**: Deinstallationspfad</br>
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie, wie Sie nach der Installation von Backup Server Ihren Server vorbereiten oder mit dem Schutz einer Workload beginnen.

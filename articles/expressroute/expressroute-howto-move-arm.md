@@ -1,28 +1,21 @@
 ---
-title: 'Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell – ExpressRoute: PowerShell: Azure | Microsoft-Dokumentation'
 description: Auf dieser Seite wird beschrieben, wie Sie mithilfe von PowerShell eine klassische Verbindung in das Resource Manager-Bereitstellungsmodell verschieben.
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/28/2018
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 0c3a1a57a89d716245dc075e47b7970cb228ff50
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.custom: seodec18
+ms.openlocfilehash: fae5ad4a9045115c0e7a68b0164593f639824073
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100452"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141492"
 ---
-# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell mithilfe von PowerShell
+# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen auf das Resource Manager-Bereitstellungsmodell mithilfe von PowerShell
 
 Damit Sie eine ExpressRoute-Verbindung sowohl für das klassische Bereitstellungsmodell als auch für das Resource Manager-Bereitstellungsmodell verwenden können, müssen Sie die Verbindung in das Resource Manager-Bereitstellungsmodell verschieben. In den folgenden Abschnitten wird erläutert, wie Sie Ihre Verbindung mithilfe von PowerShell umstellen können.
 
@@ -46,7 +39,7 @@ Melden Sie sich bei der klassischen Azure-Umgebung an, und rufen Sie den Diensts
   Add-AzureAccount
   ```
 
-2. Wählen Sie das entsprechende Azure-Abonnement.
+2.  Wählen Sie das entsprechende Azure-Abonnement.
 
   ```powershell
   Select-AzureSubscription "<Enter Subscription Name here>"
@@ -75,7 +68,7 @@ Melden Sie sich bei der Resource Manager-Umgebung an, und erstellen Sie eine neu
   Connect-AzureRmAccount
   ```
 
-2. Wählen Sie das entsprechende Azure-Abonnement.
+2.  Wählen Sie das entsprechende Azure-Abonnement.
 
   ```powershell
   Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription

@@ -1,5 +1,5 @@
 ---
-title: Überwachen von Azure-DC/OS-Clustern – Datadog
+title: '(VERALTET) Überwachen von Azure-DC/OS-Clustern: Datadog'
 description: Überwachen eines Azure-Containerdienstclusters mit Datadog. Verwenden Sie die DC/OS-Webbenutzeroberfläche, um die Datadog-Agents auf Ihrem Cluster bereitzustellen.
 services: container-service
 author: sauryadas
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 029f36e4362704fcec240f6e88da5c96e903c317
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d881a5c0f994b627b4c7c3da362672b3b887cd5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162754"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996156"
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>Überwachen eines Azure Container Service-DC/OS-Clusters mit Datadog
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(VERALTET) Überwachen eines Azure Container Service-DC/OS-Clusters mit Datadog
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 In diesem Artikel stellen wir Datadog-Agents für alle Agent-Knoten in Ihrem Azure-Containerdienstcluster bereit. Für diese Konfiguration benötigen Sie ein Konto mit Datadog. 
 

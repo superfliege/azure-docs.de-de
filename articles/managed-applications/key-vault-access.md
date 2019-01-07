@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: f091ba44a3170dcc4141829f2f4105d6e7993cdf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: dcfbb7f3b1d110d4c1fdf22863d795c85152ec35
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035288"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725011"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications
 
@@ -43,7 +43,7 @@ Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstell
 
    ![„Zugriffssteuerung“ auswählen](./media/key-vault-access/access-control.png)
 
-1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
    ![„Hinzufügen“ auswählen](./media/key-vault-access/add-access-control.png)
 
@@ -89,5 +89,5 @@ Um ein Geheimnis aus einem Schlüsseltresor an eine Vorlage in Ihrer verwalteten
 Sie haben Ihren Schlüsseltresor so konfiguriert, dass während der Bereitstellung einer verwalteten Anwendung darauf zugegriffen werden kann.
 
 * Informationen zum Übergeben eines Werts aus einem Schlüsseltresor als Vorlagenparameter finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md).
-* Beispiele zu verwalteten Anwendungen finden Sie unter [Sample projects for Azure managed applications](sample-projects.md) (Beispielprojekte für verwaltete Azure-Anwendungen).
+* Beispiele zu verwalteten Anwendungen finden Sie unter [Beispielprojekte für verwaltete Azure-Anwendungen](sample-projects.md).
 * Informationen zum Erstellen einer UI-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).

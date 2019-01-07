@@ -7,14 +7,15 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: 60248da2bbdac751845a40720f8967203c562b4a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 48fd64908a5cb2488d58f3c078e0ccb17419352f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085740"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260242"
 ---
-# <a name="quickstart-send-container-registry-events-to-event-grid"></a>Schnellstart: Senden von Containerregistrierungsereignissen an Event Grid
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Schnellstart: Senden von Ereignissen aus der privaten Containerregistrierung an Event Grid
 
 Azure Event Grid ist ein vollständig verwalteter Dienst für das Ereignisrouting, der eine einheitliche Ereignisnutzung mithilfe eines Veröffentlichen/Abonnieren-Modells bereitstellt. In dieser Schnellstartanleitung verwenden Sie die Azure CLI, um eine Containerregistrierung zu erstellen, Registrierungsereignisse zu abonnieren und anschließend eine Beispielwebanwendung für den Empfang der Ereignisse bereitzustellen. Abschließend lösen Sie für das Containerimage `push`- und `delete`-Ereignisse aus und lassen sich die Ereignisnutzlast in der Beispielanwendung anzeigen.
 
@@ -212,7 +213,7 @@ Glückwunsch! Wenn die Ereignisse `ImagePushed` und `ImageDeleted` angezeigt wer
 
 Wenn Sie die mit dieser Schnellstartanleitung erstellten Ressourcen nicht mehr benötigen, können Sie diese mit dem unten aufgeführten Azure CLI-Befehl löschen. Wenn Sie eine Ressourcengruppe löschen, werden alle darin enthaltenen Ressourcen dauerhaft gelöscht.
 
-**WARNUNG:** Dieser Vorgang kann nicht rückgängig gemacht werden. Stellen Sie sicher, dass Sie die Ressourcen in der Gruppe nicht mehr benötigen, bevor Sie den Befehl ausführen.
+**WARNUNG**: Dieser Vorgang kann nicht rückgängig gemacht werden. Stellen Sie sicher, dass Sie die Ressourcen in der Gruppe nicht mehr benötigen, bevor Sie den Befehl ausführen.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

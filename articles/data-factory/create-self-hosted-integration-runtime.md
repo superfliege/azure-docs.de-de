@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: f0040f7e84fefd745b3ca097a4808dc685dd5b72
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284828"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969480"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -49,7 +49,7 @@ Wenn Sie Daten zwischen der lokalen Umgebung und der Cloud verschieben, wird fü
 
 Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopieren per selbstgehosteter IR angegeben:
 
-![Allgemeine Übersicht](media\create-self-hosted-integration-runtime\high-level-overview.png)
+![Allgemeine Übersicht](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. Der Datenentwickler erstellt eine selbstgehostete Integration Runtime in einer Azure Data Factory per PowerShell-Cmdlet. Derzeit wird dieses Feature vom Azure-Portal nicht unterstützt.
 2. Der Datenentwickler erstellt einen verknüpften Dienst für einen lokalen Datenspeicher, indem er die Instanz der selbstgehosteten Integration Runtime angibt, die zum Verbinden der Datenspeicher verwendet werden soll. Beim Einrichten des verknüpften Diensts verwendet der Datenentwickler die Anwendung „Anmeldeinformationsverwaltung“ (derzeit nicht unterstützt), um die Authentifizierungstypen und Anmeldeinformationen festzulegen. Das Dialogfeld der Anwendung „Anmeldeinformationsverwaltung“ kommuniziert mit dem Datenspeicher, um die Verbindung zu testen, und mit der selbstgehosteten Integration Runtime, um Anmeldeinformationen zu speichern.
@@ -131,7 +131,7 @@ Wenn für die selbstgehostete IR nur wenig Arbeitsspeicher verfügbar und die CP
 
 Wenn der verfügbare Speicher und die CPU nicht gut ausgelastet sind, aber die gleichzeitige Ausführung von Aufträgen den Grenzwert erreicht, sollten Sie die Anzahl der gleichzeitigen Aufträge erhöhen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das zentrale Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil die selbstgehostete IR überlastet ist. Wie in der folgenden Abbildung gezeigt, können Sie die maximale Kapazität für einen Knoten erhöhen:  
 
-![Heraufsetzen der Anzahl gleichzeitiger Aufträge, die auf einem Knoten ausgeführt werden können](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+![Heraufsetzen der Anzahl gleichzeitiger Aufträge, die auf einem Knoten ausgeführt werden können](media/create-self-hosted-integration-runtime/scale-up-self-hosted-IR.png)
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL-Zertifikatanforderungen
 
@@ -162,33 +162,33 @@ Das folgende Video enthält eine zwölfminütige Einführung und Demonstration d
 
 1. Erteilen Sie in der selbstgehosteten IR, die freigegeben werden soll, Berechtigungen für die Data Factory, in der Sie die verknüpfte IR erstellen möchten. 
 
-   ![Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+   ![Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
 
-   ![Auswahl zum Zuweisen von Berechtigungen](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+   ![Auswahl zum Zuweisen von Berechtigungen](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)
 
 2. Notieren Sie sich die Ressourcen-ID der selbstgehosteten IR, die freigegeben werden soll.
 
-   ![Speicherort der Ressourcen-ID](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+   ![Speicherort der Ressourcen-ID](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
 
 3. Erstellen Sie in der Data Factory, für die Berechtigungen erteilt wurden, eine neue selbstgehostete IR (verknüpft), und geben Sie die Ressourcen-ID ein.
 
-   ![Schaltfläche zum Erstellen einer verknüpften selbstgehosteten Integration Runtime](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+   ![Schaltfläche zum Erstellen einer verknüpften selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
 
-   ![Felder für Name und Ressourcen-ID](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+   ![Felder für Name und Ressourcen-ID](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
 ### <a name="monitoring"></a>Überwachung 
 
 - **Freigegebene IR**
 
-  ![Auswahl für die Suche nach einer freigegebenen Integration Runtime](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+  ![Auswahl für die Suche nach einer freigegebenen Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
-  ![Registerkarte für Überwachung](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+  ![Registerkarte für Überwachung](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
 - **Verknüpfte IR**
 
-  ![Auswahl für die Suche nach einer verknüpften Integration Runtime](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+  ![Auswahl für die Suche nach einer verknüpften Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
-  ![Registerkarte für Überwachung](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
+  ![Registerkarte für Überwachung](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Bekannte Einschränkungen der Freigabe selbstgehosteter IRs
 
@@ -211,12 +211,12 @@ Das folgende Video enthält eine zwölfminütige Einführung und Demonstration d
 
 Wenn Sie Ihren Cursor auf das Symbol bzw. die Nachricht im Benachrichtigungsbereich bewegen, können Sie auf Details zum Status der selbstgehosteten Integration Runtime zugreifen.
 
-![Benachrichtigungen im Benachrichtigungsbereichs](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![Benachrichtigungen im Benachrichtigungsbereichs](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>Ports und Firewall
 Zwei Firewalls müssen berücksichtigt werden: Die *Unternehmensfirewall*, die auf dem zentralen Router des Unternehmens ausgeführt wird, und die *Windows-Firewall*, die als Daemon auf dem lokalen Computer mit der selbstgehosteten Integration Runtime konfiguriert ist.
 
-![Firewall](media\create-self-hosted-integration-runtime\firewall.png)
+![Firewall](media/create-self-hosted-integration-runtime/firewall.png)
 
 Auf Ebene der *Unternehmensfirewall* müssen Sie die folgenden Domänen und ausgehenden Ports konfigurieren:
 
@@ -249,16 +249,16 @@ Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus einem lokale
 ## <a name="proxy-server-considerations"></a>Proxyserver-Aspekte
 Konfigurieren Sie die selbstgehostete Integration Runtime mit den geeigneten Proxyeinstellungen, wenn die Netzwerkumgebung Ihres Unternehmens einen Proxyserver für den Internetzugriff verwendet. Sie können den Proxy während der anfänglichen Registrierungsphase festlegen.
 
-![Angeben des Proxys](media\create-self-hosted-integration-runtime\specify-proxy.png)
+![Angeben des Proxys](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
 Die selbstgehostete Integration Runtime verwendet den Proxyserver zum Herstellen der Verbindung mit dem Clouddienst. Wählen Sie während des Anfangssetups **Verknüpfung ändern** aus. Daraufhin wird das Dialogfeld für Proxyeinstellungen angezeigt.
 
-![Festlegen des Proxys](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![Festlegen des Proxys](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
 Es gibt drei Konfigurationsoptionen:
 
-- **Proxy nicht verwenden**: Für die selbstgehostete Integration Runtime wird nicht explizit ein Proxy verwendet, um eine Verbindung mit Clouddiensten herzustellen.
-- **Systemproxy verwenden**: Die selbstgehostete Integration Runtime verwendet die in „diahost.exe.config“ und „diawp.exe.config“ konfigurierten Proxyeinstellungen. Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy konfiguriert ist, stellt die selbstgehostete Integration Runtime die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her.
+- **Proxy nicht verwenden**: Für die selbstgehostete IR wird nicht explizit ein Proxy verwendet, um eine Verbindung mit Clouddiensten herzustellen.
+- **Systemproxy verwenden**: Die selbstgehostete IR verwendet die in „diahost.exe.config“ und „diawp.exe.config“ konfigurierten Proxyeinstellungen. Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy konfiguriert ist, stellt die selbstgehostete Integration Runtime die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her.
 - **Benutzerdefinierten Proxy verwenden**: Konfigurieren Sie hier die HTTP-Proxyeinstellungen, die für die selbstgehostete Integration Runtime verwendet werden sollen, anstatt die Konfigurationen in den Dateien „diahost.exe.config“ und „diawp.exe.config“ zu nutzen. **Adresse** und **Port** sind erforderlich. **Benutzername** und **Kennwort** sind je nach den Authentifizierungseinstellungen Ihres Proxys optional. Alle Einstellungen werden für die selbstgehostete Integrationslaufzeit per Windows DPAPI verschlüsselt und lokal auf dem Computer gespeichert.
 
 Der Hostdienst der Integrationslaufzeit wird automatisch neu gestartet, nachdem Sie die aktualisierten Proxyeinstellungen gespeichert haben.
@@ -272,7 +272,7 @@ Wenn Sie nach der erfolgreichen Registrierung der selbstgehosteten Integration R
 
 Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 
-![Anzeigen des Proxys](media\create-self-hosted-integration-runtime\view-proxy.png)
+![Anzeigen des Proxys](media/create-self-hosted-integration-runtime/view-proxy.png)
 
 > [!NOTE]
 > Wenn Sie einen Proxyserver mit NTLM-Authentifizierung einrichten, wird der Hostdienst der Integration Runtime unter dem Domänenkonto ausgeführt. Wenn Sie das Kennwort für das Domänenkonto später ändern, denken Sie daran, die Konfigurationseinstellungen für den Dienst entsprechend zu aktualisieren und neu zu starten. Aufgrund dieser Anforderung empfiehlt es sich, ein dediziertes Domänenkonto für den Zugriff auf den Proxyserver zu verwenden, in dem das Kennwort nicht regelmäßig geändert werden muss.
@@ -318,7 +318,7 @@ Sie müssen auch sicherstellen, dass Microsoft Azure in der Whitelist Ihres Unte
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
 Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers. Hierdurch wird verhindert, dass die selbstgehostete Integration Runtime eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind, überprüfen Sie den vorherigen Abschnitt.
 
-* Wenn Sie versuchen, die selbstgehostete Integrationslaufzeit zu registrieren, erhalten Sie den folgenden Fehler: „Fehler beim Registrieren dieses Knotens der Integrationslaufzeit. Stellen Sie sicher, dass der Authentifizierungsschlüssel gültig ist und der Hostdienst des Integrationsdiensts auf diesem Computer ausgeführt wird.
+* Wenn Sie versuchen, die selbstgehostete Integration Runtime zu registrieren, erhalten Sie den folgenden Fehler: „Fehler beim Registrieren dieses Knotens der Integrationslaufzeit. Stellen Sie sicher, dass der Authentifizierungsschlüssel gültig ist und der Hostdienst des Integrationsdiensts auf diesem Computer ausgeführt wird.“
 * Wenn Sie den Konfigurations-Manager für die Integration Runtime öffnen, wird der Status als **Getrennt** oder **Verbindung wird hergestellt** angezeigt. Beim Anzeigen der Windows-Ereignisprotokolle sehen Sie unter **Ereignisanzeige** > **Anwendungs- und Dienstprotokolle** > **Microsoft Integration Runtime** beispielsweise folgende Fehlermeldung:
 
     ```
@@ -345,4 +345,4 @@ Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integration Ru
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Das folgende Tutorial enthält eine Schritt-für-Schritt-Anleitung: [Tutorial: Kopieren von lokalen Daten in die Cloud](tutorial-hybrid-copy-powershell.md).
+Das folgende Tutorial enthält eine Schrittanleitung: [Tutorial: Kopieren von lokalen Daten in die Cloud](tutorial-hybrid-copy-powershell.md).

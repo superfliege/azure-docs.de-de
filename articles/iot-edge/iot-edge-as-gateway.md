@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure IoT Edge-Geräten als Gateways | Microsoft-Dokumentation
-description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder nicht transparenten Gateway-Geräts oder eines Proxy-Gateway-Geräts, das Daten von mehreren nachgeschalteten Geräten in die Cloud sendet oder lokal verarbeitet.
+title: Gateways für nachgeschaltete Geräte – Azure IoT Edge | Microsoft-Dokumentation
+description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder nicht transparenten Gateway-Geräts oder eines Proxygatewaygeräts, das Daten von mehreren nachgeschalteten Geräten in die Cloud sendet oder lokal verarbeitet.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 11/01/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53f0f1e77f8879807b2fb93b86d825e3bd044f41
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567212"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092280"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
@@ -26,7 +27,7 @@ Es gibt drei Muster für die Verwendung eines IoT Edge-Geräts als Gateway: tran
 * **Protokollübersetzung** (auch „transparentes Gatewaymuster“): Geräte, die MQTT, AMQP oder HTTP nicht unterstützen, können Daten über ein Gatewaygerät selbst an IoT Hub senden. Das Gateway versteht das Protokoll, das von den nachgeschalteten Geräten verwendet wird. Allerdings ist es das einzige Gerät, das eine Identität in IoT Hub hat. Alle Informationen scheinen von einem Gerät – dem Gateway – zu stammen. Nachgeschaltete Geräte müssen zusätzliche identifizierende Informationen in ihre Nachrichten einbetten, wenn Cloudanwendungen die Daten pro Gerät analysieren möchten. Außerdem sind IoT Hub-Grundtypen wie Zwillinge und Methoden nur für das Gatewaygerät und nicht für nachgeschaltete Geräte verfügbar.
 * **Identitätsübersetzung**: Geräte, die keine Verbindung mit IoT Hub herstellen können, können stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Das Gateway stellt die IoT Hub-Identitäts- und -Protokollübersetzungen im Auftrag der nachgeschalteten Geräte bereit. Das Gateway ist intelligent genug, um das von den nachgeschalteten Geräten verwendete Protokoll zu verstehen, ihnen Identität bereitzustellen und IoT Hub-Grundtypen zu übersetzen. Nachgeschaltete Geräte werden in IoT Hub als erstrangige Geräte mit Zwillingen und Methoden angezeigt. Ein Benutzer kann mit den Geräten in IoT Hub interagieren, weiß jedoch nichts vom zwischengeschalteten Gatewaygerät.
 
-![Diagramme von Gatewaymustern](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![Diagramm – Transparente, Protokoll- und Identitätsgatewaymuster](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>Anwendungsfälle
 Alle Gatewaymuster bieten folgende Vorteile:

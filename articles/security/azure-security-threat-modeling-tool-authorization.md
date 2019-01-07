@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307655"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994760"
 ---
-# <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Gegenmaßnahmen 
+# <a name="security-frame-authorization--mitigations"></a>Sicherheitskonzept: Autorisierung | Risikominderung 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Stellen Sie sicher, dass geeignete ACLs konfiguriert sind, um nicht autorisierten Zugriff auf Daten auf dem Gerät zu beschränken.](#acl-restricted-access)</li><li>[Stellen Sie sicher, dass sensible benutzerspezifische Anwendungsinhalte im Benutzerprofilverzeichnis gespeichert werden.](#sensitive-directory)</li><li>[Stellen Sie sicher, dass die bereitgestellten Anwendungen mit geringstmöglichen Berechtigungen ausgeführt werden.](#deployed-privileges)</li></ul> |
@@ -34,7 +34,7 @@ ms.locfileid: "43307655"
 | **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Beschränken Sie mithilfe von RBAC den Clientzugriff auf Clustervorgänge.](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Führen Sie die Sicherheitsmodellierung durch, und verwenden Sie bei Bedarf die Sicherheit auf Feldebene.](#modeling-field)</li></ul> |
 | **Dynamics CRM-Portal** | <ul><li>[Führen Sie die Sicherheitsmodellierung für Portalkonten durch, und bedenken Sie dabei, dass sich das Sicherheitsmodell für das Portal vom restlichen CRM unterscheidet.](#portal-security)</li></ul> |
-| **Azure Storage** | <ul><li>[Gewähren Sie differenzierte Berechtigungen für eine Reihe von Entitäten in Azure Table Storage.](#permission-entities)</li><li>[Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für das Azure-Speicherkonto.](#rbac-azure-manager)</li></ul> |
+| **Azure Storage (in englischer Sprache)** | <ul><li>[Gewähren Sie differenzierte Berechtigungen für eine Reihe von Entitäten in Azure Table Storage.](#permission-entities)</li><li>[Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für das Azure-Speicherkonto.](#rbac-azure-manager)</li></ul> |
 | **Mobiler Client** | <ul><li>[Implementieren Sie eine implizite Jailbreak- oder Rooting-Erkennung.](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[Schwache Klassenreferenz in WCF](#weak-class-wcf)</li><li>[WCF – Implementieren Sie eine Autorisierungskontrolle.](#wcf-authz)</li></ul> |
 | **Web-API** | <ul><li>[Implementieren Sie einen geeigneten Autorisierungsmechanismus in der ASP.NET-Web-API.](#authz-aspnet)</li></ul> |
@@ -349,7 +349,7 @@ Das Element `<behaviorExtensions/>` der folgenden WCF-Konfigurationsdatei weist 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Schritte** | <p>Dieser Dienst verwendet keine Autorisierungskontrolle. Wenn ein Client einen bestimmten WCF-Dienst aufruft, stellt WCF verschiedene Autorisierungsschemas bereit, um zu überprüfen, ob der Aufrufer zum Ausführen der Dienstmethode auf dem Server berechtigt ist. Ohne Autorisierungskontrolle für WCF-Dienste kann ein authentifizierter Benutzer eine Berechtigungsausweitung bewirken.</p>|
 
 ### <a name="example"></a>Beispiel

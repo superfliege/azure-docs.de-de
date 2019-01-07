@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit IdeaScale | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit IdeaScale | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und IdeaScale konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 1f6c2c9b01a2f861214240eca054242ec73f3929
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ecb73e4b520936b573254f2cf209d4a02c0fdd32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442699"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory-Integration mit IdeaScale
 
@@ -121,13 +121,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | `https://<companyname>.ideascale.com` |
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von IdeaScale](http://support.ideascale.com/), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von IdeaScale](https://support.ideascale.com/), um diese Werte zu erhalten. 
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Configure single sign-on](./media/ideascale-tutorial/tutorial_ideascale_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Configure single sign-on](./media/ideascale-tutorial/tutorial_general_400.png)
 
@@ -162,7 +162,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     d. Klicken Sie auf **Änderungen speichern**.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -194,7 +194,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-an-ideascale-test-user"></a>Erstellen eines IdeaScale-Testbenutzers
 

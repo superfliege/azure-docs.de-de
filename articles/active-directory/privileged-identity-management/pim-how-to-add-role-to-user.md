@@ -12,12 +12,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249610"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724943"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>Zuweisen von Azure AD-Verzeichnisrollen in PIM
 
@@ -125,13 +125,15 @@ Gehen Sie wie folgt vor, um die Rolle „Benutzerzugriffsadministrator“ dem MS
 
 1. Wählen Sie Ihr Abonnement aus.
 
-1. Klicken Sie auf **Zugriffssteuerung (IAM)**, um die aktuelle Liste von Rollenzuweisungen im Abonnementbereich anzuzeigen.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+
+1. Wählen Sie **Rollenzuweisungen** aus, um die aktuelle Liste der Rollenzuweisungen im Abonnementbereich anzuzeigen.
 
    ![Blatt „Zugriffssteuerung (IAM)“ für ein Abonnement](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
 1. Überprüfen Sie, ob der **MS-PIM**-Dienstprinzipal der Rolle **Benutzerzugriffsadministrator** zugewiesen ist.
 
-1. Wenn das nicht der Fall ist, wählen Sie **Hinzufügen** aus, um den Bereich **Berechtigungen hinzufügen** zu öffnen.
+1. Falls nicht, wählen Sie **Rollenzuweisung hinzufügen** aus, um den Bereich **Rollenzuweisung hinzufügen** zu öffnen.
 
 1. Wählen Sie in der Dropdownliste **Rolle** die Rolle **Benutzerzugriffsadministrator** aus.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b1a4354db23cdfdc6201decbb793a3f9a3ad8206
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c35082d7aa1e9d669bc9c5b89948f190d3edd2f3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496152"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014530"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka und Azure Cosmos DB
 
@@ -45,7 +45,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 1. Verwenden Sie die folgende Schaltfläche, um sich bei Azure anzumelden, und öffnen Sie die Vorlage im Azure-Portal.
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
     </a>
 
     Die Azure Resource Manager-Vorlage befindet sich im GitHub-Repository für dieses Projekt ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
@@ -70,9 +70,9 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
    
     ![Benutzerdefinierte HDInsight-Bereitstellung](./media/apache-kafka-spark-structured-streaming-cosmosdb/parameters.png)
 
-    * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
+    * **Abonnement**: Wählen Sie Ihr Azure-Abonnement.
    
-    * **Ressourcengruppe**: Erstellen Sie eine Gruppe, oder wählen Sie eine vorhandene Gruppe aus. Diese Gruppe enthält den HDInsight-Cluster.
+    * **Ressourcengruppe:**: Erstellen Sie eine Gruppe, oder wählen Sie eine vorhandene Gruppe aus. Diese Gruppe enthält den HDInsight-Cluster.
 
     * **Standort**: Wählen Sie einen Standort in Ihrer Nähe aus.
 
@@ -80,14 +80,14 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
     * **Basisclustername**: Dieser Wert wird als Basisname für Spark- und Kafka-Cluster verwendet. Wenn Sie beispielsweise **myhdi** eingeben, werden ein Spark-Cluster mit dem Namen __spark-myhdi__ und ein Kafka-Cluster mit dem Namen **kafka-myhdi** erstellt.
 
-    * **Clusterversion**: die HDInsight-Clusterversion.
+    * **Clusterversion**: Die HDInsight-Clusterversion.
 
         > [!IMPORTANT]
         > Dieses Beispiel wird mit HDInsight 3.6 getestet und funktioniert möglicherweise nicht mit anderen Clustern.
 
-    * **Benutzername für Clusteranmeldung**: Administratorbenutzername für die Spark- und Kafka-Cluster.
+    * **Benutzername für Clusteranmeldung**: Der Administratorbenutzername für die Spark- und Kafka-Cluster.
 
-    * **Kennwort für Clusteranmeldung**: Administratorbenutzerkennwort für die Spark- und Kafka-Cluster.
+    * **Kennwort für Clusteranmeldung**: Das Administratorbenutzerkennwort für die Spark- und Kafka-Cluster.
 
     * **SSH-Benutzername**: SSH-Benutzer, der für die Spark- und Kafka-Cluster erstellt wird.
 

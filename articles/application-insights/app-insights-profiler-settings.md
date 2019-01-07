@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 81608dd7281ceddce7e0701535ad99e1c9e44315
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d96b4a99b2ea66cdeff43f06c1789dd133c2c31a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142793"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723005"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurieren von Application Insights Profiler
 
@@ -44,7 +43,7 @@ Abhängig von Ihrer ASE-Konfiguration ist der Aufruf zum Überprüfen des Agent-
 Profiler kann manuell mit einem Klick auf eine Schaltfläche ausgelöst werden. Nehmen wir an, dass Sie einen Webleistungstest ausführen. Sie benötigen Ablaufverfolgungen, um besser zu verstehen, wie Ihre Web-App unter Last ausgeführt wird. Es ist von entscheidender Bedeutung, dass Sie kontrollieren können, wann Ablaufverfolgungen erfasst werden, da Sie wissen, wann der Auslastungstest ausgeführt wird, aber das Intervall für zufällige Stichproben diesen möglicherweise verpasst.
 Die folgenden Schritte veranschaulichen das Szenario:
 
-### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Optional) Schritt 1: Generieren Sie Datenverkehr zu Ihrer Web-App, indem Sie einen Webleistungstest starten
+### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Optional) Schritt 1: Generieren von Datenverkehr für Ihre Web-App durch das Starten eines Webleistungstests
 
 Wenn Ihre Web-App bereits über eingehenden Datenverkehr verfügt oder wenn Sie einfach nur manuell Datenverkehr generieren möchten, überspringen Sie diesen Abschnitt, und fahren Sie mit Schritt 2 fort.
 
@@ -62,7 +61,7 @@ Sie sehen, dass der neue Test zuerst in die Warteschlange eingereiht wird. Ansch
 
 ![Ausführung des Auslastungstests ist in Bearbeitung][load-test-in-progress]
 
-### <a name="step-2-start-profiler-on-demand"></a>Schritt 2: Starten von Profiler auf Anforderung
+### <a name="step-2-start-profiler-on-demand"></a>Schritt 2: Bedarfsbasiertes Starten des Profilers
 
 Sobald der Auslastungstest ausgeführt wird, können wir Profiler starten, um Ablaufverfolgungen in der Web-App zu erfassen, während diese die Last empfängt.
 Navigieren Sie zum Bereich „Profiler konfigurieren“:
@@ -87,9 +86,9 @@ Möglicherweise gibt es zwei Gründe dafür, dass der Fehler angezeigt wird:
 So überprüfen und installieren Sie den neuesten Profiler:
 
 1. Wechseln Sie zu den App-Einstellungen von App Services, und prüfen Sie, ob die folgenden Einstellungen festgelegt sind:
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Ersetzen Sie die Einstellung durch den richtigen Instrumentierungsschlüssel für Application Insights.
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Ersetzen Sie den Wert durch den ordnungsgemäßen Instrumentierungsschlüssel für Application Insights.
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 Wenn nicht alle Einstellungen festgelegt werden, wechseln Sie zum Application Insights-Aktivierungsbereich, um die neueste Websiteerweiterung zu installieren.
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0. Wenn nicht alle dieser Einstellungen festgelegt sind, wechseln Sie zum Application Insights-Aktivierungsbereich, um die neueste Websiteerweiterung zu installieren.
 
 1. Wechseln Sie zum Application Insights-Bereich im App Services-Portal.
 

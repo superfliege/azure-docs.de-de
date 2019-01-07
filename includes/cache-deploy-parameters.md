@@ -4,15 +4,15 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: wesmc
-ms.openlocfilehash: 1ddb81de479317a098f9de8aa5756cbaae59cb72
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd9700c9472e07daf294eca12b766e3dc4832955
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331037"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111942"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
-Der Tarif des neuen Azure Redis Cache.
+Der Tarif der neuen Azure Cache for Redis-Instanz.
 
     "cacheSKUName": {
       "type": "string",
@@ -22,7 +22,7 @@ Der Tarif des neuen Azure Redis Cache.
       ],
       "defaultValue": "Basic",
       "metadata": {
-        "description": "The pricing tier of the new Azure Redis Cache."
+        "description": "The pricing tier of the new Azure Cache for Redis."
       }
     },
 
@@ -45,7 +45,7 @@ Die SKU-Familie.
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-Die Größe der neuen Azure Redis Cache-Instanz. 
+Die Größe der neuen Azure Cache for Redis-Instanz. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -60,7 +60,7 @@ Die Größe der neuen Azure Redis Cache-Instanz.
       ],
       "defaultValue": 0,
       "metadata": {
-        "description": "The size of the new Azure Redis Cache instance. "
+        "description": "The size of the new Azure Cache for Redis instance. "
       }
     }
 

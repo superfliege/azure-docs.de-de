@@ -1,19 +1,20 @@
 ---
-title: Erstellen eines transparenten Gateways mit Azure IoT Edge | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein Azure IoT Edge-Gerät als transparentes Gateway verwenden, das Informationen für mehrere Geräte verarbeiten kann.
+title: Erstellen eines transparenten Gatewaygeräts mit Azure IoT Edge | Microsoft-Dokumentation
+description: Verwenden eines Azure IoT Edge-Geräts als transparentes Gateway, das Informationen von nachgeschalteten Geräten verarbeiten kann
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a867122aef5dd9d2152bca3ac10c11459ffc03f5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 29c7fc279aec79750df48c70be7792869e89ae78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568470"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094354"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -31,7 +32,7 @@ Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, d
 
 Sie können eine beliebige Zertifikatinfrastruktur erstellen, die die für Ihre Gerät-zu-Gateway-Topologie erforderliche Vertrauensstellung ermöglicht. In diesem Artikel wird von der gleichen Zertifikateinrichtung ausgegangen, die Sie auch zum Aktivieren der [X.509-Sicherheit](../iot-hub/iot-hub-x509ca-overview.md) in IoT Hub verwenden. Hierbei ist ein X.509-Zertifizierungsstellenzertifikat einem bestimmten IoT Hub zugeordnet (der IoT Hub-Besitzerzertifizierungsstelle), und es ist eine Reihe von Zertifikaten, die mit dieser Zertifizierungsstelle signiert werden, sowie eine Zertifizierungsstelle für die IoT Edge-Geräte vorhanden.
 
-![Gatewaysetup](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Gatewayzertifikateinrichtung](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 Das Gateway legt dem nachgeschalteten Gerät während der Initiierung der Verbindung das Zertifizierungsstellenzertifikat des eigenen Edge-Geräts vor. Die nachgeschaltete Gerät überprüft, ob das Zertifizierungsstellenzertifikat des Edge-Geräts mit dem Zertifizierungsstellenzertifikat des Besitzers signiert wurde. Durch diesen Vorgang kann das nachgeschaltete Gerät bestätigen, dass das Gateway aus einer vertrauenswürdigen Quelle stammt.
 
@@ -59,9 +60,9 @@ Installieren Sie OpenSSL für Windows auf dem Computer, den Sie zum Generieren d
    >[!NOTE]
    >Wenn Sie OpenSSL bereits auf Ihrem Windows-Gerät installiert haben, können Sie diesen Schritt überspringen. Stellen Sie jedoch sicher, dass „openssl.exe“ in Ihrer PATH-Umgebungsvariablen verfügbar ist.
 
-* **Einfach**: Laden Sie beliebige [Binärdateien von OpenSSL-Drittanbietern](https://wiki.openssl.org/index.php/Binaries) herunter und installieren Sie diese, z.B. aus [diesem Projekt auf SourceForge](https://sourceforge.net/projects/openssl/). Fügen Sie „openssl.exe“ den vollständigen Pfad zu Ihrer PATH-Umgebungsvariablen hinzu. 
+* **Einfacher:** Laden Sie beliebige [Binärdateien von OpenSSL-Drittanbietern](https://wiki.openssl.org/index.php/Binaries) herunter und installieren diese, z.B. von [diesem Projekt auf SourceForge](https://sourceforge.net/projects/openssl/). Fügen Sie „openssl.exe“ den vollständigen Pfad zu Ihrer PATH-Umgebungsvariablen hinzu. 
    
-* **Empfohlen**: Laden Sie den OpenSSL-Quellcode herunter, und erstellen Sie die Binärdateien entweder selbst oder mithilfe von [vcpkg](https://github.com/Microsoft/vcpkg) auf Ihrem Computer. In den nachfolgend aufgeführten Anweisungen wird in benutzerfreundlichen Schritten „vcpkg“ zum Herunterladen des Quellcodes sowie zum Kompilieren und Installieren von OpenSSL auf Ihrem Windows-Computer verwendet.
+* **Empfohlen.** Laden Sie den OpenSSL-Quellcode herunter, und erstellen Sie die Binärdateien entweder selbst oder mithilfe von [vcpkg](https://github.com/Microsoft/vcpkg) auf Ihrem Computer. In den nachfolgend aufgeführten Anweisungen wird in benutzerfreundlichen Schritten „vcpkg“ zum Herunterladen des Quellcodes sowie zum Kompilieren und Installieren von OpenSSL auf Ihrem Windows-Computer verwendet.
 
    1. Navigieren Sie zu einem Verzeichnis, in dem Sie „vcpkg“ installieren möchten. Wir bezeichnen das Verzeichnis als *\<VCPKGDIR>*. Folgen Sie den Anweisungen zum Herunterladen und Installieren von [vcpkg](https://github.com/Microsoft/vcpkg).
    
@@ -258,7 +259,11 @@ Mit dem Befehl `iotedge list` können Sie überprüfen, welche Module auf einem 
 6. Wählen Sie auf der Seite **Vorlage überprüfen** die Option **Senden** aus.
 
 ## <a name="route-messages-from-downstream-devices"></a>Weiterleiten von Nachrichten von nachgeschalteten Geräten
-Die IoT Edge-Runtime kann Nachrichten für nachgeschaltete Geräte genau wie Nachrichten von Modulen weiterleiten. Dadurch können Sie die Analyse in einem auf dem Gateway ausgeführten Modul durchführen, bevor Daten an die Cloud gesendet werden. Die nachstehende Route wird zum Senden von Nachrichten von einem nachgeschalteten Gerät mit dem Namen `sensor` an ein Modul mit dem Namen `ai_insights` verwendet.
+Die IoT Edge-Runtime kann Nachrichten für nachgeschaltete Geräte genau wie Nachrichten von Modulen weiterleiten. Dadurch können Sie die Analyse in einem auf dem Gateway ausgeführten Modul durchführen, bevor Daten an die Cloud gesendet werden. 
+
+Zurzeit werden von nachgeschalteten Geräten gesendete Nachrichten weitergeleitet, indem sie von den von Modulen gesendeten Nachrichten unterschieden werden. Im Gegensatz zu Nachrichten, die von nachgeschalteten Geräten gesendet werden, enthalten von Modulen gesendete Nachrichten eine Systemeigenschaft namens **connectionModuleId**. Sie können die WHERE-Klausel der Route verwenden, um Nachrichten mit dieser Systemeigenschaft auszuschließen. 
+
+Die nachstehende Route wird zum Senden von Nachrichten von einem nachgeschalteten Gerät an ein Modul mit dem Namen `ai_insights` verwendet.
 
 ```json
 {
@@ -269,7 +274,7 @@ Die IoT Edge-Runtime kann Nachrichten für nachgeschaltete Geräte genau wie Nac
 }
 ```
 
-Weitere Informationen zum Nachrichtenrouting finden Sie unter [module composition](./module-composition.md) (Modulzusammenstellung).
+Weitere Informationen zum Routing von Nachrichten finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen](./module-composition.md#declare-routes).
 
 [!INCLUDE [iot-edge-extended-ofline-preview](../../includes/iot-edge-extended-offline-preview.md)]
 

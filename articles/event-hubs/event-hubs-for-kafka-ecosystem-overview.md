@@ -1,24 +1,24 @@
 ---
-title: Azure Event Hubs für Apache Kafka | Microsoft-Dokumentation
-description: Übersicht und Einführung in Kafka-fähiges Azure Event Hubs
+title: Verwenden eines Event Hubs aus der Apache Kafka-App – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zur Azure Event Hubs-Unterstützung für Apache Kafka.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 11/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 7f452fe9797e688dc05b644c003117461b4f8bb9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1c484b6418fd5a453713bc464fff690ef444f109
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277493"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091185"
 ---
-# <a name="azure-event-hubs-for-apache-kafka"></a>Azure Event Hubs für Apache Kafka 
-
-Event Hubs stellt einen Kafka-Endpunkt bereit, der von Ihren vorhandenen Kafka-basierten Anwendungen als Alternative zum Betreiben eines eigenen Kafka-Clusters verwendet werden kann. Event Hubs unterstützt [Apache Kafka-Protokoll 1.0 und höher](https://kafka.apache.org/documentation/) und funktioniert mit Ihren vorhandenen Kafka-Anwendungen, einschließlich MirrorMaker. 
+# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen
+Event Hubs stellt einen Kafka-Endpunkt bereit, der von Ihren vorhandenen Kafka-basierten Anwendungen als Alternative zum Betreiben eines eigenen Kafka-Clusters verwendet werden kann. Event Hubs unterstützt [Apache Kafka-Protokoll 1.0 und höher](https://kafka.apache.org/documentation/) und funktioniert mit Ihren vorhandenen Kafka-Anwendungen, einschließlich MirrorMaker.  
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Was bietet Event Hubs für Kafka?
 

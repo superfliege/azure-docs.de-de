@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b841dee766399f1e3c7325d2ab67e342dfa8657a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8f0eaf8918913836cfe724ffea4f93b62eb3bf6a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211858"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841641"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Durchführen eines Failbacks für virtuelle Hyper-V-Computer
 
@@ -28,10 +28,10 @@ In diesem Artikel wird beschrieben, wie Sie für virtuelle Hyper-V-Computer, die
 Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Replikatcomputer nicht durch Site Recovery geschützt, und der sekundäre Standort fungiert nun als der aktive Standort. Für ein Failback virtueller Computer in einem Wiederherstellungsplan führen Sie wie nachfolgend beschrieben ein geplantes Failover vom sekundären Standort zum primären Standort aus. 
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Planned Failover**veröffentlichen.
 2. Wählen Sie auf der Seite **Geplantes Failover bestätigen** den Quell- und Zielort aus. Beachten Sie die Failover-Richtung. Wenn das Failover vom primären Standort erwartungsgemäß funktioniert hat und sich alle virtuellen Computer am sekundären Standort befinden, dient diese Angabe nur zu Informationszwecken.
-3. Wählen Sie bei einem Failback von Azure Einstellungen unter **Datensynchronisierung**aus:
+3. Wählen Sie bei einem Failback von Azure Einstellungen unter **Datensynchronisierung** aus:
     - **Daten vor dem Failover synchronisieren (nur Deltaänderungen synchronisieren)**: Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da diese für die Synchronisierung nicht heruntergefahren werden. Die folgenden Schritte werden ausgeführt:
-        - Phase 1: Sie erstellt eine Momentaufnahme des virtuellen Computers in Azure und kopiert sie auf den lokalen Hyper-V-Host. Der Computer wird weiterhin in Azure ausgeführt.
-        - Phase 2: Sie fährt den virtuellen Computer in Azure herunter, damit keine neuen Änderungen vorgenommen werden. Die letzten Deltaänderungen werden an den lokalen Server übertragen, und der lokale virtuelle Computer wird gestartet.
+        - Phase 1: Es wird eine Momentaufnahme der VM in Azure erstellt und auf den lokalen Hyper-V-Host kopiert. Der Computer wird weiterhin in Azure ausgeführt.
+        - Phase 2: Die VM wird in Azure heruntergefahren, damit keine neuen Änderungen vorgenommen werden. Die letzten Deltaänderungen werden an den lokalen Server übertragen, und der lokale virtuelle Computer wird gestartet.
 
     - **Daten nur während Failover synchronisieren (vollständiger Download)**: Diese Option ist schneller.
         - Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und keine Zeit mit der Prüfsummenberechnung verschwendet werden soll. Mit der Option wird ein Download des Datenträgers durchgeführt. Sie ist auch nützlich, wenn der lokale virtuelle Computer gelöscht wurde.
@@ -59,8 +59,8 @@ Wenn Sie den Schutz zwischen einem [Hyper-V-Standort und Azure](site-recovery-hy
 5. Wählen Sie unter *Hostname* den neuen Hyper-V-Hostserver aus, auf dem sich der virtuelle Computer befinden soll.
 6. Für die Datensynchronisierung empfiehlt sich die Option zum Synchronisieren der Daten vor dem Failover. Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da diese für die Synchronisierung nicht heruntergefahren werden. Die Option bewirkt Folgendes:
 
-    - Phase 1: Sie erstellt eine Momentaufnahme des virtuellen Computers in Azure und kopiert sie auf den lokalen Hyper-V-Host. Der Computer wird weiterhin in Azure ausgeführt.
-    - Phase 2: Sie fährt den virtuellen Computer in Azure herunter, damit keine neuen Änderungen vorgenommen werden. Die letzten Änderungen werden an den lokalen Server übertragen, und der lokale virtuelle Computer wird gestartet.
+    - Phase 1: Es wird eine Momentaufnahme der VM in Azure erstellt und auf den lokalen Hyper-V-Host kopiert. Der Computer wird weiterhin in Azure ausgeführt.
+    - Phase 2: Die VM wird in Azure heruntergefahren, damit keine neuen Änderungen vorgenommen werden. Die letzten Änderungen werden an den lokalen Server übertragen, und der lokale virtuelle Computer wird gestartet.
     
 7. Klicken Sie auf das Häkchen, um das Failover (Failback) zu starten.
 8. Klicken Sie auf **Aufträge** > <planned failover job> > **Failover abschließen**veröffentlichen. Dadurch wird der Azure-Computer heruntergefahren, die neuesten Änderungen werden an den lokalen virtuellen Computer übertragen, und der lokale virtuelle Computer wird gestartet.

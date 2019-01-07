@@ -5,16 +5,15 @@ services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 22ea3d955fe2910dc99ab4015165008da899d48e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9a32ac1ae71cb7bd89c4252157c3a5cd395b2694
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312849"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842338"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Behandlung von Problemen mit laufenden VM-Replikationen mit Azure als Quelle und Ziel
 
@@ -23,13 +22,13 @@ In diesem Artikel werden die Probleme beschrieben, die in Azure Site Recovery be
 
 ## <a name="recovery-points-not-getting-generated"></a>Wiederherstellungspunkte nicht generiert
 
-FEHLERMELDUNG: Für die VM sind keine absturzkonsistente Wiederherstellungspunkte für die VM in den letzten 60 Minuten verfügbar.</br>
+FEHLERMELDUNG: Für die VM sind keine absturzkonsistenten Wiederherstellungspunkte für die VM in den letzten 60 Minuten verfügbar.</br>
 FEHLER-ID: 153007 </br>
 
 Azure Site Recovery repliziert Daten konsistent von der Quellregion zur Notfallwiederherstellungsregion und erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt. Wenn Site Recovery 60 Minuten lang keine Wiederherstellungspunkte erstellen kann, wird der Benutzer benachrichtigt. Im Folgenden finden Sie die Ursachen, die zu diesem Fehler führen können:
 
 **Ursache 1: [Hohe Datenänderungsrate auf dem virtuellen Quellcomputer](#high-data-change-rate-on-the-source-virtal-machine)**    
-**Ursache 2: [Netzwerkkonnektivitätsproblem](#Network-connectivity-issue)**
+**Ursache 2: [Netzwerkkonnektivitätsproblem ](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 
@@ -69,7 +68,7 @@ Um die Datenänderungsrate des betroffenen virtuellen Computers zu ermitteln, na
 
 Wenn wie in den oben genannten Fällen nur gelegentlich eine große Datenmenge anfällt und die Datenänderungsrate zeitweise über 10 MBit/s (bei Premium) und 2 MBit/s (bei Standard) liegt und dann zurückgeht, kann die Replikation folgen. Wenn die Änderung in den meisten Fällen jedoch weit über dem unterstützten Grenzwert liegt, sollten Sie wenn möglich eine der folgenden Optionen berücksichtigen:
 
-**Option 1**: Schließen Sie den Datenträger aus, der eine hohe Datenänderungsrate verursacht: </br>
+**Option 1:** Schließen Sie den Datenträger aus, der eine hohe Datenänderungsrate verursacht: </br>
 Derzeit können Sie den Datenträger mit [Site Recovery PowerShell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) ausschließen.
 
 **Option 2:** Ändern Sie den Speicherdatenträgertarif für die Notfallwiederherstellung: </br>

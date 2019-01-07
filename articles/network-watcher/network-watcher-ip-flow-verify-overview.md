@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 11/30/2017
 ms.author: jdial
-ms.openlocfilehash: 8a59047a586f3d7ad7c1f29b218396bd688caafd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 88cb7e2cd04d13ade5c581a1ff2dc09669d89ab2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181598"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838003"
 ---
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Einführung in die IP-Datenflussüberprüfung in Azure Network Watcher
 
 Die IP-Datenflussüberprüfung überprüft, ob ein Paket an einen oder von einem virtuellen Computer übermittelt werden darf. Diese Informationen enthalten die Richtung, das Protokoll, die lokale IP-Adresse, die IP-Remoteadresse, den lokalen Port und den Remoteport. Wenn das Paket von einer Sicherheitsgruppe abgelehnt wird, wird der Name der Regel, die das Paket verweigert hat, zurückgegeben. Es können beliebige Quell- oder Ziel-IP-Adressen ausgewählt werden. Damit unterstützt die IP-Datenflussüberprüfung Administratoren bei der schnellen Diagnose von Verbindungsproblemen mit dem Internet und in der lokalen Umgebung.
 
-Die IP-Datenflussüberprüfung nutzt als Ziel eine Netzwerkschnittstelle eines virtuellen Computers. Der Datenfluss zu oder von dieser Netzwerkschnittstelle wird dann basierend auf den konfigurierten Einstellungen überprüft. Die IP-Datenflussüberprüfung ist nützlich, um zu bestätigen, ob eine Regel in einer Netzwerksicherheitsgruppe ein- oder ausgehenden Datenverkehr eines virtuellen Computers blockiert.
+Die IP-Datenflussüberprüfung untersucht die Regeln für alle Netzwerksicherheitsgruppen (NSGs), die auf die Netzwerkschnittstelle angewendet wurden (z.B. Subnetz oder VM-Netzwerkschnittstelle). Der Datenfluss zu oder von dieser Netzwerkschnittstelle wird dann basierend auf den konfigurierten Einstellungen überprüft. Die IP-Datenflussüberprüfung ist nützlich, um zu bestätigen, ob eine Regel in einer Netzwerksicherheitsgruppe ein- oder ausgehenden Datenverkehr eines virtuellen Computers blockiert.
 
-Es muss in jeder Region, in der Sie die IP-Datenflussüberprüfung ausführen möchten, eine Instanz von Network Watcher erstellt werden. Network Watcher ist ein regionaler Dienst, der nur für Ressourcen in derselben Region ausgeführt werden kann. Die verwendete Instanz besitzt jedoch keine Auswirkungen auf die Ergebnisse der IP-Datenflussüberprüfung, da trotzdem die Route zurückgegeben wird, die der Netzwerkschnittstelle zugeordnet ist.
+Es muss in jeder Region, in der Sie die IP-Datenflussüberprüfung ausführen möchten, eine Instanz von Network Watcher erstellt werden. Network Watcher ist ein regionaler Dienst, der nur für Ressourcen in derselben Region ausgeführt werden kann. Die verwendete Instanz besitzt jedoch keine Auswirkungen auf die Ergebnisse der IP-Datenflussüberprüfung, da trotzdem die Routen zurückgegeben werden, die der Netzwerkschnittstelle oder dem Subnetz zugeordnet sind.
 
 ![1][1]
 
@@ -36,15 +36,4 @@ Es muss in jeder Region, in der Sie die IP-Datenflussüberprüfung ausführen m�
 Im folgenden Artikel erfahren Sie, wie Sie im Portal ermitteln, ob ein Paket für einen bestimmten virtuellen Computer zugelassen oder verweigert wird. [Überprüfen mit der IP-Datenflussüberprüfung im Portal, ob Datenverkehr auf einem virtuellen Computer zugelassen wird](diagnose-vm-network-traffic-filtering-problem.md)
 
 [1]: ./media/network-watcher-ip-flow-verify-overview/figure1.png
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,9 +1,9 @@
 ---
-title: Tools für elastische Datenbanken – Glossar | Microsoft Docs
+title: Tools für elastische Datenbanken – Glossar | Microsoft-Dokumentation
 description: Erläuterung von Begriffen, die für die Tools für flexible Datenbanken verwendet werden
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 7af8e25fa46155d5054d494485de336c68caa7f2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 75da9fd6dbd6218e46925eb2fc6cbec4969d5925
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239065"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867799"
 ---
 # <a name="elastic-database-tools-glossary"></a>Tools für elastische Datenbanken – Glossar
 Die folgenden Begriffe werden für die [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md), ein Feature von Azure SQL-Datenbank, definiert. Die Tools werden zur Verwaltung von [Shardzuordnungen](sql-database-elastic-scale-shard-map-management.md) verwendet. Sie beinhalten die [Clientbibliothek](sql-database-elastic-database-client-library.md), das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md), [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [Abfragen](sql-database-elastic-query-overview.md). 
@@ -26,19 +26,19 @@ Diese Begriffe werden in [Hinzufügen eines Shards mithilfe der Tools für elast
 
 ![Begriffe zur elastischen Skalierung][1]
 
-**Datenbank:** eine Azure SQL-Datenbank. 
+**Datenbank**: Eine Azure SQL-Datenbank. 
 
-**Datenabhängiges Routing**: die Funktion, die es einer Anwendung ermöglicht, unter Verwendung eines bestimmten Shardingschlüssels eine Verbindung mit einem Shard herzustellen. Siehe [Datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md). Vgl. **[Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md)**.
+**Datenabhängiges Routing**: Die Funktion, die es einer Anwendung ermöglicht, unter Verwendung eines bestimmten Shardschlüssels eine Verbindung mit einem Shard herzustellen. Siehe [Datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md). Vgl. **[Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md)**.
 
-**Globale Shardzuordnung**: die Zuordnungen zwischen Shardingschlüsseln und den zugehörigen Shards in einer **Shardgruppe**. Die globale Shardzuordnung wird im **Shardzuordnungs-Manager** gespeichert. Vgl. **lokale Shardzuordnung**.
+**Globale Shardzuordnung**: Die Zuordnung zwischen Shardschlüsseln und den zugehörigen Shards in einer **Shardgruppe**. Die globale Shardzuordnung wird im **Shardzuordnungs-Manager** gespeichert. Vgl. **lokale Shardzuordnung**.
 
-**Listenshardzuordnung**: eine Shardzuordnung, in der die Shardingschlüssel einzeln zugeordnet sind. Vgl. **Bereichsshardzuordnung**.   
+**Listenshardzuordnung**: Eine Shardzuordnung, in der die Shardschlüssel einzeln zugeordnet sind. Vgl. **Bereichsshardzuordnung**.   
 
-**Lokale Shard-Zuordnung:** wird für einen Shard gespeichert und enthält die Zuordnungen für die Shardlets, die sich in dem Shard befinden.
+**Lokale Shardzuordnung**: Wird in einem Shard gespeichert und enthält die Zuordnungen für die Shardlets, die sich in diesem Shard befinden.
 
-**Abfrage mehrerer Shards**: die Möglichkeit, eine Abfrage für mehrere Shards durchzuführen. Die Resultsets werden über die UNION ALL-Semantik zurückgegeben (auch als „Auffächerungsabfrage“ bezeichnet). Vgl. **Datenabhängiges Routing**.
+**Abfragen von mehreren Shards**: Die Möglichkeit, eine Abfrage für mehrere Shards durchzuführen. Die Resultsets werden über die UNION ALL-Semantik zurückgegeben (auch als „Auffächerungsabfrage“ bezeichnet). Vgl. **Datenabhängiges Routing**.
 
-**Mehrinstanzenfähig** und **Einzelner Mandant**: eine mehrinstanzenfähige Datenbank und eine Einzelmandantendatenbank:
+**Mehrinstanzenfähig** und **Einzelmandant**: Die folgende Abbildung zeigt eine Einzelmandantendatenbank und eine mehrinstanzenfähige Datenbank:
 
 ![Einzelmandanten- und mehrinstanzenfähige Datenbanken](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
 
@@ -46,42 +46,42 @@ Hier ist eine Darstellung von Einzelmandanten- und mehrinstanzenfähigen **Shard
 
 ![Einzelmandanten- und mehrinstanzenfähige Datenbanken](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
-**Bereichs-Shard-Zuordnung:** eine Shard-Zuordnung, in der die Shard-Verteilungsstrategie auf mehreren Bereichen zusammenhängender Werte basiert. 
+**Bereichsshardzuordnung**: Eine Shardzuordnung, in der die Strategie der Shardverteilung auf mehreren Bereichen zusammenhängender Werte basiert. 
 
 **Verweistabellen**: Tabellen, die nicht partitioniert sind, aber über mehrere Shards hinweg repliziert werden. Postleitzahlen können z. B. in einer Verweistabelle gespeichert werden. 
 
-**Shard:** eine Azure SQL-Datenbank, in der die Daten aus einem horizontal partitionierten DataSet gespeichert werden. 
+**Shard**: Eine Azure SQL-Datenbank, in der die Daten aus einem horizontal partitionierten Dataset gespeichert werden. 
 
-**Shardelastizität**: die Fähigkeit, sowohl **horizontal** als auch **vertikal** zu skalieren.
+**Shardelastizität**: Die Fähigkeit, sowohl **horizontal** als auch **vertikal** zu skalieren.
 
-**Shard-Tabellen:** Tabellen, die horizontal partitioniert sind, deren Daten also anhand ihrer Sharding-Schlüsselwerte über Shards verteilt werden. 
+**Shardtabellen**: Tabellen, die horizontal partitioniert sind, deren Daten also anhand ihrer Shardschlüsselwerte auf Shards verteilt werden. 
 
-**Sharding-Schlüssel:** ein Spaltenwert, der bestimmt, wie Daten über Shards hinweg verteilt werden. Folgende Werttypen sind zulässig: **int**, **bigint**, **varbinary** oder **uniqueidentifier**. 
+**Shardschlüssel**: Ein Spaltenwert, der bestimmt, wie Daten auf Shards verteilt werden. Folgende Werttypen sind zulässig: **int**, **bigint**, **varbinary** oder **uniqueidentifier**. 
 
-**Shard-Gruppe:** die Auflistung von Shards, die der gleichen Shard-Zuordnung im Shard-Zuordnungs-Manager zugeordnet sind.  
+**Shardgruppe**: Die Sammlung von Shards, die zur gleichen Shardzuordnung im Shardzuordnungs-Manager gehören.  
 
-**Shardlet:** alle Daten, die mit einem Wert eines Sharding-Schlüssels in einem Shard verknüpft sind. Ein Shardlet ist die kleinste Einheit der Datenverschiebung, die bei der erneuten Verteilung von Shard-Tabellen möglich ist. 
+**Shardlet**: Alle Daten, die mit einem einzelnen Wert eines Shardschlüssels in einem Shard verknüpft sind. Ein Shardlet ist die kleinste Einheit der Datenverschiebung, die bei der erneuten Verteilung von Shard-Tabellen möglich ist. 
 
-**Shard-Zuordnung:** der Satz von Zuordnungen zwischen Sharding-Schlüsseln und den entsprechenden Shards.
+**Shardzuordnung**: Der Satz von Zuordnungen zwischen Shardschlüsseln und den zugehörigen Shards.
 
-**Shard-Zuordnungs-Manager:** ein Verwaltungsobjekt und Datenspeicher mit den Shard-Zuordnungen, Shard-Speicherorten und Zuordnungen für eine oder mehrere Shard-Gruppen.
+**Shardzuordnungs-Manager**: Ein Verwaltungsobjekt und Datenspeicher mit den Shardzuordnungen, Shardspeicherorten und Zuordnungen für eine oder mehrere Shardgruppen.
 
 ![Zuordnungen][2]
 
 ## <a name="verbs"></a>Verben
-**Horizontales Skalieren**: das Skalieren einer Sammlung von Shards durch Hinzufügen oder Entfernen von Shards zu bzw. aus einer Shardzuordnung, wie unten dargestellt.
+**Horizontale Skalierung**: Das Hoch- oder Herunterskalieren einer Sammlung von Shards durch Hinzufügen oder Entfernen von Shards zu bzw. aus einer Shardzuordnung, wie unten dargestellt.
 
 ![Horizontale und vertikale Skalierung][3]
 
-**Zusammenführen:** das Verschieben von Shardlets aus zwei Shards in einen Shard und das entsprechende Aktualisieren der Shard-Zuordnung.
+**Zusammenführen**: Das Verschieben von Shardlets aus zwei Shards in einen Shard und das entsprechende Aktualisieren der Shardzuordnung.
 
-**Shardlet-Verschiebung:** das Verschieben eines einzelnen Shardlets in einen anderen Shard. 
+**Shardletverschiebung**: Das Verschieben eines einzelnen Shardlets in einen anderen Shard. 
 
-**Shard:** das horizontale Partitionieren identisch strukturierter Daten über mehrere Datenbanken anhand eines Sharding-Schlüssels.
+**Shard**: Das horizontale Partitionieren identisch strukturierter Daten über mehrere Datenbanken hinweg anhand eines Shardschlüssels.
 
-**Aufteilen**: das Verschieben mehrerer Shardlets aus einem Shard in einen anderen (i.d.R. neuen) Shard. Als Aufteilungspunkt wird ein Sharding-Schlüssel vom Benutzer bereitgestellt.
+**Teilen**: Das Verschieben mehrerer Shardlets aus einem Shard in einen anderen (in der Regel neuen) Shard. Als Aufteilungspunkt wird ein Sharding-Schlüssel vom Benutzer bereitgestellt.
 
-**Vertikales Skalieren**: das Heraufskalieren (oder Herunterskalieren) der Computegröße eines einzelnen Shards. Dies erfolgt z. B. durch Ändern eines Shards von Standard in Premium (wodurch mehr Computerressourcen zur Verfügung stehen). 
+**Vertikale Skalierung**: Das Herauf- oder Herunterskalieren der Computegröße eines einzelnen Shards. Dies erfolgt z. B. durch Ändern eines Shards von Standard in Premium (wodurch mehr Computerressourcen zur Verfügung stehen). 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

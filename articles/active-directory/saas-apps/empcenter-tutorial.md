@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit EmpCenter | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit EmpCenter | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und EmpCenter konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: e7e594619c3b7c1ebd34c802d53b3897046a9cd7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 722a5b90b9ca17197cb0a0d117e58a01108d0a9c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426835"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Tutorial: Azure Active Directory-Integration mit EmpCenter
 
@@ -46,7 +46,7 @@ Um die Azure AD-Integration mit EmpCenter konfigurieren zu können, benötigen S
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie hier eine einmonatige Testversion anfordern: [Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Wenn Sie über keine Azure AD-Testumgebung verfügen, können Sie hier eine einmonatige Testversion anfordern: [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
@@ -119,20 +119,20 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     | `https://<subdomain>.workforcehosting.com/<instancename>` |
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den EmpCenter-Client](http://www.workforcesoftware.com/services/customer-support/), um diesen Wert zu erhalten. 
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den EmpCenter-Client](https://www.workforcesoftware.com/services/customer-support/), um diesen Wert zu erhalten. 
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Configure single sign-on](./media/empcenter-tutorial/tutorial_EmpCenter_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Configure single sign-on](./media/empcenter-tutorial/tutorial_general_400.png)
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **EmpCenter** müssen Sie die heruntergeladene **Metadaten-XML** an das [EmpCenter-Supportteam](http://www.workforcesoftware.com/services/customer-support/) senden. Das Supportteam führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **EmpCenter** müssen Sie die heruntergeladene **Metadaten-XML** an das [EmpCenter-Supportteam](https://www.workforcesoftware.com/services/customer-support/) senden. Das Supportteam führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -164,11 +164,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-an-empcenter-test-user"></a>Erstellen eines EmpCenter-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei EmpCenter anmelden können, müssen sie in EmpCenter bereitgestellt werden. Im Fall von EmpCenter müssen die Benutzerkonten vom [EmpCenter-Supportteam](http://www.workforcesoftware.com/services/customer-support/) erstellt werden.
+Damit sich Azure AD-Benutzer bei EmpCenter anmelden können, müssen sie in EmpCenter bereitgestellt werden. Im Fall von EmpCenter müssen die Benutzerkonten vom [EmpCenter-Supportteam](https://www.workforcesoftware.com/services/customer-support/) erstellt werden.
 
 > [!NOTE]
 > Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von EmpCenter-Benutzerkonten oder mithilfe der von EmpCenter bereitgestellten APIs erstellen.

@@ -2,18 +2,18 @@
 title: Überwachen von Sicherungswarnungen für virtuelle Azure-Computer
 description: Überwachen Sie Ereignisse und Warnungen aus Sicherungsaufträgen virtueller Azure-Computer. Senden Sie E-Mails basierend auf Warnungen.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: markgal
-ms.openlocfilehash: 3783014738ec4e8f185531773b1259dc63e7f49f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: raynew
+ms.openlocfilehash: 0cfbb258364ed684ff38b2be9f998d8ff0656251
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606306"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864535"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern
 Warnungen sind Antworten des Diensts mit dem Hinweis, dass ein Ereignisschwellenwert erreicht oder überschritten wurde. Informationen zur zeitlichen Entstehung von Problemen können sehr wichtig sein, um die Geschäftskosten gering zu halten. Auftretende Warnungen halten sich normalerweise nicht an einen Zeitplan, und daher ist es wichtig informiert zu werden, sobald die Warnungen auftreten. Beispiel: Wenn bei einem Sicherungs- oder Wiederherstellungsauftrag ein Fehler auftritt, wird innerhalb von fünf Minuten nach Auftreten des Fehlers eine Warnung gesendet. Im Dashboard des Tresors werden auf der Kachel „Sicherungswarnungen“ Ereignisse der Ebenen „Kritisch“ und „Warnung“ angezeigt. In den Einstellungen der Sicherungswarnungen können Sie alle Ereignisse anzeigen. Aber was ist zu tun, wenn eine Warnung bei der Arbeit an einem anderen Problem auftritt? Wenn Sie nicht wissen, wann die Warnung auftritt, kann dies nur ein unbedeutender Vorfall sein, oder es kann zu einer Kompromittierung von Daten kommen. Stellen Sie wie folgt sicher, dass die richtigen Personen über eine Warnung benachrichtigt werden: Konfigurieren Sie den Dienst so, dass beim Auftreten Warnungsbenachrichtigungen per E-Mail gesendet werden. Weitere Informationen zum Einrichten von E-Mail-Benachrichtigungen finden Sie unter [Konfigurieren von Benachrichtigungen](backup-azure-monitor-vms.md#configure-notifications).
@@ -122,8 +122,8 @@ Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
 2. Warnungen werden von alerts-noreply@mail.windowsazure.com gesendet. Sie können den E-Mail-Absender derzeit nicht ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Neuerstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md).
+Informationen zum erneuten Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md).
 
-Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)(Einführung: Sichern von VMs in einem Recovery Services-Tresor). 
+Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [Einführung: Sichern virtueller Azure-Computer in Recovery Services-Tresor](backup-azure-vms-first-look-arm.md). 
 
 Weitere Informationen zu den Verwaltungsaufgaben für VM-Sicherungen finden Sie im Artikel [Verwalten der Sicherungen von virtuellen Azure-Computern](backup-azure-manage-vms.md).

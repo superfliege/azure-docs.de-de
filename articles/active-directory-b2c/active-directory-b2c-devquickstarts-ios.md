@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339357"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842271"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Anmelden mit einer iOS-Anwendung
 
@@ -38,16 +38,16 @@ Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Durch die
 * Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Diese GUID benötigen Sie später noch.
 * Richten Sie eine **Umleitungs-URI** mit einem benutzerdefinierten Schema ein (z.B. com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Diese URI benötigen Sie später noch.
 
-## <a name="create-your-policies"></a>Erstellen der Richtlinien
-In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält eine kombinierte Identitätsoberfläche für die Anmeldung und Registrierung. Erstellen Sie diese Richtlinie wie im [Artikel zur Richtlinienreferenz](active-directory-b2c-reference-policies.md#create-a-sign-up-policy) beschrieben. Achten Sie beim Erstellen der Richtlinie auf Folgendes:
+## <a name="create-your-user-flows"></a>Erstellen Ihrer Benutzerflows
+In Azure AD B2C wird jede Benutzeroberfläche durch einen [Benutzerflow](active-directory-b2c-reference-policies.md) definiert. Diese App enthält eine kombinierte Identitätsoberfläche für die Anmeldung und Registrierung. Erstellen Sie diesen Benutzerflow wie im [Referenzartikel für Benutzerflows](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow) beschrieben. Achten Sie beim Erstellen Ihres Benutzerflows auf Folgendes:
 
 * Wählen Sie unter **Registrierungsattribute** das Attribut **Anzeigename** aus.  Sie können auch andere Attribute auswählen.
 * Wählen Sie unter **Anwendungsansprüche** die Ansprüche **Anzeigename** und **Objekt-ID des Benutzers** aus. Sie können auch andere Ansprüche auswählen.
-* Notieren Sie sich die **Namen** der einzelnen Richtlinien nach ihrer Erstellung. Dem Namen der Richtlinie wird beim Speichern der Richtlinie das Präfix `b2c_1_` vorangestellt.  Sie benötigen den Richtliniennamen später noch.
+* Notieren Sie sich nach der Erstellung den **Namen** jedes Benutzerflows. Dem Namen Ihres Benutzerflows wird beim Speichern das Präfix `b2c_1_` vorangestellt.  Der Name des Benutzerflows wird später noch benötigt.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Nachdem Sie die Richtlinien erstellt haben, können Sie Ihre App erstellen.
+Nachdem Sie Ihre Benutzerflows erstellt haben, können Sie Ihre App erstellen.
 
 ## <a name="download-the-sample-code"></a>Herunterladen des Beispielcodes
 Wir haben ein funktionsfähiges Beispiel bereitgestellt, das AppAuth mit Azure AD B2C [auf GitHub](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) verwendet. Sie können den Code herunterladen und ausführen. Folgen Sie den Anweisungen in der Datei [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md), um Ihren eigenen Azure AD B2C-Mandanten zu verwenden.
@@ -64,7 +64,7 @@ Dieses Beispiel wurde anhand der README-Anweisungen vom [iOS AppAuth Projekt auf
 
 Sie können die Kommunikation mit Azure AD B2C konfigurieren, indem Sie die Autorisierungsendpunkt- und die Token-Endpunkt-URIs angeben.  Zum Generieren dieser URIs benötigen Sie die folgenden Informationen:
 * Mandanten-ID (z.B. contoso.onmicrosoft.com)
-* Richtlinienname (z.B. B2C\_1\_SignUpIn)
+* Name des Benutzerflows (z.B. B2C\_1\_SignUpIn)
 
 Sie können die Token-Endpunkt-URI generieren, indem Sie Tenant\_ID (Mandanten-ID) und Policy\_Name (Richtlinienname) in der folgenden URL ersetzen:
 

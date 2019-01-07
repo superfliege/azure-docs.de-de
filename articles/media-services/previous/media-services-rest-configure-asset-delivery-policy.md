@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit der Media Services-REST-API | Microsoft Docs
+title: Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit der Media Services-REST-API | Microsoft-Dokumentation
 description: In diesem Thema wird die Konfiguration verschiedener Übermittlungsrichtlinien für Medienobjekte mit der Media Services-REST-API erläutert.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: d6f18363cceaf279d92ada77f52d39b7f1d12f65
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dea12d7188b716b4a832a33bb173201e68dbe20f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785969"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189743"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Konfigurieren von Übermittlungsrichtlinien für Medienobjekte
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -28,16 +28,16 @@ Wenn Sie dynamisch verschlüsselte Medienobjekte übermitteln möchten, ist eine
 
 In diesem Thema wird erläutert, warum und wie Übermittlungsrichtlinien für Medienobjekte erstellt und konfiguriert werden.
 
->[!NOTE]
->Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+> [!NOTE]
+> Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
 >
->Darüber hinaus muss Ihr Medienobjekt einen MP4-Satz bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten, damit die dynamische Paketerstellung und die dynamische Verschlüsselung verwendet werden können.
+> Darüber hinaus muss Ihr Medienobjekt einen MP4-Satz bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten, damit die dynamische Paketerstellung und die dynamische Verschlüsselung verwendet werden können.
 
 Sie können verschiedene Richtlinien auf dasselbe Medienobjekt anwenden. Sie könnten z. B. eine PlayReady-Verschlüsselung auf Smooth Streaming und AES-Umschlagverschlüsselung auf MPEG-DASH und HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
 
 Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Wenn Sie ein Medienobjekt für die Übermittlung beispielsweise mit einem Schlüssel für die AES (Advanced Encryption Standard)-Umschlagverschlüsselung verschlüsseln möchten, legen Sie den Richtlinientyp auf **DynamicEnvelopeEncryption**fest. Um die Speicherverschlüsselung zu entfernen und das Medienobjekt unverschlüsselt zu streamen, legen Sie den Richtlinientyp auf **NoDynamicEncryption**fest. In den folgenden Beispielen wird die Konfiguration dieser Richtlinientypen veranschaulicht.
 
-Je nachdem, wie Sie die Übermittlungsrichtlinie für Medienobjekte konfigurieren, können Sie die folgenden Streamingprotokolle dynamisch packen, dynamisch verschlüsseln und streamen: Smooth Streaming-, HLS- und MPEG-DASH-Streams.
+Je nachdem, wie Sie die Übermittlungsrichtlinie für Medienobjekte konfigurieren, können Sie die folgenden Streamingprotokolle dynamisch packen, dynamisch verschlüsseln und streamen: Smooth Streaming-, HLS-, MPEG DASH-Streams.
 
 Die folgende Liste enthält die Formate, die Sie zum Streamen von Smooth, HLS und DASH verwenden.
 
@@ -62,9 +62,9 @@ Anweisungen zum Veröffentlichen eines Medienobjekts und Erstellen einer Streami
 * Sie haben die Möglichkeit, mehrere Übermittlungsrichtlinien für ein einzelnes Asset zu verwenden, aber Sie dürfen nur eine Möglichkeit zum Verarbeiten eines bestimmten AssetDeliveryProtocol angeben.  Wenn Sie also versuchen, zwei Übermittlungsrichtlinien zu verknüpfen, die das AssetDeliveryProtocol.SmoothStreaming-Protokoll angeben, führt dies zu einem Fehler, da das System nicht weiß, welche Richtlinie angewendet werden soll, wenn ein Client eine Smooth Streaming-Anforderung sendet.
 * Wenn Sie über ein Asset mit einem vorhandenen Streaminglocator verfügen, können Sie keine neue Richtlinie mit dem Asset verknüpfen, eine vorhandene Verknüpfung vom Asset aufheben oder eine Übermittlungsrichtlinie aktualisieren, die dem Asset zugeordnet ist.  Sie müssen zuerst den Streaminglocator entfernen, die Richtlinien anpassen und dann den Streaminglocator neu erstellen.  Sie können die gleiche Locator-ID verwenden, wenn Sie den Streaminglocator neu erstellen. Allerdings sollten Sie sicherstellen, dass dadurch keine Probleme für Clients auftreten, da Inhalte nach Ursprung oder einem nachgelagerten CDN zwischengespeichert werden können.
 
->[!NOTE]
-
->Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
+> [!NOTE]
+> 
+> Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
 
@@ -72,7 +72,7 @@ Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [
 
 ## <a name="clear-asset-delivery-policy"></a>Löschen einer Übermittlungsrichtlinie für Medienobjekte
 ### <a id="create_asset_delivery_policy"></a>Erstellen einer Übermittlungsrichtlinie für Medienobjekte
-Durch die folgende HTTP-Anforderung wird eine Übermittlungsrichtlinie für Medienobjekte erstellt. Diese gibt an, dass keine dynamische Verschlüsselung angewendet und der Stream mit einem der folgenden Protokolle übermittelt wird: MPEG DASH, HLS und Smooth Streaming-Protokolle. 
+Die folgende HTTP-Anforderung erstellt eine Übermittlungsrichtlinie für Medienobjekte. Diese gibt an, dass keine dynamische Verschlüsselung angewendet und der Stream mit einem der folgenden Protokolle übermittelt wird:  MPEG DASH-, HLS- und Smooth Streaming-Protokolle. 
 
 Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben   
 
@@ -145,7 +145,7 @@ Antwort:
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption-Übermittlungsrichtlinie für Medienobjekte
 ### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Erstellen eines Inhaltsschlüssels des EnvelopeEncryption-Typs und Verknüpfen des Schlüssels mit dem Medienobjekt
-Wenn Sie die DynamicEnvelopeEncryption-Übermittlungsrichtlinie angeben, müssen Sie sicherstellen, dass Ihr Medienobjekt mit einem Inhaltsschlüssel des EnvelopeEncryption-Typs verknüpft wird. Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-rest-create-contentkey.md)).
+Wenn Sie die DynamicEnvelopeEncryption-Übermittlungsrichtlinie angeben, müssen Sie sicherstellen, dass Ihr Medienobjekt mit einem Inhaltsschlüssel des EnvelopeEncryption-Typs verknüpft wird. Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-rest-create-contentkey.md).
 
 ### <a id="get_delivery_url"></a>Abrufen der Übermittlungs-URL
 Rufen Sie die Übermittlungs-URL für die angegebene Übermittlungsmethode des Inhaltsschlüssels auf, den Sie im vorherigen Schritt erstellt haben. Ein Client verwendet die zurückgegebene URL, um einen AES-Schlüssel oder eine PlayReady-Lizenz zur Wiedergabe des geschützten Inhalts anzufordern.
@@ -231,7 +231,7 @@ Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer 
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption-Übermittlungsrichtlinie für Medienobjekte
 ### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Erstellen eines Inhaltsschlüssels des CommonEncryption-Typs und Verknüpfen des Schlüssels mit dem Medienobjekt
-Wenn Sie die DynamicCommonEncryption-Übermittlungsrichtlinie angeben, müssen Sie sicherstellen, dass Ihr Medienobjekt mit einem Inhaltsschlüssel des CommonEncryption-Typs verknüpft wird. Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-rest-create-contentkey.md)).
+Wenn Sie die DynamicCommonEncryption-Übermittlungsrichtlinie angeben, müssen Sie sicherstellen, dass Ihr Medienobjekt mit einem Inhaltsschlüssel des CommonEncryption-Typs verknüpft wird. Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-rest-create-contentkey.md).
 
 ### <a name="get-delivery-url"></a>Abrufen der Übermittlungs-URL
 Rufen Sie die Übermittlungs-URL für die PlayReady-Übermittlungsmethode des Inhaltsschlüssels auf, den Sie im vorherigen Schritt erstellt haben. Ein Client verwendet die zurückgegebene URL, um eine PlayReady-Lizenz zur Wiedergabe des geschützten Inhalts anzufordern. Weitere Informationen finden Sie unter [Abrufen der Übermittlungs-URL](#get_delivery_url).

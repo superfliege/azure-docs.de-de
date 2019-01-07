@@ -4,29 +4,22 @@ description: Konfigurieren Sie routenbasierte Azure-VPN-Gateways für mehrere ri
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 11/30/2018
 ms.author: yushwang
-ms.openlocfilehash: dc2dc660262cec892270f8d6e70691fdd169a5c4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 46555bf121e674b82c0c7dd39f74ee3708fc4439
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31601932"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850639"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie ein routenbasiertes Azure-VPN-Gateway konfigurieren, um eine Verbindung mit mehreren lokalen richtlinienbasierten VPN-Geräten herzustellen, indem benutzerdefinierte IPsec/IKE-Richtlinien für S2S-VPN-Verbindungen genutzt werden.
 
-## <a name="about-policy-based-and-route-based-vpn-gateways"></a>Informationen zu richtlinienbasierten und routenbasierten VPN-Gateways
+## <a name="about"></a>Grundlegendes zu richtlinien- und routenbasierten VPN-Gateways
 
 Richtlinien- *und* routenbasierte VPN-Geräte unterscheiden sich darin, wie die IPsec-Datenverkehrsselektoren für eine Verbindung festgelegt werden:
 
@@ -64,7 +57,7 @@ Im folgenden Diagramm ist dargestellt, warum das Transitrouting per Azure-VPN-Ga
 
 Wie im Diagramm zu sehen ist, verfügt das Azure-VPN-Gateway über Datenverkehrsselektoren vom virtuellen Netzwerk bis zu den einzelnen lokalen Netzwerkpräfixen, aber nicht über die verbindungsübergreifenden Präfixe. Beispielsweise können die lokalen Standorte 2, 3 und 4 jeweils mit VNET1 kommunizieren, aber untereinander keine Verbindung über das Azure-VPN-Gateway herstellen. Im Diagramm sind die verbindungsübergreifenden Datenverkehrsselektoren zu sehen, die bei dieser Konfiguration nicht im Azure-VPN-Gateway verfügbar sind.
 
-## <a name="configure-policy-based-traffic-selectors-on-a-connection"></a>Konfigurieren von richtlinienbasierten Datenverkehrsselektoren in einer Verbindung
+## <a name="configurepolicybased"></a>Konfigurieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
 
 Die Anleitungen in diesem Artikel basieren auf dem gleichen Beispiel wie unter [Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNET-zu-VNET-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md), um eine S2S-VPN-Verbindung herzustellen. Dies ist im folgenden Diagramm dargestellt:
 
@@ -76,16 +69,25 @@ Workflow zum Aktivieren dieser Konnektivität:
 3. Wenden Sie die Richtlinie beim Erstellen einer S2S- oder VNet-zu-VNet-Verbindung an, und **aktivieren Sie die richtlinienbasierten Datenverkehrsselektoren** für die Verbindung.
 4. Wenn die Verbindung bereits erstellt wurde, können Sie die Richtlinie für eine vorhandene Verbindung anwenden oder aktualisieren.
 
-## <a name="enable-policy-based-traffic-selectors-on-a-connection"></a>Aktivieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) registrieren.
+
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+
+## <a name="enablepolicybased"></a>Aktivieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
 
 Stellen Sie sicher, dass Sie [Teil 3 des Artikels „Konfigurieren einer IPsec/IKE-Richtlinie“](vpn-gateway-ipsecikepolicy-rm-powershell.md) für diesen Abschnitt durchgearbeitet haben. Im folgenden Beispiel werden die gleichen Parameter und Schritte verwendet:
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Schritt 1: Erstellen des virtuellen Netzwerks, VPN-Gateways und Gateways des lokalen Netzwerks
 
-#### <a name="1-declare-your-variables--connect-to-your-subscription"></a>1. Deklarieren Ihrer Variablen und Herstellen einer Verbindung mit Ihrem Abonnement
-Bei dieser Übung beginnen wir mit dem Deklarieren der Variablen. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen, wenn Sie die Konfiguration für die Produktion durchführen.
+#### <a name="1-connect-to-your-subscription-and-declare-your-variables"></a>1. Herstellen einer Verbindung mit Ihrem Abonnement und Deklarieren Ihrer Variablen
 
-```powershell
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+
+Deklarieren Sie Ihre Variablen. Für diese Übung werden die folgenden Variablen verwendet:
+
+```azurepowershell-interactive
 $Sub1          = "<YourSubscriptionName>"
 $RG1           = "TestPolicyRG1"
 $Location1     = "East US 2"
@@ -109,20 +111,18 @@ $LNGPrefix61   = "10.61.0.0/16"
 $LNGPrefix62   = "10.62.0.0/16"
 $LNGIP6        = "131.107.72.22"
 ```
-Sie müssen in den PowerShell-Modus wechseln, um die Resource Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
-Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+#### <a name="2-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>2. Erstellen des virtuellen Netzwerks, VPN-Gateways und Gateways des lokalen Netzwerks
 
-```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName $Sub1
+Erstellen Sie eine Ressourcengruppe.
+
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="2-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>2. Erstellen des virtuellen Netzwerks, VPN-Gateways und Gateways des lokalen Netzwerks
-Im folgenden Beispiel werden das virtuelle Netzwerk „TestVNet1“ mit drei Subnetzen und das VPN-Gateway erstellt. Beim Ersetzen der Werte ist es wichtig, dass Sie Ihrem Gatewaysubnetz immer den Namen „GatewaySubnet“ geben. Wenn Sie einen anderen Namen verwenden, tritt beim Erstellen des Gateways ein Fehler auf.
+Verwenden Sie das folgende Beispiel, um das virtuelle Netzwerk „TestVNet1“ mit drei Subnetzen und das VPN-Gateway zu erstellen. Beim Ersetzen der Werte ist es wichtig, dass Sie Ihrem Gatewaysubnetz immer den Namen „GatewaySubnet“ geben. Wenn Sie einen anderen Namen verwenden, tritt beim Erstellen des Gateways ein Fehler auf.
 
-```powershell
+```azurepowershell-interactive
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
 $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
 $gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
@@ -148,16 +148,16 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 
 Im folgenden Beispielskript wird eine IPsec/IKE-Richtlinie mit diesen Algorithmen und Parametern erstellt:
 * IKEv2: AES256, SHA384, DHGroup24
-* IPsec: AES256, SHA256, PFS24, SA-Gültigkeitsdauer von 3.600 Sekunden und 2.048 KB
+* IPsec: AES256, SHA256, PFS24, SA-Gültigkeitsdauer von 3600 Sekunden und 2.048 KB
 
-```powershell
+```azurepowershell-interactive
 $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2. Erstellen der S2S-VPN-Verbindung mit richtlinienbasierten Datenverkehrsselektoren und IPsec/IKE-Richtlinie
 Erstellen Sie eine S2S-VPN-Verbindung, und wenden Sie die im vorherigen Schritt erstellte IPsec/IKE-Richtlinie an. Achten Sie auf den zusätzlichen Parameter „-UsePolicyBasedTrafficSelectors $True“, der richtlinienbasierte Datenverkehrsselektoren für die Verbindung ermöglicht.
 
-```powershell
+```azurepowershell-interactive
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng6 = Get-AzureRmLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
 
@@ -172,7 +172,7 @@ Im letzten Abschnitt wird veranschaulicht, wie Sie die Option für richtlinienba
 ### <a name="1-get-the-connection"></a>1. Abrufen der Verbindung
 Rufen Sie die Verbindungsressource ab.
 
-```powershell
+```azurepowershell-interactive
 $RG1          = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
 $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
@@ -181,35 +181,35 @@ $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -
 ### <a name="2-check-the-policy-based-traffic-selectors-option"></a>2. Überprüfen der Option für richtlinienbasierte Datenverkehrsselektoren
 Mit der folgenden Zeile können Sie ermitteln, ob die richtlinienbasierten Datenverkehrsselektoren für die Verbindung verwendet werden:
 
-```powershell
+```azurepowershell-interactive
 $connection6.UsePolicyBasedTrafficSelectors
 ```
 
 Wenn für die Zeile **True** zurückgegeben wird, sind richtlinienbasierte Datenverkehrsselektoren für die Verbindung konfiguriert. Andernfalls wird **False** zurückgegeben.
 
-### <a name="3-update-the-policy-based-traffic-selectors-on-a-connection"></a>3. Aktualisieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
+### <a name="3-enabledisable-the-policy-based-traffic-selectors-on-a-connection"></a>3. Aktivieren/Deaktivieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
 Nachdem Sie die Verbindungsressource erhalten haben, können Sie die Option aktivieren oder deaktivieren.
 
-#### <a name="disable-usepolicybasedtrafficselectors"></a>Deaktivieren von UsePolicyBasedTrafficSelectors
-Im folgenden Beispiel wird die Option für die richtlinienbasierten Datenverkehrsselektoren deaktiviert, aber die IPsec/IKE-Richtlinie bleibt unverändert:
-
-```powershell
-$RG1          = "TestPolicyRG1"
-$Connection16 = "VNet1toSite6"
-$connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
-
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
-```
-
-#### <a name="enable-usepolicybasedtrafficselectors"></a>Aktivieren von UsePolicyBasedTrafficSelectors
+#### <a name="to-enable-usepolicybasedtrafficselectors"></a>So aktivieren Sie „UsePolicyBasedTrafficSelectors“
 Im folgenden Beispiel wird die Option für die richtlinienbasierten Datenverkehrsselektoren aktiviert, aber die IPsec/IKE-Richtlinie bleibt unverändert:
 
-```powershell
+```azurepowershell-interactive
 $RG1          = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
 $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
+```
+
+#### <a name="to-disable-usepolicybasedtrafficselectors"></a>So deaktivieren Sie „UsePolicyBasedTrafficSelectors“
+Im folgenden Beispiel wird die Option für die richtlinienbasierten Datenverkehrsselektoren deaktiviert, aber die IPsec/IKE-Richtlinie bleibt unverändert:
+
+```azurepowershell-interactive
+$RG1          = "TestPolicyRG1"
+$Connection16 = "VNet1toSite6"
+$connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+
+Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

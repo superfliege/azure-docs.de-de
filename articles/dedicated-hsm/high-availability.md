@@ -1,22 +1,23 @@
 ---
-title: Azure-Dienst für dedizierte HSMs – Hochverfügbarkeit | Microsoft-Dokumentation
-description: Der Azure-Dienst für dedizierte HSMs bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
+title: Hochverfügbarkeit – Azure-Dienst für dedizierte HSMs | Microsoft-Dokumentation
+description: Hochverfügbarkeitsbeispiel für Azure-Dienst für dedizierte HSMs und grundlegende Überlegungen
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: eb3c6ea64b55d59f261927925d4d4ae87546bf95
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 991482d3d6be4d09b37014e5bb03708987e0f74e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319239"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078173"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure-Dienst für dedizierte HSMs – Hochverfügbarkeit
 

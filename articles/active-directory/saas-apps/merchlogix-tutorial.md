@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: b10f9cc5c766796b61e3c56da943e92e84d17488
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dae953276fb89b798ff0a152994dc19f1e7c85a5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442583"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>Tutorial: Azure Active Directory-Integration mit Merchlogix
 
@@ -115,13 +115,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>`
     
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Merchlogix](http://www.merchlogix.com/contact/), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Merchlogix](https://www.merchlogix.com/contact/), um diese Werte zu erhalten.
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/merchlogix-tutorial/tutorial_merchlogix_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/merchlogix-tutorial/tutorial_general_400.png)
 
@@ -129,10 +129,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Merchlogix-Konfiguration](./media/merchlogix-tutorial/tutorial_merchlogix_configure.png) 
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Merchlogix** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Merchlogix-Supportteam](http://www.merchlogix.com/contact/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **Merchlogix** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Merchlogix-Supportteam](https://www.merchlogix.com/contact/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -165,11 +165,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="create-a-merchlogix-test-user"></a>Erstellen eines Merchlogix-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Merchlogix eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Merchlogix-Plattform ggf. vom [Merchlogix-Supportteam](http://www.merchlogix.com/contact/) unterstützen.
+In diesem Abschnitt erstellen Sie in Merchlogix eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Merchlogix-Plattform ggf. vom [Merchlogix-Supportteam](https://www.merchlogix.com/contact/) unterstützen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

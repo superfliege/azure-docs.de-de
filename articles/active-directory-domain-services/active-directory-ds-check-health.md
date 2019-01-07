@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9248e2310e509bbc4f527608246b47543a03fc4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: aee8492c73ace608abaeca9d833494e041d2b9dd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502176"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969003"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Überprüfen der Integrität einer verwalteten Azure AD Domain Services-Domäne
 
@@ -32,7 +32,7 @@ ms.locfileid: "39502176"
 2. Klicken Sie auf die Domäne, für die Sie die Integrität anzeigen möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Integrität**.
 
-Die folgende Abbildung enthält ein Beispiel für die Seite „Integrität“: ![Beispiel für die Seite „Integrität“](.\media\active-directory-domain-services-alerts\health-page.png)
+Die folgende Abbildung zeigt eine beispielhafte Seite „Integrität“: ![Beispiel für die Seite „Integrität“](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > Die Integrität Ihrer verwalteten Domäne wird einmal pro Stunde ausgewertet. Warten Sie nach dem Vornehmen von Änderungen an Ihrer verwalteten Domäne bis zum nächsten Auswertungszyklus, um den aktualisierten Integritätsstatus für Ihre verwaltete Domäne anzuzeigen. Der Zeitstempel „Zuletzt ausgewertet“ oben rechts zeigt an, wann die Integrität Ihrer verwalteten Domäne zuletzt ausgewertet wurde.
@@ -43,10 +43,10 @@ Der Status oben rechts auf der Seite „Integrität“ zeigt die Gesamtintegrit�
 
 | Status | Symbol | Erklärung |
 | --- | :----: | --- |
-| Wird ausgeführt | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | Ihre verwaltete Domäne wird ohne Probleme ausgeführt, und es liegen keine kritischen Fehler oder Warnmeldungen vor. Für die Domäne können ggf. Warnungen vom Typ „Information“ bestehen. |
-| Eingreifen erforderlich (Warnung) | <img src= ".\media\active-directory-domain-services-alerts\warning-icon.png" width = "15"> | Für Ihre verwaltete Domäne liegen keine kritischen Warnungen vor, aber es ist mindestens eine Warnmeldung vorhanden, die ein Eingreifen erforderlich macht. |
-| Eingreifen erforderlich (Kritisch) | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | Für Ihre verwaltete Domäne liegt mindestens eine kritische Warnung vor. Außerdem sind ggf. Warnmeldungen oder Warnungen vom Typ „Information“ vorhanden. |
-| Wird bereitgestellt | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | Die Domäne wird gerade bereitgestellt. |
+| Wird ausgeführt | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | Ihre verwaltete Domäne wird ohne Probleme ausgeführt, und es liegen keine kritischen Fehler oder Warnmeldungen vor. Für die Domäne können ggf. Warnungen vom Typ „Information“ bestehen. |
+| Eingreifen erforderlich (Warnung) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | Für Ihre verwaltete Domäne liegen keine kritischen Warnungen vor, aber es ist mindestens eine Warnmeldung vorhanden, die ein Eingreifen erforderlich macht. |
+| Eingreifen erforderlich (Kritisch) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | Für Ihre verwaltete Domäne liegt mindestens eine kritische Warnung vor. Außerdem sind ggf. Warnmeldungen oder Warnungen vom Typ „Information“ vorhanden. |
+| Wird bereitgestellt | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | Die Domäne wird gerade bereitgestellt. |
 
 ## <a name="monitors"></a>Monitore
 Monitore sind Aspekte Ihrer verwalteten Domäne, die von Azure AD Domain Services regelmäßig überwacht werden. Die beste Möglichkeit, Ihre Monitore in einem fehlerfreien Zustand zu halten, ist das Beheben der Probleme aller aktiven Warnungen für Ihre verwaltete Domäne.

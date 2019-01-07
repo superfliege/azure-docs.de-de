@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: fee9deb43b4619f26cb9e4c0044b25bd34af93d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a4c683f6f3a1b321b786569999edac67cfb41892
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126832"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083494"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopieren von Daten aus Couchbase mithilfe von Azure Data Factory (Vorschauversion)
 
@@ -45,7 +45,7 @@ Folgende Eigenschaften werden für den mit Couchbase verknüpften Dienst unterst
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Couchbase** festgelegt sein. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Couchbase** | JA |
 | connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Couchbase. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
@@ -74,7 +74,13 @@ Folgende Eigenschaften werden für den mit Couchbase verknüpften Dienst unterst
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Couchbase-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Couchbase die „type“-Eigenschaft des Datasets auf **CouchbaseTable** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Couchbase die „type“-Eigenschaft des Datasets auf **CouchbaseTable** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **CouchbaseTable** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+
 
 **Beispiel**
 
@@ -86,7 +92,8 @@ Legen Sie zum Kopieren von Daten aus Couchbase die „type“-Eigenschaft des Da
         "linkedServiceName": {
             "referenceName": "<Couchbase linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -101,8 +108,8 @@ Legen Sie zum Kopieren von Daten aus Couchbase den Quelltyp in der Kopieraktivit
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **CouchbaseSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **CouchbaseSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

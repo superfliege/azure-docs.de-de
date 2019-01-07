@@ -3,7 +3,7 @@ title: Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang| M
 description: Hier erfahren Sie, wie Azure SQL-Datenbank das Speichern vollständiger Datenbanksicherungen für bis zu zehn Jahre unterstützt.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: 7fe34423e706054daf84eaa8baf45fe201a661c9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 7225c90d0d85b2a7fe53f9d2d3b13f68a45d0471
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026176"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868207"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
 
 Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die langfristige Aufbewahrung (Long-Term Retention, LTR) können Sie angegebene vollständige Sicherungen von SQL-Datenbank in [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)-Blobspeicher bis zu zehn Jahre lang speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen.
 
 > [!NOTE]
-> LTR kann für die Datenbanken aktiviert werden, die auf logischen Azure SQL-Datenbankservern gehostet werden. Es ist noch nicht für Datenbanken, die in verwalteten Instanzen gehostet werden, verfügbar.
+> LTR kann für die Datenbanken aktiviert werden, die auf logischen Azure SQL-Datenbankservern gehostet werden. Es ist noch nicht für Datenbanken, die in verwalteten Instanzen gehostet werden, verfügbar. Sie können SQL-Agent-Aufträge verwenden, um [Kopiesicherungen von Datenbanken](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) als Alternative zur Langzeitaufbewahrung über 35 Tage hinaus zu planen.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Funktionsweise der langfristigen Aufbewahrung von SQL-Datenbank

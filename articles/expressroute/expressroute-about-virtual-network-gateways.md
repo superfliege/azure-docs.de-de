@@ -1,21 +1,22 @@
 ---
-title: Informationen zu Azure ExpressRoute-Gateways für virtuelle Netzwerke | Microsoft Docs
-description: Informieren Sie sich über Gateways für virtuelle Netzwerke für ExpressRoute.
+title: Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke | Microsoft-Dokumentation
+description: Informieren Sie sich über Gateways für virtuelle Netzwerke für ExpressRoute. Dieser Artikel enthält Informationen zu Gateway-SKUs und -Typen.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: mialdrid
-ms.openlocfilehash: df0d9c91d1d4f120f934c7375d0c517e3869834e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: dcae78e507597ae2b7f79cc1d6cbb326ee535696
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684765"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076592"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Informationen zu Gateways für virtuelle Netzwerke für ExpressRoute
-Ein Gateway für virtuelle Netzwerke dient zum Senden von Netzwerkdatenverkehr zwischen virtuellen Azure-Netzwerken und lokalen Standorten. Sie können ein Gateway für virtuelle Netzwerke entweder für ExpressRoute- oder VPN-Datenverkehr verwenden. In diesem Artikel geht es um ExpressRoute-Gateways für virtuelle Netzwerke.
+Ein Gateway für virtuelle Netzwerke dient zum Senden von Netzwerkdatenverkehr zwischen virtuellen Azure-Netzwerken und lokalen Standorten. Sie können ein Gateway für virtuelle Netzwerke entweder für ExpressRoute- oder VPN-Datenverkehr verwenden. Dieser Artikel konzentriert sich auf die Gateways virtueller ExpressRoute-Netzwerke und enthält Informationen zu SKUs, geschätzter Leistung nach SKU und Gatewaytypen.
 
 ## <a name="gateway-types"></a>Gatewaytypen
 

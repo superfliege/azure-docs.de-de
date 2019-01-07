@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: b6196ec434d00a6fbc6714095fa4182ede98ce91
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fbd4552a9e40f16a6fedec4e04be0d7d6d39351d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633434"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724484"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Nutzen der Überwachungsdaten von Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme*
 
 Sie finden sämtliche Überwachungsdaten an einem Ort in der Azure Monitor-Pipeline – wie auch für die allgemeine Azure-Umgebung in Azure Monitor. Aber nicht alle globalen Azure-Überwachungsdaten stehen in Azure Stack zur Verfügung. In diesem Artikel finden Sie eine Zusammenfassung der verschiedenen Möglichkeiten zum programmgesteuerten Erfassen von Überwachungsdaten aus dem Dienst.
  

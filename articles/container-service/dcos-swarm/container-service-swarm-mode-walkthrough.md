@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstartanleitung: Azure Docker CE-Cluster für Linux'
+title: '(VERALTET) Schnellstart: Azure Docker CE-Cluster für Linux'
 description: Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Docker CE-Cluster für Linux-Container erstellen.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964444"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994295"
 ---
-# <a name="deploy-docker-ce-cluster"></a>Bereitstellen eines Docker CE-Clusters
+# <a name="deprecated-deploy-docker-ce-cluster"></a>(VERALTET) Bereitstellen eines Docker CE-Clusters
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 In dieser Schnellstartanleitung wird ein Docker CE-Cluster mithilfe der Azure-Befehlszeilenschnittstelle bereitgestellt. Anschließend wird in dem Cluster eine Anwendung mit mehreren Containern bereitgestellt und ausgeführt, die ein Web-Front-End und eine Redis-Instanz umfasst. Nach Abschluss des Vorgangs kann auf die Anwendung über das Internet zugegriffen werden.
 

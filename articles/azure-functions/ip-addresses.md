@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: a92a4183962f71005577478bf27df9b5fb945acf
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634361"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849478"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -88,13 +88,13 @@ Das JSON-Fragment für Westeuropa könnte beispielsweise folgendermaßen aussehe
 
 ## <a name="inbound-ip-address-changes"></a>Änderungen der eingehenden IP-Adresse
 
- Die eingehende IP-Adresse **kann** geändert werden, wenn Sie:
+Die eingehende IP-Adresse **kann** geändert werden, wenn Sie:
 
 - eine Funktionen App löschen und in einer anderen Ressourcengruppe neu erstellen.
 - die letzte Funktionen-App in einer Kombination aus Ressourcengruppe und Region löschen und neu erstellen.
 - eine SSL-Bindung löschen, z.B. während der [Zertifikaterneuerung](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)).
 
-Die eingehende IP-Adresse kann auch geändert werden, wenn Sie noch keine Aktionen wie die aufgeführten erstellt haben.
+Wenn Ihre Funktions-App in einem [Verbrauchstarif](functions-scale.md#consumption-plan) ausgeführt wird, kann sich die eingehende IP-Adresse auch ändern, wenn Sie noch keine der oben aufgeführten Aktionen ausgeführt haben.
 
 ## <a name="outbound-ip-address-changes"></a>Änderungen der ausgehenden IP-Adresse
 
@@ -103,7 +103,7 @@ Der Satz der verfügbaren ausgehenden IP-Adressen für eine Funktionen-App kann 
 * Maßnahmen ergreifen, durch die sich die eingehende IP-Adresse ändern kann.
 * den Tarif für Ihren App Service-Plan wechseln. Alle möglichen ausgehenden IP-Adressen, die Ihre App in allen Tarifen verwenden kann, sind in der `possibleOutboundIPAddresses`-Eigenschaft aufgelistet. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ip-addresses).
 
-Die eingehende IP-Adresse kann auch geändert werden, wenn Sie noch keine Aktionen wie die aufgeführten erstellt haben.
+Wenn Ihre Funktions-App in einem [Verbrauchstarif](functions-scale.md#consumption-plan) ausgeführt wird, kann sich die ausgehende IP-Adresse auch ändern, wenn Sie noch keine der oben aufgeführten Aktionen ausgeführt haben.
 
 So erzwingen Sie eine Änderung der ausgehenden IP-Adresse:
 

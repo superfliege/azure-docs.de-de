@@ -11,18 +11,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/09/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: b90009c1cd08a1004e58c4b9f25cd6350712fbcd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358607"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184541"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Beheben von Fehlern bei der Ressourcenanbieterregistrierung
 
-In diesem Artikel werden die Fehler beschrieben, die bei Verwendung eines Ressourcenanbieters auftreten können, den Sie in Ihrem Abonnement zuvor noch nicht genutzt haben.
+In diesem Artikel werden die Fehler beschrieben, die bei der Verwendung eines Ressourcenanbieters auftreten können, den Sie in Ihrem Abonnement zuvor noch nicht genutzt haben.
 
 ## <a name="symptom"></a>Symptom
 
@@ -41,15 +41,15 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie zuvor noch keinen bestimmten Ressourcenanbieter verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren.
+Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten – jedoch nicht alle – Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie einen bestimmten Ressourcenanbieter bisher noch nicht verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren.
 
 ## <a name="cause"></a>Ursache
 
 Für diese Fehler gibt es drei Gründe:
 
-1. Der Ressourcenanbieter wurde für Ihr Abonnement nicht registriert.
-1. Die API-Version wird für den Ressourcentyp nicht unterstützt.
-1. Der Standort wird für den Ressourcentyp nicht unterstützt.
+* Der Ressourcenanbieter wurde für Ihr Abonnement nicht registriert.
+* Die API-Version wird für den Ressourcentyp nicht unterstützt.
+* Der Standort wird für den Ressourcentyp nicht unterstützt.
 
 ## <a name="solution-1---powershell"></a>Lösung 1: PowerShell
 
@@ -101,10 +101,22 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 Sie können den Registrierungsstatus sehen und einen Ressourcenanbieter-Namespace über das Portal registrieren.
 
+1. Wählen Sie im Portal die Option **Alle Dienste** aus.
+
+   ![Auswählen von „Alle Dienste“](./media/resource-manager-register-provider-errors/select-all-services.png)
+
+1. Wählen Sie **Abonnements**.
+
+   ![Auswählen von Abonnements](./media/resource-manager-register-provider-errors/select-subscriptions.png)
+
+1. Wählen Sie in der Liste der Abonnements das Abonnement aus, das Sie für die Registrierung des Anbieters verwenden möchten.
+
+   ![Auswählen eines Abonnements zum Registrieren eines Ressourcenanbieters](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
+
 1. Wählen Sie für Ihr Abonnement die Option **Ressourcenanbieter** aus.
 
-   ![Ressourcenanbieter auswählen](./media/resource-manager-register-provider-errors/select-resource-provider.png)
+   ![Auswählen von Ressourcenanbietern](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 
-1. Betrachten Sie die Liste der Ressourcenanbieter, und wählen Sie bei Bedarf den Link **Registrieren** aus, um den Ressourcenanbietertyp zu registrieren, den Sie bereitstellen möchten.
+1. Sehen Sie sich die Liste der Ressourcenanbieter an, und wählen Sie bei Bedarf den Link **Registrieren** aus, um den Ressourcenanbieter des Typs zu registrieren, den Sie bereitstellen möchten.
 
-   ![Liste der Ressourcenanbieter](./media/resource-manager-register-provider-errors/list-resource-providers.png)
+   ![Ressourcenanbieter auflisten](./media/resource-manager-register-provider-errors/list-resource-providers.png)

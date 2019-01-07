@@ -1,5 +1,5 @@
 ---
-title: Überwachen eines Azure-DC/OS-Clusters – ELK-Stapel
+title: (VERALTET) Überwachen eines Azure-DC/OS-Clusters – ELK-Stapel
 description: Überwachen eines DC/OS-Clusters in Azure Container Service-Clustern mit ELK (Elasticsearch, Logstash und Kibana).
 services: container-service
 author: sauryadas
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: dc863894d8846e066c90bdf7b309f141d32a1186
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163179"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998129"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-elk"></a>Überwachen eines Azure Container Service-Clusters mit ELK
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(VERALTET) Überwachen eines Azure Container Service-Clusters mit ELK
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 In diesem Artikel wird erläutert, wie Sie den ELK-Stapel (Elasticsearch, Logstash, Kibana) in einem DC/OS-Cluster in Azure Container Service bereitstellen. 
 

@@ -1,5 +1,5 @@
 ---
-title: Überlegungen zum Netzwerkbetrieb in einer Azure App Service-Umgebung
+title: Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung – Azure
 description: In diesem Artikel wird der ASE-Netzwerkverkehr erläutert. Weiterhin wird darauf eingegangen, wie Sie mit Ihrer ASE NSGs und UDRs festlegen können
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.custom: seodec18
+ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288253"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271010"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -136,9 +137,9 @@ Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im P
 
 Eine ASE muss einige IP-Adressen berücksichtigen. Sie lauten wie folgt:
 
-- **Öffentliche eingehende IP-Adresse**: Für den App-Datenverkehr in einer externen ASE und für den Verwaltungsdatenverkehr sowohl in einer externen ASE als auch in einer ILB-ASE.
-- **Ausgehende öffentliche IP-Adresse**: Als „Absender“ für von der ASE ausgehende und das VNet verlassende Verbindungen, die nicht durch ein VPN weitergeleitet werden.
-- **ILB-IP-Adresse**: Bei Verwendung einer ILB-ASE.
+- **Öffentliche IP-Adresse für eingehenden Datenverkehr**: Für den App-Datenverkehr in einer externen ASE und für den Verwaltungsdatenverkehr sowohl in einer externen ASE als auch in einer ILB-ASE.
+- **Öffentliche IP-Adresse für ausgehenden Datenverkehr**: Als „Absender“ für von der ASE ausgehende und das VNet verlassende Verbindungen, die nicht durch ein VPN weitergeleitet werden.
+- **ILB IP-Adresse**: Wenn Sie eine ILB-ASE verwenden.
 - **Von der App zugewiesene IP-basierte SSL-Adressen**: Kann nur in einer externen ASE verwendet werden, wenn gleichzeitig auch IP-basiertes SSL konfiguriert ist.
 
 Alle diese IP-Adressen sind von der ASE-Benutzeroberfläche aus auf einfache Weise in der ASEv2 im Azure-Portal sichtbar. Wenn Sie eine ILB-ASE verwenden, wird die IP der ILB angezeigt.
@@ -234,10 +235,10 @@ Wenn Dienstendpunkte in einem Subnetz mit einer Azure SQL-Instanz aktiviert werd
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md

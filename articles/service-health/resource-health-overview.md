@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: f5e059c4ce375edb50321afb772cce400cb19b92
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 918ff674e57a14f685c7f9ef2aaaca5ca064976e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309428"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012843"
 ---
 # <a name="azure-resource-health-overview"></a>Übersicht über Azure Resource Health
  
@@ -53,7 +53,7 @@ Resource Health stellt weitere Details zum Ereignis und zum Wiederherstellungspr
 ![Status „Nicht verfügbar“ bei einem virtuellen Computer aufgrund eines Plattformereignisses](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>Nicht-Plattformereignisse
-Nicht-Plattformereignisse werden durch Aktionen von Benutzern ausgelöst. Beispiele dafür sind das Anhalten eines virtuellen Computers oder das Erreichen der maximalen Anzahl von Verbindungen mit einem Redis Cache.
+Nicht-Plattformereignisse werden durch Aktionen von Benutzern ausgelöst. Beispiele dafür sind das Anhalten eines virtuellen Computers oder das Erreichen der maximalen Anzahl von Verbindungen mit einer Azure Cache for Redis-Instanz.
 
 ![Status „Nicht verfügbar“ bei einem virtuellen Computer aufgrund eines Nicht-Plattformereignisses](./media/resource-health-overview/Unavailable_NonPlatform.png)
 

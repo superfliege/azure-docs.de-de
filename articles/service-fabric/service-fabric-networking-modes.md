@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 1a0b7932d8dced086370027e1f8eecaf81841ab3
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300778"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866065"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -78,7 +78,7 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
             ],
     ```
 
-2. Richten Sie den Netzwerkprofilabschnitt so ein, dass für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden können. Im folgenden Beispiel werden für einen Windows/Linux Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. Über den Port auf jedem Knoten können fünf Dienstinstanzen lauschen.
+2. Richten Sie den Netzwerkprofilabschnitt so ein, dass für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden können. Im folgenden Beispiel werden für einen Windows/Linux Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. Über den Port auf jedem Knoten können fünf Dienstinstanzen lauschen. Damit die fünf IP-Adressen von Azure Load Balancer aus zugänglich sind, registrieren Sie die fünf IP-Adressen wie unten dargestellt im Back-End-Adresspool von Azure Load Balancer.
 
     ```json
     "variables": {
@@ -126,6 +126,11 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
                           "name": "[concat(parameters('nicName'),'-', 1)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -135,6 +140,11 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
                           "name": "[concat(parameters('nicName'),'-', 2)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -144,6 +154,11 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
                           "name": "[concat(parameters('nicName'),'-', 3)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -153,6 +168,11 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
                           "name": "[concat(parameters('nicName'),'-', 4)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -162,6 +182,11 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
                           "name": "[concat(parameters('nicName'),'-', 5)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }

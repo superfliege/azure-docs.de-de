@@ -3,7 +3,7 @@ title: Verwalten mehrerer SQL-Datenbanken mit Pools für elastische Datenbanken 
 description: Verwalten und skalieren Sie mehrere SQL-Datenbanken – Hunderte und Tausende – mit Pools für elastische Datenbanken. Ein Preis für Ressourcen, die Sie nach Bedarf verteilen können.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a6e2be02f9954a036fdcb67a15c73cc82670834b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ea548b55bc216b815b5f49f1e0405f1a90d05d08
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283562"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275617"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -70,9 +70,9 @@ Die zusammengefasste DTU-Auslastung aller 20 Datenbanken wird in der vorstehende
 
 Dieses Beispiel ist aus den folgenden Gründen ideal:
 
-* Es gibt große Unterschiede zwischen der Spitzenauslastung und der mittleren Auslastung pro Datenbank.
-* Die Spitzenauslastung jeder Datenbank ergibt sich zu jeweils unterschiedlichen Zeitpunkten.
-* eDTUs werden von mehreren Datenbanken gemeinsam genutzt.
+- Es gibt große Unterschiede zwischen der Spitzenauslastung und der mittleren Auslastung pro Datenbank.
+- Die Spitzenauslastung jeder Datenbank ergibt sich zu jeweils unterschiedlichen Zeitpunkten.
+- eDTUs werden von mehreren Datenbanken gemeinsam genutzt.
 
 Der Preis eines Pools ergibt sich aus den eDTUs des Pools. Während der Preis pro eDTU für einen Pool 1,5 Mal höher als der Preis pro DTU für eine Einzeldatenbank ist, können hierbei **Pool-eDTUs von vielen Datenbanken gemeinsam genutzt werden, daher liegt der Preis unter der Gesamtanzahl der benötigten eDTUs**. Die Unterschiede bei der Preisgestaltung und die gemeinsame Nutzung von eDTUs sind die Basis des Einsparungspotenzials, das von Pools geboten wird.
 
@@ -89,23 +89,24 @@ Es werden mindestens zwei S3-Datenbanken oder mindestens 15 S0-Datenbanken benö
 
 Bei der gemeinsamen Nutzung von Ressourcen können nicht alle Datenbanken in einem Pool gleichzeitig Ressourcen bis zum verfügbaren Grenzwert für einzelne Datenbanken verwenden. Je weniger Datenbanken gleichzeitig auf Spitzenlast genutzt werden, desto niedriger können die Poolressourcen festgelegt werden und desto kosteneffizienter wird der Pool. Im Allgemeinen sollten nicht mehr als zwei Drittel der Datenbanken (67 %) im Pool gleichzeitig den Ressourcengrenzwert erreichen.
 
-***Beispiel für das DTU-basierte Kaufmodell***<br>
-Um die Kosten für drei S3-Datenbanken in einem Pool mit 200 eDTUs zu senken, können höchstens zwei dieser Datenbanken gleichzeitig mit Spitzenauslastung ausgeführt werden. Andernfalls müsste der Pool auf mehr als 200 eDTUs ausgelegt werden, wenn mehr als zwei dieser vier S3-Datenbanken gleichzeitig mit Spitzenauslastung ausgeführt werden. Wenn die Größe des Pools auf mehr als 200 eDTUs geändert wird, müssten weitere S3-Datenbanken zum Pool hinzugefügt werden, damit die Kosten unterhalb der Computegröße für einzelne Datenbanken bleiben.
+***Beispiel für das DTU-basierte Kaufmodell***
+
+ Um die Kosten für drei S3-Datenbanken in einem Pool mit 200 eDTUs zu senken, können höchstens zwei dieser Datenbanken gleichzeitig mit Spitzenauslastung ausgeführt werden. Andernfalls müsste der Pool auf mehr als 200 eDTUs ausgelegt werden, wenn mehr als zwei dieser vier S3-Datenbanken gleichzeitig mit Spitzenauslastung ausgeführt werden. Wenn die Größe des Pools auf mehr als 200 eDTUs geändert wird, müssten weitere S3-Datenbanken zum Pool hinzugefügt werden, damit die Kosten unterhalb der Computegröße für einzelne Datenbanken bleiben.
 
 Beachten Sie, dass in diesem Beispiel die Auslastung anderer Datenbanken im Pool nicht berücksichtigt wird. Wenn alle Datenbanken zu einem gegebenen Zeitpunkt eine Spitzenauslastung aufweisen, können weniger als zwei Drittel (67 %) der Datenbanken gleichzeitig eine Spitzenauslastung aufweisen.
 
 ### <a name="resource-utilization-per-database"></a>Ressourcenauslastung pro Datenbank
+
 Ein großer Unterschied zwischen der mittleren und der Spitzenauslastung einer Datenbank weist darauf hin, dass es längere Zeiträume mit geringer Auslastung und kurze Zeiträume mit hoher Auslastung gibt. Dieses Auslastungsmuster eignet sich ideal für die gemeinsame, datenbankübergreifende Nutzung von Ressourcen. Eine Datenbank eignet sich für die Aufnahme in einen Pool, wenn die Spitzenauslastung etwa um das 1,5-fache höher als die mittlere Auslastung ist.
 
-***Beispiel für das DTU-basierte Kaufmodell***<br>
-Eine S3-Datenbank, die zu Spitzenzeiten 100 DTUs und im Durchschnitt 67 DTUs oder weniger benötigt, ist ein guter Kandidat für die gemeinsame Nutzung von eDTUs in einem Pool. Alternativ ist auch eine S1-Datenbank, die zu Spitzenzeiten 20 DTUs und im Durchschnitt 13 DTUs oder weniger benötigt, ein guter Kandidat für einen Pool.
+**Beispiel für das DTU-basierte Kaufmodell**:  Eine S3-Datenbank, die zu Spitzenzeiten 100 DTUs und im Durchschnitt 67 DTUs oder weniger benötigt, ist ein guter Kandidat für die gemeinsame Nutzung von eDTUs in einem Pool. Alternativ ist auch eine S1-Datenbank, die zu Spitzenzeiten 20 DTUs und im Durchschnitt 13 DTUs oder weniger benötigt, ein guter Kandidat für einen Pool.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Wie wähle ich die richtige Poolgröße?
 
 Die optimale Größe eines Pools hängt von den zusammengefassten Ressourcen ab, die für alle Datenbanken im Pool benötigt werden. Dies setzt voraus, dass Sie die folgenden Mengen ermitteln:
 
-* Maximale Ressourcen, die von allen Datenbanken im Pool (je nach ausgewähltem Ressourcenmodell die maximale Anzahl von DTUs oder virtuellen Kernen) verwendet werden.
-* Maximale Speicherbytes, die von allen Datenbanken im Pool verwendet werden.
+- Maximale Ressourcen, die von allen Datenbanken im Pool (je nach ausgewähltem Ressourcenmodell die maximale Anzahl von DTUs oder virtuellen Kernen) verwendet werden.
+- Maximale Speicherbytes, die von allen Datenbanken im Pool verwendet werden.
 
 Verfügbare Dienstebenen für jedes Ressourcenmodell finden Sie im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder im [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md).
 
@@ -113,11 +114,11 @@ Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei 
 
 1. Schätzen Sie die für den Pool benötigten eDTUs oder V-Kerne nach der folgenden Methode:
 
-   Für DTU-basiertes Kaufmodell: MAX(<*Gesamtanzahl Datenbanken* x *durchschnittliche DTU-Nutzung pro Datenbank* >,<br>  
+   DTU-basiertes Kaufmodell: MAX(<*Gesamtanzahl Datenbanken* x *durchschnittliche DTU-Nutzung pro Datenbank*>,<br>  
    < *Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *DTU-Spitzenauslastung pro Datenbank* )
 
-   Für V-Kern-basiertes Kaufmodell: MAX(< *Gesamtanzahl Datenbanken* x *durchschnittliche V-Kern-Nutzung pro Datenbank* >,<br>  
-   < *Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *V-Kern-Spitzenauslastung pro Datenbank* )
+   Auf virtuellen Kernen basierendes Kaufmodell: MAX(<*Gesamtanzahl Datenbanken* × *durchschnittliche Nutzung virtueller Kerne pro Datenbank*>,<br>  
+   <*Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *V-Kern-Spitzenauslastung pro Datenbank*)
 
 2. Schätzen Sie den für den Pool benötigten Speicherplatz, indem Sie die Menge der für alle Datenbanken im Pool benötigten Bytes addieren. Ermitteln Sie dann die eDTU-Poolgröße, die diese Menge an Speicher bietet.
 3. Verwenden Sie für das DTU-basierte Kaufmodell die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2. Verwenden Sie für das V-Kern-basierte Kaufmodell die V-Kern-Schätzung aus Schritt 1.
@@ -133,17 +134,25 @@ Mit einem Pool werden die Verwaltungsaufgaben vereinfacht, indem Skripts in **[e
 Weitere Informationen zu anderen Datenbanktools für die Verwendung mit mehreren Datenbanken finden Sie unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md).
 
 ### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>Optionen für Geschäftskontinuität für Datenbanken in einem Pool für elastische Datenbanken
+
 In einem Pool zusammengefasste Datenbanken unterstützen in der Regel die gleichen [Geschäftskontinuitätsfeatures](sql-database-business-continuity.md), die auch bei Einzeldatenbanken zur Verfügung stehen.
 
-- **Point-in-Time-Wiederherstellung:** Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen verwendet, um den Status einer Datenbank in einem Pool zu einem bestimmten Zeitpunkt wiederherzustellen. Siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
+- **Point-in-Time-Wiederherstellung**
 
-- **Geografische Wiederherstellung**: Die geografische Wiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Vorfalls in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Siehe [Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank](sql-database-disaster-recovery.md)
+  Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen verwendet, um den Status einer Datenbank in einem Pool zu einem bestimmten Zeitpunkt wiederherzustellen. Siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Aktive Georeplikation**: Für Anwendungen, für die umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die Geowiederherstellung bieten kann, konfigurieren Sie [aktive Georeplikation](sql-database-geo-replication-overview.md).
+- **Geowiederherstellung**
+
+  Die geografische Wiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Vorfalls in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Siehe [Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank](sql-database-disaster-recovery.md)
+
+- **Aktive Georeplikation**
+
+  Für Anwendungen, für die umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die Geowiederherstellung bieten kann, konfigurieren Sie [aktive Georeplikation](sql-database-active-geo-replication.md) oder eine [Autofailover-Gruppe](sql-database-auto-failover-group.md).
 
 ## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Erstellen eines neuen Pools für elastische SQL-Datenbank-Instanzen im Azure-Portal
 
 Zur Erstellung eines Pools für elastische Datenbanken im Azure-Portal gibt es zwei Möglichkeiten.
+
 1. Sie können einen Pool für elastische Datenbanken erstellen, indem Sie im **Marketplace** nach **Elastischer SQL-Pool** suchen oder auf dem Navigationsblatt „Elastische SQL-Pools“ auf **+Hinzufügen** klicken. Im Rahmen dieses Poolbereitstellungsworkflows können Sie einen neuen oder einen bereits vorhandenen Server angeben.
 2. Sie können auch einen Pool für elastische Datenbanken erstellen, indem Sie zu einem vorhandenen SQL-Server navigieren und auf **Pool erstellen**, um direkt auf diesem Server einen Pool zu erstellen. Hier besteht einzige Unterschied darin, dass Sie während des Pool-Bereitstellungsworkflows den Schritt überspringen, in dem der Server angegeben wird.
 
@@ -162,8 +171,8 @@ Im Azure-Portal können Sie die Verwendung eines Pools für elastische Datenbank
 
 Um mit der Überwachung Ihres Pools für elastische Datenbanken zu beginnen, suchen und öffnen Sie im Portal einen Pool für elastische Datenbanken. Zuerst sehen Sie einen Bildschirm mit einer Übersicht über den Status Ihres Pools für elastische Datenbanken. Dies umfasst:
 
-* Überwachungsdiagramme, welche die Ressourcenverwendung des Pools für elastische Datenbanken zeigen
-* Aktuelle Warnungen und Empfehlungen (falls vorhanden) für den Pool für elastische Datenbanken
+- Überwachungsdiagramme, welche die Ressourcenverwendung des Pools für elastische Datenbanken zeigen
+- Aktuelle Warnungen und Empfehlungen (falls vorhanden) für den Pool für elastische Datenbanken
 
 Die folgende Abbildung zeigt ein Beispiel für einen Pool für elastische Datenbanken:
 
@@ -192,6 +201,6 @@ Weitere Informationen finden Sie unter [Erstellen von SQL-Datenbankwarnungen im 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Skalieren von Pools für elastische Datenbanken finden Sie unter [Skalieren von Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [Skalieren eines Pools für elastische Datenbanken – Beispielcode](scripts/sql-database-monitor-and-scale-pool-powershell.md).
-* Ein Video finden Sie unter [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank).
-* Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
-* Ein SaaS-Tutorial, in dem Pools für elastische Datenbanken verwendet werden, finden Sie in der [Einführung in die SaaS-Anwendung Wingtip](sql-database-wtp-overview.md).
+- Ein Video finden Sie unter [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank).
+- Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+- Ein SaaS-Tutorial, in dem Pools für elastische Datenbanken verwendet werden, finden Sie in der [Einführung in die SaaS-Anwendung Wingtip](sql-database-wtp-overview.md).

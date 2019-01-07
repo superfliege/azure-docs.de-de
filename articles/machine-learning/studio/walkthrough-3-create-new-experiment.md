@@ -1,12 +1,11 @@
 ---
 title: 'Schritt 3: Erstellen eines neuen Machine Learning Studio-Experiments – Azure | Microsoft-Dokumentation'
-description: 'Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 3: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio.'
+description: 'Schritt 3 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317527"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260785"
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Exemplarische Vorgehensweise, Schritt 3: Erstellen eines neuen Azure Machine Learning Studio-Experiments
 Dies ist der dritte Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung in Azure Machine Learning](walkthrough-develop-predictive-solution.md)
@@ -56,7 +55,7 @@ Der nächste Schritt in dieser exemplarischen Vorgehensweise ist die Erstellung 
     ![Hinzufügen des Datasets zum Experiment][7]
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
-Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie hierzu auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie die Option **Visualize**.  
+Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie **Visualisieren**.  
 
 Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.*) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn das Modell später in einem Webdienst veröffentlicht wird, kann der Benutzer des Diensts die Spalten anhand der Überschriften auch leichter identifizieren.  
 
@@ -164,7 +163,7 @@ Unser Experiment sieht nun in etwa wie folgt aus:
 
 Weitere Informationen zum Verwenden von R-Skripts in Ihren Experimenten finden Sie unter [Erweitern Sie Ihr Experiment mit R](extend-your-experiment-with-r.md).
 
-**Nächster Schritt: [Trainieren und Auswerten der Modelle](walkthrough-4-train-and-evaluate-models.md)**
+**Nächster Schritt: [Trainieren und Bewerten der Modelle](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

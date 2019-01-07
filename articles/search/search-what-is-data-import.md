@@ -1,6 +1,6 @@
 ---
-title: Importieren von Daten in Azure Search | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Daten in einen Index in Azure Search hochladen können.
+title: Importieren von Daten für die Datenerfassung in einem Suchindex – Azure Search
+description: Füllen Sie Daten aus externen Datenquellen auf, und laden Sie sie in einen Index in Azure Search hoch.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249777"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314855"
 ---
-# <a name="indexing-in-azure-search"></a>Indizierung in Azure Search
+# <a name="indexing-external-data-for-queries-in-azure-search"></a>Indizieren externer Daten für Abfragen in Azure Search
 > [!div class="op_single_selector"]
 > * [Übersicht](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -23,7 +24,7 @@ ms.locfileid: "51249777"
 > 
 > 
 
-In Azure Search werden Abfragen für Ihren Inhalt ausgeführt, der in einen [Suchindex](search-what-is-an-index.md) geladen wurde. In diesem Artikel werden die zwei grundlegenden Ansätze zum Laden von Inhalt in einen Index untersucht: Sie können Ihre Daten per *Pushvorgang* programmgesteuert in den Index übertragen, oder Sie können für einen [Azure Search-Indexer](search-indexer-overview.md) auf eine unterstützte Datenquelle verweisen, um die Daten per *Pullvorgang* zu beziehen.
+In Azure Search werden Abfragen für Ihre Inhalte ausgeführt, die in einen [Suchindex](search-what-is-an-index.md) geladen und dort gespeichert wurden. In diesem Artikel werden die zwei grundlegenden Ansätze zum Auffüllen eines Indexes untersucht: Sie können Ihre Daten per *Pushvorgang* programmgesteuert in den Index übertragen, oder Sie können für einen [Azure Search-Indexer](search-indexer-overview.md) auf eine unterstützte Datenquelle verweisen, um die Daten per *Pullvorgang* zu beziehen.
 
 ## <a name="pushing-data-to-an-index"></a>Übertragen von Daten per Pushvorgang in einen Index
 Das Pushmodell, das zum programmgesteuerten Senden Ihrer Daten an Azure Search verwendet wird, ist der flexibelste Ansatz. Erstens gelten keine Einschränkungen für den Datenquellentyp. Alle Datasets, die aus JSON-Dokumenten bestehen, können per Pushvorgang in einen Azure Search-Index übertragen werden, solange jedes Dokument im Dataset über Felder verfügt, die den in Ihrem Indexschema definierten Feldern zugeordnet sind. Zweitens gelten keine Einschränkungen für die Ausführungshäufigkeit. Sie können Änderungen beliebig oft per Pushvorgang in einen Index übertragen. Bei Anwendungen mit sehr niedrigen Latenzanforderungen (wenn z.B. Suchvorgänge mit dynamischen Inventardatenbanken synchronisiert werden müssen) ist das Push-Modell Ihre einzige Option.

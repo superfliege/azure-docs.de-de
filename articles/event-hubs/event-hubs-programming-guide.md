@@ -1,22 +1,22 @@
 ---
-title: Programmierhandbuch für Azure Event Hubs | Microsoft Docs
-description: Schreiben von Code für Azure Event Hubs unter Verwendung des Azure .NET SDK.
+title: Programmierhandbuch – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zum Schreiben von Code für Azure Event Hubs mit dem Azure .NET SDK.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 ms.service: event-hubs
+ms.custom: seodec18
 ms.topic: article
-ms.date: 08/12/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bfb2db8a4a0091e26cc2b893e615ba831da30ac7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746323"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138074"
 ---
-# <a name="event-hubs-programming-guide"></a>Programmierleitfaden für Event Hubs
-
+# <a name="programming-guide-for-azure-event-hubs"></a>Programmierhandbuch für Azure Event Hubs
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
@@ -55,7 +55,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="send-events-to-an-event-hub"></a>Senden von Ereignissen an einen Event Hub
 
-Sie senden Ereignisse an einen Event Hub, indem Sie eine [EventHubClient][]-Instanz erstellen und diese asynchron mit der [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)-Methode senden. Diese Methode verwendet einen einzelnen [EventData][]-Instanzparameter und sendet ihn synchron an einen Event Hub.
+Sie senden Ereignisse an einen Event Hub, indem Sie eine [EventHubClient][]-Instanz erstellen und diese asynchron mit der [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)-Methode senden. Diese Methode verwendet einen einzelnen [EventData][]-Instanzparameter und sendet ihn asynchron an einen Event Hub.
 
 ## <a name="event-serialization"></a>Ereignisserialisierung
 
@@ -76,7 +76,7 @@ Beim Senden von Daten können Sie einen gehashten Wert angeben, um eine Partitio
 
 ### <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
 
-Die Verwendung eines Partitionsschlüssels ist optional, und Sie sollten dies sorgfältig abwägen. In vielen Fällen ist die Verwendung eines Partitionsschlüssels empfehlenswert, wenn die Ereignisreihenfolge wichtig ist. Wenn Sie einen Partitionsschlüssel verwenden, ist für diese Partitionen die Verfügbarkeit auf einem einzelnen Knoten erforderlich, und mit der Zeit kann es zu Ausfällen kommen, beispielsweise beim Neustart und Patchen von Computeknoten. Wenn Sie daher eine Partitions-ID festlegen und diese Partition aus irgendeinem Grund nicht verfügbar ist, führt der Zugriff auf die Daten in dieser Partition zu einem Fehler. Wenn die Hochverfügbarkeit an erster Stelle steht, geben Sie keinen Partitionsschlüssel an. In diesem Fall werden Ereignisse über das zuvor beschriebene Roundrobin-Modell an Partitionen gesendet. In diesem Szenario treffen Sie explizit die Wahl zwischen Verfügbarkeit (keine Partitions-ID) und Konsistenz (Anheften von Ereignissen an eine Partitions-ID).
+Die Verwendung eines Partitionsschlüssels ist optional, und Sie sollten dies sorgfältig abwägen. Wenn Sie beim Veröffentlichen eines Ereignisses keinen Partitionsschlüssel angeben, wird eine Roundrobinzuordnung verwendet. In vielen Fällen ist die Verwendung eines Partitionsschlüssels empfehlenswert, wenn die Ereignisreihenfolge wichtig ist. Wenn Sie einen Partitionsschlüssel verwenden, ist für diese Partitionen die Verfügbarkeit auf einem einzelnen Knoten erforderlich, und mit der Zeit kann es zu Ausfällen kommen, beispielsweise beim Neustart und Patchen von Computeknoten. Wenn Sie daher eine Partitions-ID festlegen und diese Partition aus irgendeinem Grund nicht verfügbar ist, führt der Zugriff auf die Daten in dieser Partition zu einem Fehler. Wenn die Hochverfügbarkeit an erster Stelle steht, geben Sie keinen Partitionsschlüssel an. In diesem Fall werden Ereignisse über das zuvor beschriebene Roundrobin-Modell an Partitionen gesendet. In diesem Szenario treffen Sie explizit die Wahl zwischen Verfügbarkeit (keine Partitions-ID) und Konsistenz (Anheften von Ereignissen an eine Partitions-ID).
 
 Ein weiterer Aspekt ist der Umgang mit Verzögerungen bei der Ereignisverarbeitung. In einigen Fällen kann es besser sein, Daten zu löschen und den Vorgang zu wiederholen, anstatt zu versuchen, mit der Verarbeitung Schritt zu halten, wodurch möglicherweise weitere Verzögerungen bei der Downstreamverarbeitung verursacht werden. Bei einem Börsenticker ist es z.B. besser, auf vollständige aktuelle Daten zu warten. In einem Livechat oder VOIP-Szenario, möchten Sie die Daten hingegen schnell erhalten, selbst wenn sie nicht vollständig sind.
 

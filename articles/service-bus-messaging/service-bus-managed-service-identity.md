@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 25d2db5dcf3979341fc104643f7178047c29483b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857073"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842831"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Verwaltete Identitäten für Azure-Ressourcen mit Service Bus 
 
@@ -53,10 +53,8 @@ Wenn Sie das Feature aktiviert haben, wird in Ihrem Azure Active Directory eine 
 
 Als Nächstes [erstellen Sie einen Service Bus Messaging-Namespace](service-bus-create-namespace-portal.md) in einer der Azure-Regionen, die Vorschauunterstützung für die rollenbasierte Zugriffssteuerung bieten: **USA, Osten**, **USA, Osten 2** oder **Europa, Westen**. 
 
-Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Hinzufügen**, um die verwaltete Identität der Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
+Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Rollenzuweisung hinzufügen**, um die verwaltete Identität der Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
 
-![](./media/service-bus-managed-service-identity/msi2.png)
- 
 Die verwaltete Identität der Webanwendung verfügt jetzt über Zugriff auf den Service Bus-Namespace und die zuvor erstellte Warteschlange. 
 
 ### <a name="run-the-app"></a>Ausführen der App

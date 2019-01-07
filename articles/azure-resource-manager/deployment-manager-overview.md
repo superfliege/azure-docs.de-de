@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Bereitstellungs-Manager: Übersicht | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie mit dem Bereitstellungs-Manager von Azure einen Dienst über mehrere Regionen hinweg bereitstellen.
+title: Sichere Methoden zur regionsübergreifenden Bereitstellung – Azure-Bereitstellungs-Manager
+description: Beschreibt die zahlreiche Regionen umfassende Bereitstellung eines Diensts mit dem Azure-Bereitstellungs-Manager. Zeigt sichere Bereitstellungsmethoden, mit denen Sie die Stabilität Ihrer Bereitstellung vor dem Rollout in alle Regionen überprüfen können.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.custom: seodec18
+ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427300"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138346"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Aktivieren von sicheren Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (private Vorschau)
 

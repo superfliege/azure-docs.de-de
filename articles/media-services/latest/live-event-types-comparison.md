@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 7ff48962d01a83e8c9fce380d92fbc196ff96533
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 3ed38ce75e5ee7c9f05533d64b28171482bfec51
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585393"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725931"
 ---
 # <a name="liveevent-types-comparison"></a>Vergleich der LiveEvent-Typen
 
@@ -28,7 +28,7 @@ In Azure Media Services gibt es zwei [LiveEvent](https://docs.microsoft.com/rest
 
 In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglichen.
 
-| Feature | LiveEvent „Pass-Through“ | LiveEvent „Standard“ (Basic) |
+| Feature | LiveEvent „Pass-Through“ | LiveEvent „Standard“ |
 | --- | --- | --- |
 | Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |JA |
 | Maximale Videoauflösung für Beitragsfeeds |4K (4096 × 2160 bei 60 Frames/Sekunde) |1080p (1920 x 1088 bei 30 Frames/Sekunde)|
@@ -42,6 +42,7 @@ In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglich
 | Unterstützte Videobittiefe, -eingang und -ausgang|Bis zu 10 Bit, einschließlich HDR 10/HLG|8 Bit|
 | Unterstützte Codecs für Audioeingang|AAC-LC, HE-AAC v1, HE-AAC v2|AAC-LC, HE-AAC v1, HE-AAC v2|
 | Unterstützte Codecs für Audioausgang|Identisch mit der Eingabe|AAC-LC|
+| Maximale Videoauflösung des Ausgabevideos|Identisch mit der Eingabe|720p (30 Frames pro Sekunde)|
 | Eingabeprotokolle|RTMP, fragmentiertes MP4 (Smooth Streaming)|RTMP, fragmentiertes MP4 (Smooth Streaming)|
 | Preis|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|
 | Maximale Laufzeit|24x365 lineares Livestreaming|Rund um die Uhr|

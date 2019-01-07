@@ -2,16 +2,16 @@
 title: Verwalten des Azure Site Recovery-Zugriffs mit rollenbasierter Zugriffssteuerung | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zum Verwalten des Azure Site Recovery-Zugriffs eingesetzt wird.
 ms.service: site-recovery
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 19d41d8c9b1a54cefc09190531b064d640048385
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 815eb1f94d80c36824dc34f3f9410458b9837003
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212045"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849529"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Verwalten des Site Recovery-Zugriffs mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC)
 
@@ -59,7 +59,7 @@ Ein Benutzer benötigt die folgenden Berechtigungen, um die Replikation eines ne
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | Klassisch | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Speicher | Ressourcen-Manager | Microsoft.Storage/storageAccounts/read |
+| Storage | Ressourcen-Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | Klassisch | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
@@ -69,9 +69,9 @@ Ein Benutzer benötigt die folgenden Berechtigungen, um die Replikation eines ne
 Sie können auch jeweils die [integrierte Rolle](../role-based-access-control/built-in-roles.md) „Mitwirkender für virtuelle Computer“ oder „Mitwirkender für klassische virtuelle Computer“ für das Resource Manager- bzw. das klassische Bereitstellungsmodell verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal.
+* [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal
 * Informationen zur Zugriffsverwaltung mit:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md)
   * [REST-API](../role-based-access-control/role-assignments-rest.md)
-* [Problembehandlung bei rollenbasierter Zugriffssteuerung:](../role-based-access-control/troubleshooting.md)Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
+* [Beheben von Problemen bei der rollenbasierten Zugriffssteuerung](../role-based-access-control/troubleshooting.md): Empfehlungen zur Behebung häufig auftretender Probleme

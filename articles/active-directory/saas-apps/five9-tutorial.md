@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ee04008b62867c8eba68b1525cf50edec881cbc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c8d3364f9de298d19df35846af5f421978fea960
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432632"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842168"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Tutorial: Azure Active Directory-Integration mit Five9 Plus Adapter (CTI, Contact Center -)
+# <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Tutorial: Azure Active Directory-Integration mit Five9 Plus Adapter (CTI, Contact Center-Agents)
 
 In diesem Tutorial erfahren Sie, wie Sie Five9 Plus Adapter (CTI, Contact Center-Agents) in Azure Active Directory (Azure AD) integrieren.
 
@@ -46,7 +46,7 @@ Für die Konfiguration der Azure AD-Konfiguration mit Five9 Plus Adapter (CTI, C
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie hier eine einmonatige Testversion anfordern: [Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Wenn Sie über keine Azure AD-Testumgebung verfügen, können Sie hier eine einmonatige Testversion anfordern: [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
@@ -142,15 +142,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Zum Konfigurieren des einmaligen Anmeldens bei **Five9 Plus Adapter (CTI, Contact Center-Agents)** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für das einmalige Anmelden an das [Supportteam von Five9 Plus Adapter (CTI, Contact Center-Agents)](https://www.five9.com/about/contact) senden. Um zudem SSO weiter zu konfigurieren, befolgen Sie die nachstehenden Schritte gemäß des Adapters:
 
-    a. Administratorhandbuch „Five9 Plus Adapter für Agent Desktop Toolkit“: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. Administratorhandbuch „Five9 Plus Adapter für Agent Desktop Toolkit“: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b. Administratorhandbuch „Five9 Plus Adapter für Microsoft Dynamics CRM“: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. Administratorhandbuch „Five9 Plus Adapter für Microsoft Dynamics CRM“: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
-    c. Administratorhandbuch „Five9 Plus Adapter für Zendesk“: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
+    c. Administratorhandbuch „Five9 Plus Adapter für Zendesk“: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -186,7 +186,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-five9-plus-adapter-cti-contact-center-agents-test-user"></a>Erstellen eines Five9 Plus Adapter-Testbenutzers (CTI, Contact Center-Agents)
 
-In diesem Abschnitt erstellen Sie einen Benutzer namens Britta Simon in Five9 Plus Adapter (CTI, Contact Center-Agents). Arbeiten Sie mit dem [Supportteam von Five9 Plus Adapter (CTI, Contact Center-Agents)](https://www.five9.com/about/contact), um die Benutzer zur Five9 Plus Adapter-Plattform (CTI, Contact Center-Agents) hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie einen Benutzer namens Britta Simon in Five9 Plus Adapter (CTI, Contact Center-Agents). Arbeiten Sie mit dem  [Supportteam von Five9 Plus Adapter (CTI, Contact Center-Agents)](https://www.five9.com/about/contact)  zusammen, um die Benutzer zur Five9 Plus Adapter-Plattform (CTI, Contact Center-Agents) hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -220,10 +220,10 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über das Zugriffspanel.
 
-Wenn Sie auf die Kachel „Five9 Plus Adapter (CTI, Contact Center-Agents)“ im Zugriffsbereich klicken, sollten Sie automatisch bei Ihrer Anwendung Five9 Plus Adapter (CTI, Contact Center-Agents) angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+Wenn Sie auf die Kachel „Five9 Plus Adapter (CTI, Contact Center-Agents)“ im Zugriffspanel klicken, sollten Sie automatisch bei Ihrer Anwendung Five9 Plus Adapter (CTI, Contact Center-Agents) angemeldet werden.
+Weitere Informationen zum Zugriffspanel finden Sie unter [Einführung in das Zugriffspanel](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

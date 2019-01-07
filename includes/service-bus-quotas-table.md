@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 08/29/2018
+ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 1116d6037a149b379bd96d6b208ca306a38c7a03
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: e2335beba521a612d03b1d12cd4bf6139e1330fb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52288687"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410867"
 ---
 In der folgenden Tabelle sind die Kontingentinformationen für das Service Bus Messaging aufgeführt. Informationen zu Preisen und anderen Kontingenten für Service Bus finden Sie in der Übersicht der [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/) .
 
@@ -28,13 +28,14 @@ In der folgenden Tabelle sind die Kontingentinformationen für das Service Bus M
 | Anzahl von [partitionierten Themen/Warteschlangen](/azure/service-bus-messaging/service-bus-partitioning) pro Namespace |Namespace |Nachfolgende Anforderungen zum Erstellen eines neuen partitionierten Themas bzw. einer neuen Warteschlange im Namespace werden abgelehnt. Als Ergebnis wird bei der Konfiguration über das [Azure-Portal][Azure portal] eine Fehlermeldung generiert. Bei einem Aufruf über die Verwaltungs-API wird vom aufrufenden Code eine **QuotaExceededException**-Ausnahme empfangen. |Basic- und Standard-Tarif – 100<br/><br/>Partitionierte Entitäten werden im [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md)-Tarif nicht unterstützt.<br/><br />Jede partitionierte Warteschlange bzw. jedes partitionierte Thema wird in das zulässige Kontingent von 1.000 Entitäten pro Namespace eingerechnet. |
 | Maximale Größe eines Messagingentitätspfads: Warteschlange oder Thema |Entität |- |260 Zeichen |
 | Maximale Größe eines Messagingentitätsnamens: Namespace, Abonnement oder Abonnementregel |Entität |- |50 Zeichen |
+| Maximale Größe der [message ID](/dotnet/api/microsoft.azure.servicebus.message.messageid) | Entität |- | 128 |
 | Maximale Größe der [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) einer Nachricht | Entität |- | 128 |
-| Nachrichtengröße für eine Warteschlangen-/Themen-/Abonnemententität |Entität |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |Maximale Nachrichtengröße: 256 KB ([Standard-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md))/1 MB ([Premium-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md)). <br /><br />Aufgrund des Mehraufwands für das System ist dieser Grenzwert kleiner als diese Werte.<br /><br />Maximale Headergröße: 64 KB<br /><br />Maximale Anzahl der Headereigenschaften im Eigenschaftenbehälter: **Byte/Int.MaxValue**<br /><br />Maximale Größe der Eigenschaft im Eigenschaftenbehälter: keine ausdrückliche Beschränkung. Beschränkung nach maximaler Headergröße. |
+| Nachrichtengröße für eine Warteschlangen-/Themen-/Abonnemententität |Entität |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |Maximale Nachrichtengröße: 256 KB ([Standard-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md))/1 MB ([Premium-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md)). <br /><br />Aufgrund des Mehraufwands für das System ist dieser Grenzwert kleiner als diese Werte.<br /><br />Maximale Headergröße: 64 KB<br /><br />Maximale Anzahl der Headereigenschaften im Eigenschaftenbehälter: **Byte/Int.MaxValue**<br /><br />Maximale Größe der Eigenschaft im Eigenschaftenbehälter: Keine ausdrückliche Beschränkung. Beschränkung nach maximaler Headergröße. |
 | Nachrichteneigenschaftsgröße für eine Warteschlangen-/Themen-/Abonnemententität |Entität |Eine **SerializationException**-Ausnahme wird generiert. |Die maximale Nachrichteneigenschaftengröße beträgt für jede Eigenschaft 32 K. Die kumulative Größe aller Eigenschaften darf 64 K nicht überschreiten. Dieser Grenzwert gilt für den gesamten Header des [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Elements, das sowohl über Benutzereigenschaften als auch über Systemeigenschaften verfügt (z.B. [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label), [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)). |
 | Anzahl von Abonnements pro Thema |Entität |Nachfolgende Anforderungen zum Erstellen weiterer Abonnements für das Thema werden abgelehnt. Als Ergebnis wird bei der Konfiguration über das Portal eine Fehlermeldung angezeigt. Bei einem Aufruf über die Verwaltungs-API wird vom aufrufenden Code eine Ausnahme empfangen. |Standard-Tarif – Jedes Abonnement wird in das zulässige Kontingent von 1.000 Entitäten (Warteschlangen, Themen und Abonnements) pro Namespace eingerechnet. <br/> <br/> Premium-Tarif – 2.000 |
 | Anzahl von SQL-Filtern pro Thema |Entität |Nachfolgende Anforderungen für die Erstellung weiterer Filter für das Thema werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |2.000 |
 | Anzahl von Korrelationsfiltern pro Thema |Entität |Nachfolgende Anforderungen für die Erstellung weiterer Filter für das Thema werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |100.000 |
-| Größe der SQL-Filter/-Aktionen |Namespace |Nachfolgende Anforderungen für die Erstellung weiterer Filter werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |Maximale Länge der Filterbedingungszeichenfolge: 1024 (1 K)<br /><br />Maximale Länge der Regelaktionszeichenfolge: 1024 (1 K)<br /><br />Maximale Anzahl von Ausdrücken pro Regelaktion: 32. |
+| Größe der SQL-Filter/-Aktionen |Namespace |Nachfolgende Anforderungen für die Erstellung weiterer Filter werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |Maximale Länge der Filterbedingungszeichenfolge: 1.024 (1 K).<br /><br />Maximale Länge der Regelaktionszeichenfolge: 1.024 (1 K).<br /><br />Maximale Anzahl von Ausdrücken pro Regelaktion: 32. |
 | Anzahl von [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Regeln pro Namespace, Warteschlange oder Thema |Entität, Namespace |Nachfolgende Anforderungen für die Erstellung weiterer Regeln werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |Maximale Anzahl von Regeln: 12. <br /><br /> Regeln, die für einen Service Bus-Namespace konfiguriert werden, gelten für alle Warteschlangen und Themen im jeweiligen Namespace. |
 | Anzahl der Nachrichten pro Transaktion | Transaktion | Zusätzliche eingehende Nachrichten werden abgelehnt, und eine Ausnahme („Mehr als 100 Nachrichten dürfen nicht in einer einzelnen Transaktion gesendet werden“) wird durch den aufrufenden Code empfangen. | 100 <br /><br /> Für **Send()**- und **SendAsync()**-Vorgänge. |
 

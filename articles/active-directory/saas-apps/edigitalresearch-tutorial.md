@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ca42d6c8ca1333f2ffba77b79584b7092b26f03e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5c86186cd6ee02d83800c6483a2e35d8f1fb3c7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438595"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Tutorial: Azure Active Directory-Integration mit eDigitalResearch
 
@@ -115,7 +115,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<company-name>.edigitalresearch.com/login/consume`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von eDigitalResearch](http://www.maruedr.com/contact), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von eDigitalResearch](https://www.maruedr.com/contact), um diese Werte zu erhalten.
  
 
 
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     !![Downloadlink für das Zertifikat](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/edigitalresearch-tutorial/tutorial_general_400.png)
 
@@ -131,10 +131,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![eDigitalResearch-Konfiguration](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_configure.png) 
 
-1. Zum Konfigurieren des einmaligen Anmeldens auf der Seite von **eDigitalResearch** müssen Sie die heruntergeladene **Zertifikatdatei (Base64)**, die **SAML-Entitäts-ID** und die **Abmelde-URL** an das [eDigitalResearch-Supportteam](http://www.maruedr.com/contact) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens auf der Seite von **eDigitalResearch** müssen Sie die heruntergeladene **Zertifikatdatei (Base64)**, die **SAML-Entitäts-ID** und die **Abmelde-URL** an das [eDigitalResearch-Supportteam](https://www.maruedr.com/contact) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -166,13 +166,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
   
 ### <a name="create-a-edigitalresearch-test-user"></a>Erstellen eines eDigitalResearch-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in eDigitalResearch. 
 
-Arbeiten Sie mit dem [Supportteam von eDigitalResearch](http://www.maruedr.com/contact) zusammen, um Benutzer zu erstellen.     
+Arbeiten Sie mit dem [eDigitalResearch-Supportteam](https://www.maruedr.com/contact) zusammen, um Benutzer zu erstellen.        
     
  > [!NOTE]
  > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.

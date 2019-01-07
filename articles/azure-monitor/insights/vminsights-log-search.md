@@ -8,21 +8,20 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: bfed4318d09a776f56a5a4b6218120d75a49fc80
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 676baa6947eaf8b3842b0100657f42a1e6438061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51714346"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184881"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
-Azure Monitor for VMs sammelt Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Datenspeicher in Azure Monitor weiter.  Diese Daten stehen zur [Suche](../../log-analytics/log-analytics-queries.md) in Log Analytics zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Azure Monitor for VMs sammelt Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Datenspeicher in Azure Monitor weiter.  Diese Daten stehen zur [Suche](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 ## <a name="map-records"></a>Zuordnung von Datensätzen
 Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Onboarding beim Zuordnungsfeature von Azure Monitor for VMs generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und jeden eindeutigen Prozess generiert. Die Eigenschaften der Datensätze sind in den folgenden Tabellen aufgeführt. Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API (Azure Resource Manager) zugeordnet. Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet. Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. 
@@ -238,5 +237,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Wenn Sie gerade erst in das Schreiben von Abfragen in Log Analytics einsteigen, arbeiten Sie [Verwenden der Log Analytics-Seite](../../log-analytics/query-language/get-started-analytics-portal.md) im Azure-Portal durch, um Log Analytics-Abfragen zu erstellen.
-* Erfahren Sie mehr über das [Schreiben von Suchabfragen](../../log-analytics/query-language/search-queries.md).
+* Wenn Sie gerade erst in das Schreiben von Abfragen in Log Analytics einsteigen, arbeiten Sie [Verwenden der Log Analytics-Seite](../../azure-monitor/log-query/get-started-portal.md) im Azure-Portal durch, um Log Analytics-Abfragen zu erstellen.
+* Erfahren Sie mehr über das [Schreiben von Suchabfragen](../../azure-monitor/log-query/search-queries.md).

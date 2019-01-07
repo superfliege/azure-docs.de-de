@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Problembehandlung für die Konfiguration von Netzwerksicherheitsgruppen | Microsoft-Dokumentation'
+title: 'Azure Active Directory Domain Services: Problembehandlung bei der Konfiguration von Netzwerksicherheitsgruppen | Microsoft-Dokumentation'
 description: Problembehandlung für die NSG-Konfiguration für Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: bca92e933b1f75c330999f0d55723eb9f26a7382
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426095"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957537"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Netzwerkkonfiguration für verwaltete Domänen
 Dieser Artikel hilft Ihnen bei der Problembehandlung und Lösung von Konfigurationsfehlern im Zusammenhang mit dem Netzwerk, die zu der folgenden Fehlermeldung führen:
@@ -41,7 +41,7 @@ Die häufigste Ursache von Netzwerkfehlern für Azure AD Domain Services sind un
 ## <a name="sample-nsg"></a>NSG-Beispiel
 Die folgende Tabelle zeigt ein NSG-Beispiel, das den Schutz Ihrer verwalteten Domäne sicherstellt und es Microsoft zugleich ermöglicht, Informationen zu überwachen, zu verwalten und zu aktualisieren.
 
-![NSG-Beispiel](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![NSG-Beispiel](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 >[!NOTE]
 > Für Azure AD Domain Services ist uneingeschränkter ausgehender Zugriff vom virtuellen Netzwerk erforderlich. Es wird empfohlen, keine zusätzliche NSG-Regel zu erstellen, die den ausgehenden Zugriff für das virtuelle Netzwerk beschränkt.

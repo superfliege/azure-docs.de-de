@@ -1,20 +1,22 @@
 ---
-title: Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer | Microsoft-Dokumentation
+title: Anhang – Azure Disk Encryption für virtuelle IaaS-Computer | Microsoft-Dokumentation
 description: Dieser Artikel enthält den Anhang zu Microsoft Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 11/12/2018
-ms.openlocfilehash: e5c7d51428c66bf9e6c245f28fb13b8d4a316d18
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 12/12/2018
+ms.custom: seodec18
+ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614669"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310668"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Anhang zu Azure Disk Encryption 
+
 Dieser Artikel enthält den Anhang zu [Azure Disk Encryption für virtuelle IaaS-Computer](azure-security-disk-encryption-overview.md). Lesen Sie zuerst die Artikel zu Azure Disk Encryption für virtuelle IaaS-Computer, damit der Kontext für Sie verständlich ist. In diesem Artikel wird beschrieben, wie Sie vorverschlüsselte VHDs vorbereiten und andere Aufgaben durchführen.
 
 ## <a name="connect-to-your-subscription"></a>Verbinden mit Ihrem Abonnement
@@ -57,7 +59,7 @@ Lesen Sie, bevor Sie anfangen, den Artikel zu den [Voraussetzungen](azure-securi
 
 ### <a name="bkmk_ConnectCLI"></a> Verbinden Ihres Abonnements mit der Azure CLI
 
-1. Melden Sie sich mit dem Befehl [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) bei Azure an. 
+1. Melden Sie sich mit dem Befehl [az login](/cli/azure/authenticate-azure-cli#sign-in-interactively) bei Azure an. 
      
      ```azurecli
      az login
@@ -130,6 +132,20 @@ Die folgende Tabelle zeigt, welche Parameter im PowerShell-Skript verwendet werd
  -  [Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) (Deaktivieren der Verschlüsselung auf einem ausgeführten virtuellen Linux-Computer) 
     - Die Deaktivierung der Verschlüsselung ist nur auf Datenvolumes für virtuelle Linux-Computer zulässig.  
 
+### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Ver- oder Entschlüsseln von VM-Skalierungsgruppen
+
+- [Enable disk encryption on a running Linux virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux) (Aktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Linux)
+
+- [Enable disk encryption on a running Windows virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows) (Aktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Windows)
+
+ - [Deploy a VM Scale Set of Linux VMs with a jumpbox and enables encryption on Linux VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) (Bereitstellen einer VM Skalieren mit Linux-VMs mit einer Jumpbox und Aktivieren der Verschlüsselung in der Linux-VM-Skalierungsgruppe)
+
+ - [Deploy a VM Scale Set of Windows VMs with a jumpbox and enables encryption on Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) (Bereitstellen einer VM Skalieren mit Windows-VMs mit einer Jumpbox und Aktivieren der Verschlüsselung in der Windows-VM-Skalierungsgruppe)
+
+- [Disable disk encryption on a running Linux virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux) (Deaktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Linux)
+
+- [Disable disk encryption on a running Windows virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows) (Deaktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Windows)
+
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Ver- oder Entschlüsseln von virtuellen Computer mit einer Azure AD-App (früheres Release) 
  
 - [Enable disk encryption on existing or running IaaS Windows VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm) (Aktivieren der Datenträgerverschlüsselung auf vorhandenen oder ausgeführten virtuellen Windows-IaaS-Computern)
@@ -160,17 +176,7 @@ Die folgende Tabelle zeigt, welche Parameter im PowerShell-Skript verwendet werd
 
 - [Enable disk encryption on a running Windows VM using an Azure AD client certificate thumbprint](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert) (Aktivieren der Datenträgerverschlüsselung auf einer ausgeführten Windows-VM mit einem Azure AD-Zertifikatfingerabdruck des Clients)
     
-- [Enable disk encryption on a running Linux virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux) (Aktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Linux)
 
-- [Enable disk encryption on a running Windows virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows) (Aktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Windows)
-
- - [Deploy a VM Scale Set of Linux VMs with a jumpbox and enables encryption on Linux VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) (Bereitstellen einer VM Skalieren mit Linux-VMs mit einer Jumpbox und Aktivieren der Verschlüsselung in der Linux-VM-Skalierungsgruppe)
-
- - [Deploy a VM Scale Set of Windows VMs with a jumpbox and enables encryption on Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) (Bereitstellen einer VM Skalieren mit Windows-VMs mit einer Jumpbox und Aktivieren der Verschlüsselung in der Windows-VM-Skalierungsgruppe)
-
-- [Disable disk encryption on a running Linux virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux) (Deaktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Linux)
-
-- [Disable disk encryption on a running Windows virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows) (Deaktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Windows)
 
 ## <a name="bkmk_preWin"></a> Vorbereiten einer vorverschlüsselten Windows-VHD
 Die folgenden Abschnitte sind erforderlich, um eine vorverschlüsselte Windows-VHD für die Bereitstellung als verschlüsselte VHD in Azure IaaS vorzubereiten. Verwenden Sie die Informationen, um einen neuen virtuellen Windows-Computers (VHD) in Azure Site Recovery oder Azure vorzubereiten und zu starten. Weitere Informationen zum Vorbereiten und Hochladen einer VHD finden Sie unter [Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure](../virtual-machines/windows/upload-generalized-managed.md).
@@ -189,7 +195,7 @@ Verwenden Sie für Windows Server 2008 R2 den folgenden Befehl:
 
     ServerManagerCmd -install BitLockers
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Vorbereiten des Betriebssystemvolumes für BitLocker mit `bdehdcfg`
-Führen Sie den Befehl [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment#using-bitlocker-to-encrypt-volumescommand) aus, falls erforderlich, um die Betriebssystempartition zu komprimieren und den Computer für BitLocker vorzubereiten:
+Führen Sie den Befehl [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) aus, falls erforderlich, um die Betriebssystempartition zu komprimieren und den Computer für BitLocker vorzubereiten:
 
     bdehdcfg -target c: shrink -quiet 
 
@@ -295,23 +301,23 @@ Konfigurieren Sie die Verschlüsselung während der Installation einer Distribut
 
 1. Wählen Sie beim Partitionieren von Datenträgern die Option **Configure encrypted volumes** (Verschlüsselte Volumes konfigurieren).
 
- ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+ ![Ubuntu 16.04-Setup: Konfigurieren verschlüsselter Volumes](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. Erstellen Sie ein separates Startlaufwerk, das nicht verschlüsselt sein darf. Verschlüsseln Sie Ihr Stammlaufwerk.
 
- ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+ ![Ubuntu 16.04-Setup: Geräte für Verschlüsselung auswählen](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. Geben Sie eine Passphrase an. Dies ist die Passphrase, die Sie in den Schlüsseltresor hochgeladen haben.
 
- ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+ ![Ubuntu 16.04-Setup: Passphrase angeben](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. Schließen Sie die Partitionierung ab.
 
- ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+ ![Ubuntu 16.04-Setup: Partitionierung abschließen](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. Beim Starten der VM werden Sie nach einer Passphrase gefragt. Verwenden Sie die Passphrase, die Sie in Schritt 3 angegeben haben.
 
- ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+ ![Ubuntu 16.04-Setup: Passphrase beim Starten angeben](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. Bereiten Sie die VM für das Hochladen in Azure anhand [dieser Anleitung](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
@@ -377,7 +383,7 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
 
 7. Nun können Sie die Bereitstellung des virtuellen Computers aufheben.
 
- ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+ ![Ubuntu 16.04-Setup: initramfs aktualisieren](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. Fahren Sie mit dem nächsten Schritt fort, und laden Sie Ihre VHD in Azure hoch.
 
@@ -385,11 +391,11 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
 Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie diese Schritte ausführen:
 1. Wählen Sie beim Partitionieren der Datenträger die Option **Encrypt Volume Group** (Volumegruppe verschlüsseln) aus, und geben Sie dann ein Kennwort ein. Dies ist das Kennwort, die Sie in Ihren Schlüsseltresor hochladen.
 
- ![openSUSE 13.2-Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+ ![openSUSE 13.2-Setup: Volumegruppe verschlüsseln](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. Starten Sie die VM, indem Sie Ihr Kennwort verwenden.
 
- ![openSUSE 13.2-Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+ ![openSUSE 13.2-Setup: Passphrase beim Starten angeben](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen im Abschnitt zum [Vorbereiten einer SLES- oder openSUSE-VM für Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
@@ -453,19 +459,19 @@ in:
 Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie diese Schritte ausführen:
 1. Wählen Sie beim Partitionieren von Datenträgern die Option **Encrypt my data** (Daten verschlüsseln).
 
- ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+ ![CentOS 7-Setup: Installationsziel](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. Stellen Sie sicher, dass für die Stammpartition die Option **Encrypt** (Verschlüsseln) ausgewählt ist.
 
- ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+ ![CentOS 7-Setup: Verschlüsselung für Stammpartition auswählen](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. Geben Sie eine Passphrase an. Dies ist die Passphrase, die Sie in Ihren Schlüsseltresor hochladen.
 
- ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+ ![CentOS 7-Setup: Passphrase angeben](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. Beim Starten der VM werden Sie nach einer Passphrase gefragt. Verwenden Sie die Passphrase, die Sie in Schritt 3 angegeben haben.
 
- ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+ ![CentOS 7-Setup: Passphrase beim Start eingeben](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen zu CentOS 7.0+ im Abschnitt zum [Vorbereiten einer CentOS-basierten VM für Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
@@ -526,7 +532,7 @@ zu
     ```    
 5. Führen Sie „/usr/sbin/dracut -f -v“ aus, um initrd zu aktualisieren.
 
-![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
+![CentOS 7-Setup: „/usr/sbin/dracut -f -v“ ausführen](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="bkmk_UploadVHD"></a> Hochladen einer verschlüsselten VHD in ein Azure-Speicherkonto
 Nachdem die BitLocker- oder DM-Crypt-Verschlüsselung aktiviert wurde, muss die lokale verschlüsselte VHD in Ihr Speicherkonto hochgeladen werden.

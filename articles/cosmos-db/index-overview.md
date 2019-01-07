@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: c0525cfba16fb61f8388ae4d6a693be3bb71674c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0333bc5e95b74fc97cfff3d79adbe28aefff5d40
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628529"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834637"
 ---
 # <a name="indexing-in-azure-cosmos-db"></a>Indizierung in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Ein Pseudostammknoten wird als übergeordneter Knoten zu den eigentlichen Knoten
 
 Azure Cosmos DB stellt Elemente als JSON-Dokumente und den Index als Strukturen dar. Sie können die Richtlinien für Pfade innerhalb der Struktur optimieren. Sie können Pfade in die Indizierung einschließen bzw. von dieser ausschließen. Dies kann bessere Schreibleistungen und geringeren Indexspeicherbedarf für Szenarien bieten, in denen die Abfragemuster im Voraus bekannt sind. Weitere Informationen finden Sie unter [Indexpfade](index-paths.md).
 
-## <a name="indexing-under-the-hood"></a>Indizierung: Funktionsweise
+## <a name="indexing-under-the-hood"></a>Indizierung: Im Hintergrund
 
 Die Azure Cosmos-Datenbank wendet die automatische Indizierung auf die Daten an, wobei jeder Pfad in einer Struktur indiziert wird, es sei denn, Sie nehmen die Konfiguration so vor, dass bestimmte Pfade ausgeschlossen werden.
 

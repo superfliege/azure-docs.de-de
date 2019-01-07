@@ -3,23 +3,22 @@ title: Installieren von Azure Backup Server in Azure Stack | Microsoft-Dokumenta
 description: Verwenden Sie Azure Backup Server, um Workloads in Azure Stack zu schützen oder zu sichern.
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: azure backup server; protect workloads; back up workloads
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
-ms.author: markgal
-ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: raynew
+ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576696"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877166"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -91,7 +90,7 @@ Die Azure Backup Server-VM muss einer Domäne angehören. Ein Domänenbenutzer m
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Verwenden einer IaaS-VM in Azure Stack
 
-Beim Wählen eines Servers für Azure Backup Server starten Sie mit einem Katalogimage von Windows Server 2012 R2 Datacenter oder Windows Server 2016 Datacenter. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten mit dem empfohlenen virtuellen Computer. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer lauten: A2 Standard mit zwei Kernen und 3,5 GB RAM.
+Beim Wählen eines Servers für Azure Backup Server starten Sie mit einem Katalogimage von Windows Server 2012 R2 Datacenter oder Windows Server 2016 Datacenter. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten mit dem empfohlenen virtuellen Computer. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: A2-Standard mit zwei Kernen und 3,5 GB RAM.
 
 Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Dies wird im Artikel [Installieren von DPM als virtuellen Azure-Computer](https://technet.microsoft.com/library/jj852163.aspx)beschrieben. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
 

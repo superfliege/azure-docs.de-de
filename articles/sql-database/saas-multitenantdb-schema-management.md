@@ -12,15 +12,15 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: e7aeb273d4ae276d3460c3de1f404230276cffb7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 14183475fcca0e12c56f009f105e77aaf11b0c98
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056640"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315202"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Verwalten von Schemas in einer SaaS-Anwendung, die mehrinstanzenfähige SQL-Datenbanken mit Sharding verwendet
- 
+
 In diesem Tutorial werden die Herausforderungen bei der Verwaltung einer großen Anzahl von Datenbanken in einer SaaS-Anwendung (Software-as-a-Service) betrachtet. Für das Auffächern von Schemaänderungen über alle Datenbanken hinweg werden Lösungen gezeigt.
 
 Wie jede andere Anwendung wird die Wingtip Tickets-SaaS-App laufend weiterentwickelt und macht dadurch Änderungen an der Datenbank erforderlich. Änderungen wirken sich möglicherweise auf das Schema oder Verweisdaten aus oder gehen mit Aufgaben zur Datenbankwartung einher. Bei einer SaaS-Anwendung, die das Muster mit einer Datenbank pro Mandant verwendet, müssen die Änderungen übergreifend für eine potenziell sehr große Anzahl von Mandantendatenbanken koordiniert werden. Darüber hinaus müssen Sie diese Änderungen in den Datenbankbereitstellungsprozess einbinden, um sicherzustellen, dass die Änderungen bei der Erstellung auch in neue Datenbanken einfließen.
@@ -64,12 +64,12 @@ Das in diesem Beispiel verwendete mehrinstanzenfähige Datenbankmodell mit Shard
 ## <a name="elastic-jobs-limited-preview"></a>Eingeschränkte Vorschau – Elastische Aufträge
 
 Es gibt eine neue Version von „Elastische Aufträge“, die nun eine integrierte Funktion von Azure SQL-Datenbank darstellt. Diese neue Version von Elastische Aufträge liegt derzeit als eingeschränkte Vorschauversion vor. Die eingeschränkte Vorschauversion unterstützt derzeit die Verwendung von PowerShell zum Erstellen eines Auftrags-Agents sowie T-SQL zum Erstellen und Verwalten von Aufträgen.
-> [!NOTE] 
+> [!NOTE]
 > In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Aufträge für die elastische Datenbank). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID per E-Mail an SaaSFeedback@microsoft.com mit dem Betreff „Vorschau von Elastische Aufträge“ an. Wenn das Aktivieren Ihres Abonnements bestätigt wurde, laden Sie die aktuelle Vorabversion der Job-Cmdlets herunter, und installieren Sie diese. Die Vorschauversion ist eingeschränkt, wenden Sie sich daher an SaaSFeedback@microsoft.com, wenn Sie Fragen haben oder Support benötigen.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Abrufen von Quellcode und Skripts zur Anwendung Wingtip Tickets SaaS Multi-tenant Database
 
-Die Skripts und der Quellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im Repository [WingtipTicketsSaaS-MultiTenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) auf GitHub zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps). 
+Die Skripts und der Quellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im Repository [WingtipTicketsSaaS-MultiTenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) auf GitHub zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>Erstellen einer Auftrags-Agent-Datenbank und eines neuen Auftrags-Agents
 
@@ -84,9 +84,9 @@ Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.
 
 #### <a name="prepare"></a>Vorbereiten
 
-Jede Mandantendatenbank enthält in der Tabelle **VenueTypes** eine Gruppe von Veranstaltungsorttypen. Jeder Typ definiert eine bestimmte Art von Ereignissen, die an einem Veranstaltungsort präsentiert werden können. Diese Veranstaltungsorttypen entsprechen den Hintergrundbildern, die in der Mandantenereignis-App angezeigt werden.  In dieser Übung stellen Sie eine Aktualisierung für alle Datenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club*. 
+Jede Mandantendatenbank enthält in der Tabelle **VenueTypes** eine Gruppe von Veranstaltungsorttypen. Jeder Typ definiert eine bestimmte Art von Ereignissen, die an einem Veranstaltungsort präsentiert werden können. Diese Veranstaltungsorttypen entsprechen den Hintergrundbildern, die in der Mandantenereignis-App angezeigt werden.  In dieser Übung stellen Sie eine Aktualisierung für alle Datenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club*.
 
-Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle VenueTypes.  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können. 
+Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle VenueTypes.  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können.
 
 1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit dem Mandantenserver *tenants1-dpt-&lt;Benutzer&gt;.database.windows.net* her.
 1. Um sich zu vergewissern, dass *Motorcycle Racing* und *Swimming Club* **nicht** in der Ergebnisliste enthalten sind, navigieren Sie zur Datenbank *contosoconcerthall* auf dem Server *tenants1-dpt-&lt;Benutzer&gt;*, und fragen Sie die Tabelle *VenueTypes* ab.

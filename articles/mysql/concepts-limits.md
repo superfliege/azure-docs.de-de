@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 12/6/2018
+ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982877"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090991"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
@@ -31,10 +31,12 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |Allgemeiner Zweck| 8| 1250|
 |Allgemeiner Zweck| 16| 2500|
 |Allgemeiner Zweck| 32| 5.000|
+|Allgemeiner Zweck| 64| 10000|
 |Arbeitsspeicheroptimiert| 2| 600|
 |Arbeitsspeicheroptimiert| 4| 1250|
 |Arbeitsspeicheroptimiert| 8| 2500|
 |Arbeitsspeicheroptimiert| 16| 5.000|
+|Arbeitsspeicheroptimiert| 32| 10000|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > FEHLER 1040 (08004): Zu viele Verbindungen
@@ -72,7 +74,7 @@ Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den f
 - Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
-- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, [stellen Sie ein Speicherabbild auf einem Server wieder her](./concepts-migrate-dump-restore.md), der mit der neuen Engineversion erstellt wurde.
+- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, führen Sie eine [Sicherung und Wiederherstellung](./concepts-migrate-dump-restore.md) auf einem Server aus, der mit der neuen Engine-Version erstellt wurde.
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 - Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.

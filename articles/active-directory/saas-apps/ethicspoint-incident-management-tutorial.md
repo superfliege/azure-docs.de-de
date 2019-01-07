@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit EthicsPoint Incident Management (EPIM) | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in EthicsPoint Incident Management (EPIM) | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und EthicsPoint Incident Management (EPIM) konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: c38c751701b323bf1c985a4127d0e9deac2c8eaa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c72ed655166dc1fe8045f5b9fdc7221cdf24d567
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446020"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850991"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Tutorial: Azure Active Directory-Integration mit EthicsPoint Incident Management (EPIM)
+# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Tutorial: Azure Active Directory-Integration in EthicsPoint Incident Management (EPIM)
 
 In diesem Tutorial erfahren Sie, wie Sie EthicsPoint Incident Management (EPIM) in Azure Active Directory (Azure AD) integrieren.
 
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL, den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den EPIM-Client (EthicsPoint Incident Management)](http://www.navexglobal.com/company/contact-us), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL, den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den EPIM-Client (EthicsPoint Incident Management)](https://www.navexglobal.com/company/contact-us), um diese Werte zu erhalten. 
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -133,10 +133,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/ethicspoint-incident-management-tutorial/tutorial_general_400.png)
     
-1. Zum Konfigurieren des einmaligen Anmeldens bei **EthicsPoint Incident Management (EPIM)** müssen Sie die heruntergeladene **Metadaten-XML** an das [Supportteam für EthicsPoint Incident Management (EPIM)](http://www.navexglobal.com/company/contact-us) übermitteln.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **EthicsPoint Incident Management (EPIM)** müssen Sie die heruntergeladene **Metadaten-XML** an das [Supportteam für EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us) übermitteln.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Dokumentation zu Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -172,7 +172,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-ethicspoint-incident-management-epim-test-user"></a>Erstellen eines Testbenutzers für EthicsPoint Incident Management (EPIM)
 
-In diesem Abschnitt erstellen Sie in EthicsPoint Incident Management (EPIM) einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam für EthicsPoint Incident Management (EPIM)](http://www.navexglobal.com/company/contact-us) zusammen, um die Benutzer zur Plattform von EthicsPoint Incident Management (EPIM) hinzuzufügen.
+In diesem Abschnitt erstellen Sie in EthicsPoint Incident Management (EPIM) einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam für EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us) zusammen, um die Benutzer zur Plattform von EthicsPoint Incident Management (EPIM) hinzuzufügen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

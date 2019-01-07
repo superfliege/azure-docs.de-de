@@ -1,6 +1,6 @@
 ---
-title: Vordefinierte Skills für Datenextrahierung, natürliche Sprache und Bildverarbeitung (Azure Search) | Microsoft-Dokumentation
-description: Durch kognitive Skills für Datenextrahierung, natürliche Sprache und Bildverarbeitung erhält der Rohdateninhalt in einer Azure Search-Pipeline Semantik und Stuktur.
+title: Integrierte Datenextraktion, natürliche Sprache, Bildverarbeitung – Azure Search
+description: Durch kognitive Qualifikationen für Datenextraktion, natürliche Sprache und Bildverarbeitung erhält der Rohdateninhalt in einer Azure Search-Pipeline Semantik und Struktur.
 manager: pablocas
 author: luiscabrer
 services: search
@@ -9,19 +9,22 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: c342eca8f27db713e139c187147abddd80eb854e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: bc1353ffb4514622ce0ef6e5c3ced76adc7f999f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734533"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314787"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Vordefinierte Skills für die Inhaltsanreicherung (Azure Search)
 
 In diesem Artikel erfahren Sie mehr über die kognitiven Skills, die mit Azure Search bereitgestellt werden. Ein *kognitiver Skill* ist ein Vorgang, der Inhalte in irgendeiner Weise transformiert. Oft handelt es sich um eine Komponente, die Daten extrahiert oder die Struktur ableitet und Eingabedaten somit verständlicher macht. Die Ausgabe erfolgt fast immer textbasiert. Ein *Skillset* ist eine Sammlung von Skills, die die Anreicherungspipeline definieren. 
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen sowie die Bildextraktion und Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="predefined-skills"></a>Vordefinierte Skills
 

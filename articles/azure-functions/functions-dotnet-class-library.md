@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: bdae72f5ed4ebed87842ade05ec7a6bc21d349dc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086640"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994538"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -81,7 +81,7 @@ Das Trigger-Attribut gibt den Triggertyp an und bindet die Eingabedaten an einen
 Die Methodensignatur kann andere Parameter als den mit dem Triggerattribut verwendeten Parameter enthalten. Hier sind einige weitere Parameter, die Sie verwenden können:
 
 * [Eingabe- und Ausgabebindungen](functions-triggers-bindings.md), die als solche gekennzeichnet werden, indem Sie sie mit Attributen versehen.  
-* Ein `ILogger`- oder `TraceWriter`-Parameter für die [Protokollierung](#logging).
+* Ein `ILogger`- oder `TraceWriter`-Parameter ([nur Version 1.x](functions-versions.md#creating-1x-apps)) für die [Protokollierung](#logging).
 * Ein `CancellationToken`-Parameter für [ordnungsgemäßes Herunterfahren](#cancellation-tokens).
 * [Binden von Ausdrücken](functions-triggers-bindings.md#binding-expressions-and-patterns) Parameter zum Abrufen von Metadaten für Trigger.
 
@@ -154,7 +154,7 @@ Die generierte *function.json*-Datei enthält eine `configurationSource`-Eigensc
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-Die Erstellung der *function.json*-Datei wird mit dem NuGet-Paket [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) ausgeführt. 
+Die Erstellung der *function.json*-Datei wird mit dem NuGet-Paket [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) ausgeführt. 
 
 Dasselbe Paket wird für die Versionen 1.x und 2.x der Functions-Runtime verwendet. Ein 1.x-Projekt unterscheidet sich durch das Zielframework von einem 2.x-Projekt. Hier sind die relevanten Teile von *CSPROJ*-Dateien, welche verschiedene Zielframeworks und dasselbe `Sdk`-Paket zeigen:
 
@@ -183,7 +183,7 @@ Dasselbe Paket wird für die Versionen 1.x und 2.x der Functions-Runtime verwend
 
 Unter den `Sdk`-Paketabhängigkeiten befinden sich Auslöser und Bindungen. Ein 1.x-Projekt verweist auf 1.x-Auslöser und -Bindungen, da diese für das .NET Framework ausgelegt sind, während 2.x-Auslöser und -Bindungen auf .NET Core ausgelegt sind.
 
-Das `Sdk`-Paket hängt außerdem von [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json) und indirekt von [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage) ab. Diese Abhängigkeiten stellen sicher, dass Ihr Projekt die Versionen dieser Pakete verwendet, die mit der Functions-Runtime-Version funktionieren, auf die das Projekt ausgelegt ist. Beispiel: `Newtonsoft.Json` weist Version 11 für .NET Framework 4.6.1 auf, die Functions-Runtime, die auf .NET Framework 4.6.1 ausgelegt ist, ist jedoch nur mit `Newtonsoft.Json` 9.0.1 kompatibel. Daher muss Ihr Funktionscode in diesem Projekt auch `Newtonsoft.Json` 9.0.1 verwenden.
+Das `Sdk`-Paket hängt außerdem von [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) und indirekt von [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage) ab. Diese Abhängigkeiten stellen sicher, dass Ihr Projekt die Versionen dieser Pakete verwendet, die mit der Functions-Runtime-Version funktionieren, auf die das Projekt ausgelegt ist. Beispiel: `Newtonsoft.Json` weist Version 11 für .NET Framework 4.6.1 auf, die Functions-Runtime, die auf .NET Framework 4.6.1 ausgelegt ist, ist jedoch nur mit `Newtonsoft.Json` 9.0.1 kompatibel. Daher muss Ihr Funktionscode in diesem Projekt auch `Newtonsoft.Json` 9.0.1 verwenden.
 
 Der Quellcode für `Microsoft.NET.Sdk.Functions` ist im GitHub-Repository [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) verfügbar.
 
@@ -233,7 +233,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Protokollierung
 
-Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) ein. Verwenden Sie hierzu am besten den Namen `log`. Vermeiden Sie die Verwendung von `Console.Write` in Azure Functions.
+Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) ein. Es wird empfohlen, diesen wie im folgenden Beispiel `log` zu nennen:  
 
 ```csharp
 public static class SimpleExample
@@ -248,8 +248,7 @@ public static class SimpleExample
 } 
 ```
 
-> [!NOTE]
-> Informationen zu einem neueren Protokollierungsframework, das Sie anstelle von `TraceWriter` verwenden können, finden Sie unter [Schreiben von Protokollen in C#-Funktionen](functions-monitoring.md#write-logs-in-c-functions) im Artikel **Überwachen von Azure Functions**.
+Vermeiden Sie die Verwendung von `Console.Write` in Azure Functions. Weitere Informationen finden Sie unter [Schreiben von Protokollen in C#-Funktionen](functions-monitoring.md#write-logs-in-c-functions) im Artikel **Überwachen von Azure Functions**.
 
 ## <a name="async"></a>Async
 

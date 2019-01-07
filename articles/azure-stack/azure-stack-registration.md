@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/04/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 8d737c9fbf149051a8142f5ff546ea88e648541b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976365"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890550"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
 
@@ -121,8 +121,8 @@ In mit Azure verbundenen Umgebungen kann auf das Internet und Azure zugegriffen 
 
 2. Fügen Sie das Azure-Konto hinzu, das zum Registrieren von Azure Stack verwendet wird. Führen Sie zum Hinzufügen des Kontos das Cmdlet **Add-AzureRmAccount** aus. Sie werden aufgefordert, Ihre Anmeldeinformationen für das Azure-Konto einzugeben. Je nach Konfiguration Ihres Kontos müssen Sie möglicherweise die zweistufige Authentifizierung verwenden.
 
-   ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+   ```PowerShell
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | Parameter | BESCHREIBUNG |  
@@ -150,8 +150,12 @@ In mit Azure verbundenen Umgebungen kann auf das Internet und Azure zugegriffen 
 6. Stellen Sie als Nächstes in derselben PowerShell-Sitzung sicher, dass Sie im richtigen Azure PowerShell-Kontext angemeldet sind. Dies ist das Azure-Konto, das verwendet wurde, um den oben genannten Azure Stack-Ressourcenanbieter zu registrieren. Führen Sie diesen PowerShell-Befehl aus:
 
    ```PowerShell  
-   Add-AzureRmAccount -Environment "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
+
+   | Parameter | BESCHREIBUNG |  
+   |-----|-----|
+   | EnvironmentName | Der Umgebungsname des Azure-Cloudabonnements. Unterstützte Umgebungsnamen sind **AzureCloud**, **AzureUSGovernment** oder für ein Azure-Abonnement für China **AzureChinaCloud**.  |
 
 7. Führen Sie in der gleichen PowerShell-Sitzung das Cmdlet **Set-AzsRegistration** aus. Führen Sie diesen PowerShell-Befehl aus:  
 
@@ -182,7 +186,7 @@ In mit Azure verbundenen Umgebungen kann auf das Internet und Azure zugegriffen 
 2. Fügen Sie das Azure-Konto hinzu, das zum Registrieren von Azure Stack verwendet wird. Führen Sie zum Hinzufügen des Kontos das Cmdlet **Add-AzureRmAccount** aus. Sie werden aufgefordert, Ihre Anmeldeinformationen für das Azure-Konto einzugeben. Je nach Konfiguration Ihres Kontos müssen Sie möglicherweise die zweistufige Authentifizierung verwenden.
 
    ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | Parameter | BESCHREIBUNG |  
@@ -298,7 +302,7 @@ Optional können Sie mit dem Cmdlet „Get-Content“ auf eine Datei zeigen, die
 
 Gehen Sie folgendermaßen vor, um sicherzustellen, dass Azure Stack erfolgreich in Azure registriert wurde.
 
-1. Melden Sie sich beim Azure Stack-[Administratorportal](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal) an: https&#58;//adminportal.*&lt;region>.&lt;fqdn>*.
+1. Melden Sie sich beim Azure Stack-[Verwaltungsportal](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal) an: https&#58;//adminportal.*&lt;region>.&lt;fqdn>*.
 2. Wählen Sie **Alle Dienste** aus, und wählen Sie dann unter der Kategorie **VERWALTUNG** die Option **Marketplace-Verwaltung** > **Aus Azure hinzufügen** aus.
 
 Wenn Sie eine Liste der in Azure verfügbaren Elemente sehen (z.B. WordPress), war die Aktivierung erfolgreich. Allerdings werden in nicht verbundenen Umgebungen Azure Marketplace-Elemente nicht im Azure Stack-Marketplace angezeigt.
@@ -430,9 +434,9 @@ Voraussetzungen für die Ausführung des Cmdlets:
 | AzureContext | PSObject |  |
 | ResourceGroupName | Zeichenfolge |  |
 | ResourceGroupLocation | Zeichenfolge |  |
-| BillingModel | Zeichenfolge | Das Abrechnungsmodell, das von Ihrem Abonnement verwendet wird. Zulässige Werte für diesen Parameter sind „Capacity“, „PayAsYouUse“ und „Development“. |
+| BillingModel | Zeichenfolge | Das Abrechnungsmodell, das von Ihrem Abonnement verwendet wird. Gültige Werte für diesen Parameter: „Capacity“, „PayAsYouUse“ und „Development“. |
 | MarketplaceSyndicationEnabled | True/False | Bestimmt, ob das Marketplace-Verwaltungsfeature im Portal verfügbar ist. Legen Sie den Wert auf „true“ fest, wenn bei der Registrierung eine Internetverbindung verfügbar ist. Legen Sie den Wert auf „false“ fest, wenn die Registrierung in einer Umgebung ohne Verbindung erfolgt. In Umgebungen ohne Verbindung können Marketplace-Elemente mithilfe des [Offlinesyndikationstools](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) heruntergeladen werden. |
-| UsageReportingEnabled | True/False | Azure Stack erstellt standardmäßig Berichte zu Nutzungsmetriken. Operatoren, die ein kapazitätsbasiertes Modell verwenden oder eine nicht verbundene Umgebung unterstützen, müssen Nutzungsberichte deaktivieren. Zulässige Werte für diesen Parameter: True, False. |
+| UsageReportingEnabled | True/False | Azure Stack erstellt standardmäßig Berichte zu Nutzungsmetriken. Operatoren, die ein kapazitätsbasiertes Modell verwenden oder eine nicht verbundene Umgebung unterstützen, müssen Nutzungsberichte deaktivieren. Gültige Werte für diesen Parameter: True, False. |
 | AgreementNumber | Zeichenfolge |  |
 | RegistrationName | Zeichenfolge | Legen Sie einen eindeutigen Namen für die Registrierung fest, wenn Sie das Registrierungsskript auf mehreren Instanzen von Azure Stack mit der gleichen Azure-Abonnement-ID ausführen. Der Parameter hat den Standardwert **AzureStackRegistration**. Wenn Sie den gleichen Namen jedoch in mehreren Instanzen von Azure Stack verwenden, tritt beim Ausführen des Skripts ein Fehler auf. |
 
@@ -452,9 +456,9 @@ Mit „Get-AzsRegistrationToken“ wird aus den Eingabeparametern ein Registrier
 | AzureContext | PSObject |  |
 | ResourceGroupName | Zeichenfolge |  |
 | ResourceGroupLocation | Zeichenfolge |  |
-| BillingModel | Zeichenfolge | Das Abrechnungsmodell, das von Ihrem Abonnement verwendet wird. Zulässige Werte für diesen Parameter sind „Capacity“, „PayAsYouUse“ und „Development“. |
+| BillingModel | Zeichenfolge | Das Abrechnungsmodell, das von Ihrem Abonnement verwendet wird. Gültige Werte für diesen Parameter: „Capacity“, „PayAsYouUse“ und „Development“. |
 | MarketplaceSyndicationEnabled | True/False |  |
-| UsageReportingEnabled | True/False | Azure Stack erstellt standardmäßig Berichte zu Nutzungsmetriken. Operatoren, die ein kapazitätsbasiertes Modell verwenden oder eine nicht verbundene Umgebung unterstützen, müssen Nutzungsberichte deaktivieren. Zulässige Werte für diesen Parameter: True, False. |
+| UsageReportingEnabled | True/False | Azure Stack erstellt standardmäßig Berichte zu Nutzungsmetriken. Operatoren, die ein kapazitätsbasiertes Modell verwenden oder eine nicht verbundene Umgebung unterstützen, müssen Nutzungsberichte deaktivieren. Gültige Werte für diesen Parameter: True, False. |
 | AgreementNumber | Zeichenfolge |  |
 
 

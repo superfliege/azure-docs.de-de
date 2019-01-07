@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: d228fbde230f89848d895bd1c004724b88de4431
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a8d91c0410d2a59e4b22866aa48d36c026f3ee8e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883821"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956294"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank
 
@@ -30,7 +30,7 @@ Wenn die Quelldatenbank eine oder mehrere temporale Tabellen umfasst, treten bei
 
 { "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
  
- ![Beispiel für Fehler bei temporalen Tabellen](media\known-issues-azure-sql-online\dms-temporal-tables-errors.png)
+ ![Beispiel für Fehler bei temporalen Tabellen](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **Problemumgehung**
 
@@ -52,7 +52,7 @@ Weitere Informationen finden Sie im Artikel [Temporale Tabellen](https://docs.mi
 
 Möglicherweise wird während des Vorgangs „Full data load“ (Vollständiger Datenladevorgang) die SQL-Ausnahme „ntext ist mit hierarchyid nicht kompatibel.“ angezeigt:
      
-![Beispiel für Fehler bei „hierarchyid“](media\known-issues-azure-sql-online\dms-hierarchyid-errors.png)
+![Beispiel für Fehler bei „hierarchyid“](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
 **Problemumgehung**
 
@@ -107,7 +107,7 @@ Wenn in DMS der genaue in der Quelltabelle gespeicherte Zeitstempelwert migriert
 
 Wenn die Migrationsfehler in der Ansicht mit dem detaillierten Status der Datenbank angegeben werden, werden durch Auswählen des Links **Datenmigrationsfehler** im oberen Menüband möglicherweise keine spezifischen zusätzlichen Details zu den Migrationsfehlern angezeigt.
 
-![Beispiel zu Datenmigrationsfehlern ohne angezeigte Details](media\known-issues-azure-sql-online\dms-data-migration-errors-no-details.png)
+![Beispiel zu Datenmigrationsfehlern ohne angezeigte Details](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
 **Problemumgehung**
 
@@ -115,6 +115,6 @@ Führen Sie die folgenden Schritte aus, um spezifische Details zu den Fehlern zu
 
 1. Schließen Sie das Blatt mit dem detaillierten Status der Datenbank, um den Bildschirm für die Migrationsaktivität anzuzeigen.
 
-     ![Bildschirm für die Migrationsaktivität](media\known-issues-azure-sql-online\dms-migration-activity-screen.png)
+     ![Bildschirm für die Migrationsaktivität](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
 2. Wählen Sie **Fehlerdetails anzeigen** aus, um spezifische Fehlermeldungen anzuzeigen, anhand derer Sie die Migrationsfehler beheben können.

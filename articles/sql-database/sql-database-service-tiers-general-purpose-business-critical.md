@@ -11,15 +11,20 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 15fd86a88c3025f81741d614b03d5c4c7c60262c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 11/30/2018
+ms.openlocfilehash: 7de4415dd332254c595b6687dfb9d8db01c42362
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351741"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871709"
 ---
-# <a name="general-purpose-and-business-critical-service-tiers"></a>Diensttarife „Universell“ und „Unternehmenskritisch“
+# <a name="azure-sql-database-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank
+
+Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um die Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. In Azure SQL-Datenbank werden drei Architekturmodelle verwendet:
+- [Universell](sql-database-service-tier-general-purpose.md): ist für die meisten generischen Workloads konzipiert.
+- [Unternehmenskritisch](sql-database-service-tier-business-critical.md): ist für Workloads mit geringer Latenz mit einem lesbaren Replikat konzipiert.
+- [Hochgradig skalierbaren](sql-database-service-tier-hyperscale.md): ist für sehr große Datenbanken (bis zu 100 TB) mit mehreren lesbaren Replikaten konzipiert.
 
 Dieser Artikel beschreibt die Speicher- und Sicherungsüberlegungen für die Diensttarife „Universell“ und „Unternehmenskritisch“ im V-Kern-basierten Kaufmodell.
 

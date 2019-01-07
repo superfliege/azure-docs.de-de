@@ -1,22 +1,23 @@
 ---
-title: Azure-Dienst für dedizierte HSMs – physische Sicherheit | Microsoft-Dokumentation
-description: Der Azure-Dienst für dedizierte HSMs bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
+title: Physische HSM-Sicherheit – Dediziertes Azure-HSM | Microsoft-Dokumentation
+description: Informationen zur physischen Sicherheit dedizierter Azure-HSM-Geräte in Rechenzentren
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: a0f85c755b269d95720137368a4ff438031a9fae
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 662800d2b9db7d7a19861431354e55b3897e020a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318919"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080043"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure-Dienst für dedizierte HSMs – physische Sicherheit
 

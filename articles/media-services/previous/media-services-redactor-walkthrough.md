@@ -1,5 +1,5 @@
 ---
-title: 'Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics| Microsoft Docs'
+title: 'Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics| Microsoft-Dokumentation'
 description: In diesem Thema werden Schritt-für-Schritt-Anweisungen zur Ausführung eines vollständigen Bearbeitungsworkflows mithilfe von Azure Media Services Explorer (AMSE) und Azure Media Redactor Visualizer (Open Source-Tool) vorgestellt.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: d7a6abaeff0e939ed9e299e16e2fe59b65127aba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81618446930a23a7ea713da19bb7c63a06d135ed
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785959"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162432"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics
 
@@ -35,7 +35,7 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/re
 
 ## <a name="azure-media-services-explorer-workflow"></a>Workflow im Azure Media Services Explorer
 
-Die einfachste Einstiegsmöglichkeit in Redactor ist die Verwendung des Open Source-Tools AMSE auf Github. Sie können einen vereinfachten Workflow in einem **kombinierten** Modus ausführen, wenn Sie keinen Zugriff auf die Anmerkungs-JSON oder JPG-Gesichtsbilder benötigen.
+Die einfachste Einstiegsmöglichkeit in Redactor ist die Verwendung des Open Source-Tools AMSE auf GitHub. Sie können einen vereinfachten Workflow in einem **kombinierten** Modus ausführen, wenn Sie keinen Zugriff auf die Anmerkungs-JSON oder JPG-Gesichtsbilder benötigen.
 
 ### <a name="download-and-setup"></a>Herunterladen und Einrichten
 

@@ -1,5 +1,5 @@
 ---
-title: 'Beheben von Azure Backup-Fehlern: Status des Gast-Agents unbekannt'
+title: 'Behandeln von Azure Backup-Fehlern: Bereitstellungsstatus nicht verfügbar'
 description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
 services: backup
 author: genlin
@@ -7,47 +7,47 @@ manager: cshepard
 keywords: Azure Backup; VM-Agent; Netzwerkkonnektivität;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: d8b78551a762b4388344aaf3b44e7472127737ae
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977113"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833872"
 ---
-# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
+# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
 Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure Backup-Fehler bei der Kommunikation zwischen dem VM-Agent und der Erweiterung beheben können.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: VM Agent unable to communicate with Azure Backup (VM-Agent kann nicht mit Azure Backup kommunizieren).
+## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: VM-Agent kann nicht mit Azure Backup kommunizieren.
 
 **Fehlercode**: UserErrorGuestAgentStatusUnavailable <br>
-**Fehlermeldung**: VM Agent unable to communicate with Azure Backup (VM-Agent kann nicht mit Azure Backup kommunizieren).<br>
+**Fehlermeldung**: VM-Agent kann nicht mit Azure Backup kommunizieren<br>
 
 Nachdem Sie einen virtuellen Computer für den Backup-Dienst registriert und geplant haben, initiiert Backup den Auftrag, indem der Dienst mit dem VM-Agent kommuniziert, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn eine Momentaufnahme nicht ausgelöst wird, kann dies zu einem Fehler bei der Sicherung führen. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:<br>
-**Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
-**Ursache 4: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden](#the-backup-extension-fails-to-update-or-load)**  
-**Ursache 5: [Der virtuelle Computer verfügt nicht über Internetzugriff](#the-vm-has-no-internet-access)**
+**Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
+**Ursache 5: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
-## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich).
+## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich.
 
 **Fehlercode**: GuestAgentSnapshotTaskStatusError<br>
-**Fehlermeldung**: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich). <br>
+**Fehlermeldung**: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich <br>
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
-**Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Ursache 3: [Der virtuelle Computer verfügt nicht über Internetzugriff](#the-vm-has-no-internet-access)**
+**Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 3: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached: The Restore Point collection max limit has reached (Maximale Grenze der Wiederherstellungspunktsammlung wurde erreicht).
+## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached: Der maximale Grenzwert für die Sammlung von Wiederherstellungspunkten wurde erreicht.
 
 **Fehlercode**: UserErrorRpCollectionLimitReached <br>
-**Fehlermeldung**: The Restore Point collection max limit has reached (Maximale Grenze der Wiederherstellungspunktsammlung wurde erreicht). <br>
+**Fehlermeldung**: Der maximale Grenzwert für die Sammlung von Wiederherstellungspunkten wurde erreicht. <br>
 * Dieses Problem kann auftreten, wenn eine Sperre für den Wiederherstellungspunkt der Ressourcengruppe besteht, die eine automatische Bereinigung des Wiederherstellungspunkts verhindert.
 * Dieses Problem kann auch auftreten, wenn mehrere Sicherungen pro Tag ausgelöst werden. Zurzeit wird nur eine Sicherung pro Tag empfohlen, da die Instant RPs 7 Tage lang aufbewahrt werden und nur 18 Instant RPs gleichzeitig mit einem virtuellen Computer verknüpft werden können. <br>
 
@@ -55,10 +55,10 @@ Empfohlene Maßnahme:<br>
 Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen.
 
 > [!NOTE]
-    > Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe lautet: AzureBackupRG_`<Geo>`_`<number>`. Beispiel: AzureBackupRG_northeurope_1.
+    > Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe lautet: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
-**Schritt 1: [Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe](#remove_lock_from_the_recovery_point_resource_group)** <br>
-**Schritt 2: [Bereinigen der Wiederherstellungspunktsammlung](#clean_up_restore_point_collection)**<br>
+**Schritt 1: [Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**Schritt 2: [Bereinigen der Wiederherstellungspunktsammlung](#clean_up_restore_point_collection)**<br>
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured: Backup verfügt nicht über ausreichende Berechtigungen für den Schlüsseltresor zur Sicherung verschlüsselter virtueller Computer.
 
@@ -67,39 +67,39 @@ Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe
 
 Damit der Sicherungsvorgang auf verschlüsselten virtuellen Computern erfolgreich ist, benötigt er Berechtigungen zum Zugriff auf den Schlüsseltresor. Dies kann über das [Azure-Portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup) oder mithilfe von [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) erfolgen.
 
-## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork: Snapshot operation failed due to no network connectivity on the virtual machine (Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer).
+## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork: Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer.
 
 **Fehlercode**: ExtensionSnapshotFailedNoNetwork<br>
-**Fehlermeldung**: Snapshot operation failed due to no network connectivity on the virtual machine (Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer)<br>
+**Fehlermeldung**: Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer<br>
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:    
 **Ursache 1: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Ursache 2: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden](#the-backup-extension-fails-to-update-or-load)**  
-**Ursache 3: [Der virtuelle Computer verfügt nicht über Internetzugriff](#the-vm-has-no-internet-access)**
+**Ursache 2: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
+**Ursache 3: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks: VMSnapshot extension operation failed
 
 **Fehlercode**: ExtentionOperationFailedForManagedDisks <br>
-**Fehlermeldung**: VMSnapshot extension operation failed (Fehler beim Vorgang der VMSnapshot-Erweiterung).<br>
+**Fehlermeldung**: Fehler beim Vorgang der VMSnapshot-Erweiterung<br>
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
 **Ursache 1: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Ursache 2: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden](#the-backup-extension-fails-to-update-or-load)**  
-**Ursache 3: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Ursache 4: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**Ursache 2: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
+**Ursache 3: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Ursache 4: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
-## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2: Backup fails, with an internal error (Interner Fehler bei der Sicherung).
+## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2: Interner Fehler bei der Sicherung.
 
 **Fehlercode**: BackUpOperationFailed/BackUpOperationFailedV2 <br>
-**Fehlermeldung**: „Backup failed with an internal error – Please retry the operation in a few minutes“ (Interner Fehler bei der Sicherung – versuchen Sie, den Vorgang in einigen Minuten zu wiederholen). <br>
+**Fehlermeldung**: Interner Fehler bei der Sicherung – versuchen Sie, den Vorgang nach einigen Minuten zu wiederholen. <br>
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
-**Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Ursache 4: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden](#the-backup-extension-fails-to-update-or-load)**  
-**Ursache 5: [Der Sicherungsdienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)** <br>
-**Ursache 6: [Der virtuelle Computer verfügt nicht über Internetzugriff](#the-vm-has-no-internet-access)**
+**Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
+**Ursache 5: [Der Backup-Dienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)** <br>
+**Ursache 6: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – Azure Backup unterstützt derzeit keine Datenträgergrößen von über 1.023 GB.
 
@@ -111,7 +111,7 @@ Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Dat
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – Azure Backup unterstützt derzeit keine SSD Standard-Datenträger.
 
 **Fehlercode**: UserErrorStandardSSDNotSupported <br>
-**Fehlermeldung**: Azure Backup unterstützt derzeit keine SSD Standard-Datenträger. <br>
+**Fehlermeldung**: Azure Backup unterstützt zurzeit keine SSD Standard-Datenträger. <br>
 
 Azure Backup unterstützt derzeit nur SSD Standard-Datenträger für Tresore, für die ein Upgrade auf den Azure-VM-Sicherungsstapel v2 durchgeführt wurde. Sehen Sie sich [diese Vorteile](backup-upgrade-to-vm-backup-stack-v2.md) und [Überlegungen](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade) an, und führen Sie anschließend ein Upgrade mithilfe [dieser Anweisungen](backup-upgrade-to-vm-backup-stack-v2.md#upgrade) durch.
 
@@ -156,11 +156,11 @@ Wenn Ihr Subnetz keine Route für den ausgehenden Internetverkehr hat, müssen S
 #### <a name="solution"></a>Lösung
 Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten. Durch Neuinstallation des VM-Agents erhalten Sie die neueste Version. Dadurch wird auch die Kommunikation mit dem Dienst neu gestartet.
 
-1. Ermitteln Sie, ob der Windows-Gast-Agent-Dienst in den VM-Diensten ausgeführt wird (services.msc). Starten Sie den Windows-Gast-Agent-Dienst neu, und initiieren Sie die Sicherung.    
-2. Wenn der Windows-Gast-Agent-Dienst in den Diensten nicht angezeigt wird, wechseln Sie in der Systemsteuerung zu **Programme und Funktionen**, um zu ermitteln, ob der Windows-Gast-Agent-Dienst installiert ist.
-4. Wenn der Windows-Gast-Agent unter **Programm und Funktionen** angezeigt wird, deinstallieren Sie ihn.
+1. Ermitteln Sie, ob der Microsoft Azure-Gast-Agent-Dienst in den VM-Diensten ausgeführt wird (services.msc). Starten Sie den Microsoft Azure-Gast-Agent-Dienst neu, und initiieren Sie die Sicherung.    
+2. Wenn der Microsoft Azure-Gast-Agent-Dienst in den Diensten nicht angezeigt wird, wechseln Sie in der Systemsteuerung zu **Programme und Funktionen**, um zu ermitteln, ob der Microsoft Azure-Gast-Agent-Dienst installiert ist.
+4. Wenn der Microsoft Azure-Gast-Agent unter **Programme und Funktionen** angezeigt wird, deinstallieren Sie ihn.
 5. Laden Sie die [aktuelle Version der Agent-MSI-Datei](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie sie. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
-6. Überprüfen Sie, ob der Windows-Gast-Agent-Dienst in den Diensten angezeigt wird.
+6. Überprüfen Sie, ob der Microsoft Azure-Gast-Agent-Dienst in den Diensten angezeigt wird.
 7. Führen Sie eine bedarfsgesteuerten Sicherung aus:
     * Wählen Sie im Portal die Option **Jetzt sichern** aus.
 
@@ -205,7 +205,7 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmetasks führen:
 | Ursache | Lösung |
 | --- | --- |
 | Der VM-Status wird falsch gemeldet, weil der virtuelle Computer im Remotedesktopprotokoll (RDP) heruntergefahren ist. | Wenn Sie den virtuellen Computer im Remotedesktopprotokoll herunterfahren, überprüfen Sie im Portal, ob der VM-Status richtig angezeigt wird. Falls nicht, fahren Sie den virtuellen Computer im Portal mithilfe der Option **Herunterfahren** auf dem VM-Dashboard herunter. |
-| Der virtuelle Computer kann die Host- oder Fabric-Adresse nicht aus DHCP abrufen. | Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host- oder Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im **Azure-Portal** oder mithilfe der **PowerShell** konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter [Klassischer virtueller Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) und [Virtueller Resource Manager-Computer](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
+| Der virtuelle Computer kann die Host- oder Fabric-Adresse nicht aus DHCP abrufen. | Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host- oder Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im **Azure-Portal** oder mithilfe von **PowerShell** konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter [Klassischer virtueller Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) und [Virtueller Resource Manager-Computer](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Die Sicherungserweiterung wird nicht aktualisiert oder geladen.
 Wenn Erweiterungen nicht geladen werden können, tritt bei der Sicherung ein Fehler auf, weil keine Momentaufnahme erstellt werden kann.

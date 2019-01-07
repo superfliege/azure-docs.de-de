@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 03757aaf13d48730a3061f07ae3138f0aadbdf00
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127583"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077850"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopieren von Daten aus Magento mithilfe von Azure Data Factory (Vorschau)
 
@@ -45,7 +45,7 @@ Folgende Eigenschaften werden für den mit Magento verknüpften Dienst unterstü
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Magento** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Magento** | JA |
 | host | Die URL der Magento-Instanz. (192.168.222.110/magento3)  | JA |
 | accessToken | Das Zugriffstoken aus Magento. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
@@ -77,7 +77,12 @@ Folgende Eigenschaften werden für den mit Magento verknüpften Dienst unterstü
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Magento-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Magento die „type“-Eigenschaft des Datasets auf **MagentoObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Magento die „type“-Eigenschaft des Datasets auf **MagentoObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **MagentoObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -89,7 +94,8 @@ Legen Sie zum Kopieren von Daten aus Magento die „type“-Eigenschaft des Data
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -98,14 +104,14 @@ Legen Sie zum Kopieren von Daten aus Magento die „type“-Eigenschaft des Data
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Magento-Quelle unterstützt werden.
 
-### <a name="magentosource-as-source"></a>MagentoSource als Quelle
+### <a name="magento-as-source"></a>Magento als Quelle
 
 Legen Sie zum Kopieren von Daten aus Magento den Quelltyp in der Kopieraktivität auf **MagentoSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **MagentoSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Customers"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MagentoSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Customers"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

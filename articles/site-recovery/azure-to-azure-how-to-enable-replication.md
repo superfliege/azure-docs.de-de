@@ -6,14 +6,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e73659dca034c0333a73786788c8f342b57598da
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 797cef2d3a0e2cfeb28411c30a7da8a5b6f2d953
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314663"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834518"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replizieren von virtuellen Azure-Computern in einer anderen Azure-Region
 
@@ -33,11 +33,11 @@ Aktivieren Sie die Replikation. In diesem Verfahren wird davon ausgegangen, dass
 
 1. Klicken Sie im Tresor auf **+Replizieren**.
 2. Beachten Sie die folgenden Felder:
-    - **Quelle:** Der Ursprung der virtuellen Computer (in diesem Fall **Azure**).
-    - **Quellstandort:** Die Azure-Region, in der Sie Ihre virtuellen Computer schützen möchten. In diesem Beispiel ist der Quellspeicherort „Asien, Osten“.
-    - **Bereitstellungsmodell:** Das Azure-Bereitstellungsmodell der Quellcomputer.
+    - **Quelle**: Der Ursprung der virtuellen Computer, in diesem Fall **Azure**.
+    - **Quellstandort**: Die Azure-Region, in der Sie Ihre virtuellen Computer schützen möchten. In diesem Beispiel ist der Quellspeicherort „Asien, Osten“.
+    - **Bereitstellungsmodell**: Das Azure-Bereitstellungsmodell der Quellcomputer.
     - **Quellabonnement**: Das Abonnement, dem Ihre virtuellen Quellcomputer angehören. Dies kann ein beliebiges Abonnement im gleichen Azure Active Directory-Mandanten sein, in dem sich auch Ihr Recovery Services-Tresor befindet.
-    - **Ressourcengruppe:** Die Ressourcengruppe, zu der Ihre virtuellen Quellcomputer gehören. Alle virtuellen Computer der ausgewählten Ressourcengruppe werden im nächsten Schritt für den Schutz aufgeführt.
+    - **Ressourcengruppe**: Die Ressourcengruppe, der Ihre virtuellen Quellcomputer angehören. Alle virtuellen Computer der ausgewählten Ressourcengruppe werden im nächsten Schritt für den Schutz aufgeführt.
 
     ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
@@ -46,15 +46,15 @@ Aktivieren Sie die Replikation. In diesem Verfahren wird davon ausgegangen, dass
 
 4. Unter **Einstellungen** können Sie optional Einstellungen für den Zielstandort konfigurieren:
 
-    - **Zielstandort:** Der Standort, an dem die Daten der virtuellen Quellcomputer repliziert werden. Abhängig vom ausgewählten Computerstandort, stellt Site Recovery eine Liste der geeigneten Zielregionen bereit. Es empfiehlt sich, als Zielstandort den gleichen Standort zu verwenden wie für den Recovery Services-Tresor.
+    - **Zielstandort**: Der Standort, an den die Daten Ihrer virtuellen Quellcomputer repliziert werden. Abhängig vom ausgewählten Computerstandort, stellt Site Recovery eine Liste der geeigneten Zielregionen bereit. Es empfiehlt sich, als Zielstandort den gleichen Standort zu verwenden wie für den Recovery Services-Tresor.
     - **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch.
-    - **Zielressourcengruppe:** Die Ressourcengruppe, zu der alle Ihre replizierten virtuellen Computer gehören. Azure Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe, deren Name das Suffix „asr“ aufweist. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im Abschnitt unten gezeigt. Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
-    - **Virtuelles Zielnetzwerk:** Standardmäßig erstellt Site Recovery in der Zielregion ein neues virtuelles Netzwerk und versieht dessen Name mit dem Suffix „asr“. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
-    - **Zielspeicherkonten (wenn Ihre Quell-VM keine verwalteten Datenträger verwendet):** Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihres virtuellen Quellcomputers. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
+    - **Zielressourcengruppe**: Die Ressourcengruppe, der all Ihre replizierten virtuellen Computer angehören. Azure Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe, deren Name das Suffix „asr“ aufweist. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im Abschnitt unten gezeigt. Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
+    - **Virtuelles Zielnetzwerk**: Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk mit dem Namenssuffix „asr“. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
+    - **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)**: Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihrer Quell-VM. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
     - **Verwaltete Replikatdatenträger (wenn die Quell-VM verwaltete Datenträger verwendet)**: Site Recovery erstellt neue verwaltete Replikatdatenträger in der Zielregion, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp (Standard oder Premium) verwendet wie für die verwalteten Datenträger der Quell-VM.
-    - **Cachespeicherkonten:** Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein so genanntes Cachespeicherkonto. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet.
-    - **Zielverfügbarkeitsgruppen:** Standardmäßig erstellt Azure Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe und versieht deren Name mit dem Suffix „asr“ für die virtuellen Computer, die zu einer Verfügbarkeitsgruppe in der Quellregion gehören. Falls bereits eine von Azure Site Recovery erstellte Verfügbarkeitsgruppe vorhanden ist, wird diese wiederverwendet.
-    - **Target availability zones** (Zielverfügbarkeitszonen): Site Recovery weist in der Zielregion standardmäßig die gleiche Zonenanzahl zu wie in der Quellregion, sofern die Zielregion Verfügbarkeitszonen unterstützt.
+    - **Cachespeicherkonten**: Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein so genanntes Cachespeicherkonto. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet.
+    - **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Azure Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe und verwendet das Namenssuffix „asr“ für die virtuellen Computer, die zu einer Verfügbarkeitsgruppe in der Quellregion gehören. Falls bereits eine von Azure Site Recovery erstellte Verfügbarkeitsgruppe vorhanden ist, wird diese wiederverwendet.
+    - **Zielverfügbarkeitszonen**: Site Recovery weist in der Zielregion standardmäßig die gleiche Anzahl von Zonen zu wie in der Quellregion, sofern die Zielregion Verfügbarkeitszonen unterstützt.
 
     Unterstützt die Zielregion keine Verfügbarkeitszonen, werden die virtuellen Zielcomputer standardmäßig als einzelne Instanzen konfiguriert. Sie können solche virtuellen Computer bei Bedarf auch als Teil von Verfügbarkeitsgruppen in der Zielregion konfigurieren. Klicken Sie dazu auf „Anpassen“.
 
@@ -62,7 +62,7 @@ Aktivieren Sie die Replikation. In diesem Verfahren wird davon ausgegangen, dass
     >Nach der Aktivierung der Replikation können Sie den Verfügbarkeitstyp (einzelne Instanz, Verfügbarkeitsgruppe oder Verfügbarkeitszone) nicht mehr ändern. Wenn Sie den Verfügbarkeitstyp ändern möchten, müssen Sie die Replikation deaktivieren und wieder aktivieren.
     >
     
-    - **Replikationsrichtlinie:** Diese Richtlinie definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die App-konsistente Momentaufnahmenhäufigkeit. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „60 Minuten“ für die App-konsistente Momentaufnahmenhäufigkeit.
+    - **Replikationsrichtlinie**: Site Recovery definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die Häufigkeit von App-konsistenten Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „60 Minuten“ für die Häufigkeit App-konsistenter Momentaufnahmen.
 
     ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 

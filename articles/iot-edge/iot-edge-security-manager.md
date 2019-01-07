@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge-Sicherheits-Manager | Microsoft-Dokumentation
+title: Erfahren Sie, wie der Sicherheits-Manager Geräte und Software schützt – Azure IoT Edge | Microsoft-Dokumentation
 description: Verwaltet das Sicherheitsniveau für IoT Edge-Gerät und die Integrität von Sicherheitsdiensten.
 services: iot-edge
 keywords: Sicherheit, sicheres Element, Enclave, TEE, IoT Edge
@@ -9,12 +9,13 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6231f50134f7dcfd29e8754841847beb69570204
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: eda572c0f4abedd59c912dcf1de2cf3c6e226b5c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567688"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091923"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 

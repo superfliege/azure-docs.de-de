@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 2f415f1886c654f3bdd880cdccaadc7aa3e69892
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bc0afcf1ac7d9e7a777d850e1b6df7b915837f3a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32156494"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956873"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Aktivieren der Offlinesynchronisierung mit mobilen iOS-Apps
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -143,7 +143,7 @@ Bei Verwendung des Offlinespeichers für die Kerndaten müssen Sie bestimmte Tab
 Öffnen Sie **QSDataModel.xcdatamodeld**. Vier Tabellen sind definiert – drei, die durch das SDK verwendet werden, und eine, die für die To-do-Elemente selbst verwendet wird:
   * MS_TableOperations: Zum Nachverfolgen der Elemente, die mit dem Server synchronisiert werden müssen.
   * MS_TableOperationErrors: Zum Nachverfolgen von Fehlern, die während der Offlinesynchronisierung auftreten.
-  * MS_TableConfig: Zum Nachverfolgen der letzten aktualisierten Zeit für die letzte Synchronisierung für alle Pullvorgänge.
+  * MS_TableConfig: Zum Nachverfolgen des letzten Aktualisierungszeitpunkts für den letzten Synchronisierungsvorgang für alle Pullvorgänge.
   * TodoItem: Zum Speichern der To-do-Elemente. Die Systemspalten **createdAt**, **updatedAt** und **version** sind optionale Systemeigenschaften.
 
 > [!NOTE]
@@ -285,5 +285,5 @@ Beim Synchronisieren des lokalen Speichers mit dem Server haben wir die Methode 
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

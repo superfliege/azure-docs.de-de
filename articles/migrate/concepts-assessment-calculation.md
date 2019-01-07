@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über Bewertungsberechnungen im Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: f7f06636e025eda604caa65ca82d4dd7eb909d3f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165686"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849172"
 ---
 # <a name="assessment-calculations"></a>Bewertungsberechnungen
 
@@ -21,7 +21,6 @@ ms.locfileid: "47165686"
 ## <a name="overview"></a>Übersicht
 
 Eine Azure Migrate-Bewertung erfolgt in drei Phasen. Die Bewertung beginnt mit einer Eignungsanalyse, gefolgt von einer Größenanpassung und abschließend einer Schätzung der monatlichen Kosten. Ein Computer gelangt nur in die nächste Phase, wenn er die vorherige besteht. Beispiel: Besteht ein Computer die Azure-Eignungsprüfung nicht, wird er als ungeeignet für Azure markiert, und die Größen- und Kostenschätzungen werden nicht durchgeführt.
-
 
 ## <a name="azure-suitability-analysis"></a>Azure-Eignungsanalyse
 
@@ -40,7 +39,7 @@ Azure Migrate überprüft die folgenden Eigenschaften des lokalen virtuellen Com
 --- | --- | ---
 **Starttyp** | Azure unterstützt virtuelle Computer mit dem Starttyp BIOS, jedoch nicht UEFI. | Bedingt bereit, wenn der Starttyp UEFI ist.
 **Kerne** | Die Anzahl der Kerne in den Computern darf maximal der Anzahl der für einen virtuellen Azure-Computer unterstützten Kerne (128 Kerne) entsprechen.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne beim Vergleich. Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl der genutzten Kerne mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne ohne Anwendung des Komfortfaktors. | Bereit, wenn kleiner als die Grenzwerte oder gleich diesen.
-**Memory** | Die Größe des Computerarbeitsspeichers darf maximal dem zulässigen Arbeitsspeicher (3.892GB bei Azure M-Serie Standard_M128m&nbsp;<sup>2</sup>) für einen virtuellen Azure-Computer entsprechen. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten Arbeitsspeicher beim Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Bereit, wenn innerhalb der Grenzen.
+**Memory** | Die Größe des Computerarbeitsspeichers darf maximal dem zulässigen Arbeitsspeicher (3.892GB bei Azure M-Serie Standard_M128m&nbsp;<sup>2</sup>) für einen virtuellen Azure-Computer entsprechen. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten Arbeitsspeicher beim Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Bereit, wenn innerhalb der Grenzen.
 **Speicherdatenträger** | Die zugeteilte Größe eines Datenträgers darf höchstens 4 TB (4096 GB) betragen.<br/><br/> An den Computer dürfen einschließlich des Betriebssystem-Datenträgers höchstens 65 Datenträger angefügt sein. | Bereit, wenn innerhalb der Grenzen.
 **Netzwerk** | An einen Computer dürfen höchstens 32 NICs angefügt sein. | Bereit, wenn innerhalb der Grenzen.
 
@@ -119,22 +118,14 @@ Bei Verwendung der leistungsbasierten Größenanpassung benötigt Azure Migrate 
 
    Im Folgenden werden mögliche Gründe für die niedrige Zuverlässigkeitsstufe einer Bewertung aufgeführt:
 
-   **Einmalige Ermittlung**
-
-   - Die Statistikeinstellung in vCenter Server ist nicht auf Stufe 3 festgelegt. Da das Modell für einmalige Ermittlung von den Statistikeinstellungen in vCenter Server abhängt, werden von vCenter Server keine Leistungsdaten für Datenträger und Netzwerk erfasst, wenn die Statistikeinstellung in vCenter Server auf eine niedrigere Stufe als Stufe 3 festgelegt ist. In diesem Fall ist die Datenträger- und Netzwerkempfehlung von Azure Migrate nicht nutzungsbasiert. Da ohne Berücksichtigung der IOPS/des Durchsatzes nicht ermittelt werden kann, ob der Datenträger einen Premium-Datenträger in Azure benötigt, empfiehlt Azure Migrate Standarddatenträger für alle Datenträger.
-   - Die Statistikeinstellung in vCenter Server wurde vor dem Start der Ermittlung kurzzeitig auf Stufe 3 festgelegt. Ein Beispiel: Angenommen, Sie haben die Statistikeinstellung heute auf Stufe 3 festgelegt und starten die Ermittlung morgen (also 24 Stunden später) mithilfe der Collectorappliance. Wenn Sie eine Bewertung für einen einzelnen Tag erstellen, verfügen Sie über alle Datenpunkte, und die Zuverlässigkeitsstufe für die Bewertung beträgt fünf Sterne. Wenn Sie die Leistungsdauer in den Bewertungseigenschaften jedoch auf einen Monat festlegen, führt dies zu einer niedrigeren Zuverlässigkeitsstufe, da für den letzten Monat keine Datenträger- und Netzwerkleistungsdaten vorliegen. Wenn Sie die Leistungsdaten des letzten Monats berücksichtigen möchten, empfiehlt es sich, die Statistikeinstellung in vCenter Server vor Beginn der Ermittlung einen Monat lang auf Stufe 3 festzulegen.
-
-   **Kontinuierliche Ermittlung**
-
    - Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie z.B. die Bewertung mit einer auf 1 Tag festgelegten Leistungsdauer erstellen, müssen Sie bis mindestens einen Tag nach dem Start der Ermittlung warten, bis alle Datenpunkte gesammelt sind.
 
-   **Häufige Gründe**  
-
    - Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, heruntergefahren. Wenn ein virtueller Computer für eine gewisse Zeit heruntergefahren wird, können für diesen Zeitraum keine Leistungsdaten gesammelt werden.
+
    - Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In solchen Fällen liegt für die neuen virtuellen Computer kein Leistungsverlauf für den gesamten Zeitraum vor.
 
    > [!NOTE]
-   > Bei einer Zuverlässigkeitsstufe von weniger als vier Sternen empfiehlt sich für das Modell für einmalige Ermittlung, die Statistikeinstellungen in vCenter Server auf Stufe 3 festzulegen und mit der Ermittlung und Bewertung so lange zu warten, bis Daten für den gewünschten Zeitraum (ein Tag/eine Woche/ein Monat) vorliegen. Warten Sie für das Modell für kontinuierliche Ermittlung mindestens einen Tag, damit die Appliance ein Profil der Umgebung erstellen und dann die Bewertung *neu berechnen* kann. Sollte das nicht möglich sein, ist die leistungsbasierte Größenanpassung möglicherweise nicht zuverlässig, und es empfiehlt sich, in den Bewertungseigenschaften stattdessen die Größenanpassung vom Typ *Wie lokal* festzulegen.
+   > Bei einer Zuverlässigkeitsstufe von weniger als fünf Sternen wird empfohlen, mindestens einen Tag zu warten, damit die Appliance ein Profil der Umgebung erstellen kann. Führen Sie dann eine *Neuberechnung* der Bewertung durch. Sollte das nicht möglich sein, ist die leistungsbasierte Größenanpassung möglicherweise nicht zuverlässig, und es empfiehlt sich, in den Bewertungseigenschaften stattdessen die Größenanpassung vom Typ *Wie lokal* festzulegen.
 
 ## <a name="monthly-cost-estimation"></a>Schätzung der monatlichen Kosten
 

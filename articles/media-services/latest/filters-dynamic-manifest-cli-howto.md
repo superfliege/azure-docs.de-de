@@ -1,6 +1,6 @@
 ---
-title: Skalieren von reservierten Einheiten für Medien – Azure | Microsoft-Dokumentation
-description: Dieses Thema bietet eine Übersicht über die Skalierung der Medienverarbeitung mithilfe von Azure Media Services.
+title: Verwenden der CLI zum Erstellen von Filtern mit Azure Media Services | Microsoft-Dokumentation
+description: In diesem Thema wird gezeigt, wie Sie mithilfe der CLI Filter in Media Services erstellen können.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 9099429097efb17629e88318430f004f0f763cc5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336489"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133858"
 ---
 # <a name="creating-filters-with-cli"></a>Erstellen von Filtern mit der CLI 
 
-Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für die Standardmediendatei beschrieben. Azure Media Services ermöglicht Ihnen, Kontofilter und Mediendateifilter für Ihre Inhalte zu definieren. Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
+Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für die Standardmediendatei beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
 
 In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) und [Filtern für Medienobjekte](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) gezeigt. 
 

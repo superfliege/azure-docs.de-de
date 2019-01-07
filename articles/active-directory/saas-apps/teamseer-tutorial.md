@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit TeamSeer | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit TeamSeer | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und TeamSeer konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: a5910689f34c511c6cf7d8a044ef4358d2e0570d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2b9f3c7905fbb301c74a040a259b2f8666c75377
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445579"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Tutorial: Azure Active Directory-Integration mit TeamSeer
 
@@ -115,13 +115,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
      Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.teamseer.com/<companyid>`.
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an den [TeamSeer-Support](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html), um diesen Wert zu erhalten. 
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an den [TeamSeer-Support](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html), um diesen Wert zu erhalten. 
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Configure single sign-on](./media/teamseer-tutorial/tutorial_general_400.png)
 
@@ -162,7 +162,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     c. Klicken Sie auf **Speichern**.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -194,7 +194,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-a-teamseer-test-user"></a>Erstellen eines Testbenutzers für TeamSeer
 

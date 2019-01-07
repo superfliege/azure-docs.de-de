@@ -1,5 +1,5 @@
 ---
-title: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Azure Stream Analytics | Microsoft-Dokumentation
+title: Verarbeiten von Apache Kafka-Ereignissen mithilfe von Stream Analytics – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel zeigt, wie Kafka-Ereignisse verarbeitet werden, die mithilfe von Azure Stream Analytics über Event Hubs erfasst werden.
 services: event-hubs
 documentationcenter: ''
@@ -8,17 +8,17 @@ manager: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 031ed86461420ca6ebb2ac3a8f669305666e3cf4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7612e9d6444b61210da5d642530d99423220c0a4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278343"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076839"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
 Dieser Artikel zeigt, wie Daten in Kafka-fähige Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 

@@ -12,20 +12,20 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: b472baf77cc8f253337aa0780321a6e7dd3fecac
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ec3f286791a3a2c7a3bebd84ba17a11571e389f8
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056687"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163972"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Indiziertes und kommentiertes Video für mehrinstanzenfähige SaaS-App mit Azure SQL-Datenbank
 
 Dieser Artikel ist ein kommentierter Index zu den Zeitpunkten eines 81-minütigen Videos über SaaS-Mandantenmodelle oder -muster. Durch diesen Artikel können Sie im Video direkt zu dem Teil wechseln, der Sie interessiert. Das Video erklärt die wichtigsten Designoptionen für eine mehrinstanzenfähige Datenbankanwendung unter Azure SQL-Datenbank. Das Video enthält Demos, exemplarische Vorgehensweisen zu Verwaltungscode und zuweilen mehr Details, die durch Erfahrungen geprägt werden, als in unserer schriftlichen Dokumentation.
 
 Das Video ergänzt die Informationen in unserer schriftlichen Dokumentation, die Sie hier finden: 
-- *Konzept:* [Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken][saas-concept-design-patterns-563e]
-- *Tutorials:* [Bereitstellen der Wingtip Tickets SaaS-Anwendung][saas-how-welcome-wingtip-app-679t]
+- *Konzeptionell:* [Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken][saas-concept-design-patterns-563e]
+- *Tutorials:* [Die Wingtip Tickets SaaS-Anwendung][saas-how-welcome-wingtip-app-679t]
 
 Das Video und die Artikel beschreiben die vielen Phasen der Erstellung einer mehrinstanzenfähigen Anwendung unter Azure SQL-Datenbank in der Cloud. Spezielle Features von Azure SQL-Datenbank erleichtern die Entwicklung und Implementierung mehrinstanzenfähiger Anwendungen, die einfacher zu verwalten und zuverlässig leistungsfähig sind.
 
@@ -63,8 +63,8 @@ Die folgenden Titel sind Links zu den entsprechenden kommentierten Abschnitten, 
 - [17. Mehrinstanzenfähige Canonical-Hybrid-SaaS-App, 0:47:33](#anchor-image-wtip-min04733)
 - [18. Wingtip SaaS-Beispiel-App, 0:48:10](#anchor-image-wtip-min04810)
 - [19. In den Tutorials untersuchte Szenarien und Muster, 0:49:10](#anchor-image-wtip-min04910)
-- [20. Demo zu Tutorials und zum Github-Repository, 0:50:18](#anchor-image-wtip-min05018)
-- [21. Github-Repository Microsoft/Wingtip SaaS, 0:50:38](#anchor-image-wtip-min05038)
+- [20. Demo zu Tutorials und zum GitHub-Repository, 0:50:18](#anchor-image-wtip-min05018)
+- [21. GitHub-Repository Microsoft/WingtipSaaS, 0:50:38](#anchor-image-wtip-min05038)
 - [22. Untersuchen der Muster, 0:56:20](#anchor-image-wtip-min05620)
 - [23. Bereitstellung von Mandanten und Onboarding, 0:57:44](#anchor-image-wtip-min05744)
 - [24. Bereitstellung von Mandanten und Anwendungsverbindung, 0:58:58](#anchor-image-wtip-min05858)
@@ -199,13 +199,13 @@ Wenn Sie auf einen Screenshot klicken, gelangen Sie zur genauen zeitlichen Posit
 
 
 &nbsp;<a name="anchor-image-wtip-min05018"/>
-#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20. Demo zu Tutorials und zum Github-Repository, 0:50:12
-[![Demo zu Tutorials und zum Github-Repository][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
+#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20. Demo zu Tutorials und zum GitHub-Repository, 0:50:12
+[![Demo zu Tutorials und zum GitHub-Repository][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
 
 
 &nbsp;<a name="anchor-image-wtip-min05038"/>
-#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. Github-Repository Microsoft/Wingtip SaaS, 0:50:32
-[![Github-Repository Microsoft/Wingtip SaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
+#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. GitHub-Repository Microsoft/WingtipSaaS, 0:50:32
+[![GitHub-Repository Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
 &nbsp;<a name="anchor-image-wtip-min05620"/>
@@ -294,14 +294,14 @@ Wenn Sie auf einen Screenshot klicken, gelangen Sie zur genauen zeitlichen Posit
 
 - [Blogbeitrag, 22. Mai 2017][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- *Konzept:* [Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken][saas-concept-design-patterns-563e]
+- *Konzeptionell:* [Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken][saas-concept-design-patterns-563e]
 
-- *Tutorials:* [Bereitstellen der Wingtip Tickets SaaS-Anwendung][saas-how-welcome-wingtip-app-679t]
+- *Tutorials:* [Die Wingtip Tickets SaaS-Anwendung][saas-how-welcome-wingtip-app-679t]
 
-- Github-Repositorys für Varianten der Wingtip Tickets SaaS-Mandantenanwendung:
-    - [Github-Repository für – Modell „eigenständige Anwendung“][github-wingtip-standaloneapp].
-    - [Github-Repository für – Modell „DB pro Mandant“][github-wingtip-dbpertenant].
-    - [Github-Repository für – Modell „DB für mehrere Mandanten“][github-wingtip-multitenantdb].
+- GitHub-Repositorys für Varianten der Wingtip Tickets SaaS-Mandantenanwendung:
+    - [GitHub-Repository für – Modell „eigenständige Anwendung“][github-wingtip-standaloneapp].
+    - [GitHub-Repository für – Modell „DB pro Mandant“][github-wingtip-dbpertenant].
+    - [GitHub-Repository für – Modell „DB für mehrere Mandanten“][github-wingtip-multitenantdb].
 
 
 
@@ -354,9 +354,9 @@ Wenn Sie auf einen Screenshot klicken, gelangen Sie zur genauen zeitlichen Posit
 
 [image-wtip-min04910-scenarios-tutorials]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min04910-scenarios-patterns-explored-tutorials.png "In den Tutorials untersuchte Szenarien und Muster"
 
-[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "Demo zu Tutorials und zum Github-Repository"
+[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "Demo zu Tutorials und zum GitHub-Repository"
 
-[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Github-Repository Microsoft/Wingtip SaaS"
+[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "GitHub-Repository Microsoft/WingtipSaaS"
 
 [image-wtip-min05620-exploring-patterns]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05620-exploring-patterns-tutorials.png "Untersuchen der Muster"
 

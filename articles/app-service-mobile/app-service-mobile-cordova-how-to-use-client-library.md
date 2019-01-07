@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467885"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959732"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Verwenden der Apache Cordova-Clientbibliothek für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -71,8 +71,8 @@ Das Azure Mobile Apps-Cordova-Plug-In unterstützt Ionic v1- und v2-Apps.  Nur b
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Gewusst wie: Authentifizieren von Benutzern
-Azure App Service unterstützt die Authentifizierung und Autorisierung von Anwendungsbenutzern mit einer Vielzahl externer Identitätsanbieter: Facebook, Google, Microsoft-Konto und Twitter. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Erste Schritte mit der Authentifizierung] .
+## <a name="auth"></a>Vorgehensweise: Authentifizieren von Benutzern
+App Service unterstützt die Authentifizierung und Autorisierung von App-Benutzern mithilfe verschiedener externer Identitätsanbieter: Facebook, Google, Microsoft-Konto und Twitter. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Erste Schritte mit der Authentifizierung] .
 
 Bei Verwendung der Authentifizierung in einer Apache Cordova-App müssen die folgenden Cordova-Plug-Ins verfügbar sein:
 
@@ -123,7 +123,7 @@ Sie müssen auch die Loopback-URLs zu den CORS-Einstellungen für Ihre App Servi
 
 Es dauert ungefähr 10-15 Sekunden, bis die neuen Einstellungen wirksam sind.
 
-## <a name="register-for-push"></a>Gewusst wie: Registrieren für Pushbenachrichtigungen
+## <a name="register-for-push"></a>Vorgehensweise: Registrieren für Pushbenachrichtigungen
 Installieren Sie das Plug-In [phonegap-plug-in-push] zum Verarbeiten von Pushbenachrichtigungen.  Dieses Plug-In kann problemlos mithilfe des `cordova plugin add` -Befehls über die Befehlszeile oder den Git-Installer für Plug-Ins in Visual Studio hinzugefügt werden.  Der folgende Code in der Apache Cordova-App registriert Ihr Gerät für Pushbenachrichtigungen:
 
 ```
@@ -167,7 +167,7 @@ Verwenden Sie das Notification Hubs SDK zum Senden von Pushbenachrichtigungen vo
 
 ## <a name="more-information"></a>Weitere Informationen
 
-Ausführliche Informationen zur API finden Sie in unserer [API-Dokumentation](http://azure.github.io/azure-mobile-apps-js-client/).
+Ausführliche Informationen zur API finden Sie in unserer [API-Dokumentation](https://azure.github.io/azure-mobile-apps-js-client/).
 
 <!-- URLs. -->
 [Azure-Portal]: https://portal.azure.com
@@ -176,7 +176,7 @@ Ausführliche Informationen zur API finden Sie in unserer [API-Dokumentation](ht
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Apache Cordova-Plug-Ins für Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[Ihrer ersten Apache Cordova-App]: http://cordova.apache.org/#getstarted
+[Ihrer ersten Apache Cordova-App]: https://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
 [phonegap-plug-in-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device

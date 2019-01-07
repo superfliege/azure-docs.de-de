@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3cc1a09963c5f7fee613af24c63fd15b1cfffee
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: bf7d639c682e443f29b31b3c6d7438e89c406fde
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806052"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838632"
 ---
 # <a name="how-to-publish-a-new-iot-edge-module-in-the-cloud-partner-portal"></a>Veröffentlichen eines neuen IoT Edge-Moduls im Cloud-Partnerportal
 
@@ -39,7 +39,7 @@ Wenn Sie ein IoT Edge-Modul für den Azure Marketplace veröffentlichen möchten
 
     -   Beschreibung (einfaches HTML-Format)
 
-    -   Ein Logo im PNG-Bildformat und in folgenden Größen: 40 x 40 Pixel, 90 x 90 Pixel, 115 x 115 Pixel, 255 x 115 Pixel.
+    -   Ein Logo im PNG-Bildformat und in folgenden Größen: 40 Pixel × 40 Pixel, 90 Pixel × 90 Pixel, 115 Pixel × 115 Pixel, 255 Pixel × 115 Pixel.
 
     -   Nutzungsbedingungen und Datenschutzrichtlinie
 
@@ -53,7 +53,7 @@ Gehen Sie wie folgt vor, um Ihr IoT Edge-Modulangebot vorzubereiten:
 -   Melden Sie sich bei Ihrem [CPP-Konto](https://cloudpartner.azure.com/) an.
 
 >[!Note]
->Allgemeine Informationen zum Cloud-Partnerportal finden Sie in [dieser Dokumentation](https://cloudpartner.azure.com/#learn).
+>Allgemeine Informationen zum Cloud-Partnerportal finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
 
 -   Klicken Sie auf **Neues Angebot** und anschließend auf **IoT Edge-Modul**.
 
@@ -151,7 +151,7 @@ Fügen Sie auf der Registerkarte „Marketing“ Ihren marketingspezifischen Inh
 
 -   **Suggested categories** (Vorgeschlagene Kategorien): Wählen Sie bis zu fünf Kategorien aus. Diese werden auf Ihrer Produktdetailseite angezeigt. Derzeit werden alle IoT Edge-Module auf den Seiten zum Durchstöbern unter der Kategorie *Internet der Dinge \> IoT Edge-Modul* angezeigt.
 
--   **Logos**: Laden Sie die Logobilder für Ihr IoT Edge-Modul im PNG-Format hoch. Verwenden Sie exakt die folgenden Größen: 40 x 40 Pixel, 90 x 90 Pixel, 115 x 115 Pixel, 255 x 115 Pixel.
+-   **Logos**: Laden Sie die Logobilder für Ihr IoT Edge-Modul im PNG-Format hoch. Verwenden Sie genau folgende Größen: 40 Pixel × 40 Pixel, 90 Pixel × 90 Pixel, 115 Pixel × 115 Pixel, 255 Pixel × 115 Pixel.
 
 -   **Screenshots**: Screenshots werden auf Ihrer Produktdetailseite angezeigt. Damit können Sie sehr gut die Features und die Funktionsweise Ihres IoT Edge-Moduls veranschaulichen. Sie können beispielsweise Architekturdiagramme oder Anwendungsfälle präsentieren.
 

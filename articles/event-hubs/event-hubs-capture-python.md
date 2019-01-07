@@ -1,5 +1,5 @@
 ---
-title: Exemplarische Vorgehensweise für die Azure Event Hubs-Erfassung | Microsoft-Dokumentation
+title: Lesen erfasster Daten aus der Python-App – Azure Event Hubs | Microsoft-Dokumentation
 description: Ein Beispiel zur Veranschaulichung der Verwendung des Erfassungsfeatures von Event Hubs unter Verwendung des Azure Python SDKs.
 services: event-hubs
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76102e1238346cbbb8f5159d2ffcd94c788c16d6
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 72efe156920bb78631ea71a0f47f7f5fe19c7e23
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141170"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133654"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Exemplarische Vorgehensweise für die Event Hubs-Erfassung: Python
+# <a name="event-hubs-capture-walkthrough-python"></a>Exemplarische Vorgehensweise für Event Hubs Capture: Python
 
 Capture ist ein Feature von Azure Event Hubs. Mit diesem Feature können Sie Streamingdaten in Ihrem Event Hub automatisch an ein Azure Blob Storage-Konto Ihrer Wahl übermitteln. Diese Funktion erleichtert die Batchverarbeitung von Echtzeit-Streamingdaten. In diesem Artikel erfahren Sie, wie Sie die Event Hubs-Erfassung mit Python verwenden. Weitere Informationen zur Event Hubs-Erfassung finden Sie im [Übersichtsartikel](event-hubs-capture-overview.md).
 
@@ -38,10 +39,9 @@ In diesem Beispiel wird das [Azure Python SDK](https://azure.microsoft.com/devel
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Python 2.7.x
-- Ein Azure-Abonnement
-- Ein aktiver [Event Hubs-Namespace und Event Hub](event-hubs-create.md)
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
+- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- Ein aktiver [Event Hubs-Namespace und -Event Hub](event-hubs-create.md). 
+- Aktivieren Sie das Feature **Capture** für den Event Hub mithilfe der folgenden Anweisungen: [Aktivieren von Event Hubs Capture über das Azure-Portal](event-hubs-capture-enable-through-portal.md)
 
 ## <a name="create-an-azure-blob-storage-account"></a>Erstellen eines Azure Blob Storage-Kontos
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.

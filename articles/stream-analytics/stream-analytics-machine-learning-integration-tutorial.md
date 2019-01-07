@@ -2,19 +2,19 @@
 title: Azure Stream Analytics-Integration in Azure Machine Learning
 description: Dieser Artikel beschreibt, wie Sie mithilfe einer benutzerdefinierten Funktion schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/16/2018
-ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d90439e498e8812551d9e2994165f1714d3bdaab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685751"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093314"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning
 Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
@@ -28,7 +28,7 @@ Sie können das in diesem Artikel Gelernte u.a. in folgenden Szenarien anwenden:
 
 In einem realen Szenario erhalten Sie die Daten direkt aus einem Datenstrom von Twitter. Um das Tutorial zu vereinfachen, wurde es so verfasst, dass der Stream Analytics-Auftrag Tweets aus einer CSV-Datei in Azure Blob Storage abruft. Sie können eine eigene CSV-Datei erstellen oder eine CSV-Beispieldatei verwenden, wie in der folgenden Abbildung gezeigt:
 
-![Beispiel-Tweets in einer CSV-Datei](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+![In einer CSV-Datei gezeigte Beispieltweets](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
 Der von Ihnen erstellte Stream Analytics-Auftrag wendet das Stimmungsanalysemodell als benutzerdefinierte Funktion (User-Defined Function, UDF) auf die Beispieltextdaten aus dem Blobspeicher an. Die Ausgabe (das Ergebnis der Standpunktanalyse) wird in denselben Blobspeicher, aber in eine andere CSV-Datei geschrieben. 
 
@@ -58,15 +58,15 @@ Für diesen Schritt können Sie eine beliebige CSV-Datei verwenden, also z.B. au
 
 3. Geben Sie eine vorhandene Ressourcengruppe und einen Standort an. Es wird empfohlen, dass alle Ressourcen, die in diesem Tutorial erstellt werden, denselben Standort aufweisen.
 
-    ![Speicherkontodetails angeben](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
+    ![Speicherkontodetails angeben](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
 4. Wählen Sie das Speicherkonto im Azure-Portal aus. Klicken Sie auf dem Blatt des Speicherkontos auf **Container** und dann auf **+&nbsp;Container**, um den Blobspeicher zu erstellen.
 
-    ![Erstellen eines Blobcontainers](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
+    ![Erstellen eines Blobspeichercontainers für Eingabe](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
 5. Geben Sie einen Namen für den Container (`azuresamldemoblob` in diesem Beispiel) ein, und vergewissern Sie sich, dass **Zugriffstyp** auf **Blob** festgelegt ist. Wenn Sie fertig sind, klicken Sie auf **OK**.
 
-    ![Details zum Blobcontainer angeben](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
+    ![Details zum Blobcontainer angeben](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
 6. Wählen Sie auf dem Blatt **Container** den neuen Container aus, um das Blatt für den betreffenden Container zu öffnen.
 
@@ -123,7 +123,7 @@ Sie können jetzt einen Stream Analytics-Auftrag erstellen, der die Beispiel-Twe
 
 3. Benennen Sie den Auftrag `azure-sa-ml-demo`. Geben Sie ein Abonnement und eine vorhandene Ressourcengruppe an, oder erstellen Sie eine neue, und wählen Sie den Speicherort für den Auftrag aus.
 
-   ![Einstellungen für den neuen Stream Analytics-Auftrag angeben](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
+   ![Einstellungen für den neuen Stream Analytics-Auftrag angeben](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
 
 ### <a name="configure-the-job-input"></a>Konfigurieren einer Auftragseingabe
@@ -143,7 +143,7 @@ Der Auftrag ruft seine Eingabe aus der CSV-Datei ab, die Sie zuvor in den Blobsp
    |**Container**  | Wählen Sie den zuvor erstellten Container (`azuresamldemoblob`) aus.        |
    |**Ereignisserialisierungsformat**  |  Wählen Sie **CSV**.       |
 
-   ![Einstellungen für die neue Auftragseingabe](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+   ![Einstellungen für die neue Stream Analytics-Auftragseingabe](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 4. Klicken Sie auf **Speichern**.
 
@@ -163,7 +163,7 @@ Der Auftrag sendet die Ergebnisse an denselben Blobspeicher, aus dem er die Eing
    |**Container**  | Wählen Sie den zuvor erstellten Container (`azuresamldemoblob`) aus.        |
    |**Ereignisserialisierungsformat**  |  Wählen Sie **CSV**.       |
 
-   ![Einstellungen für die neue Auftragsausgabe](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
+   ![Einstellungen für die neue Stream Analytics-Auftragsausgabe](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
 4. Klicken Sie auf **Speichern**.   
 
@@ -185,7 +185,7 @@ In diesem Abschnitt des Tutorials definieren Sie eine Funktion im Stream Analysi
    | **URL**| Fügen Sie die Webdienst-URL ein.|
    |**Schlüssel** | Fügen Sie den API-Schlüssel ein. |
   
-   ![Einstellungen für das Hinzufügen einer Machine Learning-Funktion zum Stream Analytics-Auftrag](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![Einstellungen für das Hinzufügen einer Machine Learning-Funktion zum Stream Analytics-Auftrag](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
 4. Klicken Sie auf **Speichern**.
 

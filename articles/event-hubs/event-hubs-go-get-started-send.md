@@ -1,39 +1,41 @@
 ---
-title: Senden von Ereignissen an Azure Event Hubs mithilfe von Go | Microsoft-Dokumentation
-description: Erste Schritte beim Senden von Ereignissen an Event Hubs mithilfe von Go
+title: 'Senden von Ereignissen unter Verwendung von Go: Azure Event Hubs | Microsoft-Dokumentation'
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Go-Anwendung, die Ereignisse aus Azure Event Hubs sendet.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: f5e30a103b09613caee8e9912a89a5bc2d390f65
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 44cbea8cc40f83ed5fdd2863da0cb0a01e8dc2b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458087"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091059"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Senden von Ereignissen an Event Hubs mithilfe von Go
 
-Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-about.md) und [Event Hubs-Features](event-hubs-features.md).
+Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
 
 Dieses Tutorial beschreibt, wie Sie Ereignisse aus einer in Go geschriebenen Anwendung an einen Event Hub senden. 
 
 > [!NOTE]
-> Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs) herunterladen, die Zeichenfolgen `EventHubConnectionString` und `EventHubName` durch die Werte für Ihren Event Hub ersetzen, und das Beispiel dann ausführen. Alternativ dazu können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
+> Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs) herunterladen, die Zeichenfolgen `EventHubConnectionString` und `EventHubName` durch die Werte für Ihren Event Hub ersetzen und das Beispiel dann ausführen. Alternativ können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 * Eine lokale Go-Installation. Befolgen Sie bei Bedarf [diese Anweisungen](https://golang.org/doc/install).
-* Einen vorhandenen Event Hubs-Namespace und einen vorhandenen Event Hub. Die Anweisungen [in diesem Artikel](event-hubs-create.md) zeigen Ihnen, wie Sie diese Entitäten erstellen.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
-Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie dann mit den folgenden Schritten in diesem Tutorial fort.
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub.
+
+Fahren Sie nun mit den folgenden Schritten in diesem Tutorial fort.
 
 ## <a name="install-go-package"></a>Installieren des Go-Pakets
 

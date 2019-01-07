@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 67f8b49cd2205403dec8843beebb92c9f41f6e37
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 964ef3bd988d71bfb90dbaa473b4b259769064b3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955795"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722054"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -139,9 +139,10 @@ Zur Authentifizierung bei einem Dienstprinzipal müssen Sie Ihrer Anwendung eine
 
 1. Navigieren Sie im Azure-Portal zu dem Batch-Konto, das von Ihrer Anwendung verwendet wird.
 2. Wählen Sie auf dem Blatt **Einstellungen** für das Batch-Konto die Option **Zugriffssteuerung (IAM)**.
-3. Klicken Sie auf die Schaltfläche **Hinzufügen** . 
-4. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle _Mitwirkender_ oder _Leser_ für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).  
-5. Geben Sie im Feld **Auswählen** den Namen Ihrer Anwendung ein. Wählen Sie die Anwendung in der Liste aus, und klicken Sie auf **Speichern**.
+3. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
+4. Klicken Sie auf die Schaltfläche **Rollenzuweisung hinzufügen**. 
+5. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle _Mitwirkender_ oder _Leser_ für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).  
+6. Geben Sie im Feld **Auswählen** den Namen Ihrer Anwendung ein. Wählen Sie die Anwendung in der Liste aus, und klicken Sie auf **Speichern**.
 
 Ihre Anwendung sollte jetzt in Ihren Einstellungen für die Zugriffssteuerung mit einer zugewiesenen RBAC-Rolle angezeigt werden. 
 

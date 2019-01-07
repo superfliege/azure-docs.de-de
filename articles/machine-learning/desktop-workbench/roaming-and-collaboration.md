@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0117a08c76288cda25da2196ec18433b3678e24b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983717"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724637"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Roaming und Zusammenarbeit in Azure Machine Learning Workbench
 
@@ -124,9 +124,9 @@ Durch Freigeben eines Git-Remoterepositorys für das Projekt können Alice und B
 ### <a name="use-the-azure-portal-to-add-users"></a>Hinzufügen von Benutzern im Azure-Portal
 <a name="portal"></a>
 
-Machine Learning-Experimentieren-Konten, -Arbeitsbereiche und -Projekte sind Azure Resource Manager-Ressourcen. Über den Link **Zugriffssteuerung** im [Azure-Portal](https://portal.azure.com) können Sie Rollen zuweisen. 
+Machine Learning-Experimentieren-Konten, -Arbeitsbereiche und -Projekte sind Azure Resource Manager-Ressourcen. Über den Link **Zugriffssteuerung (IAM)** im [Azure-Portal](https://portal.azure.com) können Sie Rollen zuweisen. 
 
-Sie finden die Ressource, der Sie Benutzer hinzufügen möchten, in der Ansicht **Alle Ressourcen**. Wählen Sie den Link **Zugriffssteuerung (IAM)** und dann **Benutzer hinzufügen** aus. 
+Sie finden die Ressource, der Sie Benutzer hinzufügen möchten, in der Ansicht **Alle Ressourcen**. Wählen Sie den Link **Zugriffssteuerung (IAM)** und dann **Rollenzuweisung hinzufügen** aus. 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
 

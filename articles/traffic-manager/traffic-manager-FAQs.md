@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987238"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963571"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -444,7 +444,7 @@ Ausführliche Informationen finden Sie auf der Seite [Traffic Manager Preise](ht
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Wirken sich geschachtelte Profile auf die Leistung aus?
 
-Nein. Durch geschachtelte Profile entstehen keine Leistungseinbußen.
+ Nein. Durch geschachtelte Profile entstehen keine Leistungseinbußen.
 
 Die Traffic Manager-Namenserver durchlaufen bei der Verarbeitung der einzelnen DNS-Abfragen intern die Profilhierarchie. Eine DNS-Abfrage an ein übergeordnetes Profil kann eine DNS-Antwort mit einem Endpunkt aus einem untergeordneten Profil erhalten. Unabhängig davon, ob Sie ein einzelnes Profil oder geschachtelte Profile verwenden, wird nur ein einziger CNAME-Eintrag verwendet. Es gibt keine Notwendigkeit, für jedes Profil in der Hierarchie einen CNAME-Eintrag zu erstellen.
 

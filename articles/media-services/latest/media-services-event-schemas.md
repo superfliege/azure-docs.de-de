@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249295"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011993"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-Schemas für Media Services-Ereignisse
 
@@ -28,7 +28,7 @@ Eine Liste von Beispielskripts und Tutorials finden Sie unter [Media Services-Er
 
 ### <a name="job-related-event-types"></a>Auftragsbezogene Ereignistypen
 
-Media Services gibt die nachfolgend beschriebenen **auftragsbezogenen** Ereignistypen aus. Es gibt zwei Kategorien für die **auftragsbezogenen** Ereignisse: „Überwachen von Auftragszustandsänderungen“ und „Überwachen von Auftragsausgangszustandsänderungen“. 
+Media Services gibt die nachfolgend beschriebenen **auftragsbezogenen** Ereignistypen aus. Es gibt zwei Kategorien für die **auftragsbezogenen** Ereignisse: „Überwachen von Auftragszustandsänderungen“ und „Überwachen von Auftragsausgabezustandsänderungen“. 
 
 Sie können sich für alle Ereignisse registrieren, indem Sie das JobStateChange-Ereignis abonnieren. Sie können auch nur bestimmte Ereignisse abonnieren (z. B. Endzustände wie JobErrored, JobFinished und JobCanceled). 
 
@@ -112,9 +112,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | previousState | Zeichenfolge | Der Status des Auftrags vor dem Ereignis. |
-| state | Zeichenfolge | Der neue Status des Auftrags, über den in diesem Ereignis eine Benachrichtigung erfolgt. Beispiele: „Queued: The Job is awaiting resources“ (In der Warteschlange: Der Auftrag wartet auf Ressourcen) oder „Scheduled: The job is ready to start“ (Geplant: Der Auftrag ist bereit für den Start).|
+| state | Zeichenfolge | Der neue Status des Auftrags, über den in diesem Ereignis eine Benachrichtigung erfolgt. Beispiel: „Geplant: Der Auftrag ist startbereit“ oder „Abgeschlossen: Der Auftrag wurde abgeschlossen“.|
 
-Dabei kann der Auftragsstatus einer der folgenden Werte sein: *Queued* (In der Warteschlange), *Scheduled* (Geplant), *Processing* (Verarbeitung), *Finished* (Abgeschlossen), *Error* (Fehler), *Canceled* (Abgebrochen), *Canceling* (Wird abgebrochen).
+Der Auftragsstatus kann einen der folgenden Werte aufweisen: *Queued* (In Warteschlange), *Scheduled* (Geplant), *Processing* (Wird verarbeitet), *Finished* (Abgeschlossen), *Error* (Fehler), *Canceled* (Abgebrochen), *Canceling* (Wird abgebrochen).
+
+> [!NOTE]
+> *Queued* (In Warteschlange) liegt nur in der Eigenschaft **previousState**, aber nicht in der Eigenschaft **state** vor.
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled, JobProcessing, JobCanceling
 

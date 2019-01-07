@@ -1,5 +1,5 @@
 ---
-title: Vorbereitung auf eine Änderung der ausgehenden IP-Adresse – Azure
+title: Vorbereitung auf eine Änderung der ausgehenden IP-Adresse – Azure App Service
 description: Erfahren Sie, wie Sie vorgehen, wenn Ihre ausgehende IP-Adresse geändert werden soll, damit Ihre App nach der Änderung weiterhin funktioniert.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 2355fa5e3e7fd83b5d9f22d87c19f8152659fc97
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.custom: seodec18
+ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309347"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719301"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Vorbereitung auf eine Änderung der ausgehenden IP-Adresse
 
@@ -39,7 +40,7 @@ Die neuen ausgehenden IP-Adressen werden im Portal angezeigt, bevor sie wirksam 
 
 3.  Wählen Sie Ihre App Service-App in der Liste aus.
 
-4.  Wenn es sich bei der App um eine Funktions-App handelt, finden Sie weitere Informationen unter [Ausgehende IP-Adressen einer Funktions-App](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
+1.  Wenn es sich bei der App um eine Funktions-App handelt, finden Sie weitere Informationen unter [Ausgehende IP-Adressen einer Funktions-App](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
 
 4.  Klicken Sie unter der Überschrift **Einstellungen** im linken Navigationsbereich auf **Eigenschaften**, und suchen Sie den Abschnitt mit der Bezeichnung **Ausgehende IP-Adressen**.
 
@@ -47,4 +48,4 @@ Die neuen ausgehenden IP-Adressen werden im Portal angezeigt, bevor sie wirksam 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde erläutert, wie Sie sich auf eine Änderung der IP-Adresse vorbereiten, die von Azure veranlasst wurde. Weitere Informationen zu IP-Adressen in Azure App Service finden Sie unter [Ein- und ausgehende IP-Adressen in Azure App Service](app-service-ip-addresses.md).
+In diesem Artikel wurde erläutert, wie Sie sich auf eine Änderung der IP-Adresse vorbereiten, die von Azure veranlasst wurde. Weitere Informationen zu IP-Adressen in Azure App Service finden Sie unter [Ein- und ausgehende IP-Adressen in Azure App Service](overview-inbound-outbound-ips.md).

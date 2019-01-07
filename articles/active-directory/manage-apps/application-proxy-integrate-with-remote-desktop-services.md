@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230791"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135490"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -49,7 +49,7 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 
 - Die RD-Web- und RD-Gateway-Endpunkte müssen sich auf demselben Computer befinden und ein gemeinsames Stamm verwenden. RD-Web und RD-Gateway werden auf dem Anwendungsproxy als einzelne Anwendung veröffentlicht, damit Sie über die Möglichkeit für einmaliges Anmelden zwischen den beiden Anwendungen verfügen.
 
-- Sie sollten bereits [RDS bereitgestellt](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](application-proxy-enable.md) haben.
+- Sie sollten bereits [RDS bereitgestellt](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](application-proxy-add-on-premises-application.md) haben.
 
 - In diesem Szenario wird davon ausgegangen, dass Ihre Endbenutzer mit dem Internet Explorer auf Windows 7- oder Windows 10-Desktops verwenden, die über die Seite von RD-Web eine Verbindung herstellen. Weitere Informationen zur Unterstützung anderer Betriebssysteme finden Sie unter [Unterstützung für andere Clientkonfigurationen](#support-for-other-client-configurations).
 
@@ -63,11 +63,11 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
 
 ### <a name="publish-the-rd-host-endpoint"></a>Veröffentlichen des RD-Hostendpunkts
 
-1. [Veröffentlichen Sie anhand der folgenden Werten eine neue Anwendung mit Anwendungsproxy](application-proxy-publish-azure-portal.md):
+1. [Veröffentlichen Sie anhand der folgenden Werten eine neue Anwendung mit Anwendungsproxy](application-proxy-add-on-premises-application.md):
    - Interne URL: `https://\<rdhost\>.com/`, wobei `\<rdhost\>` das gemeinsame Stammverzeichnis ist, das von RD-Web und RD-Gateway gemeinsam genutzt wird.
-   - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung ausgefüllt, den Sie jedoch ändern können. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet.
+   - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung aufgefüllt. Sie können das Feld jedoch ändern. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet.
    - Präauthentifizierungsmethode: Azure Active Directory
-   - URL-Header übersetzen: Nein
+   - URL-Header übersetzen: Nein 
 2. Weisen Sie Benutzern die veröffentlichte RD-Anwendung zu. Stellen Sie sicher, dass alle Benutzer auch Zugriff auf RDS haben.
 3. Legen Sie für die Methode zur einmaligen Anmeldung für die Anwendung **Azure AD-SSO deaktiviert** fest. Ihre Benutzer werden aufgefordert, sich einmal bei Azure AD und einmal bei RD-Web zu authentifizieren, verfügen jedoch über die Möglichkeit zur einmaligen Anmeldung beim RD-Gateway.
 4. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen** > *Ihre Anwendung* > **Einstellungen**.

@@ -1,5 +1,5 @@
 ---
-title: Der Skill „Spracherkennung“ der kognitiven Suche (Azure Search) | Microsoft-Dokumentation
+title: Die Qualifikation „Spracherkennung“ der kognitiven Suche – Azure Search
 description: Bewertet unstrukturierten Text und gibt für jeden Datensatz einen Sprachbezeichner mit einer Punktzahl zurück, die die Stärke der Analyse in einer Azure Search-Anreicherungspipeline angibt.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 2fd1c1ec0d2442afd6367e1d35af6f798dced2c7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 741710a9f2a9e505681401183f5f41be0695633b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733277"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308565"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Der kognitive Skill „Spracherkennung“
 
@@ -24,7 +25,9 @@ Bis zu 120 Sprachen des eingegebenen Textes erkennt die **Spracherkennung** und 
 Diese Funktion ist besonders nützlich, wenn Sie die Sprache des Texts als Eingabe für andere Skills (z.B. den [Skill „Standpunktanalyse“](cognitive-search-skill-sentiment.md) oder den [Skill „Text teilen“](cognitive-search-skill-textsplit.md)) benötigen.
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen sowie die Bildextraktion und Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill

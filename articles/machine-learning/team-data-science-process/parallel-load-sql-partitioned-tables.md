@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Optimieren von Tabellen für schnelles paralleles Importieren von Daten in eine SQL Server-Instanz auf einer Azure-VM | Microsoft-Dokumentation
-description: Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
+title: Paralleler Massenimport von Daten in SQL-Partitionstabellen – Team Data Science-Prozess
+description: Erstellen Sie partitionierte Tabellen für den schnellen parallelen Massenimport von Daten in eine SQL Server-Datenbank.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: f437de3043cbd3d689f85dc3524b419b1633553f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 25c79f15c11dcf84ab6b3e5946f17361a98737fa
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446465"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140250"
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Erstellen und Optimieren von Tabellen für den schnellen parallelen Import von Daten in eine SQL Server-Instanz auf einer Azure-VM
 
 In diesem Artikel wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben. Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-Datenbank und bei den nachfolgenden Abfragen kann mithilfe von *partitionierten Tabellen und Sichten* verbessert werden. 
 

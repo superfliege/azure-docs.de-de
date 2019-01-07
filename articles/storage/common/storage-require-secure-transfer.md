@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 201bf1e5d3580902934f139b70ca5363e7cc5930
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72e0937e91a7287d240bbdb25996865f934d432d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523014"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876501"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Vorschreiben einer sicheren Übertragung in Azure Storage
 
 Die Funktion „Sichere Übertragung erforderlich“ steigert die Sicherheit Ihres Speicherkontos, da Anforderungen an das Konto von sicheren Verbindungen zugelassen werden. Beim Aufrufen von REST-APIs zum Zugreifen auf das Speicherkonto müssen Sie beispielsweise eine Verbindung über HTTPS herstellen. „Sichere Übertragung erforderlich“ lehnt Anforderungen ab, die HTTP verwenden.
 
-Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl, wenn „Sichere Übertragung erforderlich“ aktiviert ist. Hierzu zählen Szenarien, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden. 
+Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl, wenn „Sichere Übertragung erforderlich“ aktiviert ist. Hierzu zählen Szenarien, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden. 
 
-In der Standardeinstellung ist die Option „Sichere Übertragung erforderlich“ deaktiviert.
+Standardmäßig ist die Option „Sichere Übertragung erforderlich“ deaktiviert, wenn Sie ein Speicherkonto mit SDK erstellen. Und sie ist standardmäßig aktiviert, wenn Sie ein neues Speicherkonto im Azure-Portal erstellen.
 
 > [!NOTE]
 > Da Azure Storage keine Unterstützung von HTTPS für benutzerdefinierte Domänennamen bietet, wird diese Option nicht angewendet, wenn ein benutzerdefinierter Domänenname verwendet wird. Zudem werden klassische Speicherkonten nicht unterstützt.

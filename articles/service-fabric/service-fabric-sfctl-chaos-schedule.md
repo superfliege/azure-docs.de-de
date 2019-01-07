@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492239"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276450"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Ruft den Zeitplan des Chaostests ab und legt diesen fest.
@@ -29,7 +29,7 @@ Ruft den Zeitplan des Chaostests ab und legt diesen fest.
 |Get-Help|BESCHREIBUNG|
 | --- | --- |
 | get | Ruft den Chaostestzeitplan ab, der definiert, wann und wie der Chaostest ausgeführt werden soll. |
-| set | Legt den Chaostestzeitplan fest, der beim Chaostest verwendet werden soll. |
+| set | Legt den von Chaos verwendeten Zeitplan fest. |
 
 ## <a name="sfctl-chaos-schedule-get"></a>sfctl chaos schedule get
 Ruft den Chaostestzeitplan ab, der definiert, wann und wie der Chaostest ausgeführt werden soll.
@@ -53,9 +53,9 @@ Ruft die Version des verwendeten Chaostestzeitplans und den Chaostestzeitplan ab
 | --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
-Legt den Chaostestzeitplan fest, der beim Chaostest verwendet werden soll.
+Legt den von Chaos verwendeten Zeitplan fest.
 
-Legt den Chaostestzeitplan fest, der zurzeit beim Chaostest verwendet wird. Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. Die Version im angegebenen Eingabezeitplan muss mit der Version des Chaostestzeitplans auf dem Server übereinstimmen. Wenn die angegebene Version nicht der Version auf dem Server entspricht, wird der Chaostestzeitplan nicht aktualisiert. Wenn die angegebene Version der Version auf dem Server entspricht, wird der Chaostestzeitplan aktualisiert und die Version des Chaostestzeitplans auf dem Server erhöht sich um einen Schritt und springt nach 2.147.483.647 Schritten auf 0 zurück. Wenn der Chaostest während der Durchführung dieses Aufrufs ausgeführt wird, tritt beim Aufruf ein Fehler auf.
+Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. Die Version im angegebenen Eingabezeitplan muss mit der Version des Chaostestzeitplans auf dem Server übereinstimmen. Wenn die angegebene Version nicht der Version auf dem Server entspricht, wird der Chaostestzeitplan nicht aktualisiert. Wenn die angegebene Version der Version auf dem Server entspricht, wird der Chaostestzeitplan aktualisiert und die Version des Chaostestzeitplans auf dem Server erhöht sich um einen Schritt und springt nach 2.147.483.647 Schritten auf 0 zurück. Wenn der Chaostest während der Durchführung dieses Aufrufs ausgeführt wird, tritt beim Aufruf ein Fehler auf.
 
 ### <a name="arguments"></a>Argumente
 
@@ -143,6 +143,7 @@ Der folgende Befehl legt einen Zeitplan fest (vorausgesetzt, dass der aktuelle Z
         ]
     }
     ]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle

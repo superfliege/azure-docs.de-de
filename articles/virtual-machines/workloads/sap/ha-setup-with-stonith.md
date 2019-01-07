@@ -14,17 +14,17 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 982c6112a19654e268c9c50fec35d65fbc1766c2
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c6d4ec767b4c566e6a390f37b97266916819a40c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062019"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015159"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hochverfügbarkeitskonfiguration unter SUSE mit STONITH
 Dieses Dokument enthält detaillierte Schritt-für-Schritt-Anweisungen zur Konfiguration der Hochverfügbarkeit unter dem Betriebssystem SUSE mit dem STONITH-Gerät.
 
-**Haftungsausschluss:** *Dieser Leitfaden ist im Rahmen von Tests der Konfiguration in der Microsoft HANA-Umgebung für große Instanzen entstanden, die erfolgreich ausgeführt wird. Da das Microsoft Service Management-Team für große HANA-Instanzen kein Betriebssystem unterstützt, müssen Sie sich möglicherweise an SUSE wenden, um weitere Informationen zur Fehlerbehebung oder Klärung zur Betriebssystemebene zu erhalten. Das Microsoft Service Management-Team konfiguriert das STONITH-Gerät, unterstützt Sie im vollen Umfang bei der Behandlung von Problemen mit dem STONITH-Gerät und kann hierzu zu Rate gezogen werden.*
+**Haftungsausschluss**: *Dieser Leitfaden ist im Rahmen von Tests der Konfiguration in der Microsoft HANA-Umgebung für große Instanzen entstanden, die erfolgreich ausgeführt wird. Da das Microsoft Service Management-Team für große HANA-Instanzen kein Betriebssystem unterstützt, müssen Sie sich möglicherweise an SUSE wenden, um weitere Informationen zur Fehlerbehebung oder Klärung zur Betriebssystemebene zu erhalten. Das Microsoft Service Management-Team konfiguriert das STONITH-Gerät, unterstützt Sie im vollen Umfang bei der Behandlung von Problemen mit dem STONITH-Gerät und kann hierzu zu Rate gezogen werden.*
 ## <a name="overview"></a>Übersicht
 Um mit SUSE-Clustern die Hochverfügbarkeit zu konfigurieren, müssen folgende Voraussetzungen erfüllt sein.
 ### <a name="pre-requisites"></a>Voraussetzungen
@@ -38,7 +38,7 @@ Um mit SUSE-Clustern die Hochverfügbarkeit zu konfigurieren, müssen folgende V
 ### <a name="setup-details"></a>Details zur Konfiguration
 In diesem Leitfaden wird folgendes Setup verwendet:
 - Betriebssystem: SLES 12 SP1 für SAP
-- Große HANA-Instanzen: 2 x S192 (vier Sockets, 2 TB)
+- Große HANA-Instanzen: 2 x S192 (vier Sockets, 2TB)
 - HANA-Version: HANA 2.0 SP1
 - Servernamen: „sapprdhdb95“ (node1) und „sapprdhdb96“ (node2)
 - STONITH-Gerät: iSCSI-basiertes STONITH-Gerät
@@ -76,7 +76,7 @@ Diese Zeichenfolge wird vom Microsoft Service Management-Team bereitgestellt. Ä
 
 ![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 Ändern Sie */etc/iscsi/iscsid.conf*: Legen Sie *node.session.timeo.replacement_timeout=5* und *node.startup = automatic* fest. Ändern Sie die Datei auf **beiden** Knoten.
+1.2 Ändern Sie */etc/iscsi/iscsid.conf* in: Legen Sie *node.session.timeo.replacement_timeout=5* und *node.startup = automatic* fest. Ändern Sie die Datei auf **beiden** Knoten.
 
 1.3 Führen Sie den Ermittlungsbefehl aus. Es werden vier Sitzungen angezeigt. Führen Sie ihn auf beiden Knoten aus.
 
@@ -93,7 +93,7 @@ iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 Führen Sie das Skript zum erneuten Prüfen aus: *rescan-scsi-bus.sh*.  Dieses Skript zeigt die neuen für Sie erstellten Datenträger an.  Führen Sie ihn auf beiden Knoten aus. Sie sollten eine LUN-Nummer größer als Null sehen (z.B. 1, 2).
+1.5 Führen Sie das Skript zum erneuten Prüfen aus: *rescan-scsi-bus.sh*.  Dieses Skript zeigt die neuen für Sie erstellten Datenträger an.  Führen Sie ihn auf beiden Knoten aus. Sie sollten eine LUN-Nummer größer als Null sehen (z.B. 1, 2 etc.).
 
 ```
 rescan-scsi-bus.sh
@@ -232,7 +232,7 @@ systemctl start pacemaker
 ```
 ![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-Wenn beim Pacemaker-Dienst ein *Fehler* auftritt, lesen Sie *Szenario 5: Beim Pacemaker-Dienst tritt ein Fehler auf.*
+Wenn beim Pacemaker-Dienst ein *Fehler* auftritt, lesen Sie *Szenario 5: Beim Pacemaker-Dienst tritt ein Fehler auf*.
 
 ## <a name="5---joining-the-cluster"></a>5.   Beitreten zum Cluster
 In diesem Abschnitt wird beschrieben, wie Sie den Knoten zum Cluster hinzuzufügen.
@@ -242,7 +242,7 @@ Führen Sie den folgenden Befehl auf **node2** aus, damit node2 dem Cluster beit
 ```
 ha-cluster-join
 ```
-Wenn beim Beitritt zum Cluster ein *Fehler* auftritt, lesen Sie *Szenario 6: Beim Betritt von node2 zum Cluster tritt ein Fehler auf*.
+Wenn beim Beitritt zum Cluster ein *Fehler* auftritt, lesen Sie *Szenario 6: Node 2 kann nicht dem Cluster beitreten*.
 
 ## <a name="6---validating-the-cluster"></a>6.   Überprüfen des Clusters
 
@@ -297,8 +297,7 @@ Fügen Sie das STONITH-Ressourcengerät hinzu. Erstellen Sie die Datei, und füg
 # vi crm-sbd.txt
 # enter the following to crm-sbd.txt
 primitive stonith-sbd stonith:external/sbd \
-params pcmk_delay_max="15" \
-op monitor interval="15" timeout="15"
+params pcmk_delay_max="15"
 ```
 Fügen Sie die Konfiguration zum Cluster hinzu.
 ```
@@ -509,7 +508,7 @@ Persistent=true
 
 ![Persistent.png](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Szenario 6: node2 kann nicht dem Cluster beitreten.
+### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Szenario 6: Node 2 kann nicht dem Cluster beitreten.
 
 Wenn node2 über den Befehl *ha-cluster-join* mit dem vorhandenen Cluster verknüpft wird, tritt der folgende Fehler auf.
 

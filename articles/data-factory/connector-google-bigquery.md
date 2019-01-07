@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ca12c7a3fe8a5ade8cf0e4ce00977bdcc9a300a6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8b0f5e2941878cf91a60c2dca5497e4e50b6ea01
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007653"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077765"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopieren von Daten aus Google BigQuery mithilfe von Azure Data Factory
 
@@ -124,7 +124,12 @@ Legen Sie die Eigenschaft „authenticationType“ auf **ServiceAuthentication**
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Google BigQuery-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Google BigQuery die „type“-Eigenschaft des Datasets auf **GoogleBigQueryObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Google BigQuery die „type“-Eigenschaft des Datasets auf **GoogleBigQueryObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **GoogleBigQueryObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -136,7 +141,8 @@ Legen Sie zum Kopieren von Daten aus Google BigQuery die „type“-Eigenschaft 
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -152,7 +158,7 @@ Legen Sie zum Kopieren von Daten aus Google BigQuery den Quelltyp in der Kopiera
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **GoogleBigQuerySource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

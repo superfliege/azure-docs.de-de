@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 12a8fb714d398db50258e2cf256379c9a3fccc55
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 463e358816d665bd0ecc0ca8853b7feb5a18f3e6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051024"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077782"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Kopieren von Daten aus Greenplum mithilfe von Azure Data Factory 
 
@@ -42,8 +42,8 @@ Folgende Eigenschaften werden für den mit Greenplum verknüpften Dienst unterst
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Greenplum** festgelegt sein. | Ja |
-| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Greenplum. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Greenplum** | JA |
+| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Greenplum. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
@@ -71,7 +71,12 @@ Folgende Eigenschaften werden für den mit Greenplum verknüpften Dienst unterst
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Greenplum-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Greenplum die „type“-Eigenschaft des Datasets auf **GreenplumTable** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Greenplum die „type“-Eigenschaft des Datasets auf **GreenplumTable** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **GreenplumTable** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -83,7 +88,8 @@ Legen Sie zum Kopieren von Daten aus Greenplum die „type“-Eigenschaft des Da
         "linkedServiceName": {
             "referenceName": "<Greenplum linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -98,8 +104,8 @@ Legen Sie zum Kopieren von Daten aus Greenplum den Quelltyp in der Kopieraktivit
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **GreenplumSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **GreenplumSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

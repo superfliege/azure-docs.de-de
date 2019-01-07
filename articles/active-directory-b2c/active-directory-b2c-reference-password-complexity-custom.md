@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ed0001d8d88a2604e3128a4d5f7a365aeb7b00b1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c6b8312a08d1d92bccf70e7d3dda5f01811b4f87
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440790"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848526"
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>Konfigurieren der Kennwortkomplexität in benutzerdefinierten Richtlinien
 
@@ -51,7 +51,7 @@ Der Zweck dieser Elemente lautet folgendermaßen:
 
 ### <a name="defining-a-predicate-element"></a>Definieren eines Prädikatelements
 
-Prädikate haben zwei Methodentypen: IsLengthRange oder MatchesRegex. Wir betrachten jeweils ein Beispiel.  Zunächst haben wir ein Beispiel für die Methode MatchesRegex, die die Übereinstimmung mit einem regulären Ausdruck überprüft.  In diesem Beispiel wird eine Übereinstimmung mit einer Zeichenfolge überprüft, die Zahlen enthält.
+Prädikate umfassen zwei Methodentypen: „IsLengthRange“ oder „MatchesRegex“. Wir betrachten jeweils ein Beispiel.  Zunächst haben wir ein Beispiel für die Methode MatchesRegex, die die Übereinstimmung mit einem regulären Ausdruck überprüft.  In diesem Beispiel wird eine Übereinstimmung mit einer Zeichenfolge überprüft, die Zahlen enthält.
 
 ```XML
       <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
@@ -124,8 +124,8 @@ Dieses Beispiel enthält eine Überprüfung für PIN-Kennwörter und eine für s
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="yourtenant.onmicrosoft.com"

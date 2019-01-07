@@ -1,5 +1,5 @@
 ---
-title: Azure-Abrechnungs-APIs | Microsoft-Dokumentation
+title: Abrufen der Azure-Nutzung mit Azure-Abrechnungs-APIs | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Azure-Abrechnungs-APIs für Nutzung und Gebührenkarte, mit denen Sie Einblicke in den Azure-Ressourcenverbrauch und damit verbundene Trends erlangen können.
 services: ''
 documentationcenter: ''
@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
 ms.author: erikre
-ms.openlocfilehash: 7e504b2fb01bc8b92c529b68f818df5ed1b889a1
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 944623943fc49f4f6856c3a62f30ea61f901c16d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276447"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579412"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Verwenden der Azure-Abrechnungs-APIs, um programmgesteuerte Einblicke in die Nutzung Ihrer Azure-Ressourcen zu erlangen
 Verwenden Sie Azure-Abrechnungs-APIs, um Nutzungs- und Ressourcendaten mittels Pull in Ihre bevorzugten Datenanalysetools abzurufen. Mithilfe der Azure-Ressourcennutzungs- und -Gebührenkarten-APIs können Sie Ihre Kosten genau vorhersagen und verwalten. Die APIs werden als Ressourcenanbieter implementiert und sind Teil der API-Familie, die von Azure Resource Manager verfügbar gemacht wird.  
-
-> [!div class="nextstepaction"]
-> [Beitragen zur Verbesserung von Azure-Abrechnungsdokumenten](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Azure-API zum Herunterladen von Rechnungen (Vorschau)
 Sobald das [Abonnieren erfolgt ist](billing-manage-access.md#opt-in), laden Sie Rechnungen mit der Vorschauversion der [Rechnungs-API](/rest/api/billing) herunter. Sie enthält folgende Features:

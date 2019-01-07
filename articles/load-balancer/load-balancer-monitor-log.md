@@ -1,5 +1,6 @@
 ---
-title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für öffentliche Load Balancer vom Typ „Basic“ | Microsoft-Dokumentation
+title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für öffentliche Load Balancer vom Typ „Basic“
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie die Protokollierung für Warnereignisse und Integritätsteststatus für öffentliche Load Balancer vom Typ „Basic“ aktivieren.
 services: load-balancer
 documentationcenter: na
@@ -7,27 +8,28 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261501"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164125"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>Protokollanalyse für öffentlichen Load Balancer vom Typ „Basic“
 
 >[!IMPORTANT] 
->Azure Load Balancer unterstützt zwei verschiedene Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md), der Telemetriedaten über mehrdimensionale Metriken in Azure Monitor verfügbar macht.
+>Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md), der Telemetriedaten über mehrdimensionale Metriken in Azure Monitor verfügbar macht.
 
 Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom Typ „Basic“ zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
-* **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge, die an Ihre Azure-Abonnements übermittelt werden, sowie deren Status anzuzeigen. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
+* **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
 * **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um Warnungen anzuzeigen, die vom Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
-* **Integritätstestprotokolle**: Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
+* **Integritätstestprotokolle:** Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
 > [!IMPORTANT]
 > Die Protokollanalyse funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).

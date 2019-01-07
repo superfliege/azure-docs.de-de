@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Expensify | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Expensify | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Expensify konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 5d61ac27eb5a6e4f546d8c6db66b84f2c204b507
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248039"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840468"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Tutorial: Azure Active Directory-Integration mit Expensify
 
@@ -103,7 +103,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![image](./media/expensify-tutorial/b1_b2_select_sso.png)
 
-2. Klicken Sie im oberen Bereich des Bildschirms auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
+2. Klicken Sie oben im Bildschirm auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
 
       ![image](./media/expensify-tutorial/b1_b2_saml_ssso.png)
 
@@ -132,7 +132,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![image](./media/expensify-tutorial/certificatebase64.png)
 
-7. Zum Aktivieren von SSO in Expensify müssen Sie in der Anwendung zuerst die **Domänensteuerung** aktivieren. Sie können die Domänensteuerung in der Anwendung mittels der [hier](http://help.expensify.com/domain-control) aufgelisteten Schritte aktivieren. Um weitere Unterstützung zu erhalten, wenden Sie sich an das [Clientsupportteam von Expensify](mailto:help@expensify.com). Führen Sie nach dem Aktivieren der Domänensteuerung die folgenden Schritte aus:
+7. Zum Aktivieren von SSO in Expensify müssen Sie in der Anwendung zuerst die **Domänensteuerung** aktivieren. Sie können die Domänensteuerung in der Anwendung mittels der [hier](https://help.expensify.com/domain-control) aufgelisteten Schritte aktivieren. Um weitere Unterstützung zu erhalten, wenden Sie sich an das [Clientsupportteam von Expensify](mailto:help@expensify.com). Führen Sie nach dem Aktivieren der Domänensteuerung die folgenden Schritte aus:
    
     ![Configure single sign-on](./media/expensify-tutorial/tutorial_expensify_51.png)
     
@@ -148,11 +148,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, wählen Sie **Benutzer** aus, und wählen Sie dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![image](./media/expensify-tutorial/d_users_and_groups.png)
 
-2. Wählen Sie im oberen Bereich des Bildschirms die Option **Neuer Benutzer** aus.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
     ![image](./media/expensify-tutorial/d_adduser.png)
 
@@ -162,7 +162,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -189,11 +189,11 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![image](./media/expensify-tutorial/d_leftpaneusers.png)
 
-4. Wählen Sie die Schaltfläche **Hinzufügen** aus, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Wählen Sie die Schaltfläche **Hinzufügen** und dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![image](./media/expensify-tutorial/d_assign_user.png)
 
-4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
+4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
 5. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
     

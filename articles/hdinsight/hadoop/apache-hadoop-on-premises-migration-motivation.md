@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 82792414da9df32524e48031089dc18d2dc521cc
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 94dec611a04819580696133c48db66da1ea9c463
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288117"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000429"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 
@@ -32,7 +32,7 @@ Azure HDInsight ist eine Clouddistribution der Hadoop-Komponenten von  [Hortonw
 - Apache HBase
 - R
 
-## <a name="advantages-that-azure-hdinsight-offers-over-on-premises-hadoop"></a>Vorteile von Azure HDInsight gegenüber lokalem Hadoop
+## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Vorteile von Azure HDInsight gegenüber lokalem Hadoop
 
 - **Niedrige Kosten**: Kosten können reduziert werden, indem [bedarfsgesteuerte Cluster erstellt](../hdinsight-hadoop-create-linux-clusters-adf.md) werden und nur für die tatsächliche Nutzung bezahlt wird. Die Entkoppelung von Compute und Speicher bietet Flexibilität, da das Datenvolumen unabhängig von der Clustergröße ist.
 
@@ -67,7 +67,7 @@ Azure HDInsight ist eine Clouddistribution der Hadoop-Komponenten von  [Hortonw
 
 - **Prozesse und Komponenten mit Selbstreparatur**: HDInsight überprüft ständig die Infrastruktur und Open-Source-Komponenten anhand einer eigenen Überwachungsinfrastruktur. Es werden auch automatisch kritische Fehler behoben, wie z.B. die Nichtverfügbarkeit von Open Source-Komponenten und Knoten. Wenn bei einer der OSS-Komponenten ein Fehler auftritt, werden Warnungen in Ambari ausgelöst.
 
-Weitere Informationen finden Sie im Artikel [Was sind Azure HDInsight und der Hadoop-Technologiestapel?](../hadoop/apache-hadoop-introduction.md)
+Weitere Informationen finden Sie im Artikel [Was sind Azure HDInsight und der Apache Hadoop-Technologiestapel?](../hadoop/apache-hadoop-introduction.md).
 
 ## <a name="migration-planning-process"></a>Migrationsplanungsprozess
 
@@ -143,7 +143,7 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 | Nein. der Hive-Tabellen|100||
 | Nein. der Ranger-Richtlinien|20||
 | Nein. der Oozie-Workflows|100||
-|**Thema**: **Skalierung**|||
+|**Thema**: **Skalieren**|||
 |Datenvolumen einschließlich Replikation|100 TB||
 |Tägliches Datenerfassungsvolumen|50 GB||
 |Wachstumsrate – Daten|10 % pro Jahr||
@@ -172,13 +172,13 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |VNet bevorzugt?|JA||
 |Hochverfügbarkeit/Notfallwiederherstellung erforderlich?|JA||
 |Integration in andere Clouddienste?|ADF, CosmosDB||
-|**Thema**: **Datenverschiebung**  |||
+|**Thema**:   **Datenverschiebung**  |||
 |Einstellung für ersten Ladevorgang|DistCp, Data Box, ADF, WANDisco||
 |Deltadatenübertragung|DistCp, AzCopy||
 |Fortlaufende inkrementelle Datenübertragung|DistCp, Sqoop||
-|**Thema**: **Überwachung und Warnung** |||
+|**Thema**:   **Überwachung und Warnung** |||
 |Azure-Überwachung und -Warnungen oder Integration einer Drittanbieter-Überwachungslösung|Azure-Überwachung und -Warnungen||
-|**Thema**: **Sicherheitspräferenzen** |||
+|**Thema**:   **Sicherheitspräferenzen** |||
 |Private und geschützte Datenpipeline?|JA||
 |In die Domäne eingebundener Cluster (ESP)?|     JA||
 |Synchronisierung von lokalem AD mit Cloud?|     JA||
@@ -191,7 +191,7 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Überwachung erforderlich?|                  JA||
 |Datenverschlüsselung ruhender Daten?|          JA||
 |Datenverschlüsselung während der Übertragung?|       JA||
-|**Thema**: **Präferenzen für Umgestaltung der Architektur** |||
+|**Thema**:   **Präferenzen für Umgestaltung der Architektur** |||
 |Einzelner Cluster oder bestimmte Clustertypen|Bestimmte Clustertypen||
 |Am gleichen Ort vorhandener Speicher oder Remotespeicher?|Remotespeicher||
 |Kleinere Clustergröße, da Daten remote gespeichert werden?|Kleinere Clustergröße||

@@ -1,20 +1,20 @@
 ---
-title: Senden von Ereignissen an Azure Event Hubs mithilfe von Python | Microsoft-Dokumentation
-description: Erste Schritte beim Senden von Ereignissen an Event Hubs mithilfe von Python
+title: Senden von Ereignissen unter Verwendung von Python – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Node.js-Anwendung, die Ereignisse an Azure Event Hubs sendet.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: 05feab0227633ab52f0865fa7c19a310b612eb1c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b7adf3976f5f7e028ffa9ffeb13db22d3d4bba8e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286893"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102978"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Senden von Ereignissen an Event Hubs mithilfe von Python
 
@@ -29,11 +29,16 @@ Dieses Tutorial beschreibt, wie Sie Ereignisse aus einer in Python geschriebenen
 
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
+- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 - Python 3.4 oder höher.
 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
-Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie dann mit den folgenden Schritten in diesem Tutorial fort.
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub.
+
+Gehen Sie wie im Artikel beschrieben vor, um den Wert des Zugriffsschlüssels für den Event Hub abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden den Zugriffsschlüssel im Code, den Sie später in diesem Tutorial schreiben. Der Standardschlüsselname lautet: **RootManageSharedAccessKey**.
+
+Fahren Sie nun mit den folgenden Schritten in diesem Tutorial fort.
 
 ## <a name="install-python-package"></a>Installieren des Python-Pakets
 

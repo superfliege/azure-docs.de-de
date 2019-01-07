@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238398"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864898"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Erste Schritte mit dem Azure-Schlüsseltresor
 Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Key Vault mit PowerShell und führt Sie durch die folgenden Aktivitäten:
@@ -111,7 +111,7 @@ New-AzureRmKeyVault -Name 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceG
 
 Die Ausgabe dieses Cmdlets zeigt die Eigenschaften des Schlüsseltresors, den Sie erstellt haben. Die zwei wichtigsten Eigenschaften sind diese:
 
-* **Tresorname**: In diesem Beispiel ist das **ContosoKeyVault**. Sie verwenden diesen Namen für andere Schlüsseltresor-Cmdlets.
+* **Tresorname**: In diesem Beispiel **ContosoKeyVault**. Sie verwenden diesen Namen für andere Schlüsseltresor-Cmdlets.
 * **Tresor-URI**: In diesem Beispiel ist das https://contosokeyvault.vault.azure.net/. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 Ihr Azure-Konto ist jetzt autorisiert, Vorgänge in diesem Schlüsseltresor durchzuführen. Bisher sind Sie der einzige Benutzer mit dieser Berechtigung.
@@ -193,7 +193,7 @@ Geben Sie zur Anzeige des URI für diesen geheimen Schlüssel Folgendes ein:
 ```powershell
 $secret.Id
 ```
-Geben Sie zum Anzeigen Ihres Geheimnisses Folgendes ein: `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`. Alternativ können Sie das Geheimnis im Portal anzeigen.
+Geben Sie Folgendes ein, um Ihr Geheimnis anzuzeigen: `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`. Alternativ können Sie das Geheimnis im Portal anzeigen.
 
 ![secret](./media/key-vault-get-started/secret-value.png)
 
@@ -222,14 +222,14 @@ So registrieren Sie die Anwendungen in Azure Active Directory
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Bereich auf **App-Registrierungen**. Falls keine App-Registrierungen angezeigt werden, klicken Sie auf **Weitere Dienste**.  
->[!NOTE]
-Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement enthalten ist, mit dem Sie Ihren Schlüsseltresor erstellt haben. 
+    > [!NOTE]
+    > Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement enthalten ist, mit dem Sie Ihren Schlüsseltresor erstellt haben. 
 3. Klicken Sie auf **Registrierung einer neuen Anwendung**.
 4. Geben Sie auf dem Blatt **Erstellen** einen Namen für die Anwendung ein, wählen Sie dann **WEBANWENDUNG UND/ODER WEB-API** (Standardeinstellung) aus, und geben Sie die **ANMELDE-URL** für die Webanwendung ein. Falls Sie diese Information gerade nicht zur Hand haben, können Sie einen Fantasiewert angeben (beispielsweise http://test1.contoso.com). Hierbei spielt es keine Rolle, ob diese Websites wirklich vorhanden sind. 
 
     ![Registrierung einer neuen Anwendung](./media/key-vault-get-started/new-application-registration.png)
-    >[!WARNING]
-    Vergewissern Sie sich, dass Sie **WEBANWENDUNG UND/ODER WEB-API** ausgewählt haben. Andernfalls wird die Option **Schlüssel** nicht unter „Einstellungen“ angezeigt.
+    > [!WARNING]
+    > Vergewissern Sie sich, dass Sie **WEBANWENDUNG UND/ODER WEB-API** ausgewählt haben. Andernfalls wird die Option **Schlüssel** nicht unter „Einstellungen“ angezeigt.
 
 5. Klicken Sie auf die Schaltfläche **Erstellen** .
 6. Nach Abschluss der App-Registrierung wird die Liste der registrierten Apps angezeigt. Suchen Sie nach der App, die Sie registriert haben, und klicken Sie darauf.
@@ -314,9 +314,9 @@ Die folgenden weiteren Befehle sind möglicherweise ebenfalls für das Verwalten
 
 - `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: Dieser Befehl ruft eine tabellarische Anzeige aller Schlüssel und ausgewählten Eigenschaften ab.
 - `$Keys[0]`: Dieser Befehl zeigt eine vollständige Liste der Eigenschaften für den angegebenen Schlüssel an.
-- `Get-AzureKeyVaultSecret`: Dieser Befehl ruft eine tabellarische Anzeige der Namen aller geheimen Schlüssel und ausgewählten Eigenschaften ab.
-- `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Beispiel dazu, wie ein bestimmter Schlüssel entfernt wird.
-- `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Beispiel dazu, wie ein bestimmter geheimer Schlüssel entfernt wird.
+- `Get-AzureKeyVaultSecret`: Dieser Befehl ruft eine tabellarische Anzeige aller Geheimnisnamen und ausgewählten Eigenschaften ab.
+- `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Beispiel für die Vorgehensweise zum Entfernen eines bestimmten Schlüssels.
+- `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Beispiel für die Vorgehensweise zum Entfernen eines bestimmten Geheimnisses.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

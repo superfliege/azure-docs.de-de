@@ -1,5 +1,5 @@
 ---
-title: Der Skill „Text zusammenführen“ der kognitiven Suche (Azure Search) | Microsoft-Dokumentation
+title: Die Qualifikation „Text zusammenführen“ der kognitiven Suche – Azure Search
 description: Führen Sie Text aus einer Sammlung von Feldern in einem konsolidierten Feld zusammen. Verwenden Sie diesen kognitiven Skill in einer Azure Search-Anreicherungspipeline.
 services: search
 manager: pablocas
@@ -10,19 +10,22 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 5387eeacc78875ac0f38f96a6c83fb3f5791775e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: b29d32d39b4efb7e242a3ae3213512798622d1e9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167615"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314515"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
 
 Der Skill **Text zusammenführen** konsolidiert Text aus einer Sammlung von Feldern in einem einzigen Feld. 
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen sowie die Bildextraktion und Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

@@ -1,22 +1,23 @@
 ---
-title: Azure-Dienst für dedizierte HSMs – Überwachung | Microsoft-Dokumentation
-description: Der Azure-Dienst für dedizierte HSMs bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
+title: Überwachungsoptionen – Azure Dedicated HSM | Microsoft-Dokumentation
+description: Übersicht über Azure Dedicated HSM-Überwachungsoptionen und die Überwachungszuständigkeiten
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 4e2089c62da5fec1e1cfe96ce27b363cfb35eadf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b577c2c68512c6e7e36f80b75245d9db4f839d9e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319219"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085687"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Azure-Dienst für dedizierte HSMs – Überwachung
 

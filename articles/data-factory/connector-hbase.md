@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 10867974c6f1c3fae6965b1888db3c4448b26a38
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f5fb62a04f1829726796b674a8e6e72951e6bb35
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364100"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083375"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopieren von Daten aus HBase mithilfe von Azure Data Factory 
 
@@ -42,11 +42,11 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **HBase** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **HBase** | JA |
 | host | IP-Adresse oder Hostname des HBase-Servers. (d. h. `[clustername].azurehdinsight.net`， `192.168.222.160).  | JA |
 | port | Der TCP-Port, den die HBase-Instanz verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 9090. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Nein  |
 | httpPath | Die Teil-URL für den HBase-Server, z.B. `/hbaserest0` bei Verwendung von HDInsight-Clustern. | Nein  |
-| authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem HBase-Server verwendet werden soll. <br/>Zulässige Werte: **Anonymous**, **Basic** | JA |
+| authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem HBase-Server verwendet werden soll. <br/>Zulässige Werte sind: **Anonymous**, **Basic** | JA |
 | username | Der Benutzername, der für die Verbindung mit der HBase-Instanz verwendet wird.  | Nein  |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein  |
@@ -119,7 +119,12 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom HBase-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus HBase die „type“-Eigenschaft des Datasets auf **HBaseObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus HBase die „type“-Eigenschaft des Datasets auf **HBaseObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **HBaseObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -131,7 +136,8 @@ Legen Sie zum Kopieren von Daten aus HBase die „type“-Eigenschaft des Datase
         "linkedServiceName": {
             "referenceName": "<HBase linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -146,8 +152,8 @@ Legen Sie zum Kopieren von Daten aus HBase den Quelltyp in der Kopieraktivität 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **HBaseSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **HBaseSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: c6ecb7d4c1e5b648373fcaa3f44c6294329d33c2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 565c0ed877cf4500131f7ad3099f3c7d3f1a1220
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801164"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955036"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die News-Suche-API
 
@@ -25,7 +25,7 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 
 ### <a name="endpoints"></a>Endpunkte
 
-- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: „https://api.cognitive.microsoft.com/bing/\*\*v7.0**/news/search“.
+- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: https://api.cognitive.microsoft.com/bing/**v7.0**/news/search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fehlerantwortobjekte und Fehlercodes
 
@@ -34,7 +34,6 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 - Folgende Felder wurden zum `Error`-Objekt hinzugefügt:  
   - `subCode`&mdash;Teilt den Fehlercode nach Möglichkeit in separate Buckets auf
   - `moreDetails`&mdash;Zusätzliche Informationen über den Fehler, der im `message`-Feld beschrieben ist
-   
 
 - Die v5-Fehlercodes wurden durch die folgenden möglichen `code`- und `subCode`-Werte ersetzt.
 
@@ -77,18 +76,18 @@ Blockiert|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>Abfrageparameter
 
-- „Products“ wurde als möglicher Wert hinzugefügt, auf den Sie den Abfrageparameter [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) festlegen können. Weitere Informationen finden Sie unter [Referenz zur News-Suche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market).  
-    
-- Der Abfrageparameter [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) wurde hinzugefügt, der beliebte Themen nach Datum sortiert mit dem aktuellen Thema an erster Stelle zurückgibt.  
-  
+- „Products“ wurde als möglicher Wert hinzugefügt, auf den Sie den Abfrageparameter [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) festlegen können. Weitere Informationen finden Sie unter [Referenz zur News-Suche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market).
+
+- Der Abfrageparameter [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) wurde hinzugefügt, der beliebte Themen nach Datum sortiert mit dem aktuellen Thema an erster Stelle zurückgibt.
+
 - Der Abfrageparameter [Since](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#since) wurde hinzugefügt, der beliebte Themen zurückgibt, die von Bing am oder nach dem angegebenen Unix-Epochenzeitstempel ermittelt wurden.
 
 ### <a name="object-changes"></a>Änderungen an Objekten
 
-- Das Feld `mentions` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `mentions` enthält eine Liste von Entitäten (Personen oder Orte), die im Artikel gefunden wurden.  
-  
-- Das Feld `video` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `video` enthält ein Video, das mit dem Nachrichtenartikel verknüpft ist. Bei dem Video handelt es sich entweder um ein \<iframe\>, das Sie einbetten können, oder um eine bewegte Miniaturansicht.   
-  
-- Das Feld `sort` wurde zum [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news)-Objekt hinzugefügt. Das Feld `sort` zeigt die Sortierreihenfolge der Artikel an. Beispielsweise werden die Artikel nach Relevanz (Standard) oder Datum sortiert.  
-  
+- Das Feld `mentions` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `mentions` enthält eine Liste von Entitäten (Personen oder Orte), die im Artikel gefunden wurden.
+
+- Das Feld `video` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `video` enthält ein Video, das mit dem Nachrichtenartikel verknüpft ist. Bei dem Video handelt es sich entweder um ein \<iframe\>, das Sie einbetten können, oder um eine bewegte Miniaturansicht.
+
+- Das Feld `sort` wurde zum [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news)-Objekt hinzugefügt. Das Feld `sort` zeigt die Sortierreihenfolge der Artikel an. Beispielsweise werden die Artikel nach Relevanz (Standard) oder Datum sortiert.
+
 - Das Objekt [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortvalue) wurde hinzugefügt, das eine Sortierreihenfolge definiert. Das Feld `isSelected` gibt an, ob in der Antwort die Sortierreihenfolge verwendet wurde. Wenn es **true** angibt, wurde in der Antwort die Sortierreihenfolge verwendet. Wenn `isSelected` **false** lautet, können Sie die URL im Feld `url` verwenden, um eine andere Sortierreihenfolge anzufordern.

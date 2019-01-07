@@ -1,6 +1,6 @@
 ---
-title: Löschen einer Gruppe mithilfe von Azure Active Directory | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory eine Gruppe löschen.
+title: Löschen einer Gruppe – Azure Active Directory | Microsoft-Dokumentation
+description: Anleitung zum Löschen einer Gruppe mit Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 014fe487d23a6c75e94ca2708ed15044bd6cf53b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6c08022b47fb1a118e95a54eedf9b5239496ebf7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574329"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092229"
 ---
-# <a name="how-to-delete-a-group-using-azure-active-directory"></a>Löschen einer Gruppe mithilfe von Azure Active Directory
-Für das Löschen einer Gruppe kann es verschiedene Gründe geben. Häufig liegt jedoch einer der folgenden Gründe vor:
+# <a name="delete-a-group-using-azure-active-directory"></a>Löschen einer Gruppe mithilfe von Azure Active Directory
+Für das Löschen einer Azure Active Directory-Gruppe (Azure AD) kann es verschiedene Gründe geben. Häufig liegt jedoch einer der folgenden Gründe vor:
 
 - Der **Gruppentyp** wurde auf die falsche Option festgelegt.
 

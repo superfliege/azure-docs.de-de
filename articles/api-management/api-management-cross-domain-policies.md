@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: bd5082d9f66e65bb487c9216131b7e13f825340e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8b43ef81385f1d185fdd63d2a33453c75684fd21
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246649"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969923"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -38,7 +38,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ```xml  
 <cross-domain>  
    <!-Policy configuration is in the Adobe cross-domain policy file format,   
-      see http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->  
+      see https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->  
 </cross-domain>  
 ```  
   
@@ -54,14 +54,14 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|NAME|BESCHREIBUNG|Erforderlich|  
+|Name|Beschreibung|Erforderlich|  
 |----------|-----------------|--------------|  
-|cross-domain|Stammelement Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|JA|  
+|cross-domain|Stammelement Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ja|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte**: inbound  
+-   **Richtlinienabschnitte:** inbound  
 -   **Richtlinienbereiche:** global  
   
 ##  <a name="CORS"></a> CORS  
@@ -123,11 +123,11 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|Beschreibung|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|cors|Stammelement|JA|N/V|  
-|allowed-origins|Enthält `origin`-Elemente, die die zulässigen Ursprünge für domänenübergreifende Anforderungen beschreiben. `allowed-origins` kann entweder ein einzelnes `origin`-Element enthalten, das `*` angibt, um einen beliebigen Ursprung zuzulassen, oder ein oder mehrere `origin`-Elemente, die einen URI enthalten.|JA|N/V|  
-|origin|Der Wert kann entweder `*` lauten, um alle Ursprünge zuzulassen, oder ein URI sein, der einen einzelnen Ursprung angibt. Die URI muss Schema, Host und Port enthalten.|JA|Wenn der Port in einem URI ausgelassen wird, wird Port 80 für HTTP bzw. Port 443 für HTTPS verwendet.|  
+|cors|Stammelement|Ja|N/V|  
+|allowed-origins|Enthält `origin`-Elemente, die die zulässigen Ursprünge für domänenübergreifende Anforderungen beschreiben. `allowed-origins` kann entweder ein einzelnes `origin`-Element enthalten, das `*` angibt, um einen beliebigen Ursprung zuzulassen, oder ein oder mehrere `origin`-Elemente, die einen URI enthalten.|Ja|N/V|  
+|origin|Der Wert kann entweder `*` lauten, um alle Ursprünge zuzulassen, oder ein URI sein, der einen einzelnen Ursprung angibt. Die URI muss Schema, Host und Port enthalten.|Ja|Wenn der Port in einem URI ausgelassen wird, wird Port 80 für HTTP bzw. Port 443 für HTTPS verwendet.|  
 |allowed-methods|Dieses Element ist erforderlich, wenn andere Methoden als GET oder POST zulässig sind. Enthält `method`-Elemente, die die unterstützten HTTP-Verben angeben.|Nein |Wenn dieser Abschnitt nicht vorhanden ist, werden GET und POST unterstützt.|  
 |method|Gibt ein HTTP-Verb an.|Mindestens ein `method`-Element ist erforderlich, wenn der Abschnitt `allowed-methods` vorhanden ist.|N/V|  
 |allowed-headers|Dieses Element enthält `header`-Elemente, die die Namen der Header angeben, die in der Anforderung enthalten sein können.|Nein |N/V|  
@@ -136,7 +136,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="attributes"></a>Attribute  
   
-|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|Beschreibung|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
 |allow-credentials|Der `Access-Control-Allow-Credentials`-Header in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Clients aus, Anmeldeinformationen in domänenübergreifenden Anforderungen zu senden.|Nein |false|  
 |preflight-result-max-age|Der `Access-Control-Max-Age`-Header in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Benutzer-Agents aus, die Preflightantwort zwischenzuspeichern.|Nein |0|  
@@ -144,7 +144,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte:** inbound  
+-   **Richtlinienabschnitte**: inbound  
 -   **Richtlinienbereiche:** API, operation  
   
 ##  <a name="JSONP"></a> JSONP  
@@ -168,15 +168,15 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|NAME|BESCHREIBUNG|Erforderlich|  
+|Name|Beschreibung|Erforderlich|  
 |----------|-----------------|--------------|  
-|jsonp|Stammelement|JA|  
+|jsonp|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|Beschreibung|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|callback-parameter-name|Der domänenübergreifende JavaScript-Funktionsaufruf mit dem vollqualifizierten Domänennamen, in dem die Funktion liegt, als Präfix.|JA|N/V|  
+|callback-parameter-name|Der domänenübergreifende JavaScript-Funktionsaufruf mit dem vollqualifizierten Domänennamen, in dem die Funktion liegt, als Präfix.|Ja|N/V|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  

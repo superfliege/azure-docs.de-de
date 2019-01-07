@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: jeedes
-ms.openlocfilehash: 470805b2bb77e367887767b95e0f1e04d79c8f9d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 5b7baffea8e718810a91ea9687a007d36c806aab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830734"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Tutorial: Azure Active Directory-Integration mit ServiceNow
 
@@ -41,7 +41,7 @@ Um die Azure AD-Integration mit ServiceNow konfigurieren zu können, benötigen 
 - Ein Azure AD-Abonnement
 - Für ServiceNow eine Instanz oder einen Mandanten von ServiceNow, Calgary-Version oder höher
 - Für ServiceNow Express eine Instanz von ServiceNow Express, Helsinki-Version oder höher
-- Für den ServiceNow-Mandanten muss das [SSO-Plug-In für mehrere Anbieter](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) aktiviert sein. Dazu kann [eine Serviceanfrage übermittelt werden](https://hi.service-now.com).
+- Für den ServiceNow-Mandanten muss das [SSO-Plug-In für mehrere Anbieter](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) aktiviert sein. Dazu kann [eine Serviceanfrage übermittelt werden](https://hi.service-now.com).
 - Aktivieren Sie für die automatische Konfiguration das Multi-Provider-Plug-In für ServiceNow.
 
 > [!NOTE]
@@ -109,7 +109,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Klicken Sie im oberen Bereich des Bildschirms auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
+2. Klicken Sie oben im Bildschirm auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_general_300.png)
 
@@ -297,7 +297,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Klicken Sie im oberen Bereich des Bildschirms auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
+2. Klicken Sie oben im Bildschirm auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_general_300.png)
 
@@ -356,7 +356,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694975.png "Einmaliges Anmelden konfigurieren")
 
-    a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein (z.B. **TestSAML2.0**).
+    a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z.B.: **TestSAML2.0**).
 
     b. Wählen Sie **Aktiv**.
 
@@ -376,7 +376,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694982ex.png "Einmaliges Anmelden konfigurieren")
 
-    a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein (z.B. **SAML 2.0**).
+    a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z.B.: **SAML 2.0**).
 
     b. Fügen Sie in das Feld **Identity Provider URL** den Wert für die **Identitätsanbieter-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -424,11 +424,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich nacheinander **Azure Active Directory**, **Benutzer** und **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Azure AD-Benutzer erstellen][100]
 
-2. Wählen Sie im oberen Bereich des Bildschirms die Option **Neuer Benutzer** aus.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/servicenow-tutorial/create_aaduser_01.png) 
 
@@ -438,7 +438,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -472,7 +472,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
 6. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
 

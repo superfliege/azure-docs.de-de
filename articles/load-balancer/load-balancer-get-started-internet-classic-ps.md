@@ -1,25 +1,25 @@
 ---
-title: Erstellen eines Lastenausgleichs für den Internetzugriff – Azure PowerShell (klassisch) | Microsoft-Dokumentation
+title: Erstellen eines Load Balancers mit Internetzugriff – Azure PowerShell (klassisch)
+titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff im klassischen Modus mithilfe von PowerShell erstellen.
 services: load-balancer
 documentationcenter: na
 author: genlin
 manager: cshepard
 tags: azure-service-management
-ms.assetid: 73e8bfa4-8086-4ef0-9e35-9e00b24be319
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: 07d3658ff86a46875a57cb3359a60661911e0c8b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: dbb8708f8872c8d16baa13725edbff6de37ac171
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539869"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139827"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-powershell"></a>Erste Schritte zum Erstellen eines Load Balancers (klassisch) mit Internetzugriff in PowerShell
 
@@ -31,7 +31,7 @@ ms.locfileid: "38539869"
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Bevor Sie mit Azure-Ressourcen arbeiten, sollten Sie wissen, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: die Bereitstellung mit dem Azure Resource Manager und die klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../azure-classic-rm.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Zum Anzeigen der Dokumentation für verschiedene Tools klicken Sie auf die Registerkarten oben in diesem Artikel. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Informationen zum Erstellen eines Load Balancers mit Internetzugriff unter Verwendung des Azure-Ressourcen-Managers finden Sie [hier](load-balancer-get-started-internet-arm-ps.md).
+> Bevor Sie mit Azure-Ressourcen arbeiten, müssen Sie sich darüber im Klaren sein, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: Azure Resource Manager und klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../azure-classic-rm.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Zum Anzeigen der Dokumentation für verschiedene Tools klicken Sie auf die Registerkarten oben in diesem Artikel. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Informationen zum Erstellen eines Load Balancers mit Internetzugriff unter Verwendung des Azure-Ressourcen-Managers finden Sie [hier](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 

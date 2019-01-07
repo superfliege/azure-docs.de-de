@@ -1,6 +1,6 @@
 ---
-title: Was ist die Azure Active Directory-Architektur? | Microsoft-Dokumentation
-description: Es wird beschrieben, was ein Azure Active Directory-Mandant ist und wie Azure über Azure Active Directory verwaltet wird.
+title: Übersicht über die Architektur – Azure Active Directory | Microsoft-Dokumentation
+description: Sie erfahren, was ein Azure Active Directory-Mandant ist und wie Azure über Azure Active Directory verwaltet wird.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: 62ade1318b670b4eecf1be1a9255fe497d094a1a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: c23bdba74ab528a0774b73598dbee8888ebfdc7e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733211"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076114"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
-Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-whatis).
+Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
 
-Mit Azure AD können Sie Benutzer und Gruppen erstellen und verwalten und Berechtigungen zum Zulassen und Verweigern des Zugriffs auf Unternehmensressourcen aktivieren. Informationen zur Identitätsverwaltung finden Sie unter [Grundlagen der Identitätsverwaltung in Azure](https://docs.microsoft.com/azure/active-directory/fundamentals-identity).
+Mit Azure AD können Sie Benutzer und Gruppen erstellen und verwalten und Berechtigungen zum Zulassen und Verweigern des Zugriffs auf Unternehmensressourcen aktivieren. Informationen zur Identitätsverwaltung finden Sie unter [Grundlagen der Identitätsverwaltung in Azure](active-directory-whatis.md).
 
 ## <a name="azure-ad-architecture"></a>Azure AD-Architektur
 Die geografisch verteilte Architektur von Azure AD bietet umfassende Funktionen für Überwachung, automatisierte Umleitungen, Failover und die Wiederherstellung, um die unternehmensweite Verfügbarkeit und die Leistung für Kunden sicherzustellen.

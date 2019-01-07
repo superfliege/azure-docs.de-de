@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df4a1ef30997bef6b83e66182404d0e2659a5d51
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 140161e88ee572d728a7f9c923c9528ea6755cc1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422303"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165452"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Tutorial: Integrieren einer AD-Gesamtstruktur mithilfe der Pass-Through-Authentifizierung (PTA)
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Tutorial:  Integrieren einer AD-Gesamtstruktur mithilfe der Pass-Through-Authentifizierung (PTA)
 
 ![Erstellen](media/tutorial-passthrough-authentication/diagram.png)
 
@@ -84,7 +84,7 @@ Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Instal
 5. Klicken Sie auf **Jetzt installieren**.
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
 7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
-8. Wählen Sie **Benutzerdefiniert: Nur Windows installieren (erweitert)** aus.
+8. Wählen Sie **Benutzerdefiniert:  Nur Windows installieren (Erweitert)** aus.
 9. Klicken Sie unten auf der Seite auf **Weiter**
 10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 

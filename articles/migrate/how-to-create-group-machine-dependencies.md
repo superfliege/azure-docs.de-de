@@ -4,19 +4,21 @@ description: Hier wird beschrieben, wie Sie mithilfe von Computerabhängigkeiten
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 2755cc4e8e0e5a1b2a0e491b00fc73530dd9b958
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 8756809de4ec1a8150610027a8197f1bcae213f0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635678"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252505"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gruppieren von Computern per Mapping von Computerabhängigkeiten
 
 In diesem Artikel wird beschrieben, wie Sie eine Gruppe mit Computern für eine [Azure Migrate](migrate-overview.md)-Bewertung erstellen, indem Sie die Computerabhängigkeiten visualisieren. Sie verwenden diese Methode normalerweise, wenn Sie Gruppen mit VMs mit höheren Zuverlässigkeitsgraden bewerten möchten, indem Sie vor dem Durchführen einer Bewertung die Computerabhängigkeiten überprüfen. Durch eine Visualisierung der Abhängigkeiten können Sie Ihre Migration zu Azure effizient planen. So können Sie sicherstellen, dass Sie nichts übersehen und dass es bei der Migration zu Azure nicht zu unvorhergesehenen Ausfällen kommt. Sie können alle voneinander abhängigen Systeme ermitteln, die gemeinsam migriert werden müssen, und ermitteln, ob ein ausgeführtes System noch benötigt wird oder eher außer Betrieb gesetzt als migriert werden sollte.
 
+> [!NOTE]
+> Die Funktion zur Visualisierung von Abhängigkeiten ist in Azure Government nicht verfügbar.
 
 ## <a name="prepare-for-dependency-visualization"></a>Vorbereiten für die Visualisierung der Abhängigkeiten
 Azure Migrate nutzt für die Visualisierung von Computerabhängigkeiten die Dienstzuordnungslösung in Log Analytics.
@@ -28,8 +30,9 @@ Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analyti
 
     ![Zuordnen von Log Analytics-Arbeitsbereichen](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in demselben Abonnement erstellt wie das Migrationsprojekt und in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/), in der auch das Migrationsprojekt erstellt wurde.
-- Die Option **Use existing** (Vorhandene verwenden) listet nur diejenigen Arbeitsbereiche auf, die in Regionen erstellt wurden, in denen eine Dienstzuordnung verfügbar ist. Wenn Sie über einen Arbeitsbereich in einer Region ohne Dienstzuordnung verfügen, wird dieser in der Dropdown-Liste nicht angezeigt.
+- Beim Zuordnen eines Arbeitsbereichs erhalten Sie die Möglichkeit, einen neuen Arbeitsbereich zu erstellen oder einen vorhandenen anzufügen:
+  - Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
+  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Lesezugriff auf den Arbeitsbereich besitzen.
 
 > [!NOTE]
 > Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.
@@ -88,7 +91,7 @@ Erfahren Sie mehr zur Unterstützung des Dependency-Agents für die Betriebssyst
     - Innerhalb des Computers ausgeführte Prozesse können Sie einblenden, indem Sie das Feld für den jeweiligen Computer erweitern.
     - Eigenschaften wie vollqualifizierter Domänenname, Betriebssystem, MAC-Adresse usw. für jeden Computer können Sie anzeigen, indem Sie auf das Feld für den jeweiligen Computer klicken.
 
- ![Anzeigen von Computerabhängigkeiten](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
+      ![Anzeigen von Computerabhängigkeiten](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
 
 4. Sie können Abhängigkeiten für verschiedene Zeiträume anzeigen, indem Sie auf im Zeitbereich auf die Zeitdauer klicken. Standardmäßig ist ein Bereich von einer Stunde ausgewählt. Sie können den Zeitraum ändern oder das Start- und Enddatum und die Dauer angeben.
 5. Nachdem Sie abhängige Computer identifiziert haben, die Sie gruppieren möchten, können Sie die gewünschten Computer mit Strg+Klick auswählen und auf **Computer gruppieren** klicken.

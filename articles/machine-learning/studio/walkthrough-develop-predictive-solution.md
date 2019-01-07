@@ -4,9 +4,9 @@ description: Eine ausführliche exemplarische Vorgehensweise zum Erstellen einer
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
 ms.component: studio
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: a5dd8432ca79cca8de37f5d64027e0b9c498f3b9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fce8f03adfad348c9daddf3c2a225d6df29552d7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311941"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252500"
 ---
-# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning Studio
+# <a name="walkthrough-develop-predictive-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>Exemplarische Vorgehensweise: Entwickeln einer Vorhersagelösung für die Kreditrisikobewertung in Azure Machine Learning Studio
 
 In dieser exemplarischen Vorgehensweise befassen wir uns eingehend mit dem Prozess der Entwicklung einer Predictive Analytics-Lösung in Machine Learning Studio. Wir entwickeln ein einfaches Modell in Machine Learning Studio und stellen es anschließend im Machine Learning-Webdienst bereit, in dem das Modell mithilfe neuer Daten Vorhersagen erstellen kann. 
 
 Voraussetzung in dieser exemplarischen Vorgehensweise ist, dass Sie Machine Learning Studio bereits mindestens einmal verwendet haben und über einige Kenntnisse von Machine Learning-Konzepten verfügen. Es wird aber nicht davon ausgegangen, dass Sie Experte in diesen Bereichen sind.
 
-Wenn Sie **Azure Machine Learning Studio** noch nie verwendet haben, sollten Sie mit dem Tutorial [Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio](create-experiment.md) beginnen. In diesem Tutorial wird Machine Learning Studio zum ersten Mal Schritt für Schritt für Sie beschrieben. Es vermittelt die Grundlagen, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen. Ein anderes Tool, das für die ersten Schritte nützlich sein kann, ist ein Diagramm mit einer Übersicht über die Funktionen von Machine Learning Studio. Sie können es hier herunterladen und drucken: [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](studio-overview-diagram.md).
+Wenn Sie **Azure Machine Learning Studio** noch nie verwendet haben, sollten Sie mit dem Tutorial [Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio](create-experiment.md) beginnen. In diesem Tutorial wird Machine Learning Studio zum ersten Mal Schritt für Schritt für Sie beschrieben. Es vermittelt die Grundlagen, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen. Ein anderes Tool, das für die ersten Schritte nützlich sein kann, ist ein Diagramm mit einer Übersicht über die Funktionen von Machine Learning Studio. Sie können es hier herunterladen: [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](studio-overview-diagram.md).
  
 Falls Sie mit dem Thema Machine Learning noch nicht vertraut sind, können Sie sich eine Videoreihe dazu ansehen. Sie hat den Namen [Data Science für Einsteiger](data-science-for-beginners-the-5-questions-data-science-answers.md) und kann als gute Einführung in den Machine Learning-Bereich mit einfacher Sprache und einfachen Begriffen dienen.
 
@@ -58,4 +58,4 @@ Wir führen diese Schritte aus, um eine Lösung zur Bewertung des Kreditrisikos 
 > [!TIP] 
 > Eine Arbeitskopie des Experiments, das wir in dieser exemplarischen Vorgehensweise entwickeln, finden Sie im [Azure AI-Katalog](https://gallery.cortanaintelligence.com). Navigieren Sie zu **[Walkthrough – Credit risk prediction](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**, und klicken Sie auf **Open in Studio**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
 > 
-> Diese exemplarische Vorgehensweise basiert auf einer vereinfachten Version des Beispielexperiments [Binary Classification: Credit risk prediction](https://go.microsoft.com/fwlink/?LinkID=525270), das auch in der [Gallery](http://gallery.cortanaintelligence.com/) verfügbar ist.
+> Diese exemplarische Vorgehensweise basiert auf einer vereinfachten Version des Beispielexperiments [Binary Classification: Credit risk prediction](https://go.microsoft.com/fwlink/?LinkID=525270), das auch im [Katalog](http://gallery.cortanaintelligence.com/) verfügbar ist.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: chmutali
-ms.openlocfilehash: 30354ddb010c22dabe5cd69373ae59daaf4a8b46
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 754c3278cb01e010718fa4d3cb257acf6ffe99c9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346744"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849852"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung (Vorschau)
 
@@ -67,8 +67,8 @@ Diese Workday-Benutzerbereitstellungslösung ist derzeit als öffentliche Vorsch
 
 In diesem Abschnitt wird die Lösungsarchitektur der End-to-End-Benutzerbereitstellung für häufige Hybridumgebungen beschrieben. Es gibt zwei zugehörige Flows:
 
-* **Autoritativer Personaldatenfluss – aus Workday in ein lokales Active Directory:** In diesem Flow treten mitarbeiterbezogene Ereignisse (z.B. Neueinstellungen, Wechsel, Kündigungen) zuerst im Cloudpersonalmandanten von Workday ein. Die Ereignisdaten fließen dann über Azure AD und den Bereitstellungs-Agent in ein lokales Active Directory. Abhängig vom Ereignis kann dies dann in Active Directory zu Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgängen führen.
-* **E-Mail-Rückschreibefluss – aus dem lokalen Active Directory in Workday:** Nach Abschluss der Kontoerstellung in Active Directory wird es über Azure AD Connect mit Azure AD synchronisiert. Anschließend kann das E-Mail-Attribut aus Active Directory zurück in Workday geschrieben werden.
+* **Autoritativer Personaldatenfluss – von Workday in ein lokales Active Directory-Verzeichnis**: In diesem Flow treten mitarbeiterbezogene Ereignisse (z.B. Neueinstellungen, Wechsel, Kündigungen) zuerst im Cloud-HR-Mandanten von Workday auf und werden dann über Azure AD und den Bereitstellungs-Agent in ein lokales Active Directory-Verzeichnis übertragen. Abhängig vom Ereignis kann dies dann in Active Directory zu Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgängen führen.
+* **E-Mail-Rückschreibedatenfluss – vom lokalen Active Directory-Verzeichnis zu Workday**: Nach Abschluss der Kontoerstellung in Active Directory wird dieses über Azure AD Connect mit Azure AD synchronisiert. Anschließend kann das E-Mail-Attribut aus Active Directory zurück in Workday geschrieben werden.
 
 ![Übersicht](./media/workday-inbound-tutorial/wd_overview.png)
 
@@ -169,18 +169,18 @@ Beantworten Sie die folgenden Fragen, bevor Sie die Benutzerbereitstellung in ei
       * *Beispiel: Verwenden Sie den Workday-Wert „Worker_ID“.*
       
    * SAM-Kontoname (sAMAccountName)
-      * *Beispiel: Verwenden Sie den Workday-Wert „User_ID“ gefiltert mit einem Azure AD-Bereitstellungsausdruck, um unzulässige Zeichen zu entfernen.*
+      * *Beispiel: Verwenden Sie den Workday-Wert „User_ID“, gefiltert mit einem Azure AD-Bereitstellungsausdruck, um unzulässige Zeichen zu entfernen.*
       
    * Benutzerprinzipalname (userPrincipalName)
       * *Beispiel: Verwenden Sie den Workday-Wert „User_ID“ mit einem Azure AD-Bereitstellungsausdruck, um einen Domänennamen anzufügen.*
 
 * **Wie müssen Benutzer zwischen Workday und Active Directory zugeordnet werden?**
 
-  * *Beispiel: Benutzer mit einem bestimmten Workday-Wert „Worker_ID“ werden Active Directory-Benutzern zugeordnet, deren „EmployeeID“ den gleichen Wert enthält. Wenn der Wert von „Worker_ID“ nicht in Active Directory gefunden wird, erstellen Sie einen neuen Benutzer.*
+  * *Beispiel: Benutzer mit einem bestimmten Workday-Wert „Worker_ID“ werden Active Directory-Benutzern zugeordnet, deren „employeeID“ den gleichen Wert enthält. Wenn der Wert von „Worker_ID“ nicht in Active Directory gefunden wird, erstellen Sie einen neuen Benutzer.*
   
 * **Enthält die Active Directory-Gesamtstruktur bereits die Benutzer-IDs, die notwendig sind, damit die Zuordnungslogik funktioniert?**
 
-  * *Beispiel: Im Fall einer neuen Workday-Bereitstellung wird dringend empfohlen, Active Directory vorab mit den korrekten „Worker_ID“-Werten aus Workday (oder einem eindeutigen ID-Wert Ihrer Wahl) aufzufüllen, um die Zuordnungslogik so einfach wie möglich zu halten.*
+  * *Beispiel: Im Fall einer neuen Workday-Bereitstellung wird dringend empfohlen, Active Directory vorab mit den korrekten Worker_ID-Werten aus Workday (oder einem eindeutigen ID-Wert Ihrer Wahl) aufzufüllen, um die Zuordnungslogik so einfach wie möglich zu halten.*
 
 
 
@@ -264,7 +264,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
    | Vorgang | Domänensicherheitsrichtlinie |
    | ---------- | ---------- | 
    | Get und Put | Mitarbeiterdaten: öffentliche Mitarbeiterberichte |
-   | Get und Put | Person Data: Work Contact Information (Personendaten: Kontaktinformationen von Mitarbeitern) |
+   | Get und Put | Personendaten: Kontaktinformationen von Mitarbeitern |
    | Get | Mitarbeiterdaten: alle Positionen |
    | Get | Mitarbeiterdaten: aktuelle Personalinformationen |
    | Get | Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil |
@@ -415,7 +415,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * Attribut: WorkerID
 
-      * Operator: REGEX.VERGLEICH
+      * Operator: REGEX Match
 
       * Wert: (1[0-9][0-9][0-9][0-9][0-9][0-9])
 
@@ -423,7 +423,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * Attribut: EmployeeID
 
-      * Operator: IST NICHT NULL
+      * Operator: IS NOT NULL
 
 3.  Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Active Directory angewendet werden können. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
 
@@ -498,7 +498,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
   
 
 
-### <a name="part-4-start-the-service"></a>Teil 4: Starten des Diensts
+### <a name="part-4-start-the-service"></a>Teil 4: Starten des Dienstes
 Nach Abschluss der Teile 1 bis 3 können Sie im Azure-Portal den Bereitstellungsdienst starten.
 
 1.  Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
@@ -576,7 +576,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * Attribut: WorkerID
 
-      * Operator: REGEX.VERGLEICH
+      * Operator: REGEX Match
 
       * Wert: (1[0-9][0-9][0-9][0-9][0-9][0-9])
 
@@ -584,7 +584,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * Attribut: ContingentID
 
-      * Operator: IST NICHT NULL
+      * Operator: IS NOT NULL
 
 3. Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Azure AD angewendet werden können. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
 
@@ -619,7 +619,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 6. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
-### <a name="part-3-start-the-service"></a>Teil 3: Starten des Diensts
+### <a name="part-3-start-the-service"></a>Teil 3: Starten des Dienstes
 Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellungsdienst starten.
 
 1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
@@ -677,7 +677,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 4. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
-### <a name="part-3-start-the-service"></a>Teil 3: Starten des Diensts
+### <a name="part-3-start-the-service"></a>Teil 3: Starten des Dienstes
 Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellungsdienst starten.
 
 1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
@@ -725,7 +725,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
     ```
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">
@@ -758,7 +758,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
 
-14. Navigieren Sie in der Dateistruktur durch **/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker**, um die Daten des Benutzers zu suchen. 
+14. Navigieren Sie in der Dateistruktur durch **/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker**, um die Daten zu Ihrem Benutzer zu finden. 
 
 15. Suchen Sie unter **wd: Worker** das Attribut, das Sie hinzufügen möchten, und wählen Sie es aus.
 
@@ -766,7 +766,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 1. Entfernen Sie das Präfix **/env:Envelope/env:Body/wd:Get_Workers_Response/wd:Response_Data/** aus dem kopierten Ausdruck.
 
-18. Wenn das letzte Element im kopierten Ausdruck ein Knoten ist (Beispiel: „/wd: Birth_Date“), fügen Sie am Ende des Ausdrucks **/text()** hinzu. Dies ist nicht erforderlich, wenn das letzte Element ein Attribut ist (Beispiel: „/@wd: type“).
+18. Wenn es sich beim letzten Element im kopierten Ausdruck um einen Knoten handelt (z.B. „/wd: Birth_Date“), dann fügen Sie **/text()** an das Ende des Ausdrucks an. Dies ist nicht erforderlich, wenn das letzte Element ein Attribut ist (Beispiel: „/@wd: type“).
 
 19. Das Ergebnis sollte in etwa wie folgt aussehen: `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`. Diese Zeile kopieren Sie in das Azure-Portal.
 

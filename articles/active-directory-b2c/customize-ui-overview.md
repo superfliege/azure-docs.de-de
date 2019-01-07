@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cec9e5bfea16e5ba11f8cd7324acf15188fb907a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 94f7239bdcdc5ddc91f3ed8b49b59378309711e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669357"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844956"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informationen zur Anpassung der Benutzeroberfläche (UI) in Azure Active Directory B2C
 
@@ -23,13 +23,13 @@ Dass Sie die Möglichkeit haben, der Benutzeroberfläche (UI), die Azure Active 
 
 Je nach Ihren Anforderungen hinsichtlich dieser Erfahrungen passen Sie die Benutzeroberfläche Ihrer Anwendung auf unterschiedliche Weise an. Beispiel: 
 
-- Wenn Sie [integrierte Richtlinien](active-directory-b2c-reference-policies.md) verwenden, um in Ihrer Anwendung Erfahrungen für Registrierung bzw. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie das [Azure-Portal zum Anpassen der Benutzeroberfläche](tutorial-customize-ui.md).
+- Wenn Sie [Benutzerflows](active-directory-b2c-reference-policies.md) verwenden, um in Ihrer Anwendung Benutzeroberflächenfeatures für Registrierung oder Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie das [Azure-Portal zum Anpassen der Benutzeroberfläche](tutorial-customize-ui.md).
 - Wenn Sie nur eine Anmeldung mit der begleitenden Seite für die Kennwortzurücksetzung sowie Verifizierungs-E-Mails bereitstellen, verwenden Sie dieselben Anpassungsschritte, die für eine [Azure AD-Anmeldeseite](../active-directory/fundamentals/customize-branding.md) verwendet werden.
 - Wenn Kunden versuchen, ihr Profil zu bearbeiten, bevor sie sich anmelden, werden sie zu einer Seite umgeleitet, die Sie mithilfe derselben Schritte anpassen, die zum Anpassen der Anmeldeseite von Azure AD verwendet werden.
 - Wenn Sie [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) verwenden, um in Ihrer Anwendung Registrierung bzw. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie die [Richtliniendateien zum Anpassen der Benutzeroberfläche](active-directory-b2c-ui-customization-custom.md).
 - Wenn Sie dynamische Inhalte auf Grundlage der Entscheidung eines Kunden bereitstellen müssen, verwenden Sie [benutzerdefinierte Richtlinien, die Seiteninhalte ändern können](active-directory-b2c-ui-customization-custom-dynamic.md), in Abhängigkeit von einem Parameter, der in einer Abfragezeichenfolge gesendet wird. So ändert sich beispielsweise das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf Grundlage eines Parameters, den Sie aus Ihrer Web- oder Mobilanwendung übergeben.
 
-Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zur Laufzeit wird Inhalt über eine URL geladen, die Sie in einer Richtlinie angeben. Sie geben verschiedene URLs für unterschiedliche Seiten an. Nachdem Inhalt über Ihr URL geladen wurde, wird er mit einem von Azure AD B2C eingefügten HTML-Fragment zusammengeführt und dann Ihrem Kunden angezeigt.
+Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zur Laufzeit wird Inhalt über eine URL geladen, die Sie in einem Benutzerflow oder einer Richtlinie angeben. Sie geben verschiedene URLs für unterschiedliche Seiten an. Nachdem Inhalt über Ihr URL geladen wurde, wird er mit einem von Azure AD B2C eingefügten HTML-Fragment zusammengeführt und dann Ihrem Kunden angezeigt.
 
 Bevor Sie beginnen, lesen Sie die folgenden Anleitungen:
 
@@ -118,6 +118,6 @@ Beispiele für die Anpassung finden Sie in diesen [Beispielvorlagendateien](http
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie integrierte Richtlinien verwenden, können Sie mit dem Anpassen Ihrer Benutzeroberfläche mit folgendem Tutorial beginnen: [Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C](tutorial-customize-ui.md).
-- Wenn Sie benutzerdefinierte Richtlinien verwenden, können Sie mit dem Anpassen der Benutzeroberfläche mit folgendem Artikel beginnen: [Anpassen der Benutzeroberfläche Ihrer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+- Wenn Sie Benutzerflows verwenden, bearbeiten Sie dieses Tutorial zum Einstieg in die Benutzeroberflächenanpassung: [Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C](tutorial-customize-ui.md).
+- Wenn Sie benutzerdefinierte Richtlinien verwenden, lesen Sie diesen Artikel zum Einstieg in die Benutzeroberflächenanpassung: [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
 

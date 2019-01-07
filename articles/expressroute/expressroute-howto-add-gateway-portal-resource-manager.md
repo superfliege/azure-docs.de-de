@@ -1,26 +1,19 @@
 ---
-title: 'Hinzufügen eines virtuellen Netzwerkgateways zu einem VNet für ExpressRoute: Portal: Azure | Microsoft-Dokumentation'
+title: 'Hinzufügen eines Gateways zu einem Azure-VNET für ExpressRoute: Portal | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie einem bereits erstellten Resource Manager-VNet für ExpressRoute ein virtuelles Netzwerkgateway hinzufügen.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/17/2017
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6198c8723ccbb225a4cc60526e66f4651390b26c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255692"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091202"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -81,7 +74,7 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
 7. Wählen Sie das virtuelle Netzwerk aus, dem Sie dieses Gateway hinzufügen möchten. Klicken Sie auf **Virtuelles Netzwerk**, um das Blatt **Virtuelles Netzwerk auswählen** zu öffnen. Wählen Sie das VNet aus. Sollte Ihr VNet nicht angezeigt werden, vergewissern Sie sich, dass das Feld **Speicherort** auf die Region verweist, in dem sich Ihr virtuelles Netzwerk befindet.
 9. Wählen Sie eine öffentliche IP-Adresse aus. Klicken Sie auf **Öffentliche IP-Adresse**, um das Blatt **Öffentliche IP-Adresse wählen** zu öffnen. Klicken Sie auf **+ Neu erstellen**, um das Blatt **Öffentliche IP-Adresse erstellen** zu öffnen. Geben Sie einen Namen für die öffentliche IP-Adresse ein. Auf diesem Blatt wird ein Objekt für eine öffentliche IP-Adresse erstellt, dem eine öffentliche IP-Adresse dynamisch zugewiesen wird. Klicken Sie zum Speichern der Änderungen an diesem Blatt auf **OK**.
 10. **Abonnement**: Vergewissern Sie sich, dass das richtige Abonnement ausgewählt ist.
-11. **Ressourcengruppe**: Diese Einstellung wird auf der Grundlage des ausgewählten virtuellen Netzwerks bestimmt.
+11. **Ressourcengruppe**: Diese Einstellung wird auf der Grundlage des ausgewählten virtuellen Netzwerks festgelegt.
 12. Passen Sie den **Standort** nach Angabe der vorherigen Einstellungen nicht mehr an.
 13. Überprüfen Sie die Einstellungen. Sie können die Option **An Dashboard anheften** unten auf dem Blatt auswählen, wenn das Gateway auf dem Dashboard angezeigt werden soll.
 14. Klicken Sie auf **Erstellen** , um das Gateway zu erstellen. Die Einstellungen werden überprüft, und das Gateway wird bereitgestellt. Das vollständige Erstellen des virtuellen Netzwerkgateways kann bis zu 45 Minuten dauern.

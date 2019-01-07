@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853352"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870401"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -31,20 +31,41 @@ Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API. 
 
 ## <a name="base-urls"></a>Basis-URLs
 
-Die Textübersetzungs-API Version 3.0 ist in der folgenden Cloud verfügbar:
+Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 6 [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions):
 
-| BESCHREIBUNG | Region | Basis-URL                                        |
-|-------------|--------|-------------------------------------------------|
-| Azure       | Global | api.cognitive.microsofttranslator.com           |
+* **Amerika**: USA, Westen 2 und USA, Westen-Mitte 
+* **Asien-Pazifik:** Asien, Südosten und Südkorea, Süden
+* **Europa:** Europa, Norden und Europa, Westen
+
+Anforderungen an die Textübersetzungs-API von Microsoft werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Im Falle eines Rechenzentrumsausfalls kann die Anforderung außerhalb der Region weitergeleitet werden.
+
+Um zu erzwingen, dass die Anforderung von einem bestimmten Rechenzentrum bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten regionalen Endpunkt:
+
+|BESCHREIBUNG|Region|Basis-URL|
+|:--|:--|:--|
+|Azure|Global|  api.cognitive.microsofttranslator.com|
+|Azure|Nordamerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
+|Azure|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
 
 
 ## <a name="authentication"></a>Authentifizierung
 
-Abonnieren Sie die Textübersetzungs-API in Microsoft Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
+Abonnieren Sie die Textübersetzungs-API oder [Cognitive Services-All-in-One](https://azure.microsoft.com/pricing/details/cognitive-services/) in Microsoft Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
 
-Die einfachste Möglichkeit ist das Übergeben Ihres geheimen Azure-Schlüssels an den Translator-Dienst mit dem Anforderungsheader `Ocp-Apim-Subscription-Key`.
+Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Diese Tabelle beschreibt, wie jeder verwendet wird:
 
-Eine Alternative ist die Verwendung Ihres geheimen Schlüssels, um ein Autorisierungstoken aus dem Tokendienst abzurufen. Anschließend übergeben Sie das Autorisierungstoken an den Translator-Dienst, indem Sie den Anforderungsheader `Authorization` verwenden. Senden Sie eine `POST`-Anforderung an die folgende URL, um ein Autorisierungstoken zu erhalten:
+|Header|BESCHREIBUNG|
+|:----|:----|
+|Ocp-Apim-Subscription-Key|*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
+|Autorisierung|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
+|Ocp-Apim-Subscription-Region|*Verwendung mit dem All-In-One-Abonnement von Cognitive Services, wenn Sie Ihren geheimen All-In-One-Schlüssel übergeben*.<br/>Der Wert ist die Region des All-in-One-Abonnements. Dieser Wert ist optional, wenn kein All-in-One-Abonnement verwendet wird.|
+
+###  <a name="secret-key"></a>Geheimer Schlüssel
+Die erste Option ist die Authentifizierung mithilfe des Headers `Ocp-Apim-Subscription-Key`. Fügen Sie einfach den `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`-Header zur Ihrer Anforderung hinzu.
+
+### <a name="authorization-token"></a>Autorisierungstoken
+Alternativ können Sie Ihren geheimen Schlüssel für ein Zugriffstoken austauschen. Dieses Token ist in jeder Anforderung als `Authorization`-Header enthalten. Senden Sie eine `POST`-Anforderung an die folgende URL, um ein Autorisierungstoken zu erhalten:
 
 | Environment     | Authentifizierungsdienst-URL                                |
 |-----------------|-----------------------------------------------------------|
@@ -55,6 +76,7 @@ Hier sind Beispielanforderungen zum Abrufen eines Tokens über einen geheimen Sc
 ```
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
+
 // Pass secret key using query string parameter
 curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
@@ -67,20 +89,21 @@ Authorization: Bearer <Base64-access_token>
 
 Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wiederverwendet werden, wenn die Translator-APIs mehrfach aufgerufen werden. Wenn Ihr Programm aber über längere Zeit Anforderungen an die Translator-API sendet, muss das Programm regelmäßig (z.B. alle acht Minuten) ein neues Zugriffstoken anfordern.
 
-Zusammenfassung: Eine Clientanforderung für die Translator-API enthält einen Autorisierungsheader aus der folgenden Tabelle:
+### <a name="all-in-one-subscription"></a>All-in-One-Abonnement
 
-<table width="100%">
-  <th width="30%">Header</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>Ocp-Apim-Subscription-Key</td>
-    <td>*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.</td>
-  </tr>
-  <tr>
-    <td>Autorisierung</td>
-    <td>*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: „Bearer <token>“.</td>
-  </tr>
-</table> 
+Die letzte Authentifizierungsoption ist die Nutzung des All-in-One-Abonnements von Cognitive Services. Auf diese Weise können Sie einen einzigen geheimen Schlüssel verwenden, um Anforderungen für mehrere Dienste zu authentifizieren. 
+
+Wenn Sie einen geheimen All-in-One-Schlüssel verwenden, müssen Sie Ihrer Anforderung zwei Authentifizierungsheader hinzufügen. Der erste übergibt den geheimen Schlüssel, der zweite gibt die Region an, die Ihrem Abonnement zugeordnet ist. 
+* `Ocp-Api-Subscription-Key`
+* `Ocp-Apim-Subscription-Region`
+
+Wenn Sie den geheimen Schlüssel in der Abfragezeichenfolge mit dem Parameter `Subscription-Key` übergeben, dann müssen Sie die Region mit dem Abfrageparameter `Subscription-Region` angeben.
+
+Wenn Sie ein Bearertoken verwenden, müssen Sie das Token vom Regionsendpunkt `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` beziehen.
+
+Diese Regionen sind verfügbar: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus` und `westus2`.
+
+Die Region ist für das Abonnement der All-in-One-Text-API erforderlich.
 
 ## <a name="errors"></a>Errors
 

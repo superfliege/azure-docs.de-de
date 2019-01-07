@@ -15,20 +15,21 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 54b614e49bc7c03325ebeada60232fca861874e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687400"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193075"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Technischer Einblick
 
 In diesem Artikel finden Sie technische Details zur Funktionsweise des nahtlosen einmaligen Anmeldens in Azure Active Directory (Seamless SSO).
 
 ## <a name="how-does-seamless-sso-work"></a>Wie funktioniert das nahtlose einmalige Anmelden?
 
 Dieser Abschnitt enthält drei Teile:
+
 1. Die Einrichtung des nahtlosen einmaligen Anmeldens
 2. Funktionsweise einer Anmeldungstransaktion eines einzelnen Benutzers in einem Webbrowser mit dem nahtlosen einmaligen Anmelden
 3. Funktionsweise einer Anmeldungstransaktion eines einzelnen Benutzers auf einem nativen Client mit dem nahtlosen einmaligen Anmelden
@@ -36,6 +37,7 @@ Dieser Abschnitt enthält drei Teile:
 ### <a name="how-does-set-up-work"></a>Wie funktioniert die Einrichtung?
 
 Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](how-to-connect-sso-quick-start.md) gezeigt aktiviert. Während der Aktivierung des Features laufen die folgenden Schritte ab:
+
 - Ein Computerkonto namens `AZUREADSSOACC` (das Azure AD darstellt) wird in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt.
 - Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird sicher für Azure AD freigegeben. Wenn mehrere AD-Gesamtstrukturen vorhanden sind, müssen die Gesamtstrukturen jeweils einen eigenen Kerberos-Entschlüsselungsschlüssel aufweisen.
 - Darüber hinaus werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
@@ -56,8 +58,8 @@ Anmeldungsablauf in einem Webbrowser:
 2. Wenn der Benutzer nicht bereits angemeldet ist, wird der Benutzer zur Azure AD-Anmeldeseite umgeleitet.
 3. Der Benutzer gibt auf der Azure AD-Anmeldeseite seinen Benutzernamen ein.
 
-  >[!NOTE]
-  >Für [bestimmte Anwendungen](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso) werden die Schritte 2 und 3 übersprungen.
+   >[!NOTE]
+   >Für [bestimmte Anwendungen](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso) werden die Schritte 2 und 3 übersprungen.
 
 4. Wenn JavaScript im Hintergrund verwendet wird, fordert Azure AD den Browser über eine „401 – Nicht autorisiert“-Antwort auf, ein Kerberos-Ticket bereitzustellen.
 5. Der Browser fordert wiederum ein Ticket von Active Directory für das `AZUREADSSOACC`-Computerkonto an (das Azure AD darstellt).

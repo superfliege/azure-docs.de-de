@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 555a2bdfe3997114c1aaa202a89d650287f27c0e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310039"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091627"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen. 
@@ -34,20 +35,20 @@ Die Azure Data Lake Store-Ausgabe aus Stream Analytics ist zurzeit nicht in den 
 
 1. Wenn Data Lake Store im Azure-Portal als Ausgabe ausgewählt ist, werden Sie aufgefordert, eine Verbindung mit einem vorhandenen Data Lake Store zu autorisieren.  
 
-   ![Autorisieren von Data Lake-Speicher](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+   ![Autorisieren der Verbindung mit Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
 2. Falls Sie bereits Zugriff auf Data Lake Store haben, können Sie die Option **Jetzt autorisieren** wählen. Daraufhin wird für einen kurzen Moment eine Seite mit dem Hinweis **Umleitung an die Autorisierung...** angezeigt. Nach erfolgter Autorisierung wird die Seite angezeigt, über die Sie die Data Lake Store-Ausgabe konfigurieren können.
 
 3. Sobald Sie das Data Lake-Speicherkonto authentifiziert haben, können Sie die Eigenschaften für die Data Lake-Speicherausgabe konfigurieren. Die folgende Tabelle enthält eine Liste von Eigenschaftennamen und deren Beschreibung zum Konfigurieren der Data Lake-Speicherausgabe.
 
-   ![Autorisieren von Data Lake-Speicher](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+   ![Definieren von Data Lake Store als Stream Analytics-Ausgabe](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 | Eigenschaftenname | BESCHREIBUNG | 
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Data Lake Store weiterzuleiten. | 
 | Kontoname | Der Name des Data Lake-Speicherkontos, an das Sie die Ausgabe senden. Eine Dropdownliste der in Ihrem Abonnement verfügbaren Data Lake Store-Konten wird angezeigt. |
 | Präfixmuster des Pfads | Der Dateipfad, mit dem Ihre Dateien im angegebenen Data Lake-Speicherkonto geschrieben werden. Sie können eine oder mehrere Instanzen der Variablen {date} und {time} angeben.</br><ul><li>Beispiel 1: folder1/logs / {date} / {time}</li><li>Beispiel 2: folder1/logs / {date}</li></ul><br>Der Zeitstempel der erstellten Ordnerstruktur folgt der UTC, nicht der lokalen Zeit.</br><br>Wenn das Dateipfadmuster keinen nachgestellten Schrägstrich („/“) enthält, wird auch das letzte Muster im Dateipfad als Dateinamenpräfix behandelt. </br></br>In diesen Fällen werden neue Dateien erstellt:<ul><li>Änderung im Ausgabeschema</li><li>Externer oder interner Neustart eines Auftrags</li></ul> |
-| Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/TT |
+| Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/DD |
 |Zeitformat | Optional. Wenn das time-Token im Pfadpräfix verwendet wird, können Sie das Zeitformat auswählen, unter dem die Dateien gespeichert werden. Der einzige derzeit unterstützte Wert ist HH |
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt.| 
 | Codieren | Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat.|
@@ -59,7 +60,7 @@ Sie müssen Ihr Data Lake Store-Konto erneut authentifizieren, wenn das Kennwort
 
 Um die Autorisierung zu erneuern, klicken Sie in Ihrem Auftrag auf **Beenden**, navigieren zu Ihrem Data Lake Store und klicken dann auf den Link **Autorisierung erneuern**. Für einen kurzen Zeitraum wird die Seite **Umleitung an die Autorisierung...** angezeigt. Die Seite wird automatisch geschlossen, und im Erfolgsfall wird **Autorisierung wurde erfolgreich erneuert** angezeigt. Sie müssen dann unten auf der Seite auf **Speichern** klicken und können fortfahren, indem Sie Ihren Auftrag von der **letzten Beendigungszeit** aus neu starten, um einen Datenverlust zu vermeiden.
 
-![Autorisieren von Data Lake-Speicher](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
+![Erneuern der Data Lake Store-Autorisierung in der Ausgabe](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL-Datenbank
 [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) kann als Ausgabe für relationale Daten oder für Anwendungen verwendet werden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge schreiben in eine vorhandene Tabelle in einer Azure SQL-Datenbank.  Das Tabellenschema muss genau mit den Feldern und ihren Typen übereinstimmen, die aus Ihrem Auftrag ausgegeben werden. Eine [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)-Instanz kann auch über die SQL-Datenbank-Ausgabeoption als Ausgabe angegeben werden. Um zu erfahren, welche Möglichkeiten es gibt, um den Schreibdurchsatz zu erhöhen, lesen Sie den Artikel [Stream Analytics mit Azure SQL-Datenbank als Ausgabe](stream-analytics-sql-output-perf.md). Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
@@ -89,7 +90,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Speicherkontoschlüssel | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist.                              |
 | Speichercontainer   | Container stellen eine logische Gruppierung für Blobs bereit, die im Microsoft Azure-Blobdienst gespeichert sind. Wenn Sie ein Blob in den Blobdienst hochladen, müssen Sie einen Container für das Blob angeben. |
 | Pfadmuster | Optional. Das Dateipfadmuster, mit dem Ihre Blobs im angegebenen Container geschrieben werden. <br /><br /> In dem Pfadmuster können Sie mindestens eine Instanz der date/time-Variablen verwenden, um die Häufigkeit anzugeben, mit der Blobs geschrieben werden: <br /> {date}, {time} <br /><br />Wenn Sie über diesen [Link zum Azure-Portal](https://portal.azure.com/?microsoft_azure_streamanalytics_bloboutputpathpartitioning=true&Microsoft_Azure_StreamAnalytics_bloboutputcontainerpartitioning=true) auf die Vorschau der benutzerdefinierten Blobpartitionierung zugreifen, können Sie einen benutzerdefinierten {field}-Namen von Ihren Ereignisdaten bis hin zu Partitionsblobs angeben. Der Feldname ist alphanumerisch und kann Leerstellen, Bindestriche und Unterstriche enthalten. Für benutzerdefinierte Felder gelten die folgenden Einschränkungen: <ul><li>Keine Berücksichtigung der Groß-/Kleinschreibung (kein Unterschied zwischen Spalte „ID“ und Spalte „id“)</li><li>Geschachtelte Felder sind unzulässig (stattdessen Verwendung eines Alias in der Auftragsabfrage zum Vereinfachen des Felds)</li><li>Ausdrücke können nicht als Feldname verwendet werden.</li></ul> <br /><br /> Die Vorschauversion ermöglicht auch die Verwendung von Konfigurationen für benutzerdefinierte Angaben des Datums-/Uhrzeitformats im Pfad. Benutzerdefinierte Datums- und Uhrzeitformate müssen einzeln nacheinander angegeben werden und in das Schlüsselwort {datetime:\<Spezifizierer>} eingeschlossen sein. Zulässige Eingaben für \<Spezifizierer> sind „yyyy“, „MM“, „M“, „dd“, „d“, „HH“, „H“, „mm“, „m“, „ss“ und „s“. Das Schlüsselwort {datetime:\<Spezifizierer>} kann mehrmals im Pfad verwendet werden, um benutzerdefinierte Konfigurationen für Datum und Uhrzeit zu bilden. <br /><br />Beispiele: <ul><li>Beispiel 1: cluster1/logs/{date}/{time}</li><li>Beispiel 2: cluster1/logs/{date}</li><li>Beispiel 3 (Vorschauversion): cluster1/{client_id}/{date}/{time}</li><li>Beispiel 4 (Vorschauversion): cluster1/{datetime:ss}/{myField}; hierbei lautet die Abfrage: SELECT data.myField AS myField FROM Input;</li><li>Beispiel 4 (Vorschauversion): cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br /><br />Der Zeitstempel der erstellten Ordnerstruktur folgt der UTC, nicht der lokalen Zeit.<br /><br/>Die Dateibenennung erfolgt gemäß der nachstehenden Konvention: <br /><br />{Präfixmuster des Pfads}/schemaHashcode_Guid_Number.extension<br /><br />Beispielausgabedateien:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br /><br /> Weitere Informationen zu dieser Vorschau finden Sie unter [Benutzerdefinierte DateTime-Pfadmuster für die Blob Storage-Ausgabe von Azure Stream Analytics (Vorschau)](stream-analytics-custom-path-patterns-blob-storage-output.md). |
-| Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/TT |
+| Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/DD |
 | Zeitformat | Optional. Wenn das time-Token im Pfadpräfix verwendet wird, können Sie das Zeitformat auswählen, unter dem die Dateien gespeichert werden. Der einzige derzeit unterstützte Wert ist HH |
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten.  Es werden JSON, CSV und Avro unterstützt. |
 | Codieren    | Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
@@ -133,11 +134,11 @@ Die Power BI-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azur
 ### <a name="authorize-a-power-bi-account"></a>Autorisieren eines Power BI-Kontos
 1. Wenn Power BI im Azure-Portal als Ausgabe ausgewählt ist, werden Sie aufgefordert, einen vorhandenen Power BI-Benutzer zu autorisieren oder ein neues Power BI-Konto zu erstellen.  
    
-   ![Autorisieren von Power BI-Benutzern](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
+   ![Autorisieren von Power BI-Benutzern für die Ausgabekonfiguration](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 
 2. Erstellen Sie ein neues Konto, wenn Sie noch keines haben, und klicken Sie dann auf "Jetzt autorisieren".  Die folgende Seite wird angezeigt:
    
-   ![Azure-Konto Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
+   ![Authentifizieren bei Power BI über ein Azure-Konto](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
 
 3. In diesem Schritt geben Sie das Geschäfts- oder Schulkonto für die Autorisierung der Power BI-Ausgabe an. Wenn Sie noch nicht für Power BI angemeldet sind, wählen Sie "Jetzt anmelden" aus. Das für Power BI verwendete Geschäfts- Schul- oder Unikonto kann sich vom Azure-Abonnementkonto unterscheiden, bei dem Sie zurzeit angemeldet sind.
 
@@ -190,11 +191,11 @@ DateTime | Zeichenfolge | Zeichenfolge |  DateTime | Zeichenfolge
 ### <a name="renew-power-bi-authorization"></a>Erneuern der Power BI-Autorisierung
 Wenn sich das Kennwort Ihres Power BI-Kontos ändert, nachdem der Stream Analytics-Auftrag erstellt oder zuletzt authentifiziert wurde, müssen Sie Stream Analytics erneut authentifizieren. Wenn Multi-Factor Authentication (MFA) für Ihren AAD-Mandanten (Azure Active Directory) konfiguriert ist, müssen Sie auch die Power BI-Autorisierung alle zwei Wochen erneuern. Dieses Problem zeigt sich daran, dass keine Auftragsausgabe erfolgt und in den Vorgangsprotokollen ein Benutzerauthentifizierungsfehler angezeigt wird:
 
-  ![Power BI-Aktualisierungstoken-Fehler](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
+  ![Fehler beim Authentifizieren von Benutzern bei Power BI](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
 Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zur Power BI-Ausgabe.  Wählen Sie den Link **Autorisierung erneuern**, und starten Sie den Auftrag ab **Letzte Beendigungszeit** neu, um Datenverlust zu vermeiden.
 
-  ![Power BI erneuert die Autorisierung](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
+  ![Erneuern der Power BI-Autorisierung für die Ausgabe](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
 [Azure Table Storage](../storage/common/storage-introduction.md) bietet einen hoch verfügbaren, in hohem Maße skalierbaren Speicher, sodass eine Anwendung automatisch an die Bedürfnisse der Benutzer angepasst werden kann. Tabellenspeicher ist Microsofts NoSQL-Schlüssel-/Attributspeicher, der für strukturierte Daten genutzt werden kann, die weniger Einschränkungen hinsichtlich des Schemas aufweisen. Azure-Tabellenspeicher kann zum Speichern von Daten für dauerhafte Archivierung und effizienten Abruf verwendet werden.

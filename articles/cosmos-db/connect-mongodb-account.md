@@ -1,22 +1,20 @@
 ---
-title: MongoDB-Verbindungszeichenfolge für ein Azure Cosmos DB-Konto | Microsoft-Dokumentation
+title: MongoDB-Verbindungszeichenfolge für ein Azure Cosmos DB-Konto
 description: In diesem Artikel erfahren Sie, wie Sie Ihre MongoDB-App mithilfe einer MongoDB-Verbindungszeichenfolge mit einem Azure Cosmos DB-Konto verbinden.
 keywords: MongoDB-Verbindungszeichenfolge
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2017
 ms.author: sclyon
-ms.openlocfilehash: ad8d6fe36c289c4c9e37689e1c7d755dc3bf9048
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a78a77e16e9a810c0be03656aa48b02cc8e6e5e6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038331"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849257"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB
 In diesem Artikel erfahren Sie, wie Sie Ihre MongoDB-App mithilfe einer MongoDB-Verbindungszeichenfolge mit einem Azure Cosmos DB-Konto verbinden. Anschließend können Sie eine Azure Cosmos DB-Datenbank als Datenspeicher für Ihre MongoDB-App verwenden. 
@@ -60,9 +58,9 @@ Azure Cosmos DB unterstützt das standardmäßige URI-Format für MongoDB-Verbin
 
 Die Werte dieser Zeichenfolge werden auf dem zuvor gezeigten Blatt **Verbindungszeichenfolge** angezeigt:
 
-* Benutzername (erforderlich): Name des Azure Cosmos DB-Kontos
-* Kennwort (erforderlich): Kennwort des Azure Cosmos DB-Kontos
-* Host (erforderlich): FQDN des Azure Cosmos DB-Kontos
+* Benutzername (erforderlich): Der Azure Cosmos DB-Kontoname.
+* Kennwort (erforderlich): Das Azure Cosmos DB-Kontokennwort.
+* Host (erforderlich): Der FQDN des Azure Cosmos DB-Kontos.
 * Port (erforderlich): 10255
 * Datenbank (optional): Die Datenbank, die die Verbindung verwendet. Wenn keine Datenbank angegeben wird, wird standardmäßig die Datenbank „test“ verwendet.
 * ssl=true (erforderlich)

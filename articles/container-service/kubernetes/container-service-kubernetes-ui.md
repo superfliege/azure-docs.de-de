@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure-Kubernetes-Clustern mit der Webbenutzeroberfläche
+title: (VERALTET) Verwalten von Azure-Kubernetes-Clustern mit der Webbenutzeroberfläche
 description: Verwenden der Webbenutzeroberfläche von Kubernetes in Azure Container Service
 services: container-service
 author: bburns
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: b5079ddb63f468f924577f61adda6a3056ec8c6c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998524"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996140"
 ---
-# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Verwenden der Webbenutzeroberfläche von Kubernetes mit Azure Container Service
+# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(VERALTET) Verwenden der Webbenutzeroberfläche von Kubernetes mit Azure Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Artikels, in der Azure Kubernetes Service verwendet wird, finden Sie unter [Zugreifen auf das Kubernetes-Webdashboard in Azure Kubernetes Service (AKS)](../../aks/kubernetes-dashboard.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie mit [Azure Container Service einen Kubernetes-Cluster erstellt haben](container-service-kubernetes-walkthrough.md).

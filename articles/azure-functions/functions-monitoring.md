@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 9fb25f21e9ff54baf0e297fad1601018af45e476
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497239"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876518"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -158,7 +158,7 @@ Die verfügbaren Tabellen werden im linken Bereich auf der Registerkarte **Schem
 * **requests**: Jeweils eine Anforderung pro Funktionsaufruf.
 * **exceptions**: Alle Ausnahmen, die von der Laufzeit ausgelöst werden.
 * **customMetrics**: Anzahl von erfolgreichen und nicht erfolgreichen Aufrufen, Erfolgsrate, Dauer.
-* **customEvents**: Von der Laufzeit nachverfolgte Ereignisse, z.B. HTTP-Anforderungen, die eine Funktion auslösen.
+* **CustomEvents**: Ereignisse, die von der Runtime verfolgt werden, z. B.:  HTTP-Anforderungen, die eine Funktion auslösen.
 * **performanceCounters**: Informationen zur Leistung der Server, auf denen die Funktionen ausgeführt werden.
 
 Die anderen Tabellen sind für Verfügbarkeitstests und Client/Browser-Telemetrie bestimmt. Sie können die benutzerdefinierte Telemetrie implementieren, um Daten hinzuzufügen.
@@ -330,6 +330,21 @@ Wie im vorherigen Abschnitt erwähnt, werden von der Laufzeit Daten zu den Funkt
 ## <a name="configure-sampling"></a>Konfigurieren des Samplings
 
 Application Insights verfügt über ein [Sampling](../application-insights/app-insights-sampling.md)-Feature als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten produziert werden. Wenn die Rate der eingehenden Telemetrieelemente einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden Elemente zufällig zu ignorieren. Die Standardeinstellung für die maximale Anzahl von Elementen pro Sekunde ist 5. Sie können das Sampling in der Datei [host.json](functions-host-json.md) konfigurieren.  Hier sehen Sie ein Beispiel:
+
+### <a name="version-2x"></a>Version 2.x 
+
+```json
+{
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "maxTelemetryItemsPerSecond" : 5
+      }
+    }
+  }
+}
+```
 
 ### <a name="version-1x"></a>Version 1.x 
 

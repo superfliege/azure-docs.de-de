@@ -1,26 +1,28 @@
 ---
-title: Verwalten und Bereitstellen von Modellen in Azure Machine Learning Services
+title: Verwalten, registrieren, bereitstellen und überwachen von ML-Modellen
+titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie mit Azure Machine Learning Services Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning Services trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: hjerez
-ms.author: hjerez
+author: chris-lauren
+ms.author: clauren
 ms.date: 09/24/2018
-ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.custom: seodec18
+ms.openlocfilehash: 25f149ad4df43a7e5b443d6abd72be91072cb47f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885066"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250201"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
 
 In diesem Artikel lernen Sie, wie Sie mit Azure Machine Learning Services Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen. 
 
-Die folgende Abbildung veranschaulicht den gesamten Bereitstellungsworkflow: [ ![Bereitstellungsworkflow für Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+Das folgende Diagramm veranschaulicht den vollständigen Bereitstellungsworkflow: [ ![Bereitstellungsworkflow für Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Der Bereitstellungsworkflow umfasst die folgenden Schritte:
 1. **Registrieren des Modells** in einer Registrierung, die in Ihrem Azure Machine Learning Services-Arbeitsbereich gehostet wird

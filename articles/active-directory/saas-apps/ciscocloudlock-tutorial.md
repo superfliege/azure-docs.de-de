@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 9908dae627ae11a42e8e01a9a4f4d11f35ce0f8d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422959"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Tutorial: Azure Active Directory-Integration in The Cloud Security Fabric
 
@@ -108,12 +108,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Informationen zum einmaligen Anmelden für The Cloud Security Fabric-Domäne und -URLs](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein:
+
     | |
     |--|
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
     b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+    
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
@@ -166,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-a-the-cloud-security-fabric-test-user"></a>Erstellen eines The Cloud Security Fabric-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in The Cloud Security Fabric einen Benutzer namens Britta Simon. Das [The Cloud Security Fabric-Supportteam](mailto:support@cloudlock.com) kann Sie beim Hinzufügen von Benutzern auf der The Cloud Security Fabric-Plattform unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in The Cloud Security Fabric einen Benutzer namens Britta Simon. Das  [The Cloud Security Fabric-Supportteam](mailto:support@cloudlock.com)  kann Sie beim Hinzufügen von Benutzern auf der The Cloud Security Fabric-Plattform unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

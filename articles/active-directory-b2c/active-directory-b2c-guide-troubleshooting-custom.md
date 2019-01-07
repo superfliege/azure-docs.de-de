@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32692cbe7959650d5181c9e9dfcd7dd5ee55a46e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024592"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842593"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Beheben von Problemen mit benutzerdefinierten Azure AD B2C-Richtlinien und dem Framework für die Identitätsfunktion
 
@@ -57,10 +57,10 @@ Fehlercodeausschnitt: `Reason: User is currently logged as a user of 'yourtenant
 
 * Verwenden Sie `Run Now` und `https://jwt.io`, um Ihre Richtlinien unabhängig von Ihrer Webanwendung oder mobilen Anwendung zu testen. Diese Website verhält sich wie eine Anwendung der vertrauenden Seite. Sie zeigt den Inhalt des JSON Web Token (JWT) an, das von Ihrer Azure AD B2C-Richtlinie generiert wird. Verwenden Sie die folgenden Werte, um eine Testanwendung in Identity Experience Framework zu erstellen:
     * Name: TestApp
-    * Web-App/Web-API: Nein
-    * Nativer Client: Nein
+    * Web-App/Web-API: Nein 
+    * Nativer Client: Nein 
 
-* Verwenden Sie [Fiddler](http://www.telerik.com/fiddler), um den Austausch von Nachrichten zwischen Ihrem Clientbrowser und Azure AD B2C nachzuverfolgen. So erhalten Sie Hinweise dazu, an welcher Stelle für Ihre User Journey in den Orchestrierungsschritten ein Fehler auftritt.
+* Verwenden Sie [Fiddler](https://www.telerik.com/fiddler), um den Austausch von Nachrichten zwischen Ihrem Clientbrowser und Azure AD B2C nachzuverfolgen. So erhalten Sie Hinweise dazu, an welcher Stelle für Ihre User Journey in den Orchestrierungsschritten ein Fehler auftritt.
 
 * Verwenden Sie im **Entwicklungsmodus** die Anwendung **Application Insights**, um die Aktivität Ihrer User Journey für Identity Experience Framework nachzuverfolgen. Im **Entwicklungsmodus** können Sie den Austausch von Ansprüchen zwischen dem Identity Experience Framework und den unterschiedlichen Anspruchsanbietern verfolgen, die anhand von technischen Profilen definiert werden, z.B. Identitätsanbieter, API-basierte Dienste, Azure AD B2C-Benutzerverzeichnis und andere Dienste wie Azure Multi-Factor Authentication.  
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/21/2018
+ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 8253c4c84e38fc3b8279aa311c1627a540502a6c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b467618815f2bad8a6816425764fe60707c1db3d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351485"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308140"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Problembehandlung bei Startfehlern von virtuellen Azure-Computern
 
@@ -29,6 +29,10 @@ In diesem Artikel werden häufige Startfehler aufgeführt, die beim Starten eine
 * [BitLocker-Startfehler](troubleshoot-bitlocker-boot-error.md) 
 * [Windows zeigt beim Starten „Dateisystem wird überprüft“ an](troubleshoot-check-disk-boot-error.md)
 * [Bluescreen-Fehler](troubleshoot-common-blue-screen-error.md)
+* [VM-Start bleibt bei „Windows wird vorbereitet“ hängen](troubleshoot-vm-boot-configure-update.md)
+* [KRITISCHER SERVERFEHLER auf Bluescreen](troubleshoot-critical-service-failed-boot-error.md)
+* [Neustartschleifenproblem](troubleshoot-reboot-loop.md)
+* [VM-Start bleibt bei Windows-Update hängen](troubleshoot-stuck-updating-boot-error.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

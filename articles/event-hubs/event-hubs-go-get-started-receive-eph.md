@@ -1,20 +1,21 @@
 ---
-title: Empfangen von Ereignissen von Azure Event Hubs mithilfe von Go | Microsoft-Dokumentation
-description: Erste Schritte beim Empfangen von Ereignissen von Event Hubs mithilfe von Go
+title: 'Empfangen von Ereignissen unter Verwendung von Go: Azure Event Hubs | Microsoft-Dokumentation'
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Go-Anwendung, die Ereignisse von Azure Event Hubs empfängt.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/23/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: db952b82172928e42e951563d98bb32b275e8af7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239490"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084990"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Empfangen von Ereignissen von Event Hubs mithilfe von Go
 
@@ -80,7 +81,7 @@ import (
 
 ## <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Erstellen Sie anhand der Anweisungen unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli) einen neuen Dienstprinzipal. Speichern Sie die bereitgestellten Anmeldeinformationen mit den folgenden Namen in Ihrer Umgebung. Sowohl das Azure SDK für Go als auch das Event Hubs-Paket sind so konfiguriert, dass nach diesen Variablennamen gesucht wird:
+Erstellen Sie anhand der Anweisungen unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli) einen neuen Dienstprinzipal. Speichern Sie die bereitgestellten Anmeldeinformationen in Ihrer Umgebung unter folgenden Namen: Sowohl das Azure SDK für Go als auch das Event Hubs-Paket sind vorkonfiguriert, um nach diesen Variablennamen zu suchen.
 
 ```bash
 export AZURE_CLIENT_ID=

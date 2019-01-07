@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a76486eaf2f9df8eb47b8bb73f1577324152a80f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 65747da92a3cad770cd9d474d27645782f7306b9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623297"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998736"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Behandlung von Fehlern am Inhaltspaket von Azure Active Directory-Aktivitätsprotokollen 
 
@@ -34,12 +34,13 @@ Bei der Arbeit mit dem Power BI-Inhaltspaket für Azure Active Directory (Azure 
 
 - [Fehler beim Aktualisieren](troubleshoot-content-pack.md#refresh-failed) 
 - [Fehler beim Aktualisieren der Anmeldeinformationen für die Datenquelle](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [Der Import von Daten dauert zu lange](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long)  
+- [Der Import von Daten dauert zu lange.](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
+
 In diesem Artikel finden Sie Informationen zu den möglichen Ursachen und zur Behebung dieser Fehler.
  
 ## <a name="refresh-failed"></a>Fehler beim Aktualisieren 
  
-**So wird dieser Fehler eingeblendet**: Per E-Mail von Power BI oder als Fehlerstatus im Aktualisierungsverlauf. 
+**So werden Sie auf diesen Fehler aufmerksam**: E-Mail von Power BI oder Fehlerstatus im Aktualisierungsverlauf. 
 
 
 | Ursache | So behebt man den Fehler |
@@ -50,7 +51,7 @@ In diesem Artikel finden Sie Informationen zu den möglichen Ursachen und zur Be
  
 ## <a name="failed-to-update-data-source-credentials"></a>Fehler beim Aktualisieren der Anmeldeinformationen für die Datenquelle 
  
-**So wird dieser Fehler eingeblendet**: In Power BI beim Herstellen einer Verbindung mit dem Inhaltspaket des Azure AD-Aktivitätsprotokolls. 
+**So werden Sie auf diesen Fehler aufmerksam**: In Power BI beim Herstellen einer Verbindung mit dem Inhaltspaket des Azure AD-Aktivitätsprotokolls. 
 
 | Ursache | So behebt man den Fehler |
 | ---   | ---        |
@@ -61,7 +62,7 @@ In diesem Artikel finden Sie Informationen zu den möglichen Ursachen und zur Be
 
 ## <a name="data-import-is-too-slow"></a>Der Datenimport ist zu langsam 
  
-**So wird dieser Fehler eingeblendet**: Nachdem Sie in Power BI eine Verbindung mit Ihrem Inhaltspaket hergestellt haben, wird der Datenimportvorgang gestartet, und Ihr Dashboard wird für Azure AD-Aktivitätsprotokolle vorbereitet. Die Meldung **Daten werden importiert** wird ohne weitere Fortschritte angezeigt.  
+**So werden Sie auf diesen Fehler aufmerksam**: Nachdem Sie in Power BI eine Verbindung mit Ihrem Inhaltspaket hergestellt haben, wird der Datenimportvorgang gestartet, und Ihr Dashboard wird für Azure AD-Aktivitätsprotokolle vorbereitet. Es wird folgende Nachricht angezeigt: **Daten werden importiert** wird ohne weitere Fortschritte angezeigt.  
 
 | Ursache | So behebt man den Fehler |
 | ---   | ---        |

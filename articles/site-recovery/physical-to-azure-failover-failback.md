@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214834"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848628"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 
@@ -24,10 +24,10 @@ Für physische Server, die mithilfe von Site Recovery nach Azure repliziert wurd
 
 Failover und Failback weisen vier Phasen auf:
 
-1. **Failover auf Azure**: Failover von Computern vom lokalen Standort auf Azure.
-2. **Erneutes Schützen von virtuellen Azure-Computern**: Schützen Sie die Azure-VMs erneut, damit sie wieder zurück in lokale VMware-VMs repliziert werden.
-3. **Failover auf lokalen Standort**: Ausführen eines Failovers, um ein Failback aus Azure durchzuführen.
-4. **Erneutes Schützen lokaler VMs**: Nachdem Ihre Daten per Failback zurückgeführt wurden, schützen Sie die lokalen VMware-VMs, in die Sie das Failback durchgeführt haben, erneut, damit diese mit der Replikation in Azure beginnen.
+1. **Failover auf Azure**: Failover von Computern vom lokalen Standort zu Azure.
+2. **Erneutes Schützen der Azure-VMs**: Schützen Sie die Azure-VMs erneut, damit sie wieder zurück in lokale VMware-VMs repliziert werden.
+3. **Failover auf lokalen Standort**: Führen Sie ein Failover aus, um ein Failback aus Azure durchzuführen.
+4. **Erneutes Schützen lokaler VMs**: Schützen Sie nach dem Failback der Daten erneut die lokalen VMware-VMs, auf die Sie das Failback durchgeführt haben, damit diese mit der Replikation nach Azure beginnen.
 
 ## <a name="verify-server-properties"></a>Überprüfen der Servereigenschaften
 
@@ -44,10 +44,10 @@ Failover und Failback weisen vier Phasen auf:
 
 1. Klicken Sie in **Einstellungen** > **Replizierte Elemente** auf den Computer > **Failover**.
 2. Wählen Sie in **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   - **Neueste**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
-   - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover des Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
-   - **Letzte App-Konsistenz:** Mit dieser Option wird ein Failover des Computers mithilfe des letzten App-konsistenten Wiederherstellungspunkts ausgeführt, der von Site Recovery verarbeitet wurde.
-   - **Benutzerdefiniert**: Geben Sie einen Wiederherstellungspunkt an.
+   - **Letzter Zeitpunkt**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   - **Letzte Verarbeitung**: Mit dieser Option wird ein Failover des Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
+   - **Letzter anwendungskonsistenter Zeitpunkt**: Mit dieser Option wird ein Failover des Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
+   - **Benutzerdefinierte**: Geben Sie einen Wiederherstellungspunkt an.
 
 3. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, den Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
 4. Wenn Sie das Herstellen einer Verbindung mit der Azure-VM vorbereitet haben, stellen Sie eine Verbindung her, um sie nach dem Failover zu überprüfen.

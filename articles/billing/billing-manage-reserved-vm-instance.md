@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 6a070d9ebd46d117041276436107abcc958d58d4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 670aafeb8eb107fc5970b70bfa85d7469c343483
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583736"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722852"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -53,8 +53,8 @@ So delegieren Sie die Zugriffsverwaltung für eine Reservierung:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Alle Dienste** > **Reservierungen** aus, um Reservierungen aufzulisten, auf die Sie Zugriff haben.
 3. Wählen Sie die Reservierung aus, für die Sie den Zugriff an andere Benutzer delegieren möchten.
-4. Wählen Sie **Access Control (IAM)** aus.
-5. Wählen Sie **Hinzufügen** > **Rolle** > **Besitzer**. Oder wählen Sie eine andere Rolle aus, wenn Sie eingeschränkten Zugriff erteilen möchten.
+4. Wählen Sie die Option **Zugriffssteuerung (IAM)**.
+5. Wählen Sie **Rollenzuweisung hinzufügen** > **Rolle** > **Besitzer** aus. Oder wählen Sie eine andere Rolle aus, wenn Sie eingeschränkten Zugriff erteilen möchten.
 6. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten.
 7. Wählen Sie den Benutzer und dann **Speichern** aus.
 

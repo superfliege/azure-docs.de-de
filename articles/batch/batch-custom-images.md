@@ -2,18 +2,18 @@
 title: Bereitstellen eines Azure Batch-Pools über ein benutzerdefiniertes Image | Microsoft-Dokumentation
 description: Erstellen Sie einen Batch-Pool über ein benutzerdefiniertes Image, um Computeknoten bereitzustellen, die die für Ihre Anwendung benötigten Softwarekomponenten und Daten enthalten. Benutzerdefinierte Images sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
-ms.author: danlep
-ms.openlocfilehash: 7d0526dd233afd3976b22d257300681db0bfcead
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: lahugh
+ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885209"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840366"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools 
 
@@ -50,7 +50,13 @@ In Azure können Sie ein verwaltetes Image auf der Grundlage des Betriebssystemd
 
 ### <a name="prepare-a-vm"></a>Vorbereiten eines virtuellen Computers 
 
-Wenn Sie einen neuen virtuellen Computer für das Image erstellen, können Sie ein von Batch unterstütztes Azure Marketplace-Image als Basisimage für Ihr verwaltetes Image verwenden und dann anpassen.  Eine Liste der von Azure Batch unterstützten Azure Marketplace-Imageverweisen finden Sie im Artikel zum Vorgang zum [Auflisten der Knoten-Agent-SKUs](/rest/api/batchservice/account/listnodeagentskus). Sie können kein Drittanbieterimage als Basisimage verwenden.
+Wenn Sie einen neuen virtuellen Computer für das Image erstellen, können Sie ein von Batch unterstütztes Azure Marketplace-Image als Basisimage für Ihr verwaltetes Image verwenden und dann anpassen.  Eine Liste der von Azure Batch unterstützten Azure Marketplace-Imageverweisen finden Sie im Artikel zum Vorgang zum [Auflisten der Knoten-Agent-SKUs](/rest/api/batchservice/account/listnodeagentskus). 
+
+> [!NOTE]
+> Sie können kein Image von Drittanbietern verwenden, das über zusätzliche Lizenz- und Kaufbedingungen zu Ihrem Basisimage verfügt. Informationen zu diesen Marketplace-Images finden Sie in der Anleitung für [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+)- oder [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+)-VMs.
+
 
 * Stellen Sie sicher, dass der virtuelle Computer mit einem verwalteten Datenträger erstellt wird. Dies ist die Standardeinstellung für den Speicher, wenn Sie einen virtuellen Computer erstellen.
 * Installieren Sie auf dem virtuellen Computer keine Azure-Erweiterungen wie die benutzerdefinierte Skripterweiterung. Wenn das Image eine vorinstallierte Erweiterung enthält, treten in Azure beim Bereitstellen des Batch-Pools unter Umständen Probleme auf.

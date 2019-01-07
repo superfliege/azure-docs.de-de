@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: a9d0f4c8de26d3c501c3b04e42864efaa880ee62
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32297602"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111932"
 ---
 Wenn Sie den Cache nicht an das Dashboard angeheftet haben, finden Sie ihn im [Azure-Portal](https://portal.azure.com) über **Alle Dienste**.
 
-![Azure Redis Cache: Blatt „Durchsuchen“](media/redis-cache-browse/redis-cache-browse.png)
+![Blatt „Durchsuchen“ für Azure Cache for Redis](media/redis-cache-browse/redis-cache-browse.png)
 
-Klicken Sie zum Anzeigen Ihrer Caches auf **Alle Dienste**, und suchen Sie nach **Redis Caches**. 
+Klicken Sie zum Anzeigen Ihrer Caches auf **Alle Dienste**, und suchen Sie nach **Azure Cache für Redis**. 
 
 Wählen Sie den gewünschten Cache zum Anzeigen aus, und konfigurieren Sie die Einstellungen für diesen Cache.
 
-![Azure Redis Cache: Cacheliste durchsuchen](media/redis-cache-browse/redis-caches.png)
+![Liste zum Durchsuchen des Caches für Azure Cache for Redis](media/redis-cache-browse/redis-caches.png)
 
-Sie können Ihren Cache auf dem Blatt **Redis Cache** anzeigen und konfigurieren.
+Sie können Ihren Cache auf dem Blatt **Azure Cache for Redis** anzeigen und konfigurieren.
 
-![Redis Cache: Alle Einstellungen](media/redis-cache-browse/redis-cache-blade.png)
+![Alle Einstellungen für Azure Cache for Redis](media/redis-cache-browse/redis-cache-blade.png)
 
 

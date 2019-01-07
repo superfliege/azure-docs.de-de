@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 6d47fe29dab37523913b96ebae0ef3ef31d11210
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 5d992d13a67c7b01f82b615e7131a20b84dec9e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300573"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851015"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
@@ -65,7 +65,7 @@ Wenn der Benutzer, der die Notfallwiederherstellung (DR) aktiviert, nicht über 
 7. Wählen Sie die VM in der angezeigten Liste der VMs aus. Nur virtuelle Computer, für die Azure Disk Encryption aktiviert wurde, werden in der Liste angezeigt.
 8. Wählen Sie den **Zielspeicherort** aus.
 9. **Schlüsseltresore für Datenträgerverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Verschlüsselungsschlüsseln für die Datenträger des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet. Sie können bei Bedarf einen anderen Schlüsseltresor in der Liste auswählen.
-10. **Schlüsseltresore für Schlüsselverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Schlüsseln für die Schlüsselverschlüsselung des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet. Sie können bei Bedarf einen anderen Schlüsseltresor in der Liste auswählen.
+10. **Schlüsseltresore für Schlüsselverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Verschlüsselungsschlüsseln für die Schlüssel des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet. Sie können bei Bedarf einen anderen Schlüsseltresor in der Liste auswählen.
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
@@ -73,27 +73,27 @@ In diesem Verfahren wird davon ausgegangen, dass als primäre Azure-Region „As
 
 1. Klicken Sie im Tresor auf **+Replizieren**.
 2. Beachten Sie die folgenden Felder:
-    - **Quelle:** Der Ursprung der virtuellen Computer (in diesem Fall **Azure**).
-    - **Quellstandort:** Die Azure-Region, in der Sie Ihre virtuellen Computer schützen möchten. In diesem Beispiel ist der Quellspeicherort „Asien, Osten“.
-    - **Bereitstellungsmodell:** Das Azure-Bereitstellungsmodell der Quellcomputer.
+    - **Quelle**: Der Ursprung der virtuellen Computer, in diesem Fall **Azure**.
+    - **Quellstandort**: Die Azure-Region, in der Sie Ihre virtuellen Computer schützen möchten. In diesem Beispiel ist der Quellspeicherort „Asien, Osten“.
+    - **Bereitstellungsmodell**: Das Azure-Bereitstellungsmodell der Quellcomputer.
     - **Quellabonnement**: Das Abonnement, dem Ihre virtuellen Quellcomputer angehören. Dies kann ein beliebiges Abonnement im gleichen Azure Active Directory-Mandanten sein, in dem sich auch Ihr Recovery Services-Tresor befindet.
-    - **Ressourcengruppe:** Die Ressourcengruppe, zu der Ihre virtuellen Quellcomputer gehören. Alle virtuellen Computer der ausgewählten Ressourcengruppe werden im nächsten Schritt für den Schutz aufgeführt.
+    - **Ressourcengruppe**: Die Ressourcengruppe, der Ihre virtuellen Quellcomputer angehören. Alle virtuellen Computer der ausgewählten Ressourcengruppe werden im nächsten Schritt für den Schutz aufgeführt.
 
 3. Wählen Sie unter **Virtuelle Computer > Virtuelle Computer auswählen** die virtuellen Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Klicken Sie dann auf **OK**.
 
 4. Unter **Einstellungen** können Sie optional Einstellungen für den Zielstandort konfigurieren:
 
-    - **Zielstandort:** Der Standort, an dem die Daten der virtuellen Quellcomputer repliziert werden. Abhängig vom ausgewählten Computerstandort, stellt Site Recovery eine Liste der geeigneten Zielregionen bereit. Es empfiehlt sich, als Zielstandort den gleichen Standort zu verwenden wie für den Recovery Services-Tresor.
+    - **Zielstandort**: Der Standort, an den die Daten Ihrer virtuellen Quellcomputer repliziert werden. Abhängig vom ausgewählten Computerstandort, stellt Site Recovery eine Liste der geeigneten Zielregionen bereit. Es empfiehlt sich, als Zielstandort den gleichen Standort zu verwenden wie für den Recovery Services-Tresor.
     - **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch.
-    - **Zielressourcengruppe:** Die Ressourcengruppe, zu der alle Ihre replizierten virtuellen Computer gehören. Azure Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe, deren Name das Suffix „asr“ aufweist. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im Abschnitt unten gezeigt. Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
-    - **Virtuelles Zielnetzwerk:** Standardmäßig erstellt Site Recovery in der Zielregion ein neues virtuelles Netzwerk und versieht dessen Name mit dem Suffix „asr“. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
-    - **Zielspeicherkonten (wenn Ihre Quell-VM keine verwalteten Datenträger verwendet):** Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihres virtuellen Quellcomputers. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
+    - **Zielressourcengruppe**: Die Ressourcengruppe, der all Ihre replizierten virtuellen Computer angehören. Azure Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe, deren Name das Suffix „asr“ aufweist. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im Abschnitt unten gezeigt. Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
+    - **Virtuelles Zielnetzwerk**: Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk mit dem Namenssuffix „asr“. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
+    - **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)**: Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihrer Quell-VM. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
     - **Verwaltete Replikatdatenträger (wenn die Quell-VM verwaltete Datenträger verwendet)**: Site Recovery erstellt neue verwaltete Replikatdatenträger in der Zielregion, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp (Standard oder Premium) verwendet wie für die verwalteten Datenträger der Quell-VM.
-    - **Cachespeicherkonten:** Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein so genanntes Cachespeicherkonto. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet.
-    - **Verfügbarkeitsgruppe:** Standardmäßig erstellt Azure Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe und versieht deren Name mit dem Suffix „asr“. Falls bereits eine von Azure Site Recovery erstellte Verfügbarkeitsgruppe vorhanden ist, wird diese wiederverwendet.
+    - **Cachespeicherkonten**: Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein so genanntes Cachespeicherkonto. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet.
+    - **Verfügbarkeitsgruppe**: Standardmäßig erstellt Azure Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Namenssuffix „asr“. Falls bereits eine von Azure Site Recovery erstellte Verfügbarkeitsgruppe vorhanden ist, wird diese wiederverwendet.
     - **Schlüsseltresore für Datenträgerverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Verschlüsselungsschlüsseln für die Datenträger des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
-    - **Schlüsseltresore für Schlüsselverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Schlüsseln für die Schlüsselverschlüsselung des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
-    - **Replikationsrichtlinie:** Diese Richtlinie definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die App-konsistente Momentaufnahmenhäufigkeit. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „60 Minuten“ für die App-konsistente Momentaufnahmenhäufigkeit.
+    - **Schlüsseltresore für Schlüsselverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Verschlüsselungsschlüsseln für die Schlüssel des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
+    - **Replikationsrichtlinie**: Site Recovery definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die Häufigkeit von App-konsistenten Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „60 Minuten“ für die App-konsistente Momentaufnahmenhäufigkeit.
 
 
 

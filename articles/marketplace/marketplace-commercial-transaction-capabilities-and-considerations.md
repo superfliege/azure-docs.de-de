@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 32198387be680fd01558e900e4c438cde2cdc5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266499"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880181"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Kommerzielle Transaktionen ‎in Azure Marketplace: Möglichkeiten und Überlegungen
 
@@ -46,7 +46,7 @@ Zusätzlich zu den Veröffentlichungsoptionen „Listung“ und „Testversion�
 
 Bei Verwenden der Veröffentlichungsoption für „Transaktion“ ermöglicht Microsoft den Verkauf und die Bereitstellung von Software von Drittanbietern im Rahmen des Azure-Abonnements des Kunden. Der Herausgeber muss bei der Auswahl eines Abrechnungsmodells und Angebotstyps in Azure Marketplace die Abrechnung der Azure-Infrastrukturgebühren und der eigenen Softwarelizenzgebühren des Herausgebers berücksichtigen. 
 
-Die Veröffentlichungsoption „Transaktion“ in Azure Marketplace wird derzeit für die folgenden Angebotstypen unterstützt: Virtuelle Computer, Azure-Anwendungen und SaaS-Apps.
+Die Veröffentlichungsoption „Transaktion“ im Azure Marketplace wird derzeit für die folgenden Angebotstypen unterstützt: virtuelle Computer, Azure-Anwendungen oder SaaS-Apps.
 
 ![[Abwickeln von Geschäften zwischen Unternehmen in Azure Marketplace]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
 
@@ -66,11 +66,11 @@ Abhängig von der verwendeten Transaktionsoption können die Softwarelizenzgebü
 
 * Kostenlos: Keine Kosten für Softwarelizenzen. 
 
-* Bring-Your-Own-License (BYOL, Verwendung Ihrer eigenen Lizenz): Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. (Nur für virtuelle Computer und Azure-Anwendungen.)
+* BYOL (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz): Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. (Nur für virtuelle Computer und Azure-Anwendungen.)
 
 * Nutzungsbasierte Bezahlung: Softwarelizenzgebühren werden basierend auf der verwendeten Azure-Infrastruktur als Preis pro Stunde und pro Kern (vCPU) ausgewiesen. Dies gilt nur für virtuelle Computer und Azure-Anwendungen.
 
-* Abonnemenpreise (standortbasiert): Softwarelizenzgebühren werden als monatliche, laufende Gebühr ausgewiesen.  Dies gilt nur für SaaS-Apps und verwaltete Azure-Anwendungen.
+* Abonnementpreise (standortbasiert): Softwarelizenzgebühren werden als monatliche, laufende Gebühr ausgewiesen.  Dies gilt nur für SaaS-Apps und verwaltete Azure-Anwendungen.
 
 * Kostenlose Testversion der Software: Keine Kosten für Softwarelizenzen für 30 bzw. 90 Tage.
 
@@ -144,7 +144,7 @@ Diese Option muss für den Verkauf über Microsoft konfiguriert sein und kann mi
 
 * In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 80,00 USD an den Herausgeber aus.
 
-|Abrechnung durch Microsoft  | 100,00 USD pro Monat  |
+|Berechnung durch Microsoft  | 100,00 USD pro Monat  |
 |---------|---------|
 |Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten    |   80,00 USD pro Monat     |
 |Microsoft behält 20% Ihrer Lizenzkosten ein   |  20,00 USD pro Monat       |
@@ -165,7 +165,7 @@ Kunden können auch per Kreditkarte und monatlicher Rechnung bezahlen. In diesem
 
 Beispiel, wenn der Kunde mit einer Kreditkarte bezahlt:
 
-|Beschreibung    |    Datum  |
+|BESCHREIBUNG    |    Datum  |
 |----------|----------|
 |Auftragszeitraum   | 15. August 2018 bis 30. August 2018 |
 |Laufzeitende (Monat)   | 30. August 2018 |
@@ -177,8 +177,9 @@ Beispiel, wenn der Kunde mit einer Kreditkarte bezahlt:
 |Datum der Berechnung der Auszahlung (monatlich am 15.) | 1. Oktober 2018 |
 |Auszahlungsdatum | 15. Oktober 2018 |
 
-Wenn der Kunde im Enterprise Agreement-Rahmen bezahlt:  
-|Beschreibung    |    Datum  |
+Wenn der Kunde im Enterprise Agreement-Rahmen bezahlt:
+
+| BESCHREIBUNG |    Datum  |
 |----------|----------|
 |Auftragszeitraum | 15. August 2018 bis 30. August 2018 |
 |Laufzeitende (Quartal) | 30. September 2018 |

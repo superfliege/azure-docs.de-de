@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 5566ea8b21682c5023afc4af357e1a80e1d37384
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248470"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997823"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Bindungen zu externer Tabelle für Azure Functions (experimentell)
 
@@ -49,7 +49,7 @@ Wenn Sie eine Bindung zuweisen, können Sie entweder eine neue API-Verbindung er
 |[Salesforce](https://docs.microsoft.com/azure/connectors/connectors-create-api-salesforce)||x|x
 |[SharePoint](https://docs.microsoft.com/azure/connectors/connectors-create-api-sharepointonline)||x|x
 |[SQL Server](https://docs.microsoft.com/azure/connectors/connectors-create-api-sqlazure)||x|x
-|[Teradata](http://www.teradata.com/products-and-services/azure/products/)||x|x
+|[Teradata](https://www.teradata.com/products-and-services/azure/products/)||x|x
 |UserVoice||x|x
 |Zendesk||x|x
 
@@ -166,7 +166,7 @@ GO
 
 ### <a name="google-sheets-data-source"></a>Google Tabellen-Datenquelle
 
-Um eine Tabelle zu erstellen, die mit diesem Beispiel in Google Docs verwendet werden kann, erstellen Sie ein Arbeitsblatt mit einem Tabellenblatt namens `Contact`. Der Connector kann den Anzeigenamen der Tabelle nicht verwenden. Der interne Name (in Fettschrift) muss als dataSetName verwendet werden. Beispiel: `docs.google.com/spreadsheets/d/` **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** Fügen Sie die Spaltennamen `Id`, `LastName`, `FirstName` zur erste Zeile hinzu, und füllen Sie dann die nachfolgenden Zeilen mit Daten.
+Um eine Tabelle zu erstellen, die mit diesem Beispiel in Google Docs verwendet werden kann, erstellen Sie ein Arbeitsblatt mit einem Tabellenblatt namens `Contact`. Der Connector kann den Anzeigenamen der Tabelle nicht verwenden. Der interne Name (in Fettschrift) muss als dataSetName verwendet werden, z.B.: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** Fügen Sie die Spaltennamen `Id`, `LastName`, `FirstName` der ersten Zeile hinzu, füllen Sie dann die nachfolgenden Zeilen mit Daten.
 
 ### <a name="salesforce"></a>Salesforce
 

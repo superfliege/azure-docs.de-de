@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 0233446f817436632efc4110872e84b6b3105453
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: eaccbc93fa1e78132527798dcef27babc8a2cc09
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213184"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845024"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
@@ -28,13 +28,13 @@ Die Zusammenfassung erleichtert das Verständnis der Kosten, die für Speicher, 
  
 Sie können die Kosten entweder monatlich oder jährlich anzeigen. Erfahren Sie mehr zu [unterstützten Zielregionen](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions) und [unterstützten Währungen](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute, Speicher, Netzwerk und Site Recovery-Lizenzkosten. Die Kosten werden basierend auf dem Verbrauch berechnet, zu dem es während der Replikation und des DR-Drills kommt. Für die Berechnungen werden die Bereiche Compute, Speicher (Premium und Standard), die zwischen dem lokalen Standort und Azure konfigurierte ExpressRoute/VPN-Verbindung und die Site Recovery-Lizenz herangezogen.
+**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute-, Speicher- und Netzwerkkosten sowie Azure Site Recovery-Lizenzkosten. Die Kosten werden basierend auf dem Verbrauch berechnet, zu dem es während der Replikation und des DR-Drills kommt. Für die Berechnungen werden die Bereiche Compute, Speicher (Premium und Standard), die zwischen dem lokalen Standort und Azure konfigurierte ExpressRoute/VPN-Verbindung und die Site Recovery-Lizenz herangezogen.
 
 **Cost by states** (Kosten nach Zustand): Die Kategorie für die Gesamtkosten der Notfallwiederherstellung basieren auf zwei unterschiedlichen Zuständen: Replikation und DR-Drill. 
 
 **Replication cost** (Replikationskosten): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
 
-**DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die bei Testfailovern anfallen. Während des Testfailovers startet Site Recovery virtuelle Computer (VMs). Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab. 
+**DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die während eines Testfailovers anfallen. Während des Testfailovers startet Site Recovery virtuelle Computer (VMs). Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab. 
 
 **Azure storage cost per Month/Year** (Azure-Speicherkosten pro Monat/Jahr): Die Speichergesamtkosten, die bei der Replikation und bei DR-Drills für Storage Premium und Standardspeicher anfallen.
 
@@ -63,7 +63,7 @@ Die Gesamtkosten der Notfallwiederherstellung werden basierend auf zwei untersch
 
 **Replication** (Replikation): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
 
-**DR-Drill**: Diese Kosten fallen bei DR-Drills an. Bei DR-Drills startet Site Recovery virtuelle Computer. Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab.
+**DR-Drill**: Die Kosten, die bei DR-Drills anfallen. Bei DR-Drills startet Site Recovery virtuelle Computer. Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab.
 
 * DR-Drill-Gesamtdauer eines Jahres = Anzahl von DR-Drills x einzelne DR-Drill-Dauer (Tage)
 * Durchschnittliche DR-Drill-Kosten (pro Monat) = DR-Drill-Kosten/12
@@ -76,9 +76,9 @@ Wählen Sie je nach Ihren Anforderungen die passende Einstellung aus.
 
 **ExpressRoute**: Das Tool wählt standardmäßig den ExpressRoute-Plan aus, der der erforderlichen Netzwerkbandbreite für die Deltareplikation am ehesten entspricht. Sie können den Plan gemäß Ihren Anforderungen ändern.
 
-**VPN Gateway type** (VPN Gateway-Typ): Wählen Sie das VPN Gateway aus, wenn Sie in Ihrer Umgebung VPN Gateways nutzen. Standardmäßig ist „NA“ (Nicht verfügbar) festgelegt.
+**VPN Gateway type** (Typ des VPN-Gateways): Wählen Sie das Azure VPN-Gateway aus, sofern ein solches in Ihrer Umgebung vorhanden ist. Standardmäßig ist „NA“ (Nicht verfügbar) festgelegt.
 
-**Target region** (Zielregion): Angegebene Azure-Region für die Notfallwiederherstellung. Der im Bericht verwendete Preis für Compute, Speicher, Netzwerk und Lizenz basiert auf den Azure-Preisen für diese Region. 
+**Target Region** (Zielregion): Angegebene Azure-Region für die Notfallwiederherstellung. Der im Bericht verwendete Preis für Compute, Speicher, Netzwerk und Lizenz basiert auf den Azure-Preisen für diese Region. 
 
 ### <a name="vm-running-on-azure"></a>VM running on Azure (VM unter Azure)
 Es kann beispielsweise sein, dass Sie über einen Domänencontroller oder eine DNS- oder SQL Server-VM mit Always On-Verfügbarkeitsgruppen verfügen, die in Azure für die Notfallwiederherstellung ausgeführt werden. Sie können die Anzahl von VMs und die Größe angeben, um die entsprechenden Computingkosten in den DR-Gesamtkosten zu berücksichtigen. 
@@ -90,7 +90,7 @@ Wenn Sie ein Azure-Partner oder Kunde sind und Ihnen ein allgemeiner Rabatt auf 
 In dieser Tabelle werden die Anzahl von Windows-VMs und anderen VMs sowie die dazugehörigen Computekosten für DR-Drills angezeigt.
 
 ### <a name="settings"></a>Einstellungen 
-**Using Managed disk** (Verwalteten Datenträger verwenden): Diese Einstellung gibt an, ob bei DR-Drills ein verwalteter Datenträger verwendet wird. Die Option ist standardmäßig auf **Ja**festgelegt. Wenn Sie **-UseManagedDisks** auf **No** festlegen, wird der Preis für den nicht verwalteten Datenträger für die Kostenkalkulation verwendet.
+**Using managed disk** (Verwalteten Datenträger verwenden): Diese Einstellung gibt an, ob bei DR-Drills ein verwalteter Datenträger verwendet wird. Die Option ist standardmäßig auf **Ja**festgelegt. Wenn Sie **-UseManagedDisks** auf **No** festlegen, wird der Preis für den nicht verwalteten Datenträger für die Kostenkalkulation verwendet.
 
 **Currency** (Währung): Die Währung, in der der Bericht erstellt wird.
 
@@ -129,33 +129,33 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 1. Wählen Sie **Re-calculate cost** (Kosten erneut berechnen), um die Kosten zu aktualisieren.
 
-**VM Name** (Name des virtuellen Computers): Der Name der VM.
+**VM Name** (VM-Name): Der Name der VM.
 
 **Number of VMs** (Anzahl von VMs): Die Anzahl von VMs, die mit der Konfiguration übereinstimmen. Sie können die Anzahl von vorhandenen VMs aktualisieren, wenn für eine ähnliche Konfiguration mit VMs keine Profilerstellung durchgeführt wird, sondern wenn diese geschützt werden.
 
-**IaaS size (Recommendation)** (IaaS-Größe (Empfehlung)): Die VM-Rollengröße der kompatiblen VM, die vom Tool empfohlen wird. 
+**IaaS size (Recommendation)** (IaaS-Größe [Empfehlung]): Die VM-Rollengröße der kompatiblen VM, die vom Tool empfohlen wird. 
 
-**IaaS size (Your selection)** (IaaS-Größe (Ihre Auswahl)): Standardmäßig entspricht diese Größe der empfohlenen VM-Rollengröße. Sie können die Rolle gemäß Ihren Anforderungen ändern. Die Computekosten basieren auf Ihrer gewählten VM-Rollengröße.
+**IaaS size (Your selection)** (IaaS-Größe [Ihre Auswahl]): Standardmäßig entspricht diese Größe der empfohlenen VM-Rollengröße. Sie können die Rolle gemäß Ihren Anforderungen ändern. Die Computekosten basieren auf Ihrer gewählten VM-Rollengröße.
 
 **Storage type** (Speichertyp): Der Typ des Speichers, der von der VM verwendet wird. Es kann entweder Standardspeicher oder Storage Premium ausgewählt werden.
 
-**VM total storage size (GB)** (VM-Gesamtspeichergröße (GB)): Die Gesamtgröße des VM-Speichers.
+**VM total storage size (GB)** (VM-Gesamtspeichergröße [GB]): Der Gesamtspeicher der VM.
 
 **Number of DR drills in a year** (Anzahl von DR-Drills in einem Jahr): Gibt an, wie oft Sie in einem Jahr DR-Drills durchführen. Standardmäßig beträgt die Anzahl viermal pro Jahr. Sie können den Zeitraum für bestimmte VMs ändern oder den neuen Wert auf alle VMs anwenden. Geben Sie den neuen Wert in der obersten Zeile ein, und wählen Sie **Apply to all** (Auf alle anwenden). Die Gesamtkosten für DR-Drills werden basierend auf der Anzahl von DR-Drills in einem Jahr und den einzelnen Dauern der DR-Drills berechnet. 
 
-**Each DR drill duration (Days)** (Dauer einzelner DR-Drills (Tage)): Die Dauer der einzelnen DR-Drills. Standardmäßig ist als Wert hier „7 Tage alle 90 Tage“ angegeben. Dies entspricht dem [Software Assurance-Vorteil für die Notfallwiederherstellung](https://azure.microsoft.com/pricing/details/site-recovery). Sie können den Zeitraum für bestimmte VMs ändern oder einen neuen Wert auf alle VMs anwenden. Geben Sie einen neuen Wert in der obersten Zeile ein, und wählen Sie **Apply to all** (Auf alle anwenden). Die Gesamtkosten für DR-Drills werden basierend auf der Anzahl von DR-Drills in einem Jahr und der Dauer der einzelnen DR-Drills berechnet.
+**Each DR-Drill duration (Days)** (Dauer einzelner DR-Drills [Tage]): Die Dauer für jeden DR-Drill. Standardmäßig ist als Wert hier „7 Tage alle 90 Tage“ angegeben. Dies entspricht dem [Software Assurance-Vorteil für die Notfallwiederherstellung](https://azure.microsoft.com/pricing/details/site-recovery). Sie können den Zeitraum für bestimmte VMs ändern oder einen neuen Wert auf alle VMs anwenden. Geben Sie einen neuen Wert in der obersten Zeile ein, und wählen Sie **Apply to all** (Auf alle anwenden). Die Gesamtkosten für DR-Drills werden basierend auf der Anzahl von DR-Drills in einem Jahr und der Dauer der einzelnen DR-Drills berechnet.
  
 **OS Type** (Betriebssystemtyp): Der Typ des VM-Betriebssystems. Er kann entweder „Windows“ oder „Linux“ lauten. Wenn als Betriebssystemtyp „Windows“ angegeben ist, kann der Azure-Hybridnutzungsvorteil auf die VM angewendet werden. 
 
 **Data redundancy** (Datenredundanz): Lokal redundanter Speicher, georedundanter Speicher oder schreibgeschützter georedundanter Speicher. Standardmäßig wird lokal redundanter Speicher verwendet. Sie können den Typ basierend auf Ihrem Speicherkonto für bestimmte VMs ändern, oder Sie können den neuen Typ auf alle VMs anwenden. Ändern Sie den Typ der obersten Zeile, und wählen Sie die Option **Auf alle anwenden**. Die Speicherkosten für die Replikation werden basierend auf dem Preis für die Datenredundanz berechnet, die Sie ausgewählt haben. 
 
-**Azure Hybrid Use Benefit** (Azure-Hybridnutzungsvorteil): Sie können den Azure-Vorteil bei Hybridnutzung auf Windows-VMs anwenden, falls zutreffend. Die Option ist standardmäßig auf **Ja**festgelegt. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren. Wählen Sie **Apply to all** (Auf alle anwenden).
+**Azure Hybrid Use Benefit** (Azure-Hybridnutzungsvorteil): Sie können den Azure-Hybridvorteil auf virtuelle Windows-Computer anwenden, falls zutreffend. Die Option ist standardmäßig auf **Ja**festgelegt. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren. Wählen Sie **Apply to all** (Auf alle anwenden).
 
 **Total Azure consumption** (Azure-Gesamtverbrauch): Die Compute-, Speicher- und Site Recovery-Lizenzkosten für Ihre Notfallwiederherstellung. Basierend auf Ihrer Auswahl werden die Kosten entweder monatlich oder jährlich angezeigt.
 
 **Steady state replication cost** (Kosten für Replikation im stabilen Zustand): Die Speicherkosten für die Replikation.
 
-**Total DR-Drill cost (average)** (Gesamtkosten für DR-Drill (Durchschnitt)): Die Compute- und Speicherkosten für den DR-Drill.
+**Total DR-Drill cost (average)** (Gesamtkosten für DR-Drill [Durchschnitt]): Die Compute- und Speicherkosten für DR-Drills.
 
 **ASR license cost** (ASR-Lizenzkosten): Die Site Recovery-Lizenzkosten.
 

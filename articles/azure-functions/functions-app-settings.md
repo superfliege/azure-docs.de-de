@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e8d880534a39651024b60ef10a9fbadb9e109a4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458121"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138244"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -82,7 +82,7 @@ Der Pfad zum Stammverzeichnis, in dem sich die Datei *host.json* sowie Funktions
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Gibt das Repository oder den Anbieter an, das bzw. der zum Speichern von Schlüsseln verwendet wird. Aktuell sind die unterstützten Repositorys der Blobspeicher („Blob“) und das lokale Dateisystem („Dateien“). In Version 1 ist der Blobspeicher die Standardeinstellung, in Version 2 das Dateisystem. Beachten Sie, dass in Version 1 das Dateisystem nur für Funktionen verwendet werden kann, die in einem App Service-Plan ausgeführt werden.
+Gibt das Repository oder den Anbieter an, das bzw. der zum Speichern von Schlüsseln verwendet wird. Aktuell sind die unterstützten Repositorys der Blobspeicher („Blob“) und das lokale Dateisystem („Dateien“). In Version 2 ist der Blobspeicher die Standardeinstellung, in Version 1 das Dateisystem.
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -172,6 +172,48 @@ Ermöglicht es Ihrer Funktions-App, über eine bereitgestellte Paketdatei ausgef
 |WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
 Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellungspaketdatei aufgelöst werden kann, oder `1`. Bei einer Festlegung auf `1` muss sich das Paket im Ordner `d:\home\data\SitePackages` befinden. Wenn Sie die Zip-Bereitstellung mit dieser Einstellung verwenden, wird das Paket automatisch an diesen Speicherort hochgeladen. In der Vorschau wurde diese Einstellung als `WEBSITE_RUN_FROM_ZIP` bezeichnet. Weitere Informationen finden Sie unter [Ausführen von Azure Functions über eine Paketdatei](run-functions-from-deployment-package.md).
+
+## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Standardmäßig nutzen Functions-Proxys eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in derselben Funktionen-App zu senden, anstatt eine neue HTTP-Anforderung zu erstellen. Mit dieser Einstellung können Sie dieses Verhalten deaktivieren.
+
+|Schlüssel|Wert|BESCHREIBUNG|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktion verweist, werden nicht mehr direkt an die Funktion gesendet. Stattdessen werden sie an das HTTP-Front-End für die Funktionen-App zurückgeleitet.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Dies ist der Standardwert. Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktionen-App verweist, werden direkt an diese Funktion geleitet.|
+
+
+## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+Diese Einstellung steuert, ob %2F in Routenparametern als Schrägstrich decodiert wird, wenn dieser Code in der Back-End-URL eingefügt wird. 
+
+|Schlüssel|Wert|BESCHREIBUNG|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Bei Routenparameter mit codierten Schrägstrichen werden diese decodiert. `example.com/api%2ftest` wird zu `example.com/api/test`.|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Dies ist das Standardverhalten. Alle Routenparameter werden unverändert übergeben.|
+
+### <a name="example"></a>Beispiel
+
+Hier sehen Sie ein Beispiel für „proxies.json“ in einer Funktionen-App unter der URL myfunction.com.
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+|URL-Decodierung|Eingabe|Output|
+|-|-|-|
+|true|myfunction.com/test%2fapi|example.com/test/api
+|false|myfunction.com/test%2fapi|example.com/test%2fapi|
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

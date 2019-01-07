@@ -2,19 +2,19 @@
 title: IoT-Datenströme in Echtzeit mit Azure Stream Analytics
 description: IoT-Sensortags und -Datenströme mit Stream Analytics und Echtzeit-Datenverarbeitung
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 8a4e5b180438203e345ef6c5323ab010f4757c0e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: b008fe128aa760197c34d8c14c4d3b92cbed2bd2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978075"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103165"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Erste Schritte mit Azure Stream Analytics zum Verarbeiten der Daten von IoT-Geräten
 In diesem Tutorial erfahren Sie, wie Sie Datenstrom-Verarbeitungslogik erstellen, um Daten von IoT-Geräten (Internet of Things) zu erfassen. Wir verwenden einen echten IoT-Anwendungsfall aus der Praxis, um zu zeigen, wie Sie Ihre Lösung schnell und wirtschaftlich erstellen.
@@ -56,35 +56,35 @@ Zur einfacheren Verwendung enthält dieser Leitfaden zu den ersten Schritten ein
    > 
 4. Aktivieren Sie das Kontrollkästchen, um den Auftrag im Dashboard zu platzieren, und klicken Sie dann auf **ERSTELLEN**.
    
-    ![Auftrag wird erstellt](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
+    ![Stream Analytics-Auftrag wird gerade erstellt.](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
 5. Oben rechts im Browserfenster sollte „Bereitstellung wurde gestartet...“ angezeigt werden. Nach kurzer Zeit ändert sich dies in ein Fenster mit dem Hinweis, dass der Vorgang abgeschlossen ist (unten dargestellt).
    
-    ![Auftrag wird erstellt](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
+    ![Stream Analytics-Bereitstellung war erfolgreich.](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>Erstellen einer Azure Stream Analytics-Abfrage
 Nachdem der Auftrag erstellt wurde, können Sie ihn öffnen und eine Abfrage erstellen. Sie können leicht auf den Auftrag zugreifen, indem Sie auf die entsprechende Kachel klicken.
 
-![Auftragskachel](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+![Kachel für Stream Analytics-Auftrag im Azure-Portal](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
 Klicken Sie im Bereich **Auftragstopologie** auf das Feld **ABFRAGE**, um zum Abfrage-Editor zu wechseln. Mit dem Editor **ABFRAGE** können Sie eine T-SQL-Abfrage eingeben, die die Transformation der eingehenden Ereignisdaten ausführt.
 
-![Feld „Abfrage“](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Abfragekachel im Stream Analytics-Dashboard](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 ### <a name="query-archive-your-raw-data"></a>Abfrage: Archivieren von Rohdaten
 Die einfachste Form einer Abfrage ist eine Passthrough-Abfrage, bei der alle Eingabedaten unter dem angegebenen Ausgabeort archiviert werden. Laden Sie die Beispieldatendatei von [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) an einen Speicherort auf Ihrem Computer herunter. 
 
 1. Fügen Sie die Abfrage aus der Datei „PassThrough.txt“ ein. 
    
-    ![Eingabedatenstrom testen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+    ![Einfügen der Abfrage in den Stream Analytics-Abfrage-Editor](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 2. Klicken Sie auf die drei Punkte neben Ihrer Eingabe, und aktivieren Sie das Kontrollkästchen **Beispieldaten aus Datei hochladen**.
    
-    ![Eingabedatenstrom testen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
+    ![Auswahl von „Beispieldaten aus Datei hochladen“](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
 3. Auf der rechten Seite wird ein Bereich geöffnet. Wählen Sie darin am Downloadort die Datendatei „HelloWorldASA-InputStream.json“ aus, und klicken Sie unten auf **OK**.
    
-    ![Eingabedatenstrom testen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
+    ![Hochladen einer JSON-Beispieldatendatei](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
 4. Klicken Sie dann oben links im Fenster auf das Zahnrad **Test**, und führen Sie die Verarbeitung der Testabfrage für das Beispieldataset durch. Wenn die Verarbeitung abgeschlossen ist, wird unter Ihrer Abfrage ein Ergebnisfenster geöffnet.
    
-    ![Testergebnisse](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+    ![Testergebnisse für die Stream Analytics-Abfrage](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Abfrage: Filtern der Daten basierend auf einer Bedingung
 Wir versuchen nun, die Ergebnisse anhand einer Bedingung zu filtern. Wir möchten Ihnen Ergebnisse nur für die Ereignisse anzeigen, die von "sensorA" kommen. Die Abfrage ist in der Datei „Filtering.txt“ enthalten.
@@ -110,5 +110,5 @@ Wie können wir eine Abfrage schreiben, die einen Mangel an Eingabeereignissen f
 Hier verwenden wir den Verknüpfungsvorgang **LEFT OUTER** für den gleichen Datenstrom (Selbstverknüpfung). Für eine innere Verknüpfung (**INNER**) wird nur dann ein Ergebnis zurückgegeben, wenn eine Übereinstimmung gefunden wird.  Wenn ein Ereignis von der linken Seite der Verknüpfung keine Übereinstimmung besitzt, wird bei **LEFT OUTER** für alle Spalten der rechten Seite eine Zeile mit NULL zurückgegeben. Dieses Verfahren ist äußerst hilfreich, um die Abwesenheit von Ereignissen zu ermitteln. Weitere Informationen zu [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx) finden Sie in der MSDN-Dokumentation.
 
 ## <a name="conclusion"></a>Zusammenfassung
-In diesem Tutorial erfahren Sie, wie Sie verschiedene Abfragen in der Stream Analytics-Abfragesprache schreiben und die Ergebnisse im Browser anzeigen. Dies ist aber erst der Anfang. Mit Stream Analytics haben Sie noch viele weitere Möglichkeiten. Stream Analytics unterstützt verschiedenste Ein- und Ausgaben und kann sogar Funktionen in Azure Machine Learning nutzen. Dies macht Stream Analytics zu einem zuverlässigen Tool für die Datenstromanalyse. Weitere Informationen zu Stream Analytics finden Sie in unserem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/). Weitere Informationen zum Schreiben von Abfragen finden Sie im Artikel zu [gängigen Abfragemustern](stream-analytics-stream-analytics-query-patterns.md).
+In diesem Tutorial erfahren Sie, wie Sie verschiedene Abfragen in der Stream Analytics-Abfragesprache schreiben und die Ergebnisse im Browser anzeigen. Dies ist aber erst der Anfang. Mit Stream Analytics haben Sie noch viele weitere Möglichkeiten. Stream Analytics unterstützt verschiedenste Ein- und Ausgaben und kann sogar Funktionen in Azure Machine Learning nutzen. Dies macht Stream Analytics zu einem zuverlässigen Tool für die Datenstromanalyse. Weitere Informationen zu Stream Analytics finden Sie in unserem [Lernpfad](https://docs.microsoft.com/azure/stream-analytics/). Weitere Informationen zum Schreiben von Abfragen finden Sie im Artikel zu [gängigen Abfragemustern](stream-analytics-stream-analytics-query-patterns.md).
 

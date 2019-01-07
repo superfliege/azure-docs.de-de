@@ -4,14 +4,14 @@ description: Dieser Artikel bietet eine Übersicht über die Notfallwiederherste
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9368ff848c9be075a08d5a80a49ffc64f5392cad
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 22be5d7438fdb554d1550fd6675ee1884c638824
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214697"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851059"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure
 
@@ -88,16 +88,16 @@ In der lokalen Umgebung müssen Sie Folgendes einrichten:
 Nachdem Sie die lokale und Azure-Infrastruktur eingerichtet haben, können Sie die Notfallwiederherstellung einrichten.
 
 1. Informationen zu den Komponenten, die Sie bereitstellen müssen, finden Sie unter [VMware in der Architektur für die Azure-Replikation](vmware-azure-architecture.md) und [Physische Server in der Architektur für die Azure-Replikation](physical-azure-architecture.md). Es gibt verschiedene Komponenten, daher ist es wichtig, sich damit vertraut zu machen, wie sie miteinander verbunden sind.
-2. **Quellumgebung:** Als ersten Schritt bei der Bereitstellung richten Sie die Quellumgebung für die Replikation ein. Sie geben an, was Sie replizieren möchten und wohin die Daten repliziert werden sollen.
-3. **Konfigurationsserver:** Sie müssen einen Konfigurationsserver in der lokalen Quellumgebung einrichten:
+2. **Quellumgebung**: Als ersten Schritt bei der Bereitstellung richten Sie die Quellumgebung für die Replikation ein. Sie geben an, was Sie replizieren möchten und wohin die Daten repliziert werden sollen.
+3. **Konfigurationsserver**: Sie müssen einen Konfigurationsserver in der lokalen Quellumgebung einrichten:
     - Der Konfigurationsserver ist ein einzelner lokaler Computer. Für die VMware-Notfallwiederherstellung wird empfohlen, diesen als virtuellen VMware-Computer bereitzustellen, der über eine heruntergeladene OVF-Vorlage bereitgestellt werden kann.
     - Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure.
     - Auf dem Konfigurationsservercomputer werden verschiedene andere Komponenten ausgeführt.
         - Der Prozessserver empfängt, optimiert und sendet Replikationsdaten an Azure Storage. Der Prozessserver verarbeitet auch die automatische Installation des Mobility Service auf den Computern, die Sie replizieren möchten, und führt auf VMware-Servern die automatische Ermittlung von virtuellen Computern durch.
         - Der Masterzielserver verarbeitet die Replikationsdaten während des Failbacks von Azure.
     - Die Einrichtung umfasst die Registrierung des Konfigurationsservers im Tresor, das Herunterladen von MySQL Server und VMware PowerCLI sowie die Angabe der für die automatische Ermittlung und die Installation des Mobility Service erstellten Konten.
-4. **Zielumgebung:** Sie richten die Azure-Zielumgebung ein, indem Sie Ihr Azure-Abonnement, den Speicher und die Netzwerkeinstellungen angeben.
-5. **Replikationsrichtlinie:** Sie geben an, wie die Replikation erfolgen soll. Zu den erforderlichen Einstellungen gehört z.B. die Angabe, wie oft Wiederherstellungspunkte erstellt und gespeichert werden und ob anwendungskonsistente Momentaufnahmen erstellt werden sollen.
+4. **Zielumgebung**: Sie richten die Azure-Zielumgebung ein, indem Sie Ihr Azure-Abonnement, den Speicher und die Netzwerkeinstellungen angeben.
+5. **Replikationsrichtlinie**: Sie geben an, wie die Replikation erfolgen soll. Zu den erforderlichen Einstellungen gehört z.B. die Angabe, wie oft Wiederherstellungspunkte erstellt und gespeichert werden und ob anwendungskonsistente Momentaufnahmen erstellt werden sollen.
 6. **Aktivieren Sie die Replikation**. Sie aktivieren die Replikation für lokale Computer. Wenn Sie ein Konto für die Installation des Mobility Service erstellt haben, wird dieser installiert, wenn Sie die Replikation für einen Computer aktivieren. 
 
 *Benötigen Sie weitere Hilfe?*

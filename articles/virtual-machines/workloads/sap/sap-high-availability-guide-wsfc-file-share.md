@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 646c30be171a5aaaa17e40eae3cef6952b2b2747
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf50dad01cf9893209cc861d29d275ec114966c4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657059"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186156"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -235,7 +235,7 @@ Der Azure Load Balancer-Dienst stellt einen *internen Lastenausgleich* für Azur
 
 Stellen Sie den internen Lastenausgleich in der Ressourcengruppe mit den Clusterknoten bereit. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Die Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Lastenausgleich übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
 
-![Abbildung 1: Windows Server-Failoverclusteringkonfiguration in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
+![Abbildung 1: Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
 
 _**Abbildung 1:** Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger_
 
@@ -256,9 +256,9 @@ Diese Architektur weist in folgenden Bereichen Besonderheiten auf:
 * Die SAP ASCS/SCS-Instanz wird auf einem lokalen Datenträger auf beiden Clusterknoten installiert.
 * Der Netzwerkname des \<virtuellen ASCS/SCS-Hostnamens\> unterscheidet sich vom &lt;globalen SAP-Host&gt;.
 
-![Abbildung 2: SAP ASCS/SCS-HA-Architektur mit SMB-Dateifreigabe][sap-ha-guide-figure-8004]
+![Abbildung 2: SAP ASCS/SCS-Hochverfügbarkeitsarchitektur mit SMB-Dateifreigabe][sap-ha-guide-figure-8004]
 
-_**Abbildung 2:** Neue SAP ASCS/SCS-HA-Architektur mit einer SMB-Dateifreigabe_
+_**Abbildung 2:** Neue SAP ASCS/SCS-Hochverfügbarkeitsarchitektur mit einer SMB-Dateifreigabe_
 
 Voraussetzungen für SMB-Dateifreigaben:
 
@@ -322,7 +322,7 @@ Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr
 
 > [!IMPORTANT]
 > Die SAPMNT-Dateifreigabe, die auf den \<globalen SAP-Host\> verweist, kann nicht umbenannt werden. SAP unterstützt ausschließlich den Freigabenamen „sapmnt“.
-
+>
 > Weitere Informationen finden Sie unter [SAP-Hinweis 2492395 – Kann der Freigabename „sapmnt“ geändert werden?][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurieren von SAP ASCS/SCS-Instanzen und einer Dateifreigabe mit horizontaler Skalierung in zwei Clustern
@@ -335,7 +335,7 @@ Sie können SAP ASCS/SCS-Instanzen auch in einem Cluster mit eigener SAP-\<SID\>
 
 ![Abbildung 5: In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung][sap-ha-guide-figure-8007]
 
-_**Abbildung 5:** Eine in zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung_
+_**Abbildung 5:** In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung_
 
 > [!IMPORTANT]
 > In der Azure-Cloud muss jeder Cluster, der für SAP und Dateifreigaben mit horizontaler Skalierung verwendet wird, in einer eigenen Azure-Verfügbarkeitsgruppe bereitgestellt werden. Dadurch wird eine verteilte Platzierung der Cluster-VMs in der zugrunde liegenden Azure-Infrastruktur sichergestellt.

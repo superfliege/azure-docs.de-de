@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2017
+ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 27057f16d10d0859a486551091e135bfb9160813
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138139"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890346"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -37,7 +37,7 @@ Zum Konfigurieren der Endpunktüberwachung müssen Sie die folgenden Einstellung
 
     ![Traffic Manager-Endpunktüberwachung](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Abbildung: Traffic Manager-Endpunktüberwachung**
+    **Abbildung:  Traffic Manager-Endpunktüberwachung**
 
 ## <a name="how-endpoint-monitoring-works"></a>Funktionsweise der Endpunktüberwachung
 
@@ -112,7 +112,7 @@ Die Zeitachse in der folgenden Abbildung enthält eine ausführliche Beschreibun
 
 ![Sequenz für Traffic Manager-Endpunktfailover und -failback](./media/traffic-manager-monitoring/timeline.png)
 
-**Abbildung: Sequenz für Traffic Manager-Endpunktfailover und -wiederherstellung**
+**Abbildung:  Sequenz für Traffic Manager-Endpunktfailover und -wiederherstellung**
 
 1. **GET**. Für jeden Endpunkt führt das Traffic Manager-Überwachungssystem eine GET-Anforderung für den Pfad aus, der in den Überwachungseinstellungen angegeben wurde.
 2. **200 OK oder im benutzerdefinierten Codebereich angegebene Traffic Manager-Profilüberwachungseinstellungen**. Das Überwachungssystem erwartet, dass innerhalb von zehn Sekunden die Meldung „HTTP 200 OK“ oder die im benutzerdefinierten Codebereich angegebene Traffic Manager-Profilüberwachungseinstellungen zurückgegeben werden. Wenn diese Nachricht empfangen wird, wird der Dienst als verfügbar betrachtet.

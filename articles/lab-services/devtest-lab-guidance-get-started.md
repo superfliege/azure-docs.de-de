@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1d00dbe23fbd724893ba2b964fc54a3ea9066dcb
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 87baef8ddb5b5d8fc979ba5afb9f9b13cb4fc2ef
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250760"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876535"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>Erste Schritte mit Azure DevTest Labs
 Wenn Sie DevTest Labs erkunden möchten, stehen Ihnen zwei allgemeine Pfade zur Verfügung: Proof of Concept und skalierte Bereitstellung. 
@@ -51,7 +51,7 @@ Das Erstellen und Verwalten von Testumgebungen in einem Unternehmen kann mit ein
 
 - Tester können schnell Windows- und Linux-Umgebungen mit wiederverwendbaren Vorlagen und Artefakten bereitstellen und so die neueste Version ihrer Anwendung testen.
 - Tester können ihre Auslastungstests durch Bereitstellen mehrerer Test-Agents zentral hochskalieren.
-- Administratoren können das Lab mit VSTS verbinden und dadurch DevOps-Szenarien ermöglichen.
+- Administratoren können das Lab mit Azure DevOps verbinden und dadurch DevOps-Szenarien ermöglichen.
 - Administratoren können die Kosten steuern, indem sie Folgendes sicherstellen:
     - Tester können nicht mehr virtuelle Computer erhalten, als sie benötigen.
     - Virtuelle Computer werden heruntergefahren, wenn sie nicht in Gebrauch sind.
@@ -62,4 +62,4 @@ Ein Lab in Azure DevTest Labs fungiert als idealer Container für vorübergehend
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie im nächsten Artikel dieser Serie: [Zentrales Hochskalieren der DevTest Labs-Bereitstellung](devtest-lab-guidance-scale.md).
+Lesen Sie den nächsten Artikel in dieser Reihe: [Zentrales Hochskalieren der DevTest Labs-Bereitstellung](devtest-lab-guidance-scale.md)

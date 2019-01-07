@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c0afd96f7188e6a75ce6a91b82df9f08b85af8e7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2b8041ee66e00b69b2628a0f439dd2577b6b92ec
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165025"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53381496"
 ---
 Informationen zu den weiteren ersten Schritten mit Azure IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
 
-- [Verwalten von Cloudgerätemessaging mit der Azure IoT-Toolkiterweiterung für Visual Studio Code](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+- [Verwalten von Cloudgerätemessaging mit der Azure IoT Hub-Toolkiterweiterung für Visual Studio Code](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
 - [Speichern von IoT Hub-Nachrichten in Azure-Tabellenspeicher](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)
 
@@ -27,6 +27,6 @@ Informationen zu den weiteren ersten Schritten mit Azure IoT Hub und zum Kennenl
 
 - [Wettervorhersage mithilfe von Sensordaten Ihres IoT Hub in Azure Machine Learning](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
 
-- [Use Azure IoT Toolkit extension for Visual Studio Code for Azure IoT Hub device management](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md) (Verwenden der Azure IoT Toolkit-Erweiterung für Visual Studio Code für die Azure IoT Hub-Geräteverwaltung)
+- [Verwenden der Azure IoT Hub-Toolkiterweiterung für Visual Studio Code für die Geräteverwaltung](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
 
 - [Remoteüberwachung und Benachrichtigungen mit Logic Apps](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 12/11/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: faf8852df8b50c43affe32ede0f1e96d0bb80d3d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821241"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315178"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 Dieser Artikel enthält ausführliche Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher aus Azure Blob Storage zu exportieren. Für diesen Dienst müssen Sie leere Laufwerke an das Azure-Rechenzentrum senden. Der Dienst exportiert Daten aus Ihrem Speicherkonto auf die Laufwerke und versendet diese dann zurück.
@@ -67,8 +67,8 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
          ![Alle exportieren](./media/storage-import-export-data-from-blobs/export-from-blob4.png) 
 
     - Sie können angeben, welche Container und Blobs exportiert werden sollen.
-        - **So geben Sie ein Blob für den Export an:** Verwenden Sie den Selektor **Ist gleich**. Geben Sie den relativen Pfad zum Blob, beginnend mit dem Containernamen, an. Verwenden Sie *$root* , um den Stammcontainer festzulegen.
-        - **So geben Sie alle Blobs an, die mit einem bestimmten Präfix beginnen:** Verwenden Sie den Selektor **Beginnt mit**. Geben Sie das Präfix beginnend mit einem Schrägstrich „/“ an. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder den vollständigen Containernamen gefolgt vom Präfix des Blob-Namens handeln. Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths). 
+        - **So geben Sie ein zu exportierendes Blob an**: Verwenden Sie den Selektor **Gleich**. Geben Sie den relativen Pfad zum Blob, beginnend mit dem Containernamen, an. Verwenden Sie *$root* , um den Stammcontainer festzulegen.
+        - **So geben Sie alle Blobs an, die mit einem Präfix beginnen**: Verwenden Sie den Selektor **Beginnt mit**. Geben Sie das Präfix beginnend mit einem Schrägstrich „/“ an. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder den vollständigen Containernamen gefolgt vom Präfix des Blob-Namens handeln. Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths). 
    
            ![Exportieren ausgewählter Container und Blobs](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
 
     - Klicken Sie auf **OK**, um das Erstellen des Exportauftrags abzuschließen.
 
-## <a name="step-2-ship-the-drives"></a>Schritt 2: Senden der Laufwerke
+## <a name="step-2-ship-the-drives"></a>Schritt 2: Versenden der Laufwerke
 
 Wenn Sie die Anzahl der benötigten Laufwerke nicht kennen, fahren Sie mit [Überprüfen der Anzahl der Laufwerke](#check-the-number-of-drives) fort. Wenn Sie die Anzahl der Laufwerke kennen, fahren Sie mit dem Versenden der Laufwerke fort.
 
@@ -127,7 +127,7 @@ Der Export ist abgeschlossen. Zu diesem Zeitpunkt können Sie den Auftrag lösch
 
 Mit diesem *optionalen* Schritt können Sie die Anzahl der Laufwerke, die für den Exportauftrag erforderlich ist, ermitteln. Führen Sie diesen Schritt auf einem Windows-System aus, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
 
-1. [Laden Sie Version 1 von WAImportExport](https://www.microsoft.com/en-us/download/details.aspx?id=42659) auf das Windows-System herunter. 
+1. [Laden Sie Version 1 von WAImportExport](https://aka.ms/waiev1) auf das Windows-System herunter. 
 2. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
 3. Öffnen Sie ein PowerShell- oder Befehlszeilenfenster mit Administratorrechten. Um das Verzeichnis in den Ordner mit den entzippten Daten zu ändern, führen Sie den folgenden Befehl aus:
     

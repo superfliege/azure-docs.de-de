@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 07274269e9902a336181c89ee5c02edd52b6ab01
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210755"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849495"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
 
@@ -24,11 +24,11 @@ Dieser Artikel enthält eine Übersicht über die Implementierung und Verwaltung
 
 Es gibt drei wesentliche Modelle mit mehreren Mandanten:
 
-* **Shared Hosting Services Provider (SHSP, Anbieter von gemeinsam genutzten Hostingdiensten)**: Der Partner besitzt die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann die Notfallwiederherstellung als Self-Service-Lösung betreiben.
+* **Anbieter von gemeinsam genutzten Hostingdiensten**: Der Partner besitzt die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann die Notfallwiederherstellung als Self-Service-Lösung betreiben.
 
-* **Dedicated Hosting Services Provider (DHSP, Anbieter dedizierter Hostingdienste)**: Der Partner besitzt die physische Infrastruktur, verwendet aber dedizierte Ressourcen (mehrere vCenter-Server, physische Datenspeicher usw.), um die virtuellen Computer der einzelnen Mandanten jeweils in einer separaten Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann diese als Self-Service-Lösung betreiben.
+* **Anbieter von dedizierten Hostingdiensten**: Der Partner besitzt die physische Infrastruktur, verwendet aber dedizierte Ressourcen (mehrere vCenter-Server, physische Datenspeicher usw.), um die virtuellen Computer der einzelnen Mandanten jeweils in einer separaten Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann diese als Self-Service-Lösung betreiben.
 
-* **Managed Services Provider (MSP, Anbieter verwalteter Dienste)**: Der Kunde besitzt die physische Infrastruktur, in der die VMs gehostet werden, während der Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig ist.
+* **Anbieter verwalteter Dienste**: Der Kunde besitzt die physische Infrastruktur, in der die VMs gehostet werden, während der Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig ist.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Shared Hosting Services Provider (SHSP)
 
@@ -58,7 +58,7 @@ Jeder Konfigurationsserver im Szenario mit mehreren Mandanten verwendet zwei Kon
 
 - **vCenter-Zugriffskonto**: Dieses Konto dient zum Ermitteln von Mandanten-VMs. Diesem sind vCenter-Zugriffsberechtigungen zugewiesen. Um Zugriffslücken zu vermeiden, wird empfohlen, dass Partner diese Anmeldeinformationen selbst in das Konfigurationstool eingeben.
 
-- **VM-Zugriffskonto**: Dieses Konto dient zum Installieren des Mobility Service-Agents auf den VMs des Mandanten mittels automatischer Übertragung mithilfe von Push. Hierbei handelt es sich in der Regel um ein Domänenkonto, das ein Mandant ggf. für einen Partner bereitstellt, oder ein Konto, das der Partner direkt verwaltet. Wenn ein Mandant die Details nicht direkt an den Partner weitergeben möchte, kann die Eingabe der Anmeldeinformationen im Rahmen eines zeitlich begrenzten Zugriffs auf den Konfigurationsserver ermöglicht werden. Alternativ kann der Mandant die Mobility Service-Agents in Zusammenarbeit mit dem Partner manuell installieren.
+- **VM-Zugriffskonto**: Dieses Konto dient zum Installieren des Mobilitätsdienst-Agents auf den VMs des Mandanten mittels automatischer Übertragung mithilfe von Push. Hierbei handelt es sich in der Regel um ein Domänenkonto, das ein Mandant ggf. für einen Partner bereitstellt, oder ein Konto, das der Partner direkt verwaltet. Wenn ein Mandant die Details nicht direkt an den Partner weitergeben möchte, kann die Eingabe der Anmeldeinformationen im Rahmen eines zeitlich begrenzten Zugriffs auf den Konfigurationsserver ermöglicht werden. Alternativ kann der Mandant die Mobilitätsdienst-Agents in Zusammenarbeit mit dem Partner manuell installieren.
 
 ## <a name="vcenter-account-requirements"></a>Anforderungen an das vCenter-Konto
 
@@ -77,7 +77,7 @@ Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere R
 
     * **Datenspeicher**: Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
     * **Netzwerk**: Netzwerk zuweisen
-    * **Ressource** Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
+    * **Ressource**: VM zu Ressourcenpool zuweisen, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
     * **Aufgaben**: Aufgabe erstellen, Aufgabe aktualisieren
     * **VM – Konfiguration**: Alle
     - **VM – Interaktion** > Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren

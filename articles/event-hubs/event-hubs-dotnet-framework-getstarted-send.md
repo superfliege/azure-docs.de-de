@@ -1,6 +1,6 @@
 ---
-title: Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework | Microsoft-Dokumentation
-description: Erste Schritte beim Senden von Ereignissen an Event Hubs mithilfe von .NET Framework
+title: Senden von Ereignissen mit .NET Framework – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer .NET Framework-Anwendung, die Ereignisse an Azure Event Hubs sendet.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: adfe2ae81115e498a44e95ae8d21d3d7b751c18c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 062dc707dea99ed6e5e04905a13572c234f0c172
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248026"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091157"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -34,18 +35,20 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
 Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie dann mit den folgenden Schritten in diesem Tutorial fort.
 
+Gehen Sie wie im folgenden Artikel beschrieben vor, um die Verbindungszeichenfolge für den Event Hub-Namespace abzurufen: [Rufen Sie die Verbindungszeichenfolge ab](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Die Verbindungszeichenfolge wird im weiteren Verlauf dieses Tutorials benötigt.
+
 ## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
 Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Sender**.
    
-![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
+![Erstellen einer Konsolenanwendung](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Hinzufügen des Event Hubs-NuGet-Pakets
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das **Sender**-Projekt, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten**. 
 2. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `WindowsAzure.ServiceBus`. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. 
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
+    ![Installieren des Service Bus-NuGet-Pakets](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
     Visual Studio lädt das [NuGet-Paket mit der Azure Service Bus-Bibliothek](https://www.nuget.org/packages/WindowsAzure.ServiceBus)herunter, installiert es und fügt dem Projekt einen Verweis auf das Paket hinzu.
 
@@ -57,7 +60,7 @@ Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung**
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und die zuvor gespeicherte Verbindungszeichenfolge auf Namespace-Ebene.
+2. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und die zuvor gespeicherte Verbindungszeichenfolge auf Namespace-Ebene. Die Verbindungszeichenfolge für Ihren Event Hub können Sie im Azure-Portal auf der Event Hub-Seite unter **RootManageSharedAccessKey** aus **Verbindungszeichenfolge – Primärschlüssel** kopieren. Ausführliche Schritte finden Sie unter [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
    
     ```csharp
     static string eventHubName = "Your Event Hub name";

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eeb12500a5ddfb95317b3d20b41acf12e3978bad
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 80818a7264b35b703be217f07127ab7883da339a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626521"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271588"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? 
 
@@ -58,7 +58,7 @@ Ein benannter Standort besteht aus den folgenden Komponenten:
 
 - **Name**: Der Anzeigename eines benannten Orts.
 
-- **IP-Bereiche**: Mindestens ein Adressbereich im CIDR-Format.
+- **IP-Bereiche**: Mindestens ein IPv4-Adressbereich im CIDR-Format. Die Angabe eines IPv6-Adressbereichs wird nicht unterstützt.
 
 - **Als vertrauenswürdigen Standort markieren**: Ein Flag, das Sie für einen benannten Standort festlegen können, um ihn als vertrauenswürdigen Standort auszuweisen. Normalerweise handelt es sich bei vertrauenswürdigen Standorten um Netzwerkbereiche, die der Kontrolle Ihrer IT-Abteilung unterliegen. Über den bedingten Zugriff hinaus werden vertrauenswürdige benannte Standorte auch in Sicherheitsberichten von Azure Identity Protection und Azure AD verwendet, um [falsch positive](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1) Meldungen zu reduzieren.
 

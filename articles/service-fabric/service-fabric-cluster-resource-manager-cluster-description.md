@@ -1,5 +1,5 @@
 ---
-title: Cluster-Beschreibung im Clusterressourcen-Manager | Microsoft-Dokumentation
+title: Clusterbeschreibung im Clusterressourcen-Manager | Microsoft-Dokumentation
 description: Beschreibung eines Service Fabric-Clusters durch Angabe von Fehlerdomänen, Upgradedomänen, Knoteneigenschaften und Knotenkapazitäten für den Clusterressourcen-Manager.
 services: service-fabric
 documentationcenter: .net
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 13ee238580d645f3e727090bc0e0275b36bdb225
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 64f02b1165d014a0eaa89dae64a7d9aa283cac32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208810"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834586"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Beschreiben eines Service Fabric-Clusters
-Der Service Fabric-Cluster-Ressourcen-Manager stellt verschiedene Methoden zum Beschreiben eines Clusters bereit. Zur Laufzeit nutzt der Clusterressourcen-Manager diese Informationen, um die Hochverfügbarkeit der Dienste sicherzustellen, die im Cluster ausgeführt werden. Beim Erzwingen dieser wichtigen Regeln wird auch versucht, den Ressourcenverbrauch innerhalb des Clusters zu optimieren.
+Der Service Fabric-Clusterressourcen-Manager stellt verschiedene Methoden zum Beschreiben eines Clusters bereit. Zur Laufzeit nutzt der Clusterressourcen-Manager diese Informationen, um die Hochverfügbarkeit der Dienste sicherzustellen, die im Cluster ausgeführt werden. Beim Erzwingen dieser wichtigen Regeln wird auch versucht, den Ressourcenverbrauch innerhalb des Clusters zu optimieren.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 Der Clusterressourcen-Manager unterstützt verschiedene Funktionen, die einen Cluster beschreiben:
@@ -54,7 +54,7 @@ Zur Laufzeit berücksichtigt der Clusterressourcen-Manager von Service Fabric di
 
 Für den Clusterressourcen-Manager von Service Fabric spielt es keine Rolle, wie viele Ebenen die Hierarchie der Fehlerdomänen umfasst. Es wird aber versucht sicherzustellen, dass sich der Verlust eines Teils der Hierarchie nicht auf die darin ausgeführten Dienste auswirkt. 
 
-Es empfiehlt sich, dass alle Ebenen auf jeder Tiefe der Fehlerdomänenhierarchie die gleiche Anzahl von Knoten enthalten. Wenn die „Struktur“ der Fehlerdomänen in Ihrem Cluster nicht ausgeglichen ist, ist es für den Clusterressourcen-Manager schwieriger, die beste Zuordnung für die Dienste zu ermitteln. Fehlerdomänenlayouts mit ungleichmäßiger Verteilung bedeuten, dass sich der Ausfall bestimmter Domänen stärker auf die Verfügbarkeit von Diensten auswirkt als der anderer Domänen. Daher besteht für den Clusterressourcen-Manager ein Konflikt zwischen zwei Zielen: Die Computer in der stark ausgelasteten Domäne sollen einerseits genutzt werden, indem Dienste darauf platziert werden. Andererseits sollen die Dienste so in anderen Domänen platziert werden, dass der Verlust einer Domäne nicht zu Problemen führt. 
+Es empfiehlt sich, dass alle Ebenen auf jeder Tiefe der Fehlerdomänenhierarchie die gleiche Anzahl von Knoten enthalten. Wenn die „Struktur“ der Fehlerdomänen in Ihrem Cluster nicht ausgeglichen ist, ist es für den Clusterressourcen-Manager schwieriger, die beste Zuordnung für die Dienste zu ermitteln. Fehlerdomänenlayouts mit ungleichmäßiger Verteilung bedeuten, dass sich der Ausfall bestimmter Domänen stärker auf die Verfügbarkeit von Diensten auswirkt als der anderer Domänen. So kommt es für den Clusterressourcen-Manager zu einem Konflikt zwischen zwei Zielen: Die Computer in der stark ausgelasteten Domäne sollen einerseits genutzt werden, indem Dienste darauf platziert werden. Andererseits sollen die Dienste so in anderen Domänen platziert werden, dass der Verlust einer Domäne nicht zu Problemen führt. 
 
 Wie sehen nicht ausgeglichene Domänen aus? In der Abbildung unten sind zwei unterschiedliche Clusterlayouts veranschaulicht. Im ersten Beispiel werden die Knoten gleichmäßig auf die Fehlerdomänen verteilt. Im zweiten Beispiel verfügt eine Fehlerdomäne über mehr Knoten als die anderen Fehlerdomänen. 
 
@@ -97,7 +97,7 @@ Das häufigste Modell ist die FD/UD-Matrix, bei der die FDs und UDs eine Tabelle
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Einschränkungen und daraus resultierendes Verhalten von Fehler- und Upgradedomänen
 ### <a name="default-approach"></a>*Standardansatz*
-Standardmäßig behält der Clusterressourcen-Manager die ausgewogene Verteilung der Dienste auf Fehler- und Upgradedomänen bei. Dies wird als [Einschränkung](service-fabric-cluster-resource-manager-management-integration.md) simuliert. In den Einschränkungen für Fehler- und Upgradedomänen heißt es: „Für jede Dienstpartition sollte der Unterschied zwischen der Anzahl von Dienstobjekten (zustandslose Dienstinstanzen oder zustandsbehaftete Dienstreplikate) zwischen zwei Domänen auf derselben Hierarchieebene nie mehr als eins betragen.“ Nehmen wir an, dass diese Einschränkung eine „maximale Differenz“ garantiert. Die Fehler- und Upgradedomäneneinschränkung verhindert bestimmte Verschiebungen oder Anordnungen, die die oben genannte Regel verletzen. 
+Standardmäßig behält der Clusterressourcen-Manager die ausgewogene Verteilung der Dienste auf Fehler- und Upgradedomänen bei. Dies wird als [Einschränkung](service-fabric-cluster-resource-manager-management-integration.md) simuliert. In den Einschränkungen für Fehler- und Upgradedomänen heißt es: „Für jede Dienstpartition sollte der Unterschied zwischen der Anzahl von Dienstobjekten (zustandslose Dienstinstanzen oder zustandsbehaftete Dienstreplikate) zwischen zwei Domänen auf derselben Hierarchieebene nie mehr als 1 betragen.“ Nehmen wir an, dass diese Einschränkung eine „maximale Differenz“ garantiert. Die Fehler- und Upgradedomäneneinschränkung verhindert bestimmte Verschiebungen oder Anordnungen, die die oben genannte Regel verletzen. 
 
 Wir sehen uns nun ein Beispiel an. Angenommen, wir verwenden einen Cluster mit sechs Knoten, für die fünf Fehlerdomänen und fünf Upgradedomänen konfiguriert wurden.
 
@@ -179,7 +179,7 @@ Andererseits kann dieser Ansatz zu streng sein und dem Cluster nicht die Nutzung
 Der Clusterressourcen-Manager unterstützt eine andere Version der Fehler- und Upgradedomäneneinschränkung, die die Platzierung ermöglicht und dabei ein Mindestmaß an Sicherheit garantiert. Die alternative Fehler- und Upgradedomäneneinschränkung kann wie folgt beschrieben werden: „Für eine bestimmte Dienstpartition sollte die domänenübergreifende Replikatverteilung sicherstellen, dass die Partition keinem Quorumsverlust unterliegt“. Nehmen wir an, dass diese Einschränkung eine „Quorumssicherheit“ garantiert. 
 
 > [!NOTE]
->Für einen zustandsbehafteten Dienst definieren wir den *Quorumsverlust* in einer Situation, wo der überwiegende Teil der Partitionsreplikate zur gleichen Zeit außer Betrieb ist. Wenn z.B. TargetReplicaSetSize fünf beträgt, stellt ein Satz von drei Replikaten das Quorum dar. Wenn TargetReplicaSetSize sechs beträgt, sind entsprechend vier Replikate für das Quorum erforderlich. In beiden Fällen können nicht mehr als zwei Replikate zur gleichen Zeit außer Betrieb sein, damit die Partition noch ordnungsgemäß funktioniert. Für einen zustandslosen Dienst gibt es keinen *Quorumsverlust*, da der zustandslose Dienste auch dann noch normal funktioniert, wenn der überwiegende Teil der Instanzen zur gleichen Zeit außer Betrieb geht. Darum konzentrieren wir uns im weiteren Verlauf des Texts auf zustandsbehaftete Dienste.
+>Für einen zustandsbehafteten Dienst definieren wir den *Quorumsverlust* in einer Situation, wo der überwiegende Teil der Partitionsreplikate zur gleichen Zeit außer Betrieb ist. Wenn z.B. TargetReplicaSetSize fünf beträgt, stellt ein Satz von drei Replikaten das Quorum dar. Wenn TargetReplicaSetSize sechs beträgt, sind entsprechend vier Replikate für das Quorum erforderlich. In beiden Fällen können nicht mehr als zwei Replikate zur gleichen Zeit außer Betrieb sein, damit die Partition noch ordnungsgemäß funktioniert. Für einen zustandslosen Dienst gibt es keinen *Quorumsverlust*, weil zustandslose Dienste selbst dann noch normal funktionieren, wenn der überwiegende Teil der Instanzen gleichzeitig außer Betrieb geht. Darum konzentrieren wir uns im weiteren Verlauf des Texts auf zustandsbehaftete Dienste.
 >
 
 Wir kehren zum vorherigen Beispiel zurück. Mit der „quorumsicheren“ Version der Einschränkung würden alle drei vorliegenden Layouts gültig sein. Dies liegt daran, dass die Partition selbst bei einem Ausfall von FD0 im zweiten Layout oder UD1 im dritten Layout noch über ein Quorum verfügen würde (der überwiegende Teil der Replikate wäre noch in Betrieb). Mit dieser Version der Einschränkung könnte N6 fast immer genutzt werden.
@@ -192,7 +192,7 @@ Da beide Ansätze Stärken und Schwächen aufweisen, haben wir einen adaptiven A
 > [!NOTE]
 >Dies ist das Standardverhalten ab Service Fabric Version 6.2. 
 >
-Der adaptive Ansatz nutzt in der Standardeinstellung die Logik der „maximalen Differenz“ und wechselt nur bei Bedarf zur „quorumsicheren“ Logik. Der Clusterressourcen-Manager ermittelt automatisch anhand der Konfiguration von Clustern und Diensten, welche Strategie erforderlich ist. Für einen bestimmten Dienst gilt: *Wenn TargetReplicaSetSize durch die Anzahl der Fehlerdomänen und die Anzahl der Upgradedomänen gleichmäßig teilbar ist **und** die Anzahl der Knoten höchstens dem Produkt aus der Anzahl der Fehlerdomänen * der Anzahl der Upgradedomänen entspricht, sollte der Clusterressourcen-Manager die „quorumbasierte“ Logik für diesen Dienst nutzen.* Bedenken Sie, dass der Clusterressourcen-Manager diesen Ansatz für zustandslose und zustandsbehaftete Dienste verwendet, obwohl der Quorumsverlust für zustandslose Dienste nicht relevant ist.
+Der adaptive Ansatz nutzt in der Standardeinstellung die Logik der „maximalen Differenz“ und wechselt nur bei Bedarf zur „quorumsicheren“ Logik. Der Clusterressourcen-Manager ermittelt automatisch anhand der Konfiguration von Clustern und Diensten, welche Strategie erforderlich ist. Für einen bestimmten Dienst gilt: *Wenn TargetReplicaSetSize durch die Anzahl von Fehlerdomänen und die Anzahl von Upgradedomänen gleichmäßig teilbar ist **und** die Anzahl von Knoten höchstens dem Produkt aus der Anzahl von Fehlerdomänen * der Anzahl von Upgradedomänen entspricht, sollte der Clusterressourcen-Manager die „quorumbasierte“ Logik für diesen Dienst nutzen.* Bedenken Sie, dass der Clusterressourcen-Manager diesen Ansatz für zustandslose und zustandsbehaftete Dienste verwendet, obwohl der Quorumsverlust für zustandslose Dienste nicht relevant ist.
 
 Wir kehren nun zum vorherigen Beispiel zurück und gehen davon aus, dass ein Cluster nun 8 Knoten besitzt (der Cluster ist immer noch mit fünf Fehlerdomänen und fünf Upgradedomänen konfiguriert und die TargetReplicaSetSize eines auf diesem Cluster gehosteten Diensts ist weiterhin fünf). 
 

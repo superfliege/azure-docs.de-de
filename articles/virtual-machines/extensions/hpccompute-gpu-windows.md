@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/15/2018
+ms.date: 12/5/2018
 ms.author: roiyz
-ms.openlocfilehash: ee74d4520e867604f50c70f2b6449f12ff3bd8b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2a29cae6e7f391dfee75e89ea91525268db3fa62
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495963"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971962"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA-GPU-Treibererweiterung für Windows
 
@@ -71,24 +71,15 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 
 ### <a name="properties"></a>Eigenschaften
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | Herausgeber | Microsoft.HpcCompute | Zeichenfolge |
 | type | NvidiaGpuDriverWindows | Zeichenfolge |
 | typeHandlerVersion | 1.2 | int |
 
-### <a name="settings"></a>Einstellungen
-
-Alle Einstellungen sind optional. Das Standardverhalten besteht darin, den entsprechenden neuesten unterstützten Treiber zu installieren.
-
-| NAME | BESCHREIBUNG | Standardwert | Gültige Werte | Datentyp |
-| ---- | ---- | ---- | ---- | ---- |
-| driverVersion | NV: GRID-Treiberversion<br> NC/ND: CUDA-Treiberversion | neueste | GRID: „411.81“, „391.81“, „391.58“, „391.03“<br> CUDA: „398.75“, „397.44“, „390.85“ | Zeichenfolge |
-| installGridND | Installieren von GRID-Treibern für virtuelle Computer der ND-Serie | false | true, false | boolean |
 
 ## <a name="deployment"></a>Bereitstellung
-
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage 
 
@@ -135,8 +126,6 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Im folgenden Beispiel wird das obige Beispiel für ARM und PowerShell gespiegelt, und außerdem werden benutzerdefinierte Einstellungen als Beispiel für die Installation von Nicht-Standard-Treibern hinzugefügt. Insbesondere wird ein bestimmter GRID-Treiber installiert, selbst wenn eine VM der ND-Serie bereitgestellt wird.
-
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -145,8 +134,6 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
-    "driverVersion": "391.03",
-    "installGridND": true
   }'
 ```
 

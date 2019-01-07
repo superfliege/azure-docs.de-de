@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334634"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850974"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -129,7 +129,7 @@ Zeigen Sie zunächst die öffentliche IP-Adresse des virtuellen Computers mit de
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Melden Sie sich mit Ihren Azure AD-Anmeldeinformationen bei dem virtuellen Azure Linux-Computer an. Mit dem Parameter `-l` können Sie die Adresse Ihres Azure AD-Kontos angeben. Geben Sie die öffentliche IP-Adresse des virtuellen Computers an, wie im vorherigen Befehl ausgegeben:
+Melden Sie sich mit Ihren Azure AD-Anmeldeinformationen bei dem virtuellen Azure Linux-Computer an. Mit dem Parameter `-l` können Sie die Adresse Ihres Azure AD-Kontos angeben. Die Kontoadressen müssen ausschließlich in Kleinbuchstaben eingegeben werden. Geben Sie die öffentliche IP-Adresse Ihrer VM aus dem vorherigen Befehl an:
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com publicIps

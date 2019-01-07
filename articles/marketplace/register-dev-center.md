@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cc4e128cab3cad235462e29e65fa58002a103bcd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855900"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834824"
 ---
 # <a name="register-in-dev-center"></a>Registrieren bei Dev Center  
 Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind, öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung.  
@@ -103,7 +103,7 @@ Wenn Sie Probleme mit der Registrierung bei Dev Center haben, führen Sie die fo
 3.  Klicken Sie auf die Schaltfläche „Übermitteln“, um das Ticket zu senden. 
 
 
-## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Problem: Hinzufügen von Bank- und Steuerdaten zu Auszahlungen von Herausgebern  
+## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Problem: Hinzufügen von Bank- und Steuerdaten für Herausgeberauszahlungen  
 Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich, die den Listentyp „Transaktion“ verwenden.  
 *   Wenn Sie kommerzielle Angebote zum Kauf veröffentlichen, müssen Sie Auszahlungs- und Steuerinformationen hinzufügen und eine Überprüfung in Dev Center anfordern.  
     >[!IMPORTANT]
@@ -143,7 +143,7 @@ Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen: 
 
 *   **Für welche Herausgeber ist eine Dev Center-Kontoregistrierung erforderlich?** 
-> Herausgeber, die in der Auflistungsart Transact veröffentlichen: VM, Azure-Apps: Lösungsvorlagen und verwaltete Apps.  
+> Herausgeber, die in der Auflistungsart „Transact“ veröffentlichen: VM, Azure-Apps: Lösungsvorlagen und verwaltete Apps.  
 
 *   **Wozu wird ein Dev Center-Konto benötigt?**
 > Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Namen des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu Ihrem Unternehmen zu überprüfen. Klicken Sie [hier](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center), um weitere Informationen zu erhalten.
@@ -171,7 +171,7 @@ Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich
 > Wechseln Sie zu „Your programs” (Ihre Programme) (https://developer.microsoft.com/dashboard/Account/Programs)), und melden Sie sich beim Dev Center-Konto an. Wenn Azure nicht als registrierte Anwendung angezeigt wird, suchen Sie unter „Recommended programs for you“ (Für Sie empfohlene Programme), und suchen Sie dort nach Azure, um „Get Started“ (Erste Schritte) auszuwählen.
 
 *   **Wie verknüpfe ich mein Dev Center-Konto mit meinem Cloud-Partnerportal-Herausgeberprofil?**
-> Der letzte Schritt vor der Veröffentlichung besteht darin, Ihr Dev Center-Konto mit Ihrem Cloud-Partnerportal-[Profil](https://cloudpartner.azure.com/#profile) zu verknüpfen. Wenn Ihr Dev Center-Konto nicht mit Ihrem Konto im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) identisch ist, fügen Sie Ihr Dev Center-Konto als neuen [Benutzer](https://cloudpartner.azure.com/#documentation/manage-users) im Cloud-Partnerportal hinzu. Melden Sie sich im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) mit Ihrem Dev Center-Konto an. Wählen Sie das Herausgeberprofil im Menü aus, das sich oben rechts im Webbrowser befindet. Wählen Sie „Link Dev Center Account“ (Dev Center-Konto verknüpfen) aus.
+> Der letzte Schritt vor der Veröffentlichung besteht darin, Ihr Dev Center-Konto mit Ihrem Cloud-Partnerportal-[Profil](https://cloudpartner.azure.com/#profile) zu verknüpfen. Wenn Ihr Dev Center-Konto nicht mit Ihrem Konto im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) identisch ist, fügen Sie Ihr Dev Center-Konto als neuen [Benutzer](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) im Cloud-Partnerportal hinzu. Melden Sie sich im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) mit Ihrem Dev Center-Konto an. Wählen Sie das Herausgeberprofil im Menü aus, das sich oben rechts im Webbrowser befindet. Wählen Sie „Link Dev Center Account“ (Dev Center-Konto verknüpfen) aus.
 
 *   **Warum wird meine Dev Center-Anwendung abgelehnt?**
 > Die externe Überprüfungsgesellschaft (Duns & Bradstreet) konnte Sie unter der von Ihnen angegebenen Telefonnummer nicht erreichen. Wenden Sie sich unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) an den Support, um den Überprüfungsprozess neu zu starten.
@@ -187,7 +187,7 @@ Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich
 > Transaktionsangebote können erst veröffentlicht werden, nachdem die Steuer und Bankdaten im Dev Center-Konto angegeben wurden.  Weitere Informationen zum Hinzufügen von Kontoinformationen finden Sie im Abschnitt [Hinzufügen von Bank- und Steuerinformationen](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information).
 
 *   **Kann ich das Dev Center Microsoft-Anmeldekonto wechseln?**
-> Nein. Nachdem ein Dev Center-Konto erstellt wurde, kann das Besitzerkonto nicht mehr gewechselt werden. In diesem Fall müssen Sie ein neues Dev Center-Konto mit dem gewünschten Microsoft-Konto einrichten.
+>  Nein. Nachdem ein Dev Center-Konto erstellt wurde, kann das Besitzerkonto nicht mehr gewechselt werden. In diesem Fall müssen Sie ein neues Dev Center-Konto mit dem gewünschten Microsoft-Konto einrichten.
 
 *   **Wo kann ich mich mit Fragen zur Dev Center-Registrierung an den Support wenden?**
 Um auf den Support zuzugreifen, besuchen Sie die Seite „Windows-Support für Entwickler“ unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Aravo | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Aravo | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Aravo konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: f9ada220a82a2cf9347f02960eeef9c211f37c67
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6631df4764e16fd2399b231732df3fb1ee475869
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226152"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>Tutorial: Azure Active Directory-Integration mit Aravo
 
@@ -102,40 +102,40 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Aravo** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/aravo-tutorial/tutorial_aravo_samlbase.png)
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Aravo** durch:
 
-    ![Configure Single Sign-On](./media/aravo-tutorial/tutorial_aravo_url.png)
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<companyname>.aravo.com`
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<companyname>.aravo.com/aems/login.do`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Aravo](http://www.aravo.com/about-us/contact/), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Aravo](https://www.aravo.com/about-us/contact/), um diese Werte zu erhalten.
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/aravo-tutorial/tutorial_aravo_certificate.png) 
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Configure Single Sign-On](./media/aravo-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Aravo-Konfiguration** auf **Aravo konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/aravo-tutorial/tutorial_aravo_configure.png) 
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_configure.png) 
 
-7. Zum Konfigurieren des einmaligen Anmeldens bei **Aravo** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Aravo-Supportteam](http://www.aravo.com/about-us/contact/) senden. 
+7. Zum Konfigurieren des einmaligen Anmeldens bei **Aravo** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Aravo-Supportteam](https://www.aravo.com/about-us/contact/) senden. 
 
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -166,11 +166,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-an-aravo-test-user"></a>Erstellen eines Aravo-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Aravo. Wenden Sie sich an das [Supportteam von Aravo](http://www.aravo.com/about-us/contact/), um die Benutzer unter dem Aravo-Konto hinzufügen zu lassen.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Aravo. Wenden Sie sich an das [Supportteam von Aravo](https://www.aravo.com/about-us/contact/), um die Benutzer unter dem Aravo-Konto hinzufügen zu lassen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -186,7 +186,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Aravo**aus.
 
-    ![Configure Single Sign-On](./media/aravo-tutorial/tutorial_aravo_app.png) 
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

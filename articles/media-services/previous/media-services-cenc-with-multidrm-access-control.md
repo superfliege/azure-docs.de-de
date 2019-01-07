@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 69802c6c4246b91f62a0e49ec0c34bdd3a1bec8b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c94c88aa088745a2ed421bff43c8d87382564a43
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958419"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141474"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services
 
@@ -130,11 +130,11 @@ Dieser Faktor ist wichtig,
 
 Wenn Sie eine öffentliche Cloud für die Lizenzbereitstellung nutzen, wirkt sich die Verwendung von permanenten und nicht permanenten Lizenzen direkt auf die Kosten für die Lizenzbereitstellung aus. Die beiden folgenden Entwurfsmodelle veranschaulichen dies:
 
-* Monatliches Abonnement: Permanente Lizenz mit einer 1:n-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. Beispielsweise wird für alle Kinderfilme ein einziger Inhaltsschlüssel für die Verschlüsselung verwendet. In diesem Fall:
+* Monatliches Abonnement: Verwenden Sie eine permanente Lizenz mit einer 1:n-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. Beispielsweise wird für alle Kinderfilme ein einziger Inhaltsschlüssel für die Verschlüsselung verwendet. In diesem Fall:
 
     Gesamtanzahl der für alle Kinderfilme pro Gerät angeforderten Lizenzen = 1
 
-* Monatliches Abonnement: Keine permanente Lizenz mit einer 1:1-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. In diesem Fall:
+* Monatliches Abonnement: Verwenden Sie eine nicht permanente Lizenz mit einer 1:1-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. In diesem Fall:
 
     Gesamtanzahl der für alle Kinderfilme pro Gerät angeforderten Lizenzen = [Anzahl der konsumierten Filme] × [Anzahl der Sitzungen]
 
@@ -256,7 +256,7 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Erteilen Sie Berechtigungen in Form von Gruppenmitgliedschaftsansprüchen. Vergewissern Sie sich, dass die Azure AD-Anwendungsmanifestdatei Folgendes enthält: 
 
-    „groupMembershipClaims“: „All“ (der Standardwert ist NULL)
+    "groupMembershipClaims": "All"    (Standardwert ist „null“)
 
 * Legen Sie beim Erstellen der Einschränkungsanforderungen den richtigen TokenType fest.
 
@@ -335,7 +335,7 @@ Um die Zeiger-App in Azure AD zu registrieren und zu konfigurieren, führen Sie 
 
 2. Fügen Sie einen neuen Schlüssel für die Ressourcen-App hinzu.
 
-3. Aktualisieren Sie die Manifestdatei der App so, dass die groupMembershipClaims-Eigenschaft folgenden Wert aufweist: „groupMembershipClaims“: „All“.
+3. Aktualisieren Sie die Manifestdatei der App so, dass die groupMembershipClaims-Eigenschaft folgenden Wert aufweist: "groupMembershipClaims": "All".
 
 4. Fügen Sie in der Azure AD-App, die auf die Player-Web-App zeigt, im Abschnitt **Berechtigungen für andere Anwendungen** die Ressourcen-App hinzu, die zuvor in Schritt 1 hinzugefügt wurde. Wählen Sie unter **Delegierte Berechtigung** die Option **Auf [Ressourcenname] zugreifen** aus. Mit dieser Option erhält die Web-App die Berechtigung zum Erstellen von Zugriffstoken für den Zugriff auf die Ressourcen-App. Dies muss sowohl für die lokale als auch für die bereitgestellte Version der Web-App erfolgen, wenn Sie mit Visual Studio und der Azure-Web-App entwickeln.
 
@@ -372,8 +372,8 @@ Es gibt zwei Arten von Sicherheitsschlüsseln:
 
 > [!NOTE]
 > Bei Verwendung von .NET Framework/C# als Entwicklungsplattform muss das X.509-Zertifikat für einen asymmetrischen Sicherheitsschlüssel eine Schlüssellänge von mindestens 2048 aufweisen. Dies ist eine Voraussetzung für die „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“--Klasse in .NET Framework. Andernfalls wird die folgende Ausnahme ausgelöst:
-
-> IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als 2048 Bits sein.
+> 
+> IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" für die Signierung darf nicht kleiner als 2.048s Bit sein.
 
 ## <a name="the-completed-system-and-test"></a>Das fertige System und Tests
 Dieser Abschnitt beschreibt die folgenden Szenarien im fertig gestellten, vollständigen System, sodass Sie sich ein grundlegendes Bild des Verhaltens machen können, bevor Sie ein Anmeldekonto erhalten:

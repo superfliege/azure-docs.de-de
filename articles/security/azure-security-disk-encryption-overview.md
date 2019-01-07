@@ -1,26 +1,29 @@
 ---
-title: Azure Disk Encryption für virtuelle IaaS-Computer | Microsoft-Dokumentation
+title: Übersicht – Azure Disk Encryption für virtuelle IaaS-Computer | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine Übersicht über Microsoft Azure Disk Encryption für virtuelle IaaS-Computer.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/14/2018
-ms.openlocfilehash: 1328effbc495422e5190362c562928fbb1742e1b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913205"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093283"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption für virtuelle IaaS-Computer 
-Microsoft Azure setzt alles daran, den Schutz Ihrer Daten sowie die Datenhoheit sicherzustellen. Mit Azure können Sie Ihre in Azure gehosteten Daten mit einer Reihe von modernen Technologien zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln sowie zum Steuern und Überwachen des Datenzugriffs kontrollieren. So können Azure-Kunden flexibel eine Lösung auswählen, die ihre Anforderungen am besten erfüllt. Dieser Artikel informiert Sie über eine Technologielösung: Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer (VMs). Diese Technologie unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen Ihrer Organisation. 
+# <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption für virtuelle IaaS-Computer
+
+Microsoft Azure setzt alles daran, den Schutz Ihrer Daten sowie die Datenhoheit sicherzustellen. Mit Azure können Sie Ihre in Azure gehosteten Daten mit einer Reihe von modernen Technologien zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln sowie zum Steuern und Überwachen des Datenzugriffs kontrollieren. So können Azure-Kunden flexibel eine Lösung auswählen, die ihre Anforderungen am besten erfüllt. In diesem Artikel wird Ihnen eine Technologielösung vorgestellt: „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“. Diese Technologie unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen Ihrer Organisation. 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 ## <a name="overview"></a>Übersicht
+
 Azure Disk Encryption ist eine Funktion, mit der Sie die Datenträger von Windows- und Linux-IaaS-VMs verschlüsseln können. Disk Encryption nutzt das Branchenstandardfeature [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) integriert, um Ihnen die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel zu erleichtern. Diese Lösung stellt außerdem sicher, dass alle ruhenden Daten auf den VM-Datenträgern in Azure Storage verschlüsselt sind.
 
 Disk Encryption für Windows- und Linux-IaaS-VMs befindet sich in allen öffentlichen Azure-Regionen und Azure Government-Regionen für Standard-VMs und VMs mit Azure Storage Premium in der Phase „Allgemeine Verfügbarkeit“. Mit der Disk Encryption-Verwaltungslösung können Sie die folgenden geschäftlichen Anforderungen erfüllen:
@@ -37,6 +40,7 @@ Falls Sie Azure Security Center verwenden, werden Sie gewarnt, wenn VMs nicht ve
 
 
 ## <a name="encryption-scenarios"></a>Verschlüsselungsszenarien
+
 Die Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 
 * Aktivieren der Verschlüsselung auf neuen virtuellen Windows-IaaS-Computern, die mit einer vorverschlüsselten VHD und Verschlüsselungsschlüsseln erstellt werden
@@ -55,7 +59,7 @@ Die Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 
 * Integration in Azure Key Vault
-* VMs im Tarif „Standard“: [IaaS-VMs der Serie A, D, DS, F, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/) [Linux-VMs](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) in diesen Tarifen müssen die Arbeitsspeicher-Mindestanforderungen von 7 GB erfüllen.
+* Virtuelle Computer im Standard-Tarif: [IaaS-VMs der Serie A, D, DS, F, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/) [Linux-VMs](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) in diesen Tarifen müssen die Arbeitsspeicher-Mindestanforderungen von 7 GB erfüllen.
 * Aktivieren der Verschlüsselung auf IaaS-VMs unter Windows und Linux, auf VMs mit verwalteten Datenträgern und auf Skalierungsgruppen-VMs aus den unterstützten Azure-Katalogimages
 * Deaktivieren der Verschlüsselung für Betriebssystem- und Datenlaufwerke für Windows-IaaS-VMs, Skalierungsgruppen-VMs und VMs mit verwalteten Datenträgern
 * Deaktivieren der Verschlüsselung für Datenlaufwerke für Linux-IaaS-VMs, Skalierungsgruppen-VMs und VMs mit verwalteten Datenträgern
@@ -87,6 +91,7 @@ Folgende Szenarien, Features und Technologien werden von der Lösung nicht unter
 * Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
 
 ## <a name="encryption-features"></a>Verschlüsselungsfunktionen
+
 Beim Aktivieren und Bereitstellen von Disk Encryption für Azure-IaaS-VMs werden je nach bereitgestellter Konfiguration die folgenden Funktionen aktiviert:
 
 * Verschlüsselung des Betriebssystemvolumes zum Schützen des Startvolumes im Ruhezustand in Ihrem Speicher

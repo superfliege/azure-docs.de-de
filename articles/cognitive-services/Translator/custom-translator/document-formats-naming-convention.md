@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fef4ecd207fd32b5a92a4c072832f3ab45b58300
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 74b421691f5d3536c44af16e99dc54451dfde3f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626980"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872763"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Leitfaden für Dokumentformate und Namenskonventionen
 
@@ -43,11 +43,13 @@ Custom Translator unterstützt alle Für Wörterbücher-Dateiformate, die für d
 
 Dokumente können in einer einzigen ZIP-Datei gruppiert und hochgeladen werden. Custom Translator unterstützt die ZIP-Dateiformate ZIP, GZ und TGZ.
 
-Jedes Dokument in der ZIP-Datei muss dieser Namenskonvention folgen:
+Jedes Dokument in der ZIP-Datei mit der Erweiterung TXT, HTML, HTM, PDF, DOCX, ALIGN muss dieser Benennungskonvention befolgen:
 
 {Dokumentname}\_{Sprachcode}, wobei {Dokumentname} der Name Ihres Dokuments ist, {Sprachcode} die ISO-Sprach-ID (zwei Zeichen), die angibt, dass das Dokument Sätze in dieser Sprache enthält. Dem Sprachcode muss ein Unterstrich (_) vorausgehen.
 
 Um beispielsweise zwei parallele Dokumente in einer ZIP-Datei für ein System Englisch–Spanisch hochzuladen, muss die Dateien „data_en“ und „data_es“ heißen.
+
+Translation Memory-Dateien (TMX, XLF, XLIFF, LCL, XLSX) müssen keiner spezifischen Sprachbenennungskonvention folgen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 37db2dd5908b231b9f04a5c009052d91724f6333
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976247"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992131"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
 
@@ -60,7 +60,7 @@ Wenn Sie einen IP-basierten Firewallproxy oder NSG-Regeln zum Steuern der ausgeh
 - Alle IP-Adressbereiche, die den Speicherkonten am Quellstandort entsprechen.
     - Erstellen Sie ein [Speicherdiensttag](../virtual-network/security-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.
     - Lassen Sie diese Adressen zu, damit Daten von der VM in das Cachespeicherkonto geschrieben werden können.
-- Erstellen Sie basierend auf der NSG-Regel ein [AAD-Diensttag (Azure Active Directory)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
+- Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (AAD)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
     - Wenn in Azure Active Directory (AAD) später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
 - IP-Adressen von Site Recovery-Dienstendpunkten – in einer [XML-Datei ](https://aka.ms/site-recovery-public-ips) verfügbar und von Ihrem Zielstandort abhängig.
 - Wir empfehlen, die erforderlichen NSG-Regeln in einer Test-Netzwerksicherheitsgruppe zu erstellen und sicherzustellen, dass keine Probleme vorliegen, bevor Sie die Regeln in einer Netzwerksicherheitsgruppe in der Produktionsumgebung erstellen.
@@ -114,7 +114,10 @@ Dieses Beispiel zeigt, wie NSG-Regeln für eine zu replizierende VM konfiguriert
 
       ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
 
-2. Erstellen Sie Regeln für ausgehende HTTPS-Verbindungen (443) für alle IP-Adressbereiche, die den [IPv4-Endpunkten zur Authentifizierung und Identifizierung](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity) bei Office 365 entsprechen.
+2. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureActiveDirectory“, wie im Screenshot unten gezeigt.
+
+      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+
 3. Erstellen Sie Regeln für ausgehende HTTPS-Verbindungen (443) für die Site Recovery-IP-Adressen, die dem Zielstandort entsprechen:
 
    **Location** | **IP-Adressen für Site Recovery** |  **IP-Adressen zur Site Recovery-Überwachung**
@@ -127,7 +130,7 @@ Diese Regeln sind erforderlich, damit nach dem Failover die Replikation von der 
 
 1. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „Storage.CentralUS“.
 
-2. Erstellen Sie Regeln für ausgehende HTTPS-Verbindungen (443) für alle IP-Adressbereiche, die den [IPv4-Endpunkten zur Authentifizierung und Identifizierung](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity) bei Office 365 entsprechen.
+2. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureActiveDirectory“.
 
 3. Erstellen Sie Regeln für ausgehende HTTPS-Verbindungen (443) für die Site Recovery-IP-Adressen, die dem Quellstandort entsprechen:
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242822"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541614"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu SQL-Datenbank
 
@@ -31,7 +31,7 @@ Wir garantieren für die Konnektivität zwischen Ihrer Microsoft Azure SQL-Daten
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>Kann ich den Zeitpunkt der Ausfallzeiten beim Patchen steuern?
 
-Nein. Die Auswirkungen vom Patchen sind im Allgemeinen nicht merklich, wenn Sie in Ihrer App [Wiederholungslogik einsetzen](sql-database-develop-overview.md#resiliency).
+ Nein. Die Auswirkungen vom Patchen sind im Allgemeinen nicht merklich, wenn Sie in Ihrer App [Wiederholungslogik einsetzen](sql-database-develop-overview.md#resiliency).
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Was ist das neue V-Kern-basierte Kaufmodell für Azure SQL-Datenbank?
 
@@ -51,11 +51,11 @@ Das DTU-basierte Modell und das V-Kern-basierte Modell werden weiterhin parallel
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Was sollte ich bei der Entscheidung zwischen dem DTU-basierten Kaufmodell und dem V-Kern-basierten Kaufmodell beachten?
 
-Die DTU (Database Transaction Unit) basiert auf einer Mischung aus den Werten für CPU, Speicher, Lesevorgänge und Schreibvorgänge. Die auf DTUs basierenden Computegrößen stellen vorkonfigurierte Ressourcenpakete gemäß den unterschiedlichen Stufen der Anwendungsleistung dar. Wenn Kunden die zugrunde liegenden Ressourcen außen vor lassen möchten und den Komfort eines vorkonfigurierten Pakets mit der Möglichkeit zur Zahlung eines monatlichen Festbetrags bevorzugen, ist das DTU-basierte Modell für ihre Anforderungen eventuell besser geeignet. Falls Kunden aber einen umfassenderen Einblick in die zugrunde liegenden Ressourcen benötigen oder diese aus Gründen der Leistungsoptimierung unabhängig voneinander skalieren möchten, ist das V-Kern-basierte Modell die ideale Wahl.  Wenn ein Kunde darüber hinaus über eine aktive Software Assurance (SA) für SQL Server verfügt, kann er seine getätigten Investitionen nutzen und mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) bis zu 30 Prozent sparen.  Die Optionen beider Kaufmodelle bieten die Vorteile eines vollständig verwalteten Diensts, z.B. automatisierte Sicherungen, Softwareupdates und Patches.
+Die DTU (Database Transaction Unit) basiert auf einer Mischung aus den Werten für CPU, Speicher, Lesevorgänge und Schreibvorgänge. Die auf DTUs basierenden Computegrößen stellen vorkonfigurierte Ressourcenpakete gemäß den unterschiedlichen Stufen der Anwendungsleistung dar. Wenn Kunden die zugrunde liegenden Ressourcen außen vor lassen möchten und den Komfort eines vorkonfigurierten Pakets mit der Möglichkeit zur Zahlung eines monatlichen Festbetrags bevorzugen, ist das DTU-basierte Modell für ihre Anforderungen eventuell besser geeignet. Falls Kunden aber einen umfassenderen Einblick in die zugrunde liegenden Ressourcen benötigen oder diese aus Gründen der Leistungsoptimierung unabhängig voneinander skalieren möchten, ist das V-Kern-basierte Modell die ideale Wahl.  Wenn ein Kunde darüber hinaus über eine aktive Software Assurance (SA) für SQL Server verfügt, kann er seine getätigten Investitionen nutzen und mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) bis zu 30 Prozent sparen.  Die Optionen beider Kaufmodelle bieten die Vorteile eines vollständig verwalteten Diensts, z.B. automatisierte Sicherungen, Softwareupdates und Patches.
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Was ist der Azure-Hybridvorteil für SQL Server?
 
-Der [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) ermöglicht eine maximale Ausnutzung Ihrer aktuellen Lizenzinvestitionen sowie eine schnellere Migration in die Cloud. Mit dem Azure-Hybridvorteil für SQL Server können Sie Ihre SQL Server-Lizenzen mit Software Assurance verwenden und zahlen so einen geringeren Preis („Basistarif“) für SQL-Datenbank. Der Azure-Hybridvorteil für SQL Server ist als öffentliche Vorschauversion des V-Kern-basierten Kaufmodells für Einzeldatenbanken und Pools für elastische Datenbanken von SQL-Datenbank verfügbar. Sie können diesen Vorteil auch bei aktiver SKU in Anspruch nehmen. Beachten Sie aber, dass der Basistarif in Kraft tritt, sobald Sie den Vorteil im Azure-Portal auswählen. Guthaben werden nicht rückwirkend gewährt.
+Der [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) ermöglicht eine maximale Ausnutzung Ihrer aktuellen Lizenzinvestitionen sowie eine schnellere Migration in die Cloud. Mit dem Azure-Hybridvorteil für SQL Server können Sie Ihre SQL Server-Lizenzen mit Software Assurance verwenden und zahlen so einen geringeren Preis („Basistarif“) für SQL-Datenbank. Der Azure-Hybridvorteil für SQL Server ist als öffentliche Vorschauversion des V-Kern-basierten Kaufmodells für Einzeldatenbanken und Pools für elastische Datenbanken von SQL-Datenbank verfügbar. Sie können diesen Vorteil auch bei aktiver SKU in Anspruch nehmen. Beachten Sie aber, dass der Basistarif in Kraft tritt, sobald Sie den Vorteil im Azure-Portal auswählen. Guthaben werden nicht rückwirkend gewährt.
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Gibt es für den Azure-Hybridvorteil für SQL Server Dualnutzungsrechte?
 
@@ -127,13 +127,13 @@ Ja. Sie können Ihre Datenbank leicht auf ein beliebiges unterstütztes Leistung
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Kann ich zwischen den Diensttarifen „Universell“ und „Unternehmenskritisch“ wechseln?
 
-Ja, mit einigen Einschränkungen. Ihre Ziel-SKU muss die maximale Größe für die Datenbank oder den Pool für elastische Datenbanken einhalten, die Sie für Ihre vorhandene Bereitstellung konfiguriert haben. Bei Verwendung des [Azure-Hybridvorteils für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) ist die SKU „Unternehmenskritisch“ nur für Kunden mit Enterprise Edition-Lizenzen verfügbar. Nur Kunden, die eine Migration von der lokalen Umgebung zu „Universell“ durchgeführt haben, indem sie den Azure-Hybridvorteil für SQL Server mit Enterprise Edition-Lizenzen verwendet haben, können ein Upgrade auf „Unternehmenskritisch“ durchführen. Ausführliche Informationen finden Sie unter [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Ja, mit einigen Einschränkungen. Ihre Ziel-SKU muss die maximale Größe für die Datenbank oder den Pool für elastische Datenbanken einhalten, die Sie für Ihre vorhandene Bereitstellung konfiguriert haben. Bei Verwendung des [Azure-Hybridvorteils für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) ist die SKU „Unternehmenskritisch“ nur für Kunden mit Enterprise Edition-Lizenzen verfügbar. Nur Kunden, die eine Migration von der lokalen Umgebung zu „Universell“ durchgeführt haben, indem sie den Azure-Hybridvorteil für SQL Server mit Enterprise Edition-Lizenzen verwendet haben, können ein Upgrade auf „Unternehmenskritisch“ durchführen. Ausführliche Informationen finden Sie unter [Azure-Hybridvorteil für Windows Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Diese Umstellung führt nicht zu Ausfallzeit und kann per Azure-Portal, PowerShell, Azure CLI, T-SQL oder REST-API initiiert werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>Ich verwende eine Premium RS-Datenbank, die nicht allgemein verfügbar ist. Kann ich ein Upgrade auf einen neuen Tarif durchführen und einen ähnlichen Vorteil in Bezug auf das Preis-Leistungs-Verhältnis erzielen?
 
-Da beim V-Kern-Modell eine unabhängige Steuerung der bereitgestellten Compute- und Speichermenge möglich ist, können Sie die sich ergebenden Kosten effektiv verwalten. Dies ist somit ein attraktives Ziel für Premium RS-Datenbanken. Zusätzlich ist der [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) mit einem beträchtlichem Rabatt verbunden, wenn das V-Kern-basierte Modell verwendet wird.
+Da beim V-Kern-Modell eine unabhängige Steuerung der bereitgestellten Compute- und Speichermenge möglich ist, können Sie die sich ergebenden Kosten effektiv verwalten. Dies ist somit ein attraktives Ziel für Premium RS-Datenbanken. Zusätzlich ist der [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) mit einem beträchtlichem Rabatt verbunden, wenn das V-Kern-basierte Modell verwendet wird.
 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Wie oft kann ich die Ressourcen pro Pool anpassen?
 
@@ -196,9 +196,9 @@ Beispiel:
 > [!NOTE]
 > Für einen begrenzten Zeitraum werden keine Gebühren für Sicherungen und E/A-Vorgänge berechnet.
 
-## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Wie wird die Nutzung der aktiven Georeplikation in einem Pool für elastische Datenbanken auf meiner Rechnung ausgewiesen?
+## <a name="how-does-the-use-of-active-geo-replication-or-auto-failover-groups-in-an-elastic-pool-show-up-on-my-bill"></a>Wie wird die Nutzung der aktiven Georeplikation oder von Autofailover-Gruppen in einem Pool für elastische Datenbanken auf meiner Rechnung ausgewiesen?
 
-Im Gegensatz zu Einzeldatenbanken hat die Nutzung der [aktiven Georeplikation](sql-database-geo-replication-overview.md) mit elastischen Datenbanken keine direkte Auswirkung auf die Abrechnung.  Ihnen werden nur die für die einzelnen Pools (primärer Pool und sekundärer Pool) bereitgestellten Ressourcen in Rechnung gestellt.
+Im Gegensatz zu Einzeldatenbanken hat die Nutzung der [aktiven Georeplikation](sql-database-active-geo-replication.md) oder von [Autofailover-Gruppen](sql-database-auto-failover-group.md) mit elastischen Datenbanken keine direkte Auswirkung auf die Abrechnung. Ihnen werden nur die für die einzelnen Pools (primärer Pool und sekundärer Pool) bereitgestellten Ressourcen in Rechnung gestellt.
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>Wie wirkt sich die Nutzung der Überwachungsfunktion auf meine Rechnung aus?
 
@@ -217,7 +217,7 @@ Informationen hierzu finden Sie unter [Steuern und Gewähren von Datenbankzugrif
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Wie stelle ich sicher, dass nur autorisierte IP-Adressen auf einen Server zugreifen können?
 
-Siehe [Konfigurieren der Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md).
+Informationen finden Sie unter [Gewusst wie: Konfigurieren von Firewalleinstellungen für SQL-Datenbank](sql-database-configure-firewall-settings.md).
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>Wie groß ist die erwartete Replikationsverzögerung bei der geografischen Replikation einer Datenbank zwischen zwei Regionen innerhalb derselben Azure-Geografie?
 

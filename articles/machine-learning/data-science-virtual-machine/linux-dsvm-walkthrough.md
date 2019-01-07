@@ -1,11 +1,13 @@
 ---
-title: Data Science mit der Linux Data Science Virtual Machine in Azure | Microsoft-Dokumentation
+title: Hier erfahren Sie, wie Sie die Linux Data Science Virtual Machine verwenden.
+titleSuffix: Azure
 description: Es wird beschrieben, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037582"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190634"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -316,19 +318,19 @@ Die Anaconda-Distribution auf der DSVM verfügt über ein Jupyter Notebook, eine
 
 > [!NOTE]
 > Wenn Sie in Jupyter Notebook im aktuellen Kernel den Python-Paket-Manager (über den Befehl `pip`) verwenden möchten, kann der folgende Befehl in einer Codezelle verwendet werden. Beispiel:
-```python
+  ```python
    import sys
    ! {sys.executable} -m pip install numpy -y
-```
+  ```
 >
 >
 
 > [!NOTE]
 > Wenn Sie in Jupyter Notebook im aktuellen Kernel das Conda-Installationsprogramm Manager (über den Befehl `conda`) verwenden möchten, kann der folgende Befehl in einer Codezelle verwendet werden. Beispiel:
-```python
+  ```python
    import sys
    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-```
+  ```
 >
 >
 
@@ -357,7 +359,7 @@ Sie können Rattle mit den folgenden Befehlen installieren und starten:
 >
 >
 
-Die Benutzeroberfläche von Rattle basiert auf Registerkarten. Die meisten Registerkarten entsprechen den Schritten unter [Data Science-Prozess](https://azure.microsoft.com/documentation/learning-paths/data-science-process/), z.B. das Laden oder Untersuchen von Daten. Der Data Science-Prozess verläuft von links nach rechts durch die Registerkarten. Die letzte Registerkarte enthält dann ein Protokoll mit den R-Befehlen, die von Rattle ausgeführt wurden.
+Die Benutzeroberfläche von Rattle basiert auf Registerkarten. Die meisten Registerkarten entsprechen den Schritten unter [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), z.B. das Laden oder Untersuchen von Daten. Der Data Science-Prozess verläuft von links nach rechts durch die Registerkarten. Die letzte Registerkarte enthält dann ein Protokoll mit den R-Befehlen, die von Rattle ausgeführt wurden.
 
 Gehen Sie wie folgt vor, um das Dataset zu laden und zu konfigurieren:
 

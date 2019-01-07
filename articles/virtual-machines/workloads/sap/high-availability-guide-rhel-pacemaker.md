@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f8e16af629eaa18b49b054be9fc478d633263ddb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d023bf4428790667ef192a3ce981087694224f50
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636796"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724535"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure
 
@@ -60,8 +60,8 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP unter Linux (dieser Artikel)][deployment-guide]
 * [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-* [SAP HANA system replication in pacemaker cluster](https://access.redhat.com/articles/3004101) (SAP HANA-Systemreplikation in Pacemaker-Cluster)
-* Allgemeine RHEL-Dokumentation
+* [SAP HANA-Systemreplikation in Pacemaker-Cluster](https://access.redhat.com/articles/3004101)
+* Allgemeine RHEL-Dokumentation:
   * [Übersicht über das Hochverfügbarkeits-Add-On](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [Verwaltung des Hochverfügbarkeits-Add-Ons](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [Referenz zum Hochverfügbarkeits-Add-On](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
@@ -224,10 +224,10 @@ Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle „Linux Fence Agent
 1. Öffnen Sie das Blatt „Alle Ressourcen“.
 1. Wählen Sie den virtuellen Computer des ersten Clusterknotens aus.
 1. Klicken Sie auf „Zugriffssteuerung (IAM)“.
-1. Klicken Sie auf "Hinzufügen".
+1. Klicken Sie auf „Rollenzuweisung hinzufügen“.
 1. Wählen Sie die Rolle „Linux Fence Agent Role“ aus.
 1. Geben Sie den Namen der Anwendung ein, die Sie zuvor erstellt haben.
-1. OK klicken
+1. Klicken Sie auf Speichern.
 
 Wiederholen Sie die oben genannten Schritte für den zweiten Clusterknoten.
 

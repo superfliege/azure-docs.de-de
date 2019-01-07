@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Pacific Timesheet | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Pacific Timesheet | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Pacific Timesheet konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 051e39d0e7a58c79eb00bc3dfb73eaf5389617c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b821da194ce41fc419e769336eeeb5927306684
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448362"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843647"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Tutorial: Azure Active Directory-Integration mit Pacific Timesheet
 
@@ -117,13 +117,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Pacific Timesheet](http://www.pacifictimesheet.com/support), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Pacific Timesheet](https://www.pacifictimesheet.com/support), um diese Werte zu erhalten.
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Configure single sign-on](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Configure single sign-on](./media/pacific-timesheet-tutorial/tutorial_general_400.png)
 
@@ -131,10 +131,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_configure.png) 
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Pacific Timesheet** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **SAML-Dienst-URL für einmalige Anmeldung** und **SAML-Entitäts-ID** an das [Pacific Timesheet-Supportteam](http://www.pacifictimesheet.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **Pacific Timesheet** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **SAML-Dienst-URL für einmalige Anmeldung** und **SAML-Entitäts-ID** an das [Pacific Timesheet-Supportteam](https://www.pacifictimesheet.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -166,11 +166,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-a-pacific-timesheet-test-user"></a>Erstellen eines Pacific Timesheet-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Pacific Timesheet einen Benutzer mit dem Namen „Britta Simon“. Bitte wenden Sie sich an das [Pacific Timesheet-Supportteam](http://www.pacifictimesheet.com/support), um einen Benutzer in der Anwendung zu erstellen.
+In diesem Abschnitt erstellen Sie in Pacific Timesheet einen Benutzer mit dem Namen „Britta Simon“. Bitte wenden Sie sich an das [Pacific Timesheet-Supportteam](https://www.pacifictimesheet.com/support), um einen Benutzer in der Anwendung zu erstellen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

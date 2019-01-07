@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 74bfd49fd69353e95a275f31fa0bba9e9b558227
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ca73a7f76de61f841af55121823ab045a93632ae
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632924"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014785"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -63,35 +63,35 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für Slack in Azure AD:
 
 
-1)  Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
-2) Wenn Sie Slack bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Slack-Instanz. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Slack**. Wählen Sie „Slack“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+2. Wenn Sie Slack bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Slack-Instanz. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Slack**. Wählen Sie „Slack“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-3)  Wählen Sie Ihre Slack-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
+3. Wählen Sie Ihre Slack-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
 
-4)  Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-![Slack-Bereitstellung](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Slack-Bereitstellung](./media/slack-provisioning-tutorial/Slack1.PNG)
 
-5)  Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Dadurch wird ein Slack-Autorisierungsdialogfeld in einem neuen Browserfenster geöffnet. 
+5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Dadurch wird ein Slack-Autorisierungsdialogfeld in einem neuen Browserfenster geöffnet. 
 
-6) Melden Sie sich im neuen Fenster mit Ihrem Teamadministratorkonto bei Slack an. Wählen Sie im daraufhin angezeigten Autorisierungsdialogfeld das Slack-Team aus, für das Sie die Bereitstellung aktivieren möchten, und wählen Sie dann **Autorisieren**. Kehren Sie anschließend zum Azure-Portal zurück, um die Konfiguration der Bereitstellung abzuschließen.
+6. Melden Sie sich im neuen Fenster mit Ihrem Teamadministratorkonto bei Slack an. Wählen Sie im daraufhin angezeigten Autorisierungsdialogfeld das Slack-Team aus, für das Sie die Bereitstellung aktivieren möchten, und wählen Sie dann **Autorisieren**. Kehren Sie anschließend zum Azure-Portal zurück, um die Konfiguration der Bereitstellung abzuschließen.
 
-![Autorisierungsdialogfeld](./media/slack-provisioning-tutorial/Slack3.PNG)
+   ![Autorisierungsdialogfeld](./media/slack-provisioning-tutorial/Slack3.PNG)
 
-7) Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Slack-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Slack-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt zum Autorisieren.
+7. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Slack-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Slack-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt zum Autorisieren.
 
-8) Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
+8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
-9) Klicken Sie auf **Speichern**. 
+9. Klicken Sie auf **Speichern**. 
 
-10) Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Slack synchronisieren**.
+10. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Slack synchronisieren**.
 
-11) Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Slack synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Slack für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Slack synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Slack für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-12) Um den Azure AD-Bereitstellungsdienst für Slack zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+12. Um den Azure AD-Bereitstellungsdienst für Slack zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
-13) Klicken Sie auf **Speichern**. 
+13. Klicken Sie auf **Speichern**. 
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Slack im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 10 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Slack-App ausgeführt werden.
 
@@ -101,13 +101,13 @@ Optional können Sie die Bereitstellung von Gruppenobjekten von Azure AD in Slac
 
 ### <a name="to-enable-provisioning-of-group-objects"></a>So aktivieren Sie die Bereitstellung von Gruppenobjekten
 
-1) Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Gruppen mit Slack synchronisieren**.
+1. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Gruppen mit Slack synchronisieren**.
 
-2) Legen Sie auf dem Blatt „Attributzuordnung“ die Option „Aktiviert“ auf „Ja“ fest.
+2. Legen Sie auf dem Blatt „Attributzuordnung“ die Option „Aktiviert“ auf „Ja“ fest.
 
-3) Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Slack synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Gruppen in Slack für Updatevorgänge verwendet werden. 
+3. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Slack synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Gruppen in Slack für Updatevorgänge verwendet werden. 
 
-4) Klicken Sie auf **Speichern**.
+4. Klicken Sie auf **Speichern**.
 
 So werden alle Gruppenobjekte, die Slack im Abschnitt **Benutzer und Gruppen** zugewiesen sind, vollständig von Azure AD nach Slack synchronisiert. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Slack-App ausgeführt werden.
 

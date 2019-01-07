@@ -1,6 +1,6 @@
 ---
-title: Übersicht über die Azure Event Hubs Dedicated-Kapazität | Microsoft-Dokumentation
-description: Übersicht über die Microsoft Azure Event Hubs Dedicated-Kapazität
+title: Übersicht über dedizierte Event Hubs – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über dedizierte Azure Event Hubs, die Bereitstellungen von Event Hubs mit einzelnen Mandanten bieten.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 68a55d8a16e55e2f5e4b48153f045daa40c9a68c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42143796"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091025"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -50,7 +51,7 @@ Die Verwendung der Event Hubs Dedicated-Kapazität bietet die folgenden Vorteile
 * Jedes Mal wiederholbare Leistung
 * Garantierte Kapazität, die Ihre Burstanforderungen erfüllt
 * Enthält die [Capture](event-hubs-capture-overview.md)-Funktion von Event Hubs für die Bereitstellung der Integration mit Microbatch und langfristiger Aufbewahrung
-* Keine Wartung: Der Dienst verwaltet den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und Partitionierung.
+* Keinerlei Wartung: Der Dienst verwaltet den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und Partitionierung.
 * Fester Stundensatz
 * Nachrichtenbeibehaltung von bis zu sieben Tagen ohne zusätzliche Gebühren
 

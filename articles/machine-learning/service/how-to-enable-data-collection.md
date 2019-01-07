@@ -1,5 +1,6 @@
 ---
-title: Aktivieren der Datensammlung für Modelle in der Produktion – Azure Machine Learning
+title: Sammeln von Daten zu Ihren Produktionsmodellen
+titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Daten des Azure Machine Learning-Eingabemodells in einem Azure-Blobspeicher gesammelt werden.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
-ms.openlocfilehash: f4340d1ef30bb4317e658c9a9a936f009054e784
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: 2a4f0f1100064010405c3d0bc599e7add1041074
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710629"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271571"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
@@ -45,18 +47,16 @@ Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
->[!NOTE]
-> Der Code in diesem Artikel wurde mit Version 0.1.74 des Azure Machine Learning SDK getestet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
 - Ein Arbeitsbereich des Azure Machine Learning Service, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
 
 - Ein trainiertes Machine Learning-Modell, das im Azure Kubernetes Service (AKS) bereitgestellt werden soll. Wenn Sie keines besitzen, sehen Sie sich das Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md) an.
 
-- Ein [AKS-Cluster](how-to-deploy-to-aks.md).
+- Ein Azure Kubernetes Service-Cluster. Informationen zum Erstellen und Bereitstellen finden Sie im Dokument [Bereitstellung: wie und wo?](how-to-deploy-and-where.md).
 
 - [Richten Sie Ihre Umgebung ein](how-to-configure-environment.md), und installieren Sie das [Überwachungs-SDK](https://aka.ms/aml-monitoring-sdk).
 
@@ -81,7 +81,7 @@ Zum Aktivieren müssen Sie folgende Schritte ausführen:
     prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* ist ein optionaler Parameter. Er muss nicht festgelegt werden, wenn dies vom Modell nicht gefordert wird. Eine vorhandene Korrelations-ID erleichtert die Zuordnung zu anderen Daten. (Beispiele: LoanNumber, CustomerId usw.)
+    *CorrelationId* ist ein optionaler Parameter. Er muss nicht festgelegt werden, wenn dies vom Modell nicht gefordert wird. Eine vorhandene Korrelations-ID erleichtert die Zuordnung zu anderen Daten. (Beispiele: LoanNumber, CustomerId etc.)
     
     *Identifier* wird später zum Erstellen der Ordnerstruktur im Blob verwendet. Damit können Rohdaten von verarbeiteten Daten abgegrenzt werden.
 
@@ -104,7 +104,7 @@ Zum Aktivieren müssen Sie folgende Schritte ausführen:
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ``` 
 
-5. [Erstellen Sie ein neues Image, und stellen Sie Ihren Dienst bereit.](how-to-deploy-to-aks.md) 
+5. Informationen zum Erstellen eines neuen Images und zum Bereitstellen des Diensts finden Sie im Dokument [Bereitstellung: wie und wo?](how-to-deploy-and-where.md).
 
 
 Wenn Sie in der **Umgebungsdatei** und **Bewertungsdatei** bereits einen Dienst mit den Abhängigkeiten installiert haben, aktivieren Sie die Datensammlung wie folgt:
@@ -136,7 +136,7 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
 
   1. Navigieren Sie zu **Bereitstellungen** -> **Dienst auswählen** -> **Bearbeiten**.
 
-    [![Bearbeiten des Diensts](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+    [![Option „Bearbeiten“](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. Deaktivieren Sie in **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**. 
 
@@ -172,7 +172,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Analysieren von Modelldaten mit Power BI
 
-1. Laden Sie [Power BI Desktop](http://www.powerbi.com) herunter, und öffnen Sie die Anwendung.
+1. Laden Sie [Power BI Desktop](https://www.powerbi.com) herunter, und öffnen Sie die Anwendung.
 
 1. Wählen Sie **Daten abrufen**, und klicken Sie auf [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
@@ -231,8 +231,6 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
 ## <a name="example-notebook"></a>Notebook mit Beispielen
 
-Im Notebook [00.Getting Started/12.enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/12.enable-data-collection-for-models-in-aks) werden die in diesem Artikel behandelten Konzepte veranschaulicht.  
+Im Notebook [how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb) werden die Konzepte in diesem Artikel veranschaulicht.  
 
-Notebook abrufen:
- 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

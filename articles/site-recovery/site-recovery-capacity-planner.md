@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d53e8fe6588b7e1b068431a4cd530d0a80a603e6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8ba4fa1b5f5efd671c13ad2201b0cd34642d346
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261875"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844939"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planen der Kapazität für die Notfallwiederherstellung von Hyper-V-VMs 
 
@@ -65,17 +65,17 @@ Sie können das Tool in zwei Modi ausführen:
 
 4. Nachdem Sie die Werte für die Quellumgebung eingegeben haben, enthält die angezeigte Ausgabe Folgendes:
 
-   * **Bandwidth required for delta replication (in Megabits/sec)** (Erforderliche Bandbreite für Deltareplikation [in MBit/s]): Die Netzwerkbandbreite für die Deltareplikation wird basierend auf der durchschnittlichen täglichen Datenänderungsrate berechnet.
-   * **Bandwidth required for initial replication (in Megabits/sec)** (Erforderliche Bandbreite für erste Replikation [in MBit/s]): Die Netzwerkbandbreite für die erste Replikation wird basierend auf den Werten für die erste Replikation berechnet, die Sie eingeben.
-   * **Storage required (in GBs)** (Erforderlicher Speicher [in GB]): insgesamt erforderlicher Azure-Speicher
+   * **Bandwidth required for delta replication (MBit/s)** (Erforderliche Bandbreite für die Deltareplikation [MBit/s]): Die Netzwerkbandbreite für die Deltareplikation wird basierend auf der durchschnittlichen täglichen Datenänderungsrate berechnet.
+   * **Bandwidth required for initial replication (MBit/s)** (Erforderliche Bandbreite für die Erstreplikation [MBit/s]): Die Netzwerkbandbreite für die erste Replikation wird basierend auf den Werten für die erste Replikation berechnet, die Sie eingeben.
+   * **Storage required (in GBs)** (Erforderlicher Speicher [in GB]): Erforderlicher Gesamtspeicher in Azure.
    * **Total IOPS on Standard Storage** (Gesamt-IOPS in Storage Standard): Die Anzahl wird basierend auf der IOPS-Einheitengröße 8K für alle Storage Standard-Konten berechnet. Für den Quick Planner (Schnellplaner) wird die Anzahl basierend auf allen VM-Quelldatenträgern und der täglichen Datenänderungsrate berechnet. Für den Detailed Planner (Detaillierter Planer) wird die Anzahl basierend auf der Gesamtzahl der VMs, die Azure-Standard-VMs zugeordnet sind, und der Datenänderungsrate auf diesen VMs berechnet.
-   * **Number of Standard storage accounts required** (Anzahl von Storage Standard-Konten): Gesamtzahl von Storage Standard-Konten, die zum Schützen der VMs benötigt werden. Ein Storage Standard-Konto kann bis zu 20.000 IOPS über alle VMs in einem Standardspeicher hinweg leisten. Pro Datenträger werden dabei maximal 500 IOPS unterstützt.
+   * **Number of standard storage accounts** (Anzahl von Storage Standard-Konten): Gesamtzahl von Storage Standard-Konten, die zum Schützen der VMs benötigt werden. Ein Storage Standard-Konto kann bis zu 20.000 IOPS über alle VMs in einem Standardspeicher hinweg leisten. Pro Datenträger werden dabei maximal 500 IOPS unterstützt.
    * **Number of Blob disks required** (Anzahl erforderlicher Blobdatenträger): Anzahl von Datenträgern, die in Azure Storage erstellt werden
-   * **Number of premium accounts required** (Anzahl erforderlicher Storage Premium-Konten): Gesamtzahl von Storage Premium-Konten, die zum Schützen der VMs benötigt werden. Beachten Sie, dass für eine Quell-VM mit hohem IOPS-Wert (höher als 20.000) ein Storage Premium-Konto erforderlich ist. Ein Storage Premium-Konto kann bis zu 80.000 IOPS leisten.
-   * **Total IOPS on Premium Storage** (Gesamt-IOPS für Storage Premium): Die Anzahl wird basierend auf der IOPS-Einheitengröße 256K für alle Storage Premium-Konten berechnet. Für den Quick Planner (Schnellplaner) wird die Anzahl basierend auf allen VM-Quelldatenträgern und der täglichen Datenänderungsrate berechnet. Für den Detailed Planner (Detaillierter Planer) wird die Anzahl basierend auf der Gesamtzahl der VMs, die Azure-Premium-VMs (DS- und GS-Reihe) zugeordnet sind, und der Datenänderungsrate auf diesen VMs berechnet.
-   * **Number of configuration servers required** (Anzahl erforderlicher Konfigurationsserver): Anzahl der Konfigurationsserver, die für die Bereitstellung erforderlich sind
-   * **Number of additional Process Servers required** (Anzahl erforderlicher zusätzlicher Prozessserver): Dieser Wert gibt an, ob weitere Prozessserver außer dem Prozessserver, der standardmäßig auf dem Konfigurationsserver ausgeführt wird, erforderlich sind.
-   * **100% additional storage on the Source** (100 % zusätzlicher Speicher an der Quelle): Dieser Wert zeigt an, ob am Quellspeicherort zusätzlicher Speicher erforderlich ist.
+   * **Number of premium storage accounts required** (Anzahl erforderlicher Storage Premium-Konten): Gesamtanzahl von Storage Premium-Konten, die zum Schützen der VMs benötigt werden. Beachten Sie, dass für eine Quell-VM mit hohem IOPS-Wert (höher als 20.000) ein Storage Premium-Konto erforderlich ist. Ein Storage Premium-Konto kann bis zu 80.000 IOPS leisten.
+   * **Total IOPS on premium storage** (Gesamt-IOPS in Storage Premium): Die Anzahl wird basierend auf der IOPS-Einheitengröße 256K für alle Storage Standard-Konten berechnet. Für den Quick Planner (Schnellplaner) wird die Anzahl basierend auf allen VM-Quelldatenträgern und der täglichen Datenänderungsrate berechnet. Für den Detailed Planner (Detaillierter Planer) wird die Anzahl basierend auf der Gesamtzahl der VMs, die Azure-Premium-VMs (DS- und GS-Reihe) zugeordnet sind, und der Datenänderungsrate auf diesen VMs berechnet.
+   * **Number of configuration servers required** (Anzahl erforderlicher Konfigurationsserver): Zeigt an, wie viele Konfigurationsserver für die Bereitstellung erforderlich sind.
+   * **Number of additional process servers required** (Anzahl zusätzlich erforderlicher Prozessserver): Gibt an, ob weitere Prozessserver außer dem Prozessserver, der standardmäßig auf dem Konfigurationsserver ausgeführt wird, erforderlich sind
+   * **100% additional storage on the source** (100% zusätzlicher Speicher auf Quelle): Zeigt an, ob am Quellspeicherort zusätzlicher Speicher erforderlich ist
 
       ![Output](./media/site-recovery-capacity-planner/output.png)
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: eaabb29a492ec6a0ef4c85afe839a9df5f588958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567484"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087166"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 
@@ -29,7 +29,7 @@ Es gibt zwei Arten von Zugriffssteuerungslisten (Access Control Lists, ACLs): **
 
 * **Zugriffs-ACLs**: Diese Listen steuern den Zugriff auf ein Objekt. Dateien und Ordner verfügen jeweils über Zugriffs-ACLs.
 
-* **Standard-ACLs**: Hierbei handelt es sich um eine Art Vorlage für ACLs, die einem Ordner zugeordnet sind und die Zugriffs-ACLs für alle untergeordneten Elemente bestimmen, die in unter diesem Ordner erstellt werden. Dateien verfügen über keine Standard-ACLs.
+* **Standard-ACLs**: Hierbei handelt es sich um eine Art Vorlage für ACLs, die einem Ordner zugeordnet sind und die Zugriffs-ACLs für alle untergeordneten Elemente festlegen, die unter diesem Ordner erstellt werden. Dateien verfügen über keine Standard-ACLs.
 
 
 Zugriffs- und Standard-ACLs besitzen die gleiche Struktur.
@@ -71,15 +71,15 @@ Im von Data Lake Storage Gen1 verwendeten POSIX-basierten Modell werden Berechti
 
 Im Folgenden sind einige allgemeine Szenarien aufgeführt, die veranschaulichen, welche Berechtigungen zum Ausführen bestimmter Vorgänge für ein Data Lake Storage Gen1-Konto erforderlich sind.
 
-|    Vorgang             |    /    | Seattle/ | Portland/ | Data.txt     |
-|--------------------------|---------|----------|-----------|--------------|
-| Lesen von „Data.txt“            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Anfügen an „Data.txt“       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Löschen von „Data.txt“          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Erstellen von „Data.txt“          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Auflisten von „/“                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| Auflisten von „/Seattle/“           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| Auflisten von „/Seattle/Portland/“  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Vorgang | Objekt              |    /      | Seattle/   | Portland/   | Data.txt       |
+|-----------|---------------------|-----------|------------|-------------|----------------|
+| Lesen      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Anfügen an | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Löschen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Erstellen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Auflisten      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| Auflisten      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| Auflisten      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -132,8 +132,8 @@ Da den Benutzern in Data Lake Storage Gen1 keine „primäre Gruppe“ zugeordne
 
 **Zuweisen der zuständigen Gruppe für eine neue Datei oder einen neuen Ordner**
 
-* **1. Fall**: Der Stammordner „/“. Dieser Ordner wird erstellt, wenn ein Data Lake Storage Gen1-Konto erstellt wird. In diesem Fall wird die zuständige Gruppe auf eine GUID festgelegt, die nur aus Nullen besteht.  Bei diesem Wert ist kein Zugriff zulässig.  Es ist ein Platzhalter, der bis zur Zuweisung einer Gruppe gilt.
-* **2. Fall** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Ordner kopiert.
+* **Fall 1**: Der Stammordner „/“. Dieser Ordner wird erstellt, wenn ein Data Lake Storage Gen1-Konto erstellt wird. In diesem Fall wird die zuständige Gruppe auf eine GUID festgelegt, die nur aus Nullen besteht.  Bei diesem Wert ist kein Zugriff zulässig.  Es ist ein Platzhalter, der bis zur Zuweisung einer Gruppe gilt.
+* **Fall 2** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Ordner kopiert.
 
 **Ändern der zuständigen Gruppe**
 

@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux | Microsoft Docs
+title: Häufig gestellte Fragen (FAQ) zu App Service unter Linux – Azure | Microsoft-Dokumentation
 description: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux.
 keywords: Azure App Service, Web-App, FAQ, Linux, OSS, Web-App für Container, mehrere Container, Multicontainer
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
-ms.openlocfilehash: 94e61cf5bf4f629dfd776cf9ea2ae54233e91dc6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417581"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719081"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -30,7 +31,7 @@ Wenn Sie eine Frage haben, schreiben Sie einen Kommentar zu diesem Artikel.
 
 ## <a name="built-in-images"></a>Integrierte Images
 
-**Ich möchte die integrierten Docker-Container nutzen, die von der Plattform bereitgestellt werden. Wo finde ich diese Dateien?**
+ **Ich möchte die integrierten Docker-Container nutzen, die von der Plattform bereitgestellt werden. Wo finde ich diese Dateien?**
 
 Sie finden alle Docker-Dateien auf [GitHub](https://github.com/azure-app-service). Sie finden alle Docker-Container auf [Docker Hub](https://hub.docker.com/u/appsvc/).
 
@@ -76,7 +77,7 @@ Wenn bei der Git-Bereitstellung in Ihrer Linux-Web-App ein Fehler auftritt, stel
 
 - Verwenden Sie das Feature für Continuous Delivery (Vorschauversion): Sie können den Quellcode Ihrer App in einem Azure DevOps-Git-Repository oder -GitHub-Repository speichern, um Azure Continuous Delivery zu verwenden. Weitere Informationen finden Sie unter [Konfigurieren von Continuous Delivery für die Linux-Web-App](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/) (in englischer Sprache).
 
-- Verwenden Sie die [API für die ZIP-Bereitstellung](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file):Stellen Sie zur Verwendung dieser API [eine SSH-Verbindung mit Ihrer Web-App](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) her, und navigieren Sie zu dem Ordner, in dem der Code bereitgestellt werden soll. Führen Sie den folgenden Code aus:
+- Verwenden Sie die [API für die ZIP-Bereitstellung](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Stellen Sie zur Verwendung dieser API [eine SSH-Verbindung mit Ihrer Web-App](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) her, und navigieren Sie zu dem Ordner, in dem der Code bereitgestellt werden soll. Führen Sie den folgenden Code aus:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
@@ -193,5 +194,5 @@ Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoi
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Was ist Azure App Service unter Linux?](app-service-linux-intro.md)
-- [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Continuous Deployment mit Web-App für Container](./app-service-linux-ci-cd.md)

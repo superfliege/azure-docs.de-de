@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
+title: Konfigurieren der gegenseitigen TLS-Authentifizierung – Azure App Service
 description: Erfahren Sie, wie Sie Ihre Webanwendung für die Clientzertifikatauthentifizierung für TLS konfigurieren.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.custom: seodec18
+ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056207"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252880"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
 ## <a name="overview"></a>Übersicht

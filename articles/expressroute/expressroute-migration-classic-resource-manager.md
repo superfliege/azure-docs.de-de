@@ -1,31 +1,23 @@
 ---
-title: 'Migrieren von virtuellen Netzwerken für ExpressRoute vom klassischen Modell zu Resource Manager: Azure: PowerShell | Microsoft-Dokumentation'
-description: Auf dieser Seite wird beschrieben, wie zugeordnete virtuelle Netzwerke zu Ressource Manager migriert werden, nachdem die Verbindung verschoben wurde.
-documentationcenter: na
+title: 'Migrieren von virtuellen Netzwerken vom klassischen Modell zu Resource Manager – ExpressRoute: Azure: PowerShell | Microsoft-Dokumentation'
+description: Auf dieser Seite wird beschrieben, wie über ExpressRoute zugeordnete virtuelle Netzwerke zu Resource Manager migriert werden, nachdem die Verbindung verschoben wurde.
 services: expressroute
 author: ganesr
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/06/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 336f68308f7d4b4dd3c7476a4fabd793939e9e85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: c9f013a6af0b6d232eff32a9827006ce3247db3c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013205"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136398"
 ---
-# <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrieren von virtuellen Netzwerken für ExpressRoute vom klassischen Modell zu Resource Manager
+# <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrieren von über ExpressRoute zugeordneten virtuellen Netzwerken vom klassischen Modell zu Resource Manager
 
-In diesem Artikel wird erläutert, wie virtuelle Netzwerke für Azure ExpressRoute vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell migriert werden, nachdem die ExpressRoute-Verbindung verschoben wurde. 
-
+In diesem Artikel wird erläutert, wie über ExpressRoute zugeordnete virtuelle Netzwerke vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell migriert werden, nachdem die ExpressRoute-Verbindung verschoben wurde. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 * Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Module besitzen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
@@ -37,7 +29,7 @@ In diesem Artikel wird erläutert, wie virtuelle Netzwerke für Azure ExpressRou
 
     * [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [FAQs: Platform-supported migration of IaaS resources from classic to Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md) (Häufig gestellte Fragen: Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager)
+    * [Häufig gestellte Fragen: Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Überprüfen der häufigsten Fehler bei der Migration und Gegenmaßnahmen](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Unterstützte und nicht unterstützte Szenarien
@@ -89,5 +81,5 @@ In diesem Abschnitt werden die Schritte beschrieben, die zum Migrieren eines vir
 ## <a name="next-steps"></a>Nächste Schritte
 * [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [FAQs: Platform-supported migration of IaaS resources from classic to Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md) (Häufig gestellte Fragen: Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager)
+* [Häufig gestellte Fragen: Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Überprüfen der häufigsten Fehler bei der Migration und Gegenmaßnahmen](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

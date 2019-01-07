@@ -3,7 +3,7 @@ title: Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 description: Hier wird erläutert, wie Sie Shards manipulieren und Daten über einen selbst gehosteten Dienst mithilfe von APIs für elastische Datenbanken verschieben.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: fb87a67d84588b5199a5d31530530d5afb7985e7
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353681"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868462"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 
@@ -212,7 +212,7 @@ Der Split-Merge-Dienst stellt die **RequestStatus** -Tabelle in der Metadatenspe
 
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 
-Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie steuern die Diagnosekonfiguration, wie es unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md)beschrieben ist. Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
+Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie können die Diagnosekonfiguration wie im folgenden Artikel beschrieben steuern: [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
 
 ## <a name="deploy-diagnostics"></a>Bereitstellen der Diagnose
 
@@ -230,7 +230,7 @@ Führen Sie die folgenden Befehle mit Azure PowerShell aus, um die Überwachung 
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie hier: [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Abrufen der Diagnose
 

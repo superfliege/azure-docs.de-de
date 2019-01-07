@@ -12,23 +12,28 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 526b6ac9c510b13461181d76c0032602d8f3f435
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377981"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872882"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Diensttarif „Hyperscale“ (Vorschau) für bis zu 100 TB
+
+Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um die Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. In Azure SQL-Datenbank werden drei Architekturmodelle verwendet:
+- Universell/Standard 
+- Unternehmenskritisch/Premium
+- Hyperscale
 
 Der Diensttarif „Hyperscale“ in Azure SQL-Datenbank ist der neueste Diensttarif im V-Kern-basierten Tarifmodell. Dieser Diensttarif bietet eine hochgradig skalierbare Speicher- und Computeleistung, mit der die Speicher- und Computeressourcen für eine Azure SQL-Datenbank-Instanz mithilfe der Azure-Architektur weit über die Limits der Diensttarife „Universell“ und „Unternehmenskritisch“ hinaus horizontal hochskaliert werden können.
 
 > [!IMPORTANT]
-> Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau und ist nur in einigen Azure-Regionen verfügbar. Eine umfassende Liste der Regionen finden Sie unter [Diensttarif „Hyperscale“ – Verfügbare Regionen](#available-regions). In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif „Hyperscale“ zu aktualisieren.
+> Der Diensttarif Hyperscale befindet sich derzeit in der öffentlichen Vorschau und ist nur in einigen Azure-Regionen verfügbar. Eine umfassende Liste der Regionen finden Sie unter [Diensttarif „Hyperscale“ – Verfügbare Regionen](#available-regions). In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif Hyperscale zu aktualisieren.
 > [!NOTE]
-> Ausführliche Informationen zu den Diensttarifen „Universell“ und „Unternehmenskritisch“ im V-Kern-basierten Kaufmodell finden Sie unter [Diensttarife „Universell“ und „Unternehmenskritisch“](sql-database-service-tiers-general-purpose-business-critical.md). Einen Vergleich zwischen V-Kern-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-service-tiers.md).
+> Ausführliche Informationen zu den Diensttarifen „Universell“ und „Unternehmenskritisch“ im V-Kern-basierten Kaufmodell finden Sie unter Diensttarife [Universell](sql-database-service-tier-general-purpose.md) und [Unternehmenskritisch](sql-database-service-tier-business-critical.md). Einen Vergleich zwischen V-Kern-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-service-tiers.md).
 > [!IMPORTANT]
-> Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif „Hyperscale“ zu aktualisieren.
+> Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif Hyperscale zu aktualisieren.
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>Welche Funktionen bietet Hyperscale?
 
@@ -118,7 +123,7 @@ GO
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrieren vorhandener Azure SQL-Datenbank-Instanzen zum Diensttarif „Hyperscale“
 
-Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) zu „Hyperscale“ verschieben. In der öffentlichen Vorschau erfolgt dies im Rahmen einer unidirektionalen Migration. Datenbanken können nicht von „Hyperscale“ zu einem anderen Diensttarif migriert werden. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration zu „Hyperscale“ durchzuführen.
+Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) zu „Hyperscale“ verschieben. In der öffentlichen Vorschau erfolgt dies im Rahmen einer unidirektionalen Migration. Datenbanken können nicht von Hyperscale zu einem anderen Diensttarif migriert werden. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration zu Hyperscale durchzuführen.
 
 Mit dem folgenden T-SQL-Befehl wird eine Datenbank in den Diensttarif „Hyperscale“ verschoben. Sie müssen sowohl die Edition als auch das Dienstziel in der `ALTER DATABASE`-Anweisung angeben.
 
@@ -142,11 +147,11 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="available-regions"></a>Verfügbare Regionen
 
-Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau und ist in folgenden Azure-Regionen verfügbar: EastUS1, EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
+Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau und ist in den folgenden Azure-Regionen verfügbar: EastUS1, EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-| Problem | Beschreibung |
+| Problem | BESCHREIBUNG |
 | :---- | :--------- |
 | Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert->  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zum Diensttarif „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|

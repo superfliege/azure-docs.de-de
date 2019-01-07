@@ -1,30 +1,26 @@
 ---
-title: Verwenden von Azure DNS für private Domänen | Microsoft-Dokumentation
+title: Verwenden von Azure DNS für private Domänen
 description: Übersicht über den privaten DNS-Hostingdienst in Microsoft Azure.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 012/5/2018
 ms.author: victorh
-ms.openlocfilehash: 2ab7070a4cf46dae543af8d3e1d688e12ec1eb2a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4d817e71cffd782bdcfdfb91492dbd5d08fb8479
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173641"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967094"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Verwenden von Azure DNS für private Domänen
-Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Dienstnamens in die IP-Adresse verantwortlich. Als Hostingdienst für DNS-Domänen bietet Azure DNS eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur. Zusätzlich zu DNS-Domänen mit Internetverbindung unterstützt Azure DNS als Vorschaufeature jetzt auch private DNS-Domänen. 
- 
+
+Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Dienstnamens in die IP-Adresse verantwortlich. Als Hostingdienst für DNS-Domänen bietet Azure DNS eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur. Zusätzlich zu DNS-Domänen mit Internetverbindung unterstützt Azure DNS als Vorschaufeature jetzt auch private DNS-Domänen.
+
 Azure DNS bietet einen zuverlässigen, sicheren DNS-Dienst zum Verwalten und Auflösen von Domänennamen in einem virtuellen Netzwerk, ohne dass Sie eine benutzerdefinierte DNS-Lösung hinzufügen müssen. Durch die Verwendung privater DNS-Zonen können Sie anstelle der momentan verfügbaren von Azure bereitgestellten Namen Ihre eigenen benutzerdefinierten Domänennamen verwenden. Die Verwendung benutzerdefinierter Domänennamen erleichtert Ihnen die optimale Anpassung der Architektur Ihres virtuellen Netzwerks an die Anforderungen Ihres Unternehmens. Es wird eine Namensauflösung für virtuelle Computer in einem virtuellen Netzwerk und zwischen virtuellen Netzwerken bereitgestellt. Darüber hinaus können Sie Zonennamen mit einer Split-Horizon-Ansicht konfigurieren, sodass eine private und eine öffentliche DNS-Zone den gleichen Namen verwenden können.
+
+Wenn Sie ein virtuelles Netzwerk für die Registrierung angeben, können die DNS-Einträge für die VMs aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Azure PowerShell und Azure CLI-APIs angezeigt oder abgerufen werden. Die VM-Einträge werden tatsächlich jedoch registriert und erfolgreich aufgelöst.
 
 ![Übersicht über DNS](./media/private-dns-overview/scenario.png)
 
@@ -46,22 +42,22 @@ Azure DNS bietet folgende Vorteile:
 
 * **Split-Horizon-DNS-Unterstützung**. Mit Azure DNS können Sie Zonen mit gleichem Namen erstellen, die innerhalb eines virtuellen Netzwerks und im öffentlichen Internet unterschiedlich aufgelöst werden. Ein typisches Szenario für Split-Horizon-DNS ist die Bereitstellung einer bestimmte Version eines Diensts für die Verwendung in Ihrem virtuellen Netzwerk .
 
-* **In allen Azure-Regionen verfügbar**. Das Azure DNS-Feature für private Zonen ist in allen Azure-Regionen in der öffentlichen Azure-Cloud verfügbar. 
-
+* **In allen Azure-Regionen verfügbar**. Das Azure DNS-Feature für private Zonen ist in allen Azure-Regionen in der öffentlichen Azure-Cloud verfügbar.
 
 ## <a name="capabilities"></a>Funktionen
 
 Azure DNS bietet die folgenden Funktionen:
- 
+
 * **Automatische Registrierung von virtuellen Computern aus einem einzelnen virtuellen Netzwerk, das einer privaten Zone als virtuelles Netzwerk für die Registrierung zugeordnet ist**. Die virtuellen Computer werden für die private Zone als A-Einträge registriert (hinzugefügt), die auf die zugehörigen privaten IP-Adressen verweisen. Beim Löschen eines virtuellen Computers in einem virtuellen Netzwerk für die Registrierung entfernt Azure automatisch auch den entsprechenden DNS-Eintrag aus der verknüpften privaten Zone. 
 
+  Standardmäßig fungiert ein virtuelles Netzwerk für die Registrierung insofern auch als virtuelles Netzwerk für die Auflösung, als dass die DNS-Auflösung für die Zone über jeden virtuellen Computer im virtuellen Netzwerk für die Registrierung funktioniert.
+
   > [!NOTE]
-  > Standardmäßig fungiert ein virtuelles Netzwerk für die Registrierung insofern auch als virtuelles Netzwerk für die Auflösung, als dass die DNS-Auflösung für die Zone über jeden virtuellen Computer im virtuellen Netzwerk für die Registrierung funktioniert. 
+  > Wenn Sie ein virtuelles Netzwerk für die Registrierung angeben, können die DNS-Einträge für die VMs aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Azure PowerShell und Azure CLI-APIs angezeigt oder abgerufen werden. Die VM-Einträge werden tatsächlich jedoch registriert und erfolgreich aufgelöst.
 
 * **Die Forward-DNS-Auflösung wird über virtuelle Netzwerke hinweg unterstützt, die mit der privaten Zone als virtuelles Netzwerk für die Auflösung verknüpft sind**. Für die DNS-Auflösung über virtuelle Netzwerke hinweg ist es nicht explizit erforderlich, ein Peering für die virtuellen Netzwerke zu konfigurieren. Möglicherweise möchten Kunden jedoch für andere Szenarien (z.B. HTTP-Datenverkehr) ein Peering für virtuelle Netzwerke einrichten.
 
-* **Reverse-DNS-Lookups werden innerhalb des Bereichs eines virtuellen Netzwerks unterstützt**. Bei einem Reverse-DNS-Lookup für eine private IP-Adresse im virtuellen Netzwerk, das einer privaten Zone zugewiesen ist, wird der FQDN zurückgegeben, der den Host-/Eintragsnamen sowie den Zonenname als Suffix enthält. 
-
+* **Reverse-DNS-Lookups werden innerhalb des Bereichs eines virtuellen Netzwerks unterstützt**. Bei einem Reverse-DNS-Lookup für eine private IP-Adresse im virtuellen Netzwerk, das einer privaten Zone zugewiesen ist, wird der FQDN zurückgegeben, der den Host-/Eintragsnamen sowie den Zonenname als Suffix enthält.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -71,19 +67,17 @@ Für Azure DNS gelten die folgenden Einschränkungen:
 * Für jede private Zone sind bis zu 10 virtuelle Netzwerke für die Auflösung zulässig.
 * Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten Zone als ein virtuelles Netzwerk für die Registrierung verknüpft werden.
 * Ein bestimmtes virtuelles Netzwerk kann mit bis zu 10 privaten Zonen als virtuelles Netzwerk für die Auflösung verknüpft werden.
-* Wenn ein virtuelles Netzwerk für die Registrierung angegeben wird, können die DNS-Einträge für die virtuellen Computer aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Azure PowerShell und Azure CLI-APIs angezeigt oder abgerufen werden. Die VM-Einträge werden tatsächlich jedoch registriert und erfolgreich aufgelöst.
+* Wenn Sie ein virtuelles Netzwerk für die Registrierung angeben, können die DNS-Einträge für die VMs aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Azure PowerShell und Azure CLI-APIs angezeigt oder abgerufen werden. Die VM-Einträge werden tatsächlich jedoch registriert und erfolgreich aufgelöst.
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im virtuellen Netzwerk für die Registrierung.
-* Ein Reverse-DNS-Lookup für eine private IP-Adresse, die nicht in der privaten Zone registriert ist (z.B. eine private IP-Adresse für eine VM in einem virtuellen Netzwerk, das als virtuelles Netzwerk für die Auflösung mit einer privaten Zone verknüpft ist), gibt *internal.cloudapp.net* als DNS-Suffix zurück. Dieses Suffix kann jedoch nicht aufgelöst werden. 
-* Das virtuelle Netzwerk muss leer sein (es darf keine VM-Einträge enthalten), wenn es anfänglich (also zum ersten Mal) mit einer privaten Zone als virtuelles Netzwerk für die Registrierung oder Auflösung verknüpft wird. Bei anschließenden Verknüpfungen mit anderen privaten Zonen als virtuelles Netzwerk für die Registrierung oder Auflösung ist es nicht erforderlich, dass das virtuelle Netzwerk leer ist. 
+* Ein Reverse-DNS-Lookup für eine private IP-Adresse, die nicht in der privaten Zone registriert ist (z.B. eine private IP-Adresse für eine VM in einem virtuellen Netzwerk, das als virtuelles Netzwerk für die Auflösung mit einer privaten Zone verknüpft ist), gibt *internal.cloudapp.net* als DNS-Suffix zurück. Dieses Suffix kann jedoch nicht aufgelöst werden.
+* Das virtuelle Netzwerk muss leer sein (es darf keine VM-Einträge enthalten), wenn es anfänglich (also zum ersten Mal) mit einer privaten Zone als virtuelles Netzwerk für die Registrierung oder Auflösung verknüpft wird. Bei anschließenden Verknüpfungen mit anderen privaten Zonen als virtuelles Netzwerk für die Registrierung oder Auflösung ist es nicht erforderlich, dass das virtuelle Netzwerk leer ist.
 * Derzeit wird die bedingte Weiterleitung nicht unterstützt (z.B. zum Aktivieren der Auflösung zwischen Azure und lokalen Netzwerken). Informationen dazu, wie Kunden dieses Szenario mithilfe anderer Mechanismen umsetzen können, finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 Allgemeine Fragen und Antworten zu privaten Zonen in Azure DNS, einschließlich des spezifischen DNS-Registrierungs- und -Auflösungsverhaltens, finden Sie im Dokument [Häufig gestellte Fragen](./dns-faq.md#private-dns).  
 
-
 ## <a name="pricing"></a>Preise
 
 Das Feature für private DNS-Zonen ist während der öffentlichen Vorschau kostenlos. Bei allgemeiner Verfügbarkeit gilt für dieses Feature ein nutzungsbasiertes Preismodell, das dem vorhandenen Azure DNS-Angebot ähnelt. 
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -95,5 +89,4 @@ Allgemeine Fragen und Antworten zu privaten Zonen in Azure DNS, einschließlich 
 
 Weitere Informationen zu DNS-Zonen und -Einträgen finden Sie unter [Übersicht über DNS-Zonen und -Einträge](dns-zones-records.md).
 
-Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure. 
-
+Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.

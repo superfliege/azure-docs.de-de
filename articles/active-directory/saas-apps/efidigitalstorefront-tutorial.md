@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 6959521b0f700a0afafef0950e9cb336488cc94b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7df615caf3ca1b8ca7dd7d4da876c840e20defd8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425305"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Tutorial: Azure Active Directory-Integration mit EFI Digital StoreFront
 
@@ -118,14 +118,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Downloadlink für das Zertifikat](./media/efidigitalstorefront-tutorial/tutorial_efidigital_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/efidigitalstorefront-tutorial/tutorial_general_400.png)
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **EFI Digital StoreFront** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [EFI Digital StoreFront-Supportteam](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **EFI Digital StoreFront** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [EFI Digital StoreFront-Supportteam](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -158,11 +158,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="create-a-efi-digital-storefront-test-user"></a>Erstellen eines EFI Digital StoreFront-Testbenutzers
 
-In diesem Abschnitt erstellen Sie eine Benutzerin mit dem Namen „Britta Simon“ in EFI Digital StoreFront. Arbeiten Sie mit dem [EFI Digital StoreFront-Supportteam](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) zusammen, um die Benutzer auf der EFI Digital StoreFront-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie eine Benutzerin mit dem Namen „Britta Simon“ in EFI Digital StoreFront. Arbeiten Sie mit dem  [EFI Digital StoreFront-Supportteam](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/)  zusammen, um die Benutzer auf der EFI Digital StoreFront-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

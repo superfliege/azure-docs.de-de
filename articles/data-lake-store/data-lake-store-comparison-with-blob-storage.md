@@ -12,15 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d24a268cf389dfe9dec914b2d27bbe8e466ea675
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a6272f0a6da10075db299d0f8c87f0d748a7a946
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737191"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996478"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Vergleich von Azure Data Lake Storage Gen1 und Azure Blob Storage
+  >[!NOTE] 
+    >[Azure Data Lake Storage Gen2 (Vorschau)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) wurde vor kurzem angekündigt. Data Lake Storage Gen2 (Vorschau) führt die Funktionen unserer beiden vorhandenen Speicherdienste Azure Blob Storage und [Azure Data Lake Storage Gen1] (https://docs.microsoft.com/azure/data-lake-store/index) zusammen. Features von Azure Data Lake Storage Gen1, z.B. Dateisystemsemantik, Sicherheit und Skalierbarkeit auf Dateiebene, werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) kombiniert. <br> Es wird dringend empfohlen, die Vorschauversion von Data Lake Storage Gen2 ab sofort als Grundlage für die Erstellung der Data Lakes Ihres Unternehmens zu verwenden. Auf diese Weise können Sie sowohl Azure Blob Storage als auch Azure Data Lake Storage Gen1 optimal nutzen.
+
 In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lake Storage Gen1 und Azure Blob Storage zusammengefasst und einige wichtige Aspekte der Big Data-Verarbeitung aufgezeigt. Azure Blob Storage ist ein universell einsetzbarer und skalierbarer Objektspeicher, der auf eine Vielzahl von Speicherszenarien ausgelegt ist. Azure Data Lake Storage Gen1 ist ein hochgradig skalierbares Repository, das für Big Data-Analyseworkloads optimiert ist.
+
+
+
+
 
 |  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | --- | --- | --- |

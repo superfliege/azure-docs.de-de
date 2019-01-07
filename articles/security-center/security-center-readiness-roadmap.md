@@ -3,7 +3,7 @@ title: Roadmap für Azure Security Center-Bereitschaft | Microsoft-Dokumentation
 description: Dieses Dokument enthält eine Roadmap für die Bereitschaft zur Nutzung von Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: ndicola
 editor: ''
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 099d3fcac5d7574f744ab1bb00dd636b8d867fa9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 56d18b7ec44e979bee48c3598286a461199e1005
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408440"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958200"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
 Dieses Dokument enthält eine Roadmap für die Bereitschaft, die Ihnen als Hilfe bei den ersten Schritten mit Azure Security Center dient.
@@ -107,7 +107,7 @@ Artikel
 
 * [Praktische Übungen zu Security Center](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Web Application Firewall (WAF) recommendation playbook in Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff) (Playbook zu Web Application Firewall (WAF) mit Empfehlungen zu Security Center)
-* [Azure Security Center Playbook: Security Alerts](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046) (Azure Security Center-Playbook: Sicherheitswarnungen)
+* [Azure Security Center-Playbook: Sicherheitswarnungen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Seite mit der Security Center-Dokumentation](https://docs.microsoft.com/azure/security-center/)

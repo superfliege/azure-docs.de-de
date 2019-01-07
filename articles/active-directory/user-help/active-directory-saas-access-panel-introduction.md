@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: d9ed140d404387b94428cea5d925911806b62552
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705854"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834705"
 ---
 # <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
 
@@ -41,9 +41,9 @@ Das Portal „Meine Apps“ ist vom Azure-Portal getrennt. Er kann auch ohne Azu
 
 ## <a name="access-the-myapps-portal"></a>Zugreifen auf das Portal „Meine Apps“
 
-Auf das Portal „Meine Apps“ können Sie unter `http://myapps.microsoft.com` zugreifen.
+Auf das Portal „Meine Apps“ können Sie unter `https://myapps.microsoft.com` zugreifen.
 
-Wenn Sie benutzerdefiniertes Branding für Ihre Anmeldeseite konfiguriert haben, können Sie das Branding laden, indem Sie die Domäne Ihrer Organisation an die URL anhängen (Beispiel: `http://myapps.microsoft.com/<your domain>.com`).
+Wenn Sie benutzerdefiniertes Branding für Ihre Anmeldeseite konfiguriert haben, können Sie das Branding laden, indem Sie die Domäne Ihrer Organisation an die URL anhängen (Beispiel: `https://myapps.microsoft.com/<your domain>.com`).
 
 Sie können jeden aktiven oder überprüften Domänennamen verwenden, der in Ihrem Azure-Portal konfiguriert wurde, wie hier zu sehen: ![Wingtip Toys-Domänenname][2]  
 

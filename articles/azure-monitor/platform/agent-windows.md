@@ -1,5 +1,5 @@
 ---
-title: Verbinden von Windows-Computern mit Azure Log Analytics | Microsoft Docs
+title: Verbinden von Windows-Computern mit Azure Log Analytics | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Windows-Computer, die in anderen Clouds oder lokal gehostet werden, über den Microsoft Monitoring Agent (MMA) mit Log Analytics verbunden werden können.
 services: log-analytics
 documentationcenter: ''
@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 7474d76537111ebc9f34bb2632a899b7ceb4e50a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 1c90c85f667e18a80c4673a73867ee2d6b3b6294
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638195"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189896"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure
 
@@ -49,7 +47,7 @@ Vor der Installation von Microsoft Monitoring Agent für Windows benötigen Sie 
 ## <a name="configure-agent-to-use-tls-12"></a>Konfigurieren des Agents für die Verwendung von TLS 1.2
 Um die Verwendung des Protokolls [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) für die Kommunikation zwischen dem Windows-Agent und dem Log Analytics-Dienst zu konfigurieren, können Sie die folgenden Schritte ausführen, um die Aktivierung vor der Installation des Agents auf dem virtuellen Computer oder danach durchzuführen.   
 
-1. Suchen Sie den folgenden Registrierungsunterschlüssel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
+1. Suchen Sie nach dem folgenden Registrierungsschlüssel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Erstellen Sie einen Unterschlüssel unter **Protokolle** für TLS 1.2 **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
 3. Erstellen Sie einen Unterschlüssel **Client** unter dem Versionsunterschlüssel des TLS 1.2-Protokolls, den Sie zuvor erstellt haben. Beispiel: **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
 4. Erstellen Sie die folgenden DWORD-Werte unter **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1. 2\Client**:
@@ -59,9 +57,9 @@ Um die Verwendung des Protokolls [TLS 1.2](https://docs.microsoft.com/windows-se
 
 Konfigurieren Sie .NET Framework 4.6 oder höher, um sichere Kryptografie zu unterstützen, da diese standardmäßig deaktiviert ist. Die [sicherere Kryptografie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) verwendet sicherere Netzwerkprotokolle wie TLS 1.2 und blockiert Protokolle, die nicht sicher sind. 
 
-1. Suchen Sie den folgenden Registrierungsunterschlüssel: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Suchen Sie nach dem folgenden Registrierungsschlüssel: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
 2. Erstellen Sie den DWORD-Wert **SchUseStrongCrypto** unter diesem Unterschlüssel mit einem Wert von **1**.  
-3. Suchen Sie den folgenden Registrierungsunterschlüssel: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
+3. Suchen Sie nach dem folgenden Registrierungsschlüssel: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
 4. Erstellen Sie den DWORD-Wert **SchUseStrongCrypto** unter diesem Unterschlüssel mit einem Wert von **1**. 
 5. Starten Sie das System neu, damit die Einstellungen wirksam werden. 
 
@@ -180,7 +178,7 @@ Den Produktcode können Sie mithilfe von „Orca.exe“ aus [Windows SDK Compone
 
 Nachdem die Installation des Agents abgeschlossen ist, kann auf zwei Arten überprüft werden, ob er verbunden ist und Berichte übermittelt.  
 
-Suchen Sie auf dem Computer in der **Systemsteuerung** das Element **Microsoft Monitoring Agent**.  Wählen Sie das Element aus. Auf der Registerkarte **Azure Log Analytics** sollte für den Agent die folgende Meldung angezeigt werden: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service.** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt.)<br><br> ![MMA-Verbindungsstatus mit Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+Suchen Sie auf dem Computer in der **Systemsteuerung** das Element **Microsoft Monitoring Agent**.  Wählen Sie das Element aus. Der Agent sollte auf der Registerkarte **Azure Log Analytics** eine Meldung wie die folgende anzeigen: **Der Microsoft Monitoring Agent hat erfolgreich eine Verbindung mit dem Microsoft Operations Management Suite-Dienst hergestellt.**<br><br> ![MMA-Verbindungsstatus mit Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Außerdem können Sie eine einfache Protokollsuche im Azure-Portal durchführen.  
 

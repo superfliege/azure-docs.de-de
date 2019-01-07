@@ -3,7 +3,7 @@ title: Erstellen und Verwalten von Pools für elastische Datenbanken – Azure S
 description: Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/29/2018
-ms.openlocfilehash: acf17533ee73313937c2edb9badaef9007309373
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243094"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865878"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -60,7 +60,7 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken 
 > [!TIP]
 > Das Erstellen zahlreicher Datenbanken in einem Pool für elastische Datenbanken kann eine Weile dauern, wenn dies über das Portal oder über PowerShell-Cmdlets erfolgt, die jeweils nur eine Einzeldatenbank erstellen. Informationen zum Automatisieren der Erstellung in einem Pool für elastische Datenbanken finden Sie unter [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
 
-## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure CLI: Verwalten von Pools für elastische Datenbanken und von in einem Pool zusammengefassten Datenbanken
+## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure-Befehlszeilenschnittstelle: Verwalten von Pools für elastische Datenbanken und von in einem Pool zusammengefassten Datenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenbank-Instanzen mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows.
 

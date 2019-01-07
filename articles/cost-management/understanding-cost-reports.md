@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: b4e1ffa0b7bd524fc9029b21e77b09ea07e1f202
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276651"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103420"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Grundlegendes zu Cloudyn-Kostenverwaltungsberichten
 
@@ -25,7 +25,7 @@ In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den 
 
 Hier sehen Sie ein Beispiel für den Bericht für die Kosten im Lauf der Zeit, Die meisten Cloudyn-Berichte sind ähnlich aufgebaut.
 
-![Beispielbericht](./media/understanding-cost-reports/sample-report.png)
+![Beispiel für den Bericht „Kosten im Zeitverlauf“ mit nummerierten Bereichen entsprechend den Beschreibungen](./media/understanding-cost-reports/sample-report.png)
 
 Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Informationen im Detail beschrieben:
 
@@ -47,11 +47,11 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
 
     Verwenden Sie den Bereich „Tags“, um nach Tag-Kategorien zu gruppieren. Bei den Tags im Menü handelt es sich um Tags für Azure-Abteilungen oder -Kostenstellen oder um die Entitäts- und Abonnement-Tags von Cloudyn. Wählen Sie Tags zum Filtern von Ergebnissen aus. Sie können auch einen Tag-Namen (Schlüsselwort) eingeben, um Ergebnisse zu filtern.
 
-    ![Optionen auswählen](./media/understanding-cost-reports/select-options.png)
+    ![Beispiel für eine Liste von Tags zum Filtern von Ergebnissen](./media/understanding-cost-reports/select-options.png)
 
     Klicken Sie auf **Hinzufügen**, um einen neuen Filter hinzuzufügen.
 
-    ![Filter hinzufügen](./media/understanding-cost-reports/add-filter.png)
+    ![Hinzufügen des Filterfelds mit Optionen und Bedingungen, nach denen gefiltert wird](./media/understanding-cost-reports/add-filter.png)
 
     Das Gruppieren oder Filtern bezieht sich nicht auf Azure-Ressourcen oder Ressourcengruppen-Tags.
 
@@ -61,9 +61,9 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
 
     Verwenden Sie Gruppen in Kostenanalyseberichten, um Standardkategorien aus Abrechnungsdaten in Ihrem Bericht einzeln aufzuführen.  Gruppen in Kostenzuteilungsberichten zeigen jedoch Tag-basierte Kategorien an. Tag-basierte Kategorien werden im Kostenzuteilungsmodell und in aufgeschlüsselten Standardkategorien aus Abrechnungsdaten definiert.
 
-    ![Gruppen-Tags](./media/understanding-cost-reports/groups-tags01.png)
+    ![Erste Beispielliste von Tags, nach denen Sie gruppieren können](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Gruppen-Tags](./media/understanding-cost-reports/groups-tags02.png)
+    ![Zweite Beispielliste von Tags, nach denen Sie gruppieren können](./media/understanding-cost-reports/groups-tags02.png)
 
     In Kostenzuteilungsberichten können Gruppen in Tag-basierten Gruppenkategorien Folgendes umfassen:
       - Tags
@@ -166,7 +166,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
 
     Verwenden Sie „Anzeigeformate“, um verschiedene Diagramm- oder Tabellenansichten auszuwählen.
 
-    ![Anzeigeformate](./media/understanding-cost-reports/display-formats.png)
+    ![Symbole der Anzeigeformate, die Sie auswählen können](./media/understanding-cost-reports/display-formats.png)
 
 13. **Mehrfarbig**
 

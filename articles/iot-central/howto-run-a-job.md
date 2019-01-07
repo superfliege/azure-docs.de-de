@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 35db7bf87c7b72fc31d820c9058b1df8415bd553
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031304"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724501"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung
 
@@ -54,10 +54,15 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen
 
 ### <a name="stop-a-running-job"></a>Beenden eines ausgeführten Auftrags
 
-Wenn Sie einen derzeit ausgeführten Auftrag beenden möchten, klicken Sie auf den Namen des ausgeführten Auftrags, den Sie beenden möchten. Klicken Sie in dem Bereich auf die Schaltfläche **Beenden**. Wie Sie sehen, hat sich der Auftragsstatus geändert und zeigt nun an, dass der Auftrag beendet wurde.
+Wenn Sie einen derzeit ausgeführten Auftrag beenden möchten, klicken Sie auf den Namen des ausgeführten Auftrags, den Sie beenden möchten. Klicken Sie im Panel auf die Schaltfläche **Beenden**. Wie Sie sehen, hat sich der Auftragsstatus geändert und zeigt nun an, dass der Auftrag beendet wurde.
 
-> [!NOTE]
-> Ein Auftrag, der beendet wurde, kann nicht neu gestartet werden. In dem Fall müssen Sie einen neuen Auftrag mit den gewünschten Vorgängen und Geräten erstellen.
+   ![Auftrag beenden](./media/howto-run-a-job/stopjob.png)
+
+### <a name="run-a-stopped-job"></a>Ausführen eines angehaltenen Auftrags
+
+Wenn Sie einen Auftrag ausführen möchten, der zurzeit angehalten ist, klicken Sie auf den Namen des angehaltenen Auftrags, den Sie ausführen möchten. Klicken Sie im Panel auf die Schaltfläche **Beenden**. Wie Sie sehen, hat sich der Auftragsstatus geändert und zeigt nun an, dass der Auftrag jetzt ausgeführt wird.
+
+   ![Fortgesetzter Auftrag](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="view-the-job-status"></a>Anzeigen des Auftragsstatus
 

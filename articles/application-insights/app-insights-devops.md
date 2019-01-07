@@ -9,16 +9,15 @@ ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 521bf044f280b91f668d42d760ba2a726b555f12
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf096032d0ab429a5c6c06d5ada568c4bfb56d9f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822669"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994414"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Eingehende Diagnose für Web-Apps und Dienste mit Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Wofür benötigen Sie Application Insights?
@@ -80,7 +79,7 @@ Die Daten lassen sich in folgende Hauptkategorien unterteilen:
 * Protokollablaufverfolgungen, die zum Debuggen verwendet werden.
 
 ## <a name="case-study-real-madrid-fc"></a>Fallstudie: Real Madrid CF
-Der Webdienst von [Real Madrid](http://www.realmadrid.com/) wird von 450 Millionen Fans auf der ganzen Welt genutzt. Fans greifen sowohl über Webbrowser als auch über die mobilen Apps des Vereins darauf zu. Sie können dort nicht nur Eintrittskarten kaufen, sondern auch auf Informationen und Videoclips zu Ergebnissen, Spielern und den nächsten Begegnungen zugreifen. Sie können mithilfe von Filtern z.B. nach der Anzahl der erzielten Tore suchen. Es gibt auch Links zu sozialen Medien. Das Benutzererlebnis ist hochgradig personalisiert und als bidirektionale Kommunikation gestaltet, um die Fans einzubeziehen.
+Der Webdienst von [Real Madrid](https://www.realmadrid.com/) wird von 450 Millionen Fans auf der ganzen Welt genutzt. Fans greifen sowohl über Webbrowser als auch über die mobilen Apps des Vereins darauf zu. Sie können dort nicht nur Eintrittskarten kaufen, sondern auch auf Informationen und Videoclips zu Ergebnissen, Spielern und den nächsten Begegnungen zugreifen. Sie können mithilfe von Filtern z.B. nach der Anzahl der erzielten Tore suchen. Es gibt auch Links zu sozialen Medien. Das Benutzererlebnis ist hochgradig personalisiert und als bidirektionale Kommunikation gestaltet, um die Fans einzubeziehen.
 
 Die Lösung [ist ein System aus Diensten und Anwendungen in Microsoft Azure](https://www.microsoft.com/inculture/sports/real-madrid/). Skalierbarkeit ist eine wesentliche Voraussetzung: Der Datenverkehr variiert und kann vor, während und nach Spielen sehr hohe Volumen erreichen.
 

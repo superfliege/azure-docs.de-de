@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: be3950d199b4362caa5fcd3f66b948802cfa1c49
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622039"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877475"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache)
 In diesem Tutorial wird erläutert, wie Sie mithilfe von Gruppenrichtlinien die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer installieren. Diese Erweiterung ist für Benutzer von Internet Explorer erforderlich, die sich bei Apps anmelden müssen, die mit der [kennwortbasierten einmaligen Anmeldung](what-is-single-sign-on.md#password-based-sso)konfiguriert wurden.
@@ -31,7 +31,7 @@ Die Zugriffsbereichserweiterung ist auch für [Chrome](https://go.microsoft.com/
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Sie haben [Active Directory-Domänendienste](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)eingerichtet und die Computer Ihrer Benutzer Ihrer Domäne hinzugefügt.
-* Zum Bearbeiten des Gruppenrichtlinienobjekts benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer. [Weitere Informationen.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* Zum Bearbeiten des Gruppenrichtlinienobjekts benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Ersteller/Besitzer von Gruppenrichtlinien. [Weitere Informationen.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>Schritt 1: Erstellen des Verteilungspunkts
 Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ablegen, auf den über die Computer zugegriffen werden kann, auf denen Sie die Erweiterung per Remotezugriff installieren möchten. Gehen Sie dazu folgendermaßen vor:
@@ -44,7 +44,7 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
    
     ![Dateien und Speicherdienste öffnen](./media/deploy-access-panel-browser-extension/shares.png)
 4. Schließen Sie den **Assistenten für neue Freigaben** , und legen Sie Berechtigungen fest, um sicherzustellen, dass von den Computern Ihrer Benutzer aus darauf zugegriffen werden kann. [Weitere Informationen zu Freigaben](https://technet.microsoft.com/library/cc753175.aspx)
-5. Laden Sie das folgende Microsoft Windows Installer-Paket (MSI-Datei) herunter: [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi).
+5. Laden Sie das folgende Microsoft Windows Installer-Paket (MSI-Datei) herunter: [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. Kopieren Sie das Installationspaket an den gewünschten Speicherort auf der Freigabe.
    
     ![Kopieren Sie die MSI-Datei in die Freigabe.](./media/deploy-access-panel-browser-extension/copy-package.png)
@@ -54,7 +54,7 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
 1. Melden Sie sich bei dem Server mit den Active Directory-Domänendiensten (Active Directory Domain Services, AD DS) an.
 2. Navigieren Sie im Server-Manager zu **Extras** > **Gruppenrichtlinienverwaltung**.
    
-    ![Klicken Sie auf „Extras“ > „Gruppenrichtlinienverwaltung“.](./media/deploy-access-panel-browser-extension/tools-gpm.png)
+    ![Navigieren Sie zu „Tools“ > „Gruppenrichtlinienverwaltung“.](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 3. Zeigen Sie im linken Bereich des Fensters **Gruppenrichtlinienverwaltung** die Hierarchie Ihrer Organisationseinheiten (OE) an, und legen Sie fest, in welchem Umfang die Gruppenrichtlinie angewendet werden soll. Sie können beispielsweise eine kleine Organisationseinheit auswählen, die einigen wenigen Benutzern zu Testzwecken bereitgestellt wird, oder eine Organisationseinheit der obersten Ebene festlegen, die im gesamten Unternehmen bereitgestellt wird.
    
    > [!NOTE]
@@ -80,7 +80,7 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
 3. Klicken Sie mit der rechten Maustaste auf **Softwareinstallation**, und wählen Sie dann **Neu** > **Paket** aus.
    
     ![Neues Paket für die Softwareinstallation erstellen](./media/deploy-access-panel-browser-extension/new-package.png)
-4. Klicken Sie auf den freigegebenen Ordner mit dem Installationspaket aus [Schritt 1: Erstellen des Verteilungspunkts](#step-1-create-the-distribution-point), markieren Sie die MSI-Datei, und klicken Sie auf **Öffnen**.
+4. Wechseln Sie zum freigegebenen Ordner, der das Installerpaket aus [Schritt 1: Erstellen des Verteilungspunkts](#step-1-create-the-distribution-point) enthält, wählen Sie die MSI-Datei aus, und klicken Sie auf **Öffnen**.
    
    > [!IMPORTANT]
    > Wenn sich die Freigabe auf demselben Server befindet, vergewissern Sie sich, dass Sie nicht über den lokalen Dateipfad, sondern über den Netzwerkdateipfad auf die MSI-Datei zugreifen.
@@ -97,7 +97,7 @@ Die Erweiterung wird nun für die ausgewählte Organisationseinheit bereitgestel
 ## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Schritt 4: Automatisches Aktivieren der Erweiterung für Internet Explorer
 Zusätzlich zur Ausführung des Installationsprogramms muss jede Erweiterung für Internet Explorer vor ihrer Verwendung explizit aktiviert werden. Gehen Sie folgendermaßen vor, um die Zugriffsbereichserweiterung mithilfe von Gruppenrichtlinien zu aktivieren:
 
-1. Navigieren Sie abhängig vom Konfigurationstyp, den Sie in **Schritt 3: Zuweisen des Installationspakets** gewählt haben, im linken Bereich des Fensters [Gruppenrichtlinienverwaltungs-Editor](#step-3-assign-the-installation-package)zu einem der folgenden Speicherorte:
+1. Navigieren Sie im Fenster **Gruppenrichtlinienverwaltungs-Editor** zu einem der folgenden Ordnerpfade, je nachdem, welchen Konfigurationstyp Sie in [Schritt 3: Zuweisen des Installationspakets](#step-3-assign-the-installation-package) ausgewählt haben:
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
@@ -117,7 +117,7 @@ Zusätzlich zur Ausführung des Installationsprogramms muss jede Erweiterung fü
 
 Die Erweiterung sollte jetzt für die Computer in der ausgewählten Organisationseinheit aktiviert sein. [Erfahren Sie mehr über die Verwendung von Gruppenrichtlinien zum Aktivieren oder Deaktivieren von Add-Ons für Internet Explorer.](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>Schritt 5 (optional): Deaktivieren der Frage nach der Kennwortspeicherung
+## <a name="step-5-optional-disable-remember-password-prompt"></a>Schritt 5 (Optional): Deaktivieren der Frage nach der Kennwortspeicherung
 Wenn sich Benutzer unter Verwendung der Zugriffsbereichserweiterung bei Websites anmelden, kann Internet Explorer fragen, ob der Benutzer sein Kennwort speichern möchte.
 
 ![Kennwortaufforderung](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
@@ -148,10 +148,10 @@ Daraufhin können Benutzer ihre Anmeldeinformationen nicht mehr speichern oder m
 > 
 > 
 
-## <a name="step-6-testing-the-deployment"></a>Schritt 6: Testen der Bereitstellung
+## <a name="step-6-testing-the-deployment"></a>Schritt 6: Testen der Bereitstellung
 Gehen Sie folgendermaßen vor, um zu überprüfen, ob die Erweiterungsbereitstellung erfolgreich war:
 
-1. Wenn Sie für die Bereitstellung die Option **Computerkonfiguration**verwendet haben, melden Sie sich bei einem Clientcomputer an, der zu der in [Schritt 2: Erstellen des Gruppenrichtlinienobjekts](#step-2-create-the-group-policy-object)ausgewählten Organisationseinheit gehört. Falls die Bereitstellung mit **Benutzerkonfiguration**erfolgt ist, melden Sie sich als Benutzer an, der zu dieser Organisationseinheit gehört.
+1. Wenn Sie für die Bereitstellung die Option **Computerkonfiguration**verwendet haben, melden Sie sich bei einem Clientcomputer an, der zu der in [Schritt 2: Erstellen des Gruppenrichtlinienobjekts](#step-2-create-the-group-policy-object) ausgewählten Organisationseinheit gehört. Falls die Bereitstellung mit **Benutzerkonfiguration**erfolgt ist, melden Sie sich als Benutzer an, der zu dieser Organisationseinheit gehört.
 2. Möglicherweise werden die Gruppenrichtlinienänderungen auf dem Computer erst durch mehrmaliges Anmelden vollständig aktualisiert. Öffnen Sie zum Erzwingen der Aktualisierung ein Fenster für die **Eingabeaufforderung**, und führen Sie den folgenden Befehl aus: `gpupdate /force`.
 3. Der Computer muss neu gestartet werden, damit die Installation ausgeführt werden kann. Das Starten kann während der Installation der Erweiterung erheblich länger dauern als gewöhnlich.
 4. Öffnen Sie nach dem Neustart **Internet Explorer**. Klicken Sie in der rechten oberen Ecke des Fensters auf **Extras** (das Zahnradsymbol), und wählen Sie dann **Add-Ons verwalten** aus.

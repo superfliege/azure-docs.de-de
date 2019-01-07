@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f56e15e12bc176e6b6837e144494599ea4fb5403
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282531"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887836"
 ---
 # <a name="add-a-popup-to-the-map"></a>Hinzufügen eines Popupfensters zu der Karte
 
@@ -37,20 +37,32 @@ Der vierte Codeblock erstellt ein [Popupobjekt](https://docs.microsoft.com/javas
 
 Mit dem letzten Codeblock wird eine Funktion erstellt, die mit dem `mouseover`-Ereignislistener ausgelöst wird. Damit werden der Inhalt und die Eigenschaften des Popupfensters festgelegt, und das Popupobjekt wird der Karte hinzugefügt.
 
+## <a name="reusing-a-popup-with-multiple-points"></a>Wiederverwenden eines Popups für mehrere Punkte
+
+Wenn Sie viele Punkte verwenden und immer nur ein Popup anzeigen möchten, sollten Sie am besten ein Popup erstellen und wiederverwenden, anstatt für jedes Punktfeature ein Popup zu erstellen. Auf diese Weise wird die Anzahl der von der Anwendung erstellten DOM-Elemente erheblich reduziert, wodurch eine bessere Leistung erzielt werden kann. In diesem Beispiel werden drei Punktfeatures erstellt. Wenn Sie auf eines davon klicken, wird ein Popup mit dem Inhalt für dieses Punktfeature angezeigt.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Wiederverwenden eines Popups für mehrere Stecknadeln' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Informationen hierzu finden Sie unter <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a> (Wiederverwenden eines Popups mit mehreren Stecknadeln) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
 Die folgenden interessanten Artikel enthalten vollständige Codebeispiele:
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer Form](./map-add-shape.md)
+> [Hinzufügen einer Symbolebene](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von benutzerdefinierter HTML](./map-add-custom-html.md)
+> [Hinzufügen eines HTML-Markers](./map-add-custom-html.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Form](./map-add-shape.md)

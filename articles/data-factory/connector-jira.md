@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f0bd0a57aff9767c78be63fc918b8689f7b06514
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 61b331c330da5e2083a7a029e3f3137e6d4a1aab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122704"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077833"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopieren von Daten aus Jira mithilfe von Azure Data Factory (Vorschauversion)
 
@@ -45,7 +45,7 @@ Folgende Eigenschaften werden für den mit Jira verknüpften Dienst unterstützt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Jira** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Jira** | JA |
 | host | IP-Adresse oder Hostname des Jira-Diensts. (jira.example.com)  | JA |
 | port | Der TCP-Port, den der Jira-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 443 bei einer Verbindung über HTTPS oder 8080 bei einer Verbindung über HTTP.  | Nein  |
 | username | Der Benutzername für den Zugriff auf den Jira Service.  | JA |
@@ -78,7 +78,12 @@ Folgende Eigenschaften werden für den mit Jira verknüpften Dienst unterstützt
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Jira-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Jira die „type“-Eigenschaft des Datasets auf **JiraObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Jira die „type“-Eigenschaft des Datasets auf **JiraObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **JiraObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -90,7 +95,8 @@ Legen Sie zum Kopieren von Daten aus Jira die „type“-Eigenschaft des Dataset
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -105,8 +111,8 @@ Legen Sie zum Kopieren von Daten aus Jira den Quelltyp in der Kopieraktivität a
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **JiraSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **JiraSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

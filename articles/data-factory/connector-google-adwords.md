@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 402d4fb0c1eb7c6760f800bdd408e9a4d8161ccc
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2a17bca6f7b95850f84781b5838719617d45bdd2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096074"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077816"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Kopieren von Daten aus Google AdWords mithilfe von Azure Data Factory (Vorschauversion)
 
@@ -45,10 +45,10 @@ Folgende Eigenschaften werden für den mit Google AdWords verknüpften Dienst un
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **GoogleAdWords** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **GoogleAdWords** | JA |
 | clientCustomerID | Die Clientkunden-ID des AdWords-Kontos, für das Sie Berichtsdaten abrufen möchten.  | JA |
 | developerToken | Das Entwicklertoken, das dem Managerkonto, mit dem Sie den Zugriff auf die AdWords-API gewähren möchten, zugeordnet ist.  Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | JA |
-| authenticationType | Der OAuth 2.0-Authentifizierungsmechanismus, der für die Authentifizierung verwendet wird. „ServiceAuthentication“ kann nur für eine selbstgehostete IR verwendet werden. <br/>Zulässige Werte: **ServiceAuthentication**, **UserAuthentication** | JA |
+| authenticationType | Der OAuth 2.0-Authentifizierungsmechanismus, der für die Authentifizierung verwendet wird. „ServiceAuthentication“ kann nur für eine selbstgehostete IR verwendet werden. <br/>Zulässige Werte sind: **ServiceAuthentication**, **UserAuthentication** | JA |
 | refreshToken | Das Aktualisierungstoken, das von Google zum Autorisieren des Zugriffs auf AdWords für UserAuthentication abgerufen wird. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Nein  |
 | clientId | Die Client-ID der Google-Anwendung, die zum Abrufen des Aktualisierungstokens verwendet wird. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Nein  |
 | clientSecret | Das Clientgeheimnis der Google-Anwendung, die zum Abrufen des Aktualisierungstokens verwendet wird. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Nein  |
@@ -97,7 +97,12 @@ Folgende Eigenschaften werden für den mit Google AdWords verknüpften Dienst un
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Google AdWords-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Google AdWords die type-Eigenschaft des Datasets auf **GoogleAdWordsObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Google AdWords die type-Eigenschaft des Datasets auf **GoogleAdWordsObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **GoogleAdWordsObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -109,7 +114,8 @@ Legen Sie zum Kopieren von Daten aus Google AdWords die type-Eigenschaft des Dat
         "linkedServiceName": {
             "referenceName": "<GoogleAdWords linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -125,8 +131,8 @@ Legen Sie zum Kopieren von Daten aus Google AdWords den Quelltyp in der Kopierak
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **GoogleAdWordsSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **GoogleAdWordsSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

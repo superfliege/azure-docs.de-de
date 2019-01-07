@@ -1,23 +1,23 @@
 ---
 title: Verwenden von Cloudyn-Berichten in Azure | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie verschiedene Berichte im Cloudyn-Portal verwenden.
+description: Dieser Artikel beschreibt den Zweck der im Cloudyn-Portal enthaltenen Cloudyn-Berichte, damit Sie sie effektiv nutzen können.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: efb199a9e97a6e80cc24dfe32f6477b4c7abf89a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: fa322a0521b3b2c408bfe6d50411c62068b77229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276022"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075873"
 ---
-# <a name="use-cloudyn-reports"></a>Verwenden der Cloudyn-Berichte
+# <a name="reports-available-in-the-cloudyn-portal"></a>Im Cloudyn-Portal verfügbare Berichte
 
 Dieser Artikel beschreibt den Zweck der Cloudyn-Berichte, die im Cloudyn-Portal enthalten sind. Es wird außerdem beschrieben, wie Sie die Berichte effektiv nutzen können. Die meisten Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Die meisten der Aktionen, die Sie in einem Bericht ausführen können, sind auch in anderen Berichten verfügbar. Eine Übersicht über das Verwenden von Cloudyn-Berichten, einschließlich des Anpassens und Speicherns oder des Planens von Berichten, finden Sie unter [Grundlagen zu Kostenberichten](understanding-cost-reports.md).
 
@@ -59,7 +59,7 @@ Dashboards in Cloudyn bieten eine allgemeine Ansicht von Berichten. Dashboards b
 
 ## <a name="budget-information-in-reports"></a>Budgetinformationen in Berichten
 
-Viele Cloudyn-Berichte enthalten Budgetinformationen, nachdem Sie manuell ein Budget erstellt haben. Berichte enthalten also keine Budgetinformationen, bis Sie ein Budget erstellen. Weitere Informationen finden Sie unter [Budgeteinstellungen](#budget-settings).
+Viele Cloudyn-Berichte enthalten Budgetinformationen, nachdem Sie manuell ein Budget erstellt haben. Berichte enthalten also keine Budgetinformationen, bis Sie ein Budget erstellen. Weitere Informationen finden Sie unter [Budgetmanagementeinstellungen](#budget-management-settings).
 
 ## <a name="reports-and-reporting-features"></a>Berichte und Berichterstellungsfeatures
 
@@ -208,7 +208,7 @@ Benutzerdefinierte Gebühren werden in Kostenberichten angezeigt. Öffnen Sie be
 
 Sie verwenden Cost Allocation 360 zum Erstellen von benutzerdefinierten Kostenzuordnungsmodellen, damit Sie verbrauchten Cloudressourcen Kosten zuweisen können. Viele Berichte enthalten Informationen aus benutzerdefinierten Kostenmodellen, die Sie mit benutzerdefinierten Kostenmodellen erstellt haben. In einigen Berichten werden zudem nur Informationen angezeigt, nachdem Sie ein benutzerdefiniertes Kostenmodell mit Kostenzuteilung erstellt haben.
 
-Weitere Informationen zum Erstellen von benutzerdefinierten Kostenmodellen finden Sie unter [Tutorial: Verwalten von Kosten mit Azure Cost Management](tutorial-manage-costs.md).
+Weitere Informationen zum Erstellen von benutzerdefinierten Kostenmodellen finden Sie unter [Tutorial: Verwalten von Kosten mithilfe von Cloudyn](tutorial-manage-costs.md).
 
 ### <a name="cost-vs-budget-over-time-report"></a>Bericht über Budget im Zeitverlauf
 
@@ -448,7 +448,7 @@ Der Abschnitt **CPU Utilization** (CPU-Auslastung) enthält die CPU-Auslastung f
 
 Klicken Sie auf den Graphen, um einen Drilldown durchzuführen und den Bericht der Instanz-CPU im Lauf der Zeit anzuzeigen, dem Sie eine Aufschlüsselung der Instanzen entnehmen können.
 
-- Verwenden Sie **Show/Hide Fields** (Felder ein-/ausblenden), um Felder hinzuzufügen oder zu entfernen: Zeitstempel, durchschnittliche, minimale, maximale CPU-Auslastung.
+- Verwenden Sie **Felder anzeigen/ausblenden** zum Hinzufügen oder Entfernen von Feldern: Zeitstempel, durchschnittliche CPU-Belegung, min. CPU-Belegung, max. CPU-Belegung.
 - Verwenden Sie **Date Range** (Datumsbereich), um ein Datum oder einen Datumsbereich einzugeben und einen Drilldown in eine bestimmte Instanz-ID durchzuführen.
 - Verwenden Sie **Extended Filters** (Erweiterte Filter), um alle Instanz-IDs oder eine bestimmte anzuzeigen.
 - Klicken Sie auf **Zoom in** (Vergrößern), um den Bericht zur CPU-Auslastung zu öffnen.

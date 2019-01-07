@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 2f0b2984bf2390a9af0b824495b84c71d04aeac2
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852842"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682592"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migration der Textübersetzungs-API von Version 2 zu Version 3
 
@@ -59,7 +59,7 @@ Die folgende Liste der V2- und V3-Methoden enthält die V3-Methoden und -APIs, d
 
 Die Textübersetzung von Microsoft Translator V2 hat Daten im XML-Format akzeptiert und zurückgegeben. In V3 sind alle mithilfe der API gesendeten und empfangenen Daten im JSON-Format. XML wird in V3 nicht mehr akzeptiert oder zurückgegeben.
 
-Diese Änderung wirkt sich auf verschiedene Aspekte von Anwendungen aus, die für die Textübersetzungs-API von V2 geschrieben wurden. Die Sprachen-API gibt z. B. Sprachinformationen für die Textübersetzung, Transkription und zwei Wörterbuchmethoden zurück. Sie können alle Sprachinformationen für alle Methoden in einem Aufruf oder einzeln anfordern.
+Diese Änderung wirkt sich auf verschiedene Aspekte von Anwendungen aus, die für die Textübersetzungs-API von V2 geschrieben wurden. Beispiel: Die Sprachen-API gibt Sprachinformationen für die Textübersetzung, Transkription und zwei Wörterbuchmethoden zurück. Sie können alle Sprachinformationen für alle Methoden in einem Aufruf oder einzeln anfordern.
 
 Die Languages-Methode erfordert keine Authentifizierung. Klicken Sie auf den folgenden Link, um alle Sprachinformationen für V3 im JSON-Format anzuzeigen:
 
@@ -105,11 +105,33 @@ Global
 
 [Dictionary/example](reference/v3-0-dictionary-examples.md)
 
-## <a name="customization"></a>Anpassung
+## <a name="compatibility-and-customization"></a>Kompatibilität und Anpassung
 
-Microsoft Translator V3 verwendet standardmäßig eine neuronale maschinelle Übersetzung. Daher kann es nicht mit dem Microsoft Translator-Hub verwendet werden. Der Translator-Hub unterstützt nur ältere statistische maschinelle Übersetzungen. Die neuronale Übersetzung kann nun mithilfe des benutzerdefinierten Translators angepasst werden. [Weitere Informationen zum Anpassen von neuronaler maschineller Übersetzung](customization.md)
+Microsoft Translator V3 verwendet standardmäßig eine neuronale maschinelle Übersetzung. Daher kann es nicht mit dem Microsoft Translator-Hub verwendet werden. Der Translator-Hub unterstützt nur ältere statistische maschinelle Übersetzungen. Die neuronale Übersetzung kann nun mithilfe des benutzerdefinierten Translators angepasst werden. [Weitere Informationen zum Anpassen von neuronaler maschineller Übersetzung](custom-translator/overview.md)
 
 Die neuronale Übersetzung mit der Text-API von V3 unterstützt die Verwendung der Standardkategorien (SMT, speech, text, generalnn) nicht.
+
+| |Endpunkt|    DSGVO-konformer Datenverarbeiter|  Verwendung von Translator Hub| Verwendung von „Benutzerdefinierter Translator“ (Vorschau)|
+|:-----|:-----|:-----|:-----|:-----|
+|Textübersetzungs-API Version 2| api.microsofttranslator.com|    Nein   |Ja    |Nein |
+|Textübersetzungs-API Version 3| api.cognitive.microsofttranslator.com|  Ja|    Nein| Ja|
+
+**Textübersetzungs-API Version 3**
+* Ist allgemein verfügbar und wird vollständig unterstützt.
+* Ist ein DVGO-konformer Datenverarbeiter und erfüllt alle ISO 20001-, ISO 20018- und SOC 3-Zertifizierungsanforderungen. 
+* Ermöglicht den Aufruf der neuronalen Netzwerkübersetzungssysteme (NMT), die Sie mit „Benutzerdefinierter Translator“ (Vorschau) angepasst haben, dem neuen NMT-Anpassungsfeature von Translator. 
+* Bietet keinen Zugriff auf benutzerdefinierte Übersetzungssysteme, die mit Microsoft Translator Hub erstellt wurden.
+
+Sie verwenden Version 3 der Textübersetzungs-API, wenn Sie den Endpunkt „api.cognitive.microsofttranslator.com“ verwenden.
+
+**Textübersetzungs-API Version 2**
+* Ist veraltet. Diese Version wird am 30. April 2019 eingestellt. 
+* Sie erfüllt nicht alle ISO 20001-, ISO 20018- und SOC 3-Zertifizierungsanforderungen. 
+* Sie ermöglicht keinen Aufruf der neuronalen Netzwerkübersetzungssysteme, die Sie mit dem Anpassungsfeature von Translator angepasst haben.
+* Bietet Zugriff auf benutzerdefinierte Übersetzungssysteme, die mit Microsoft Translator Hub erstellt wurden.
+* Sie verwenden Version 2 der Textübersetzungs-API, wenn Sie den Endpunkt „api.microsofttranslator.com“ verwenden.
+
+In keiner Version der Translator-API wird eine Aufzeichnung Ihrer Übersetzungen erstellt. Ihre Übersetzungen werden zu keinem Zeitpunkt für Dritte freigegeben. Weitere Informationen finden Sie auf der [Webseite zur Vertraulichkeit](http://www.aka.ms/NoTrace).
 
 
 ## <a name="links"></a>Links

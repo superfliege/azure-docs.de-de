@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238625"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864977"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Überlegungen zur Planung der Azure Stack-Bereitstellung
 Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) sicher, dass der Development Kit-Hostcomputer die in diesem Artikel beschriebenen Anforderungen erfüllt.
@@ -29,9 +29,9 @@ Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) siche
 ## <a name="hardware"></a>Hardware
 | Komponente | Minimum | Empfohlen |
 | --- | --- | --- |
-| Festplatten: Betriebssystem |1 Betriebssystem-Datenträger mit mindestens 200 GB verfügbarem Speicherplatz für die Systempartition (SSD oder HDD) |1 Betriebssystem-Datenträger mit mindestens 200 GB verfügbarem Speicherplatz für die Systempartition (SSD oder HDD) |
+| Laufwerke: Betriebssystem |1 Betriebssystem-Datenträger mit mindestens 200 GB verfügbarem Speicherplatz für die Systempartition (SSD oder HDD) |1 Betriebssystem-Datenträger mit mindestens 200 GB verfügbarem Speicherplatz für die Systempartition (SSD oder HDD) |
 | Laufwerke: Allgemeine Development Kit-Daten<sup>*</sup>  |4 Datenträger. Jeder Datenträger stellt mindestens 140 GB Kapazität bereit (SSD oder HDD). Alle verfügbaren Datenträger werden verwendet. |4 Datenträger. Jeder Datenträger stellt eine Kapazität von mindestens 250 GB bereit (SSD oder HDD). Alle verfügbaren Datenträger werden verwendet. |
-| Compute: CPU |Dual-Socket: 12 physische Kerne (insgesamt) |Dual-Socket: 16 physische Kerne (insgesamt) |
+| Compute: CPU |Dual-Socket: 12 physische Kerne (gesamt) |Dual-Socket: 16 physische Kerne (gesamt) |
 | Compute: Arbeitsspeicher |96 GB RAM |128 GB RAM (Mindestanforderung für die Unterstützung von PaaS-Ressourcenanbietern)|
 | Compute: BIOS |Hyper-V aktiviert (mit SLAT-Unterstützung) |Hyper-V aktiviert (mit SLAT-Unterstützung) |
 | Netzwerk: NIC |Windows Server 2012 R2-Zertifizierung für NIC erforderlich; keine speziellen Features erforderlich |Windows Server 2012 R2-Zertifizierung für NIC erforderlich; keine speziellen Features erforderlich |
@@ -39,7 +39,7 @@ Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) siche
 
 <sup>*</sup> Sie benötigen mehr als diese empfohlene Kapazität, wenn Sie viele [Marketplace-Elemente](asdk-marketplace-item.md) aus Azure hinzufügen möchten.
 
-**Laufwerkkonfiguration des Datenträgers:** Alle Datenlaufwerke müssen den gleichen Typ (SAS, SATA oder NVMe) und die gleiche Kapazität aufweisen. Wenn SAS-Laufwerke verwendet werden, müssen diese über einen einzelnen Pfad angefügt werden (MPIO, Multipfad-Unterstützung wird nicht bereitgestellt).
+**Konfiguration der Datenträgerlaufwerke**: Alle Datenlaufwerke müssen den gleichen Typ (SAS, SATA oder NVMe) und die gleiche Kapazität aufweisen. Wenn SAS-Laufwerke verwendet werden, müssen diese über einen einzelnen Pfad angefügt werden (MPIO, Multipfad-Unterstützung wird nicht bereitgestellt).
 
 **HBA-Konfigurationsoptionen**
 
@@ -59,7 +59,7 @@ Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) siche
 
 <sup>*</sup> RAID-Controller ohne Pass-Through-Funktion können den Medientyp nicht erkennen. Controller dieser Art kennzeichnen HDD und SSD als unbekannt. In diesem Fall wird die SSD als persistenter Speicher und nicht als Cachegerät verwendet. Daher können Sie das Development Kit auf diesen SSDs bereitstellen.
 
-**Beispiel-HBAs:** LSI 9207-8i, LSI-9300-8i oder LSI-9265-8i im Pass-Through-Modus
+**Beispiel-HBAs**: LSI 9207-8i, LSI-9300-8i oder LSI-9265-8i im Pass-Through-Modus
 
 OEM-Beispielkonfigurationen sind verfügbar.
 
@@ -121,7 +121,7 @@ Es wird nur IPv4 unterstützt. Sie können keine IPv6-Netzwerke erstellen.
 Stellen Sie sicher, dass in dem Netzwerk, mit dem die Netzwerkkarte eine Verbindung herstellt, ein DHCP-Server verfügbar ist. Wenn DHCP nicht verfügbar ist, müssen Sie ein weiteres statisches IPv4-Netzwerk neben dem vom Host verwendeten vorbereiten. Sie müssen diese IP-Adresse und das Gateway als Bereitstellungsparameter angeben.
 
 ### <a name="internet-access"></a>Zugriff auf das Internet
-Azure Stack benötigt entweder direkten Zugriff auf das Internet oder über einen transparenten Proxy. Azure Stack unterstützt nicht die Konfiguration eines Webproxys, um Zugriff auf das Internet zu aktivieren. Sowohl die Host-IP und als auch die neue IP, die „MAS-BGPNAT01“ zugewiesen ist (über DHCP oder als statische IP-Adresse) müssen auf das Internet zugreifen können. Port 80 und 443 werden unter den Domänen „graph.windows.net“ und „login.microsoftonline.com“ verwendet.
+Azure Stack benötigt entweder direkten Zugriff auf das Internet oder über einen transparenten Proxy. Azure Stack unterstützt nicht die Konfiguration eines Webproxys, um Zugriff auf das Internet zu aktivieren. Sowohl die Host-IP und als auch die neue IP, die „AzS-BGPNAT01“ zugewiesen ist (über DHCP oder als statische IP-Adresse) müssen auf das Internet zugreifen können. Port 80 und 443 werden unter den Domänen „graph.windows.net“ und „login.microsoftonline.com“ verwendet.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

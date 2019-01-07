@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7671a0a99e12463fcce5ff33fbcba7e8677dde05
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006193"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721968"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>In Azure Active Directory B2C verwendbare Anwendungstypen
 
@@ -26,7 +26,7 @@ Jede Anwendung, die Azure AD B2C verwendet, muss über das [Azure-Portal](https:
 * Eine **Anwendungs-ID**, die Ihre Anwendung eindeutig ausweist.
 * Ein **Antwort-URI**, der zum Umleiten von Antworten zurück an die Anwendung verwendet werden kann.
 
-Für jede Anforderung, die an Azure AD B2C gesendet wird, wird eine **Richtlinie**angegeben. Eine Richtlinie steuert das Verhalten von Azure AD. Mit diesen Endpunkten können Sie auch einen extrem anpassbaren Satz von Benutzeroberflächen erstellen. Beispiele für allgemeine Richtlinien sind Anmelderichtlinien, Registrierungsrichtlinien und Profilbearbeitungsrichtlinien. Wenn Sie mit Richtlinien nicht vertraut sind, sollten Sie sich zuerst die Informationen zum [erweiterbaren Richtlinienframework](active-directory-b2c-reference-policies.md) von Azure AD B2C ansehen, bevor Sie weiterlesen.
+Jede an Azure AD B2C gesendete Anforderung gibt einen **Benutzerflow** an. Dabei handelt es sich um eine Richtlinie, die das Verhalten von Azure AD steuert. Mit diesen Endpunkten können Sie auch einen extrem anpassbaren Satz von Benutzeroberflächen erstellen. Wir stellen verschiedene Benutzerflows bereit, die Sie beim Einrichten gängiger Richtlinien unterstützen. Hierzu gehören beispielsweise Richtlinien für die Registrierung, Anmeldung und Profilbearbeitung. Sie können aber auch eigene benutzerdefinierte Richtlinien erstellen. Wenn Sie mit Richtlinien nicht vertraut sind, sollten Sie sich zuerst die Informationen zum [erweiterbaren Richtlinienframework](active-directory-b2c-reference-policies.md) von Azure AD B2C ansehen, bevor Sie weiterlesen.
 
 Die Interaktion der einzelnen Anwendungen folgt einem ähnlichen allgemeinen Muster:
 
@@ -106,7 +106,7 @@ Weitere Informationen zum Schützen einer Web-API mit Azure AD B2C finden Sie in
 
 ## <a name="mobile-and-native-applications"></a>Mobile und native Anwendungen
 
-Auf Geräten installierte Anwendungen, z.B. mobile Anwendungen und Desktopanwendungen, benötigen häufig Zugriff auf Back-End-Dienste oder Web-APIs im Auftrag von Benutzern. Sie können Ihren nativen Anwendungen angepasste Oberflächen für die Identitätsverwaltung hinzufügen und Back-End-Dienste sicher aufrufen, indem Sie Azure AD B2C und den [Autorisierungscodeablauf von OAuth 2.0](active-directory-b2c-reference-oauth-code.md) verwenden.  
+Auf Geräten installierte Anwendungen, z.B. mobile Anwendungen und Desktopanwendungen, benötigen häufig Zugriff auf Back-End-Dienste oder Web-APIs im Auftrag von Benutzern. Sie können Ihren nativen Anwendungen angepasste Oberflächen für die Identitätsverwaltung hinzufügen und Back-End-Dienste sicher aufrufen, indem Sie Azure AD B2C und den [Autorisierungscodeflow von OAuth 2.0](active-directory-b2c-reference-oauth-code.md) verwenden.  
 
 Bei diesem Ablauf führt die Anwendung [Richtlinien](active-directory-b2c-reference-policies.md) aus und empfängt einen `authorization_code` von Azure AD, nachdem der Benutzer die Richtlinie abgeschlossen hat. Der `authorization_code` stellt die Berechtigung der Anwendung zum Aufrufen von Back-End-Diensten im Namen des derzeit angemeldeten Benutzers dar. Die Anwendung kann dann den `authorization_code` im Hintergrund gegen ein `id_token` und ein `refresh_token` austauschen.  Mit dem `id_token` kann die Anwendung sich in HTTP-Anforderungen bei einer Back-End-Web-API authentifizieren. Sie kann auch das `refresh_token` zum Abrufen eines neuen `id_token` verwenden, wenn ein älteres abläuft.
 
@@ -165,7 +165,7 @@ Die beiden letztgenannten URLs können hinzugefügt werden, da es sich hierbei u
 
 Wenn Sie mobile/systemeigene Anwendungen erstellen, definieren Sie eine **Umleitungs-URI** statt einer **Wiedergabe-URL**. Bei der Auswahl eines Umleitungs-URIs sind zwei Aspekte zu berücksichtigen:
 
-- **Eindeutigkeit**: Das Schema des Umleitungs-URIS muss für jede Anwendung eindeutig sein. Im Beispiel `com.onmicrosoft.contoso.appname://redirect/path` ist `com.onmicrosoft.contoso.appname` das Schema. Dieses Muster sollte befolgt werden. Wenn zwei Anwendungen dasselbe Schema verwenden, wird den Benutzer das Dialogfeld **App auswählen** angezeigt. Wenn der Benutzer die falsche Auswahl trifft, schlägt die Anmeldung fehl.
+- **Eindeutigkeit**: Das Schema für den Umleitungs-URI muss für jede Anwendung eindeutig sein. Im Beispiel `com.onmicrosoft.contoso.appname://redirect/path` ist `com.onmicrosoft.contoso.appname` das Schema. Dieses Muster sollte befolgt werden. Wenn zwei Anwendungen dasselbe Schema verwenden, wird den Benutzer das Dialogfeld **App auswählen** angezeigt. Wenn der Benutzer die falsche Auswahl trifft, schlägt die Anmeldung fehl.
 - **Vollständigkeit**: Der Umleitungs-URI muss ein Schema und einen Pfad aufweisen. Der Pfad muss mindestens einen Schrägstrich nach der Domäne enthalten. Zum Beispiel funktioniert `//contoso/`, bei `//contoso` tritt ein Fehler auf. Stellen Sie sicher, dass der Umleitungs-URI keine Sonderzeichen wie Unterstriche enthält.
 
 ### <a name="faulted-apps"></a>Fehlerhafte Apps

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c7e9c841e7a1d73fcdedd99e210eefb1e52bbf3e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9819b2bf3c5e5a07d788dc7f51b674a07e6c41ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498759"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972336"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 
@@ -26,10 +26,10 @@ In der folgenden Tabelle werden Files, Blobs und Datenträger miteinander vergli
 | Feature | BESCHREIBUNG | Einsatzgebiete |
 |--------------|-------------|-------------|
 | **Azure Files** | Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine [REST-Schnittstelle](/rest/api/storageservices/file-service-rest-api), mit denen Sie von überall auf gespeicherte Dateien zugreifen können. | Wenn Sie eine Anwendung mit der „Lift and Shift“-Methode in die Cloud verschieben möchten, die bereits die nativen Dateisystem-APIs verwendet, um Daten für andere in Azure ausgeführte Anwendungen freizugeben.<br/><br/>Wenn Sie Tools zum Entwickeln und Debuggen speichern möchten, auf die von vielen virtuellen Computern zugegriffen werden muss. |
-| **Azure-Blobs** | Bietet Clientbibliotheken und eine [REST-Schnittstelle](/rest/api/storageservices/blob-service-rest-api), mit der unstrukturierte Daten in großem Rahmen in Blockblobs gespeichert und abgerufen werden können. | Wenn Sie möchten, dass Ihre Anwendung Szenarios für das Streaming und den zufälligen Zugriff unterstützt.<br/><br/>Wenn Sie die Möglichkeit haben möchten, von überall auf Anwendungsdaten zugreifen zu können. |
+| **Azure-Blobs** | Bietet Clientbibliotheken und eine [REST-Schnittstelle](/rest/api/storageservices/blob-service-rest-api), der große Mengen an unstrukturierten Daten in Blockblobs gespeichert und abgerufen werden können.<br/><br/>Blob Storage unterstützt darüber hinaus [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) für Big Data-Analyselösungen auf Unternehmensniveau. | Wenn Sie möchten, dass Ihre Anwendung Szenarios für das Streaming und den zufälligen Zugriff unterstützt.<br/><br/>Wenn Sie die Möglichkeit haben möchten, von überall auf Anwendungsdaten zugreifen zu können.<br/><br/>Sie möchten einen Unternehmens-Data Lake in Azure aufbauen und Big Data-Analysen durchführen. |
 | **Azure-Datenträger** | Bietet Clientbibliotheken und eine [REST-Schnittstelle](/rest/api/compute/manageddisks/disks/disks-rest-api), mit der Sie Daten beständig von einer angefügten virtuellen Festplatte speichern und abrufen können. | Wenn Sie eine Anwendung mit der „Lift and Shift“-Methode verschieben möchten, die native Dateisystem-APIs verwenden, um Daten in beständigen Datenträgern zu lesen und dort hinein zu schreiben.<br/><br/>Wenn Sie Daten speichern möchten, auf die nicht von außerhalb des virtuellen Computers zugegriffen werden muss, an den der Datenträger angefügt ist. |
 
-## <a name="comparison-files-and-blobs"></a>Vergleich: Files und Blobs
+## <a name="comparison-files-and-blobs"></a>Vergleich: Dateien und Blobs
 
 In der folgenden Tabelle wird Azure Files mit Azure-Blobs verglichen.  
   
@@ -48,7 +48,7 @@ In der folgenden Tabelle wird Azure Files mit Azure-Blobs verglichen.
 |Berechnete Kapazität|Basierend auf geschriebenen Bytes|Basierend auf der Dateigröße|  
 |Clientbibliotheken|Mehrere Sprachen|Mehrere Sprachen|  
   
-## <a name="comparison-files-and-disks"></a>Vergleich: Files und Datenträger
+## <a name="comparison-files-and-disks"></a>Vergleich: Dateien und Datenträger
 
 Azure Files ergänzt Azure-Datenträger. Ein Datenträger kann immer nur an eine Azure-VM angefügt werden. Datenträger sind VHDs mit festem Format, die als Seitenblobs in Azure Storage gespeichert werden. Sie werden von der VM verwendet, um permanente Daten zu speichern. Auf Dateifreigaben kann in Azure Files genauso zugegriffen werden wie auf den lokalen Datenträger (mit nativen Dateisystem-APIs). Sie können VM-übergreifend freigegeben werden.  
  

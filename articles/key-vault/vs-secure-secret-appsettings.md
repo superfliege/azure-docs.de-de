@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4c54fe7c9ae5555ad1b8ba6919c70c8f7fa49125
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625452"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252094"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung
 
 ## <a name="overview"></a>Übersicht
 In diesem Artikel wird beschrieben, wie Geheimnis-Anwendungskonfigurationseinstellungen für Azure-Anwendungen sicher gespeichert werden können.
 
-Üblicherweise werden alle Konfigurationseinstellungen für Webanwendungen in Konfigurationsdateien wie etwa „Web.config“ gespeichert. Diese Praxis führt dazu, dass Geheimniseinstellungen wie Cloudanmeldeinformationen bei öffentlichen Quellcodeverwaltungs-Systemen wie Github eingecheckt werden. Mittlerweile ist es aber aufgrund des erforderlichen Mehraufwands für Quellcodeänderungen und die Neukonfiguration von Entwicklungseinstellungen schwierig geworden, bewährte Sicherheitsmethoden zu befolgen.
+Üblicherweise werden alle Konfigurationseinstellungen für Webanwendungen in Konfigurationsdateien wie etwa „Web.config“ gespeichert. Diese Praxis führt dazu, dass Geheimniseinstellungen wie Cloudanmeldeinformationen bei öffentlichen Quellcodeverwaltungs-Systemen wie GitHub eingecheckt werden. Mittlerweile ist es aber aufgrund des erforderlichen Mehraufwands für Quellcodeänderungen und die Neukonfiguration von Entwicklungseinstellungen schwierig geworden, bewährte Sicherheitsmethoden zu befolgen.
 
 Um zu gewährleisten, dass der Entwicklungsprozess sicher ist, werden Tool- und Frameworkbibliotheken erstellt, um Geheimnis-Anwendungseinstellungen mit minimalen oder gar keinen Änderungen am Quellcode sicher zu speichern.
 

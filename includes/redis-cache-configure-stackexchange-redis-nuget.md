@@ -4,19 +4,19 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: ba73c481dace43dc72f6740a94bca362763dabac
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 8ebf5ddfa118e0aeadeab0c00a981871a4b5708e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572194"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53429970"
 ---
 .NET-Anwendungen können den **StackExchange.Redis**-Cacheclient verwenden. Dieser kann mithilfe eines NuGet-Pakets in Visual Studio konfiguriert werden, um die Konfiguration von Cacheclientanwendungen zu vereinfachen. 
 
 > [!NOTE]
-> Weitere Informationen finden Sie auf der [StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis)-Seite auf GitHub und in der Dokumentation für den [StackExchange.Redis-Cacheclient](http://github.com/StackExchange/StackExchange.Redis#documentation).
-> 
-> 
+> Weitere Informationen finden Sie auf der [StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis)-Seite auf GitHub und in der Dokumentation für den [StackExchange.Azure Cache for Redis-Client](http://github.com/StackExchange/StackExchange.Redis#documentation).
+>
+>
 
 Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus, um eine Clientanwendung in Visual Studio mithilfe des StackExchange.Redis-NuGet-Pakets zu konfigurieren. 
 
@@ -26,20 +26,20 @@ Geben Sie **StackExchange.Redis** oder **StackExchange.Redis.StrongName** in das
 
 > [!NOTE]
 > Falls Sie eine Version der **StackExchange.Redis**-Clientbibliothek mit starkem Namen bevorzugen, wählen Sie **StackExchange.Redis.StrongName** aus. Wählen Sie andernfalls **StackExchange.Redis** aus.
-> 
-> 
+>
+>
 
 ![StackExchange.Redis-NuGet-Paket](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
-Das NuGet-Paket wird heruntergeladen und fügt die benötigten Assemblyverweise zu Ihrer Clientanwendung hinzu, um mithilfe des StackExchange.Redis-Cacheclients auf den Azure Redis Cache zuzugreifen.
+Das NuGet-Paket wird heruntergeladen und fügt die benötigten Assemblyverweise zu Ihrer Clientanwendung hinzu, um mithilfe des StackExchange.Azure Cache for Redis-Clients auf Azure Cache for Redis zuzugreifen.
 
 > [!NOTE]
 > Wenn Sie das Projekt zuvor für die Verwendung von StackExchange.Redis konfiguriert haben, können Sie mithilfe von **NuGet Package Manager**nach Updates für das Paket suchen. Um nach aktualisierten Versionen des NuGet-Pakets „StackExchange.Redis“ zu suchen und diese zu installieren, klicken Sie im Fenster **NuGet Package Manager** auf **Updates**. Wenn ein Update des NuGet-Pakets „StackExchange.Redis“ verfügbar ist, können Sie Ihr Projekt für die Verwendung der aktualisierten Version aktualisieren.
-> 
-> 
+>
+>
 
 Sie können das StackExchange.Redis-NuGet-Paket auch installieren, indem Sie im Menü **Tools** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole** klicken und im Fenster **Paket-Manager-Konsole** den folgenden Befehl ausführen:
-    
+
 ```
 Install-Package StackExchange.Redis
 ```

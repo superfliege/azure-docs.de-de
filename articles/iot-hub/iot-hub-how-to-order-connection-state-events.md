@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 77615705ade42a2afcc8e3a9f662b0551a2411fd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582451"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184048"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -200,11 +200,11 @@ In Ihrem Logik-App-Workflow helfen Bedingungen bei der Ausführung bestimmter Ak
 
 2. Füllen Sie die Bedingung wie unten gezeigt aus, damit bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“ nur dies ausgeführt wird:
 
-  * Wählen Sie einen Wert aus: **eventType**.
-  * Ändern Sie „ist gleich“ in **Endet auf**.
-  * Wählen Sie einen Wert aus: **nected**.
+   * Wählen Sie einen Wert aus: **eventType**.
+   * Ändern Sie „ist gleich“ in **Endet auf**.
+   * Wählen Sie einen Wert aus: **nected**.
 
-   ![Ausfüllen der Bedingung](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![Ausfüllen der Bedingung](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
 3. Wenn die Bedingung TRUE ist, klicken Sie auf **Aktion hinzufügen**.
   
@@ -248,13 +248,13 @@ In diesem Abschnitt konfigurieren Sie Ihren IoT Hub zum Veröffentlichen von Ere
 
 4. Erstellen Sie das Ereignisabonnement mit den folgenden Werten: 
 
-   * **Ereignistyp:** Deaktivieren Sie die Option „Alle Ereignistypen abonnieren“, und wählen Sie im Menü **Gerät verbunden** und **Gerät getrennt** aus.
+   * **Ereignistyp**: Deaktivieren Sie „Alle Ereignistypen abonnieren“, und wählen Sie im Menü die Optionen **Gerät verbunden** und **Gerät getrennt** aus.
 
-   * **Endpunktdetails:** Wählen Sie als Endpunkttyp die Option **Webhook** aus, klicken Sie auf „Endpunkt auswählen“, fügen Sie die URL ein, die Sie aus Ihrer Logik-App kopiert haben, und bestätigen Sie die Auswahl.
+   * **Endpunktdetails**: Wählen Sie als Endpunkttyp die Option **Webhook** aus, klicken Sie auf „Endpunkt auswählen“, fügen Sie die URL ein, die Sie aus Ihrer Logik-App kopiert haben, und bestätigen Sie die Auswahl.
 
        ![Auswählen der Endpunkt-URL](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 
-   * **Details zum Ereignisabonnement:** Geben Sie einen aussagekräftigen Namen ein, und klicken Sie auf **Event Grid-Schema**.
+   * **Details zum Ereignisabonnement**: Geben Sie einen aussagekräftigen Namen ein, und wählen Sie **Event Grid-Schema** aus.
    Das Formular ähnelt dem folgenden Beispiel: 
 
        ![Beispielformular für ein Ereignisabonnement](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)

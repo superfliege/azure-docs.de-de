@@ -2,26 +2,26 @@
 title: Bereitstellen und Verwalten von Sicherungen für mit Resource Manager bereitgestellte virtuelle Computer mithilfe von PowerShell
 description: Verwenden Sie PowerShell zum Bereitstellen und Verwalten von Sicherungen in Azure für mit Resource Manager bereitgestellte virtuelle Computer.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 10/20/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 855a046425f051739f61c74b551d4ffea7b9120a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252359"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877860"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Verwenden von PowerShell zum Sichern und Wiederherstellen von virtuellen Computern
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure-VM mithilfe von Azure PowerShell-Cmdlets in einem Recovery Services-Tresor sichern und daraus wiederherstellen. Ein Recovery Services-Tresor ist eine Ressource von Azure Resource Manager, die für den Schutz von Daten und Objekten in den Diensten Azure Backup und Azure Site Recovery verwendet wird. 
 
 > [!NOTE]
-> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit virtuellen Computern erstellt, die mit dem Resource Manager-Modell bereitgestellt wurden.
+> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit virtuellen Computern erstellt, die mit dem Resource Manager-Modell bereitgestellt wurden.
 >
 >
 
@@ -40,7 +40,7 @@ Sehen Sie sich die [Azure Backup - Recovery Services-Cmdlets](https://docs.micro
 
 Vorbereitung:
 
-1. [Laden Sie die neueste PowerShell-Version herunter](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (erforderliche Mindestversion: 1.4.0).
+1. [Laden Sie die neueste PowerShell-Version herunter](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (erforderliche Mindestversion: 1.4.0)
 
 2. Ermitteln Sie die Azure-PowerShell-Cmdlets zur Datensicherung mithilfe des folgenden Befehls:
    
@@ -54,7 +54,7 @@ Vorbereitung:
 3. Melden Sie sich mithilfe von **Connect-AzureRmAccount** bei Ihrem Azure-Konto an. Dieses Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert:
 
     * Alternativ können Sie die Kontoanmeldeinformationen als Parameter im Cmdlet **Connect-AzureRmAccount** mit dem Parameter **-Credential** einschließen.
-    * Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel: **Connect-AzureRmAccount -Tenant "fabrikam.com"**
+    * Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel:  **Connect-AzureRmAccount -Tenant "fabrikam.com"**
 
 4. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0f9d786988cb547771b8fd999b911bd228cdc3e2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b667cfad6eb2a2a13e4b84dacaad0bcd3dfa91b9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311040"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017132"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Erste Schritte mit einem Apache HBase-Beispiel in HDInsight
 
@@ -28,10 +28,10 @@ Bevor Sie mit diesem HBase-Beispiel beginnen können, benötigen Sie folgende El
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Secure Shell (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md). 
-* [curl](http://curl.haxx.se/download.html).
+* [curl](https://curl.haxx.se/download.html).
 
 ## <a name="create-apache-hbase-cluster"></a>Erstellen eines Apache HBase-Clusters
-Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um einen HBase-Cluster und das abhängige Azure Storage-Standardkonto zu erstellen. Informationen zu den Parametern, die in diesem Verfahren und in anderen Verfahren zur Clustererstellung verwendet werden, finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung von Data Lake Storage Gen2 finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um einen HBase-Cluster und das abhängige Azure Storage-Standardkonto zu erstellen. Informationen zu den Parametern, die in diesem Verfahren und in anderen Verfahren zur Clustererstellung verwendet werden, finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung von Data Lake Storage Gen2 finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Klicken Sie auf die folgende Abbildung, um die Vorlage im Azure-Portal zu öffnen: Die Vorlage finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
    
@@ -39,11 +39,11 @@ Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um 
 2. Geben Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** die folgenden Werte ein:
    
    * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.
-   * **Ressourcengruppe**: Erstellen Sie neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.
-   * **Speicherort**: Geben Sie den Speicherort der Ressourcengruppe an. 
+   * **Ressourcengruppe**: Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.
+   * **Standort**: Geben Sie den Standort der Ressourcengruppe an. 
    * **Clustername**: Geben Sie einen Namen für den HBase-Cluster ein.
-   * **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
-   * **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**.  Sie können auch einen anderen Namen festlegen.
+   * **Clusteranmeldename und Kennwort**: Der Standardanmeldename lautet **admin**.
+   * **SSH-Benutzername und Kennwort**: Der Standardbenutzername lautet **sshuser**.  Sie können auch einen anderen Namen festlegen.
      
      Andere Parameter sind optional.  
      
@@ -174,7 +174,7 @@ Sie können Daten in HBase-Tabellen mithilfe von [Apache Hive](https://hive.apac
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>Verwenden der HBase-REST-APIs mit Curl
 
-Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
+Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
 2. Verwenden Sie den folgenden Befehl, um die vorhandenen HBase-Tabellen aufzulisten:
 
@@ -272,7 +272,7 @@ In diesem Artikel haben Sie erfahren, wie Sie einen Apache HBase-Cluster erstell
 
 Weitere Informationen finden Sie unter:
 
-* [Übersicht HBase mit HDInsight][hdinsight-hbase-overview]: Apache HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Apache Hadoop aufbaut und wahlfreien Zugriff sowie starke Konsistenz für große Mengen unstrukturierter und teilweise strukturierter Daten bietet.
+* [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Apache Hadoop bereitstellt][hdinsight-hbase-overview]: Apache HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Apache Hadoop basiert und wahlfreien Zugriff und starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
@@ -288,11 +288,11 @@ Weitere Informationen finden Sie unter:
 [hdinsight-hbase-overview]:apache-hbase-overview.md
 [hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
 [hdinsight-versions]: hdinsight-component-versioning.md
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [azure-portal]: https://portal.azure.com/
-[azure-create-storageaccount]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
+[azure-create-storageaccount]: https://azure.microsoft.com/documentation/articles/storage-create-storage-account/
 
 [img-hbase-shell]: ./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 62c89861d784931b2a13297abac578010e0fea5f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250764"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867471"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrieren der Implementierung von Azure DevTest Labs
 Dieser Artikel stellt einen empfohlenen Ansatz für die schnelle Bereitstellung und Implementierung von Azure DevTest Labs vor. Die folgende Abbildung stellt den Gesamtprozess in Form eines normativen Leitfadens dar, berücksichtigt aber zugleich die erforderliche Flexibilität, um verschiedene Branchenanforderungen und Szenarien zu unterstützen.
@@ -28,10 +28,10 @@ Dieser Artikel stellt einen empfohlenen Ansatz für die schnelle Bereitstellung 
 In diesem Artikel wird davon ausgegangen, dass die folgenden Elemente verfügbar sind, bevor mit einer DevTest Labs-Pilotimplementierung begonnen wird:
 
 - **Azure-Abonnement**: Das Pilotteam hat Zugriff auf die Bereitstellung von Ressourcen in einem Azure-Abonnement. Wenn sich die Workloads nur auf Entwicklung und Test beziehen, empfiehlt sich das Enterprise DevTest-Angebot, da es zusätzliche verfügbare Images und niedrigere Sätze für virtuelle Windows-Computer bietet.
-- **Lokaler Zugriff**: Falls erforderlich, wurde lokaler Zugriff bereits konfiguriert. Der lokale Zugriff kann mithilfe einer Site-to-Site-VPN-Verbindung oder über ExpressRoute realisiert werden. Die Einrichtung von Konnektivität mithilfe von ExpressRoute nimmt normalerweise viele Wochen in Anspruch – die ExpressRoute sollte bereits etabliert sein, bevor mit dem Projekt begonnen wird.
-- **Pilotteams**: Das anfängliche Entwicklungsprojektteam (bzw. mehrere bei Bedarf) für DevTest Labs wurde benannt, geeignete Entwicklungs- und Testaktivitäten wurden definiert und Anforderungen/Ziele für das Team festgelegt.
+- **Lokaler Zugriff**: Falls erforderlich, wurde der lokale Zugriff bereits konfiguriert. Der lokale Zugriff kann mithilfe einer Site-to-Site-VPN-Verbindung oder über ExpressRoute realisiert werden. Die Einrichtung von Konnektivität mithilfe von ExpressRoute nimmt normalerweise viele Wochen in Anspruch – die ExpressRoute sollte bereits etabliert sein, bevor mit dem Projekt begonnen wird.
+- **Pilotteams**: Die ersten für die Entwicklung zuständigen Projektteams für DevTest Labs wurden benannt, die entsprechenden Entwicklungs- und Testaktivitäten wurden definiert, und die Anforderungen/Ziele für die Teams wurden festgelegt.
 
-## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Meilenstein 1: Festlegen von anfänglicher Netzwerktopologie und Netzwerkentwurf
+## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Meilenstein 1: Einrichten der anfänglichen Netzwerktopologie und des ersten Netzwerkentwurfs
 Der erste Schwerpunkt bei der Bereitstellung einer Azure DevTest Labs-Lösung liegt in der Herstellung der geplanten Konnektivität für die virtuellen Computer. Die folgenden Schritte beschreiben die erforderlichen Prozeduren:
 
 1. Definieren der **anfänglichen IP-Adressbereiche**, die dem DevTest Labs-Abonnement in Azure zugewiesen werden. Für diesen Schritt muss die erwartete zukünftige Nutzung in Form der Anzahl der VMs eingeschätzt werden, damit ein für zukünftiges Wachstum ausreichend großer Block bereitgestellt werden kann.
@@ -46,7 +46,7 @@ Sobald die Netzwerktopologie eingerichtet ist, kann das Pilot-Lab mithilfe der f
 2. Bestimmen zulässiger VM-Images und -Größen für die Nutzung im Lab. Entscheiden Sie, ob benutzerdefinierte Images für die Verwendung in DevTest Labs auf Azure hochgeladen werden können.
 3. Schützen des Zugriffs auf das Lab durch Erstellen von rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) für das Lab (Lab-Besitzer und Lab-Benutzer). Wir empfehlen die Verwendung synchronisierter Active Directory-Konten in Azure Active Directory für die Identität in DevTest Labs.
 4. Konfigurieren von DevTest Labs für die Verwendung von Richtlinien, wie etwa Zeitplänen, Kostenverwaltung, abrufbaren VMs, benutzerdefinierten Images oder Formeln.
-5. Einrichten eines Onlinerepositorys wie VSTS/Git.
+5. Einrichten eines Onlinerepositorys wie Azure Repos/Git.
 6. Entscheidung für die Verwendung öffentlicher oder privater Repositorys bzw. einer Kombination aus beiden. Stellen Sie JSON-Vorlagen für Bereitstellungen und langfristig vorbeugende Wartung bereit.
 7. Erstellen benutzerdefinierter Artefakte bei Bedarf. Dieser Schritt ist optional. 
 

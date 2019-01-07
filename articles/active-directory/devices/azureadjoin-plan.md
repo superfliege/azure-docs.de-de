@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309361"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310367"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung von Azure AD Join
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
 
 Mit Azure AD Join können Sie Geräte direkt in Azure AD einbinden, ohne dem lokalen Active Directory beitreten zu müssen, während Ihre Benutzer produktiv und sicher bleiben. Azure AD Join eignet sich für skalierbare und bereichsbezogene Bereitstellungen in Unternehmen.   
@@ -127,7 +127,7 @@ Azure AD Join:
 
 - Gilt nicht für vorherige Versionen von Windows oder andere Betriebssysteme. Wenn Sie über Windows 7- oder Windows 8.1-Geräte verfügen, müssen Sie ein Upgrade auf Windows 10 durchführen, um Azure AD Join bereitstellen zu können.
  
-**Empfehlung:** Verwenden Sie immer die neueste Version von Windows 10, um die aktualisierten Features nutzen zu können.
+**Empfehlung:** Verwenden Sie immer das neueste Release von Windows 10, um die aktualisierten Features nutzen zu können.
 
 
 ### <a name="management-platform"></a>Verwaltungsplattform
@@ -185,13 +185,13 @@ Wenn Ihre Apps benutzerdefiniert sind und/oder lokal gehostet werden, müssen Si
 
 Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem Anmelden mit AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
-**Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z. B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
+**Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z.B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
 
 ### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Lokale Anwendungen, die ältere Protokolle verwenden
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
-**Empfehlung:** Stellen Sie den [Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
+**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
@@ -213,7 +213,7 @@ In Azure AD eingebundene Geräte unterstützen keine lokalen Anwendungen, die Co
 
 ### <a name="remote-desktop-services"></a>Remotedesktopdienste
 
-Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc).
+Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
 
 
 ## <a name="understand-your-provisioning-options"></a>Grundlegendes zu Ihren Bereitstellungsoptionen
@@ -310,9 +310,9 @@ Wählen Sie basierend auf dem Benutzerbereich Ihrer Bereitstellung entweder **Ei
 
 Basierend auf Ihrem Benutzerbereich ergibt sich eine der folgenden Situationen: 
 
-- **Der Benutzer ist im MDM-Bereich**: Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
+- **Der Benutzer befindet sich im MDM-Bereich**: Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
     
-- **Der Benutzer ist nicht im MDM-Bereich**: Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
+- **Der Benutzer befindet sich nicht im MDM-Bereich**: Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
 
 
 ### <a name="mdm-urls"></a>MDM-URLs
@@ -347,7 +347,7 @@ Wenn Sie Enterprise State Roaming in Azure AD aktivieren möchten, damit Benutze
 
 Wenn für Ihre in Azure AD eingebundenen Geräte ein MDM-Anbieter konfiguriert ist, kennzeichnet der Anbieter das Gerät als konform, sobald das Gerät verwaltet wird. 
 
-![Konformes Gerät](./media/azureadjoin-plan/46.png)
+![Kompatibles Gerät](./media/azureadjoin-plan/46.png)
 
 Sie können diese Implementierung nutzen, um [die Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs vorzuschreiben](../conditional-access/require-managed-devices.md).
 

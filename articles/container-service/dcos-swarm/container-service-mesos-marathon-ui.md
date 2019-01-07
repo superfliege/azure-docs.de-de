@@ -1,5 +1,5 @@
 ---
-title: Verwalten eines Azure-DC/OS-Clusters mit der Marathon-Benutzeroberfläche
+title: (VERALTET) Verwalten eines Azure-DC/OS-Clusters mit der Marathon-Benutzeroberfläche
 description: Stellen Sie mit der Marathon-Webbenutzeroberfläche Container für einen Azure Container Service-Clusterdienst bereit.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a22bddf48f97d961d481e2aedb42f7d645f3e678
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 41b6ce24e7c2e8565d7c2f17c32b8b6e1f38ea4f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903080"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992475"
 ---
-# <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Verwalten eines Azure Container Service-DC/OS-Clusters über die Marathon-Webbenutzeroberfläche
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(VERALTET) Verwalten eines Azure Container Service-DC/OS-Clusters über die Marathon-Webbenutzeroberfläche
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter Workloads bereit und abstrahiert die zugrunde liegende Hardware. Zusätzlich zu DC/OS ist auch ein Framework vorhanden, mit dem die Planung und Ausführung von Computeworkloads verwaltet wird.
 

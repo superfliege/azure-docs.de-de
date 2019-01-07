@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 393b90395698c18fdbd4fc8ba4d8bc79bd6287be
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 15a528bfdc1f23c932d1206dbca4b05af8bd58ba
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495175"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186700"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
 
@@ -36,7 +36,7 @@ Die folgende Tabelle beschreibt die Unterschiede zwischen den drei Versionen der
 | Azure Multi-Factor Authentication | Azure Multi-Factor Authentication wird häufig auch als „Vollversion“ bezeichnet und bietet von allen Versionen den größten Funktionsumfang. Über das [Azure-Portal](https://portal.azure.com) sind zusätzliche Konfigurationsoptionen verfügbar. Außerdem stehen erweiterte Funktionen für die Berichterstellung zur Verfügung, und es werden verschiedene lokale Anwendungen und Cloudanwendungen unterstützt. Azure Multi-Factor Authentication ist ein Feature von [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features) und kann in der Cloud oder lokal bereitgestellt werden. |
 
 > [!NOTE]
-> Ab dem 1. September 2018 können Neukunden Azure Multi-Factor Authentication nicht mehr als eigenständiges Angebot erwerben. Multi-Factor Authentication ist in Azure AD Premium-Lizenzen weiterhin ein verfügbares Feature.
+> Ab dem 1. September 2018 können Neukunden Azure Multi-Factor Authentication nicht mehr als eigenständiges Angebot erwerben. Die mehrstufige Authentifizierung ist in Azure AD Premium-Lizenzen weiterhin als Feature verfügbar.
 
 ## <a name="feature-comparison-of-versions"></a>Funktionsvergleich der Versionen
 
@@ -87,17 +87,17 @@ Bei Verwendung eines Azure Multi-Factor Authentication-Anbieters stehen zwei Nut
 
 1. **Pro aktiviertem Benutzer:** Diese Option ist für Unternehmen geeignet, die die zweistufige Überprüfung für eine feste Anzahl von Mitarbeitern aktivieren möchten, die die Authentifizierung regelmäßig benötigen. Die Abrechnung pro Benutzer basiert auf der Anzahl der Benutzer in Ihrem Azure AD-Mandanten und auf Ihrem Azure MFA-Server, für die MFA aktiviert ist. Wenn MFA für Benutzer sowohl in Azure AD als auch auf dem Azure MFA-Server aktiviert ist und die Domänensynchronisierung (Azure AD Connect) ebenfalls aktiviert ist, berechnen wir die größere Benutzergruppe. Wenn die Domänensynchronisierung nicht aktiviert ist, berechnen wir die Summe aller Benutzer, für die MFA in Azure AD und auf dem Azure MFA-Server aktiviert ist. Die Abrechnung erfolgt anteilsmäßig und wird täglich an das Commerce-System berichtet.
 
-  > [!NOTE]
-  > Abrechnungsbeispiel 1: Für MFA sind heute 5.000 Benutzer aktiviert. Das MFA-System teilt diese Zahl durch 31 und meldet 161,29 Benutzer für diesen Tag. Morgen aktivieren Sie 15 weitere Benutzer, sodass das MFA-System für diesen Tag 161,77 Benutzer meldet. Am Ende des Abrechnungszyklus beträgt die Gesamtzahl der Benutzer, die im Rahmen Ihres Azure-Abonnements abgerechnet werden, 5.000.
-  >
-  > Abrechnungsbeispiel 2: Sie haben sowohl Benutzer mit als auch ohne Lizenz. Für die Differenz verwenden Sie einen Azure MFA-Anbieter für eine Abrechnung pro Benutzer. In Ihrem Mandanten befinden sich 4.500 Enterprise Mobility + Security-Lizenzen, für MFA sind jedoch 5.000 Benutzer aktiviert. Für Ihr Azure-Abonnement werden 500 Benutzer abgerechnet, die täglich anteilsmäßig als 16,13 Benutzer gemeldet werden.
-  >
+   > [!NOTE]
+   > Abrechnungsbeispiel 1: Für MFA sind heute 5.000 Benutzer aktiviert. Das MFA-System teilt diese Zahl durch 31 und meldet 161,29 Benutzer für diesen Tag. Morgen aktivieren Sie 15 weitere Benutzer, sodass das MFA-System für diesen Tag 161,77 Benutzer meldet. Am Ende des Abrechnungszyklus beträgt die Gesamtzahl der Benutzer, die im Rahmen Ihres Azure-Abonnements abgerechnet werden, 5.000.
+   >
+   > Abrechnungsbeispiel 2: Sie haben sowohl Benutzer mit als auch ohne Lizenz. Für die Differenz verwenden Sie einen Azure MFA-Anbieter für eine Abrechnung pro Benutzer. In Ihrem Mandanten befinden sich 4.500 Enterprise Mobility + Security-Lizenzen, für MFA sind jedoch 5.000 Benutzer aktiviert. Für Ihr Azure-Abonnement werden 500 Benutzer abgerechnet, die täglich anteilsmäßig als 16,13 Benutzer gemeldet werden.
+   >
 
 1. **Pro Authentifizierung** – Diese Option ist für Unternehmen geeignet, die die zweistufige Überprüfung für eine große Benutzergruppe aktivieren möchten, welche die Authentifizierung unregelmäßig benötigt. Die Abrechnung basiert auf der Anzahl der Anforderungen für die zweistufige Überprüfung, unabhängig davon, ob diese Überprüfungen erfolgreich waren oder abgelehnt wurden. Diese Abrechnung erscheint auf Ihrer Azure-Nutzungsaufstellung in Paketen mit 10 Authentifizierungen und wird täglich gemeldet.
 
-  > [!NOTE]
-  > Abrechnungsbeispiel 3: Der Azure MFA-Dienst hat heute 3.105 Anforderungen für die zweistufige Überprüfung empfangen. Ihrem Azure-Abonnement werden heute 310,5 Authentifizierungspakete berechnet.
-  >
+   > [!NOTE]
+   > Abrechnungsbeispiel 3: Der Azure MFA-Dienst hat heute 3.105 Anforderungen für die zweistufige Überprüfung empfangen. Ihrem Azure-Abonnement werden heute 310,5 Authentifizierungspakete berechnet.
+   >
 
 Beachten Sie, dass Sie Lizenzen haben können, die verbrauchsbasierte Konfiguration aber weiterhin berechnet wird. Wenn Sie einen Azure MFA-Anbieter für die Abrechnung pro Authentifizierung einrichten, wird jede Anforderung für die zweistufige Überprüfung abgerechnet, auch für Benutzer, die über Lizenzen verfügen. Wenn Sie einen Azure MFA-Anbieter für die Abrechnung pro Benutzer einrichten, der nicht mit Ihrem Azure AD-Mandanten verknüpft ist, erfolgt die Abrechnung pro Benutzer, auch wenn Ihre Benutzer in Azure AD über Lizenzen verfügen.
 

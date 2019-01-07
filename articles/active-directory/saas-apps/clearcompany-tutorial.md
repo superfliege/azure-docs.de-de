@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in ClearCompany | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit ClearCompany | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ClearCompany konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 0463a89b8c320b31929bf5e0322079088c2cdeab
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9cf5092dabf5649f4d063ce05dae169b90228378
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054130"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834093"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>Tutorial: Azure Active Directory-Integration in ClearCompany
+# <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>Tutorial: Azure Active Directory-Integration mit ClearCompany
 
 In diesem Tutorial erfahren Sie, wie Sie ClearCompany in Azure Active Directory (Azure AD) integrieren.
 
@@ -119,13 +119,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.clearcompany.com`.
     
     > [!NOTE] 
-    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den ClearCompany-Client](http://www.clearcompany.com/support), um diesen Wert zu erhalten. 
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den ClearCompany-Client](https://www.clearcompany.com/support), um diesen Wert zu erhalten. 
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/clearcompany-tutorial/tutorial_clearcompany_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+6. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/clearcompany-tutorial/tutorial_general_400.png)
     
@@ -133,10 +133,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![ClearCompany-Konfiguration](./media/clearcompany-tutorial/tutorial_clearcompany_configure.png) 
 
-8. Zum Konfigurieren des einmaligen Anmeldens bei **ClearCompany** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die **SAML-Dienst-URL für einmaliges Anmelden** an das [Supportteam von ClearCompany](http://www.clearcompany.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+8. Zum Konfigurieren des einmaligen Anmeldens bei **ClearCompany** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die **SAML-Dienst-URL für einmaliges Anmelden** an das [Supportteam von ClearCompany](https://www.clearcompany.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -168,11 +168,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="create-a-clearcompany-test-user"></a>Erstellen eines ClearCompany-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ClearCompany einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [ClearCompany-Supportteam](http://www.clearcompany.com/support), um die Benutzer auf der ClearCompany-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ClearCompany einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem  [ClearCompany-Supportteam](https://www.clearcompany.com/support)  zusammen, um die Benutzer zur ClearCompany-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

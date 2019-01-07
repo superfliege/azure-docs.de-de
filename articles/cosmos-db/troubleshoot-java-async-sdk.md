@@ -1,5 +1,5 @@
 ---
-title: Diagnose und Problembehandlung des Azure Cosmos DB Java Async SDK | Microsoft-Dokumentation
+title: Diagnose und Problembehandlung des Azure Cosmos DB Java Async SDK
 description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
 services: cosmos-db
 author: moderakh
@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: 2c73cda19a3f8b9b7c5ab493c0dfcd6c2e7be745
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 951c26ea5b5c77cf205e7793834d564889b9a635
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820238"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876102"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Java Async SDK mit Azure Cosmos DB-SQL-API-Konten
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [Java Async SDK](sql-api-sdk-async-java.md) mit Azure Cosmos DB-SQL-API-Konten.
@@ -63,7 +63,7 @@ Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse b
 Wenn Sie einen HTTP-Proxy verwenden, vergewissern Sie sich, dass er die Anzahl von Verbindungen unterstützt, die in `ConnectionPolicy` des SDK konfiguriert ist.
 Andernfalls treten Verbindungsprobleme auf.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ungültiges Codierungsmuster: Blockieren des Netty-E/A-Threads
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ungültiges Codierungsmuster: Blockieren eines Netty E/A-Threads
 
 Das SDK verwendet für die Kommunikation mit Azure Cosmos DB die [Netty](https://netty.io/)-E/A-Bibliothek. Das SDK verfügt über asynchrone APIs und verwendet nicht blockierende E/A-APIs von Netty. Die E/A-Aufgaben des SDK werden in Netty-E/A-Threads ausgeführt. Die Anzahl von Netty-E/A-Threads ist so konfiguriert, dass sie mit der Anzahl von CPU-Kernen des App-Computers übereinstimmt. 
 

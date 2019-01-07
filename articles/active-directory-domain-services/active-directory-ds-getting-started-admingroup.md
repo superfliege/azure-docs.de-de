@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Active Directory Domain Services | Microsoft-Dokumentation
+title: 'Azure Active Directory Domain Services: Erste Schritte | Microsoft-Dokumentation'
 description: Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 services: active-directory-ds
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: cac1814057b5adbb75d9484b332bd3f8aaa31a18
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ec51ba28c81e2aa2dbfe2a3dc55d9940c74ff673
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446857"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959851"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 
-
 ## <a name="task-3-configure-administrative-group"></a>Aufgabe 3: Konfigurieren der administrativen Gruppe
+
 In dieser Konfigurationsaufgabe erstellen Sie eine administrative Gruppe in Ihrem Azure AD-Verzeichnis. Diese spezielle administrative Gruppe heißt *AAD DC Administrators*. Mitgliedern dieser Gruppe werden Administratorrechte auf Computern erteilt, die in die verwaltete Domäne eingebunden sind. Auf in die Domäne eingebundenen Computern wird diese Gruppe der Gruppe „Administratoren“ hinzugefügt. Mitglieder dieser Gruppe können außerdem mithilfe von Remotedesktop Remoteverbindungen mit den in die Domäne eingebundenen Computern herstellen.
 
 > [!NOTE]
@@ -49,14 +49,14 @@ Azure AD Domain Services ermöglicht entweder die vollständige Synchronisierung
 ### <a name="full-synchronization"></a>Vollständige Synchronisierung
 
 1. Für die vollständige Synchronisierung klicken Sie einfach auf „OK“ am unteren Bildschirmrand, da „Vollständig“ bereits ausgewählt ist.
-    ![Vollständige Synchronisierung](./media\active-directory-domain-services-admin-guide\create-sync-all.PNG)
+    ![Vollständige Synchronisierung](./media/active-directory-domain-services-admin-guide/create-sync-all.PNG)
 
 ### <a name="scoped-synchronization"></a>Bereichsbezogene Synchronisierung
 
 1. Schalten Sie die Schaltfläche für die Synchronisierung auf „Bereichsbezogen“ um, und es wird eine Seite zum Auswählen der Gruppen angezeigt. Darauf können Sie ersehen, welche Gruppen bereits ausgewählt sind, um mit Ihrer verwalteten Domäne synchronisiert zu werden.
-    ![Bereichsbezogene Synchronisierung](media\active-directory-domain-services-admin-guide\create-sync-scoped.PNG)
+    ![Bereichsbezogene Synchronisierung](media/active-directory-domain-services-admin-guide/create-sync-scoped.PNG)
 2. Wählen Sie in der oberen Navigationsleiste **Gruppen auswählen** aus. Von hier aus wird eine Gruppenauswahl auf der Seite eingeblendet. Verwenden Sie diese Option, um alle weiteren Gruppen auszuwählen, die mit Azure AD Domain Services synchronisiert werden sollen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**, um die Gruppenauswahl zu schließen und diese Gruppen zur ausgewählten Liste hinzuzufügen.
-    ![Gruppenauswahl für bereichsbezogene Synchronisierung](media\active-directory-domain-services-admin-guide\create-sync-scoped-groupselect.PNG)
+    ![Gruppenauswahl für bereichsbezogene Synchronisierung](media/active-directory-domain-services-admin-guide/create-sync-scoped-groupselect.PNG)
 3. Klicken Sie auf **OK**. um zur Zusammenfassung zu gelangen.
 
 ## <a name="deploy-your-managed-domain"></a>Bereitstellen Ihrer verwalteten Domäne
@@ -69,8 +69,8 @@ Azure AD Domain Services ermöglicht entweder die vollständige Synchronisierung
 
     ![Benachrichtigung: Die Bereitstellung wird ausgeführt](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
-
 ## <a name="check-the-deployment-status-of-your-managed-domain"></a>Überprüfen des Bereitstellungsstatus Ihrer verwalteten Domäne
+
 Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stunde dauern.
 
 1. Während Ihre Bereitstellung ausgeführt wird, können Sie im Suchfeld **Search resources** (Ressourcen suchen) nach „Domänendienste“ suchen. Wählen Sie aus dem Suchergebnis **Azure AD Domain Services** aus. Das Blatt **Azure AD Domain Services** listet die verwaltete Domäne auf, die gerade bereitgestellt wird.
@@ -96,10 +96,10 @@ Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stun
 
     ![Domänendienste: Registerkarte „Übersicht“ nach der vollständigen Bereitstellung](./media/getting-started/domain-services-provisioned-properties.png)
 
-
 ## <a name="need-help"></a>Sie brauchen Hilfe?
+
 Es dauert möglicherweise ein oder zwei Stunden, bis beide Domänencontroller für die verwaltete Domäne bereitgestellt werden. Wenn bei Ihrer Bereitstellung Fehler auftreten, oder sie im Status „Ausstehend“ steckenbleibt, [bitten Sie das Produktteam um Hilfe](active-directory-ds-contact-us.md).
 
-
 ## <a name="next-step"></a>Nächster Schritt
+
 [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md)

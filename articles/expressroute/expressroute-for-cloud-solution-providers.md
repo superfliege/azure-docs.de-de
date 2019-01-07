@@ -1,25 +1,19 @@
 ---
-title: Azure ExpressRoute für Cloud Solution Provider | Microsoft Docs
-description: Dieser Artikel enthält Informationen für Clouddienstanbieter, die Azure-Dienste und ExpressRoute in ihre Angebote integrieren möchten.
-documentationcenter: na
+title: ExpressRoute für Cloudlösungsanbieter | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen für Cloudlösungsanbieter, die Azure-Dienste und ExpressRoute in ihre Angebote integrieren möchten.
 services: expressroute
 author: richcar
-manager: carmonm
-editor: ''
-ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: article
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.custom: seodec18
+ms.openlocfilehash: 842654f860a94481b53ebf9732fc4ed8be24cf4a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405703"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077510"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
@@ -37,7 +31,7 @@ Microsoft Azure stellt eine immer größere Anzahl von Diensten bereit, die Sie 
 Microsoft stellt Cloudlösungsanbietern APIs zur Verfügung, die sich programmatisch in Ihre eigenen Dienstverwaltungssysteme integrieren lassen und so die Verwaltung der Azure-Kundenabonnements ermöglichen. Die unterstützten Verwaltungsfunktionen finden Sie [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Verwaltung von Microsoft Azure-Ressourcen
-Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er entweder das *Durchleitungsmodell* oder das *Direktverbindungsmodell*. Diese Modelle werden im Anschluss ausführlich beschrieben.  
+Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: „*Durchleitungsmodell*“ oder „*Direktverbindungsmodell*“. Diese Modelle werden im Anschluss ausführlich beschrieben.  
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -94,7 +88,7 @@ Sie können den Kunden beim Einrichten der Verbindung und beim Konfigurieren der
 ## <a name="expressroute-routing-domains"></a>ExpressRoute-Routingdomänen
 ExpressRoute bietet drei Routingdomänen: öffentliches Peering, privates Peering und Microsoft-Peering. Jede der Routingdomänen ist mit identischen Routern in einer Aktiv/Aktiv-Konfiguration für Hochverfügbarkeit konfiguriert. Ausführlichere Informationen zu ExpressRoute-Routingdomänen finden Sie [hier](expressroute-circuit-peerings.md).
 
-Sie können benutzerdefinierte Routenfilter definieren, um nur die gewünschten oder benötigten Routen zuzulassen. Weitere Informationen sowie eine Anleitung zum Vornehmen dieser Änderungen finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung mithilfe von PowerShell](expressroute-howto-routing-classic.md). Hier finden Sie auch ausführlichere Informationen zu Routingfiltern.
+Sie können benutzerdefinierte Routenfilter definieren, um nur die gewünschten oder benötigten Routen zuzulassen. Um weitere Informationen zu erhalten oder zu erfahren, wie Sie diese Änderungen durchführen, lesen Sie diesen Artikel: [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung mit PowerShell](expressroute-howto-routing-classic.md) mit weiteren Details zu Routingfiltern.
 
 > [!NOTE]
 > Microsoft-Peering und öffentliches Peering müssen über eine öffentliche IP-Adresse des Kunden oder CSPs erfolgen und sämtlichen definierten Regeln entsprechen. Weitere Informationen finden Sie auf der Seite [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md) .  
@@ -126,7 +120,7 @@ Je nach verwendetem Modell (Direktverbindung oder Durchleitung) definiert Ihr Ku
 1. **Kundenisolation** : Die Azure-Plattform sorgt für Kundenisolation, indem Kunden-ID und Informationen zum virtuellen Netzwerk in einer sicheren Datenbank gespeichert und zur Kapselung des jeweiligen Datenverkehrs eines Kunden in einem GRE-Tunnel verwendet werden.
 2. **Netzwerksicherheitsgruppen-Regeln** dienen zum Definieren des zulässigen ein- und ausgehenden Datenverkehrs für die Subnetze innerhalb virtueller Azure-Netzwerke. Standardmäßig enthält die NSG Blockierungsregeln, die eingehenden Datenverkehr aus dem Internet blockieren, und Zulassungsregeln für Datenverkehr innerhalb eines virtuellen Netzwerks. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie [hier](https://azure.microsoft.com/blog/network-security-groups/).
 3. **Tunnelerzwingung** : Dient dazu, für das Internet bestimmten Datenverkehr aus Azure über die ExpressRoute-Verbindung an das lokale Datencenter umzuleiten. Weitere Informationen zur Tunnelerzwingung finden Sie [hier](expressroute-routing.md#advertising-default-routes).  
-4. **Verschlüsselung**: ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln. Weitere Informationen finden Sie weiter oben in Abbildung 5 (ExpressRoute-Sicherheit; optionaler IPSec-Tunnelmodus für Kunde 1). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-geräte von Drittanbietern installiert werden.
+4. **Verschlüsselung**: ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln (siehe optionale Tunnelmodus-IPSec für Kunde 1 in Abbildung 5: ExpressRoute-Sicherheit, oben). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-geräte von Drittanbietern installiert werden.
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

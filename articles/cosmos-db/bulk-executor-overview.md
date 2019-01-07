@@ -1,20 +1,18 @@
 ---
-title: Massenimport und Aktualisieren von Daten in Azure Cosmos DB unter Verwendung der BulkExecutor-Bibliothek | Microsoft-Dokumentation
+title: Massenimport und -datenaktualisierung in Azure Cosmos DB unter Verwendung der BulkExecutor-Bibliothek
 description: Ausführen von Massenvorgängen in Azure Cosmos DB über Massenimport- und Massenaktualisierungs-APIs, die von der BulkExecutor-Bibliothek zur Verfügung gestellt werden.
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: e3b77ce28e5c3a236abcd9a22e643428b53ed0a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363542"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834807"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  

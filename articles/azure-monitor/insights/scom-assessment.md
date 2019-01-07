@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 1b6f157ce8a184885fcd1cd6bbde912516916db9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52429725"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186122"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -99,7 +97,7 @@ Das ausführende Konto wurde erstellt. Nun müssen für das Konto Verwaltungsser
 2. Klicken Sie auf der Registerkarte **Verteilung** für das Feld **Ausgewählte Computer** auf **Hinzufügen**, und fügen Sie den Verwaltungsserver hinzu, an den das Konto verteilt werden soll.  Klicken Sie zum Speichern der Änderungen zweimal auf **OK**.
 3. Klicken Sie unter **Run As Configuration** (Ausführende Konfiguration) auf **Profile**.
 4. Suchen Sie nach dem *Profil der SCOM-Bewertung*.
-5. Der Profilname sollte wie folgt lauten: *Microsoft System Center Advisor SCOM Assessment Run As Profile* (Ausführendes Profil für Microsoft System Center Advisor-SCOM-Bewertung).
+5. Der Profilname muss folgendermaßen lauten: *Microsoft System Center Advisor SCOM Assessment Run As Profile* (Ausführendes Profil für Microsoft System Center Advisor-SCOM-Bewertung).
 6. Klicken Sie mit der rechten Maustaste, aktualisieren Sie die Eigenschaften, und fügen Sie das zuvor erstellte ausführende Konto hinzu.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>SQL-Skript, das dem ausführenden Konto differenzierte Berechtigungen erteilt
@@ -174,7 +172,7 @@ Die Bewertung wird standardmäßig so konfiguriert, dass sie alle 10.080 Minuten
 
 1. Suchen Sie in der Operations Manager-Konsole im Arbeitsbereich **Erstellung** im Abschnitt **Regeln** die Regel *Microsoft System Center Advisor SCOM Assessment Run Assessment Rule* (Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung der Bewertung).
 2. Wählen Sie in den Suchergebnissen die Regel aus, die den Text *Typ: Verwaltungsserver* enthält.
-3. Klicken Sie mit der rechten Maustaste auf die Regel, und klicken Sie dann auf **Override the Rule** (Regel außer Kraft setzen) > **Für alle Objekte der Klasse: Verwaltungsserver**.
+3. Klicken Sie mit der rechten Maustaste auf die Regel, und klicken Sie dann auf **Regel außer Kraft setzen** > **Für alle Objekte der Klasse: Verwaltungsserver**.
 4. Ändern Sie den Parameterwert **Intervall** in den gewünschten Intervallwert. Im folgenden Beispiel wird der Wert auf 1.440 Minuten (ein Tag) festgelegt.<br><br> ![Intervallparameter](./media/scom-assessment/interval.png)<br>  
 
     Wird ein niedrigerer Wert als 1.440 Minuten festgelegt, wird die Regel einmal täglich ausgeführt. In diesem Beispiel wird der Intervallwert ignoriert und ein Ausführungsintervall von einem Tag verwendet.
@@ -238,7 +236,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
     ```
 
     >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../log-analytics/log-analytics-queries.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
+    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +261,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
     ```
 
     >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../log-analytics/log-analytics-queries.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
+    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +302,4 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Durchsuchen Sie Protokolle](../../log-analytics/log-analytics-queries.md), um zu erfahren, wie Sie detaillierte System Center Operations Manager-Integritätsüberprüfungsdaten und -empfehlungen analysieren.
+- [Durchsuchen Sie Protokolle](../../azure-monitor/log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte System Center Operations Manager-Integritätsüberprüfungsdaten und -empfehlungen analysieren.

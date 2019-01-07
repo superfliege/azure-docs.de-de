@@ -4,17 +4,17 @@ description: Dieser Artikel beschreibt, wie Sie Azure Stream Analytics und Azure
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: df1010be8c9f41684af806885db7587bfcf1c540
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567042"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091219"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
@@ -95,7 +95,7 @@ Im Lauf der Zeit werden Modelle mit verschiedenen Daten trainiert. Um die Bewert
 
 Die Schritte sehen schematisch wie folgt aus: 
 
-![Trainieren von Modellen](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![Machine Learning-Trainingsmodelle](media/stream-analytics-machine-learning-anomaly-detection/machine-learning-training-model.png)
 
 |**Modell** | **Trainingsstartzeit** | **Zeit, zu der mit der Verwendung seiner Bewertung begonnen wird** |
 |---------|---------|---------|
@@ -115,7 +115,7 @@ Auf der Ebene von Machine Learning berechnet der Algorithmus zur Erkennung von A
 
 Sehen wir uns die Ungewöhnlichkeitsberechnung im Detail an (es wird angenommen, dass eine Reihe von Verlaufsfenstern mit Ereignissen vorhanden ist): 
 
-1. **Bidirektionale Niveauänderung:** Basierend auf dem Verlaufsfenster wird ein normaler Betriebsbereich als[10. Quantil, 90. Quantil] berechnet, d.h. Wert des 10. Quantils als untere Grenze und Wert des 90. Quantils als obere Grenze. Ein Ungewöhnlichkeitswert für das aktuelle Ereignis wird wie folgt berechnet:  
+1. **Bidirektionale Niveauänderung:** Basierend auf dem Verlaufsfenster wird ein normaler Betriebsbereich als [10. Perzentil, 90. Perzentil] berechnet, d.h. Wert des 10. Perzentils als untere Grenze und Wert des 90. Perzentils als obere Grenze. Ein Ungewöhnlichkeitswert für das aktuelle Ereignis wird wie folgt berechnet:  
 
    - 0, wenn event_value im normalen Betriebsbereich liegt  
    - event_value/90th_percentile, wenn event_value > 90th_percentile  
@@ -145,15 +145,15 @@ Die folgenden Aspekte sollten bei der Verwendung dieses Detektors beachtet werde
 
    Dies wird in den Abbildungen 1 und 2 unten durch eine Änderung der oberen Grenze dargestellt (die gleiche Logik gilt auch für eine Änderung der unteren Grenze). In beiden Abbildungen stellen sind Wellenformen eine anormale Änderung des Niveaus dar. Vertikale orangefarbene Linien kennzeichnen Hopgrenzen, und die Hopgröße entspricht dem Erkennungsfenster, das im AnomalyDetection-Operator angegeben wird. Die grünen Linien geben die Größe des Trainingsfensters an. In Abbildung 1 ist die Hopgröße identisch mit der Zeit, die die Anomalie dauert. In Abbildung 2 ist die Hopgröße halb so groß wie die Zeit, die die Anomalie dauert. In allen Fällen wird eine Änderung nach oben erkannt, weil das für die Bewertung verwendete Modell mit normalen Daten trainiert wurde. Basierend auf der Funktionsweise des bidirektionalen Niveauänderungsdetektors müssen jedoch die Normalwerte aus dem Trainingsfenster des Modells ausgeschlossen werden, das die Rückkehr zur Normalität bewertet. In Abbildung 1 enthält das Training des Bewertungsmodells einige normale Ereignisse, sodass eine Rückkehr zum Normalzustand nicht erkannt werden kann. In Abbildung 2 enthält das Training jedoch nur den anomalen Teil, sodass sicherstellt wird, dass die Rückkehr zur Normalität erkannt wird. Alles, was kleiner als die Hälfte ist, funktioniert aus dem gleichen Grund ebenfalls, wohingegen alles, was größer ist, auch einen Teil der normalen Ereignisse beinhalten wird. 
 
-   ![AD mit Fenstergröße gleich der Anomalielänge](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![AD mit Fenstergröße gleich der Anomalielänge](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-anomaly-length.png)
 
-   ![AD mit Fenstergröße gleich der Hälfte der Anomalielänge](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![AD mit Fenstergröße gleich der Hälfte der Anomalielänge](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-half-anomaly-length.png)
 
 2. In den Fällen, in denen die Länge der Anomalie nicht vorhergesagt werden kann, arbeitet dieser Detektor nach bestem Ermessen. Die Auswahl eines engeren Zeitfensters schränkt jedoch die Trainingsdaten ein, was die Wahrscheinlichkeit erhöhen würde, die Rückkehr zur Normalität zu erkennen. 
 
 3. Im folgenden Szenario wird die längere Anomalie nicht erkannt, da das Trainingsfenster bereits eine Anomalie mit dem gleichen hohen Wert enthält. 
 
-   ![Anomalien mit derselben Größe](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
+   ![Erkannte Anomalien mit derselben Größe](media/stream-analytics-machine-learning-anomaly-detection/anomalies-with-same-length.png)
 
 ## <a name="example-query-to-detect-anomalies"></a>Beispielabfrage zum Erkennen von Anomalien 
 

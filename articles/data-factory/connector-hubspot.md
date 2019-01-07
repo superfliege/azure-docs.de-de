@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 69994d0e2f945f54ccc10bcf067fa46bb3befd23
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4b0023c42d99842c704734d4f994273436f201e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121871"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077646"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopieren von Daten aus HubSpot mithilfe von Azure Data Factory (Vorschau)
 
@@ -45,7 +45,7 @@ Folgende Eigenschaften werden für den mit HubSpot verknüpften Dienst unterstü
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **HubSpot** festgelegt werden. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **HubSpot** | JA |
 | clientId | Die Client-ID, die Ihrer HubSpot-Anwendung zugeordnet ist.  | JA |
 | clientSecret | Der geheime Clientschlüssel, der Ihrer HubSpot-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | accessToken | Das Zugriffstoken, das Sie bei der ersten Authentifizierung Ihrer OAuth-Integration erhalten haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
@@ -84,7 +84,12 @@ Folgende Eigenschaften werden für den mit HubSpot verknüpften Dienst unterstü
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom HubSpot-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus HubSpot die „type“-Eigenschaft des Datasets auf **HubspotObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus HubSpot die „type“-Eigenschaft des Datasets auf **HubspotObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **HubspotObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -96,7 +101,8 @@ Legen Sie zum Kopieren von Daten aus HubSpot die „type“-Eigenschaft des Data
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -111,8 +117,8 @@ Legen Sie zum Kopieren von Daten aus HubSpot den Quelltyp in der Kopieraktivitä
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **HubspotSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Companies where Company_Id = xxx"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **HubspotSource** | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

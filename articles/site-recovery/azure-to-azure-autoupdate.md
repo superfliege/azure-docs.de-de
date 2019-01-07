@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456489"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957690"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Aktualisierung von Mobility Service in der Replikation zwischen Azure-Standorten
 
@@ -66,11 +66,11 @@ Wenn Sie die Replikation für einen virtuellen Computer aktiveren, indem Sie ent
 
 1. Wenn für den auf Ihren virtuellen Azure-Computern installierten Mobility Service neue Updates verfügbar sind, wird eine Benachrichtigung mit dem Hinweis angezeigt, dass ein neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Sie können es per Klick installieren.
 
-     ![Fenster „Replizierte Elemente“](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![Fenster „Replizierte Elemente“](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 3. Klicken Sie auf die Benachrichtigung, um die Auswahlseite für virtuelle Computer zu öffnen.
 4. Wählen Sie die virtuellen Computer aus, für die Sie Mobility Service aktualisieren möchten, und wählen Sie anschließend **OK**.
 
-     ![VM-Liste mit replizierten Elementen](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![VM-Liste mit replizierten Elementen](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 Der Aktualisierungsauftrag für Mobility Service wird für jeden ausgewählten virtuellen Computer gestartet.
 
@@ -81,8 +81,8 @@ Wenn ein Problem mit den automatischen Updates auftritt, werden Sie unter „Kon
 
 Falls Sie vergeblich versucht haben, automatische Updates zu aktivieren, lesen Sie die folgenden Informationen zur Problembehandlung.
 
-**Fehler**: Sie sind nicht berechtigt, ein ausführendes Azure-Konto (Dienstprinzipal) zu erstellen und dem Dienstprinzipal die Rolle „Mitwirkender“ zu gewähren. 
-- Empfohlene Aktion: Stellen Sie sicher, dass das angemeldete Konto dem „Mitwirkenden“ zugewiesen ist, und wiederholen Sie den Vorgang. Weitere Informationen zum Zuweisen der richtigen Berechtigungen finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
+**Fehler**: Sie verfügen nicht über die Berechtigungen, um ein ausführendes Azure-Konto (Dienstprinzipal) zu erstellen und dem Dienstprinzipal die Rolle „Mitwirkender“ zuzuweisen. 
+- Empfohlene Maßnahme: Stellen Sie sicher, dass das angemeldete Konto der Rolle „Mitwirkenden“ zugewiesen ist, und wiederholen Sie den Vorgang. Weitere Informationen zum Zuweisen der richtigen Berechtigungen finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
  
 Wenn automatische Updates eingeschaltet sind, können die meisten Probleme durch den Site Recovery-Dienst bereinigt werden, indem Sie auf die Schaltfläche **Reparatur** klicken.
 
@@ -92,8 +92,8 @@ Für den Fall, dass die Schaltfläche „Reparieren“ nicht verfügbar ist, bea
 
  - **Fehler**: Das ausführende Konto verfügt nicht über die Berechtigung zum Zugriff auf die Recovery Services-Ressource.
 
-    **Empfohlene Aktion**: Löschen und anschließendes [Neuerstellen des ausführenden Kontos](https://docs.microsoft.com/azure/automation/automation-create-runas-account), oder stellen Sie sicher, dass das ausführende Automatisierungskonto der Azure Active Directory-Anwendung Zugriff auf die Recovery Services-Ressource hat.
+    **Empfohlene Maßnahme**: Löschen Sie das Konto, und [erstellen Sie das ausführende Konto dann neu](https://docs.microsoft.com/azure/automation/automation-create-runas-account), oder stellen Sie sicher, dass das ausführende Automation-Konto der Azure Active Directory-Anwendung Zugriff auf die Recovery Services-Ressource hat.
 
-- **Fehler**: Ausführendes Konto wurde nicht gefunden. Eine der folgenden Komponenten wurde gelöscht oder nicht erstellt – Azure Active Directory-Anwendung, Dienstprinzipal, Rolle, Automation-Zertifikatasset, Automation-Verbindungsasset – oder der Fingerabdruck im Zertifikat ist nicht identisch mit dem der Verbindung. 
+- **Fehler**: Das ausführende Konto wurde nicht gefunden. Eine der folgenden Komponenten wurde gelöscht oder nicht erstellt – Azure Active Directory-Anwendung, Dienstprinzipal, Rolle, Automation-Zertifikatasset, Automation-Verbindungsasset – oder der Fingerabdruck im Zertifikat ist nicht identisch mit dem der Verbindung. 
 
-    **Empfohlene Aktion**: Löschen und [Neuerstellen des ausführenden Kontos](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+    **Empfohlene Maßnahme**: Löschen Sie das Konto, und [erstellen Sie das ausführende Konto dann neu](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

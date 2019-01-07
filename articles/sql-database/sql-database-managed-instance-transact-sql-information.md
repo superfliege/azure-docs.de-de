@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/03/2018
+ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712142"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843205"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -143,9 +143,9 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können Kryptogr
 - `CREATE CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>Sortierung
 
-Die Serversortierung ist als `SQL_Latin1_General_CP1_CI_AS` festgelegt und kann nicht geändert werden. Siehe [Sortierungen](https://docs.microsoft.com/sql/t-sql/statements/collations).
+Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie kann als Erstellungsparameter angegeben werden. Siehe [Sortierungen](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
 ### <a name="database-options"></a>Datenbankoptionen
 
@@ -277,7 +277,8 @@ Vorgänge
 ### <a name="logins--users"></a>Anmeldungen/Benutzer
 
 - Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt.
+- Azure Active Directory-Anmeldungen, die mit der [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)-Syntax oder der [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)-Syntax erstellt wurden, werden unterstützt (**öffentliche Vorschau**).
+- Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt. Verwenden Sie Azure Active Directory-Anmeldungen und -Benutzer.
 - Der Azure Active Directory-Benutzer (Azure AD), der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
 - Azure Active Directory-Benutzer (Azure AD) auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users).
 
@@ -404,7 +405,7 @@ Folgende Tabellen werden nicht unterstützt:
 
 Weitere Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
-## <a name="Changes"></a> Behavior Changes
+## <a name="Changes"></a> Änderungen im Verhalten
 
 Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:
 
@@ -427,12 +428,12 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 Jede verwaltete Instanz verfügt über bis zu 35 TB Speicher für Azure Premium-Datenträger, und jede Datenbankdatei wird auf einem separaten physischen Datenträger abgelegt. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten.
 
-Eine verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größe von 1,2 TB verfügen, die auf einer 4-TB-Platte gespeichert ist, und über 248 Dateien mit einer Größe von jeweils 1 GB, die auf separaten 128-GB-Platten gespeichert sind. In diesem Beispiel:
+Eine verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größe von 1,2 TB verfügen, die auf einem 4-TB-Datenträger gespeichert ist, und über 248 Dateien mit einer Größe von jeweils 1 GB, die auf separaten 128-GB-Datenträgern gespeichert sind. In diesem Beispiel gilt Folgendes:
 
-- beträgt die Gesamtgröße des Datenträgerspeichers 1 x 4 TB + 248 x 128 GB = 35 TB.
-- beträgt der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
+- Die Gesamtgröße des zugewiesenen Datenträgerspeichers beträgt 1 x 4 TB + 248 x 128 GB = 35 TB.
+- Der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz beträgt 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
 
-Dies verdeutlicht, dass eine verwaltete Instanz unter bestimmten Umständen aufgrund einer sehr spezifischen Verteilung von Dateien das Azure Premium-Datenträgerlimit in Höhe von 35 TB erreichen kann, wo Sie dies möglicherweise nicht erwarten.
+Dies verdeutlicht, dass eine verwaltete Instanz unter bestimmten Umständen aufgrund einer spezifischen Verteilung von Dateien das Azure Premium-Datenträgerlimit in Höhe von 35 TB erreichen kann, wo Sie dies möglicherweise nicht erwarten.
 
 In diesem Beispiel funktionieren vorhandene Datenbanken weiterhin und können ohne Probleme weiter wachsen, solange keine neuen Dateien hinzugefügt werden. Es könnten jedoch keine neuen Datenbanken erstellt oder wiederhergestellt werden, da für neue Plattenlaufwerke nicht genügend Speicherplatz vorhanden ist, selbst nicht dann, wenn die Gesamtgröße aller Datenbanken das Größenlimit der Instanz nicht überschreitet. Der Fehler, der in diesem Fall zurückgegeben wird, ist nicht klar.
 
@@ -443,7 +444,10 @@ Entfernen Sie das vorangestellte `?` aus dem über das Azure-Portal erstellten S
 
 ### <a name="tooling"></a>Tools
 
-In SQL Server Management Studio und SQL Server Data Tools treten beim Zugriff auf eine verwaltete Instanz möglicherweise Probleme auf. Alle Probleme mit Tools werden vor der allgemeinen Verfügbarkeit behoben.
+In SQL Server Management Studio (SSMS) und SQL Server Data Tools (SSDT) kommt es beim Zugriff auf eine verwaltete Instanz möglicherweise zu Problemen.
+
+- Die Verwendung von Azure AD-Anmeldungen und -Benutzern (**öffentliche Vorschau**) mit SSDT wird aktuell nicht unterstützt.
+- Die Skripterstellung für Azure AD-Anmeldungen und -Benutzer (**öffentliche Vorschau**) wird in SSMS nicht unterstützt.
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Falsche Datenbanknamen in einigen Ansichten, Protokollen und Meldungen
 
@@ -451,7 +455,7 @@ Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehl
 
 ### <a name="database-mail-profile"></a>Datenbank-E-Mail-Profil
 
-Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss. Dabei handelt es sich um eine temporäre Einschränkung, die bald entfällt.
+Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss.
 
 ### <a name="error-logs-are-not-persisted"></a>Fehlerprotokolle sind nicht persistent
 
@@ -461,7 +465,7 @@ Fehlerprotokolle, die in einer verwalteten Instanz verfügbar sind, sind nicht p
 
 Die verwaltete SQL-Datenbank-Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung, von denen viele nicht relevant sind. Die Informationsmenge in Fehlerprotokollen wird in Zukunft reduziert.
 
-**Problemumgehung**: Verwenden Sie eine benutzerdefinierte Prozedur zum Lesen von Fehlerprotokollen, die einige nicht relevante Einträge herausfiltern. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+**Problemumgehung**: Verwenden Sie eine benutzerdefinierte Prozedur zum Lesen von Fehlerprotokollen, mit der einige nicht relevante Einträge herausgefiltert werden. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Der gleiche Transaktionsbereich wird auf zwei Datenbanken in derselben Instanz nicht unterstützt
 
@@ -492,13 +496,13 @@ using (var scope = new TransactionScope())
 
 Obwohl dieser Code mit Daten innerhalb derselben Instanz funktioniert, erforderte er MS DTC.
 
-**Problemumgehung**: Verwenden Sie [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um eine andere Datenbank im Verbindungskontext zu verwenden – anstelle von zwei Verbindungen.
+**Problemumgehung**: Verwenden Sie [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um anstelle von zwei Verbindungen eine andere Datenbank im Verbindungskontext zu verwenden.
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR-Module und Verbindungsserver können manchmal nicht auf lokale IP-Adressen verweisen
 
-CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindungsserver/verteilte Abfragen, die auf die aktuelle Instanz verweisen, können manchmal nicht die IP-Adresse der lokalen Instanz auflösen. Dies ist ein vorübergehender Fehler.
+CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindungsserver/verteilte Abfragen, die auf die aktuelle Instanz verweisen, können manchmal nicht die IP-Adresse der lokalen Instanz auflösen. Dieser Fehler ist ein vorübergehendes Problem.
 
-**Problemumgehung**: Verwenden Sie Kontextverbindungen im CLR-Modul, sofern möglich.
+**Problemumgehung**: Verwenden Sie Kontextverbindungen nach Möglichkeit im CLR-Modul.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

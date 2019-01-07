@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2018
 ms.author: mathoma
-ms.openlocfilehash: 44aee447c7f935cd67ca55902c53c5f6f9eb6fda
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 52036d8f5d25fc4a4f2d1b602428e9cba4762b7f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52577087"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993137"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server auf Azure-VMs – Versionshinweise
 
@@ -28,8 +28,8 @@ Mit Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 
 
 ## <a name="november-2018"></a>November 2018
-- **Neuer SQL-Ressourcenanbieter**: Es gibt einen neuen Ressourcenanbieter für SQL-VMs, der eine bessere Verwaltung Ihrer VM ermöglicht. Weitere Informationen zum Registrieren Ihrer VM finden Sie unter [Registrieren älterer SQL-VMs beim neuen Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-legacy-sql-vm-with-new-resource-provider).
-- **Lizenzmodell wechseln**: Sie können nun mit der Azure CLI oder PowerShell für Ihre SQL-VM zwischen dem nutzungsbasierten Modell und dem Modell Bring-Your-Own-License wechseln. Weitere Informationen finden Sie unter [Ändern des Lizenzmodells für eine SQL-VM](virtual-machines-windows-sql-ahb.md).
+- **Neuer SQL-Ressourcenanbieter**: Es gibt einen neuen Ressourcenanbieter für SQL-VMs, der eine bessere Verwaltung Ihrer VM ermöglicht. Weitere Informationen zum Registrieren Ihrer VM finden Sie unter [Registrieren vorhandener SQL-VMs beim neuen Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-existing-sql-vm-with-new-resource-provider).
+- **Wechsel des Lizenzierungsmodells**: Sie können nun mit der Azure CLI oder PowerShell für Ihre SQL-VM zwischen dem nutzungsbasierten Modell und dem BYOL-Modell (Bring-Your-Own-License) wechseln. Weitere Informationen finden Sie unter [Ändern des Lizenzmodells für eine SQL-VM](virtual-machines-windows-sql-ahb.md).
 
 
 

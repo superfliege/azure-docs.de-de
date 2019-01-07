@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 9b83d6ac908be1e62e3c6c2025ae31aa374bdeea
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 47f3e8ab14ecd50e958c57ba4c8f9f098fd5bb7b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975072"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868360"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Governance der Azure DevTest Labs-Infrastruktur – Verwalten der Kosten und des Besitzes
 Kosten und Besitz sind zentrale Überlegungen beim Aufbau Ihrer Entwicklungs- und Testumgebungen. In diesem Abschnitt finden Sie Informationen, die Ihnen beim Optimieren der Kosten und beim Festlegen des Besitzes in Ihrer gesamten Umgebung helfen.
@@ -40,7 +40,7 @@ Dieser Ansatz bietet zahlreiche Vorteile:
  
 Nur aktive Visual Studio-Abonnenten (Standardabonnements oder Jahres- und Monatscloudabonnements) können die im Rahmen eines Enterprise Dev/Test-Abonnements ausgeführten Azure-Dienste nutzen. Endbenutzer können jedoch auch auf die Anwendung zugreifen, um Feedback zu geben oder Akzeptanztests durchzuführen. Die Nutzung von Ressourcen im Rahmen dieses Abonnements ist auf das Entwickeln und Testen von Anwendungen beschränkt, und es wird keinerlei Garantie in Bezug auf die Betriebszeit gewährt.
 
-Wenn Sie das DevTest-Angebot nutzen möchten, beachten Sie, dass dieser Vorteil ausschließlich für das Entwickeln und Testen Ihrer Anwendungen gilt. Die Nutzung im Rahmen des Abonnements unterliegt keiner Vereinbarung zum Servicelevel (SLA) mit finanzieller Absicherung, mit Ausnahme der Nutzung von Visual Studio Team Services und HockeyApp.
+Wenn Sie das DevTest-Angebot nutzen möchten, beachten Sie, dass dieser Vorteil ausschließlich für das Entwickeln und Testen Ihrer Anwendungen gilt. Die Nutzung im Rahmen des Abonnements unterliegt keiner Vereinbarung zum Servicelevel (SLA) mit finanzieller Absicherung, mit Ausnahme der Nutzung von Azure DevOps und HockeyApp.
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>Definieren eines rollenbasierten Zugriffs in Ihrer gesamten Organisation
 ### <a name="question"></a>Frage

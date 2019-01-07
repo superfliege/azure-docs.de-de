@@ -1,6 +1,6 @@
 ---
-title: Asynchrone Vorgänge in Azure | Microsoft-Dokumentation
-description: Beschreibt, wie asynchrone Vorgänge in Azure nachverfolgt werden.
+title: Status asynchroner Vorgänge – Azure Resource Manager
+description: Beschreibt, wie asynchrone Vorgänge in Azure nachverfolgt werden. Es werden die Werte gezeigt, die Sie verwenden, um den Status eines Vorgangs mit langer Ausführungsdauer abzurufen.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 601f4a899393d8ddd5ea698d4d01ade7141ee91f
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.custom: seodec18
+ms.openlocfilehash: 1b05ed50f08ddbf2eb5da8e08f5bf623596e1f9b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146794"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135456"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Nachverfolgen asynchroner Vorgänge in Azure
 Einige Azure-REST-Vorgänge werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. In diesem Artikel wird beschrieben, wie der Status asynchroner Vorgänge mithilfe von Werten nachverfolgt wird, die in der Antwort zurückgegeben werden.  

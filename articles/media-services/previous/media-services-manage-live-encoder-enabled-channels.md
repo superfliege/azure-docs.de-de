@@ -1,6 +1,6 @@
 ---
 title: Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen | Microsoft Docs
-description: 'In diesem Thema wird beschrieben, wie ein Kanal eingerichtet wird, von dem ein Single-Bitrate-Livedatenstrom aus einem lokalen Encoder empfangen und eine Livecodierung zu einem Datenstrom mit adaptiver Bitrate mit Media Services ausgeführt wird. Der Stream kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Dazu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Stream, MPEG-DASH.'
+description: 'In diesem Thema wird beschrieben, wie ein Kanal eingerichtet wird, von dem ein Single-Bitrate-Livedatenstrom aus einem lokalen Encoder empfangen und eine Livecodierung zu einem Datenstrom mit adaptiver Bitrate mit Media Services ausgeführt wird. Der Datenstrom kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Hierzu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Stream, MPEG DASH.'
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 11/29/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 13edef4c02aff167316ccae2755a6ec1b58e2e89
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e7159a8e3acf45105a11cc4574f9474457bed3ea
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262617"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682655"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -29,8 +29,8 @@ ms.locfileid: "52262617"
 ## <a name="overview"></a>Übersicht
 In Azure Media Services (AMS) stellt ein **Kanal** eine Pipeline für die Verarbeitung von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabedatenströme von **Kanälen** empfangen werden können:
 
-* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Live Encoding mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
-* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen der Live-Codierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
   
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
@@ -92,7 +92,7 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 > 
 > 
 
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein **Single** -Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. 
+1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein **Single**-Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. 
    
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 2. Erstellen Sie einen Kanal, und starten Sie ihn. 
@@ -214,18 +214,17 @@ Hier ist die Voreinstellung angegeben, die vom Liveencoder in diesem Kanal verwe
 
 Beachten Sie, dass Sie sich an amslived@microsoft.com wenden müssen, wenn Sie benutzerdefinierte Voreinstellungen verwenden möchten.
 
-**Default720p** wird das Video in die folgenden 7 Ebenen codiert:
+Mit **Default720p** wird das Video in die folgenden 6 Ebenen codiert.
 
 #### <a name="output-video-stream"></a>Ausgabe-Videodatenstrom
 | BitRate | Breite | Höhe | Max. Bilder/s | Profil | Name des Ausgabedatenstroms |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Hoch |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Main |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Main |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Main |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Main |Video_384x216_550kbps |
-| 350 |340 |192 |30 |Grundwert |Video_340x192_350kbps |
-| 200 |340 |192 |30 |Grundwert |Video_340x192_200kbps |
+| 2200 |960 |540 |30 |Hoch |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Hoch |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Hoch |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Hoch |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Hoch |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Ausgabe-Audiodatenstrom
 

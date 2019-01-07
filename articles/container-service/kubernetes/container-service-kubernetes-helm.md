@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Containern mit Helm in Azure-Kubernetes
+title: (VERALTET) Bereitstellen von Containern mit Helm in Azure Kubernetes
 description: Verwenden Sie das Helm-Verpackungstool zum Bereitstellen von Containern in einem Kubernetes-Cluster in Azure Container Service.
 services: container-service
 author: sauryadas
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 882e785968f94473e80c7a14e5a68498add37735
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 05edbf40e8cd5f8edbdc8b74b540962b1a25c8de
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634152"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997882"
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Verwenden Sie Helm zum Bereitstellen von Containern in einem Kubernetes-Cluster
+# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(VERALTET) Verwenden von Helm zum Bereitstellen von Containern in einem Kubernetes-Cluster
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Artikels, wo die Verwendung von Azure Kubernetes Service berücksichtigt wird, finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)](../../aks/kubernetes-helm.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 [Helm](https://github.com/kubernetes/helm/) ist ein Open Source-Verpackungstool, das Ihnen dabei hilft, Kubernetes-Anwendungen zu installieren und ihren Lebenszyklus zu verwalten. Ähnlich wie Linux-Paket-Manager (z.B. Apt-get und Yum) wird Helm zur Verwaltung von Kubernetes-Diagrammen verwendet, bei denen es sich um Pakete aus vorkonfigurierten Kubernetes-Ressourcen handelt. Dieser Artikel veranschaulicht die Verwendung von Helm für einen Kubernetes-Cluster, der in Azure Container Service bereitgestellt wird.
 

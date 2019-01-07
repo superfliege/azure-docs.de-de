@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4020d754bd8c7728b43ef583aa7e7d8dbddcebec
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e6f85d327fff1ee32dca6dfb2231b28e6dc96c61
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669797"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965632"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>Was ist das PowerShell-Modul „ADConnectivityTool“?
 
@@ -24,7 +24,7 @@ Das ADConnectivity-Tool ist ein PowerShell-Modul, das auf eine der folgenden Art
 - Während der Installation, wenn ein Problem mit der Netzwerkverbindung die erfolgreiche Überprüfung der Active Directory-Anmeldeinformationen verhindert, die der Benutzer im Assistenten angegeben hat.
 - Nach der Installation durch einen Benutzer, der die Funktionen aus einer PowerShell-Sitzung aufruft.
 
-Das Tool befindet sich unter: **C:\Programme\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1**. 
+Das Tool befindet sich hier: **C:\Programme\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
 
 ## <a name="adconnectivitytool-during-installation"></a>ADConnectivityTool während der Installation
 
@@ -40,7 +40,7 @@ Auf der Seite **Verzeichnisse verbinden**  im Azure AD Connect-Assistenten verwe
 Bei Auffinden eines dieser Probleme wird eine diesbezügliche Fehlermeldung im AADConnect-Assistenten angezeigt:
 
 
-![Error](media\how-to-connect-adconnectivitytools\error1.png)
+![Error](media/how-to-connect-adconnectivitytools/error1.png)
 
 Z. B. wenn wir versuchen, im Bildschirm **Verzeichnisse verbinden** ein Verzeichnis hinzuzufügen, muss Azure AD Connect dies überprüfen und erwartet, in der Lage zu sein, mit einem Domänencontroller über Port 389 kommunizieren zu können.  Ist dies nicht möglich, sehen wir den Fehler, der im obigen Screenshot angezeigt wird.  
 

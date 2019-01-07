@@ -3,7 +3,7 @@ title: So deinstallieren Sie das Tool für elastische Datenbankaufträge
 description: Erfahren Sie, wie Sie Komponenten der Aufträge für die elastische Datenbank mithilfe des Azure-Portals oder PowerShell deinstallieren.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 15313bf0d2d152a8295fb831e62452f8ad63bbeb
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f717c0c656c5a80b14ef09a10cda18bd12500eeb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242448"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869023"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>Deinstallieren von Komponenten der Aufträge für die elastische Datenbank
 
@@ -35,7 +35,7 @@ ms.locfileid: "50242448"
 5. Löschen Sie die Ressourcengruppe.
 
 ## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>Deinstallieren von Komponenten der Aufträge für die elastische Datenbank mithilfe von PowerShell
-1. Öffnen Sie ein Microsoft Azure PowerShell-Befehlsfenster, und navigieren Sie zum Unterverzeichnis „tools“ im Ordner „Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x“: Geben Sie **cd tools**ein.
+1. Öffnen Sie ein Microsoft Azure PowerShell-Befehlsfenster, und navigieren Sie zum Unterverzeichnis „tools“ im Ordner „Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x“: Geben Sie **cd tools** ein.
    
      PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 2. Führen Sie das PowerShell-Skript „.\UninstallElasticDatabaseJobs.ps1“ aus.

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0fd4efe7fc6f8f217d889b5f87c133b5e250b54
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806488"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258201"
 ---
 <a name="logic-app-test-drive"></a>Testversion für Logik-Apps
 ====================
@@ -40,7 +40,7 @@ Nachdem Sie Ihre Testversion erstellt haben, werden in diesem Abschnitt die einz
 
 Im ersten und wichtigsten Feld müssen Sie festlegen, ob die Testversion für Ihr Angebot aktiviert werden soll. Wenn Sie **Nein** auswählen, wird das Formular deaktiviert. Wenn Sie die Veröffentlichung dann erneut mit der deaktivierten Testversion durchführen, wird die Testversion aus der Produktion entfernt.
 
-*Hinweis:* Wenn Testversionen von Benutzern aktiv verwendet werden, werden diese Testversionen weiterhin ausgeführt, bis die Sitzung der Benutzer abgelaufen ist.
+*Hinweis*: Wenn Testversionen von Benutzern aktiv verwendet werden, werden diese Testversionen weiterhin ausgeführt, bis die Sitzung der Benutzer abgelaufen ist.
 
 ### <a name="details"></a>Details
 
@@ -48,7 +48,7 @@ Im nächsten Abschnitt werden die Details zu Ihrem Angebot der Testversion ausge
 
 ![Details zur Testversion](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Beschreibung:** *[Pflichtfeld]* Hier geben Sie die Beschreibung der Inhalte der Testversion ein. Hier kann der Kunde nachlesen, welche Szenarien die Testversion für Ihr Produkt abdeckt. 
+**Beschreibung:** *[Pflichtfeld]* Hier geben Sie die Beschreibung der Inhalte der Testversion ein. Hier kann der Kunde nachlesen, welche Szenarien die Testversion für Ihr Produkt abdeckt. 
 
 **Benutzerhandbuch:** *[Pflichtfeld]* Dies ist die ausführliche Beschreibung zur Verwendung Ihrer Testversion. Mit diesem Benutzerhandbuch kann der Kunde genau die vorgesehenen Schritte in der Testversion ausführen und durchlaufen. Es ist wichtig, dass die Inhalte einfach nachzuvollziehen und auszuführen sind. (Es muss sich um eine PDF-Datei handeln.)
 
@@ -126,15 +126,13 @@ Klicken Sie auf Speichern. Im letzten Schritt wird die Anwendungs-ID für diese 
 Wenn die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet wird, muss die Anwendung im Abonnement als Mitwirkender hinzugefügt werden. Dazu müssen folgende Schritte ausgeführt werden:
 
 1. Navigieren Sie zum Blatt „Abonnements“, und wählen Sie das entsprechende Abonnement aus, das nur für die Testversion verwendet wird.
-2. Klicken Sie auf „Zugriffssteuerung (IAM)“.
-3. Klicken Sie im neuen Blatt auf „+ Hinzufügen“.
-4. Legen Sie die Rolle „Mitwirkender“ fest.
-5. Geben Sie den Namen der AAD-Anwendung ein, und wählen Sie die AAD-Anwendung aus, um die Rolle zuzuweisen.
-6. Klicken Sie auf „Speichern“.
-
-![Azure Active Directory, Hinzufügen eines neuen Zugriffssteuerungsprinzipals](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Azure Active Directory-Berechtigungen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.  ![Azure Active Directory, Hinzufügen eines neuen Zugriffssteuerungsprinzipals](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klicken Sie auf **Rollenzuweisung hinzufügen**.
+1. Legen Sie die Rolle als **Mitwirkender** fest.
+1. Geben Sie den Namen der Azure AD-Anwendung ein, und wählen Sie die Anwendung aus, um die Rolle zuzuweisen.
+    ![Azure Active Directory-Berechtigungen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klicken Sie auf **Speichern**.
 
 **Azure AD App Key** (Azure AD-App-Schlüssel): *[Pflichtfeld]* Im letzten Feld wird ein Authentifizierungsschlüssel generiert. Geben Sie unter „Schlüssel“ eine Beschreibung des Schlüssels an, legen Sie die Dauer so fest, dass er nie abläuft, und wählen Sie dann „Speichern“ aus. Es ist **wichtig**, dass der Schlüssel nicht abläuft, da dies andernfalls zu Fehlern der Testversion in der Produktion führt. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
 

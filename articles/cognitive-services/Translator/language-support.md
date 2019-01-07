@@ -10,86 +10,98 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 222e37e38772b82e9d9849e3a955b865d43d3c63
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957388"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679714"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
-Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetzung von Texten. Die neuronale maschinelle Übersetzung (NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende, maschinelle Übersetzungen und steht standardmäßig in V3 der Translator-Text-API bereit, wenn ein neuronales System verfügbar ist. Die neuronale maschinelle Übersetzung ist in V2 über die Kategorie „generalnn“ verfügbar.
+Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetzung von Texten. Die neuronale maschinelle Übersetzung (NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende, maschinelle Übersetzungen und steht standardmäßig in V3 der Textübersetzungs-API bereit, wenn ein neuronales System verfügbar ist. 
 
 [Weitere Informationen zur Funktionsweise von maschineller Übersetzung](https://www.microsoft.com/translator/mt.aspx)
 
-| Sprache    | Übersetzungstyp |Sprachcode |
-|:----------- |:-------:|:-------------:|
-| Afrikaans      | Statistisch |`af`          |
-| Arabisch      | Neuronal | `ar`          |
-| Arabisch, Levantine    | Neuronal | `apc`
-| Bengalisch      | Neuronal |`bn`          |
-| Bosnisch (Lateinisch)      | Statistisch |`bs`          |
-| Bulgarisch     |  Neuronal |`bg`          |
-| Chinesisch (traditionell)      | Statistisch |`yue`          |
-| Katalanisch      | Statistisch |`ca`          |
-| Chinesisch (vereinfacht)        |  Neuronal |`zh-Hans`          |
-| Chinesisch (traditionell)        |  Neuronal |`zh-Hant`          |
-| Kroatisch      | Neuronal |`hr`          |
-| Tschechisch        |  Neuronal |`cs`          |
-| Dänisch        |  Neuronal |`da`          |
-| Niederländisch        |  Neuronal |`nl`          |
-| Englisch       |  Neuronal |`en`          |
-| Estnisch      | Neuronal |`et`          |
-| Fidschi      | Statistisch |`fj`          |
-| Filipino      | Statistisch |`fil`          |
-| Finnisch      | Neuronal |`fi`          |
-| Französisch        |  Neuronal |`fr`          |
-| Deutsch       |  Neuronal |`de`          |
-| Griechisch      | Neuronal |`el`          |
-| Haitianisches Kreolisch      | Statistisch |`ht`          |
-| Hebräisch      | Neuronal |`he`          |
-| Hindi        |  Neuronal |`hi`          |
-| Hmong Daw      | Statistisch |`mww`          |
-| Ungarisch      | Neuronal |`hu`          |
-| Isländisch      |  Neuronal |`is`           |
-| Indonesisch      | Statistisch |`id`          |
-| Italienisch        |  Neuronal |`it`          |
-| Japanisch        |  Neuronal |`ja`          |
-| Suaheli      | Statistisch |`sw`          |
-| Klingonisch      | Statistisch |`tlh`          |
-| Klingonisch (pIqaD)      | Statistisch |`tlh-Qaak`          |
-| Koreanisch        |  Neuronal |`ko`          |
-| Lettisch      | Neuronal |`lv`          |
-| Litauisch      | Neuronal |`lt`          |
-| Madagassisch      | Statistisch |`mg`          |
-| Malaiisch      | Statistisch |`ms`          |
-| Maltesisch      | Statistisch |`mt`          |
-| Norwegisch        |  Neuronal |`nb`          |
-| Persisch      | Statistisch |`fa`          |
-| Polnisch        |  Neuronal |`pl`          |
-| Portugiesisch        |  Neuronal |`pt`          |
-| Queretaro-Otomi      | Statistisch |`otq`          |
-| Rumänisch        |  Neuronal |`ro`          |
-| Russisch        |  Neuronal |`ru`          |
-| Samoanisch      | Statistisch |`sm`          |
-| Serbisch (Kyrillisch)      | Statistisch |`sr-Cyrl`          |
-| Serbisch (Lateinisch)      | Statistisch |`sr-Latn`          |
-| Slowakisch     | Neuronal |`sk`          |
-| Slowenisch      | Neuronal |`sl`          |
-| Spanisch        |  Neuronal |`es`          |
-| Schwedisch        |  Neuronal |`sv`          |
-| Tahitisch      | Statistisch |`ty`          |
-| Tamilisch      | Statistisch |`ta`          |
-| Telugu   | Neuronal   | `te` |
-| Thailändisch      | Neuronal |`th`          |
-| Tongaisch      | Statistisch |`to`          |
-| Türkisch       |  Neuronal |`tr`          |
-| Ukrainisch      | Neuronal |`uk`          |
-| Urdu      | Statistisch |`ur`          |
-| Vietnamesisch      | Neuronal |`vi`          |
-| Walisisch      | Neuronal |`cy`          |
-| Yukatekisches Maya      | Statistisch |`yua`          |
+**V2 der Textübersetzungs-API**
+
+> [!NOTE]
+> V2 gilt ab dem 30. April 2018 als veraltet und wird ab dem 30. April 2019 nicht mehr unterstützt.
+
+* Nur statistisches System: Für diese Sprache ist kein neuronales System verfügbar.
+* Neuronales System verfügbar: Es ist ein neuronales System verfügbar. Verwenden Sie den Parameter `category=generalnn`, um auf das neuronale System zuzugreifen.
+* Neuronales System als Standard: Das neuronale System ist als standardmäßiges Übersetzungssystem festgelegt. Verwenden Sie den Parameter `category=smt`, um auf das statistische System zur Verwendung mit Microsoft Translator Hub zuzugreifen.
+* Nur neuronales System: Es ist nur die neuronale Übersetzung verfügbar.
+
+**V3 der Textübersetzungs-API**: Version 3 der Textübersetzungs-API verwendet standardmäßig das neuronale System. Die statistischen Systeme sind nur verfügbar, wenn keine neuronalen Systeme vorhanden sind. „Benutzerdefinierter Translator“ kann nur mit neuronalen Sprachen verwendet werden. 
+
+|Sprache|  Sprachcode|  V2-API| V3-API|
+|:-----|:-----:|:-----|:-----|
+|Afrikaans| `af`    |Nur statistisches System|  Neuronal|
+|Arabisch|    `ar`    |Neuronales System verfügbar|  Neuronal|
+|Arabisch, Levantine| `apc`   |Neuronales System verfügbar|  Neuronal|
+|Bengalisch|    `bn`    |Neuronales System verfügbar|  Neuronal|
+|Bosnisch (Lateinisch)|   `bs`    |Nur statistisches System|  Statistisch|
+|Bulgarisch| `bg`    |Neuronales System verfügbar|  Neuronal|
+|Chinesisch (traditionell)|   `yue`   |Nur statistisches System|  Statistisch|
+|Katalanisch|   `ca`    |Nur statistisches System|  Statistisch|
+|Chinesisch (vereinfacht)|    `zh-Hans`   |Neuronales System als Standard |Neuronal|
+|Chinesisch (traditionell)|   `zh-Hant`   |Neuronales System als Standard |Neuronal|
+|Kroatisch|  `hr`    |Neuronales System verfügbar|  Neuronal|
+|Tschechisch| `cs`    |Neuronales System verfügbar|  Neuronal|
+|Dänisch|    `da`    |Neuronales System verfügbar   |Neuronal|
+|Niederländisch| `nl`    |Neuronales System verfügbar|  Neuronal|
+|Englisch|   `en`    |Neuronales System verfügbar|  Neuronal|
+|Estnisch|  `et`    |Neuronales System verfügbar|  Neuronal|
+|Fidschi|    `fj`    |Nur statistisches System|  Statistisch|
+|Filipino|  `fil`   |Nur statistisches System|  Statistisch|
+|Finnisch|   `fi`    |Neuronales System verfügbar|  Neuronal|
+|Französisch|    `fr`    |Neuronales System verfügbar|  Neuronal|
+|Deutsch|    `de`    |Neuronales System verfügbar|  Neuronal|
+|Griechisch| `el`    |Neuronales System verfügbar|  Neuronal|
+|Haitianisches Kreolisch|    `ht`    |Nur statistisches System   |Statistisch|
+|Hebräisch |`he`   |Neuronales System verfügbar   |Neuronal|
+|Hindi| `hi`    |Neuronales System als Standard|    Neuronal|
+|Hmong Daw| `mww`   |Nur statistisches System|  Statistisch|
+|Ungarisch| `hu`    |Neuronales System verfügbar|  Neuronal|
+|Isländisch| `is`    |Nur neuronales System|   Neuronal|
+|Indonesisch|    `id`    |Nur statistisches System|  Statistisch|
+|Italienisch|   `it`    |Neuronales System verfügbar|  Neuronal|
+|Japanisch|  `ja`    |Neuronales System verfügbar|  Neuronal|
+|Suaheli| `sw`    |Nur statistisches System|  Statistisch|
+|Klingonisch|   `tlh`   |Nur statistisches System|  Statistisch|
+|Klingonisch (plqaD)|   `tlh-Qaak`  |Nur statistisches System|  Statistisch|
+|Koreanisch |`ko`   |Neuronales System verfügbar|  Neuronal|
+|Lettisch|   `lv`    |Neuronales System verfügbar|  Neuronal|
+|Litauisch|    `lt`    |Neuronales System verfügbar|  Neuronal|
+|Madagassisch|  `mg`    |Nur statistisches System|  Statistisch|
+|Malaiisch| `ms`    |Nur statistisches System   |Statistisch|
+|Maltesisch|   `mt`    |Nur statistisches System|  Statistisch|
+|Norwegisch| `nb`    |Neuronales System verfügbar|  Neuronal|
+|Persisch|   `fa`    |Nur statistisches System|  Statistisch|
+|Polnisch|    `pl`    |Neuronales System verfügbar|  Neuronal|
+|Portugiesisch|    `pt`    |Neuronales System verfügbar|  Neuronal|
+|Queretaro-Otomi|   `otq`   |Nur statistisches System|  Statistisch|
+|Rumänisch|  `ro`    |Neuronales System verfügbar|  Neuronal|
+|Russisch|   `ru`    |Neuronales System verfügbar|  Neuronal|
+|Samoanisch|    `sm`    |Nur statistisches System|  Statistisch|
+|Serbisch (Kyrillisch)|    `sr-Cyrl`   |Nur statistisches System|  Statistisch|
+|Serbisch (Lateinisch)|   `sr-Latn`   |Nur statistisches System   |Statistisch|
+|Slowakisch|    `sk`    |Neuronales System verfügbar|  Neuronal|
+|Slowenisch| `sl`    |Neuronales System verfügbar|  Neuronal|
+|Spanisch|   `es`    |Neuronales System verfügbar|  Neuronal|
+|Schwedisch|   `sv`    |Neuronales System verfügbar   |Neuronal|
+|Tahitisch|  `ty`    |Nur statistisches System|  Statistisch|
+|Tamilisch| `ta`    |Nur statistisches System|  Statistisch|
+|Telugu|    `te`    |Nur neuronales System|   Neuronal|
+|Thailändisch|  `th`    |Neuronales System verfügbar|  Neuronal|
+|Tongaisch|    `to`    |Nur statistisches System|  Statistisch|
+|Türkisch|   `tr`    |Neuronales System verfügbar   |Neuronal|
+|Ukrainisch| `uk`    |Neuronales System verfügbar|  Neuronal|
+|Urdu|  `ur`    |Nur statistisches System|  Statistisch|
+|Vietnamesisch|    `vi`    |Neuronales System verfügbar|  Neuronal|
+|Walisisch| `cy`    |Neuronales System verfügbar|  Neuronal|
+|Yukatekisches Maya|  `yua`   |Nur statistisches System|  Statistisch|
 
 ## <a name="transliteration"></a>Transliteration
 

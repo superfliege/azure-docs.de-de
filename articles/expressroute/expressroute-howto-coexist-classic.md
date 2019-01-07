@@ -1,26 +1,20 @@
 ---
-title: 'Konfigurieren von ExpressRoute- und Site-to-Site-VPN-Verbindungen, die gleichzeitig bestehen können: klassisch: Azure | Microsoft-Dokumentation'
+title: 'Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-VPN-Verbindungen: klassisch: Azure | Microsoft-Dokumentation'
 description: Dieser Artikel führt Sie durch die Konfiguration von ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen, die im klassischen Bereitstellungsmodell gleichzeitig bestehen können.
 documentationcenter: na
 services: expressroute
 author: charwen
-manager: carmonm
-editor: ''
-tags: azure-service-management
-ms.assetid: dcf1a5af-a289-466a-b812-0bfedbd2bda0
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.topic: conceptual
+ms.date: 12/06/2018
 ms.author: charwen
-ms.openlocfilehash: f868c4d63209da641b4faa336e7ef78b36ef6454
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165440"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084208"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen (klassisch)
 > [!div class="op_single_selector"]
@@ -29,7 +23,7 @@ ms.locfileid: "52165440"
 > 
 > 
 
-Die Möglichkeit zum Konfigurieren von Standort-zu-Standort-VPN und ExpressRoute bietet mehrere Vorteile. Sie können ein Site-to-Site-VPN als sicheren Failoverpfad für ExpressRoute konfigurieren oder für Verbindungen mit Websites nutzen, die nicht über ExpressRoute verbunden sind. Wir werden die Schritte zum Konfigurieren von beiden Szenarien in diesem Artikel behandeln. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Diese Konfiguration ist nicht im Portal verfügbar.
+In diesem Artikel wird beschrieben, wie Sie parallel bestehende ExpressRoute- und Site-to-Site-VPN-Verbindungen konfigurieren. Die Möglichkeit zum Konfigurieren von Standort-zu-Standort-VPN und ExpressRoute bietet mehrere Vorteile. Sie können ein Site-to-Site-VPN als sicheren Failoverpfad für ExpressRoute konfigurieren oder für Verbindungen mit Websites nutzen, die nicht über ExpressRoute verbunden sind. Wir werden die Schritte zum Konfigurieren von beiden Szenarien in diesem Artikel behandeln. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Diese Konfiguration ist nicht im Portal verfügbar.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 

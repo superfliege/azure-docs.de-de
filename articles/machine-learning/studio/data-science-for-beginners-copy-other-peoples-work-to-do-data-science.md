@@ -1,13 +1,12 @@
 ---
 title: Kopieren der Data Science-Beispiele von anderen – Azure Machine Learning Studio | Microsoft-Dokumentation
-description: 'Branchengeheimnis von Data Science: Lassen Sie andere Ihre Arbeit erledigen. Rufen Sie Machine Learning-Beispiele aus dem Azure AI-Katalog ab.'
+description: 'Das Geschäftsgeheimnis von Data Science: Lassen Sie Andere Ihre Arbeit machen. Rufen Sie Machine Learning-Beispiele aus dem Azure AI-Katalog ab.'
 keywords: Data Science-Beispiele,Machine Learning-Beispiel,Clusteringalgorithmus,Beispiel eines Clusteringalgorithmus
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
@@ -17,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: e573a0394fa47cd6325fe582366242644232cf3d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313774"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260377"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
-## <a name="video-5-data-science-for-beginners-series"></a>5. Video der Reihe „Data Science für Einsteiger“
+## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Reihe „Data Science für Einsteiger“
 Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von anderen erledigen zu lassen. Suchen Sie im Azure AI-Katalog ein Beispiel für einen Clusteringalgorithmus, das Sie für Ihr eigenes Machine Learning-Experiment verwenden können.
 
 > [!IMPORTANT]
@@ -42,13 +41,13 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur L
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-* 1. Video: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+* Video 1: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
 * Video 2: [Sind Ihre Daten für Data Science bereit?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
 * Video 3: [Stellen einer Frage, die Sie mit Daten beantworten können](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
 * Video 4: [Vorhersagen einer Antwort mit einem einfachen Modell](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
 * Video 5: Kopieren der Arbeit anderer für Ihre Data Science
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Aufzeichnung: Kopieren der Arbeit anderer für Ihre Data Science
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Transkript: Kopieren der Arbeit anderer für Ihre Data Science
 Willkommen beim fünften Video der Reihe „Data Science für Einsteiger“.
 
 In diesem Artikel lernen Sie einen Ort mit Beispielen kennen, die Sie als Ausgangspunkt für Ihre eigene Arbeit nutzen können. Sie lernen bei diesem Video am meisten, wenn Sie sich zuerst die vorherigen Videos der Reihe ansehen.

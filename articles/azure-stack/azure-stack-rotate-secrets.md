@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8d84801aacfc60bb11aac4c9046a433378a59b79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2b1dc0ad28a6608e3a46087d31a3d077e9291a3d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314472"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841675"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Rotieren von Geheimnissen in Azure Stack
 
@@ -44,7 +44,7 @@ Infrastrukturdienstzertifikate für extern ausgerichtete Dienste, die vom Azure 
 
    <sup>*</sup>Nur relevant, wenn Active Directory-Verbunddienste (AD FS) als Identitätsanbieter der Umgebung verwendet wird.
 
-> [!NOTE]
+> [!NOTE]  
 > Alle anderen sicheren Schlüssel und Zeichenfolgen (einschließlich BMC- und Wechselkennwörter sowie Kennwörter für Benutzer- und Administratorkonten) werden weiterhin manuell vom Administrator aktualisiert. 
 
 Um die Integrität der Azure Stack-Infrastruktur zu erhalten, müssen Betreiber die Geheimnisse ihrer Infrastruktur regelmäßig und mit einer Häufigkeit rotieren können, die mit den Sicherheitsanforderungen ihrer Organisation in Einklang steht.
@@ -65,7 +65,7 @@ Azure Stack unterstützt Geheimnisrotation mit externen Zertifikaten von einer n
 |Von „Öffentlich“<sup>*</sup>|Zu „Selbstsigniert“|Nicht unterstützt||
 |Von „Öffentlich“<sup>*</sup>|Zu „Öffentlich“<sup>*</sup>|Unterstützt|1803 und höher|
 
-<sup>*</sup> Öffentliche Zertifizierungsstellen sind hier diejenigen, die Teil des „Vertrauenswürdiger Stamm“-Programms von Windows sind. Sie finden die vollständige Liste unter [Microsoft Trusted Root Certificate Program: Participants (as of June 27, 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca) („Vertrauenswürdiges Stammzertifikat“-Programm von Microsoft [mit Stand vom 27. Juni 2017]).
+<sup>*</sup> Öffentliche Zertifizierungsstellen sind hier diejenigen, die Teil des „Vertrauenswürdiger Stamm“-Programms von Windows sind. Sie finden die vollständige Liste unter [Microsoft Trusted Root Certificate Program: Participants (Stand: 27. Juni 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 
 ## <a name="alert-remediation"></a>Behandeln von Warnungen
 
@@ -199,7 +199,7 @@ Der Baseboard-Verwaltungscontroller (Baseboard Management Controller, BMC) über
 
 1. Aktualisieren Sie den BMC auf den physischen Azure Stack-Server gemäß den Anweisungen des OEM. Das Kennwort für jeden BMC in Ihrer Umgebung muss identisch sein.
 2. Öffnen Sie in Azure Stack einen privilegierten Endpunkt. Anweisungen finden Sie unter [Verwenden des privilegierten Endpunkts in Azure Stack](azure-stack-privileged-endpoint.md).
-3. Nachdem die PowerShell-Eingabeaufforderung sich je nach Umgebung in **[IP-Adresse oder ERCS-VM-Name]: PS>** oder in **[azs-ercs01]: PS>** geändert hat, führen Sie `Set-BmcPassword` aus, indem Sie `invoke-command` ausführen. Übergeben Sie die Sitzungsvariable des privilegierten Endpunkts als Parameter. Beispiel: 
+3. Nachdem Sie über Ihre PowerShell-Eingabeaufforderung zu **[IP-Adresse oder ERCS-VM-Name]: PS>** oder zu **[azs-ercs01]: PS>** gewechselt sind, führen Sie (abhängig von der Umgebung) `Set-BmcPassword` durch Ausführen von `invoke-command` aus. Übergeben Sie die Sitzungsvariable des privilegierten Endpunkts als Parameter. Beispiel: 
 
     ```powershell
     # Interactive Version

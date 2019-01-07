@@ -13,26 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 33a5b6e894c9c2b74f4c85ee96d59c0313a4bbe2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 10792c912e3028cd12eedb83b1b211bab20bc5a7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446975"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961058"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
 Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer aus Azure Active Directory (Azure AD) aktivieren. Außerdem erfahren Sie, wie Sie Azure AD-Benutzergruppen verwalten, indem Sie externe Gruppen hinzufügen, die die Benutzer enthalten.
 
-> [!NOTE]
-> Die Azure AD-Integration ist nur in den Tarifen [Developer, Standard und Premium](https://azure.microsoft.com/pricing/details/api-management/) verfügbar.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
+- Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 - Importieren und veröffentlichen Sie eine Azure API Management-Instanz. Weitere Informationen finden Sie unter [Importieren und Veröffentlichen](import-and-publish.md).
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorisieren von Entwicklerkonten mithilfe von Azure AD
 
@@ -192,9 +189,9 @@ Sie sind jetzt beim Entwicklerportal für Ihre API Management-Dienstinstanz ange
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+[Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

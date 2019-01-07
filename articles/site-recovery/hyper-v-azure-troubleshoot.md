@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c7626c6edceddcfbd4d95ff6efc4678836a4502c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247992"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844990"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 
@@ -111,8 +111,8 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 6. Stellen Sie sicher, dass keine Konflikte mit Apps vorliegen, die VSS-Momentaufnahmen erstellen. Wenn mehrere Apps versuchen, gleichzeitig VSS-Momentaufnahmen zu erstellen, können Konflikte auftreten. Dies ist z.B. der Fall, wenn eine Backup-App VSS-Momentaufnahmen erstellt, in der Replikationsrichtlinie jedoch geplant ist, dass Site Recovery eine Momentaufnahme erstellt.   
 7. Überprüfen Sie, ob der virtuelle Computer eine hohe Änderungsrate aufweist:
     - Sie können die tägliche Datenänderungsrate für die virtuellen Gastcomputer mithilfe von Leistungsindikatoren auf dem Hyper-V-Host messen. Aktivieren Sie den folgenden Leistungsindikator zum Messen der Datenänderungsrate. Aggregieren Sie eine Stichprobe dieses Werts für die VM-Datenträger in einem Zeitraum von 5 bis 15 Minuten, um die Änderungsrate des virtuellen Computers zu ermitteln.
-        - Kategorie: „Virtuelle Hyper-V-Speichervorrichtung“
-        - Leistungsindikator: „Geschriebene Bytes/Sek.“</br>
+        - Kategorie: „Virtuelles Hyper-V-Speichergerät“
+        - Leistungsindikator: „Geschriebene Bytes/s“</br>
         - Die Datenänderungsrate erhöht sich oder bleibt hoch, abhängig von der Auslastung des virtuellen Computers oder der zugehörigen Apps.
         - Die durchschnittliche Datenänderung des Quelldatenträgers beläuft sich für den Standardspeicher für Site Recovery auf 2 MB/s. [Weitere Informationen](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Darüber hinaus können Sie [Skalierbarkeitsziele überprüfen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
@@ -125,7 +125,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 1. Überprüfen Sie die Ereignisprotokolle auf VSS-Fehler und Empfehlungen:
     - Öffnen Sie auf dem Hyper-V-Hostserver das Hyper-V-Admin-Ereignisprotokoll unter **Ereignisanzeige** > **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Hyper-V** > **Admin**.
     - Überprüfen Sie, ob Ereignisse vorhanden sind, die auf Fehler bei App-konsistenten Momentaufnahmen hinweisen.
-    - Ein typischer Fehler lautet: „Hyper-V failed to generate VSS snapshot set for virtual machine ‚XYZ‘: The writer experienced a non-transient error. Restarting the VSS service might resolve issues if the service is unresponsive.“ (Hyper-V konnte keinen VSS-Momentaufnahmesatz für den virtuellen Computer „XYZ“ generieren: Beim Writer ist ein dauerhafter Fehler aufgetreten. Möglicherweise können die Probleme durch einen Neustart des VSS-Diensts behoben werden, wenn der Dienst nicht reagiert.)
+    - Eine typische Fehlermeldung lautet: Hyper-V konnte keinen VSS-Momentaufnahmesatz für die VM „XYZ“ generieren. Beim Writer ist ein dauerhafter Fehler aufgetreten. Möglicherweise können die Probleme durch einen Neustart des VSS-Diensts behoben werden, wenn der Dienst nicht reagiert.
 
 2. Um VSS-Momentaufnahmen für den virtuellen Computer zu generieren, überprüfen Sie, ob Hyper-V Integration Services auf dem virtuellen Computer installiert sind und ob der Backup-Integrationsdienst (VSS) aktiviert ist.
     - Stellen Sie sicher, dass der Integration Services-VSS-Dienst bzw. die Daemons auf dem Gastcomputer ausgeführt werden und den Status **OK** aufweisen.
@@ -136,8 +136,8 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 
 **Fehlercode** | **Meldung** | **Details**
 --- | --- | ---
-**0x800700EA** | Hyper-V failed to generate VSS snapshot set for virtual machine: More data is available. (Hyper-V konnte keinen VSS-Momentaufnahmesatz für den virtuellen Computer generieren: Weitere Daten sind verfügbar.) (0x800700EA). VSS snapshot set generation can fail if backup operation is in progress.<br/><br/> Replication operation for virtual machine failed: More data is available. (Beim Generieren von VSS-Momentaufnahmen kann ein Fehler auftreten, wenn derzeit eine Sicherung durchgeführt wird. Beim Replikationsvorgang für den virtuellen Computer ist ein Fehler aufgetreten: Weitere Daten sind verfügbar.) | Überprüfen Sie, ob auf dem virtuellen Computer ein dynamischer Datenträger aktiviert ist. Dies wird nicht unterstützt.
-**0x80070032** | Hyper-V Volume Shadow Copy Requestor failed to connect to virtual machine <./VMname> because the version does not match the version expected by Hyper-V. (Der Hyper-V-Volumeschattenkopie-Anforderer konnte keine Verbindung mit dem virtuellen Computer <./VMname> herstellen, da die Version nicht der von Hyper-V erwarteten Version entspricht.) | Überprüfen Sie, ob die neuesten Windows-Updates installiert sind.<br/><br/> Führen Sie ein [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) auf die neueste Version von Integration Services durch.
+**0x800700EA** | Hyper-V konnte keinen VSS-Momentaufnahmesatz für die VM generieren: Weitere Daten sind verfügbar. (0x800700EA). Beim Generieren von VSS-Momentaufnahmen kann ein Fehler auftreten, wenn derzeit eine Sicherung durchgeführt wird.<br/><br/> Beim Replikationsvorgang für den virtuellen Computer ist ein Fehler aufgetreten: Weitere Daten sind verfügbar. | Überprüfen Sie, ob auf dem virtuellen Computer ein dynamischer Datenträger aktiviert ist. Dies wird nicht unterstützt.
+**0x80070032** | Der Hyper-V-Volumeschattenkopie-Anforderer konnte keine Verbindung mit dem virtuellen Computer <./VMname> herstellen, da die Version nicht der von Hyper-V erwarteten Version entspricht. | Überprüfen Sie, ob die neuesten Windows-Updates installiert sind.<br/><br/> Führen Sie ein [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) auf die neueste Version von Integration Services durch.
 
 
 

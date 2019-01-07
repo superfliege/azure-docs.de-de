@@ -1,29 +1,23 @@
 ---
-title: Konfigurieren des Netzwerkleistungsmonitors für Azure ExpressRoute-Leitungen | Microsoft-Dokumentation
+title: Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute-Leitungen – Azure | Microsoft-Dokumentation
 description: Konfigurieren Sie die cloudbasierte Netzwerküberwachung für Azure ExpressRoute-Leitungen. Dies umfasst die Überwachung über das private Peering mit ExpressRoute und das Microsoft-Peering.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: d334fdba48f248bb7989c2b549517413b1ef793c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec18
+ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404340"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104729"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
-Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen Azure-Cloudbereitstellungen und lokalen Standorten (Zweigstellen usw.) überwacht. Der Netzwerkleistungsmonitor ist Teil von Log Analytics. Der Netzwerkleistungsmonitor bietet nun eine Erweiterung für ExpressRoute, durch die Sie die Netzwerkleistung über ExpressRoute-Verbindungen überwachen können, die dafür konfiguriert sind, privates Peering oder Microsoft-Peering zu verwenden. Wenn Sie den Netzwerkleistungsmonitor für ExpressRoute konfigurieren, können Sie Netzwerkprobleme erkennen, die identifiziert und entfernt werden sollen. Dieser Dienst ist auch für Azure Government Cloud verfügbar.
+In diesem Artikel konfigurieren Sie eine Netzwerkleistungsmonitor-Erweiterung zum Überwachen von ExpressRoute. Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen Azure-Cloudbereitstellungen und lokalen Standorten (Zweigstellen usw.) überwacht. Der Netzwerkleistungsmonitor ist Teil von Log Analytics. Der Netzwerkleistungsmonitor bietet nun eine Erweiterung für ExpressRoute, durch die Sie die Netzwerkleistung über ExpressRoute-Verbindungen überwachen können, die dafür konfiguriert sind, privates Peering oder Microsoft-Peering zu verwenden. Wenn Sie den Netzwerkleistungsmonitor für ExpressRoute konfigurieren, können Sie Netzwerkprobleme erkennen, die identifiziert und entfernt werden sollen. Dieser Dienst ist auch für Azure Government Cloud verfügbar.
 
 Ihre Möglichkeiten:
 
@@ -48,7 +42,7 @@ Ihre Möglichkeiten:
     * Installieren Sie Überwachungs-Agents auf den lokalen Servern und den virtuellen Azure-Computern (für das private Peering).
     * Konfigurieren Sie die Einstellungen der Server der Überwachungs-Agents, um diesen die Kommunikation zu ermöglichen. (Öffnen Sie die Firewallports usw.)
 3. Konfigurieren Sie Regeln für die Netzwerksicherheitsgruppen, um den auf virtuellen Azure-Computern installierten Überwachungs-Agents die Kommunikation mit den lokalen Überwachungs-Agents zu ermöglichen.
-4. Richten Sie die Überwachung ein: automatisches Erkennen und Verwalten, welche Netzwerke im Netzwerkleistungsmonitor sichtbar sind.
+4. Richten Sie die Überwachung ein: automatisches Erkennen und Verwalten der Sichtbarkeit von Netzwerken im Netzwerkleistungsmonitor.
 
 Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte oder Dienste zu überwachen, und bereits einen Arbeitsbereich in einer der unterstützten Regionen besitzen, können Sie die Schritte 1 und 2 überspringen und Ihre Konfiguration mit Schritt 3 beginnen.
 
@@ -62,7 +56,7 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
    >Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden. Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
-   ![Portal](.\media\how-to-npm\3.png)<br><br>
+   ![Portal](./media/how-to-npm/3.png)<br><br>
 2. Klicken Sie im unteren Bereich der Hauptseite **Netzwerkleistungsmonitor** auf **Erstellen**, um die Seite **Network Performance Monitor – Create new solution** (Netzwerkleistungsmonitor – Neue Lösung erstellen) zu öffnen. Klicken Sie auf **Log Analytics Workspace – select a workspace** (Log Analytics-Arbeitsbereich – Arbeitsbereich auswählen), um die Seite „Arbeitsbereich“ zu öffnen. Klicken Sie auf **+ Neuen Arbeitsbereich erstellen**, um die Seite „Arbeitsbereich“ zu öffnen.
 3. Klicken Sie auf der Seite **Log Analytics-Arbeitsbereich** auf **Neu erstellen**, und konfigurieren Sie die folgenden Einstellungen:
 
@@ -76,21 +70,21 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
     >Die ExpressRoute-Verbindung kann sich in einer beliebigen Region in der Welt befinden. Sie muss sich nicht in der gleichen Region befinden wie der Arbeitsbereich.
     >
   
-    ![Arbeitsbereich](.\media\how-to-npm\4.png)<br><br>
+    ![Arbeitsbereich](./media/how-to-npm/4.png)<br><br>
 4. Klicken Sie auf **OK**, um die Einstellungsvorlage zu speichern und bereitzustellen. Sobald die Vorlage überprüft wurde, klicken Sie auf **Erstellen**, um den Arbeitsbereich bereitzustellen.
 5. Nachdem der Arbeitsbereich bereitgestellt wurde, navigieren Sie zu der Ressource **NetworkMonitoring(Name)**, die Sie erstellt haben. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Für die Lösung ist eine weitere Konfiguration erforderlich**.
 
-   ![Zusätzliche Konfiguration](.\media\how-to-npm\5.png)
+   ![Zusätzliche Konfiguration](./media/how-to-npm/5.png)
 
 ## <a name="agents"></a>Schritt 2: Installieren und Konfigurieren von Agents
 
-### <a name="download"></a>2.1: Herunterladen der Setup-Datei für den Agent
+### <a name="download"></a>2.1: Laden Sie die Setup-Datei für den Agent herunter.
 
 1. Wechseln Sie zur Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration des Netzwerkleistungsmonitors** für Ihre Ressource. Klicken Sie auf den Agent, der dem Prozessor des Servers aus dem Abschnitt **Installieren der Log Analytics-Agents** entspricht, und laden Sie die Setupdatei herunter.
 2. Kopieren Sie dann die **Arbeitsbereich-ID** und den **Primärschlüssel**, und fügen Sie diese in Editor ein.
 3. Laden Sie das PowerShell-Skript aus dem Abschnitt **Konfigurieren der Log Analytics-Agents für die Überwachung per TCP-Protokoll** herunter. Das PowerShell-Skript unterstützt Sie beim Öffnen des relevanten Firewallports für die TCP-Transaktionen.
 
-  ![PowerShell-Skript](.\media\how-to-npm\7.png)
+  ![PowerShell-Skript](./media/how-to-npm/7.png)
 
 ### <a name="installagent"></a>2.2: Installieren eines Überwachungs-Agents auf jedem Überwachungsserver (für jedes zu überwachende VNET)
 
@@ -108,16 +102,16 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
 
   * Wenn Sie eine Verbindung mit **Azure Log Analytics** herstellen möchten, fügen Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** (Primärschlüssel) ein, die Sie im vorherigen Abschnitt in Editor kopiert haben. Klicken Sie auf **Weiter**.
 
-    ![ID und Schlüssel](.\media\how-to-npm\8.png)
+    ![ID und Schlüssel](./media/how-to-npm/8.png)
   * Wenn Sie eine Verbindung zu **Operations Manager** herstellen möchten, geben Sie auf der Seite **Verwaltungsgruppenkonfiguration** den **Namen der Verwaltungsgruppe**, den **Verwaltungsserver** und den **Verwaltungsserverport** ein. Klicken Sie auf **Weiter**.
 
-    ![Operations Manager](.\media\how-to-npm\9.png)
+    ![Operations Manager](./media/how-to-npm/9.png)
   * Wählen Sie auf der Seite **Agentaktionskonto**  entweder das Konto **Lokales System** oder **Domäne oder lokaler Computer** aus. Klicken Sie auf **Weiter**.
 
-    ![Konto](.\media\how-to-npm\10.png)
+    ![Konto](./media/how-to-npm/10.png)
 6. Überprüfen Sie Ihre Auswahl auf der Seite **Bereit zum Installieren**, und klicken Sie dann auf **Installieren**.
 7. Klicken Sie auf der Seite **Die Konfiguration wurde erfolgreich abgeschlossen** auf **Fertig stellen**.
-8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Azure Log Analytics verbunden ist. Wenn die Verbindung hergestellt ist, zeigt der Agent folgende Meldung an: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt).
+8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Azure Log Analytics verbunden ist. Nach dem Herstellen der Verbindung zeigt der Agent folgende Meldung an: **Der Microsoft Monitoring Agent hat erfolgreich eine Verbindung mit dem Microsoft Operations Management Suite-Dienst hergestellt.**
 
 9. Wiederholen Sie diese Schritte für jedes VNET, das Sie überwachen müssen.
 
@@ -132,7 +126,7 @@ So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent übe
 3. Klicken Sie auf die Registerkarte **Proxyeinstellungen** .
 4. Wählen Sie **Proxyserver verwenden** aus, und geben Sie die URL und gegebenenfalls die Portnummer ein. Wenn der Proxyserver eine Authentifizierung erfordert, geben Sie den Benutzernamen und das Kennwort für den Zugriff auf den Proxyserver ein.
 
-  ![proxy](.\media\how-to-npm\11.png)
+  ![proxy](./media/how-to-npm/11.png)
 
 ### <a name="verifyagent"></a>2.4: Überprüfen der Agentkonnektivität
 
@@ -143,7 +137,7 @@ Sie können problemlos überprüfen, ob die Agents kommunizieren.
 3. Klicken Sie auf die Registerkarte **Azure Log Analytics**.
 4. In der Spalte **Status** sollte angezeigt werden, dass der Agent erfolgreich mit Log Analytics verbunden wurde.
 
-  ![status](.\media\how-to-npm\12.png)
+  ![status](./media/how-to-npm/12.png)
 
 ### <a name="firewall"></a>2.5: Öffnen der Firewallports auf den Servern des Überwachungs-Agents
 
@@ -160,7 +154,7 @@ Port 8084 wird standardmäßig geöffnet. Sie können einen benutzerdefinierten 
 
 Öffnen Sie auf den Agent-Servern ein PowerShell-Fenster mit Administratorrechten. Führen Sie das PowerShell-Skript [EnableRules](https://aka.ms/npmpowershellscript) (das Sie zuvor heruntergeladen haben) aus. Verwenden Sie keine Parameter.
 
-![PowerShell_Script](.\media\how-to-npm\script.png)
+![PowerShell_Script](./media/how-to-npm/script.png)
 
 ## <a name="opennsg"></a>Schritt 3: Konfigurieren von Regeln für Netzwerksicherheitsgruppen
 
@@ -176,13 +170,13 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksi
 
 1. Navigieren Sie zur Übersichtskachel „Netzwerkleistungsmonitor“, indem Sie zur Seite **Alle Ressourcen** wechseln und dann auf den in eine Whitelist aufgenommenen NPM-Arbeitsbereich klicken.
 
-  ![NPM-Arbeitsbereich](.\media\how-to-npm\npm.png)
+  ![NPM-Arbeitsbereich](./media/how-to-npm/npm.png)
 2. Klicken Sie auf die Übersichtskachel **Netzwerkleistungsmonitor**, um das Dashboard zu öffnen. Das Dashboard enthält die Seite „ExpressRoute“, die anzeigt, dass ExpressRoute sich in einem nicht konfigurierten Zustand befindet. Klicken Sie auf **Featureeinrichtung**, um die Konfigurationsseite des Netzwerkleistungsmonitors zu öffnen.
 
-  ![Featureeinrichtung](.\media\how-to-npm\npm2.png)
+  ![Featureeinrichtung](./media/how-to-npm/npm2.png)
 3. Navigieren Sie auf der Konfigurationsseite zur Registerkarte „ExpressRoute-Peerings“, die sich im linken Bereich befindet. Klicken Sie auf **Jetzt ermitteln**.
 
-  ![Ermitteln](.\media\how-to-npm\13.png)
+  ![Ermitteln](./media/how-to-npm/13.png)
 4. Nach Abschluss der Ermittlung sehen Sie eine Liste mit folgenden Elementen:
   * Alle Microsoft-Peeringverbindungen in der oder den ExpressRoute-Leitung(en), die diesem Abonnement zugeordnet ist/sind.
   * Alle privaten Peeringverbindungen, die mit den mit diesem Abonnement verknüpften VNets verbunden sind.
@@ -195,7 +189,7 @@ In diesem Abschnitt konfigurieren Sie die Monitore. Führen Sie die Schritte fü
 
 Wenn die Ermittlung abgeschlossen ist, werden Regeln für eindeutige **Verbindungsnamen** und **VNet-Namen** angezeigt. Diese Regeln sind zunächst deaktiviert.
 
-![Regeln](.\media\how-to-npm\14.png)
+![Regeln](./media/how-to-npm/14.png)
 
 1. Aktivieren Sie das Kontrollkästchen **Dieses Peering überwachen**.
 2. Aktivieren Sie das Kontrollkästchen **Integritätsüberwachung für dieses Peering aktivieren**.
@@ -211,10 +205,10 @@ Klicken Sie für das Microsoft-Peering auf die Microsoft-Peeringverbindung(en), 
 1. Aktivieren Sie das Kontrollkästchen **Dieses Peering überwachen**. 
 2. (Optional) Sie können den Zielendpunkt für den Microsoft-Dienst ändern. Standardmäßig wählt NPM einen Microsoft-Dienstendpunkt als Ziel. NPM überwacht die Konnektivität zwischen Ihren lokalen Servern und diesem Zielendpunkt über ExpressRoute. 
     * Um den Zielendpunkt zu ändern, klicken Sie auf den Link **(Bearbeiten)** unter **Ziel:**, und wählen Sie einen anderen Zielendpunkt für den Microsoft-Dienst in der Liste der URLs aus.
-      ![Ziel bearbeiten](.\media\how-to-npm\edit_target.png)<br>
+      ![Ziel bearbeiten](./media/how-to-npm/edit_target.png)<br>
 
     * Sie können eine benutzerdefinierte URL oder eine IP-Adresse verwenden. Diese Option ist besonders wichtig bei Verwendung des Microsoft-Peerings zum Herstellen einer Verbindung mit Azure-PaaS-Diensten, wie z.B. Azure Storage, SQL-Datenbanken und Websites, die über öffentliche IP-Adressen angeboten werden. Zu diesem Zweck klicken Sie auf den Link **(Stattdessen eine benutzerdefinierte URL oder IP-Adresse verwenden)** am Ende der URL-Liste, und geben Sie dann den öffentlichen Endpunkt des Azure-PaaS-Diensts ein, der über ExpressRoute-/Microsoft-Peering verbunden ist.
-    ![Benutzerdefinierte URL](.\media\how-to-npm\custom_url.png)<br>
+    ![Benutzerdefinierte URL](./media/how-to-npm/custom_url.png)<br>
 
     * Wenn Sie diese optionalen Einstellungen verwenden, stellen Sie sicher, dass hier nur der Microsoft-Dienstendpunkt aktiviert ist. Der Endpunkt muss mit ExpressRoute verbunden und für die lokalen Agents erreichbar sein.
 3. Aktivieren Sie das Kontrollkästchen **Integritätsüberwachung für dieses Peering aktivieren**.
@@ -227,37 +221,37 @@ Klicken Sie für das Microsoft-Peering auf die Microsoft-Peeringverbindung(en), 
 
 Sobald Ihnen die Überwachungskacheln angezeigt werden, werden Ihre ExpressRoute-Verbindungen und -Verbindungsressourcen vom Netzwerkleistungsmonitor überwacht. Klicken Sie auf die Microsoft-Peeringkachel, um einen Drilldown in die Integrität der Microsoft-Peeringverbindungen auszuführen.
 
-![Überwachungskacheln](.\media\how-to-npm\15.png)
+![Überwachungskacheln](./media/how-to-npm/15.png)
 
 ### <a name="dashboard"></a>Seite des Netzwerkleistungsmonitors
 
 Die Seite des Netzwerkleistungsmonitors enthält eine Seite für ExpressRoute, die eine Übersicht über die Integrität der ExpressRoute-Verbindungen und -Peerings anzeigt.
 
-![Dashboard](.\media\how-to-npm\dashboard.png)
+![Dashboard](./media/how-to-npm/dashboard.png)
 
 ### <a name="circuits"></a>Liste der Leitungen
 
 Klicken Sie auf die Kachel **ExpressRoute-Verbindungen**, um eine Liste aller überwachten ExpressRoute-Verbindungen anzuzeigen. Sie können eine Verbindung auswählen und deren Integritätsstatus, Trenddiagramme für den Paketverlust, Bandbreitennutzung und Latenz anzuzeigen. Die Diagramme sind interaktiv. Sie können ein benutzerdefiniertes Zeitfenster für das Zeichnen der Diagramme auswählen. Sie können die Maus über einen Bereich des Diagramms ziehen, um dieses zu vergrößern und detaillierte Datenpunkte anzuzeigen.
 
-![circuit_list](.\media\how-to-npm\circuits.png)
+![circuit_list](./media/how-to-npm/circuits.png)
 
 #### <a name="trend"></a>Trend des Verlusts, der Latenz und des Durchsatzes
 
 Die Diagramme für Bandbreite, Latenz und Verlust sind interaktiv. Sie können jeden Bereich dieser Diagramme mithilfe der Maussteuerung vergrößern. Sie können auch die Daten anderer Intervalle für Bandbreite, Latenz und Verlust anzeigen, indem Sie auf **Datum/Uhrzeit** klicken. Diese Angabe finden Sie oben links unter der Schaltfläche „Aktionen“.
 
-![Trend](.\media\how-to-npm\16.png)
+![Trend](./media/how-to-npm/16.png)
 
 ### <a name="peerings"></a>Liste der Peerings
 
 Klicken Sie auf die Kachel **Private Peerings** auf dem Dashboard, um eine Liste aller Verbindungen mit virtuellen Netzwerken über privates Peering anzuzeigen. Hier können Sie eine virtuelle Netzwerkverbindung auswählen und deren Integritätsstatus, Trenddiagramme für Paketverlust, Bandbreitennutzung und Latenz anzeigen lassen.
 
-![Liste der Verbindungen](.\media\how-to-npm\peerings.png)
+![Liste der Verbindungen](./media/how-to-npm/peerings.png)
 
 ### <a name="nodes"></a>Knoten anzeigen
 
 Um die Liste aller Links zwischen den lokalen Knoten und den Azure-VMs/Microsoft-Dienstendpunkten für die ausgewählten ExpressRoute-Peeringverbindung anzuzeigen, klicken Sie auf **Knotenverbindungen anzeigen**. Sie können den Status jeder Verknüpfung sowie den Trend von Verlusten und Wartezeiten anzeigen, die ihnen zugeordnet sind.
 
-![Knoten anzeigen](.\media\how-to-npm\nodes.png)
+![Knoten anzeigen](./media/how-to-npm/nodes.png)
 
 ### <a name="topology"></a>Topologie der Verbindung
 
@@ -265,9 +259,9 @@ Klicken Sie auf die Kachel **Topologie**, um die Topologie der Verbindung anzuze
 
 Sie können den Sichtbarkeitsgrad erhöhen, um lokale Hops einzuschließen, indem Sie den Schieberegler unter **Filter** bewegen. Das Bewegen des Schiebereglers nach links oder rechts vergrößert oder verkleinert die Anzahl der Hops im Topologiediagramm. Die Latenz ist für jedes Segment sichtbar, wodurch eine schnellere Isolation von Segmenten mit hoher Latenz in Ihrem Netzwerk ermöglicht wird.
 
-![Filter](.\media\how-to-npm\topology.png)
+![Filter](./media/how-to-npm/topology.png)
 
 #### <a name="detailed-topology-view-of-a-circuit"></a>Detaillierte Topologieansicht einer Verbindung
 
 Diese Ansicht zeigt die VNET-Verbindungen.
-![detaillierte Topologie](.\media\how-to-npm\17.png)
+![detaillierte Topologie](./media/how-to-npm/17.png)

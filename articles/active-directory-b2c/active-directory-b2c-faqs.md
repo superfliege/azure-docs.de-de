@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010642"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842950"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure Active Directory B2C: Häufig gestellte Fragen 
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Häufig gestellte Fragen (FAQ) 
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Warum kann ich nicht auf die Azure AD B2C-Erweiterung im Azure-Portal zugreifen?
@@ -34,17 +34,17 @@ Bei einem Azure AD-Mandanten melden sich Benutzer, die zum Mandanten gehören, m
 
 Bei einem Azure AD B2C-Mandanten kann sich der Benutzer in den meisten Apps mit einer beliebigen E-Mail-Adresse anmelden (also beispielsweise mit joe@comcast.net, bob@gmail.com, sarah@contoso.com oder jim@live.com). Diese Art von Konto ist ein lokales Konto.  Wir unterstützen auch beliebige Benutzernamen als lokale Konten (z.B. joe, bob, sarah oder jim). Sie können einen dieser beiden lokalen Kontotypen verwenden, wenn Sie im Azure-Portal Identitätsanbieter für Azure AD B2C konfigurieren. Klicken Sie in Ihrem Azure AD B2C-Mandanten auf **Identitätsanbieter**, und wählen Sie anschließend unter „Lokale Konten“ die Option **Benutzername** aus. 
 
-Benutzerkonten für Anwendungen müssen immer über eine Registrierungsrichtlinie, über eine Registrierungs- oder Anmelderichtlinie oder unter Verwendung der Azure AD Graph-API erstellt werden. Über das Azure-Portal erstellte Benutzerkonten werden nur zur Mandantenverwaltung verwendet.
+Benutzerkonten für Anwendungen müssen immer über einen Registrierungsbenutzerflow, einen Benutzerflow für Registrierung oder Anmeldung oder über die Azure AD Graph-API erstellt werden. Über das Azure-Portal erstellte Benutzerkonten werden nur zur Mandantenverwaltung verwendet.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welche Identitätsanbieter aus sozialen Netzwerken werden derzeit unterstützt? Welche sollen in Zukunft unterstützt werden?
 Wir unterstützen derzeit Facebook, Google+, LinkedIn, Amazon, Twitter (Vorschau), WeChat (Vorschau), Weibo (Vorschau) und QQ (Vorschau). Die Unterstützung für andere beliebte soziale Identitätsanbieter wird je nach Kundennachfrage hinzugefügt.
 
-Azure AD B2C bietet auch zusätzliche Unterstützung für [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md).  Durch derartige [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) können Entwickler eigene Richtlinien mit einem beliebigen Identitätsanbieter erstellen, der [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) oder SAML unterstützt. 
+Azure AD B2C bietet auch zusätzliche Unterstützung für [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md).  Durch derartige [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) können Entwickler eigene Richtlinien mit einem beliebigen Identitätsanbieter erstellen, der [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) oder SAML unterstützt. 
 
 Machen Sie sich durch das [Starter Pack für benutzerdefinierte Richtlinien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) mit benutzerdefinierten Richtlinien vertraut.
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Kann ich Bereiche konfigurieren, um von verschiedenen Identitätsanbietern aus sozialen Netzwerken mehr Informationen zu Endkunden zu erhalten?
-Nein. Die Standardbereiche für unsere unterstützten sozialen Identitätsanbieter sind:
+ Nein. Die Standardbereiche für unsere unterstützten sozialen Identitätsanbieter sind:
 
 * Facebook: email
 * Google+: email
@@ -79,8 +79,8 @@ Zurzeit besteht keine Möglichkeit, das Feld „Von:“ der E-Mail zu ändern.
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Wie kann ich meine vorhandenen Benutzernamen, Kennwörter und Profile von meiner Datenbank zu Azure AD B2C migrieren?
 Sie können Ihr Migrationstool mithilfe der Azure AD Graph-API schreiben. Weitere Informationen finden Sie im [Handbuch für die Benutzermigration](active-directory-b2c-user-migration.md).
 
-### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Welche Kennwortrichtlinie wird für lokale Konten in Azure AD B2C verwendet?
-Die Kennwortrichtlinie von Azure AD B2C für lokale Konten basiert auf der Kennwortrichtlinie von Azure AD. Die Azure AD B2C-Richtlinien zur Registrierung, Anmeldung und Kennwortrücksetzung verwenden sichere Kennwörter, und die Kennwörter laufen nicht ab. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) . Informationen zu Kontosperren und Kennwörtern finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
+### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Welcher Kennwortbenutzerflow wird für lokale Konten in Azure AD B2C verwendet?
+Der Azure AD B2C-Kennwortbenutzerflow für lokale Konten basiert auf der Richtlinie für Azure AD. Die Azure AD B2C-Benutzerflows zur Registrierung, zur Registrierung oder Anmeldung und zur Kennwortrücksetzung verwenden sichere Kennwörter, die nicht ablaufen. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx). Informationen zu Kontosperren und Kennwörtern finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Kann ich Azure AD Connect zum Migrieren von Endkundenidentitäten, die in meinem lokalen Active Directory gespeichert sind, zu Azure AD B2C verwenden?
 Nein. Azure AD Connect ist nicht für die Verwendung mit Azure AD B2C ausgelegt. Sie können erwägen, die [Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md) für die Benutzermigration zu verwenden.  Weitere Informationen finden Sie im [Handbuch für die Benutzermigration](active-directory-b2c-user-migration.md).
@@ -105,7 +105,7 @@ Nein. Azure AD B2C unterstützt nicht den gleichen Berichtssatz wie Azure AD Pre
 * **Verwendungsberichte** enthalten die Anzahl von Benutzern, die Anzahl von Anmeldungen und den MFA-Umfang. 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Kann ich die Benutzeroberfläche von Seiten lokalisieren, die von Azure AD B2C bereitgestellt werden? Welche Sprachen werden unterstützt?
-Ja.  Lesen Sie die Informationen zur [Sprachanpassung](active-directory-b2c-reference-language-customization.md). Diese Funktion befindet sich in der öffentlichen Vorschauphase.  Wir bieten Übersetzungen für 36 Sprachen an, und Sie können alle Zeichenfolgen gemäß Ihren Anforderungen außer Kraft setzen und anpassen.
+ Ja.  Lesen Sie die Informationen zur [Sprachanpassung](active-directory-b2c-reference-language-customization.md). Diese Funktion befindet sich in der öffentlichen Vorschauphase.  Wir bieten Übersetzungen für 36 Sprachen an, und Sie können alle Zeichenfolgen gemäß Ihren Anforderungen außer Kraft setzen und anpassen.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Kann ich auf meinen von Azure AD B2C bereitgestellten Seiten für die Registrierung und Anmeldung meine eigenen URLs verwenden? Kann ich beispielsweise die URL von „login.microsoftonline.com“ in „login.contoso.com“ ändern?
 Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Sie erreichen dieses Ziel nicht, indem Sie Ihre Domäne auf der Registerkarte **Domänen** im Azure-Portal überprüfen.

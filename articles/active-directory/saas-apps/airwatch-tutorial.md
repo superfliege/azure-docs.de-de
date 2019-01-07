@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit AirWatch | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit AirWatch | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und AirWatch konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: f3bbcbb70759e7a995797cf89ad75a2a39314927
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bf95b949d6fee4057f67d1e44ded36f363aa5e2b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048479"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848917"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Lernprogramm: Azure Active Directory-Integration mit AirWatch
+# <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Tutorial: Azure Active Directory-Integration mit AirWatch
 
 In diesem Tutorial erfahren Sie, wie Sie AirWatch in Azure Active Directory (Azure AD) integrieren.
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     b. Geben Sie im Textfeld **Bezeichner** den Wert `AirWatch` ein.
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von AirWatch](http://www.air-watch.com/company/contact-us/), um diesen Wert zu erhalten. 
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von AirWatch](https://www.air-watch.com/company/contact-us/), um diesen Wert zu erhalten. 
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
@@ -128,7 +128,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Configure single sign-on](./media/airwatch-tutorial/tutorial_airwatch_configure.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+6. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren](./media/airwatch-tutorial/tutorial_general_400.png)
 <CS>
@@ -225,7 +225,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-a-airwatch-test-user"></a>Erstellen eines AirWatch-Testbenutzers
 

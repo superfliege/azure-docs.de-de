@@ -1,6 +1,6 @@
 ---
-title: Beispiel für eine Azure API Management-Richtlinie – Festlegen der Aufbewahrungsdauer im Cache für Antworten | Microsoft-Dokumentation
-description: Das Beispiel für eine Azure API Management-Richtlinie veranschaulicht, wie Sie die Aufbewahrungsdauer von Antworten im Cache mit dem maxAge-Wert in dem vom Back-End gesendeten Cache-Control-Header festlegen.
+title: Beispiel für eine Azure API Management-Richtlinie – Festlegen der Cachedauer für Antworten | Microsoft-Dokumentation
+description: Das Beispiel für eine Azure API Management-Richtlinie veranschaulicht, wie Sie die Cachedauer für Antworten mit dem maxAge-Wert in dem vom Back-End gesendeten Cache-Control-Header festlegen.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 8f7126f5cd6bf6f142c603e4b1baee4a6c20dea2
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 042fab72da2d4b890314b6ee9c7237241b492fba
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287550"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869225"
 ---
 # <a name="set-response-cache-duration"></a>Festlegen der Aufbewahrungsdauer von Antworten im Cache
 

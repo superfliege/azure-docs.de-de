@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 05/02/2018
 ms.author: babanisa
-ms.openlocfilehash: cfb4dabea12f2988108d24b025e324cf05afb325
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: cd599a45ef4d3bfd38789a71647847f55cc0b966
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301718"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085891"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid-Abonnementschema
 
@@ -29,8 +29,8 @@ Verwenden Sie also beispielsweise Folgendes, um ein Ereignisabonnement für ein 
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Der Artikel beschreibt die Eigenschaften und das Schema für den Hauptteil der Anforderung.
- 
+Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die Zeichen a–Z, A–Z, 0–9 und „-“ enthalten. Der Artikel beschreibt die Eigenschaften und das Schema für den Hauptteil der Anforderung.
+ 
 ## <a name="event-subscription-properties"></a>Eigenschaften für Ereignisabonnements
 
 | Eigenschaft | Typ | BESCHREIBUNG |

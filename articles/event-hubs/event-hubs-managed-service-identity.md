@@ -1,6 +1,6 @@
 ---
-title: Verwaltete Identitäten für Azure-Ressourcen mit Azure Event Hubs (Vorschau) | Microsoft-Dokumentation
-description: Verwenden von verwalteten Identitäten für Azure-Ressourcen mit Azure Event Hubs
+title: Verwaltete Identitäten für Azure-Ressourcen – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zur Verwendung verwalteter Identitäten für Azure-Ressourcen mit Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 815a6ff528e024ed1685b09b66f8fabce4d360c1
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784552"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087727"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Verwaltete Identitäten für Azure-Ressourcen mit Azure Event Hubs
 
@@ -47,7 +48,7 @@ Der erste Schritt besteht darin, eine App Service-ASP.NET-Anwendung zu erstellen
 
 Nachdem Sie die Anwendung erstellt haben, navigieren Sie im Azure-Portal zu der neu erstellten Webanwendung (ebenfalls in der Anleitung gezeigt). Navigieren Sie dann zur Seite **Verwaltete Dienstidentität**, und aktivieren Sie das Feature: 
 
-![](./media/event-hubs-managed-service-identity/msi1.png)
+![Seite „Verwaltete Dienstidentität“](./media/event-hubs-managed-service-identity/msi1.png)
  
 Wenn Sie das Feature aktiviert haben, wird in Ihrem Azure Active Directory eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
 
@@ -55,11 +56,7 @@ Wenn Sie das Feature aktiviert haben, wird in Ihrem Azure Active Directory eine 
 
 Erstellen Sie als Nächstes [einen Event Hubs-Namespace](event-hubs-create.md) in einer der Azure-Regionen, die Vorschauunterstützung für verwaltete Identitäten für Azure-Ressourcen bieten: **USA, Osten**, **USA, Osten 2** oder **Europa, Westen**. 
 
-Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Hinzufügen**, um die verwaltete Identität der Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
-
-![](./media/event-hubs-managed-service-identity/msi2.png)
- 
-Die verwaltete Identität für die Webanwendung verfügt jetzt über Zugriff auf den Event Hubs-Namespace und den zuvor erstellten Event Hub. 
+Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Rollenzuweisung hinzufügen**, um die verwaltete Identität der Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**. Die verwaltete Identität für die Webanwendung verfügt jetzt über Zugriff auf den Event Hubs-Namespace und den zuvor erstellten Event Hub. 
 
 ### <a name="run-the-app"></a>Ausführen der App
 
@@ -71,7 +68,7 @@ Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus
 
 Nachdem Sie diese Änderungen vorgenommen haben, veröffentlichen Sie die Anwendung und führen sie aus. Sie können die richtigen Veröffentlichungsdaten abrufen, indem Sie ein Veröffentlichungsprofil herunterladen und dann in Visual Studio importieren:
 
-![](./media/event-hubs-managed-service-identity/msi3.png)
+![Veröffentlichungsprofil importieren](./media/event-hubs-managed-service-identity/msi3.png)
  
 Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace und der von Ihnen erstellten Entität ein, und klicken Sie entweder auf **Senden** oder **Empfangen**. 
  

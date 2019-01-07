@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 0f5eee20b0487fb5fce82047f40d137effb87ead
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: b975f84106507da6adff11dc62441526773f5cab
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164423"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998117"
 ---
 # <a name="enable-support-uploads"></a>Aktivieren von Supportuploads
 
@@ -42,6 +42,6 @@ Führen Sie die folgenden Schritte über die Avere-Systemsteuerung aus, um den S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie dem Cluster ein lokales Speichersystem hinzufügen müssen, folgen Sie den Anweisungen unter [Konfigurieren von Speicher](avere-vfxt-add-storage.md). 
+Wenn Sie dem Cluster ein lokales Speichersystem hinzufügen oder den Standardverschlüsselungsschlüssel in einem neu erstellten Blobcontainer aktualisieren müssen, führen Sie die Anweisungen in [Konfigurieren des Speichers](avere-vfxt-add-storage.md) aus. 
 
 Wenn Sie bereit sind, Clients an den Cluster anzufügen, lesen Sie [Einbinden des Avere vFXT-Clusters](avere-vfxt-mount-clients.md).

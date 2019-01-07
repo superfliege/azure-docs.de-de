@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 222558a6596c676034e52812d3b2dd0c77e1466b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3c4bd08d2ba3aa4aeceb38a0ae498786f681d800
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046900"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960684"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 
@@ -126,7 +126,7 @@ Das virtuelle Netzwerk ist eine logische Darstellung Ihres Netzwerks in der Clou
 
 In der folgenden Tabelle sind die Empfehlungen für die Netzwerk- und Gatewaykonfiguration zusammengefasst, die sich aus verschiedenen Kombinationen von Quell- und Zielstandort für hybride Datenverschiebung ergeben.
 
-| Quelle | Ziel | Network Configuration | Gatewaysetup |
+| Quelle | Ziel | Netzwerkkonfiguration | Gatewaysetup |
 | ------ | ----------- | --------------------- | ------------- | 
 | Lokal | Virtuelle Computer und Clouddienste, die in virtuellen Netzwerken bereitgestellt werden | IPSec-VPN (Punkt-zu-Standort oder Standort-zu-Standort) | Gateway kann entweder lokal oder auf einem virtuellen Azure-Computer in VNet installiert sein | 
 | Lokal | Virtuelle Computer und Clouddienste, die in virtuellen Netzwerken bereitgestellt werden | ExpressRoute (privates Peering) | Gateway kann entweder lokal oder auf einem virtuellen Azure-Computer installiert sein | 
@@ -149,7 +149,7 @@ In einem Unternehmen wird eine **Unternehmensfirewall** auf dem zentralen Router
 
 Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und die Domänenanforderungen für die **Unternehmensfirewall**.
 
-| Domänennamen | Ausgehende Ports | BESCHREIBUNG |
+| Domänennamen | Ausgehende Ports | Beschreibung |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Erforderlich für das Gateway, um Verbindungen mit Datenverschiebungsdiensten in Data Factory herzustellen. |
 | `*.core.windows.net` | 443 | Wird vom Gateway verwendet, um Verbindungen mit dem Azure Storage-Konto herzustellen, wenn Sie das Feature [gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) verwenden. | 
@@ -162,11 +162,11 @@ Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und di
 
 Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für die **Windows-Firewall**.
 
-| Eingehende Ports | BESCHREIBUNG | 
+| Eingehende Ports | Beschreibung | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Ist für die Anwendung „Anmeldeinformationsverwaltung“ erforderlich, um Anmeldeinformationen für lokale Datenspeicher sicher auf dem Gateway festzulegen. | 
 
-![Gatewayportanforderungen](media\data-factory-data-movement-security-considerations/gateway-port-requirements.png) 
+![Gatewayportanforderungen](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
 #### <a name="ip-configurations-whitelisting-in-data-store"></a>IP-Konfigurationen/Whitelists in Datenspeicher
 Einige Datenspeicher in der Cloud erfordern auch, dass die IP-Adresse des Computers, über den auf sie zugegriffen wird, in der Whitelist enthalten sind. Stellen Sie sicher, dass die IP-Adresse des Gatewaycomputers in der Firewall ordnungsgemäß in der Whitelist enthalten bzw. ordnungsgemäß konfiguriert ist.
@@ -187,8 +187,8 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Gatewaycompu
 **Frage:** Welche Portanforderungen müssen erfüllt sein, damit das Gateway funktioniert?
 **Antwort:** Das Gateway stellt ausgehende HTTP-basierte Verbindungen mit dem offenen Internet her. Die **ausgehenden Ports 443 und 80** müssen geöffnet sein, damit das Gateway diese Verbindung herstellen kann. Öffnen Sie den **eingehenden Port 8050** nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung „Anmeldeinformationsverwaltung“. Wenn Azure SQL-Datenbank oder Azure SQL Data Warehouse als Quelle/Ziel verwendet wird, müssen Sie auch den Port **1433** öffnen. Weitere Informationen finden Sie im Abschnitt [IP-Konfigurationen/Whitelists in Datenspeicher](#firewall-configurations-and-whitelisting-ip-address-of gateway). 
 
-**Frage:** Welche Zertifikatanforderungen für das Gateway gibt es?
-**Antwort:** Das aktuelle Gateway erfordert ein Zertifikat, das von der Anwendung „Anmeldeinformationsverwaltung“ verwendet wird, um Datenspeicher-Anmeldeinformationen sicher festzulegen. Dieses Zertifikat ist ein selbst signiertes Zertifikat, das beim Gatewaysetup erstellt und konfiguriert wird. Sie können stattdessen Ihr eigenes TLS/SSL-Zertifikat verwenden. Weitere Informationen finden Sie im Abschnitt [ClickOnce-Anwendung „Anmeldeinformationsverwaltung“](#click-once-credentials-manager-app). 
+**Frage:** Welche Zertifikatanforderungen gelten für das Gateway?
+**Antwort:** Das aktuelle Gateway benötigt ein Zertifikat, das von der Anwendung „Anmeldeinformationsverwaltung“ verwendet wird, um Datenspeicher-Anmeldeinformationen sicher festzulegen. Dieses Zertifikat ist ein selbst signiertes Zertifikat, das beim Gatewaysetup erstellt und konfiguriert wird. Sie können stattdessen Ihr eigenes TLS/SSL-Zertifikat verwenden. Weitere Informationen finden Sie im Abschnitt [ClickOnce-Anwendung „Anmeldeinformationsverwaltung“](#click-once-credentials-manager-app). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Leistung der Kopieraktivität finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md).

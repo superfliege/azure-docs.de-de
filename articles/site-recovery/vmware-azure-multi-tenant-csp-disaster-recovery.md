@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208900"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842355"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Einrichten der VMware-Notfallwiederherstellung in einer mehrinstanzenfähigen Umgebung mit dem Cloud Solution Provider-Programm (CSP)
 
@@ -39,7 +39,7 @@ Zum Einrichten der VMware-Replikation müssen Sie die folgenden Aktionen ausfüh
 
     ![Die Seite „Kontoinformationen“](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. Klicken Sie dann auf **Weiter: Abonnements**.
+5. Klicken Sie auf **Weiter: Abonnements**.
 6. Aktivieren Sie auf der Seite zur Auswahl des Abonnements das Kontrollkästchen**Microsoft Azure**. Sie können weitere Abonnements sofort oder zu einem späteren Zeitpunkt hinzufügen.
 7. Bestätigen Sie auf der Seite **Überprüfung** die Mandantendetails, und klicken Sie dann auf **Senden**.
 8. Nachdem Sie das Mandantenkonto erstellt haben, wird eine Bestätigungsseite mit den Details des Standardkontos und dem Kennwort dieses Abonnements angezeigt. Speichern Sie die Informationen, und ändern Sie das Kennwort später auf der Anmeldungsseite des Azure-Portals den Anforderungen entsprechend.
@@ -72,9 +72,13 @@ Sie können nun alle Site Recovery-Vorgänge für den Mandanten über das Azure-
 
       ![Der CSP-Seite mit dem Abonnement des Mandanten](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-      b) Erstellen Sie nun einen neuen Benutzer, indem Sie die relevanten Details eingeben und Berechtigungen auswählen. Sie können aber auch eine Liste der Benutzer als CSV-Datei hochladen.
+    b) Erstellen Sie nun einen neuen Benutzer, indem Sie die relevanten Details eingeben und Berechtigungen auswählen. Sie können aber auch eine Liste der Benutzer als CSV-Datei hochladen.
+    
     c) Wechseln Sie, nachdem Sie einen neuen Benutzer erstellt haben, zurück zum Azure-Portal. Wählen Sie auf der Seite **Abonnement** das gewünschte Abonnement aus.
-    d) Wählen Sie **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **Hinzufügen**, um einen Benutzer mit der entsprechenden Zugriffsebene hinzuzufügen. Die über das CSP-Portal erstellten Benutzer werden automatisch auf der Seite angezeigt, die nach dem Klicken auf eine Zugriffsebene geöffnet wird.
+
+    d) Wählen Sie **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **Rollenzuweisungen**.
+
+    e) Klicken Sie auf **Rollenzuweisung hinzufügen**, um einen Benutzer mit dem entsprechenden Zugriffsumfang hinzuzufügen. Die über das CSP-Portal erstellten Benutzer werden auf der Registerkarte „Rollenzuweisungen“ angezeigt.
 
       ![Hinzufügen eines Benutzers](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
@@ -85,11 +89,11 @@ Sie können nun alle Site Recovery-Vorgänge für den Mandanten über das Azure-
 
 Es gibt drei wesentliche Modelle mit mehreren Mandanten:
 
-* **Shared Hosting Services Provider (SHSP, Anbieter von gemeinsam genutzten Hostingdiensten)**: Der Partner besitzt die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann die Notfallwiederherstellung als Self-Service-Lösung betreiben.
+* **Anbieter von gemeinsam genutzten Hostingdiensten**: Der Partner besitzt die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann die Notfallwiederherstellung als Self-Service-Lösung betreiben.
 
-* **Dedicated Hosting Services Provider (DHSP, Anbieter dedizierter Hostingdienste)**: Der Partner besitzt die physische Infrastruktur, verwendet aber dedizierte Ressourcen (mehrere vCenter-Server, physische Datenspeicher usw.), um die virtuellen Computer der einzelnen Mandanten jeweils in einer separaten Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann diese als Self-Service-Lösung betreiben.
+* **Anbieter von dedizierten Hostingdiensten**: Der Partner besitzt die physische Infrastruktur, verwendet aber dedizierte Ressourcen (mehrere vCenter-Server, physische Datenspeicher usw.), um die virtuellen Computer der einzelnen Mandanten jeweils in einer separaten Infrastruktur zu hosten. Der Partner kann die Verwaltung der Notfallwiederherstellung als verwalteten Dienst bereitstellen, oder der Mandant kann diese als Self-Service-Lösung betreiben.
 
-* **Managed Services Provider (MSP, Anbieter verwalteter Dienste)**: Der Kunde besitzt die physische Infrastruktur, in der die VMs gehostet werden, während der Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig ist.
+* **Anbieter verwalteter Dienste**: Der Kunde besitzt die physische Infrastruktur, in der die VMs gehostet werden, während der Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig ist.
 
 Durch das Einrichten von Mandantenabonnements wie in diesem Artikel beschrieben können Sie schnell in jedem der entsprechenden Modelle mit mehreren Mandanten Kunden aktivieren. Weitere Informationen zu den verschiedenen Modellen mit mehreren Mandanten und zum Aktivieren lokaler Zugriffssteuerungen finden Sie [hier](vmware-azure-multi-tenant-overview.md).
 

@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5aeefe82255d40938eff09d7920e2fd5aca94c95
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308299"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999101"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
 In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die hier erörtert wurden:
@@ -53,8 +53,8 @@ Die folgende Tabelle hilft Ihnen bei der Bestimmung der Vor- und Nachteile der f
 
 | Strategie | Vorteile | Nachteile |
 | --- | --- | --- |
-| **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation erforderlich. Keine zusätzliche Hardware erforderlich.<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden <br> Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
-| **Synchronisiert** |Lokales Kennwort dient zur Authentifizierung sowohl bei lokalen als auch bei Cloudverzeichnissen <br>Einfacher zu verwalten für kleine, mittlere und große Organisationen <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br> Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud |
+| **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation erforderlich. Keine zusätzliche Hardware erforderlich.<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden <br>  Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
+| **Synchronisiert** |Lokales Kennwort dient zur Authentifizierung sowohl bei lokalen als auch bei Cloudverzeichnissen <br>Einfacher zu verwalten für kleine, mittlere und große Organisationen <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br>  Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud |
 | **Im Verbund** |Benutzer können einmaliges Anmelden (Single Sign-On, SSO) nutzen  <br>Wenn ein Benutzer aufhört oder das Unternehmen verlässt, kann das Konto sofort deaktiviert und der Zugriff widerrufen werden.<br> Unterstützt erweiterte Szenarien, die mit Synchronisierung nicht möglich sind |Mehr Schritte für Einrichtung und Konfiguration <br> Höherer Wartungsaufwand <br> Erfordert ggf. zusätzliche Hardware für die STS-Infrastruktur <br> Möglicherweise muss zusätzliche Hardware auf dem Verbundserver installiert werden. Bei Verwendung von AD FS ist zusätzliche Software erforderlich <br> Erfordert umfangreiches Einrichtung für SSO <br> Kritischer Point of Failure: Wenn der Verbundserver ausfällt, können sich die Benutzer nicht authentifizieren. |
 
 ### <a name="client-experience"></a>Clienterfahrung
@@ -92,7 +92,7 @@ Sie müssen auch wissen, welche Funktionen nicht zur Verfügung stehen:
 * Der Übergang von Office zur passiven Authentifizierung erlaubt zwar die Unterstützung reiner SAML 2.0-IdPs, jedoch immer noch auf clientspezifischer Basis
 
 > [!NOTE]
-> Die aktuelle Liste finden Sie im Artikel unter https://aka.ms/ssoproviders.
+> Die aktuelle Liste finden Sie im Artikel [Azure-AD-Verbund – Kompatibilitätsliste](how-to-connect-fed-compatibility.md).
 > 
 > 
 

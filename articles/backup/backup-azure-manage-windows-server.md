@@ -2,18 +2,18 @@
 title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: Verwalten von Aufträgen und Warnungen in einem Azure Recovery Services-Tresor.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
-ms.author: markgal
-ms.openlocfilehash: c9b3b027a52a6847c566c385c304edc195f7fdda
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 716ddcaf61c4d7db40821056dc759667f9376023
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250695"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871325"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -67,7 +67,7 @@ Klicken Sie auf die Kacheln (außer „Sicherungsspeicher“), um das zugehörig
 
 ![Menü „Sicherungswarnungen“, gefiltert nach kritischen Warnungen](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-Das Menü „Sicherungswarnungen“ in der Abbildung oben ist gefiltert nach: Status = aktiv, Schweregrad = kritisch und Zeit = in den letzten 24 Stunden.
+Das Menü „Sicherungswarnungen“ im Bild oben ist gefiltert nach: Status ist „Aktiv“, Schweregrad ist „Kritisch, und die Zeit sind die letzten 24 Stunden.
 
 ## <a name="manage-backup-alerts"></a>Verwalten von Sicherungswarnungen
 
@@ -85,8 +85,8 @@ Die Liste „Sicherungswarnungen“ enthält die ausgewählten Informationen fü
 
 | Warnstufe | Ereignisse, die Warnungen generieren |
 | ----------- | ----------- |
-| Kritisch | Kritische Warnungen werden angezeigt, wenn Sicherungsaufträge fehlschlagen, wenn Wiederherstellungsaufträge fehlschlagen und wenn Sie den Schutz auf einem Server beenden, aber die Daten beibehalten.|
-| Warnung | Allgemeine Warnmeldungen werden angezeigt, wenn Sicherungsaufträge mit Warnungen abgeschlossen werden, z. B. wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden oder wenn mehr als 1.000.000 Dateien erfolgreich gesichert wurden). |
+| Kritisch | Sie erhalten kritische Warnungen, wenn: Sicherungsaufträge fehlschlagen, wenn Wiederherstellungsaufträge fehlschlagen und wenn Sie den Schutz auf einem Server beenden, aber die Daten beibehalten.|
+| Warnung | Allgemeine Warnmeldungen werden angezeigt, wenn: Sicherungsaufträge mit Warnungen abgeschlossen werden, z.B. wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden oder wenn mehr als 1.000.000 Dateien erfolgreich gesichert wurden). |
 | Information | Derzeit werden keine Informationsmeldungen verwendet. |
 
 ### <a name="viewing-alert-details"></a>Anzeigen von Warnungsdetails

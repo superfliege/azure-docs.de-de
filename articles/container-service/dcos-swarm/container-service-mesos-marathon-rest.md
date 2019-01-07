@@ -1,5 +1,5 @@
 ---
-title: Verwalten eines Azure-DC/OS-Clusters mit der Marathon-REST-API
+title: (VERALTET) Verwalten eines Azure-DC/OS-Clusters mit der Marathon-REST-API
 description: Stellen Sie mithilfe der Marathon-REST-API Container für einen Azure Container Service-DC/OS-Cluster bereit.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 34fc6f946d172f1431367e84f9d4d8a6855003ed
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901766"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52991717"
 ---
-# <a name="dcos-container-management-through-the-marathon-rest-api"></a>DC/OS-Containerverwaltung über die Marathon-REST-API
+# <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(VERALTET) DC/OS-Containerverwaltung über die Marathon-REST-API
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter Workloads bereit und abstrahiert die zugrunde liegende Hardware. Zusätzlich zu DC/OS ist auch ein Framework vorhanden, mit dem die Planung und Ausführung von Computeworkloads verwaltet wird. Es sind zwar Frameworks für viele gängige Workloads verfügbar, dieses Dokument bietet jedoch eine Einführung in das Erstellen und Skalieren von Containerbereitstellungen mithilfe der Marathon-REST-API. 
 

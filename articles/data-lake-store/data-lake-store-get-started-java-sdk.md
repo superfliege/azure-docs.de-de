@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a91593c1bae3002be8b7e423b627f1baf19e86e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: edbaa8fe42c0e6bfda8558e7d9e5cd0ce42bfcc4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129189"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260700"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem Java SDK
 > [!div class="op_single_selector"]

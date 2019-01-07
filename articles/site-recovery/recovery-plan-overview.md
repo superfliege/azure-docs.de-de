@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 463a7fc51cac6160fbb97fc53077d0b5eda80533
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: cb68b71eece998fa72fccc00de45f81e6d2d778c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215190"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848390"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
@@ -60,11 +60,11 @@ Mit dieser Anpassung geschieht Folgendes beim Ausführen eines Failovers für de
 
 Das Wiederherstellen von großen Anwendungen kann eine komplexe Aufgabe sein. Manuelle Schritte machen den Vorgang fehleranfällig, und die Person, die das Failover ausführt, ist sich möglicherweise der Komplexität der App nicht bewusst. Sie können mit einem Wiederherstellungsplan die Reihenfolge vorgeben und mithilfe von Azure Automation-Runbooks für Failover in Azure oder Skripts die in jedem Schritt erforderlichen Aktionen automatisieren. Für Aufgaben, die nicht automatisiert werden können, können Sie Pausen für manuelle Aktionen in die Wiederherstellungspläne einfügen. Sie können verschiedene Aufgabentypen konfigurieren:
 
-* **Aufgaben auf dem virtuellen Azure-Computer nach dem Failover**: Wenn Sie ein Failover zu Azure ausführen, müssen Sie normalerweise Aktionen ausführen, damit Sie nach dem Failover eine Verbindung mit dem virtuellen Computer herstellen können. Beispiel:  
+* **Aufgaben für die Azure-VM nach dem Failover**: Wenn Sie ein Failover zu Azure ausführen, müssen Sie normalerweise Aktionen ausführen, damit Sie nach dem Failover eine Verbindung mit der VM herstellen können. Beispiel:  
     * Erstellen einer öffentlichen IP-Adresse auf dem virtuellen Azure-Computer
     * Zuweisen einer Netzwerksicherheitsgruppe zum Netzwerkadapter des virtuellen Azure-Computers
     * Hinzufügen eines Lastenausgleichs zu einer Verfügbarkeitsgruppe.
-* **Aufgaben innerhalb des virtuellen Computers nach dem Failover**: Mit diesen Aufgaben wird in der Regel die auf dem Computer ausgeführte App neu konfiguriert, damit sie in der neuen Umgebung weiterhin ordnungsgemäß funktioniert. Beispiel: 
+* **Aufgaben innerhalb der VM nach dem Failover**: Mit diesen Aufgaben wird in der Regel die auf dem Computer ausgeführte App neu konfiguriert, damit sie in der neuen Umgebung weiterhin ordnungsgemäß funktioniert. Beispiel: 
     * Ändern der Datenbank-Verbindungszeichenfolge innerhalb des Computers
     * Ändern der Webserverkonfiguration oder -regeln.
 

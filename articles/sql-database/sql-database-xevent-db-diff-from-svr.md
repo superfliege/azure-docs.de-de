@@ -1,9 +1,9 @@
 ---
-title: Erweiterte Ereignisse in Azure SQL-Datenbank | Microsoft Docs
+title: Erweiterte Ereignisse in Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Beschreibt erweiterte Ereignisse (XEvents) in Azure SQL-Datenbank und wie sich Ereignissitzungen im Vergleich zu Microsoft SQL Server geringfügig unterscheiden.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b51f4a4a4d00bcfaa1baf1c46ad7f6eb638ad2b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246751"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867867"
 ---
 # <a name="extended-events-in-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,7 +32,7 @@ In diesem Thema wird erläutert, wie sich die Implementierung erweiterter Ereign
 
 Weitere Informationen zu erweiterten Ereignissen für Azure SQL-Datenbank und Microsoft SQL Server finden Sie unter:
 
-- [Schnellstart: Erweiterte Ereignisse in Microsoft SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Schnellstart: Erweiterte Ereignisse in SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Erweiterte Ereignisse](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Voraussetzungen

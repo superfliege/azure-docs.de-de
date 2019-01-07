@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ed29fb99025dbc69b9dae6a996f444954a7d88d1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 81d4fc3032b7b69bb438d28e97b62f483e36018b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123418"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078071"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopieren von Daten aus Impala mithilfe von Azure Data Factory (Vorschau)
 
@@ -87,7 +87,12 @@ Folgende Eigenschaften werden für den mit Impala verknüpften Dienst unterstüt
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Impala-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus Impala die „type“-Eigenschaft des Datasets auf **ImpalaObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus Impala die „type“-Eigenschaft des Datasets auf **ImpalaObject** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **ImpalaObject** | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -99,7 +104,8 @@ Legen Sie zum Kopieren von Daten aus Impala die „type“-Eigenschaft des Datas
         "linkedServiceName": {
             "referenceName": "<Impala linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -115,7 +121,7 @@ Legen Sie zum Kopieren von Daten aus der Impala den Quelltyp in der Kopieraktivi
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ImpalaSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

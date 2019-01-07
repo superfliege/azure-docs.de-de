@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Workday | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Workday | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Workday konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
-ms.openlocfilehash: 78b9fe704c5c8a1f81da480787f1791e88bf4f72
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c789f5fec9b31b53d316b23faad5c438b52137c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714717"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Tutorial: Azure Active Directory-Integration mit Workday
 
@@ -114,7 +114,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://impl.workday.com/<tenant>/login-saml2.htmld`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL ein: `http://www.workday.com`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://www.workday.com`
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie den folgenden Schritt aus:
 
@@ -180,7 +180,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SAML-Identitätsanbieter](./media/workday-tutorial/IC7829271.png "SAML-Identitätsanbieter")
 
-    a. Geben Sie im Textfeld *Name des Identitätsanbieters* einen Anbieternamen ein (z.B **SPInitiatedSSO**).
+    a. Geben Sie im Textfeld **Name des Identitätsanbieters** einen Anbieternamen ein (z.B: *SPInitiatedSSO*).
 
     b. Kopieren Sie im Azure-Portal im Fenster **Anmeldung konfigurieren** den Wert für die **SAML-Entitäts-ID**, und fügen Sie ihn in das Textfeld **Aussteller** ein.
 
@@ -204,7 +204,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Öffentlichen x509-Schlüssel anzeigen](./media/workday-tutorial/IC782930.png "Öffentlichen x509-Schlüssel anzeigen")
 
-    a. Geben Sie im Textfeld **Name** einen Namen für das Zertifikat ein (z.B. *PPE\_SP*).
+    a. Geben Sie im Textfeld **Name** einen Namen für Ihr Zertifikat ein (z.B.: *PPE\_SP*).
 
     b. Geben Sie im Textfeld **Gültig ab** den „Gültig-ab“-Attributwert des Zertifikats ein.
 
@@ -225,7 +225,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Konfiguration](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO-Konfiguration")
 
-    a.  Geben Sie in das Textfeld **Dienstanbieter-ID** Folgendes ein: **http://www.workday.com**.
+    a.  Geben Sie in das Textfeld **Dienstanbieter-ID** Folgendes ein: **https://www.workday.com**.
 
     b. Wählen Sie **SP-initiierte Authentifizierungsanfrage nicht verkleinern**.
 
@@ -308,10 +308,10 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über das Zugriffspanel.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Workday“ klicken, sollten Sie automatisch bei Ihrer Workday-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffspanel auf die Kachel „Workday“ klicken, sollten Sie automatisch bei Ihrer Workday-Anwendung angemeldet werden.
+Weitere Informationen zum Zugriffspanel finden Sie unter [Einführung in das Zugriffspanel](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -1,26 +1,31 @@
 ---
-title: Azure ExpressRoute-Überwachung – Metriken und Warnungen | Microsoft-Dokumentation
+title: Überwachung, Metriken und Warnungen – Azure ExpressRoute | Microsoft-Dokumentation
 description: Diese Seite enthält Informationen zur ExpressRoute-Überwachung.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: fcdaf10ad30cee0e7b79304ff21d67560522875c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377796"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091763"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute-Überwachung, Metriken und Warnungen
 
- Dieser Artikel macht Sie mit der ExpressRoute-Überwachung, Metriken und Warnungen vertraut. Azure Monitor ist die Zentrale für alle Metriken, Warnungen und Diagnoseprotokolle im gesamten Azure-System.
+Dieser Artikel macht Sie mit der ExpressRoute-Überwachung, Metriken und Warnungen in Azure Monitor vertraut. Azure Monitor ist die Zentrale für alle Metriken, Warnungen und Diagnoseprotokolle im gesamten Azure-System.
+ 
+>[!NOTE]
+>Die Verwendung **klassischer Metriken** wird nicht empfohlen.
+>
 
 ## <a name="circuit-metrics"></a>Metriken zu Leitungen
 
-Navigieren Sie zu **Metriken**, und klicken Sie auf die Seite „ExpressRoute“ für die Leitung, die Sie überwachen möchten. Auf der Kachel **Überwachung** können Sie die **Metriken** anzeigen. Wählen Sie BitsInPerSecond oder BitsOutPerSecond und die Aggregation aus. Optional können Sie Teilung anwenden, wonach die Metriken pro Peeringtyp angezeigt werden.
+Navigieren Sie zu **Metriken**, und klicken Sie auf die Seite „ExpressRoute“ für die Leitung, die Sie überwachen möchten. Unter **Überwachung** können Sie die **Metriken** anzeigen. Wählen Sie BitsInPerSecond oder BitsOutPerSecond und die Aggregation aus. Optional können Sie die Teilung anwenden, wonach die Metriken pro Peeringtyp angezeigt werden.
 
 ![Metriken zu Leitungen](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
@@ -47,7 +52,6 @@ Sie können Metriken für privates, öffentliches und Microsoft-Peering in Bits 
 
   ![Aktionsgruppe](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
-
 4. Definieren Sie die Aktionsgruppe, und fügen Sie sie hinzu.
 
   ![Hinzufügen einer Aktionsgruppe](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
@@ -61,9 +65,10 @@ Sie können Metriken für privates, öffentliches und Microsoft-Peering in Bits 
 In **Warnungskriterien** können Sie **Aktivitätsprotokoll** als Signaltyp und dann das Signal auswählen.
 
   ![andere](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
-
+  
 ## <a name="next-steps"></a>Nächste Schritte
-* Konfigurieren Sie Ihre ExpressRoute-Verbindung.
+
+Konfigurieren Sie Ihre ExpressRoute-Verbindung.
   
   * [Erstellen und Ändern einer Verbindung](expressroute-howto-circuit-arm.md)
   * [Erstellen und Ändern einer Peeringkonfiguration](expressroute-howto-routing-arm.md)

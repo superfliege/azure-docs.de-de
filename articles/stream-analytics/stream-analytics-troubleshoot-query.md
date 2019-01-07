@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: c437f350e394dc8c264903508a2a5a66fa8225a7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346342"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161983"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problembehandlung von Azure Stream Analytics-Abfragen
 
@@ -47,47 +48,47 @@ Bei der Datenverarbeitung in Echtzeit kann es hilfreich sein zu wissen, wie Date
 
 Die folgende Beispielabfrage in einem Azure Stream Analytics-Auftrag weist eine Datenstromeingabe, zwei Verweisdateneingaben und eine Ausgabe in Azure Table Storage auf. Die Abfrage verknüpft Daten aus dem Event Hub und aus zwei Verweisblobs, um den Namen und Informationen zur Kategorie abzurufen:
 
-![Beispiel einer SELECT INTO-Abfrage](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![SELECT INTO-Beispielabfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
 Beachten Sie, dass der Auftrag ausgeführt wird, aber keine Ereignisse in der Ausgabe erzeugt werden. Auf der hier gezeigten Kachel **Überwachung** sehen Sie, dass die Eingabe Daten erzeugt, aber Sie wissen nicht, welcher Schritt des **JOIN**-Vorgangs das Löschen aller Ereignisse verursacht hat.
 
-![Die Kachel „Überwachung“](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![Die Kachel „Stream Analytics-Überwachung“](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
 In diesem Fall können Sie einige zusätzliche SELECT INTO-Anweisungen zum Protokollieren der JOIN-Zwischenergebnisse und der Daten hinzufügen, die in der Eingabe gelesen werden.
 
 In diesem Beispiel haben wir zwei neue „temporäre Ausgaben“ hinzugefügt. Dabei kann es sich um eine beliebige Senke handeln. Hier wird Azure Storage als Beispiel verwendet:
 
-![Hinzufügen zusätzlicher SELECT INTO-Anweisungen](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Hinzufügen von zusätzlichen SELECT INTO-Anweisungen zu einer Stream Analytics-Abfrage](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
 Sie können dann die Abfrage wie folgt umschreiben:
 
-![Umgeschriebene SELECT INTO-Abfrage](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![Neu geschriebene SELECT INTO-Abfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
 Starten Sie nun den Auftrag erneut, und führen Sie ihn ein paar Minuten aus. Fragen Sie dann „temp1“ und „temp2“ mit dem Visual Studio-Cloud-Explorer ab, um die folgenden Tabellen zu generieren:
 
-**Tabelle temp1**
-![SELECT INTO Tabelle temp1](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**Tabelle „temp1“**
+![Tabelle „temp1“ der SELECT INTO-Abfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**Tabelle temp2**
-![SELECT INTO Tabelle temp2](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**Tabelle „temp2“**
+![Tabelle „temp2“ der SELECT INTO-Abfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 Wie Sie sehen können, enthalten temp1 und temp2 Daten, und die Namensspalte wird in temp2 ordnungsgemäß aufgefüllt. Da jedoch in der Ausgabe weitere keine Daten vorhanden sind, ist etwas falsch:
 
-![SELECT INTO output1 Tabelle ohne Daten](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![Tabelle „output1“ ohne Daten nach SELECT INTO-Abfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
 Nachdem Datenstichproben erstellt wurden, können Sie fast sicher sein, dass der zweite JOIN-Vorgang das Problem ist. Sie können die Verweisdaten aus dem Blob heruntergeladen und untersuchen:
 
-![SELECT INTO Verweistabelle](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![Referenztabelle für SELECT INTO-Abfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
 Wie Sie sehen können, unterscheidet sich das Format der GUID in diesen Verweisdaten vom Format der Spalte [from] in temp2. Deshalb sind die Daten nicht wie erwartet in output1 gelandet.
 
 Sie können das Format der Daten korrigieren, sie in das Verweisblob hochladen und es erneut versuchen:
 
-![SELECT INTO temporäre Tabelle](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![Temporäre Tabelle für SELECT INTO-Abfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
 Dieses Mal werden die Daten in der Ausgabe wie erwartet formatiert und aufgefüllt.
 
-![SELECT INTO endgültige Tabelle](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![Endgültige Tabelle für SELECT INTO-Abfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 

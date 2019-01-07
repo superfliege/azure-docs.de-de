@@ -12,22 +12,26 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/6/2017
+ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 46f9c6129ccf99fb72a285fa4089b7b3f01f7d7b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643031"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727714"
 ---
-# <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Services und Reliable Actors
+# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Services und Reliable Actors
 Azure Service Fabric ist eine Plattform mit Hochverfügbarkeit, bei der der Status über mehrere Knoten repliziert wird, um diese Hochverfügbarkeit zu gewährleisten.  Auch wenn ein Knoten im Cluster ausfällt, bleiben die Dienste somit verfügbar. Diese von der Plattform bereitgestellte integrierte Redundanz reicht in manchen Fällen aus. In bestimmten Fällen wäre es jedoch wünschenswert, dass der Dienst Daten (auf einem externen Speicher) sichert.
 
 > [!NOTE]
 > Das Sichern und die Möglichkeit des Wiederherstellens Ihrer Daten (sowie die Überprüfung, ob diese Vorgänge wie erwartet ausgeführt werden) sind wichtig, damit Sie sie bei Datenverlust wiederherstellen können.
 > 
+
+> [!NOTE]
+> Microsoft empfiehlt die Verwendung von [Regelmäßigen Sicherungen und Wiederherstellungen](service-fabric-backuprestoreservice-quickstart-azurecluster.md) für die Konfiguration der Datensicherung von Reliable Stateful Services und Reliable Actors. 
 > 
+
 
 Ein Dienst möchte Daten beispielsweise zum Schutz vor folgenden Szenarien sichern:
 
@@ -40,7 +44,7 @@ Ein Dienst möchte Daten beispielsweise zum Schutz vor folgenden Szenarien siche
 Das Feature für die Sicherung/Wiederherstellung ermöglicht mit Reliable Services-API entwickelten Diensten die Erstellung und Wiederherstellung von Sicherungen. Die von der Plattform bereitgestellten Sicherungs-APIs ermöglichen Sicherungen des Status einer Dienstpartition, ohne Lese- oder Schreibvorgänge zu blockieren. Die Wiederherstellungs-APIs ermöglichen die Wiederherstellung des Status einer Dienstpartition aus einer Sicherung.
 
 ## <a name="types-of-backup"></a>Sicherungstypen
-Es stehen zwei Optionen zur Sicherung zur Verfügung: vollständige Sicherung und inkrementelle Sicherung.
+Es gibt zwei Sicherungsoptionen: „Vollständig“ und „Inkrementell“.
 Eine vollständige Sicherung ist eine Sicherung, die alle Daten umfasst, die zum Neuerstellen des Status des Replikats erforderlich sind, d.h. Prüfpunkte und alle Protokolleinträge.
 Da eine vollständige Sicherung die Prüfpunkte und das Protokoll umfasst, kann sie eigenständig wiederhergestellt werden.
 
@@ -82,7 +86,7 @@ Bei der Anforderung zum Durchführen einer inkrementellen Sicherung kann der Feh
 - das Replikat den Grenzwert `MaxAccumulatedBackupLogSizeInMB` überschritten hat.
 
 Durch Konfigurieren von `MinLogSizeInMB` oder `TruncationThresholdFactor` können Benutzer die Wahrscheinlichkeit erhöhen, dass inkrementelle Sicherungen durchgeführt werden können.
-Beachten Sie, dass sich durch eine Erhöhung dieser Werte die Datenträgerverwendung pro Replikat erhöht.
+Durch eine Erhöhung dieser Werte wird die Datenträgerverwendung pro Replikat erhöht.
 Weitere Informationen finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md).
 
 `BackupInfo` liefert Informationen zur Sicherung. Hierzu zählt auch der Speicherort des Ordners, in dem die Runtime die Sicherung gespeichert hat (`BackupInfo.Directory`). Die Rückruffunktion kann `BackupInfo.Directory` in einen externen Speicher oder an einen anderen Speicherort verschieben.  Diese Funktion gibt auch einen booleschen Wert zurück, der angibt, ob der Sicherungsordner erfolgreich an den Zielspeicherort verschoben werden konnte.
@@ -176,7 +180,7 @@ Beachten Sie Folgendes:
   - Bei einer Wiederherstellung besteht die Möglichkeit, dass die wiederherzustellende Sicherung älter als der Status der Partition vor dem Verlust der Daten ist. Deshalb sollte die Wiederherstellung nur als letzter Ausweg verwendet werden, um so viele Daten wie möglich wiederherzustellen.
   - Die Zeichenfolge, die den Sicherungsorderpfad und die Dateipfade im Sicherungsordner repräsentiert, kann je nach FabricDataRoot-Pfad und Namenslänge des Anwendungstyps länger als 255 Zeichen sein. Einige .NET-Methoden, z.B. `Directory.Move`, lösen daraufhin unter Umständen die Ausnahme `PathTooLongException` aus. Als Problemumgehung können beispielsweise kernel32-APIs wie `CopyFile` direkt aufgerufen werden.
 
-## <a name="backup-and-restore-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Actors
+## <a name="back-up-and-restore-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Actors
 
 
 Das Reliable Actors-Framework basiert auf Reliable Services. Der ActorService, der die Actors hostet, ist ein zustandsbehafteter zuverlässiger Dienst. Daher stehen sämtliche Sicherungs- und Wiederherstellungsfunktionen, die in Reliable Services verfügbar sind, auch für Reliable Actors zur Verfügung (mit Ausnahme von Verhaltensweisen, die für den Zustandsanbieter spezifisch sind). Da Sicherungen jeweils pro Partition erstellt werden, werden Zustände für alle Actors in einer bestimmten Partition gesichert. (Die Wiederherstellung erfolgt ähnlich und jeweils pro Partition.) Um eine Sicherung/Wiederherstellung durchzuführen, muss der Dienstbesitzer eine benutzerdefinierte Actordienstklasse erstellen, die von der ActorService-Klasse abgeleitet ist, und dann Sicherungen bzw. Wiederherstellungen wie bei Reliable Services durchführen, wie in den vorherigen Abschnitten beschrieben.
@@ -231,7 +235,7 @@ Bei der Wiederherstellung aus einer Sicherungskette wie bei Reliable Services mu
 > Derzeit ignoriert `KvsActorStateProvider` die Option „RestorePolicy.Safe“. Unterstützung für dieses Feature ist in einer künftigen Version geplant.
 > 
 
-## <a name="testing-backup-and-restore"></a>Testen von Sicherung und Wiederherstellung
+## <a name="testing-back-up-and-restore"></a>Testen von Sichern und Wiederherstellen
 Es muss sichergestellt werden, dass wichtige Daten gesichert werden und wiederhergestellt werden können. Dies kann durch Aufrufen des Cmdlets `Start-ServiceFabricPartitionDataLoss` in PowerShell erfolgen, mit dem Datenverlust in einer bestimmten Partition ausgelöst werden kann, um zu überprüfen, ob die Funktionen zum Sichern und Wiederherstellen der Daten wie erwartet ausgeführt werden.  Es ist auch möglich, den Datenverlust programmgesteuert auszulösen und die Wiederherstellung infolge dieses Ereignisses durchzuführen.
 
 > [!NOTE]
@@ -247,7 +251,7 @@ Mit dem Reliable State Manager können konsistente Sicherungen erstellt werden, 
 
 Sämtliche nach dem Aufrufen von `BackupAsync` bestätigten Transaktionen können in der Sicherung enthalten oder nicht enthalten sein.  Sobald der lokale Sicherungsordner der Plattform von der Plattform aufgefüllt wurde (z.B. Abschluss der lokalen Sicherung durch die Runtime), wird der Rückruf der Dienstsicherung aufgerufen.  Durch diesen Rückruf wird der Sicherungsordner in einen externen Speicherort wie den Azure-Speicher verschoben.
 
-### <a name="restore"></a>Restore 
+### <a name="restore"></a>Restore
 Der Reliable State Manager ermöglicht das Wiederherstellen aus einer Sicherung mit der `RestoreAsync`-API.  
 Die `RestoreAsync`-Methode für `RestoreContext` kann nur innerhalb der `OnDataLossAsync`-Methode aufgerufen werden.
 Der von `OnDataLossAsync` zurückgegebene Boolean-Wert gibt an, ob der Dienst seinen Status aus einer externen Quelle wiederhergestellt hat.
@@ -260,7 +264,7 @@ Bis ein Dienst diese API erfolgreich (durch Rückgabe von true oder false) absch
 
 ## <a name="next-steps"></a>Nächste Schritte
   - [Zuverlässige Auflistungen](service-fabric-work-with-reliable-collections.md)
-  - [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+  - [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services – Benachrichtigungen](service-fabric-reliable-services-notifications.md)
   - [Konfigurieren von Reliable Services](service-fabric-reliable-services-configuration.md)
   - [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

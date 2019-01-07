@@ -1,5 +1,5 @@
 ---
-title: Ausführen von OpenFOAM mit HPC Pack auf virtuellen Linux-Computern | Microsoft Docs
+title: Ausführen von OpenFOAM mit HPC Pack auf virtuellen Linux-Computern | Microsoft-Dokumentation
 description: Sie erfahren, wie Sie einen Microsoft HPC Pack-Cluster unter Azure bereitstellen und einen OpenFOAM-Auftrag auf mehreren Linux-Computeknoten in einem RDMA-Netzwerk ausführen.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: 9032a0b68c4c8789010b0304b64a63d4924521fb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a8744afe3ec3e83e4a543942441118356730347c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145836"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957240"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
 In diesem Artikel wird eine Methode zum Ausführen von OpenFoam auf Azure-VMs beschrieben. Hier stellen Sie einen Microsoft HPC Pack-Cluster mit Linux-Serverknoten unter Azure bereit und führen einen [OpenFoam](http://openfoam.com/)-Auftrag mit Intel MPI aus. Sie können RDMA-fähige Azure-VMs für die Computeknoten verwenden, sodass die Computeknoten über das Azure RDMA-Netzwerk kommunizieren. Andere Optionen zum Ausführen von OpenFoam in Azure beinhalten im Marketplace verfügbare vollständig konfigurierte kommerzielle Images, z.B. [OpenFoam 2.3 on CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud) von UberCloud, und durch Ausführung von [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
@@ -46,7 +46,7 @@ Microsoft HPC Pack verfügt über Funktionen zum Ausführen von umfangreichen HP
   * Stellen Sie nach der Bereitstellung der Linux-Knoten eine Verbindung per SSH her, um weitere Verwaltungsaufgaben durchzuführen. Suchen Sie nach den SSH-Verbindungsdetails für jede Linux-VM im Azure-Portal.  
 * **Intel MPI**: Zum Ausführen von OpenFOAM auf SLES 12 HPC-Serverknoten in Azure müssen Sie die Intel MPI Library 5-Laufzeit von der [Intel.com](https://software.intel.com/en-us/intel-mpi-library/)-Website installieren. (Intel MPI 5 ist auf CentOS-basierten HPC-Images vorinstalliert.)  In einem späteren Schritt installieren Sie Intel MPI bei Bedarf auf Ihren Linux-Computeknoten. Klicken Sie nach der Registrierung bei Intel zur Vorbereitung dieses Schritts in der Bestätigungs-E-Mail auf den Link zur entsprechenden Webseite. Kopieren Sie anschließend den Downloadlink für die TGZ-Datei für die entsprechende Version von Intel MPI. Dieser Artikel basiert auf Intel MPI-Version 5.0.3.048.
 * **OpenFOAM Source Pack** : Laden Sie die OpenFOAM Source Pack-Software für Linux auf der [Website der OpenFOAM Foundation](http://openfoam.org/download/2-3-1-source/)herunter. Dieser Artikel basiert auf Source Pack-Version 2.3.1, die als „OpenFOAM-2.3.1.tgz“ zum Download verfügbar ist. Befolgen Sie die Anleitung weiter unten in diesem Artikel, um OpenFOAM auf den Linux-Computeknoten zu entpacken und zu kompilieren.
-* **EnSight** (optional): Um die Ergebnisse Ihrer OpenFOAM-Simulation anzuzeigen, müssen Sie die [EnSight](https://ensighttransfe.wpengine.com/direct-access-downloads/) -Visualisierung und das Analyseprogramm herunterladen und installieren. Die Informationen zu Lizenzierung und Download finden Sie auf der EnSight-Website.
+* **EnSight** (optional): Um die Ergebnisse Ihrer OpenFOAM-Simulation anzuzeigen, müssen Sie die [EnSight](https://www.ansys.com/products/platform/ansys-ensight/data-interfaces) -Visualisierung und das Analyseprogramm herunterladen und installieren. Die Informationen zu Lizenzierung und Download finden Sie auf der EnSight-Website.
 
 ## <a name="set-up-mutual-trust-between-compute-nodes"></a>Einrichten der gegenseitigen Vertrauensstellung zwischen Computeknoten
 Für das Ausführen eines knotenübergreifenden Auftrags auf mehreren Linux-Knoten müssen die Knoten sich gegenseitig vertrauen (per **rsh** oder **ssh**). Wenn Sie den HPC Pack-Cluster mit dem IaaS-Bereitstellungsskript für Microsoft HPC Pack erstellen, richtet das Skript automatisch dauerhafte gegenseitige Vertrauensstellungen für das angegebene Administratorkonto ein. Für Benutzer ohne Administratorrechte, die Sie in der Domäne des Clusters erstellen, müssen Sie temporäre gegenseitige Vertrauensstellungen zwischen den Knoten einrichten, wenn diesen ein Auftrag zugewiesen wird, und diese Beziehung nach Abschluss des Auftrags wieder entfernen. Wenn Sie für alle Benutzer Vertrauensstellungen einrichten möchten, geben Sie ein RSA-Schlüsselpaar für den Cluster an, der von HPC Pack für die Vertrauensstellung verwendet wird.
@@ -226,7 +226,7 @@ Verwenden Sie die bereits konfigurierte Hauptknotenfreigabe, um Dateien für die
 4. Wenn Sie die Standardparameter dieses Beispiels verwenden, kann die Ausführung zehn Minuten oder auch deutlich länger dauern. Es kann also ratsam sein, einige Parameter zu ändern, um die Ausführung zu beschleunigen. Eine einfache Option ist das Ändern der Zeitschrittvariablen „deltaT“ und „writeInterval“ in der Datei „system/controlDict“. Darin werden alle Eingabedaten gespeichert, die sich auf die Zeitkontrolle und das Lesen und Schreiben von Lösungsdaten beziehen. Beispielsweise können Sie den Wert für „deltaT“ von 0,05 in 0,5 und den Wert für „writeInterval“ von 0,05 in 0,5 ändern.
    
    ![Schrittvariablen ändern][step_variables]
-5. Geben Sie die gewünschten Werte für die Variablen in der Datei „system/decomposeParDict“ an. In diesem Beispiel werden zwei Linux-Knoten mit jeweils acht Kernen verwendet. Legen Sie also „numberOfSubdomains“ auf 1 1 16 und „n“ von „hierarchicalCoeffs“ auf (16) fest, damit OpenFOAM parallel mit 16 Prozessen ausgeführt wird. Weitere Informationen finden Sie unter [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4) (OpenFOAM-Benutzerhandbuch: 3.4 Parallele Ausführung von Anwendungen).
+5. Geben Sie die gewünschten Werte für die Variablen in der Datei „system/decomposeParDict“ an. In diesem Beispiel werden zwei Linux-Knoten mit jeweils acht Kernen verwendet. Legen Sie also „numberOfSubdomains“ auf 1 1 16 und „n“ von „hierarchicalCoeffs“ auf (16) fest, damit OpenFOAM parallel mit 16 Prozessen ausgeführt wird. Weitere Informationen finden Sie unter [OpenFOAM-Benutzerhandbuch: 3.4 Paralleles Ausführen von Anwendungen](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4).
    
    ![Prozesse zerlegen][decompose]
 6. Führen Sie die folgenden Befehle aus dem Verzeichnis „sloshingTank3D“ aus, um die Beispieldaten vorzubereiten.
@@ -362,7 +362,7 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
 10. Wenn der Auftrag abgeschlossen ist, finden Sie die Ergebnisse des Auftrags in den Ordnern unter „C:\OpenFoam\sloshingTank3D“ und die Protokolldateien unter „C:\OpenFoam“.
 
 ## <a name="view-results-in-ensight"></a>Anzeigen der Ergebnisse in EnSight
-Verwenden Sie bei Bedarf [EnSight](http://www.ensight.com/) , um die Ergebnisse des OpenFOAM-Auftrags zu visualisieren und zu analysieren. Weitere Informationen zur Visualisierung und zu Animationen in EnSight finden Sie in dieser [Videoanleitung](http://www.ensight.com/ensight.com/envideo/)(in englischer Sprache).
+Verwenden Sie bei Bedarf [EnSight](http://www.ensight.com/) , um die Ergebnisse des OpenFOAM-Auftrags zu visualisieren und zu analysieren. 
 
 1. Nachdem Sie EnSight auf dem Knoten installiert haben, können Sie die Anwendung starten.
 2. Öffnen Sie „C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case“.

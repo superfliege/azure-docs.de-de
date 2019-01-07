@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 6e16529740377b9a082fda4f3e4409b57441715e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4f0e4a745aa054f96bf2ce90ff6f2c33588d1337
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215156"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833619"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Ausführen eines Failovers für virtuelle Computer und physische Server 
 
@@ -39,11 +39,11 @@ Hier erfahren Sie, wie Sie ein Failover für einen [Wiederherstellungsplan](site
 
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover**.
 2. Wählen Sie auf dem Bildschirm **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-    1.  **Latest** (Neueste): Diese Option startet den Auftrag, indem zunächst alle Daten verarbeitet werden, die an den Site Recovery-Dienst gesendet wurden. Durch die Verarbeitung der Daten wird einen Wiederherstellungspunkt für die einzelnen virtuellen Computer erstellt. Dieser Wiederherstellungspunkt wird während des Failovers vom virtuellen Computer verwendet. Die Option verfügt über die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers im Site Recovery-Dienst repliziert wurden.
-    1.  **Latest processed** (Zuletzt verarbeitet): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten Wiederherstellungspunkt durch, der bereits vom Site Recovery-Dienst verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer durchführen, wird zusätzlich der Zeitstempel des zuletzt verarbeiteten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen. Da keine Zeit mit der Verarbeitung nicht verarbeiteter Daten verbracht wird, bietet diese Option die Möglichkeit zum Failover mit geringem RTO-Wert (Recovery Time Objective, angestrebte Wiederherstellungszeit).
-    1.  **Latest app-consistent** (Neueste anwendungskonsistente Elemente): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten anwendungskonsistenten Wiederherstellungspunkt durch, der bereits von Site Recovery verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer ausführen, wird zusätzlich der Zeitstempel des letzten anwendungskonsistenten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen.
-    1.  **Latest multi-VM processed** (Zuletzt verarbeitet, Multi-VM): Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten verarbeiteten Wiederherstellungspunkt durch.  
-    1.  **Latest multi-VM processed** (Zuletzt verarbeitet, Multi-VM-Anwendungskonsistenz): Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten anwendungskonsistenten Wiederherstellungspunkt durch.
+    1.  **Letzter Zeitpunkt**: Diese Option startet den Auftrag, indem zunächst alle Daten verarbeitet werden, die an den Site Recovery-Dienst gesendet wurden. Durch die Verarbeitung der Daten wird einen Wiederherstellungspunkt für die einzelnen virtuellen Computer erstellt. Dieser Wiederherstellungspunkt wird während des Failovers vom virtuellen Computer verwendet. Die Option verfügt über die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers im Site Recovery-Dienst repliziert wurden.
+    1.  **Letzte Verarbeitung**: Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten Wiederherstellungspunkt durch, der bereits vom Site Recovery-Dienst verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer durchführen, wird zusätzlich der Zeitstempel des zuletzt verarbeiteten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen. Da keine Zeit mit der Verarbeitung nicht verarbeiteter Daten verbracht wird, bietet diese Option die Möglichkeit zum Failover mit geringem RTO-Wert (Recovery Time Objective, angestrebte Wiederherstellungszeit).
+    1.  **Letzter anwendungskonsistenter Zeitpunkt**: Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten anwendungskonsistenten Wiederherstellungspunkt durch, der bereits von Site Recovery verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer ausführen, wird zusätzlich der Zeitstempel des letzten anwendungskonsistenten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen.
+    1.  **Letzte Verarbeitung mit mehreren VMs**: Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten verarbeiteten Wiederherstellungspunkt durch.  
+    1.  **Letzter anwendungskonsistenter Zeitpunkt (mehrere VMs)**: Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten anwendungskonsistenten Wiederherstellungspunkt durch.
     1.  **Benutzerdefiniert**: Beim Ausführen des Testfailovers für einen virtuellen Computer können Sie diese Option verwenden, um ein Failover auf einen bestimmten Wiederherstellungspunkt durchzuführen.
 
     > [!NOTE]
@@ -78,9 +78,9 @@ Virtuelle Computer/physische Server, die mit Site Recovery geschützt sind, unte
 
 Die Auslösung eines Failovers ist mit den folgenden Schritten verbunden:
 
-1. Prüfung der erforderlichen Komponenten: Mit diesem Schritt wird sichergestellt, dass alle Bedingungen erfüllt sind, die für das Failover erforderlich sind.
+1. Voraussetzungsüberprüfung: Mit diesem Schritt wird sichergestellt, dass alle erforderlichen Bedingungen für das Failover erfüllt sind.
 1. Failover: In diesem Schritt werden die Daten verarbeitet und vorbereitet, damit daraus ein virtueller Azure-Computer erstellt werden kann. Wenn Sie den Wiederherstellungspunkt **Latest** (Neueste) gewählt haben, wird in diesem Schritt ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.
-1. Start: In diesem Schritt wird ein virtueller Azure-Computer aus den Daten erstellt, die im vorherigen Schritt verarbeitet wurden.
+1. Start: In diesem Schritt wird eine Azure-VM aus den Daten erstellt, die im vorherigen Schritt verarbeitet wurden.
 
 > [!WARNING]
 > **Laufendes Failover nicht abbrechen**: Bevor das Failover gestartet wird, wird die Replikation für den virtuellen Computer beendet. Wenn Sie für einen laufenden Auftrag die Option **Abbrechen** wählen, wird das Failover beendet, aber die Replikation für den virtuellen Computer wird nicht gestartet. Die Replikation kann nicht neu gestartet werden.

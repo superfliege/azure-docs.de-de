@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/3/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fab03f12f4099fe2df2525cb3a6fa093170d1c79
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037038"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850175"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Anpassen des Setups für Azure-SSIS Integration Runtime
 
@@ -131,7 +131,7 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
     c. Wählen Sie den verbundenen Container „Öffentliche Vorschau“ aus, und doppelklicken Sie auf den Ordner `CustomSetupScript`. In diesem Ordner befinden sich die folgenden Elemente:
 
-       1. Ein Ordner `Sample` mit einem benutzerdefinierten Setup zum Installieren eines einfachen Tasks auf jedem Knoten des Azure-SSIS IR. Der Task hat keine Funktion, bleibt aber ein paar Sekunden im Standbymodus. Der Ordner enthält auch den Ordner `gacutil` mit `gacutil.exe`. Darüber hinaus enthält `main.cmd` Kommentare zum Beibehalten von Anmeldeinformationen für den Zugriff auf Dateifreigaben.
+       1. Ein Ordner `Sample` mit einem benutzerdefinierten Setup zum Installieren eines einfachen Tasks auf jedem Knoten des Azure-SSIS IR. Der Task hat keine Funktion, bleibt aber ein paar Sekunden im Standbymodus. Der Ordner enthält außerdem einen `gacutil`-Ordner, dessen gesamter Inhalt (`gacutil.exe`, `gacutil.exe.config` und `1033\gacutlrc.dll`) unverändert in Ihren Container kopiert werden kann. Darüber hinaus enthält `main.cmd` Kommentare zum Beibehalten von Anmeldeinformationen für den Zugriff auf Dateifreigaben.
 
        1. Der Ordner `UserScenarios` mit mehreren benutzerdefinierten Setups für echte Benutzerszenarios.
 
@@ -146,8 +146,6 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
        1. Ein Ordner `BCP` mit einem benutzerdefinierten Setup zum Installieren von SQL Server-Befehlszeilenprogrammen (`MsSqlCmdLnUtils.msi`), einschließlich des Massenkopierprogramms (`bcp`), auf jedem Knoten von Azure-SSIS IR.
 
        1. Ein Ordner `EXCEL` mit einem benutzerdefinierten Setup zum Installieren von Open Source-Assemblys (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll` und `ExcelDataReader.dll`) auf jedem Knoten von Azure-SSIS IR.
-
-       1. Ein `MSDTC`-Ordner mit einem benutzerdefinierten Setup zum Ändern der Netz- und Sicherheitskonfigurationen des Microsoft Distributed Transaction Coordinator (MSDTC)-Diensts auf jedem Knoten Ihres Azure-SSIS IR. Um sicherzustellen, dass MSDTC gestartet wird, fügen Sie „Execute Process Task“ am Anfang der Ablaufsteuerung in Ihre Pakete ein, um folgenden Befehl auszuführen: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"`. 
 
        1. Ein Ordner namens `ORACLE ENTERPRISE` mit einem benutzerdefinierten Setupskript (`main.cmd`) und einer Konfigurationsdatei für die unbeaufsichtigte Installation (`client.rsp`) zum Installieren der Oracle-Connectors und des OCI-Treibers auf jedem Knoten von Azure-SSIS IR, Enterprise Edition. Bei diesem Setup können Sie Oracle Connection Manager, Quelle und Ziel verwenden. Laden Sie zunächst Microsoft Connectors v5.0 für Oracle (`AttunitySSISOraAdaptersSetup.msi` und `AttunitySSISOraAdaptersSetup64.msi`) aus dem [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) und den neuesten Oracle-Client (z.B. `winx64_12102_client.zip`) von [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) herunter, und laden Sie dann alles zusammen mit `main.cmd` und `client.rsp` in Ihren Container hoch. Wenn Sie bei der Herstellung einer Verbindung mit Oracle TNS verwenden, müssen Sie auch `tnsnames.ora` herunterladen, bearbeiten und in Ihren Container hochladen, damit die Datei während des Setups in den Oracle-Installationsordner kopiert werden kann.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f078c1389e36b82f95b011ca1fbd7fbd1c4f895e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582886"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834220"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 
@@ -187,13 +187,13 @@ Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* 
 
     Nachdem Sie **Speichern** ausgewählt haben, akzeptiert die API-App JavaScript-Aufrufe von den angegebenen URLs. 
 
-## <a name="step-4-html5-template-validation"></a>Schritt 4: Überprüfung der HTML5-Vorlage
+## <a name="step-4-html5-template-validation"></a>Schritt 4: Überprüfen der HTML5-Vorlage
 Die HTML5-Vorlage ist einsatzbereit. Sie ist jedoch im `ContentDefinition`-Code nicht verfügbar. Vor dem Hinzufügen von `ContentDefinition` zu Ihrer benutzerdefinierten Richtlinie müssen Sie Folgendes sicherstellen:
 * Ihr Inhalt ist HTML5-konform und zugänglich.
 * Ihr Inhaltsserver ist für CORS aktiviert.
 
     >[!NOTE]
-    >Über die Website [test-cors.org](http://test-cors.org/) können Sie überprüfen, ob auf der Site, auf der Sie den Inhalt hosten, CORS aktiviert ist, sowie CORS-Anforderungen testen. 
+    >Über die Website [test-cors.org](https://test-cors.org/) können Sie überprüfen, ob auf der Site, auf der Sie den Inhalt hosten, CORS aktiviert ist, sowie CORS-Anforderungen testen. 
 
 * Bereitgestellte Inhalte sind über **HTTPS** sicher.
 * Sie verwenden *absolute URLs* (z. B. *https://yourdomain/content*) für alle Links, CSS-Inhalte und Bilder.
@@ -215,7 +215,7 @@ Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:
     
     ![Ihre Inhaltsdefinition](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>Schritt 6: Hochladen der Richtlinie zu Ihrem Mandanten
+## <a name="step-6-upload-the-policy-to-your-tenant"></a>Schritt 6: Hochladen der Richtlinie in Ihren Mandanten
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und wählen Sie anschließend **Azure AD B2C** aus.
 
 2. Wählen Sie **Framework für die Identitätsfunktion** aus.
@@ -239,7 +239,7 @@ Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:
 
     ![Ihre Registrierungs- oder Anmelderichtlinie](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
 
-## <a name="step-8-add-dynamic-content"></a>Schritt 8: Hinzufügen von dynamischem Inhalt
+## <a name="step-8-add-dynamic-content"></a>Schritt 8: Dynamischen Inhalt hinzufügen
 Ändern Sie den Hintergrund basierend auf dem Abfragezeichenfolgen-Parameter mit dem Namen _campaignId_. Die Anwendung Ihrer vertrauenden Seite (Web- und mobile Apps) sendet den Parameter an Azure AD B2C. Die Richtlinie liest den Parameter und sendet seinen Wert an die HTML5-Vorlage. 
 
 ### <a name="step-81-add-a-content-definition-parameter"></a>Schritt 8.1: Hinzufügen eines Inhaltsdefinitionsparameters
@@ -292,7 +292,7 @@ Fügen Sie das `ContentDefinitionParameters`-Element mit den folgenden Schritten
 
     ![Ändern des Seitenhintergrunds](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
-### <a name="83-upload-the-changes-and-publish-your-policy"></a>8.3: Hochladen der Änderungen und Veröffentlichen Ihrer Richtlinie
+### <a name="83-upload-the-changes-and-publish-your-policy"></a>Schritt 8.3: Hochladen der Änderungen und Veröffentlichen Ihrer Richtlinie
 1. Veröffentlichen Sie Ihr Visual Studio-Projekt in Azure App Service.
 
 2. Laden Sie die Richtliniendatei *SignUpOrSignin.xml* in Azure AD B2C hoch.
@@ -315,7 +315,7 @@ Fügen Sie das `ContentDefinitionParameters`-Element mit den folgenden Schritten
 
     ![Ändern des Seitenhintergrunds](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
-## <a name="step-9-change-the-rest-of-the-user-journey"></a>Schritt 9: Ändern des restlichen Teils der User Journey
+## <a name="step-9-change-the-rest-of-the-user-journey"></a>Schritt 9: Ändern des verbleibenden Teils der User Journey
 Wenn Sie auf der Anmeldeseite den Link **Jetzt registrieren** auswählen, wird im Browser das Standardhintergrundbild und nicht das von Ihnen definierte Bild angezeigt. Dieses Verhalten ist darauf zurückzuführen, dass Sie nur die Registrierungs- oder Anmeldeseite geändert haben. So ändern Sie die restlichen selbstbestätigten Inhaltsdefinitionen
 1. Wechseln Sie zurück zu „Schritt 2“, und führen Sie folgende Schritte aus:
 

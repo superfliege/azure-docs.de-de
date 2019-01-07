@@ -3,7 +3,7 @@ title: Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells in Azu
 description: Diese Seite beschreibt einige allgemeine Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: f41974c6e2b2b0565f0a2703cfd638777a6bb9eb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354171"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878022"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Limits des V-Kern-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 > [!NOTE]
 > Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, welche die gleiche Computegröße aufweisen. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
 
-## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Diensttarif „Universell“: Speicher- und Computegrößen
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Universelle Dienstebene: Speicher- und Computegrößen
 
 ### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
 

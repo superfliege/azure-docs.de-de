@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen der Datenschutzinformationen Ihrer Organisation in Azure Active Directory | Microsoft-Dokumentation
-description: Hier wird erläutert, wie Sie die Datenschutzinformationen Ihrer Organisation im Bereich „Eigenschaften“ von Azure Active Directory (Azure AD) hinzufügen.
+title: Hinzufügen der Datenschutzinformationen Ihrer Organisation – Azure Active Directory | Microsoft-Dokumentation
+description: Dieser Artikel enthält Anleitungen, wie Sie Datenschutzinformationen Ihrer Organisation im Bereich „Eigenschaften“ von Azure Active Directory hinzufügen.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
-ms.custom: it-pro
-ms.openlocfilehash: f32eeee8f02cee32eb05e14aa98387a20cb2e626
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 50fcafbdef4fc09532d03ae145183dd45c381c73
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903825"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083834"
 ---
-# <a name="how-to-add-your-privacy-info-using-azure-active-directory"></a>Vorgehensweise: Hinzufügen der Datenschutzinformationen mit Azure Active Directory
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Hinzufügen der Datenschutzinformationen Ihrer Organisation mit Azure Active Directory
 In diesem Artikel wird erläutert, wie ein Mandantenadministrator über das Azure-Portal Informationen in Bezug auf den Datenschutz zum Azure Active Directory-Mandanten (Azure AD) einer Organisation hinzufügen kann.
 
 Es wird dringend empfohlen, sowohl Ihre globalen Kontaktdaten in Sachen Datenschutz und die Datenschutzerklärung Ihrer Organisation hinzufügen, damit Ihre internen Mitarbeiter und externen Gäste Ihre Richtlinien lesen können. Da Datenschutzerklärungen individuell erstellt werden und auf das jeweilige Unternehmen zugeschnitten sind, wird dringend empfohlen, zu diesem Sachverhalt einen Anwalt hinzuziehen.

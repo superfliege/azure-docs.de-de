@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 97d1376dc7908b72d8e8ec15145229cf3cf4acae
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 2b661968fd64f4d2a61bc59f9b99b1eea6b01f86
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201945"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997269"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
@@ -32,7 +32,7 @@ ms.locfileid: "33201945"
 In diesem Artikel fügen Sie einen benutzerdefinierten Test zu einem vorhandenen Anwendungsgateway mit PowerShell hinzu. Benutzerdefinierte Tests sind für Anwendungen, die über eine bestimmte Seite für die Integritätsprüfung verfügen, oder für Anwendungen hilfreich, die keine erfolgreiche Antwort für die Standardwebanwendung bereitstellen.
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -74,7 +74,7 @@ Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des An
 Kopieren Sie den folgenden Text in Editor.
 
 ```xml
-<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+<ApplicationGatewayConfiguration xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
 <FrontendIPConfigurations>
     <FrontendIPConfiguration>
         <Name>fip1</Name>
@@ -161,7 +161,7 @@ Auf den Namen der Überprüfung wird in der \<BackendHttpSettings\>-Konfiguratio
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Hinzufügen eines benutzerdefinierten Tests zu einem vorhandenen Anwendungsgateway
 
-Zum Ändern der aktuellen Konfiguration eines Application Gateways sind drei Schritte nötig: das Abrufen der aktuellen XML-Konfigurationsdatei, das Einfügen des benutzerdefinierten Tests in die XML-Datei und das Konfigurieren des Application Gateways mit den neuen XML-Einstellungen.
+Zum Ändern der aktuellen Konfiguration eines Anwendungsgateways sind drei Schritte nötig: das Abrufen der aktuellen XML-Konfigurationsdatei, das Ändern für einen benutzerdefinierten Test und das Konfigurieren des Anwendungsgateways mit den neuen XML-Einstellungen.
 
 1. Rufen Sie die XML-Datei mit `Get-AzureApplicationGatewayConfig` ab. Dieses Cmdlet exportiert die XML-Konfigurationsdatei, damit ihr die Einstellungen für die Überprüfung hinzugefügt werden können.
 

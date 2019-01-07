@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051373"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309160"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer
 
@@ -35,7 +35,7 @@ ms.locfileid: "44051373"
 
 ## <a name="debugging-service-fabric-java-applications"></a>Debuggen von Service Fabric Java-Anwendungen
 
-Für Java-Anwendungen sind [mehrere Protokollierungsframeworks](http://en.wikipedia.org/wiki/Java_logging_framework) verfügbar. Da `java.util.logging` die Standardoption bei JRE ist, wird dies auch für die [Codebeispiele in Github](http://github.com/Azure-Samples/service-fabric-java-getting-started)verwendet.  Im Folgenden wir die Konfiguration des `java.util.logging` -Frameworks erklärt.
+Für Java-Anwendungen sind [mehrere Protokollierungsframeworks](http://en.wikipedia.org/wiki/Java_logging_framework) verfügbar. Da `java.util.logging` die Standardoption bei JRE ist, wird dies auch für die [Codebeispiele in GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started) verwendet. Im Folgenden wir die Konfiguration des `java.util.logging` -Frameworks erklärt.
 
 Mithilfe von „java.util.logging“ können Sie Ihre Anwendungsprotokolle zum Arbeitsspeicher, zu Ausgabestreams, zu Konsolendateien oder zu Sockets umleiten. Für jede dieser Optionen gibt es Standardhandler, die im Framework bereits bereitgestellt wurden. Sie können eine `app.properties` -Datei erstellen, um den Dateihandler für Ihre Anwendung zu konfigurieren, damit alle Protokolle zu einer lokalen Datei umgeleitet werden.
 
@@ -48,7 +48,7 @@ java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
 java.util.logging.FileHandler.count = 10
-java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
+java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
 Der Ordner, auf den die `app.properties` -Datei verweist, muss vorhanden sein. Nachdem die `app.properties`-Datei erstellt wurde, müssen Sie auch Ihr Skript für den Einstiegspunkt, `entrypoint.sh` im `<applicationfolder>/<servicePkg>/Code/`-Ordner, ändern, um die Eigenschaft `java.util.logging.config.file` auf die `app.propertes`-Datei festzulegen. Der Eintrag sollte wie der folgende Ausschnitt aussehen:
@@ -64,7 +64,7 @@ Diese Konfiguration führt zu Protokollen, die auf rotierende Weise unter `/tmp/
 
 Wenn kein Handler explizit konfiguriert ist, wird standardmäßig der Konsolen-Handler registriert. Die Protokolle können in syslog unter „/var/log/syslog“ angezeigt werden.
 
-Weitere Informationen finden Sie unter der [Codebeispielen in Github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
+Weitere Informationen finden Sie bei den [Codebeispielen in GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Debuggen von Service Fabric-C#-Anwendungen
@@ -83,8 +83,8 @@ Sie können einen benutzerdefinierten EventListener verwenden, um auf Diensterei
 
 ```csharp
 
- public class ServiceEventSource : EventSource
- {
+public class ServiceEventSource : EventSource
+{
         public static ServiceEventSource Current = new ServiceEventSource();
 
         [NonEvent]
@@ -105,8 +105,8 @@ Sie können einen benutzerdefinierten EventListener verwenden, um auf Diensterei
 
 
 ```csharp
-   internal class ServiceEventListener : EventListener
-   {
+internal class ServiceEventListener : EventListener
+{
 
         protected override void OnEventSourceCreated(EventSource eventSource)
         {
@@ -114,20 +114,20 @@ Sie können einen benutzerdefinierten EventListener verwenden, um auf Diensterei
         }
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        { 
-                 // report all event information               
-         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
-                if (eventData.Message != null)              
-            Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
-            else             
-        { 
-                    string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
-                    Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");             
+                using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))
+                {
+                        // report all event information
+                        Out.Write(" {0} ", Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+                        if (eventData.Message != null)
+                                Out.WriteLine(eventData.Message, eventData.Payload.ToArray());
+                        else
+                        {
+                                string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
+                                Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");
+                        }
+                }
         }
-           }
-        }
-    }
+}
 ```
 
 

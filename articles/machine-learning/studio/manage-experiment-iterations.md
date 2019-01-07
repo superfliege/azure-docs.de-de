@@ -1,12 +1,11 @@
 ---
 title: Verwalten von Experimentiterationen in Machine Learning-Studio – Azure | Microsoft-Dokumentation
-description: 'Anleitung: Verwalten von Experimentiterationen in Azure Machine Learning-Studio'
+description: Verwalten von Experimentiterationen in Azure Machine Learning Studio Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6a53530f-20d5-40ae-9b49-7b499ccb44b7
 ms.service: machine-learning
@@ -16,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: b96ab59db8c4586304a864ee432dbd1c74b25fd6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ebcae3e8e8f13904936dbe122f285a01a2a71459
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313536"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270449"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Verwalten von Experimentiterationen in Azure Machine Learning-Studio
 Das Entwickeln eines solchen Vorhersageanalysemodells ist ein iterativer Prozess: Sie ändern die verschiedenen Funktionen und Parameter des Experiments, und die Ergebnisse nähern sich solange an, bis Sie der Ansicht sind, ein trainiertes, effektives Modell erreicht zu haben. Wichtig für diesen Prozess ist das Verfolgen der verschiedenen Iterationen der Experimentparameter und -konfigurationen.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern. Wenn Sie ein Experiment ausführen, speichert Machine Learning Studio den Verlauf des Testlaufs, einschließlich DataSets, Modul sowie Portverbindungen und Parameter. In diesem Verlauf werden auch Ergebnisse, Laufzeitinformationen, z. B. Start- und Endzeiten, Protokollmeldungen und der Ausführungsstatus aufgezeichnet. Sie können jeden dieser Testläufe jederzeit überprüfen, um die Chronologie des Experiments und die Zwischenergebnisse  zu betrachten. Ein vorheriger Testlauf des Experiment kann sogar den Ausgangspunkt einer neuen Untersuchungsphase auf dem Weg zur Erstellung einfacher, komplexer oder mehrfacher Modellierungslösungen bilden.
 

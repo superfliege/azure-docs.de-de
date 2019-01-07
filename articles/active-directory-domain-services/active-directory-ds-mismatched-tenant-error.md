@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
-ms.openlocfilehash: 12611c9a4016b634cb865bbf609b1c7a6961abb7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b73739ca6d392af191d1a51eca2d646a8a5cd4c4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155064"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955071"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Beheben von Verzeichniskonfliktfehlern für vorhandene verwaltete Azure AD Domain Services-Domänen
 Sie verwenden eine durch Azure AD Domain Services verwaltete Domäne. Wenn Sie zum Azure-Portal navigieren und die verwaltete Domäne anzeigen, wird die folgende Fehlermeldung angezeigt:
 
-![Verzeichniskonfliktfehler](.\media\getting-started\mismatched-tenant-error.png)
+![Verzeichniskonfliktfehler](./media/getting-started/mismatched-tenant-error.png)
 
 Sie können diese verwaltete Domäne nicht verwalten, bis der Fehler behoben wurde.
 

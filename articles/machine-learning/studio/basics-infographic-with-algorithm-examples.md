@@ -1,13 +1,12 @@
 ---
-title: 'Infografik: Grundlagen des maschinellen Lernens – Algorithmusbeispiele – Azure Machine Learning Studio | Microsoft-Dokumentation'
+title: 'Algorithmusbeispiele: Azure Machine Learning Studio| Microsoft-Dokumentation'
 description: Eine einfach verständliche Übersicht über Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Die herunterladbare Infografik behandelt die meisten Fragen zu maschinellem Lernen.
 keywords: Grundlagen des maschinellen Lernens,Algorithmusbeispiele,maschinelles Lernen für Einsteiger,Fragen zu maschinellem Lernen,verbreitete Algorithmen,Infografik zu Algorithmen
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodc18
+ms.author: garye
 editor: cgronlun
 ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: ccbe152901ff7f59548239a1d59e585b8e356c23
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: df628447a441d1580fa1a3862275f2b461f8d18a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308001"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275736"
 ---
-# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen
+# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen von Machine Learning mit Algorithmusbeispielen
 Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von Machine Learning herunter, um die gängigen Algorithmen für häufige Fragen zu Machine Learning zu identifizieren. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Beliebte Algorithmen in Machine Learning Studio
@@ -33,7 +32,7 @@ Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Die Infografik mit Algorithmusbeispielen herunterladen
 **[Herunterladen: Infografik zu Machine Learning-Grundlagen mit Links zu Algorithmusbeispielen (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Häufig verwendete Algorithmen. Maschinelles Lernen für Einsteiger.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infografik: Grundlagen von Machine Learning mit Algorithmusbeispielen. Häufig verwendete Algorithmen. Maschinelles Lernen für Einsteiger.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Weitere Hilfe zu Algorithmen für Einsteiger und erfahrene Benutzer
 * Eine ausführlichere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung sowie zur Auswahl des richtigen Algorithmus für Ihre Lösung finden Sie unter [Gewusst wie: Auswählen von Algorithmen für Microsoft Azure Machine Learning](algorithm-choice.md).
@@ -42,7 +41,7 @@ Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von
 * Informationen zum Herunterladen und Drucken des Diagramms, mit dem Sie sich einen Überblick über die Machine Learning Studio-Funktionen verschaffen können, finden Sie unter [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](studio-overview-diagram.md).
 * Eine Übersicht über den Azure AI-Katalog und die zahlreichen von der Community erstellten verfügbaren Ressourcen finden Sie unter [Freigeben und Entdecken von Ressourcen im Azure AI-Katalog](gallery-how-to-use-contribute-publish.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <!-- Module References -->
 [a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx

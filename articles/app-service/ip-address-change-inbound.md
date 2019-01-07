@@ -1,5 +1,5 @@
 ---
-title: Vorbereitung auf eine Änderung der eingehenden IP-Adresse – Azure
+title: Vorbereitung auf eine Änderung der eingehenden IP-Adresse – Azure App Service
 description: Erfahren Sie, wie Sie vorgehen, wenn Ihre eingehende IP-Adresse geändert werden soll, damit Ihre App nach der Änderung weiterhin funktioniert.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 28741e858b0c938ec8b2b2ff983106c6b08e18fc
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: 2a494b318011d601609033bc877134f0b0eeff09
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578217"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249327"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Vorbereitung auf eine Änderung der eingehenden IP-Adresse
 
@@ -41,7 +42,7 @@ Die neue eingehende IP-Adresse, die Ihrer App zugewiesen wird, wird im Portal im
 
 3.  Wählen Sie Ihre App Service-App in der Liste aus.
 
-4.  Wenn es sich bei der App um eine Funktions-App handelt, finden Sie weitere Informationen unter [Eingehende IP-Adresse einer Funktions-App](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
+1.  Wenn es sich bei der App um eine Funktions-App handelt, finden Sie weitere Informationen unter [Eingehende IP-Adresse einer Funktions-App](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
 
 4.  Klicken Sie unter der Überschrift **Einstellungen** im linken Navigationsbereich auf **Eigenschaften**, und suchen Sie den Abschnitt mit der Bezeichnung **Virtuelle IP-Adresse**.
 

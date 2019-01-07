@@ -1,19 +1,19 @@
 ---
-title: Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover mit Azure Site Recovery | Microsoft Docs
+title: Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover mit Azure Site Recovery | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie die IP-Adressierung für die Verbindung mit virtuellen Computern an einem sekundären lokalen Standort nach einer Notfallwiederherstellung und einem Failover mit Azure Site Recovery eingerichtet wird.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: rayne
-ms.openlocfilehash: 1a9a89138dc71f7a0255b8ab4084182848d6e994
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 50ef6ff452713ec8a8023c5d5e3d58a4b91ea323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211739"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849801"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover
 
@@ -23,8 +23,8 @@ Nach dem Failover von Hyper-V-VMs in VMM-Clouds (System Center Virtual Machine M
 
 Nach einem Failover gibt es mehrere Möglichkeiten, die IP-Adressierung für virtuelle Replikatcomputer zu behandeln: 
 
-- **Beibehalten der gleichen IP-Adresse nach einem Failover**: In diesem Szenario besitzt der replizierte virtuelle Computer die gleiche IP-Adresse wie der primäre virtuelle Computer. Dies vereinfacht netzwerkbezogene Probleme nach dem Failover, erfordert jedoch einige Infrastrukturarbeiten.
-- **Verwenden einer anderen IP-Adresse nach dem Failover**: In diesem Szenario erhält der virtuelle Computer nach einem Failover eine neue IP-Adresse. 
+- **Beibehalten derselben IP-Adresse nach einem Failover**: In diesem Szenario besitzt der replizierte virtuelle Computer die gleiche IP-Adresse wie der primäre virtuelle Computer. Dies vereinfacht netzwerkbezogene Probleme nach dem Failover, erfordert jedoch einige Infrastrukturarbeiten.
+- **Verwenden einer anderen IP-Adresse nach einem Failover**: In diesem Szenario erhält die VM nach einem Failover eine neue IP-Adresse. 
  
 
 ## <a name="retain-the-ip-address"></a>Beibehalten der IP-Adresse

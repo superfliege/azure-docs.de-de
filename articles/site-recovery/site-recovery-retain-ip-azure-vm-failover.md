@@ -2,16 +2,16 @@
 title: Beibehalten von IP-Adressen während eines Failovers von Azure-VMs mit Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie IP-Adressen beibehalten, wenn bei der Notfallwiederherstellung mit Azure Site Recovery ein Failover für Azure-VMs auf eine sekundäre Region ausgeführt wird.
 ms.service: site-recovery
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4e75ba210e12a39d2c4cfb9753bbc2da2893746b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f7b546e8a0ca52fd2037e471f01787bb64db032d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567399"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842746"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Beibehalten von IP-Adressen während eines Failovers
 
@@ -42,9 +42,9 @@ Die Architektur vor dem Failover sieht wie folgt aus.
     - Die primäre Azure-Region ist „Asien, Osten“.
         - „Asien, Osten“ verfügt über ein VNET (**Quell-VNET**) mit dem Adressraum 10.1.0.0/16.
         - „Asien, Osten“ weist Workloads auf, die auf drei Subnetze im VNET aufgeteilt sind:
-            - **Subnetz 1:** 10.1.1.0/24
-            - **Subnetz 2:** 10.1.2.0/24
-            - **Subnetz 3:** 10.1.3.0/24
+            - **Subnetz 1**: 10.1.1.0/24
+            - **Subnetz 2**: 10.1.2.0/24
+            - **Subnetz 3**: 10.1.3.0/24
     - Die sekundäre Azure-Region (Zielregion) ist „Asien, Südosten“.
         - „Asien, Südosten“ verfügt über ein Wiederherstellungs-VNET (**Wiederherstellungs-VNET**), das mit **Quell-VNET** identisch ist.
         - „Asien, Südosten“ verfügt über ein weiteres VNET (**Azure VNET**) mit dem Adressraum 10.2.0.0/16.
@@ -130,9 +130,9 @@ Vor dem Failover sieht die Netzwerkarchitektur wie folgt aus.
 - Anwendungs-VMs werden in der Azure-Region „Asien, Osten“ gehostet.
 -  „Asien, Osten“ verfügt über ein VNET (**Quell-VNET**) mit dem Adressraum 10.1.0.0/16.
     - „Asien, Osten“ weist Workloads auf, die auf drei Subnetze in **Quell-VNET** aufgeteilt sind:
-        - **Subnetz 1:** 10.1.1.0/24
-        - **Subnetz 2:** 10.1.2.0/24
-        - **Subnetz 3:** 10.1.3.0/24, in dem ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 verwendet wird. Dieses virtuelle Netzwerk hat den Namen **Quell-VNET**.
+        - **Subnetz 1**: 10.1.1.0/24
+        - **Subnetz 2**: 10.1.2.0/24
+        - **Subnetz 3**: 10.1.3.0/24, in dem ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 verwendet wird. Dieses virtuelle Netzwerk hat den Namen **Quell-VNET**.
  - Die sekundäre Azure-Region (Zielregion) ist „Asien, Südosten“:
     - „Asien, Südosten“ verfügt über ein Wiederherstellungs-VNET (**Wiederherstellungs-VNET**), das mit **Quell-VNET** identisch ist.
 - Für VMs in „Asien, Osten“ wird über Azure ExpressRoute oder Site-to-Site-VPN eine Verbindung mit einem lokalen Rechenzentrum hergestellt.

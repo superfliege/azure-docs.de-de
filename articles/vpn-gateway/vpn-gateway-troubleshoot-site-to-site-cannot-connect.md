@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: a2330cee3d5ea48f9f679ac02f6889ccce6c1d7c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 18900c4a1dbc25526a3f60c7410ad87e7dd9a9fa
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242754"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967843"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden und reagiert nicht mehr
 
@@ -39,7 +39,7 @@ Um das Problem zu beheben, versuchen Sie zunächst [das VPN-Gateway von Azure ](
 
 2. Überprüfen Sie auf der **Übersichtsseite** des VPN-Gateways die Typinformationen.
     
-    ![Übersicht über das Gateway](media\vpn-gateway-troubleshoot-site-to-site-cannot-connect\gatewayoverview.png)
+    ![Übersicht über das Gateway](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
 ### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Schritt 1: Überprüfen, ob das lokale VPN-Gerät validiert wurde
 
@@ -100,7 +100,7 @@ Suchen und Entfernen Sie benutzerdefiniertes routing (UDR) oder Netzwerksicherhe
 2. Klicken Sie sich durch die Zertifikatswarnung.
 3. Wenn Sie eine Antwort erhalten, wird das VPN-Gateway als integer betrachtet. Wenn Sie keine Antwort erhalten, ist das Gateway möglicherweise nicht fehlerfrei, oder auf dem Gatewaysubnetz ist eine NSG vorhanden, die das Problem verursacht. Der folgende Text ist eine Beispielantwort:
 
-    &lt;?xml version="1.0"?&gt; <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primäre Instanz: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6&lt;/string&gt;
+    &lt;?xml version="1.0"?>  <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primäre Instanz: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string&gt;
 
 ### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>Schritt 8: Überprüfen, ob beim lokalen VPN-Gerät die Funktion Perfect Forward Secrecy aktiviert ist
 

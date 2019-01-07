@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 26cc1e4a91205b1fb57735e09601b2f092da1cdb
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 83adec0c3127e87da9871e294026fd467199c720
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582272"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012877"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von Apache Zeppelin Notebooks mit Apache Spark-Cluster in Azure HDInsight
 
@@ -161,17 +161,17 @@ In diesem Fall müssen Sie die folgenden Schritte ausführen, bevor Sie mit dem 
 ### <a name="scenarios"></a>Szenarien
 * [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
 * [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark mit Machine Learning: Vorhersagen von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Analysieren von Websiteprotokollen mithilfe von Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Websiteprotokollanalyse mithilfe von Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
 * [Erstellen einer eigenständigen Anwendung mit Scala](apache-spark-create-standalone-application.md)
-* [Ausführen von Remoteaufträgen auf einem Apache Spark-Cluster mit Apache Livy](apache-spark-livy-rest-interface.md)
+* [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Apache Spark Scala-Anwendungen](apache-spark-intellij-tool-plugin.md)
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Apache Spark-Anwendungen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Verfügbare Kernels für Jupyter Notebooks in einem Apache Spark-Cluster für HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernel für Jupyter Notebook in Apache Spark-Clustern für HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
@@ -183,9 +183,9 @@ In diesem Fall müssen Sie die folgenden Schritte ausführen, bevor Sie mit dem 
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [azure-create-storageaccount]:../../storage/common/storage-create-storage-account.md 
 
 

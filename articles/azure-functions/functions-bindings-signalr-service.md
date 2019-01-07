@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 40cad9eec87c07a205a86f1009074cdbeaf58d15
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249960"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001795"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
@@ -30,7 +30,7 @@ In diesem Artikel wird erläutert, wie mit dem [Azure SignalR-Dienst](https://az
 
 ## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
 
-Die SignalR-Dienst-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SignalRService](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService), Version 1.0.0-preview1-* bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension).
+Die SignalR-Dienst-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService), Version 1.0.0-preview1-* bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension).
 
 > [!NOTE]
 > Der Azure SignalR-Dienst ist allgemein verfügbar. Die Bindungen des SignalR-Diensts für Azure Functions befinden sich aktuell jedoch in der Vorschau.

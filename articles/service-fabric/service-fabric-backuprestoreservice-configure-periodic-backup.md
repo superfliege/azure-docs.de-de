@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387632"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722376"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Grundlegendes zur Konfiguration der regelmäßigen Sicherung in Azure Service Fabric
 
@@ -54,7 +54,7 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
         ```
 
     2. **Zeitbasierter Sicherungszeitplan**: Dieser Zeitplantyp sollte verwendet werden, wenn eine Datensicherung zu einer bestimmten Zeit am Tag oder in der Woche erforderlich ist. Die Häufigkeit für diesen Zeitplantyp kann entweder täglich oder wöchentlich sein.
-        1. **_Täglicher_ zeitbasierter Sicherungszeitplan**: Dieser Zeitplantyp sollte verwendet werden, wenn die Notwendigkeit besteht, eine Datensicherung zu bestimmten Tageszeiten durchzuführen. Um diese festzulegen, setzen Sie `ScheduleFrequencyType` auf _Täglich_; und setzen Sie `RunTimes` im ISO8601-Format auf die Liste der gewünschten Uhrzeit während des Tages, wobei das mit der Uhrzeit angegebene Datum ignoriert wird. Zum Beispiel steht `0001-01-01T18:00:00` für täglich um _18:00 Uhr_, wobei der Datumsteil _0001-01-01_ ignoriert wird. Das folgende Beispiel veranschaulicht die Konfiguration zum Auslösen der täglichen Sicherung um _9:00 Uhr_ und _18:00 Uhr_.
+        1. **_Täglicher_ zeitbasierter Sicherungszeitplan**: Dieser Zeitplantyp sollte verwendet werden, wenn die Datensicherung zu bestimmten Tageszeiten erfolgen muss. Um diese festzulegen, setzen Sie `ScheduleFrequencyType` auf _Täglich_; und setzen Sie `RunTimes` im ISO8601-Format auf die Liste der gewünschten Uhrzeit während des Tages, wobei das mit der Uhrzeit angegebene Datum ignoriert wird. Zum Beispiel steht `0001-01-01T18:00:00` für täglich um _18:00 Uhr_, wobei der Datumsteil _0001-01-01_ ignoriert wird. Das folgende Beispiel veranschaulicht die Konfiguration zum Auslösen der täglichen Sicherung um _9:00 Uhr_ und _18:00 Uhr_.
 
             ```json
             {
@@ -67,7 +67,7 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
             }
             ```
 
-        2. **_Wöchentlicher_ zeitbasierter Sicherungszeitplan**: Dieser Zeitplantyp sollte verwendet werden, wenn die Notwendigkeit besteht, eine Datensicherung zu bestimmten Tageszeiten durchzuführen. Um diese festzulegen, setzen Sie `ScheduleFrequencyType` auf _Wöchentlich_; setzen Sie `RunDays` auf die Liste der Tage in einer Woche, an denen die Sicherung ausgelöst werden soll, und setzen Sie `RunTimes` im ISO8601-Format auf die Liste der gewünschten Uhrzeit während des Tages, wobei das mit der Uhrzeit angegebene Datum ignoriert wird. Liste der Tage einer Woche, an denen die regelmäßige Sicherung ausgelöst werden soll. Das folgende Beispiel zeigt die Konfiguration zum Auslösen der täglichen Sicherung um _9:00 Uhr_ und _18:00 Uhr_ von montags bis freitags.
+        2. **_Wöchentlicher_ zeitbasierter Sicherungszeitplan**: Dieser Zeitplantyp sollte verwendet werden, wenn die Datensicherung zu bestimmten Tageszeiten erfolgen muss. Um diese festzulegen, setzen Sie `ScheduleFrequencyType` auf _Wöchentlich_; setzen Sie `RunDays` auf die Liste der Tage in einer Woche, an denen die Sicherung ausgelöst werden soll, und setzen Sie `RunTimes` im ISO8601-Format auf die Liste der gewünschten Uhrzeit während des Tages, wobei das mit der Uhrzeit angegebene Datum ignoriert wird. Liste der Tage einer Woche, an denen die regelmäßige Sicherung ausgelöst werden soll. Das folgende Beispiel zeigt die Konfiguration zum Auslösen der täglichen Sicherung um _9:00 Uhr_ und _18:00 Uhr_ von montags bis freitags.
 
             ```json
             {
@@ -88,7 +88,7 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
             ```
 
 * **Sicherungsspeicher**: Gibt den Speicherort zum Hochladen von Sicherungen an. Als Speicher kann entweder ein Azure-Blobspeicher oder eine Dateifreigabe verwendet werden.
-    1. **Azure-Blobspeicher**: Dieser Speichertyp sollte gewählt werden, wenn die Notwendigkeit besteht, generierte Sicherungen in Azure zu speichern. Sowohl _eigenständige_ als auch _auf Azure basierende_ Cluster können diesen Speichertyp verwenden. Die Beschreibung für diesen Speichertyp erfordert die Verbindungszeichenfolge und den Namen des Containers, in den die Sicherungen hochgeladen werden sollen. Wenn der Container mit dem angegebenen Namen nicht verfügbar ist, wird er beim Hochladen einer Sicherung erstellt.
+    1. **Azure-Blobspeicher**: Dieser Speichertyp sollte gewählt werden, wenn die generierten Sicherungen in Azure gespeichert werden müssen. Sowohl _eigenständige_ als auch _auf Azure basierende_ Cluster können diesen Speichertyp verwenden. Die Beschreibung für diesen Speichertyp erfordert die Verbindungszeichenfolge und den Namen des Containers, in den die Sicherungen hochgeladen werden sollen. Wenn der Container mit dem angegebenen Namen nicht verfügbar ist, wird er beim Hochladen einer Sicherung erstellt.
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -98,7 +98,7 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
         }
         ```
 
-    2. **Dateifreigabe**: Dieser Speichertyp sollte für _eigenständige_ Cluster ausgewählt werden, wenn die Notwendigkeit besteht, die Datensicherung lokal zu speichern. Die Beschreibung für diesen Speichertyp erfordert einen Dateifreigabepfad, in den Sicherungen hochgeladen werden müssen. Über eine der folgenden Optionen kann der Zugriff auf die Dateifreigabe konfiguriert werden:
+    2. **Dateifreigabe**: Dieser Speichertyp sollte für _eigenständige_ Cluster ausgewählt werden, wenn die Datensicherung lokal gespeichert werden muss. Die Beschreibung für diesen Speichertyp erfordert einen Dateifreigabepfad, in den Sicherungen hochgeladen werden müssen. Über eine der folgenden Optionen kann der Zugriff auf die Dateifreigabe konfiguriert werden:
         1. _Integrierte Windows-Authentifizierung_, wobei der Zugriff auf die Dateifreigabe für alle Computer des Service Fabric-Clusters gewährt wird. Legen Sie in diesem Fall die folgenden Felder fest, um auf einer _Dateifreigabe_ basierenden Sicherungsspeicher zu konfigurieren.
 
             ```json
@@ -110,6 +110,7 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
             ```
 
         2. _Schützen der Dateifreigabe mit Benutzername und Kennwort_, wobei der Zugriff auf die Dateifreigabe bestimmten Benutzern gewährt wird. Die Speicherspezifikation der Dateifreigabe bietet auch die Möglichkeit, einen sekundären Benutzernamen und ein sekundäres Kennwort anzugeben. So werden die Anmeldeinformationen für den Fall bereitgestellt, dass bei der Authentifizierung mit dem primären Benutzernamen und dem primären Kennwort ein Fehler auftritt. Legen Sie in diesem Fall die folgenden Felder fest, um auf einer _Dateifreigabe_ basierenden Sicherungsspeicher zu konfigurieren.
+
             ```json
             {
                 "StorageKind": "FileShare",
@@ -125,6 +126,17 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
 > [!NOTE]
 > Stellen Sie sicher, dass die Speicherzuverlässigkeit die Anforderungen an die Zuverlässigkeit von Sicherungsdaten erfüllt oder übertrifft.
 >
+
+* **Aufbewahrungsrichtlinie**: Gibt die Richtlinie zum Aufbewahren von Sicherungen im konfigurierten Speicher an. Es wird nur die Aufbewahrungsrichtlinie „Basic“ unterstützt.
+    1. **Aufbewahrungsrichtlinie „Basic“**: Diese Aufbewahrungsrichtlinie ermöglicht die Sicherstellung einer optimalen Speicherauslastung, indem Sicherungsdateien entfernt werden, die nicht mehr benötigt werden. Über `RetentionDuration` kann die Zeitspanne festgelegt werden, für die Sicherungen im Speicher beibehalten werden müssen. `MinimumNumberOfBackups` ist ein optionaler Parameter, mit dem sichergestellt werden kann, dass unabhängig von `RetentionDuration` immer die angegebene Anzahl von Sicherungen beibehalten wird. Das nachstehende Beispiel zeigt eine Konfiguration, bei der Sicherungen für _10_ Tage beibehalten werden und die Anzahl von Sicherungen nicht unter _20_ fallen darf.
+
+        ```json
+        {
+            "RetentionPolicyType": "Basic",
+            "RetentionDuration" : "P10D",
+            "MinimumNumberOfBackups": 20
+        }
+        ```
 
 ## <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach der Definition der Sicherungsrichtlinie zur Erfüllung der Datensicherungsanforderungen sollte die Sicherungsrichtlinie entweder mit einer _Anwendung_, einem _Dienst_ oder einer _Partition_ verknüpft werden.
@@ -179,6 +191,13 @@ Sicherungsrichtlinien können deaktiviert werden, wenn keine Notwendigkeit beste
 
 * Durch das Deaktivieren der Sicherungsrichtlinie für eine _Partition_ werden alle regelmäßigen Datensicherungen beendet, die aufgrund der Sicherungsrichtlinie auf Partitionsebene durchgeführt werden.
 
+* Wenn die Sicherung für eine Entität (Anwendung/Dienst/Partition) deaktiviert wird, kann `CleanBackup` auf _true_ festgelegt werden, um alle Sicherungen im konfigurierten Speicher zu löschen.
+    ```json
+    {
+        "CleanBackup": true 
+    }
+    ```
+
 ## <a name="suspend--resume-backup"></a>Anhalten und Fortsetzen einer Sicherung
 Bestimmte Situationen können ein vorübergehendes Anhalten der regelmäßigen Datensicherung erfordern. In einer solchen Situation kann, je nach Anforderung, die API zum Anhalten von Sicherungen für eine _Anwendung_, einen _Dienst_ oder eine _Partition_ verwendet werden. Das Aussetzen der regelmäßigen Sicherung ist ab dem Zeitpunkt der Anwendung über die Teilstruktur der Anwendungshierarchie transitiv. 
 
@@ -218,11 +237,11 @@ Zudem unterstützen diese APIs das Paginieren der Ergebnisse. Wenn der Parameter
 
 Im Folgenden finden Sie kurze Informationen zu den unterstützten Varianten.
 
-- [Liste der Sicherungen für eine Anwendung abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einer bestimmten Service Fabric-Anwendung gehört.
+- [Liste der Anwendungssicherungen abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einer bestimmten Service Fabric-Anwendung gehört.
 
-- [Liste der Sicherungen für einen Dienst abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einem bestimmten Service Fabric-Dienst gehört.
+- [Liste der Dienstsicherungen abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einem bestimmten Service Fabric-Dienst gehört.
  
-- [Liste der Sicherungen für eine Partition abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Gibt eine Liste der verfügbaren Sicherungen für die angegebene Partition zurück.
+- [Liste der Partitionssicherungen abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Gibt eine Liste der verfügbaren Sicherungen für die angegebene Partition zurück.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

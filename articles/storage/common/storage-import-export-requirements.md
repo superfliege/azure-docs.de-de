@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/07/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 3a42f09967ec42b47947823025f2f0dcd081d1b1
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 5f6908a80a467e1a8a12d61be2f67cbe70cce8a0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "49352236"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275634"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -41,8 +41,9 @@ Um die Festplatten mit dem WAImportExport-Tool vorzubereiten, werden die folgend
 
 Der Azure Import-/Export-Dienst unterstützt die folgenden Typen von Speicherkonten:
 
-- Speicherkonten vom Typ Allgemein v1 (sowohl klassische als auch Azure Resource Manager-Bereitstellungen)
+- Speicherkonten vom Typ „Universell v2“ (für die meisten Szenarien empfohlen)
 - Blob Storage-Konten
+- Speicherkonten vom Typ „Universell v1“ (sowohl klassische als auch Azure Resource Manager-Bereitstellungen) 
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonten – Übersicht](storage-account-overview.md).
 

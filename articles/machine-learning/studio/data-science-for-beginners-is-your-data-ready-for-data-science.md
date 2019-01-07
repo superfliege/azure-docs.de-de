@@ -1,13 +1,12 @@
 ---
-title: Sind Ihre Daten für Data Science bereit? Datenauswertung – Azure Machine Learning Studio | Microsoft-Dokumentation
+title: Datenauswertung – Azure Machine Learning Studio | Microsoft-Dokumentation
 description: Vier Kriterien, die Ihre Daten erfüllen müssen, um für Data Science bereit zu sein. Dieses Video stellt konkrete Beispiele für die grundlegende Bewertung von Daten bereit.
 keywords: relevante Daten,Bewerten von Daten,Vorbereiten von Daten,Kriterien von Daten,vorbereitete Daten
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
@@ -17,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 5e7949edb13bfec72fa7d80d86d2e77214ceaa37
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2a9101ed510c617df81f422aea92ca1ef2b28cd8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316207"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261227"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Sind Ihre Daten für Data Science bereit?
-## <a name="video-2-data-science-for-beginners-series"></a>2. Video der Reihe „Data Science für Einsteiger“
+## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Reihe „Data Science für Einsteiger“
 Erfahren Sie, wie Sie Ihre Daten bewerten können, um sicherzustellen, dass sie die Basiskriterien erfüllen und für Data Science bereit sind.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
@@ -44,7 +43,7 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur L
 * Video 4: [Vorhersagen einer Antwort mit einem einfachen Modell](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
 * Video 5: [Kopieren der Arbeit anderer für Ihre Data Science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Aufzeichnung: Sind Ihre Daten für Data Science bereit?
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Transkript: Sind Ihre Daten für Data Science bereit?
 Willkommen bei „Sind Ihre Daten für Data Science bereit?“, dem zweiten Video der Reihe *Data Science für Einsteiger*.  
 
 Bevor Sie sich mit Data Science die gewünschten Antworten verschaffen können, müssen Sie Rohdatenmaterial hoher Qualität zum Verarbeiten zur Verfügung stellen. Es ist wie beim Backen einer Pizza: je besser die Ausgangszutaten, desto besser das Endprodukt. 

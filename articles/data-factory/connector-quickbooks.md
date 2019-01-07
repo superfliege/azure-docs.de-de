@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a3d079483ecf4ea8cf9a4c6bda050bfe8befcfd0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 51a48576b56413e0e779a49829a6eccaa0266a57
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241683"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076099"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopieren von Daten aus QuickBooks Online mithilfe von Azure Data Factory (Vorschau)
 
@@ -47,7 +47,7 @@ Folgende Eigenschaften werden für den mit QuickBooks verknüpften Dienst unters
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **QuickBooks** festgelegt sein. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **QuickBooks**. | JA |
 | endpoint | Der Endpunkt des QuickBooks Online-Servers. (quickbooks.api.intuit.com)  | JA |
 | companyId | Die Unternehmens-ID des zu autorisierenden QuickBooks-Unternehmens. Weitere Informationen finden Sie unter [Wie finde ich meine Unternehmens-ID?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551) (in englischer Sprache). | JA |
 | consumerKey | Verbraucherschlüssel für die OAuth 1.0-Authentifizierung | JA |
@@ -89,8 +89,12 @@ Folgende Eigenschaften werden für den mit QuickBooks verknüpften Dienst unters
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom QuickBooks-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus QuickBooks Online die „type“-Eigenschaft des Datasets auf **QuickBooksObject** fest. Bei diesem Dataset-Typ gibt es keine zusätzliche typspezifische Eigenschaft.
+Legen Sie zum Kopieren von Daten aus QuickBooks Online die „type“-Eigenschaft des Datasets auf **QuickBooksObject** fest. Folgende Eigenschaften werden unterstützt:
 
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **QuickBooksObject**. | JA |
+| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 **Beispiel**
 
 ```json
@@ -101,7 +105,8 @@ Legen Sie zum Kopieren von Daten aus QuickBooks Online die „type“-Eigenschaf
         "linkedServiceName": {
             "referenceName": "<QuickBooks linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -110,14 +115,14 @@ Legen Sie zum Kopieren von Daten aus QuickBooks Online die „type“-Eigenschaf
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der QuickBooks-Quelle unterstützt werden.
 
-### <a name="quickbookssource-as-source"></a>QuickBooksSource als Quelle
+### <a name="quickbooks-as-source"></a>QuickBooks als Quelle
 
 Legen Sie zum Kopieren von Daten aus QuickBooks Online den Quelltyp in der Kopieraktivität auf **QuickBooksSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **QuickBooksSource** festgelegt werden. | JA |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **QuickBooksSource**. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

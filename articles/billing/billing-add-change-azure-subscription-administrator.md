@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 2380cd3712c47ca08e9b9b3597f09f4119238af3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 53cecc845ed8bd15311e1bcec3ec9b36db8f5c2c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581612"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727867"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 
@@ -42,10 +42,10 @@ Wenn Sie einen Benutzer als Administrator für ein Azure-Abonnement hinzufügen 
 1. Navigieren Sie im [ Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zu **Abonnements**.
 2. Wählen Sie das Abonnement aus, für das Sie Zugriff gewähren möchten.
 3. Wählen Sie in der Liste die Option **Zugriffssteuerung (IAM)** aus.
-4. Wählen Sie **Hinzufügen**.
-   (Wenn die Schaltfläche „Hinzufügen“ nicht vorhanden ist, sind Sie nicht berechtigt, Berechtigungen hinzuzufügen.)
+4. Wählen Sie **Rollenzuweisung hinzufügen** aus.
+   (Wenn die Schaltfläche „Rollenzuweisung hinzufügen“ nicht vorhanden ist, sind Sie nicht berechtigt, Berechtigungen hinzuzufügen.)
 5. Wählen Sie im Feld **Rolle** die Option **Besitzer**. 
-6. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung**. 
+6. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus. 
 7. Geben Sie im Feld **Auswählen** die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten. Wählen Sie den Benutzer und dann **Speichern** aus.
 
     ![Screenshot mit ausgewählter Besitzerrolle](./media/billing-add-change-azure-subscription-administrator/add-role.png)

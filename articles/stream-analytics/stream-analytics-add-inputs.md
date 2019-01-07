@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: b3b7b7374b02210f44fde408f28fd0378bf9bd12
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0475318ce983b98951fb9cd5d24a5bc4452b1f1e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310853"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970109"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Grundlegendes zu Eingaben für Azure Stream Analytics
 
@@ -41,8 +41,6 @@ Weitere Informationen zu Streamingdateneingaben finden Sie unter [Streamen von D
 Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Verweisdaten sind entweder vollständig statisch oder werden nur langsam geändert. Sie werden normalerweise zum Ausführen von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure Blob Storage ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten. Quellblobs für Verweisdaten weisen ein Limit von 300 MB auf, je nach Abfragekomplexität und zugeordneten Streamingeinheiten.
 
 Weitere Informationen zu Verweisdateneingaben finden Sie unter [Verwenden von Verweisdaten für Suchvorgänge in Stream Analytics](stream-analytics-use-reference-data.md).
-
-Dieser Artikel ist ein Schritt im [Stream Analytics-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

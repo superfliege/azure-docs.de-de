@@ -1,6 +1,6 @@
 ---
-title: Azure AD-Bereitstellungsprüfliste 30 Tage, 90 Tage und darüber hinaus
-description: Azure Active Directory Premium P2-Feature-Bereitstellungsprüfliste
+title: Premium P2-Lizenzierungsfeature-Prüfliste – Azure Active Directory | Microsoft-Dokumentation
+description: Bereitstellungsprüfliste für Bereitstellung des Azure Active Directory-Premium P2-Features für 30 Tage, 90 Tage und länger.
 services: active-directory
 ms.service: active-directory
 ms.component: ''
@@ -9,13 +9,13 @@ ms.date: 09/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: ''
-ms.openlocfilehash: 86561cd835a36282ca1b38638ab4372c6b360617
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705650"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078232"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2-Lizenzierungsfeature-Prüfliste
 
