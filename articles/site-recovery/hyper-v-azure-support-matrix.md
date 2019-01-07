@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8c8ba338a7059d6d11f43bda6348aa6e645ab98c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210719"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410158"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -33,8 +33,8 @@ Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung 
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-Hyper-V (Ausführung ohne Virtual Machine Manager) | Windows Server 2016 (einschließlich Server Core-Installation), Windows Server 2012 R2 mit den neuesten Updates | Für die Konfiguration eines Hyper-V-Standorts in Site Recovery wird das Kombinieren von Hosts mit Windows Server 2016 und 2012 R2 nicht unterstützt.<br/><br/> Für virtuelle Computer auf einem Host unter Windows Server 2016 wird die Wiederherstellung an einem alternativen Standort nicht unterstützt.
-Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/> Eine Virtual Machine Manager-Cloud mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts wird derzeit nicht unterstützt.<br/><br/> Umgebungen, die ein Upgrade eines vorhandenen Virtual Machine Manager 2012 R2-Servers auf 2016 enthalten, werden nicht unterstützt.
+Hyper-V (Ausführung ohne Virtual Machine Manager) | Windows Server 2016 (einschließlich Server Core-Installation), Windows Server 2012 R2 mit den neuesten Updates | Für virtuelle Computer auf einem Host unter Windows Server 2016 wird die Wiederherstellung an einem alternativen Standort nicht unterstützt.<br/><br/> Wenn Sie Windows Server 2012 R2 mit SCVMM 2012 R2 mit Azure Site Recovery bzw. nur SCVMM 2012 R2 mit Azure Site Recovery konfiguriert haben und nun ein Upgrade des Betriebssystems durchführen möchten, befolgen Sie die Anweisungen in der [Dokumentation](upgrade-2012R2-to-2016.md). 
+Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>Replizierte VMs
@@ -59,15 +59,15 @@ Datenträger auf einer replizierten Hyper-V-VM hinzufügen | Nicht unterstützt.
 
 **Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-Hostnetzwerk: NIC-Teaming | JA | JA
+Hostnetzwerk: NIC Teaming | JA | JA
 Hostnetzwerk: VLAN | JA | JA
 Hostnetzwerk: IPv4 | JA | JA
 Hostnetzwerk: IPv6 | Nein  | Nein 
-Gast-VM-Netzwerk: NIC-Teaming | Nein  | Nein 
+Gast-VM-Netzwerk: NIC Teaming | Nein  | Nein 
 Gast-VM-Netzwerk: IPv4 | JA | JA
 Gast-VM-Netzwerk: IPv6 | Nein  | JA
-Gast-VM-Netzwerk: statische IP-Adresse (Windows) | JA | JA
-Gast-VM-Netzwerk: statische IP-Adresse (Linux) | Nein  | Nein 
+Gast-VM-Netzwerk: Statische IP-Adresse (Windows) | JA | JA
+Gast-VM-Netzwerk: Statische IP-Adresse (Linux) | Nein  | Nein 
 Gast-VM-Netzwerk: Multi-NIC | JA | JA
 
 
@@ -111,7 +111,7 @@ NFS | Nicht verfügbar | Nicht verfügbar
 SMB 3.0 | Nein  | Nein 
 RDM | Nicht verfügbar | Nicht verfügbar
 Datenträger > 1 TB | Ja, bis zu 4.095 GB | Ja, bis zu 4.095 GB
-Datenträger: 4K für logischen und physischen Sektor | Nicht unterstützt: 1./2. Generation | Nicht unterstützt: 1./2. Generation
+Datenträger: 4K für logischen und physischen Sektor | Nicht unterstützt: Gen 1, Gen 2 | Nicht unterstützt: Gen 1, Gen 2
 Datenträger: 4K für logischen, 512 Byte für physischen Sektor | JA |  JA
 Logische Volumeverwaltung (Logical Volume Management, LVM). LVM wird nur für Datenträger unterstützt. Azure stellt nur einen einzelnen Betriebssystemdatenträger bereit. | JA | JA
 Volume mit Stripesetdatenträger > 1 TB | JA | JA
@@ -159,7 +159,7 @@ Größe des VHD-Datenträgers | Bis zu 4.095 GB | Beim Überprüfen der Vorausse
 Netzwerkadapter | Es werden mehrere Adapter unterstützt. |
 Freigegebene VHD | Nicht unterstützt | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Fiber-Channel-Datenträger | Nicht unterstützt | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Festplattenformat | VHD  <br/><br/> VHDX | Site Recovery konvertiert VHDX automatisch in VHD, wenn Sie das Failover auf Azure anstoßen. Wenn Sie ein Failback zum lokalen Speicher durchführen, wird für die virtuellen Computer weiterhin das VHDX-Format verwendet.
+Festplattenformat | VHD  <br/><br/>  VHDX | Site Recovery konvertiert VHDX automatisch in VHD, wenn Sie das Failover auf Azure anstoßen. Wenn Sie ein Failback zum lokalen Speicher durchführen, wird für die virtuellen Computer weiterhin das VHDX-Format verwendet.
 BitLocker | Nicht unterstützt | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen virtuellen Computer aktivieren.
 Name des virtuellen Computers | Zwischen 1 und 63 Zeichen. Ist auf Buchstaben, Zahlen und Bindestriche beschränkt. Der VM-Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. | Aktualisieren Sie den Wert in den VM-Eigenschaften in Site Recovery.
 VM-Typ | Generation 1<br/><br/> Generation 2 – Windows | Zwei virtuelle Computer der Generation 2 mit einem Betriebssystem-Datenträger des Typs „Basic“ (mit einem oder zwei als VHDX formatierten Datenvolumes) und weniger als 300 GB Speicherplatz werden unterstützt.<br></br>Linux-VMs der Generation 2 werden nicht unterstützt. [Weitere Informationen](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
@@ -171,6 +171,9 @@ VM-Typ | Generation 1<br/><br/> Generation 2 – Windows | Zwei virtuelle Comput
 Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein 
 Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein 
 
+> [!NOTE]
+> Wenn Hyper-VMs (mit oder ohne Verwaltung durch SCVMM) von lokalen VMs in Azure repliziert werden, kann die Replikation aus einer bestimmten Umgebung heraus, nämlich dem Hyper-V-Standort oder SCVMM (je nachdem, was davon zutrifft), nur in einem bestimmten AD-Mandanten durchgeführt werden.
+
 
 ## <a name="provider-and-agent"></a>Anbieter und Agent
 
@@ -178,7 +181,7 @@ Damit Ihre Bereitstellung mit den Einstellungen in diesem Artikel kompatibel ist
 
 **Name** | **Beschreibung** | **Details**
 --- | --- | --- | --- | ---
-Azure Site Recovery-Anbieter | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Hyper-V mit Virtual Machine Manager: Installation auf Virtual Machine Manager-Servern<br/><br/> Hyper-V ohne Virtual Machine Manager: Installation auf Hyper-V-Hosts| Aktuelle Version: 5.1.2700.1 (über das Azure-Portal verfügbar)<br/><br/> [Neueste Features und Fixes](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Azure Site Recovery-Anbieter | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Hyper-V mit Virtual Machine Manager: Installiert auf Virtual Machine Manager-Servern<br/><br/> Hyper-V ohne Virtual Machine Manager: Installiert auf Hyper-V-Hosts| Aktuelle Version: 5.1.2700.1 (über das Azure-Portal verfügbar)<br/><br/> [Neueste Features und Fixes](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Recovery Services-Agent | Koordiniert die Replikation zwischen Hyper-V-VMs und Azure<br/><br/> Installation auf lokalen Hyper-V-Servern (mit oder ohne Virtual Machine Manager) | Aktueller Agent über das Portal verfügbar
 
 

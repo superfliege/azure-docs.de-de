@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 11/27/2018
-ms.openlocfilehash: 4d71e54beac6e4816d8bcc9097219b2e7b7cabb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 4aaaf2e7a918ab91aebd1e1f1f6d166d6cadf19a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441858"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437061"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>V-Kern-Diensttarife, Azure-Hybridvorteil und Migration
 
@@ -40,10 +40,10 @@ Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle 
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale (Vorschau)**|
 |---|---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung|
-|Compute|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|
+|Compute|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|
 |Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern |Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern|
-|Speicher|Verwendet [Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md):<br/>Einzeldatenbank: 5 GB bis 4 TB<br/>Verwaltete Instanz: 32 GB bis 8 TB |Verwendet lokalen SSD-Speicher:<br/>Einzeldatenbank: 5 GB bis 1 TB<br/>Verwaltete Instanz: 32 GB bis 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
-|E/A-Durchsatz (ungefähr)|Einzeldatenbank: 500 IOPS pro virtuellem Kern (maximal 7.000 IOPS)</br>Verwaltete Instanz: abhängig von der [Dateigröße](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS pro Kern mit maximal 200.000 IOPS|TBD|
+|Storage|Verwendet [Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md):<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher:<br/>Einzeldatenbank: 5 GB – 1 TB<br/>Verwaltete Instanz: 32 GB – 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
+|E/A-Durchsatz (ungefähr)|Einzeldatenbank: 500 IOPS pro V-Kern mit maximal 7.000 IOPS</br>Verwaltete Instanz: Hängt von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) ab|5000 IOPS pro Kern mit maximal 200.000 IOPS|TBD|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>Zonenredundante HA|?|
 |Backups|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|Sicherung auf der Grundlage von Momentaufnahmen im Azure-Remotespeicher. Diese Momentaufnahmen werden für die schnelle Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind sehr schnell und entsprechen nicht der Größe eines Datenvorgangs (benötigen eher Minuten als Stunden oder Tage).|
 |In-Memory|Nicht unterstützt|Unterstützt|Nicht unterstützt|

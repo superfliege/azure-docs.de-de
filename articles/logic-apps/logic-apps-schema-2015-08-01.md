@@ -4,18 +4,18 @@ description: Aktualisierte Schemaversion 2015-08-01-preview für Logik-App-Defin
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: stepsic-microsoft-com
-ms.author: stepsic
-ms.reviewer: klam, estfan, LADocs
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
 ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
 ms.date: 05/31/2016
-ms.openlocfilehash: dd05543c2a727f010432ecb54c2dc3e77a245de4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ec6f98ca0f0260a0d7bed16538f557931cd2e33e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122776"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080009"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Schemaaktualisierungen für Azure Logic Apps – 1. August 2015 (Vorschau)
 
@@ -72,12 +72,16 @@ Innerhalb dieser Definition werden diese Aktionen als `APIConnection` bezeichnet
 }
 ```
 
-Das `host`-Objekt stellt den Teil der Eingaben dar, der nur für API-Verbindungen gilt. Es besteht aus diesen Teilen: `api` und `connection`. Das `api`-Objekt enthält die Laufzeit-URL, für die diese verwaltete API gehostet wird. Durch den Aufruf von `GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` können Sie alle verfügbaren verwalteten APIs anzeigen.
+Das `host`-Objekt stellt den Teil der Eingaben dar, der nur für API-Verbindungen gilt. Es besteht aus diesen Teilen: `api` und `connection`. Das `api`-Objekt enthält die Laufzeit-URL, für die diese verwaltete API gehostet wird. Sie können alle verfügbaren verwalteten APIs anzeigen, indem Sie diese Methode aufrufen:
+
+```text
+GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
+```
 
 Wenn Sie eine API verwenden, müssen für die API nicht unbedingt *Verbindungsparameter* definiert sein. Wenn die API diese Parameter nicht definiert, ist also keine Verbindung erforderlich. Wenn die API diese Parameter definiert, müssen Sie eine Verbindung mit dem angegebenen Namen herstellen.  
 Sie verweisen dann im `connection`-Objekt innerhalb des `host`-Objekts auf den Namen. Rufen Sie zum Erstellen einer Verbindung in einer Ressourcengruppe folgende Methode auf:
 
-```
+```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
@@ -99,8 +103,8 @@ Verwenden Sie folgenden Text:
 
 ### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Bereitstellen von verwalteten APIs in einer Azure Resource Manager-Vorlage
 
-Sie können eine vollständige App in einer Azure Resource Manager-Vorlage erstellen, solange keine interaktive Anmeldung erforderlich ist.
-Ist eine Anmeldung erforderlich, können Sie alle Elemente mit der Azure Resource Manager-Vorlage einrichten, müssen jedoch zum Autorisieren der Verbindungen das Azure-Portal aufrufen. 
+Solange keine interaktive Anmeldung erforderlich ist, können Sie eine vollständige App in einer Resource Manager-Vorlage erstellen.
+Wenn eine Anmeldung erforderlich ist, können Sie dennoch eine Resource Manager-Vorlage verwenden, müssen dann aber die Verbindungen über das Azure-Portal autorisieren. 
 
 ``` json
 "resources": [ {
@@ -194,7 +198,7 @@ Sie sehen in diesem Beispiel, dass es sich bei den Verbindungen lediglich um Res
 
 ### <a name="your-custom-web-apis"></a>Ihre benutzerdefinierten Web-APIs
 
-Wenn Sie eigene (also nicht von Microsoft verwaltete) APIs einsetzen, verwenden Sie für das Aufrufen die integrierte **HTTP**-Aktion. Für die optimale Nutzung sollten Sie einen Swagger-Endpunkt für Ihre API verfügbar machen. Durch diesen Endpunkt kann der Logik-App-Designer die Ein- und Ausgaben für Ihre API rendern. Ohne Swagger kann der Designer die Ein- und Ausgaben nur als nicht transparente JSON-Objekte anzeigen.
+Wenn Sie eigene anstatt von Microsoft verwaltete APIs einsetzen, verwenden Sie für das Aufrufen der APIs die integrierte **HTTP**-Aktion. Im Idealfall geben Sie einen Swagger-Endpunkt für Ihre API an. Dieser Endpunkt dient dem Logik-App-Designer zur Anzeige der Eingaben und Ausgaben Ihrer APIs. Ohne Swagger-Endpunkt kann der Designer die Ein- und Ausgaben nur als nicht transparente JSON-Objekte anzeigen.
 
 Hier sehen Sie ein Beispiel für die neue `metadata.apiDefinitionUrl` -Eigenschaft:
 
@@ -259,7 +263,7 @@ Beispiel: Wenn Sie Dropbox zum Auflisten von Dateien verwenden, ist in der Schem
 }
 ```
 
-Sie können die entsprechende HTTP-Aktion jetzt gemäß dem folgenden Beispiel erstellen, während der Parameterabschnitt der Logik-App-Definition unverändert bleibt:
+Sie können nun eine ähnliche HTTP-Aktion erstellen und den Abschnitt `parameters` der Logik-App-Definition unverändert lassen, wie zum Beispiel:
 
 ``` json
 "actions": {
@@ -407,15 +411,15 @@ Stattdessen können Sie jetzt diese Version verwenden:
 
 ## <a name="native-http-listener"></a>Nativer HTTP-Listener
 
-Die HTTP-Listener-Funktionen sind jetzt integriert, daher müssen Sie keine HTTP-Listener-API-App mehr bereitstellen. Ausführliche Informationen dazu, wie Sie den Logik-App-Endpunkt aufrufbar machen, finden Sie [hier](../logic-apps/logic-apps-http-endpoint.md). 
+Die HTTP-Listener-Features sind jetzt integriert, daher müssen Sie keine HTTP-Listener-API-App bereitstellen. Erfahren Sie mehr darüber, wie Sie [den Logik-App-Endpunkt aufrufbar machen](../logic-apps/logic-apps-http-endpoint.md). 
 
-Im Rahmen dieser Änderungen haben wir die `@accessKeys()`-Funktion entfernt und durch die `@listCallbackURL()`-Funktion zum Abrufen des Endpunkts (wenn erforderlich) ersetzt. Außerdem müssen Sie jetzt mindestens einen Trigger in Ihrer Logik-App definieren. Wenn Sie für den Workflow `/run` ausführen möchten, benötigen Sie einen der folgenden Trigger: `manual`, `apiConnectionWebhook` oder `httpWebhook`.
+Mit diesen Änderungen ersetzt Logic Apps die Funktion `@accessKeys()` durch die Funktion `@listCallbackURL()`, die bei Bedarf den Endpunkt abruft. Außerdem müssen Sie jetzt mindestens einen Trigger in Ihrer Logik-App definieren. Wenn Sie für den Workflow `/run` ausführen möchten, müssen Sie einen der folgenden Trigger verwenden: `Manual`, `ApiConnectionWebhook` oder `HttpWebhook`.
 
 <a name="child-workflows"></a>
 
 ## <a name="call-child-workflows"></a>Aufrufen von untergeordneten Workflows
 
-Zuvor mussten Sie zum Aufrufen von untergeordneten Workflows den gewünschten Workflow aufrufen, das Zugriffstoken abrufen und dieses Token in die Definition der Logik-App einfügen, die den untergeordneten Workflow aufrufen sollte. Mit dem neuen Schema generiert die Logic Apps-Engine zur Laufzeit automatisch eine SAS für den untergeordneten Workflow, sodass Sie keine geheimen Schlüssel in die Definition einfügen müssen. Beispiel: 
+Zuvor mussten Sie zum Aufrufen von untergeordneten Workflows den gewünschten Workflow aufrufen, das Zugriffstoken abrufen und dieses Token in die Definition der Logik-App einfügen, die den untergeordneten Workflow aufrufen sollte. Mit diesem Schema generiert die Logic Apps-Engine zur Laufzeit automatisch eine SAS für den untergeordneten Workflow, sodass Sie keine geheimen Schlüssel in die Definition einfügen müssen. Beispiel: 
 
 ``` json
 "myNestedWorkflow": {
@@ -441,9 +445,9 @@ Zuvor mussten Sie zum Aufrufen von untergeordneten Workflows den gewünschten Wo
 }
 ```
 
-Eine zweite Verbesserung ist, dass die untergeordneten Workflows vollen Zugriff auf die eingehende Anforderung erhalten. Dies bedeutet, dass Sie Parameter im Abschnitt *queries* und im Objekt *headers* übergeben und den gesamten Text vollständig festlegen können.
+Zudem erhalten untergeordnete Workflows vollen Zugriff auf die eingehende Anforderung. Folglich können Sie Parameter im Abschnitt `queries` und im Objekt `headers` übergeben. Sie können auch den gesamten Abschnitt `body` vollständig definieren.
 
-Schließlich müssen Änderungen am untergeordneten Workflow vorgenommen werden. Zuvor konnten Sie einen untergeordneten Workflow direkt aufrufen. Nun müssen Sie einen Triggerendpunkt im Workflow festlegen, den der übergeordnete Workflow aufruft. Im Allgemeinen fügen Sie einen Trigger vom Typ `manual` hinzu und verwenden ihn dann in der übergeordneten Definition. Beachten Sie, dass die `host`-Eigenschaft ein spezielles `triggerName`-Element enthält, da Sie immer angeben müssen, welchen Trigger Sie aufrufen.
+Schließlich verfügen untergeordnete Workflows über diese erforderlichen Änderungen. Zuvor konnten Sie einen untergeordneten Workflow direkt aufrufen. Nun müssen Sie einen Triggerendpunkt im Workflow festlegen, den der übergeordnete Workflow aufruft. Im Allgemeinen fügen Sie einen Trigger vom Typ `Manual` hinzu und verwenden ihn dann in der übergeordneten Definition. Die `host`-Eigenschaft enthält ein spezielles `triggerName`-Element, da Sie immer den aufzurufenden Trigger angeben müssen.
 
 ## <a name="other-changes"></a>Weitere Änderungen
 
@@ -453,8 +457,8 @@ Alle Aktionstypen unterstützen jetzt eine neue Eingabe namens `queries`. Diese 
 
 ### <a name="renamed-parse-function-to-json"></a>Funktion „parse()“ umbenannt in „json()“
 
-Wir fügen bald weitere Inhaltstypen hinzu, daher wurde die `parse()`-Funktion in `json()` umbenannt.
+Für künftige Inhaltstypen wird die Funktion `parse()` in `json()` umbenannt.
 
-## <a name="coming-soon-enterprise-integration-apis"></a>In Kürze verfügbar: Enterprise Integration-APIs
+## <a name="enterprise-integration-apis"></a>APIs für die Unternehmensintegration
 
-Wir haben noch keine verwalteten Versionen der Enterprise Integration-APIs wie AS2. In der Zwischenzeit können Sie Ihre vorhandenen bereitgestellten BizTalk-APIs über die HTTP-Aktion verwenden. Ausführliche Informationen finden Sie in der [Integrationsroadmap](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) unter „Verwenden der bereits bereitgestellten API-Apps“. 
+Verwaltete Versionen für APIs für die Unternehmensintegration, wie AS2, werden von diesem Schema noch nicht unterstützt. Sie können jedoch die vorhandenen bereitgestellten BizTalk-APIs über die HTTP-Aktion verwenden. Weitere Informationen finden Sie in der [Integrationsroadmap](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) unter „Verwenden der bereits bereitgestellten API-Apps“. 

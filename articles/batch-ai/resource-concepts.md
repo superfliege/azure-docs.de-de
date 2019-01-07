@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4a9e3529f9d68ecdc614ea69cffc6897891f4548
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4454448809411c6390bc1f65c33b4abe76094ded
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056816"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407744"
 ---
 # <a name="overview-of-resources-in-batch-ai"></a>Übersicht über die Ressourcen in Batch AI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Wenn Sie den Batch AI-Dienst zum ersten Mal verwenden, sollten Sie sich mit den verfügbaren Batch AI-Ressourcen vertraut machen. Wie bei anderen Azure-Diensten erstellen Sie Batch AI-Ressourcen in einer oder mehreren Azure-*Ressourcengruppen*. Sie erstellen einen oder mehrere Batch AI-*Arbeitsbereiche* in einer Ressourcengruppe. Jeder Arbeitsbereich enthält eine Mischung aus *Clustern*, *Dateiservern* und *Experimenten* von Batch AI. In einem Batch AI-Experiment wird eine Gruppe von *Aufträgen* gekapselt.
 
@@ -50,7 +53,7 @@ Ein Experiment gruppiert eine Sammlung verbundener Aufträge, die Sie zusammen a
 
 ## <a name="job"></a>Auftrag
 
-Ein Auftrag ist ein einzelner Task oder ein Skript, der bzw. das ausgeführt werden muss, beispielsweise um ein Deep Learning-Modell zu trainieren. Jeder Auftrag führt ein bestimmtes Skript in einem Cluster im Arbeitsbereich aus. (Das Skript kann auf einem Batch AI-Dateiserver oder in einer anderen Speicherlösung gespeichert werden.) Jedem Batch AI-Auftag ist ein Frameworktyp zugeordnet: TensorFlow, Horovod, CNTK, Caffe, Caffe2, pyTorch, Chainer, benutzerdefiniertes MPI oder ein benutzerdefinierter Typ. Für jedes Framework richtet der Batch AI-Dienst die erforderliche Infrastruktur ein und verwaltet die Auftragsprozesse. Jedes Experiment kann mehrere Aufträge umfassen, die sich abgesehen von einigen Änderungen an unterschiedlichen Parametern ähneln.
+Ein Auftrag ist ein einzelner Task oder ein Skript, der bzw. das ausgeführt werden muss, beispielsweise um ein Deep Learning-Modell zu trainieren. Jeder Auftrag führt ein bestimmtes Skript in einem Cluster im Arbeitsbereich aus. (Das Skript kann auf einem Batch AI-Dateiserver oder in einer anderen Speicherlösung gespeichert werden.) Jedem Batch AI-Auftrag ist ein Frameworktyp zugeordnet: TensorFlow, Horovod, CNTK, Caffe, Caffe2, pyTorch, Chainer, „Benutzerdefiniertes MPI“ oder „Benutzerdefiniert“. Für jedes Framework richtet der Batch AI-Dienst die erforderliche Infrastruktur ein und verwaltet die Auftragsprozesse. Jedes Experiment kann mehrere Aufträge umfassen, die sich abgesehen von einigen Änderungen an unterschiedlichen Parametern ähneln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

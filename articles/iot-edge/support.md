@@ -1,6 +1,6 @@
 ---
-title: Support für die Azure IoT Edge-Plattform | Microsoft-Dokumentation
-description: Von Azure IoT Edge unterstützte Plattformen
+title: Unterstützte Betriebssystem, Containerengines – Azure IoT Edge | Microsoft-Dokumentation
+description: Erfahren Sie, welche Betriebssysteme zur Ausführung von Azure IoT Edge-Daemon und -Runtime verwendet werden können, und welche Containerengines für Ihre Produktionsgeräte unterstützt werden.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,14 +8,16 @@ ms.date: 11/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45c5c7245a2af3b0d0e328bfcc43112eaee406ee
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 3c75f50e40f83a4dc6765ae422fbb2458f40d770
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565002"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100179"
 ---
-# <a name="azure-iot-edge-support"></a>Azure IoT Edge-Support
+# <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
+
 Für Azure IoT Edge stehen verschiedene Supportoptionen zur Verfügung:
 
 **Melden von Fehlern:** Der Großteil der Entwicklungsarbeiten für Azure IoT Edge findet im Rahmen des entsprechenden Open-Source-Projekts statt. Fehler können auf der [Problemseite](https://github.com/azure/iotedge/issues) des Projekts gemeldet werden. Fehlerbehebungen aus dem Projekt werden zeitnah in Produktupdates integriert.
@@ -35,16 +37,16 @@ Systeme der Ebene 1 können als offiziell unterstützt betrachtet werden. Das be
 Allgemein verfügbar
 | Betriebssystem | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Raspbian-stretch | Nein  | JA|
-| Ubuntu Server 16.04 | JA | Nein  |
-| Ubuntu Server 18.04 | JA | Nein  |
+| Raspbian-stretch | Nein  | Ja|
+| Ubuntu Server 16.04 | Ja | Nein  |
+| Ubuntu Server 18.04 | Ja | Nein  |
 
 Öffentliche Vorschau
 | Betriebssystem | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core (Update von April 2018) | JA | Nein  |
-| Windows 10 IoT Enterprise (Update von April 2018) | JA | Nein  |
-| Windows 10 Server 1803 | JA | Nein  |
+| Windows 10 IoT Core (Update von April 2018) | Ja | Nein  |
+| Windows 10 IoT Enterprise (Update von April 2018) | Ja | Nein  |
+| Windows 10 Server 1803 | Ja | Nein  |
 
 ### <a name="tier-2"></a>Ebene 2
 Systeme der Ebene 2 können als mit Azure IoT Edge kompatibel betrachtet und relativ einfach verwendet werden. Dies bedeutet Folgendes:
@@ -53,15 +55,15 @@ Systeme der Ebene 2 können als mit Azure IoT Edge kompatibel betrachtet und rel
 
 | Betriebssystem | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| CentOS 7.5 | JA | JA |
-| Debian 8 | JA | JA |
-| Debian 9 | JA | JA |
-| RHEL 7.5 | JA | JA |
-| Ubuntu 18.04 | JA | JA |
-| Ubuntu 16.04 | JA | JA |
-| Wind River 8 | JA | Nein  |
-| Yocto | JA | Nein  |
+| CentOS 7.5 | Ja | Ja |
+| Debian 8 | Ja | Ja |
+| Debian 9 | Ja | Ja |
+| RHEL 7.5 | Ja | Ja |
+| Ubuntu 18.04 | Ja | Ja |
+| Ubuntu 16.04 | Ja | Ja |
+| Wind River 8 | Ja | Nein  |
+| Yocto | Ja | Nein  |
 
-## <a name="container-engines"></a>Container-Engines
-Zum Starten von Modulen benötigt Azure IoT Edge eine Container-Engine (unabhängig vom verwendeten Betriebssystem). Mit „moby-engine“ stellt Microsoft eine Container-Engine bereit, um diese Anforderung zu erfüllen. Sie basiert auf dem Open-Source-Projekt „Moby“. Weitere gängige Container-Engines sind Docker CE und Docker EE. Sie basieren ebenfalls auf dem Open-Source-Projekt „Moby“ und sind mit Azure IoT Edge kompatibel. Microsoft bietet bestmöglichen Support für Systeme mit diesen Container-Engines, kann für sie aber keine Fehlerkorrekturen für interne Probleme bereitstellen. Aus diesem Grund empfiehlt Microsoft, für Produktionssysteme die Moby-Engine zu verwenden.
+## <a name="container-engines"></a>Containerengines
+Zum Starten von Modulen benötigt Azure IoT Edge eine Containerengine (unabhängig vom verwendeten Betriebssystem). Mit „moby-engine“ stellt Microsoft eine Containerengine bereit, um diese Anforderung zu erfüllen. Sie basiert auf dem Open-Source-Projekt „Moby“. Weitere gängige Containerengines sind Docker CE und Docker EE. Sie basieren ebenfalls auf dem Open-Source-Projekt „Moby“ und sind mit Azure IoT Edge kompatibel. Microsoft bietet bestmöglichen Support für Systeme mit diesen Containerengines, kann für sie aber keine Fehlerkorrekturen für interne Probleme bereitstellen. Aus diesem Grund empfiehlt Microsoft, für Produktionssysteme die Moby-Engine zu verwenden.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3e8333b521832579a942d3fffb06103ad0431acc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d0c61f6e905ca109f3f178996a08f353c36e7880
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316616"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337205"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Verwalten von Sicherheitsempfehlungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Sicherheitsempfehlungen in Azure Security Center verwenden, um Ihre Azure-Ressourcen zu schützen.
@@ -34,13 +34,13 @@ Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus de
 
 ## <a name="implementing-security-recommendations"></a>Implementieren von Sicherheitsempfehlungen
 ### <a name="set-recommendations"></a>Festlegen von Empfehlungen
-Unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-azure-policy.md)wird Folgendes beschrieben:
+Unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md)wird Folgendes beschrieben:
 
 * Konfigurieren von Sicherheitsrichtlinien
 * Aktivieren der Datensammlung
 * Auswählen der Empfehlungen, die Sie als Teil Ihrer Sicherheitsrichtlinie verwenden möchten
 
-Aktuelle Richtlinienempfehlungen beziehen sich auf Systemupdates, Grundregeln, Antischadsoftware, [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) für Subnetze und Netzwerkschnittstellen, Überwachung der SQL-Datenbank, Transparent Data Encryption für die SQL-Datenbank und Web Application Firewalls.  [Einrichten von Sicherheitsrichtlinien](security-center-azure-policy.md) enthält eine Beschreibung der einzelnen Empfehlungsoptionen.
+Aktuelle Richtlinienempfehlungen beziehen sich auf Systemupdates, Grundregeln, Antischadsoftware, [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) für Subnetze und Netzwerkschnittstellen, Überwachung der SQL-Datenbank, Transparent Data Encryption für die SQL-Datenbank und Web Application Firewalls.  [Einrichten von Sicherheitsrichtlinien](tutorial-security-policy.md) enthält eine Beschreibung der einzelnen Empfehlungsoptionen.
 
 ### <a name="monitor-recommendations"></a>Überwachen von Empfehlungen
 Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sicherheitsstatus Ihrer Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Auf der Kachel **Empfehlungen** unter **Übersicht** können Sie die Gesamtzahl der von Security Center identifizierten Empfehlungen sehen.
@@ -60,11 +60,11 @@ Die Empfehlungen werden in einem Tabellenformat angezeigt, wobei jede Zeile eine
 * **STATUS**: Beschreibt den aktuellen Status der Empfehlung:
   * **Offen**: Die Empfehlung wurde noch nicht bearbeitet.
   * **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
-  * **Gelöst**: Die Empfehlung wurde bereits abgeschlossen (in diesem Fall ist die Zeile ausgegraut).
+  * **Behoben**: Die Empfehlung wurde bereits abgeschlossen (in diesem Fall ist die Zeile grau hinterlegt).
 * **SCHWEREGRAD**: Beschreibt den Schweregrad der jeweiligen Empfehlung:
-  * **Hoch**: Ein Sicherheitsrisiko betrifft eine wichtige Ressource (etwa eine Anwendung, einen virtuellen Computer oder eine Netzwerksicherheitsgruppe) und erfordert eine Aktion.
-  * **Mittel**: Es besteht ein Sicherheitsrisiko, und es sind nicht kritische bzw. weitere Schritte erforderlich, um es zu beseitigen oder einen Prozess abzuschließen.
-  * **Niedrig**: Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber es ist keine unmittelbare Aktion erforderlich. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
+  * **Hoch:** Ein Sicherheitsrisiko betrifft eine wichtige Ressource (z. B. eine Anwendung, eine VM oder eine Netzwerksicherheitsgruppe) und erfordert einen Eingriff.
+  * **Mittel:** Es besteht ein Sicherheitsrisiko, und es sind nicht kritische oder zusätzliche Schritte erforderlich, um es zu beseitigen oder einen Prozess abzuschließen.
+  * **Niedrig**: Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber keinen unmittelbaren Eingriff erfordert. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
 
 Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind und welche Aktionen bei ihrer Anwendung jeweils ausgeführt werden.
 
@@ -135,7 +135,7 @@ Wählen Sie in der obigen Tabelle der Empfehlungen eine Empfehlung aus, und durc
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center vorgestellt. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.

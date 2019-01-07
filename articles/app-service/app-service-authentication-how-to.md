@@ -1,5 +1,5 @@
 ---
-title: Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service | Microsoft-Dokumentation
+title: 'Erweiterte Verwendung der Authentifizierung und Autorisierung: Azure App Service | Microsoft-Dokumentation'
 description: Veranschaulicht die Anpassung der Authentifizierung und Autorisierung in App Service und das Abrufen von Benutzeransprüchen und verschiedenen Token.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685326"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409750"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -28,11 +29,11 @@ Sehen Sie sich eines der folgenden Tutorials an, um sofort loszulegen:
 
 * [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
 * [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service für Linux](containers/tutorial-auth-aad.md)
-* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung](app-service-mobile-how-to-configure-google-authentication.md)
-* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](configure-authentication-provider-aad.md)
+* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](configure-authentication-provider-facebook.md)
+* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung](configure-authentication-provider-google.md)
+* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung](configure-authentication-provider-microsoft.md)
+* [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung](configure-authentication-provider-twitter.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Verwenden mehrerer Anmeldungsanbieter
 
@@ -179,11 +180,11 @@ Senden Sie von Ihrem Clientcode (z.B. einer mobilen App oder JavaScript im Brows
 
 Wenn das Zugriffstoken Ihres Anbieters abläuft, müssen Sie den Benutzer erneut authentifizieren. Sie können den Tokenablauf vermeiden, indem Sie einen `GET`-Aufruf an den `/.auth/refresh`-Endpunkt Ihrer Anwendung durchführen. Bei einem Aufruf aktualisiert App Service automatisch die Zugriffstoken im Tokenspeicher für den authentifizierten Benutzer. Bei nachfolgenden Anforderungen von Token durch Ihren App-Code werden die aktualisierten Token abgerufen. Damit die Tokenaktualisierung funktioniert, muss der Tokenspeicher jedoch [Aktualisierungstoken](https://auth0.com/learn/refresh-tokens/) für Ihren Anbieter enthalten. Die jeweilige Methode zum Abrufen von Aktualisierungstoken ist von den einzelnen Anbietern dokumentiert, die folgende Liste stellt jedoch eine kurze Zusammenfassung dar:
 
-- **Google**: Fügen Sie Ihrem `/.auth/login/google`-API-Aufruf einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Google**: Fügen Sie einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an Ihren `/.auth/login/google`-API-Aufruf an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Stellt keine Aktualisierungstoken bereit. Langlebige Token laufen nach 60 ab (siehe [Verlängern von Zugriffsschlüsseln für Seiten](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter-**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
-- **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](app-service-mobile-how-to-configure-microsoft-authentication.md) den Bereich `wl.offline_access` aus.
-- **Azure Active Directory**: Führen Sie in [https://resources.azure.com](https://resources.azure.com) die folgenden Schritte aus:
+- **Twitter**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](configure-authentication-provider-microsoft.md) den Bereich `wl.offline_access` aus.
+- **Azure Active Directory:** Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.
     1. Navigieren Sie im linken Browser zu **subscriptions** > **_\<Name des\_Abonnements_** > **resourceGroups** > _**\<Name\_der\_Ressourcengruppe>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<App\_Name>**_ > **config** > **authsettings**. 
     1. Klicken Sie auf **Edit**.
@@ -242,5 +243,5 @@ Klicken Sie auf **Bearbeiten**, ändern Sie die folgende Eigenschaft, und klicke
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
-> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Linux)](containers/tutorial-auth-aad.md)
+> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern (Windows)](app-service-web-tutorial-auth-aad.md)
+> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern (Linux)](containers/tutorial-auth-aad.md)

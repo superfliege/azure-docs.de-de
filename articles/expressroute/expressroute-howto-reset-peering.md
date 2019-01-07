@@ -1,20 +1,21 @@
 ---
-title: Zurücksetzen von Azure ExpressRoute-Peerings | Microsoft-Dokumentation
-description: Informationen zum Deaktivieren und Aktivieren von Peerings einer ExpressRoute-Verbindung.
+title: 'Zurücksetzen des Verbindungspeerings – ExpressRoute:  Azure | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Peerings einer ExpressRoute-Verbindung deaktiviert und aktiviert werden.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: charwen
-ms.openlocfilehash: 1bb2bb61ccd06d5774b811203e86d609a01250a4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: ad050e11c98139af00ad752f8960d55a58ca2f34
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415813"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132586"
 ---
-# <a name="reset-expressroute-peerings"></a>Zurücksetzen von ExpressRoute-Peerings
+# <a name="reset-expressroute-circuit-peerings"></a>Zurücksetzen von ExpressRoute-Verbindungspeerings
 
 In diesem Artikel wird beschrieben, wie Peerings einer ExpressRoute-Verbindung mithilfe von PowerShell deaktiviert und aktiviert werden. Wenn Sie ein Peering deaktivieren, wird die BGP-Sitzung Ihrer primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung heruntergefahren. Durch das Peering zu Microsoft geht Konnektivität verloren. Wenn Sie das Peering aktivieren, wird die BGP-Sitzung jeweils auf der primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung gestartet. Sie erhalten über dieses Peering zu Microsoft die Konnektivität zurück. Sie können das Microsoft-Peering und das private Azure-Peering unabhängig voneinander auf einer ExpressRoute-Verbindung aktivieren und deaktivieren. Wenn Sie die Peerings zum ersten Mal auf Ihrer ExpressRoute-Verbindung konfigurieren, werden diese standardmäßig aktiviert.
 

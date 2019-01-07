@@ -1,6 +1,6 @@
 ---
-title: Aufgaben des Projektleiters eines Team Data Science-Prozesses – Azure | Microsoft-Dokumentation
-description: Ein Überblick über die Aufgaben eines Projektleiters an einem Data Science-Teamprojekt.
+title: Aufgaben des Projektleiters im Team Data Science-Prozess
+description: Eine Übersicht über die Aufgaben, die ein Projektleiter für einen Team Data Science-Prozess erfüllen muss.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,17 +9,17 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 0b5129c4642a0c4381591f751bc4d5a51990b256
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442896"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135163"
 ---
-# <a name="project-lead-tasks"></a>Aufgaben eines Projektleiters
+# <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Aufgaben des Projektleiters im Team Data Science-Prozess
 
-Dieses Tutorial beschreibt die Aufgaben, die ein Projektleiter für sein/ihr Projektteam abschließen muss. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science-Prozess (TDSP)](overview.md) vereinheitlicht ist. TDSP ist ein von Microsoft entwickeltes Framework, das eine strukturierte Abfolge von Aktivitäten bereitstellt, die cloudbasierte, prädiktive Analyselösungen effizient ausführt. Unter [Team Data Science Process: Roles and tasks](roles-tasks.md) (Team Data Science-Prozess: Rollen und Aufgaben) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
+Dieses Tutorial beschreibt die Aufgaben, die ein Projektleiter für sein/ihr Projektteam abschließen muss. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science-Prozess (TDSP)](overview.md) vereinheitlicht ist. TDSP ist ein von Microsoft entwickeltes Framework, das eine strukturierte Abfolge von Aktivitäten bereitstellt, die cloudbasierte, prädiktive Analyselösungen effizient ausführt. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
 
 Ein **Projektleiter** verwaltet die täglichen Aktivitäten der einzelnen Datenanalysten auf einem bestimmten Data Science-Projekt. Der Workflow für die Aufgaben, die von Projektleitern zum Einrichten dieser Umgebung ausgeführt werden, sind in der folgenden Abbildung dargestellt:
 
@@ -27,7 +27,8 @@ Ein **Projektleiter** verwaltet die täglichen Aktivitäten der einzelnen Datena
 
 Dieses Thema enthält derzeit die Aufgaben 1,2 und 6 dieses Workflows für Projektleiter.
 
->[AZURE.NOTE] In den folgenden Anweisungen werden die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung für ein Projekt per Azure DevOps beschrieben. Es wird angegeben, wie diese Aufgaben mit Azure DevOps erledigt werden können, da bei Microsoft der TDSP auf diese Weise implementiert wird. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen jedoch auf andere Weise ausgeführt werden.
+> [!NOTE]
+> In den folgenden Anweisungen werden die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung für ein Projekt per Azure DevOps beschrieben. Es wird angegeben, wie diese Aufgaben mit Azure DevOps erledigt werden können, da bei Microsoft der TDSP auf diese Weise implementiert wird. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen jedoch auf andere Weise ausgeführt werden.
 
 
 ## <a name="repositories-and-directories"></a>Repositorys und Verzeichnisse
@@ -36,13 +37,13 @@ In diesem Tutorial werden abgekürzte Namen für Repositorys und Verzeichnisse v
 
 - **R3**: Das Team-Repository **ProjectTemplate** auf Git, das Ihr Teamleiter eingerichtet hat.
 - **R5**: Das Projekt-Repository auf Git, das Sie für Ihr Projekt eingerichtet haben.
-- **D3**: Das von R3 geklonte lokale Verzeichnis.
-- **D5**: Das von R5 geklonte lokale Verzeichnis.
+- **D3**: Das aus R3 geklonte lokale Verzeichnis.
+- **D5**: Das aus R5 geklonte lokale Verzeichnis.
 
 
 ## <a name="0-prerequisites"></a>0. Voraussetzungen
 
-Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter und dem Teamleiter zugewiesenen Aufgaben ausgeführt werden. Siehe dazu [Group Manager tasks for a data science team (Aufgaben des Gruppenleiters eines Data Science-Teams)](group-manager-tasks.md) und [Team lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md). 
+Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter und dem Teamleiter zugewiesenen Aufgaben ausgeführt werden. Siehe dazu [Aufgaben des Gruppenleiters  im Team Data Science-Prozess](group-manager-tasks.md) und [Aufgaben des Teamleiters im Team Data Science-Prozess](team-lead-tasks.md). 
 
 Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie mit den Aufgaben des Teamleiters beginnen: 
 
@@ -83,15 +84,15 @@ Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie 
 
 ## <a name="2-seed-the-dsproject1-project-repository"></a>2. Seeding für das Projektrepository DSProject1 ausführen
 
-Die Aufgabe besteht darin, Seeding für das Projektrepository **DSProject1** (R5) von Ihrem Repository für Projektvorlagen (R3) auszuführen. Das Seeding-Verfahren verwendet die Verzeichnisse D3 und D5 auf Ihrem lokalen DSVM als fortgeschrittene Stagingsites. Zusammenfassend ist der Seeding-Pfad: R3 -> D3 -> D5 -> R5.
+Die Aufgabe besteht darin, Seeding für das Projektrepository **DSProject1** (R5) von Ihrem Repository für Projektvorlagen (R3) auszuführen. Das Seeding-Verfahren verwendet die Verzeichnisse D3 und D5 auf Ihrem lokalen DSVM als fortgeschrittene Stagingsites. Zusammenfassend lautet der Seeding-Pfad: R3 -> D3 -> D5 -> R5.
 
 Wenn Sie Ihr Projektrepository **DSProject1** anpassen möchten, um einige bestimmte Projektbedürfnisse zu erfüllen, müssen Sie dies im vorletzten Schritt des Verfahrens tun. Hier sehen Sie eine Zusammenfassung der Schritte, durch die der Inhalt des Projektrepositorys **DSProject1** angelegt wird. Die einzelnen Schritte entsprechen den Unterabschnitten im Seeding-Verfahren:
 
 - Klonen Sie das Projektvorlagenrepository in das lokale Verzeichnis: Team R3 – geklont zu -> lokale D3.
 - Klonen Sie das Repository DSProject1 in ein lokales Verzeichnis: Team R5 - geklont zu -> lokale D5.
-- Kopieren Sie die Inhalte der geklonten Projektvorlagen in den lokalen Klon des Repositorys DSProject1: D3 – Inhalte kopiert zu -> D5.
+- Kopieren Sie die Inhalte der geklonten Projektvorlagen in den lokalen Klon des DSProject1-Repositorys:  D3 – Inhalt kopiert nach –> D5
 - (Optional) Anpassung der lokalen D5.
-- Übertragen Sie den Inhalt des lokalen DSProject1 mithilfe von Push in die TeamRepositorys: D5 - Inhalt zugefügt zu -> Team R5.
+- Pushen des lokalen DSProject1-Inhalts in Teamrepositorys: D5 – Inhalt hinzufügen zu -> Team R5
 
 
 ### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>Klonen Sie Ihr Projektvorlagenrepository (R3) in ein Verzeichnis (D3) auf dem lokalen Computer.
@@ -195,7 +196,8 @@ Jetzt müssen Sie Inhalte in **_DSProject1_** in das Repository _R5_ im Projekt 
     
 - Führen Sie ein Commit der Änderungen und Push durch. 
 
->[AZURE.NOTE] Wenn dies das erste Mal ist, dass Sie ein Commit in einem Git-Repository ausführen, müssen Sie globale Parameter wie *user.name* und *user.email* vor dem Ausführen des `git commit`-Befehls konfigurieren. Führen Sie die folgenden zwei Befehle aus:
+> [!NOTE]
+> Wenn dies das erste Mal ist, dass Sie ein Commit in einem Git-Repository ausführen, müssen Sie globale Parameter wie *user.name* und *user.email* vor dem Ausführen des `git commit`-Befehls konfigurieren. Führen Sie die folgenden zwei Befehle aus:
         
     git config --global user.name <your name>
     git config --global user.email <your email address>
@@ -207,14 +209,14 @@ Jetzt müssen Sie Inhalte in **_DSProject1_** in das Repository _R5_ im Projekt 
 
 ## <a name="6-create-and-mount-azure-file-storage-as-project-resources-optional"></a>6. Erstellen Sie den Azure-Dateispeicher und stellen Sie ihn als Projektressourcen bereit (Optional)
 
-Wenn Sie einen Azure-Dateispeicher zur Datenfreigabe von z.B. Projektrohdaten oder für Ihr Projekt erstellte Funktionen erstellen möchten, sodass alle Projektmitglieder über Zugang zu den gleichen Datasets aus mehreren DSVMs verfügen, dann befolgen Sie die Anweisungen in den Abschnitten 3 und 4 der [Team Lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md). 
+Wenn Sie einen Azure-Dateispeicher zur Datenfreigabe von z.B. Projektrohdaten oder für Ihr Projekt erstellte Funktionen erstellen möchten, sodass alle Projektmitglieder über Zugang zu den gleichen Datasets aus mehreren DSVMs verfügen, dann befolgen Sie die Anweisungen in den Abschnitten 3 und 4 von [Aufgaben des Teamleiters im Team Data Science-Prozess](team-lead-tasks.md). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Es folgen Links zu den ausführlicheren Beschreibungen der Rollen und Aufgaben, die vom Team Data Science-Prozess definiert werden:
 
-- [Group Manager tasks for a data science team (Aufgaben des Gruppenleiters eines Data Science-Teams)](group-manager-tasks.md)
-- [Team Lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md)
-- [Project Lead tasks for a data science team (Aufgaben des Projektleiters eines Data Science-Teams)](project-lead-tasks.md)
-- [Project Individual Contributors for a data science team (Einzelne Mitwirkende zu einem Projekt eines Data Science-Teams)](project-ic-tasks.md)
+- [Aufgaben des Gruppenleiters im Team Data Science-Prozess](group-manager-tasks.md)
+- [Aufgaben des Teamleiters im Team Data Science-Prozess](team-lead-tasks.md)
+- [Aufgaben des Projektleiters im Team Data Science-Prozess](project-lead-tasks.md)
+- [Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess](project-ic-tasks.md)

@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Modulen für Azure IoT Edge | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Module auf Edge-Geräten bereitgestellt werden.
+title: Automatische Bereitstellung für Gerätegruppen – Azure IoT Edge | Microsoft-Dokumentation
+description: Verwenden Sie automatische Bereitstellungen in Azure IoT Edge, um Gerätegruppen basierend auf freigegebenen Tags zu verwalten.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584841"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100105"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 

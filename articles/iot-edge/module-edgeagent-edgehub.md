@@ -1,5 +1,5 @@
 ---
-title: Referenz zu Azure IoT EdgeAgent und EdgeHub | Microsoft-Dokumentation
+title: Referenz zu gewünschten EdgeAgent- und EdgeHub-Eigenschaften – Azure IoT Edge | Microsoft-Dokumentation
 description: Enthält die spezifischen Eigenschaften und die dazugehörigen Werte für die Modulzwillinge edgeAgent und edgeHub.
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 01e1942b12de126aa34130f5a4b77dd0fb958aa6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: a0834e5886a1a088486109f967baf357e375ad05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568919"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100262"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge „Edge-Agent“ und „Edge-Hub“
 
@@ -25,30 +26,30 @@ Dieser Artikel enthält die gewünschten Eigenschaften und gemeldeten Eigenschaf
 
 Der Modulzwilling für den Edge-Agent heißt `$edgeAgent` und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten Edge-Agent und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird. 
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
-| Schemaversion | Muss „1.0“ sein. | JA |
-| runtime.type | Muss „Docker“ sein. | JA |
-| runtime.settings.minDockerVersion | Legen Sie hier die für dieses Bereitstellungsmanifest mindestens erforderliche Docker-Version fest. | JA |
+| Schemaversion | Muss „1.0“ sein. | Ja |
+| runtime.type | Muss „Docker“ sein. | Ja |
+| runtime.settings.minDockerVersion | Legen Sie hier die für dieses Bereitstellungsmanifest mindestens erforderliche Docker-Version fest. | Ja |
 | runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den Edge-Agent-Container. [Docker-Protokollierungsoptionen](https://docs.docker.com/engine/admin/logging/overview/) | Nein  |
 | runtime.settings.registryCredentials<br>.{registryId}.username | Der Benutzername der Containerregistrierung. Für Azure Container Registry entspricht der Benutzername in der Regel dem Namen der Registrierung.<br><br> Registrierungsanmeldeinformationen werden für jedes nicht öffentliche Modulimage benötigt. | Nein  |
 | runtime.settings.registryCredentials<br>.{registryId}.password | Das Kennwort der Containerregistrierung. | Nein  |
 | runtime.settings.registryCredentials<br>.{registryId}.address | Die Adresse der Containerregistrierung. Für Azure Container Registry lautet die Adresse in der Regel *{registryname}.azurecr.io*. | Nein  |  
-| systemModules.edgeAgent.type | Muss „Docker“ sein. | JA |
-| systemModules.edgeAgent.settings.image | Der URI des Edge-Agent-Image. Der Edge-Agent ist gegenwärtig nicht in der Lage, sich selbst zu aktualisieren. | JA |
+| systemModules.edgeAgent.type | Muss „Docker“ sein. | Ja |
+| systemModules.edgeAgent.settings.image | Der URI des Edge-Agent-Image. Der Edge-Agent ist gegenwärtig nicht in der Lage, sich selbst zu aktualisieren. | Ja |
 | systemModules.edgeAgent.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code, der die Optionen für die Erstellung des Edge-Agent-Containers enthält. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein  |
 | systemModules.edgeAgent.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
-| systemModules.edgeHub.type | Muss „Docker“ sein. | JA |
-| systemModules.edgeHub.type | Muss „running“ sein. | JA |
-| systemModules.edgeHub.restartPolicy | Muss „always“ sein. | JA |
-| systemModules.edgeHub.settings.image | Der URI des Image des Edge-Hubs. | JA |
+| systemModules.edgeHub.type | Muss „Docker“ sein. | Ja |
+| systemModules.edgeHub.type | Muss „running“ sein. | Ja |
+| systemModules.edgeHub.restartPolicy | Muss „always“ sein. | Ja |
+| systemModules.edgeHub.settings.image | Der URI des Image des Edge-Hubs. | Ja |
 | systemModules.edgeHub.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Edge-Hubcontainers. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein  |
 | systemModules.edgeHub.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
-| modules.{moduleId}.version | Benutzerdefinierte Zeichenfolge, die die Version des Moduls darstellt. | JA |
-| modules.{moduleId}.type | Muss „Docker“ sein. | JA |
-| modules.{moduleId}.status | {"running" \| "stopped"} | JA |
-| modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | JA |
-| modules.{moduleId}.settings.image | URI des Modulimage. | JA |
+| modules.{moduleId}.version | Benutzerdefinierte Zeichenfolge, die die Version des Moduls darstellt. | Ja |
+| modules.{moduleId}.type | Muss „Docker“ sein. | Ja |
+| modules.{moduleId}.status | {"running" \| "stopped"} | Ja |
+| modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | Ja |
+| modules.{moduleId}.settings.image | URI des Modulimage. | Ja |
 | modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein  |
 | modules.{moduleId}.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 
@@ -67,10 +68,10 @@ Diese letzte Information ist nützlich für den Fall, dass die letzten gewünsch
 
 In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten Informationen nicht enthalten.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser ganzzahlige Wert bezeichnet die letzte vom Edge-Agent verarbeitete Version der gewünschten Eigenschaften. |
-| lastDesiredStatus.code | Dieser Statuscode nennt die letzten gewünschten Eigenschaften, die der Edge-Agent erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (Ungültige Konfiguration), `412` Invalid Schema Version (Ungültige Schemaversion), `417` The Desired Properties are Empty (Die gewünschten Eigenschaften sind leer), `500` Failed (Fehler) |
+| lastDesiredStatus.code | Dieser Statuscode nennt die letzten gewünschten Eigenschaften, die der Edge-Agent erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `412`: Ungültige Schemaversion, `417`: Die gewünschten Eigenschaften sind leer, `500`: Fehler |
 | lastDesiredStatus.description | Textbeschreibung des Status |
 | deviceHealth | `healthy`, wenn der Runtimestatus aller Module entweder `running` oder `stopped` ist, andernfalls `unhealthy` |
 | configurationHealth.{deploymentId}.health | `healthy`, wenn der von der Bereitstellung {deploymentId} festgelegte Runtimestatus aller Module `running` oder `stopped` ist, andernfalls `unhealthy` |
@@ -97,18 +98,18 @@ In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten I
 
 Der Modulzwilling für den Edge-Hub wird als `$edgeHub` bezeichnet und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten Edge-Hub und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird. 
 
-| Eigenschaft | BESCHREIBUNG | Im Bereitstellungsmanifest erforderlich |
+| Eigenschaft | Beschreibung | Im Bereitstellungsmanifest erforderlich |
 | -------- | ----------- | -------- |
-| Schemaversion | Muss „1.0“ sein. | JA |
+| Schemaversion | Muss „1.0“ sein. | Ja |
 | routes.{routeName} | Eine Zeichenfolge, die eine Edge-Hubroute darstellt. | Das `routes`-Element kann vorhanden, aber leer sein. |
-| storeAndForwardConfiguration.timeToLiveSecs | Zeit in Sekunden, wie lange der Edge-Hub Nachrichten nach einer Trennung von Routingendpunkten aufbewahrt, z.B. nach einer Trennung vom IoT Hub oder einem lokalen Modul | JA |
+| storeAndForwardConfiguration.timeToLiveSecs | Zeit in Sekunden, wie lange der Edge-Hub Nachrichten nach einer Trennung von Routingendpunkten aufbewahrt, z.B. nach einer Trennung vom IoT Hub oder einem lokalen Modul | Ja |
 
 ## <a name="edgehub-reported-properties"></a>Gemeldete EdgeHub-Eigenschaften
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser ganzzahlige Wert gibt die letzte Version der gewünschten Eigenschaften an, die vom Edge-Hub verarbeitet wurde. |
-| lastDesiredStatus.code | Dieser Statuscode nennt die letzten gewünschten Eigenschaften, die der Edge-Hub erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (ungültige Konfiguration), `500` Failed (Fehler) |
+| lastDesiredStatus.code | Dieser Statuscode nennt die letzten gewünschten Eigenschaften, die der Edge-Hub erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `500`: Fehler |
 | lastDesiredStatus.description | Textbeschreibung des Status |
 | clients.{device or moduleId}.status | Konnektivitätsstatus dieses Geräts oder Moduls. Mögliche Werte: {"connected" \| "disconnected"}. Nur Modulidentitäten können den Status „disconnected“ aufweisen. Nachgeschaltete Geräte, die eine Verbindung mit dem Edge-Hub herstellen, erscheinen nur bei erfolgreicher Verbindung. |
 | clients.{device or moduleId}.lastConnectTime | Letzter Verbindungszeitpunkt des Geräts oder Moduls |

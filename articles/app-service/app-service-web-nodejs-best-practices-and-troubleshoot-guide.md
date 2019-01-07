@@ -1,6 +1,6 @@
 ---
-title: Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure-Web-Apps
-description: Es werden die bewährten Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure-Web-Apps beschrieben.
+title: 'Bewährte Methoden und Problembehandlung für Node.js: Azure App Service'
+description: Machen Sie sich mit den bewährten Methoden und Problembehandlungsschritten für Node-Anwendungen in Azure App Service vertraut.
 services: app-service\web
 documentationcenter: nodejs
 author: ranjithr
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
-ms.openlocfilehash: 860874ed49056e6b4695c060b06bf061820c390e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec18
+ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789672"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315722"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure-Web-Apps
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
 In diesem Artikel werden die bewährten Methoden und Problembehandlungsschritte für [Node-Anwendungen](app-service-web-get-started-nodejs.md) beschrieben, die auf Azure-Web-Apps (mit [iisnode](https://github.com/azure/iisnode)) ausgeführt werden.
 
@@ -62,7 +63,7 @@ Mit dieser Einstellung wird das Verzeichnis gesteuert, in dem iisnode die Protok
 
 ### <a name="debuggerextensiondll"></a>debuggerExtensionDll
 
-Mit dieser Einstellung wird gesteuert, welche Version von Node-Inspector von iisnode beim Debuggen der Node-Anwendung verwendet wird. Derzeit sind „iisnode-inspector-0.7.3.dll“ und „iisnode-inspector.dll“ die einzigen beiden gültigen Werte für diese Einstellung. Der Standardwert lautet „iisnode-inspector-0.7.3.dll“. Für die Version „iisnode-inspector-0.7.3.dll“ werden „node-inspector-0.7.3“ und Websockets verwendet. Aktivieren Sie Websockets in Ihrer Azure-Web-App, um diese Version nutzen zu können. Ausführlichere Informationen zur Konfiguration von iisnode zur Verwendung der neuen Node-Inspector-Version finden Sie unter <http://ranjithblogs.azurewebsites.net/?p=98>.
+Mit dieser Einstellung wird gesteuert, welche Version von Node-Inspector von iisnode beim Debuggen der Node-Anwendung verwendet wird. Derzeit sind „iisnode-inspector-0.7.3.dll“ und „iisnode-inspector.dll“ die einzigen beiden gültigen Werte für diese Einstellung. Der Standardwert lautet „iisnode-inspector-0.7.3.dll“. Für die Version „iisnode-inspector-0.7.3.dll“ werden „node-inspector-0.7.3“ und Websockets verwendet. Aktivieren Sie Websockets in Ihrer Azure-Web-App, um diese Version nutzen zu können. Ausführlichere Informationen zur Konfiguration von iisnode zur Verwendung der neuen Node-Inspector-Version finden Sie unter <https://ranjithblogs.azurewebsites.net/?p=98>.
 
 ### <a name="flushresponse"></a>flushResponse
 

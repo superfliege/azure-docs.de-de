@@ -1,5 +1,5 @@
 ---
-title: Architektur des Volltext-Suchmoduls (Lucene) in Azure Search | Microsoft-Dokumentation
+title: Architektur der Engine für die Volltextsuche (Lucene) – Azure Search
 description: Enthält eine Beschreibung der Konzepte für die Lucene-Abfrageverarbeitung und den Dokumentabruf für die Volltextsuche von Azure Search.
 manager: jlembicz
 author: yahnoosh
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.custom: seodec2018
+ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036869"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315798"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -95,7 +96,7 @@ Der Abfrageparser strukturiert die Unterabfragen als *Abfragestruktur* (interne 
 
  ![Boolesche Abfrage: Suchmodus „any“][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Unterstützte Parser: Lucene, einfach und vollständig („simple“ und „full“) 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Unterstützte Parser: Lucene-Optionen „simple“ und „full“ 
 
  In Azure Search werden zwei unterschiedliche Abfragesprachen verfügbar gemacht: `simple` (Standard) und `full`. Indem Sie den Parameter `queryType` für Ihre Suchanfrage festlegen, weisen Sie den Abfrageparser an, welche Abfragesprache zur Verwendung ausgewählt werden soll. Er verfügt somit über die Funktionen zum Interpretieren der Operatoren und der Syntax. Die [einfache Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) ist intuitiv und robust und häufig gut geeignet, um die Benutzereingabe unverändert ohne clientseitige Verarbeitung zu interpretieren. Sie unterstützt Abfrageoperatoren, die Sie aus anderen Websuchmodulen kennen. Bei der [vollständigen Lucene-Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), die Sie durch das Festlegen von `queryType=full` erhalten, wird die einfache Abfragesprache erweitert. Es wird Unterstützung für weitere Operatoren und Abfragetypen hinzugefügt, z.B. Platzhalter, Fuzzy Matching, reguläre Ausdrücke und feldbezogene Abfragen. Ein regulärer Ausdruck, der mit einfacher Abfragesyntax gesendet wird, wird beispielsweise als Abfragezeichenfolge und nicht als Ausdruck interpretiert. Für die Beispielabfrage in diesem Artikel wird die vollständige Lucene-Abfragesprache verwendet.
 
@@ -287,7 +288,7 @@ Für das Feld **description** sieht der Index wie folgt aus:
 | shore | 2
 | spacious | 1
 | the | 1, 2
-| in: | 1
+| zu | 1
 | view | 1, 2, 3
 | walking | 1
 | with | 3

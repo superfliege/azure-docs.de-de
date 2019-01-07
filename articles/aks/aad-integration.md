@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 9bdd3060219907f95454bfc9248572f796afd72e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979249"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437604"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service
 
@@ -149,7 +149,7 @@ Verwenden Sie zunächst den Befehl [az aks get-credentials][az-aks-get-credentia
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Verwenden Sie anschließend das folgende Manifest, um ein ClusterRoleBinding-Element für ein Azure AD-Konto zu erstellen. Aktualisieren Sie den Benutzernamen mit einem aus Ihrem Azure AD-Mandanten. In diesem Beispiel wird dem Konto Vollzugriff auf alle Namespaces des Clusters gewährt:
+Verwenden Sie anschließend das folgende Manifest, um ein ClusterRoleBinding-Element für ein Azure AD-Konto zu erstellen. In diesem Beispiel wird dem Konto Vollzugriff auf alle Namespaces des Clusters gewährt. Erstellen Sie eine Datei, z. B. *rbac-aad-user.yaml*, und fügen Sie den folgenden Inhalt ein. Aktualisieren Sie den Benutzernamen mit einem Namen aus Ihrem Azure AD-Mandanten:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -166,7 +166,13 @@ subjects:
   name: "user@contoso.com"
 ```
 
-Für alle Mitglieder einer Azure AD-Gruppe kann auch eine Rollenbindung erstellt werden. Azure AD-Gruppen werden über die Gruppenobjekt-ID angegeben. Das folgende Beispiel zeigt dies:
+Wenden Sie die Bindung wie im folgenden Beispiel gezeigt mit dem Befehl [kubectl apply][kubectl-apply] an:
+
+```console
+kubectl apply -f rbac-aad-user.yaml
+```
+
+Für alle Mitglieder einer Azure AD-Gruppe kann auch eine Rollenbindung erstellt werden. Azure AD-Gruppen werden wie im folgenden Beispiel gezeigt anhand der Gruppenobjekt-ID angegeben. Erstellen Sie eine Datei, z. B. *rbac-aad-group.yaml*, und fügen Sie den folgenden Inhalt ein. Aktualisieren Sie den Benutzernamen mit einem Namen aus Ihrem Azure AD-Mandanten:
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -181,6 +187,12 @@ subjects:
 - apiGroup: rbac.authorization.k8s.io
    kind: Group
    name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
+```
+
+Wenden Sie die Bindung wie im folgenden Beispiel gezeigt mit dem Befehl [kubectl apply][kubectl-apply] an:
+
+```console
+kubectl apply -f rbac-aad-group.yaml
 ```
 
 Weitere Informationen zum Sichern eines Kubernetes-Clusters mit RBAC finden Sie in der Dokumentation zur [Verwendung der RBAC-Autorisierung][rbac-authorization].
@@ -221,6 +233,7 @@ Weitere Informationen zum Sichern von Kubernetes-Clustern mit RBAC finden Sie in
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [rbac-authorization]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

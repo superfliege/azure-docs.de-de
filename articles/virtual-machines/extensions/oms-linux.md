@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 4c35820daa9cc25f40dfa0034d9ce632ece235a7
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 6ca39d13fa54d772de17d519be5977e1a437c033
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633404"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337562"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-VM-Erweiterung für Linux
 
@@ -39,13 +39,13 @@ Die Log Analytics-Agent-Erweiterung kann für folgende Linux-Distributionen ausg
 
 | Distribution | Version |
 |---|---|
-| CentOS Linux | 6 und 7 (x86/x64) |
-| Amazon Linux | 2017.09 | 
+| CentOS Linux | 6 (x86/x64) und 7 (x64) |
+| Amazon Linux | 2017.09 (x64) | 
 | Oracle Linux | 6 und 7 (x86/x64) |
-| Red Hat Enterprise Linux-Server | 6 und 7 (x86/x64) |
+| Red Hat Enterprise Linux-Server | 6 (x86/x64) und 7 (x64) |
 | Debian GNU/Linux | 8 und 9 (x86/x64) |
-| Ubuntu | 14.04 LTS, 16.04 LTS und 18.04 LTS (x86/x64) |
-| SUSE Linux Enterprise Server | 12 (x86/x64) |
+| Ubuntu | 14.04 LTS (x86/x64), 16.04 LTS (x86/x64) und 18.04 LTS (x64) |
+| SUSE Linux Enterprise Server | 12 (x64) |
 
 >[!NOTE]
 >OpenSSL unter Version 1.x wird auf keiner Plattform unterstützt, und Version 1.10 wird nur auf x86_64-Plattformen (64 Bit) unterstützt.  
@@ -56,6 +56,8 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Er
 
 | Version der Log Analytics-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
 |--------------------------------|--------------------------|
+| 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
+| 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
 | 1.7.9 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -79,7 +81,7 @@ Um die Log Analytics-Agent-Erweiterung für Linux verwenden zu können, muss der
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung. Für die Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem Log Analytics-Zielarbeitsbereich benötigt. Diese Werte sind [im Log Analytics-Arbeitsbereich](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) im Azure-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Bitte beachten Sie, dass bei **workspaceId** und **workspaceKey** die Groß-/Kleinschreibung beachtet wird.
+Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung. Für die Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem Log Analytics-Zielarbeitsbereich benötigt. Diese Werte sind [im Log Analytics-Arbeitsbereich](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) im Azure-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Bitte beachten Sie, dass bei **workspaceId** und **workspaceKey** die Groß-/Kleinschreibung beachtet wird.
 
 ```json
 {
@@ -94,6 +96,7 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
     "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
     },

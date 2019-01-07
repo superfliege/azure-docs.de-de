@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 3fb68370f9b26aacc33d0e2e6090fe819010f468
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0f72097ad9e8b8675d78654c07a62fb6baf90f4a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283216"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582302"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks für Azure-Aktivitätsprotokollwarnungen
 Als Teil der Definition einer Aktionsgruppe können Sie Webhookendpunkte für den Empfang von Aktivitätsprotokollwarnungs-Benachrichtigungen konfigurieren. Mithilfe von Webhooks können Sie diese Benachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. In diesem Artikel erfahren Sie, wie die Nutzlast für die HTTP POST-Methode für einen Webhook aussieht.
@@ -161,9 +161,9 @@ Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.c
 }
 ```
 
-Spezifische Schemainformationen zu Dienstintegritätsbenachrichtigungs-Aktivitätsprotokollwarnungen finden Sie unter [Dienstintegritätsbenachrichtigungen](../../monitoring-and-diagnostics/monitoring-service-notifications.md). Erfahren Sie außerdem, wie Sie [Webhookbenachrichtigungen zur Dienstintegrität mit Ihren vorhandenen Problemverwaltungslösungen konfigurieren](../../service-health/service-health-alert-webhook-guide.md).
+Spezifische Schemainformationen zu Dienstintegritätsbenachrichtigungs-Aktivitätsprotokollwarnungen finden Sie unter [Dienstintegritätsbenachrichtigungen](../../azure-monitor/platform/service-notifications.md). Erfahren Sie außerdem, wie Sie [Webhookbenachrichtigungen zur Dienstintegrität mit Ihren vorhandenen Problemverwaltungslösungen konfigurieren](../../service-health/service-health-alert-webhook-guide.md).
 
-Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen finden Sie unter [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen finden Sie unter [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md).
 
 | Elementname | BESCHREIBUNG |
 | --- | --- |
@@ -175,7 +175,7 @@ Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen f
 | id |Die Ressourcen-ID der Warnung. |
 | Beschreibung |Warnungsbeschreibung, die beim Erstellen der Warnung festgelegt wird. |
 | subscriptionId |Die Azure-Abonnement-ID. |
-|  timestamp |Die Zeit, zu der das Ereignis durch den Azure-Dienst generiert wurde, der die Anforderung verarbeitet hat. |
+| timestamp |Die Zeit, zu der das Ereignis durch den Azure-Dienst generiert wurde, der die Anforderung verarbeitet hat. |
 | Ressourcen-ID |Ressourcen-ID der betroffenen Ressource. |
 | resourceGroupName |Name der Ressourcengruppe für die betroffene Ressource. |
 | Eigenschaften |Eine Gruppe von `<Key, Value>`-Paaren (`Dictionary<String, String>`) mit Details zum Ereignis |
@@ -196,7 +196,7 @@ Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen f
 | subStatus |Enthält üblicherweise den HTTP-Statuscode des zugehörigen REST-Aufrufs. Es können auch weitere Zeichenfolgen enthalten sein, die einen Unterstatus beschreiben. Gängige Unterstatuswerte: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503) und Gatewaytimeout (HTTP-Statuscode: 504). |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum Aktivitätsprotokoll](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+* [Weitere Informationen zum Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md).
 * [Ausführen von Azure Automation-Skripts (Runbooks) für Azure-Warnungen](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988491"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434884"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -24,13 +24,13 @@ Die Verwaltung von HDInsight-Clusterprotokollen umfasst auch das Vorhalten von I
 
 Typische Schritte der HDInsight-Protokollverwaltung sind:
 
-* Schritt 1: Ermitteln der Richtlinien für die Protokollaufbewahrung
+* Schritt 1: Bestimmen der Richtlinien für die Protokollaufbewahrung
 * Schritt 2: Verwalten von Konfigurationsprotokollen für Clusterdienstversionen
 * Schritt 3: Verwalten von Protokolldateien zur Ausführung von Clusteraufträgen
 * Schritt 4: Prognostizieren von Speichergrößen und Kosten für das Protokollvolumen
 * Schritt 5: Ermitteln der Richtlinien und Prozesse für die Protokollarchivierung
 
-## <a name="step-1-determine-log-retention-policies"></a>Schritt 1: Ermitteln der Richtlinien für die Protokollaufbewahrung
+## <a name="step-1-determine-log-retention-policies"></a>Schritt 1: Bestimmen der Richtlinien für die Protokollaufbewahrung
 
 Der erste Schritt beim Erstellen einer Strategie für die Protokollverwaltung eines HDInsight-Clusters ist das Sammeln von Informationen zu Geschäftsszenarien und zu den Speicheranforderungen des Auftragsausführungsverlaufs.
 
@@ -51,7 +51,7 @@ Sie können die meisten dieser Informationen der obersten Ebene über das Azure-
 ```
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Sie können zum Anzeigen dieser Informationen auch PowerShell nutzen.  Weitere Informationen finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md).
+Sie können zum Anzeigen dieser Informationen auch PowerShell nutzen.  Weitere Informationen finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md).
 
 ### <a name="understand-the-workloads-running-on-your-clusters"></a>Grundlegendes zu Workloads, die in Ihren Clustern ausgeführt werden
 
@@ -69,7 +69,7 @@ Es ist wichtig, dass Sie die in Ihren HDInsight-Clustern ausgeführten Workloadt
 
 * Überlegen Sie, wie Sie Protokolle für den Cluster oder mehr als einen Cluster sammeln und für Zwecke wie Auditing, Überwachung, Planung und Warnung zusammenstellen können. Sie können ggf. eine benutzerdefinierte Lösung nutzen, um regelmäßig auf die Protokolldateien zuzugreifen und diese herunterzuladen und dann zu kombinieren und zu analysieren, um eine entsprechende Dashboardanzeige bereitzustellen. Außerdem können Sie weitere Funktionen für Sicherheitswarnungen oder die Fehlererkennung hinzufügen. Sie können diese Hilfsprogramme mit PowerShell, den HDInsight SDKs oder Code erstellen, mit dem auf das klassische Azure-Bereitstellungsmodell zugegriffen wird.
 
-* Überlegen Sie, ob eine Überwachungslösung oder ein entsprechender Dienst nützlich wäre. In Microsoft System Center ist ein [HDInsight Management Pack](https://www.microsoft.com/download/details.aspx?id=42521) verfügbar. Sie können auch Drittanbietertools verwenden, z.B. Chukwa und Ganglia, um Protokolle zu sammeln und zu zentralisieren. Viele Unternehmen bieten Dienste zum Überwachen von Hadoop-basierten Big Data-Lösungen an, z.B. Centerity, Compuware APM, Sematext SPM und Zettaset Orchestrator.
+* Überlegen Sie, ob eine Überwachungslösung oder ein entsprechender Dienst nützlich wäre. In Microsoft System Center ist ein [HDInsight Management Pack](https://www.microsoft.com/download/details.aspx?id=42521) verfügbar. Sie können auch Drittanbietertools verwenden, z. B. Apache Chukwa und Ganglia, um Protokolle zu sammeln und zu zentralisieren. Viele Unternehmen bieten Dienste, um Hadoop-basierte Big Data-Lösungen zu überwachen, zum Beispiel: Centerity, Compuware APM, Sematext SPM und Zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Schritt 2: Verwalten von Clusterdienstversionen und Anzeigen von Skriptaktionsprotokollen
 
@@ -177,5 +177,5 @@ Zum Sammeln der Protokolle von allen Knoten an einem zentralen Speicherort könn
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Monitoring and Logging Practice for HDInsight](https://msdn.microsoft.com/library/dn749790.aspx) (Vorgehensweise zur Überwachung und Protokollierung für HDInsight)
-* [Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [How to control size of log files for various HDP components](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html) (Steuern der Größe von Protokolldateien für verschiedene HDP-Komponenten)
+* [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [How to control size of log files for various HDP components (Steuern der Größe von Protokolldateien für verschiedene HDP-Komponenten)](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

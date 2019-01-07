@@ -1,5 +1,5 @@
 ---
-title: Anzeigen von Azure-Reservierungen | Microsoft-Dokumentation
+title: Anzeigen von Reservierungen für Azure-Ressourcen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure-Reservierungen im Azure-Portal anzeigen.
 services: billing
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 4506d65d173ea483558a772d89fe7cbc8cd84944
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c7522076987aacacc6fde6a0c9d2fa867a3f14aa
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584586"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314039"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Anzeigen von Azure-Reservierungen im Azure-Portal
+# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Anzeigen von Reservierungen für Azure im Azure-Portal
 
-Je nach Abonnementtyp und Berechtigungen gibt es mehrere Möglichkeiten, um Azure-Reservierungen anzuzeigen.
+Je nach Abonnementtyp und Berechtigungen gibt es mehrere Möglichkeiten, um Reservierungen für Azure-Ressourcen anzuzeigen.
 
 ## <a name="view-reservations-as-owner-or-reader"></a>Anzeigen von Reservierungen als Besitzer oder Leser
 
@@ -30,7 +30,7 @@ Standardmäßig können Sie und der Kontoadministrator die Reservierung anzeigen
  
 Gehen Sie folgendermaßen vor, um eine Reservierung als Besitzer oder Leser anzuzeigen:
 
-1. Melden Sie sich beim [Azure-Portal]( http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Reservierungen**.
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ Wenn Sie den Bereich einer Reservierung ändern, eine Reservierung aufteilen ode
 
 Gehen Sie folgendermaßen vor, um Reservierungstransaktionen im Azure-Portal anzuzeigen:
 
-1. Melden Sie sich beim [Azure-Portal]( http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -54,7 +54,7 @@ Gehen Sie folgendermaßen vor, um Reservierungstransaktionen im Azure-Portal anz
 1. Wählen Sie zum Filtern der Ergebnisse **Zeitraum**, **Typ** oder **Beschreibung** aus.
 1. Wählen Sie **Übernehmen**.
 
-    ![Screenshot, der Ergebnisse für Reservierungstransaktionen anzeigt](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
+    ![Screenshot, der Ergebnisse für Reservierungstransaktionen zeigt](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
 
 Wenn Sie die Daten mithilfe einer API abrufen möchten, lesen Sie [Abrufen von Gebühren für reservierte Instanzen für Unternehmenskunden](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Resource Manager: Löschen von Ressourcengruppen'
-description: Beschreibt, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen beim Löschen einer Ressourcengruppe ausführt.
+title: Löschen von Ressourcengruppen und Ressourcen – Azure Resource Manager
+description: Beschreibt, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen beim Löschen einer Ressourcengruppe ausführt. Sie erhalten Informationen zu den Antwortcodes und dazu, wie Resource Manager anhand der Codes bestimmt, ob die Löschung erfolgreich war.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8b0711cab07584aa84ab437a2a4efb5aab92f3d1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: b8c4fdc942af291e912a4c1e74d1292279cf9f8c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318909"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132328"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Azure Resource Manager: Löschvorgang von Ressourcengruppen
 
@@ -44,7 +45,7 @@ Für synchrone Vorgänge lauten die erwarteten Antwortcodes bei Erfolg folgender
 
 Für asynchrone Vorgänge lautet die erwartete Antwort bei Erfolg 202. Resource Manager verfolgt den Location-Header oder den azure-async-Vorgangsheader nach, um den Status des asynchronen Löschvorgangs zu ermitteln.
   
-### <a name="errors"></a>Fehler
+### <a name="errors"></a>Errors
 
 Wenn ein Löschvorgang einen Fehler zurückgibt, wiederholt Resource Manager den DELETE-Aufruf. Wiederholungsversuche finden für die Statuscodes 5xx, 429 und 408 statt. Standardmäßig beträgt der Zeitraum für Wiederholungsversuche 15 Minuten.
 
@@ -54,7 +55,7 @@ Resource Manager gibt einen GET-Aufruf für jede Ressource aus, für die ein Lö
 
 Wenn der GET-Aufruf für die Ressource jedoch 200 oder 201 zurückgibt, erstellt Resource Manager die Ressource erneut.
 
-### <a name="errors"></a>Fehler
+### <a name="errors"></a>Errors
 
 Wenn der GET-Vorgang einen Fehler zurückgibt, wiederholt Resource Manager die GET-Anforderung für die folgenden Fehlercodes:
 
@@ -68,4 +69,4 @@ Bei anderen Fehlercodes kann Resource Manager das Löschen der Ressource nicht d
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Um die Konzepte von Resource Manager zu verstehen, lesen Sie [Azure Resource Manager: Übersicht](resource-group-overview.md).
-* Informationen zum Anzeigen der Vorgänge für einen Ressourcenanbieter finden Sie unter [Azure-REST-API](/rest/api/).
+* Informationen zu Löschbefehlen finden Sie unter [PowerShell](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup), [Azure CLI](/cli/azure/group?view=azure-cli-latest#az-group-delete) und [REST-API](/rest/api/resources/resourcegroups/delete).

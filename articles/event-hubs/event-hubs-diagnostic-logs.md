@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs-Diagnoseprotokolle | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Diagnoseprotokolle für Event Hubs in Azure einrichten.
+title: Einrichten der Diagnoseprotokolle – Azure Event Hubs | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Aktivitäts- und Diagnoseprotokolle für Event Hubs in Azure einrichten.
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/02/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bee6219bca21c3bc2bf4f97aa061fce0b30d55ff
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c0c8740648ad845b58ff0578607f4b5e9c235166
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985165"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105477"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
@@ -70,7 +71,7 @@ Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. 
 
 JSON-Zeichenfolgen im Archivprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-NAME | BESCHREIBUNG
+NAME | Beschreibung
 ------- | -------
 TaskName | Beschreibung der Aufgabe, bei der ein Fehler aufgetreten ist
 ActivityId | Interne ID zur Nachverfolgung
@@ -108,7 +109,7 @@ Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 
 JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-NAME | BESCHREIBUNG
+NAME | Beschreibung
 ------- | -------
 ActivityId | Interne ID zur Nachverfolgung
 EventName | Vorgangsname  

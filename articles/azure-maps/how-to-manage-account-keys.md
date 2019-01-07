@@ -1,19 +1,19 @@
 ---
 title: Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel | Microsoft-Dokumentation
 description: Sie können das Azure-Portal verwenden, um Ihr Azure Maps-Konto und Ihre Zugriffsschlüssel zu verwalten.
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 29fd63139d31d146cfc67153f35bd57650b08cfa
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 351bc26d6c5b3dcfa9479138f2bd523f64a2912a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541618"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335811"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel
 
@@ -23,7 +23,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-new-account"></a>Erstellen eines neuen Kontos
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 
 2. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
@@ -53,5 +53,10 @@ Es wird eine Konfigurationsseite angezeigt. Sie können das Löschen Ihres Konto
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie mit Azure Maps-Such-APIs [nach einer Adresse suchen](./how-to-search-for-address.md).
-* Erfahren Sie, wie Sie das [JavaScript-Kartensteuerelement](./how-to-use-map-control.md) von Azure Maps verwenden.
+Erfahren Sie, wie Sie den Tarif Ihres Azure Maps-Kontos verwalten:
+> [!div class="nextstepaction"]
+> [Manage Pricing Tier](./how-to-manage-pricing-tier.md) (Verwalten des Tarifs)
+
+Erfahren Sie, wie Sie die API-Nutzungsmetriken für Ihr Azure Maps-Konto anzeigen:
+> [!div class="nextstepaction"]
+> [Anzeigen von Nutzungsmetriken](./how-to-view-api-usage.md)

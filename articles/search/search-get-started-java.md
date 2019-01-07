@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Search in Java | Microsoft Docs
+title: 'Erste Schritte mit Azure Search in Java: Azure Search'
 description: Informationen zum Erstellen einer gehosteten Cloudsuchanwendung in Azure mit der Programmiersprache Java.
 services: search
 author: jj09
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: d1ca905d415eb8ab49c449a69707c56d5c717081
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec2018
+ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419298"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316964"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Erste Schritte mit Azure Search in Java
 > [!div class="op_single_selector"]
@@ -45,12 +46,12 @@ In dieser Anwendung erstellt das Programm **SearchServlet.java** den Index und l
 ## <a name="about-the-program-files"></a>Informationen zu den Programmdateien
 Die folgende Liste beschreibt die Dateien, die für dieses Beispiel relevant sind.
 
-* Search.jsp: Stellt die Benutzeroberfläche bereit.
-* SearchServlet.java: Stellt Methoden bereit (vergleichbar mit einem Controller in MVC).
-* SearchServiceClient.java: Verarbeitet HTTP-Anforderungen.
-* SearchServiceHelper.java: Eine Hilfsklasse, die statische Methoden enthält.
-* Document.Java: Stellt das Datenmodell bereit.
-* config.Properties: Legt die URL und den API-Schlüssel des Search-Diensts fest.
+* Search.jsp: Stellt die Benutzeroberfläche bereit
+* SearchServlet.java: Stellt Methoden bereit (vergleichbar mit einem Controller in MVC)
+* SearchServiceClient.java: Behandelt HTTP-Anforderungen
+* SearchServiceHelper.java: Eine Hilfsklasse, die statische Methoden enthält
+* Document.java: Stellt das Datenmodell bereit
+* config.properties: Legt die Suchdienst-URL und den API-Schlüssel fest
 * pom.xml: Eine Maven-Abhängigkeit
 
 <a id="sub-2"></a>

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9553d1dd5dd8d8ff11ea480618b471b9898985e3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456557"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341234"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Bereitstellen von Legacygeräten mit symmetrischen Schlüsseln
 
@@ -42,7 +42,7 @@ Der in diesem Artikel veranschaulichte Gerätecode basiert auf dem gleichen Must
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Durcharbeiten der Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md).
+* Vollständige Bearbeitung der Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning Service über das Azure-Portal](./quick-setup-auto-provision.md).
 * Visual Studio 2015 oder [Visual Studio 2017](https://www.visualstudio.com/vs/) mit der aktivierten Workload ["Desktopentwicklung mit C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
 * Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
@@ -51,7 +51,7 @@ Der in diesem Artikel veranschaulichte Gerätecode basiert auf dem gleichen Must
 
 In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstellen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) verwendet wird. 
 
-Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte Gerät versucht, während seiner Startsequenz die Bereitstellung durchzuführen.
+Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte Gerät versucht, die Bereitstellung während seiner Startsequenz auszuführen.
 
 1. Laden Sie Version 3.11.4 des [CMake-Buildsystems](https://cmake.org/download/) herunter. Überprüfen Sie die heruntergeladene Binärdatei mit dem entsprechenden kryptografischen Hashwert. Im folgenden Beispiel wird Windows PowerShell verwendet, um den kryptografischen Hash für Version 3.11.4 der x64 MSI-Verteilung zu überprüfen:
 
@@ -61,7 +61,7 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
     True
     ```
     
-    Zum Zeitpunkt der Erstellung dieses Artikels wurden auf der Website von CMake die folgenden Hashwerte für Version 3.11.4 aufgeführt:
+    Zum Zeitpunkt der Abfassung dieses Artikels waren auf der Website von CMake die folgenden Hashwerte für Version 3.11.4 aufgeführt:
 
     ```
     6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
@@ -87,10 +87,10 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
     cd cmake
     ```
 
-4. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform. Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
+4. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform: Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     Falls `cmake` Ihren C++-Compiler nicht findet, treten beim Ausführen des obigen Befehls unter Umständen Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) aus. 
@@ -98,7 +98,7 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
     Nach erfolgreicher Erstellung ähneln die letzten Ausgabezeilen der folgenden Ausgabe:
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -114,7 +114,7 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>Erstellen einer Registrierungsgruppe mit symmetrischem Schlüssel
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und öffnen Sie Ihre Instanz des Device Provisioning-Diensts.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
 
 2. Wählen Sie die Registerkarte **Registrierungen verwalten** aus, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Registrierungsgruppe hinzufügen**. 
 
@@ -126,9 +126,9 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
 
     - **Schlüssel automatisch generieren**: Aktivieren Sie dieses Kontrollkästchen.
 
-    - **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Statische Konfiguration**, um das Zuweisen zu einem bestimmten Hub zu ermöglichen.
+    - **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Statische Konfiguration** aus, damit Sie sie einem bestimmten Hub zuweisen können.
 
-    - **Select the IoT hubs this group can be assigned to** (Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann): Wählen Sie einen Ihrer Hubs aus.
+    - **Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann**: Wählen Sie einen Ihrer Hubs aus.
 
     ![Hinzufügen einer Registrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
@@ -212,11 +212,11 @@ In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel mit dem Namen 
 
 Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellungsanforderung an die Instanz des Device Provisioning-Diensts gesendet wird. Die Startsequenz bewirkt, dass das Gerät erkannt und dem IoT-Hub zugewiesen wird, den Sie in der Registrierungsgruppe konfiguriert haben.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning-Dienst, und notieren Sie sich den Wert unter **_ID-Bereich_**.
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
     ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich am folgenden Speicherort:
+2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich an folgendem Speicherort:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -239,22 +239,25 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Klicken Sie mit der rechten Maustaste auf das Projekt **prov\_dev\_client\_sample**, und wählen Sie **Als Startprojekt festlegen** aus. 
-
-7. Navigieren Sie im *Projektmappen-Explorer* von Visual Studio zum Projekt **hsm\_security\_client**, und erweitern Sie es. Erweitern Sie **Quelldateien**, und öffnen Sie **hsm\_client\_key.c**. 
-
-    Suchen Sie die Deklaration der Konstanten `REGISTRATION_NAME` und `SYMMETRIC_KEY_VALUE`. Nehmen Sie die folgenden Änderungen an der Datei vor, und speichern Sie sie.
-
-    Aktualisieren Sie den Wert der Konstante `REGISTRATION_NAME` mit der **eindeutigen Registrierungs-ID für Ihr Gerät**.
-    
-    Aktualisieren Sie den Wert der Konstante `SYMMETRIC_KEY_VALUE` mit Ihrem **abgeleiteten Geräteschlüssel**.
+6. Suchen Sie den Aufruf von `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c**, der auskommentiert ist.
 
     ```c
-    static const char* const REGISTRATION_NAME = "sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6";
-    static const char* const SYMMETRIC_KEY_VALUE = "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-7. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Klicken Sie in der Eingabeaufforderung zum Neuerstellen des Projekts auf **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
+    Heben Sie die Auskommentierung für den Funktionsaufruf auf, und ersetzen Sie die Platzhalterwerte (einschließlich der spitzen Klammern) durch die eindeutige Registrierungs-ID für Ihr Gerät und den von Ihnen generierten abgeleiteten Geräteschlüssel.
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6", "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=");
+    ```
+   
+    Speichern Sie die Datei .
+
+7. Klicken Sie mit der rechten Maustaste auf das Projekt **prov\_dev\_client\_sample**, und wählen Sie **Als Startprojekt festlegen** aus. 
+
+8. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Klicken Sie in der Eingabeaufforderung zum Neuerstellen des Projekts auf **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
 
     Die folgende Ausgabe ist ein Beispiel für das erfolgreiche Starten des simulierten Geräts und das Herstellen der Verbindung mit der Provisioning Service-Instanz, die einem IoT Hub zugewiesen werden soll:
 
@@ -273,7 +276,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     Press enter key to exit:
     ```
 
-8. Navigieren Sie im Portal zu der IoT Hub-Instanz, der Ihr simuliertes Gerät zugewiesen wurde, und klicken Sie auf die Registerkarte **IoT-Geräte**. Nach erfolgreicher Bereitstellung des simulierten Geräts auf dem Hub wird die dazugehörige Geräte-ID auf dem Blatt **IoT-Geräte** angezeigt, und der *STATUS* lautet **Aktiviert**. Unter Umständen müssen Sie oben auf die Schaltfläche **Aktualisieren** klicken. 
+9. Navigieren Sie im Portal zu der IoT Hub-Instanz, der Ihr simuliertes Gerät zugewiesen wurde, und klicken Sie auf die Registerkarte **IoT-Geräte**. Nach erfolgreicher Bereitstellung des simulierten Geräts auf dem Hub wird die dazugehörige Geräte-ID auf dem Blatt **IoT-Geräte** angezeigt, und der *STATUS* lautet **Aktiviert**. Unter Umständen müssen Sie oben auf die Schaltfläche **Aktualisieren** klicken. 
 
     ![Geräteregistrierung bei der IoT Hub-Instanz](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 

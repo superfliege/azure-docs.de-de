@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 3012f07d8c56f2581a087bc8e43aa4a089bf9589
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 627bd114504de20517abcd05f45dc6c58fe80117
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633511"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322703"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
 Erfahren Sie, wie Sie beim Konfigurieren von Anwendungen in Azure Active Directory (Azure AD) die am besten geeignete Methode für einmaliges Anmelden auswählen. 
@@ -61,14 +61,13 @@ SAML-basiertes einmaliges Anmelden wird für Anwendungen unterstützt, die eines
 
 - SAML 2.0
 - WS-Federation-
-- OpenID Connect
 
 Informationen zum Konfigurieren einer Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-portal.md). Darüber hinaus gibt es für viele Anwendungen [anwendungsspezifische Tutorials](../saas-apps/tutorial-list.md), die Sie durch die Konfiguration des SAML-basierten einmaligen Anmeldens für bestimmte Anwendungen führen. 
 
 Weitere Informationen zur Funktionsweise des SAML-Protokolls finden Sie unter [SAML-Protokoll für einmaliges Anmelden](../develop/single-sign-on-saml-protocol.md).
 
 ## <a name="password-based-sso"></a>Kennwortbasiertes einmaliges Anmelden
-Bei der kennwortbasierten Anmeldung führt die Anwendung die Authentifizierung mit einem Benutzernamen und einem Kennwort durch. Endbenutzer melden sich beim ersten Zugriff auf die Anwendung bei dieser an. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure Active Directory für die Anwendung bereitgestellt. 
+Bei der kennwortbasierten Anmeldung melden sich Endbenutzer mit einem Benutzernamen und einem Kennwort bei der Anwendung an, wenn sie erstmals auf sie zugreifen. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure Active Directory für die Anwendung bereitgestellt. 
 
 Beim kennwortbasierten einmaligen Anmelden wird der vorhandene Authentifizierungsvorgang der Anwendung verwendet. Wenn Sie einmaliges Anmelden per Kennwort für eine Anwendung aktivieren, sammelt Azure AD Benutzernamen und Kennwörter für die Anwendung und speichert diese sicher. Anmeldeinformationen des Benutzers werden in einem verschlüsselten Zustand im Verzeichnis gespeichert. 
 
@@ -178,6 +177,6 @@ Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](../fun
 * [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Tutorial zum Konfigurieren des einmaligen Anmeldens](configure-single-sign-on-portal.md)
 * [Einführung in die Verwaltung des Zugriffs auf Anwendungen](what-is-access-management.md)
-* Downloadlink: [Bereitstellungsplan für einmaliges Anmelden](http://aka.ms/SSODeploymentPlan)
+* Downloadlink: [Single sign-on deployment plan](https://aka.ms/SSODeploymentPlan) (Bereitstellungsplan für einmaliges Anmelden)
 
 

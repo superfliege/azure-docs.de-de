@@ -6,43 +6,64 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: article
-ms.date: 7/11/2018
+ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: d32e6e29c287d140c28206743e36dc025b26158b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 86fdbbacf3e8064afe0aaaaebea1d6ef6c25f9d4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991333"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865825"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Bereitstellen von Azure Firewall mit einer Vorlage
 
-Diese Vorlage erstellt eine Firewall und eine Testnetzwerkumgebung. Das Netzwerk verfügt über ein VNET mit drei Subnetzen: *AzureFirewallSubnet*, *ServersSubnet* und *JumpboxSubnet*. ServersSubnet und JumpboxSubnet enthalten jeweils einen Windows Server mit zwei Kernen.
+Über die [Setupvorlage zum Erstellen einer AzureFirewall-Sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) wird eine Testnetzwerkumgebung mit einer Firewall erstellt. Das Netzwerk verfügt über ein virtuelles Netzwerk (VNET) mit drei Subnetzen: *AzureFirewallSubnet*, *ServersSubnet* und *JumpboxSubnet*. Die Subnetze *ServersSubnet* und *JumpboxSubnet* verfügen jeweils über einen virtuellen Windows Server-Computer mit zwei Kernen.
 
-Die Firewall befindet sich in „AzureFirewallSubnet“ und wird mit einer Anwendungsregelsammlung mit einer einzelnen Regel konfiguriert, die den Zugriff auf www.microsoft.com ermöglicht.
+Die Firewall befindet sich im Subnetz *AzureFirewallSubnet*, und der Zugriff auf *www.microsoft.com* wird durch eine Anwendungsregelsammlung mit einer einzelnen Regel ermöglicht.
 
-Es wird eine benutzerdefinierte Route erstellt, die den Netzwerkverkehr von „ServersSubnet“ durch die Firewall leitet, wo die Firewallregeln angewendet werden.
+Es wird eine benutzerdefinierte Route erstellt, die den Netzwerkverkehr vom Subnetz *ServersSubnet* durch die Firewall leitet, wo die Firewallregeln angewendet werden.
+
+Weitere Informationen zu Azure Firewall finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](tutorial-firewall-deploy-portal.md).
+
+## <a name="use-the-template-to-deploy-azure-firewall"></a>Verwenden der Vorlage zum Bereitstellen von Azure Firewall
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="template-location"></a>Speicherort der Vorlage
+**So verwenden Sie die Vorlage zum Installieren und Bereitstellen von Azure Firewall:**
 
-Die Vorlage befindet sich unter:
+1. Greifen Sie auf die Vorlage zu: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox).
+   
+1. Lesen Sie die Einführung, und wenn Sie mit der Bereitstellung beginnen möchten, klicken Sie auf **In Azure bereitstellen**.
+   
+1. Melden Sie sich ggf. beim Azure-Portal an. 
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox)
-
-Lesen Sie die Einführung, und wenn Sie mit der Bereitstellung beginnen möchten, klicken Sie auf **Bereitstellung in Azure**.
+1. Geben Sie im Portal auf der Seite **Create a sandbox setup of AzureFirewall** (Erstellen eine Sandboxsetups von AzureFirewall) die folgenden Werte ein, oder wählen Sie diese aus:
+   
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe an. Klicken Sie auf **OK**. 
+   - **Name des virtuellen Netzwerks**: Geben Sie den Namen für das neue VNET ein. 
+   - **Administratorbenutzername**: Geben Sie einen Benutzernamen für das Administratorbenutzerkonto ein.
+   - **Administratorkennwort**: Geben Sie ein Administratorkennwort ein. 
+   
+1. Lesen Sie die Geschäftsbedingungen, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu** aus.
+   
+1. Wählen Sie die Option **Kaufen**.
+   
+   Die Erstellung der Ressourcen wird einige Minuten dauern. 
+   
+1. Untersuchen Sie zuerst die Ressourcen, die mit der Firewall erstellt wurden. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Untersuchen Sie zuerst die Ressourcen, die mit der Firewall erstellt wurden. Sie können dann den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um die Ressourcengruppe, die Firewall und alle dazugehörigen Ressourcen zu entfernen, wenn diese nicht mehr benötigt werden.
+Wenn Sie sie nicht mehr benötigen, können Sie die Ressourcengruppe, die Firewall und alle zugehörigen Ressourcen entfernen, indem Sie den PowerShell-Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) ausführen. Zum Entfernen einer Ressourcengruppe mit dem Namen *MyResourceGroup* führen Sie diesen Befehl aus: 
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzureRmResourceGroup -Name MyResourceGroup
 ```
+Entfernen Sie die Ressourcengruppe und die Firewall noch nicht, wenn Sie mit dem Tutorial zur Firewallüberwachung fortfahren möchten. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Als Nächstes können Sie die Azure Firewall-Protokolle überwachen:
 
-- [Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)
-
+> [!div class="nextstepaction"]
+> [Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)

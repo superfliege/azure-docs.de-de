@@ -1,5 +1,5 @@
 ---
-title: Data Science unter Verwendung von Scala und Spark in Azure | Microsoft Docs
+title: Data Science unter Verwendung von Scala und Spark in Azure – Team Data Science-Prozess
 description: Die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster.
 services: machine-learning
 author: marktab
@@ -10,19 +10,19 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 836fdb5da13465d77c6e9e6ede4780f5d4048597
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: bf4e65b95211fc03ea4a319fd4e503396b893522
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447162"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135146"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
-Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](https://aka.ms/datascienceprocess)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
+Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
 
 * Regressionsproblem: Vorhersage des Trinkgeldbetrags ($) für eine Taxifahrt
-* Binäre Klassifizierung: Vorhersage für eine Taxifahrt, ob Trinkgeld gegeben wird oder nicht (1/0)
+* Binäre Klassifizierung: Vorhersage, ob für eine Taxifahrt ein Trinkgeld gegeben wird oder nicht (1/0)
 
 Die Modellierung erfordert Training und Auswertung von Testdatasets und relevanten Genauigkeitsmetriken. In diesem Artikel erfahren Sie, wie diese Modelle in Azure Blob Storage gespeichert werden, und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Dieser Artikel behandelt auch die fortgeschritteneren Themen, in denen es darum geht, Modelle mittels Kreuzvalidierung und Hyperparameter-Sweeping zu optimieren. Die verwendeten Daten sind eine Stichprobe des bei GitHub verfügbaren Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013.
 
@@ -41,7 +41,7 @@ Installationsschritte und Code in diesem Artikel sind für Azure HDInsight 3.4 S
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Sie benötigen ein Azure-Abonnement. Wenn Sie noch keins besitzen, [beschaffen Sie sich eine kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Sie benötigen einen Azure HDInsight 3.4 Spark 1.6-Cluster, um die folgenden Schritte auszuführen. Anweisungen zum Erstellen eines Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Geben Sie Clustertyp und Version im Menü **Clustertyp auswählen** an.
+* Sie benötigen einen Azure HDInsight 3.4 Spark 1.6-Cluster, um die folgenden Schritte auszuführen. Anweisungen zum Erstellen eines Clusters finden Sie in [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Geben Sie Clustertyp und Version im Menü **Clustertyp auswählen** an.
 
 ![Konfiguration des HDInsight-Clustertyps](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ Sie können das Notebook direkt von GitHub auf den Jupyter-Notebook-Server in Ih
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Setup: Voreinstellung von Spark- und Hive-Kontext, Spark-Magic-Befehle und Spark-Bibliotheken
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Einrichtung: Voreingestellte Spark- und Hive-Kontexte, Spark-Magic-Befehle und Spark-Bibliotheken
 ### <a name="preset-spark-and-hive-contexts"></a>Voreinstellung von Spark- und Hive-Kontext
     # SET THE START TIME
     import java.util.Calendar
@@ -532,7 +532,7 @@ Hier ist der Code für diese beiden Aufgaben.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binäres Klassifizierungsmodell: Vorhersage, ob ein Trinkgeld gezahlt wird
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Modell für die binäre Klassifizierung: Vorhersage, ob ein Trinkgeld gegeben wird
 In diesem Abschnitt erstellen Sie drei Arten von Modellen der binären Klassifizierung, um vorherzusagen, ob ein Trinkgeld gezahlt wird oder nicht:
 
 * Ein **logistisches Regressionsmodell** mithilfe der `LogisticRegression()`-Funktion von Spark ML
@@ -723,7 +723,7 @@ Erstellen Sie als Nächstes ein GBT-Klassifizierungsmodell mit der `GradientBoos
 
 **Ausgabe:**
 
-Bereich unter ROC-Kurve = 0,9846895479241554
+Bereich unter ROC-Kurve: 0.9846895479241554
 
 ## <a name="regression-model-predict-tip-amount"></a>Regressionsmodell: Vorhersage des Trinkgeldbetrags
 In diesem Abschnitt erstellen Sie zwei Arten von Regressionsmodellen, um den Trinkgeldbetrag vorherzusagen:
@@ -848,7 +848,7 @@ Erstellen Sie Plots mit Matplotlib von Python.
 
 **Ausgabe:**
 
-![Trinkgeldbetrag: „Tatsächlich“ verglichen mit „Vorhergesagt“](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Trinkgeldbetrag: Tatsächlicher und vorhergesagter Betrag im Vergleich](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Erstellen eines GBT-Regressionsmodells
 Erstellen Sie als Nächstes ein GBT-Regressionsmodell mit der `GBTRegressor()` -Funktion von Spark ML, und werten Sie das Modell anhand von Testdaten aus.
@@ -881,7 +881,7 @@ Erstellen Sie als Nächstes ein GBT-Regressionsmodell mit der `GBTRegressor()` -
 
 **Ausgabe:**
 
-Test-R-sqr. ist: 0,7655383534596654
+Test-R-sqr: 0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>Erweiterte Modellierungshilfsprogramme zur Optimierung
 In diesem Abschnitt verwenden Sie Machine Learning-Hilfsprogramme, die Entwickler häufig zur Modelloptimierung einsetzen. Insbesondere können Sie Machine Learning-Modelle auf drei verschiedene Arten mit Parameter-Sweeping und Kreuzvalidierung optimieren:
@@ -938,7 +938,7 @@ Teilen Sie die Daten als Nächstes in Trainings- und Validierungssets ein, wende
 
 **Ausgabe:**
 
-Test-R-sqr. ist: 0,6226484708501209
+Test-R-sqr: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optimieren des binären Klassifizierungsmodells mit Kreuzvalidierung und Hyperparameter-Sweeping
 Dieser Abschnitt zeigt Ihnen das Optimieren des binären Klassifizierungsmodells mit Kreuzvalidierung und Hyperparameter-Sweeping. Hierzu wird die `CrossValidator` -Funktion von Spark ML verwendet.
@@ -1100,7 +1100,7 @@ Optimieren Sie als Nächstes das Modell mit benutzerdefiniertem Code, und identi
 Zeit zum Ausführen der Zelle: 61 Sekunden.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Automatische Nutzung mit Spark erstellter Machine Learning-Modelle mit Scala
-Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Team Data Science-Prozess (TDSP)](https://aka.ms/datascienceprocess).
+Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](walkthroughs.md) beschreibt andere exemplarische End-to-End-Vorgehensweisen, in denen die Schritte im Team Data Science-Prozess für bestimmte Szenarien veranschaulicht werden. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 

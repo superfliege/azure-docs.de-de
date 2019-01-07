@@ -1,19 +1,20 @@
 ---
-title: Vorbereiten einer Azure IoT Edge-Produktionslösung | Microsoft-Dokumentation
+title: Vorbereiten von Geräten und Bereitstellungen für die Produktion – Azure IoT Edge | Microsoft-Dokumentation
 description: Lernen Sie den kompletten Lebenszyklus Ihrer Azure IoT Edge-Lösung kennen – von der Entwicklung bis zur Produktion, einschließlich der Einrichtung von Zertifikaten auf Ihren Geräten und der Erstellung eines Bereitstellungsplans für künftige Codeupdates.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 48fd774d6d887a12ed1c1ad9689ca34f5d866367
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: d39a271f33cb86bf870c3a7692c38d780093efa2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585456"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100037"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 

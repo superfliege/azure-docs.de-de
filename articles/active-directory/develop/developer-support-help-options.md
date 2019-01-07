@@ -17,14 +17,14 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422438"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337137"
 ---
-# <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler 
+# <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 
 Ungeachtet dessen, ob Sie gerade mit der Integration in Azure Active Directory, Microsoft-Identitäten oder Microsoft Graph-API beginnen oder ein neues Feature in Ihrer Anwendung implementieren, benötigen Sie manchmal Hilfe von der Community oder müssen die Supportoptionen kennen, die Ihnen als Entwickler zur Verfügung stehen. Dieser Artikel hilft Ihnen, diese Möglichkeiten zu kennen – hier folgt eine Zusammenfassung:
 
@@ -38,7 +38,7 @@ Ungeachtet dessen, ob Sie gerade mit der Integration in Azure Active Directory, 
 
 ## <a name="search"></a>Suchen,
 
-Wenn Sie eine auf die Entwicklung bezogene Frage haben, finden Sie die gewünschte Antwort möglicherweise in unserer Dokumentation, unseren [Github-Beispielen](https://github.com/azure-samples) oder in Antworten auf Fragen in [Stack Overflow](https://www.stackoverflow.com).
+Wenn Sie eine auf die Entwicklung bezogene Frage haben, finden Sie die gewünschte Antwort möglicherweise in der Dokumentation, den [GitHub-Beispielen](https://github.com/azure-samples) oder in den Antworten auf Fragen zu [Stack Overflow](https://www.stackoverflow.com).
 
 ### <a name="scoped-search"></a>Bereichsbezogene Suche
 Um schnellere Ergebnisse zu erzielen, beschränken Sie Ihre Suche auf Stack Overflow, unsere Dokumentation und unsere Codebeispiele, indem Sie in [Ihrer bevorzugten Suchmaschine](https://bing.com) die folgende Syntax verwenden:
@@ -76,7 +76,7 @@ Wenn Sie mithilfe der Suche keine Lösung Ihres Problems finden, senden Sie eine
 |Alle anderen Bereiche im Zusammenhang mit Authentifizierungs- oder Autorisierungsthemen |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
-> Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Stellen von Fragen sowie zum Hinzufügen von Quellcode – Einhaltung dieser Richtlinien kann die Chancen erhöhen, dass Mitglieder der Community Ihre Frage schnell beantworten:  
+> Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Stellen von Fragen sowie zum Hinzufügen von Quellcode – Einhaltung dieser Richtlinien kann die Chancen erhöhen, dass Mitglieder der Community Ihre Frage schnell beantworten:
 > - [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask) (Wie stelle ich meine Frage optimal?)
 > - [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve) (Erstellen eines minimalen, vollständigen und überprüfbaren Beispiels)
 

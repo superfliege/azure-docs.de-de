@@ -3,7 +3,7 @@ title: Sichern von SQL Server-Datenbanken in Azure | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: ''
@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2018
-ms.author: markgal;anuragm
+ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 6091a3b3506adf87418b529c3cca6b96e9bb2af9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317686"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410362"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Sichern von SQL Server-Datenbanken in Azure
 
@@ -47,6 +46,8 @@ Die Public Preview unterliegt den folgenden Einschränkungen:
 - [Für die Sicherung verteilter Verfügbarkeitsgruppen gelten Einschränkungen.](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)
 - SQL Server Always On-Failoverclusterinstanzen werden nicht unterstützt.
 - Verwenden Sie das Azure-Portal, um Azure Backup zum Schutz von SQL Server-Datenbanken zu konfigurieren. Azure PowerShell, Azure CLI und REST-APIs werden derzeit nicht unterstützt.
+- Sicherungs-und Wiederherstellungsvorgänge für Spiegeldatenbanken, Datenbankmomentaufnahmen und Datenbanken auf Failoverclusterinstanzen werden nicht unterstützt.
+- Datenbanken, die eine erhebliche Anzahl von Dateien enthalten, können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien ist nicht deterministisch, da sie nicht nur von der Anzahl der Dateien, sondern auch von der Pfadlänge der Dateien abhängt. Dieser Fall tritt jedoch selten ein. Wir arbeiten an einer Lösung für diesen Umstand.
 
 Weitere Informationen zu unterstützten bzw. nicht unterstützten Szenarien finden Sie im [Abschnitt mit den häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq).
 
@@ -106,6 +107,7 @@ Bevor Sie Ihre SQL Server-Datenbank sichern können, müssen folgende Bedingunge
 - Identifizieren oder [erstellen Sie einen Recovery Services-Tresor](backup-azure-sql-database.md#create-a-recovery-services-vault) in derselben Region bzw. demselben Gebietsschema wie die VM, die Ihre SQL Server-Instanz hostet.
 - [Überprüfen Sie die Berechtigungen auf der VM](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms), die für die Sicherung von SQL-Datenbanken erforderlich sind.
 - Überprüfen Sie, ob [die SQL-VM eine Netzwerkverbindung hat](backup-azure-sql-database.md#establish-network-connectivity).
+- Überprüfen Sie, ob die SQL-Datenbanken gemäß den [Benennungsrichtlinien](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup) für Azure Backup benannt wurden. Nur dann können Sicherungen erfolgreich erstellt werden.
 
 > [!NOTE]
 > Sie können jeweils nur eine Sicherungslösung nutzen, um SQL Server-Datenbanken zu sichern. Deaktivieren Sie alle anderen SQL-Sicherungen, bevor Sie diese Funktion verwenden – andernfalls werden die Sicherungen beeinträchtigt und schlagen fehl. Sie können Azure Backup für IaaS-VMs zusammen mit der SQL-Sicherungslösung ohne Konflikte aktivieren.
@@ -118,7 +120,7 @@ Wenn diese Bedingungen in Ihrer Umgebung vorhanden sind, fahren Sie mit [Konfigu
 
 Für alle Vorgänge benötigt der virtuelle SQL-Computer eine Verbindung, um auf die öffentlichen IP-Adressen von Azure zuzugreifen. SQL-VM-Vorgänge (z. B. Ermitteln von Datenbanken, Konfigurieren von Sicherungen, Planen von Sicherungen, Zurücksetzen von Wiederherstellungspunkten) schlagen ohne Verbindung zu öffentlichen IP-Adressen fehl. Verwenden Sie eine der folgenden Optionen, um einen eindeutigen Pfad für Sicherungsdatenverkehr bereitzustellen:
 
-- Whitelist der IP-Adressbereiche der Azure-Rechenzentren: Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Adressbereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Download Center-Website](https://www.microsoft.com/download/details.aspx?id=41653).
+- Setzen Sie die IP-Bereiche der Azure-Rechenzentren auf die Whitelist: Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Adressbereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Download Center-Website](https://www.microsoft.com/download/details.aspx?id=41653).
 - Bereitstellen eines HTTP-Proxyservers für das Routing des Datenverkehrs: Wenn Sie eine SQL-Datenbank auf einer VM sichern, verwendet die Sicherungserweiterung auf der VM HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure Active Directory (Azure AD) zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterung ist die einzige Komponente, die für den Zugriff auf das öffentliche Internet konfiguriert ist.
 
 Sie müssen zwischen den folgenden Eigenschaften abwägen: Verwaltbarkeit, detaillierte Steuerung und Kosten.
@@ -134,7 +136,7 @@ Sie müssen zwischen den folgenden Eigenschaften abwägen: Verwaltbarkeit, detai
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Festlegen von Berechtigungen für Nicht-Marketplace-SQL-VMs
 
-Zum Sichern einer VM benötigt Azure Backup die **AzureBackupWindowsWorkload**-Erweiterung. Wenn Sie Azure Marketplace-VMs verwenden, fahren Sie mit [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases) fort. Wenn die VM, die Ihre SQL-Datenbanken hostet, nicht im Azure Marketplace erstellt wurde, gehen Sie wie folgt vor, um die Erweiterung zu installieren und die entsprechenden Berechtigungen festzulegen. Zusätzlich zur **AzureBackupWindowsWorkload**-Erweiterung benötigt Azure Backup Systemadministratorberechtigungen für SQL, um SQL-Datenbanken zu schützen. Um Datenbanken auf der VM zu ermitteln, erstellt Azure Backup ein Konto **NT Service\AzureWLBackupPluginSvc**. Damit Azure Backup SQL-Datenbanken ermitteln kann, muss das Konto **NT Service\AzureWLBackupPluginSvc** über SQL- und SQL-Systemadministratorberechtigungen verfügen. Im Folgenden wird erläutert, wie Sie diese Berechtigungen bereitstellen.
+Zum Sichern einer VM benötigt Azure Backup die **AzureBackupWindowsWorkload**-Erweiterung. Wenn Sie Azure Marketplace-VMs verwenden, fahren Sie mit [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases) fort. Wenn die VM, die Ihre SQL-Datenbanken hostet, nicht im Azure Marketplace erstellt wurde, gehen Sie wie folgt vor, um die Erweiterung zu installieren und die entsprechenden Berechtigungen festzulegen. Zusätzlich zur **AzureBackupWindowsWorkload**-Erweiterung benötigt Azure Backup Systemadministratorberechtigungen für SQL, um SQL-Datenbanken zu schützen. Azure Backup erstellt das Konto **NT Service\AzureWLBackupPluginSvc**, um Datenbanken auf der VM zu ermitteln. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und muss über SQL-Systemadministratorberechtigungen verfügen. Darüber hinaus verwendet Azure Backup das Konto **NT AUTHORITY\SYSTEM** für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen.
 
 So konfigurieren Sie Berechtigungen
 
@@ -144,13 +146,13 @@ So konfigurieren Sie Berechtigungen
 
    ![Auswählen von „Sichern“, um Menü „Sicherungsziel“ zu öffnen](./media/backup-azure-sql-database/open-backup-menu.png)
 
-3. Übernehmen Sie im Menü **Sicherungsziel** für **Wo wird die Workload ausgeführt?** die Standardeinstellung **Azure**.
+3. Übernehmen Sie im Menü **Sicherungsziel** für **Wo wird die Workload ausgeführt?** die Standardeinstellung: **Azure**.
 
 4. Erweitern Sie das Dropdown-Listenfeld **Was möchten Sie sichern?** und wählen Sie **SQL Server in Azure-VM** aus.
 
     ![Auswählen von „SQL Server in Azure-VM“ für die Sicherung](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    Das Menü **Sicherungsziel** zeigt zwei Schritte an: **DBs in VMs ermitteln** und **Azure Backup konfigurieren**. Über **DBs in VMs ermitteln** wird eine Suche nach Azure-VMs gestartet.
+    Im Menü **Sicherungsziel** werden zwei Schritte angezeigt: **DBs in VMs ermitteln** und **Sicherung konfigurieren**. Über **DBs in VMs ermitteln** wird eine Suche nach Azure-VMs gestartet.
 
     ![Überprüfen der beiden Sicherungszielschritte](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -202,6 +204,14 @@ Wenn bei der Installation der Fehler `UserErrorSQLNoSysadminMembership` angezeig
 
 Nachdem Sie die Datenbank mit dem Recovery Services-Tresor verknüpft haben, ist der nächste Schritt das [Konfigurieren des Sicherungsauftrags](backup-azure-sql-database.md#configure-backup-for-sql-server-databases).
 
+## <a name="sql-database-naming-guidelines-for-azure-backup"></a>Benennungsrichtlinien für SQL-Datenbanken in Azure Backup
+Vermeiden Sie bei der Benennung von Datenbanken Folgendes, um reibungslose Sicherungen mit Azure Backup für SQL Server in IaaS-VMs zu ermöglichen:
+
+  * Nachgestellte/führende Leerzeichen
+  * Führende Ausrufezeichen
+
+Obwohl ein Aliasing für nicht unterstützte Zeichen aus Azure-Tabellen möglich ist, wird empfohlen, diese Zeichen zu vermeiden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>Ermitteln von SQL Server-Datenbanken
@@ -216,7 +226,7 @@ Azure Backup ermittelt alle Datenbanken einer SQL Server-Instanz. Sie können Da
 
 3. Geben Sie im Dialogfeld **Alle Dienste** **Recovery Services** ein. Bei der Eingabe wird die Ressourcenliste anhand Ihrer Eingabe gefiltert. Wählen Sie aus der Liste **Recovery Services-Tresore** aus.
 
-    ![Eingeben und Auswählen von „Recovery Services-Tresore“](./media/backup-azure-sql-database/all-services.png) <br/>
+  ![Eingeben und Auswählen von „Recovery Services-Tresore“](./media/backup-azure-sql-database/all-services.png) <br/>
 
     Die Liste mit den Recovery Services-Tresoren im Abonnement wird angezeigt.
 
@@ -226,13 +236,13 @@ Azure Backup ermittelt alle Datenbanken einer SQL Server-Instanz. Sie können Da
 
    ![Auswählen von „Sichern“, um Menü „Sicherungsziel“ zu öffnen](./media/backup-azure-sql-database/open-backup-menu.png)
 
-6. Übernehmen Sie im Menü **Sicherungsziel** für **Wo wird die Workload ausgeführt?** die Standardeinstellung **Azure**.
+6. Übernehmen Sie im Menü **Sicherungsziel** für **Wo wird die Workload ausgeführt?** die Standardeinstellung: **Azure**.
 
 7. Erweitern Sie das Dropdown-Listenfeld **Was möchten Sie sichern?** und wählen Sie **SQL Server in Azure-VM** aus.
 
     ![Auswählen von „SQL Server in Azure-VM“ für die Sicherung](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    Das Menü **Sicherungsziel** zeigt zwei Schritte an: **DBs in VMs ermitteln** und **Azure Backup konfigurieren**.
+    Im Menü **Sicherungsziel** werden zwei Schritte angezeigt: **DBs in VMs ermitteln** und **Sicherung konfigurieren**.
 
     ![Überprüfen der beiden Sicherungszielschritte](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -274,13 +284,13 @@ So konfigurieren Sie den Schutz für Ihre SQL-Datenbank
 
    ![Auswählen von „Sichern“, um Menü „Sicherungsziel“ zu öffnen](./media/backup-azure-sql-database/open-backup-menu.png)
 
-3. Übernehmen Sie im Menü **Sicherungsziel** für **Wo wird die Workload ausgeführt?** die Standardeinstellung **Azure**.
+3. Übernehmen Sie im Menü **Sicherungsziel** für **Wo wird die Workload ausgeführt?** die Standardeinstellung: **Azure**.
 
 4. Erweitern Sie das Dropdown-Listenfeld **Was möchten Sie sichern?** und wählen Sie **SQL Server in Azure-VM** aus.
 
     ![Auswählen von „SQL Server in Azure-VM“ für die Sicherung](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    Das Menü **Sicherungsziel** zeigt zwei Schritte an: **DBs in VMs ermitteln** und **Azure Backup konfigurieren**.
+    Im Menü **Sicherungsziel** werden zwei Schritte angezeigt: **DBs in VMs ermitteln** und **Sicherung konfigurieren**.
 
     Wenn Sie die Anleitung in der richtigen Reihenfolge befolgt haben, haben Sie die ungeschützten virtuellen Computer ermittelt, und dieser Tresor ist bei einem virtuellen Computer registriert. Nun können Sie den Schutz für die SQL-Datenbanken konfigurieren.
 
@@ -288,7 +298,7 @@ So konfigurieren Sie den Schutz für Ihre SQL-Datenbank
 
     ![Auswählen von „Sicherung konfigurieren“](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-    Der Azure Backup-Dienst zeigt alle SQL Server-Instanzen mit eigenständigen Datenbanken sowie SQL Server Always On-Verfügbarkeitsgruppen an. Wählen Sie das Erweiterungschevron links neben dem Instanznamen aus, um die eigenständigen Datenbanken in der SQL Server-Instanz anzuzeigen. Wählen Sie ebenso das Erweiterungschevron links neben der Always On-Verfügbarkeitsgruppe aus, um die Datenbankliste anzuzeigen. Das folgende Bild zeigt ein Beispiel für eine eigenständige Instanz und eine AlwaysOn-Verfügbarkeitsgruppe.
+    Der Azure Backup-Dienst zeigt alle SQL Server-Instanzen mit eigenständigen Datenbanken sowie SQL Server Always On-Verfügbarkeitsgruppen an. Wählen Sie das Erweiterungschevron links neben dem Instanznamen aus, um die eigenständigen Datenbanken in der SQL Server-Instanz anzuzeigen. Wählen Sie ebenso das Chevron links neben der Always On-Verfügbarkeitsgruppe aus, um die Datenbankliste anzuzeigen. Auf der folgenden Abbildung wird ein Beispiel für eine eigenständige Instanz und eine Always On-Verfügbarkeitsgruppe dargestellt.
 
       ![Anzeigen aller SQL Server-Instanzen mit eigenständigen Datenbanken](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -302,16 +312,9 @@ So konfigurieren Sie den Schutz für Ihre SQL-Datenbank
     > Um die Sicherungslasten zu optimieren, teilt Azure Backup große Sicherungsaufträge in mehrere Batches auf. Ein Sicherungsauftrag kann maximal 50 Datenbanken umfassen.
     >
 
-    Alternativ können Sie durch Auswahl der Option **ON** in der entsprechenden Dropdownliste in der Spalte **AUTOPROTECT** automatischen Schutz für die gesamte Instanz oder AlwaysOn-Verfügbarkeitsgruppe aktivieren. Das Feature des automatischen Schutzes ermöglicht nicht nur den gleichzeitigen Schutz aller vorhandenen Datenbanken, sondern schützt auch automatisch alle neuen Datenbanken, die dieser Instanz oder Verfügbarkeitsgruppe in Zukunft hinzugefügt werden.  
+      Alternativ können Sie durch Auswahl der Option **ON** (EIN) in der entsprechenden Dropdownliste in der Spalte **AUTOPROTECT** den [automatischen Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) für die gesamte Instanz oder Always On-Verfügbarkeitsgruppe aktivieren. Das Feature für den [automatischen Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) ermöglicht nicht nur den gleichzeitigen Schutz aller vorhandenen Datenbanken, sondern schützt auch automatisch alle neuen Datenbanken, die dieser Instanz oder Verfügbarkeitsgruppe in Zukunft hinzugefügt werden.  
 
       ![Aktivieren des automatischen Schutzes für die AlwaysOn-Verfügbarkeitsgruppe](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-      Falls bereits für eine Instanz oder Verfügbarkeitsgruppe einige der zugehörigen Datenbanken geschützt sind, können Sie immer noch die Option **ON** für automatischen Schutz aktivieren. In diesem Fall gilt die im nächsten Schritt definierte Sicherungsrichtlinie nur für die nicht geschützten Datenbanken, während die bereits geschützten Datenbanken weiterhin mit ihren jeweiligen Richtlinien geschützt werden.
-
-      Es gibt keine Beschränkung für die Anzahl der Datenbanken, die mithilfe des Features des automatischen Schutzes gleichzeitig ausgewählt werden können (es können so viele Datenbanken ausgewählt werden, wie im Tresor vorhanden sind).  
-
-      Sie sollten den automatischen Schutz für alle Instanzen und AlwaysOn-Verfügbarkeitsgruppen aktivieren, wenn alle zukünftig hinzugefügten Datenbanken automatisch für den Schutz konfiguriert werden sollen.
-
 
 7. Zum Erstellen oder Auswählen einer Sicherungsrichtlinie wählen Sie im Menü **Sicherung** **Sicherungsrichtlinie** aus. Das Menü **Sicherungsrichtlinie** wird geöffnet.
 
@@ -325,7 +328,7 @@ So konfigurieren Sie den Schutz für Ihre SQL-Datenbank
     ![Auswählen einer Sicherungsrichtlinie aus der Liste](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
     Im Menü **Sicherungsrichtlinie** haben Sie im Dropdown-Listenfeld **Sicherungsrichtlinie auswählen** folgende Optionen:
-    - Auswählen der Standardrichtlinie **HourlyLogBackup**
+    - Auswahl der Standardrichtlinie: **HourlyLogBackup**.
     - Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
     - [Definieren einer neuen Richtlinie](backup-azure-sql-database.md#define-a-backup-policy) basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
 
@@ -342,13 +345,27 @@ So konfigurieren Sie den Schutz für Ihre SQL-Datenbank
     ![Benachrichtigungsbereich](./media/backup-azure-sql-database/notifications-area.png)
 
 
+## <a name="auto-protect-sql-server-in-azure-vm"></a>Automatischer Schutz von SQL Server in Azure-VMs  
+
+Durch den automatischen Schutz können Sie automatisch alle vorhandenen Datenbanken und alle Datenbanken schützen, die Sie zukünftig zu eigenständigen SQL Server-Instanzen oder SQL Server Always On-Verfügbarkeitsgruppen hinzufügen. Wenn Sie den automatischen Schutz **aktivieren** und eine Sicherungsrichtlinie auswählen, gilt diese für neu geschützte Datenbanken. Für vorhandene geschützte Datenbanken wird weiterhin die vorherige Richtlinie verwendet.
+
+![Aktivieren des automatischen Schutzes für die AlwaysOn-Verfügbarkeitsgruppe](./media/backup-azure-sql-database/enable-auto-protection.png)
+
+Es gibt keine Beschränkung für die Anzahl der Datenbanken, die mithilfe des Features für den automatischen Schutz gleichzeitig ausgewählt werden können. Die Option „Sicherung konfigurieren“ wird für alle Datenbanken ausgeführt und kann unter **Sicherungsaufträge** nachverfolgt werden.
+
+Wenn Sie den automatischen Schutz für eine Instanz deaktivieren müssen, klicken Sie unter **Sicherung konfigurieren** auf den Namen der Instanz, um den Informationsbereich auf der rechten Seite anzuzeigen. Dort finden Sie am oberen Rand die Option **Automatischen Schutz deaktivieren**. Klicken Sie auf **Automatischen Schutz deaktivieren**, um den automatischen Schutz für diese Instanz zu deaktivieren.
+
+![Deaktivieren des automatischen Schutzes für diese Instanz](./media/backup-azure-sql-database/disable-auto-protection.png)
+
+Alle Datenbanken in dieser Instanz werden weiterhin geschützt. Dieser Vorgang deaktiviert jedoch automatischen Schutz für alle Datenbanken, die in der Zukunft hinzugefügt werden.
+
 ### <a name="define-a-backup-policy"></a>Definieren einer Sicherungsrichtlinie
 
 Eine Sicherungsrichtlinie definiert eine Matrix dafür, wann Sicherungen erstellt und wie lange sie aufbewahrt werden. Mit Azure Backup können Sie drei Arten von Sicherungen für SQL-Datenbanken planen:
 
 * Vollständige Sicherung: Die gesamte Datenbank wird gesichert. Eine vollständige Sicherung enthält alle Daten in einer bestimmten Datenbank oder einem bestimmten Satz von Dateigruppen oder Dateien sowie ausreichende Protokolle, um diese Daten wiederherzustellen. Pro Tag kann höchstens eine vollständige Sicherung ausgelöst werden. Sie können wählen, ob Sie eine vollständige Sicherung in einem täglichen oder wöchentlichen Intervall durchführen möchten.
-* Differenzielle Sicherung: Ausgangspunkt ist die zuletzt durchgeführte vollständige Datensicherung. Bei einer differenziellen Sicherung werden nur die Daten erfasst, die seit der vollständigen Sicherung geändert wurden. Pro Tag kann höchstens eine differenzielle Sicherung ausgelöst werden. Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren.
-* Transaktionsprotokollsicherung: Eine Point-in-Time-Wiederherstellung bis zu einer bestimmten Sekunde ist möglich. Transaktionsprotokollsicherungen können höchstens alle 15 Minuten durchgeführt werden.
+* Differenzielle Sicherung: Diese Sicherung basiert auf der letzten vollständigen Datensicherung. Bei einer differenziellen Sicherung werden nur die Daten erfasst, die seit der vollständigen Sicherung geändert wurden. Pro Tag kann höchstens eine differenzielle Sicherung ausgelöst werden. Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren.
+* Sicherung des Transaktionsprotokolls: Eine Zeitpunktwiederherstellung ist bis zu einer bestimmten Sekunde möglich. Transaktionsprotokollsicherungen können höchstens alle 15 Minuten durchgeführt werden.
 
 Die Richtlinie wird auf Ebene des Recovery Services-Tresors erstellt. Mehrere Tresore können die gleiche Sicherungsrichtlinie verwenden. Allerdings müssen Sie die Sicherungsrichtlinie auf jeden Tresor anwenden. Wenn Sie eine Sicherungsrichtlinie erstellen, entspricht die tägliche vollständige Sicherung der Standardeinstellung. Sie können eine differenzielle Sicherung nur hinzufügen, wenn Sie für die vollständige Sicherung festlegen, dass diese wöchentlich erfolgt. Die folgende Vorgehensweise erklärt, wie Sie eine Sicherungsrichtlinie für eine SQL Server-Instanz in einem virtuellen Azure-Computer erstellen.
 
@@ -456,8 +473,8 @@ Außerdem können Sie eine bestimmte vollständige oder differenzielle Sicherung
     ![Auswählen von „Datenbank wiederherstellen“](./media/backup-azure-sql-database/restore-db-button.png)
 
     Wenn das Menü **Wiederherstellen** geöffnet wird, erscheint auch das Menü **Konfiguration wiederherstellen**. Das Menü **Konfiguration wiederherstellen** ist der erste Schritt zur Konfiguration der Wiederherstellung. Wählen Sie in diesem Menü aus, wo die Daten wiederhergestellt werden sollen. Die Optionen sind:
-    - **Alternativer Speicherort**: Die Datenbank wird an einem alternativen Speicherort wiederhergestellt und behält die ursprüngliche Quelldatenbank bei.
-    - **Datenbank überschreiben**: Die Daten werden auf derselben SQL Server-Instanz wiederhergestellt, auf der sich auch die ursprüngliche Quelle befunden hat. Dadurch wird die ursprüngliche Datenbank überschrieben.
+    - **Alternativer Standort:** Die Datenbank wird an einem alternativen Speicherort wiederhergestellt und behält die ursprüngliche Quelldatenbank bei.
+    - **Datenbank überschreiben:** Die Daten werden auf derselben SQL Server-Instanz wiederhergestellt, auf der sich auch die ursprüngliche Quelle befunden hat. Dadurch wird die ursprüngliche Datenbank überschrieben.
 
     > [!Important]
     > Wenn die ausgewählte Datenbank zu einer Always On-Verfügbarkeitsgruppe gehört, lässt SQL Server das Überschreiben der Datenbank nicht zu. In diesem Fall ist nur die Option **Alternativer Standort** aktiviert.
@@ -737,15 +754,9 @@ Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
 7. Wählen Sie **Sicherung beenden** aus, um den Schutz für die Datenbank zu beenden.
 
-  Beachten Sie, dass die Option **Sicherung beenden** nicht für eine Datenbank in einer automatisch geschützten Instanz funktioniert. Sie können den Schutz dieser Datenbank nur beenden, indem Sie den automatischen Schutz für die Instanz zunächst deaktivieren und dann die Option **Sicherung beenden** unter **Sicherungselemente** für diese Datenbank auswählen.  
+  Beachten Sie, dass die Option **Sicherung beenden** nicht für eine Datenbank in einer [automatisch geschützten Instanz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funktioniert. Sie können den Schutz dieser Datenbank nur beenden, indem Sie den [automatischen Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) für die Instanz zunächst deaktivieren und dann die Option **Sicherung beenden** unter **Sicherungselemente** für diese Datenbank auswählen.<br>
+  Nachdem Sie den automatischen Schutz deaktiviert haben, können Sie unter **Sicherungselemente** für die Datenbank die **Sicherung beenden**. Die Instanz kann nun erneut für den automatischen Schutz aktiviert werden.
 
-  Sie können den automatischen Schutz für eine Instanz oder AlwaysOn-Verfügbarkeitsgruppe unter **Sicherung konfigurieren** deaktivieren. Klicken Sie auf den Instanznamen, um den Informationsbereich rechts zu öffnen, an dessen oberem Rand **Automatischen Schutz deaktivieren** zu lesen ist. Klicken Sie auf **Automatischen Schutz deaktivieren**, um den automatischen Schutz für diese Instanz zu deaktivieren.
-
-    ![Deaktivieren des automatischen Schutzes für diese Instanz](./media/backup-azure-sql-database/disable-auto-protection.png)
-
-Alle Datenbanken in dieser Instanz werden weiterhin geschützt. Dieser Vorgang deaktiviert jedoch automatischen Schutz für alle Datenbanken, die in der Zukunft hinzugefügt werden.
-
-Nachdem Sie den automatischen Schutz deaktiviert haben, können Sie unter **Sicherungselemente** für die Datenbank die **Sicherung beenden**. Die Instanz kann nun erneut für den automatischen Schutz aktiviert werden.
 
 ### <a name="resume-protection-for-a-sql-database"></a>Fortsetzen des Schutzes für eine SQL-­Datenbank-Instanz
 
@@ -799,19 +810,15 @@ Der folgende Abschnitt enthält zusätzliche Informationen zur SQL-Datenbanksich
 ### <a name="can-i-throttle-the-speed-of-the-sql-server-backup-policy"></a>Kann ich die Ausführungsgeschwindigkeit der SQL Server-Sicherungsrichtlinie drosseln?
 
 Ja. Sie können die Geschwindigkeit drosseln, mit der die Sicherungsrichtlinie ausgeführt wird, um die Auswirkungen auf eine SQL Server-Instanz zu minimieren.
-
 So ändern Sie die Einstellung:
-
-1. Öffnen Sie auf der SQL Server-Instanz im Ordner „C:\Programme\Azure Workload Backup\bin“ die Datei **TaskThrottlerSettings.json**.
-
-2. Ändern Sie in der TaskThrottlerSettings.json-Datei die Einstellung **DefaultBackupTasksThreshold** in einen kleineren Wert (z. B. „5“).
+1. Erstellen Sie auf der SQL Server-Instanz im Ordner *C:\Programme\Azure Workload Backup\bin* die Datei **ExtensionSettingsOverrides.json**.
+2. Ändern Sie in der Datei **ExtensionSettingsOverrides.json** die Einstellung **DefaultBackupTasksThreshold** in einen kleineren Wert (z. B. „5“). <br>
+  ` {"DefaultBackupTasksThreshold": 5}`
 
 3. Speichern Sie die Änderungen. Schließen Sie die Datei.
-
-4. Öffnen Sie auf der SQL Server-Instanz **Task-Manager**. Starten Sie den **Azure Backup-Workloadkoordinator** neu.
+4. Öffnen Sie auf der SQL Server-Instanz **Task-Manager**. Starten Sie den Dienst **AzureWLBackupCoordinatorSvc** neu.
 
 ### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Kann ich eine vollständige Sicherung aus einem sekundären Replikat ausführen?
-
  Nein. Diese Funktion wird nicht unterstützt.
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Erstellen erfolgreiche Sicherungsaufträge Warnungen?
@@ -840,22 +847,22 @@ Der Azure Backup Recovery Services-Tresor kann alle Knoten erkennen und schütze
 
 ### <a name="while-i-want-to-protect-most-of-the-databases-in-an-instance-i-would-like-to-exclude-a-few-is-it-possible-to-still-use-the-auto-protection-feature"></a>Ich möchte die meisten Datenbanken in einer Instanz schützen, ein paar jedoch ausschließen. Ist es möglich, den automatischen Schutz weiterhin zu verwenden?
 
-Nein, automatischer Schutz gilt für die gesamte Instanz. Sie können mithilfe des automatischen Schutzes nicht Datenbanken einer Instanz selektiv schützen.
+Nein, der [automatische Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) gilt für die gesamte Instanz. Sie können mithilfe des automatischen Schutzes nicht Datenbanken einer Instanz selektiv schützen.
 
 ### <a name="can-i-have-different-policies-for-different-databases-in-an-auto-protected-instance"></a>Sind unterschiedliche Richtlinien für verschiedene Datenbanken in einer automatisch geschützten Instanz möglich?
 
-Wenn Sie bereits über einige geschützte Datenbanken in einer Instanz verfügen, werden sie auch dann noch durch ihre jeweiligen Richtlinien geschützt, nachdem Sie die Option des automatischen Schutzes auf **ON** gesetzt haben. Allerdings gilt für alle nicht geschützten Datenbanken sowie diejenigen, die Sie in der Zukunft hinzufügen würden, nur eine einzige Richtlinie, die Sie unter **Sicherung konfigurieren** nach Auswahl der Datenbanken definieren. Im Gegensatz zu anderen geschützten Datenbanken können Sie sogar nicht einmal die Richtlinie für eine Datenbank unter einer automatisch geschützten Instanz ändern.
+Wenn Sie bereits über einige geschützte Datenbanken in einer Instanz verfügen, werden diese auch noch durch ihre jeweiligen Richtlinien geschützt, nachdem Sie den [automatischen Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) **aktiviert** haben. Allerdings gilt für alle nicht geschützten Datenbanken sowie diejenigen, die Sie in der Zukunft hinzufügen würden, nur eine einzige Richtlinie, die Sie unter **Sicherung konfigurieren** nach Auswahl der Datenbanken definieren. Im Gegensatz zu anderen geschützten Datenbanken können Sie sogar nicht einmal die Richtlinie für eine Datenbank unter einer automatisch geschützten Instanz ändern.
 Die einzige Möglichkeit, dies zu tun, besteht darin, den automatischen Schutz der Instanz zunächst zu deaktivieren und dann die Richtlinie für diese Datenbank zu ändern. Sie können dann den automatischen Schutz für diese Instanz erneut aktivieren.
 
 ### <a name="if-i-delete-a-database-from-an-auto-protected-instance-will-the-backups-for-that-database-also-stop"></a>Werden die Sicherungen für eine Datenbank, die ich aus einer automatisch geschützten Instanz lösche, auch beendet?
 
 Nein, wenn eine Datenbank aus einer automatisch geschützten Instanz gelöscht wird, wird weiterhin versucht, die Datenbank zu sichern. Dies bedeutet auch, dass die gelöschte Datenbank fortan unter **Sicherungselemente** als fehlerhaft angezeigt und immer noch als geschützt behandelt wird.
 
-Sie können den Schutz dieser Datenbank nur beenden, indem Sie den automatischen Schutz für die Instanz zunächst deaktivieren und dann die Option **Sicherung beenden** unter **Sicherungselemente** für diese Datenbank auswählen. Sie können dann den automatischen Schutz für diese Instanz erneut aktivieren.
+Sie können den Schutz dieser Datenbank nur beenden, indem Sie den [automatischen Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) für die Instanz zunächst deaktivieren und dann die Option **Sicherung beenden** unter **Sicherungselemente** für diese Datenbank auswählen. Sie können dann den automatischen Schutz für diese Instanz erneut aktivieren.
 
 ###  <a name="why-cant-i-see-the-newly-added-database-to-an-auto-protected-instance-under-the-protected-items"></a>Warum sehe ich die einer automatisch geschützten Instanz neu hinzugefügte Datenbank nicht unter den geschützten Elementen?
 
-Eine Datenbank, die einer automatisch geschützten Instanz neu hinzugefügt und sofort geschützt wird, wird möglicherweise nicht angezeigt. Dies liegt daran, dass die Ermittlung in der Regel alle 8 Stunden ausgeführt wird. Allerdings kann der Benutzer eine manuelle Ermittlung mit der Option **DBs wiederherstellen** durchführen, um neue Datenbanken sofort zu ermitteln und zu schützen, wie in der folgenden Abbildung gezeigt:
+Eine Datenbank, die einer [automatisch geschützten Instanz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) neu hinzugefügt und sofort geschützt wird, wird möglicherweise nicht angezeigt. Dies liegt daran, dass die Ermittlung in der Regel alle 8 Stunden ausgeführt wird. Allerdings kann der Benutzer eine manuelle Ermittlung mit der Option **DBs wiederherstellen** durchführen, um neue Datenbanken sofort zu ermitteln und zu schützen, wie in der folgenden Abbildung gezeigt:
 
   ![Neu hinzugefügte Datenbank anzeigen](./media/backup-azure-sql-database/view-newly-added-database.png)
 

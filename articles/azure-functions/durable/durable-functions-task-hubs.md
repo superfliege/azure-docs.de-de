@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 7a6346e594c5a7cc4cf02f3ea658aac4977e641a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637455"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336899"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Aufgabenhubs in Durable Functions (Azure Functions)
 
@@ -27,7 +27,7 @@ Jede Funktions-App verfügt über einen separaten Aufgabenhub. Wenn mehrere Funk
 
 ## <a name="azure-storage-resources"></a>Azure Storage-Ressourcen
 
-Ein Aufgabenhub umfasst folgende Speicherressourcen: 
+Ein Aufgabenhub umfasst folgende Speicherressourcen:
 
 * Mindestens eine Steuerwarteschlange.
 * Eine Arbeitselement-Warteschlange.
@@ -41,7 +41,8 @@ Alle diese Ressourcen werden automatisch im standardmäßigen Azure Storage-Kont
 
 Aufgabenhubs werden über den Namen identifiziert, der in der Datei *host.json* deklariert ist, wie im folgenden Beispiel gezeigt:
 
-### <a name="hostjson-functions-v1"></a>host.json (Functions v1)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
 ```json
 {
   "durableTask": {
@@ -49,7 +50,9 @@ Aufgabenhubs werden über den Namen identifiziert, der in der Datei *host.json* 
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>host.json (Functions v2)
+
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -60,9 +63,11 @@ Aufgabenhubs werden über den Namen identifiziert, der in der Datei *host.json* 
   }
 }
 ```
+
 Aufgabenhubs können auch mithilfe von App-Einstellungen konfiguriert werden, wie in der folgenden Beispieldatei *host.json* gezeigt:
 
-### <a name="hostjson-functions-v1"></a>host.json (Functions v1)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
 ```json
 {
   "durableTask": {
@@ -70,7 +75,9 @@ Aufgabenhubs können auch mithilfe von App-Einstellungen konfiguriert werden, wi
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>host.json (Functions v2)
+
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -81,14 +88,46 @@ Aufgabenhubs können auch mithilfe von App-Einstellungen konfiguriert werden, wi
   }
 }
 ```
+
 Der Name des Aufgabenhubs wird auf den Wert der App-Einstellung `MyTaskHub` festgelegt. Die folgende Datei `local.settings.json` veranschaulicht, wie die Einstellungen für `MyTaskHub` als `samplehubname` definiert werden:
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "MyTaskHub" :  "samplehubname" 
+    "MyTaskHub" : "samplehubname"
   }
+}
+```
+
+Hier sehen Sie ein vorkompiliertes C#-Beispiel zum Schreiben einer Funktion, die eine [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zu arbeiten:
+
+```csharp
+[FunctionName("HttpStart")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
+    [OrchestrationClient(TaskHub = "%MyTaskHub%")] DurableOrchestrationClientBase starter,
+    string functionName,
+    ILogger log)
+{
+    // Function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+Das folgende Beispiel zeigt die erforderliche Konfiguration für JavaScript. Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Einstellung festgelegt:
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
 }
 ```
 

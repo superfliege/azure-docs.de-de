@@ -4,25 +4,25 @@ description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungs-Agent behebe
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 61ff50cda6ec523964ccf8f885f07c39020fbc88
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335145"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434765"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
-Es gibt viele Gründe, warum ein Azure-Computer möglicherweise in der Azure-Updateverwaltung nicht den Status **Bereit** aufweist. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. Dieser Artikel erläutert, wie Sie die Problembehandlung für die Updateverwaltung im Azure-Portal und in Offlineszenarien ausführen.
+Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Azure-fremde Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Im Azure-Portal werden auf der Seite **Problembehandlung von Update-Agent** Probleme mit dem Agent angezeigt. Auf der Seite befindet sich ein Link zu diesem Artikel, der Ihnen bei der Behandlung von Problemen hilft. Um die Seite **Problembehandlung von Update-Agent** zu erreichen, wählen Sie den Link **Problembehandlung** in der Spalte **Update-Agent-Bereitschaft** aus.
+Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der [Offlineanleitung](#troubleshoot-offline) erfahren Sie, wie Sie Probleme mit einem Azure-fremden Computer behandeln.
 
 ![Updateverwaltung: Liste von virtuellen Computern](../media/update-agent-issues/vm-list.png)
 
@@ -82,7 +82,7 @@ Bei dieser Überprüfung wird untersucht, ob Microsoft Monitoring Agent, `Health
 
 Weitere Informationen zur Behandlung von Problemen mit dem Dienst finden Sie unter [Der Microsoft Monitoring Agent wird nicht ausgeführt](hybrid-runbook-worker.md#mma-not-running).
 
-Informationen zum erneuten Installieren von Microsoft Monitoring Agent finden Sie unter [Installieren und Konfigurieren von Microsoft Monitoring Agent](../../log-analytics/log-analytics-quick-collect-windows-computer.md#install-the-agent-for-windows).
+Informationen zum erneuten Installieren von Microsoft Monitoring Agent finden Sie unter [Installieren und Konfigurieren von Microsoft Monitoring Agent](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
 ### <a name="monitoring-agent-service-events"></a>Ereignisse des Monitoring Agent-Diensts
 

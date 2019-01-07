@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 650c767d6f8ef495bb19886980b6d45bfe53b32a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ecfab15860ffc690d341069b626e5d7579c00da4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311176"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340367"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
 
@@ -40,7 +40,7 @@ In diesem Beispiel aktivieren Sie Security Center für ein Abonnement mit der ID
 
 5. Legen Sie den [CISO der Organisation als Sicherheitskontakt für ASC-Warnungen und relevante Ereignisse](security-center-provide-security-contact-details.md) fest.
 
-6. Weisen Sie die [Standardsicherheitsrichtlinien](security-center-azure-policy.md) von Security Center zu.
+6. Weisen Sie die [Standardsicherheitsrichtlinien](tutorial-security-policy.md) von Security Center zu.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -65,7 +65,7 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
         Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Optional: Legen Sie die Abdeckungsebene (Tarif) der Abonnements fest. (Wird keine Angabe gemacht, wird als Tarif „Free“ festgelegt.)
+2.  Optional: Legen Sie die Abdeckungsebene (Tarif) der Abonnements fest (wird keine Angabe gemacht, wird als Tarif „Free“ festgelegt):
 
         Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
@@ -85,14 +85,14 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
     > Sie sollten die automatische Bereitstellung aktivieren, um sicherzustellen, dass Ihre virtuellen Azure-Computer automatisch mit Azure Security Center geschützt werden.
     >
 
-5.  Optional: Es wird dringend empfohlen, die Sicherheitskontaktinformationen für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte erhalten die von Security Center generierten Warnungen und Benachrichtigungen:
+5.  Optional: Es wird dringend empfohlen, die Sicherheitskontaktinformationen für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte sind die Empfänger der von Security Center generierten Warnungen und Benachrichtigungen:
 
         Set-AzureRmSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertsAdmin -NotifyOnAlert 
 
 6.  Weisen Sie die Security Center-Standardrichtlinieninitiative zu:
 
         Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzureRmPolicySetDefinition -Name ' [Preview]: Enable Monitoring in Azure Security Center'
+        $Policy = Get-AzureRmPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
         New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
 Sie haben Azure Security Center nun mithilfe von PowerShell integriert.
@@ -111,6 +111,6 @@ Weitere Informationen zum Automatisieren der Integration in Security Center mith
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.

@@ -1,5 +1,5 @@
 ---
-title: Einfache Abfragebeispiele für Azure Search | Microsoft-Dokumentation
+title: 'Einfache Abfragebeispiele: Azure Search'
 description: Enthält einfache Abfragebeispiele für die Volltextsuche, Filtersuche, geografische Suche, Facettensuche und andere Abfragezeichenfolgen, die zum Abfragen eines Azure Search-Index verwendet werden.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 2d9e69a900f6665aa0ee3034cd6f9d7c394e8f0b
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.custom: seodec2018
+ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42141151"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316266"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Abfragebeispiele mit einfacher Syntax zum Erstellen von Abfragen in Azure Search
 
@@ -68,7 +69,7 @@ Optional können Sie der URL **`$count=true`** hinzufügen, um eine Anzahl für 
 
 Für interaktive Abfragen müssen Sie nichts angeben: einfache Abfragen sind die Standardeinstellung. Wenn Sie zuvor **queryType=full** für die vollständige Abfragesyntax aufgerufen haben, können Sie im Code die Standardeinstellung wiederherstellen, indem Sie **queryType=simple** verwenden.
 
-## <a name="example-1-field-scoped-query"></a>Beispiel 1: Feldbezogene Abfrage
+## <a name="example-1-field-scoped-query"></a>Beispiel 1: Feldbezogene Abfrage
 
 Dieses erste Beispiel ist nicht parserspezifisch, wir beginnen jedoch mit diesem Beispiel, um das erste Grundkonzept für Abfragen vorzustellen: die Eingrenzung. In diesem Beispiel beschränken sich die Abfrageausführung und die Antwort auf nur wenige bestimmte Felder. Bei Verwendung des Tools Postman oder Suchexplorer ist es wichtig, zu wissen, wie eine lesbare JSON-Antwort strukturiert wird. 
 
@@ -84,7 +85,7 @@ Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
 
 Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer einheitlichen Bewertung von „1“ kommt es, wenn kein Rang vorhanden ist, weil es entweder keine Volltextsuche war oder weil keine Kriterien angewandt wurden. Bei einer NULL-Suche ohne Kriterien werden Zeilen in willkürlicher Reihenfolge zurückgegeben. Wenn Sie tatsächliche Kriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
 
-## <a name="example-2-look-up-by-id"></a>Beispiel 2: Suchen anhand der ID
+## <a name="example-2-look-up-by-id"></a>Beispiel 2: Suchen anhand der ID
 
 Dieses Beispiel ist etwas ungewöhnlich. Beim Auswerten des Suchverhaltens ist es aber ratsam, den gesamten Inhalt eines bestimmten Dokuments zu untersuchen, um zu ermitteln, warum er in die Ergebnisse einbezogen bzw. ausgeschlossen wurde. Verwenden Sie zum Zurückgeben eines einzelnen Dokuments in seiner Gesamtheit einen [Suchvorgang](https://docs.microsoft.com/rest/api/searchservice/lookup-document), um die Dokument-ID zu übergeben.
 
@@ -100,7 +101,7 @@ Das nächste Beispiel ist eine Suchabfrage, bei der ein bestimmtes Dokument basi
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
  ```
 
-## <a name="example-3-filter-queries"></a>Beispiel 3: Filterabfragen
+## <a name="example-3-filter-queries"></a>Beispiel 3: Filterabfragen
 
 Die [Filtersyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) ist ein OData-Ausdruck, den Sie mit **search** oder allein verwenden können. Ein eigenständiger Filter ohne Suchparameter ist nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge wird keine lexikalische oder linguistische Analyse, Bewertung („1“ für alle Bewertungen) und Rangzuweisung durchgeführt. Beachten Sie, dass die Suchzeichenfolge leer ist.
 
@@ -224,7 +225,7 @@ Beispiel 3: **`&search="fire department"`** gibt 82 Ergebnisse zurück. Wenn die
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>Beispiel 7: Boolesche Werte mit searchMode
+## <a name="example-7-booleans-with-searchmode"></a>Beispiel 7: Boolesche Werte mit „searchMode“
 
 Bei der einfachen Syntax werden boolesche Operatoren in Form von Zeichen (`+, -, |`) unterstützt. Mit dem Parameter „searchMode“ werden Kompromisse in Bezug auf die Genauigkeit und Trefferquote angegeben, wobei bei `searchMode=any` die Trefferquote (eine Übereinstimmung mit einem der Kriterien qualifiziert ein Dokument für das Resultset) und bei `searchMode=all` die Genauigkeit (alle Kriterien müssen übereinstimmen) im Mittelpunkt steht. Die Standardeinstellung ist `searchMode=any`. Dies kann verwirrend sein, wenn Sie für eine Abfrage mehrere Operatoren verwenden und keinen engeren Bereich von Ergebnissen erhalten, sondern einen weiteren Bereich. Dies gilt besonders für den Operator NOT, bei dem die Ergebnisse alle Dokumente umfassen, die einen bestimmten Begriff „nicht enthalten“.
 

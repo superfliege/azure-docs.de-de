@@ -1,5 +1,5 @@
 ---
-title: Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Edge-Aufträge (Vorschau)
+title: Entwickeln von .NET Standard-Funktionen für Azure Stream Analytics-Edge-Aufträge (Vorschau)
 description: Erfahren Sie, wie Sie benutzerdefinierte C#-Funktionen für Stream Analytics-Edge-Aufträge schreiben.
 services: stream-analytics
 author: mamccrea
@@ -8,13 +8,14 @@ manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f0da25410fe81a93501df940ffbb0e115456a9e8
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247806"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106599"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Edge-Aufträge (Vorschau)
 
@@ -82,15 +83,15 @@ In diesem Beispiel ist **UDFTest** ein C#-Klassenbibliotheksprojekt, und **ASAEd
 
 4. **UDFTest** sollte unter **Verweise** im **Projektmappen-Explorer** aufgeführt werden.
 
-   ![Anzeigen des Verweises auf die benutzerdefinierte Funktion im Projektmappen-Explorer für Azure Stream Analytics-Edge](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
+   ![Anzeigen des Verweises auf die benutzerdefinierte Funktion im Projektmappen-Explorer](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
 
 5. Klicken Sie mit der rechten Maustaste auf den Ordner **Funktionen**, und wählen Sie **Neues Element** aus.
 
-   ![Hinzufügen neuer Elemente zu Funktionen in der Azure Stream Analytics-Edge-Projektmappe in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
+   ![Hinzufügen neuer Elemente zu Funktionen in der Projektmappe zum Azure Stream Analytics-Edge](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
 6. Fügen Sie Ihrem Azure Stream Analytics-Projekt die C#-Funktion **SquareFunction.json** hinzu.
 
-   ![Auswählen der C#-Funktion in der Liste der Stream Analytics-Edge-Elemente in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
+   ![Auswählen der C#-Funktion aus den Stream Analytics-Edgeelementen in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
 
 7. Doppelklicken Sie im **Projektmappen-Explorer** auf die Funktion, um das Konfigurationsdialogfeld zu öffnen.
 

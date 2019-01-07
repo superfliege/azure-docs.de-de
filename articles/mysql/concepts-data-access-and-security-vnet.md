@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 1c159e5c86f713f1f7dbce5cd96cd2ce5d3c22fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146770"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437968"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for MySQL
 
@@ -31,13 +31,13 @@ Sie benötigen ein [virtuelles Netzwerk][vm-virtual-network-overview] (VNET) und
 
 ## <a name="terminology-and-description"></a>Terminologie und Beschreibung
 
-**Virtuelles Netzwerk:** Sie können mit Ihrem Azure-Abonnement virtuelle Netzwerke verknüpfen.
+**Virtuelles Netzwerk:** Sie können Ihrem Azure-Abonnement virtuelle Netzwerke zuordnen.
 
 **Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Ihre virtuellen Azure-Computer (VMs) sind Subnetzen zugewiesen. Ein Subnetz kann mehrere VMs oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
 
-**Dienstendpunkt eines virtuellen Netzwerks:** Ein [Dienstendpunkt eines virtuellen Netzwerks][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for MySQL- und Azure Database for PostgreSQL-Dienste. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL Database-, Azure Database for MySQL- und Azure Database for PostgreSQL-Server im Subnetz konfiguriert. 
+**Dienstendpunkt im virtuellen Netzwerk:** Ein [Dienstendpunkt im virtuellen Netzwerk][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for MySQL- und Azure Database for PostgreSQL-Dienste. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL Database-, Azure Database for MySQL- und Azure Database for PostgreSQL-Server im Subnetz konfiguriert. 
 
-**VNET-Regel:** Eine virtuelle Netzwerkregel für Ihren Azure Database for MySQL-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for MySQL-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for MySQL-Server zu sein.
+**Regel für virtuelles Netzwerk:** Eine Regel für ein virtuelles Netzwerk für Ihren Azure Database for MySQL-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for MySQL-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for MySQL-Server zu sein.
 
 Eine Regel für ein virtuelles Netzwerk weist Ihren Azure Database for MySQL-Server an, Nachrichten von jedem Knoten im Subnetz anzunehmen.
 
@@ -91,8 +91,8 @@ Jede VNET-Regel gilt für den gesamten Azure Database for MySQL-Server und nicht
 
 Bei der Verwaltung der Dienstendpunkte des virtuellen Netzwerks erfolgt eine Trennung von Sicherheitsrollen. Die folgenden Rollen müssen Aktionen ausführen:
 
-- **Netzwerkadministrator:**&nbsp; Aktivieren des Endpunkts.
-- **Datenbankadministrator:**&nbsp; Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for MySQL-Server hinzuzufügen.
+- **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
+- **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for MySQL-Server hinzuzufügen.
 
 *Alternative zur rollenbasierten Zugriffssteuerung:*
 
@@ -131,7 +131,7 @@ Sie müssen IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindun
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Hinzufügen einer VNET-Firewallregel zu Ihrem Server ohne Aktivierung von VNET-Dienstendpunkten
 
-Allein das Festlegen einer Firewallregel trägt nicht zur Sicherung des Servers im VNet bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
+Allein das Festlegen einer Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
 
 Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingServiceEndpoint** festzulegen.
 
@@ -144,7 +144,7 @@ Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
 - [Erstellen und Verwalten von VNET-Regeln für Azure Database for MySQL über das Azure-Portal](howto-manage-vnet-using-portal.md)
 - [Erstellen und Verwalten von VNET-Regeln für Azure Database for MySQL über Azure CLI](howto-manage-vnet-using-cli.md)
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdd0c647021c453095ec4e05c042992011389b9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975889"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722073"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
-Azure Functions wird in zwei verschiedenen Modi ausgeführt: als Verbrauchsplan und als Azure App Service-Plan. Der Verbrauchsplan weist bei Ausführung Ihres Codes automatisch Computeleistung zu. Ihre App wird horizontal hochskaliert, wenn dies zur Verarbeitung der Last erforderlich ist, und herunterskaliert, wenn der Code nicht ausgeführt wird. Für virtuelle Computer im Leerlauf müssen Sie nichts bezahlen und auch keine Kapazitäten im Voraus reservieren.
+Azure Functions wird in zwei verschiedenen Modi ausgeführt: Verbrauchsplan oder Azure App Service-Plan. Der Verbrauchsplan weist bei Ausführung Ihres Codes automatisch Computeleistung zu. Ihre App wird horizontal hochskaliert, wenn dies zur Verarbeitung der Last erforderlich ist, und herunterskaliert, wenn der Code nicht ausgeführt wird. Für virtuelle Computer im Leerlauf müssen Sie nichts bezahlen und auch keine Kapazitäten im Voraus reservieren.
 
 > [!NOTE]  
 > [Linux-Hosting](functions-create-first-azure-function-azure-cli-linux.md) ist derzeit nur im Rahmen eines App Service-Plans verfügbar.
@@ -66,9 +66,9 @@ Entscheiden Sie sich in den folgenden Fällen für einen App Service-Plan:
 * Sie benötigen Funktionen, die nur mit einem App Service-Plan verfügbar sind, etwa Unterstützung für App Service-Umgebung, VNET/VPN-Konnektivität und größere virtuelle Computer.
 * Sie möchten Ihre Funktions-App unter Linux ausführen oder ein benutzerdefiniertes Image zum Ausführen Ihrer Funktionen bereitstellen.
 
-Mit einem virtuellen Computer werden Kosten von der Ausführungsanzahl, der Ausführungszeit und vom verwendeten Arbeitsspeicher entkoppelt. Daher wird Ihnen nicht mehr berechnet als die Kosten für die VM-Instanz, die Sie belegen. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Mit einem virtuellen Computer werden Kosten von der Ausführungsanzahl, der Ausführungszeit und vom verwendeten Arbeitsspeicher entkoppelt. Daher wird Ihnen nicht mehr berechnet als die Kosten für die VM-Instanz, die Sie belegen. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/overview-hosting-plans.md). 
 
-Mit einem App Service-Plan können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen von virtuellen Computern hinzufügen, oder Sie können die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Sie können auch zentral hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](../app-service/web-sites-scale.md). 
+Mit einem App Service-Plan können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen von virtuellen Computern hinzufügen, oder Sie können die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Sie können auch zentral hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](../app-service/web-sites-scale.md). 
 
 Wenn Sie JavaScript-Funktionen im Rahmen eines App Service-Plans ausführen, sollten Sie einen Plan mit weniger vCPUs wählen. Weitere Informationen finden Sie unter [Auswählen von Einzelkern-App Service-Plänen](functions-reference-node.md#considerations-for-javascript-functions).  
 

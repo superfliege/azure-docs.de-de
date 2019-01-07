@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: fe13c424a3da91e92a04cceb807b98fd1ffe4db0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914038"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413478"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -25,21 +25,23 @@ Azure Event Grid verfügt über drei Authentifizierungsarten:
 
 ## <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 
-Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der EventGrid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
+Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der Event Grid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
 
-Wie viele andere Dienste, die Webhooks unterstützen, müssen Sie bei EventGrid nachweisen, das Sie im „Besitz“ Ihres Webhookendpunkts sind. Vorher wird mit dem Bereitstellen von Ereignissen für diesen Endpunkt nicht begonnen. Mit dieser Anforderung soll verhindert werden, dass ein nicht informierter Endpunkt zum Zielendpunkt für die Ereignisbereitstellung von EventGrid wird. Wenn Sie einen der drei unten angegebenen Azure-Dienste verwenden, wird diese Überprüfung aber automatisch von der Azure-Infrastruktur durchgeführt:
+Wie viele andere Dienste, die Webhooks unterstützen, müssen Sie bei Event Grid nachweisen, das Sie im Besitz Ihres Webhookendpunkts sind. Vorher wird mit dem Bereitstellen von Ereignissen für diesen Endpunkt nicht begonnen. Diese Anforderung verhindert, dass ein böswilliger Benutzer Ihren Endpunkt mit Ereignissen überschwemmt. Wenn Sie einen der drei unten angegebenen Azure-Dienste verwenden, wird diese Überprüfung automatisch von der Azure-Infrastruktur durchgeführt:
 
 * Azure Logic Apps
 * Azure Automation
-* Azure Functions für EventGrid-Trigger
+* Azure Functions für Event Grid-Trigger
 
-Falls Sie einen anderen Typ von Endpunkt nutzen, z.B. eine auf einem HTTP-Trigger basierende Azure-Funktion, muss Ihr Endpunktcode an einem Überprüfungshandshake mit EventGrid beteiligt sein. EventGrid unterstützt zwei unterschiedliche Modelle für Überprüfungshandshakes:
+Falls Sie einen anderen Typ von Endpunkt nutzen, z. B. eine auf einem HTTP-Trigger basierende Azure-Funktion, muss Ihr Endpunktcode an einem Überprüfungshandshake mit Event Grid beteiligt sein. Event Grid unterstützt zwei Methoden zur Überprüfung des Abonnements.
 
-1. **ValidationCode-basierter Handshake**: Zum Zeitpunkt der Erstellung eines Ereignisabonnements sendet EventGrid per POST-Vorgang ein „Abonnementüberprüfungsereignis“ an Ihren Endpunkt. Das Schema dieses Ereignisses ähnelt den anderen Ereignissen vom Typ EventGridEvent, und der Datenteil dieses Ereignisses enthält eine `validationCode`-Eigenschaft. Nachdem Ihre Anwendung bestätigt hat, dass die Überprüfungsanforderung für ein erwartetes Ereignisabonnement bestimmt ist, muss Ihr Anwendungscode antworten, indem ein „Echo“ des Überprüfungscodes zurück an EventGrid gesendet wird. Dieser Handshakemechanismus wird in allen EventGrid-Versionen unterstützt.
+1. **ValidationCode-Handshake (programmgesteuert)**: Wenn Sie den Quellcode für Ihren Endpunkt kontrollieren, wird diese Methode empfohlen. Zum Zeitpunkt der Erstellung des Ereignisabonnements sendet Event Grid ein Ereignis zur Überprüfung des Abonnements an Ihren Endpunkt. Das Schema dieses Ereignisses ähnelt dem aller anderen Event Grid-Ereignisse. Der Datenteil dieses Ereignisses umfasst eine `validationCode`-Eigenschaft. Ihre Anwendung überprüft, ob es sich bei der Überprüfungsanforderung um ein erwartetes Ereignisabonnement handelt, und gibt den Überprüfungscode an Event Grid zurück. Dieser Handshakemechanismus wird in allen Event Grid-Versionen unterstützt.
 
-2. **ValidationURL-basierter Handshake (manueller Handshake)**: In bestimmten Fällen können Sie ggf. nicht den Quellcode des Endpunkts steuern, um den ValidationCode-basierten Handshake zu implementieren. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z.B. [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten. Ab Version 2018-05-01-preview unterstützt EventGrid jetzt einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement mit einem SDK oder Tool erstellen, für die diese neue API-Version (2018-05-01-preview oder höher) verwendet wird, sendet EventGrid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft. Senden Sie zum Durchführen des Handshakes einfach eine GET-Anforderung für diese URL, und zwar entweder über einen REST-Client oder Ihren Webbrowser. Die für die Überprüfung angegebene URL gilt nur für ungefähr 10 Minuten. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen das Ereignisabonnement erneut erstellen, bevor Sie mit der manuellen Überprüfung beginnen.
+2. **ValidationURL-Handshake (manuell)**: In bestimmten Fällen können Sie nicht auf den Quellcode des Endpunkts zugreifen, um den ValidationCode-Handshake zu implementieren. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z. B. [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten.
 
-Dieser Mechanismus der manuellen Überprüfung befindet sich in der Vorschauphase. Sie müssen die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für die [Azure CLI](/cli/azure/install-azure-cli) installieren, um es zu verwenden. Diese können Sie mit `az extension add --name eventgrid` installieren. Stellen Sie bei Verwendung der REST-API sicher, dass Sie `api-version=2018-05-01-preview` verwenden.
+   Ab Version 2018-05-01-preview unterstützt Event Grid einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement mit einem SDK oder Tool erstellen, für die diese neue API-Version (2018-05-01-preview oder höher) verwendet wird, sendet Event Grid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft. Um den Handshake abzuschließen, suchen Sie diese URL in den Ereignisdaten und senden Sie ihr manuell eine GET-Anforderung. Sie können entweder einen REST-Client oder Ihren Webbrowser verwenden.
+
+   Die angegebene URL ist 10 Minuten lang gültig. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen das Ereignisabonnement erneut erstellen, bevor Sie mit der manuellen Überprüfung beginnen.
 
 ### <a name="validation-details"></a>Überprüfungsdetails
 
@@ -78,9 +80,11 @@ Senden Sie wie im folgenden Beispiel gezeigt den Validierungscode zurück an die
 }
 ```
 
+Sie müssen den Antwortstatuscode „HTTP 200 OK“ zurückgeben. „HTTP 202 Akzeptiert“ wird nicht als gültige Antwort zur Überprüfung des Event Grid-Abonnements erkannt.
+
 Alternativ können Sie das Abonnement manuell überprüfen, indem Sie eine GET-Anforderung an die Überprüfungs-URL senden. Das Ereignisabonnement bleibt im Status „Ausstehend“, bis es überprüft wurde.
 
-Unter https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs ist ein C#-Beispiel verfügbar, in dem veranschaulicht wird, wie Sie den Handshake für die Abonnementüberprüfung behandeln.
+Ein Beispiel für die Handhabung des Handshakes zur Abonnementüberprüfung finden Sie in einem [C#-Beispiel](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ### <a name="checklist"></a>Checkliste
 
@@ -93,7 +97,7 @@ Wenn während der Erstellung des Ereignisabonnements eine Fehlermeldung der Art 
 
 ### <a name="event-delivery-security"></a>Sicherheit für die Ereignisbereitstellung
 
-Sie können Ihren Webhookendpunkt sichern, indem Sie der Webhook-URL beim Erstellen eines Ereignisabonnements Abfrageparameter hinzufügen. Legen Sie einen dieser Abfrageparameter als Geheimnis fest, z. B. als ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token). Der Webhook kann es verwenden, um zu erkennen, dass das Ereignis von Event Grid stammt und gültige Berechtigungen aufweist. Event Grid nimmt diese Abfrageparameter in jede Ereignisbereitstellung an den Webhook auf.
+Sie können Ihren Webhookendpunkt sichern, indem Sie der Webhook-URL beim Erstellen eines Ereignisabonnements Abfrageparameter hinzufügen. Legen Sie einen dieser Abfrageparameter als Geheimnis fest, z. B. als ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token). Der Webhook kann das Geheimnis verwenden, um zu erkennen, dass das Ereignis von Event Grid stammt und gültige Berechtigungen aufweist. Event Grid nimmt diese Abfrageparameter in jede Ereignisbereitstellung an den Webhook auf.
 
 Wenn Sie das Ereignisabonnement bearbeiten, werden die Abfrageparameter nur angezeigt und zurückgegeben, wenn der Parameter [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) in Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) verwendet wird.
 
@@ -269,7 +273,7 @@ Wenn Sie Berechtigungen angeben müssen, die sich von den integrierten Rollen un
 
 Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutzern das Durchführen unterschiedlicher Aktionen ermöglichen. Diese benutzerdefinierten Rollen unterscheiden sich von den integrierten Rollen, da sie einen breiteren Zugriff ermöglichen als Ereignisabonnements.
 
-**EventGridReadOnlyRole.json:** Zulassen nur von Lesevorgängen.
+**EventGridReadOnlyRole.json**: Ausschließliches Zulassen schreibgeschützter Operationen.
 
 ```json
 {
@@ -288,7 +292,7 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json:** Zulassen eingeschränkter Post-Aktionen, nicht aber von Löschaktionen.
+**EventGridNoDeleteListKeysRole.json**: Zulassen eingeschränkter Post-Aktionen, nicht aber von Löschaktionen.
 
 ```json
 {
@@ -311,7 +315,7 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 }
 ```
 
-**EventGridContributorRole.json:** Zulassen aller Event Grid-Aktionen.
+**EventGridContributorRole.json**: Zulassen aller Event Grid-Aktionen.
 
 ```json
 {

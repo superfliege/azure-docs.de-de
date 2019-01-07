@@ -12,92 +12,97 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/23/2018
 ms.author: dekapur
-ms.openlocfilehash: 03dac03405588ba00a0f8ca5b127956c40853e36
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a568fc6316211755fabc15ab3cf0227e3a87cb01
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868512"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727339"
 ---
 # <a name="list-of-service-fabric-events"></a>Liste mit Service Fabric-Ereignissen 
 
-Service Fabric macht einen primären Satz von Clusterereignissen in Form von [Service Fabric-Ereignissen](service-fabric-diagnostics-events.md) verfügbar, um Sie über den Status Ihres Clusters zu informieren. Diese basieren auf Aktionen, die von Service Fabric für Ihre Knoten und Cluster ausgeführt werden, oder auf Verwaltungsentscheidungen eines Clusterbesitzers/-betreibers. Für den Zugriff auf diese Ereignisse können Sie den [EventStore](service-fabric-diagnostics-eventstore.md) in Ihrem Cluster abfragen oder den Betriebskanal verwenden. Auf Windows-Computern ist der Betriebskanal auch in „EventLog“ eingebunden, sodass Service Fabric-Ereignisse in der Ereignisanzeige angezeigt werden. 
+Service Fabric macht einen primären Satz von Clusterereignissen in Form von [Service Fabric-Ereignissen](service-fabric-diagnostics-events.md) verfügbar, um Sie über den Status Ihres Clusters zu informieren. Diese basieren auf Aktionen, die von Service Fabric für Ihre Knoten und Cluster ausgeführt werden, oder auf Verwaltungsentscheidungen eines Clusterbesitzers/-betreibers. Auf diese Ereignisse kann durch Konfigurieren auf verschiedene Art und Weise zugegriffen werden, einschließlich der Konfiguration von [Log Analytics with your cluster](service-fabric-diagnostics-oms-setup.md) (Log Analytics mit Ihrem Cluster) oder durch Abfragen von [EventStore](service-fabric-diagnostics-eventstore.md). Auf Windows-Computern sind diese Ereignisse in das „EventLog“ (Ereignisprotokoll) eingebunden, sodass Service Fabric-Ereignisse in der Ereignisanzeige angezeigt werden. 
 
->[!NOTE]
->Eine Liste mit Service Fabric-Ereignissen für Cluster in Versionen vor 6.2 finden Sie im folgenden Abschnitt. 
+Im Folgenden sind einige Merkmale dieser Ereignisse aufgeführt:
+* Jedes Ereignis ist an eine bestimmte Entität im Cluster gebunden, z. B. Anwendung, Dienst, Knoten, Replikat.
+* Jedes Ereignis verfügt über mehrere gemeinsame Felder: „EventInstanceId“ (Ereignis-Instanz-ID), „EventName“ (Ereignisname), und „Category“ (Kategorie).
+* Jedes Ereignis verfügt über Felder, die das Ereignis an die Entität binden, der es zugeordnet ist. So besitzt beispielsweise das Ereignis „ApplicationCreated“ (Anwendung erstellt) Felder, die den Namen der erstellten Anwendung identifizieren.
+* Ereignisse sind so strukturiert, dass sie für detaillierte Analysen in einer Reihe von Tools benutzt werden können. Zusätzlich werden relevante Details für ein Ereignis, im Gegensatz zu einer langen Zeichenfolge, als separate Eigenschaften definiert. 
+* Ereignisse werden durch verschiedene Subsysteme in Service Fabric geschrieben und durch „Source(Task)“ (Quelle(Aufgabe)) identifiziert. Weitere Informationen zu diesen Subsystemen finden Sie unter [Service Fabric Architecture (Service Fabric-Architektur)](service-fabric-architecture.md) und unter [Service Fabric Technical Overview (Technische Übersicht über Service Fabric)](service-fabric-technical-overview.md).
 
-Die folgende Liste enthält alle verfügbaren Ereignisse der Plattform – sortiert nach der Entität, der sie zuordnet sind.
+Im Folgenden sind diese Service Fabric-Ereignisse sortiert nach Entität aufgelistet:
 
 ## <a name="cluster-events"></a>Clusterereignisse
 
 **Ereignisse für Clusterupgrades**
 
-| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStarted | Ein Clusterupgrade wurde gestartet. | CM | Information | 1 |
-| 29628 | ClusterUpgradeCompleted | Ein Clusterupgrade wurde abgeschlossen.| CM | Information | 1 |
-| 29629 | ClusterUpgradeRollbackStarted | Das Rollback eines Clusterupgrades wurde gestartet. | CM | Information | 1 |
-| 29630 | ClusterUpgradeRollbackCompleted | Das Rollback eines Clusterupgrades wurde abgeschlossen. | CM | Information | 1 |
-| 29631 | ClusterUpgradeDomainCompleted | Ein Domänenupgrade wurde während eines Clusterupgrades abgeschlossen. | CM | Information | 1 |
+Weitere Informationen zu Clusterupgrades finden Sie [hier](service-fabric-cluster-upgrade-windows-server.md).
+
+| EventId | NAME | Category (Kategorie) | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | 
+| --- | --- | --- | --- | --- | --- | 
+| 29627 | ClusterUpgradeStarted | Upgrade | Ein Clusterupgrade wurde gestartet. | CM | Information |
+| 29628 | ClusterUpgradeCompleted | Upgrade | Ein Clusterupgrade wurde abgeschlossen. | CM | Information | 
+| 29629 | ClusterUpgradeRollbackStarted | Upgrade | Das Rollback eines Clusterupgrades wurde gestartet.  | CM | Warnung | 
+| 29630 | ClusterUpgradeRollbackCompleted | Upgrade | Das Rollback eines Clusterupgrades wurde abgeschlossen. | CM | Warnung | 
+| 29631 | ClusterUpgradeDomainCompleted | Upgrade | Der Upgradevorgang für eine Upgradedomäne wurde während eines Clusterupgrades beendet. | CM | Information | 
 
 ## <a name="node-events"></a>Knotenereignisse
 
 **Ereignisse für den Knotenlebenszyklus** 
 
-| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | ---| --- | --- | --- |
-| 18602 | NodeDeactivateCompleted | Die Deaktivierung eines Knotens wurde abgeschlossen. | FM | Information | 1 |
-| 18603 | NodeUp | Der Cluster hat erkannt, dass ein Knoten gestartet wurde. | FM | Information | 1 |
-| 18604 | NodeDown | Der Cluster hat erkannt, dass ein Knoten heruntergefahren wurde. |  FM | Information | 1 |
-| 18605 | NodeAddedToCluster | Ein neuer Knoten wurde dem Cluster hinzugefügt. | FM | Information | 1 |
-| 18606 | NodeRemovedFromCluster | Ein Knoten wurde aus dem Cluster entfernt. | FM | Information | 1 |
-| 18607 | NodeDeactivateStarted | Die Deaktivierung eines Knotens wurde gestartet. | FM | Information | 1 |
-| 25620 | NodeOpening | Der Knoten wird gestartet. Erste Phase des Knotenlebenszyklus | FabricNode | Information | 1 |
-| 25621 | NodeOpenSucceeded | Ein Knoten wurde erfolgreich gestartet. | FabricNode | Information | 1 |
-| 25622 | NodeOpenFailed | Ein Knoten konnte nicht gestartet werden. | FabricNode | Information | 1 |
-| 25623 | NodeClosing | Ein Knoten wird heruntergefahren. Beginn der Endphase des Knotenlebenszyklus | FabricNode | Information | 1 |
-| 25624 | NodeClosed | Ein Knoten wurde erfolgreich heruntergefahren. | FabricNode | Information | 1 |
-| 25625 | NodeAborting | Ein Knoten wird nicht ordnungsgemäß heruntergefahren. | FabricNode | Information | 1 |
-| 25626 | NodeAborted | Ein Knoten wurde nicht ordnungsgemäß heruntergefahren. | FabricNode | Information | 1 |
+| EventId | NAME | Category (Kategorie) | BESCHREIBUNG |Quelle (Aufgabe) | Ebene |
+| --- | --- | ---| --- | --- | --- | 
+| 18602 | NodeDeactivateCompleted | StateTransition | Die Deaktivierung eines Knotens wurde abgeschlossen. | FM | Information | 
+| 18603 | NodeUp | StateTransition | Der Cluster hat erkannt, dass ein Knoten gestartet wurde. | FM | Information | 
+| 18604 | NodeDown | StateTransition | Der Cluster hat erkannt, dass ein Knoten heruntergefahren wurde. Bei einem Neustart eines Knotens wird ein NodeDown-Ereignis gefolgt von einem NodeUp-Ereignis angezeigt. |  FM | Error | 
+| 18605 | NodeAddedToCluster | StateTransition |  Dem Cluster wurde ein neuer Knoten hinzugefügt, und Service Fabric kann für diesen Knoten Anwendungen bereitstellen. | FM | Information | 
+| 18606 | NodeRemovedFromCluster | StateTransition |  Ein Knoten wurde aus dem Cluster entfernt. Service Fabric stellt für diesen Knoten keine Anwendungen mehr bereit. | FM | Information | 
+| 18607 | NodeDeactivateStarted | StateTransition |  Die Deaktivierung eines Knotens wurde gestartet. | FM | Information | 
+| 25621 | NodeOpenSucceeded | StateTransition |  Ein Knoten wurde erfolgreich gestartet. | FabricNode | Information | 
+| 25622 | NodeOpenFailed | StateTransition |  Ein Knoten konnte nicht gestartet und nicht mit dem Ring verknüpft werden. | FabricNode | Error | 
+| 25624 | NodeClosed | StateTransition |  Ein Knoten wurde erfolgreich heruntergefahren. | FabricNode | Information | 
+| 25626 | NodeAborted | StateTransition |  Ein Knoten wurde nicht ordnungsgemäß heruntergefahren. | FabricNode | Error | 
 
 ## <a name="application-events"></a>Anwendungsereignisse
 
 **Ereignisse für den Anwendungslebenszyklus**
 
-| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | ---| --- | --- | --- |
-| 29620 | ApplicationCreated | Eine neue Anwendung wurde erstellt. | CM | Information | 1 |
-| 29625 | ApplicationDeleted | Eine vorhandene Anwendung wurde gelöscht. | CM | Information | 1 |
-| 23083 | ApplicationProcessExited | Ein Prozess in einer Anwendung wurde beendet. | Hosting | Information | 1 |
+| EventId | NAME | Category (Kategorie) | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | 
+| --- | --- | --- | --- | --- | --- | 
+| 29620 | ApplicationCreated | LifeCycle | Eine neue Anwendung wurde erstellt. | CM | Information | 
+| 29625 | ApplicationDeleted | LifeCycle | Eine vorhandene Anwendung wurde gelöscht. | CM | Information | 
+| 23083 | ApplicationProcessExited | LifeCycle | Ein Prozess in einer Anwendung wurde beendet. | Hosting | Information | 
 
 **Ereignisse für Anwendungsupgrades**
 
-| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | ---| --- | --- | --- |
-| 29621 | ApplicationUpgradeStarted | Ein Anwendungsupgrade wurde gestartet. | CM | Information | 1 |
-| 29622 | ApplicationUpgradeStarted | Ein Anwendungsupgrade wurde abgeschlossen. | CM | Information | 1 |
-| 29623 | ApplicationUpgradeRollbackStarted | Das Rollback eines Anwendungsupgrades wurde gestartet. |CM | Information | 1 |
-| 29624 | ApplicationUpgradeRollbackCompleted | Das Rollback eines Anwendungsupgrades wurde abgeschlossen. | CM | Information | 1 |
-| 29626 | ApplicationUpgradeDomainCompleted | Ein Domänenupgrade wurde während eines Anwendungsupgrades abgeschlossen. | CM | Information | 1 |
+Weitere Informationen zu Anwendungsupgrades finden Sie [hier](service-fabric-application-upgrade.md).
+
+| EventId | NAME | Category (Kategorie) | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | 
+| --- | --- | ---| --- | --- | --- | 
+| 29621 | ApplicationUpgradeStarted | Upgrade | Ein Anwendungsupgrade wurde gestartet. | CM | Information | 
+| 29622 | ApplicationUpgradeStarted | Upgrade | Ein Anwendungsupgrade wurde abgeschlossen. | CM | Information | 
+| 29623 | ApplicationUpgradeRollbackStarted | Upgrade | Das Rollback eines Anwendungsupgrades wurde gestartet. |CM | Warnung | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Upgrade | Das Rollback eines Anwendungsupgrades wurde abgeschlossen. | CM | Warnung | 
+| 29626 | ApplicationUpgradeDomainCompleted | Upgrade | Der Upgradevorgang für eine Upgradedomäne wurde während eines Anwendungsupgrades beendet. | CM | Information | 
 
 ## <a name="service-events"></a>Dienstereignisse
 
 **Ereignisse für den Dienstlebenszyklus**
 
-| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| EventId | NAME | Category (Kategorie) | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | ServiceCreated | Ein neuer Dienst wurde erstellt. | FM | Information | 1 |
-| 18658 | ServiceDeleted | Ein vorhandener Dienst wurde gelöscht. | FM | Information | 1 |
+| 18657 | ServiceCreated | LifeCycle | Ein neuer Dienst wurde erstellt. | FM | Information | 
+| 18658 | ServiceDeleted | LifeCycle | Ein vorhandener Dienst wurde gelöscht. | FM | Information | 
 
 ## <a name="partition-events"></a>Partitionsereignisse
 
 **Ereignisse für Partitionsverschiebungen**
 
-| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| EventId | NAME | Category (Kategorie) | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Die Neukonfiguration einer Partition wurde abgeschlossen. | RA | Information | 1 |
+| 18940 | PartitionReconfigured | LifeCycle | Die Neukonfiguration einer Partition wurde abgeschlossen. | RA | Information | 
 
 ## <a name="container-events"></a>Containerereignisse
 
@@ -110,6 +115,12 @@ Die folgende Liste enthält alle verfügbaren Ereignisse der Plattform – sorti
 | 23082 | ContainerExited | Ein Container wurde beendet. Überprüfen Sie das UnexpectedTermination-Flag. | Hosting | Information | 1 |
 
 ## <a name="health-reports"></a>Integritätsberichte
+
+Das [Service Fabric-Integritätsmodell](service-fabric-health-introduction.md) bietet eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung. Ab der Service Fabric-Version 6.2 werden Integritätsdaten als Plattformereignisse geschrieben, um Verlaufsinformationen für das Integritätsereignis bereitzustellen. Um die Anzahl von Integritätsereignissen gering zu halten, schreiben wir nur Folgendes als Service Fabric-Ereignisse:
+
+* Alle Integritätsberichte für `Error` oder `Warning`
+* Integritätsberichte für `Ok` während Übergängen
+* Wenn ein `Error`- oder `Warning`-Integritätsereignis abläuft. Damit kann bestimmt werden, wie lange eine Entität fehlerhaft war.
 
 **Ereignisse für Clusterintegritätsberichte**
 
@@ -238,6 +249,7 @@ Im Anschluss finden Sie eine umfassende Liste mit Ereignissen, die von Service F
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die gesamte [Ereignisgenerierung auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md) in Service Fabric.
+* Verschaffen Sie sich einen Überblick über die [Diagnosen in Service Fabric](service-fabric-diagnostics-overview.md).
+* Unter [Übersicht über den EventStore-Dienst in Service Fabric](service-fabric-diagnostics-eventstore.md) erfahren Sie mehr über den EventStore-Dienst.
 * Ändern Ihrer [Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md)-Konfiguration zum Sammeln weiterer Protokolle
 * [Einrichten von Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) zum Anzeigen der Betriebskanalprotokolle

@@ -11,12 +11,12 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e9b05751166ac200f4a9cdab4c7fe3ed797f2a10
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d1381ff16d0de382634b06fd081f1827588f8ee9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465247"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435105"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -100,7 +100,7 @@ Erstellen Sie einen neuen virtuellen Netzwerkadapter für die Gast-VM, und konfi
 Um das Gateway zu konfigurieren, benötigen Sie einige Informationen über Ihr Netzwerk:    
   * IPAddress: Die NAT-Gateway-IP gibt die IPv4- oder IPv6-Adresse an, die als standardmäßige Gatewayadresse für das Subnetz des virtuellen Netzwerks verwendet werden soll. Das Format lautet allgemein „a.b.c.1“ (z.B. „192.168.0.1“). Die letzte Position muss nicht unbedingt „.1“ lauten, tut es jedoch in der Regel (basierend auf der Präfixlänge). Üblicherweise sollten Sie einen privaten Netzwerkadressraum gemäß RFC 1918 verwenden. 
   * PrefixLength: Die Länge des Subnetzpräfixes definiert die Größe des lokalen Subnetzes (Subnetzmaske). Die Länge des Subnetzpräfixes ist ein ganzzahliger Wert zwischen 0 und 32. 0 würde das gesamte Internet zuordnen, 32 würde nur eine zugeordnete IP-Adresse zulassen. Im Allgemeinen reichen die Werte von 24 bis 12, je nachdem, wie viele IP-Adressen an das NAT angefügt werden müssen. Ein häufiger PrefixLength-Wert ist 24 – dies entspricht der Subnetzmaske 255.255.255.0.
-  * InterfaceIndex: **ifIndex** ist der Schnittstellenindex des im vorherigen Schritt erstellten virtuellen Switchs. 
+  * InterfaceIndex: **ifIndex** ist der Schnittstellenindex des im vorherigen Schritt erstellten virtuellen Switches. 
 
     ```powershell
     New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 13
@@ -157,7 +157,7 @@ Führen Sie die unten stehenden Schritte aus, um auf der Gast-VM DHCP für die d
   
 4. Definieren Sie einen IP-Adressbereich für Ihren DHCP-Server (z.B. 192.168.0.100 bis 192.168.0.200).
   
-5. Klicken Sie auf **Weiter**, bis die Seite „Standardgateway“ angezeigt wird. Geben Sie die zuvor erstellte IP-Adresse als Standardgateway ein (z.B. 192.168.0.1).
+5. Klicken Sie auf **Weiter**, bis die Seite „Standardgateway“ angezeigt wird. Geben Sie die zuvor erstellte IP-Adresse als Standardgateway ein (z.B. 192.168.0.1), und klicken Sie dann auf **Hinzufügen**.
   
 6. Klicken Sie auf **Weiter**, bis der Assistent abgeschlossen ist, und behalten Sie dabei jeweils alle Standardwerte bei. Klicken Sie zum Schluss auf **Fertig stellen**.
     
