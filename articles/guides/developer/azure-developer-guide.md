@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 55d4f53a23c92bb96934e84c0400bc182bc3d87e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 80f7d93037c0b900608301ebf6463f85be10f2de
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976807"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311319"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -29,7 +29,7 @@ Azure ist eine umfassende Cloudplattform, die Ihre vorhandenen Anwendungen hoste
 
 Durch Hosten Ihrer Anwendungen in Azure können Sie klein anfangen und Ihre Anwendungen einfach horizontal hochskalieren, wenn die Kundennachfrage steigt. Azure bietet zudem die Zuverlässigkeit, die für Anwendungen mit hoher Verfügbarkeit benötigt wird, einschließlich Failover zwischen unterschiedlichen Regionen. Mit dem [Azure-Portal](https://portal.azure.com) können Sie alle Ihre Azure-Dienste einfach verwalten. Sie können Ihre Dienste auch programmgesteuert mithilfe dienstspezifischer APIs und Vorlagen verwalten.
 
-**Wer sollte das lesen?** Dieses Handbuch ist eine Einführung in die Azure-Plattform für Anwendungsentwickler. Es bietet die Unterstützung und Anleitung, die Sie benötigen, um mit dem Erstellen neuer Anwendungen in Azure oder dem Migrieren vorhandener Anwendungen zu Azure zu beginnen.
+**Zielgruppe dieses Artikels**: Dieses Handbuch ist eine Einführung in die Azure-Plattform für Anwendungsentwickler. Es bietet die Unterstützung und Anleitung, die Sie benötigen, um mit dem Erstellen neuer Anwendungen in Azure oder dem Migrieren vorhandener Anwendungen zu Azure zu beginnen.
 
 ## <a name="where-do-i-start"></a>Wo beginne ich?
 
@@ -92,11 +92,11 @@ Sie müssen sich keine Sorgen über das Erstellen und Verwalten einer Anwendung 
 
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Erstellen, Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Die Plattform bietet eine ausgereifte Laufzeit für das Erstellen verteilter, skalierbarer zustandsloser und zustandsbehafteter Microservices sowie umfassende Anwendungsverwaltungsfunktionen zum Organisieren, Bereitstellen, Überwachen, Upgraden/Patchen und Löschen bereitgestellter Anwendungen. Apps, die in einem gemeinsam genutzten Pool von Computern ausgeführt werden, können klein anfangen und bei Bedarf auf Hunderte oder Tausende VMs skaliert werden.
 
-Service Fabric unterstützt WebAPI mit Open Web Interface für .NET (OWIN) und ASP.NET Core. Es bietet SDKs, mit denen sich Dienste unter Linux sowohl in .NET Core als auch in Java erstellen lassen. Weitere Informationen zu Service Fabric finden Sie in der [Service Fabric-Dokumentation](https://docs.microsoft.com/en-us/azure/service-fabric/).
+Service Fabric unterstützt WebAPI mit Open Web Interface für .NET (OWIN) und ASP.NET Core. Es bietet SDKs, mit denen sich Dienste unter Linux sowohl in .NET Core als auch in Java erstellen lassen. Weitere Informationen zu Service Fabric finden Sie in der [Service Fabric-Dokumentation](https://docs.microsoft.com/azure/service-fabric/).
 
 >**Einsatzgebiete:** Service Fabric ist eine gute Wahl, wenn Sie eine Anwendung erstellen oder eine vorhandenen Anwendung neu erstellen, um eine Microservice-Architektur zu verwenden. Verwenden Sie Service Fabric, wenn Sie mehr Kontrolle über oder direkten Zugriff auf die zugrunde liegende Infrastruktur benötigen.
 
->**Erste Schritte:**[Erstellen Ihrer ersten Azure Service Fabric-Anwendung](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
+>**Erste Schritte:** [Erstellen Ihrer ersten Azure Service Fabric-Anwendung](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Verbessern Ihrer Anwendungen mit Azure-Diensten
 
@@ -107,19 +107,19 @@ Zusätzlich zum Anwendungshosting bietet Azure Dienstangebote, die die Funktiona
 Die meisten Anwendungen müssen Daten speichern, es ist also egal, wie Sie Ihre Anwendung in Azure hosten möchten. Denken Sie nur an mindestens einen der folgenden Speicher- und Datendienste.
 
 -   **Azure Cosmos DB**: Ein global verteilter Multimodell-Datenbankdienst zur elastischen Skalierung von Durchsatz und Speicher in verschiedenen geografischen Regionen mit einer umfassenden SLA. 
-    >**Verwendung:** Wenn Ihre Anwendung Dokument-, Tabellen- oder Diagrammdatenbanken einschließlich MongoDB-Datenbanken benötigt, mit mehreren klar definierten Konsistenzmodellen. 
+    >**Einsatzgebiete:** Wenn Ihre Anwendung Dokument-, Tabellen- oder Diagrammdatenbanken einschließlich MongoDB-Datenbanken benötigt, mit mehreren klar definierten Konsistenzmodellen. 
 
-    >**Erste Schritte**: [Azure Cosmos DB: Erstellen einer Web-App mit einer DocumentDB-API mit .NET und dem Azure-Portal](../../cosmos-db/create-sql-api-dotnet.md). Wenn Sie ein MongoDB-Entwickler sind, lesen Sie [Azure Cosmos DB: Erstellen einer Web-App mit einer MongoDB-API mit .NET und dem Azure-Portal](../../cosmos-db/create-mongodb-dotnet.md).
+    >**Erste Schritte**: [Erstellen einer Azure Cosmos DB-Web-App](../../cosmos-db/create-sql-api-dotnet.md). Wenn Sie ein MongoDB-Entwickler sind, lesen Sie [Azure Cosmos DB: Erstellen einer Web-App mit einer MongoDB-API mit .NET und dem Azure-Portal](../../cosmos-db/create-mongodb-dotnet.md).
 
 -   **Azure Storage**: Bietet dauerhaften, hoch verfügbaren Speicher für Blobs, Warteschlangen, Dateien und andere Arten von nicht relationalen Daten. Storage stellt die Speichergrundlage für VMs bereit.
 
-    >**Verwendung**: Wenn Ihre App nicht relationale Daten speichert, wie Schlüssel-Wert-Paare (Tabellen), Blobs, Dateifreigaben oder Meldungen (Warteschlangen).
+    >**Einsatzgebiete**: Wenn Ihre App nicht relationale Daten speichert, wie Schlüssel-Wert-Paare (Tabellen), Blobs, Dateifreigaben oder Meldungen (Warteschlangen).
 
     >**Erste Schritte**: Wählen Sie aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 -   **Azure SQL-Datenbank**: Eine auf Azure basierende Version der Microsoft SQL Server-Engine zum Speichern relationaler Tabellendaten in der Cloud. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Downtime, Geschäftskontinuität, und Datenschutz.
 
-    >**Verwendung**: Wenn Ihre Anwendung Datenspeicherung mit referentieller Integrität, Transaktionsunterstützung und Unterstützung für TSQL-Abfragen erfordert.
+    >**Einsatzgebiete**: Wenn Ihre Anwendung Datenspeicherung mit referentieller Integrität, Transaktionsunterstützung und Unterstützung für TSQL-Abfragen erfordert.
 
     >**Erste Schritte**: [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](../../sql-database/sql-database-get-started.md).
 
@@ -134,25 +134,25 @@ Azure bietet mehrere Methoden zum Verwenden von Containern in Ihren Anwendungen.
 
 -   **Azure Docker-VM-Erweiterung**: Hiermit können Sie Ihre VM mit Docker-Tools so konfigurieren, dass sie als Docker-Host fungiert.
 
-    >**Verwendung**: Wenn Sie konsistente Containerbereitstellungen für Ihre Anwendungen auf einer VM erstellen möchten, oder wenn Sie [Docker Compose](https://docs.docker.com/compose/overview/) verwenden möchten.
+    >**Einsatzgebiete**: Wenn Sie konsistente Containerbereitstellungen für Ihre Anwendungen auf einer VM erstellen möchten, oder wenn Sie [Docker Compose](https://docs.docker.com/compose/overview/) verwenden möchten.
 
     >**Erste Schritte**: [Erstellen einer Docker-Umgebung in Azure mit der Docker-VM-Erweiterung](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 -   **Azure Container Service**: Hiermit können Sie einen Cluster mit virtuellen Computern, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind, erstellen, konfigurieren und verwalten. Weitere Informationen zu Container Service finden Sie unter [Einführung in Azure Container Service](../../container-service/container-service-intro.md).
 
-    >**Verwendung**: Wenn Sie produktionsreife, skalierbare Umgebungen erstellen müssen, die zusätzliche Planungs- und Verwaltungstools bereitstellen, oder wenn Sie einen Docker Swarm-Cluster bereitstellen.
+    >**Einsatzgebiete**: Wenn Sie produktionsreife, skalierbare Umgebungen erstellen müssen, die zusätzliche Planungs- und Verwaltungstools bereitstellen, oder wenn Sie einen Docker Swarm-Cluster bereitstellen.
 
-    >**Erste Schritte**: [Deploy a Container Service cluster (Bereitstellen eines Container Service-Clusters)](../../container-service/dcos-swarm/container-service-deployment.md).
+    >**Erste Schritte**: [Bereitstellen eines Container Service-Clusters](../../container-service/dcos-swarm/container-service-deployment.md).
 
 -   **Docker-Computer**: Hiermit können Sie eine Docker-Engine auf virtuellen Hosts installieren und verwalten, indem Sie Docker-Computerbefehle verwenden.
 
-    >**Verwendung**: Wenn Sie schnell einen Prototyp für eine App erstellen müssen, indem Sie einen einzelnen Docker-Host erstellen.
+    >**Einsatzgebiete**: Wenn Sie schnell einen Prototyp für eine App erstellen müssen, indem Sie einen einzelnen Docker-Host erstellen.
 
 -   **Benutzerdefiniertes Docker-Image für App Service**: Hiermit können Sie Docker-Container von einer Containerregistrierung oder einen Kundencontainer verwenden, wenn Sie eine Web-App unter Linux bereitstellen.
 
-    >**Verwendung**: Wenn Sie eine Web-App unter Linux für ein Docker-Image bereitstellen.
+    >**Einsatzgebiete**: Wenn Sie eine Web-App unter Linux für ein Docker-Image bereitstellen.
 
-    >**Erste Schritte**: [Verwenden eines benutzerdefinierten Docker-Image für App Service unter Linux](../../app-service/containers/quickstart-docker-go.md).
+    >**Erste Schritte**: [Verwenden eines benutzerdefinierten Docker-Image für App Service unter Linuxx](../../app-service/containers/quickstart-docker-go.md).
 
 ### <a name="authentication"></a>Authentifizierung
 
@@ -160,13 +160,13 @@ Es ist wichtig, nicht nur zu wissen, wer Ihre Anwendungen verwendet, sondern auc
 
 -   **Azure Active Directory (Azure AD)**: Der mehrinstanzenfähige, cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Sie können das einmalige Anmelden (SSO) zu Ihren Anwendungen hinzufügen, indem Sie in Azure AD integrieren. Sie können auf Verzeichniseigenschaften zugreifen, indem Sie direkt die Azure AD Graph-API oder die Microsoft Graph-API verwenden. Sie können mit Azure AD-Unterstützung für das OAuth2.0-Autorisierungsframework und Open ID Connect integrieren, indem Sie native HTTP/REST-Endpunkte und die Azure AD-Authentifizierungsbibliotheken für mehrere Plattformen verwenden.
 
-    >**Verwendung**: Wenn Sie SSO bereitstellen möchten, arbeiten Sie mit graphbasierten Daten, oder authentifizieren Sie domänenbasierte Benutzer.
+    >**Einsatzgebiete**: Wenn Sie SSO bereitstellen, mit graphbasierten Daten arbeiten oder domänenbasierte Benutzer authentifizieren möchten.
 
     >**Erste Schritte**: Weitere Informationen finden Sie im [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v1-overview.md).
 
--   **App Service-Authentifizierung**: Wenn Sie App Service zum Hosten Ihrer App auswählen, erhalten Sie auch integrierte Unterstützung für Azure AD, zusammen mit Identitätsanbietern aus sozialen Netzwerken wie Facebook, Google, Microsoft und Twitter.
+-   **App Service-Authentifizierung**: Wenn Sie App Service zum Hosten Ihrer App auswählen, erhalten Sie auch integrierte Authentifizierungsunterstützung für Azure AD, zusammen mit Identitätsanbietern aus sozialen Netzwerken wie Facebook, Google, Microsoft und Twitter.
 
-    >**Verwendung**: Wenn Sie die Authentifizierung in einer App Service-App mithilfe von Azure AD, Identitätsanbietern aus sozialen Netzwerken oder beidem aktivieren möchten.
+    >**Einsatzgebiete**: Wenn Sie die Authentifizierung in einer App Service-App mithilfe von Azure AD, Identitätsanbietern aus sozialen Netzwerken oder beidem aktivieren möchten.
 
     >**Erste Schritte**: Weitere Informationen zur Authentifizierung in App Service finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../../app-service/app-service-authentication-overview.md).
 
@@ -188,7 +188,7 @@ Wenn Ihre Anwendung in Azure eingerichtet ist und ausgeführt wird, müssen Sie 
 
 Unabhängig davon, ob Azure VMs bereitstellt oder Ihre Web-Apps mit Continuous Integration veröffentlicht, ist Azure in die meisten der gängigen DevOps-Tools integrierbar. Dank der Unterstützung für Tools wie Jenkins, GitHub, Puppet, Chef, TeamCity, Ansible, Azure DevOps u.a. können Sie mit den Tools arbeiten, über die Sie bereits verfügen, und die bisherige Benutzerfreundlichkeit maximieren.
 
->**Jetzt testen:**[Testen Sie mehrere der DevOps-Integrationen](https://azure.microsoft.com/try/devops/).
+>**Jetzt testen:** [Testen Sie mehrere der DevOps-Integrationen](https://azure.microsoft.com/try/devops/).
 
 >**Erste Schritte**: DevOps-Optionen für eine App Service-App können Sie hier anzeigen: [Kontinuierliche Bereitstellung in Azure App Service](../../app-service/app-service-continuous-deployment.md).
 
@@ -207,7 +207,7 @@ Es ist zwar unwahrscheinlich aber nicht unmöglich, dass ein gesamtes Rechenzent
 
 Einige Dienste, wie VM und App Services, verwenden [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md), um die Unterstützung in mehreren Regionen mit Failover zwischen Regionen zu ermöglichen, um Unternehmensanwendungen mit hoher Verfügbarkeit zu unterstützen. Ein Beispiel finden Sie unter [Azure-Referenzarchitektur: Ausführen einer Webanwendung in mehreren Regionen](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
->**Verwendung**: Wenn Sie über Unternehmensanwendungen und Anwendungen mit hoher Verfügbarkeit verfügen, die vom Failover und der Replikation profitieren.
+>**Einsatzgebiete**: Wenn Sie über Unternehmensanwendungen und Anwendungen mit hoher Verfügbarkeit verfügen, die vom Failover und der Replikation profitieren.
 
 ## <a name="how-do-i-manage-my-applications-and-projects"></a>Wie verwalte ich meine Anwendungen und Projekte?
 
@@ -219,7 +219,7 @@ Azure bietet zwei Möglichkeiten zum Verwalten Ihrer Anwendungen und Dienste üb
 
 -   [Azure-Befehlszeilenschnittstelle (CLI)](../../xplat-cli-install.md): Hiermit können Sie eine Verbindung mit einem Azure-Abonnement herstellen und verschiedene Tasks für Azure-Ressourcen über die Befehlszeile programmieren.
 
--   [Azure PowerShell](../../powershell-install-configure.md): Bietet eine Reihe von Modulen mit Cmdlets, die es Ihnen ermöglichen, Azure-Ressourcen zu verwalten, indem Sie Windows PowerShell verwenden.
+-   [Azure PowerShell:](../../powershell-install-configure.md) Bietet eine Reihe von Modulen mit Cmdlets, die es Ihnen ermöglichen, Azure-Ressourcen zu verwalten, indem Sie Windows PowerShell verwenden.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -245,13 +245,13 @@ Dienste wie [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Das Ausführen Ihrer App in Azure umfasst wahrscheinlich das Arbeiten mit mehreren Azure-Diensten, die alle dem gleichen Lebenszyklus folgen und als eine logische Einheit betrachtet werden können. Eine Web-App könnte beispielsweise die Dienste Web-Apps, SQL-Datenbank, Storage, Azure Redis Cache und Azure Content Delivery Network verwenden. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
+Das Ausführen Ihrer App in Azure umfasst wahrscheinlich das Arbeiten mit mehreren Azure-Diensten, die alle dem gleichen Lebenszyklus folgen und als eine logische Einheit betrachtet werden können. Eine Web-App könnte beispielsweise die Dienste Web-Apps, SQL-Datenbank, Storage, Azure Cache für Redis und Azure Content Delivery Network verwenden. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 
 Zusätzlich zur logischen Gruppierung und dem Verwalten von zugehörigen Ressourcen umfasst Azure Resource Manager Bereitstellungsfunktionen, mit deren Hilfe Sie die Bereitstellung und die Konfiguration zugehöriger Ressourcen anpassen können. Beispielsweise können Sie mithilfe von Resource Manager eine Anwendung bereitstellen und konfigurieren, die aus mehreren virtuellen Computern, einem Lastenausgleich und einer Azure SQL-Datenbank als einzelne Einheit besteht.
 
 Sie entwickeln diese Bereitstellungen, indem Sie eine Azure Resource Manager-Vorlage verwenden, einem JSON-formatierten Dokument. Mit Vorlagen können Sie eine Bereitstellung definieren und Ihre Anwendungen verwalten, indem Sie deklarative Vorlagen anstelle von Skripts verwenden. Ihre Vorlagen können für unterschiedliche Umgebungen geeignet sein, z.B. Testing, Staging und Produktion. Beispielsweise können Sie durch die Verwendung von Vorlagen eine Schaltfläche zu einem GitHub-Repository hinzufügen, die den Code im Repository für eine Reihe von Azure-Diensten mit einem einzigen Klick bereitstellt.
 
->**Verwendung**:Verwenden Sie Resource Manager-Vorlagen, wenn Sie eine vorlagenbasierte Bereitstellung für Ihre App wünschen, die Sie programmgesteuert verwalten können, indem Sie REST APIs, die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwenden.
+>**Einsatzgebiete**: Verwenden Sie Resource Manager-Vorlagen, wenn Sie eine vorlagenbasierte Bereitstellung für Ihre App wünschen, die Sie programmgesteuert verwalten können, indem Sie REST APIs, die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwenden.
 
 >**Erste Schritte**: Erste Schritte zum Verwenden von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
 
@@ -289,7 +289,7 @@ Wenn Sie den Zugriff auf Azure-Ressourcen gewähren, ist es empfehlenswert, Benu
 
 -   **Dienstprinzipalobjekte**: Zusätzlich zum Bereitstellen des Zugriffs für Benutzerprinzipale und Gruppen können Sie einem Dienstprinzipal den gleichen Zugriff gewähren.
 
-    > **Verwendung**: Wenn Sie programmgesteuert Azure-Ressourcen verwalten oder den Zugriff für Anwendungen gewähren. Weitere Informationen finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals](../../active-directory/develop/howto-create-service-principal-portal.md).
+    > **Einsatzgebiete**: Wenn Sie programmgesteuert Azure-Ressourcen verwalten oder den Zugriff für Anwendungen gewähren. Weitere Informationen finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="tags"></a>Tags
 

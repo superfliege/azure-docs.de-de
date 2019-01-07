@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c0c8740648ad845b58ff0578607f4b5e9c235166
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c32662b446df10649617570c63ce534071ed7d27
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105477"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540315"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
 Sie können zwei Typen von Protokollen für Azure Event Hubs anzeigen:
 
-* **[Aktivitätsprotokolle](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**: Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert.
-* **[Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**: Sie können Diagnoseprotokolle konfigurieren, um einen umfangreicheren Einblick in alle Vorgänge zu erhalten, die im Rahmen des Auftrags ausgeführt werden. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
+* **[Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md)**: Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert.
+* **[Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md)**: Sie können Diagnoseprotokolle konfigurieren, um einen umfangreicheren Einblick in alle Vorgänge zu erhalten, die im Rahmen des Auftrags ausgeführt werden. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
 
 ## <a name="enable-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
 
@@ -54,7 +54,7 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schrit
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt.
 
-Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnoseprotokollkategorien
 
@@ -71,7 +71,7 @@ Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. 
 
 JSON-Zeichenfolgen im Archivprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-NAME | Beschreibung
+NAME | BESCHREIBUNG
 ------- | -------
 TaskName | Beschreibung der Aufgabe, bei der ein Fehler aufgetreten ist
 ActivityId | Interne ID zur Nachverfolgung
@@ -109,7 +109,7 @@ Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 
 JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-NAME | Beschreibung
+NAME | BESCHREIBUNG
 ------- | -------
 ActivityId | Interne ID zur Nachverfolgung
 EventName | Vorgangsname  
