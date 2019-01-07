@@ -21,7 +21,7 @@ ms.lasthandoff: 08/27/2018
 ms.locfileid: "43090495"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-introduction.md)
 > * [Aktuelle Version](introduction.md)
 
