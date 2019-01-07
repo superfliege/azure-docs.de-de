@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: jroth
-ms.openlocfilehash: 0677faa90c73ffe4c0c1c48600c2f1ef2d05eb50
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 298a8597ae111550dfbd44d1e7bd9efb212f08af
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628782"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323216"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Azure-Computer
 
@@ -36,7 +36,7 @@ Die primären Migrationsmethoden sind:
 * Trennen und anschließendes Kopieren der Daten-und Protokolldateien in Azure Blob Storage, dann Verbinden mit SQL Server in der Azure-VM über URL
 * Konvertieren eines lokalen physischen Computers in Hyper-V-VHD, Hochladen in Azure Blob Storage und anschließendes Bereitstellen als neue VM mithilfe des hochgeladenen VHD
 * Versenden einer Festplatte mithilfe des Windows-Import/Export-Diensts
-* Bei einer lokalen AlwaysOn-Bereitstellung: Verwenden des [Assistenten zum Hinzufügen von Azure-Replikaten](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) , um ein Replikat in Azure zu erstellen, und Durchführen eines Failovers, bei dem Benutzer auf die Azure-Datenbankinstanz verwiesen werden
+* Bei einer lokalen Bereitstellung von AlwaysOn-Verfügbarkeitsgruppen: Erstellen eines Replikats in Azure mithilfe des [Assistenten zum Hinzufügen von Azure-Replikaten](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) und anschließendes Durchführen eines Failovers, bei dem Benutzer auf die Azure-Datenbankinstanz verwiesen werden
 * Verwenden der SQL Server- [Transaktionsreplikation](https://msdn.microsoft.com/library/ms151176.aspx) , um die Azure SQL Server-Instanz als Abonnenten zu konfigurieren, und anschließendes Deaktivieren der Replikation, um Benutzer auf die Azure-Datenbankinstanz zu verweisen
 
 > [!TIP]

@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer App Service-Umgebung v1
+title: 'Erstellen einer App Service-Umgebung v1: Azure'
 description: Beschreibung der Erstellung von App Service-Umgebungen v1
 services: app-service
 documentationcenter: ''
@@ -12,14 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/11/2017
+ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 1df3b790d0c6c0f597a8559551ff5e42c9f110e4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 9bc796c4d0d449f72dc3234bc2825554eafaf77f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230266"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339891"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Erstellen einer App Service-Umgebung v1 
 
@@ -55,21 +56,21 @@ Um eine App Service-Umgebung v1 zu erstellen, müssen Sie den Azure Marketplace 
 4. Treffen Sie Ihre Auswahl für „Virtuelles Netzwerk“ und „Speicherort“. Sie können ein neues VNET erstellen oder ein bereits vorhandenes VNET auswählen. Wenn Sie ein neues VNET auswählen, können Sie einen Namen und Speicherort angeben. Das neue VNET hat den Adressbereich 192.168.250.0/23 und ein Subnetz namens **default**, das als 192.168.250.0/24 definiert ist. Sie können auch einfach ein bereits vorhandenes klassisches oder Resource Manager-VNET auswählen. Die Auswahl des VIP-Typs bestimmt, ob auf Ihre ASE ein direkter Zugriff aus dem Internet möglich ist (extern) oder ob ein interner Load Balancer (ILB) verwendet wird. Mehr hierzu erfahren Sie unter [Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung][ILBASE]. Wenn Sie einen VIP-Adresstyp des Typs „Extern“ auswählen, können Sie auswählen, mit wie vielen externen IP-Adressen das System für IPSSL-Zwecke erstellt wird. Bei Auswahl von „Intern“ müssen Sie die Unterdomäne angeben, die Ihrer ASE verwenden soll. ASEs können in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden. Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das VNET vorab erstellen. Bei Auswahl eines bereits bestehenden VNET müssen Sie während der Erstellung der ASE ein neues Subnetz erstellen. **Eine vorab erstelltes Subnetz kann nicht im Portal verwendet werden. Sie können eine ASE mit einem bereits vorhandenen Subnetz erstellen, wenn Sie Ihre ASE mithilfe einer Resource Manager-Vorlage erstellen.** Zum Erstellen einer App anhand einer Vorlage befolgen Sie die Angaben unter [Erstellen einer App Service-Umgebung aus einer Vorlage][ILBAseTemplate] und [Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen][ASEfromTemplate].
 
 ### <a name="details"></a>Details
-Eine ASE wird mit zwei Front-Ends und zwei Workern erstellt. Die Front-Ends agieren als HTTP/HTTPS-Endpunkte und senden Datenverkehr an die Workers, d.h. die Rollen, die Ihre Apps hosten. Sie können die Menge nach der Erstellung der ASE anpassen und sogar automatische Skalierungsregeln für diese Ressourcenpools einrichten. Weitere Informationen zur manuellen Skalierung, Verwaltung und Überwachung von App Service-Umgebungen finden Sie unter [Konfigurieren einer App Service-Umgebung][ASEConfig]. 
+Eine ASE wird mit zwei Front-Ends und zwei Workern erstellt. Die Front-Ends agieren als HTTP/HTTPS-Endpunkte und senden Datenverkehr an die Workers, d.h. die Rollen, die Ihre Apps hosten. Sie können die Menge nach der Erstellung der ASE anpassen und sogar automatische Skalierungsregeln für diese Ressourcenpools einrichten. Weitere Informationen zur manuellen Skalierung, Verwaltung und Überwachung einer App Service-Umgebung finden Sie hier: [Konfigurieren einer App Service-Umgebung][ASEConfig] 
 
 Nur die eine ASE darf im Subnetz vorhanden sein, das von der ASE verwendet wird. Das Subnetz kann für nichts anderes als die ASE verwendet werden.
 
 ### <a name="after-app-service-environment-v1-creation"></a>Nach dem Erstellen einer App Service-Umgebung v1
 Nach der Erstellung einer App Service-Umgebung können Sie die folgenden Einstellungen anpassen:
 
-* Anzahl der Front-Ends (Minimum: 2)
-* Anzahl der Worker (Minimum: 2)
+* Anzahl von Front-Ends (Minimum: 2)
+* Anzahl von Workern (Minimum: 2)
 * Menge der für IP-SSL verfügbaren IP-Adressen
 * Größen der Compute-Ressourcen, die von den Front-Ends oder den Workern verwendet werden (Mindestgröße für Front-Ends ist P2)
 
-Weitere Informationen zur manuellen Skalierung, Verwaltung und Überwachung von App Service-Umgebungen finden Sie unter [Konfigurieren einer App Service-Umgebung][ASEConfig]. 
+Weitere Informationen zur manuellen Skalierung, Verwaltung und Überwachung von App Service-Umgebungen finden Sie hier: [Konfigurieren einer App Service-Umgebung][ASEConfig] 
 
-Weitere Informationen zur automatischen Skalierung finden Sie in diesem Leitfaden: [Konfigurieren der automatischen Skalierung für eine App Service-Umgebung][ASEAutoscale].
+Informationen zur automatischen Skalierung finden Sie in der folgenden Anleitung: [Konfigurieren der Autoskalierung für eine App Service-Umgebung][ASEAutoscale]
 
 Es gibt zusätzliche Abhängigkeiten, die nicht zur Anpassung zur Verfügung stehen, wie beispielsweise Datenbank und Speicher. Diese werden von Azure verwaltet und sind im System enthalten. Der Systemspeicher unterstützt bis zu 500 GB für die gesamte App Service-Umgebung, und die Datenbank wird von Azure nach Bedarf an die Staffelung des Systems angepasst.
 
@@ -85,8 +86,8 @@ Informationen zum Einstieg in App Service-Umgebungen v1 finden Sie unter [Einfü
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/ 
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md
-[ILBAseTemplate]: http://azure.microsoft.com/documentation/templates/201-web-app-ase-create/
+[ILBAseTemplate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/
 [ASEfromTemplate]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

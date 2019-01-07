@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6e31062e3965c9ed5a0b24e822f0ec14234cec1c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634072"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435071"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion mit Apache Hive in HDInsight
 
@@ -29,9 +29,9 @@ Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) 
 
     Die meisten Schritte in diesem Dokument funktionieren sowohl in Windows- als auch in Linux-basierten Clustern. Die Schritte zum Hochladen der kompilierten UDF in den Cluster und ihrer Ausführung sind jedoch spezifisch für Linux-basierte Cluster. Links zu Informationen, die mit Windows-basierten Clustern verwendet werden können, sind angegeben.
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 oder höher (oder eine entsprechende Anwendung wie OpenJDK)
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 oder höher (oder eine entsprechende Anwendung wie OpenJDK)
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * Ein Text-Editor oder eine Java-IDE
 
@@ -213,7 +213,7 @@ Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) 
     ```
 
     > [!NOTE]
-    > In diesem Beispiel wird davon ausgegangen, dass Azure Storage als Standardspeicher für den Cluster verwendet wird. Wenn im Cluster stattdessen Data Lake Store verwendet wird, ändern Sie den Wert `wasb:///` in `adl:///`.
+    > In diesem Beispiel wird davon ausgegangen, dass Azure Storage als Standardspeicher für den Cluster verwendet wird. Wenn im Cluster stattdessen Data Lake Storage verwendet wird, ändern Sie den Wert `wasb:///` in `adl:///`.
 
 3. Verwenden Sie die UDF, um aus einer Tabelle abgerufene Werte in Zeichenfolgen mit Kleinbuchstaben zu konvertieren.
 
@@ -240,6 +240,6 @@ Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Andere Möglichkeiten zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md).
+Andere Möglichkeiten zum Arbeiten mit Hive finden Sie unter [Verwenden von Apache Hive mit HDInsight](hdinsight-use-hive.md).
 
-Weitere Informationen zu benutzerdefinierten Hive-Funktionen finden Sie im Abschnitt [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Hive-Operatoren und benutzerdefinierte Funktionen) des Hive-Wikis unter apache.org.
+Weitere Informationen zu benutzerdefinierten Hive-Funktionen finden Sie im Abschnitt [Apache Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Apache Hive-Operatoren und benutzerdefinierte Funktionen) des Hive-Wikis auf „apache.org“.

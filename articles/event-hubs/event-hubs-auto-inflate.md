@@ -1,5 +1,5 @@
 ---
-title: Automatische Erweiterung der Azure Event Hub-Durchsatzeinheiten | Microsoft-Dokumentation
+title: Automatisches zentrales Hochskalieren von Durchsatzeinheiten – Azure Event Hubs | Microsoft-Dokumentation
 description: Aktivieren der automatischen Vergrößerung in einem Namespace zur automatischen Erweiterung der Durchsatzeinheiten
 services: event-hubs
 documentationcenter: na
@@ -10,19 +10,19 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987000"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408158"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatische Erweiterung der Azure Event Hub-Durchsatzeinheiten
-
 Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher nimmt die Event Hubs-Nutzung häufig zu, nachdem mit der Nutzung des Diensts begonnen wurde. Für solche Nutzung müssen die vordefinierten [Durchsatzeinheiten](event-hubs-features.md#throughput-units) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:
 
 * Die Datenerfassungsrate überschreitet die festgelegten Durchsatzeinheiten.
@@ -47,15 +47,25 @@ Sie können die automatische Vergrößerung in einem Event Hubs-Namespace mit ei
 
 ### <a name="enable-auto-inflate-through-the-portal"></a>Aktivieren der automatischen Vergrößerung über das Portal
 
-Sie können das Feature zur automatischen Vergrößerung beim Erstellen eines Event Hubs-Namespace aktivieren:
+
+#### <a name="enable-at-the-time-of-creation"></a>Aktivieren zum Zeitpunkt der Erstellung 
+Sie können die Funktion für die automatische Vergrößerung aktivieren, **wenn Sie einen Event Hubs-Namespace erstellen**:
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![Aktivieren der automatischen Vergrößerung zum Zeitpunkt der Event Hub-Erstellung](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 Wenn diese Option aktiviert ist, können Sie mit wenigen Durchsatzeinheiten beginnen und die Anzahl mit zunehmenden Nutzungsanforderungen anpassen. Die Obergrenze für die Vergrößerung hat keine direkte Auswirkungen auf den Preis. Dieser hängt von der Anzahl von genutzten Durchsatzeinheiten pro Stunde ab.
 
-Sie können die automatische Vergrößerung auch über die Option **Skalieren** im Bereich für Einstellungen im Portal aktivieren:
+#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Aktivieren der automatischen Vergrößerung für einen vorhandenen Event Hub
+Mithilfe der folgenden Anweisungen können Sie auch die Funktion der automatischen Vergrößerung aktivieren und deren Einstellungen ändern: 
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+1. Wählen Sie auf der Seite **Event Hubs-Namespace** die Option **Deaktiviert** unter **Auto-inflate throughput units**  (Durchsatzeinheiten automatisch vergrößern) aus.  
+
+    ![Auswählen von Durchsatzeinheiten auf der Seite des Event Hubs-Namespace](./media/event-hubs-auto-inflate/select-throughput-units.png)
+2. Aktivieren Sie auf der Seite **Scale Settings** (Skalierungseinstellungen) das Kontrollkästchen **Aktivieren** (sofern die Autoskalierungsfunktion nicht aktiviert war).
+
+    ![Auswählen von „Aktivieren“](./media/event-hubs-auto-inflate/scale-settings.png)
+3. Geben Sie die **maximale** Anzahl von Durchsatzeinheiten ein, oder verwenden Sie die Scrollleiste, um den Wert festzulegen. 
+4. (optional) Aktualisieren Sie die **minimale** Anzahl von Durchsatzeinheiten am oberen Rand dieser Seite. 
 
 
 > [!NOTE]

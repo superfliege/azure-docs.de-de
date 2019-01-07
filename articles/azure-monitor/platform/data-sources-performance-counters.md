@@ -1,6 +1,6 @@
 ---
-title: Sammeln und Analysieren von Leistungsindikatoren in Azure Log Analytics | Microsoft-Dokumentation
-description: Daten aus Leistungsindikatoren werden von Log Analytics gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im Arbeitsbereich gespeichert werden und wie sie im Azure-Portal analysiert werden können.
+title: Sammeln und Analysieren von Leistungsindikatoren in Azure Monitor | Microsoft-Dokumentation
+description: Leistungsindikatoren werden von Azure Monitor gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im Arbeitsbereich gespeichert werden und wie sie im Azure-Portal analysiert werden können.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -8,29 +8,27 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 11/28/2018l
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: ffc3443c0c4bca214cc576e1345ad09874287426
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336476"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438369"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows- und Linux-Leistungsindikatoren in Log Analytics
-Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Log Analytics kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Log Analytics Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
+Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
 
 ![Leistungsindikatoren](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
-Sie konfigurieren Leistungsindikatoren über das [Menü „Daten“ in den Log Analytics-Einstellungen](agent-data-sources.md#configuring-data-sources).
+Sie konfigurieren Leistungsindikatoren über das [Menü „Daten“ in den erweiterten Einstellungen](agent-data-sources.md#configuring-data-sources).
 
-Wenn Sie die Windows- oder Linux-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen.  Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.  Stellen Sie sicher, dass alle Leistungsindikatoren aktiviert sind, die Sie anfänglich erstellen möchten, und klicken Sie dann auf **Ausgewählte Leistungsindikatoren hinzufügen**.
+Wenn Sie die Windows- oder Linux-Leistungsindikatoren zum ersten Mal für einen neuen Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen.  Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.  Stellen Sie sicher, dass alle Leistungsindikatoren aktiviert sind, die Sie anfänglich erstellen möchten, und klicken Sie dann auf **Ausgewählte Leistungsindikatoren hinzufügen**.
 
 Sie können für Windows-Leistungsindikatoren eine bestimmte Instanz für jeden Leistungsindikator auswählen. Bei Linux-Leistungsindikatoren gilt, dass die Instanz eines Indikators, die Sie wählen, für alle untergeordneten Indikatoren des übergeordneten Indikators gilt. Die folgende Tabelle zeigt die allgemeinen Instanzen, die jeweils für die Linux- und Windows-Leistungsindikatoren verfügbar sind.
 
@@ -90,7 +88,7 @@ Die in diesem Element verwendeten Parameter werden in der folgenden Tabelle besc
 | interval | Häufigkeit, mit der die Indikatoren des Objekts gesammelt werden. |
 
 
-Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in der Konfigurationsdatei angeben können.  Für bestimmte Anwendungen stehen weitere Indikatoren zur Verfügung. Siehe hierzu [Sammeln von Leistungsindikatoren für Linux-Anwendungen in Log Analytics](data-sources-linux-applications.md).
+Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in der Konfigurationsdatei angeben können.  Für bestimmte Anwendungen stehen weitere Indikatoren zur Verfügung. Diese werden unter [Collect performance counters for Linux applications in Azure Monitor (Sammeln von Leistungsindikatoren für Linux-Anwendungen in Azure Monitor)](data-sources-linux-applications.md) beschrieben.
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
@@ -184,7 +182,7 @@ Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
     </source>
 
 ## <a name="data-collection"></a>Datensammlung
-Log Analytics sammelt die Daten aller angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, sondern die Rohdaten stehen während des durch Ihr Abonnement festgelegten Zeitraums in allen Protokollsuchansichten zur Verfügung.
+Azure Monitor sammelt alle angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, und die Rohdaten stehen während des durch Ihr Abonnement festgelegten Zeitraums in allen Protokollabfrageansichten zur Verfügung.
 
 ## <a name="performance-record-properties"></a>Eigenschaften von Leistungsdatensätzen
 Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.
@@ -205,8 +203,8 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-searches-with-performance-records"></a>Protokollsuchvorgänge mit Leistungsdatensätzen
-Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Leistungsdatensätze abrufen.
+## <a name="log-queries-with-performance-records"></a>Protokollabfragen mit Leistungsdatensätzen
+Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit denen Leistungsdatensätze abgerufen werden.
 
 | Abfragen | BESCHREIBUNG |
 |:--- |:--- |
@@ -227,5 +225,5 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Sammeln von Leistungsindikatoren aus Linux-Anwendungen wie](data-sources-linux-applications.md) MySQL und Apache HTTP Server.
-* Erfahren Sie mehr über [Protokollsuchvorgänge](../../log-analytics/log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
-* Exportieren Sie gesammelte Daten nach [Power BI](../../log-analytics/log-analytics-powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.
+* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
+* Exportieren Sie gesammelte Daten nach [Power BI](powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.

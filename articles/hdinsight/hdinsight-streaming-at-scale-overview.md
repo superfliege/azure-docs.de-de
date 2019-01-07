@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 6588d65a4f19c06e3ee4990aba226dbd11119c91
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a86902d772226be136778d200a37c451b7b7e9a5
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016249"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407251"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
 
 Big Data-Echtzeitlösungen agieren auf der Grundlage bewegter Daten. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
 
-Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Event Queuing* genannt) von einem Dienst wie [Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) gehandhabt. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsschicht* mithilfe eines Echtzeitanalysesystems wie [Storm](storm/apache-storm-overview.md) oder [Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
+Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Ereignisqueuing* genannt) von einem Dienst wie [Apache Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) verarbeitet. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsebene* mithilfe eines Echtzeitanalysesystems wie [Apache Storm](storm/apache-storm-overview.md) oder [Apache Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
 
 ![HDInsight-Streamingmuster](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ Weitere Informationen finden Sie unter [Was ist Apache Storm in Azure HDInsight?
 
 Spark Streaming ist eine Erweiterung für Spark, mit der Sie den gleichen Code wie für die Batchverarbeitung verwenden können. Batchabfragen und interaktive Abfragen können in einer einzelnen Anwendung kombiniert werden. Im Gegensatz zu Storm steht in Spark Streaming eine statusbehaftete Semantik vom Typ „Exactly-Once“ zur Verfügung. In Kombination mit der [Kafka Direct-API](http://spark.apache.org/docs/latest/streaming-kafka-integration.html), die sicherstellt, dass alle Kafka-Daten genau einmal von Spark Streaming empfangen werden, können End-to-End-Garantien vom Typ „Exactly-Once“ erreicht werden. Zu den Stärken von Spark Streaming zählen seine fehlertoleranten Funktionen und die damit verbundene schnelle Wiederherstellung fehlerhafter Knoten bei Verwendung mehrerer Knoten im Cluster.
 
-Weitere Informationen finden Sie in der [Übersicht zu Spark-Streaming](hdinsight-spark-streaming-overview.md).
+Weitere Informationen finden Sie in der [Übersicht über Apache Spark-Streaming](hdinsight-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Skalieren eines Clusters
 
@@ -65,5 +65,5 @@ Die drei Parameter können auf der Clusterebene (für alle Anwendungen, die im C
 
 * [Erste Schritte mit Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele](storm/apache-storm-tutorial-get-started-linux.md)
 * [Beispieltopologien für Apache Storm in HDInsight](storm/apache-storm-example-topology.md)
-* [Einführung in Spark in HDInsight](spark/apache-spark-overview.md)
+* [Einführung in Apache Spark in HDInsight](spark/apache-spark-overview.md)
 * [Einstieg in Apache Kafka in HDInsight](kafka/apache-kafka-get-started.md)

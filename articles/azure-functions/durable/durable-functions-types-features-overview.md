@@ -8,18 +8,18 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/04/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 265314ebf2568bd586934d371e1e6c1d74e0b9bb
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637015"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336525"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Übersicht der Funktionstypen und Features für permanente Funktionen (Azure Functions)
 
-Azure Durable Functions stellt die zustandsbehaftete Orchestrierung der Funktionsausführung bereit. Eine permanente Funktion stellt eine Lösung dar, die sich aus verschiedenen Azure-Funktionen zusammensetzt. Jede dieser Funktionen kann im Rahmen einer Orchestrierung verschiedene Rollen spielen. Das folgende Dokument bietet eine Übersicht der Funktionstypen, die an einer permanenten Funktionsorchestrierung beteiligt sind. Es enthält darüber hinaus einige allgemeine Muster zum Verbinden von Funktionen untereinander.  Um sofort zu beginnen, erstellen Sie Ihre erste dauerhafte Funktion in [C#](durable-functions-create-first-csharp.md) oder [JavaScript](quickstart-js-vscode.md).
+Durable Functions stellt eine zustandsbehaftete Orchestrierung der Funktionsausführung bereit. Eine permanente Funktion stellt eine Lösung dar, die sich aus verschiedenen Azure-Funktionen zusammensetzt. Jede dieser Funktionen kann im Rahmen einer Orchestrierung verschiedene Rollen spielen. Das folgende Dokument bietet eine Übersicht der Funktionstypen, die an einer permanenten Funktionsorchestrierung beteiligt sind. Es enthält darüber hinaus einige allgemeine Muster zum Verbinden von Funktionen untereinander.  Um sofort zu beginnen, erstellen Sie Ihre erste Durable Function in [C#](durable-functions-create-first-csharp.md) oder [JavaScript](quickstart-js-vscode.md).
 
 ![Typen von permanenten Funktionen][1]  
 
@@ -27,15 +27,17 @@ Azure Durable Functions stellt die zustandsbehaftete Orchestrierung der Funktion
 
 ### <a name="activity-functions"></a>Aktivitätsfunktionen
 
-Aktivitätsfunktionen sind die grundlegende Arbeitseinheit in einer permanenten Orchestrierung.  Aktivitätsfunktionen sind die Funktionen und Aufgaben, die im Prozess orchestriert werden.  Sie können beispielsweise eine permanente Funktion zum Bearbeiten einer Bestellung erstellen – Überprüfen des Lagerbestands, Belasten des Kunden und Erstellen einer Lieferung.  Jede dieser Aufgaben wäre eine Aktivitätsfunktion.  Für Aktivitätsfunktionen bestehen hinsichtlich der Arbeiten, die mit ihnen ausgeführt werden können, keine Einschränkungen.  Sie können in jeder Sprache erstellt werden, die von Azure Functions unterstützt wird.  Das permanente Aufgabenframework garantiert, dass jede aufgerufene Aktivitätsfunktion mindestens einmal in einer Orchestrierung ausgeführt wird.
+Aktivitätsfunktionen sind die grundlegende Arbeitseinheit in einer permanenten Orchestrierung.  Aktivitätsfunktionen sind die Funktionen und Aufgaben, die im Prozess orchestriert werden.  Sie können beispielsweise eine permanente Funktion zum Bearbeiten einer Bestellung erstellen – Überprüfen des Lagerbestands, Belasten des Kunden und Erstellen einer Lieferung.  Jede dieser Aufgaben wäre eine Aktivitätsfunktion.  Für Aktivitätsfunktionen bestehen hinsichtlich der Arbeiten, die mit ihnen ausgeführt werden können, keine Einschränkungen.  Sie können in jeder [von Durable Functions unterstützten Sprache](durable-functions-overview.md#language-support) erstellt werden. Das Durable Task Framework garantiert, dass jede aufgerufene Aktivitätsfunktion mindestens einmal in einer Orchestrierung ausgeführt wird.
 
-Eine Aktivitätsfunktion muss durch einen [Aktivitätstrigger](durable-functions-bindings.md#activity-triggers) ausgelöst werden.  Diese Funktion empfängt einen [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) als Parameter. Sie können den Trigger auch an beliebige andere Objekte binden, um Eingaben an die Funktion zu übergeben.  Ihre Aktivitätsfunktion kann außerdem Werte an den Orchestrator zurückgeben.  Wenn von einer Aktivitätsfunktion viele Werte gesendet oder zurückgegeben werden, können Sie [Tupels oder Arrays nutzen](durable-functions-bindings.md#passing-multiple-parameters).  Aktivitätsfunktionen können nur von einer Orchestrierungsinstanz getriggert werden.  Zwar können eine Aktivitätsfunktion und eine andere Funktion (etwa eine durch HTTP ausgelöste Funktion) Code gemein haben, jede Funktion kann jedoch nur einen Trigger aufweisen.
+Eine Aktivitätsfunktion muss durch einen [Aktivitätstrigger](durable-functions-bindings.md#activity-triggers) ausgelöst werden.  .NET-Funktionen empfangen einen [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) als Parameter. Sie können den Trigger auch an beliebige andere Objekte binden, um Eingaben an die Funktion zu übergeben. In JavaScript kann über die `<activity trigger binding name>`-Eigenschaft des [`context.bindings`-Objekts](../functions-reference-node.md#bindings) auf die Eingabe zugegriffen werden.
+
+Ihre Aktivitätsfunktion kann außerdem Werte an den Orchestrator zurückgeben.  Wenn von einer Aktivitätsfunktion viele Werte gesendet oder zurückgegeben werden, können Sie [Tupels oder Arrays nutzen](durable-functions-bindings.md#passing-multiple-parameters).  Aktivitätsfunktionen können nur von einer Orchestrierungsinstanz getriggert werden.  Zwar können eine Aktivitätsfunktion und eine andere Funktion (etwa eine durch HTTP ausgelöste Funktion) Code gemein haben, jede Funktion kann jedoch nur einen Trigger aufweisen.
 
 Weitere Informationen und Beispiele finden sich im [Artikel zu Bindungen für permanente Funktionen](durable-functions-bindings.md#activity-triggers).
 
 ### <a name="orchestrator-functions"></a>Orchestratorfunktionen
 
-Orchestratorfunktionen bilden das Herzstück aller permanenten Funktionen.  Orchestratorfunktionen beschreiben die Art und die Reihenfolge, in denen Aktionen ausgeführt werden.  Orchestratorfunktionen beschreiben die Orchestrierung in Code (C# oder JavaScript), wie in der [Übersicht der permanenten Funktionen](durable-functions-overview.md) dargestellt.  Eine Orchestrierung kann viele verschiedene Aktionsarten aufweisen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers).  
+Orchestratorfunktionen bilden das Herzstück aller permanenten Funktionen.  Orchestratorfunktionen beschreiben die Art und die Reihenfolge, in denen Aktionen ausgeführt werden.  Orchestratorfunktionen beschreiben die Orchestrierung in Code (C# oder JavaScript), wie in der [Übersicht der permanenten Funktionen](durable-functions-overview.md) dargestellt.  Eine Orchestrierung kann viele verschiedene Aktionstypen umfassen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers).  
 
 Eine Orchestratorfunktion muss durch einen [Orchestrierungstrigger](durable-functions-bindings.md#orchestration-triggers) ausgelöst werden.
 
@@ -79,7 +81,9 @@ Weitere Informationen und Beispiele finden sich im [Artikel zur Fehlerbehandlung
 
 Während eine permanente Orchestrierung im Allgemeinen innerhalb des Kontexts einer einzelnen Funktions-App existiert, gibt es Muster, die Ihnen die übergreifende Koordination von Orchestrierungen über viele Funktions-Apps hinweg ermöglichen.  Auch wenn die App-übergreifende Kommunikation über HTTP erfolgt, ermöglicht es die Verwendung des permanenten Frameworks für jede Aktivität, trotzdem einen übergreifenden permanenten Prozess zwischen zwei Apps aufrecht zu erhalten.
 
-Ein Beispiel einer funktionsübergreifenden App-Orchestrierung in C# finden Sie unten.  Eine Aktivität startet die externe Orchestrierung. Eine andere Aktivität ruft dann den Status ab und gibt ihn zurück.  Der Orchestrator wartet auf den Abschluss des Status, bevor er fortfährt.
+Beispiele für eine funktionsübergreifende App-Orchestrierung in C# und JavaScript finden Sie im Folgenden.  Eine Aktivität startet die externe Orchestrierung. Eine andere Aktivität ruft dann den Status ab und gibt ihn zurück.  Der Orchestrator wartet auf den Abschluss des Status, bevor er fortfährt.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("OrchestratorA")]
@@ -128,6 +132,64 @@ public static async Task<bool> CheckIsComplete([ActivityTrigger] string statusUr
         return response.StatusCode == HttpStatusCode.OK;
     }
 }
+```
+
+#### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    // Do some work...
+
+    // Call a remote orchestration
+    const statusUrl = yield context.df.callActivity("StartRemoteOrchestration", "OrchestratorB");
+
+    // Wait for the remote orchestration to complete
+    while (true) {
+        const isComplete = yield context.df.callActivity("CheckIsComplete", statusUrl);
+        if (isComplete) {
+            break;
+        }
+
+        const waitTime = moment(context.df.currentUtcDateTime).add(1, "m").toDate();
+        yield context.df.createTimer(waitTime);
+    }
+
+    // B is done. Now go do more work...
+});
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, orchestratorName) {
+    const options = {
+        method: "POST",
+        uri: `https://appB.azurewebsites.net/orchestrations/${orchestratorName}`,
+        body: ""
+    };
+
+    const statusUrl = await request(options);
+    return statusUrl;
+};
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, statusUrl) {
+    const options = {
+        method: "GET",
+        uri: statusUrl,
+        resolveWithFullResponse: true,
+    };
+
+    const response = await request(options);
+    // 200 = Complete, 202 = Running
+    return response.statusCode === 200;
+};
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

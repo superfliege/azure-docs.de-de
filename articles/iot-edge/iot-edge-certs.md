@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zu Azure IoT Edge-Zertifikaten | Microsoft-Dokumentation
-description: Informationen zu Azure IoT Edge-Zertifikaten und deren Verwendung.
+title: Zertifikate für Gerätesicherheit – Azure IoT Edge | Microsoft-Dokumentation
+description: Azure IoT Edge verwendet Zertifikate, um Geräte, Module und untergeordnete Geräte zu validieren und sichere Verbindungen zwischen diesen herzustellen.
 author: stevebus
 manager: philmea
 ms.author: stevebus
@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ff85f2c9ef708c7cbac9be4933541f063a6c95b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1cf1411e227363e7dc9d54f04d0c630341f55a6e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568589"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099885"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Details zur Verwendung von Azure IoT Edge-Zertifikaten
 
@@ -51,7 +51,7 @@ In jedem Fall verwendet der Hersteller am Ende dieser Kette ein Zertifikat der Z
 
 ### <a name="device-ca-certificate"></a>Zertifikat der Gerätezertifizierungsstelle
 
-Das Zertifikat der Gerätezertifizierungsstelle wird aus dem letzten Zertifikat der Zwischenzertifizierungsstelle im Prozess generiert und davon signiert. Dieses Zertifikat wird auf dem Edge-Gerät selbst installiert, vorzugsweise in einem sicheren Speicherort wie z.B. einem Hardwaresicherheitsmodul (Hardware Security Module, HSM). Darüber hinaus identifiziert ein Zertifikat der Gerätezertifizierungsstelle eindeutig ein IoT Edge-Gerät. Für IoT Edge kann das Zertifikat der Gerätezertifizierungsstelle andere Zertifikate ausstellen. Das Zertifikat der Gerätezertifizierungsstelle stellt beispielsweise Blattgerätezertifikate aus, mit denen Geräte beim [Azure IoT Hub Device Provisioning-Dienst](..\iot-dps\about-iot-dps.md) authentifiziert werden.
+Das Zertifikat der Gerätezertifizierungsstelle wird aus dem letzten Zertifikat der Zwischenzertifizierungsstelle im Prozess generiert und davon signiert. Dieses Zertifikat wird auf dem Edge-Gerät selbst installiert, vorzugsweise in einem sicheren Speicherort wie z.B. einem Hardwaresicherheitsmodul (Hardware Security Module, HSM). Darüber hinaus identifiziert ein Zertifikat der Gerätezertifizierungsstelle eindeutig ein IoT Edge-Gerät. Für IoT Edge kann das Zertifikat der Gerätezertifizierungsstelle andere Zertifikate ausstellen. Das Zertifikat der Gerätezertifizierungsstelle stellt beispielsweise Blattgerätezertifikate aus, mit denen Geräte beim [Azure IoT Hub Device Provisioning-Dienst](../iot-dps/about-iot-dps.md) authentifiziert werden.
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge-Workloadzertifizierungsstelle
 

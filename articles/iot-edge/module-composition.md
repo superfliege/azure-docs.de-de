@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge-Modulzusammenstellung | Microsoft Docs
+title: Deklarieren von Modulen und Routen mit Bereitstellungsmanifesten – Azure IoT Edge | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie ein Bereitstellungsmanifest deklariert, welche Module auf welche Weise bereitgestellt werden sollen und wie Nachrichtenrouten zwischen ihnen erstellt werden.
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 106ad5d4649b2845327eadd99972d56f1503b3e4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 0b221274923a6270e980d027aadc58154c7054b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584807"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099969"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
 
@@ -137,7 +138,7 @@ Die Quelle gibt an, woher die Nachrichten stammen. IoT Edge kann Nachrichten von
 
 Die Quelleigenschaft kann die folgenden Werte haben:
 
-| Quelle | BESCHREIBUNG |
+| Quelle | Beschreibung |
 | ------ | ----------- |
 | `/*` | Alle Gerät-zu-Cloud-Nachrichten oder Benachrichtigungen über Änderungen am Zwilling, die von Modulen oder Blattgeräten gesendet wurden |
 | `/twinChangeNotifications` | Alle Änderungen am Zwilling (gemeldete Eigenschaften), die von Modulen oder Blattgeräten gesendet wurden |
@@ -171,7 +172,7 @@ Die Senke definiert, wohin die Nachrichten gesendet werden. Nur Module und IoT H
 
 Die Senkeneigenschaft kann die folgenden Werte haben:
 
-| Senke | BESCHREIBUNG |
+| Senke | Beschreibung |
 | ---- | ----------- |
 | `$upstream` | Sendet die Nachricht an IoT Hub |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Sendet die Nachricht an eine bestimmte Eingabe eines bestimmten Moduls |

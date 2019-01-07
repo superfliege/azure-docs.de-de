@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e8cf8de25a35909cb2a0fc94237bfa517c72e685
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634021"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410345"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Entwickeln von Streaming-MapReduce-Programmen für HDInsight mit Python
 
@@ -49,7 +49,7 @@ Mit Hadoop können Sie eine Datei angeben, die die von einem Auftrag verwendete 
 
 * **Eingabe**: Die Komponenten für Mapper und Reducer müssen Eingabedaten von STDIN lesen.
 * **Ausgabe**: Die Komponenten für Mapper und Reducer müssen Ausgabedaten an STDOUT schreiben.
-* **Datenformat**: Die verwendeten und erzeugten Daten müssen ein Schlüssel-/Wertpaar darstellen, das durch ein Tabulatorzeichen getrennt werden muss.
+* **Datenformat:** Die verwendeten und erzeugten Daten müssen ein Schlüssel-/Wertpaar darstellen, das durch ein Tabstoppzeichen getrennt werden muss.
 
 Python kann diese Anforderungen einfach mithilfe des Moduls `sys` zum Lesen von STDIN und mithilfe des Moduls `print` für die Ausgabe an STDOUT behandeln. Der Rest besteht einfach aus der Formatierung der Daten mit einem Tabulatorzeichen (`\t`) zwischen Schlüssel und Wert.
 
@@ -144,7 +144,7 @@ Verwenden Sie das folgende PowerShell-Skript, um Dateien hochzuladen, den Auftra
 
     Dieser Befehl kopiert die Dateien aus dem lokalen System auf den Stammknoten.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i` -Parameter und den Pfad zum privaten Schlüssel angeben. Beispiel: `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
 
 2. Herstellen einer Verbindung zum Cluster mithilfe von SSH:
@@ -170,17 +170,17 @@ Verwenden Sie das folgende PowerShell-Skript, um Dateien hochzuladen, den Auftra
 
     Dieser Befehl besteht aus den folgenden Komponenten:
 
-   * **hadoop-streaming.jar**: Wird verwendet, wenn Streaming-MapReduce-Vorgänge ausgeführt werden. Es verbindet Hadoop mit dem von Ihnen bereitgestellten externen MapReduce-Code.
+   * **hadoop-streaming.jar:** Wird verwendet, wenn MapReduce-Streamingvorgänge ausgeführt werden. Es verbindet Hadoop mit dem von Ihnen bereitgestellten externen MapReduce-Code.
 
-   * **-files**: Fügt die bestimmten Dateien dem MapReduce-Auftrag hinzu.
+   * **-files:** Fügt die festgelegten Dateien dem MapReduce-Auftrag hinzu.
 
-   * **-mapper**: Teilt Hadoop mit, welche Datei als Mapper verwendet werden soll.
+   * **-mapper:** Teilt Hadoop mit, welche Datei als Mapper verwendet werden soll.
 
-   * **-reducer**: Teilt Hadoop mit, welche Datei als Reducer verwendet werden soll.
+   * **-reducer:** Teilt Hadoop mit, welche Datei als Reducer verwendet werden soll.
 
-   * **-input**: Die Eingabedatei, deren Wörter gezählt werden sollen.
+   * **-input:** Die Eingabedatei, deren Wörter gezählt werden sollen.
 
-   * **-output**: Das Verzeichnis, in das die Ausgabe geschrieben wird.
+   * **-output:** Das Verzeichnis, in das die Ausgabe geschrieben wird.
 
     Sobald der MapReduce-Auftrag ausgeführt wird, wird der Prozess als Prozentsatz dargestellt.
 
@@ -199,6 +199,6 @@ Verwenden Sie das folgende PowerShell-Skript, um Dateien hochzuladen, den Auftra
 
 Nachdem Sie erfahren haben, wie Sie Streaming-MapReduce-Aufträge mit HDInsight verwenden, können Sie mithilfe der nachfolgenden Links andere Möglichkeiten für die Arbeit mit Azure HDInsight untersuchen.
 
-* [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
+* [Verwenden von Apache Hive mit HDInsight](hdinsight-use-hive.md)
+* [Verwenden von Apache Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)

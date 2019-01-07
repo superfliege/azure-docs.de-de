@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: e853ea6d05585fa764ad6e019a3a4390ed840263
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: de9186faa9c6228f1938a94016ef449ce8bb1899
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313438"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335930"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
@@ -29,8 +29,8 @@ Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsp
 
 Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
-* **Benutzer mit Leseberechtigung für Sicherheitsfunktionen:** Ein Benutzer, der dieser Rolle angehört, verfügt über Anzeigerechte für Security Center. Der Benutzer kann Empfehlungen, Warnungen, Sicherheitsrichtlinien und Sicherheitszustände anzeigen, jedoch keine Änderungen vornehmen.
-* **Sicherheitsadministrator:** Ein Benutzer, der dieser Rolle angehört, hat dieselben Rechte wie der Benutzer mit Leseberechtigung für Sicherheitsfunktionen und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren und Warnungen und Empfehlungen verwerfen.
+* **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**: Ein Benutzer, der dieser Rolle angehört, verfügt über Anzeigerechte für Security Center. Der Benutzer kann Empfehlungen, Warnungen, Sicherheitsrichtlinien und Sicherheitszustände anzeigen, jedoch keine Änderungen vornehmen.
+* **Sicherheitsadministrator**: Ein Benutzer, der dieser Rolle angehört, hat die gleichen Rechte wie der Benutzer mit Leseberechtigung für Sicherheitsfunktionen und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren sowie Warnungen und Empfehlungen verwerfen.
 
 > [!NOTE]
 > Die beiden Sicherheitsrollen, Benutzer mit Leseberechtigung für Sicherheitsfunktionen und Sicherheitsadministrator, haben nur Zugriff in Security Center. Die Sicherheitsrollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).
@@ -59,7 +59,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security C
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, wie Security Center die rollenbasierte Zugriffssteuerung (RBAC) zum Zuweisen von Berechtigungen für Benutzer nutzt und welche Aktionen für die einzelnen Rollen zulässig sind. Informieren Sie sich als Nächstes über Folgendes, nachdem Sie sich mit den Rollenzuweisungen zum Überwachen des Sicherheitszustands Ihres Abonnements, Bearbeiten von Sicherheitsrichtlinien und Anwenden von Empfehlungen vertraut gemacht haben:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-azure-policy.md)
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md)
 - [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md)
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)

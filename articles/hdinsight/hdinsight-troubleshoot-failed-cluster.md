@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950712"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410277"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
 
@@ -65,7 +65,7 @@ Sie können auch die klassische Azure-Befehlszeilenschnittstelle verwenden.
 ```
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Eine andere Möglichkeit ist die Verwendung von PowerShell. Weitere Informationen finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md).
+Eine andere Möglichkeit ist die Verwendung von PowerShell. Weitere Informationen finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md).
 
 ## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Schritt 2: Überprüfen der HDInsight-Clusterumgebung
 
@@ -117,7 +117,7 @@ Das [Dashboard der Ambari-Benutzeroberfläche](#view-cluster-configuration-setti
 
 ### <a name="check-your-webhcat-service"></a>Überprüfen Ihres WebHCat-Diensts
 
-Ein allgemeines Szenario für Fehler bei Hive-, Pig- oder Sqoop-Aufträgen ist ein Ausfall des [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)-Diensts (oder *Templeton*). WebHCat ist eine REST-Schnittstelle für die Remoteausführung von Aufträgen, z.B. Hive, Pig, Scoop und MapReduce. WebHCat übersetzt die Anforderungen zur Auftragsübermittlung in YARN-Anwendungen und gibt einen Status zurück, der vom YARN-Anwendungsstatus abgeleitet wird.  In den folgenden Abschnitten werden allgemeine WebHCat-HTTP-Statuscodes beschrieben.
+Ein allgemeines Szenario für Fehler bei Apache Hive-, Apache Pig- oder Apache Sqoop-Aufträgen ist ein Ausfall des [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)-Diensts (oder *Templeton*). WebHCat ist eine REST-Schnittstelle für die Remoteausführung von Aufträgen, z.B. Hive, Pig, Scoop und MapReduce. WebHCat übersetzt die Anforderungen zur Auftragsübermittlung in Apache Hadoop-YARN-Anwendungen und gibt einen Status zurück, der vom YARN-Anwendungsstatus abgeleitet wird.  In den folgenden Abschnitten werden allgemeine WebHCat-HTTP-Statuscodes beschrieben.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (Statuscode 502)
 
@@ -143,7 +143,7 @@ Für ein HDInsight-Gateway tritt für Antworten, die länger als zwei Minuten da
 * **webhcat-console.log** ist das stdout-Element des Servers beim Starten.
 * **webhcat-console-error.log** ist das stderr-Element des Serverprozesses.
 
-> [!NOTE]
+> [!NOTE]  
 > Für jede `webhcat.log`-Datei wird täglich ein Rollover durchgeführt, und es werden Dateien mit Namen wie `webhcat.log.YYYY-MM-DD` generiert. Wählen Sie die Datei für den gewünschten Zeitraum aus, den Sie untersuchen.
 
 In den folgenden Abschnitten werden einige mögliche Ursachen für WebHCat-Timeouts beschrieben.
@@ -244,13 +244,13 @@ Ein HDInsight-Cluster generiert Protokolle, die in Azure Tables und Azure Blob S
 
 ### <a name="review-heap-dumps"></a>Überprüfen von Heapdumps
 
-Heapdumps (Heap-Speicherabbilder) enthalten eine Momentaufnahme des Anwendungsarbeitsspeichers, einschließlich der Werte von Variablen zum entsprechenden Zeitpunkt. Dies ist hilfreich beim Diagnostizieren von Problemen, die zur Laufzeit auftreten. Weitere Informationen finden Sie unter [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
+Heapdumps (Heap-Speicherabbilder) enthalten eine Momentaufnahme des Anwendungsarbeitsspeichers, einschließlich der Werte von Variablen zum entsprechenden Zeitpunkt. Dies ist hilfreich beim Diagnostizieren von Problemen, die zur Laufzeit auftreten. Weitere Informationen finden Sie unter [Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
 ## <a name="step-6-check-configuration-settings"></a>Schritt 6: Überprüfen der Konfigurationseinstellungen
 
 HDInsight-Cluster sind mit Standardeinstellungen für verwandte Dienste vorkonfiguriert, z.B. Hadoop, Hive, HBase usw. Es kann sein, dass Sie je nach Clustertyp, Hardwarekonfiguration, Knotenanzahl, Arten von ausgeführten Aufträgen und den verwendeten Daten (sowie der Verarbeitungsweise der Daten) die Konfiguration optimieren müssen.
 
-Detaillierte Anleitungen zum Optimieren von Leistungskonfigurationen für die meisten Szenarien finden Sie unter [Verwenden von Ambari zum Optimieren von HDInsight-Clusterkonfigurationen](hdinsight-changing-configs-via-ambari.md). Wenn Sie Spark verwenden, erfahren Sie mehr unter [Optimieren von Spark-Aufträgen](spark/apache-spark-perf.md). 
+Detaillierte Anleitungen zum Optimieren von Leistungskonfigurationen für die meisten Szenarios finden Sie unter [Verwenden von Apache Ambari zum Optimieren von HDInsight-Clusterkonfigurationen](hdinsight-changing-configs-via-ambari.md). Wenn Sie Spark verwenden, erfahren Sie mehr unter [Optimieren von Apache Spark-Aufträgen](spark/apache-spark-perf.md). 
 
 ## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>Schritt 7: Reproduzieren des Fehlers in einem anderen Cluster
 
@@ -265,8 +265,8 @@ Als Hilfe beim Diagnostizieren der Quelle eines Clusterfehlers können Sie einen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
+* [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
 * [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md)
-* [Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Bekannte Probleme bei Apache Spark-Clustern unter HDInsight](hdinsight-apache-spark-known-issues.md)

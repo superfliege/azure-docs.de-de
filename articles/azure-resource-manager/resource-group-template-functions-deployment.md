@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 12/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 725bc41f96359d4bf0d9d570f73f91dba5da2cab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d802af1d48405518f26f4b52ecc3023cbb15caff
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358233"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407353"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
 
@@ -86,6 +86,8 @@ Wenn das Objekt als Link übergeben wird, z.B. bei Verwendung des **-TemplateUri
 }
 ```
 
+Wenn Sie die Vorlage nicht in einer Ressourcengruppe, sondern [in einem Azure-Abonnement bereitstellen](deploy-to-subscription.md), enthält das Rückgabeobjekt eine `location`-Eigenschaft. Die location-Eigenschaft ist beim Bereitstellen einer lokalen Vorlage oder einer externen Vorlage enthalten.
+
 ### <a name="remarks"></a>Anmerkungen
 
 Sie können „deployment()“ verwenden, um basierend auf dem URI der übergeordneten Vorlage eine Verknüpfung mit einer anderen Vorlage zu erstellen.
@@ -150,6 +152,8 @@ Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
+Eine Vorlage auf Abonnementebene, die die Bereitstellungsfunktion verwendet, finden Sie unter [Subscription deployment function](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json) (Bereitstellungsfunktion für Abonnements). Sie wird mit den Befehlen `az deployment create` oder `New-AzureRmDeployment` bereitgestellt.
+
 <a id="parameters" />
 
 ## <a name="parameters"></a>Parameter
@@ -161,7 +165,7 @@ Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parame
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
+| parameterName |JA |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -277,7 +281,7 @@ Gibt den Wert der Variablen zurück. Der angegebene Variablenname muss im Variab
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| variableName |Ja |Zeichenfolge |Der Name der zurückzugebenden Variable. |
+| variableName |JA |Zeichenfolge |Der Name der zurückzugebenden Variable. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -370,7 +374,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-* Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](resource-group-linked-templates.md).
+* Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
 * Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 * Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen ](resource-group-template-deploy.md).
 

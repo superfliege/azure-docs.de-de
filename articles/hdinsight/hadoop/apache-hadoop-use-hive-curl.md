@@ -9,39 +9,39 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cff24991263ece54c143e5da8a3eb2a9e5b4af18
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c5bf69a2ac6a70410339a5696da53169ca87170f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634497"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407217"
 ---
-# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Ausführen von Hive-Abfragen mit Apache Hadoop in HDInsight mit REST
+# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit REST
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Apache Hadoop in Azure HDInsight-Clustern auszuführen.
+Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Apache Hive-Abfragen mit Apache Hadoop in Azure HDInsight-Clustern auszuführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Linux-basierter Hadoop-Cluster in HDInsight, Version 3.4 oder höher.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Ein REST-Client. In diesem Dokument werden Windows PowerShell und [Curl](http://curl.haxx.se/)-Beispiele verwendet.
+* Ein REST-Client. In diesem Dokument werden Windows PowerShell und [Curl](https://curl.haxx.se/)-Beispiele verwendet.
 
-    > [!NOTE]
-    > Azure PowerShell stellt dedizierte Cmdlets zum Arbeiten mit Hive unter HDInsight bereit. Weitere Informationen finden Sie im Dokument [Verwenden von Hive mit Azure PowerShell](apache-hadoop-use-hive-powershell.md).
+    > [!NOTE]  
+    > Azure PowerShell stellt dedizierte Cmdlets zum Arbeiten mit Hive unter HDInsight bereit. Weitere Informationen finden Sie im Dokument [Verwenden von Apache Hive mit Azure PowerShell](apache-hadoop-use-hive-powershell.md).
 
-Dieses Dokument verwendet außerdem Windows PowerShell und [Jq](http://stedolan.github.io/jq/) zum Verarbeiten der JSON-Daten, die aus REST-Anforderungen zurückgegeben werden.
+Dieses Dokument verwendet außerdem Windows PowerShell und [Jq](https://stedolan.github.io/jq/) zum Verarbeiten der JSON-Daten, die aus REST-Anforderungen zurückgegeben werden.
 
 ## <a id="curl"></a>Ausführen einer Hive-Abfrage
 
-> [!NOTE]
+> [!NOTE]  
 > Wenn Sie cURL oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen.
 >
-> Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Stellen Sie Anforderungen immer über HTTPS (Secure HTTP), um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
+> Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Stellen Sie Anforderungen immer über HTTPS (Secure HTTP), um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
 1. Um die Clusteranmeldung festzulegen, die von den Skripts in diesem Dokument verwendet wird, verwenden Sie einen der folgenden Befehle:
 
@@ -135,7 +135,7 @@ Dieses Dokument verwendet außerdem Windows PowerShell und [Jq](http://stedolan.
    * `DROP TABLE`: Wenn die Tabelle bereits vorhanden ist, wird sie gelöscht.
    * `CREATE EXTERNAL TABLE`: Erstellt eine neue „externe“ Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Das könnte z.B. ein automatisierter Datenupload oder ein anderer MapReduce-Vorgang sein.
      >
      > Durch das Löschen einer externen Tabelle werden **nicht** die Daten, sondern nur die Tabellendefinitionen gelöscht.
@@ -144,7 +144,7 @@ Dieses Dokument verwendet außerdem Windows PowerShell und [Jq](http://stedolan.
    * `STORED AS TEXTFILE LOCATION`: Der Speicherort der Daten (das Verzeichnis „example/data“) und die Information, dass sie als Text gespeichert werden.
    * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Mit dieser Anweisung wird der Wert **3** zurückgegeben, da dieser Wert in drei Zeilen enthalten ist.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Beachten Sie, dass die Leerzeichen zwischen HiveQL-Anweisungen bei Curl durch das Zeichen `+` ersetzt werden. Werte in Anführungszeichen, die ein Leerzeichen enthalten, z. B. das Trennzeichen, dürfen nicht durch `+` ersetzt werden.
 
       Dieser Befehl gibt eine Auftrags-ID zurück, mit der der Status des Auftrags überprüft werden kann.
@@ -177,28 +177,28 @@ Dieses Dokument verwendet außerdem Windows PowerShell und [Jq](http://stedolan.
 
 Allgemeine Informationen zu Hive mit HDInsight:
 
-* [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
 
 Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
-* [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
+* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
 Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Informationen zum Debuggen:
 
-* [Verwenden der Ambari-Tez-Ansicht in Linux-basiertem HDInsight](../hdinsight-debug-ambari-tez-view.md)
+* [Verwenden der Apache Ambari-Tez-Ansicht in Linux-basiertem HDInsight](../hdinsight-debug-ambari-tez-view.md)
 
 Weitere Informationen zu der in diesem Artikel verwendeten REST-API finden Sie in der [WebHCat-Referenz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -211,6 +211,6 @@ Weitere Informationen zu der in diesem Artikel verwendeten REST-API finden Sie i
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 

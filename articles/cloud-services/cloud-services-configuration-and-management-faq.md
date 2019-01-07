@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979198"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386994"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
 Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltung von [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informationen zur Größe finden sie auch unter [Größen für Clouddienste](cloud-services-sizes-specs.md) .
 
@@ -149,7 +149,7 @@ Sie können die Protokollierung durch die Windows Azure-Diagnose (WAD) über fol
 Um die aktuellen WAD-Einstellungen Ihres Clouddiensts abzurufen, können Sie das PS-Cmd [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) verwenden oder sie über das Portal auf dem Blatt „Clouddienste--> Erweiterungen“ einsehen.
 
 
-## <a name="network-configuration"></a>Network Configuration
+## <a name="network-configuration"></a>Netzwerkkonfiguration
 
 ### <a name="how-do-i-set-the-idle-timeout-for-azure-load-balancer"></a>Wie richte ich das Leerlauftimeout für Azure Load Balancer ein?
 Sie können das Timeout in der Dienstdefinitionsdatei (CSDEF) wie folgt angeben:
@@ -190,7 +190,7 @@ Microsoft überwacht durchgehend Server, Netzwerke und Anwendungen, um Bedrohung
 Windows 10 und Windows Server 2016 unterstützen HTTP/2 auf Client- und Serverseite. Wenn Ihr Client (Browser) über TLS eine Verbindung mit dem IIS-Server herstellt, wobei HTTP/2 über TLS-Erweiterungen ausgehandelt wird, müssen Sie keine Änderungen auf der Serverseite vornehmen. Dies liegt daran, weil über TLS standardmäßig der h2-14-Header gesendet wird, der die Verwendung von HTTP/2 festlegt. Wenn andererseits der Client einen Upgradeheader zum Upgrade auf HTTP/2 sendet, müssen Sie die folgende Änderung auf der Serverseite vornehmen, um sicherzustellen, dass das Upgrade funktioniert, und Sie eine HTTP/2-Verbindung erhalten. 
 
 1. Führen Sie „regedit.exe“ aus.
-2. Navigieren Sie zum Registrierungsschlüssel: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Navigieren Sie zu folgendem Registrierungsschlüssel: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Erstellen Sie einen neuen DWORD-Wert namens **DuoEnabled**.
 4. Legen Sie hierfür den Wert 1 fest.
 5. Starten Sie den Server neu.
@@ -199,7 +199,7 @@ Windows 10 und Windows Server 2016 unterstützen HTTP/2 auf Client- und Serverse
 Weitere Informationen finden Sie unter
 
 - [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (HTTP/2 auf IIS)
-- [Video: HTTP/2 in Windows 10: Browser, Apps and Webserver](https://channel9.msdn.com/Events/Build/2015/3-88) (HTTP/2 in Windows 10: Browser, Apps und Webserver)
+- [Video: HTTP/2 in Windows 10: Browser, Apps and Web Server](https://channel9.msdn.com/Events/Build/2015/3-88) (HTTP/2 in Windows 10: Browser, Apps und Webserver)
          
 
 Diese Schritte könnten über einen Starttask automatisiert werden, sodass immer dann, wenn eine neue PaaS-Instanz erstellt wird, die obigen Änderungen in der Systemregistrierung vorgenommen werden könnten. Weitere Informationen finden Sie unter [Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst](cloud-services-startup-tasks.md).
@@ -242,9 +242,9 @@ Die automatische Skalierung auf Grundlage von Speichermetriken für Cloud Servic
 
 Um dieses Problem zu umgehen, können Sie Application Insights verwenden. Die automatische Skalierung unterstützt Application Insights als Quelle für Metriken und kann die Anzahl der Rolleninstanzen anhand einer Gastmetrik wie „Speicher“ skalieren.  Sie müssen Application Insights in der Paketdatei Ihres Clouddienstprojekts (CSPKG) konfigurieren und die Azure-Diagnoseerweiterung für den Dienst aktivieren, um dieses Feature zu implementieren.
 
-Weitere Informationen dazu, wie Sie über Application Insights eine benutzerdefinierte Metrik verwenden, um die automatische Skalierung für Cloud Services zu konfigurieren, finden Sie unter [Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md).
+Weitere Informationen dazu, wie Sie über Application Insights eine benutzerdefinierte Metrik verwenden, um die automatische Skalierung für Cloud Services zu konfigurieren, finden Sie unter [Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure](../azure-monitor/platform/autoscale-custom-metric.md).
 
-Weitere Informationen zur Integration der Azure-Diagnose in Application Insights für Cloud Services finden Sie unter [Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+Weitere Informationen zur Integration der Azure-Diagnose in Application Insights für Cloud Services finden Sie unter [Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 Weitere Informationen dazu, wie Sie Application Insights für Cloud Services aktivieren, finden Sie unter [Application Insights für Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices).
 
@@ -303,7 +303,7 @@ Weitere Informationen zu den Antimalware-Bereitstellungsszenarien, und wie sie v
 
 Sie können SNI in Cloud Services mit einer der folgenden Methoden aktivieren:
 
-**Methode 1: Mit PowerShell**
+**Methode 1: Verwenden von PowerShell**
 
 Die SNI-Bindung kann mithilfe des PowerShell-Cmdlets **New-WebBinding** in einem Starttask für eine Rolleninstanz des Clouddiensts wie unten beschrieben konfiguriert werden:
     
@@ -318,7 +318,7 @@ Wie [hier](https://technet.microsoft.com/library/ee790567.aspx) beschrieben, kö
 |2 |Keine SNI-Bindung, die den zentralen Zertifikatspeicher verwendet|
 |3|SNI-Bindung, die den zentralen Zertifikatspeicher verwendet |
  
-**Methode 2: Im Code**
+**Methode 2: Verwenden von Code**
 
 Die SNI-Bindung könnte auch über den Code im Rollenstart konfiguriert werden, wie in diesem [Blogbeitrag](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/) beschrieben:
 

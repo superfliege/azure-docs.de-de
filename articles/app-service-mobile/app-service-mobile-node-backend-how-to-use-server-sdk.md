@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cbedb17bb7563620d0d9db81333d9a79301b4ee0
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817507"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725030"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Verwenden des Node.js SDK für Mobile Apps
 
@@ -152,15 +152,15 @@ Wenn Sie im Portalbereich **Schnellstart** ein Node.js-Mobile Apps-Back-End erst
 
 Beim folgenden Verfahren wird ein Git-Repository verwendet, um den Schnellstart-Projektcode herunterzuladen:
 
-1. Installieren Sie Git, falls Sie dies noch nicht getan haben. Die erforderlichen Schritte zum Installieren von Git variieren je nach Betriebssystem. Informationen zu betriebssystemspezifischen Distributionen und zur Installation finden Sie unter [Installieren von Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
-1. Lesen Sie die Informationen unter [Lokale Git-Bereitstellung in Azure App Service](../app-service/app-service-deploy-local-git.md#prepare-your-repository), um das Git-Repository für Ihre Back-End-Website zu aktivieren. Notieren Sie sich den Benutzernamen und das Kennwort der Bereitstellung.
-1. Notieren Sie sich die Einstellung für die **Git-Klon-URL** im Bereich für Ihr Mobile App-Back-End.
-1. Führen Sie den Befehl `git clone` mit der Git-Klon-URL aus. Geben Sie bei entsprechender Aufforderung Ihr Kennwort ein, wie im folgenden Beispiel gezeigt:
+1. Installieren Sie Git, falls Sie dies noch nicht getan haben. Die erforderlichen Schritte zum Installieren von Git variieren je nach Betriebssystem. Informationen zu betriebssystemspezifischen Distributionen und zur Installation finden Sie unter [Installieren von Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
+2. Lesen Sie die Informationen unter [Lokale Git-Bereitstellung in Azure App Service](../app-service/deploy-local-git.md#prepare-your-repository), um das Git-Repository für Ihre Back-End-Website zu aktivieren. Notieren Sie sich den Benutzernamen und das Kennwort der Bereitstellung.
+3. Notieren Sie sich die Einstellung für die **Git-Klon-URL** im Bereich für Ihr Mobile App-Back-End.
+4. Führen Sie den Befehl `git clone` mit der Git-Klon-URL aus. Geben Sie bei entsprechender Aufforderung Ihr Kennwort ein, wie im folgenden Beispiel gezeigt:
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. Navigieren Sie zum lokalen Verzeichnis (im obigen Beispiel ist dies `/todolist`). Sie sehen, dass Projektdateien heruntergeladen wurden. Suchen Sie die todoitem.json-Datei im `/tables`-Verzeichnis. Diese Datei definiert Berechtigungen für die Tabelle. Suchen Sie im gleichen Verzeichnis auch die todoitem.js-Datei. Sie definiert die CRUD-Vorgangsskripts für die Tabelle.
-1. Wenn Sie Projektdateien geändert haben, führen Sie die folgenden Befehle aus, um die Änderungen hinzuzufügen, zu committen und sie dann auf die Website hochzuladen:
+5. Navigieren Sie zum lokalen Verzeichnis (im obigen Beispiel ist dies `/todolist`). Sie sehen, dass Projektdateien heruntergeladen wurden. Suchen Sie die todoitem.json-Datei im `/tables`-Verzeichnis. Diese Datei definiert Berechtigungen für die Tabelle. Suchen Sie im gleichen Verzeichnis auch die todoitem.js-Datei. Sie definiert die CRUD-Vorgangsskripts für die Tabelle.
+6. Wenn Sie Projektdateien geändert haben, führen Sie die folgenden Befehle aus, um die Änderungen hinzuzufügen, zu committen und sie dann auf die Website hochzuladen:
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -382,14 +382,14 @@ Für die meisten Einstellungen in der Datei „azureMobile.js“ gibt es im [Azu
 
 So legen Sie eine App-Einstellung fest:
 
-1. Melden Sie sich auf dem [Azure-Portal]an.
+1. Melden Sie sich beim [Azure-Portal] an.
 1. Wählen Sie **Alle Ressourcen** oder **App Services** aus, und klicken Sie dann auf den Namen Ihrer mobilen App.
 1. Der Bereich **Einstellungen** wird standardmäßig geöffnet. Wenn dies nicht der Fall ist, klicken Sie auf **Einstellungen**.
 1. Wählen Sie im Menü **Allgemein** die Option **Anwendungseinstellungen** aus.
 1. Scrollen Sie zum Abschnitt **App-Einstellungen**.
 1. Wenn Ihre App-Einstellung bereits vorhanden ist, wählen Sie den Wert der App-Einstellung aus, um ihn zu bearbeiten.
    Wenn die App-Einstellung nicht vorhanden ist, geben Sie im Feld **Schlüssel** die App-Einstellung und im Feld **Wert** den Wert ein.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 Nach dem Ändern der meisten App-Einstellungen ist ein Neustart des Diensts erforderlich.
 
@@ -399,7 +399,7 @@ Nach dem Ändern der meisten App-Einstellungen ist ein Neustart des Diensts erfo
 
 Das Verwenden von Azure SQL-Datenbank als Datenspeicher ist über alle Azure App Service-Anwendungstypen hinweg identisch. Führen Sie diese Schritte zum Erstellen eines Mobile Apps-Back-Ends aus, falls Sie dies noch nicht getan haben:
 
-1. Melden Sie sich auf dem [Azure-Portal]an.
+1. Melden Sie sich beim [Azure-Portal] an.
 1. Klicken Sie oben links im Fenster auf **+NEU** > **Web + Mobil** > **Mobile App**, und geben Sie dann einen Namen für Ihr Mobile Apps-Back-End an.
 1. Geben Sie im Feld **Ressourcengruppe** den gleichen Namen wie für Ihre App ein.
 1. Der App Service-Plan „Standard“ wird ausgewählt. Wenn Sie den App Service-Plan ändern möchten, gehen Sie folgendermaßen von:
@@ -922,7 +922,7 @@ Die folgenden Befehle stehen in der Befehlsleiste einer Tabelle zur Verfügung:
  Sie können den anonymen Zugriff zulassen, eine Authentifizierung erzwingen oder den gesamten Zugriff auf den Vorgang deaktivieren.
 * **Skript bearbeiten**: Die Skriptdatei für die Tabelle wird im App Service-Editor geöffnet.
 * **Schema verwalten**: Dient zum Hinzufügen oder Löschen von Spalten oder zum Ändern des Tabellenindex.
-* **Tabelle löschen**: Dient zum Abschneiden einer vorhandenen Tabelle, indem alle Datenzeilen gelöscht werden, während das Schema unverändert bleibt.
+* **Tabelle löschen**: Dient zum Kürzen bzw. Abschneiden einer vorhandenen Tabelle, indem alle Datenzeilen gelöscht werden, während das Schema unverändert bleibt.
 * **Zeilen löschen**: Dient zum Löschen einzelner Zeilen mit Daten.
 * **Streamingprotokolle anzeigen**: Dient zum Herstellen einer Verbindung mit dem Streamingprotokolldienst für Ihre Website.
 
@@ -963,24 +963,24 @@ Durch Verwendung des Azure-Portals können Sie Ihre Node.js-Back-End-Skriptdatei
 [Xamarin.Forms-Client-Schnellstart]: app-service-mobile-xamarin-forms-get-started.md
 [Windows Store-Client-Schnellstart]: app-service-mobile-windows-store-dotnet-get-started.md
 [Synchronisierung von Offlinedaten]: app-service-mobile-offline-data-sync.md
-[Konfigurieren der Azure Active Directory-Authentifizierung]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Konfigurieren der Facebook-Authentifizierung]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[Konfigurieren der Google-Authentifizierung]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[Konfigurieren der Microsoft-Authentifizierung]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Konfigurieren der Twitter-Authentifizierung]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
-[Azure App Service-Bereitstellungshandbuch]: ../app-service/app-service-deploy-local-git.md
+[Konfigurieren der Azure Active Directory-Authentifizierung]: ../app-service/configure-authentication-provider-aad.md
+[Konfigurieren der Facebook-Authentifizierung]: ../app-service/configure-authentication-provider-facebook.md
+[Konfigurieren der Google-Authentifizierung]: ../app-service/configure-authentication-provider-google.md
+[Konfigurieren der Microsoft-Authentifizierung]: ../app-service/configure-authentication-provider-microsoft.md
+[Konfigurieren der Twitter-Authentifizierung]: ../app-service/configure-authentication-provider-twitter.md
+[Azure App Service-Bereitstellungshandbuch]: ../app-service/deploy-local-git.md
 [Überwachen von Azure App Service]: ../app-service/web-sites-monitor.md
-[Aktivieren der Diagnoseprotokollierung in Azure App Service]: ../app-service/web-sites-enable-diagnostic-log.md
-[Problembehandlung für Azure App Service in Visual Studio]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[Aktivieren der Diagnoseprotokollierung in Azure App Service]: ../app-service/troubleshoot-diagnostic-logs.md
+[Problembehandlung für Azure App Service in Visual Studio]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [Angeben der Node.js-Version]: ../nodejs-specify-node-version-azure-apps.md
 [Verwenden von Node.js-Modulen]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
-[Express]: http://expressjs.com/
-[Swagger]: http://swagger.io/
+[Express]: https://expressjs.com/
+[Swagger]: https://swagger.io/
 
 [Azure-Portal]: https://portal.azure.com/
-[OData]: http://www.odata.org
+[OData]: https://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp-Beispiel auf GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [todo-Beispiel auf GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
@@ -989,6 +989,6 @@ Durch Verwendung des Azure-Portals können Sie Ihre Node.js-Back-End-Skriptdatei
 [QueryJS]: https://github.com/Azure/queryjs
 [Node.js-Tools 1.1 für Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [mssql-Node.js-Paket]: https://www.npmjs.com/package/mssql
-[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS-Middleware]: http://expressjs.com/guide/using-middleware.html
+[Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[ExpressJS-Middleware]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

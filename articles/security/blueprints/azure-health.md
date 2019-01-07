@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: c0255ff31353ca8fe0cf684af53a12654b400208
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407553"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315773"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
@@ -59,9 +59,9 @@ Die grundlegende Architektur besteht aus den folgenden Komponenten:
 
 -   **[Kundenimplementierungsmatrix](https://aka.ms/healthcrmblueprint)** Eine Microsoft Excel-Arbeitsmappe listet die relevanten HITRUST-Anforderungen auf und erläutert, wie Microsoft und der Kunde für die Erfüllung der jeweiligen Anforderungen verantwortlich sind.
 
--   **[Überprüfung der Integrität.](https://aka.ms/healthreviewpaper)** Die Lösung wurde von Coalfire Systems, Inc. geprüft. Die Konformitätsüberprüfung für das Gesundheitswesen (HIPAA und HITRUST) und Anleitung\' zur Implementierung enthält eine vom Prüfer verfasste Überprüfung der Lösung sowie Überlegungen für das Transformieren des Entwurfs in eine produktionsreife Bereitstellung.
+-   **[Überprüfung der Integrität.](https://aka.ms/healthreviewpaper)** Die Lösung wurde von Coalfire systems, Inc. überprüft. Das Health Compliance Review (HIPAA und HITRUST) und der Leitfaden für die Implementierung enthalten den Überblick eines Auditors über die Lösung sowie Überlegungen, wie sich der Entwurf in eine produktionsreife Bereitstellung umwandeln lässt.
 
-# <a name="architectural-diagram"></a>Architekturdiagramm
+## <a name="architectural-diagram"></a>Architekturdiagramm
 
 
 ![](images/ra2.png)
@@ -78,38 +78,38 @@ Der Siteadministrator ist für das Azure-Abonnement des Kunden verantwortlich. E
 
 -   Standardrollenzuweisungen: [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
--   Benutzerdefinierte Rollenzuweisungen: k.A.
+-   Benutzerdefinierte Rollenzuweisungen: N/V
 
--   Bereich: Abonnement
+-   Umfang: Abonnement
 
 ### <a name="database-analyst"></a>Datenbankanalyst
 
 Der Datenbankanalyst verwaltet die SQL Server-Instanz und die Datenbank.
 Er besitzt keinen Zugriff auf die Patientenakten.
 
--   Integrierten Rollenzuweisungen: [SQL-DB-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [SQL Server-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
+-   Integrierte Rollenzuweisungen: [Mitwirkender von SQL DB](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [Mitwirkender von SQL Server](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
--   Benutzerdefinierte Rollenzuweisungen: k.A.
+-   Benutzerdefinierte Rollenzuweisungen: N/V
 
--   Bereich: ResourceGroup
+-   Umfang: ResourceGroup
 
  ### <a name="data-scientist"></a>Data Scientist
 
 
 Der Data Scientist betreibt die Azure Machine Learning Studio-Instanz. Er kann Daten importieren, exportieren, verwalten und Berichte ausführen. Der Data Scientist besitzt Zugriff auf Patientendaten, verfügt aber nicht über Administratorrechte.
 
--   Integrierten Rollenzuweisungen: [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
+-   Integrierte Rollenzuweisungen: [Mitwirkender von Speicherkonto](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
--   Benutzerdefinierte Rollenzuweisungen: k.A.
+-   Benutzerdefinierte Rollenzuweisungen: N/V
 
--   Bereich: ResourceGroup
+-   Umfang: ResourceGroup
 
 ### <a name="chief-medical-information-officer-cmio"></a>Chief Medical Information Officer (CMIO)
 
 
 Der CMIO ist das Bindeglied zwischen den Informatikern und Technikern einerseits und dem Gesundheitspersonal in einer Gesundheitseinrichtung andererseits. Zu seinen Pflichten gehört in der Regel die Verwendung von Analysesoftware, um festzustellen, ob die Ressourcen in der Organisation angemessen zugeordnet wurden.
 
--   Integrierten Rollenzuweisungen: Keine
+-   Integrierte Rollenzuweisungen: Keine
 
 ### <a name="care-line-manager"></a>Pflegedienstleitung
 
@@ -117,22 +117,22 @@ Der CMIO ist das Bindeglied zwischen den Informatikern und Technikern einerseits
 Die Pflegedienstleitung ist direkt mit der Betreuung der Patienten befasst.
 In dieser Rolle ist sie für die Überwachung des Zustands einzelner Patienten zuständig und trägt außerdem dafür Sorge, dass genügend Mitarbeiter verfügbar sind, um die speziellen Pflegebedürfnisse der Patienten zu erfüllen. Die Pflegedienstleitung ist für das Ergänzen und Aktualisieren der Patientenakten verantwortlich.
 
--   Integrierten Rollenzuweisungen: Keine
+-   Integrierte Rollenzuweisungen: Keine
 
--   Benutzerdefinierte Rollenzuweisungen: Ist berechtigt, HealthcareDemo.ps1 auszuführen, um sowohl die Patientenaufnahme als auch die Entlassung durchzuführen.
+-   Benutzerdefinierte Rollenzuweisungen: Ist berechtigt, „HealthcareDemo.ps1“ auszuführen, um Patienten sowohl aufzunehmen als auch zu entlassen.
 
--   Bereich: ResourceGroup
+-   Umfang: ResourceGroup
 
 ### <a name="auditor"></a>Prüfer
 
 
 Der Prüfer wertet die Lösung bezüglich der Konformität aus. Er besitzt keinen direkten Zugriff auf das Netzwerk.
 
--   Integrierten Rollenzuweisungen: [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   Integrierte Rollenzuweisungen: [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
--   Benutzerdefinierte Rollenzuweisungen: k.A.
+-   Benutzerdefinierte Rollenzuweisungen: N/V
 
--   Bereich: Abonnement
+-   Umfang: Abonnement
 
 ## <a name="example-use-case"></a>Beispiel eines Anwendungsfalls
 
@@ -150,19 +150,19 @@ Der Entwurf enthält eine große Anzahl anonymisierter medizinischer Datensätze
 
 **Siteadministrator: Alex**
 
-*E-Mail-Adresse: Alex\_SiteAdmin*
+*E-Mail: Alex\_SiteAdmin*
 
 Alex Aufgabe besteht darin, Technologien auszuwerten, die den Aufwand für die Verwaltung eines lokalen Netzwerks verringern und die Kosten für das Management senken können. Alex evaluiert Azure schon seit einiger Zeit, hat sich aber schwer getan, die Dienste zu konfigurieren, die er benötigt, um die HiTrust-Konformitätsanforderungen zum Speichern von Patientendaten in der Cloud zu erfüllen. Alex hat sich für die Azure Health-KI entschieden, um eine konformitätsbereite Gesundheitslösung bereitzustellen, die die Anforderungen berücksichtigt, um die Kundenanforderungen für HiTrust zu erfüllen.
 
 **Data Scientist: Debra**
 
-*E-Mail-Adresse: Debra\_DataScientist*
+*E-Mail: Debra\_DataScientist*
 
 Debra ist verantwortlich für die Verwendung und Erstellung von Modellen, die medizinische Daten analysieren, um Einblicke in die Patientenversorgung zu gewähren. Debra benutzt SQL und die statistische Programmiersprache R, um ihre Modelle zu erstellen.
 
 **Datenbankanalyst: Danny**
 
-*E-Mail-Adresse: Danny\_DBAnalyst*
+*E-Mail: Danny\_DBAnalyst*
 
 Danny ist der Hauptansprechpartner für alles rund um den Microsoft SQL Server-Computer, der alle Patientendaten für Contosoclinic speichert. Danny ist ein erfahrener SQL Server-Administrator, der sich erst kürzlich mit der Azure SQL-Datenbank vertraut gemacht hat.
 
@@ -173,18 +173,18 @@ Caroline verwendet die Vorhersagen der LOS-Lösung (Lenght-of-Stay, Verweildauer
 
 **Pflegedienstleitung: Chris**
 
-*E-Mail-Adresse: Chris\_CareLineManager*
+*E-Mail: Chris\_CareLineManager*
 
 Als die Person, die direkt für die Patientenaufnahme und die Entlassungen in der Contosoclinic verantwortlich ist, nutzt Chris die Vorhersagen der LOS-Lösung, um sicherzustellen, dass ausreichend Personal zur Verfügung steht, um die Patienten während ihres Aufenthalts in der Einrichtung zu betreuen.
 
 **Prüfer: Han**
 
-*E-Mail-Adresse: Han\_Auditor*
+*E-Mail: Han\_Prüfer*
 
 Han ist ein zertifizierte Prüfer, der über Erfahrung mit ISO-, SOC- und HiTrust-Zertifizierungen verfügt. Han wurde eingestellt, um das Netzwerk der Contosoclinic zu überprüfen. Han kann die mit der Lösung bereitgestellte Kundenzuständigkeitsmatrix überprüfen, um sicherzustellen, dass der Entwurf und die LOS-Lösung zur Speicherung, Verarbeitung und Anzeige sensibler persönlicher Daten verwendet werden können.
 
 
-# <a name="design-configuration"></a>Entwurfskonfiguration
+## <a name="design-configuration"></a>Entwurfskonfiguration
 
 
 In diesem Abschnitt werden die Standardkonfigurationen und Sicherheitsmaßnahmen beschrieben, die in dem skizzierten Entwurf enthalten sind:
@@ -267,7 +267,7 @@ Außerdem wurde die Azure-Funktion so konzipiert, dass sie mithilfe der folgende
 
 **2. Aufnehmen neuer Patienten**
 
-Beim Ausführen des Demoskripts: . \\HealthcareDemo.ps1 mit dem Schalter **BulkPatientadmission** (wie unter **Bereitstellen und Ausführen der Demo** beschrieben) führt die folgende Verarbeitungspipeline aus: ![](images/securetransact.png)
+Beim Ausführen des Demoskripts: .\\HealthcareDemo.ps1 mit dem Schalter **BulkPatientadmission** (wie unter **Deploying and running the demo (Bereitstellen und Ausführen der Demo)** beschrieben) führt die folgende Verarbeitungspipeline aus: ![](images/securetransact.png)
 **1. Azure-Funktion** wird ausgelöst, und die Funktion fordert ein [Bearertoken](/rest/api/) aus Azure Active Directory an.
 
 **2. Key Vault** wird für ein Geheimnis angefordert, das dem angeforderten Token zugeordnet ist.
@@ -345,8 +345,8 @@ Die Lösung unterstützt Azure Event Grid, einen einzelnen Dienst für die Verwa
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   [Protokollierung ist aktiviert](/azure/machine-learning/studio/web-services-logging) für Machine Learning Studio-Webdienste.
-- Die Verwendung von [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench erfordert die Entwicklung von Experimenten, die die Fähigkeit zur Vorhersage eines Lösungssatzes bereitstellen. [Integration der Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) kann dabei helfen, die Verwaltung von Experimenten zu optimieren.
+- [Protokollierung ist aktiviert](/azure/machine-learning/studio/web-services-logging) für Machine Learning Studio-Webdienste.
+- Die Verwendung von [Machine Learning Studio](/azure/machine-learning/studio/what-is-ml-studio) erfordert die Entwicklung von Experimenten, mit denen sich ein Lösungssatz vorhersagen lässt.
 
 ## <a name="security"></a>SICHERHEIT
 

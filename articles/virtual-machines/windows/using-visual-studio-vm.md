@@ -17,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 09/12/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 6861eb54b0f9ccaa0bfaa7b514e9bb3861160fdd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 49ed750a25c732b7f11ef5de2e545be2a5412fa8
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165617"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437570"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1) verfügbar.
@@ -30,17 +30,18 @@ Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Co
 Neu bei Azure? [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Welche Konfigurationen und Versionen sind verfügbar?
-Images für die letzten Hauptversionen, Visual Studio 2017 und Visual Studio 2015, finden Sie im Azure Marketplace. Für jede Hauptversion werden die ursprünglich veröffentlichte („RTW“) Version und die letzten aktualisierten Versionen aufgeführt. Jede dieser Versionen bietet die Editionen „Visual Studio Enterprise“ und „Visual Studio Community“. Diese Images werden mindestens einmal monatlich aktualisiert, um die neuesten Visual Studio- und Windows-Updates einzuschließen. Jede Imagebeschreibung enthält die Produktinstallationsversion und das Erstellungsdatum des Image, während die Namen der Images unverändert bleiben.
+Images für die letzten Hauptversionen, Visual Studio 2017 und Visual Studio 2015, finden Sie im Azure Marketplace.  Wir haben vor Kurzem Unterstützung für die Vorschauversionen der nächsten Hauptversion hinzugefügt: Visual Studio 2019.  Für jede veröffentlichte Hauptversion werden die ursprünglich veröffentlichte Version (RTW) und die letzten aktualisierten Versionen aufgeführt.  Jede dieser Versionen bietet die Editionen „Visual Studio Enterprise“ und „Visual Studio Community“.  Diese Images werden mindestens einmal monatlich aktualisiert, um die neuesten Visual Studio- und Windows-Updates einzuschließen.  Jede Imagebeschreibung enthält die Produktinstallationsversion und das Erstellungsdatum des Image, während die Namen der Images unverändert bleiben.
 
-| Releaseversion                                              | Editionen                     |     Produktversion     |
-|:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: neueste Version (15.9)                    |    Enterprise, Community     |      Version 15.9.0     |
-|         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Version 15.0.18    |
-|   Visual Studio 2015: Aktuell (Update 3)                      |    Enterprise, Community     |  Version 14.0.25431.01  |
-|         Visual Studio 2015: RTW                              |             Keine             | (für Wartung abgelaufen) |
+| Releaseversion                                              | Editionen                     |     Produktversion      |
+|:------------------------------------------------------------:|:----------------------------:|:------------------------:|
+|    Visual Studio 2019: Vorschauversion (Vorschauversion 1)                   |           Enterprise         | Version 16.0.0 Vorschauversion 1 |
+| Visual Studio 2017: Aktuelle Version (Version 15.9)                    |    Enterprise, Community     |      Version 15.9.4      |
+|         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Version 15.0.20     |
+|   Visual Studio 2015: Aktuelle Version (Update 3)                      |    Enterprise, Community     |  Version 14.0.25431.01   |
+|         Visual Studio 2015: RTW                              |             Keine             | (für Wartung abgelaufen)  |
 
 > [!NOTE]
-> Im Einklang mit der Microsoft-Wartungsrichtlinie ist die ursprünglich veröffentlichte Version („RTW“) von Visual Studio 2015 für die Wartung abgelaufen. Visual Studio 2015 Update 3 ist die einzige verbleibende Version, die für die Visual Studio 2015-Produktlinie angeboten wird.  Nach der Veröffentlichung der Version 15.9 von Visual Studio 2017 wurden außerdem die Images vom Typ „neueste Vorschauversion“ ausgemustert, die Vorschauversionen der Version 15.9 enthielten.
+> Im Einklang mit der Microsoft-Wartungsrichtlinie ist die ursprünglich veröffentlichte Version („RTW“) von Visual Studio 2015 für die Wartung abgelaufen. Visual Studio 2015 Update 3 ist die einzige verbleibende Version, die für die Visual Studio 2015-Produktlinie angeboten wird.
 
 Weitere Informationen finden Sie in der [Visual Studio-Wartungsrichtlinie](https://www.visualstudio.com/productinfo/vs-servicing-vs).
 
@@ -95,7 +96,7 @@ Weitere Informationen finden Sie unter [Anmelden bei Visual Studio](/visualstudi
 
 Das Spektrum der Entwicklungsumgebungen ist unüberschaubar, und für den Ausbau einer komplexeren Umgebung fallen hohe Kosten an. Unabhängig von der Konfiguration Ihrer Umgebung können Sie Ihren konfigurierten virtuellen Computer als „Basisimage“ zur späteren Verwendung oder für andere Mitglieder Ihres Teams speichern oder erfassen. Sie stellen dann einen neuen virtuellen Computer beim Starten vom Basisimage bereit und nicht vom Azure Marketplace-Image.
 
-Kurze Zusammenfassung: Verwenden Sie das Tool für die Systemvorbereitung (Sysprep), und fahren Sie den ausgeführten virtuellen Computer herunter. Erfassen *(Abbildung 1)* Sie ihn anschließend über die Benutzeroberfläche des Azure-Portals als Image. Azure speichert die Datei `.vhd` mit dem Image im Speicherkonto Ihrer Wahl. Anschließend wird das neue Image als Imageressource in der Liste der Ressourcen Ihres Abonnements angezeigt.
+Kurze Zusammenfassung: Verwenden Sie das Tool für die Systemvorbereitung (Sysprep), und fahren Sie die ausgeführte VM herunter. Erfassen Sie die VM *(Abbildung 1)* anschließend über die Benutzeroberfläche des Azure-Portals als Image. Azure speichert die Datei `.vhd` mit dem Image im Speicherkonto Ihrer Wahl. Anschließend wird das neue Image als Imageressource in der Liste der Ressourcen Ihres Abonnements angezeigt.
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*Abbildung 1: Erfassen eines Images über die Benutzeroberfläche des Azure-Portals*</center>
 

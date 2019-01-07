@@ -1,5 +1,5 @@
 ---
-title: Neuerstellen eines Azure Search-Indexes oder Aktualisieren von durchsuchbarem Inhalt | Microsoft-Dokumentation
+title: 'Neuerstellen eines Azure Search-Indexes oder Aktualisieren von durchsuchbarem Inhalt: Azure Search'
 description: Fügen Sie neue Elemente zu einer Neuerstellung oder einer inkrementellen Teilindizierung hinzu, aktualisieren Sie bereits vorhandene Elemente oder Dokumente, oder löschen Sie veraltete Dokumente, um einen Azure Search-Index zu aktualisieren.
 services: search
 author: HeidiSteen
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 374e7601169647f0eb7d3a214cf15567b7b11090
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.custom: seodec2018
+ms.openlocfilehash: 9c9af69e45af6a70c5327393a1c10385ba2c2aed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34641423"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316895"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Neuerstellen eines Azure Search-Indexes
 
@@ -35,7 +36,7 @@ Planen Sie häufige, vollständige Neuerstellungen für die aktive Entwicklung e
 
 | Änderung | Neuerstellungsstatus|
 |--------------|---------------|
-| Ändern eines Feldnamens, Datentyps oder der [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index) | Wenn eine Felddefinition geändert wird, entstehen in der Regel Einbußen bei der Neuerstellung, mit Ausnahme der folgenden [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index): Retrievable, SearchAnalyzer, SynonymMaps. Sie können die Retrievable-, SearchAnalyzer- und SynonymMaps-Attribute zu einem bereits vorhandenen Feld hinzufügen und müssen keinen Index neu erstellen.|
+| Ändern eines Feldnamens, Datentyps oder der [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index) | Wenn eine Felddefinition geändert wird, entstehen mit Ausnahme der folgenden [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index) in der Regel Einbußen bei der Neuerstellung: „Retrievable“, „SearchAnalyzer“ und „SynonymMaps“. Sie können die Retrievable-, SearchAnalyzer- und SynonymMaps-Attribute zu einem bereits vorhandenen Feld hinzufügen und müssen keinen Index neu erstellen.|
 | Hinzufügen eines Felds | Es ist nicht zwingend eine Neuerstellung erforderlich. Bereits vorhandenen indizierten Dokumenten wird ein NULL-Wert für das neue Feld hinzugefügt. Bei einer späteren Neuindizierung ersetzen Werte aus Quelldaten die von Azure Search hinzugefügten NULL-Werte. |
 | Löschen eines Felds | Sie können ein Feld nicht direkt über einen Azure Search-Index löschen. Stattdessen sollte Ihre Anwendung das Feld „Gelöscht“ ignorieren, damit es nicht mehr verwendet wird. Die Felddefinition und die Inhalte bleiben im Index, bis Sie Ihren Index das nächste Mal unter Verwendung eines Schemas neu erstellen, das das betreffende Feld auslässt.|
 

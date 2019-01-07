@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: da486b25a9a35cb4f00d6e5a4689d5be3d270e36
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013274"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386895"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinieren von ScaleR und SparkR in HDInsight
 
 In diesem Dokument wird erläutert, wie Flugverspätungen mithilfe eines logistischen **ScaleR**-Regressionsmodells vorhergesagt werden können. Das Beispiel nutzt Flugverspätungs- und Wetterdaten, die mit **SparkR** verknüpft werden.
 
-Obwohl beide Pakete in der Spark-Ausführungs-Engine von Hadoop ausgeführt werden, sind sie für die Freigabe von Daten im Arbeitsspeicher gesperrt, das sie jeweils ihre eigenen Spark-Sitzungen erfordern. Bis dieses Problem in einer der nächsten Versionen von ML Server behoben wird, besteht die Problemumgehung darin, nicht überlappende Spark-Sitzungen zu verwenden und Daten mithilfe von Zwischendateien auszutauschen. Die folgenden Anweisungen zeigen, dass diese Anforderungen einfach zu erfüllen sind.
+Obwohl beide Pakete im Spark-Ausführungsmodul von Apache Hadoop ausgeführt werden, sind sie für die In-Memory-Datenfreigabe gesperrt, da sie jeweils eigene Spark-Sitzungen erfordern. Bis dieses Problem in einer der nächsten Versionen von ML Server behoben wird, besteht die Problemumgehung darin, nicht überlappende Spark-Sitzungen zu verwenden und Daten mithilfe von Zwischendateien auszutauschen. Die folgenden Anweisungen zeigen, dass diese Anforderungen einfach zu erfüllen sind.
 
 Dieses Beispiel wurde ursprünglich bei einem Vortrag von Mario Inchiosa und Roni Burd auf der Strata 2016 vorgestellt. Sie finden diesen Vortrag unter [Building a Scalable Data Science Platform with R(Erstellen einer skalierbaren Data Science-Plattform mit R)](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Andere Bewertungsmöglichkeiten
 
-Sie können das Modell auch zum Bewerten von Daten auf einer anderen Plattform verwenden. Dazu speichern wir es in einer RDS-Datei und übertragen und importieren diese Datei anschließend in die Zielbewertungsumgebung, z.B. SQL Server R Services. Dabei sollte sichergestellt werden, dass die Faktorebenen der Daten, die bewertet werden sollen, mit den Faktorebenen übereinstimmen, auf deren Grundlage das Modell erstellt wurde. Diese Übereinstimmung kann erreicht werden, indem die Spalteninformationen, die den Modellierungsdaten zugeordnet sind, mit der ScaleR-Funktion `rxCreateColInfo()` extrahiert und gespeichert und diese Spalteninformationen zu Vorhersagezwecken dann auf die Eingabedatenquelle angewendet werden. Im folgenden Code speichern wir einige Zeilen des Test-DataSets und extrahieren und verwenden die Spalteninformationen aus diesem Beispiel im Vorhersageskript:
+Sie können das Modell auch zum Bewerten von Daten auf einer anderen Plattform verwenden. Dazu speichern wir es in einer RDS-Datei und übertragen und importieren diese Datei anschließend in die Zielbewertungsumgebung, z. B. Microsoft SQL Server R Services. Dabei sollte sichergestellt werden, dass die Faktorebenen der Daten, die bewertet werden sollen, mit den Faktorebenen übereinstimmen, auf deren Grundlage das Modell erstellt wurde. Diese Übereinstimmung kann erreicht werden, indem die Spalteninformationen, die den Modellierungsdaten zugeordnet sind, mit der ScaleR-Funktion `rxCreateColInfo()` extrahiert und gespeichert und diese Spalteninformationen zu Vorhersagezwecken dann auf die Eingabedatenquelle angewendet werden. Im folgenden Code speichern wir einige Zeilen des Test-DataSets und extrahieren und verwenden die Spalteninformationen aus diesem Beispiel im Vorhersageskript:
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,7 +535,7 @@ In diesem Artikel haben wir gezeigt, wie die Verwendung von SparkR für die Date
 
 ## <a name="next-steps-and-more-information"></a>Nächste Schritte und weitere Informationen
 
-- Weitere Informationen zur Verwendung von ML Server unter Spark finden Sie im [Leitfaden zu den ersten Schritten](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
+- Weitere Informationen zur Verwendung von ML Server unter Apache Spark finden Sie im [Getting started guide](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started) (Leitfaden zu den ersten Schritten).
 
 - Allgemeine Informationen zu ML Server finden Sie im Artikel [Get started with Microsoft R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) (Erste Schritte mit Microsoft R).
 

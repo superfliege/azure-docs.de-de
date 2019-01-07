@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Azure IoT Edge-Modulen (CLI) | Microsoft-Dokumentation
+title: Bereitstellen von Modulen über die Befehlszeile – Azure IoT Edge | Microsoft-Dokumentation
 description: Stellen Sie mithilfe der IoT-Erweiterung für die Azure CLI Module auf einem IoT Edge-Gerät bereit.
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8f39befbe1a329091da19eeba14a8dcc749fa93
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: f9aa3fff8750dc20053072c939a6db9362a2b0d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564985"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093572"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Bereitstellen von Azure IoT Edge-Modulen mit der Azure CLI
 
@@ -117,7 +118,7 @@ Wenden Sie die Konfiguration mit dem folgenden Befehl auf ein IoT Edge-Gerät an
 
 Beim Parameter für die Geräte-ID muss die Groß-/Kleinschreibung beachtet werden. Der content-Parameter verweist auf die gespeicherte Bereitstellungsmanifestdatei. 
 
-   ![Festlegen von Modulen](./media/how-to-deploy-cli/set-modules.png)
+   ![az iot edge set-modules-Ausgabe](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>Anzeigen von Modulen auf dem Gerät
 
@@ -131,7 +132,7 @@ Zeigen Sie die Module auf Ihrem IoT Edge-Gerät an:
 
 Beim Parameter für die Geräte-ID muss ist Groß-/Kleinschreibung beachtet werden.
 
-   ![Module auflisten](./media/how-to-deploy-cli/list-modules.png)
+   ![az iot hub module-identity list-Ausgabe](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

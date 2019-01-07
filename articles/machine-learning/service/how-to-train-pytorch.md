@@ -1,5 +1,6 @@
 ---
-title: Trainieren von PyTorch-Modellen mit Azure Machine Learning
+title: Trainieren von Modellen mit PyTorch
+titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie mit dem PyTorch-Estimator PyTorch-Modelle auf einem Knoten oder verteilt trainieren.
 services: machine-learning
 ms.service: machine-learning
@@ -8,22 +9,23 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 27d4ad03e4a7f911fe3c9981618337a2fff51317
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: a6401c6059d8f72f344021879828b01c9ce77169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114616"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100548"
 ---
-# <a name="how-to-train-pytorch-models"></a>Trainieren von PyTorch-Modellen
+# <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Trainieren von PyTorch-Modellen mit Azure Machine Learning Service
 
 Azure Machine Learning stellt für das DNN-Training (Deep Neural Networks) mit PyTorch eine spezielle `PyTorch`-Klasse des `Estimator`s bereit. Mit dem `PyTorch`-Estimator aus dem Azure SDK können Sie PyTorch-Trainingsaufträge sowohl für die Ausführung auf einem Knoten als auch für die verteilte Ausführung auf Azure-Computezielen auf einfache Weise übermitteln.
 
 ## <a name="single-node-training"></a>Training auf einem einzelnen Knoten
 Das Trainieren mithilfe des `PyTorch`-Estimators funktioniert in etwa so wie mit dem [Basis-`Estimator`](how-to-train-ml-models.md). Lesen Sie daher zuerst diesen Artikel, und machen Sie sich mit den dort vorgestellten Konzepten vertraut.
   
-Instanziieren Sie ein `PyTorch`-Objekt, um einen PyTorch-Auftrag auszuführen. Das [Computeziel](how-to-set-up-training-targets.md#batch)-Objekt `compute_target` und Ihr [Datenspeicherobjekt](how-to-access-data.md) `ds` sollten Sie bereits erstellt haben.
+Instanziieren Sie ein `PyTorch`-Objekt, um einen PyTorch-Auftrag auszuführen. Das [Computeziel](how-to-set-up-training-targets.md#amlcompute)-Objekt `compute_target` und Ihr [Datenspeicherobjekt](how-to-access-data.md) `ds` sollten Sie bereits erstellt haben.
 
 ```Python
 from azureml.train.dnn import PyTorch
@@ -40,14 +42,14 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 Hier geben Sie für den PyTorch-Konstruktor die folgenden Parameter an:
-Parameter | BESCHREIBUNG
+Parameter | Beschreibung
 --|--
 `source_directory` |  Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
 `script_params` |  Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Wertpaaren der Form <Befehlszeilenargument, Wert> festgelegt sind
-`compute_target` |  Remotecomputeziel, auf dem Ihr Trainingsskript ausgeführt wird. In diesem Fall handelt es sich um einen [Batch AI](how-to-set-up-training-targets.md#batch)-Cluster
+`compute_target` |  Remotecomputeziel, für das Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)).
 `entry_script` |  Dateipfad des Trainingsskripts (relativ zu `source_directory`), das auf dem Remotecomputeziel ausgeführt werden soll. Diese Datei und alle von ihr abhängigen Dateien sollten sich in diesem Ordner befinden.
 `conda_packages` |  Liste der Python-Pakete, die über conda installiert werden und für Ihr Trainingsskript erforderlich sind. Im Konstruktor kann zusätzlich der Parameter `pip_packages` für alle erforderlichen pip-Pakete angegeben werden.
-`use_gpu` |  Legen Sie dieses Flag auf `True` fest, um die GPU für das Training zu nutzen. Der Standardwert lautet `False`.
+`use_gpu` |  : Legen Sie dieses Flag auf `True` fest, um die GPU für das Training zu nutzen. Der Standardwert lautet `False`.
 
 Da Sie den `PyTorch`-Estimator verwenden, enthält der Container, der für das Training verwendet wird, das PyTorch-Paket und alle zugehörigen Abhängigkeiten, die für das Training mit CPUs und GPUs erforderlich sind.
 
@@ -80,7 +82,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 In diesem Code werden im PyTorch-Konstruktor die folgenden neuen Parameter angegeben:
-Parameter | BESCHREIBUNG | Standard
+Parameter | Beschreibung | Standard
 --|--|--
 `node_count` |  Die Anzahl der Knoten, die für Ihren Trainingsauftrag verwendet werden sollen. | `1`
 `process_count_per_node` |  Die Anzahl der Prozesse (oder „Worker“), die auf jedem Knoten ausgeführt werden sollen. | `1`
@@ -100,13 +102,9 @@ run = exp.submit(pt_est)
 ```
 
 ## <a name="examples"></a>Beispiele
-Tutorial zu PyTorch-Training auf einem Knoten:
-* [training/01.train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/01.train-hyperparameter-tune-deploy-with-pytorch)
 
-Tutorial zu verteiltem PyTorch-Training mit Horovod:
-* [training/02.distributed-pytorch-with-horovod](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/02.distributed-pytorch-with-horovod)
-
-Rufen Sie diese Notebooks ab:
+Informationen zu Notebooks für verteiltes Deep Learning finden Sie unter:
+* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

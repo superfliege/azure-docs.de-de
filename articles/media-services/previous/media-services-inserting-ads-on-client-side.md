@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 36cdd944dd33f9aa9ae1c805011df23fc864c345
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: de084b2139bcc3ddef09b4438f8774df177b6f3c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705989"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315937"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einfügen von Anzeigen auf Clientseite
 Dieser Artikel enthält Informationen zum Einfügen verschiedener Typen von Anzeigen auf Clientseite.
@@ -32,7 +32,7 @@ Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Li
 > 
 
 ## <a id="insert_ads_into_media"></a>Einfügen von Werbeeinblendungen in Ihre Medien
-Azure Media Services unterstützt Werbeeinblendungen über die Windows Media-Plattform: Player-Frameworks. Player-Frameworks mit Unterstützung für Werbeeinblendungen sind für Windows 8, Silverlight, Windows Phone 8 und iOS-Geräte verfügbar. Jedes Player-Framework enthält Beispielcode, der zeigt, wie eine Playeranwendung implementiert werden kann. Es gibt drei verschiedene Arten von Anzeigen, die Sie in Ihre Medien einfügen können:
+Azure Media Services bietet Unterstützung für das Einfügen von Werbeeinblendungen mithilfe der Windows Media-Plattform: Player-Frameworks. Player-Frameworks mit Unterstützung für Werbeeinblendungen sind für Windows 8, Silverlight, Windows Phone 8 und iOS-Geräte verfügbar. Jedes Player-Framework enthält Beispielcode, der zeigt, wie eine Playeranwendung implementiert werden kann. Es gibt drei verschiedene Arten von Anzeigen, die Sie in Ihre Medien einfügen können:
 
 * **Linear** : Werbeeinblendungen auf dem kompletten Frame, die das Hauptvideo unterbrechen
 * **Nicht linear** : Overlay-Werbeeinblendungen, die während der Wiedergabe angezeigt werden; normalerweise ein Logo oder ein anderes statisches Bild im Player
@@ -94,7 +94,7 @@ Eine VAST-Datei gibt an, welche Werbeeinblendung bzw. Werbeeinblendungen angezei
     </VAST>
 ```
 
-Die lineare Werbeeinblendung wird durch das <**Linear**>-Element beschrieben. Es gibt die Dauer der Werbeeinblendung, Nachverfolgungsereignisse, die Durchklickrate, die Klickprotokollierung sowie eine Anzahl von **MediaFile**-Elementen an. Nachverfolgungsereignisse werden im <**TrackingEvents**>-Element angegeben und ermöglichen es einem Adserver, verschiedene Ereignisse zu verfolgen, die während der Anzeige der Werbung eintreten. In diesem Fall werden die Start-, Mittelpunkt-, Abschluss- und Erweiterungsereignisse nachverfolgt. Das Startereignis tritt ein, wenn die Anzeige angezeigt wird. Das Mittelpunktereignis tritt ein, wenn mindestens 50 % der Zeitleiste der Werbeeinblendung angezeigt wurden. Das Abschlussereignis tritt ein, wenn die Werbung bis zum Ende wiedergegeben wurde. Das Erweiterungsereignis tritt ein, wenn der Benutzer den Videoplayer in den Vollbildmodus erweitert. Durchklickraten werden in einem <**ClickThrough**>-Element innerhalb eines <**VideoClicks**>-Elements angegeben und geben einen URI zu einer Ressource an, die angezeigt werden soll, wenn der Benutzer auf die Anzeige klickt. Die Klickprotokollierung wird in einem <**ClickTracking**>-Element ebenfalls innerhalb des <**VideoClicks**>-Elements angegeben und gibt eine Nachverfolgungsressource an, die der Player anfordern soll, wenn der Benutzer auf die Anzeige klickt. Die <**MediaFile**>-Elemente geben Informationen zu einer bestimmten Codierung einer Werbeeinblendung an. Wenn mehrere <**MediaFile**>-Elemente vorhanden sind, kann der Videoplayer die beste Codierung für die Plattform auswählen. 
+Die lineare Werbeeinblendung wird durch das <**Linear**>-Element beschrieben. Es gibt die Dauer der Werbeeinblendung, Nachverfolgungsereignisse, die Durchklickrate, die Klickprotokollierung sowie eine Anzahl von **MediaFile**-Elementen an. Nachverfolgungsereignisse werden im <**TrackingEvents**>-Element angegeben und ermöglichen es einem Adserver, verschiedene Ereignisse zu verfolgen, die während der Anzeige der Werbung eintreten. In diesem Fall werden die Start-, Mittelpunkt-, Abschluss- und Erweiterungsereignisse nachverfolgt. Das Startereignis tritt ein, wenn die Anzeige angezeigt wird. Das Mittelpunktereignis tritt ein, wenn mindestens 50 % der Zeitleiste der Werbeeinblendung angezeigt wurden. Das Abschlussereignis tritt ein, wenn die Werbung bis zum Ende wiedergegeben wurde. Das Erweiterungsereignis tritt ein, wenn der Benutzer den Videoplayer in den Vollbildmodus erweitert. Durchklickraten werden in einem <**ClickThrough**>-Element innerhalb eines <**VideoClicks**>-Elements angegeben und geben einen URI zu einer Ressource an, die angezeigt werden soll, wenn der Benutzer auf die Anzeige klickt. Die Klickprotokollierung wird in einem <**ClickTracking**>-Element ebenfalls innerhalb des <**VideoClicks**>-Elements angegeben und gibt eine Nachverfolgungsressource an, die der Player anfordern soll, wenn der Benutzer auf die Anzeige klickt. Die <**MediaFile**>-Elemente geben Informationen zu einer bestimmten Codierung einer Werbeeinblendung an. Wenn mehrere <**MediaFile**>-Elemente vorhanden sind, kann der Videoplayer die beste Codierung für die Plattform auswählen.
 
 Lineare Werbeeinblendungen können in einer bestimmten Reihenfolge angezeigt werden. Zu diesem Zweck fügen Sie der VAST-Datei zusätzliche <Ad>-Elemente hinzu und geben die Reihenfolge mit dem Reihenfolgeattribut an. Das folgende Beispiel veranschaulicht dies:
 
@@ -325,16 +325,16 @@ Mithilfe einer MAST-Datei können Sie Trigger angeben, die definieren, wann eine
 ```
 
 
-Eine MAST-Datei beginnt mit einem **MAST**-Element, das ein **triggers**-Element enthält. Das <triggers>-Element enthält ein oder mehrere **trigger**-Elemente, die definieren, wann eine Werbeeinblendung abgespielt werden soll. 
+Eine MAST-Datei beginnt mit einem **MAST**-Element, das ein **triggers**-Element enthält. Das <triggers>-Element enthält ein oder mehrere **trigger**-Elemente, die definieren, wann eine Werbeeinblendung abgespielt werden soll.
 
-Das **trigger**-Element enthält ein **startConditions**-Element, das angibt, wann die Wiedergabe einer Werbeeinblendung beginnen soll. Das **startConditions**-Element enthält ein oder mehrere <condition>-Elemente. Wenn jede <condition> als „true“ ausgewertet wird, wird ein Trigger initiiert oder widerrufen, abhängig davon, ob die <condition> in einem **startConditions**-Element oder in einem **endConditions**-Element enthalten ist. Wenn mehrere <condition>-Elemente vorhanden sind, werden diese als implizit behandelt, ODER alle Bedingungen, die als „true“ ausgewertet werden, führen zur Initiierung des Triggers. <condition>-Elemente können geschachtelt werden. Wenn untergeordnete <condition>-Elemente vordefiniert werden, werden diese als implizit behandelt UND alle Bedingungen müssen "true" ergeben, damit der Auslöser initiiert wird. Das <condition>-Element enthält die folgenden Attribute, die die Bedingung definieren: 
+Das **trigger**-Element enthält ein **startConditions**-Element, das angibt, wann die Wiedergabe einer Werbeeinblendung beginnen soll. Das **startConditions**-Element enthält ein oder mehrere <condition>-Elemente. Wenn jede <condition> als „true“ ausgewertet wird, wird ein Trigger initiiert oder widerrufen, abhängig davon, ob die <condition> in einem **startConditions**-Element oder in einem **endConditions**-Element enthalten ist. Wenn mehrere <condition>-Elemente vorhanden sind, werden diese als implizit behandelt, ODER alle Bedingungen, die als „true“ ausgewertet werden, führen zur Initiierung des Triggers. <condition>-Elemente können geschachtelt werden. Wenn untergeordnete <condition>-Elemente vordefiniert werden, werden diese als implizit behandelt UND alle Bedingungen müssen "true" ergeben, damit der Auslöser initiiert wird. Das <condition>-Element enthält die folgenden Attribute, die die Bedingung definieren:
 
 1. **type**: Gibt den Typ der Bedingung, des Ereignisses oder der Eigenschaft an.
 2. **name**: Der Name der Eigenschaft oder des Ereignisses, die bzw. das während der Auswertung verwendet wird.
 3. **value** : Der Wert, der für die Auswertung einer Eigenschaft verwendet wird.
-4. **operator** : Der während der Auswertung zu verwendende Vorgang: EQ (gleich), NEQ (nicht gleich), GTR (größer als), GEQ (größer oder gleich), LT (kleiner als), LEQ (kleiner oder gleich), MOD (Modulo)
+4. **operator**: Der während der Auswertung zu verwendende Vorgang: EQ (gleich), NEQ (nicht gleich), GTR (größer als), GEQ (größer oder gleich), LT (kleiner als), LEQ (kleiner oder gleich), MOD (Modulo)
 
-**endConditions** enthält auch <condition>-Elemente. Wenn eine Bedingung als wahr (true) ausgewertet wird, wird der Trigger zurückgesetzt. Das <trigger>-Element enthält darüber hinaus ein <sources>-Element mit mindestens einem <source>-Element. Die <source>-Elemente definieren den URI und den Typ der Anzeigenantwort. In diesem Beispiel wird einer VAST-Antwort ein URI zugewiesen. 
+**endConditions** enthält auch <condition>-Elemente. Wenn eine Bedingung als wahr (true) ausgewertet wird, wird der Trigger zurückgesetzt. Das <trigger>-Element enthält darüber hinaus ein <sources>-Element mit mindestens einem <source>-Element. Die <source>-Elemente definieren den URI und den Typ der Anzeigenantwort. In diesem Beispiel wird einer VAST-Antwort ein URI zugewiesen.
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -352,7 +352,7 @@ Das **trigger**-Element enthält ein **startConditions**-Element, das angibt, wa
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>Verwenden von VPAID (Video Player-Ad Interface Definition)
 VPAID ist eine API, mit der die Kommunikation von ausführbaren Werbeeinheiten mit einem Videoplayer aktiviert wird. Dies ermöglicht hochgradig interaktive Werbeerfahrungen. Der Benutzer kann mit der Werbeeinblendung interagieren und die Werbeeinblendung kann auf Aktionen des Betrachters reagieren. Beispielsweise können in einer Werbeeinblendung Schaltflächen angezeigt werden, über die der Benutzer weitere Informationen oder eine längere Version der Werbeeinblendung anzeigen kann. Der Videoplayer muss die VPAID-API unterstützen und die ausführbare Werbeeinheit muss die API implementieren. Wenn ein Player eine Werbeeinblendung von einem Adserver anfordert, kann der Server mit einer VAST-Antwort antworten, die eine VPAID-Werbung enthält.
 
-Im Code wird eine ausführbare Werbeeinheit erstellt, die in einer Laufzeitumgebung wie Adobe Flash™ oder JavaScript ausgeführt werden muss, die in einem Webbrowser ausgeführt werden kann. Wenn ein Adserver eine VAST-Antwort zurückgibt, die eine VPAID-Werbung enthält, muss der Wert des apiFramework-Attributs im <MediaFile>-Element "VPAID" sein. Dieses Attribut gibt an, dass die enthaltene Werbeeinheit eine ausführbare VPAID-Werbung ist. Das type-Attribut muss auf den MIME-Typ der ausführbaren Datei festgelegt werden, z. B. "application/x-shockwave-flash" oder "application/x-javascript". Der folgende XML-Codeausschnitt zeigt das <MediaFile>-Element aus einer VAST-Antwort, die eine ausführbare VPAID-Werbung enthält. 
+Im Code wird eine ausführbare Werbeeinheit erstellt, die in einer Laufzeitumgebung wie Adobe Flash™ oder JavaScript ausgeführt werden muss, die in einem Webbrowser ausgeführt werden kann. Wenn ein Adserver eine VAST-Antwort zurückgibt, die eine VPAID-Werbung enthält, muss der Wert des apiFramework-Attributs im <MediaFile>-Element "VPAID" sein. Dieses Attribut gibt an, dass die enthaltene Werbeeinheit eine ausführbare VPAID-Werbung ist. Das type-Attribut muss auf den MIME-Typ der ausführbaren Datei festgelegt werden, z. B. "application/x-shockwave-flash" oder "application/x-javascript". Der folgende XML-Codeausschnitt zeigt das <MediaFile>-Element aus einer VAST-Antwort, die eine ausführbare VPAID-Werbung enthält.
 
 ```xml
     <MediaFiles>
@@ -586,7 +586,7 @@ In diesem Beispiel wird „VmapSchedulerPlugin“ verwendet, um Werbeeinblendung
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementieren eines iOS-Videoplayers mit Unterstützung für Werbeeinblendungen
-Microsoft Media-Plattform: Player Framework für iOS enthält eine Sammlung von Beispielanwendungen, die zeigen, wie Sie eine Videoplayeranwendung mithilfe des Frameworks implementieren. Sie können das Player Framework und die Beispiele unter [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)herunterladen. Die GitHub-Seite enthält einen Link zu einem Wiki, das zusätzliche Informationen zum Player Framework und eine Einführung in das Playerbeispiel enthält: [Azure Media Player-Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)(in englischer Sprache).
+Microsoft Media-Plattform: Player Framework für iOS enthält eine Sammlung von Beispielanwendungen, die zeigen, wie Sie eine Videoplayeranwendung mithilfe des Frameworks implementieren. Sie können das Player Framework und die Beispiele unter [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)herunterladen. Die GitHub-Seite enthält einen Link zu einem Wiki, das zusätzliche Informationen zum Player Framework und eine Einführung in das Playerbeispiel enthält: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Planen von Werbeeinblendungen mit VMAP
 Das folgende Beispiel zeigt, wie Sie Werbeeinblendungen mithilfe einer VMAP-Datei planen.
@@ -605,7 +605,7 @@ Das folgende Beispiel zeigt, wie Sie Werbeeinblendungen mithilfe einer VMAP-Date
                 if (![framework scheduleVMAPWithManifest:manifest])
                 {
                     [self logFrameworkError];
-                }          
+                }
             }
 ```
 

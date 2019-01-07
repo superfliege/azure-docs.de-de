@@ -1,6 +1,6 @@
 ---
-title: Cognitive Search für die Datenextrahierung und die KI-Verarbeitung natürlicher Sprache in Azure Search | Microsoft-Dokumentation
-description: Inhaltsextrahierung, die Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) und die Bildverarbeitung zum Erstellen durchsuchbarer Inhalte in der Azure Search-Indizierung mithilfe von kognitiven Fähigkeiten und KI-Algorithmen
+title: Kognitive Suche für die Datenextrahierung und die KI-Verarbeitung natürlicher Sprache – Azure Search
+description: Inhaltsextrahierung, Verarbeitung natürlicher Sprache (NLP, Natural Language Processing) und Bildverarbeitung zum Erstellen durchsuchbarer Inhalte in der Azure Search-Indizierung mithilfe von kognitiven Fähigkeiten und KI-Algorithmen.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729046"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315603"
 ---
-# <a name="what-is-cognitive-search"></a>Was ist Cognitive Search?
+# <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
 Bei Cognitive Search werden durchsuchbare Informationen aus nicht durchsuchbaren Inhalten erstellt, indem KI-Algorithmen an eine Indizierungspipeline angefügt werden. Die KI-Integration erfolgt über *kognitive Fähigkeiten*, indem Quelldokumente auf dem Web zu einem Suchindex „angereichert“ werden. 
 
@@ -26,12 +27,14 @@ Die **Bildverarbeitung** umfasst [OCR](cognitive-search-skill-ocr.md) und die Id
 
 ![Diagramm der Cognitive Search-Pipeline](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die Cognitive Search-Pipeline")
 
-Die kognitiven Fähigkeiten in Azure Search basieren auf den gleichen KI-Algorithmen, die auch in Cognitive Services-APIs verwendet werden: [API für Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md), [API für Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md) und [OCR-API](cognitive-search-skill-ocr.md) sind nur wenige Beispiele dafür. 
+Die kognitiven Fähigkeiten in Azure Search basieren auf denselben KI-Algorithmen, die auch in Cognitive Services-APIs verwendet werden: [API für die Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md), [API für die Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md) und [OCR-API](cognitive-search-skill-ocr.md) sind nur einige dieser APIs. 
 
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden. Die Architektur ist erweiterbar. Falls die integrierten Fähigkeiten also nicht ausreichen, können Sie [benutzerdefinierte Fähigkeiten](cognitive-search-create-custom-skill-example.md) erstellen und anfügen, um die benutzerdefinierte Verarbeitung zu integrieren. Beispiele hierfür sind ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, z.B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen, das Extrahieren von Bildern und die Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Seit dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Somit können wir mit der Gebührenberechnung für die Ausführung von Qualifikationsgruppen beginnen. Außerdem wird seit diesem Datum die Bildextraktion als Teil der Aufschlüsselung von Dokumenten in Rechnung gestellt. Die Textextraktion aus Dokumenten wird weiterhin ohne zusätzliche Kosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="components-of-cognitive-search"></a>Komponenten von Cognitive Search
 
@@ -45,7 +48,7 @@ Am Anfang der Pipeline befindet sich unstrukturierter Text oder Nicht-Text-Inhal
 
 ![Phase der Entschlüsselung von Dokumenten](./media/cognitive-search-intro/document-cracking-phase-blowup.png "Dokumententschlüsselung")
 
- Zu den unterstützten Quellen zählen Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank und Azure Cosmos DB. Textbasierte Inhalte können aus den folgenden Dateitypen extrahiert werden: PDF-, Word-, PowerPoint und CSV-Dateien. Eine vollständige Liste finden Sie unter [Unterstützte Formate](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
+ Zu den unterstützten Quellen zählen Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank und Azure Cosmos DB. Textbasierte Inhalte können aus den folgenden Dateitypen extrahiert werden: PDF-, Word-, PowerPoint- und CSV-Dateien. Eine vollständige Liste finden Sie unter [Unterstützte Formate](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
 ### <a name="cognitive-skills-and-enrichment-phase"></a>Phase der kognitiven Fähigkeiten und Anreicherung
 
@@ -88,10 +91,21 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 ## <a name="where-do-i-start"></a>Wo beginne ich?
 
-**Schritt 1: Erstellen Sie in einer Region, in der APIs bereitgestellt werden, einen Suchdienst** 
+**Schritt 1: Erstellen eines Suchdiensts in einer Region, in der die APIs bereitgestellt werden** 
 
++ USA, Westen-Mitte
 + USA Süd Mitte
++ USA (Ost)
++ USA (Ost) 2
++ USA, Westen 2
++ Kanada, Mitte
 + Europa, Westen
++ UK, Süden
++ Nordeuropa
++ Brasilien Süd
++ Asien, Südosten
++ Indien, Mitte
++ Australien (Osten)
 
 **Schritt 2: Praktische Erfahrung zur Bewältigung des Workflows**
 
@@ -110,7 +124,7 @@ Derzeit werden nur REST-APIs bereitgestellt. Verwenden Sie `api-version=2017-11-
 | [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Ein Schema zur Beschreibung eines Azure Search-Indexes. Felder im Index werden Feldern in den Quelldaten zugeordnet oder Feldern, die während der Anreicherungsphase erstellt wurden (z.B. ein von der Entitätserkennung erstelltes Feld für Organisationsnamen). |
 | [Erstellen eines Indexers (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchkorpus basierend auf dem Indexschema und wird mit Quelldaten aufgefüllt, die durch Fähigkeitengruppen angereichert werden.  |
 
-**Prüfliste: Ein typischer Workflow**
+**Checkliste: Typischer Workflow**
 
 1. Fügen Sie Teilmengen Ihrer Azure-Quelldaten in eine repräsentative Stichprobe ein. Die Indizierung braucht Zeit. Daher sollten Sie mit einem kleinen, repräsentativen Dataset beginnen, das Sie anschließend schrittweise aufbauen, während sich Ihre Lösung entwickelt.
 
@@ -135,5 +149,5 @@ Weitere Informationen zu bestimmten Fragen oder Problemen finden Sie unter [Prob
 ## <a name="next-steps"></a>Nächste Schritte
 
 + [Dokumentation zu Cognitive Search](cognitive-search-resources-documentation.md)
-+ [Schnellstart: Testen von Cognitive Search in einer Präsentation der Portalfunktion](cognitive-search-quickstart-blob.md)
-+ [Tutorial: Informationen zu Such-APIs für Cognitive Search](cognitive-search-tutorial-blob.md)
++ [Schnellstart: Testen der kognitiven Suche anhand einer exemplarischen Vorgehensweise zu Portalfunktionen](cognitive-search-quickstart-blob.md)
++ [Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche](cognitive-search-tutorial-blob.md)

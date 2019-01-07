@@ -1,18 +1,19 @@
 ---
-title: 'Erstellen und Ändern einer ExpressRoute-Verbindung: PowerShell: Azure Resource Manager | Microsoft-Dokumentation'
-description: Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung.
+title: 'Erstellen und Ändern einer ExpressRoute-Verbindung – PowerShell: Azure | Microsoft-Dokumentation'
+description: Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: f95bdfe9a61a271825ff9bbe5ca7f84330c98df5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257451"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105001"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit PowerShell
 > [!div class="op_single_selector"]
@@ -23,7 +24,7 @@ ms.locfileid: "51257451"
 > * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
 >
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung mit PowerShell-Cmdlets und dem Azure Resource Manager-Bereitstellungsmodell erstellen. Der Artikel veranschaulicht auch, wie Sie den Status der Verbindung prüfen, aktualisieren, löschen oder die Bereitstellung aufheben.
+In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell-Cmdlets und dem Azure Resource Manager-Bereitstellungsmodell eine ExpressRoute-Verbindung erstellen. Außerdem können Sie den Status einer Verbindung überprüfen, die Verbindung aktualisieren oder löschen oder ihre Bereitstellung aufheben.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

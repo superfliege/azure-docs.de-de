@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f7d13c946ce9d74d23ceef63c31e3858591ae42e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b297be16110e24342b224f7f89c2a3c0c44229a9
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637705"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341405"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnose in Durable Functions (Azure Functions)
 
@@ -31,25 +31,27 @@ Die Erweiterung „Durable Functions“ von Azure Functions gibt auch *Nachverfo
 
 Jedes Lebenszyklusereignis einer Orchestrierungsinstanz bewirkt, dass in Application Insights ein Nachverfolgungsereignis in die Sammlung **traces** geschrieben wird. Dieses Ereignis enthält die Nutzlast **customDimensions** mit mehreren Feldern.  Feldnamen wird immer `prop__` vorangestellt.
 
-* **hubName**: Der Name des Aufgabenhub, unter dem Ihre Orchestrierungen ausgeführt werden.
-* **appName**: Der Name der Funktionen-App. Dies ist nützlich, wenn mehrere Funktionen-Apps dieselbe Application Insights-Instanz gemeinsam nutzen.
-* **slotName**: Der [Bereitstellungsslot](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/), in dem die aktuelle Funktionen-App ausgeführt wird. Dies ist nützlich, wenn Sie Bereitstellungsslots nutzen, um Ihre Orchestrierungen mit einer Version zu versehen.
+* **hubName**: Der Name des Aufgabenhubs, unter dem Ihre Orchestrierungen ausgeführt werden.
+* **appName**: Der Name der Funktions-App Dies ist nützlich, wenn mehrere Funktionen-Apps dieselbe Application Insights-Instanz gemeinsam nutzen.
+* **slotName**: Der [Bereitstellungsslot](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/), in dem die aktuelle Funktions-App ausgeführt wird. Dies ist nützlich, wenn Sie Bereitstellungsslots nutzen, um Ihre Orchestrierungen mit einer Version zu versehen.
 * **functionName**: Der Name der Orchestrator- oder Aktivitätsfunktion.
-* **functionType**: Der Typ der Funktion, z.B. **Orchestrator** oder **Activity**.
+* **functionType**: Der Typ der Funktion, z. B. **Orchestrator** oder **Activity**.
 * **instanceId**: Die eindeutige ID der Orchestrierungsinstanz.
 * **state**: Der Lebenszyklus-Ausführungsstatus der Instanz. Folgende Werte sind gültig:
-    * **Scheduled**: Die Funktion wurde für die Ausführung eingeplant, aber die Ausführung wurde noch nicht gestartet.
-    * **Started**: Die Ausführung der Funktion wurde gestartet, aber der Wartezustand oder der Abschluss ist noch nicht erreicht.
-    * **Awaited**: Der Orchestrator hat Arbeit geplant und wartet darauf, dass sie abgeschlossen wird.
-    * **Listening**: Der Orchestrator lauscht auf eine externe Ereignisbenachrichtigung.
-    * **Completed**: Die Funktion wurde erfolgreich abgeschlossen.
-    * **Failed**: Für die Funktion ist ein Fehler aufgetreten.
+  * **Scheduled**: Die Ausführung der Funktion wurde geplant, aber noch nicht gestartet.
+  * **Started**: Die Ausführung der Funktion wurde gestartet, sie wurde aber noch nicht erwartet oder abgeschlossen.
+  * **Awaited**: Der Orchestrator hat Arbeit geplant und wartet darauf, dass sie abgeschlossen wird.
+  * **Listening**: Der Orchestrator lauscht auf eine externe Ereignisbenachrichtigung.
+  * **Completed**: Die Funktion wurde erfolgreich abgeschlossen.
+  * **Failed**: Bei der Funktion ist ein Fehler aufgetreten.
 * **reason**: Zusätzliche Daten zum Nachverfolgungsereignis. Wenn eine Instanz beispielsweise auf eine externe Ereignisbenachrichtigung wartet, wird in diesem Feld der Name des Ereignisses angegeben, auf das gewartet wird. Wenn eine Funktion fehlgeschlagen ist, sind hier die Fehlerdetails enthalten.
-* **isReplay**: Boolescher Wert, der angibt, ob das Nachverfolgungsereignis für die wiedergegebene Ausführung bestimmt ist.
-* **extensionVersion**: Die Version der Erweiterung „Durable Task“. Dies ist besonders wichtig, wenn mögliche Fehler der Erweiterung gemeldet werden. Instanzen mit langer Ausführungsdauer melden unter Umständen mehrere Versionen, wenn während der Ausführung ein Update durchgeführt wird. 
-* **sequenceNumber**: Ausführungssequenznummer für ein Ereignis. In Kombination mit dem Zeitstempel können die Ereignisse dadurch nach Ausführungszeit sortiert werden. *Beachten Sie, dass diese Zahl auf null zurückgesetzt wird, wenn der Host neu gestartet wird, während die Instanz ausgeführt wird. Daher ist es wichtig, immer zuerst nach dem Zeitstempel zu sortieren, dann nach „sequenceNumber“.*
+* **isReplay**: Ein boolescher Wert, der angibt, ob das Nachverfolgungsereignis für die wiedergegebene Ausführung bestimmt ist.
+* **extensionVersion**: Die Version der Durable Task-Erweiterung. Dies ist besonders wichtig, wenn mögliche Fehler der Erweiterung gemeldet werden. Instanzen mit langer Ausführungsdauer melden unter Umständen mehrere Versionen, wenn während der Ausführung ein Update durchgeführt wird.
+* **sequenceNumber**: Die Ausführungssequenznummer für ein Ereignis. In Kombination mit dem Zeitstempel können die Ereignisse dadurch nach Ausführungszeit sortiert werden. *Beachten Sie, dass diese Zahl auf null zurückgesetzt wird, wenn der Host neu gestartet wird, während die Instanz ausgeführt wird. Daher ist es wichtig, immer zuerst nach dem Zeitstempel zu sortieren, dann nach „sequenceNumber“.*
 
-Der Ausführlichkeitsgrad der Nachverfolgung von Daten, die für Application Insights ausgegeben werden, kann im Abschnitt `logger` der Datei `host.json` konfiguriert werden.
+Der Ausführlichkeitsgrad der Nachverfolgungsdaten, die an Application Insights ausgegeben werden, kann im Abschnitt `logger` (Functions 1.x) oder `logging` (Functions 2.x) der Datei `host.json` konfiguriert werden.
+
+#### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
@@ -63,9 +65,23 @@ Der Ausführlichkeitsgrad der Nachverfolgung von Daten, die für Application Ins
 }
 ```
 
+#### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+    "logging": {
+        "logLevel": {
+          "Host.Triggers.DurableTask": "Information",
+        },
+    }
+}
+```
+
 Standardmäßig werden alle ohne Wiedergabe definierten Nachverfolgungsereignisse ausgegeben. Die Datenmenge kann reduziert werden, indem `Host.Triggers.DurableTask` auf `"Warning"` oder `"Error"` festgelegt wird. In diesem Fall werden Nachverfolgungsereignisse nur für außergewöhnliche Situationen ausgegeben.
 
 Zum Aktivieren der Ausgabe der Wiedergabeereignisse mit ausführlicher Orchestrierung kann `LogReplayEvents` wie im Folgenden gezeigt in der Datei `host.json` unter `durableTask` auf `true` festgelegt werden:
+
+#### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
@@ -75,12 +91,24 @@ Zum Aktivieren der Ausgabe der Wiedergabeereignisse mit ausführlicher Orchestri
 }
 ```
 
+#### <a name="functions-2x"></a>Functions 2.x
+
+```javascript
+{
+    "extensions": {
+        "durableTask": {
+            "logReplayEvents": true
+        }
+    }
+}
+```
+
 > [!NOTE]
 > Standardmäßig werden für die Application Insights-Telemetriedaten von der Azure Functions-Laufzeit Stichproben erstellt, um zu verhindern, dass Daten zu häufig ausgegeben werden. Dies kann dazu führen, dass Nachverfolgungsinformationen verloren gehen, wenn viele Lebenszyklusereignisse in kurzer Zeit auftreten. Im [Artikel zur Azure Functions-Überwachung](../functions-monitoring.md#configure-sampling) wird beschrieben, wie Sie dieses Verhalten konfigurieren.
 
 ### <a name="single-instance-query"></a>Abfrage für einzelne Instanzen
 
-Mit der folgenden Abfrage werden Verlaufsdaten für die Nachverfolgung einer Einzelinstanz der [Hello Sequence](durable-functions-sequence.md)-Funktionsorchestrierung angezeigt. Sie wurde mit der [Application Insights Query Language (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) geschrieben. Die Wiedergabeausführung wird herausgefiltert, sodass nur der *logische* Ausführungspfad angezeigt wird. Ereignisse können angeordnet werden, indem nach `timestamp` und `sequenceNumber` sortiert wird, wie in der folgenden Abfrage gezeigt: 
+Mit der folgenden Abfrage werden Verlaufsdaten für die Nachverfolgung einer Einzelinstanz der [Hello Sequence](durable-functions-sequence.md)-Funktionsorchestrierung angezeigt. Sie wurde mit der [Application Insights Query Language (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) geschrieben. Die Wiedergabeausführung wird herausgefiltert, sodass nur der *logische* Ausführungspfad angezeigt wird. Ereignisse können angeordnet werden, indem nach `timestamp` und `sequenceNumber` sortiert wird, wie in der folgenden Abfrage gezeigt:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -92,7 +120,7 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
-| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"])
 | where isReplay != true
 | where instanceId == targetInstanceId
 | sort by timestamp asc, sequenceNumber asc
@@ -102,7 +130,6 @@ traces
 Das Ergebnis ist eine Liste mit Nachverfolgungsereignissen, die den Ausführungspfad der Orchestrierung anzeigt, z.B. alle Aktivitätsfunktionen, in aufsteigender Reihenfolge nach Ausführungszeit sortiert.
 
 ![Application Insights-Abfrage](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
-
 
 ### <a name="instance-summary-query"></a>Instanz-Zusammenfassungsabfrage
 
@@ -123,6 +150,7 @@ traces
 | project timestamp, instanceId, functionName, state, output, appName = cloud_RoleName
 | order by timestamp asc
 ```
+
 Das Ergebnis ist eine Liste mit Instanz-IDs und dem aktuellen Laufzeitstatus.
 
 ![Application Insights-Abfrage](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
@@ -131,24 +159,24 @@ Das Ergebnis ist eine Liste mit Instanz-IDs und dem aktuellen Laufzeitstatus.
 
 Es ist wichtig, das Wiedergabeverhalten von Orchestratoren zu beachten, wenn Protokolle direkt über eine Orchestratorfunktion geschrieben werden. Sehen Sie sich beispielsweise die folgende Orchestratorfunktion an:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext ctx,
+    DurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
-    await ctx.CallActivityAsync("F1");
+    await context.CallActivityAsync("F1");
     log.LogInformation("Calling F2.");
-    await ctx.CallActivityAsync("F2");
+    await context.CallActivityAsync("F2");
     log.LogInformation("Calling F3");
-    await ctx.CallActivityAsync("F3");
+    await context.CallActivityAsync("F3");
     log.LogInformation("Done!");
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -188,20 +216,20 @@ Wenn Sie nur die Anmeldung für die Ausführung ohne Wiedergabe durchführen mö
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext ctx,
+    DurableOrchestrationContext context,
     ILogger log)
 {
-    if (!ctx.IsReplaying) log.LogInformation("Calling F1.");
-    await ctx.CallActivityAsync("F1");
-    if (!ctx.IsReplaying) log.LogInformation("Calling F2.");
-    await ctx.CallActivityAsync("F2");
-    if (!ctx.IsReplaying) log.LogInformation("Calling F3");
-    await ctx.CallActivityAsync("F3");
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
     log.LogInformation("Done!");
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -230,21 +258,36 @@ Done!
 
 Mit dem benutzerdefinierten Orchestrierungsstatus können Sie einen benutzerdefinierten Statuswert für Ihre Orchestratorfunktion festlegen. Dieser Status wird über die HTTP-Statusabfrage-API oder die `DurableOrchestrationClient.GetStatusAsync`-API angegeben. Der benutzerdefinierte Orchestrierungsstatus ermöglicht eine umfassendere Überwachung für Orchestratorfunktionen. Der Orchestratorfunktionscode kann z.B. `DurableOrchestrationContext.SetCustomStatus`-Aufrufe zum Aktualisieren des Status für einen Vorgang mit langer Ausführungsdauer enthalten. Ein Client, z.B. eine Webseite oder ein anderes externes System, kann dann für die HTTP-Statusabfrage-APIs in regelmäßigen Abständen eine Abfrage nach umfangreicheren Statusinformationen durchführen. Nachfolgend ist ein Beispiel unter Verwendung von `DurableOrchestrationContext.SetCustomStatus` aufgeführt:
 
+### <a name="c"></a>C#
+
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
+public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
 {
     // ...do work...
 
     // update the status of the orchestration with some arbitrary data
     var customStatus = new { completionPercentage = 90.0, status = "Updating database records" };
-    ctx.SetCustomStatus(customStatus);
+    context.SetCustomStatus(customStatus);
 
     // ...do more work...
 }
 ```
 
-> [!NOTE]
-> Der Status der benutzerdefinierten Orchestrierung für JavaScript wird in einem zukünftigen Release verfügbar sein.
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    // ...do work...
+
+    // update the status of the orchestration with some arbitrary data
+    const customStatus = { completionPercentage: 90.0, status: "Updating database records", };
+    context.df.setCustomStatus(customStatus);
+
+    // ...do more work...
+});
+```
 
 Während der Ausführung der Orchestrierung können externe Clients diesen benutzerdefinierten Status abrufen:
 
@@ -253,7 +296,7 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Clients erhalten folgende Antwort: 
+Clients erhalten folgende Antwort:
 
 ```http
 {
@@ -267,20 +310,20 @@ Clients erhalten folgende Antwort:
 ```
 
 > [!WARNING]
->  Die Nutzlast des benutzerdefinierten Status ist auf UTF-16-JSON-Text mit einer Größe von 16 KB beschränkt, da dieser in eine Azure Table Storage-Spalte passen muss. Für eine größere Nutzlast können Sie externen Speicher verwenden.
+> Die Nutzlast des benutzerdefinierten Status ist auf UTF-16-JSON-Text mit einer Größe von 16 KB beschränkt, da dieser in eine Azure Table Storage-Spalte passen muss. Für eine größere Nutzlast können Sie externen Speicher verwenden.
 
 ## <a name="debugging"></a>Debuggen
 
 Azure Functions unterstützt das direkte Debuggen des Funktionscodes, und diese Unterstützung gilt auch für Durable Functions – unabhängig davon, ob die Ausführung in Azure oder lokal erfolgt. Beim Debuggen sollten aber einige Verhaltensweisen beachtet werden:
 
-* **Replay** (Wiedergabe): Orchestratorfunktionen werden regelmäßig wiederholt, wenn neue Eingaben empfangen werden. Dies bedeutet Folgendes: Eine einzelne *logische* Ausführung einer Orchestratorfunktion kann dazu führen, dass derselbe Breakpoint mehrfach erreicht wird. Dies gilt vor allem, wenn er sich im Anfangsbereich des Funktionscodes befindet.
-* **Await** (Wartezustand): Immer wenn das `await`-Element auftritt, wird die Steuerung zurück an den Durable Task Framework-Verteiler übergeben. Wenn dies das erste Mal ist, dass ein bestimmtes `await`-Element auftritt, wird die zugeordnete Aufgabe *nie* fortgesetzt. Aus diesem Grund ist das *Überspringen* des Wartezustands (F10 in Visual Studio) nicht möglich. Das Überspringen funktioniert nur, wenn eine Aufgabe wiedergegeben wird.
-* **Messaging timeouts** (Messaging-Timeouts): In Durable Functions werden intern Warteschlangennachrichten für die Ausführung von Orchestrator- und Aktivitätsfunktionen verwendet. In einer Umgebung mit mehreren VMs kann das Unterbrechen des Debuggens über längere Zeiträume dazu führen, dass eine andere VM die Nachricht aufnimmt. Das Ergebnis wäre dann eine doppelte Ausführung. Dieses Verhalten tritt auch für reguläre Warteschlangentriggerfunktionen auf, aber es ist wichtig, dies in diesem Zusammenhang zu erwähnen, da es sich bei den Warteschlangen um ein Implementierungsdetail handelt.
+* **Wiedergabe**: Orchestratorfunktionen werden regelmäßig wiederholt, wenn neue Eingaben empfangen werden. Dies bedeutet Folgendes: Eine einzelne *logische* Ausführung einer Orchestratorfunktion kann dazu führen, dass derselbe Breakpoint mehrfach erreicht wird. Dies gilt vor allem, wenn er sich im Anfangsbereich des Funktionscodes befindet.
+* **Await**: Bei jedem `await`-Ausdruck wird die Steuerung an den Durable Task Framework-Verteiler zurückgegeben. Wenn dies das erste Mal ist, dass ein bestimmtes `await`-Element auftritt, wird die zugeordnete Aufgabe *nie* fortgesetzt. Aus diesem Grund ist das *Überspringen* des Wartezustands (F10 in Visual Studio) nicht möglich. Das Überspringen funktioniert nur, wenn eine Aufgabe wiedergegeben wird.
+* **Messagingtimeouts**: In Durable Functions werden intern Warteschlangennachrichten für die Ausführung von Orchestrator- und Aktivitätsfunktionen verwendet. In einer Umgebung mit mehreren VMs kann das Unterbrechen des Debuggens über längere Zeiträume dazu führen, dass eine andere VM die Nachricht aufnimmt. Das Ergebnis wäre dann eine doppelte Ausführung. Dieses Verhalten tritt auch für reguläre Warteschlangentriggerfunktionen auf, aber es ist wichtig, dies in diesem Zusammenhang zu erwähnen, da es sich bei den Warteschlangen um ein Implementierungsdetail handelt.
 
 > [!TIP]
 > Gehen Sie wie folgt vor, wenn Sie beim Festlegen von Breakpoints erreichen möchten, dass nur bei Nichtwiedergabeausführungen unterbrochen wird: Legen Sie einen bedingten Breakpoint fest, bei dem nur eine Unterbrechung auftritt, wenn `IsReplaying` den Wert `false` hat.
 
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 
 Durable Functions speichert den Status standardmäßig in Azure Storage. Dies bedeutet, dass Sie den Status Ihrer Orchestrierungen mit Tools wie [Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) untersuchen können.
 

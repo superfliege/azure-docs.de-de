@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 54a88188a432a23476af6a1670635a23fb72eea7
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638205"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341167"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -33,7 +33,7 @@ Wenn eine Orchestrierungsinstanz ausgeführt werden muss, werden die entsprechen
 
 Die **Instanzentabelle** ist eine andere Azure Storage-Tabelle, die die Statuswerte aller Orchestrierungsinstanzen innerhalb eines Aufgabenhubs enthält. Während der Erstellung von Instanzen werden dieser Tabelle neue Zeilen hinzugefügt. Der Partitionsschlüssel dieser Tabelle ist die Orchestrierungsinstanz-ID, und der Zeilenschlüssel ist eine feste Konstante. Es gibt eine Zeile pro Orchestrierungsinstanz.
 
-Diese Tabelle wird verwendet, um Instanzabfrageanforderungen über die [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_)-API sowie die [HTTP-Statusabfrage-API](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status) zu erfüllen. Sie wird letztendlich konsistent mit dem Inhalt der oben genannten **Verlaufstabelle** gehalten. Die Verwendung einer separaten Azure Storage-Tabelle zur wirksamen Erfüllung von Instanzabfragevorgängen auf diese Weise hängt vom [CQRS-Muster (Command and Query Responsibility Segregation)](https://docs.microsoft.com/azure/architecture/patterns/cqrs) ab.
+Diese Tabelle wird verwendet, um Instanzabfrageanforderungen über die [GetStatusAsync-API](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) (.NET), die `getStatus`-API (JavaScript) und über die [HTTP-Statusabfrage-API](durable-functions-http-api.md#get-instance-status) zu erfüllen. Sie wird letztendlich konsistent mit dem Inhalt der oben genannten **Verlaufstabelle** gehalten. Die Verwendung einer separaten Azure Storage-Tabelle zur wirksamen Erfüllung von Instanzabfragevorgängen auf diese Weise hängt vom [CQRS-Muster (Command and Query Responsibility Segregation)](https://docs.microsoft.com/azure/architecture/patterns/cqrs) ab.
 
 ## <a name="internal-queue-triggers"></a>Interne Warteschlangentrigger
 
@@ -53,10 +53,24 @@ Steuerelement-Warteschlangen enthalten eine Vielzahl von Orchestrierung-Lebenszy
 
 Die in Durable Functions verwendeten Warteschlangen, Tabellen und Blobs werden in einem konfigurierten Azure Storage-Konto erstellt. Das zu verwendende Konto kann über die Einstellung `durableTask/azureStorageConnectionStringName` in der Datei **host.json** angegeben werden.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
     "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+    }
   }
 }
 ```
@@ -67,6 +81,8 @@ Wenn kein Konto angegeben ist, wird das Standardspeicherkonto `AzureWebJobsStora
 
 Aktivitätsfunktionen sind zustandslos, und die horizontale Hochskalierung wird automatisch durch Hinzufügen von virtuellen Computern ausgeführt. Orchestratorfunktionen dagegen, sind über mindestens eine oder mehr Steuerelement-Warteschlangen *partitioniert*. Die Anzahl der Steuerelement-Warteschlangen wird in der Datei **host.json** definiert. Mit dem folgenden Beispielcodeausschnitt in „host.json“ wird die `durableTask/partitionCount`-Eigenschaft auf `3` festgelegt.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
@@ -74,6 +90,19 @@ Aktivitätsfunktionen sind zustandslos, und die horizontale Hochskalierung wird 
   }
 }
 ```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "partitionCount": 3
+    }
+  }
+}
+```
+
 Ein Aufgabenhub kann mit 1 bis 16 Partitionen konfiguriert werden. Wenn keine Anzahl angegeben ist, werden standardmäßig **4** Partitionen verwendet.
 
 Wenn mehrere Funktionshostinstanzen (in der Regel auf verschiedenen virtuellen Computern) horizontal hochskaliert werden, erhält jede Instanz eine Sperre auf einer der Steuerelement-Warteschlangen. Diese Sperren werden intern als Blob Storage-Leases implementiert und stellen sicher, dass eine Orchestrierungsinstanz jeweils nur auf einer einzelnen Hostinstanz ausgeführt wird. Wenn ein Aufgabenhub mit drei Steuerelement-Warteschlangen konfiguriert ist, kann die Last bei Orchestrierungsinstanzen auf bis zu drei virtuelle Computer verteilt werden. Zusätzliche virtuelle Computer können zum Erhöhen der Kapazität für die Ausführung der Aktivitätsfunktion hinzugefügt werden.
@@ -106,11 +135,26 @@ In Azure Functions können mehrere Funktionen gleichzeitig in einer einzelnen Ap
 
 Die Parallelitätslimits für Aktivitätsfunktionen und Orchestratorfunktionen können jeweils in der Datei **host.json** konfiguriert werden. Die relevanten Einstellungen sind `durableTask/maxConcurrentActivityFunctions` bzw. `durableTask/maxConcurrentOrchestratorFunctions`.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
     "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
+    "maxConcurrentOrchestratorFunctions": 10
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10
+    }
   }
 }
 ```
@@ -121,15 +165,31 @@ Im vorherigen Beispiel können maximal 10 Orchestratorfunktionen und 10 Aktivit�
 > Diese Einstellungen sind nützlich bei der Verwaltung der Speicher- und CPU-Auslastung auf einem einzelnen virtuellen Computer. Bei der horizontalen Hochskalierung auf mehrere VMs sind jedoch für jede VM jeweils eigene Limits festgelegt. Mit diesen Einstellungen kann die Parallelität nicht auf globaler Ebene gesteuert werden.
 
 ## <a name="orchestrator-function-replay"></a>Wiedergabe von Orchestratorfunktionen
+
 Wie zuvor erwähnt, werden Orchestratorfunktionen unter Verwendung der Inhalte der **Verlaufstabelle** wiedergegeben. Standardmäßig wird der Orchestratorfunktionscode immer dann wiedergegeben, wenn ein Batch von Nachrichten aus einer Steuerelement-Warteschlange entfernt wird.
 
 Dieses aggressive Wiedergabeverhalten kann durch Aktivieren von **erweiterten Sitzungen** deaktiviert werden. Wenn erweiterte Sitzungen aktiviert sind, verbleiben Orchestratorfunktionsinstanzen länger im Arbeitsspeicher, und neue Nachrichten können ohne eine vollständige Wiedergabe verarbeitet werden. Erweiterte Sitzungen werden aktiviert, indem `durableTask/extendedSessionsEnabled` in der Datei **host.json** auf `true` festgelegt wird. Mit der Einstellung `durableTask/extendedSessionIdleTimeoutInSeconds` wird gesteuert, wie lange eine Leerlaufsitzung im Arbeitsspeicher verbleibt:
+
+### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
   "durableTask": {
     "extendedSessionsEnabled": true,
     "extendedSessionIdleTimeoutInSeconds": 30
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "extendedSessionsEnabled": true,
+      "extendedSessionIdleTimeoutInSeconds": 30
+    }
   }
 }
 ```
@@ -150,9 +210,9 @@ Wenn `durableTask/extendedSessionIdleTimeoutInSeconds` beispielsweise auf 30 Sek
 
 Bei der Planung der Verwendung von Durable Functions für eine Produktionsanwendung müssen die Leistungsanforderungen frühzeitig im Planungsprozess berücksichtigt werden. In diesem Abschnitt werden einige allgemeine Verwendungsszenarien und die erwarteten maximalen Durchsatzzahlen behandelt.
 
-* **Sequenzielle Aktivitätsausführung:** Dieses Szenario beschreibt eine Orchestratorfunktion, mit der nacheinander eine Reihe von Aktivitätsfunktionen ausgeführt werden. Am ehesten ähnelt es dem Beispiel zur [Funktionsverkettung](durable-functions-sequence.md).
+* **Sequenzielle Aktivitätsausführung:** Dieses Szenario beschreibt eine Orchestratorfunktion, mit der nacheinander eine Reihe von Aktivitätsfunktionen ausgeführt wird. Am ehesten ähnelt es dem Beispiel zur [Funktionsverkettung](durable-functions-sequence.md).
 * **Parallele Aktivitätsausführung:** Dieses Szenario beschreibt eine Orchestratorfunktion, mit der mithilfe des Musters [Auffächern nach außen/innen](durable-functions-cloud-backup.md) viele Aktivitätsfunktionen parallel ausgeführt werden.
-* **Parallele Antwortverarbeitung:** Dieses Szenario ist die zweite Hälfte des Musters [Auffächern nach außen/innen](durable-functions-cloud-backup.md). Es konzentriert sich auf die Leistung der Auffächerung nach innen. Es muss beachtet werden, dass im Unterschied zur Auffächerung nach außen die Auffächerung nach innen durch eine einzelne Orchestratorfunktionsinstanz erfolgt und daher nur auf einem einzelnen virtuellen Computer ausgeführt werden kann.
+* **Parallele Antwortverarbeitung:** Dieses Szenario stellt die zweite Hälfte des Musters [Auffächern nach außen/innen](durable-functions-cloud-backup.md) dar. Es konzentriert sich auf die Leistung der Auffächerung nach innen. Es muss beachtet werden, dass im Unterschied zur Auffächerung nach außen die Auffächerung nach innen durch eine einzelne Orchestratorfunktionsinstanz erfolgt und daher nur auf einem einzelnen virtuellen Computer ausgeführt werden kann.
 * **Externe Ereignisverarbeitung:** Dieses Szenario stellt eine einzelne Orchestratorfunktionsinstanz dar, die nacheinander auf [externe Ereignisse](durable-functions-external-events.md) wartet.
 
 > [!TIP]

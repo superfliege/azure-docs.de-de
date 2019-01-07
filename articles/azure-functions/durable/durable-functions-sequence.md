@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ca6eefa6ccba3fabebd125d88010817c66db52ab
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637535"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339585"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funktionsverkettung in Durable Functions – „Hello Sequence“-Beispiel
 
@@ -27,15 +27,16 @@ Bei der Funktionsverkettung geht es um das Muster für die Ausführung einer Fun
 
 In diesem Artikel werden die folgenden Funktionen in der Beispiel-App beschrieben:
 
-* `E1_HelloSequence`: Eine Orchestratorfunktion, mit der `E1_SayHello` in einer Sequenz mehrfach aufgerufen wird. Die Ausgaben der `E1_SayHello`-Aufrufe werden gespeichert, und die Ergebnisse werden aufgezeichnet.
-* `E1_SayHello`: Eine Aktivitätsfunktion, mit der einer Zeichenfolge das Wort „Hello“ vorangestellt wird.
+* `E1_HelloSequence`: Eine Orchestratorfunktion, die `E1_SayHello` in einer Sequenz mehrmals aufruft. Die Ausgaben der `E1_SayHello`-Aufrufe werden gespeichert, und die Ergebnisse werden aufgezeichnet.
+* `E1_SayHello`: Eine Aktivitätsfunktion, die einer Zeichenfolge das Wort „Hello“ voranstellt.
 
 In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts und JavaScript verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
 
 > [!NOTE]
-> Durable Functions steht in JavaScript nur in der Functions v2-Runtime zur Verfügung.
+> JavaScript Durable Functions sind nur für die Functions 2.x-Runtime verfügbar.
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
+
 ### <a name="functionjson-file"></a>Datei „function.json“
 
 Hier ist der Inhalt der Datei *function.json* für die Orchestratorfunktion angegeben, falls Sie Visual Studio Code oder das Azure-Portal für die Entwicklung verwenden. Die meisten *function.json*-Dateien für Orchestratoren ähneln dieser Datei stark.
@@ -47,7 +48,7 @@ Ein wichtiger Punkt ist der Bindungstyp `orchestrationTrigger`. Alle Orchestrato
 > [!WARNING]
 > Um die Regel „keine E/A“ für Orchestratorfunktionen zu beachten, sollten Sie keine Eingabe- oder Ausgabebindungen verwenden, wenn Sie die Triggerbindung `orchestrationTrigger` einsetzen.  Falls andere Eingabe- oder Ausgabebindungen erforderlich sind, sollten sie stattdessen im Kontext von `activityTrigger`-Funktionen verwendet werden, die vom Orchestrator aufgerufen werden.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#-Skript (Visual Studio Code und Azure-Portal-Beispielcode) 
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#-Skript (Visual Studio Code und Azure-Portal-Beispielcode)
 
 Hier ist der Quellcode angegeben:
 
@@ -63,15 +64,16 @@ Hier ist der Quellcode angegeben:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Alle JavaScript-Orchestrierungsfunktionen müssen das Modul `durable-functions` enthalten. Dabei handelt es sich um eine JavaScript-Bibliothek, die die Aktionen der Orchestrierungsfunktion in das Ausführungsprotokoll von Durable Functions für vorgangsexterne Sprachen überträgt. Zwischen einer Orchestrierungsfunktion und anderen JavaScript-Funktionen bestehen drei wesentliche Unterschiede:
+Alle JavaScript-Orchestrierungsfunktionen müssen das [Modul `durable-functions`](https://www.npmjs.com/package/durable-functions) enthalten. Dies ist eine Bibliothek, mit der Sie Durable Functions in JavaScript schreiben können. Zwischen einer Orchestrierungsfunktion und anderen JavaScript-Funktionen bestehen drei wesentliche Unterschiede:
 
 1. Die Funktion ist eine [Generatorfunktion](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript).
-2. Die Funktion wird von einem Aufruf des Moduls `durable-functions` umschlossen (hier `df`).
-3. Die Funktion wird mit dem Aufruf von `return` und nicht von `context.done` beendet.
+2. Die Funktion wird in einem Aufruf der `orchestrator`-Methode des Moduls `durable-functions` umschlossen (hier `df`).
+3. Die Funktion muss synchron sein. Da die orchestrator-Methode den Aufruf von „context.done“ behandelt, sollte die Funktion lediglich „zurückkehren“.
 
-Das `context`-Objekt enthält ein `df`-Objekt, mit dem Sie andere *Aktivitätsfunktionen* aufrufen und Eingabeparameter mit der zugehörigen `callActivityAsync`-Methode übergeben können. Im Code wird `E1_SayHello` dreimal nacheinander mit unterschiedlichen Parameterwerten aufgerufen. Dabei wird `yield` verwendet, um anzugeben, dass für die Ausführung auf die Rückgabe der asynchronen Aufrufe der Aktivitätsfunktion gewartet werden muss. Der Rückgabewert jedes Aufrufs wird der Liste `outputs` hinzugefügt, die am Ende der Funktion zurückgegeben wird.
+Das `context`-Objekt enthält ein `df`-Objekt, mit dem Sie andere *Aktivitätsfunktionen* aufrufen und Eingabeparameter mit der zugehörigen `callActivity`-Methode übergeben können. Im Code wird `E1_SayHello` dreimal nacheinander mit unterschiedlichen Parameterwerten aufgerufen. Dabei wird `yield` verwendet, um anzugeben, dass für die Ausführung auf die Rückgabe der asynchronen Aufrufe der Aktivitätsfunktion gewartet werden muss. Der Rückgabewert jedes Aufrufs wird der Liste `outputs` hinzugefügt, die am Ende der Funktion zurückgegeben wird.
 
 ## <a name="e1sayhello"></a>E1_SayHello
+
 ### <a name="functionjson-file"></a>Datei „function.json“
 
 Die Datei *function.json* für die Aktivitätsfunktion `E1_SayHello` ähnelt der Datei von `E1_HelloSequence`, aber es wird nicht der Bindungstyp `orchestrationTrigger`, sondern `activityTrigger` verwendet.
@@ -93,7 +95,7 @@ Diese Funktion verfügt über einen Parameter vom Typ [DurableActivityContext](h
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Im Unterschied zu einer JavaScript-Orchestrierungsfunktion erfordert eine JavaScript-Aktivitätsfunktion keine spezielle Einrichtung. Die von der Orchestratorfunktion übergebene Eingabe befindet sich im Objekt `context.bindings` unter dem Namen der Bindung `activitytrigger`, in diesem Fall `context.bindings.name`. Der Name der Bindung kann als Parameter der exportierten Funktion eingerichtet werden und der Zugriff darauf direkt erfolgen. Dies ist bei dem Beispielcode der Fall.
+Anders als eine JavaScript-Orchestrierungsfunktion erfordert eine Aktivitätsfunktion keine spezielle Einrichtung. Die von der Orchestratorfunktion übergebene Eingabe befindet sich im Objekt `context.bindings` unter dem Namen der Bindung `activityTrigger`, in diesem Fall `context.bindings.name`. Der Name der Bindung kann als Parameter der exportierten Funktion eingerichtet werden und der Zugriff darauf direkt erfolgen. Dies ist bei dem Beispielcode der Fall.
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
@@ -150,7 +152,7 @@ So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Beispiel wird eine einfache Funktionsverkettungsorchestrierung veranschaulicht. Im nächsten Beispiel wird die Implementierung des Musters „Auffächern nach außen/innen“ gezeigt. 
+In diesem Beispiel wird eine einfache Funktionsverkettungsorchestrierung veranschaulicht. Im nächsten Beispiel wird die Implementierung des Musters „Auffächern nach außen/innen“ gezeigt.
 
 > [!div class="nextstepaction"]
 > [Beispiel für „Auffächern nach außen/innen“ ausführen](durable-functions-cloud-backup.md)

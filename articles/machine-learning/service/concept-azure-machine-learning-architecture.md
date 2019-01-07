@@ -1,5 +1,6 @@
 ---
-title: Wie funktioniert der Azure Machine Learning-Dienst?
+title: 'ML in der Cloud: Terminologie und Architektur'
+titleSuffix: Azure Machine Learning service
 description: Enthält Informationen zu Architektur, Terminologie und Konzepten des Azure Machine Learning-Diensts. Außerdem erhalten Sie Informationen zum allgemeinen Workflow für die Nutzung des Diensts und zu den Azure-Diensten, die vom Azure Machine Learning-Dienst verwendet werden.
 services: machine-learning
 ms.service: machine-learning
@@ -8,13 +9,14 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 10/24/2018
-ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 3966d4b27f0e3d42f47d84fb5c9f5c8519a27b6c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706805"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184728"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Funktionsweise des Azure Machine Learning-Diensts: Architektur und Konzepte
 
@@ -33,8 +35,6 @@ Für den Workflow werden in der Regel diese Schritte ausgeführt:
 1. __Erstellen eines Images__ und Registrieren in der __Imageregistrierung__ 
 1. __Bereitstellen des Images__ als __Webdienst__ in Azure
 
-
-[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 > [!NOTE]
 > In diesem Dokument werden von Azure Machine Learning genutzte Begriffe und Konzepte definiert, aber keine Begriffe und Konzepte für die Azure Platform. Weitere Informationen zur Azure Platform-Terminologie finden Sie im [Microsoft Azure-Glossar](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
@@ -65,7 +65,7 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 
 Die folgende Abbildung enthält eine Taxonomie des Arbeitsbereichs:
 
-[![Taxonomie des Arbeitsbereichs](./media/concept-azure-machine-learning-architecture/taxonomy.png)](./media/concept-azure-machine-learning-architecture/taxonomy.png#lightbox)
+[![Taxonomie des Arbeitsbereichs](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="model"></a>Modell
 
@@ -75,7 +75,7 @@ Ein Modell wird erzeugt, indem in Azure Machine Learning eine Ausführung erfolg
 
 Azure Machine Learning Service ist frameworkunabhängig. Sie können beim Erstellen eines Modells ein beliebiges gängiges Machine Learning-Framework verwenden, z.B. scikit-learn, xgboost, PyTorch, TensorFlow, Chainer und CNTK.
 
-Ein Beispiel für das Trainieren eines Modells finden Sie im Dokument [Schnellstart: Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](quickstart-get-started.md).
+Ein Beispiel zum Trainieren eines Modells finden Sie im Dokument [Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](quickstart-get-started.md).
 
 ### <a name="model-registry"></a>Modellregistrierung
 
@@ -148,13 +148,13 @@ Eine Ausführung ist ein Datensatz, der die folgenden Informationen enthält:
 
 Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Modells übermitteln. Eine Ausführung kann über null oder mehr untergeordnete Elemente verfügen. Die Ausführung der obersten Ebene weist also unter Umständen zwei untergeordnete Ausführungen auf, die beide jeweils selbst untergeordnete Ausführungen haben können.
 
-Ein Beispiel für die Anzeige von Ausführungen, die von einem Trainingsmodell erzeugt werden, finden Sie im Dokument [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
+Ein Beispiel zum Anzeigen von Ausführungen, die beim Trainieren eines Modells erstellt werden, finden Sie im Dokument [Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](quickstart-get-started.md).
 
 ## <a name="experiment"></a>Experiment
 
 Ein Experiment ist eine Gruppierung vieler Ausführungen aus einem bestimmten Skript. Es gehört immer zu einem Arbeitsbereich. Beim Übermitteln einer Ausführung geben Sie einen Experimentnamen an. Die Informationen für die Ausführung werden unter diesem Experiment gespeichert. Wenn Sie eine Ausführung übermitteln und einen nicht vorhandenen Experimentnamen angeben, wird automatisch ein neues Experiment mit diesem Namen erstellt.
 
-Ein Beispiel für die Verwendung eines Experiments finden Sie im Dokument [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
+Ein Beispiel zum Verwenden eines Experiments finden Sie im [Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](quickstart-get-started.md).
 
 ## <a name="pipeline"></a>Pipeline
 
@@ -169,19 +169,23 @@ Ein Computeziel ist die Computeressource, die zum Ausführen Ihres Trainingsskri
 | Computeziel | Training | Bereitstellung |
 | ---- |:----:|:----:|
 | Ihr lokaler Computer | ✓ | &nbsp; |
+| Azure Machine Learning Compute | ✓ | &nbsp; |
 | Ein virtueller Linux-Computer in Azure</br>(z. B. Data Science Virtual Machine) | ✓ | &nbsp; |
-| Azure Batch AI-Cluster | ✓ | &nbsp; |
 | Azure Databricks | ✓ | &nbsp; | &nbsp; |
 | Azure Data Lake Analytics | ✓ | &nbsp; |
 | Apache Spark für HDInsight | ✓ | &nbsp; |
-| Azure Container Instances | ✓ | ✓ |
+| Azure Container Instances | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
 | Project Brainwave</br>(Field Programmable Gate Array) | &nbsp; | ✓ |
 
 Computeziele sind einem Arbeitsbereich zugeordnet. Andere Computeziele als der lokale Computer werden von Benutzern des Arbeitsbereichs gemeinsam genutzt.
 
-Die meisten Computeziele können direkt über den Arbeitsbereich erstellt werden, indem das Azure-Portal, das Azure Machine Learning SDK oder die Azure CLI verwendet wird. Wenn Sie über Computeziele verfügen, die von einem anderen Prozess erstellt wurden (z.B. mit dem Azure-Portal oder der Azure CLI), können Sie sie Ihrem Arbeitsbereich hinzufügen (bzw. anfügen). Einige Computeziele müssen außerhalb des Arbeitsbereichs erstellt und dann angefügt werden.
+### <a name="managed-and-unmanaged-compute-targets"></a>Verwaltete und nicht verwaltete Computeziele
+
+**Verwaltete** Computeziele werden von Azure Machine Learning Service erstellt und verwaltet. Diese Computeziele sind für ML-Workloads optimiert. __Azure Machine Learning Compute__ ist das einzige verwaltete Computeziel zu diesem Zeitpunkt (4. Dezember 2018). Möglicherweise werden künftig weitere verwaltete Computeziele hinzugefügt. Die meisten ML Compute-Instanzen können direkt über den Arbeitsbereich erstellt werden, indem das Azure-Portal, das Azure Machine Learning SDK oder die Azure CLI verwendet wird. Alle anderen Computeziele müssen außerhalb des Arbeitsbereichs erstellt und dann angefügt werden.
+
+**Nicht verwaltete** Computeziele werden nicht von Azure Machine Learning Service erstellt und verwaltet. Sie müssen sie ggf. außerhalb von Azure Machine Learning erstellen und anschließend vor der Nutzung an Ihren Arbeitsbereich anfügen. Diese Computeziele können weitere Schritte erfordern, um die Leistung von ML-Workloads beizubehalten oder zu verbessern.
 
 Informationen zum Auswählen eines Computeziels für das Training finden Sie im Dokument [Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells](how-to-set-up-training-targets.md).
 
@@ -223,5 +227,5 @@ Aktivitäten können Benachrichtigungen über das SDK oder eine Webbenutzeroberf
 Verwenden Sie die folgenden Links für den Einstieg in Azure Machine Learning:
 
 * [Was ist der Azure Machine Learning-Dienst (Vorschauversion)?](overview-what-is-azure-ml.md)
-* [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md)
-* [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning](tutorial-train-models-with-aml.md)
+* [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-get-started.md)
+* [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)

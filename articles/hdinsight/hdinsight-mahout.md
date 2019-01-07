@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c8e3b1186192d0d7c3fabb4e5a02cc4fcdf494d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 06181eaf4a44a00ddeeedcd9c40edeae9157abd9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009792"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438547"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Hadoop in HDInsight (PowerShell)
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Apache Hadoop in HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
@@ -26,27 +26,27 @@ Erfahren Sie, wie Sie Filmempfehlungen mit der [Apache Mahout](http://mahout.apa
 
 * Ein Linux-basierter HDInsight-Cluster. Informationen zu dessen Erstellung finden Sie unter [Erste Schritte mit Linux-basiertem Hadoop in HDInsight][getstarted].
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Generieren von Empfehlungen mithilfe von Azure PowerShell
 
-> [!WARNING]
+> [!WARNING]  
 > Der Auftrag in diesem Abschnitt verwendet Azure PowerShell. Viele der mit Mahout bereitgestellten Klassen funktionieren derzeit mit Azure PowerShell nicht. Eine Liste der Klassen, die nicht mit Azure PowerShell funktionieren, finden Sie im Abschnitt [Problembehandlung](#troubleshooting).
 >
-> Ein Beispiel für die Verwendung von SSH zum Herstellen einer Verbindung mit HDInsight und zum Ausführen von Mahout-Beispielen direkt im Cluster finden Sie unter [Erstellen von Filmempfehlungen mit Mahout und HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+> Ein Beispiel für die Verwendung von SSH zum Herstellen einer Verbindung mit HDInsight und zum Ausführen von Mahout-Beispielen direkt im Cluster finden Sie unter [Erstellen von Filmempfehlungen mit Apache Mahout und HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 Eine der von Mahout bereitgestellten Funktionen ist eine Empfehlungs-Engine. Diese Engine akzeptiert Daten im Format `userID`, `itemId` und `prefValue` (Benutzervoreinstellung für das Element). Mahout verwendet die Daten, um die Benutzer mit ähnlichen Vorlieben für Elemente zu ermitteln, aus denen sich Empfehlungen erstellen lassen.
 
 Das folgende Beispiel ist eine vereinfachte exemplarische Vorgehensweise der Funktionsweise des Empfehlungsprozesses:
 
-* **Gemeinsames Vorkommen:** Joe, Alice und Bob gefällt *Krieg der Sterne*, *Das Imperium schlägt zurück* und *Rückkehr der Jedi-Ritter*. Mahout stellt fest, dass Benutzer, denen einer dieser Filme gefällt, auch die beiden anderen mögen.
+* **Gemeinsames Vorkommen**: Joe, Alice und Bob haben *Krieg der Sterne*, *Das Imperium schlägt zurück* und *Rückkehr der Jedi-Ritter* mit „Gefällt mir“ markiert. Mahout stellt fest, dass Benutzer, denen einer dieser Filme gefällt, auch die beiden anderen mögen.
 
-* **Gemeinsames Vorkommen:** Bob und Alice haben auch *Die dunkle Bedrohung*, *Angriff der Klonkrieger* und *Die Rache der Sith* gefallen. Mahout stellt fest, dass Benutzer, denen die vorherigen drei Filme gefallen, auch diese Filme mögen.
+* **Gemeinsames Vorkommen**: Bob und Alice haben auch *Die dunkle Bedrohung*, *Angriff der Klonkrieger* und *Die Rache der Sith* mit „Gefällt mir“ markiert. Mahout stellt fest, dass Benutzer, denen die vorherigen drei Filme gefallen, auch diese Filme mögen.
 
-* **Vergleichbare Empfehlung**: Da Joe die ersten drei Filme gefallen haben, sucht Mahout nach Filmen, die anderen Personen mit ähnlichen Vorlieben gefallen haben, die Joe aber noch nicht gesehen (mit "Gefällt mir" markiert oder bewertet) hat. In diesem Fall empfiehlt Mahout *Die dunkle Bedrohung*, *Angriff der Klonkrieger* und *Die Rache der Sith*.
+* **Vergleichbare Empfehlung**: Da Joe die ersten drei Filme mit „Gefällt mir“ markiert hat, sucht Mahout nach Filmen, die andere Personen mit ähnlichen Vorlieben mit „Gefällt mir“ markiert haben, die Joe aber noch nicht gesehen (mit „Gefällt mir“ markiert oder bewertet) hat. In diesem Fall empfiehlt Mahout *Die dunkle Bedrohung*, *Angriff der Klonkrieger* und *Die Rache der Sith*.
 
 ### <a name="understanding-the-data"></a>Grundlegendes zu den Daten
 
@@ -66,12 +66,12 @@ Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben die St
 
 Verwenden Sie das folgende Windows PowerShell-Skript zum Ausführen eines Auftrags, der die Mahout-Empfehlungs-Engine mit den Filmdaten verwendet:
 
-> [!NOTE]
+> [!NOTE]  
 > Diese Datei fordert Sie zur Eingabe von Informationen auf, die zum Herstellen der Verbindung mit Ihrem HDInsight-Cluster und zum Ausführen von Aufträgen verwendet werden. Es kann einige Minuten dauern, bis die Aufträge abgeschlossen sind und die TXT-Ausgabedatei heruntergeladen wird.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
-> [!NOTE]
+> [!NOTE]  
 > Mahout-Aufträge entfernen keine temporären Daten, die bei der Verarbeitung des Auftrags erstellt wurden. Der `--tempDir` -Parameter wird im Beispielauftrag festgelegt, sodass die temporären Dateien in einem spezifischen Pfad isoliert abgelegt werden.
 
 Der Mahout-Auftrag gibt keine Ausgabe an STDOUT zurück. Stattdessen wird diese im angegebenen Ausgabeverzeichnis unter **part-r-00000**gespeichert. Das Skript lädt diese Datei in **output.txt** in das aktuelle Verzeichnis auf Ihrer Arbeitsstation herunter.
@@ -202,14 +202,14 @@ Mahout-Aufträge, die die folgenden Klassen verwenden, geben zahlreiche Fehlerme
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Um Aufträge auszuführen, die diese Klassen verwenden, stellen Sie über SSH eine Verbindung mit dem HDInsight-Cluster her, und führen Sie die Aufträge über die Befehlszeile aus. Ein Beispiel für die Ausführung von Mahout-Aufträgen über SSH finden Sie unter [Erstellen von Filmempfehlungen mit Mahout und HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+Um Aufträge auszuführen, die diese Klassen verwenden, stellen Sie über SSH eine Verbindung mit dem HDInsight-Cluster her, und führen Sie die Aufträge über die Befehlszeile aus. Ein Beispiel für die Ausführung von Mahout-Aufträgen über SSH finden Sie unter [Erstellen von Filmempfehlungen mit Apache Mahout und HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Methoden der Datenverarbeitung in HDInsight zuwenden:
+Nachdem Sie sich mit Apache Mahout vertraut gemacht haben, können Sie sich mit anderen Methoden befassen, die Ihnen in HDInsight zum Arbeiten mit Daten zur Verfügung stehen:
 
-* [Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
+* [Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
+* [Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
@@ -218,8 +218,8 @@ Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Met
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
 [getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
-[ml]: http://en.wikipedia.org/wiki/Machine_learning
-[forest]: http://en.wikipedia.org/wiki/Random_forest
+[ml]: https://en.wikipedia.org/wiki/Machine_learning
+[forest]: https://en.wikipedia.org/wiki/Random_forest
 [enableremote]: ./media/hdinsight-mahout/enableremote.png
 [connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png

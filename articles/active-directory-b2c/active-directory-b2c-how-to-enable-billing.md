@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1486e303e4e94ee6140bcd6ed4f52bc433b9aae6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445939"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100054"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure AD B2C-Mandanten
 
 > [!IMPORTANT]
-> Die neuesten Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für Azure AD B2C finden Sie auf der folgenden Seite: [Azure Active Directory B2C Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Die neuesten Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für Azure AD B2C finden Sie auf der folgenden Seite: [Azure Active Directory B2C – Preise ](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 Nutzungsgebühren für Azure AD B2C werden über ein Azure-Abonnement abgerechnet. Beim Erstellen eines Azure AD B2C-Mandanten muss der Mandantenadministrator den Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement verknüpfen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
 
 > [!NOTE]
-> Ein mit einem Azure AD B2C-Mandanten verknüpftes Abonnement kann nur für die Abrechnung der Azure AD B2C-Nutzung verwendet werden. Das Abonnement kann nicht verwendet werden, um weitere Azure-Dienste oder Office 365-Lizenzen *innerhalb des Azure AD B2C-Mandanten* hinzuzufügen.
+> Ein Abonnement, das mit einem Azure AD B2C-Mandanten verknüpft ist, kann für die Abrechnung der Azure AD B2C-Nutzung oder anderer Azure-Ressourcen einschließlich zusätzlicher Azure AD B2C-Ressourcen verwendet werden.  Das Abonnement kann nicht verwendet werden, um weitere lizenzbasierte Azure-Dienste oder Office 365-Lizenzen innerhalb des Azure AD B2C-Mandanten hinzuzufügen.
 
  Für die Abonnementverknüpfung wird innerhalb des Azure-Zielabonnements eine Azure AD B2C-Ressource erstellt. Viele Azure AD B2C-Ressourcen können innerhalb eines einzelnen Azure-Abonnements zusammen mit anderen Azure-Ressourcen (beispielsweise virtuelle Computer, Datenspeicher, Logik-Apps) erstellt werden. Alle Ressourcen innerhalb des Abonnements können Sie unter dem Azure AD-Mandanten anzeigen, dem das Abonnement zugeordnet ist.
 

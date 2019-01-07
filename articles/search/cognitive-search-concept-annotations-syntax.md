@@ -1,5 +1,5 @@
 ---
-title: Verweisen auf eine Anmerkung in Eingaben und Ausgaben in einer Pipeline der kognitiven Suche in Azure Search | Microsoft-Dokumentation
+title: Verweise auf Eingaben und Ausgaben in Pipelines für die kognitive Suche – Azure Search
 description: Erläutert die Syntax der Anmerkung und, wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer Pipeline der kognitiven Suche in Azure Search verwiesen wird.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 57fed710d7d58199fb3cb70640d1f2d3f316f180
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801946"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315804"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Suche
 
@@ -33,7 +34,7 @@ Gehen Sie vor dem Überprüfen der Syntax nun noch einmal einige wichtige Konzep
 | Anreicherungskontext | Der Kontext, in dem die Anreicherung stattfindet, d.h. welches Element angereichert wird. Standardmäßig befindet sich der Anreicherungskontext auf der Ebene `"/document"`, die auf einzelne Dokumente bezogen ist. Wenn ein Skill ausgeführt wird, werden die Ergebnisse dieses Skills zu [Eigenschaften des definierten Kontexts](#example-2).|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Beispiel 1: Einfacher Anmerkungsverweis
+## <a name="example-1-simple-annotation-reference"></a>Beispiel 1: Einfacher Anmerkungsverweis
 
 Angenommen, Sie haben eine Vielzahl von Dateien, die Verweise auf die Namen von Personen enthalten, die Sie mithilfe der Erkennung von benannten Entitäten extrahieren möchten. In der folgenden Skilldefinition ist `"/document/content"` die Textdarstellung des gesamten Dokuments, und „people“ ist eine Extrahierung von vollständigen Namen für als Personen identifizierte Entitäten.
 
@@ -61,7 +62,7 @@ Da der Standardkontext `"/document"` ist, kann auf die Liste der Personen nun al
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>Beispiel 2: Verweisen auf ein Array innerhalb eines Dokuments
+## <a name="example-2-reference-an-array-within-a-document"></a>Beispiel 2: Verweis auf ein Array innerhalb eines Dokuments
 
 Dieses Beispiel baut auf dem vorherigen auf und zeigt Ihnen, wie Sie einen Anreicherungsschritt mehrfach über dasselbe Dokument aufrufen können. Angenommen, das vorherige Beispiel generiert ein Array von Zeichenfolgen mit zehn Personennamen aus einem einzigen Dokument. Ein sinnvoller nächster Schritt könnte eine zweite Anreicherung sein, die den Nachnamen aus einem vollständigen Namen extrahiert. Da es zehn Namen gibt, soll dieser Schritt in diesem Dokument zehnmal aufgerufen werden, d.h. einmal pro Person. 
 
@@ -93,7 +94,7 @@ Wenn es sich bei Anmerkungen um Arrays oder Sammlungen von Zeichenfolgen handelt
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Beispiel 3: Verweisen auf Elemente innerhalb eines Arrays
+## <a name="example-3-reference-members-within-an-array"></a>Beispiel 3: Verweis auf Elemente innerhalb eines Arrays
 
 Manchmal müssen Sie alle Anmerkungen eines bestimmten Typs gruppieren, um sie an einen bestimmten Skill zu übergeben. Angenommen, es gibt einen hypothetischen benutzerdefinierten Skill, der den häufigsten Nachnamen aus allen in Beispiel 2 extrahierten Nachnamen identifiziert. Um dem benutzerdefinierten Skill nur die Nachnamen bereitzustellen, legen Sie den Kontext auf `"/document"` und die Eingabe auf `"/document/people/*/lastname"` fest.
 

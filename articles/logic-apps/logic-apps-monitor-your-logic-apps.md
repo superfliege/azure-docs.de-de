@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3779260d2dd6036e65be39b4a59ceb1459d01b9e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405734"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434255"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
@@ -74,7 +74,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
 Wenn Sie ein umfangreicheres Debuggen mit Runtimedetails und -ereignissen durchführen möchten, können Sie die Diagnoseprotokollierung mit [Azure Log Analytics](../log-analytics/log-analytics-overview.md) einrichten. Log Analytics ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. 
 
-Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginnen. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
+Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginnen. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Logik-App, und wählen Sie sie aus. 
 
@@ -155,10 +155,10 @@ Wählen Sie **+Hinzufügen**, um die Abfrage durch das Hinzufügen eines Filters
 
 In Verbindung mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.: 
 
-* [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel: 
+Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../azure-monitor/platform/powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel: 
 
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -174,7 +174,7 @@ Stellen Sie basierend auf den einzurichtenden Optionen sicher, dass Sie zuerst [
 
 ## <a name="set-up-alerts-for-your-logic-app"></a>Einrichten von Warnungen für Ihre Logik-App
 
-Richten Sie [Warnungen in Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) ein, um bestimmte Metriken oder überschrittene Schwellenwerte für Ihre Logik-App zu überwachen. Informieren Sie sich über [Metriken in Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
+Richten Sie [Warnungen in Azure](../azure-monitor/platform/alerts-overview.md) ein, um bestimmte Metriken oder überschrittene Schwellenwerte für Ihre Logik-App zu überwachen. Informieren Sie sich über [Metriken in Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
 Führen Sie die hier angegebenen Schritte aus, um Warnungen ohne [Azure Log Analytics](../log-analytics/log-analytics-overview.md) einzurichten. [Richten Sie auch Log Analytics ein](#azure-diagnostics), wenn Sie erweiterte Kriterien und Aktionen für Warnungen verwenden möchten.
 
@@ -207,7 +207,7 @@ Führen Sie die hier angegebenen Schritte aus, um Warnungen ohne [Azure Log Anal
 
 ## <a name="azure-diagnostics-event-settings-and-details"></a>Einstellungen und Details für Azure-Diagnoseereignisse
 
-Jedes Diagnoseereignis enthält Details zu Ihrer Logik-App und zum Ereignis, z.B. Status, Startzeit, Endzeit usw. Für die programmgesteuerte Einrichtung der Überwachung, Nachverfolgung und Protokollierung können Sie diese Details mit der [REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) und der [REST-API für Azure-Diagnose](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows) verwenden.
+Jedes Diagnoseereignis enthält Details zu Ihrer Logik-App und zum Ereignis, z.B. Status, Startzeit, Endzeit usw. Für die programmgesteuerte Einrichtung der Überwachung, Nachverfolgung und Protokollierung können Sie diese Details mit der [REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) und der [REST-API für Azure-Diagnose](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) verwenden.
 
 Beispielsweise verfügt das `ActionCompleted`-Ereignis über die Eigenschaften `clientTrackingId` und `trackedProperties`, die Sie für die Nachverfolgung und Überwachung nutzen können:
 
@@ -247,7 +247,7 @@ Beispielsweise verfügt das `ActionCompleted`-Ereignis über die Eigenschaften `
 
 * `clientTrackingId`: Wenn sie nicht angegeben ist, wird diese ID von Azure automatisch generiert, und Ereignisse werden für eine Ausführung der Logik-App korreliert. Dies gilt auch für geschachtelte Workflows, die über die Logik-App aufgerufen werden. Sie können diese ID manuell per Trigger angeben, indem Sie einen `x-ms-client-tracking-id`-Header mit Ihrem benutzerdefinierten ID-Wert in der Triggeranforderung übergeben. Sie können einen Anforderungstrigger, HTTP-Trigger oder Webhooktrigger verwenden.
 
-* `trackedProperties`: Zum Nachverfolgen der Ein- oder Ausgaben in Diagnosedaten können Sie nachverfolgte Eigenschaften Aktionen in der JSON-Definition Ihrer Logik-App hinzufügen. Nachverfolgte Eigenschaften können nur die Ein- und Ausgaben einer einzelnen Aktion nachverfolgen. Mit den `correlation`-Eigenschaften der Ereignisse ist aber eine aktionsübergreifende Korrelation innerhalb einer Ausführung möglich.
+* `trackedProperties`: Zum Nachverfolgen der Ein- oder Ausgaben in Diagnosedaten können Sie Aktionen in der JSON-Definition Ihrer Logik-App nachverfolgte Eigenschaften hinzufügen. Nachverfolgte Eigenschaften können nur die Ein- und Ausgaben einer einzelnen Aktion nachverfolgen. Mit den `correlation`-Eigenschaften der Ereignisse ist aber eine aktionsübergreifende Korrelation innerhalb einer Ausführung möglich.
 
   Fügen Sie den Abschnitt `trackedProperties` und die gewünschten Eigenschaften der Aktionsdefinition hinzu, um eine oder mehrere Eigenschaften nachzuverfolgen. Angenommen, Sie möchten in Ihrer Telemetrie ein Datenelement nachverfolgen, z.B. eine „Auftrags-ID“:
 

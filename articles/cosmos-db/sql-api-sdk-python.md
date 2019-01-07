@@ -1,25 +1,23 @@
 ---
-title: Azure Cosmos DB SQL Python-API, SDK und Ressourcen | Microsoft-Dokumentation
+title: 'Azure Cosmos DB: SQL Python-API, SDK und Ressourcen'
 description: Wichtige Informationen zur SQL Python-API und zum SDK, einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB Python SDK.
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 9/24/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: cf796466d8d4156eb442e6b0d1b51cb70d0d30f3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269291"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337086"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für SQL-API: Versionshinweise und Ressourcen
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
@@ -30,7 +28,7 @@ ms.locfileid: "48269291"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -51,10 +49,28 @@ ms.locfileid: "48269291"
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
+* Unterstützung für den MultiPolygon-Datentyp wurde hinzugefügt
+* Fehlerbehebung für die Wiederholungsrichtlinie für den Lesevorgang in der Sitzung
+* Fehlerbehebung für die falsche Auffüllung beim Decodieren von Base 64-Zeichenfolgen
+
+### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
+* Fehlerbehebung in LocationCache
+* Fehlerbehebung für die Endpunktwiederholungslogik
+* Fehlerbehebung für die Dokumentation
+
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
 * Unterstützung für Schreibvorgänge in mehreren Regionen.
 * Der Namespace wurde in „azure.cosmos“ geändert.
 * Sammlungs- und Dokumentkonzepte wurden in „Container“ und „Element“ umbenannt, „document_client“ wurde in „cosmos_client“ umbenannt. 
+
+### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+* Unterstützung für einen Proxy wurde hinzugefügt
+* Unterstützung für das Lesen von Änderungsfeeds wurde hinzugefügt
+* Unterstützung für Header des Sammlungskontingents wurde hinzugefügt
+* Fehlerbehebung für Probleme bei großen Sitzungstoken
+* Fehlerbehebung für die ReadMedia-API
+* Fehlerbehebung im Partitionsschlüssel-Bereichscache
 
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * Unterstützung für Standardwiederholungen bei Verbindungsproblemen hinzugefügt.
@@ -145,6 +161,9 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [3.0.2](#3.0.2) |15. November 2018 |--- |
+| [3.0.1](#3.0.1) |4. Oktober 2018 |--- |
+| [2.3.3](#2.3.3) |8. September 2018 |--- |
 | [2.3.2](#2.3.2) |8. Mai 2018 |--- |
 | [2.3.1](#2.3.1) |21. Dezember 2017 |--- |
 | [2.3.0](#2.3.0) |10. November 2017 |--- |

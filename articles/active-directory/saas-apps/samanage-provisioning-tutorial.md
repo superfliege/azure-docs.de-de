@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Samanage für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Samanage für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Samanage konfigurieren.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634505"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322429"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Samanage für die automatische Benutzerbereitstellung
 
@@ -76,7 +76,9 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ### <a name="important-tips-for-assigning-users-to-samanage"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Samanage
 
-*   Es wird empfohlen, Samanage einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+*    Samanage-Rollen werden derzeit automatisch und dynamisch auf der Benutzeroberfläche des Azure-Portals aufgefüllt. Bevor Sie Benutzern Samanage-Rollen zuweisen, muss eine Synchronisierung mit Samanage ausgeführt werden, um die aktuellen Rollen Ihres Samanage-Mandanten abzurufen.
+
+*    Es empfiehlt sich, Samanage einen einzelnen Azure AD-Benutzer zuzuweisen, um die anfängliche Konfiguration der automatischen Benutzerbereitstellung zu testen. Nach erfolgreichem Abschluss der Tests können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
 *   Beim Zuweisen eines Benutzers zu Samanage müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
 
@@ -154,7 +156,7 @@ Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet,
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Connectoreinschränkungen
+## <a name="connector-limitations"></a>Connector-Einschränkungen
 
 * Wenn die Option **Alle Benutzer und Gruppen synchronisieren** ausgewählt und ein Standardwert für das Attribut Samanage-Attribut **roles** konfiguriert wird, stellen Sie sicher, dass der gewünschte Wert unter dem Feld **Standardwert bei NULL (optional)** im folgenden Format angegeben wird: **{"displayName": "role"}**. Hierbei steht „role“ für den gewünschten Standardwert.
 

@@ -7,14 +7,14 @@ manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994801"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387045"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -38,9 +38,7 @@ Diese Erweiterung funktioniert mit beiden Azure-Bereitstellungsmodellen.
 
 ## <a name="installing-the-extension-in-your-vm"></a>Installieren der Erweiterung auf Ihrem virtuellen Computer
 
-Sie können diese Erweiterung über Azure PowerShell-Cmdlets, Azure-Befehlszeilenschnittstellenskripts oder Azure-Bereitstellungsvorlagen aktivieren. Weitere Informationen finden Sie unter [Erweiterungsfeatures](features-linux.md).
-
-Das Azure-Portal kann nicht zum Aktivieren oder Konfigurieren von LAD 3.0 verwendet werden. Es installiert und konfiguriert stattdessen die Version 2.3. Graphen und Warnungen aus dem Azure-Portal funktionieren mit Daten aus beiden Versionen der Erweiterung.
+Sie können diese Erweiterung über Azure PowerShell-Cmdlets, Azure-Befehlszeilenschnittstellenskripts, Azure Resource Manager-Vorlagen oder das Azure-Portal aktivieren. Weitere Informationen finden Sie unter [Erweiterungsfeatures](features-linux.md).
 
 Diese Installationsanweisungen konfigurieren mithilfe einer [herunterladbare Beispielkonfiguration](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) LAD 3.0 für Folgendes:
 
@@ -55,7 +53,7 @@ Die herunterladbare Konfiguration ist nur ein Beispiel. Passen Sie sie an Ihre e
 
 * **Azure Linux Agent ab Version 2.2.0**. Die meisten Images des Azure-Katalogs für virtuelle Linux-Computer enthalten Version 2.2.7 oder höher. Führen Sie `/usr/sbin/waagent -version` aus, um die auf dem virtuellen Computer installierte Version zu überprüfen. Wenn der virtuelle Computer unter einer älteren Version des Gast-Agents ausgeführt wird, führen Sie [diese Anweisungen](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) aus, um ihn zu aktualisieren.
 * **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf dem Computer ein.
-* Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget` aus.
+* Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget`aus.
 * Ein vorhandenes Azure-Abonnement und ein vorhandenes Speicherkonto in diesem Abonnement zum Speichern der Daten.
 * Eine Liste der unterstützten Linux-Distributionen finden Sie unter https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions.
 
@@ -174,7 +172,7 @@ Element | Wert
 name | Eine Zeichenfolge, die zum Verweisen auf diese Senke an anderer Stelle in der Konfiguration der Erweiterung verwendet wird
 type | Der Typ der Senke, die definiert wird. Bestimmt die anderen Werte in Instanzen dieses Typs (sofern vorhanden).
 
-Version 3.0 der Linux-Diagnoseerweiterung unterstützt zwei Senkentypen: EventHub und JsonBlob.
+Version 3.0 der Linux-Diagnoseerweiterung unterstützt zwei Senkentypen: „EventHub“ und „JsonBlob“.
 
 #### <a name="the-eventhub-sink"></a>Die EventHub-Senke
 

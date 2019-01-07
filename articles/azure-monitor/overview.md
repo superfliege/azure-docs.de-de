@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: bwren
-ms.openlocfilehash: 160078787d28f43ef800d25c8b50fb316b38944f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f1125c9d0ce543984393c99d70d511a3a162041e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436176"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975184"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -39,9 +39,7 @@ Für viele Azure-Ressourcen können die von Azure Monitor gesammelten Daten dire
 
 ![Metriken](media/overview/metrics.png)
 
-<<<<<<< Die von Azure Monitor gesammelten HEAD Log-Daten können mit [Abfragen](log-query/log-query-overview.md) analysiert werden, die die gesammelten Daten schnell abrufen, konsolidieren und analysieren.  Sie können Abfragen mit [Log Analytics](../log-analytics/log-analytics-log-search-portals.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit diesen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](visualizations.md) oder [Warnungsregeln](../monitoring-and-diagnostics/monitoring-overview-alerts.md) speichern.
-======= Von Azure Monitor gesammelte Protokolldaten werden in Log Analytics gespeichert, das eine [umfassende Abfragesprache](../azure-monitor/log-query/log-query-overview.md), enthält, mit der gesammelte Daten schnell abgerufen, zusammengefasst und analysiert werden können.  Sie können Abfragen auf der [Log Analytics-Seite](../azure-monitor/log-query/portals.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit diesen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](visualizations.md) oder [Warnungsregeln](../azure-monitor/platform/alerts-overview.md) speichern.
->>>>>>> 98b6f1655e9ada6d4b6a408ada0f1e4c9ed727d2
+Von Azure Monitor gesammelte Protokolldaten werden in Log Analytics gespeichert, das eine [umfassende Abfragesprache](../azure-monitor/log-query/log-query-overview.md), enthält, mit der gesammelte Daten schnell abgerufen, zusammengefasst und analysiert werden können.  Sie können Abfragen auf der [Log Analytics-Seite](../azure-monitor/log-query/portals.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit diesen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](visualizations.md) oder [Warnungsregeln](../azure-monitor/platform/alerts-overview.md) speichern.
 
 Azure Monitor verwendet eine Version der [Daten-Explorer-Abfragesprache](/azure/kusto/query/), die für einfache Protokollabfragen geeignet ist, aber auch erweiterte Funktionen enthält, z. B. Aggregationen, Verknüpfungen und intelligente Analysen. Sie können die Abfragesprache schnell erlernen, indem Sie [mehrere Lektionen](log-query/get-started-queries.md) nutzen.  Es ist eine spezielle Anleitung für Benutzer vorhanden, die bereits mit [SQL](log-query/sql-cheatsheet.md) und [Splunk](log-query/splunk-cheatsheet.md) vertraut sind.
 
@@ -56,11 +54,11 @@ Azure Monitor kann Daten aus vielen verschiedenen Quellen sammeln. Sie können s
 - **Überwachungsdaten zum Azure-Abonnement**: Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements sowie Daten zur Integrität und zum Betrieb von Azure selbst. 
 - **Überwachungsdaten zu Azure-Mandanten**: Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory.
 
-Sobald Sie ein Azure-Abonnement erstellen und damit beginnen, ihm Ressourcen hinzuzufügen, wie etwa VMs und Web-Apps, beginnt Azure Monitor mit dem Sammeln von Daten.  [Aktivitätsprotokolle](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) zeichnen auf, wenn Ressourcen erstellt oder geändert werden. [Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md) teilen Ihnen mit, welche Leistung die Ressource aufweist und welche Ressourcen sie nutzt. 
+Sobald Sie ein Azure-Abonnement erstellen und damit beginnen, ihm Ressourcen hinzuzufügen, wie etwa VMs und Web-Apps, beginnt Azure Monitor mit dem Sammeln von Daten.  [Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md) zeichnen auf, wenn Ressourcen erstellt oder geändert werden. [Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md) teilen Ihnen mit, welche Leistung die Ressource aufweist und welche Ressourcen sie nutzt. 
 
-Erweitern Sie die erfassten Daten in den eigentlichen Betrieb hinein, indem Sie [Diagnose aktivieren](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) und zu Computeressourcen [einen Agent hinzufügen](platform/agent-windows.md). Dadurch werden Telemetriedaten für den internen Betrieb der Ressource gesammelt, und Sie erhalten die Möglichkeit, verschiedene [Datenquellen](platform/agent-data-sources.md) zu konfigurieren, um Protokolle und Metriken von Windows- und Linux-Gastbetriebssystemen zu erfassen. 
+Erweitern Sie die erfassten Daten in den eigentlichen Betrieb hinein, indem Sie [Diagnose aktivieren](../azure-monitor/platform/diagnostic-logs-overview.md) und zu Computeressourcen [einen Agent hinzufügen](platform/agent-windows.md). Dadurch werden Telemetriedaten für den internen Betrieb der Ressource gesammelt, und Sie erhalten die Möglichkeit, verschiedene [Datenquellen](platform/agent-data-sources.md) zu konfigurieren, um Protokolle und Metriken von Windows- und Linux-Gastbetriebssystemen zu erfassen. 
 
-[Fügen Sie Ihrer Anwendung ein Instrumentierungspaket hinzu](../application-insights/app-insights-azure-web-apps.md), um Application Insights das Sammeln von detaillierten Informationen über Ihre Anwendung zu ermöglichen, einschließlich der Anzahl der Seitenaufrufe, Anwendungsanforderungen und Ausnahmen. Überprüfen Sie darüber hinaus die Verfügbarkeit Ihrer Anwendung, indem Sie einen [Verfügbarkeitstest](../application-insights/app-insights-monitor-web-app-availability.md) konfigurieren, um Benutzerdatenverkehr zu simulieren.
+[Fügen Sie Ihrer Anwendung ein Instrumentierungspaket hinzu](../azure-monitor/app/azure-web-apps.md), um Application Insights das Sammeln von detaillierten Informationen über Ihre Anwendung zu ermöglichen, einschließlich der Anzahl der Seitenaufrufe, Anwendungsanforderungen und Ausnahmen. Überprüfen Sie darüber hinaus die Verfügbarkeit Ihrer Anwendung, indem Sie einen [Verfügbarkeitstest](../azure-monitor/app/monitor-web-app-availability.md) konfigurieren, um Benutzerdatenverkehr zu simulieren.
 
 ### <a name="custom-sources"></a>Benutzerdefinierte Quellen
 Azure Monitor kann mithilfe der [Datensammler-API](../azure-monitor/platform/data-collector-api.md) Protokolldaten von jedem REST-Client erfassen. Dies erlaubt Ihnen das Erstellen von benutzerdefinierten Überwachungsszenarien und das Ausweiten der Überwachung auf Ressourcen, die Telemetriedaten nicht durch andere Quellen verfügbar machen.
@@ -131,7 +129,7 @@ Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie v
 Oft besteht die Anforderung, Azure Monitor in andere Systeme zu integrieren und benutzerdefinierte Lösungen zu erstellen, die Ihre Überwachungsdaten nutzen. Andere Azure-Dienste arbeiten mit Azure Monitor, um diese Integration zu ermöglichen.
 
 ### <a name="event-hub"></a>Event Hub
-[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) ist eine Streamingplattform und ein Datenerfassungsdienst, der Daten mithilfe beliebiger Echtzeit-Analyseanbieter oder Batchverarbeitungs-/Speicheradapter transformieren und speichern kann. Verwenden Sie Event Hubs für das [Streamen von Protokolldaten von Azure Monitor](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) zu SIEM- und Überwachungstools von Partnern.
+[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) ist eine Streamingplattform und ein Datenerfassungsdienst, der Daten mithilfe beliebiger Echtzeit-Analyseanbieter oder Batchverarbeitungs-/Speicheradapter transformieren und speichern kann. Verwenden Sie Event Hubs für das [Streamen von Protokolldaten von Azure Monitor](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) zu SIEM- und Überwachungstools von Partnern.
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 

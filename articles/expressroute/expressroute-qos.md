@@ -1,25 +1,19 @@
 ---
-title: QoS-Anforderungen für ExpressRoute | Microsoft Docs
-description: Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten von QoS für ExpressRoute-Verbindungen.
-documentationcenter: na
+title: 'QoS-Anforderungen – ExpressRoute: Azure | Microsoft-Dokumentation'
+description: Diese Seite enthält detaillierte Informationen zu den Anforderungen für das Konfigurieren und Verwalten von QoS. Skype for Business/Sprachdienste werden erläutert.
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: db1c1447-0283-4a09-907b-ae481adc40c7
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: c097a9ccba91f59b323215d42d37e6d85e0981ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: e478475ea9b5a34315c9d46c2201263566398008
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22709911"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336661"
 ---
 # <a name="expressroute-qos-requirements"></a>QoS-Anforderungen für ExpressRoute
 Skype for Business umfasst verschiedene Workloads mit jeweils unterschiedlichen QoS-Anforderungen. Wenn Sie Sprachdienste über ExpressRoute bereitstellen möchten, sollten die im Folgenden beschriebenen Anforderungen erfüllt sein.
@@ -37,12 +31,12 @@ Die folgende Tabelle enthält eine Liste mit DSCP-Markierungen, die von Skype fo
 | --- | --- | --- |
 | **Voice** |EF (46) |Skype-/Lync-Sprachanrufe |
 | **Interactive** |AF41 (34) |Video, VBSS |
-| AF21 (18) |App-Freigabe | |
+| |AF21 (18) |App-Freigabe | 
 | **Standard** |AF11 (10) |Dateiübertragung |
-| CS0 (0) |Alles andere | |
+| |CS0 (0) |Alles andere |
 
-* Sie sollten die Workloads klassifizieren und die richtigen DSCP-Markierungen wählen. Folgen Sie [dieser Anleitung](https://technet.microsoft.com/library/gg405409.aspx) zum Festlegen von DSCP-Markierungen in Ihrem Netzwerk.
-* Sie sollten mehrere QoS-Warteschlangen in Ihrem Netzwerk konfigurieren und bereitstellen. Voice muss als eigenständige Klasse definiert werden und die in RFC 3246 angegebene EF-Behandlung erhalten. 
+* Sie sollten die Workloads klassifizieren und die richtigen DSCP-Markierungen wählen. Folgen Sie [dieser Anleitung](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) zum Festlegen von DSCP-Markierungen in Ihrem Netzwerk.
+* Sie sollten mehrere QoS-Warteschlangen in Ihrem Netzwerk konfigurieren und bereitstellen. „Voice“ muss eine eigenständige Klasse sein und die in [RFC 3246](https://www.ietf.org/rfc/rfc3246.txt) definierte EF-Behandlung erhalten. 
 * Sie können den gewünschten Warteschlangenmechanismus, die Richtlinie für die Auslastungserkennung und die Bandbreitenzuordnung pro Datenverkehrsklasse festlegen. Die DSCP-Markierung der Skype for Business-Workloads muss jedoch in jedem Fall erhalten bleiben. Wenn Sie andere als die oben aufgeführten DSCP-Markierungen verwenden, z. B. AF31 (26), muss dieser DSCP-Wert im Paket vor dem Senden an Microsoft auf 0 zurückgesetzt werden. Microsoft sendet nur Pakete mit dem in der obigen Tabelle aufgeführten DSCP-Wert. 
 
 ## <a name="next-steps"></a>Nächste Schritte

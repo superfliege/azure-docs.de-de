@@ -1,6 +1,6 @@
 ---
-title: Details zur Netzwerkkonfiguration für das Arbeiten mit Express Route
-description: Details zur Netzwerkkonfiguration zum Ausführen von App Service-Umgebungen in einem an eine ExpressRoute-Verbindung angeschlossenen virtuellen Netzwerk
+title: Details zur Netzwerkkonfiguration für Microsoft Azure ExpressRoute – App Service
+description: Details zur Netzwerkkonfiguration von App Service-Umgebungen für PowerApps in an eine Microsoft Azure ExpressRoute-Verbindung angeschlossenen virtuellen Netzwerken.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -14,125 +14,150 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
-ms.openlocfilehash: 7873192e4a66cd2faed5a1a1255377139d33d750
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: a9af97bcd85833a140d6c668fe4c757c85d7447a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616060"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337171"
 ---
-# <a name="network-configuration-details-for-app-service-environments-with-expressroute"></a>Details zur Netzwerkkonfiguration für App Service-Umgebungen mit ExpressRoute
-## <a name="overview"></a>Übersicht
-Kunden können eine [Azure ExpressRoute][ExpressRoute]-Verbindung mit der Infrastruktur ihres virtuellen Netzwerks verbinden und so ihr lokales Netzwerks auf Azure ausdehnen.  Eine App Service-Umgebung kann in einem Subnetz dieser Infrastruktur des [virtuellen Netzwerks][virtualnetwork] erstellt werden.  In der App Service-Umgebung ausgeführte Apps können dann sichere Verbindungen mit Back-End-Ressourcen herstellen, auf die nur über die ExpressRoute-Verbindung ein Zugriff besteht.  
+# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Details zur Netzwerkkonfiguration für App Service-Umgebungen für PowerApps mit Microsoft Azure ExpressRoute
 
-Eine App Service-Umgebung kann **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem virtuellen Netzwerk des klassischen Bereitstellungsmodells erstellt werden.  Infolge einer im Juni 2016 vorgenommenen Änderung können ASEs nun auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden. 
+Kunden können eine [Microsoft Azure ExpressRoute][ExpressRoute]-Verbindung mit der Infrastruktur ihres virtuellen Netzwerks herstellen und so ihr lokales Netzwerk auf Azure ausdehnen. Eine App Service-Umgebung kann in einem Subnetz der Infrastruktur des [virtuellen Netzwerks][virtualnetwork] erstellt werden. In der App Service-Umgebung ausgeführte Apps stellen sichere Verbindungen mit Back-End-Ressourcen her, auf die nur über die ExpressRoute-Verbindung ein Zugriff besteht.  
+
+Eine App Service-Umgebung kann in den folgenden Szenarios erstellt werden:
+- Virtuelle Netzwerke mit Azure Resource Manager.
+- Klassisches Bereitstellungsmodell für virtuelle Netzwerke.
+- Virtuelle Netzwerke, die öffentliche Adressbereiche oder RFC1918-Adressräume (d. h. private Adressen) verwenden. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="required-network-connectivity"></a>Erforderliche Netzwerkverbindung
-Es gibt Netzwerkverbindungsanforderungen für App Service-Umgebungen, die ursprünglich nicht von einem virtuellen Netzwerk erfüllt werden konnten, das mit einer ExpressRoute verbunden war.  App Service-Umgebungen erfordern für einen ordnungsgemäßen Betrieb Folgendes:
+## <a name="required-network-connectivity"></a>Erforderliche Netzwerkkonnektivität
 
-* Ausgehende Netzwerkverbindungen mit Azure Storage-Endpunkten in der ganzen Welt an Port 80 und Port 443.  Dies beinhaltet sowohl Endpunkte, die sich in der gleichen Region wie die App Service-Umgebung befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen.  Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*.  
+Für App Service-Umgebungen gibt es Anforderungen an die Netzwerkkonnektivität, die ursprünglich nicht von einem virtuellen Netzwerk erfüllt werden konnten, das mit ExpressRoute verbunden ist.
+
+Eine App Service-Umgebung erfordert für eine ordnungsgemäße Funktionsweise die folgenden Netzwerkkonnektivitätseinstellungen:
+
+* Ausgehende Netzwerkverbindungen mit Azure Storage-Endpunkten in der ganzen Welt an Port 80 und Port 443. Diese Endpunkte befinden sich in derselben Region wie die App Service-Umgebung und in anderen Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: table.core.windows.net, blob.core.windows.net, queue.core.windows.net und file.core.windows.net.  
+
 * Ausgehende Netzwerkverbindungen mit dem Azure Files-Dienst an Port 445.
-* Ausgehende Netzwerkverbindungen mit SQL-Datenbankendpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden.  SQL-Datenbankendpunkte werden unter der folgenden Domäne aufgelöst: *database.windows.net*.  Hierzu müssen die Ports 1433, 11000-11999 und 14000-14999 für den Zugriff geöffnet werden.  Weitere Informationen finden Sie in [diesem Artikel zur Portverwendung in SQL-Datenbank V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
-* Ausgehende Netzwerkverbindungen mit den Endpunkten auf der Azure-Verwaltungsebene (ASM- und ARM-Endpunkte).  Dies beinhaltet ausgehende Verbindungen mit *management.core.windows.net* und *management.azure.com*. 
-* Ausgehende Netzwerkverbindungen mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*.  Dies ist zur Unterstützung von SSL-Funktionen erforderlich.
-* Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können.  Können diese Endpunkte nicht aufgelöst werden, schlägt die Erstellung von App Service-Umgebungen fehl, und vorhandene App Service-Umgebungen werden als fehlerhaft gekennzeichnet.
+
+* Ausgehende Netzwerkkonnektivität mit Azure SQL-Datenbankendpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbank-Endpunkte können unter der Domäne database.windows.net aufgelöst werden, für die ein Zugriff auf die Ports 1433, 11000-11999 und 14000-14999 erforderlich ist. Weitere Informationen zur Portverwendung von SQL-Datenbank V12 finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+
+* Ausgehende Netzwerkkonnektivität zu den Azure-Endpunkten der Verwaltungsebene (klassisches Azure-Bereitstellungsmodell und Azure Resource Manager-Endpunkte). Die Konnektivität zu diesen Endpunkten beinhaltet die Domänen management.core.windows.net und management.azure.com. 
+
+* Ausgehende Netzwerkkonnektivität zu den Domänen ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Konnektivität zu diesen Domänen ist zur Unterstützung von SSL-Funktionen erforderlich.
+
+* Die DNS-Konfiguration für das virtuelle Netzwerk muss alle in diesem Artikel genannten Endpunkte und Domänen auflösen können. Wenn die Endpunkte nicht aufgelöst werden können, schlägt das Erstellen der App Service-Umgebung fehl. Alle vorhandenen App Service-Umgebungen werden als fehlerhaft markiert.
+
 * Ausgehender Zugriff über Port 53 wird für die Kommunikation mit DNS-Servern benötigt.
+
 * Falls ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz mit der App Service-Umgebung erreichbar sein. 
-* Der ausgehende Netzwerkpfad kann weder durch interne Unternehmensproxys laufen noch zwangsweise zur lokalen Infrastruktur getunnelt werden.  Andernfalls wird die tatsächliche NAT-Adresse des ausgehenden Netzwerkdatenverkehrs der App Service-Umgebung geändert.  Das Ändern der NAT-Adresse des ausgehenden Netzwerkdatenverkehrs einer App Service-Umgebung verursacht bei vielen der oben genannten Endpunkte Verbindungsfehler.  Dies führt zu Fehlern bei der Erstellung von App Service-Umgebungen und dazu, dass zuvor fehlerfreie App Service-Umgebungen als fehlerhaft gekennzeichnet werden.  
-* Eingehender Netzwerkzugriff auf die erforderlichen Ports für App Service-Umgebungen muss wie in diesem [Artikel][requiredports] beschrieben zugelassen werden.
 
-Die DNS-Anforderungen können erfüllt werden, indem Sie sicherstellen, dass eine gültige DNS-Infrastruktur für das virtuelle Netzwerk konfiguriert und beibehalten wird.  Falls die DNS-Konfiguration nach der Erstellung einer App Service-Umgebung geändert wird, können Entwickler erzwingen, dass eine App Service-Umgebung die neue DNS-Konfiguration übernimmt.  Wird im [Azure-Portal][NewPortal] über das Symbol „Neu starten“ oben auf dem Verwaltungsblatt der App Service-Umgebung ein paralleler Neustart der Umgebung ausgelöst, übernimmt diese die neue DNS-Konfiguration.
+* Der ausgehende Netzwerkpfad kann weder durch interne Unternehmensproxys laufen noch zwangsweise zur lokalen Infrastruktur getunnelt werden. Durch diese Aktionen wird die tatsächliche NAT-Adresse des ausgehenden Netzwerkdatenverkehrs der App Service-Umgebung geändert. Änderungen an der NAT-Adresse des ausgehenden Netzwerkdatenverkehrs einer App Service-Umgebung verursachen bei vielen Endpunkten Verbindungsfehler. Die Erstellung der App Service-Umgebung schlägt fehl. Alle vorhandenen App Service-Umgebungen werden als fehlerhaft markiert.
 
-Die eingehenden Netzwerkzugriffsanforderungen können erfüllt werden, indem im Subnetz der App Service-Umgebung eine [Netzwerksicherheitsgruppe][NetworkSecurityGroups] konfiguriert wird, um (wie in diesem [Artikel][requiredports] beschrieben) den erforderlichen Zugriff zu ermöglichen.
+* Der eingehende Netzwerkzugriff auf die erforderlichen Ports für die App Service-Umgebung muss zulässig sein. Weitere Informationen hierzu finden Sie unter [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung][requiredports].
 
-## <a name="enabling-outbound-network-connectivity-for-an-app-service-environment"></a>Aktivieren ausgehender Netzwerkverbindungen für eine App Service-Umgebung
-In der Standardeinstellung kündigt eine neu erstellte ExpressRoute-Verbindung eine Standardroute an, die ausgehende Internetverbindungen zulässt.  Bei dieser Konfiguration kann sich eine App Service-Umgebung mit anderen Azure-Endpunkten verbinden.
+Um die DNS-Anforderungen zu erfüllen, müssen Sie sicherstellen, dass eine gültige DNS-Infrastruktur für das virtuelle Netzwerk konfiguriert und beibehalten wird. Wenn die DNS-Konfiguration nach der Erstellung einer App Service-Umgebung geändert wird, können Entwickler erzwingen, dass die App Service-Umgebung die neue DNS-Konfiguration übernimmt. Mithilfe des Symbols **Neustart** unter der App Service-Umgebungsverwaltung in [Azure-Portal][NewPortal] können Sie einen parallelen Neustart der Umgebung auslösen. Der Neustart bewirkt, dass die Umgebung die neue DNS-Konfiguration übernimmt.
 
-Eine gängige Kundenkonfiguration sieht hingegen das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen.  Bei diesem Datenfluss funktionieren App Service-Umgebungen nicht mehr, da ausgehender Datenverkehr entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt wird, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren.
+Um die Anforderungen des eingehenden Netzwerkzugriffs zu erfüllen, konfigurieren Sie eine [Netzwerksicherheitsgruppe (NSG)][NetworkSecurityGroups] im Subnetz der App Service-Umgebung. Die NSG gestattet den erforderlichen Zugriff [zum Steuern des eingehenden Datenverkehrs in die App Service-Umgebung][requiredports].
 
-Die Lösung besteht darin, eine (oder mehrere) benutzerdefinierten Routen im Subnetz zu definieren, das die App Service-Umgebung enthält.  Eine benutzerdefinierte Route definiert subnetzspezifische Routen, die anstelle der Standardroute berücksichtigt werden.
+## <a name="outbound-network-connectivity"></a>Ausgehende Netzwerkkonnektivität
 
-Nach Möglichkeit sollte die folgende Konfiguration verwendet werden:
+In der Standardeinstellung kündigt eine neu erstellte ExpressRoute-Verbindung eine Standardroute an, die ausgehende Internetkonnektivität zulässt. Die App Service-Umgebung kann diese Konfiguration verwenden, um sich mit anderen Azure-Endpunkten zu verbinden.
 
-* Die ExpressRoute-Konfiguration kündigt 0.0.0.0/0 an und tunnelt standardmäßig allen ausgehenden Datenverkehr zwangsweise lokal.
-* Die auf das Subnetz mit der App Service-Umgebung angewendete benutzerdefinierte Route (UDR) definiert 0.0.0.0/0 mit dem nächsten Hoptyp „Internet“ (ein Beispiel dazu finden Sie weiter unten in diesem Artikel).
+Eine gängige Kundenkonfiguration sieht das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr zwingt, die lokale Infrastruktur zu durchlaufen. Dieser Datenverkehr unterbricht ausnahmslos die App Service-Umgebung. Der ausgehende Datenverkehr wird entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren.
 
-Gemeinsam führen diese Schritte dazu, dass die UDR auf Subnetzebene Vorrang vor erzwungenem ExpressRoute-Tunneln hat. Dadurch wird ausgehender Internetzugriff aus der App Service-Umgebung sichergestellt.
+Die Lösung besteht darin, eine oder mehrere benutzerdefinierte Routen (UDR) in dem Subnetz zu definieren, das die App Service-Umgebung enthält. Eine UDR definiert subnetzspezifische Routen, die anstelle der Standardroute berücksichtigt werden.
+
+Verwenden Sie wenn möglich die folgende Konfiguration:
+
+* Die ExpressRoute-Konfiguration kündigt 0.0.0.0/0 an. In der Standardeinstellung wird das Tunneling des gesamten ausgehenden Datenverkehrs lokal durch die Konfiguration erzwungen.
+* Die für das Subnetz mit der App Service-Umgebung geltende UDR definiert 0.0.0.0/0 mit „Internet“ als Typ des nächsten Hops. Ein Beispiel für diese Konfiguration wird weiter unten in diesem Artikel beschrieben.
+
+Die gemeinsame Auswirkung dieser Konfiguration ist die, dass die UDR auf Subnetzebene Vorrang vor der ExpressRoute-Tunnelerzwingung hat. Der ausgehende Internetzugriff aus der App Service-Umgebung ist garantiert.
 
 > [!IMPORTANT]
-> Die in einer UDR definierten Routen **müssen** ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten.  Im folgenden Beispiel wird der umfassende Adressbereich 0.0.0.0/0 verwendet. Dieser kann daher versehentlich durch Routenankündigungen mit spezifischeren Adressbereichen überschrieben werden.
+> Die in einer UDR definierten Routen müssen hinreichend spezifisch sein, um Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen zu haben. Das im nächsten Abschnitt beschriebene Beispiel verwendet den breiten Adressbereich 0.0.0.0/0. Dieser Bereich kann durch Routenankündigungen mit spezifischeren Adressbereichen versehentlich überschrieben werden.
 > 
-> App Service-Umgebungen werden nicht mit ExpressRoute-Konfigurationen unterstützt, die **Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen**.  ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft für zahlreiche Microsoft Azure-IP-Adressbereiche.  Werden diese Adressbereiche über Kreuz auf dem privaten Peeringpfad angekündigt, führt dies dazu, dass alle ausgehenden Netzwerkpakete aus dem Subnetz der App Service-Umgebung zwangsweise zur lokalen Netzwerkinfrastruktur eines Kunden getunnelt werden.  Dieser Netzwerkdatenfluss wird derzeit für App Service-Umgebungen nicht unterstützt.  Eine Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.
+> App Service-Umgebungen werden nicht mit ExpressRoute-Konfigurationen unterstützt, die Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft für zahlreiche Microsoft Azure-IP-Adressbereiche. Werden diese Adressbereiche über Kreuz auf dem privaten Peeringpfad angekündigt, werden alle ausgehenden Netzwerkpakete aus dem Subnetz der App Service-Umgebung zwangsweise zur lokalen Netzwerkinfrastruktur des Kunden getunnelt. Dieser Netzwerkdatenfluss wird derzeit für App Service-Umgebungen nicht unterstützt. Eine Lösung besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.
 > 
 > 
 
-Hintergrundinformationen zu benutzerdefinierten Routen finden Sie in dieser [Übersicht][UDROverview].  
+Hintergrundinformationen zu benutzerdefinierten Routen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke][UDROverview].  
 
-Details zum Erstellen und Konfigurieren benutzerdefinierter Routen finden Sie in dieser [Anleitung][UDRHowTo].
+Informationen zum Erstellen und Konfigurieren benutzerdefinierter Routen finden Sie unter [Weiterleiten von Netzwerkdatenverkehr mit einer Routingtabelle mithilfe von PowerShell][UDRHowTo].
 
-## <a name="example-udr-configuration-for-an-app-service-environment"></a>Beispielkonfiguration einer benutzerdefinierten Route für eine App Service-Umgebung
-**Voraussetzungen**
+## <a name="udr-configuration"></a>UDR-Konfiguration
 
-1. Installieren Sie Azure PowerShell über die [Seite mit den Azure-Downloads][AzureDownloads] (aus Juni 2015 oder später).  Unter "Befehlszeilentools" befindet sich unter "Windows PowerShell" der Link "Installieren", über den die aktuellen PowerShell-Cmdlets installiert werden.
-2. Es wird empfohlen, ein eindeutiges Subnetz für die ausschließliche Verwendung durch eine App Service-Umgebung zu erstellen.  Dadurch wird sichergestellt, dass die im Subnetz eingerichteten benutzerdefinierten Routen nur für ausgehenden Datenverkehr für die App Service-Umgebung geöffnet werden.
-3. **Wichtig**: Stellen Sie die App Service-Umgebung erst bereit, **nachdem** die folgenden Konfigurationsschritte erfolgt sind.  Dadurch wird sichergestellt, dass ausgehende Netzwerkverbindungen verfügbar sind, bevor Sie versuchen, eine App Service-Umgebung bereitzustellen.
+Dieser Abschnitt zeigt eine UDR-Beispielkonfiguration für eine App Service-Umgebung.
 
-**Schritt 1: Erstellen einer benannten Routentabelle**
+### <a name="prerequisites"></a>Voraussetzungen
 
-Im folgenden Codeausschnitt wird eine Routentabelle namens "DirectInternetRouteTable" in der Azure-Region USA, Westen erstellt:
+* Installieren Sie Azure PowerShell über die [Seite mit den Azure-Downloads][AzureDownloads]. Wählen Sie einen Download mit einem Datum vom Juni 2015 oder später. Klicken Sie unter **Befehlszeilentools** > **Windows PowerShell** auf **Installieren**, um die neuesten PowerShell-Cmdlets zu installieren.
 
-    New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest
+* Erstellen Sie ein eindeutiges Subnetz für die ausschließliche Verwendung durch die App Service-Umgebung. Durch das eindeutige Subnetz wird sichergestellt, dass die im Subnetz eingerichteten UDRs nur für ausgehenden Datenverkehr für die App Service-Umgebung geöffnet werden.
 
-**Schritt 2: Erstellen einer oder mehrerer Routen in der Routentabelle**
+> [!IMPORTANT]
+> Stellen Sie die App Service-Umgebung erst bereit, nachdem Sie die Konfigurationsschritte abgeschlossen haben. Die Schritte stellen sicher, dass eine ausgehende Netzwerkkonnektivität verfügbar ist, bevor Sie versuchen, eine App Service-Umgebung bereitzustellen.
 
-Sie müssen der Routentabelle eine oder mehrere Routen hinzufügen, um den ausgehenden Zugriff auf das Internet zu aktivieren.  
+### <a name="step-1-create-a-route-table"></a>Schritt 1: Erstellen einer Routingtabelle
 
-Für die Konfiguration des ausgehenden Zugriffs auf das Internet wird empfohlen, wie unten dargestellt eine Route für 0.0.0.0/0 zu definieren.
+Erstellen Sie – wie in diesem Codeausschnitt gezeigt ª eine Routingtabelle namens **DirectInternetRouteTable** in der Azure-Region USA, Westen:
 
-    Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet
+`New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-Denken Sie daran, dass der Adressbereich 0.0.0.0/0 durch spezifischere Adressbereiche überschrieben wird, die von ExpressRoute angekündigt werden.  Entsprechend der obigen Empfehlung sollte zudem eine UDR mit einer 0.0.0.0/0-Route in Verbindung mit einer ExpressRoute-Konfiguration verwendet werden, die nur 0.0.0.0/0 ankündigt. 
+### <a name="step-2-create-routes-in-the-table"></a>Schritt 2: Erstellen von Routen in der Tabelle
 
-Alternativ können Sie eine umfassende und aktualisierte Liste der von Azure verwendeten CIDR-Adressbereiche herunterladen.  Die XML-Datei mit sämtlichen Azure-IP-Adressbereichen steht im [Microsoft Download Center][DownloadCenterAddressRanges] zur Verfügung.  
+Fügen Sie Routen zu der Routingtabelle hinzu, um den ausgehenden Internetzugriff zu aktivieren.  
 
-Beachten Sie, dass sich diese Bereiche im Laufe der Zeit ändern und benutzerdefinierte Routen (UDRs) daher regelmäßig manuell aktualisiert werden müssen, um sie auf dem neuesten Stand zu halten.  Da eine einzelne UDR standardmäßig außerdem maximal 100 Routen enthalten kann, müssen Sie die Azure-IP-Adressbereiche entsprechend „zusammenfassen“. Denken Sie dabei daran, dass die in einer UDR definierten Routen spezifischer als die von Ihrer ExpressRoute-Konfiguration angekündigten Routen sein müssen.  
+Konfigurieren Sie den ausgehenden Zugriff auf das Internet. Definieren Sie – wie im folgenden Codeausschnitt gezeigt – eine Route für 0.0.0.0/0:
 
-**Schritt 3: Zuordnen der Routentabelle zum Subnetz mit der App Service-Umgebung**
+`Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet`
 
-Der letzte Konfigurationsschritt ist das Zuordnen der Routentabelle zum Subnetz, in dem die App Service-Umgebung bereitgestellt wird.  Der folgende Befehl ordnet die Tabelle "DirectInternetRouteTable" dem Subnetz "ASESubnet" zu, das schließlich eine App Service-Umgebung enthalten wird.
+0.0.0.0/0 ist ein breiter Adressbereich. Der Bereich wird durch Adressbereiche überschrieben, die von ExpressRoute angekündigt werden und spezifischer sind. Eine UDR mit einer 0.0.0.0/0-Route sollte in Verbindung mit einer ExpressRoute-Konfiguration verwendet werden, die nur 0.0.0.0/0 ankündigt. 
 
-    Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'
+Alternativ können Sie eine aktuelle umfassende Liste der von Azure verwendeten CIDR-Adressbereiche herunterladen. Die XML-Datei für alle Azure-IP-Adressbereiche steht im [Microsoft Download Center][DownloadCenterAddressRanges] zur Verfügung.  
 
+> [!NOTE]
+>
+> Die Azure-IP-Adressbereiche ändern sich im Laufe der Zeit. Benutzerdefinierte Routen benötigen regelmäßige manuelle Aktualisierungen, um auf dem neuesten Stand zu bleiben.
+>
+> Für eine einzelne UDR gilt standardmäßig eine Obergrenze von 100 Routen. Sie müssen die Azure-IP-Adressbereiche zusammenfassen, damit der Grenzwert von 100 Routen eingehalten wird. UDR-definierte Routen müssen spezifischer sein als von Ihrer ExpressRoute-Verbindung angekündigte Routen.
+> 
 
-**Schritt 4: Abschließende Schritte**
+### <a name="step-3-associate-the-table-to-the-subnet"></a>Schritt 3: Zuordnen der Tabelle zum Subnetz
 
-Sobald die Routentabelle an das Subnetz gebunden ist, wird empfohlen, die gewünschte Auswirkung zunächst zu testen und zu bestätigen.  Stellen Sie beispielsweise einen virtuellen Computer im Subnetz bereit, und bestätigen Sie Folgendes:
+Ordnen Sie die Routingtabelle dem Subnetz zu, in dem Sie die App Service-Umgebung bereitstellen möchten. Mit diesem Befehl wird die Tabelle **DirectInternetRouteTable** dem Subnetz **ASESubnet** zugeordnet, das die App Service-Umgebung enthalten wird.
 
-* Ausgehender Datenverkehr zu den weiter oben genannten Azure-Endpunkten und Nicht-Azure-Endpunkten wird **nicht** über die ExpressRoute-Verbindung übertragen.  Dieses Verhalten muss unbedingt überprüft werden, da die Erstellung von App Service-Umgebungen fehlschlägt, wenn ausgehender Datenverkehr aus dem Subnetz weiterhin zwangsweise lokal getunnelt wird. 
-* DNS-Suchen nach den zuvor genannten Endpunkten werden alle korrekt aufgelöst. 
+`Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-Nachdem Sie die obigen Schritte ausgeführt und überprüft haben, müssen Sie den virtuellen Computer löschen, da das Subnetz bei der Erstellung der App Service-Umgebung „leer“ sein muss.
+### <a name="step-4-test-and-confirm-the-route"></a>Schritt 4: Testen und Bestätigen der Route
 
-Fahren Sie anschließend mit dem Erstellen einer App Service-Umgebung fort.
+Nachdem die Routingtabelle dem Subnetz zugeordnet wurde, testen und bestätigen Sie die Route.
 
-## <a name="getting-started"></a>Erste Schritte
-Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment].
+Stellen Sie einen virtuellen Computer im Subnetz bereit, und bestätigen Sie die folgenden Bedingungen:
+
+* Ausgehender Datenverkehr zu den in diesem Artikel beschriebenen Azure-Endpunkten und Nicht-Azure-Endpunkten wird **nicht** über die ExpressRoute-Verbindung übertragen. Wenn der ausgehende Datenverkehr des Subnetzes einer lokalen Tunnelerzwingung unterliegt, schlägt die Erstellung der App Service-Umgebung stets fehl.
+* Alle DNS-Lookups für die in diesem Artikel beschriebenen Endpunkte werden korrekt aufgelöst. 
+
+Nachdem Sie die Konfigurationsschritte ausgeführt und die Route bestätigt haben, löschen Sie den virtuellen Computer. Das Subnetz muss „leer“ sein, wenn die App Service-Umgebung erstellt wird.
+
+Nun können Sie die App Service-Umgebung bereitstellen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zum Einstieg in App Service-Umgebungen für PowerApps finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment].
 
 <!-- LINKS -->
-[virtualnetwork]: http://azure.microsoft.com/services/virtual-network/
-[ExpressRoute]: http://azure.microsoft.com/services/expressroute/
+[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md
-[NetworkSecurityGroups]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[UDROverview]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-[UDRHowTo]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/
-[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[AzureDownloads]: http://azure.microsoft.com/downloads/ 
-[DownloadCenterAddressRanges]: http://www.microsoft.com/download/details.aspx?id=41653  
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
-[NewPortal]:  https://portal.azure.com
+[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
+<!-- Old link -- [UDRHowTo]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md [AzureDownloads]: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ [IntroToAppServiceEnvironment]: app-service-app-service-environment-intro.md [NewPortal]: https://portal.azure.com
 
 
 <!-- IMAGES -->

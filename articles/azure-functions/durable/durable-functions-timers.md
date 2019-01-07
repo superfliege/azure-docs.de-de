@@ -8,20 +8,20 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad6ddacad322e4c2f952591be786d46cbcb95a21
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7af204ad76cb04c3d71c5108948be4036be1d1e4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637555"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338837"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timer in Durable Functions (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) bieten *permanente Timer* für die Verwendung in Orchestratorfunktionen zum Implementieren von Verzögerungen oder zum Einrichten von Timeouts für asynchrone Aktionen. Permanente Timer sollten in Orchestratorfunktionen anstelle von `Thread.Sleep` und `Task.Delay` (C#) bzw. `setTimeout()` und `setInterval()` (JavaScript) verwendet werden.
 
-Sie erstellen einen permanenten Timer, indem Sie die [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_)-Methode in [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) aufrufen. Die Methode gibt eine Aufgabe zurück, die an einem bestimmten Datum zu einer bestimmten Zeit fortgesetzt wird.
+Sie erstellen einen permanenten Timer, indem Sie die [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_)-Methode von [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) in .NET oder die `createTimer`-Methode von `DurableOrchestrationContext` in JavaScript aufrufen. Die Methode gibt eine Aufgabe zurück, die an einem bestimmten Datum zu einer bestimmten Zeit fortgesetzt wird.
 
 ## <a name="timer-limitations"></a>Timereinschränkungen
 
@@ -29,13 +29,13 @@ Wenn Sie einen Timer erstellen, der um 16:30 Uhr abläuft, stellt das zugrunde l
 
 > [!NOTE]
 > * Permanente Timer sind aufgrund von Beschränkungen in Azure Storage auf 7 Tage beschränkt. Wir arbeiten an einer [Featureanfrage, den Timer über 7 Tage hinaus zu erweitern](https://github.com/Azure/azure-functions-durable-extension/issues/14).
-> * Verwenden Sie bei der Berechnung einer relativen Frist eines permanenten Timers immer [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) anstelle von `DateTime.UtcNow`, wie in den Beispielen unten dargestellt.
+> * Verwenden Sie wie in den folgenden Beispielen dargestellt bei der Berechnung einer relativen Frist eines permanenten Timers immer [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) anstelle von `DateTime.UtcNow` in .NET und `currentUtcDateTime` anstelle von `Date.now` oder `Date.UTC` in JavaScript.
 
 ## <a name="usage-for-delay"></a>Verwendung für Verzögerung
 
 Das folgende Beispiel veranschaulicht, wie Sie permanente Timer für die Ausführungsverzögerung verwenden. Im Beispiel wird zehn Tage lang täglich eine Abrechnungsbenachrichtigung ausgegeben.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -51,7 +51,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript"></a>JavaScript
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```js
 const df = require("durable-functions");
@@ -68,13 +68,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Vermeiden Sie Endlosschleifen in Orchestratorfunktionen. Informationen zum sicheren und effizienten Implementieren von Endlosschleifenszenarien finden Sie unter [Eternal orchestrations in Durable Functions (Azure Functions)](durable-functions-eternal-orchestrations.md) (Ewige Orchestrierungen in Durable Functions [Azure Functions]). 
+> Vermeiden Sie Endlosschleifen in Orchestratorfunktionen. Informationen zum sicheren und effizienten Implementieren von Endlosschleifenszenarien finden Sie unter [Eternal orchestrations in Durable Functions (Azure Functions)](durable-functions-eternal-orchestrations.md) (Ewige Orchestrierungen in Durable Functions [Azure Functions]).
 
 ## <a name="usage-for-timeout"></a>Verwendung für das Timeout
 
 In diesem Beispiel wird veranschaulicht, wie mit permanenten Timern Timeouts implementiert werden.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -105,7 +105,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript"></a>JavaScript
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```js
 const df = require("durable-functions");
@@ -142,4 +142,3 @@ Ein ausführlicheres Beispiel zum Implementieren von Timeouts in Orchestratorfun
 
 > [!div class="nextstepaction"]
 > [Behandeln von externen Ereignissen in Durable Functions (Azure Functions)](durable-functions-external-events.md)
-

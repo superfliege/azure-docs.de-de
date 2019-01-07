@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3808511e588ba4284dee16cf7ca88bfd5a382c3a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345304"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337477"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -60,7 +60,7 @@ Im [Azure-Portal](sql-database-scale-resources.md) haben Sie die Möglichkeit, C
 Informationen zum Erstellen der VNet-Infrastruktur und der verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md).
 
 > [!IMPORTANT]
-> Es ist wichtig, dass Sie Ihr Ziel-VNet und Subnetz immer in Übereinstimmung mit den [VNet-Anforderungen für verwaltete Instanzen](sql-database-managed-instance-vnet-configuration.md#requirements) halten. Jede Inkompatibilität kann Sie daran hindern, neue Instanzen anzulegen oder bereits erstellte Instanzen zu verwenden.
+> Es ist wichtig, dass Sie Ihr Ziel-VNet und Subnetz immer in Übereinstimmung mit den [VNet-Anforderungen für verwaltete Instanzen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) halten. Jede Inkompatibilität kann Sie daran hindern, neue Instanzen anzulegen oder bereits erstellte Instanzen zu verwenden. Erfahren Sie mehr über das [Erstellen neuer](sql-database-managed-instance-create-vnet-subnet.md) und [Konfigurieren vorhandener](sql-database-managed-instance-configure-vnet-subnet.md) Netzwerke.
 
 ## <a name="select-migration-method-and-migrate"></a>Auswählen der Migrationsmethode und Migration
 
@@ -117,8 +117,7 @@ Verfolgen Sie das Anwendungsverhalten und die Leistung nach der Migration. In de
 
 Um Migrationsrisiken zu minimieren, sollten Sie den Kompatibilitätsgrad der Datenbank erst nach der Leistungsüberwachung ändern. Verwenden Sie den Abfragespeicher als optimales Tool, um Informationen über die Workloadleistung vor und nach einer Änderung des Datenbankkompatibilitätsgrads zu erhalten. Siehe [Aufrechterhalten einer stabilen Leistung während des Upgrades auf das neuere SQL Server](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 
-Sobald Sie sich auf einer vollständig verwalteten Plattform befinden, profitieren Sie von den Vorteilen, die automatisch als Teil des SQL-Datenbankdienstes bereitgestellt werden. Beispielsweise müssen Sie keine Sicherungen für den Managed Instance-Dienst erstellen, da dieser automatische Sicherungen für Sie  durchführt. Sie müssen sich auch nicht mehr darum kümmern, Sicherungen zu planen, zu erstellen und zu verwalten. Verwaltete Instanzen bieten Ihnen die Möglichkeit, mithilfe von [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) eine Wiederherstellung auf jeden beliebigen Zeitpunkt innerhalb der Aufbewahrungsdauer durchzuführen. Bei der öffentlichen Vorschau ist die Aufbewahrungsdauer auf sieben Tage festgelegt.
-Darüber hinaus müssen Sie sich keine Gedanken über die Einrichtung von [Hochverfügbarkeit](sql-database-high-availability.md) machen, da diese integriert ist.
+Sobald Sie sich auf einer vollständig verwalteten Plattform befinden, profitieren Sie von den Vorteilen, die automatisch als Teil des SQL-Datenbankdienstes bereitgestellt werden. Beispielsweise müssen Sie keine Sicherungen für den Managed Instance-Dienst erstellen, da dieser automatische Sicherungen für Sie  durchführt. Sie müssen sich auch nicht mehr darum kümmern, Sicherungen zu planen, zu erstellen und zu verwalten. Verwaltete Instanzen bieten Ihnen die Möglichkeit, mithilfe von [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) eine Wiederherstellung auf jeden beliebigen Zeitpunkt innerhalb der Aufbewahrungsdauer durchzuführen. Darüber hinaus müssen Sie sich keine Gedanken über die Einrichtung von [Hochverfügbarkeit](sql-database-high-availability.md) machen, da diese integriert ist.
 
 Um die Sicherheit zu erhöhen, sollten Sie einige der verfügbaren Features nutzen:
 
