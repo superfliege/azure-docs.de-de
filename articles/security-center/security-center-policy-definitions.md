@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4f9fc31f411d36e63775a3665b6dfe27eec7710
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318939"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011632"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>In Azure Security Center überwachte Azure-Sicherheitsrichtlinien
 Dieser Artikel enthält eine Liste der Azure Policy-Definitionen, die in Security Center überwacht werden können.
@@ -43,7 +43,7 @@ Informationen zu den integrierten Richtlinien, die von Security Center überwach
 |Festlegung der ClusterProtectionLevel-Eigenschaft auf EncryptAndSign in Service Fabric überwachen|Service Fabric bietet drei Schutzebenen („None“, „Sign“ und „EncryptAndSign“) für die Kommunikation zwischen zwei Knoten unter Verwendung eines primären Clusterzertifikats. Legen Sie die Schutzebene fest, um sicherzustellen, dass alle zwischen zwei Knoten übertragenen Nachrichten verschlüsselt und digital signiert werden.| 
 |Verwendung von Azure Active Directory für Clientauthentifizierung in Service Fabric überwachen|Hiermit wird überwacht, ob die Clientauthentifizierung in Service Fabric ausschließlich über Azure Active Directory erfolgt.| 
 |Aktivierung von Diagnoseprotokollen für Search-Dienst überwachen|Hiermit wird die Aktivierung von Protokollen überwacht, und die Protokolle werden bis zu einem Jahr aufbewahrt. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist.| 
-|Ausschließliche Aktivierung sicherer Verbindungen mit Redis Cache überwachen|Hiermit wird überwacht, ob die Verbindungsherstellung mit Redis Cache ausschließlich über SSL-Verbindungen erfolgt. Durch die Verwendung sicherer Verbindungen wird eine Authentifizierung zwischen dem Server und dem Dienst sichergestellt, und die übertragenen Daten werden vor Angriffen auf Netzwerkebene geschützt, wie z.B. Man-in-the-Middle-Angriffe, Abhörangriffe und Session Hijacking.| 
+|Aktivieren der Überprüfung nur für sichere Verbindungen mit Azure Cache for Redis|Aktivieren der Überprüfung nur für Verbindungen über SSL mit Azure Cache for Redis Durch die Verwendung sicherer Verbindungen wird eine Authentifizierung zwischen dem Server und dem Dienst sichergestellt, und die übertragenen Daten werden vor Angriffen auf Netzwerkebene geschützt, wie z.B. Man-in-the-Middle-Angriffe, Abhörangriffe und Session Hijacking.| 
 |Aktivierung von Diagnoseprotokollen in Logic Apps überwachen|Hiermit wird die Aktivierung von Protokollen überwacht, und die Protokolle werden bis zu einem Jahr aufbewahrt. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist.| 
 |Aktivierung von Diagnoseprotokollen in Key Vault überwachen|Hiermit wird die Aktivierung von Protokollen überwacht, und die Protokolle werden bis zu einem Jahr aufbewahrt. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist.|
 |Aktivierung von Diagnoseprotokollen in Event Hub überwachen|Hiermit wird die Aktivierung von Protokollen überwacht, und die Protokolle werden bis zu einem Jahr aufbewahrt. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist.| 
@@ -72,11 +72,11 @@ Informationen zu den integrierten Richtlinien, die von Security Center überwach
 |[Vorschau]: Nicht geschützte Webanwendung in Azure Security Center überwachen|Hiermit werden Webanwendungen ohne Web Application Firewall-Schutz über Azure Security Center in Form von Empfehlungen überwacht.| 
 |[Vorschau]: Nicht geschützte Netzwerkendpunkte in Azure Security Center überwachen|Hiermit werden Netzwerkendpunkte ohne Next Generation Firewall-Schutz über Azure Security Center in Form von Empfehlungen überwacht.| 
 |[Vorschau]: Ergebnisse der SQL-Sicherheitsrisikobewertung in Azure Security Center überwachen|Überprüfungsergebnisse der Sicherheitsrisikobewertung und Empfehlungen zum Beheben von Sicherheitsrisiken in der Datenbank überwachen.| 
-|[Vorschau]: Höchstzahl der Besitzer für ein Abonnement überwachen|Es wird empfohlen, bis zu drei Abonnementbesitzer festzulegen, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern.| 
-|[Vorschau]: Mindestanzahl der Besitzer für das Abonnement überwachen|Es wird empfohlen, mehrere Abonnementbesitzer festzulegen, um Redundanz beim Administratorzugriff zu gewährleisten.| 
+|[Vorschau]: Höchstanzahl der Besitzer für ein Abonnement überwachen|Es wird empfohlen, bis zu drei Abonnementbesitzer festzulegen, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern.| 
+|[Vorschau]: Mindestanzahl der Besitzer für ein Abonnement überwachen|Es wird empfohlen, mehrere Abonnementbesitzer festzulegen, um Redundanz beim Administratorzugriff zu gewährleisten.| 
 |[Vorschau]: Konten mit Besitzerberechtigungen überwachen, für die MFA in einem Abonnement nicht aktiviert ist|MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Besitzerberechtigungen aktiviert werden, um eine Sicherheitsverletzung für Konten oder Ressourcen zu verhindern.| 
 |[Vorschau]: Konten mit Schreibberechtigungen überwachen, für die MFA in einem Abonnement nicht aktiviert ist|MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Schreibrechten aktiviert sein, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.| 
-|[Vorschau]: Konten mit Leseberechtigungen in einem Abonnement überwachen, für die MFA nicht aktiviert ist|MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Leserechten aktiviert sein, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.| 
+|[Vorschau]: Konten mit Leseberechtigungen überwachen, für die MFA in einem Abonnement nicht aktiviert ist|MFA (Multi-Factor Authentication) muss für alle Abonnementkonten mit Leserechten aktiviert sein, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.| 
 |[Vorschau]: Veraltete Konten mit Besitzerberechtigungen für ein Abonnement überwachen|Veraltete Konten mit Besitzerberechtigungen müssen aus Ihrem Abonnement entfernt werden. Veraltete Konten sind Konten, bei denen die Anmeldung blockiert wurde.| 
 |[Vorschau]: Veraltete Konten in einem Abonnement überwachen|Veraltete Konten sollten aus Ihren Abonnements entfernt werden. Veraltete Konten sind Konten, bei denen die Anmeldung blockiert wurde.| 
 |[Vorschau]: Externe Konten mit Besitzerberechtigungen für ein Abonnement überwachen|Externe Konten mit Besitzerberechtigungen müssen aus Ihrem Abonnement entfernt werden, um einen nicht überwachten Zugriff zu verhindern.| 
@@ -89,11 +89,11 @@ Informationen zu den integrierten Richtlinien, die von Security Center überwach
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Security Center konfigurieren können. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
 
-* [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md): Sie erfahren, wie Sie die Einführung von Azure Security Center planen, und erhalten grundlegende Informationen zu Entwurfsaspekten.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie Antworten auf häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+* [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md): Hier erfahren Sie, wie Sie die Entwurfsaspekte zu Azure Security Center planen und verstehen.
+* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+* [Azure Security Center – häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
 Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md).

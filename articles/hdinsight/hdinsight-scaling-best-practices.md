@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e664fc83fde937b26a4726f997da4c0cb4d8f8a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948125"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407880"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skalieren von HDInsight-Clustern
 
 HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern.
 
-Wenn Sie beispielsweise einmal täglich oder monatlich eine Batchverarbeitung durchführen, kann der HDInsight-Cluster ein paar Minuten vor diesem geplanten Ereignis zentral hochskaliert werden, damit ausreichend Arbeitsspeicher und CPU-Rechenleistung zur Verfügung stehen. Sie können die Skalierung mit dem PowerShell-Cmdlet [`Set–AzureRmHDInsightClusterSize`](hdinsight-administer-use-powershell.md#scale-clusters) automatisieren.  Später, wenn nach der Verarbeitung die Nutzung wieder sinkt, können Sie den HDInsight-Cluster auf weniger Workerknoten zentral herunterskalieren.
+Wenn Sie beispielsweise einmal täglich oder monatlich eine Batchverarbeitung durchführen, kann der HDInsight-Cluster ein paar Minuten vor diesem geplanten Ereignis zentral hochskaliert werden, damit ausreichend Arbeitsspeicher und CPU-Rechenleistung zur Verfügung stehen. Sie können die Skalierung mit dem PowerShell-Cmdlet [`Set–AzureRmHDInsightClusterSize`](hdinsight-administer-use-powershell.md#scale-clusters) automatisieren.  Später, wenn nach der Verarbeitung die Nutzung wieder sinkt, können Sie den HDInsight-Cluster auf weniger Workerknoten zentral herunterskalieren.
 
 * So skalieren Sie Ihren Cluster über [PowerShell](hdinsight-administer-use-powershell.md):
 
@@ -77,7 +77,7 @@ Beispiel:
 yarn application -kill "application_1499348398273_0003"
 ```
 
-## <a name="rebalancing-an-hbase-cluster"></a>Erstellen eines HBase-Clusters
+## <a name="rebalancing-an-apache-hbase-cluster"></a>Erstellen eines Apache HBase-Clusters
 
 Regionsserver werden innerhalb weniger Minuten nach Abschluss des Skalierungsvorgangs automatisch ausgeglichen. Um Regionsserver manuell auszugleichen, führen Sie folgende Schritte aus:
 
@@ -99,11 +99,11 @@ Wie bereits erwähnt, werden alle ausstehenden oder ausgeführten Aufträge nach
 
 ![Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster.png)
 
-Wenn Sie, wie in der vorherigen Abbildung dargestellt, Ihren Cluster auf das Minimum von einem Workerknoten verkleinern, kann HDFS im abgesicherten Modus hängen bleiben, wenn Workerknoten aufgrund des Patchens oder unmittelbar nach der Skalierung neu gestartet werden.
+Wenn Sie, wie in der vorherigen Abbildung dargestellt, Ihren Cluster auf das Minimum von einem Workerknoten verkleinern, kann Apache HDFS im abgesicherten Modus hängen bleiben, wenn Workerknoten aufgrund des Patchens oder unmittelbar nach der Skalierung neu gestartet werden.
 
 Die primäre Ursache ist, dass Hive ein paar `scratchdir`-Dateien verwendet und standardmäßig drei Replikate jedes Blocks erwartet, aber es ist nur ein Replikat möglich, wenn Sie auf das Minimum von einem Workerknoten zentral herunterskalieren. Daher sind die Dateien im `scratchdir` *unterrepliziert*. Dies kann HDFS veranlassen, nach dem Neustart der Dienste nach dem Skalierungsvorgang im abgesicherten Modus zu bleiben.
 
-Wenn versucht wird, zentral herunter zu skalieren, verlässt sich HDInsight darauf, dass die Ambari-Verwaltungsoberflächen zuerst die zusätzlichen unerwünschten Workerknoten außer Betrieb setzen, sodass deren HDFS-Blöcke auf andere Workerknoten repliziert werden, die online sind, und dann den Cluster sicher zentral herunterskalieren. HDFS wechselt während des Wartungsfensters in einen abgesicherten Modus, und es wird erwartet, dass HDFS diesen nach dem Skalieren verlässt. Genau an diesem Punkt kann HDFS im abgesicherten Modus hängen bleiben.
+Wenn versucht wird, zentral herunter zu skalieren, verlässt sich HDInsight darauf, dass die Apache Ambari-Verwaltungsoberflächen zuerst die zusätzlichen unerwünschten Workerknoten außer Betrieb setzen, sodass deren HDFS-Blöcke auf andere Workerknoten repliziert werden, die online sind, und dann den Cluster sicher zentral herunterskalieren. HDFS wechselt während des Wartungsfensters in einen abgesicherten Modus, und es wird erwartet, dass HDFS diesen nach dem Skalieren verlässt. Genau an diesem Punkt kann HDFS im abgesicherten Modus hängen bleiben.
 
 HDFS ist mit der `dfs.replication`-Einstellung 3 konfiguriert. Daher sind die Blöcke der Scratchdateien immer dann unterrepliziert, wenn weniger als drei Workerknoten online sind, da nicht die erwarteten drei Kopien jedes Dateiblocks verfügbar sind.
 
@@ -123,7 +123,7 @@ Nach dem Verlassen des abgesicherten Modus können Sie die temporären Dateien m
 
 * H020 Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException konnte nicht hergestellt werden: HTTP-Verbindung mit http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ konnte nicht erstellt werden. org.apache.http.conn.HttpHostConnectException: Fehler beim Herstellen der Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28]: Verbindung verweigert: org.apache.thrift.transport.TTransportException: HTTP-Verbindung mit http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ konnte nicht erstellt werden. org.apache.http.conn.HttpHostConnectException: Fehler beim Herstellen der Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28]: **Verbindung verweigert**
 
-* Aus den Hive-Protokollen: WARN [main]: server.HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Fehler beim Starten von HiveServer2 bei Versuch 21, neuer Versuch in 60 Sekunden java.lang.RuntimeException: Fehler beim Anwenden der Autorisierungsrichtlinie auf Hive-Konfiguration: org.apache.hadoop.ipc.RemoteException (org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Verzeichnis kann nicht erstellt** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Namensknoten befindet sich im abgesicherten Modus**.
+* Aus den Hive-Protokollen: WARN [main]: server.HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Fehler beim Starten von HiveServer2 bei Versuch 21, java.lang.RuntimeException wird in 60 Sekunden erneut versucht: Fehler beim Anwenden der Autorisierungsrichtlinie auf die Hive-Konfiguration: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Verzeichnis kann nicht erstellen werden:** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Namensknoten befindet sich im abgesicherten Modus**.
     Die gemeldeten 0 Blöcke benötigen weitere 9 Blöcke, um den Schwellenwert 0,9900 von insgesamt 9 Blöcken zu erreichen.
     Die Anzahl 10 der aktiven Datenknoten hat die minimale Anzahl 0 erreicht. **Der abgesicherte Modus wird automatisch deaktiviert, sobald die Schwellenwerte erreicht sind**.
     bei org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1324)
@@ -151,7 +151,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 
 ![Deaktivierter abgesicherter Modus](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Der `-D`-Schalter ist erforderlich, da das Standarddateisystem in HDInsight entweder Azure Storage oder Azure Data Lake Store ist. `-D` gibt an, dass die Befehle im lokalen HDFS-Dateisystem ausgeführt werden.
 
 Als Nächstes können Sie einen Bericht anzeigen, der die Details des HDFS-Status enthält:
@@ -251,7 +251,7 @@ Um die Scratchdateien zu bereinigen, wodurch die Blockreplikationsfehler entfern
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Mit diesem Befehl kann Hive unterbrochen werden, falls noch einige Aufträge ausgeführt werden.
 
 ### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>Gewusst wie: Verhindern, dass HDInsight aufgrund unterreplizierter Blöcke im abgesicherten Modus hängen bleibt
@@ -327,4 +327,4 @@ Die letzte Option ist, den seltenen Fall zu beobachten, dass HDFS in den abgesic
 
 * [Einführung in Azure HDInsight](hadoop/apache-hadoop-introduction.md)
 * [Skalieren von Clustern](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
+* [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)

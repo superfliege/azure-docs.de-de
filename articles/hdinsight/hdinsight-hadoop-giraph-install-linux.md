@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011662"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383900"
 ---
-# <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Installieren von Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Installieren von Apache Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme
 
 In diesem Artikel wird erläutert, wie Sie Apache Giraph in einem HDInsight-Cluster installieren. Das Skriptaktionenfeature von HDInsight ermöglicht Ihnen die Anpassung des Clusters durch Ausführen eines Bash-Skripts. Mithilfe von Skripts können Sie Cluster während und nach der Erstellung anpassen.
 
@@ -33,10 +33,10 @@ In diesem Artikel wird erläutert, wie Sie Apache Giraph in einem HDInsight-Clus
 
 * Berechnen des Seitenrangs von Webseiten.
 
-> [!WARNING]
+> [!WARNING]  
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft-Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten wie Giraph steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Ihnen bei der Lösung des Problems helfen. Andernfalls finden Sie in Open-Source-Communitys Unterstützung, die oft über umfassende Kenntnisse zu dieser Technologie verfügen. So können z.B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten wie Giraph steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Ihnen bei der Lösung des Problems helfen. Andernfalls finden Sie in Open-Source-Communitys Unterstützung, die oft über umfassende Kenntnisse zu dieser Technologie verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org). Beispiel: [Hadoop](http://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Funktion des Skripts
@@ -78,7 +78,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 
    * **ZOOKEEPER**: Lassen Sie diese Option deaktiviert.
 
-   * **PARAMETERS**: Lassen Sie dieses Feld leer.
+   * **PARAMETER**: Lassen Sie dieses Feld leer.
 
 3. Verwenden Sie am unteren Rand der **Skriptaktionen** die Schaltfläche **Auswählen**, um die Konfiguration zu speichern. Klicken Sie abschließend auf die Schaltfläche **Auswählen** im unteren Bereich des Abschnitts **Optionale Konfiguration**, um die optionalen Konfigurationsinformationen zu speichern.
 
@@ -172,4 +172,4 @@ Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in
 
 * [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md).
 
-* [Installieren von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md).
+* [Installieren von Apache Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md)

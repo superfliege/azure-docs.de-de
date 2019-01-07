@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255301"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383934"
 ---
 # <a name="monitor-cluster-performance"></a>Überwachen der Clusterleistung
 
 Die Überwachung der Integrität und Leistung eines HDInsight-Clusters ist sehr wichtig, um eine optimale Leistung und Ressourcenverwendung zu gewährleisten. Darüber hinaus kann die Überwachung dazu beitragen, Clusterkonfigurationsfehler und Benutzercodeprobleme zu erkennen und zu behandeln.
 
-In den folgenden Abschnitten erfahren Sie, wie Sie die Last in Ihren Clustern und YARN-Warteschlangen überwachen und optimieren und wie Sie Speicherdrosselungsprobleme erkennen.
+In den folgenden Abschnitten erfahren Sie, wie Sie die Last in Ihren Clustern und Apache Hadoop YARN-Warteschlangen überwachen und optimieren und wie Sie Speicherdrosselungsprobleme erkennen.
 
 ## <a name="monitor-cluster-load"></a>Überwachen der Clusterlast
 
@@ -43,7 +43,7 @@ Wählen Sie einen beliebigen Hostnamen aus, um eine ausführliche Übersicht üb
 
 ![Hostdetails](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-Unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) finden Sie Details zum Festlegen von Warnungen und Anzeigen von Metriken.
+Unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) finden Sie Details zum Festlegen von Warnungen und Anzeigen von Metriken.
 
 ## <a name="yarn-queue-configuration"></a>Konfiguration von YARN-Warteschlangen
 
@@ -79,14 +79,14 @@ Wenn Sie Azure Storage nutzen und Informationen zur Überwachung von speicherbez
 
 Wenn Sie Azure Data Lake Store (ADLS) als Sicherungsspeicher für Ihren Cluster verwenden, erfolgt die Drosselung bei Ihnen wahrscheinlich aufgrund von Einschränkungen der Bandbreite. Die Drosselung lässt sich in diesem Fall durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln. Informationen zu ADLS finden Sie in den folgenden Artikeln jeweils im Abschnitt zur Drosselung für den entsprechenden Dienst:
 
-* [Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Anleitung für die Leistungsoptimierung für Apache Hive in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Anleitung für die Leistungsoptimierung für Storm in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Anleitung für die Leistungsoptimierung für Apache Storm in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Problembehandlung und Überwachung für Ihre Cluster finden Sie unter den folgenden Links:
 
 * [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md)
-* [Debuggen von Apps mit YARN-Protokollen](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Debuggen von Apps mit Apache Hadoop YARN-Protokollen](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

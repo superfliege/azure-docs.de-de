@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: dc7cfb4df768fb7554bc7b5c772a6a778a8a793a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3a9a026af67cd5528dfc00148bcbbcef82b8b189
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008112"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714660"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrieren von .NET-Lösungen für Windows-basierte HDInsight-Cluster zu Linux-basierten HDInsight-Clustern
 
@@ -24,9 +24,9 @@ Linux-basierte HDInsight-Cluster nutzen [Mono (https://mono-project.com)](https:
 
 Mono-Version 4.2.1 ist in HDInsight Version 3.6 enthalten. Weitere Informationen zu der mit HDInsight bereitgestellten Version von Mono finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md). Informationen zum Installieren einer bestimmten Version von Mono finden Sie im Dokument [Installieren oder Aktualisieren von Mono](hdinsight-hadoop-install-mono.md).
 
-Weitere Informationen zur Kompatibilität von Mono und .NET finden Sie im Dokument [Mono compatibility (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/)).
+Weitere Informationen zur Kompatibilität von Mono und .NET finden Sie im Dokument [Mono compatibility (https://www.mono-project.com/docs/about-mono/compatibility/)](https://www.mono-project.com/docs/about-mono/compatibility/)).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Das SCP.NET-Framework ist kompatibel mit Mono. Weitere Informationen zur Verwendung von SCP.NET mit Mono finden Sie unter [Verwenden von Visual Studio zum Entwickeln von C#-Topologien für Apache Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="automated-portability-analysis"></a>Automatisierte Portabilitätsanalyse
@@ -47,12 +47,12 @@ Mit [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemN
 
     ![Dialogfeld „Ergebnisse der Portabilitätsanalyse“](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Der Analyzer kann nicht jedes Problem mit Ihrer Lösung abfangen. Der Dateipfad `c:\temp\file.txt` wird beispielsweise als gültig angesehen, wenn Mono unter Windows ausgeführt wird. Der gleiche Pfad ist auf einer Linux-Plattform ungültig.
 
 ## <a name="manual-portability-analysis"></a>Manuelle Portabilitätsanalyse
 
-Führen Sie eine manuelle Prüfung des Codes anhand der Informationen im Artikel [Application Portability (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/)) durch.
+Führen Sie eine manuelle Prüfung des Codes anhand der Informationen im Artikel [Application Portability (https://www.mono-project.com/docs/getting-started/application-portability/)](https://www.mono-project.com/docs/getting-started/application-portability/)) durch.
 
 ## <a name="modify-and-build"></a>Ändern und Erstellen
 
@@ -64,12 +64,12 @@ Nachdem Sie Ihre Lösung mithilfe der Empfehlungen von .NET Portability Analyzer
 
 Weitere Informationen zum Zugriff auf Protokolle finden Sie in den folgenden Artikeln:
 
-* [Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden von C# mit MapReduce in HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Verwenden benutzerdefinierter C#-Funktionen mit Hive und Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Verwenden benutzerdefinierter C#-Funktionen mit Apache Hive und Apache Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Entwickeln von C#-Topologien für Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Entwickeln von C#-Topologien für Apache Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)

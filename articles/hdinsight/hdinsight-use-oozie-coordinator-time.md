@@ -10,21 +10,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f6b362b260c913faaad57d19c92fe6d6583093f0
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6e45dfbea9545c72d80a17e8ae144f4dacc70a63
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685870"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995013"
 ---
-# <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Verwenden des zeitbasierten Oozie-Koordinators mit Hadoop in HDInsight zum Definieren von Workflows und Koordinieren von Aufträgen
-In diesem Artikel erfahren Sie, wie Workflows und Koordinatoren definiert und die Koordinatoraufgaben zeitabhängig ausgelöst werden. Vor der Lektüre dieses Artikels empfiehlt es sich, das Thema [Verwenden von Oozie mit HDInsight durchzuarbeiten][hdinsight-use-oozie]. Neben Oozie können Sie auch Azure Data Factory zum Planen von Aufträgen verwenden. Informationen zu Azure Data Factory finden Sie unter [Verwenden von Pig und Hive mit Data Factory](../data-factory/transform-data.md).
+# <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Verwenden des zeitbasierten Apache Oozie-Koordinators mit Apache Hadoop in HDInsight zum Definieren von Workflows und Koordinieren von Aufträgen
+In diesem Artikel erfahren Sie, wie Workflows und Koordinatoren definiert und die Koordinatoraufgaben zeitabhängig ausgelöst werden. Vor der Lektüre dieses Artikels empfiehlt es sich, das Thema [Verwenden von Apache Oozie mit HDInsight durchzuarbeiten][hdinsight-use-oozie]. Neben Oozie können Sie auch Azure Data Factory zum Planen von Aufträgen verwenden. Informationen zu Data Factory finden Sie unter [Verwenden von Apache Pig und Apache Hive mit Data Factory](../data-factory/transform-data.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Dieser Artikel erfordert einen Windows-basierten HDInsight-Cluster. Informationen zum Verwenden von Oozie, einschließlich zeitbasierter Aufträge, auf einem Linux-basierten Cluster finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem HDInsight](hdinsight-use-oozie-linux-mac.md)
 
 ## <a name="what-is-oozie"></a>Was ist Oozie?
-Apache Oozie ist ein Workflow-/Koordinationssystem zur Verwaltung von Hadoop-Jobs. Es ist in den Hadoop-Stapel integriert und unterstützt Hadoop-Aufträge für Apache MapReduce, Apache Pig, Apache Hive und Apache Sqoop. Es kann auch dazu verwendet werden, systemspezifische Aufträge zu planen, beispielsweise Java-Programme oder Shellskripts.
+Apache Oozie ist ein Workflow-/Koordinationssystem zur Verwaltung von Hadoop-Jobs. Es ist in den Hadoop-Stapel integriert und unterstützt Hadoop-Aufträge für Apache Hadoop MapReduce, Apache Pig, Apache Hive und Apache Sqoop. Es kann auch dazu verwendet werden, systemspezifische Aufträge zu planen, beispielsweise Java-Programme oder Shellskripts.
 
 Die folgende Abbildung zeigt den Workflow, der implementiert werden soll.
 
@@ -32,7 +32,7 @@ Die folgende Abbildung zeigt den Workflow, der implementiert werden soll.
 
 Der Workflow enthält zwei Aktionen:
 
-1. Eine Hive-Aktion führt ein HiveQL-Skript aus, das die Vorkommen der verschiedenen Protokollierungsebenen in einer log4j-Protokolldatei zählt. Jedes log4j-Protokoll besteht aus einer Reihe von Feldern, unter denen sich ein Feld namens [LOG LEVEL] befindet, das die Art und den Schweregrad des jeweiligen Fehlers anzeigt, z. B.:
+1. Eine Hive-Aktion führt ein HiveQL-Skript aus, das die Vorkommen der verschiedenen Protokollierungsebenen in einer Apache log4j-Protokolldatei zählt. Jedes log4j-Protokoll besteht aus einer Reihe von Feldern, unter denen sich ein Feld namens [LOG LEVEL] befindet, das die Art und den Schweregrad des jeweiligen Fehlers anzeigt, z. B.:
 
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -48,10 +48,10 @@ Der Workflow enthält zwei Aktionen:
         [TRACE] 816
         [WARN]  4
 
-    Weitere Informationen zu Hive finden Sie unter [Verwenden von Hive mit HDInsight][hdinsight-use-hive].
-2. Mit einer Sqoop-Aktion wird die Ausgabe der HiveQL-Aktion in eine Tabelle der Azure-SQL-Datenbank exportiert. Weitere Informationen über Sqoop finden Sie unter Verwenden von [Sqoop mit HDInsight][hdinsight-use-sqoop].
+    Weitere Informationen zu Hive finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?][hdinsight-use-hive].
+2. Mit einer Sqoop-Aktion wird die Ausgabe der HiveQL-Aktion in eine Tabelle der Azure-SQL-Datenbank exportiert. Weitere Informationen zu Sqoop finden Sie unter [Verwenden von Sqoop mit Hadoop in HDInsight][hdinsight-use-sqoop].
 
-> [!NOTE]
+> [!NOTE]  
 > Informationen zu den unterstützten Oozie-Versionen in HDInsight-Clustern finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Clusterversionen][hdinsight-versions].
 >
 >
@@ -61,7 +61,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Eine Arbeitsstation mit Azure PowerShell**.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Die Azure PowerShell-Unterstützung zum Verwalten von HDInsight-Ressourcen mithilfe von Azure Service Manager ist **veraltet** und wird zum 1. Januar 2017 eingestellt. Die Schritte in diesem Dokument zeigen die neuen HDInsight-Cmdlets, die mit Azure Resource Manager genutzt werden können.
     >
     > Führen Sie zur Installation der neuesten Version von Azure PowerShell die unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) beschriebenen Schritte aus. Wenn Sie über Skripts verfügen, die für die Verwendung der neuen Cmdlets für Azure Resource Manager geändert werden müssen, finden Sie unter [Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster](hdinsight-hadoop-development-using-azure-resource-manager.md) weitere Informationen.
@@ -87,10 +87,10 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
     <tr><td>SQL-Datenbankname</td><td>$sqlDatabaseName</td><td></td><td>Die Azure SQL-Datenbank, in die Sqoop Daten exportiert. </td></tr>
     </table>
 
-  > [!NOTE]
+  > [!NOTE]   
   > Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn die Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer SQL-Datenbank und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren von SQL-Datenbanken][sqldatabase-get-started].
 
-> [!NOTE]
+> [!NOTE]  
 > Tragen Sie die Werte in die Tabellen ein. Dies wird Ihnen helfen, wenn Sie dieses Lernprogramm durcharbeiten.
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Definieren des Oozie-Workflows und des zugehörigen HiveQL-Skripts
@@ -103,8 +103,8 @@ Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skr
 3. **Speicherort der log4j-Protokolldatei**. Das Feldtrennzeichen ist "," Das Standard-Zeilentrennzeichen ist "\n". Mit einer externen Hive-Tabelle wird vermieden, dass die Datendatei aus dem ursprünglichen Speicherort entfernt wird, falls Sie den Oozie-Workflow mehrmals ausführen möchten.
 4. **Die Anweisung INSERT OVERWRITE** zählt die Vorkommen der verschiedenen Protokollierungsebenen in der log4j-Hive-Tabelle und speichert die Ausgabe in Azure Blob Storage.
 
-> [!NOTE]
-> Es existiert ein bekanntes Problem bezüglich des Hive-Pfades. Dieses Problem tritt auf, wenn Sie einen Oozie-Job senden. Die Anweisungen zur Behebung des Problems finden Sie im TechNet-Wiki: [HDInsight Hive error: Unable to rename][technetwiki-hive-error] (HDInsight Hive-Fehler: Fehler beim Umbenennen).
+> [!NOTE]  
+> Es existiert ein bekanntes Problem bezüglich des Hive-Pfades. Dieses Problem tritt auf, wenn Sie einen Oozie-Job senden. Die Anweisungen zur Behebung des Problems finden Sie im TechNet-Wiki: [HDInsight Hive-Fehler: Fehler beim Umbenennen][technetwiki-hive-error].
 
 **So definieren Sie die HiveQL-Skriptdatei, die vom Workflow aufgerufen werden soll**
 
@@ -262,7 +262,7 @@ Die Syntax ist:
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
-> [!NOTE]
+> [!NOTE]  
 > In der HDInsight-Clusterversion 3.0 wird nur die *wasb://*-Syntax unterstützt. Die ältere *asv://*-Syntax wird in HDInsight 2.1- und 1.6-Clustern unterstützt, nicht aber in HDInsight 3.0-Clustern.
 >
 > Der Pfad "wasb://" ist ein virtueller Pfad. Weitere Informationen finden Sie unter [Verwenden von Azure Blob Storage mit HDInsight][hdinsight-storage].
@@ -287,7 +287,7 @@ Folgendes sollten Sie über interne und externe Hive-Tabellen wissen:
 * Der Befehl CREATE EXTERNAL TABLE verschiebt die Datendatei nicht.
 * Der Befehl CREATE EXTERNAL TABLE lässt keine Unterordner unter dem in der LOCATION-Klausel angegebenen Ordner zu. Aus diesem Grund wird durch dieses Lernprogramm eine Kopie der Datei "sample.log" erstellt.
 
-Weitere Informationen finden Sie unter [HDInsight: Einführung in interne und externe Tabellen in Hive][cindygross-hive-tables].
+Weitere Informationen finden Sie unter [HDInsight: Einführung zu internen und externen Apache Hive-Tabellen][cindygross-hive-tables].
 
 **So bereiten Sie das Tutorial vor**
 
@@ -300,7 +300,7 @@ Weitere Informationen finden Sie unter [HDInsight: Einführung in interne und ex
 
     Sie werden zur Eingabe Ihrer Azure-Anmeldeinformationen aufgefordert. Dieses Verfahren zum Hinzufügen einer Abonnementverbindung läuft nach einer bestimmten Zeit ab. Daher müssen Sie das Cmdlet nach 12 Stunden erneut ausführen.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Wenn Sie über mehrere Azure-Abonnements verfügen und nicht das Standardabonnement verwenden möchten, wählen Sie mithilfe des Cmdlets <strong>Select-AzureSubscription</strong> ein Abonnement aus.
 
 3. Kopieren Sie das folgende Skript in den Skriptbereich, und legen Sie anschließend die ersten sechs Variablen fest:
@@ -536,7 +536,7 @@ Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bere
     "@
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > Der Hauptunterschied zur Nutzlastdatei für die Workflowübermittlung ist die Variable **oozie.coord.application.path**. Beim Übermitteln eines Workflowauftrags wird stattdessen **oozie.wf.application.path** verwendet.
 
 4. Hängen Sie die folgenden Codezeilen an das Skript. Dieser Teil dient zur Statusüberprüfung des Oozie-Webdienstes:
@@ -578,7 +578,7 @@ Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bere
     }
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > Wenn Sie einen Workflowauftrag übermitteln, müssen Sie einen weiteren Webdienstaufruf ausführen, um den Auftrag nach dessen Erstellung auszuführen. In diesem Fall wird der Koordinator-Job durch die Uhrzeit ausgelöst. Der Job wird automatisch gestartet.
 
 6. Hängen Sie die folgenden Codezeilen an das Skript. In diesem Teil wird der Status des Oozie-Jobs geprüft:
@@ -713,12 +713,12 @@ In diesem Lernprogramm haben Sie einen Oozie-Workflow und einen Oozie-Koordinato
 * [Verwenden von Azure Blob Storage mit HDInsight][hdinsight-storage]
 * [Verwalten von HDInsight mit Azure PowerShell][hdinsight-admin-powershell]
 * [Hochladen von Daten in HDInsight][hdinsight-upload-data]
-* [Verwenden von Sqoop mit HDInsight][hdinsight-use-sqoop]
-* [Verwenden von Hive mit HDInsight][hdinsight-use-hive]
-* [Verwenden von Pig mit HDInsight][hdinsight-use-pig]
+* [Verwenden von Apache Sqoop mit HDInsight][hdinsight-use-sqoop]
+* [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]
+* [Verwenden von Apache Pig mit HDInsight][hdinsight-use-pig]
 * [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-java-mapreduce]
 
-[hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
+[hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
@@ -740,20 +740,20 @@ In diesem Lernprogramm haben Sie einen Oozie-Workflow und einen Oozie-Koordinato
 [azure-management-portal]: https://portal.azure.com/
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
-[apache-hadoop]: http://hadoop.apache.org/
-[apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
-[apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
+[apache-hadoop]: https://hadoop.apache.org/
+[apache-oozie-400]: https://oozie.apache.org/docs/4.0.0/
+[apache-oozie-332]: https://oozie.apache.org/docs/3.3.2/
 
-[powershell-download]: http://azure.microsoft.com/downloads/
-[powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
+[powershell-download]: https://azure.microsoft.com/downloads/
+[powershell-about-profiles]: https://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [img-workflow-diagram]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Workflow.Diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

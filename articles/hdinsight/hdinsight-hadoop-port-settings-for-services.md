@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6204933d6b9a4a6b296a141520fc8887c9181f1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: be264be41b198e95dae64730ef31f431ec06a2e7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279710"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715459"
 ---
-# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Ports für Hadoop-Dienste in HDInsight
+# <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Ports für Apache Hadoop-Dienste in HDInsight
 
-Dieses Dokument enthält eine Liste mit den Ports für Hadoop-Dienste, die in Linux-basierten HDInsight-Clustern ausgeführt werden. Außerdem enthält es Informationen zu Ports, die zum Herstellen einer Verbindung mit dem Cluster per SSH verwendet werden.
+Dieses Dokument enthält eine Liste mit den Ports für Apache Hadoop-Dienste, die in Linux-basierten HDInsight-Clustern ausgeführt werden. Außerdem enthält es Informationen zu Ports, die zum Herstellen einer Verbindung mit dem Cluster per SSH verwendet werden.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Öffentliche Ports im Vergleich mit nicht öffentlichen Ports
 
@@ -26,7 +26,7 @@ Für Linux-basierte HDInsight-Cluster werden nur drei Ports öffentlich im Inter
 
 Intern wird HDInsight von mehreren Azure Virtual Machines (Knoten im Cluster) implementiert, die in einem Azure Virtual Network ausgeführt werden. Aus dem virtuellen Netzwerk können Sie auf Ports zugreifen, die nicht über das Internet verfügbar gemacht werden. Wenn Sie beispielsweise eine Verbindung mit einem der Hauptknoten per SSH herstellen, können Sie vom Hauptknoten dann direkt auf Dienste zugreifen, die auf den Clusterknoten ausgeführt werden.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenn Sie kein virtuelles Azure-Netzwerk als eine Konfigurationsoption für HDInsight angeben, wird automatisch eines erstellt. Sie können diesem virtuellen Netzwerk jedoch nicht mit anderen Computern (z.B. anderen virtuellen Azure-Computern oder Ihrem Client-Entwicklungscomputer) beitreten.
 
 
@@ -41,20 +41,20 @@ Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Networ
 | sshd |22 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem primären Hauptknoten her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Verbindet Clients mit sshd auf dem Edgeknoten. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem sekundären Hauptknoten her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| Ambari |443 |HTTPS |Ambari-Webbenutzeroberfläche. Siehe [Verwalten von HDInsight mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Ambari-REST-API. Siehe [Verwalten von HDInsight mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog-REST-API. Siehe [Verwenden von Hive mit Curl](hadoop/apache-hadoop-use-pig-curl.md), [Verwenden von Pig mit Curl](hadoop/apache-hadoop-use-pig-curl.md), [Verwenden von MapReduce mit Curl](hadoop/apache-hadoop-use-mapreduce-curl.md). |
+| Ambari |443 |HTTPS |Ambari-Webbenutzeroberfläche. Siehe [Verwalten von HDInsight mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Ambari-REST-API. Siehe [Verwalten von HDInsight mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| WebHCat |443 |HTTPS |HCatalog-REST-API. Siehe [Verwenden von Apache Hive mit Curl](hadoop/apache-hadoop-use-pig-curl.md), [Verwenden von Apache Pig mit Curl](hadoop/apache-hadoop-use-pig-curl.md), [Verwenden von MapReduce mit Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Stellt per ODBC ein Verbindung mit Hive her. Siehe [Verbinden von Excel mit HDInsight mithilfe des Microsoft ODBC-Treibers](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
-| HiveServer2 |443 |JDBC |Stellt per JDBC ein Verbindung mit Hive her. Siehe [Herstellen einer Verbindung mit Hive unter HDInsight per Hive-JDBC-Treiber](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| HiveServer2 |443 |JDBC |Stellt per JDBC ein Verbindung mit Apache Hive her. Siehe [Herstellen einer Verbindung mit Apache Hive unter HDInsight per Hive-JDBC-Treiber](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 Für spezielle Clustertypen ist Folgendes verfügbar:
 
 | Dienst | Port | Protokoll | Clustertyp | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |hbase |HBase-REST-API. Siehe [Erste Schritte mit HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark-REST-API. Siehe [Remoteübermittlung von Spark-Aufträgen mithilfe von Livy](spark/apache-spark-livy-rest-interface.md) |
-| Spark Thrift-Server |443 |HTTPS |Spark |Zum Übermitteln von Hive-Abfragen verwendeter Spark Thrift-Server. Siehe [Verwenden des Beeline-Clients mit Apache Hive](hadoop/apache-hadoop-use-hive-beeline.md) |
-| Storm |443 |HTTPS |Storm |Storm-Webbenutzeroberfläche. Siehe [Bereitstellen und Verwalten von Storm-Topologien in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |hbase |HBase-REST-API. Siehe [Erste Schritte mit Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Spark-REST-API. Siehe [Remoteübermittlung von Apache Spark-Aufträgen mit Apache Livy](spark/apache-spark-livy-rest-interface.md) |
+| Spark Thrift-Server |443 |HTTPS |Spark |Zum Übermitteln von Hive-Abfragen verwendeter Spark Thrift-Server. Siehe [Verwenden von Beeline mit Apache Hive in HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
+| Storm |443 |HTTPS |Storm |Storm-Webbenutzeroberfläche. Siehe [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>Authentifizierung
 
@@ -67,10 +67,10 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 ## <a name="non-public-ports"></a>Nicht öffentliche Ports
 
-> [!NOTE]
+> [!NOTE]  
 > Einige Dienste stehen nur bei bestimmten Clustertypen zur Verfügung. HBase beispielsweise ist nur bei HBase-Clustertypen verfügbar.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Einige Dienste werden nur auf einem Hauptknoten gleichzeitig ausgeführt. Wenn Sie versuchen, auf dem primären Hauptknoten eine Verbindung mit dem Dienst herzustellen und einen Fehler erhalten, versuchen Sie es mit dem sekundären Hauptknoten erneut.
 
 ### <a name="ambari"></a>Ambari
@@ -157,7 +157,7 @@ Beispiele:
 
 | Dienst | Nodes | Port | Protokoll | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| Broker |Workerknoten |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html) |Für die Clientkommunikation |
+| Broker |Workerknoten |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html) |Für die Clientkommunikation |
 | &nbsp; |Zookeeper-Knoten |2181 |&nbsp; |Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |
 
 ### <a name="spark-ports"></a>Spark-Ports

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 12/04/2018
+ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056742"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274427"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Wiederherstellen eines einzelnen Mandanten mit einer SaaS-Anwendung mit einer Datenbank pro Mandant
 
@@ -26,10 +26,8 @@ Mit dem Modell „eine Datenbank pro Mandant“ ist es ganz einfach, einen einze
 In diesem Tutorial lernen Sie zwei Muster der Datenwiederherstellung kennen:
 
 > [!div class="checklist"]
-
 > * Wiederherstellen einer Datenbank in eine parallele Datenbank (Nebeneinander)
 > * Direktes Wiederherstellen einer Datenbank mit Ersetzen der vorhandenen Datenbank
-
 
 |||
 |:--|:--|
@@ -44,13 +42,13 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 ## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>Einführung in die SaaS-Muster zur Mandantenwiederherstellung
 
-Es gibt zwei einfache Muster zum Wiederherstellen der Daten eines einzelnen Mandanten. Da Mandantendatenbanken voneinander isoliert sind, hat das Wiederherstellen eines Mandanten keine Auswirkungen auf Daten anderer Mandanten. Das PITR-Feature (Point-in-Time-Wiederherstellung) von Azure SQL-Datenbank wird in beiden Mustern verwendet. Mit PITR wird stets eine neue Datenbank erstellt.   
+Es gibt zwei einfache Muster zum Wiederherstellen der Daten eines einzelnen Mandanten. Da Mandantendatenbanken voneinander isoliert sind, hat das Wiederherstellen eines Mandanten keine Auswirkungen auf Daten anderer Mandanten. Das PITR-Feature (Point-in-Time-Wiederherstellung) von Azure SQL-Datenbank wird in beiden Mustern verwendet. Mit PITR wird stets eine neue Datenbank erstellt.
 
-* **Paralleles Wiederherstellen:** Beim ersten Muster wird eine neue Datenbank parallel zur aktuellen Datenbank des Mandanten erstellt. Der Mandant erhält anschließend schreibgeschützten Zugriff auf die wiederhergestellte Datenbank. Die wiederhergestellten Daten können überprüft und möglicherweise zum Überschreiben der aktuellen Datenwerte verwendet werden. Es ist Aufgabe des App-Designers, die Art des Mandantenzugriffs auf die wiederhergestellte Datenbank zu bestimmen und festzulegen, welche Optionen für die Wiederherstellung bereitgestellt werden. In manchen Szenarien reicht es bereits aus, dem Mandanten nur das Überprüfen seiner Daten zu einem früheren Zeitpunkt zu ermöglichen. 
+* **Paralleles Wiederherstellen**: Beim ersten Muster wird eine neue Datenbank parallel zur aktuellen Datenbank des Mandanten erstellt. Der Mandant erhält anschließend schreibgeschützten Zugriff auf die wiederhergestellte Datenbank. Die wiederhergestellten Daten können überprüft und möglicherweise zum Überschreiben der aktuellen Datenwerte verwendet werden. Es ist Aufgabe des App-Designers, die Art des Mandantenzugriffs auf die wiederhergestellte Datenbank zu bestimmen und festzulegen, welche Optionen für die Wiederherstellung bereitgestellt werden. In manchen Szenarien reicht es bereits aus, dem Mandanten nur das Überprüfen seiner Daten zu einem früheren Zeitpunkt zu ermöglichen.
 
-* **Direktes Wiederherstellen:** Das zweite Muster ist hilfreich, wenn Daten verloren gegangen sind oder beschädigt wurden und der Mandant die Daten auf einen früheren Zeitpunkt wiederherstellen möchte. Der Mandant wird offline geschaltet, während die Datenbank wiederhergestellt wird. Die ursprüngliche Datenbank wird gelöscht, und die wiederhergestellte Datenbank wird umbenannt. Der Zugriff auf die Sicherungskette der ursprünglichen Datenbank bleibt nach dem Löschvorgang erhalten, sodass Sie bei Bedarf die Datenbank auf einen früheren Zeitpunkt wiederherstellen können.
+* **Direktes Wiederherstellen**: Das zweite Muster ist hilfreich, wenn Daten verloren gegangen sind oder beschädigt wurden und der Mandant die Daten auf einen früheren Zeitpunkt wiederherstellen möchte. Der Mandant wird offline geschaltet, während die Datenbank wiederhergestellt wird. Die ursprüngliche Datenbank wird gelöscht, und die wiederhergestellte Datenbank wird umbenannt. Der Zugriff auf die Sicherungskette der ursprünglichen Datenbank bleibt nach dem Löschvorgang erhalten, sodass Sie bei Bedarf die Datenbank auf einen früheren Zeitpunkt wiederherstellen können.
 
-Wenn die Datenbank die [Georeplikation](sql-database-geo-replication-overview.md) und die parallele Wiederherstellung verwendet, empfiehlt es sich, alle erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die Georeplikation neu konfigurieren und synchronisieren.
+Wenn die Datenbank die [aktive Georeplikation](sql-database-active-geo-replication.md) und die parallele Wiederherstellung verwendet, empfiehlt es sich, alle erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die Georeplikation neu konfigurieren und synchronisieren.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
@@ -74,7 +72,6 @@ Um diese Wiederherstellungsszenarien zu demonstrieren, müssen Sie zuerst ein Er
 
    ![Die letzte Veranstaltung wird angezeigt.](media/saas-dbpertenant-restore-single-tenant/last-event.png)
 
-
 ### <a name="accidentally-delete-the-last-event"></a>„Versehentliches“ Löschen der letzten Veranstaltung
 
 1. Öffnen Sie „...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\*Demo-RestoreTenant.ps1*“ in der PowerShell ISE, und legen Sie den folgenden Wert fest:
@@ -88,15 +85,13 @@ Um diese Wiederherstellungsszenarien zu demonstrieren, müssen Sie zuerst ein Er
    ```
 
 3. Die Contoso-Ereignisseseite wird geöffnet. Scrollen Sie nach unten, und überprüfen Sie, ob die Veranstaltung nicht mehr vorhanden ist. Wenn sich die Veranstaltung weiterhin in der Liste befindet, wählen Sie **Aktualisieren** aus, und überprüfen Sie, ob sie noch vorhanden ist.
-
    ![Letzte Veranstaltung entfernt](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
-
 
 ## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Wiederherstellen einer Mandantendatenbank parallel mit der Produktionsdatenbank
 
 In dieser Übung wird die Datenbank der Contoso Concert Hall mit dem Status eines bestimmten Zeitpunkts vor dem Löschen des Ereignisses wiederhergestellt. In diesem Szenario wird davon ausgegangen, dass Sie die gelöschten Daten in einer parallelen Datenbank nur überprüfen möchten.
 
- Mit dem Skript *Restore-TenantInParallel.ps1* wird eine parallele Mandantendatenbank namens *ContosoConcertHall\_old* mit einem parallelen Katalogeintrag erstellt. Dieses Wiederherstellungsmuster eignet sich am besten zur Wiederherstellung nach einem geringfügigen Datenverlust. Sie können dieses Muster auch verwenden, wenn Sie Daten für Compliance- oder Überwachungszwecke überprüfen müssen. Dies ist auch die empfohlene Vorgehensweise bei Verwendung der [Georeplikation](sql-database-geo-replication-overview.md).
+ Mit dem Skript *Restore-TenantInParallel.ps1* wird eine parallele Mandantendatenbank namens *ContosoConcertHall\_old* mit einem parallelen Katalogeintrag erstellt. Dieses Wiederherstellungsmuster eignet sich am besten zur Wiederherstellung nach einem geringfügigen Datenverlust. Sie können dieses Muster auch verwenden, wenn Sie Daten für Compliance- oder Überwachungszwecke überprüfen müssen. Dies ist auch die empfohlene Vorgehensweise bei Verwendung der [aktiven Georeplikation](sql-database-active-geo-replication.md).
 
 1. Schließen Sie den Abschnitt [Simulieren des versehentlichen Löschens von Daten durch den Mandanten](#simulate-a-tenant-accidentally-deleting-data) ab.
 2. Öffnen Sie in der PowerShell ISE „...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\_Demo-RestoreTenant.ps1_“.
@@ -115,7 +110,6 @@ Sie würden einem Mandanten vermutlich den Zugriff auf wiederhergestellte Daten 
 2. Drücken Sie F5, um das Skript auszuführen.
 3. Der Eintrag *ContosoConcertHall\_old* ist jetzt aus dem Katalog gelöscht. Schließen Sie die Veranstaltungsseite für diesen Mandanten in Ihrem Browser.
 
-
 ## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>Direktes Wiederherstellen eines Mandanten, Ersetzen der vorhandenen Mandantendatenbank
 
 In dieser Übung wird der Mandant „Contoso Concert Hall“ auf einen Zeitpunkt vor dem Löschen des Ereignisses wiederhergestellt. Mit dem Skript *Restore-TenantInPlace* wird eine Mandantendatenbank in eine neue Datenbank wiederhergestellt und die ursprüngliche Datenbank gelöscht. Dieses Wiederherstellungsmuster eignet sich optimal für die Wiederherstellung bei einer schwerwiegenden Datenbeschädigung, bei der der Mandant mit erheblichen Datenverlusten rechnen muss.
@@ -128,14 +122,13 @@ Mit dem Skript wird die Mandantendatenbank auf einen Zeitpunkt vor dem Löschen 
 
 Sie haben die Datenbank erfolgreich mit dem Status zu einem bestimmten Zeitpunkt vor dem Löschen des Ereignisses wiederhergestellt. Die Seite **Events** wird geöffnet, sodass Sie sich von der Wiederherstellung der letzten Veranstaltung überzeugen können.
 
-Sie müssen nach dem Wiederherstellen der Datenbank weitere 10 bis 15 Minuten warten, bis die erste vollständige Sicherung für ein erneutes Wiederherstellen verfügbar ist. 
+Sie müssen nach dem Wiederherstellen der Datenbank weitere 10 bis 15 Minuten warten, bis die erste vollständige Sicherung für ein erneutes Wiederherstellen verfügbar ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-
 > * Wiederherstellen einer Datenbank in eine parallele Datenbank (Nebeneinander)
 > * Direktes Wiederherstellen einer Datenbank
 

@@ -1,57 +1,56 @@
 ---
-title: Grundlegendes zu Azure Policy-Auswirkungen
+title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definition hat verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 4668b1fe6e59898d81fc71558e21acd1a89be767
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18
+ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279496"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310843"
 ---
 # <a name="understand-policy-effects"></a>Grundlegendes zu Richtlinienauswirkungen
 
-Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese bestimmt, was beim Überprüfen geschieht, wenn das **if**-Segment der Richtlinienregel für die überprüfte Ressource ausgewertet wird. Die Auswirkungen für eine neue Ressource, eine aktualisierte Ressource oder eine vorhandene Ressource können hierbei unterschiedlich sein.
+Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese Auswirkung bestimmt, was geschieht, wenn die Richtlinienregel auf eine Übereinstimmung ausgewertet wird. Die Auswirkungen für eine neue Ressource, eine aktualisierte Ressource oder eine vorhandene Ressource sind hierbei unterschiedlich.
 
 Aktuell werden in einer Richtliniendefinition sechs Auswirkungen unterstützt:
 
-- Anfügen
-- Audit
+- Auswirkung „append“
+- Auswirkung „audit“
 - Auswirkung „AuditIfNotExists“
-- Verweigern
+- Auswirkung „deny“
 - Auswirkung „DeployIfNotExists“
-- Deaktiviert
+- Auswirkung „disabled“
 
 ## <a name="order-of-evaluation"></a>Reihenfolge der Auswertung
 
-Wenn über den Azure Resource Manager eine Anforderung zum Erstellen oder Aktualisieren einer Ressource gesendet wird, verarbeitet Azure Policy verschiedene Auswirkungen, bevor die Anforderung an den geeigneten Ressourcenanbieter übergeben wird.
-Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht. Azure Policy erstellt eine Liste aller – per Richtlinie oder Initiative – zugewiesenen Richtliniendefinitionen, die gemäß Bereich (abzüglich der Ausnahmen) für die Ressource gelten, und bereitet die Auswertung der Ressource anhand jeder Definition vor.
+Anforderungen zum Erstellen oder Aktualisieren einer Ressource über Azure Resource Manager werden von Policy zuerst ausgewertet. Policy erstellt eine Liste aller Zuweisungen, die auf die Ressource zutreffen, und wertet dann die Ressource anhand jeder Definition aus. Policy verarbeitet einige der Auswirkungen, bevor die Anforderung an den geeigneten Ressourcenanbieter übergeben wird. Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht.
 
-- Zuerst wird **Deaktiviert** überprüft, um zu ermitteln, ob die Richtlinienregel ausgewertet werden soll.
-- Anschließend wird **Anfügen** ausgewertet. Die Anforderung kann durch „append“ geändert werden, deshalb kann eine über „append“ durchgeführte Änderung die Auslösung der Auswirkungen „audit“ oder „deny“ verhindern.
+- Zuerst wird **disabled** überprüft, um zu ermitteln, ob die Richtlinienregel ausgewertet werden soll.
+- Anschließend wird **append** ausgewertet. Die Anforderung kann durch „append“ geändert werden, deshalb kann eine über „append“ durchgeführte Änderung die Auslösung der Auswirkungen „audit“ oder „deny“ verhindern.
 - Anschließend wird **deny** ausgewertet. Durch die Auswertung von „deny“ vor „audit“ wird eine zweimalige Protokollierung einer unerwünschten Ressource verhindert.
 - Anschließend wird **audit** ausgewertet, bevor die Anforderung an den Ressourcenanbieter weitergeleitet wird.
 
-Sobald die Anforderung an den Ressourcenanbieter übergeben wurde und der Ressourcenanbieter einen Erfolgsstatuscode zurückgibt, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine anschließende Konformitätsprotokollierung oder -aktion erforderlich ist.
+Nachdem der Ressourcenanbieter einen Erfolgscode zurückgegeben hat, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine zusätzliche Konformitätsprotokollierung oder -aktion erforderlich ist.
 
-## <a name="disabled"></a>Deaktiviert
+## <a name="disabled"></a>Auswirkung „disabled“
 
-Dieser Effekt ist hilfreich in Testsituationen und nach dem Parametrisieren des Effekts durch die Richtliniendefinition. Es ist möglich, eine einzelne Zuweisung dieser Richtlinie zu deaktivieren, indem der Zuweisungsparameter des Effekts geändert wird, anstatt alle Zuweisungen der Richtlinie zu deaktivieren.
+Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswirkung durch die Richtliniendefinition hilfreich. Aufgrund dieser Flexibilität kann eine einzelne Zuweisung deaktiviert werden, statt alle Zuweisungen dieser Richtlinie zu deaktivieren.
 
-## <a name="append"></a>Anfügen
+## <a name="append"></a>Auswirkung „append“
 
-„append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Dies kann nützlich sein, um Ressourcen Tags wie z.B. „costCenter“ hinzuzufügen oder zugelassene IP-Adressen für eine Speicherressource anzugeben.
+„append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Ein gängiges Beispiel ist das Hinzufügen von Tags zu Ressourcen (z.B. „costCenter“) oder das Angeben zugelassener IP-Adressen für eine Speicherressource.
 
 ### <a name="append-evaluation"></a>Auswertung von „append“
 
-Wie bereits erwähnt, wird „append“ vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource ausgewertet. Mit „append“ werden Felder zur Ressource hinzugefügt, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist. Wenn die Auswirkung „append“ einen Wert in der ursprünglichen Anforderung mit einem anderen Wert überschreiben würde, fungiert sie als Auswirkung „deny“ und lehnt die Anforderung ab.
+Die Auswertung von „append“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Mit „append“ werden Felder zur Ressource hinzugefügt, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist. Wenn die Auswirkung „append“ einen Wert in der ursprünglichen Anforderung mit einem anderen Wert überschreiben würde, fungiert sie als Auswirkung „deny“ und lehnt die Anforderung ab.
 
 Wenn eine Richtliniendefinition mit Auswirkung „append“ im Rahmen eines Auswertungszyklus ausgeführt wird, werden keine Änderungen an bereits vorhandenen Ressourcen durchgeführt. Stattdessen werden alle Ressourcen mit Erfüllung der **if**-Bedingung als nicht konform markiert.
 
@@ -61,7 +60,7 @@ Die Auswirkung „append“ weist nur ein Array **details** auf, das erforderlic
 
 ### <a name="append-examples"></a>Beispiele für „append“
 
-Beispiel 1: Einzelnes **field/value**-Paar zum Anfügen eines Tags.
+Beispiel 1: Einzelnes **field/value**-Paar zum Anfügen eines Tags.
 
 ```json
 "then": {
@@ -73,7 +72,7 @@ Beispiel 1: Einzelnes **field/value**-Paar zum Anfügen eines Tags.
 }
 ```
 
-Beispiel 2: Mehrere **field/value**-Paare zum Anfügen einer Gruppe von Tags.
+Beispiel 2: Zwei **field/value**-Paare zum Anfügen einer Gruppe von Tags.
 
 ```json
 "then": {
@@ -90,7 +89,7 @@ Beispiel 2: Mehrere **field/value**-Paare zum Anfügen einer Gruppe von Tags.
 }
 ```
 
-Beispiel 3: Einzelnes **field/value**-Paar mit einem [alias](definition-structure.md#aliases), in dem das **value**-Array IP-Regeln für ein Speicherkonto festlegt.
+Beispiel 3: Einzelnes **field/value**-Paar mit einem [Alias](definition-structure.md#aliases), in dem das **value**-Array IP-Regeln für ein Speicherkonto festlegt.
 
 ```json
 "then": {
@@ -105,15 +104,15 @@ Beispiel 3: Einzelnes **field/value**-Paar mit einem [alias](definition-structur
 }
 ```
 
-## <a name="deny"></a>Verweigern
+## <a name="deny"></a>Auswirkung „deny“
 
-Mit „deny“ werden Ressourcenanforderungen abgelehnt, welche die über eine Richtliniendefinition festgelegten gewünschten Standards nicht erfüllen. Für die Anforderung wird anschließend ein Fehler ausgegeben.
+Mit „deny“ werden Ressourcenanforderungen abgelehnt, welche die über eine Richtliniendefinition festgelegten Standards nicht erfüllen. Für die Anforderung wird anschließend ein Fehler ausgegeben.
 
 ### <a name="deny-evaluation"></a>Auswertung von „deny“
 
-Beim Erstellen oder Aktualisieren einer Ressourcen verhindert „deny“, dass die Anforderung an den Ressourcenanbieter gesendet wird. Für die Anforderung wird ein 403-Fehler (Verboten) zurückgegeben. Im Portal kann „Verboten“ als Status für die Bereitstellung angezeigt werden, die aufgrund der Richtlinienzuweisung verhindert wurde.
+Beim Erstellen oder Aktualisieren einer übereinstimmenden Ressource verhindert „deny“, dass die Anforderung an den Ressourcenanbieter gesendet wird. Für die Anforderung wird `403 (Forbidden)` zurückgegeben. Im Portal kann „Verboten“ als Status für die Bereitstellung angezeigt werden, die durch die Richtlinienzuweisung verhindert wurde.
 
-Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirkung „deny“ dazu, dass übereinstimmende Ressourcen als nicht konform markiert werden. Es wird aber keine Aktion für diese Ressource ausgeführt.
+Während der Auswertung vorhandener Ressourcen werden Ressourcen, die einer „deny“-Richtliniendefinition entsprechen, als nicht konform markiert.
 
 ### <a name="deny-properties"></a>Eigenschaften von „deny“
 
@@ -121,7 +120,7 @@ Die Auswirkung „deny“ umfasst keine zusätzlichen Eigenschaften zur Verwendu
 
 ### <a name="deny-example"></a>Beispiel für „deny“
 
-Beispiel zur Verwendung der Auswirkung „deny“
+Beispiel: Verwendung der Auswirkung „deny“
 
 ```json
 "then": {
@@ -129,13 +128,13 @@ Beispiel zur Verwendung der Auswirkung „deny“
 }
 ```
 
-## <a name="audit"></a>Audit
+## <a name="audit"></a>Auswirkung „audit“
 
 Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivitätsprotokoll zu erstellen, wenn eine nicht konforme Ressource ausgewertet wird. Die Anforderung wird jedoch nicht beendet.
 
 ### <a name="audit-evaluation"></a>Auswertung von „audit“
 
-Die Auswirkung „audit“ wird beim Erstellen oder Aktualisieren einer Ressource zuletzt ausgeführt, bevor die Anforderung an den Ressourcenanbieter gesendet wird. „audit“ funktioniert gleichermaßen für eine Ressourcenanforderung innerhalb eines Auswertungszyklus und führt einen `Microsoft.Authorization/policies/audit/action`-Vorgang im Aktivitätsprotokoll aus. In beiden Fällen wird die Ressource als nicht konform markiert.
+„audit“ ist die letzte Auswirkung, die von Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Policy sendet dann die Ressource an den Ressourcenanbieter. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Policy fügt dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
 
 ### <a name="audit-properties"></a>Eigenschaften von „audit“
 
@@ -143,7 +142,7 @@ Die Auswirkung „audit“ umfasst keine zusätzlichen Eigenschaften zur Verwend
 
 ### <a name="audit-example"></a>Beispiel für „audit“
 
-Beispiel zur Verwendung der Auswirkung „audit“
+Beispiel: Verwendung der Auswirkung „audit“
 
 ```json
 "then": {
@@ -153,11 +152,11 @@ Beispiel zur Verwendung der Auswirkung „audit“
 
 ## <a name="auditifnotexists"></a>Auswirkung „AuditIfNotExists“
 
-Die Auswirkung „AuditIfNotExists“ ermöglicht das Überwachen einer Ressource, welche die **if**-Bedingung erfüllt, für die aber keine Komponenten in den **details** der **then** -Bedingung angegeben sind.
+Die Auswirkung „AuditIfNotExists“ ermöglicht das Überwachen von Ressourcen, welche die **if**-Bedingung erfüllen, für die aber keine Komponenten in **details** der **then** -Bedingung angegeben sind.
 
 ### <a name="auditifnotexists-evaluation"></a>Auswertung von „AuditIfNotExists“
 
-„AuditIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Die Auswirkung wird ausgelöst, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Wenn die Auswirkung ausgelöst wird, wird ebenso wie bei der Auswirkung „audit“ ein `Microsoft.Authorization/policies/audit/action`-Vorgang für das Aktivitätsprotokoll ausgeführt. Bei Auslösung ist die Ressource, die die **if**-Bedingung erfüllt hat, die Ressource, die als nicht konform markiert wird.
+„AuditIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Die Überprüfung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Policy fügt dem Aktivitätsprotokoll auf gleiche Weise wie bei der Auswirkung „audit“ einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu. Bei Auslösung ist die Ressource, die die **if**-Bedingung erfüllt hat, die Ressource, die als nicht konform markiert wird.
 
 ### <a name="auditifnotexists-properties"></a>Eigenschaften von „AuditIfNotExists“
 
@@ -225,7 +224,7 @@ Beispiel: Mithilfe einer Auswertung wird ermittelt, ob die Antischadsoftware-Erw
 
 ### <a name="deployifnotexists-evaluation"></a>Auswertung von „DeployIfNotExists“
 
-„DeployIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Die Auswirkung wird ausgelöst, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Bei Auslösung der Auswirkung wird eine Vorlagenbereitstellung durchgeführt.
+„DeployIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden.
 
 Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirkung „DeployIfNotExists“ dazu, dass übereinstimmende Ressourcen als nicht konform markiert werden. Es wird aber keine Aktion für diese Ressource ausgeführt.
 
@@ -251,7 +250,7 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Für _Subscription_ wird das gesamte Abonnement nach der entsprechenden Ressource abgefragt.
   - Die Standardeinstellung ist _ResourceGroup_.
 - **ExistenceCondition** (optional)
-  - Sofern nicht angegeben, erfüllt jede entsprechende Ressource mit **type** die Bedingung der Auswirkung und löst keine Überwachung aus.
+  - Sofern nicht angegeben, erfüllt jede entsprechende Ressource mit **type** die Bedingung der Auswirkung und löst keine Bereitstellung aus.
   - Verwendet dieselbe Sprachsyntax wie die Richtlinienregel für die **if**-Bedingung, wird jedoch für jede entsprechende Ressource einzeln ausgeführt.
   - Wenn eine übereinstimmende Ressource als TRUE ausgewertet wird, ist die Auswirkung erfüllt und löst keine Bereitstellung aus.
   - [field()] kann verwendet werden, um auf Äquivalenz mit Werten in der **if**-Bedingung zu überprüfen.
@@ -319,27 +318,38 @@ Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob
 
 ## <a name="layering-policies"></a>Mehrere Richtlinien
 
-Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisungen können für denselben Bereich (eine bestimmte Ressource, Ressourcengruppe, ein bestimmtes Abonnement oder eine Verwaltungsgruppe) oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Trotzdem werden die Bedingung und die Auswirkung für jede Richtlinie (direkt oder als Teil einer Initiative zugewiesen) unabhängig ausgewertet. Wenn beispielsweise Richtlinie 1 eine Bedingung enthält, durch die das Erstellen des Ressourcenspeicherorts für Abonnement A mittels Auswirkung „deny“ auf „USA, Westen“ beschränkt wird, und Richtlinie 2 eine Bedingung enthält, die das Erstellen des Ressourcenspeicherorts für Ressourcengruppe B (die sich im Abonnement A befindet) mittels Auswirkung „audit“ auf „USA, Osten“ beschränkt, würde die Zuweisung beider Richtlinien zu folgendem Ergebnis führen:
+Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisungen können für denselben Bereich oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Die Bedingung und die Auswirkung für jede Richtlinie werden unabhängig ausgewertet. Beispiel: 
 
-- Jede Ressource, die sich bereits in Ressourcengruppe B und am Standort „USA, Osten“ befindet, ist gemäß Richtlinie 2 konform, aber wird gemäß Richtlinie 1 als nicht konform markiert.
-- Jede Ressource, die sich bereits in Ressourcengruppe B und nicht am Standort „USA, Osten“ befindet, wird gemäß Richtlinie 2 als nicht konform markiert. Die Ressource wird auch durch Richtlinie 1 als nicht konform markiert, wenn sie sich nicht am Standort „USA, Westen“ befindet.
+- Richtlinie 1
+  - Schränkt den Ressourcenstandort auf „USA, Westen“ ein
+  - Abonnement A zugewiesen
+  - Auswirkung „deny“
+- Richtlinie 2
+  - Schränkt den Ressourcenstandort auf „USA, Osten“ ein
+  - Ressourcengruppe B im Abonnement A zugewiesen
+  - Auswirkung „audit“
+  
+Dies würde zu folgendem Ergebnis führen:
+
+- Jede Ressource, die sich bereits in Ressourcengruppe B und am Standort „USA, Osten“ befindet, ist gemäß Richtlinie 2 konform und gemäß Richtlinie 1 nicht konform.
+- Jede Ressource, die sich bereits in Ressourcengruppe B und nicht am Standort „USA, Osten“ befindet, ist gemäß Richtlinie 2 nicht konform und auch gemäß Richtlinie 1 nicht konform, wenn sie sich nicht am Standort „USA, Westen“ befindet.
 - Jede neue Ressource in Abonnement A, die nicht am Standort „USA, Westen“ erstellt wird, wird von Richtlinie 1 abgelehnt.
-- Jede neue Ressource in Abonnement A/Ressourcengruppe B am Standort „USA, Westen“ wird gemäß Richtlinie 2 als nicht konform markiert, aber erstellt (da sie gemäß Richtlinie 1 konform ist und die Auswirkung von Richtlinie 2 „audit“ lautet und nicht „deny“).
+- Jede neue Ressource in Abonnement A und Ressourcengruppe B am Standort „USA, Westen“ wird erstellt und ist gemäß Richtlinie 2 nicht konform.
 
-Wenn sowohl Richtlinie 1 als auch Richtlinie 2 die Auswirkung „deny“ verwenden würden, ändert sich die Situation folgendermaßen:
+Wenn sowohl Richtlinie 1 als auch Richtlinie 2 die Auswirkung „deny“ verwenden, ändert sich die Situation folgendermaßen:
 
-- Jede Ressource, die sich bereits in Ressourcengruppe B und nicht am Standort „USA, Osten“ befindet, wird gemäß Richtlinie 2 als nicht konform markiert.
-- Jede Ressource, die sich bereits in Ressourcengruppe B und nicht am Standort „USA, Westen“ befindet, wird gemäß Richtlinie 1 als nicht konform markiert.
+- Jede Ressource, die sich bereits in Ressourcengruppe B und nicht am Standort „USA, Osten“ befindet, ist gemäß Richtlinie 2 nicht konform.
+- Jede Ressource, die sich bereits in Ressourcengruppe B und nicht am Standort „USA, Westen“ befindet, ist gemäß Richtlinie 1 nicht konform.
 - Jede neue Ressource in Abonnement A, die nicht am Standort „USA, Westen“ erstellt wird, wird von Richtlinie 1 abgelehnt.
-- Jede neue Ressource in Abonnement A/Ressourcengruppe B würde abgelehnt werden (da die Standortbedingung nie sowohl für Richtlinie 1 als auch für Richtlinie 2 erfüllt werden kann).
+- Jede neue Ressource in Ressourcengruppe B von Abonnement A wird abgelehnt.
 
-Weil jede Zuweisung einzeln ausgewertet wird, ist es nicht möglich, dass eine Ressource aufgrund unterschiedlicher Bereiche „durch das Netz schlüpfen“ kann. Die Anwendung mehrerer oder sich überschneidender Richtlinien führt also **kumulativ zur stärksten Einschränkung**. Anders ausgedrückt: Eine Ressource, die Sie erstellen möchten, wird möglicherweise durch sich überschneidende oder konfliktverursachende Richtlinien blockiert (wie im obigen Beispiel, wenn sowohl Richtlinie 1 als auch Richtlinie 2 die Auswirkung „deny“ verwenden). Wenn die Ressource dennoch im Zielbereich erstellt werden soll, überprüfen Sie die Ausnahmen für jede Zuweisung, um sicherzustellen, dass die richtigen Richtlinien auf die richtigen Bereiche angewendet werden.
+Jede Zuweisung wird einzeln ausgewertet. Daher ist es nicht möglich, dass eine Ressource aufgrund unterschiedlicher Bereiche „durch das Netz schlüpfen“ kann. Die Anwendung mehrerer oder sich überschneidender Richtlinien führt **kumulativ zur stärksten Einschränkung**. Wenn beispielsweise sowohl Richtlinie 1 als auch Richtlinie 2 die Auswirkung „deny“ verwenden, wird eine Ressource durch sich überschneidende und konfliktverursachende Richtlinien blockiert. Wenn die Ressource dennoch im Zielbereich erstellt werden soll, überprüfen Sie die Ausnahmen für jede Zuweisung, um sicherzustellen, dass die richtigen Richtlinien auf die richtigen Bereiche angewendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele
+- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele.
 - Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](definition-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
 - Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
-- Entdecken Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
+- Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

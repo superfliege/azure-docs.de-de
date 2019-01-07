@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 48cb88b9815ba723d93c18caf63f33b50eea850c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e3ae11adf84e858429cba4643802300f7915a166
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011978"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412932"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 Mithilfe von Azure NetApp Files können Sie eine Momentaufnahme bei Bedarf für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
@@ -43,9 +43,9 @@ Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstel
 
 4. Geben Sie im Fenster „Neues Volume“ die folgenden Informationen für das neue Volume an:  
     * **Name**   
-        Geben Sie den Namen für das neu erstellte Volume an.  
+        Geben Sie den Namen für das Volume an, das Sie erstellen möchten.  
         
-        Der Name muss innerhalb einer Ressourcengruppe eindeutig sein. Er muss mindestens drei Zeichen umfassen.  Er darf alle alphanumerischen Zeichen enthalten.
+        Der Name muss innerhalb einer Ressourcengruppe eindeutig sein. Er muss mindestens drei Zeichen lang sein.  Er darf beliebige alphanumerische Zeichen enthalten.
 
     * **Dateipfad**     
         Geben Sie den Dateipfad an, der zum Erstellen des Exportpfads für das neue Volume verwendet wird. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
@@ -57,15 +57,19 @@ Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstel
     * **Kontingent**  
         Geben Sie die Menge an logischem Speicherplatz an, die dem Volume zugewiesen wird.  
 
-        Das Feld **Verfügbares Kontingent** zeigt die Menge an nicht verwendetem Speicherplatz im ausgewählten Kapazitätspool an, die Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.
+        Das Feld **Verfügbares Kontingent** zeigt den ungenutzten Speicherplatz im ausgewählten Kapazitätspool an, den Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.
 
     *   **Virtuelles Netzwerk**  
-        Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten. 
-        
-        Das angegebene Vnet muss für Azure NetApp Files konfiguriert sein. Auf den Azure NetApp Files-Dienst kann nur von einem Vnet aus zugegriffen werden, das sich am gleichen Speicherort wie das Volume befindet.  
+        Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten.  
+        Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Auf den Azure NetApp Files-Dienst kann nur vom gleichen VNET aus oder per VNET-Peering von einem VNET aus zugegriffen werden, das sich in der gleichen Region befindet wie das Volume. Sie können auch über ExpressRoute von Ihrem lokalen Netzwerk aus auf das Volume zugreifen. 
 
-    ![Wiederhergestelltes neues Volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-    
+    * **Subnetz**  
+        Geben Sie das Subnetz an, das Sie für das Volume verwenden möchten.  
+        Das von Ihnen angegebene Subnetz muss an den Azure NetApp Files-Dienst delegiert werden. Sie können ein neues Subnetz erstellen, indem Sie **Neu erstellen** unter dem Feld „Subnetz“ auswählen.  
+<!--
+    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
+-->
+
 5. Klicken Sie auf **OK**.   
     Das neue Volume, auf dem die Momentaufnahme wiederhergestellt wurde, wird auf dem Blatt „Volumes“ angezeigt.
 

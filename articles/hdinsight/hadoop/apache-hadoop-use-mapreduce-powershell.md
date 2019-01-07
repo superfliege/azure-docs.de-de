@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 753a0ad72e1d4b60a93daa570ceecc25d21bb228
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634140"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436261"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von PowerShell
 
@@ -26,7 +26,7 @@ Dieses Dokument enthält ein Beispiel zur Verwendung von Azure PowerShell zum Au
 
 * **Einen Azure HDInsight-Cluster (Hadoop in HDInsight)**
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Eine Arbeitsstation mit Azure PowerShell**.
@@ -43,9 +43,9 @@ Die folgenden Cmdlets werden zum Ausführen der MapReduce-Aufträge in einem HDI
 
 * **Start-AzureRmHDInsightJob**: Sendet die Auftragsdefinition an HDInsight und startet den Auftrag. Ein *Auftragsobjekt* wird zurückgegeben.
 
-* **Wait-AzureRmHDInsightJob**: verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
+* **Wait-AzureRmHDInsightJob**: Verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
 
-* **Get-AzureRmHDInsightJobOutput**: Wird zum Abrufen der Ausgabe des Auftrags verwendet.
+* **Get-AzureRmHDInsightJobOutput**: Wird verwendet, um die Ausgabe des Auftrags abzurufen.
 
 Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines Auftrags in einem HDInsight-Cluster verwendet werden.
 
@@ -73,7 +73,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 
     Diese Ausgabe gibt an, dass der Auftrag erfolgreich abgeschlossen wurde.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Wenn sich für **ExitCode** ein anderer Wert als 0 ergibt, finden Sie weitere Informationen unter [Troubleshooting](#troubleshooting).
 
     In diesem Beispiel werden außerdem die heruntergeladenen Dateien in der Datei **output.txt** in dem Verzeichnis gespeichert, von dem aus Sie das Skript ausführen.
@@ -82,7 +82,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 
 Öffnen Sie die Datei **output.txt** in einem Texteditor, um die von dem Auftrag erzeugten Wörter und Zählerstände anzuzeigen.
 
-> [!NOTE]
+> [!NOTE]  
 > Die Ausgabedateien eines MapReduce-Auftrags sind unveränderlich. Wenn Sie dieses Beispiel erneut ausführen, müssen Sie daher den Namen der Ausgabedatei ändern.
 
 ## <a id="troubleshooting"></a>Problembehandlung
@@ -113,5 +113,5 @@ Allgemeine Informationen zu MapReduce-Aufträgen in HDInsight:
 
 Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
-* [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
+* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)

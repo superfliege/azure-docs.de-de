@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005392"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384195"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
 Erfahren Sie, wie Sie Ihr HDInsight-Cluster mit Bash-Skripts anpassen können. Mit Skriptaktionen können Sie HDInsight während oder nach der Erstellung eines Clusters anpassen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-are-script-actions"></a>Was sind Skriptaktionen?
@@ -43,7 +43,7 @@ Weitere Informationen zur Verwendung dieser Methoden zum Anwenden von Skriptakti
 
 Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln, sollten Sie mehrere bewährte Methoden beachten:
 
-* [Auswählen der Hadoop-Version](#bPS1)
+* [Auswählen der Apache Hadoop-Version](#bPS1)
 * [Auswählen der Betriebssystemversion](#bps10)
 * [Einrichten stabiler Verknüpfungen mit Skriptressourcen](#bPS2)
 * [Verwenden vorkompilierter Ressourcen](#bPS4)
@@ -54,10 +54,10 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 * [Speichern von Dateien im ASCII-Format mit LF-Zeilenenden](#bps8)
 * [Verwenden von Wiederholungsversuchlogik zum Wiederherstellen bei vorübergehenden Fehlern](#bps9)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen sein, andernfalls schlägt der Prozess fehl. Während der Knotenbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
 
-### <a name="bPS1"></a>Auswählen der Hadoop-Version
+### <a name="bPS1"></a>Auswählen der Apache Hadoop-Version
 
 In den verschiedenen HDInsight-Versionen sind unterschiedliche Versionen von Hadoop-Diensten und Hadoop-Komponenten installiert. Wenn bei Ihrem Skript eine bestimmte Version eines Diensts oder einer Komponente vorausgesetzt wird, sollten Sie das Skript nur mit der HDInsight-Version verwenden, die die erforderlichen Komponenten enthält. Informationen zu den in HDInsight enthaltenen Komponentenversionen finden Sie im Dokument [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen](hdinsight-component-versioning.md) .
 
@@ -110,7 +110,7 @@ Das Skript und die damit verknüpften Ressourcen müssen während des gesamten L
 
 Die bewährte Methode ist das Herunterladen und Archivieren aller Daten in einem Azure-Speicherkonto Ihres Abonnements.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Bei dem verwendeten Speicherkonto muss es sich um das Standardspeicherkonto des Clusters oder um einen öffentlichen, schreibgeschützten Container eines anderen Speicherkontos handeln.
 
 Die von Microsoft bereitgestellten Beispiele sind beispielsweise im Speicherkonto [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) gespeichert. Bei diesem Speicherort handelt es sich um einen öffentlichen, schreibgeschützten Container, der vom HDInsight-Team verwaltet wird.
@@ -129,12 +129,12 @@ Ein Skript, dass Konfigurationsdateien modifiziert, sollte z.B. keine doppelten 
 
 Linux-basierte HDInsight-Cluster stellen zwei Hauptknoten bereit, die im Cluster aktiv sind. Skriptaktionen werden auf beiden Knoten ausgeführt. Wenn die von Ihnen installierten Komponenten nur einen Hauptknoten erwarten, installieren Sie die Komponenten nicht auf beiden Hauptknoten.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Dienste, die im Rahmen von HDInsight bereitgestellt werden, wurden entwickelt, um bei Bedarf ein Failover zwischen den beiden Hauptknoten auszuführen. Diese Funktion gilt nicht für benutzerdefinierte Komponenten, die mit Skriptaktionen installiert wurden. Wenn Sie Hochverfügbarkeit für benutzerdefinierte Komponenten benötigen, müssen Sie Ihren eigenen Failovermechanismus implementieren.
 
 ### <a name="bPS6"></a>Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher
 
-Die Komponenten, die Sie auf dem Cluster installieren, sind möglicherweise standardmäßig so konfiguriert, dass sie den HDFS-Speicher (Hadoop Distributed File System) verwenden. HDInsight verwendet als Standardspeicher entweder Azure Storage oder Azure Data Lake Store. Diese bieten ein mit HDFS kompatibles Dateisystem, das Daten auch dann beibehält, wenn der Cluster gelöscht wird. Möglicherweise müssen Sie die Komponenten, die Sie installieren, so konfigurieren, dass sie WASB oder ADL anstelle von HDFS verwenden.
+Die Komponenten, die Sie auf dem Cluster installieren, sind möglicherweise standardmäßig so konfiguriert, dass sie den HDFS-Speicher (Apache Hadoop Distributed File System) verwenden. HDInsight verwendet als Standardspeicher entweder Azure Storage oder Azure Data Lake Store. Diese bieten ein mit HDFS kompatibles Dateisystem, das Daten auch dann beibehält, wenn der Cluster gelöscht wird. Möglicherweise müssen Sie die Komponenten, die Sie installieren, so konfigurieren, dass sie WASB oder ADL anstelle von HDFS verwenden.
 
 Für die meisten Vorgänge müssen Sie das Dateisystem nicht angeben. Mit dem folgenden Code wird beispielsweise die Datei „giraph-examples.jar“ aus dem lokalen Dateisystem in den Clusterspeicher kopiert:
 
@@ -148,8 +148,8 @@ In diesem Beispiel verwendet der Befehl `hdfs` auf transparente Weise den Standa
 
 HDInsight protokolliert Skriptausgaben, die in STDOUT oder STDERR geschrieben werden. Diese Informationen können Sie mit der Ambari-Webbenutzeroberfläche anzeigen.
 
-> [!NOTE]
-> Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden, und ein Fehler bei der Erstellung auftritt, finden Sie im Abschnitt zur Problembehandlung unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
+> [!NOTE]  
+> Apache Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden, und ein Fehler bei der Erstellung auftritt, finden Sie im Abschnitt zur Problembehandlung unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
 
 Die meisten Dienstprogramme und Installationspakete schreiben bereits Informationen in STDOUT und STDERR. Möglicherweise möchten Sie jedoch weitere Protokollierungsinformationen hinzufügen. Verwenden Sie `echo`, um Text an STDOUT zu senden. Beispiel: 
 
@@ -278,16 +278,16 @@ Skripts zum Anpassen eines Clusters müssen an einem der folgenden Speicherorte 
 
 * Ein __öffentlich lesbarer URI__ Beispielsweise eine Daten-URL, die in OneDrive, Dropbox oder in einem anderen Dateihostingdienst gespeichert ist
 
-* __Azure Data Lake Store__-Konto, das dem HDInsight-Cluster zugeordnet ist Weitere Informationen zur Verwendung von Azure Data Lake Store mit HDInsight finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Azure Data Lake Store__-Konto, das dem HDInsight-Cluster zugeordnet ist Weitere Informationen zur Verwendung von Azure Data Lake Store mit HDInsight finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Store genutzt wird, muss über Lesezugriff auf das Skript verfügen.
 
 Vom Skript verwendete Ressourcen müssen ebenfalls öffentlich verfügbar sein.
 
 Durch das Speichern von Dateien in einem Azure-Speicherkonto oder in Azure Data Lake Store erhalten Sie schnellen Zugriff, da sich beide innerhalb des Azure-Netzwerks befinden.
 
-> [!NOTE]
+> [!NOTE]  
 > Das URI-Format zum Verweisen auf das Skript unterscheidet sich je nach dem verwendeten Dienst. Verwenden Sie für Speicherkonten, die dem HDInsight-Cluster zugeordnet sind, `wasb://` oder `wasbs://`. Verwenden Sie für öffentlich lesbare URIs `http://` oder `https://`. Verwenden Sie für Data Lake Store `adl://`.
 
 ### <a name="checking-the-operating-system-version"></a>Überprüfen der Betriebssystemversion
@@ -332,8 +332,8 @@ Weitere Informationen zur Verwendung jeder Methode finden Sie unter [Anpassen Li
 Microsoft bietet Beispielskripts für die Installation von Komponenten in einem HDInsight-Cluster. Unter folgenden Links finden Sie weitere Beispiele für Skriptaktionen.
 
 * [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md)
-* [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md)
-* [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)
+* [Installieren und Verwenden von Apache Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md)
+* [Installieren und Verwenden von Apache Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)
 * [Installieren oder Aktualisieren von Mono in HDInsight](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -342,13 +342,13 @@ Bei der Verwendung der von Ihnen entwickelten Skripts können die folgenden Fehl
 
 **Fehler**: `$'\r': command not found`. Manchmal gefolgt von `syntax error: unexpected end of file`.
 
-*Ursache*: Dieser Fehler tritt auf, wenn die Zeilen in einem Skript mit CR-LF enden. In UNIX-Systemen wird als Zeilenende nur LF erwartet.
+*Ursache:* Dieser Fehler tritt auf, wenn die Zeilen in einem Skript mit CR-LF enden. In UNIX-Systemen wird als Zeilenende nur LF erwartet.
 
 Dieses Problem tritt am häufigsten auf, wenn das Skript in einer Windows-Umgebung erstellt wird, da CR-LF in vielen Text-Editoren unter Windows als gängiges Zeilenende verwendet wird.
 
-*Lösung*: Wenn Ihr Text-Editor über die entsprechende Option verfügt, wählen Sie UNIX als Format oder LF für das Zeilenende aus. In einem UNIX-System können Sie außerdem die folgenden Befehle verwenden, um CR-LF in LF zu ändern:
+*Lösung:* Wenn Ihr Text-Editor über die entsprechende Option verfügt, wählen Sie UNIX als Format oder LF für das Zeilenende aus. In einem UNIX-System können Sie außerdem die folgenden Befehle verwenden, um CR-LF in LF zu ändern:
 
-> [!NOTE]
+> [!NOTE]  
 > Mit den folgenden annähernd gleichwertigen Befehlen sollten sich die CR-LF-Zeilenenden in LF ändern lassen. Wählen Sie einen Befehl entsprechend den in Ihrem System verfügbaren Dienstprogrammen aus.
 
 | Get-Help | Notizen |
@@ -360,9 +360,9 @@ Dieses Problem tritt am häufigsten auf, wenn das Skript in einer Windows-Umgebu
 
 **Fehler**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*Ursache*: Dieser Fehler tritt auf, wenn das Skript im Format UTF-8 mit einer Bytereihenfolge-Marke (BOM) gespeichert wurde.
+*Ursache:* Dieser Fehler tritt auf, wenn das Skript im Format UTF-8 mit einer Bytereihenfolge-Marke (BOM) gespeichert wurde.
 
-*Lösung*: Speichern Sie die Datei entweder im ASCII-Format oder im UTF-8-Format ohne Bytereihenfolge-Marke. In einem Linux- oder UNIX-System können Sie auch mit dem folgenden Befehl eine Datei ohne Bytereihenfolge-Marke (BOM) erstellen:
+*Lösung:* Speichern Sie die Datei entweder im ASCII-Format oder im UTF-8-Format ohne Bytereihenfolge-Marke. In einem Linux- oder UNIX-System können Sie auch mit dem folgenden Befehl eine Datei ohne Bytereihenfolge-Marke (BOM) erstellen:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

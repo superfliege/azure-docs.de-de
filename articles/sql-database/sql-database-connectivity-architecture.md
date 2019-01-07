@@ -1,6 +1,6 @@
 ---
-title: Verbindungsarchitektur von Azure SQL-Datenbank | Microsoft-Dokumentation
-description: In diesem Artikel wird die Verbindungsarchitektur von Azure-SQL-Datenbank von Azure aus oder von außerhalb von Azure erläutert.
+title: Weiterleiten des Azure-Datenverkehrs an Azure SQL-Datenbank und SQL Data Warehouse | Microsoft-Dokumentation
+description: In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse von innerhalb und von außerhalb von Azure erläutert.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,66 +11,77 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/02/2018
-ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/13/2018
+ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978400"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435717"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank
+# <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
-In diesem Artikel wird die Verbindungsarchitektur der Azure SQL-Datenbank erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL-Datenbank leiten. Diese Verbindungskomponenten von Azure SQL-Datenbank leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an die Azure-Datenbank. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können.
+In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL leiten. Diese Verbindungskomponenten leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an Azure SQL-Datenbank und SQL Data Warehouse. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können.
+
+> [!IMPORTANT]
+> **[Bevorstehende Änderung] Bei Dienstendpunktverbindungen mit Azure SQL-Servern ändert sich das Verbindungsverhalten `Default` in `Redirect`.**
+>
+> Die Änderung ist für die Regionen „Brasilien, Süden“ und „Europa, Westen“ bereits ab dem 10. November 2019 gültig. Für alle anderen Regionen tritt die Änderung am 2. Januar 2019 in Kraft.
+>
+> Um zu verhindern, dass infolge dieser Änderung Verbindungen über einen Dienstendpunkt in bestehenden Umgebungen unterbrochen werden, setzen wir Telemetrie für folgende Zwecke ein:
+> - Bei Servern, bei denen wir feststellen, dass der Zugriff darauf vor der Änderung über Dienstendpunkte erfolgte, wird der Verbindungstyp in `Proxy` geändert.
+> - Bei allen anderen Servern wird der Verbindungstyp in `Redirect` geändert.
+>
+> In folgenden Szenarien können Dienstendpunktbenutzer dennoch betroffen sein: 
+> - Eine Anwendung stellt nur selten eine Verbindung mit einem vorhandenen Server her, sodass die Informationen zu diesen Anwendungen nicht mithilfe der Telemetrie erfasst wurden. 
+> - Die automatisierte Bereitstellungslogik erstellt einen logischen Server unter der Annahme, dass das Standardverhalten für Dienstendpunktverbindungen `Proxy` ist. 
+>
+> Wenn Dienstendpunktverbindungen mit Azure SQL-Server nicht hergestellt werden konnten und Sie vermuten, dass Sie von dieser Änderung betroffen sind, stellen Sie sicher, dass der Verbindungstyp explizit auf `Redirect` festgelegt ist. In diesem Fall müssen Sie VM-Firewallregeln und Netzwerksicherheitsgruppen (NSG) für alle Azure-IP-Adressen in der Region öffnen, die zum SQL-[Diensttag](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 12000 gehören. Wenn dies für Sie keine eine Option ist, schalten Sie den Server explizit auf `Proxy` um.
+
+> [!NOTE]
+> Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
 
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 
 Das folgende Diagramm bietet einen allgemeinen Überblick über die Verbindungsarchitektur von Azure SQL-Datenbank.
 
-![Architekturübersicht](./media/sql-database-connectivity-architecture/architecture-overview.png)
+![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-In den folgenden Schritte wird beschrieben, wie eine Verbindung zu einer Azure SQL-Datenbank mithilfe des Software Load Balancers (SLB) von Azure SQL-Datenbank und des Gateways von Azure SQL-Datenbank hergestellt wird.
+In den folgenden Schritten wird das Herstellen einer Verbindung mit einer Azure SQL-Datenbank beschrieben:
 
-- Clients stellen eine Verbindung mit dem SLB her, der über eine öffentliche IP-Adresse verfügt und an Port 1433 lauscht.
-- Der SLB leitet Datenverkehr an das Gateway der Azure SQL-Datenbank weiter.
-- Je nach effektiver Verbindungsrichtlinie leitet das Gateway den Datenverkehr an die richtige Proxymiddleware um oder fungiert als Proxy.
-- Die Proxymiddleware leitet den Datenverkehr an die entsprechende Azure SQL-Datenbank weiter.
-
-> [!IMPORTANT]
-> In jede dieser Komponenten ist Denial-of Service-Schutz (DDoS) auf Ebene des Netzwerks und der App integriert.
+- Clients stellen eine Verbindung mit dem Gateway her, das über eine öffentliche IP-Adresse verfügt und an Port 1433 lauscht.
+- Je nach effektiver Verbindungsrichtlinie leitet das Gateway den Datenverkehr an den richtigen Datenbankcluster um oder fungiert als Proxy.
+- Innerhalb des Datenbankclusters wird der Datenverkehr an die entsprechende Azure SQL-Datenbank weitergeleitet.
 
 ## <a name="connection-policy"></a>Verbindungsrichtlinie
 
 Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbindungsrichtlinie für einen SQL-Datenbankserver:
 
-- **Umleiten (empfohlen)**: Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region zulassen (verwenden Sie Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags)) – nicht nur für IP-Adressen des Azure SQL-Datenbankgateways. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
-- **Proxy**: In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbankgateways hergestellt. Zum Aktivieren der Konnektivität müssen Clients über ausgehende Firewallregeln verfügen, die nur die IP-Adressen des Azure SQL-Datenbankgateways zulassen (i.d.R. zwei IP-Adressen pro Region). Dieser Modus kann je nach Workload höhere Latenzen und geringeren Durchsatz verursachen. Es wird empfohlen, die Verbindungsrichtlinie „Umleiten“ statt der Verbindungsrichtlinie „Proxy“ zu verwenden, um die niedrigste Latenz und den höchsten Durchsatz zu erzielen.
-- **Standard**: Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in „Proxy“ oder „Umleiten“. Die effektive Richtlinie hängt davon ab, ob Verbindungen innerhalb von Azure (Umleiten) oder außerhalb von Azure (Proxy) hergestellt werden.
+- **Umleiten (empfohlen):** Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region mithilfe von Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 12000 zulassen – nicht nur für IP-Adressen des Azure SQL-Datenbankgateways an Port 1433. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
+- **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbankgateways hergestellt. Zum Aktivieren der Konnektivität müssen Clients über ausgehende Firewallregeln verfügen, die nur die IP-Adressen des Azure SQL-Datenbankgateways zulassen (i.d.R. zwei IP-Adressen pro Region). Dieser Modus kann je nach Workload höhere Latenzen und geringeren Durchsatz verursachen. Es wird empfohlen, die Verbindungsrichtlinie `Redirect` statt der Verbindungsrichtlinie `Proxy` zu verwenden, um die niedrigste Latenz und den höchsten Durchsatz zu erzielen.
+- **Standard:** Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in `Proxy` oder `Redirect`. Die effektive Richtlinie hängt davon ab, ob Verbindungen innerhalb von Azure (`Redirect`) oder außerhalb von Azure (`Proxy`) hergestellt werden.
 
 ## <a name="connectivity-from-within-azure"></a>Verbindung aus Azure
 
-Wenn Sie in Azure eine Verbindung auf einem Server herstellen, der nach dem 10. November 2018 erstellt wurde, verfügen Ihre Verbindungen standardmäßig über die Verbindungsrichtlinie **Umleiten**. Die Verbindungsrichtlinie **Redirect** bedeutet, dass Verbindungen nach TCP-Sitzungen mit der Azure-Datenbank hergestellt werden. Anschließend wird die Clientsitzung an die Proxy-Middleware weitergeleitet. Dabei wird die virtuelle Ziel-IP von der des Gateways der Azure SQL-Datenbank in die der Proxy-Middleware geändert. Danach fließen alle nachfolgenden Pakete direkt über die Proxy-Middleware, wobei das Gateway für die Azure SQL-Datenbank umgangen wird. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
+Wenn Sie eine Verbindung aus Azure herstellen, verfügen Ihre Verbindungen standardmäßig über die Verbindungsrichtlinie `Redirect`. Die Verbindungsrichtlinie `Redirect` bedeutet, dass nach Aufbau der TCP-Sitzung mit Azure SQL-Datenbank die Clientsitzung an den richtigen Datenbankcluster umgeleitet wird. Dabei wird die virtuelle Ziel-IP von der des Gateways für Azure SQL-Datenbank in die des Clusters geändert. Danach fließen alle nachfolgenden Pakete direkt an den Cluster, wobei das Gateway von Azure SQL-Datenbank umgangen wird. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
 
-![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
-
-> [!IMPORTANT]
-> Wenn Sie den SQL-Datenbankserver vor dem 10. November 2018 erstellt haben, wurde Ihre Verbindungsrichtlinie explizit auf **Proxy** festgelegt. Beim Verwenden von Dienstendpunkten wird empfohlen, die Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht es nicht aus, ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbankgateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](../virtual-network/security-overview.md#service-tags).
+![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Verbindung von außerhalb von Azure
 
-Wenn Sie von außerhalb von Azure eine Verbindung herstellen, verfügen Ihre Verbindungen standardmäßig über die Verbindungsrichtlinie **Proxy**. Die Richtlinie **Proxy** bedeutet, dass die TCP-Sitzung über das Gateway von Azure SQL-Datenbank hergestellt wird, und dass alle nachfolgenden Pakete über das Gateway fließen. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
+Wenn Sie von außerhalb von Azure eine Verbindung herstellen, verfügen Ihre Verbindungen standardmäßig über die Verbindungsrichtlinie `Proxy`. Die Richtlinie `Proxy` bedeutet, dass die TCP-Sitzung über das Gateway von Azure SQL-Datenbank hergestellt wird und dass alle nachfolgenden Pakete über das Gateway fließen. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
 
-![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
+![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-Adressen vom Gateway von Azure SQL-Datenbank
 
-Zur Verbindung mit einer Azure SQL-Datenbank von einer lokalen Ressource aus müssen Sie ausgehenden Netzwerkdatenverkehr auf dem Gateway von Azure SQL-Datenbank für Ihre Azure-Region zulassen. Ihre Verbindungen erfolgen nur über das Gateway, wenn Sie eine Verbindung im Proxymodus herstellen. Dies ist die Standardeinstellung bei der Verbindung von lokalen Ressourcen aus.
+Zur Verbindung mit einer Azure SQL-Datenbank von einer lokalen Ressource aus müssen Sie ausgehenden Netzwerkdatenverkehr auf dem Gateway von Azure SQL-Datenbank für Ihre Azure-Region zulassen. Ihre Verbindungen erfolgen nur über das Gateway, wenn Sie eine Verbindung im `Proxy`-Modus herstellen. Dies ist die Standardeinstellung bei der Verbindung von lokalen Ressourcen aus.
 
 Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gateways von Azure SQL-Datenbank für alle Datenregionen. Für einige Regionen gibt es zwei IP-Adressen. In diesen Regionen ist die primäre IP-Adresse die aktuelle IP-Adresse des Gateways, und die zweite IP-Adresse ist eine Failover-IP-Adresse. Die Failoveradresse ist die Adresse, wohin wir möglicherweise Ihren Server verschieben, um die Verfügbarkeit des Dienst hoch zu halten. Für diese Regionen wird empfohlen, dass Sie ausgehenden Verkehr an beide IP-Adressen zulassen. Die zweite IP-Adresse ist Eigentum von Microsoft und belauscht keine Dienste von Azure SQL-Datenbank. Dies macht sie erst, wenn Sie zulassen, dass Azure SQL-Datenbank Verbindungen annimmt.
 
 | Name der Region | Primäre IP-Adresse | Sekundäre IP-Adresse |
 | --- | --- |--- |
-| Australien, Osten | 191.238.66.109 | 13.75.149.87 |
+| Australien (Osten) | 13.75.149.87 | 40.79.161.1 |
 | Australien, Südosten | 191.239.192.109 | 13.73.109.251 |
 | Brasilien Süd | 104.41.11.5 | |
 | Kanada, Mitte | 40.85.224.249 | |
@@ -82,7 +93,7 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | China, Norden 2 | 40.73.50.0 | |
 | Asien, Osten | 191.234.2.139 | 52.175.33.150 |
 | US, Osten 1 | 191.238.6.43 | 40.121.158.30 |
-| USA (Ost) 2 | 191.239.224.107 | 40.79.84.180 * |
+| USA, Osten 2 | 191.239.224.107 | 40.79.84.180 * |
 | Frankreich, Mitte | 40.79.137.0 | 40.79.129.1 |
 | Deutschland, Mitte | 51.4.144.100 | |
 | Deutschland, Nordosten | 51.5.144.179 | |
@@ -107,14 +118,14 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | USA, Westen 2 | 13.66.226.202 | |
 ||||
 
-\* **HINWEIS:** *USA (Ost) 2* verfügt auch über eine tertiäre IP-Adresse von `52.167.104.0`.
+\* **HINWEIS:** *USA, Osten 2* verfügt auch über eine tertiäre IP-Adresse von `52.167.104.0`.
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank
 
 Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbankserver zu ändern, verwenden Sie die [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
 
-- Wenn Ihre Verbindungsrichtlinie auf **Proxy** festgelegt ist, fließen alle Netzwerkpakete über das Gateway von Azure SQL-Datenbank. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr nur für Gateway-IPs von Azure SQL-Datenbank zu. Die Einstellung **Proxy** hat längere Wartezeiten als die Einstellung **Redirect**.
-- Wenn die Einstellung der Verbindungsrichtlinie **Redirect** ist, fließen alle Netzwerkpakete direkt an den Middleware-Proxy. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr an mehrere IP-Adressen zu.
+- Wenn Ihre Verbindungsrichtlinie auf `Proxy` festgelegt ist, fließen alle Netzwerkpakete über das Gateway von Azure SQL-Datenbank. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr nur für Gateway-IPs von Azure SQL-Datenbank zu. Die Einstellung `Proxy` hat längere Wartezeiten als die Einstellung `Redirect`.
+- Wenn die Einstellung der Verbindungsrichtlinie `Redirect` ist, fließen alle Netzwerkpakete direkt an den Datenbankcluster. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr an mehrere IP-Adressen zu.
 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>Skript zum Ändern der Verbindungseinstellungen über PowerShell
 
@@ -125,55 +136,17 @@ Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenb
 Das folgende PowerShell-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie ändern können.
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName <Subscription Name>
+# Get SQL Server ID
+$sqlserverid=(Get-AzureRmSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
 
-# Azure Active Directory ID
-$tenantId = "<Azure Active Directory GUID>"
-$authUrl = "https://login.microsoftonline.com/$tenantId"
+# Set URI
+$id="$sqlserverid/connectionPolicies/Default"
 
-# Subscription ID
-$subscriptionId = "<Subscription GUID>"
+# Get current connection policy
+(Get-AzureRmResource -ResourceId $id).Properties.connectionType
 
-# Create an App Registration in Azure Active Directory.  Ensure the application type is set to NATIVE
-# Under Required Permissions, add the API:  Windows Azure Service Management API
-
-# Specify the redirect URL for the app registration
-$uri = "<NATIVE APP - REDIRECT URI>"
-
-# Specify the application id for the app registration
-$clientId = "<NATIVE APP - APPLICATION ID>"
-
-# Logical SQL Server Name
-$serverName = "<LOGICAL DATABASE SERVER - NAME>"
-
-# Resource Group where the SQL Server is located
-$resourceGroupName= "<LOGICAL DATABASE SERVER - RESOURCE GROUP NAME>"
-
-
-# Login and acquire a bearer token
-$AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
-$result = $AuthContext.AcquireToken(
-"https://management.core.windows.net/",
-$clientId,
-[Uri]$uri,
-[Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Auto
-)
-
-$authHeader = @{
-'Content-Type'='application\json; '
-'Authorization'=$result.CreateAuthorizationHeader()
-}
-
-#Get current connection Policy
-Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method GET -Headers $authHeader
-
-#Set connection policy to Proxy
-$connectionType="Proxy" <#Redirect / Default are other options#>
-$body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
-
-# Apply Changes
-Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
+# Update connection policy
+Set-AzureRmResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skript zum Ändern der Verbindungseinstellungen über die Azure CLI
@@ -184,9 +157,8 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 Das folgende Skript für die Befehlszeilenschnittstelle veranschaulicht, wie Sie die Verbindungsrichtlinie ändern.
 
 ```azurecli-interactive
-<pre>
 # Get SQL Server ID
-sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
 
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
@@ -196,8 +168,6 @@ az resource show --ids $id
 
 # Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
-
-</pre>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,19 +1,20 @@
 ---
-title: Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten mit Azure Policy
+title: Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 description: In diesem Artikel wird das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy Schritt für Schritt beschrieben.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3c8fd185feff9a580e2d23926dcf60cb33121122
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242627"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312475"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 
@@ -29,7 +30,7 @@ Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 1. Aktualisieren Sie Ihr AzureRM-PowerShell-Modul auf die neueste Version. Weitere Informationen zur aktuellen Version finden Sie unter [Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 
-1. Registrieren Sie den Ressourcenanbieter „Policy Insights“ über Azure PowerShell, um sicherzustellen, dass Ihr Abonnement für den Ressourcenanbieter funktioniert. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des Vorgangs „Aktion registrieren“ für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu registrieren:
+1. Registrieren Sie den Ressourcenanbieter „Policy Insights“ über Azure PowerShell, um zu prüfen, ob Ihr Abonnement mit dem Ressourcenanbieter funktioniert. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des Vorgangs „Aktion registrieren“ für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu registrieren:
 
    ```azurepowershell-interactive
    Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'

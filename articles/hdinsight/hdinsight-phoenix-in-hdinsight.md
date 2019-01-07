@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: d86600dd000d3e9c71a38b632aa75e82239401dd
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 86b10d65ecaa52055244f3530f91c1cabbe219e0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104578"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435547"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix in HDInsight
 
-[Apache Phoenix](http://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [HBase](hbase/apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen per HBase verwenden. Phoenix nutzt im Hintergrund JDBC-Treiber, um Benutzern das Erstellen, Löschen und Ändern von SQL-Tabellen, -Indizes, -Sichten und -Sequenzen sowie das Durchführen des Upsert-Vorgangs für Zeilen einzeln oder als Massenvorgang zu ermöglichen. Für Phoenix wird anstelle von MapReduce die native NoSQL-Kompilierung verwendet, um Abfragen zu kompilieren und so basierend auf HBase die Erstellung von Anwendungen mit geringer Wartezeit zu ermöglichen. Phoenix fügt Coprozessoren hinzu, um das Ausführen von per Client bereitgestelltem Code im Adressraum des Servers zu unterstützen und den Code auszuführen, der den Daten beigefügt ist. Mit diesem Ansatz kann der Aufwand für die Datenübertragung zwischen Client und Server reduziert werden.
+[Apache Phoenix](http://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [Apache HBase](hbase/apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen per HBase verwenden. Phoenix nutzt im Hintergrund JDBC-Treiber, um Benutzern das Erstellen, Löschen und Ändern von SQL-Tabellen, -Indizes, -Sichten und -Sequenzen sowie das Durchführen des Upsert-Vorgangs für Zeilen einzeln oder als Massenvorgang zu ermöglichen. Für Phoenix wird anstelle von MapReduce die native NoSQL-Kompilierung verwendet, um Abfragen zu kompilieren und so basierend auf HBase die Erstellung von Anwendungen mit geringer Wartezeit zu ermöglichen. Phoenix fügt Coprozessoren hinzu, um das Ausführen von per Client bereitgestelltem Code im Adressraum des Servers zu unterstützen und den Code auszuführen, der den Daten beigefügt ist. Mit diesem Ansatz kann der Aufwand für die Datenübertragung zwischen Client und Server reduziert werden.
 
-Apache Phoenix eröffnet auch anderen Personen als Entwicklern die Nutzung von Big Data-Abfragen, indem anstelle einer Programmierung eine SQL-ähnliche Syntax eingesetzt wird. Im Gegensatz zu anderen Tools wie [Hive](hadoop/hdinsight-use-hive.md) und Spark SQL ist Phoenix stark für HBase optimiert. Der Vorteil für Entwickler ist die Möglichkeit zum Schreiben von äußerst leistungsfähigen Abfragen mit deutlich weniger Code.
+Apache Phoenix eröffnet auch anderen Personen als Entwicklern die Nutzung von Big Data-Abfragen, indem anstelle einer Programmierung eine SQL-ähnliche Syntax eingesetzt wird. Im Gegensatz zu anderen Tools wie [Hive](hadoop/hdinsight-use-hive.md) und Apache Spark SQL ist Phoenix stark für HBase optimiert. Der Vorteil für Entwickler ist die Möglichkeit zum Schreiben von äußerst leistungsfähigen Abfragen mit deutlich weniger Code.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 Wenn Sie eine SQL-Abfrage übermitteln, kompiliert Phoenix die Abfrage in native HBase-Aufrufe und führt den Scanvorgang (oder Plan) parallel aus, um eine Optimierung zu erzielen. Dank dieser Abstraktionsebene muss der Entwickler keine MapReduce-Aufträge schreiben und kann sich stattdessen auf die Geschäftslogik und den Workflow der Anwendung im Zusammenhang mit der Big Data-Speicherung für Phoenix konzentrieren.
@@ -122,7 +122,7 @@ CREATE TABLE Saltedweblogs (
     shippingamount DOUBLE NULL) SALT_BUCKETS=4;
 ```
 
-## <a name="enable-and-tune-phoenix-with-ambari"></a>Aktivieren und Optimieren von Phoenix mit Ambari
+## <a name="enable-and-tune-phoenix-with-apache-ambari"></a>Aktivieren und Optimieren von Phoenix mit Apache Ambari
 
 Ein HDInsight HBase-Cluster enthält die [Ambari-Benutzeroberfläche](hdinsight-hadoop-manage-ambari.md) zum Vornehmen von Konfigurationsänderungen.
 

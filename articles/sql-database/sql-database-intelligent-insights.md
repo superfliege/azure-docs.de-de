@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e8608782c71f8afc2ae32b16077cb26b5dcc6849
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 573e0dd1bae584b12cfd3859fe63d7ca20bb7b52
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976184"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278133"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung
 
@@ -87,7 +87,7 @@ Die Azure SQL-Analyselösung stellt neben Intelligent Insights-Diagnoseprotokoll
 > Schneller Einstieg: Am einfachsten legen Sie mit der Verwendung von Intelligent Insights los, indem Sie es zusammen mit der Azure SQL-Analyse verwenden. So erhalten Sie eine grafische Benutzeroberfläche für Probleme mit der Datenbankleistung. Fügen Sie die Azure SQL-Analyselösung aus dem Marketplace hinzu, erstellen Sie einen Arbeitsbereich in dieser Lösung, und konfigurieren Sie dann für jede Datenbank, für die Sie Intelligent Insights aktivieren möchten, auf dem Blatt mit den Diagnoseeinstellungen das Streamen des Protokolls „SQLInsights“ an den Arbeitsbereich der Azure SQL-Analyse.
 >
 
-Als Voraussetzung müssen Sie die Azure SQL-Analyse über den Marketplace Ihrem Azure-Portaldashboard hinzugefügt und einen Arbeitsbereich erstellt haben. Informationen hierzu finden Sie unter [Konfigurieren der Azure SQL-Analyse](../log-analytics/log-analytics-azure-sql.md#configuration).
+Als Voraussetzung müssen Sie die Azure SQL-Analyse über den Marketplace Ihrem Azure-Portaldashboard hinzugefügt und einen Arbeitsbereich erstellt haben. Informationen hierzu finden Sie unter [Konfigurieren der Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md#configuration).
 
 Um Intelligent Insights mit der Azure SQL-Analyse zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten so, dass sie an den Arbeitsbereich der Azure SQL-Analyse übertragen werden, den Sie im vorhergehenden Schritt erstellt haben. Informationen hierzu finden Sie unter [Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank](sql-database-metrics-diag-logging.md).
 
@@ -179,5 +179,5 @@ Wenn eine der überwachten kritischen Ausnahmen die vom System verwalteten absol
 
 - Erfahren Sie mehr über das [Behandeln von Problemen mit der Leistung von SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Erfahren Sie mehr über das Verwenden des [Intelligent Insights-Diagnoseprotokolls für die Leistung von SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md).
-- Erfahren Sie mehr über das [Überwachen von SQL-Datenbank mithilfe von SQL-Analyse](../log-analytics/log-analytics-azure-sql.md).
+- Erfahren Sie mehr über das [Überwachen von SQL-Datenbank mithilfe von SQL-Analyse](../azure-monitor/insights/azure-sql.md).
 - Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).

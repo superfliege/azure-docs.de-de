@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 43b3e293bf2990c953aeb2947b1113ee30175dee
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632814"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435514"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.
@@ -28,10 +28,9 @@ Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Hive konfigurie
 
 1. Stellen Sie über einen Browser eine Verbindung mit der Ranger-Administratoroberfläche her. Die URL lautet „https://&lt;Clustername>.azurehdinsight.net/Ranger/“.
 
-   > [!NOTE]
-   > Ranger verwendet andere Anmeldeinformationen als der Hadoop-Cluster. Stellen Sie die Verbindung mit der Ranger-Administratoroberfläche in einem neuen InPrivate-Browserfenster her, um zu verhindern, dass der Browser zwischengespeicherte Hadoop-Anmeldeinformationen verwendet.
-   >
-   >
+   > [!NOTE]  
+   > Ranger verwendet andere Anmeldeinformationen als der Apache Hadoop-Cluster. Stellen Sie die Verbindung mit der Ranger-Administratoroberfläche in einem neuen InPrivate-Browserfenster her, um zu verhindern, dass der Browser zwischengespeicherte Hadoop-Anmeldeinformationen verwendet.
+
 2. Melden Sie sich mit dem Domänenbenutzernamen und dem Kennwort des Clusteradministrators an:
 
     ![Startseite von HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
@@ -59,7 +58,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
 
      ![HDInsight ESP Ranger – Konfigurieren einer Hive-Richtlinie](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
-     > [!NOTE]
+     > [!NOTE]  
      > Wenn unter „Benutzer auswählen“ kein Domänenbenutzer eingetragen wird, warten Sie kurz, bis Ranger mit AAD synchronisiert wurde.
      >
      >
@@ -134,6 +133,6 @@ So testen Sie die zweite Richtlinie (read-hivesampletable-devicemake), die Sie i
 * Informationen zum Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket finden Sie unter [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md).
 * Informationen zur Verwaltung eines HDInsight-Clusters mit ESP finden Sie unter [Verwalten von HDInsight-Clustern mit ESP](apache-domain-joined-manage.md).
 * Informationen zum Ausführen von Hive-Abfragen per SSH für HDInsight-Cluster mit ESP finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
-* Informationen zum Verbinden von Hive unter Verwendung von Hive JDBC finden Sie unter [Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md).
-* Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Hive ODBC finden Sie unter [Verbinden von Excel über den Microsoft Hive ODBC-Treiber mit Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Power Query finden Sie unter [Verbinden von Excel mit Hadoop mithilfe von Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).
+* Informationen zum Verbinden von Hive unter Verwendung von Hive JDBC finden Sie unter [Herstellen einer Verbindung mit Apache Hive unter Azure HDInsight per Hive-JDBC-Treiber](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md).
+* Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Hive ODBC finden Sie unter [Verbinden von Excel über den Microsoft Hive ODBC-Treiber mit Apache Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+* Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Power Query finden Sie unter [Verbinden von Excel mit Apache Hadoop mithilfe von Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).

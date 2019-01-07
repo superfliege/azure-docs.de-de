@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 628ad256-7181-4a0d-9e68-4ed60c0f3f04
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 48f178a3316eb7232fad7d39b28aaa2fdcd77bff
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d4701143a24fdf89b1c61744a9661fffdbb61ed3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637865"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278048"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
@@ -28,7 +26,7 @@ Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analy
 Die REST-API für die Log Analytics-Suche ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. In diesem Dokument finden Sie Beispiele, in denen über eine PowerShell-Befehlszeile per [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Dies ist ein Open-Source-Befehlszeilentool, mit dem das Aufrufen der Azure Resource Manager-API vereinfacht wird. Die Verwendung von ARMClient und PowerShell ist eine von vielen Möglichkeiten, auf die Protokollsuch-API von Log Analytics zuzugreifen. Mit diesen Tools können Sie die RESTful-API von Azure Resource Manager für Aufrufe an Log Analytics-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API wird Ihnen Suchergebnisse im JSON-Format ausgeben, und Sie können die Suchergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Derzeit können Warnungen nur mit einer gespeicherten Suche in Log Analytics erstellt werden.  Weitere Informationen finden Sie unter [REST-API für die Log Analytics-Suche](../../log-analytics/log-analytics-queries.md) .
+Derzeit können Warnungen nur mit einer gespeicherten Suche in Log Analytics erstellt werden.  Weitere Informationen finden Sie unter [REST-API für die Log Analytics-Suche](../../azure-monitor/log-query/log-query-overview.md) .
 
 ## <a name="schedules"></a>Zeitpläne
 Eine gespeicherte Suche kann über einen oder mehrere Zeitpläne verfügen. Der Zeitplan definiert, wie oft die Suche durchgeführt wird und welches Zeitintervall für die Identifizierung der Kriterien verwendet wird.
@@ -102,7 +100,7 @@ Die Eigenschaften aller Aktionen sind in der folgenden Tabelle aufgeführt.  Unt
 ### <a name="retrieving-actions"></a>Abrufen von Aktionen
 
 > [!NOTE]
-> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 Verwenden Sie die Get-Methode, um alle Aktionen für einen Zeitplan abzurufen.
 
@@ -125,7 +123,7 @@ Das Anforderungsformat zum Erstellen einer neuen Aktion variiert je nach Aktivit
 ### <a name="deleting-actions"></a>Löschen von Aktionen
 
 > [!NOTE]
-> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 Verwenden Sie die Delete-Methode mit der Aktions-ID, um eine Aktion zu löschen.
 
@@ -146,7 +144,7 @@ Ein Zeitplan sollte nur über genau eine Warnungsaktion verfügen.  Warnungsakti
 | Webhookaktionen | Pushen von Daten von Warnungen zum gewünschten Dienst als JSON |Nicht erforderlich, wenn Warnungen auf Azure erweitert werden|
 
 > [!NOTE]
-> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md).
+> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../azure-monitor/platform/alerts-extend.md).
 
 #### <a name="thresholds"></a>Schwellenwerte
 Eine Warnungsaktion sollte nur über genau einen Schwellenwert verfügen.  Wenn die Ergebnisse einer gespeicherten Suche mit dem Schwellenwert in einer Aktion übereinstimmen, die der Suche zugeordnet ist, werden alle anderen Prozesse in dieser Aktion ausgeführt.  Eine Aktion kann einen Schwellenwert auch nur zu dem Zweck enthalten, dass sie mit Aktionen eines anderen Typs verwendet werden kann, die keine Schwellenwerte aufweisen.
@@ -249,7 +247,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Schwereg
 #### <a name="action-groups"></a>Aktionsgruppen
 Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für die Behandlung von Aktionen. Mit Aktionsgruppen können Sie Ihre Aktionen einmal angeben und die Aktionsgruppe dann mehreren Warnungen zuordnen. Dies gilt für sämtliche Bereiche in Azure, sodass Sie dieselbe Aktion nicht mehrmals deklarieren müssen. Aktionsgruppen unterstützen mehrere Aktionen – einschließlich E-Mails, SMS, Sprachanrufen, ITSM-Verbindungen, Automation-Runbooks, Webhook-URIs und anderen. 
 
-Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Runbook-Automatisierungsdetails und weitere Aktionen müssen zuerst in einer Aktivitätsgruppe definiert werden, bevor eine Warnung erstellt werden kann. Es ist möglich, im Portal [Aktionsgruppen aus Azure Monitor zu erstellen](../../monitoring-and-diagnostics/monitoring-action-groups.md) oder die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) zu verwenden.
+Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Runbook-Automatisierungsdetails und weitere Aktionen müssen zuerst in einer Aktivitätsgruppe definiert werden, bevor eine Warnung erstellt werden kann. Es ist möglich, im Portal [Aktionsgruppen aus Azure Monitor zu erstellen](../../azure-monitor/platform/action-groups.md) oder die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) zu verwenden.
 
 Um eine Zuordnung einer Aktionsgruppe zu einer Warnung hinzuzufügen, geben Sie die eindeutige Azure Resource Manager-ID der Aktionsgruppe in der Warnungsdefinition an. Im Folgenden finden Sie eine Beispieldarstellung:
 
@@ -317,7 +315,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordn
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Anpassen einer Webhook-Nutzlast für eine Aktionsgruppe
-Der über Aktionsgruppen gesendete Webhook für Log Analytics weist standardmäßig eine feste Struktur auf. Die JSON-Nutzlast kann jedoch durch Verwendung bestimmter unterstützter Variablen angepasst werden, um die Anforderungen des Webhook-Endpunkts zu erfüllen. Weitere Informationen finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](../../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md). 
+Der über Aktionsgruppen gesendete Webhook für Log Analytics weist standardmäßig eine feste Struktur auf. Die JSON-Nutzlast kann jedoch durch Verwendung bestimmter unterstützter Variablen angepasst werden, um die Anforderungen des Webhook-Endpunkts zu erfüllen. Weitere Informationen finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](../../azure-monitor/platform/alerts-log-webhook.md). 
 
 Die Details des angepassten Webhooks müssen mit den Details zur Aktionsgruppe gesendet werden. Sie werden auf alle in der Aktionsgruppe angegebenen Webhook-URIs angewendet, wie im Beispiel unten dargestellt.
 
@@ -355,7 +353,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordn
 Per E-Mail-Benachrichtigung werden E-Mails an einen oder mehrere Empfänger gesendet.  Sie enthalten die Eigenschaften, die in der folgenden Tabelle angegeben sind.
 
 > [!NOTE]
-> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie E-Mail-Benachrichtigungen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie E-Mail-Benachrichtigungen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
    
 
 | Eigenschaft | BESCHREIBUNG |
@@ -399,7 +397,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine E-Mail-A
 Bei Behebungen wird ein Runbook in Azure Automation gestartet, mit dem versucht wird, das von der Warnung identifizierte Problem zu korrigieren.  Sie müssen einen Webhook für das Runbook erstellen, das in der Aktion für die Problembehebung verwendet wird, und anschließend den URI in der WebhookUri-Eigenschaft angeben.  Wenn Sie diese Aktion mit dem Azure-Portal erstellen, wird automatisch ein neuer Webhook für das Runbook erstellt.
 
 > [!NOTE]
-> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie die Wartung mithilfe von Runbooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie die Wartung mithilfe von Runbooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 Behebungen enthalten die Eigenschaften, die in der folgenden Tabelle angegeben sind.
 
@@ -447,17 +445,18 @@ Unten ist ein vollständiges Beispiel zur Erstellung einer neuen E-Mail-Benachri
     $scheduleId     = "MySchedule"
     $thresholdId    = "MyThreshold"
     $actionId       = "MyEmailAction"
-
+    
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' }"
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/?api-version=2015-03-20 $scheduleJson
-
-    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }" armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
+    
+    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
+    armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
 
 #### <a name="webhook-actions"></a>Webhookaktionen
 Bei Webhookaktionen wird ein Prozess gestartet, indem eine URL aufgerufen und optional eine zu sendende Nutzlast bereitgestellt wird.  Diese Aktionen sind mit Aktionen zur Problembehebung vergleichbar. Sie sind aber für Webhooks bestimmt, mit denen andere Prozesse als Azure Automation-Runbooks aufgerufen werden können.  Außerdem verfügen sie über die zusätzliche Option zum Angeben einer Nutzlast, die für den Remoteprozess bereitgestellt wird.
 
 > [!NOTE]
-> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie Webhooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
+> Ab 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus Log Analytics](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen wie Webhooks nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure erweitert werden, können Sie über die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) Aktionen abrufen oder hinzufügen.
 
 
 Webhookaktionen verfügen nicht über einen Schwellenwert, sondern sollten stattdessen einem Zeitplan hinzugefügt werden, der über eine Warnungsaktion mit Schwellenwert verfügt.  
@@ -510,6 +509,6 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Webhooka
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die [REST-API zum Durchführen von Protokollsuchen](../../log-analytics/log-analytics-queries.md) in Log Analytics.
-* Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
+* Verwenden Sie die [REST-API zum Durchführen von Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics.
+* Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](../../azure-monitor/platform/alerts-unified-log.md).
 

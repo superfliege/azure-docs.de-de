@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632746"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407846"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -26,7 +26,7 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
 * Ein Linux-basierter Apache Hadoop-Cluster in HDInsight, Version 3.4 oder höher.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Aus einem Webbrowser
@@ -79,9 +79,9 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
    * `STORED AS TEXTFILE LOCATION`: Zeigt den Speicherort für die Daten an, und dass sie als Text gespeichert sind.
 
-   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte „t4“ den Wert „[ERROR]“ enthält.
+   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte t4 den Wert [ERROR] enthält.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
 
 5. Klicken Sie auf die Schaltfläche **Execute** (Ausführen) unter dem Arbeitsblatt, um die Abfrage zu starten. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
@@ -93,7 +93,7 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
     Sie können auf der Registerkarte **Logs** die vom Auftrag erstellten Protokollinformationen anzeigen.
 
-   > [!TIP]
+   > [!TIP]  
    > Im Dropdowndialogfeld **Save results** in der oberen linken Ecke des Abschnitts **Query Process Results** können Sie Ergebnisse herunterladen oder speichern.
 
 ### <a name="visual-explain"></a>Visuelle Erläuterung
@@ -106,7 +106,7 @@ Die Ansicht **Visuelle Erläuterung** der Abfrage kann das Verständnis des Abla
 
 Klicken Sie auf die Registerkarte **Tez** unter dem Arbeitsblatt, um die Tez-Benutzeroberfläche für die Abfrage anzuzeigen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tez wird nicht für die Auflösung aller Abfragen verwendet. Viele Abfragen können ohne Tez aufgelöst werden. 
 
 Wenn die Abfrage mit Tez aufgelöst wurde, wird der Directed Acyclic Graph (DAG) angezeigt. Wenn Sie den DAG für Abfragen anzeigen möchten, die Sie in der Vergangenheit ausgeführt haben, oder den Tez-Prozess debuggen möchten, verwenden Sie stattdessen die [Tez-Ansicht](../hdinsight-debug-ambari-tez-view.md) .
@@ -129,7 +129,7 @@ In der Registerkarte **Query** können Sie optional auch Abfragen speichern. Nac
 
 ![Abbildung der Registerkarte „Gespeicherte Abfragen“](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
-> [!TIP]
+> [!TIP]  
 > Gespeicherte Abfragen werden im Standard-Clusterspeicher gespeichert. Sie finden die gespeicherten Abfragen im Pfad `/user/<username>/hive/scripts`. Diese werden als Textdateien vom Typ `.hql` gespeichert.
 >
 > Wenn Sie den Cluster löschen, den Speicher jedoch beibehalten, können Sie die Abfragen mit einem Hilfsprogramm wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) oder Data Lake Storage-Explorer (aus dem [Azure-Portal](https://portal.azure.com)) abrufen.
@@ -165,8 +165,8 @@ Sie können die UDF dann in Ihrer Abfrage verwenden. Beispiel: `SELECT myawesome
 
 Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Sie in den folgenden Artikeln:
 
-* [Verwenden von Python mit Hive und Pig in HDInsight](python-udf-hdinsight.md)
-* [How to add a custom Hive UDF to HDInsight (in englischer Sprache)](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Verwenden von Python mit Apache Hive und Apache Pig in Azure HDInsight](python-udf-hdinsight.md)
+* [Hinzufügen einer benutzerdefinierten Apache Hive UDF zu HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive-Einstellungen
 
@@ -176,9 +176,9 @@ Sie können verschiedene Hive-Einstellungen ändern, z.B. die Ausführungs-Engin
 
 Allgemeine Informationen zu Hive in HDInsight:
 
-* [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
 
 Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
-* [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
+* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)

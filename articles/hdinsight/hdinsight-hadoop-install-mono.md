@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f51de6ded29f93d29dbf80dd68715f621b5cb06
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011033"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384614"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>Installieren oder Aktualisieren von Mono in HDInsight
 
@@ -52,7 +52,7 @@ Verwenden Sie beim Befolgen des Skriptaktionsdokuments den folgenden URI:
 
 Verwenden Sie die Versionsnummer im Feld __Parameter__, um die installierte Mono-Version anzugeben. Geben Sie z. B. `5.4` ein, um Mono 5.4 zu installieren.
 
-> [!NOTE]
+> [!NOTE]  
 > Wenn Sie HDInsight mit diesem Skript konfigurieren, markieren Sie das Skript als __Persisted__. Mit dieser Einstellung kann HDInsight das Skript auf Workerknoten anwenden, die über Skalierungsvorgänge hinzugefügt wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -60,8 +60,8 @@ Verwenden Sie die Versionsnummer im Feld __Parameter__, um die installierte Mono
 Sie haben erfahren, wie Sie eine bestimmte Version von Mono in HDInsight aktualisieren oder installieren. Weitere Informationen zur Verwendung von .NET-Anwendungen mit Mono in HDInsight finden Sie in den folgenden Dokumenten:
 
 * [Verwenden von .NET für Streaming-MapReduce in HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Verwenden von .NET mit Hive und Pig in HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [Entwickeln von C#-Lösungen mit Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Verwenden von .NET mit Apache Hive und Apache Pig in HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Entwickeln von C#-Lösungen mit Apache Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
 * [Migrieren von .NET-Lösungen zu Linux-basiertem HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
 Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).

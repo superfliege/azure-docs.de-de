@@ -9,31 +9,28 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 21c7b94f694e8a2cfe6abfd74bbc616ade5dad82
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f0d6c22d54de0486ad679f93343f0e7b208f21f4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008350"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384048"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Entwickeln von Script Action-Skripts für Windows-basierte HDInsight-Cluster
 Entwickeln von Skriptaktionsskripts für HDInsight Weitere Informationen zu Skriptaktionsskripts finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md). Der gleiche Artikel, der für den Linux-basierten HDInsight-Cluster verfasst wurde, befindet sich unter [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informationen zur Verwendung von Skriptaktionen mit Linux-basierten Clustern finden Sie unter [Entwickeln von Skriptaktionen mit HDInsight (Linux)](hdinsight-hadoop-script-actions-linux.md).
->
->
 
 
+Mit Skriptaktionen (Script Action) kann zusätzliche Software in einem Apache Hadoop-Cluster installiert oder die Konfiguration von in einem Cluster installierten Anwendungen geändert werden. Skriptaktionen sind Skripts, die auf Clusterknoten ausgeführt werden, wenn HDInsight-Cluster bereitgestellt sind. Sie werden dann ausgeführt, sobald die HDInsight-Konfiguration auf Knoten im Cluster abgeschlossen ist. Eine Skriptaktion wird mit Berechtigungen des Systemadministratorkontos ausgeführt und bietet umfassende Zugriffsrechte auf die Clusterknoten. Jeder Cluster kann mit einer Liste von Skriptaktionen bereitgestellt werden, die in der angegebenen Reihenfolge ausgeführt werden.
 
-Mit Skriptaktionen (Script Action) kann zusätzliche Software in einem Hadoop-Cluster installiert oder die Konfiguration von in einem Cluster installierten Anwendungen geändert werden. Skriptaktionen sind Skripts, die auf Clusterknoten ausgeführt werden, wenn HDInsight-Cluster bereitgestellt sind. Sie werden dann ausgeführt, sobald die HDInsight-Konfiguration auf Knoten im Cluster abgeschlossen ist. Eine Skriptaktion wird mit Berechtigungen des Systemadministratorkontos ausgeführt und bietet umfassende Zugriffsrechte auf die Clusterknoten. Jeder Cluster kann mit einer Liste von Skriptaktionen bereitgestellt werden, die in der angegebenen Reihenfolge ausgeführt werden.
-
-> [!NOTE]
+> [!NOTE]  
 > Möglicherweise erhalten Sie die folgende Fehlermeldung:
 >
-> System.Management.Automation.CommandNotFoundException; ExceptionMessage : The term 'Save-HDIFile' is not recognized as the name of a cmdlet, function, script file, or operable program (System.Management.Automation.CommandNotFoundException; ExceptionMessage : Der Begriff „Save-HDIFile“ wurde nicht als Name eines Cmdlets, einer Funktion, einer Skriptdatei oder eines ausführbaren Programms erkannt). Prüfen Sie die Schreibweise des Namens bzw. stellen Sie sicher, dass der Pfad korrekt angegeben wurde, und versuchen Sie es erneut.
+> System.Management.Automation.CommandNotFoundException; ExceptionMessage : Die Benennung 'Save-HDIFile' wurde nicht als Name eines Cmdlets, einer Funktion, einer Skriptdatei oder eines ausführbaren Programms erkannt. Prüfen Sie die Schreibweise des Namens bzw. stellen Sie sicher, dass der Pfad korrekt angegeben wurde, und versuchen Sie es erneut.
+> 
 > Die Ursache dafür ist, dass Sie die Hilfsmethoden nicht mit aufgenommen haben.  Informationen finden Sie unter [Hilfsmethoden für benutzerdefinierte Skripts](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
 >
 >
@@ -98,16 +95,16 @@ HDInsight verfügt über mehrere Skripts zum Installieren zusätzlicher Komponen
 
 | NAME | Skript |
 | --- | --- |
-| **Installieren von Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Siehe [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]. |
+| **Installieren von Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Siehe [Installieren und Verwenden von Apache Spark in HDInsight-Clustern][hdinsight-install-spark]. |
 | **Installieren von R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Siehe [Installieren und Verwenden von R in HDInsight-Clustern](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
-| **Installieren von Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md). |
-| **Installieren von Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md). |
-| **Vorabladen von Hive-Bibliotheken** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Siehe [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
+| **Installieren von Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Siehe [Installieren und Verwenden von Apache Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md). |
+| **Installieren von Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Siehe [Installieren und Verwenden von Apache Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md). |
+| **Vorabladen von Hive-Bibliotheken** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Siehe [Hinzufügen von Apache Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
 
 
 Skriptaktionen können über das Azure-Portal, Azure PowerShell oder das HDInsight .NET SDK bereitgestellt werden.  Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-cluster-customize].
 
-> [!NOTE]
+> [!NOTE]  
 > Die Beispielskripts funktionieren nur mit HDInsight-Clustern der Version 3.1 oder höher. Weitere Informationen zu HDInsight-Clusterversionen finden Sie unter [HDInsight-Clusterversionen](hdinsight-component-versioning.md).
 >
 >
@@ -157,25 +154,25 @@ Hier sind die Hilfsmethoden, die von diesem Skript bereitgestellt werden:
 ## <a name="best-practices-for-script-development"></a>Empfohlene Methoden für die Skriptentwicklung
 Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln, sollten Sie mehrere bewährte Methoden beachten:
 
-* Überprüfen der Hadoop-Version
+* Überprüfen Sie die Hadoop-Version.
 
     Nur HDInsight Version 3.1 (Hadoop 2.4) und höher unterstützen die Installation von benutzerdefinierten Komponenten in einem Cluster mithilfe von Skriptaktionen. Sie müssen im benutzerdefinierten Skript die Hilfsmethode **Get-HDIHadoopVersion** verwenden, um die Hadoop-Version zu überprüfen, bevor Sie mit anderen Aufgaben im Skript fortfahren können.
-* Einrichten stabiler Verknüpfungen mit Skriptressourcen
+* Stellen Sie stabile Verknüpfungen mit Skriptressourcen bereit.
 
     Benutzer müssen dafür sorgen, dass alle Skripts und anderen Artefakte, die bei der Anpassung eines Clusters verwendet werden, für die gesamte Nutzungsdauer des Clusters verfügbar bleiben und dass sich die Versionen dieser Dateien während dieses Zeitraums nicht ändern. Diese Ressourcen werden benötigt, wenn das Reimaging von Knoten im Cluster erforderlich ist. Die bewährte Methode ist das Herunterladen und Archivieren aller Daten in einem Speicherkonto, das der Benutzer steuert. Bei diesem Konto kann es sich um das Storage-Standardkonto oder um eines der zusätzlichen Storage-Konten handeln, die bei der Bereitstellung eines benutzerdefinierten Clusters angegeben wurden.
     In den benutzerdefinierten Spark- und R-Clusterbeispielen in der Dokumentation befindet sich beispielsweise eine lokale Kopie der Ressourcen im folgenden Storage-Konto: https://hdiconfigactions.blob.core.windows.net/.
-* Sicherstellen, dass das Clusteranpassungsskript idempotent ist
+* Stellen Sie sicher, dass das Clusteranpassungsskript idempotent ist.
 
     Sie müssen davon ausgehen, dass für die Knoten eines HDInsight-Clusters während der Lebensdauer des Clusters ein Reimaging durchgeführt wird. Das Clusteranpassungsskript wird immer dann ausgeführt, wenn für einen Cluster ein neues Abbild erstellt wird. Dieses Skript muss dahingehend idempotent sein, dass beim Erstellen eines neuen Images sichergestellt wird, dass der Cluster in denselben angepassten Status zurückgesetzt wird, in dem er sich befand, nachdem das Skript erstmals bei der Clustererstellung ausgeführt wurde. Beispiel: Wenn ein benutzerdefiniertes Skript bei der ersten Ausführung eine Anwendung in „D:\AppLocation“ installiert hat, muss das Skript bei nachfolgenden Ausführungen, wenn ein neues Image erstellt wird, prüfen, ob die Anwendung am Speicherort „D:\AppLocation“ vorhanden ist, ehe mit anderen Schritten im Skript fortgefahren wird.
-* Installieren benutzerdefinierter Komponenten am optimalen Speicherort
+* Installieren Sie benutzerdefinierte Komponenten am optimalen Speicherort.
 
     Wenn von Clusterknoten ein neues Image erstellt wird, können das Ressourcenlaufwerk C:\ und das Systemlaufwerk D:\ neu formatiert werden, wodurch es zu einem Verlust von Daten und auf diesen Laufwerken installierten Anwendungen kommen kann. Ein solcher Verlust kann auch eintreten, wenn ein zum Cluster gehörender Azure VM-Knoten ausfällt und durch einen neuen Knoten ersetzt wird. Sie können Komponenten auf Laufwerk D:/ oder im Verzeichnis "C:\apps" im Cluster installieren. Alle anderen Speicherorte auf Laufwerk C:\ sind reserviert. Geben Sie den Installationsort für Anwendungen oder Bibliotheken im Clusteranpassungsskript an.
-* Sicherstellen der Hochverfügbarkeit der Clusterarchitektur
+* Stellen Sie die Hochverfügbarkeit der Clusterarchitektur sicher.
 
     HDInsight hat eine Aktiv-Passiv-Architektur für Hochverfügbarkeit, in dem sich ein Hauptknoten im aktiven Modus (d.h. die HDInsight-Dienste werden ausgeführt) und der andere Hauptknoten im Standby-Modus (d.h. HDInsight-Dienste werden nicht ausgeführt) befindet. Die Knoten schalten zwischen aktivem und passivem Modus um, wenn die HDInsight-Dienste unterbrochen werden. Wenn eine Skriptaktion zur Installation von Diensten auf beiden Hauptknoten für Hochverfügbarkeit verwendet wird, ist der HDInsight-Failovermechanismus nicht in der Lage, für diese vom Benutzer installierten Dienste automatisch ein Failover durchzuführen. Daher müssen vom Benutzer installierte Dienste auf HDInsight-Hauptknoten, die hoch verfügbar sein sollen, im Aktiv-Passiv-Modus über ihren eigenen Failovermechanismus verfügen oder sich im Aktiv-Aktiv-Modus befinden.
 
     Ein HDInsight-Skriptaktionsbefehl wird auf beiden Hauptknoten ausgeführt, wenn die Hauptknotenrolle im *ClusterRoleCollection* -Parameter angegeben wird. Vergewissern Sie sich beim Entwurf eines benutzerdefinierten Skripts, dass Ihrem Skript diese Konfiguration bekannt ist. Sie sollten beispielsweise keine Probleme bekommen, wenn dieselben Dienste auf beiden Hauptknoten installiert und gestartet wurden und letztlich in Konkurrenz zueinander treten. Daten gehen auch beim Reimaging verloren, weshalb mithilfe von Skriptaktionen installierte Software bei solchen Ereignissen ausfallsicher sein muss. Anwendungen sollten so konzipiert sein, dass sie mit hoch verfügbaren Daten arbeiten können, die über viele Knoten verteilt werden. Für maximal 1/5 der Knoten eines Clusters kann gleichzeitig ein neues Image erstellt werden.
-* Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure Blob Storage
+* Konfigurieren Sie benutzerdefinierte Komponenten zur Verwendung von Azure Blob Storage.
 
     Die benutzerdefinierten Komponenten, die Sie auf den Clusterknoten installieren, sind möglicherweise standardmäßig so konfiguriert, dass sie den HDFS-Speicher (Hadoop Distributed File System) verwenden. Ändern Sie die Konfiguration, um stattdessen Azure Blob Storage zu verwenden. Cluster-Reimages werden mit dem HDFS-Dateisystem formatiert, sodass Sie alle darauf gespeicherten Daten verlieren würden. Mit Azure Blob Storage wird stattdessen sichergestellt, dass Ihre Daten erhalten bleiben.
 
@@ -297,9 +294,9 @@ Bei Auftreten eines Ausführungsfehlers enthält die Protokolldatei auch die bes
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion][hdinsight-cluster-customize]
-* [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]
-* [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md)
-* [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md)
+* [Installieren und Verwenden von Apache Spark in HDInsight-Clustern][hdinsight-install-spark]
+* [Installieren und Verwenden von Apache Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md)
+* [Installieren und Verwenden von Apache Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md)
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

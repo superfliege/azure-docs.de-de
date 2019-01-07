@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bf59dd7733864c345bbbb59b6236ae7b9a9c36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b49959d167dbb735ebb9be9c75e91ef257c6a70
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248305"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383832"
 ---
-# <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Beheben eines Fehlers vom Typ „Nicht genügend Hive-Arbeitsspeicher“ in Azure HDInsight
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Beheben eines Fehlers vom Typ „Nicht genügend Apache Hive-Arbeitsspeicher“ in Azure HDInsight
 
-Erfahren Sie, wie Sie einen Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“, der beim Verarbeiten großer Tabellen auftreten kann, durch Konfigurieren der Hive-Arbeitsspeichereinstellungen beheben.
+Erfahren Sie, wie Sie einen Fehler vom Typ „Nicht genügend Apache Hive-Arbeitsspeicher (OOM)“, der beim Verarbeiten großer Tabellen auftreten kann, durch Konfigurieren der Hive-Arbeitsspeichereinstellungen beheben.
 
 ## <a name="run-hive-query-against-large-tables"></a>Ausführen einer Hive-Abfrage für große Tabellen
 
@@ -52,7 +52,7 @@ Die Ausführung der Hive-Abfrage in einem HDInsight-A3-Cluster mit 24 Knoten dau
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-Bei Verwendung der Tez-Ausführungs-Engine. Die gleiche Abfrage wurde 15 Minuten ausgeführt, und dann wurde die folgende Fehlermeldung ausgegeben:
+Bei Verwendung der Apache Tez-Ausführungs-Engine. Die gleiche Abfrage wurde 15 Minuten ausgeführt, und dann wurde die folgende Fehlermeldung ausgegeben:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -101,11 +101,11 @@ In der Datei „hive-site.xml“ war **hive.auto.convert.join.noconditionaltask*
 
 Wahrscheinlich war „Map Join“ die Ursache für den Java-Heapspeicher-OOM-Fehler. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
 
-![Diagramm des Tez-Containerspeichers: Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Diagramm zum Tez-Containerspeicher: Fehler vom Typ „Nicht genügenden Hive-Arbeitsspeicher“](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
 Wie im Blogbeitrag schon erwähnt, definieren die folgenden zwei Einstellungen den Containerspeicher für den Heap: **hive.tez.container.size** und **hive.tez.java.opts**. Nach unserer Erfahrung bedeutet die Ausnahme „Nicht genügend Arbeitsspeicher“ nicht, dass der Container zu klein ist. Es bedeutet, dass der Java-Heap (hive.tez.java.opts) zu klein ist. Wenn Sie also eine Fehlermeldung vom Typ „Nicht genügend Arbeitsspeicher“ erhalten, können Sie versuchen, **hive.tez.java.opts** heraufzusetzen. Ggf. müsse Sie **hive.tez.container.size** heraufsetzen. Die Einstellung **java.opts** sollte ungefähr 80 Prozent von **container.size** betragen.
 
-> [!NOTE]
+> [!NOTE]  
 > Die Einstellung **hive.tez.java.opts** muss stets kleiner sein als **hive.tez.container.size**.
 > 
 > 
@@ -119,4 +119,4 @@ Mit den neuen Einstellungen wurde die Abfrage in weniger als 10 Minuten erfolgre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine OOM-Fehlermeldung zu erhalten, bedeutet nicht unbedingt, dass der Container zu klein ist. Konfigurieren Sie stattdessen die Einstellungen für den Arbeitsspeicher, sodass die Heapgröße erhöht wird und mindestens 80 % der Größe des Containerspeichers entspricht. Informationen zum Optimieren von Hive-Abfragen finden Sie unter [Optimieren von Hive-Abfragen für Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+Eine OOM-Fehlermeldung zu erhalten, bedeutet nicht unbedingt, dass der Container zu klein ist. Konfigurieren Sie stattdessen die Einstellungen für den Arbeitsspeicher, sodass die Heapgröße erhöht wird und mindestens 80 % der Größe des Containerspeichers entspricht. Informationen zum Optimieren von Hive-Abfragen finden Sie unter [Optimieren von Apache Hive-Abfragen für Apache Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md).

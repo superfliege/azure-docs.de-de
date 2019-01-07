@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: dd07ed66b630f541ed3e2001dffdebed150bb71a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443031"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338582"
 ---
 # <a name="traffic-analytics"></a>Datenverkehrsanalyse
 
@@ -39,11 +39,11 @@ Virtuelle Azure-Netzwerke bieten NSG-Datenflussprotokolle mit Informationen zum 
 
 ## <a name="key-components"></a>Wichtige Komponenten
 
-- **Netzwerksicherheitsgruppe (NSG):** enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken verbunden sind, zugelassen oder abgelehnt wird. NSGs können Subnetzen, einzelnen VMs (klassisch) oder einzelnen Netzwerkschnittstellen (NICs), die mit VMs (Resource Manager) verbunden sind, zugeordnet werden. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **NSG-Flussprotokolle (Netzwerksicherheitsgruppe):** Ermöglichen das Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe. Die NSG-Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, Fünf-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr. Weitere Informationen zu NSG-Flussprotokollen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics:** ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen, z.B. Netzwerkleistungsmonitor und die Datenverkehrsanalyse, werden auf der Grundlage von Log Analytics erstellt. Weitere Informationen finden Sie unter [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics-Arbeitsbereich:** Eine Instanz von Log Analytics, in der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Network Watcher:** ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md).
+- **Netzwerksicherheitsgruppe (NSG)**: Enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken verbunden sind, zugelassen oder abgelehnt wird. NSGs können Subnetzen, einzelnen VMs (klassisch) oder einzelnen Netzwerkschnittstellen (NICs), die mit VMs (Resource Manager) verbunden sind, zugeordnet werden. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **NSG-Flussprotokolle (Netzwerksicherheitsgruppe)**: Ermöglichen das Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe. Die NSG-Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, Fünf-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr. Weitere Informationen zu NSG-Flussprotokollen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
+- **Log Analytics**: Ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen, z.B. Netzwerkleistungsmonitor und die Datenverkehrsanalyse, werden auf der Grundlage von Log Analytics erstellt. Weitere Informationen finden Sie unter [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics-Arbeitsbereich**: Eine Instanz von Log Analytics, in der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Network Watcher**: Ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Funktionsweise der Datenverkehrsanalyse
 
@@ -291,9 +291,12 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
     ![Dashboard mit VNET-Verteilung](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Sie können in der Topologie des virtuellen Netzwerks auf dem oberen Menüband Parameter auswählen, z.B. für ein virtuelles Netzwerk (Verbindungen zwischen virtuellen Netzwerken/aktiv/inaktiv), externe Verbindungen, aktive Datenflüsse und bösartige Datenflüsse im virtuellen Netzwerk.
+- Sie können die Topologie des virtuellen Netzwerks nach Abonnements, Arbeitsbereichen, Ressourcengruppen und Zeitintervall filtern. Weitere Filter, die zum besseren Verständnis des Datenflusses beitragen, sind: Datenflusstyp (InterVNet, IntraVNET usw.), Datenflussrichtung (eingehend, ausgehend), Datenflussstatus (erlaubt, blockiert), VNETs (Ziel-VNET und verbundenes VNET), Verbindungstyp (Peering oder Gateway – P2S und S2S) und NSG. Mithilfe dieser Filter können Sie sich auf VNets konzentrieren, die Sie genauer untersuchen möchten.
 - In der Topologie des virtuellen Netzwerks wird die Verteilung des Datenverkehrs in einem virtuellen Netzwerk im Hinblick auf die Datenflüsse (erlaubt/blockiert/eingehend/ausgehend/gutartig/bösartig), das Anwendungsprotokoll und die Netzwerksicherheitsgruppen dargestellt. Beispiel:
 
     ![Topologie eines virtuellen Netzwerks mit der Verteilung des Datenverkehr und Details zum Datenfluss](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
+    
+    ![Topologie eines virtuellen Netzwerks auf oberster Ebene und weitere Filter](./media/traffic-analytics/virtual-network-filters.png)
 
     ![Details zum Datenfluss für die Verteilung des Datenverkehrs in einem virtuellen Netzwerk in der Protokollsuche](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
 

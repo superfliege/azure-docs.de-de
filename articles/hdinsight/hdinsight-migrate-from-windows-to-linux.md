@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3f0c912d1489884e0fef87e495d91486f3b1fc67
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010064"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437128"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
 
 In diesem Artikel erhalten Sie nähere Informationen zu den Unterschieden zwischen HDInsight unter Windows und Linux. Zudem enthält er Anweisungen zum Migrieren vorhandener Workloads zu einem Linux-basierten Cluster.
 
-Auch wenn Windows-basiertes HDInsight eine einfache Möglichkeit zur Verwendung von Hadoop in der Cloud darstellt, müssen Sie möglicherweise eine Migration zu einem Linux-basierten Cluster durchführen. Dies ist beispielsweise erforderlich, um Linux-basierte Tools und Technologien zu nutzen, die für Ihre Lösung erforderlich sind. Vieles im Hadoop-Ökosystem wird in Linux-basierten Systemen entwickelt. Einiges ist für die Nutzung mit HDInsight (Windows-basiert) möglicherweise nicht verfügbar. In vielen Büchern, Videos und anderem Trainingsmaterial wird davon ausgegangen, dass Sie beim Arbeiten mit Hadoop ein Linux-System verwenden.
+Auch wenn Windows-basiertes HDInsight eine einfache Möglichkeit zur Verwendung von Apache Hadoop in der Cloud darstellt, müssen Sie möglicherweise eine Migration zu einem Linux-basierten Cluster durchführen. Dies ist beispielsweise erforderlich, um Linux-basierte Tools und Technologien zu nutzen, die für Ihre Lösung erforderlich sind. Vieles im Hadoop-Ökosystem wird in Linux-basierten Systemen entwickelt. Einiges ist für die Nutzung mit HDInsight (Windows-basiert) möglicherweise nicht verfügbar. In vielen Büchern, Videos und anderem Trainingsmaterial wird davon ausgegangen, dass Sie beim Arbeiten mit Hadoop ein Linux-System verwenden.
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight-Cluster verwenden Ubuntu LTS-Versionen (Long-Term Support) als Betriebssystem für die Knoten im Cluster. Informationen zur Version von Ubuntu, die für HDInsight verfügbar ist, sowie weitere Informationen zu Versionen von Komponenten finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
 
 ## <a name="migration-tasks"></a>Migrationsaufgaben
@@ -82,7 +82,7 @@ Kopieren Sie anhand folgender Schritte Daten aus dem Produktionscluster in das T
     hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Wenn die Verzeichnisstruktur, die die Daten enthält, in der Testumgebung nicht existiert, können Sie diese mithilfe des folgenden Befehls erstellen:
 
     ```bash
@@ -97,7 +97,7 @@ Alternativ können Sie das Azure PowerShell-Cmdlet `Start-AzureStorageBlobCopy` 
 
 ## <a name="client-side-technologies"></a>Clientseitige Technologien
 
-Clientseitige Technologien, wie z.B. [Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs), die [klassische Azure CLI](../cli-install-nodejs.md) oder das [.NET SDK für Hadoop](https://hadoopsdk.codeplex.com/) funktionieren in Linux-basierten Clustern weiterhin. Diese Technologien basieren auf REST-APIs, die in beiden Cluster-Betriebssystemtypen identisch sind.
+Clientseitige Technologien wie [Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs), die [klassische Azure CLI](../cli-install-nodejs.md) oder das [.NET SDK für Apache Hadoop](https://hadoopsdk.codeplex.com/) funktionieren in Linux-basierten Clustern weiterhin. Diese Technologien basieren auf REST-APIs, die in beiden Cluster-Betriebssystemtypen identisch sind.
 
 ## <a name="server-side-technologies"></a>Serverseitige Technologien
 
@@ -110,7 +110,7 @@ Die folgende Tabelle enthält eine Hilfestellung zum Migrieren von serverseitige
 | **.NET-Komponenten** |.NET wird auf Linux-basierten HDInsight-Clustern über [Mono](https://mono-project.com) unterstützt. Weitere Informationen finden Sie unter [Migrieren von .NET-Lösungen in Linux-basiertes HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | **Win32-Komponenten oder andere reine Windows-Technologie** |Die Anleitung hängt von der Komponente oder der Technologie ab. Möglicherweise finden Sie eine mit Linux kompatible Version. Wenn dies nicht möglich ist, müssen Sie eine andere Lösung finden oder diese Komponente erneut schreiben. |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Das HDInsight-Verwaltungs-SDK ist nicht vollständig kompatibel mit Mono. Verwenden Sie es nicht in Lösungen, die für den HDInsight-Cluster bereitgestellt werden.
 
 ## <a name="cluster-creation"></a>Clustererstellung
@@ -133,7 +133,7 @@ Mit Linux-basierten Clustern verwendete **Skriptaktionen** müssen in Bash-Skrip
 
 Eine weitere Anpassungsfunktion ist **bootstrap**. Diese Funktion ermöglicht Ihnen, bei Windows-Clustern den Speicherort zusätzlicher Bibliotheken zum Verwenden mit Hive anzugeben. Diese Bibliotheken sind nach der Clustererstellung automatisch für die Verwendung mit Hive-Abfragen verfügbar, ohne dass `ADD JAR`verwendet werden muss.
 
-Die Bootstrap-Funktion für Linux-basierte Cluster bietet diese Funktionalität nicht. Verwenden Sie stattdessen eine Skriptaktion, wie in [Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md)beschrieben.
+Die Bootstrap-Funktion für Linux-basierte Cluster bietet diese Funktionalität nicht. Verwenden Sie stattdessen eine Skriptaktion, wie in [Hinzufügen von Apache Hive-Bibliotheken während der Erstellung des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md)beschrieben.
 
 ### <a name="virtual-networks"></a>Virtuelle Netzwerke
 
@@ -143,18 +143,18 @@ Weitere Informationen zu den Konfigurationsanforderungen finden Sie in der Dokum
 
 ## <a name="management-and-monitoring"></a>Verwaltung und Überwachung
 
-Viele der Web-Benutzeroberflächen, die Sie möglicherweise mit Windows-basiertem HDInsight verwendet haben, wie Job History (Auftragsverlauf) oder die Yarn-Benutzeroberfläche, sind über Ambari verfügbar. Darüber hinaus bietet die Ambari-Hive-Ansicht eine Möglichkeit zum Ausführen von Hive-Abfragen mithilfe Ihres Webbrowsers. Die Ambari-Webbenutzeroberfläche ist in Linux-basierten Clustern unter https://CLUSTERNAME.azurehdinsight.net verfügbar.
+Viele der Web-Benutzeroberflächen, die Sie möglicherweise mit Windows-basiertem HDInsight verwendet haben, wie Job History (Auftragsverlauf) oder die Yarn-Benutzeroberfläche, sind über Apache Ambari verfügbar. Darüber hinaus bietet die Ambari-Hive-Ansicht eine Möglichkeit zum Ausführen von Hive-Abfragen mithilfe Ihres Webbrowsers. Die Ambari-Webbenutzeroberfläche ist in Linux-basierten Clustern unter https://CLUSTERNAME.azurehdinsight.net verfügbar.
 
 Weitere Informationen zum Arbeiten mit Ambari finden Sie in den folgenden Dokumenten:
 
-* [Ambari-Web](hdinsight-hadoop-manage-ambari.md)
-* [Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Apache Ambari-Web](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 ### <a name="ambari-alerts"></a>Ambari-Warnungen
 
 Ambari verfügt über ein Warnsystem, das Sie über potenzielle Probleme mit dem Cluster informiert. Warnungen werden als rote oder gelbe Einträge in der Ambari-Webbenutzeroberfläche angezeigt, Sie können sie aber auch über die REST-API abrufen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ambari-Warnungen weisen darauf hin, dass *möglicherweise* ein Problem besteht, nicht, dass ein Problem *tatsächlich* besteht. Zum Beispiel erhalten Sie möglicherweise eine Warnung, dass der Zugriff auf HiveServer2 nicht möglich ist, obwohl Sie normal darauf zugreifen können.
 >
 > Viele Warnungen werden als intervallbasierte Abfragen bei einem Dienst implementiert und erwarten innerhalb eines bestimmten Zeitrahmens eine Antwort. Die Warnung bedeutet also nicht zwingend, dass der Dienst nicht verfügbar ist, sondern nur, dass im erwarteten Zeitrahmen keine Ergebnisse zurückgegeben wurden.
@@ -176,30 +176,30 @@ Im Allgemeinen sollten Sie, falls Sie den Namen der Datei kennen, in einer SSH-S
 
 Sie können auch Platzhalter mit dem Dateinamen verwenden. Beispiel: `find / -name *streaming*.jar 2>/dev/null` gibt den Pfad für alle JAR-Dateien zurück, die als Teil des Dateinamens das Wort „Streaming“ enthalten.
 
-## <a name="hive-pig-and-mapreduce"></a>Hive, Pig und MapReduce.
+## <a name="apache-hive-apache-pig-and-mapreduce"></a>Apache Hive, Apache Pig und MapReduce
 
 Pig- und MapReduce-Workloads sind auf Linux-basierten Clustern ähnlich. Linux-basierte HDInsight-Cluster können jedoch mit neueren Versionen von Hadoop, Hive und Pig erstellt werden. Diese Versionsunterschiede können Änderungen in der Funktionsweise vorhandener Lösungen mit sich bringen. Weitere Informationen zu den mit HDInsight bereitgestellten Versionen von Komponenten finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
 
 Linux-basiertes HDInsight bietet keine Remotedesktopfunktionen. Stattdessen können Sie SSH verwenden, um eine Remoteverbindung mit den Clusterhauptknoten herzustellen. Weitere Informationen finden Sie in den folgenden Dokumenten:
 
-* [Verwenden von Hive mit SSH](hdinsight-hadoop-use-hive-ssh.md)
-* [Verwenden von Pig mit SSH](hadoop/apache-hadoop-use-pig-ssh.md)
+* [Verwenden von Apache Hive mit SSH](hdinsight-hadoop-use-hive-ssh.md)
+* [Verwenden von Apache Pig mit SSH](hadoop/apache-hadoop-use-pig-ssh.md)
 * [Verwenden von MapReduce mit SSH](hadoop/apache-hadoop-use-mapreduce-ssh.md)
 
 ### <a name="hive"></a>Hive
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenn Sie einen externen Hive-Metastore verwenden, sollten Sie den Metastore vor der Verwendung mit Linux-basiertem HDInsight sichern. Linux-basiertes HDInsight wird mit neueren Versionen von Hive bereitgestellt, die möglicherweise Inkompatibilitäten mit in früheren Versionen erstellten Metastores aufweisen.
 
 Das folgende Diagramm enthält Hilfestellungen zum Migrieren Ihrer Hive-Workloads:
 
 | Auf Windows-basierten Clustern verwende ich ... | Auf Linux-basierten Clustern verwende ich ... |
 | --- | --- |
-| **Hive-Editor** |[Hive-Ansicht in Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md) |
-| `set hive.execution.engine=tez;` zum Aktivieren von Tez |Tez ist die Standard-Ausführungs-Engine für Linux-basierte Cluster. Die SET-Anweisung wird also nicht mehr benötigt. |
+| **Hive-Editor** |[Apache Hive-Ansicht in Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md) |
+| `set hive.execution.engine=tez;` zum Aktivieren von Tez |Apache Tez ist die Standard-Ausführungs-Engine für Linux-basierte Cluster. Die SET-Anweisung wird also nicht mehr benötigt. |
 | Benutzerdefinierte C#-Funktionen | Informationen zum Überprüfen von C#-Komponenten mit Linux-basiertem HDInsight finden Sie unter [Migrieren von .NET-Lösungen in Linux-basiertes HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | CMD-Dateien oder -Skripts auf dem Server, die als Teil eines Hive-Auftrags aufgerufen wurden |Verwenden von Bash-Skripts |
-| `hive` -Befehl von Remotedesktop |Verwenden von [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) oder [Hive in einer SSH-Sitzung](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` -Befehl von Remotedesktop |Verwenden von [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) oder [Apache Hive in einer SSH-Sitzung](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -215,9 +215,9 @@ Das folgende Diagramm enthält Hilfestellungen zum Migrieren Ihrer Hive-Workload
 | C#-Mapper- und -Reducerkomponenten | Informationen zum Überprüfen von C#-Komponenten mit Linux-basiertem HDInsight finden Sie unter [Migrieren von .NET-Lösungen in Linux-basiertes HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | CMD-Dateien oder -Skripts auf dem Server, die als Teil eines Hive-Auftrags aufgerufen wurden |Verwenden von Bash-Skripts |
 
-## <a name="oozie"></a>Oozie
+## <a name="apache-oozie"></a>Apache Oozie
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenn Sie einen externen Oozie-Metastore verwenden, sollten Sie den Metastore vor der Verwendung mit Linux-basiertem HDInsight sichern. Linux-basiertes HDInsight wird mit neueren Versionen von Oozie bereitgestellt, die möglicherweise Inkompatibilitäten mit in früheren Versionen erstellten Metastores aufweisen.
 
 Oozie-Workflows erlauben Shellaktionen. Bei Shellaktionen wird die Standardshell für das Betriebssystem zum Ausführen von Befehlszeilenbefehlen verwendet. Wenn Sie über Oozie-Workflows verfügen, die auf der Windows-Shell beruhen, müssen Sie die Workflows so umschreiben, dass sie auf der Linux-Shellumgebung (Bash) basieren. Weitere Informationen zur Verwendung von Shellaktionen mit Oozie finden Sie unter [Oozie shell action extension](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html) (Erweiterung für Oozie-Shellaktionen).
@@ -228,15 +228,15 @@ Wenn C#-Anwendungen in Ihrem Workflow verwendet werden, überprüfen Sie diese A
 
 | Auf Windows-basierten Clustern verwende ich ... | Auf Linux-basierten Clustern verwende ich ... |
 | --- | --- |
-| Storm-Dashboard |Das Storm-Dashboard ist nicht verfügbar. Methoden zum Übermitteln von Topologien finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux](storm/apache-storm-deploy-monitor-topology-linux.md) . |
+| Storm-Dashboard |Das Storm-Dashboard ist nicht verfügbar. Methoden zum Übermitteln von Topologien finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux](storm/apache-storm-deploy-monitor-topology-linux.md). |
 | Storm-Benutzeroberfläche |Die Storm-Benutzeroberfläche ist unter https://CLUSTERNAME.azurehdinsight.net/stormui verfügbar. |
 | Visual Studio zum Erstellen, Bereitstellen und Verwalten von C#- oder Hybridtopologien |Visual Studio kann verwendet werden, um C#-Topologien (SCP.NET) oder Hybridtopologien in Linux-basiertem Storm in HDInsight zu erstellen, bereitzustellen und zu verwalten. Es kann nur mit Clustern verwendet werden, die nach dem 28.10.2016 erstellt wurden. |
 
-## <a name="hbase"></a>hbase
+## <a name="apache-hbase"></a>Apache HBase
 
 Auf Linux-basierten Clustern ist `/hbase-unsecure`der übergeordnete ZNode für HBase. Legen Sie dies in der Konfiguration für alle Java-Clientanwendungen fest, die native HBase-Java-API verwenden.
 
-Einen Beispiel-Client, der diesen Wert festlegt, finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven.md) .
+Einen Beispielclient, der diesen Wert festlegt, finden Sie unter [Erstellen einer Java-basierten Apache HBase-Anwendung](hdinsight-hbase-build-java-maven.md).
 
 ## <a name="spark"></a>Spark
 
@@ -281,4 +281,4 @@ Wenn die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeichen enthalten, kö
 
 * [Erfahren Sie, wie Sie Linux-basierte HDInsight-Cluster erstellen](hdinsight-hadoop-provision-linux-clusters.md)
 * [Verwenden von SSH für das Herstellen von Verbindungen mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [Verwalten eines Linux-basierten Clusters mithilfe von Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Verwalten eines Linux-basierten Clusters mithilfe von Apache Ambari](hdinsight-hadoop-manage-ambari.md)

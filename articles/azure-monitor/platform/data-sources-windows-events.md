@@ -1,6 +1,6 @@
 ---
-title: Erfassen und Analysieren von Windows-Ereignisprotokollen in Azure Log Analytics | Microsoft-Dokumentation
-description: Windows-Ereignisprotokolle gehören zu den häufigsten von Log Analytics verwendeten Datenquellen.  In diesem Artikel wird beschrieben, wie Sie die Erfassung von Windows-Ereignisprotokollen konfigurieren, und aus welchen Bestandteilen die im Log Analytics-Arbeitsbereich erstellten Datensätze bestehen.
+title: Erfassen und Analysieren von Windows-Ereignisprotokollen in Azure Monitor | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie das Sammeln von Windows-Ereignisprotokollen mit Azure Monitor konfigurieren und Details zu den von ihnen erstellten Datensätzen finden.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -8,39 +8,37 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2017
+ms.date: 11/28/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 036378c5ed595ffbaeefad9407fba8519945cf5c
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a8c08eb222595b1531eef850667d3834d568b166
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336532"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435802"
 ---
-# <a name="windows-event-log-data-sources-in-log-analytics"></a>Datenquellen für Windows-Ereignisprotokolle in Log Analytics
+# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Datenquellen für Windows-Ereignisprotokolle in Azure Monitor
 Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](agent-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
 
 ![Windows-Ereignisse](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurieren der Windows-Ereignisprotokolle
-Sie konfigurieren Windows-Ereignisprotokolle über das [Menü „Daten“ in den Log Analytics-Einstellungen](agent-data-sources.md#configuring-data-sources).
+Sie konfigurieren Windows-Ereignisprotokolle über das [Menü „Daten“ in „Erweiterte Einstellungen“](agent-data-sources.md#configuring-data-sources).
 
-Log Analytics sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in den Einstellungen angegeben wurden.  Sie können ein Ereignisprotokoll hinzufügen, indem Sie den Namen des Protokolls eingeben und auf **+** klicken.  Für jedes Protokoll werden nur die Ereignisse mit den ausgewählten Schweregraden gesammelt.  Überprüfen Sie die Schweregrade für das Protokoll, aus dem Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien zum Filtern von Ereignissen bereitstellen.
+Azure Monitor sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in den Einstellungen angegeben wurden.  Sie können ein Ereignisprotokoll hinzufügen, indem Sie den Namen des Protokolls eingeben und auf **+** klicken.  Für jedes Protokoll werden nur die Ereignisse mit den ausgewählten Schweregraden gesammelt.  Überprüfen Sie die Schweregrade für das Protokoll, aus dem Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien zum Filtern von Ereignissen bereitstellen.
 
-Während der Eingabe des Namens des Ereignisprotokolls bietet Log Analytics Vorschläge gängiger Ereignisprotokollnamen an. Wenn das Protokoll, das Sie hinzufügen möchten, nicht in der Liste enthalten ist, können Sie es dennoch durch Eingabe des vollständigen Namens des Protokolls hinzufügen. Mithilfe der Ereignisanzeige können Sie den vollständigen Namen des Protokolls finden. Öffnen Sie in der Ereignisanzeige die Seite *Eigenschaften* des Protokolls, und kopieren Sie die Zeichenfolge aus dem Feld *Vollständiger Name*.
+Während der Eingabe des Namens des Ereignisprotokolls bietet Azure Monitor Vorschläge gängiger Ereignisprotokollnamen an. Wenn das Protokoll, das Sie hinzufügen möchten, nicht in der Liste enthalten ist, können Sie es dennoch durch Eingabe des vollständigen Namens des Protokolls hinzufügen. Mithilfe der Ereignisanzeige können Sie den vollständigen Namen des Protokolls finden. Öffnen Sie in der Ereignisanzeige die Seite *Eigenschaften* des Protokolls, und kopieren Sie die Zeichenfolge aus dem Feld *Vollständiger Name*.
 
 ![Windows-Ereignisse konfigurieren](media/data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Datensammlung
-Log Analytics sammelt jedes Ereignis mit einem ausgewählten Schweregrad aus einem überwachten Ereignisprotokoll, sobald das Ereignis erstellt wird.  Der Agent zeichnet seine Position in jedem Ereignisprotokoll auf, aus dem er Daten sammelt.  Wenn der Agent für einen bestimmten Zeitraum offline geht, sammelt Log Analytics Ereignisse ab dem Zeitpunkt der letzten Sammlung, unabhängig davon, ob die Ereignisse erstellt wurden, während der Agent offline war.  Es kann vorkommen, dass diese Ereignisse nicht erfasst werden, falls das Ereignisprotokoll umgebrochen wird und nicht erfasste Ereignisse überschrieben werden, während der Agent offline ist.
+Azure Monitor sammelt jedes Ereignis mit einem ausgewählten Schweregrad aus einem überwachten Ereignisprotokoll, sobald das Ereignis erstellt wird.  Der Agent zeichnet seine Position in jedem Ereignisprotokoll auf, aus dem er Daten sammelt.  Wenn der Agent für einen bestimmten Zeitraum offline geht, sammelt es Ereignisse ab dem Zeitpunkt der letzten Sammlung, unabhängig davon, ob die Ereignisse erstellt wurden, während der Agent offline war.  Es kann vorkommen, dass diese Ereignisse nicht erfasst werden, falls das Ereignisprotokoll umgebrochen wird und nicht erfasste Ereignisse überschrieben werden, während der Agent offline ist.
 
 >[!NOTE]
->Log Analytics erfasst keine Überwachungsereignisse, die von SQL Server aus der Quelle *MSSQLSERVER* mit der Ereignis-ID 18453 erstellt wurden und die Schlüsselwörter  *Klassisch* oder *Überwachung erfolgreich* sowie das Schlüsselwort *0xa0000000000000* enthalten.
+>Azure Monitor erfasst keine Überwachungsereignisse, die von SQL Server aus der Quelle *MSSQLSERVER* mit der Ereignis-ID 18453 erstellt wurden und die Schlüsselwörter  *Klassisch* oder *Überwachung erfolgreich* sowie das Schlüsselwort *0xa0000000000000* enthalten.
 >
 
 ## <a name="windows-event-records-properties"></a>Eigenschaften von Windows-Ereignisdatensätzen
@@ -63,8 +61,8 @@ Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der
 | TimeGenerated |Datum und Uhrzeit, zu der das Ereignis in Windows erstellt wurde. |
 | UserName |Benutzername des Kontos, in dem das Ereignis protokolliert wurde. |
 
-## <a name="log-searches-with-windows-events"></a>Protokollsuchvorgänge mit Windows-Ereignissen
-Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Windows-Ereignisdatensätze abrufen.
+## <a name="log-queries-with-windows-events"></a>Protokollabfragen mit Windows-Ereignissen
+Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Windows-Ereignisdatensätze abrufen.
 
 | Abfragen | BESCHREIBUNG |
 |:---|:---|
@@ -75,7 +73,6 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Konfigurieren Sie Log Analytics für die Sammlung von Daten aus anderen [Datenquellen](agent-data-sources.md) zur Analyse.
-* Erfahren Sie mehr über [Protokollsuchvorgänge](../../log-analytics/log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
-* Verwenden Sie [benutzerdefinierte Felder](../../log-analytics/log-analytics-custom-fields.md) , um die Ereignisdatensätze in einzelnen Feldern zu analysieren.
+* Konfigurieren Sie Azure Monitor für die Sammlung von Daten aus anderen [Datenquellen](agent-data-sources.md) zur Analyse.
+* Erfahren Sie mehr über [Protokollabfragen](../../log-analytics/log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 * Konfigurieren Sie die [Sammlung von Leistungsindikatoren](data-sources-performance-counters.md) aus Ihren Windows-Agents.

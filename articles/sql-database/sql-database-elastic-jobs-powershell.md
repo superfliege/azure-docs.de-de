@@ -1,23 +1,23 @@
 ---
-title: Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell | Microsoft Docs
+title: Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell | Microsoft-Dokumentation
 description: PowerShell, verwendet zum Verwalten von Pools für Azure SQL-Datenbanken
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
-ms.devlang: pwershell
+ms.devlang: powershell
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 9ed5026211bec11b510d095decac25f8d4b8a52a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243196"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278456"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Erstellen und Verwalten von elastischen Aufträgen für SQL-Datenbank mithilfe von PowerShell (Vorschau)
 
@@ -31,7 +31,7 @@ Mit den PowerShell-APIs für **Aufträge für die elastische Datenbank** (Vorsch
 * Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 * Eine Reihe von Datenbanken, die mit den Tools für die elastische Datenbank erstellt wurden. Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
 * Azure PowerShell. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
-* PowerShell-Paket **Auftrag für die elastische Datenbank**. Weitere Informationen finden Sie unter [Installieren von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-service-installation.md).
+* PowerShell-Paket **Aufträge für die elastische Datenbank**. Weitere Informationen finden Sie unter [Installieren von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-service-installation.md).
 
 ### <a name="select-your-azure-subscription"></a>Auswählen des Azure-Abonnements
 Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID (**-SubscriptionId**) oder den Abonnementnamen (**-SubscriptionName**). Wenn Sie über mehrere Abonnements verfügen, können Sie das **Get-AzureRmSubscription** -Cmdlet ausführen und die gewünschten Abonnementinformationen aus dem Resultset kopieren. Sobald Sie über Ihre Abonnementinformationen verfügen, führen Sie das folgende Cmdlet aus, um dieses Abonnement als Standard festzulegen, nämlich als Ziel für das Erstellen und Verwalten von Aufträgen:
@@ -193,7 +193,7 @@ Der Auftrag führt Transact-SQL (T-SQL)-Skripts aus und ermöglicht die Anwendu
 
 Zwei Arten von Gruppen können erstellt werden: 
 
-* [Shardzuordnung](sql-database-elastic-scale-shard-map-management.md) : Wenn ein Auftrag gesendet wird, dessen Ziel eine Shardzuordnung ist, fragt der Auftrag zunächst die Shardzuordnung ab, um deren aktuellen Shardsatz zu bestimmen, und erstellt dann entsprechende untergeordnete Aufträge für die einzelnen Shards der Shardzuordnung.
+* [Shardzuordnung](sql-database-elastic-scale-shard-map-management.md): Wenn ein Auftrag gesendet wird, dessen Ziel eine Shardzuordnung ist, fragt der Auftrag zunächst die Shardzuordnung ab, um deren aktuellen Shardsatz zu bestimmen, und erstellt dann entsprechende untergeordnete Aufträge für die einzelnen Shards der Shardzuordnung.
 * Benutzerdefinierte Sammlung: Ein benutzerdefinierter Satz von Datenbanken. Wenn ein Auftrag eine benutzerdefinierte Auflistung als Ziel hat, erstellt er untergeordnete Aufträge für die einzelnen Datenbanken, die derzeit in der benutzerdefinierten Auflistung enthalten sind.
 
 ## <a name="to-set-the-elastic-database-jobs-connection"></a>So legen Sie die Verbindung für Aufträge für die elastische Datenbank fest
@@ -418,14 +418,14 @@ Ausführungsrichtlinien lassen aktuell die folgenden Definitionen zu:
 * Auftragstimeout: Gesamtzeit bis zum Abbruch eines Auftrags durch die Aufträge für die elastische Datenbank.
 * Anfängliches Wiederholungsintervall: Wartezeit vor dem ersten Wiederholungsversuch.
 * Maximales Wiederholungsintervall: Höchstmenge der zu durchlaufenden Wiederholungsintervalle.
-* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen.  Dazu wird diese Formel verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Intervallbackoffkoeffizient), (Anzahl der Wiederholungsversuche) - 2). 
+* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen.  Die folgende Formel wird verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Backoffkoeffizient des Intervalls), (Anzahl der Wiederholungsversuche) - 2). 
 * Versuche maximal: Die Höchstzahl der im Rahmen eines Auftrags auszuführenden Wiederholungsversuche.
 
 Für die standardmäßige Ausführungsrichtlinie werden diese Werte verwendet:
 
 * Name: Standardausführungsrichtlinie
 * Auftragstimeout: 1 Woche
-* Anfängliches Wiederholungsintervall: 100 Millisekunden
+* Anfängliches Wiederholungsintervall:  100 Millisekunden
 * Maximales Wiederholungsintervall: 30 Minuten
 * Wiederholungsintervallkoeffizient: 2
 * Versuche maximal: 2.147.483.647
@@ -459,7 +459,7 @@ Aufträge für die elastische Datenbank unterstützen Abbruchanforderungen für 
 
 Der Abbruch kann von Aufträgen für die elastische Datenbank auf zwei verschiedene Arten ausgeführt werden:
 
-1. Abbruch aktuell ausgeführter Aufgaben: Wird während der Aufgabenausführung ein Abbruch erkannt, wird ein Abbruch innerhalb des aktuell ausgeführten Aspekts der Aufgabe versucht.  Beispiel: Wenn ein versuchter Abbruch sich auf eine aktuell ausgeführte Abfrage mit langer Laufzeit bezieht, wird versucht, die Abfrage abzubrechen.
+1. Abbruch aktuell ausgeführter Aufgaben: Wenn ein Abbruch erkannt wird, während eine Aufgabe aktuell ausgeführt wird, wird ein Abbruch innerhalb des aktuell ausgeführten Aspekts der Aufgabe versucht.  Beispiel:  Wenn ein versuchter Abbruch sich auf eine aktuell ausgeführte Abfrage mit langer Laufzeit bezieht, wird versucht, die Abfrage abzubrechen.
 2. Abbruch von Aufgabenwiederholungen: Wird vom Steuerthread ein Abbruch erkannt, bevor die Ausführung einer Aufgabe gestartet wurde, verhindert der Steuerthread das Starten der Aufgabe und erklärt die Anforderung für abgebrochen.
 
 Wenn für einen übergeordneten Auftrag ein Auftragsabbruch angefordert wird, wird die Abbruchanforderung für den übergeordneten Auftrag und für alle seine untergeordneten Aufträge berücksichtigt.

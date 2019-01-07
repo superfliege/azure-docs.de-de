@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109970"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744444"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisieren einer Datenanalysepipeline
 
@@ -30,13 +30,13 @@ Im folgenden Szenario handelt es sich bei den Eingabedaten um ein Flatfile mit e
 | 2017 | 1 | 3 | AS | 9,435449 | 5,482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6,935409 | –2,1893024 | 1909696 |
 
-In der Beispielpipeline wird gewartet, bis Flugdaten für einen neuen Zeitraum eingehen. Diese detaillierten Fluginformationen werden dann für langfristige Analysen im Hive-Data Warehouse gespeichert. In der Pipeline wird zudem ein wesentlich kleineres Dataset erstellt, das lediglich die täglichen Flugdaten zusammenfasst. Diese tägliche Zusammenfassung von Flugdaten wird zur Bereitstellung von Berichten (z.B. für eine Website) an eine SQL-­Datenbank gesendet.
+In der Beispielpipeline wird gewartet, bis Flugdaten für einen neuen Zeitraum eingehen. Diese detaillierten Fluginformationen werden dann für langfristige Analysen im Apache Hive-Data Warehouse gespeichert. In der Pipeline wird zudem ein wesentlich kleineres Dataset erstellt, das lediglich die täglichen Flugdaten zusammenfasst. Diese tägliche Zusammenfassung von Flugdaten wird zur Bereitstellung von Berichten (z.B. für eine Website) an eine SQL-­Datenbank gesendet.
 
 Die Beispielpipeline ist in der folgenden Abbildung dargestellt.
 
 ![Pipeline für Flugdaten](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Übersicht über die Oozie-Lösung
+## <a name="apache-oozie-solution-overview"></a>Übersicht über die Apache Oozie-Lösung
 
 Bei dieser Pipeline wird Apache Oozie verwendet, das auf einem HDInsight Hadoop-Cluster ausgeführt wird.
 
@@ -139,7 +139,7 @@ Die Azure SQL-Datenbank ist damit eingerichtet.
 
 Richten Sie einen SSH-Tunnel zu dem HDInsight-Cluster ein, um über die Oozie-Webkonsole den Status der Koordinator- und Workflow-Instanzen anzuzeigen. Weitere Informationen finden Sie unter [SSH-Tunnel](hdinsight-linux-ambari-ssh-tunnel.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Sie können auch Chrome mit der Erweiterung [FoxyProxy](https://getfoxyproxy.org/) verwenden, um die Webressourcen Ihres Clusters im SSH-Tunnel zu durchsuchen. Konfigurieren Sie sie so, dass alle Anforderungen über den Host `localhost` am Port 9876 des Tunnels über einen Proxy gesendet werden. Dieser Ansatz ist kompatibel mit dem Windows-Subsystem für Linux, das unter Windows 10 auch als Bash bezeichnet wird.
 
 1. Führen Sie den folgenden Befehl aus, um einen SSH-Tunnel zu Ihrem Cluster zu öffnen:
@@ -430,7 +430,7 @@ In der folgenden Tabelle sind die einzelnen Eigenschaften zusammengefasst. Auße
 | month | Die Monatskomponente des Tages, für den Flugzusammenfassungen berechnet werden. Nehmen Sie keine Änderung vor. |
 | day | Die Monatstagkomponente des Tages, für den Flugzusammenfassungen berechnet werden. Nehmen Sie keine Änderung vor. |
 
-> [!NOTE]
+> [!NOTE]  
 > Aktualisieren Sie Ihre Kopie der Datei `job.properties` auf jeden Fall mit den für Ihre Umgebung spezifischen Werten. Nur dann können Sie Ihren Oozie-Workflow bereitstellen und ausführen.
 
 ### <a name="deploy-and-run-the-oozie-workflow"></a>Bereitstellen und Ausführen des Oozie-Workflows
@@ -551,7 +551,7 @@ Wie Sie sehen können, übergibt der Koordinator mehrheitlich lediglich Konfigur
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Ein Koordinator ist zuständig für die Planung von Aktionen innerhalb des Zeitraums von `start` bis `end` entsprechend dem durch das Attribut `frequency` angegebene Intervall. Jede geplante Aktion führt wiederum den Workflow wie konfiguriert aus. In der oben aufgeführten Koordinatordefinition ist der Koordinator für die Ausführung von Aktionen vom 1. Januar 2017 bis zum 5. Januar 2017 konfiguriert. Die Häufigkeit ist durch den Häufigkeitsausdruck `${coord:days(1)}` der [Oozie-Ausdruckssprache](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) auf 1 Tag festgelegt. Dies führt dazu, dass der Koordinator eine Aktion (und somit den Workflow) einmal pro Tag plant. Bei Zeiträumen, die wie in diesem Beispiel in der Vergangenheit liegen, wird die Aktion so geplant, dass sie ohne Verzögerung ausgeführt wird. Der Beginn des Datums, ab dem eine Aktion zur Ausführung geplant ist, wird als *nominelle Zeit* bezeichnet. Zur Verarbeitung der Daten für den 1. Januar 2017 plant der Koordinator die Aktion beispielsweise mit der nominellen Zeit 2017-01-01T00:00:00 GMT.
+    Ein Koordinator ist zuständig für die Planung von Aktionen innerhalb des Zeitraums von `start` bis `end` entsprechend dem durch das Attribut `frequency` angegebene Intervall. Jede geplante Aktion führt wiederum den Workflow wie konfiguriert aus. In der oben aufgeführten Koordinatordefinition ist der Koordinator für die Ausführung von Aktionen vom 1. Januar 2017 bis zum 5. Januar 2017 konfiguriert. Die Häufigkeit ist durch den Häufigkeitsausdruck `${coord:days(1)}` der [Oozie-Ausdruckssprache](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) auf 1 Tag festgelegt. Dies führt dazu, dass der Koordinator eine Aktion (und somit den Workflow) einmal pro Tag plant. Bei Zeiträumen, die wie in diesem Beispiel in der Vergangenheit liegen, wird die Aktion so geplant, dass sie ohne Verzögerung ausgeführt wird. Der Beginn des Datums, ab dem eine Aktion zur Ausführung geplant ist, wird als *nominelle Zeit* bezeichnet. Zur Verarbeitung der Daten für den 1. Januar 2017 plant der Koordinator die Aktion beispielsweise mit der nominellen Zeit 2017-01-01T00:00:00 GMT.
 
 * Punkt 2: Innerhalb des Zeitraums des Workflows gibt das Element `dataset` an, wo in HDFS nach den Daten für einen bestimmten Datumsbereich gesucht wird, und konfiguriert, wie Oozie ermittelt, ob die Daten zur Verarbeitung verfügbar sind.
 
@@ -651,6 +651,6 @@ Zum Ausführen der Pipeline mit einem Koordinator gehen Sie in ähnlicher Weise 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Apache Oozie-Dokumentation](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Apache Oozie-Dokumentation](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

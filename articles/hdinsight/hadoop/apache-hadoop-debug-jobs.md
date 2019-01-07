@@ -1,5 +1,5 @@
 ---
-title: 'Debuggen von Apache Hadoop in HDInsight: Anzeigen von Protokollen und Verstehen von Fehlermeldungen: Azure '
+title: 'Debuggen von Apache Hadoop: Anzeigen von Protokollen und Verstehen von Fehlermeldungen – Azure HDInsight'
 description: Lernen Sie die Fehlermeldungen kennen, die Sie bei der Administration von HDInsight mit PowerShell erhalten können und Schritte zu deren Behebung.
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634633"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438811"
 ---
-# <a name="analyze-hadoop-logs"></a>Analysieren von Hadoop-Protokollen
+# <a name="analyze-apache-hadoop-logs"></a>Analysieren von Apache Hadoop-Protokollen
 
-Jeder Apache Hadoop-Cluster in Azure HDInsight hat ein Azure-Speicherkonto, das als Standarddateisystem verwendet wird. Dieses Konto wird als Standardspeicherkonto bezeichnet. Der Cluster nutzt im standardmäßigen Speicherkonto Azure Table Storage und Blob Storage zum Speichern seiner Protokolle.  Informationen zum Ermitteln des Standardspeicherkontos für Ihren Cluster finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Die Protokolle verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
+Jeder Apache Hadoop-Cluster in Azure HDInsight hat ein Azure-Speicherkonto, das als Standarddateisystem verwendet wird. Dieses Konto wird als Standardspeicherkonto bezeichnet. Der Cluster nutzt im standardmäßigen Speicherkonto Azure Table Storage und Blob Storage zum Speichern seiner Protokolle.  Informationen zum Ermitteln des Standardspeicherkontos für Ihren Cluster finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Die Protokolle verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
 
 ## <a name="logs-written-to-azure-tables"></a>In Azure-Tabellen geschriebene Protokolle
 
@@ -72,7 +72,7 @@ Power Query kann über [Microsoft Power Query für Excel](https://www.microsoft.
    
     ![In Azure Table Storage gespeicherte HDInsight Hadoop-Protokolle](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
 5. Klicken Sie im Bereich **Navigator** mit der rechten Maustaste auf die Tabelle „hadoopservicelog“, und wählen Sie **Bearbeiten** aus. Es werden vier Spalten angezeigt. Löschen Sie optional die Spalten **Partition Key**, **Row Key** und **Timestamp**, indem Sie sie auswählen und dann auf dem Menüband auf **Spalten entfernen** klicken.
-6. Klicken Sie auf das Symbol zum Erweitern der Spalte „Inhalt“, um die Spalten auszuwählen, die Sie in die Excel-Tabelle importieren möchten. Für diese Demo habe ich „TraceLevel“ und „ComponentName“ gewählt, um mir einige grundlegenden Informationen zu Komponenten mit Problemen zu verschaffen.
+6. Klicken Sie auf das Symbol zum Erweitern der Spalte „Inhalt“, um die Spalten auszuwählen, die Sie in die Excel-Tabelle importieren möchten. Für diese Demo wurde TraceLevel und ComponentName ausgewählt: Es bietet einige grundlegende Informationen darüber, bei welchen Komponenten Probleme aufgetreten sind.
    
     ![HDInsight Hadoop-Protokolle, Spalten auswählen](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
 7. Klicken Sie auf **OK** , um die Daten zu importieren.
@@ -101,9 +101,11 @@ Sie können jetzt Excel zum Filtern und Sortieren verwenden. Es kann ratsam sein
 ## <a name="logs-written-to-azure-blob-storage"></a>In Azure Blob Storage geschriebene Protokolle
 [in Azure-Tabellen geschriebenen Protokolle](#log-written-to-azure-tables) bieten einen ersten Einblick in das, was in einem HDInsight-Cluster passiert. Diese Tabellen bieten jedoch keine Protokolle auf Aufgabenebene, die bei der weiteren Untersuchung auftretender Probleme hilfreich sein können. Um diese nächste Detailebene zu bieten, sind HDInsight-Cluster für das Schreiben von Aufgabenprotokollen in Ihr Blob Storage-Konto für alle Aufträge konfiguriert, die über Templeton übermittelt werden. In der Praxis handelt es sich um Aufträge, die mithilfe von Microsoft Azure PowerShell-Cmdlets oder .NET-APIs für die Auftragsübermittlung übermittelt wurden, und nicht um Aufträge, die über einen RDB-/Befehlszeilenzugriff auf den Cluster übermittelt wurden. 
 
-Informationen zum Anzeigen der Protokolle finden Sie unter [Zugreifen auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+Informationen zum Anzeigen der Protokolle finden Sie unter [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-Weitere Informationen zu Anwendungsprotokollen finden Sie unter [Simplifying user-logs management and access in YARN](http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)(Vereinfachen der Verwaltung von und des Zugriffs auf Benutzerprotokolle in YARN).
+
+Weitere Informationen zu Anwendungsprotokollen finden Sie unter [Vereinfachen der Verwaltung von und des Zugriffs auf Benutzerprotokolle in Apache Hadoop YARN](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+
 
 ## <a name="view-cluster-health-and-job-logs"></a>Anzeigen von Clusterintegritäts- und Auftragsprotokollen
 ### <a name="access-the-ambari-ui"></a>Zugreifen auf die Ambari-Benutzeroberfläche
@@ -132,187 +134,187 @@ Die in diesem Abschnitt beschriebenen Fehlermeldungen sollen den Benutzern von H
 Einige dieser Fehlermeldungen können auch im Azure-Portal angezeigt werden, wenn HDInsight-Cluster darüber verwaltet werden. Andere Fehlermeldungen, auf die Sie möglicherweise stoßen, sind jedoch eventuell weniger differenziert, da in diesem Kontext gewisse Beschränkungen für die Lösungsschritte bestehen. Andere Fehlermeldungen erscheinen in einem Kontext, in dem die Lösung offensichtlich ist. 
 
 ### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
-* **Beschreibung**: Stellen Sie für mindestens eine Komponente Informationen zur Azure SQL-Datenbank bereit, damit benutzerdefinierte Einstellungen für die Hive- und Oozie-Metastores verwendet werden können.
+* **Beschreibung:** Stellen Sie für mindestens eine Komponente Informationen zur Azure SQL-Datenbank bereit, damit benutzerdefinierte Einstellungen für die Hive- und Oozie-Metastores verwendet werden können.
 * **Lösung**: Der Benutzer muss einen gültigen SQL Azure-Metastore angeben. Dann kann er die Anforderung wiederholen.  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
-* **Beschreibung**: Es konnte kein Cluster in der Region *NameIhrerRegion*erstellt werden. Verwenden Sie eine gültige HDInsight-Region, und wiederholen Sie die Anforderung.
-* **Lösung**: Kunden sollten die Clusterregion erstellen, in der sie derzeit unterstützt werden: Südostasien, Westeuropa, Nordeuropa, USA (Osten) oder USA (Westen).  
+* **Beschreibung:** Es konnte kein Cluster in der Region *NameIhrerRegion* erstellt werden. Verwenden Sie eine gültige HDInsight-Region, und wiederholen Sie die Anforderung.
+* **Lösung**: Kunden sollten die Clusterregion erstellen, die diese derzeit unterstützt: Asien, Südosten, Westeuropa, Nordeuropa, USA Ost oder USA West.  
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
-* **Beschreibung**: Der Server konnte den angeforderten Clusterdatensatz nicht finden.  
+* **Beschreibung:** Der Server konnte den angeforderten Clusterdatensatz nicht finden.  
 * **Lösung**: Wiederholen Sie den Vorgang.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
-* **Beschreibung**: Der Cluster-DNS-Name *IhrDnsName* ist ungültig. Stellen Sie sicher, dass der Name mit einem alphanumerischen Zeichen beginnt und endet. Er darf nur das Sonderzeichen "-" enthalten.  
+* **Beschreibung:** Der Cluster-DNS-Name *IhrDnsName* ist ungültig. Stellen Sie sicher, dass der Name mit einem alphanumerischen Zeichen beginnt und endet. Er darf nur das Sonderzeichen "-" enthalten.  
 * **Lösung**: Vergewissern Sie sich, dass Sie für Ihren Cluster einen gültigen DNS-Namen verwenden, der mit einem alphanumerischen Zeichen beginnt und endet und keine anderen Sonderzeichen als den Bindestrich „-“ enthält. Wiederholen Sie dann den Vorgang.
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
-* **Beschreibung**: Der Clustername *IhrClusterName* ist nicht verfügbar. Wählen Sie einen anderen Namen.  
+* **Beschreibung:** Der Clustername *IhrClusterName* ist nicht verfügbar. Wählen Sie einen anderen Namen.  
 * **Lösung**: Der Benutzer sollte einen eindeutigen, noch nicht vorhandenen Clusternamen angeben und dann den Vorgang wiederholen. Wenn der Benutzer das Portal verwendet, wird er bei der Erstellung über die Benutzeroberfläche informiert, wenn ein Clustername bereits vorhanden ist.
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
-* **Beschreibung**: Das Clusterkennwort ist ungültig. Das Kennwort muss mindestens zehn Zeichen lang sein und mindestens eine Ziffer, einen Groß- und einen Kleinbuchstaben sowie ein Sonderzeichen enthalten. Es darf keine Leerzeichen und nicht den Benutzernamen enthalten.  
+* **Beschreibung:** Das Clusterkennwort ist ungültig. Das Kennwort muss mindestens zehn Zeichen lang sein und mindestens eine Ziffer, einen Groß- und einen Kleinbuchstaben sowie ein Sonderzeichen enthalten. Es darf keine Leerzeichen und nicht den Benutzernamen enthalten.  
 * **Lösung**: Geben Sie ein gültiges Clusterkennwort ein, und wiederholen Sie den Vorgang.
 
 ### <a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid
-* **Beschreibung**: Der Clusterbenutzername ist ungültig. Stellen Sie sicher, dass der Benutzername keine Sonderzeichen oder Leerzeichen enthält.  
+* **Beschreibung:** Der Clusterbenutzername ist ungültig. Stellen Sie sicher, dass der Benutzername keine Sonderzeichen oder Leerzeichen enthält.  
 * **Lösung**: Geben Sie einen gültigen Clusterbenutzernamen ein, und wiederholen Sie den Vorgang.
 
 ### <a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord
-* **Beschreibung**: Der Cluster-DNS-Name *IhrDnsClusterName* ist ungültig. Stellen Sie sicher, dass der Name mit einem alphanumerischen Zeichen beginnt und endet. Er darf nur das Sonderzeichen "-" enthalten.  
+* **Beschreibung:** Der Cluster-DNS-Name *IhrDnsClusterName* ist ungültig. Stellen Sie sicher, dass der Name mit einem alphanumerischen Zeichen beginnt und endet. Er darf nur das Sonderzeichen "-" enthalten.  
 * **Lösung**: Geben Sie einen gültigen DNS-Clusterbenutzernamen ein, und wiederholen Sie den Vorgang.
 
 ### <a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName
-* **Beschreibung**: Der Containername in URI *IhreContainerURI* und der DNS-Name *IhrDnsName* im Anforderungstext müssen übereinstimmen.  
+* **Beschreibung:** Der Containername in URI *IhreContainerURI* und der DNS-Name *IhrDnsName* im Anforderungstext müssen übereinstimmen.  
 * **Lösung**: Stellen Sie sicher, dass der Containername und DNS-Name identisch sind, und wiederholen Sie den Vorgang.
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
-* **Beschreibung**: Ungültige Clusterkonfiguration. Es können keine Datenknotendefinitionen in der Knotengröße gefunden werden.  
+* **Beschreibung:** Ungültige Clusterkonfiguration. Es können keine Datenknotendefinitionen in der Knotengröße gefunden werden.  
 * **Lösung**: Wiederholen Sie den Vorgang.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
-* **Beschreibung**: Das Löschen der Bereitstellung für den Cluster ist fehlgeschlagen.  
+* **Beschreibung:** Das Löschen der Bereitstellung für den Cluster ist fehlgeschlagen.  
 * **Lösung**: Führen Sie den Löschvorgang erneut aus.
 
 ### <a id="DnsMappingNotFound"></a>DnsMappingNotFound
-* **Beschreibung**: Fehler bei der Dienstkonfiguration. Die erforderlichen DNS-Zuordnungsinformationen wurden nicht gefunden.  
+* **Beschreibung:** Fehler bei der Dienstkonfiguration. Die erforderlichen DNS-Zuordnungsinformationen wurden nicht gefunden.  
 * **Lösung**: Löschen Sie den Cluster, und erstellen Sie einen neuen Cluster.
 
 ### <a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest
-* **Beschreibung**: Es wurde zweimal versucht, einen Clustercontainer zu erstellen. Für *NameIhresContainers* ist ein Datensatz vorhanden, die ETags stimmen jedoch nicht überein.
+* **Beschreibung:** Es wurde zweimal versucht, einen Clustercontainer zu erstellen. Für *NameIhresContainers* ist ein Datensatz vorhanden, die ETags stimmen jedoch nicht überein.
 * **Lösung**: Geben Sie für den Container einen eindeutigen Namen an, und wiederholen Sie den Vorgang.
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-* **Beschreibung**: Der gehostete Dienst *NameIhresGehostetenDiensts* enthält bereits einen Cluster. Ein gehosteter Dienst kann nicht mehrere Cluster enthalten.  
+* **Beschreibung:** Der gehostete Dienst *NameIhresGehostetenDiensts* enthält bereits einen Cluster. Ein gehosteter Dienst kann nicht mehrere Cluster enthalten.  
 * **Lösung**: Hosten Sie den Cluster in einem anderen gehosteten Dienst.
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
-* **Beschreibung**: Der Server konnte den Status der Clusterbereitstellung nicht aktualisieren.  
+* **Beschreibung:** Der Server konnte den Status der Clusterbereitstellung nicht aktualisieren.  
 * **Lösung**: Wiederholen Sie den Vorgang. Falls dies mehrfach passiert, wenden Sie sich an den CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
-* **Beschreibung**: Der Cluster *IhrClusterName* wurde im Rahmen von Wartungsarbeiten gelöscht. Erstellen Sie den Cluster neu.
+* **Beschreibung:** Der Cluster *IhrClusterName* wurde im Rahmen von Wartungsarbeiten gelöscht. Erstellen Sie den Cluster neu.
 * **Lösung**: Erstellen Sie den Cluster neu.
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
-* **Beschreibung**: Ungültige Clusterkonfiguration. Die erforderliche Hauptknotenkonfiguration wurde in den Knotengrößen nicht gefunden.
+* **Beschreibung:** Ungültige Clusterkonfiguration. Die erforderliche Hauptknotenkonfiguration wurde in den Knotengrößen nicht gefunden.
 * **Lösung**: Wiederholen Sie den Vorgang.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-* **Beschreibung**: Der gehostete Dienst *NameIhresGehostetenDiensts*konnte nicht erstellt werden. Wiederholen Sie die Anforderung.  
+* **Beschreibung:** Der gehostete Dienst *NameIhresGehostetenDiensts* konnte nicht erstellt werden. Wiederholen Sie die Anforderung.  
 * **Lösung**: Wiederholen Sie die Anforderung.
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-* **Beschreibung**: Der gehostete Dienst *NameIhresGehostetenDiensts* verfügt bereits über eine Produktionsbereitstellung. Ein gehosteter Dienst kann nicht mehrere Produktionsbereitstellungen enthalten. Wiederholen Sie die Anforderung mit einem anderen Clusternamen.
+* **Beschreibung:** Der gehostete Dienst *NameIhresGehostetenDiensts* verfügt bereits über eine Produktionsbereitstellung. Ein gehosteter Dienst kann nicht mehrere Produktionsbereitstellungen enthalten. Wiederholen Sie die Anforderung mit einem anderen Clusternamen.
 * **Lösung**: Verwenden Sie einen anderen Clusternamen, und wiederholen Sie die Anforderung.
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-* **Beschreibung**: Der gehostete Dienst *NameIhresGehostetenDiensts* konnte nicht für den Cluster gefunden werden.  
+* **Beschreibung:** Der gehostete Dienst *NameIhresGehostetenDiensts* konnte nicht für den Cluster gefunden werden.  
 * **Lösung**: Wenn der Cluster im Fehlerzustand ist, löschen Sie ihn, und versuchen Sie es erneut.
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-* **Beschreibung**: Dem gehosteten Dienst *NameIhresGehostetenDiensts* wurde keine Bereitstellung zugeordnet.  
+* **Beschreibung:** Dem gehosteten Dienst *NameIhresGehostetenDiensts* wurde keine Bereitstellung zugeordnet.  
 * **Lösung**: Wenn der Cluster im Fehlerzustand ist, löschen Sie ihn, und versuchen Sie es erneut.
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
-* **Beschreibung**: Die Abonnement-ID *IhreAbonnementID* hat keine Kerne mehr übrig, um den Cluster *IhrClusterName* zu erstellen. Erforderlich: *resourcesRequired*, Verfügbar: *resourcesAvailable*.  
+* **Beschreibung:** Die Abonnement-ID *IhreAbonnementID* hat keine Kerne mehr übrig, um den Cluster *IhrClusterName* zu erstellen. Erforderlich: *resourcesRequired*, Verfügbar: *resourcesAvailable*.  
 * **Lösung**: Geben Sie Ressourcen in Ihrem Abonnement frei, oder erhöhen Sie die für das Abonnement verfügbaren Ressourcen, und versuchen Sie erneut, den Cluster zu erstellen.
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
-* **Beschreibung**: Die Abonnement-ID *IhreAbonnementID* hat kein Kontingent für einen neuen gehosteten Dienst, um den Cluster *IhrClusterName* zu erstellen.  
+* **Beschreibung:** Die Abonnement-ID *IhreAbonnementID* hat kein Kontingent für einen neuen gehosteten Dienst, um den Cluster *IhrClusterName* zu erstellen.  
 * **Lösung**: Geben Sie Ressourcen in Ihrem Abonnement frei, oder erhöhen Sie die für das Abonnement verfügbaren Ressourcen, und versuchen Sie erneut, den Cluster zu erstellen.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **Beschreibung**: Auf dem Server ist ein interner Fehler aufgetreten. Wiederholen Sie die Anforderung.  
+* **Beschreibung:** Auf dem Server ist ein interner Fehler aufgetreten. Wiederholen Sie die Anforderung.  
 * **Lösung**: Wiederholen Sie die Anforderung.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-* **Beschreibung**: Der Azure Storage-Standort *DatenRegionName* ist kein gültiger Standort. Stellen Sie sicher, dass die Region korrekt ist, und wiederholen Sie die Anforderung.
+* **Beschreibung:** Der Azure Storage-Standort *DatenRegionName* ist kein gültiger Standort. Stellen Sie sicher, dass die Region korrekt ist, und wiederholen Sie die Anforderung.
 * **Lösung**: Wählen Sie einen Speicherort aus, an dem HDInsight unterstützt wird. Vergewissern Sie sich, dass Ihr Cluster am selben Standort bereitgestellt wird, und wiederholen Sie den Vorgang.
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
-* **Beschreibung**: Ungültige Größe des virtuellen Computers für Datenknoten. Nur die Größe "Large VM" wird für alle Datenknoten unterstützt.  
+* **Beschreibung:** Ungültige Größe des virtuellen Computers für Datenknoten. Nur die Größe "Large VM" wird für alle Datenknoten unterstützt.  
 * **Lösung**: Geben Sie die unterstützte Knotengröße für den Datenknoten an, und wiederholen Sie den Vorgang.
 
 ### <a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode
-* **Beschreibung**: Ungültige Größe des virtuellen Computers für den Hauptknoten. Nur die Größe "ExtraLarge VM" wird für Hauptknoten unterstützt.  
+* **Beschreibung:** Ungültige Größe des virtuellen Computers für Hauptknoten. Nur die Größe "ExtraLarge VM" wird für Hauptknoten unterstützt.  
 * **Lösung**: Geben Sie die unterstützte Knotengröße für den Hauptknoten an, und wiederholen Sie den Vorgang.
 
 ### <a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion
-* **Beschreibung**: Die verwendete Abonnement-ID *IhreAbonnementID* verfügt nicht über ausreichende Berechtigungen, um den Löschvorgang für den Cluster *IhrClusterName* auszuführen.  
+* **Beschreibung:** Die verwendete Abonnement-ID *IhreAbonnementID* verfügt nicht über ausreichende Berechtigungen, um den Löschvorgang für den Cluster *IhrClusterName* auszuführen.  
 * **Lösung**: Wenn der Cluster im Fehlerzustand ist, löschen Sie ihn, und versuchen Sie es erneut.  
 
 ### <a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName
-* **Beschreibung**: Der Blobcontainername *IhrContainername* des externen Speicherkontos ist ungültig. Stellen Sie sicher, dass der Name mit einem Buchstaben beginnt und nur Kleinbuchstaben, Ziffern und Bindestriche enthält.  
+* **Beschreibung:** Der Blobcontainername *IhrContainername* des externen Speicherkontos ist ungültig. Stellen Sie sicher, dass der Name mit einem Buchstaben beginnt und nur Kleinbuchstaben, Ziffern und Bindestriche enthält.  
 * **Lösung**: Geben Sie einen gültigen Blobcontainernamen für das Speicherkonto ein, und wiederholen Sie den Vorgang.
 
 ### <a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey
-* **Beschreibung**: Die Konfiguration für das externe Speicherkonto *NameIhresSpeicherkontos* ist erforderlich, damit Details zum geheimen Schlüssel festgelegt werden können.  
+* **Beschreibung:** Die Konfiguration für das externe Speicherkonto *NameIhresSpeicherkontos* ist erforderlich, damit Details zum geheimen Schlüssel festgelegt werden können.  
 * **Lösung**: Geben Sie einen gültigen geheimen Schlüssel für das Speicherkonto ein, und wiederholen Sie den Vorgang.
 
 ### <a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat
-* **Beschreibung**: Der Versionsheader *IhrVersionsheader* hat nicht das gültige Format JJJJ-MM-TT.  
+* **Beschreibung:** Der Versionsheader *IhrVersionsheader* hat nicht das gültige Format JJJJ-MM-TT.  
 * **Lösung**: Geben Sie den Versionsheader im gültigen Format ein, und wiederholen Sie die Anforderung.
 
 ### <a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
-* **Beschreibung**: Ungültige Clusterkonfiguration. Es wurde mehr als eine Hauptknotenkonfiguration gefunden.  
+* **Beschreibung:** Ungültige Clusterkonfiguration. Es wurde mehr als eine Hauptknotenkonfiguration gefunden.  
 * **Lösung**: Bearbeiten Sie die Konfiguration so, dass nur ein Hauptknoten angegeben ist.
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
-* **Beschreibung**: Der Vorgang konnte nicht innerhalb der zulässigen Zeit oder nach der maximalen Anzahl von Versuchen abgeschlossen werden. Wiederholen Sie die Anforderung.  
+* **Beschreibung:** Der Vorgang konnte nicht innerhalb der zulässigen Zeit oder nach der maximalen Anzahl von Versuchen abgeschlossen werden. Wiederholen Sie die Anforderung.  
 * **Lösung**: Wiederholen Sie die Anforderung.
 
 ### <a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty
-* **Beschreibung**: Der Parameter *IhrParametername* darf nicht null oder leer sein.  
+* **Beschreibung:** Der Parameter *IhrParametername* darf nicht null oder leer sein.  
 * **Lösung**: Geben Sie einen gültigen Wert für den Parameter an.
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **Beschreibung**: Mindestens eine der Eingaben für die Anforderung zur Clustererstellung ist ungültig. Stellen Sie sicher, dass die Eingabewerte korrekt sind, und wiederholen Sie die Anforderung.  
+* **Beschreibung:** Mindestens eine der Eingaben für die Anforderung zur Clustererstellung ist ungültig. Stellen Sie sicher, dass die Eingabewerte korrekt sind, und wiederholen Sie die Anforderung.  
 * **Lösung**: Stellen Sie sicher, dass die Eingabewerte korrekt sind, und wiederholen Sie die Anforderung.
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
-* **Beschreibung**: Die Regionsfunktion ist für die Region *NameIhrerRegion* und Abonnement-ID *IhreAbonnementID* nicht verfügbar.  
-* **Lösung**: Geben Sie eine Region an, die HDInsight-Cluster unterstützt. Öffentlich unterstützte Regionen: Südostasien, Westeuropa, Nordeuropa, USA Ost oder USA West.
+* **Beschreibung:** Die Regionsfunktion ist für die Region *NameIhrerRegion* und Abonnement-ID *IhreAbonnementID* nicht verfügbar.  
+* **Lösung**: Geben Sie eine Region an, die HDInsight-Cluster unterstützt. Öffentlich unterstützten Regionen sind: Asien, Südosten, Westeuropa, Nordeuropa, USA Ost oder USA West.
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
-* **Beschreibung**: Das Speicherkonto *NameIhresSpeicherkontos* befindet sich in der Region *NameAktuellerRegion*. Sie sollte identisch mit der Clusterregion *IhrClusterRegionName*sein.  
+* **Beschreibung:** Das Speicherkonto *NameIhresSpeicherkontos* befindet sich in der Region *NameAktuellerRegion*. Sie sollte identisch mit der Clusterregion *IhrClusterRegionName*sein.  
 * **Lösung**: Geben Sie entweder ein Speicherkonto in der gleichen Region an, in dem sich Ihr Cluster befindet, oder erstellen Sie einen neuen Cluster in der gleichen Region wie das vorhandene Speicherkonto, wenn sich Ihre Daten bereits im Speicherkonto befinden. Wenn Sie das Portal verwenden, wird der Benutzer im Vorhinein über die Benutzeroberfläche über dieses Problem informiert.
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
-* **Beschreibung**: Die angegebene Abonnement-ID *IhreAbonnementID* ist nicht aktiv.  
+* **Beschreibung:** Die angegebene Abonnement-ID *IhreAbonnementID* ist nicht aktiv.  
 * **Lösung**: Aktivieren Sie Ihr Abonnement erneut, oder erwerben Sie ein gültiges Abonnement.
 
 ### <a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound
-* **Beschreibung**: Die Abonnement-ID *IhreAbonnementID* wurde nicht gefunden.  
+* **Beschreibung:** Die Abonnement-ID *IhreAbonnementID* wurde nicht gefunden.  
 * **Lösung**: Vergewissern Sie sich, dass Ihre Abonnement-ID gültig ist, und wiederholen Sie den Vorgang.
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
-* **Beschreibung**: DNS *IhreDnsUrl*konnte nicht aufgelöst werden. Stellen Sie sicher, dass die vollqualifizierte URL für den Blobendpunkt bereitgestellt wird.  
+* **Beschreibung:** DNS *IhreDnsUrl* konnte nicht aufgelöst werden. Stellen Sie sicher, dass die vollqualifizierte URL für den Blobendpunkt bereitgestellt wird.  
 * **Lösung**: Geben Sie eine gültige Blob-URL an. Die URL MUSS uneingeschränkt gültig sein, das heißt, sie muss mit *http://* beginnen und mit *.com* enden.
 
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
-* **Beschreibung**: Der Speicherort der Ressource *IhreDnsUrl*konnte nicht überprüft werden. Stellen Sie sicher, dass die vollqualifizierte URL für den Blobendpunkt bereitgestellt wird.  
+* **Beschreibung:** Der Speicherort der Ressource *IhreDnsUrl* konnte nicht überprüft werden. Stellen Sie sicher, dass die vollqualifizierte URL für den Blobendpunkt bereitgestellt wird.  
 * **Lösung**: Geben Sie eine gültige Blob-URL an. Die URL MUSS uneingeschränkt gültig sein, das heißt, sie muss mit *http://* beginnen und mit *.com* enden.
 
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
-* **Beschreibung**: Die Versionsfunktion ist nicht für Version *AngegebeneVersion* und Abonnement-ID *IhreAbonnementID* verfügbar.  
+* **Beschreibung:** Die Versionsfunktion ist nicht für Version *AngegebeneVersion* und Abonnement-ID *IhreAbonnementID* verfügbar.  
 * **Lösung**: Wählen Sie eine verfügbare Version aus, und wiederholen Sie den Vorgang.
 
 ### <a id="VersionNotSupported"></a>VersionNotSupported
-* **Beschreibung**: Die Version *AngegebeneVersion* wird nicht unterstützt.
+* **Beschreibung:** Die Version *AngegebeneVersion* wird nicht unterstützt.
 * **Lösung**: Wählen Sie eine unterstützte Version aus, und wiederholen Sie den Vorgang.
 
 ### <a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion
-* **Beschreibung**: Die Version *AngegebeneVersion* ist nicht in der Azure-Region *AngegebeneRegion* verfügbar.  
+* **Beschreibung:** Die Version *AngegebeneVersion* ist nicht in der Azure-Region *AngegebeneRegion* verfügbar.  
 * **Lösung**: Wählen Sie eine Version aus, die in der angegebenen Region unterstützt wird, und wiederholen Sie den Vorgang.
 
 ### <a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound
-* **Beschreibung**: Ungültige Clusterkonfiguration. Die erforderliche WASB-Kontokonfiguration wurde in externen Konten nicht gefunden.  
+* **Beschreibung:** Ungültige Clusterkonfiguration. Die erforderliche WASB-Kontokonfiguration wurde in externen Konten nicht gefunden.  
 * **Lösung**: Vergewissern Sie sich, dass das Konto vorhanden ist und ordnungsgemäß in der Konfiguration angegeben wurde, und wiederholen Sie den Vorgang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Debuggen von Tez-Aufträgen in HDInsight mithilfe von Ambari-Ansichten](../hdinsight-debug-ambari-tez-view.md)
-* [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md)
+* [Debuggen von Apache Tez-Aufträgen in HDInsight mithilfe von Apache Ambari-Ansichten](../hdinsight-debug-ambari-tez-view.md)
+* [Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md)
