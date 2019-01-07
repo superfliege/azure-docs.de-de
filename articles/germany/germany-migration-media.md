@@ -1,42 +1,53 @@
 ---
-title: Migration von Media-Ressourcen von Azure Deutschland zu Azure weltweit
-description: Dieser Artikel bietet Unterstützung bei der Migration von Media-Ressourcen von Azure Deutschland zu Azure weltweit.
+title: Migrieren von Azure-Medienressourcen von Azure Deutschland zu Azure weltweit
+description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Medienressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
+ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 238d87143597809e12155084fc755c032fab278a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9c1426391edb42ecc3e74ee84649bb69196c45dd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346250"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969036"
 ---
-# <a name="migration-of-media-resources-from-azure-germany-to-global-azure"></a>Migration von Media-Ressourcen von Azure Deutschland zu Azure weltweit
+# <a name="migrate-media-resources-to-global-azure"></a>Migrieren von Medienressourcen zu Azure weltweit
 
-Dieser Artikel unterstützt Sie bei der Migration von Azure Media-Ressourcen von Azure Deutschland zu Azure weltweit.
+Dieser Artikel enthält Informationen dazu, wie Sie Azure-Medienressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
 ## <a name="media-services"></a>Media Services
 
-In Media Services konfigurieren Sie Ihr eigenes Speicherkonto und alle Medienobjekte. Erstellen Sie ein neues Media Services-Konto anhand der Dokumentation, die unter den folgenden Links bereitgestellt wird. Laden Sie die entsprechenden Medienartefakte erneut, und führen Sie die Codierung und das Streamen unter dem neuen Media Services-Konto entsprechend aus.
+In Azure Media Services konfigurieren Sie Ihr eigenes Speicherkonto und alle Medienobjekte. Erstellen Sie zunächst ein neues Media Services-Konto in Azure weltweit. Laden Sie dann die entsprechenden Medienartefakte erneut, und führen Sie das Codieren und das Streamen unter dem neuen Media Services-Konto aus.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu Media Services anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/media-services/#step-by-step-tutorials) auf.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Media Services](https://docs.microsoft.com/azure/media-services/#step-by-step-tutorials) durcharbeiten.
+- Lesen Sie die [Übersicht über Media Services](../media-services/previous/media-services-overview.md).
+- Erfahren Sie, wie Sie [ein Media Services-Konto erstellen](../media-services/previous/media-services-portal-create-account.md).
 
-### <a name="references"></a>Referenzen
+## <a name="media-player"></a>Media Player
 
-- [Media Services: Übersicht](../media-services/previous/media-services-overview.md)
-- [Erstellen eines Media Services-Kontos](../media-services/previous/media-services-portal-create-account.md)
+Sie können mehrere Endpunkte in Azure Media Player auswählen. Sie können Ihre Inhalte von Azure Deutschland- oder Azure-weltweit-Endpunkten streamen.
 
-## <a name="azure-media-player"></a>Azure Media Player
+Weitere Informationen finden Sie unter [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html).
 
-Mit Azure Media Player können Sie verschiedene Endpunkte auswählen. Sie können Ihre Inhalte von Azure Deutschland- oder Azure-weltweit-Endpunkten streamen.
+## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="references"></a>Referenzen
+Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
 
-- [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html)
+- [Compute](./germany-migration-compute.md)
+- [Netzwerk](./germany-migration-networking.md)
+- [Speicher](./germany-migration-storage.md)
+- [Web](./germany-migration-web.md)
+- [Datenbanken](./germany-migration-databases.md)
+- [Analyse](./germany-migration-analytics.md)
+- [IoT](./germany-migration-iot.md)
+- [Integration](./germany-migration-integration.md)
+- [Identität](./germany-migration-identity.md)
+- [Sicherheit](./germany-migration-security.md)
+- [Verwaltungstools](./germany-migration-management-tools.md)

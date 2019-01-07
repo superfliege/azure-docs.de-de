@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: f409f70a49e4592bc5fd83a0f8c9fb9311e6371b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c4b2888075ab3df277d66383003ff8f6c1fef27
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647068"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013433"
 ---
 # <a name="azure-germany-database-services"></a>Datenbankdienste von Azure Deutschland
 ## <a name="sql-database"></a>SQL-Datenbank
-Azure SQL-Datenbank V12 ist allgemein in Azure Deutschland verfügbar. Anleitungen zur Konfiguration der Metadatensichtbarkeit und bewährte Methoden für den Schutz finden Sie unter [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589.aspx) und in der [SQL-Datenbank-Dokumentation](../sql-database/index.yml).
+Azure SQL-Datenbank V12 ist allgemein in Azure Deutschland verfügbar. Anleitungen zur Konfiguration der Metadatensichtbarkeit und bewährte Methoden für den Schutz finden Sie unter [Sicherheitscenter für SQL Server-Datenbank-Engine und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589.aspx) und in der [SQL-Datenbank-Dokumentation](../sql-database/index.yml).
 
 ### <a name="variations"></a>Abweichungen
 Die Adresse für SQL-Datenbank in Azure Deutschland unterscheidet sich von der Adresse in der globalen Azure-Umgebung:
@@ -33,11 +33,11 @@ Die Adresse für SQL-Datenbank in Azure Deutschland unterscheidet sich von der A
 | SQL-Datenbank | *.database.windows.net | *.database.cloudapi.de |
 
 
-## <a name="azure-redis-cache"></a>Azure Redis Cache
-Einzelheiten zu Azure Redis Cache und seiner Verwendung finden Sie in der [Dokumentation zu Redis Cache](../redis-cache/index.md).
+## <a name="azure-cache-for-redis"></a>Azure Cache for Redis
+Einzelheiten zu Azure Cache for Redis und seiner Verwendung finden Sie in der [Azure Cache for Redis Documentation](../azure-cache-for-redis/index.md).
 
 ### <a name="variations"></a>Abweichungen
-Bei Azure Deutschland werden für den Zugriff auf und die Verwaltung von Azure Redis Cache andere URLs verwendet als in der globalen Azure-Umgebung:
+Bei Azure Deutschland werden für den Zugriff auf und die Verwaltung von Azure Cache for Redis andere URLs verwendet als in der globalen Azure-Umgebung:
 
 | Dienstart | Globale Azure-Umgebung | Azure Deutschland |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ Bei Azure Deutschland werden für den Zugriff auf und die Verwaltung von Azure R
 | Azure-Portal | https://portal.azure.com | https://portal.microsoftazure.de |
 
 > [!NOTE]
-> Ihre gesamten Skripts und Ihr Code müssen die richtigen Endpunkte und Umgebungen berücksichtigen. Weitere Informationen finden Sie in [Verwalten von Azure-Redis-Cache mit Azure PowerShell](../redis-cache/cache-howto-manage-redis-cache-powershell.md) unter „So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her“.
+> Ihre gesamten Skripts und Ihr Code müssen die richtigen Endpunkte und Umgebungen berücksichtigen. Weitere Informationen finden Sie in [Verwalten von Azure Cache for Redis mit Azure PowerShell](../azure-cache-for-redis/cache-howto-manage-redis-cache-powershell.md) unter „So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her“.
 >
 >
 

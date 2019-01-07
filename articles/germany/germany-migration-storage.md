@@ -1,54 +1,54 @@
 ---
-title: Migration von Azure Deutschland Storage-Ressourcen zu Azure weltweit
-description: Dieser Artikel bietet Unterstützung bei der Migration von Storage-Ressourcen von Azure Deutschland zu Azure weltweit.
+title: Migration von Azure-Speicherressourcen von Azure Deutschland zu Azure weltweit
+description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Speicherressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
+ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 43d5429134b834483e549b71162f63e110f4436e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 60d49d0983189d72f1463a5e55a14b767e041e21
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974366"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957463"
 ---
-# <a name="migration-from-azure-germany-storage-resources-to-global-azure"></a>Migration von Azure Deutschland Storage-Ressourcen zu Azure weltweit
+# <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 
-Dieser Artikel unterstützt Sie bei der Migration von Azure Storage-Ressourcen von Azure Deutschland zu Azure weltweit.
+Dieser Artikel enthält Informationen dazu, wie Sie Azure-Speicherressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
 ## <a name="blobs"></a>Blobs (in englischer Sprache)
 
-AzCopy ist ein kostenloses Tool, mit dem Sie Blobs, Dateien und Tabellen kopieren können. AzCopy funktioniert innerhalb von Azure, vom lokalen Computer zu Azure und von Azure zum lokalen Computer. Verwenden Sie AzCopy für Ihre Migration zum direkten Kopieren von Blobs zwischen Azure Deutschland und Azure weltweit.
+AzCopy ist ein kostenloses Tool, mit dem Sie Blobs, Dateien und Tabellen kopieren können. AzCopy kann für Azure-zu-Azure-, Lokal-zu-Azure- und Azure-zu-lokal-Migrationen verwendet werden. Verwenden Sie AzCopy für Ihre Migration, um Blobs direkt von Azure Deutschland nach Azure weltweit zu kopieren.
 
-Wenn Sie nicht verwaltete Datenträger für den virtuellen Quellcomputer nutzen, verwenden Sie AzCopy zum Kopieren der `.vhd`-Dateien in die Zielumgebung. Andernfalls müssen Sie einige Schritte im Vorfeld ausführen, siehe [Empfehlungen für Managed Disks](#managed-disks) weiter unten.
+Wenn Sie keine verwalteten Datenträger für Ihren virtuellen Quellcomputer nutzen, verwenden Sie AzCopy, um die VHD-Dateien in die Zielumgebung zu kopieren. Andernfalls müssen Sie einige Schritte vorab ausführen. Weitere Informationen finden Sie unter [Empfehlungen für verwaltete Datenträger](#managed-disks).
 
-Das folgende kurze Beispiel zeigt die Funktionsweise von AzCopy. Die vollständige Referenz finden Sie in der [AzCopy-Dokumentation](../storage/common/storage-use-azcopy.md).
+Im folgenden Beispiel wird die Arbeitsweise von AzCopy veranschaulicht. Eine vollständige Referenz finden Sie in der [AzCopy-Dokumentation](../storage/common/storage-use-azcopy.md).
 
-AzCopy verwendet die Begriffe *Source* und *Dest*, ausgedrückt als URIs. URIs für Azure Deutschland weisen immer das folgende Format auf:
+AzCopy verwendet die Begriffe **Source** und **Dest**, ausgedrückt als URIs. URIs für Azure Deutschland weisen immer das folgende Format auf:
 
 ```http
 https://<storageaccountname>.blob.core.cloudapi.de/<containername>/<blobname>
 ```
 
-Für Azure weltweit:
+URIs für Azure weltweit weisen immer das folgende Format auf:
 
 ```http
 https://<storageaccountname>.blob.core.windows.net/<containername>/<blobname>
 ```
 
-Sie erhalten die drei Teile (*storageaccountname*, *containername* und *blobname*) für den URI über das Portal mit PowerShell oder der CLI. Der Name des Blobs kann Teil des URI sein oder als ein Muster (z.B. *vm121314.vhd*) angegeben werden.
+Sie erhalten die drei Teile des URIs (*storageaccountname*, *containername* und *blobname*) über das Portal, durch Verwenden von PowerShell oder durch Verwenden der Azure-Befehlszeilenschnittstelle. Der Name des Blobs kann Teil des URIs sein, oder er kann als ein Muster (z. B. *vm121314.vhd*) angegeben sein.
 
-Außerdem benötigen Sie die Speicherkontoschlüssel, um auf das Speicherkonto zugreifen zu können. Rufen Sie sie über das Portal, PowerShell oder die CLI ab. Beispiel: 
+Außerdem benötigen Sie die Speicherkontoschlüssel, um auf das Azure Storage-Konto zugreifen zu können. Rufen Sie diese über das Portal, durch Verwenden von PowerShell oder durch Verwenden der Befehlszeilenschnittstelle ab. Beispiel: 
 
 ```powershell
 Get-AzureRmStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
 ```
 
-Wie immer benötigen Sie nur einen der beiden Schlüssel, die für jedes Speicherkonto verfügbar sind.
+Wie immer benötigen Sie nur einen der beiden Schlüssel für jedes Speicherkonto.
 
 Beispiel:
 URI-Teil | Beispielwert
@@ -59,66 +59,52 @@ Quellblob | `vm-121314.vhd`
 Ziel-storageAccount | `migratetarget`
 Zielcontainer | `targetcontainer`
 
-Dieser Befehl kopiert eine virtuelle Festplatte aus Azure Deutschland in Azure weltweit (die Schlüssel wurden zur besseren Lesbarkeit gekürzt):
+Dieser Befehl kopiert eine virtuelle Festplatte aus Azure Deutschland in Azure weltweit (die Schlüssel wurden gekürzt, um die Lesbarkeit zu verbessern):
 
 ```cmd
 azcopy -v /source:https://migratetest.blob.core.cloudapi.de/vhds /sourcekey:"0LN...w==" /dest:https://migratetarget.blob.core.windows.net/targetcontainer /DestKey:"o//ucDi5TN...w==" /Pattern:vm-121314.vhd
 ```
 
-Um eine konsistente Kopie der VHD zu erhalten, fahren Sie den virtuellen Computer vor dem Kopiervorgang herunter, und planen Sie eine Ausfallzeit ein. Nach dem Kopieren [befolgen Sie diese Anweisungen](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks), um Ihren virtuellen Computer in der Zielumgebung erneut zu erstellen.
+Um eine konsistente Kopie der VHD zu erhalten, fahren Sie den virtuellen Computer herunter, bevor Sie die VHD kopieren. Planen Sie einige Ausfallzeit für den Kopiervorgang ein. Nachdem die VHD kopiert ist, [erstellen Sie Ihren virtuellen Computer in der Zielumgebung neu](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
-### <a name="links"></a>Links
+Weitere Informationen finden Sie unter:
 
-- [AZCopy-Dokumentation](../storage/common/storage-use-azcopy.md)
-- [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
+- Lesen Sie die [AZCopy-Dokumentation](../storage/common/storage-use-azcopy.md).
+- Erfahren Sie, wie Sie [einen virtuellen Computer aus wiederhergestellten Datenträgern erstellen](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
+## <a name="managed-disks"></a>Managed Disks
 
+Azure Managed Disks vereinfacht die Datenträgerverwaltung für Azure Infrastructure-as-a-Service-VMs (IaaS-VMs), indem die Speicherkonten verwaltet werden, die dem VM-Datenträger zugeordnet sind. 
 
+Da Sie keinen direkten Zugriff auf die VHD-Datei haben, können Sie Tools wie AzCopy nicht direkt dazu verwenden, Ihre Dateien zu kopieren (siehe [Blobs](#blobs)). Die Problemumgehung besteht darin, den verwalteten Datenträger zunächst zu exportieren, indem Sie einen temporären Shared Access Signature-URI abrufen, und den Datenträger dann mit diesen Informationen herunterzuladen oder zu kopieren. In den folgenden Abschnitten wird in einem Beispiel veranschaulicht, wie der Shared Access Signature-URI abgerufen wird, und wie er verwendet werden kann.
 
+### <a name="step-1-get-the-shared-access-signature-uri"></a>Schritt 1: Abrufen des Shared Access Signature-URIs
 
-
-
-
-
-
-
-
-
-
-
-## <a name="disks"></a>Datenträger
-
-Azure Managed Disks vereinfacht die Datenträgerverwaltung für Azure IaaS-VMs, indem die Speicherkonten verwaltet werden, die dem VM-Datenträger zugeordnet sind. Da Sie keinen direkten Zugriff auf die `.vhd`-Datei besitzen, können Sie Tools wie AzCopy nicht direkt zum Kopieren der Dateien verwenden (siehe [Speichermigration](#blobs)). Die Problemumgehung besteht darin, zunächst den verwalteten Datenträger zu exportieren, indem Sie einen temporären SAS-URI abrufen, und ihn dann mit diesen Informationen herunterzuladen oder zu kopieren. Das folgende kurze Beispiel zeigt das Abrufen des SAS-URI und die weitere Vorgehensweise:
-
-### <a name="step-1-get-sas-uri"></a>Schritt 1: Abrufen des SAS-URI
-
-- Navigieren Sie zum Portal, suchen Sie nach Ihrem verwalteten Datenträger (in der gleichen Ressourcengruppe wie Ihr virtueller Computer, der Ressourcentyp ist „Datenträger“).
-- Suchen Sie in der `Overview` nach der Schaltfläche `Export` im oberen Menüband, und klicken Sie auf diese (Sie müssen Ihren virtuellen Computer zuerst herunterfahren und die Zuordnung aufheben oder ihn trennen).
-- Definieren Sie eine Zeit, zu der der URI abläuft (der Standardwert ist 3.600 Sekunden).
-- Generieren Sie die URL (dies sollte nur wenige Sekunden in Anspruch nehmen).
-- Kopieren Sie die URL (sie wird nur ein Mal angezeigt).
+1. Suchen Sie im Portal nach Ihrem verwalteten Datenträger. (Es befindet sich in derselben Ressourcengruppe wie Ihr virtueller Computer. Der Ressourcentyp ist **Datenträger**.)
+1. Wählen Sie auf der Seite **Übersicht** die Schaltfläche **Exportieren** im oberen Menü aus (Sie müssen zuerst Ihren virtuellen Computer herunterfahren und dessen Zuordnung aufheben, oder Sie müssen den virtuellen Computer trennen).
+1. Definieren Sie eine Zeit, nach der der URI abgelaufen sein soll (der Standardwert ist 3.600 Sekunden).
+1. Generieren Sie eine URL (dieser Schritt sollte nur wenige Sekunden dauern).
+1. Kopieren Sie die URL (sie wird nur einmal angezeigt).
 
 ### <a name="step-2-azcopy"></a>Schritt 2: AzCopy
 
-Beispiele für die Verwendung von AzCopy finden Sie weiter oben in diesem Artikel unter [Blobmigration](#blobs). Verwenden Sie AzCopy (oder ein anderes Tool) zum Kopieren des Datenträgers direkt aus der Quellumgebung in die Zielumgebung. Für AzCopy müssen Sie den URI in den Basis-URI und den SAS-Bestandteil aufteilen und dabei mit dem Zeichen „?“ beginnen. Wenn das Portal den folgenden SAS-URI bereitstellt:
+Beispiele zur Verwendung von AzCopy finden Sie unter [Blobs](#blobs). Verwenden Sie AzCopy (oder ein vergleichbares Tool), um den Datenträger direkt aus Ihrer Quellumgebung in die Zielumgebung zu kopieren. In AzCopy müssen Sie den URI in den Basis-URI und den SAS-Bestandteil (Shared Access Signature) aufteilen. Der SAS-Bestandteil des URIs beginnt mit dem Zeichen „**?**“. Das Portal stellt diesen URI für den SAS-URI bereit:
 
 ```http
 https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/abcd?sv=2017-04-17&sr=b&si=22970153-4c56-47c0-8cbb-156a24b6e4b5&sig=5Hfu0qMw9rkZf6mCjuCE4VMV6W3IR8FXQSY1viji9bg%3D>
 ```
 
-Lauten die Quellparameter für AzCopy folgendermaßen:
+Die folgenden Befehle zeigen die Quellparameter für AzCopy:
 
 ```cmd
 /source:"https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/abcd"
 ```
 
-and
-
 ```cmd
 /sourceSAS:" ?sv=2017-04-17&sr=b&si=22970153-4c56-47c0-8cbb-156a24b6e4b5&sig=5Hfu0qMw9rkZf6mCjuCE4VMV6W3IR8FXQSY1viji9bg%3D"
 ```
 
-Und die vollständige Befehlszeile:
+Hier ist der vollständige Befehl:
 
 ```cmd
 azcopy -v /source:"https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/abcd" /sourceSAS:"?sv=2017-04-17&sr=b&si=22970153-4c56-47c0-8cbb-156a24b6e4b5&sig=5Hfu0qMw9rkZf6mCjuCE4VMV6W3IR8FXQSY1viji9bg%3D" /dest:"https://migratetarget.blob.core.windows.net/targetcontainer/newdisk.vhd" /DestKey:"o//ucD... Kdpw=="
@@ -126,23 +112,40 @@ azcopy -v /source:"https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/ab
 
 ### <a name="step-3-create-a-new-managed-disk-in-the-target-environment"></a>Schritt 3: Erstellen eines neuen verwalteten Datenträgers in der Zielumgebung
 
-Es gibt mehrere Möglichkeiten, einen neuen verwalteten Datenträger zu erstellen, z.B. über das Portal:
+Sie haben mehrere Optionen zum Erstellen eines neuen verwalteten Datenträgers. Die Vorgehensweise im Azure-Portal sieht wie folgt aus:
 
-- Wählen Sie `New` > `Managed Disk` > `Create` im Portal aus.
-- Benennen Sie den neuen Datenträger.
-- Wählen Sie wie gewohnt eine Ressourcengruppe aus.
-- Wählen Sie unter `Source type` die Option *Speicherblob* aus, und kopieren Sie den Ziel-URI aus den AzCopy-Befehl, oder durchsuchen Sie die Optionen, um eine Auswahl zu treffen.
-- Wenn Sie einen Betriebssystem-Datenträger kopiert haben, wählen Sie den Betriebssystemtyp aus. Klicken Sie andernfalls auf `Create`.
+1. Wählen Sie im Portal den Befehl **Neu** > **Verwalteter Datenträger** > **Erstellen** aus.
+1. Geben Sie einen Namen für den neuen Datenträger ein.
+1. Wählen Sie eine Ressourcengruppe aus.
+1. Wählen Sie unter **Quelltyp** die Option **Speicherblob** aus. Kopieren Sie nun den Ziel-URI aus dem AzCopy-Befehl, oder navigieren Sie zum Ziel-URI, um ihn auszuwählen.
+1. Wenn Sie einen Betriebssystemdatenträger kopiert haben, wählen Sie den Typ **Betriebssystem** aus. Für einen anderen Datenträgertyp wählen Sie **Erstellen** aus.
 
 ### <a name="step-4-create-the-vm"></a>Schritt 4: Erstellen des virtuellen Computers
 
-Auch hier stehen verschiedene Möglichkeiten zum Erstellen eines virtuellen Computers mit diesem neuen verwalteten Datenträger zur Verfügung.
+Wie bereits erwähnt, gibt es mehrere Möglichkeiten, einen virtuellen Computer durch Verwenden dieses neuen verwalteten Datenträgers zu erstellen. Es folgen zwei Optionen:
 
-Wählen Sie im Portal den Datenträger aus, und klicken Sie im oberen Menüband auf `Create VM`. Definieren Sie die anderen Parameter Ihres virtuellen Computers wie gewohnt.
+- Wählen Sie im Portal den Datenträger aus, und wählen Sie dann **Virtuellen Computer erstellen** aus. Definieren Sie die anderen Parameter Ihres virtuellen Computers wie gewohnt.
+- Informationen zur Vorgehensweise mit PowerShell finden Sie unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
-Für PowerShell folgen Sie den Anweisungen [in diesem Artikel](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks), um einen virtuellen Computer von einem wiederhergestellten Datenträger zu erstellen.
+Weitere Informationen finden Sie unter:
 
-### <a name="links"></a>Links
+- Erfahren Sie, wie Sie [über die API](/rest/api/compute/disks/grantaccess) auf den Datenträger exportieren, indem Sie einen Shared Access Signature-URI abrufen. 
+- Erfahren Sie, wie Sie einen verwalteten Datenträger [über die API](/rest/api/compute/disks/createorupdate#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription.) aus einem nicht verwalteten Blob erstellen.
 
-- Exportieren auf den Datenträger [über die API](/rest/api/compute/disks/grantaccess) durch Abrufen eines SAS-URI 
-- Erstellen eines verwalteten Datenträgers [über die API](/rest/api/compute/disks/createorupdate#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription.) aus einem nicht verwalteten Blob
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
+
+- [Compute](./germany-migration-compute.md)
+- [Netzwerk](./germany-migration-networking.md)
+- [Web](./germany-migration-web.md)
+- [Datenbanken](./germany-migration-databases.md)
+- [Analyse](./germany-migration-analytics.md)
+- [IoT](./germany-migration-iot.md)
+- [Integration](./germany-migration-integration.md)
+- [Identität](./germany-migration-identity.md)
+- [Sicherheit](./germany-migration-security.md)
+- [Verwaltungstools](./germany-migration-management-tools.md)
+- [Medien](./germany-migration-media.md)
+

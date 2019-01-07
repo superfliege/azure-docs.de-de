@@ -1,110 +1,94 @@
 ---
-title: Migration von Security-Ressourcen von Azure Deutschland zu Azure weltweit
-description: Dieser Artikel bietet Unterstützung bei der Migration von Security-Ressourcen von Azure Deutschland zu Azure weltweit.
+title: Migrieren von Azure-Sicherheitsressourcen von Azure Deutschland zu Azure weltweit
+description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Sicherheitsressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
+ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: ef4582d3e542714b95c8ffd34edeac4051045268
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4802c56667c6878243a30201b08b3f5e4b0a2fc0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346254"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965727"
 ---
-# <a name="migration-of-security-resources-from-azure-germany-to-global-azure"></a>Migration von Security-Ressourcen von Azure Deutschland zu Azure weltweit
+# <a name="migrate-security-resources-to-global-azure"></a>Migrieren von Sicherheitsressourcen zu Azure weltweit
 
-Dieser Artikel unterstützt Sie bei der Migration von Azure Security-Ressourcen von Azure Deutschland zu Azure weltweit.
+Dieser Artikel enthält Informationen dazu, wie Sie Azure-Sicherheitsressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-Dieser Dienst wird unter [Migration von Identitäten](./germany-migration-identity.md#azure-active-directory) behandelt.
-
-
-
-
+Weitere Informationen zum Migrieren von Azure Active Directory finden Sie unter [Migration von Identity-Ressourcen von Azure Deutschland zu Azure weltweit](./germany-migration-identity.md#azure-active-directory).
 
 ## <a name="key-vault"></a>Key Vault
 
+Einige Features von Azure Key Vault können nicht von Azure Deutschland zu Azure weltweit migriert werden.
+
 ### <a name="encryption-keys"></a>Verschlüsselungsschlüssel
 
-Verschlüsselungsschlüssel können nicht migriert werden. Erstellen Sie neue Schlüssel in der Zielregion, und verwenden Sie diese, um die Zielressource (Storage, SQL-Datenbank usw.) zu schützen. Migrieren Sie dann Daten sicher aus der alten Region zur neuen Region.
+Verschlüsselungsschlüssel können nicht migriert werden. Erstellen Sie neue Schlüssel in der Zielregion zu, und verwenden Sie dann diese Schlüssel, um die Zielressource (z. B. Azure Storage oder Azure SQL-Datenbank) zu schützen. Migrieren Sie die Daten sicher aus der alten Region in die neue Region.
 
 ### <a name="application-secrets"></a>Anwendungsgeheimnisse
 
-Anwendungsgeheimnisse sind Zertifikate, Speicherkontoschlüssel und andere anwendungsbezogene Geheimnisse.
+Anwendungsgeheimnisse sind Zertifikate, Speicherkontoschlüssel und andere anwendungsbezogene Geheimnisse. Während einer Migration erstellen Sie zunächst einen neuen Schlüsseltresor in Azure weltweit. Danach führen Sie eine der folgenden Aktionen aus:
 
-- Erstellen Sie einen neuen KeyVault in Azure weltweit.
-- Erstellen Sie neue Anwendungsgeheimnisse, **oder**
-- lesen Sie die aktuellen Geheimnisse in Azure Deutschland, und geben Sie den Wert in den neuen Tresor ein.
+- Erstellen Sie neue Anwendungsgeheimnisse.
+- Lesen Sie die aktuellen Geheimnisse in Azure Deutschland, und geben Sie den Wert dann in den neuen Tresor ein.
 
 ```powershell
 Get-AzureKeyVaultSecret -vaultname mysecrets -name Deploydefaultpw
 ```
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-Frischen Sie Ihre Kenntnisse zu Key Vault anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/key-vault/#step-by-step-tutorials) auf.
-
-### <a name="references"></a>Referenzen
-
-- [Key Vault: Übersicht](../key-vault/key-vault-overview.md)
-- [KeyVault-PowerShell-Cmdlets](/powershell/module/azurerm.keyvault/?view=azurermps-6.5.0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Key Vault](https://docs.microsoft.com/azure/key-vault/#step-by-step-tutorials) durcharbeiten.
+- Lesen Sie die [Übersicht über Key Vault](../key-vault/key-vault-overview.md).
+- Lesen Sie die Referenz zu den [PowerShell-Cmdlets für Key Vault](/powershell/module/azurerm.keyvault/?view=azurermps-6.5.0).
 
 ## <a name="vpn-gateway"></a>VPN Gateway
 
-Die Migration von VPN Gateways zwischen Azure Deutschland und Azure weltweit wird zurzeit nicht unterstützt. Es wird empfohlen, ein neues VPN Gateway zu erstellen und zu konfigurieren.
+Das Migrieren einer Azure VPN Gateway-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, in Azure weltweit eine neue VPN Gateway-Instanz zu erstellen und zu konfigurieren.
 
-Erfassen Sie Informationen zu Ihrer aktuellen VPN Gatewaykonfiguration über das Portal oder mithilfe von PowerShell. Es gibt eine Reihe von Cmdlets, die mit `Get-AzureRmVirtualNetworkGateway*` beginnen.
+Informationen zu Ihrer aktuellen VPN Gateway-Konfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzureRmVirtualNetworkGateway*` beginnen.
 
-Vergessen Sie nicht, Ihre lokale Konfiguration zu aktualisieren und vorhandene Regeln für die alten IP-Bereiche zu löschen, sobald Sie Ihre Azure-Netzwerkumgebung aktualisiert haben.
+Stellen Sie sicher, dass Sie Ihre lokale Konfiguration aktualisieren. Löschen Sie auch alle vorhandenen Regeln für die alten IP-Adressbereiche, nachdem Sie Ihre Azure-Netzwerkumgebung aktualisiert haben.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu VPN Gateways anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials) auf.
-
-### <a name="references"></a>Referenzen
-
-- [Erstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) mit dem VPN Gateway
-- PowerShell-Cmdlets [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway?view=azurermps-6.5.0)
-- Blog: [Erstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/) zwischen Azure Deutschland und Azure weltweit
- 
-
-
-
-
-
-
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials) durcharbeiten.
+- Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
+- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway?view=azurermps-6.5.0).
+- Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoftcom/ralfwi/2017/02/02/connecting-clouds/).
+  
 ## <a name="application-gateway"></a>Application Gateway
 
-Die Migration von Application Gateways zwischen Azure Deutschland und Azure weltweit wird zurzeit nicht unterstützt. Es wird empfohlen, ein neues Gateway zu erstellen und zu konfigurieren.
+Das Migrieren einer Azure Application Gateway-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, in Azure weltweit ein neues Gateway zu erstellen und zu konfigurieren.
 
-Erfassen Sie Informationen zu Ihrer aktuellen Gatewaykonfiguration über das Portal oder mithilfe von PowerShell. Es gibt eine Reihe von Cmdlets, die mit `Get-AzureRmApplicationGateway*` beginnen.
+Informationen zu Ihrer aktuellen Gatewaykonfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzureRmApplicationGateway*` beginnen.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu Application Gateways anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/application-gateway/#step-by-step-tutorials) auf.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Application Gateway](https://docs.microsoft.com/azure/application-gateway/#step-by-step-tutorials) durcharbeiten.
+- Im Artikel [Erstellen eines Application Gateways](../application-gateway/quick-create-portal.md) finden Sie weitere Informationen zu diesem Thema.
+- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzureRmApplicationGateway](/powershell/module/azurerm.network/get-azurermapplicationgateway?view=azurermps-6.5.0).
 
-### <a name="references"></a>Referenzen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines Application Gateways](../application-gateway/quick-create-portal.md)
-- PowerShell-Cmdlets [Get-AzureRmApplicationGateway](/powershell/module/azurerm.network/get-azurermapplicationgateway?view=azurermps-6.5.0)
+Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
+
+- [Compute](./germany-migration-compute.md)
+- [Netzwerk](./germany-migration-networking.md)
+- [Speicher](./germany-migration-storage.md)
+- [Web](./germany-migration-web.md)
+- [Datenbanken](./germany-migration-databases.md)
+- [Analyse](./germany-migration-analytics.md)
+- [IoT](./germany-migration-iot.md)
+- [Integration](./germany-migration-integration.md)
+- [Identität](./germany-migration-identity.md)
+- [Verwaltungstools](./germany-migration-management-tools.md)
+- [Medien](./germany-migration-media.md)
 

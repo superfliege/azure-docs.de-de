@@ -1,6 +1,6 @@
 ---
-title: Migration von Datenbankressourcen von Azure Deutschland zu Azure weltweit
-description: Dieser Artikel bietet Unterstützung bei der Migration von Datenbankressourcen von Azure Deutschland zu Azure weltweit.
+title: Migrieren von Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit
+description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
 cloud: Azure Germany
@@ -9,138 +9,135 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: e49a4d8ab4876d2351efdbb7c47a7a9063f31229
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 946b4e77243b194e7fd3e27981aba442094a40f1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243565"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323124"
 ---
-# <a name="migration-of-database-resources-from-azure-germany-to-global-azure"></a>Migration von Datenbankressourcen von Azure Deutschland zu Azure weltweit
+# <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
-Dieser Artikel unterstützt Sie bei der Migration von Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit.
+Dieser Artikel enthält Informationen dazu, wie Sie Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
-## <a name="azure-sql-database"></a>Azure SQL-Datenbank
+## <a name="sql-database"></a>SQL-Datenbank
 
-Um Azure SQL-Datenbanken zu migrieren, können Sie (für kleinere Workloads) die Exportfunktion verwenden, um eine BACPAC-Datei zu erstellen. Eine BACPAC-Datei ist eine komprimierte Datei (ZIP-Datei) mit Metadaten und Daten aus der SQL Server-Datenbank. Nach der Erstellung können Sie sie in die Zielumgebung kopieren (z.B. mit AzCopy) und die Importfunktion zum erneuten Erstellen der Datenbank verwenden. Beachten Sie die folgenden Überlegungen (weitere Informationen finden Sie in den unten angegebenen Links):
+Um kleinere Azure SQL-Datenbank-Workloads zu migrieren, verwenden Sie die Exportfunktion, um eine BACPAC-Datei zu erstellen. Eine BACPAC-Datei ist eine komprimierte Datei (ZIP-Datei), die Metadaten und die Daten aus der SQL Server-Datenbank enthält. Nachdem Sie die BACPAC-Datei erstellt haben, können Sie die Datei in die Zielumgebung kopieren (z.B. mit AzCopy) und die Importfunktion verwenden, um die Datenbank erneut zu erstellen. Beachten Sie die folgenden Aspekte:
 
-- Damit ein Export transaktionskonsistent ist, stellen Sie sicher, dass entweder
-  - während des Exports keine Schreibaktivität auftritt oder
-  - der Export aus einer transaktionskonsistenten Kopie der Azure SQL-Datenbank erfolgt.
-- Für den Export in Blobspeicher ist die Größe der BACPAC-Datei auf 200 GB beschränkt. Führen Sie für größere BACPAC-Datei einen Export in lokalen Speicher aus.
-- Falls der Exportvorgang aus der Azure SQL-Datenbank länger als 20 Stunden dauert, wird er unter Umständen abgebrochen. Suchen Sie in den folgenden Links nach Hinweisen, wie Sie die Leistung erhöhen können.
+- Damit ein Export im Hinblick auf Transaktionen konsistent ist, müssen Sie sicherstellen, dass eine der folgenden Bedingungen zutrifft:
+  - Während des Exports tritt keine Schreibaktivität auf.
+  - Sie exportieren aus einer bezüglich Transaktionen konsistenten Kopie Ihrer Azure SQL-Datenbank.
+- Für einen Export in Azure-Blobspeicher ist die Größe der BACPAC-Datei auf 200 GB beschränkt. Führen Sie für größere BACPAC-Datei einen Export in lokalen Speicher aus.
+- Falls der Exportvorgang aus der SQL-Datenbank länger als 20 Stunden dauert, wird der Vorgang möglicherweise abgebrochen. Suchen Sie in den folgenden Artikeln nach Tipps, wie die Leistung gesteigert werden kann.
 
 > [!NOTE]
-> Die Verbindungszeichenfolge ändert sich, da sich der DNS-Name des Servers ändert.
+> Die Verbindungszeichenfolge ist nach dem Exportvorgang geändert, da der DNS-Name des Servers während des Exports geändert wird.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- [Exportieren der Datenbank in eine BACPAC-Datei](../sql-database/sql-database-export.md)
-- [Importieren der BACPAC-Datei in eine Datenbank](../sql-database/sql-database-import.md)
-
-### <a name="references"></a>Referenzen
-
-- [Dokumentation zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/)
-
-
-
-
-
-
+- Erfahren Sie, wie Sie [eine Datenbank in eine BACPAC-Datei exportieren](../sql-database/sql-database-export.md).
+- Erfahren Sie, wie Sie [eine BACPAC-Datei in eine neue Datenbank importieren](../sql-database/sql-database-import.md).
+- Lesen Sie die [Dokumentation zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/).
 
 ## <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
-Es gibt keine speziellen Migrationsoptionen für SQL Data Warehouse. Befolgen Sie die Anweisungen unter [Azure SQL-Datenbank](#azure-sql-database).
-
-
-
-
-
-
+Um Azure SQL Data Warehouse-Ressourcen von Azure Deutschland zu Azure weltweit zu migrieren, führen Sie die Schritte aus, die unter [Azure SQL-Datenbank](#azure-sql-database) beschrieben sind.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Mit dem Azure Cosmos DB-Datenmigrationstool können Sie problemlos Daten zu Azure Cosmos DB migrieren. Das Azure Cosmos DB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können.
+Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Daten zu Azure Cosmos DB zu migrieren. Das Azure Cosmos DB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können.
 
-Das Tool steht als GUI-Tool oder als Befehlszeilentool zur Verfügung. Der Quellcode ist im GitHub-Repository für das [Azure Cosmos DB-Datenmigrationstool](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar, und eine kompilierte Version steht im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46436) zur Verfügung.
+Das Azure Cosmos DB-Datenmigrationstool steht als GUI-Tool oder als Befehlszeilentool zur Verfügung. Der Quellcode ist im GitHub-Repository [Azure Cosmos DB Data Migration Tool](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Eine [kompilierte Version des Tools](https://www.microsoft.com/download/details.aspx?id=46436) ist im Microsoft Download Center verfügbar.
 
-Die folgenden Schritte werden empfohlen:
+Um Azure Cosmos DB-Ressourcen zu migrieren, sollten Sie die folgenden Schritte ausführen:
 
-- Führen Sie eine Überprüfung der Anforderungen an die Anwendungsbetriebszeit und der Kontokonfigurationen aus, um den richtigen Aktionsplan zu empfehlen.
-- Führen Sie die Schritte zum Klonen der Kontokonfigurationen aus Azure Deutschland in die neue Region aus, indem Sie das Tool ausführen.
-- Wenn ein Wartungsfenster möglich ist, führen Sie die Schritte zum Kopieren von Daten aus der Quelle in das Ziel aus, indem Sie das Tool ausführen.
-- Wenn kein Wartungsfenster möglich ist, führen Sie die Schritte zum Kopieren von Daten aus der Quelle in das Ziel aus, indem Sie das Tool und den von uns empfohlenen Prozess ausführen.
-  - Nehmen Sie Änderungen an den Lese-/Schreibvorgängen in der Anwendung mit einem konfigurationsgesteuerten Ansatz vor.
-  - Führen Sie die erste Synchronisierung aus.
-  - Richten Sie inkrementelle Synchronisierung/Berücksichtigung des Änderungsfeeds ein.
-  - Verweisen Sie die Lesevorgänge auf das neue Konto, und überprüfen Sie die Anwendung.
-  - Beenden Sie Schreibvorgänge in das alte Konto, überprüfen Sie, ob der Änderungsfeed berücksichtigt wird, und verweisen Sie dann Schreibvorgänge auf die neuen Konten.
-  - Beenden Sie das Tool, und löschen Sie das alte Konto.
-- Führen Sie die Schritte zum Ausführen des Tools aus, um zu überprüfen, ob die Daten in den alten und neuen Konten konsistent sind.
+1. Überprüfen Sie die Anforderungen an die Anwendungsbetriebszeit und die Kontokonfigurationen, um den besten Aktionsplan zu bestimmen.
+1. Klonen Sie die Kontokonfigurationen aus Azure Deutschland in die neue Region, indem Sie das Datenmigrationstool ausführen.
+1. Kann ein Wartungsfenster verwendet werden, kopieren Sie die Daten aus der Quelle in das Ziel, indem Sie das Datenmigrationstool ausführen.
+1. Ist es nicht möglich, ein Wartungsfenster zu verwenden, kopieren Sie die Daten aus der Quelle in das Ziel, indem Sie das Tool und dann die folgenden Schritte ausführen:
+  1. Verwenden Sie einen konfigurationsgesteuerten Ansatz, um Änderungen an den Lese-/Schreibvorgängen in einer Anwendung vorzunehmen.
+  1. Führen Sie eine erstmalige Synchronisierung aus.
+  1. Richten Sie eine inkrementelle Synchronisierung ein, und binden Sie den Änderungsfeed ein.
+  1. Verknüpfen Sie Lesevorgänge mit dem neuen Konto, und überprüfen Sie die Anwendung.
+  1. Beenden Sie Schreibvorgänge in das alte Konto, überprüfen Sie, ob der Änderungsfeed berücksichtigt wird, und verknüpfen Sie dann Schreibvorgänge mit dem neuen Konto.
+  1. Beenden Sie das Tool, und löschen Sie das alte Konto.
+1. Führen Sie das Tool aus, um zu überprüfen, ob die Daten im alten und im neuen Konto konsistent sind.
 
+Weitere Informationen finden Sie unter:
 
-### <a name="references"></a>Referenzen
+- Lesen Sie eine [Einführung in Azure Cosmos DB](../cosmos-db/introduction.md).
+- Erfahren Sie, wie [Daten in Azure Cosmos DB importiert werden](../cosmos-db/import-data.md).
 
-- [Azure Cosmos DB](../cosmos-db/introduction.md)
-- [Importieren von Daten in Azure Cosmos DB](../cosmos-db/import-data.md)
+## <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
+Sie haben einige Optionen, wenn Sie eine Azure Cache für Redis-Instanz von Azure Deutschland zu Azure weltweit migrieren möchten. Welche Option Sie auswählen, hängt von Ihren Anforderungen ab.
 
+### <a name="option-1-accept-data-loss-create-a-new-instance"></a>Option 1: Akzeptieren von Datenverlust, Erstellen einer neuen Instanz
 
+Dieser Ansatz ist am sinnvollsten, wenn die beiden folgenden Bedingungen zutreffen:
 
+- Sie verwenden Azure Cache for Redis als transienten Datencache.
+- Ihre Anwendung füllt die Cachedaten in der neuen Region automatisch erneut auf.
 
+So migrieren Sie mit Datenverlust und erstellen Sie eine neue Instanz:
 
+1. Erstellen Sie eine neue Azure Cache for Redis-Instanz in der neuen Zielregion.
+1. Ändern Sie Ihre Anwendung so, dass sie die neue Instanz in der neuen Region verwendet.
+1. Löschen Sie die alte Azure-Cache für Redis-Instanz in der Quellregion.
 
+### <a name="option-2-copy-data-from-the-source-instance-to-the-target-instance"></a>Option 2: Kopieren von Daten aus der Quellinstanz in die Zielinstanz
 
-## <a name="redis-cache"></a>Redis Cache
+Ein Mitglied des Azure Cache for Redis-Teams hat ein Open-Source-Tool geschrieben, das Daten aus einer Azure Cache for Redis-Instanz in eine andere kopiert, ohne Import- oder Exportfunktionalität zu erfordern. Informationen zu dem Tool finden Sie in Schritt 4 in den folgenden Schritten.
 
-Es gibt abhängig von Ihren Anforderungen einige Optionen für die Migration zu Azure weltweit.
+So kopieren Sie Daten aus der Quellinstanz in die Zielinstanz:
 
-### <a name="option-1-data-loss-ok-create-new-instance"></a>Option 1: Datenverlust ist OK, Erstellen einer neuen Instanz
-
-Dieser Ansatz ist am sinnvollsten, wenn
-
-- Redis als vorübergehender Datencache verwendet wird und
-- Ihre Anwendung die Cachedaten in der neuen Region automatisch erneut auffüllt.
-
-Folgen Sie diesen Schritten:
-
-- Erstellen Sie eine neue Redis-Instanz in der neuen Zielregion.
-- Ändern Sie Ihre Anwendung so, dass die neue Instanz in der neuen Region verwendet wird.
-- Löschen Sie die alte Redis-Instanz in der Quellregion.
-
-### <a name="option-2-copy-data-from-source-instance-to-target-instance"></a>Option 2: Kopieren von Daten aus der Quellinstanz in die Zielinstanz
-
-Ein Mitglied des Azure Redis-Teams hat ein Open-Source-Tool geschrieben, das Daten aus einer Redis-Instanz in eine andere kopiert, ohne Import- oder Exportfunktionalität zu erfordern.
-
-- Erstellen Sie einen virtuellen Computer in der Quellregion. Wenn Ihr Dataset in Redis groß ist, stellen Sie sicher, dass Sie eine relativ leistungsfähige VM-Größe auswählen, um die für den Kopiervorgang benötigte Zeit zu minimieren.
-- Erstellen Sie eine neue Redis-Instanz in der Zielregion.
-- Leeren Sie Daten aus der **Ziel**instanz (stellen Sie sicher, dass die Leerung **NICHT** aus der **Quell**instanz erfolgt. Das Leeren ist erforderlich, da das Kopiertool vorhandene Schlüssel am Zielspeicherort **nicht überschreibt**.
-- Verwenden Sie ein Tool wie das folgende, um automatisch Daten aus der Redis-Quellinstanz in die Redis-Zielinstanz zu kopieren: [Source](https://github.com/deepakverma/redis-copy), [Download](https://github.com/deepakverma/redis-copy/releases/download/alpha/Release.zip).
+1. Erstellen Sie einen virtuellen Computer in der Quellregion. Wenn Ihr Dataset in Azure Cache for Redis groß ist, stellen Sie sicher, dass Sie eine relativ leistungsfähige VM-Größe auswählen, um die für den Kopiervorgang benötigte Zeit zu minimieren.
+1. Erstellen Sie eine neue Azure Cache for Redis-Instanz in der Zielregion.
+1. Leeren Sie die Daten aus der **Ziel**-Instanz. (Achten Sie darauf, *nicht* die Daten aus der **Quell**-Instanz zu leeren. Das Leeren ist erforderlich, da das Kopiertool vorhandene Schlüssel am Zielspeicherort *nicht überschreibt*.)
+1. Verwenden Sie das folgende Tool, um Daten automatisch aus der Azure Cache for Redis-Quellinstanz in die Azure Cache for Redis-Zielinstanz zu kopieren: [Quelle des Tools](https://github.com/deepakverma/redis-copy) und [Tool herunterladen](https://github.com/deepakverma/redis-copy/releases/download/alpha/Release.zip).
 
 > [!NOTE]
 > Dieser Vorgang kann abhängig von der Größe des Datasets sehr lange dauern.
 
-### <a name="option-3-export-from-source-instance-import-into-destination-instance"></a>Option 3: Exportieren aus der Quellinstanz, Importieren in die Zielinstanz
+### <a name="option-3-export-from-the-source-instance-import-to-the-destination-instance"></a>Option 3: Exportieren aus der Quellinstanz, Importieren in die Zielinstanz
 
-Dieser Ansatz nutzt die Vorteile von Features, die nur im Premium-Tarif verfügbar sind.
+Bei diesem Ansatz werden die Vorteile von Features genutzt, die nur im Premium-Tarif verfügbar sind.
 
-- Erstellen Sie eine neue Redis-Instanz des Premium-Tarifs in der neuen Zielregion. Verwenden Sie die gleiche Größe wie die Redis-Quellinstanz.
-- [Exportieren Sie Daten aus dem Quellcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet Export-AzureRmRedisCache](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.4.0).
+So exportieren Sie aus der Quellinstanz und importieren Sie in die Zielinstanz:
 
-> [!NOTE]
-> Das Exportspeicherkonto muss sich in derselben Region wie die Cacheinstanz befinden.
+1. Erstellen Sie im Premium-Tarif eine neue Azure Cache for Redis-Instanz in der Zielregion. Verwenden Sie dieselbe Größe wie für die Azure Cache for Redis-Quellinstanz.
+1. [Exportieren Sie Daten aus dem Quellcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Export-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.4.0).
 
-- Kopieren Sie exportierte Blobs in ein Speicherkonto in der Zielregion (z.B. mithilfe von AzCopy).
-- [Importieren Sie Daten in den Zielcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet Import-AzureRmRedisCache](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.4.0).
-- Konfigurieren Sie Ihre Anwendung für die Verwendung der Redis-Zielinstanz neu.
+  > [!NOTE]
+  > Das Azure Storage-Exportkonto muss sich in derselben Region wie die Cacheinstanz befinden.
 
-### <a name="option-4-write-data-to-two-redis-instances-read-from-one-instance"></a>Option 4: Schreiben von Daten in zwei Redis-Instanzen, Lesen aus einer Instanz
+1. Kopieren Sie die exportierten Blobs in ein Speicherkonto in der Zielregion (z. B. mit AzCopy).
+1. [Importieren Sie Daten in den Zielcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Import-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.4.0).
+1. Konfigurieren Sie Ihre Anwendung so, dass sie die Azure Cache for Redis-Zielinstanz verwendet.
 
-Bei diesem Ansatz müssen Sie Ihre Anwendung ändern. Sie muss Daten in mehrere Cacheinstanzen schreiben, während sie aus einer der Cacheinstanzen liest. Dieser Ansatz ist sinnvoll, wenn die in Redis gespeicherten Daten
-- in regelmäßigen Abständen aktualisiert werden, 
-- alle Daten in die Redis-Zielinstanz geschrieben werden und
-- genügend Zeit für die Aktualisierung aller Daten verfügbar ist.
+### <a name="option-4-write-data-to-two-azure-cache-for-redis-instances-read-from-one-instance"></a>Option 4: Schreiben von Daten in zwei Azure Cache for Redis-Instanzen, Lesen aus einer Instanz
 
-### <a name="references"></a>Referenzen
+Bei diesem Ansatz müssen Sie Ihre Anwendung ändern. Die Anwendung muss Daten in mehrere Cacheinstanzen schreiben, während sie aus einer der Cacheinstanzen liest. Dieser Ansatz ist sinnvoll, wenn die in Azure-Cache für Redis gespeicherten Daten die folgenden Kriterien erfüllen:
+- Die Daten werden in regelmäßigen Abständen aktualisiert. 
+- Alle Daten werden in die Azure Cache for Redis-Zielinstanz geschrieben.
+- Es ist genügend Zeit für die Aktualisierung aller Daten verfügbar.
 
-- [Azure Redis Cache: Übersicht](../redis-cache/cache-overview.md)
+Weitere Informationen finden Sie unter:
+
+- Lesen Sie die [Übersicht über Azure-Cache für Redis](../redis-cache/cache-overview.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
+
+- [Compute](./germany-migration-compute.md)
+- [Netzwerk](./germany-migration-networking.md)
+- [Speicher](./germany-migration-storage.md)
+- [Web](./germany-migration-web.md)
+- [Analyse](./germany-migration-analytics.md)
+- [IoT](./germany-migration-iot.md)
+- [Integration](./germany-migration-integration.md)
+- [Identität](./germany-migration-identity.md)
+- [Sicherheit](./germany-migration-security.md)
+- [Verwaltungstools](./germany-migration-management-tools.md)
+- [Medien](./germany-migration-media.md)

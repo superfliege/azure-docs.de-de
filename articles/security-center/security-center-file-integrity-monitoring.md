@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9cfb098fd8e6cb777b6cd968f92b20baabfab705
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313983"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338514"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -136,7 +136,7 @@ Die Registerkarte **Änderungen** (siehe unten) führt alle Änderungen auf, die
 
   ![Einstellungen][11]
 
-  Die **Arbeitsbereichskonfiguration** wird geöffnet und zeigt drei Registerkarten an: **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien**. Jede Registerkarte führt die Entitäten auf, die Sie in dieser Kategorie bearbeiten können. Für jede aufgeführte Entität identifiziert Security Center, ob die Überwachung der Dateiintegrität aktiviert (true) (wahr) oder deaktiviert (false) (falsch) ist.  Wenn Sie eine Entität bearbeiten, können Sie die Überwachung der Dateiintegrität aktivieren oder deaktivieren.
+  **Arbeitsbereichskonfiguration** wird geöffnet, und diese drei Registerkarten werden angezeigt: **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien**. Jede Registerkarte führt die Entitäten auf, die Sie in dieser Kategorie bearbeiten können. Für jede aufgeführte Entität identifiziert Security Center, ob die Überwachung der Dateiintegrität aktiviert (true) (wahr) oder deaktiviert (false) (falsch) ist.  Wenn Sie eine Entität bearbeiten, können Sie die Überwachung der Dateiintegrität aktivieren oder deaktivieren.
 
   ![Arbeitsbereichskonfiguration][12]
 
@@ -153,7 +153,7 @@ Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten
 
 ## <a name="add-a-new-entity-to-monitor"></a>Hinzufügen einer neuen zu überwachenden Entität
 1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, und klicken Sie im oberen Bereich auf **Einstellungen**. Die **Arbeitsbereichskonfiguration** wird geöffnet.
-2. Klicken Sie unter **Arbeitsbereichskonfiguration** auf die Registerkarte für den Entitätstyp, den Sie hinzufügen möchten: Windows-Registrierung, Windows-Dateien oder Linux-Dateien. In diesem Beispiel wurde **Linux-Dateien** ausgewählt.
+2. Klicken Sie unter **Arbeitsbereichskonfiguration** auf die Registerkarte für den Typ der Entität, die Sie hinzufügen möchten: Windows-Registrierung, Windows-Dateien oder Linux-Dateien. In diesem Beispiel wurde **Linux-Dateien** ausgewählt.
 
   ![Hinzufügen eines neuen zu überwachenden Elements][14]
 
@@ -205,7 +205,7 @@ Sie können die Überwachung der Dateiintegrität deaktivieren. Die Überwachung
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie mehr darüber erfahren, wie die Überwachung der Dateiintegrität in Security Center verwendet wird. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Festlegen von Sicherheitsrichtlinien:](security-center-azure-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen:](security-center-recommendations.md) Erfahren Sie, wie Empfehlungen Ihnen beim Schutz Ihrer Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.

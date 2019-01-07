@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2017
 ms.author: ralfwi
-ms.openlocfilehash: 2d6dca839eae3e274feff3f1711b81b2799bd889
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d104b512df839a0b5fb2b5ee4cbf49fb6e266cd1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647078"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017194"
 ---
 # <a name="available-services-in-azure-germany"></a>Verfügbare Dienste in Azure Deutschland
 Azure Deutschland aktualisiert und erweitert seine Dienste fortlaufend nach dem Evergreeningkonzept. Die Dienste werden mit demselben Code bereitgestellt, der in der globalen Azure-Umgebung verwendet wird, und nach Prüfung auf lokale Implementierbarkeit in Azure Deutschland eingepflegt. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 
@@ -35,21 +35,21 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| [Virtual Machines](./germany-services-compute.md#virtual-machines)  | Ja | Ja |
-| Skalierungsgruppen für virtuelle Computer | Ja | Ja |
-| Service Fabric | Ja | Ja |
+| [Virtuelle Computer](./germany-services-compute.md#virtual-machines)  | JA | JA |
+| Virtual Machine Scale Sets | JA | JA |
+| Service Fabric | JA | JA |
 
 
 ## <a name="networkinggermany-services-networkingmd"></a>[Netzwerk](./germany-services-networking.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| [ExpressRoute](./germany-services-networking.md#expressroute-private-connectivity) | Ja | Ja |
-| Virtual Network | Ja | Ja |
-| [Load Balancer](./germany-services-networking.md#support-for-load-balancer) | Ja | Ja |
-| [Traffic Manager](./germany-services-networking.md#support-for-traffic-manager)  | Ja | Ja |
-|  [VPN Gateway](./germany-services-networking.md#support-for-vpn-gateway) | Ja | Ja |
-| Application Gateway | Ja | Ja |
+| [ExpressRoute](./germany-services-networking.md#expressroute-private-connectivity) | JA | JA |
+| Virtual Network | JA | JA |
+| [Load Balancer](./germany-services-networking.md#support-for-load-balancer) | JA | JA |
+| [Traffic Manager](./germany-services-networking.md#support-for-traffic-manager)  | JA | JA |
+|  [VPN Gateway](./germany-services-networking.md#support-for-vpn-gateway) | JA | JA |
+| Application Gateway | JA | JA |
 
 
 
@@ -57,10 +57,10 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| [Speicher](./germany-services-storage.md#storage) | Ja | Ja |
-| StorSimple | Nein | Nein |
-| Sicherung | Ja | Ja |
-| Site Recovery | Ja | Ja |
+| [Speicher](./germany-services-storage.md#storage) | JA | JA |
+| StorSimple | Nein  | Nein  |
+| Backup | JA | JA |
+| Site Recovery | JA | JA |
 
 
 
@@ -68,48 +68,48 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| [App Service: Web-Apps](./germany-services-webandmobile.md#app-service) | Ja | Ja |
-| [App Service: API-Apps](./germany-services-webandmobile.md#app-service) | Ja | Ja |
-| [App Service: Mobile Apps](./germany-services-webandmobile.md#app-service) | Ja | Ja |
-| Media Services | Ja | Ja |
+| [App Service: Web-Apps](./germany-services-webandmobile.md#app-service) | JA | JA |
+| [App Service: API-Apps](./germany-services-webandmobile.md#app-service) | JA | JA |
+| [App Service: Mobile Apps](./germany-services-webandmobile.md#app-service) | JA | JA |
+| Media Services | JA | JA |
 
 
 ## <a name="databasesgermany-services-databasemd"></a>[Datenbanken](./germany-services-database.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| [SQL-Datenbank](./germany-services-database.md#sql-database) | Ja | Ja |
-| SQL Data Warehouse | Ja | Ja |
-| SQL Server Stretch-Datenbank | Ja | Ja |
-| [Azure Redis Cache](./germany-services-database.md#azure-redis-cache) | Ja | Ja |
-| Azure Cosmos DB | Ja | Ja |
+| [SQL-Datenbank](./germany-services-database.md#sql-database) | JA | JA |
+| SQL Data Warehouse | JA | JA |
+| SQL Server Stretch Database | JA | JA |
+| [Azure Cache for Redis](./germany-services-database.md#azure-cache-for-redis) | JA | JA |
+| Azure Cosmos DB | JA | JA |
 
 
 ## <a name="intelligence-and-analytics"></a>Informationen und Analyse
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| HDInsight | Ja | Ja |
-| Machine Learning | Ja | Nein |
+| HDInsight | JA | JA |
+| Machine Learning | JA | Nein  |
 
 
 ## <a name="internet-of-things-iotgermany-services-iotmd"></a>[Internet der Dinge (IoT)](./germany-services-iot.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| Event Hubs | Ja | Ja |
-| IoT Hub | Ja | Ja |
-| Notification Hubs | Ja | Nein |
-| Stream Analytics | Ja | Ja |
+| Event Hubs | JA | JA |
+| IoT Hub | JA | JA |
+| Notification Hubs | JA | Nein  |
+| Stream Analytics | JA | JA |
 
 
 ## <a name="enterprise-integration"></a>Unternehmensintegration
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| Service Bus | Ja | Ja |
-| StorSimple | Nein | Nein |
-| SQL Server Stretch-Datenbank | Ja | Ja |
+| Service Bus | JA | JA |
+| StorSimple | Nein  | Nein  |
+| SQL Server Stretch Database | JA | JA |
 
 
 
@@ -117,9 +117,9 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| Active Directory Free | Ja | Ja |
-| Active Directory Premium | Nein | Nein |
-|  [Key Vault](./germany-services-securityandidentity.md#key-vault)  | Ja | Nein |
+| Active Directory Free | JA | JA |
+| Active Directory Premium | Nein  | Nein  |
+|  [Schlüsseltresor](./germany-services-securityandidentity.md#key-vault)  | JA | Nein  |
 
 
 
@@ -127,11 +127,11 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
-| Automation | Nein | Nein |
-| Sicherung | Ja | Ja |
-| Log Analytics | Nein | Nein |
-| Site Recovery | Ja | Ja |
-| Scheduler | Ja | Ja |
+| Automation | Nein  | Nein  |
+| Backup | JA | JA |
+| Log Analytics | Nein  | Nein  |
+| Site Recovery | JA | JA |
+| Scheduler | JA | JA |
 
 
 

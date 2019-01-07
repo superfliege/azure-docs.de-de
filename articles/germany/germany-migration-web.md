@@ -1,67 +1,67 @@
 ---
-title: Migration von Web-Ressourcen von Azure Deutschland zu Azure weltweit
-description: Dieser Artikel bietet Unterstützung bei der Migration von Web-Ressourcen von Azure Deutschland zu Azure weltweit.
+title: Migrieren von Azure-Webressourcen von Azure Deutschland zu Azure weltweit
+description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Webressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
+ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 8c5bae86636774b23da5507936e3dd0002538f05
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 55360eb42f264f3e854d43547d59aae3825c7caa
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346256"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968110"
 ---
-# <a name="migration-of-web-resources-from-azure-germany-to-global-azure"></a>Migration von Web-Ressourcen von Azure Deutschland zu Azure weltweit
+# <a name="migrate-web-resources-to-global-azure"></a>Migrieren von Webressourcen zu Azure weltweit
 
-Dieser Artikel unterstützt Sie bei der Migration von Azure Web-Ressourcen von Azure Deutschland zu Azure weltweit.
+Dieser Artikel enthält Informationen dazu, wie Sie Azure-Webressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
-## <a name="app-service---web-apps"></a>App Service – Web-Apps
+## <a name="web-apps"></a>Web-Apps
 
-Die Migration von App Services von Azure Deutschland zu Azure weltweit wird zurzeit nicht unterstützt. Die empfohlene Vorgehensweise besteht im Exportieren als Resource Manager-Vorlage und der erneuten Bereitstellung nach dem Ändern der Standorteigenschaft in die neue Zielregion.
+Migrieren von Apps, die Sie mit dem Web Apps-Feature von Azure App Service erstellt haben, von Azure Deutschland in Azure weltweit wird derzeit nicht unterstützt. Es empfiehlt sich, dass Sie eine Web-App als Azure Resource Manager-Vorlage exportieren. Danach können Sie die App erneut bereitstellen, nachdem Sie die Eigenschaft für den Standort auf die neue Zielregion geändert haben.
 
 > [!IMPORTANT]
-> Ändern Sie den Speicherort, Geheimnisse des Schlüsseltresors, Zertifikate und andere GUIDs, damit diese konsistent mit der neuen Region sind.
+> Ändern Sie den Standort, Azure Key Vault-Geheimnisse, Zertifikate und andere GUIDs, damit diese konsistent mit der neuen Region sind.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu App Services anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/app-service/#step-by-step-tutorials) auf.
-- Machen Sie sich mit den Vorgehensweisen zum [Exportieren einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-export-template.md) vertraut, oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-
-### <a name="references"></a>Referenzen
-
-- [App Service: Übersicht](../app-service/app-service-web-overview.md)
-- [Exportieren einer Resource Manager-Vorlage mithilfe von PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template)
-- [Azure-Standorte: Übersicht](https://azure.microsoft.com/global-infrastructure/locations/)
-- [Erneutes Bereitstellen einer Vorlage](../azure-resource-manager/resource-group-template-deploy.md)
-
-
-
-
-
-
-
-
-
-
-
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu App Service](https://docs.microsoft.com/azure/app-service/#step-by-step-tutorials) durcharbeiten.
+- Informieren Sie sich darüber, wie eine [Azure Resource Manager-Vorlage exportiert wird](../azure-resource-manager/resource-manager-export-template.md).
+- Erfahren Sie, wie Sie [eine Azure Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
+- Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Lesen Sie die [Übersicht über Azure App Service](../app-service/app-service-web-overview.md).
+- Verschaffen Sie sich einen [Überblick über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
-Um Einstellungen von einem Notification Hub zu einem anderen zu migrieren, können Sie alle Registrierungstoken zusammen mit Tags exportieren und importieren. Das geht so:
+Um Einstellungen von einer Azure Notification Hubs-Instanz zu einer anderen Instanz zu migrieren, exportieren und importieren Sie alle Registrierungstoken samt deren Tags:
 
-- [Exportieren Sie die vorhandenen Hubregistrierungen](https://msdn.microsoft.com/library/azure/dn790624.aspx) in einen Azure Blob Storage-Container.
-- Erstellen Sie einen neuen Notification Hub in der Zielumgebung.
-- [Importieren Sie Ihre Registrierungstoken](https://msdn.microsoft.com/library/azure/dn790624.aspx) aus Azure Blob Storage in Ihren neuen Hub.
+1. [Exportieren Sie die vorhandenen Notification Hub-Registrierungen](https://msdn.microsoft.com/library/azure/dn790624.aspx) in einen Azure Blob Storage-Container.
+1. Erstellen Sie einen neuen Notification Hub in der Zielumgebung.
+1. [Importieren Sie Ihre Registrierungstoken](https://msdn.microsoft.com/library/azure/dn790624.aspx) aus Blobspeicher in Ihren neuen Notification Hub.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-Frischen Sie Ihre Kenntnisse zu Notification Hubs anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/notification-hubs/#step-by-step-tutorials) auf.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Notification Hubs-Tutorials](https://docs.microsoft.com/azure/notification-hubs/#step-by-step-tutorials) durcharbeiten.
+- Lesen Sie die [Übersicht über Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
 
-### <a name="references"></a>Referenzen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md)
+Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
+
+- [Compute](./germany-migration-compute.md)
+- [Netzwerk](./germany-migration-networking.md)
+- [Speicher](./germany-migration-storage.md)
+- [Datenbanken](./germany-migration-databases.md)
+- [Analyse](./germany-migration-analytics.md)
+- [IoT](./germany-migration-iot.md)
+- [Integration](./germany-migration-integration.md)
+- [Identität](./germany-migration-identity.md)
+- [Sicherheit](./germany-migration-security.md)
+- [Verwaltungstools](./germany-migration-management-tools.md)
+- [Medien](./germany-migration-media.md)

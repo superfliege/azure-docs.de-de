@@ -1,6 +1,6 @@
 ---
-title: Migration von Analytics-Ressourcen von Azure Deutschland zu Azure weltweit
-description: Dieser Artikel bietet Unterstützung bei der Migration von Analytics-Ressourcen von Azure Deutschland zu Azure weltweit.
+title: Migrieren von Azure-Analyseressourcen von Azure Deutschland zu Azure weltweit
+description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Analyseressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
 cloud: Azure Germany
@@ -9,139 +9,112 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 2a64d0f1b9379b58c0e4ec348ad81ba8ec4d6746
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 48bbe463ab87d28577fa0c3c4e06f280c2d9a730
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346257"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321793"
 ---
-# <a name="migration-of-analytics-resources-from-azure-germany-to-global-azure"></a>Migration von Analytics-Ressourcen von Azure Deutschland zu Azure weltweit
+# <a name="migrate-analytics-resources-to-global-azure"></a>Migrieren von Analyseressourcen zu Azure weltweit
 
-Dieser Artikel unterstützt Sie bei der Migration von Azure Analytics-Ressourcen von Azure Deutschland zu Azure weltweit.
+Dieser Artikel enthält Informationen dazu, wie Sie Azure-Analyseressourcen von Azure Deutschland zu Azure weltweit migrieren können.
   
 ## <a name="event-hubs"></a>Event Hubs
 
-Sie können Event Hubs nicht direkt von Azure Deutschland zu Azure weltweit migrieren, da die Event Hub-Dienste keine Datenexport- oder -importfunktionen bereitstellen. Sie können die Event Hub-Ressourcen jedoch [als eine Vorlage](../azure-resource-manager/resource-manager-export-template-powershell.md) exportieren. Übernehmen Sie dann die exportierte Vorlage für Azure weltweit, und erstellen Sie die Ressourcen erneut.
+Es ist nicht möglich, Azure Event Hubs-Ressourcen direkt von Azure Deutschland zu Azure weltweit zu migrieren. Der Event Hubs-Dienst hat keine Datenexport- und -importfunktionen. Sie können Event Hubs-Ressourcen jedoch [als eine Vorlage](../azure-resource-manager/resource-manager-export-template-powershell.md) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
 
 > [!NOTE]
-> Dabei werden die Daten (z.B. Nachrichten) nicht kopiert, sondern nur die Metadaten erneut erstellt.
+> Bei einem Exportieren einer Event Hubs-Vorlage werden keine Daten (z. B. Nachrichten) kopiert. Bei einem Exportieren einer Vorlage werden nur die Event Hubs-Metadaten neu erstellt.
 
 > [!IMPORTANT]
-> Ändern Sie den Speicherort, Geheimnisse des Schlüsseltresors, Zertifikate und andere GUIDs, damit diese konsistent mit der neuen Region sind.
+> Ändern Sie den Standort, Azure Key Vault-Geheimnisse, Zertifikate und andere GUIDs, damit diese konsistent mit der neuen Region sind.
 
-### <a name="metadata-event-hubs"></a>Metadaten Event Hubs
+### <a name="event-hubs-metadata"></a>Event Hubs-Metadaten
+
+Die folgenden Metadatenelemente werden neu erstellt werden, wenn Sie eine Event Hubs-Vorlage exportieren:
 
 - Namespaces
 - Event Hubs
-- Consumergruppen
-- Autorisierungsregeln (siehe weiter unten)
+- Verbrauchergruppen
+- Autorisierungsregeln
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu Event Hubs anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/event-hubs/#step-by-step-tutorials) auf.
-- Überprüfen Sie die Migrationsschritte für [ServiceBus](./germany-migration-integration.md#service-bus)
-- Machen Sie sich mit den Vorgehensweisen zum [Exportieren einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-export-template.md) vertraut, oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-
-
-### <a name="references"></a>Referenzen
-
-- [Übersicht über Event Hubs](../event-hubs/event-hubs-about.md)
-
-
-
-
-
-
-
-
-
+- Lesen Sie die [Übersicht über Event Hubs](../event-hubs/event-hubs-about.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Event Hubs](https://docs.microsoft.com/azure/event-hubs/#step-by-step-tutorials) durcharbeiten.
+- Überprüfen Sie die Migrationsschritte für [Azure Service Bus](./germany-migration-integration.md#service-bus).
+- Machen Sie sich damit vertraut, wie Sie [eine Azure Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="hdinsight"></a>HDInsight
 
-HDInsight-Cluster können von Azure Deutschland zu Azure weltweit mithilfe der folgenden Schritte migriert werden:
+So migrieren Sie Azure HDInsight-Cluster von Azure Deutschland zu Azure weltweit:
 
-- Beenden Sie den HDI-Cluster.
-- Migrieren Sie die Daten im Speicher mit AzCopy oder einem ähnlichen Tool zur neuen Region.
-- Erstellen Sie neue Computeressourcen in Azure weltweit, und fügen Sie die migrierten Speicherressourcen als primären zugeordneten Speicher an.
+1. Beenden Sie den HDInsight-Cluster.
+2. Migrieren Sie die Daten im Azure Storage-Konto mit AzCopy oder einem ähnlichen Tool zur neuen Region.
+3. Erstellen Sie neue Computeressourcen in Azure weltweit, und fügen Sie die migrierten Speicherressourcen dann als den primären zugeordneten Speicher an.
 
-Für spezialisiertere Cluster mit langer Ausführungszeit (Kafka, Spark-Streaming, Storm oder HBase) wird empfohlen, den Übergang von Workloads in die neue Region zu orchestrieren.
+Für spezialisiertere Cluster mit langer Ausführungszeit (Kafka, Spark-Streaming, Storm oder HBase) empfiehlt es sich, dass Sie den Übergang von Workloads in die neue Region orchestrieren.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu HDInsight anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/hdinsight/#step-by-step-tutorials) auf.
-- Lesen Sie [Verwalten von HDInsight mithilfe von PowerShell](../hdinsight/hdinsight-administer-use-powershell.md), um weitere Unterstützung beim [Skalieren von HDInsight-Clustern](../hdinsight/hdinsight-administer-use-powershell.md#scale-clusters) zu erhalten.
-- Informieren Sie sich, wie [AzCopy](../storage/common/storage-use-azcopy.md) verwendet wird.
-
-### <a name="references"></a>Referenzen
-
-- [Azure HD Insight-Dokumentation](https://docs.microsoft.com/azure/hdinsight/)
-
-
-
-
-
-
+- Lesen Sie die [Azure HDInsight-Dokumentation](https://docs.microsoft.com/azure/hdinsight/).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu HDInsight](https://docs.microsoft.com/azure/hdinsight/#step-by-step-tutorials) durcharbeiten.
+- Informationen zum [Skalieren von HDInsight-Clustern](../hdinsight/hdinsight-administer-use-powershell.md#scale-clusters) finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell](../hdinsight/hdinsight-administer-use-powershell.md).
+- Erfahren Sie, wie [AzCopy](../storage/common/storage-use-azcopy.md) verwendet wird.
 
 ## <a name="stream-analytics"></a>Stream Analytics
 
-Um Stream Analytics-Dienste von Azure Deutschland zu Azure weltweit zu migrieren, erstellen Sie das gesamte Setup in einer Azure weltweit-Region manuell mit dem Portal oder mit PowerShell erneut. Die Eingangs- und Ausgangsquellen für jeden Stream Analytics-Auftrag können sich in jeder beliebigen Region befinden.
+Um Azure Stream Analytics-Dienste von Azure Deutschland zu Azure weltweit zu migrieren, erstellen Sie das gesamte Setup in einer Azure weltweit-Region entweder über das Azure-Portal oder mit PowerShell manuell erneut. Eingangs- und Ausgangsquellen für einen Stream Analytics-Auftrag können sich in jeder beliebigen Region befinden.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu Stream Analytics anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/stream-analytics/#step-by-step-tutorials) auf.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/#step-by-step-tutorials) durcharbeiten.
+- Lesen Sie die [Übersicht über Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
+- Erfahren Sie, wie Sie [einen Stream Analytics-Auftrag über PowerShell erstellen](../stream-analytics/stream-analytics-quick-create-powershell.md).
 
-### <a name="references"></a>Referenzen
-- [Stream Analytics: Übersicht](../stream-analytics/stream-analytics-introduction.md)
-- [Erstellen eines Stream Analytics-Auftrags mithilfe von PowerShell](../stream-analytics/stream-analytics-quick-create-powershell.md)
+## <a name="sql-database"></a>SQL-Datenbank
 
+Um kleinere Azure SQL-Datenbank-Workloads zu migrieren, verwenden Sie die Exportfunktion, um eine BACPAC-Datei zu erstellen. Eine BACPAC-Datei ist eine komprimierte Datei (ZIP-Datei), die Metadaten und die Daten aus der SQL Server-Datenbank enthält. Nachdem Sie die BACPAC-Datei erstellt haben, können Sie die Datei in die Zielumgebung kopieren (z.B. mit AzCopy) und die Importfunktion verwenden, um die Datenbank erneut zu erstellen. Beachten Sie die folgenden Aspekte:
 
-
-
-
-
-## <a name="sql-data-warehouse"></a>SQL Data Warehouse
-
-Um Azure SQL-Datenbanken zu migrieren, können Sie (für kleinere Workloads) die Exportfunktion verwenden, um eine BACPAC-Datei zu erstellen. Eine BACPAC-Datei ist eine komprimierte Datei (ZIP-Datei) mit Metadaten und Daten aus der SQL Server-Datenbank. Nach der Erstellung können Sie sie in die Zielumgebung kopieren (z.B. mit AzCopy) und die Importfunktion zum erneuten Erstellen der Datenbank verwenden. Beachten Sie die folgenden Überlegungen (weitere Informationen finden Sie in den unten angegebenen Links):
-
-- Damit ein Export transaktionskonsistent ist, stellen Sie sicher, dass entweder
-  - während des Exports keine Schreibaktivität auftritt oder
-  - der Export aus einer transaktionskonsistenten Kopie der Azure SQL-Datenbank erfolgt.
-- Für den Export in Blobspeicher ist die Größe der BACPAC-Datei auf 200 GB beschränkt. Führen Sie für größere BACPAC-Datei einen Export in lokalen Speicher aus.
-- Falls der Exportvorgang aus der Azure SQL-Datenbank länger als 20 Stunden dauert, wird er unter Umständen abgebrochen. Suchen Sie in den folgenden Links nach Hinweisen, wie Sie die Leistung erhöhen können.
+- Damit ein Export im Hinblick auf Transaktionen konsistent ist, müssen Sie sicherstellen, dass eine der folgenden Bedingungen zutrifft:
+  - Während des Exports tritt keine Schreibaktivität auf.
+  - Sie exportieren aus einer bezüglich Transaktionen konsistenten Kopie Ihrer Azure SQL-Datenbank.
+- Für einen Export in Azure-Blobspeicher ist die Größe der BACPAC-Datei auf 200 GB beschränkt. Führen Sie für größere BACPAC-Datei einen Export in lokalen Speicher aus.
+- Falls der Exportvorgang aus der SQL-Datenbank länger als 20 Stunden dauert, wird der Vorgang möglicherweise abgebrochen. Suchen Sie in den folgenden Artikeln nach Tipps, wie die Leistung gesteigert werden kann.
 
 > [!NOTE]
-> Die Verbindungszeichenfolge ändert sich, da sich der DNS-Name des Servers ändert.
+> Die Verbindungszeichenfolge ist nach dem Exportvorgang geändert, da der DNS-Name des Servers während des Exports geändert wird.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- [Exportieren der Datenbank in eine BACPAC-Datei](../sql-database/sql-database-export.md)
-- [Importieren der BACPAC-Datei in eine Datenbank](../sql-database/sql-database-import.md)
+- Erfahren Sie, wie Sie [eine Datenbank in eine BACPAC-Datei exportieren](../sql-database/sql-database-export.md).
+- Erfahren Sie, wie Sie [eine BACPAC-Datei in eine neue Datenbank importieren](../sql-database/sql-database-import.md).
+- Lesen Sie die [Dokumentation zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/).
 
-### <a name="references"></a>Referenzen
+## <a name="analysis-services"></a>Analysis Services
 
-- [Dokumentation zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/)
+Um Ihre Azure Analysis Services-Modelle von Azure Deutschland zu Azure weltweit zu migrieren, verwenden Sie [Sicherungs- und Wiederherstellungsvorgänge](../analysis-services/analysis-services-backup.md).
 
+Wenn Sie nur die Modellmetadaten und nicht die Daten migrieren möchten, ist das [erneute Bereitstellen des Modells über SQL Server Data Tools](../analysis-services/analysis-services-deploy.md) eine Alternative.
 
+Weitere Informationen finden Sie unter:
 
+- Erfahren Sie mehr über [Sichern und Wiederherstellen in Analysis Services](../analysis-services/analysis-services-backup.md).
+- Lesen Sie die [Übersicht über Analysis Services](../analysis-services/analysis-services-overview.md).
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
 
-
-
-
-
-
-
-
-## <a name="azure-analysis-service"></a>Azure Analysis Services
-
-Um Ihre Modelle von Azure Deutschland zu Azure weltweit zu migrieren, können Sie Sicherung/Wiederherstellung wie in [diesem Dokument beschrieben](../analysis-services/analysis-services-backup.md) verwenden.
-
-Wenn Sie nur die Modellmetadaten und nicht die Daten migrieren möchten, kann das [erneute Bereitstellen des Modells über SSDT](../analysis-services/analysis-services-deploy.md) eine Alternative darstellen.
-
-### <a name="next-steps"></a>Nächste Schritte
-- [Analysis Services-Sicherung](../analysis-services/analysis-services-backup.md)
-
-### <a name="references"></a>Referenzen
-- [Analysis Services: Übersicht](../analysis-services/analysis-services-overview.md)
+- [Compute](./germany-migration-compute.md)
+- [Netzwerk](./germany-migration-networking.md)
+- [Speicher](./germany-migration-storage.md)
+- [Web](./germany-migration-web.md)
+- [Datenbanken](./germany-migration-databases.md)
+- [IoT](./germany-migration-iot.md)
+- [Integration](./germany-migration-integration.md)
+- [Identität](./germany-migration-identity.md)
+- [Sicherheit](./germany-migration-security.md)
+- [Verwaltungstools](./germany-migration-management-tools.md)
+- [Medien](./germany-migration-media.md)

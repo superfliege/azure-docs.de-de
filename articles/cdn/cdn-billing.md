@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
-ms.openlocfilehash: 0bb52943eac3e35b5012e3f54bfb841cf491ed18
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091810"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309268"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
 
@@ -28,19 +28,19 @@ In diesen häufig gestellten Fragen wird die Abrechnungsstruktur für von Azure 
 ## <a name="what-is-a-billing-region"></a>Was ist eine Abrechnungsregion?
 Eine Abrechnungsregion ist ein geografisches Gebiet, mit dem bestimmt wird, welcher Tarif für die Übermittlung von Objekten aus Azure CDN in Rechnung gestellt wird. Die aktuellen Abrechnungszonen und ihre jeweiligen Regionen lauten wie folgt:
 
-- Zone 1: Nordamerika, Europa, Naher Osten und Afrika
+- Zone 1: Nordamerika, Europa, Naher Osten und Afrika
 
-- Zone 2: Asien-Pazifik (einschließlich Japan)
+- Zone 2: Asien-Pazifik (einschließlich Japan)
 
-- Zone 3: Südamerika
+- Zone 3: Südamerika
 
-- Zone 4: Australien und Neuseeland
+- Zone 4: Australien und Neuseeland
 
-- Zone 5: Indien
+- Zone 5: Indien
 
 Informationen zu POP-Regionen (Point of Presence) finden Sie unter [Azure CDN-POP-Standorte nach Region](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Ein in Mexiko befindlicher POP gehört beispielsweise zur Region Nordamerika und daher zur Zone 1. 
 
-Weitere Informationen zur Azure CDN-Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/is-is/pricing/details/cdn/).
+Weitere Informationen zur Azure CDN-Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
 
 ## <a name="how-are-delivery-charges-calculated-by-region"></a>Wie werden Übermittlungsgebühren nach Region berechnet?
 Die Azure CDN-Abrechnungsregion basiert auf dem Standort des Quellservers, der den Inhalt an den Endbenutzer übermittelt. Das Ziel (physischer Standort) des Clients wird bei der Abrechnungsregion nicht berücksichtigt.
@@ -67,7 +67,7 @@ Bei Verwendung der *Übermittlung über einen gehosteten Dienst* fallen die folg
 
 - Azure-Computezeit: die Serverinstanzen, die als Ursprung fungieren.
 
-- Azure-Serverübertragung: die Datenübertragungen von den Serverinstanzen zum Füllen der Azure CDN-Caches.
+- Azure-Computeübertragung: die Datenübertragungen von den Compute-Instanzen zum Füllen der Azure CDN-Caches.
 
 Wenn Ihr Client Bytebereichsanforderungen (unabhängig vom ursprünglichen Dienst) verwendet, ergeben sich folgende Aspekte:
 
@@ -78,11 +78,11 @@ Wenn Ihr Client Bytebereichsanforderungen (unabhängig vom ursprünglichen Diens
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Wie viele Übertragungsaktivitäten finden zur Unterstützung des Cache statt?
 Jedes Mal, wenn ein CDN POP seinen Cache füllen muss, führt er für das im Cache befindliche Objekt eine Anforderung an den Ursprung aus. Dadurch tritt am Ursprung bei jedem fehlgeschlagenen Zugriff auf den Cache eine abrechenbare Transaktion auf. Die Anzahl der fehlgeschlagenen Zugriffe auf den Cache hängt von mehreren Faktoren ab:
 
-- Cachefähigkeit des Inhalts: Wenn der Inhalt eine lange Gültigkeitsdauer (time-to-live, TTL)/lange Laufzeit hat und häufig darauf zugegriffen wird, sodass er im Cache beliebt ist, wird der Großteil der Last vom CDN übernommen. Eine typische gute Cachetrefferquote beträgt mehr als 90 %, was bedeutet, dass weniger als 10 % der Clientanforderungen entweder aufgrund von fehlgeschlagenen Zugriffen auf den Cache oder Objektaktualisierungen an den Ursprung zurückgegeben werden müssen.
+- Cachefähigkeit des Inhalts: Wenn der Inhalt eine lange Gültigkeitsdauer (time-to-live, TTL)/lange Laufzeit hat und häufig auf ihn zugegriffen wird, sodass er oft im Cache verbleibt, wird der Großteil der Last vom CDN übernommen. Eine typische gute Cachetrefferquote beträgt mehr als 90 %, was bedeutet, dass weniger als 10 % der Clientanforderungen entweder aufgrund von fehlgeschlagenen Zugriffen auf den Cache oder Objektaktualisierungen an den Ursprung zurückgegeben werden müssen.
 
-- Anzahl der Knoten, die das Objekt laden müssen: Jedes Mal, wenn ein Knoten ein Objekt vom Ursprung lädt, fällt eine abrechenbare Transaktion an. Daher führen mehr globale Inhalte (Zugriff über mehr Knoten) zu mehr abrechenbaren Transaktionen.
+- Anzahl der Knoten, die das Objekt laden müssen: Jedes Mal, wenn ein Knoten ein Objekt aus dem Ursprung lädt, fällt eine abrechenbare Transaktion an. Daher führen mehr globale Inhalte (Zugriff über mehr Knoten) zu mehr abrechenbaren Transaktionen.
 
-- Einfluss der Gültigkeitsdauer (TTL): Eine längere Gültigkeitsdauer für ein Objekt bedeutet, dass es weniger häufig vom Ursprung abgerufen werden muss. Dies bedeutet auch, dass Clients (z. B. Browser) das Objekt länger zwischenspeichern können, wodurch sich die Anzahl der Transaktionen zum CDN reduzieren kann.
+- Einfluss der Gültigkeitsdauer (TTL): Eine längere Gültigkeitsdauer für ein Objekt bedeutet, dass es weniger häufig aus dem Ursprung abgerufen werden muss. Dies bedeutet auch, dass Clients (z. B. Browser) das Objekt länger zwischenspeichern können, wodurch sich die Anzahl der Transaktionen zum CDN reduzieren kann.
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Wie verwalte ich meine Kosten besonders effektiv?
 Legen Sie eine möglichst lange Gültigkeitsdauer für Ihre Inhalte fest. 

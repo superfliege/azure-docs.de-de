@@ -1,6 +1,6 @@
 ---
-title: Migration von Integration-Ressourcen von Azure Deutschland zu Azure weltweit
-description: Dieser Artikel bietet Unterstützung bei der Migration von Integration-Ressourcen von Azure Deutschland zu Azure weltweit.
+title: Migrieren von Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit
+description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
 cloud: Azure Germany
@@ -9,40 +9,41 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 16e7ffa822f645c2a5a070ab3c693cef84a1a85c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9ea6dc552c5334e2d49c00215fe71b038427c753
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346266"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323227"
 ---
-# <a name="migration-of-integration-resources-from-azure-germany-to-global-azure"></a>Migration von Integration-Ressourcen von Azure Deutschland zu Azure weltweit
+# <a name="migrate-integration-resources-to-global-azure"></a>Migrieren von Integrationsressourcen zu Azure weltweit
 
-Dieser Artikel unterstützt Sie bei der Migration von Azure Integration-Ressourcen von Azure Deutschland zu Azure weltweit.
+Dieser Artikel enthält Informationen dazu, wie Sie Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
 ## <a name="service-bus"></a>Service Bus
 
-Service Bus-Dienste verfügen nicht über Datenexport- und -importfunktionen. Um Service Bus von Azure Deutschland zu Azure weltweit zu migrieren, können Sie die Service Bus-Ressourcen [ als Resource Manager-Vorlage](../azure-resource-manager/resource-manager-export-template-powershell.md) exportieren. Übernehmen Sie dann die exportierte Vorlage für Azure weltweit, und erstellen Sie die Ressourcen erneut.
+Azure Service Bus-Dienste haben keine Datenexport- und -importfunktionen. Um Service Bus-Ressourcen von Azure Deutschland zu Azure weltweit zu migrieren, können Sie die Ressourcen [als eine Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-export-template-powershell.md) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
 
 > [!NOTE]
-> Dabei werden die Daten (z.B. Nachrichten) nicht kopiert, sondern nur die Metadaten erneut erstellt.
-
+> Bei einem Exportieren einer Resource Manager-Vorlage werden die Daten (z. B. Nachrichten) nicht kopiert. Bei einem Exportieren einer Vorlage werden nur die Metadaten neu erstellt.
 
 > [!IMPORTANT]
-> Ändern Sie den Speicherort, Geheimnisse des Schlüsseltresors, Zertifikate und andere GUIDs, damit diese konsistent mit der neuen Region sind.
+> Ändern Sie den Standort, Azure Key Vault-Geheimnisse, Zertifikate und andere GUIDs, damit diese konsistent mit der neuen Region sind.
 
-### <a name="metadata-service-bus"></a>Metadaten Service Bus
+### <a name="service-bus-metadata"></a>Service Bus-Metadaten
+
+Die folgenden Service Bus-Metadatenelemente werden neu erstellt, wenn Sie eine Resource Manager-Vorlage exportieren:
 
 - Namespaces
 - Warteschlangen
 - Themen
 - Abonnements
 - Regeln
-- Autorisierungsregeln (siehe weiter unten)
+- Autorisierungsregeln
 
 ### <a name="keys"></a>Schlüssel
 
-Die oben genannten Schritte für den Export bzw. die erneute Erstellung kopieren nicht die den Autorisierungsregeln zugeordneten SAS-Schlüssel. Wenn Sie die SAS-Schlüssel beibehalten müssen, verwenden Sie das Cmdlet `New-AzureRmServiceBuskey` mit dem optionalen Parameter `-Keyvalue`, um den Schlüssel als Zeichenfolge zu akzeptieren. Das aktualisierte Cmdlet finden Sie unter [PowerShell-Katalog Release 6.4.0 (Juli 2018)](https://www.powershellgallery.com/packages/AzureRM/6.4.0) oder auf [GitHub](https://github.com/Azure/azure-powershell/releases/tag/v6.4.0-July2018).
+In den vorherigen Schritten zum Exportieren und erneuten Erstellen werden die Shared Access Signature-Schlüssel, die Autorisierungsregeln zugeordnet sind, nicht kopiert. Wenn Sie die Shared Access Signature-Schlüssel beibehalten müssen, verwenden Sie das Cmdlet `New-AzureRmServiceBuskey` mit dem optionalen Parameter `-Keyvalue`, um den Schlüssel als Zeichenfolge zu übernehmen. Das aktualisierte Cmdlet finden Sie im [PowerShell Gallery Release 6.4.0 (Juli 2018)](https://www.powershellgallery.com/packages/AzureRM/6.4.0) oder auf [GitHub](https://github.com/Azure/azure-powershell/releases/tag/v6.4.0-July2018).
 
 ### <a name="usage-example"></a>Verwendungsbeispiel
 
@@ -51,7 +52,7 @@ New-AzureRmServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <name
 ```
 
 ```powershell
-New-AzureRmServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
+New-AzureRmServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
 ```
 
 ```powershell
@@ -59,7 +60,7 @@ New-AzureRmServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <name
 ```
 
 > [!NOTE]
-> Sie müssen Ihre Anwendungen aktualisieren, um eine neue Verbindungszeichenfolge zu verwenden, auch wenn Sie die Schlüssel beibehalten, da die DNS-Hostnamen für Azure Deutschland und Azure weltweit unterschiedlich sind.
+> Sie müssen Ihre Anwendungen so aktualisieren, dass sie eine neue Verbindungszeichenfolge verwenden, und zwar selbst dann, wenn Sie die Schlüssel beibehalten. DNS-Hostnamen sind in Azure Deutschland und Azure weltweit unterschiedlich.
 
 ### <a name="sample-connection-strings"></a>Beispielverbindungszeichenfolgen
 
@@ -75,30 +76,34 @@ Endpoint=sb://myBFProdnamespaceName.**servicebus.cloudapi.de**/;SharedAccessKeyN
 Endpoint=sb://myProdnamespaceName.**servicebus.windows.net**/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXx=
 ```
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse zu Service Bus anhand dieser [schrittweisen Tutorials](https://docs.microsoft.com/azure/service-bus-messaging/#step-by-step-tutorials) auf.
-- Machen Sie sich mit den Vorgehensweisen zum [Exportieren einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-export-template.md) vertraut, oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-
-### <a name="references"></a>Referenzen
-
-- [Service Bus: Übersicht](../service-bus-messaging/service-bus-messaging-overview.md)
-- [Exportieren einer Resource Manager-Vorlage mithilfe von PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template)
-
-
-
-
-
-
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/#step-by-step-tutorials) durcharbeiten.
+- Machen Sie sich damit vertraut, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Lesen Sie die [Übersicht über Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
+- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
 
 ## <a name="logic-apps"></a>Logic Apps
 
-Der Logic Apps-Dienst ist in Azure Deutschland nicht verfügbar. Azure Scheduler (verfügbar) ist allerdings veraltet. Verwenden Sie stattdessen Azure Logic Apps zum Erstellen von Planungsaufträgen.
+Der Azure Logic Apps-Dienst ist in Azure Deutschland nicht verfügbar. Azure Scheduler (verfügbar) ist allerdings bald veraltet. Verwenden Sie Logic Apps, um Planungsaufträge in Azure weltweit zu erstellen.
 
-### <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter:
 
-- Machen Sie sich mit den Features vertraut, die Azure Logic Apps bietet, indem Sie die [schrittweisen Tutorials](https://docs.microsoft.com/azure/logic-apps/#step-by-step-tutorials) nutzen.
+- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/#step-by-step-tutorials) durcharbeiten.
+- Lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-### <a name="reference"></a>Verweis
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Logic Apps: Übersicht](../logic-apps/logic-apps-overview.md) 
+Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
+
+- [Compute](./germany-migration-compute.md)
+- [Netzwerk](./germany-migration-networking.md)
+- [Speicher](./germany-migration-storage.md)
+- [Web](./germany-migration-web.md)
+- [Datenbanken](./germany-migration-databases.md)
+- [Analyse](./germany-migration-analytics.md)
+- [IoT](./germany-migration-iot.md)
+- [Identität](./germany-migration-identity.md)
+- [Sicherheit](./germany-migration-security.md)
+- [Verwaltungstools](./germany-migration-management-tools.md)
+- [Medien](./germany-migration-media.md)

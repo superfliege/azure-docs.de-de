@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: cwatson
-ms.openlocfilehash: 80721fc82a54c62c982298cb8eabb999caaf1dfb
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: fe3cb2d15602407b54ff47763d409c2e77614f0a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583107"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311132"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 
@@ -122,7 +122,7 @@ Weitere Informationen über Ihre Daten zur täglichen Nutzung finden Sie unter [
 
 Um Nutzungsdaten als EA-Kunde anzeigen und herunterladen zu können, müssen Sie Unternehmensadministrator, Kontobesitzer oder Abteilungsadministrator sein. Außerdem muss die Richtlinie zum Anzeigen von Gebühren aktiviert sein.
 
-1. Melden Sie sich beim [Azure-Portal]( http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)

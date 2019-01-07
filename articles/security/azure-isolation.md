@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239048"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974708"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -121,7 +121,7 @@ Unternehmensdienstleistungen, die Prüfzertifizierungen unterliegen (z.B. ISO/IE
 
 Wenn Sie Daten löschen, werden diese Daten von Microsoft Azure gelöscht, einschließlich zwischengespeicherte Daten und Sicherungskopien. Für Dienste innerhalb des Gültigkeitsbereichs wird dieser Löschvorgang innerhalb von 90 Tagen nach dem Ende des Aufbewahrungszeitraums durchgeführt. (Dienste innerhalb des Gültigkeitsbereichs sind im Abschnitt mit den Bedingungen zur Datenverarbeitung in den [Nutzungsbedingungen für Online Services](https://aka.ms/Online-Services-Terms) definiert.)
 
-Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftritt, wird er auf sichere Weise [gelöscht oder zerstört](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data), bevor er von Microsoft zwecks Austausch oder Reparatur an den Hersteller zurückgeschickt wird. Die Daten auf dem Laufwerk werden überschrieben, um sicherzustellen, dass die Daten nicht mehr wiederhergestellt werden können.
+Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftritt, wird er auf sichere Weise [gelöscht oder zerstört](https://microsoft.com/trustcenter/privacy/you-own-your-data), bevor er von Microsoft zwecks Austausch oder Reparatur an den Hersteller zurückgeschickt wird. Die Daten auf dem Laufwerk werden überschrieben, um sicherzustellen, dass die Daten nicht mehr wiederhergestellt werden können.
 
 ## <a name="compute-isolation"></a>Computeisolation
 Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen. Diese Computeinstanz bzw. der Computedienst ermöglichen die Isolation auf mehreren Ebenen, um Daten zu schützen, ohne dass auf die von Kunden gewünschte Flexibilität bei der Konfiguration verzichtet werden muss.
@@ -149,9 +149,7 @@ Die Computeplattform von Azure basiert auf der Virtualisierung von Computern. Di
 
 Darüber hinaus weist jeder Knoten eine spezielle Stamm-VM auf, auf der das Hostbetriebssystem ausgeführt wird. Eine kritische Grenze ist die Isolation der Stamm-VM von den Gast-VMs und der Gast-VMs voneinander. Diese Vorgänge werden vom Hypervisor und dem Stammbetriebssystem verwaltet. Der Hypervisor und das Stammbetriebssystem basieren auf mehreren Jahrzehnten Erfahrung, die Microsoft in Bezug auf die Sicherheit von Betriebssystemen besitzt, sowie auf neueren Erfahrungen mit Hyper-V von Microsoft, um eine strenge Isolation von Gast-VMs zu ermöglichen.
 
-Die Azure-Plattform verwendet eine virtualisierte Umgebung. Benutzerinstanzen werden als eigenständige virtuelle Computer betrieben, die keinen Zugriff auf einen physischen Hostserver haben. Diese Isolation wird durch physische Prozessorberechtigungsebenen (Ring 0/Ring 3) erzwungen.
-
-Ring 0 entspricht den höchsten Berechtigungen und Ring 3 den geringsten. Zur Ausführung des Gastbetriebssystems wird ein weniger privilegierter Ring (Ring 1) und für Anwendungen der am wenigsten privilegierte Ring (Ring 3) verwendet. Die Virtualisierung physischer Ressourcen führt zu einer klaren Abgrenzung zwischen Gastbetriebssystem und Hypervisor, was eine zusätzliche Sicherheitstrennung zwischen den beiden bewirkt.
+Die Azure-Plattform verwendet eine virtualisierte Umgebung. Benutzerinstanzen werden als eigenständige virtuelle Computer ausgeführt, die keinen Zugriff auf einen physischen Hostserver haben.
 
 Der Hypervisor von Azure verhält sich wie ein Microkernel und übergibt alle Hardwarezugriffsanforderungen von virtuellen Gastcomputern an den Host, damit sie über eine Schnittstelle mit gemeinsam genutztem Speicherbereich namens VMBus verarbeitet werden. Dies verhindert, dass Benutzer RAW-Lese-, -Schreib- und -Ausführungszugriff auf das System erhalten, und verringert das Risiko der Freigabe von Systemressourcen.
 
@@ -187,9 +185,9 @@ Standardmäßig wird beim Erstellen eines virtuellen Computers sämtlicher Daten
 
 Es gibt zwei Kategorien von Regeln, die programmiert werden:
 
--   **Computerkonfiguration oder Infrastrukturregeln**: In der Standardeinstellung wird die gesamte Kommunikation blockiert. Es gibt Ausnahmen, um einem virtuellen Computer das Senden und Empfangen von DHCP- und DNS-Datenverkehr zu ermöglichen. Virtuelle Computer können auch Datenverkehr an das „öffentliche“ Internet und an andere virtuelle Computer in demselben virtuellen Azure-Netzwerk und auf dem Betriebssystem-Aktivierungsserver senden. Die Liste mit zulässigen ausgehenden Zielen der virtuellen Computer enthält keine Azure-Routersubnetze, keine Azure-Verwaltung und keine anderen Microsoft-Komponenten.
+-   **Computerkonfigurations- oder Infrastrukturregeln:** Standardmäßig ist die gesamte Kommunikation blockiert. Es gibt Ausnahmen, um einem virtuellen Computer das Senden und Empfangen von DHCP- und DNS-Datenverkehr zu ermöglichen. Virtuelle Computer können auch Datenverkehr an das „öffentliche“ Internet und an andere virtuelle Computer in demselben virtuellen Azure-Netzwerk und auf dem Betriebssystem-Aktivierungsserver senden. Die Liste mit zulässigen ausgehenden Zielen der virtuellen Computer enthält keine Azure-Routersubnetze, keine Azure-Verwaltung und keine anderen Microsoft-Komponenten.
 
--   **Rollenkonfigurationsdatei**: Definiert die eingehenden Zugriffssteuerungslisten (ACLs) auf Grundlage des Dienstmodells des Mandanten.
+-   **Rollenkonfigurationsdatei:** Diese definiert die eingehenden Zugriffssteuerungslisten (ACLs) auf der Grundlage des Dienstmodells des Mandanten.
 
 ### <a name="vlan-isolation"></a>VLAN-Isolation
 Jeder Cluster enthält drei VLANs:
@@ -240,7 +238,7 @@ Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Da
 -   [Clientseitiger Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
 #### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
-Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
+Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://docs.microsoft.com/azure/security/azure-isolation) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
 
 -   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
 
@@ -295,7 +293,7 @@ SQL-Datenbank ist ein relationaler Datenbankdienst in der Microsoft Cloud, der a
 
 [Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started)-Datenbank ist ein cloudbasierter relationaler Datenbankdienst auf Grundlage von SQL Server-Technologien. Es wird ein hoch verfügbarer, skalierbarer, mehrinstanzenfähiger Datenbankdienst bereitgestellt, der von Microsoft in der Cloud gehostet wird.
 
-Aus Anwendungssicht verfügt SQL Azure über die folgende Hierarchie: Für jede Ebene gilt in Bezug auf die untergeordneten Ebenen eine 1:n-Einschlussbeziehung.
+Aus Anwendungssicht gibt es in SQL Azure die folgende Hierarchie: Für jede Ebene gilt in Bezug auf die untergeordneten Ebenen eine 1:n-Einschlussbeziehung.
 
 ![SQL Azure-Anwendungsmodell](./media/azure-isolation/azure-isolation-fig10.png)
 
@@ -344,7 +342,7 @@ Eine Azure-Bereitstellung umfasst mehrere Stufen der Netzwerkisolation. Das folg
 
 ![Netzwerkisolation](./media/azure-isolation/azure-isolation-fig13.png)
 
-**Isolation des Datenverkehrs**: Für die Azure Platform werden [virtuelle Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) verwendet, um Datenverkehr zu isolieren. Virtuelle Computer in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern in einem anderen virtuellen Netzwerk kommunizieren – selbst dann nicht, wenn beide virtuellen Netzwerke durch denselben Kunden erstellt werden. Isolation ist eine wichtige Eigenschaft, mit der sichergestellt wird, dass VMs und die Kommunikation von Kunden innerhalb eines virtuellen Netzwerks privat bleiben.
+**Isolation des Datenverkehrs:** Für die Azure-Plattform werden [virtuelle Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) verwendet, um Datenverkehr zu isolieren. Virtuelle Computer in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern in einem anderen virtuellen Netzwerk kommunizieren – selbst dann nicht, wenn beide virtuellen Netzwerke durch denselben Kunden erstellt werden. Isolation ist eine wichtige Eigenschaft, mit der sichergestellt wird, dass VMs und die Kommunikation von Kunden innerhalb eines virtuellen Netzwerks privat bleiben.
 
 [Subnetze](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) ermöglichen eine zusätzliche Isolationsstufe in virtuellen Netzwerken basierend auf dem IP-Bereich. Mit IP-Adressen im virtuellen Netzwerk können Sie ein virtuelles Netzwerk zu Organisations- und Sicherheitszwecken in mehrere Subnetze unterteilen. VMs und PaaS-Rolleninstanzen, die in (denselben oder unterschiedlichen) Subnetzen in einem VNet bereitgestellt werden, können ohne zusätzliche Konfiguration miteinander kommunizieren. Außerdem können Sie [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) konfigurieren, um Netzwerkdatenverkehr für eine VM-Instanz anhand von Regeln zuzulassen oder abzulehnen, die in der Zugriffssteuerungsliste (Access Control List, ACL) einer NSG konfiguriert sind. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz.
 
