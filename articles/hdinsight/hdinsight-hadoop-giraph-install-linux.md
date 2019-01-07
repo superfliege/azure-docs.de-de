@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 027f8ad854cfc4c412a56a293de3b02a425d6858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383900"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713827"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Installieren von Apache Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme
 
 In diesem Artikel wird erläutert, wie Sie Apache Giraph in einem HDInsight-Cluster installieren. Das Skriptaktionenfeature von HDInsight ermöglicht Ihnen die Anpassung des Clusters durch Ausführen eines Bash-Skripts. Mithilfe von Skripts können Sie Cluster während und nach der Erstellung anpassen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whatis"></a>Was ist Giraph?
 
-[Apache Giraph](http://giraph.apache.org/) ermöglicht die Graphverarbeitung mit Hadoop und lässt sich mit Azure HDInsight nutzen. Graphe veranschaulichen die Beziehungen zwischen Objekten. Ein Beispiel hierfür sind die Verbindungen zwischen den Routern eines großen Netzwerks wie dem Internet oder auch Beziehungen zwischen Personen in sozialen Netzwerken. Mit der Graphverarbeitung können Sie sich Gedanken über die Beziehungen zwischen den Objekten im Diagramm machen wie etwa:
+[Apache Giraph](https://giraph.apache.org/) ermöglicht die Graphverarbeitung mit Hadoop und lässt sich mit Azure HDInsight nutzen. Graphe veranschaulichen die Beziehungen zwischen Objekten. Ein Beispiel hierfür sind die Verbindungen zwischen den Routern eines großen Netzwerks wie dem Internet oder auch Beziehungen zwischen Personen in sozialen Netzwerken. Mit der Graphverarbeitung können Sie sich Gedanken über die Beziehungen zwischen den Objekten im Diagramm machen wie etwa:
 
 * Ermitteln potenzieller Freunde aufgrund Ihrer aktuellen Beziehungen.
 
@@ -36,7 +36,7 @@ In diesem Artikel wird erläutert, wie Sie Apache Giraph in einem HDInsight-Clus
 > [!WARNING]  
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft-Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten wie Giraph steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Ihnen bei der Lösung des Problems helfen. Andernfalls finden Sie in Open-Source-Communitys Unterstützung, die oft über umfassende Kenntnisse zu dieser Technologie verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org). Beispiel: [Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten wie Giraph steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Microsoft-Support kann Ihnen bei der Lösung des Problems helfen. Andernfalls finden Sie in Open-Source-Communitys Unterstützung, die oft über umfassende Kenntnisse zu dieser Technologie verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [https://apache.org](https://apache.org). Beispiel: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Funktion des Skripts
@@ -55,7 +55,7 @@ Ein Beispielskript zum Installieren von Giraph in einem HDInsight-Cluster ist an
 
 Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts während der Erstellung des Clusters mithilfe des Azure-Portals.
 
-> [!NOTE]
+> [!NOTE]  
 > Eine Skriptaktion kann mit einer der folgenden Methoden angewendet werden:
 > * Azure PowerShell
 > * Klassische Azure-Befehlszeilenschnittstelle
@@ -86,7 +86,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 
 ## <a name="usegiraph"></a>Wie verwende ich Giraph in HDInsight?
 
-Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in Giraph enthaltene Beispiel „SimpleShortestPathsComputation“ auszuführen. Dieses Beispiel verwendet die grundlegende [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf)-Implementierung zum Ermitteln des kürzesten Pfads zwischen Objekten in einem Graph.
+Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in Giraph enthaltene Beispiel „SimpleShortestPathsComputation“ auszuführen. Dieses Beispiel verwendet die grundlegende [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf)-Implementierung zum Ermitteln des kürzesten Pfads zwischen Objekten in einem Graph.
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her:
 
@@ -146,7 +146,7 @@ Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in
    | `-op` |Der Ausgabespeicherort. |
    | `-w 2` |Die Anzahl der zu verwendenden Worker. In diesem Beispiel ist dies 2. |
 
-    Weitere Informationen zu diesen und anderen mit Giraph-Beispielen verwendeten Parametern finden Sie unter [Giraph Schnellstart](http://giraph.apache.org/quick_start.html).
+    Weitere Informationen zu diesen und anderen mit Giraph-Beispielen verwendeten Parametern finden Sie unter [Giraph Schnellstart](https://giraph.apache.org/quick_start.html).
 
 6. Nach Abschluss des Auftrags werden die Ergebnisse im Verzeichnis **/example/out/shortestpaths** gespeichert. Die Ausgabedateinamen beginnen mit **part-m-** und enden mit einer Zahl, die die erste, zweite, dritte Datei usw. anzeigt. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
 

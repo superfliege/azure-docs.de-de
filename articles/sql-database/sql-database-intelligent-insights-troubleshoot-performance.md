@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: ad7d56b3a23d163cfbc6c9ca14c2788c5f96486b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600861"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273934"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
-Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
+Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
 
 > [!NOTE]
 > Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung von SQL-Datenbank unter Verwendung von Intelligent Insights finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
@@ -332,4 +332,4 @@ Intelligent Insights benötigt in der Regel eine Stunde für die Fehlerursachena
 - Kennenlernen der [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte
 - [Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)
-- Informationen zum [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md)
+- Informationen zum [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)

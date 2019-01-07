@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: fdf8d8977651c868c9f534dc61e3d1a77a43e672
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435945"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718961"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Von Azure Monitor gesammelte Überwachungsdaten
 [Azure Monitor](../overview.md) ist ein Dienst, der Sie bei der Überwachung Ihrer Anwendungen und der Ressourcen, auf denen sie aufbauen, unterstützt. Im Zentrum dieser Funktionalität steht die Speicherung von Telemetriedaten und weiteren Daten aus überwachten Ressourcen. Dieser Artikel enthält eine vollständige Beschreibung der Weise, in der diese Daten von Azure Monitor gespeichert und verwendet werden.
@@ -86,7 +86,7 @@ Es gibt drei grundlegende Quellen von Metriken, die von Azure Monitor erfasst we
 **Anwendungsmetriken** werden von Application Insights für Ihre überwachten Anwendungen erstellt und helfen Ihnen beim Erkennen von Leistungsproblemen und beim Nachverfolgen von Trends in der Nutzung Ihrer Anwendung. Dies beinhaltet solche Werte wie die _Serverantwortzeit_ und _Browserausnahmen_.
 
 **Benutzerdefinierte Metriken** sind Metriken, die Sie über die automatisch verfügbaren Standardmetriken hinaus definieren. Benutzerdefinierte Metriken müssen für eine einzelne Ressource in der gleichen Region erstellt werden, in der sich auch die Ressource befindet. Sie können benutzerdefinierte Metriken mit den folgenden Methoden erstellen:
-    - [Definieren Sie benutzerdefinierte Metriken in Ihrer Anwendung](../../application-insights/app-insights-api-custom-events-metrics.md), die von Application Insights überwacht wird. Diese stellen eine Ergänzung des Standardsatzes von Anwendungsmetriken dar.
+    - [Definieren Sie benutzerdefinierte Metriken in Ihrer Anwendung](../../azure-monitor/app/api-custom-events-metrics.md), die von Application Insights überwacht wird. Diese stellen eine Ergänzung des Standardsatzes von Anwendungsmetriken dar.
     - Veröffentlichen Sie benutzerdefinierte Metriken aus Ihren virtuellen Windows-Computern mithilfe von [Windows Diagnostic Extension (WAD)](../../azure-monitor/platform/diagnostics-extension-overview.md).
     - Veröffentlichen Sie benutzerdefinierte Metriken aus Ihren virtuellen Linux-Computern mithilfe von [InfluxData Telegraf Agent](https://www.influxdata.com/time-series-platform/telegraf/).
     - Schreiben Sie benutzerdefinierte Metriken aus einem Azure-Dienst mithilfe der API für benutzerdefinierte Metriken.
@@ -100,8 +100,8 @@ Dies sind einige der Aufgaben, die Sie mit Metriken ausführen können:
 - Konfigurieren einer [Warnungsregel für eine Metrik](alerts-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet.
 - Verwenden von [Autoskalierung](../../azure-monitor/platform/autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einer Metrik über- oder unterschritten wird, herauf- oder herabzusetzen.
 - Weiterleiten von Metriken an Log Analytics, um Metrikdaten zusammen mit Protokolldaten zu analysieren und Metrikdaten länger als 93 Tage zu speichern. 
-- Streamen von Metriken an einen [Event Hub](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md), um sie an [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) oder an externe Systeme weiterzuleiten.
-- [Archivieren](../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md) des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung.
+- Streamen von Metriken an einen [Event Hub](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md), um sie an [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) oder an externe Systeme weiterzuleiten.
+- [Archivieren](../../azure-monitor/learn/tutorial-archive-data.md) des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung.
 - Zugreifen auf Metrikwerte von einer Befehlszeile oder einer benutzerdefinierten Anwendung aus mithilfe von [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) oder [REST-API](../../azure-monitor/platform/rest-api-walkthrough.md).
 
 
@@ -129,7 +129,7 @@ Protokolle sind besonders nützlich, um Daten aus einer Vielzahl von Quellen fü
 ### <a name="sources-of-log-data"></a>Quellen von Protokolldaten
 Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl innerhalb von Azure als auch aus lokalen Ressourcen. Quellen von Protokolldaten umfassen Folgendes:
 
-- [Aktivitätsprotokolle](collect-activity-logs.md) von Azure-Ressourcen, die Informationen zu deren Konfiguration und Integrität beinhalten, und [Diagnoseprotokolle](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md), die Einblick in ihren Betrieb geben.
+- [Aktivitätsprotokolle](collect-activity-logs.md) von Azure-Ressourcen, die Informationen zu deren Konfiguration und Integrität beinhalten, und [Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md), die Einblick in ihren Betrieb geben.
 - Agents auf virtuellen [Windows](agent-windows.md)- und [Linux](../learn/quick-collect-linux-computer.md)-Computern senden Telemetriedaten basierend auf den von Ihnen konfigurierten [Datenquellen](data-sources.md) aus dem Gastbetriebssystem und aus Anwendungen an Azure Monitor.
 - Von [Application Insights](https://docs.microsoft.com/azure/application-insights/) gesammelte Anwendungsdaten.
 - Daten, die Einblick in eine bestimmte Anwendung oder einen bestimmten Dienst geben und aus [Überwachungslösungen](../insights/solutions.md) oder Features wie Container Insights, VM Insights oder Resource Group Insights stammen.
@@ -156,7 +156,7 @@ Dies sind einige der Aufgaben, die Sie mit Protokollen ausführen können:
 Alle Protokolldaten in Azure Monitor werden mit einer [Protokollabfrage](../log-query/log-query-overview.md) abgerufen, die mit der [Daten-Explorer-Abfragesprache](../log-query/get-started-queries.md) erstellt wurde, mit der Sie gesammelte Daten schnell abrufen, konsolidieren und analysieren können. Verwenden Sie [Log Analytics](../log-query/portals.md), um Abfragen im Azure-Portal zu schreiben und zu testen. Sie können interaktiv mit Ergebnissen arbeiten oder sie an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen. Zudem haben Sie die Möglichkeit, Protokolle mit der [REST-API für die Azure-Überwachung](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) abzurufen.
 
 > [!IMPORTANT]
-> Daten aus Application Insights werden anders als andere Protokolldaten in Azure Monitor in einer separaten Partition gespeichert. Dadurch wird die gleiche Funktionalität wie für andere Protokolldaten unterstützt, jedoch müssen Sie die [Application Insights-Konsole](/application-insights/app-insights-analytics.md) oder die [Application Insights-API](https://dev.applicationinsights.io/) für den Zugriff auf diese Daten verwenden. Sie können eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) verwenden, um Anwendungsdaten zusammen mit anderen Protokolldaten zu analysieren.
+> Daten aus Application Insights werden anders als andere Protokolldaten in Azure Monitor in einer separaten Partition gespeichert. Dadurch wird die gleiche Funktionalität wie für andere Protokolldaten unterstützt, jedoch müssen Sie die [Application Insights-Konsole](/azure-monitor/app/analytics.md) oder die [Application Insights-API](https://dev.applicationinsights.io/) für den Zugriff auf diese Daten verwenden. Sie können eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) verwenden, um Anwendungsdaten zusammen mit anderen Protokolldaten zu analysieren.
 
 ![Protokolle](media/data-collection/logs.png)
 
@@ -176,7 +176,7 @@ Erläuterungen zu diesem Feature finden Sie unter [Erstellen von Metrikwarnungen
 ## <a name="stream-data-to-external-systems"></a>Streamen von Daten zu externen Systemen
 Über die Verwendung der Tools in Azure für die Analyse von Überwachungsdaten hinaus besteht bei Ihnen möglicherweise die Anforderung, diese auch an ein externes Tool wie ein SIEM-Produkt (Security Information and Event Management) weiterzuleiten. Diese Weiterleitung erfolgt normalerweise mithilfe von [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) direkt von den überwachten Ressourcen aus. 
 
-Weitere Informationen zu den verschiedenen Arten von Überwachungsdaten finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+Weitere Informationen zu den verschiedenen Arten von Überwachungsdaten finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

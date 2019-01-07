@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 5657cfb40e9017918f5842c573895872940b307a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273702"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579327"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -96,7 +96,7 @@ Gehen Sie dazu wie folgt vor:
     Sie können eine Regel aktivieren, deaktivieren, bearbeiten oder löschen. [Erfahren Sie mehr](#view-and-manage-activity-log-alert-rules-in-azure-portal) zur Verwaltung von Aktivitätsprotokollregeln.
 
 
-Alternativ ist eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsregeln für das Aktivitätsprotokoll erstellt werden können, die Untersuchung oder Filterung von Ereignissen über das [Aktivitätsprotokoll im Azure-Portal](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). In Azure Monitor – Aktivitätsprotokoll können Sie erforderliche Ereignisse filtern oder finden und dann eine Warnung mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. Befolgen Sie dann ab Schritt 4 die erforderlichen Schritte wie im obigen Tutorial beschrieben.
+Alternativ ist eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsregeln für das Aktivitätsprotokoll erstellt werden können, die Untersuchung oder Filterung von Ereignissen über das [Aktivitätsprotokoll im Azure-Portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). In Azure Monitor – Aktivitätsprotokoll können Sie erforderliche Ereignisse filtern oder finden und dann eine Warnung mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. Befolgen Sie dann ab Schritt 4 die erforderlichen Schritte wie im obigen Tutorial beschrieben.
     
  ![ Hinzufügen einer Warnung aus dem Aktivitätsprotokoll](media/alerts-activity-log/add-activity-log.png)
     
@@ -223,4 +223,4 @@ Die Datei *sampleActivityLogAlert.parameters.json* enthält die Werte für die P
 - [Webhookschema für Aktivitätsprotokolle](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 - [Übersicht über Aktivitätsprotokolle](../../azure-monitor/platform/activity-log-alerts.md) 
 - Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).  
-- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../azure-monitor/platform/service-notifications.md).
