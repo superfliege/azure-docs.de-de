@@ -19,7 +19,7 @@ ms.lasthandoff: 10/02/2018
 ms.locfileid: "48018246"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
-> [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuelle Version](quickstart-create-data-factory-portal.md)
 
