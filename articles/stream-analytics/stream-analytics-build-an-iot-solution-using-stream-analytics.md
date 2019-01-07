@@ -2,19 +2,19 @@
 title: Erstellen einer IoT-Lösung mit Azure Stream Analytics
 description: Enthält ein Tutorial zu den ersten Schritten für die Stream Analytics-IoT-Lösung für ein Mauthäuschen-Szenario.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: jasonh, sngun
+ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/21/2018
-ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4817efcb5cfa5f8692f2b7e5c65d411bc0d21942
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978790"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317388"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -33,10 +33,10 @@ Nachdem Sie diese Lösung durchgearbeitet haben, verfügen Sie über folgende Ke
 Zum Ausführen der Schritte dieser Lösung benötigen Sie Folgendes:
 * [Ein Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="scenario-introduction-hello-toll"></a>Einführung in das Szenario: „Hallo, Maut!“
+## <a name="scenario-introduction-hello-toll"></a>Einführung in das Szenario: „Hallo, Mautstation!“
 Eine Mautstation ist eine bekannte Einrichtung. Es gibt sie auf vielen Autobahnen und an Brücken und Tunneln auf der ganzen Welt. Jede Mautstation umfasst mehrere Mauthäuschen. An Häuschen mit manueller Bezahlung halten Sie an und entrichten den Mautbetrag bei der zuständigen Person. Bei Häuschen mit automatisierter Bezahlung wird mit einem Sensor oben auf dem Häuschen eine RFID-Karte abgetastet, die an der Windschutzscheibe Ihres Fahrzeugs angebracht ist, während Sie das Mauthäuschen passieren. Es ist einfach, die Durchfahrt von Fahrzeugen durch diese Mautstellen als einen Strom von Ereignissen zu visualisieren, über den interessante Vorgänge ausgeführt werden können.
 
-![Bild mit Fahrzeugen an Mauthäuschen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
+![Bild von Autos an Mautstationen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth .jpg)
 
 ## <a name="incoming-data"></a>Eingehende Daten
 In dieser Lösung werden zwei Datenströme verwendet. Mit Sensoren, die am Eingang und Ausgang der Mautstationen installiert sind, wird der erste Datenstrom produziert. Der zweite Datenstrom ist ein statisches Suchdataset mit Daten zur Fahrzeugregistrierung.
@@ -113,7 +113,7 @@ Sie benötigen ein Microsoft Azure-Abonnement, um diese Lösung durchzuarbeiten.
 
 Stellen Sie sicher, dass Sie am Ende dieses Artikels die Anleitung zum Bereinigen Ihres Azure-Kontos befolgen, damit Sie Ihre Azure-Gutschrift bestmöglich nutzen können.
 
-## <a name="deploy-the-sample"></a>Bereitstellen des Beispiels 
+## <a name="deploy-the-sample"></a>Bereitstellen des Beispiels
 Es sind verschiedene Ressourcen vorhanden, die mit wenigen Klicks zusammen in einer Ressourcengruppe bereitgestellt werden können. Die Lösungsdefinition wird im GitHub-Repository unter [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) gehostet.
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Bereitstellen der TollApp-Vorlage im Azure-Portal
@@ -123,11 +123,11 @@ Es sind verschiedene Ressourcen vorhanden, die mit wenigen Klicks zusammen in ei
 
 3. Wählen Sie das Abonnement aus, unter dem die unterschiedlichen Ressourcen abgerechnet werden.
 
-4. Geben Sie eine neue Ressourcengruppe mit einem eindeutigen Namen an, z.B. `MyTollBooth`. 
+4. Geben Sie eine neue Ressourcengruppe mit einem eindeutigen Namen an, z.B. `MyTollBooth`.
 
 5. Wählen Sie einen Azure-Standort aus.
 
-6. Geben Sie ein **Intervall** in Sekunden an. Dieser Wert wird in der Beispiel-Web-App verwendet, um anzugeben, wie oft Daten an den Event Hub gesendet werden sollen. 
+6. Geben Sie ein **Intervall** in Sekunden an. Dieser Wert wird in der Beispiel-Web-App verwendet, um anzugeben, wie oft Daten an den Event Hub gesendet werden sollen.
 
 7. **Aktivieren Sie das Kontrollkästchen**, um den Geschäftsbedingungen zuzustimmen.
 
@@ -149,7 +149,7 @@ Es sind verschiedene Ressourcen vorhanden, die mit wenigen Klicks zusammen in ei
    - Ein Azure Event Hub
    - Zwei Web-Apps
 
-## <a name="examine-the-sample-tollapp-job"></a>Erkunden des Beispiels für einen TollApp-Auftrag 
+## <a name="examine-the-sample-tollapp-job"></a>Erkunden des Beispiels für einen TollApp-Auftrag
 1. Wählen Sie für die Ressourcengruppe aus dem vorherigen Abschnitt den Stream Analytics-Streamingauftrag aus, der mit dem Namen **tollapp** beginnt (aus Gründen der Eindeutigkeit enthält der Name zufällige Zeichen).
 
 2. Beachten Sie auf der Seite **Übersicht** des Auftrags das Feld **Abfrage**, um die Abfragesyntax anzuzeigen.
@@ -195,7 +195,7 @@ Führen Sie diese Schritte aus, um den Streamingauftrag zu starten:
 
 6. Wählen Sie jeweils die ID aus, um sich ein JSON-Dokument anzusehen. Beachten Sie jeweils die tollid, die windowend-Zeit und die Fahrzeuganzahl eines Fensters.
 
-7. Nach weiteren drei Minuten ist eine weitere Gruppe von vier Dokumenten verfügbar – ein Dokument pro tollid. 
+7. Nach weiteren drei Minuten ist eine weitere Gruppe von vier Dokumenten verfügbar – ein Dokument pro tollid.
 
 
 ## <a name="report-total-time-for-each-car"></a>Gesamtberichtszeit pro Fahrzeug
@@ -229,9 +229,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 7. Wählen Sie im Bereich **Auftrag starten** die Option **Jetzt**.
 
 ### <a name="review-the-total-time-in-the-output"></a>Überprüfen der Gesamtzeit in der Ausgabe
-Wiederholen Sie die Schritte im vorherigen Abschnitt, um die CosmosDB-Ausgabedaten aus dem Streamingauftrag zu überprüfen. Überprüfen Sie die neuesten JSON-Dokumente. 
+Wiederholen Sie die Schritte im vorherigen Abschnitt, um die CosmosDB-Ausgabedaten aus dem Streamingauftrag zu überprüfen. Überprüfen Sie die neuesten JSON-Dokumente.
 
-In diesem Dokument werden beispielsweise ein Beispielfahrzeug mit einem bestimmten Nummernschild, der Einfahr- und Ausfahrzeitpunkt und das berechnete DATEDIFF-Feld „durationinminutes“ mit einer Verweildauer von zwei Minuten angezeigt: 
+In diesem Dokument werden beispielsweise ein Beispielfahrzeug mit einem bestimmten Nummernschild, der Einfahr- und Ausfahrzeitpunkt und das berechnete DATEDIFF-Feld „durationinminutes“ mit einer Verweildauer von zwei Minuten angezeigt:
 ```JSON
 {
     "tollid": 4,
@@ -249,7 +249,7 @@ In diesem Dokument werden beispielsweise ein Beispielfahrzeug mit einem bestimmt
 ```
 
 ## <a name="report-vehicles-with-expired-registration"></a>Melden von Fahrzeugen mit abgelaufener Registrierung
-Azure Stream Analytics kann statische Momentaufnahmen von Referenzdaten mit temporären Datenströmen verknüpfen. Um diese Funktion zu demonstrieren, verwenden wir die folgende Beispielfrage. Die Eingabe „Registration“ (Registrierung) ist eine statische JSON-Blobdatei, in der der Ablauf von Nummernschildmarkierungen aufgeführt ist. Wenn dies mit dem Nummernschild verknüpft wird, werden die Referenzdaten für jedes Fahrzeug verglichen, das das Mauthäuschen passiert. 
+Azure Stream Analytics kann statische Momentaufnahmen von Referenzdaten mit temporären Datenströmen verknüpfen. Um diese Funktion zu demonstrieren, verwenden wir die folgende Beispielfrage. Die Eingabe „Registration“ (Registrierung) ist eine statische JSON-Blobdatei, in der der Ablauf von Nummernschildmarkierungen aufgeführt ist. Wenn dies mit dem Nummernschild verknüpft wird, werden die Referenzdaten für jedes Fahrzeug verglichen, das das Mauthäuschen passiert.
 
 Wenn ein Nutzfahrzeug bei einer Mautfirma registriert ist, kann es das Mauthäuschen passieren, ohne für eine Kontrolle angehalten zu werden. Verwenden Sie die Nachschlagetabellen für die Registrierung, um alle Nutzfahrzeuge mit abgelaufener Registrierung zu identifizieren.
 
@@ -264,7 +264,7 @@ WHERE Registration.Expired = '1'
 
 1. Wiederholen Sie die Schritte des vorherigen Abschnitts, um die Abfragesyntax des TollApp-Streamingauftrags zu aktualisieren.
 
-2. Wiederholen Sie die Schritte im vorherigen Abschnitt, um die CosmosDB-Ausgabedaten aus dem Streamingauftrag zu überprüfen. 
+2. Wiederholen Sie die Schritte im vorherigen Abschnitt, um die CosmosDB-Ausgabedaten aus dem Streamingauftrag zu überprüfen.
 
 Beispielausgabe:
 ```json
@@ -289,28 +289,28 @@ Azure Stream Analytics ist für die elastische Skalierung ausgelegt, damit groß
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
-FROM EntryStream 
-TIMESTAMP BY EntryTime 
+FROM EntryStream
+TIMESTAMP BY EntryTime
 PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
 Skalieren Sie den Streamingauftrag wie folgt auf mehr Streamingeinheiten zentral hoch:
 
-1. **Beenden** Sie den aktuellen Auftrag. 
+1. **Beenden** Sie den aktuellen Auftrag.
 
 2. Aktualisieren Sie die Abfragesyntax auf der Seite **< > Abfrage**, und speichern Sie die Änderungen.
 
 3. Wählen Sie unter der Überschrift „KONFIGURIEREN“ des Streamingauftrags die Option **Skalieren**.
-   
+
 4. Verschieben Sie den Schieberegler **Streamingeinheiten** von 1 auf 6. Mit den Streamingeinheiten wird die Menge an Rechenleistung definiert, die der Auftrag erhalten kann. Wählen Sie **Speichern**aus.
 
-5. **Starten** Sie den Streamingauftrag, um die zusätzliche Skalierung zu demonstrieren. Azure Stream Analytics erreicht eine Verteilung der Arbeit auf mehr Computeressourcen und einen besseren Durchsatz, indem die Arbeit über die Spalte, die in der PARTITION BY-Klausel angegeben ist, ressourcenübergreifend partitioniert wird. 
+5. **Starten** Sie den Streamingauftrag, um die zusätzliche Skalierung zu demonstrieren. Azure Stream Analytics erreicht eine Verteilung der Arbeit auf mehr Computeressourcen und einen besseren Durchsatz, indem die Arbeit über die Spalte, die in der PARTITION BY-Klausel angegeben ist, ressourcenübergreifend partitioniert wird.
 
 ## <a name="monitor-the-job"></a>Überwachen des Auftrags
-Der Bereich **MONITOR** (ÜBERWACHEN) enthält Statistiken zum laufenden Auftrag. Um das Speicherkonto in der gleichen Region zu verwenden, ist eine erstmalige Konfiguration erforderlich (die Mautstation muss wie der Rest des Dokuments bezeichnet werden).   
+Der Bereich **MONITOR** (ÜBERWACHEN) enthält Statistiken zum laufenden Auftrag. Um das Speicherkonto in der gleichen Region zu verwenden, ist eine erstmalige Konfiguration erforderlich (die Mautstation muss wie der Rest des Dokuments bezeichnet werden).
 
-![Screenshot der Überwachung](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
+![Azure Stream Analytics-Auftragsüberwachung](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
 Sie können auf die **Aktivitätsprotokolle** auch über das Dashboard für Aufträge im Bereich **Einstellungen** zugreifen.
 

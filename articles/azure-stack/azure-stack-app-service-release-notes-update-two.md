@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 9f320f508fd45b6ad70b1357e873663796825621
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: f40d88df7a46c73981b6f20bee0b119743c08257
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078799"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714490"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 2
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Diese Versionshinweise beschreiben die Verbesserungen und Fehlerbehebungen in Update 2 für Azure App Service in Azure Stack sowie bekannte Probleme. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf die Bereitstellung und den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -66,7 +66,7 @@ Update 2 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
   - Aktualisierte die .NET Core-Komponenten, sodass diese mit Azure App Service in einer öffentlichen Cloud konsistent sind.
   - Aktualisierte Kudu
 
-- Feature für den automatischen Austausch von Bereitstellungsslots aktiviert – [Konfigurieren des automatischen Austauschs](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
+- Feature für den automatischen Austausch von Bereitstellungsslots aktiviert – [Konfigurieren des automatischen Austauschs](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)
 
 - Feature zum Testen in Produktionsumgebungen aktiviert – [Einführung in Tests in einer Produktionsumgebung](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
 
@@ -86,10 +86,10 @@ Wenn Sie sich für die Bereitstellung in einem bestehenden virtuellen Netzwerk u
  * Quelle: Beliebig
  * Quellportbereich: *
  * Ziel: IP-Adressen
- * Ziel-IP-Adressbereich: Bereich der IPs für Ihren Dateiserver
+ * IP-Zieladressbereich: Bereich der IPs für Ihren Dateiserver
  * Zielportbereich: 445
  * Protokoll: TCP
- * Aktion: Zulassen
+ * Aktion: ZULASSEN
  * Priorität: 700
  * Name: Outbound_Allow_SMB445
 

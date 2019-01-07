@@ -4,22 +4,19 @@ description: Enthält Antworten auf häufig gestellte Fragen zu virtuellen Micro
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 54bee086-a8a5-4312-9866-19a1fba913d0
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 6c429931a7a17ab62892ecc774a5cca15a532f72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237633"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277521"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -106,8 +103,8 @@ Nein. Ein VNet ist auf eine Region beschränkt. Ein virtuelles Netzwerk erstreck
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Kann ein VNet mit einem anderen VNet in Azure verbunden werden?
 Ja. Sie können zwei VNETs miteinander verbinden, indem Sie Folgendes verwenden:
-- **Peering in virtuellen Netzwerken**: Ausführliche Informationen finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md).
-- **Eine Azure VPN Gateway-Instanz**: Ausführliche Informationen finden Sie unter [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+- **Peering in virtuellen Netzwerken:** Ausführliche Informationen finden Sie in der [Übersicht über VNET-Peering](virtual-network-peering-overview.md).
+- **Ein Azure VPN Gateway:** Ausführliche Informationen finden Sie unter [Konfigurieren von VNET-zu-VNET-Verbindungen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Namensauflösung (DNS)
 
@@ -143,7 +140,7 @@ Ja. Alle Netzwerkschnittstellen (NICs) einer VM, die mit dem Resource Manager-Be
 * **Privat:** Wird allen NICs jeder einzelnen VM zugewiesen. Die Adresse wird entweder mit der statischen oder dynamischen Methode zugewiesen. Private IP-Adressen werden aus dem Bereich zugewiesen, den Sie in den Subnetzeinstellungen Ihres VNet angegeben haben. Mit dem klassischen Bereitstellungsmodell bereitgestellten Ressourcen werden private IP-Adressen zugewiesen, selbst wenn keine Verbindung mit einem VNet besteht. Das Verhalten der Zuordnungsmethode unterscheidet sich abhängig davon, ob eine Ressource mit dem Resource Manager-Bereitstellungsmodell oder mit dem klassischen Bereitstellungsmodell bereitgestellt wurde: 
 
   - **Resource Manager:** Eine mit der dynamischen oder statischen Methode zugewiesene private IP-Adresse bleibt einem virtuellen Computer (Resource Manager) zugewiesen, bis die Ressource gelöscht wird. Der Unterschied besteht darin, dass bei Verwendung der statischen Methode Sie die zuzuweisende Adresse auswählen und bei Verwendung der dynamischen Methode Azure die Adresse auswählt. 
-  - **Klassisch:** Eine mit der dynamischen Methode zugewiesene private IP-Adresse ändert sich möglicherweise, wenn ein virtueller Computer (klassisch) neu gestartet wird, nachdem er im Zustand „Beendet“ (Zuordnung aufgehoben) war. Wenn Sie sicherstellen müssen, dass sich die private IP-Adresse einer Ressource, die über das klassische Bereitstellungsmodell bereitgestellt wurde, nie ändert, weisen Sie eine private IP-Adresse mit der statischen Methode zu.
+  - **Klassisch:** Eine mit der dynamischen Methode zugewiesene private IP-Adresse ändert sich möglicherweise, wenn ein virtueller Computer (klassisch) neu gestartet wird, nachdem er sich im Zustand „Beendet“ (Zuordnung aufgehoben) befand. Wenn Sie sicherstellen müssen, dass sich die private IP-Adresse einer Ressource, die über das klassische Bereitstellungsmodell bereitgestellt wurde, nie ändert, weisen Sie eine private IP-Adresse mit der statischen Methode zu.
 
 * **Öffentlich:** Kann optional NICs von VMs zugewiesen werden, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt wurden. Die Adresse kann mit der statischen oder der dynamischen Zuteilungsmethode zugewiesen werden. Alle VMs und Cloud Services-Rolleninstanzen, die über das klassische Bereitstellungsmodell bereitgestellt werden, sind in einem Clouddienst vorhanden, dem eine *dynamische* öffentliche virtuelle IP-Adresse (VIP) zugewiesen ist. Eine öffentliche *statische* IP-Adresse, die als [reservierte IP-Adresse](virtual-networks-reserved-public-ip.md) bezeichnet wird, kann optional als VIP zugewiesen werden. Sie können öffentliche IP-Adressen einzelnen VMs oder Cloud Services-Rolleninstanzen zuweisen, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Diese Adressen werden als [ILPIP-Adressen](virtual-networks-instance-level-public-ip.md) (Instance Level Public IP, öffentliche IP auf Instanzebene) bezeichnet und können dynamisch zugewiesen werden.
 
@@ -257,12 +254,12 @@ VNET-Peeringverbindungen wechseln in den Status *Getrennt*, wenn ein VNET-Peerin
 Nein. Transitives Peering wird nicht unterstützt. Sie müssen hierzu eine Peeringverbindung zwischen VNetA und VNetC herstellen.
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Gibt es Bandbreiteneinschränkungen für Peeringverbindungen?
-Nein. Für VNET-Peering, ob lokal oder global, bestehen keine Bandbreiteneinschränkungen. Die Bandbreite wird nur durch den virtuellen Computer oder die Computeressource beschränkt.
+Nein. Für VNET-Peering, ob lokal oder global, bestehen keine Bandbreiteneinschränkungen. Die Bandbreite wird nur durch die VM oder die Computeressource beschränkt.
 
 ## <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Welche Azure-Regionen sind für den TAP eines virtuellen Netzwerks verfügbar?
-Während der Entwicklervorschau ist die Funktion in der Region „USA, Westen Mitte“ verfügbar. Die überwachten Netzwerkschnittstellen, die TAP-Ressource des virtuellen Netzwerks und der Collector oder die Analyselösung müssen in der gleichen Region bereitgestellt werden.
+Während der Entwicklervorschau ist die Funktion in der Region „USA, Westen Mitte“ verfügbar. Die überwachten Netzwerkschnittstellen, die TAP-Ressource des virtuellen Netzwerks und die Collector- oder Analyselösung müssen in der gleichen Region bereitgestellt werden.
 
 ### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Unterstützt der TAP eines virtuellen Netzwerks Filterfunktionen für die gespiegelten Pakete?
 Filterfunktionen werden in der Vorschauversion des TAP für ein virtuelles Netzwerk nicht unterstützt. Beim Hinzufügen einer TAP-Konfiguration zu einer Netzwerkschnittstelle wird eine Tiefenkopie des gesamten eingehenden und ausgehenden Datenverkehrs an das TAP-Ziel gestreamt.
@@ -280,3 +277,108 @@ TAP eines virtuellen Netzwerk befindet sich in der Entwicklervorschau. Während 
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Wird beschleunigter Netzwerkbetrieb für [Linux](create-vm-accelerated-networking-cli.md) oder [Windows](create-vm-accelerated-networking-powershell.md) mit TAP eines virtuellen Netzwerks unterstützt?
 
 Sie haben die Möglichkeit, eine TAP-Konfiguration an einer Netzwerkschnittstelle hinzuzufügen, die einem virtuellen Computer angefügt ist, für den beschleunigter Netzwerkbetrieb aktiviert ist. Die Leistung und Latenz auf dem virtuellen Computer werden durch das Hinzufügen einer TAP-Konfiguration jedoch beeinträchtigt, da die Auslagerung für Spiegelungsdatenverkehr vom beschleunigten Netzwerkbetrieb in Azure derzeit nicht unterstützt wird.
+
+## <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
+
+### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Was ist die richtige Reihenfolge der Vorgänge zum Einrichten von Endpunkten für einen Azure-Dienst?
+Das Absichern einer Azure-Dienstressource über Dienstendpunkte erfolgt in zwei Schritten:
+1. Aktivieren von Dienstendpunkten für den Azure-Dienst
+2. Einrichten von VNET-ACLs für den Azure-Dienst
+
+Der erste Schritt ist ein netzwerkseitiger Vorgang, und der zweite Schritt ist ein Vorgang auf der Seite der Dienstressource. Beide Schritte können durch denselben oder verschiedene Administratoren erfolgen, basierend auf den RBAC-Berechtigungen der Administratorrolle. Es wird empfohlen, zunächst Dienstendpunkte für Ihr virtuelles Netzwerk zu aktivieren, bevor Sie VNET-ACLs auf der Seite des Azure-Diensts einrichten. Die Schritte müssen daher in der oben angegebenen Abfolge zum Einrichten von VNET-Dienstendpunkten ausgeführt werden.
+
+>[!NOTE]
+> Beide der oben beschriebenen Verfahren müssen ausgeführt werden, bevor Sie den Zugriff auf den Azure-Dienst auf das zulässige VNET und Subnetz einschränken können. Wenn Sie nur die Dienstendpunkte für den Azure-Dienst auf der Netzwerkseite aktivieren, erhalten Sie noch keinen eingeschränkten Zugriff. Sie müssen zusätzlich auch VNET-ACLs auf der Seite des Azure-Diensts festlegen.
+
+Bestimmte Dienste (z.B. SQL und Cosmos DB) lassen Ausnahmen für die oben angegebene Folge über das Flag **IgnoreMissingVnetServiceEndpoint** zu. Nachdem das Flag auf **TRUE** festgelegt wurde, können vor dem Einrichten der Dienstendpunkte auf der Netzwerkseite VNET-ACLs auf der Seite des Azure-Diensts festgelegt werden. Azure-Dienste stellen dieses Flag bereit, um Kunden in Fällen zu unterstützen, bei denen Firewalls mit spezifischen IP-Adressen für Azure-Dienste konfiguriert wurden und das Aktivieren der Dienstendpunkte auf der Netzwerkseite zu Verbindungsausfällen führen kann, da die Quell-IP-Adresse von einer öffentlichen IPv4-Adresse in eine private Adresse geändert wird. Durch Einrichten der VNET-ACLs auf der Azure-Dienstseite vor dem Festlegen von Dienstendpunkten auf der Netzwerkseite können Sie Verbindungsausfälle vermeiden.
+
+### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Befinden sich alle Azure-Dienste in dem vom Kunden bereitgestellten virtuellen Azure-Netzwerk? Wie funktioniert der VNET-Dienstendpunkt mit Azure-Diensten?
+
+Nein, es befinden sich nicht alle Azure-Dienste im virtuellen Netzwerk des Kunden. Bei einem Großteil der Azure-Datendienste wie Azure Storage, Azure SQL und Azure Cosmos DB handelt es sich um mehrmandantenfähige Dienste, auf die über öffentliche IP-Adressen zugegriffen werden kann. [Hier](virtual-network-for-azure-services.md) erfahren Sie mehr über die Integration virtueller Netzwerke für Azure-Dienste. 
+
+Wenn Sie die Funktion für VNET-Dienstendpunkte (Aktivieren eines VNET-Dienstendpunkts auf der Netzwerkseite und Einrichten der entsprechenden VNET-ACLs auf der Azure-Dienstseite) verwenden, wird der Zugriff auf Azure-Dienste auf zulässige VNETs und Subnetze beschränkt.
+
+### <a name="how-does-vnet-service-endpoint-provide-security"></a>Wie stellt der VNET-Dienstendpunkt Sicherheit bereit?
+
+Die Funktion für VNET-Dienstendpunkte (Aktivieren eines VNET-Dienstendpunkts auf der Netzwerkseite und Einrichten der entsprechenden VNET-ACLs auf der Azure-Dienstseite) beschränkt den Zugriff auf Azure-Dienste auf zulässige VNETs und Subnetze und stellt somit Sicherheit auf Netzwerkebene und Isolierung des Azure-spezifischen Datenverkehrs bereit. Sämtlicher über VNET-Dienstendpunkte geleiteter Datenverkehr durchläuft den Microsoft-Backbone, dadurch wird eine andere Ebene der Isolation über das öffentliche Internet bereitgestellt. Darüber hinaus können Kunden den Zugriff vom öffentlichen Internet auf die Azure-Dienstressourcen auch vollständig entfernen und nur Datenverkehr vom eigenen virtuellen Netzwerk über eine Kombination aus IP-Firewall und VNET-ACLs zulassen, sodass die Azure-Dienstressourcen vor nicht autorisierten Zugriffen geschützt sind.      
+
+### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>Was schützt der VNET-Dienstendpunkt – VNET-Ressourcen oder Azure-Dienste?
+VNET-Dienstendpunkte helfen dabei, Azure-Dienstressourcen zu schützen. VNET-Ressourcen werden über Netzwerksicherheitsgruppen (NSGs) geschützt.
+
+### <a name="is-there-any-cost-for-using-vnet-service-endpoints"></a>Fallen Kosten für die Verwendung von VNET-Dienstendpunkten an?
+
+Nein, es fallen keinerlei zusätzliche Kosten für die Verwendung von VNET-Dienstendpunkten an.
+
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-subscriptions"></a>Kann ich VNET-Dienstendpunkte aktivieren und VNET-ACLs einrichten, wenn das virtuelle Netzwerk und die Azure-Dienstressourcen zu unterschiedlichen Abonnements gehören?
+
+Ja, das ist möglich. Virtuelle Netzwerke und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Es gilt lediglich die Voraussetzung, dass sich das virtuelle Netzwerk und die Azure-Dienstressourcen zu demselben Active Directory-Mandanten gehören.
+
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Kann ich VNET-Dienstendpunkte aktivieren und VNET-ACLs einrichten, wenn das virtuelle Netzwerk und die Azure-Dienstressourcen zu unterschiedlichen AD-Mandanten gehören?
+Nein, VNET-Dienstendpunkte und VNET-ACLs werden nicht über verschiedene AD-Mandanten unterstützt.
+
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-express-route-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Kann die IP-Adresse eines lokalen Geräts, das über ein Azure Virtual Network-Gateway (VPN) oder ein ExpressRoute-Gateway verbunden ist, über VNET-Dienstendpunkte auf einen Azure-PaaS-Dienst zugreifen?
+Standardmäßig sind Azure-Dienstressourcen, die auf virtuelle Netzwerke beschränkt und so geschützt sind, über lokale Netzwerke nicht erreichbar. Wenn Sie Datenverkehr aus der lokalen Umgebung zulassen möchten, müssen Sie auch öffentliche IP-Adressen (meist NAT) aus der lokalen Umgebung bzw. per ExpressRoute zulassen. Diese IP-Adressen können über die Konfiguration der IP-Firewall für die Azure-Dienstressourcen hinzugefügt werden.
+
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-with-in-a-virtual-network-or-across-multiple-virtual-networks"></a>Kann ich mit dem VNET-Dienstendpunktfeature Azure-Dienste in mehreren Subnetzen innerhalb eines virtuellen Netzwerks oder mehrerer virtueller Netzwerke verwenden?
+Aktivieren Sie zum Schützen von Azure-Diensten in mehreren Subnetzen innerhalb eines virtuellen Netzwerks oder mehrerer virtueller Netzwerke netzwerkseitige Dienstendpunkte in den einzelnen Subnetzen unabhängig voneinander, und schützen Sie Azure-Dienstressourcen dann in allen diesen Subnetzen, indem Sie geeignete VNET-ACLs auf der Azure-Dienstseite einrichten.
+ 
+### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Wie kann ich ausgehenden Datenverkehr aus einem virtuellen Netzwerk an Azure-Dienste filtern und weiterhin Dienstendpunkte verwenden?
+Wenn Sie den Datenverkehr, der aus dem virtuellen Netzwerk an einen Azure-Dienst fließen soll, untersuchen und filtern möchten, können Sie in diesem virtuellen Netzwerk ein virtuelles Netzwerkgerät bereitstellen. Anschließend können Sie Dienstendpunkte auf das Subnetz anwenden, in dem das virtuelle Netzwerkgerät bereitgestellt wurde, und Ressourcen des Azure-Diensts mithilfe von VNET-ACLs auf dieses Subnetz beschränken. Dieses Szenario kann auch hilfreich sein, wenn Sie den Zugriff auf den Azure-Dienst aus Ihrem virtuellen Netzwerk per Filterung durch ein virtuelles Netzwerkgerät nur auf bestimmte Azure-Ressourcen beschränken möchten. Weitere Informationen finden Sie unter [egress with network virtual appliances](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Ausgehender Datenverkehr mit virtuellen Netzwerkgeräten).
+
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Was passiert, wenn von außerhalb des VNET auf ein Azure-Dienstkonto zugegriffen wird, für das eine VNET-Zugriffssteuerungsliste (ACL) aktiviert ist?
+Es wird einer der HTTP-Fehler 403 oder 404 zurückgegeben.
+
+### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Können Subnetze eines virtuellen Netzwerks, die in verschiedenen Regionen erstellt wurden, auf ein Azure-Dienstkonto in einer anderen Region zugreifen? 
+Ja, für die meisten Azure-Dienste können in unterschiedlichen Regionen erstellte virtuelle Netzwerke über die VNET-Dienstendpunkte auf Azure-Dienste in einer anderen Region zugreifen. Wenn sich ein Azure Cosmos DB-Konto z.B. in einer der Regionen „USA, Westen“ oder „USA, Osten“ befindet und sich virtuelle Netzwerke in mehreren Regionen befinden, kann das virtuelle Netzwerk auf Azure Cosmos DB zugreifen. Storage und SQL sind Ausnahmen, die ihrer Natur nach regional sind. Sowohl das virtuelle Netzwerk als auch der Azure-Dienst müssen sich hierbei in derselben Region befinden.
+  
+### <a name="can-an-azure-service-have-both-vnet-acl-and-an-ip-firewall"></a>Kann ein Azure-Dienst sowohl eine VNET-ACL als auch eine IP-Firewall aufweisen?
+Ja, VNET-ACLs und IP-Firewalls können gleichzeitig vorhanden sein. Beide Features ergänzen einander, um Isolation und Sicherheit zu gewährleisten.
+ 
+### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Was passiert beim Löschen eines virtuellen Netzwerks oder Subnetzes, das als Dienstendpunkt für Azure-Dienste festgelegt ist?
+Das Löschen von VNETs und von Subnetzen sind unabhängige Vorgänge, die auch dann unterstützt werden, wenn Dienstendpunkte für Azure-Dienste aktiviert sind. Wenn für Azure-Dienste VNETs eingerichtet sind, werden beim Löschen eines VNET oder Subnetzes, das als VNET-Dienstendpunkt aktiviert wurde, die mit diesem Azure-Dienst verknüpften VNET-ACL-Informationen für diese VNETs und Subnetze deaktiviert.
+ 
+### <a name="what-happens-if-azure-service-account-that-has-vnet-service-endpoint-enabled-is-deleted"></a>Was passiert, wenn ein Azure-Dienstkonto, für das ein VNET-Dienstendpunkt aktiviert ist, gelöscht wird?
+Das Löschen eines Azure-Dienstkontos ist ein unabhängiger Vorgang, der auch dann unterstützt wird, wenn der Dienstendpunkt auf der Netzwerkseite aktiviert und VNET-ACLs auf der Azure-Dienstseite eingerichtet sind. 
+
+### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Was passiert mit der IP-Quelladresse einer Ressource (z.B. eines virtuellen Computers in einem Subnetz), für die ein VNET-Dienstendpunkt aktiviert ist?
+Wenn Dienstendpunkte für virtuelle Netzwerke aktiviert sind, verwenden die IP-Quelladressen der Ressourcen im Subnetz des virtuellen Netzwerks keine öffentlichen IPv4-Adressen mehr, sondern private IP-Adressen des virtuellen Azure-Netzwerks, um Datenverkehr an den Azure-Dienst zu leiten. Beachten Sie, dass dies zu Fehlern bei bestimmten IP-Firewalls, die zuvor in den Azure-Diensten für öffentliche IPv4-Adressen festgelegt wurden, führen kann. 
+
+### <a name="does-service-endpoint-route-always-take-precedence"></a>Haben Dienstendpunkt-Routen immer Vorrang?
+Dienstendpunkte fügen eine Systemroute hinzu, die Vorrang vor BGP-Routen hat und eine optimale Weiterleitung für den Dienstendpunkt-Datenverkehr ermöglicht. Dienstendpunkte leiten den Datenverkehr der Dienste immer direkt aus Ihrem virtuellen Netzwerk an den Dienst im Microsoft Azure-Backbonenetzwerk weiter. Weitere Informationen zum Auswählen einer Route durch Azure finden Sie unter [Datenverkehrsrouting für virtuelle Azure-Netzwerke](virtual-networks-udr-overview.md).
+ 
+### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Wie arbeiten NSGs in einem Subnetz mit Dienstendpunkten zusammen?
+Um den Azure-Dienst zu erreichen, müssen NSGs ausgehende Verbindungen zulassen. Wenn Ihre NSGs für sämtlichen ausgehenden Internet-Datenverkehr geöffnet sind, sollte der Datenverkehr für den Dienstendpunkt funktionieren. Sie können den ausgehenden Datenverkehr über Diensttags auch auf Dienst-IP-Adressen beschränken.  
+ 
+### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Welche Berechtigungen benötige ich, um Dienstendpunkte einzurichten?
+Dienstendpunkte können in einem virtuellen Netzwerken unabhängig durch einen Benutzer konfiguriert werden, der Schreibzugriff auf das virtuelle Netzwerk hat. Zum Schützen der Ressourcen von Azure-Diensten in einem VNET muss der Benutzer die Berechtigung **Microsoft.Network/JoinServicetoaSubnet** für die hinzuzufügenden Subnetze haben. Diese Berechtigung ist standardmäßig in den integrierten Dienstadministratorrollen enthalten und kann durch Erstellen von benutzerdefinierten Rollen geändert werden. Erfahren Sie mehr über integrierte Rollen und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+ 
+
+### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Kann ich über VNET-Dienstendpunkte Datenverkehr aus virtuellen Netzwerken an Azure-Dienste filtern, sodass nur bestimmte Azure-Dienstressourcen zugelassen werden? 
+
+Richtlinien für Dienstendpunkte in virtuellen Azure-Netzwerken (VNETs) ermöglichen es Ihnen, virtuellen Netzwerkdatenverkehr an Azure-Dienste zu filtern, sodass nur bestimmte Azure-Dienstressourcen über Dienstendpunkte zugelassen werden. Endpunktrichtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr an Azure-Dienste. Weitere Informationen zu den Richtlinien für Dienstendpunkte finden Sie [hier](virtual-network-service-endpoint-policies-overview.md).
+ 
+### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Gibt es eine Grenze für die Anzahl der VNET-Dienstendpunkte, die ich in meinem VNET einrichten kann?
+Für die Gesamtzahl von VNET-Dienstendpunkten in einem virtuellen Netzwerk gilt keine Beschränkung. Für die Ressource eines Azure-Diensts (z.B. ein Azure Storage-Konto) können Dienste Beschränkungen in Bezug auf die Anzahl von Subnetzen erzwingen, die zum Schützen der Ressource verwendet werden. Die folgende Tabelle zeigt einige Beispielgrenzwerte: 
+
+|||
+|---|---|
+|Azure-Dienst| Grenzwerte für VNET-Regeln|
+|Azure Storage| 100|
+|Azure SQL| 128|
+|Azure SQL Data Warehouse|  128|
+|Azure Key Vault|    127|
+|Azure Cosmos DB|   64|
+|Azure Event Hub|   128|
+|Azure-Servicebus| 128|
+|Azure Data Lake Store V1|  100|
+ 
+>[!NOTE]
+> Die Grenzwerte unterlegen Änderungen im alleinigen Ermessen des Azure-Diensts. Details zu den einzelnen Diensten finden Sie in der jeweiligen Dokumentation. 
+
+
+
+
+  
+
+
+

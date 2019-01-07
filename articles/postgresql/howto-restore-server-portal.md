@@ -1,20 +1,17 @@
 ---
 title: Wiederherstellen eines Servers in Azure Database for PostgreSQL
 description: In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal einen Server in Azure-Datenbank für PostgreSQL wiederherstellen.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: b4fe1151337dc6f5874e6ad102c6e905e90fd963
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 26959425ec42870ec084146380c376d76e7029f3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412755"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542644"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL mit dem Azure-Portal
 
@@ -61,8 +58,8 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 3. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
 
    ![Azure-Datenbank für PostgreSQL – Wiederherstellungsinformationen ](./media/howto-restore-server-portal/3-restore.png)
-  - **Wiederherstellungspunkt**: Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
-  - **Zielserver**: Geben Sie einen Namen für den neuen Server an.
+  - **Wiederherstellungspunkt:** Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
+  - **Zielserver:** Geben Sie einen Namen für den neuen Server an.
   - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.
   - **Tarif**: Sie können diese Parameter nicht ändern, wenn Sie eine Point-in-Time-Wiederherstellung durchführen. Er ist mit dem Wert für den Quellserver identisch. 
 

@@ -3,17 +3,15 @@ title: 'Gewusst wie: Wiederherstellen eines Servers in Azure Database for MariaD
 description: In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal einen Server in Azure Database for MariaDB wiederherstellen.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 899f0bfa3075c92ac31e2b4f5fab9093a1dc6806
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999040"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548754"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Gewusst wie: Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB mit dem Azure-Portal
 
@@ -66,8 +64,8 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 3. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
 
    ![Azure Database for MariaDB – Wiederherstellungsinformationen ](./media/howto-restore-server-portal/3-restore.png)
-  - **Wiederherstellungspunkt**: Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
-  - **Zielserver**: Geben Sie einen Namen für den neuen Server an.
+  - **Wiederherstellungspunkt:** Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
+  - **Zielserver:** Geben Sie einen Namen für den neuen Server an.
   - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.
   - **Tarif**: Sie können diese Parameter nicht ändern, wenn Sie eine Point-in-Time-Wiederherstellung durchführen. Er ist mit dem Wert für den Quellserver identisch. 
 

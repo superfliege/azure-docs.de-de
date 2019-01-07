@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f87f93ebc739d75c796859c7091d4cf62a820a0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260583"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714983"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack-Update 1807
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel beschreibt den Inhalt des Updatepakets 1807. Dieses Update enthält Verbesserungen, Fehlerbehebungen und bekannten Probleme für diese Version von Azure Stack sowie Informationen darüber, wo das Update heruntergeladen werden kann. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -162,9 +162,8 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Installieren Sie das Azure Stack-[Update 1805](azure-stack-update-1805.md), bevor Sie das Azure Stack-Update 1807 anwenden.  Es gab kein Update 1806.  
-
-- Installieren Sie das neueste verfügbare [Update oder Hotfix für Version 1805](azure-stack-update-1805.md#post-update-steps).  
+- Installieren Sie das Azure Stack-[Update 1805](azure-stack-update-1805.md), bevor Sie das Azure Stack-Update 1807 anwenden. Es gab kein Update 1806.  
+ 
   > [!TIP]  
   > Abonnieren Sie die folgenden *RRS*- oder *Atom*-Feeds, um im Hinblick auf Azure Stack-Hotfixes auf dem neuesten Stand zu bleiben:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … 
@@ -244,13 +243,13 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 - Möglicherweise werden Warnungen für die **Health Controller**-Komponente mit folgenden Details angezeigt:  
 
    Warnung 1:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
 
   Warnung 2:
-   - NAME: Infrastrukturrolle fehlerhaft
+   - NAME:  Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
@@ -278,10 +277,10 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 - Wenn Sie die PowerShell-Cmdlets **Start-AzsScaleUnitNode** oder **Stop-AzsScaleunitNode** verwenden, um Skalierungseinheiten zu verwalten, tritt beim ersten Versuch, die Skalierungseinheit zu starten oder zu beenden, möglicherweise ein Fehler auf. Wenn beim ersten Ausführen des Cmdlets ein Fehler auftritt, führen Sie das Cmdlet ein zweites Mal aus. Bei der zweiten Ausführung sollte der Vorgang erfolgreich sein. 
 
 <!-- 2494144 - IS, ASDK --> 
-- Bei der Auswahl der Größe des virtuellen Computers für die Bereitstellung eines virtuellen Computers sind einige VM-Größen der Serie F beim Erstellen einer VM nicht als Teil der Größenauswahl sichtbar. Folgende VM-Größen werden im Selektor nicht angezeigt: *F8s_v2*, *F16s_v2*, *F32s_v2* und *F64s_v2*.  
+- Bei der Auswahl der Größe des virtuellen Computers für die Bereitstellung eines virtuellen Computers sind einige VM-Größen der Serie F beim Erstellen einer VM nicht als Teil der Größenauswahl sichtbar. Die folgenden VM-Größen werden in der Auswahl nicht angezeigt: *F8s_v2*, *F16s_v2*, *F32s_v2* und *F64s_v2*.  
   Um das Problem zu umgehen, verwenden Sie eine der folgenden Methoden zum Bereitstellen einer VM. Bei jeder Methode müssen Sie die gewünschte VM-Größe angeben.
 
-  - **Azure Resource Manager-Vorlage**: Wenn Sie eine Vorlage verwenden, legen Sie *vmSize* in der Vorlage entsprechend der gewünschten VM-Größe fest. Der folgende Eintrag z.B. wird zum Bereitstellen einer VM mit der Größe *F32s_v2* verwendet:  
+  - **Azure Resource Manager-Vorlage:** Wenn Sie eine Vorlage verwenden, legen Sie darin *vmSize* entsprechend der gewünschten VM-Größe fest. Der folgende Eintrag z.B. wird zum Bereitstellen einer VM mit der Größe *F32s_v2* verwendet:  
 
     ```
         "properties": {
@@ -289,9 +288,9 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI**: Sie können den Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) verwenden und die VM-Größe als Parameter angeben, ähnlich wie `--size "Standard_F32s_v2"`.
+  - **Azure-Befehlszeilenschnittstelle:** Sie können den Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) verwenden und die VM-Größe als Parameter angeben, ähnlich wie `--size "Standard_F32s_v2"`.
 
-  - **PowerShell**: Mit PowerShell können Sie [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) mit dem Parameter verwenden, der die VM-Größe angibt, ähnlich wie `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** Bei PowerShell können Sie [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) mit dem Parameter verwenden, der die VM-Größe angibt, ähnlich wie `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
