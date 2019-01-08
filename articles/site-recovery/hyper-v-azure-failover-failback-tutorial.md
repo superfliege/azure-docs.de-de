@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ea372b4363ce506b926a37686b85cb36e51546eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 03b8dd9bd0a7acc63fdae66330904142384429a8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833454"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794208"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Failover und Failback von Hyper-V-VMs, die in Azure repliziert werden
 
@@ -65,7 +65,7 @@ Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 4. Klicken Sie auf **Commit ausführen**, nachdem Sie das Failover überprüft haben. Daraufhin werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab**: Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
+> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Wenn Sie den Fortschritt abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Failback von Azure-VMs auf lokale Standorte und umgekehrtes Replizieren von lokalen VMs
 

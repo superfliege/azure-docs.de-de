@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: a770c88b294de24eb9e0f482681038e4d36b1d6f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 05f198aa869bbff121d438688aaee89a292516c1
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874599"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807967"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-Gatewaykonfigurationseinstellungen für Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Ein VPN-Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr zwischen Ihrem virtuellen Netzwerk in Azure Stack und einem Remote-VPN-Gateway gesendet wird. Das Remote-VPN-Gateway kann sich in Azure befinden, es kann sich dabei aber auch um ein Gerät in Ihrem Datencenter oder um ein Gerät an einem anderen Standort handeln.  Falls die beiden Endpunkte über Netzwerkkonnektivität verfügen, können Sie zwischen den beiden Netzwerken eine sichere S2S-VPN-Verbindung (Site-to-Site) herstellen.
+Ein VPN-Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr zwischen Ihrem virtuellen Netzwerk in Azure Stack und einem Remote-VPN-Gateway gesendet wird. Das Remote-VPN-Gateway kann sich in Azure befinden, es kann sich dabei aber auch um ein Gerät in Ihrem Datencenter oder um ein Gerät an einem anderen Standort handeln. Falls die beiden Endpunkte über Netzwerkkonnektivität verfügen, können Sie zwischen den beiden Netzwerken eine sichere S2S-VPN-Verbindung (Site-to-Site) herstellen.
 
 Für eine VPN Gateway-Verbindung müssen mehrere Ressourcen konfiguriert werden, die jeweils konfigurierbare Einstellungen enthalten. In diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich auf ein im Resource Manager-Bereitstellungsmodell erstelltes VPN-Gateway für ein virtuelles Netzwerk beziehen. Beschreibungen und Topologiediagramme für die einzelnen Verbindungslösungen finden Sie unter [About VPN gateway for Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md) (Informationen zum VPN-Gateway für Azure Stack).
 
@@ -35,7 +35,7 @@ Für eine VPN Gateway-Verbindung müssen mehrere Ressourcen konfiguriert werden,
 
 Jedes virtuelle Azure Stack-Netzwerk unterstützt ein einzelnes Gateway für virtuelle Netzwerke, das vom Typ **VPN** sein muss.  Im Gegensatz dazu unterstützt Azure zusätzliche Typen.  
 
-Achten Sie beim Erstellen eines Gateways für virtuelle Netzwerke darauf, dass der Gatewaytyp für Ihre Konfiguration korrekt ist. Ein VPN-Gateway erfordert `-GatewayType Vpn`. Beispiel:
+Achten Sie beim Erstellen eines Gateways für virtuelle Netzwerke darauf, dass der Gatewaytyp für Ihre Konfiguration richtig ist. Ein VPN-Gateway erfordert das `-GatewayType Vpn`-Flag. Beispiel:
 
 ```PowerShell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
@@ -49,7 +49,7 @@ Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünsch
 
 Azure Stack bietet folgende VPN-Gateway-SKUs:
 
-|   | VPN-Gatewaydurchsatz |Max. IPsec-Tunnel für das VPN-Gateway |
+|   | VPN-Gatewaydurchsatz |Maximale IPsec-Tunnel für das VPN-Gateway |
 |-------|-------|-------|
 |**Basic-SKU**  | 100 MBit/s  | 10    |
 |**Standard-SKU**           | 100 MBit/s  | 10    |
@@ -59,17 +59,17 @@ Azure Stack bietet folgende VPN-Gateway-SKUs:
 
 SKU-Größenwechsel zwischen den unterstützten Legacy-SKUs werden von Azure Stack nicht unterstützt.
 
-Analog dazu unterstützt Azure Stack auch nicht das Ändern der Größe von einer unterstützten Legacy-SKU (Basic, Standard und HighPerformance) in neuere, von Azure unterstützte SKUs (VpnGw1, VpnGw2 und VpnGw3).
+Analog dazu unterstützt Azure Stack auch nicht das Ändern der Größe einer unterstützten Legacy-SKU (Basic, Standard und HighPerformance) in neuere, von Azure unterstützte SKUs (VpnGw1, VpnGw2 und VpnGw3).
 
 ### <a name="configure-the-gateway-sku"></a>Konfigurieren der Gateway-SKU
 
 #### <a name="azure-stack-portal"></a>Azure Stack-Portal
 
-Wenn Sie das Azure Stack-Portal verwenden, um ein Resource Manager-Gateway für virtuelle Netzwerke zu erstellen, können Sie die Gateway-SKU in der Dropdownliste auswählen. Die angegebenen Optionen entsprechen dem ausgewählten Gateway- und VPN-Typ.
+Wenn Sie das Azure Stack-Portal verwenden, um ein Resource Manager-Gateway für virtuelle Netzwerke zu erstellen, können Sie die Gateway-SKU in der Dropdownliste auswählen. Die Optionen entsprechen dem ausgewählten Gateway- und VPN-Typ.
 
 #### <a name="powershell"></a>PowerShell
 
-Im folgenden PowerShell-Beispiel ist **-GatewaySku** als „VpnGw1“ angegeben.
+Im folgenden PowerShell-Beispiel wird **-GatewaySku** als `VpnGw1` angegeben:
 
 ```PowerShell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
@@ -83,31 +83,31 @@ Im Resource Manager-Bereitstellungsmodell ist für jede Konfiguration ein bestim
 
 * IPsec
 
-Im folgenden PowerShell-Beispiel wird eine Site-to-Site-Verbindung erstellt, die den Verbindungstyp „IPsec“ erfordert.
+   Im folgenden PowerShell-Beispiel wird eine Site-to-Site-Verbindung (S2S) erstellt, die den Verbindungstyp „IPsec“ erfordert:
 
-```PowerShell
-New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
--Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local
--ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
-```
+   ```PowerShell
+   New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
+   -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local
+   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+   ```
 
 ### <a name="vpn-types"></a>VPN-Typen
 
-Wenn Sie das Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration erstellen, müssen Sie einen VPN-Typ angeben. Der ausgewählte VPN-Typ hängt von der Verbindungstopologie ab, die Sie erstellen möchten.  Der VPN-Typ kann zudem von der verwendeten Hardware abhängen. S2S-Konfigurationen erfordern ein VPN-Gerät. Einige VPN-Geräte unterstützen nur einen bestimmten VPN-Typ.
+Wenn Sie das Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration erstellen, müssen Sie einen VPN-Typ angeben. Der ausgewählte VPN-Typ hängt von der Verbindungstopologie ab, die Sie erstellen möchten. Der VPN-Typ kann zudem von der verwendeten Hardware abhängen. S2S-Konfigurationen erfordern ein VPN-Gerät. Einige VPN-Geräte unterstützen nur einen bestimmten VPN-Typ.
 
 > [!IMPORTANT]  
 > Aktuell unterstützt Azure Stack nur den routenbasierten VPN-Typ. Wenn Ihr Gerät nur richtlinienbasierte VPNs unterstützt, werden Verbindungen mit diesen Geräten über Azure Stack nicht unterstützt.  
 >
-> Darüber hinaus unterstützt Azure Stack derzeit nicht die Verwendung von richtlinienbasierten Datenverkehrsselektoren für routenbasierte Gateways, da benutzerdefinierte IPSec/IKE-Richtlinienkonfigurationen noch nicht unterstützt werden.
+> Darüber hinaus unterstützt Azure Stack zurzeit nicht die Verwendung von richtlinienbasierten Datenverkehrsselektoren für routenbasierte Gateways, da benutzerdefinierte IPSec/IKE-Richtlinienkonfigurationen nicht unterstützt werden.
 
-* **PolicyBased:** Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils per Kombination aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure Stack-VNet konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) ist in der Regel eine Zugriffsliste in der VPN-Gerätekonfiguration.
+* **PolicyBased**: Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils durch die Kombination aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure Stack-VNET konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) ist in der Regel eine Zugriffsliste in der VPN-Gerätekonfiguration.
 
   >[!NOTE]
-  >„PolicyBased“ wird in Azure, aber nicht in Azure Stack unterstützt.
+  >**PolicyBased** wird in Azure, aber nicht in Azure Stack unterstützt.
 
-* **RouteBased:** Bei routenbasierten VPNs werden Pakete auf der Grundlage von Routen, die in der IP-Weiterleitungstabelle oder -Routingtabelle konfiguriert sind, an die entsprechenden Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie (bzw. der Datenverkehrsselektor) für routenbasierte VPNs wird im Any-to-Any-Format (bzw. unter Verwendung von Platzhaltern) konfiguriert. Sie können standardmäßig nicht geändert werden. Der Wert für einen RouteBased-VPN-Typ lautet „RouteBased“.
+* **RouteBased**: Bei routenbasierten VPNs werden Pakete auf der Grundlage von Routen, die in der IP-Weiterleitungstabelle oder -Routingtabelle konfiguriert sind, an die entsprechenden Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie (bzw. der Datenverkehrsselektor) für **routenbasierte** VPNs wird im Any-to-Any-Format (bzw. unter Verwendung von Platzhaltern) konfiguriert. Sie können standardmäßig nicht geändert werden. Der Wert für einen **RouteBased**-VPN-Typ lautet **RouteBased**.
 
-Im folgenden PowerShell-Beispiel ist **-VpnType** als „RouteBased“ angegeben. Achten Sie beim Erstellen eines Gateways darauf, dass **-VpnType** für Ihre Konfiguration korrekt ist.
+Im folgenden PowerShell-Beispiel wird **-VpnType** als **RouteBased** angegeben. Achten Sie beim Erstellen eines Gateways darauf, dass **-VpnType** für Ihre Konfiguration richtig ist.
 
 ```PowerShell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
@@ -128,7 +128,7 @@ Die folgende Tabelle enthält die Anforderungen für VPN-Gateways.
 
 ### <a name="gateway-subnet"></a>Gatewaysubnetz
 
-Bevor Sie ein VPN-Gateway erstellen, müssen Sie ein Gatewaysubnetz erstellen. Das Gatewaysubnetz verfügt über die IP-Adressen, die von den virtuellen Computern und Diensten des Gateways für virtuelle Netzwerke verwendet werden. Bei der Erstellung des Gateways des virtuellen Netzwerks, werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den erforderlichen VPN Gateway-Einstellungen konfiguriert. Stellen Sie für das Gatewaysubnetz **nichts** anderes bereit (beispielsweise zusätzliche virtuelle Computer).
+Bevor Sie ein VPN-Gateway erstellen, müssen Sie ein Gatewaysubnetz erstellen. Das Gatewaysubnetz verfügt über die IP-Adressen, die von den virtuellen Computern und Diensten des Gateways für virtuelle Netzwerke verwendet werden. Bei der Erstellung des Gateways des virtuellen Netzwerks, werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den erforderlichen VPN Gateway-Einstellungen konfiguriert. Stellen Sie für das Gatewaysubnetz nichts anderes bereit (beispielsweise zusätzliche virtuelle Computer).
 
 >[!IMPORTANT]
 >Das Gatewaysubnetz muss den Namen **GatewaySubnet** aufweisen, damit es einwandfrei funktioniert. Anhand dieses Namens ermittelt Azure Stack das Subnetz, für das die virtuellen Computer und Dienste des Gateways für virtuelle Netzwerke bereitgestellt werden sollen.
@@ -137,14 +137,14 @@ Bei der Gatewayerstellung geben Sie die Anzahl der im Subnetz enthaltenen IP-Adr
 
 Stellen Sie außerdem sicher, dass Ihr Gatewaysubnetz über genügend IP-Adressen für zukünftige Konfigurationen verfügt. Sie können zwar ein Gatewaysubnetz mit einer Größe von nur /29 erstellen, aber es empfiehlt sich, ein Gatewaysubnetz mit einer Größe von mindestens /28 (/28, /27, /26 usw.) zu erstellen. Wenn Sie später Funktionen hinzufügen, müssen Sie Ihr Gateway nicht beenden und anschließend das Gatewaysubnetz löschen und erneut erstellen, um weitere IP-Adressen verwenden zu können.
 
-Im folgenden Resource Manager-PowerShell-Beispiel ist ein Gatewaysubnetz mit dem Namen GatewaySubnet zu sehen. Sie erkennen, das mit der CIDR-Notation die Größe /27 angegeben wird. Dies ist für eine ausreichende Zahl von IP-Adressen für die meisten Konfigurationen, die derzeit üblich sind, groß genug.
+Im folgenden Resource Manager-PowerShell-Beispiel wird ein Gatewaysubnetz mit dem Namen **GatewaySubnet** gezeigt. Sie erkennen, das mit der CIDR-Notation die Größe /27 angegeben wird. Dies ist für eine ausreichende Zahl von IP-Adressen für die meisten Konfigurationen, die derzeit üblich sind, groß genug.
 
 ```PowerShell
 Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
 > [!IMPORTANT]
-> Vermeiden Sie bei der Verwendung von Gatewaysubnetzen die Zuordnung einer Netzwerksicherheitsgruppe (NSG) zum Gatewaysubnetz. Das Zuordnen einer Netzwerksicherheitsgruppe zu diesem Subnetz kann dazu führen, dass das VPN-Gateway nicht mehr wie erwartet funktioniert. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](/azure/virtual-network/virtual-networks-nsg).
+> Vermeiden Sie bei der Verwendung von Gatewaysubnetzen die Zuordnung einer Netzwerksicherheitsgruppe (NSG) zum Gatewaysubnetz. Das Zuordnen einer Netzwerksicherheitsgruppe zu diesem Subnetz kann dazu führen, dass das VPN-Gateway nicht mehr wie erwartet funktioniert. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
 
 ### <a name="local-network-gateways"></a>Lokale Netzwerkgateways
 
@@ -159,11 +159,11 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
-Manchmal müssen Sie die Einstellungen des Gateways des lokalen Netzwerks ändern, beispielsweise wenn Sie den Adressbereich erweitern oder ändern oder wenn sich die IP-Adresse des VPN-Geräts ändert. Weitere Informationen hierzu finden Sie im Artikel [Ändern der Einstellungen des lokalen Netzwerkgateways mit PowerShell](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).
+Manchmal müssen Sie die Einstellungen des lokalen Netzwerkgateways ändern, z.B. wenn Sie den Adressbereich hinzufügen oder ändern oder wenn sich die IP-Adresse des VPN-Geräts ändert. Weitere Informationen hierzu finden Sie im Artikel [Ändern der Einstellungen des lokalen Netzwerkgateways mit PowerShell](../vpn-gateway/vpn-gateway-modify-local-network-gateway.md).
 
 ## <a name="ipsecike-parameters"></a>IPsec-/IKE-Parameter
 
-Wenn Sie eine VPN-Verbindung in Azure Stack einrichten, müssen Sie die Verbindung an beiden Enden konfigurieren.  Wenn Sie eine VPN-Verbindung zwischen Azure Stack und einem Hardwaregerät (beispielsweise einem als VPN-Gateway fungierenden Switch oder Router) konfigurieren, sind für dieses Gerät unter Umständen weitere Einstellungen erforderlich.
+Wenn Sie eine VPN-Verbindung in Azure Stack einrichten, müssen Sie die Verbindung an beiden Enden konfigurieren. Wenn Sie eine VPN-Verbindung zwischen Azure Stack und einem Hardwaregerät (beispielsweise einem als VPN-Gateway fungierenden Switch oder Router) konfigurieren, sind für dieses Gerät unter Umständen weitere Einstellungen erforderlich.
 
 Im Gegensatz zu Azure, das mehrere Angebote als Initiator und Antwortdienst unterstützt, unterstützt Azure Stack lediglich ein einzelnes Angebot.
 
@@ -189,8 +189,8 @@ Im Gegensatz zu Azure, das mehrere Angebote als Initiator und Antwortdienst unte
 |Perfect Forward Secrecy (PFS) |Keine<sup>Siehe Hinweis 1</sup> |
 |Dead Peer Detection | Unterstützt|  
 
-* *Hinweis 1:* Bis zur Version 1807 verwendet Azure Stack für „Perfect Forward Secrecy (PFS)“ den Wert „PFS2048“.
+* *Hinweis 1:*  Bis zur Version 1807 verwendet Azure Stack für „Perfect Forward Secrecy (PFS)“ den Wert „PFS2048“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Herstellen einer Verbindung mithilfe von ExpressRoute](azure-stack-connect-expressroute.md)
+- [Herstellen einer Verbindung mithilfe von ExpressRoute](azure-stack-connect-expressroute.md)

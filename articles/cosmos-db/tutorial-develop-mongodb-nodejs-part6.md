@@ -1,5 +1,5 @@
 ---
-title: Node.js, Angular-App mit MongoDB-API (Teil 6)
+title: 'Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App'
 titleSuffix: Azure Cosmos DB
 description: Teil 6 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 author: johnpapa
@@ -7,21 +7,19 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: ec6fc4237fd2be11d1e937ec6aed12898689e73f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: affa3fcc580ab69d7cba9db93890ed5f3c499bf4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139978"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793358"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-crud-functions-to-the-app"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB – Teil 6: Hinzufügen von CRUD-Funktionen zur App
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App
 
-In diesem mehrteiligen Tutorial erfahren Sie, wie Sie eine neue, in Node.js geschriebene [MongoDB-API](mongodb-introduction.md)-App mit Express und Angular erstellen und mit Ihrer Azure Cosmos DB-Datenbank verbinden.
-
-Teil 6 des Tutorials baut auf [Teil 5](tutorial-develop-mongodb-nodejs-part5.md) auf und umfasst folgende Aufgaben:
+Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der API für MongoDB von Cosmos DB](mongodb-introduction.md) konfiguriert wurde. Teil 6 des Tutorials baut auf [Teil 5](tutorial-develop-mongodb-nodejs-part5.md) auf und umfasst folgende Aufgaben:
 
 > [!div class="checklist"]
 > * Erstellen von Post-, Put- und Delete-Funktionen für den hero-Dienst

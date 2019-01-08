@@ -7,21 +7,21 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: ea69e4c8ba74dc685dd0b0fb7ac61cc6d061a26f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 364c8d4c0ca9ac9a733ee98fd73b2dfd8497625f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137649"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791285"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB 
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB
 
-In diesem mehrteiligen Tutorial erfahren Sie, wie Sie eine neue [MongoDB-API](mongodb-introduction.md)-App mit Express, Angular und Node.js (MEAN-Stack) erstellen und mit Ihrer Azure Cosmos DB-Datenbank verbinden. Azure Cosmos DB unterstützt MongoDB-Clientverbindungen, sodass Sie MongoDB durch Azure Cosmos DB ersetzen können. Dabei können Sie nicht nur den gleichen Code wie für MongoDB-Apps verwenden, sondern auch von zusätzlichen Vorteilen profitieren. Zu den Vorteilen von Azure Cosmos DB zählen die einfache Cloudbereitstellung sowie Skalierung, Sicherheit, global replizierte Daten, Unterstützung mehrerer Modelle und äußerst schnelle Lese- und Schreibvorgänge. 
+Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der API für MongoDB von Cosmos DB](mongodb-introduction.md) konfiguriert wurde.
 
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
+Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Cosmos DB zugrunde liegen. 
 
 Dieses mehrteilige Tutorial umfasst folgende Aufgaben:
 

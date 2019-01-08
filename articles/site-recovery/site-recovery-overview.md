@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5942f27313cf8bb6a9ed8bf0a5cc4fb556693065
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2cd9e89c92b2bed75c52654d779f4f7d8c17596e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832223"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975320"
 ---
 # <a name="about-site-recovery"></a>Informationen zu Azure Site Recovery
 
@@ -23,7 +23,7 @@ Organisationen benötigen eine BCDR-Strategie (Business Continuity and Disaster 
 
 Azure Recovery Services unterstützen Sie bei Ihrer BCDR-Strategie:
 
-- **Site Recovery-Dienst:** Site Recovery sorgt dafür, dass geschäftliche Apps und Workloads während Ausfällen weiter ausgeführt werden, und trägt so zur Aufrechterhaltung der Geschäftskontinuität bei. Site Recovery repliziert Workloads, die auf physischen und virtuellen Computern ausgeführt werden, von einem primären Standort an einen sekundären Standort. Im Falle eines Ausfalls am primären Standort können Sie ein Failover auf den sekundären Standort ausführen und von dort aus auf die Apps zugreifen. Wenn der primäre Standort dann wieder verfügbar ist, können Sie ein Failback ausführen.  
+- **Site Recovery-Dienst**: Site Recovery sorgt dafür, dass geschäftliche Apps und Workloads während Ausfällen weiter ausgeführt werden, und trägt so zur Aufrechterhaltung der Geschäftskontinuität bei. Site Recovery repliziert Workloads, die auf physischen und virtuellen Computern ausgeführt werden, von einem primären Standort an einen sekundären Standort. Im Falle eines Ausfalls am primären Standort können Sie ein Failover auf den sekundären Standort ausführen und von dort aus auf die Apps zugreifen. Wenn der primäre Standort dann wieder verfügbar ist, können Sie ein Failback ausführen.  
 - **Backup-Dienst**: Der Dienst [Azure Backup](https://docs.microsoft.com/azure/backup/) sichert Ihre Daten in Azure und sorgt so dafür, dass Ihre Daten sicher und wiederherstellbar bleiben.
 
 Site Recovery kann die Replikation für folgende Bereiche verwalten:

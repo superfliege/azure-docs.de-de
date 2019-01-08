@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 8b64142a7d693e8e48e1739a61978abbab740e3d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 83178abab84679dcfb36a361950097f9224eda81
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875211"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810640"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -81,7 +81,7 @@ Nachfolgend sehen Sie ein Beispiel einer Datei vom Typ **.runsettings**, die Par
 </RunSettings>
 ```
 
-Wenn Sie eine CI/CD-Pipeline für eine Anwendung einrichten, die die Azure Cosmos DB MongoDB-API nutzt, enthält die MongoDB-Verbindungszeichenfolge standardmäßig die Portnummer 10255. Dieser Port ist derzeit jedoch nicht geöffnet. Verwenden Sie als Alternative Port 10250, um die Verbindung herzustellen. Die MongoDB-API-Verbindungszeichenfolge bleibt gleich. Die unterstützte Portnummer ist jedoch 10250 anstelle von 10255.
+Wenn Sie eine CI/CD-Pipeline für eine Anwendung einrichten, die die API für MongoDB von Azure Cosmos DB nutzt, enthält die Verbindungszeichenfolge standardmäßig die Portnummer 10255. Dieser Port ist derzeit jedoch nicht geöffnet. Verwenden Sie als Alternative Port 10250, um die Verbindung herzustellen. Die Verbindungszeichenfolge der API für MongoDB von Azure Cosmos DB bleibt gleich. Die unterstützte Portnummer ist jedoch 10250 anstelle von 10255.
 
 Auf diese `TestRunParameters`-Parameter wird im Testprojekt der Anwendung über eine `TestContext`-Eigenschaft verwiesen. Hier sehen Sie ein Beispiel für einen Test, der für Cosmos DB ausgeführt wird:
 

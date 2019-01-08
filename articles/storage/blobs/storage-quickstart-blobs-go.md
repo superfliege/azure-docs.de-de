@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 5bafceca09cfe5a981365a39e4f3803b5865ce73
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711156"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754814"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Go
 
@@ -51,14 +51,14 @@ Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Zum �
 ## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
 Für diese Lösung müssen der Name und der Schlüssel Ihres Speicherkontos sicher in Umgebungsvariablen gespeichert sein, die sich auf dem Computer befinden, auf dem das Beispiel ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariablen zu erstellen.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -148,7 +148,7 @@ handleErrors(err)
 
 Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten und auch in diesem Schnellstart verwendet.  
 
-Zum Hochladen einer Datei in ein Blob öffnen Sie die Datei mit **os.Open**. Anschließend können Sie die Datei mithilfe einer der folgenden REST-APIs an den angegebenen Pfad hochladen: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
+Zum Hochladen einer Datei in ein Blob öffnen Sie die Datei mit **os.Open**. Anschließend können Sie die Datei mit einer der REST-APIs in den angegebenen Pfad hochladen: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
 Als Alternative bietet das SDK [High-Level-APIs](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go), die auf den Low-Level-REST-APIs aufbauen. So verwendet beispielsweise die Funktion ***UploadFileToBlockBlob*** Vorgänge vom Typ „StageBlock“ (PutBlock), um eine Datei parallel in Blöcken hochzuladen und so den Durchsatz zu optimieren. Ist die Datei kleiner als 256 MB, wird stattdessen „Upload“ (PutBlob) verwendet, um die Übertragung mit einer einzelnen Transaktion durchzuführen.
 

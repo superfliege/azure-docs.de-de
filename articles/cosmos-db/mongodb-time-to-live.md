@@ -1,23 +1,23 @@
 ---
 title: Dokumentspezifisches TTL-Feature von MongoDB in Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie die Gültigkeitsdauer (Time To Live, TTL) für über die MongoDB-API erstellte Azure Cosmos DB-Dokumente festlegen, sodass sie nach einer bestimmten Zeit automatisch aus dem System gelöscht werden.
+description: Erfahren Sie, wie Sie mit der API für MongoDB von Azure Cosmos DB die Gültigkeitsdauer (Time To Live, TTL) für Dokumente festlegen, sodass sie nach einer bestimmten Zeit automatisch aus dem System gelöscht werden.
 services: cosmos-db
-author: orestis-ms
-ms.author: orkostak
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 08/10/2018
-ms.openlocfilehash: 547ee489581b7e7e9203151fbfcdaad45dca8ea1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.openlocfilehash: d7c811dba3ad9b894fd5dae47e898f51ec4d05e5
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868753"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790094"
 ---
-# <a name="expire-data-in-azure-cosmos-db-mongodb-api"></a>Konfigurieren einer Gültigkeitsdauer in der Azure Cosmos DB-MongoDB-API
+# <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Ablauf von Daten mit der API für MongoDB von Azure Cosmos DB
 
-Mithilfe de TTL-Funktion (Time To Live, Gültigkeitsdauer) kann die Gültigkeit von Daten in der Datenbank automatisch ablaufen. Die MongoDB-API nutzt die TTL-Funktionen von Azure Cosmos DB. Unterstützt werden zwei Modi: Festlegen eines TTL-Standardwerts für die gesamte Sammlung und Festlegen individueller TTL-Werte für die einzelnen Dokumente. Die Logik, die TTL-Indizes und dokumentspezifischen TTL-Werten in der MongoDB-API zugrunde liegt, ist die [gleiche wie in Azure Cosmos DB](../cosmos-db/mongodb-indexing.md).
+Mithilfe de TTL-Funktion (Time To Live, Gültigkeitsdauer) kann die Gültigkeit von Daten in der Datenbank automatisch ablaufen. Die API für MongoDB von Azure Cosmos DB nutzt die TTL-Kernfunktionen von Azure Cosmos DB. Unterstützt werden zwei Modi: Festlegen eines TTL-Standardwerts für die gesamte Sammlung und Festlegen individueller TTL-Werte für die einzelnen Dokumente. Die Logik, die TTL-Indizes und dokumentspezifischen TTL-Werten in der API für MongoDB von Cosmos DB zugrunde liegt, ist die [gleiche wie in Cosmos DB](../cosmos-db/mongodb-indexing.md).
 
 ## <a name="ttl-indexes"></a>TTL-Indizes
 Wenn Sie eine universelle Gültigkeitsdauer für eine Sammlung verwenden möchten, muss ein [„TTL-Index“ (Index für die Gültigkeitsdauer)](../cosmos-db/mongodb-indexing.md) erstellt werden. Der TTL-Index ist ein Index im Feld „_ts“ mit einem expireAfterSeconds-Wert.
@@ -72,10 +72,11 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 ``` 
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>Aktivieren des dokumentspezifischen TTL-Features
-Das dokumentspezifische TTL-Feature kann im Azure-Portal auf der Registerkarte „Vorschaufeatures“ des Kontos für die MongoDB-API aktiviert werden.
+
+Das dokumentspezifische TTL-Feature kann mit der API für MongoDB von Azure Cosmos DB aktiviert werden.
 
 ![Screenshot der Aktivierung des dokumentspezifischen TTL-Features im Portal](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen](../cosmos-db/time-to-live.md)
-* [Durchführen der Indizierung in der Azure Cosmos DB-MongoDB-API](../cosmos-db/mongodb-indexing.md)
+* [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB](../cosmos-db/time-to-live.md)
+* [Indizieren einer Cosmos-Datenbank, die mit der API für MongoDB von Azure Cosmos DB konfiguriert ist](../cosmos-db/mongodb-indexing.md)

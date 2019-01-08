@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 040d0dae7bb16e0c2a79640812b18ad75754ca3e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846605"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794514"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs an einem sekundären lokalen Standort
 
@@ -65,7 +65,7 @@ Bereiten Sie VMM wie folgt vor:
 
 Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert werden sollen.
 
-1. Klicken Sie auf **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Schutzziel**.
+1. Klicken Sie auf **Site Recovery** > **Schritt 1: Vorbereiten der Infrastruktur** > **Schutzziel**.
 2. Wählen Sie **Auf Wiederherstellungsstandort** und anschließend **Yes, with Hyper-V** (Ja, mit Hyper-V) aus.
 3. Wählen Sie **Ja** aus, um anzugeben, dass Sie die Hyper-V-Hosts mithilfe von VMM verwalten.
 4. Wählen Sie **Ja** aus, falls Sie über einen sekundären VMM-Server verfügen. Wenn Sie die Replikation zwischen Clouds auf einem einzelnen VMM-Server bereitstellen, klicken Sie auf **Nein**. Klicken Sie dann auf **OK**.
@@ -133,8 +133,8 @@ Bevor Sie beginnen, stellen Sie sicher, dass alle Hosts, die die Richtlinie verw
 1. Geben Sie unter **Kopierhäufigkeit**an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
 2. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
 3. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis 12 Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Arten von Momentaufnahmen:
-    - **Standardmomentaufnahme:** Bietet eine inkrementelle Momentaufnahme des gesamten virtuellen Computers
-    - **App-konsistente Momentaufnahme:** Erstellt eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind. Aktivieren anwendungskonsistenter Momentaufnahmen, wirkt sich auf Quell-VMs auf die App-Leistung aus. Legen Sie einen Wert fest, der geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte.
+    - **Standardmomentaufnahme**: Bietet eine inkrementelle Momentaufnahme des gesamten virtuellen Computers.
+    - **App-konsistente Momentaufnahme**: Erstellt eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind. Aktivieren anwendungskonsistenter Momentaufnahmen, wirkt sich auf Quell-VMs auf die App-Leistung aus. Legen Sie einen Wert fest, der geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte.
 4. Geben Sie unter **Datenübertragungskomprimierung** an, ob übertragene Replikationsdaten komprimiert werden sollen.
 5. Wählen Sie **Replikat-VM löschen** aus, um anzugeben, dass die Replikat-VM gelöscht werden sollte, wenn Sie den Schutz für die Quell-VM deaktivieren. Wenn Sie diese Einstellung aktivieren, und Sie deaktivieren den Schutz für die Quell-VMs, wird der virtuelle Computer aus der Site Recovery-Konsole entfernt, die Site Recovery-Einstellungen für die VMM werden aus der VMM-Konsole entfernt, und das Replikat wird gelöscht.
 6. Wenn Sie über das Netzwerk replizieren, geben Sie unter **Methode für anfängliche Replikation** an, ob die erste Replikation sofort gestartet werden soll oder ob Sie sie planen möchten. Um Netzwerkbandbreite zu sparen, sollte der Zeitraum außerhalb Ihrer Spitzenzeiten liegen. Klicken Sie dann auf **OK**.

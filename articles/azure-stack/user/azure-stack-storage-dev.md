@@ -4,17 +4,17 @@ description: Anleitung für die ersten Schritte mit Azure Stack-Speicher-Entwick
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/05/2018
+ms.date: 12/03/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a218cf9b3d89236128c83d8b879691940e432a55
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 56814cc44874fe0c169e5fb51dc6cbff5a225231
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341557"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727852"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Erste Schritte mit den Azure Stack-Speicherentwicklungstools
 
@@ -29,9 +29,9 @@ Nutzen Sie diesen Artikel als Leitfaden für die ersten Schritte mit den Azure S
 
 ## <a name="azure-client-libraries"></a>Azure-Clientbibliotheken
 
-Für Azure Stack-Speicher werden folgende REST-API-Versionen unterstützt: 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08 und 2015-04-05 für das Update 1802 oder neuere Versionen sowie 2015-04-05 für ältere Versionen. Die Azure Stack-Endpunkte sind der neuesten Version der REST-API von Azure-Speicher nicht vollständig gleichgestellt. Bei den Speicherclientbibliotheken müssen Sie auf die Version achten, die mit der REST-API kompatibel ist.
+Bei den Speicherclientbibliotheken müssen Sie auf die Version achten, die mit der REST-API kompatibel ist. Sie müssen auch den Azure Stack-Endpunkt in Ihrem Code angeben.
 
-### <a name="1802-update-or-newer-versions"></a>Update 1802 oder neuere Versionen
+### <a name="1811-update-or-newer-versions"></a>Update 1811 oder neuere Versionen
 
 | Clientbibliothek | Von Azure Stack unterstützte Version | Link | Endpunktspezifikation |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -45,22 +45,22 @@ Für Azure Stack-Speicher werden folgende REST-API-Versionen unterstützt: 2017-
 
 #### <a name="install-php-client-via-composer---current"></a>Installation des PHP-Clients per Composer – Aktuell
 
-Installation per Composer: (Blob als Beispiel verwenden).
+Installation über Composer: (Verwenden Sie das Blob als Beispiel).
 
 1. Erstellen Sie eine Datei mit dem Namen **composer.json** im Stammverzeichnis des Projekts mit folgendem Code:
 
-  ```php
+    ```json
     {
       "require": {
-      "Microsoft/azure-storage-blob":"1.0.0"
+      "Microsoft/azure-storage-blob":"1.2.0"
       }
     }
-  ```
+    ```
 
 2. Laden Sie [composer.phar](http://getcomposer.org/composer.phar) in das Stammverzeichnis des Projekts herunter.
 3. Führen Sie `php composer.phar install` aus.
 
-### <a name="previous-versions"></a>Vorherige Versionen
+### <a name="previous-versions-1802-to-1809-update"></a>Vorherige Versionen (1802 bis Update 1809)
 
 |Clientbibliothek|Von Azure Stack unterstützte Version|Link|Endpunktspezifikation|
 |---------|---------|---------|---------|
@@ -74,15 +74,15 @@ Installation per Composer: (Blob als Beispiel verwenden).
 
 #### <a name="install-php-client-via-composer---previous"></a>Installation des PHP-Clients per Composer – Vorherige
 
-So führen Sie eine Installation mit dem Composer durch:
+Installation per Composer: (Blob als Beispiel verwenden).
 
 1. Erstellen Sie eine Datei mit dem Namen **composer.json** im Stammverzeichnis des Projekts mit folgendem Code:
 
-  ```php
+  ```json
     {
-          "require":{
-          "Microsoft/azure-storage":"0.15.0"
-          }
+      "require": {
+      "Microsoft/azure-storage-blob":"1.0.0"
+      }
     }
   ```
 
@@ -101,7 +101,7 @@ Wenn Sie sich über Ihren Endpunkt nicht sicher sind, wenden Sie sich an den Clo
 
 Für Azure Stack ist das Endpunktsuffix in der Datei „app.config“ angegeben:
 
-```
+```xml
 <add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
@@ -111,7 +111,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 Für Azure Stack ist das Endpunktsuffix im Setup der Verbindungszeichenfolge angegeben:
 
-```
+```java
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
@@ -123,7 +123,7 @@ public static final String storageConnectionString =
 
 Für Azure Stack ist das Endpunktsuffix in der Deklarationsinstanz angegeben:
 
-```
+```nodejs
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
@@ -132,7 +132,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 Für Azure Stack ist das Endpunktsuffix im Setup der Verbindungszeichenfolge angegeben:
 
-```
+```cpp
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
 AccountName=your_storage_account;
 AccountKey=your_storage_account_key;
@@ -143,7 +143,7 @@ EndpointSuffix=local.azurestack.external"));
 
 Für Azure Stack ist das Endpunktsuffix im Setup der Verbindungszeichenfolge angegeben:
 
-```
+```php
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
 QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
 TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
@@ -154,7 +154,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 Für Azure Stack ist das Endpunktsuffix in der Deklarationsinstanz angegeben:
 
-```
+```python
 block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
@@ -164,7 +164,7 @@ endpoint_suffix='local.azurestack.external')
 
 Für Azure Stack ist das Endpunktsuffix im Setup der Verbindungszeichenfolge angegeben:
 
-```
+```ruby
 set
 AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;
 AccountName=myaccount;

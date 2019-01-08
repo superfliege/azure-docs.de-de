@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9bbff92b7706fd207894616b83580c4ddf85e5eb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: a130351131f59511ef4f60b579197da96f9334e6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444783"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720730"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric mithilfe von Application Insights
 
@@ -181,7 +181,7 @@ Navigieren Sie im Azure-Portal zu Ihrer Application Insights-Ressource.
 Klicken Sie auf **Übersicht**, um zurück zur Startseite Ihrer Ressource zu gelangen. Klicken Sie dann oben auf **Suchen**, um die eingehenden Ablaufverfolgungen anzuzeigen. Es dauert ein paar Minuten, bis die Ablaufverfolgungen in Application Insights angezeigt werden. Falls keine Ablaufverfolgungen angezeigt werden, warten Sie eine Minute, und klicken Sie dann oben auf die Schaltfläche **Aktualisieren**.
 ![Angezeigte AI-Nachverfolgungen](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
-Wenn Sie im Fenster *Suche* nach unten scrollen, werden Ihnen alle eingehenden Telemetriedaten angezeigt, die Sie durch Application Insights vordefiniert erhalten. Für jede Aktion, die Sie in der Voting-Anwendung vorgenommen haben, sollten eine ausgehende PUT-Anforderung von *VotingWeb* (PUT-Stimmen/Put [Name]) und eine eingehende PUT-Anforderung von *VotingData* (PUT-Abstimmungsdaten/Put [Name]) vorhanden sein, gefolgt von einem Paar von GET-Anforderungen zum Aktualisieren der angezeigten Daten. Außerdem wird eine Ablaufverfolgung der Abhängigkeit für HTTP von „localhost“ angezeigt, da es sich um HTTP-Anforderungen handelt. In diesem Beispiel wird dargestellt, wie eine Stimme hinzugefügt wird: ![Ablaufverfolgung einer AI-Beispielanforderung](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
+Wenn Sie im Fenster *Suche* nach unten scrollen, werden Ihnen alle eingehenden Telemetriedaten angezeigt, die Sie durch Application Insights vordefiniert erhalten. Für jede Aktion, die Sie in der Voting-Anwendung vorgenommen haben, sollten eine ausgehende PUT-Anforderung von *VotingWeb* (PUT-Stimmen/Put [Name]) und eine eingehende PUT-Anforderung von *VotingData* (PUT-Abstimmungsdaten/Put [Name]) vorhanden sein, gefolgt von einem Paar von GET-Anforderungen zum Aktualisieren der angezeigten Daten. Außerdem wird eine Ablaufverfolgung der Abhängigkeit für HTTP von „localhost“ angezeigt, da es sich um HTTP-Anforderungen handelt. In diesem Beispiel wird dargestellt, wie eine Stimme hinzugefügt wird: ![Ablaufverfolgung einer KI-Beispielanforderung](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
 Sie können auf eine der Ablaufverfolgungen klicken, um weitere Details anzuzeigen. Dort sind nützliche Informationen zu der von Application Insights bereitgestellten Anforderung enthalten, einschließlich der *Antwortzeit* und der *Anforderungs-URL*. Da Sie die für Service Fabric spezifischen NuGet-Pakete hinzugefügt haben, erhalten Sie ebenfalls Daten zu Ihrer Anwendung im Kontext eines Service Fabric-Clusters im folgenden Abschnitt *Benutzerdefinierte Daten*. Dies schließt den Dienstkontext ein, sodass Ihnen die *PartitionId* und die *ReplicaId* der Quelle der Anforderung angezeigt werden. Außerdem können Sie Probleme besser lokalisieren, wenn Sie Fehler in Ihrer Anwendung diagnostizieren.
 
@@ -191,11 +191,11 @@ Darüber hinaus können Sie im linken Menü der Übersichtsseite auf *Anwendungs
 
 ![AI-Ablaufverfolgungsdetails](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
-Die App-Übersichtsfunktion kann Sie beim Nachvollziehen der Anwendungstopologie unterstützen, insbesondere wenn Sie mehrere verschiedene Dienste hinzufügen, die zusammenarbeiten. Sie erhalten ebenfalls Daten zur Erfolgsrate der Anforderungen und werden bei der Diagnose fehlgeschlagener Anforderungen unterstützt, um nachzuvollziehen, warum Fehler aufgetreten sind. Weitere Informationen zur App-Übersichtsfunktion erhalten Sie unter [Application Map in Application Insights (Anwendungszuordnung in Application Insights)](../application-insights/app-insights-app-map.md).
+Die App-Übersichtsfunktion kann Sie beim Nachvollziehen der Anwendungstopologie unterstützen, insbesondere wenn Sie mehrere verschiedene Dienste hinzufügen, die zusammenarbeiten. Sie erhalten ebenfalls Daten zur Erfolgsrate der Anforderungen und werden bei der Diagnose fehlgeschlagener Anforderungen unterstützt, um nachzuvollziehen, warum Fehler aufgetreten sind. Weitere Informationen zur App-Zuordnung erhalten Sie unter [Application Map in Application Insights (Anwendungszuordnung in Application Insights)](../azure-monitor/app/app-map.md).
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>Hinzufügen einer benutzerdefinierten Instrumentierung zu Ihrer Anwendung
 
-Obwohl Application Insights viele vordefinierte Telemetriedaten bereitstellt, sollten Sie weitere benutzerdefinierte Instrumentierungen hinzufügen. Diese können Sie an die Anforderungen Ihres Unternehmens anpassen oder zur Diagnose verwenden, wenn Fehler in Ihrer Anwendung auftreten. Application Insights verfügt über eine API zum Erfassen benutzerdefinierter Ereignisse und Metriken. Mehr dazu finden Sie [hier](../application-insights/app-insights-api-custom-events-metrics.md).
+Obwohl Application Insights viele vordefinierte Telemetriedaten bereitstellt, sollten Sie weitere benutzerdefinierte Instrumentierungen hinzufügen. Diese können Sie an die Anforderungen Ihres Unternehmens anpassen oder zur Diagnose verwenden, wenn Fehler in Ihrer Anwendung auftreten. Application Insights verfügt über eine API zum Erfassen benutzerdefinierter Ereignisse und Metriken. Mehr dazu finden Sie [hier](../azure-monitor/app/api-custom-events-metrics.md).
 
 Fügen Sie einige benutzerdefinierte Ereignisse zu *VoteDataController.cs* (unter *VotingData* > *Controller*) hinzu, um zu verfolgen, wann Stimmen dem zugrunde liegenden *votesDictionary* hinzugefügt oder aus diesem gelöscht werden.
 

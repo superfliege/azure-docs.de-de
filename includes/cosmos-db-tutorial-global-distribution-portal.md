@@ -2,27 +2,21 @@
 title: 'Azure Cosmos DB: globale Verteilung'
 description: Hier erfahren Sie, wie Sie Daten mit Azure Cosmos DB im Azure-Portal global replizieren.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/26/2018
-ms.author: sngun
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: fb9418d47d2888467e1c1c40862833029111b75b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38747528"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53796112"
 ---
-Im folgenden Video stellt Azure Cosmos DB-Programmleiter Andrew Liu die Funktionen der globalen Verteilung von Azure Cosmos DB vor.
-
->[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
-
-Weitere Informationen zur Funktionsweise der globalen Datenbankreplikation in Azure Cosmos DB finden Sie unter [Distribute data globally with Cosmos DB](../articles/cosmos-db/distribute-data-globally.md) (Globale Verteilung von Daten mit Cosmos DB).
-
 ## <a id="addregion"></a>Hinzufügen globaler Datenbankregionen über das Azure-Portal
-Azure Cosmos DB ist standardmäßig in allen [Azure-Regionen][azureregions] weltweit verfügbar. Nachdem Sie die Standardkonsistenzebene für Ihr Datenbankkonto ausgewählt haben, können Sie dem Konto eine oder mehrere Regionen zuordnen (je nachdem, welche Konsistenzebene Sie ausgewählt haben und welche Anforderungen an eine globale Verteilung bestehen).
+Azure Cosmos DB ist in allen [Azure-Regionen][azureregions] weltweit verfügbar. Nachdem Sie die Standardkonsistenzebene für Ihr Datenbankkonto ausgewählt haben, können Sie dem Konto eine oder mehrere Regionen zuordnen (je nachdem, welche Konsistenzebene Sie ausgewählt haben und welche Anforderungen an eine globale Verteilung bestehen).
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der linken Leiste auf **Azure Cosmos DB**.
 2. Wählen Sie auf der Seite **Azure Cosmos DB** das zu ändernde Datenbankkonto aus.

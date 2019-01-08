@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 8beabfb8c77d4d62b9b15dca8ae3146c34c3b20a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634811"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998675"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Schnellstart: Senden und Empfangen von Nachrichten mit der Azure CLI und Java
 
@@ -66,7 +66,7 @@ Kopieren Sie nach Ausführung des letzten Befehls die Verbindungszeichenfolge un
 
 ## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 
-Nachdem Sie den Namespace und die Warteschlange erstellt haben und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java) ansehen.
+Nachdem Sie den Namespace und die Warteschlange erstellt haben und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) ansehen.
 
 1. Stellen Sie sicher, dass Cloud Shell geöffnet ist und dass die Bash-Eingabeaufforderung angezeigt wird.
 
@@ -108,7 +108,7 @@ az group delete --resource-group myResourceGroup
 
 ## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
 
-Dieser Abschnitt enthält weitere Details zu wichtigen Abschnitten des Beispielcodes. Sie finden den Code [hier](https://github.com/Azure/azure-service-bus/blob/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java) im GitHub-Repository.
+Dieser Abschnitt enthält weitere Details zu wichtigen Abschnitten des Beispielcodes. Sie finden den Code [hier](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) im GitHub-Repository.
 
 ### <a name="get-connection-string-and-queue"></a>Abrufen der Verbindungszeichenfolge und der Warteschlange
 

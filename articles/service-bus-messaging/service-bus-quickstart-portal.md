@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: be08be43269dfb332dca1d5f62ce661940d311cc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bfe6c48b2e83c1ebbbad446f79cebd1f513db57e
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259376"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002670"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Schnellstart: Senden und Empfangen von Nachrichten mit dem Azure-Portal und .NET
 
@@ -40,7 +40,7 @@ Beginnen Sie im [Azure-Portal][Azure portal], und melden Sie sich mit Ihrem Azur
 
 ## <a name="create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespace
 
-Ein Service Bus-Messaging-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über seinen [Vollqualifizierter Domänenname][] verwiesen wird. In diesem Container erstellen Sie jeweils mindestens eine Warteschlange, ein Thema und ein Abonnement. Im folgenden Beispiel wird ein Service Bus-Messaging-Namespace in einer neuen oder vorhandenen [Ressourcengruppe](/azure/azure-resource-manager/resource-group-portal) erstellt:
+Ein Service Bus-Messaging-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über seinen [vollqualifizierten Domänennamen][] verwiesen wird. In diesem Container erstellen Sie jeweils mindestens eine Warteschlange, ein Thema und ein Abonnement. Im folgenden Beispiel wird ein Service Bus-Messaging-Namespace in einer neuen oder vorhandenen [Ressourcengruppe](/azure/azure-resource-manager/resource-group-portal) erstellt:
 
 1. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen**, und klicken Sie anschließend auf **Enterprise Integration** > **Service Bus**.
 2. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
@@ -77,7 +77,7 @@ Geben Sie zum Erstellen einer Service Bus-Warteschlange den Namespace an, unter 
 
 ## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 
-Nachdem der Namespace und die Warteschlange bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-jms) ansehen.
+Nachdem der Namespace und die Warteschlange bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) ansehen.
 
 Gehen Sie wie folgt vor, um den Code auszuführen:
 
@@ -255,7 +255,7 @@ In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderlich
 
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Vollqualifizierter Domänenname]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[vollqualifizierten Domänennamen]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-quickstart-portal/connection-string.png

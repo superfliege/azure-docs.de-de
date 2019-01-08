@@ -6,14 +6,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: dd304bd4a53094605149483c0996cd5f12040a84
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 94e9d19302c4a51d1401a88248431f237bf59758
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713179"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743507"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
 
@@ -53,7 +53,7 @@ Dieses Beispiel erstellt eine Testdatei im Ordner *Documents*. Das Beispielprogr
 
 Installieren Sie zuerst die Abhängigkeiten, indem Sie `pip install` ausführen:
 
-    pip install azure-storage
+    pip install azure-storage-blob
 
 Führen Sie als Nächstes das Beispiel aus. Daraufhin werden Nachrichten angezeigt, die in etwa wie in der folgenden Ausgabe aussehen:
   

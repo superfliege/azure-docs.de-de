@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd3229773b19b9f6c4d9ff76402f1841a4810bc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851127"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793069"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -136,7 +136,7 @@ Wählen Sie auf der Seite **Quelle vorbereiten** die Option **+ Konfigurationsse
     11. Unter **Installationsfortschritt** werden Informationen zum Installationsvorgang angezeigt. Wählen Sie **Fertig stellen**, wenn der Vorgang abgeschlossen ist. In einem Fenster wird eine Meldung zu einem Neustart angezeigt. Klicken Sie auf **OK**. Als Nächstes wird in einem Fenster eine Meldung zur Passphrase für die Konfigurationsserververbindung angezeigt. Kopieren Sie die Passphrase in die Zwischenablage, und speichern Sie sie an einem sicheren Ort.
 6. Führen Sie auf der VM die Datei „cspsconfigtool.exe“ aus, um mindestens ein Verwaltungskonto auf dem Konfigurationsserver zu erstellen. Vergewissern Sie sich, dass die Verwaltungskonten über Administratorrechte auf den EC2-Instanzen verfügen, die migriert werden sollen.
 
-Wenn Sie mit dem Einrichten des Konfigurationsservers fertig sind, können Sie zurück zum Portal wechseln und den Server auswählen, den Sie als **Konfigurationsserver** erstellt haben. Wählen Sie **OK**, um zu „3: Vorbereiten des Ziels“ zu wechseln.
+Wenn Sie mit dem Einrichten des Konfigurationsservers fertig sind, können Sie zurück zum Portal wechseln und den Server auswählen, den Sie als **Konfigurationsserver** erstellt haben. Klicken Sie auf **OK**, um fortzufahren mit 3: Vorbereiten des Ziels.
 
 ### <a name="3-prepare-target"></a>3: Vorbereiten des Ziels
 
@@ -169,7 +169,7 @@ Aktivieren Sie die Replikation für jede VM, die migriert werden soll. Wenn die 
 
 1. Öffnen Sie das [Azure-Portal](htts://portal.azure.com).
 1. Wählen Sie auf der Seite für Ihren Tresor unter **Erste Schritte** die Option **Site Recovery**.
-2. Wählen Sie unter **Für lokale Computer und Azure-VMs** die Option **Schritt 1: Replizieren Sie die Anwendung**. Geben Sie auf den Seiten des Assistenten die folgenden Informationen an. Wählen Sie auf einer Seite jeweils **OK**, wenn Sie fertig sind:
+2. Wählen Sie unter **Für lokale Computer und Azure-VMs** die Option **Schritt 1: Replizieren der Anwendung** aus. Geben Sie auf den Seiten des Assistenten die folgenden Informationen an. Wählen Sie auf einer Seite jeweils **OK**, wenn Sie fertig sind:
     - 1: Konfigurieren der Quelle
 
     |  |  |
