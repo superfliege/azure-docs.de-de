@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ab2f1df72f04b6456f1083de6870fb86bad6616
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438281"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582710"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 Azure Cache for Redis bietet über [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) verschiedene Optionen zum Überwachen Ihrer Cache-Instanzen. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Cache for Redis-Instanzen zu überwachen, und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen.
@@ -79,7 +79,7 @@ So konfigurieren Sie ein Speicherkonto für die Cachemetriken
 >
 >
 
-Um auf die Metriken zuzugreifen, können Sie sie im Azure-Portal anzeigen (wie weiter oben in diesem Artikel beschrieben) oder dazu die [Azure Monitor-REST-API für Metriken](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) verwenden.
+Um auf die Metriken zuzugreifen, können Sie sie im Azure-Portal anzeigen (wie weiter oben in diesem Artikel beschrieben) oder dazu die [Azure Monitor-REST-API für Metriken](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) verwenden.
 
 > [!NOTE]
 > Wenn Sie das Speicherkonto ändern, sind die Daten im zuvor konfigurierten Speicherkonto weiterhin zum Download verfügbar, werden im Azure-Portal jedoch nicht angezeigt.  
@@ -142,7 +142,7 @@ Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache
 
 Klicken Sie zum Anzeigen von Aktivitätsprotokollen für Ihren Cache im **Ressourcenmenü** auf **Aktivitätsprotokolle**.
 
-Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md).
 
 
 

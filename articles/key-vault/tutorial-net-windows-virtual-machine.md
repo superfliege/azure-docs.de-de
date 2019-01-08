@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Azure-Windows-Computer in .NET | Microsoft-Dokumentation'
+title: 'Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Azure-Windows-Computer in .NET – Azure Key Vault | Microsoft-Dokumentation'
 description: 'Tutorial: Konfigurieren einer ASP.NET Core-Anwendung zum Lesen eines Geheimnisses aus Key Vault'
 services: key-vault
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: key-vault
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: d1f24c8bebc8740f47dc0f02089db1091c22f597
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: f12d73904b547da6531e24a899277eca7dd46660
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711326"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998760"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Azure-Windows-Computer in .NET
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einer Azure-Windows-VM in .NET
 
 Azure Key Vault unterstützt Sie beim Schutz von Geheimnissen wie API-Schlüsseln und Datenbank-Verbindungszeichenfolgen, die für den Zugriff auf Ihre Anwendungen, Dienste und IT-Ressourcen benötigt werden.
 
-In diesem Tutorial führen Sie die erforderlichen Schritte aus, um eine Konsolenanwendung zu erhalten und Informationen unter Verwendung von verwalteten Identitäten für Azure-Ressourcen aus Azure Key Vault zu lesen. Dieses Tutorial basiert auf [Azure-Web-Apps](../app-service/app-service-web-overview.md). In diesem Artikel wird Folgendes vermittelt:
+In diesem Tutorial führen Sie die erforderlichen Schritte aus, um eine Konsolenanwendung zu erhalten und Informationen unter Verwendung von verwalteten Identitäten für Azure-Ressourcen aus Azure Key Vault zu lesen. In diesem Artikel wird Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Schlüsseltresors
@@ -45,6 +45,7 @@ Lesen Sie die Informationen zu [grundlegenden Konzepten](key-vault-whatis.md#bas
 In diesem Tutorial wird die verwaltete Dienstidentität verwendet.
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>Was ist eine verwaltete Dienstidentität, und wie funktioniert sie?
+
 Gehen wir zunächst auf das Konzept der verwalteten Dienstidentität (Managed Service Identity, MSI) ein. Azure Key Vault kann Anmeldeinformationen sicher speichern. Dadurch befinden sie sich nicht in Ihrem Code. Zum Abrufen der Anmeldeinformationen ist jedoch eine Authentifizierung bei Azure Key Vault erforderlich. Und für die Authentifizierung bei Key Vault sind Anmeldeinformationen erforderlich. Ein klassisches Bootstrap-Problem. Dank Azure und Azure AD bietet MSI eine „Bootstrap-Identität“, die die ersten Schritte erheblich vereinfacht.
 
 Das funktioniert so: Wenn Sie MSI für einen Azure-Dienst wie etwa Virtual Machines, App Service oder Functions aktivieren, erstellt Azure einen [Dienstprinzipal](key-vault-whatis.md#basic-concepts) für die Instanz des Diensts in Azure Active Directory und fügt die Anmeldeinformationen für den Dienstprinzipal in die Instanz des Diensts ein. 
@@ -54,7 +55,7 @@ Das funktioniert so: Wenn Sie MSI für einen Azure-Dienst wie etwa Virtual Machi
 Als Nächstes ruft Ihr Code einen lokalen, für die Azure-Ressource verfügbaren Metadatendienst auf, um ein Zugriffstoken zu erhalten.
 Ihr Code verwendet das vom lokalen MSI-Endpunkt (MSI_ENDPOINT) erhaltene Zugriffstoken für die Authentifizierung bei einem Azure Key Vault-Dienst. 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Geben Sie Folgendes ein, um sich mithilfe der Azure-Befehlszeilenschnittstelle bei Azure anzumelden:
 
@@ -80,7 +81,7 @@ Die eben erstellte Ressourcengruppe wird im gesamten Artikel verwendet.
 
 Als Nächstes erstellen Sie einen Schlüsseltresor in der Ressourcengruppe aus dem vorherigen Schritt. Geben Sie die folgenden Informationen ein:
 
-* Name des Schlüsseltresors: Der Name muss zwischen drei und 24 Zeichen umfassen und darf nur folgende Zeichen enthalten: 0-9, a-z, A-Z und -.
+* Name des Schlüsseltresors: Der Name muss eine Zeichenfolge aus 3 bis 24 Zeichen sein und darf nur die Zeichen 0-9, a-z, A-Z und Bindestrich (-) enthalten.
 * Ressourcengruppenname
 * Standort: **USA, Westen**.
 
@@ -131,7 +132,7 @@ Nun können Sie der oben erstellten Identität Berechtigungen für Key Vault ert
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
+## <a name="sign-in-to-the-virtual-machine"></a>Melden Sie sich beim virtuellen Computer an.
 
 Sie können [dieses Tutorial](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon) absolvieren.
 
@@ -161,7 +162,8 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-Ändern Sie anschließend die Klassendatei, sodass sie den unten angegebenen Code enthält. Dieser Prozess besteht aus zwei Schritten. 
+Ändern Sie anschließend die Klassendatei, sodass sie den unten angegebenen Code enthält. Dieser Prozess besteht aus zwei Schritten.
+
 1. Rufen Sie ein Token vom lokalen MSI-Endpunkt auf dem virtuellen Computer ab. Daraufhin wird wiederum ein Token aus Azure Active Directory abgerufen.
 2. Übergeben Sie das Token an Key Vault, und rufen Sie Ihr Geheimnis ab. 
 
@@ -211,7 +213,7 @@ using Newtonsoft.Json.Linq;
 ```
 
 
-Der Code oben veranschaulicht, wie Sie mit Azure Key Vault Vorgänge auf einem virtuellen Azure-Linux-Computer ausführen. 
+Der Code oben veranschaulicht, wie Sie mit Azure Key Vault Vorgänge auf einem virtuellen Azure-Windows-Computer ausführen. 
 
 
 

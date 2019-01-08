@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3a0b92e2c2a588fa8ef7edcddaa8c692780814f0
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388402"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721562"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -105,7 +105,7 @@ So schalten Sie die Ablaufverfolgung für Anforderungsfehler ein
 1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
 3. Wählen Sie **Alle Einstellungen** > **Diagnoseprotokolle** aus.
 4. Wählen Sie für **Ablaufverfolgung für Anforderungsfehler** die Einstellung **Ein**.
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 6. Wählen Sie auf dem Web-App-Blatt **Tools** aus.
 7. Wählen Sie **Visual Studio Online** aus.
 8. Wenn die Einstellung nicht **Ein** ist, wählen Sie **Ein** aus.
@@ -163,7 +163,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von Web-Apps in App Servic
 
 Die Standardeinstellung für die Zeitüberschreitung nach Leerlauf von Azure Load Balancer ist vier Minuten. Dies ist im Allgemeinen ein angemessenes Zeitlimit für eine Reaktion auf eine Webanforderung. Wenn Ihre Web-App eine Hintergrundverarbeitung erfordert, wird empfohlen, mit Azure WebJobs zu arbeiten. Die Azure-Web-App kann WebJobs aufrufen und benachrichtigt werden, sobald die Hintergrundverarbeitung abgeschlossen ist. Sie können unter mehreren Methoden zum Verwenden von WebJobs wählen, einschließlich Warteschlangen und Trigger.
 
-WebJobs werden zur Hintergrundverarbeitung eingesetzt. Sie können in einem WebJob so viel Hintergrundverarbeitung ausführen, wie Sie möchten. Weitere Informationen zu WebJobs finden Sie unter [Ausführen von Hintergrundaufgaben mit WebJobs](web-sites-create-web-jobs.md).
+WebJobs werden zur Hintergrundverarbeitung eingesetzt. Sie können in einem WebJob so viel Hintergrundverarbeitung ausführen, wie Sie möchten. Weitere Informationen zu WebJobs finden Sie unter [Ausführen von Hintergrundaufgaben mit WebJobs](webjobs-create.md).
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core-Anwendungen, die in App Service gehostet werden, reagieren mitunter nicht mehr. Wie wird dieses Problem behoben?
 

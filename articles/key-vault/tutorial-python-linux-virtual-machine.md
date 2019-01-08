@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: acc926151e5abd1d6f9d0992591575198d1fdf44
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f5d74c2283d25d5774bd46bb9fe94795ff98fe9b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890533"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720567"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>Tutorial: Verwenden von Azure Key Vault mit einer Azure-Linux-VM in Python
 
 Azure Key Vault unterstützt Sie beim Schutz von Geheimnissen wie API-Schlüsseln und Datenbank-Verbindungszeichenfolgen, die für den Zugriff auf Ihre Anwendungen, Dienste und IT-Ressourcen benötigt werden.
 
-In diesem Tutorial führen Sie die erforderlichen Schritte aus, um eine Azure-Webanwendung zu erhalten und Informationen unter Verwendung von verwalteten Identitäten für Azure-Ressourcen aus Azure Key Vault zu lesen. Dieses Tutorial basiert auf [Azure-Web-Apps](../app-service/app-service-web-overview.md). In diesem Artikel wird Folgendes vermittelt:
+In diesem Tutorial führen Sie die erforderlichen Schritte aus, um eine Azure-Webanwendung zu erhalten und Informationen unter Verwendung von verwalteten Identitäten für Azure-Ressourcen aus Azure Key Vault zu lesen. In diesem Artikel wird Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Schlüsseltresors
@@ -80,7 +80,7 @@ Die eben erstellte Ressourcengruppe wird im gesamten Artikel verwendet.
 
 Als Nächstes erstellen Sie einen Schlüsseltresor in der Ressourcengruppe aus dem vorherigen Schritt. Geben Sie die folgenden Informationen ein:
 
-* Name des Schlüsseltresors: Der Name muss zwischen drei und 24 Zeichen umfassen und darf nur folgende Zeichen enthalten: 0-9, a-z, A-Z und -.
+* Name des Schlüsseltresors: Der Name muss eine Zeichenfolge aus 3 bis 24 Zeichen sein und darf nur die Zeichen 0-9, a-z, A-Z und Bindestrich (-) enthalten.
 * Ressourcengruppenname
 * Standort: **USA, Westen**.
 
@@ -160,7 +160,7 @@ Sie können [dieses Tutorial](https://docs.microsoft.com/azure/virtual-machines/
 
 ## <a name="create-and-run-sample-python-app"></a>Erstellen und Ausführen der Python-Beispiel-App
 
-Im Folgenden wird eine Datei „Sample.py“ verwendet, bei der es sich lediglich um eine Beispieldatei handelt. Die Datei verwendet die [Anforderungsbibliothek](http://docs.python-requests.org/master/), um HTTP-GET-Aufrufe auszuführen.
+Im Folgenden wird eine Datei „Sample.py“ verwendet, bei der es sich lediglich um eine Beispieldatei handelt. Die Datei verwendet die [Anforderungsbibliothek](https://pypi.org/project/requests/2.7.0/), um HTTP-GET-Aufrufe auszuführen.
 
 ## <a name="edit-samplepy"></a>Bearbeiten der Datei „Sample.py“
 Nachdem Sie die Datei „Sample.py“ erstellt haben, öffnen Sie sie, und kopieren Sie den folgenden Code.

@@ -11,23 +11,23 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 14c500d77cc0e67aaade5e6be490f599f39bfad5
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273560"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807719"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning
 
-In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen Azure Machine Learning-Arbeitsbereich zu erstellen. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Wie Sie stattdessen Ihren eigenen Jupyter-Notebook-Server konfigurieren, erfahren Sie unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md).
-
+In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen Azure Machine Learning-Arbeitsbereich zu erstellen. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Wie Sie stattdessen Ihren eigenen Jupyter Notebook-Server konfigurieren, erfahren Sie unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md).  
+ 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
-In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
+Diese Schnellstartanleitung umfasst folgende Aktionen:
 
 * Erstellen eines Arbeitsbereichs in Ihrem Azure-Abonnement.
-* Testen mit Python in einem Azure-Notebook und Protokollieren der Werte in den unterschiedlichen Iterationen
+* Testen mit Python in einem Azure-Notebook und Protokollieren der Werte in den unterschiedlichen Iterationen.
 * Anzeigen der protokollierten Werte in Ihrem Arbeitsbereich
 
 Folgende Azure-Ressourcen werden Ihrem Arbeitsbereich automatisch hinzugefügt, sofern sie regional verfügbar sind:
@@ -37,7 +37,7 @@ Folgende Azure-Ressourcen werden Ihrem Arbeitsbereich automatisch hinzugefügt, 
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-Die von Ihnen erstellten Ressourcen können auch in anderen Tutorials und Anleitungen für den Machine Learning-Dienst verwendet werden. Genau wie bei anderen Azure-Diensten gelten auch für bestimmte Machine Learning-Ressourcen gewisse Grenzwerte, etwa in Bezug auf die Größe von Computeclustern. Erfahren Sie mehr über die [Standardgrenzwerte und das Erhöhen Ihres Kontingents](how-to-manage-quotas.md).
+Die von Ihnen erstellten Ressourcen können auch in anderen Tutorials und Anleitungen für den Machine Learning-Dienst verwendet werden. Genau wie bei anderen Azure-Diensten gelten auch für bestimmte Machine Learning-Ressourcen gewisse Grenzwerte. Ein Beispiel wäre etwa die Größe des Computeclusters. Erfahren Sie mehr über die [Standardgrenzwerte und das Erhöhen Ihres Kontingents](how-to-manage-quotas.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
@@ -46,14 +46,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-Klicken Sie auf der Seite des Arbeitsbereichs auf `Explore your Azure Machine Learning service workspace`.
+Klicken Sie auf der Seite des Arbeitsbereichs auf `Explore your Azure Machine Learning service Workspace`.
 
  ![Erkunden des Arbeitsbereichs](./media/quickstart-get-started/explore_aml.png)
 
 
 ## <a name="use-the-workspace"></a>Verwenden des Arbeitsbereichs
 
-Sehen Sie sich nun an, wie ein Arbeitsbereich beim Verwalten Ihrer Machine Learning-Skripts hilft. In diesem Abschnitt führen Sie folgende Schritte aus:
+Sehen Sie sich nun an, wie ein Arbeitsbereich beim Verwalten Ihrer Machine Learning-Skripts hilft. In diesem Abschnitt führen Sie die folgenden Schritte aus:
 
 * Öffnen eines Notebooks in Azure Notebooks
 * Ausführen von Code zum Generieren von protokollierten Werten
@@ -63,7 +63,7 @@ Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in 
 
 ### <a name="open-a-notebook"></a>Öffnen eines Notebooks 
 
-Azure Notebooks bietet eine kostenlose Cloudplattform für Jupyter Notebooks, die mit allem vorkonfiguriert sind, was Sie für die Ausführung von Machine Learning benötigen.  
+Azure Notebooks bietet eine kostenlose Cloudplattform für Jupyter Notebooks, die mit allem vorkonfiguriert ist, was Sie für die Ausführung von Machine Learning benötigen.  
 
 Klicken Sie auf `Open Azure Notebooks`, um Ihr erstes Experiment durchzuführen.
 
@@ -71,7 +71,7 @@ Klicken Sie auf `Open Azure Notebooks`, um Ihr erstes Experiment durchzuführen.
 
 Unter Umständen müssen Sie in Ihrer Organisation zunächst die [Zustimmung des Administrators](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) einholen, um sich anmelden zu können.
 
-Nach Ihrer Anmeldung wird eine neue Registerkarte geöffnet und die Eingabeaufforderung `Clone Library` angezeigt. Wählen Sie `Clone` aus.
+Sie melden sich bei Azure Notebooks mit demselben Konto an, mit dem Sie sich auch beim Azure-Portal angemeldet haben.  Nach Ihrer Anmeldung wird eine neue Registerkarte geöffnet und die Eingabeaufforderung `Clone Library` angezeigt. Wählen Sie `Clone` aus.
 
 
 ### <a name="run-the-notebook"></a>Ausführen des Notebooks
@@ -80,7 +80,7 @@ Neben zwei Notebooks sehen Sie die Datei `config.json`. Diese Konfigurationsdate
 
 Klicken Sie auf `01.run-experiment.ipynb`, um das Notebook zu öffnen.
 
-Verwenden Sie `Shift`+`Enter`, um die Zellen nacheinander auszuführen. Sie können aber auch auf `Cells` > `Run All` klicken, um das gesamte Notebook auszuführen. Wenn neben einer Zelle ein Sternchen (*) angezeigt wird, wird sie gerade ausgeführt. Nach Abschluss der Codeausführung für die Zelle wird eine Zahl angezeigt. 
+Führen Sie die Zellen nacheinander aus (UMSCHALT+EINGABE). Sie können aber auch auf `Cells` > `Run All` klicken, um das gesamte Notebook auszuführen. Wenn neben einer Zelle ein Sternchen (__*__) angezeigt wird, wird sie gerade ausgeführt. Nach Abschluss der Codeausführung für die Zelle wird eine Zahl angezeigt. 
 
 Nachdem Sie die Ausführung aller Zellen im Notebook abgeschlossen haben, können Sie die protokollierten Werte in Ihrem Arbeitsbereich anzeigen.
 
@@ -116,7 +116,7 @@ Sie können die Ressourcengruppe auch behalten und einen einzelnen Arbeitsbereic
 
 Sie haben die Ressourcen erstellt, die zum Experimentieren und zum Bereitstellen von Modellen benötigt werden. Sie haben Code in einem Notebook ausgeführt. Und Sie haben den Ausführungsverlauf dieses Codes in Ihrem Arbeitsbereich in der Cloud untersucht.
 
-Führen Sie Machine Learning-Tutorials zum Trainieren und Bereitstellen eines Modells aus, um sich ausführlicher mit dem Workflow zu beschäftigen.  
+Führen Sie Machine Learning-Tutorials zum Trainieren und Bereitstellen eines Modells aus, um sich ausführlicher mit dem Workflow zu beschäftigen:  
 
 > [!div class="nextstepaction"]
 > [Tutorial: Trainieren eines Bildklassifizierungsmodells](tutorial-train-models-with-aml.md)

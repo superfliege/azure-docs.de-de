@@ -2,382 +2,296 @@
 author: MightyPen
 ms.service: sql-database
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: c4329b9efef3cdb2911466e64ac6c9f07a1e9b31
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270330"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728543"
 ---
-<a name="cs_0_csharpprogramexample_h2"/>
-
 ## <a name="c-program-example"></a>Beispiel für C#-Programm
 
-In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, bei dem ADO.NET zum Senden von Transact-SQL-Anweisungen an die SQL-Datenbank verwendet wird. Mit dem C#-Programm werden die folgenden Aktionen ausgeführt:
+In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, das ADO.NET zum Senden von Transact-SQL-Anweisungen (T-SQL) an die SQL-Datenbank verwendet. Mit dem C#-Programm werden die folgenden Aktionen gezeigt:
 
-1. [Herstellen einer Verbindung mit unserer SQL-Datenbank per ADO.NET](#cs_1_connect)
-2. [Erstellen von Tabellen](#cs_2_createtables)
-3. [Ausfüllen der Tabellen mit Daten, indem T-SQL-INSERT-Anweisungen ausgegeben werden](#cs_3_insert)
-4. [Aktualisieren der Daten per Verknüpfung (Join)](#cs_4_updatejoin)
-5. [Löschen der Daten per Verknüpfung (Join)](#cs_5_deletejoin)
-6. [Auswählen von Datenzeilen per Verknüpfung (Join)](#cs_6_selectrows)
-7. Schließen der Verbindung (temporäre Tabellen aus tempdb verwerfen)
+- [Verbinden mit der SQL-Datenbank über ADO.NET](#cs_1_connect)
+- [Methoden, die T-SQL-Anweisungen zurückgeben](#cs_2_return)
+    - Erstellen von Tabellen.
+    - Auffüllen von Tabellen mit Daten
+    - Aktualisieren, Löschen und Auswählen von Daten
+- [Übermitteln von T-SQL-Anweisungen an die Datenbank](#cs_3_submit)
 
-Das C#-Programm enthält Folgendes:
+### <a name="entity-relationship-diagram-erd"></a>Entitätsbeziehungsdiagramm
 
-- C#-Code zum Herstellen der Verbindung mit der Datenbank
-- Methoden zum Zurückgeben des T-SQL-Quellcodes
-- Zwei Methoden zum Übermitteln von T-SQL an die Datenbank
+Die `CREATE TABLE`-Anweisungen enthalten das Schlüsselwort **REFERENCES**, um eine *Fremdschlüssel*-Beziehung (Foreign Key, FK) zwischen zwei Tabellen zu erstellen. Bei Verwendung von *tempdb* kommentieren Sie das Schlüsselwort `--REFERENCES` heraus, indem Sie zwei vorangestellte Bindestriche verwenden.
 
-#### <a name="to-compile-and-run"></a>Kompilieren und Ausführen
+Das Entitätsbeziehungsdiagramm zeigt die Beziehung zwischen den beiden Tabellen. Die Werte in der *untergeordneten* Spalte **tabEmployee.DepartmentCode** sind auf die Werte beschränkt, die in der *übergeordneten* Spalte **tabDepartment.Department** angegeben sind.
 
-Dieses C#-Programm ist in logischer Hinsicht eine CS-Datei. Hier ist das Programm aber physisch in mehrere Codeblöcke unterteilt, damit jeder Block leichter zu sehen und zu verstehen ist. Gehen Sie wie folgt vor, um dieses Programm zu kompilieren und auszuführen:
-
-1. Erstellen Sie in Visual Studio ein C#-Projekt.
-    - Der Projekttyp sollte eine *Konsolenanwendung* sein und etwa folgende Hierarchie aufweisen: **Vorlagen** > **Visual C#** > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)**.
-3. Entfernen Sie in der Datei **Program.cs** die ersten kurzen Codezeilen.
-3. Führen Sie für „Program.cs“ für die folgenden Blöcke jeweils das Kopieren und Einfügen durch, und zwar in derselben Reihenfolge, die hier angegeben ist.
-4. Bearbeiten Sie in „Program.cs“ die folgenden Werte in der **Main**-Methode:
-
-   - **cb.DataSource**
-   - **cd.UserID**
-   - **cb.Password**
-   - **InitialCatalog**
-
-5. Stellen Sie sicher, dass auf die Assembly **System.Data.dll** verwiesen wird. Erweitern Sie für die Sicherstellung den Knoten **Verweise** im **Projektmappen-Explorer**-Bereich.
-6. Klicken Sie zum Erstellen des Programms in Visual Studio auf das Menü **Erstellen**.
-7. Klicken Sie auf die Schaltfläche **Start**, um das Programm aus Visual Studio auszuführen. Die Berichtsausgabe wird in einem cmd.exe-Fenster angezeigt.
+![Entitätsbeziehungsdiagramm mit Fremdschlüssel](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> Sie können den T-SQL-Code bearbeiten, um den Tabellennamen ein **#**-Zeichen voranzustellen, damit sie in **tempdb** als temporäre Tabellen erstellt werden. Dies kann zu Demonstrationszwecken nützlich sein, wenn keine Testdatenbank verfügbar ist. Temporäre Tabellen werden automatisch gelöscht, wenn die Verbindung geschlossen wird. Verweise (REFERENCES) für Fremdschlüssel werden für temporäre Tabellen nicht erzwungen.
->
+> Sie können die T-SQL-Anweisungen bearbeiten, um den Tabellennamen ein `#`-Zeichen voranzustellen, damit sie in *tempdb* als temporäre Tabellen erstellt werden. Dies kann zu Demonstrationszwecken nützlich sein, wenn keine Testdatenbank verfügbar ist. Alle Verweise auf Fremdschlüssel werden bei ihrer Verwendung nicht erzwungen, und temporäre Tabellen werden automatisch gelöscht, wenn die Verbindung nach dem Abschluss der Programmausführung beendet wird.
+
+### <a name="to-compile-and-run"></a>Kompilieren und Ausführen
+
+Das C#-Programm ist logisch eine CS-Datei und physisch in mehrere Codeblöcke unterteilt, damit jeder Block leichter zu verstehen ist. Gehen Sie wie folgt vor, um das Programm zu kompilieren und auszuführen:
+
+1. Erstellen Sie in Visual Studio ein C#-Projekt. Der Projekttyp sollte eine *Konsole* sein, die sich unter **Vorlagen** > **Visual C#** > **Windows Desktop** > **Konsolen-App (.NET Framework)** befindet.
+
+1. Ersetzen Sie in der Datei *Program.cs* die Startzeilen des Codes, indem Sie die folgenden Schritte ausführen:
+
+    1. Kopieren Sie die folgenden Codeblöcke (in derselben Reihenfolge, in der sie angezeigt werden), und fügen Sie sie ein. Siehe hierzu [Verbinden mit SQL-Datenbank](#cs_1_connect), [Generieren von T-SQL-Anweisungen](#cs_2_return) und [Übermitteln an die Datenbank](#cs_3_submit).
+
+    1. Ändern Sie in der `Main`-Methode die folgenden Werte:
+
+        - *cb.DataSource*
+        - *cb.UserID*
+        - *cb.Password*
+        - *cb.InitialCatalog*
+
+1. Stellen Sie sicher, dass auf die Assembly *System.Data.dll* verwiesen wird. Erweitern Sie für die Sicherstellung den Knoten **Verweise** im **Projektmappen-Explorer**-Bereich.
+
+1. Wählen Sie die Schaltfläche **Start** aus, um das Programm zu erstellen und in Visual Studio auszuführen. Die Berichtsausgabe wird in einem Programmfenster angezeigt, auch wenn die GUID-Werte zwischen den Testläufen variieren.
+
+    ```Output
+    =================================
+    T-SQL to 2 - Create-Tables...
+    -1 = rows affected.
+
+    =================================
+    T-SQL to 3 - Inserts...
+    8 = rows affected.
+
+    =================================
+    T-SQL to 4 - Update-Join...
+    2 = rows affected.
+
+    =================================
+    T-SQL to 5 - Delete-Join...
+    2 = rows affected.
+
+    =================================
+    Now, SelectEmployees (6)...
+    8ddeb8f5-9584-4afe-b7ef-d6bdca02bd35 , Alison , 20 , acct , Accounting
+    9ce11981-e674-42f7-928b-6cc004079b03 , Barbara , 17 , hres , Human Resources
+    315f5230-ec94-4edd-9b1c-dd45fbb61ee7 , Carol , 22 , acct , Accounting
+    fcf4840a-8be3-43f7-a319-52304bf0f48d , Elle , 15 , NULL , NULL
+    View the report output here, then press any key to end the program...
+    ```
 
 <a name="cs_1_connect"/>
-### <a name="c-block-1-connect-by-using-adonet"></a>C#-Block 1: Herstellen der Verbindung per ADO.NET
 
-- [Weiter](#cs_2_createtables)
-
+### <a name="connect-to-sql-database-using-adonet"></a>Verbinden mit der SQL-Datenbank über ADO.NET
 
 ```csharp
 using System;
-using System.Data.SqlClient;   // System.Data.dll 
+using System.Data.SqlClient;   // System.Data.dll
 //using System.Data;           // For:  SqlDbType , ParameterDirection
 
 namespace csharp_db_test
 {
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         try
-         {
-            var cb = new SqlConnectionStringBuilder();
-            cb.DataSource = "your_server.database.windows.net";
-            cb.UserID = "your_user";
-            cb.Password = "your_password";
-            cb.InitialCatalog = "your_database";
-
-            using (var connection = new SqlConnection(cb.ConnectionString))
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
             {
-               connection.Open();
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "your_server.database.windows.net";
+                cb.UserID = "your_user";
+                cb.Password = "your_password";
+                cb.InitialCatalog = "your_database";
 
-               Submit_Tsql_NonQuery(connection, "2 - Create-Tables",
-                  Build_2_Tsql_CreateTables());
+                using (var connection = new SqlConnection(cb.ConnectionString))
+                {
+                    connection.Open();
 
-               Submit_Tsql_NonQuery(connection, "3 - Inserts",
-                  Build_3_Tsql_Inserts());
+                    Submit_Tsql_NonQuery(connection, "2 - Create-Tables", Build_2_Tsql_CreateTables());
 
-               Submit_Tsql_NonQuery(connection, "4 - Update-Join",
-                  Build_4_Tsql_UpdateJoin(),
-                  "@csharpParmDepartmentName", "Accounting");
+                    Submit_Tsql_NonQuery(connection, "3 - Inserts", Build_3_Tsql_Inserts());
 
-               Submit_Tsql_NonQuery(connection, "5 - Delete-Join",
-                  Build_5_Tsql_DeleteJoin(),
-                  "@csharpParmDepartmentName", "Legal");
+                    Submit_Tsql_NonQuery(connection, "4 - Update-Join", Build_4_Tsql_UpdateJoin(),
+                        "@csharpParmDepartmentName", "Accounting");
 
-               Submit_6_Tsql_SelectEmployees(connection);
+                    Submit_Tsql_NonQuery(connection, "5 - Delete-Join", Build_5_Tsql_DeleteJoin(),
+                        "@csharpParmDepartmentName", "Legal");
+
+                    Submit_6_Tsql_SelectEmployees(connection);
+                }
             }
-         }
-         catch (SqlException e)
-         {
-            Console.WriteLine(e.ToString());
-         }
-         Console.WriteLine("View the report output here, then press any key to end the program...");
-         Console.ReadKey();
-      }
-```
-
-
-<a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>C#-Block 2: T-SQL-Code zum Erstellen von Tabellen
-
-- [Vorheriger](#cs_1_connect)&nbsp; / &nbsp;[Nächster](#cs_3_insert)
-
-```csharp
-      static string Build_2_Tsql_CreateTables()
-      {
-         return @"
-DROP TABLE IF EXISTS tabEmployee;
-DROP TABLE IF EXISTS tabDepartment;  -- Drop parent table last.
-
-
-CREATE TABLE tabDepartment
-(
-   DepartmentCode  nchar(4)          not null
-      PRIMARY KEY,
-   DepartmentName  nvarchar(128)     not null
-);
-
-CREATE TABLE tabEmployee
-(
-   EmployeeGuid    uniqueIdentifier  not null  default NewId()
-      PRIMARY KEY,
-   EmployeeName    nvarchar(128)     not null,
-   EmployeeLevel   int               not null,
-   DepartmentCode  nchar(4)              null
-      REFERENCES tabDepartment (DepartmentCode)  -- (REFERENCES would be disallowed on temporary tables.)
-);
-";
-      }
-```
-
-#### <a name="entity-relationship-diagram-erd"></a>Entitätsbeziehungsdiagramm
-
-Die vorherigen CREATE TABLE-Anweisungen verfügen über das Schlüsselwort **REFERENCES**, um eine *Fremdschlüssel*-Beziehung (Foreign Key, FK) zwischen zwei Tabellen zu erstellen.  Bei Verwendung von tempdb kommentieren Sie das Schlüsselwort `--REFERENCES` aus, indem Sie zwei vorangestellte Bindestriche verwenden.
-
-Als Nächstes ist hier in einem Entitätsbeziehungsdiagramm die Beziehung zwischen den beiden Tabellen dargestellt. Die Werte in der *untergeordneten* Spalte „#tabEmployee.DepartmentCode“ sind auf die Werte beschränkt, die in der *übergeordneten* Spalte „#tabDepartment.Department“ angegeben sind.
-
-![Entitätsbeziehungsdiagramm mit Fremdschlüssel](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
-
-
-<a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>C#-Block 3: T-SQL-Code zum Einfügen von Daten
-
-- [Vorheriger](#cs_2_createtables)&nbsp; / &nbsp;[Nächster](#cs_4_updatejoin)
-
-
-```csharp
-      static string Build_3_Tsql_Inserts()
-      {
-         return @"
--- The company has these departments.
-INSERT INTO tabDepartment
-   (DepartmentCode, DepartmentName)
-      VALUES
-   ('acct', 'Accounting'),
-   ('hres', 'Human Resources'),
-   ('legl', 'Legal');
-
--- The company has these employees, each in one department.
-INSERT INTO tabEmployee
-   (EmployeeName, EmployeeLevel, DepartmentCode)
-      VALUES
-   ('Alison'  , 19, 'acct'),
-   ('Barbara' , 17, 'hres'),
-   ('Carol'   , 21, 'acct'),
-   ('Deborah' , 24, 'legl'),
-   ('Elle'    , 15, null);
-";
-      }
-```
-
-
-<a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>C#-Block 4: T-SQL-Code für Aktualisierung/Verknüpfung
-
-- [Vorheriger](#cs_3_insert)&nbsp; / &nbsp;[Nächster](#cs_5_deletejoin)
-
-
-```csharp
-      static string Build_4_Tsql_UpdateJoin()
-      {
-         return @"
-DECLARE @DName1  nvarchar(128) = @csharpParmDepartmentName;  --'Accounting';
-
-
--- Promote everyone in one department (see @parm...).
-UPDATE empl
-   SET
-      empl.EmployeeLevel += 1
-   FROM
-      tabEmployee   as empl
-      INNER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   WHERE
-      dept.DepartmentName = @DName1;
-";
-      }
-```
-
-
-<a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>C#-Block 5: T-SQL-Code für Löschung/Verknüpfung
-
-- [Vorheriger](#cs_4_updatejoin)&nbsp; / &nbsp;[Nächster](#cs_6_selectrows)
-
-
-```csharp
-      static string Build_5_Tsql_DeleteJoin()
-      {
-         return @"
-DECLARE @DName2  nvarchar(128);
-SET @DName2 = @csharpParmDepartmentName;  --'Legal';
-
-
--- Right size the Legal department.
-DELETE empl
-   FROM
-      tabEmployee   as empl
-      INNER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   WHERE
-      dept.DepartmentName = @DName2
-
--- Disband the Legal department.
-DELETE tabDepartment
-   WHERE DepartmentName = @DName2;
-";
-      }
-```
-
-
-
-<a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>C#-Block 6: T-SQL-Code zum Auswählen von Zeilen
-
-- [Vorheriger](#cs_5_deletejoin)&nbsp; / &nbsp;[Nächster](#cs_6b_datareader)
-
-
-```csharp
-      static string Build_6_Tsql_SelectEmployees()
-      {
-         return @"
--- Look at all the final Employees.
-SELECT
-      empl.EmployeeGuid,
-      empl.EmployeeName,
-      empl.EmployeeLevel,
-      empl.DepartmentCode,
-      dept.DepartmentName
-   FROM
-      tabEmployee   as empl
-      LEFT OUTER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   ORDER BY
-      EmployeeName;
-";
-      }
-```
-
-
-<a name="cs_6b_datareader"/>
-### <a name="c-block-6b-executereader"></a>C#-Block 6b: ExecuteReader
-
-- [Vorheriger](#cs_6_selectrows)&nbsp; / &nbsp;[Nächster](#cs_7_executenonquery)
-
-Diese Methode ist für das Ausführen der T-SQL-SELECT-Anweisung ausgelegt, die mit der **Build_6_Tsql_SelectEmployees**-Methode erstellt wird.
-
-
-```csharp
-      static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)
-      {
-         Console.WriteLine();
-         Console.WriteLine("=================================");
-         Console.WriteLine("Now, SelectEmployees (6)...");
-
-         string tsql = Build_6_Tsql_SelectEmployees();
-
-         using (var command = new SqlCommand(tsql, connection))
-         {
-            using (SqlDataReader reader = command.ExecuteReader())
+            catch (SqlException e)
             {
-               while (reader.Read())
-               {
-                  Console.WriteLine("{0} , {1} , {2} , {3} , {4}",
-                     reader.GetGuid(0),
-                     reader.GetString(1),
-                     reader.GetInt32(2),
-                     (reader.IsDBNull(3)) ? "NULL" : reader.GetString(3),
-                     (reader.IsDBNull(4)) ? "NULL" : reader.GetString(4));
-               }
+                Console.WriteLine(e.ToString());
             }
-         }
-      }
+
+            Console.WriteLine("View the report output here, then press any key to end the program...");
+            Console.ReadKey();
+        }
 ```
 
+<a name="cs_2_return"/>
 
-<a name="cs_7_executenonquery"/>
-### <a name="c-block-7-executenonquery"></a>C#-Block 7: ExecuteNonQuery
-
-- [Vorheriger](#cs_6b_datareader)&nbsp; / &nbsp;[Nächster](#cs_8_output)
-
-Diese Methode wird für Vorgänge aufgerufen, bei denen der Dateninhalt von Tabellen geändert wird, ohne Datenzeilen zurückzugeben.
-
+### <a name="methods-that-return-t-sql-statements"></a>Methoden, die T-SQL-Anweisungen zurückgeben
 
 ```csharp
-      static void Submit_Tsql_NonQuery(
-         SqlConnection connection,
-         string tsqlPurpose,
-         string tsqlSourceCode,
-         string parameterName = null,
-         string parameterValue = null
-         )
-      {
-         Console.WriteLine();
-         Console.WriteLine("=================================");
-         Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
+static string Build_2_Tsql_CreateTables()
+{
+    return @"
+        DROP TABLE IF EXISTS tabEmployee;
+        DROP TABLE IF EXISTS tabDepartment;  -- Drop parent table last.
 
-         using (var command = new SqlCommand(tsqlSourceCode, connection))
-         {
-            if (parameterName != null)
-            {
-               command.Parameters.AddWithValue(  // Or, use SqlParameter class.
-                  parameterName,
-                  parameterValue);
-            }
-            int rowsAffected = command.ExecuteNonQuery();
-            Console.WriteLine(rowsAffected + " = rows affected.");
-         }
-      }
-   } // EndOfClass
+        CREATE TABLE tabDepartment
+        (
+            DepartmentCode  nchar(4)          not null    PRIMARY KEY,
+            DepartmentName  nvarchar(128)     not null
+        );
+
+        CREATE TABLE tabEmployee
+        (
+            EmployeeGuid    uniqueIdentifier  not null  default NewId()    PRIMARY KEY,
+            EmployeeName    nvarchar(128)     not null,
+            EmployeeLevel   int               not null,
+            DepartmentCode  nchar(4)              null
+            REFERENCES tabDepartment (DepartmentCode)  -- (REFERENCES would be disallowed on temporary tables.)
+        );
+    ";
+}
+
+static string Build_3_Tsql_Inserts()
+{
+    return @"
+        -- The company has these departments.
+        INSERT INTO tabDepartment (DepartmentCode, DepartmentName)
+        VALUES
+            ('acct', 'Accounting'),
+            ('hres', 'Human Resources'),
+            ('legl', 'Legal');
+
+        -- The company has these employees, each in one department.
+        INSERT INTO tabEmployee (EmployeeName, EmployeeLevel, DepartmentCode)
+        VALUES
+            ('Alison'  , 19, 'acct'),
+            ('Barbara' , 17, 'hres'),
+            ('Carol'   , 21, 'acct'),
+            ('Deborah' , 24, 'legl'),
+            ('Elle'    , 15, null);
+    ";
+}
+
+static string Build_4_Tsql_UpdateJoin()
+{
+    return @"
+        DECLARE @DName1  nvarchar(128) = @csharpParmDepartmentName;  --'Accounting';
+
+        -- Promote everyone in one department (see @parm...).
+        UPDATE empl
+        SET
+            empl.EmployeeLevel += 1
+        FROM
+            tabEmployee   as empl
+        INNER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        WHERE
+            dept.DepartmentName = @DName1;
+    ";
+}
+
+static string Build_5_Tsql_DeleteJoin()
+{
+    return @"
+        DECLARE @DName2  nvarchar(128);
+        SET @DName2 = @csharpParmDepartmentName;  --'Legal';
+
+        -- Right size the Legal department.
+        DELETE empl
+        FROM
+            tabEmployee   as empl
+        INNER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        WHERE
+            dept.DepartmentName = @DName2
+
+        -- Disband the Legal department.
+        DELETE tabDepartment
+            WHERE DepartmentName = @DName2;
+    ";
+}
+
+static string Build_6_Tsql_SelectEmployees()
+{
+    return @"
+        -- Look at all the final Employees.
+        SELECT
+            empl.EmployeeGuid,
+            empl.EmployeeName,
+            empl.EmployeeLevel,
+            empl.DepartmentCode,
+            dept.DepartmentName
+        FROM
+            tabEmployee   as empl
+        LEFT OUTER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        ORDER BY
+            EmployeeName;
+    ";
 }
 ```
 
+<a name="cs_3_submit"/>
 
-<a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>C#-Block 8: Tatsächliche Testausgabe auf der Konsole
+### <a name="submit-t-sql-to-the-database"></a>Übermitteln von T-SQL-Anweisungen an die Datenbank
 
-- [Vorheriger](#cs_7_executenonquery)
+```csharp
+static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)
+{
+    Console.WriteLine();
+    Console.WriteLine("=================================");
+    Console.WriteLine("Now, SelectEmployees (6)...");
 
-In diesem Abschnitt wird die Ausgabe erfasst, die vom Programm an die Konsole gesendet wurde. Nur die GUID-Werte variieren zwischen Testläufen.
+    string tsql = Build_6_Tsql_SelectEmployees();
 
+    using (var command = new SqlCommand(tsql, connection))
+    {
+        using (SqlDataReader reader = command.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                Console.WriteLine("{0} , {1} , {2} , {3} , {4}",
+                    reader.GetGuid(0),
+                    reader.GetString(1),
+                    reader.GetInt32(2),
+                    (reader.IsDBNull(3)) ? "NULL" : reader.GetString(3),
+                    (reader.IsDBNull(4)) ? "NULL" : reader.GetString(4));
+            }
+        }
+    }
+}
 
-```text
-[C:\csharp_db_test\csharp_db_test\bin\Debug\]
->> csharp_db_test.exe
+static void Submit_Tsql_NonQuery(
+    SqlConnection connection,
+    string tsqlPurpose,
+    string tsqlSourceCode,
+    string parameterName = null,
+    string parameterValue = null
+    )
+{
+    Console.WriteLine();
+    Console.WriteLine("=================================");
+    Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
 
-=================================
-Now, CreateTables (10)...
-
-=================================
-Now, Inserts (20)...
-
-=================================
-Now, UpdateJoin (30)...
-2 rows affected, by UpdateJoin.
-
-=================================
-Now, DeleteJoin (40)...
-
-=================================
-Now, SelectEmployees (50)...
-0199be49-a2ed-4e35-94b7-e936acf1cd75 , Alison , 20 , acct , Accounting
-f0d3d147-64cf-4420-b9f9-76e6e0a32567 , Barbara , 17 , hres , Human Resources
-cf4caede-e237-42d2-b61d-72114c7e3afa , Carol , 22 , acct , Accounting
-cdde7727-bcfd-4f72-a665-87199c415f8b , Elle , 15 , NULL , NULL
-
-[C:\csharp_db_test\csharp_db_test\bin\Debug\]
->>
+    using (var command = new SqlCommand(tsqlSourceCode, connection))
+    {
+        if (parameterName != null)
+        {
+            command.Parameters.AddWithValue(  // Or, use SqlParameter class.
+                parameterName,
+                parameterValue);
+        }
+        int rowsAffected = command.ExecuteNonQuery();
+        Console.WriteLine(rowsAffected + " = rows affected.");
+    }
+}
+} // EndOfClass
+}
 ```

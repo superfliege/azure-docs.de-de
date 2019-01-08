@@ -1,5 +1,5 @@
 ---
-title: Übersicht über Azure Key Vault | Microsoft-Dokumentation
+title: Azure Key Vault – Übersicht | Microsoft-Dokumentation
 description: Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert.
 services: key-vault
 author: barclayn
@@ -12,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/17/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: aae7836448ff27b4c80d7bb53e108034ee52db1c
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 80a740e13f5c3a13b7533d75e386a9afa2855085
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586290"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002245"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
 Mit Azure Key Vault lassen sich folgende Probleme lösen:
+
 - **Geheimnisverwaltung**: Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Zugriffs auf Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse.
 - **Schlüsselverwaltung**: Azure Key Vault kann auch als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
 - **Zertifikatverwaltung**: Darüber hinaus können Sie mit dem Azure Key Vault-Dienst komfortabel öffentliche und private SSL-/TLS-Zertifikate (Secure Sockets Layer/Transport Layer Security) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen bereitstellen und verwalten. 
@@ -33,9 +34,9 @@ Mit Azure Key Vault lassen sich folgende Probleme lösen:
 
 ### <a name="centralize-application-secrets"></a>Zentralisieren von Anwendungsgeheimnissen
 
-Durch die zentralisierte Speicherung von Anwendungsgeheimnissen in Azure Key Vault können Sie deren Verteilung steuern. Mit Key Vault lässt sich das Risiko einer unbeabsichtigten Weitergabe von Geheimnissen erheblich senken. Dank Key Vault müssen Anwendungsentwickler Sicherheitsinformationen nicht mehr in der Anwendung speichern. Die Informationen müssen also nicht mehr in den Code integriert werden. Ein Beispiel: Angenommen, eine Anwendung muss eine Verbindung mit einer Datenbank herstellen. In diesem Fall können Sie die Verbindungszeichenfolge sicher in Key Vault speichern anstatt im Anwendungscode.
+Durch die zentralisierte Speicherung von Anwendungsgeheimnissen in Azure Key Vault können Sie deren Verteilung steuern. Mit Key Vault lässt sich das Risiko einer unbeabsichtigten Weitergabe von Geheimnissen erheblich senken. Dank Key Vault müssen Anwendungsentwickler Sicherheitsinformationen nicht mehr in der Anwendung speichern. Wenn Sicherheitsinformationen nicht mehr in Anwendungen gespeichert werden müssen, entfällt die Notwendigkeit, diese Informationen in den Code einzubinden. Ein Beispiel: Angenommen, eine Anwendung muss eine Verbindung mit einer Datenbank herstellen. Anstatt die Verbindungszeichenfolge im App-Code zu speichern, können Sie diese sicher in Key Vault speichern.
 
-Über URIs können Ihre Anwendungen sicher auf die benötigten Informationen zugreifen. Die URIs ermöglichen das Abrufen spezifischer Versionen eines Geheimnisses, nachdem der Schlüssel oder das Geheimnis der Anwendung in Azure Key Vault gespeichert wurde. Dabei muss keinerlei benutzerdefinierter Code geschrieben werden, um geheime Informationen zu schützen.
+Ihre Anwendungen können mithilfe von URIs sicher auf benötigte Informationen zugreifen. Diese URIs bieten den Anwendungen die Möglichkeit, bestimmte Versionen eines geheimen Schlüssels abzurufen. Sie müssen keinerlei benutzerdefinierten Code schreiben, um die geheimen Informationen zu schützen, die in Key Vault gespeichert sind.
 
 ### <a name="securely-store-secrets-and-keys"></a>Sicheres Speichern von Geheimnissen und Schlüsseln
 
@@ -51,7 +52,7 @@ Darüber hinaus ist Azure Key Vault so konzipiert, dass Ihre Daten von Microsoft
 
 ### <a name="monitor-access-and-use"></a>Überwachen von Zugriff und Verwendung
 
-Nachdem Sie eine Reihe von Key Vault-Instanzen erstellt haben, können Sie überwachen, wie und wann auf Ihre Schlüssel und Geheimnisse zugegriffen wird. Hierzu können Sie die Protokollierung für Key Vault aktivieren. Azure Key Vault kann für Folgendes konfiguriert werden:
+Nachdem Sie eine Reihe von Key Vault-Instanzen erstellt haben, können Sie überwachen, wie und wann auf Ihre Schlüssel und Geheimnisse zugegriffen wird. Durch das Aktivieren der Protokollierung für Ihre Tresore können Sie Aktivitäten überwachen. Azure Key Vault kann für Folgendes konfiguriert werden:
 
 - Archivieren in einem Speicherkonto
 - Streamen an einen Event Hub
@@ -61,11 +62,11 @@ Sie haben die Kontrolle über Ihre Protokolle: Sie können den Zugriff auf Proto
 
 ### <a name="simplified-administration-of-application-secrets"></a>Einfachere Verwaltung von Anwendungsgeheimnissen
 
-Beim Speichern wertvoller Daten sind mehrere Punkte zu berücksichtigen: Sicherheitsinformationen müssen geschützt werden, für die Informationen muss ein Lebenszyklus konfiguriert werden, und die Informationen müssen hochverfügbar sein. Azure Key Vault vereinfacht einen Großteil dieser Punkte durch Folgendes:
+Beim Speichern wertvoller Daten sind mehrere Punkte zu berücksichtigen: Sicherheitsinformationen müssen geschützt, hochverfügbar und mit einem für sie festgelegten Lebenszyklus versehen sein. Azure Key Vault vereinfacht das Erfüllen dieser Anforderungen durch:
 
 - Beseitigung des Bedarfs für interne Kenntnisse von Hardware-Sicherheitsmodellen
 - Kurzfristige zentrale Hochskalierung zur Abdeckung von Auslastungsspitzen Ihrer Organisation
-- Replikation des Inhalts Ihrer Key Vault-Instanz innerhalb einer Region und in einer sekundären Region. Dadurch wird die Hochverfügbarkeit der Informationen gewährleistet, und ein Failover kann ganz ohne Eingriff des Administrators ausgelöst werden.
+- Replikation des Inhalts Ihrer Key Vault-Instanz innerhalb einer Region und in einer sekundären Region. Die Datenreplikation gewährleistet die Hochverfügbarkeit der Informationen, und ein Failover kann ganz ohne Eingriff des Administrators ausgelöst werden.
 - Bereitstellung standardmäßiger Azure-Verwaltungsoptionen über das Portal, die Azure-Befehlszeilenschnittstelle und PowerShell
 - Automatisierung bestimmter Aufgaben im Zusammenhang mit Zertifikaten, die Sie von öffentlichen Zertifizierungsstellen erwerben (z.B. Registrierung und Verlängerung)
 
@@ -73,7 +74,12 @@ Darüber hinaus können Azure Key Vault-Instanzen auch zur Isolierung von Anwend
 
 ### <a name="integrate-with-other-azure-services"></a>Integrieren in andere Azure-Dienste
 
-Als sicherer Speicher in Azure vereinfacht Key Vault beispielsweise Szenarien mit [Azure Disk Encryption](../security/azure-security-disk-encryption.md), mit der Funktion [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) in SQL Server und Azure SQL-Datenbank sowie mit [Azure-Web-Apps]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). Key Vault kann in Speicherkonten, Event Hubs und Log Analytics integriert werden.
+Als sicherer Speicher in Azure wurde Key Vault u. a. zur Vereinfachung folgender Szenarien verwendet:
+-  [Azure-Datenträgerverschlüsselung](../security/azure-security-disk-encryption.md)
+-  Funktion [Immer verschlüsselt]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) in SQL-Server und Azure SQL-Datenbank
+- [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site) 
+
+Key Vault selbst kann in Speicherkonten, Event Hubs und Protokollanalysen integriert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

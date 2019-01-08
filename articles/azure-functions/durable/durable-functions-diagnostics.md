@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b297be16110e24342b224f7f89c2a3c0c44229a9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341405"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713230"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnose in Durable Functions (Azure Functions)
 
@@ -25,7 +25,7 @@ Es gibt mehrere Möglichkeiten, um Probleme mithilfe von [Durable Functions](dur
 
 Es wird empfohlen, [Application Insights](../../application-insights/app-insights-overview.md) zum Durchführen der Diagnose und Überwachung in Azure Functions zu verwenden. Dasselbe gilt für Durable Functions. Eine Übersicht darüber, wie Sie Application Insights in Ihrer Funktionen-App nutzen, finden Sie unter [Überwachen von Azure Functions](../functions-monitoring.md).
 
-Die Erweiterung „Durable Functions“ von Azure Functions gibt auch *Nachverfolgungsereignisse* aus, mit denen Sie die End-to-End-Ausführung einer Orchestrierung verfolgen können. Sie können sie ermitteln und abfragen, indem Sie im Azure-Portal das Tool [Application Insights Analytics](../../application-insights/app-insights-analytics.md) verwenden.
+Die Erweiterung „Durable Functions“ von Azure Functions gibt auch *Nachverfolgungsereignisse* aus, mit denen Sie die End-to-End-Ausführung einer Orchestrierung verfolgen können. Sie können sie ermitteln und abfragen, indem Sie im Azure-Portal das Tool [Application Insights Analytics](../../azure-monitor/app/analytics.md) verwenden.
 
 ### <a name="tracking-data"></a>Nachverfolgungsdaten
 

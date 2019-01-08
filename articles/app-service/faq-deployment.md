@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388507"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549427"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
 
@@ -36,7 +36,7 @@ Hier finden Sie einige Möglichkeiten für die Veröffentlichung Ihres Web-App-C
 *   Bereitstellen über Visual Studio. Wenn Sie über die Visual Studio-Lösung verfügen, klicken Sie mit der rechten Maustaste auf das Webanwendungsprojekt, und wählen Sie dann **Veröffentlichen** aus.
 *   Bereitstellen über einen FTP-Client. Laden Sie im Azure-Portal das Veröffentlichungsprofil für die Web-App herunter, für die Sie Code bereitstellen möchten. Laden Sie die Dateien anschließend in das Verzeichnis „\site\wwwroot“ hoch. Verwenden Sie dabei die FTP-Anmeldeinformationen desselben Veröffentlichungsprofils.
 
-Weitere Informationen finden Sie unter [Bereitstellen der App in App Service](app-service-deploy-local-git.md).
+Weitere Informationen finden Sie unter [Bereitstellen der App in App Service](deploy-local-git.md).
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Wenn ich die Bereitstellung über Visual Studio versuche, wird eine Fehlermeldung angezeigt. Wie löse ich dieses Problem?
 
@@ -51,7 +51,7 @@ Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](a
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Welche verschiedenen Typen von Anmeldeinformationen für die Bereitstellung gibt es?
 
-App Service unterstützt zwei Arten von Anmeldeinformationen für lokale Git-Bereitstellungen und FTP/S-Bereitstellungen. Weitere Informationen zum Konfigurieren der Anmeldeinformationen für die Bereitstellung finden Sie unter [Konfigurieren der Anmeldeinformationen für die Bereitstellung für App Service](app-service-deployment-credentials.md).
+App Service unterstützt zwei Arten von Anmeldeinformationen für lokale Git-Bereitstellungen und FTP/S-Bereitstellungen. Weitere Informationen zum Konfigurieren der Anmeldeinformationen für die Bereitstellung finden Sie unter [Konfigurieren der Anmeldeinformationen für die Bereitstellung für App Service](deploy-configure-credentials.md).
 
 ## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Wie lautet die Datei- oder Verzeichnisstruktur meiner App Service-Web-App?
 
@@ -63,7 +63,7 @@ Wenn diese Meldung angezeigt wird, ist es wahrscheinlich, dass Sie auf ein Daten
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Wie richte ich für meine App Service-Web-App die kontinuierliche Bereitstellung ein?
 
-Sie können Continuous Deployment über mehrere Ressourcen einrichten, z.B. Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox und andere Git-Repositorys. Diese Optionen sind im Portal verfügbar. [Kontinuierliche Bereitstellung in App Service](app-service-continuous-deployment.md) ist ein nützliches Tutorial, das erläutert, wie Sie die kontinuierliche Bereitstellung einrichten.
+Sie können Continuous Deployment über mehrere Ressourcen einrichten, z.B. Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox und andere Git-Repositorys. Diese Optionen sind im Portal verfügbar. [Kontinuierliche Bereitstellung in App Service](deploy-continuous-deployment.md) ist ein nützliches Tutorial, das erläutert, wie Sie die kontinuierliche Bereitstellung einrichten.
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Wie behebe ich Probleme mit der kontinuierlichen Bereitstellung über GitHub und Bitbucket?
 
@@ -100,4 +100,4 @@ Die kontinuierliche Codebereitstellung für beide Optionen hängt von vorhandene
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Wie verwende ich FTP oder FTPS zur Bereitstellung meiner App in App Service?
 
-Informationen zur Verwendung von FTP oder FTPS zur Bereitstellung Ihrer Web-App in App Service finden Sie unter [Deploy your app to App Service by using FTP/S](app-service-deploy-ftp.md) (Bereitstellen Ihrer App in App Service über FTP/S).
+Informationen zur Verwendung von FTP oder FTPS zur Bereitstellung Ihrer Web-App in App Service finden Sie unter [Deploy your app to App Service by using FTP/S](deploy-ftp.md) (Bereitstellen Ihrer App in App Service über FTP/S).

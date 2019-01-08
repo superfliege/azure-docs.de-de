@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315798"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633860"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -385,7 +385,7 @@ In diesem Artikel wurde die Volltextsuche im Rahmen von Azure Search beschrieben
 
 + Erstellen Sie den Beispielindex, probieren Sie verschiedene Abfragen aus, und sehen Sie sich die Ergebnisse an. Eine Anleitung finden Sie unter [Erstellen und Abfragen Ihres ersten Azure Search-Index im Portal](search-get-started-portal.md#query-index) im Abschnitt „Abfragen des Index“.
 
-+ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
++ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
 
 + Sehen Sie sich die [Bewertungsprofile](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) an, wenn Sie die Rangfolge in Ihrer Suchanwendung optimieren möchten.
 
@@ -393,7 +393,7 @@ In diesem Artikel wurde die Volltextsuche im Rahmen von Azure Search beschrieben
 
 + [Konfigurieren Sie benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) für die minimale oder spezielle Verarbeitung anhand von bestimmten Feldern.
 
-+ [Vergleichen Sie die Standard- und Englischanalysen](http://alice.unearth.ai/) nebeneinander auf dieser Demo-Website. 
++ [Vergleichen Sie die Standard- und Englischanalysen](https://alice.unearth.ai/) nebeneinander auf dieser Demo-Website. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

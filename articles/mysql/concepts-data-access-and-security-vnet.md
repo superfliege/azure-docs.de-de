@@ -1,20 +1,18 @@
 ---
 title: Übersicht über VNET-Dienstendpunkte für Azure Database for MySQL-Server | Microsoft-Dokumentation
 description: Übersicht über die Funktionsweise von VNET-Dienstendpunkten für Azure Database for MySQL-Server
-services: mysql
 author: mbolz
 ms.author: mbolz
 manager: jhubbard
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 1c159e5c86f713f1f7dbce5cd96cd2ce5d3c22fb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: af067cabf312ec3c2556b84dc4d739e41ec0aacc
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437968"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535273"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for MySQL
 
