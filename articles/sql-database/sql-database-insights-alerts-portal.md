@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273340"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634608"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure SQL-Datenbanken und Data Warehouse
 
@@ -46,13 +46,13 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 1. Suchen Sie im [Portal](https://portal.azure.com/)die Ressource, die Sie überwachen möchten, und wählen Sie sie aus.
 2. Wählen Sie im Abschnitt „ÜBERWACHUNG“ die Option **Warnungen (klassisch)** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
    
-     ![Überwachung](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
+     ![Überwachung](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
    - **NUR SQL DW**: Klicken Sie auf den Graphen **DWU-Nutzung**. Wählen Sie **Klassische Warnungen anzeigen** aus.
 
 3. Wählen Sie die Schaltfläche **Metrikwarnung hinzufügen (klassisch)** aus, und füllen Sie die Felder aus.
    
-    ![Warnung hinzufügen](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![Warnung hinzufügen](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Benennen** Sie Ihre Warnungsregel, und wählen Sie eine **Beschreibung** aus, die auch in Benachrichtigungs-E-Mails angezeigt wird.
 5. Wählen Sie die **Metrik** aus, die Sie überwachen möchten, und dann je einen Wert für **Bedingung** und **Schwellenwert** für die Metrik aus. Wählen Sie auch den **Zeitraum** der Metrikregel aus, der erfüllt sein muss, ehe die Warnung ausgelöst wird. Wenn Sie z.B. den Zeitraum „PT5M“ wählen, und die Warnung nach einer CPU-Auslastung von über 80 % sucht, wird die Warnung ausgelöst, wenn die **durchschnittliche** CPU-Auslastung 5 Minuten über 80 % lag. Nachdem der erste Trigger ausgelöst wurde, erfolgt ein erneutes Auslösen, wenn die durchschnittliche CPU-Auslastung 5 Minuten unter 80 % bleibt. Die CPU-Messung erfolgt minütlich. In der folgenden Tabelle finden Sie unterstützte Zeitfenster und den Aggregationstyp für die einzelnen Warnungen – nicht alle Warnungen verwenden den durchschnittlichen Wert.   
 6. Aktivieren Sie **E-Mail-Besitzer...** , wenn Sie möchten, dass Administratoren und Co-Administratoren per E-Mail benachrichtigt werden, wenn die Warnung ausgelöst wird.
@@ -117,5 +117,5 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
+* Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

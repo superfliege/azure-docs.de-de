@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: f1c42a3e091bc4b3804edfe835e521a99fcee880
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976365"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792888"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Schnellstart: Einrichten von Clustern in HDInsight
 
@@ -39,7 +39,7 @@ Die folgende Tabelle zeigt die verschiedenen Methoden, die Sie zum Einrichten ei
 | [cURL](../../hdinsight/hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure-Ressourcen-Manager-Vorlagen](../../hdinsight/hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-## <a name="quick-create-basic-cluster-setup"></a>Schnellstart: Grundlegende Clustereinrichtung
+## <a name="quick-create-basic-cluster-setup"></a>Schnellerfassung: Grundlegende Clustereinrichtung
 
 Dieser Artikel enthält die Schritte im [Azure-Portal](https://portal.azure.com) zum Erstellen eines HDInsight-Clusters mithilfe der *Schnellerfassung* oder *benutzerdefiniert*.
 
@@ -239,7 +239,7 @@ Ein Beispiel für die Verwendung von zwei Clustertypen in einem virtuellen Azure
 
 ## <a name="troubleshoot-access-control-issues"></a>Beheben von Problemen mit der Zugriffssteuerung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](../../hdinsight/hdinsight-administer-use-portal-linux.md#create-clusters) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](../../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

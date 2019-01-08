@@ -1,5 +1,5 @@
 ---
-title: Erweiterte Ereignisse in Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Erweiterte Ereignisse in Azure SQL-Datenbank | Microsoft Docs
 description: Beschreibt erweiterte Ereignisse (XEvents) in Azure SQL-Datenbank und wie sich Ereignissitzungen im Vergleich zu Microsoft SQL Server geringfügig unterscheiden.
 services: sql-database
 ms.service: sql-database
@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3b51f4a4a4d00bcfaa1baf1c46ad7f6eb638ad2b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a4971d680994c9d81e86a4070ea79365ac8ec4dd
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867867"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606485"
 ---
 # <a name="extended-events-in-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]

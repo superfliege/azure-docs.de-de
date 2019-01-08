@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Tools für elastische Datenbanken – Azure | Microsoft-Dokumentation
+title: Erste Schritte mit Tools für elastische Datenbanken – Azure| Microsoft Docs
 description: Grundlegende Erläuterung der Tools für elastische Datenbanken von Azure SQL-Datenbank, einschließlich einer einfachen Beispiel-App.
 services: sql-database
 ms.service: sql-database
@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 13e9bb045bcce553ba9fdc344baa86ba96260387
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b3bdcc81776067f279c1f95458a0a79a8824f51c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870230"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603048"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Erste Schritte mit Tools für elastische Datenbanken
 Dieses Dokument enthält eine Einführung in die Entwickleroberfläche für die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md), die anhand einer Beispiel-App vorgestellt wird. Mit der Beispiel-App wird eine einfache Shardinganwendung erstellt, und es werden die wichtigsten Funktionen des Features „Tools für elastische Datenbanken“ von Azure SQL-Datenbank erläutert. Dabei stehen die Anwendungsfälle für [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md), [datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md) und [Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md) im Mittelpunkt. Die Clientbibliothek ist sowohl für .NET als auch für Java verfügbar. 

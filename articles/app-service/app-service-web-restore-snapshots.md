@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: 174fbd8f3e4c652c25a78911185ef8a98a80bb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260037"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726560"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Wiederherstellen einer App in Azure auf der Grundlage einer Momentaufnahme
-In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/app-service-web-overview.md) auf der Grundlage einer Momentaufnahme wiederherstellen. Mithilfe der Momentaufnahmen Ihrer App können Sie die App in einem vorherigen Zustand wiederherstellen. Die Sicherung von Momentaufnahmen muss nicht aktiviert werden, da die Plattform automatisch eine Momentaufnahme aller Apps speichert, um die Wiederherstellung von Daten zu ermöglichen.
+In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/overview.md) auf der Grundlage einer Momentaufnahme wiederherstellen. Mithilfe der Momentaufnahmen Ihrer App können Sie die App in einem vorherigen Zustand wiederherstellen. Die Sicherung von Momentaufnahmen muss nicht aktiviert werden, da die Plattform automatisch eine Momentaufnahme aller Apps speichert, um die Wiederherstellung von Daten zu ermöglichen.
 
-Momentaufnahmen sind inkrementelle Schattenkopien und bieten im Vergleich zu regulären [Sicherungen](web-sites-backup.md) mehrere Vorteile:
+Momentaufnahmen sind inkrementelle Schattenkopien und bieten im Vergleich zu regulären [Sicherungen](manage-backup.md) mehrere Vorteile:
 - Keine Dateikopierfehler durch Dateisperren
 - Keine Beschränkung der Speichergröße
 - Keine Konfiguration erforderlich

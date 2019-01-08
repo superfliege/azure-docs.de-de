@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089700"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000562"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen für die Bereitstellung von Logik-Apps
 
@@ -187,7 +187,7 @@ Ein Beispielskript hierfür finden Sie auf GitHub im Projekt [LogicAppConnection
 <a name="team-services"></a>
 ## <a name="azure-devops-azure-pipelines"></a>Azure DevOps Azure Pipelines
 
-Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist die Verwendung eines Tools wie Azure Pipelines in Azure DevOps mit einer Bereitstellungsvorlage für Logik-Apps. Azure DevOps enthält eine Aufgabe für die [Bereitstellung von Azure-Ressourcengruppen](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup), die jeder Build- oder Releasepipeline hinzugefügt werden kann. Sie benötigen einen [Dienstprinzipal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), um die Bereitstellung zu autorisieren. Anschließend können Sie die Releasepipeline generieren.
+Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist die Verwendung eines Tools wie Azure Pipelines in Azure DevOps mit einer Bereitstellungsvorlage für Logik-Apps. Azure DevOps enthält eine Aufgabe für die [Bereitstellung von Azure-Ressourcengruppen](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2), die jeder Build- oder Releasepipeline hinzugefügt werden kann. Sie benötigen einen [Dienstprinzipal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), um die Bereitstellung zu autorisieren. Anschließend können Sie die Releasepipeline generieren.
 
 1. Wählen Sie in Azure Pipelines **Leer** aus, um eine leere Pipeline zu erstellen.
 

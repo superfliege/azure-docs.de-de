@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 763e1d20f707a1db1f559661089b55093f93a632
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bb1616c7cbf5c9c4620aed3e31896e32fe0163f9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999923"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606213"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
 Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions ist eine Vorschaufunktion, mit der Sie eine OpenAPI 2.0-Definition in einer Funktions-App schreiben können. Diese Datei kann dann mit der Funktions-App gehostet werden.
@@ -23,7 +23,7 @@ Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions is
 > [!IMPORTANT]
 > Das OpenAPI-Vorschaufeature ist aktuell nur in der 1.x-Runtime verfügbar. Informationen zum Erstellen einer 1.x-Funktions-App [finden Sie hier](./functions-versions.md#creating-1x-apps).
 
-[OpenAPI-Metadaten](https://swagger.io/) ermöglichen, dass eine Funktion, die eine REST-API hostet, von vielen anderen Softwareprodukten verwendet werden kann. Diese Software enthält Microsoft-Angebote wie PowerApps und die [API-Apps-Funktion von Azure App Service](../app-service/app-service-web-overview.md), Drittanbieter-Entwicklertools wie [Postman](https://www.getpostman.com/docs/importing_swagger) sowie [viele weitere Pakete](https://swagger.io/tools/).
+[OpenAPI-Metadaten](https://swagger.io/) ermöglichen, dass eine Funktion, die eine REST-API hostet, von vielen anderen Softwareprodukten verwendet werden kann. Diese Software enthält Microsoft-Angebote wie PowerApps und die [API-Apps-Funktion von Azure App Service](../app-service/overview.md), Drittanbieter-Entwicklertools wie [Postman](https://www.getpostman.com/docs/importing_swagger) sowie [viele weitere Pakete](https://swagger.io/tools/).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

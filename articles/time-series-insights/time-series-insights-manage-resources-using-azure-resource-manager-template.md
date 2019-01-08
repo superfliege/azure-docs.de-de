@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights-Vorlagenverwaltung – Verwalten Ihrer Azure Time Series Insights-Umgebung mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Verwalten Ihrer Azure Time Series Insights-Umgebung mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights-Umgebung mit dem Azure Resource Manager programmgesteuert verwalten.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 70f82c19bced7618027379fcf9451348ac2591eb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9200b3b8cd85bfd94bbc4c66cccb35b78a97aaff
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270619"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554689"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
 

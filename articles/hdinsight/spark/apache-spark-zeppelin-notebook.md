@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 83adec0c3127e87da9871e294026fd467199c720
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0571347b7b44d6f6836d4dec1ebcf9b752d8fa8f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012877"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634438"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von Apache Zeppelin Notebooks mit Apache Spark-Cluster in Azure HDInsight
 
@@ -28,12 +28,11 @@ HDInsight Spark-Cluster enthalten [Apache Zeppelin](https://zeppelin.apache.org/
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Starten des Apache Zeppelin Notebooks
 1. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Cluster-Dashboard** und anschließend auf **Zeppelin Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
    
-   > [!NOTE]
+   > [!NOTE]  
    > Sie können auch das Zeppelin Notebook für Ihren Cluster aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
    > 
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
-   > 
-   > 
+
 1. Erstellen Sie ein neues Notebook. Klicken Sie im Headerbereich auf **Notebook**, und wählen Sie die Option **Neue Notiz erstellen** aus.
    
     ![Erstellen eines neuen Zeppelin Notebooks](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Erstellen eines neuen Zeppelin Notebooks")
@@ -74,9 +73,8 @@ HDInsight Spark-Cluster enthalten [Apache Zeppelin](https://zeppelin.apache.org/
    
     Sie können auch einen Titel für jeden Absatz angeben. Klicken Sie in der rechten Ecke auf das Symbol **Einstellungen** und dann auf **Titel anzeigen**.
 
-> [!NOTE]
+> [!NOTE]  
 > Der %spark2-Interpreter wird in Zeppelin-Notebooks bei keiner HDInsight-Version unterstützt, und der %sh-Interpreter wird ab HDInsight 4.0 nicht unterstützt.
->
 
 1. Sie können jetzt Spark-SQL-Anweisungen für die **hvac** -Tabelle ausführen. Fügen Sie die folgende Abfrage in einen neuen Absatz ein. Mit der Abfrage werden die Gebäude-ID und der Unterschied zwischen den Ziel- und Ist-Temperaturen für jedes Gebäude an einem bestimmten Datum abgerufen. Drücken Sie **UMSCHALT+EINGABETASTE**.
    
@@ -108,9 +106,9 @@ HDInsight Spark-Cluster enthalten [Apache Zeppelin](https://zeppelin.apache.org/
     ![Neustarten des Livy-Interpreters](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Neustarten des Zeppelin-Interpreters")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Wie verwende ich externe Pakete mit dem Notebook?
-Sie können das Zeppelin Notebook in einem Apache Spark-Cluster in HDInsight (Linux) konfigurieren, um externe, von der Community bereitgestellte Pakete zu verwenden, die nicht im Lieferumfang des Clusters enthalten sind. Sie können das [Maven Repository](http://search.maven.org/) nach einer vollständigen Liste der verfügbaren Pakete durchsuchen. Sie können die Liste der verfügbaren Pakete auch aus anderen Quellen abrufen. Beispielsweise steht eine vollständige Liste der von der Community bereitgestellten Pakete auf [Spark-Pakete](http://spark-packages.org/)zur Verfügung.
+Sie können das Zeppelin Notebook in einem Apache Spark-Cluster in HDInsight (Linux) konfigurieren, um externe, von der Community bereitgestellte Pakete zu verwenden, die nicht im Lieferumfang des Clusters enthalten sind. Sie können das [Maven Repository](https://search.maven.org/) nach einer vollständigen Liste der verfügbaren Pakete durchsuchen. Sie können die Liste der verfügbaren Pakete auch aus anderen Quellen abrufen. Beispielsweise steht eine vollständige Liste der von der Community bereitgestellten Pakete auf [Spark-Pakete](https://spark-packages.org/)zur Verfügung.
 
-In diesem Artikel wird beschrieben, wie Sie das Paket [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) mit Jupyter Notebook verwenden.
+In diesem Artikel wird beschrieben, wie Sie das Paket [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) mit Jupyter Notebook verwenden.
 
 1. Öffnen Sie die Einstellungen des Interpreters. Klicken Sie oben rechts auf den Namen des angemeldeten Benutzers, und klicken Sie dann auf **Interpreter**.
    
@@ -118,14 +116,14 @@ In diesem Artikel wird beschrieben, wie Sie das Paket [spark-csv](http://search.
 1. Scrollen Sie zu den Einstellungen des Livy-Interpreters, und klicken Sie dann auf **Bearbeiten**.
    
     ![Ändern der Interpreter-Einstellungen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Ändern der Interpreter-Einstellungen")
-1. Fügen Sie den neuen Schlüssel **livy.spark.jars.packages** hinzu, und legen Sie seinen Wert im Format `group:id:version` fest. Wenn Sie das Paket [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) verwenden möchten, müssen Sie den Wert des Schlüssels auf `com.databricks:spark-csv_2.10:1.4.0` festlegen.
+1. Fügen Sie den neuen Schlüssel **livy.spark.jars.packages** hinzu, und legen Sie seinen Wert im Format `group:id:version` fest. Wenn Sie das Paket [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) verwenden möchten, müssen Sie den Wert des Schlüssels auf `com.databricks:spark-csv_2.10:1.4.0` festlegen.
    
     ![Ändern der Interpreter-Einstellungen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Ändern der Interpreter-Einstellungen")
    
     Klicken Sie auf **Speichern**, und starten Sie dann den Livy-Interpreter neu.
 1. **Tipp**: Hier ist angegeben, wie Sie zum Wert des oben eingegebenen Schlüssels gelangen, falls dies für Sie interessant ist.
    
-    a. Suchen Sie das Paket im Maven-Repository. In diesem Tutorial haben wir [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) verwendet.
+    a. Suchen Sie das Paket im Maven-Repository. In diesem Tutorial haben wir [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) verwendet.
    
     b. Sammeln Sie im Repository die Werte für **GroupId**, **ArtifactId** und **Version**.
    

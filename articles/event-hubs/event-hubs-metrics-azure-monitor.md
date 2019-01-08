@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 27a9f2619801346660dfedbda3eefe57b41ad6ac
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 148071d71030638ddec4095ef2e33482327f3db3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094320"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537919"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Event Hubs-Metriken in Azure Monitor (Vorschauversion)
 
@@ -32,7 +32,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie die Operation Management Suite und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Von Azure Monitor gesammelte Überwachungsdaten](../azure-monitor/platform/data-collection.md).
 
-Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) in Azure Monitor konfiguriert.
+Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) in Azure Monitor konfiguriert.
 
 ## <a name="access-metrics-in-the-portal"></a>Zugreifen auf Metriken über das Portal
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9a32ac1ae71cb7bd89c4252157c3a5cd395b2694
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4a18e009f7defc8d41846b867f9b7a65d2b853dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842338"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993330"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Behandlung von Problemen mit laufenden VM-Replikationen mit Azure als Quelle und Ziel
 
@@ -78,8 +78,8 @@ Diese Option ist nur möglich, wenn die Datenänderungsrate weniger als 10 MB/s 
 
 #### <a name="network-latency-to-cache-storage-account-"></a>Netzwerklatenz im Cachespeicherkonto:
  Site Recovery sendet replizierte Daten an das Cachespeicherkonto. Das Problem kann auftreten, wenn die Daten vom virtuellen Computer langsamer als 4 MB/3 s in das Cachespeicherkonto hochgeladen werden. Verwenden Sie den Befehl [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) zum Hochladen von Daten vom virtuellen Computer in das Cachespeicherkonto, um zu überprüfen, ob ein Latenzproblem vorliegt.<br>
-Wenn die Latenz hoch ist, überprüfen Sie, ob Sie ein virtuelles Netzwerkgerät zum Steuern des ausgehenden Netzwerkdatenverkehrs von virtuellen Computern verwenden. Das virtuelle Netzwerkgerät wird möglicherweise gedrosselt, wenn der gesamte Replikationsdatenverkehr durch das virtuelle Netzwerkgerät läuft. Es wird empfohlen, einen Netzwerk-Dienstendpunkt in Ihrem virtuellen Netzwerk für „Storage“ zu erstellen, damit der Replikationsdatenverkehr nicht an die virtuelle Netzwerkappliance geleitet wird. Informationen dazu finden Sie unter [Konfiguration der virtuellen Netzwerkappliance](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
+Wenn die Latenz hoch ist, überprüfen Sie, ob Sie ein virtuelles Netzwerkgerät zum Steuern des ausgehenden Netzwerkdatenverkehrs von virtuellen Computern verwenden. Das virtuelle Netzwerkgerät wird möglicherweise gedrosselt, wenn der gesamte Replikationsdatenverkehr durch das virtuelle Netzwerkgerät läuft. Es wird empfohlen, einen Netzwerk-Dienstendpunkt in Ihrem virtuellen Netzwerk für „Storage“ zu erstellen, damit der Replikationsdatenverkehr nicht an die virtuelle Netzwerkappliance geleitet wird. Informationen dazu finden Sie unter [Konfiguration der virtuellen Netzwerkappliance](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
 
 #### <a name="network-connectivity"></a>Netzwerkverbindung
 Damit die Site Recovery-Replikation funktioniert, ist für die VM die ausgehende Konnektivität zu bestimmten URLs oder IP-Bereichen erforderlich. Wenn sich Ihr virtueller Computer hinter einer Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt.</br>
-Informationen zum Sicherstellen, dass alle URLs verbunden sind, finden Sie unter [Ausgehende Konnektivität für Site Recovery-URLs](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 
+Informationen zum Sicherstellen, dass alle URLs verbunden sind, finden Sie unter [Ausgehende Konnektivität für Site Recovery-URLs](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c35082d7aa1e9d669bc9c5b89948f190d3edd2f3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014530"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630159"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka und Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Erfahren Sie, wie Sie [strukturiertes](https://spark.apache.org/docs/latest/stru
 
 Strukturiertes Spark-Streaming ist eine auf Spark SQL basierende Stream-Verarbeitungs-Engine. Sie können damit Streamingberechnungen genauso wie Batchberechnung auf statischen Daten ausdrücken. Weitere Informationen zu strukturiertem Streaming finden Sie unter [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) (Programmierhandbuch zu strukturiertem Streaming) auf Apache.org.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > In diesem Beispiel wird Spark 2.2 auf HDInsight 3.6 verwendet.
 >
 > Mit den in diesem Dokument beschriebenen Schritten wird eine Azure-Ressourcengruppe erstellt, die jeweils einen Spark- und einen Kafka-Cluster in HDInsight beinhaltet. Die Cluster befinden sich innerhalb eines virtuellen Azure-Netzwerks, wodurch Spark- und Kafka-Cluster direkt miteinander kommunizieren können.
@@ -37,7 +37,7 @@ Apache Kafka in HDInsight ermöglicht keinen Zugriff auf die Kafka-Broker über 
 
 ![Diagramm der Spark- und Kafka-Cluster in einem virtuellen Azure-Netzwerk](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Der Kafka-Dienst ist auf die Kommunikation innerhalb des virtuellen Netzwerks beschränkt. Auf andere Dienste auf dem Cluster, wie z.B. SSH und Ambari, kann über das Internet zugegriffen werden. Weitere Informationen zu den öffentlichen Ports, die für HDInsight verfügbar sind, finden Sie unter [Von HDInsight verwendete Ports und URIs](hdinsight-hadoop-port-settings-for-services.md).
 
 Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und einen Spark-Cluster manuell zu erstellen, aber mit einer Azure Resource Manager-Vorlage ist dies erheblich einfacher. Führen Sie die folgenden Schritte aus, um ein virtuelles Azure-Netzwerk, Kafka- und Spark-Cluster für Ihr Azure-Abonnement bereitzustellen.
@@ -58,12 +58,12 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
     * Ein Azure Virtual Network, das die HDInsight-Cluster enthält.
 
-        > [!NOTE]
+        > [!NOTE]  
         > Das von der Vorlage erstellte virtuelle Netzwerk verwendet den 10.0.0.0/16-Adressraum.
 
     * Eine Azure Cosmos DB-SQL-API-Datenbank.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Das in diesem Beispiel für strukturiertes Streaming verwendete Notebook benötigt Spark auf HDInsight 3.6. Bei Verwendung einer früheren Version von Spark auf HDInsight erhalten Sie Fehlermeldungen, wenn Sie das Notebook verwenden.
 
 2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
@@ -82,7 +82,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
     * **Clusterversion**: Die HDInsight-Clusterversion.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Dieses Beispiel wird mit HDInsight 3.6 getestet und funktioniert möglicherweise nicht mit anderen Clustern.
 
     * **Benutzername für Clusteranmeldung**: Der Administratorbenutzername für die Spark- und Kafka-Cluster.
@@ -97,7 +97,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
 4. Wählen Sie abschließend **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Das Erstellen des Clusters, des virtuellen Netzwerks und des Cosmos DB-Kontos kann bis zu 45 Minuten dauern.
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>Erstellen der Cosmos DB-Datenbank und -Sammlung
@@ -140,7 +140,7 @@ Dokumentendpunkt und Primärschlüsselinformationen entsprechen folgendem Text:
 "YqPXw3RP7TsJoBF5imkYR0QNA02IrreNAlkrUMkL8EW94YHs41bktBhIgWq4pqj6HCGYijQKMRkCTsSaKUO2pw=="
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Speichern Sie den Endpunkt und die Schlüsselwerte, da sie in den Jupyter Notebooks benötigt werden.
 
 ## <a name="get-the-apache-kafka-brokers"></a>Abrufen der Apache Kafka-Broker
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Das Bashbeispiel erwartet, dass `$CLUSTERNAME` den Namen des Kafka-Clusters enthält.
 >
 > Dieses Beispiel verwendet das [jq](https://stedolan.github.io/jq/)-Hilfsprogramm, um Daten aus dem JSON-Dokument zu analysieren.

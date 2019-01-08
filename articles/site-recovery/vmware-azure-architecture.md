@@ -3,15 +3,16 @@ title: Architektur der VMware-zu-Azure-Notfallwiederherstellung in Azure Site Re
 description: Dieser Artikel enthält eine Übersicht über die Komponenten und Architektur, die beim Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 962ced808f97dd1fea3805fa8c953e6d7563cd17
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1c47f9d511cd6461ef5a31f308669eba751d1de4
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871743"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976000"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von VMware zu Azure
 
@@ -76,8 +77,8 @@ Nachdem die Replikation eingerichtet ist und Sie einen Notfallwiederherstellungs
     * **Failbackrichtlinie**: Für die Replikation zurück an den lokalen Standort benötigen Sie eine Failbackrichtlinie. Diese Richtlinie wird automatisch erstellt, wenn Sie eine Replikationsrichtlinie aus lokalen VMs in Azure erstellen.
 4. Nachdem die Komponenten vorhanden sind, erfolgt das Failback in drei Phasen:
 
-    - Phase 1: Schützen Sie die Azure VMs erneut, sodass Sie die Replikation von Azure zurück zu den lokalen VMware-VMs durchführen.
-    -  Phase 2: Führen Sie einen Failover zum lokalen Standort aus.
+    - Phase 1: Schützen Sie die Azure-VMs erneut, sodass sie die Replikation von Azure zurück zu den lokalen VMware-VMs durchführen.
+    -  Phase 2: Führen Sie ein Failover zum lokalen Standort aus.
     - Phase 3: Nachdem für Workloads ein Failback ausgeführt wurde, aktivieren Sie erneut die Replikation für die lokalen VMs.
     
  

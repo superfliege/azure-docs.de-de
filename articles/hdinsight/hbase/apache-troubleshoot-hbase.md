@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: b39c01e76ba3ec21f0cd2d16b86da5664e1d5002
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014667"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651604"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Problembehandlung bei Apache HBase mit Azure HDInsight
 
@@ -314,7 +314,7 @@ Möglicherweise wird eine Meldung im Linux-Cluster angezeigt, in der darauf hing
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 
-[HBase-Tabelle kann nicht verarbeitet werden](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[HBase-Tabelle kann nicht verarbeitet werden](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Error

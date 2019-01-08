@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: billgib
+ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: ec3f286791a3a2c7a3bebd84ba17a11571e389f8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163972"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608901"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Indiziertes und kommentiertes Video für mehrinstanzenfähige SaaS-App mit Azure SQL-Datenbank
 
 Dieser Artikel ist ein kommentierter Index zu den Zeitpunkten eines 81-minütigen Videos über SaaS-Mandantenmodelle oder -muster. Durch diesen Artikel können Sie im Video direkt zu dem Teil wechseln, der Sie interessiert. Das Video erklärt die wichtigsten Designoptionen für eine mehrinstanzenfähige Datenbankanwendung unter Azure SQL-Datenbank. Das Video enthält Demos, exemplarische Vorgehensweisen zu Verwaltungscode und zuweilen mehr Details, die durch Erfahrungen geprägt werden, als in unserer schriftlichen Dokumentation.
 
 Das Video ergänzt die Informationen in unserer schriftlichen Dokumentation, die Sie hier finden: 
-- *Konzeptionell:* [Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken][saas-concept-design-patterns-563e]
+- *Konzeptionell:* Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken[saas-concept-design-patterns-563e]
 - *Tutorials:* [Die Wingtip Tickets SaaS-Anwendung][saas-how-welcome-wingtip-app-679t]
 
 Das Video und die Artikel beschreiben die vielen Phasen der Erstellung einer mehrinstanzenfähigen Anwendung unter Azure SQL-Datenbank in der Cloud. Spezielle Features von Azure SQL-Datenbank erleichtern die Entwicklung und Implementierung mehrinstanzenfähiger Anwendungen, die einfacher zu verwalten und zuverlässig leistungsfähig sind.
@@ -294,7 +294,7 @@ Wenn Sie auf einen Screenshot klicken, gelangen Sie zur genauen zeitlichen Posit
 
 - [Blogbeitrag, 22. Mai 2017][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- *Konzeptionell:* [Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken][saas-concept-design-patterns-563e]
+- *Konzeptionell:* Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken[saas-concept-design-patterns-563e]
 
 - *Tutorials:* [Die Wingtip Tickets SaaS-Anwendung][saas-how-welcome-wingtip-app-679t]
 

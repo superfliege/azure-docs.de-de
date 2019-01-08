@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e3fb703d49b97b7e8fa4136f8cd49fed20ee12a9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877183"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720715"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Verteilte Transaktionen über Clouddatenbanken
 Mithilfe elastischer Datenbanktransaktionen für Azure SQL-Datenbank (SQL-DB) können Sie übergreifende Transaktionen für mehrere Datenbanken in SQL-DB ausführen. Elastische Datenbanktransaktionen für SQL-DB stehen für .NET-Anwendungen über ADO.NET zur Verfügung und lassen sich mithilfe der Klassen vom Typ [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) in die vertraute Programmierumgebung integrieren. Informationen zum Abrufen der Bibliothek finden Sie unter [.NET Framework 4.6.1 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -92,7 +92,7 @@ Elastische Datenbanktransaktionen für SQL-DB unterstützen auch die Koordinieru
 
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Installation von .NET für Azure Cloud Services
-Azure stellt verschiedene Angebote zum Hosten von .NET-Anwendungen bereit. Einen Vergleich der verschiedenen Angebote finden Sie unter [Azure App Service, Cloud Services und Virtual Machines im Vergleich](../app-service/choose-web-site-cloud-service-vm.md). Wenn das Gastbetriebssystem des Angebots älter als .NET 4.6.1 ist (das für elastische Transaktionen erforderlich ist), müssen Sie das Gastbetriebssystem auf 4.6.1 aktualisieren. 
+Azure stellt verschiedene Angebote zum Hosten von .NET-Anwendungen bereit. Einen Vergleich der verschiedenen Angebote finden Sie unter [Azure App Service, Cloud Services und Virtual Machines im Vergleich](../app-service/overview-compare.md). Wenn das Gastbetriebssystem des Angebots älter als .NET 4.6.1 ist (das für elastische Transaktionen erforderlich ist), müssen Sie das Gastbetriebssystem auf 4.6.1 aktualisieren. 
 
 Für Azure App Services werden Upgrades des Gastbetriebssystems derzeit nicht unterstützt. Melden Sie sich für Azure Virtual Machines einfach auf dem virtuellen Computer an, und führen Sie das Installationsprogramm für das neueste .NET Framework aus. Für Azure Cloud Services müssen Sie die Installation einer neueren Version von .NET in die Startaufgaben der Bereitstellung einschließen. Informationen zu den Konzepten und Schritten finden Sie unter [Installieren von .NET in einer Clouddienstrolle](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 

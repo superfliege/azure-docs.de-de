@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 27523a3746e3afe649df3fcf78975b501a922ff8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957298"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994435"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie im [Überblick über Metriken in Microsoft Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 93 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) in Azure Monitor konfiguriert.
+Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 93 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../../azure-monitor/platform/diagnostic-logs-overview.md) in Azure Monitor konfiguriert.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Zugreifen auf Metriken über das Azure-Portal
 
@@ -332,14 +332,14 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-| UsedCapacity | Die vom Speicherkonto beanspruchte Speichermenge. Bei Standardspeicherkonten ist das die Summe der von Blob, Table, File und Queue beanspruchten Kapazität. Bei Storage Premium- und Blob Storage-Konten ist es der gleiche Wert wie für „BlobCapacity“. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Beispielwert: 1024 |
+| UsedCapacity | Die vom Speicherkonto beanspruchte Speichermenge. Bei Standardspeicherkonten ist das die Summe der von Blob, Table, File und Queue beanspruchten Kapazität. Bei Storage Premium- und Blob Storage-Konten ist es der gleiche Wert wie für „BlobCapacity“. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-| BlobCapacity | Der gesamte im Speicherkonto beanspruchte Blobspeicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
-| BlobCount    | Die Anzahl von im Speicherkonto gespeicherten Blobs. <br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
+| BlobCapacity | Der gesamte im Speicherkonto beanspruchte Blobspeicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
+| BlobCount    | Die Anzahl von im Speicherkonto gespeicherten Blobs. <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
 | ContainerCount    | Die Anzahl von Containern im Speicherkonto. <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
 
 ### <a name="table-storage"></a>Table Storage
@@ -391,7 +391,7 @@ Azure Storage unterstützt folgende Dimensionen für Metriken in Azure Monitor:
 | ResponseType | Transaktionsantworttyp. Verfügbaren Werte: <br/><br/> <li>ServerOtherError: Alle weiteren serverseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li> ServerBusyError: Authentifizierte Anforderung, die den HTTP-Statuscode 503 zurückgegeben hat. </li> <li> ServerTimeoutError: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Das Timeout ist auf einen Serverfehler zurückzuführen. </li> <li> AuthorizationError: Authentifizierte Anforderung, die aufgrund eines nicht autorisierten Datenzugriffs oder aufgrund eines Autorisierungsfehlers nicht erfolgreich war. </li> <li> NetworkError: Authentifizierte Anforderung, die aufgrund von Netzwerkfehlern nicht erfolgreich war. Tritt üblicherweise auf, wenn ein Client vor Ablauf des Timeouts vorzeitig eine Verbindung trennt. </li> <li>    ClientThrottlingError: Clientseitiger Drosselungsfehler. </li> <li> ClientTimeoutError: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Wenn das Netzwerktimeout des Clients oder das Anforderungstimeout auf einen niedrigeren Wert festgelegt ist als vom Speicherdienst erwartet, handelt es sich um ein erwartetes Timeout. Andernfalls wird „ServerTimeoutError“ gemeldet. </li> <li> ClientOtherError: Alle weiteren clientseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li> Success: Erfolgreiche Anforderung.|
 | GeoType | Transaktion aus dem primären oder sekundären Cluster. Verfügbare Werte: „Primary“ und „Secondary“. Gilt für georedundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) beim Lesen von Objekten aus dem sekundären Mandanten. |
 | ApiName | Der Name des Vorgangs. Beispiel:  <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Eine Liste mit allen Vorgangsnamen finden Sie [hier](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
-| Authentifizierung | Der in Transaktionen verwendete Authentifizierungstyp. Verfügbaren Werte: <br/> <li>AccountKey: Die Transaktion wird mit dem Speicherkontoschlüssel authentifiziert.</li> <li>SAS: Die Transaktion wird mit Shared Access Signatures authentifiziert.</li> <li>OAuth: Die Transaktion wird mit OAuth-Zugriffstoken authentifiziert.</li> <li>Anonymous: Die Transaktion wird anonym angefordert. Sie enthält keine Preflightanforderungen.</li> <li>AnonymousPreflight: Die Transaktion ist eine Preflightanforderung.</li> |
+| Authentifizierung | Der in Transaktionen verwendete Authentifizierungstyp. Verfügbaren Werte: <br/> <li>AccountKey: Die Transaktion wird mit dem Speicherkontoschlüssel authentifiziert.</li> <li>SAS: Die Transaktion wird mit Shared Access Signatures authentifiziert.</li> <li>OAuth: Die Transaktion wird mit OAuth-Zugriffstoken authentifiziert.</li> <li>Anonymous: Die Transaktion wird anonym angefordert. Sie enthält keine Preflight-Anforderungen.</li> <li>AnonymousPreflight: Die Transaktion ist eine Preflightanforderung.</li> |
 
 Bei Metriken mit Dimensionsunterstützung muss der Dimensionswert angegeben werden, um die entsprechenden Metrikwerte anzeigen zu können. Wenn Sie sich also beispielsweise erfolgreiche Antworten für **Transaktionen** ansehen möchten, müssen Sie die Dimension **ResponseType** nach **Success** filtern. Anderes Beispiel: Wenn Sie sich **BlobCount** für „Blockblob“ ansehen möchten, müssen Sie die Dimension **BlobType** nach **BlockBlob** filtern.
 

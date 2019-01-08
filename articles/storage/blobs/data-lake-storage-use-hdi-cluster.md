@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: b9f7a1144be21b425ff0bed9e2e6cb47315c13a2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0b171c7ed13eab84d84bb797e154a3acec8fbac7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976317"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633675"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 Preview mit Azure HDInsight-Clustern
 
@@ -63,7 +63,7 @@ Der Leistungsaufwand, der damit verbunden ist, dass die Computecluster und Speic
 
 Die Speicherung von Daten im Azure-Speicher anstatt im HDFS hat mehrere Vorteile:
 
-* **Datenfreigabe und -wiederverwendung:** Die Daten im HDFS befinden sich innerhalb des Computeclusters. Nur die Anwendungen, die Zugriff auf den Rechencluster haben, können die Daten über die HDFS-API verwenden. Auf die Dateien im Azure-Speicher kann entweder über die HDFS-APIs oder über die [Blob Storage-REST-APIs][blob-storage-restAPI] zugegriffen werden. Somit kann eine größere Menge von Anwendungen (darunter andere HDInsight-Cluster) und Tools verwendet werden, um die Daten zu produzieren und abzurufen.
+* **Datenwiederverwendung und -freigabe:** Die Daten im HDFS befinden sich innerhalb des Computeclusters. Nur die Anwendungen, die Zugriff auf den Rechencluster haben, können die Daten über die HDFS-API verwenden. Auf die Dateien im Azure-Speicher kann entweder über die HDFS-APIs oder über die [Blob Storage-REST-APIs][blob-storage-restAPI] zugegriffen werden. Somit kann eine größere Menge von Anwendungen (darunter andere HDInsight-Cluster) und Tools verwendet werden, um die Daten zu produzieren und abzurufen.
 
 * **Datenarchivierung:** Die Speicherung von Daten im Azure-Speicher sorgt dafür, dass die HDInsight-Cluster, die für Berechnungen verwendet werden, sicher gelöscht werden können, ohne Benutzerdaten zu verlieren.
 
@@ -101,35 +101,39 @@ Beim Erstellen eines HDInsight-Clusters über das Portal können Sie Optionen zu
 
 ### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Nach dem [Installieren und Konfigurieren von Azure PowerShell][powershell-install] können Sie ein Speicherkonto und einen Container mit dem folgenden Code an der Azure PowerShell-Eingabeaufforderung erstellen:
 
 [!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
 
-    $SubscriptionID = "<Your Azure Subscription ID>"
-    $ResourceGroupName = "<New Azure Resource Group Name>"
-    $Location = "WEST US 2"
+```azurepowershell
+$SubscriptionID = "<Your Azure Subscription ID>"
+$ResourceGroupName = "<New Azure Resource Group Name>"
+$Location = "WEST US 2"
 
-    $StorageAccountName = "<New Azure Storage Account Name>"
-    $containerName = "<New Azure Blob Container Name>"
+$StorageAccountName = "<New Azure Storage Account Name>"
+$containerName = "<New Azure Blob Container Name>"
 
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId $SubscriptionID
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId $SubscriptionID
 
-    # Create resource group
-    New-AzureRmResourceGroup -name $ResourceGroupName -Location $Location
+# Create resource group
+New-AzResourceGroup -name $ResourceGroupName -Location $Location
 
-    # Create default storage account
-    New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName `
-      -Name StorageAccountName `
-      -Location $Location `
-      -SkuName Standard_LRS `
-      -Kind StorageV2 
-      -HierarchialNamespace $True
+# Create default storage account
+New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
+  -Name StorageAccountName `
+  -Location $Location `
+  -SkuName Standard_LRS `
+  -Kind StorageV2 
+  -HierarchialNamespace $True
 
-    # Create default blob containers
-    $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $StorageAccountName)[0].Value
-    $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-    New-AzureStorageContainer -Name $containerName -Context $destContext
+# Create default blob containers
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $StorageAccountName)[0].Value
+$destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
+New-AzStorageContainer -Name $containerName -Context $destContext
+```
 
 > [!NOTE]
 > Das Erstellen eines Containers ist gleichbedeutend mit dem Erstellen eines Dateisystems in Data Lake Storage Gen2.
@@ -209,7 +213,7 @@ Weitere Informationen finden Sie unter
 * [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage Gen2 mit Hadoop, Spark, Kafka und anderen](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [Erfassen von Daten in Azure Data Lake Storage Gen2 mit DistCp](data-lake-storage-use-distcp.md)
 
-[powershell-install]: /powershell/azureps-cmdlets-docs
+[powershell-install]: /powershell/azure/install-az-ps
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md
 
 [blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx
