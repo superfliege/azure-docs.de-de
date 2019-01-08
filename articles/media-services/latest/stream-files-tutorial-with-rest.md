@@ -1,6 +1,6 @@
 ---
-title: 'Hochladen, Codieren und Streamen mit Azure Media Services: REST | Microsoft-Dokumentation'
-description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren und Ihre Inhalte mit Azure Media Services unter Verwendung von REST zu streamen.
+title: Codieren einer Remotedatei anhand einer URL und Streamen mit Azure Media Services über REST | Microsoft-Dokumentation
+description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei anhand einer URL zu codieren und Ihre Inhalte mit Azure Media Services über REST zu streamen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 12/19/2018
 ms.author: juliako
-ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cd020566b61dac7da37b24f10eebfc69b19073cb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615771"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720950"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mit REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST
 
 Azure Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie unter [Codierungskonzept](encoding-concept.md).
 
-In diesem Tutorial erfahren Sie, wie Videodateien mit Azure Media Services und REST hochgeladen, codiert und gestreamt werden. 
+In diesem Tutorial wird gezeigt, wie Sie eine Datei anhand einer URL codieren und das Video mit Azure Media Services über REST streamen können. 
 
 ![Video abspielen](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,9 +42,9 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Installieren und verwenden Sie die Befehlszeilenschnittelle lokal. Dieser Artikel erfordert mindestens die Azure CLI-Version 2.0. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+- Installieren und verwenden Sie die CLI lokal. Dieser Artikel erfordert mindestens Version 2.0 der Azure CLI. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
-    Derzeit funktionieren nicht alle Befehle der [Befehlszeilenschnittstelle von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die Befehlszeilenschnittstelle lokal zu verwenden.
+    Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
 
 - [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
 
@@ -52,7 +52,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 - Installieren Sie den REST-Client von [Postman](https://www.getpostman.com/), um die REST-APIs auszuführen, die in einigen der AMS REST-Tutorials gezeigt werden. 
 
-    Wir verwenden **Postman**, aber jedes REST-Tool wäre geeignet. Andere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
+    Wir verwenden **Postman**, aber jedes REST-Tool wäre geeignet. Weitere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Herunterladen von Postman-Dateien
 
@@ -174,7 +174,7 @@ Sie können ein integriertes EncoderNamedPreset-Objekt oder benutzerdefinierte V
         ```json
         {
             "properties": {
-                "description": "Basic Transform using an Adaptive Streaming encoding preset from the libray of built-in Standard Encoder presets",
+                "description": "Standard Transform using an Adaptive Streaming encoding preset from the library of built-in Standard Encoder presets",
                 "outputs": [
                     {
                     "onError": "StopProcessingJob",
@@ -228,7 +228,7 @@ In diesem Beispiel basiert die Eingabe des Auftrags auf einer HTTPS-URL (https:/
 
 Der Abschluss des Auftrags nimmt einige Zeit in Anspruch. Wenn er erfolgt ist, möchten Sie benachrichtigt werden. Zum Anzeigen des Auftragsfortschritts empfehlen wir Event Grid. Event Grid ist für hohe Verfügbarkeit, konsistente Leistung und dynamische Skalierung konzipiert. Mit Event Grid können Ihre Apps Ereignisse aus praktisch allen Azure-Diensten sowie aus benutzerdefinierten Quellen überwachen und darauf reagieren. Eine einfache, HTTP-basierte, reaktive Ereignisverarbeitung hilft Ihnen mit intelligentem Filtern und Routing von Ereignissen dabei, effiziente Lösungen zu erstellen.  Weitere Informationen finden Sie unter [Routing von Ereignissen an einen benutzerdefinierten Webendpunkt](job-state-events-cli-how-to.md).
 
-Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, **In der Warteschlange**, **Verarbeitung** und **Abgeschlossen** (der letzte Zustand). Wenn für den Auftrag ein Fehler aufgetreten ist, erhalten Sie den Zustand **Fehler**. Wenn der Auftrag aktuell abgebrochen wird, erhalten Sie **Abbrechen** und **Abgebrochen**, wenn dies geschehen ist.
+Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, **In Warteschlange**, **Wird verarbeitet**, **Abgeschlossen** (Endzustand). Wenn für den Auftrag ein Fehler aufgetreten ist, erhalten Sie den Zustand **Fehler**. Wenn der Auftrag aktuell abgebrochen wird, erhalten Sie **Abbrechen** und **Abgebrochen**, wenn dies geschehen ist.
 
 ### <a name="create-a-streaming-locator"></a>Erstellen Sie eines Streaminglocators
 

@@ -3,35 +3,34 @@ title: Tutorial zu Kubernetes in Azure – Skalieren von Anwendungen
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie Knoten und Pods im Kubernetes skaliert und die horizontale automatische Pod-Skalierung implementiert werden.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e2ba61ada16c922dc89d9d6c9aa6a0fce8b0941
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8d07c87a1849a25738c433b7a4c2753b51661947
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414178"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722718"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Skalieren von Anwendungen in Azure Kubernetes Service (AKS)
 
-Wenn Sie die Tutorials durchgearbeitet haben, verfügen Sie über einen funktionsfähigen Kubernetes-Cluster in AKS und haben die Azure Voting App bereitgestellt. In diesem Tutorial – Teil 5 von 7 – skalieren Sie die Pods in der App horizontal hoch und testen das Feature der automatischen Skalierung von Pods. Sie erfahren auch, wie Sie die Anzahl von Azure-VM-Knoten skalieren, um die Clusterkapazität für das Hosten von Workloads zu ändern. Folgendes wird vermittelt:
+Wenn Sie die Tutorials durchgearbeitet haben, verfügen Sie über einen funktionsfähigen Kubernetes-Cluster in AKS und haben die Azure Voting-Beispiel-App bereitgestellt. In diesem Tutorial – Teil 5 von 7 – skalieren Sie die Pods in der App horizontal hoch und testen das Feature der automatischen Skalierung von Pods. Sie erfahren auch, wie Sie die Anzahl von Azure-VM-Knoten skalieren, um die Clusterkapazität für das Hosten von Workloads zu ändern. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Skalieren der Kubernetes-Knoten
 > * Manuelles Skalieren von Kubernetes-Pods, die Ihre Anwendung ausführen
 > * Konfigurieren der automatischen Skalierung von Pods, die das App-Front-End ausführen
 
-In den nachfolgenden Tutorials wird die Anwendung Azure Vote auf eine neue Version aktualisiert.
+In den wieteren Tutorials wird die Anwendung Azure Vote auf eine neue Version aktualisiert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, dieses Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
+In vorherigen Tutorials wurde eine Anwendung als Containerimage verpackt. Dieses Image wurde in Azure Container Registry hochgeladen, und Sie haben einen AKS-Cluster erstellt. Die Anwendung wurde dann für den AKS-Cluster bereitgestellt. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen von Containerimages][aks-tutorial-prepare-app] beginnen.
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.38 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
 ## <a name="manually-scale-pods"></a>Manuelles Skalieren von Pods
 
@@ -55,7 +54,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Führen Sie [kubectl get pods][kubectl-get] erneut aus, um sicherzustellen, dass Kubernetes die zusätzlichen Pods erstellt. Nach ca. einer Minute sind die zusätzlichen Pods in Ihrem Cluster verfügbar:
+Führen Sie [kubectl get pods][kubectl-get] erneut aus, um sicherzustellen, dass AKS die zusätzlichen Pods erstellt. Nach ca. einer Minute sind die zusätzlichen Pods in Ihrem Cluster verfügbar:
 
 ```console
 $ kubectl get pods
@@ -77,14 +76,14 @@ Kubernetes unterstützt [die automatische horizontale Skalierung von Pods][kuber
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-Installieren Sie den Metrics Server, wenn Ihr AKS-Cluster eine ältere Version als *1.10* aufweist. Andernfalls können Sie diesen Schritt überspringen. Klonen Sie das GitHub-Repository `metrics-server`, und installieren Sie die Beispiele für Ressourcendefinitionen. Informationen zum Anzeigen des Inhalts dieser YAML-Definitionen finden Sie unter [Metrics Server for Kubernetes 1.8+][metrics-server-github] (Metrikserver für Kubernetes 1.8+).
+Installieren Sie den Metrics Server, wenn Ihr AKS-Cluster eine ältere Version als *1.10* aufweist. Andernfalls können Sie diesen Schritt überspringen. Um die Installation auszuführen, klonen Sie das GitHub-Repository `metrics-server`, und installieren Sie die Beispiele für Ressourcendefinitionen. Informationen zum Anzeigen des Inhalts dieser YAML-Definitionen finden Sie unter [Metrics Server for Kubernetes 1.8+][metrics-server-github] (Metrikserver für Kubernetes 1.8+).
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-Um die automatische Skalierungsfunktion zu verwenden, müssen CPU-Anforderungen und -Grenzwerte Ihrer Pods definiert sein. In der `azure-vote-front`-Bereitstellung fordert der Front-End-Container 0,25 CPUs an, und es gilt ein Grenzwert von 0,5 CPUs. Die Einstellungen sehen folgendermaßen aus:
+Um die automatische Skalierungsfunktion zu verwenden, müssen CPU-Anforderungen und -Grenzwerte Ihrer Pods definiert sein. In der `azure-vote-front`-Bereitstellung fordert der Front-End-Container bereits 0,25 CPU an, und es gilt ein Grenzwert von 0,5 CPU. Diese Ressourcenanforderungen und -grenzwerte sind so definiert, wie im folgenden Beispielcodeausschnitt gezeigt:
 
 ```yaml
 resources:
@@ -94,7 +93,7 @@ resources:
      cpu: 500m
 ```
 
-Das folgende Beispiel verwendet den Befehl [kubectl autoscale][kubectl-autoscale], um die Anzahl von Pods in der Bereitstellung *azure-vote-front* automatisch zu skalieren. Wenn die CPU-Nutzung 50% übersteigt, erhöht die automatische Skalierungsfunktion die Anzahl von Pods auf maximal 10 Instanzen:
+Das folgende Beispiel verwendet den Befehl [kubectl autoscale][kubectl-autoscale], um die Anzahl von Pods in der Bereitstellung *azure-vote-front* automatisch zu skalieren. Wenn die CPU-Nutzung 50% übersteigt, erhöht die automatische Skalierungsfunktion die Anzahl von Pods auf maximal *10* Instanzen. Mindestens *3* Instanzen werden dann für die Bereitstellung festgelegt:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -121,7 +120,7 @@ Im folgenden Beispiel wird die Anzahl von Knoten im Kubernetes-Cluster *myAKSClu
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
-Die Ausgabe sieht in etwa wie folgt aus:
+Wenn der Cluster erfolgreich skaliert wurde, sieht die Ausgabe so wie im folgenden Beispiel aus:
 
 ```
 "agentPoolProfiles": [
@@ -144,9 +143,9 @@ Die Ausgabe sieht in etwa wie folgt aus:
 In diesem Tutorial haben Sie verschiedene Skalierungsfunktionen in Ihrem Kubernetes-Cluster verwendet. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
-> * Skalieren der Kubernetes-Knoten
 > * Manuelles Skalieren von Kubernetes-Pods, die Ihre Anwendung ausführen
 > * Konfigurieren der automatischen Skalierung von Pods, die das App-Front-End ausführen
+> * Manuelles Skalieren der Kubernetes-Knoten
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Anwendungen in Kubernetes aktualisiert werden.
 

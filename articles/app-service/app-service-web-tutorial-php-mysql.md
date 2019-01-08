@@ -15,20 +15,20 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a20373e43780cea10e550ae968deb2a8720b9a9f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d26f51d05ef97e15c47183e87f44aecec247723c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251673"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722327"
 ---
-# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer PHP- und MySQL-Web-App in Azure
+# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Tutorial: Erstellen einer PHP- und MySQL-App in Azure
 
 > [!NOTE]
-> In diesem Artikel wird eine App in App Service unter Windows bereitgestellt. Informationen zur Bereitstellung in App Service unter _Linux_ finden Sie unter [Erstellen einer PHP- und MySQL-Web-App in Azure](./containers/tutorial-php-mysql-app.md).
+> In diesem Artikel wird eine App in App Service unter Windows bereitgestellt. Informationen zur Bereitstellung in App Service unter _Linux_ finden Sie unter [Erstellen einer PHP- und MySQL-App in Azure App Service unter Linux](./containers/tutorial-php-mysql-app.md).
 >
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. In diesem Tutorial wird gezeigt, wie Sie eine PHP-Web-App in Azure erstellen und mit einer MySQL-Datenbank verbinden. Wenn Sie fertig sind, verfügen Sie über eine [Laravel](https://laravel.com/)-App, die in Azure App Service-Web-Apps ausgeführt wird.
+Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Tutorial wird gezeigt, wie Sie eine PHP-App in Azure erstellen und mit einer MySQL-Datenbank verbinden. Wenn Sie fertig sind, verfügen Sie über eine [Laravel](https://laravel.com/)-App, die in Azure App Service ausgeführt wird.
 
 ![In Azure App Service ausgeführte PHP-App](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -206,7 +206,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 ```
 
 > [!TIP] 
-> Sie können Ihre Firewallregel auch noch restriktiver gestalten und [nur die ausgehenden IP-Adressen verwenden, die Ihre App verwendet](app-service-ip-addresses.md#find-outbound-ips).
+> Sie können Ihre Firewallregel auch noch restriktiver gestalten und [nur die ausgehenden IP-Adressen verwenden, die Ihre App verwendet](overview-inbound-outbound-ips.md#find-outbound-ips).
 >
 
 Führen Sie den Befehl in Cloud Shell erneut aus, um den Zugriff vom lokalen Computer zuzulassen. Ersetzen Sie dabei *\<your_ip_address>* durch [Ihre lokale IPv4-IP-Adresse](http://www.whatsmyip.org/).
@@ -384,17 +384,17 @@ Verwenden Sie im lokalen Terminalfenster `php artisan`, um einen neuen Anwendung
 php artisan key:generate --show
 ```
 
-Legen Sie in Cloud Shell mit dem Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) den Anwendungsschlüssel in der App Service-Web-App fest. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;outputofphpartisankey:generate>_.
+Legen Sie in Cloud Shell mit dem Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) den Anwendungsschlüssel in der App Service-App fest. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;outputofphpartisankey:generate>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"` weist Laravel an, Debuginformationen zurückzugeben, wenn die bereitgestellte Web-App Fehler feststellt. Legen Sie beim Ausführen einer Produktionsanwendung `false` fest, weil dies sicherer ist.
+`APP_DEBUG="true"` weist Laravel an, Debuginformationen zurückzugeben, wenn die bereitgestellte App Fehler feststellt. Legen Sie beim Ausführen einer Produktionsanwendung `false` fest, weil dies sicherer ist.
 
 ### <a name="set-the-virtual-application-path"></a>Festlegen des virtuellen Anwendungspfads
 
-Legen Sie den virtuellen Anwendungspfad für die Web-App fest. Dieser Schritt ist nur erforderlich, da der [Lebenszyklus der Laravel-Anwendung](https://laravel.com/docs/5.4/lifecycle) im _öffentlichen_ Verzeichnis anstatt im Stammverzeichnis der Anwendung beginnt. Andere PHP-Frameworks, deren Lebenszyklus im Stammverzeichnis startet, können ohne manuelle Konfiguration des virtuellen Anwendungspfads ausgeführt werden.
+Legen Sie den virtuellen Anwendungspfad für die App fest. Dieser Schritt ist nur erforderlich, da der [Lebenszyklus der Laravel-Anwendung](https://laravel.com/docs/5.4/lifecycle) im _öffentlichen_ Verzeichnis anstatt im Stammverzeichnis der Anwendung beginnt. Andere PHP-Frameworks, deren Lebenszyklus im Stammverzeichnis startet, können ohne manuelle Konfiguration des virtuellen Anwendungspfads ausgeführt werden.
 
 Legen Sie in Cloud Shell mit dem Befehl [`az resource update`](/cli/azure/resource#az-resource-update) den virtuellen Anwendungspfad fest. Ersetzen Sie den Platzhalter _&lt;appname>_.
 
@@ -433,7 +433,7 @@ remote: Running deployment command...
 > Mit diesem Ansatz können Sie der Git-basierten Bereitstellung in App Service beliebige Schritte hinzufügen. Weitere Informationen finden Sie unter [Custom Deployment Script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) (Benutzerdefiniertes Bereitstellungsskript).
 >
 
-### <a name="browse-to-the-azure-web-app"></a>Navigieren Sie zur Azure-Web-App.
+### <a name="browse-to-the-azure-app"></a>Navigieren zur Azure-App
 
 Browsen Sie zu `http://<app_name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
 
@@ -577,7 +577,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-Web-App, und testen Sie die neuen Funktionen.
+Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-App, und testen Sie die neuen Funktionen.
 
 ![Auf Azure veröffentlichte Änderungen an Modell und Datenbank](media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -593,7 +593,7 @@ Verwenden Sie zum Starten des Streamings von Protokolldateien den Befehl [`az we
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-Web-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
+Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
 
 Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
 
@@ -604,15 +604,15 @@ Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
 >
 >
 
-## <a name="manage-the-azure-web-app"></a>Verwalten der Azure-Web-App
+## <a name="manage-the-azure-app"></a>Verwalten der Azure-App
 
-Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die erstellte Web-App zu verwalten.
+Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die erstellte App zu verwalten.
 
-Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
+Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-App.
 
-![Portalnavigation zur Azure-Web-App](./media/app-service-web-tutorial-php-mysql/access-portal.png)
+![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 
-Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Beenden, Starten, Neustarten, Durchsuchen und Löschen durchführen.
+Die Übersichtsseite Ihrer App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Beenden, Starten, Neustarten, Durchsuchen und Löschen durchführen.
 
 Im linken Menü werden Seiten für die Konfiguration Ihrer App angezeigt.
 
@@ -634,7 +634,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Streamen von Diagnoseprotokollen aus Azure
 > * Verwalten der App im Azure-Portal
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie einer Web-App einen benutzerdefinierten DNS-Namen zuordnen.
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie der App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"]
-> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md)
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md)

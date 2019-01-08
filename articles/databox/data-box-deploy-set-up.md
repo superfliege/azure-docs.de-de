@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fb2ec4802ad2ecf25a8fca031553c8209dc4267d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427521"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791318"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben das [Tutorial zum Bestellen einer Azure Data Box](data-box-deploy-ordered.md) durchgearbeitet.
+1. Sie haben die Schritte unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md) ausgeführt.
 2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. 
     - Die Klarsichthülle, die am Gerät unter dem eigentlichen Etikett angebracht ist, enthält ein Adressetikett. Bewahren Sie dieses Etikett sicher auf, da Sie es für den Rückversand benötigen.
     - In einigen Regionen in Europa wird das Gerät unter Umständen in einer Kiste ausgeliefert. Packen Sie das Gerät aus, und behalten Sie die Kiste für die Rücksendung.
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um das Gerät zu verkabeln.
 Führen Sie die folgenden Schritte aus, um Ihr Gerät über die lokale Webbenutzeroberfläche und die Benutzeroberfläche des Portals einzurichten.
 
 1. Konfigurieren Sie den Ethernet-Adapter auf dem Laptop, über den Sie eine Verbindung mit dem Gerät herstellen, mit der statischen IP-Adresse 192.168.100.5 und dem Subnetz 255.255.255.0. 
-2. Stellen Sie eine Verbindung mit dem MGMT-Port des Geräts her, und greifen Sie unter https://192.168.100.10 auf die lokale Webbenutzeroberfläche des Geräts zu. Dies kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern.
+2. Stellen Sie eine Verbindung mit dem MGMT-Port des Geräts her, und greifen Sie über „https\://192.168.100.10“ auf die lokale Webbenutzeroberfläche des Geräts zu. Dies kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern.
 3. Klicken Sie auf **Details** und anschließend auf **Webseite trotzdem laden**.
 
    ![Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 

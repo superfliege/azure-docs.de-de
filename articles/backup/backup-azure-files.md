@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 94a3282451a0efcc9209c4aac3d316e40560495f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 13003f671e479217d73d1c611be36987b3bda7bc
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972123"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793581"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
@@ -34,7 +34,7 @@ Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [u
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Allgemein v1“ und „Allgemein v2“ werden unterstützt. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
 - Sie können Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) nicht schützen.*
 - Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
-- Für den Schutz von Azure Files mit Azure Backup steht keine PowerShell- oder Befehlszeilenoption zur Verfügung.
+- Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
 - Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
 - Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
 - Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.

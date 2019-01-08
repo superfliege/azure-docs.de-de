@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989905"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001463"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Erstellen einer serverlosen API mit Azure Functions
 
@@ -71,7 +71,7 @@ Im nächsten Abschnitt zeigen Sie Ihre API über einen Proxy an. Mit Azure-Funkt
 
 Ein Proxy kann auf HTTP-Ressourcen wie die folgenden verweisen:
 - Azure-Funktionen 
-- API-Apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+- API-Apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)
 - Docker-Container in [App Service unter Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Andere gehostete APIs
 
@@ -104,7 +104,7 @@ Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](https://docs.m
     | Feld | Beispielwert | BESCHREIBUNG |
     |---|---|---|
     | NAME | HelloProxy | Ein Anzeigename für die Verwaltung |
-    | Routenvorlage | /api/hello | Bestimmt, welche Route verwendet wird, um diesen Proxy aufzurufen |
+    | Routenvorlage | /api/remotehello | Bestimmt, welche Route verwendet wird, um diesen Proxy aufzurufen |
     | Back-End-URL | https://%HELLO_HOST%/api/hello | Gibt den Endpunkt an, der für die Anforderung als Proxy dienen soll |
     
 1. Beachten Sie, dass Proxys das Basispfadpräfix `/api` nicht bereitstellen. Es muss in der Routenvorlage enthalten sein.
@@ -112,9 +112,9 @@ Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](https://docs.m
 1. Klicken Sie auf **Create**.
 1. Sie können Ihren neuen Proxy ausprobieren, indem Sie die Proxy-URL kopieren und im Browser oder mit Ihrem bevorzugten HTTP-Client testen.
     1. Für eine anonyme Funktion verwenden Sie:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
     1. Für eine Funktion mit Autorisierung verwenden Sie:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>Erstellen einer Modell-API
 
@@ -132,7 +132,7 @@ Wenn Sie den bisherigen Schritten gefolgt sind, sollte Ihre „proxies.json“ w
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         }
@@ -148,7 +148,7 @@ Als Nächstes fügen Sie Ihre Modell-API hinzu. Ersetzen Sie die Datei „proxie
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         },

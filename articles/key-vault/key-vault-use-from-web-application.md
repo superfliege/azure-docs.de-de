@@ -1,5 +1,5 @@
 ---
-title: Tutorial zur Verwendung von Azure Key Vault aus einer Webanwendung | Microsoft-Dokumentation
+title: Tutorial zur Verwendung von Azure Key Vault aus einer Webanwendung – Azure Key Vault | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Key Vault aus einer Webanwendung verwenden.
 services: key-vault
 author: barclayn
@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 79bccbcbcf78de18504c5cb0235e29930d90ede8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079462"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999304"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Tutorial: Verwenden von Azure Key Vault aus einer Webanwendung
 
@@ -40,9 +40,9 @@ Für dieses Tutorial benötigen Sie folgende Elemente:
 * Eine Client-ID und einen geheimen Schlüssel für den Client für eine Webanwendung, die in Azure Active Directory registriert ist und Zugriff auf Ihren Schlüsseltresor hat
 * Eine Webanwendung. In diesem Tutorial werden die Schritte für eine ASP.NET MVC-Anwendung gezeigt, die in Azure als Web-App bereitgestellt wurde.
 
-Führen Sie die Schritte unter [Erste Schritte mit Azure Key Vault](key-vault-get-started.md) aus, um den URI für einen geheimen Schlüssel, eine Client-ID, einen geheimen Clientschlüssel abzurufen und die Anwendung zu registrieren. Die Webanwendung hat Zugriff auf den Tresor und muss in Azure Active Directory registriert werden. Darüber hinaus benötigt sie Zugriffsrechte für Key Vault. Wenn dies nicht der Fall ist, kehren Sie zur Registrierung der Anwendung im Tutorial „Erste Schritte“ zurück, und wiederholen Sie die dort aufgeführten Schritte. Weitere Informationen zur Erstellung von Azure-Web-Apps finden Sie unter [Web-Apps – Übersicht](../app-service/app-service-web-overview.md).
+Führen Sie die Schritte unter [Erste Schritte mit Azure Key Vault](key-vault-get-started.md) aus, um den URI für einen geheimen Schlüssel, eine Client-ID, einen geheimen Clientschlüssel abzurufen und die Anwendung zu registrieren. Die Webanwendung hat Zugriff auf den Tresor und muss in Azure Active Directory registriert werden. Darüber hinaus benötigt sie Zugriffsrechte für Key Vault. Wenn dies nicht der Fall ist, kehren Sie zur Registrierung der Anwendung im Tutorial „Erste Schritte“ zurück, und wiederholen Sie die dort aufgeführten Schritte. Weitere Informationen zur Erstellung von Azure-Web-Apps finden Sie unter [Web-Apps – Übersicht](../app-service/overview.md).
 
-Dieses Beispiel basiert auf der manuellen Bereitstellung von Azure Active Directory-Identitäten. Sie sollten aber stattdessen [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) verwenden, da hierbei automatisch Azure AD-Identitäten bereitgestellt werden. Weitere Informationen finden Sie im [Beispiel auf GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) und im zugehörigen Tutorial zu [App Service und Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Sie können auch den für Key Vault spezifischen Artikel [Tutorial: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault](tutorial-web-application-keyvault.md) verwenden.
+Dieses Beispiel basiert auf der manuellen Bereitstellung von Azure Active Directory-Identitäten. Sie sollten aber stattdessen [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) verwenden, da hierbei automatisch Azure AD-Identitäten bereitgestellt werden. Weitere Informationen finden Sie im [Beispiel auf GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) und im zugehörigen Tutorial zu [App Service und Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity). Sie können auch den für Key Vault spezifischen Artikel [Tutorial: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault](tutorial-web-application-keyvault.md) verwenden.
 
 ## <a id="packages"></a>Hinzufügen von NuGet-Paketen
 
@@ -71,8 +71,6 @@ Es gibt drei Anwendungseinstellungen, die wie folgt zur Datei „web.config“ h
     <add key="SecretUri" value="secreturi" />
     <!-- If you aren't hosting your app as an Azure Web App, then you should use the actual ClientId, Client Secret, and Secret URI values -->
 ```
-
-
 
 ## <a id="gettoken"></a>Hinzufügen einer Methode zum Abrufen eines Zugriffstokens
 
@@ -188,11 +186,11 @@ Nachdem Sie diese Befehle ausgeführt haben, wird die Anwendung in Azure AD ange
 
 Nun fügen wir Code zur Web-App hinzu, um auf das Zertifikat zuzugreifen und es für die Authentifizierung zu verwenden. 
 
-Zunächst erstellen wir den Code für den Zugriff auf das Zertifikat. Beachten Sie, dass „StoreLocation“ den Wert „CurrentUser“ anstelle von „LocalMachine“ enthält. Beachten Sie auch, dass wir „False“ für die Find-Methode bereitstellen, da wir ein Testzertifikat verwenden.
+Zunächst erstellen wir den Code für den Zugriff auf das Zertifikat. Der Speicherort (StoreLocation) ist „CurrentUser“ statt „LocalMachine“. Beachten Sie auch, dass wir „False“ für die Find-Methode bereitstellen, da wir ein Testzertifikat verwenden.
 
 ```cs
 //Add this using statement
-using System.Security.Cryptography.X509Certificates;  
+using System.Security.Cryptography.X509Certificates;  
 
 public static class CertificateHelper
 {

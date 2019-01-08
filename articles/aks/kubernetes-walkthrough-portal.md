@@ -1,27 +1,27 @@
 ---
-title: Schnellstart – Erstellen eines Azure Kubernetes Service-Clusters im Portal
-description: Es wird beschrieben, wie Sie das Azure-Portal zum schnellen Erstellen eines AKS-Clusters (Azure Kubernetes Service) verwenden und dann eine Anwendung bereitstellen und überwachen.
+title: 'Schnellstart: Erstellen eines Azure Kubernetes Service-Clusters (AKS-Clusters) im Portal'
+description: Erfahren Sie, wie Sie über das Azure-Portal schnell einen Kubernetes-Cluster erstellen, eine Anwendung bereitstellen und die Leistung in Azure Kubernetes Service (AKS) überwachen können.
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6075086b390a14e807e493bd574ac889b81272bf
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 39d267c1d113c2f1950650416c18bfd8ad8caa9c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437349"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653593"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal
 
-In dieser Schnellstartanleitung stellen Sie einen AKS-Cluster mit dem Azure-Portal bereit. Anschließend wird im Cluster eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz umfasst. Nach Abschluss des Vorgangs kann auf die Anwendung über das Internet zugegriffen werden.
+Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Sie schnell Cluster bereitstellen und verwalten können. In dieser Schnellstartanleitung stellen Sie einen AKS-Cluster mit dem Azure-Portal bereit. In dem Cluster wird eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz enthält. Sie erfahren dann, wie Sie den Zustand des Clusters und der Pods überwachen können, in denen Ihre Anwendung ausgeführt wird.
 
 ![Abbildung der Navigation zur Azure Vote-Beispielanwendung](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte vorausgesetzt. Ausführliche Informationen zu Kubernetes finden Sie in der [Kubernetes-Dokumentation][kubernetes-documentation].
+Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -31,7 +31,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
-Klicken Sie im Azure-Portal oben links auf **Ressource erstellen** > **Kubernetes Service**.
+Klicken Sie im Azure-Portal oben links auf **+ Ressource erstellen** > **Kubernetes Service**.
 
 Führen Sie zum Erstellen eines AKS-Clusters die folgenden Schritte aus:
 
@@ -49,22 +49,9 @@ Führen Sie zum Erstellen eines AKS-Clusters die folgenden Schritte aus:
     - Erstellen Sie einen neuen Dienstprinzipal, oder *konfigurieren* Sie einen vorhandenen. Bei der Verwendung eines vorhandenen Dienstprinzipalnamens müssen Sie die SPN-Client-ID und das Geheimnis angeben.
     - Aktivieren Sie die Option für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes. Diese RBAC-Funktionen ermöglichen eine präzisere Steuerung des Zugriffs auf die im AKS-Cluster bereitgestellten Kubernetes-Ressourcen.
 
-    Klicken Sie auf **Weiter: Netzwerk**, wenn der Vorgang abgeschlossen ist.
+    Standardmäßig werden *Basis*-Netzwerke verwendet, und Azure Monitor für Container ist aktiviert. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen**.
 
-1. **Netzwerk**: Konfigurieren Sie die folgenden Netzwerkoptionen:
-    
-    - **HTTP-Anwendungsrouting**: Wählen Sie **Ja**, um einen integrierten Eingangscontroller mit automatischer Erstellung öffentlicher DNS-Namen zu konfigurieren. Weitere Informationen zum HTTP-Routing finden Sie unter [HTTP-Routing und DNS bei AKS][http-routing].
-    - **Netzwerkkonfiguration**: Wählen Sie die Netzwerkkonfiguration **Basic** mit dem [kubenet][kubenet]-Kubernetes-Plug-In anstelle der erweiterten Netzwerkkonfiguration mit [Azure CNI][azure-cni]. Weitere Informationen zu Netzwerkoptionen finden Sie unter [Netzwerkkonfiguration in Azure Kubernetes Service (AKS)][aks-network].
-    
-    Klicken Sie auf **Weiter: Überwachung**, wenn der Vorgang abgeschlossen ist.
-
-1. Bei der Bereitstellung eines AKS-Clusters kann Azure Monitor für Container so konfiguriert werden, dass die Integrität des AKS-Cluster und im Cluster ausgeführte Pods überwacht werden. Weitere Informationen zur Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
-
-    Wählen Sie zum Aktivieren der Containerüberwachung **Ja** und dann einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen.
-    
-    Wählen Sie **Überprüfen + erstellen** und danach **Erstellen**.
-
-Es dauert einige Minuten, bis der AKS-Clusters erstellt wurde und für die Verwendung bereit ist. Navigieren Sie zur Ressourcengruppe für den AKS-Cluster (etwa *myResourceGroup*), und wählen Sie die AKS-Ressource aus, beispielsweise *myAKSCluster*. Das AKS-Clusterdashboard wird wie im folgenden Beispielscreenshot angezeigt:
+Es dauert einige Minuten, bis der AKS-Clusters erstellt wurde und für die Verwendung bereit ist. Ist dieser Vorgang abgeschlossen, navigieren Sie zur Ressourcengruppe für den AKS-Cluster (etwa *myResourceGroup*), und wählen Sie die AKS-Ressource aus, beispielsweise *myAKSCluster*. Das AKS-Clusterdashboard wird wie im folgenden Beispielscreenshot angezeigt:
 
 ![Beispiel für ein AKS-Dashboard im Azure-Portal](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -76,7 +63,7 @@ Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeil
 
 ![Öffnen von Azure Cloud Shell im Portal](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Im folgenden Beispiel werden Anmeldeinformationen für den Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
+Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. In diesem Befehl werden die Anmeldeinformationen heruntergeladen und wird die Kubernetes-Befehlszeilenschnittstelle für deren Verwendung konfiguriert. Im folgenden Beispiel werden Anmeldeinformationen für den Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -88,21 +75,21 @@ Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kube
 kubectl get nodes
 ```
 
-Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Knoten. Stellen Sie sicher, dass der Status des Knotens „Bereit“ lautet.
+Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Knoten. Stellen Sie sicher, dass der Knoten den Status *Bereit* hat:
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     10m       v1.11.2
+aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 ```
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Kubernetes-Manifestdateien definieren einen gewünschten Zustand für einen Cluster (Desired State) – also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen einer Azure Vote-Beispielanwendung benötigt werden. Zu diesen Objekten gehören zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eine für das Azure Vote-Front-End und eine für eine Redis-Instanz. Darüber hinaus werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst für den Zugriff auf die Azure Vote-Anwendung über das Internet.
+Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) für den Cluster, also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Dieses Manifest umfasst zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eine für die Azure Vote-Python-Beispielanwendungen und eine für eine Redis-Instanz. Außerdem werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst, über den aus dem Internet auf die Azure Vote-Anwendung zugegriffen wird.
 
 > [!TIP]
 > In dieser Schnellstartanleitung führen Sie die manuelle Erstellung und Bereitstellung Ihrer Anwendungsmanifeste im AKS-Cluster durch. Bei Szenarien mit mehr Praxisnähe können Sie [Azure Dev Spaces][azure-dev-spaces] verwenden, um Ihren Code direkt im AKS-Cluster schnell zu durchlaufen zu debuggen. Sie können Dev Spaces übergreifend für Betriebssystemplattformen und Entwicklungsumgebungen nutzen und mit anderen Teammitgliedern zusammenarbeiten.
 
-Erstellen Sie eine Datei mit dem Namen `azure-vote.yaml`, und fügen Sie den folgenden YAML-Code ein: Erstellen Sie bei Verwendung von Azure Cloud Shell die Datei mit `vi` oder `Nano` wie auf einem virtuellen oder physischen System.
+Erstellen Sie eine Datei namens `azure-vote.yaml`, und fügen Sie die folgende YAML-Definition ein. Erstellen Sie in Azure Cloud Shell die Datei mit `vi` oder `Nano` wie auf einem virtuellen oder physischen System:
 
 ```yaml
 apiVersion: apps/v1
@@ -185,13 +172,13 @@ spec:
     app: azure-vote-front
 ```
 
-Führen Sie die Anwendung mithilfe des Befehls [kubectl apply][kubectl-apply] aus.
+Stellen Sie die Anwendung über den Befehl [kubectl apply][kubectl-apply] bereit, und geben Sie den Namen Ihres YAML-Manifests an:
 
 ```azurecli-interactive
 kubectl apply -f azure-vote.yaml
 ```
 
-Die folgende Beispielausgabe zeigt die in Ihrem AKS-Cluster erstellten Kubernetes-Ressourcen:
+In der folgende Beispielausgabe sind die erfolgreich erstellten Bereitstellungen und Dienste aufgeführt:
 
 ```
 deployment "azure-vote-back" created
@@ -202,7 +189,7 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>Testen der Anwendung
 
-Im Zuge der Anwendungsausführung wird ein [Kubernetes-Dienst][kubernetes-service] erstellt, der die Anwendung über das Internet verfügbar macht. Dieser Vorgang kann einige Minuten dauern.
+Wenn die Anwendung ausgeführt wird, macht ein Kubernetes-Dienst das Anwendungs-Front-End im Internet verfügbar. Dieser Vorgang kann einige Minuten dauern.
 
 Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`.
 
@@ -210,30 +197,30 @@ Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service][
 kubectl get service azure-vote-front --watch
 ```
 
-Der Wert *EXTENAL-IP* für den Dienst *azure-vote-front* wird zunächst als *ausstehend* angezeigt.
+Die *EXTERNAL-IP*-Adresse für den Dienst *azure-vote-front* wird zunächst als *ausstehend* angezeigt.
 
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Sobald die *externe IP-Adresse* nicht mehr *ausstehend* ist, sondern eine *IP-Adresse* angezeigt wird, verwenden Sie `CTRL-C`, um die kubectl-Überwachung zu beenden.
+Sobald die *EXTERNAL-IP*-Adresse von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wurde, wird, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
 
 ```
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Öffnen Sie in einem Webbrowser die externe IP-Adresse des Diensts, um die Azure Vote-App wie im folgenden Beispiel anzuzeigen:
+Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Azure Vote-App in Aktion zu sehen.
 
 ![Abbildung der Navigation zur Azure Vote-Beispielanwendung](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 ## <a name="monitor-health-and-logs"></a>Überwachung von Integrität und Protokollen
 
-Bei der Erstellung des Clusters wurde die Überwachung von Containerinformationen aktiviert. Mit dieser Überwachungsfunktion werden Integritätsmetriken für den AKS-Cluster und für im Cluster ausgeführte Pods bereitgestellt. Weitere Informationen zur Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
+Bei der Erstellung des Clusters wurde Azure Monitor für Container aktiviert. Mit dieser Überwachungsfunktion werden Integritätsmetriken für den AKS-Cluster und für im Cluster ausgeführte Pods bereitgestellt.
 
 Es dauert möglicherweise einige Minuten, bis diese Daten im Azure-Portal aufgefüllt werden. Wenn Sie den aktuellen Status, die Betriebszeit und die Ressourcennutzung für die Azure Vote-Pods anzeigen möchten, navigieren Sie wieder zur AKS-Ressource (etwa *myAKSCluster*) im Azure-Portal. Sie können dann wie folgt auf den Integritätsstatus zugreifen:
 
-1. Wählen Sie auf der linken Seite unter **Überwachung** die Option **Insights (Vorschau)**.
+1. Wählen Sie auf der linken Seite unter **Überwachung** die Option **Erkenntnisse** aus.
 1. Wählen Sie oben die Option **+ Filter hinzufügen**.
 1. Wählen Sie *Namespace* als Eigenschaft, und wählen Sie dann die Option *\<All but kube-system\>* (Alles außer kube-system).
 1. Wählen Sie die Anzeige **Container**.
@@ -274,16 +261,13 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
-[azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
-[kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
-[kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
+[kubernetes-concepts]: concepts-clusters-workloads.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
 [aks-monitor]: ../monitoring/monitoring-container-health.md
@@ -292,3 +276,5 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
+[kubernetes-service]: concepts-network.md#services

@@ -4,21 +4,19 @@ description: Hier sind für verwaltete Azure-Anwendungen verfügbare Beispielpro
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9acc769355b44628ca617550e44c9ed9724cfdcb
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c0e2ab5cbf45aa2b3836be760ca256bd28e7459a
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "26753059"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993228"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Beispielprojekte für verwaltete Azure-Anwendungen
 
@@ -31,4 +29,4 @@ Die folgende Tabelle enthält Links zu Beispielen für verwaltete Azure-Anwendun
 | [Managed Azure Storage Account](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-storage-account) (Verwaltetes Azure-Speicherkonto) | Bereitstellen eines einzelnen Speicherkontos. Verwenden Sie dieses Beispielprojekt als Einführung in die Erstellung von verwalteten Anwendungen. |
 | [Managed Service Fabric with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-service-fabric) (Verwaltete Service Fabric-Instanz mit Azure-Verwaltungsdiensten) | Bereitstellen von Service Fabric-Clustern und VM-Skalierungsgruppen. Enthält Speicherkonten für Protokollierung und Diagnose. |
 | [Managed Web Application (IaaS) with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) (Verwaltete Webanwendung (IaaS) mit Azure-Verwaltungsdiensten) | Bereitstellen eines virtuellen Computers, der eine Webanwendung hostet |
-| [Managed Web Application (IaaS) with Azure management services and Key Vault](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app-using-keyvault) (Verwaltete Webanwendung (IaaS) mit Azure-Verwaltungsdiensten und Key Vault) | Bereitstellen eines virtuellen Computers, der eine Webanwendung hostet Es wird auf einen Schlüsseltresor für das Administratorkennwort verwiesen. |
+| [Managed SQL 2017 IaaS with automated patching and backup](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-sql-iaas) (Verwaltete SQL 2017-IaaS mit automatisiertem Patchen und Sichern) | Bereitstellen eines virtuellen Computers, der SQL 2017 hostet |

@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 545d60207bbd1941920bc0e70096417c35486634
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0fe4a9f05e0f6d1abed7b906cc5cd89854885ae5
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634589"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53992854"
 ---
 # <a name="what-is-text-analytics"></a>Was ist Textanalyse?
 
@@ -31,7 +31,7 @@ Der Begriff „Textanalyse“ hat verschiedene Bedeutungen, in Cognitive Service
 |-----------|-------------|------|
 |[**Standpunktanalyse**](how-tos/text-analytics-how-to-sentiment-analysis.md) | Ermitteln Sie, was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie unformatierten Text auf Hinweise für positive oder negative Standpunkte analysieren. Die API gibt für jedes Dokument eine Bewertung des Standpunkts zwischen 0 und 1 zurück. Hierbei entspricht 1 einer positiven Bewertung.<br /> Die Analysemodelle sind mithilfe großer Textmengen und Microsoft-Technologien für natürliche Sprache vortrainiert. Für [ausgewählte Sprachen](text-analytics-supported-languages.md) kann die API jeden bereitgestellten unformatierten Text analysieren und bewerten und der aufrufenden Anwendung direkt Ergebnisse zurückgeben. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
 |[**Schlüsselbegriffserkennung**](how-tos/text-analytics-how-to-keyword-extraction.md) | Extrahieren Sie automatisch Schlüsselwörter, um die wichtigsten Inhalte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**Sprachenerkennung**](how-tos/text-analytics-how-to-language-detection.md) | Dieses Feature erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) | 
+|[**Sprachenerkennung**](how-tos/text-analytics-how-to-language-detection.md) | Dieses Feature erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
 |[**Entitätserkennung (Vorschauversion)**](how-tos/text-analytics-how-to-entity-linking.md) | Identifizieren und kategorisieren Sie Entitäten in Ihrem Text als Personen, Orte, Organisationen, Datums-/Zeitangaben, Mengen, Prozentsätze, Währungen usw. Bekannte Entitäten werden ebenfalls erkannt und mit weiteren Informationen im Internet verknüpft. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) |
 
 ## <a name="use-containers"></a>Verwenden von Containern
@@ -76,7 +76,7 @@ Das Ratenlimit beträgt 100 Aufrufe pro Minute. Beachten Sie, dass Sie viele Dok
 
 ## <a name="unicode-encoding"></a>Unicode-Codierung
 
-Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die Berechnung der Zeichenanzahl. Anforderungen können in UTF-8 und UTF-16 übermittelt werden, dabei gibt es keine messbaren Unterschiede bei der Zeichenanzahl. Unicode-Codepunkte werden als Heuristik für die Zeichenlänge verwendet und werden für die Grenzwerte der Textanalysedaten als äquivalent betrachtet. Wenn Sie `String.Length` verwenden, um die Zeichenanzahl abzurufen, verwenden Sie die gleiche Methode wie wir, um die Datengröße zu ermitteln.
+Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die Berechnung der Zeichenanzahl. Anforderungen können in UTF-8 und UTF-16 übermittelt werden, dabei gibt es keine messbaren Unterschiede bei der Zeichenanzahl. Unicode-Codepunkte werden als Heuristik für die Zeichenlänge verwendet und werden für die Grenzwerte der Textanalysedaten als äquivalent betrachtet. Wenn Sie [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) verwenden, um die Zeichenanzahl abzurufen, verwenden Sie die gleiche Methode wie wir, um die Datengröße zu ermitteln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

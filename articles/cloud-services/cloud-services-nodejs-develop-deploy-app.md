@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7af18272c335c835a2aa406fc635f3e7afda2a3a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 182dada35e0bea7101cc58ff62fde76fbcb8971e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003451"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722276"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
 
@@ -60,8 +60,8 @@ Führen Sie folgende Aufgaben durch, um ein neues Azure-Clouddienstprojekt sowie
 
     Das Cmdlet erstellt die folgenden Dateien:
 
-   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** und **ServiceDefinition.csdef**: Dies sind Azure-spezifische Dateien, die für die Veröffentlichung der Anwendung erforderlich sind. Weitere Informationen erhalten Sie unter [Übersicht zum Erstellen eines gehosteten Diensts für Azure].
-   * **deploymentSettings.json**speichert lokale Einstellungen, die von den Azure PowerShell-Bereitstellungs-Cmdlets verwendet werden.
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** und **ServiceDefinition.csdef**: Azure-spezifische Dateien, die zum Veröffentlichen Ihrer Anwendung erforderlich sind. Weitere Informationen erhalten Sie unter [Übersicht zum Erstellen eines gehosteten Diensts für Azure].
+   * **deploymentSettings.json**: Speichert lokale Einstellungen, die von den Azure PowerShell-Bereitstellungs-Cmdlets verwendet werden.
 4. Geben Sie den folgenden Befehl zum Hinzufügen einer neuen Webrolle ein:
 
        Add-AzureNodeWebRole
@@ -160,18 +160,18 @@ Nachdem Sie Ihre Anwendung bereitgestellt haben, möchten Sie diese möglicherwe
    > Durch das Löschen dieses Diensts wird das Speicherkonto, das beim erstmaligen Veröffentlichen des Diensts erstellt wurde, nicht gelöscht, und Sie erhalten weiterhin eine Rechnung über den verwendeten Speicherplatz. Wird der Speicher nicht anderweitig verwendet, empfiehlt es sich unter Umständen, ihn zu löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie im [Node.js Developer Center].
+Weitere Informationen finden Sie im [Node.js Developer Center (in englischer Sprache)].
 
 <!-- URL List -->
 
-[Azure Websites, Cloud Services and Virtual Machines comparison]: ../app-service/choose-web-site-cloud-service-vm.md
+[Azure Websites, Cloud Services and Virtual Machines comparison]: ../app-service/overview-compare.md
 [Verwendung einer einfachen Web-App]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK für .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
 [Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]: /powershell/azureps-cmdlets-docs#step-3-connect
 [nodejs.org]: http://nodejs.org/
 [Übersicht zum Erstellen eines gehosteten Diensts für Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
-[Node.js Developer Center]: https://azure.microsoft.com/develop/nodejs/
+[Node.js Developer Center (in englischer Sprache)]: https://azure.microsoft.com/develop/nodejs/
 
 <!-- IMG List -->
 

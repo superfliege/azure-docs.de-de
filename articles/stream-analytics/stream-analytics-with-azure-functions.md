@@ -2,8 +2,7 @@
 title: 'Tutorial: Ausführen von Azure Functions mit Azure Stream Analytics-Aufträgen | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Functions als Ausgabesenke für Stream Analytics-Aufträge konfigurieren.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
@@ -11,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164159"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993007"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
@@ -152,7 +151,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
 1. Öffnen Sie den Stream Analytics-Auftrag im Azure-Portal.  
 
-2. Navigieren Sie zu Ihrer Funktion, und wählen Sie **Übersicht** > **Ausgaben** > **Hinzufügen** aus. Um eine neue Ausgabe hinzuzufügen, wählen Sie **Azure-Funktion** als Senkenoption aus. Der neue Functions-Ausgabeadapter wird mit folgenden Eigenschaften zur Verfügung gestellt:  
+2. Navigieren Sie zu Ihrer Funktion, und wählen Sie **Übersicht** > **Ausgaben** > **Hinzufügen** aus. Um eine neue Ausgabe hinzuzufügen, wählen Sie **Azure-Funktion** als Senkenoption aus. Der Functions-Ausgabeadapter hat die folgenden Eigenschaften:  
 
    |**Eigenschaftenname**|**Beschreibung**|
    |---|---|
@@ -160,7 +159,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
    |Importoption| Sie können die Funktion aus dem aktuellem Abonnement verwenden, oder Sie geben die Einstellungen manuell an, wenn sich die Funktion in einem anderen Abonnement befindet. |
    |Funktionen-App| Der Name der Funktions-App |
    |Funktion| Der Name der Funktion in Ihrer Funktions-App (Name Ihrer run.csx-Funktion)|
-   |Max Batch Size|Legt die maximale Größe für jeden Ausgabebatch fest, der an die Funktion gesendet wird. Dieser Wert ist standardmäßig auf 256 KB festgelegt.|
+   |Max Batch Size|Legt in Bytes die maximale Größe für jeden Ausgabebatch fest, der an die Funktion gesendet wird. Dieser Wert ist standardmäßig auf 262.144 Byte (256 KB) festgelegt.|
    |Max Batch Count|Gibt die maximale Anzahl von Ereignissen in jedem Batch an, die an die Funktion gesendet wird. Der Standardwert ist 100. Diese Eigenschaft ist optional.|
    |Schlüssel|Ermöglicht die Verwendung einer Funktion aus einem anderen Abonnement. Geben Sie den Schlüsselwert für den Zugriff auf die Funktion an. Diese Eigenschaft ist optional.|
 

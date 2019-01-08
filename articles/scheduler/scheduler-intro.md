@@ -10,29 +10,29 @@ ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.topic: hero-article
 ms.date: 09/17/2018
-ms.openlocfilehash: 4d4f7bf9c77dad21f9e66ab0fa023a4898163f1f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb3fba7fa86027d753be21e028109a5d7ef03efb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989177"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722480"
 ---
 # <a name="what-is-azure-scheduler"></a>Was ist Azure Scheduler?
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Der Azure Scheduler wird eingestellt und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
 [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) unterstützt Sie durch deklarative Beschreibung von Aktionen beim Erstellen von [Aufträgen](../scheduler/scheduler-concepts-terms.md), die in der Cloud ausgeführt werden. Anschließend werden diese Aktionen vom Dienst automatisch geplant und ausgeführt. Sie können beispielsweise Dienste inner- und außerhalb von Azure aufrufen (z. B. HTTP- oder HTTPS-Endpunkte) und zudem Nachrichten in Azure Storage-Warteschlangen sowie Azure Service Bus-Warteschlangen oder -Themen veröffentlichen. Sie können Aufträge sofort oder zu einem späteren Zeitpunkt ausführen. [Komplexe Zeitpläne und erweiterte Serien](../scheduler/scheduler-advanced-complexity.md) werden von Scheduler problemlos unterstützt. Scheduler legt fest, wann Aufträge ausgeführt werden, speichert einen Verlauf der Auftragsergebnisse, den Sie überprüfen können, und plant die auszuführenden Workloads dann auf vorhersehbare und zuverlässige Weise.
 
 Der Scheduler-Dienst kann zwar zum Erstellen, Verwalten und Ausführen von geplanten Workloads verwendet werden, er hostet aber weder Workloads noch führt er Code aus. Der Dienst *ruft* lediglich an anderer Stelle (beispielsweise in Azure, lokal oder bei einem anderen Anbieter) gehostete(n) Dienste oder Code auf. Scheduler kann den Aufruf über HTTP, HTTPS, eine Storage-Warteschlange, eine Service Bus-Warteschlange oder ein Service Bus-Thema ausführen. Zum Erstellen, Verwalten und Planen von Aufträgen können Sie das [Azure-Portal](../scheduler/scheduler-get-started-portal.md), Code, die [Scheduler-REST-API](https://docs.microsoft.com/rest/api/scheduler/) oder [Azure Scheduler-PowerShell-Cmdlets (Referenz)](scheduler-powershell-reference.md) verwenden. Beispielsweise können Sie Aufträge und [Auftragssammlungen](../scheduler/scheduler-concepts-terms.md) mithilfe von Skripts und im Azure-Portal programmgesteuert erstellen, anzeigen, aktualisieren, verwalten oder löschen.
 
-Andere Azure-Planungsfunktionen nutzen Scheduler ebenfalls im Hintergrund, beispielsweise der Dienst [Azure WebJobs](../app-service/web-sites-create-web-jobs.md), bei dem es sich um eine [Web-Apps](https://azure.microsoft.com/services/app-service/web/)-Funktion von Azure App Service handelt. Sie können die Kommunikation für diese Aktionen mit der [Scheduler-REST-API](https://docs.microsoft.com/rest/api/scheduler/) verwalten.
+Andere Azure-Planungsfunktionen nutzen Scheduler ebenfalls im Hintergrund, beispielsweise der Dienst [Azure WebJobs](../app-service/webjobs-create.md), bei dem es sich um eine [Web-Apps](https://azure.microsoft.com/services/app-service/web/)-Funktion von Azure App Service handelt. Sie können die Kommunikation für diese Aktionen mit der [Scheduler-REST-API](https://docs.microsoft.com/rest/api/scheduler/) verwalten.
 
 Im Folgenden sind einige Szenarien aufgeführt, in denen Scheduler hilfreich sein kann:
 
-* **Ausführen wiederkehrender App-Aktionen:** Ein Beispiel hierfür ist die regelmäßige Erfassung von Daten aus Twitter in einem Feed.
+* **Ausführen wiederkehrender App-Aktionen**: Ein Beispiel hierfür ist die regelmäßige Erfassung von Daten aus Twitter in einem Feed.
 
-* **Durchführen täglicher Wartungsaufgaben:** Beispiele hierfür sind die tägliche Bereinigung von Protokollen, die Erstellung von Sicherungen und die Ausführung anderer Wartungsaufgaben. 
+* **Ausführen täglicher Wartungsaufgaben**: Beispiele hierfür sind die tägliche Bereinigung von Protokollen, die Erstellung von Sicherungen und die Ausführung anderer Wartungsaufgaben. 
 
   Ein Administrator kann beispielsweise planen, dass seine Datenbank in den kommenden neun Monaten täglich um 1:00 Uhr gesichert wird.
 

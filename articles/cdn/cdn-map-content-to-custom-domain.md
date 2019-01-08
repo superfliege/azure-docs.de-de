@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 67621cb95cbf5072ab7b72770f43c0b68785c78e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b9bcba78600e90c28f95c4ea842bf4b25b1c0da7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092099"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722787"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
@@ -36,9 +36,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst ein CDN-Profil und mindestens einen CDN-Endpunkt erstellen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure CDN](cdn-create-new-endpoint.md).
+Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst ein CDN-Profil und mindestens einen CDN-Endpunkt erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
 
-Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app).
+Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
 Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](https://docs.microsoft.com/azure/dns/dns-overview) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
 
@@ -68,9 +68,9 @@ Erstellen Sie wie folgt einen CNAME-Eintrag mit der Unterdomäne „cdnverify“
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne, einschließlich der Unterdomäne „cdnverify“, im folgenden Format ein: cdnverify._&lt;Namen der benutzerdefinierten Domäne&gt;. Beispiel: „cdnverify.www.contoso.com“.
+    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne, einschließlich der Unterdomäne „cdnverify“, im folgenden Format ein: cdnverify._&lt;Name der benutzerdefinierten Domäne&gt;. Beispiel: „cdnverify.www.contoso.com“.
 
-    - Typ: Geben Sie *CNAME* ein.
+    - Geben Sie Folgendes ein:  Geben Sie *CNAME* ein.
 
     - Ziel: Geben Sie den Hostnamen Ihres CDN-Endpunkts, einschließlich der Unterdomäne „cdnverify“, im folgenden Format ein: cdnverify._&lt;Endpunktname&gt;_.azureedge.net. Beispiel: „cdnverify.contoso.azureedge.net“.
 
@@ -90,15 +90,15 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
     ![CNAME-Eintrag](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
-    - Typ: Übernehmen Sie *CNAME*.
+    - Geben Sie Folgendes ein:  Übernehmen Sie *CNAME*.
 
     - Host: Geben Sie die gewünschte Unterdomäne Ihrer benutzerdefinierten Domäne ein (einschließlich des Unterdomänennamens „cdnverify“). Beispiel: „cdnverify.www“.
 
     - Points to (Verweist auf): Geben Sie den Hostnamen Ihres CDN-Endpunkts ein (einschließlich des Unterdomänennamens „cdnverify“). Beispiel: „cdnverify.contoso.azureedge.net“. 
 
-    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
+    - TTL: Übernehmen Sie *1 Stunde*.
 
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
  
     Der CNAME-Eintrag wird der Tabelle mit den DNS-Einträgen hinzugefügt.
 
@@ -162,9 +162,9 @@ Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domän
     |-----------------|-------|-----------------------|
     | www.contoso.com | CNAME | contoso.azureedge.net |
 
-    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne ein (z.B. „www.contoso.com“).
+    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne ein (z. B. „www.contoso.com“).
 
-    - Typ: Geben Sie *CNAME* ein.
+    - Geben Sie Folgendes ein:  Geben Sie *CNAME* ein.
 
     - Ziel: Geben Sie den Hostnamen Ihres CDN-Endpunkts ein. Er muss das folgende Format haben:_&lt;Endpunktname&gt;_.azureedge.net. Beispiel: „contoso.azureedge.net“.
 
@@ -188,15 +188,15 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
     ![CNAME-Eintrag](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
-    - Typ: Übernehmen Sie *CNAME*.
+    - Geben Sie Folgendes ein:  Übernehmen Sie *CNAME*.
 
     - Host: Geben Sie die Unterdomäne der gewünschten benutzerdefinierten Domäne ein. Beispiel: „www“ oder „cdn“.
 
     - Points to (Verweist auf): Geben Sie den Hostnamen Ihres CDN-Endpunkts ein. Beispiel: „contoso.azureedge.net“. 
 
-    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
+    - TTL: Übernehmen Sie *1 Stunde*.
 
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
  
     Der CNAME-Eintrag wird der Tabelle mit den DNS-Einträgen hinzugefügt.
 

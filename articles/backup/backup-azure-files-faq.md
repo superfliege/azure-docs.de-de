@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874551"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793511"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -39,31 +39,34 @@ Ja. Sie müssen jedoch im verknüpften Tresor den [Schutz beenden](backup-azure-
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>An welchen geografischen Standorten kann ich Azure-Dateifreigaben sichern? <br/>
 Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschauphase und ist nur an folgenden geografischen Standorten verfügbar: 
--   Australien, Osten (AE) 
+- Australien, Osten (AE) 
 - Australien, Südosten (ASE) 
 - Brasilien, Süden (BRS)
 - Kanada, Mitte (CNC)
--   Kanada, Osten (CE)
--   USA, Mitte (CUS)
--   Asien, Osten (EA)
--   USA, Osten (EUS)
--   USA, Osten 2 (EUS2)
+- Kanada, Osten (CE)
+- USA, Mitte (CUS)
+- Asien, Osten (EA)
+- USA, Osten (EUS)
+- USA, Osten 2 (EUS2)
 - Japan, Osten (JPE)
 - Japan, Westen (JPW)
--   Indien, Mitte (INC) 
+- Indien, Mitte (INC) 
 - Indien, Süden (INS)
 - Südkorea, Mitte (KRC)
 - Korea, Süden (KRS)
--   USA, Norden-Mitte (NCUS) 
--   Europa, Norden (NE) 
--   USA, Süden-Mitte (SCUS) 
--   Asien, Südosten (SEA)
--   Vereinigtes Königreich, Süden (UKS) 
--   Vereinigtes Königreich, Westen (UKW) 
--   Europa, Westen (WE) 
--   USA, Westen (WUS)
--   USA, Westen-Mitte (WCUS)
--   USA, Westen 2 (WUS 2)
+- USA, Norden-Mitte (NCUS) 
+- Europa, Norden (NE) 
+- USA, Süden-Mitte (SCUS) 
+- Asien, Südosten (SEA)
+- Vereinigtes Königreich, Süden (UKS) 
+- Vereinigtes Königreich, Westen (UKW) 
+- Europa, Westen (WE) 
+- USA, Westen (WUS)
+- USA, Westen-Mitte (WCUS)
+- USA, Westen 2 (WUS 2)
+- US Gov Arizona (UGA)
+- US Gov Texas (UGT)
+- US Gov Virginia (UGV)
 
 Schreiben Sie an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
 

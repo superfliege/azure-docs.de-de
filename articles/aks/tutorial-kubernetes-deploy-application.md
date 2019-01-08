@@ -3,18 +3,17 @@ title: 'Tutorial zu Kubernetes in Azure: Bereitstellen einer Anwendung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) stellen Sie mithilfe eines in Azure Container Registry gespeicherten benutzerdefinierten Images eine Anwendung mit mehreren Containern in Ihrem Cluster bereit.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: bf817f553250ead449ec0d5db3d33acc2eff23f3
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: b3336f592163d793b8415d2d4f0dd79b92200c89
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41924749"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727937"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -25,17 +24,17 @@ Kubernetes bietet eine verteilte Plattform für containerbasierte Anwendungen. S
 > * Ausführen einer Anwendung in Kubernetes
 > * Testen der Anwendung
 
-In den nachfolgenden Tutorials wird dies Anwendung horizontal hochskaliert und aktualisiert.
+In weiteren Tutorials wird diese Anwendung erweitert und aktualisiert.
 
-Dieses Tutorial setzt voraus, dass Sie grundlegend mit den Konzepten von Kubernetes vertraut sind. Ausführliche Informationen zu Kubernetes finden Sie in der [Kubernetes-Dokumentation][kubernetes-documentation].
+Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt.
 
-Für dieses Tutorial benötigen Sie die vorab erstellte Kubernetes-Manifestdatei `azure-vote-all-in-one-redis.yaml`. Diese Datei wurde in einem vorherigen Tutorial mit dem Anwendungsquellcode heruntergeladen. Stellen Sie sicher, dass Sie das Repository geklont und in das geklonte Repository gewechselt haben. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
+Für dieses Tutorial benötigen Sie die vorab erstellte Kubernetes-Manifestdatei `azure-vote-all-in-one-redis.yaml`. Diese Datei wurde in einem vorherigen Tutorial mit dem Anwendungsquellcode heruntergeladen. Stellen Sie sicher, dass Sie das Repository geklont und Verzeichnisse im geklonten Repository geändert haben. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen von Containerimages][aks-tutorial-prepare-app] beginnen.
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.44 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
 ## <a name="update-the-manifest-file"></a>Aktualisieren der Manifestdatei
 
@@ -47,7 +46,7 @@ Rufen Sie den ACR-Anmeldeservernamen mit dem Befehl [az acr list][az-acr-list] w
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Die im ersten Tutorial geklonte Beispielmanifestdatei aus dem Git-Repository verwendet den Anmeldeservernamen *microsoft*. Öffnen Sie diese Manifestdatei mit einem Text-Editor wie `vi`:
+Die im ersten Tutorial geklonte Beispielmanifestdatei aus dem Git-Repository verwendet den Anmeldeservernamen *microsoft*. Vergewissern Sie sich, dass Sie sich im geklonten *azure-voting-app-Redis*-Verzeichnis befinden, und öffnen Sie dann die Manifestdatei mit einem Text-Editor, z. B. `vi`:
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
@@ -69,7 +68,7 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Speichern und schließen Sie die Datei.
+Speichern und schließen Sie die Datei. Verwenden Sie in `vi` den Befehl `:wq`.
 
 ## <a name="deploy-the-application"></a>Bereitstellen der Anwendung
 
@@ -79,7 +78,7 @@ Verwenden Sie zum Bereitstellen Ihrer Anwendung den Befehl [kubectl apply][kubec
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-Die Kubernetes-Objekte werden wie im folgenden Beispiel gezeigt innerhalb des Clusters erstellt:
+Die folgende Beispielausgabe zeigt die Ressourcen, die erfolgreich im AKS-Cluster erstellt wurden:
 
 ```
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -92,25 +91,27 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>Testen der Anwendung
 
-Es wird ein [Kubernetes-Dienst][kubernetes-service] erstellt, der die Anwendung für das Internet verfügbar macht. Dieser Vorgang kann einige Minuten dauern. Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`:
+Wenn die Anwendung ausgeführt wird, macht ein Kubernetes-Dienst das Anwendungs-Front-End im Internet verfügbar. Dieser Vorgang kann einige Minuten dauern.
+
+Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`.
 
 ```console
 kubectl get service azure-vote-front --watch
 ```
 
-*EXTERNAL-IP* für den Dienst *azure-vote-front* wird zunächst wie im folgenden Beispiel als *ausstehend* angezeigt:
+Die *EXTERNAL-IP*-Adresse für den Dienst *azure-vote-front* wird zunächst als *ausstehend* angezeigt:
 
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Sobald die *EXTERNAL-IP*-Adresse von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wird, verwenden Sie `CTRL-C`, um die kubectl-Überwachung zu beenden. Das folgende Beispiel zeigt, dass jetzt eine öffentliche IP-Adresse zugewiesen ist:
+Sobald die *EXTERNAL-IP*-Adresse von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wurde, wird, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ```
 
-Öffnen Sie die externe IP-Adresse in einem Webbrowser, um die Anwendung in Aktion zu sehen.
+Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Anwendung in Aktion zu sehen:
 
 ![Abbildung: Kubernetes-Cluster in Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
@@ -118,7 +119,7 @@ Wurde die Anwendung nicht geladen, liegt möglicherweise ein Autorisierungsprobl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde die Azure Vote-Anwendung in einem Kubernetes-Cluster in AKS bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial wurde eine Azure Vote-Beispielanwendung in einem Kubernetes-Cluster in AKS bereitgestellt. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Aktualisieren einer Kubernetes-Manifestdatei
@@ -134,11 +135,11 @@ Fahren Sie mit dem nächsten Tutorial fort, wo Sie erfahren, wie eine Kubernetes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubernetes-documentation]: https://kubernetes.io/docs/home/
-[kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-scale]: ./tutorial-kubernetes-scale.md
 [az-acr-list]: /cli/azure/acr#list
 [azure-cli-install]: /cli/azure/install-azure-cli
+[kubernetes-concepts]: concepts-clusters-workloads.md
+[kubernetes-service]: concepts-network.md#services
