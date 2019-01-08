@@ -52,12 +52,9 @@
 ## [SAP HANA-Sicherungen auf Dateiebene](sap-hana-backup-file-level.md)
 ## [SAP HANA-Sicherungen von Speichermomentaufnahmen](sap-hana-backup-storage-snapshots.md)
 # SAP NetWeaver und Business One in Azure Virtual Machines
-## [SAP Business One in Azure Virtual Machines](business-one-azure.md)
-## [Bereitstellungshandbuch für SAP IDES unter Windows/SQL Server SAP CALe](cal-ides-erp6-erp7-sp3-sql.md)
-## [SAP NetWeaver auf virtuellen Linux-Computern in Azure](suse-quickstart.md)
+## [Prüfliste für SAP-Workloadplanung und -bereitstellung](sap-deployment-checklist.md)
 ## [Planen und Implementieren von SAP NetWeaver in Azure](planning-guide.md)
 ## [Bereitstellungshandbuch für SAP NetWeaver](deployment-guide.md)
-## [SAP LaMa-Connector für Azure](lama-installation.md)
 ## DBMS-Bereitstellungshandbücher für SAP-Workloads
 ### [Azure Virtual Machines – allgemeine DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)
 ### [Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP-Workload](dbms_guide_sqlserver.md)
@@ -69,6 +66,10 @@
 ### [Verfügbarkeit von SAP HANA in Azure: Übersicht](sap-hana-availability-overview.md)
 ### [Verfügbarkeit von SAP HANA in Azure innerhalb einer Azure-Region](sap-hana-availability-one-region.md)
 ### [Verfügbarkeit von SAP HANA in Azure in verschiedenen Azure-Regionen](sap-hana-availability-across-regions.md)
+## [SAP Business One in Azure Virtual Machines](business-one-azure.md)
+## [Bereitstellungshandbuch für SAP IDES unter Windows/SQL Server SAP CALe](cal-ides-erp6-erp7-sp3-sql.md)
+## [SAP NetWeaver auf virtuellen Linux-Computern in Azure](suse-quickstart.md)
+## [SAP LaMa-Connector für Azure](lama-installation.md)
 ## Hochverfügbarkeit (High Availability, HA) unter Windows und Linux
 ### [Übersicht](sap-high-availability-guide-start.md)
 ### Hochverfügbarkeitsarchitektur

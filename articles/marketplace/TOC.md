@@ -107,7 +107,7 @@
    Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  
 -->
 
-<!-- new for SaaS 12/05/2018 -->
+<!-- new for SaaS 12/24/2018 -->
 ## [SaaS-Anwendungsangebot](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
 ### [Voraussetzungen](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
 ### [Erstellen eines SaaS-Anwendungsangebots](./cloud-partner-portal/saas-app/cpp-create-offer.md)
@@ -121,6 +121,7 @@
 ### [Veröffentlichen eines Angebots](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 ### [Aktualisieren eines vorhandenen Angebots](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 ### [SaaS-APIs](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+### [SaaS-Selbsttestclient](./cloud-partner-portal/saas-app/cpp-selftest-client.md)
 
 <!-- Legacy SaaS Offer replaced
 ## [SaaS application offer](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
@@ -162,12 +163,26 @@
 
 <!-- ## [Cortana Intelligence](./cloud-partner-portal-orig/cloud-partner-portal-publish-cortana-intelligence-app.md)  -->
 
-## [Angebot „Dynamics 365 for Customer Engagement“](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
-### [Erstellen einer Lösung](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
-### [Erstellen eines Pakets](./cloud-partner-portal-orig/appSource-package-preparation.md)
-### [Generieren eines SAS-Schlüssels](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
-### [Erstellen eines Angebots](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
-### [Veröffentlichen eines Angebots](./cloud-partner-portal-orig/request-to-publish-the-app.md)
+## [Angebot „Dynamics 365 for Customer Engagement“](./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md)
+### [Voraussetzungen](./cloud-partner-portal/dyn365ce/cpp-prerequisites.md)
+### [Erstellen eines IoT Edge-Modulangebots](./cloud-partner-portal/dyn365ce/cpp-create-offer.md)
+#### [Registerkarte „Angebotseinstellungen“](./cloud-partner-portal/dyn365ce/cpp-offer-settings-tab.md)
+#### [Registerkarte „Technische Informationen“](./cloud-partner-portal/dyn365ce/cpp-technical-info-tab.md)
+#### [Registerkarte „Testversion“](./cloud-partner-portal/dyn365ce/cpp-testdrive-tab.md)
+#### [Registerkarte „Storefront Details“ (Storefrontdetails)](./cloud-partner-portal/dyn365ce/cpp-storefront-details-tab.md)
+#### [Registerkarte „Kontakte“](./cloud-partner-portal/dyn365ce/cpp-contacts-tab.md)
+### [Erstellen von technischen Customer Engagement-Ressourcen](./cloud-partner-portal/dyn365ce/cpp-create-technical-assets.md)
+### [Veröffentlichen eines Customer Engagement-Angebots](./cloud-partner-portal/dyn365ce/cpp-publish-offer.md)
+
+<!-- Following legacy IoT section was replaced.  -->
+<!-- 
+## [Dynamics 365 for Customer Engagement offer](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
+### [Create solution](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
+### [Create package](./cloud-partner-portal-orig/appSource-package-preparation.md)
+### [Generate SAS key](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
+### [Create offer](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
+### [Publish offer](./cloud-partner-portal-orig/request-to-publish-the-app.md)
+-->
 
 ## [Angebot „Dynamics 365 for Business Central“](./cloud-partner-portal-orig/cpp-business-central-offer.md)
 ### [Veröffentlichungsübersicht](./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md)
