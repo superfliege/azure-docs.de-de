@@ -92,6 +92,7 @@
 ## [Python (Kontoverwaltung)](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)
 ## [Python (Dateisystemverwaltung)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
+## [Resource Manager: Vorlage](/azure/templates/microsoft.datalakestore/allversions)
 ## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/dls)
 
 # Ressourcen
