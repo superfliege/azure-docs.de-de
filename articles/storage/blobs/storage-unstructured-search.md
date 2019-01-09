@@ -1,23 +1,25 @@
 ---
-title: Suchen von unstrukturierten Daten in Azure-Cloudspeicher
-description: Suchen von unstrukturierten Daten mithilfe von Azure Search
+title: 'Tutorial: Suchen nach unstrukturierten Daten in Azure Blob Storage'
+description: 'Tutorial: Suchen nach unstrukturierten Daten in Blob Storage mithilfe von Azure Search'
 author: roygara
 services: storage
 ms.service: storage
 ms.topic: tutorial
-ms.date: 10/12/2017
+ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 902009d7807b1ce340000c271350af1c37231d77
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181191"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599831"
 ---
-# <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Tutorial: Suchen von unstrukturierten Daten im Cloudspeicher
+# <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Tutorial: Suchen von unstrukturierten Daten in Cloudspeicher
 
-In diesem Tutorial erfahren Sie, wie Sie mit [Azure Search](../../search/search-what-is-azure-search.md) unstrukturierte Daten mithilfe von Daten suchen, die in Azure-Blobs gespeichert werden. Unstrukturierte Daten sind Daten, die entweder nicht in vordefinierter Weise angeordnet sind oder nicht über ein Datenmodell verfügen. Ein Beispiel wäre eine TXT-Datei.
+In diesem Tutorial erfahren Sie, wie Sie mit [Azure Search](../../search/search-what-is-azure-search.md) anhand von gespeicherten Daten in Azure Blob Storage nach unstrukturierten Daten suchen. Unstrukturierte Daten sind Daten, die entweder nicht in vordefinierter Weise angeordnet sind oder nicht über ein Datenmodell verfügen. Ein Beispiel ist eine TXT-Datei.
+
+Dieses Tutorial setzt voraus, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -27,41 +29,23 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines Containers
 > * Hochladen von Daten in Ihren Container
 > * Erstellen eines Azure Search-Diensts über das Azure-Portal
+> * Verbinden eines Suchdiensts mit einem Speicherkonto
+> * Erstellen einer Datenquelle
+> * Konfigurieren des Index
+> * Erstellen eines Indexers
 > * Verwenden des Azure Search-Diensts zum Suchen Ihres Containers
 
-## <a name="download-the-sample"></a>Herunterladen des Beispiels
+## <a name="prerequisites"></a>Voraussetzungen
 
-Es wurde ein Beispieldataset für Sie vorbereitet. **Laden Sie [clinical-trials.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials.zip)** herunter, und entzippen Sie die Datei in ihrem eigenen Ordner.
+Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Möglichkeit, eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Tutorial wird eine neue Ressourcengruppe erstellt.
 
-Das Beispiel besteht aus Textdateien, die von [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) abgerufen wurden. Sie können sie als Beispieltextdateien für die Suche mit Azure verwenden.
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+Es wurde ein Beispieldataset vorbereitet, das Sie für dieses Tutorial verwenden können. Laden Sie [clinical-trials.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials.zip) herunter, und entzippen Sie die Datei in ihrem eigenen Ordner.
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
-
-Ein Speicherkonto stellt einen eindeutigen Speicherort zum Speichern Ihrer Azure Storage-Datenobjekte sowie für den Zugriff darauf bereit.
-
-Aktuell gibt es zwei Arten von Speicherkonten: **Blob** und **Allgemein**. Für dieses Tutorial erstellen Sie ein Speicherkonto vom Typ **Allgemein**.
-
-Wenn Sie mit dem Erstellen eines allgemeinen Speicherkontos nicht vertraut sind, folgen hier die erforderlichen Schritte:
-
-1. Wählen Sie im linken Menü **Speicherkonten** aus, und wählen Sie dann **Hinzufügen** aus.
-
-2. Geben Sie einen eindeutigen Namen für Ihr Speicherkonto ein. 
-
-3. Wählen Sie **Ressourcen-Manager** für Ihr **Bereitstellungsmodell** und dann **Allgemein** aus der Dropdownliste **Kontoart** aus.
-
-4. Wählen Sie in der Dropdownliste **Replikation** den Wert **Lokal redundanter Speicher** aus.
-
-5. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen eindeutigen Namen ein.
-
-6. Wählen Sie ein entsprechendes Abonnement aus.
-
-7. Wählen Sie einen Speicherort und dann **Erstellen** aus.
-
-  ![Unstrukturierte Suche](media/storage-unstructured-search/storagepanes2.png)
+Das Beispiel besteht aus Textdateien, die von [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) abgerufen wurden. In diesem Tutorial werden die Dateien als Beispieltextdateien verwendet und mithilfe von Azure Search-Diensten durchsucht.
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
@@ -69,15 +53,15 @@ Container ähneln Ordnern und werden zum Speichern von Blobs verwendet.
 
 Für dieses Tutorial verwenden Sie einen einzelnen Container zum Speichern der Textdateien, die Sie von „clinicaltrials.gov“ abgerufen haben.
 
-1. Navigieren Sie zum Speicherkonto im Azure-Portal.
+1. Wechseln Sie im Azure-Portal zu Ihrem Speicherkonto.
 
 2. Wählen Sie unter **Blob-Dienst** die Option **Blobs durchsuchen** aus.
 
 3. Fügen Sie einen neuen Container hinzu.
 
-4. Benennen Sie den Container "Daten", und wählen Sie **Container** für die öffentliche Zugriffsebene aus.
+4. Geben Sie für den Container den Namen **data** ein, und wählen Sie für „Öffentliche Zugriffsebene“ die Option **Container** aus.
 
-5. Wählen Sie **OK** aus, um den Container zu erstellen. 
+5. Wählen Sie **OK** aus, um den Container zu erstellen.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/storageactinfo.png)
 
@@ -87,29 +71,29 @@ Nachdem Sie jetzt über einen Container verfügen, können Sie die Beispieldaten
 
 1. Wählen Sie den Container und dann **Hochladen** aus.
 
-2. Wählen Sie das blaue Ordnersymbol neben dem Feld „Dateien“ aus, und navigieren Sie zum lokalen Ordner, in dem Sie die Beispieldaten extrahiert haben.
+2. Klicken Sie auf das blaue Ordnersymbol neben dem Feld **Dateien**, und navigieren Sie zu dem lokalen Ordner, in dem Sie die Beispieldaten extrahiert haben.
 
-3. Wählen Sie alle extrahierten Dateien und dann **Öffnen** aus.
+3. Wählen Sie alle extrahierten Dateien aus, und klicken Sie dann auf **Öffnen**.
 
 4. Wählen Sie **Hochladen** aus, um mit dem Hochladen zu beginnen.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/upload.png)
 
-Das Hochladen kann einen Moment dauern.
+Der Uploadprozess kann einen Moment dauern.
 
-Nachdem der Vorgang abgeschlossen ist, navigieren Sie zurück in Ihren Datencontainer, um das Hochladen der Textdateien zu bestätigen.
+Kehren Sie nach Abschluss des Uploads zu Ihrem Datencontainer zurück, und überprüfen Sie, ob die Textdateien hochgeladen wurden.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/clinicalfolder.png)
 
 ## <a name="create-a-search-service"></a>Erstellen eines Suchdiensts
 
-Azure Search ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für Ihre Daten in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet.
+Azure Search ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von Suchfunktionen für Ihre Daten bietet.
 
-Wenn Sie mit dem Erstellen eines Suchdiensts nicht vertraut sind, folgen hier die erforderlichen Schritte:
+In diesem Tutorial verwenden Sie einen Suchdienst, um die aus „clinicaltrials.gov“ abgerufenen Textdateien zu durchsuchen.
 
-1. Navigieren Sie zum Speicherkonto im Azure-Portal.
+1. Wechseln Sie im Azure-Portal zu Ihrem Speicherkonto.
 
-2. Scrollen Sie nach unten, und klicken Sie unter **BLOB-DIENST** auf **Azure Search hinzufügen**.
+2. Scrollen Sie nach unten, und wählen Sie unter **BLOB-DIENST** die Option **Azure Search hinzufügen** aus.
 
 3. Wählen Sie unter **Daten importieren** die Option **Dienst auswählen** aus.
 
@@ -117,7 +101,7 @@ Wenn Sie mit dem Erstellen eines Suchdiensts nicht vertraut sind, folgen hier di
 
 5. Geben Sie in **Neuer Suchdienst** einen eindeutigen Namen für Ihren Suchdienst in das Feld **URL** ein.
 
-6. Wählen Sie unter **Ressourcengruppe** die Option **Vorhandene verwenden** und dann die Ressourcengruppe aus, die Sie zuvor erstellt haben.
+6. Aktivieren Sie unter **Ressourcengruppe** das Optionsfeld **Vorhandene verwenden**, und wählen Sie die zuvor erstellte Ressourcengruppe aus.
 
 7. Wählen Sie für **Tarif** den **Free**-Tarif aus, und klicken Sie dann auf **Auswählen**.
 
@@ -129,25 +113,19 @@ Wenn Sie mit dem Erstellen eines Suchdiensts nicht vertraut sind, folgen hier di
 
 Nachdem Sie jetzt über einen Suchdienst verfügen, können Sie ihn an Ihren Blobspeicher anfügen. Dieser Abschnitt führt Sie durch den Prozess zum Auswählen einer Datenquelle, zum Erstellen eines Index und zum Erstellen eines Indexers.
 
-1. Navigieren Sie zum Speicherkonto.
+1. Wechseln Sie zum Speicherkonto.
 
 2. Wählen Sie unter **BLOB-DIENST** die Option **Azure Search hinzufügen** aus.
 
-3. Wählen Sie in **Daten importieren** die Option **Suchdienst** aus, und klicken Sie dann auf den Suchdienst, den Sie im vorherigen Abschnitt erstellt haben. Dadurch wird **Neue Datenquelle** geöffnet.
+3. Wählen Sie unter **Daten importieren** die Option **Suchdienst** aus, und klicken Sie dann auf den Suchdienst, den Sie im vorherigen Abschnitt erstellt haben. Der Bereich **Neue Datenquelle** wird geöffnet.
 
-### <a name="new-data-source"></a>Neue Datenquelle
+### <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
   Eine Datenquelle gibt an, welche Daten indiziert werden und wie der Zugriff auf die Daten erfolgt. Eine Datenquelle kann von demselben Suchdienst mehrmals verwendet werden.
 
 1. Geben Sie einen Namen für die Datenquelle ein. Wählen Sie unter **Zu extrahierende Daten** die Option **Inhalt und Metadaten** aus. Die Datenquelle gibt an, welche Teile des Blobs indiziert werden.
-    
-    a. In Ihren eigenen zukünftigen Szenarien können Sie auch **Nur Speichermetadaten** auswählen. Sie würden diese Auswahl treffen, wenn Sie die zu indizierenden Daten auf standardmäßige Blob-Eigenschaften oder benutzerdefinierte Eigenschaften einschränken möchten.
-    
-    b. Sie könne auch **Alle Metadaten** auswählen, um sowohl standardmäßige Blob-Eigenschaften als auch *alle* inhaltstypspezifische Metadaten abzurufen. 
 
-2. Da es sich bei den von Ihnen verwendeten Blobs um Textdateien handelt, legen Sie für **Analysemodus** den Wert **Text** fest.
-    
-    a. In eigenen zukünftigen Szenarien möchten Sie möglicherweise in Abhängigkeit von den Inhalten Ihrer Blobs [andere Analysemodi](../../search/search-howto-indexing-azure-blob-storage.md) auswählen.
+2. Da es sich bei den von Ihnen verwendeten Blobs um Textdateien handelt, legen Sie **Analysemodus** auf **Text** fest.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/datasources.png)
 
@@ -155,48 +133,48 @@ Nachdem Sie jetzt über einen Suchdienst verfügen, können Sie ihn an Ihren Blo
 
 4. Wählen Sie Ihr Speicherkonto und dann den Container aus, den Sie zuvor erstellt haben.
 
-5. Klicken Sie auf **Auswählen**, um zu **Neue Datenquelle** zurückzukehren, und wählen Sie dann **OK** aus, um den Vorgang fortzusetzen.
-
   ![Unstrukturierte Suche](media/storage-unstructured-search/datacontainer.png)
+
+5. Klicken Sie auf **Auswählen**, um zu **Neue Datenquelle** zurückzukehren, und wählen Sie dann **OK** aus, um fortzufahren.
 
 ### <a name="configure-the-index"></a>Konfigurieren des Index
 
-  Ein Index besteht aus einer Sammlung von Feldern aus Ihrer Datenquelle, die durchsucht werden können. Der Index teilt dem Suchdienst mit, auf welche Weise Ihre Daten durchsucht werden sollen.
+  Ein Index besteht aus einer Sammlung von Feldern aus Ihrer Datenquelle, die durchsucht werden können. Sie konfigurieren Parameter für diese Felder, damit der Suchdienst weiß, mit welchen Methoden Ihre Daten durchsucht werden sollen.
 
-1. Wählen Sie in **Daten importieren** die Option **Zielindex anpassen** aus.
- 
+1. Wählen Sie unter **Daten importieren** die Option **Zielindex anpassen** aus.
+
 2. Geben Sie im Feld **Indexname** einen Namen für Ihren Index ein.
 
-3. Aktivieren Sie das Kontrollkästchen **Abrufbar** des Attributs unter **metadata_storage_name**.
+3. Aktivieren Sie unter **metadata_storage_name** das Kontrollkästchen des Attributs **Abrufbar**.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/valuestoselect.png)
 
-4. Klicken Sie auf **OK**, um **Indexer erstellen** zu öffnen.
+4. Klicken Sie auf **OK**, um die Seite **Indexer erstellen** zu öffnen.
 
-Die Parameter des Index und die Attribute, die Sie diesen Parametern zuweisen, sind wichtig. Die Parameter geben an, *welche* Daten gespeichert werden, während die Attribute angeben, *wie* die Daten gespeichert werden.
+Die Parameter des Index und die Attribute, die Sie diesen Parametern zuweisen, sind wichtig. Die Parameter legen fest, *welche* Daten gespeichert werden, und die Attribute bestimmen, *wie* diese Daten gespeichert werden.
 
 Die Spalte **FELDNAME** enthält die Parameter. Die folgende Tabelle enthält eine Liste der verfügbaren Attribute und deren Beschreibungen.
 
-### <a name="field-attributes"></a>Feldattribute
+#### <a name="field-attributes"></a>Feldattribute
+
 | Attribut | BESCHREIBUNG |
 | --- | --- |
 | *Schlüssel* |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
 | *Abrufbar* |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |
 | *Filterbar* |Ermöglicht die Verwendung des Felds in Filterabfragen. |
 | *Sortierbar* |Ermöglicht einer Abfrage das Sortieren von Suchergebnissen mithilfe dieses Felds. |
-| *Facettierbar* |Ermöglicht die Verwendung eines Felds in einer Facettennavigationsstruktur für benutzerdefiniertes Filtern. Repetitive Werte, mit denen sich mehrere Dokumente zu einer Gruppe zusammenfassen lassen (etwa mehrere Dokumente der gleichen Marken- oder Dienstleistungskategorie), sind in der Regel am besten für die Verwendung als Facetten geeignet. |
+| *Facettierbar* |Ermöglicht die Verwendung eines Felds in einer Facettennavigationsstruktur für benutzerdefiniertes Filtern. Felder mit repetitiven Werten, die zum Gruppieren von Dokumenten verwendet werden können (z. B. mehrere Dokumente der gleichen Marken- oder Dienstkategorie), eignen sich in der Regel am besten als Facetten. |
 | *Durchsuchbar* |Markiert das Feld als in die Volltextsuche einbeziehbar. |
 
-
 ### <a name="create-an-indexer"></a>Erstellen eines Indexers
-    
+
   Ein Indexer verbindet eine Datenquelle mit einem Suchindex und stellt einen Zeitplan zum erneuten Indizieren Ihrer Daten bereit.
 
 1. Geben Sie einen Namen in das Feld **Name** ein, und wählen Sie **OK** aus.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/exindexer.png)
 
-2. Sie gelangen zurück zu **Daten importieren**. Wählen Sie **OK** aus, um den Verbindungsprozess abzuschließen.
+2. Der Bereich **Daten importieren** wird wieder angezeigt. Wählen Sie **OK** aus, um den Verbindungsprozess abzuschließen.
 
 Sie haben Ihren Blob jetzt erfolgreich mit dem Suchdienst verbunden. Es dauert einige Minuten, bis das Portal anzeigt, dass der Index aufgefüllt ist. Der Suchdienst beginnt jedoch sofort mit der Indizierung, daher können Sie unmittelbar mit der Suche beginnen.
 
@@ -206,53 +184,54 @@ Sie haben Ihren Blob jetzt erfolgreich mit dem Suchdienst verbunden. Es dauert e
 
 Die folgenden Schritte zeigen Ihnen, wo Sie den Suchexplorer finden. Zudem werden einige Beispielabfragen bereitgestellt:
 
-1. Navigieren Sie zu allen Ressourcen, und suchen Sie Ihren neu erstellten Suchdienst.
+1. Navigieren Sie zu „Alle Ressourcen“, und suchen Sie nach dem neu erstellten Suchdienst.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/exampleurl.png)
 
-3. Wählen Sie Ihren Index aus, um ihn zu öffnen. 
+2. Wählen Sie Ihren Index aus, um ihn zu öffnen.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/overview.png)
 
-4. Wählen Sie **Suchexplorer** aus, um den Suchexplorer zu öffnen, in dem Sie Liveabfragen für Ihre Daten ausführen können.
+3. Wählen Sie **Suchexplorer** aus, um den Suchexplorer zu öffnen, in dem Sie Liveabfragen für Ihre Daten ausführen können.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/indexespane.png)
 
-5. Wählen Sie **Suchen** aus, während das Feld für die Abfragezeichenfolge leer ist. Eine leere Abfrage gibt *alle* Daten aus Ihren Blobs zurück.
+4. Wählen Sie **Suchen** aus, während das Feld für die Abfragezeichenfolge leer ist. Eine leere Abfrage gibt *alle* Daten aus Ihren Blobs zurück.
 
   ![Unstrukturierte Suche](media/storage-unstructured-search/emptySearch.png)
 
-### <a name="full-text-search"></a>Volltextsuche 
+### <a name="perform-a-full-text-search"></a>Durchführen einer Volltextsuche
 
-Geben Sie „Kurzsichtigkeit“ in das Feld **Abfragezeichenfolge** ein, und wählen Sie dann **Suchen** aus. Dadurch wird eine Suche über den Inhalt der Dateien initiiert und eine Teilmenge des Inhalts zurückgegeben, die das Wort „Kurzsichtigkeit“ enthält.
+Geben Sie **Kurzsichtigkeit** in das Feld **Abfragezeichenfolge** ein, und wählen Sie dann **Suchen** aus. Dadurch wird eine Suche im Inhalt der Dateien gestartet und eine Teilmenge des Inhalts zurückgegeben, der das Wort „Kurzsichtigkeit“ enthält.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/secondMyopia.png) 
+  ![Unstrukturierte Suche](media/storage-unstructured-search/secondMyopia.png)
 
-### <a name="system-properties-search"></a>Suchen von Systemeigenschaften
+### <a name="perform-a-system-properties-search"></a>Durchführen einer Suche nach Systemeigenschaften
 
-Sie können auch Abfragen erstellen, die mithilfe des Parameters `$select` nach Systemeigenschaften suchen. Geben Sie `$select=metadata_storage_name` für die Abfragezeichenfolge ein, und drücken Sie die EINGABETASTE, wodurch nur das betreffende Feld zurückgegeben wird.
-    
+Neben einer Volltextsuche können Sie auch Abfragen erstellen, die mithilfe des Parameters `$select` nach Systemeigenschaften suchen.
+
+Geben Sie `$select=metadata_storage_name` als Abfragezeichenfolge ein, und drücken Sie die **EINGABETASTE**. Dadurch wird nur das betreffende Feld zurückgegeben.
+
 Die URL wird direkt von der Abfragezeichenfolge geändert, daher sind Leerzeichen nicht zulässig. Verwenden Sie ein Komma, um mehrere Felder zu suchen. Beispiel: `$select=metadata_storage_name,metadata_storage_path`
-    
+
 Der Parameter `$select` kann nur mit Feldern verwendet werden, die beim Definieren des Index als „abrufbar“ markiert wurden.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/metadatasearchunstructured.png) 
+  ![Unstrukturierte Suche](media/storage-unstructured-search/metadatasearchunstructured.png)
 
 Sie haben dieses Tutorial jetzt abgeschlossen und verfügen über einen durchsuchbaren Satz von unstrukturierten Daten.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Am einfachsten lassen sich die erstellten Ressourcen entfernen, indem Sie die Ressourcengruppe löschen. Beim Entfernen der Ressourcengruppe werden auch alle in der Gruppe enthaltenen Ressourcen gelöscht. Im folgenden Beispiel wird durch Entfernen der Ressourcengruppe das Speicherkonto zusammen mit der Ressourcengruppe entfernt.
+
+1. Navigieren Sie im Azure-Portal zur Liste der Ressourcengruppen in Ihrem Abonnement.
+2. Wählen Sie die Ressourcengruppe aus, die Sie löschen möchten.
+3. Klicken Sie auf die Schaltfläche **Ressourcengruppe löschen**, und geben Sie den Namen der Ressourcengruppe in das entsprechende Feld ein.
+4. Klicken Sie auf **Löschen**.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zum Suchen von unstrukturierten Daten mit Azure Search erhalten. Dazu zählen die folgenden Schritte:
-
-> [!div class="checklist"]
-> * Erstellen einer Ressourcengruppe
-> * Speicherkonto erstellen
-> * Erstellen eines Containers
-> * Hochladen von Daten in Ihren Container
-> * Erstellen eines Suchdiensts
-> * Verwenden des Suchdiensts zum Suchen Ihres Containers
-
-Folgen Sie diesem Link, um weitere Informationen zum Indizieren von Dokumenten mit Azure Search zu erhalten.
+Im folgenden Artikel erfahren Sie mehr über das Indizieren von Dokumenten mit Azure Search:
 
 > [!div class="nextstepaction"]
 > [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](../../search/search-howto-indexing-azure-blob-storage.md)
