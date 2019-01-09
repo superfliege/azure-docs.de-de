@@ -10,16 +10,16 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: 9cd1a8a095c697c4baeaa435f80c136ce49e0313
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e14da7dff62d85c730034b620a6168b3d9b3dde7
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098575"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752689"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Was ist Azure Stream Analytics?
 
-Azure Stream Analytics ist ein Ereignisverarbeitungsmodul, mit dem Sie große Datenmengen untersuchen können, die von Geräten gestreamt werden. Eingehende Daten können von Geräten, Sensoren, Websites, Feeds sozialer Medien, Anwendungen und anderen Quellen stammen. Außerdem werden das Extrahieren der Informationen aus Datenströmen, das Identifizieren von Mustern sowie Beziehungen unterstützt. Sie können diese Muster dann verwenden, um für den weiteren Verlauf andere Aktionen auszulösen (z.B. Warnungen), Informationen per Feed an ein Berichterstellungstool zu senden oder diese zur späteren Verwendung zu speichern.
+Azure Stream Analytics ist ein Ereignisverarbeitungsmodul, mit dem Sie große Datenmengen untersuchen können, die von Geräten gestreamt werden. Eingehende Daten können von Geräten, Sensoren, Websites, Feeds sozialer Medien, Anwendungen und anderen Quellen stammen. Außerdem werden das Extrahieren der Informationen aus Datenströmen, das Identifizieren von Mustern sowie Beziehungen unterstützt. Sie können diese Muster dann verwenden, um für den weiteren Verlauf andere Aktionen auszulösen, z.B. das Erstellen von Warnungen, Senden von Informationen per Feed an ein Berichterstellungstool oder Speichern der Daten zur späteren Verwendung.
 
 Unten sind einige Beispiele für die Verwendungsmöglichkeiten von Azure Stream Analytics angegeben: 
 
@@ -31,13 +31,13 @@ Unten sind einige Beispiele für die Verwendungsmöglichkeiten von Azure Stream 
 
 ## <a name="how-does-stream-analytics-work"></a>Funktionsweise von Stream Analytics
 
-Bei Azure Stream Analytics wird mit einer Quelle mit Streamingdaten begonnen, die in einem Azure Event Hub oder Azure IoT Hub oder aus einem Datenspeicher wie Azure Blob Storage erfasst werden. Zum Untersuchen der Datenströme erstellen Sie einen Stream Analytics-Auftrag, der die Eingabequelle für das Streamen von Daten angibt. Im Auftrag ist auch eine Transformationsabfrage angegeben, mit der definiert wird, wie nach Daten, Mustern oder Beziehungen gesucht werden soll. Die Transformationsabfrage nutzt eine SQL-ähnliche Abfragesprache, die verwendet wird, um Streamingdaten über einen bestimmten Zeitraum zu filtern, zu sortieren, zu aggregieren und zu verknüpfen. Beim Ausführen des Auftrags können Sie die Optionen für die Ereignissortierung und beim Durchführen von Aggregationsvorgängen die Dauer der Zeitfenster anpassen.
+Bei Azure Stream Analytics wird mit einer Quelle mit Streamingdaten begonnen, die in einem Azure Event Hub oder Azure IoT Hub oder aus einem Datenspeicher wie Azure Blob Storage erfasst werden. Zum Untersuchen der Datenströme erstellen Sie einen Stream Analytics-Auftrag, der die Eingabequelle für das Streamen von Daten angibt. Im Auftrag ist auch eine Transformationsabfrage angegeben, mit der definiert wird, wie nach Daten, Mustern oder Beziehungen gesucht werden soll. Für die Transformationsabfrage wird SQL-Abfragesprache verwendet, damit Streamingdaten für einen bestimmten Zeitraum leicht gefiltert, sortiert, aggregiert und eingebunden werden können. Beim Ausführen des Auftrags können Sie die Optionen für die Ereignissortierung und beim Durchführen von Aggregationsvorgängen die Dauer der Zeitfenster anpassen.
 
 Nach der Analyse der eingehenden Daten geben Sie eine Ausgabe für die transformierten Daten an und können steuern, was als Reaktion auf die analysierten Informationen erfolgen soll. Beispielsweise können Sie folgende Aktionen durchführen:
 
-* Senden von Daten an eine überwachte Warteschlange, um nachgeschaltete benutzerdefinierte Workflows auszulösen
+* Senden von Daten an eine überwachte Warteschlange, um nachgeschaltete Warnungen oder benutzerdefinierte Workflows auszulösen
 * Senden von Daten an das Power BI-Dashboard für die Echtzeitvisualisierung
-* Archivieren von Daten unter anderen Azure-Speicherdiensten
+* Speichern von Daten unter anderen Azure-Speicherdiensten, damit Sie ein Machine Learning-Modell basierend auf Verlaufsdaten trainieren oder Batchanalysen durchführen können
 
 In der folgenden Abbildung ist die Stream Analytics-Pipeline dargestellt. Sie können für Ihren Stream Analytics-Auftrag alle oder nur bestimmte Ein- und Ausgaben verwenden. In dieser Abbildung ist zu sehen, wie Daten an Stream Analytics gesendet, analysiert und zur Durchführung von anderen Aktionen, z.B. Speicherung oder Darstellung, weitergeleitet werden:
 
@@ -45,7 +45,7 @@ In der folgenden Abbildung ist die Stream Analytics-Pipeline dargestellt. Sie k�
 
 ## <a name="key-capabilities-and-benefits"></a>Wichtige Funktionen und Vorteile
 
-Azure Stream Analytics ist benutzerfreundlich, flexibel, zuverlässig und auf jede Auftragsgröße skalierbar. Die Anwendung ist übergreifend für mehrere Rechenzentren und Sovereign Clouds verfügbar. In der folgenden Abbildung sind die wichtigsten Funktionen von Azure Stream Analytics dargestellt:
+Azure Stream Analytics ist benutzerfreundlich, flexibel, zuverlässig und auf jede Auftragsgröße skalierbar. Dieses Modul steht übergreifend für mehrere Azure-Regionen zur Verfügung. In der folgenden Abbildung sind die wichtigsten Funktionen von Azure Stream Analytics dargestellt:
 
 ![Wichtige Funktionen von Stream Analytics](./media/stream-analytics-introduction/stream-analytics-key-capabilities.png)
 
@@ -67,18 +67,26 @@ Sie können die Funktionen der Abfragesprache erweitern, indem Sie zusätzliche 
 
 Azure Stream Analytics ist ein vollständig verwaltetes serverloses Angebot (PaaS) in Azure. Dies bedeutet, dass Sie zum Ausführen Ihrer Aufträge keine Hardware bereitstellen und keine Cluster verwalten müssen. Azure Stream Analytics übernimmt die gesamte Verwaltung Ihres Auftrags, indem komplexe Computecluster in der Cloud eingerichtet werden und die erforderliche Leistungsoptimierung für die Ausführung des Auftrags durchgeführt wird. Die Integration von Azure Event Hubs und Azure IoT Hub macht es für Aufträge möglich, Millionen von Ereignissen pro Sekunde zu erfassen, die von verbundenen Geräten, aus Klickstreams, aus Protokolldateien usw. stammen. Indem Sie die Partitionierungsfunktion von Event Hubs verwenden, können Sie Berechnungen in logische Schritte partitionieren, die bei Bedarf jeweils weiter partitioniert werden können, um die Skalierbarkeit zu erhöhen.
 
+## <a name="run-in-the-cloud-on-in-the-intelligent-edge"></a>Ausführung in der Cloud oder im Intelligent Edge-Bereich
+
+Für umfangreiche Analysen kann Azure Stream Analytics in der Cloud ausgeführt werden, und für Analysen mit sehr niedriger Latenz ist die Ausführung im Intelligent Edge-Bereich möglich.
+Für Azure Stream Analytics wird für die Cloud und den Intelligent Edge-Bereich die gleiche Abfragesprache genutzt, sodass Entwickler echte Hybridarchitekturen für die Datenstromverarbeitung erstellen können.
+
 ## <a name="low-total-cost-of-ownership"></a>Niedrige Gesamtbetriebskosten
 
 Stream Analytics ist ein kostenoptimierter Clouddienst. Es fallen keine Anfangskosten an. Sie zahlen nur für die [verbrauchten Streamingeinheiten](stream-analytics-streaming-unit-consumption.md) und die verarbeitete Datenmenge. Es sind keine verpflichtenden Maßnahmen oder Clusterbereitstellungen erforderlich. Sie können Ihre Streamingaufträge je nach Ihren geschäftlichen Anforderungen vertikal hoch- oder herunterskalieren. 
 
 ## <a name="reliability"></a>Zuverlässigkeit 
 
-Als verwalteter Dienst garantiert Stream Analytics eine Ereignisverarbeitung mit einer Verfügbarkeit von 99,9%, trägt zur Verhinderung von Datenverlusten bei und sorgt für Geschäftskontinuität. Ausführlichere Informationen finden Sie auf der Seite [SLA für Stream Analytics](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/). Stream Analytics kann pro Sekunde Millionen von Ereignissen verarbeiten und Ergebnisse mit kurzer Wartezeit liefern.
-Für Stream Analytics wird die Exactly-Once-Ereignisverarbeitung (genau einmal) und die At-Least-Once-Zustellung (mindestens einmal) von Ereignissen garantiert. Die Anwendung verfügt über integrierte Wiederherstellungsfunktionen für den Fall, dass für ein Ereignis ein Fehler auftritt. Stream Analytics kann den Status Ihres Auftrags intern beibehalten, und Sie können einen Auftrag ab dem letzten Ausgabezeitpunkt starten. Sie erhalten wiederholbare Ergebnisse, da immer die gleichen Ergebnisse bereitgestellt werden. Dieses Feature von Stream Analytics ermöglicht es Ihnen, zeitlich zurückzugehen und bei Ursachenanalysen Berechnungen zu untersuchen. 
+Für Stream Analytics wird die Exactly-Once-Ereignisverarbeitung (genau einmal) und die At-Least-Once-Zustellung (mindestens einmal) von Ereignissen garantiert, sodass Ereignisse niemals verloren gehen. Die Anwendung verfügt über integrierte Wiederherstellungsfunktionen für den Fall, dass für ein Ereignis ein Fehler auftritt. Darüber hinaus verfügt Stream Analytics über eine integrierte Prüfpunktausführung, um den korrekten Zustand Ihres Auftrags sicherzustellen, und Sie erhalten wiederholbare Ergebnisse.
+
+Als verwalteter Dienst wird für Stream Analytics eine Ereignisverarbeitung mit einer Verfügbarkeit von 99,9% garantiert. Weitere Informationen finden Sie auf der Seite [SLA für Stream Analytics](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/). 
 
 ## <a name="performance"></a>Leistung
 
-Azure Stream Analytics ist für hohe Leistung optimiert und kann Streamingdaten verarbeiten und In-Memory-Berechnungen durchführen. Sie können vertikal hoch- oder herunterskalieren, um Echtzeitanwendungen und komplexe Anwendungen für die Ereignisverarbeitung zu nutzen. Stream Analytics unterstützt die Leistung mithilfe der Partitionierung. Eine komplexe Abfrage kann parallelisiert und auf mehreren Streamingknoten ausgeführt werden. 
+Stream Analytics kann pro Sekunde Millionen von Ereignissen verarbeiten und Ergebnisse mit kurzer Wartezeit liefern.
+Sie können vertikal und horizontal hochskalieren, um große Echtzeitanwendungen und komplexe Anwendungen für die Ereignisverarbeitung zu nutzen. Stream Analytics unterstützt die Leistung durch eine Partitionierung, damit komplexe Abfragen parallelisiert und auf mehreren Streamingknoten ausgeführt werden können.
+Azure Stream Analytics basiert auf [Trill](https://github.com/Microsoft/Trill), einem Hochleistungsanalysemodul für In-Memory-Streaming, das in Zusammenarbeit mit der Forschungsabteilung von Microsoft entwickelt wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -86,3 +94,5 @@ Sie haben einen Überblick über Azure Stream Analytics erhalten. Nun können Si
 
 * [Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md)
 * [Erstellen eines Stream Analytics-Auftrags mithilfe von Azure PowerShell](stream-analytics-quick-create-powershell.md)
+* [Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
+

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: e84ac98508b791b4617ead2b6bf3b0edc549bdb6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5df59e886a2a4950e2ca6e1ef96487d3d59e7524
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151799"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718128"
 ---
 # <a name="getting-started"></a>Informationen zu Mobile Apps in Azure App Service
 Azure App Service ist ein vollständig verwaltetes PaaS-Angebot ([Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)) für professionelle Entwickler. Der Dienst stellt umfangreiche Funktionen für Web- und Integrationsszenarien sowie für mobile Szenarien bereit. 
@@ -43,9 +43,9 @@ Die folgenden Features sind für die cloudfähige mobile Entwicklung wichtig:
 
     Erfahren Sie mehr über die [Authentifizierungsfeatures].
 
-* **Datenzugriff:** Mobile Apps stellt eine für Mobilgeräte geeignete OData v3-Datenquelle bereit, die mit Azure SQL-Datenbank oder einer lokalen SQL Server-Instanz verknüpft ist. Da dieser Dienst auf Entity Framework basieren kann, ermöglicht er die einfache Integration in andere NoSQL- und SQL-Datenanbieter wie [Azure Table Storage], MongoDB, [Azure Cosmos DB] und SaaS-API-Anbieter wie Office 365 und Salesforce.com.
+* **Datenzugriff**: Mobile Apps stellt eine für Mobilgeräte geeignete OData v3-Datenquelle bereit, die mit Azure SQL-Datenbank oder einer lokalen SQL Server-Instanz verknüpft ist. Da dieser Dienst auf Entity Framework basieren kann, ermöglicht er die einfache Integration in andere NoSQL- und SQL-Datenanbieter wie [Azure Table Storage], MongoDB, [Azure Cosmos DB] und SaaS-API-Anbieter wie Office 365 und Salesforce.com.
 
-* **Offlinesynchronisierung:** Mit den Client-SDKs können Sie komfortabel robuste und reaktionsfähige mobile Anwendungen mit einem Offlinedataset erstellen. Dieses Dataset kann automatisch mit den Back-End-Daten synchronisiert werden, und es steht eine Unterstützung bei der Konfliktlösung zur Verfügung.
+* **Offlinesynchronisierung:** Mit den Client-SDKs können Sie komfortabel stabile und reaktionsfähige mobile Anwendungen mit einem Offlinedataset erstellen. Dieses Dataset kann automatisch mit den Back-End-Daten synchronisiert werden, und es steht eine Unterstützung bei der Konfliktlösung zur Verfügung.
 
   Erfahren Sie mehr über die [Datenfeatures].
 
@@ -53,22 +53,22 @@ Die folgenden Features sind für die cloudfähige mobile Entwicklung wichtig:
 
   Erfahren Sie mehr über die [Pushbenachrichtigungsfeatures].
 
-* **Client-SDKs:** Es wird ein umfassender Satz von Client-SDKs für die native Entwicklung ([iOS], [Android] und [Windows]), plattformübergreifende Entwicklung [(Xamarin.iOS und Xamarin.Android], [Xamarin.Forms]) und die Entwicklung von Hybridanwendungen ([Apache Cordova]) bereitgestellt. Jedes Client-SDK ist mit einer MIT-Lizenz erhältlich und ist ein Open-Source-SDK.
+* **Client-SDKs:** Es wird ein umfassender Satz von Client-SDKs für die native Entwicklung ([iOS], [Android] und [Windows]), plattformübergreifende Entwicklung [Xamarin.iOS und Xamarin.Android], [Xamarin.Forms]) und die Entwicklung von Hybridanwendungen ([Apache Cordova]) bereitgestellt. Jedes Client-SDK ist mit einer MIT-Lizenz erhältlich und ist ein Open-Source-SDK.
 
 ## <a name="azure-app-service-features"></a>Azure App Service-Features
 Die folgenden Plattformfeatures sind für mobile Produktionswebsites nützlich:
 
-* **Automatische Skalierung:** Mit App Service können Sie schnell zentral oder horizontal hochskalieren, um beliebige eingehende Datenlasten von Kunden zu bewältigen. Wählen Sie Anzahl und Größe der virtuellen Computer manuell aus, oder richten Sie eine automatische Skalierung zur last- oder zeitplanbasierten Skalierung Ihres mobilen App-Back-Ends ein.
+* **Automatische Skalierung**: Mit App Service können Sie schnell zentral oder horizontal hochskalieren, um beliebige eingehende Datenlasten von Kunden zu bewältigen. Wählen Sie Anzahl und Größe der virtuellen Computer manuell aus, oder richten Sie eine automatische Skalierung zur last- oder zeitplanbasierten Skalierung Ihres mobilen App-Back-Ends ein.
 
-  Weitere Informationen zur automatischen Skalierung finden Sie [hier].
+  Weitere Informationen zur automatischen Skalierung finden Sie [Automatische Skalierung].
 
 * **Stagingumgebungen:** App Service kann mehrere Versionen Ihrer Website ausführen, um A/B-Tests, Produktionstests im Rahmen eines umfassenderen DevOps-Plans und direktes Staging eines neuen Back-Ends zu ermöglichen.
 
   Erfahren Sie mehr über [Stagingumgebungen].
 
-* **Continuous Deployment**: App Service kann in gängige Systeme für die _Quellcodeverwaltung_ (SCM) integriert werden, sodass Sie leicht eine neue Version Ihres Back-Ends bereitstellen können.
+* **Continuous Deployment:** App Service kann in gängige Systeme für die _Quellcodeverwaltung_ (SCM) integriert werden, sodass Sie leicht eine neue Version Ihres Back-Ends bereitstellen können.
 
-  Erfahren Sie mehr über [Bereitstellungsoptionen](../app-service/app-service-deploy-local-git.md).
+  Erfahren Sie mehr über [Bereitstellungsoptionen](../app-service/deploy-local-git.md).
 
 * **Virtuelles Netzwerk:** App Service kann eine Verbindung mit lokalen Ressourcen über ein virtuelles Netzwerk, über Azure ExpressRoute oder über Hybridverbindungen herstellen.
 
@@ -76,18 +76,18 @@ Die folgenden Plattformfeatures sind für mobile Produktionswebsites nützlich:
 
 * **Isolierte und dedizierte Umgebungen:** Zur sicheren Ausführung von Azure App Service-Apps können Sie App Service in einer vollständig isolierten und dedizierten Umgebung betreiben. Diese Umgebung eignet sich perfekt für Anwendungsworkloads, die eine umfassende Skalierung, Isolierung oder sicheren Netzwerkzugriff benötigen.
 
-  Weitere Informationen zu App Service-Umgebungen finden Sie [hier].
+  Weitere Informationen zu App Service-Umgebungen finden Sie [App Service-Umgebungen].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Absolvieren Sie das [Einstiegstutorial], um mit der Verwendung von Mobile Apps in Azure App Service zu beginnen. Dieses Tutorial vermittelt die Grundlagen für die Erstellung eines mobilen Back-Ends und Clients Ihrer Wahl. Außerdem erfahren Sie, wie Sie Authentifizierung, Offlinesynchronisierung und Pushbenachrichtigungen integrieren. Das Tutorial kann mehrmals durchlaufen werden, um die einzelnen Clientanwendungen abzudecken.
+Absolvieren Sie das [Erste Schritte], um mit der Verwendung von Mobile Apps in Azure App Service zu beginnen. Dieses Tutorial vermittelt die Grundlagen für die Erstellung eines mobilen Back-Ends und Clients Ihrer Wahl. Außerdem erfahren Sie, wie Sie Authentifizierung, Offlinesynchronisierung und Pushbenachrichtigungen integrieren. Das Tutorial kann mehrmals durchlaufen werden, um die einzelnen Clientanwendungen abzudecken.
 
 Weitere Informationen zu Mobile Apps finden Sie in unserem [Lernpfad].
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service].
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[Einstiegstutorial]: app-service-mobile-ios-get-started.md
+[Erste Schritte]: app-service-mobile-ios-get-started.md
 [Azure Table Storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
 [Authentifizierungsfeatures]: ./app-service-mobile-auth.md
@@ -96,13 +96,13 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
-[(Xamarin.iOS und Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
+[Xamarin.iOS und Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[hier]: ../app-service/web-sites-scale.md
-[Stagingumgebungen]: ../app-service/web-sites-staged-publishing.md
+[Automatische Skalierung]: ../app-service/web-sites-scale.md
+[Stagingumgebungen]: ../app-service/deploy-staging-slots.md
 [Hybridverbindungen]: ../biztalk-services/integration-hybrid-connection-overview.md
-[virtuelle Netzwerke]: ../app-service/web-sites-integrate-with-vnet.md
+[Virtuelle Netzwerke]: ../app-service/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
-[hier]: ../app-service/environment/intro.md
+[App Service-Umgebungen]: ../app-service/environment/intro.md
 [Lernpfad]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/

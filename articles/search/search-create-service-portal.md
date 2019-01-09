@@ -6,19 +6,23 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315978"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002636"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
 
-Erfahren Sie, wie Sie einen Azure Search-Dienst im Portal erstellen bzw. bereitstellen. 
+Azure Search ist eine eigenständige Ressource, die zum Hinzufügen einer Suchoberfläche zu benutzerdefinierten Apps verwendet wird. Azure Search kann problemlos in viele andere Azure-Dienste integriert werden, kann aber auch alleine, mit Apps, die auf Netzwerkservern gehostet werden, oder mit Software, die auf anderen Cloudplattformen ausgeführt wird, verwendet werden. 
+
+In diesem Artikel erfahren Sie, wie Sie eine Azure Search-Ressource im [Azure-Portal](https://portal.azure.com/) erstellen. 
+
+![Azure Search-Ressource im Portal](media/search-create-service-portal/azure-search-resource-label.png)
 
 Bevorzugen Sie PowerShell? Verwenden Sie die Azure Resource Manager-[Dienstvorlage](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Hilfe zu den ersten Schritten mit Hintergrundinformationen finden Sie unter [Verwalten von Azure Search mit PowerShell](search-manage-powershell.md).
 
@@ -31,13 +35,15 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 ## <a name="find-azure-search"></a>Aufrufen von Azure Search
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+ Ressource erstellen“).
-3. Wählen Sie **Web** > **Azure Search** aus.
+3. Suchen Sie mithilfe der Suchleiste nach „Azure Search“, oder navigieren über **Web** > **Azure Search** zu der Ressource.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>Benennen des Diensts und des URL-Endpunkts
 
-Ein Dienstname ist Teil eines URL-Endpunkts, für den API-Aufrufe ausgegeben werden: `https://your-service-name.search.windows.net`. Geben Sie den Dienstnamen im Feld **URL** ein. 
+Ein Dienstname ist Teil eines URL-Endpunkts, für den API-Aufrufe ausgegeben werden: `https://your-service-name.search.windows.net`. Geben Sie den Dienstnamen im Feld **URL** ein.
+
+Wenn der Endpunkt beispielsweise `https://my-app-name-01.search.windows.net` sein soll, geben Sie `my-app-name-01` ein.
 
 Anforderungen an Dienstnamen:
    * Er muss innerhalb des Namespaces „search.windows.net“ eindeutig sein
@@ -51,6 +57,8 @@ Wenn Sie über mehrere Abonnements verfügen, wählen Sie ein Abonnement aus, in
 
 ## <a name="select-a-resource-group"></a>Auswählen einer Ressourcengruppe
 Eine Ressourcengruppe ist eine Sammlung von Azure-Diensten und -Ressourcen, die zusammen verwendet werden. Wenn Sie beispielsweise mit Azure Search eine SQL-Datenbank indizieren, müssen beide Dienste der gleichen Ressourcengruppe angehören.
+
+Wenn Sie keine Ressourcen in einer einzigen Gruppe kombinieren oder vorhandene Ressourcengruppen mit Ressourcen gefüllt sind, die in nicht verbundenen Lösungen verwendet werden, erstellen Sie eine neue Ressourcengruppe nur für die Azure Search-Ressource.
 
 > [!TIP]
 > Wenn eine Ressourcengruppe gelöscht wird, werden auch die darin befindlichen Dienste gelöscht. Bei Prototypprojekten, die mehrere Dienste verwenden, sollten Sie all diese Dienste in die gleiche Ressourcengruppe platzieren, um das Bereinigen nach Abschluss des Projekts zu vereinfachen. 
@@ -109,7 +117,7 @@ Obwohl die meisten Kunden nur einen Dienst nutzen, kann die Dienstredundanz wom�
 Ein zweiter Dienst ist für Hochverfügbarkeit nicht vonnöten. Hochverfügbarkeit für Abfragen wird erreicht, wenn Sie zwei oder mehr Replikate im gleichen Dienst verwenden. Replikatupdates sind sequenziell. Das bedeutet, dass mindestens eines betriebsfähig ist, wenn ein Dienstupdate ausgeführt wird. Weitere Informationen zur Verfügbarkeit finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nach der Bereitstellung eines Azure Search-Diensts können Sie einen [Index definieren](search-what-is-an-index.md), damit Sie Ihre Daten hochladen und durchsuchen können. 
+Nach dem Bereitstellen eines Azure Search-Diensts können Sie im Portal mit dem Erstellen des ersten Index fortfahren.
 
 > [!div class="nextstepaction"]
-> [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md)
+> [Tutorial: Importieren von Daten, Indexieren und Ausführen von Abfragen im Portal](search-get-started-portal.md)
