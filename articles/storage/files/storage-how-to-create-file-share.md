@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 83829264f16fb295a1f5fa4f2efc74d8b35ec6eb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 318ecf03853e151040622ef0863f4c6986a96bd2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309190"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628509"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem  [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -34,14 +34,17 @@ Sie können eine Azure-Dateifreigabe entweder unter Verwendung eines bereits vor
 3. **Geben Sie einen Namen und ein Kontingent an. Der aktuelle maximale Wert für das Kontingent beträgt 5 TiB:**    
     ![Geben Sie einen Namen und das gewünschte Kontingent für die neue Dateifreigabe an.](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
-4. **Zeigen Sie Ihre neuen Dateifreigabe an:**![Zeigen Sie Ihre neuen Dateifreigabe an.](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
+4. **Zeigen Sie Ihre neue Dateifreigabe an:**  ![Anzeigen Ihrer neuen Dateifreigabe](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
 
-5. **Laden Sie eine Datei hoch:**![Laden Sie eine Datei hoch.](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
+5. **Laden Sie eine Datei hoch:**  ![Hochladen einer Datei](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
 
-6. **Navigieren Sie zu Ihrer Dateifreigabe, und verwalten Sie Ihre Verzeichnisse und Dateien:**![Durchsuchen Sie die Dateifreigabe.](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
+6. **Navigieren Sie zu Ihrer Dateifreigabe, und verwalten Sie Ihre Verzeichnisse und Dateien:**  ![Durchsuchen der Dateifreigabe](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
 
 
 ## <a name="create-file-share-through-powershell"></a>Erstellen einer Dateifreigabe mithilfe von PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese anschließend, um die Verwendung von PowerShell vorzubereiten. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter  [Installieren und Konfigurieren von Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 
 > [!Note]  
@@ -50,13 +53,13 @@ Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese ansch
 1. **Erstellen Sie einen Kontext für Ihr Speicherkonto und den Schlüssel:** Der Kontext kapselt den Speicherkontonamen und den Kontoschlüssel. Anweisungen zum Kopieren Ihres Kontoschlüssels aus dem  [Azure-Portal](https://portal.azure.com/) finden Sie unter  [Zugriffsschlüssel](../common/storage-account-manage.md#access-keys).
 
     ```powershell
-    $storageContext = New-AzureStorageContext <storage-account-name> <storage-account-key>
+    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
     ```
     
 2. **Erstellen Sie eine neue Dateifreigabe:**    
     
     ```powershell
-    $share = New-AzureStorageShare logs -Context $storageContext
+    $share = New-AzStorageShare logs -Context $storageContext
     ```
 
 > [!Note]  

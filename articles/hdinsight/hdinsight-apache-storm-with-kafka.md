@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 1c2a61ba936fa86bb3acb560909b29cda762693c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 44ad80732d1e874ccec4ecc376b9ce9b513a3aa9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166573"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652370"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight
 
@@ -37,9 +37,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Kenntnisse im Erstellen von Kafka-Themen. Weitere Informationen finden Sie im Dokument [Schnellstart für Kafka in HDInsight](./kafka/apache-kafka-get-started.md).
 
-* Kenntnisse im Erstellen und Bereitstellen von Storm-Lösungen (Topologien). Dies betrifft insbesondere Topologien, die das [Flux](https://storm.apache.org/releases/current/flux.html)-Framework verwenden. Weitere Informationen finden Sie im Dokument [Erstellen von Storm-Topologie in Java](./storm/apache-storm-develop-java-topology.md).
+* Kenntnisse im Erstellen und Bereitstellen von Storm-Lösungen (Topologien). Dies betrifft insbesondere Topologien, die das [Apache Storm Flux](https://storm.apache.org/releases/current/flux.html)-Framework verwenden. Weitere Informationen finden Sie im Dokument zum [Erstellen einer Apache Storm-Topologie in Java](./storm/apache-storm-develop-java-topology.md).
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) oder höher HDInsight 3.5 oder höher erfordert Java 8.
+* [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) oder höher HDInsight 3.5 oder höher erfordert Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -54,7 +54,7 @@ Bei der Installation von Java und dem JDK auf Ihrer Entwicklungsworkstation kön
     * `JAVA_HOME\bin` (oder entsprechender Pfad)
     * Das Verzeichnis, in dem Maven installiert ist
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Für die in diesem Dokument beschriebenen Schritte wird eine Azure-Ressourcengruppe benötigt, die sowohl ein Cluster vom Typ „Storm in HDInsight“ als auch vom Typ „Kafka in HDInsight“ enthält. Diese Cluster befinden sich beide in einem virtuellen Azure-Netzwerk, damit der Storm-Cluster direkt mit dem Kafka-Cluster kommunizieren kann.
 > 
 > Der Einfachheit halber enthält dieses Dokument Links zu einer Vorlage, mit der die erforderlichen Azure-Ressourcen erstellt werden können. 
@@ -124,7 +124,7 @@ In diesem Tutorial werden zwei Topologien bereitgestellt:
 
 * Kafka-reader: Liest Daten aus Kafka und speichert sie im HDFS-kompatiblen Dateispeicher für den Storm-Cluster.
 
-    > [!WARNING] 
+    > [!WARNING]  
     > Damit Storm mit dem von HDInsight verwendeten HDFS-kompatiblen Speicher arbeiten kann, ist eine Skriptaktion erforderlich. Das Skript installiert mehrere JAR-Dateien im Pfad `extlib` für Storm. Die Vorlage in diesem Tutorial verwendet dieses Skript während der Clustererstellung automatisch.
     >
     > Wenn Sie nicht die Vorlage in diesem Dokument verwenden, um den Storm-Cluster zu erstellen, müssen Sie die Skriptaktion manuell in Ihrem Cluster anwenden.
@@ -141,7 +141,7 @@ Zur Laufzeit werden die folgenden Parameter für diese Topologien festgelegt:
 
 * `${kafka.zookeeper.hosts}`: Die Hosts, auf denen Zookeeper im Kafka-Cluster ausgeführt wird.
 
-* `${hdfs.url}`: Die Dateisystem-URL für die HDFSBolt-Komponente. Sie gibt an, ob die Daten in ein Azure Storage-Konto oder in Azure Data Lake Store geschrieben werden.
+* `${hdfs.url}`: Die Dateisystem-URL für die HDFSBolt-Komponente. Sie gibt an, ob die Daten in ein Azure Storage-Konto oder in Azure Data Lake Storage geschrieben werden.
 
 * `${hdfs.write.dir}`: Das Verzeichnis, in das die Daten geschrieben werden.
 
@@ -373,7 +373,7 @@ Das Projekt enthält eine Datei namens `dev.properties`, die zum Übergeben der 
 | `kafka.broker.hosts` | Die Kafka-Brokerhosts (Workerknoten) |
 | `kafka.topic` | Das von den Topologien verwendete Kafka-Thema |
 | `hdfs.write.dir` | Das Verzeichnis, in das die Kafka-reader-Topologie schreibt |
-| `hdfs.url` | Das vom Storm-Cluster verwendete Dateisystem Verwenden Sie für Azure Storage-Konten den Wert `wasb:///`. Verwenden Sie für Azure Data Lake Store den Wert `adl:///`. |
+| `hdfs.url` | Das vom Storm-Cluster verwendete Dateisystem Verwenden Sie für Azure Storage-Konten den Wert `wasb:///`. Verwenden Sie für Azure Data Lake Storage den Wert `adl:///`. |
 
 ## <a name="create-the-clusters"></a>Erstellen von Clustern
 
@@ -383,7 +383,7 @@ Das folgende Diagramm zeigt den Kommunikationsfluss zwischen Storm und Kafka:
 
 ![Diagramm mit Storm- und Kafka-Clustern in einem virtuellen Azure-Netzwerk](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Auf andere Dienste im Cluster, beispielsweise SSH und [Apache Ambari](https://ambari.apache.org/), kann über das Internet zugegriffen werden. Weitere Informationen zu den öffentlichen Ports, die für HDInsight verfügbar sind, finden Sie unter [Von HDInsight verwendete Ports und URIs](hdinsight-hadoop-port-settings-for-services.md).
 
 Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließenden Erstellen der Kafka- und Storm-Cluster in diesem die folgenden Schritte aus:
@@ -400,7 +400,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     * Kafka in HDInsight Version 3.6 (drei Workerknoten)
     * Storm in HDInsight Version 3.6 (drei Workerknoten)
 
-  > [!WARNING]
+  > [!WARNING]  
   > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten. Diese Vorlage erstellt einen Kafka-Cluster, der drei Workerknoten enthält.
 
 2. Befolgen Sie die nachstehende Anleitung, um die Einträge im Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
@@ -425,7 +425,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
 4. Aktivieren Sie zum Schluss **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus.
 
-> [!NOTE]
+> [!NOTE]  
 > Die Clustererstellung kann bis zu 20 Minuten dauern.
 
 ## <a name="build-the-topology"></a>Erstellen der Topologie
@@ -463,7 +463,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Im folgenden Bash-Beispiel wird angenommen, dass `$CLUSTERNAME` den Namen des __Kafka__-Clusters enthält. Außerdem wird angenommen, dass mindestens Version 1.5 von [jq](https://stedolan.github.io/jq/) installiert ist. Geben Sie bei entsprechender Aufforderung das Kennwort des Anmeldekontos für den Cluster ein.
 
     ```bash
@@ -474,7 +474,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Obwohl möglicherweise mehr als zwei Brokerhosts für den Cluster vorhanden sind, müssen Sie keine vollständige Liste aller Hosts für Clients angeben. Ein oder zwei genügen.
 
 2. Verwenden Sie eine der folgenden Methoden, um die Zookeeper-Brokerhosts für den __Kafka__-Cluster in HDInsight zu ermitteln:
@@ -490,7 +490,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Im folgenden Bash-Beispiel wird angenommen, dass `$CLUSTERNAME` den Namen des __Kafka__-Clusters enthält. Außerdem wird angenommen, das [jq](https://stedolan.github.io/jq/) installiert ist. Geben Sie bei entsprechender Aufforderung das Kennwort des Anmeldekontos für den Cluster ein.
 
     ```bash
@@ -501,7 +501,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
         zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Obwohl mehr als zwei Zookeeper-Knoten vorhanden sind, müssen Sie keine vollständige Liste aller Hosts für Clients angeben. Ein oder zwei genügen.
 
     Speichern Sie diesen Wert, da er später wieder verwendet wird.
@@ -512,8 +512,8 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-    > [!IMPORTANT]
-    > Der `hdfs.url`-Eintrag wurde für einen Cluster konfiguriert, der ein Azure Storage-Konto verwendet. Um diese Topologie mit einem Storm-Cluster zu verwenden, der Data Lake Store verwendet, ändern Sie diesen Wert von `wasb` in `adl`.
+    > [!IMPORTANT]  
+    > Der `hdfs.url`-Eintrag wurde für einen Cluster konfiguriert, der ein Azure Storage-Konto verwendet. Um diese Topologie mit einem Storm-Cluster zu verwenden, der Data Lake Storage verwendet, ändern Sie diesen Wert von `wasb` in `adl`.
 
 4. Speichern Sie die Datei `dev.properties`, und laden Sie sie anschließend mit dem folgenden Befehl in den **Storm**-Cluster hoch:
 
@@ -630,7 +630,7 @@ So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
 3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
 
-> [!WARNING]
+> [!WARNING]  
 > Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden.
 > 
 > Wenn Sie einen Kafka-Cluster in HDInsight löschen, werden auch alle in Kafka gespeicherten Daten gelöscht.

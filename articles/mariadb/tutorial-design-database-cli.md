@@ -1,22 +1,19 @@
 ---
 title: 'Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz mithilfe der Azure CLI'
 description: In diesem Tutorial wird das Erstellen und Verwalten des Servers und der Datenbank für Azure Database for MariaDB mithilfe der Azure CLI über die Befehlszeile erläutert.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2d715f89b56af822c2c1174cca0f2a9c1b847fc0
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: fa056dad052914e771251585cb426c70591aa235
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516332"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541190"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz mithilfe der Azure CLI
 
@@ -178,7 +175,7 @@ Zum Wiederherstellen benötigen Sie die folgenden Informationen:
 - Wiederherstellungspunkt: Wählen Sie einen Zeitpunkt vor der Änderung des Servers aus. Er darf nicht weiter zurückliegen als das älteste Sicherungsdatum der Quelldatenbank.
 - Zielserver: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
 - Quellserver: Geben Sie den Namen des Servers ein, von dem aus wiederhergestellt werden soll.
-- Speicherort: Sie können nicht die Region wählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
+- Standort: Sie können nicht die Region wählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver

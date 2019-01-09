@@ -8,20 +8,20 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: e26190b46a79d581e5996e51bfd104f1d4beb6f6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d741550fc64ef7544e33304f8608ad6e6ee3426e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094031"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723643"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Linux mit dem Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Ubuntu Linux 16.04. Sie verwenden das Cognitive Services [Speech SDK](speech-sdk.md), um Sprache über das Mikrofon Ihres Computers in Echtzeit in Text zu transkribieren. Die Anwendung wird mit dem [Speech SDK für Linux](https://aka.ms/csspeech/linuxbinary) und dem C++-Compiler Ihrer Linux-Distribution (z.B. `g++`) erstellt.
+In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Ubuntu Linux 16.04 oder 18.04. Sie verwenden das Cognitive Services [Speech SDK](speech-sdk.md), um Sprache über das Mikrofon Ihres Computers in Echtzeit in Text zu transkribieren. Die Anwendung wird mit dem [Speech SDK für Linux](https://aka.ms/csspeech/linuxbinary) und dem C++-Compiler Ihrer Linux-Distribution (z.B. `g++`) erstellt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,7 +31,7 @@ Sie benötigen einen Abonnementschlüssel für den Spracherkennungsdienst, um di
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.1.0`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.2.0`.
 
 Das Speech SDK für Linux kann verwendet werden, um sowohl 32-Bit- als auch 64-Bit-Anwendungen zu erstellen. Die erforderlichen Bibliotheken und Headerdateien können als TAR-Datei von https://aka.ms/csspeech/linuxbinary heruntergeladen werden.
 
@@ -129,16 +129,12 @@ Laden Sie das SDK wie folgt herunter, und installieren Sie es:
    We recognized: What's the weather like?
    ```
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Suchen Sie nach diesem Beispiel im Ordner `quickstart/cpp-linux`.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C++](how-to-recognize-intents-from-speech-cpp.md)
+> [C++-Beispiele auf GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Übersetzen von Sprache](how-to-translate-speech-csharp.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

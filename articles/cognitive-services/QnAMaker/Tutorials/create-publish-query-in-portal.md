@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 581c47d84466f37d7c7c3ad3e98ae1749f8d9524
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164431"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608646"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen über das QnA Maker-Portal
 
@@ -83,9 +83,9 @@ Für dieses Tutorial muss ein [QnA Maker-Dienst](../How-To/set-up-qnamaker-servi
 
 1. Wählen Sie die letzte Seite mit Fragen und Antworten vom Ende der Tabelle aus. Auf der Seite werden Fragen und Antworten der Persönlichkeit für Geplauder angezeigt. 
 
-1. Wählen Sie auf der Symbolleiste über der Liste mit Fragen und Antworten das Zahnradsymbol aus. Daraufhin werden die Filter für die einzelnen Fragen und Antworten angezeigt. Für Fragen im Plauderton ist bereits der Filter **editorial: chitchat** festgelegt. Dieser Filter wird zusammen mit der ausgewählten Antwort an die Clientanwendung zurückgegeben. Anhand dieses Filters kann die Clientanwendung (beispielsweise ein Chatbot) zusätzliche Verarbeitungsschritte oder Interaktionen mit dem Benutzer bestimmen.
+1. Wählen Sie auf der Symbolleiste über der Liste mit Fragen und Antworten das Metadatensymbol aus. Daraufhin werden die Metadatentags für die einzelnen Fragen und Antworten angezeigt. Für Fragen im Plauderton ist bereits das Metadatentag **editorial: chit-chat** festgelegt. Dieses Metadatentag wird zusammen mit der ausgewählten Antwort an die Clientanwendung zurückgegeben. Anhand dieser gefilterten Metadaten kann die Clientanwendung (beispielsweise ein Chatbot) zusätzliche Verarbeitungsschritte oder Interaktionen mit dem Benutzer bestimmen.
 
-    ![Anzeigen von Filtern](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![Anzeigen der Metadatentags](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. Wählen Sie auf der oberen Menüleiste die Option **Save and train** (Speichern und trainieren) aus.
 
@@ -171,7 +171,7 @@ Nachdem die Wissensdatenbank veröffentlicht wurde, wird der Endpunkt angezeigt.
    
     ```
 
-    Da die Frage `Thank you` exakt einer Frage im Plauderton entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Filter für Geplauder zurückgegeben.  
+    Da die Frage `Thank you` exakt einer Frage im Plauderton entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Geplauder zurückgegeben.  
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>Abfragen der Standardantwort mithilfe von Curl
 

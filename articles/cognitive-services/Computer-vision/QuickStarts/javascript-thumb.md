@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Generieren einer Miniaturansicht – REST, JavaScript: Maschinelles Sehen'
+title: 'Schnellstart: Generieren einer Miniaturansicht – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart generieren Sie eine Miniaturansicht von einem Bild, indem Sie die Maschinelles Sehen-API mit JavaScript verwenden.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 9d66e6cf7e858a28d3f78398f83228a7ccf7e5a7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 9d3d712afedf20c155b3d010f865a238d00ed90a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971001"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579140"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und JavaScript in der Maschinelles Sehen-API
 

@@ -1,18 +1,19 @@
 ---
-title: Erfassen von Ereignissen in einem Azure Digital Twins-Gebäudebereich | Microsoft-Dokumentation
+title: 'Tutorial: Erfassen von Ereignissen in einem Azure Digital Twins-Gebäudebereich | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Benachrichtigungen von Ihren Gebäudebereichen empfangen, indem Sie Azure Digital Twins in Logic Apps integrieren.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a52a3be8c3023893569e95b566a18c032be26459
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583260"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556015"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Tutorial: Empfangen von Benachrichtigungen von den Azure Digital Twins-Gebäudebereichen mit Logic Apps
 
@@ -174,7 +175,7 @@ Mit dem [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst können 
 
    c. Geben Sie im Feld **An** Ihre E-Mail-ID ein, um Benachrichtigungen zu erhalten. Geben Sie im **Betreff** den Text **Digital Twins-Benachrichtigung für schlechte Luftqualität in Gebäudebereich** ein. Wählen Sie dann **TopologyObjectId** in der Liste **Dynamischer Inhalt** für **JSON analysieren** aus.
 
-   d. Geben Sie im gleichen Fenster unter **Text** einen Text wie den folgenden ein: **In einem Raum wurde eine schlechte Luftqualität erkannt, und die Temperatur muss angepasst werden**. Sie können mit den Elementen in der Liste **Dynamischer Inhalt** genauere Details angeben.
+   d. Geben Sie im gleichen Fenster unter **Text** ungefähr folgenden Text ein: **In einem Raum wurde schlechte Luftqualität erkannt, und die Temperatur muss angepasst werden.** Sie können mit den Elementen in der Liste **Dynamischer Inhalt** genauere Details angeben.
 
    ![Logic Apps: Auswahl für „E-Mail senden“](./media/tutorial-facilities-events/logic-app-send-email.png)
 

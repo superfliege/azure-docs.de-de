@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7c1e07d73d110d5ef7f681486479ec65ff436b19
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408847"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716411"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
-Von [Azure App Service](app-service-web-overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. Außerdem verfügt App Service über integrierte Unterstützung für die [Benutzerauthentifizierung und -autorisierung](app-service-authentication-overview.md). In diesem Tutorial wird beschrieben, wie Sie Ihre Apps per App Service-Authentifizierung und -Autorisierung schützen. Es wird eine ASP.NET Core-App mit einem Angular.js-Front-End verwendet (aber nur zu Beispielzwecken). Für die App Service-Authentifizierung und -Autorisierung werden alle Sprachlaufzeiten unterstützt, und Sie erfahren im Tutorial, wie Sie diese auf Ihre bevorzugte Sprache anwenden.
+Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. Außerdem verfügt App Service über integrierte Unterstützung für die [Benutzerauthentifizierung und -autorisierung](overview-authentication-authorization.md). In diesem Tutorial wird beschrieben, wie Sie Ihre Apps per App Service-Authentifizierung und -Autorisierung schützen. Es wird eine ASP.NET Core-App mit einem Angular.js-Front-End verwendet (aber nur zu Beispielzwecken). Für die App Service-Authentifizierung und -Autorisierung werden alle Sprachlaufzeiten unterstützt, und Sie erfahren im Tutorial, wie Sie diese auf Ihre bevorzugte Sprache anwenden.
 
 Im Tutorial wird anhand der Beispiel-App veranschaulicht, wie Sie eine eigenständige App schützen (unter [Aktivieren der Authentifizierung und Autorisierung für die Back-End-App](#enable-authentication-and-authorization-for-back-end-app)).
 
@@ -105,7 +105,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>Übertragen von Git an Azure mithilfe von Push
 
-Führen Sie im _lokalen Terminalfenster_ die folgenden Git-Befehle aus, um die Bereitstellung für die Back-End-App durchzuführen. Ersetzen Sie _&lt;deploymentLocalGitUrl-of-back-end-app>_ durch die URL des Git-Remotespeicherorts, die Sie in [Erstellen von Azure-Ressourcen](#create-azure-resources) gespeichert haben. Wenn Sie von der Git-Anmeldeinformationsverwaltung zur Eingabe von Anmeldeinformationen aufgefordert werden, müssen Sie [Ihre Anmeldeinformationen für die Bereitstellung](app-service-deployment-credentials.md) eingeben (nicht die Anmeldeinformationen, die Sie für die Anmeldung am Azure-Portal verwenden).
+Führen Sie im _lokalen Terminalfenster_ die folgenden Git-Befehle aus, um die Bereitstellung für die Back-End-App durchzuführen. Ersetzen Sie _&lt;deploymentLocalGitUrl-of-back-end-app>_ durch die URL des Git-Remotespeicherorts, die Sie in [Erstellen von Azure-Ressourcen](#create-azure-resources) gespeichert haben. Wenn Sie von der Git-Anmeldeinformationsverwaltung zur Eingabe von Anmeldeinformationen aufgefordert werden, müssen Sie [Ihre Anmeldeinformationen für die Bereitstellung](deploy-configure-credentials.md) eingeben (nicht die Anmeldeinformationen, die Sie für die Anmeldung am Azure-Portal verwenden).
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
@@ -119,7 +119,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-web-apps"></a>Navigieren zu den Azure-Web-Apps
+### <a name="browse-to-the-apps"></a>Navigieren zu den Apps
 
 Navigieren Sie in einem Browser zu den folgenden URLs, um verfolgen zu können, wie die beiden Apps ausgeführt werden.
 
@@ -446,4 +446,4 @@ Sie haben Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer Web-App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"]
-> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md)
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md)

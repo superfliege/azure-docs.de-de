@@ -9,18 +9,32 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 4551968cc446bb949d0b18cb77211808169cb907
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103471"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752604"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>Tutorial 5: Extrahieren von Freiformdaten
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Tutorial: Extrahieren von Freiformdaten mit der Entität „pattern.any“
 
 In diesem Tutorial verwenden Sie die Entität „pattern.any“, um Daten aus Äußerungen zu extrahieren, in denen die Äußerungen wohlgeformt sind und das Ende der Daten leicht mit den verbleibenden Wörtern der Äußerung zu verwechseln ist. 
+
+**In diesem Tutorial lernen Sie Folgendes:**
+
+> [!div class="checklist"]
+> * Importieren der Beispiel-App
+> * Hinzufügen von Beispieläußerungen zu einer vorhandenen Entität
+> * Erstellen einer Pattern.any-Entität
+> * Erstellen eines Musters
+> * Trainieren
+> * Testen des neuen Musters
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-patternany-entity"></a>Verwenden der Entität „pattern.any“
 
 Mit der Entität „pattern.any“ können Sie Freiformdaten finden, bei denen die Formulierung der Entität erschwert, das Ende der Entität vom Rest der Äußerung zu unterscheiden. 
 
@@ -50,24 +64,12 @@ Die unterschiedlichen Längen enthalten Wörter, die es LUIS erschweren, das End
 |Wer hat {FormName} erstellt[?]|
 |Wurde {FormName} in Französisch veröffentlicht[?]|
 
-**In diesem Tutorial lernen Sie Folgendes:**
-
-> [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App
-> * Hinzufügen von Beispieläußerungen zu einer vorhandenen Entität
-> * Erstellen einer Pattern.any-Entität
-> * Erstellen eines Musters
-> * Trainieren
-> * Testen des neuen Musters
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+## <a name="import-example-app"></a>Importieren der Beispiel-App
 Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+Führen Sie die folgenden Schritte aus:
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) herunter, und speichern Sie sie.
 
 2. Importieren Sie den JSON-Code in eine neue App.
 

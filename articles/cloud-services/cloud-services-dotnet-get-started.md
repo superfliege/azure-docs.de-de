@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 59354b7f4a1a82d1fa2fd105bd743ecb73526434
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242125"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716105"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
@@ -35,8 +35,8 @@ Bei dieser Anwendung handelt es sich um ein Bulletin Board für Werbung. Benutze
 
 Die Anwendung verwendet das [warteschlangenorientierte Arbeitsmuster](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) , um die CPU-intensive Last der Erstellung von Miniaturbildern an einen Back-End-Prozess auszulagern.
 
-## <a name="alternative-architecture-web-apps-and-webjobs"></a>Alternative Architektur: Web-Apps und WebJobs
-In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-Clouddienst ausführen können. Alternativ können Sie das Front-End in einer [Azure-Web-App](/azure/app-service/) ausführen und die [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226)-Funktion für das Back-End verwenden. Ein Lernprogramm zu WebJobs finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki). Informationen zur Auswahl der optimalen Dienste für Ihr Szenario finden Sie unter [Vergleich von Websites, Clouddiensten und virtuellen Computern in Azure](../app-service/choose-web-site-cloud-service-vm.md).
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternative Architektur: App Service und WebJobs
+In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-Clouddienst ausführen können. Alternativ können Sie das Front-End in [Azure App Service](/azure/app-service/) ausführen und die [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226)-Funktion für das Back-End verwenden. Ein Lernprogramm zu WebJobs finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki). Informationen zur Auswahl der optimalen Dienste für Ihr Szenario finden Sie unter [Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich](../app-service/overview-compare.md).
 
 ## <a name="what-youll-learn"></a>Sie lernen Folgendes
 * Ermöglichen der Azure-Entwicklung auf Ihrem Computer durch Installieren des Azure SDK
@@ -232,7 +232,7 @@ Die Verbindungszeichenfolgen für das Azure-Speicherkonto für das Web- und Work
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **ContosoAdsWeb** unter **Rollen** im Projekt **ContosoAdsCloudService**, und klicken Sie dann auf **Eigenschaften**.
 
     ![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klicken Sie auf die Registerkarte **Settings** . Wählen Sie in der Dropdownliste Dienstkonfiguration den Wert **Cloud** aus.
+2. Klicken Sie auf die Registerkarte **Settings** . Wählen Sie in der Dropdownliste **Dienstkonfiguration** den Wert **Cloud** aus.
 
     ![Cloudkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Wenn Sie den Eintrag **StorageConnectionString** auswählen, sehen Sie am Ende der Zeile eine Schaltfläche mit Auslassungspunkten (**...**). Klicken Sie auf die elliptische Schaltfläche, um das Dialogfeld **Verbindungszeichenfolge für Speicherkonto erstellen** zu öffnen.
@@ -391,7 +391,7 @@ In diesem Abschnitt konfigurieren Sie die Verbindungszeichenfolgen für Azure St
 8. Fügen Sie ebenfalls im **ContosoAdsWorker [Role]** -Eigenschaftenfenster eine weitere Verbindungszeichenfolge hinzu:
 
    * Name: ContosoAdsDbConnectionString
-   * Typ: Zeichenfolge
+   * Geben Sie Folgendes ein:  Zeichenfolge
    * Wert: Fügen Sie dieselbe Verbindungszeichenfolge ein, die Sie auch für das Webrollenprojekt verwendet haben. (Das folgende Beispiel bezieht sich auf Visual Studio 2013. Wenn Sie Visual Studio 2015 oder höher verwenden und dieses Beispiel kopieren, sollten sich daran denken, den Wert für „Data Source“ zu ändern.)
 
        ```
@@ -775,7 +775,7 @@ Ein Einführungsvideo zu bewährten Methoden und Vorlagen für Azure Storage fin
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* [Azure Cloud Services Teil 1: Einführung](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure Cloud Services Part 1: Introduction](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/) (Teil 1 zu Azure Cloud Services: Einführung)
 * [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage (in englischer Sprache)](https://docs.microsoft.com/azure/storage/)
 * [Wie wähle ich den richtigen Clouddienstanbieter?](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

@@ -1,5 +1,5 @@
 ---
-title: Ausprobieren einer cloudbasierten IoT Predictive Maintenance-Lösung in Azure | Microsoft-Dokumentation
+title: 'Ausprobieren einer cloudbasierten IoT Predictive Maintenance-Lösung: Azure | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung stellen Sie den Azure IoT Solution Accelerator für Predictive Maintenance bereit und melden sich am Lösungsdashboard an, um es zu nutzen.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139838"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604336"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Schnellstart: Ausprobieren einer cloudbasierten Lösung zum Ausführen einer Predictive Maintenance-Analyse auf meinen verbundenen Geräten
 

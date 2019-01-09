@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 12e6b3a3fe790183a35c71fbb87243890ad22236
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: f295245cc14000e48cb3db55dc291edf02bb660e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944837"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634387"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure-Portal 
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In dieser Anleitung werden die Grundlagen der Arbeit mit Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/) Schritt für Schritt beschrieben.
@@ -45,7 +45,7 @@ Informationen zum Einbinden einer Dateifreigabe mit SMB finden Sie im folgenden 
 - [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Verwenden einer Azure-Dateifreigabe über das Azure-Portal
-Alle Anforderungen über das Azure-Portal werden mit der Datei-REST-API durchgeführt, sodass Sie Dateien und Verzeichnisse ohne SMB-Zugriff erstellen, ändern und löschen können. Das REST-Protokoll „File“ kann direkt verwendet werden (d.h. Sie können REST-HTTP-Aufrufe selbst erstellen). Neben dem Azure-Portal wird häufig auch das [AzureRM PowerShell-Modul](storage-how-to-use-files-powershell.md), die [Azure-Befehlszeilenschnittstelle](storage-how-to-use-files-cli.md) oder ein Azure Storage SDK verwendet. Bei allen diesen Methoden steht ein praktischer Wrapper um das REST-Protokoll „File“ in der Skript-/Programmiersprache Ihrer Wahl zur Verfügung. 
+Alle Anforderungen über das Azure-Portal werden mit der Datei-REST-API durchgeführt, sodass Sie Dateien und Verzeichnisse ohne SMB-Zugriff erstellen, ändern und löschen können. Das REST-Protokoll „File“ kann direkt verwendet werden (d.h. Sie können REST-HTTP-Aufrufe selbst erstellen). Neben dem Azure-Portal wird häufig auch das [Azure PowerShell-Modul](storage-how-to-use-files-powershell.md), die [Azure-Befehlszeilenschnittstelle](storage-how-to-use-files-cli.md) oder ein Azure Storage SDK verwendet. Bei allen diesen Methoden steht ein praktischer Wrapper um das REST-Protokoll „File“ in der Skript-/Programmiersprache Ihrer Wahl zur Verfügung. 
 
 Die meisten Benutzer werden ihre Azure-Dateifreigabe in Azure Files wahrscheinlich über das SMB-Protokoll nutzen, da sie so die bereits vorhandenen Anwendungen und Tools verwenden können, die sie erwarten. Es gibt jedoch auch Gründe, die für die Verwendung der REST-API „File“ sprechen:
 

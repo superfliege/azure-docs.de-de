@@ -1,7 +1,7 @@
 ---
-title: Was ist die benutzerdefinierte Bing-Suche?
+title: Worum handelt es sich bei der API für die benutzerdefinierte Bing-Suche?
 titlesuffix: Azure Cognitive Services
-description: Enthält eine allgemeine Übersicht über die benutzerdefinierte Bing-Suche.
+description: Die API für die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,48 +10,42 @@ ms.component: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: aahi
-ms.openlocfilehash: 2be1d76cc37de2ce2965cc08c116b37286bd8b52
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8dae58b1ae58a634ca6a566424a7c2d3fcf6add2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163238"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554604"
 ---
-# <a name="what-is-bing-custom-search"></a>Was ist die benutzerdefinierte Bing-Suche?
+# <a name="what-is-the-bing-custom-search-api"></a>Worum handelt es sich bei der API für die benutzerdefinierte Bing-Suche?
 
-Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren. Wenn Sie beispielsweise Besitzer einer Website sind, die eine Suchbenutzeroberfläche umfasst, können Sie die Domänen, Websites und Webseiten angeben, die Bing durchsucht. Ihre Benutzer sehen Suchergebnisse, die auf den gewünschten Inhalt zugeschnitten sind, anstatt durch allgemeine Suchergebnisse mit irrelevanten Inhalten blättern zu müssen.
+Die API für die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten werbefreien Suchbenutzeroberfläche für Themen, die Sie interessieren. Sie können angeben, welche Domänen und Webseiten Bing durchsuchen soll, sowie bestimmte Inhalte anheften, verstärken oder tiefer stufen, um eine benutzerdefinierte Ansicht des Webs zu erhalten und Ihren Benutzern schnell zu relevanten Suchergebnissen zu verhelfen. 
 
-Um Ihre benutzerdefinierte Ansicht des Webs zu erstellen, verwenden Sie das [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche. Im Portal können Sie eine Instanz für die benutzerdefinierte Suche erstellen, mit der die von Bing zu durchsuchenden Domänen, Websites und Webseiten sowie die Websites angegeben werden, die nicht durchsucht werden sollen. Zusätzlich zur Angabe der URLs der Inhalte, die Ihnen bekannt sind, können Sie auch das Portal nutzen, um relevante Inhalte zu ermitteln, die Sie ggf. hinzufügen möchten.
+## <a name="features"></a>Features
 
-Im Portal können Sie auch eine bestimmte Webseite am Anfang des Suchergebnisses anheften, wenn der Benutzer einen bestimmten Suchbegriff eingibt. 
+|Feature  |Beschreibung  |
+|---------|---------|
+|[Benutzerdefinierte Suchvorschläge in Echtzeit](define-custom-suggestions.md)     | Stellen Sie Suchvorschläge bereit, die wie eine Dropdownliste angezeigt werden können, während der Benutzer etwas eingibt.       | 
+|[Benutzerdefinierte Bildersuche](get-images-from-instance.md)     | Ermöglichen Sie Benutzern die Suche nach Bildern aus den Domänen und Websites, die in Ihrer Instanz für die benutzerdefinierte Suche angegeben sind.        |        
+|[Benutzerdefinierte Videosuche](get-videos-from-instance.md)     | Ermöglichen Sie Benutzern die Suche nach Videos aus den Domänen und Websites, die in Ihrer Instanz für die benutzerdefinierte Suche angegeben sind.        |    
+|[Freigeben der Instanz für die benutzerdefinierte Suche](share-your-custom-search.md)     | Geben Sie Ihre Suchinstanz für Mitglieder Ihres Teams frei, um sie gemeinsam bearbeiten und testen zu können.        | 
+|[Konfigurieren einer Benutzeroberfläche für Ihre Anwendungen und Websites](hosted-ui.md)     | Geben Sie Ihre Suchinstanz für Mitglieder Ihres Teams frei, um sie gemeinsam bearbeiten und testen zu können.        | 
+## <a name="workflow"></a>Workflow
 
-Nach dem Definieren Ihrer Instanz können Sie die benutzerdefinierte Suche in Ihre Website, Desktop-App oder mobile App integrieren, indem Sie die API für die benutzerdefinierte Suche aufrufen. Wenn Sie über eine webbasierte Website oder Anwendung verfügen, können Sie der gehosteten Benutzeroberfläche das Rendern der Suchoberfläche für Sie überlassen.
+Über das [Portal für die benutzerdefinierte Bing-Suche](https://customsearch.ai) können Sie eine angepasste Suchinstanz erstellen. Mithilfe des Portals können Sie eine Instanz für die benutzerdefinierte Suche erstellen, die angibt, welche Domänen, Websites und Webseiten von Bing durchsucht werden sollen (und welche nicht). Darüber hinaus können Sie im Portal eine Vorschau der Suchumgebung anzeigen, die von der API bereitgestellten Suchrangfolgen anpassen und optional eine durchsuchbare Benutzeroberfläche konfigurieren, die auf Ihren Websites und in Ihren Anwendungen gerendert wird.
 
-In der folgenden Abbildung ist dargestellt, wie einfach die benutzerdefinierte Suche integriert werden kann.
+Die erstellte Suchinstanz (und optional eine Benutzeroberfläche) können Sie dann in Ihre Website oder Anwendung integrieren, indem Sie die API für die benutzerdefinierte Bing-Suche aufrufen:
 
-![picture alt](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/cognitive-services/Bing-Custom-Search/media/BCS-Overview.png "Funktionsweise der benutzerdefinierten Bing-Suche")
+![Abbildung: Herstellen einer Verbindung mit einer benutzerdefinierten Bing-Suche über die API](media/BCS-Overview.png "Funktionsweise der benutzerdefinierten Bing-Suche")
 
-## <a name="adding-custom-search-box-suggestions"></a>Hinzufügen eines Felds für benutzerdefinierte Suchvorschläge
-
-Durch ein Feld für benutzerdefinierte Suchvorschläge können Sie die Funktion für benutzerdefinierte Suchen optimieren. Mit diesem Feature erhalten Sie benutzerdefinierte Suchvorschläge, die für Ihre Suche relevant sind. Wenn der Benutzer das gesuchte Schlüsselwort in das Suchfeld eingibt, wird eine Dropdownliste mit empfohlenen Abfragezeichenfolgen basierend auf der partiellen Abfragezeichenfolge des Benutzers angezeigt. Sie können bestimmen, ob nur benutzerdefinierte Vorschläge zurückgegeben oder auch Bing-Vorschläge eingeschlossen werden. [Weitere Informationen](define-custom-suggestions.md).
-
-## <a name="adding-custom-image-search-experience"></a>Hinzufügen einer Funktion zur benutzerdefinierten Bildersuche
-
-Durch Bilder können Sie die Funktion für benutzerdefinierte Suchen optimieren. Ähnlich wie bei Webergebnissen wird bei der benutzerdefinierten Suche das Suchen nach Bildern in der Websiteliste in Ihrer Instanz ermöglicht. [Weitere Informationen](get-images-from-instance.md).
-
-## <a name="adding-custom-video-search-experience"></a>Hinzufügen einer Funktion zur benutzerdefinierten Videosuche
-
-Durch Videos können Sie die Funktion für benutzerdefinierte Suchen optimieren. Ähnlich wie bei Webergebnissen wird bei der benutzerdefinierten Suche das Suchen nach Videos in der Liste von Websites in Ihrer Instanz ermöglicht. [Weitere Informationen](get-videos-from-instance.md).
-
-## <a name="sharing-your-custom-search-instance-with-others"></a>Freigeben von Instanzen für benutzerdefinierte Suchen für andere Benutzer
-
-Sie können auf einfache Weise das gemeinsame Bearbeiten und Testen Ihrer Instanz ermöglichen, indem Sie sie für Mitglieder Ihres Teams freigeben. [Weitere Informationen](share-your-custom-search.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum schnellen Einstieg finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 
 Weitere Informationen zum Anpassen Ihrer Suchinstanz finden Sie unter [Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche](define-your-custom-view.md).
+
+Informieren Sie sich unter [Anforderungen für die Verwendung und Anzeige der Bing-Suche-API](./use-and-display-requirements.md) über die Verwendung von Suchergebnissen in Ihren Diensten und Anwendungen.
 
 Machen Sie sich mit dem Referenzinhalt für die einzelnen Endpunkte für die benutzerdefinierte Suche vertraut. Die Referenz enthält die Endpunkte, Header und Abfrageparameter, die Sie zum Anfordern von Suchergebnissen verwenden können. Darüber hinaus finden Sie dort Definitionen der Antwortobjekte.
 
@@ -60,5 +54,3 @@ Machen Sie sich mit dem Referenzinhalt für die einzelnen Endpunkte für die ben
 - [API für die benutzerdefinierte Videosuche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
 - [API für die benutzerdefinierte Vorschlagssuche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
 
-
-Machen Sie sich vorher unbedingt mit den [Verwendungs- und Anzeigeanforderungen von Bing](./use-and-display-requirements.md) vertraut, um nicht gegen die Regeln für die Verwendung der Suchergebnisse zu verstoßen.

@@ -1,5 +1,5 @@
 ---
-title: Vorbereiten von PKI-Zertifikaten für Azure Stack für die Bereitstellung von in Azure Stack integrierten Systemen | Microsoft-Dokumentation
+title: Vorbereiten von PKI-Zertifikaten für Azure Stack für die Bereitstellung von in Azure Stack integrierten Systemen oder die Geheimnisrotation | Microsoft-Dokumentation
 description: Beschreibt die Vorgehensweise zum Vorbereiten von Azure Stack-PKI-Zertifikaten für in Azure Stack integrierte Systeme.
 services: azure-stack
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972026"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631480"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Vorbereiten von Azure Stack-PKI-Zertifikaten für die Bereitstellung
+# <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Vorbereiten von Azure Stack-PKI-Zertifikaten für die Verwendung bei der Bereitstellung oder Rotation
 Die [von der Zertifizierungsstelle Ihrer Wahl bezogenen](azure-stack-get-pki-certs.md) Zertifikatdateien müssen mit Eigenschaften importiert und exportiert werden, die mit den Zertifikatanforderungen von Azure Stack in Einklang stehen.
 
 
 ## <a name="prepare-certificates-for-deployment"></a>Vorbereiten von Zertifikaten für die Bereitstellung
-Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu überprüfen: 
+Verwenden Sie diese Schritte zum Vorbereiten und Überprüfen der Azure Stack-PKI-Zertifikate, die für die Bereitstellung einer neuen Azure Stack-Umgebung oder für die Geheimnisrotation in einer vorhandenen Azure Stack-Umgebung verwendet werden: 
 
 ### <a name="import-the-certificate"></a>Importieren des Zertifikats
 

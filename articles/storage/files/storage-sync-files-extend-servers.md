@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc34411cc27870dbd9c707a34ebf34b96c7253dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3ebf450f4e84fed572307a18f20f36013e32c7a5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986116"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630698"
 ---
-# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
+# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
 In diesem Tutorial werden die grundlegenden Schritte zum Erweitern der Speicherkapazität einer Windows Server-Instanz mit der Azure-Dateisynchronisierung veranschaulicht. Wir nutzen zwar einen virtuellen Azure-Computer mit Windows Server für dieses Tutorial, aber normalerweise führen Sie diesen Prozess für Ihre lokalen Server durch. Wenn Sie für die Bereitstellung der Azure-Dateisynchronisierung in Ihrer eigenen Umgebung bereit sind, hilft Ihnen der Artikel [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md) weiter.
 
 > [!div class="checklist"]
@@ -163,14 +163,14 @@ Auf der VM mit **Windows Server 2016 Datacenter** wird der **Server-Manager** au
 
 1. Schließen Sie **Explorer** und **Server-Manager**.
 
-### <a name="download-the-azurerm-powershell-module"></a>Herunterladen des AzureRM-PowerShell-Moduls
-Installieren Sie als Nächstes auf der VM mit **Windows Server 2016 Datacenter** das **AzureRM-PowerShell-Modul** auf dem Server.
+### <a name="download-the-azure-powershell-module"></a>Herunterladen des Azure PowerShell-Moduls
+Installieren Sie als Nächstes auf dem virtuellen Computer mit **Windows Server 2016 Datacenter** das **Azure PowerShell-Modul** auf dem Server.
 
 1. Öffnen Sie auf der VM ein PowerShell-Fenster mit erhöhten Rechten.
 1. Führen Sie den folgenden Befehl aus:
 
    ```powershell
-   Install-Module -Name AzureRM -AllowClobber
+   Install-Module -Name Az -AllowClobber
    ```
 
    > [!NOTE]
@@ -189,7 +189,7 @@ Installieren Sie als Nächstes auf der VM mit **Windows Server 2016 Datacenter**
 
 1. Antworten Sie mit `Yes` oder `Yes to All`, um die Installation fortzusetzen.
 
-Das Modul `AzureRM` ist ein Rollupmodul für die Azure PowerShell-Cmdlets. Wenn Sie es installieren, werden alle verfügbaren Azure Resource Manager-Module heruntergeladen und die zugehörigen Cmdlets für die Nutzung zur Verfügung gestellt.
+Das Modul `Az` ist ein Rollupmodul für die Azure PowerShell-Cmdlets. Wenn Sie es installieren, werden alle verfügbaren Azure Resource Manager-Module heruntergeladen und die zugehörigen Cmdlets für die Nutzung zur Verfügung gestellt.
 
 Sie haben jetzt die Einrichtung Ihrer Umgebung für das Tutorial abgeschlossen und können mit dem Bereitstellen des **Speichersynchronisierungsdiensts** beginnen.
 
@@ -209,7 +209,7 @@ Die Bereitstellung der Azure-Dateisynchronisierung beginnt mit der Platzierung e
    | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>In diesem Tutorial verwenden wir *afssyncservice02*. |
    | **Abonnement** | Das Abonnement, das Sie für dieses Tutorial verwenden. |
    | **Ressourcengruppe** | Die Ressourcengruppe, die Sie für dieses Tutorial verwenden.<br><br>In diesem Tutorial verwenden wir *afsresgroup101918*. |
-   | **Location** | USA, Osten |
+   | **Location** | USA (Ost) |
 
 1. Wenn Sie fertig sind, können Sie **Erstellen** wählen, um den **Speichersynchronisierungsdienst** bereitzustellen.
 1. Klicken Sie auf die Registerkarte **Benachrichtigungen** und dann auf **Zu Ressource wechseln**.
@@ -237,7 +237,7 @@ Sie haben den Azure-Synchronisierungsdienst bereitgestellt und den Agent auf der
 ## <a name="register-windows-server"></a>Registrieren von Windows Server
 Durch das Registrieren des Windows-Servers bei einem Speichersynchronisierungsdienst wird eine Vertrauensstellung zwischen dem Server (oder Cluster) und dem Speichersynchronisierungsdienst geschaffen. Ein Server kann nur bei einem Speichersynchronisierungsdienst registriert und mit anderen Servern und Azure-Dateifreigaben synchronisiert werden, die demselben Speichersynchronisierungsdienst zugeordnet sind.
 
-Die Benutzeroberfläche der Serverregistrierung sollte sich nach der Installation des **Azure-Dateisynchronisierungs-Agents** automatisch öffnen. Wenn das nicht der Fall ist, können Sie sie an Ihrem Dateispeicherort manuell öffnen: „C:\Programme\Azure\StorageSyncAgent\ServerRegistration.exe“.
+Die Benutzeroberfläche der Serverregistrierung sollte sich nach der Installation des **Azure-Dateisynchronisierungs-Agents** automatisch öffnen. Wenn dies nicht der Fall ist, können Sie sie aus ihrem Dateispeicherort manuell öffnen: „C:\Programme\Azure\StorageSyncAgent\ServerRegistration.exe“.
 
 1. Klicken Sie auf **OK**, wenn die Benutzeroberfläche für die Serverregistrierung auf dem virtuellen Computer geöffnet wird.
 1. Klicken Sie auf **Anmelden**, um zu beginnen.

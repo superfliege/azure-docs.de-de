@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Generieren einer Miniaturansicht – REST, PHP: Maschinelles Sehen'
+title: 'Schnellstart: Generieren einer Miniaturansicht – REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart generieren Sie eine Miniaturansicht von einem Bild, indem Sie die Maschinelles Sehen-API mit PHP verwenden.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 171893dd3017d46c405d2269506fe37896155e55
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1527f57a1d300f730222d100bc9caf2001098fea
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964508"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579344"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und PHP in der Maschinelles Sehen-API
 
@@ -33,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-1. Installieren Sie das PHP5-Paket [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2).
+1. Installieren Sie das PHP5-Paket [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2).
    1. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
    1. Führen Sie den folgenden Befehl aus:
 

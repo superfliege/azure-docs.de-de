@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: cb4082046e57ac16abd6cdef3d5779525e7cfc82
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93185483a2c5a1ddb308cc2fc9fd918c539b5e3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105528"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602328"
 ---
 # <a name="azure-and-jenkins"></a>Azure und Jenkins
 
@@ -46,5 +46,5 @@ Verwenden Sie Jenkins-Plug-Ins zum Bereitstellen von Anwendungen in Azure als Te
 
  Plug-Ins stehen für die Bereitstellung der folgenden Dienste und Umgebungen zur Verfügung:
 
-- [Azure-Web-App unter Linux](/azure/app-service/containers/app-service-linux-intro). Informationen zum Einstieg finden Sie im [Tutorial](java-deploy-webapp-tutorial.md).
-- [Azure-Web-App](/azure/app-service/app-service-web-overview). Informationen zum Einstieg finden Sie in der [Anleitung](deploy-Jenkins-app-service-plugin.md).
+- [Azure App Service für Linux](/azure/app-service/containers/app-service-linux-intro). Informationen zum Einstieg finden Sie im [Tutorial](java-deploy-webapp-tutorial.md).
+- [Azure App Service](/azure/app-service/overview). Informationen zum Einstieg finden Sie in der [Anleitung](deploy-Jenkins-app-service-plugin.md).

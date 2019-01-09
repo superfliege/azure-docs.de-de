@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 9a10d4fc90b916b3cb1eda7b9bac99c5d5f9deba
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 80a8414d98eba984f2427f5f746cd0e1061248a4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160782"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726917"
 ---
 # <a name="region-management-in-azure-stack"></a>Regionsverwaltung in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack verwendet *Regionen*. Dabei handelt es sich um logische Entitäten, die Hardwareressourcen umfassen, aus denen wiederum die Azure Stack-Infrastruktur besteht. In der Regionsverwaltung finden Sie alle Ressourcen, die für den erfolgreichen Betrieb der Azure Stack-Infrastruktur erforderlich sind.
 
@@ -34,11 +34,11 @@ Eine integrierte (als *Azure Stack-Cloud* bezeichnete) Systembereitstellung bild
 
 Azure Stack verfügt über einige Funktionen der Regionsverwaltung, die in der Kachel **Regionsverwaltung** verfügbar sind. Diese Kachel steht Azure Stack-Operatoren im Administratorportal im Standarddashboard zur Verfügung. Über diese Kachel können Sie Ihre Azure Stack-Region und deren regionsspezifische Komponenten überwachen und aktualisieren.
 
-![Die Regionsverwaltungskachel](media/azure-stack-manage-region/image1.png)
+![Die Regionsverwaltungskachel](media/azure-stack-region-management/image1.png)
 
 Wenn Sie auf der Kachel **Regionsverwaltung** auf eine Region klicken, können Sie auf folgende Informationen zugreifen:
 
-![Beschreibung der Bereiche auf dem Blatt „Regionsverwaltung“](media/azure-stack-manage-region/image2.png)
+[ ![Beschreibung der Bereiche auf dem Blatt „Regionsverwaltung“](media/azure-stack-region-management/regionssm.png "Blatt „Regionsverwaltung“") ](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **Das Ressourcenmenü**. Hier können Sie auf spezifische Infrastrukturverwaltungsbereiche zugreifen und Benutzerressourcen anzeigen und verwalten. Zu solchen Ressourcen zählen etwa Speicherkonten und virtuelle Netzwerke.
 
@@ -49,6 +49,8 @@ Wenn Sie auf der Kachel **Regionsverwaltung** auf eine Region klicken, können S
 4. **Ressourcenanbieter**. Hier können Sie die Benutzerfunktionen der Komponenten verwalten, die zur Ausführung von Azure Stack erforderlich sind. Jeder Ressourcenanbieter hat eine eigene Administratorerfahrung. Diese Erfahrung beinhaltet Warnungen für spezifische Anbieter, Metriken und andere Verwaltungsfunktionen, die ressourcenbetreiberspezifisch sind.
 
 5. **Infrastrukturrollen**. Die Komponenten, die zur Ausführung von Azure Stack erforderlich sind. Es werden nur die Infrastrukturrollen aufgelistet, die Warnungen ausgeben. Wenn Sie eine Rolle auswählen, können Sie die Warnungen dieser Rolle anzeigen sowie die Rolleninstanzen, auf denen die Rolle ausgeführt wird.
+
+6. **Properties**. Der Registrierungsstatus und die Details Ihrer Umgebung auf dem Blatt „Regionsverwaltung“. Der Status kann **Registriert** oder **Nicht registriert** sein. Wenn er „Registriert“ ist, wird außerdem die ID des Azure-Abonnements angezeigt, mit dem Sie Ihren Azure Stack registriert haben, zusammen mit der Registrierungsressourcengruppe und dem Namen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

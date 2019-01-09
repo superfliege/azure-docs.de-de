@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 89852e30929cc26aa0cbe63ed4e334c4e878b90b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270262"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714337"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. In diesem Tutorial wird gezeigt, wie Azure-Web-Apps ein vorhandener benutzerdefinierter DNS-Name zugeordnet wird.
+Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Tutorial wird gezeigt, wie Azure App Service ein vorhandener benutzerdefinierter DNS-Name zugeordnet wird.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -48,7 +48,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   Um beispielsweise DNS-Einträge für `contoso.com` und `www.contoso.com` hinzuzufügen, müssen Sie die DNS-Einstellungen für die Stammdomäne `contoso.com` konfigurieren können.
 
   > [!NOTE]
-  > Falls Sie nicht über einen vorhandenen Domänennamen verfügen, können Sie erwägen, [über das Azure-Portal einen Domänennamen zu erwerben](custom-dns-web-site-buydomains-web-app.md). 
+  > Falls Sie nicht über einen vorhandenen Domänennamen verfügen, können Sie erwägen, [über das Azure-Portal einen Domänennamen zu erwerben](manage-custom-dns-buy-domain.md). 
 
 ## <a name="prepare-the-app"></a>Vorbereiten der App
 
@@ -156,7 +156,7 @@ Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Ben
 ![Hinzugefügter CNAME-Eintrag](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
+> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
 
 Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt ein Tippfehler unterlaufen ist, wird am unteren Rand der Seite ein Überprüfungsfehler angezeigt.
 
@@ -231,7 +231,7 @@ Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Ben
 ![Hinzugefügter A-Eintrag](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
+> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
 
 Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt ein Tippfehler unterlaufen ist, wird am unteren Rand der Seite ein Überprüfungsfehler angezeigt.
 
@@ -286,7 +286,7 @@ Wählen Sie das **+**-Symbol, um einen anderen Hostnamen hinzuzufügen, der der 
 ![Hinzugefügter CNAME-Eintrag](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
+> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
 
 ## <a name="test-in-browser"></a>Testen im Browser
 
@@ -305,7 +305,7 @@ Falls Sie zu der URL Ihrer benutzerdefinierten Domäne navigieren und dabei eine
 
 ## <a name="migrate-an-active-domain"></a>Migrieren einer aktiven Domäne
 
-Informationen zum Migrieren einer Livewebsite und ihres DNS-Domänennamens zu App Service ohne Ausfallzeiten finden Sie unter [Migrieren einer aktiven benutzerdefinierten Domäne zu Azure App Service](app-service-custom-domain-name-migrate.md).
+Informationen zum Migrieren einer Livewebsite und ihres DNS-Domänennamens zu App Service ohne Ausfallzeiten finden Sie unter [Migrieren einer aktiven benutzerdefinierten Domäne zu Azure App Service](manage-custom-dns-migrate-domain.md).
 
 ## <a name="redirect-to-a-custom-directory"></a>Umleitung zu einem benutzerdefinierten Verzeichnis
 
@@ -334,7 +334,7 @@ az webapp config hostname add \
     --hostname <fully_qualified_domain_name> 
 ``` 
 
-Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/app-service-cli-configure-custom-domain.md). 
+Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/cli-configure-custom-domain.md). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
@@ -347,7 +347,7 @@ Set-AzureRmWebApp `
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
-Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/app-service-powershell-configure-custom-domain.md).
+Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/powershell-configure-custom-domain.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -363,4 +363,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort, um sich über das Anbinden eines benutzerdefinierten SSL-Zertifikats an eine Web-App zu informieren.
 
 > [!div class="nextstepaction"]
-> [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md)
+> [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure App Service](app-service-web-tutorial-custom-ssl.md)

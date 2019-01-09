@@ -5,24 +5,21 @@ services: dms
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: f23b297acdd8de0c26bf5fc02bc2d5415845b828
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956702"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718179"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Tutorial: Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (online)
 Mit Azure Database Migration Service können Sie die Datenbanken aus einer lokalen SQL Server-Instanz mit minimaler Ausfallzeit zu einer [verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance.md) migrieren. Informationen zu weiteren Methoden, für die etwas manueller Aufwand erforderlich ist, finden Sie im Artikel [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-migrate.md).
-
->[!IMPORTANT]
->Onlinemigrationsprojekte von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz befinden sich in der Vorschauphase und unterliegen den [ergänzenden Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Tutorial migrieren Sie mithilfe von Azure Database Migration Service die Datenbank **Adventureworks2012** mit minimaler Ausfallzeit von einer lokalen SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz.
 
@@ -34,7 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Übernehmen der Migration, wenn Sie dazu bereit sind
 
 > [!NOTE]
-> Die Verwendung von Azure Database Migration Service zum Ausführen einer Onlinemigration erfordert das Erstellen einer Instanz auf der Grundlage des Premium-Tarifs (Vorschau).
+> Die Verwendung von Azure Database Migration Service zum Ausführen einer Onlinemigration erfordert das Erstellen einer Instanz auf der Grundlage des Premium-Tarifs.
 
 > [!IMPORTANT]
 > Für eine optimale Migration empfiehlt Microsoft die Erstellung einer Azure Database Migration Service-Instanz in derselben Azure-Region, in der sich auch die Zieldatenbank befindet. Die Verschiebung von Daten zwischen Regionen oder Geografien kann den Migrationsvorgang verlangsamen und Fehler verursachen.
@@ -95,10 +92,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
     Weitere Einzelheiten finden Sie im Artikel [Netzwerktopologien für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
 
-6. Wählen Sie eine SKU aus dem Tarif „Unternehmenskritisch (Vorschauversion)“ aus.
+6. Wählen Sie eine SKU aus dem Premium-Tarif aus.
 
     > [!NOTE]
-    > Onlinemigrationen werden nur bei Verwendung des Tarifs „Unternehmenskritisch (Vorschauversion)“ unterstützt. 
+    > Onlinemigrationen werden nur bei Verwendung des Premium-Tarifs unterstützt. 
    
     Weitere Informationen zu Kosten und Tarifen finden Sie in der [Preisübersicht](https://aka.ms/dms-pricing).
    
@@ -118,7 +115,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
  
 3. Wählen Sie **+ Neues Migrationsprojekt** aus.
 
-4. Geben Sie im Bildschirm **Neues Migrationsprojekt** einen Projektnamen ein, und wählen Sie im Textfeld **Quellservertyp** die Option **SQL Server** und im Textfeld **Zielservertyp** die Option **Verwaltete Azure SQL-Datenbank-Instanz** aus. Wählen Sie außerdem für **Aktivitätstyp auswählen** die Option **Onlinedatenmigration [Vorschau]** aus.
+4. Geben Sie auf dem Bildschirm **Neues Migrationsprojekt** einen Projektnamen ein, und wählen Sie im Textfeld **Quellservertyp** die Option **SQL Server** und im Textfeld **Zielservertyp** die Option **Verwaltete Azure SQL-Datenbank-Instanz** aus. Wählen Sie außerdem für **Aktivitätstyp auswählen** die Option **Onlinedatenmigration** aus.
 
    ![Erstellen eines DMS-Projekts](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
@@ -137,7 +134,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
    ![Quellendetails](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. Wählen Sie **Speichern**aus.
+3. Wählen Sie **Speichern** aus.
 
 ## <a name="specify-target-details"></a>Angeben von Zieldetails
 
@@ -153,7 +150,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
     ![Auswählen des Ziels](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-2.  Wählen Sie **Speichern**aus.
+2.  Wählen Sie **Speichern** aus.
 
 ## <a name="select-source-databases"></a>Auswählen von Quelldatenbanken
 
@@ -161,7 +158,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
     ![Auswählen von Quelldatenbanken](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. Wählen Sie **Speichern**aus.
+2. Wählen Sie **Speichern** aus.
 
 ## <a name="configure-migration-settings"></a>Konfigurieren von Migrationseinstellungen
  
@@ -177,7 +174,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
     
     ![Konfigurieren von Migrationseinstellungen](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
-2. Wählen Sie **Speichern**aus.
+2. Wählen Sie **Speichern** aus.
  
 ## <a name="review-the-migration-summary"></a>Überprüfen der Migrationszusammenfassung
 

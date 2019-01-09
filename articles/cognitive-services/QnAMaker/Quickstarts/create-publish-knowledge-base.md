@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 4b4f208524f18b98d44dc3d34e05359445fb2f17
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644784"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598309"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -57,9 +57,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 11. Wählen Sie in der oberen rechten Ecke **Speichern und trainieren** aus, um Ihre Änderungen zu speichern und das QnA Maker-Modell zu trainieren. Änderungen werden nur beibehalten, wenn sie gespeichert werden.
 
-   ![Speichern und trainieren](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
-
-12. Wählen Sie in der oberen rechten Ecke **Testen** aus, um zu testen, ob die von Ihnen vorgenommenen Änderungen wirksam sind. Geben Sie **Hi** in das Feld ein, und drücken Sie die EINGABETASTE. Daraufhin sollte die Antwort, die Sie als Reaktion erstellt haben, angezeigt werden.
+12. Wählen Sie in der oberen rechten Ecke **Testen** aus, um zu testen, ob die von Ihnen vorgenommenen Änderungen wirksam sind. Geben Sie `hi there` in das Feld ein, und drücken Sie die EINGABETASTE. Daraufhin sollte die Antwort, die Sie als Reaktion erstellt haben, angezeigt werden.
 
 13. Wählen Sie **Untersuchen** aus, um die Antwort ausführlicher zu untersuchen. Das Testfenster wird verwendet, um die Änderungen an der Wissensdatenbank zu testen, bevor sie veröffentlicht werden.
 

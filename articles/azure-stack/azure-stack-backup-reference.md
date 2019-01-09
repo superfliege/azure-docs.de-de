@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 35929d820ac6f72b83d6c3f25547255ca3423fc8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1edb4818ff7fda170d123ea8b81e6df9d620f354
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138445"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713572"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Referenz für den Infrastructure Backup-Dienst
 
 ## <a name="azure-backup-infrastructure"></a>Azure-Sicherungsinfrastruktur
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack besteht aus vielen Diensten, die das Portal, Azure Resource Manager und die Infrastrukturverwaltung umfassen. Ziel der anwendungsähnlichen Verwaltung von Azure Stack ist die Reduzierung der Komplexität für Bediener der Lösung.
 
@@ -87,9 +87,16 @@ Es handelt sich um folgende Anforderungen:
 
 Infrastructure Backup Controller sichert Daten bedarfsgesteuert. Es empfiehlt sich, die Sicherung mindestens zweimal täglich durchzuführen und Sicherungen höchstens sieben Tage lang aufzubewahren. 
 
+**1811 und höher**
 | Umgebungsgröße | Voraussichtliche Größe der Sicherung | Gesamtmenge des erforderlichen Speicherplatzes |
 |-------------------|--------------------------|--------------------------------|
-| 4 bis 16 Knoten        | 10 GB                     | 140 GB                          |
+| 4 bis 16 Knoten        | 20 GB                    | 280 GB                        |
+| ASDK              | 10 GB                    | 140 GB                        |
+
+**Vor 1811**
+| Umgebungsgröße | Voraussichtliche Größe der Sicherung | Gesamtmenge des erforderlichen Speicherplatzes |
+|-------------------|--------------------------|--------------------------------|
+| 4–16 Knoten, ASDK  | 10 GB                     | 140 GB                        |
 
 ### <a name="network-requirements"></a>Netzwerkanforderungen
 | Speicherort                                                                 | Details                                                                                                                                                                                 |
@@ -109,7 +116,7 @@ Berücksichtigen Sie folgende Einschränkungen beim Planen, Bereitstellen und Be
 | Grenzwertbezeichner                                                 | Begrenzung        | Kommentare                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Sicherungstyp                                                      | Nur vollständig    | Infrastructure Backup Controller unterstützt nur vollständige Sicherungen. Inkrementelle Sicherungen werden nicht unterstützt.                                          |
-| Geplante Sicherungen                                                | Nur manuell  | Backup Controller unterstützt derzeit nur bedarfsgesteuerte Sicherungen.                                                                                 |
+| Geplante Sicherungen                                                | Geplant und manuell  | Backup Controller unterstützt geplante und bedarfsgesteuerte Sicherungen.                                                                                 |
 | Maximale Anzahl gleichzeitiger Sicherungsaufträge                                   | 1            | Pro Backup Controller-Instanz wird nur ein aktiver Sicherungsauftrag unterstützt.                                                                  |
 | Netzwerkswitchkonfiguration                                     | Nicht zutreffend | Der Administrator muss die Netzwerkswitchkonfiguration mithilfe von OEM-Tools sichern. Informationen finden Sie in der Dokumentation der einzelnen OEM-Anbieter zu Azure Stack. |
 | Hardwarelebenszyklus-Host                                          | Nicht zutreffend | Der Administrator muss den Hardwarelebenszyklus-Host mithilfe der OEM-Tools sichern. Informationen finden Sie in der Dokumentation der einzelnen OEM-Anbieter zu Azure Stack.      |

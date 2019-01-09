@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 1f2d55155a6df496eec4a92aca5b3b932e03c181
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a253b1d34b134700778152b7ef0b0571190b2511
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018665"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554842"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer .NET Core-App
 
@@ -162,7 +162,7 @@ Fügen Sie in der Datei *Program.cs* der `Program`-Klasse Ihrer Konsolenanwendun
         }
 ```
 
-Bei diesem Ansatz zum Freigeben einer `ConnectionMultiplexer`-Instanz in Ihrer Anwendung wird eine statische Eigenschaft verwendet, die eine verbundene Instanz zurückgibt. Dieser Code ist eine threadsichere Möglichkeit, um nur eine einzelne verbundene `ConnectionMultiplexer`-Instanz zu initialisieren. `abortConnect` ist auf „false“ festgelegt. Dies bedeutet, dass der Aufruf erfolgreich ist, auch wenn keine Verbindung mit Azure Cache for Redis hergestellt wird. Eine wichtige Funktion von `ConnectionMultiplexer` ist, dass die Verbindung mit dem Cache automatisch wiederhergestellt wird, sobald das Netzwerkproblem oder andere Ursachen beseitigt wurden.
+Bei diesem Ansatz zum Freigeben einer `ConnectionMultiplexer`-Instanz in Ihrer Anwendung wird eine statische Eigenschaft verwendet, die eine verbundene Instanz zurückgibt. Dieser Code ist eine threadsichere Möglichkeit, um nur eine einzelne verbundene `ConnectionMultiplexer`-Instanz zu initialisieren. `abortConnect` ist auf „false“ festgelegt. Das bedeutet, dass der Aufruf erfolgreich ist, auch wenn keine Verbindung mit Azure Cache for Redis hergestellt wird. Eine wichtige Funktion von `ConnectionMultiplexer` ist, dass die Verbindung mit dem Cache automatisch wiederhergestellt wird, sobald das Netzwerkproblem oder andere Ursachen beseitigt wurden.
 
 Auf den Wert des Geheimnisses *CacheConnection* wird über den Geheimnis-Manager-Konfigurationsanbieter zugegriffen, und der Wert wird dann als Kennwortparameter verwendet.
 
@@ -195,7 +195,7 @@ Fügen Sie in der Datei *Program.cs* den folgenden Code für das Verfahren `Main
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
             Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET Core console app!").ToString());
 
-            // Demostrate "SET Message" executed as expected...
+            // Demonstrate "SET Message" executed as expected...
             cacheCommand = "GET Message";
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
             Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
@@ -236,7 +236,7 @@ Im folgenden Beispiel können Sie sehen, dass der `Message`-Schlüssel zuvor ein
 
 ## <a name="work-with-net-objects-in-the-cache"></a>Arbeiten mit .NET-Objekten im Cache
 
-Azure Cache for Redis kann sowohl .NET-Objekte als auch primitive Datentypen zwischenspeichern, aber .NET-Objekte müssen zunächst serialisiert werden. Die Serialisierung des .NET-Objekts ist Aufgabe des Anwendungsentwicklers und überlässt dem Entwickler die Freiheit bei der Wahl des Serialisierers.
+Azure Cache for Redis kann sowohl .NET-Objekte als auch primitive Datentypen zwischenspeichern. .NET-Objekte müssen allerdings zunächst serialisiert werden. Die Serialisierung des .NET-Objekts ist Aufgabe des Anwendungsentwicklers und überlässt dem Entwickler die Freiheit bei der Wahl des Serialisierers.
 
 Eine einfache Möglichkeit zum Serialisieren von Objekten stellt die Verwendung der `JsonConvert`-Serialisierungsmethoden in [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) und die Serialisierung in und aus JSON dar. In diesem Abschnitt fügen Sie dem Cache ein .NET-Objekt hinzu.
 
@@ -248,7 +248,7 @@ dotnet add package Newtonsoft.json
 
 Fügen Sie am Anfang der Datei *Program.cs* die folgende `using`-Anweisung hinzu:
 
-```charp
+```csharp
 using Newtonsoft.Json;
 ```
 
@@ -330,7 +330,7 @@ Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gel�
 In dieser Schnellstartanleitung wurde beschrieben, wie Sie Azure Cache for Redis über eine .NET Core-Anwendung verwenden. In der nächsten Schnellstartanleitung erfahren Sie, wie Sie Azure Cache for Redis mit einer ASP.NET-Web-App verwenden.
 
 > [!div class="nextstepaction"]
-> [Quickstart: Create an ASP.NET web app](./cache-web-app-howto.md) (Schnellstart: Erstellen einer ASP.NET-Web-App)
+> [Erstellen einer ASP.NET-Web-App, die eine Azure Cache for Redis-Instanz verwendet](./cache-web-app-howto.md)
 
 
 

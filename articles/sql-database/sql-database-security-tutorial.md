@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 12/17/2018
+ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409767"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558633"
 ---
 # <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>Tutorial: Sichern einer Einzeldatenbank in einer Azure SQL-Datenbank
 
@@ -136,6 +136,9 @@ Stellen Sie einen Azure Active Directory-Administrator für Ihre Azure SQL Serve
     ![Administrator auswählen](./media/sql-database-aad-authentication/8choose-ad.png)
 
 2. Wählen Sie auf der Seite **SQL Server** **Active Directory-Administrator**, und wählen Sie auf der Seite **Active Directory-Administrator** **Administrator festlegen**.  ![Active Directory auswählen](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+   > [!IMPORTANT]
+   > Sie müssen „Unternehmensadministrator“ oder „Globaler Administrator“ sein, um diese Aufgabe ausführen zu können.
 
 3. Suchen Sie auf der Seite **Administrator hinzufügen** nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und wählen Sie dann **Auswählen** aus. Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Auf dem Blatt „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Siehe Liste mit unterstützten Administratoren im Abschnitt **Funktionen und Einschränkungen von Azure AD** von [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](sql-database-aad-authentication.md).) Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.
     ![Administrator auswählen](./media/sql-database-aad-authentication/select-admin.png)  

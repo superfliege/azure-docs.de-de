@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 12/10/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: ec73083d1bb66e7c7735a2bee8e89eeb56cf7620
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 70bbade2877b62c3d211600f69e1825677f12040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282497"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721868"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Herunterladen von Marketplace-Elementen von Azure in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Als Cloudbediener können Sie Elemente aus Azure Marketplace herunterladen und in Azure Stack bereitstellen. Die zur Auswahl stehenden Optionen stammen aus einer speziell zusammengestellten Liste mit Azure Marketplace-Elementen, die vorab getestet wurden und für Azure Stack geeignet sind. Dieser Liste werden regelmäßig weitere Elemente hinzugefügt. Prüfen Sie daher, ob neue Inhalte verfügbar sind. 
 
@@ -90,6 +90,8 @@ Dieses Szenario besteht aus zwei Teilen:
 
 - Das Tool für die Marketplace-Syndikation wird beim ersten Verfahren heruntergeladen. 
 
+- Sie können [AzCopy](../storage/common/storage-use-azcopy.md) installieren, um die Downloadleistung zu optimieren, dies ist jedoch nicht zwingend erforderlich.
+
 ### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>Herunterladen von Marketplace-Elementen mithilfe des Tools für die Marketplace-Syndikation
 
 1. Öffnen Sie auf einem Computer mit Internetverbindung eine PowerShell-Konsole als Administrator.
@@ -126,10 +128,7 @@ Dieses Szenario besteht aus zwei Teilen:
    ```PowerShell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
-   Sync-AzSOfflineMarketplaceItem 
-      -Destination "Destination folder path in quotes" `
-      -AzureTenantID $AzureContext.Tenant.TenantId ` 
-      -AzureSubscriptionId $AzureContext.Subscription.Id 
+   Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes" 
    ```
 
 6. Wenn das Tool ausgeführt wird, wird ein Bildschirm mit der Liste verfügbarer Marketplace-Elemente angezeigt, der in etwa wie auf der folgenden Abbildung aussieht:
@@ -144,7 +143,35 @@ Dieses Szenario besteht aus zwei Teilen:
 
 9. Die Dauer des Downloads hängt von der Größe des Elements ab. Nach Abschluss des Downloads ist das Element in dem Ordner verfügbar, den Sie im Skript angegeben haben. Der Download enthält eine VHD-Datei (für virtuelle Computer) oder eine ZIP-Datei (für VM-Erweiterungen). Darüber hinaus kann auch ein Katalogpaket im Format *AZPKG* enthalten sein, bei dem es sich einfach um eine ZIP-Datei handelt.
 
-### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>Importieren des Downloads und Veröffentlichen im Azure Stack-Marketplace
+10. Im Falle eines Downloadfehlers können Sie den Vorgang mithilfe des folgenden PowerShell-Cmdlets erneut ausführen:
+
+    ```powershell
+    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes”
+    ```
+
+    Entfernen Sie vor der Wiederholung den Produktordner, in dem der Fehler beim Herunterladen aufgetreten ist. Wenn der Fehler also beispielsweise beim Herunterladen in den Ordner `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` aufgetreten ist, entfernen Sie den Ordner `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1`, und führen Sie anschließend das Cmdlet erneut aus.
+ 
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1811-and-higher"></a>Importieren des Downloads und Veröffentlichen im Azure Stack-Marketplace (ab 1811)
+
+1. Die [zuvor heruntergeladenen](#use-the-marketplace-syndication-tool-to-download-marketplace-items) Dateien müssen an einen lokalen Speicherort verschoben werden, damit sie für Ihre Azure Stack-Umgebung zur Verfügung stehen. Das Tools für die Marketplace-Syndikation muss ebenfalls für Ihre Azure Stack-Umgebung verfügbar sein, da dieses Tool für den Importvorgang benötigt wird.
+
+   Die folgende Abbildung zeigt ein Beispiel für die Ordnerstruktur. `D:\downloadfolder` enthält alle heruntergeladenen Marketplace-Elemente. Jeder Unterordner ist ein Marketplace-Element (beispielsweise `microsoft.custom-script-linux-arm-2.0.3`) und mit der Produkt-ID benannt. In den Unterordnern befindet sich jeweils der heruntergeladene Inhalt des Marketplace-Elements.
+
+   [ ![Verzeichnisstruktur für Marketplace-Downloads](media/azure-stack-download-azure-marketplace-item/mp1sm.png "Verzeichnisstruktur für Marketplace-Downloads") ](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
+
+2. Gehen Sie gemäß der Anleitung in [diesem Artikel](azure-stack-powershell-configure-admin.md) vor, um die PowerShell-Sitzung für Azure Stack-Bediener zu konfigurieren. 
+
+3. Führen Sie das folgende Skript aus, um das Syndikationsmodul zu importieren und das Tool für die Marketplace-Syndikation zu starten:
+
+   ```PowerShell
+   $credential = Get-Credential -Message "Enter the azure stack operator credential:"
+   Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
+   ```
+   Das `-AzsCredential` ist optional. Dieser Parameter dient dazu, das Zugriffstoken zu erneuern, sollte es abgelaufen sein. Wenn das Token abläuft und der Parameter `-AzsCredential` nicht angegeben ist, werden Sie zur Eingabe der Anmeldeinformationen des Bedieners aufgefordert.
+
+4. Nach erfolgreicher Ausführung des Skripts sollte das Element im Azure Stack-Marketplace verfügbar sein.
+
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1809-and-lower"></a>Importieren des Downloads und Veröffentlichen im Azure Stack-Marketplace (bis 1809)
 
 1. Die [zuvor heruntergeladenen](#use-the-marketplace-syndication-tool-to-download-marketplace-items) Dateien für VM-Images oder Lösungsvorlagen müssen für die Azure Stack-Umgebung lokal verfügbar gemacht werden.  
 
@@ -159,7 +186,7 @@ Dieses Szenario besteht aus zwei Teilen:
    3. Wählen Sie den Container aus, den Sie verwenden möchten, und klicken Sie dann auf **Hochladen**, um den Bereich **Block hochladen** zu öffnen.  
       [ ![Container](media/azure-stack-download-azure-marketplace-item/container.png "Container") ](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
    
-   4. Navigieren Sie im Bereich „Blob hochladen“ zu dem Paket und den Datenträgerdateien, die Sie in den Speicher laden möchten, und klicken Sie auf **Hochladen**: [ ![Hochladen](media/azure-stack-download-azure-marketplace-item/uploadsm.png "Hochladen") ](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
+   4. Navigieren Sie im Bereich „Blob hochladen“ zu dem Paket und den Datenträgerdateien, die Sie in den Speicher laden möchten, und wählen Sie dann **Hochladen** aus: [ ![Hochladen](media/azure-stack-download-azure-marketplace-item/uploadsm.png "Hochladen") ](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
    5. Hochgeladene Dateien werden im Bereich „Container“ angezeigt. Wählen Sie eine Datei aus, und kopieren Sie die URL aus dem Bereich **Blob-Eigenschaften**. Sie verwenden diese URL im nächsten Schritt beim Importieren des Marketplace-Elements in Azure Stack.  In der folgenden Abbildung heißt der Container *blob-test-storage* und die Datei *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  Die Datei-URL lautet *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
       [ ![Blobeigenschaften](media/azure-stack-download-azure-marketplace-item/blob-storagesm.png "Blobeigenschaften") ](media/azure-stack-download-azure-marketplace-item/blob-storage.png#lightbox)  
@@ -168,10 +195,10 @@ Dieses Szenario besteht aus zwei Teilen:
 
    Die Werte für *publisher*, *offer* und *sku* des Images finden Sie in der Textdatei, die mit der AZPKG-Datei heruntergeladen wird. Die Textdatei wird am Zielspeicherort gespeichert. Der *Versionswert* ist die Version, die beim Herunterladen des Elements aus Azure mit dem zuvor genannten Verfahren angegeben ist. 
  
-   Im folgenden Beispielskript werden die Werte für den virtuellen Computer „Windows Server 2016 Datacenter – Server Core“ verwendet. Der Wert für *-Osuri* ist ein Beispielpfad zum Blobspeicherort für das Element. 
+   Im folgenden Beispielskript werden die Werte für den virtuellen Computer „Windows Server 2016 Datacenter – Server Core“ verwendet. Der Wert für *-Osuri* ist ein Beispielpfad zum Blobspeicherort für das Element.
 
    Als Alternative zu diesem Skript können Sie die in [diesem Artikel beschriebene Vorgehensweise](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) verwenden, um das VHD-Image über das Azure-Portal zu importieren.
- 
+
    ```PowerShell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
@@ -181,7 +208,7 @@ Dieses Szenario besteht aus zwei Teilen:
     -Version "2016.127.20171215" `
     -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
-   
+
    **Informationen zu Lösungsvorlagen:** Einige Vorlagen können eine kleine VHD-Datei mit 3 MB und dem Namen **fixed3.vhd** enthalten. Sie müssen diese Datei nicht in Azure Stack importieren. Fixed3.vhd.  Diese Datei ist in einigen Lösungsvorlagen enthalten, um Veröffentlichungsanforderungen für den Azure Marketplace zu erfüllen.
 
    Lesen Sie die Vorlagenbeschreibung, laden Sie zusätzlich erforderliche Komponenten (etwa für die Verwendung mit der Lösungsvorlage erforderliche VHDs) herunter, und importieren Sie sie anschließend.  

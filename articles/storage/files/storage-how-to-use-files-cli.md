@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc94e309db3fd0e97e06b5be5884a0b6e7337cea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 236a4e4f79e6da89154e1e52bb9f45daf3a54d59
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158974"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632042"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit der Azure CLI
 In dieser Anleitung werden die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit der Azure CLI Schritt für Schritt beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -87,7 +87,7 @@ Informationen zum Einbinden einer Dateifreigabe mit SMB finden Sie im folgenden 
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Verwenden einer Azure-Dateifreigabe mit dem REST-Protokoll „File“ 
-Das REST-Protokoll „File“ kann direkt verwendet werden (d.h. Sie können REST-HTTP-Aufrufe selbst erstellen). Gängiger ist jedoch die Verwendung der Azure CLI, des [AzureRM PowerShell-Moduls](storage-how-to-use-files-powershell.md) oder eines Azure Storage SDK. Bei allen diesen Methoden steht ein praktischer Wrapper um das REST-Protokoll „File“ in der Skript-/Programmiersprache Ihrer Wahl zur Verfügung.  
+Das REST-Protokoll „File“ kann direkt verwendet werden (d.h. Sie können REST-HTTP-Aufrufe selbst erstellen). Gängiger ist jedoch die Verwendung der Azure CLI, des [Azure PowerShell-Moduls](storage-how-to-use-files-powershell.md) oder eines Azure Storage SDK. Bei allen diesen Methoden steht ein praktischer Wrapper um das REST-Protokoll „File“ in der Skript-/Programmiersprache Ihrer Wahl zur Verfügung.  
 
 Die meisten Benutzer werden ihre Azure-Dateifreigabe in Azure Files wahrscheinlich über das SMB-Protokoll nutzen, da sie so die bereits vorhandenen Anwendungen und Tools verwenden können, die sie erwarten. Es gibt jedoch auch Gründe, die für die Verwendung der REST-API „File“ sprechen:
 
@@ -95,7 +95,7 @@ Die meisten Benutzer werden ihre Azure-Dateifreigabe in Azure Files wahrscheinli
 - Sie müssen ein Skript oder eine Anwendung über einen Client ausführen, der keine SMB-Freigaben einbinden kann (beispielsweise ein lokaler Client, für den die Blockierung von Port 445 nicht aufgehoben wurde).
 - Sie nutzen serverlose Ressourcen (beispielsweise [Azure Functions](../../azure-functions/functions-overview.md)). 
 
-Die folgenden Beispiele zeigen, wie Sie mit dem AzureRM PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. 
+Die folgenden Beispiele zeigen, wie Sie über die Azure CLI Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. 
 
 ### <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 Verwenden Sie den Befehl [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen:

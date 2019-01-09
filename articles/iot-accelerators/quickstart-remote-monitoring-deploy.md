@@ -1,5 +1,5 @@
 ---
-title: Ausprobieren einer cloudbasierten IoT-Remoteüberwachungslösung in Azure | Microsoft-Dokumentation
+title: 'Ausprobieren einer cloudbasierten IoT-Remoteüberwachungslösung: Azure | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung stellen Sie den Azure IoT Solution Accelerator für die Remoteüberwachung bereit und melden sich am Lösungsdashboard an, um es zu nutzen.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824777"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608356"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Ausprobieren einer cloudbasierten Lösung für die Remoteüberwachung
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Testen einer cloudbasierten Lösung für die Remoteüberwachung
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Azure IoT-Solution Accelerator für die Remoteüberwachung bereitstellen. Bei dieser cloudbasierten Lösung verwenden Sie die Seite mit dem **Dashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts. Dieser Solution Accelerator kann als Ausgangspunkt für Ihre eigene Implementierung sowie als Lernhilfe verwendet werden.
 

@@ -1,21 +1,19 @@
 ---
-title: 'Schnellstart: Erstellung eines Azure Database for MariaDB-Servers – Azure-Befehlszeilenschnittstelle'
+title: 'Schnellstart: Erstellen eines Azure Database for MariaDB-Servers – Azure-Befehlszeilenschnittstelle'
 description: Dieser Schnellstart beschreibt die Verwendung der Azure-Befehlszeilenschnittstelle zum Erstellen eines Azure Database for MariaDB-Servers in einer Azure-Ressourcengruppe.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: bc32cde7e4b4cf68b12b100eb402237098459aae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566447"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538741"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
 
@@ -53,13 +51,13 @@ name | **mydemoserver** | Geben Sie einen eindeutigen Namen ein, der Ihren Azure
 resource-group | **myresourcegroup** | Geben Sie den Namen der Azure-Ressourcengruppe ein.
 sku-name | **GP_Gen5_2** | Der Name der SKU. Die Benennung folgt der Konvention *Tarif*\_*Computegeneration*\_*V-Kerne* in Kurzform. Weitere Informationen zum **sku-name**-Parameter finden Sie im Abschnitt nach dieser Tabelle.
 backup-retention | **7** | Gibt die Aufbewahrungsdauer für eine Sicherung an. Die Einheit ist Tage. Bereich: 7 bis 35. 
-geo-redundant-backup | **Disabled** | Gibt an, ob georedundante Sicherungen für diesen Server aktiviert werden sollen. Zulässige Werte: **Enabled**, **Disabled**.
+geo-redundant-backup | **Disabled** | Gibt an, ob georedundante Sicherungen für diesen Server aktiviert werden sollen. Zulässige Werte: **Aktiviert**, **Deaktiviert**.
 location | **westus** | Der Azure-Standort für den Server.
-ssl-enforcement | **Aktiviert** | Gibt an, ob SSL für diesen Server aktiviert werden soll. Zulässige Werte: **Enabled**, **Disabled**.
+ssl-enforcement | **Aktiviert** | Gibt an, ob SSL für diesen Server aktiviert werden soll. Zulässige Werte: **Aktiviert**, **Deaktiviert**.
 storage-size | **51.200** | Die Speicherkapazität des Servers (Einheit: MB). Gültige Speichergrößen sind Werte ab 5.120 MB (Minimum) mit Erhöhungen in Inkrementen von 1.024 MB. Weitere Informationen zu den Grenzwerten für die Speichergröße finden Sie unter [Tarife](./concepts-pricing-tiers.md). 
 Version | **10.2** | Die Hauptversion der MariaDB-Engine.
 admin-user | **myadmin** | Der Benutzername für die Administratoranmeldung. Der **admin-user**-Parameter darf nicht auf **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** festgelegt werden.
-admin-password | *Ihr Kennwort* | Das Kennwort des Administratorbenutzers. Ihr Kennwort muss zwischen acht und 128 Zeichen lang sein. Es muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen.
+admin-password | *Ihr Kennwort* | Das Kennwort des Administratorbenutzers. Ihr Kennwort muss zwischen acht und 128 Zeichen lang sein. Es muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen.
 
 Der **sku-name**-Parameterwert folgt wie in den folgenden Beispielen gezeigt der Konvention *Tarif*\_*Computegeneration*\_*V-Kerne*:
 + `--sku-name B_Gen5_4` entspricht Tarif „Basic“, Computegeneration 5, vier virtuelle Kerne.

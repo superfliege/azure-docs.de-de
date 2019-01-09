@@ -4,15 +4,15 @@ description: Enthält eine Übersicht über den Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250575"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969130"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -32,13 +32,14 @@ Azure Migrate bietet Folgendes:
 - Es können nur lokale virtuelle VMware-Computer (Virtual Machines, VMs) für die Migration zu virtuellen Azure-Computern bewertet werden. Die virtuellen VMware-Computer müssen mit vCenter Server (Version 5.5, 6.0 oder 6.5) verwaltet werden.
 - Wenn Sie virtuelle Hyper-Computer und physische Server bewerten möchten, verwenden Sie den [Azure Site Recovery-Bereitstellungsplaner](https://aka.ms/asr-dp-hyperv-doc) für Hyper-V und unsere [Partnertools](https://azure.microsoft.com/migration/partners/) für physische Computer.
 - Sie können in einer einzigen Ermittlung bis zu 1.500 und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Außerdem können Sie in einem einzelnen Assessment bis zu 1.500 virtuelle Computer bewerten.
-- Wenn Sie eine Ermittlung für eine größere Umgebung durchführen möchten, können Sie die Ermittlung aufteilen und mehrere Projekte erstellen. [Weitere Informationen](how-to-scale-assessment.md). Azure Migrate unterstützt bis zu 20 Projekte pro Abonnement.
+- Wenn Sie eine Ermittlung für eine größere Umgebung durchführen möchten, können Sie die Ermittlung aufteilen und mehrere Projekte erstellen. [Weitere Informationen](how-to-scale-assessment.md) Azure Migrate unterstützt bis zu 20 Projekte pro Abonnement.
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
 -  Sie können ein Azure Migrate-Projekt nur in den folgenden geografischen Regionen erstellen. Aber dies schränkt nicht Ihre Möglichkeit zum Erstellen von Bewertungen anderer Azure-Standorte als Ziel ein.
     **Geografie** | **Speicherort**
     --- | ---
-    USA | „USA, Westen-Mitte“ oder „USA, Osten“
     Azure Government | US Government, Virginia
+    Europa | „Europa, Norden“ oder „Europa, Westen“
+    USA | „USA, Osten“ oder „USA, Westen-Mitte“
 
     Die mit dem Migrationsprojekt verknüpfte Region wird zum Speichern der Metadaten verwendet, die in der lokalen Umgebung ermittelt wurden. Metadaten werden in einer der Regionen basierend auf der für das Migrationsprojekt angegebenen Geografie gespeichert. Wenn Sie die Visualisierung von Abhängigkeiten durch Erstellung eines neuen Log Analytics-Arbeitsbereichs verwenden, wird der Arbeitsbereich in derselben Region wie das Projekt erstellt.
 - Die Funktion für Abhängigkeitsvisualisierung ist nicht in Azure Government verfügbar.
@@ -97,7 +98,7 @@ Lokale VM | Log Analytics-Arbeitsbereich | [TCP 443] | [Microsoft Monitoring Age
 
 Nachdem Sie lokale Computer bewertet haben, können Sie einige Tools nutzen, um die Migration durchzuführen:
 
-- **Azure Site Recovery**: Sie können Azure Site Recovery für die Migration zu Azure verwenden. Dazu [bereiten Sie die erforderlichen Azure-Komponenten](../site-recovery/tutorial-prepare-azure.md) vor, einschließlich eines Speicherkontos und eines virtuellen Netzwerks. Lokal [bereiten Sie Ihre VMware-Umgebung vor](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Wenn alles vorbereitet ist, richten Sie die Replikation in Azure ein und aktivieren sie. Anschließend migrieren Sie die virtuellen Computer. [Weitere Informationen](../site-recovery/vmware-azure-tutorial.md).
+- **Azure Site Recovery**: Sie können Azure Site Recovery für die Migration zu Azure verwenden. Dazu [bereiten Sie die erforderlichen Azure-Komponenten](../site-recovery/tutorial-prepare-azure.md) vor, einschließlich eines Speicherkontos und eines virtuellen Netzwerks. Lokal [bereiten Sie Ihre VMware-Umgebung vor](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Wenn alles vorbereitet ist, richten Sie die Replikation in Azure ein und aktivieren sie. Anschließend migrieren Sie die virtuellen Computer. [Weitere Informationen](../site-recovery/vmware-azure-tutorial.md)
 - **Azure-Datenbankmigration**: Wenn Ihre lokalen Computer eine Datenbank wie etwa SQL Server, MySQL oder Oracle ausführen, können Sie den [Azure Database Migration Service](../dms/dms-overview.md) für die Migration zu Azure verwenden.
 
 

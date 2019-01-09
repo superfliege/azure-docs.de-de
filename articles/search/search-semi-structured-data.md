@@ -1,5 +1,5 @@
 ---
-title: Tutorial zum Durchsuchen von teilweise strukturierten Daten aus dem Azure-Cloudspeicher – Azure Search
+title: 'Tutorial zum Durchsuchen von JSON in Azure Blob Storage: Azure Search'
 description: In diesem Tutorial erfahren Sie, wie teilweise strukturierte Azure-Blobbaten mithilfe von Azure Search durchsucht werden.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313818"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632941"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Tutorial: Durchsuchen von teilweise strukturierten Daten in Azure-Cloudspeicher
 
@@ -60,7 +60,7 @@ Im Beispiel sind JSON-Beispieldateien enthalten, bei denen es sich ursprünglich
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="upload-the-sample-data"></a>Hochladen der Beispieldaten
 

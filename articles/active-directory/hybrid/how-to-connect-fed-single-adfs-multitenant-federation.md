@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fe5c44e834826f9dc62acd30e853c3736b432ee
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 951b47c7193b2b405def9831e94c5e29faff3119
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412434"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791115"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 
@@ -45,13 +45,13 @@ Damit AD FS in „contoso.com“ Benutzer in „fabrikam.com“ authentifizieren
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>Schritt 2: Ändern der Verbundeinstellungen für „contoso.com“ 
  
-Für den Verbund zwischen einer einzelnen Domäne und AD FS ist der Standardaussteller http://ADFSServiceFQDN/adfs/services/trust festgelegt (Beispiel: `http://fs.contoso.com/adfs/services/trust`). Azure Active Directory benötigt für jede Verbunddomäne einen eindeutigen Aussteller. Da die gleiche AD FS-Instanz zwei Domänen zu einem Verbund zusammenfasst, muss der Ausstellerwert so angepasst werden, dass er für jede Domäne eindeutig ist, die AD FS mit Azure Active Directory zu einem Verbund zusammenfasst. 
+Für den Verbund zwischen einer einzelnen Domäne und AD FS ist der Standardaussteller „http\://ADFSServiceFQDN/adfs/services/trust“ festgelegt (Beispiel: `http://fs.contoso.com/adfs/services/trust`). Azure Active Directory benötigt für jede Verbunddomäne einen eindeutigen Aussteller. Da die gleiche AD FS-Instanz zwei Domänen zu einem Verbund zusammenfasst, muss der Ausstellerwert so angepasst werden, dass er für jede Domäne eindeutig ist, die AD FS mit Azure Active Directory zu einem Verbund zusammenfasst. 
  
 Öffnen Sie auf dem AD FS-Server Azure AD PowerShell. (Stellen Sie sicher, dass das MSOnline-Modul installiert ist.) Führen Sie die folgenden Schritte aus:
  
 Stellen Sie mit „Connect-MsolService“ eine Verbindung mit der Azure Active Directory-Instanz her, die die Domäne „contoso.com“ enthält. Aktualisieren Sie mit „Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain“ die Verbundeinstellungen für „contoso.com“.
  
-Der Aussteller in der Domänenverbundeinstellung wird in http://contoso.com/adfs/services/trust geändert, und für die Vertrauensstellung der vertrauenden Seite von Azure AD wird eine Ausstellungsanspruchsregel hinzugefügt, um auf der Grundlage des UPN-Suffixes den korrekten issuerId-Wert auszugeben.
+Der Aussteller in der Domänenverbundeinstellung wird in „http\://contoso.com/adfs/services/trust“ geändert, und für die Vertrauensstellung der vertrauenden Seite von Azure AD wird eine Ausstellungsanspruchsregel hinzugefügt, um auf der Grundlage des UPN-Suffixes den korrekten issuerId-Wert auszugeben.
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Schritt 3: Erstellen eines Verbunds mit „fabrikam.com“ und AD FS
  

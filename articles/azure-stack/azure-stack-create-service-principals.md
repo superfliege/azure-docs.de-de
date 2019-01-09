@@ -1,28 +1,27 @@
 ---
-title: Erstellen eines Dienstprinzipals für Azure Stack | Microsoft-Dokumentation
-description: Beschreibt das Erstellen eines neuen Dienstprinzipals, der mit der rollenbasierten Zugriffssteuerung in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
+title: Verwalten eines Dienstprinzipals für Azure Stack | Microsoft-Dokumentation
+description: Beschreibt das Verwalten eines neuen Dienstprinzipals, der mit der rollenbasierten Zugriffssteuerung in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: azure-resource-manager
 documentationcenter: na
 author: sethmanheim
 manager: femila
-ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2018
+ms.date: 12/18/2018
 ms.author: sethm
-ms.openlocfilehash: a6d8ef698c005429c1184b5565b1a9387d05e062
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 50ece9edbc4bee1dea2cc61f2cdd851b278aa7b0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230113"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720440"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Bereitstellen des Anwendungszugriffs auf Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Wenn eine Anwendung Zugriff benötigt, um Ressourcen über Azure Resource Manager in Azure Stack bereitzustellen oder zu konfigurieren, erstellen Sie einen Dienstprinzipal. Dies ist ein Objekt mit Anmeldeinformationen für Ihre Anwendung. Sie können für diesen Dienstprinzipal dann nur die erforderlichen Berechtigungen delegieren.  
 
@@ -30,28 +29,35 @@ Beispiel: Sie verfügen über ein Tool für die Konfigurationsverwaltung, das Az
 
 Der Ansatz mit Dienstprinzipalen ist dem Ausführen der App mit Ihren Anmeldeinformationen aus folgenden Gründen vorzuziehen:
 
-* Sie können dem Dienstprinzipal Berechtigungen zuweisen, die sich von Ihren eigenen Kontoberechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
-* Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Zuständigkeiten ändern.
-* Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.  
+ - Sie können dem Dienstprinzipal Berechtigungen zuweisen, die sich von Ihren eigenen Kontoberechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
+ - Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Zuständigkeiten ändern.
+ - Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.  
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Je nachdem, wie Sie Azure Stack bereitgestellt haben, beginnen Sie mit dem Erstellen eines Dienstprinzipals. In diesem Dokument wird das Erstellen eines Dienstprinzipals für [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad) und [Active Directory-Verbunddienste (AD FS)](#create-service-principal-for-ad-fs) beschrieben. Nachdem Sie den Dienstprinzipal erstellt haben, können Sie einige Schritte ausführen, die für AD FS und Azure Active Directory gleich sind, um für die Rolle [Berechtigungen zu delegieren](#assign-role-to-service-principal).     
+Je nachdem, wie Sie Azure Stack bereitgestellt haben, beginnen Sie mit dem Erstellen eines Dienstprinzipals. Dieses Dokument beschreibt das Erstellen eines Dienstprinzipals für:
 
-## <a name="create-service-principal-for-azure-ad"></a>Erstellen des Dienstprinzipals für Azure AD
+- [Azure Active Directory (Azure AD):](#create-service-principal-for-azure-ad) Azure AD ist ein mehrinstanzenfähiger cloudbasierter Verzeichnis- und Identitätsverwaltungsdienst. Sie können Azure AD mit einem verbundenen Azure Stack verwenden.
+- [Active Directory-Verbunddienste (AD FS)](#create-service-principal-for-ad-fs). AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Sie können AD FS sowohl mit verbundenen als auch mit getrennten Azure Stack-Instanzen verwenden.
 
-Wenn Sie Azure Stack mit Azure AD als Identitätsspeicher bereitgestellt haben, können Sie Dienstprinzipale genauso wie für Azure erstellen. In diesem Abschnitt erfahren Sie, wie die Schritte über das Portal ausgeführt werden. Vergewissern Sie sich vorher, ob Sie über die [erforderlichen Azure AD-Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) verfügen.
+Nachdem Sie den Dienstprinzipal erstellt haben, können Sie einige Schritte ausführen, die für AD FS und Azure Active Directory gleich sind, um für die Rolle [Berechtigungen zu delegieren](#assign-role-to-service-principal).
+
+## <a name="manage-service-principal-for-azure-ad"></a>Verwalten des Dienstprinzipals für Azure AD
+
+Wenn Sie Azure Stack mit Azure Active Directory (Azure AD) als Identitätsverwaltungsdienst bereitgestellt haben, können Sie Dienstprinzipale genauso wie für Azure erstellen. In diesem Abschnitt erfahren Sie, wie die Schritte über das Portal ausgeführt werden. Vergewissern Sie sich vorher, ob Sie über die [erforderlichen Azure AD-Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) verfügen.
 
 ### <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
+
 In diesem Abschnitt erstellen Sie eine Anwendung (Dienstprinzipal) in Azure AD, die Ihre Anwendung repräsentiert.
 
 1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com) bei Ihrem Azure-Konto an.
-2. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.   
+2. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.
 3. Geben Sie einen Namen und eine URL für die Anwendung an. Wählen Sie als Typ für die zu erstellende Anwendung entweder **Web-App/API** oder **Nativ** aus. Wählen Sie nach dem Festlegen der Werte **Erstellen** aus.
 
 Sie haben einen Dienstprinzipal für Ihre Anwendung erstellt.
 
 ### <a name="get-credentials"></a>Abrufen von Anmeldeinformationen
+
 Beim programmgesteuerten Anmelden verwenden Sie die ID für Ihre Anwendung und einen Authentifizierungsschlüssel für eine Web-App/API. Führen Sie die folgenden Schritte aus, um diese Werte abzurufen:
 
 1. Wählen Sie in Active Directory unter **App Registrierungen** Ihre Anwendung aus.
@@ -67,27 +73,45 @@ Nach dem Speichern des Schlüssels wird der Wert des Schlüssels angezeigt. Kopi
 
 ![gespeicherter Schlüssel](./media/azure-stack-create-service-principal/image15.png)
 
-Fahren Sie nach Abschluss des Vorgangs mit dem [Zuweisen einer Rolle für Ihre Anwendung](#assign-role-to-service-principal) fort.
+Weisen Sie nach Abschluss des Vorgangs [Ihrer Anwendung eine Rolle zu](#assign-role-to-service-principal).
 
-## <a name="create-service-principal-for-ad-fs"></a>Erstellen eines Dienstprinzipals für AD FS
-Wenn Sie Azure Stack mit AD FS bereitgestellt haben, können Sie PowerShell verwenden, um einen Dienstprinzipal zu erstellen, eine Rolle für den Zugriff zuzuweisen und die Anmeldung über PowerShell mit dieser Identität durchzuführen.
+## <a name="manage-service-principal-for-ad-fs"></a>Verwalten eines Dienstprinzipals für AD FS
 
-Das Skript wird über den privilegierten Endpunkt auf einem virtuellen ERCS-Computer ausgeführt.
+Wenn Sie Azure Stack mit Azure Directory-Verbunddiensten (AD FS) als Identitäsverwaltungsdienst bereitgestellt haben, verwenden Sie PowerShell, um einen Dienstprinzipal zu erstellen, eine Rolle für den Zugriff zuzuweisen und sich mit dieser Identität anzumelden.
 
-Anforderungen:
-- Ein Zertifikat ist erforderlich.
+Sie können eine von zwei Methoden verwenden, um Ihren Dienstprinzipal mit AD FS zu erstellen. Ihre Möglichkeiten:
+ - [Erstellen eines Dienstprinzipals mithilfe eines Zertifikats](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate)
+ - [Erstellen eines Dienstprinzipals mithilfe eines geheimen Clientschlüssels](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret)
 
-Zertifikatanforderungen:
+Aufgaben für die Verwaltung von AD FS-Dienstprinzipalen.
+
+| Typ | Aktion |
+| --- | --- |
+| AD FS-Zertifikat | [Erstellen](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
+| AD FS-Zertifikat | [Aktualisieren](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
+| AD FS-Zertifikat | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-AD-FS) |
+| Geheimer AD FS-Clientschlüssel | [Erstellen](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
+| Geheimer AD FS-Clientschlüssel | [Aktualisieren](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
+| Geheimer AD FS-Clientschlüssel | [Remove](azure-stack-create-service-principals.md##remove-a-service-principal-for-AD-FS) |
+
+### <a name="create-a-service-principal-using-a-certificate"></a>Erstellen eines Dienstprinzipals mithilfe eines Zertifikats
+
+Wenn Sie einen Dienstprinzipal erstellen, während Sie AD FS für die Identität verwenden, können Sie ein Zertifikat verwenden.
+
+#### <a name="certificate"></a>Zertifikat
+
+Ein Zertifikat ist erforderlich.
+
+**Zertifikatanforderungen**
+
  - Der Kryptografiedienstanbieter (Cryptographic Service Provider, CSP) muss ein Legacyschlüsselanbieter sein.
  - Das Zertifikatformat muss eine PFX-Datei sein, da sowohl der öffentliche als auch der private Schlüssel benötigt wird. Windows-Server verwenden PFX-Dateien, die die Datei für den öffentlichen Schlüssel (SSL-Zertifikatdatei) und die zugehörige Datei für den privaten Schlüssel enthalten.
  - Zertifikate müssen für die Produktion von einer internen oder einer öffentlichen Zertifizierungsstelle ausgestellt werden. Wenn Sie eine öffentliche Zertifizierungsstelle verwenden, muss die Zertifizierungsstelle im Rahmen des Microsoft Trusted Root Authority Program in das Basisbetriebssystem-Image aufgenommen werden. Sie finden die vollständige Liste unter [Microsoft Trusted Root Certificate Program: Participants](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
  - Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf den im Zertifikat veröffentlichten Speicherort der Zertifikatsperrliste (Certificate Revocation List, CRL) der Zertifizierungsstelle verfügen. Bei dieser CRL muss es sich um einen HTTP-Endpunkt handeln.
 
-
 #### <a name="parameters"></a>Parameter
 
 Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
-
 
 |Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
@@ -95,12 +119,9 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 |ClientCertificates|Array von Zertifikatobjekten|X.509-Zertifikat|
 |ClientRedirectUris<br>(Optional)|Umleitungs-URI der Anwendung|-|
 
-#### <a name="example"></a>Beispiel
+#### <a name="use-powershell-to-create-a-service-principal"></a>Erstellen eines Dienstprinzipals mithilfe von Azure PowerShell
 
-1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Befehle aus:
-
-   > [!NOTE]
-   > In diesem Beispiel wird ein selbstsigniertes Zertifikat erstellt. Wenn Sie diese Befehle in einer Produktionsbereitstellung ausführen, rufen Sie mit [Get-Item](/powershell/module/Microsoft.PowerShell.Management/Get-Item) das Zertifikatobjekt für das Zertifikat ab, das Sie verwenden möchten.
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Cmdlets aus:
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
@@ -109,9 +130,11 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
     # Creating a PSSession to the ERCS PrivilegedEndpoint
     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-    # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-    $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
-
+    # If you have a managed certificate use the Get-Item command to retrieve your certificate from your certificate location.
+    # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
+    # $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+    $cert = Get-Item "<yourcertificatelocation>"
+    
     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}
     $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
     $session|remove-pssession
@@ -146,8 +169,15 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
     $ServicePrincipal
 
    ```
+   > [!Note]  
+   > Zu Überprüfungszwecken kann mit dem folgenden Beispiel ein selbstsigniertes Zertifikat erstellt werden:
 
-2. Nach Abschluss der Automatisierung zeigt es die für die Verwendung des SPN erforderlichen Details an. 
+   ```PowerShell  
+   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+   ```
+
+
+2. Nach Abschluss der Automatisierung zeigt es die für die Verwendung des SPN erforderlichen Details an. Es wird empfohlen, die Ausgabe zur späteren Verwendung zu speichern.
 
    Beispiel: 
 
@@ -160,21 +190,176 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
    RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
    ```
 
-### <a name="assign-a-role"></a>Zuweisen einer Rolle
-Nach dem Erstellen des Dienstprinzipals müssen Sie [ihn einer Rolle zuweisen](#assign-role-to-service-principal).
+### <a name="update-certificate-for-service-principal-for-ad-fs"></a>Aktualisieren des Zertifikats für den Dienstprinzipal für AD FS
 
-### <a name="sign-in-through-powershell"></a>Anmelden über PowerShell
-Nachdem Sie eine Rolle zugewiesen haben, können Sie sich mit dem Dienstprinzipal an Azure Stack anmelden, indem Sie den folgenden Befehl verwenden:
+Wenn Sie Azure Stack mit AD FS bereitgestellt haben, können Sie PowerShell verwenden, um das Geheimnis für einen Dienstprinzipal zu aktualisieren.
 
-```powershell
-Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
- -ServicePrincipal `
- -CertificateThumbprint $servicePrincipal.Thumbprint `
- -ApplicationId $servicePrincipal.ClientId ` 
- -TenantId $directoryTenantId
+Das Skript wird über den privilegierten Endpunkt auf einem virtuellen ERCS-Computer ausgeführt.
+
+#### <a name="parameters"></a>Parameter
+
+Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
+
+|Parameter|BESCHREIBUNG|Beispiel|
+|---------|---------|---------|
+|NAME|Name des SPN-Kontos|MyAPP|
+|ApplicationIdentifier|Eindeutiger Bezeichner|S-1-5-21-1634563105-1224503876-2692824315-2119|
+|ClientCertificate|Array von Zertifikatobjekten|X.509-Zertifikat|
+
+#### <a name="example-of-updating-service-principal-for-ad-fs"></a>Beispiel für das Aktualisieren eines Dienstprinzipals für AD FS
+
+In dem Beispiel wird ein selbstsigniertes Zertifikat erstellt. Wenn Sie die Cmdlets in einer Produktionsbereitstellung ausführen, rufen Sie mit [Get-Item](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Management/Get-Item) das Zertifikatobjekt für das Zertifikat ab, das Sie verwenden möchten.
+
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Cmdlets aus:
+
+     ```powershell
+          # Creating a PSSession to the ERCS PrivilegedEndpoint
+          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+          # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
+          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+
+          $RemoveServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $Newcert}
+
+          $session|remove-pssession
+     ```
+
+2. Nach Abschluss der Automatisierung zeigt sie den aktualisierten Fingerabdruckwert an, der für die SPN-Authentifizierung erforderlich ist.
+
+     ```Shell  
+          ClientId              : 
+          Thumbprint            : AF22EE716909041055A01FE6C6F5C5CDE78948E9
+          ApplicationName       : Azurestack-ThomasAPP-3e5dc4d2-d286-481c-89ba-57aa290a4818
+          ClientSecret          : 
+          RunspaceId            : a580f894-8f9b-40ee-aa10-77d4d142b4e5
+     ```
+
+### <a name="create-a-service-principal-using-a-client-secret"></a>Erstellen eines Dienstprinzipals mithilfe eines geheimen Clientschlüssels
+
+Wenn Sie einen Dienstprinzipal erstellen, während Sie AD FS für die Identität verwenden, können Sie ein Zertifikat verwenden. Sie verwenden den privilegierten Endpunkt zum Ausführen der Cmdlets.
+
+Diese Skripts werden von dem privilegierten Endpunkt aus auf einem virtuellen ERCS-Computer ausgeführt. Weitere Informationen zum privilegierten Endpunkt finden Sie unter [Verwenden des privilegierten Endpunkts in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+
+#### <a name="parameters"></a>Parameter
+
+Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
+
+| Parameter | BESCHREIBUNG | Beispiel |
+|----------------------|--------------------------|---------|
+| NAME | Name des SPN-Kontos | MyAPP |
+| GenerateClientSecret | Erstellen eines Geheimnisses |  |
+
+#### <a name="use-the-ercs-privilegedendpoint-to-create-the-service-principal"></a>Verwenden Sie den ERCS-PrivilegedEndpoint, um den Dienstprinzipal zu erstellen.
+
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Cmdlets aus:
+
+     ```PowerShell  
+      # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
+     $creds = Get-Credential
+
+     # Creating a PSSession to the ERCS PrivilegedEndpoint
+     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+     # Creating a SPN with a secre
+     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -GenerateClientSecret}
+     $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
+     $session|remove-pssession
+
+     # Output the SPN details
+     $ServicePrincipal
+     ```
+
+2. Nach Ausführung der Cmdlets zeigt die Shell die für die Verwendung des SPN erforderlichen Details an. Stellen Sie sicher, dass Sie den geheimen Clientschlüssel speichern.
+
+     ```PowerShell  
+     ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
+     ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
+     Thumbprint            : 
+     ApplicationName       : Azurestack-YourApp-6967581b-497e-4f5a-87b5-0c8d01a9f146
+     ClientSecret          : 6RUZLRoBw3EebMDgaWGiowCkoko5_j_ujIPjA8dS
+     PSComputerName        : 192.168.200.224
+     RunspaceId            : 286daaa1-c9a6-4176-a1a8-03f543f90998
+     ```
+
+#### <a name="update-client-secret-for-a-service-principal-for-ad-fs"></a>Aktualisieren des geheimen Clientschlüssels für einen Dienstprinzipal für AD FS
+
+Ein neuer geheimer Clientschlüssel wird automatisch von dem PowerShell-Cmdlet generiert.
+
+Das Skript wird über den privilegierten Endpunkt auf einem virtuellen ERCS-Computer ausgeführt.
+
+##### <a name="parameters"></a>Parameter
+
+Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
+
+| Parameter | BESCHREIBUNG | Beispiel |
+|-----------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| ApplicationIdentifier | Eindeutiger Bezeichner. | S-1-5-21-1634563105-1224503876-2692824315-2119 |
+| ChangeClientSecret | Ändert den geheimen Clientschlüssel mit einem Rolloverzeitraum von 2880 Minuten, während dessen das alte Geheimnis noch gültig ist. |  |
+| ResetClientSecret | Sofortiges Ändern des geheimen Clientschlüssels |  |
+
+##### <a name="example-of-updating-a-client-secret-for-ad-fs"></a>Beispiel für das Aktualisieren eines geheimen Clientschlüssels für AD FS
+
+Im Beispiel wird der Parameter **resetclientsecret** verwendet, der den geheimen Clientschlüssel sofort ändert.
+
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Cmdlets aus:
+
+     ```PowerShell  
+          # Creating a PSSession to the ERCS PrivilegedEndpoint
+          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+          # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
+          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+
+          $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
+
+          $session|remove-pssession
+     ```
+
+2. Nach Abschluss der Automatisierung zeigt sie das neu generierte Geheimnis an, das für die SPN-Authentifizierung erforderlich ist. Stellen Sie sicher, dass Sie den neuen geheimen Clientschlüssel speichern.
+
+     ```PowerShell  
+          ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
+          ClientId              :  
+          Thumbprint            : 
+          ApplicationName       : Azurestack-Yourapp-6967581b-497e-4f5a-87b5-0c8d01a9f146
+          ClientSecret          : MKUNzeL6PwmlhWdHB59c25WDDZlJ1A6IWzwgv_Kn
+          RunspaceId            : 6ed9f903-f1be-44e3-9fef-e7e0e3f48564
+     ```
+
+### <a name="remove-a-service-principal-for-ad-fs"></a>Entfernen eines Dienstprinzipals für AD FS
+
+Wenn Sie Azure Stack mit AD FS bereitgestellt haben, können Sie PowerShell verwenden, um einen Dienstprinzipal zu löschen.
+
+Das Skript wird über den privilegierten Endpunkt auf einem virtuellen ERCS-Computer ausgeführt.
+
+#### <a name="parameters"></a>Parameter
+
+Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
+
+|Parameter|BESCHREIBUNG|Beispiel|
+|---------|---------|---------|
+| Parameter | BESCHREIBUNG | Beispiel |
+| ApplicationIdentifier | Eindeutiger Bezeichner | S-1-5-21-1634563105-1224503876-2692824315-2119 |
+
+> [!Note]  
+> Zum Anzeigen einer Liste alle vorhandenen Dienstprinzipale und ihrer Anwendungs-IDs kann der Befehl „get-graphapplication“ verwendet werden.
+
+#### <a name="example-of-removing-the-service-principal-for-ad-fs"></a>Beispiel für das Entfernen des Dienstprinzipals für AD FS
+
+```powershell  
+     Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
+     $creds = Get-Credential
+
+     # Creating a PSSession to the ERCS PrivilegedEndpoint
+     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+     $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock { Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
+
+     $session|remove-pssession
 ```
 
-## <a name="assign-role-to-service-principal"></a>Zuweisen einer Rolle zum Dienstprinzipal
+## <a name="assign-a-role"></a>Zuweisen einer Rolle
+
 Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md).
 
 Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
@@ -189,7 +374,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
      ![„Zugriff“ auswählen](./media/azure-stack-create-service-principal/image17.png)
 
-4. Wählen Sie **Hinzufügen**.
+4. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
 5. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten.
 
@@ -201,5 +386,7 @@ Nachdem Sie nun einen Dienstprinzipal erstellt und eine Rolle zugewiesen haben, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Hinzufügen von Benutzern für AD FS](azure-stack-add-users-adfs.md)
-[Verwalten von Benutzerberechtigungen](azure-stack-manage-permissions.md)
+[Hinzufügen von Benutzern für AD FS](azure-stack-add-users-adfs.md)  
+[Verwalten von Benutzerberechtigungen](azure-stack-manage-permissions.md)  
+[Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory)  
+[Active Directory-Verbunddienste (AD FS)](https://docs.microsoft.com/windows-server/identity/active-directory-federation-services)

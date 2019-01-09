@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: 6bc354ef3451862e3567adbe5ff8ee6da0eacaf6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314872"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631497"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
@@ -74,12 +74,12 @@ Nach der Anmeldung sollte ein Dashboard wie in der folgenden Abbildung angezeigt
 
 ![Dashboard für die Verwaltung][ManagementDashboard]
 
-Auf der Registerkarte **Dienste** können Sie Ihre WAF für die Dienste konfigurieren, die von ihr geschützt werden sollen. Weitere Informationen zum Konfigurieren Ihrer Barracuda WAF finden Sie in [der dazugehörigen Dokumentation](https://techlib.barracuda.com/waf/getstarted1). Im nachstehenden Beispiel wurde eine Azure-Web-App zum Verarbeiten von Datenverkehr über HTTP und HTTPS konfiguriert.
+Auf der Registerkarte **Dienste** können Sie Ihre WAF für die Dienste konfigurieren, die von ihr geschützt werden sollen. Weitere Informationen zum Konfigurieren Ihrer Barracuda WAF finden Sie in [der dazugehörigen Dokumentation](https://techlib.barracuda.com/waf/getstarted1). Im nachstehenden Beispiel wurde eine App Service-App zum Verarbeiten von Datenverkehr über HTTP und HTTPS konfiguriert.
 
 ![Verwaltungsdienste hinzufügen][ManagementAddServices]
 
 > [!NOTE]
-> Je nachdem, wie Ihre Anwendungen konfiguriert sind und welche Features in Ihrer App Service-Umgebung verwendet werden, müssen Sie Datenverkehr für alle TCP-Ports außer 80 und 443 weiterleiten, z.B. wenn Sie IP-SSL für eine Webanwendung eingerichtet haben. Eine Liste der Netzwerkports, die in App Service-Umgebungen verwendet werden, finden Sie in der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) im Abschnitt „Netzwerkports“.
+> Je nachdem, wie Ihre Anwendungen konfiguriert sind und welche Features in Ihrer App Service-Umgebung verwendet werden, müssen Sie Datenverkehr für alle TCP-Ports außer 80 und 443 weiterleiten, beispielsweise wenn Sie IP-SSL für eine App Service-App eingerichtet haben. Eine Liste der Netzwerkports, die in App Service-Umgebungen verwendet werden, finden Sie in der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) im Abschnitt „Netzwerkports“.
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, PHP – Maschinelles Sehen'
+title: 'Schnellstart: Extrahieren von gedrucktem Text – REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit PHP verwenden.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 10be09c4d18cc7bc395937e1a175a5bfcd1e5d7e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 2707134c3fb451f4386748f691086eeb617d3ebe
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340238"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581374"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der REST-API und PHP in der Maschinelles Sehen-API
 
@@ -33,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-1. Installieren Sie das PHP5-Paket [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2).
+1. Installieren Sie das PHP5-Paket [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2).
    1. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
    1. Führen Sie den folgenden Befehl aus:
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 06a7ce6301af6e5a7c04ac5c5a0a1240c21f834e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6e7f6499a78b21ad81af5d541966e18090467532
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887507"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787629"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Tutorial: Debuggen einer Service Fabric Mesh-Anwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird
 
@@ -93,8 +93,8 @@ Vergewissern Sie sich im Falle von Buildfehlern in **service.yaml**, dass zum Ei
 ### <a name="debug-in-visual-studio"></a>Debuggen in Visual Studio
 
 Beim Debuggen einer Service Fabric Mesh-Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Debuggen Sie die Methode „OnGet()“, um zu sehen, wie Aufgaben aus dem Back-End-Dienst abgerufen werden.
-1. Navigieren Sie im Projekt **WebFrontEnd** zu **Seiten** > **Index.cshtml** > **Index.cshtml.cs**, und legen Sie einen Breakpoint in der Methode **Get** (Zeile 17) fest.
-2. Öffnen Sie im Projekt **ToDoService** die Datei **TodoController.cs**, und legen Sie einen Breakpoint in der Methode **OnGet** (Zeile 15) fest.
+1. Navigieren Sie im Projekt **WebFrontEnd** zu **Seiten** > **Index.cshtml** > **Index.cshtml.cs**, und legen Sie einen Breakpoint in der Methode **OnGet** (Zeile 17) fest.
+2. Öffnen Sie im Projekt **ToDoService** die Datei **TodoController.cs**, und legen Sie einen Breakpoint in der Methode **Get** (Zeile 15) fest.
 3. Aktualisieren Sie die Anzeige im Browser. Sie erreichen den ersten Breakpoint in der Web-Front-End-Methode `OnGet()`. Anhand der Variablen `backendUrl` sehen Sie, wie die Umgebungsvariablen, die Sie in der Datei **service.yaml** definiert haben, zu der URL kombiniert werden, die zum Herstellen der Verbindung mit dem Back-End-Dienst verwendet wird.
 4. Überspringen Sie durch Drücken von F10 den Aufruf `client.GetAsync(backendUrl).GetAwaiter().GetResult())`, um zum Controller-Breakpoint `Get()` zu gelangen. In dieser Methode sehen Sie, wie die Liste mit den Aufgaben aus der In-Memory-Liste abgerufen wird.
 5. Wenn Sie fertig sind, drücken Sie**UMSCHALT+F5**, um das Debuggen Ihres Projekts in Visual Studio zu beenden.

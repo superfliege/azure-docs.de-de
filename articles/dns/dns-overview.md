@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 9535ad73300406408a94a6f38f001e45ba7409a2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: df890eb0e07c13d0757c706a3cabbbad67b6eac2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093094"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716275"
 ---
 # <a name="what-is-azure-dns"></a>Was ist Azure DNS?
 
-Azure DNS ist ein Hostingdienst für DNS-Domänen, der eine Namensauflösung mittels Microsoft Azure-Infrastruktur bietet. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung verwalten wie bei Ihren anderen Azure-Diensten.
+Azure DNS ist ein Hostingdienst für DNS-Domänen, der eine Namensauflösung mittels Microsoft Azure-Infrastruktur bietet. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
 
-Es ist nicht möglich, Azure DNS zum Erwerben eines Domänennamens zu verwenden. Ein Domänenname kann für eine Jahresgebühr über [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) oder über die Domänennamen-Registrierungsstelle eines Drittanbieters erworben werden. Ihre Domänen können dann in Azure DNS für die Verwaltung von Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
+Es ist nicht möglich, Azure DNS zum Erwerben eines Domänennamens zu verwenden. Ein Domänenname kann für eine Jahresgebühr über [App Service-Domänen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) oder über die Domänennamen-Registrierungsstelle eines Drittanbieters erworben werden. Ihre Domänen können dann in Azure DNS für die Verwaltung von Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
 
 Azure DNS bietet folgende Features.
 
@@ -55,7 +55,7 @@ Weitere Informationen finden Sie unter [Verwenden von Azure DNS für private Dom
 
 ## <a name="alias-records"></a>Aliaseinträge
 
-Azure DNS unterstützt Aliaseintragssätze. Sie können einen Aliaseintragssatz verwenden, um auf eine Azure-Ressource zu verweisen (beispielsweise eine öffentliche Azure-IP-Adresse oder ein Azure Traffic Manager-Profil). Wenn sich die IP-Adresse der zugrunde liegenden Ressource ändert, wird der Aliasdatensatz während der DNS-Auflösung nahtlos automatisch aktualisiert. Der Aliasdatensatz verweist auf die Dienstinstanz, und der Dienstinstanz ist eine IP-Adresse zugeordnet. 
+Azure DNS unterstützt Aliasdatensätze. Sie können einen Aliaseintragssatz verwenden, um auf eine Azure-Ressource zu verweisen (beispielsweise eine öffentliche Azure-IP-Adresse oder ein Azure Traffic Manager-Profil). Wenn sich die IP-Adresse der zugrunde liegenden Ressource ändert, wird der Aliasdatensatz während der DNS-Auflösung nahtlos automatisch aktualisiert. Der Aliasdatensatz verweist auf die Dienstinstanz, und der Dienstinstanz ist eine IP-Adresse zugeordnet. 
 
 Darüber hinaus kann Ihre Apex- oder Naked-Domäne jetzt über einen Aliaseintrag auf ein Traffic Manager-Profil verweisen. Ein Beispiel wäre etwa „contoso.com“.
 

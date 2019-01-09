@@ -4,156 +4,157 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 0e9cb37e-16bf-493b-bfc8-8d9840545a1e
-ms.service: active-directory
-ms.component: saas-app-tutorial
+manager: mtillman
+ms.reviewer: barbkess
+ms.assetid: 3f0671bc-f93f-496e-b465-b9ce8c6633fa
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 54bf459f6acd7649f3ad1a546bef1d0429393161
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9677d021de9cb89760afad3db583e6954790ecad
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420758"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Tutorial: Azure Active Directory-Integration mit LaunchDarkly
 
 In diesem Tutorial erfahren Sie, wie Sie LaunchDarkly in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von LaunchDarkly in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf LaunchDarkly hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei LaunchDarkly anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf LaunchDarkly hat.
+* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei LaunchDarkly anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit LaunchDarkly konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein LaunchDarkly-Abonnement, das für das einmalige Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* LaunchDarkly-Abonnement, das für das einmalige Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von LaunchDarkly aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* LaunchDarkly unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+* LaunchDarkly unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-launchdarkly-from-the-gallery"></a>Hinzufügen von LaunchDarkly aus dem Katalog
+
 Zum Konfigurieren der Integration von LaunchDarkly in Azure AD müssen Sie LaunchDarkly aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um LaunchDarkly aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld **LaunchDarkly** ein, wählen Sie im Ergebnisbereich **LaunchDarkly** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![LaunchDarkly in der Ergebnisliste](./media/launchdarkly-tutorial/tutorial_launchdarkly_addfromgallery.png)
+4. Geben Sie im Suchfeld **LaunchDarkly** ein, wählen Sie im Ergebnisbereich **LaunchDarkly** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+     ![LaunchDarkly in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit LaunchDarkly anhand eines Testbenutzers namens Britta Simon.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei [Anwendungsname] mithilfe einer Testbenutzerin namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in [Anwendungsname] eingerichtet werden.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in LaunchDarkly als Entsprechung für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in LaunchDarkly muss eine Linkbeziehung eingerichtet werden.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit LaunchDarkly müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendungsname] müssen Sie die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines LaunchDarkly-Testbenutzers](#create-a-launchdarkly-test-user)**, um eine Entsprechung von Britta Simon in LaunchDarkly zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Konfigurieren des einmaligen Anmeldens für LaunchDarkly](#configure-launchdarkly-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines LaunchDarkly-Testbenutzers](#create-launchdarkly-test-user)**, um eine Entsprechung von Britta Simon in LaunchDarkly zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer LaunchDarkly-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LaunchDarkly die folgenden Schritte aus:**
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit [Anwendungsname] zu konfigurieren:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LaunchDarkly** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **LaunchDarkly** die Option **Einmaliges Anmelden** aus.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/launchdarkly-tutorial/tutorial_launchdarkly_samlbase.png)
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-1. Führen Sie im Abschnitt **Domäne und URLs für LaunchDarkly** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![Informationen zur Domäne und zu den URLs für LaunchDarkly für das einmalige Anmelden](./media/launchdarkly-tutorial/tutorial_launchdarkly_url.png)
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `app.launchdarkly.com`
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
-    
+    ![Informationen zur Domäne und zu den URLs für LaunchDarkly für das einmalige Anmelden](common/idp-intiated.png)
+
+    a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `app.launchdarkly.com`
+
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
+
     > [!NOTE]
-    > Der Wert der Antwort-URL entspricht nicht dem tatsächlichen Wert. Sie aktualisieren den Wert mit der tatsächlichen Antwort-URL. Dies wird später in diesem Tutorial beschrieben.
+    > Der Wert der Antwort-URL entspricht nicht dem tatsächlichen Wert. Sie aktualisieren den Wert mit der tatsächlichen Antwort-URL. Dies wird später in diesem Tutorial beschrieben. Wenn Sie beabsichtigen, die Anwendung im **IDP**-Modus zu verwenden, müssen Sie das Feld **Anmelde-URL** leer lassen, da Sie ansonsten die Anmeldung nicht über **IDP** einleiten können. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Informationen zur Domäne und zu den URLs für LaunchDarkly für das einmalige Anmelden](./media/launchdarkly-tutorial/tutorial_launchdarkly_url1.png)
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.launchdarkly.com`
 
-    Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://app.launchdarkly.com`
+    ![Informationen zur Domäne und zu den URLs für LaunchDarkly für das einmalige Anmelden](common/metadata-upload-additional-signon.png)
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](./media/launchdarkly-tutorial/tutorial_launchdarkly_certificate.png) 
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+7. Kopieren Sie im Abschnitt **LaunchDarkly einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/launchdarkly-tutorial/tutorial_general_400.png)
-    
-1. Klicken Sie im Abschnitt **LaunchDarkly-Konfiguration** auf **LaunchDarkly konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Dienst-URL für einmalige Anmeldung** aus dem Abschnitt **Kurzübersicht**.
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/tutorial_launchdarkly_configure.png)
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-launchdarkly-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für LaunchDarkly
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der LaunchDarkly-Unternehmenswebsite als Administrator an.
 
-1. Wählen Sie **Account Settings** (Kontoeinstellungen) im linken Navigationsbereich aus.
+2. Wählen Sie **Account Settings** (Kontoeinstellungen) im linken Navigationsbereich aus.
 
     ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure1.png)
 
-1. Klicken Sie auf die Registerkarte **Security** (Sicherheit).
+3. Klicken Sie auf die Registerkarte **Security** (Sicherheit).
 
     ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure2.png)
 
-1. Klicken Sie auf **ENABLE SSO** (SSO aktivieren) und dann auf **EDIT SAML CONFIGURATION** (SAML-Konfiguration bearbeiten).
+4. Klicken Sie auf **ENABLE SSO** (SSO aktivieren) und dann auf **EDIT SAML CONFIGURATION** (SAML-Konfiguration bearbeiten).
 
     ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure3.png)
 
-1. Führen Sie im Abschnitt **Edit your SAML Configuration** (SAML-Konfiguration bearbeiten) die folgenden Schritte aus:
+5. Führen Sie im Abschnitt **Edit your SAML Configuration** (SAML-Konfiguration bearbeiten) die folgenden Schritte aus:
 
     ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure4.png)
 
     a. Kopieren Sie die **SAML consumer service URL** (SAML-Verbraucherdienst-URL) für Ihre Instanz, und fügen Sie diese im Azure-Portal im Abschnitt **Domäne und URLs für LaunchDarkly** im Textfeld „Antwort-URL“ ein.
 
-    b. Fügen Sie im Textfeld **Sign-On URL** (Anmelde-URL) den Wert von **Dienst-URL für einmalige Anmeldung** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie im Textfeld **Anmelde-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     c. Öffnen Sie das heruntergeladene Zertifikat aus dem Azure-Portal im Editor, kopieren Sie den Inhalt, und fügen Sie ihn im Feld **X.509 certificate** ein. Sie können das Zertifikat auch direkt hochladen, indem Sie auf **Upload one** klicken.
 
@@ -163,95 +164,70 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/launchdarkly-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/launchdarkly-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/launchdarkly-tutorial/create_aaduser_03.png)
-
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/launchdarkly-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
-
-### <a name="create-a-launchdarkly-test-user"></a>Erstellen eines LaunchDarkly-Testbenutzers
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in LaunchDarkly. LaunchDarkly unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf LaunchDarkly ein neuer Benutzer erstellt.
->[!Note]
->Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [LaunchDarkly-Client-Supportteam ](mailto:support@launchdarkly.com) in Verbindung.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung der einmaligen Anmeldung von Azure, indem Sie ihr Zugriff auf LaunchDarkly gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **LaunchDarkly** aus.
 
-**Um Britta Simon zu LaunchDarkly zuzuweisen, führen Sie die folgenden Schritte aus:**
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Anwendungsliste **LaunchDarkly** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![LaunchDarkly-Link in der Anwendungsliste](common/all-applications.png)
 
-1. Wählen Sie in der Anwendungsliste **LaunchDarkly** aus.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![LaunchDarkly-Link in der Anwendungsliste](./media/launchdarkly-tutorial/tutorial_launchdarkly_app.png)  
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+### <a name="create-launchdarkly-test-user"></a>Erstellen eines LaunchDarkly-Testbenutzers
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in LaunchDarkly. LaunchDarkly unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf LaunchDarkly ein neuer Benutzer erstellt.
+
+> [!Note]
+> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem  [LaunchDarkly-Client-Supportteam ](mailto:support@launchdarkly.com) in Verbindung.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „LaunchDarkly“ klicken, sollten Sie automatisch bei Ihrer LaunchDarkly-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „LaunchDarkly“ klicken, sollten Sie automatisch bei Ihrer LaunchDarkly-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/launchdarkly-tutorial/tutorial_general_01.png
-[2]: ./media/launchdarkly-tutorial/tutorial_general_02.png
-[3]: ./media/launchdarkly-tutorial/tutorial_general_03.png
-[4]: ./media/launchdarkly-tutorial/tutorial_general_04.png
-
-[100]: ./media/launchdarkly-tutorial/tutorial_general_100.png
-
-[200]: ./media/launchdarkly-tutorial/tutorial_general_200.png
-[201]: ./media/launchdarkly-tutorial/tutorial_general_201.png
-[202]: ./media/launchdarkly-tutorial/tutorial_general_202.png
-[203]: ./media/launchdarkly-tutorial/tutorial_general_203.png
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

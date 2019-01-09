@@ -11,42 +11,46 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: bc27ece2eddc842a81698aaa685cbe6d63c6a1df
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/14/2018
+ms.openlocfilehash: 40d07827cbd856fe3be3d797dde793b1a7f50207
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912253"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653237"
 ---
-# <a name="quickstart-restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Schnellstart: Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz 
 
-In dieser Schnellstartanleitung erfahren Sie mithilfe der Sicherungsdatei „Wide World Importers – Standard“, wie Sie eine in Azure Blob Storage gespeicherte Sicherung einer Datenbank in der verwalteten Instanz wiederherstellen. Die Vorgehensweise ist mit einer gewissen Ausfallzeit verbunden. 
+In dieser Schnellstartanleitung verwenden Sie SQL Server Management Studio (SSMS), um eine Datenbank (die Sicherungsdatei „Wide World Importers – Standard“) aus Azure Blob Storage in einer [verwalteten Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) von Azure SQL-Datenbank wiederherzustellen. 
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
-Ein Tutorial mit Verwendung des Azure Database Migration Service (DMS) für die Migration finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md). Die verschiedenen Migrationsmethoden werden unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md) behandelt.
+> [!NOTE]
+> * Weitere Informationen zur Migration unter Verwendung von Azure Database Migration Service (DMS) finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md). 
+> * Weitere Informationen zu verschiedenen Migrationsmethoden finden Sie unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In dieser Schnellstartanleitung gilt Folgendes:
-- Als Ausgangspunkt werden die Ressourcen verwendet, die in der Schnellstartanleitung [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md) erstellt wurden.
-- Erforderlich ist die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) auf Ihrem lokalen Clientcomputer.
-- Erforderlich ist eine Verbindung zu Ihrer verwalteten Instanz über SQL Server Management Studio (SSMS). Die Verbindungsoptionen finden Sie in den folgenden Schnellstartanleitungen:
-  - [Verbinden mit einer verwalteten Azure SQL-Datenbank-Instanz von einem virtuellen Azure-Computer](sql-database-managed-instance-configure-vm.md)
-  - [Verbinden mit einer verwalteten Azure SQL-Datenbank-Instanz von einem lokalen Computer über eine Point-to-Site-Verbindung](sql-database-managed-instance-configure-p2s.md)
-- Verwendet wird ein vorkonfiguriertes Azure Blob Storage-Konto mit der Sicherungsdatei „Wide World Importers – Standard“ (heruntergeladen von https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak)).
+- Es werden Ressourcen aus der Schnellstartanleitung [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md) verwendet.
+- Auf Ihrem Computer muss die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) installiert sein.
+- Die Verbindungsherstellung mit Ihrer verwalteten Instanz muss über SSMS erfolgen. Informationen zum Herstellen einer Verbindung finden Sie in den folgenden Schnellstartanleitungen:
+  * [Verbinden mit einer verwalteten Azure SQL-Datenbank-Instanz von einem virtuellen Azure-Computer](sql-database-managed-instance-configure-vm.md)
+  * [Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-p2s.md)
+
 
 > [!NOTE]
-> Weitere Informationen zum Sichern und Wiederherstellen einer SQL Server-Datenbank mithilfe von Azure Blob Storage und SAS (Shared Access Signature) finden Sie unter [SQL Server-Sicherung über URLs](sql-database-managed-instance-get-started-restore.md).
+> Weitere Informationen zum Sichern und Wiederherstellen einer SQL Server-Datenbank mithilfe von Azure Blob Storage und [SAS (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) finden Sie unter [SQL Server-Sicherung über URLs](sql-database-managed-instance-get-started-restore.md).
 
-## <a name="restore-the-wide-world-importers-database-from-a-backup-file"></a>Wiederherstellen der Wide World Importers-Datenbank aus einer Sicherungsdatei
+## <a name="restore-the-database-from-a-backup-file"></a>Wiederherstellen der Datenbank aus einer Sicherungsdatei
 
-Verwenden Sie in SSMS die folgenden Schritte, um die Wide World Importers-Datenbank aus der Sicherungsdatei für Ihre verwaltete Instanz wiederherzustellen.
+Führen Sie in SSMS die folgenden Schritte aus, um die Wide World Importers-Datenbank in Ihrer verwalteten Instanz wiederherzustellen. Die Datenbanksicherungsdatei ist in einem vorkonfigurierten Azure Blob Storage-Konto gespeichert.
 
-1. Öffnen Sie SQL Server Management Studio (SSMS), und stellen Sie eine Verbindung zu Ihrer verwalteten Instanz her.
-2. Öffnen Sie in SSMS ein neues Abfragefenster.
-3. Verwenden Sie das folgende Skript, um mit dem vorkonfigurierten Speicherkonto und dem SAS-Schlüssel Anmeldeinformationen in der verwalteten Instanz zu erstellen.
+1. Öffnen Sie SMSS, und stellen Sie eine Verbindung mit Ihrer verwalteten Instanz her.
+
+2. Klicken Sie im linken Menü mit der rechten Maustaste auf Ihre verwaltete Instanz, und wählen Sie **Neue Abfrage** aus, um ein neues Abfragefenster zu öffnen.
+
+3. Führen Sie das folgende SQL-Skript aus. Dieses Skript verwendet ein vorkonfiguriertes Speicherkonto und einen SAS-Schlüssel zum [Erstellen von Anmeldeinformationen](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql?view=sql-server-2017) in Ihrer verwalteten Instanz.
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases] 
@@ -56,10 +60,8 @@ Verwenden Sie in SSMS die folgenden Schritte, um die Wide World Importers-Datenb
 
     ![erstellen von anmeldeinformationen](./media/sql-database-managed-instance-get-started-restore/credential.png)
 
-    > [!NOTE]
-    > Entfernen Sie immer das führende Fragezeichen (**?**) aus dem generierten SAS-Schlüssel.
   
-3. Verwenden Sie das folgende Skript, um die Gültigkeit der SAS-Anmeldeinformationen und der Sicherung zu prüfen. Geben Sie dazu die URL für den Container mit der Sicherungsdatei an:
+3. Führen Sie zum Überprüfen Ihrer Anmeldeinformationen das folgende Skript aus. Dieses Skript verwendet eine [Container](https://azure.microsoft.com/services/container-instances/)-URL, um eine Sicherungsdateiliste abzurufen.
 
    ```sql
    RESTORE FILELISTONLY FROM URL = 
@@ -68,7 +70,7 @@ Verwenden Sie in SSMS die folgenden Schritte, um die Wide World Importers-Datenb
 
     ![Dateiliste](./media/sql-database-managed-instance-get-started-restore/file-list.png)
 
-4. Verwenden Sie das folgende Skript, um die Wide World Importers-Datenbank aus einer Sicherungsdatei wiederherzustellen. Geben Sie die URL für den Container mit der Sicherungsdatei an:
+4. Führen Sie das folgende Skript aus, um die Wide World Importers-Datenbank wiederherzustellen.
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
@@ -77,20 +79,20 @@ Verwenden Sie in SSMS die folgenden Schritte, um die Wide World Importers-Datenb
 
     ![Wiederherstellen](./media/sql-database-managed-instance-get-started-restore/restore.png)
 
-5. Führen Sie die folgende Abfrage in einer neuen Abfragesitzung aus, um den Status Ihrer Wiederherstellung nachzuverfolgen:
+5. Führen Sie das folgende Skript aus, um den Status der Wiederherstellung nachzuverfolgen.
 
    ```sql
    SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
       , dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time 
    FROM sys.dm_exec_requests r 
    CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a 
-   WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')`
+   WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
 6. Nachdem die Wiederherstellung abgeschlossen wurde, können Sie sie im Objekt-Explorer anzeigen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Beheben von Problemen bei Sicherungen finden Sie unter [SQL Server-Sicherung über URLs – bewährte Methoden und Problembehandlung](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
-- Eine Übersicht über die Verbindungsoptionen für Anwendungen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
-- Informationen zur Abfrage mit einem Ihrer bevorzugten Tools oder Sprachen finden Sie unter [Herstellen einer Verbindung und Abfragen](sql-database-connect-query.md).
+- Informationen zum Beheben von Problemen bei URL-basierten Sicherungen finden Sie unter [SQL Server-Sicherung über URLs – bewährte Methoden und Problembehandlung](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
+- Eine Übersicht über App-Verbindungsoptionen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
+- Informationen zu Abfragen mit Ihren bevorzugten Tools oder Sprachen finden Sie unter [Schnellstarts: Azure SQL-Datenbank – Verbindungsherstellung und Abfragen](sql-database-connect-query.md).

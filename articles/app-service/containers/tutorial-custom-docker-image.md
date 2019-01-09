@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: ae9da43ac40a3da188e6030659cfb6de166c53bb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256076"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632975"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>Bereitstellen von Apps in Azure
 
-Mithilfe von Azure-Web-Apps können Sie native Linux-Anwendungen in der Cloud hosten. Um eine Web-App für Container zu erstellen, müssen Sie Azure CLI-Befehle ausführen, die eine Gruppe erstellen, dann einen Dienstplan und schließlich die Web-App selbst. 
+Um eine App zu erstellen, die das soeben per Push übertragene Image verwendet, führen Sie Azure CLI-Befehle aus, die eine Gruppe, dann einen Dienstplan und schließlich die Web-App selbst erstellen. 
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

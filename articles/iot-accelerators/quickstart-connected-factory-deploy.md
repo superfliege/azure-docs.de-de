@@ -1,5 +1,5 @@
 ---
-title: Ausprobieren einer Lösung in Azure zum Verwalten industrieller IoT-Geräte | Microsoft-Dokumentation
+title: 'Ausprobieren einer Lösung zum Verwalten industrieller IoT-Geräte: Azure | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung stellen Sie den Azure IoT Solution Accelerator für verbundene Factorys bereit und melden sich am Lösungsdashboard an, um es zu nutzen.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139010"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602646"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Schnellstart: Testen einer cloudbasierten Lösung zum Verwalten von industriellen IoT-Geräten
 

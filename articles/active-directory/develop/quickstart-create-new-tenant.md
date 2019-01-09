@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 731b68e3f7dbb46f2fa51a18cb5b3da6b4626fa6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57c207af3a48eb03b9d526197aed85d7755ad370
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963933"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975949"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Schnellstart: Einrichten einer Entwicklungsumgebung
 
-Die Microsoft Identity Platform ermöglicht es Entwicklern, Anwendungen für eine Vielzahl von benutzerdefinierten Microsoft 365-Umgebungen und -Identitäten zu erstellen. Um mit der Verwendung von Microsoft Identity Platform zu beginnen, greifen Sie auf eine Umgebung zu, die auch als Azure AD-Mandant bezeichnet wird und die Apps registrieren und verwalten kann, Zugriff auf Microsoft 365-Daten besitzt und benutzerdefinierten bedingten Zugriff und Mandanteneinschränkungen bereitstellt. 
+Die Microsoft Identity Platform ermöglicht es Entwicklern, Anwendungen für eine Vielzahl von benutzerdefinierten Microsoft 365-Umgebungen und -Identitäten zu erstellen. Um mit der Verwendung von Microsoft Identity Platform zu beginnen, müssen Sie auf eine Umgebung zugreifen, die auch als Azure AD-Mandant bezeichnet wird und die Apps registrieren und verwalten kann, Zugriff auf Microsoft 365-Daten besitzt und benutzerdefinierten bedingten Zugriff und Mandanteneinschränkungen bereitstellt.
 
-Ein Mandant ist die Darstellung einer Organisation. Es handelt sich um eine dedizierte Instanz von Azure AD, die ein Unternehmen oder ein App-Entwickler erhält, wenn das Unternehmen oder der App-Entwickler eine Beziehung zu Microsoft eingeht (z.B. die Registrierung für Azure, Microsoft Intune oder Microsoft 365). 
+Ein Mandant ist eine Darstellung einer Organisation. Es handelt sich um eine dedizierte Instanz von Azure AD, die ein Unternehmen oder ein App-Entwickler erhält, wenn das Unternehmen oder der App-Entwickler eine Beziehung zu Microsoft eingeht (z.B. die Registrierung für Azure, Microsoft Intune oder Microsoft 365).
 
-Jeder Azure AD-Mandant ist getrennt und separat von anderen Azure AD-Mandanten und verfügt über eine eigene Darstellung von Geschäfts-, Schul- oder Uniidentitäten, Consumeridentitäten (wenn es sich um einen Azure AD B2C-Mieter handelt) und App-Registrierungen. Eine App-Registrierung in Ihrem Mandanten kann Authentifizierungen von Konten nur in Ihrem Mandanten oder von allen Mandanten zulassen. 
+Jeder Azure AD-Mandant ist getrennt und separat von anderen Azure AD-Mandanten und verfügt über eine eigene Darstellung von Geschäfts-, Schul- oder Uniidentitäten, Consumeridentitäten (wenn es sich um einen Azure AD B2C-Mieter handelt) und App-Registrierungen. Eine App-Registrierung in Ihrem Mandanten kann Authentifizierungen von Konten nur in Ihrem Mandanten oder von allen Mandanten zulassen.
 
 ## <a name="determining-environment-type"></a>Bestimmen des Umgebungstyps
 
@@ -69,7 +69,7 @@ Falls Sie nicht bereits über einen Azure AD-Mandanten verfügen oder einen neue
 
 ## <a name="social-and-local-accounts"></a>Soziale und lokale Konten
 
-Um mit dem Erstellen von Apps zu beginnen, die sich bei sozialen und lokalen Konten anmelden, müssen Sie einen Azure AD B2C-Mandanten erstellen. Befolgen Sie dazu die Anweisungen unter [Erstellen eines Azure AD B2C-Mandanten](../../active-directory-b2c/tutorial-create-tenant.md). 
+Um mit dem Erstellen von Apps zu beginnen, die sich bei sozialen und lokalen Konten anmelden, müssen Sie einen Azure AD B2C-Mandanten erstellen. Befolgen Sie dazu die Anweisungen unter [Erstellen eines Azure AD B2C-Mandanten](../../active-directory-b2c/tutorial-create-tenant.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

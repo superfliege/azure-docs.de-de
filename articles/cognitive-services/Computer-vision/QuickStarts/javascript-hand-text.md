@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Extrahieren von handschriftlichem Text – REST, JavaScript – Maschinelles Sehen-API'
+title: 'Schnellstart: Extrahieren von handschriftlichem Text – JavaScript'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und JavaScript.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 21ff210ad46b4add2d3f639d8e68bf2784f5acd8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: a917d7c778d74e7381d7e2897c644173703e7864
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852434"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579463"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Extrahieren von handschriftlichem Text mit der REST-API und JavaScript in der Maschinelles Sehen-API
 

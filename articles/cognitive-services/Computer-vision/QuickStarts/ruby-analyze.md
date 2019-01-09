@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Analysieren eines remote gespeicherten Bilds – REST, Ruby – Maschinelles Sehen'
+title: 'Schnellstart: Analysieren eines Remotebilds – REST, Ruby'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung analysieren Sie ein Bild mit der Maschinelles Sehen-API und Ruby.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: a00b7d8fd56c28edd220d90f85df76892a54db6a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: c40f611ad1789a1de6413a02d662d975113354a4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341570"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582836"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>Schnellstart: Analysieren eines remote gespeicherten Bilds mit der REST-API und Ruby in der Maschinelles Sehen-API
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>Schnellstart: Analysieren eines Remotebilds mit der REST-API und Ruby in der Maschinelles Sehen-API
 
 In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein remote gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
 

@@ -10,21 +10,21 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: ce90c5f691a0a8a333161f3135856d720d1de310
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226584"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538870"
 ---
-# <a name="quickstart-create-reviews-using-net"></a>Schnellstart: Erstellen von Überprüfungen mit .NET
+# <a name="quickstart-create-reviews-using-net"></a>Schnellstart: Erstellen von Berichten mit .NET
 
 Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des [Content Moderator SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Folgendes durchzuführen:
  
 - Erstellen einer Gruppe von Überprüfungen für menschliche Moderatoren
 - Abrufen des Status von vorhandenen Überprüfungen für menschliche Moderatoren
 
-Im Allgemeinen durchläuft der Inhalt in irgendeiner Form eine automatisierte Moderation, bevor dieser für die manuelle Prüfung geplant ist. In diesem Artikel wird lediglich beschrieben, wie die Überprüfung für die manuelle Moderation erstellt wird. Ein umfassenderes Szenario wird in den Tutorials [Moderation von Facebook-Inhalten](facebook-post-moderation.md) und [Moderation von E-Commerce-Katalogen](ecommerce-retail-catalog-moderation.md) beschrieben.
+Im Allgemeinen durchläuft der Inhalt in irgendeiner Form eine automatisierte Moderation, bevor dieser für die manuelle Prüfung geplant ist. In diesem Artikel wird lediglich beschrieben, wie die Überprüfung für die manuelle Moderation erstellt wird. Eine umfassenderes Szenario wird in den Tutorials [Tutorial: Facebook-Inhaltsmoderation mit Content Moderator](facebook-post-moderation.md) und [Tutorial: E-Commerce-Katalogmoderation mit Machine Learning](ecommerce-retail-catalog-moderation.md) beschrieben.
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits mit Visual Studio und C# vertraut sind.
 

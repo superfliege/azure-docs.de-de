@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Analysieren eines remote gespeicherten Bilds – REST, JavaScript – Maschinelles Sehen'
+title: 'Schnellstart: Analysieren eines Remotebilds – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung analysieren Sie ein Bild mit der Maschinelles Sehen-API und JavaScript.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: acfaed619aa8d6e90060b31023e0ae0f33709d73
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 573e65f8f1a6e092da6d46d6a98fb89b1a476179
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853029"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581129"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Analysieren eines remote gespeicherten Bilds mit der REST-API und JavaScript in der Maschinelles Sehen-API
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Analysieren eines Remotebilds mit der REST-API und JavaScript in der Maschinelles Sehen-API
 
 In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein remote gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
 

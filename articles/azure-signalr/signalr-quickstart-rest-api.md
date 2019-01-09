@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: fdbdbe77c6541d62acef0d23d599d9687f5301b1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1443508985c7c7fef313a7eea3f622e7759a71ef
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251860"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540095"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Schnellstart: Senden von Nachrichten in Echtzeit aus einer Konsolen-App
 
@@ -129,13 +129,13 @@ Die folgende Liste enthält die verfügbaren APIs für die jeweilige Version.
 
 API | `1.0-preview` | `1.0`
 --- | --- | ---
-[Übertragen an alle](#broadcast) | :heavy_check_mark: | :heavy_check_mark:
-[Übertragen an eine Gruppe](#broadcast-group) | :heavy_check_mark: | :heavy_check_mark:
-Übertragen an einige Gruppen | :heavy_check_mark: (Veraltet) | `N / A`
-[Senden an bestimmte Benutzer](#send-user) | :heavy_check_mark: | :heavy_check_mark:
-Senden an einige Benutzer | :heavy_check_mark: (Veraltet) | `N / A`
-[Hinzufügen eines Benutzers zu einer Gruppe](#add-user-to-group) | `N / A` | :heavy_check_mark:
-[Entfernen eines Benutzers aus einer Gruppe](#remove-user-from-group) | `N / A` | :heavy_check_mark:
+[Übertragen an alle](#broadcast) | **&#x2713;** | **&#x2713;**
+[Übertragen an eine Gruppe](#broadcast-group) | **&#x2713;** | **&#x2713;**
+Übertragen an einige Gruppen | **&#x2713;** (Veraltet) | `N / A`
+[Senden an bestimmte Benutzer](#send-user) | **&#x2713;** | **&#x2713;**
+Senden an einige Benutzer | **&#x2713;** (Veraltet) | `N / A`
+[Hinzufügen eines Benutzers zu einer Gruppe](#add-user-to-group) | `N / A` | **&#x2713;**
+[Entfernen eines Benutzers aus einer Gruppe](#remove-user-from-group) | `N / A` | **&#x2713;**
 
 <a name="broadcast"></a>
 ### <a name="broadcast-to-everyone"></a>Übertragen an alle

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963320"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788621"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung
 
@@ -113,10 +113,10 @@ Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für d
 
 An diesem Punkt wurde Ihre Anwendung bereitgestellt. Sie können ihren Status mithilfe des Befehls `app show` überprüfen. 
 
-Der Anwendungsname für die Tutorial-App lautet `ServiceMeshApp`. Erfassen Sie die Details für die Anwendung mit dem folgenden Befehl:
+Der Anwendungsname für die Tutorial-App lautet `todolistapp`. Erfassen Sie die Details für die Anwendung mit dem folgenden Befehl:
 
 ```azurecli-interactive
-az mesh app show --resource-group $rg --name ServiceMeshApp
+az mesh app show --resource-group $rg --name todolistapp
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>Anzeigen aller Anwendungen, die zurzeit in Ihrem Abonnement bereitgestellt sind

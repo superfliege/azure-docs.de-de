@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: db4a9a43a971f66870c2079762b9c62802122baa
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093322"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602816"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App
 
-In diesem Tutorial wird veranschaulicht, wie Sie [Azure Content Delivery Network (CDN)](cdn-overview.md) einer [Web-App in Azure App Service](../app-service/app-service-web-overview.md) hinzufügen. Web-Apps ist ein Dienst zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. 
+In diesem Tutorial wird veranschaulicht, wie Sie [Azure Content Delivery Network (CDN)](cdn-overview.md) einer [Web-App in Azure App Service](../app-service/overview.md) hinzufügen. Web-Apps ist ein Dienst zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. 
 
 Hier ist die Startseite der statischen HTML-Beispielwebsite dargestellt, mit der Sie arbeiten:
 
@@ -210,7 +210,7 @@ Wählen Sie im Azure-Portal auf der Seite **CDN-Endpunkt** die Option **Cache**.
 
 Wählen Sie in der Dropdownliste **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** die Option **Jede eindeutige URL zwischenspeichern**.
 
-Wählen Sie **Speichern**aus.
+Wählen Sie **Speichern** aus.
 
 ![Auswählen des Zwischenspeicherverhaltens für Abfragezeichenfolgen](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 

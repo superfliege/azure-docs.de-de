@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b7d8a9b0ef48f7daed74fb15263e516d820a6a38
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6af6eb0dd6473b9fe947f7cc4939da4e0cbc77cb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259068"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718496"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbankverbindung von App Service mittels einer verwalteten Identität
 
-[App Service](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Identität](app-service-managed-service-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Identitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der ASP.NET-Beispiel-Web-App eine verwaltete Identität hinzu, die Sie hier erstellt: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md). Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
+[App Service](overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Identität](overview-managed-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Identitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der ASP.NET-Beispiel-Web-App eine verwaltete Identität hinzu, die Sie hier erstellt: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md). Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
 
 > [!NOTE]
 > Dieses Szenario wird derzeit von .NET Framework 4.6 und höheren Versionen unterstützt, aber nicht von [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows). [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) unterstützt das Szenario zwar, es wurde jedoch noch nicht in die Standardimages in App Service aufgenommen. 
@@ -123,7 +123,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 }
 ```
 
-Dieser Konstruktor konfiguriert ein benutzerdefiniertes SqlConnection-Objekt für die Verwendung eines Zugriffstokens für Azure SQL-Datenbank aus App Service. Mit dem Zugriffstoken authentifiziert sich Ihre App Service-App mit ihrer verwalteten Identität bei Azure SQL-Datenbank. Weitere Informationen finden Sie unter [Abrufen von Tokens für Azure-Ressourcen](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources). Die `if`-Anweisung ermöglicht es, die App weiterhin lokal mit LocalDB zu testen.
+Dieser Konstruktor konfiguriert ein benutzerdefiniertes SqlConnection-Objekt für die Verwendung eines Zugriffstokens für Azure SQL-Datenbank aus App Service. Mit dem Zugriffstoken authentifiziert sich Ihre App Service-App mit ihrer verwalteten Identität bei Azure SQL-Datenbank. Weitere Informationen finden Sie unter [Abrufen von Tokens für Azure-Ressourcen](overview-managed-identity.md#obtaining-tokens-for-azure-resources). Die `if`-Anweisung ermöglicht es, die App weiterhin lokal mit LocalDB zu testen.
 
 > [!NOTE]
 > `SqlConnection.AccessToken` wird derzeit nur in .NET Framework 4.6 und höheren Versionen sowie in [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) unterstützt, aber nicht in [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows).
@@ -147,7 +147,7 @@ Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Proj
 
 Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**. Wenn die neue Webseite Ihre Aufgabenliste anzeigt, stellt Ihre App unter Verwendung der verwalteten Identität eine Verbindung mit der Datenbank her.
 
-![Azure-Web-App nach Code First-Migration](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
+![Azure-App nach Code First-Migration](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
 Die Aufgabenliste sollte sich nun wie gewohnt bearbeiten lassen.
 
@@ -211,4 +211,4 @@ Sie haben Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer Web-App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"]
-> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md)
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md)

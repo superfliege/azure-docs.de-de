@@ -11,20 +11,20 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea446c89fc74fca444793a5e0f803a54fa251ed1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d93eadd1053cfbc88b2d0748f2f22e359694baa7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312169"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579650"
 ---
-# <a name="tutorial--deploy-an-image-classification-model-in-azure-container-instance"></a>Tutorial:  Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
 
 Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im [vorherigen Tutorial](tutorial-train-models-with-aml.md) haben Sie Machine Learning-Modelle trainiert und anschließend ein Modell in Ihrem Arbeitsbereich in der Cloud registriert.  
 
-Jetzt können Sie das Modell als Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) bereitstellen. Ein Webdienst ist ein Image (in diesem Fall ein Docker-Image), das die Bewertungslogik und das Modell selbst kapselt. 
+Nun können Sie das Modell als Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) bereitstellen. Ein Webdienst ist ein Image (in diesem Fall: ein Docker-Image). Es kapselt die Bewertungslogik und das eigentliche Modell. 
 
-In diesem Teil des Tutorials verwenden Sie den Azure Machine Learning Service für folgende Zwecke:
+In diesem Teil des Tutorials verwenden Sie den Azure Machine Learning-Dienst für Folgendes:
 
 > [!div class="checklist"]
 > * Einrichten Ihrer Testumgebung
@@ -46,7 +46,7 @@ Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/Machin
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie das Modelltraining im folgenden Notebook aus: [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).  
+Führen Sie das Modelltraining im folgenden Notebook aus: [Tutorial (Teil 1): Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>Einrichten der Umgebung
@@ -55,7 +55,7 @@ Zunächst richten Sie eine Testumgebung ein.
 
 ### <a name="import-packages"></a>Importieren von Paketen
 
-Importieren Sie die für dieses Tutorial erforderlichen Python-Pakete.
+Importieren Sie die für dieses Tutorial erforderlichen Python-Pakete:
 
 ```python
 %matplotlib inline
@@ -72,7 +72,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="retrieve-the-model"></a>Abrufen des Modells
 
-Im vorherigen Tutorial haben Sie ein Modell in Ihrem Arbeitsbereich registriert. Laden Sie jetzt diesen Arbeitsbereich und laden Sie das Modell in Ihr lokales Verzeichnis herunter.
+Im vorherigen Tutorial haben Sie ein Modell in Ihrem Arbeitsbereich registriert. Laden Sie nun diesen Arbeitsbereich, und laden Sie das Modell in Ihr lokales Verzeichnis herunter:
 
 
 ```python
@@ -87,16 +87,16 @@ import os
 os.stat('./sklearn_mnist_model.pkl')
 ```
 
-## <a name="test-model-locally"></a>Lokales Testen eines Modells
+## <a name="test-the-model-locally"></a>Lokales Testen des Modells
 
-Stellen Sie vor der Bereitstellung sicher, dass Ihr Modell lokal funktioniert, indem Sie folgende Schritte ausführen:
-* Testdaten laden
-* Testdaten vorhersagen
-* Konfusionsmatrix überprüfen
+Vergewissern Sie sich vor der Bereitstellung, dass Ihr Modell lokal funktioniert:
+* Laden Sie Testdaten.
+* Verwenden Sie die Testdaten für Vorhersagen.
+* Überprüfen Sie die Konfusionsmatrix.
 
 ### <a name="load-test-data"></a>Laden von Testdaten
 
-Laden Sie die Testdaten aus dem Verzeichnis **./data/**, das während des Trainingstutorials erstellt wurde.
+Laden Sie die Testdaten aus dem Verzeichnis **./data/**, das im Rahmen des Trainingstutorials erstellt wurde:
 
 ```python
 from utils import load_data
@@ -110,7 +110,7 @@ y_test = load_data('./data/test-labels.gz', True).reshape(-1)
 
 ### <a name="predict-test-data"></a>Vorhersagen von Testdaten
 
-Laden Sie das Test-Dataset in das Modell, um Vorhersagen zu erhalten.
+Laden Sie das Testdataset in das Modell, um Vorhersagen zu erhalten:
 
 ```python
 import pickle
@@ -122,7 +122,7 @@ y_hat = clf.predict(X_test)
 
 ###  <a name="examine-the-confusion-matrix"></a>Überprüfen der Konfusionsmatrix
 
-Erzeugen Sie eine Konfusionsmatrix, um zu sehen, wie viele Stichproben aus dem Testsatz korrekt klassifiziert sind. Beachten Sie den falsch klassifizierten Wert für die falschen Vorhersagen. 
+Erzeugen Sie eine Konfusionsmatrix, um zu sehen, wie viele Stichproben aus dem Testsatz korrekt klassifiziert sind. Beachten Sie den falsch klassifizierten Wert für die falschen Vorhersagen: 
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -147,7 +147,7 @@ Die Ausgabe zeigt die Konfusionsmatrix:
     Overall accuracy: 0.9204
    
 
-Verwenden Sie `matplotlib`, um die Konfusionsmatrix als Diagramm anzuzeigen. In diesem Diagramm stellt die X-Achse die Ist-Werte und die Y-Achse die vorhergesagten Werte dar. Die Farbe in jedem Raster stellt die Fehlerrate dar. Je heller die Farbe, desto höher ist die Fehlerrate. Beispielsweise sind viele 5en falsch als 3en klassifiziert. Daher sehen Sie ein helles Raster bei (5,3).
+Verwenden Sie `matplotlib`, um die Konfusionsmatrix als Diagramm anzuzeigen. In diesem Diagramm wird die X-Achse für die Ist-Werte und die Y-Achse für die vorhergesagten Werte verwendet: Die Farbe in den einzelnen Rastern gibt jeweils die Fehlerrate an. Je heller die Farbe, desto höher ist die Fehlerrate. Beispielsweise sind viele 5en falsch als 3en klassifiziert. Dies führt zu einem hellen Raster bei (5,3):
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -172,11 +172,11 @@ plt.show()
 
 ![Diagramm mit Konfusionsmatrix](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-web-service"></a>Bereitstellen als Webdienst
+## <a name="deploy-as-a-web-service"></a>Bereitstellen als Webdienst
 
-Sobald Sie das Modell getestet haben und mit den Ergebnissen zufrieden sind, stellen Sie das Modell als Webdienst bereit, der in Container Instances gehostet wird. 
+Nachdem Sie das Modell getestet haben und mit den Ergebnissen zufrieden sind, stellen Sie das Modell als in Container Instances gehosteten Webdienst bereit. 
 
-Zum Erstellen der richtigen Umgebung für Container Instances ist Folgendes erforderlich:
+Für die Erstellung der korrekten Umgebung für Container Instances sind folgende Komponenten erforderlich:
 * Ein Bewertungsskript zur Veranschaulichung der Verwendung des Modells
 * Eine Umgebungsdatei, um anzugeben, welche Pakete installiert werden müssen
 * Eine Konfigurationsdatei zum Erstellen der Containerinstanz
@@ -186,9 +186,9 @@ Zum Erstellen der richtigen Umgebung für Container Instances ist Folgendes erfo
 
 ### <a name="create-scoring-script"></a>Erstellen des Bewertungsskripts
 
-Erstellen Sie das Bewertungsskript, genannt „score.py“. Der Aufruf des Webdiensts gibt hiermit an, wie das Modell verwendet wird.
+Erstellen Sie das Bewertungsskript (**score.py**). Der Aufruf des Webdiensts verwendet dieses Skript, um zu zeigen, wie das Modell verwendet wird.
 
-Sie müssen zwei erforderliche Funktionen in das Bewertungsskript einschließen:
+Schließen Sie die beiden folgenden erforderlichen Funktionen in das Bewertungsskript ein:
 * Die `init()`-Funktion, die das Modell in der Regel in ein globales Objekt lädt. Diese Funktion wird nur dann ausgeführt, wenn der Docker-Container gestartet wird. 
 
 * Die `run(input_data)`-Funktion verwendet das Modell zur Vorhersage eines Werts, der auf den Eingabedaten basiert. Ein- und Ausgaben zur Ausführung verwenden in der Regel JSON für die Serialisierung und Deserialisierung, allerdings werden auch andere Formate unterstützt.
@@ -206,7 +206,7 @@ from azureml.core.model import Model
 
 def init():
     global model
-    # retreive the path to the model file using the model name
+    # retrieve the path to the model file using the model name
     model_path = Model.get_model_path('sklearn_mnist')
     model = joblib.load(model_path)
 
@@ -221,7 +221,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Erstellen einer Umgebungsdatei
 
-Erstellen Sie anschließend eine Umgebungsdatei namens myenv.yml, die alle Paketabhängigkeiten des Skripts angibt. Diese Datei wird verwendet, um sicherzustellen, dass alle diese Abhängigkeiten im Docker-Image installiert sind. Dieses Modell benötigt `scikit-learn` und `azureml-sdk`.
+Erstellen Sie als Nächstes eine Umgebungsdatei namens **myenv.yml**, die alle Paketabhängigkeiten des Skripts angibt. Diese Datei wird verwendet, um sicherzustellen, dass alle diese Abhängigkeiten im Docker-Image installiert sind. Dieses Modell benötigt `scikit-learn` und `azureml-sdk`:
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies 
@@ -232,16 +232,16 @@ myenv.add_conda_package("scikit-learn")
 with open("myenv.yml","w") as f:
     f.write(myenv.serialize_to_string())
 ```
-Überprüfen Sie den Inhalt der `myenv.yml`-Datei.
+Überprüfen Sie den Inhalt der Datei `myenv.yml`:
 
 ```python
 with open("myenv.yml","r") as f:
     print(f.read())
 ```
 
-### <a name="create-configuration-file"></a>Erstellen einer Konfigurationsdatei
+### <a name="create-a-configuration-file"></a>Erstellen einer Konfigurationsdatei
 
-Erstellen Sie eine Konfigurationsdatei für die Bereitstellung und geben Sie die Anzahl der CPUs und Gigabyte-RAM an, die für Ihren Container Instances-Container benötigt werden. Obwohl die Anforderungen von Ihrem Modell abhängen, ist der Standard von 1 Kern und 1 Gigabyte-RAM für viele Modelle in der Regel ausreichend. Wenn Sie das Gefühl haben, dass Sie später mehr brauchen, müssen Sie das Image neu erstellen und den Dienst neu bereitstellen.
+Erstellen Sie eine Bereitstellungskonfigurationsdatei. Geben Sie an, wie viele CPUs und wie viele Gigabyte Arbeitsspeicher für Ihren Container Instances-Container benötigt werden. Die Anforderungen hängen zwar von Ihrem Modell ab, die Standardwerte von einem Kern und einem Gigabyte Arbeitsspeicher sind jedoch für viele Modelle ausreichend. Sollten Sie später höhere Werte benötigen, erstellen Sie das Image neu, und stellen Sie den Dienst erneut bereit.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -253,14 +253,14 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 ```
 
 ### <a name="deploy-in-container-instances"></a>Bereitstellen in Container Instances
-Geschätzter Zeitaufwand: **Ca. 7-8 Minuten**
+Der Bereitstellungsvorgang dauert voraussichtlich **sieben bis acht Minuten**.
 
 Konfigurieren Sie das Image und stellen Sie es bereit. Der folgende Code durchläuft diese Schritte:
 
-1. Erstellen Sie ein Image mit:
-   * Der Bewertungsdatei (`score.py`).
-   * Der Umgebungsdatei (`myenv.yml`).
-   * Der Modelldatei.
+1. Erstellen Sie ein Image mit folgenden Dateien:
+   * Bewertungsdatei: `score.py`
+   * Umgebungsdatei: `myenv.yml`
+   * Modelldatei
 1. Registrieren Sie das Image im Arbeitsbereich. 
 1. Senden Sie das Bild an den Container Instances-Container.
 1. Starten Sie einen Container in Container Instances mithilfe des Bilds.
@@ -286,25 +286,25 @@ service = Webservice.deploy_from_model(workspace=ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-Rufen Sie den Bewertungswebdienst des HTTP-Endpunkts ab, der REST-Clientaufrufe akzeptiert. Sie können diesen Endpunkt für jeden freigeben, der den Webdienst testen oder in eine Anwendung integrieren möchte. 
+Rufen Sie den Bewertungswebdienst des HTTP-Endpunkts ab, der REST-Clientaufrufe akzeptiert. Sie können diesen Endpunkt für jeden freigeben, der den Webdienst testen oder in eine Anwendung integrieren möchte: 
 
 ```python
 print(service.scoring_uri)
 ```
 
 
-## <a name="test-deployed-service"></a>Testen des bereitgestellten Diensts
+## <a name="test-the-deployed-service"></a>Testen des bereitgestellten Diensts
 
-Zuvor haben Sie alle Testdaten mit der lokalen Version des Modells bewertet. Sie können jetzt das bereitgestellte Modell mit einer zufälligen Stichprobe von 30 Bildern aus den Testdaten testen.  
+Zuvor haben Sie alle Testdaten mit der lokalen Version des Modells bewertet. Sie können nun das bereitgestellte Modell mit einer zufälligen Stichprobe von 30 Bildern aus den Testdaten testen.  
 
 Der folgende Code durchläuft diese Schritte:
 1. Senden Sie die Daten als JSON-Array an den in Container Instances gehosteten Webdienst. 
 
-1. Verwenden Sie die `run`-API des SDK, um den Dienst aufzurufen. Sie können auch unformatierte Daten mit einem beliebigen HTTP-Tool, z.B. Curl, aufrufen.
+1. Verwenden Sie die `run`-API des SDK, um den Dienst aufzurufen. Sie können auch unformatierte Daten mit einem beliebigen HTTP-Tool (beispielsweise **curl**) aufrufen.
 
 1. Drucken Sie die zurückgegebenen Vorhersagen und stellen Sie sie zusammen mit den eingehenden Bildern grafisch dar. Rote Schrift und ein inverses Bild (weiß auf schwarz) heben falsch klassifizierte Stichproben hervor. 
 
- Da die Modellgenauigkeit hoch ist, müssen Sie möglicherweise den folgenden Code einige Male ausführen, bevor Sie eine falsch klassifizierte Stichprobe sehen.
+Da die Modellgenauigkeit hoch ist, müssen Sie möglicherweise den folgenden Code einige Male ausführen, bevor Sie eine falsch klassifizierte Stichprobe sehen:
 
 ```python
 import json
@@ -339,9 +339,13 @@ for s in sample_indices:
 plt.show()
 ```
 
-Hier ist das Ergebnis einer zufälligen Stichprobe an Testbildern: ![Grafik mit Ergebnissen](./media/tutorial-deploy-models-with-aml/results.png)
+Das folgende Ergebnis stammt aus einer zufälligen Stichprobe an Testbildern:
 
-Sie können auch unformatierte HTTP-Anforderung zum Testen des Webdiensts senden.
+![Grafik mit Ergebnissen](./media/tutorial-deploy-models-with-aml/results.png)
+
+![Ergebnisse](./media/tutorial-deploy-models-with-aml/results.png)
+
+Sie können auch eine unformatierte HTTP-Anforderung zum Testen des Webdiensts senden:
 
 ```python
 import requests
@@ -378,6 +382,6 @@ service.delete()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ Lernen Sie alle [Bereitstellungsoptionen für den Azure Machine Learning Service](how-to-deploy-and-where.md) einschließlich ACI, Azure Kubernetes Service, FPGAs und IoT Edge kennen.
++ Weitere Informationen zu den Bereitstellungsoptionen für den Azure Machine Learning-Dienst finden Sie [hier](how-to-deploy-and-where.md). Zu den Optionen zählen unter anderem Azure Container Instances, Azure Kubernetes Service, FPGAs und Azure IoT Edge.
 
-+ Erfahren Sie, wie der Azure Machine Learning Service den besten Algorithmus für Ihr Modell automatisch auswählen und optimieren und dieses Modell für Sie erstellen kann. Probieren Sie das Tutorial [Trainieren eines Regressionsmodells mit automatisiertem maschinellen Lernen](tutorial-auto-train-models.md) aus. 
++ Informieren Sie sich darüber, wie der Azure Machine Learning-Dienst automatisch den besten Algorithmus für Ihr Modell auswählen und optimieren kann. Er erstellt auch das Modell für Sie. Probieren Sie das Tutorial [Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning](tutorial-auto-train-models.md) aus. 

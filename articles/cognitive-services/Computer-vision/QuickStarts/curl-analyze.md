@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Analysieren eines remote gespeicherten Bilds – REST, cURL – Maschinelles Sehen'
+title: 'Schnellstart: Analysieren eines Remotebilds – REST, cURL'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung analysieren Sie ein remote gespeichertes Bild mit der Maschinelles Sehen-API und cURL.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 04ad5ff2e148a5f5469cd13ce6106e6466d645b3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 18e7c084686099611db0c3042e66181df19d6186
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344029"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581537"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Analysieren eines remote gespeicherten Bilds mit der REST-API und cURL in der Maschinelles Sehen-API
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Analysieren eines Remotebilds mit der REST-API und cURL in der Maschinelles Sehen-API
 
 In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein remote gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
 

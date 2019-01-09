@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c17c972a39cd336ab33f6be8bd3db5b8f0f2c92
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097664"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808416"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Bereitstellen von Durchsatz für einen Azure Cosmos DB-Container
 
@@ -47,7 +47,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-Wenn Sie Durchsatz für ein MongoDB-API-Konto bereitstellen, verwenden Sie „/myShardKey“ für den Partitionsschlüsselpfad. Wenn Sie Durchsatz für ein Cassandra-API-Konto bereitstellen, verwenden Sie „/myPrimaryKey“ für den Partitionsschlüsselpfad.
+Wenn Sie Durchsatz für ein Cosmos-Konto bereitstellen, das mit der Azure Cosmos DB-API für MongoDB konfiguriert wurde, verwenden Sie „/myShardKey“ für den Partitionsschlüsselpfad. Wenn Sie Durchsatz für ein Cosmos-Konto bereitstellen, das für die Cassandra-API konfiguriert wurde, verwenden Sie „/myPrimaryKey“ für den Partitionsschlüsselpfad.
 
 ## <a name="provision-throughput-using-net-sdk"></a>Bereitstellen des Durchsatzes mithilfe des .NET SDK
 
