@@ -23,7 +23,7 @@ ms.locfileid: "49167119"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-oracle.md)
 
