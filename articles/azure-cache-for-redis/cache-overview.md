@@ -14,16 +14,16 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 1f41172a493f3e5e1b98cbba32b0180cee16c072
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: eab4365b6b86a82f29dbd1a79d4fda6dc9b30e0e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018739"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971323"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Was ist Azure Cache for Redis?
 
-Azure Cache for Redis basiert auf dem beliebten Open Source-Speicherdienst [Azure Cache for Redis](https://redis.io/). Er wird in der Regel als Cache zum Verbessern der Leistung und Skalierbarkeit von Systemen verwendet, die stark von Back-End-Datenspeichern abhängig sind. Die Leistung wird durch vorübergehendes Kopieren häufig verwendeter Daten in einen schnellen Speicher verbessert, der sich in der Nähe der Anwendung befindet. Bei [Azure Cache for Redis](https://redis.io/) befindet sich dieser schnelle Speicher im Speicher mit Azure Cache for Redis, anstatt von einer Datenbank vom Datenträger geladen zu werden.
+Azure Cache for Redis basiert auf der beliebten Software [Redis](https://redis.io/). Er wird in der Regel als Cache zum Verbessern der Leistung und Skalierbarkeit von Systemen verwendet, die stark von Back-End-Datenspeichern abhängig sind. Die Leistung wird durch vorübergehendes Kopieren häufig verwendeter Daten in einen schnellen Speicher verbessert, der sich in der Nähe der Anwendung befindet. Bei [Azure Cache for Redis](https://redis.io/) befindet sich dieser schnelle Speicher im Speicher mit Azure Cache for Redis, anstatt von einer Datenbank vom Datenträger geladen zu werden.
 
 Azure Cache for Redis kann auch als In-Memory-Datenstrukturspeicher, verteilte nicht relationale Datenbank und Nachrichtenbroker verwendet werden. Die Anwendungsleistung wird durch die Nutzung der Leistung des Redis-Moduls mit niedriger Latenz und hohem Durchsatz verbessert.
 
