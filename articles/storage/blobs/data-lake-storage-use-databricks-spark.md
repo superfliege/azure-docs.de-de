@@ -1,6 +1,6 @@
 ---
-title: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Azure Databricks unter Verwendung von Spark | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um auf Daten in einem Azure-Speicherkonto vom Typ „Data Lake Storage Gen2“ zuzugreifen.
+title: 'Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Azure Databricks unter Verwendung von Spark | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um auf Daten in einem Azure-Speicherkonto vom Typ „Data Lake Storage Gen2“ zuzugreifen.
 services: storage
 author: dineshmurthy
 ms.component: data-lake-storage-gen2
@@ -8,56 +8,62 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: dineshm
-ms.openlocfilehash: 88a05eb8fa59740012ca6c7a8d8508d565854dc7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974157"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548985"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Azure Databricks unter Verwendung von Spark
+# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten in Data Lake Storage Gen2 (Vorschauversion) mit Azure Databricks unter Verwendung von Spark
 
-In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen für einen Azure Databricks-Cluster ausführen, um Daten in einem Azure-Speicherkonto abzufragen, wenn die Vorschauversion von Azure Data Lake Storage Gen2 aktiviert ist.
+In diesem Tutorial erfahren Sie, wie Sie Ihren Azure Databricks-Cluster mit Daten in einem Azure-Speicherkonto verbinden, für das Azure Data Lake Storage Gen2 (Vorschauversion) aktiviert ist. Diese Verbindung ermöglicht die native Ausführung von Datenabfragen und -analysen über Ihren Cluster.
+
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Databricks-Clusters
 > * Erfassen von unstrukturierten Daten in einem Speicherkonto
 > * Ausführen von Analysen für Ihre Daten im Blobspeicher
 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorial wird veranschaulicht, wie Sie die Flugdaten einer Fluggesellschaft nutzen und abfragen, die vom [Verkehrsministerium der Vereinigten Staaten](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time) zur Verfügung gestellt werden. Laden Sie Flugdaten für einen Zeitraum von mindestens zwei Jahren herunter (wählen Sie alle Felder aus), und speichern Sie das Ergebnis auf Ihrem Computer. Achten Sie darauf, dass Sie sich den Dateinamen und -pfad Ihres Downloads notieren. Sie benötigen diese Angaben in einem späteren Schritt.
+In diesem Tutorial wird veranschaulicht, wie Sie die Flugdaten einer Fluggesellschaft nutzen und abfragen, die vom [Verkehrsministerium der Vereinigten Staaten](https://transtats.bts.gov/DL_SelectFields.asp) zur Verfügung gestellt werden. 
 
-> [!NOTE]
-> Klicken Sie auf das Kontrollkästchen **Prezipped file** (ZIP-Datei), um alle Datenfelder auszuwählen. Der Download hat eine Größe von einigen GB, aber diese Datenmenge ist für die Analyse erforderlich.
+1. Aktivieren Sie das Kontrollkästchen **Prezipped file** (ZIP-Datei), um alle Datenfelder auszuwählen.
+2. Wählen Sie **Herunterladen** aus, und speichern Sie die Ergebnisse auf Ihrem Computer.
+3. Notieren Sie sich den Dateinamen und den Pfad des Downloads. Diese Angaben werden in einem späteren Schritt benötigt.
 
-## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>Erstellen eines Azure-Speicherkontos mit Analysefunktionen
+Für dieses Tutorial benötigen Sie ein Speicherkonto mit Analysefunktionen. Wir empfehlen, anhand der entsprechenden [Schnellstartanleitung](data-lake-storage-quickstart-create-account.md) ein geeignetes Speicherkonto zu erstellen. Navigieren Sie anschließend zu dem erstellten Speicherkonto, um Konfigurationseinstellungen abzurufen.
 
-Erstellen Sie zunächst ein neues [Speicherkonto mit Analysefunktionen](data-lake-storage-quickstart-create-account.md), und geben Sie ihm einen eindeutigen Namen. Navigieren Sie anschließend zu diesem Speicherkonto, um Konfigurationseinstellungen abzurufen.
-
-1. Klicken Sie unter **Einstellungen** auf **Zugriffsschlüssel**.
-2. Klicken Sie auf die Schaltfläche **Kopieren** neben **key1**, um den Schlüsselwert zu kopieren.
+1. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+2. Wählen Sie neben **key1** die Schaltfläche **Kopieren** aus, um den Schlüsselwert zu kopieren.
 
 Sowohl der Kontoname als auch der Schlüssel sind für weitere Schritte dieses Tutorials erforderlich. Öffnen Sie einen Text-Editor, und notieren Sie sich darin den Kontonamen und Schlüssel zur späteren Verwendung.
 
 ## <a name="create-a-databricks-cluster"></a>Erstellen eines Databricks-Clusters
 
-Im nächsten Schritt wird ein [Databricks-Cluster](https://docs.azuredatabricks.net/) erstellt, um einen Datenarbeitsbereich erstellen zu können.
+Im nächsten Schritt wird ein Databricks-Cluster erstellt, um einen Datenarbeitsbereich erstellen zu können.
 
-1. Erstellen Sie einen [Databricks-Dienst](https://ms.portal.azure.com/#create/Microsoft.Databricks), und geben Sie ihm den Namen **myFlightDataService**. (Aktivieren Sie beim Erstellen des Diensts das Kontrollkästchen *An Dashboard anheften*.)
-2. Klicken Sie auf **Launch Workspace** (Arbeitsbereich starten), um den Arbeitsbereich in einem neuen Browserfenster zu öffnen.
-3. Klicken Sie in der Navigationsleiste auf der linken Seite auf **Cluster**.
-4. Klicken Sie auf **Cluster erstellen**.
-5. Geben Sie im Feld *Clustername* den Cluster **myFlightDataCluster** ein.
-6. Wählen Sie im Feld *Worker-Typ* die Option **Standard_D8s_v3**.
-7. Ändern Sie den Wert **Min Workers** (Min. Worker) in *4*.
-8. Klicken Sie oben auf der Seite auf **Cluster erstellen** (dieser Prozess kann bis zu fünf Minuten dauern).
-9. Nachdem der Prozess abgeschlossen ist, können Sie oben links in der Navigationsleiste **Azure Databricks** wählen.
-10. Wählen Sie in der unteren Hälfte der Seite im Abschnitt **Neu** die Option **Notebook**.
-11. Geben Sie im Feld **Name** den gewünschten Namen ein, und wählen Sie **Python** als Sprache aus.
-12. Für alle anderen Felder können die Standardwerte übernommen werden.
-13. Klicken Sie auf **Erstellen**.
-14. Fügen Sie den folgenden Code in die Zelle **Cmd 1** ein. Vergessen Sie nicht, die in Klammern angegebenen Platzhalter durch Ihre eigenen Werte zu ersetzen:
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus.
+2. Geben Sie **Azure Databricks** in das Suchfeld ein.
+3. Wählen Sie auf dem Blatt „Azure Databricks“ die Option **Erstellen** aus.
+4. Nennen Sie Ihren Databricks-Dienst **myFlightDataService**. (Aktivieren Sie beim Erstellen des Diensts das Kontrollkästchen *An Dashboard anheften*.)
+5. Wählen Sie **Launch Workspace** (Arbeitsbereich starten) aus, um den Arbeitsbereich in einem neuen Browserfenster zu öffnen.
+6. Wählen Sie auf der linken Navigationsleiste **Cluster** aus.
+7. Wählen Sie **Cluster erstellen** aus.
+8. Geben Sie im Feld **Clustername** den Cluster **myFlightDataCluster** ein.
+9. Wählen Sie im Feld **Worker-Typ** die Option **Standard_D8s_v3**.
+10. Ändern Sie den Wert **Min Workers** (Min. Worker) in **4**.
+11. Wählen Sie am oberen Seitenrand **Cluster erstellen** aus. (Dieser Vorgang kann bis zu fünf Minuten dauern.)
+12. Wählen Sie nach Abschluss des Vorgangs links oben auf der Navigationsleiste die Option **Azure Databricks** aus.
+13. Wählen Sie in der unteren Hälfte der Seite im Abschnitt **Neu** die Option **Notebook**.
+14. Geben Sie im Feld **Name** den gewünschten Namen ein, und wählen Sie **Python** als Sprache aus.
+15. Für alle anderen Felder können die Standardwerte übernommen werden.
+16. Klicken Sie auf **Erstellen**.
+17. Fügen Sie den folgenden Code in die Zelle **Cmd 1** ein. Ersetzen Sie die in Klammern angegebenen Platzhalter durch Ihre eigenen Werte:
 
     ```scala
     %python%
@@ -72,13 +78,13 @@ Im nächsten Schritt wird ein [Databricks-Cluster](https://docs.azuredatabricks.
         mount_point = "/mnt/flightdata",
         extra_configs = configs)
     ```
-15. Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
+18. Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
 
 ## <a name="ingest-data"></a>Erfassen von Daten
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopieren von Quelldaten in das Speicherkonto
 
-Die nächste Aufgabe ist die Nutzung von AzCopy zum Kopieren der Daten aus der *CSV*-Datei in den Azure-Speicher. Öffnen Sie ein Eingabeaufforderungsfenster, und geben Sie die folgenden Befehle ein. Achten Sie darauf, die Platzhalter `<DOWNLOAD_FILE_PATH>` und `<ACCOUNT_KEY>` durch die entsprechenden Werte zu ersetzen, die Sie in einem vorherigen Schritt notiert haben.
+Die nächste Aufgabe ist die Nutzung von AzCopy zum Kopieren der Daten aus der *CSV*-Datei in den Azure-Speicher. Öffnen Sie ein Eingabeaufforderungsfenster, und geben Sie die folgenden Befehle ein. Die Platzhalter `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>` und `<ACCOUNT_KEY>` müssen durch die entsprechenden Werte ersetzt werden, die Sie in einem vorherigen Schritt notiert haben.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -90,12 +96,12 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 
 Öffnen Sie Databricks erneut in Ihrem Browser, und führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie oben links in der Navigationsleiste die Option **Azure Databricks**.
+1. Wählen Sie links oben auf der Navigationsleiste die Option **Azure Databricks** aus.
 2. Wählen Sie in der unteren Hälfte der Seite im Abschnitt **Neu** die Option **Notebook**.
 3. Geben Sie im Feld **Name** den Namen **CSV2Parquet** ein.
 4. Für alle anderen Felder können die Standardwerte übernommen werden.
 5. Klicken Sie auf **Erstellen**.
-6. Fügen Sie den folgenden Code in die Zelle **Cmd 1** ein (mit diesem Code wird im Editor das automatische Speichern durchgeführt).
+6. Fügen Sie den folgenden Code in die Zelle **Cmd 1** ein. (Dieser Code dient zur automatischen Speicherung im Editor.)
 
     ```python
     # Use the previously established DBFS mount point to read the data
@@ -106,11 +112,11 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
     print("Done")
     ```
 
-## <a name="explore-data-using-hadoop-distributed-file-system"></a>Untersuchen von Daten per Hadoop Distributed File System
+## <a name="explore-data"></a>Erkunden von Daten
 
-Kehren Sie zum Databricks-Arbeitsbereich zurück, und klicken Sie auf der linken Navigationsleiste auf **Zuletzt verwendet**.
+Kehren Sie zum Databricks-Arbeitsbereich zurück, und wählen Sie auf der linken Navigationsleiste das Symbol **Zuletzt verwendet** aus.
 
-1. Klicken Sie auf das Notebook **Flight Data Analytics** (Flugdatenanalyse).
+1. Wählen Sie das Notebook **Flight Data Analytics** (Flugdatenanalyse) aus.
 2. Drücken Sie **STRG+ALT+N**, um eine neue Zelle zu erstellen.
 
 Geben Sie die folgenden Codeblöcke unter **Cmd 1** ein, und drücken Sie **CMD+EINGABE**, um das Python-Skript auszuführen.
@@ -137,7 +143,7 @@ Anhand dieser Codebeispiele haben Sie die hierarchische Struktur von HDFS unter 
 
 Als Nächstes können Sie damit beginnen, die Daten abzufragen, die Sie in Ihr Speicherkonto hochgeladen haben. Geben Sie die folgenden Codeblöcke unter **Cmd 1** ein, und drücken Sie **CMD+EINGABE**, um das Python-Skript auszuführen.
 
-### <a name="simple-queries"></a>Einfache Abfragen
+### <a name="run-simple-queries"></a>Ausführen einfacher Abfragen
 
 Führen Sie das folgende Skript aus, um Dataframes für Ihre Datenquellen zu erstellen:
 
@@ -198,7 +204,8 @@ print('Airports in Texas: ', out.show(100))
 out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
-### <a name="complex-queries"></a>Komplexe Abfragen
+
+### <a name="run-complex-queries"></a>Ausführen komplexer Abfragen
 
 Führen Sie die Segmente im Notebook jeweils einzeln aus, und sehen Sie sich die Ergebnisse an, um die folgenden komplexeren Abfragen durchzuführen.
 
@@ -241,6 +248,12 @@ output.show(10, False)
 display(output)
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe für das Speicherkonto und anschließend **Löschen** aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+[!div class="nextstepaction"] 
+> [Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+

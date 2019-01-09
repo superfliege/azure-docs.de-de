@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: e4f15da8464c2103b5f6540d342cb7c741a67c5f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: fc23efb206496bd36922da39adc0ff32abb78907
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994845"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608670"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
 
@@ -234,6 +234,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 | ![Commvault](media/azure-stack-marketplace-azure-items/commvault.png) | [Commvault](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault) | Eine umfassende Lösung für Sicherung und Wiederherstellung, Anwendungs- und VM-Migration zu Azure Stack und Notfallwiederherstellung für Azure Stack-Umgebungen. | Commvault |
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. **Laden Sie alle CloudLink SecureVM-Elemente herunter.** | Dell EMC |
 | ![EventTracker SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [EventTracker SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | EventTracker SIEM ist eine umfassende Sicherheitsplattform, die erweiterte Sicherheitstools mit prüffähigen Konformitätsfunktionen bietet. | EventTracker |
+| ![Exivity – Hybrid Cloud-Abrechnungslösung](media/azure-stack-marketplace-azure-items/exivity.png) | [Exivity – Hybrid Cloud-Abrechnungslösung](https://azuremarketplace.microsoft.com/marketplace/apps/exivity.exivity-vm)  | Ein Abrechnungstool, das die Anforderungen praktisch jedes IT-Dienstverteilungsmodells befriedigen kann, ob lokal bereitgestellt wird, in der öffentlichen Cloud oder in Hybridumgebungen. | Exivity |
 | ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Erweiterter Lastenausgleich, globaler Serverlastenausgleich, Netzwerkfirewall, DNS, WAF und App-Zugriff. | F5 Networks |
 | ![Hortonworks Data Platform (HDP) Sandbox](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) Sandbox](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Unterstützt von HDP 2.5, der hundertprozentigen Open-Source-Plattform für Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky Hybrid Cloud Security](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Kaspersky Hybrid Cloud Security ermöglicht ein nahtlos aufeinander abgestimmtes und adaptives Ökosystem für Cybersicherheit. | Kaspersky Lab |

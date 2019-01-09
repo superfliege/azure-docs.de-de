@@ -9,23 +9,23 @@ ms.topic: tutorial
 ms.date: 11/27/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 77a2b8d2b5d3ac42dcbbe2db2b05d38657290073
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: c0901f22e4941fdfaa21138153a06e97c2d6095f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443781"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630375"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Tutorial: Transformieren von Daten mit Azure Data Box Edge (Vorschauversion)
 
-In diesem Tutorial wird beschrieben, wie Sie die Computerolle für Data Box Edge konfigurieren. Nachdem die Computerolle konfiguriert wurde, kann Data Box Edge die Daten vor dem Senden an Azure transformieren.
+In diesem Tutorial wird beschrieben, wie Sie eine Computerolle auf Ihrem Azure Data Box Edge-Gerät konfigurieren. Nach dem Konfigurieren der Computerolle kann Data Box Edge Daten vor dem Senden an Azure transformieren.
 
 Dieser Vorgang kann ca. 30 bis 45 Minuten dauern.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer IoT Hub-Ressource
+> * Erstellen einer Azure IoT Hub-Ressource
 > * Einrichten einer Computerolle
 > * Hinzufügen eines Computemoduls
 > * Überprüfen der Datentransformation und -übertragung
@@ -35,9 +35,9 @@ In diesem Tutorial lernen Sie Folgendes:
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie Folgendes sicher, bevor Sie Compute für Ihre Data Box Edge-Instanz einrichten:
+Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Data Box Edge-Gerät einrichten:
 
-* Ihr Data Box Edge-Gerät wird wie unter [Verbinden, Einrichten und Aktivieren von Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md) beschrieben aktiviert.
+* Das Data Box Edge-Gerät ist aktiviert, wie unter [Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Edge (Vorschau)](data-box-edge-deploy-connect-setup-activate.md) beschrieben.
 
 
 ## <a name="create-an-iot-hub-resource"></a>Erstellen einer IoT Hub-Ressource
@@ -48,9 +48,9 @@ Eine ausführliche Anleitung finden Sie unter [Erstellen eines IoT Hubs](https:/
 
 ![Erstellen einer IoT Hub-Ressource](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-Beachten Sie Folgendes, wenn die Edgecomputing-Rolle nicht eingerichtet ist:
+Wurde keine Edge-Computerolle eingerichtet, gelten die folgenden Einschränkungen:
 
-- Die IoT Hub-Ressource verfügt nicht über IoT-Geräte oder IoT Edge-Geräte.
+- Die IoT Hub-Ressource verfügt nicht über Azure IoT-Geräte oder Azure IoT Edge-Geräte.
 - Sie können keine lokalen Edge-Freigaben erstellen. Beim Hinzufügen einer Freigabe ist die Option zum Erstellen einer lokalen Freigabe für Edge-Compute nicht aktiviert.
 
 
@@ -58,50 +58,65 @@ Beachten Sie Folgendes, wenn die Edgecomputing-Rolle nicht eingerichtet ist:
 
 Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden.
 
-Führen Sie die folgenden Schritte aus, um die Computerolle auf dem Gerät einzurichten.
+Führen Sie die folgenden Schritte aus, um die Computerolle auf dem Gerät einzurichten:
 
-1. Navigieren Sie zur Data Box Edge-Ressource und dann zu **Übersicht**, und klicken Sie auf **Computerolle einrichten**. 
+1. Navigieren Sie zur Data Box Edge-Ressource, und wählen Sie **Übersicht** und dann **Computerolle einrichten** aus. 
 
-    ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-1.png)
+    ![Link „Übersicht“ im linken Bereich](./media/data-box-edge-deploy-configure-compute/setup-compute-1.png)
    
-    Sie können auch zu **Module** navigieren und auf **Compute konfigurieren** klicken.
+    Optional können Sie zu **Module** navigieren und **Compute konfigurieren** auswählen.
 
-    ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-2.png)
+    ![Links „Module“ und „Compute konfigurieren“](./media/data-box-edge-deploy-configure-compute/setup-compute-2.png)
  
-2. Wählen Sie in der Dropdownliste die **IoT Hub-Ressource** aus, die Sie im vorherigen Schritt erstellt haben. Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar. Klicken Sie auf **Create**.
+1. Wählen Sie in der Dropdownliste die **IoT Hub-Ressource** aus, die Sie im vorherigen Schritt erstellt haben.  
+    Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar. 
+    
+1. Klicken Sie auf **Create**.
 
-    ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-3.png)
+    ![Die Schaltfläche „Erstellen“.](./media/data-box-edge-deploy-configure-compute/setup-compute-3.png)
  
-3. Es dauert einige Minuten, bis die Computerolle erstellt wurde. Aufgrund eines Fehlers in dieser Version wird der Bildschirm nicht aktualisiert, wenn die Erstellung der Computerolle abgeschlossen ist. Wenn Sie zu **Module** navigieren, können Sie sehen, dass die Edge-Computerolle konfiguriert wurde.  
+    Es dauert einige Minuten, bis die Computerolle erstellt wurde. Aufgrund eines Fehlers in dieser Version wird der Bildschirm nicht aktualisiert, wenn die Erstellung der Computerolle abgeschlossen ist. Wenn Sie überprüfen möchten, ob die Edge-Computerolle konfiguriert wurde, navigieren Sie zu **Module**.  
 
-    ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-4.png)
+    ![Geräteliste „Edgecomputing konfigurieren“](./media/data-box-edge-deploy-configure-compute/setup-compute-4.png)
 
-4. Wenn Sie jetzt wieder zu **Übersicht** navigieren, ist der Bildschirm aktualisiert, und die konfigurierte Computerolle wird angezeigt.
+1. Navigieren Sie erneut zu **Übersicht**.  
+    Der Bildschirm wurde aktualisiert, und die konfigurierte Computerolle wird angezeigt.
 
     ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-5.png)
  
-5. Navigieren Sie zu dem IoT Hub, den Sie beim Erstellen der Edge-Computerolle verwendet haben. Navigieren Sie zu **IoT-Geräte**. Sie sehen, dass jetzt ein IoT-Gerät aktiviert ist. 
+1. Wechseln Sie in der IoT Hub-Instanz, die Sie beim Erstellen der Edge-Computerolle verwendet haben, zu **IoT-Geräte**.  
+    Ein IoT-Gerät ist jetzt aktiviert. 
 
-    ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-6.png)
+    ![Seite „IoT-Geräte“](./media/data-box-edge-deploy-configure-compute/setup-compute-6.png)
 
-6. Wenn Sie zu **IoT Edge** navigieren, sehen Sie, dass auch ein IoT Edge-Gerät aktiviert wurde.
+1. Wählen Sie im linken Bereich die Option **IoT Edge** aus.  
+    Nun ist außerdem ein IoT Edge-Gerät aktiviert.
 
     ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-7.png)
  
-7. Wählen Sie das IoT Edge-Gerät aus, und klicken Sie darauf. Ein Edge-Agent wird auf diesem IoT Edge-Gerät ausgeführt. 
+1. Wählen Sie das IoT Edge-Gerät aus, und klicken Sie darauf.  
+    Ein Edge-Agent wird auf diesem IoT Edge-Gerät ausgeführt. 
 
-    ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
+    ![Seite „Gerätedetails“](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-Auf diesem Edge-Gerät sind aber keine benutzerdefinierten Module vorhanden. Sie können diesem Gerät jetzt ein benutzerdefiniertes Modul hinzufügen. Informationen zum Erstellen eines benutzerdefinierten Moduls finden Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)](data-box-edge-create-iot-edge-module.md).
+    Auf diesem Edge-Gerät sind keine benutzerdefinierten Module vorhanden, Sie können nun jedoch ein benutzerdefiniertes Modul hinzufügen. Informationen zum Erstellen eines benutzerdefinierten Moduls finden Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)](data-box-edge-create-iot-edge-module.md).
 
 
 ## <a name="add-a-custom-module"></a>Hinzufügen eines benutzerdefinierten Moduls
 
-In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie in [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)](data-box-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. 
+In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)](data-box-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. 
 
-In diesem Verfahren wird ein Beispiel verwendet, in dem für das verwendete benutzerdefinierte Modul Dateien von einer lokalen Freigabe auf dem Edge-Gerät auf eine Cloudfreigabe auf dem Gerät verschoben werden. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist. 
+Im folgenden Verfahren wird ein Beispiel verwendet, in dem für das benutzerdefinierte Modul Dateien von einer lokalen Freigabe auf dem Edge-Gerät auf eine Cloudfreigabe auf dem Gerät verschoben werden. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist. 
 
-1. Der erste Schritt ist das Hinzufügen einer lokalen Freigabe auf dem Edge-Gerät. Navigieren Sie auf Ihrer Data Box Edge-Ressource zu **Freigaben**. Klicken Sie auf **+ Freigabe hinzufügen**. Geben Sie den Freigabenamen an, und wählen Sie den Typ der Freigabe aus. Aktivieren Sie die Option **Als lokale Edge-Freigabe konfigurieren**, um eine lokale Freigabe zu erstellen. Wählen Sie einen **vorhandenen Benutzer** aus, oder **erstellen Sie einen neuen**. Klicken Sie auf **Create**.
+1. Fügen Sie wie folgt auf dem Edge-Gerät eine lokale Dateifreigabe hinzu:
+
+    a. Navigieren Sie auf Ihrer Data Box Edge-Ressource zu **Freigaben**. 
+    
+    b. Wählen Sie **Freigabe hinzufügen** aus, geben Sie dann den Freigabenamen an, und wählen Sie den Freigabetyp aus. 
+    
+    c. Aktivieren Sie das Kontrollkästchen **Als lokale Edge-Freigabe konfigurieren**, um eine lokale Freigabe zu erstellen. 
+    
+    d. Wählen Sie **Neues Element erstellen** oder **Vorhandenes Element verwenden** und dann **Erstellen** aus.
 
     ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-1.png) 
 
@@ -109,110 +124,124 @@ In diesem Verfahren wird ein Beispiel verwendet, in dem für das verwendete benu
 
     `rsync --inplace <source file path> < destination file path>`
 
-     Weitere Informationen zum rsync-Befehl finden Sie in der [Dokumentation zu rsync](https://www.computerhope.com/unix/rsync.htm). 
+    Weitere Informationen zum rsync-Befehl finden Sie in der [Dokumentation zu rsync](https://www.computerhope.com/unix/rsync.htm). 
 
- 
-2. Nachdem die lokale Freigabe erstellt wurde und Sie eine Benachrichtigung über die erfolgreiche Erstellung erhalten haben (ggf. wird die Liste mit den Freigaben schon vorher aktualisiert, aber Sie müssen auf den Abschluss der Freigabenerstellung warten), können Sie zur Liste mit den Freigaben navigieren. 
+    Die lokale Freigabe wird erstellt, und Sie erhalten eine Benachrichtigung zur erfolgreichen Erstellung. Die Freigabeliste wird unter Umständen aktualisiert. Sie müssen jedoch warten, bis die Erstellung der Freigabe abgeschlossen ist.
+    
+1. Navigieren Sie zur Liste der Freigaben. 
 
     ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-2.png) 
  
-3. Wählen Sie die neu erstellte lokale Freigabe aus, und klicken Sie darauf, um ihre Eigenschaften anzuzeigen. Kopieren und speichern Sie den **lokalen Bereitstellungspunkt für Edge-Module** für diese Freigabe.
+1. Wählen Sie die neu erstellte lokale Freigabe aus, um ihre Eigenschaften anzuzeigen. 
 
-    ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-3.png) 
+1. Kopieren Sie im Feld **Lokaler Bereitstellungspunkt für Edgecomputingmodule** den Wert für diese Freigabe.  
+    Sie verwenden diesen lokalen Bereitstellungspunkt beim Bereitstellen des Moduls.
+
+    ![Feld „Lokaler Bereitstellungspunkt für Edgecomputingmodule“](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-3.png) 
  
-    Navigieren Sie zu einer vorhandenen Cloudfreigabe, die auf Ihrem Data Box Edge-Gerät erstellt wurde. Kopieren und speichern Sie den lokalen Bereitstellungspunkt für Edge-Computemodule für diese Cloudfreigabe. Diese lokalen Bereitstellungspunkte werden beim Bereitstellen des Moduls verwendet.
+1. Kopieren Sie auf einer vorhandenen Cloudfreigabe, die auf Ihrem Data Box Edge-Gerät erstellt wurde, im Feld **Lokaler Bereitstellungspunkt für Edgecomputingmodule** den lokalen Bereitstellungspunkt für Edgecomputingmodule für diese Cloudfreigabe.  
+    Sie verwenden diesen lokalen Bereitstellungspunkt beim Bereitstellen des Moduls.
 
     ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-4.png)  
 
-4. Navigieren Sie zu Ihrer IoT Hub-Ressource und dann zum **IoT Edge-Gerät**, um dem IoT Edge-Gerät ein benutzerdefiniertes Modul hinzuzufügen. Wählen Sie das Gerät aus, und klicken Sie darauf. Klicken Sie unter **Gerätedetails** oben in der Befehlsleiste auf **Module festlegen**. 
+1. Navigieren Sie zu Ihrer IoT Hub-Ressource und dann zum **IoT Edge-Gerät**, um dem IoT Edge-Gerät ein benutzerdefiniertes Modul hinzuzufügen. 
 
-    ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-5.png) 
+1. Wählen Sie das Gerät und dann unter **Gerätedetails** die Option **Module festlegen** aus. 
 
-5. Führen Sie unter **Module hinzufügen** die folgenden Schritte aus:
+    ![Link „Module festlegen“](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-5.png) 
 
-    1. Geben Sie für das benutzerdefinierte Modul in den **Container Registry-Einstellungen** Werte für **Name**, **Adresse**, **Benutzername** und **Kennwort** an. Der Name, die Adresse und die aufgeführten Anmeldeinformationen werden verwendet, um Module mit einer übereinstimmenden URL abzurufen. Wählen Sie zum Bereitstellen dieses Moduls unter **Bereitstellungsmodule** die Option **IoT Edge-Modul**. Dieses IoT Edge-Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrem Data Box Edge-Gerät zugeordnet ist.
+1. Führen Sie unter **Module hinzufügen** die folgenden Schritte aus:
 
-        ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
+    a. Geben Sie für das benutzerdefinierte Modul in den Containerregistrierungseinstellungen den Namen, die Adresse, den Benutzernamen und das Kennwort ein.  
+    Der Name, die Adresse und die aufgeführten Anmeldeinformationen werden verwendet, um Module mit einer übereinstimmenden URL abzurufen. Wählen Sie zum Bereitstellen dieses Moduls unter **Bereitstellungsmodule** die Option **IoT Edge-Modul**. Dieses IoT Edge-Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrem Data Box Edge-Gerät zugeordnet ist.
+
+    ![Seite „Module festlegen“](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. Geben Sie die Einstellungen für das benutzerdefinierte IoT Edge-Modul an. Geben Sie unter **Name** den Namen Ihres Moduls und unter **Image-URI** den Image-URI für das entsprechende Containerimage an. 
+    b. Geben Sie die Einstellungen für das benutzerdefinierte IoT Edge-Modul an, indem Sie den Namen Ihres Moduls und den Image-URI für das entsprechende Containerimage eingeben. 
     
-        ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
+    ![Seite „Benutzerdefinierte IoT Edge-Module“](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. Geben Sie unter **Optionen für Containererstellung** die lokalen Bereitstellungspunkte für die Edge-Module, die Sie in den vorherigen Schritten kopiert haben, für die Cloud und die lokale Freigabe an. (Es ist wichtig, dass Sie diese Pfade nutzen und keine neuen erstellen.) Die lokalen Bereitstellungspunkte werden dem entsprechenden Eingabeordnerpfad (**InputFolderPath**) und Ausgabeordnerpfad (**OutputFolderPath**) zugeordnet, die Sie beim [Aktualisieren des Moduls mit benutzerdefiniertem Code](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code) im Modul angegeben haben. 
+    c. Geben Sie im Feld **Optionen für Containererstellung** die lokalen Bereitstellungspunkte für die Edge-Module ein, die Sie im vorherigen Schritt für die Cloudfreigabe und die lokale Freigabe kopiert haben.
+    > [!IMPORTANT]
+    > Erstellen Sie keine neuen Pfade, sondern verwenden Sie die kopierten Pfade. Die lokalen Bereitstellungspunkte werden dem entsprechenden Eingabeordnerpfad (**InputFolderPath**) und Ausgabeordnerpfad (**OutputFolderPath**) zugeordnet, die Sie beim [Aktualisieren des Moduls mit benutzerdefiniertem Code](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code) im Modul angegeben haben. 
     
-        Sie können das unten bereitgestellte Beispiel kopieren und in **Optionen für Containererstellung** einfügen: 
-        
-        ```
-        {
-         "HostConfig": {
-          "Binds": [
-           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
-           "/home/hcsshares/mysmbshare1:/home/CloudShare"
-           ]
-         }
+    Im Feld **Optionen für Containererstellung** können Sie das folgende Beispiel einfügen: 
+    
+    ```
+    {
+        "HostConfig": {
+        "Binds": [
+        "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+        "/home/hcsshares/mysmbshare1:/home/CloudShare"
+        ]
         }
-        ```
+    }
+    ```
 
-        Geben Sie hier auch alle Umgebungsvariablen für Ihr Modul an.
+    Geben Sie hier auch alle Umgebungsvariablen für Ihr Modul an.
 
-        ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
+    ![Feld „Optionen für Containererstellung“](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
-    4. Verwenden Sie **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren**, falls erforderlich, und klicken Sie dann auf **Weiter**.
+    d. Konfigurieren Sie die erweiterten Einstellungen für die Edge-Laufzeit, falls erforderlich, und klicken Sie dann auf **Weiter**.
 
-        ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
+    ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
-6.  Legen Sie unter **Routen angeben** die Routen zwischen den Modulen fest. Geben Sie in diesem Fall den Namen der lokalen Freigabe an, über die Daten per Pushvorgang an die Cloudfreigabe übertragen werden. Klicken Sie auf **Weiter**.
+1.  Legen Sie unter **Routen angeben** die Routen zwischen den Modulen fest.  
+    Geben Sie in diesem Beispiel den Namen der lokalen Freigabe ein, über die Daten per Pushvorgang an die Cloudfreigabe übertragen werden.
 
-    Sie können die Route durch die folgende Routenzeichenfolge ersetzen:       `"route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"`
+    Sie können die *Route* durch die folgende Routenzeichenfolge ersetzen:       `"route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"`
 
-    ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
+    ![Abschnitt „Routen angeben“](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
+
+1. Klicken Sie auf **Weiter**. 
+
+1.  Sehen Sie sich unter **Bereitstellung prüfen** alle Einstellungen an, und wählen Sie dann **Übermitteln**, um das Modul für die Bereitstellung zu übermitteln.
+
+    ![Seite „Module festlegen“](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-11.png) 
  
-7.  Sehen Sie sich unter **Bereitstellung prüfen** alle Einstellungen an. Wenn Sie zufrieden sind, können Sie das Modul mit **Übermitteln** für die Bereitstellung übermitteln.
+    Mit dieser Aktion wird die Modulbereitstellung gestartet, wie in der folgenden Abbildung gezeigt:
 
-    ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-11.png) 
- 
-Die Modulbereitstellung wird gestartet, wie im **Benutzerdefinierten IoT Edge-Modul** unter **Module** zu sehen ist.
-
-![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-12.png) 
+    ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-12.png) 
 
 ### <a name="verify-data-transform-and-transfer"></a>Überprüfen der Datentransformation und -übertragung
 
-Im letzten Schritt wird sichergestellt, dass das Modul verbunden ist und wie erwartet ausgeführt wird. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob das Modul ausgeführt wird.
+Im letzten Schritt wird sichergestellt, dass das Modul verbunden ist und wie erwartet ausgeführt wird. Der Laufzeitstatus des Moduls sollte für Ihr IoT Edge-Gerät auf der IoT Hub-Ressource „Wird ausgeführt“ lauten.
 
-1. Der Laufzeitstatus des Moduls sollte für Ihr IoT Edge-Gerät auf der IoT Hub-Ressource „Wird ausgeführt“ lauten.
-
-    ![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-1.png) 
+![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-1.png) 
  
-2. Wählen Sie das Modul aus, und klicken Sie darauf. Sehen Sie sich die Option **Zwilling der Modulidentität** an. Der Clientstatus für das Edge-Gerät und das Modul sollte **Verbunden** lauten.
+Führen Sie die folgenden Schritte aus, um zu überprüfen, ob das Modul ausgeführt wird:
+
+1. Wählen Sie das Modul aus, und sehen Sie sich den Zwilling der Modulidentität an.  
+    Der Clientstatus für das Edge-Gerät und das Modul sollte *Verbunden* lauten.
 
     ![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-2.png) 
  
-3.  Wenn das Modul ausgeführt wird, wird es auch in der Liste mit den Edge-Modulen auf Ihrer Data Box Edge-Ressource angezeigt. Der **Laufzeitstatus** des hinzugefügten Moduls lautet **Wird ausgeführt**.
+    Wenn das Modul ausgeführt wird, wird es auch in der Liste mit den Edge-Modulen auf Ihrer Data Box Edge-Ressource angezeigt. Der Laufzeitstatus des hinzugefügten Moduls lautet *Wird ausgeführt*.
 
     ![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-3.png) 
  
-4.  Stellen Sie eine Verbindung mit den lokalen Freigaben und Cloudfreigaben her, die Sie im Datei-Explorer erstellt haben.
+1.  Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen Freigaben und Cloudfreigaben her, die Sie zuvor erstellt haben.
 
     ![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-4.png) 
  
-5.  Fügen Sie der lokalen Freigabe Daten hinzu.
+1.  Fügen Sie der lokalen Freigabe Daten hinzu.
 
     ![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-5.png) 
  
-6.  Die Daten werden auf die Cloudfreigabe verschoben.
+    Die Daten werden auf die Cloudfreigabe verschoben.
 
     ![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-6.png)  
 
-7.  Anschließend werden die Daten per Pushvorgang von der Cloudfreigabe in das Speicherkonto übertragen. Wechseln Sie zum Speicher-Explorer, um die Daten anzuzeigen.
+    Anschließend werden die Daten per Pushvorgang von der Cloudfreigabe in das Speicherkonto übertragen. Wechseln Sie zum Storage-Explorer, um die Daten anzuzeigen.
 
     ![Überprüfen der Datentransformation](./media/data-box-edge-deploy-configure-compute/verify-data-transform-7.png) 
  
-Hiermit ist der Überprüfungsprozess abgeschlossen.
+Sie haben den Überprüfungsvorgang abgeschlossen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden unter anderem folgende Data Box Edge-Themen behandelt:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer IoT Hub-Ressource
@@ -220,7 +249,7 @@ In diesem Tutorial wurden unter anderem folgende Data Box Edge-Themen behandelt:
 > * Hinzufügen eines Computemoduls
 > * Überprüfen der Datentransformation und -übertragung
 
-Im nächsten Tutorial erfahren Sie, wie Sie Ihre Data Box Edge-Instanz verwalten.
+Weitere Informationen zum Verwalten Ihres Data Box Edge-Geräts finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
 > [Verwenden der lokalen Webbenutzeroberfläche zum Verwalten einer Data Box Edge-Instanz](https://aka.ms/dbg-docs)

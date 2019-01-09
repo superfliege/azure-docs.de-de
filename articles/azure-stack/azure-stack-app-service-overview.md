@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 3015755d8046f72c03cd1a1485d90a7f720a8909
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b1b4ea5775a661712838c1495ef0025a83b8c518
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353021"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607942"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Übersicht über App Service in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure App Service ist ein Platform-as-a-Service-Angebot (PaaS) von Microsoft Azure in Azure Stack. Mit diesem Dienst können Ihre internen oder externen Kunden Web-, API- und Azure Functions-Anwendungen für beliebige Plattformen oder Geräte erstellen. Sie können Ihre Apps in lokale Anwendungen integrieren und ihre Geschäftsprozesse automatisieren. Azure Stack-Cloudoperatoren können Kunden-Apps auf vollständig verwalteten virtuellen Computern (VMs) mit beliebigen freigegebenen VM-Ressourcen oder dedizierten VMs ausführen.
 
@@ -34,15 +34,15 @@ Mit Azure App Service können Sie Geschäftsprozesse automatisieren und Cloud-AP
 Hier sind einige wichtige Features und Funktionen von App Service aufgeführt:
 
 - **Mehrere Sprachen und Frameworks:** App Service verfügt über erstklassige Unterstützung für ASP.NET, Node.js, Java, PHP und Python. Außerdem können Sie Windows PowerShell und andere Skripts oder ausführbare Dateien auf App Service-VMs ausführen.
-- **DevOps-Optimierung:** Richten Sie Continuous Integration und Continuous Deployment mit GitHub, einem lokalen Git oder Bitbucket ein. Sie können Updates über Test- und Stagingumgebungen bereitstellen und Ihre Apps in App Service verwalten, indem Sie Azure PowerShell oder die plattformübergreifende Befehlszeilenschnittstelle (CLI) verwenden.
-- **Visual Studio-Integration:** Dedizierte Tools in Visual Studio optimieren das Erstellen und Bereitstellen von Anwendungen.
+- **DevOps-Optimierung:**  Richten Sie Continuous Integration und Continuous Deployment mit GitHub, einem lokalen Git oder Bitbucket ein. Sie können Updates über Test- und Stagingumgebungen bereitstellen und Ihre Apps in App Service verwalten, indem Sie Azure PowerShell oder die plattformübergreifende Befehlszeilenschnittstelle (CLI) verwenden.
+- **Visual Studio-Integration:**  Dedizierte Tools in Visual Studio optimieren das Erstellen und Bereitstellen von Anwendungen.
 
 ## <a name="app-types-in-app-service"></a>App-Typen in App Service
 
 App Service verfügt über mehrere App-Typen, die jeweils zum Hosten einer bestimmten Workload bestimmt sind:
 
-- [Web-Apps:](../app-service/app-service-web-overview.md) Hosten von Websites und Webanwendungen
-- [API-Apps](../app-service/app-service-web-overview.md) zum Hosten von REST-APIs.
+- [Web-Apps:](../app-service/overview.md) Hosten von Websites und Webanwendungen
+- [API-Apps](../app-service/overview.md) zum Hosten von REST-APIs.
 - Azure Functions zum Hosten ereignisgesteuerter, serverloser Workloads
 
 Der Begriff *App* bezieht sich auf die Hostingressourcen, die für die Ausführung einer Workload dediziert sind. Wenn wir *Web-App* als Beispiel nehmen, verstehen Sie darunter wahrscheinlich sowohl die Computeressourcen als auch die Anwendungscodeelemente, die zusammen für einen Browser die Funktionalität bereitstellen. In App Service handelt es sich bei einer Web-App um die Computeressourcen, die von Azure Stack zum Hosten Ihres Anwendungscodes bereitgestellt werden.

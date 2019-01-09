@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: d83c04946b67dd25bae306c2fa41a0864287bfc8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: eef755c01a6703976383ee31b52bde14d32f0110
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499308"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604064"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Tutorial: Erstellen einer Scala Maven-Anwendung für Apache Spark in HDInsight mithilfe von IntelliJ
 
@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine in [Scala](https://www.scala-lang.
 * Generieren einer JAR-Datei, die an HDInsight Spark-Cluster übermittelt werden kann
 * Ausführen der Anwendung in einem Spark-Cluster mithilfe von Livy
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight stellt auch ein IntelliJ IDEA-Plug-In bereit, um die Erstellung und Übermittlung von Anwendungen an einen HDInsight Spark-Cluster unter Linux zu vereinfachen. Weitere Informationen finden Sie unter [Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ](apache-spark-intellij-tool-plugin.md).
 > 
 
@@ -194,5 +194,5 @@ Sie können die folgenden Ansätze nutzen, um die Anwendung im Cluster auszufüh
 In diesem Artikel haben Sie gelernt, wie eine Apache Spark Scala-Anwendung erstellt wird. Im nächsten Artikel erfahren Sie, wie Sie diese Anwendung in einem HDInsight Spark-Cluster mit Livy ausführen.
 
 > [!div class="nextstepaction"]
->[Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API](./apache-spark-livy-rest-interface.md)
+>[Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](./apache-spark-livy-rest-interface.md)
 

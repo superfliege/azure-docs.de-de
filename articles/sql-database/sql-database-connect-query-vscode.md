@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie mit Visual Studio Code eine Verbindung
 keywords: Herstellen einer Verbindung mit SQL-Datenbank
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: 786b4fab42fb49cd44c1985bfa04ce33e77cadf0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 994f7d300b1e9a76e109e73467a2e7f0d4c1584d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098983"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652114"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Schnellstart: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen einer Instanz von Azure SQL-Datenbank
 
-[Visual Studio Code](https://code.visualstudio.com/docs) ist ein grafischer Code-Editor für Linux, MacOS und Windows. Er unterstützt Erweiterungen – etwa die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und SQL Data Warehouse. In diesem Schnellstart wird veranschaulicht, wie Sie Visual Studio Code zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten abzufragen, einzufügen, zu aktualisieren und zu löschen.
+[Visual Studio Code](https://code.visualstudio.com/docs) ist ein grafischer Code-Editor für Linux, MacOS und Windows. Er unterstützt Erweiterungen – etwa die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und SQL Data Warehouse. In dieser Schnellstartanleitung verwenden Sie Visual Studio Code zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank und führen anschließend Transact-SQL-Anweisungen aus, um Daten abzufragen, einzufügen, zu aktualisieren und zu löschen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -102,7 +102,7 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenba
 
 ## <a name="query-data"></a>Abfragen von Daten
 
-Verwenden Sie die folgende [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung, um die 20 wichtigsten Produkte nach Kategorie abzufragen.
+Führen Sie die folgende [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung aus, um die 20 wichtigsten Produkte nach Kategorie abzufragen.
 
 1. Fügen Sie im Editor-Fenster die folgende SQL-Abfrage ein.
 
@@ -113,13 +113,13 @@ Verwenden Sie die folgende [SELECT](https://msdn.microsoft.com/library/ms189499.
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Drücken Sie **STRG**+**UMSCHALT**+**E** zum Ausführen der Abfrage und Anzeigen der Ergebnisse aus den Tabellen `Product` und `ProductCategory`.
+2. Drücken Sie **STRG**+**UMSCHALT**+**E**, um die Abfrage auszuführen und Ergebnisse aus den Tabellen `Product` und `ProductCategory` anzuzeigen.
 
     ![Abfrage zum Abrufen von Daten aus 2 Tabellen](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung zum Hinzufügen eines neuen Produkts in der Tabelle `SalesLT.Product`.
+Führen Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung aus, um ein neues Produkt in der Tabelle `SalesLT.Product` hinzuzufügen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
@@ -147,7 +147,7 @@ Verwenden Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.
 
 ## <a name="update-data"></a>Aktualisieren von Daten
 
-Verwenden Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung, um das hinzugefügte Produkt zu aktualisieren.
+Führen Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung aus, um das hinzugefügte Produkt zu aktualisieren.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese:
 
@@ -161,7 +161,7 @@ Verwenden Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie die folgende [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql)-Transact-SQL-Anweisung, um das neue Produkt zu entfernen.
+Führen Sie die folgende [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql)-Transact-SQL-Anweisung aus, um das neue Produkt zu entfernen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese:
 

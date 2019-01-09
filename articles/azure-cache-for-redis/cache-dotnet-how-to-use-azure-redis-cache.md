@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: b75d84fefa9c45711003731666ecb21336057cc2
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6b2ab1ba89fbc2b271ede177a906a1919c14023d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018662"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557664"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-application"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer .NET-Anwendung
 
@@ -160,7 +160,7 @@ F체gen Sie den folgenden Code f체r die Prozedur `Main` der `Program`-Klasse Ihre
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
             Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
 
-            // Demostrate "SET Message" executed as expected...
+            // Demonstrate "SET Message" executed as expected...
             cacheCommand = "GET Message";
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
             Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
@@ -201,7 +201,7 @@ Install-Package Newtonsoft.Json
 
 F체gen Sie am Anfang der Datei *Program.cs* die folgende `using`-Anweisung hinzu:
 
-```charp
+```csharp
 using Newtonsoft.Json;
 ```
 
@@ -273,6 +273,6 @@ Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gel�
 In dieser Schnellstartanleitung wurde beschrieben, wie Sie Azure Cache for Redis 체ber eine .NET-Anwendung verwenden. In der n채chsten Schnellstartanleitung erfahren Sie, wie Sie Azure Cache for Redis mit einer ASP.NET-Web-App verwenden.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen einer ASP.NET-Web-App](./cache-web-app-howto.md)
+> [Erstellen einer ASP.NET-Web-App, die eine Azure Cache for Redis-Instanz verwendet](./cache-web-app-howto.md)
 
 

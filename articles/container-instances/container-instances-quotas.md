@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/07/2018
+ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: a7b61702feb062c57fdec84f335ace44a47d0283
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 86c169c84e905362e8fdb069e8ceadcb5e19fe67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249480"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602391"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kontingente und Regionsverfügbarkeit für Azure Container Instances
 
@@ -24,16 +24,17 @@ Für die Ressourcen und Funktionen aller Azure-Dienste gelten bestimmte Standard
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Azure Container Instances ist mit den angegebenen CPU- und Arbeitsspeicherlimits in den folgenden Regionen verfügbar:
+Azure Container Instances ist mit den angegebenen CPU- und Arbeitsspeicherlimits in den folgenden Regionen verfügbar: Die Werte sind zum Zeitpunkt der Veröffentlichung aktuell. Verwenden Sie die API zum [Auflisten von Funktionen](/rest/api/container-instances/listcapabilities/listcapabilities), um aktuelle Informationen abzurufen.
 
 | Standort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
 | -------- | -- | :---: | :-----------: |
+| Kanada, Mitte | Linux | 4 | 16 |
 | „USA, Osten“, „Europa, Norden“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“ | Linux | 4 | 14 |
 | Japan, Osten | Linux | 2 | 8 |
 | „Australien, Osten“, „USA, Osten 2“, „Asien, Südosten“ | Linux | 2 | 7 |
-| „Kanada, Mitte“, „Indien, Mitte“, „Asien, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“ | Linux | 2 | 3,5 |
+| „Indien, Mitte“, Asien, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Indien, Süden“ | Linux | 2 | 3,5 |
 | „USA, Osten“, „Europa, Westen“, „USA, Westen“ | Windows | 4 | 14 |
-| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „Asien, Osten“, „USA, Osten 2“, „Japan, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „USA, Westen 2“ | Windows | 2 | 3,5 |
+| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „Asien, Osten“, „USA, Osten 2“, „Japan, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Indien, Süden“, „Asien, Südosten“, „USA, Westen 2“ | Windows | 2 | 3,5 |
 
 Containerinstanzen, die innerhalb dieser Ressourcenlimits erstellt werden, unterliegen der Verfügbarkeit in der Bereitstellungsregion. Wenn eine Region stark ausgelastet ist, kann bei der Bereitstellung von Instanzen ein Fehler auftreten. Um einen solchen Fehler bei der Bereitstellung zu beheben, versuchen Sie, Instanzen mit niedrigeren CPU- und Arbeitsspeichereinstellungen bereitzustellen, oder führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.
 

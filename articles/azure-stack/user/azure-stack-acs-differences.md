@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 1d1811549978d78a8dddad8e89895fdf605ed02b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1393dd32aea8cb6d348092ea1fc56752f659beab
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341897"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717873"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack-Speicher: Unterschiede und Überlegungen
 
@@ -34,8 +34,8 @@ Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Ver
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Cloudbasierte SMB-Dateifreigaben unterstützt|Noch nicht unterstützt
-|Azure Storage Service Encryption für ruhende Daten|256-Bit-AES-Verschlüsselung|BitLocker-128-Bit-AES-Verschlüsselung
-|Speicherkontotyp|Allgemeine Speicherkonten und Azure Blob Storage-Konten|Nur allgemein.
+|Azure Storage Service Encryption für ruhende Daten|256-Bit-AES-Verschlüsselung. Unterstützung von Verschlüsselung mit vom Kunden verwalteten Schlüsseln in Key Vault|BitLocker-128-Bit-AES-Verschlüsselung. Verschlüsselung mit vom Kunden verwalteten Schlüsseln wird nicht unterstützt.
+|Speicherkontotyp|Konten vom Typ „Allgemein v1 (GPv1)“ und „Allgemein v2 (GPv2)“ sowie Blobspeicherkonten|Nur Konten vom Typ „Allgemein v1 (GPv1)“
 |Replikationsoptionen|Lokal redundanter Speicher, georedundanter Speicher, schreibgeschützter georedundanter Speicher und zonenredundanter Speicher|Lokal redundanter Speicher.
 |Storage Premium|Vollständig unterstützt|Kann bereitgestellt werden, aber ohne Leistungsgrenzwerte oder Garantien.
 |Verwaltete Datenträger|Unterstützung für Premium und Standard|Unterstützt bei Verwendung von Version 1808 oder höher.
@@ -44,11 +44,14 @@ Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Ver
 |Seitenblob-Momentaufnahmenkopie|Die Sicherung nicht verwalteter Azure-VM-Datenträger, die an einen ausgeführten virtuellen Computer angefügt sind, wird unterstützt.|Noch nicht unterstützt.
 |Inkrementelle Momentaufnahmenkopie des Seitenblobs|Unterstützung für Premium- und Standard-Azure-Seitenblobs|Noch nicht unterstützt.
 |Speicherebenen für Blobspeicher|Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“.|Noch nicht unterstützt.
-Vorläufiges Löschen für Blobspeicher|Vorschau|Noch nicht unterstützt.
+|Vorläufiges Löschen für Blobspeicher|Allgemein verfügbar|Noch nicht unterstützt.
 |Maximale Seitenblobgröße|8 TB|1 TB
 |Seitenblob – Seitengröße|512 Bytes|4 KB
 |Größe für Tabellenpartitionsschlüssel und Zeilenschlüssel|1.024 Zeichen (2.048 Bytes)|400 Zeichen (800 Bytes)
-|Momentaufnahme eines Blobs|Die maximale Anzahl von Momentaufnahmen eines Blobs ist nicht beschränkt.|Die maximale Anzahl von Momentaufnahmen eines Blobs beträgt 1.000.|
+|Momentaufnahme eines Blobs|Die maximale Anzahl von Momentaufnahmen eines Blobs ist nicht beschränkt.|Die maximale Anzahl von Momentaufnahmen eines Blobs beträgt 1.000.
+|Azure AD-Authentifizierung für Speicher|In der Vorschau|Noch nicht unterstützt.
+|Unveränderliche Blobs|Allgemein verfügbar|Noch nicht unterstützt.
+|Firewallregeln und Regeln für virtuelle Netzwerke für Speicher|Allgemein verfügbar|Noch nicht unterstützt.|
 
 Es gibt auch Unterschiede zu Speichermetriken:
 
@@ -61,7 +64,17 @@ Die folgenden Versionen werden für Azure Stack-Speicher unterstützt:
 
 Azure Storage-Dienst-APIs:
 
-Update 1802 oder neuer:
+Update 1811 oder neuere Versionen:
+
+ - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+ - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
+ - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+ - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+ - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
+
+Update 1802 bis Update 1809:
 
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
@@ -79,6 +92,12 @@ Verwaltungs-APIs für Azure Storage-Dienste:
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
+Vorherige Versionen:
+
+ - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ 
 ## <a name="sdk-versions"></a>SDK-Versionen
 
 Azure Stack-Speicher unterstützt die folgenden Clientbibliotheken:

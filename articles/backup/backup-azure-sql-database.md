@@ -2,25 +2,18 @@
 title: Sichern von SQL Server-Datenbanken in Azure | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 services: backup
-documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/02/2018
-ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.topic: tutorial
+ms.date: 12/21/2018
+ms.author: raynew
+ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410362"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790173"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Sichern von SQL Server-Datenbanken in Azure
 
@@ -44,9 +37,9 @@ Die Public Preview unterliegt den folgenden Einschränkungen:
 - Die SQL-VM benötigt eine Internetverbindung, um auf öffentliche IP-Adressen von Azure zuzugreifen. Weitere Informationen finden Sie unter [Herstellen der Netzwerkverbindung](backup-azure-sql-database.md#establish-network-connectivity).
 - Sie können bis zu 2.000 SQL-Datenbanken in einem Recovery Services-Tresor sichern. Zusätzliche SQL-Datenbank-Instanzen sollten in einem separaten Recovery Services-Tresor gespeichert werden.
 - [Für die Sicherung verteilter Verfügbarkeitsgruppen gelten Einschränkungen.](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)
-- SQL Server Always On-Failoverclusterinstanzen werden nicht unterstützt.
+- SQL Server Always On-Failoverclusterinstanzen (Failover Cluster Instances, FCIs) werden für die Sicherung nicht unterstützt.
 - Verwenden Sie das Azure-Portal, um Azure Backup zum Schutz von SQL Server-Datenbanken zu konfigurieren. Azure PowerShell, Azure CLI und REST-APIs werden derzeit nicht unterstützt.
-- Sicherungs-und Wiederherstellungsvorgänge für Spiegeldatenbanken, Datenbankmomentaufnahmen und Datenbanken auf Failoverclusterinstanzen werden nicht unterstützt.
+- Sicherungs-und Wiederherstellungsvorgänge für FCI-Spiegeldatenbanken, -Datenbankmomentaufnahmen und -Datenbanken werden nicht unterstützt.
 - Datenbanken, die eine erhebliche Anzahl von Dateien enthalten, können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien ist nicht deterministisch, da sie nicht nur von der Anzahl der Dateien, sondern auch von der Pfadlänge der Dateien abhängt. Dieser Fall tritt jedoch selten ein. Wir arbeiten an einer Lösung für diesen Umstand.
 
 Weitere Informationen zu unterstützten bzw. nicht unterstützten Szenarien finden Sie im [Abschnitt mit den häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq).
@@ -136,7 +129,7 @@ Sie müssen zwischen den folgenden Eigenschaften abwägen: Verwaltbarkeit, detai
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Festlegen von Berechtigungen für Nicht-Marketplace-SQL-VMs
 
-Zum Sichern einer VM benötigt Azure Backup die **AzureBackupWindowsWorkload**-Erweiterung. Wenn Sie Azure Marketplace-VMs verwenden, fahren Sie mit [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases) fort. Wenn die VM, die Ihre SQL-Datenbanken hostet, nicht im Azure Marketplace erstellt wurde, gehen Sie wie folgt vor, um die Erweiterung zu installieren und die entsprechenden Berechtigungen festzulegen. Zusätzlich zur **AzureBackupWindowsWorkload**-Erweiterung benötigt Azure Backup Systemadministratorberechtigungen für SQL, um SQL-Datenbanken zu schützen. Azure Backup erstellt das Konto **NT Service\AzureWLBackupPluginSvc**, um Datenbanken auf der VM zu ermitteln. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und muss über SQL-Systemadministratorberechtigungen verfügen. Darüber hinaus verwendet Azure Backup das Konto **NT AUTHORITY\SYSTEM** für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen.
+Zum Sichern einer VM benötigt Azure Backup die **AzureBackupWindowsWorkload**-Erweiterung. Wenn Sie Azure Marketplace-VMs verwenden, fahren Sie mit [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases) fort. Wenn die VM, die Ihre SQL-Datenbanken hostet, nicht im Azure Marketplace erstellt wurde, gehen Sie wie folgt vor, um die Erweiterung zu installieren und die entsprechenden Berechtigungen festzulegen. Zusätzlich zur **AzureBackupWindowsWorkload**-Erweiterung benötigt Azure Backup Systemadministratorberechtigungen für SQL, um SQL-Datenbanken zu schützen. Azure Backup erstellt das Konto **NT SERVICE\AzureWLBackupPluginSvc**, um Datenbanken auf dem virtuellen Computer zu ermitteln. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und muss über SQL-Systemadministratorberechtigungen verfügen. Darüber hinaus verwendet Azure Backup das Konto **NT AUTHORITY\SYSTEM** für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen.
 
 So konfigurieren Sie Berechtigungen
 
@@ -182,7 +175,7 @@ Wenn bei der Installation der Fehler `UserErrorSQLNoSysadminMembership` angezeig
 
     ![Auswählen von „Suchen“ im Dialogfeld „Anmeldung – Neu“](./media/backup-azure-sql-database/new-login-search.png)
 
-3. Das virtuelle Windows-Dienstkonto **NT Service\AzureWLBackupPluginSvc** wurde bei der Registrierung der VM und der SQL-Ermittlungsphase erstellt. Geben Sie den Kontonamen ein, wie im Feld **Namen des auszuwählenden Objekts eingeben** dargestellt. Wählen Sie **Namen überprüfen** aus, um den Namen aufzulösen.
+3. Das virtuelle Windows-Dienstkonto **NT SERVICE\AzureWLBackupPluginSvc** wurde bei der Registrierung des virtuellen Computers und der SQL-Ermittlungsphase erstellt. Geben Sie den Kontonamen ein, wie im Feld **Namen des auszuwählenden Objekts eingeben** dargestellt. Wählen Sie **Namen überprüfen** aus, um den Namen aufzulösen.
 
     ![Klicken auf „Namen überprüfen“, um den unbekannten Dienstnamen aufzulösen](./media/backup-azure-sql-database/check-name.png)
 

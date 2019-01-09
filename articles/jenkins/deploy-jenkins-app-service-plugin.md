@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 98e69c7759f736c132601305156290f7a43eeaf9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319352"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537578"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
@@ -55,7 +55,7 @@ Installieren Sie Docker auf dem Jenkins-Master oder dem VM-Agent, der für den B
 Ein Azure-Dienstprinzipal ist für die Bereitstellung in Azure erforderlich. 
 
 
-1. Verwenden Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) oder das [Azure-Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal), um einen Azure-Dienstprinzipal zu erstellen.
+1. Verwenden Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) oder das [Azure-Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal), um einen Azure-Dienstprinzipal zu erstellen.
 2. Wählen Sie im Jenkins-Dashboard die Option **Anmeldeinformationen** > **System** aus. Wählen Sie anschließend **Globale Anmeldeinformationen (uneingeschränkt)** aus.
 3. Wählen Sie zum Hinzufügen eines Microsoft Azure-Dienstprinzipals die Option **Anmeldeinformationen hinzufügen** aus. Füllen Sie die Felder **Abonnement-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **OAuth 2.0-Token-Endpunkt** aus. Legen Sie das Feld **ID** auf **mySp** fest. Diese ID wird für spätere Aktionen in diesem Artikel verwendet.
 
@@ -64,9 +64,9 @@ Ein Azure-Dienstprinzipal ist für die Bereitstellung in Azure erforderlich.
 
 Um Ihr Projekt in Web Apps bereitzustellen, können Sie Ihre Buildartefakte per Dateiupload hochladen. Azure App Service unterstützt mehrere Bereitstellungsoptionen. Durch das Jenkins-Plug-In von Azure App Service können sie die Bereitstellungsoption einfach basierend auf dem Dateityp ableiten. 
 
-* Für Java EE-Anwendungen wird die [WAR-Bereitstellung](/azure/app-service/app-service-deploy-zip#deploy-war-file) verwendet.
-* Für Java SE-Anwendungen wird die [ZIP-Bereitstellung](/azure/app-service/app-service-deploy-zip#deploy-zip-file) verwendet.
-* Für andere Sprachen wir die [Git-Bereitstellung](/azure/app-service/app-service-deploy-local-git) verwendet.
+* Für Java EE-Anwendungen wird die [WAR-Bereitstellung](/azure/app-service/deploy-zip#deploy-war-file) verwendet.
+* Für Java SE-Anwendungen wird die [ZIP-Bereitstellung](/azure/app-service/deploy-zip#deploy-zip-file) verwendet.
+* Für andere Sprachen wir die [Git-Bereitstellung](/azure/app-service/deploy-local-git) verwendet.
 
 Vor dem Einrichten des Auftrags in Jenkins benötigen Sie einen Azure App Service-Plan und eine Web-App zum Ausführen der Java-App.
 
@@ -131,7 +131,7 @@ Das Jenkins-Plug-In für Azure App Service ist für die Pipeline vorbereitet. Da
 
 ## <a name="configure-jenkins-to-deploy-web-app-for-containers"></a>Konfigurieren von Jenkins zum Bereitstellen von Web-App für Container
 
-Web-Apps unter Linux unterstützen die Bereitstellung mithilfe von Docker. Für die Bereitstellung Ihrer Web-App mit Docker müssen Sie eine Dockerfile-Datei angeben, mit der Ihre Web-App mit einer Dienstruntime als Docker-Image verpackt wird. Das Jenkins-Plug-In erstellt dann das Image, übermittelt es mittels Push an eine Docker-Registrierung und stellt das Image für Ihre Web-App bereit.
+Web-Apps unter Linux unterstützen die Bereitstellung mithilfe von Docker. Für die Bereitstellung Ihrer Web-App mit Docker müssen Sie eine Dockerfile-Datei angeben, mit der Ihre Web-App mit einer Dienstruntime in einem Docker-Image verpackt wird. Das Jenkins-Plug-In erstellt dann das Image, übermittelt es mittels Push an eine Docker-Registrierung und stellt das Image für Ihre Web-App bereit.
 
 Für Web-Apps unter Linux werden auch herkömmliche Bereitstellungsmethoden wie Git und Dateiupload unterstützt. Dies gilt jedoch nur für integrierte Sprachen (.NET Core, Node.js, PHP und Ruby). Für andere Sprachen müssen Sie Ihren Anwendungscode und die Dienstruntime gemeinsam in ein Docker-Image packen und Docker zum Bereitstellen verwenden.
 

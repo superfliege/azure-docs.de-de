@@ -4,15 +4,15 @@ description: In diesem Artikel wird erläutert, wie Sie lokale Computer mithilfe
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1df09a885d6c636ff6bd4bcbec03d27ff7b44ff9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5023171c4f943b7e698a0b6bbcadef209965e2df
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836983"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789245"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -63,9 +63,9 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 1. Klicken Sie auf **Recovery Services-Tresore** > „Tresor“.
 2. Klicken Sie im Ressourcenmenü auf **Site Recovery** > **Infrastruktur vorbereiten** > **Schutzziel**.
 3. Wählen Sie in **Schutzziel** aus, was Sie migrieren möchten.
-    - **VMware**: Wählen Sie **To Azure** (Zu Azure) > **Yes, with VMWare vSphere Hypervisor** (Ja, mit VMware vSphere Hypervisor) aus.
-    - **Physischer Computer**: Wählen Sie **To Azure** (Zu Azure) > **Nicht virtualisiert/Andere** aus.
-    - **Hyper-V**: Wählen Sie **To Azure** (Zu Azure) > **Yes, with Hyper-V** (Ja, mit Hyper-V) aus. Wenn Hyper-V-VMs von VMM verwaltet werden, wählen Sie **Ja** aus.
+    - **VMware:** Wählen Sie **To Azure** (Zu Azure) > **Ja, mit VMware vSphere-Hypervisor**.
+    - **Physischer Computer:** Wählen Sie **To Azure** (Zu Azure) > **Nicht virtualisiert/Andere** aus.
+    - **Hyper-V:** Wählen Sie **To Azure** (Zu Azure) > **Ja, mit Hyper-V** aus. Wenn Hyper-V-VMs von VMM verwaltet werden, wählen Sie **Ja** aus.
 
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
@@ -119,7 +119,7 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
+> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Die VM-Replikation wird beendet, bevor das Failover gestartet wird. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei physischen Servern, VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs mit den folgenden Starttreibern kann das Testfailover länger dauern: storvsc, vmbus, storflt, intelide, atapi.
 
@@ -140,8 +140,8 @@ Einige Schritte können im Rahmen des Migrationsvorgangs mithilfe der integriert
     - Wenn Sie Hyper-V-VMs zu Azure migrieren, installieren Sie nach der Migration den Azure-VM-Agent auf der Azure-VM.
 - Entfernen Sie manuell alle Site Recovery-Anbieter/-Agents von der VM. Wenn Sie VMware-VMs oder physische Server migrieren [deinstallieren Sie den Mobility Service von der Azure-VM][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer].
 - Beachten Sie zur Steigerung der Resilienz Folgendes:
-    - Schützen Sie Daten, indem Sie Azure-VMs mit dem Azure Backup-Dienst sichern. [Weitere Informationen]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
-    - Sorgen Sie für die kontinuierliche Ausführung und Verfügbarkeit von Workloads, indem Sie Azure-VMs mithilfe von Site Recovery in eine sekundäre Region replizieren. [Weitere Informationen](azure-to-azure-quickstart.md).
+    - Schützen Sie Daten, indem Sie Azure-VMs mit dem Azure Backup-Dienst sichern. [Weitere Informationen]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)
+    - Sorgen Sie für die kontinuierliche Ausführung und Verfügbarkeit von Workloads, indem Sie Azure-VMs mithilfe von Site Recovery in eine sekundäre Region replizieren. [Weitere Informationen](azure-to-azure-quickstart.md)
 - Beachten Sie zur Steigerung der Sicherheit Folgendes:
     - Sperren und beschränken Sie den Zugriff von eingehendem Datenverkehr mit der [Just-in-Time-Verwaltung]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) im Azure Security Center.
     - Beschränken Sie den Netzwerkdatenverkehr mithilfe von [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview) auf Verwaltungsendpunkte.

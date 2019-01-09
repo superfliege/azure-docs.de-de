@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Generieren einer Miniaturansicht – REST, Java: Maschinelles Sehen'
+title: 'Schnellstart: Generieren einer Miniaturansicht – REST, Java'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart generieren Sie eine Miniaturansicht aus einem Bild, indem Sie die Maschinelles Sehen-API mit Java verwenden.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d30d6d073ad1e18aa2acb4c4a73c21c0d7243536
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 43c78acb89180cda5c0eb4df18bab00d47ee1174
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972027"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583492"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und Java in der Maschinelles Sehen-API
 

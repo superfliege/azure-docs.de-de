@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen von Node.js-Web-Apps unter Linux: Azure App Service | Microsoft-Dokumentation'
+title: 'Erstellen von Node.js-Apps unter Linux: Azure App Service | Microsoft-Dokumentation'
 description: Stellen Sie in wenigen Minuten Ihre erste Node.js-App „Hallo Welt“ in Azure App Service unter Linux bereit.
 services: app-service\web
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 22a022b12e931fd4edf139038eb7506e69422f8e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c739aa4fb510bd5ebe9e3ffff67f93a2dd49cf0c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253570"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631531"
 ---
-# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js-Web-App in Azure App Service unter Linux
+# <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js-App in Azure App Service für Linux
 
 > [!NOTE]
 > In diesem Artikel wird eine App in App Service unter Linux bereitgestellt. Informationen zur Bereitstellung in App Service unter _Windows_ finden Sie unter [Erstellen einer Node.js-Web-App in Azure](../app-service-web-get-started-nodejs.md).
@@ -136,17 +136,17 @@ Der Befehl `az webapp up` bewirkt Folgendes:
 
 - Erstellen einer App mit dem angegebenen Namen
 
-- [Bereitstellen von ZIP-Dateien](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) aus dem aktuellen Arbeitsverzeichnis für die Web-App
+- [Bereitstellen von ZIP-Dateien](https://docs.microsoft.com/azure/app-service/deploy-zip) aus dem aktuellen Arbeitsverzeichnis für die App
 
 ## <a name="browse-to-the-app"></a>Navigieren zur App
 
-Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung. Ersetzen Sie „<app_name>“ durch Ihren Web-App-Namen.
+Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung. Ersetzen Sie <app name> durch Ihren App-Namen.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Der Node.js-Beispielcode wird in einer Web-App mit integriertem Image ausgeführt.
+Der Node.js-Beispielcode wird in App Service unter Linux mit einem integrierten Image ausgeführt.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -166,7 +166,7 @@ response.end("Hello Azure!");
 
 Speichern Sie Ihre Änderungen, und beenden Sie Nano. Verwenden Sie `^O` zum Speichern und `^X` zum Beenden.
 
-Nun stellen Sie die App erneut bereit. Ersetzen Sie `<app_name>` durch Ihre Web-App.
+Nun stellen Sie die App erneut bereit. Ersetzen Sie `<app_name>` durch Ihre App.
 
 ```bash
 az webapp up -n <app_name>
@@ -176,15 +176,15 @@ Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das
 
 ![In Azure ausgeführte aktualisierte Beispiel-App](media/quickstart-nodejs/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Verwalten Ihrer neuen Azure-Web-App
+## <a name="manage-your-new-azure-app"></a>Verwalten Ihrer neuen Azure-App
 
-Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte Web-App zu verwalten.
+Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte App zu verwalten.
 
-Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
+Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-App.
 
-![Portalnavigation zur Azure-Web-App](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
+![Portalnavigation zur Azure-App](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
 
-Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Starten, Neustarten und Löschen durchführen.
+Die Übersichtsseite Ihrer App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Starten, Neustarten und Löschen durchführen.
 
 ![App Service-Seite im Azure-Portal](media/quickstart-nodejs/nodejs-docs-hello-world-app-service-detail.png)
 

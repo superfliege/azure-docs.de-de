@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cdd73c46d87ec09439188024945bd60299bb1d57
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256994"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629746"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure App Service
 
-Azure-Web-Apps bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching. In diesem Tutorial erfahren Sie, wie Sie ein benutzerdefiniertes SSL-Zertifikat binden, das Sie von einer vertrauenswürdigen Zertifizierungsstelle für [Azure-Web-Apps](app-service-web-overview.md) erworben haben. Wenn Sie fertig sind, können Sie am HTTPS-Endpunkt Ihrer benutzerdefinierten DNS-Domäne auf Ihre Web-App zugreifen.
+Von Azure App Service wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Tutorial erfahren Sie, wie Sie ein benutzerdefiniertes SSL-Zertifikat, das Sie von einer vertrauenswürdigen Zertifizierungsstelle erworben haben, an [Azure App Service](overview.md) binden. Wenn Sie fertig sind, können Sie am HTTPS-Endpunkt Ihrer benutzerdefinierten DNS-Domäne auf Ihre App zugreifen.
 
 ![Web-App mit benutzerdefiniertem SSL-Zertifikat](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -39,14 +39,14 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Automatisieren der TLS-Verwaltung mit Skripts
 
 > [!NOTE]
-> Wenn Sie ein benutzerdefiniertes SSL-Zertifikat benötigen, können Sie dieses direkt im Azure-Portal abrufen und an Ihre Web-App binden. Absolvieren Sie das [Tutorial zu App Service-Zertifikaten](web-sites-purchase-ssl-web-site.md).
+> Wenn Sie ein benutzerdefiniertes SSL-Zertifikat benötigen, können Sie dieses direkt im Azure-Portal abrufen und an Ihre App binden. Absolvieren Sie das [Tutorial zu App Service-Zertifikaten](web-sites-purchase-ssl-web-site.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - [Erstellen einer App Service-App](/azure/app-service/)
-- [Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer Web-App](app-service-web-tutorial-custom-domain.md)
+- [Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer App Service-App](app-service-web-tutorial-custom-domain.md)
 - Erwerben eines SSL-Zertifikats von einer vertrauenswürdigen Zertifizierungsstelle
 - Den privaten Schlüssel, den Sie zum Signieren der SSL-Zertifikatanforderung verwendet haben.
 
@@ -70,7 +70,7 @@ Das Zertifikat muss sämtliche der folgenden Anforderungen erfüllen, damit Ihr 
 
 ## <a name="bind-your-ssl-certificate"></a>Binden Ihres SSL-Zertifikats
 
-Sie können das SSL-Zertifikat in Ihrer Web-App hochladen.
+Sie können das SSL-Zertifikat in Ihre App hochladen.
 
 ### <a name="merge-intermediate-certificates"></a>Zusammenführen von Zwischenzertifikaten
 
@@ -114,7 +114,7 @@ Wenn Sie IIS oder _Certreq.exe_ zum Generieren Ihrer Zertifikatanforderung verwe
 
 ### <a name="upload-your-ssl-certificate"></a>Hochladen Ihres SSL-Zertifikats
 
-Klicken Sie im linken Navigationsbereich Ihrer Web-App auf **SSL-Einstellungen**, um Ihr SSL-Zertifikat hochzuladen.
+Klicken Sie im linken Navigationsbereich Ihrer App auf **SSL-Einstellungen**, um Ihr SSL-Zertifikat hochzuladen.
 
 Klicken Sie auf **Zertifikat hochladen**. 
 
@@ -154,24 +154,24 @@ Wenn der Upload Ihres Zertifikats in App Service abgeschlossen ist, wird es in d
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Neuzuordnen eines A-Eintrags für IP-SSL
 
-Wenn Sie kein IP-basiertes SSL in Ihrer Web-App verwenden, fahren Sie mit [Testen von HTTPS für benutzerdefinierte Domänen](#test) fort.
+Wenn Sie kein IP-basiertes SSL in Ihrer App verwenden, fahren Sie mit [Testen von HTTPS](#test) fort.
 
-Standardmäßig verwendet Ihre Web-App eine freigegebene öffentliche IP-Adresse. Wenn Sie ein Zertifikat mit IP-basiertem SSL binden, erstellt App Service eine neue, dedizierte IP-Adresse für Ihre Web-App.
+Standardmäßig verwendet Ihre App eine freigegebene öffentliche IP-Adresse. Wenn Sie ein Zertifikat mit IP-basiertem SSL binden, erstellt App Service eine neue, dedizierte IP-Adresse für Ihre App.
 
-Wenn Sie Ihrer Web-App einen A-Eintrag zugeordnet haben, aktualisieren Sie Ihre Domänenregistrierung mit dieser neuen, dedizierten IP-Adresse.
+Wenn Sie Ihrer App einen A-Eintrag zugeordnet haben, aktualisieren Sie Ihre Domänenregistrierung mit dieser neuen, dedizierten IP-Adresse.
 
-Die Seite **Benutzerdefinierte Domäne** Ihrer Web-App wird mit der neuen, dedizierten IP-Adresse aktualisiert. [Kopieren Sie diese IP-Adresse](app-service-web-tutorial-custom-domain.md#info) und [ordnen Sie dieser neuen IP-Adresse dann den A-Eintrag neu zu](app-service-web-tutorial-custom-domain.md#map-an-a-record).
+Die Seite **Benutzerdefinierte Domäne** Ihrer App wird mit der neuen, dedizierten IP-Adresse aktualisiert. [Kopieren Sie diese IP-Adresse](app-service-web-tutorial-custom-domain.md#info) und [ordnen Sie dieser neuen IP-Adresse dann den A-Eintrag neu zu](app-service-web-tutorial-custom-domain.md#map-an-a-record).
 
 <a name="test"></a>
 
 ## <a name="test-https"></a>Testen von HTTPS
 
-Sie müssen jetzt nur noch sicherstellen, dass HTTPS für Ihre benutzerdefinierte Domäne funktioniert. Rufen Sie in verschiedenen Browsern `https://<your.custom.domain>` auf, um zu sehen, ob Ihre Web-App angeboten wird.
+Sie müssen jetzt nur noch sicherstellen, dass HTTPS für Ihre benutzerdefinierte Domäne funktioniert. Rufen Sie in verschiedenen Browsern `https://<your.custom.domain>` auf, um zu sehen, ob Ihre App angeboten wird.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
 > [!NOTE]
-> Wenn Ihre Web-App Zertifikatüberprüfungsfehler meldet, verwenden Sie wahrscheinlich ein selbstsigniertes Zertifikat.
+> Wenn Ihre App Zertifikatüberprüfungsfehler meldet, verwenden Sie wahrscheinlich ein selbstsigniertes Zertifikat.
 >
 > Wenn dies nicht der Fall ist, haben Sie beim Exportieren des Zertifikats als PFX-Datei eventuell Zwischenzertifikate ausgelassen.
 
@@ -187,9 +187,9 @@ Ihre IP-Adresse für eingehenden Datenverkehr kann sich ändern, wenn Sie eine B
 
 ## <a name="enforce-https"></a>Erzwingen von HTTPS
 
-Standardmäßig können Benutzer weiterhin mit HTTP auf Ihre Web-App zugreifen. Sie können alle HTTP-Anforderungen an den HTTPS-Port umleiten.
+Standardmäßig können Benutzer weiterhin mit HTTP auf Ihre App zugreifen. Sie können alle HTTP-Anforderungen an den HTTPS-Port umleiten.
 
-Klicken Sie im linken Navigationsbereich der Web-App-Seite auf **SSL-Einstellungen**. Wählen Sie anschließend für **Nur HTTPS** die Option **Ein**.
+Wählen Sie im linken Navigationsbereich der App-Seite **SSL-Einstellungen** aus. Wählen Sie anschließend für **Nur HTTPS** die Option **Ein**.
 
 ![Erzwingen von HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -203,7 +203,7 @@ Wenn der Vorgang abgeschlossen ist, navigieren Sie zu einer beliebigen HTTP-URL,
 
 Ihre App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2 zu. Diese TLS-Version wird von Branchenstandards wie [PCI-DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) empfohlen. Andere TLS-Versionen können wie folgt erzwungen werden:
 
-Klicken Sie im linken Navigationsbereich der Web-App-Seite auf **SSL-Einstellungen**. Wählen Sie dann unter **TLS-Version** die gewünschte TLS-Mindestversion aus. Diese Einstellung steuert nur eingehende Aufrufe. 
+Wählen Sie im linken Navigationsbereich der App-Seite **SSL-Einstellungen** aus. Wählen Sie dann unter **TLS-Version** die gewünschte TLS-Mindestversion aus. Diese Einstellung steuert nur eingehende Aufrufe. 
 
 ![Erzwingen von TLS 1.1 oder 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
@@ -211,7 +211,7 @@ Nach Abschluss des Vorgangs lehnt Ihre App alle Verbindungen mit niedrigerer TLS
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
-Durch die [Azure CLI](/cli/azure/install-azure-cli) oder durch [Azure PowerShell](/powershell/azure/overview) können Sie mithilfe von Skripts SSL-Bindungen für Ihre Web-App automatisieren.
+Mit der [Azure CLI](/cli/azure/install-azure-cli) oder mit [Azure PowerShell](/powershell/azure/overview) können Sie mithilfe von Skripts SSL-Bindungen für Ihre App automatisieren.
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -260,9 +260,9 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Öffentliche Zertifikate (optional)
-Falls Ihre App als Client auf Remoteressourcen zugreifen muss und die Remoteressource eine Zertifikatauthentifizierung erfordert, können Sie [öffentliche Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) in Ihre Web-App hochladen. Öffentliche Zertifikate sind für SSL-Bindungen Ihrer App nicht erforderlich.
+Falls Ihre App als Client auf Remoteressourcen zugreifen muss und die Remoteressource eine Zertifikatauthentifizierung erfordert, können Sie [öffentliche Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) in Ihre App hochladen. Öffentliche Zertifikate sind für SSL-Bindungen Ihrer App nicht erforderlich.
 
-Weitere Informationen zum Laden und Verwenden eines öffentlichen Zertifikats in Ihrer App finden Sie unter [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load). Sie können öffentliche Zertifikate auch mit Apps in App Service-Umgebungen verwenden. Wenn Sie das Zertifikat im LocalMachine-Zertifikatspeicher speichern müssen, müssen Sie eine Web-App in der App Service-Umgebung verwenden. Weitere Informationen finden Sie unter [App Service Certificates now supports public certificates (.cer)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) (App Service-Zertifikate unterstützt jetzt öffentliche Zertifikate [CER].).
+Weitere Informationen zum Laden und Verwenden eines öffentlichen Zertifikats in Ihrer App finden Sie unter [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](app-service-web-ssl-cert-load.md). Sie können öffentliche Zertifikate auch mit Apps in App Service-Umgebungen verwenden. Wenn Sie das Zertifikat im LocalMachine-Zertifikatspeicher speichern müssen, müssen Sie eine App in der App Service-Umgebung verwenden. Weitere Informationen finden Sie unter [App Service Certificates now supports public certificates (.cer)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) (App Service-Zertifikate unterstützen jetzt öffentliche Zertifikate [CER].).
 
 ![Hochladen eines öffentlichen Zertifikats](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

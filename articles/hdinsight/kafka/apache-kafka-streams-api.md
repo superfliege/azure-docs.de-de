@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 8319376c597f16a5bfe1a357d74c59453b797e51
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495126"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584155"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Tutorial: Apache Kafka Streams-API
 
@@ -22,7 +22,7 @@ Hier erfahren Sie, wie Sie eine Anwendung erstellen, die die Apache Kafka Stream
 
 Die in diesem Tutorial verwendete Anwendung ist eine Streamingwörterzählung. Sie liest Textdaten aus einem Kafka-Thema, extrahiert einzelne Wörter, und speichert dann Word und Anzahl in einem anderen Kafka-Thema.
 
-> [!NOTE]
+> [!NOTE]  
 > Die Kafka-Streamverarbeitung erfolgt häufig über Apache Spark oder Apache Storm. Die Kafka Streams-API wurde in Kafka Version 0.10.0 (in HDInsight 3.5 und 3.6) eingeführt. Mit dieser API können Sie Datenstreams zwischen Eingabe- und Ausgabethemen transformieren. In einigen Fällen kann dies eine Alternative zum Erstellen einer Spark- oder Storm-Streaminglösung sein. 
 >
 > Weitere Informationen zu Kafka Streams finden Sie in der Dokumentation [Intro to Streams](https://kafka.apache.org/10/documentation/streams/) (Einführung in Streams) auf Apache.org.
@@ -48,7 +48,7 @@ Die folgenden Komponenten müssen in der Entwicklungsumgebung installiert sein:
 
 * [Java JDK 8](https://aka.ms/azure-jdks) oder ein gleichwertiges Kit, z.B. OpenJDK.
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * Ein SSH-Client und der Befehl `scp`. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -74,13 +74,13 @@ Wichtige Informationen zur `pom.xml`-Datei:
     </dependency>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Der `${kafka.version}`-Eintrag wird im `<properties>..</properties>`-Abschnitt von `pom.xml` deklariert und ist für die Kafka-Version des HDInsight-Clusters konfiguriert.
 
 * Plug-Ins: Maven-Plug-Ins bieten verschiedene Funktionen. In diesem Projekt werden die folgenden Plug-Ins verwendet:
 
-    * `maven-compiler-plugin`: Wird verwendet, um bis 8 die vom Projekt verwendete Java-Version festzulegen. Java 8 ist für HDInsight 3.6 erforderlich.
-    * `maven-shade-plugin`: Wird zum Generieren einer Uber JAR-Datei verwendet, die diese Anwendung sowie alle Abhängigkeiten enthält. Es wird auch zum Festlegen des Einstiegspunkts der Anwendung verwendet, damit Sie die Jar-Datei direkt ausführen können, ohne die Hauptklasse angeben zu müssen.
+    * `maven-compiler-plugin`: Wird verwendet, um die vom Projekt verwendete Java-Version auf 8 festzulegen. Java 8 ist für HDInsight 3.6 erforderlich.
+    * `maven-shade-plugin`: Wird zum Generieren einer Uber-JAR-Datei verwendet, die diese Anwendung sowie alle Abhängigkeiten enthält. Es wird auch zum Festlegen des Einstiegspunkts der Anwendung verwendet, damit Sie die JAR-Datei direkt ausführen können, ohne die Hauptklasse angeben zu müssen.
 
 ### <a name="streamjava"></a>Stream.Java
 
@@ -184,7 +184,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
 
 4. Um die vom Streamingvorgang verwendeten Themen zu erstellen, verwenden Sie die folgenden Befehle:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Sie erhalten möglicherweise eine Fehlermeldung, dass das `test`-Thema bereits vorhanden ist. Dies ist in Ordnung, da es im Producer- und Consumer-API-Tutorial erstellt worden sein könnte.
 
     ```bash
@@ -199,12 +199,12 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
 
     Die Themen werden für folgende Zwecke verwendet:
 
-    * `test`: Dieses Thema befindet sich dort, wo Datensätze empfangen werden. Die Streaminganwendung liest von dort.
-    * `wordcounts`: Dieses Thema befindet sich dort, wo die Streaminganwendung ihre Ausgabe speichert.
+    * `test`: In diesem Thema werden Datensätze empfangen. Die Streaminganwendung liest von dort.
+    * `wordcounts`: In diesem Thema speichert die Streaminganwendung ihre Ausgabe.
     * `RekeyedIntermediateTopic`: Mit diesem Thema werden Daten neu partitioniert, wenn die Anzahl vom `countByKey`-Operator aktualisiert wird.
     * `wordcount-example-Counts-changelog`: Dieses Thema ist ein Zustandsspeicher, den der `countByKey`-Vorgang verwendet.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Kafka in HDInsight kann auch für das automatische Erstellen von Themen konfiguriert werden. Weitere Informationen finden Sie im Dokument [Konfigurieren von Apache Kafka in HDInsight zum automatischen Erstellen von Themen](apache-kafka-auto-create-topics.md).
 
 ## <a name="run-the-code"></a>Ausführen des Codes
@@ -215,8 +215,8 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    > [!NOTE]
-    > Möglicherweise erhalten Sie eine Warnung über log4j. Sie können dies ignorieren.
+    > [!NOTE]  
+    > Möglicherweise erhalten Sie eine Warnung über Apache log4j. Sie können dies ignorieren.
 
 2. Um Datensätze an das `test`-Thema zu senden, starten Sie die Producer-Anwendung mit folgendem Befehl:
 
@@ -230,7 +230,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer --from-beginning
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Die `--property`-Parameter teilen dem Konsolenconsumer mit, dass der Schlüssel (Wort) zusammen mit der Anzahl (Wert) ausgegeben werden soll. Diese Parameter konfigurieren auch das Deserialisierungsprogramm, das beim Lesen dieser Werte aus Kafka verwendet werden soll.
 
     Die Ausgabe sieht in etwa wie folgender Text aus:
@@ -248,7 +248,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
         jumped  13640
         jumped  13641
    
-    > [!NOTE]
+    > [!NOTE]  
     > Der Parameter `--from-beginning` konfiguriert den Consumer so, dass er am Anfang der im Thema gespeicherten Datensätze beginnt. Die Anzahl erhöht sich jedes Mal, wenn ein Wort angetroffen wird, sodass das Thema mehrere Einträge für jedes Wort enthält – mit zunehmender Anzahl.
 
 7. Drücken Sie __STRG+C__, um den Producer zu beenden. Drücken Sie __STRG+C__ erneut, um die Anwendung und den Consumer zu beenden.

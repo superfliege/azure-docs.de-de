@@ -3,18 +3,16 @@ title: Herstellen einer Verbindung mit Azure Database for MariaDB über MySQL Wo
 description: Diese Schnellstartanleitung veranschaulicht die Verwendung von MySQL Workbench – einem Tool, mit dem Sie eine Verbindung mit Azure Database for MariaDB herstellen und Daten daraus abfragen können.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 45c1207ab6ab2a7a649efcd355bcab06ea79e149
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 121766a312db1970981b7ffb1c718f27c9f5d3d1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49317601"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538743"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
 
@@ -57,7 +55,7 @@ Gehen Sie wie folgt vor, um unter Verwendung von MySQL Workbench eine Verbindung
     |---|---|---|
     |   Verbindungsname | **Beispielverbindung** | Geben Sie eine Bezeichnung für diese Verbindung an. |
     | Verbindungsmethode | **Standard (TCP/IP)** | Standard (TCP/IP) ist ausreichend. |
-    | Hostname | *Servername* | Geben Sie den Servernamen an, den Sie zuvor beim Erstellen der Azure Database for MariaDB-Instanz verwendet haben. Unser Beispielserver heißt **mydemoserver.mariadb.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (\*.mariadb.database.azure.com), wie im Beispiel gezeigt. Sollten Sie Ihren Servernamen vergessen haben, führen Sie die Schritte zum Abrufen der Verbindungsinformationen aus dem vorherigen Abschnitt aus.  |
+    | Hostname | *Servername* | Geben Sie den Servernamen an, den Sie zuvor beim Erstellen der Azure Database for MariaDB-Instanz verwendet haben. Unser Beispielserver heißt **mydemoserver.mariadb.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (\*.mariadb.database.azure.com), wie im Beispiel gezeigt. Sollten Sie Ihren Servernamen vergessen haben, führen Sie die Schritte zum Abrufen der Verbindungsinformationen im vorherigen Abschnitt aus.  |
     | Port | **3306** | Verwenden Sie immer den Port 3306, wenn Sie eine Verbindung mit Azure Database for MariaDB herstellen. |
     | Username |  *Anmeldename des Serveradministrators* | Geben Sie den Benutzernamen für die Serveradministratoranmeldung ein, den Sie beim Erstellen der Azure Database for MariaDB-Instanz verwendet haben. Unser Beispielbenutzername lautet **myadmin@mydemoserver**. Sollten Sie den Anmeldenamen für den Serveradministrator vergessen haben, führen Sie die Schritte zum Abrufen der Verbindungsinformationen aus dem vorherigen Abschnitt aus. Zu verwendendes Format: *username@servername*.
     | Kennwort | *Ihr Kennwort* | Klicken Sie auf **In Vault speichern**, um das Kennwort zu speichern. |

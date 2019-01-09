@@ -1,23 +1,20 @@
 ---
-title: 'Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals'
+title: 'Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mit dem Azure-Portal'
 description: In diesem Tutorial lernen Sie, wie Sie Ihre erste Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals entwerfen.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406381"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536524"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mit dem Azure-Portal
 
 Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Mit dem Azure-Portal können Sie mühelos Ihren Server verwalten und eine Datenbank entwerfen.
 
@@ -197,7 +194,7 @@ Stellen Sie sich vor, Sie haben versehentlich diese Tabelle gelöscht. Dies ist 
 
    - **Wiederherstellungspunkt**: Wählen Sie einen Zeitpunkt vor der Änderung des Servers aus.
    - **Zielserver**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
-   - **Speicherort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
+   - **Standort**: Sie können nicht die Region wählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
    - **Tarif**: Sie können diesen Wert beim Wiederherstellen eines Servers nicht ändern. Er ist mit dem Wert für den Quellserver identisch. 
 3.  Klicken Sie auf **OK**, um den [Server zu einem Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabelle liegt. Beim Wiederherstellen eines Servers im Zustand eines anderen Zeitpunkts wird ein Duplikat des ursprünglichen Servers im Zustand des von Ihnen angegebenen Zeitpunkts als neuer Server erstellt – vorausgesetzt, dieser Zeitpunkt liegt innerhalb des Aufbewahrungszeitraums für Ihren [Tarif](./concepts-pricing-tiers.md).
 
@@ -212,4 +209,4 @@ In diesem Tutorial haben Sie gelernt, wie Sie das Azure-Portal und andere Hilfsp
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
 
-Wenn Sie im Anschluss erfahren möchten, wie Sie Azure CLI verwenden, um ähnliche Aufgaben auszuführen, können Sie dieses Tutorial nutzen: [Entwerfen Ihrer ersten Azure Database for PostgreSQL mithilfe von Azure CLI](tutorial-design-database-using-azure-cli.md).
+Sehen Sie sich als Nächstes das folgende Tutorial an, um zu erfahren, wie Sie die Azure CLI für ähnliche Aufgaben verwenden: [Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI](tutorial-design-database-using-azure-cli.md)
