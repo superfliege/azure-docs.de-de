@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Aufrufen eines Endpunkts mit C# – benutzerdefinierte Bing-Suche'
+title: 'Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit C# | Microsoft-Dokumentation'
 titlesuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von C# zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche veranschaulicht.
+description: Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnissen von Ihrer Instanz der benutzerdefinierten Bing-Suche in C# zu beginnen.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,129 +10,118 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: 3a7ba0f464dc82751df5daabd4226fc521fe6916
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 764a6a060a3ce2c7af9e4051b02ad45d14d27900
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316190"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557817"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-c"></a>Schnellstart: Aufrufen eines Endpunkts für die benutzerdefinierte Bing-Suche (C#)
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit C# 
 
-In dieser Schnellstartanleitung wird das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von C# zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche veranschaulicht. 
+Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnissen von Ihrer Instanz der benutzerdefinierten Bing-Suche zu beginnen. Diese Anwendung ist zwar in C# geschrieben, aber die API für die benutzerdefinierte Bing-Suche ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
+- Eine Instanz der benutzerdefinierten Bing-Suche. Weitere Informationen finden Sie unter [Schnellstart: Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
+- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
+- Eine beliebige [Visual Studio 2017](https://www.visualstudio.com/downloads/)-Edition
+- Unter Linux/macOS kann diese Anwendung mit [Mono](http://www.mono-project.com/) ausgeführt werden
+- Ein installiertes [NuGet-Paket für die benutzerdefinierte Suche](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
+    - Klicken Sie im Projektmappen-Explorer in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie im Menü `Manage NuGet Packages` (NuGet-Pakete verwalten) aus. Installieren Sie das `Microsoft.Azure.CognitiveServices.Search.CustomSearch`-Paket. Bei der Installation des NuGet-Pakets für die benutzerdefinierte Suche werden gleichzeitig die folgenden Assemblys installiert:
+        - Microsoft.Rest.ClientRuntime
+        - Microsoft.Rest.ClientRuntime.Azure
+        - Newtonsoft.Json
 
-- Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
-- Installation von [.NET Core](https://www.microsoft.com/net/download/core).
-- Abonnementschlüssel Sie erhalten einen Abonnementschlüssel, wenn Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktivieren, oder Sie können einen kostenpflichtigen Abonnementschlüssel über Ihr Azure-Dashboard beziehen (siehe [Schnellstart: Erstellen eines Cognitive Services-API-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
+## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-## <a name="run-the-code"></a>Ausführen des Codes
-
-Führen Sie diese Schritte aus, um das Beispiel auszuführen:
-
-1. Erstellen Sie einen Ordner für Ihren Code.  
-  
-2. Navigieren Sie an einer Eingabeaufforderung oder einem Terminal zu dem Ordner, den Sie gerade erstellt haben.  
-  
-3. Führen Sie die folgenden Befehle aus:
-    ```
-    dotnet new console -o BingCustomSearch
-    cd BingCustomSearch
-    dotnet add package Newtonsoft.Json
-    dotnet restore
-    ```
-  
-4. Kopieren Sie den folgenden Code in die Datei „Program.cs“. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Abonnementschlüssel und Ihre Konfigurations-ID.
+1. Erstellen Sie eine neue C#-Konsolenanwendung in Visual Studio. Fügen Sie Ihrem Projekt dann die folgenden Pakete hinzu.
 
     ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
     using Newtonsoft.Json;
-    
-    namespace bing_custom_search_example_dotnet
-    {
-        class Program
-        {
-            static void Main(string[] args)
-            {
-                var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
-                var customConfigId = "YOUR-CUSTOM-CONFIG-ID";
-                var searchTerm = args.Length > 0 ? args[0]: "microsoft";            
-    
-                var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
-                    "q=" + searchTerm +
-                    "&customconfig=" + customConfigId;
-    
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                var httpResponseMessage = client.GetAsync(url).Result;
-                var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
-                BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
-                
-                for(int i = 0; i < response.webPages.value.Length; i++)
-                {                
-                    var webPage = response.webPages.value[i];
-                    
-                    Console.WriteLine("name: " + webPage.name);
-                    Console.WriteLine("url: " + webPage.url);                
-                    Console.WriteLine("displayUrl: " + webPage.displayUrl);
-                    Console.WriteLine("snippet: " + webPage.snippet);
-                    Console.WriteLine("dateLastCrawled: " + webPage.dateLastCrawled);
-                    Console.WriteLine();
-                }            
-            }
-        }
-    
-        public class BingCustomSearchResponse
-        {        
-            public string _type{ get; set; }            
-            public WebPages webPages { get; set; }
-        }
-    
-        public class WebPages
-        {
-            public string webSearchUrl { get; set; }
-            public int totalEstimatedMatches { get; set; }
-            public WebPage[] value { get; set; }        
-        }
-    
-        public class WebPage
-        {
-            public string name { get; set; }
-            public string url { get; set; }
-            public string displayUrl { get; set; }
-            public string snippet { get; set; }
-            public DateTime dateLastCrawled { get; set; }
-            public string cachedPageUrl { get; set; }
-            public OpenGraphImage openGraphImage { get; set; }        
-        }
-        
-        public class OpenGraphImage
-        {
-            public string contentUrl { get; set; }
-            public int width { get; set; }
-            public int height { get; set; }
-        }
+    ```
+
+2. Erstellen Sie die folgenden Klassen, um die Suchergebnisse zu speichern, die von der API für die benutzerdefinierte Bing-Suche zurückgegeben werden.
+
+    ```csharp
+    public class BingCustomSearchResponse {        
+        public string _type{ get; set; }            
+        public WebPages webPages { get; set; }
+    }
+
+    public class WebPages {
+        public string webSearchUrl { get; set; }
+        public int totalEstimatedMatches { get; set; }
+        public WebPage[] value { get; set; }        
+    }
+
+    public class WebPage {
+        public string name { get; set; }
+        public string url { get; set; }
+        public string displayUrl { get; set; }
+        public string snippet { get; set; }
+        public DateTime dateLastCrawled { get; set; }
+        public string cachedPageUrl { get; set; }
     }
     ```
-6. Führen Sie den Buildvorgang für die Anwendung mit dem folgenden Befehl durch. Notieren Sie sich den DLL-Pfad, der in der Befehlsausgabe angegeben ist.
 
-    <pre>
-    dotnet build 
-    </pre>
-    
-7. Führen Sie die Anwendung aus, indem Sie den folgenden Befehl verwenden und **PATH TO OUTPUT** durch den in Schritt 6 angegebenen DLL-Pfad ersetzen.
+3. Erstellen Sie in der main-Methode Ihres Projekts Variablen für Ihren Abonnementschlüssel der API für die benutzerdefinierte Bing-Suche, die benutzerdefinierte Konfigurations-ID Ihrer Suchinstanz und einen Suchbegriff.
 
-    <pre>    
-    dotnet **PATH TO OUTPUT**
-    </pre>
+    ```csharp
+    var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
+    var customConfigId = "YOUR-CUSTOM-CONFIG-ID";
+    var searchTerm = args.Length > 0 ? args[0]:"microsoft";
+    ```
+
+4. Erstellen Sie die Anforderungs-URL, indem Sie Ihren Suchbegriff an den Abfrageparameter `q=` und Ihre benutzerdefinierte Konfigurations-ID der Suchinstanz an `customconfig=` anfügen. Trennen Sie die Parameter mit dem Zeichen `&` voneinander. 
+
+    ```csharp
+    var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
+                "q=" + searchTerm + "&" +
+                "customconfig=" + customConfigId;
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>Senden und Empfangen einer Suchanforderung 
+
+1. Erstellen Sie einen Anforderungsclient, und fügen Sie Ihren Abonnementschlüssel dem Header `Ocp-Apim-Subscription-Key` hinzu.
+
+    ```csharp
+    var client = new HttpClient();
+    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+    ```
+
+2. Führen Sie die Suchanforderung aus, und rufen Sie die Antwort als JSON-Objekt ab.
+
+    ```csharp
+    var httpResponseMessage = client.GetAsync(url).Result;
+    var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
+    BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
+    ```
+## <a name="process-and-view-the-results"></a>Verarbeiten und Anzeigen der Ergebnisse
+
+1. Durchlaufen Sie das Antwortobjekt, um Informationen zu den einzelnen Suchergebnissen anzuzeigen, z.B. Name, URL und das Datum des letzten Crawl-Vorgangs der Webseite.
+
+    ```csharp
+    for(int i = 0; i < response.webPages.value.Length; i++) {                
+        var webPage = response.webPages.value[i];
+        
+        Console.WriteLine("name: " + webPage.name);
+        Console.WriteLine("url: " + webPage.url);                
+        Console.WriteLine("displayUrl: " + webPage.displayUrl);
+        Console.WriteLine("snippet: " + webPage.snippet);
+        Console.WriteLine("dateLastCrawled: " + webPage.dateLastCrawled);
+        Console.WriteLine();
+    }
+    Console.WriteLine("Press any key to exit...");
+    Console.ReadKey();
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
-- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](./hit-highlighting.md)
-- [Einteilen von Webseiten](./page-webpages.md)
+
+> [!div class="nextstepaction"]
+> [Tutorial: Erstellen einer benutzerdefinierten Suchwebseite](./tutorials/custom-search-web-page.md)

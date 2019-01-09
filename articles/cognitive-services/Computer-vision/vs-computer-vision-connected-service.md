@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Maschinelles Sehen-API, C#'
+title: 'Visual Studio: Verbundener Dienst – Maschinelles Sehen-API'
 titleSuffix: Azure Cognitive Services
-description: Stellen Sie über eine ASP.NET Core-Webanwendung eine Verbindung mit der Maschinelles Sehen-API her.
+description: Stellen Sie für eine ASP.NET Core-Webanwendung eine Verbindung mit der Maschinelles Sehen-API her, indem Sie das Visual Studio-Feature „Verbundener Dienst“ verwenden.
 services: cognitive-services
 author: ghogen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: Tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: ebfcabdea1e83a83af5eea8025ba5a411c3f9880
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.custom: seodec18
+ms.openlocfilehash: e9207fe19272dac23db165e160ce9f7a7e802c14
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077949"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579735"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Verwenden von verbundenen Diensten in Visual Studio zum Herstellen einer Verbindung mit der Maschinelles Sehen-API
 
@@ -37,15 +38,15 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 1. Wählen Sie im **Projektmappen-Explorer** die Option **Hinzufügen** > **Verbundener Dienst** aus.
    Die Seite „Verbundener Dienst“ wird mit den Diensten angezeigt, die Sie dem Projekt hinzufügen können.
 
-   ![Menüelement „Verbundenen Dienst hinzufügen“](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Screenshot eines Kontextmenüs in einem Visual Studio-Projekt: Hinzufügen > Verbundener Dienst](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. Wählen Sie im Menü der verfügbaren Dienste die Option **Maschinelles Sehen-API von Cognitive Services** aus.
 
-   ![Auswählen des Diensts, mit dem eine Verbindung hergestellt werden soll](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Menü „Verbundene Dienste“ mit Hervorhebung von „Analyze Images with Computer Vision“ (Analysieren von Bildern per maschinellem Sehen)](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Wenn Sie sich bei Visual Studio angemeldet haben und Ihrem Konto ein Azure-Abonnement zugeordnet ist, wird eine Seite mit einer Dropdownliste mit Ihren Abonnements angezeigt.
 
-   ![Wählen Sie Ihr Abonnement aus.](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Visual Studio-Fenster „Maschinelles Sehen-API“ mit Hervorhebung der Dropdownliste „Abonnement“](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Wählen Sie das zu verwendende Abonnement aus, und geben Sie einen Namen für die Maschinelles Sehen-API an, oder wählen Sie den Link „Bearbeiten“ aus, um den automatisch generierten Namen zu ändern. Wählen Sie dann die Ressourcengruppe und den Tarif aus.
 
@@ -93,11 +94,11 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
 1. Fügen Sie im Ordner „wwwroot“ Ihres Projekts einen Ordner „images“ hinzu, und fügen Sie dem wwwroot-Ordner eine Bilddatei hinzu. Sie können beispielsweise eins der Bilder auf dieser Seite zur [Maschinelles Sehen-API](https://azure.microsoft.com/services/cognitive-services/computer-vision/) verwenden. Klicken Sie mit der rechten Maustaste auf eins der Bilder, und speichern Sie es auf Ihrer lokalen Festplatte. Klicken Sie dann im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner „images“, und wählen Sie **Hinzufügen** > **Vorhandenes Element** aus, um das Bild zu Ihrem Projekt hinzuzufügen. Ihr Projekt sollte im Projektmappen-Explorer etwa wie folgt aussehen: 
   
-   ![images-Ordner mit Bilddatei](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
+   ![Screenshot: Projektmappen-Explorer mit ausgewählter Bilddatei](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
 1. Klicken Sie mit der rechten Maustaste auf die Bilddatei, und wählen Sie nacheinander „Eigenschaften“ und **Kopieren, wenn neuer** aus. 
 
-   ![Kopieren, wenn neuer](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![Fenster mit Bildeigenschaften; „In Ausgabeverzeichnis kopieren“ ist auf „Kopieren, wenn neuer“ festgelegt](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Ersetzen Sie die Configure-Methode durch den folgenden Code, um auf die Maschinelles Sehen-API zuzugreifen und ein Bild zu testen.
 

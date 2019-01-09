@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: cff7d0dea27dd21ac4f7bb133e297e4f5928d2c2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8ef4e9917623f43e5c9900150deb22d62169c836
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680598"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555964"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testen von Terraform-Modulen in Azure mit Terratest
 
@@ -35,7 +35,7 @@ Dieser Artikel mit praktischen Beispielen ist plattformunabhängig. Sie können 
 
 Installieren Sie zunächst die folgende Software:
 
-- **Go-Programmiersprache**: Terraform-Testfälle sind in [Go](https://golang.org/dl/) geschrieben.
+- **Programmiersprache Go**: Terraform-Testfälle werden in [Go](https://golang.org/dl/) geschrieben.
 - **dep**: [dep](https://github.com/golang/dep#installation) ist ein Tool zum Verwalten von Abhängigkeiten für Go.
 - **Azure CLI**: Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ist ein Befehlszeilentool, das Sie zum Verwalten von Azure-Ressourcen verwenden können. (Terraform unterstützt die Authentifizierung für Azure über einen Dienstprinzipal oder die [Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html).)
 - **mage**: Wir nutzen die [ausführbare mage-Datei](https://github.com/magefile/mage/releases), um zu veranschaulichen, wie Sie die Ausführung von Terratest-Testfällen vereinfachen können. 
@@ -96,7 +96,7 @@ output "homepage_url" {
 - **Ressourcengruppe**: Der Name der Ressourcengruppe ist die Eingabe `website_name` mit dem Zusatz `-staging-rg`.
 - **Speicherkonto**: Der Name des Speicherkontos ist die Eingabe `website_name` mit dem Zusatz `data001`. Um die Namensbeschränkungen für das Speicherkonto einzuhalten, entfernt das Modul alle Sonderzeichen und verwendet für den gesamten Speicherkontonamen Kleinbuchstaben.
 - **Container mit festem Namen**: Der Container hat den Namen `wwwroot` und wird im Speicherkonto erstellt.
-- **Einzelne HTML-Datei**: Die HTML-Datei wird aus der Eingabe `html_path` ausgelesen und in `wwwroot/index.html` hochgeladen.
+- **Einzelne HTML-Datei**: Die HTML-Datei, die aus der Eingabe `html_path` ausgelesen und in `wwwroot/index.html` hochgeladen wird.
 
 Die Modullogik der statischen Webseite wird in `./main.tf` implementiert:
 
@@ -298,7 +298,7 @@ Wir beginnen mit den Beispielen. Im Ordner `./examples/` wird ein neuer Beispiel
 </head>
 <body>
     <h1>Hi, Terraform Module</h1>
-    <p>This is a sample webpage to demostrate Terratest.</p>
+    <p>This is a sample webpage to demonstrate Terratest.</p>
 </body>
 </html>
 ```
@@ -365,7 +365,7 @@ func TestIT_HelloWorldExample(t *testing.T) {
     http_helper.HttpGetWithCustomValidation(t, homepage, func(status int, content string) bool {
         return status == 200 &&
             strings.Contains(content, "Hi, Terraform Module") &&
-            strings.Contains(content, "This is a sample web page to demostrate Terratest.")
+            strings.Contains(content, "This is a sample web page to demonstrate Terratest.")
     })
 }
 ```
@@ -504,7 +504,7 @@ Sie können die folgenden Befehle verwenden, um eine vollständige Testsammlung 
 $ cd [Your GoPath]/src/staticwebpage
 GoPath/src/staticwebpage$ dep init    # Run only once for this folder
 GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only requied when you change the magefile
+GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
 GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
 GoPath/src/staticwebpage$ mage
 ```

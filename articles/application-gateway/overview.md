@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: b58237f25a51438f0255243f960cc2a6aed2b0ca
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6badfabb3ad20b5c17b3bb2bf09ae13f63568d05
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679170"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714747"
 ---
 # <a name="what-is-azure-application-gateway"></a>Was ist Azure Application Gateway?
 
@@ -106,10 +106,18 @@ Application Gateway verfügt über native Unterstützung für das WebSocket- und
 
 Das WebSocket- und das HTTP/2-Protokoll ermöglichen die Vollduplexkommunikation zwischen einem Server und einem Client über eine TCP-Verbindung mit langer Laufzeit. Dies ermöglicht wiederum mehr Interaktivität bei der Kommunikation zwischen dem Webserver und dem Client, da die Kommunikation auch ohne die bei HTTP-basierten Implementierungen erforderlichen Abfragen bidirektional sein kann. Diese Protokolle zeichnen sich im Vergleich zu HTTP durch einen geringen Mehraufwand aus. Außerdem können sie die gleiche TCP-Verbindung für mehrere Anforderungen/Antworten verwenden, was eine effizientere Ressourcennutzung zur Folge hat. Diese Protokolle sind für die Nutzung der üblichen HTTP-Ports 80 und 443 konzipiert.
 
+## <a name="rewrite-http-headers-public-preview"></a>Erneutes Generieren von HTTP-Headern (Public Preview)
+
+HTTP-Header ermöglichen dem Client und dem Server das Übergeben von zusätzlichen Informationen mit der Anforderung oder der Antwort. Durch das erneute Generieren dieser HTTP-Header können Sie verschiedene wichtige Szenarien erzielen, z.B. das Hinzufügen von sicherheitsbezogenen Headerfeldern wie HSTS/X-XSS-Protection oder das Entfernen von Antwortheaderfeldern, über die sensible Informationen wie der Back-End-Servername offengelegt werden. 
+
+Application Gateway unterstützt jetzt die Möglichkeit, die Header der eingehenden HTTP-Anforderungen sowie der ausgehenden HTTP-Antworten erneut zu generieren. Sie können HTTP-Anforderungs- und -Antwortheader hinzufügen, entfernen oder aktualisieren, während die Anforderung/Antwort-Pakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können sowohl Standardheaderfelder (in [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) definiert) als auch andere Headerfelder erneut generieren.  
+
+Weitere Informationen zu diesem Public Preview-Feature finden Sie unter [Erneutes Generieren von HTTP-Headern](rewrite-http-headers.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Je nach Ihren Anforderungen und der vorhandenen Umgebung können Sie eine Application Gateway-Testinstanz über das Azure-Portal, mithilfe von Azure PowerShell oder unter Verwendung der Azure CLI erstellen:
 
-- [Quickstart: Direct web traffic with Azure Application Gateway – Azure portal](quick-create-portal.md) (Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal)
-- [Quickstart: Direct web traffic with Azure Application Gateway – Azure PowerShell](quick-create-powershell.md) (Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal](quick-create-portal.md)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
 - [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure CLI](quick-create-cli.md)

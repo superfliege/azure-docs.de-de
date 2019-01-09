@@ -13,16 +13,16 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: fa46260fdd5623ba32da9979aaea8470139096b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86120e65ad6a3b7fab2a5db78a338bed0e277cb8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091389"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651946"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Schnellstart: Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten
 
-Der SQL-Abfrage-Editor ist ein Browsertool im Azure-Portal, über den einfach SQL-Abfragen für Ihre Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz ausgeführt werden können. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Abfrage-Editor zum Herstellen einer Verbindung mit einer SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen ausführen, um Daten abzufragen, einzufügen, zu aktualisieren und zu löschen.
+Der SQL-Abfrage-Editor ist ein Browsertool im Azure-Portal, über den einfach SQL-Abfragen für Ihre Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz ausgeführt werden können. In dieser Schnellstartanleitung verwenden Sie den Abfrage-Editor zum Herstellen einer Verbindung mit einer SQL-Datenbank und führen anschließend Transact-SQL-Anweisungen aus, um Daten abzufragen, einzufügen, zu aktualisieren und zu löschen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Wenn Sie einen Active Directory-Administrator (AD) konfigurieren, können Sie ei
 
 1. Wählen Sie im linken Menü **Alle Ressourcen** und anschließend Ihren SQL-Server aus.
 
-2. Wählen Sie im Menü **Einstellungen** Ihres SQL-Servers die Option **Active Directory-Administrator** aus.
+2. Wählen Sie im Menü **Einstellungen** Ihres SQL-Servers die Option **Active Directory-Administrator**.
 
 3. Wählen Sie auf der Symbolleiste der AD-Administratorseite **Administrator festlegen** aus, und legen Sie dann den Benutzer oder die Gruppe als AD-Administrator fest.
 
@@ -70,7 +70,7 @@ Wenn Sie einen Active Directory-Administrator (AD) konfigurieren, können Sie ei
 
 4. Wählen Sie auf der Symbolleiste der AD-Administratorseite **Speichern** aus.
 
-5. Navigieren Sie zur Datenbank **mySampleDatabase**, und wählen Sie im linken Menü **Abfrage-Editor (Vorschau)** aus. Die Seite **Anmeldung** wird angezeigt. Sind Sie AD-Administrator, wird auf der rechten Seite unterhalb von **Active Directory single sign-on** (Active Directory-SSO) eine Meldung mit dem Hinweis angezeigt, dass Sie angemeldet wurden. 
+5. Navigieren Sie zur Datenbank **mySampleDatabase**, und wählen Sie im linken Menü **Abfrage-Editor (Vorschau)** aus. Die Seite **Anmeldung** wird angezeigt. Falls Sie ein AD-Administrator sind, wird auf der rechten Seite unterhalb von **Active Directory single sign-on** (Active Directory-SSO) eine Meldung mit dem Hinweis angezeigt, dass Sie angemeldet wurden. 
    
 6. Klicken Sie auf **OK**.
 
@@ -92,7 +92,7 @@ Wenn Sie einen Active Directory-Administrator (AD) konfigurieren, können Sie ei
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung zum Hinzufügen eines neuen Produkts in der Tabelle `SalesLT.Product`.
+Führen Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung aus, um in der Tabelle `SalesLT.Product` ein neues Produkt hinzuzufügen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
@@ -117,12 +117,12 @@ Verwenden Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.
    ```
 
 
-2. Wählen Sie **Ausführen** aus, um eine neue Zeile in die Tabelle „Product“ einzufügen. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
+2. Wählen Sie **Ausführen**, um eine neue Zeile in die Tabelle `Product` einzufügen. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
 
 
 ## <a name="update-data"></a>Aktualisieren von Daten
 
-Verwenden Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung, um Ihr neues Produkt zu ändern.
+Führen Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung aus, um Ihr neues Produkt zu ändern.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
@@ -132,11 +132,11 @@ Verwenden Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu aktualisieren. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
+2. Wählen Sie **Ausführen**, um die angegebene Zeile in der Tabelle `Product` zu aktualisieren. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie die folgende [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung, um das neue Produkt zu entfernen.
+Führen Sie die folgende [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung aus, um das neue Produkt zu entfernen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese:
 
@@ -145,7 +145,7 @@ Verwenden Sie die folgende [DELETE](https://msdn.microsoft.com/library/ms189835.
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu löschen. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
+2. Wählen Sie **Ausführen**, um die angegebene Zeile in der Tabelle `Product` zu löschen. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Aspekte des Abfrage-Editors
@@ -156,7 +156,7 @@ Bei der Verwendung des Abfrage-Editors sind ein paar Dinge zu beachten:
 
 * Durch Drücken von F5 wird die Seite des Abfrage-Editors aktualisiert, und aktuell bearbeitete Abfragen gehen verloren.
 
-* Das Herstellen einer Verbindung mit der Masterdatenbank wird vom Abfrage-Editor nicht unterstützt.
+* Das Herstellen einer Verbindung mit der `master`-Datenbank wird vom Abfrage-Editor nicht unterstützt.
 
 * Bei der Abfrageausführung gilt ein Timeout von fünf Minuten.
 

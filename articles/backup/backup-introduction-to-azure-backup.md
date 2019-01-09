@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 8/2/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f07bcf3cb1b489ad7ec06dff1437e49d83748998
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878299"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631157"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -78,14 +78,14 @@ Die folgende Tabelle enthält eine Matrix mit den Daten und Workloads, die mit A
 | Azure IaaS-VMs (Linux) |Ausführung in Azure |[Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
 
 ## <a name="linux-support"></a>Linux-Unterstützung
-In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über Unterstützung für Linux verfügen.  
+In der folgenden Tabelle sind die Azure Backup-Komponenten aufgeführt, die für Linux unterstützt werden.  
 
-| Komponente | Linux-Unterstützung (von Azure unterstützt) |
-| --- | --- |
-| Azure Backup-Agent (MARS) |Keine (nur Windows-basierter Agent) |
-| System Center DPM |<li> Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> <li> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs </br> </br>  *Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.* <br/> |
-| Azure Backup Server |<li>Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> <li> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs </br></br> *Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.*  |
-| Azure IaaS-VM-Sicherung |Anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/> [Präzise Dateiwiederherstellung](backup-azure-restore-files-from-vm.md)<br/> [Wiederherstellen aller VM-Datenträger](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM-Wiederherstellung](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
+**Komponente** | **Linux (von Azure unterstützt)**
+--- | --- 
+Azure Backup-Agent (MARS) | Keine (nur Windows-basierter Agent) 
+System Center DPM | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
+Azure Backup Server | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar 
+Azure IaaS-VM-Sicherung | App-konsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/><br/> [Wiederherstellung auf Dateiebene](backup-azure-restore-files-from-vm.md)<br/><br/> [Erstellen eines virtuellen Computers aus einem wiederhergestellten Datenträger](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt](backup-azure-arm-restore-vms.md#create-new-create-a-vm)
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden von Storage Premium-VMs mit Azure Backup
 Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../virtual-machines/windows/premium-storage.md).
@@ -113,7 +113,7 @@ Mit Azure Backup können Sie einen vollständigen virtuellen Computer mit verwal
 ## <a name="what-are-the-features-of-each-backup-component"></a>Welche Features haben die einzelnen Backup-Komponenten?
 Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. die Unterstützung verschiedener Features der einzelnen Azure Backup-Komponenten zusammengefasst ist. Weitere Informationen zur Unterstützung bzw. weitere Details sind jeweils unterhalb der Tabelle zu finden.
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Recovery Services-Tresor |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
@@ -209,7 +209,7 @@ Eine geschützte Instanz ist ein generischer Verweis auf einen Windows-Computer,
 Allgemeine Beispiele für geschützte Instanzen sind virtuelle Computer, Anwendungsserver, Datenbanken und PCs unter Windows. Beispiel: 
 
 * Ein virtueller Computer, auf dem die Hyper-V- oder die Azure IaaS-Hypervisor-Fabric ausgeführt wird. Mögliche Gastbetriebssysteme für den virtuellen Computer sind Windows Server und Linux.
-* Ein Anwendungsserver: Dabei kann es sich um einen physischen oder virtuellen Computer handeln, auf dem Windows Server und Workloads mit zu sichernden Daten ausgeführt werden. Gängige Workloads sind Microsoft SQL Server, Microsoft Exchange Server, Microsoft SharePoint Server und die Dateiserverrolle unter Windows Server. Zum Sichern dieser Workloads benötigen Sie System Center Data Protection Manager (DPM) oder Azure Backup Server.
+* Ein Anwendungsserver: Hierbei kann es sich um einen physischen oder virtuellen Computer handeln, auf dem Windows Server und Workloads mit zu sichernden Daten ausgeführt werden. Gängige Workloads sind Microsoft SQL Server, Microsoft Exchange Server, Microsoft SharePoint Server und die Dateiserverrolle unter Windows Server. Zum Sichern dieser Workloads benötigen Sie System Center Data Protection Manager (DPM) oder Azure Backup Server.
 * Ein PC, eine Arbeitsstation oder ein Laptop unter dem Windows-Betriebssystem.
 
 

@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bd72aad51d2649ba6f110ab07b3f85d58da2a09d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c6086c3d3bc025feaf9da2d4c26d7f008b304b57
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867034"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788122"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Erstellen einer MongoDB-App mit React und Azure Cosmos DB  
 
-Dieses mehrteilige Videotutorial veranschaulicht, wie Sie eine Heldenverfolgungs-App mit einem React-Front-End erstellen. Die App verwendet Node und Express für den Server, stellt mit der [MongoDB-API](mongodb-introduction.md) eine Verbindung mit Azure Cosmos DB her und verknüpft das React-Front-End mit dem Serverteil der App. Das Tutorial vermittelt auch, wie Sie im Azure-Portal eine Point-and-Click-Skalierung von Azure Cosmos DB durchführen und wie Sie die App im Internet bereitstellen, damit alle ihre Lieblingshelden nachverfolgen können. 
+Dieses mehrteilige Videotutorial veranschaulicht, wie Sie eine Heldenverfolgungs-App mit einem React-Front-End erstellen. Die App verwendet Node und Express für den Server, stellt eine Verbindung mit der Cosmos-Datenbank her, die mit der [Azure Cosmos DB-API für MongoDB](mongodb-introduction.md) konfiguriert ist, und stellt dann eine Verbindung zwischen dem React-Front-End und dem Serverteil der App her. Das Tutorial vermittelt auch, wie Sie im Azure-Portal eine Point-and-Click-Skalierung von Cosmos DB durchführen und die App im Internet bereitstellen, damit alle Benutzer ihre Lieblingshelden nachverfolgen können. 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) unterstützt MongoDB-Clientverbindungen, sodass Sie MongoDB durch Azure Cosmos DB ersetzen können. Dabei können Sie nicht nur den gleichen Code wie für MongoDB-Apps verwenden, sondern auch von zusätzlichen Vorteilen wie einer einfachen Cloudbereitstellung, Skalierung und äußerst schnellen Lese- und Schreibvorgängen profitieren.  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) unterstützt die Wire Protocol-Kompatibilität mit MongoDB, sodass Clients Azure Cosmos DB anstelle von MongoDB verwenden können.  
 
 Dieses mehrteilige Tutorial umfasst folgende Aufgaben:
 

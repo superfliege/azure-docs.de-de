@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie über SQL Server Management Studio (SSMS) ein
 keywords: Verbinden mit SQL-Datenbank, SQL Server Management Studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098930"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745073"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung mit einer Instanz von Azure SQL-Datenbank und deren Abfrage
 
-Sie können [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) für die Verwaltung beliebiger SQL-Infrastrukturen verwenden – von SQL Server bis SQL-Datenbank für Microsoft Windows. Dieser Schnellstart zeigt Ihnen, wie Sie SSMS zum Herstellen einer Verbindung mit einer Instanz von Azure SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen ausführen, um Daten in der Datenbank abzufragen, zu aktualisieren oder zu löschen bzw. in diese einzufügen. 
+In dieser Schnellstartanleitung verwenden Sie [SQL Server Management Studio][ssms-install-latest-84g] (SSMS), um eine Verbindung mit einer Azure SQL-Datenbank herzustellen. Anschließend führen Sie Transact-SQL-Anweisungen aus, um Daten abzufragen, einzufügen, zu aktualisieren und zu löschen. Sie können SSMS für die Verwaltung beliebiger SQL-Infrastrukturen verwenden – von SQL Server bis SQL-Datenbank für Microsoft Windows.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -75,11 +75,11 @@ Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz h
 
 ## <a name="query-data"></a>Abfragen von Daten
 
-Verwenden Sie den folgenden [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Code, um die 20 wichtigsten Produkte nach Kategorie abzufragen.
+Führen Sie diesen [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Code aus, um die 20 wichtigsten Produkte nach Kategorie abzufragen.
 
-1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **mySampleDatabase**, und wählen Sie **Neue Abfrage** aus. Ein leeres Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
+1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **mySampleDatabase**, und wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
 
-1. Fügen Sie diese SQL-Abfrage in das Abfragefenster ein.
+2. Fügen Sie diese SQL-Abfrage in das Abfragefenster ein.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -90,11 +90,11 @@ Verwenden Sie den folgenden [SELECT](https://msdn.microsoft.com/library/ms189499
 
 3. Wählen Sie auf der Symbolleiste **Ausführen** aus, um Daten aus den Tabellen `Product` und `ProductCategory` abzurufen.
 
-    ![Abfrage zum Abrufen von Daten aus 2 Tabellen](./media/sql-database-connect-query-ssms/query2.png)
+    ![Abfrage zum Abrufen von Daten aus zwei Tabellen](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie den folgenden [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Code zum Erstellen eines neuen Produkts in der Tabelle `SalesLT.Product`.
+Führen Sie diesen [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Code aus, um in der Tabelle `SalesLT.Product` ein neues Produkt zu erstellen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
@@ -117,7 +117,7 @@ Verwenden Sie den folgenden [INSERT](https://msdn.microsoft.com/library/ms174335
            ,GETDATE() );
    ```
 
-2. Wählen Sie **Ausführen** aus, um eine neue Zeile in die Tabelle „Product“ einzufügen. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
+2. Wählen Sie die Option **Ausführen**, um in der Tabelle `Product` eine neue Zeile einzufügen. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
 
 ## <a name="view-the-result"></a>Anzeigen des Ergebnisses
 
@@ -134,7 +134,7 @@ Verwenden Sie den folgenden [INSERT](https://msdn.microsoft.com/library/ms174335
  
 ## Update data
 
-Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
 
 1. Replace the previous query with this one.
 
@@ -144,11 +144,11 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu aktualisieren. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
+2. Wählen Sie **Ausführen**, um die angegebene Zeile in der Tabelle `Product` zu aktualisieren. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie den folgenden [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Code, um das neue, zuvor von Ihnen hinzugefügte Produkt zu entfernen.
+Führen Sie diesen [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Code aus, um Ihr neues Produkt zu entfernen.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
@@ -157,7 +157,7 @@ Verwenden Sie den folgenden [DELETE](https://msdn.microsoft.com/library/ms189835
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu löschen. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
+2. Wählen Sie **Ausführen**, um die angegebene Zeile in der Tabelle `Product` zu löschen. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

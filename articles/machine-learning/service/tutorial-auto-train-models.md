@@ -1,7 +1,7 @@
 ---
-title: 'Regressionsmodelltutorial: Automatisches Trainieren von Modellen'
+title: 'Regressionsmodelltutorial: Automatisiertes maschinelles Lernen'
 titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie ein Machine Learning-Modell mithilfe von automatisiertem maschinellem Lernen erstellen.  Azure Machine Learning kann Datenvorverarbeitung, Algorithmusauswahl und Hyperparameterauswahl automatisiert für Sie ausführen. Das endgültige Modell wird schließlich mit Azure Machine Learning Service bereitgestellt.
+description: Erfahren Sie, wie Sie ein Machine Learning-Modell mithilfe des automatisierten maschinellen Lernens erstellen. Azure Machine Learning kann die Datenvorverarbeitung, Algorithmusauswahl und Hyperparameterauswahl automatisiert für Sie ausführen. Das endgültige Modell wird dann mit Azure Machine Learning Service bereitgestellt.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,18 +11,18 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6bbc2d44ab128aec032ead29bf247cd834f932b6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5bd6649b063521853864d4da423372ae181cf977
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315196"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580517"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning
 
 Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im vorherigen Tutorial haben Sie [die New Yorker Taxidaten für die Regressionsmodellierung vorbereitet](tutorial-data-prep.md).
 
-Nun können Sie damit beginnen, Ihr Modell mithilfe des Azure Machine Learning-Diensts zu erstellen. In diesem Teil des Tutorials verwenden Sie die vorbereiteten Daten, um ein automatisch generiertes Regressionsmodell für die Prognose von Taxifahrtkosten zu erstellen. Dabei definieren Sie mithilfe der ML-Funktionen des Diensts Ihre Ziele und Einschränkungen für maschinelles Lernen, starten den automatisierten Prozess für maschinelles Lernen und überlassen die Wahl des Algorithmus sowie die Optimierung der Hyperparameter dem Dienst. Die Methode des automatisierten maschinellen Lernens durchläuft viele Kombinationen von Algorithmen und Hyperparametern, bis sie das beste Modell basierend auf Ihrem Kriterium findet.
+Nun können Sie damit beginnen, Ihr Modell mithilfe von Azure Machine Learning Service zu erstellen. In diesem Teil des Tutorials verwenden Sie die vorbereiteten Daten, um automatisch ein Regressionsmodell für die Vorhersage von Taxifahrtkosten zu generieren. Mithilfe der Funktionen für automatisiertes maschinelles Lernen des Diensts definieren Sie Ihre Ziele und Einschränkungen für das maschinelle Lernen. Sie starten den automatisierten Prozess für maschinelles Lernen, und anschließend lassen Sie die Algorithmusauswahl und Hyperparameteroptimierung vom Dienst vornehmen. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern durchlaufen, bis das beste Modell für Ihr Kriterium gefunden wird.
 
 ![Flussdiagramm](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,13 +30,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Einrichten einer Python-Umgebung und Importieren der SDK-Pakete
-> * Konfigurieren eines Azure Machine Learning-Dienstarbeitsbereichs
+> * Konfigurieren eines Azure Machine Learning Service-Arbeitsbereichs
 > * Automatisches Trainieren eines Regressionsmodells
 > * Lokales Ausführen des Modells mit benutzerdefinierten Parametern
 > * Untersuchen der Ergebnisse
 > * Registrieren des besten Modells
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein kostenloses Konto, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
 >[!NOTE]
 > Der Code in diesem Artikel wurde mit Version 1.0.0 des Azure Machine Learning SDK getestet.
@@ -44,7 +44,7 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein kostenloses Konto, be
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > * [Tutorial zur Datenvorbereitung](tutorial-data-prep.md) ausgeführt
-> * Umgebung für automatisiertes maschinelles Lernen (beispielsweise Azure-Notebooks, lokale Python-Umgebung oder Data Science Virtual Machine) konfiguriert Automatisiertes maschinelles Lernen [eingerichtet](samples-notebooks.md)
+> * Eine konfigurierte Umgebung für automatisiertes maschinelles Lernen. Beispiele sind Azure Notebooks, eine lokale Python-Umgebung oder eine Data Science Virtual Machine-Umgebung. Siehe [Einrichten des automatisierten maschinellen Lernens](samples-notebooks.md).
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
@@ -53,7 +53,7 @@ Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/Machin
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 ## <a name="import-packages"></a>Importieren von Paketen
-Importieren Sie die Python-Pakete, die Sie in diesem Tutorial benötigen.
+Importieren Sie die Python-Pakete, die Sie in diesem Tutorial benötigen:
 
 
 ```python
@@ -68,9 +68,11 @@ import os
 
 ## <a name="configure-workspace"></a>Konfigurieren des Arbeitsbereichs
 
-Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Bei einem `Workspace` handelt es sich um eine Klasse, die Ihre Azure-Abonnement- und Ressourceninformationen akzeptiert und eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen erstellt. `Workspace.from_config()` liest die Datei **aml_config/config.json** und lädt die Details in ein Objekt namens `ws`.  `ws` wird im restlichen Code in diesem Tutorial verwendet.
+Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein `Workspace` ist eine Klasse, die Ihre Azure-Abonnement- und -Ressourceninformationen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen. 
 
-Wenn Sie ein Arbeitsbereichsobjekt haben, geben Sie einen Namen für das Experiment an. Erstellen und registrieren Sie außerdem ein lokales Verzeichnis mit dem Arbeitsbereich. Der Verlauf aller Ausführungen wird unter dem angegebenen Experiment und im [Azure-Portal](https://portal.azure.com) erfasst.
+`Workspace.from_config()` liest die Datei **aml_config/config.json** und lädt die Details in ein Objekt namens `ws`.  `ws` wird im restlichen Code in diesem Tutorial verwendet.
+
+Nachdem Sie ein Arbeitsbereichsobjekt erstellt haben, geben Sie einen Namen für das Experiment an. Erstellen und registrieren Sie ein lokales Verzeichnis im Arbeitsbereich. Der Verlauf aller Ausführungen wird unter dem angegebenen Experiment und im [Azure-Portal](https://portal.azure.com) aufgezeichnet.
 
 
 ```python
@@ -93,7 +95,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>Erkunden von Daten
 
-Verwenden Sie das erstellte Datenflussobjekt aus dem vorherigen Tutorial. Öffnen Sie den Datenfluss, führen Sie ihn aus, und überprüfen Sie die Ergebnisse.
+Verwenden Sie das im vorherigen Tutorial erstellte Datenflussobjekt. Öffnen Sie den Datenfluss, führen Sie ihn aus, und überprüfen Sie die Ergebnisse:
 
 
 ```python
@@ -581,16 +583,16 @@ dflow_prepared.get_profile()
   </tbody>
 </table>
 
-Um die Daten für das Experiment vorzubereiten, fügen Sie Spalten als Merkmale für die Modellerstellung zu `dflow_x` hinzu. Sie definieren `dflow_y` als Prognosewert (Kosten).
+Um die Daten für das Experiment vorzubereiten, fügen Sie Spalten als Merkmale für die Modellerstellung zu `dflow_x` hinzu. Sie definieren `dflow_y` als den Vorhersagewert **cost** (Kosten):
 
 ```python
 dflow_X = dflow_prepared.keep_columns(['pickup_weekday','pickup_hour', 'distance','passengers', 'vendor'])
 dflow_y = dflow_prepared.keep_columns('cost')
 ```
 
-### <a name="split-data-into-train-and-test-sets"></a>Aufteilen von Daten in Trainings- und Testsätze
+### <a name="split-the-data-into-train-and-test-sets"></a>Aufteilen der Daten in Trainings- und Testsätze
 
-Als Nächstes teilen Sie die Daten mithilfe der Funktion `train_test_split` in der Bibliothek `sklearn` in Trainings- und Testsätze auf. Diese Funktion teilt die Daten in das x-Dataset (Merkmale) zum Trainieren des Modells und in das y-Dataset (zu prognostizierende Werte) zu Testzwecken auf. Der Parameter `test_size` bestimmt den Prozentsatz der Daten, die zu Testzwecken verwendet werden sollen. Der Parameter `random_state` legt ein Seed für den Zufallsgenerator fest, damit die Aufteilung zwischen Trainings- und Testdaten immer deterministisch ist.
+Als Nächstes teilen Sie die Daten mithilfe der Funktion `train_test_split` in der Bibliothek `sklearn` in Trainings- und Testsätze auf. Diese Funktion teilt die Daten in zwei Datasets auf: das x-Dataset mit den **Merkmalen** zum Trainieren des Modells und das y-Dataset mit den **vorherzusagenden Werte** zum Durchführen von Tests. Der Parameter `test_size` bestimmt den Prozentsatz der Daten, die zu Testzwecken verwendet werden sollen. Der Parameter `random_state` legt einen Seed für den Zufallsgenerator fest, damit die Aufteilung zwischen Trainings- und Testdaten immer deterministisch ist:
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -607,9 +609,9 @@ Sie haben nun die notwendigen Pakete und Daten, um Ihr Modell automatisch zu tra
 
 ## <a name="automatically-train-a-model"></a>Automatisches Trainieren eines Modells
 
-So trainieren Sie ein Modell automatisch:
+Führen Sie die folgenden Schritte aus, um ein Modell automatisch zu trainieren:
 1. Definieren Sie Einstellungen für die Experimentausführung.
-1. Übermitteln Sie das Experiment für die Modelloptimierung.
+1. Übermitteln Sie das Experiment zur Modelloptimierung.
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>Definieren von Einstellungen für die automatische Generierung und Optimierung
 
@@ -619,11 +621,11 @@ Definieren Sie die Experimentparameter und Modelleinstellungen für die automati
 |Eigenschaft| Wert in diesem Tutorial |BESCHREIBUNG|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Zeitlimit in Minuten für jede Iteration.|
-|**iterations**|30|Anzahl von Iterationen. In jeder Iteration trainiert das Modell mit den Daten mit einer bestimmten Pipeline.|
+|**iterations**|30|Anzahl von Iterationen. In jeder Iteration wird das Modell mit den Daten mit einer bestimmten Pipeline trainiert.|
 |**primary_metric**| spearman_correlation | Metrik, die Sie optimieren möchten.|
-|**preprocess**| True | TRUE ermöglicht dem Experiment, eine Vorverarbeitung der Eingabe auszuführen.|
+|**preprocess**| True | Bei der Verwendung von **True** kann das Experiment die Eingabe vorverarbeiten.|
 |**verbosity**| logging.INFO | Steuert den Protokollierungsgrad.|
-|**n_cross_validationss**|5|Anzahl von Kreuzvalidierungen
+|**n_cross_validationss**|5|Anzahl von Kreuzvalidierungen.|
 
 
 
@@ -653,7 +655,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ### <a name="train-the-automatic-regression-model"></a>Trainieren des automatischen Regressionsmodells
 
-Starten Sie das Experiment, und führen Sie es lokal aus. Übergeben Sie das definierte `automated_ml_config`-Objekt an das Experiment, und legen Sie die Ausgabe auf `True` fest, um den Fortschritt während des Experiments anzuzeigen.
+Starten Sie das Experiment, und führen Sie es lokal aus. Übergeben Sie das definierte `automated_ml_config`-Objekt an das Experiment. Legen Sie die Ausgabe auf `True` fest, um den Fortschritt während des Experiments anzuzeigen:
 
 
 ```python
@@ -709,7 +711,7 @@ Untersuchen Sie die Ergebnisse des automatischen Trainings mit einem Jupyter-Wid
 
 ### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Option 1: Hinzufügen eines Jupyter-Widgets zum Anzeigen von Ergebnissen
 
-Verwenden Sie bei Verwendung eines Jupyter Notebooks dieses Jupyter Notebook-Widget, um ein Diagramm und eine Tabelle mit allen Ergebnissen anzuzeigen.
+Falls Sie ein Jupyter Notebook nutzen, verwenden Sie dieses Jupyter Notebook-Widget, um einen Graphen und eine Tabelle mit allen Ergebnissen anzuzeigen:
 
 
 ```python
@@ -717,12 +719,12 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Ausführungsdetails zum Jupyter-Widget](./media/tutorial-auto-train-models/automl-dash-output.png)
+![Ausführungsdetails des Jupyter-Widgets](./media/tutorial-auto-train-models/automl-dash-output.png)
 ![Jupyter-Widget-Plot](./media/tutorial-auto-train-models/automl-chart-output.png)
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Option 2: Abrufen und Untersuchen aller Ausführungsiterationen in Python
 
-Alternativ können Sie den Verlauf der einzelnen Experimente abrufen und die einzelnen Metriken für jede Iterationsausführung untersuchen.
+Sie können auch den Verlauf jedes Experiments abrufen und die einzelnen Metriken für jede Iterationsausführung untersuchen:
 
 ```python
 children = list(local_run.get_children())
@@ -1071,7 +1073,7 @@ rundata
 
 ## <a name="retrieve-the-best-model"></a>Abrufen des besten Modells
 
-Wählen Sie aus den Iterationen die beste Pipeline aus. Die Methode `get_output` für `automl_classifier` gibt die beste Ausführung und das angepasste Modell für den letzten passenden Aufruf zurück. Es sind Überladungen für `get_output` vorhanden, mit denen Sie die beste Ausführung und das am besten geeignete Modell für eine beliebige protokollierte Metrik oder eine bestimmte Iteration abrufen können.
+Wählen Sie aus den Iterationen die beste Pipeline aus. Die Methode `get_output` für `automl_classifier` gibt die beste Ausführung und das angepasste Modell für den letzten passenden Aufruf zurück. Mithilfe der Überladungen für `get_output` können Sie die beste Ausführung und das am besten geeignete Modell für jede protokollierte Metrik oder eine bestimmte Iteration abrufen:
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1081,7 +1083,7 @@ print(fitted_model)
 
 ## <a name="register-the-model"></a>Registrieren des Modells
 
-Registrieren Sie das Modell in Ihrem Azure Machine Learning-Dienstarbeitsbereich.
+Registrieren Sie das Modell in Ihrem Azure Machine Learning Service-Arbeitsbereich:
 
 
 ```python
@@ -1093,14 +1095,14 @@ local_run.model_id # Use this id to deploy the model as a web service in Azure
 
 ## <a name="test-the-best-model-accuracy"></a>Testen der Genauigkeit des besten Modells
 
-Verwenden Sie das beste Modell, um Prognosen für das Testdataset zu generieren. Die Funktion `predict` verwendet das beste Modell und prognostiziert die Werte von y (Fahrtkosten) aus dem Dataset `x_test`. Geben Sie die ersten zehn prognostizierten Kostenwerte von `y_predict` aus.
+Verwenden Sie das beste Modell, um Vorhersagen für das Testdataset auszuführen. Die Funktion `predict` verwendet das beste Modell und sagt die Werte von y (**Fahrtkosten**) aus dem Dataset `x_test` voraus. Geben Sie die ersten zehn vorhergesagten Kostenwerte aus `y_predict` aus:
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Erstellen Sie ein Punktdiagramm, um den Vergleich der vorhergesagten Kostenwerte mit den tatsächlichen Kostenwerten zu visualisieren. Im folgenden Code werden das `distance`-Feature als X-Achse verwendet und die Kosten der Fahrt `cost` als Y-Achse. Die ersten 100 vorhergesagten und tatsächlichen Kostenwerte werden als separate Reihe erstellt, um die Varianz der vorhergesagten Kosten bei jedem Entfernungswert zu vergleichen. Die Untersuchung des Diagramms zeigt, dass die Beziehung Entfernung/Kosten nahezu linear ist und die vorhergesagten Kostenwerte in den meisten Fällen sehr nahe bei den tatsächlichen Kostenwerten für die gleiche Entfernung liegen.
+Erstellen Sie ein Punktdiagramm, um den Vergleich der vorhergesagten Kostenwerte mit den tatsächlichen Kostenwerten zu visualisieren. Im folgenden Code wird das Merkmal `distance` als X-Achse verwendet und die Fahrtkosten `cost` als Y-Achse. Um die Varianz der vorhergesagten Kosten bei jedem Fahrtstreckenwert zu vergleichen, werden die ersten 100 vorhergesagten und tatsächlichen Kostenwerte als separate Reihen erstellt. Die Untersuchung des Diagramms zeigt, dass die Beziehung zwischen Strecke und Kosten nahezu linear ist. Zudem liegen die vorhergesagten Kostenwerte in den meisten Fällen sehr nahe bei den tatsächlichen Kostenwerten für die gleiche Fahrtstrecke.
 
 ```python
 import matplotlib.pyplot as plt
@@ -1125,7 +1127,7 @@ plt.show()
 
 ![Vorhersagepunktdiagramm](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-Berechnen Sie den `root mean squared error` der Ergebnisse. Verwenden Sie den Datenrahmen `y_test`, und konvertieren Sie ihn in eine Liste, um sie mit den prognostizierten Werten zu vergleichen. Die Funktion `mean_squared_error` akzeptiert zwei Wertearrays und berechnet den durchschnittlichen quadratischen Fehler zwischen ihnen. Die Quadratwurzel des Ergebnisses ergibt einen Fehler in der gleichen Maßeinheit wie die Y-Variable (Kosten) und gibt ungefähr an, wie weit Ihre Vorhersagen vom tatsächlichen Wert abweichen.
+Berechnen Sie den `root mean squared error` der Ergebnisse. Verwenden Sie den Datenrahmen `y_test`. Konvertieren Sie ihn in eine Liste, die Sie mit den vorhergesagten Werten vergleichen. Die Funktion `mean_squared_error` akzeptiert zwei Wertarrays und berechnet den durchschnittlichen quadratischen Fehler zwischen den Arrays. Die Quadratwurzel des Ergebnisses ergibt einen Fehler in der gleichen Maßeinheit wie die y-Variable (**Kosten**). Dieser Fehler gibt Aufschluss darüber, wie weit Ihre Vorhersagen ungefähr vom tatsächlichen Wert abweichen:
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1137,7 +1139,7 @@ rmse
 
     3.2204936862688798
 
-Führen Sie den folgenden Code aus, um den mittleren absoluten Fehler in Prozent (mean absolute percent error, MAPE) anhand der vollständigen Datasets `y_actual` und `y_predict` zu berechnen. Diese Metrik berechnet jeweils eine absolute Differenz zwischen dem prognostizierten und dem tatsächlichen Wert, addiert sämtliche Differenzen und drückt das Ergebnis als Prozentsatz der gesamten tatsächlichen Werte aus.
+Führen Sie den folgenden Code aus, um den mittleren absoluten Fehler in Prozent (Mean Absolute Percent Error, MAPE) anhand der vollständigen Datasets `y_actual` und `y_predict` zu berechnen. Diese Metrik berechnet eine absolute Differenz zwischen jedem vorhergesagten und tatsächlichen Wert und addiert alle Differenzen. Die Summe wird dann als Prozentsatz der gesamten tatsächlichen Werte ausgedrückt:
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1170,7 +1172,7 @@ print(1 - mean_abs_percent_error)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial zu automatisiertem maschinellem Lernen haben Sie folgende Schritte ausgeführt:
+In diesem Tutorial zum automatisierten maschinellen Lernen haben Sie folgende Aufgaben ausgeführt:
 
 > [!div class="checklist"]
 > * Konfigurieren eines Arbeitsbereichs und Vorbereiten der Daten für ein Experiment

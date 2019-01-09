@@ -1,5 +1,5 @@
 ---
-title: 'Beispiel: Aufrufen der Maschinelles Sehen-API'
+title: 'Beispiel: Aufrufen der API für die Bildanalyse – Maschinelles Sehen-API'
 titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mithilfe von REST in Azure Cognitive Services die Maschinelles Sehen-API aufrufen.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: e8297fbe59ebe2dea9caf112ebea4517447cf9e0
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981744"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581707"
 ---
-# <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: So rufen Sie die Maschinelles Sehen-API auf
+# <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: Aufrufen der Maschinelles Sehen-API
 
 Diese Anleitung veranschaulicht, wie Sie die Maschinelles Sehen-API mithilfe von REST aufrufen. Die Beispiele wurden in C# sowohl mithilfe der Clientbibliothek der Maschinelles Sehen-API als auch als HTTP POST/GET-Aufrufe geschrieben. Wir konzentrieren uns auf folgende Themen:
 
@@ -26,10 +27,10 @@ Diese Anleitung veranschaulicht, wie Sie die Maschinelles Sehen-API mithilfe von
 
 ### <a name="Prerequisites">Voraussetzungen</a> 
 Bild-URL oder Pfad zum lokal gespeicherten Bild.
-  * Unterstützte Eingabemethoden: Rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
+  * Unterstützte Eingabemethoden: Unformatierte Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
   * Unterstützte Bildformate: JPEG, PNG, GIF, BMP
-  * Bilddateigröße: Kleiner als 4 MB
-  * Bildgröße: Größer als 50 x 50 Pixel
+  * Bilddateigröße: Weniger als 4 MB
+  * Bildgröße: Mindestens 50 x 50 Pixel
   
 Im Beispiel unten werden die folgenden Funktionen demonstriert:
 
@@ -59,12 +60,12 @@ Wie Sie einen Abonnementschlüssel erhalten, erfahren Sie unter [Abrufen von Abo
 
 ```var visionClient = new VisionServiceClient(“Your subscriptionKey”);```
 
-### <a name="Step2">Schritt 2: Hochladen eines Bilds in den Maschinelles Sehen-API-Dienst und Rückgabe eines Tags, einer Beschreibungen und von Prominenten </a>
+### <a name="Step2">Schritt 2: Hochladen eines Bilds in den Maschinelles Sehen-API-Dienst und Rückgabe von Tags, Beschreibungen und Prominenten</a>
 Die einfachste Möglichkeit für den Aufruf der Maschinelles Sehen-API ist das direkte Hochladen eines Bilds. Dies erfolgt durch Senden einer POST-Anforderung des Inhaltstyps „application/octet-stream“ beim Lesen von Daten aus einem Bild. Für „Tags“ und „Description“ ist diese Uploadmethode für alle Aufrufe der Maschinelles Sehen-API gleich. Der einzige Unterschied besteht in den Abfrageparametern, die der Benutzer angibt. 
 
 So rufen Sie „Tags“ und „Description“ für ein bestimmtes Bild ab:
 
-**Option 1:** Abrufen der Liste der „Tags“ und einer „Description“
+**Option 1:** Abrufen der Liste mit „Tags“ und einer „Description“
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```

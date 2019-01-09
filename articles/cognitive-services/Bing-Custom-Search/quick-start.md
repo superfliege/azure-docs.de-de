@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Erstellen der ersten Instanz der benutzerdefinierten Bing-Suche'
+title: 'Schnellstart: Erstellen einer ersten Instanz der benutzerdefinierten Bing-Suche | Microsoft-Dokumentation'
 titlesuffix: Azure Cognitive Services
-description: Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der benutzerdefinierten Suche erstellen, mit der Ihre Ansicht bzw. das Segment des Webs definiert wird. Die Instanz enthält Einstellungen, mit denen die öffentlichen Domänen, Unterwebsites und Webseiten, die mit Bing durchsucht werden sollen, und alle Rangfolgeanpassungen angegeben werden.
+description: Verwenden Sie diesen Artikel zum Erstellen einer Instanz der benutzerdefinierten Bing-Suche, mit der von Ihnen definierte Domänen und Webseiten durchsucht werden können.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,37 +10,46 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2017
 ms.author: aahi
-ms.openlocfilehash: c9b37486d664920bbc4b85a0715ce7f5ea910365
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: ba1444b3115ffd2c73e1773aa926d11fed81f830
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161539"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556117"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Schnellstart: Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche
-Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der benutzerdefinierten Suche erstellen, mit der Ihre Ansicht bzw. das Segment des Webs definiert wird. Die Instanz enthält Einstellungen, mit denen die öffentlichen Domänen, Websites und Webseiten, die mit Bing durchsucht werden sollen, und alle Rangfolgeanpassungen angegeben werden. Verwenden Sie zum Erstellen der Instanz das [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche. 
+
+Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der benutzerdefinierten Suche erstellen, mit der Ihre Ansicht bzw. das Segment des Webs definiert wird. Diese Instanz enthält die öffentlichen Domänen, Websites und Webseiten, die Sie durchsuchen möchten, sowie alle Rangfolgenanpassungen, die Sie ggf. durchführen. 
+
+Verwenden Sie zum Erstellen der Instanz das [Portal für die benutzerdefinierte Bing-Suche](https://customsearch.ai). 
+
+![Abbildung: Portal für die benutzerdefinierte Bing-Suche](media/blockedCustomSrch.png)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-a-custom-search-instance"></a>Erstellen einer Instanz für die benutzerdefinierte Suche
 
 Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
-1.  Rufen Sie einen Schlüssel für die API für die benutzerdefinierte Bing-Suche ab. Weitere Informationen finden Sie unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
-2.  Klicken Sie auf die Schaltfläche **Anmelden**, und melden Sie sich mit einem Microsoft-Konto (MSA) beim Portal an. 
-    - Klicken Sie auf **Microsoft-Konto erstellen**, wenn Sie kein MSA besitzen. Im Portal werden die Berechtigungen für den Zugriff auf Ihre Daten abgefragt. Klicken Sie auf **Ja**.
-    - Stimmen Sie den Nutzungsbedingungen für Cognitive Services zu. Setzen Sie das Häkchen unter **Ich stimme zu**, und klicken Sie auf **Stimme zu**.  
-3.  Klicken Sie nach dem Anmelden auf **Neue Instanz**, und geben Sie einen Namen für die Instanz an. Verwenden Sie einen Namen, der aussagekräftig ist und den Typ des Inhalts beschreibt, der von der Suche zurückgegeben wird. Sie können den Namen jederzeit ändern. 
-4.  Geben Sie auf der **Suchoberfläche** auf der Registerkarte **Aktiv** die URL für mindestens eine Website ein, die Sie in Ihre Suche einbeziehen möchten.
-5.  Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Geben Sie eine neue Website an, falls keine Ergebnisse zurückgegeben werden. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die indiziert wurden.
-6.  Klicken Sie auf **Veröffentlichen**, um Konfigurationsänderungen für die Produktion zu veröffentlichen. Klicken Sie bei entsprechender Aufforderung auf **Veröffentlichen**, um dies zu bestätigen.
-7.  Klicken Sie auf **Produktion** > **Endpunkte**, und kopieren Sie die **Custom Configuration ID** (Benutzerdefinierte Konfigurations-ID). Sie benötigen diese ID zum Aufrufen der API für die benutzerdefinierte Bing-Suche.
+1. Klicken Sie auf der Webseite mit dem [Portal für die benutzerdefinierte Bing-Suche](https://customsearch.ai) auf **Get Started** (Jetzt einsteigen), und melden Sie sich an Ihrem Microsoft-Konto an.
+
+2. Klicken Sie auf **Neue Instanz**, und geben Sie einen aussagekräftigen Namen ein. Sie können den Namen Ihrer Instanz jederzeit ändern.
+ 
+3. Geben Sie auf der **Suchoberfläche** auf der Registerkarte **Aktiv** die URL für mindestens eine Website ein, die Sie in Ihre Suche einbeziehen möchten. 
+
+    > [!NOTE]
+    > Instanzen der benutzerdefinierten Bing-Suche geben nur Ergebnisse für Domänen sowie für Webseiten zurück, die öffentlich sind und von Bing indiziert wurden.
+
+4. Sie können im Portal für die benutzerdefinierte Bing-Suche auf der rechten Seite eine Abfrage eingeben und die Suchergebnisse untersuchen, die von Ihrer Suchinstanz zurückgegeben werden. Wenn keine Ergebnisse zurückgegeben werden, können Sie versuchen, eine andere URL einzugeben.  
+
+5. Klicken Sie auf **Veröffentlichen**, um Ihre Änderungen an der Produktionsumgebung zu veröffentlichen, und aktualisieren Sie die Endpunkte der Instanz.
+
+6.  Klicken Sie auf die Registerkarte **Produktion**, und kopieren Sie unter **Endpunkte** Ihre **benutzerdefinierte Konfigurations-ID**. Sie benötigen diese ID zum Aufrufen der API für die benutzerdefinierte Bing-Suche, indem Sie sie in Ihren Aufrufen an den Abfrageparameter `customconfig=` anfügen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit der Verwendung der hier von Ihnen erstellten Instanz für die benutzerdefinierte Suche fort, indem Sie die Anleitungen in diesen Leitfäden befolgen:
-
-- [Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche](./define-your-custom-view.md)
-- [Aufrufen der benutzerdefinierten Suche](./search-your-custom-view.md)
-- [Freigeben der benutzerdefinierten Suche](./share-your-custom-search.md)
-- [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
-- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](./hit-highlighting.md)
-- [Einteilen von Webseiten](./page-webpages.md)
+> [!div class="nextstepaction"]
+> [Schnellstart: Aufrufen eines Endpunkts für die benutzerdefinierte Bing-Suche](./call-endpoint-csharp.md)

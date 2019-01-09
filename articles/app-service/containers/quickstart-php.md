@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen von PHP-Web-Apps unter Linux: Azure App Service | Microsoft-Dokumentation'
+title: 'Erstellen von PHP-Apps unter Linux: Azure App Service | Microsoft-Dokumentation'
 description: Stellen Sie in wenigen Minuten Ihre erste PHP-App vom Typ „Hello World“ in einer App Service unter Linux bereit.
 services: app-service\web
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 2c9586bb5abce66e4043e3df80b420174a582cbb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: af413528c279c5fcab472347d247b17dd5061167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257368"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628407"
 ---
-# <a name="create-a-php-web-app-in-app-service-on-linux"></a>Erstellen einer PHP-Web-App in App Service unter Linux
+# <a name="create-a-php-app-in-app-service-on-linux"></a>Erstellen einer PHP-App in App Service unter Linux
 
 > [!NOTE]
-> In diesem Artikel wird eine App in App Service unter Linux bereitgestellt. Informationen zur Bereitstellung in App Service unter _Windows_ finden Sie unter [Erstellen einer PHP-Web-App in Azure](../app-service-web-get-started-php.md).
+> In diesem Artikel wird eine App in App Service unter Linux bereitgestellt. Informationen zur Bereitstellung in App Service unter _Windows_ finden Sie unter [Erstellen einer PHP-App in Azure](../app-service-web-get-started-php.md).
 >
 
-[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. In diesem Schnellstart-Tutorial wird erläutert, wie Sie eine PHP-App in Azure App Service unter Linux bereitstellen. Sie erstellen die Web-App mit integriertem Image mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell und stellen mit Git den PHP-Code für die Web-App bereit.
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. In diesem Schnellstart-Tutorial wird erläutert, wie Sie eine PHP-App in Azure App Service unter Linux bereitstellen. Sie erstellen die App mit integriertem Image mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell und stellen mit Git den PHP-Code für die App Service-App bereit.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-php/hello-world-in-browser.png)
 
@@ -80,15 +80,15 @@ Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-Browsen Sie zu der Website, um Ihre neu erstellte Web-App mit integriertem Image anzuzeigen. Ersetzen Sie _&lt;App-Name>_ durch Ihren Web-App-Namen.
+Browsen Sie zur Website, um Ihre neu erstellte App mit integriertem Image anzuzeigen. Ersetzen Sie _&lt;app name>_ durch Ihren App-Namen.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Ihre neue Web-App sollte nun wie folgt aussehen:
+Ihre neue App sollte nun wie folgt aussehen:
 
-![Leere Web-App-Seite](media/quickstart-php/app-service-web-service-created.png)
+![Leere App-Seite](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -125,7 +125,7 @@ Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung.
 http://<app_name>.azurewebsites.net
 ```
 
-Der PHP-Beispielcode wird in einer Web-App mit integriertem Image ausgeführt.
+Der PHP-Beispielcode wird in App Service unter Linux mit integriertem Image ausgeführt.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-php/hello-world-in-browser.png)
 
@@ -150,15 +150,15 @@ Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das
 
 ![In Azure ausgeführte aktualisierte Beispiel-App](media/quickstart-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Verwalten Ihrer neuen Azure-Web-App
+## <a name="manage-your-new-azure-app"></a>Verwalten Ihrer neuen Azure-App
 
-Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte Web-App zu verwalten.
+Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte App zu verwalten.
 
-Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
+Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-App.
 
-![Portalnavigation zur Azure-Web-App](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
+![Portalnavigation zur Azure-App](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen.
+Die Übersichtsseite Ihrer App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen.
 
 ![App Service-Seite im Azure-Portal](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Einführung in Azure IoT Solution Accelerators | Microsoft-Dokumentation
+title: Einführung in IoT Solution Accelerators – Azure | Microsoft-Dokumentation
 description: Enthält eine Beschreibung der Azure IoT Solution Accelerators. Bei IoT Solution Accelerators handelt es sich um vollständige End-to-End-IoT-Lösungen, die fertig für die Bereitstellung sind.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 79c8f0f1c987de6320770416641300f3b8bb7c1d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824539"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607200"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Was sind Azure IoT Solution Accelerators?
 
@@ -34,7 +34,7 @@ Derzeit sind vier Solution Accelerators verfügbar, die Sie bereitstellen könne
 
 ### <a name="remote-monitoring"></a>Remoteüberwachung
 
-Verwenden Sie diesen Solution Accelerator, um Telemetriedaten von Remotegeräten zu erfassen und zu steuern. Beispiele für Geräte sind Kühlsysteme, die beim Kunden installiert sind, oder Ventile in abgelegenen Pumpstationen.
+Verwenden Sie den [Solution Accelerator „Remoteüberwachung“](iot-accelerators-remote-monitoring-sample-walkthrough.md), um Telemetriedaten von Remotegeräten zu erfassen und zu steuern. Beispiele für Geräte sind Kühlsysteme, die beim Kunden installiert sind, oder Ventile in abgelegenen Pumpstationen.
 
 Sie können das Remoteüberwachungs-Dashboard verwenden, um die Telemetriedaten Ihrer verbundenen Geräte anzuzeigen, neue Geräte bereitzustellen oder die Firmware auf Ihren verbundenen Geräten zu aktualisieren:
 
@@ -42,7 +42,7 @@ Sie können das Remoteüberwachungs-Dashboard verwenden, um die Telemetriedaten 
 
 ### <a name="connected-factory"></a>Verbundene Factory
 
-Verwenden Sie diesen Solution Accelerator, um Telemetriedaten von Industrieanlagen mit einer Schnittstelle vom Typ [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) zu erfassen und zu steuern. Beispiele für Industrieanlagen sind Montage- und Teststationen einer Fertigungsstrecke.
+Verwenden Sie den [Solution Accelerator „Verbundene Factory“](iot-accelerators-connected-factory-sample-walkthrough.md), um Telemetriedaten von Industrieanlagen mit einer Schnittstelle vom Typ [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) zu erfassen und zu steuern. Beispiele für Industrieanlagen sind Montage- und Teststationen einer Fertigungsstrecke.
 
 Sie können das Dashboard für verbundene Factorys zum Überwachen und Verwalten Ihrer Industriegeräte verwenden:
 
@@ -50,7 +50,7 @@ Sie können das Dashboard für verbundene Factorys zum Überwachen und Verwalten
 
 ### <a name="predictive-maintenance"></a>Predictive Maintenance
 
-Verwenden Sie diesen Solution Accelerator, um vorherzusagen, wann ein Remotegerät voraussichtlich ausfällt. Sie können dann eine Wartung durchführen, bevor das Gerät tatsächlich ausfällt. Für diesen Solution Accelerator werden Machine Learning-Algorithmen genutzt, um über die Gerätetelemetrie Fehler vorherzusagen. Beispiele für Geräte sind Flugzeugtriebwerke oder Aufzüge.
+Verwenden Sie den [Solution Accelerator „Predictive Maintenance“](iot-accelerators-predictive-walkthrough.md), um vorherzusagen, wann ein Remotegerät voraussichtlich ausfällt. Sie können dann eine Wartung durchführen, bevor das Gerät tatsächlich ausfällt. Für diesen Solution Accelerator werden Machine Learning-Algorithmen genutzt, um über die Gerätetelemetrie Fehler vorherzusagen. Beispiele für Geräte sind Flugzeugtriebwerke oder Aufzüge.
 
 Sie können das Dashboard für vorbeugende Wartung verwenden, um Predictive Maintenance-Analysen anzuzeigen:
 
@@ -58,7 +58,7 @@ Sie können das Dashboard für vorbeugende Wartung verwenden, um Predictive Main
 
 ### <a name="device-simulation"></a>Gerätesimulation
 
-Verwenden Sie diesen Solution Accelerator, um simulierte Geräte auszuführen, die realistische Telemetriedaten generieren. Sie können diesen Solution Accelerator nutzen, um das Verhalten der anderen Solution Accelerators oder Ihre eigenen benutzerdefinierten IoT-Lösungen zu testen.
+Verwenden Sie den [Solution Accelerator „Gerätesimulation“](iot-accelerators-device-simulation-overview.md), um simulierte Geräte auszuführen, die realistische Telemetriedaten generieren. Sie können diesen Solution Accelerator nutzen, um das Verhalten der anderen Solution Accelerators oder Ihre eigenen benutzerdefinierten IoT-Lösungen zu testen.
 
 Sie können die Gerätesimulations-Web-App zum Konfigurieren und Ausführen von Simulationen verwenden:
 
@@ -85,7 +85,7 @@ Die ursprünglichen Solution Accelerators wurden mit .NET geschrieben, indem ein
 | Verbundene Factory      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Gerätesimulation      | Microservices | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Weitere Informationen zu Microservice-Architekturen finden Sie unter [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture) (.NET-Anwendungsarchitektur) und [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine Anwendungsrevolution auf Cloudbasis).
+Weitere Informationen zur Microservicearchitektur finden Sie unter [Introduction to the Azure IoT reference architecture](iot-accelerators-architecture-overview.md) (Einführung in die Azure IoT-Referenzarchitektur).
 
 ## <a name="deployment-options"></a>Bereitstellungsoptionen
 
