@@ -9,18 +9,36 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8b66895e1ae37947c995ffc643505d466c42b93b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094405"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753114"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>Tutorial 4: Extrahieren kontextbezogener Muster
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Tutorial: Extrahieren kontextbezogener Muster mithilfe von Rollen
 
 In diesem Tutorial verwenden Sie ein Muster, um Daten aus einer wohlgeformten Vorlagenäußerung zu extrahieren. Die Vorlagenäußerung verwendet eine einfache Entität und Rollen zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.  Bei der Verwendung von Mustern sind weniger Beispieläußerungen für die Absicht erforderlich.
+
+
+**In diesem Tutorial lernen Sie Folgendes:**
+
+> [!div class="checklist"]
+> * Importieren der Beispiel-App
+> * Erstellen von neuen Entitäten
+> * Erstellen einer neuen Absicht
+> * Trainieren
+> * Veröffentlichen
+> * Abrufen von Absichten und Entitäten vom Endpunkt
+> * Erstellen von Mustern mit Rollen
+> * Erstellen von Ausdruckslisten von Städten
+> * Abrufen von Absichten und Entitäten vom Endpunkt
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-roles-in-patterns"></a>Verwendung von Rollen in Mustern
 
 Der Zweck der Rollen besteht darin, kontextabhängige Entitäten in einer Äußerung zu extrahieren. In der Äußerung `Move new employee Robert Williams from Sacramento and San Francisco` sind die Werte für den Ursprungs- und Zielort miteinander verknüpft, und sie verwenden eine gemeinsame Sprache zur Bezeichnung der einzelnen Standorte. 
 
@@ -37,27 +55,12 @@ Da die Beispieläußerung `Move new employee Robert Williams from Sacramento and
 
 Wenn Sie Schwierigkeiten mit der Erkennung einfacher Entitäten haben, da es um einen Namen wie den eines Orts geht, sollten Sie eventuell eine Liste von Ausdrücken mit ähnlichen Werten hinzufügen. Dadurch wird die Erkennung des Ortsnamens verbessert, da der LUIS-App ein zusätzlicher Hinweis für den jeweiligen Wort- oder Ausdruckstyp zur Verfügung gestellt wird. Ausdruckslisten sind für Muster nur im Hinblick auf die Entitätserkennung nützlich, die für die Musterübereinstimmung erforderlich ist. 
 
-**In diesem Tutorial lernen Sie Folgendes:**
-
-> [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App
-> * Erstellen von neuen Entitäten
-> * Erstellen einer neuen Absicht
-> * Trainieren
-> * Veröffentlichen
-> * Abrufen von Absichten und Entitäten vom Endpunkt
-> * Erstellen von Mustern mit Rollen
-> * Erstellen von Ausdruckslisten von Städten
-> * Abrufen von Absichten und Entitäten vom Endpunkt
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+## <a name="import-example-app"></a>Importieren der Beispiel-App
 Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+Führen Sie die folgenden Schritte aus:
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json) herunter, und speichern Sie sie.
 
 2. Importieren Sie den JSON-Code in eine neue App.
 

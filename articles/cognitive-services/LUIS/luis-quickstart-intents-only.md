@@ -1,7 +1,7 @@
 ---
 title: Vorhersagen von Absichten
 titleSuffix: Azure Cognitive Services
-description: Erstellen einer benutzerdefinierten App, die die Absicht eines Benutzers vorhersagt. Diese App stellt den einfachsten Typ von LUIS-App dar, da sie keine verschiedenen Datenelemente, wie E-Mail-Adressen oder Datumsangaben, aus dem Äußerungstext extrahiert.
+description: In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers vorhersagt. Diese App stellt den einfachsten Typ von LUIS-App dar, da sie keine verschiedenen Datenelemente, wie E-Mail-Adressen oder Datumsangaben, aus dem Äußerungstext extrahiert.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,22 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: b1a9718fdf7222dae06f7fe9b3a0f14b50293c08
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 20cd3931488f3d3cf4728b3022316b685da3277a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097793"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754259"
 ---
-# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>Tutorial 1: Erstellen einer benutzerdefinierten App zum Bestimmen von Benutzerabsichten
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
-In diesem Tutorial erstellen Sie eine benutzerdefinierte Personalwesen-App, die die Absicht eines Benutzers auf der Grundlage seiner Äußerung (Text) vorhersagt. Wenn Sie diesen Schnellstart abschließen, verfügen Sie über einen LUIS-Endpunkt in der Cloud.
-
-Der Zweck der App besteht darin, die Intention von dialogorientiertem, natürlichsprachigem Text zu erkennen. Diese Intentionen sind in **Absichten** kategorisiert. Diese App verfügt über einige Absichten. Die erste Absicht (**`GetJobInformation`**) identifiziert, ob ein Benutzer Informationen über verfügbare Stellen in einem Unternehmen möchte. Die zweite Absicht, **`None`**, wird für alle Äußerungen des Benutzers verwendet, die außerhalb der _Domäne_ (des Bereichs) dieser App liegen. Später wird eine dritte Absicht, **`ApplyForJob`**, für alle Äußerungen, die sich auf Stellenbewerbungen beziehen, hinzugefügt. Diese dritte Absicht unterscheidet sich von `GetJobInformation`, da die Stelleninformationen bereits bekannt sein sollten, wenn sich jemand auf eine Stelle bewirbt. Abhängig von der Wortwahl kann die Bestimmung der Absicht aber schwierig sein, weil es sich bei beiden um eine Stelle handelt.
-
-Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erledigt. LUIS gibt keine Antworten auf Benutzeräußerungen, es identifiziert lediglich, nach welcher Art Information in natürlicher Sprache gefragt wird. 
+In diesem Tutorial erstellen Sie eine benutzerdefinierte Personalwesen-App, die die Absicht eines Benutzers auf der Grundlage seiner Äußerung (Text) vorhersagt. 
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -36,120 +32,138 @@ Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erl
 > * App veröffentlichen
 > * Absicht beim Endpunkt abrufen
 
+
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="user-intentions-as-intents"></a>Benutzerintentionen als Absichten
+
+Der Zweck der App besteht darin, die Intention von dialogorientiertem, natürlichsprachigem Text zu erkennen: 
+
+`Are there any new positions in the Seattle office?`
+
+Diese Intentionen sind in **Absichten** kategorisiert. 
+
+Diese App verfügt über einige Absichten. 
+
+|Absicht|Zweck|
+|--|--|
+|ApplyForJob|Bestimmt, ob der Benutzer sich auf eine Stelle bewirbt.|
+|GetJobInformation|Bestimmt, ob der Benutzer nach Informationen über Stellen im Allgemeinen oder über eine bestimmte Stelle sucht.|
+|Keine|Bestimmt, ob der Benutzer etwas fragt, was von der App nicht beantwortet werden soll. Diese Absicht steht im Rahmen der App-Erstellung zur Verfügung und kann nicht gelöscht werden. |
 
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
 
-1. Melden Sie sich beim LUIS-Portal mit der URL [https://www.luis.ai](https://www.luis.ai) an. 
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-2. Klicken Sie auf **Create new app** (Neue App erstellen).  
+## <a name="create-intent-for-job-information"></a>Absicht für Stelleninformationen erstellen
 
-    [![Screenshot der Seite „Meine Apps“ von Language Understanding (LUIS)](media/luis-quickstart-intents-only/app-list.png "Screenshot der Seite „Meine Apps“ von Language Understanding (LUIS)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
-
-3. Geben Sie im Popupdialogfeld den Namen `HumanResources` ein, und behalten Sie die Standardkultur **Englisch** bei. Lassen Sie die Beschreibung leer.
-
-    ![Erstellen einer neuen LUIS-App namens „HumanResources“](./media/luis-quickstart-intents-only/create-app.png)
-
-    Als nächstes zeigt die App die Seite **Absichten** mit der Absicht **Keine** an.
-
-## <a name="getjobinformation-intent"></a>GetJobInformation-Absicht
-
-1. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. Geben Sie den Namen für die neue Absicht ein: `GetJobInformation`. Diese Absicht wird jedes Mal vorhergesagt, wenn ein Benutzer Informationen über offene Stellen im Unternehmen möchte.
+1. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. Geben Sie den Namen für die neue Absicht ein: `GetJobInformation`. Diese Absicht wird vorhergesagt, wenn ein Benutzer Informationen über offene Stellen im Unternehmen möchte. 
 
     ![Screenshot des Dialogfelds „Neus Absicht“ in Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "Screenshot des Dialogfelds „Neus Absicht“ in Language Understanding (LUIS)")
 
-2. Durch die Bereitstellung von _Beispieläußerungen_ trainieren Sie LUIS, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollten. Fügen Sie dieser Absicht mehrere voraussichtliche Beispieläußerungen von Benutzern hinzu, z.B.:
+1. Wählen Sie **Fertig**aus.
+
+2. Fügen Sie dieser Absicht mehrere voraussichtliche Beispieläußerungen von Benutzern hinzu:
 
     | Beispiele für Äußerungen|
     |--|
     |Wurden heute neue Stellen ausgeschrieben?|
-    |Welche Positionen sind für Oberingenieure verfügbar?|
-    |Gibt es offene Stellen im Datenbankbereich?|
-    |Ich möchte mich beruflich neu orientieren und suche nach Aufgaben in der Buchhaltung.|
-    |Wo finde ich die Stellenangebote?|
-    |Neue Stellen?|
     |Gibt es neue Stellen in Seattle?|
+    |Gibt es offene Stellen für Ingenieure als Remote Worker oder als Telearbeiter?|
+    |Gibt es offene Stellen im Datenbankbereich?|
+    |Ich suche nach einer Co-Working-Möglichkeit in der Niederlassung in Tampa.|
+    |Gibt es in der Niederlassung in San Francisco eine Praktikumsstelle?|
+    |Gibt es Teilzeitjobs für Studenten?|
+    |Ich möchte mich beruflich neu orientieren und suche nach Aufgaben in der Buchhaltung.|
+    |Ich suche nach einer Stelle in New York City für zweisprachige Mitarbeiter.|
+    |Ich suche nach einer neuen Anstellung in leitender Position im Bereich Buchhaltung.|
+    |Neue Stellen?|
+    |Zeige mit alle Stellen für Ingenieure, die wir in den letzten zwei Tagen neu hinzugefügt haben.|
+    |Stellenausschreibungen von heute?|
+    |Welche Stellen für Buchhalter sind in der Niederlassung London frei?|
+    |Welche Positionen sind für Oberingenieure verfügbar?|
+    |Wo finde ich die Stellenangebote?|
 
     [![Screenshot der Eingabe neuer Äußerungen für die Absicht „MyStore“](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Screenshot der Eingabe neuer Äußerungen für die Absicht „MyStore“")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
+    Durch die Bereitstellung von _Beispieläußerungen_ trainieren Sie LUIS, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollten. 
+
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
+## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“ 
 
-## <a name="none-intent"></a>Absicht „None“ 
-Die Clientanwendung muss wissen, ob eine Äußerung außerhalb der Themendomäne der Anwendung liegt. Wenn LUIS für eine Äußerung die Absicht **None** (Keine) zurückgibt, kann Ihre Anwendung fragen, ob der Benutzer die Unterhaltung beenden möchte. Die Clientanwendung kann außerdem weitere Anweisungen zum Fortsetzen der Unterhaltung geben, falls der Benutzer sie nicht beenden möchte. 
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-Diese Beispieläußerungen außerhalb der Themendomäne sind in der Absicht **None** (Keine) gruppiert. Lassen Sie sie nicht leer. 
-
-1. Klicken Sie im linken Bereich auf **Intents** (Absichten).
-
-2. Wählen Sie die Absicht **None** (Keine) aus. Fügen Sie drei Äußerungen hinzu, die der Benutzer unter Umständen eingibt, die für Ihre Personalwesen-App jedoch nicht relevant sind. Wenn die App sich mit Stellenausschreibungen befasst, sind solche Äußerungen für **None** (Keine) etwa:
-
-    | Beispiele für Äußerungen|
-    |--|
-    |Bellende Hunde sind nervig|
-    |Bestell mir eine Pizza|
-    |Pinguine im Ozean|
-
-
-## <a name="train"></a>Trainieren 
+## <a name="train-the-app-before-testing-or-publishing"></a>Trainieren Sie die App vor dem Testen oder Veröffentlichen
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Veröffentlichen
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Veröffentlichen Sie die App, um sie vom Endpunkt aus abzufragen
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="get-intent"></a>Abrufen der Absicht
+## <a name="get-intent-prediction-from-the-endpoint"></a>Abrufen der Absichtsvorhersage vom Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Geben Sie in der Adressleiste am Ende der URL `I'm looking for a job with Natural Language Processing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Sie stellt einen guten Test dar und sollte die Absicht `GetJobInformation` als Absicht mit der höchsten Bewertung zurückgeben. 
+1. Geben Sie in der Adressleiste am Ende der URL `I'm looking for a job with Natural Language Processing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Sie stellt einen guten Test dar und sollte die Absicht `GetJobInformation` als Absicht mit der höchsten Bewertung zurückgeben. 
 
     ```JSON
     {
       "query": "I'm looking for a job with Natural Language Processing",
       "topScoringIntent": {
         "intent": "GetJobInformation",
-        "score": 0.8965092
+        "score": 0.9923871
       },
       "intents": [
         {
           "intent": "GetJobInformation",
-          "score": 0.8965092
+          "score": 0.9923871
         },
         {
           "intent": "None",
-          "score": 0.147104025
+          "score": 0.007810574
         }
       ],
       "entities": []
     }
     ```
 
-    Die Ergebnisse umfassen **alle Absichten** in der App, aktuell 2. Das Entitätenarray ist leer, weil diese App aktuell keine Entitäten aufweist. 
+    Der Abfragezeichenfolgen-Parameter `verbose=true` bedeutet, dass **alle Absichten** in die Abfrageergebnisse der App aufgenommen werden sollen. Das Entitätenarray ist leer, weil diese App aktuell keine Entitäten aufweist. 
 
     Das JSON-Ergebnis identifiziert die am höchsten bewertete Absicht als **`topScoringIntent`**-Eigenschaft. Alle Bewertungen liegen zwischen 1 und 0. Die bessere Bewertung liegt näher bei 1. 
 
-## <a name="applyforjob-intent"></a>ApplyForJob-Absicht
-Kehren Sie zur LUIS-Website zurück, und erstellen Sie eine neue Absicht, um zu bestimmen, ob sich die Benutzeräußerung um eine Stellenbewerbung dreht.
+## <a name="create-intent-for-job-applications"></a>Absicht für Bewerbungen auf Stellen erstellen
+
+Kehren Sie zum LUIS-Portal zurück, und erstellen Sie eine neue Absicht, um zu bestimmen, ob sich die Benutzeräußerung um eine Stellenbewerbung dreht.
 
 1. Klicken Sie im Menü oben rechts auf **Build** (Erstellen), um zur App-Erstellung zurückzukehren.
 
-2. Wählen Sie im linken Menü die Option **Intents** (Absichten) aus.
+1. Wählen Sie im linken Menü **Absichten** aus, um die Liste der Absichten anzuzeigen.
 
-3. Klicken Sie auf **Create new intent** (Neue Absicht erstellen), und geben Sie den Namen `ApplyForJob` ein. 
+1. Klicken Sie auf **Create new intent** (Neue Absicht erstellen), und geben Sie den Namen `ApplyForJob` ein. 
 
     ![LUIS-Dialogfeld zum Erstellen einer neuen Absicht](./media/luis-quickstart-intents-only/create-applyforjob-intent.png)
 
-4. Fügen Sie dieser Absicht mehrere voraussichtliche Äußerungen von Benutzern hinzu, z.B.:
+1. Fügen Sie dieser Absicht mehrere voraussichtliche Äußerungen von Benutzern hinzu, z.B.:
 
     | Beispiele für Äußerungen|
     |--|
-    |Ich möchte mich für die neue Stelle in der Buchhaltung bewerben|
     |Bewerbungsbogen für die Stelle 123456 ausfüllen|
-    |Lebenslauf für die Stelle als Techniker übermitteln|
     |Hier ist mein Lebenslauf für die Position 654234|
+    |Hier ist mein Lebenslauf für die Teilzeitstelle am Empfang.|
+    |Ich bewerbe mich mit diesen Unterlagen auf die Stelle als Grafiker.|
+    |Ich bewerbe mich für das Sommerpraktikum für Studenten in der Forschungs- und Entwicklungsabteilung in San Diego|
+    |Ich bitte, meinen Lebenslauf für die befristete Stelle in der Cafeteria weiterzuleiten.|
+    |Ich reiche meinen Lebenslauf zur Bewerbung beim neuen Autocar-Team in Columbus, Ohio, ein.|
+    |Ich möchte mich für die neue Stelle in der Buchhaltung bewerben|
+    |Die Bewerbungsunterlagen für Stelle 456789, Buchhaltungspraktikum, sind hier|
     |Stelle 567890 und meine Unterlagen|
+    |Meine Unterlagen für das Buchhaltungspraktikum in Tulsa sind beigefügt.|
+    |Meine Papiere für die Ferienposition in der Auslieferung|
+    |Senden Sie meinen Lebenslauf für die neue Buchhalterstelle in Seattle|
+    |Lebenslauf für die Stelle als Techniker übermitteln|
+    |This is my c.v. für Stelle 234123 in Tampa.|
 
     [![Screenshot der Eingabe neuer Äußerungen für die Absicht „ApplyForJob“](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot der Eingabe neuer Äußerungen für die Absicht „ApplyForJob“")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 
@@ -163,7 +177,7 @@ Kehren Sie zur LUIS-Website zurück, und erstellen Sie eine neue Absicht, um zu 
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="get-intent-again"></a>Erneutes Abrufen der Absicht
+## <a name="get-intent-prediction-again"></a>Absichtsvorhersage erneut abrufen
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -174,20 +188,20 @@ Kehren Sie zur LUIS-Website zurück, und erstellen Sie eine neue Absicht, um zu 
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {
         "intent": "ApplyForJob",
-        "score": 0.9166808
+        "score": 0.9634406
       },
       "intents": [
         {
           "intent": "ApplyForJob",
-          "score": 0.9166808
+          "score": 0.9634406
         },
         {
           "intent": "GetJobInformation",
-          "score": 0.07162977
+          "score": 0.0171300638
         },
         {
           "intent": "None",
-          "score": 0.0262826588
+          "score": 0.00670867041
         }
       ],
       "entities": []
@@ -196,13 +210,28 @@ Kehren Sie zur LUIS-Website zurück, und erstellen Sie eine neue Absicht, um zu 
 
     In den Ergebnissen ist die neue Absicht **ApplyForJob** ebenso enthalten wie die beiden vorhandenen Absichten. 
 
+## <a name="client-application-next-steps"></a>Nächste Schritte in der Clientanwendung
+
+Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erledigt. LUIS gibt keine Antworten auf Benutzeräußerungen, es identifiziert lediglich, nach welcher Art Information in natürlicher Sprache gefragt wird. Der Dialoganschluss wird von der Clientanwendung, etwa einem Azure Bot, bereitgestellt. 
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Verwandte Informationen
+
+* [Typen von Entitäten](luis-concept-entity-types.md)
+* [Gewusst wie: trainieren](luis-how-to-train.md)
+* [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
+* [Gewusst wie: Testen im LUIS-Portal](luis-interactive-test.md)
+* [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial wurden die Personalwesen-App und zwei Absichten erstellt, Beispieläußerungen für jede Absicht hinzugefügt, Beispieläußerungen zur Absicht „None“ (Keine) hinzugefügt, die App trainiert, veröffentlicht und am Endpunkt getestet. Dies sind die grundlegenden Schritte bei der Erstellung eines LUIS-Modells. 
+
+Fahren Sie mit dieser App fort, und [fügen Sie eine einfache Entität und eine Ausdrucksliste hinzu](luis-quickstart-primary-and-secondary-data.md).
 
 > [!div class="nextstepaction"]
 > [Add prebuilt intents and entities to this app (Hinzufügen von vordefinierten Absichten und Entitäten)](luis-tutorial-prebuilt-intents-entities.md)

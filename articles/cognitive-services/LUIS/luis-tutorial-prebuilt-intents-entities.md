@@ -1,7 +1,7 @@
 ---
 title: Vordefinierte Absichten und Entitäten
 titleSuffix: Azure Cognitive Services
-description: Fügen Sie der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
+description: Fügen Sie in diesem Tutorial einer App vordefinierte Absichten und Entitäten hinzu, um schnell zu Absichtsvorhersage und Datenextraktion zu gelangen. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,24 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: b6fb603b84cdcf3cb0f75d0020fa2047a0a838d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 804224898f90aa9af587d6d5b4b80c6afcfa586d
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074066"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754984"
 ---
-# <a name="tutorial-2-identify-common-intents-and-entities"></a>Tutorial 2: Identifizieren häufiger Absichten und Entitäten
-In diesem Tutorial ändern Sie die Personal-App. Fügen Sie der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen, da die Entität automatisch erkannt wird.
+# <a name="tutorial-identify-common-intents-and-entities"></a>Tutorial: Identifizieren häufiger Absichten und Entitäten
 
-Vordefinierte Modelle allgemeiner Themendomänen und Datentypen unterstützen Sie beim schnellen Erstellen Ihres Modells und dienen als Beispiele für das Aussehen eines Modells. 
+Fügen Sie in diesem Tutorial der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. Sie müssen Äußerungen nicht mit vordefinierten Entitäten markieren, da die Entität automatisch erkannt wird.
+
+Vordefinierte Modelle (Domänen, Absichten und Entitäten) unterstützen Sie bei der schnellen Erstellung Ihres Modells.
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
 > [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App
+> * Erstellen einer neuen App
 > * Hinzufügen vordefinierter Absichten 
 > * Hinzufügen vordefinierter Entitäten 
 > * Trainieren 
@@ -35,29 +36,24 @@ Vordefinierte Modelle allgemeiner Themendomänen und Datentypen unterstützen Si
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+## <a name="create-a-new-app"></a>Erstellen einer neuen App
 
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json) herunter, und speichern Sie sie.
 
-2. Importieren Sie den JSON-Code in eine neue App.
+## <a name="add-prebuilt-intents-to-help-with-common-user-intentions"></a>Fügen Sie vordefinierte Absichten für allgemeine Benutzerabsichten hinzu.
 
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `prebuilts`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind. 
-
-## <a name="add-prebuilt-intents"></a>Hinzufügen vordefinierter Absichten
 LUIS enthält mehrere vordefinierte Absichten für allgemeine Benutzerabsichten.  
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Wählen Sie **Add prebuilt intent** (Vordefinierte Absicht hinzufügen) aus. 
+1. Wählen Sie **Add prebuilt domain intent** (Vordefinierte Domänenabsicht hinzufügen) aus. 
 
-3. Suchen Sie nach `Utilities`. 
+1. Suchen Sie nach `Utilities`. 
 
     [ ![Screenshot des Dialogfelds zum Hinzufügen vordefinierter Absichten mit eingegebenem Suchbegriff „Utilities“](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
-4. Wählen Sie die folgenden Absichten und dann **Fertig** aus: 
+1. Wählen Sie die folgenden Absichten und dann **Fertig** aus: 
 
     * Utilities.Cancel
     * Utilities.Confirm
@@ -65,118 +61,118 @@ LUIS enthält mehrere vordefinierte Absichten für allgemeine Benutzerabsichten.
     * Utilities.StartOver
     * Utilities.Stop
 
+    Diese Absichten sind nützlich, um zu bestimmen, wo sich der Benutzer in der Konversation befindet und was er tun möchte. 
 
-## <a name="add-prebuilt-entities"></a>Hinzufügen vordefinierter Entitäten
+
+## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Hinzufügen von vordefinierten Entitäten, um die Extraktion allgemeiner Datentypen zu unterstützen
+
 LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner Daten. 
 
 1. Wählen Sie im linken Navigationsmenü die Option **Entities** (Entitäten) aus.
 
-2. Wählen Sie die Schaltfläche **Manage prebuilt entity** (Vordefinierte Entität verwalten) aus.
+1. Wählen Sie die Schaltfläche **Add prebuilt entity** (Vordefinierte Entität hinzufügen).
 
-3. Wählen Sie in der Liste mit den vordefinierten Entitäten **number** und **datetimeV2** und danach **Fertig** aus.
+1. Wählen Sie in der Liste der vordefinierten Entitäten die folgenden Entitäten und dann **Fertig** aus:
+
+    * **[PersonName](luis-reference-prebuilt-person.md)** 
+    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
     ![Screenshot: Auswahl von „number“ im Dialogfeld mit den vordefinierten Entitäten](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-## <a name="train"></a>Trainieren
+    Diese Entitäten helfen Ihnen dabei, Ihrer Clientanwendung Namens- und Ortserkennung hinzuzufügen.
+
+## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“ 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Veröffentlichen
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen der App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Abrufen von Absicht und Entitätsvorhersage vom Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Wechseln Sie an das Ende der URL in der Adressleiste des Browsers, und geben Sie `I want to cancel on March 3` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
+1. Wechseln Sie an das Ende der URL in der Adressleiste des Browsers, und geben Sie `I want to cancel my trip to Seattle to see Bob Smith` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
     ```json
     {
-      "query": "I want to cancel on March 3",
+      "query": "I want to cancel my trip to Seattle to see Bob Smith",
       "topScoringIntent": {
         "intent": "Utilities.Cancel",
-        "score": 0.7818295
+        "score": 0.807676256
       },
       "intents": [
         {
           "intent": "Utilities.Cancel",
-          "score": 0.7818295
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0237864349
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.017576348
+          "score": 0.807676256
         },
         {
           "intent": "Utilities.StartOver",
-          "score": 0.0130122062
+          "score": 0.0487322025
         },
         {
           "intent": "Utilities.Help",
-          "score": 0.006731322
+          "score": 0.0208660364
         },
         {
           "intent": "None",
-          "score": 0.00524190161
+          "score": 0.008789532
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.004912514
+          "score": 0.006929268
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.00092950504
+          "score": 0.00136293867
         }
       ],
       "entities": [
         {
-          "entity": "march 3",
-          "type": "builtin.datetimeV2.date",
-          "startIndex": 20,
-          "endIndex": 26,
-          "resolution": {
-            "values": [
-              {
-                "timex": "XXXX-03-03",
-                "type": "date",
-                "value": "2018-03-03"
-              },
-              {
-                "timex": "XXXX-03-03",
-                "type": "date",
-                "value": "2019-03-03"
-              }
-            ]
-          }
+          "entity": "seattle",
+          "type": "builtin.geographyV2.city",
+          "startIndex": 28,
+          "endIndex": 34
         },
         {
-          "entity": "3",
-          "type": "builtin.number",
-          "startIndex": 26,
-          "endIndex": 26,
-          "resolution": {
-            "value": "3"
-          }
+          "entity": "bob smith",
+          "type": "builtin.personName",
+          "startIndex": 43,
+          "endIndex": 51
         }
       ]
     }
     ```
 
-    Das Ergebnis hat die Absicht „Utilities.Cancel“ vorhergesagt und als Datum den 3. März und die Zahl 3 extrahiert. 
+    Das Ergebnis hat die Absicht Utilities.Cancel mit einer Konfidenz von 80 % vorhergesagt und die Daten für Stadt und Personennamen extrahiert. 
 
-    Es sind zwei Werte für den 3. März vorhanden, da die Äußerung keine Angaben dazu enthielt, ob der 3. März in der Vergangenheit oder in der Zukunft liegt. Es ist Aufgabe der Clientanwendung, eine Annahme zu treffen oder nachzufragen, falls dies erforderlich ist. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Verwandte Informationen
+
+Weitere Informationen zu vordefinierten Modellen:
+
+* [Vordefinierte Domänen](luis-reference-prebuilt-domains.md): Dies sind allgemeine Domänen, die den Gesamtaufwand für das Erstellen von LUIS-Apps verringern.
+* Vordefinierte Absichten: Dies sind die einzelnen Absichten der allgemeinen Domänen. Sie können Absichten einzeln hinzufügen, statt eine gesamte Domäne hinzuzufügen.
+* [Vorkonfigurierte Entitäten](luis-prebuilt-entities.md): Dies sind allgemeine Datentypen, die für die meisten LUIS-Apps nützlich sind.
+
+Weitere Informationen zur Arbeit mit Ihrer LUIS-App:
+
+* [Informationen zum Trainieren](luis-how-to-train.md)
+* [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
+* [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Durch das Hinzufügen vordefinierter Absichten und Entitäten kann die Clientanwendung allgemeine Benutzerabsichten bestimmen und allgemeine Datentypen extrahieren. 
+Durch das Hinzufügen vordefinierter Absichten und Entitäten kann die Clientanwendung allgemeine Benutzerabsichten bestimmen und allgemeine Datentypen extrahieren.  
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“ zur App](luis-quickstart-intents-regex-entity.md)

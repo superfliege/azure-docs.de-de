@@ -9,34 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bf4fd5d2a3a9bb06882dcd1b4674ccdf8ad894ee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096688"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971408"
 ---
-# <a name="tutorial-4-extract-exact-text-matches"></a>Tutorial 4: Extrahieren genauer Textübereinstimmungen
-In diesem Tutorial lernen Sie, wie Daten abgerufen werden, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann eine Liste mit Synonymen enthalten. Für die Personalwesen-App kann ein Mitarbeiter anhand verschiedener Schlüsselinformationen, wie Name, E-Mail, Telefonnummer und Steuernummer identifiziert werden. 
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung
 
-Die Personalwesen-App muss bestimmen, welcher Mitarbeiter von einem Gebäude in ein anderes Gebäude verlegt wird. Für eine Äußerung über eine Mitarbeiterverlegung bestimmt LUIS die Absicht und extrahiert den Mitarbeiter, damit von der Clientanwendung ein Standardauftrag zum Verlegen des Mitarbeiters erstellt werden kann.
-
-Diese App verwendet eine Listenentität, um den Mitarbeiter zu extrahieren. Auf den Mitarbeiter kann über den Namen, die Telefondurchwahl, die Mobiltelefonnummer, die E-Mail-Adresse oder die Steuernummer Bezug genommen werden. 
-
-Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes gilt:
-
-* Bei den Datenwerten handelt es sich um einen bekannten Satz.
-* Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
-* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. 
+In diesem Tutorial lernen Sie, wie Entitätsdaten abgerufen werden, die mit einer vordefinierten Liste von Elementen übereinstimmen. 
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App
-> * Hinzufügen einer MoveEmployee-Absicht
+> * Erstellen einer App
+> * Hinzufügen einer Absicht
 > * Hinzufügen einer Entität vom Typ „Liste“ 
 > * Trainieren 
 > * Veröffentlichen
@@ -44,25 +35,31 @@ Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+## <a name="what-is-a-list-entity"></a>Was ist eine Listenentität?
 
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+Eine Listenentität ist eine genaue Textübereinstimmung mit den Wörtern in der Äußerung. 
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json) herunter, und speichern Sie sie.
+Jedes Element auf der Liste kann eine Liste mit Synonymen enthalten. Für eine Personalverwaltungs-App kann eine Abteilung im Unternehmen anhand einiger Schlüsselinformationen identifiziert werden, etwa ihres offiziellen Namens, gängiger Akronyme und Codes der Buchhaltung. 
 
-2. Importieren Sie den JSON-Code in eine neue App.
+Die Personalverwaltungs-App muss die Abteilung bestimmen, zu der ein Mitarbeiter wechselt. 
 
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `list`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind. 
+Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes gilt:
 
+* Bei den Datenwerten handelt es sich um einen bekannten Satz.
+* Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
+* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Wortstammerkennung, Pluralformen und andere Varianten lassen sich nur mithilfe einer Listenentität nicht auflösen. Um Varianten zu behandeln, ziehen Sie die Verwendung eines [Musters](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung. 
 
-## <a name="moveemployee-intent"></a>MoveEmployee-Absicht
+## <a name="create-a-new-app"></a>Erstellen einer neuen App
+
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+
+## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>Erstellen Sie eine Absicht, um Mitarbeiter in eine andere Abteilung zu überstellen
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
 
-3. Geben Sie im Popupdialogfeld die Zeichenfolge `MoveEmployee` ein, und klicken Sie anschließend auf **Fertig**. 
+3. Geben Sie im Popupdialogfeld die Zeichenfolge `TransferEmployeeToDepartment` ein, und klicken Sie anschließend auf **Fertig**. 
 
     ![Screenshot: Dialogfenster „Create new intent“ (Neue Absicht erstellen)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
@@ -70,205 +67,122 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
     |Beispiele für Äußerungen|
     |--|
-    |move John W. Smith from B-1234 to H-4452 (John W. Smith von B-1234 nach H-4452 verschieben)|
-    |mv john.w.smith@mycompany.com from office b-1234 to office h-4452 (Verschieben von „john.w.smith@mycompany.com“ von Büro b-1234 in Büro h-4452)|
-    |shift x12345 to h-1234 tomorrow (x12345 morgen nach h-1234 verlagern)|
-    |place 425-555-1212 in HH-2345 (425-555-1212 in HH-2345 anordnen)|
-    |move 123-45-6789 from A-4321 to J-23456 (123-45-6789 von A-4321 nach J-23456 verschieben)|
-    |mv Jill Jones from D-2345 to J-23456 (Verschieben von Jill Jones von D-2345 nach J-23456)|
-    |shift jill-jones@mycompany.com to M-12345 („jill-jones@mycompany.com“ nach M-12345 verlagern)|
-    |x23456 to M-12345 (x23456 nach M-12345)|
-    |425-555-0000 to h-4452 (425-555-0000 nach h-4452)|
-    |234-56-7891 to hh-2345 (234-56-7891 nach hh-2345)|
+    |Versetzen Sie John W. Smith in die Buchhaltungsabteilung|
+    |Übertragen Sie Jill Jones an F&E|
+    |Abteilung 1234 hat ein neues Mitglied namens Bill Bradstreet|
+    |Setzen Sie John Jackson in der technischen Abteilung ein |
+    |Versetzen Sie Debra Doughtery in den Inlandsvertrieb|
+    |Versetzen Sie Jill Jones in die IT|
+    |Bringen Sie Alice Anderson in DevOps unter|
+    |Carl Chamerlin wechselt zu Finanzen|
+    |Steve Standish in 1234|
+    |Tanner Thompson in 3456|
 
-    [ ![Screenshot: Seite „Intents“ (Absichten) mit hervorgehobenen neuen Äußerungen](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    Beachten Sie, dass „Zahl“ und „datetimeV2“ in einem vorhergehenden Tutorial hinzugefügt wurden und automatisch bezeichnet werden, wenn sie in Beispieläußerungen gefunden werden.
+    [![Screenshot einer Absicht mit Beispieläußerungen](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Screenshot einer Absicht mit Beispieläußerungen")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="employee-list-entity"></a>Mitarbeiter-Listenentität
-Nachdem die Absicht **MoveEmployee** jetzt über Beispieläußerungen verfügt, muss LUIS verstehen, was ein Mitarbeiter ist. 
+## <a name="department-list-entity"></a>Entität „Abteilungsliste“
 
-Der primäre, _kanonische_ Name für die einzelnen Elemente ist die Mitarbeiternummer. Für diese Domäne lauten Beispiele für die Synonyme der einzelnen kanonischen Namen wie folgt: 
+Jetzt, da für die Absicht **TransferEmployeeToDepartment** Beispieläußerungen vorhanden sind, muss LUIS verstehen, was eine Abteilung ist. 
 
-|Zweck des Synonyms|Wert des Synonyms|
+Der primäre, _kanonische_ Name für jedes Element ist der Abteilungsname. Dies sind ein paar Beispiele für Synonyme der einzelnen kanonischen Namen: 
+
+|Kanonischer Name|Synonyme|
 |--|--|
-|NAME|John W. Smith|
-|E-Mail-Adresse|john.w.smith@mycompany.com|
-|Durchwahl|x12345|
-|Persönliche Mobiltelefonnummer|425-555-1212|
-|US-Sozialversicherungsnummer|123-45-6789|
-
+|Buchhaltung|Buchh.<br>Bchltng<br>3456|
+|Entwicklung und Betrieb|DevOps<br>4949|
+|Entwicklung|Entw<br>Dev<br>4567|
+|Finanzen|Fin<br>2020|
+|Informationstechnologie|IT<br>2323|
+|Vertrieb Inland|I-Vertrieb<br>I-Vertr.<br>1414|
+|Forschung und Entwicklung|F&E<br>1234|
 
 1. Klicken Sie im linken Bereich auf **Entitäten**.
 
-2. Wählen Sie **Neue Entität erstellen** aus.
+1. Wählen Sie **Neue Entität erstellen** aus.
 
-3. Geben Sie im Popupdialogfeld `Employee` als Entitätsname und **List** (Liste) als Entitätstyp ein. Wählen Sie **Fertig**aus.  
+1. Geben Sie im Popupdialogfeld `Department` als Entitätsname und **List** (Liste) als Entitätstyp ein. Wählen Sie **Fertig**aus.  
 
-    [![Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-4. Geben Sie auf der Seite mit der Mitarbeiterentität `Employee-24612` als neuen Wert ein.
+1. Geben Sie auf der Seite mit der Abteilungsentität `Accounting` als neuen Wert ein.
 
     [![Screenshot der Eingabe eines Werts](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Screenshot der Eingabe eines Werts")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
-5. Fügen Sie unter „Synonyme“ die folgenden Werte hinzu:
-
-    |Zweck des Synonyms|Wert des Synonyms|
-    |--|--|
-    |NAME|John W. Smith|
-    |E-Mail-Adresse|john.w.smith@mycompany.com|
-    |Durchwahl|x12345|
-    |Persönliche Mobiltelefonnummer|425-555-1212|
-    |US-Sozialversicherungsnummer|123-45-6789|
+1. Fügen Sie als Synonyme die Synonyme aus der vorhergehenden Tabelle ein.
 
     [![Screenshot der Eingabe von Synonymen](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Screenshot der Eingabe von Synonymen")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
-6. Geben Sie `Employee-45612` als neuen Wert ein.
+1. Fahren Sie mit dem Hinzufügen aller kanonischen Namen und ihrer Synonyme fort. 
 
-7. Fügen Sie unter „Synonyme“ die folgenden Werte hinzu:
+## <a name="add-example-utterances-to-the-none-intent"></a>Fügen Sie der Absicht „None“ Beispieläußerungen hinzu 
 
-    |Zweck des Synonyms|Wert des Synonyms|
-    |--|--|
-    |NAME|Jill Jones|
-    |E-Mail-Adresse|jill-jones@mycompany.com|
-    |Durchwahl|x23456|
-    |Persönliche Mobiltelefonnummer|425-555-0000|
-    |US-Sozialversicherungsnummer|234-56-7891|
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train"></a>Trainieren
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren Sie die App, um die Absichtsänderungen testen zu können 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Veröffentlichen
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen Sie die App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Rufen Sie Absicht und Entitätsvorhersage vom Endpunkt ab
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. Geben Sie in der Adressleiste am Ende der URL `shift 123-45-6789 from Z-1242 to T-54672` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage („**q**uery“) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die Absicht `MoveEmployee` mit Extrahierung von `Employee` zurückgegeben werden.
+1. Geben Sie in der Adressleiste am Ende der URL `shift Joe Smith to IT` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage („**q**uery“) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die Absicht `TransferEmployeeToDepartment` mit Extrahierung von `Department` zurückgegeben werden.
 
   ```json
-  {
-    "query": "shift 123-45-6789 from Z-1242 to T-54672",
-    "topScoringIntent": {
-      "intent": "MoveEmployee",
-      "score": 0.9882801
-    },
-    "intents": [
-      {
-        "intent": "MoveEmployee",
-        "score": 0.9882801
+    {
+      "query": "shift Joe Smith to IT",
+      "topScoringIntent": {
+        "intent": "TransferEmployeeToDepartment",
+        "score": 0.9775754
       },
-      {
-        "intent": "FindForm",
-        "score": 0.016044287
-      },
-      {
-        "intent": "GetJobInformation",
-        "score": 0.007611245
-      },
-      {
-        "intent": "ApplyForJob",
-        "score": 0.007063288
-      },
-      {
-        "intent": "Utilities.StartOver",
-        "score": 0.00684710965
-      },
-      {
-        "intent": "None",
-        "score": 0.00304174074
-      },
-      {
-        "intent": "Utilities.Help",
-        "score": 0.002981
-      },
-      {
-        "intent": "Utilities.Confirm",
-        "score": 0.00212222221
-      },
-      {
-        "intent": "Utilities.Cancel",
-        "score": 0.00191026414
-      },
-      {
-        "intent": "Utilities.Stop",
-        "score": 0.0007461446
-      }
-    ],
-    "entities": [
-      {
-        "entity": "123 - 45 - 6789",
-        "type": "Employee",
-        "startIndex": 6,
-        "endIndex": 16,
-        "resolution": {
-          "values": [
-            "Employee-24612"
-          ]
+      "intents": [
+        {
+          "intent": "TransferEmployeeToDepartment",
+          "score": 0.9775754
+        },
+        {
+          "intent": "None",
+          "score": 0.0154493852
         }
-      },
-      {
-        "entity": "123",
-        "type": "builtin.number",
-        "startIndex": 6,
-        "endIndex": 8,
-        "resolution": {
-          "value": "123"
+      ],
+      "entities": [
+        {
+          "entity": "it",
+          "type": "Department",
+          "startIndex": 19,
+          "endIndex": 20,
+          "resolution": {
+            "values": [
+              "Information Technology"
+            ]
+          }
         }
-      },
-      {
-        "entity": "45",
-        "type": "builtin.number",
-        "startIndex": 10,
-        "endIndex": 11,
-        "resolution": {
-          "value": "45"
-        }
-      },
-      {
-        "entity": "6789",
-        "type": "builtin.number",
-        "startIndex": 13,
-        "endIndex": 16,
-        "resolution": {
-          "value": "6789"
-        }
-      },
-      {
-        "entity": "-1242",
-        "type": "builtin.number",
-        "startIndex": 24,
-        "endIndex": 28,
-        "resolution": {
-          "value": "-1242"
-        }
-      },
-      {
-        "entity": "-54672",
-        "type": "builtin.number",
-        "startIndex": 34,
-        "endIndex": 39,
-        "resolution": {
-          "value": "-54672"
-        }
-      }
-    ]
-  }
+      ]
+    }
   ```
-
-  Der Mitarbeiter wurde gefunden und mit dem Typ `Employee` mit dem Auflösungswert `Employee-24612` zurückgegeben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Verwandte Informationen
+
+* Informationen zum Konzept der [Listenentität](luis-concept-entity-types.md#list-entity)
+* [Gewusst wie: trainieren](luis-how-to-train.md)
+* [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
+* [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial wurden eine neue Absicht erstellt, Beispieläußerungen hinzugefügt und dann eine Listenentität erstellt, um exakte Textübereinstimmungen aus Äußerungen zu extrahieren. Nach dem Trainieren und Veröffentlichen der App hat eine Abfrage des Endpunkts die Absicht identifiziert und die extrahierten Daten zurückgegeben.
+
+Fahren Sie mit dieser App fort, mit [Hinzufügen einer Entität vom Typ „Composite“](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md)

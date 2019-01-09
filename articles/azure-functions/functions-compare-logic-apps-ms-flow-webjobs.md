@@ -1,6 +1,6 @@
 ---
 title: Vergleich von Flow, Logic Apps, Functions und WebJobs – Azure
-description: 'Hier finden Sie einen Vergleich der für Integrationsaufträge optimierten Microsoft Cloud Services: Flow, Logic Apps, Functions und WebJobs.'
+description: 'Hier finden Sie einen Vergleich der für Integrationsaufträge optimierten Microsoft Cloud Services:  Flow, Logic Apps, Functions und WebJobs.'
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c22d75b4eb058942da5a3b0699cbb4a23eec42f3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec2c7a25c5108ee3c6f861defd8403ff40113075
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634930"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722216"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Vergleich von Flow, Logic Apps, Functions und WebJobs
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die folgenden Microsoft Cloud Services miteinander verg
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure-Funktionen](https://azure.microsoft.com/services/functions/)
-* [WebJobs in Azure App Service](../app-service/web-sites-create-web-jobs.md)
+* [WebJobs in Azure App Service](../app-service/webjobs-create.md)
 
 Mit allen diesen Diensten können Integrationsprobleme gelöst und Geschäftsprozesse automatisiert werden. Jeder der Dienste kann Eingaben, Aktionen, Bedingungen und Ausgaben definieren. Sie können die Dienste individuell nach einem Zeitplan oder auslöserbasiert ausführen. Jeder Dienst hat jedoch seine eigenen Vorteile. In diesem Artikel werden die Unterschiede beschrieben.
 
@@ -70,7 +70,7 @@ In einer Orchestrierung können die Dienste nach Belieben miteinander kombiniert
 
 ## <a name="compare-functions-and-webjobs"></a>Vergleich von Functions und WebJobs
 
-Wie bei Azure Functions auch, handelt es sich bei WebJobs in Azure App Service um einen *Code-First*-Integrationsdienst, der für Entwickler konzipiert ist. Beide Dienste basieren auf [Azure App Service](../app-service/app-service-web-overview.md) und unterstützen Features wie [Integration der Quellcodeverwaltung](../app-service/app-service-continuous-deployment.md), [Authentifizierung](../app-service/app-service-authentication-overview.md) und [Überwachung per Application Insights-Integration](functions-monitoring.md).
+Wie bei Azure Functions auch, handelt es sich bei WebJobs in Azure App Service um einen *Code-First*-Integrationsdienst, der für Entwickler konzipiert ist. Beide Dienste basieren auf [Azure App Service](../app-service/overview.md) und unterstützen Features wie [Integration der Quellcodeverwaltung](../app-service/deploy-continuous-deployment.md), [Authentifizierung](../app-service/overview-authentication-authorization.md) und [Überwachung per Application Insights-Integration](functions-monitoring.md).
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs und das WebJobs SDK
 

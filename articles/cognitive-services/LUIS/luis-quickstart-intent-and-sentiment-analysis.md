@@ -1,7 +1,7 @@
 ---
 title: Stimmungsanalyse
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen extrahieren. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
+description: In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen abrufen. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,56 +9,64 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ee50907d7965a66d09dc57113e87edecb1932083
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098923"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754287"
 ---
-# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Tutorial 9:  Extrahieren der Stimmung aus einer gesamten Äußerung
-In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen extrahieren. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
+# <a name="tutorial--get-sentiment-of-utterance"></a>Tutorial:  Abrufen der Stimmung einer Äußerung
 
-Mithilfe der Stimmungsanalyse können Sie ermitteln, ob die Äußerung eines Benutzers positiv, negativ oder neutral ist. 
+In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen in Äußerungen bestimmen. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
+
+**In diesem Tutorial lernen Sie Folgendes:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Erstellen einer neuen App
+> * Hinzufügen der Standpunktanalyse als Veröffentlichungseinstellung
+> * Trainieren der App
+> * App veröffentlichen
+> * Abrufen der Stimmung einer Äußerung von einem Endpunkt
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="sentiment-analysis-is-a-publish-setting"></a>Standpunktanalyse ist eine Veröffentlichungseinstellung
 
 Die folgenden Äußerungen sind Beispiele für die Stimmung:
 
 |Stimmung|Punkte|Äußerung|
 |:--|:--|:--|
 |Positiv|0,91 |John W. Smith did a great job on the presentation in Paris. (John W. Smith hat bei der Präsentation in Paris gute Arbeit geleistet.)|
-|Positiv|0,84 |jill-jones@mycompany.com did fabulous work on the Parker sales pitch. (jill-jones@mycompany.com hat bei der Parker-Verkaufspräsentation erstklassige Arbeit abgeliefert.)|
+|Positiv|0,84 |Die Techniker aus Seattle haben bei der Parker-Verkaufspräsentation erstklassige Arbeit abgeliefert.|
 
-Die Standpunktanalyse ist eine Veröffentlichungseinstellung, die auf jede Äußerung angewendet wird. Sie müssen in der Äußerung nicht nach den Wörtern für die Standpunktangabe suchen und diese Wörter kennzeichnen, da für die Standpunktanalyse die gesamte Äußerung herangezogen wird. 
+Die Standpunktanalyse ist eine Veröffentlichungseinstellung, die auf jede Äußerung angewendet wird. Sie müssen die Wörter, die auf die Stimmung in einer Äußerung hinweisen, nicht suchen und markieren. 
 
 Da es sich um eine Veröffentlichungseinstellung handelt, wird diese nicht auf den Seiten mit Absichten oder Entitäten angezeigt. Sie wird aber im Bereich für den [interaktiven Test](luis-interactive-test.md#view-sentiment-results) oder beim Testen an der Endpunkt-URL angezeigt. 
 
-**In diesem Tutorial lernen Sie Folgendes:**
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App 
-> * Hinzufügen der Standpunktanalyse als Veröffentlichungseinstellung
-> * Trainieren
-> * Veröffentlichen
-> * Abrufen der Stimmung einer Äußerung von einem Endpunkt
+## <a name="create-a-new-app"></a>Erstellen einer neuen App
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+## <a name="add-personname-prebuilt-entity"></a>Hinzufügen der vordefinierten PersonName-Entität 
 
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+1. Wählen Sie im linken Navigationsmenü die Option **Entities** (Entitäten) aus.
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json) herunter, und speichern Sie sie.
+1. Wählen Sie die Schaltfläche **Add prebuilt entity** (Vordefinierte Entität hinzufügen).
 
-2. Importieren Sie den JSON-Code in eine neue App.
+1. Wählen Sie in der Liste der vordefinierten Entitäten die folgenden Entitäten und dann **Fertig** aus:
 
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `sentiment`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+    * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-## <a name="employeefeedback-intent"></a>Absicht „EmployeeFeedback“ 
+    ![Screenshot: Auswahl von „number“ im Dialogfeld mit den vordefinierten Entitäten](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+
+## <a name="create-an-intent-to-determine-employee-feedback"></a>Erstellen einer Absicht zum Bestimmen des Mitarbeiterfeedbacks
+
 Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback hinzu. 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
@@ -71,122 +79,66 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
 
 4. Fügen Sie mehrere Äußerungen hinzu, in denen ein Mitarbeiter für etwas gelobt wird oder die einen Bereich mit Verbesserungsbedarf angeben:
 
-    Zur Erinnerung: In dieser Personal-App werden Mitarbeiter in der Listenentität (`Employee`) mit Name, E-Mail-Adresse, Durchwahl, Mobiltelefonnummer und US-Sozialversicherungsnummer definiert. 
-
     |Äußerungen|
     |--|
-    |425-555-1212 did a nice job of welcoming back a co-worker from maternity leave (425-555-1212 hat einer Kollegin den Wiedereinstieg nach ihrem Mutterschaftsurlaub erleichtert.)|
-    |234-56-7891 did a great job of comforting a co-worker in their time of grief. (234-56-7891 hat sich mitfühlend um einen trauernden Kollegen gekümmert.)|
-    |jill-jones@mycompany.com didn't have all the required invoices for the paperwork. (jill-jones@mycompany.com hatte nicht alle erforderlichen Rechnungen für die Unterlagen beisammen.)|
-    |john.w.smith@mycompany.com turned in the required forms a month late with no signatures (john.w.smith@mycompany.com hat die erforderlichen Formulare einen Monat zu spät und ohne Unterschrift eingereicht.)|
-    |x23456 didn't make it to the important marketing off-site meeting. (x23456 war bei der wichtigen externen Marketingbesprechung nicht anwesend.)|
-    |x12345 missed the meeting for June reviews. (x12345 war bei der Besprechung für die Juni-Prüfung nicht dabei.)|
-    |Jill Jones rocked the sales pitch at Harvard (Jill Jones hat die Verkaufspräsentation für Harvard exzellent gemeistert.)|
-    |John W. Smith did a great job on the presentation at Stanford. (John W. Smith hat bei der Präsentation für Stanford gute Arbeit geleistet.)|
+    |John Smith hat den Wiedereinstieg einer Kollegin nach dem Mutterschaftsurlaub sehr erleichtert|
+    |Jill Jones hat sich mitfühlend um einen trauernden Kollegen gekümmert.|
+    |Bob Barnes hatte nicht alle erforderlichen Rechnungen für die Unterlagen beisammen.|
+    |Todd Thomas hat die erforderlichen Formulare einen Monat zu spät und ohne Unterschrift eingereicht.|
+    |Katherine Kelly war bei der wichtigen externen Marketingbesprechung nicht anwesend.|
+    |Denise Dillard war bei der Besprechung für die Juni-Prüfung nicht dabei.|
+    |Mark Mathews hat die Verkaufspräsentation für Harvard exzellent gemeistert.|
+    |Walter Williams hat bei der Präsentation für Stanford gute Arbeit geleistet.|
 
     [ ![Screenshot: LUIS-App mit Beispieläußerungen in der Absicht „EmployeeFeedback“](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="train"></a>Trainieren
+## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“ 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurieren der App zur Aufnahme der Stimmungsanalyse
+
 1. Klicken Sie im Navigationsbereich oben rechts auf **Verwalten**, und wählen Sie dann im linken Menü die Option **Veröffentlichungseinstellungen** aus.
 
-2. Schalten Sie zum Aktivieren dieser Einstellung auf **Standpunktanalyse** um. 
+1. Wählen Sie **Standpunktanalyse** aus, um diese Einstellung zu aktivieren. 
 
     ![Aktivieren der Standpunktanalyse als Veröffentlichungseinstellung](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
-## <a name="publish"></a>Veröffentlichen
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen der App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-sentiment-of-utterance-from-endpoint"></a>Abrufen der Stimmung einer Äußerung von einem Endpunkt
+## <a name="get-the-sentiment-of-an-utterance-from-the-endpoint"></a>Abrufen der Stimmung einer Äußerung vom Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Geben Sie in der Adressleiste am Ende der URL `Jill Jones work with the media team on the public portal was amazing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `EmployeeFeedback` mit der extrahierten Stimmungsanalyse zurückgeben.
+1. Geben Sie in der Adressleiste am Ende der URL `Jill Jones work with the media team on the public portal was amazing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `EmployeeFeedback` mit der extrahierten Stimmungsanalyse zurückgeben.
     
     ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {
         "intent": "EmployeeFeedback",
-        "score": 0.4983256
+        "score": 0.9616192
       },
       "intents": [
         {
           "intent": "EmployeeFeedback",
-          "score": 0.4983256
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.06617523
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.04631853
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0103248553
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.007531875
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00344597152
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00337914471
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.0026357458
+          "score": 0.9616192
         },
         {
           "intent": "None",
-          "score": 0.00214573368
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00157622492
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 7.379545E-05
+          "score": 0.09347677
         }
       ],
       "entities": [
         {
           "entity": "jill jones",
-          "type": "Employee",
-          "startIndex": 0,
-          "endIndex": 9,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
-        },
-        {
-          "entity": "media team",
-          "type": "builtin.keyPhrase",
-          "startIndex": 25,
-          "endIndex": 34
-        },
-        {
-          "entity": "public portal",
-          "type": "builtin.keyPhrase",
-          "startIndex": 43,
-          "endIndex": 55
-        },
-        {
-          "entity": "jill jones",
-          "type": "builtin.keyPhrase",
+          "type": "builtin.personName",
           "startIndex": 0,
           "endIndex": 9
         }
@@ -198,11 +150,19 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
     }
     ```
 
-    Die Standpunktanalyse ist positiv (Wert: 0,86). 
+    Die Standpunktanalyse ist positiv (Wert: 86 %). 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>Verwandte Informationen
+
+* Die Stimmungsanalyse wird von der Cognitive Service-[Textanalyse](../Text-Analytics/index.yml) bereitgestellt. Das Feature ist auf die von der Textanalyse [unterstützten Sprachen](luis-language-support.md##languages-supported) beschränkt.
+* [Informationen zum Trainieren](luis-how-to-train.md)
+* [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
+* [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial wird die Standpunktanalyse als Veröffentlichungseinstellung zum Extrahieren von Stimmungswerten aus der gesamten Äußerung hinzugefügt.

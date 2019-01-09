@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2018
+ms.date: 12/06/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dacc28c1cfe2ee896597aeaf92a22c7f6e13c306
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969956"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726611"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI in Azure Stack
 
@@ -128,7 +128,6 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
-
    b. Registrieren Sie die Umgebung für *Benutzer* wie folgt:
 
       ```azurecli
@@ -151,9 +150,22 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
         --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
         --profile 2018-03-01-hybrid
       ```
+    d. Um den Benutzer in einer AD FS-Umgebung zu registrieren, verwenden Sie:
 
+      ```azurecli
+      az cloud register \
+        -n AzureStack  \
+        --endpoint-resource-manager "https://management.local.azurestack.external" \
+        --suffix-storage-endpoint "local.azurestack.external" \
+        --suffix-keyvault-dns ".vault.local.azurestack.external"\
+        --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" \
+        --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/"\
+        --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/"\
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --profile "2018-03-01-hybrid"
+      ```
 1. Legen Sie die aktive Umgebung mithilfe der folgenden Befehle fest.
-
+   
    a. Verwenden Sie für die Umgebung für *Cloudadministratoren* Folgendes:
 
       ```azurecli
@@ -180,7 +192,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
 
 1. Melden Sie sich bei der Azure Stack-Umgebung an, indem Sie den Befehl `az login` ausführen. Sie können sich entweder als Benutzer oder als [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects) an der Azure Stack-Umgebung anmelden. 
 
-    * AAD-Umgebungen
+    * Azure AD-Umgebungen
       * Anmelden als *Benutzer*: Sie können entweder den Benutzernamen und das Kennwort direkt im Befehl `az login` eingeben oder die Authentifizierung über einen Browser ausführen. Sie müssen das letztgenannte Verfahren wählen, wenn für Ihr Konto mehrstufige Authentifizierung (Multi-Factor Authentication) aktiviert ist.
 
       ```azurecli
@@ -194,7 +206,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
    
       * Melden Sie sich als *Dienstprinzipal* an: [Erstellen Sie einen Dienstprinzipal über das Azure-Portal](azure-stack-create-service-principals.md) oder die CLI, und weisen Sie ihm eine Rolle zu, bevor Sie sich anmelden. Melden Sie sich anschließend mit dem folgenden Befehl an:
 
-      ```azurecli
+      ```azurecli  
       az login \
         --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
         --service-principal \
@@ -203,20 +215,33 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
       ```
     * AD FS-Umgebungen
 
-        * Melden Sie sich als *Dienstprinzipal* an: 
-          1.    Bereiten Sie die PEM-Datei vor, die für die Anmeldung des Dienstprinzipals verwendet werden soll.
-                * Exportieren Sie auf dem Clientcomputer, auf dem der Prinzipal erstellt wurde, das Dienstprinzipalzertifikat als PFX-Datei mit dem privaten Schlüssel (Sie finden diesen unter „cert:\CurrentUser\My“, der Zertifikatname trägt den gleichen Namen wie der Prinzipal).
+        * Melden Sie sich als Benutzer mit einem Webbrowser an:  
+              ```azurecli  
+              az login
+              ```
+        * Melden Sie sich als Benutzer mit einem Webbrowser unter Verwendung eines Gerätecodes an:  
+              ```azurecli  
+              az login --use-device-code
+              ```
+        > [!Note]  
+        >Durch die Ausführung des Befehls erhalten Sie eine URL und einen Code für die Authentifizierung.
 
-                *   Konvertieren Sie die PFX-Datei in eine PEM-Datei (mit dem OpenSSL-Hilfsprogramm).
+        * Melden Sie sich als Dienstprinzipal an:
+        
+          1. Bereiten Sie die PEM-Datei vor, die für die Anmeldung des Dienstprinzipals verwendet werden soll.
 
-          1.    Melden Sie sich bei der Befehlszeilenschnittstelle an. :
-                ```azurecli
-                az login --service-principal \
-                 -u <Client ID from the Service Principal details> \
-                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
-                 --tenant <Tenant ID> \
-                 --debug 
-                ```
+            * Exportieren Sie auf dem Clientcomputer, auf dem der Prinzipal erstellt wurde, das Dienstprinzipalzertifikat als PFX-Datei mit dem privaten Schlüssel (Sie finden diesen unter `cert:\CurrentUser\My;`, der Zertifikatname trägt den gleichen Namen wie der Prinzipal).
+        
+            * Konvertieren Sie die PFX-Datei in eine PEM-Datei (mit dem OpenSSL-Hilfsprogramm).
+
+          2.  Melden Sie sich bei der Befehlszeilenschnittstelle an:
+            ```azurecli  
+            az login --service-principal \
+              -u <Client ID from the Service Principal details> \
+              -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
+              --tenant <Tenant ID> \
+              --debug 
+            ```
 
 ## <a name="test-the-connectivity"></a>Testen der Konnektivität
 

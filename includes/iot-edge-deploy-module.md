@@ -5,31 +5,35 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 12/7/2018
+ms.date: 12/31/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 1a750a97cdc940c0f0a3d7e33d6be0d33f811425
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dd4873017105db190f9a468ec1f1f77f4e8c9c0e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53108021"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53977126"
 ---
-Eine der wichtigen Funktionen von Azure IoT Edge ist die Möglichkeit, Module aus der Cloud auf IoT Edge-Geräten bereitzustellen. Ein IoT-Edge-Modul ist ein ausführbares Paket, das als Container implementiert wird. In diesem Abschnitt wird ein vorgefertigtes Modul aus dem [Abschnitt „IoT Edge-Module“ des Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) bereitgestellt. Dieses Modul generiert Telemetriedaten für Ihr simuliertes Gerät.
+Eine der wichtigen Funktionen von Azure IoT Edge ist die Möglichkeit, Module aus der Cloud auf IoT Edge-Geräten bereitzustellen. Ein IoT-Edge-Modul ist ein ausführbares Paket, das als Container implementiert wird. In diesem Abschnitt stellen wir ein fertig erstelltes Modul aus dem [IoT Edge-Module-Bereich von Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) bereit. Dieses Modul generiert simulierte Telemetriedaten für Ihr IoT Edge-Gerät.
 
-1. Geben Sie im Azure-Portal `Simulated Temperature Sensor` in das Suchfeld ein, und öffnen Sie das Marketplace-Ergebnis.
+1. Geben Sie im [Azure-Portal](https://portal.azure.com) **Simulated Temperature Sensor** (Simulierter Temperatursensor) in das Suchfeld ein, und öffnen Sie das Marketplace-Ergebnis.
 
    ![Simulierter Temperatursensor in der Suche im Azure-Portal](./media/iot-edge-deploy-module/search-for-temperature-sensor.png)
 
-2. Wählen Sie im Feld **Abonnement** das Abonnement mit der von Ihnen verwendeten IoT Hub-Instanz aus, sofern es nicht bereits ausgewählt ist.
+2. Wählen Sie ein IoT Edge-Gerät aus, das dieses Modul empfangen soll. Geben Sie unter **Zielgeräte für IoT Edge-Modul** die folgenden Informationen ein:
 
-3. Wählen Sie im Feld **IoT Hub** den Namen der von Ihnen verwendeten IoT Hub-Instanz aus, sofern er nicht bereits ausgewählt ist.
+   1. **Abonnement**: Wählen Sie das Abonnement aus, das den von Ihnen verwendeten IoT-Hub enthält.
 
-4. Klicken Sie auf **Gerät suchen**, wählen Sie Ihr IoT Edge-Gerät (`myEdgeDevice`) aus, und wählen Sie anschließend **Erstellen** aus.
+   2. **IoT Hub**: Wählen Sie den Namen des verwendeten IoT-Hubs aus.
 
-5. Klicken Sie im Schritt **Module hinzufügen** des Assistenten auf das Modul **SimulatedTemperatureSensor**, um die Konfigurationseinstellungen zu überprüfen. Klicken Sie dann auf **Speichern**, und wählen Sie **Weiter** aus.
+   3. **Name des IoT Edge-Geräts**: Wenn Sie den Namen des vorgeschlagenen Geräts bereits zuvor in diesem Schnellstart verwendet haben, geben Sie **meinEdgeGerät** ein. Wählen Sie andernfalls **Gerät suchen** aus, um aus einer Liste der Geräte auf Ihrem IoT-Hub auszuwählen. 
+   
+   4. Klicken Sie auf **Erstellen**.
 
-6. Vergewissern Sie sich im Schritt **Routen angeben** des Assistenten, dass die Routen ordnungsgemäß mit der Standardroute eingerichtet sind, über die alle Nachrichten von allen Modulen an IoT Hub (`$upstream`) gesendet werden. Ist das nicht der Fall, können Sie den folgenden Code eingeben und dann **Weiter** auswählen.
+3. Jetzt, da Sie ein IoT Edge-Modul im Azure Marketplace und ein das Modul empfangendes IoT Edge-Gerät ausgewählt haben, gelangen Sie zu einem aus drei Schritten bestehenden Assistenten, der Sie bei der genauen Definition der Bereitstellung des Moduls unterstützt. Beachten Sie im Schritt **Module hinzufügen** des Assistenten, dass das Modul **SimulatedTemperatureSensor** (Simulierter Temperatursensor) automatisch aufgefüllt wird. In den Tutorials verwenden Sie diese Seite, um Ihrer Bereitstellung weitere Module hinzuzufügen. Im Rahmen dieses Schnellstarts stellen Sie einfach dieses eine Modul bereit. Wählen Sie **Weiter** aus, um mit dem nächsten Schritt des Assistenten fortzufahren.
+
+4. Im Schritt **Specify Routes** (Routen festlegen) des Assistenten definierten Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden. Im Rahmen des Schnellstarts sollen alle Nachrichten von allen Modulen an den IoT Hub (`$upstream`) gelangen. Wenn er nicht automatisch aufgefüllt wurde, fügen Sie in diesem Schritt den folgenden Code hinzu, und wählen Sie dann **Weiter** aus:
 
    ```json
     {
@@ -39,10 +43,12 @@ Eine der wichtigen Funktionen von Azure IoT Edge ist die Möglichkeit, Module au
     }
    ```
 
-7. Klicken Sie im Schritt **Bereitstellung überprüfen** des Assistenten auf **Senden**.
+5. Im Schritt **Bereitstellung überprüfen** des Assistenten können Sie eine Vorschau der JSON-Datei anzeigen, in der alle Module definiert sind, die auf Ihrem IoT Edge-Gerät bereitgestellt werden. Beachten Sie, dass hier das Modul **SimulatedTemperatureSensor** (Simulierter Temperatursensor) ebenso enthalten ist wie zwei zusätzliche Systemmodule mit den Namen **edgeAgent** und **edgeHub**. Wählen Sie **Übermitteln** aus, wenn Sie die Überprüfung abgeschlossen haben.
 
-8. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie **Aktualisieren** aus. Zusätzlich zum edgeAgent-Modul, das beim ersten Start des Diensts erstellt wurde, sollte ein weiteres Runtimemodul mit dem Namen **edgeHub** angezeigt werden, und das Modul **SimulatedTemperatureSensor** sollte aufgeführt sein.
+   Wenn Sie eine neue Bereitstellung an ein IoT Edge-Gerät übermitteln, wird nichts per Push auf Ihr Gerät übertragen. Stattdessen fragt das Gerät den IoT Hub regelmäßig nach neuen Anweisungen ab. Wenn es die neuen Bereitstellungsinformationen findet, verwendet das Gerät diese Informationen, um die Modulimages aus der Cloud herunterzuladen, und beginnt dann mit der lokalen Ausführung der Module. Dieser Vorgang kann einige Minuten in Anspruch nehmen. 
 
-   Es kann einige Minuten dauern, bis die neuen Module angezeigt werden. Das IoT Edge-Gerät muss die neuen Bereitstellungsinformationen aus der Cloud abrufen, die Container starten und dann seinen neuen Status an IoT Hub zurückmelden. 
+6. Nachdem Sie die Bereitstellungsdetails des Moduls übermittelt haben, werden Sie vom Assistenten zur Seite **IoT Edge** Ihres IoT Hubs zurück geführt. Wählen Sie Ihr Gerät in der Liste der IoT Edge-Geräte aus, um seine Details anzuzeigen. 
 
-   ![Anzeigen von „SimulatedTemperatureSensor“ in der Liste mit den bereitgestellten Modulen](./media/iot-edge-deploy-module/deployed-modules-marketplace-temp.png)
+7. Scrollen Sie auf der Detailseite des Geräts nach unten zum Abschnitt **Module**. Dort sollten drei Module aufgelistet sein: $edgeAgent, $edgeHub und SimulatedTemperatureSensor. Wenn eins oder mehrere dieser Moduls in der Bereitstellung als angegeben aufgeführt, vom Gerät aber nicht gemeldet werden, bedeutet dies, dass Ihr IoT Edge-Gerät noch mit ihrem Start beschäftigt ist. Warten Sie einige Minuten, und wählen Sie oben auf der Seite **Aktualisieren** aus. 
+
+   ![Anzeigen von „SimulatedTemperatureSensor“ in der Liste mit den bereitgestellten Modulen](./media/iot-edge-deploy-module/deployed-modules-marketplace.png)

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582427"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792525"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Was ist Azure IoT (Internet der Dinge)?
 
@@ -105,7 +105,7 @@ In Azure gibt es mehrere IoT-bezogene Dienste, und fällt es häufig nicht leich
 
 1. [**IoT Central**](../iot-central/overview-iot-central.md): Mit dieser SaaS-Lösung können Sie Ihre IoT-Geräte verbinden, überwachen und verwalten. Zuerst wählen Sie eine Vorlage für Ihren Gerätetyp und erstellen und testen eine einfache IoT Central-Anwendung, die von den Bedienern des Geräts verwendet wird. Die IoT Central-Anwendung ermöglicht Ihnen auch das Überwachen der Geräte und das Bereitstellen von neuen Geräten. Dieser Dienst ist für einfach aufgebaute IoT-Lösungen vorgesehen, für die keine eingehende Dienstanpassung erforderlich ist. 
 
-2. [**IoT-Solution Accelerators**](/azure/iot-suite): Dies ist eine Sammlung von PaaS-Lösungen, mit denen Sie die Entwicklung einer IoT-Lösung beschleunigen können. Sie beginnen mit einer bereitgestellten IoT-Lösung und passen diese Lösung dann umfassend Ihren Anforderungen an. Sie benötigen Java- oder .NET-Kenntnisse, um das Back-End anzupassen, und JavaScript-Kenntnisse, um die Visualisierung anzupassen. 
+2. [**IoT Solution Accelerators**](/azure/iot-suite): Dies ist eine Sammlung von PaaS-Lösungen, mit denen Sie die Entwicklung einer IoT-Lösung beschleunigen können. Sie beginnen mit einer bereitgestellten IoT-Lösung und passen diese Lösung dann umfassend Ihren Anforderungen an. Sie benötigen Java- oder .NET-Kenntnisse, um das Back-End anzupassen, und JavaScript-Kenntnisse, um die Visualisierung anzupassen. 
 
 3. [**IoT Hub**](/azure/iot-hub/): Dieser Dienst ermöglicht Ihnen das Verbinden Ihrer Geräte mit einem IoT Hub sowie das Überwachen und Kontrollieren von Milliarden von IoT-Geräten. Dies ist besonders nützlich, wenn Sie bidirektionale Kommunikation zwischen Ihren IoT-Geräten und Ihrem Back-End benötigen. Hierbei handelt es sich um den zugrunde liegenden Dienst für IoT Central und IoT-Solution Accelerators. 
 

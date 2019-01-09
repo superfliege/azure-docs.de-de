@@ -9,18 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c0c79e3d85a8ced2b868c9fa7741a14105c1de05
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166267"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753047"
 ---
-# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Tutorial 7: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Tutorial: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
 In diesem Tutorial werden maschinell gelernte Daten einer Stellenbezeichnung mithilfe der **Simple**-Entität aus einer Äußerung extrahiert. Um die Genauigkeit der Extraktion zu steigern, fügen Sie der Simple-Entität eine Begriffsliste mit spezifischen Ausdrücken hinzu.
+
+Die Simple-Entität erkennt ein einfaches Datenkonzept, das in Wörtern oder Formulierungen enthalten ist.
+
+**In diesem Tutorial lernen Sie Folgendes:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Importieren der Beispiel-App
+> * Hinzufügen der Entität vom Typ „Simple“ 
+> * Hinzufügen einer Begriffsliste, um Signalwörter zu verstärken
+> * Trainieren 
+> * Veröffentlichen 
+> * Abrufen von Absichten und Entitäten vom Endpunkt
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+
+## <a name="simple-entity"></a>Entität vom Typ „Simple“
 
 In diesem Tutorial wird eine neue Simple-Entität hinzugefügt, um die Stellenbezeichnung zu extrahieren. Mithilfe der Entität vom Typ „Einfach“ für diese LUIS-App wird LUIS beigebracht, was ein Stellenname ist und wie er in einer Äußerung ermittelt werden kann. Der Teil der Äußerung, der die Stellenbezeichnung darstellt, kann sich basierend auf der Wortwahl und der Länge der Äußerung bei den einzelnen Äußerungen unterscheiden. LUIS benötigt Beispiele für Stellenbezeichnungen aus allen Absichten, in denen Stellenbezeichnungen verwendet werden.  
 
@@ -31,34 +49,6 @@ Die Simple-Entität eignet sich gut für diese Art von Daten, wenn folgende Bedi
 * Die Daten sind nicht gängig, etwa wie eine vorkonfigurierte Entität von Telefonnummer oder Daten.
 * Die Daten stimmen nicht exakt mit einer Liste bekannter Wörter überein, wie etwa eine Listenentität.
 * Die Daten enthalten keine anderen Datenelemente, wie etwa eine zusammengesetzte Entität oder eine hierarchische Entität.
-
-**In diesem Tutorial lernen Sie Folgendes:**
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App
-> * Hinzufügen einer einfachen Entität zum Extrahieren von Stellen aus der App
-> * Hinzufügen einer Begriffsliste, um das Signal von Stellenwörtern zu verstärken
-> * Trainieren 
-> * Veröffentlichen 
-> * Abrufen von Absichten und Entitäten vom Endpunkt
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
-
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
-
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
-
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json) herunter, und speichern Sie sie.
-
-2. Importieren Sie den JSON-Code in eine neue App.
-
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `simple`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
-
-## <a name="simple-entity"></a>Entität vom Typ „Simple“
-Die Simple-Entität erkennt ein einfaches Datenkonzept, das in Wörtern oder Formulierungen enthalten ist.
 
 Sehen Sie sich die folgenden Äußerungen eines Chatbots an:
 
@@ -87,25 +77,38 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
 
 Nachdem die Entitäten in den Beispieläußerungen markiert sind, ist es wichtig, eine Begriffsliste hinzuzufügen, um das Signal der Simple-Entität zu verstärken. Eine Begriffsliste wird **nicht** als genaue Übereinstimmung verwendet und braucht nicht jeden möglichen erwartbaren Wert zu enthalten. 
 
+## <a name="import-example-app"></a>Importieren der Beispiel-App
+
+1.  Laden Sie die [JSON-Datei der App](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) aus dem Absichts-Tutorial herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `simple`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+
+## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Markieren von Entitäten in Beispieläußerungen einer Absicht
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Wählen Sie auf der Seite **Absichten** die Option **ApplyForJob** aus. 
+1. Wählen Sie auf der Seite **Absichten** die Option **ApplyForJob** aus. 
 
-3. Wählen Sie in der Äußerung `I want to apply for the new accounting job` das Wort `accounting` aus, geben Sie `Job` in das oberste Feld des Popupmenüs ein, und klicken Sie anschließend im Popupmenü auf **Create new entity** (Neue Entität erstellen). 
+1. Wählen Sie in der Äußerung `I want to apply for the new accounting job` das Wort `accounting` aus, geben Sie `Job` in das oberste Feld des Popupmenüs ein, und klicken Sie anschließend im Popupmenü auf **Create new entity** (Neue Entität erstellen). 
 
     [![Screenshot: LUIS mit Absicht „ApplyForJob“ und hervorgehobenen Schritten für die Entitätserstellung](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Screenshot: LUIS mit Absicht „ApplyForJob“ und hervorgehobenen Schritten für die Entitätserstellung")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-4. Überprüfen Sie Entitätsname und -typ im Popupfenster, und klicken Sie anschließend auf **Fertig**.
+1. Überprüfen Sie Entitätsname und -typ im Popupfenster, und klicken Sie anschließend auf **Fertig**.
 
     ![Modales Popupdialogfeld zum Erstellen einer einfachen Entität mit dem Namen „Job“ und dem Typ „Simple“](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. Kennzeichnen Sie in der Äußerung `Submit resume for engineering position` das Wort `engineering` als Entität „Job“. Wählen Sie das Wort `engineering` und anschließend im Popupmenü die Option **Job** aus. 
+1. Markieren Sie in den verbleibenden Äußerungen die auf Stellen bezogenen Wörter mit der **Job**-Entität, indem Sie das Wort oder den Begriff auswählen und dann im Popupmenü **Job** auswählen. 
 
     [![Screenshot: LUIS mit hervorgehobener Entitätskennzeichnung „Job“](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot: LUIS mit hervorgehobener Entitätskennzeichnung „Job“")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-    Alle Äußerungen wurden gekennzeichnet, aber fünf Äußerungen sind nicht genug, um LUIS mit stellenbezogenen Wörtern und Ausdrücken vertraut zu machen. Für Stellen mit Zahlenwert sind keine weiteren Beispiele erforderlich, da hierfür eine Entität vom Typ „Regulärer Ausdruck“ verwendet wird. Für Stellen mit Wörtern oder Ausdrücken werden mindestens 15 weitere Beispiele benötigt. 
 
-6. Fügen Sie weitere Äußerungen hinzu, und kennzeichnen Sie die Wörter und Ausdrücke für die Stelle jeweils mit der Entität **Job**. Bei den Stellentypen handelt es sich um allgemeine Beschäftigungen für eine Arbeitsvermittlung. Wenn Sie Stellen für eine bestimmte Branche verwenden möchten, sollten die Wörter für die Stellen dies widerspiegeln. 
+## <a name="add-more-example-utterances-and-mark-entity"></a>Hinzufügen weiterer Beispieläußerungen und Markierungsentitäten
+
+Entitäten vom Typ „Simple“ erfordern viele Beispiele, um zu einer guten Konfidenz der Vorhersage zu gelangen. 
+ 
+1. Fügen Sie weitere Äußerungen hinzu, und kennzeichnen Sie die Wörter und Ausdrücke für die Stelle jeweils mit der Entität **Job**. 
 
     |Äußerung|Entität „Job“|
     |:--|:--|
@@ -126,100 +129,64 @@ Nachdem die Entitäten in den Beispieläußerungen markiert sind, ist es wichtig
     |My curriculum vitae for professor of biology is enclosed. (Anbei finden Sie mein Curriculum Vitae für die Stelle als Biologieprofessor.)|professor of biology (Biologieprofessor)|
     |I would like to apply for the position in photography. (Ich möchte mich gerne als Fotograf bewerben.)|photography (Fotografie)|Git 
 
-## <a name="label-entity-in-example-utterances"></a>Etikettieren der Entität in Beispieläußerungen
-
-Das Etikettieren oder _Markieren_ der Entität zeigt LUIS, wo sich die Entität in den Beispieläußerungen findet.
+## <a name="mark-job-entity-in-other-intents"></a>Markieren der Job-Entität in weiteren Absichten
 
 1. Wählen Sie im linken Menü die Option **Intents** (Absichten) aus.
 
-2. Wählen Sie in der Liste mit den Absichten die Option **GetJobInformation** aus. 
+1. Wählen Sie in der Liste mit den Absichten die Option **GetJobInformation** aus. 
 
-3. Kennzeichnen Sie die Stellen in den Beispieläußerungen:
+1. Bezeichnen Sie die Stellen in den Beispieläußerungen
 
-    |Äußerung|Entität „Job“|
-    |:--|:--|
-    |Is there any work in databases? (Gibt es offene Stellen im Datenbankbereich?)|Datenbanken|
-    |Ich möchte mich beruflich neu orientieren und suche nach Aufgaben in der Buchhaltung.|accounting (Buchhaltung)|
-    |What positions are available for senior engineers? (Welche Positionen sind für Oberingenieure verfügbar?)|senior engineers (Oberingenieure)|
+    Wenn eine Absicht mehr Beispieläußerungen als eine andere enthält, wird diese Absicht mit größerer Wahrscheinlichkeit im Text als hoch vorhergesagt. 
 
-    Es gibt noch andere Beispieläußerungen, diese enthalten jedoch keine Wörter für Stellen.
-
-## <a name="train"></a>Trainieren
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Veröffentlichen
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen der App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Abrufen von Absicht und Entitätsvorhersage vom Endpunkt 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Geben Sie in der Adressleiste am Ende der URL `Here is my c.v. for the programmer job` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Äußerungen vom Typ `ApplyForJob` zurückgeben.
+2. Geben Sie in der Adressleiste am Ende der URL `Here is my c.v. for the engineering job` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Äußerungen vom Typ `ApplyForJob` zurückgeben.
 
     ```json
     {
-      "query": "Here is my c.v. for the programmer job",
+      "query": "Here is my c.v. for the engineering job",
       "topScoringIntent": {
         "intent": "ApplyForJob",
-        "score": 0.9826467
+        "score": 0.98052007
       },
       "intents": [
         {
           "intent": "ApplyForJob",
-          "score": 0.9826467
+          "score": 0.98052007
         },
         {
           "intent": "GetJobInformation",
-          "score": 0.0218927357
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.007849265
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00349470088
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00348804821
+          "score": 0.03424581
         },
         {
           "intent": "None",
-          "score": 0.00319909188
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00222647213
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00211193133
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00172086991
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00138010911
+          "score": 0.0015820954
         }
       ],
       "entities": [
         {
-          "entity": "programmer",
+          "entity": "engineering",
           "type": "Job",
           "startIndex": 24,
-          "endIndex": 33,
-          "score": 0.5230502
+          "endIndex": 34,
+          "score": 0.668959737
         }
       ]
     }
     ```
     
-    LUIS hat die richtige Absicht, **ApplyForJob**, gefunden und die richtige Entität extrahiert, **Stelle**, mit dem Wert `programmer`.
+    LUIS hat die richtige Absicht, **ApplyForJob**, gefunden und die richtige Entität extrahiert, **Stelle**, mit dem Wert `engineering`.
 
 
 ## <a name="names-are-tricky"></a>Das Problem mit Namen
@@ -229,51 +196,23 @@ Im folgenden JSON-Code antwortet LUIS zwar mit der korrekten Absicht (`ApplyForJ
 
 ```json
 {
-  "query": "This is the lead welder paperwork.",
+  "query": "This is the lead welder paperwork",
   "topScoringIntent": {
     "intent": "ApplyForJob",
-    "score": 0.468558252
+    "score": 0.860295951
   },
   "intents": [
     {
       "intent": "ApplyForJob",
-      "score": 0.468558252
+      "score": 0.860295951
     },
     {
       "intent": "GetJobInformation",
-      "score": 0.0102701457
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.009442534
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00639619166
+      "score": 0.07265678
     },
     {
       "intent": "None",
-      "score": 0.005859333
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.005087704
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00315379258
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00259344373
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00193389168
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.000420796918
+      "score": 0.00482481951
     }
   ],
   "entities": []
@@ -282,94 +221,76 @@ Im folgenden JSON-Code antwortet LUIS zwar mit der korrekten Absicht (`ApplyForJ
 
 Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präziser voraus, wenn das Signal durch eine Begriffsliste mit Wörtern verstärkt wird.
 
-## <a name="to-boost-signal-add-phrase-list"></a>Begriffsliste hinzufügen, um das Signal zu verstärken
+## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>Um das Signal der stellenbezogenen Wörter zu verstärken, fügen Sie eine Begriffsliste mit auf Stellen bezogenen Wörtern hinzu
 
-Öffnen Sie die Datei [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) aus dem GitHub-Repository „LUIS-Samples“. Die Liste enthält über 1.000 stellenbezogene Wörter und Begriffe. Suchen Sie in der Liste nach Stellenwörtern, die für Sie relevant sind. Sollten die gewünschten Wörter oder Begriffe nicht in der Liste enthalten sein, fügen Sie eigene Wörter/Begriffe hinzu.
+Öffnen Sie die Datei [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) aus dem GitHub-Repository „Azure-Samples“. Die Liste enthält über 1.000 stellenbezogene Wörter und Begriffe. Suchen Sie in der Liste nach Stellenwörtern, die für Sie relevant sind. Sollten die gewünschten Wörter oder Begriffe nicht in der Liste enthalten sein, fügen Sie eigene Wörter/Begriffe hinzu.
 
 1. Klicken Sie im Abschnitt **Build** der LUIS-App im Menü **Improve app performance** (App-Leistung verbessern) auf **Phrase lists** (Begriffslisten).
 
-2. Klicken Sie auf **Create new phrase list** (Neue Begriffsliste erstellen). 
+1. Klicken Sie auf **Create new phrase list** (Neue Begriffsliste erstellen). 
 
-3. Nennen Sie die Begriffsliste `Job`, und kopieren Sie die Liste aus „jobs-phrase-list.csv“ in das Textfeld **Werte**. Drücken Sie die EINGABETASTE. 
+1. Nennen Sie die Begriffsliste `JobNames`, und kopieren Sie die Liste aus „jobs-phrase-list.csv“ in das Textfeld **Werte**. Drücken Sie die EINGABETASTE. 
 
     [![Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Wenn Sie der Begriffsliste weitere Wörter hinzufügen möchten, können Sie sich die verwandten Werte (**Related Values**) ansehen und alle Wörter hinzufügen, die für Sie relevant sind. 
 
-4. Klicken Sie auf **Speichern**, um die Begriffsliste zu aktivieren.
+1. Klicken Sie auf **Speichern**, um die Begriffsliste zu aktivieren.
 
     [![Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. [Trainieren](#train) und [veröffentlichen](#publish) Sie die App erneut, um die Begriffsliste zu verwenden.
+1. [Trainieren](#train) und [veröffentlichen](#publish) Sie die App erneut, um die Begriffsliste zu verwenden.
 
-6. Fragen Sie den Endpunkt erneut mit der gleichen Äußerung ab: `This is the lead welder paperwork.`
+1. Fragen Sie den Endpunkt erneut mit der gleichen Äußerung ab: `This is the lead welder paperwork.`
 
     Die JSON-Antwort enthält die extrahierte Entität:
 
     ```json
-    {
-        "query": "This is the lead welder paperwork.",
-        "topScoringIntent": {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
+      {
+      "query": "This is the lead welder paperwork.",
+      "topScoringIntent": {
+        "intent": "ApplyForJob",
+        "score": 0.983076453
+      },
+      "intents": [
+        {
+          "intent": "ApplyForJob",
+          "score": 0.983076453
         },
-        "intents": [
-            {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
-            },
-            {
-            "intent": "GetJobInformation",
-            "score": 0.003800706
-            },
-            {
-            "intent": "Utilities.StartOver",
-            "score": 0.00299335527
-            },
-            {
-            "intent": "MoveEmployee",
-            "score": 0.0027167045
-            },
-            {
-            "intent": "None",
-            "score": 0.00259556063
-            },
-            {
-            "intent": "FindForm",
-            "score": 0.00224019377
-            },
-            {
-            "intent": "Utilities.Stop",
-            "score": 0.00200693542
-            },
-            {
-            "intent": "Utilities.Cancel",
-            "score": 0.00195913855
-            },
-            {
-            "intent": "Utilities.Help",
-            "score": 0.00162656687
-            },
-            {
-            "intent": "Utilities.Confirm",
-            "score": 0.0002851904
-            }
-        ],
-        "entities": [
-            {
-            "entity": "lead welder",
-            "type": "Job",
-            "startIndex": 12,
-            "endIndex": 22,
-            "score": 0.8295959
-            }
-        ]
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0120766377
+        },
+        {
+          "intent": "None",
+          "score": 0.00248388131
+        }
+      ],
+      "entities": [
+        {
+          "entity": "lead welder",
+          "type": "Job",
+          "startIndex": 12,
+          "endIndex": 22,
+          "score": 0.8373154
+        }
+      ]
     }
     ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>Verwandte Informationen
+
+* [Tutorial zu Absichten ohne Entitäten](luis-quickstart-intents-only.md)
+* Informationen zum Konzept der [Simple-Entitäten](luis-concept-entity-types.md)
+* Informationen zum Konzept der [Begriffsliste](luis-concept-feature.md)
+* [Informationen zum Trainieren](luis-how-to-train.md)
+* [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
+* [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
