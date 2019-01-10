@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238878"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189795"
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
@@ -63,6 +63,7 @@ Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>So fügen Sie Rollen und Benutzer in SSMS hinzu oder verwalten diese
+
 Zum Hinzufügen von Rollen und Benutzern zu einer bereitgestellten Modelldatenbank müssen Sie als Serveradministrator oder bereits in einer Datenbankrolle mit Administratorberechtigungen eine Verbindung mit dem Server hergestellt haben.
 
 1. Klicken Sie im Objekt-Exporer mit der rechten Maustaste auf **Rollen** > **Neue Rolle**.
@@ -83,6 +84,7 @@ Zum Hinzufügen von Rollen und Benutzern zu einer bereitgestellten Modelldatenba
 5. Wenn die erstellte Rolle über die Berechtigung „Lesen“ verfügt, können Sie mit einer DAX-Formel Zeilenfilter hinzufügen. Klicken Sie auf **Zeilenfilter**, wählen Sie eine Tabelle aus, und geben Sie dann im Feld **DAX-Filter** eine DAX-Formel ein. 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>So fügen Sie Rollen und Benutzer mit einem TMSL-Skript hinzu oder verwalten diese
+
 Sie können ein TMSL-Skript im XMLA-Fenster in SSMS oder mithilfe von PowerShell ausführen. Verwenden Sie den Befehl [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) und das Objekt [Roles](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl).
 
 **TMSL-Beispielskript**
@@ -116,6 +118,7 @@ In diesem Beispiel werden der Rolle „Analyst“ ein externer B2B-Benutzer und 
 ```
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>So fügen Sie Rollen und Benutzer mit PowerShell hinzu oder verwalten diese
+
 Das [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx)-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung und das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets werden zum Verwalten von Datenbankrollen und Benutzern verwendet.
   
 |Cmdlet|BESCHREIBUNG|
@@ -125,6 +128,7 @@ Das [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx)-Modul bietet a
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Ausführen eines TMSL-Skripts.|
 
 ## <a name="row-filters"></a>Zeilenfilter  
+
 Zeilenfilter definieren, welche Zeilen in einer Tabelle von Mitgliedern einer bestimmten Rolle abgefragt werden können. Zeilenfilter werden mithilfe von DAX-Formeln für jede Tabelle in einem Modell definiert.  
   
 Zeilenfilter können nur für Rollen mit den Berechtigungen „Lesen“ und „Lesen und Verarbeiten“ definiert werden. Wenn für eine bestimmte Tabelle kein Zeilenfilter definiert ist, können Mitglieder standardmäßig alle Zeilen in der Tabelle abfragen, sofern keine Kreuzfilterung aus einer anderen Tabelle gilt.
@@ -144,6 +148,7 @@ Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn fü
  Mit dem Filter *=FALSE()* können Sie den Zugriff auf alle Zeilen für eine gesamte Tabelle verweigern.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
   [Verwalten von Serveradministratoren](analysis-services-server-admins.md)   
   [Verwalten von Azure Analysis Services mit PowerShell](analysis-services-powershell.md)  
   [TMSL-Referenz (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

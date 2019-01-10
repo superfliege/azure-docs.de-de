@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 126c0d63a7d59b76361a25844575ee6556a475b1
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8536cce8de79f396b5d60058dd41f733d2627c87
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002075"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119134"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anmerkungen zu Metrik-Diagrammen in Application Insights
 
 Die Anmerkungen in den Diagrammen des [Metrik-Explorers](../../azure-monitor/app/metrics-explorer.md) geben an, wo Sie einen neuen Build oder ein anderes wichtiges Ereignis bereitgestellt haben. Dank dieser Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch vom [Buildsystem von Azure DevOps Services](https://docs.microsoft.com/azure/devops/pipelines/tasks/) erstellt werden. Es können auch Anmerkungen erstellt werden, die alle gewünschten Ereignisse markieren, indem diese [aus PowerShell erstellt werden](#create-annotations-from-powershell).
 
 > [!NOTE]
-> In diesem Artikel wird die veraltete **Umgebung für klassische Metriken** verwendet. Anmerkungen sind derzeit nur in der klassischen Umgebung und in **[Arbeitsmappen](../../application-insights/app-insights-usage-workbooks.md)** verfügbar. Weitere Informationen zur aktuellen Metrikumgebung finden Sie in [diesem Artikel](../../azure-monitor/platform/metrics-charts.md).
+> In diesem Artikel wird die veraltete **Umgebung für klassische Metriken** verwendet. Anmerkungen sind derzeit nur in der klassischen Umgebung und in **[Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)** verfügbar. Weitere Informationen zur aktuellen Metrikumgebung finden Sie in [diesem Artikel](../../azure-monitor/platform/metrics-charts.md).
 
 ![Beispiel für Anmerkungen mit sichtbarer Korrelation mit Serverantwortzeit](./media/annotations/00.png)
 
@@ -46,7 +46,7 @@ Sie müssen dies nur einmal für Ihre Azure DevOps Services-Organisation durchf�
 
 Es wird ein separater API-Schlüssel für jede Azure DevOps Services-Releasevorlage benötigt.
 
-1. Melden Sie sich im [Microsoft Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Application Insights-Ressource, mit der Sie Ihre Anwendung überwachen. (Oder [erstellen Sie jetzt eine Ressource](../../application-insights/app-insights-overview.md), sofern noch nicht geschehen.)
+1. Melden Sie sich im [Microsoft Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Application Insights-Ressource, mit der Sie Ihre Anwendung überwachen. (Oder [erstellen Sie jetzt eine Ressource](../../azure-monitor/app/app-insights-overview.md), sofern noch nicht geschehen.)
 2. Öffnen Sie **API-Zugriff**, **Application Insights-ID**.
    
     ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Einstellungen“. Öffnen Sie „API-Zugriff“. Kopieren der Anwendungs-ID](./media/annotations/20.png)

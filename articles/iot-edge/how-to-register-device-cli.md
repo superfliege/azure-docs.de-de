@@ -4,22 +4,22 @@ description: Verwenden der IoT-Erweiterung für die Azure CLI zum Registrieren e
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/27/2018
+ms.date: 01/03/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 28f20157de603cf20cb33e9db569064f87922bf8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 45b05498702042c931df3765b9e1bd79489dbb6e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081832"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972140"
 ---
 # <a name="register-a-new-azure-iot-edge-device-with-azure-cli"></a>Registrieren eines neuen Azure IoT Edge-Geräts mithilfe der Azure-Befehlszeilenschnittstelle
 
-Bevor Sie Ihre IoT-Geräte mit Azure IoT Edge verwenden können, müssen Sie sie bei Ihrem IoT Hub registrieren. Nachdem Sie ein Gerät registriert haben, erhalten Sie eine Verbindungszeichenfolge, die zum Einrichten Ihres Geräts für Edge-Workloads verwendet werden kann. 
+Bevor Sie Ihre IoT-Geräte mit Azure IoT Edge verwenden können, müssen Sie sie bei Ihrem IoT Hub registrieren. Nachdem Sie ein Gerät registriert haben, erhalten Sie eine Verbindungszeichenfolge, die zum Einrichten Ihres Geräts für Edge-Workloads verwendet werden kann.
 
 Die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) ist ein plattformübergreifendes Open-Source-Befehlszeilentool zum Verwalten von Azure-Ressourcen wie IoT Edge. Mit ihm können Sie Azure IoT Hub-Ressourcen, Instanzen des Device Provisioning Service und verknüpfte Hubs direkt ohne weitere Tools verwalten. Mit der neuen IoT-Erweiterung wird die Azure-Befehlszeilenschnittstelle um Features wie die Geräteverwaltung und um umfassende IoT Edge-Funktionen erweitert.
 
@@ -27,21 +27,24 @@ Dieser Artikel zeigt die Registrierung eines neuen IoT Edge-Geräts mithilfe der
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement. 
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
+* Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement.
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt.
 * Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist vorhanden.
 
 ## <a name="create-a-device"></a>Erstellen eines Geräts
 
-Verwenden Sie den folgenden Befehl, um eine neue Geräteidentität in Ihrem IoT Hub zu erstellen: 
+Verwenden Sie den folgenden Befehl, um eine neue Geräteidentität in Ihrem IoT Hub zu erstellen:
 
    ```cli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
    ```
 
 Dieser Befehl weist drei Parameter auf:
+
 * **device-id**: Geben Sie einen beschreibenden Namen an, der für Ihren IoT Hub eindeutig ist.
+
 * **hub-name**: Geben Sie den Namen Ihres IoT Hub an.
+
 * **edge-enabled**: Dieser Parameter deklariert, dass das Gerät für die Verwendung mit IoT Edge ausgelegt ist.
 
    ![az iot hub device-identity create output](./media/how-to-register-device-cli/Create-edge-device.png)
@@ -54,17 +57,17 @@ Verwenden Sie den folgenden Befehl, um alle Geräte in Ihrem IoT Hub anzuzeigen:
    az iot hub device-identity list --hub-name [hub name]
    ```
 
-Alle als IoT Edge-Gerät registrierten Geräte weisen die **capabilities.iotEdge**-Eigenschaft mit dem Wert **true** auf. 
+Alle als IoT Edge-Gerät registrierten Geräte weisen die **capabilities.iotEdge**-Eigenschaft mit dem Wert **true** auf.
 
 ## <a name="retrieve-the-connection-string"></a>Abrufen der Verbindungszeichenfolge
 
 Wenn Sie bereit für die Einrichtung Ihres Geräts sind, benötigen Sie die Verbindungszeichenfolge, die Ihr physisches Gerät mit seiner Identität in IoT Hub verknüpft. Verwenden Sie den folgenden Befehl, um die Verbindungszeichenfolge für ein einzelnes Gerät zurückzugeben:
 
    ```cli
-   az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name] 
+   az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]
    ```
 
-Beim Parameter für die Geräte-ID muss ist Groß-/Kleinschreibung beachtet werden. Kopieren Sie nicht die Anführungszeichen, in die die Verbindungszeichenfolge eingeschlossen ist. 
+Beim Wert für den Parameter `device-id` muss die Groß-/Kleinschreibung beachtet werden. Kopieren Sie nicht die Anführungszeichen, in die die Verbindungszeichenfolge eingeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
