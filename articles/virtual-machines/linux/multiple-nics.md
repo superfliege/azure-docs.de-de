@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: zarhoads
-ms.openlocfilehash: 5510c46a134ccec1fdc76a6bcea46de21750e969
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 024cf099dd65db036ae0b68d7094a60427ffa69c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467190"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119883"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
 
@@ -203,13 +203,13 @@ az network nsg rule create \
 Erstellen Sie eine öffentliche IP-Adresse mit [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), und weisen Sie sie dem ersten Netzwerkadapter mit [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) zu:
 
 ```azurecli
-az network public-ip-address create --resource-group myResourceGroup --name myPublicIP
+az network public-ip create --resource-group myResourceGroup --name myPublicIP
 
 az network nic ip-config update \
     --resource-group myResourceGroup \
     --nic-name myNic1 \
     --name ipconfig1 \
-    --public-ip-addres myPublicIP
+    --public-ip myPublicIP
 ```
 
 Zeigen Sie die öffentliche IP-Adresse des virtuellen Computers mithilfe von [az vm show](/cli/azure/vm#az-vm-show) wie folgt an:

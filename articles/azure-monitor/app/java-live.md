@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 4510c66dc0a64f65de9f9ee57563b847e20e25de
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5d0866bdd96a1b0f626c369cfd646f6249a4da54
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000477"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121378"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights für Java-Web-Apps, die bereits live sind
 
-Wenn Sie eine Webanwendung haben, die bereits auf dem J2EE-Server ausgeführt wird, können Sie mit der Überwachung mit [Application Insights](../../application-insights/app-insights-overview.md) beginnen, ohne Codeänderungen vornehmen oder das Projekt neu kompilieren zu müssen. Mit dieser Option erhalten Sie Informationen zu an Ihre Server gesendeten HTTP-Anforderungen, nicht behandelten Ausnahmen und Leistungsindikatoren.
+Wenn Sie eine Webanwendung haben, die bereits auf dem J2EE-Server ausgeführt wird, können Sie mit der Überwachung mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) beginnen, ohne Codeänderungen vornehmen oder das Projekt neu kompilieren zu müssen. Mit dieser Option erhalten Sie Informationen zu an Ihre Server gesendeten HTTP-Anforderungen, nicht behandelten Ausnahmen und Leistungsindikatoren.
 
 Sie benötigen ein [Microsoft Azure](https://azure.com)-Abonnement.
 

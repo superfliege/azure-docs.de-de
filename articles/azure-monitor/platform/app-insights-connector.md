@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 684fa85749bc131b21ef12070055841ff7d3d169
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726227"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121412"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-Connector-Verwaltungslösung (Vorschau)
 
@@ -27,7 +27,7 @@ ms.locfileid: "53726227"
 >[!NOTE]
 > Durch die Unterstützung von [ressourcenübergreifenden Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) ist die Application Insights-Connector-Verwaltungslösung nicht mehr erforderlich und wird eingestellt. Ab Juli können Sie keine neuen Application Insights-Ressourcen mehr mit Log Analytics-Arbeitsbereichen verknüpfen. Vorhandene Verknüpfungen und Dashboards funktionieren weiterhin bis November 2018. Weitere Informationen finden Sie unter [Wechsel des OMS-Portals zu Azure](../../azure-monitor/platform/oms-portal-transition.md).
 
-Mit der Application Insights-Connector-Lösung können Sie Leistungsprobleme diagnostizieren und verstehen, wofür Benutzer Ihre App verwenden, wenn sie mit [Application Insights](../../application-insights/app-insights-overview.md) überwacht wird. Ansichten der gleichen Anwendungstelemetrie, die Entwickler in Application Insights sehen, sind in Log Analytics verfügbar. Durch Integration Ihrer Application Insights-Apps in Log Analytics erzielen Sie jedoch eine höhere Transparenz für Ihre Anwendungen, da sich die Vorgangs- und Anwendungsdaten an ein- und demselben Ort befinden. Sie können besser mit Ihren App-Entwicklern zusammenarbeiten, wenn jeweils die gleichen Ansichten genutzt werden. Die gemeinsamen Ansichten verringern den Zeitaufwand, der für das Erkennen und Lösen von Anwendungs- und Plattformproblemen anfällt.
+Mit der Application Insights-Connector-Lösung können Sie Leistungsprobleme diagnostizieren und verstehen, wofür Benutzer Ihre App verwenden, wenn sie mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht wird. Ansichten der gleichen Anwendungstelemetrie, die Entwickler in Application Insights sehen, sind in Log Analytics verfügbar. Durch Integration Ihrer Application Insights-Apps in Log Analytics erzielen Sie jedoch eine höhere Transparenz für Ihre Anwendungen, da sich die Vorgangs- und Anwendungsdaten an ein- und demselben Ort befinden. Sie können besser mit Ihren App-Entwicklern zusammenarbeiten, wenn jeweils die gleichen Ansichten genutzt werden. Die gemeinsamen Ansichten verringern den Zeitaufwand, der für das Erkennen und Lösen von Anwendungs- und Plattformproblemen anfällt.
 
 Bei Verwendung der Lösung haben Sie folgende Möglichkeiten:
 
@@ -142,7 +142,7 @@ Klicken Sie zum Pivotieren auf die Auslassungspunkte (**…**) am Ende einer Zei
 
 ### <a name="sample-corrected-data"></a>Datenkorrektur durch Sampling
 
-Application Insights ermöglicht eine *[Korrektur durch Stichprobenentnahme](../../application-insights/app-insights-sampling.md)*, um den Telemetriedatenverkehr zu reduzieren. Wenn Sie das Sampling in Ihrer Application Insights-App aktivieren, erhalten Sie eine verringerte Anzahl von Einträgen, die sowohl in Application Insights als auch in Log Analytics gespeichert werden. Die Konsistenz der Daten wird für die Seite **Application Insights-Connector** und die Perspektiven beibehalten, aber Sie sollten Datenstichproben für Ihre benutzerdefinierten Abfragen manuell korrigieren.
+Application Insights ermöglicht eine *[Korrektur durch Stichprobenentnahme](../../azure-monitor/app/sampling.md)*, um den Telemetriedatenverkehr zu reduzieren. Wenn Sie das Sampling in Ihrer Application Insights-App aktivieren, erhalten Sie eine verringerte Anzahl von Einträgen, die sowohl in Application Insights als auch in Log Analytics gespeichert werden. Die Konsistenz der Daten wird für die Seite **Application Insights-Connector** und die Perspektiven beibehalten, aber Sie sollten Datenstichproben für Ihre benutzerdefinierten Abfragen manuell korrigieren.
 
 Hier ist ein Beispiel für die Samplingkorrektur in einer Abfrage der Protokollsuche angegeben:
 

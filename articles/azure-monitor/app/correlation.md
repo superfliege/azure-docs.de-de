@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 946d0895ff25509a0e35695fe27c783b3c50784b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a6937b5b6b3b85dd51d80a928de02a00c361cc0e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999576"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117604"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
-In der Welt der Mikroservices müssen für jeden logischen Vorgang Einstellungen an den verschiedenen Dienstkomponenten vorgenommen werden. Jede dieser Komponenten kann separat von [Application Insights](../../application-insights/app-insights-overview.md) überwacht werden. Die Web-App-Komponente kommuniziert mit der Authentifizierungsanbieterkomponente, um die Anmeldeinformationen des Benutzers zu überprüfen, und mit der API-Komponente, um Daten zur Visualisierung abzurufen. Die API-Komponente wiederum kann Daten von anderen Diensten abfragen, Cacheanbieterkomponenten nutzen und die Abrechnungskomponente über diesen Aufruf benachrichtigen. Application Insights unterstützt die verteilte Telemetriekorrelation. Damit können Sie ermitteln, welche Komponente für Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
+In der Welt der Mikroservices müssen für jeden logischen Vorgang Einstellungen an den verschiedenen Dienstkomponenten vorgenommen werden. Jede dieser Komponenten kann separat von [Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht werden. Die Web-App-Komponente kommuniziert mit der Authentifizierungsanbieterkomponente, um die Anmeldeinformationen des Benutzers zu überprüfen, und mit der API-Komponente, um Daten zur Visualisierung abzurufen. Die API-Komponente wiederum kann Daten von anderen Diensten abfragen, Cacheanbieterkomponenten nutzen und die Abrechnungskomponente über diesen Aufruf benachrichtigen. Application Insights unterstützt die verteilte Telemetriekorrelation. Damit können Sie ermitteln, welche Komponente für Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
 
 In diesem Artikel wird das von Application Insights verwendete Datenmodell erläutert, mit dem die von mehreren Komponenten gesendeten Telemetriedaten korreliert werden. Darin werden die Methoden und Protokolle zur Kontextpropagierung erläutert. Zudem wird auch die Implementierung der Korrelationskonzepte in verschiedenen Sprachen und auf verschiedenen Plattformen behandelt.
 

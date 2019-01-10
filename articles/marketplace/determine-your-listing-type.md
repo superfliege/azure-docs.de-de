@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4abed1718d77c93e864fe5bb1d39aba5e5272f10
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081539"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074469"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die Marketplace-GTM-Vorteile. Wichtiger ist, dass die Auswahl von Veröffentlichungsoption und Angebotstyp im Cloud-Partnerportal die Interaktion von Benutzern mit Ihrem Marketplace-Angebot definiert.
@@ -62,7 +62,7 @@ Die Storefront, in der Ihr Angebot präsentiert wird – Azure Marketplace und/o
 
 ## <a name="choose-a-publishing-option"></a>Auswählen einer Veröffentlichungsoption
 
-Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Markteinführungsvorteilen](https://partner.microsoft.com/en-US/reach-customers/gtm). Treffen Sie Ihre Wahl unter drei Veröffentlichungsoptionen, bevor Sie das Cloud-Partnerportal zum Erstellen eines Marketplace-Angebots verwenden. Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
+Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Markteinführungsvorteilen](https://partner.microsoft.com/reach-customers/gtm). Treffen Sie Ihre Wahl unter drei Veröffentlichungsoptionen, bevor Sie das Cloud-Partnerportal zum Erstellen eines Marketplace-Angebots verwenden. Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
 
 | **Veröffentlichungsoption**    | **Beschreibung**  |
 | :------------------- | :-------------------|

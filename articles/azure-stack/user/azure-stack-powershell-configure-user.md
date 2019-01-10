@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: 75b942ea99dace60b3c086b84e3b3e2157f8b821
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf0d0f5bb87d1a7750775d3e22c8c50dcd8cf24d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093725"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159433"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Herstellen einer Verbindung mit Azure Stack über PowerShell als Benutzer
 
@@ -50,6 +50,7 @@ Sie müssen die folgenden Skriptvariablen durch Werte der Azure Stack-Konfigurat
 ## <a name="connect-with-azure-ad"></a>Herstellen einer Verbindung mit Azure AD
 
 ```PowerShell  
+    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
     # Set your tenant name
     $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"

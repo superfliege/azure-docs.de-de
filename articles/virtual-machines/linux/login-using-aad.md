@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bc556991cc304aa8c5edc04dba1d333dc77ad230
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850974"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073406"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -150,7 +150,7 @@ Schließen Sie das Browserfenster, kehren Sie zur SSH-Eingabeaufforderung zurüc
 
 ## <a name="sudo-and-aad-login"></a>Sudo- und AAD-Anmeldung
 
-Wenn Sie sudo das erste Mal ausführen, werden Sie aufgefordert, sich ein zweites Mal zu authentifizieren. Wenn Sie sich zur Ausführung von Sudo nicht erneut authentifizieren möchten, können Sie Ihre sudo-Datei `/aad/etc/sudoers.d/aad_admins` bearbeiten und diese Zeile ersetzen:
+Wenn Sie sudo das erste Mal ausführen, werden Sie aufgefordert, sich ein zweites Mal zu authentifizieren. Wenn Sie sich zur Ausführung von Sudo nicht erneut authentifizieren möchten, können Sie Ihre sudo-Datei `/etc/sudoers.d/aad_admins` bearbeiten und diese Zeile ersetzen:
 
 ```bash
 %aad_admins ALL=(ALL) ALL

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: fc2b5a5badcf38f7bc94a876f9f0a21af4f558b7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53813200"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015473"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetriekontext: Application Insights-Datenmodell
 
@@ -84,7 +84,7 @@ Max. Länge: 64
 
 Anonyme Benutzer-ID. Stellt den Endbenutzer der Anwendung dar. Wenn Telemetriedaten von einem Dienst gesendet werden, bezieht sich der Benutzerkontext auf den Benutzer, der den Vorgang im Dienst initiiert hat.
 
-Die [Stichprobenentnahme](../../application-insights/app-insights-sampling.md) ist eine der Methoden zum Minimieren der Menge der gesammelten Telemetriedaten. Der Stichprobenalgorithmus versucht, die Stichprobenerstellung innerhalb oder außerhalb aller korrelierten Telemetriedaten durchzuführen. „Anonyme Benutzer-ID“ wird zur Generierung der Stichprobenbewertung verwendet. Daher muss die anonyme Benutzer-ID einen ausreichend zufälligen Wert aufweisen. 
+Die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) ist eine der Methoden zum Minimieren der Menge der gesammelten Telemetriedaten. Der Stichprobenalgorithmus versucht, die Stichprobenerstellung innerhalb oder außerhalb aller korrelierten Telemetriedaten durchzuführen. „Anonyme Benutzer-ID“ wird zur Generierung der Stichprobenbewertung verwendet. Daher muss die anonyme Benutzer-ID einen ausreichend zufälligen Wert aufweisen. 
 
 Die Verwendung von „Anonyme Benutzer-ID“ zum Speichern von Benutzernamen stellt eine unsachgemäße Verwendung des Felds dar. Verwenden Sie stattdessen „Authentifizierte Benutzer-ID“.
 

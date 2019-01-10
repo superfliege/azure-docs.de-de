@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 968c9f2455269cf41a701de685e4f47255b46847
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 064d73aa3d1a9183eddd53b1a1b8ddbf02afb04d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386420"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792848"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Windows
 > [!div class="op_single_selector"]
@@ -50,6 +50,9 @@ Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 ## <a name="install-the-sdk-and-tools"></a>Installieren des SDKs und der Tools
 Für die Installation des SDK und der Tools wird der Webplattform-Installer (WebPI) empfohlen. Wenn bei der Verwendung des WebPI Laufzeitfehler auftreten, finden Sie in den Anmerkungen zu einer bestimmten Service Fabric-Version direkte Links zu den Installern. Die Anmerkungen zur Version finden Sie in den verschiedenen Versionsankündigungen im [Service Fabric-Teamblog](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
+> [!NOTE]
+> Upgrades eines lokalen Service Fabric-Entwicklungsclusters werden nicht unterstützt.
+
 ### <a name="to-use-visual-studio-2017"></a>So verwenden Sie Visual Studio 2017
 Die Service Fabric-Tools sind Bestandteil der Workload für die Azure-Entwicklung in Visual Studio 2017. Aktivieren Sie diese Workload im Rahmen der Visual Studio-Installation.
 Zudem müssen Sie das Microsoft Azure Service Fabric SDK und die Laufzeit mithilfe des Webplattform-Installers installieren.
@@ -66,8 +69,8 @@ Wenn Sie nur das SDK benötigen, können Sie dieses Paket installieren:
 * [Installieren des Microsoft Azure Service Fabric-SDKs][core-sdk]
 
 Aktuelle Versionen:
-* Service Fabric SDK und -Tools 3.3.617
-* Service Fabric-Runtime 6.4.617
+* Service Fabric SDK und -Tools 3.3.622
+* Service Fabric-Runtime 6.4.622
 * Service Fabric-Tools für Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 enthält Service Fabric-Tools für Visual Studio 2.4.11024.1 
 

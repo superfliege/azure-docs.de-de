@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 289818f0377fdc28b116a8c154a919dc02ed8052
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: aac5010ca6b0ed958a849bf203f1d2f80bcdb81c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000075"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119821"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
-Fügen Sie einige Codezeilen in Ihre Anwendung ein, um herauszufinden, wie sie von Benutzern eingesetzt wird, oder um Probleme zu diagnostizieren. Sie können Telemetriedaten von Geräte- und Desktop-Apps, Webclients und Webservern senden. Verwenden Sie die [Azure Application Insights](../../application-insights/app-insights-overview.md)-Kerntelemetrie-API, um benutzerdefinierte Ereignisse und Metriken und Ihre eigenen Versionen der standardmäßigen Telemetrie zu senden. Dies ist die gleiche API, die von den standardmäßigen Application Insights-Datensammlern verwendet wird.
+Fügen Sie einige Codezeilen in Ihre Anwendung ein, um herauszufinden, wie sie von Benutzern eingesetzt wird, oder um Probleme zu diagnostizieren. Sie können Telemetriedaten von Geräte- und Desktop-Apps, Webclients und Webservern senden. Verwenden Sie die [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)-Kerntelemetrie-API, um benutzerdefinierte Ereignisse und Metriken und Ihre eigenen Versionen der standardmäßigen Telemetrie zu senden. Dies ist die gleiche API, die von den standardmäßigen Application Insights-Datensammlern verwendet wird.
 
 > [!NOTE]
 > `TrackMetric()` ist nicht mehr die bevorzugte Methode zum Senden von benutzerdefinierten Metriken für Ihre .NET-basierten Anwendungen. In [Version 2.60-beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) des Application Insights .NET SDK wurde die neue Methode [`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) eingeführt. Ab [Version 2.72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) des Application Insights .NET SDK ist diese Funktionalität jetzt Teil des stabilen Release.
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 Die Telemetrie ist in der Tabelle `customEvents` in [Application Insights Analytics](analytics.md) verfügbar. Jede Zeile stellt einen Aufruf von `trackEvent(..)` in der App dar.
 
-Wenn die [Stichprobenentnahme](../../application-insights/app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackEvent() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl benutzerdefinierter Ereignisse sollten Sie daher Code wie `customEvents | summarize sum(itemCount)` verwenden.
+Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackEvent() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl benutzerdefinierter Ereignisse sollten Sie daher Code wie `customEvents | summarize sum(itemCount)` verwenden.
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -440,7 +440,7 @@ Weitere Informationen zur Nachverfolgung benutzerdefinierter Vorgänge finden Si
 
 In [Application Insights Analytics](analytics.md) werden Anforderungen in der Tabelle `requests` angezeigt.
 
-Wenn die [Stichprobenentnahme](../../application-insights/app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackRequest() nur einer übertragen wurde. Um die richtige Anzahl der Anforderungen und die durchschnittliche Dauer nach Anforderungsnamen segmentiert abzurufen, verwenden Sie beispielsweise folgenden Code:
+Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackRequest() nur einer übertragen wurde. Um die richtige Anzahl der Anforderungen und die durchschnittliche Dauer nach Anforderungsnamen segmentiert abzurufen, verwenden Sie beispielsweise folgenden Code:
 
 ```kusto
 requests
@@ -522,7 +522,7 @@ Die SDKs viele Ausnahmen automatisch abfangen, müssen Sie TrackException nicht 
 
 In [Application Insights Analytics](analytics.md) werden Ausnahmen in der Tabelle `exceptions` angezeigt.
 
-Wenn die [Stichprobenentnahme](../../application-insights/app-insights-sampling.md) aktiv ist, wird für die Eigenschaft `itemCount` ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackException() nur einer übertragen wurde. Um die richtige Anzahl der Ausnahmen segmentiert nach Ausnahmetyp abzurufen, geben Sie beispielsweise folgenden Code ein:
+Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, wird für die Eigenschaft `itemCount` ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackException() nur einer übertragen wurde. Um die richtige Anzahl der Ausnahmen segmentiert nach Ausnahmetyp abzurufen, geben Sie beispielsweise folgenden Code ein:
 
 ```kusto
 exceptions
@@ -603,7 +603,7 @@ Unter [Search](../../azure-monitor/app/diagnostic-search.md) können Sie dann le
 
 In [Application Insights Analytics](analytics.md) werden Aufrufe von TrackTrace in der Tabelle `traces` angezeigt.
 
-Wenn die [Stichprobenentnahme](../../application-insights/app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. „itemCount==10“ bedeutet beispielsweise, dass bei der Stichprobenentnahme von zehn `trackTrace()`-Aufrufen nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl von Ablaufverfolgungsaufrufen sollten Sie daher Code wie `traces | summarize sum(itemCount)` verwenden.
+Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. „itemCount==10“ bedeutet beispielsweise, dass bei der Stichprobenentnahme von zehn `trackTrace()`-Aufrufen nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl von Ablaufverfolgungsaufrufen sollten Sie daher Code wie `traces | summarize sum(itemCount)` verwenden.
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -678,7 +678,7 @@ Wenn Sie das Standardmodul zum Nachverfolgen von Abhängigkeiten in C# deaktivie
 
 In [Application Insights Analytics](analytics.md) werden trackDependency-Aufrufe in der Tabelle `dependencies` angezeigt.
 
-Wenn die [Stichprobenentnahme](../../application-insights/app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackDependency() nur einer übertragen wurde. Um die richtige Anzahl der Abhängigkeiten segmentiert nach Zielkomponente abzurufen, verwenden Sie beispielsweise folgenden Code:
+Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackDependency() nur einer übertragen wurde. Um die richtige Anzahl der Abhängigkeiten segmentiert nach Zielkomponente abzurufen, verwenden Sie beispielsweise folgenden Code:
 
 ```kusto
 dependencies
@@ -897,7 +897,7 @@ requests
 Beachten Sie Folgendes:
 
 * Wenn Sie einen Wert aus dem customDimensions- oder customMeasurements-JSON-Code extrahieren, ist dieser dynamisch typisiert. Daher müssen Sie ihn in `tostring` oder `todouble` umwandeln.
-* Um die Möglichkeit der [Stichprobenentnahme](../../application-insights/app-insights-sampling.md) zu berücksichtigen, müssen Sie `sum(itemCount)` statt `count()` verwenden.
+* Um die Möglichkeit der [Stichprobenentnahme](../../azure-monitor/app/sampling.md) zu berücksichtigen, müssen Sie `sum(itemCount)` statt `count()` verwenden.
 
 ## <a name="timed"></a> Zeitmessung bei Ereignissen
 
@@ -1076,7 +1076,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-ikey"></a> Dynamischer Instrumentationsschlüssel
 
-Um das Vermischen von Telemetriedaten aus Entwicklungs-, Test- und Produktionsumgebungen zu vermeiden, können Sie [separate Application Insights-Ressourcen erstellen](../../application-insights/app-insights-create-new-resource.md) und ihre Schlüssel abhängig von der Umgebung ändern.
+Um das Vermischen von Telemetriedaten aus Entwicklungs-, Test- und Produktionsumgebungen zu vermeiden, können Sie [separate Application Insights-Ressourcen erstellen](../../azure-monitor/app/create-new-resource.md ) und ihre Schlüssel abhängig von der Umgebung ändern.
 
 Statt den Instrumentationsschlüssel aus der Konfigurationsdatei abzurufen, können Sie ihn im Code festlegen. Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "global.aspx.cs" in einem ASP.NET-Dienst:
 
@@ -1128,12 +1128,12 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 * **Component:** Die App und ihre Version.
 * **Device:** Daten zu dem Gerät, auf dem die App ausgeführt wird. (In Web-Apps ist dies das Server- oder Clientgerät, von dem die Telemetriedaten gesendet werden.)
 * **InstrumentationKey:** Die Application Insights-Ressource in Azure, in der die Telemetriedaten angezeigt werden. In der Regel wird diese aus der Datei „ApplicationInsights.config“ übernommen.
-* **Standort**: Der geografische Standort des Geräts.
+* **Standort:** Der geografische Standort des Geräts.
 * **Operation:** In Web-Apps die aktuelle HTTP-Anforderung. In anderen App-Typen können Sie dies zur Gruppierung von Ereignissen festlegen.
   * **Id:** Ein generierter Wert, der verschiedene Ereignisse korreliert, sodass Sie beim Untersuchen eines Ereignisses in der Diagnosesuche verwandte Elemente finden können.
-  * **Name**: Ein Bezeichner, in der Regel die URL der HTTP-Anforderung.
+  * **Name:** Ein Bezeichner, in der Regel die URL der HTTP-Anforderung.
   * **SyntheticSource:** Wenn diese Zeichenfolge nicht NULL oder leer ist, wird damit angegeben, dass die Quelle der Anforderung als Roboter oder Webtest identifiziert wurde. Standardmäßig wird sie von Berechnungen im Metrik-Explorer ausgeschlossen.
-* **Eigenschaften**: Eigenschaften, die mit allen Telemetriedaten gesendet werden. Kann in einzelnen Track*-Aufrufen außer Kraft gesetzt werden.
+* **Properties:** Eigenschaften, die mit allen Telemetriedaten gesendet werden. Kann in einzelnen Track*-Aufrufen außer Kraft gesetzt werden.
 * **Sitzung (Session)**: Die Sitzung des Benutzers. Die ID wird auf einen generierten Wert festgelegt, der geändert wird, wenn der Benutzer für eine Weile nicht aktiv ist.
 * **User:** Benutzerinformationen.
 
@@ -1141,7 +1141,7 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-Nutzen Sie die [Stichprobenerstellung (Sampling)](../../application-insights/app-insights-sampling.md), um zu vermeiden, dass Sie die Datenratengrenze erreichen.
+Nutzen Sie die [Stichprobenerstellung (Sampling)](../../azure-monitor/app/sampling.md), um zu vermeiden, dass Sie die Datenratengrenze erreichen.
 
 Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datenspeicherung und Datenschutz](../../azure-monitor/app/data-retention-privacy.md).
 
@@ -1170,9 +1170,9 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
     None (Keine): Sie müssen sie nicht mit try/catch-Klauseln umschließen. Wenn beim SDK Probleme auftreten, werden Meldungen in der Debugkonsolenausgabe und – sofern die Meldungen ankommen – in der Diagnosesuche protokolliert.
 * *Gibt es eine REST-API zum Abrufen von Daten aus dem Portal?*
 
-    Ja, die [Datenzugriffs-API](https://dev.applicationinsights.io/). Weitere Methoden zum Extrahieren von Daten stellen das [Exportieren aus Analytics in Power BI](../../application-insights/app-insights-export-power-bi.md) und der [fortlaufende Export](../../azure-monitor/app/export-telemetry.md) dar.
+    Ja, die [Datenzugriffs-API](https://dev.applicationinsights.io/). Weitere Methoden zum Extrahieren von Daten stellen das [Exportieren aus Analytics in Power BI](../../azure-monitor/app/export-power-bi.md ) und der [fortlaufende Export](../../azure-monitor/app/export-telemetry.md) dar.
 
 ## <a name="next"></a>Nächste Schritte
 
 * [Durchsuchen von Ereignissen und Protokollen](../../azure-monitor/app/diagnostic-search.md)
-* [Problembehandlung](../../application-insights/app-insights-troubleshoot-faq.md)
+* [Problembehandlung](../../azure-monitor/app/troubleshoot-faq.md)

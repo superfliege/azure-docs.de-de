@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: wesmc
-ms.openlocfilehash: 4cefae50482547b910c6468854a251b0f61ce558
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021567"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106323"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Verwenden des Redis-Befehlszeilentools mit Azure Cache for Redis
 
@@ -26,7 +26,7 @@ ms.locfileid: "53021567"
 
 Um das Tool auf Windows-Plattformen zu nutzen, laden Sie die [Redis-Befehlszeilentools für Windows](https://github.com/MSOpenTech/redis/releases/) herunter. 
 
-Wenn Sie das Befehlszeilentool auf einer anderen Plattform ausführen möchten, laden Sie Azure Cache for Redis von [http://redis.io/download](https://redis.io/download) herunter.
+Wenn Sie das Befehlszeilentool auf einer anderen Plattform ausführen möchten, laden Sie Azure Cache for Redis von [https://redis.io/download](https://redis.io/download) herunter.
 
 ## <a name="gather-cache-access-information"></a>Sammeln von Cachezugriffsinformationen
 

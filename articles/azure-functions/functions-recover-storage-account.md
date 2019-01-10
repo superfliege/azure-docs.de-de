@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: babad23743a0a3c9631c0bcf406de3521174264a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887211"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000018"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problembehandlung für „Die Functions-Runtime ist nicht erreichbar“.
 
@@ -37,6 +37,7 @@ Wir gehen exemplarisch die vier häufigsten Fehlerfälle durch und zeigen, wie s
 1. Anwendungseinstellungen des Speicherkontos gelöscht
 1. Ungültige Anmeldeinformationen des Speicherkontos
 1. Kein Zugriff auf das Speicherkonto
+1. Tägliches Ausführungskontingent voll
 
 ## <a name="storage-account-deleted"></a>Speicherkonto gelöscht
 
@@ -79,18 +80,25 @@ Ihre Funktions-App muss auf das Speicherkonto zugreifen können. Dies sind häuf
 * Funktions-Apps wurden in App Service-Umgebungen ohne ordnungsgemäße Netzwerkregeln bereitgestellt, die Datenverkehr zum und vom Speicherkonto zulassen
 * Die Firewall des Speicherkontos ist aktiviert und nicht für das Zulassen von Datenverkehr von und zu Funktions-Apps konfiguriert. [Lesen Sie hier mehr über die Firewallkonfiguration für Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
+## <a name="daily-execution-quota-full"></a>Tägliches Ausführungskontingent voll
+
+Wenn Sie ein tägliches Ausführungskontingent konfiguriert haben, wird Ihre Funktions-App vorübergehend deaktiviert, und viele der Portalsteuerelemente stehen nicht mehr zur Verfügung. 
+
+* Um dies zu überprüfen, öffnen Sie „Plattformfeatures > Funktions-App-Einstellungen“ im Portal. Wenn Sie ein Kontingent überschritten haben, wird die folgende Meldung angezeigt
+    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+* Entfernen Sie das Kontingent, und starten Sie Ihre App neu, um das Problem zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Jetzt, da Ihre Funktions-App wieder verfügbar und betriebsbereit ist, werfen Sie einen Blick in unsere Schnellstarts und Entwicklerreferenzen, um den Betrieb schnell wieder aufzunehmen!
 
 * [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)  
-  Legen Sie direkt los, und erstellen Sie Ihre erste Funktion mithilfe der Azure Functions-Schnellstartanleitung. 
+   Legen Sie direkt los, und erstellen Sie Ihre erste Funktion mithilfe der Azure Functions-Schnellstartanleitung. 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-  Enthält weitere technische Informationen zur Azure Functions-Laufzeit sowie eine Referenz für das Programmieren von Funktionen sowie für das Festlegen von Triggern und Bindungen.
+   Enthält weitere technische Informationen zur Azure Functions-Laufzeit sowie eine Referenz für das Programmieren von Funktionen sowie für das Festlegen von Triggern und Bindungen.
 * [Testen von Azure Functions](functions-test-a-function.md)  
-  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
+   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
   Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
-* [Was ist Azure App Service?](../app-service/app-service-web-overview.md)  
+* [Was ist Azure App Service?](../app-service/overview.md)  
   Azure Functions nutzt Azure App Service für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 

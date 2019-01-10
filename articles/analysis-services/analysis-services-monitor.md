@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d10e9d3d2b6fe339b04d3c0754290313312bc2b7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6f686ff40805050b6da05a1971aeabb367da96d7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427279"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190823"
 ---
 # <a name="monitor-server-metrics"></a>Überwachen von Servermetriken
 
@@ -33,7 +33,9 @@ Um eine ausführlichere Diagnose auszuführen, Leistung nachzuverfolgen und mehr
     ![Überwachungsdiagramm](./media/analysis-services-monitor/aas-monitor-chart.png)
 
 <a id="#server-metrics"></a>
+
 ## <a name="server-metrics"></a>Servermetriken
+
 Bestimmen Sie mit dieser Tabelle, welche Metriken für Ihr Überwachungsszenario am besten geeignet sind. Nur Metriken derselben Einheit können im selben Diagramm angezeigt werden.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|

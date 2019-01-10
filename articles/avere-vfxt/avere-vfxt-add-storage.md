@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001972"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190842"
 ---
 # <a name="configure-storage"></a>Konfigurieren des Speichers
 
@@ -38,7 +38,7 @@ Diese Schritte werden über die Avere-Systemsteuerung durchgeführt. Information
 
 ## <a name="create-a-core-filer"></a>Erstellen einer Kernspeichereinheit
 
-„Kernspeichereinheit“ ist ein vFXT-Begriff für ein Back-End-Speichersystem. Der Speicher kann eine Hardware-NAS-Appliance wie NetApp oder Isilon sein, oder ein Cloudobjektspeicher. Weitere Informationen zu Kernspeichereinheiten finden Sie [in der Anleitung zu den Avere-Clustereinstellungen](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers).
+„Kernspeichereinheit“ ist ein vFXT-Begriff für ein Back-End-Speichersystem. Der Speicher kann eine Hardware-NAS-Appliance wie NetApp oder Isilon sein, oder ein Cloudobjektspeicher. Weitere Informationen zu Kernspeichereinheiten finden Sie [in der Anleitung zu den Avere-Clustereinstellungen](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
 
 Wenn Sie eine Kernspeichereinheit hinzufügen möchten, wählen Sie einen der beiden Haupttypen von Kernspeichereinheiten aus:
 
@@ -70,7 +70,7 @@ In den folgenden Schritten wird eine NAS-Kernspeichereinheit hinzugefügt:
   
    * Klicken Sie auf **Weiter**, und wählen Sie eine Cacherrichtlinie aus. 
    * Klicken Sie auf **Speichereinheit hinzufügen**.
-   * Detaillierte Informationen finden Sie unter [Hinzufügen einer neuen NAS-Kernspeichereinheit](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) in der Anleitung zu den Clustereinstellungen von Avere.
+   * Detaillierte Informationen finden Sie unter [Hinzufügen einer neuen NAS-Kernspeichereinheit](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) in der Anleitung zu den Clustereinstellungen von Avere.
 
 Fahren Sie anschließend mit dem [Erstellen einer Verbindung](#create-a-junction) fort.  
 
@@ -156,7 +156,7 @@ Führen Sie die folgenden Schritte aus, um nach der Erstellung des Clusters Blob
    * Optional können Sie **Verschlüsselungstyp** auf **Kein** festlegen.  Azure Storage ist standardmäßig verschlüsselt.
    * Klicken Sie auf **Speichereinheit hinzufügen**.
 
-  Detaillierte Informationen finden Sie unter [Hinzufügen einer neuen Cloudkernspeichereinheit](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>) in der Anleitung zur Clusterkonfiguration von Avere. 
+  Detaillierte Informationen finden Sie unter [Hinzufügen einer neuen Cloudkernspeichereinheit](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) in der Anleitung zur Clusterkonfiguration von Avere. 
 
 Die Seite wird aktualisiert, oder Sie können die Seite aktualisieren, um Ihre neue Kernspeichereinheit anzuzeigen.
 
@@ -168,7 +168,7 @@ Eine Verbindung ist ein Pfad, den Sie für Clients erstellen. Clients binden den
 
 Sie können z. B. `/avere/files` erstellen, um es dem `/vol0/data`-Export und dem `/project/resources`-Unterverzeichnis Ihrer NetApp-Kernspeichereinheit zuzuordnen.
 
-Weitere Informationen zu Verbindungen finden Sie im Abschnitt [Namespace](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html) der Anleitung zur Avere-Clusterkonfiguration.
+Weitere Informationen zu Verbindungen finden Sie im Abschnitt [Namespace](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) der Anleitung zur Avere-Clusterkonfiguration.
 
 Führen Sie diese Schritte über die Einstellungsschnittstelle der Avere-Systemsteuerung aus:
 

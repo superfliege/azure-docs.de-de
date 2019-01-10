@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek
+ms.reviewer: genemi,ayolubek, jrasnick
 manager: craigg
 ms.date: 02/05/2018
-ms.openlocfilehash: 290414ca07014d5f3bfbe160b0f571397fb13948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 96627d96acee76516c9dc3db1b58d6e4b7b6ff15
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467128"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601038"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-Alias für Azure SQL-Datenbank
 
@@ -55,12 +55,12 @@ Bei einer Notfallwiederherstellung wird Ihr SQL-Datenbankserver möglicherweise 
 
 Die folgenden Eigenschaften gelten für sämtliche DNS-Aliase Ihres SQL-Datenbankservers:
 
-- *Eindeutiger Name*: Jeder Aliasname, den Sie erstellen, ist auf allen Azure SQL-Datenbankservern eindeutig – genauso wie Servernamen.
-- *Server ist erforderlich*: Ein DNS-Alias kann nur dann erstellt werden, wenn er auf genau einen Server verweist und der Server bereits vorhanden ist. Ein aktualisierter Alias muss immer genau auf einen vorhandenen Server verweisen.
+- *Eindeutiger Name:* Jeder Aliasname, den Sie erstellen, ist auf allen Servern mit Azure SQL-Datenbank eindeutig (ebenso wie Servernamen).
+- *Server ist erforderlich:* Ein DNS-Alias kann nur dann erstellt werden, wenn er auf genau einen Server verweist und der Server bereits vorhanden ist. Ein aktualisierter Alias muss immer genau auf einen vorhandenen Server verweisen.
   - Wenn Sie einen SQL-Datenbankserver löschen, löscht das Azure-System auch alle DNS-Aliase, die auf den Server verweisen.
-- *Nicht an eine beliebige Region gebunden*: DNS-Aliase sind nicht an eine Region gebunden. DNS-Aliase können dahingehend aktualisiert werden, dass sie auf einen Azure SQL-Datenbankserver in einer beliebigen geografischen Region verweisen.
+- *Nicht an eine beliebige Region gebunden:* DNS-Aliase sind nicht an eine Region gebunden. DNS-Aliase können dahingehend aktualisiert werden, dass sie auf einen Azure SQL-Datenbankserver in einer beliebigen geografischen Region verweisen.
   - Wenn ein Alias jedoch für den Verweis auf einen anderen Server aktualisiert wird, müssen beide Server im selben Azure-*Abonnement* vorhanden sein.
-- *Berechtigungen*: Für die Verwaltung eines DNS-Alias benötigt der Benutzer die Berechtigungen *Servermitwirkender* oder höhere Berechtigungen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
+- *Berechtigungen:* Für die Verwaltung eines DNS-Alias benötigt der Benutzer die Berechtigungen *Servermitwirkender* oder höhere Berechtigungen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Verwalten von DNS-Aliase
 
@@ -95,9 +95,9 @@ Ein Codebeispiel von PowerShell-Cmdlets, das für die Verwaltung von DNS-Aliase 
 
 Die im Codebeispiel verwendeten Cmdlets lauten wie folgt:
 
-- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Erstellt einen neuen DNS-Alias im Azure SQL-Datenbankdienstsystem. Der Alias verweist auf Azure SQL-Datenbankserver 1.
-- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ruft alle DNS-Aliase auf, die SQL-Datenbankserver 1 zugewiesen sind, und listet diese auf.
-- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ändert den Servernamen, auf dessen Verweis der Alias konfiguriert ist, von Server 1 in SQL-Datenbankserver 2.
+- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbankserver 1.
+- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ruft alle DNS-Aliase auf, die Server 1 von SQL-Datenbank zugewiesen sind, und listet diese auf.
+- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ändert den Servernamen, für dessen Referenzierung der Alias konfiguriert ist, aus Server 1 in SQL-Datenbankserver 2.
 - [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Entfernt den DNS-Alias aus SQL-Datenbankserver 2 anhand des Aliasnamens.
 
 Die oben angegebenen Cmdlets wurden zum Modul **AzureRM.Sql** ab Modulversion 5.1.1 hinzugefügt.
@@ -106,9 +106,9 @@ Die oben angegebenen Cmdlets wurden zum Modul **AzureRM.Sql** ab Modulversion 5.
 
 Für einen DNS-Alias gelten gegenwärtig die folgenden Einschränkungen:
 
-- *Verzögerung von bis zu 2 Minuten*: Es dauert bis zu zwei Minuten, bis ein DNS-Alias aktualisiert oder entfernt wird.
+- *Verzögerung von bis zu 2 Minuten:* Es dauert bis zu zwei Minuten, bis ein DNS-Alias aktualisiert oder entfernt wird.
   - Abgesehen von einer kurzen Verzögerung stellt der Alias den Verweis von Clientverbindungen mit dem Legacyserver umgehend ein.
-- *DNS-Suche*: Derzeit besteht die einzige autoritative Möglichkeit darin, anhand einer [DNS-Suche ](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) zu überprüfen, auf welchen Server ein bestimmter DNS-Alias verweist.
+- *DNS-Suche:* Zurzeit besteht die einzige autoritative Möglichkeit darin, anhand einer [DNS-Suche ](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) zu überprüfen, auf welchen Server ein bestimmter DNS-Alias verweist.
 - *[Tabellenüberwachung wird nicht unterstützt](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* Sie können keinen DNS-Alias für einen Azure SQL-Datenbankserver verwenden, für den die *Tabellenüberwachung* für eine Datenbank aktiviert ist.
   - Die Tabellenüberwachung wurde eingestellt.
   - Es wird empfohlen, auf [Blobüberwachung](sql-database-auditing.md) umzusteigen.
