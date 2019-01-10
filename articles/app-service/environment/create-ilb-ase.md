@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b6c04c5b167eb963e9b2befa57e270ac454f5d74
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344277"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629882"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -78,7 +78,7 @@ So erstellen Sie eine ILB-ASE:
 
     * &lt;ASE-Name&gt;.p.azurewebsites.net
 
-   Mit dem Feature „Benutzerdefinierte Domänennamen“ können Sie Ihrer Web-App einen vorhandenen DNS-Namen zuordnen. Weitere Informationen zu diesem Feature finden Sie im Dokument [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps][customdomain]. Der für Apps verwendete benutzerdefinierte Domänenname und der von Ihrer ASE verwendete Domänenname dürfen sich nicht überschneiden. Für eine ILB-ASE mit dem Domänennamen _contoso.com_ können Sie keine benutzerdefinierten Domänennamen für beispielsweise folgende Apps verwenden:
+   Sie können [Ihrer App einen vorhandenen DNS-Namen zuordnen][customdomain]. Der für Apps verwendete benutzerdefinierte Domänenname und der von Ihrer ASE verwendete Domänenname dürfen sich nicht überschneiden. Für eine ILB-ASE mit dem Domänennamen _contoso.com_ können Sie keine benutzerdefinierten Domänennamen für beispielsweise folgende Apps verwenden:
 
     * www.contoso.com
 
@@ -88,7 +88,7 @@ So erstellen Sie eine ILB-ASE:
 
    Wenn Sie die benutzerdefinierten Domänennamen für Ihre Apps kennen, wählen Sie eine Domäne für die ILB-ASE, die keinen Konflikt mit diesen benutzerdefinierten Domänennamen verursacht. In diesem Beispiel können Sie z.B. *contoso-internal.com* für die Domäne Ihrer ASE verwenden, da sie keinen Konflikt mit benutzerdefinierten Domänennamen, die auf *.contoso.com* enden, verursacht.
 
-1. Wählen Sie **OK** und anschließend **Erstellen**.
+8. Wählen Sie **OK** und anschließend **Erstellen**.
 
     ![ASE-Erstellung][1]
 
@@ -160,23 +160,23 @@ So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
 1. Rufen Sie die ILB-Adresse für Ihre ASE ab. Wählen Sie **ASE** > **Eigenschaften** > **Virtuelle IP-Adresse** aus.
 
-1. Erstellen Sie nach der ASE-Erstellung eine Web-App in der ASE.
+2. Erstellen Sie nach der ASE-Erstellung eine App in der ASE.
 
-1. Erstellen Sie eine VM, sofern im VNET noch keine vorhanden ist.
+3. Erstellen Sie eine VM, sofern im VNET noch keine vorhanden ist.
 
     > [!NOTE] 
     > Versuchen Sie nicht, diese VM im selben Subnetz wie die der ASE zu erstellen, da dies Fehler bzw. Probleme verursacht.
     >
 
-1. Legen Sie das DNS für Ihre ASE-Domäne fest. Sie können einen Platzhalter mit Ihrer Domäne in Ihrem DNS verwenden. Um einige einfache Tests auszuführen, bearbeiten Sie die Hostdatei auf Ihrer VM, um den Namen der Web-App auf die virtuelle IP-Adresse festzulegen:
+4. Legen Sie das DNS für Ihre ASE-Domäne fest. Sie können einen Platzhalter mit Ihrer Domäne in Ihrem DNS verwenden. Um einige einfache Tests auszuführen, bearbeiten Sie die Hostdatei auf Ihrem virtuellen Computer, um den Namen der App auf die virtuelle IP-Adresse festzulegen:
 
-    a. Wenn Ihre ASE den Domänennamen _.ilbase.com_ aufweist und Sie die Web-App _mytestapp_ erstellen, wird sie unter _mytestapp.ilbase.com_ adressiert. Anschließend legen Sie _mytestapp.ilbase.com_ so fest, dass eine Auflösung in die ILB-Adresse erfolgt. (Unter Windows befindet sich die Hostdatei unter „_C:\Windows\System32\drivers\etc\_“.)
+    a. Wenn Ihre ASE den Domänennamen _.ilbase.com_ aufweist und Sie die App _mytestapp_ erstellen, wird sie unter _mytestapp.ilbase.com_ adressiert. Anschließend legen Sie _mytestapp.ilbase.com_ so fest, dass eine Auflösung in die ILB-Adresse erfolgt. (Unter Windows befindet sich die Hostdatei unter „_C:\Windows\System32\drivers\etc\_“.)
 
     b. Um Web Deploy-Publishing oder den Zugriff auf die erweiterte Konsole zu testen, erstellen Sie einen Datensatz für _mytestapp.scm.ilbase.com_.
 
-1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. (Navigieren Sie alternativ zum Namen Ihrer Web-App, der in Ihrer Domäne verwendet wird.)
+5. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. (Navigieren Sie alternativ zum Namen Ihrer App, der in Ihrer Domäne verwendet wird.)
 
-1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
+6. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
 
     Die IP-Adresse für Ihren ILB wird unter **IP-Adressen** aufgelistet. In dieser Liste sind auch die von der externen VIP und für eingehenden Datenverkehr für die Verwaltung verwendeten IP-Adressen aufgeführt.
 
@@ -237,7 +237,7 @@ Weitere Informationen zum Konfigurieren Ihrer ILB-ASE mit einem WAF-Gerät finde
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[webapps]: ../app-service-web-overview.md
+[webapps]: ../overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/

@@ -4,16 +4,17 @@ description: Informationen zum Ausführen eines Failovers für virtuelle VMware-
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 517355a32fc7a549370aed2c7a8408c3a0887e13
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838020"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973167"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für VMware-VMs und physische Server, die nach Azure repliziert werden.
 
@@ -42,10 +43,10 @@ Dies ist das fünfte Tutorial in einer Reihe. In diesem Tutorial wird davon ausg
 
 Failover und Failback weisen vier Phasen auf:
 
-1. **Failover auf Azure**: Failover von Computern vom lokalen Standort auf Azure.
-2. **Erneutes Schützen von virtuellen Azure-Computern**: Erneutes Schützen der Azure-VMs, sodass sie wieder zurück nach lokalen VMware-VMs repliziert werden. Der lokale virtuelle Computer wird während des erneuten Schützens deaktiviert. Dies hilft, die Konsistenz der Daten während der Replikation sicherzustellen.
-3. **Failover auf lokalen Standort**: Ausführen eines Failovers, um ein Failback aus Azure durchzuführen.
-4. **Erneutes Schützen von lokalen VMs**: Nachdem Ihre Daten per Failback zurückgeführt wurden, schützen Sie die lokalen virtuellen Computer, auf die Sie das Failback durchgeführt haben, erneut, damit diese mit der Replikation nach Azure beginnen.
+1. **Failover auf Azure:** Failover von Computern vom lokalen Standort auf Azure.
+2. **Erneutes Schützen der virtuellen Azure-Computer:** Schützen Sie die virtuellen Azure-Computer erneut, damit sie wieder zurück auf lokalen virtuellen VMware-Computern repliziert werden. Der lokale virtuelle Computer wird während des erneuten Schützens deaktiviert. Dies hilft, die Konsistenz der Daten während der Replikation sicherzustellen.
+3. **Failover auf lokalen Standort:** Führen Sie ein Failover aus, um ein Failback aus Azure durchzuführen.
+4. **Erneutes Schützen lokaler virtueller Computer:** Schützen Sie nach dem Failback der Daten erneut die lokalen virtuellen Computer, auf die Sie das Failback durchgeführt haben, damit diese mit der Replikation in Azure beginnen.
 
 ## <a name="verify-vm-properties"></a>Überprüfen von VM-Eigenschaften
 
@@ -67,8 +68,8 @@ Failover und Failback weisen vier Phasen auf:
 
 2. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
    - **Neueste**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
-   - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
-   - **Letzte App-Konsistenz:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten App-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
+   - **Letzte Verarbeitung**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
+   - **Letzte App-Konsistenz**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
    - **Benutzerdefiniert**: Geben Sie einen Wiederherstellungspunkt an.
 
 3. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, um zu versuchen, virtuelle Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
@@ -76,7 +77,7 @@ Failover und Failback weisen vier Phasen auf:
 In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Sie haben vielleicht **eine längere Dauer beim Testfailover** für virtuelle VMware-Computer bemerkt, die Folgendes verwenden: den Mobilitätsdienst einer Version älter als 9.8, physische Server, VMware-VMs für Linux, virtuelle Hyper-V-Computer, die als physische Server geschützt werden, VMware-VMs, die den DHCP-Dienst nicht aktiviert haben und VMware-VMs, die nicht über folgende Starttreiber verfügen: storvsc, vmbus, storflt, intelide, atapi.
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet.
+> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Bevor das Failover gestartet wird, wird die VM-Replikation beendet.
 > Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Verbindung zu der VM in Azure, für die ein Failover ausgeführt wurde

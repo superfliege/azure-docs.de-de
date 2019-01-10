@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: 73c65aa5c95887c8b1f6eb5e4cf91e19815eba15
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ac8de247f09ba3b4e38cabb565fe332eba909ccc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741877"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118131"
 ---
 # <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Sprachen
 
@@ -150,5 +150,5 @@ X-RequestId|Ein Wert, der vom Server generiert wird, um die Anforderung zu ident
 |:--|:--|
 |400|Ungültige Anforderung. Überprüfen Sie die Eingabeparameter, und stellen Sie sicher, dass sie gültig sind. Das Antwortobjekt enthält eine ausführlichere Beschreibung des Fehlers.|
 |429|Too many requests. (Zu viele Anforderungen.)|
-|500|An error occured. (Ein Fehler ist aufgetreten.) Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|
+|500|Ein Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|
 |503|Der Server ist vorübergehend nicht verfügbar.  Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|

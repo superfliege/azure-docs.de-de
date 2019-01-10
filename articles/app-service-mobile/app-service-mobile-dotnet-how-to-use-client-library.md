@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 30eb458b9d0584b467479163d8312d7bd5456be1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409733"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157327"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Verwenden des verwalteten Clients für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -651,7 +651,7 @@ Für die folgenden clientflussbezogenen Authentifizierungsmuster werden Beispiel
 Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um die Benutzerauthentifizierung auf dem Client mithilfe der Azure Active Directory-Authentifizierung einzuleiten.
 
 1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [Konfigurieren von App Service für eine Active Directory-Anmeldung] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
-2. Öffnen Sie Ihr Projekt in Visual Studio oder Xamarin Studio, und fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.IdentityModel.CLients.ActiveDirectory` hinzu. Nehmen Sie in die Suche auch Vorabversionen auf.
+2. Öffnen Sie Ihr Projekt in Visual Studio oder Xamarin Studio, und fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.IdentityModel.Clients.ActiveDirectory` hinzu. Nehmen Sie in die Suche auch Vorabversionen auf.
 3. Fügen Sie je nach verwendeter Plattform den folgenden Code zu Ihrer Anwendung hinzu. Nehmen Sie dabei die folgenden Änderungen vor:
 
    * Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, in dem Sie Ihre Anwendung bereitgestellt haben. Das Format muss https://login.microsoftonline.com/contoso.onmicrosoft.com sein. Sie können diesen Wert im [Azure-Portal] in Ihrer Azure Active Directory-Instanz auf der Registerkarte „Domäne“ kopieren.

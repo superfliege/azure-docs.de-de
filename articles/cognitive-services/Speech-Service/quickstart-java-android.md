@@ -8,21 +8,21 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e77ee61e3d318b355b978ce21031f3f55a26feca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090107"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724622"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Java unter Android mit dem Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Dieser Artikel enthält Informationen zur Erstellung einer Java-Anwendung für Android mithilfe des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
-Die Anwendung basiert auf dem Maven-Paket für das Microsoft Cognitive Services Speech SDK (Version 1.1.0) sowie auf Android Studio 3.1.
+Dieser Artikel enthält Informationen zur Entwicklung einer Java-Anwendung für Android mithilfe des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
+Die Anwendung basiert auf dem Maven-Paket für das Microsoft Cognitive Services Speech SDK (Version 1.2.0) sowie auf Android Studio 3.1.
 Das Speech SDK ist zurzeit kompatibel mit Android-Geräten mit 32-/64-Bit-ARM-Prozessoren und Prozessoren, die mit Intel x86/x64 kompatibel sind.
 
 > [!NOTE]
@@ -58,9 +58,9 @@ Android Studio benötigt einen Moment, um Ihr neues Android-Projekt vorzubereite
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.1.0`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.2.0`.
 
-Das Speech SDK für Android ist als [AAR (Android-Bibliothek)](https://developer.android.com/studio/projects/android-library) verpackt und enthält die erforderlichen Bibliotheken sowie die erforderlichen Android-Berechtigungen für die Verwendung.
+Das Speech SDK für Android ist als [AAR (Android-Bibliothek)](https://developer.android.com/studio/projects/android-library) verpackt und enthält die erforderlichen Bibliotheken sowie die erforderlichen Android-Berechtigungen.
 Es wird in einem Maven-Repository unter https://csspeechstorage.blob.core.windows.net/maven/ gehostet.
 
 Richten Sie Ihr Projekt so ein, dass es das Speech SDK verwendet. Öffnen Sie das Fenster „Projektstruktur“, indem Sie **Datei** > **Projektstruktur** in der Menüleiste von Android Studio auswählen. Nehmen Sie im Fenster „Projektstruktur“ die folgenden Änderungen vor:
@@ -73,7 +73,7 @@ Richten Sie Ihr Projekt so ein, dass es das Speech SDK verwendet. Öffnen Sie da
 
    ![Screenshot der Fensters „Projektstruktur“](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Geben Sie im angezeigten Fenster den Namen und die Version des Speech SDK für Android ein: `com.microsoft.cognitiveservices.speech:client-sdk:1.1.0`. Wählen Sie dann **OK**aus.
+1. Geben Sie im angezeigten Fenster den Namen und die Version des Speech SDK für Android ein: `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0`. Wählen Sie dann **OK**aus.
    Das Speech SDK sollte nun der Liste der Abhängigkeiten hinzugefügt werden, wie unten dargestellt:
 
    ![Screenshot der Fensters „Projektstruktur“](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -98,7 +98,7 @@ Sie erstellen eine einfache Benutzeroberfläche für die Anwendung. Bearbeiten S
 
   ![Screenshot des Zauberstabsymbols](media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-Der Text und die grafische Darstellung Ihrer Benutzeroberfläche sollten jetzt etwa wie folgt aussehen.
+Der Text und die grafische Darstellung Ihrer Benutzeroberfläche sollten jetzt etwa wie folgt aussehen:
 
 <table>
 <tr>
@@ -141,16 +141,12 @@ Drücken Sie die Schaltfläche in der Anwendung, um einen Spracherkennungsabschn
 
 ![Screenshot der Android-Anwendung](media/sdk/qs-java-android-13-gui-on-device.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Suchen Sie nach diesem Beispiel im Ordner `quickstart/java-android`.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für Java](how-to-recognize-intents-from-speech-java.md)
+> [Java-Beispiele auf GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Übersetzen von Sprache](how-to-translate-speech-csharp.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
