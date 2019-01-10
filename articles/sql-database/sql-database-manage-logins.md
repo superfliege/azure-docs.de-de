@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/29/2018
-ms.openlocfilehash: c234ac95d0e02857fe87afe3a734d77f00954477
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/18/2018
+ms.openlocfilehash: 2be5c8ddf6928d5529c2eb08a6d64bd64b8445de
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864943"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631973"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Steuern und Gewähren des Datenbankzugriffs für SQL-Datenbank und SQL Data Warehouse
 
@@ -31,9 +31,9 @@ Nach der Konfiguration von Firewallregeln können Sie über ein Administratorkon
 > Ein Tutorial finden Sie unter [Schützen von Azure SQL-Datenbank](sql-database-security-tutorial.md). Dieses Tutorial gilt nicht für die **verwaltete Azure SQL-Datenbank-Instanz**.
 
 ## <a name="unrestricted-administrative-accounts"></a>Uneingeschränkte Administratorkonten
-Es gibt zwei Administratorkonten (**Serveradministrator** und **Active Directory-Administrator**), die als Administratoren fungieren. Öffnen Sie das Azure-Portal, und navigieren Sie zu den Eigenschaften Ihres SQL-Servers, um diese Administratorkonten für Ihren SQL-Server zu identifizieren.
+Es gibt zwei Administratorkonten (**Serveradministrator** und **Active Directory-Administrator**), die als Administratoren fungieren. Um diese Administratorkonten für Ihren SQL-Server zu identifizieren, öffnen Sie das Azure-Portal, und navigieren Sie zur Registerkarte „Eigenschaften“ Ihres SQL-Servers oder Ihrer SQL-Datenbank.
 
-![SQL Server-Administratoren](./media/sql-database-manage-logins/sql-admins.png)
+![SQL Server-Administratoren](media/sql-database-manage-logins/sql-admins.png)
 
 - **Serveradministrator**   
 Wenn Sie einen Azure SQL-Server erstellen, müssen Sie eine **Serveradministratoranmeldung** angeben. Vom SQL-Server wird dieses Konto als Anmeldung für die Masterdatenbank erstellt. Dieses Konto stellt die Verbindung per SQL Server-Authentifizierung (Benutzername und Kennwort) her. Nur eines dieser Konten kann vorhanden sein.   

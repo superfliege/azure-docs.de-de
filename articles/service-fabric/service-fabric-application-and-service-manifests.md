@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2018
+ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 78315409c5d83a98321e16913b1090e8996ed8ce
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3e390763255878384e7a767158210d0515b09958
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230283"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653546"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Ausführlichere Beispiele finden Sie unter [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md).  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
+
+> [!WARNING]
+> Das XML-Dateischema des Manifests erzwingt die richtige Reihenfolge der untergeordneten Elemente.  Öffnen Sie als teilweise Problemumgehung „C: \Programme\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd“ in Visual Studio, während Sie eines der Manifeste von Service Fabric erstellen oder ändern. Auf diese Weise können Sie die Reihenfolge der untergeordneten Elemente überprüfen und IntelliSense nutzen.
 
 ## <a name="describe-a-service-in-servicemanifestxml"></a>Beschreiben eines Diensts in der Datei „ServiceManifest.xml“
 Das Dienstmanifest definiert deklarativ der Diensttyp und die Version. Es legt Dienstmetadaten wie Diensttyp, Integritätseigenschaften, Lastenausgleichsmetriken, Dienstbinärdateien und Konfigurationsdateien fest.  Anders ausgedrückt: Es beschreibt den Code, die Konfiguration und die Datenpakete, die ein Dienstpaket bilden, mit dem ein oder mehrere Diensttypen unterstützt werden. Ein Dienstmanifest kann mehrere Code-, Konfigurations- und Datenpakete enthalten, die unabhängig voneinander mit Versionsangaben versehen werden können. Hier ist ein Dienstmanifest für den ASP.NET Core-Web-Front-End-Dienst der [Voting-Beispielanwendung](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) angegeben (und hier einige [ausführlichere Beispiele](service-fabric-manifest-examples.md)):

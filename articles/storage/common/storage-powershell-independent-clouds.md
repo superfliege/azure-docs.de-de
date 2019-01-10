@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141161"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628339"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Verwalten von Speicher in den unabhängigen Azure-Clouds mithilfe von PowerShell
 
@@ -23,6 +23,8 @@ Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellun
 * [Azure China-Cloud, betrieben von 21Vianet in China](http://www.windowsazure.cn/)
 * [Azure Deutschland-Cloud](../../germany/germany-welcome.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="using-an-independent-cloud"></a>Verwenden einer unabhängigen Cloud 
 
 Zur Verwendung von Azure Storage in einer der unabhängigen Clouds stellen Sie nicht mit Azure Public, sondern mit der gewünschten Cloud eine Verbindung her. So verwenden Sie anstelle von Azure Public eine der unabhängigen Clouds:
@@ -31,28 +33,28 @@ Zur Verwendung von Azure Storage in einer der unabhängigen Clouds stellen Sie n
 * Sie bestimmen und verwenden die verfügbaren Regionen.
 * Sie verwenden das richtige Endpunktsuffix. Dieses Suffix unterscheidet sich von Azure Public.
 
-Für die Beispiele ist mindestens Version 4.4.0 des Azure PowerShell-Moduls erforderlich. Führen Sie in einem PowerShell-Fenster `Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Wenn nichts aufgeführt ist oder Sie ein Upgrade ausführen müssen, lesen Sie die Informationen unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell). 
+Für die Beispiele ist mindestens Version 0.7 des Azure PowerShell-Moduls Az erforderlich. Führen Sie in einem PowerShell-Fenster `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn nichts aufgeführt ist oder Sie ein Upgrade ausführen müssen, lesen Sie die Informationen unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren und Konfigurieren von Azure PowerShell). 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Führen Sie das Cmdlet [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) aus, um die verfügbaren Azure-Umgebungen anzuzeigen:
+Führen Sie das Cmdlet [Get-AzEnvironment](/powershell/module/az.profile/get-Azenvironment) aus, um die verfügbaren Azure-Umgebungen anzuzeigen:
    
 ```powershell
-Get-AzureRmEnvironment
+Get-AzEnvironment
 ```
 
 Melden Sie sich bei dem Konto an, mit dem Sie Zugriff auf die Cloud haben, mit der Sie eine Verbindung herstellen möchten, und legen Sie die Umgebung fest. Dieses Beispiel zeigt, wie Sie sich bei einem Konto anmelden, das die Azure Government-Cloud verwendet.   
 
 ```powershell
-Connect-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzAccount –Environment AzureUSGovernment
 ```
 
 Verwenden Sie zum Zugreifen auf die China-Cloud die Umgebung **AzureChinaCloud**. Verwenden Sie den Zugriff auf die Deutschland-Cloud **AzureGermanCloud**.
 
-Falls Sie nun die Liste der Standorte benötigen, um ein Speicherkonto oder eine andere Ressource zu erstellen, können Sie mit [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) die für die ausgewählte Cloud verfügbaren Standorte abfragen.
+Falls Sie nun die Liste der Standorte benötigen, um ein Speicherkonto oder eine andere Ressource zu erstellen, können Sie mit [Get-AzLocation](/powershell/module/az.resources/get-azlocation) die für die ausgewählte Cloud verfügbaren Standorte abfragen.
 
 ```powershell
-Get-AzureRmLocation | select Location, DisplayName
+Get-AzLocation | select Location, DisplayName
 ```
 
 Die folgende Tabelle enthält die für die Deutschland-Cloud zurückgegebenen Standorte:
@@ -67,14 +69,14 @@ Die folgende Tabelle enthält die für die Deutschland-Cloud zurückgegebenen St
 
 Das Endpunktsuffix der einzelnen Umgebungen unterscheidet sich vom Azure Public-Endpunkt. Das Blobendpunktsuffix für Azure Public lautet **blob.core.windows.net**. Für die Government-Cloud lautet das Blobendpunktsuffix **blob.core.usgovcloudapi.net**. 
 
-### <a name="get-endpoint-using-get-azurermenvironment"></a>Abrufen des Endpunkts mit „Get-AzureRMEnvironment“ 
+### <a name="get-endpoint-using-get-azenvironment"></a>Abrufen des Endpunkts mit „Get-AzEnvironment“ 
 
-Rufen Sie das Endpunktsuffix mit [Get-AzureRMEnvironment](/powershell/module/azurerm.profile/get-azurermenvironment) ab. Beim Endpunkt handelt es sich um die *StorageEndpointSuffix*-Eigenschaft der Umgebung. Dies wird in den folgenden Codeausschnitten veranschaulicht. Alle diese Befehle geben Ergebnisse wie „core.cloudapp.net“ oder „core.cloudapi.de“ zurück. Fügen Sie die Ausgabe an den Speicherdienst an, um auf diesen Dienst zuzugreifen. Beispiel: „queue.core.cloudapi.de“ greift auf den Warteschlangendienst in der Deutschland-Cloud zu.
+Rufen Sie das Endpunktsuffix mit [Get-AzEnvironment](/powershell/module/az.profile/get-azenvironment) ab. Beim Endpunkt handelt es sich um die *StorageEndpointSuffix*-Eigenschaft der Umgebung. Dies wird in den folgenden Codeausschnitten veranschaulicht. Alle diese Befehle geben Ergebnisse wie „core.cloudapp.net“ oder „core.cloudapi.de“ zurück. Fügen Sie die Ausgabe an den Speicherdienst an, um auf diesen Dienst zuzugreifen. Beispiel: „queue.core.cloudapi.de“ greift auf den Warteschlangendienst in der Deutschland-Cloud zu.
 
 Dieser Codeausschnitt ruft alle Umgebungen und ihre Endpunktsuffixe ab.
 
 ```powershell
-Get-AzureRmEnvironment | select Name, StorageEndpointSuffix 
+Get-AzEnvironment | select Name, StorageEndpointSuffix 
 ```
 
 Mit diesem Befehl werden die folgenden Ergebnisse zurückgegeben:
@@ -86,10 +88,10 @@ Mit diesem Befehl werden die folgenden Ergebnisse zurückgegeben:
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-Um alle Eigenschaften für die angegebene Umgebung abzurufen, rufen Sie **Get-AzureRmEnvironment** auf, und geben Sie den Cloudnamen an. Dieser Codeausschnitt gibt eine Liste mit Eigenschaften zurück. Suchen Sie in der Liste nach **StorageEndpointSuffix**. Das folgende Beispiel gilt für die Deutschland-Cloud.
+Um alle Eigenschaften für die angegebene Umgebung abzurufen, rufen Sie **Get-AzEnvironment** auf, und geben Sie den Cloudnamen an. Dieser Codeausschnitt gibt eine Liste mit Eigenschaften zurück. Suchen Sie in der Liste nach **StorageEndpointSuffix**. Das folgende Beispiel gilt für die Deutschland-Cloud.
 
 ```powershell
-Get-AzureRmEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud 
 ```
 
 Die Ergebnisse entsprechen etwa folgenden Angaben:
@@ -111,7 +113,7 @@ Die Ergebnisse entsprechen etwa folgenden Angaben:
 Um nur die Eigenschaft des Speicherendpunktsuffixes abzurufen, rufen Sie die bestimmte Cloud ab, und fragen Sie nur diese eine Eigenschaft ab.
 
 ```powershell
-$environment = Get-AzureRmEnvironment -Name AzureGermanCloud
+$environment = Get-AzEnvironment -Name AzureGermanCloud
 Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
 ```
 
@@ -129,7 +131,7 @@ Sie können zum Abrufen der Endpunkte auch die Eigenschaften eines Speicherkonto
 # Get a reference to the storage account.
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
-$storageAccount = Get-AzureRmStorageAccount `
+$storageAccount = Get-AzStorageAccount `
   -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
   # Output the endpoints.
@@ -157,7 +159,7 @@ Ab hier können Sie die gleiche PowerShell-Instanz verwenden, mit der Sie auch I
 Wenn Sie eine neue Ressourcengruppe und ein Speicherkonto für diese Übung erstellt haben, können Sie alle Ressourcen entfernen, indem Sie die Ressourcengruppe löschen. Dabei werden auch alle in der Gruppe enthaltenen Ressourcen gelöscht. In diesem Fall werden das erstellte Speicherkonto und die Ressourcengruppe selbst entfernt.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

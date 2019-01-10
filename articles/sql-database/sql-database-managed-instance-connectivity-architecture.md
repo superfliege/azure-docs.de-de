@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 964f91f412645e141ca003d511480f6f6eb438a3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343288"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536048"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz
 
@@ -113,7 +113,10 @@ Sie können die verwaltete Instanz in einem dedizierten Subnetz (dem Subnetz der
 
   > [!Note]
   > Obwohl obligatorische Eingangssicherheitsregeln den Datenverkehr von _allen_ Quellen an den Ports 9000 9003, 1438, 1440 und 1452 zulassen, sind diese Ports durch eine integrierte Firewall geschützt. In [diesem Artikel](sql-database-managed-instance-find-management-endpoint-ip-address.md) wird gezeigt, wie Sie die IP-Adresse des Verwaltungsendpunkts ermitteln und Firewallregeln überprüfen können. 
-
+  
+  > [!Note]
+  > Wenn Sie Transaktionsreplikation in der verwalteten Instanz verwenden und jede Datenbank in der verwalteten Instanz als Verleger oder Verteiler verwendet wird, muss Port 445 (TCP ausgehend) auch in den Sicherheitsregeln des Subnetzes geöffnet sein, um auf die Azure-Dateifreigabe zugreifen zu können.
+  
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Übersicht finden Sie unter  [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)

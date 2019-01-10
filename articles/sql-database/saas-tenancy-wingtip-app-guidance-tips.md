@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: da8814cfd8fca8da061c27d9c5b69af15bff5007
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 42fd1c19a9cda0aa3d5d62bd265467327250a784
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054403"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606026"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Allgemeine Anweisungen zum Arbeiten mit den Wingtip-Tickets-Beispielanwendungen für SaaS
 
@@ -57,7 +57,7 @@ Indem Sie diese Werte hier festlegen, wird es Ihnen erspart, diese bereitstellun
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>Führen Sie die Skripts aus, indem Sie F5 drücken.
 
-Zur Navigation in Ordnern verwenden die verschiedenen Skripts *$PSScriptRoot*. *$PSScriptRoot* wird nur ausgewertet, wenn die Skripts durch Drücken der Taste **F5** ausgeführt werden.  Das Markieren und Ausführen einer Auswahl (**F8**) kann zu Fehlern führen. Drücken Sie daher zum Ausführen von Skripts **F5**.
+Zur Navigation in Ordnern verwenden die verschiedenen Skripts *$PSScriptRoot*. *$PSScriptRoot* wird nur ausgewertet, wenn die Skripts durch Drücken der Taste **F5** ausgeführt werden.  Das Markieren und Ausführen einer Auswahl (**F8**) kann zu Fehlern führen. Drücken Sie daher zum Ausführen von Skripts **F5**.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Schrittweises Durcharbeiten der Skripts zum Überprüfen der Implementierung
 
@@ -94,7 +94,7 @@ Um sicherzustellen, dass erfolgreich eine Verbindung mit der Demo hergestellt wi
 
    ![Katalogserver](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Demo-Anmeldeinformationen: Benutzername = *developer*, Kennwort = *P@ssword1*
+3. Die folgenden Anmeldeinformationen gelten für die Demo: Anmeldung = *developer*, Kennwort = *P@ssword1*
 
     Die Abbildung unten stellt die Anmeldung für das Muster *Datenbank pro Mandant* dar. 
     ![Verbindung](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

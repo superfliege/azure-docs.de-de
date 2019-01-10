@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 2e7b7d9b0a194b13de9bdf759f4f3be645ed7c2e
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 01a9852157cbaefd966be974a3175c25e7ff69f8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442168"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001701"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Verwenden von Visual Studio zum Vereinfachen des Schreibens und Verwaltens Ihrer Service Fabric-Anwendung
 Sie können Ihre Azure Service Fabric-Anwendungen und -Dienste in Visual Studio verwalten. Sobald Sie die [Einrichtung Ihrer Entwicklungsumgebung](service-fabric-get-started.md)abgeschlossen haben, können Sie mit Visual Studio Service Fabric-Anwendungen erstellen, Dienste hinzufügen und Anwendungen packen, registrieren und im lokalen Entwicklungscluster bereitstellen.
@@ -47,7 +47,7 @@ Visual Studio stellt eine Eigenschaft mit dem Namen **Anwendungsdebugmodus** ber
 
 #### <a name="application-debug-modes"></a>Anwendungsdebugmodi
 
-1. **Anwendung aktualisieren** Dieser Modus ermöglicht das schnelle Ändern und Debuggen Ihres Codes und unterstützt die Bearbeitung statischer Webdateien beim Debuggen. Dieser Modus funktioniert nur, wenn sich Ihr lokales Entwicklungscluster im [1-Knoten-Modus] befindet. Hierbei handelt es sich um den standardmäßigen Debugmodus für die Anwendung.(/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+1. **Anwendung aktualisieren** Dieser Modus ermöglicht das schnelle Ändern und Debuggen Ihres Codes und unterstützt die Bearbeitung statischer Webdateien beim Debuggen. Dieser Modus funktioniert nur, wenn sich Ihr lokales Entwicklungscluster im [1-Knoten-Modus](./service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode) befindet. Dies ist der Anwendungsdebug-Standardmodus.
 2. **Anwendung entfernen** bewirkt, dass die Anwendung entfernt wird, wenn die Debugsitzung endet.
 3. **Automatisches Upgrade** Die Anwendung wird weiter ausgeführt, nachdem die Debugsitzung beendet wurde. Die nächste Debugsitzung behandelt die Bereitstellung als Upgrade. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
 4. **Anwendung beibehalten** Die Anwendung wird weiter im Cluster ausgeführt, nachdem die Debugsitzung beendet wurde. Zu Beginn der nächsten Debugsitzung wird die Anwendung entfernt.

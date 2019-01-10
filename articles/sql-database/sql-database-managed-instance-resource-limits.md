@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315637"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584495"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -45,19 +45,23 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (
 
 Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und „Unternehmenskritisch“. Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
 
-| **Feature** | **Universell** | **Unternehmenskritisch** |
+| **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
 | Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Arbeitsspeicher | Gen4: 56 – 156 GB<br/>Gen5: 44 – 440 GB<br/>\*Proportional zur Anzahl virtueller Kerne | Gen4: 56 – 156 GB <br/> Gen5: 44 – 440 GB<br/>\*Proportional zur Anzahl virtueller Kerne |
+| Arbeitsspeicher | Gen4: 56 – 156 GB<br/>Gen5: 44 – 440 GB<br/>\*Proportional zur Anzahl virtueller Kerne | Gen4: 56 – 156 GB <br/> Gen5: 41 GB – 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne |
 | Max. Speichergröße | 8 TB | Gen 4: 1 TB <br/> Gen 5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
-| IOPS (ungefähr) | 500 – 7500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 – 110 K (1375 pro virtuellem Kern) |
+| Daten-/Protokoll-IOPS (ungefähr) | 500 – 7500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 – 110 K (1375 pro virtuellem Kern) |
+| Instanzprotokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. |
+| Datendurchsatz (ungefähr) | 100 – 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 – 48 MB/Sek. pro virtuellem Kern |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
-| Max. TempDB-Größe | 192 – 1920 GB (24 GB pro virtuellem Kern) | Bestimmt durch die maximale Speichergröße pro Instanz |
+| Max. TempDB-Größe | 192 – 1920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
 
-- Sowohl Benutzer- als auch Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
+**Hinweise**:
+- Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
+- Durchsatz und IOPS hängen auch von der Seitengröße ab, die nicht explizit durch die verwaltete Instanz eingeschränkt wird.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 

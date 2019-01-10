@@ -1,24 +1,24 @@
 ---
-title: Durchführen der Indizierung in der Azure Cosmos DB-MongoDB-API
-description: Enthält eine Übersicht über die Indizierungsfunktionen in der Azure Cosmos DB-MongoDB-API.
+title: Indizieren in der API für MongoDB von Azure Cosmos-DB
+description: Enthält eine Übersicht über die Indizierungsfunktionen mit der API für MongoDB von Azure Cosmos DB.
 services: cosmos-db
-author: orestis-ms
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: orkostak
-ms.openlocfilehash: bdb2ceb45950b99b1a5a351c6301599a791ef8cc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 4c6ba4b12625433f0b0218dc88decf2d7cb7ad77
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875296"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792281"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Durchführen der Indizierung in der Azure Cosmos DB- MongoDB-API
+# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indizieren mit der API für MongoDB von Azure Cosmos-DB
 
-Für die Azure Cosmos DB-MongoDB-API werden die Funktionen für die automatische Indexverwaltung von Azure Cosmos DB genutzt. Daher haben Benutzer Zugriff auf die Standard-Indizierungsrichtlinien von Azure Cosmos DB. Wenn vom Benutzer also keine Indizes definiert wurden oder keine Indizes gelöscht wurden, werden standardmäßig alle Felder beim Einfügen in die Sammlung automatisch indiziert. Für die meisten Szenarien empfehlen wir, die Standardindizierungsrichtlinie des Kontos zu verwenden.
+Die API für MongoDB von Azure Cosmos DB nutzt die Funktionen für automatische Indexverwaltung von Cosmos DB. Daher haben Benutzer Zugriff auf die Standardindizierungsrichtlinien von Cosmos DB. Wenn vom Benutzer also keine Indizes definiert oder gelöscht wurden, werden standardmäßig alle Felder beim Einfügen in eine Sammlung automatisch indiziert. Für die meisten Szenarien empfehlen wir, die Standardindizierungsrichtlinie des Kontos zu verwenden.
 
 ## <a name="dropping-the-default-indexes"></a>Löschen der Standardindizes
 
@@ -97,5 +97,5 @@ Der obige Befehl bewirkt das Löschen beliebiger Dokumente in der Sammlung ```db
 Derzeit ist die Erstellung von eindeutigen Indizes nur möglich, wenn die Sammlung keine Dokumente enthält. Bei gängigen MongoDB-Migrationstools wird versucht, die eindeutigen Indizes nach dem Importieren der Daten zu erstellen. Zur Problemumgehung wird empfohlen, dass Benutzer die entsprechenden Sammlungen und eindeutigen Indizes manuell erstellen, anstatt das Migrationstool zuzulassen (für ```mongorestore``` wird dieses Verhalten erreicht, indem in der Befehlszeile das Flag „--noIndexRestore“ verwendet wird).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Unterstützen von Indexdaten durch Azure Cosmos DB](../cosmos-db/index-policy.md)
-* [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen](../cosmos-db/time-to-live.md)
+* [Indizierung in Azure Cosmos DB](../cosmos-db/index-policy.md)
+* [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB](../cosmos-db/time-to-live.md)

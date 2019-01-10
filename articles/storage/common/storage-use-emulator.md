@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 22c7adc5db044568b4aa49dbbb0e36d2c919f6a6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052542"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629627"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -88,21 +88,24 @@ Nachdem Sie den Speicheremulator installiert und gestartet haben, können Sie de
 Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage-configure-connection-string.md).
 
 ### <a name="authorize-with-a-shared-access-signature"></a>Autorisieren mit einer SAS (Shared Access Signature)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Einige Azure Storage-Clientbibliotheken, wie z. B. die Xamarin-Bibliothek, unterstützen nur Authentifizierung mit einem SAS (Shared Access Signature)-Token. Sie können das SAS-Token mit einem Tool wie dem [Storage-Explorer](http://storageexplorer.com/) oder einer anderen Anwendung erstellen, die die Authentifizierung mit einem gemeinsam verwendeten Schlüssel unterstützt.
 
 Sie können ein SAS-Token auch mithilfe von Azure PowerShell generieren. Im folgenden Beispiel wird ein SAS-Token mit vollen Berechtigungen für einen Blobcontainer generiert:
 
-1. Installieren Sie Azure PowerShell, sofern noch nicht geschehen (die Verwendung der neuesten Version der Azure PowerShell-Cmdlets wird empfohlen). Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps).
+1. Installieren Sie Azure PowerShell, sofern noch nicht geschehen (die Verwendung der neuesten Version der Azure PowerShell-Cmdlets wird empfohlen). Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps).
 2. Öffnen Sie Azure PowerShell, und führen Sie die folgenden Befehle aus. Ersetzen Sie hierbei `CONTAINER_NAME` durch einen Namen Ihrer Wahl:
 
 ```powershell
-$context = New-AzureStorageContext -Local
+$context = New-AzStorageContext -Local
 
-New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
+New-AzStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
 $now = Get-Date
 
-New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+New-AzStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
 ```
 
 Der resultierende SAS-URI für den neuen Container sollte etwa wie folgt lauten:
@@ -166,11 +169,11 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help`
 
 | Option | BESCHREIBUNG | Get-Help | Argumente |
 | --- | --- | --- | --- |
-| **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
+| **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
 | **Beenden** |Beendet den Speicheremulator. |`AzureStorageEmulator.exe stop` | |
 | **Status** |Zeigt den Status des Speicheremulators an. |`AzureStorageEmulator.exe status` | |
-| **Clear** |Löscht die Daten in allen Diensten, die an der Befehlszeile angegeben werden. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*: löscht Blobdaten. <br/>*queue*: löscht Warteschlangendaten. <br/>*table*: löscht Tabellendaten. <br/>*all*: löscht sämtliche Daten in allen Diensten. |
-| **Init** |Führt eine einmalige Initialisierung zur Einrichtung des Emulators durch. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*: Gibt den Server an, auf dem die SQL-Instanz gehostet wird. <br/>*-sqlinstance instanceName*: Gibt den Namen der zu verwendenden SQL-Instanz in der Standardserverinstanz an. <br/>*-forcecreate*: Erzwingt die Erstellung der SQL-Datenbank, auch wenn diese bereits vorhanden ist. <br/>*-skipcreate*: Überspringt das Erstellen der SQL-Datenbank. Dies hat Vorrang vor „-forcecreate“.<br/>*-reserveports*: Versucht, die den Diensten zugeordneten HTTP-Ports zu reservieren.<br/>*-unreserveports*: Versucht, Reservierungen für die den Diensten zugeordneten HTTP-Ports zu entfernen. Dies hat Vorrang vor „-reserveports“.<br/>*-inprocess*: Führt die Initialisierung im aktuellen Prozess aus, anstatt einen neuen Prozess zu erstellen. Der aktuelle Prozess muss mit erhöhten Rechten gestartet werden, wenn Portreservierungen geändert werden. |
+| **Clear** |Löscht die Daten in allen Diensten, die an der Befehlszeile angegeben werden. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*: Löscht Blobdaten. <br/>*queue*: Löscht Warteschlangendaten. <br/>*table*: Löscht Tabellendaten. <br/>*all*: Löscht sämtliche Daten in allen Diensten. |
+| **Init** |Führt eine einmalige Initialisierung zur Einrichtung des Emulators durch. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*: Gibt den Server an, der die SQL-Instanz hostet. <br/>*-sqlinstance instanceName*: Gibt den Namen der zu verwendenden SQL-Instanz in der Standardserverinstanz an. <br/>*-forcecreate*: Erzwingt die Erstellung der SQL-Datenbank, auch wenn diese bereits vorhanden ist. <br/>*-skipcreate*: Überspringt das Erstellen der SQL-Datenbank. Dies hat Vorrang vor „-forcecreate“.<br/>*-reserveports*: Versucht, die den Diensten zugeordneten HTTP-Ports zu reservieren.<br/>*-unreserveports*: Versucht, Reservierungen für die den Diensten zugeordneten HTTP-Ports zu entfernen. Dies hat Vorrang vor „-reserveports“.<br/>*-inprocess*: Führt die Initialisierung im aktuellen Prozess aus, anstatt einen neuen Prozess zu erstellen. Der aktuelle Prozess muss mit erhöhten Rechten gestartet werden, wenn Portreservierungen geändert werden. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Unterschiede zwischen dem Speicheremulator und Azure Storage
 Da der Speicheremulator eine emulierte Umgebung darstellt, die in einer lokalen SQL-Instanz ausgeführt wird, gibt es funktionelle Unterschiede zwischen dem Emulator und einem Azure-Speicherkonto in der Cloud:

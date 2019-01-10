@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 7103557d19b367be0b9f0aa6f4a4642800c14558
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2f9800deedb2e8d55362920fed2493a42290e764
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314828"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555845"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
 
@@ -101,7 +101,7 @@ Die Dienst-zu-Dienst-Kommunikation kann unter bestimmten Umständen fehlschlagen
 - Wenn der Dienstname allein nicht funktioniert, versuchen Sie es mit dem vollqualifizierten Namen: ServiceName.ApplicationName.
 - Fügen Sie in der Docker-Datei für Ihren Dienst `EXPOSE <port>` hinzu. Dabei ist „port“ der Port, über den Ihr Dienst bereitgestellt wird. Beispiel: 
 
-```
+```DockerFile
 EXPOSE 80
 ```
 

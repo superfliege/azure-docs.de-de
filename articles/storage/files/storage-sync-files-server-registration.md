@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918875"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002551"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Verwalten registrierter Server mit der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Im folgenden Artikel wird beschrieben, wie Sie einen Server bei einem Speichersynchronisierungsdienst registrieren und verwalten. Informationen zur End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Registrieren eines Servers beim Speichersynchronisierungsdienst und Aufheben der Registrierung
 Beim Registrieren eines Servers bei der Azure-Dateisynchronisierung wird eine Vertrauensstellung zwischen Windows Server und Azure eingerichtet. Mithilfe dieser Beziehung können dann *Serverendpunkte* auf dem Server erstellt werden, die bestimmte Ordner darstellen, die mit einer Azure-Dateifreigabe (auch als *Cloudendpunkt* bezeichnet) synchronisiert werden sollen. 
@@ -33,10 +35,10 @@ Bevor Sie einen Server bei einem Speichersynchronisationsdienst registrieren kö
     
     ![Server-Manager-Benutzeroberfläche, auf der die Option „Verstärkte Sicherheitskonfiguration für IE“ hervorgehoben ist](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Stellen Sie sicher, dass das AzureRM-PowerShell-Modul auf dem Server installiert ist. Wenn der Server Mitglied eines Failoverclusters ist, ist das AzureRM-Modul für jeden Knoten im Cluster erforderlich. Weitere Informationen zur Installation des AzureRM-Moduls finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* Stellen Sie sicher, dass das Azure PowerShell-Modul auf dem Server installiert ist. Wenn der Server Mitglied eines Failoverclusters ist, ist das Az-Modul für jeden Knoten im Cluster erforderlich. Weitere Informationen zur Installation des Az-Moduls finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
     > [!Note]  
-    > Es wird empfohlen, die neueste Version des AzureRM-PowerShell-Moduls zu verwenden, um einen Server zu registrieren bzw. die Registrierung aufzuheben. Wenn das AzureRM-Paket zuvor auf diesem Server installiert wurde (und die PowerShell-Version auf diesem Server 5.* oder höher ist), können Sie das Paket mit dem Cmdlet `Update-Module` aktualisieren. 
+    > Es wird empfohlen, die neueste Version des Az-PowerShell-Moduls zu verwenden, um einen Server zu registrieren bzw. die Registrierung aufzuheben. Wenn das Az-Paket zuvor auf diesem Server installiert wurde (und die PowerShell-Version auf diesem Server 5.* oder höher ist), können Sie das Paket mit dem Cmdlet `Update-Module` aktualisieren. 
 * Wenn Sie einen Netzwerkproxyserver in Ihrer Umgebung nutzen, konfigurieren Sie auf dem Server Proxyeinstellungen, die für den Synchronisierungs-Agent verwendet werden.
     1. Bestimmen Sie die Proxy-IP-Adresse und die zugehörige Portnummer.
     2. Bearbeiten Sie diese beiden Dateien:
@@ -135,8 +137,8 @@ Sie können hierzu auch ein einfaches PowerShell-Skript verwenden:
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
-$accountInfo = Connect-AzureRmAccount
-Login-AzureRmStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
+$accountInfo = Connect-AzAccount
+Login-AzStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
 
 $StorageSyncService = "<your-storage-sync-service>"
 

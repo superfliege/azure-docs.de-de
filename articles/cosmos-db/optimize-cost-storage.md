@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 78c840efebd2e451747e2490fc4d2f363afa9a09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 618be936ef0326a1b9f5db426d4c37bb2bd1c760
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263255"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535657"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimieren der Speicherkosten in Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Für eine optimale Leistung und Kostenvorteile erwartet Azure Cosmos DB eine Ele
 
 ## <a name="optimize-cost-with-indexing"></a>Optimieren der Kosten über die Indizierung
 
-Standardmäßig werden die Daten automatisch indiziert, wodurch sich die Gesamtmenge des genutzten Speichers erhöhen kann. Sie können jedoch benutzerdefinierte Indizierungsrichtlinien verwenden, um diesen zusätzlichen Aufwand zu reduzieren. Eine automatische Indizierung, die nicht über eine Richtlinie optimiert wurde, beträgt etwa 10 bis 20 % der Elementgröße. Durch Entfernen oder Anpassen der Indizierungsrichtlinien brauchen Sie keine Extrakosten für Schreibvorgänge zu bezahlen und benötigen keine zusätzliche Durchsatzkapazität. Das Konfigurieren benutzerdefinierter Indizierungsrichtlinien ist unter [Indizierung in Cosmos DB](indexing-policies.md) beschrieben. Wenn Sie bereits mit relationalen Datenbanken gearbeitet haben, denken Sie vielleicht, dass „alles indizieren“ eine Verdoppelung des Speichers (oder mehr) bedeutet. In Azure Cosmos DB fällt die Indizierung im Durchschnitt wesentlich weniger ins Gewicht. In Azure Cosmos DB fällt der Speicheraufwand infolge der Indizierung, selbst bei der automatischen Indizierung, in der Regel gering aus (10-20 %), da die Datenbank für einen kleinen „Speicherfußabdruck“ ausgelegt ist. Durch die Verwaltung der Indizierungsrichtlinie können Sie den Kompromiss zwischen Indexfußabdruck und Abfrageleistung in einer noch feiner abgestimmten Weise steuern.
+Standardmäßig werden die Daten automatisch indiziert, wodurch sich die Gesamtmenge des genutzten Speichers erhöhen kann. Sie können jedoch benutzerdefinierte Indizierungsrichtlinien verwenden, um diesen zusätzlichen Aufwand zu reduzieren. Eine automatische Indizierung, die nicht über eine Richtlinie optimiert wurde, beträgt etwa 10 bis 20 % der Elementgröße. Durch Entfernen oder Anpassen der Indizierungsrichtlinien brauchen Sie keine Extrakosten für Schreibvorgänge zu bezahlen und benötigen keine zusätzliche Durchsatzkapazität. Das Konfigurieren benutzerdefinierter Indizierungsrichtlinien wird unter [Indizierung in Azure Cosmos DB](indexing-policies.md) beschrieben. Wenn Sie bereits mit relationalen Datenbanken gearbeitet haben, denken Sie vielleicht, dass „alles indizieren“ eine Verdoppelung des Speichers (oder mehr) bedeutet. In Azure Cosmos DB fällt die Indizierung im Durchschnitt wesentlich weniger ins Gewicht. In Azure Cosmos DB fällt der Speicheraufwand infolge der Indizierung, selbst bei der automatischen Indizierung, in der Regel gering aus (10-20 %), da die Datenbank für einen kleinen „Speicherfußabdruck“ ausgelegt ist. Durch die Verwaltung der Indizierungsrichtlinie können Sie den Kompromiss zwischen Indexfußabdruck und Abfrageleistung in einer noch feiner abgestimmten Weise steuern.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimieren der Kosten über Gültigkeitsdauer und Änderungsfeed
 

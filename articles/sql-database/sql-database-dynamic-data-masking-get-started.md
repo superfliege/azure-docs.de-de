@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 872e700842ce69ca955035120d4e09ec9facf7ec
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/16/2018
+ms.openlocfilehash: 3e807033b109b8281057f6881a315f5c1c783a22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165550"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536371"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Dynamische Datenmaskierung für SQL-Datenbank
 
@@ -31,7 +31,7 @@ Ein Servicemitarbeiter in einem Callcenter kann Anrufer beispielsweise anhand me
 Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Vorgangs „Dynamische Datenmaskierung“ auf dem Konfigurationsblatt oder auf dem Blatt mit den Einstellungen für Ihre SQL-Datenbank-Instanz ein.
 
 ### <a name="dynamic-data-masking-permissions"></a>Berechtigungen für die dynamische Datenmaskierung
-Die dynamische Datenmaskierung kann von den Rollen "Azure-Datenbankadministrator", "Serveradministrator" oder "Sicherheitsbeauftragter" konfiguriert werden.
+Die dynamische Datenmaskierung kann von den Rollen „Azure-Datenbankadministrator“, „Serveradministrator“ oder [SQL-Sicherheits-Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) konfiguriert werden.
 
 ### <a name="dynamic-data-masking-policy"></a>Richtlinie für die dynamische Datenmaskierung
 * **Von der Maskierung ausgeschlossene SQL-Benutzer:** Eine Gruppe von SQL-Benutzern oder AAD-Identitäten, die in den Ergebnissen von SQL-Abfragen Daten ohne Maskierung erhalten. Benutzer mit Administratorrechten sind immer von der Maskierung ausgeschlossen und bekommen Originaldaten ohne Maskierung angezeigt.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 57abea79a620aa83e16ad4cc2fd78a4294f2b278
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bda70a6854dc6d94d3d4b37e6f587e4dcd045126
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204854"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543837"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurieren und Verwenden der Dienstaffinität in Service Fabric
 Affinität ist ein Steuerelement, das hauptsächlich bereitgestellt wird, um den Übergang von größeren monolithischen Anwendungen in die Welt der Cloud und Microservices zu vereinfachen. Sie wird auch zur Verbesserung der Leistung von Diensten verwendet, dies ist jedoch unter Umständen mit Nebenwirkungen verbunden.
@@ -72,7 +72,7 @@ Heute ist der Clusterressourcen-Manager nicht dazu in der Lage, Affinitätsbezie
 ![Ketten im Vergleich zu Sternen im Kontext von Affinitätsbeziehungen][Image2]
 </center>
 
-Eine weitere Eigenschaft derzeitiger Affinitätsbeziehungen ist, dass sie gerichtet sind. Mit der Affinitätsregel wird also lediglich erzwungen, dass das untergeordnete Element dort platziert wird, wo sich auch das übergeordnete Element befindet. Sie sorgt nicht dafür, dass das übergeordnete Element dort platziert wird, wo sich das untergeordnete Element befindet. Ein weiterer wichtiger Punkt: Die Affinitätsbeziehung kann nicht perfekt oder umgehend erzwungen werden, da verschiedene Dienste über unterschiedliche Lebenszyklen verfügen und unabhängig voneinander ausfallen und verschoben werden können. Nehmen wir beispielsweise an, dass für das übergeordnete Element aufgrund eines Absturzes überraschend ein Failover auf einen anderen Knoten ausgeführt wird. Der Cluster Resource Manager und der Failover-Manager behandeln zunächst das Failover, da Bereitschaft, Konsistenz und Verfügbarkeit der Dienste oberste Priorität haben. Nach Abschluss des Failovers ist die Affinitätsbeziehung unterbrochen. Der Cluster Resource Manager geht jedoch davon aus, dass alles in Ordnung ist, bis er bemerkt, dass sich das untergeordnete Element nicht beim übergeordneten Element befindet. Die entsprechenden Überprüfungen werden in regelmäßigen Abständen durchgeführt. Weitere Informationen zur Auswertung von Einschränkungen durch den Cluster Resource Manager finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-management-integration.md#constraint-types). Informationen zum Konfigurieren des Auswertungsintervalls für diese Einschränkungen finden Sie [hier](service-fabric-cluster-resource-manager-balancing.md).   
+Eine weitere Eigenschaft derzeitiger Affinitätsbeziehungen ist, dass sie standardmäßig gerichtet sind. Mit der Affinitätsregel wird also lediglich erzwungen, dass das untergeordnete Element dort platziert wird, wo sich auch das übergeordnete Element befindet. Sie sorgt nicht dafür, dass das übergeordnete Element dort platziert wird, wo sich das untergeordnete Element befindet. Wenn es also eine Affinitätsverletzung gibt und es zum Korrigieren der Verletzung aus irgendeinem Grund nicht möglich ist, den untergeordneten Knoten in den übergeordneten Knoten zu verschieben, dann wird der übergeordnete Knoten nicht in den untergeordneten Knoten verschoben (selbst dann nicht, wenn die Verschiebung des übergeordneten Knotens in den untergeordneten Knoten die Verletzung korrigiert hätte). Das Festlegen der Konfigurationseinstellung [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) auf TRUE würde die Direktionalität entfernen. Ein weiterer wichtiger Punkt: Die Affinitätsbeziehung kann nicht perfekt oder umgehend erzwungen werden, da verschiedene Dienste über unterschiedliche Lebenszyklen verfügen und unabhängig voneinander ausfallen und verschoben werden können. Nehmen wir beispielsweise an, dass für das übergeordnete Element aufgrund eines Absturzes überraschend ein Failover auf einen anderen Knoten ausgeführt wird. Der Cluster Resource Manager und der Failover-Manager behandeln zunächst das Failover, da Bereitschaft, Konsistenz und Verfügbarkeit der Dienste oberste Priorität haben. Nach Abschluss des Failovers ist die Affinitätsbeziehung unterbrochen. Der Cluster Resource Manager geht jedoch davon aus, dass alles in Ordnung ist, bis er bemerkt, dass sich das untergeordnete Element nicht beim übergeordneten Element befindet. Die entsprechenden Überprüfungen werden in regelmäßigen Abständen durchgeführt. Weitere Informationen zur Auswertung von Einschränkungen durch den Cluster Resource Manager finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-management-integration.md#constraint-types). Informationen zum Konfigurieren des Auswertungsintervalls für diese Einschränkungen finden Sie [hier](service-fabric-cluster-resource-manager-balancing.md).   
 
 
 ### <a name="partitioning-support"></a>Unterstützung der Partitionierung

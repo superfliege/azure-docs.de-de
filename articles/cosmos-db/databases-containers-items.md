@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409540"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807685"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Arbeiten mit Azure Cosmos-Datenbanken, -Containern und -Elementen
 
@@ -24,7 +24,7 @@ Nach der Erstellung eines [Azure Cosmos DB-Kontos](account-overview.md) unter Ih
 
 Unter Ihrem Konto können Sie mehrere Azure Cosmos-Datenbanken erstellen. Eine Datenbank entspricht einem Namespace, sie ist die Verwaltungseinheit für mehrere Azure Cosmos-Container. In der folgenden Tabelle ist dargestellt, wie eine Azure Cosmos-Datenbank verschiedenen API-spezifischen Entitäten zugeordnet wird:
 
-| **Azure Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+| **Azure Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos-Datenbank | Datenbank | Keyspace | Datenbank | Datenbank | Nicht verfügbar |
 
@@ -35,7 +35,7 @@ Unter Ihrem Konto können Sie mehrere Azure Cosmos-Datenbanken erstellen. Eine D
 
 Mit einer Azure Cosmos-Datenbank können Sie über die folgenden Azure Cosmos-APIs interagieren:
 
-| **Vorgang** | **Azure-Befehlszeilenschnittstelle**|**SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+| **Vorgang** | **Azure-Befehlszeilenschnittstelle**|**SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- |
 |Auflisten aller Datenbanken| JA | JA | Ja (Datenbank ist einem Keyspace zugeordnet) | JA | Nicht verfügbar | Nicht verfügbar |
 |Lesen der Datenbank| JA | JA | Ja (Datenbank ist einem Keyspace zugeordnet) | JA | Nicht verfügbar | Nicht verfügbar |
@@ -51,7 +51,7 @@ Beim Erstellen eines Azure Cosmos-Containers konfigurieren Sie den Durchsatz in 
 
 * Modus **Dedizierter bereitgestellter Durchsatz**: Der für einen Container bereitgestellte Durchsatz ist ausschließlich für diesen reserviert und wird durch die SLAs zugesichert. Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos DB-Container](how-to-provision-container-throughput.md).
 
-* Modus **Bereitgestellter, gemeinsam genutzter Durchsatz**: Die Container teilen sich den bereitgestellten Durchsatz mit anderen Containern in der gleichen Datenbank (mit Ausnahme der Container, die mit dediziert bereitgestelltem Durchsatz konfiguriert wurden). Das heißt, der bereitgestellte Durchsatz für die Datenbank wird von allen Containern gemeinsam genutzt. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
+* Modus **Bereitgestellter, gemeinsam genutzter Durchsatz**: Die Container teilen sich den bereitgestellten Durchsatz mit anderen Containern in der gleichen Datenbank (mit Ausnahme der Container, die mit dediziert bereitgestelltem Durchsatz konfiguriert wurden). Das heißt, der bereitgestellte Durchsatz für die Datenbank wird von allen freigegebenen Containern genutzt. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
 
 Ein Azure Cosmos-Container kann elastisch skaliert werden, und zwar unabhängig davon, ob Sie Container mit gemeinsam genutztem oder dediziert bereitgestelltem Durchsatz erstellen.
 
@@ -67,7 +67,7 @@ Sie können einen eindeutigen Schlüssel für den Azure Cosmos-Container angeben
 
 Ein Azure Cosmos-Container wird wie folgt in API-spezifische Entitäten kategorisiert:
 
-| **Azure Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+| **Azure Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos-Container | Sammlung | Table | Sammlung | Graph | Table |
 
@@ -75,7 +75,7 @@ Ein Azure Cosmos-Container wird wie folgt in API-spezifische Entitäten kategori
 
 Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaften. Abhängig von der API-Auswahl werden einige möglicherweise nicht direkt verfügbar gemacht. In der folgenden Tabelle werden die unterstützten systemdefinierten Eigenschaften beschrieben:
 
-| **Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar** | **Zweck** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+| **Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar** | **Zweck** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__rid | Systemgeneriert | Eindeutiger Bezeichner des Containers | JA | Nein  | Nein  | Nein  | Nein  |
 |__etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | JA | Nein  | Nein  | Nein  | Nein  |
@@ -91,7 +91,7 @@ Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaft
 
 In einem Azure Cosmos-Container werden die folgenden Vorgänge über die Azure Cosmos-APIs unterstützt.
 
-| **Vorgang** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+| **Vorgang** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Auflisten von Containern in einer Datenbank | Ja* | JA | Ja | JA | Nicht verfügbar | Nicht verfügbar |
 | Lesen eines Containers | JA | Ja | Ja | JA | Nicht verfügbar | Nicht verfügbar |
@@ -103,7 +103,7 @@ In einem Azure Cosmos-Container werden die folgenden Vorgänge über die Azure C
 
 Abhängig von der API-Auswahl kann ein Azure Cosmos-Element ein Dokument in einer Sammlung, eine Zeile in einer Tabelle oder einen Knoten oder Edge in einem Graph darstellen. In der folgenden Tabelle ist die Zuordnung zwischen API-spezifischen Entitäten zu einem Azure Cosmos-Element dargestellt:
 
-| **Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+| **Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos-Element | Dokument | Zeile | Dokument | Knoten oder Edge | Item |
 
@@ -111,7 +111,7 @@ Abhängig von der API-Auswahl kann ein Azure Cosmos-Element ein Dokument in eine
 
 Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigenschaften. Abhängig von der API-Auswahl werden einige möglicherweise nicht direkt verfügbar gemacht.
 
-|**Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar**| **Zweck** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+|**Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar**| **Zweck** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__id | Systemgeneriert | Eindeutiger Bezeichner eines Elements | JA | Nein  | Nein  | Nein  | Nein  |
 |__etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | JA | Nein  | Nein  | Nein  | Nein  |
@@ -124,7 +124,7 @@ Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigens
 
 Azure Cosmos-Elemente unterstützen die folgenden Vorgänge, die über sämtliche Azure Cosmos-APIs durchgeführt werden können.
 
-| **Vorgang** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **MongoDB-API** | **Gremlin-API** | **Tabellen-API** |
+| **Vorgang** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Einfügen, Ersetzen, Löschen, Upsert, Lesen | Nein  | Ja | Ja | Ja | Ja | JA |
 

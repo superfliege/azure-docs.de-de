@@ -1,20 +1,17 @@
 ---
 title: Replizieren von Daten in Azure Database for MySQL
 description: In diesem Artikel wird die Datenreplikation für Azure Database for MySQL beschrieben.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ca748dff67be2a37ca61f34602f207265cc77aaa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666075"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544225"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replizieren von Daten in Azure Database for MySQL
 
@@ -31,7 +28,7 @@ Zu den wichtigsten Szenarien, bei denen die Datenreplikation für Azure Database
 ### <a name="data-not-replicated"></a>Nicht replizierte Daten
 Die [*Systemdatenbank „mysql“*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) auf dem Masterserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Masterserver werden nicht repliziert. Wenn Sie ein Konto auf dem Masterserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie im [Leitfaden zu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 - Der Masterserver muss mindestens die MySQL-Version 5.6 aufweisen. 
 - Die Versionen des Master- und des Replikatservers müssen identisch sein. Beispielsweise müssen beide die Version MySQL 5.6 oder beide MySQL 5.7 aufweisen.
 - Jede Tabelle muss über einen Primärschlüssel verfügen.

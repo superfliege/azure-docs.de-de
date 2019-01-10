@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 474cc78a4ceb872742ca7eb10837eeb89dcc1bdb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213179"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999032"
 ---
 # <a name="reliable-services-overview"></a>Übersicht über Reliable Services
 Azure Service Fabric vereinfacht das Schreiben und Verwalten zustandsloser und zustandsbehafteter Dienste (Reliable Services). Dieses Thema behandelt Folgendes:
@@ -76,13 +76,13 @@ Ein Dienst ist zustandslos, wenn der Dienstzustand nicht aufrufübergreifend im 
 
 Denken Sie beispielsweise an einen Rechner, der keinen Speicher hat und alle Zahlen und durchzuführenden Operationen gleichzeitig erhält.
 
-In diesem Fall kann die Methode `RunAsync()`(C#) oder `runAsync()` (Java) des Diensts leer sein, da der Dienst keine Hintergrundtasks ausführen muss. Wenn der Rechnerdienst erstellt wird, gibt sie einen `ICommunicationListener` (C#) oder `CommunicationListener` Java (z.B. [Web-API](service-fabric-reliable-services-communication-webapi.md)) zurück, der auf einem Port einen Lauschendpunkt öffnet. Dieser Lauschendpunkt wird mit den verschiedenen Berechnungsmethoden verknüpft (z. B. „Add(n1, n2)“), die die öffentliche API des Rechners definieren.
+In diesem Fall kann die Methode `RunAsync()`(C#) oder `runAsync()` (Java) des Diensts leer sein, da der Dienst keine Hintergrundtasks ausführen muss. Wenn der Rechnerdienst erstellt wird, gibt sie einen `ICommunicationListener` (C#) oder `CommunicationListener` Java (z.B. [Web-API](service-fabric-reliable-services-communication-webapi.md)) zurück, der auf einem Port einen Lauschendpunkt öffnet. Dieser Lauschendpunkt wird mit den verschiedenen Berechnungsmethoden verknüpft (Beispiel: „Add(n1, n2)“), die die öffentliche API des Rechners definieren.
 
 Erfolgt ein Aufruf durch einen Client, wird die entsprechende Methode ausgelöst. Der Rechnerdienst führt an den bereitgestellten Daten die erforderlichen Operationen durch und gibt das Ergebnis zurück. Es wird kein Zustand gespeichert.
 
 Die Tatsache, dass kein interner Zustand gespeichert wird, macht den Beispielrechner sehr einfach. Aber die meisten Dienste sind nicht wirklich zustandslos. Stattdessen lagern sie ihren Zustand in einen anderen Speicher aus. (Beispielsweise ist eine Web-App, die zum Speichern des Sitzungszustands einen Sicherungsspeicher oder Cache verwendet, nicht zustandslos.)
 
-Zustandslose Dienste werden in Service Fabric beispielsweise häufig als Front-End verwendet, das die öffentliche API für eine Webanwendung verfügbar macht. Der Front-End-Dienst kommuniziert in diesem Fall mit zustandsbehafteten Diensten, um eine Benutzeranforderung zu verarbeiten. Aufrufe von Clients werden dabei an einen bekannten Port wie Port 80 geleitet, an dem der zustandslose Dienst lauscht. Dieser zustandslose Dienst erhält den Aufruf und ermittelt, ob dieser von einem vertrauenswürdigen Teilnehmer stammt und für welchen Dienst er bestimmt ist.  Der zustandslose Dienst leitet den Aufruf anschließend an die richtige Partition des zustandsbehafteten Diensts weiter und wartet auf eine Antwort. Sobald der zustandslose Dienst eine Antwort erhält, sendet er eine Antwort an den ursprünglichen Client zurück. Ein Beispiel für einen solchen Dienst finden Sie in unseren Codebeispielen [C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/Actors/VisualObjectActor/VisualObjectWebService). Diese Codebeispiele enthalten nur ein Beispiel dieses Musters, weitere finden Sie in anderen Codebeispielen.
+Zustandslose Dienste werden in Service Fabric beispielsweise häufig als Front-End verwendet, das die öffentliche API für eine Webanwendung verfügbar macht. Der Front-End-Dienst kommuniziert in diesem Fall mit zustandsbehafteten Diensten, um eine Benutzeranforderung zu verarbeiten. Aufrufe von Clients werden dabei an einen bekannten Port wie Port 80 geleitet, an dem der zustandslose Dienst lauscht. Dieser zustandslose Dienst erhält den Aufruf und ermittelt, ob dieser von einem vertrauenswürdigen Teilnehmer stammt und für welchen Dienst er bestimmt ist.  Der zustandslose Dienst leitet den Aufruf anschließend an die richtige Partition des zustandsbehafteten Diensts weiter und wartet auf eine Antwort. Sobald der zustandslose Dienst eine Antwort erhält, sendet er eine Antwort an den ursprünglichen Client zurück. Ein Beispiel für einen solchen Dienst finden Sie in unseren Codebeispielen [C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started). Diese Codebeispiele enthalten nur ein Beispiel dieses Musters, weitere finden Sie in anderen Codebeispielen.
 
 ### <a name="stateful-reliable-services"></a>Zustandsbehaftete Reliable Services
 Bei einem zustandsbehafteten Dienst muss ein gewisser Teil des Zustands konsistent und präsent sein, damit der Dienst funktioniert. Nehmen wir einen Dienst, der kontinuierlich einen gleitenden Durchschnitt eines Werts berechnet, der regelmäßig aktualisiert wird. Der Dienst benötigt zu diesem Zweck den aktuellen Satz eingehender, zu verarbeitender Anforderungen und den aktuellen Durchschnittswert. Jeder Dienst, der Informationen in einem externen Speicher abruft, verarbeitet und speichert (z. B. in einem modernen Azure-Blob- oder Tabellenspeicher), ist zustandsbehaftet. Er bewahrt seinen Zustand nur im externen Zustandsspeicher auf.

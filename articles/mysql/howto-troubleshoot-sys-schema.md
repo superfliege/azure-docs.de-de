@@ -1,20 +1,17 @@
 ---
 title: Verwenden von sys_schema zum Optimieren der Leistung und Datenbankwartung in Azure Database for MySQL
 description: Dieser Artikel beschreibt, wie Sie mit sys_schema Leistungsprobleme suchen und die Datenbank in Azure Database for MySQL warten.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
-ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446906"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542848"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Verwenden von sys_schema zum Optimieren der Leistung und Datenbankwartung in Azure Database for MySQL
 
@@ -24,15 +21,15 @@ Das Schema performance_schema von MySQL wurde zuerst in MySQL 5.5 eingeführt un
 
 Es gibt in sys_schema 52 Sichten, die jeweils folgende Präfixe aufweisen:
 
-- Host_summary oder IO: E/A-bezogene Wartezeiten
-- InnoDB: InnoDB-Pufferstatus und -sperren
-- Memory: Auslastung des Arbeitsspeichers durch Host und Benutzer
-- Schema: schemabezogene Informationen wie automatische Inkremente, Indizes usw.
+- Host_summary oder IO: Latenzen im Zusammenhang mit E/A.
+- InnoDB: InnoDB-Pufferstatus und -sperren.
+- Memory: Auslastung des Arbeitsspeichers durch Host und Benutzer.
+- Schema: Schemabezogene Informationen wie automatische Inkremente, Indizes usw.
 - Statement: Informationen zu SQL-Anweisungen, etwa Anweisungen, die vollständige Tabellenscans oder langen Abfragezeiten verursacht haben.
-- User: belegte Ressourcen, gruppiert nach Benutzern. Beispiele sind die Datei-E/As, Verbindungen und Arbeitsspeicher.
-- Wait: Warteereignisse, gruppiert nach Host oder Benutzer
+- User: Belegte Ressourcen, gruppiert nach Benutzern. Beispiele sind die Datei-E/As, Verbindungen und Arbeitsspeicher.
+- Wait: Warteereignisse, gruppiert nach Host oder Benutzer.
 
-Im Folgenden finden Sie einige allgemeine Verwendungsmuster für sys_schema. Zunächst gruppieren wir die Verwendungsmuster in zwei Kategorien: **Leistungsoptimierung** und **Datenbankwartung**.
+Im Folgenden finden Sie einige allgemeine Verwendungsmuster für sys_schema. Zunächst gruppieren wir die Verwendungsmuster in zwei Kategorien: **Leistungsoptimieren** und **Datenbankwartung**.
 
 ## <a name="performance-tuning"></a>Leistungsoptimierung
 
@@ -40,15 +37,15 @@ Im Folgenden finden Sie einige allgemeine Verwendungsmuster für sys_schema. Zun
 
 E/A ist der aufwendigste Vorgang in der Datenbank. Wir ermitteln die durchschnittliche E/A-Wartezeit durch Abfragen der Sicht *sys.user_summary_by_file_io*. Mit dem standardmäßig bereitgestellten Speicher von 125 GB beträgt die E/A-Wartezeit ca. 15 Sekunden.
 
-![E/A-Wartezeit: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![E/A-Latenz: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
 Da Azure Database for MySQL die E/A im Hinblick auf den Speicher skaliert, wird die E/A-Wartezeit nach der Erhöhung des bereitgestellten Speichers auf 1 TB auf 571 ms reduziert.
 
-![E/A-Wartezeit: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![E/A-Latenz: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 
-Trotz sorgfältiger Planung können viele Abfragen weiterhin zu vollständigen Tabellenscans führen. Weitere Informationen zu den Indextypen und deren Optimierung finden Sie im Artikel [Beheben von Problemen bei der Abfrageleistung](./howto-troubleshoot-query-performance.md). Vollständige Tabellenscans sind ressourcenintensiv und beeinträchtigen die Datenbankleistung. Die schnellste Möglichkeit zum Suchen von Tabellen mit vollständigen Tabellenscans stellt eine Abfrage der Sicht *sys.schema_tables_with_full_table_scans* dar.
+Trotz sorgfältiger Planung können viele Abfragen weiterhin zu vollständigen Tabellenscans führen. Weitere Informationen zu den Indextypen und deren Optimierung finden Sie im folgenden Artikel: [Beheben von Problemen bei der Abfrageleistung](./howto-troubleshoot-query-performance.md). Vollständige Tabellenüberprüfungen sind ressourcenintensiv und beeinträchtigen die Datenbankleistung. Die schnellste Möglichkeit zum Suchen von Tabellen mit vollständigen Tabellenscans stellt eine Abfrage der Sicht *sys.schema_tables_with_full_table_scans* dar.
 
 ![Vollständige Tabellenscans](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: MightyPen
+ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 034fd2434d3b824c4356e640a1c1665dff542de6
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4b2c9f17bc9c6e9bbc280116d074bd0f1e3d3e38
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056592"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606043"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Machen Sie sich mit SaaS-Analysen mit Azure SQL-Datenbank, SQL Data Warehouse, Data Factory und Power BI vertraut
 
@@ -142,11 +142,11 @@ Dieser Abschnitt befasst sich mit den Objekten, die in der Data Factory erstellt
 Wechseln Sie auf der Seite „Übersicht“ zur Registerkarte **Autor** im linken Bereich. Sie werden sehen, dass drei [Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) und drei [Datasets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) erstellt wurden.
 ![adf_autor](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
-Die drei geschachtelten Pipelines sind SQLDBToDW, DBCopy und TableCopy.
+Die drei geschachtelte Pipelines sind: SQLDBToDW, DBCopy und TableCopy.
 
 **Pipeline 1: SQLDBToDW** sucht nach den Namen der Mandantendatenbanken, die in der Katalogdatenbank gespeichert sind (Tabellenname: [__ShardManagement].[ShardsGlobal]). Außerdem führt sie für jede Mandantendatenbank die Pipeline **DBCopy** aus. Nach Abschluss dieses Vorgangs wird das bereitgestellte gespeicherte Prozedurschema **sp_TransformExtractedData** ausgeführt. Diese gespeicherte Prozedur transformiert die geladenen Daten in Stagingtabellen und füllt die Tabellen im Sternschema auf.
 
-**Pipeline 2: DBCopy** sucht die Namen der Quelltabellen und -spalten aus einer Konfigurationsdatei, die in Blob Storage gespeichert ist.  Die Pipeline **TableCopy** wird anschließend für alle vier Tabellen ausgeführt: TicketFacts, CustomerFacts, EventFacts und VenueFacts. Die **[ForEach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)**-Aktivität wird parallel für alle 20 Datenbanken ausgeführt. ADF lässt die Ausführung von maximal 20 parallelen Schleifeniterationen zu. Erwägen Sie die Erstellung mehrerer Pipelines für mehrere Datenbanken.    
+**Pipeline 2: DBCopy** sucht die Namen der Quelltabellen und -spalten aus einer Konfigurationsdatei, die in Blob Storage gespeichert ist.  Die **TableCopy**-Pipeline wird dann für jede der vier Tabellen ausgeführt: TicketFacts, CustomerFacts, EventFacts und VenueFacts. Die **[ForEach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)**-Aktivität wird parallel für alle 20 Datenbanken ausgeführt. ADF lässt die Ausführung von maximal 20 parallelen Schleifeniterationen zu. Erwägen Sie die Erstellung mehrerer Pipelines für mehrere Datenbanken.    
 
 **Pipeline 3: TableCopy** verwendet die Versionsnummern der Zeilen in SQL-Datenbank (_Zeilenversion_), um Zeilen zu identifizieren, die geändert oder aktualisiert wurden. Diese Aktivität sucht nach der Start- und Endversion der Zeilen zum Extrahieren der Zeilen aus den Quelltabellen. Die Tabelle **CopyTracker** ist in jeder Mandantendatenbank gespeichert. Sie verfolgt bei jeder Ausführung die letzte Zeile, die aus jeder Quelltabelle extrahiert wurde. Neue oder geänderte Zeilen werden in die entsprechenden Stagingtabellen im Data Warehouse kopiert: **raw_Tickets**, **raw_Customers**, **raw_Venues** und **raw_Events**. Abschließend wird die letzte Zeilenversion in der Tabelle **CopyTracker** gespeichert, um als Anfangszeilenversion für die nächste Extraktion verwendet zu werden. 
 

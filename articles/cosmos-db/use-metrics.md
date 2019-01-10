@@ -7,12 +7,12 @@ author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.openlocfilehash: 8461797e0c3b8d92466c37c5564df895e494ce74
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: afc3b9dbb1965ea28995d67f8f5e174721d73197
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957588"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999440"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Metriken in Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot*-Partitionen verursac
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Ermitteln der partitionsübergreifenden Speicherverteilung
 
-Für jede skalierbare Anwendung ist eine gute Kardinalität der Partition von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Blatt „Metriken“. Auf der Registerkarte „Durchsatz“ wird im Diagramm „Maximal genutzte RU/Sekunde je physische Partition“ die Speicheraufschlüsselung angezeigt. Die folgende Abbildung veranschaulicht eine schlechte Verteilung der Daten, die sich an der extremen Partition am linken Rand erkennen lässt.
+Für jede skalierbare Anwendung ist eine gute Kardinalität der Partition von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Speicherverteilung jedes partitionierten Containers zu bestimmen, wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Blatt „Metriken“. Auf der Registerkarte „Speicher“ wird die Speicheraufschlüsselung im Diagramm „Von wichtigen Partitionsschlüsseln genutzter Daten- und Indexspeicher“ angezeigt. Die folgende Abbildung zeigt eine schlechte Verteilung des Datenspeichers, wie die verzerrte Partition ganz links verdeutlicht.
 
 ![Beispiel für eine schlechte Datenverteilung](media/use-metrics/metrics-07.png)
 

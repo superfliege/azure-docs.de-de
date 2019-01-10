@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232493"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002398"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Nachdem nun Ereignisse in Azure Storage aggregiert werden, können Sie als Näch
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Bereitstellen der Diagnoseerweiterung über Azure Resource Manager
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Erstellen eines Clusters mit der Diagnoseerweiterung
-Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen Sie der vollständigen Resource Manager-Vorlage vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen Sie der vollständigen Resource Manager-Vorlage den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Sie können sie hier im Azure-Beispielkatalog anzeigen: [Cluster mit fünf Knoten mit der Resource Manager-Beispielvorlage für die Diagnose](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Öffnen Sie die Datei „azuredeploy.json“ und suchen nach **IaaSDiagnostics**, um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
 
@@ -196,7 +196,7 @@ Da die von der Erweiterung gefüllten Tabellen so lange wachsen, bis das Konting
 ## <a name="log-collection-configurations"></a>Protokollsammlungskonfigurationen
 Protokolle aus zusätzlichen Kanälen sind auch für die Sammlung verfügbar; im Folgenden finden Sie einige der am häufigsten verwendeten Konfigurationen, die Sie in der Vorlage für Cluster vornehmen können, die in Azure ausgeführt werden.
 
-* Betriebskanal – Basis: Aktiviert von standardmäßigen, von Service Fabric und im Cluster ausgeführten Vorgänge auf höchster Ebene, einschließlich Ereignissen für einen gestarteten Knoten, eine neu bereitgestellte Anwendung oder ein Rollback für ein Upgrade usw. Eine Liste von Ereignissen finden Sie unter [Betriebskanal](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Betriebskanal – Basis: Standardmäßig aktiviert, von Service Fabric und im Cluster ausgeführte Vorgänge auf höchster Ebene, einschließlich Ereignisse für einen gestarteten Knoten, eine neu bereitgestellte Anwendung, ein Rollback für ein Upgrade usw. Eine Liste von Ereignissen finden Sie unter [Betriebskanal](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
@@ -207,13 +207,13 @@ Protokolle aus zusätzlichen Kanälen sind auch für die Sammlung verfügbar; im
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Daten- und Messagingkanal – Basis: wichtige Protokolle und im Messaging- und Datenpfad (derzeit nur ReverseProxy) zusätzlich zu detaillierten Betriebskanalprotokollen generierte Ereignisse. Diese Ereignisse sind Fehler bei Verarbeitungsanforderungen und andere wichtige Probleme bei ReverseProxy sowie verarbeitete Anforderungen. **Dies ist unsere Empfehlung für umfassende Protokollierung**. Diese Ereignisse können Sie in der Diagnoseereignisanzeige von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric4:0x4000000000000010“ der Liste mit den ETW-Anbietern hinzufügen.
+* Daten- und Messagingkanal – Basis: Wichtige Protokolle und im Messaging- und Datenpfad (zurzeit nur ReverseProxy) zusätzlich zu detaillierten Betriebskanalprotokollen generierte Ereignisse. Diese Ereignisse sind Fehler bei Verarbeitungsanforderungen und andere wichtige Probleme bei ReverseProxy sowie verarbeitete Anforderungen. **Dies ist unsere Empfehlung für umfassende Protokollierung**. Diese Ereignisse können Sie in der Diagnoseereignisanzeige von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric4:0x4000000000000010“ der Liste mit den ETW-Anbietern hinzufügen.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
   ```
 
-* Daten- und Messagingkanal – ausführlich: Kanal mit Details zu allen weniger wichtigen Protokollen von Daten und Messaging im Cluster und dem ausführlichen Betriebskanal. Eine ausführliche Problembehandlung aller Reverseproxyereignisse finden Sie im [Reverseproxy-Diagnosehandbuch](service-fabric-reverse-proxy-diagnostics.md).  Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric:4:0x4000000000000020“ der Liste mit den ETW-Anbietern hinzufügen.
+* Daten- und Messagingkanal – ausführlich: Ausführlicher Kanal mit Details zu allen weniger wichtigen Protokollen von Daten und Messaging im Cluster und dem ausführlichen Betriebskanal. Eine ausführliche Problembehandlung aller Reverseproxyereignisse finden Sie im [Reverseproxy-Diagnosehandbuch](service-fabric-reverse-proxy-diagnostics.md).  Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric:4:0x4000000000000020“ der Liste mit den ETW-Anbietern hinzufügen.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387944"

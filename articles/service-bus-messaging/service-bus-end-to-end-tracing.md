@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 4584104e9c9833b5f3f586581dd5a58f420fe0bd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 12f9f55544f46bc9c88cab7234f78ad7ee7de2d2
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165338"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790893"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
 
@@ -45,9 +45,9 @@ Die Instrumentierung ermöglicht die Nachverfolgung aller Aufrufe, die von Clien
 [Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) bietet umfassende Funktionen zur Leistungsüberwachung, darunter die automatische Nachverfolgung von Anforderungen und Abhängigkeiten.
 
 Installieren Sie je nach Projekttyp ggf. das Application Insights SDK:
-- [ASP.NET](../application-insights/app-insights-asp-net.md): Installieren Sie Version 2.5-beta2 oder höher.
-- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md): Installieren Sie Version 2.2.0-beta2 oder höher.
-Über diese Links können Sie Details zur Erstellung von Ressourcen sowie zur Installation und Konfiguration des SDKs (falls erforderlich) abrufen. Weitere Informationen zu Nicht-ASP.NET-Anwendungen finden Sie im Artikel [Azure Application Insights für Konsolenanwendungen](../application-insights/application-insights-console.md).
+- [ASP.NET](../azure-monitor/app/asp-net.md): Installieren Sie Version 2.5-beta2 oder höher.
+- [ASP.NET Core](../azure-monitor/app/asp-net-core.md): Installieren Sie Version 2.2.0-beta2 oder höher.
+Über diese Links können Sie Details zur Erstellung von Ressourcen sowie zur Installation und Konfiguration des SDKs (falls erforderlich) abrufen. Weitere Informationen zu Nicht-ASP.NET-Anwendungen finden Sie im Artikel [Azure Application Insights für Konsolenanwendungen](../azure-monitor/app/console.md).
 
 Wenn Sie das [Muster „Meldungshandler“](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) zum Verarbeiten von Nachrichten verwenden, sind Sie bereits fertig: Alle Service Bus-Aufrufe, die von Ihrem Dienst durchgeführt werden, werden automatisch nachverfolgt und mit anderen Telemetrieelementen korreliert. Andernfalls finden Sie im folgenden Beispiel Informationen zur manuellen Nachverfolgung der Nachrichtenverarbeitung.
 
@@ -83,7 +83,7 @@ async Task ProcessAsync(Message message)
 In diesem Beispiel wird `RequestTelemetry` für jede verarbeitete Nachricht einschließlich Zeitstempel, Dauer und Ergebnis (Erfolg) gemeldet. Zur Telemetrie gehört auch eine Gruppe von Korrelationseigenschaften.
 Geschachtelte Ablaufverfolgungen und Ausnahmen, die während der Nachrichtenverarbeitung gemeldet werden, werden ebenfalls mit Korrelationseigenschaften gekennzeichnet, um sie als "untergeordnete Elemente" von `RequestTelemetry` auszuweisen.
 
-Falls Sie während der Nachrichtenverarbeitung unterstützte externe Komponenten aufrufen, werden diese ebenfalls automatisch nachverfolgt und korreliert. Weitere Informationen zur manuellen Nachverfolgung und Korrelation finden Sie unter [Nachverfolgen benutzerdefinierter Vorgänge mit dem Application Insights .NET SDK](../application-insights/application-insights-custom-operations-tracking.md).
+Falls Sie während der Nachrichtenverarbeitung unterstützte externe Komponenten aufrufen, werden diese ebenfalls automatisch nachverfolgt und korreliert. Weitere Informationen zur manuellen Nachverfolgung und Korrelation finden Sie unter [Nachverfolgen benutzerdefinierter Vorgänge mit dem Application Insights .NET SDK](../azure-monitor/app/custom-operations-tracking.md).
 
 ### <a name="tracking-without-tracing-system"></a>Nachverfolgung ohne Ablaufverfolgungssystem
 Falls die automatische Nachverfolgung von Service Bus-Aufrufen von Ihrem Ablaufverfolgungssystem nicht unterstützt wird, empfiehlt es sich, das Ablaufverfolgungssystem oder die Anwendung entsprechend zu erweitern. In diesem Abschnitt werden die Diagnoseereignisse beschrieben, die vom Service Bus .NET-Client gesendet werden.  
@@ -141,7 +141,7 @@ In diesem Beispiel werden die Dauer, das Ergebnis, der eindeutige Bezeichner und
 
 #### <a name="events"></a>Ereignisse
 
-Für jeden Vorgang werden zwei Ereignisse gesendet: Start und Stop. In den meisten Fällen kommt es nur auf die Stop-Ereignisse an. Diese enthalten neben dem Ergebnis des Vorgangs die Startzeit und die Dauer in Form von Activity-Eigenschaften.
+Für jeden Vorgang werden zwei Ereignisse gesendet: „Start“ und „Stop“. In den meisten Fällen kommt es nur auf die Stop-Ereignisse an. Diese enthalten neben dem Ergebnis des Vorgangs die Startzeit und die Dauer in Form von Activity-Eigenschaften.
 
 Die Ereignisnutzlast stellt einen Listener mit dem Vorgangskontext bereit, repliziert eingehende API-Parameter und gibt einen Wert zurück. Die Stop-Ereignisnutzlast verfügt über alle Eigenschaften der Start-Ereignisnutzlast, sodass Sie das Start-Ereignis vollständig außer Acht lassen können.
 
@@ -227,6 +227,6 @@ Falls mehrere `DiagnosticSource`-Listener für dieselbe Quelle vorhanden sind, m
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Application Insights-Korrelation](../application-insights/application-insights-correlation.md)
-* [Abhängigkeitsüberwachung in Application Insights](../application-insights/app-insights-asp-net-dependencies.md), um zu überprüfen, ob REST, SQL oder andere externe Ressourcen Ihr System verlangsamen.
-* [Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK](../application-insights/application-insights-custom-operations-tracking.md)
+* [Application Insights-Korrelation](../azure-monitor/app/correlation.md)
+* [Abhängigkeitsüberwachung in Application Insights](../azure-monitor/app/asp-net-dependencies.md), um zu überprüfen, ob REST, SQL oder andere externe Ressourcen Ihr System verlangsamen.
+* [Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK](../azure-monitor/app/custom-operations-tracking.md)

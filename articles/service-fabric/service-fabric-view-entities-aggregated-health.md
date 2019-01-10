@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 09696c606fdf57f5ac55fc50eb06c2c5eea55dfe
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308987"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555250"
 ---
 # <a name="view-service-fabric-health-reports"></a>Anzeigen von Service Fabric-Integritätsberichten
 Mit Azure Service Fabric wird ein [Integritätsmodell](service-fabric-health-introduction.md) eingeführt, das Integritätsentitäten enthält, auf denen Systemkomponenten und Watchdogs die von ihnen überwachten lokalen Bedingungen melden können. Im so genannten [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden alle Integritätsdaten zusammengefasst, um zu ermitteln, ob die Entitäten fehlerfrei sind.
@@ -464,7 +464,7 @@ Erstellen Sie zum Abrufen der Dienstintegrität über die API ein Element vom Ty
 
 Im folgenden Beispiel wird die Integrität eines Diensts mit dem angegebenen Dienstnamen (URI) abgerufen:
 
-```charp
+```csharp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
@@ -1030,25 +1030,25 @@ Wenn allgemeine Abfragen einen unbekannten Integritätsstatus für eine Entität
 
 Die Abfragen, die **HealthState** für Entitäten enthalten, lauten:
 
-* Knotenliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Knoten im Cluster zurück.
+* Node list: Gibt die (auf Seiten aufgeteilte) Liste mit den Knoten im Cluster zurück.
   * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * PowerShell: Get-ServiceFabricNode
-* Anwendungsliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Anwendungen im Cluster zurück.
+* Application list: Gibt die (auf Seiten aufgeteilte) Liste mit den Anwendungen im Cluster zurück.
   * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * PowerShell: Get-ServiceFabricApplication
-* Dienstliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Diensten einer Anwendung zurück.
+* Service list: Gibt die (auf Seiten aufgeteilte) Liste mit den Diensten einer Anwendung zurück.
   * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
   * PowerShell: Get-ServiceFabricService
-* Partitionsliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Partitionen eines Diensts zurück.
+* Partition list: Gibt die (auf Seiten aufgeteilte) Liste mit den Partitionen eines Diensts zurück.
   * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * PowerShell: Get-ServiceFabricPartition
-* Replikatliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Replikaten in einer Partition zurück.
+* Replica list: Gibt die (auf Seiten aufgeteilte) Liste mit den Replikaten in einer Partition zurück.
   * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * PowerShell: Get-ServiceFabricReplica
-* Liste bereitgestellter Anwendungen: Gibt die Liste mit den bereitgestellten Anwendungen eines Knotens zurück.
+* Deployed application list: Gibt die Liste mit den bereitgestellten Anwendungen eines Knotens zurück.
   * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication
-* Liste bereitgestellter Dienstpakete: Gibt die Liste mit den Dienstpaketen einer bereitgestellten Anwendung zurück.
+* Deployed service package list: Gibt die Liste mit den Dienstpaketen einer bereitgestellten Anwendung zurück.
   * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication
 

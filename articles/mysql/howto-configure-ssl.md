@@ -1,27 +1,24 @@
 ---
 title: Konfigurieren von SSL-Verbindungen für eine sichere Verbindung mit Azure Database for MySQL
 description: Anweisungen zum ordnungsgemäßen Konfigurieren der Azure-Datenbank für MySQL und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 5787d49623862654a7ef906e8f75ac822b25c0e3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 075f20027153eb9adf5c0daedea7cf5c0b515ee4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803221"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537034"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit der Azure-Datenbank für MySQL
 Azure-Datenbank für MySQL unterstützt die Verbindung Ihres Servers mit Azure-Datenbank für MySQL mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>Schritt 1: Abrufen eines SSL-Zertifikats
 Laden Sie das Zertifikat, das für die SSL-Kommunikation mit Ihrem Azure Database for MySQL-Server erforderlich ist, von [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) herunter, und speichern Sie die Zertifikatdatei auf dem lokalen Laufwerk. (In diesem Tutorial wird als Beispiel „c:\ssl“ verwendet.)
-**Für Microsoft Internet Explorer und Microsoft Edge:** Benennen Sie nach dem Download das Zertifikat in „BaltimoreCyberTrustRoot.crt.pem“ um.
+**Für Microsoft Internet Explorer und Microsoft Edge**: Benennen Sie nach dem Download das Zertifikat in „BaltimoreCyberTrustRoot.crt.pem“ um.
 
 ## <a name="step-2-bind-ssl"></a>Schritt 2: Binden von SSL
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Herstellen einer Verbindung mit dem Server mithilfe von MySQL Workbench über SSL
@@ -34,7 +31,7 @@ Eine weitere Möglichkeit zum Binden des SSL-Zertifikats besteht im Verwenden de
 mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
-## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Schritt 3: Erzwingen von SSL-Verbindungen in Azure 
+## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Schritt 3:  Erzwingen von SSL-Verbindungen in Azure 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 Rufen Sie über das Azure-Portal Ihren Server mit Azure Database for MySQL auf, und klicken Sie auf **Verbindungssicherheit**. Verwenden Sie die Umschaltfläche, um die Einstellung **SSL-Verbindung erzwingen** zu aktivieren/deaktivieren, und klicken Sie dann auf **Speichern**. Microsoft empfiehlt, die Einstellung **SSL-Verbindung erzwingen** immer zu aktivieren, um die Sicherheit zu erhöhen.
 ![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
@@ -50,7 +47,7 @@ Führen Sie die MySQL-Befehl **status** aus, um sicherzustellen, dass die Verbin
 ```dos
 mysql> status
 ```
-Vergewissern Sie sich, dass die Verbindung verschlüsselt ist, indem Sie die Ausgabe überprüfen, die wie folgt angezeigt werden sollte: **SSL: verwendete Verschlüsselung AES256-SHA**. 
+Um sicherzustellen, dass die Verbindung verschlüsselt ist, überprüfen Sie die Ausgabe, die Folgendes anzeigen sollte:  **SSL: Verwendete Verschlüsselung ist AES256-SHA** 
 
 ## <a name="sample-code"></a>Beispielcode
 Um in Ihrer Anwendung über SSL eine sichere Verbindung mit Azure Database for MySQL einzurichten, können Sie die folgenden Codebeispiele verwenden:

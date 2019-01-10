@@ -1,20 +1,17 @@
 ---
 title: Erstellen und Verwalten eines Servers mit Azure-Datenbank für MySQL im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie schnell einen neuen Server mit Azure-Datenbank für MySQL erstellen und mithilfe des Azure-Portals verwalten.
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 065eb708a1d80b0eac618bd9039a859db6ef1340
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39ffe1b71fb002658110c63c825e0515f38e2b9e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265583"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537323"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Erstellen und Verwalten eines Servers mit Azure-Datenbank für MySQL im Azure-Portal
 In diesem Artikel wird beschrieben, wie Sie auf schnelle Weise einen neuen Server für eine Azure Database for MySQL erstellen können. Außerdem erhalten Sie Informationen zum Verwalten des Servers mithilfe des Azure-Portals. Die Serververwaltung umfasst das Anzeigen von Serverdetails und Datenbanken, das Zurücksetzen des Kennworts, das Skalieren von Ressourcen und das Löschen des Servers.
@@ -44,7 +41,7 @@ Führen Sie die folgenden Schritte aus, um einen Azure Database for MySQL-Server
     | *Serveradministratoranmeldung* | myadmin (Administratorkontoname einrichten) |
     | *Kennwort* | Kennwort des Administratorkontos festlegen |
     | *Kennwort bestätigen* | Kennwort des Administratorkontos bestätigen |
-    | *Standort* | Asien, Südosten (zwischen „Europa, Norden“ und „USA, Westen“ auswählen) |
+    | *Location* | Asien, Südosten (zwischen „Europa, Norden“ und „USA, Westen“ auswählen) |
     | *Version* | 5.7 (Serverversion für Azure Database for MySQL auswählen) |
 
 4. Klicken Sie auf **Tarif**, um die Dienstebene und die Leistungsstufe für Ihren neuen Server anzugeben. Wählen Sie die Registerkarte **Allgemein** aus. *Gen 4*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtuelle Kerne**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus.
@@ -113,4 +110,4 @@ Klicken Sie unter **Einstellungen** auf **Eigenschaften**, um detaillierte Infor
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schnellstart: Erstellen eines Servers mit Azure-Datenbank für MySQL im Azure-Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)

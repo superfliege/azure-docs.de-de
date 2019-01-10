@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7a233a5effb804ec3cc22727b46846509032d214
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d91c1e99a04f6fdbc6422aa18504625471d0f0d1
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438505"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810490"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnoseprotokollierung in Azure Cosmos DB 
 
@@ -81,10 +81,10 @@ Führen Sie zum Aktivieren der Diagnoseprotokollierung im Azure-Portal die folge
     * **Streamen an einen Event Hub:** Für diese Option benötigen Sie einen vorhandenen Event Hubs-Namespace und einen Event Hub, mit dem eine Verbindung hergestellt werden kann. Weitere Informationen zum Erstellen eines Event Hubs-Namespaces finden Sie unter [Erstellen eines Event Hubs-Namespaces und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Kehren Sie anschließend auf diese Seite im Portal zurück, um den Event Hubs-Namespace und den Richtliniennamen auszuwählen.
     * **Senden an Log Analytics:** Für diese Option können Sie entweder einen vorhandenen Arbeitsbereich verwenden oder über das Portal mithilfe der Schritte zum [Erstellen eines neuen Arbeitsbereichs](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) einen neuen Log Analytics-Arbeitsbereich erstellen. Weitere Informationen zum Anzeigen Ihrer Protokolle in Log Analytics finden Sie unter [Anzeigen von Protokollen in Log Analytics](#view-in-loganalytics).
     * **Protokollieren von „DataPlaneRequests“:** Verwenden Sie diese Option, um Back-End-Anforderungen der zugrunde liegenden verteilten Azure Cosmos DB-Plattform für SQL-, Graph-, MongoDB-, Cassandra- und Tabellen-API-Konten zu protokollieren. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
-    * **Protokollieren von „MongoRequests“:** Verwenden Sie diese Option, um vom Benutzer initiierte Anforderungen vom Front-End von Azure Cosmos DB für MongoDB-API-Konten zu protokollieren. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
+    * **Protokollieren von „MongoRequests“:** Wählen Sie diese Option aus, um vom Benutzer initiierte Anforderungen vom Front-End von Azure Cosmos DB für Cosmos-Konten zu protokollieren, die mit der API für MongoDB von Azure Cosmos DB konfiguriert wurden. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
     * **Metrikanforderungen:** Verwenden Sie diese Option, um ausführliche Daten in [Azure-Metriken](../azure-monitor/platform/metrics-supported.md) zu speichern. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
 
-3. Wählen Sie **Speichern**aus.
+3. Wählen Sie **Speichern** aus.
 
     Sie erhalten die Fehlermeldung: „Fehler beim Aktualisieren der Diagnose für \<Arbeitsbereichsname>. Das Abonnement \<Abonnement-ID> ist nicht für die Verwendung von microsoft.insights registriert“. Führen Sie die Anweisungen unter [Problembehandlung der Azure-Diagnose](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) aus, um das Konto zu registrieren, und wiederholen Sie dann dieses Verfahren.
 
@@ -459,7 +459,7 @@ Die folgende Tabelle beschreibt die Inhalte der einzelnen Protokolleinträge.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie sich mit dem Aktivieren der Protokollierung vertraut machen und darüber hinaus ein Verständnis der von den verschiedenen Azure-Diensten unterstützten Metriken und Protokollkategorien erlangen möchten, lesen Sie die Artikel [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) und [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+- Wenn Sie sich mit dem Aktivieren der Protokollierung vertraut machen und darüber hinaus ein Verständnis der von den verschiedenen Azure-Diensten unterstützten Metriken und Protokollkategorien erlangen möchten, lesen Sie die Artikel [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) und [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md).
 - Lesen Sie diese Artikel durch, um sich über Event Hubs zu informieren:
    - [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 112b41aa41706a807a82e708fe1fb4173fd084ca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3f3af4b9ca7369cb14f0e91915f9f35086dc761c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837527"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999626"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
 Azure Cosmos DB repliziert Ihre Daten transparent in allen Azure-Regionen, die Ihrem Cosmos-Konto zugewiesen sind. Cosmos DB verwendet mehrere Redundanzebenen für Ihre Daten, wie in der folgenden Abbildung dargestellt:
 
-![Ressourcenpartitionierung](./media/high-availability/figure1.png)
+![Physische Partitionierung](./media/high-availability/figure1.png)
 
 - Die Daten in Cosmos-Containern sind horizontal partitioniert.
 

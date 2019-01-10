@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: rimman
-ms.openlocfilehash: 44c561386b00ca60dc537360145ea62177b6d5d6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5651e7ee8196eec9d1b1bf20e84ed73e484afb4b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263385"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542390"
 ---
 # <a name="pricing-model-of-azure-cosmos-db"></a>Preismodell für Azure Cosmos DB 
 
@@ -45,7 +45,7 @@ Azure Cosmos DB bietet für Entwickler verschiedene Optionen kostenlos an. Die O
 
 * **Kostenloses Azure-Konto**: Azure bietet einen [Free-Tarif](https://azure.microsoft.com/free/) an, mit dem Sie ein Azure-Guthaben von 200 USD für die ersten 30 Tage und 12 Monate lang eine begrenzte Anzahl kostenloser Dienste erhalten. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](../billing/billing-avoid-charges-free-account.md). Azure Cosmos DB ist Bestandteil des kostenlosen Azure-Kontos. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 5 GB und bereitgestellten Durchsatz von 400 RUs/Sek. für das ganze Jahr. 
 
-* **Azure Cosmos DB kostenlos testen**: Azure Cosmos DB bietet eine zeitlich begrenzte Benutzererfahrung, indem Sie Azure Cosmos DB für kostenlose Konten testen. Mithilfe der Schnellstartanleitungen und den Tutorials können Sie ein Azure Cosmos DB-Konto sowie eine Datenbank und Sammlungen erstellen und eine Beispielanwendung ausführen. Sie können die Beispielanwendung ausführen, ohne ein Azure-Konto abonnieren oder Ihre Kreditkarte verwenden zu müssen. [Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) stellt Azure Cosmos DB einen Monat lang mit der Möglichkeit bereit, Ihr Konto beliebig oft zu erneuern.
+* **Azure Cosmos DB kostenlos testen**: Azure Cosmos DB bietet eine zeitlich begrenzte Benutzererfahrung, indem Sie Azure Cosmos DB für kostenlose Konten testen. Mithilfe der Schnellstartanleitungen und den Tutorials können Sie ein Azure Cosmos DB-Konto sowie eine Datenbank und Sammlungen erstellen und eine Beispielanwendung ausführen. Sie können die Beispielanwendung ausführen, ohne sich für ein Azure-Konto registrieren oder Ihre Kreditkarte verwenden zu müssen. [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) stellt Azure Cosmos DB einen Monat lang mit der Möglichkeit bereit, Ihr Konto beliebig oft zu erneuern.
 
 * **Azure Cosmos DB-Emulator**: Der Azure Cosmos DB-Emulator stellt eine lokale Umgebung bereit, die den Azure Cosmos DB-Dienst zu Entwicklungszwecken emuliert. Der Emulator wird kostenlos und mit hoher Wiedergabetreue für den Clouddienst angeboten. Bei Verwendung des Azure Cosmos DB-Emulators können Sie die Anwendung lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen oder Kosten zu verursachen. Sie können Ihre Anwendungen mit dem Emulator lokal entwickeln, bevor sie in die Produktion gehen. Nachdem Sie mit der Funktionalität der Anwendung im Emulator zufrieden sind, können Sie zum Azure Cosmos DB-Konto in der Cloud wechseln und so erheblich Kosten sparen. Ausführlichere Informationen zum Emulator finden Sie im Artikel [Verwenden von Azure Cosmos DB für Entwicklungs- und Testzwecke](local-emulator.md).
 
@@ -60,12 +60,11 @@ Die reservierte Kapazität bezieht sich auf einen Rechnungsrabatt und wirkt sich
 Erfahren Sie mehr über die Optimierung der Kosten für Ihre Azure Cosmos DB-Ressourcen in den folgenden Artikeln:
 
 * Weitere Informationen unter [Optimale Entwicklungs- und Testmöglichkeiten mit Azure Cosmos DB](optimize-dev-test.md)
-
 * Weitere Informationen unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md)
 * Weitere Informationen unter [Optimieren der Durchsatzkosten](optimize-cost-throughput.md)
 * Weitere Informationen unter [Optimieren der Speicherkosten](optimize-cost-storage.md)
 * Weitere Informationen unter [Optimieren der Kosten für Lese- und Schreibvorgänge](optimize-cost-reads-writes.md)
 * Weitere Informationen unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md)
 * Weitere Informationen unter [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md)
-* Weitere Informationen unter [Reservierte Kapazität für Azure Cosmos DB](cosmos-db-reserved-capacity.md)
-* Weitere Informationen unter [Azure Cosmos DB-Emulator](local-emulator.md)
+* Weitere Informationen zur [Reservierte Azure Cosmos DB-Kapazität](cosmos-db-reserved-capacity.md)
+* Weitere Informationen zum [Azure Cosmos DB-Emulator](local-emulator.md)

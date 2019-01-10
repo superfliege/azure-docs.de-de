@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a9f168a0abc28b1decc6f327a62f5eaa4163e6f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242907"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601524"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 
@@ -41,7 +41,7 @@ Das Ziel ist die Verwendung der APIs der elastischen Datenbank-Clientbibliothek 
 
 - Visual Studio (2012 oder neuere Version)
 - Erstellen von drei Azure SQL-Datenbanken
-- Folgendes Beispielprojekt: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](https://go.microsoft.com/?linkid=9888163)
+- Laden Sie das Beispielprojekt herunter: [Elastische DB-Tools für Azure SQL: Mehrinstanzenfähige Shards](https://go.microsoft.com/?linkid=9888163)
   - Geben Sie die Informationen für Ihre Datenbanken am Anfang der Datei **Program.cs** 
 
 Dieses Projekt stellt eine Erweiterung des unter [Elastische DB-Tools für Azure SQL – Entity Framework-Integration](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) beschriebenen Projekts dar, indem Unterstützung für Shard-Datenbanken mit mehreren Mandanten hinzugefügt wird. Das Projekt erstellt eine einfache Konsolenanwendung zum Erstellen von Blogs und Beiträgen. Das Projekt umfasst vier Mandanten sowie zwei mehrinstanzenfähige Sharddatenbanken. Diese Konfiguration ist im vorhergehenden Diagramm dargestellt. 
@@ -57,7 +57,7 @@ Beachten Sie, dass diese gesamten Tests ein Problem aufzeigen, da RLS noch nicht
 1. **Anwendungsschicht**: Ändern Sie den Anwendungscode so, dass die aktuelle Mandanten-ID im SESSION\_CONTEXT immer nach dem Öffnen einer Verbindung festgelegt wird. Das Beispielprojekt legt die „TenantId“ bereits auf diese Weise fest. 
 2. **Datenschicht**: Erstellen Sie auf der Grundlage der in SESSION\_CONTEXT gespeicherten Mandanten-ID in jeder Sharddatenbank eine RLS-Sicherheitsrichtlinie zum Filtern von Zeilen. Erstellen Sie für jede Sharddatenbank eine Richtlinie. Andernfalls werden die Zeilen in Shards mit mehreren Mandanten nicht gefiltert. 
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Anwendungsschicht: Legen Sie die TenantId im SESSION\_CONTEXT fest.
+## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Anwendungsschicht: Festlegen von TenantId in SESSION\_CONTEXT
 
 Zuerst stellen Sie eine Verbindung mit einer Sharddatenbank her, indem Sie die APIs der elastischen Datenbank-Clientbibliothek zum datenabhängigen Routen verwenden. Die Anwendung muss der Datenbank noch mitteilen, welche „TenantId“ die Verbindung nutzt. Die „TenantId“ teilt der RLS-Sicherheitsrichtlinie mit, welche Zeilen als zu anderen Mandanten gehörend herausgefiltert werden müssen. Speichern Sie die aktuelle „TenantId“ im [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) der Verbindung.
 
@@ -213,7 +213,7 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2. Datenschicht: Erstellen Sie eine zeilenbasierte Sicherheitsrichtlinie
+## <a name="2-data-tier-create-row-level-security-policy"></a>2. Datenebene: Erstellen Sie eine zeilenbasierte Sicherheitsrichtlinie
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Erstellen einer Sicherheitsrichtlinie, um die Zeilen zu filtern, auf die jeder Mandant zugreifen kann
 
@@ -341,8 +341,8 @@ GO
 
 ### <a name="maintenance"></a>Wartung 
 
-- **Neue Shards hinzufügen**: Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
-- **Neue Tabellen hinzufügen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
+- **Hinzufügen neuer Shards**: Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
+- **Hinzufügen neuer Tabellen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
 
 ## <a name="summary"></a>Zusammenfassung
 

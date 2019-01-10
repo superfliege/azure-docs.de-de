@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d4d730fe6c72b55a01f7c5f1f95cbd94ff145fba
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f8045153482cdd8b9a13c0a6f2ebdb26627d44e4
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873749"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811408"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -45,7 +45,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     * TCP
     * HTTPS
 
-    Im Gatewaymodus verwendet Azure Cosmos DB Port 443, und die MongoDB-API verwendet die Ports 10250, 10255 und 10256. Der Port 10250 wird einer MongoDB-Standardinstanz ohne Georeplikation zugeordnet, und die Ports 10255/10256 der MongoDB-Instanz mit Georeplikationsfunktionen. Wenn Sie TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet. Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle zeigt die für andere APIs verfügbaren Konnektivitätsmodi und die Benutzer der Dienstports für jede API an:
+    Im Gatewaysmodus verwendet Cosmos DB Port 443 und die Ports 10250, 10255 und 10256, wenn Sie die API for MongoDB von Azure Cosmos DB verwenden. Der Port 10250 wird einer MongoDB-Standardinstanz ohne Georeplikation zugeordnet, und die Ports 10255/10256 werden der MongoDB-Instanz mit Georeplikationsfunktionen zugeordnet. Wenn Sie TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet. Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle zeigt die für andere APIs verfügbaren Konnektivitätsmodi und die Benutzer der Dienstports für jede API an:
 
     |Verbindungsmodus  |Unterstütztes Protokoll  |Unterstützte SDKs  |API/Dienstport  |
     |---------|---------|---------|---------|

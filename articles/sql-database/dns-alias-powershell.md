@@ -9,15 +9,15 @@ ms.devlang: PowerShell
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,amagarwa,maboja
+ms.reviewer: genemi,amagarwa,maboja, jrasnick
 manager: craigg
 ms.date: 02/05/2018
-ms.openlocfilehash: 095e6c6d59bf73bb74e2d8fbe3d1506601ab533e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fcba91780f5ef05099feee70cc96eb5aeb667c7a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471117"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600937"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell für den DNS-Alias für Azure SQL-Datenbank
 
@@ -25,9 +25,9 @@ Dieser Artikel bietet ein PowerShell-Skript, das veranschaulicht, wie Sie einen 
 
 Die im Codebeispiel verwendeten Cmdlets lauten wie folgt:
 
-- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Erstellt einen neuen DNS-Alias im Azure SQL-Datenbankdienstsystem. Der Alias verweist auf Azure SQL-Datenbankserver 1.
-- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ruft alle DNS-Aliase auf, die SQL-Datenbankserver 1 zugewiesen sind, und listet diese auf.
-- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ändert den Servernamen, auf dessen Verweis der Alias konfiguriert ist, von Server 1 in SQL-Datenbankserver 2.
+- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbankserver 1.
+- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ruft alle DNS-Aliase auf, die Server 1 von SQL-Datenbank zugewiesen sind, und listet diese auf.
+- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ändert den Servernamen, für dessen Referenzierung der Alias konfiguriert ist, aus Server 1 in SQL-Datenbankserver 2.
 - [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Entfernt den DNS-Alias aus SQL-Datenbankserver 2 anhand des Aliasnamens.
 
 Die oben angegebenen PowerShell-Cmdlets wurden zum Modul **AzureRm.Sql** ab Modulversion 5.1.1 hinzugefügt.

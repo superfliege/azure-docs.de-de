@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 39c4a6108f4a5133e2c77904dcd67bf235801956
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0d6a370884e6648aaf131892759ee45b29ed3693
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265133"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001650"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Azure Cosmos DB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicher
 Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Anwendungen. Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne Ihren bereitgestellten Durchsatz (Anforderungseinheiten, RUs) zu beanspruchen bzw. die Leistung oder Verfügbarkeit Ihrer Datenbank zu beeinträchtigen.
 
 Azure Cosmos DB speichert automatische Sicherungen in Azure Blob Storage, während sich die eigentlichen Daten lokal in Azure Cosmos DB befinden. Um niedrige Latenz zu gewährleisten, wird die Momentaufnahme Ihrer Sicherung in Azure Blob Storage in der Region gespeichert, in der sich auch die aktuelle Schreibregion Ihres Cosmos DB-Datenbankkontos befindet (bzw. bei einer Multimaster-Konfiguration in einer der Schreibregionen). Zum besseren Schutz vor regionalen Katastrophen wird jede Momentaufnahme der Sicherungsdaten in Azure Blob Storage nochmals mithilfe von georedundantem Speicher (GRS) in eine andere Region repliziert. Die Region, in die die Sicherung repliziert wird, richtet sich nach Ihrer Quellregion und dem Regionspaar, das der Quellregion zugeordnet ist. Weitere Informationen finden Sie im Artikel mit der [Liste der georedundanten Azure-Regionspaare](../best-practices-availability-paired-regions.md). Sie können auf diese Sicherung nicht direkt zugreifen. Azure Cosmos DB verwendet diese Sicherung nur, wenn die Wiederherstellung einer Sicherung initiiert wird.
-Die folgende Abbildung zeigt, wie ein Azure Cosmos DB-Container (mit allen drei primären Ressourcenpartitionen in „USA, Westen“) in einem Azure Blob Storage-Remotekonto in „USA, Westen“ gesichert und anschließend nach „USA, Osten“ repliziert wird:
+Die folgende Abbildung zeigt, wie ein Azure Cosmos DB-Container (mit allen drei primären physischen Partitionen in „USA, Westen“) in einem Azure Blob Storage-Remotekonto in „USA, Westen“ gesichert und anschließend nach „USA, Osten“ repliziert wird:
 
 ![Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 

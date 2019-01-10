@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: d5e10e04ea9567e2656f592407855a53a70d7b0f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ec603df7005b9151f1cf760df80de9aaffc78b3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263355"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539703"
 ---
 # <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Optimieren der Kosten von Azure Cosmos DB bei Bereitstellungen in mehreren Regionen
 
@@ -31,7 +31,7 @@ In einem Multimastersystem nehmen die netto verfügbaren Anforderungseinheiten (
 
 Angenommen, Sie haben einen Container in der Region „USA, Westen“ mit einem Durchsatz von 10.000 RUs/Sek. bereitgestellt und speichern in diesem Monat 1 TB Daten. Weiterhin angenommen, dass Sie die drei Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ hinzufügen, wobei für jede die gleiche Speicherkapazität und der gleiche Durchsatz bereitgestellt werden. Außerdem möchten Sie Schreibvorgänge für Container in allen vier Regionen von Ihrer global verteilten App ausführen. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 31 Tagen) sieht dann wie folgt aus:
 
-|**Position**|**Nutzung (monatlich)**|**Rate**|**Monatliche Kosten**|
+|**Element**|**Nutzung (monatlich)**|**Rate**|**Monatliche Kosten**|
 |----|----|----|----|
 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibvorgänge in mehreren Regionen) |10.000 RUs/Sek. x 24 x 31 |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde |1.190,40 US-Dollar |
 |Durchsatzabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibvorgänge in mehreren Regionen) |(3+1) x 10.000 RUs/Sek. x 24 x 31 |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde |4.761,60 US-Dollar |

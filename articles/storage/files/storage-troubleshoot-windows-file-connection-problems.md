@@ -9,17 +9,42 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0496d9b3fde8b0194ddf57b3bbfec98eb7fda7fe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: caa078aa522e20a0e09d0b4d97461358c1698fc7
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250848"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744233"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
 Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  verwenden, um sicherzustellen, dass die Windows-Clientumgebung über die richtigen erforderlichen Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure Files-Freigaben.
 
+<a id="error5"></a>
+## <a name="error-5-when-you-mount-an-azure-file-share"></a>Fehler 5 beim Bereitstellen einer Azure-Dateifreigabe
+
+Wenn Sie versuchen, eine Dateifreigabe bereitzustellen, erhalten Sie möglicherweise den folgenden Fehler:
+
+- „Systemfehler 5 ist aufgetreten. Zugriff verweigert.“
+
+### <a name="cause-1-unencrypted-communication-channel"></a>Ursache 1: Unverschlüsselter Kommunikationskanal
+
+Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Unverschlüsselte Verbindungen innerhalb desselben Datencenters können auch blockiert werden, wenn die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto aktiviert ist. Ein verschlüsselter Kommunikationskanal wird nur dann bereitgestellt, wenn das Clientbetriebssystem des Benutzers SMB-Verschlüsselung unterstützt.
+
+Windows 8, Windows Server 2012 und höhere Versionen jedes Systems handeln Anforderung aus, die SMB 3.0 umfassen, wodurch die Verschlüsselung unterstützt wird.
+
+### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
+
+1. Stellen Sie eine Verbindung von einem Client aus her, der SMB-Verschlüsselung unterstützt (Windows 8, Windows Server 2012 oder höher), oder stellen Sie eine Verbindung von einem virtuellen Computer aus her, der sich im selben Datencenter wie das Azure-Speicherkonto befindet, das für die Azure-Dateifreigabe verwendet wird.
+2. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) im Speicherkonto deaktiviert ist, wenn der Client keine SMB-Verschlüsselung unterstützt.
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 2: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert. 
+
+Wenn für das Speicherkonto Regeln für das virtuelle Netzwerk (VNET) und die Firewall konfiguriert sind, wird dem Netzwerkverkehr der Zugriff verweigert, es sei denn, der Client-IP-Adresse oder dem virtuellen Netzwerk wird der Zugriff gestattet.
+
+### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
+
+Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>„Fehler 53“, „Fehler 67“ oder „Fehler 87“ beim Versuch, eine Azure-Dateifreigabe einzubinden oder die Einbindung aufzuheben
@@ -30,39 +55,47 @@ Wenn Sie versuchen, eine Dateifreigabe aus einem lokalen oder einem anderen Date
 - „Systemfehler 67 ist aufgetreten. „Der Netzwerkname wurde nicht gefunden.“
 - „Systemfehler 87 ist aufgetreten. „Der Parameter ist falsch.“
 
-### <a name="cause-1-unencrypted-communication-channel"></a>Ursache 1: Unverschlüsselter Kommunikationskanal
-
-Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Unverschlüsselte Verbindungen innerhalb desselben Datencenters können auch blockiert werden, wenn die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto aktiviert ist. Die Verschlüsselung des Kommunikationskanals ist nur verfügbar, wenn das Clientbetriebssystem des Benutzers die SMB-Verschlüsselung unterstützt.
-
-Windows 8, Windows Server 2012 und höhere Versionen jedes Systems handeln Anforderung aus, die SMB 3.0 umfassen, wodurch die Verschlüsselung unterstützt wird.
-
-### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
-
-1. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto deaktiviert ist.
-2. Stellen Sie eine Verbindung von einem Client her, der einen der folgenden Punkte erfüllt:
-
-    - Erfüllt die Anforderungen von Windows 8 und Windows Server 2012 oder höher
-    - Stellt eine Verbindung von einem virtuellen Computer im selben Datencenter wie das Azure-Speicherkonto her, das für die Azure-Dateifreigabe verwendet wird
-
-### <a name="cause-2-port-445-is-blocked"></a>Ursache 2: Port 445 ist gesperrt
+### <a name="cause-1-port-445-is-blocked"></a>Ursache 1: Port 445 ist blockiert
 
 „Systemfehler 53“ und „Systemfehler 67“ können auftreten, wenn die von Port 445 ausgehende Kommunikation zu einem Azure Files-Datencenter blockiert ist. Um eine Zusammenfassung der ISPs anzuzeigen, die den Zugang von Port 445 aus zulassen oder verweigern, gehen Sie auf [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Um zu verstehen, ob dies der Grund für die Meldung „Systemfehler 53“ ist, können Sie Portqry verwenden, um den Endpunkt TCP:445 abzufragen. Wenn der Endpunkt TCP:445 als gefiltert angezeigt wird, wird der TCP-Port blockiert. Dies ist eine Beispielabfrage:
+Um festzustellen, ob Port 445 durch Ihre Firewall oder Ihren Internetdienstanbieter blockiert wird, verwenden Sie das Tool [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) oder das Cmdlet `Test-NetConnection`. 
 
-  `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
+Um das Cmdlet `Test-NetConnection` verwenden zu können, muss das AzureRM PowerShell-Modul installiert sein. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resoure-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 
-Wenn der TCP-Port 445 durch eine Regel entlang des Netzwerkpfads blockiert wird, wird Ihnen die folgende Ausgabe angezeigt:
+   
+    $resourceGroupName = "<your-resource-group-name>"
+    $storageAccountName = "<your-storage-account-name>"
 
-  `TCP port 445 (microsoft-ds service): FILTERED`
+    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+    # already logged in.
+    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
-Weitere Informationen zur Verwendung von Portqry finden Sie unter [Beschreibung des Befehlszeilenprogramms Portqry.exe](https://support.microsoft.com/help/310099).
+    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
+    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+  
+    
+Wenn das Verbinden erfolgreich war, wird die folgende Ausgabe angezeigt:
+    
+  
+    ComputerName     : <storage-account-host-name>
+    RemoteAddress    : <storage-account-ip-address>
+    RemotePort       : 445
+    InterfaceAlias   : <your-network-interface>
+    SourceAddress    : <your-ip-address>
+    TcpTestSucceeded : True
+ 
 
-### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
+> [!Note]  
+> Der oben genannte Befehl gibt die aktuelle IP-Adresse des Speicherkontos zurück. Diese IP-Adresse bleibt nicht garantiert gleich und kann sich jederzeit ändern. Verwenden Sie keine Hartkodierung für diese IP-Adresse in Skripts oder einer Firewallkonfiguration.
+
+### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
 Arbeiten Sie mit Ihrer IT-Abteilung zusammen, um den Port 445-Ausgang zu [Azure-IP-Bereichen](https://www.microsoft.com/download/details.aspx?id=41653) zu öffnen.
 
-### <a name="cause-3-ntlmv1-is-enabled"></a>Ursache 3: NTLMv1 ist aktiviert
+### <a name="cause-2-ntlmv1-is-enabled"></a>Ursache 2: NTLMv1 ist aktiviert
 
 „Systemfehler 53“ oder „Systemfehler 87“ können auftreten, wenn die NTLMv1-Kommunikation auf dem Client aktiviert ist. Azure Files unterstützt nur die NTLMv2-Authentifizierung. Wenn NTLMv1 aktiviert ist, ist der Client weniger sicher. Aus diesem Grund wird die Kommunikation für Azure Files blockiert. 
 
@@ -72,7 +105,7 @@ Um zu bestimmen, ob dies die Ursache des Fehlers ist, überprüfen Sie, ob der f
 
 Weitere Informationen finden Sie im Thema [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) im TechNet.
 
-### <a name="solution-for-cause-3"></a>Lösung für Ursache 3
+### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
 Setzen Sie den Wert **LmCompatibilityLevel** auf den Standardwert 3 im folgenden Registrierungsunterschlüssel zurück:
 
@@ -88,6 +121,27 @@ Der Fehler 1816 tritt auf, wenn Sie die Obergrenze der parallelen offenen Handle
 ### <a name="solution"></a>Lösung
 
 Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen. Weitere Informationen finden Sie unter [Checkliste zur Leistung und Skalierbarkeit von Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+
+<a id="accessdeniedportal"></a>
+## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Fehler „Zugriff verweigert“ beim Navigieren zu einer Azure-Dateifreigabe im Portal
+
+Wenn Sie zu einer Azure-Dateifreigabe im Portal navigieren, erhalten Sie ggf. den folgenden Fehler:
+
+Zugriff verweigert.  
+Sie haben keinen Zugriff.  
+Sie scheinen keinen Zugriff auf diesen Inhalt zu haben. Wenden Sie sich an den Besitzer, um Zugriff zu erhalten.  
+
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Ursache 1: Ihr Benutzerkonto besitzt keinen Zugriff auf das Speicherkonto
+
+### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
+
+Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 2: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert.
+
+### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
+
+Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Langsames Kopieren von Dateien in und aus Azure Files unter Windows
@@ -168,12 +222,12 @@ Verwenden Sie eine der folgenden Lösungen:
 
   `net use * \\storage-account-name.file.core.windows.net\share`
 
-Nachdem Sie die erforderlichen Schritte der Anleitung durchgeführt haben, erhalten Sie womöglich die folgende Fehlermeldung, wenn Sie „net use“ für das System- bzw. Netzwerkdienstkonto ausführen: „Systemfehler 1312 ist aufgetreten. Eine angegebene Anmeldesitzung ist nicht vorhanden. Sie wird möglicherweise bereits verwendet.“ Wenn dies auftritt, vergewissern Sie sich, dass der an „net use“ übergebene Benutzername Domäneninformationen enthält (z.B. „[Speicherkontoname].file.core.windows.net“).
+Nachdem Sie die erforderlichen Schritte der Anleitung durchgeführt haben, erhalten Sie womöglich die folgende Fehlermeldung, wenn Sie „net use“ für das System- bzw. Netzwerkdienstkonto ausführen:„Systemfehler 1312 ist aufgetreten. „Systemfehler 1312 ist aufgetreten. Eine angegebene Anmeldesitzung ist nicht vorhanden. Sie wird möglicherweise bereits verwendet.“ Wenn dies auftritt, vergewissern Sie sich, dass der an „net use“ übergebene Benutzername Domäneninformationen enthält (z.B. „[Speicherkontoname].file.core.windows.net“).
 
 <a id="doesnotsupportencryption"></a>
 ## <a name="error-you-are-copying-a-file-to-a-destination-that-does-not-support-encryption"></a>Fehler „You are copying a file to a destination that does not support encryption“ (Sie kopieren eine Datei in ein Ziel, das die Verschlüsselung nicht unterstützt)
 
-Wenn eine Datei über das Netzwerk kopiert wird, wird die Datei auf dem Quellcomputer entschlüsselt, in Klartext übermittelt und am Ziel erneut verschlüsselt. Jedoch erscheint möglicherweise der folgende Fehler, wenn Sie versuchen, eine verschlüsselte Datei zu kopieren: „Die Datei wird an ein Ziel kopiert, das keine Verschlüsselung unterstützt.“
+Wenn eine Datei über das Netzwerk kopiert wird, wird die Datei auf dem Quellcomputer entschlüsselt, in Klartext übermittelt und am Ziel erneut verschlüsselt. Möglicherweise wird jedoch der folgende Fehler angezeigt, wenn Sie versuchen, eine verschlüsselte Datei zu kopieren: „You are copying the file to a destination that does not support encryption“ (Sie kopieren die Datei in ein Ziel, das die Verschlüsselung nicht unterstützt).
 
 ### <a name="cause"></a>Ursache
 Dieses Problem kann auftreten, wenn Sie ein verschlüsselndes Dateisystem (EFS, Encrypting File System) verwenden. Mit BitLocker verschlüsselte Dateien können in Azure Files kopiert werden. Azure Files unterstützt NTFS EFS jedoch nicht.
@@ -200,8 +254,8 @@ Dieses Problem kann auftreten, wenn auf dem Clientcomputer nicht ausreichend Cac
 
 Um dieses Problem zu beheben, passen Sie den Registrierungswert **DirectoryCacheEntrySizeMax** an, um das Zwischenspeichern größerer Verzeichnisauflistungen auf dem Clientcomputer zu ermöglichen:
 
-- Speicherort: HKLM\System\CCS\Services\Lanmanworkstation\Parameters
-- Wert: DirectoryCacheEntrySizeMax 
+- Standort: HKLM\System\CCS\Services\Lanmanworkstation\Parameters
+- Wertname: DirectoryCacheEntrySizeMax 
 - Werttyp: DWORD
  
  

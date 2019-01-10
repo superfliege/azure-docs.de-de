@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409461"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794548"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -23,6 +23,8 @@ Dieser Artikel enthält Informationen zur Behebung von Fehlern und Lösung von P
 1. [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)
 3. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Es besteht ein Problem mit der Azure-Dateisynchronisierung auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -468,15 +470,23 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 | **Fehlerzeichenfolge** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Korrektur erforderlich** | JA |
 
-Dieser Fehler tritt häufig auf, weil die Serverzeit falsch oder das für die Authentifizierung verwendete Zertifikat abgelaufen ist. Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte aus, um das abgelaufene Zertifikat zu erneuern:
+Dieser Fehler kann die folgenden Ursachen haben:
 
-1. Öffnen Sie das Zertifikat-MMC-Snap-In, wählen Sie das Computerkonto aus, und navigieren Sie zu den Zertifikaten: „(Lokaler Computer)\Benutzer\Certificates“.
-2. Überprüfen Sie, ob das Clientauthentifizierungszertifikat abgelaufen ist. Wenn das Zertifikat abgelaufen ist, schließen Sie das Zertifikate-MMC-Snap-In und fahren mit den restlichen Schritten fort. 
-3. Überprüfen Sie, ob die Version 4.0.1.0 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
-4. Führen Sie die folgenden PowerShell-Befehle auf dem Server aus:
+- Die Serverzeit ist falsch.
+- Fehler beim Löschen des Serverendpunkts.
+- Das für die Authentifizierung verwendete Zertifikat ist abgelaufen. 
+    Um festzustellen, ob das Zertifikat abgelaufen ist, führen Sie die folgenden Schritte aus:  
+    1. Öffnen Sie das Zertifikat-MMC-Snap-In, wählen Sie das Computerkonto aus, und navigieren Sie zu den Zertifikaten: „(Lokaler Computer)\Benutzer\Certificates“.
+    2. Überprüfen Sie, ob das Clientauthentifizierungszertifikat abgelaufen ist.
+
+Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+
+1. Überprüfen Sie, ob die Version 4.0.1.0 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+2. Führen Sie die folgenden PowerShell-Befehle auf dem Server aus:
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Login-AzureRmStorageSync -SubscriptionID <guid> -TenantID <guid>
     Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
 
@@ -562,14 +572,14 @@ Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsda
 
 ### <a name="common-troubleshooting-steps"></a>Allgemeine Schritte zur Problembehandlung
 <a id="troubleshoot-storage-account"></a>**Überprüfen Sie, ob das Speicherkonto vorhanden ist.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Navigieren Sie zu der Synchronisierungsgruppe im Speichersynchronisierungsdienst.
 2. Wählen Sie den Cloudendpunkt innerhalb der Synchronisierungsgruppe aus.
 3. Beachten Sie den Namen der Azure-Dateifreigabe im geöffneten Bereich.
 4. Wählen Sie das verknüpfte Speicherkonto aus. Wenn bei dieser Verknüpfung ein Fehler auftritt, wurde das Speicherkonto, auf das verwiesen wurde, entfernt.
     ![Ein Screenshot, das den Bereich mit Details zum Cloudendpunkt und einem Link zum Speicherkonto zeigt](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -583,20 +593,20 @@ Import-Module "$agentPath\StorageSync.Management.PowerShell.Cmdlets.dll"
 
 # Log into the Azure account and put the returned account information
 # in a reference variable.
-$acctInfo = Connect-AzureRmAccount
+$acctInfo = Connect-AzAccount
 
 # this variable stores your subscription ID 
 # get the subscription ID by logging onto the Azure portal
 $subID = $acctInfo.Context.Subscription.Id
 
 # this variable holds your Azure Active Directory tenant ID
-# use Login-AzureRMAccount to get the ID from that context
+# use Login-AzAccount to get the ID from that context
 $tenantID = $acctInfo.Context.Tenant.Id
 
 # Check to ensure Azure File Sync is available in the selected Azure
 # region.
 $regions = [System.String[]]@()
-Get-AzureRmLocation | ForEach-Object { 
+Get-AzLocation | ForEach-Object { 
     if ($_.Providers -contains "Microsoft.StorageSync") { 
         $regions += $_.Location 
     } 
@@ -609,7 +619,7 @@ if ($regions -notcontains $region) {
 
 # Check to ensure resource group exists and create it if doesn't
 $resourceGroups = [System.String[]]@()
-Get-AzureRmResourceGroup | ForEach-Object { 
+Get-AzResourceGroup | ForEach-Object { 
     $resourceGroups += $_.ResourceGroupName 
 }
 
@@ -656,7 +666,7 @@ $cloudEndpoint = Get-AzureRmStorageSyncCloudEndpoint `
     -SyncGroupName $syncGroup
 
 # Get reference to storage account
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
     $_.Id -eq $cloudEndpoint.StorageAccountResourceId
 }
 
@@ -667,12 +677,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-network-rules"></a>**Stellen Sie sicher, dass das Speicherkonto keine Netzwerkregeln enthält.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Wählen Sie im Speicherkonto auf der linken Seite **Firewalls und virtuelle Netzwerke** aus.
 2. Innerhalb des Speicherkontos sollte das Optionsfeld **Zugriff von allen Netzwerken zulassen** aktiviert sein.
     ![Ein Screenshot, der die deaktivierte Firewall und Netzwerkregeln des Speicherkontos zeigt](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -683,12 +693,12 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Stellen Sie sicher, dass die Azure-Dateifreigabe vorhanden ist.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Klicken Sie auf der linken Seite im Inhaltsverzeichnis auf **Übersicht**, um zur Hauptseite des Speicherkontos zurückzukehren.
 2. Wählen Sie **Dateien** zum Anzeigen der Liste von Dateifreigaben aus.
 3. Vergewissern Sie sich, dass die Dateifreigabe, auf die durch den Cloudendpunkt verwiesen wird, in der Liste der Dateifreigaben angezeigt wird (Sie sollten diese bei Schritt 1 notiert haben).
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 $fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
@@ -702,7 +712,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Klicken Sie links im Inhaltsverzeichnis auf **Zugriffssteuerung (IAM)**.
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Liste der Benutzer und Anwendungen (*Dienstprinzipale*) anzuzeigen, die Zugriff auf Ihr Speicherkonto besitzen.
 1. Stellen Sie sicher, dass der **hybride Dateisynchronisierungsdienst** in der Liste mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
@@ -715,10 +725,10 @@ if ($fileShare -eq $null) {
     - Wählen Sie im Feld **Rolle** die Option **Lese- und Datenzugriff** aus.
     - Geben Sie im Feld **Auswählen** die Zeichenfolge **Hybrid-Dateisynchronisierungsdienst** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern**.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell    
 $foundSyncPrincipal = $false
-Get-AzureRmRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
+Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
     if ($_.DisplayName -eq "Hybrid File Sync Service") {
         $foundSyncPrincipal = $true
         if ($_.RoleDefinitionName -ne "Reader and Data Access") {
