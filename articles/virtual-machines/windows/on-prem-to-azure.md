@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0440eccbdf76fc58fadf46de2508d362c0de6cc3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 83e69cd488ab7e8b69895a25716350c8025c6c48
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190784"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074902"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrieren von Amazon Web Services (AWS) und anderen Plattformen zu Managed Disks in Azure
 
@@ -58,7 +58,7 @@ Dieser Abschnitt hilft Ihnen, hinsichtlich VM- und Datenträgertypen die beste E
 
 Wenn Sie eine Migration von nicht verwalteten Datenträgern zu verwalteten Datenträgern planen, müssen Sie beachten, dass Benutzer mit der Rolle [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) danach die Größe des virtuellen Computers nicht mehr ändern können (was vor dem Wechsel möglich war). Der Grund dafür ist, dass virtuelle Computer mit verwalteten Datenträgern erfordern, dass der Benutzer über die Berechtigung „Microsoft.Compute/disks/write“ für die Betriebssystemdatenträger verfügt.
 
-### <a name="location"></a>Speicherort
+### <a name="location"></a>Standort
 
 Wählen Sie einen Standort, an dem Azure Managed Disks verfügbar sind. Wenn Sie zu Premium Managed Disks migrieren, stellen Sie außerdem sicher, dass Storage Premium in der Region verfügbar ist, in die die Migration erfolgen soll. Aktuelle Informationen zu verfügbaren Standorten finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services).
 
@@ -71,23 +71,23 @@ Sehen Sie sich die Leistungsmerkmale von virtuellen Computern für Storage Premi
 
 **Premium Managed Disks**
 
-Es gibt drei verwaltete Premium-Datenträgertypen, die Sie mit Ihrer VM verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Einschränkungen beim Auswählen des Premium-Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
+Es gibt sieben verwaltete Premium-Datenträgertypen, die Sie mit Ihrer VM verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Beschränkungen beim Auswählen des Premium-Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
 
-| Premium-Datenträgertyp  | P10               | P20               | P30               |
-|---------------------|-------------------|-------------------|-------------------|
-| Datenträgergröße           | 128 GB            | 512 GB            | 1024 GB (1 TB)    |
-| IOPS pro Datenträger       | 500               | 2.300              | 5.000              |
-| Durchsatz pro Datenträger | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde |
+| Premium-Datenträgertyp  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Datenträgergröße           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS pro Datenträger       | 120   | 240   | 500   | 1100  |2.300              | 5.000              | 7.500              | 7.500              | 
+| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 125 MB pro Sekunde |150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde |
 
 **Verwaltete Standard-Datenträger**
 
-Es gibt fünf Arten von verwalteten Standard-Datenträgern, die mit Ihrer VM verwendet werden können. Jede davon bietet unterschiedliche Kapazität, jedoch gelten für alle dieselben IOPS- und Durchsatzgrenzwerte. Wählen Sie den Typ der verwalteten Standard-Datenträger basierend auf den Kapazitätsanforderungen Ihrer Anwendung.
+Es gibt sieben Arten von verwalteten Standard-Datenträgern, die mit Ihrer VM verwendet werden können. Jede davon bietet unterschiedliche Kapazität, jedoch gelten für alle dieselben IOPS- und Durchsatzgrenzwerte. Wählen Sie den Typ der verwalteten Standard-Datenträger basierend auf den Kapazitätsanforderungen Ihrer Anwendung.
 
-| Standard-Datenträgertyp  | S4               | S6               | S10              | S20              | S30              |
-|---------------------|------------------|------------------|------------------|------------------|------------------|
-| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   |
-| IOPS pro Datenträger       | 500              | 500              | 500              | 500              | 500              |
-| Durchsatz pro Datenträger | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde |
+| Standard-Datenträgertyp  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
+| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| IOPS pro Datenträger       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| Durchsatz pro Datenträger | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde |60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 
 
 ### <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger 
 

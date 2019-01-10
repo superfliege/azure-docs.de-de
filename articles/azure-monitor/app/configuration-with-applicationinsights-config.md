@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: be572e068b0dd08f3af60701c4f5aa39646ac1fc
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3c7b855588b45cd61bb13848720d6e926bbecba4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000392"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121106"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML
 Das Application Insights .NET-SDK umfasst eine Reihe von NuGet-Paketen. Das [Kernpaket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) stellt die API für das Senden von Telemetriedaten an Application Insights bereit. [Zusätzliche Pakete](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieten *Telemetriemodule* und *-initialisierer* für die automatische Nachverfolgung von Telemetriedaten von Ihrer Anwendung und deren Kontext. Durch Anpassen der Konfigurationsdatei können Sie Telemetriemodule und -initialisierer aktivieren oder deaktivieren sowie Parameter für einige von ihnen festlegen.
@@ -154,7 +154,7 @@ Diese Einstellung ist standardmäßig aktiviert. Wenn die App viele Telemetrieda
 
 Der Parameter enthält das Ziel, das der Algorithmus zu erreichen versucht. Die Instanzen des SDK funktionieren unabhängig voneinander. Wenn Ihr Server also aus mehreren Computern zu einem Cluster gruppiert ist, erhöht sich das tatsächliche Volumen an Telemetriedaten entsprechend.
 
-[Erfahren Sie mehr über Sampling](../../application-insights/app-insights-sampling.md).
+[Erfahren Sie mehr über Sampling](../../azure-monitor/app/sampling.md).
 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Telemetrieprozessor für die Stichprobenerstellung mit festem Prozentsatz (von 2.0.0-beta1)
 Es gibt auch einen standardmäßigen [Telemetrieprozessor für die Stichprobenerstellung](../../azure-monitor/app/api-filtering-sampling.md) (von 2.0.1):
@@ -382,6 +382,6 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: ../../azure-monitor/app/asp-net-exceptions.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
-[new]: ../../application-insights/app-insights-create-new-resource.md
+[new]: ../../azure-monitor/app/create-new-resource.md 
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md

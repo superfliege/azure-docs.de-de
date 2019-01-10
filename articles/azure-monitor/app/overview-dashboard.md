@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4bc1d72cd08d47e9699acf8c20b03307dbda97af
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004856"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035252"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-Übersichtsdashboard
 
@@ -62,7 +62,7 @@ Wählen Sie Folgendes, um zurück zur Übersichtsoberfläche zu navigieren:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Trichter](../../application-insights/usage-funnels.md)
-- [Aufbewahrung](../../application-insights/app-insights-usage-retention.md)
-- [Benutzerabläufe](../../application-insights/app-insights-usage-flows.md)
+- [Trichter](../../azure-monitor/app/usage-funnels.md)
+- [Aufbewahrung](../../azure-monitor/app/usage-retention.md)
+- [Benutzerabläufe](../../azure-monitor/app/usage-flows.md)
 - [Dashboards](../../azure-monitor/app/app-insights-dashboards.md)

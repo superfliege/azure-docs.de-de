@@ -1,19 +1,18 @@
 ---
 title: Optimieren der Kosten für Azure Cosmos DB-Ressourcen mit reservierter Kapazität
 description: Erfahren Sie, wie Sie reservierte Kapazitäten für Azure Cosmos DB kaufen, um Computekosten einzusparen.
-services: cosmos-db
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a1f5db6428a892e10a3591edb7542996ad1b3319
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b4f36abb2136223be8d4eec67935317041a41b93
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386807"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044279"
 ---
 # <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>Optimieren der Kosten für Azure Cosmos DB-Ressourcen mit reservierter Kapazität
 

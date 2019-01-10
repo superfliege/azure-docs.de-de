@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e80eaf8e2ab1cf001e06aac1b5f23c7714c9013b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543409"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117010"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
@@ -55,7 +55,7 @@ Verwenden Sie in Ihren Batch-Anwendungen die Batch-APIs, um den Status von Resso
 
 ## <a name="vm-performance-counters-and-application-monitoring"></a>VM-Leistungsindikatoren und Anwendungsüberwachung
 
-* Mit dem Azure-Dienst [Application Insights](../application-insights/app-insights-overview.md) können Sie die Verfügbarkeit, Leistung und Verwendung Ihrer Batch-Aufträge und -Aufgaben programmgesteuert überwachen. So können Sie ganz einfach Leistungsindikatoren von Computeknoten (VMs) und benutzerdefinierte Informationen für Aufgaben von den virtuellen Computer erhalten. 
+* Mit dem Azure-Dienst [Application Insights](../azure-monitor/app/app-insights-overview.md) können Sie die Verfügbarkeit, Leistung und Verwendung Ihrer Batch-Aufträge und -Aufgaben programmgesteuert überwachen. So können Sie ganz einfach Leistungsindikatoren von Computeknoten (VMs) und benutzerdefinierte Informationen für Aufgaben von den virtuellen Computer erhalten. 
 
   Ein Beispiel finden Sie unter [Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights](monitor-application-insights.md) und im dazugehörigen [Codebeispiel](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights).
 

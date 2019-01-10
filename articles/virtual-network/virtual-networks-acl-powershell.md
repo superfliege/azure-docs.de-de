@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 1fce5b98d9e12ad373a4ca9d851fb717b3f47045
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250355"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154809"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Verwalten von Endpunkt-Zugriffssteuerungslisten mit PowerShell im klassischen Bereitstellungsmodell
 Sie können mit Azure PowerShell oder im Verwaltungsportal Netzwerk-Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte erstellen und verwalten. In diesem Thema finden Sie Verfahren für häufige Aufgaben in Zusammenhang mit ACLs, die Sie mit PowerShell durchführen können. Die Liste der Azure PowerShell-Cmdlets, finden Sie unter [Azure-Verwaltungs-Cmdlets](https://go.microsoft.com/fwlink/?LinkId=317721). Weitere Informationen zu ACLs finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (ACL)?](virtual-networks-acl.md). Informationen zum Verwalten der ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuelle Computer](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
@@ -58,7 +58,7 @@ Das folgende Beispiel veranschaulicht eine Möglichkeit zum Erstellen einer neue
         $acl1 = New-AzureAclConfig
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
-            –Description "Sharepoint ACL config"
+            –Description "SharePoint ACL config"
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
             –Action permit –RemoteSubnet "157.0.0.0/8" `
             –Description "web frontend ACL config"

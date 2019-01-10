@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8afe994f2441e736d660a306746508e9c6d13691
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 58eaec32fee149c845dc77a83763f2fcd8133a06
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001837"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120783"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.
@@ -25,7 +25,7 @@ ms.locfileid: "54001837"
 In diesem Beispiel wird ein Adapter erstellt, der Daten aus Application Insights umbenennt, einige Felder bearbeitet und an Power BI weiterreicht.
 
 > [!WARNING]
-> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](../../application-insights/app-insights-export-power-bi.md). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
+> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](../../azure-monitor/app/export-power-bi.md ). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
 > 
 > 
 
@@ -67,7 +67,7 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
 1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) sowie einzelne Ereignisse in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md). 
    
     Darüber hinaus werden die Daten in Ihren Speicher exportiert. 
-2. Überprüfen Sie die exportierten Daten. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld „Neues Projekt“ und anschließend „Visual C# / Cloud / Microsoft Azure SDK für .NET abrufen“.)
+2. Überprüfen Sie die exportierten Daten. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld „Neues Projekt“ und anschließend „Visual C#/Cloud/Microsoft Azure SDK für .NET abrufen“.)
    
     ![](./media/export-stream-analytics/04-data.png)
    
@@ -198,7 +198,7 @@ Warten Sie, bis der Auftrag ausgeführt wird.
 
 ## <a name="see-results-in-power-bi"></a>Anzeigen der Ergebnisse in Power BI
 > [!WARNING]
-> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](../../application-insights/app-insights-export-power-bi.md). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
+> Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](../../azure-monitor/app/export-power-bi.md ). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
 > 
 > 
 
@@ -223,5 +223,5 @@ Noam Ben Zeev zeigt, wie exportierte Daten mit Stream Analytics verarbeitet werd
 ## <a name="next-steps"></a>Nächste Schritte
 * [Fortlaufendem Export](export-telemetry.md)
 * [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](export-data-model.md)
-* [Application Insights](../../application-insights/app-insights-overview.md)
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 

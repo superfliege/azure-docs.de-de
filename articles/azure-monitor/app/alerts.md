@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3ed4039ae17828959f00de27c839454b63a7be6d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: fe63813220d526536a31efb48b6ec29b6ae383e8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998267"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121140"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
 [Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
@@ -29,7 +29,7 @@ Es gibt drei Arten von Warnungen:
 
 * **Metrikwarnungen** informieren Sie darüber, wenn eine Metrik für einen bestimmten Zeitraum einen Schwellenwert überschreitet – z.B. in Bezug auf Reaktionszeiten, Anzahl von Ausnahmen, CPU-Nutzung oder Seitenaufrufe. 
 * [**Webtests**][availability] informieren Sie, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability].
-* Die [**Proaktive Diagnose**](../../application-insights/app-insights-proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
+* Die [**Proaktive Diagnose**](../../azure-monitor/app/proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
 
 In diesem Artikel werden Metrikwarnungen beschrieben.
 
@@ -41,7 +41,7 @@ In diesem Artikel werden Metrikwarnungen beschrieben.
 * Legen Sie die Ressource vor den anderen Eigenschaften fest. **Wählen Sie die Ressource "(Komponenten)" aus** , wenn Sie Benachrichtigungen für Leistungs- oder Nutzungsmetriken festlegen möchten.
 * Der Name, den Sie der Warnung zuweisen, muss innerhalb der Ressourcengruppe (nicht nur in Ihrer Anwendung) eindeutig sein.
 * Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sind.
-* Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressourcengruppe haben. Wenn Sie diese Personengruppe erweitern möchten, fügen Sie die entsprechenden Benutzer der [Ressourcengruppe oder dem Abonnement](../../application-insights/app-insights-resources-roles-access-control.md) (nicht der Ressource) hinzu.
+* Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressourcengruppe haben. Wenn Sie diese Personengruppe erweitern möchten, fügen Sie die entsprechenden Benutzer der [Ressourcengruppe oder dem Abonnement](../../azure-monitor/app/resources-roles-access-control.md) (nicht der Ressource) hinzu.
 * Wenn Sie „Weitere E-Mail-Adressen“ angeben, werden Warnungen an diese Einzelpersonen oder Gruppen gesendet (unabhängig davon, ob Sie das Kontrollkästchen „E-Mail an Besitzer...“ aktiviert haben). 
 * Legen Sie eine [Webhookadresse](../../azure-monitor/platform/alerts-webhooks.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
 * Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen finden Sie oben auf dem Blatt.
@@ -51,7 +51,7 @@ In diesem Artikel werden Metrikwarnungen beschrieben.
 * Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich das Blatt „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
 
 > [!NOTE]
-> Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung eingerichtet ist: [Proaktive Diagnose](../../application-insights/app-insights-proactive-failure-diagnostics.md). Dies ist eine automatische Warnung zur Überwachung einer bestimmten Metrik: der Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese proaktive Warnung zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen. 
+> Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung eingerichtet ist: [Proaktive Diagnose](../../azure-monitor/app/proactive-failure-diagnostics.md). Dies ist eine automatische Warnung zur Überwachung einer bestimmten Metrik: der Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese proaktive Warnung zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen. 
 > 
 > 
 
@@ -89,7 +89,7 @@ Zu den gängigen Warnungen zählen Folgende:
 * **Serverantwortzeit** für die Serverseite von Webanwendungen. Achten Sie neben der Einrichtung von Warnungen auf diese Metrik, um festzustellen, ob sie bei hohen Anforderungsraten unverhältnismäßig stark variiert: Dies kann darauf hindeuten, dass für Ihre App nicht genügend Systemressourcen vorhanden sind. 
 * **Serverausnahmen** erfordern ein [zusätzliches Setup](../../azure-monitor/app/asp-net-exceptions.md), damit sie angezeigt werden.
 
-Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../application-insights/app-insights-proactive-failure-diagnostics.md) automatisch die Rate überwacht wird, mit der Ihre App auf Anforderungen mit Fehlercodes reagiert. 
+Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../azure-monitor/app/proactive-failure-diagnostics.md) automatisch die Rate überwacht wird, mit der Ihre App auf Anforderungen mit Fehlercodes reagiert. 
 
 ## <a name="automation"></a>Automation
 * [Verwenden von PowerShell zum Automatisieren der Einrichtung von Warnungen](../../azure-monitor/app/powershell-alerts.md)
@@ -102,13 +102,13 @@ Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../applic
 ## <a name="see-also"></a>Weitere Informationen
 * [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatisieren der Einrichtung von Warnungen](../../azure-monitor/app/powershell-alerts.md)
-* [Proaktive Diagnose](../../application-insights/app-insights-proactive-diagnostics.md) 
+* [Proaktive Diagnose](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [client]: ../../azure-monitor/app/javascript.md
 [platforms]: ../../azure-monitor/app/platforms.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
-[start]: ../../application-insights/app-insights-overview.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 

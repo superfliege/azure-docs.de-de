@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 76355723baa7727c0dda10ace449603d6ebefbe1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1ec190380fb07530c0c2b8ca3213b8b647fc05b3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435853"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102889"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Erstellen von Metrikwarnungen für Protokolle in Azure Monitor  
 
 ## <a name="overview"></a>Übersicht
-Azure Monitor unterstützt den [Metrikwarnungstyp](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md). Dies hat Vorteile gegenüber den [klassischen Warnungen](../../azure-monitor/platform/alerts-classic-portal.md). Metriken stehen für [eine umfangreiche Liste von Azure-Diensten](../../azure-monitor/platform/metrics-supported.md) zur Verfügung. In diesem Artikel wird die Verwendung einer Teilmenge erläutert, d. h. für eine Ressource – `Microsoft.OperationalInsights/workspaces`. 
+Azure Monitor unterstützt den [Metrikwarnungstyp](../../azure-monitor/platform/alerts-metric-near-real-time.md). Dies hat Vorteile gegenüber den [klassischen Warnungen](../../azure-monitor/platform/alerts-classic-portal.md). Metriken stehen für [eine umfangreiche Liste von Azure-Diensten](../../azure-monitor/platform/metrics-supported.md) zur Verfügung. In diesem Artikel wird die Verwendung einer Teilmenge erläutert, d. h. für eine Ressource – `Microsoft.OperationalInsights/workspaces`. 
 
 Sie können Metrikwarnungen für gängige Log Analytics-Protokolle verwenden, die als Metriken als Teil von Metriken aus Protokollen extrahiert wurden, einschließlich Ressourcen in Azure oder lokal. Die unterstützten Log Analytics-Lösungen sind nachfolgend aufgeführt:
 - [Leistungsindikatoren](../../azure-monitor/platform/data-sources-performance-counters.md) für Windows- und Linux-Computer
@@ -51,7 +51,7 @@ Bevor die Metrik für Protokolle, die über Log Analytics-Daten erfasst wurden, 
 4. **Zum Senden von Protokollen konfigurierte Log Analytics-Lösungen**: Für die Log Analytics-Lösung müssen die erforderlichen Protokolle/Daten entsprechend der für [Log Analytics-Arbeitsbereiche unterstützten Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) aktiviert sein. Der Zähler *% Verfügbarer Arbeitsspeicher* muss z. B. zuerst in der Lösung [Leistungsindikatoren](../../azure-monitor/platform/data-sources-performance-counters.md) konfiguriert sein.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Konfigurieren der Metrikwarnung für Protokolle
- Metrikwarnungen können über das Azure-Portal, Resource Manager-Vorlagen, REST-API, PowerShell und Azure CLI erstellt und verwaltet werden. Da Metrikwarnungen für Protokolle eine Variante von Metrikwarnungen sind, können nach Erfüllung der Voraussetzungen Metrikwarnungen für Protokolle für den angegebenen Log Analytics-Arbeitsbereich erstellt werden. Alle Merkmale und Funktionalitäten von [Metrikwarnungen](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md) gelten auch für Metrikwarnungen für Protokolle; einschließlich Nutzlastschema, anwendbaren Kontingentgrenzen und fakturiertem Preis.
+ Metrikwarnungen können über das Azure-Portal, Resource Manager-Vorlagen, REST-API, PowerShell und Azure CLI erstellt und verwaltet werden. Da Metrikwarnungen für Protokolle eine Variante von Metrikwarnungen sind, können nach Erfüllung der Voraussetzungen Metrikwarnungen für Protokolle für den angegebenen Log Analytics-Arbeitsbereich erstellt werden. Alle Merkmale und Funktionalitäten von [Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md) gelten auch für Metrikwarnungen für Protokolle; einschließlich Nutzlastschema, anwendbaren Kontingentgrenzen und fakturiertem Preis.
 
 Schritt-für-Schritt-Anleitungen und Beispiele finden Sie unter [Erstellen und Verwalten von Metrikwarnungen](https://aka.ms/createmetricalert). Befolgen Sie insbesondere für Metrikwarnungen für Protokolle die Anweisungen zur Verwaltung von Metrikwarnungen und stellen Sie Folgendes sicher:
 - Ziel der Metrikwarnung ist ein gültiger *Log Analytics-Arbeitsbereich*.
@@ -72,7 +72,7 @@ Um dasselbe zu erreichen, kann die untenstehende Azure Resource Manager-Beispiel
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "convertRuleName": {
@@ -289,7 +289,7 @@ Angenommen, das obige JSON wird als „metricfromLogsAlert.json“ gespeichert, 
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "convertRuleName": {

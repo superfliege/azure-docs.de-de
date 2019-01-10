@@ -1,20 +1,18 @@
 ---
 title: Herstellen einer Verbindung mit Azure Cosmos DB mithilfe von Robo 3T
 description: Erfahren Sie, wie eine Verbindung mit Azure Cosmos DB mithilfe von Robo 3T und der API für MongoDB von Azure Cosmos DB herstellen.
-keywords: Robomongo
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: af601075b8cc774654a9f2dbf83193bf9701166b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: 5696c376ad64df01d7f9d43ff59c87402c334c52
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789448"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034810"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Verwenden von Robo 3T mit der API für MongoDB von Azure Cosmos DB
 

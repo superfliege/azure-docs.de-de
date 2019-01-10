@@ -11,13 +11,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/25/2018
-ms.openlocfilehash: 892e4e776479d767326d4895dbf4bd4f30c418b0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 01/03/2019
+ms.openlocfilehash: 598d2b86e7aeeac9525f37b1ab9422d854e75392
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973201"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034028"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
@@ -224,10 +224,10 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 **PowerShell-Cmdlets (einschließlich Unterstützung der WHERE-Klausel für zusätzliche Filterung)**:
 
-- [Erstellen oder Aktualisieren der Datenbank-Blobüberwachungsrichtlinie (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Erstellen oder Aktualisieren der Server-Blobüberwachungsrichtlinie (Set-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditing)
-- [Abrufen der Datenbank-Blobüberwachungsrichtlinie (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Abrufen der Server-Blobüberwachungsrichtlinie (Get-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing)
+- [Erstellen oder Aktualisieren der Datenbank-Blobüberwachungsrichtlinie (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Erstellen oder Aktualisieren der Server-Blobüberwachungsrichtlinie (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Abrufen der Datenbank-Blobüberwachungsrichtlinie (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Abrufen der Server-Blobüberwachungsrichtlinie (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -249,7 +249,7 @@ Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Fil
 
 ## <a id="subheading-10"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe von ARM-Vorlagen
 
-Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) verwalten, wie die folgenden Beispiele zeigen:
+Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwalten, wie die folgenden Beispiele zeigen:
 
 - [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in ein Azure Blob Storage-Konto](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
 - [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: aaa34d27e73c1691e69ea2f6860226639217f0c6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 752f28eed3a6be5f7f136999c66e405bf7785a42
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004444"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120970"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Untersuchen von Metriken in Application Insights
 Metriken in [Application Insights][start] sind gemessene Werte und Anzahlen von Ereignissen, die als Telemetriedaten aus Ihrer Anwendung gesendet werden. Sie dienen zum Erkennen von Leistungsproblemen und Überwachen von Trends bei der Nutzung Ihrer Anwendung. Es gibt eine Vielzahl von Standardmetriken, doch Sie können auch eigene benutzerdefinierte Metriken und Ereignisse erstellen.
@@ -193,18 +193,18 @@ In einem Metrikdiagramm können Sie auf das Symbol „Analyse“ klicken, um dir
 
     Wenn Sie verschiedene Filter für verschiedene Diagramme festlegen möchten, sollten Sie diese in unterschiedlichen Blättern erstellen und als separate Favoriten speichern. Sie können sie auch im Dashboard anheften, damit sie nebeneinander angezeigt werden.
 * Wenn Sie ein Diagramm nach einer Eigenschaft gruppieren, die nicht in der Metrik definiert ist, sind im Diagramm keine Daten enthalten. Versuchen Sie, die Einstellungen für „Gruppieren nach“ zu löschen, oder wählen Sie eine andere Gruppierungseigenschaft aus.
-* Leistungsdaten (CPU, E/A-Rate usw.) sind für Java-Webdienste, Windows-Desktop-Apps, [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](../../azure-monitor/app/monitor-performance-live-website-now.md) und [Azure Cloud Services](../../application-insights/app-insights-overview.md) verfügbar. Für Azure-Websites sind sie dagegen nicht verfügbar.
+* Leistungsdaten (CPU, E/A-Rate usw.) sind für Java-Webdienste, Windows-Desktop-Apps, [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](../../azure-monitor/app/monitor-performance-live-website-now.md) und [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md) verfügbar. Für Azure-Websites sind sie dagegen nicht verfügbar.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen der Verwendung mit Application Insights](../../application-insights/app-insights-usage-overview.md)
+* [Überwachen der Verwendung mit Application Insights](../../azure-monitor/app/usage-overview.md)
 * [Verwenden der Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 
 [alerts]: ../../azure-monitor/app/alerts.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md

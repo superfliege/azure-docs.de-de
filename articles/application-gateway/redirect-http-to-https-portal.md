@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/7/2018
 ms.author: victorh
-ms.openlocfilehash: 1d30ddfb97b065d0d2fdf3bf91a73d3f7eb1b70f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a10314d4c396298f018459e56252d0d0d1656f08
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110952"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107785"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
@@ -65,7 +65,7 @@ Export-PfxCertificate `
 
 Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. In diesem Beispiel werden zwei Subnetze erstellt: eins für das Anwendungsgateway und eins für die Back-End-Server. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway.
 
-1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Ressource erstellen**.
 3. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
 4. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
@@ -155,13 +155,13 @@ Die Benutzeroberfläche des Portals für VM-Skalierungsgruppen erstellt einen ne
 3. Wählen Sie **Back-End-Pools** aus.
 4. Wählen Sie **myAppGatewaymyvmss** aus.
 5. Wählen Sie **Alle Ziele aus Back-End-Pool entfernen** aus.
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
 7. Nach Abschluss dieses Vorgangs wählen Sie den Back-End-Pool **myAppGatewaymyvmss** aus, und wählen Sie dann **Löschen** sowie anschließend **OK** aus.
 8. Wählen Sie **appGatewayBackendPool** aus.
 9. Wählen Sie unter **Ziele** die Option **VMSS** aus.
 10. Wählen Sie unter **VMSS** die Option **myvmss** aus.
 11. Wählen Sie unter **Netzwerkschnittstellenkonfigurationen** die Option **myvmssNic** aus.
-12. Wählen Sie **Speichern**aus.
+12. Wählen Sie **Speichern** aus.
 
 ### <a name="upgrade-the-scale-set"></a>Upgrade der Skalierungsgruppe
 

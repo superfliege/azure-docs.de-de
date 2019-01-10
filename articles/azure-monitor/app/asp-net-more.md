@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7580089782eb9330d5b533588265d156213f397f
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b81a555111ff49fcf2e14a75afdce81835d151bb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000579"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038548"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Weitere Telemetriedaten aus Application Insights
 Nachdem Sie [Application Insights zu Ihrem .ASP NET-Code hinzugefügt haben](../../azure-monitor/app/asp-net.md), können Sie einige weitere Einstellungen vornehmen, um noch mehr Telemetriedaten zu erhalten. 
@@ -25,7 +25,7 @@ Nachdem Sie [Application Insights zu Ihrem .ASP NET-Code hinzugefügt haben](../
 | Aktion | Ergebnis|
 |---|---|
 |(IIS-Server) [Installieren Sie den Statusmonitor](https://go.microsoft.com/fwlink/?LinkId=506648) auf jedem Servercomputer.<br/>(Azure-Web-Apps) Öffnen Sie in der Azure-Systemsteuerung für die Web-App das Blatt „Application Insights“.| [**Leistungsindikatoren**](../../azure-monitor/app/performance-counters.md)<br/>[**Ausnahmen**](asp-net-exceptions.md) – ausführliche Stapelüberwachungen<br/>[**Abhängigkeiten**](../../azure-monitor/app/asp-net-dependencies.md)|
-|[Fügen Sie den JavaScript-Codeausschnitt zu Webseiten hinzu](../../azure-monitor/app/javascript.md).|[Seitenleistung](../../application-insights/app-insights-usage-overview.md), Browserausnahmen, AJAX-Leistung. Benutzerdefinierte clientseitige Telemetriedaten.|
+|[Fügen Sie den JavaScript-Codeausschnitt zu Webseiten hinzu](../../azure-monitor/app/javascript.md).|[Seitenleistung](../../azure-monitor/app/usage-overview.md), Browserausnahmen, AJAX-Leistung. Benutzerdefinierte clientseitige Telemetriedaten.|
 |[Erstellen Sie Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md).|Sie erhalten Benachrichtigungen, wenn Ihre Website nicht mehr verfügbar ist.|
 |[Stellen Sie sicher, dass „buildinfo.config“](https://msdn.microsoft.com/library/dn449058.aspx) von MSBuild generiert wird.|[Anmerkungen zu Builds in Metrikdiagrammen](https://blogs.msdn.microsoft.com/visualstudioalm/2013/11/14/implementing-deployment-markers-in-application-insights/)
 |[Schreiben Sie benutzerdefinierte Ereignisse und Metriken](../../azure-monitor/app/api-custom-events-metrics.md).|Anzahl der Geschäftsereignisse und Metriken, Nachverfolgung ausführlicher Informationen zur Nutzung und vieles mehr.|

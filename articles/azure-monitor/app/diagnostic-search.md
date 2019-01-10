@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a9c9ac9ada6dfab051deda14cddb4ba6c07f48df
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998896"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119169"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
-Search ist eine Funktion in [Application Insights](../../application-insights/app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
+Search ist eine Funktion in [Application Insights](../../azure-monitor/app/app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
 
 (Verwenden Sie [Analytics](../../azure-monitor/log-query/get-started-portal.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
 
@@ -129,7 +129,7 @@ Dies sind einige Suchausdrücke, die Sie verwenden können:
 ## <a name="sampling"></a>Stichproben
 Wenn die Anwendung viele Telemetriedaten generiert (und Sie die ASP.NET SDK-Version 2.0.0-beta3 oder höher verwenden), reduziert das adaptive Stichprobenmodul automatisch die an das Portal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die mit derselben Anforderung im Zusammenhang stehen, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. 
 
-[Erfahren Sie mehr über das Erstellen von Stichproben.](../../application-insights/app-insights-sampling.md)
+[Erfahren Sie mehr über das Erstellen von Stichproben.](../../azure-monitor/app/sampling.md)
 
 ## <a name="create-work-item"></a>Erstellen eines Arbeitselements
 Sie können einen Fehler mit den Details aus einem beliebigen Telemetrieelement in GitHub oder Azure DevOps erstellen. 
@@ -166,4 +166,4 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrac
 * [Stellen von komplexeren Abfragen mit Analytics](../../azure-monitor/log-query/get-started-portal.md)
 * [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Problembehandlung](../../application-insights/app-insights-troubleshoot-faq.md)
+* [Problembehandlung](../../azure-monitor/app/troubleshoot-faq.md)

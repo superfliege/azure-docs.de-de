@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 1/8/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 856d702bcf1f566d0cc455cdd2676e6c2e23d179
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 203168f27e06d58c192bc5009db077461738011a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53326488"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122784"
 ---
 Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden.
 
@@ -23,7 +23,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | -------- | ------------- | ------------- |
 | Data Factorys in einem Azure-Abonnement | 50 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Gesamtanzahl von Entitäten (Pipeline, Datasets, Trigger, verknüpfte Dienste, Integration Runtimes) in einer Data Factory | 5.000 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Gesamtzahl CPU-Kerne für Azure-SSIS Integration Runtime(s) unter einem Abonnement | 128 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Gesamtzahl CPU-Kerne für Azure-SSIS Integration Runtime(s) unter einem Abonnement | 256 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Gleichzeitige Pipelineausführungen pro Data Factory (von allen Pipelines der Factory gemeinsam genutzt) | 10.000  | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Max. Aktivitäten pro Pipeline (einschließlich interner Aktivitäten für Container) | 40 | 40 |
 | Max. Parameter pro Pipeline | 50 | 50 |

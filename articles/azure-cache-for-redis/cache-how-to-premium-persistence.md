@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: d74f552395a80509c76adf70aef0581260126b49
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021689"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105845"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurieren von Datenpersistenz für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel wird erläutert, wie die Persistenz in einer Azure Cache for Redis-Instanz vom Typ „Premium“ konfiguriert wird.
@@ -130,7 +130,7 @@ Für RDB- und AOF-Persistenz gilt Folgendes:
 
 * Eine Skalierung auf eine größere Größe hat keinerlei Auswirkungen.
 * Wenn Sie auf eine kleinere Größe skaliert haben und eine benutzerdefinierte Einstellung für die [Datenbanken](cache-configure.md#databases) verwenden, die größer ist als der [Grenzwert für Datenbanken](cache-configure.md#databases) bei der neuen Größe, werden die Daten in diesen Datenbanken nicht wiederhergestellt. Weitere Informationen finden Sie unter [Hat die Skalierung Auswirkungen auf meine benutzerdefinierte Einstellung für Datenbanken?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Wenn Sie auf eine kleinere Größe skaliert haben und dort nicht genug Platz für alle Daten aus der letzten Sicherung ist, werden beim Wiederherstellungsvorgang Schlüssel entfernt. Diese Entfernung wird in der Regel mithilfe der Entfernungsrichtlinie [allkeys-lru](http://redis.io/topics/lru-cache) vorgenommen.
+* Wenn Sie auf eine kleinere Größe skaliert haben und dort nicht genug Platz für alle Daten aus der letzten Sicherung ist, werden beim Wiederherstellungsvorgang Schlüssel entfernt. Diese Entfernung wird in der Regel mithilfe der Entfernungsrichtlinie [allkeys-lru](https://redis.io/topics/lru-cache) vorgenommen.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kann ich die Sicherungshäufigkeit für RDB-Persistenz ändern, nachdem ich den Cache erstellt habe?
 Ja, Sie können die Sicherungshäufigkeit für die RDB-Persistenz auf dem Blatt **Redis-Datenpersistenz** ändern. Anweisungen dazu finden Sie unter [Konfigurieren von Redis-Persistenz](#configure-redis-persistence).

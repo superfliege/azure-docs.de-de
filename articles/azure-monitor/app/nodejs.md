@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ced0ae62bcccadafd090964daae4e7828c05ce2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 075f08f89e0bbdefa76623a284971f46a1b3966a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004438"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119797"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 
-Mit [Azure Application Insights](../../application-insights/app-insights-overview.md) werden Ihre Back-End-Dienste und -Komponenten nach der Bereitstellung überwacht, damit Sie [Leistungsprobleme und andere Probleme erkennen und schnell diagnostizieren können](../../azure-monitor/app/detect-triage-diagnose.md). Sie können Application Insights für Node.js-Dienste verwenden, die in Ihrem Datencenter, auf Azure-VMs und in Web-Apps und sogar in anderen öffentlichen Clouds gehostet werden.
+Mit [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) werden Ihre Back-End-Dienste und -Komponenten nach der Bereitstellung überwacht, damit Sie [Leistungsprobleme und andere Probleme erkennen und schnell diagnostizieren können](../../azure-monitor/app/detect-triage-diagnose.md). Sie können Application Insights für Node.js-Dienste verwenden, die in Ihrem Datencenter, auf Azure-VMs und in Web-Apps und sogar in anderen öffentlichen Clouds gehostet werden.
 
 Fügen Sie das SDK in Ihren Code ein, und richten Sie dann in Azure eine entsprechende Application Insights-Ressource ein, um Ihre Überwachungsdaten zu empfangen, zu speichern und zu untersuchen. Das SDK sendet Daten zur weiteren Analyse und Untersuchung an diese Ressource.
 
@@ -216,5 +216,5 @@ server.on("listening", () => {
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[FAQ]: ../../application-insights/app-insights-troubleshoot-faq.md
+[FAQ]: ../../azure-monitor/app/troubleshoot-faq.md
 

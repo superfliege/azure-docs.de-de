@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879365"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053192"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT-SDKs – Plattformunterstützung
 
@@ -20,9 +20,9 @@ Bei den [Azure IoT-SDKs](iot-hub-devguide-sdks.md) handelt es sich um Bibliothek
 
 Microsoft unterstützt zahlreiche Betriebssysteme, Plattformen und Frameworks, und eine Erweiterung zur Verwendung des Azure IoT-C-SDK ist ebenfalls möglich. Einige werden offiziell vom Team unterstützt und in Ebenen gruppiert, die für die für Benutzer zu erwartende Supportebene stehen. *Vollständig unterstützte Plattformen* bedeutet, dass Microsoft für Folgendes sorgt:
 
-    * Microsoft erstellt kontinuierlich End-to-End-Tests für den Master und die Versionen mit LTS-Unterstützung und führt diese Tests aus.  Um eine Testabdeckung in verschiedenen Versionen zu gewährleisten, führen wir Tests in der Regel für die neueste LTS-Version und für die am häufigsten verwendete Version durch.  Andere Versionen derselben Plattform werden möglicherweise über die Plattformversionskompatibilität unterstützt.
-    * Microsoft stellt ggf. Installationsleitfäden oder -pakete bereit.
-    * Microsoft unterstützt die Plattformen auf GitHub vollständig.
+- Microsoft erstellt kontinuierlich End-to-End-Tests für den Master und die Versionen mit LTS-Unterstützung und führt diese Tests aus.  Um eine Testabdeckung in verschiedenen Versionen zu gewährleisten, führen wir Tests in der Regel für die neueste LTS-Version und für die am häufigsten verwendete Version durch.  Andere Versionen derselben Plattform werden möglicherweise über die Plattformversionskompatibilität unterstützt.
+- Microsoft stellt ggf. Installationsleitfäden oder -pakete bereit.
+- Microsoft unterstützt die Plattformen auf GitHub vollständig.
 
 Darüber hinaus haben einige Partner unser C-SDK auf weitere Plattformen portiert und verwalten die Plattformabstraktionsschicht (Platform Abstraction Layer, PAL). Im [Azure Certified for IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/) finden Sie auch eine Liste mit den Betriebssystemplattformen, für die die verschiedenen SDKs getestet wurden. Für die SDKs werden auf diesen Plattformen regelmäßig Builds mit eingeschränkten Tests und Supportleistungen bereitgestellt:
 

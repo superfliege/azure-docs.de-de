@@ -3,17 +3,17 @@ title: Verwalten dynamischer Azure-Bestände mithilfe von Ansible
 description: Hier erfahren Sie, wie Sie Ihre dynamischen Azure-Bestände mithilfe von Ansible verwalten.
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, dynamischer Bestand
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 1f19d5918d81acb76936edf8989a556335a3c0df
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bdaf53728fb54114a41f9454fa3f6057ae042136
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261263"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053992"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Verwalten dynamischer Azure-Bestände mithilfe von Ansible
 Mit Ansible können Bestandsinformationen aus verschiedenen Quellen (einschließlich Cloudquellen wie Azure) in einen *dynamischen Bestand* abgerufen werden. In diesem Artikel verwenden Sie [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md), um einen dynamischen Azure-Bestand von Ansible zu konfigurieren, in dem Sie zwei virtuelle Computer erstellen, einen der beiden virtuellen Computer markieren und NGINX auf dem markierten virtuellen Computer installieren.

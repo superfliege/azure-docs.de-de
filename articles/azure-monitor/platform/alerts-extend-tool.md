@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0524e38f155049c630ace7f33805ef230c8dccca
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: bdc3646116dfd5f16c0c039c4fb95d11c6593adf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344243"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120992"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Erweitern von Warnungen aus Log Analytics in Azure-Warnungen
 Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im Rahmen dieses Übergangs werden Warnungen, die Sie ursprünglich in Log Analytics konfiguriert haben, auf Azure erweitert. Wenn Sie nicht warten möchten, bis diese automatisch in Azure verschoben werden, können Sie den Prozess auslösen:
@@ -89,7 +89,7 @@ Wenn die GET-Anforderung erfolgreich ist, wird ein HTTP-Statuscode 200 zusammen 
                     "webhookActions": [
                         {
                             "name": "Webhook_1",
-                            "serviceUri": "http://test.com"
+                            "serviceUri": "https://test.com"
                         }
                     ],
                     "itsmAction": {}
@@ -186,7 +186,7 @@ Diese Antwort gibt an, dass die Warnungen erfolgreich auf Azure-Warnungen erweit
                     "webhookActions": [
                         {
                             "name": "Webhook_1",
-                            "serviceUri": "http://test.com"
+                            "serviceUri": "https://test.com"
                         }
                     ],
                     "itsmAction": {}
@@ -263,7 +263,7 @@ catch
 {
 
     $ErrorMessage = $_.Exception.Message
-    "Error occured while fetching/parsing Extend summary: $ErrorMessage"
+    "Error occurred while fetching/parsing Extend summary: $ErrorMessage"
     exit 
 }
 

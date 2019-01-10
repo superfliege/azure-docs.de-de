@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fcb692d7189c84e32f55995538ffc692cb67dd6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078232"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064711"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2-Lizenzierungsfeature-Prüfliste
 
@@ -84,7 +84,7 @@ Dieser Leitfaden setzt voraus, dass Sie über Azure AD Premium P2-Lizenzen, Ente
 - Ganzheitliches Verwalten des Benutzerlebenszyklus
    - Azure AD bietet einen Ansatz für die Verwaltung des Identitätslebenszyklus
    - Entfernen Sie manuelle Schritte aus dem Kontolebenszyklus Ihrer Mitarbeiter, um nicht autorisierte Zugriffe zu verhindern:
-      - Synchronisieren Sie Identitäten über Ihre zuverlässige Datenquelle (HR-System) mit Azure AD. Verknüpfung mit unterstützten HR-Systemen
+      - Synchronisieren Sie Identitäten über Ihre zuverlässige Datenquelle (HR-System) mit Azure AD.
       - [Weisen Sie mit dynamischen Gruppen automatisch Benutzer basierend auf deren Attributen von HR (oder Ihrer zuverlässigen Datenquelle) wie z.B. Abteilung, Titel, Region und anderen Attributen Gruppen zu.](../users-groups-roles/groups-dynamic-membership.md)
       - [Verwenden Sie die gruppenbasierte Bereitstellung der Zugriffsverwaltung zum automatischen Bereitstellen von Benutzern für SaaS-Anwendungen.](../manage-apps/what-is-access-management.md)
 

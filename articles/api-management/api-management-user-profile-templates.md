@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 341c689616e85b148790df092f238449e1d72075
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 77b704e9359e582664bad8e08e9389cfac8eaca7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442692"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121395"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Benutzerprofilvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyphen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -452,7 +452,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
           <strong>  
             {% case app.state %}  
             {% when ApplicationStateModel.Registered %}  
-            {% localized "ApplicationListStrings|WebDevelopersAppNotSubminted" %}  
+            {% localized "ApplicationListStrings|WebDevelopersAppNotSubmitted" %}  
   
             {% when ApplicationStateModel.Unpublished %}  
             {% localized "ApplicationListStrings|WebDevelopersAppNotPublished" %}  

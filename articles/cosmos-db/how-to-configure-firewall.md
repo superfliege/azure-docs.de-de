@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: dfdc36ce5223beaf00fcc274934387c498505411
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620607"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033161"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Konfigurieren einer IP-Firewall für Ihr Azure Cosmos DB-Konto
 
@@ -151,7 +151,7 @@ Beim Zugriff auf Azure Cosmos DB-Ressourcen mithilfe von SDKs über Computer, di
 Aktivieren Sie die Diagnoseprotokollierung für Ihr Azure Cosmos DB-Konto. Diese Protokolle zeigen jede Anforderung und Antwort. Die firewallbezogenen Meldungen werden intern mit einem 403-Rückgabecode protokolliert. Wenn Sie diese Meldungen filtern, können Sie die Quell-IP-Adressen für die blockierten Anforderungen anzeigen. Siehe [Diagnoseprotokollierung für Azure Cosmos DB](logging.md).
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Anforderungen über ein Subnetz mit einem aktiviertem Dienstendpunkt für Azure Cosmos DB
-Bei Anforderungen über ein Subnetz in einem virtuellen Netzwerk, für das der Dienstendpunkt für Azure Cosmos DB aktiviert ist, werden die Identitäten des virtuellen Netzwerks und des Subnetzes an Azure Cosmos DB-Konten gesendet. Diese Anforderungen enthalten nicht die öffentliche IP-Adresse der Quelle und werden deshalb durch die IP-Filter abgelehnt. Um den Zugriff über bestimmte Subnetze in virtuellen Netzwerken zu ermöglichen, fügen Sie eine VNET-Zugriffssteuerungsliste hinzu. Informationen dazu finden Sie unter [Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosmos DB-Konto](how-to-configure-vnet-service-endpoint.md). Es kann bis zu 15 Minuten dauern, bis die Firewallregeln wirksam werden.
+Bei Anforderungen über ein Subnetz in einem virtuellen Netzwerk, für das der Dienstendpunkt für Azure Cosmos DB aktiviert ist, werden die Identitäten des virtuellen Netzwerks und des Subnetzes an Azure Cosmos DB-Konten gesendet. Diese Anforderungen enthalten nicht die öffentliche IP-Adresse der Quelle und werden deshalb durch die IP-Filter abgelehnt. Um den Zugriff über bestimmte Subnetze in virtuellen Netzwerken zu ermöglichen, fügen Sie eine VNET-Zugriffssteuerungsliste hinzu. Informationen dazu finden Sie unter [Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosmos DB-Konto](how-to-configure-vnet-service-endpoint.md). Es kann bis zu 15 Minuten dauern, bis die Firewallregeln angewandt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

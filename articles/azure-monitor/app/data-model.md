@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 9d7266e75d863ab5c024217e137566c109e79f70
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997895"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120664"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights-Telemetriedatenmodell
 
-[Azure Application Insights](../../application-insights/app-insights-overview.md) sendet Telemetrie von Ihrer Webanwendung zum Azure-Portal, damit Sie die Leistung und Nutzung der Anwendung analysieren können. Der Telemetriemodell ist standardisiert, damit eine plattform- und sprachunabhängige Überwachung erstellt werden kann. 
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet Telemetrie von Ihrer Webanwendung zum Azure-Portal, damit Sie die Leistung und Nutzung der Anwendung analysieren können. Der Telemetriemodell ist standardisiert, damit eine plattform- und sprachunabhängige Überwachung erstellt werden kann. 
 
 Die mit Application Insights-Modellen gesammelten Daten ergeben dieses typische Anwendungsausführungsmuster:
 
@@ -55,5 +55,5 @@ Wenn Sie Probleme mit dem Datenmodell oder dem Schema melden möchten oder Frage
 
 - [Schreiben benutzerdefinierter Telemetriedaten](../../azure-monitor/app/api-custom-events-metrics.md)
 - Informationen zum [Erweitern und Filtern von Telemetriedaten](../../azure-monitor/app/api-filtering-sampling.md).
-- Verwenden von [Stichproben](../../application-insights/app-insights-sampling.md) zum Minimieren der auf dem Datenmodell basierenden Telemetriedaten.
+- Verwenden von [Stichproben](../../azure-monitor/app/sampling.md) zum Minimieren der auf dem Datenmodell basierenden Telemetriedaten.
 - Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322038"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117434"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
 Mit einer Azure-VM-Skalierungsgruppe kann die Anzahl von VM-Instanzen, von denen Ihre Anwendung ausgeführt wird, automatisch erhöht oder verringert werden. Mit diesem automatisierten und elastischen Verhalten wird der Verwaltungsaufwand reduziert, der für das Überwachen und Optimieren der Leistung Ihrer Anwendung anfällt. Sie erstellen Regeln, mit denen die angemessene Leistung definiert wird, die für eine positive Kundenerfahrung erforderlich ist. Wenn diese definierten Schwellenwerte erfüllt sind, werden von der automatischen Skalierung die Aktionen zum Anpassen der Kapazität Ihrer Skalierungsgruppe durchgeführt. Außerdem können Sie Ereignisse planen, um die Kapazität Ihrer Skalierungsgruppe zu festen Zeiten automatisch zu erhöhen oder zu verringern. Dieser Artikel enthält eine Übersicht darüber, welche Leistungsmetriken verfügbar sind und welche Aktionen von der automatischen Skalierung durchgeführt werden können.
@@ -122,7 +122,7 @@ Weitere Informationen finden Sie in den Artikeln zum Aktivieren der Azure-Diagno
 ## <a name="application-level-metrics-with-app-insights"></a>Metriken auf Anwendungsebene mit App Insights
 Sie können Application Insights nutzen, um mehr Erkenntnisse zur Leistung Ihrer Anwendung zu erhalten. Sie installieren ein kleines Instrumentierungspaket in Ihrer Anwendung, mit dem die App überwacht wird und Telemetriedaten an Azure gesendet werden. Sie können Metriken wie die Reaktionszeiten Ihrer Anwendung, die Ladeleistung für Seiten und die Sitzungsanzahl überwachen. Diese Anwendungsmetriken können zum Erstellen von präzisen und eingebetteten Regeln für die automatische Skalierung verwendet werden, wenn Sie Regeln basierend auf verwertbaren Erkenntnissen auslösen, die sich auf die Kundenerfahrung auswirken können.
 
-Weitere Informationen zu Application Insights finden Sie unter [Was ist Application Insights?](../application-insights/app-insights-overview.md).
+Weitere Informationen zu Application Insights finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 
 ## <a name="scheduled-autoscale"></a>Geplante automatische Skalierung

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: a37ed044275abfca23c83e7d17012b9afdc78f6c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 92c1e706d3cbcff8bb0d66ddf4f2e73362a96af6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906456"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064524"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung von PowerShell
 
@@ -302,4 +302,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 In diesem Artikel haben Sie eine Netzwerksicherheitsgruppe erstellt und dem Subnetz eines virtuellen Netzwerks zugeordnet. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen – Übersicht](security-overview.md) sowie unter [Verwalten einer Netzwerksicherheitsgruppe](manage-network-security-group.md).
 
-Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen aber beispielsweise auch über einen virtuellen Computer weiterleiten, der als Firewall fungiert. Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen stattdessen auch über einen virtuellen Computer weiterleiten, der als Firewall dient. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-powershell.md).
+Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen stattdessen auch über einen virtuellen Computer weiterleiten, der als Firewall dient. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-powershell.md).

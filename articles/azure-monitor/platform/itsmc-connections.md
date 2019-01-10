@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 7184a5e1e9b41653cfe23aa863f8e4e4ea86c620
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a07512c801d8e6c0f0ff3242fe1b94eeab5b2534
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409240"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104997"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](../../azure-monitor/platform/itsmc-overview.md).
@@ -197,7 +197,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     - [OAuth-Setup für Geneva](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 
-- Installieren der Benutzer-App für die Microsoft Log Analytics-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Installieren der Benutzer-App für die Microsoft Log Analytics-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )
 - Erstellen der Benutzerrolle „Integration“ für die installierte Benutzer-App. Informationen zum Erstellen der Benutzerrolle „Integration“ finden Sie [hier](#create-integration-user-role-in-servicenow-app).
 
 ### <a name="connection-procedure"></a>**Verbindungsverfahren**
@@ -224,7 +224,7 @@ Verwenden Sie das folgende Verfahren, um eine ServiceNow-Verbindung zu erstellen
 | **Benutzername**   | Geben Sie den Integrationsbenutzernamen ein, den Sie in der ServiceNow-App zur Unterstützung der Verbindung mit ITSMC erstellt haben. Weitere Informationen: [Erstellen der ServiceNow-App-Benutzerrolle](#create-integration-user-role-in-servicenow-app).|
 | **Kennwort**   | Geben Sie das diesem Benutzernamen zugeordnete Kennwort ein. **Hinweis**: Benutzername und Kennwort werden nur zum Generieren von Authentifizierungstoken verwendet und werden nicht im ITSMC-Dienst gespeichert.  |
 | **Server-URL**   | Geben Sie die URL der ServiceNow-Instanz ein, die Sie mit ITSMC verbinden möchten. |
-| **Client-ID**   | Geben Sie die Client-ID ein, die Sie für die OAuth2-Authentifizierung verwenden möchten, die Sie zuvor generiert haben.  Weitere Informationen zum Generieren der Client-ID und des geheimen Clientschlüssels:   [OAuth-Setup](http://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+| **Client-ID**   | Geben Sie die Client-ID ein, die Sie für die OAuth2-Authentifizierung verwenden möchten, die Sie zuvor generiert haben.  Weitere Informationen zum Generieren der Client-ID und des geheimen Clientschlüssels:   [OAuth-Setup](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Geheimer Clientschlüssel**   | Geben Sie den für diese ID generierten geheimen Clientschlüssel ein.   |
 | **Datensynchronisierungsbereich**   | Wählen Sie die ServiceNow-Arbeitselemente aus, die Sie über den ITSMC mit Azure Log Analytics synchronisieren möchten.  Die ausgewählten Werte werden in Log Analytics importiert.   **Optionen:**  Incidents und Änderungsanforderungen.|
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximales Limit**: 120 Tage. |

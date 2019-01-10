@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 72a24175b93057bf774810517f4d6c5e4b6c41eb
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f2f50144e188a297468ac8ea8fc8891d2e4ec145
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183317"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106489"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Problembehandlung für die Log Analytics-VM-Erweiterung
 Dieser Artikel enthält Hilfe zur Problembehandlung von Fehlern, die im Zusammenhang mit der Log Analytics-VM-Erweiterung für virtuelle Windows- und Linux-Computer mit Microsoft Azure auftreten können, sowie Vorschläge für mögliche Problemlösungen.
 
 Um den Status der Erweiterung zu überprüfen, führen Sie im Azure-Portal die folgenden Schritte aus.
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Ressourcenliste **Virtuelle Computer** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Virtuelle Computer** aus.
 3. Suchen Sie in der Liste der virtuellen Computer nach dem entsprechenden Computer, und wählen Sie ihn aus.
 3. Klicken Sie auf dem virtuellen Computer auf **Erweiterungen**.

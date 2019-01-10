@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 12ef6447e53ba0da3fbd3d56749d7798c49a2cfe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993952"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157138"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
 
@@ -119,7 +119,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 ### <a name="add-backend-servers"></a>Hinzufügen von Back-End-Servern
 
 1. Klicken Sie auf **Alle Ressourcen** und dann auf **myAppGateway**.
-2. Klicken Sie auf **Back-End-Pools**. Ein Standardpool mit dem Anwendungsgateway wurde automatisch erstellt. Klicken Sie auf **appGateayBackendPool**.
+2. Klicken Sie auf **Back-End-Pools**. Ein Standardpool mit dem Anwendungsgateway wurde automatisch erstellt. Klicken Sie auf **appGatewayBackendPool**.
 3. Klicken Sie auf **Ziel hinzufügen**, um alle erstellten virtuellen Computer dem Back-End-Pool hinzuzufügen.
 
     ![Hinzufügen von Back-End-Servern](./media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)

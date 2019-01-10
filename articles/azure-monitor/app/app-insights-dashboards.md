@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 83bf45c93648ca768243a2208f6a91cc9011a919
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002517"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117076"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigation und Dashboards im Application Insights-Portal
-Nachdem Sie [Application Insights für Ihr Projekt eingerichtet haben](../../application-insights/app-insights-overview.md), werden Telemetriedaten zur Leistung und Nutzung Ihrer App in der Application Insights-Ressource Ihres Projekts im [Azure-Portal](https://portal.azure.com) angezeigt.
+Nachdem Sie [Application Insights für Ihr Projekt eingerichtet haben](../../azure-monitor/app/app-insights-overview.md), werden Telemetriedaten zur Leistung und Nutzung Ihrer App in der Application Insights-Ressource Ihres Projekts im [Azure-Portal](https://portal.azure.com) angezeigt.
 
 ## <a name="find-your-telemetry"></a>Finden der Telemetriedaten
 Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zur Application Insights-Ressource, die Sie für Ihre App erstellt haben.
@@ -34,7 +34,7 @@ Das Übersichtsblatt (bzw. die Seite) für Ihre App zeigt eine Zusammenfassung d
 Sie können alle Diagramme und Raster anpassen und an ein Dashboard anheften. Auf diese Weise können Sie die wichtigsten Telemetriedaten aus verschiedenen Apps auf einem zentralen Dashboard zusammenführen.
 
 ## <a name="dashboards"></a>Dashboards
-Nachdem Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) angemeldet haben, wird Ihnen als Erstes ein Dashboard angezeigt. Hier können Sie für all Ihre Azure-Ressourcen die Diagramme zusammenstellen, die für Sie am wichtigsten sind, einschließlich Telemetriedaten aus [Azure Application Insights](../../application-insights/app-insights-overview.md).
+Nachdem Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) angemeldet haben, wird Ihnen als Erstes ein Dashboard angezeigt. Hier können Sie für all Ihre Azure-Ressourcen die Diagramme zusammenstellen, die für Sie am wichtigsten sind, einschließlich Telemetriedaten aus [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 ![Ein angepasstes Dashboard.](./media/app-insights-dashboards/31.png)
 
@@ -96,7 +96,7 @@ Wenn Sie ein Dashboard erstellt haben, können Sie es für andere Benutzer freig
 
 ![Klicken Sie in der Dashboardüberschrift auf „Freigeben“.](./media/app-insights-dashboards/41.png)
 
-Erfahren Sie mehr über [Rollen und Zugriffssteuerung](../../application-insights/app-insights-resources-roles-access-control.md).
+Erfahren Sie mehr über [Rollen und Zugriffssteuerung](../../azure-monitor/app/resources-roles-access-control.md).
 
 ## <a name="create-dashboards-programmatically"></a>Programmgesteuertes Erstellen von Dashboards
 Sie können die Dashboarderstellung mit [Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) und einem einfachen JSON-Editor automatisieren.
@@ -113,28 +113,28 @@ Das Blatt „Übersicht“ ist der Ausgangspunkt für weitere Informationen zu I
 * [**Suche**](../../azure-monitor/app/diagnostic-search.md): Untersuchen Sie spezifische Instanzen von Ereignissen, z.B. Anforderungen, Ausnahmen oder Protokollablaufverfolgungen.
 * [**Analytics**](../../azure-monitor/app/analytics.md): Leistungsfähige Abfragen Ihrer Telemetriedaten.
 * **Zeitbereich**: Passen Sie den Bereich an, der für alle Diagramme des Blatts angezeigt wird.
-* **Löschen**: Löschen Sie die Application Insights-Ressource für diese App. Sie sollten außerdem entweder die Application Insights-Pakete aus Ihrem App-Code entfernen oder den [Instrumentationsschlüssel](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) in Ihrer App bearbeiten, um die Telemetriedaten an eine andere Application Insights-Ressource zu leiten.
+* **Löschen**: Löschen Sie die Application Insights-Ressource für diese App. Sie sollten außerdem entweder die Application Insights-Pakete aus Ihrem App-Code entfernen oder den [Instrumentationsschlüssel](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) in Ihrer App bearbeiten, um die Telemetriedaten an eine andere Application Insights-Ressource zu leiten.
 
 ### <a name="essentials-tab"></a>Registerkarte „Zusammenfassung“
-* [Instrumentationsschlüssels](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key): Identifiziert diese App-Ressource.
+* [Instrumentationsschlüssels](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key): Identifiziert diese App-Ressource.
 
 ### <a name="app-navigation-bar"></a>Leiste für App-Navigation
 ![Linke Navigationsleiste](./media/app-insights-dashboards/app-left-nav-bar.png)
 
 * **Übersicht**: Dient zum Zurückwechseln zum Blatt mit der App-Übersicht.
 * **Aktivitätsprotokoll**: Enthält Warnungen und Azure-Verwaltungsereignisse.
-* [**Zugriffssteuerung**](../../application-insights/app-insights-resources-roles-access-control.md): Ermöglicht den Zugriff für Teammitglieder und andere Personen.
+* [**Zugriffssteuerung**](../../azure-monitor/app/resources-roles-access-control.md): Ermöglicht den Zugriff für Teammitglieder und andere Personen.
 * [**Tags**](../../azure-resource-manager/resource-group-using-tags.md): Verwenden Sie Tags zum Gruppieren Ihrer App mit anderen Apps.
 
 UNTERSUCHEN
 
 * [**Anwendungszuordnung**](app-map.md): Aktive Zuordnung, die die Komponenten Ihrer Anwendung anzeigt, abgeleitet aus den Abhängigkeitsinformationen.
-* [**Intelligente Erkennung**](../../application-insights/app-insights-proactive-diagnostics.md): Überprüfung der letzten Leistungswarnungen
+* [**Intelligente Erkennung**](../../azure-monitor/app/proactive-diagnostics.md): Überprüfung der letzten Leistungswarnungen
 * [**Livedatenströme**](../../azure-monitor/app/live-stream.md): Ein fester Satz zeitnaher Metriken, die nützlich sind, wenn Sie einen neuen Build bereitstellen oder debuggen.
 * [**Verfügbarkeit/Webtests**](../../azure-monitor/app/monitor-web-app-availability.md): Ermöglicht das weltweite Senden von regelmäßigen Anforderungen an Ihre Web-App.*
-* [**Fehler, Leistung**](../../application-insights/app-insights-web-monitor-performance.md): Ausnahmen, Fehlerraten und Antwortzeiten für Anforderungen an Ihre App und für Anforderungen von Ihrer App an [Abhängigkeiten](../../azure-monitor/app/asp-net-dependencies.md).
-* [**Leistung**](../../application-insights/app-insights-web-monitor-performance.md): Reaktionszeit, Reaktionszeiten von Abhängigkeiten.
-* [Server:](../../application-insights/app-insights-web-monitor-performance.md) Leistungsindikatoren. Verfügbar, wenn Sie den [Statusmonitor installieren](../../azure-monitor/app/monitor-performance-live-website-now.md).
+* [**Fehler, Leistung**](../../azure-monitor/app/web-monitor-performance.md): Ausnahmen, Fehlerraten und Antwortzeiten für Anforderungen an Ihre App und für Anforderungen von Ihrer App an [Abhängigkeiten](../../azure-monitor/app/asp-net-dependencies.md).
+* [**Leistung**](../../azure-monitor/app/web-monitor-performance.md): Reaktionszeit, Reaktionszeiten von Abhängigkeiten.
+* [Server:](../../azure-monitor/app/web-monitor-performance.md) Leistungsindikatoren. Verfügbar, wenn Sie den [Statusmonitor installieren](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Browser:** Leistung von Seitenansichten und AJAX. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](../../azure-monitor/app/javascript.md).
 * **Nutzung:** Seitenansichts-, Benutzer- und Sitzungszähler. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](../../azure-monitor/app/javascript.md).
 
@@ -145,7 +145,7 @@ KONFIGURIEREN
 * [Warnungen:](../../azure-monitor/app/alerts.md) Konfiguration von Warnungen zu Metriken.
 * [Fortlaufender Export:](../../azure-monitor/app/export-telemetry.md) Konfigurieren Sie den Export von Telemetriedaten in Azure Storage.
 * [Leistungstests:](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) Richten Sie eine synthetische Last auf Ihrer Website ein.
-* [Kontingent und Preise](../../azure-monitor/app/pricing.md) und [Erfassungs-Stichprobenerstellung](../../application-insights/app-insights-sampling.md).
+* [Kontingent und Preise](../../azure-monitor/app/pricing.md) und [Erfassungs-Stichprobenerstellung](../../azure-monitor/app/sampling.md).
 * **API-Zugriff**: Dient zum Erstellen von [Versionsanmerkungen](annotations.md) und wird für die Datenzugriffs-API verwendet.
 * [**Arbeitselemente**](../../azure-monitor/app/diagnostic-search.md#create-work-item): Stellen Sie eine Verbindung mit einem System für die Aufgabennachverfolgung her, um Fehler erstellen zu können, während Sie die Telemetrie überprüfen.
 

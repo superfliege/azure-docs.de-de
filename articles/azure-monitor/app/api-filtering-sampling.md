@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f733a321470321b5b0f8bce48b4ac7978027fab7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 095ecdccde930db20ee858bfce7fc0811163cdd9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973467"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038261"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
 
 Sie können Plug-Ins für das Application Insights SDK schreiben und konfigurieren, um anzupassen, wie Telemetriedaten erfasst und verarbeitet werden, bevor sie an den Application Insights-Dienst gesendet werden.
 
-* [Erstellen von Stichproben](../../application-insights/app-insights-sampling.md) verringert sich der Umfang der Telemetriedaten, ohne Statistiken zu verfälschen. Zusammengehörige Datenpunkte werden dabei zusammengehalten, sodass Sie bei der Diagnose von Problemen zwischen diesen navigieren können. Im Portal wird die Gesamtanzahl multipliziert, um eine Kompensation der Stichproben zu erreichen.
+* [Erstellen von Stichproben](../../azure-monitor/app/sampling.md) verringert sich der Umfang der Telemetriedaten, ohne Statistiken zu verfälschen. Zusammengehörige Datenpunkte werden dabei zusammengehalten, sodass Sie bei der Diagnose von Problemen zwischen diesen navigieren können. Im Portal wird die Gesamtanzahl multipliziert, um eine Kompensation der Stichproben zu erreichen.
 * Durch das Filtern mit Telemetrieprozessoren für [ASP.NET](#filtering) oder [Java](../../azure-monitor/app/java-filter-telemetry.md) können Sie Telemetriedaten im SDK auswählen oder ändern, bevor sie an den Server gesendet werden. Sie können beispielsweise den Umfang der Telemetriedaten verringern, indem Sie Anforderungen von Robots ausschließen. Filtern stellt jedoch ein grundlegenderes Verfahren zur Senkung des Datenverkehrs dar als das Erstellen von Stichproben. Sie können so besser steuern, was übertragen wird. Jedoch müssen Sie beachten, dass dies Auswirkungen auf die Statistik hat – wenn Sie z. B. alle erfolgreichen Anforderungen herausfiltern.
 * [Telemetrie-Initialisierer](#add-properties) fügen Eigenschaften zu beliebigen von der App gesendeten Telemetriedaten hinzu, einschließlich Telemetriedaten von Standardmodulen. Sie könnten z. B. berechnete Werte hinzufügen oder Versionsnummern, nach denen Sie die Daten im Portal filtern.
 * [SDK-API](../../azure-monitor/app/api-custom-events-metrics.md) wird zum Senden benutzerdefinierter Ereignisse und Metriken verwendet.
@@ -43,7 +43,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
 > [!WARNING]
 > Die Filterung der vom SDK gesendeten Telemetriedaten mithilfe von Prozessoren kann die im Portal angezeigten Statistiken verfälschen und die Nachverfolgung verwandter Elemente erschweren.
 >
-> Verwenden Sie stattdessen [Sampling](../../application-insights/app-insights-sampling.md).
+> Verwenden Sie stattdessen [Sampling](../../azure-monitor/app/sampling.md).
 >
 >
 
@@ -371,5 +371,5 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 
 ## <a name="next"></a>Nächste Schritte
 * [Durchsuchen von Ereignissen und Protokollen](../../azure-monitor/app/diagnostic-search.md)
-* [Stichproben](../../application-insights/app-insights-sampling.md)
-* [Problembehandlung](../../application-insights/app-insights-troubleshoot-faq.md)
+* [Stichproben](../../azure-monitor/app/sampling.md)
+* [Problembehandlung](../../azure-monitor/app/troubleshoot-faq.md)
