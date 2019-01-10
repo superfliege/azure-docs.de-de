@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 0978e906467fd5b16f25bd2e053980dda4510127
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 906ab6c433df7cf452d1f5ab4660abce8d4674fc
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021756"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107513"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Einführung in den Premium-Tarif von Azure Cache for Redis
 Azure Cache for Redis ist ein verteilter, verwalteter Cache, mit dem Sie hoch skalierbare und reaktionsschnelle Anwendungen erstellen können, indem Sie äußerst schnellen Zugriff auf Daten bieten. 
@@ -34,7 +34,7 @@ Der neue Tarif „Premium“ ist speziell auf Unternehmen zugeschnitten. Er enth
 Weitere Informationen zur Größe, zum Durchsatz und zur Bandbreite von Premium-Caches finden Sie in den [häufig gestellten Fragen zu Azure Cache for Redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 
 ## <a name="redis-data-persistence"></a>Redis-Datenpersistenz
-Der Tarif "Premium" ermöglicht die Persistenz der Cachedaten in einem Azure Storage-Konto. In einem "Basic"-/"Standard"-Cache werden alle Daten nur im Arbeitsspeicher gespeichert. Bei Problemen mit der zugrunde liegenden Infrastruktur kann es zu Datenverlusten kommen. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen. Azure Cache for Redis bietet RDB- und AOF-Optionen (demnächst verfügbar) bei der [Redis-Persistenz](http://redis.io/topics/persistence). 
+Der Tarif "Premium" ermöglicht die Persistenz der Cachedaten in einem Azure Storage-Konto. In einem "Basic"-/"Standard"-Cache werden alle Daten nur im Arbeitsspeicher gespeichert. Bei Problemen mit der zugrunde liegenden Infrastruktur kann es zu Datenverlusten kommen. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen. Azure Cache for Redis bietet RDB- und AOF-Optionen (demnächst verfügbar) bei der [Redis-Persistenz](https://redis.io/topics/persistence). 
 
 Informationen zum Konfigurieren von Persistenz finden Sie unter [Konfigurieren von Persistenz für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-persistence.md).
 

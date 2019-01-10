@@ -3,17 +3,17 @@ title: Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible
 description: Hier erfahren Sie, wie Sie mithilfe von Ansible einen virtuellen Linux-Computer in Azure erstellen.
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, virtueller Computer
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: 99822fc1d99d914327a64cfb9fe8e18189f30a4f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f7f4809e064de15bb0a18c404f0df81307b1b9a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251237"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073984"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible
 Ansible nutzt eine deklarative Sprache und ermöglicht Ihnen dadurch das Erstellen, Konfigurieren und Bereitstellen von Azure-Ressourcen über Ansible-*Playbooks*. Die einzelnen Abschnitte dieses Artikels veranschaulichen, wie die Abschnitte eines Ansible-Playbooks aussehen können, um verschiedene Aspekte eines virtuellen Linux-Computers zu erstellen und konfigurieren. Das [vollständige Ansible-Playbook](#complete-sample-ansible-playbook) finden Sie am Ende dieses Artikels.

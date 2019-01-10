@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034636"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789499"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -36,6 +36,7 @@ ms.locfileid: "47034636"
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
+[401162]:https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -67,6 +68,7 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * SAP-Hinweis [2243692] enthält Informationen zur SAP-Lizenzierung unter Linux in Azure.
 * SAP-Hinweis [1984787] enthält allgemeine Informationen zu SUSE Linux Enterprise Server 12.
 * SAP-Hinweis [1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
+* SAP-Hinweis [401162] enthält Informationen zum Vermeiden der Meldung „Adresse bereits verwendet“ beim Einrichten der HANA-Systemreplikation.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
 * [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – Planungs- und Implementierungshandbuch][planning-guide]
@@ -84,9 +86,9 @@ Um hohe Verfügbarkeit zu erreichen, ist SAP HANA auf zwei virtuellen Computern 
 
 Das Setup der SAP HANA-Systemreplikation verwendet einen dedizierten virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein Lastenausgleich erforderlich. Die folgende Liste zeigt die Konfiguration des Lastenausgleichs:
 
-* Front-End-Konfiguration: IP-Adresse 10.0.0.13 für hn1-db
-* Back-End-Konfiguration: mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil der HANA-Systemreplikation sein sollen
-* Testport: 62503
+* Front-End-Konfiguration: IP-Adresse 10.0.0.13 für „hn1-db“
+* Back-End-Konfiguration: Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil der HANA-Systemreplikation sein sollen.
+* Testport: Port 62503
 * Lastenausgleichsregeln: 30313 TCP, 30315 TCP, 30317 TCP
 
 ## <a name="deploy-for-linux"></a>Bereitstellen für Linux
@@ -103,15 +105,15 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
     Die Datenbankvorlage erstellt nur die Lastenausgleichsregeln für eine Datenbank. Die konvergierte Vorlage erstellt auch die Lastenausgleichsregeln für eine ASCS/SCS- und ERS-Instanz (nur Linux). Wenn Sie ein SAP NetWeaver-basiertes System installieren und die ASCS/SCS-Instanz auf dem gleichen Computer installieren möchten, verwenden Sie die [konvergierte Vorlage][template-converged].
 
 1. Legen Sie die folgenden Parameter fest:
-    - **SAP-System-ID:** Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
+    - **SAP-System-ID**: Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
     - **Stapeltyp:** (Dieser Parameter gilt nur, wenn Sie die konvergierte Vorlage verwenden.) Wählen Sie den SAP NetWeaver-Stapeltyp aus.
-    - **Betriebssystemtyp:** Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel **SLES 12** aus.
-    - **Datenbanktyp:** Wählen Sie **HANA** aus.
-    - **SAP-Systemgröße:** Geben Sie die SAPS-Anzahl an, die das neue System bereitstellen soll. Wenn Sie nicht sicher sind, welche SAPS-Anzahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
-    - **Systemverfügbarkeit**: Wählen Sie **HA**.
-    - **Administratorbenutzername und Administratorkennwort:** Es wird ein neuer Benutzer erstellt, der verwendet werden kann, um sich auf dem Computer anzumelden.
+    - **Betriebssystemtyp**: Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel **SLES 12** aus.
+    - **DB-Typ**: Wählen Sie **HANA** aus.
+    - **SAP-Systemgröße**: Geben Sie die SAPS-Anzahl an, die das neue System bereitstellen soll. Wenn Sie nicht sicher sind, welche SAPS-Anzahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
+    - **Systemverfügbarkeit**: Wählen Sie **HA** (Hohe Verfügbarkeit).
+    - **Administratorbenutzername und Administratorkennwort:** Es wird ein neuer Benutzer erstellt, der sich am Computer anmelden kann.
     - **Neues oder vorhandenes Subnetz:** Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-    - **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNet bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**.
+    - **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 
@@ -199,11 +201,11 @@ Führen Sie die Schritte in [Einrichten von Pacemaker auf SUSE Linux Enterprise 
 ## <a name="install-sap-hana"></a>Installieren von SAP HANA
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
-- **[A]:** Der Schritt gilt für alle Knoten.
-- **[1]:** Der Schritt gilt nur für den Knoten 1.
-- **[2]:** Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+- **[A]**: Der Schritt gilt für alle Knoten.
+- **[1]**: Der Schritt gilt nur für den Knoten 1.
+- **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
-1. **[A]** Richten Sie das Datenträgerlayout **Logical Volume Manager (LVM)** ein.
+1. **[A]** Richten Sie das Datenträgerlayout **Logical Volume Management (LVM)** (Logische Volumeverwaltung) ein.
 
    Es wird empfohlen, LVM für Volumes zu verwenden, die Daten- und Protokolldateien speichern. Im folgenden Beispiel wird davon ausgegangen, dass die virtuellen Computer über vier Datenträger verfügen, die zum Erstellen von zwei Volumes verwendet werden.
 
@@ -314,31 +316,31 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 Installieren Sie die SAP HANA-Systemreplikation gemäß Kapitel 4 des [SAP HANA SR Performance Optimized Scenario guide](https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/) (Handbuch zum Szenario der leistungsoptimierten SAP HANA-Systemreplikation).
 
 1. **[A]** Führen Sie das Programm **hdblcm** von der HANA-DVD aus. Geben Sie an der Eingabeaufforderung folgende Werte ein:
-   * Choose installation: Geben Sie **1** ein.
-   * Select additional components for installation: Geben Sie **1** ein.
-   * Enter Installation Path [/hana/shared]: Drücken Sie die EINGABETASTE.
-   * Enter Local Host Name [..]: Drücken Sie die EINGABETASTE.
-   * Möchten Sie dem System weitere Hosts hinzufügen? (y/n) [n]: Drücken Sie die EINGABETASTE.
-   * Enter SAP HANA System ID: Geben Sie die HANA-SID ein, z.B. **HN1**.
-   * Enter Instance Number [00]: Geben Sie die HANA-Instanznummer ein. Verwenden Sie **03**, wenn Sie die Azure-Vorlage verwendet oder die in diesem Artikel beschriebene manuelle Bereitstellung durchgeführt haben.
-   * Select Database Mode / Enter Index [1]: Drücken Sie die EINGABETASTE.
-   * Select System Usage / Enter Index [4]: Wählen Sie einen Wert für die Systemnutzung aus.
-   * Enter Location of Data Volumes [/hana/data/HN1]: Drücken Sie die EINGABETASTE.
-   * Enter Location of Log Volumes [/hana/log/HN1]: Drücken Sie die EINGABETASTE.
+   * Wählen Sie die Installation aus: Geben Sie **1** ein.
+   * Wählen Sie weitere Komponenten für die Installation aus: Geben Sie **1** ein.
+   * Geben Sie den Installationspfad ein [/hana/shared]: Drücken Sie die EINGABETASTE.
+   * Geben Sie den Namen des lokalen Hosts ein [..]: Drücken Sie die EINGABETASTE.
+   * Möchten Sie dem System weitere Hosts hinzufügen? (j/n) [n]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die SAP HANA-System-ID ein: Geben Sie die HANA-SID ein, z.B.: **HN1**.
+   * Geben Sie die Instanznummer ein [00]: Geben Sie die HANA-Instanznummer ein. Verwenden Sie **03**, wenn Sie die Azure-Vorlage verwendet oder die in diesem Artikel beschriebene manuelle Bereitstellung durchgeführt haben.
+   * Wählen Sie den Datenbankmodus / geben Sie den Index ein [1]: Drücken Sie die EINGABETASTE.
+   * Wählen Sie die Systemnutzung / geben Sie den Index [ein 4]: Wählen Sie den Systemnutzungswert aus.
+   * Geben Sie den Speicherort der Datenvolumes ein [/hana/data/HN1]: Drücken Sie die EINGABETASTE.
+   * Geben Sie den Speicherort der Protokollvolumes ein [/hana/log/HN1]: Drücken Sie die EINGABETASTE.
    * Möchten Sie die maximale Speicherbelegung beschränken? [n]: Drücken Sie die EINGABETASTE.
-   * Enter Certificate Host Name For Host '...' [...]: Drücken Sie die EINGABETASTE.
-   * Enter SAP Host Agent User (sapadm) Password: Geben Sie das Benutzerkennwort des Host-Agents ein.
-   * Confirm SAP Host Agent User (sapadm) Password: Geben Sie das Benutzerkennwort des Host-Agents zur Bestätigung erneut ein.
-   * Enter System Administrator (hdbadm) Password: Geben Sie das Kennwort für den Systemadministrator ein.
-   * Confirm System Administrator (hdbadm) Password: Geben Sie das Benutzerkennwort des Host-Agents zur Bestätigung erneut ein.
-   * Enter System Administrator Home Directory [/usr/sap/HN1/home]: Drücken Sie die EINGABETASTE.
-   * Enter System Administrator Login Shell [/bin/sh]: Drücken Sie die EINGABETASTE.
-   * Enter System Administrator User ID [1001]: Drücken Sie die EINGABETASTE.
-   * Enter ID of User Group (sapsys) [79]: Drücken Sie die EINGABETASTE.
-   * Enter Database User (SYSTEM) Password: Geben Sie das Benutzerkennwort für die Datenbank ein.
-   * Confirm Database User (SYSTEM) Password: Geben Sie das Benutzerkennwort für die Datenbank zur Bestätigung erneut ein.
+   * Geben Sie den Zertifikathostnamen für Host „...“ ein [...]: Drücken Sie die EINGABETASTE.
+   * Geben Sie das Kennwort für den SAP-Host-Agent-Benutzer ein (sapadm): Geben Sie das Kennwort für den Host-Agent-Benutzer ein.
+   * Bestätigen Sie das Kennwort für den SAP-Host-Agent-Benutzer (sapadm): Geben Sie das Kennwort für den Host-Agent-Benutzer erneut ein, um es zu bestätigen.
+   * Geben Sie das Kennwort für den Systemadministrator ein (hdbadm): Geben Sie das Systemadministratorkennwort ein.
+   * Bestätigen Sie das Kennwort für den Systemadministrator (hdbadm): Geben Sie das Systemadministratorkennwort erneut ein, um es zu bestätigen.
+   * Geben Sie das Basisverzeichnis für den Systemadministrator ein [/usr/sap/HN1/home]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die Anmelde-Shell für den Systemadministrator ein [/ bin/sh]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die Benutzer-ID für den Systemadministrator ein [1001]: Drücken Sie die EINGABETASTE.
+   * Geben Sie die ID der Benutzergruppe ein (sapsys) [79]: Drücken Sie die EINGABETASTE.
+   * Geben Sie das Datenbankbenutzer-Kennwort ein (SYSTEM): Geben Sie das Kennwort für Datenbankbenutzer ein.
+   * Bestätigen Sie das Datenbankbenutzer-Kennwort (SYSTEM): Geben Sie das Kennwort für Datenbankbenutzer erneut ein, um es zu bestätigen.
    * Soll das System nach dem Neustart des Computers neu starten? [n]: Drücken Sie die EINGABETASTE.
-   * Möchten Sie fortfahren? (y/n): Überprüfen Sie die Zusammenfassung. Geben Sie **y** ein, um fortzufahren.
+   * Möchten Sie fortfahren? (j/n): Überprüfen Sie die Zusammenfassung. Geben Sie **y** ein, um fortzufahren.
 
 1. **[A]** Führen Sie ein Upgrade für den SAP-Host-Agent durch.
 
@@ -351,9 +353,9 @@ Installieren Sie die SAP HANA-Systemreplikation gemäß Kapitel 4 des [SAP HANA 
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
-* **[A]:** Der Schritt gilt für alle Knoten.
-* **[1]:** Der Schritt gilt nur für den Knoten 1.
-* **[2]:** Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+* **[A]**: Der Schritt gilt für alle Knoten.
+* **[1]**: Der Schritt gilt nur für den Knoten 1.
+* **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
 1. **[1]** Erstellen Sie die Mandantendatenbank.
 
@@ -396,9 +398,9 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
-* **[A]:** Der Schritt gilt für alle Knoten.
-* **[1]:** Der Schritt gilt nur für den Knoten 1.
-* **[2]:** Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+* **[A]**: Der Schritt gilt für alle Knoten.
+* **[1]**: Der Schritt gilt nur für den Knoten 1.
+* **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
 1. **[1]** Erstellen Sie die erforderlichen Benutzer.
 
@@ -688,7 +690,7 @@ Führen Sie abhängig von Ihrem Anwendungsfall alle Testfälle aus, die im Szena
 Die folgenden Tests sind eine Kopie der Testbeschreibungen aus der Anleitung zum Szenario für die leistungsoptimierte SAP HANA-Systemreplikation unter SUSE Linux Enterprise Server for SAP Applications 12 SP1. Eine aktuelle Version finden Sie stets in der Anleitung selbst. Stellen Sie immer sicher, dass HANA synchron ist, bevor Sie den Test starten, und dass die Pacemaker-Konfiguration korrekt ist.
 
 In den folgenden Testbeschreibungen wird davon ausgegangen, dass PREFER_SITE_TAKEOVER="true" und AUTOMATED_REGISTER="false" gelten.
-HINWEIS: Die folgenden Tests sind konzipiert, um nacheinander ausgeführt zu werden. Sie hängen vom Zustand der vorherigen Tests ab.
+HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu werden. Sie hängen vom Endzustand der vorherigen Tests ab.
 
 1. TEST 1: BEENDEN DER PRIMÄREN DATENBANK AUF KNOTEN 1
 
@@ -772,7 +774,7 @@ HINWEIS: Die folgenden Tests sind konzipiert, um nacheinander ausgeführt zu wer
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. TEST 3: ABSTURZ DER PRIMÄREN DATENBANK AUF DEM KNOTEN
+1. TEST 3: ABSTURZ DER PRIMÄREN DATENBANK AUF KNOTEN 1
 
    Zustand der Ressource vor dem Starten des Tests:
 

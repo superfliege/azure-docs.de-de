@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714320"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118991"
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
 Mit der [Allgemeine Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
@@ -374,7 +374,7 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 
 <!-- Links -->
 [App Service pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[Application Insights]: ../application-insights/app-insights-overview.md
+[Application Insights]: ../azure-monitor/app/app-insights-overview.md
 [Automatische Skalierung]: ../app-service/web-sites-scale.md
 [Azure App Service]: ../app-service/overview.md
 [Klassisches Azure-Portal]: https://manage.windowsazure.com

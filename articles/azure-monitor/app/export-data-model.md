@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/21/2016
+ms.date: 01/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2ce302f78de2cd344c82300a808b125c3443179f
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000035"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119271"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell
-In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](../../application-insights/app-insights-overview.md) SDKs an das Portal gesendet werden.
+In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDKs an das Portal gesendet werden.
 Sie sehen diese Eigenschaften in der Datenausgabe von [Fortlaufender Export](export-telemetry.md).
 Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) und in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md) angezeigt.
 
@@ -130,9 +130,11 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.device.locale |Zeichenfolge |en-GB, de-DE, ... |
 | context.device.network |Zeichenfolge | |
 | context.device.oemName |Zeichenfolge | |
+| context.device.os |Zeichenfolge | |
 | context.device.osVersion |Zeichenfolge |Hostbetriebssystem |
 | context.device.roleInstance |Zeichenfolge |ID des Serverhosts |
 | context.device.roleName |Zeichenfolge | |
+| context.device.screenResolution |Zeichenfolge | |
 | context.device.type |Zeichenfolge |PC, Browser, ... |
 | context.location |object |Abgeleitet von „clientip“. |
 | context.location.city |Zeichenfolge |Abgeleitet von „clientip“, falls bekannt |
@@ -146,10 +148,13 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.session.id |Zeichenfolge |ID einer Gruppe von Vorgängen derselben Quelle. Ein Zeitraum von 30 Minuten ohne Vorgang signalisiert das Ende einer Sitzung. |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |Zeichenfolge | |
+| context.user.accountId |Zeichenfolge | |
 | context.user.anonAcquisitionDate |Zeichenfolge | |
 | context.user.anonId |Zeichenfolge | |
 | context.user.authAcquisitionDate |Zeichenfolge |[Authentifizierter Benutzer](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |Zeichenfolge | |
 | context.user.isAuthenticated |boolean | |
+| context.user.storeRegion |Zeichenfolge | |
 | internal.data.documentVersion |Zeichenfolge | |
 | internal.data.id |Zeichenfolge | Eindeutige ID, die beim Erfassen eines Elements in Application Insights zugewiesen wird. |
 
@@ -158,7 +163,7 @@ Von [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackeve
 
 | path | Typ | Notizen |
 | --- | --- | --- |
-| event [0] count |integer |100/([Stichproben](../../application-insights/app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| event [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | event [0] name |Zeichenfolge |Ereignisname.  Länge: 250 |
 | event [0] url |Zeichenfolge | |
 | event [0] urlData.base |Zeichenfolge | |
@@ -170,7 +175,7 @@ Melden [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) auf dem Server
 | path | Typ | Notizen |
 | --- | --- | --- |
 | basicException [0] assembly |Zeichenfolge | |
-| basicException [0] count |integer |100/([Stichproben](../../application-insights/app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| basicException [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | basicException [0] exceptionGroup |Zeichenfolge | |
 | basicException [0] exceptionType |Zeichenfolge | |
 | basicException [0] failedUserCodeMethod |Zeichenfolge | |
@@ -211,7 +216,7 @@ Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [A
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |Zeichenfolge | |
 | remoteDependency [0] commandName |Zeichenfolge |Beispiel: "home/index" |
-| remoteDependency [0] count |integer |100/([Stichproben](../../application-insights/app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| remoteDependency [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | remoteDependency [0] dependencyTypeName |Zeichenfolge |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |number |Zeit vom Aufruf bis zum Abschließen der Antwort durch die Abhängigkeit. |
 | remoteDependency [0] id |Zeichenfolge | |
@@ -229,7 +234,7 @@ Gesendet von [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md
 
 | path | Typ | Notizen |
 | --- | --- | --- |
-| request [0] count |integer |100/([Stichproben](../../application-insights/app-insights-sampling.md) -Prozentsatz). Beispiel:  4 =&gt; 25 %. |
+| request [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel:  4 =&gt; 25 %. |
 | request [0] durationMetric.value |number |Zeit vom Empfang der Anforderung bis zur Antwort. 1e7 == 1s |
 | request [0] id |Zeichenfolge |Vorgangs-ID |
 | request [0] name |Zeichenfolge |GET/POST + URL-Basis.  Max. Länge: 250 |
@@ -264,7 +269,7 @@ Gesendet von trackPageView() oder [stopTrackPage](../../azure-monitor/app/api-cu
 
 | path | Typ | Notizen |
 | --- | --- | --- |
-| view [0] count |integer |100/([Stichproben](../../application-insights/app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| view [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | view [0] durationMetric.value |integer |Wert optional in trackPageView() oder über startTrackPage() - stopTrackPage() festgelegt. Ist nicht dasselbe wie die clientPerformance-Werte. |
 | view [0] name |Zeichenfolge |Seitentitel, Max.  Länge: 250 |
 | view [0] url |Zeichenfolge | |
@@ -279,7 +284,7 @@ Liefert Berichtdaten zu [Verfügbarkeitswebtests](../../azure-monitor/app/monito
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |Zeichenfolge |Verfügbarkeit |
 | availability [0] availabilityMetric.value |number |1.0 oder 0.0 |
-| availability [0] count |integer |100/([Stichproben](../../application-insights/app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| availability [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | availability [0] dataSizeMetric.name |Zeichenfolge | |
 | availability [0] dataSizeMetric.value |integer | |
 | availability [0] durationMetric.name |Zeichenfolge | |
@@ -341,12 +346,12 @@ Der Zweck der weiteren Felder besteht darin, Metriken im SDK zu aggregieren, um 
 
 In den obigen Tabellen wurden die selten verwendeten Felder „count“, „min“, „max“, „stdDev“ und „sampledValue“ ausgelassen.
 
-Anstelle einer Vorabaggretation von Metriken können Sie die [Stichprobenerstellung](../../application-insights/app-insights-sampling.md) nutzen, wenn Sie den Umfang der Telemetriedaten verringern möchten.
+Anstelle einer Vorabaggretation von Metriken können Sie die [Stichprobenerstellung](../../azure-monitor/app/sampling.md) nutzen, wenn Sie den Umfang der Telemetriedaten verringern möchten.
 
 ### <a name="durations"></a>Zeitspannen
 Sofern nicht anders angegeben, wird die Dauer in Zehnteln einer Mikrosekunde angegeben, d. h. 10000000.0 entspricht 1 Sekunde.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Application Insights](../../application-insights/app-insights-overview.md)
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [Fortlaufender Export](export-telemetry.md)
 * [Codebeispiele](export-telemetry.md#code-samples)

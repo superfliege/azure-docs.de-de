@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9ab256526ccba3fa84d4979ba536f6b681a7df89
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c47a4d853ba6360fb7f8017b7ad9a59e10040401
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001667"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120851"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Microsoft Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) können mit [Application Insights][start] auf Verfügbarkeit, Leistung, Fehler und Verwendung überwacht werden. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -217,7 +217,7 @@ Um eine allgemeine Übersicht über Ihr System zu erhalten, können Sie die wich
 
 Wenn in Ihrem System andere Azure-Dienste, z.B. Stream Analytics, verwendet werden, können Sie die entsprechenden Überwachungsdiagramme auch einfügen. 
 
-Wenn Sie über eine mobile Client-App verfügen, verwenden Sie [App Center](../../application-insights/app-insights-mobile-center-quickstart.md). Erstellen Sie Abfragen in [Analytics](../../azure-monitor/app/analytics.md), um die Ereigniszähler anzuzeigen, und heften Sie sie an das Dashboard an.
+Wenn Sie über eine mobile Client-App verfügen, verwenden Sie [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). Erstellen Sie Abfragen in [Analytics](../../azure-monitor/app/analytics.md), um die Ereigniszähler anzuzeigen, und heften Sie sie an das Dashboard an.
 
 ## <a name="example"></a>Beispiel
 [In diesem Beispiel](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) wird ein Dienst mit einer Webrolle und zwei Workerrollen überwacht.
@@ -237,11 +237,11 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[azure]: ../../application-insights/app-insights-overview.md
+[azure]: ../../azure-monitor/app/app-insights-overview.md
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../application-insights/app-insights-troubleshoot-faq.md
+[qna]: ../../azure-monitor/app/troubleshoot-faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../application-insights/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md 

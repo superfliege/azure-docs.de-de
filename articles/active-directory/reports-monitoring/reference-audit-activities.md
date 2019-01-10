@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: db801acbed649c4baa039858ce1d097237c8e227
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622873"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971374"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -166,7 +166,7 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Autorisierung|Get V1 applications (V1-Anwendungen abrufen)|
 |Autorisierung|Get V2 application (V2-Anwendung abrufen)|
 |Autorisierung|Get V2 applications (V2-Anwendungen abrufen)|
-|Autorisierung|Get a B2C directory resource (B2C-Verzeichnisressource abrufen)|
+|Autorisierung|B2C-Verzeichnisressource abrufen|
 |Autorisierung|Get a list of custom domains in the tenant (Liste der benutzerdefinierten Domänen im Mandanten abrufen)|
 |Autorisierung|Get a user journey (User Journey abrufen)|
 |Autorisierung|Get allowed application claims for user journey (Zulässige Anwendungsansprüche für User Journey abrufen)|
@@ -227,11 +227,11 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Autorisierung|Aktualisieren von Richtlinien|
 |Autorisierung|Update user attribute (Benutzerattribut aktualisieren)|
 |Autorisierung|Upload a CPIM encrypted key (Verschlüsselten CPIM-Schlüssel hochladen)|
-|Autorisierung|User Authorization: API is disabled for tenant featureset (Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.)|
-|Autorisierung|User Authorization: User granted access as 'Tenant Admin' (Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.)|
-|Autorisierung|User Authorization: User was granted 'Authenticated Users' access rights (Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.)|
+|Autorisierung|Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.|
+|Autorisierung|Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.|
+|Autorisierung|Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.|
 |Autorisierung|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
-|Autorisierung|Verify if feature is enabled (Überprüfen, ob das Feature aktiviert ist)|
+|Autorisierung|Überprüfen, ob das Feature aktiviert ist|
 |Autorisierung|Programm erstellen|
 |Autorisierung|Programm löschen|
 |Autorisierung|Programmsteuerung verknüpfen|
@@ -255,7 +255,7 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Verzeichnisverwaltung|Get tenantDomains (tenantDomains-Element abrufen)|
 |Schlüssel|Gets the type of tenant (Mandantentyp abrufen)|
 |Schlüssel|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
-|Schlüssel|Verify if feature is enabled (Überprüfen, ob das Feature aktiviert ist)|
+|Schlüssel|Überprüfen, ob das Feature aktiviert ist|
 |Schlüssel|Partner zu Unternehmen hinzufügen|
 |Schlüssel|Add inverified domain (Nicht überprüfte Domäne hinzufügen)|
 |Schlüssel|Add verified domain (Überprüfte Domäne hinzufügen)|
@@ -395,7 +395,7 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Verzeichnisverwaltung|Get B2C directory resources in a subscription (B2C-Verzeichnisressourcen in einem Abonnement abrufen)|
 |Verzeichnisverwaltung|Get Custom IDP (Benutzerdefinierten IDP abrufen)|
 |Verzeichnisverwaltung|Get IDP (IDP abrufen)|
-|Verzeichnisverwaltung|Get a B2C directory resource (B2C-Verzeichnisressource abrufen)|
+|Verzeichnisverwaltung|B2C-Verzeichnisressource abrufen|
 |Verzeichnisverwaltung|Get a user journey (User Journey abrufen)|
 |Verzeichnisverwaltung|Get allowed application claims for user journey (Zulässige Anwendungsansprüche für User Journey abrufen)|
 |Verzeichnisverwaltung|Get allowed self-asserted claims for user journey (Zulässige selbstbestätigte Ansprüche für User Journey abrufen)|
@@ -515,10 +515,10 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Gruppenverwaltung|Genehmigungsanforderung überprüfen|
 |Gruppenverwaltung|Zugriffsüberprüfung aktualisieren|
 |Gruppenverwaltung|Einstellungen für E-Mail-Benachrichtigungen für Zugriffsüberprüfung aktualisieren|
-|Gruppenverwaltung|Wiederholungsanzahl für Zugriffsüberprüfung aktualisieren|
-|Gruppenverwaltung|Wiederholungsdauer (in Tagen) für Zugriffsüberprüfung aktualisieren|
-|Benutzerverwaltung|Wiederholungsendtyp für Zugriffsüberprüfung aktualisieren|
-|Benutzerverwaltung|Wiederholungstyp für Zugriffsüberprüfung aktualisieren|
+|Gruppenverwaltung|Einstellung für die Wiederholungsanzahl der Zugriffsüberprüfungen aktualisieren|
+|Gruppenverwaltung|Einstellung für die Wiederholungsdauer der Zugriffsüberprüfungen in Tagen aktualisieren|
+|Benutzerverwaltung|Einstellung für den Wiederholungsendtyp der Zugriffsüberprüfungen aktualisieren|
+|Benutzerverwaltung|Einstellung für den Wiederholungstyp der Zugriffsüberprüfungen aktualisieren|
 
 
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599858"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103790"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Tutorial: Azure SignalR Service-Authentifizierung
 
@@ -547,7 +547,7 @@ Um Ihren Code bereitzustellen, führen Sie die folgenden Befehle in einer Git-Sh
 
 Jetzt müssen Sie nur noch die **URL der Startseite** und die **Autorisierungrückruf-URL** der GitHub-OAuth-App aktualisieren, um auf die neue gehostete App zu verweisen.
 
-1. Öffnen Sie [http://github.com](http://github.com) in einem Browser, und navigieren Sie für Ihr Konto zu **Settings** (Einstellungen) > **Developer settings** (Entwicklereinstellungen) > **OAuth Apps** (OAuth-Apps).
+1. Öffnen Sie [https://github.com](https://github.com) in einem Browser, und navigieren Sie für Ihr Konto zu **Settings** (Einstellungen) > **Developer settings** (Entwicklereinstellungen) > **OAuth Apps** (OAuth-Apps).
 
 2. Klicken Sie auf Ihre Authentifizierungs-App, und aktualisieren Sie die **URL der Startseite** und die **Autorisierungsrückruf-URL** wie unten gezeigt:
 

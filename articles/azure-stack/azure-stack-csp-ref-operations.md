@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 6d28eea434b081602f0e2455b22fcc58022a800e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343842"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117112"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Verwalten der Mandantenregistrierung in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel enthält Details zu Registrierungsvorgängen. Sie können diese Vorgänge für die folgenden Aufgaben verwenden:
 - Verwalten von Mandantenregistrierungen
@@ -59,7 +59,7 @@ Weitere Informationen zu Azure Stack und API-Profilen finden Sie unter [Verwalte
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das Cmdlet New-AzureRmResource, um die Registrierungsressource zu aktualisieren. Melden Sie sich bei Azure (`Add-AzureRmAccount`) mit dem Konto an, das Sie für die anfängliche Registrierung verwendet haben. Hier ist ein Beispiel für das Hinzufügen eines Mandanten:
+Verwenden Sie das Cmdlet New-AzureRmResource, um die Registrierungsressource zu aktualisieren. Hier ist ein Beispiel für das Hinzufügen eines Mandanten:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -67,10 +67,10 @@ Verwenden Sie das Cmdlet New-AzureRmResource, um die Registrierungsressource zu 
 
 ### <a name="api-call"></a>API-Aufruf
 
-**Vorgang**: PUT  
+**Operation:** PUT  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**Antwort**: 201 Created  
+**Antwort**: 201 – Erstellt  
 **Antworttext**: Leer  
 
 ## <a name="list-all-registered-tenants"></a>Auflisten aller registrierten Mandanten
@@ -100,7 +100,7 @@ Verwenden Sie das Cmdlet „Get-AzureRmResource“, um alle registrierten Mandan
 
 Sie können eine Liste aller Mandantenzuordnungen mithilfe des GET-Vorgangs abrufen.
 
-**Vorgang**: GET  
+**Operation:** GET  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
 api-version=2017-06-01 HTTP/1.1`  
@@ -149,11 +149,11 @@ Sie können einen Mandanten entfernen, der einer Registrierung hinzugefügt wurd
 
 Sie können Mandantenzuordnungen mit dem DELETE-Vorgang entfernen.
 
-**Vorgang**: DELETE  
+**Operation:** DELETE  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**Antwort**: 204 No Content  
+**Antwort**: 204 Kein Inhalt  
 **Antworttext**: Leer
 
 ## <a name="next-steps"></a>Nächste Schritte

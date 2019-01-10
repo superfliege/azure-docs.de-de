@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: bcf33538479a18d1849515f00e9a0d02ef77dba2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5596675d428fcf8403d001a8f807507ab1e42e43
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004809"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117281"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Erstellen von Application Insights-Ressourcen mithilfe von PowerShell
-Dieser Artikel beschreibt, wie Sie die Erstellung und Aktualisierung von [Application Insights](../../application-insights/app-insights-overview.md)-Ressourcen mit der Azure-Ressourcenverwaltung automatisieren können. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) erstellen, [Warnungen](../../azure-monitor/app/alerts.md) einrichten, das [Preisschema](pricing.md) festlegen und andere Azure-Ressourcen erstellen.
+Dieser Artikel beschreibt, wie Sie die Erstellung und Aktualisierung von [Application Insights](../../azure-monitor/app/app-insights-overview.md)-Ressourcen mit der Azure-Ressourcenverwaltung automatisieren können. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) erstellen, [Warnungen](../../azure-monitor/app/alerts.md) einrichten, das [Preisschema](pricing.md) festlegen und andere Azure-Ressourcen erstellen.
 
 Im Wesentlichen werden diese Ressourcen mit JSON-Vorlagen für den [Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md) erstellt. Die Vorgehensweise lässt sich wie folgt zusammenfassen: Sie laden die JSON-Definitionen vorhandener Ressourcen herunter, parametrisieren bestimmte Werte, z. B. Namen, und führen dann die Vorlage immer aus, wenn Sie eine neue Ressource erstellen möchten. Sie können mehrere Ressourcen zusammenfassen und in einem Durchgang erstellen, z. B. einen App-Monitor mit Verfügbarkeitstests, Warnungen und Speicher für fortlaufenden Export. Einige Parametrisierungen weisen Besonderheiten auf, die hier erläutert werden.
 

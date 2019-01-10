@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 12/20/2018
 ms.author: rolyon
-ms.openlocfilehash: 0a5d58d0403471d591ce2aa2ed9de9092127ea15
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 859d81239cfad9eb5396a30f5db316bc73285831
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744104"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188423"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
@@ -263,7 +263,7 @@ Nachstehend finden Sie eine Liste der unterstützten Plattformen und Softwareanw
 > |  | iOS | Android | Windows 10 | Andere |
 > | --- | --- | --- | --- | --- |
 > | **Native App** | JA | Ja | JA |  |
-> | **Edge** | JA | Ja | JA |  |
+> | **Microsoft Edge** | JA | Ja | JA |  |
 > | **Internet Explorer** | JA | Ja | JA |  |
 > | **Chrome (mit Erweiterung)** | JA | Ja | JA |  |
 

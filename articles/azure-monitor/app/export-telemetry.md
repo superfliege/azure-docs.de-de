@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c93b23e3b06afe754ea1ca2472806d26c70f4c92
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973263"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076772"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -27,7 +27,7 @@ Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen
 * Über die Schaltfläche „Exportieren“ ganz oben auf dem Blatt „Metriken“ oder „Suche“ können Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen.
 
 * [Analytics](../../azure-monitor/app/analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten. Das Exportieren von Ergebnissen ist auch möglich.
-* Wenn Sie [Ihre Daten in Power BI untersuchen](../../application-insights/app-insights-export-power-bi.md)möchten, benötigen Sie dazu keinen fortlaufenden Export.
+* Wenn Sie [Ihre Daten in Power BI untersuchen](../../azure-monitor/app/export-power-bi.md )möchten, benötigen Sie dazu keinen fortlaufenden Export.
 * Mit dem [REST-API für Datenzugriff](https://dev.applicationinsights.io/) können Sie programmgesteuert auf Ihre Telemetriedaten zugreifen.
 * Sie können auch auf das Setup für den [fortlaufenden Export über PowerShell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0) zugreifen.
 
@@ -71,14 +71,14 @@ Um den Export dauerhaft zu beenden, löschen Sie ihn. Dabei werden Ihre Daten ni
 ## <a name="analyze"></a> Welche Ereignisse werden abgerufen?
 Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die wir von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen.
 
-Daten, die während der [Stichprobenerstellung](../../application-insights/app-insights-sampling.md) verworfen wurden, werden nicht in die exportierten Daten aufgenommen.
+Daten, die während der [Stichprobenerstellung](../../azure-monitor/app/sampling.md) verworfen wurden, werden nicht in die exportierten Daten aufgenommen.
 
 Andere berechnete Metriken sind nicht enthalten. Wir exportieren z. B. nicht die durchschnittliche CPU-Auslastung, doch wir exportieren die rohen Telemetriedaten, anhand derer der Durchschnitt berechnet wird.
 
 Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md), die Sie eingerichtet haben.
 
 > [!NOTE]
-> **Stichproben** Wenn Ihre Anwendung große Datenmengen sendet, wird möglicherweise das Stichprobenfeature verwendet und sendet nur einen Teil der Telemetriedaten. [Erfahren Sie mehr über das Erstellen von Stichproben.](../../application-insights/app-insights-sampling.md)
+> **Stichproben** Wenn Ihre Anwendung große Datenmengen sendet, wird möglicherweise das Stichprobenfeature verwendet und sendet nur einen Teil der Telemetriedaten. [Erfahren Sie mehr über das Erstellen von Stichproben.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,4 +194,4 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 <!--Link references-->
 
 [exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md

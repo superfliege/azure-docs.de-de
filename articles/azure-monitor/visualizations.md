@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9b160c011a8a9507698443446ad5fe908b32fb9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728345"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049961"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
@@ -71,7 +71,7 @@ Mit [Ansichten in Azure Monitor](../log-analytics/log-analytics-view-designer.md
 
 
 ## <a name="application-insights-workbooks"></a>Application Insights-Arbeitsmappen
-[Arbeitsmappen](../application-insights/app-insights-usage-workbooks.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
+[Arbeitsmappen](../azure-monitor/app/usage-workbooks.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
 
 ![Arbeitsmappe](media/visualizations/workbook.png)
 
@@ -140,7 +140,7 @@ Sie können auf Protokoll- und Metrikdaten in Azure Monitor mit einem beliebigen
 - Weitere Informationen zum [Sammeln von Daten in Azure Monitor](platform/data-collection.md).
 - Weitere Informationen zum [Erstellen und Freigeben von Dashboards im Azure-Portal](../azure-portal/azure-portal-dashboards.md).
 - Weitere Informationen zum [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics](platform/view-designer.md).
-- Weitere Informationen zum [Untersuchen und Freigeben von Nutzungsdaten mit interaktiven Arbeitsmappen in Application Insights](../application-insights/app-insights-usage-workbooks.md).
+- Weitere Informationen zum [Untersuchen und Freigeben von Nutzungsdaten mit interaktiven Arbeitsmappen in Application Insights](../azure-monitor/app/usage-workbooks.md).
 - Weitere Informationen zum [Importieren von Log Analytics-Daten in Power BI](../azure-monitor/platform/powerbi.md).
 - Weitere Informationen zum [Überwachen Ihrer Azure-Dienste in Grafana](../azure-monitor/platform/grafana-plugin.md).
 

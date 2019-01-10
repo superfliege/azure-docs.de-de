@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bc04748f2a5b8caa8f589140dd46f0650b7b390
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002211"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102974"
 ---
 # <a name="what-is-distributed-tracing"></a>Was ist die verteilte Ablaufverfolgung?
 
-Mit dem Aufkommen moderner Cloud- und [Microservicearchitekturen](http://azure.com/microservices) sind einfache, unabhängig einsetzbare Dienste entstanden, die zur Kostensenkung bei gleichzeitiger Steigerung von Verfügbarkeit und Durchsatz beitragen können. Aber obwohl diese Bewegungen einzelne Dienste als Ganzes besser verständlich gemacht haben, führten sie zu komplizierteren Gesamtsystemen, die schwerer zu debuggen sind.
+Mit dem Aufkommen moderner Cloud- und [Microservicearchitekturen](https://azure.com/microservices) sind einfache, unabhängig einsetzbare Dienste entstanden, die zur Kostensenkung bei gleichzeitiger Steigerung von Verfügbarkeit und Durchsatz beitragen können. Aber obwohl diese Bewegungen einzelne Dienste als Ganzes besser verständlich gemacht haben, führten sie zu komplizierteren Gesamtsystemen, die schwerer zu debuggen sind.
 
 In monolithischen Architekturen haben wir uns an das Debugging mit Aufruflisten gewöhnt. Aufruflisten sind brillante Werkzeuge, um den Ablauf der Ausführung (Methode A ruft Methode B auf, die Methode C aufruft) sowie Details und Parameter zu jedem dieser Aufrufe anzuzeigen. Dies ist ideal für monolithische Architekturen oder Dienste, die auf einem einzelnen Prozess ausgeführt werden, aber wie erfolgt das Debuggen, wenn der Aufruf über eine Prozessgrenze hinausgeht und nicht nur ein Verweis auf den lokalen Stapel ist? 
 
@@ -59,4 +59,4 @@ Auf der OpenCensus-Website finden Sie API-Referenzdokumentation für [Python](ht
 
 * [OpenCensus Python – Benutzerhandbuch](https://opencensus.io/api/python/trace/usage.html)
 * [Anwendungszuordnung](./../../azure-monitor/app/app-map.md)
-* [End-to-End-Leistungsüberwachung](./../../application-insights/app-insights-tutorial-performance.md)
+* [End-to-End-Leistungsüberwachung](./../../azure-monitor/learn/tutorial-performance.md)

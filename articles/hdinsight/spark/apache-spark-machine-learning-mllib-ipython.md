@@ -10,21 +10,19 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: f9ee5946d9748388cc1f606d89d4edeacb0b9c02
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498087"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653712"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Verwenden Sie Apache Spark MLlib zum Erstellen einer Machine Learning-Anwendung und zur Analyse eines Datasets.
 
 Lernen Sie, wie man mithilfe von Apache Spark [MLlib](https://spark.apache.org/mllib/) eine Machine-Learning-Anwendung erstellt, um eine einfache Vorhersageanalyse für ein offenes Dataset auszuführen. Aus den in Spark-integrierten Machine Learning-Bibliotheken verwendet dieses Beispiel die *Klassifizierung* durch logistische Regression. 
 
-> [!TIP]
+> [!TIP]  
 > Dieses Beispiel ist auch als [Jupyter Notebook](https://jupyter.org/) für einen Spark-Cluster (Linux) verfügbar, den Sie in HDInsight erstellen. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Um das Tutorial innerhalb des Notebooks ausführen zu können, erstellen Sie einen Spark-Cluster und starten Sie ein Jupyter-Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Führen Sie dann das Notebook **Spark Machine Learning - Vorhersageanalysen für Lebensmittelkontrolldaten mithilfe von MLlib.ipynb** unter dem **Python**-Ordner aus.
->
->
 
 MLLib ist eine Spark-Kernbibliothek, die viele Hilfsprogramme enthält, die nützlich für Aufgaben aus dem Bereich des Machine Learning sind, darunter befinden sich auch Hilfsprogramme für folgende Aufgaben:
 
@@ -178,7 +176,7 @@ Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset ent
     SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
     ```
 
-    Durch den Befehl `%%sql` gefolgt von `-o countResultsdf` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](http://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **countResultsdf**beibehalten. Weitere Informationen zur `%%sql`-Magic sowie anderen für den PySpark-Kernel verfügbaren Magics finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    Durch den Befehl `%%sql` gefolgt von `-o countResultsdf` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](https://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **countResultsdf**beibehalten. Weitere Informationen zur `%%sql`-Magic sowie anderen für den PySpark-Kernel verfügbaren Magics finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     Die Ausgabe ist:
 
@@ -211,7 +209,7 @@ Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset ent
     - Pass w/ Conditions
     - Out of Business
 
-    Um das Ergebnis einer Lebensmittelkontrolle vorherzusagen, müssen Sie ein Modell basierend auf den Verstößen entwickeln. Da die logistische Regression eine binäre Klassifizierungsmethode ist, ist es sinnvoll, die Ergebnisdaten in zwei Kategorien zu gruppieren: **Fail** und **Pass**:
+    Um das Ergebnis einer Lebensmittelkontrolle vorherzusagen, müssen Sie ein Modell basierend auf den Verstößen entwickeln. Da die logistische Regression eine binäre Klassifizierungsmethode ist, können Sie die Ergebnisdaten in zwei Kategorien gruppieren: **Fail** und **Pass**:
 
     - Pass
         - Pass
@@ -387,17 +385,17 @@ Nach dem Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahr
 ### <a name="scenarios"></a>Szenarien
 * [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
 * [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
-* [Analysieren von Websiteprotokollen mithilfe von Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Websiteprotokollanalyse mithilfe von Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
 * [Erstellen einer eigenständigen Anwendung mit Scala](apache-spark-create-standalone-application.md)
-* [Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API](apache-spark-livy-rest-interface.md)
+* [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](apache-spark-intellij-tool-plugin.md)
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Apache Spark-Anwendungen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Verwenden von Apache Zeppelin Notebooks mit einem Apache Spark-Cluster unter HDInsight](apache-spark-zeppelin-notebook.md)
-* [Verfügbare Kernels für Jupyter Notebooks in einem Apache Spark-Cluster für HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernel für Jupyter Notebook in Apache Spark-Clustern für HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 

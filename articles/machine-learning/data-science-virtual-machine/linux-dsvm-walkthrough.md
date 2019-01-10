@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190634"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157172"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -101,7 +101,7 @@ Die Spalte *spam* wurde als ganze Zahl gelesen, aber es ist eigentlich eine Kate
 
     data$spam <- as.factor(data$spam)
 
-Verwenden Sie zum Durchführen einiger Untersuchungsanalysen das Paket [ggplot2](http://ggplot2.org/). Hierbei handelt es sich um eine beliebte Graphbibliothek für R, die auf der VM bereits installiert ist. Beachten Sie für die weiter oben dargestellten Zusammenfassungsdaten, dass zusammenfassende Statistiken zur Häufigkeit des Ausrufezeichens vorhanden sind. Wir zeigen diese Häufigkeiten hier mit den folgenden Befehlen an:
+Verwenden Sie zum Durchführen einiger Untersuchungsanalysen das Paket [ggplot2](https://ggplot2.tidyverse.org/). Hierbei handelt es sich um eine beliebte Graphbibliothek für R, die auf der VM bereits installiert ist. Beachten Sie für die weiter oben dargestellten Zusammenfassungsdaten, dass zusammenfassende Statistiken zur Häufigkeit des Ausrufezeichens vorhanden sind. Wir zeigen diese Häufigkeiten hier mit den folgenden Befehlen an:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
