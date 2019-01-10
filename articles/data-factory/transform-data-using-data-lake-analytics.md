@@ -21,7 +21,7 @@ ms.lasthandoff: 09/07/2018
 ms.locfileid: "44053566"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [Aktuelle Version](transform-data-using-data-lake-analytics.md)
 
