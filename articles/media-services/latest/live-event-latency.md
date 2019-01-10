@@ -11,20 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/16/2018
+ms.date: 12/19/2018
 ms.author: juliako
-ms.openlocfilehash: b167d3424d520cf8be515eec9d495164dd9785ab
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f4ded67ef964482a2acea0d731b1b154a95168d2
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682094"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741350"
 ---
 # <a name="liveevent-latency-in-media-services"></a>LiveEvent-Latenz in Media Services
 
-Dieser Artikel zeigt, wie Sie eine niedrige **LiveEvent**-Latenz festlegen. Außerdem werden typische Ergebnisse beschrieben, die bei der Verwendung der Einstellungen für geringe Latenz und verschiedenen Playern angezeigt werden. Die Ergebnisse variieren basierend auf dem CDN und der Netzwerklatenz. 
+Dieser Artikel zeigt, wie Sie eine niedrige [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents)-Latenz festlegen. Außerdem werden typische Ergebnisse beschrieben, die bei der Verwendung der Einstellungen für geringe Latenz und verschiedenen Playern angezeigt werden. Die Ergebnisse variieren basierend auf dem CDN und der Netzwerklatenz.
 
-Um die neue Funktion **LowLatency** zu nutzen, legen Sie **StreamOptionsFlag** für **LiveEvent** auf **LowLatency** fest. Sobald der Stream bereit ist, können Sie auf der Demoseite des [Azure Media Players](http://ampdemo.azureedge.net/) (AMP) die Option für die Wiedergabe auf „Low Latency Heuristics Profile“ (Heuristische Profile mit geringer Latenz) festlegen.
+Um die neue Funktion **LowLatency** zu nutzen, legen Sie **StreamOptionsFlag** für **LiveEvent** auf **LowLatency** fest. Legen Sie beim Erstellen von [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) für die HLS-Wiedergabe [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) auf „1“ fest. Sobald der Stream bereit ist, können Sie im [Azure Media Player](http://ampdemo.azureedge.net/) (AMP-Demoseite) die Option für die Wiedergabe auf „Low Latency Heuristics Profile“ (Heuristische Profile mit geringer Latenz) festlegen.
+
+> [!NOTE]
+> Derzeit dient das LowLatency-HeuristicProfile in Azure Media Player der Wiedergabe von Streams im DASH-Protokoll oder von HLS mit CMAF. Wenn Sie über HLS mit TS auf macOS- oder iOS-Geräte zielen möchten (z.B. `format=m3u8-aapl` oder `format=m3u8-aapl-v3`), sollten Sie diese Einstellung nicht verwenden, da AMP in diesem Fall direkt den vom Betriebssystem bereitgestellten nativen Player verwendet.
 
 Das folgende .NET-Beispiel zeigt, wie Sie **LowLatency** für **LiveEvent** festlegen:
 
@@ -34,7 +37,7 @@ LiveEvent liveEvent = new LiveEvent(
             description: "Sample LiveEvent for testing",
             vanityUrl: false,
             encoding: new LiveEventEncoding(
-                        // Set this to Basic to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
+                        // Set this to Standard to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
                         encodingType:LiveEventEncodingType.None, 
                         presetName:null
                     ),

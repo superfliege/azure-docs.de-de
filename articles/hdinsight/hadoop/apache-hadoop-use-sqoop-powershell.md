@@ -9,30 +9,28 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 23dae8a6f0651ee6b753c4b29112eb733103b9e1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c3b7695b7a67a33df93b0216cfd02f762e412158
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631443"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635713"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Ausführen von Apache Sqoop-Aufträgen mit Azure PowerShell für Apache Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
 Erfahren Sie, wie Azure PowerShell zum Ausführen von Apache Sqoop-Aufträgen in Azure HDInsight zum Importieren und Exportieren zwischen einem HDInsight-Cluster und Azure SQL-Datenbank oder SQL Server-Datenbank verwendet werden kann.
 
-> [!NOTE]
+> [!NOTE]  
 > Sie können die in diesem Artikel beschriebenen Verfahren zwar entweder mit einem Windows- oder Linux-basierten HDInsight-Cluster verwenden, doch sie funktionieren nur von einem Windows-Client aus. Um andere Methoden auszuwählen, verwenden Sie die Registerkartenauswahl am Anfang dieses Artikels. 
-> 
-> 
 
-### <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen 
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * Eine Arbeitsstation mit Azure PowerShell
-* Einen Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Einen Apache Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="run-sqoop-by-using-powershell"></a>Ausführen von Sqoop mit PowerShell
+## <a name="run-apache-sqoop-by-using-powershell"></a>Ausführen von Apache Sqoop mit PowerShell
 Das folgende PowerShell-Skript verarbeitet vorab die Quelldatei und exportiert sie dann in Azure SQL-Datenbank:
 
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -167,8 +165,8 @@ Für Linux-basiertes HDInsight gelten die folgenden Einschränkungen:
 ## <a name="next-steps"></a>Nächste Schritte
 Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unter:
 
-* [Verwenden von Oozie mit HDInsight](../hdinsight-use-oozie.md): Verwenden der Sqoop-Aktion in einem Oozie-Workflow.
-* [Analysieren von Daten zu Flugverspätungen mit HDInsight](../hdinsight-analyze-flight-delay-data.md): Verwenden von Hive zur Analyse von Daten zu Flugverspätungen und Verwenden von Sqoop zum Exportieren von Daten in Azure SQL-Datenbank.
-* [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight oder Azure Blob Storage.
+* [Verwenden von Apache Oozie mit HDInsight:](../hdinsight-use-oozie.md) Verwenden der Sqoop-Aktion in einem Oozie-Workflow.
+* [Analysieren von Daten zu Flugverspätungen mit HDInsight:](../hdinsight-analyze-flight-delay-data.md) Verwenden von Apache Hive zum Analysieren von Daten zu Flugverspätungen und Verwenden von Sqoop zum Exportieren von Daten in Azure SQL-Datenbank.
+* [Hochladen von Daten in HDInsight:](../hdinsight-upload-data.md) Weitere Methoden zum Hochladen von Daten in HDInsight oder Azure Blob Storage.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

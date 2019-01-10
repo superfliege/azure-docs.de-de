@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e3bd48cf56650e266f5002a179d20177b3127f25
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8f8503f560985e1170105199212734dd704d81c1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426401"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743526"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -167,7 +167,7 @@ Sie müssen die Kommunikation zwischen Ihrem SAML 2.0-Identitätsanbieter und Az
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Installieren von Windows PowerShell für einmaliges Anmelden mit dem SAML 2.0-Identitätsanbieter
 Nachdem Sie Ihren SAML 2.0-Identitätsanbieter für die Verwendung mit Azure AD-Anmeldung konfiguriert haben, besteht der nächste Schritt aus dem Herunterladen und Installieren des Azure Active Directory-Moduls für Windows PowerShell. Nach Abschluss der Installation verwenden Sie diese Cmdlets zum Konfigurieren Ihrer Azure AD-Domänen als Verbunddomänen.
 
-Das Azure Active Directory-Modul für Windows PowerShell ist ein Download zum Verwalten Ihrer Organisationsdaten in Azure AD. Dieses Modul installiert eine Reihe von Cmdlets in Windows PowerShell; Sie führen diese Cmdlets zum Einrichten des einmaligen Anmeldens für den Zugriff auf Azure AD aus, und somit auch auf alle Cloud-Dienste, die Sie abonniert haben. Anleitungen zum Herunterladen und Installieren der Cmdlets finden Sie unter [https://technet.microsoft.com/library/jj151815.aspx](httpss://technet.microsoft.com/library/jj151815.aspx).
+Das Azure Active Directory-Modul für Windows PowerShell ist ein Download zum Verwalten Ihrer Organisationsdaten in Azure AD. Dieses Modul installiert eine Reihe von Cmdlets in Windows PowerShell; Sie führen diese Cmdlets zum Einrichten des einmaligen Anmeldens für den Zugriff auf Azure AD aus, und somit auch auf alle Cloud-Dienste, die Sie abonniert haben. Anleitungen zum Herunterladen und Installieren der Cmdlets finden Sie unter [https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx).
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Einrichten einer Vertrauensstellung zwischen Ihrem SAML-Identitätsanbieter und Azure AD
 Bevor ein Verbund für eine Azure AD-Domäne konfiguriert wird, muss zuerst eine benutzerdefinierte Domäne konfiguriert werden. Sie können keinen Verbund für die Standarddomäne erstellen, die von Microsoft bereitgestellt wird. Die Standarddomäne von Microsoft endet mit „onmicrosoft.com“.
@@ -183,14 +183,14 @@ Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Stand
 ## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Konfigurieren einer Domäne in Azure AD Directory für den Verbund
 
 
-1. Stellen Sie eine Verbindung mit Azure Active Directory als Mandantenadministrator her: Connect-MsolService.
+1. Stellen Sie eine Verbindung mit Ihrem Azure AD-Verzeichnis als Mandantenadministrator her: Connect-MsolService.
 2.  Konfigurieren Sie Ihre gewünschte Office 365-Domäne zur Verwendung eines Verbunds mit SAML 2.0: `$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
 
 3.  Sie können die base64-codierte Zeichenfolge des Signaturzertifikats aus Ihrer IDP-Metadatendatei abrufen. Ein Beispiel für diesen Speicherort wurde bereitgestellt, kann jedoch abhängig von Ihrer Implementierung variieren.
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter [https://technet.microsoft.com/library/dn194112.aspx](httpss://technet.microsoft.com/library/dn194112.aspx).
+Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
 >Sie müssen „$ecpUrl = „https://WS2012R2-0.contoso.com/PAOS““ nur ausführen, wenn Sie eine ECP-Erweiterung für Ihren Identitätsanbieter einrichten. Exchange Online-Clients mit Ausnahme von Outlook Web Application (OWA) basieren auf einem auf POST basierenden aktiven Endpunkt. Wenn Ihr SAML 2.0-STS einen aktiven Endpunkt implementiert, der der ECP-Implementierung von Shibboleth von einem aktiven Endpunkt ähnelt, können diese Rich Clients möglicherweise mit dem Exchange Online-Dienst interagieren.
@@ -207,7 +207,7 @@ Windows PowerShell kann auch zum automatischen Hinzufügen neuer Benutzer zu Azu
 Diese Prozedur zeigt, wie Azure AD ein einzelner Benutzer hinzugefügt wird.
 
 
-1. Stellen Sie eine Verbindung mit Azure Active Directory als Mandantenadministrator her: Connect-MsolService.
+1. Stellen Sie eine Verbindung mit Ihrem Azure AD-Verzeichnis als Mandantenadministrator her: Connect-MsolService.
 2.  Erstellen Sie einen neuen Benutzerprinzipal: ` New-MsolUser
         -UserPrincipalName elwoodf1@contoso.com
         -ImmutableId ABCDEFG1234567890
@@ -218,7 +218,7 @@ Diese Prozedur zeigt, wie Azure AD ein einzelner Benutzer hinzugefügt wird.
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-Weitere Informationen zu „New-MsolUser“ finden Sie unter [https://technet.microsoft.com/library/dn194096.aspx](httpss://technet.microsoft.com/library/dn194096.aspx).
+Weitere Informationen zu „New-MsolUser“ finden Sie unter [https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx).
 
 >[!NOTE]
 >Der Wert „UserPrinciplName“ muss mit dem Wert übereinstimmen, den Sie für „IDPEmail“ in Ihrem SAML 2.0-Anspruch senden, und der Wert „ImmutableID“ muss mit dem Wert übereinstimmen, der in Ihrer „NameID“-Assertion gesendet wurde.
@@ -254,13 +254,13 @@ Microsoft hat ein Tool bereitgestellt, das Sie verwenden können, um Ihre auf SA
 2.  Klicken Sie auf „Jetzt installieren“, um mit dem Download und der Installation des Tools zu beginnen.
 3.  Wählen Sie „I can’t set up federation with Office 365, Azure, or other services that use Azure Active Directory“ (Ich kann keinen Verbund mit Office 365, Azure oder anderen Diensten einrichten, die Azure Active Directory verwenden) aus.
 4.  Nachdem das Tool heruntergeladen wurde und ausgeführt wird, sehen Sie das Fenster „Verbindungsdiagnose“. Das Tool führt Sie ausführlich durch das Testen Ihrer Verbundverbindung.
-5.  Die Verbindungsuntersuchung öffnet Ihren SAML 2.0-IdP für Ihre Anmeldung. Geben Sie die Anmeldeinformationen für den zu überprüfenden Benutzerprinzipal ein: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Die Verbindungsuntersuchung öffnet Ihren SAML 2.0-Identitätsanbieter für Ihre Anmeldung. Geben Sie die Anmeldeinformationen für den zu überprüfenden Benutzerprinzipal ein: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Geben Sie im Fenster der Anmeldung für den Verbundtest einen Kontonamen und ein zugehöriges Kennwort für den Azure AD-Mandanten ein, für den mit Ihrem SAML 2.0-Identitätsanbieter ein Verbund erstellt werden soll. Das Tool versucht, sich mithilfe dieser Anmeldeinformationen anzumelden. Als Ausgabe werden ausführliche Ergebnisse von Tests, die während des Anmeldeversuchs durchgeführt wurden, bereitgestellt.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Dieses Fenster zeigt ein Fehlerergebnis des Tests an. Durch Klicken auf „Überprüfen“ werden ausführliche Informationen über die Ergebnisse der Tests, die ausgeführt wurden, angezeigt. Sie können auch die Ergebnisse auf einem Datenträger speichern, um sie freizugeben.
  
 >[!NOTE]
->Die Verbindungsuntersuchung testet auch den aktiven Verbund mithilfe der auf WS* basierten und ECP/PAOS-Protokolle. Wenn Sie diese nicht verwenden, können Sie den folgenden Fehler ignorieren: Testing the Active sign-in flow using your identity provider’s Active federation endpoint (Testen des aktiven Anmeldungsablaufs mithilfe des aktiven Verbundendpunkt Ihres Identitätsanbieters)
+>Die Verbindungsuntersuchung testet auch den aktiven Verbund mithilfe der auf WS* basierten und ECP/PAOS-Protokolle. Wenn Sie diese nicht verwenden, können Sie den folgenden Fehler ignorieren: Der aktive Anmeldevorgang unter Verwendung des aktiven Verbundendpunkts Ihres Identitätsanbieters wird getestet.
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>Manuelle Bestätigung, dass einmaliges Anmelden ordnungsgemäß eingerichtet wurde
 Manuelle Überprüfung bietet zusätzliche Schritte, die Sie vornehmen können, um sicherzustellen, dass Ihr SAML 2.0-Identitätsanbieter in vielen Szenarios korrekt ausgeführt wird.
@@ -268,7 +268,7 @@ Um zu überprüfen, dass einmaliges Anmelden ordnungsgemäß eingerichtet wurde,
 
 
 1. Melden Sie sich auf einem mit einer Domäne verbundenen Computer bei Ihrem Clouddienst an. Nutzen Sie dafür den Anmeldenamen, den Sie für Ihre Unternehmensanmeldeinformationen verwenden.
-2.  Klicken Sie in das Kennwortfeld. Wenn das einmalige Anmelden eingerichtet wird, wird das Anmeldefeld schattiert, und Ihnen wird die folgende Meldung angezeigt: „Sie müssen sich nun bei &lt;Ihr Unternehmen&gt; anmelden.“
+2.  Klicken Sie in das Kennwortfeld. Wenn das einmalige Anmelden eingerichtet ist, wird das Kennwortfeld schattiert, und es wird die folgende Meldung angezeigt: „Sie müssen sich jetzt bei &lt;Ihrem Unternehmen&gt; anmelden.“
 3.  Klicken Sie auf den Link zum Anmelden bei &lt;Ihr Unternehmen&gt;. Wenn Sie sich anmelden können, wurde das einmalige Anmelden eingerichtet.
 
 ## <a name="next-steps"></a>Nächste Schritte

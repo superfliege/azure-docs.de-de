@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185578"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608833"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -30,7 +30,7 @@ Die Überwachung des Sicherheitsstatus und entsprechende Empfehlungen sind für 
 >
 >
 
-## <a name="supported-platforms"></a>Unterstützte Plattformen 
+## <a name="platforms-that-support-the-data-collection-agent"></a>Plattformen mit Unterstützung für den Datensammlungs-Agent 
 
 In diesem Abschnitt werden die Plattformen aufgeführt, auf denen der Azure Security Center-Agent ausgeführt werden kann und von denen er Daten sammeln kann.
 
@@ -43,6 +43,10 @@ Die folgenden Windows-Betriebssysteme werden unterstützt:
 * Windows Server 2012 R2
 * Windows Server 2016
 
+> [!NOTE]
+> Die Integration in Windows Defender ATP unterstützt nur Windows Server 2012 R2 und Windows Server 2016.
+>
+>
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Unterstützte Plattformen für Linux-Computer und -VMs
 Die folgenden Linux-Betriebssysteme werden unterstützt:
@@ -55,11 +59,6 @@ Die folgenden Linux-Betriebssysteme werden unterstützt:
 * Oracle Linux-Versionen 5, 6 und 7
 * Amazon Linux 2012.09 bis 2017
 * OpenSSL 1.1.0 wird nur auf x86_64-Plattformen (64 Bit) unterstützt.
-
-> [!NOTE]
-> Verhaltensanalysen für virtuelle Computer sind für Linux-Betriebssysteme noch nicht verfügbar.
->
->
 
 ## <a name="vms-and-cloud-services"></a>VMs und Clouddienste
 VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zu Clouddiensten finden Sie unter [Übersicht zu Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).

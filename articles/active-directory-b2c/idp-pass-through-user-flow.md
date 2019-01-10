@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 79ac2ee327c53012097bf6130deba676edcf785a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b26605bd0b436d948fb1f62cbf32a17ea4f386d0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637055"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602255"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Übergeben eines Zugriffstokens über einen Benutzerflow an Ihre Anwendung in Azure Active Directory B2C
 
 > [!NOTE]
-> Dieses Feature befindet sich zurzeit in der öffentlichen Vorschau.
+> Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
+
+> [!Important]
+> Dieses Feature der öffentlichen Vorschau ist vorübergehend nicht verfügbar.
 
 Ein [Benutzerflow](active-directory-b2c-reference-policies.md) in Azure Active Directory B2C (Azure AD) ermöglicht es Benutzern Ihrer Anwendung, sich mit einem Identitätsanbieter zu registrieren oder anzumelden. Bei diesem Vorgang empfängt Azure AD B2C zunächst ein [Zugriffstoken](active-directory-b2c-reference-tokens.md) vom Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie aktivieren einen Anspruch in Ihrem Benutzerflow, um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registrieren.
 

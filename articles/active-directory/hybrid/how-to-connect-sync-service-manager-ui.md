@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Synchronization Service Manager-Benutzeroberfläche | Microsoft Docs'
+title: 'Azure AD Connect-Synchronisierung: Synchronization Service Manager-Benutzeroberfläche | Microsoft-Dokumentation'
 description: Verstehen Sie Synchronization Service Manager für Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 877f41fb1d47bc8faf4ea1275c94cd492884bfb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 439535975c6e1b996bf888a1df7b6f2ae6732a6d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307739"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717534"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Einführung in die Benutzeroberfläche von Azure AD Connect Synchronization Service Manager
 
@@ -32,9 +32,10 @@ Mit der Benutzeroberfläche von **Synchronization Service Manager** können erwe
 Sie starten die Benutzeroberfläche von **Synchronization Service Manager** über das Startmenü. Sie heißt **Synchronisierungsdienst** und befindet sich in der Gruppe **Azure AD Connect**.  
 ![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
-Klicken Sie auf die Links oben in diesem Thema, um weitere Informationen zu den verschiedenen Registerkarten auf der Benutzeroberfläche zu erhalten.
-
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie etwas über die Benutzeroberfläche von Synchronization Service Manager, einschließlich der Registerkarten [Vorgänge](how-to-connect-sync-service-manager-ui-operations.md), [Connectors](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md) und [Metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
+
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](how-to-connect-sync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).

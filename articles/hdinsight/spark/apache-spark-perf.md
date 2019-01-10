@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a6ab4d751be74b66d9e75a37f88bc8d441f9b003
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499143"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653729"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optimieren von Apache Spark-Aufträgen
 
@@ -27,36 +27,36 @@ Die folgenden Abschnitte beschreiben allgemeine Optimierungen und Empfehlungen f
 Spark 1.x verwendet RDDs (Resilient Distributed Datasets) zum Abstrahieren von Daten, und in Spark 2.x wurden Dataframes und Datasets eingeführt. Diese Features bieten jeweils folgende Vorteile:
 
 * **Dataframes**
-    * In den meisten Situationen die beste Wahl
-    * Ermöglicht die Abfrageoptimierung durch Catalyst
-    * Codegenerierung für die gesamte Phase
-    * Direkter Zugriff auf den Arbeitsspeicher
-    * Geringer Overhead durch Garbage Collection (GC)
-    * Nicht so entwicklerfreundlich wie Datasets, da Überprüfungen zur Kompilierzeit und Domänenobjektprogrammierung nicht möglich sind
+    * In den meisten Situationen die beste Wahl.
+    * Ermöglicht die Abfrageoptimierung durch Catalyst.
+    * Codegenerierung für die gesamte Phase.
+    * Direkter Zugriff auf den Arbeitsspeicher.
+    * Geringer Overhead durch Garbage Collection (GC).
+    * Nicht so entwicklerfreundlich wie Datasets, da keine Überprüfungen zur Kompilierzeit und Domänenobjektprogrammierung vorhanden sind.
 * **Datasets**
-    * Gut geeignet für komplexe ETL-Pipelines (Extrahieren, Transformieren, Laden), in denen die Leistungseinbußen akzeptabel sind
-    * Nicht gut geeignet in Aggregationen, in denen die Auswirkungen auf die Leistung beträchtlich sein können
-    * Ermöglicht die Abfrageoptimierung durch Catalyst
-    * Entwicklerfreundlich dank Domänenobjektprogrammierung und Überprüfungen zu Kompilierzeit
-    * Erzeugt Overhead für Serialisierung/Deserialisierung
-    * Hoher GC-Overhead
-    * Unterbricht die Codegenerierung für die gesamte Phase
+    * Gut geeignet für komplexe ETL-Pipelines (Extrahieren, Transformieren, Laden), in denen die Leistungseinbußen akzeptabel sind.
+    * Nicht gut geeignet in Aggregationen, in denen die Auswirkungen auf die Leistung beträchtlich sein können.
+    * Ermöglicht die Abfrageoptimierung durch Catalyst.
+    * Entwicklerfreundlich dank Domänenobjektprogrammierung und Überprüfungen zu Kompilierzeit.
+    * Erzeugt Overhead für Serialisierung/Deserialisierung.
+    * Hoher GC-Overhead.
+    * Unterbricht die Codegenerierung für die gesamte Phase.
 * **RDDs**
-    * In Spark 2.x müssen Sie RDDs nicht verwenden, es sei denn, Sie erstellen eine neue benutzerdefinierte RDD
-    * Keine Abfrageoptimierung durch Catalyst
-    * Keine Codegenerierung für die gesamte Phase
-    * Hoher GC-Overhead
-    * Müssen ältere Spark 1.x-APIs verwenden
+    * In Spark 2.x müssen Sie RDDs nicht verwenden, es sei denn, Sie erstellen eine neue benutzerdefinierte RDD.
+    * Keine Abfrageoptimierung durch Catalyst.
+    * Keine Codegenerierung für die gesamte Phase.
+    * Hoher GC-Overhead.
+    * Müssen ältere Spark 1.x-APIs verwenden.
 
 ## <a name="use-optimal-data-format"></a>Verwenden des optimalen Datenformats
 
-Spark unterstützt eine Vielzahl von Formaten, z.B. CSV, JSON, XML, PARQUET, ORC und AVRO. Spark kann erweitert werden und viele weitere Formate mit externen Datenquellen unterstützen. Weitere Informationen dazu finden Sie unter [Spark Packages](https://spark-packages.org) (Spark-Pakete).
+Spark unterstützt eine Vielzahl von Formaten, z.B. CSV, JSON, XML, PARQUET, ORC und AVRO. Spark kann erweitert werden und viele weitere Formate mit externen Datenquellen unterstützen. Weitere Informationen dazu finden Sie unter [Apache Spark Packages](https://spark-packages.org) (Apache Spark-Pakete).
 
 Hinsichtlich der Leistung ist Parquet mit *Snappy-Komprimierung* das beste Format. Dies ist die Standardeinstellung in Spark 2.x. Parquet speichert Daten im Spaltenformat und ist in Spark in hohem Maß optimiert.
 
 ## <a name="select-default-storage"></a>Auswählen des Standardspeichers
 
-Wenn Sie einen neuen Spark-Cluster erstellen, stehen Azure Blob Storage oder Azure Data Lake Store als Standardspeicher für Ihren Cluster zur Auswahl. Beide Optionen bieten den Vorteil eines langfristigen Speichers für kurzlebige Cluster, sodass Ihre Daten beim Löschen des Clusters nicht automatisch gelöscht werden. Sie können einen kurzlebigen Cluster erneut erstellen und weiterhin auf Ihre Daten zugreifen.
+Wenn Sie einen neuen Spark-Cluster erstellen, stehen Azure Blob Storage oder Azure Data Lake Storage als Standardspeicher für Ihren Cluster zur Auswahl. Beide Optionen bieten den Vorteil eines langfristigen Speichers für kurzlebige Cluster, sodass Ihre Daten beim Löschen des Clusters nicht automatisch gelöscht werden. Sie können einen kurzlebigen Cluster erneut erstellen und weiterhin auf Ihre Daten zugreifen.
 
 | Speichertyp | Dateisystem | Geschwindigkeit | Kurzlebig | Anwendungsfälle |
 | --- | --- | --- | --- | --- |
@@ -73,7 +73,7 @@ Spark stellt einen eigenen nativen Cachemechanismus bereit, der über verschiede
     * Funktioniert nicht mit Partitionierung. Dies wird sich möglicherweise in zukünftigen Spark-Releases ändern.
 
 * Caching auf Speicherebene (empfohlen)
-    * Kann mithilfe von [Alluxio](http://www.alluxio.org/) implementiert werden.
+    * Kann mithilfe von [Alluxio](https://www.alluxio.org/) implementiert werden.
     * Verwendet In-Memory- und SSD-Caching.
 
 * Lokales HDFS (empfohlen)
@@ -119,9 +119,9 @@ Das Zuordnen von Buckets funktioniert ähnlich wie die Datenpartitionierung, abe
 
 Das Zuordnen von Buckets bietet u.a. folgende erweiterte Features:
 
-* Abfrageoptimierung basierend auf Metadaten zur Zuordnung von Buckets
-* Optimierte Aggregationen
-* Optimierte Joins
+* Abfrageoptimierung basierend auf Metadaten zur Zuordnung von Buckets.
+* Optimierte Aggregationen.
+* Optimierte Joins.
 
 Sie können die Partitionierung und die Zuordnung von Buckets gleichzeitig verwenden.
 
@@ -202,7 +202,7 @@ Berücksichtigen Sie beim Ausführen gleichzeitiger Abfragen folgende Aspekte:
 Überwachen Sie Ihre ausgeführten Aufträge regelmäßig auf Leistungsprobleme. Wenn Sie bei bestimmten Problemen genauere Einblicke benötigen, ziehen Sie eins der folgenden Tools für die Leistungsprofilerstellung in Betracht:
 
 * [Intel PAL Tool](https://github.com/intel-hadoop/PAT) überwacht die Nutzung von CPU, Speicher und Netzwerkbandbreite.
-* [Oracle Java 8 Mission Control](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) erstellt Profile für Spark- und Executorcode.
+* [Oracle Java 8 Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) erstellt Profile für Spark- und Executorcode.
 
 Entscheidend für die Abfrageleistung von Spark 2.x ist die Tungsten-Engine, die von der Codegenerierung für die gesamte Phase abhängig ist. In einigen Fällen ist die Codegenerierung für die gesamte Phase möglicherweise deaktiviert. Wenn Sie z.B. einen nicht veränderbaren Typ (`string`) im Aggregationsausdruck verwenden, wird `SortAggregate` anstelle von `HashAggregate` angezeigt. Um die Leistung zu verbessern, können Sie Folgendes versuchen und dann die Codegenerierung wieder aktivieren:
 

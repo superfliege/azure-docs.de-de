@@ -3,17 +3,17 @@ title: Skalieren von Jenkins-Bereitstellungen mit Azure-VM-Agents.
 description: Verwenden Sie virtuelle Azure-Computer mit dem Jenkins-Plug-In für Azure-Agents, um Ihren Jenkins-Pipelines zusätzliche Kapazität hinzuzufügen.
 ms.service: jenkins
 keywords: Jenkins, Azure, DevOps, virtueller Computer, Agents
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 46710b3a669b6a00dc1826c55e8d35fe700f312f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106222"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074664"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalieren Ihrer Jenkins-Bereitstellungen für verschiedene Anforderungen mit Azure-VM-Agents
 

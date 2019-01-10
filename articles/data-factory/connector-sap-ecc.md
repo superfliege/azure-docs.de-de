@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: f9f6d2e43fff9a3e57145f39863f66eed64869b2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ab9d28212e471a9fe3d59ff30a8225b7440655d7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048582"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022494"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopieren von Daten aus SAP ECC mithilfe von Azure Data Factory
 
@@ -54,8 +53,8 @@ Folgende Eigenschaften werden für den mit SAP ECC verknüpften Dienst unterstü
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **SapEcc** festgelegt werden. | Ja |
-| URL | Die URL des SAP ECC OData-Diensts | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapEcc** | JA |
+| URL | Die URL des SAP ECC OData-Diensts | JA |
 | username | Der Benutzername, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein  |
 | password | Das Klartextkennwort, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein  |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
@@ -91,7 +90,7 @@ Legen Sie zum Kopieren von Daten aus SAP ECC die type-Eigenschaft des Datasets a
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| path | Pfad der SAP ECC OData-Entität | Ja |
+| path | Pfad der SAP ECC OData-Entität | JA |
 
 **Beispiel**
 
@@ -121,7 +120,7 @@ Legen Sie zum Kopieren von Daten aus SAP ECC den Quelltyp in der Kopieraktivitä
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SapEccSource** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapEccSource** | JA |
 | query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: „$select=Name,Description&$top=10“.<br/><br/>Das SAP ECC-Connector kopiert Daten aus der kombinierten URL: (im verknüpften Dienst angegebene URL)/(im Dataset angegebener Pfad)?(in der Quelle der Kopieraktivität angegebene Abfrage). Lesen Sie hierzu [OData-URL-Komponenten](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein  |
 
 **Beispiel:**

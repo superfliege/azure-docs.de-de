@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: efccea36dd94120934b1a9729f583e0596316bc7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a222e66b896886d724572982626fd0bc2c277a8
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338565"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809963"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -424,7 +424,7 @@ Azure Functions speichert Blobbelege in einem Container mit dem Namen *azure-web
 * Containername
 * Blobtyp ("BlockBlob" oder "PageBlob")
 * Blobname
-* ETag (eine Blobversions-ID. Beispiel:  „0x8D1DC6E70A277EF“)
+* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
 
 Um eine erneute Verarbeitung eines Blobs zu erzwingen, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen.
 
@@ -438,7 +438,7 @@ Wenn bei allen fünf Versuchen Fehler auftreten, fügt Azure Functions der Stora
 * BlobType ("BlockBlob" oder "PageBlob")
 * ContainerName
 * BlobName
-* ETag (eine Blobversions-ID. Beispiel:  „0x8D1DC6E70A277EF“)
+* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
 
 ## <a name="trigger---concurrency-and-memory-usage"></a>Trigger: Nebenläufigkeit und Arbeitsspeichernutzung
 
@@ -446,7 +446,7 @@ Der Blobtrigger verwendet intern eine Warteschlange, sodass die maximal zulässi
 
 [Der Verbrauchstarif](functions-scale.md#how-the-consumption-plan-works) schränkt eine Funktions-App auf einem virtuellen Computer (VM) auf 1,5 GB an Arbeitsspeicher ein. Der Arbeitsspeicher wird von jeder parallel ausgeführten Funktionsinstanz und durch die Functions-Runtime selbst verwendet. Wenn eine durch einen Blob ausgelöste Funktion das gesamte Blob in den Arbeitsspeicher lädt, entspricht der maximal von dieser Funktion verwendete Arbeitsspeicher nur für Blobs dem 24 * der maximalen Blobgröße. Beispiel: Eine Funktions-App, die drei Funktionen mit Blobtrigger umfasst und die Standardeinstellungen verwendet, weist pro VM eine maximale Nebenläufigkeit von 3 * 24 = 72 Funktionsaufrufen auf.
 
-JavaScript-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string`, `Byte[]` oder POCO.
+JavaScript- und Java-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string`, `Byte[]` oder POCO.
 
 ## <a name="trigger---polling"></a>Trigger: Abruf
 
@@ -462,7 +462,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 
 * [C#](#input---c-example)
 * [C#-Skript (.csx)](#input---c-script-example)
-* [Java](#input---java-example)
+* [Java](#input---java-examples)
 * [JavaScript](#input---javascript-example)
 * [Python](#input---python-example)
 
@@ -630,22 +630,61 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-example"></a>Eingabe: Java-Beispiel
+### <a name="input---java-examples"></a>Eingabe: Java-Beispiele
 
-Das folgende Beispiel ist eine Java-Funktion, bei der ein Warteschlangentrigger und eine Eingabeblobbindung verwendet werden. Die Warteschlangennachricht enthält den Namen des Blobs, und die Funktion protokolliert die Größe des Blobs.
+Dieser Abschnitt enthält folgende Beispiele:
+
+* [HTTP-Trigger: Suchen des Blobnamens in einer Abfragezeichenfolge](#http-trigger-look-up-blob-name-from-query-string-java)
+* [Warteschlangentrigger: Empfangen des Blobnamens aus einer Warteschlangennachricht](#queue-trigger-receive-blob-name-from-queue-message-java)
+
+#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP-Trigger: Suchen des Blobnamens in einer Abfragezeichenfolge (Java)
+
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der Anmerkung ```HttpTrigger``` einen Parameter mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion.
 
 ```java
-@FunctionName("getBlobSize")
-@StorageAccount("AzureWebJobsStorage")
-public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
-                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
-       final ExecutionContext context) {
+  @FunctionName("getBlobSizeHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage blobSize(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    final ExecutionContext context) {
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>Warteschlangentrigger: Empfangen des Blobnamens aus einer Warteschlangennachricht (Java)
+
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der ```QueueTrigger```-Anmerkung eine Nachricht mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion.
+
+```java
+  @FunctionName("getBlobSize")
+  @StorageAccount("Storage_Account_Connection_String")
+  public void blobSize(
+    @QueueTrigger(
+      name = "filename", 
+      queueName = "myqueue-items-sample") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{queueTrigger}") 
+    byte[] content,
+    final ExecutionContext context) {
       context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
- }
- ```
+  }
+```
 
-  Verwenden Sie die `@BlobInput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert aus einem Blob empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit `Optional<T>`, die NULL-Werte annehmen können, verwendet werden.
-
+Verwenden Sie die `@BlobInput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert aus einem Blob empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit `Optional<T>`, die NULL-Werte annehmen können, verwendet werden.
 
 ## <a name="input---attributes"></a>Eingabe: Attribute
 
@@ -728,7 +767,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 
 * [C#](#output---c-example)
 * [C#-Skript (.csx)](#output---c-script-example)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
@@ -915,23 +954,72 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-example"></a>Ausgabe: Java-Beispiel
+### <a name="output---java-examples"></a>Ausgabe: Java-Beispiele
 
-Das folgende Beispiel zeigt Blobeingabe- und Blobausgabebindungen in einer Java-Funktion. Die Funktion erstellt eine Kopie eines Textblobs. Sie wird durch eine Warteschlangennachricht ausgelöst, die den Namen des zu kopierenden Blobs enthält. Der Name des neuen Blobs lautet „{Name des Originalblobs}-Copy“.
+Dieser Abschnitt enthält folgende Beispiele:
+
+* [HTTP-Trigger mit OutputBinding](#http-trigger-using-outputbinding-java)
+* [Warteschlangentrigger mit Funktionsrückgabewert](#queue-trigger-using-function-return-value-java)
+
+#### <a name="http-trigger-using-outputbinding-java"></a>HTTP-Trigger mit OutputBinding (Java)
+
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der Anmerkung ```HttpTrigger``` einen Parameter mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion. Die Anmerkung ```BlobOutput``` bindet an ```OutputBinding outputItem```, das dann von der Funktion verwendet wird, um den Inhalt des Eingabeblobs in den konfigurierten Speichercontainer zu schreiben.
 
 ```java
-@FunctionName("copyTextBlob")
-@StorageAccount("AzureWebJobsStorage")
-@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
-public String blobCopy(
-    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
-    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+  @FunctionName("copyBlobHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage copyBlobHttp(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    @BlobOutput(
+      name = "target", 
+      path = "myblob/{Query.file}-CopyViaHttp")
+    OutputBinding<String> outputItem,
+    final ExecutionContext context) {
+      // Save blob to outputItem
+      outputItem.setValue(new String(content, StandardCharsets.UTF_8));
+
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-using-function-return-value-java"></a>Warteschlangentrigger mit Funktionsrückgabewert (Java)
+
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der ```QueueTrigger```-Anmerkung eine Nachricht mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion. Die ```BlobOutput```-Anmerkung bindet an den Rückgabewert der Funktion, der dann von der Runtime verwendet wird, um den Inhalt des Eingabeblobs in den konfigurierten Speichercontainer zu schreiben.
+
+```java
+  @FunctionName("copyBlobQueueTrigger")
+  @StorageAccount("Storage_Account_Connection_String")
+  @BlobOutput(
+    name = "target", 
+    path = "myblob/{queueTrigger}-Copy")
+  public String copyBlobQueue(
+    @QueueTrigger(
+      name = "filename", 
+      dataType = "string",
+      queueName = "myqueue-items") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      path = "samples-workitems/{queueTrigger}") 
+    String content,
+    final ExecutionContext context) {
+      context.getLogger().info("The content of \"" + filename + "\" is: " + content);
       return content;
- }
- ```
+  }
+```
 
- Verwenden Sie die `@BlobOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Funktionsparameter, deren Wert in ein Objekt in Blob Storage geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
-
+ Verwenden Sie die `@BlobOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Funktionsparameter, deren Wert in ein Objekt in Blob Storage geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ oder ein POJO steht.
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
 

@@ -1,20 +1,19 @@
 ---
 title: Wie werden Abfragen von Tabellendaten in Azure Cosmos DB durchgeführt?
 description: Erfahren Sie, wie Sie Tabellendaten in Azure Cosmos DB abfragen.
-services: cosmos-db
-author: kanshiG
-ms.author: govindk
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: e0a22256637792f5b84a346c54a79ee314f92e8e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.reviewer: sngun
+ms.openlocfilehash: 9a47333c8cd8968c007a2d328e81d8ea8585971c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601796"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037989"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der Tabellen-API
 

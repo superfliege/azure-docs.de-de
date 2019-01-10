@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: eeaedc84e860cebc0b001300ace4fe1594375af2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 737cb31fd4e33229e0317e6a0610fb098beed6f4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999406"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191903"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -66,7 +66,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Componen
 
 # Force Internet Explorer closed, if open. This is required to fully apply the setting.
 # Save any work you have open in the IE browser. This will not affect other browsers,
-# including Edge.
+# including Microsoft Edge.
 Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 ``` 
 

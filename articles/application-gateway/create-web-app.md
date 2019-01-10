@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 99a4dd25539db754a893ddda7480c64e5a13a5bd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353338"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631514"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurieren von App Service-Web-Apps mit Application Gateway
+# <a name="configure-app-service-with-application-gateway"></a>Konfigurieren von App Service mit Application Gateway
 
-Mit Application Gateway können Sie eine Azure-Web-App oder einen anderen mehrinstanzenfähigen Dienst als Back-End-Poolmitglied einrichten. In diesem Artikel erfahren Sie, wie Sie eine Azure-Web-App mit Application Gateway konfigurieren. Das erste Beispiel zeigt, wie Sie ein bereits vorhandenes Anwendungsgateway für die Verwendung einer Web-App als Back-End-Poolmitglied konfigurieren. Das zweite Beispiel zeigt, wie Sie ein neues Anwendungsgateway mit einer Web-App als Back-End-Poolmitglied erstellen.
+Mit Application Gateway können Sie eine App Service-App oder einen anderen mehrinstanzenfähigen Dienst als Back-End-Poolmitglied einrichten. In diesem Artikel erfahren Sie, wie Sie eine App Service-App mit Application Gateway konfigurieren. Das erste Beispiel zeigt, wie Sie ein bereits vorhandenes Anwendungsgateway für die Verwendung einer Web-App als Back-End-Poolmitglied konfigurieren. Das zweite Beispiel zeigt, wie Sie ein neues Anwendungsgateway mit einer Web-App als Back-End-Poolmitglied erstellen.
 
 ## <a name="configure-a-web-app-behind-an-existing-application-gateway"></a>Konfigurieren einer Web-App hinter einem vorhandenen Anwendungsgateway
 
@@ -163,4 +163,4 @@ Eine Möglichkeit, wie Sie den Zugriff auf Ihre Web-Apps einschränken können, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Konfigurieren der Umleitung für Application Gateway mit PowerShell](redirect-overview.md) darüber, wie Sie die Umleitung konfigurieren.
+Erfahren Sie, wie Sie Umleitungen konfigurieren: [Konfigurieren der Umleitung für Application Gateway mit PowerShell](redirect-overview.md).

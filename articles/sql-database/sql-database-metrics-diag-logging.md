@@ -11,28 +11,28 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601558"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044568"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
 Azure SQL-Datenbank, Pools für elastische Datenbanken, die verwaltete Instanz und Datenbanken in der verwalteten Instanz können Metriken und Diagnoseprotokolle zur einfacheren Leistungsüberwachung streamen. Sie können eine Datenbank dazu konfigurieren, Informationen zum Ressourcenverbrauch, zu Workern und Sitzungen sowie zur Konnektivität in eine der folgenden Azure-Ressourcen zu übertragen:
 
-* **Azure SQL-Analyse**: Ermöglicht die intelligente Überwachung Ihrer Azure-Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung.
-* **Azure Event Hubs**: Ermöglicht die Integration von SQL-Datenbank-Telemetrie in Ihre benutzerdefinierten Überwachungslösungen oder Hotpipelines.
-* **Azure Storage**: Ermöglicht zu äußerst kostengünstigen Preisen die Archivierung großer Mengen von Telemetriedaten.
+- **Azure SQL-Analyse**: Ermöglicht die intelligente Überwachung Ihrer Azure-Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung.
+- **Azure Event Hubs**: Ermöglicht die Integration von SQL-Datenbank-Telemetrie in Ihre benutzerdefinierten Überwachungslösungen oder Hotpipelines.
+- **Azure Storage**: Ermöglicht zu äußerst kostengünstigen Preisen die Archivierung großer Mengen von Telemetriedaten.
 
     ![Architecture](./media/sql-database-metrics-diag-logging/architecture.png)
 
 Weitere Informationen zu den Metriken und Protokollkategorien, die von verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
-* [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Dieser Artikel enthält Anleitungen zum Aktivieren der Diagnosetelemetrie für Datenbanken, Pools für elastische Datenbanken und die verwaltete Instanz. Zudem erfahren Sie, wie Sie die Azure SQL-Analyse als Überwachungstool zum Anzeigen der Diagnosetelemetriedaten für eine Datenbank konfigurieren.
 
@@ -101,7 +101,6 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
 
 > [!NOTE]
 > Sicherheitsüberwachungsprotokolle können nicht über die Einstellungen für die Datenbankdiagnose aktiviert werden. Informationen zum Aktivieren des Streamings von Überwachungsprotokollen finden Sie unter [Einrichten der Überwachung für Ihre Datenbank](sql-database-auditing.md#subheading-2) und [SQL Audit logs in Azure Log Analytics and Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/) (SQL-Überwachungsprotokolle in Azure Log Analytics und Azure Event Hubs).
-
 > [!TIP]
 > Wiederholen Sie diese Schritte für jede Azure SQL-Datenbank, die überwacht werden soll.
 
@@ -112,17 +111,17 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
 Um das Streaming von Diagnosetelemetriedaten für Datenbanken in der verwalteten Instanz zu aktivieren, gehen Sie folgendermaßen vor:
 
 1. Navigieren Sie zu Ihrer Datenbank in der verwalteten Instanz.
-1. Wählen Sie **Diagnoseeinstellungen** aus.
-1. Klicken Sie auf **Diagnose aktivieren**, wenn noch keine Einstellungen vorgenommen wurden, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten.
+2. Wählen Sie **Diagnoseeinstellungen** aus.
+3. Klicken Sie auf **Diagnose aktivieren**, wenn noch keine Einstellungen vorgenommen wurden, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten.
    - Sie können bis zu drei parallele Verbindungen zum Streamen von Diagnosetelemetriedaten erstellen.
    - Wählen Sie **+ Diagnoseeinstellung hinzufügen** aus, um das parallele Streaming von Diagnosedaten in mehrere Ressourcen zu konfigurieren.
 
    ![Aktivieren der Diagnose für die Datenbank in einer verwalteten Instanz](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. Geben Sie einen Einstellungsnamen zu Referenzzwecken ein.
-1. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
-1. Aktivieren Sie die Kontrollkästchen für die Datenbankdiagnosetelemetrie: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** und **Errors**.
-1. Wählen Sie **Speichern** aus.
+4. Geben Sie einen Einstellungsnamen zu Referenzzwecken ein.
+5. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
+6. Aktivieren Sie die Kontrollkästchen für die Datenbankdiagnosetelemetrie: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** und **Errors**.
+7. Wählen Sie **Speichern** aus.
 
    ![Konfigurieren der Diagnose für die Datenbank in einer verwalteten Instanz](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
@@ -170,7 +169,7 @@ Sie können eine Ressource der verwalteten Instanz zum Erfassen der folgenden Di
 
 | Ressource | Überwachte Telemetriedaten |
 | :------------------- | ------------------- |
-| **Verwaltete Instanz** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) enthält die Anzahl virtueller Kerne, den durchschnittlichen CPU-Prozentsatz, E/A-Anforderungen, gelesene/geschriebene Bytes, den reservierten und genutzten Speicherplatz. |
+| **Verwaltete Instanz** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) enthält die Anzahl virtueller Kerne, den durchschnittlichen CPU-Prozentsatz, E/A-Anforderungen, gelesene/geschriebene Bytes, den reservierten und genutzten Speicherplatz. |
 
 Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetriedaten für eine Ressource der verwalteten Instanz zu aktivieren:
 
@@ -338,11 +337,11 @@ Nachdem die ausgewählten Daten an Event Hubs gestreamt wurden, sind Sie der Ein
 
 Sie können gestreamte Metriken in Event Hubs für folgende Zwecke verwenden:
 
-* **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI**. Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe.
+- **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI**. Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe.
 
-* **Streamen von Protokollen in Protokollierungs- und Telemetriedatenströme von Drittanbietern**. Mithilfe des Event Hubs-Streamings können Sie Ihre Metriken und Diagnoseprotokolle in verschiedene Überwachungs- und Protokollanalyselösungen von Drittanbietern übertragen.
+- **Streamen von Protokollen in Protokollierungs- und Telemetriedatenströme von Drittanbietern**. Mithilfe des Event Hubs-Streamings können Sie Ihre Metriken und Diagnoseprotokolle in verschiedene Überwachungs- und Protokollanalyselösungen von Drittanbietern übertragen.
 
-* **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform** Haben Sie bereits eine benutzerdefinierte Telemetrieplattform, oder erwägen Sie die Erstellung einer solchen Plattform? Der Event Hubs-Dienst beruht auf dem hochgradig skalierbaren Veröffentlichen-Abonnieren-Muster und ermöglicht Ihnen daher die flexible Erfassung von Diagnoseprotokollen. Informationen zur Verwendung von Event Hubs für eine globale Telemetrieplattform finden Sie in der [Anleitung von Dan Rosanova](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+- **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform** Haben Sie bereits eine benutzerdefinierte Telemetrieplattform, oder erwägen Sie die Erstellung einer solchen Plattform? Der Event Hubs-Dienst beruht auf dem hochgradig skalierbaren Veröffentlichen-Abonnieren-Muster und ermöglicht Ihnen daher die flexible Erfassung von Diagnoseprotokollen. Informationen zur Verwendung von Event Hubs für eine globale Telemetrieplattform finden Sie in der [Anleitung von Dan Rosanova](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="stream-into-storage"></a>Streamen in den Speicher
 
@@ -386,7 +385,7 @@ Wenn Sie die Azure SQL-Analyse verwenden, können Sie Ihre Datenerfassungsnutzun
 
 ## <a name="metrics-and-logs-available"></a>Verfügbare Metriken und Protokolle
 
-Mit der [SQL-Analyse-Sprache](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) können Sie die gesammelten Überwachungstelemetriedaten für Ihre eigene _benutzerdefinierte Analyse_ und _Anwendungsentwicklung_ verwenden. 
+Mit der [SQL-Analyse-Sprache](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) können Sie die gesammelten Überwachungstelemetriedaten für Ihre eigene _benutzerdefinierte Analyse_ und _Anwendungsentwicklung_ verwenden.
 
 ## <a name="all-metrics"></a>Alle Metriken
 
@@ -690,12 +689,12 @@ Weitere Informationen zum [Protokollformat von Intelligent Insights](sql-databas
 
 Weitere Informationen zum Aktivieren der Protokollierung und zu den Metriken und Protokollkategorien, die von den verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
-* [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Weitere Informationen zu Event Hubs finden Sie hier:
 
-* [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-* [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Weitere Informationen zu Azure Storage finden Sie unter [Herunterladen von Metriken und Diagnoseprotokollen aus Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

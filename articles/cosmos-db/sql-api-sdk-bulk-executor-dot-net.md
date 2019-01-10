@@ -3,17 +3,17 @@ title: 'Azure Cosmos DB: BulkExecutor – .NET-API, SDK und Ressourcen'
 description: Wichtige Informationen zur .NET-API und zum SDK für Bulk Executor, einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des .NET SDK für Azure Cosmos DB Bulk Executor.
 author: tknandu
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: c239464a37637b21504227951d917977cfea6726
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8675c5ff90f7be2dc0b3ac80eb593adb613ba860
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343954"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039757"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET-BulkExecutor-Bibliothek: Informationen zum Download 
 
@@ -77,7 +77,7 @@ ms.locfileid: "53343954"
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
 * Unterstützung für BulkDelete-Vorgang für die SQL-API von Azure Cosmos DB-Konten.
-* Unterstützung für BulkImport-Vorgang für die MongoDB-API von Azure Cosmos DB-Konten.
+* Unterstützung für den BulkImport-Vorgang für Konten mit der MongoDB-API von Azure Cosmos DB.
 * Aktualisierung der DocumentDB .NET SDK-Abhängigkeit auf Version 2.0.0. 
 
 ### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2

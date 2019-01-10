@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 89224b32efaecdf7a2797b034b1beac7ad191ee5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 467db4046c0600142338dcfa39e136f45255caba
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685224"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976748"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Tutorial: Azure Active Directory-Integration in SuccessFactors
+# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Tutorial: Azure Active Directory-Integration mit SuccessFactors
 
 In diesem Tutorial erfahren Sie, wie Sie SuccessFactors in Azure Active Directory (Azure AD) integrieren.
 
@@ -150,7 +150,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | `https://<companyname>.sapsf.cn/<companyname>`|
          
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Die entsprechenden Werte erfahren Sie vom [SuccessFactors-Supportteam](https://www.successfactors.com/support.html). 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Die entsprechenden Werte erfahren Sie vom [SuccessFactors-Supportteam](https://www.successfactors.com/content/ssf-site/en/support.html). 
 
 5. Klicken Sie auf der Seite **SAML-Signaturzertifikat** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das **Zertifikat (Base64)** herunterzuladen. Speichern Sie die Zertifikatsdatei anschließend auf Ihrem Computer.
 
@@ -261,7 +261,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Damit sich Azure AD-Benutzer bei SuccessFactors anmelden können, müssen sie in SuccessFactors bereitgestellt werden.  
 Im Fall von SuccessFactors ist die Bereitstellung eine manuelle Aufgabe.
 
-Wenn Sie in SuccessFactors erstellte Benutzer abrufen möchten, wenden Sie sich an das [SuccessFactors-Supportteam](https://www.successfactors.com/support.html).
+Wenn Sie in SuccessFactors erstellte Benutzer abrufen möchten, wenden Sie sich an das [SuccessFactors-Supportteam](https://www.successfactors.com/content/ssf-site/en/support.html).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

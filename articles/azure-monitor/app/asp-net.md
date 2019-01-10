@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: f8ea270e5a41c094b29fb2dbb6df4bd325b66b32
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f41d54f97861a4df7d50cb3b4f0f99970de354cc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999967"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121497"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
-Mit diesem Verfahren wird Ihre ASP.NET-Web-App so konfiguriert, dass sie Telemetriedaten an den [Azure Application Insights](../../application-insights/app-insights-overview.md)-Dienst sendet. Dies funktioniert für ASP.NET-Apps, die entweder lokal auf Ihrem eigenen IIS-Server oder in der Cloud gehostet werden. Sie erhalten Diagramme und eine leistungsfähige Abfragesprache, mit deren Hilfe Sie die Leistung Ihrer App sowie deren Verwendung durch die Benutzer nachvollziehen können. Darüber hinaus erhalten Sie automatische Warnungen bei Ausfällen oder Leistungsproblemen. Für viele Entwickler sind diese Features bereits ausreichend, bei Bedarf kann die Telemetrie aber auch noch erweitert und angepasst werden.
+Mit diesem Verfahren wird Ihre ASP.NET-Web-App so konfiguriert, dass sie Telemetriedaten an den [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)-Dienst sendet. Dies funktioniert für ASP.NET-Apps, die entweder lokal auf Ihrem eigenen IIS-Server oder in der Cloud gehostet werden. Sie erhalten Diagramme und eine leistungsfähige Abfragesprache, mit deren Hilfe Sie die Leistung Ihrer App sowie deren Verwendung durch die Benutzer nachvollziehen können. Darüber hinaus erhalten Sie automatische Warnungen bei Ausfällen oder Leistungsproblemen. Für viele Entwickler sind diese Features bereits ausreichend, bei Bedarf kann die Telemetrie aber auch noch erweitert und angepasst werden.
 
 Die Einrichtung ist mit wenigen Mausklicks in Visual Studio erledigt. Das Volumen der Telemetriedaten kann eingeschränkt werden, um Kosten zu vermeiden. Dadurch können Sie experimentieren und debuggen oder eine Website mit nur wenigen Benutzern überwachen. Und wenn Sie dann später Ihre Produktionswebsite überwachen möchten, können Sie den Grenzwert problemlos erhöhen.
 
@@ -84,7 +84,7 @@ Im Application Insights-Suchfenster in Visual Studio werden die Telemetriedaten 
 > [!Tip]
 > Gehen Sie wie folgt vor, wenn keine Daten angezeigt werden: Stellen Sie sicher, dass der richtige Zeitbereich festgelegt ist, und klicken Sie auf das Suchsymbol.
 
-[Erfahren Sie mehr zu Application Insights-Tools in Visual Studio](../../application-insights/app-insights-visual-studio.md).
+[Erfahren Sie mehr zu Application Insights-Tools in Visual Studio](../../azure-monitor/app/visual-studio.md).
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Anzeigen von Telemetriedaten im Webportal
@@ -106,10 +106,10 @@ Veröffentlichen Sie Ihre App auf Ihrem IIS-Server oder in Azure. Sehen Sie sich
 
 Sie können dann verfolgen, wie Ihre Telemetriedaten im Application Insights-Portal erstellt werden. Darin können Sie Metriken überwachen, die Telemetriedaten durchsuchen und [Dashboards](../../azure-monitor/app/app-insights-dashboards.md) einrichten. Außerdem können Sie die leistungsfähige [Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguage) verwenden, um die Nutzung und Leistung zu analysieren oder nach bestimmten Ereignissen zu suchen.
 
-Sie können Ihre Telemetriedaten auch in [Visual Studio](../../application-insights/app-insights-visual-studio.md) mit Tools wie der Diagnosesuche und [Trends](../../application-insights/app-insights-visual-studio-trends.md) weiter analysieren.
+Sie können Ihre Telemetriedaten auch in [Visual Studio](../../azure-monitor/app/visual-studio.md) mit Tools wie der Diagnosesuche und [Trends](../../azure-monitor/app/visual-studio-trends.md) weiter analysieren.
 
 > [!NOTE]
-> Wenn Ihre App so viele Telemetriedaten sendet, dass die [Einschränkungsgrenzwerte](../../azure-monitor/app/pricing.md#limits-summary) bald erreicht werden, wird das automatische [Sampling](../../application-insights/app-insights-sampling.md) aktiviert. Mit dem Sampling wird die Menge der von der App gesendeten Telemetriedaten reduziert, während gleichzeitig korrelierte Daten für Diagnosezwecke beibehalten werden.
+> Wenn Ihre App so viele Telemetriedaten sendet, dass die [Einschränkungsgrenzwerte](../../azure-monitor/app/pricing.md#limits-summary) bald erreicht werden, wird das automatische [Sampling](../../azure-monitor/app/sampling.md) aktiviert. Mit dem Sampling wird die Menge der von der App gesendeten Telemetriedaten reduziert, während gleichzeitig korrelierte Daten für Diagnosezwecke beibehalten werden.
 >
 >
 
@@ -147,14 +147,14 @@ Es gibt noch weitere Themen, die für Sie unter Umständen von Interesse sind:
 
 ### <a name="analysis"></a>Analyse
 
-* **[Arbeiten mit Application Insights in Visual Studio](../../application-insights/app-insights-visual-studio.md)**<br/>Enthält Informationen zum Debuggen per Telemetrie, zur Diagnosesuche und zum Drillthrough für Code.
+* **[Arbeiten mit Application Insights in Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Enthält Informationen zum Debuggen per Telemetrie, zur Diagnosesuche und zum Drillthrough für Code.
 * **[Navigation und Dashboards im Application Insights-Portal](../../azure-monitor/app/app-insights-dashboards.md)**<br/> Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen und zum Export von Telemetriedaten sowie eine Livekarte der Abhängigkeiten Ihrer Anwendung.
 * **[Analytics](../../azure-monitor/log-query/get-started-portal.md)**: Die leistungsfähige Abfragesprache.
 
 ### <a name="alerts"></a>Alerts
 
 * [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md): Erstellen Sie Tests, um sicherzustellen, dass Ihre Website im Web sichtbar ist.
-* [Intelligente Diagnose](../../application-insights/app-insights-proactive-diagnostics.md): Diese Tests werden automatisch ausgeführt, sodass Sie keinerlei Einrichtungsschritte ausführen müssen. Sie werden darüber benachrichtigt, ob für Ihre App eine ungewöhnlich hohe Zahl von Anforderungen mit Fehlern vorliegt.
+* [Intelligente Diagnose](../../azure-monitor/app/proactive-diagnostics.md): Diese Tests werden automatisch ausgeführt, sodass Sie keinerlei Einrichtungsschritte ausführen müssen. Sie werden darüber benachrichtigt, ob für Ihre App eine ungewöhnlich hohe Zahl von Anforderungen mit Fehlern vorliegt.
 * [Metrikwarnungen](../../azure-monitor/app/alerts.md): Legen Sie Metrikwarnungen fest, damit Sie gewarnt werden, wenn für eine Metrik ein Schwellenwert überschritten wird. Sie können diese für benutzerdefinierte Metriken festlegen, die Sie in Ihrer App codieren.
 
 ### <a name="automation"></a>Automation

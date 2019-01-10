@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 57dd6fc822e0285b33368987d2af7c690d4f7786
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337817"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994758"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Verwenden einer verwalteten SQL-Datenbank-Instanz mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität
 
@@ -30,7 +30,7 @@ In der folgenden Abbildung sind die wichtigsten Features der verwalteten Instanz
 
 ![Wichtigste Features](./media/sql-database-managed-instance/key-features.png)
 
-Die verwaltete Azure SQL-Datenbank-Instanz ist für Kunden konzipiert, die eine große Anzahl von Apps aus einer selbst erstellten oder über ISVs bereitgestellten lokalen Umgebung oder IaaS-Umgebung mit möglichst geringem Migrationsaufwand in eine vollständig verwaltete PaaS-Cloudumgebung migrieren möchten. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern.
+Die verwaltete Azure SQL-Datenbank-Instanz ist für Kunden konzipiert, die eine große Anzahl von Apps aus einer selbst erstellten oder über ISVs bereitgestellten lokalen Umgebung oder IaaS-Umgebung mit möglichst geringem Migrationsaufwand in eine vollständig verwaltete PaaS-Cloudumgebung migrieren möchten. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern.
 
 Bis zur allgemeinen Verfügbarkeit wird für verwaltete Instanzen durch einen gestaffelten Releaseplan eine nahezu 100%ige Oberflächenkompatibilität mit dem neuesten lokalen SQL Server-Release angestrebt.
 
@@ -70,7 +70,7 @@ Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle a
 
 ## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
-Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) der verwalteten Instanz bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend Ihren Workloadanforderungen ändern. Das V-Kern-Modell ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
+Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) der verwalteten Instanz bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend Ihren Workloadanforderungen ändern. Das V-Kern-Modell ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zudem Einsparungen von bis zu 30 Prozent.
 
 Beim V-Kern-Modell können Sie verschiedene Hardwaregenerationen auswählen.
 
@@ -146,7 +146,7 @@ Azure SQL-Datenbank bietet eine Reihe von erweiterten Sicherheitsfeatures, die z
 - Bei der [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) können Sie den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext). Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung. Mit RLS können Sie den Zugriff auf Datenzeilen einschränken. So können Sie beispielsweise sicherstellen, dass Mitarbeiter nur auf die Datenzeilen zugreifen können, die für ihre Abteilung relevant sind, oder den Datenzugriff ausschließlich auf die relevanten Daten beschränken.
 - [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) verschlüsselt Datendateien einer verwalteten Azure SQL-Datenbank-Instanz. Dies wird als Verschlüsselung ruhender Daten bezeichnet. TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten- und Protokolldateien in Echtzeit durch. Die Verschlüsselung verwendet einen Datenbank-Verschlüsselungsschlüssel (DEK), der im Startdatensatz der Datenbank gespeichert wird und während der Wiederherstellung zur Verfügung steht. Sie können alle Ihre Datenbanken in der verwalteten Instanz mit transparenter Datenverschlüsselung schützen. TDE ist die bewährte SQL Server-Verschlüsselungstechnologie für ruhende Daten, die für viele Konformitätsstandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist.
 
-Die Migration einer verschlüsselten Datenbank zur verwalteten SQL-Instanz wird über den Azure Database Migration Service (DMS) oder die native Wiederherstellung unterstützt. Wenn Sie planen, eine verschlüsselte Datenbank mittels nativer Wiederherstellung zu migrieren, ist die Migration des vorhandenen TDE-Zertifikats vom SQL Server vor Ort oder von der SQL Server-VM auf die verwaltete Instanz erforderlich. Weitere Informationen zu den Migrationsoptionen finden Sie unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md).
+Die Migration einer verschlüsselten Datenbank zur verwalteten SQL-Instanz wird über den Azure Database Migration Service (DMS) oder die native Wiederherstellung unterstützt. Wenn Sie planen, eine verschlüsselte Datenbank mittels nativer Wiederherstellung zu migrieren, ist die Migration des vorhandenen TDE-Zertifikats vom lokalen SQL-Server oder von der SQL Server-VM zur verwalteten Instanz erforderlich. Weitere Informationen zu den Migrationsoptionen finden Sie unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md).
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-Integration
 

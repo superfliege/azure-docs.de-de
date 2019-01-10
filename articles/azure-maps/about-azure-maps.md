@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165963"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104266"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -62,7 +62,7 @@ Außerdem verfügt der Suchdienst über erweiterte Features, z.B. Suche entlang 
 
 ### <a name="time-zone-service"></a>Zeitzonendienst
 
-Mit dem Zeitzonendienst können Sie aktuelle, vergangene und zukünftige Zeitzoneninformationen abfragen, indem Sie entweder Breitengrad/Längengrad-Paare oder eine [IANA-ID](http://www.iana.org/) verwenden. Außerdem können Sie mit dem Zeitzonendienst Microsoft Windows-Zeitzonen-IDs in IANA-Zeitzonen konvertieren und einen Zeitzonenoffset zu UTC und die aktuelle Zeit in einer entsprechenden Zeitzone abrufen. Eine typische JSON-Antwort für eine Abfrage mit dem Zeitzonendienst sieht wie folgt aus:
+Mit dem Zeitzonendienst können Sie aktuelle, vergangene und zukünftige Zeitzoneninformationen abfragen, indem Sie entweder Breitengrad/Längengrad-Paare oder eine [IANA-ID](https://www.iana.org/) verwenden. Außerdem können Sie mit dem Zeitzonendienst Microsoft Windows-Zeitzonen-IDs in IANA-Zeitzonen konvertieren und einen Zeitzonenoffset zu UTC und die aktuelle Zeit in einer entsprechenden Zeitzone abrufen. Eine typische JSON-Antwort für eine Abfrage mit dem Zeitzonendienst sieht wie folgt aus:
 
 ```JSON
 {
@@ -109,7 +109,7 @@ Außerdem verfügt Azure Maps über ein komfortables [JavaScript-Kartensteuerele
 
 ## <a name="usage"></a>Verwendung
 
-Für den Zugriff auf die Maps-Dienste navigieren Sie zum [Azure-Portal](http://portal.azure.com) und erstellen ein Azure Maps-Konto.
+Für den Zugriff auf die Maps-Dienste navigieren Sie zum [Azure-Portal](https://portal.azure.com) und erstellen ein Azure Maps-Konto.
 
 Für Azure Maps wird ein schlüsselbasiertes Authentifizierungsschema verwendet. Für Ihr Konto wurden zwei Schlüssel vorab generiert. Beginnen Sie damit, diese Standortfunktionen in Ihre Anwendungen zu integrieren, indem Sie einen Ihrer Schlüssel verwenden und eine Anforderung an den Azure Maps-Dienst senden.
 

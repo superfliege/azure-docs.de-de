@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3ad657fb695d88ffc75a37ee566ce59126906748
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339721"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038431"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Erstellen von dauerhaften Funktionen mit dem Azure-Portal
 
@@ -139,4 +139,4 @@ Ihre erste dauerhafte Funktion steht nun in Azure zur Verwendung bereit.
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Informationen zu gängigen Mustern für dauerhafte Funktionen](durable-functions-overview.md)
+> [Informationen zu gängigen Mustern für dauerhafte Funktionen](durable-functions-concepts.md)

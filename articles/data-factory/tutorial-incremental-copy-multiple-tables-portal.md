@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: e25cdd0677efce0ea8d40ad1c8ae07a5d071a67f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 65dae64a43fb145f34c6933f0b74f8e798f5e373
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969787"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016323"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -248,7 +247,7 @@ END
 1. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 1. Wählen Sie die Option **An Dashboard anheften** aus.     
 1. Klicken Sie auf **Create**.      
-1. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Die Data Factory wird bereitgestellt**. 
+1. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Deploying data factory** (Data Factory wird bereitgestellt...). 
 
     ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 5df494904dd756ca7ef3a36a48da2224ab2bca81
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e0e25a9a1e70575d862374da0fb3097408b002e7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386008"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714626"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern
 
@@ -37,13 +37,13 @@ Bei Hue handelt es sich um einen Satz von Webanwendungen zur Interaktion mit ein
 > [!WARNING]  
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org). Beispiel: [Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [https://apache.org](https://apache.org). Beispiel: [Hadoop](https://hadoop.apache.org/).
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>Installation von Hue mithilfe von Skriptaktionen
 
-Das Skript zum Installieren von Hue auf einem Linux-basierten HDInsight-Cluster ist unter https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh verfügbar. Mit diesem Skript können Sie Hue in Clustern installieren, die Azure Storage Blobs (WASB) oder Azure Data Lake Store als Standardspeicher verwenden.
+Das Skript zum Installieren von Hue auf einem Linux-basierten HDInsight-Cluster ist unter https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh verfügbar. Mit diesem Skript können Sie Hue auf Clustern installieren, die Azure Storage Blobs (WASB) oder Azure Data Lake Storage als Standardspeicher verwenden.
 
 Dieser Abschnitt enthält Anweisungen zur Verwendung des Skripts während der Bereitstellung des Clusters mithilfe des Azure-Portals.
 

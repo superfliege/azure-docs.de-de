@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: e0c50046cd3cdb4db7c9e7e3961124b891b3c0a4
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 44b25263dbeb0d787120ae3a86076b2f888ed46f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021575"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107479"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurieren des Redis-Clusterings für Azure Cache for Redis-Instanzen im Premium-Tarif
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel erfahren Sie, wie Sie das Clustering in einer Azure Cache for Redis-Instanz im Premium-Tarif konfigurieren.
@@ -27,7 +27,7 @@ Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibi
 Weitere Informationen zu anderen Cachefeatures des Premium-Tarifs finden Sie unter [Einführung in den Premium-Tarif von Azure Cache for Redis](cache-premium-tier-intro.md).
 
 ## <a name="what-is-redis-cluster"></a>Was ist Redis Cluster?
-Azure Cache for Redis bietet Redis-Cluster gemäß der [Implementierung in Redis](http://redis.io/topics/cluster-tutorial). Redis Cluster bringt Ihnen die folgenden Vorteile: 
+Azure Cache for Redis bietet Redis-Cluster gemäß der [Implementierung in Redis](https://redis.io/topics/cluster-tutorial). Redis Cluster bringt Ihnen die folgenden Vorteile: 
 
 * Die Möglichkeit, das DataSet automatisch zwischen mehreren Knoten aufzuteilen. 
 * Die Möglichkeit, Vorgänge fortzusetzen, wenn bei einer Teilmenge der Knoten Fehler auftreten oder nicht alle Knoten im Cluster miteinander kommunizieren können. 
@@ -101,7 +101,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zum Clusterin
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>Muss ich Änderungen an meiner Clientanwendung vornehmen, um das Clustering verwenden zu können?
 * Wenn das Clustering aktiviert ist, ist nur Datenbank 0 verfügbar. Wenn die Clientanwendung mehrere Datenbanken verwendet und versucht, eine andere Datenbank als Datenbank 0 zu lesen oder Schreibvorgänge dafür auszuführen, wird die folgende Ausnahme ausgelöst: `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->``StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
-  Weitere Informationen finden Sie unter [Redis Cluster Specification - Implemented subset](http://redis.io/topics/cluster-spec#implemented-subset)(Spezifikation für Redis-Cluster – implementierte Teilmenge).
+  Weitere Informationen finden Sie unter [Redis Cluster Specification - Implemented subset](https://redis.io/topics/cluster-spec#implemented-subset)(Spezifikation für Redis-Cluster – implementierte Teilmenge).
 * Wenn Sie [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)nutzen, müssen Sie Version 1.0.481 oder höher verwenden. Sie stellen eine Verbindung mit dem Cache mit den gleichen [Endpunkten, Ports und Schlüsseln](cache-configure.md#properties) her, die Sie auch für einen Cache verwenden, bei dem das Clustering nicht aktiviert ist. Der einzige Unterschied besteht darin, dass alle Lese- und Schreibvorgänge für Datenbank 0 erfolgen müssen.
   
   * Für andere Clients gelten möglicherweise andere Anforderungen. Weitere Informationen finden Sie unter [Wird das Clustering auf allen Redis-Clients unterstützt?](#do-all-redis-clients-support-clustering)
@@ -109,14 +109,14 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zum Clusterin
 * Bei Verwendung des Redis ASP.NET-Sitzungszustandsanbieters müssen Sie Version 2.0.1 oder höher verwenden. Weitere Informationen finden Sie unter [Kann ich das Clustering mit den Redis ASP.NET-Sitzungszustands- und -Ausgabezwischenspeicherungsanbietern verwenden?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Wie sind Schlüssel in einem Cluster verteilt?
-Laut Redis-Dokumentation zum [Schlüsselverteilungsmodell](http://redis.io/topics/cluster-spec#keys-distribution-model) wird der Schlüsselbereich in 16.384 Slots aufgeteilt. Jeder Schlüssel wird gehasht und einem dieser Slots zugewiesen, die auf die Knoten des Clusters verteilt werden. Sie können konfigurieren, welcher Teil des Schlüssels gehasht ist, um sicherzustellen, dass mehrere Schlüssel in demselben Shard angeordnet sind. Verwenden Sie hierfür Hashtags.
+Laut Redis-Dokumentation zum [Schlüsselverteilungsmodell](https://redis.io/topics/cluster-spec#keys-distribution-model) wird der Schlüsselbereich in 16.384 Slots aufgeteilt. Jeder Schlüssel wird gehasht und einem dieser Slots zugewiesen, die auf die Knoten des Clusters verteilt werden. Sie können konfigurieren, welcher Teil des Schlüssels gehasht ist, um sicherzustellen, dass mehrere Schlüssel in demselben Shard angeordnet sind. Verwenden Sie hierfür Hashtags.
 
-* Schlüssel mit einem Hashtag: Wenn ein Teil des Schlüssels in `{` und `}` gesetzt ist, wird nur dieser Teil des Schlüssels gehasht, um den Hashslot eines Schlüssels zu ermitteln. Die folgenden drei Schlüssel würden sich beispielsweise in demselben Shard befinden: `{key}1`, `{key}2` und `{key}3`, da nur der `key`-Teil des Namens gehasht ist. Eine vollständige Liste mit den Spezifikationen für Schlüssel-Hashtags finden Sie unter [Schlüssel-Hashtags](http://redis.io/topics/cluster-spec#keys-hash-tags).
+* Schlüssel mit einem Hashtag: Wenn ein Teil des Schlüssels in `{` und `}` gesetzt ist, wird nur dieser Teil des Schlüssels gehasht, um den Hashslot eines Schlüssels zu ermitteln. Die folgenden drei Schlüssel würden sich beispielsweise in demselben Shard befinden: `{key}1`, `{key}2` und `{key}3`, da nur der `key`-Teil des Namens gehasht ist. Eine vollständige Liste mit den Spezifikationen für Schlüssel-Hashtags finden Sie unter [Schlüssel-Hashtags](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Schlüssel ohne Hashtag: Der gesamte Schlüsselname wird für das Hashing verwendet. Dies ergibt eine statistisch gleichmäßige Verteilung über die Shards des Caches.
 
 Zum Erzielen einer optimalen Leistung und eines hohen Durchsatzes empfehlen wir die gleichmäßige Verteilung der Schlüssel. Wenn Sie Schlüssel mit Hashtag verwenden, muss von der Anwendung sichergestellt werden, dass die Schlüssel gleichmäßig verteilt werden.
 
-Weitere Informationen finden Sie unter [Schlüsselverteilungsmodell](http://redis.io/topics/cluster-spec#keys-distribution-model), [Redis Cluster-Daten-Sharding](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding) und [Schlüssel-Hashtags](http://redis.io/topics/cluster-spec#keys-hash-tags).
+Weitere Informationen finden Sie unter [Schlüsselverteilungsmodell](https://redis.io/topics/cluster-spec#keys-distribution-model), [Redis Cluster-Daten-Sharding](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding) und [Schlüssel-Hashtags](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
 Beispielcode zum Arbeiten mit Clustering und Suchen von Schlüsseln im gleichen Shard mit dem StackExchange.Redis-Client finden Sie im [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs)-Teil des [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld)-Beispiels.
 
@@ -124,7 +124,7 @@ Beispielcode zum Arbeiten mit Clustering und Suchen von Schlüsseln im gleichen 
 Die maximale Größe bei Premium-Cache beträgt 53 GB. Sie können bis zu 10 Shards mit einer maximalen Größe von 530 GB erstellen. Wenn Sie eine höhere Cachegröße benötigen, können Sie sie [anfordern](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Weitere Informationen finden Sie unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Wird das Clustering auf allen Redis-Clients unterstützt?
-Zum gegenwärtigen Zeitpunkt unterstützen nicht alle Clients das Redis-Clustering. StackExchange.Redis ist einer der Clients, der das Clustering unterstützt. Weitere Informationen zu anderen Clients finden Sie im [Redis Cluster Tutorial](http://redis.io/topics/cluster-tutorial) im Abschnitt [Playing with the cluster (Arbeiten mit dem Cluster)](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster). 
+Zum gegenwärtigen Zeitpunkt unterstützen nicht alle Clients das Redis-Clustering. StackExchange.Redis ist einer der Clients, der das Clustering unterstützt. Weitere Informationen zu anderen Clients finden Sie im [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial) im Abschnitt [Playing with the cluster (Arbeiten mit dem Cluster)](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster). 
 
 Das Redis-Clusteringprotokoll erfordert, dass jeder Client eine Verbindung mit jedem Shard direkt im Clustermodus herstellen muss. Der Versuch, einen Client verwenden, der kein Clustering unterstützt, führt wahrscheinlich zu einer großen Anzahl von [Ausnahmen des Typs MOVED aufgrund von Umleitungen](https://redis.io/topics/cluster-spec#moved-redirection).
 
@@ -137,7 +137,7 @@ Das Redis-Clusteringprotokoll erfordert, dass jeder Client eine Verbindung mit j
 Sie können eine Verbindung mit dem Cache mit den gleichen [Endpunkten](cache-configure.md#properties), [Ports](cache-configure.md#properties) und [Schlüsseln](cache-configure.md#access-keys) herstellen, die Sie auch für einen Cache verwenden, bei dem das Clustering nicht aktiviert ist. Redis verwaltet das Clustering auf dem Back-End, sodass es nicht über Ihren Client verwaltet werden muss.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Kann ich direkt eine Verbindung mit den einzelnen Shards des Caches herstellen?
-Das Clusteringprotokoll erfordert, dass der Client die richtigen Shardverbindungen herstellt. Daher muss der Client dies ordnungsgemäß durchführen. Allerdings besteht jeder Shard aus einem Paar aus primärem Cache und Replikatcache, die zusammen als Cacheinstanz bezeichnet werden. Mit dem Hilfsprogramm redis-cli in der [unstable](http://redis.io/download) -Verzweigung des Redis-Repositorys auf GitHub können Sie eine Verbindung mit diesen Cacheinstanzen herstellen. Diese Version implementiert grundlegende Unterstützung, wenn sie mit dem Switch `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](http://redis.io/topics/cluster-tutorial) unter [Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) (Ausprobieren des Clusters) auf [http://redis.io](http://redis.io).
+Das Clusteringprotokoll erfordert, dass der Client die richtigen Shardverbindungen herstellt. Daher muss der Client dies ordnungsgemäß durchführen. Allerdings besteht jeder Shard aus einem Paar aus primärem Cache und Replikatcache, die zusammen als Cacheinstanz bezeichnet werden. Mit dem Hilfsprogramm redis-cli in der [unstable](https://redis.io/download) -Verzweigung des Redis-Repositorys auf GitHub können Sie eine Verbindung mit diesen Cacheinstanzen herstellen. Diese Version implementiert grundlegende Unterstützung, wenn sie mit dem Switch `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](https://redis.io/topics/cluster-tutorial) unter [Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) (Ausprobieren des Clusters) auf [https://redis.io](https://redis.io).
 
 Ohne SSL verwenden Sie die folgenden Befehle.
 

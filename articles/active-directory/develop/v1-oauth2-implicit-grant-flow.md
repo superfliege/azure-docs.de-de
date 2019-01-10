@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 818801a7f36e82d0065f85b5cf9e36288ccbff32
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422030"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970389"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)
 
@@ -61,7 +61,7 @@ Bei diesem Modell kann die JavaScript-Anwendung Zugriffstoken unabhängig erneue
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Eignet sich die implizite Gewährung für meine App?
 
-Die implizite Gewährung stellt ein höheres Risiko dar als andere Gewährungen. Die Bereiche, die Sie beachten müssen, sind gut dokumentiert. Zum Beispiel in [Missbräuchliche Verwendung von Zugriffstoken zum Annehmen der Identität von Ressourcenbesitzern in impliziten Abläufen][OAuth2-Spec-Implicit-Misuse] und [OAuth 2.0-Bedrohungsmodell und Sicherheitsüberlegungen][OAuth2-Threat-Model-And-Security-Implications]. Das höhere Risiko liegt größtenteils darin begründet, dass Anwendungen aktiviert werden, die aktiven Code ausführen, der von einer Remoteressource direkt für einen Browser bereitgestellt wird. Wenn Sie eine SPA-Architektur planen, über keine Back-End-Komponenten verfügen oder eine Web-API über JavaScript aufrufen möchten, empfiehlt sich die Verwendung des impliziten Ablaufs für den Tokenabruf.
+Die implizite Genehmigung stellt ein höheres Risiko dar als andere Genehmigungen, die besonders zu beachtenden Bereiche sind jedoch gut dokumentiert (z.B. in [Missbräuchliches Verwenden von Zugriffstoken zum Annehmen der Identität des Ressourcenbesitzers im impliziten Flow][OAuth2-Spec-Implicit-Misuse] und [Überlegungen zum OAuth 2.0-Bedrohungsmodell und zur Sicherheit][OAuth2-Threat-Model-And-Security-Implications]). Das höhere Risiko liegt größtenteils darin begründet, dass Anwendungen aktiviert werden, die aktiven Code ausführen, der von einer Remoteressource direkt für einen Browser bereitgestellt wird. Wenn Sie eine SPA-Architektur planen, über keine Back-End-Komponenten verfügen oder eine Web-API über JavaScript aufrufen möchten, empfiehlt sich die Verwendung des impliziten Ablaufs für den Tokenabruf.
 
 Falls es sich bei Ihrer Anwendung dagegen um einen nativen Client handelt, ist der implizite Ablauf weniger empfehlenswert. Da bei nativen Clients keine Azure AD-Sitzungscookies vorhanden sind, hat Ihre Anwendung keine Möglichkeit, eine Sitzung mit langer Laufzeit aufrechtzuerhalten. Das bedeutet, dass Ihre Anwendung beim Abrufen von Zugriffstoken für neue Ressourcen immer wieder Eingabeaufforderung an den Benutzer richtet.
 

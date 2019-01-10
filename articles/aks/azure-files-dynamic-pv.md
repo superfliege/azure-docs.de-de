@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 022ffeaf75f8f03447b931ed9c3a474286a17f89
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067804"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968985"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Weitere Informationen zu persistenten Kubernetes-Volumes finden Sie unter [Persi
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -184,7 +184,7 @@ Verwenden Sie den Befehl [kubectl apply][kubectl-apply] zum Erstellen des Pods.
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-Sie verfügen nun über einen ausgeführten Pod mit Ihrem Azure-Datenträger, der im Verzeichnis */mnt/azure* eingebunden wurde. Diese Konfiguration wird angezeigt, wenn Sie Ihren Pod über `kubectl describe pod mypod` auswerten. In der folgenden verkürzten Beispielausgabe ist das im Container eingebundene Volume angegeben:
+Sie verfügen nun über einen ausgeführten Pod, bei dem Ihre Azure Files-Freigabe im Verzeichnis */mnt/azure* eingebunden wurde. Diese Konfiguration wird angezeigt, wenn Sie Ihren Pod über `kubectl describe pod mypod` auswerten. In der folgenden verkürzten Beispielausgabe ist das im Container eingebundene Volume angegeben:
 
 ```
 Containers:

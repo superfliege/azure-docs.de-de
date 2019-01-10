@@ -1,9 +1,9 @@
 ---
-title: Dienstkontingente und -grenzwerte für Azure Batch | Microsoft-Dokumentation
+title: Dienstkontingente und -grenzwerte – Azure Batch | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0493783cb1253aab78ff39aa42eeabbec8ddb726
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/18/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263600"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753198"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -65,9 +65,9 @@ Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutz
 | [Gleichzeitige Aufgaben](batch-parallel-node-tasks.md) pro Computeknoten | 4 x Anzahl der Kerne des Knotens |
 | [Anwendungen](batch-application-packages.md) pro Batch-Konto | 20 |
 | Anwendungspakete pro Anwendung. | 40 |
-| Maximale Lebensdauer von Tasks | 7 Tage<sup>1</sup> |
+| Maximale Lebensdauer von Tasks | 180 Tage<sup>1</sup> |
 
-<sup>1</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
+<sup>1</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt 180 Tage. Abgeschlossene Tasks bleiben sieben Tage lang erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 
 ## <a name="view-batch-quotas"></a>Anzeigen von Batch-Kontingenten
 

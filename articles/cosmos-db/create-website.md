@@ -1,19 +1,17 @@
 ---
 title: Bereitstellen einer Web-App mit einer Vorlage – Azure Cosmos DB
 description: Erfahren Sie, wie Sie ein Azure Cosmos DB-Konto, eine Azure App Service-Web-App und eine Beispielwebanwendung mithilfe einer Vorlage des Azure Resource Managers bereitstellen.
-services: cosmos-db, app-service\web
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 8af76c64e755b9c72ae4ebcc223e5f69549b92b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076718"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041015"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), eine [Azure App Service-Web-App](https://go.microsoft.com/fwlink/?LinkId=529714) und eine Beispielwebanwendung bereitstellen und integrieren.

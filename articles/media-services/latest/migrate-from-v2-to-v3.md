@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/21/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 73d4ecec2665e238236de4a778d6cdd43642c87b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310394"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716615"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -83,11 +83,11 @@ Die v3-API weist in Bezug auf die v2-API die folgenden Featurelücken auf. Am Sc
     * Überlagerungen
     * Zuschneiden
     * Miniaturbild-Sprites
-* LiveEvents mit Transcodierung unterstützen derzeit keine Slate-Einfügungen beim Streamen, benutzerdefinierte Voreinstellungen oder Werbemarkereinfügungen über API-Aufruf. 
+* LiveEvents mit Transcodierung unterstützen derzeit keine Slate-Einfügungen beim Streamen oder Werbemarkereinfügungen über API-Aufrufe. 
 
 > [!NOTE]
 > Erstellen Sie ein Lesezeichen für diesen Artikel, und überprüfen Sie ihn regelmäßig auf Aktualisierungen.
-
+ 
 ## <a name="code-differences"></a>Codeunterschiede
 
 Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige Szenarien.
@@ -108,7 +108,7 @@ Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige
     * Mit v2 erstellte Kanäle und Programme (die LiveEvents und LiveOutputs in v3 zugeordnet sind) können nicht mehr mit v3 verwaltet werden. Es wird empfohlen, zu einem günstigen Zeitpunkt (beim Beenden des Kanals) zu v3-LiveEvents und LiveOutputs zu wechseln.<br/>Derzeit können Sie kontinuierlich ausgeführte Kanäle nicht migrieren.  
 
 > [!NOTE]
-> Erstellen Sie ein Lesezeichen für diesen Artikel, und überprüfen Sie ihn regelmäßig auf Aktualisierungen.
+> Diese Seite wird laufend aktualisiert, da das Media Services-Team die v3-APIs weiterhin verbessert und die Diskrepanz zwischen den Versionen behebt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4496a0fd3ec220d03c4cc279876234b503b0dbb6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231629"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720865"
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection – empfohlene Methoden und Referenzarchitekturen
+# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Bewährte Methoden und Referenzarchitekturen
 
 Dieser Artikel richtet sich an IT-Entscheidungsträger und Sicherheitspersonal. Sie sollten mit Azure, Netzwerk und Sicherheit vertraut sein.
 
@@ -81,7 +81,7 @@ Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil gen
 
 Die Skalierbarkeit zeigt, wie gut ein System eine höhere Last verarbeiten kann. Sie sollten Ihre Anwendungen so entwerfen, sodass sie [horizontal skaliert](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) werden kann, um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.
 
-Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-is.md) einen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) aus, der mehrere Instanzen bietet. Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../cloud-services/cloud-services-choose-me.md) verwenden. Stellen Sie für [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VMs) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-manage-availability.md) gehört. Sie sollten [Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für Funktionen zur automatischen Skalierung verwenden.
+Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-is.md) einen [App Service-Plan](../app-service/overview-hosting-plans.md) aus, der mehrere Instanzen bietet. Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../cloud-services/cloud-services-choose-me.md) verwenden. Stellen Sie für [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VMs) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-manage-availability.md) gehört. Sie sollten [Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für Funktionen zur automatischen Skalierung verwenden.
 
 ### <a name="defense-in-depth"></a>Tiefgehende Verteidigung
 
@@ -96,7 +96,7 @@ Häufig werden lokale Ressourcen von Kunden zusammen mit ihren Azure-Ressourcen 
 
 ## <a name="azure-offerings-for-ddos-protection"></a>Azure-Angebote für DDoS-Schutz
 
-Zwei DDoS-Dienstangebote von Azure bieten Schutz vor Netzwerkangriffen (Schicht 3 und 4) – DDoS Protection Basic (Basisschutz)und DDoS Protection Standard (Standardschutz). 
+Azure bietet zwei DDoS-Dienstangebote, die vor Netzwerkangriffen (Schicht 3 und 4) schützen: DDoS Protection Basic und DDoS Protection Standard. 
 
 ### <a name="ddos-protection-basic"></a>DDoS Protection Basic
 

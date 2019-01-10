@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f86107c5fcd4c0175d59689718dca15736aa3b17
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497359"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994713"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
 
@@ -173,7 +173,7 @@ Die **corosync**-Konfigurationsdatei muss auf jedem Knoten im Cluster, einschlie
 
 Der Inhalt von **corosync.conf** vom Testsystem dient als Beispiel.
 
-Der erste Abschnitt ist **totem**, wie unter [Clusterinstallation](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), Schritt 11, beschrieben. Sie können den Wert für **mcastaddr** ignorieren. Übernehmen Sie einfach den vorhandenen Eintrag. Die Einträge für **token** und **consensus** müssen gemäß der [Microsoft Azure-SAP HANA-Dokumentation][sles-pacemaker-ha-guide] festgelegt werden.
+Der erste Abschnitt ist **totem**, wie unter [Clusterinstallation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), Schritt 11, beschrieben. Sie können den Wert für **mcastaddr** ignorieren. Übernehmen Sie einfach den vorhandenen Eintrag. Die Einträge für **token** und **consensus** müssen gemäß der [Microsoft Azure-SAP HANA-Dokumentation][sles-pacemaker-ha-guide] festgelegt werden.
 
 <pre><code>
 totem {
@@ -280,7 +280,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD-Gerät
 
-Die Einrichtung eines SBD-Geräts auf einer Azure-VM wird unter [SBD-Umgrenzung](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) beschrieben.
+Die Einrichtung eines SBD-Geräts auf einer Azure-VM wird unter [SBD-Umgrenzung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) beschrieben.
 
 Überprüfen Sie als Erstes auf der SBD-Server-VM, ob für jeden Knoten im Cluster ACL-Einträge vorhanden sind. Führen Sie den folgenden Befehl auf der SBD-Server-VM aus:
 
@@ -423,7 +423,7 @@ Aufseiten der Ziel-VM (in diesem Beispiel **hso-hana-vm-s2-2**) finden Sie unter
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Überprüfen Sie, ob die Einträge in **/etc/sysconfig/sbd** der Beschreibung in [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) entsprechen. Überprüfen Sie, ob die Starteinstellung in **/etc/iscsi/iscsid.conf** auf „automatic“ festgelegt ist.
+Überprüfen Sie, ob die Einträge in **/etc/sysconfig/sbd** der Beschreibung in [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) entsprechen. Überprüfen Sie, ob die Starteinstellung in **/etc/iscsi/iscsid.conf** auf „automatic“ festgelegt ist.
 
 Die folgenden Einträge **/etc/sysconfig/sbd** sind wichtig. Passen Sie den Wert **id** nach Bedarf an:
 
@@ -458,7 +458,7 @@ Während der Tests und Überprüfungen war das SBD-Gerät nach dem Neustart eine
 5. Stellen Sie sicher, dass oberhalb des Initiatornamens der Wert **Dienststart** auf **Beim Starten** festgelegt ist.
 6. Falls nicht, legen Sie diesen anstelle von **Manuell** auf **Beim Starten** fest.
 7. Wechseln Sie als Nächstes im oberen Bereich zur Registerkarte **Verbundene Ziele**.
-8. Auf dem Bildschirm **Verbundene Ziele** sollte ein Eintrag für das SBD-Gerät angezeigt werden, der ungefähr wie im folgenden Beispiel aussieht: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
+8. Auf dem Bildschirm **Verbundene Ziele** sollte ein Eintrag für das SBD-Gerät angezeigt werden, der dem folgenden Beispiel ähnelt: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
 9. Überprüfen Sie, ob der Wert für **Start** auf **Beim Starten** festgelegt ist.
 10. Falls nicht, wählen Sie **Bearbeiten** aus, und ändern Sie ihn.
 11. Speichern Sie die Änderungen, und beenden Sie YaST2.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7bf7add75f60bf64f64119979e5eee81be0f6e7b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89663db23962cbc82ead331f05cb39c0ef5d2e87
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344964"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722565"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Schützen Ihres RESTful-Diensts mit Clientzertifikaten
 
@@ -41,7 +41,7 @@ In diesem Artikel wird Folgendes ausführlich erläutert:
 Damit **Azure App Service** so eingerichtet werden kann, dass Clientzertifikate erforderlich sind, muss die Websiteeinstellung `clientCertEnabled` der Web-App auf *true* festgelegt werden. Um diese Änderung wirksam zu machen, öffnen Sie im Azure-Portal die Seite Ihrer Web-App. Wählen Sie im linken Navigationsbereich unter **Einstellungen** die Option **SSL-Einstellungen**. Aktivieren Sie im Abschnitt **Clientzertifikate** die Option **Eingehendes Clientzertifikat**.
 
 >[!NOTE]
->Stellen Sie sicher, dass Sie mindestens den Azure App Service-Plan „Standard“ verwenden. Weitere Informationen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
+>Stellen Sie sicher, dass Sie mindestens den Azure App Service-Plan „Standard“ verwenden. Weitere Informationen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](https://docs.microsoft.com/azure/app-service/overview-hosting-plans).
 
 >[!NOTE]
 >Weitere Informationen zum Festlegen der **clientCertEnabled**-Eigenschaft finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
@@ -152,7 +152,7 @@ Um die Clientzertifikatauthentifizierung in Ihrer benutzerdefinierten Richtlinie
    >Wenn Sie die Fehlermeldung *Der Name ist ungültig. Geben Sie einen gültigen Namen an* erhalten, bedeutet das, dass Azure AD B2C Ihren RESTful-Dienst erfolgreich mit dem Clientzertifikat aufgerufen hat. Der nächste Schritt besteht im Überprüfen des Zertifikats.
 
 ## <a name="step-6-add-certificate-validation"></a>Schritt 6: Hinzufügen der Zertifikatüberprüfung
-Das Clientzertifikat, das Azure AD B2C an Ihren RESTful-Dienst sendet, wird von der Azure-Web-Apps-Plattform keiner Überprüfung unterzogen (mit Ausnahme der Überprüfung des Vorhandenseins). Für das Überprüfen des Zertifikats ist die Web-App zuständig. 
+Das Clientzertifikat, das Azure AD B2C an Ihren RESTful-Dienst sendet, wird von der Azure App Service-Plattform keiner Überprüfung unterzogen (mit Ausnahme der Überprüfung des Vorhandenseins). Für das Überprüfen des Zertifikats ist die Web-App zuständig. 
 
 In diesem Abschnitt fügen Sie ASP.NET-Beispielcode hinzu, mit dem die Zertifikateigenschaften zum Zweck der Authentifizierung überprüft werden.
 

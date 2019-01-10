@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 219b5aa3c1f280ce02d2579f3fe2cc7ca7da490d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9aa3431e91196d7c33582d17494ddf0c32fba704
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125784"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634472"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,9 @@ In dieser Anleitung werden gängige Azure Table Storage-Vorgänge behandelt. Fol
 
 In dieser Anleitung erfahren Sie, wie Sie ein neues Azure Storage-Konto in einer neuen Ressourcengruppe erstellen, um es ganz einfach entfernen zu können, wenn Sie es nicht mehr benötigen. Sie können aber auch ein bereits vorhandenes Storage-Konto verwenden, wenn Ihnen das lieber ist.
 
-Für die Beispiele ist mindestens Version 4.4.0 des Azure PowerShell-Moduls erforderlich. Führen Sie in einem PowerShell-Fenster `Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Sollte nichts angezeigt werden oder ein Upgrade erforderlich sein, lesen Sie die Informationen unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell). 
+Für die Beispiele ist mindestens Version 4.4.0 des Azure PowerShell-Moduls `AzureRM` erforderlich. Führen Sie in einem PowerShell-Fenster `Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Sollte nichts angezeigt werden oder ein Upgrade erforderlich sein, lesen Sie die Informationen unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell).
+
+[!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
 Nach dem Installieren oder Aktualisieren von Azure PowerShell muss das Modul **AzureRmStorageTable** installiert werden. Dieses enthält die Befehle zum Verwalten der Entitäten. Führen Sie zum Installieren des Moduls PowerShell als Administrator aus, und verwenden Sie den Befehl **Install-Module**.
 

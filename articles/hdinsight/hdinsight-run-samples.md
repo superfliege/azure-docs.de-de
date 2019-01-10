@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b00982cbc30b2345d9eacea376e3c5164ce1b078
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408679"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745056"
 ---
-# <a name="run-apache-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von Apache Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
+# <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von MapReduce-Beispielen in Windows-basiertem HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
 Wir haben verschiedene Beispiele bereitgestellt, um Ihnen die ersten Schritte beim Ausführen von MapReduce-Aufträgen auf Apache Hadoop-Clustern in Azure HDInsight zu erleichtern. Diese Beispiele sind in allen von HDInsight verwalteten Clustern verfügbar, die Sie erstellen. Führen Sie diese Beispiele aus, um sich mit der Verwendung der Azure PowerShell-Cmdlets für die Ausführung von Aufträgen in Hadoop-Clustern vertraut zu machen.
@@ -167,7 +167,7 @@ Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>10-GB-Graysort
-Dieses Beispiel verwendet bescheidene 10GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen („daytona“) Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/) .
+Dieses Beispiel verwendet bescheidene 10GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen („daytona“) Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](https://sortbenchmark.org/) .
 
 Dieses Beispiel verwendet drei Sätze von MapReduce-Programmen:
 
@@ -383,7 +383,7 @@ Sie finden den Javacode zur Pi-Schätzung mit den Mapper- und Reducer-Funktionen
 * "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
 *
-* http://www.apache.org/licenses/LICENSE-2.0
+* https://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
@@ -722,7 +722,7 @@ Sie finden den Code für das TeraSort MapReduce-Programm in diesem Abschnitt zu 
     * "License"); you may not use this file except in compliance
     * with the License.  You may obtain a copy of the License at
     *
-    *     http://www.apache.org/licenses/LICENSE-2.0
+    *     https://www.apache.org/licenses/LICENSE-2.0
     *
     * Unless required by applicable law or agreed to in writing, software
     * distributed under the License is distributed on an "AS IS" BASIS,

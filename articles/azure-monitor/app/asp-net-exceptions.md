@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4a4a75885b1303b7bc6666ea65993ac875b98f0d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001718"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116984"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
-Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../application-insights/app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
+Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-monitor/app/app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
 
 ## <a name="set-up-exception-reporting"></a>Einrichten der Ausnahmeerfassung
 * So werden Ausnahmen von Ihrer Server-App gemeldet:
@@ -90,7 +90,7 @@ Sie haben mehrere Möglichkeiten:
 ![Drillthrough](./media/asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Wenn die Anwendung viele Telemetriedaten generiert, reduziert das adaptive Stichprobenmodul automatisch die an das Verwaltungsportal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die Teil des gleichen Vorgangs sind, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. [Erfahren Sie mehr über das Erstellen von Stichproben.](../../application-insights/app-insights-sampling.md)
+> Wenn die Anwendung viele Telemetriedaten generiert, reduziert das adaptive Stichprobenmodul automatisch die an das Verwaltungsportal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die Teil des gleichen Vorgangs sind, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. [Erfahren Sie mehr über das Erstellen von Stichproben.](../../azure-monitor/app/sampling.md)
 >
 >
 

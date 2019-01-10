@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 633a5c26711b7ef9f891455c6712b77238fd3a62
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 419f34d6240df9b4df160c6ff9665b32aef1e3ca
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631965"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653865"
 ---
-# <a name="submit-hadoop-jobs-in-hdinsight"></a>Übermitteln von Hadoop-Aufträgen in HDInsight
+# <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Übermitteln von Apache Hadoop-Aufträgen in HDInsight
 
 Sie können in Azure HDInsight Apache Hadoop-Aufträge mit dem Microsoft .NET SDK für HDInsight, mit curl oder Azure PowerShell senden.
 
@@ -25,24 +25,24 @@ Sie können in Azure HDInsight Apache Hadoop-Aufträge mit dem Microsoft .NET SD
 - **.NET-SDK**:
 
   - [Erstellen von .NET-Anwendungen für die nicht interaktive Authentifizierung](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
-  - [Ausführen von Hive-Abfragen per HDInsight .NET-SDK](apache-hadoop-use-hive-dotnet-sdk.md)
-  - [Ausführen von Pig-Aufträgen mithilfe des .NET-SDK für Hadoop in HDInsight](apache-hadoop-use-pig-dotnet-sdk.md)
-  - [Ausführen von Sqoop-Aufträgen mithilfe des .NET-SDK für Hadoop in HDInsight](apache-hadoop-use-sqoop-dotnet-sdk.md)
+  - [Ausführen von Apache Hive-Abfragen per HDInsight .NET SDK](apache-hadoop-use-hive-dotnet-sdk.md)
+  - [Ausführen von Apache Pig-Aufträgen mithilfe des .NET SDK für Apache Hadoop in HDInsight](apache-hadoop-use-pig-dotnet-sdk.md)
+  - [Ausführen von Apache Sqoop-Aufträgen mithilfe des .NET SDK für Apache Hadoop in HDInsight](apache-hadoop-use-sqoop-dotnet-sdk.md)
   - [Ausführen von MapReduce-Jobs mit HDInsight .NET-SDK](apache-hadoop-use-mapreduce-dotnet-sdk.md)
 
 - **curl**:
 
-  - [Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit REST](apache-hadoop-use-hive-curl.md)
-  - [Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](apache-hadoop-use-pig-curl.md)
-  - [Ausführen von Sqoop-Aufträgen mit Hadoop in HDInsight mit Curl](apache-hadoop-use-sqoop-curl.md)
-  - [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von REST](apache-hadoop-use-mapreduce-curl.md)
+  - [Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit cURL](apache-hadoop-use-hive-curl.md)
+  - [Ausführen von Apache Pig-Aufträgen mit Apache Hadoop in HDInsight mit cURL](apache-hadoop-use-pig-curl.md)
+  - [Ausführen von Apache Sqoop-Aufträgen mit Apache Hadoop in HDInsight mit cURL](apache-hadoop-use-sqoop-curl.md)
+  - [Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mit cURL](apache-hadoop-use-mapreduce-curl.md)
 
 - **PowerShell**:
 
-  - [Ausführen von Hive-Abfragen mit PowerShell](apache-hadoop-use-hive-powershell.md)
-  - [Ausführen von Pig-Aufträgen mit PowerShell](apache-hadoop-use-pig-powershell.md)
-  - [Verwenden von Sqoop mit Hadoop in HDInsight](apache-hadoop-use-sqoop-powershell.md)
-  - [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von PowerShell](apache-hadoop-use-mapreduce-powershell.md)
+  - [Ausführen von Apache Hive-Abfragen mit PowerShell](apache-hadoop-use-hive-powershell.md)
+  - [Ausführen von Apache Pig-Aufträgen mit PowerShell](apache-hadoop-use-pig-powershell.md)
+  - [Verwenden von Apache Sqoop mit Apache Hadoop in HDInsight](apache-hadoop-use-sqoop-powershell.md)
+  - [Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mit PowerShell](apache-hadoop-use-mapreduce-powershell.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 

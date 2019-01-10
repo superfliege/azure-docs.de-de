@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 12/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 86724ca49884f1072297ffcf4fc6498db5ae8ac3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 686d4a8ac5239af12206b57072cc00aa10114d79
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254637"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976510"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure
+
 Zum Schutz von Daten in der Cloud müssen Sie die möglichen Zustände berücksichtigen, in denen Ihre Daten auftreten können. Außerdem sollten Sie die Steuerungsmöglichkeiten beachten, die für diesen Zustand verfügbar sind. Bewährte Methoden für Datensicherheit und Verschlüsselung in Azure beziehen sich auf die folgenden Zustände von Daten:
 
-- Ruhende Daten: Dies umfasst alle Informationsspeicherobjekte, Container und Typen, die statisch auf physischen Medien existieren, ob auf Magnetplattenspeichern oder optischen Datenträgern.
+- Ruhende Daten: Dies umfasst alle Informationsspeicherobjekte, Container und Typen, die statisch auf physischen Medien existieren – ob auf Magnetspeichern oder optischen Datenträgern.
 - Daten während der Übertragung: Wenn Daten zwischen Komponenten, Speicherorten oder Programmen übertragen werden, weisen sie den Zustand „während der Übertragung“ auf. Beispiele sind die Übertragung über das Netzwerk, über einen Service Bus (von dem lokalen Computer in die Cloud und umgekehrt, inklusive Hybridverbindungen wie ExpressRoute) oder während eines Eingabe-/Ausgabevorgangs.
 
 In diesem Artikel besprechen wir eine Reihe von empfohlenen Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit der Datensicherheit und der Verschlüsselung in Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -40,6 +41,7 @@ Für jede empfohlene Vorgehensweise erklären wir:
 Dieser Artikel zu den empfohlenen Vorgehensweisen für die Datensicherheit und die Verschlüsselung in Azure basiert auf einer Konsensmeinung und den Fähigkeiten und Funktionssätzen der Azure-Plattform, wie sie zum Erstellungszeitpunkt dieses Artikels existieren. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
 ## <a name="choose-a-key-management-solution"></a>Auswählen einer Schlüsselverwaltungslösung
+
 Das Schützen Ihrer Schlüssel ist ausschlaggebend für den Schutz Ihrer Daten in der Cloud.
 
 [Azure Key Vault](../key-vault/key-vault-overview.md) unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Der Schlüsseltresor optimiert die Schlüsselverwaltung und ermöglicht es Ihnen, die Kontrolle über Schlüssel zu behalten, die für den Datenzugriff und die Verschlüsselung Ihrer Daten verwendet werden. Entwickler können Schlüssel für Tests und Entwicklung innerhalb von Minuten erstellen und diese später in Schlüssel für die Produktion migrieren. Sicherheitsadministratoren können nach Bedarf Berechtigungen für Schlüssel erteilen (und widerrufen).
@@ -50,7 +52,7 @@ Azure Key Vault ist für die Unterstützung von Anwendungsschlüsseln und -gehei
 
 Nachfolgend sind bewährte Methoden für die Sicherheit bei Verwendung von Key Vault aufgeführt.
 
-**Bewährte Methode**: Gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff in einem bestimmten Bereich.   
+**Bewährte Methode**: Gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff in einem bestimmten Umfang.   
 **Detail**: Verwenden Sie vordefinierte RBAC-Rollen. Wenn Sie beispielsweise einem Benutzer Zugriff für die Verwaltung von Key Vault-Instanzen gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle [Key Vault-Mitwirkender](../role-based-access-control/built-in-roles.md) zu. Der Bereich wäre in diesem Fall ein Abonnement, eine Ressourcengruppe oder einfach eine bestimmte Key Vault-Instanz. Wenn die vordefinierten Rollen nicht Ihren Anforderungen entsprechen, können Sie [eigene Rollen definieren](../role-based-access-control/custom-roles.md).
 
 **Bewährte Methode**: Steuern Sie, worauf Benutzer Zugriff haben.   
@@ -70,6 +72,7 @@ Verwenden Sie RBAC, um zu steuern, worauf Benutzer Zugriff haben. Wenn Sie also 
 >
 
 ## <a name="manage-with-secure-workstations"></a>Verwalten mit sicheren Arbeitsstationen
+
 > [!NOTE]
 > Der Abonnementadministrator oder -besitzer sollte eine Arbeitsstation mit sicherem Zugriff oder eine Arbeitsstation mit privilegiertem Zugriff verwenden.
 >
@@ -80,23 +83,25 @@ Da die große Mehrzahl der Angriffe auf den Endbenutzer zielt, ist der Endpunkt 
 **Bewährte Methode**: Verwenden Sie eine sichere Verwaltungsarbeitsstation, um sensible Konten, Aufgaben und Daten zu schützen.   
 **Detail**: Verwenden Sie eine [Arbeitsstation mit privilegiertem Zugriff](https://technet.microsoft.com/library/mt634654.aspx), um die Angriffsfläche bei Arbeitsstationen zu reduzieren. Diese sicheren Verwaltungsarbeitsstationen helfen Ihnen, einige dieser Angriffe zu minimieren und damit Ihre Daten sicherer zu machen.
 
-**Bewährte Methode**: Gewährleisten Sie Endpunktschutz.   
+**Bewährte Methode**: Sorgen Sie für Endpunktsicherheit.   
 **Detail**: Erzwingen Sie die Einhaltung der Sicherheitsrichtlinien auf allen Geräten, die die Daten verwenden, unabhängig vom Speicherort der Daten (in der Cloud oder lokal).
 
 ## <a name="protect-data-at-rest"></a>Schutz gespeicherter Daten
-Die [Verschlüsselung ruhender Daten](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ist eine obligatorische Maßnahme für Datenschutz, Compliance und Datenhoheit.
+
+Die [Verschlüsselung ruhender Daten](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ist eine obligatorische Maßnahme für Datenschutz, Compliance und Datenhoheit.
 
 **Bewährte Methode**: Wenden Sie Datenträgerverschlüsselung zum Schutz Ihrer Daten an.   
 **Detail**: Verwenden Sie [Azure Disk Encryption](azure-security-disk-encryption.md). Damit können IT-Administratoren die Datenträger virtueller IaaS-Computer unter Windows und Linux verschlüsseln. Disk Encryption kombiniert die Branchenstandardfeatures BitLocker (Windows) und dm-crypt (Linux), um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
 
 In Azure Storage und Azure SQL-Datenbank werden ruhende Daten standardmäßig verschlüsselt, und viele Dienste bieten eine Verschlüsselung als Option an. Mithilfe von Azure Key Vault können Sie die Kontrolle über Schlüssel für den Zugriff und das Verschlüsseln Ihrer Daten behalten. Weitere Informationen finden Sie unter [Unterstützung für Verschlüsselungsmodelle von Azure-Ressourcenanbietern](azure-security-encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-**Bewährte Methode**: Verwenden Sie die Verschlüsselung, um das Risiko unberechtigter Datenzugriffe zu reduzieren.   
+**Bewährte Methoden:** Verwenden Sie die Verschlüsselung, um das Risiko unberechtigter Datenzugriffe zu reduzieren.
 **Detail**: Verschlüsseln Sie Ihre Laufwerke, bevor diese mit sensiblen Daten beschrieben werden.
 
 Organisationen, die keine Datenverschlüsselung erzwingen, sind anfälliger für Datenintegritätsprobleme. So können beispielsweise nicht autorisierte Benutzer Daten aus kompromittierten Konten entwenden oder sich unberechtigt Zugang zu unverschlüsselten Daten verschaffen. Unternehmen müssen außerdem nachweisen, dass sie gewissenhaft sind und die richtigen Sicherheitsprotokolle zur Verbesserung ihrer Datensicherheit verwenden, um den Branchenbestimmungen zu entsprechen.
 
 ## <a name="protect-data-in-transit"></a>Schützen der Daten während der Übertragung
+
 Der Schutz von Daten während der Übertragung sollte ein wesentlicher Bestandteil Ihrer Datenschutzstrategie sein. Da die Daten zwischen vielen verschiedenen Speicherorten übertragen werden, wird generell empfohlen, immer SSL/TLS-Protokolle zu verwenden, um Daten zwischen verschiedenen Speicherorten auszutauschen. In einigen Fällen sollten Sie den gesamten Kommunikationskanal zwischen Ihrer lokalen und Ihrer Cloudinfrastruktur isolieren, indem Sie ein VPN verwenden.
 
 Für Daten, die sich zwischen Ihrer lokalen Infrastruktur und Azure bewegen, sollten Sie passende Sicherheitsmaßnahmen in Betracht ziehen, beispielsweise HTTPS oder VPN. Beim Senden von verschlüsseltem Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem lokalen Standort über das öffentliche Internet verwenden Sie [Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/).
@@ -118,6 +123,7 @@ Nachfolgend sind bewährte Methoden für die Sicherheit bei Verwendung von Azure
 Organisationen, die die Daten während der Übertragung nicht schützen, sind anfälliger für [Man-in-the-Middle-Angriffe](https://technet.microsoft.com/library/gg195821.aspx), [Abhöraktionen](https://technet.microsoft.com/library/gg195641.aspx) und Session Hijacking. Bei diesen Angriffen kann es sich um den ersten Schritt zur Zugriffsgewinnung auf vertrauliche Daten handeln.
 
 ## <a name="secure-email-documents-and-sensitive-data"></a>Schützen von E-Mails, Dokumenten und vertraulichen Daten
+
 Sie möchten E-Mails, Dokumente und vertrauliche Daten, die Sie außerhalb Ihres Unternehmens freigeben, kontrollieren und schützen. [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) ist eine cloudbasierte Lösung, mit der eine Organisation ihre eigenen Dokumente und E-Mails klassifizieren, bezeichnen und schützen kann. Dies kann automatisch von Administratoren durchgeführt werden, die auch die Regeln und Bedingungen definieren: entweder manuell nach Benutzer oder eine Kombination, bei der Benutzer Empfehlungen erhalten.
 
 Die Klassifizierung ist jederzeit identifizierbar, unabhängig davon, wo die Daten gespeichert oder mit wem sie geteilt werden. Die Bezeichnungen umfassen visuelle Markierungen wie Kopfzeilen, Fußzeilen oder Wasserzeichen. Metadaten werden Dateien und E-Mail-Headern als Klartext hinzugefügt. Der Klartext stellt sicher, dass andere Dienste, z.B. Lösungen zum Verhindern von Datenverlust, die Klassifizierung identifizieren und entsprechende Maßnahmen ergreifen können.
@@ -129,12 +135,13 @@ Mit dieser Lösung für den Schutz von Informationen behalten Sie die Kontrolle 
 Wir empfehlen Folgendes:
 
 - [Stellen Sie Azure Information Protection](https://docs.microsoft.com/azure/information-protection/deployment-roadmap) für Ihre Organisation bereit.
-- Wenden Sie Bezeichnungen entsprechend Ihrer Geschäftsanforderungen an. Verwenden Sie beispielsweise die Bezeichnung „streng vertraulich“ für alle Dokumente und E-Mails, die streng vertrauliche Daten enthalten, um diese Daten zu klassifizieren und zu schützen. Dann können nur autorisierte Benutzer mit den von Ihnen angegebenen Einschränkungen auf diese Daten zugreifen.
+- Wenden Sie Bezeichnungen entsprechend Ihrer Geschäftsanforderungen an. Beispiel:  Verwenden Sie die Bezeichnung „streng vertraulich“ für alle Dokumente und E-Mails, die streng vertrauliche Daten enthalten, um diese Daten zu klassifizieren und zu schützen. Dann können nur autorisierte Benutzer mit den von Ihnen angegebenen Einschränkungen auf diese Daten zugreifen.
 - Konfigurieren Sie die [Verwendungsprotokollierung für Azure RMS](https://docs.microsoft.com/azure/information-protection/log-analyze-usage), damit Sie überwachen können, wie Ihre Organisation den Schutzdienst verwendet.
 
 Organisationen, die in Hinsicht auf die [Datenklassifizierung](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) und den Dateischutz Schwächen haben, sind möglicherweise anfälliger für Datenlecks oder Datenmissbrauch. Mit geeignetem Dateischutz können Sie Datenflüsse analysieren, um Einblicke in Ihre Geschäftsabläufe zu erhalten, riskante Verhalten zu erkennen und Abhilfemaßnahmen zu ergreifen, den Zugriff auf Dokumente nachzuverfolgen usw.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).
 
 Die folgenden Ressourcen enthalten allgemeinere Informationen zur Sicherheit in Azure und verwandten Microsoft-Diensten:

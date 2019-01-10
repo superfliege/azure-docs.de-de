@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: e254c9b18d86debad7ba914a0a4d41369795bc58
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: cbf8a70dae566dcc22b5c5caa84d0781dc2467f9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050013"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022171"
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopieren von Daten aus Azure Database for MySQL mithilfe von Azure Data Factory
 
@@ -42,8 +41,8 @@ Folgende Eigenschaften werden für den verknüpften Azure Database for MySQL-Die
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **AzureMySql** festgelegt werden. | Ja |
-| connectionString | Geben Sie Informationen an, die zum Herstellen einer Verbindung mit der Azure Database for MySQL-Instanz erforderlich sind. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureMySql** | JA |
+| connectionString | Geben Sie Informationen an, die zum Herstellen einer Verbindung mit der Azure Database for MySQL-Instanz erforderlich sind. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
@@ -82,7 +81,7 @@ Legen Sie die „type“-Eigenschaft des Datasets auf **AzureMySqlTable** fest, 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf **AzureMySqlTable** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AzureMySqlTable** | JA |
 | tableName | Name der Tabelle in der MySQL-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -113,7 +112,7 @@ Legen Sie zum Kopieren von Daten aus Azure Database for MySQL den Quelltyp in de
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureMySqlSource** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureMySqlSource** | JA |
 | query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**

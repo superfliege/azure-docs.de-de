@@ -4,17 +4,17 @@ description: Tutorial zur Verwendung von Terraform mit Bereitstellungsslots für
 services: terraform
 ms.service: terraform
 keywords: Terraform, DevOps, virtueller Computer, Azure, Bereitstellungsslots
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: a85e7c46aa41309bc031f59ed841dc8149d878b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1564991ecfe29b1977837c2fdff4be7b3a3e1797
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723959"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074817"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Verwenden von Terraform zur Bereitstellung einer Infrastruktur mit Azure-Bereitstellungsslots
 

@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 21c2c9ab0300ed5eac9ceebbd88627ea091b3389
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 3c9cc8e189bdb760fb5a860a8866605d008553fd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954469"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018533"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Spark-Aktivität und einem bedarfsgesteuerten verknüpften HDInsight-Dienst transformiert. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -216,7 +215,7 @@ Sie haben in JSON-Dateien Definitionen für einen verknüpften Dienst und eine P
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. Erstellen Sie die Ressourcengruppe „ADFTutorialResourceGroup“. 
+3. Erstellen Sie die Ressourcengruppe: ADFTutorialResourceGroup. 
 
     ```powershell
     New-AzureRmResourceGroup -Name $resourceGroupName -Location "East Us" 

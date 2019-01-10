@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c3381ac2dcc3755bb0aedb5f36e398ebc5842959
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5873907485633753eb471855e443d452e4118b26
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797425"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120749"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights für .NET-Konsolenanwendungen
-Mit [Application Insights](../../application-insights/app-insights-overview.md) können Sie Ihre Webanwendung auf Verfügbarkeit, Leistung und Nutzung überwachen.
+Mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) können Sie Ihre Webanwendung auf Verfügbarkeit, Leistung und Nutzung überwachen.
 
 Sie benötigen ein Abonnement für [Microsoft Azure](https://azure.com). Melden Sie sich mit einem Microsoft-Konto an, das Sie möglicherweise für Windows, Xbox Live oder andere Microsoft-Clouddienste verwenden. Falls Ihr Team über ein Unternehmensabonnement für Azure verfügt, können Sie den Besitzer bitten, Sie über Ihr Microsoft-Konto hinzuzufügen.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-* Erstellen Sie im [Azure-Portal](https://portal.azure.com) [eine Application Insights-Ressource](../../application-insights/app-insights-create-new-resource.md). Wählen Sie für den Typ **Allgemein** aus.
+* Erstellen Sie im [Azure-Portal](https://portal.azure.com) [eine Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md ). Wählen Sie für den Typ **Allgemein** aus.
 * Erstellen Sie eine Kopie des Instrumentierungsschlüssels. Diesen finden Sie in der Dropdownliste **Essentials** der neuen Ressource, die Sie erstellt haben. 
 * Installieren Sie das neueste [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights)-Paket.
 * Legen Sie den Instrumentierungsschlüssel im Code fest, bevor Sie Telemetriedaten nachverfolgen (oder legen Sie die Umgebungsvariable APPINSIGHTS_INSTRUMENTATIONKEY fest). Anschließend sollten Sie Telemetriedaten manuell nachverfolgen und im Azure-Portal anzeigen können.

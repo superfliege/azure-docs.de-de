@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 11/30/2018
+ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846894"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065340"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
@@ -43,16 +43,15 @@ PIM sendet E-Mails bei folgenden Ereignissen für Azure AD-Rollen:
 
 - Wenn die Genehmigung für die Aktivierung einer privilegierten Rolle aussteht
 - Wenn die Aktivierungsanforderung einer privilegierten Rolle abgeschlossen wird
-- Wenn eine privilegierte Rolle als berechtigt zugewiesen wird
 - Wenn Azure AD PIM aktiviert wird
 
 Wer diese E-Mails für Azure AD-Rollen erhält, hängt von der Rolle, dem Ereignis und der Einstellung für Benachrichtigungen ab:
 
-| Benutzer | Für die Rollenaktivierung steht Genehmigung aus | Anforderung zur Rollenaktivierung ist abgeschlossen | Rolle wird als berechtigt zugewiesen | PIM ist aktiviert |
-| --- | --- | --- | --- | --- |
-| Administrator für privilegierte Rollen</br>(Aktiviert/Berechtigt) | JA</br>(nur, wenn keine expliziten genehmigenden Personen angegeben sind) | Ja* | JA | JA |
-| Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA | JA |
-| Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA | JA |
+| Benutzer | Für die Rollenaktivierung steht Genehmigung aus | Anforderung zur Rollenaktivierung ist abgeschlossen | PIM ist aktiviert |
+| --- | --- | --- | --- |
+| Administrator für privilegierte Rollen</br>(Aktiviert/Berechtigt) | JA</br>(nur, wenn keine expliziten genehmigenden Personen angegeben sind) | Ja* | JA |
+| Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA |
+| Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA |
 
 \* Wenn die [Einstellung **Benachrichtigungen**](pim-how-to-change-default-settings.md#notifications) auf **Aktivieren** festgelegt ist.
 

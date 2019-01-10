@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/21/2018
 ms.author: mbullwin
 ms.custom: include file
-ms.openlocfilehash: 1efddb605422f00575cc0e44592315b725c838e3
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6b9b40c457766573be0d72cb7f4ebe2328a070f5
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002772"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54026263"
 ---
 Es gibt einige Beschränkungen hinsichtlich der Anzahl von Metriken und Ereignissen pro Anwendung (d. h. pro Instrumentationsschlüssel). Die Beschränkungen hängen von dem von Ihnen ausgewählten [Tarif](https://azure.microsoft.com/pricing/details/application-insights/) ab.
 
@@ -28,7 +28,7 @@ Es gibt einige Beschränkungen hinsichtlich der Anzahl von Metriken und Ereignis
 | Zeichenfolgenlänge des Eigenschaftswerts | 8.192 | Siehe [Typschemas](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).
 | Länge von Ablaufverfolgungs- und Ausnahmebenachrichtigungen | 10.000 | Siehe [Typschemas](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).
 | [Verfügbarkeitstests](../articles/azure-monitor/app/monitor-web-app-availability.md) Anzahl pro App | 100 |
-| Vermerkdauer von [Profiler](../articles/application-insights/app-insights-profiler.md)-Daten | 5 Tage |
-| Pro Tag gesendete [Profiler](../articles/application-insights/app-insights-profiler.md)-Daten | 10 GB |
+| Vermerkdauer von [Profiler](../articles/azure-monitor/app/profiler.md)-Daten | 5 Tage |
+| Pro Tag gesendete [Profiler](../articles/azure-monitor/app/profiler.md)-Daten | 10 GB |
 
 Weitere Informationen zu Preisen und Kontingenten für Application Insights finden Sie [hier](../articles/azure-monitor/app/pricing.md).

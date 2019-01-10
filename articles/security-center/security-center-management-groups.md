@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964116"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720814"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 Dieser Artikel erleichtert Ihnen den Einstieg, indem Sie mehrere Aktionen durchführen, mit denen die Vorteile von Azure Security Center maximiert werden. Mit diesen Aktionen können Sie Sichtbarkeit für alle Azure-Abonnements erzielen, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind, und den Sicherheitsstatus Ihrer Organisation bedarfsabhängig effektiv verwalten. Hierzu wenden Sie auf aggregierende Weise Sicherheitsrichtlinien übergreifend auf mehrere Abonnements an.
@@ -71,19 +71,19 @@ Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff au
 
    ![Azure AD-Eigenschaften: Screenshot](./media/security-center-management-groups/aad-properties.png)
 
-3. Legen Sie für **Der globale Administrator kann Azure-Abonnements und Verwaltungsgruppen verwalten.** die Option **Ja** fest.
+3. Legen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** den Schalter auf **Ja** fest.
 
    ![Screenshot von „Der globale Administrator kann Azure-Abonnements und Verwaltungsgruppen verwalten.“](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
-   - Wenn Sie **Ja** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in Azure RBAC zur Rolle „Benutzerzugriffsadministrator“ im Stammbereich (`/`) hinzugefügt. Dadurch erhalten Sie Zugriff, um alle mit Ihrem Azure AD-Mandanten verknüpften Azure-Abonnements anzuzeigen und Berichte für sie zu erstellen.
+   - Wenn Sie den Schalter auf „Ja“ festlegen, wird Ihnen in Azure RBAC im Stammbereich (/) die Rolle „Benutzerzugriffsadministrator“ zugewiesen. Dadurch erhalten Sie die Berechtigung, Rollen in allen Azure-Abonnements und Verwaltungsgruppen zuzuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Dieser Schalter ist nur für Benutzer verfügbar, denen in Azure AD die Rolle des globalen Administrators zugewiesen wurde.
 
-   - Wenn Sie **Nein** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in Azure RBAC aus der Rolle „Benutzerzugriffsadministrator“ entfernt. Sie können nicht alle mit dem Azure AD-Mandanten verknüpften Azure-Abonnements anzeigen und können nur die Azure-Abonnements anzeigen und verwalten, auf die Sie Zugriff erhalten haben.
+  - Wenn Sie den Schalter auf „Nein“ festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
 4. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
     - Diese Einstellung ist keine globale Eigenschaft und gilt nur für den derzeit angemeldeten Benutzer.
 
-5. Führen Sie die Aufgaben durch, für die Sie erhöhte Zugriffsrechte benötigen. Wenn Sie fertig sind, können Sie wieder **Nein** festlegen.
+5. Führen Sie die Aufgaben aus, die Sie mit erhöhten Zugriffsrechten vornehmen müssen. Wenn Sie fertig sind, können Sie wieder **Nein** festlegen.
 
 
 ### <a name="assign-rbac-roles-to-users"></a>Zuweisen von RBAC-Rollen für Benutzer

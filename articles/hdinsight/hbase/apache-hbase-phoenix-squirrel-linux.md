@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4b673423bcf3785b29cc287e025d1ee52bc402f7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 51707baeba4a511d2766161afacd512a4338cf24
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312901"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653984"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Verwenden von Apache Phoenix mit Linux-basierten Apache HBase-Clustern in HDInsight
-Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in Azure HDInsight und wie Sie SQLLine verwenden können. Weitere Informationen zu Phoenix finden Sie unter [Phoenix innerhalb von 15 Minuten oder weniger](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Eine Beschreibung der Phoenix-Grammatik finden Sie unter [Phoenix Grammar](http://phoenix.apache.org/language/index.html) (Phoenix-Grammatik).
+Erfahren Sie, wie Sie [Apache Phoenix](https://phoenix.apache.org/) in Azure HDInsight und wie Sie SQLLine verwenden können. Weitere Informationen zu Phoenix finden Sie unter [Phoenix in 15 minutes or less](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html) (Phoenix in 15 Minuten oder weniger). Eine Beschreibung der Phoenix-Grammatik finden Sie unter [Apache Phoenix-Grammatik](https://phoenix.apache.org/language/index.html).
 
-> [!NOTE]
-> Versionshinweise für Phoenix finden Sie in HDInsight unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md).
+> [!NOTE]  
+> Versionshinweise für Phoenix in HDInsight finden Sie unter [Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md).
 >
 >
 
@@ -61,7 +61,7 @@ Beim Herstellen der Verbindung mit einem HBase-Cluster müssen Sie die Verbindun
 
         !quit
 
-Weitere Informationen finden Sie im [SQLLine-Handbuch](http://sqlline.sourceforge.net/#manual) sowie unter [Apache Phoenix Grammar](http://phoenix.apache.org/language/index.html) (Apache Phoenix-Grammatik).
+Weitere Informationen finden Sie im [SQLLine-Handbuch](http://sqlline.sourceforge.net/#manual) sowie unter [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html) (Apache Phoenix-Grammatik).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwenden. Weitere Informationen finden Sie in diesen Artikeln:

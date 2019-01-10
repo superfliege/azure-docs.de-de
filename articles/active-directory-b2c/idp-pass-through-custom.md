@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e32e62a050b54334a37b09f001798b9a62e2e6b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7a40ded3ff6af1c519400c755d1ee6d9bd73ba9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637105"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602289"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Übergeben eines Zugriffstokens über eine benutzerdefinierte Richtlinie an Ihre Anwendung in Azure Active Directory B2C
 
 > [!NOTE]
-> Dieses Feature ist zurzeit als öffentliche Vorschau verfügbar.
+> Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
+
+> [!Important]
+> Dieses Feature der öffentlichen Vorschau ist vorübergehend nicht verfügbar.
 
 Eine [benutzerdefinierte Richtlinie](active-directory-b2c-get-started-custom.md) in Azure Active Directory B2C (Azure AD) ermöglicht es Benutzern Ihrer Anwendung, sich mit einem Identitätsanbieter zu registrieren oder anzumelden. Bei diesem Vorgang empfängt Azure AD B2C zunächst ein [Zugriffstoken](active-directory-b2c-reference-tokens.md) vom Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie fügen einen Anspruchstyp und einen Ausgabeanspruch zu Ihrer benutzerdefinierten Richtlinie hinzu, um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registriert haben. 
 

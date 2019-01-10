@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499299"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650102"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrieren eines Apache HBase-Clusters zu einer neuen Version
 
@@ -26,16 +26,16 @@ Auftragsbasierte Cluster wie [Apache Spark](https://spark.apache.org/) und [Apac
 4. Importieren Sie die flüchtigen Daten.
 5. Starten Sie Aufträge, und setzen Sie die Verarbeitung im neuen Cluster fort.
 
-Für das Upgrade eines [Apache HBase](http://hbase.apache.org/)-Clusters sind einige zusätzliche Schritte erforderlich. Diese werden im vorliegenden Artikel beschrieben.
+Für das Upgrade eines [Apache HBase](https://hbase.apache.org/)-Clusters sind einige zusätzliche Schritte erforderlich. Diese werden im vorliegenden Artikel beschrieben.
 
-> [!NOTE]
+> [!NOTE]  
 > Die Downtime beim Upgrade beträgt in der Regel nur wenige Minuten. Sie ist auf das Leeren sämtlicher In-Memory-Daten und auf die Konfiguration und den Neustart der Dienste im neuen Cluster zurückzuführen. Die Ergebnisse variieren je nach Kontenanzahl, Datenmenge und anderen Variablen.
 
 ## <a name="review-apache-hbase-compatibility"></a>Überprüfen der Apache HBase-Kompatibilität
 
-Vergewissern Sie sich vor dem Apache HBase-Upgrade, dass die HBase-Versionen im Quell- und Zielcluster kompatibel sind. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md).
+Vergewissern Sie sich vor dem Apache HBase-Upgrade, dass die HBase-Versionen im Quell- und Zielcluster kompatibel sind. Weitere Informationen finden Sie unter [Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Wir empfehlen dringend, die Kompatibilitätsmatrix im [HBase-Buch](https://hbase.apache.org/book.html#upgrading) zu prüfen.
 
 Hier sehen Sie ein Beispiel für eine Versionskompatibilitätsmatrix, wobei „J“ für Kompatibilität und „N“ für potenzielle Inkompatibilität steht:
@@ -54,7 +54,7 @@ Hier sehen Sie ein Beispiel für eine Versionskompatibilitätsmatrix, wobei „J
 | Abhängigkeitskompatibilität | N | J | J |
 | Betriebskompatibilität | N | N | J |
 
-> [!NOTE]
+> [!NOTE]  
 > Kritische Inkompatibilitäten sollten in den Versionshinweisen für HBase-Version beschrieben sein.
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgraden mit der gleichen Apache HBase-Hauptversion
@@ -203,7 +203,7 @@ Im folgenden Szenario wird ein Upgrade von HDInsight 3.4 auf 3.6 (jeweils enthal
 9. Starten Sie alle erforderlichen Dienste neu, wie durch Ambari angegeben.
 10. Richten Sie für Ihre Anwendung einen Verweis auf den neuen Cluster ein.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Bei einem Upgrade ändert sich der statische DNS-Name für Ihre Anwendung. Sie können in den DNS-Einstellungen Ihres Domänennamens einen CNAME-Eintrag konfigurieren, der auf den Namen des Clusters verweist, anstatt einen hartcodierten DNS-Namen zu verwenden. Eine weitere Möglichkeit ist die Verwendung einer Konfigurationsdatei für Ihre Anwendung, die Sie ohne erneute Bereitstellung aktualisieren können.
 
 11. Starten Sie die Erfassung, um zu prüfen, ob alles wie erwartet funktioniert.
@@ -211,7 +211,7 @@ Im folgenden Szenario wird ein Upgrade von HDInsight 3.4 auf 3.6 (jeweils enthal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [Apache HBase](http://hbase.apache.org/) und zum Upgraden von HDInsight-Clustern finden Sie in den folgenden Artikeln:
+Weitere Informationen zu [Apache HBase](https://hbase.apache.org/) und zum Upgraden von HDInsight-Clustern finden Sie in den folgenden Artikeln:
 
 * [Aktualisieren eines HDInsight-Clusters auf eine neuere Version](../hdinsight-upgrade-cluster.md)
 * [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md)

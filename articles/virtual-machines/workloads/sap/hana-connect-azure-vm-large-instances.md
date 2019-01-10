@@ -14,16 +14,16 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90d920a501d27ca21b1c2b7b7f5491cebb2c2822
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9116dd8a27b268b656f688083032a127177d2d51
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233717"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754559"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Verbinden von Azure-VMs mit HANA (große Instanzen)
 
-Wie bereits unter [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) beschrieben, sieht die minimale Bereitstellung von HANA (große Instanzen) mit der SAP-Anwendungsebene in Azure wie folgt aus:
+Im Artikel [Was ist SAP HANA in Azure (große Instanzen)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wird erwähnt, dass die minimale Bereitstellung von HANA (große Instanzen) mit der SAP-Anwendungsschicht in Azure wie folgt aussieht:
 
 ![Mit SAP HANA in Azure (große Instanzen) und lokal verbundenes Azure-VNET](./media/hana-overview-architecture/image3-on-premises-infrastructure.png)
 
@@ -52,31 +52,29 @@ Im vorherigen Beispiel mit 10.16.0.0/16 wurde für das virtuelle Azure-Netzwerk 
 
 Wir sehen uns ein virtuelles Netzwerk mit einem ersten VM-Subnetz (hier als „default“ bezeichnet) und einem Subnetz mit dem Namen „GatewaySubnet“ an.
 
-Im folgenden Abschnitt wird der IP-Adressbereich des Subnetzes, das in der Abbildung den Namen „default“ hat, als **IP-Adressbereich des Azure-VM-Subnetzes** bezeichnet. Wir bezeichnen den IP-Adressbereich des Gatewaysubnetzes als **IP-Adressbereich des Gatewaysubnetzes für virtuelle Netzwerke**. 
+In den beiden obigen Grafiken umfasst der **Adressraum des virtuellen Netzwerks** sowohl den **IP-Adressbereich des Azure-VM-Subnetzes** als auch den des Gatewaysubnetzes für virtuelle Netzwerke.
 
-In den beiden obigen Grafiken umfasst der **Adressraum des virtuellen Netzwerks** sowohl den **IP-Adressbereich des Azure-VM-Subnetzes** als auch den **IP-Adressbereich des Gatewaysubnetzes für virtuelle Netzwerke**. 
-
-Um Ihre IP-Adressbereiche beizubehalten oder spezifisch festzulegen, können Sie den **VNET-Adressraum** eines virtuellen Netzwerks auf die spezifischen Bereiche beschränken, die von den einzelnen Subnetzen verwendet werden. Sie können den **VNET-Adressraum** eines virtuellen Netzwerks wie hier gezeigt als mehrere spezifische Bereiche definieren:
+Sie können den **VNET-Adressraum** auf die jeweiligen Bereiche der einzelnen Subnetze einschränken. Sie können auch den **VNET-Adressraum** eines virtuellen Netzwerks wie hier gezeigt als mehrere spezifische Bereiche definieren:
 
 ![Adressraum für virtuelles Azure-Netzwerk mit zwei Bereichen](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-In diesem Fall hat der **VNET-Adressraum** zwei definierte Bereiche. Dies sind die gleichen IP-Adressbereiche, die für den **IP-Adressbereich des Azure-VM-Subnetzes** und den **IP-Adressbereich des Gatewaysubnetzes für virtuelle Netzwerke** definiert wurden.
+In diesem Fall hat der **VNET-Adressraum** zwei definierte Bereiche. Dies sind die gleichen IP-Adressbereiche, die für den IP-Adressbereich des Subnetzes für die Azure-VM und das Gateway für virtuelle Netzwerke definiert wurden. 
 
 Für diese Mandantensubnetze (VM-Subnetze) können Sie einen beliebigen Benennungsstandard verwenden. Es darf aber **immer nur ein einziges Gatewaysubnetz für jedes virtuelle Netzwerk vorhanden sein**, für das eine Verbindung mit der ExpressRoute-Verbindung von SAP HANA in Azure (große Instanzen) hergestellt wird. Und **dieses Gatewaysubnetz muss den Namen „GatewaySubnet“ haben**, um sicherzustellen, dass das ExpressRoute-Gateway richtig angeordnet ist.
 
 > [!WARNING] 
 > Es ist wichtig, dass das Gatewaysubnetz immer „GatewaySubnet“ heißt.
 
-Sie können mehrere VM-Subnetze und nicht zusammenhängende Adressbereiche verwenden. Diese Adressbereiche müssen durch den **VNET-Adressraum** des virtuellen Netzwerks abgedeckt sein. Sie können in aggregierter Form oder als Liste mit den genauen Bereichen der VM-Subnetze und des Gatewaysubnetzes vorliegen.
+Sie können mehrere VM-Subnetze und nicht zusammenhängende Adressbereiche verwenden. Diese Adressbereiche müssen durch den **VNET-Adressraum** des virtuellen Netzwerks abgedeckt sein. Sie können in aggregierter Form vorliegen. Sie können auch als Liste mit den genauen Bereichen der VM-Subnetze und des Gatewaysubnetzes vorliegen.
 
 Hier ist eine Zusammenfassung der wichtigen Fakten zu einem virtuellen Azure-Netzwerk angegeben, für das eine Verbindung mit HANA (große Instanzen) hergestellt wird:
 
 - Sie müssen den **VNET-Adressraum** an Microsoft übermitteln, wenn Sie die erste Bereitstellung von HANA (große Instanzen) durchführen. 
-- Der **VNET-Adressraum** kann ein größerer Bereich sein, der den Bereich für die IP-Adressbereiche des Azure-VM-Subnetzes und den IP-Adressbereich des VNET-Gatewaysubnetzes abdeckt.
+- Der **VNET-Adressraum** kann ein größerer Bereich sein, der den Bereich für die IP-Adressbereiche sowohl des Azure-VM-Subnetzes als auch des VNET-Gatewaysubnetzes abdeckt.
 - Sie können aber auch mehrere Bereiche übermitteln, die die unterschiedlichen Bereiche der IP-Adressbereiche des Azure-VM-Subnetzes und des IP-Adressbereichs des Gateways für virtuelle Netzwerke abdecken.
 - Der definierte **VNET-Adressraum** wird für die BGP-Routingweitergabe verwendet.
-- Das Gatewaysubnetz muss den Namen **GatewaySubnet** haben.
-- Der Adressraum wird auf der HANA (große Instanzen)-Seite als Filter verwendet, um Datenverkehr zu den HANA (große Instanz)-Einheiten von Azure zuzulassen oder zu unterbinden. Stellen Sie sicher, dass die Informationen der BGP-Routingweitergabe des virtuellen Azure-Netzwerks und der IP-Adressbereiche, die für die Filterung auf der HANA (große Instanzen)-Seite konfiguriert sind, übereinstimmen. Andernfalls können Verbindungsprobleme auftreten.
+- Das Gatewaysubnetz muss den folgenden Namen aufweisen: **GatewaySubnet**.
+- Der Adressraum wird auf der HANA (große Instanzen)-Seite als Filter verwendet, um Datenverkehr zu den HANA (große Instanz)-Einheiten von Azure zuzulassen oder zu unterbinden. Die BGP-Routinginformationen des virtuellen Azure-Netzwerks sollten mit denen der IP-Adressbereiche, die für die Filterung auf der HANA-Seite (große Instanzen) konfiguriert sind, übereinstimmen. Andernfalls können Verbindungsprobleme auftreten.
 - Der Abschnitt **Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen** enthält einige Details zum Gatewaysubnetz.
 
 
@@ -85,32 +83,34 @@ Hier ist eine Zusammenfassung der wichtigen Fakten zu einem virtuellen Azure-Net
 
 Einige der IP-Adressbereiche, die für die Bereitstellung von HANA (große Instanzen) erforderlich sind, wurden bereits beschrieben. Es gibt aber noch weitere IP-Adressbereiche, die ebenfalls wichtig sind. Wir sehen uns nun einige weitere Details hierzu an. Die folgenden IP-Adressen müssen nicht alle an Microsoft übermittelt werden. Sie müssen sie aber definieren, bevor Sie eine Anforderung zur ersten Bereitstellung senden:
 
-- **VNET-Adressraum**: Wie bereits beschrieben, ist der **VNET-Adressraum** der IP-Adressbereich (bzw. mehrere), den Sie Ihrem Adressraumparameter im virtuellen Azure-Netzwerk zuweisen, für das eine Verbindung mit der Umgebung für SAP HANA (große Instanzen) hergestellt wird.
+- **Adressraum des virtuellen Netzwerks:** Der **Adressraum des virtuellen Netzwerks** umfasst die IP-Adressbereiche, die Sie dem Adressraumparameter in den virtuellen Azure-Netzwerken zuweisen. Diese Netzwerke stellen Verbindungen mit der SAP HANA-Umgebung (große Instanzen) her.
 
- Dieser Adressraumparameter sollte ein mehrzeiliger Wert sein, der aus den Azure-VM-Subnetzbereichen und dem Azure-Gatewaysubnetzbereich besteht (siehe obige Abbildungen). Dieser Bereich darf weder mit dem Adressbereich Ihrer lokalen Umgebung oder Server-IP-Pools noch mit ER-P2P-Adressbereichen überlappen. 
+ Es wird empfohlen, diesen Adressraumparameter als mehrzeiligen Wert anzulegen. Er sollte den Subnetzbereich des virtuellen Azure-Computers und die Subnetzbereiche des Azure-Gateways umfassen. Dieser Subnetzbereich wurde in der vorherigen Abbildung dargestellt. Er darf weder mit dem Adressbereich Ihrer lokalen Umgebung oder Ihres Server-IP-Pools noch mit ER-P2P-Adressbereichen überlappen. 
  
 Wie erhalten Sie diese IP-Adressbereiche? 
 
-Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen oder mehrere IP-Adressbereiche bereitstellen, die in Ihrem Netzwerk nicht verwendet werden. Wenn Ihr Azure-VM-Subnetz beispielsweise 10.0.1.0/24 und Ihr Azure-Gatewaysubnetz 10.0.2.0/28 lautet, empfehlen wir Ihnen, für Ihren Adressraum des virtuellen Azure-Netzwerks zwei Zeilen zu verwenden: 10.0.1.0/24 und 10.0.2.0/28. 
+Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen oder mehrere IP-Adressbereiche bereitstellen, die in Ihrem Netzwerk nicht verwendet werden. Angenommen, das Subnetz Ihres virtuellen Azure-Computers ist 10.0.1.0/24 und das Subnetz Ihres Azure-Gateways ist 10.0.2.0/28.  Es wird empfohlen, dass der Adressraum Ihres virtuellen Azure-Netzwerks die folgenden beiden Zeilen umfasst: 10.0.1.0/24 und 10.0.2.0/28. 
 
-Die Adressraumwerte können zwar aggregiert werden, aber die Empfehlung lautet, sie an die Subnetzbereiche anzupassen. Hierdurch vermeiden Sie die zukünftige versehentliche Wiederverwendung von nicht genutzten IP-Adressbereichen in größeren Adressräumen an einer anderen Stelle Ihres Netzwerks. **Der VNET-Adressraum ist ein IP-Adressbereich, der an Microsoft übermittelt werden muss, wenn eine Erstbereitstellung angefordert wird**.
+Die Adressraumwerte können zwar aggregiert werden, aber die Empfehlung lautet, sie an die Subnetzbereiche anzupassen. Hierdurch vermeiden Sie die versehentliche Wiederverwendung von nicht genutzten IP-Adressbereichen in größeren Adressräumen an einer anderen Stelle Ihres Netzwerks. **Der Adressraum des virtuellen Netzwerks ist ein IP-Adressbereich. Es muss an Microsoft übermittelt werden, wenn Sie eine Erstbereitstellung anfordern**.
 
-- **IP-Adressbereich des Azure-VM-Subnetzes:** Wie bereits weiter oben erläutert, ist dies der IP-Adressbereich, den Sie dem Azure-VNET-Subnetzparameter für das virtuelle Azure-Netzwerk zugewiesen haben (oder später zuweisen möchten), für das mit der Umgebung von SAP HANA (große Instanzen) eine Verbindung hergestellt wird. Dieser IP-Adressbereich wird dazu verwendet, Ihren Azure-VMs IP-Adressen zuzuweisen. Die IP-Adressen dieses Bereichs können eine Verbindung mit Ihren Servern für SAP HANA (große Instanzen) herstellen. Bei Bedarf können Sie mehrere Azure-VM-Subnetze verwenden. Wir empfehlen Ihnen, für jedes Azure-VM-Subnetz einen /24-CIDR-Block zu nutzen. Dieser Adressbereich muss Teil der Werte sein, die im Adressraum des virtuellen Azure-Netzwerks verwendet werden. 
+- **IP-Adressbereich des Azure-VM-Subnetzes:** Dies ist der IP-Adressbereich, den Sie dem Parameter für das Subnetz des virtuellen Azure-Netzwerks zuweisen. Dieser Parameter befindet sich in Ihrem virtuellen Azure-Netzwerk und stellt eine Verbindung mit der SAP HANA-Umgebung (große Instanzen) her. Dieser IP-Adressbereich wird dazu verwendet, Ihren Azure-VMs IP-Adressen zuzuweisen. Die IP-Adressen dieses Bereichs können eine Verbindung mit Ihren Servern für SAP HANA (große Instanzen) herstellen. Bei Bedarf können Sie mehrere Azure-VM-Subnetze verwenden. Wir empfehlen Ihnen, für jedes Azure-VM-Subnetz einen /24-CIDR-Block zu nutzen. Dieser Adressbereich muss Teil der Werte sein, die im Adressraum des virtuellen Azure-Netzwerks verwendet werden. 
 
 Wie erhalten Sie diesen IP-Adressbereich? 
 
 Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der nicht in Ihrem Netzwerk verwendet wird.
 
-- **IP-Adressbereich des VNET-Gatewaysubnetzes:** Je nachdem, welche Features Sie verwenden möchten, wird die folgende Größe empfohlen:
+- **IP-Adressbereich für das Gatewaysubnetz des virtuellen Netzwerks:** Abhängig von den Features, die Sie verwenden möchten, beträgt die empfohlene Größe:
    - Höchstleistungs-ExpressRoute-Gateway: /26-Adressblock – erforderlich für Typ II-Klasse von SKUs.
    - Koexistenz mit VPN und ExpressRoute über ein Hochleistungs-ExpressRoute-Gateway für virtuelle Netzwerke (oder kleiner): /27-Adressblock.
    - Alle anderen Fälle: /28-Adressblock. Dieser Adressbereich muss Bestandteil der Werte sein, die in den Werten von „VNET-Adressraum“ verwendet werden. Dieser Adressbereich muss Bestandteil der Werte sein, die als Werte für den Adressraum des virtuellen Netzwerks verwendet werden, den Sie an Microsoft übermitteln. Wie erhalten Sie diesen IP-Adressbereich? Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. 
 
-- **Adressbereich für ER-P2P-Konnektivität:** Dieser Adressbereich ist der IP-Adressbereich für die ExpressRoute-P2P-Verbindung von SAP HANA (große Instanzen) (ExpressRoute = ER). Dieser Bereich von IP-Adressen muss ein /29-CIDR-IP-Adressbereich sein. Dieser Bereich darf weder mit dem lokalen noch mit anderen Azure-IP-Adressbereichen überlappen. Dieser IP-Adressbereich wird verwendet, um die ER-Konnektivität von Ihrem virtuellen ExpressRoute-Gateway zu den Servern von SAP HANA (große Instanzen) einzurichten. Wie erhalten Sie diesen IP-Adressbereich? Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. **Dieser Bereich ist ein IP-Adressbereich, der an Microsoft übermittelt werden muss, wenn eine Erstbereitstellung angefordert wird**.
+- **Adressbereich für ER-P2P-Konnektivität:** Dieser Adressbereich ist der IP-Adressbereich für die ExpressRoute-P2P-Verbindung (ER-P2P) von SAP HANA (große Instanzen). Dieser Bereich von IP-Adressen muss ein /29-CIDR-IP-Adressbereich sein. Dieser Bereich darf weder mit dem lokalen noch mit anderen Azure-IP-Adressbereichen überlappen. Dieser IP-Adressbereich wird verwendet, um die ER-Konnektivität von Ihrem virtuellen ExpressRoute-Gateway zu den Servern von SAP HANA (große Instanzen) einzurichten. Wie erhalten Sie diesen IP-Adressbereich? Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. **Dieser Bereich ist ein IP-Adressbereich. Es muss an Microsoft übermittelt werden, wenn Sie eine Erstbereitstellung anfordern**.
   
-- **Adressbereich des Server-IP-Pools:** Dieser IP-Adressbereich wird verwendet, um jedem SAP HANA (große Instanzen)-Server seine eigene IP-Adresse zuzuweisen. Die empfohlene Subnetzgröße ist ein /24-CIDR-Block. Bei Bedarf kann auch eine geringere Größe mit nur 64 IP-Adressen genutzt werden. Aus diesem Bereich werden die ersten 30 IP-Adressen für die Verwendung durch Microsoft reserviert. Stellen Sie sicher, dass Sie dies berücksichtigen, wenn Sie die Größe des Bereichs auswählen. Dieser Bereich darf weder mit den lokalen noch mit anderen Azure-IP-Adressen überlappen. Wie erhalten Sie diesen IP-Adressbereich? Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. Ein eindeutiger /24-CIDR-Block (empfohlen) für die Zuweisung bestimmter IP-Adressen ist für SAP HANA in Azure (große Instanzen) erforderlich. **Dieser Bereich ist ein IP-Adressbereich, der an Microsoft übermittelt werden muss, wenn eine Erstbereitstellung angefordert wird**.
+- **Adressbereich des Server-IP-Pools:** Dieser IP-Adressbereich wird verwendet, um jedem SAP HANA-Server (große Instanzen) eine eigene IP-Adresse zuzuweisen. Die empfohlene Subnetzgröße ist ein /24-CIDR-Block. Bei Bedarf kann auch eine geringere Größe mit nur 64 IP-Adressen genutzt werden. Aus diesem Bereich werden die ersten 30 IP-Adressen für die Verwendung durch Microsoft reserviert. Stellen Sie sicher, dass Sie dies berücksichtigen, wenn Sie die Größe des Bereichs auswählen. Dieser Bereich darf weder mit den lokalen noch mit anderen Azure-IP-Adressen überlappen. Wie erhalten Sie diesen IP-Adressbereich? Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. 
+
+ **Dieser Bereich ist ein IP-Adressbereich, der an Microsoft übermittelt werden muss, wenn eine Erstbereitstellung angefordert wird**.
  
-Sie müssen zwar die IP-Adressbereiche definieren und planen, die zuvor beschrieben wurden, aber Sie müssen nicht alle an Microsoft übertragen. Sie müssen die folgenden IP-Adressbereiche für Microsoft angeben:
+Sie müssen die zuvor beschriebenen IP-Adressbereiche planen und definieren. Es müssen jedoch nicht alle an Microsoft übertragen werden. Sie müssen die folgenden IP-Adressbereiche für Microsoft angeben:
 
 - Adressräume des virtuellen Azure-Netzwerks
 - Adressbereich für ER-P2P-Konnektivität
@@ -118,7 +118,7 @@ Sie müssen zwar die IP-Adressbereiche definieren und planen, die zuvor beschrie
 
 Wenn Sie zusätzliche virtuelle Netzwerke hinzufügen, für die eine Verbindung mit HANA (große Instanzen) hergestellt werden muss, müssen Sie den Adressraum des neuen virtuellen Azure-Netzwerks an Microsoft übermitteln. 
 
-Es folgen ein Beispiel für die verschiedenen Bereiche sowie einige Beispielbereiche dafür, wie Sie diese konfigurieren und schließlich an Microsoft übermitteln müssen. Der Wert für den Azure-VNET-Adressraum wird im ersten Beispiel nicht aggregiert, sondern aus den Bereichen des ersten IP-Adressbereichs des Azure-VM-Subnetzes und des IP-Adressbereichs des VNET-Gatewaysubnetzes definiert. 
+Es folgen ein Beispiel für die verschiedenen Bereiche sowie einige Beispielbereiche dafür, wie Sie diese konfigurieren und schließlich an Microsoft übermitteln müssen. Der Wert für den Adressraum des virtuellen Azure-Netzwerks ist im ersten Beispiel nicht aggregiert. Er wird jedoch über die Adressbereiche des ersten Azure-VM-Subnetzes und des Gatewaysubnetzes für virtuelle Netzwerke definiert. 
 
 Sie können mehrere VM-Subnetze im virtuellen Azure-Netzwerk verwenden, wenn Sie die zusätzlichen IP-Adressbereiche der zusätzlichen VM-Subnetze als Teil des Adressraums des virtuellen Azure-Netzwerks konfigurieren und übermitteln.
 
@@ -128,7 +128,7 @@ Sie können die Daten, die Sie an Microsoft übermitteln, auch aggregieren. In d
 
 ![Zweite Möglichkeit für in einer minimalen Bereitstellung von SAP HANA in Azure (große Instanzen) erforderliche IP-Adressbereiche](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
 
-Wie Sie im Beispiel sehen können, wird nun anstelle von zwei kleineren Bereichen, die den Adressraum des virtuellen Azure-Netzwerks definieren, ein größerer Bereich verwendet, der 4.096 IP-Adressen abdeckt. Eine solch große Definition des Adressraums bewirkt, dass einige ziemlich große Bereiche nicht verwendet werden. Da die Adressraumwerte des virtuellen Netzwerks für die BGP-Routenweitergabe verwendet werden, können Routingprobleme verursacht werden, wenn ungenutzte Bereiche lokal oder an anderer Stelle in Ihrem Netzwerk verwendet werden. 
+Im Beispiel wird nun anstelle von zwei kleineren Bereichen, die den Adressraum des virtuellen Azure-Netzwerks definieren, ein größerer Bereich verwendet, der 4.096 IP-Adressen abdeckt. Eine solch große Definition des Adressraums bewirkt, dass einige ziemlich große Bereiche nicht verwendet werden. Da die Adressraumwerte des virtuellen Netzwerks für die BGP-Routenweitergabe verwendet werden, können Routingprobleme verursacht werden, wenn ungenutzte Bereiche lokal oder an anderer Stelle in Ihrem Netzwerk verwendet werden. 
 
 Deshalb empfiehlt es sich, den Adressraum eng am tatsächlich verwendeten Subnetzadressraum auszurichten. Sie können bei Bedarf später neue Adressraumwerte hinzufügen, ohne dass dies zu Ausfallzeiten im virtuellen Netzwerk führt.
  
@@ -142,7 +142,7 @@ Nachdem die IP-Adressbereiche definiert wurden, müssen die folgenden Schritte a
 2. Eine ExpressRoute-Leitung wird von Microsoft zwischen Ihrem Azure-Abonnement und dem Stempel für SAP HANA (große Instanzen) erstellt.
 3. Microsoft erstellt ein Mandantennetzwerk auf dem Stempel für SAP HANA (große Instanzen).
 4. Microsoft konfiguriert die Netzwerkfunktionen in der Infrastruktur von SAP HANA in Azure (große Instanzen), damit IP-Adressen aus Ihrem Adressraum des virtuellen Azure-Netzwerks akzeptiert werden, über die mit SAP HANA (große Instanzen) kommuniziert werden soll.
-5. Je nach der jeweils erworbenen SKU von SAP HANA in Azure (große Instanzen) weist Microsoft eine Compute-Einheit in einem Mandantennetzwerk zu, reserviert und stellt Speicher bereit und installiert das Betriebssystem (SUSE oder RedHat Linux). IP-Adressen für diese Einheiten werden dem Adressbereich des Server IP-Pools entnommen, den Sie an Microsoft übermittelt haben.
+5. Je nach der jeweils erworbenen SKU von SAP HANA in Azure (große Instanzen) weist Microsoft eine Compute-Einheit in einem Mandantennetzwerk zu. Außerdem wird Speicher reserviert und eingebunden, und das Betriebssystem (SUSE oder Red Hat Linux) wird installiert. IP-Adressen für diese Einheiten werden dem Adressbereich des Server IP-Pools entnommen, den Sie an Microsoft übermittelt haben.
 
 Am Ende des Bereitstellungsprozesses stellt Microsoft Ihnen die folgenden Daten zur Verfügung:
 - Informationen, die benötigt werden, um Ihre virtuellen Azure-Netzwerke mit der ExpressRoute-Leitung zu verbinden, mit der die Verbindung zwischen virtuellen Azure-Netzwerken und HANA (große Instanzen) hergestellt wird:
@@ -152,6 +152,6 @@ Am Ende des Bereitstellungsprozesses stellt Microsoft Ihnen die folgenden Daten 
 
 Die Sequenz für das Verbinden von HANA (große Instanzen) finden Sie auch im Dokument [SAP HANA on Azure (Large Instances) Setup](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/) (SAP HANA in Azure (große Instanzen) – Setup). Viele der folgenden Schritte werden in diesem Dokument in einer Beispielbereitstellung dargestellt. 
 
-**Nächste Schritte**
+## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich unter [Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen](hana-connect-vnet-express-route.md).

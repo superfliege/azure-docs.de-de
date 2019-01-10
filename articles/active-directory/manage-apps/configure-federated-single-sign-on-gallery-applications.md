@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: a4a80132b243cdf00cac4b14ecb1af3a13864cb5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 4b827419d9aaae1b4445880c28bae307ec14391c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354898"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538972"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurieren von einmaligem Anmelden im Verbund für eine Azure AD-Kataloganwendung
 
@@ -167,7 +167,7 @@ Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifik
 
 8.  Wechseln Sie zum Abschnitt **SAML-Signaturzertifikat**, und klicken Sie auf den Spaltenwert **Herunterladen**. Abhängig davon, welche Werte die Anwendung für die Konfiguration des einmaligen Anmeldens benötigt, wird die Option zum Herunterladen des Metadaten-XML oder des Zertifikats angezeigt.
 
-Azure AD stellt auch eine URL zum Abrufen der Metadaten bereit. Folgen Sie diesem Muster, um die Metadaten-URL für die Anwendung zu erhalten: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`.
+Azure AD stellt auch eine URL zum Abrufen der Metadaten bereit. Verwenden Sie das folgende Muster, um die für die Anwendung spezifische Metadaten-URL abzurufen: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`
 
 ## <a name="assign-users-to-the-application"></a>Zuweisen von Benutzern zur Anwendung
 
@@ -197,7 +197,7 @@ Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus
 
 11. Zeigen Sie auf den **Benutzer** in der Liste, um ein **Kontrollkästchen** anzuzeigen. Klicken Sie auf das Kontrollkästchen neben dem Profilbild oder Logo des Benutzers, um den Benutzer zur Liste **Ausgewählt** hinzuzufügen.
 
-12. **Optional**: Wenn Sie **mehrere Benutzer hinzufügen** möchten, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren **vollständigen Namen** oder eine weitere **E-Mail-Adresse** ein, und klicken Sie auf das Kontrollkästchen, um diesen Benutzer zur Liste **Ausgewählt** hinzuzufügen.
+12. **Optional:** Wenn Sie **mehrere Benutzer hinzufügen** möchten, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren **vollständigen Namen** oder eine weitere **E-Mail-Adresse** ein, und klicken Sie auf das Kontrollkästchen, um diesen Benutzer zur Liste **Ausgewählt** hinzuzufügen.
 
 13. Wenn Sie alle gewünschten Benutzer ausgewählt haben, klicken Sie auf die Schaltfläche **Auswählen**, um sie zur Liste der Benutzer und Gruppen hinzuzufügen, die der Anwendung zugewiesen werden sollen.
 

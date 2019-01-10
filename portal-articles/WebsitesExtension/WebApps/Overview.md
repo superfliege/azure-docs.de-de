@@ -8,18 +8,18 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432222"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606468"
 ---
 # <a name="app-service-documentation"></a>App Service-Dokumentation
 Azure App Service ermöglicht Ihnen das Erstellen und Hosten von Webanwendungen in der Programmiersprache Ihrer Wahl, ohne dass eine Infrastruktur oder die Sprach- bzw. Webframeworkruntime verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps Services oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure App Service verwenden.
 
 ## <a name="windows-linux-and-docker"></a>Windows, Linux und Docker
-[Web-Apps](/app-service/app-service-web-overview) ist das Hauptangebot von App Service zum Erstellen und Hosten von Webanwendungen unter Verwendung von Windows-Umgebungen. Entwickler, die eine Linux-Umgebung bevorzugen, können [App Service für Linux](/app-service/containers/app-service-linux-intro) auswählen. Entwickler können auch Docker-Images direkt in App Service für Linux bereitstellen, um benutzerdefinierte Runtimes/Frameworks bereitzustellen.
+[Web-Apps](/app-service/overview) ist das Hauptangebot von App Service zum Erstellen und Hosten von Webanwendungen unter Verwendung von Windows-Umgebungen. Entwickler, die eine Linux-Umgebung bevorzugen, können [App Service für Linux](/app-service/containers/app-service-linux-intro) auswählen. Entwickler können auch Docker-Images direkt in App Service für Linux bereitstellen, um benutzerdefinierte Runtimes/Frameworks bereitzustellen.
 
 ## <a name="5-minute-quickstarts"></a>Fünfminütige Schnellstarts
 
@@ -53,8 +53,8 @@ Es wird beschrieben, wie Sie sichere Webanwendungen in Azure bereitstellen, verw
 
 Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
 
-- [Azure-CLI](/azure/app-service/app-service-cli-sample)
-- [Azure PowerShell](/azure/app-service/app-service-powershell-samples)
+- [Azure-Befehlszeilenschnittstelle](/azure/app-service/app-service-cli-sample)
+- [Azure PowerShell](/azure/app-service/samples-powershell)
 
 ## <a name="more"></a>Weitere Informationen
 

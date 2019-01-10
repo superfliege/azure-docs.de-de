@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: fe675a39abfd1ddc70ecdb21496b7197962ca368
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b1f4d278079b81b4a224dc4712426d1f078de110
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004445"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020403"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -159,6 +159,6 @@ Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsr
 
 Weitere Informationen zur automatischen Erkennung finden Sie hier:
 
-- [Anomalien bei Fehlern](../../application-insights/app-insights-proactive-failure-diagnostics.md)
-- [Arbeitsspeicherverluste](../../application-insights/app-insights-proactive-potential-memory-leak.md)
-- [Leistungsanomalien](../../application-insights/app-insights-proactive-performance-diagnostics.md)
+- [Anomalien bei Fehlern](../../azure-monitor/app/proactive-failure-diagnostics.md)
+- [Arbeitsspeicherverluste](../../azure-monitor/app/proactive-potential-memory-leak.md)
+- [Leistungsanomalien](../../azure-monitor/app/proactive-performance-diagnostics.md)

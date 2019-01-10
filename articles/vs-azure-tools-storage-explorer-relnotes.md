@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 956482a30d383df558eee775b9d89c211bc53e61
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 94c1f255d7aae63d6faf44cc500c48c68bf6d3fc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101414"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608952"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
@@ -27,42 +27,47 @@ Dieser Artikel enthält die Anmerkungen zu dieser Version für Azure Storage-Exp
 
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
-## <a name="version-150"></a>Version 1.5.0
-29.10.2018
+## <a name="version-161"></a>Version 1.6.1
+18.12.2018
 
-### <a name="download-azure-storage-explorer-150"></a>Herunterladen von Azure Storage-Explorer 1.5.0
-- [Azure Storage-Explorer 1.5.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 1.5.0 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 1.5.0 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-161"></a>Herunterladen von Azure Storage-Explorer 1.6.1
+- [Azure Storage-Explorer 1.6.1 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 1.6.1 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 1.6.1 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
+### <a name="hotfixes"></a>Hotfixes
+* Aufgrund von API-Einschränkungen wurden sämtliche Validierungen von Objekt-IDs im Dialogfeld „Zugriff verwalten“ deaktiviert. Die Validierung erfolgt nun ausschließlich für Benutzer-UPNs. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* Im Dialogfeld „Zugriff verwalten“ von ADLS Gen2 konnten die Berechtigungen für eine Gruppe nicht geändert werden. Dies wurde korrigiert. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Unterstützung für das Hochladen per Drag & Drop wurde im ADLS Gen2-Editor hinzugefügt. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* In der URL-Eigenschaft im Eigenschaftendialogfeld für ADLS Gen2-Dateien und -Ordner fehlte manchmal ein „/“. Dies wurde korrigiert. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Wenn beim Abrufen der aktuellen Berechtigungen für einen Container, eine Datei oder einen Ordner in ADLS Gen2 ein Fehler auftritt, wird dieser Fehler nun ordnungsgemäß im Aktivitätsprotokoll angezeigt. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Der zum Öffnen von Dateien erstellte temporäre Pfad wurde gekürzt, um die Wahrscheinlichkeit der Erstellung eines Pfads, der länger als MAX_PATH für Windows ist, zu verringern. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Das Dialogfeld „Verbinden“ wird jetzt ordnungsgemäß angezeigt, wenn keine Benutzer angemeldet sind und keine Ressourcen angefügt wurden. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* In 1.6.0 wurde beim Speichern von Eigenschaften für Nicht-HNS-Blobs und -Dateien der Wert jeder Eigenschaft codiert. Dies führte zu unnötigen Codierungen von Werten, die nur ASCII-Zeichen enthielten. Jetzt werden die Werte nur codiert, wenn sie Nicht-ASCII-Zeichen enthalten. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Das Hochladen eines Ordners in einen Nicht-HNS-Blobcontainer führte zu einem Fehler, wenn eine SAS verwendet wurde, die über keine Leseberechtigungen verfügte. Dies wurde korrigiert. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Das Abbrechen einer AzCopy-Übertragung funktionierte nicht. Dies wurde korrigiert. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy verursachte einen Fehler, wenn versucht wurde, einen Ordner aus einem ADLS Gen2-Blobcontainer herunterzuladen, und der Ordner Leerzeichen im Namen enthielt. Dies wurde korrigiert. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* Der Cosmos DB-Editor war in Version 1.6.0 fehlerhaft. Dies wurde jetzt behoben. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
 ### <a name="new"></a>Neu
 
-* Sie können ab sofort [AzCopy v10 (Vorschau)](https://github.com/Azure/azure-storage-azcopy) zum Hochladen und Herunterladen von Blobs verwenden. Um dieses Feature zu aktivieren, wechseln Sie zum Menü „Experimentell“, und klicken Sie dann auf „AzCopy für verbesserten Upload und Download von Blobs verwenden“. Sofern aktiviert, wird AzCopy in den folgenden Szenarien verwendet:
-   * Hochladen von Ordnern und Dateien in Blobcontainer, entweder über die Symbolleiste oder per Drag & Drop.
-   * Herunterladen von Ordnern und Dateien, entweder über die Symbolleiste oder über das Kontextmenü.
-
-* Zusätzlich gilt bei Verwendung von AzCopy Folgendes:
-   * Sie können den AzCopy-Befehl zum Ausführen der Übertragung in die Zwischenablage kopieren. Klicken Sie im Aktivitätsprotokoll einfach auf „AzCopy-Befehl in Zwischenablage kopieren“.
-   * Sie müssen den Blob-Editor nach dem Hochladen manuell aktualisieren.
-   * Das Hochladen von Dateien zum Anfügen von Blobs wird nicht unterstützt. VHDS-Dateien werden als Seitenblobs hochgeladen, alle anderen Dateien werden als Blockblobs hochgeladen.
-   * Fehler und Konflikte, die während eines Uploads oder Downloads auftreten, treten erst nach dem Abschluss von Upload oder Download zutage.
-
-Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
-* Der Storage-Explorer verwendet ab sofort Electron 2.0.11.
-* Das Abbrechen von Leases kann jetzt immer nur für ein Blob durchgeführt werden. Zusätzlich müssen Sie den Namen des Blobs eingeben, deren Lease sie abbrechen möchten. Diese Änderung wurde vorgenommen, um die Wahrscheinlichkeit des versehentlichen Abbrechens einer Lease zu verringern, insbesondere im Fall von VHDS-Dateien für VMs. #394
-* Falls jemals Anmeldeprobleme auftreten sollten, können Sie jetzt die Authentifizierung zurücksetzen. Wechseln Sie zum Hilfemenü, und klicken Sie auf „Zurücksetzen“, um auf diese Funktion zuzugreifen. #419
-
-### <a name="fix"></a>Behebung
-
-* Aufgrund von zahlreichem Benutzerfeedback wurde der standardmäßige Emulatorknoten reaktiviert. Sie können über das Dialogfeld „Verbinden“ weiterhin zusätzliche Emulatorverbindungen hinzufügen, aber wenn Ihr Emulator zur Verwendung der Standardports konfiguriert ist, können Sie auch den Knoten „Emulator * Standardports“ unter „Lokale und verbundene Speicherkonten“ verwenden. #669
-* Der Storage-Explorer lässt es nicht mehr zu, dass Blobmetadaten festgelegt werden, die führende oder nachgestellte Leerzeichen aufweisen. #760
-* Auf einigen Seiten des Dialogfelds „Verbinden“ war die Schaltfläche „Anmelden“ immer aktiviert. Die Schaltfläche ist nun bei Bedarf deaktiviert. #761
-* Der Schnellzugriff löst keinen Fehler in der Konsole mehr aus, wenn keine Schnellzugriffelemente hinzugefügt wurden.
+* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
+* Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
+    * Erstellen und Löschen von Containern
+    * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
+    * Anzeigen von Daten in Containern und Navigieren zu diesen
+    * Erstellen neuer Ordner
+    * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
+    * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
+    
+    Andere typische Blobfunktionen wie vorläufiges Löschen und Momentaufnahmen sind aktuell noch nicht verfügbar. Das Verwalten von Berechtigungen ist ebenfalls nur möglich, wenn Sie angemeldet sind. Darüber hinaus verwendet Storage-Explorer bei der Arbeit in einem ADLS Gen2-Speicherkonto AzCopy für sämtliche Uploads und Downloads. Dabei nutzt er standardmäßig die Namen und Schlüsselanmeldeinformationen für alle Vorgänge (sofern verfügbar).
+* Nach deutlichem Benutzerfeedback kann „Lease abbrechen“ wieder zum Unterbrechen von Leases in mehreren Blobs gleichzeitig verwendet werden.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. ein Blobcontainer, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Siehe #537 für weitere Informationen.
-* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie bitte einen Kommentar zu diesem Problem.
+* Wenn beim Herunterladen aus einem ADLS Gen2-Speicherkonto eine der übertragenen Dateien bereits vorhanden ist, stürzt AzCopy manchmal ab. Dies wird mit einem zukünftigen Hotfix behoben.
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie unter #537.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
 * Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
 * In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
 * Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
@@ -98,6 +103,8 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 ## <a name="previous-releases"></a>Vorgängerversionen
 
+* [Version 1.6.0](#version-160)
+* [Version 1.5.0](#version-150)
 * [Version 1.4.4](#version-144)
 * [Version 1.4.3](#version-143)
 * [Version 1.4.2](#version-142)
@@ -128,6 +135,126 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * [Version 0.7.20160129.1](#version-07201601291)
 * [Version 0.7.20160105.0](#version-07201601050)
 * [Version 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-160"></a>Version 1.6.0
+5.12.2018
+
+### <a name="new"></a>Neu
+
+* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
+* Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
+    * Erstellen und Löschen von Containern
+    * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
+    * Anzeigen von Daten in Containern und Navigieren zu diesen
+    * Erstellen neuer Ordner
+    * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
+    * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
+    
+    Andere typische Blobfunktionen wie vorläufiges Löschen und Momentaufnahmen sind aktuell noch nicht verfügbar. Das Verwalten von Berechtigungen ist ebenfalls nur möglich, wenn Sie angemeldet sind. Darüber hinaus verwendet Storage-Explorer bei der Arbeit in einem ADLS Gen2-Speicherkonto AzCopy für sämtliche Uploads und Downloads. Dabei nutzt er standardmäßig die Namen und Schlüsselanmeldeinformationen für alle Vorgänge (sofern verfügbar).
+* Nach deutlichem Benutzerfeedback kann „Lease abbrechen“ wieder zum Unterbrechen von Leases in mehreren Blobs gleichzeitig verwendet werden.
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+* Wenn beim Herunterladen aus einem ADLS Gen2-Speicherkonto eine der übertragenen Dateien bereits vorhanden ist, stürzt AzCopy manchmal ab. Dies wird mit einem zukünftigen Hotfix behoben.
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie unter #537.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-150"></a>Version 1.5.0
+29.10.2018
+
+### <a name="new"></a>Neu
+
+* Sie können ab sofort [AzCopy v10 (Vorschau)](https://github.com/Azure/azure-storage-azcopy) zum Hochladen und Herunterladen von Blobs verwenden. Um dieses Feature zu aktivieren, wechseln Sie zum Menü „Experimentell“, und klicken Sie dann auf „AzCopy für verbesserten Upload und Download von Blobs verwenden“. Sofern aktiviert, wird AzCopy in den folgenden Szenarien verwendet:
+   * Hochladen von Ordnern und Dateien in Blobcontainer, entweder über die Symbolleiste oder per Drag & Drop.
+   * Herunterladen von Ordnern und Dateien, entweder über die Symbolleiste oder über das Kontextmenü.
+
+* Zusätzlich gilt bei Verwendung von AzCopy Folgendes:
+   * Sie können den AzCopy-Befehl zum Ausführen der Übertragung in die Zwischenablage kopieren. Klicken Sie im Aktivitätsprotokoll einfach auf „AzCopy-Befehl in Zwischenablage kopieren“.
+   * Sie müssen den Blob-Editor nach dem Hochladen manuell aktualisieren.
+   * Das Hochladen von Dateien zum Anfügen von Blobs wird nicht unterstützt. VHD-Dateien werden als Seitenblobs hochgeladen, alle anderen Dateien werden als Blockblobs hochgeladen.
+   * Fehler und Konflikte, die während eines Uploads oder Downloads auftreten, werden erst nach dem Abschluss von Upload oder Download angezeigt.
+
+Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
+* Der Storage-Explorer verwendet ab sofort Electron 2.0.11.
+* Das Abbrechen von Leases kann jetzt immer nur für ein Blob durchgeführt werden. Zusätzlich müssen Sie den Namen des Blobs eingeben, deren Lease sie abbrechen möchten. Diese Änderung wurde vorgenommen, um die Wahrscheinlichkeit des versehentlichen Abbrechens einer Lease zu verringern, insbesondere bei VMs. #394
+* Falls jemals Anmeldeprobleme auftreten sollten, können Sie jetzt die Authentifizierung zurücksetzen. Wechseln Sie zum Hilfemenü, und klicken Sie auf „Zurücksetzen“, um auf diese Funktion zuzugreifen. #419
+
+### <a name="fix"></a>Behebung
+
+* Aufgrund von zahlreichem Benutzerfeedback wurde der standardmäßige Emulatorknoten reaktiviert. Sie können über das Dialogfeld „Verbinden“ weiterhin zusätzliche Emulatorverbindungen hinzufügen, aber wenn Ihr Emulator zur Verwendung der Standardports konfiguriert ist, können Sie auch den Knoten „Emulator * Standardports“ unter „Lokale und verbundene Speicherkonten“ verwenden. #669
+* Der Storage-Explorer lässt es nicht mehr zu, dass Blobmetadaten festgelegt werden, die führende oder nachgestellte Leerzeichen aufweisen. #760
+* Auf einigen Seiten des Dialogfelds „Verbinden“ war die Schaltfläche „Anmelden“ immer aktiviert. Die Schaltfläche ist nun bei Bedarf deaktiviert. #761
+* Der Schnellzugriff löst keinen Fehler in der Konsole mehr aus, wenn keine Schnellzugriffelemente hinzugefügt wurden.
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie unter #537.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
 
 ## <a name="version-144"></a>Version 1.4.4
 10/15/2018
@@ -378,7 +505,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Barrierefreiheit: Reduzierte Strukturknoten auf der linken Seite wurden nicht mit einem Aria-erweiterten Wert von FALSE versehen. Dies wurde korrigiert. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>Bekannte Probleme
-* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. ein Blobcontainer, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie in [diesem Problem](https://github.com/Microsoft/AzureStorageExplorer/issues/537).
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie in [diesem Problem](https://github.com/Microsoft/AzureStorageExplorer/issues/537).
 * Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie bitte einen Kommentar zu [diesem Problem](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
 * Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
 * In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
@@ -894,7 +1021,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-* Schaltflächen im Dialogfeld zum Bestätigen des Löschens von Ordnern reagieren nicht auf Mausklicks unter Linux. Die Problemumgehung besteht darin, die Eingabetaste zu verwenden
+* Schaltflächen im Dialogfeld zum Bestätigen des Löschens von Ordnern reagieren nicht auf Mausklicks unter Linux. Die Problemumgehung besteht darin, die EINGABETASTE zu verwenden
 * Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
 * Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern
@@ -921,7 +1048,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 * Behoben: Beim Dateiupload trat mit hoher Wahrscheinlichkeit ein Fehler durch ungenügenden Arbeitsspeicher auf
 * Behoben: Sie können sich jetzt per PIN/Smartcard anmelden
-* Behoben: „Im Portal öffnen “ funktioniert nun für Azure China, Azure Deutschland, Azure US Government und Azure Stack
+* Behoben: „Im Portal öffnen“ funktioniert nun für Azure China 21Vianet, Azure Deutschland, Azure US Government und Azure Stack
 * Behoben: Beim Hochladen eines Ordners in einen Blobcontainer trat gelegentlich ein Fehler „Illegal operation“ (Der Vorgang ist nicht gestattet) auf
 * Behoben: „Alle auswählen“ war beim Verwalten von Momentaufnahmen deaktiviert
 * Behoben: Die Metadaten des Basisblobs wurden u.U. nach Anzeigen der Eigenschaften seiner Momentaufnahmen überschrieben
@@ -1000,7 +1127,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Storage-Explorer 0.8.9 lädt automatisch die neueste Version für Updates herunter.
 * Hotfix: Beim Anfügen eines Speicherkontos mit einem vom Portal generierten SAS-URI trat ein Fehler auf.
 * Sie können nun Blob-Momentaufnahmen erstellen, verwalten und höher stufen.
-* Sie können sich nun an Azure China-, Azure Deutschland- und Azure US Government-Konten anmelden.
+* Sie können sich nun an Azure China 21Vianet-, Azure Deutschland- und Azure US Government-Konten anmelden.
 * Sie können jetzt die Zoomstufe ändern. Verwenden Sie die Optionen im Menü „Ansicht“ zum Vergrößern, zum Verkleinern und zum Zurücksetzen der Zoomstufe.
 * Unicode-Zeichen werden jetzt in Benutzermetadaten für Blobs und Dateien unterstützt.
 * Verbesserungen der Barrierefreiheit.
@@ -1152,7 +1279,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Für die Installation unter macOS sind u.U. erhöhte Berechtigungen erforderlich
 * Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern
 * Beim Umbenennen von Dateifreigaben, Blobcontainern und Tabellen werden Metadaten oder sonstige Eigenschaften für den Container nicht beibehalten, z.B. Dateifreigabe-Kontingent, öffentliche Zugriffsebene und Zugriffsrichtlinien
-* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Das Kopieren und Umbenennen von Ressourcen funktioniert nicht in über SAS angefügten Konten
 
 07.07.2016
@@ -1266,7 +1393,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 * Linux-Unterstützung (Paritätsfunktionen für OSX)
 * Hinzufügen von Blobcontainern mit SAS-Schlüssel (Shared Access Signatures)
-* Hinzufügen von Speicherkonten für Azure China
+* Hinzufügen von Speicherkonten für Azure China 21Vianet
 * Hinzufügen von Speicherkonten mit benutzerdefinierten Endpunkten
 * Öffnen und Anzeigen der Inhaltstexte und Bildblobs
 * Anzeigen von Blobeigenschaften und Metadaten

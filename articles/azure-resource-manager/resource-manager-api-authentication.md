@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d7beab66bdaed312f32adef74ceb4b2944e6853e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956339"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103890"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 ## <a name="introduction"></a>Einführung
@@ -156,7 +156,7 @@ Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit
 
 Wenn Sie Zertifikatanmeldeinformationen verwenden, erstellen Sie ein JSON-Webtoken (JWT), und signieren Sie (RSA-SHA256) mit dem privaten Schlüssel der Zertifikatanmeldeinformationen Ihrer Anwendung. Die Erstellung dieses Tokens wird im [Clientanmeldeinformations-Datenfluss](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#second-case-access-token-request-with a-certificate) gezeigt.  Informationen zum Signieren von JWT-Token für die Clientassertion finden Sie im [Code der Active Directory Authentication Library (.NET)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) .
 
-Informationen zur Clientauthentifizierung finden Sie in der [Open ID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) .
+Informationen zur Clientauthentifizierung finden Sie in der [Open ID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) .
 
 Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit Zertifikatanmeldeinformationen:
 

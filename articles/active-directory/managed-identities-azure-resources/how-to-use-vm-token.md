@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 0355b8cf19209509dca2f3cac93c7abb92a63990
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 10cc8007c4f54808b5d7eb41ad2caa008b5c7107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323319"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078999"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -124,7 +124,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Abrufen eines Tokens mit der Microsoft.Azure.Services.AppAuthentication-Bibliothek für .NET
 
-Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbeit mit verwalteten Identitäten für Azure-Ressourcen das Microsoft.Azure.Services.AppAuthentication-Paket dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz]. In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
+Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbeit mit verwalteten Identitäten für Azure-Ressourcen das Microsoft.Azure.Services.AppAuthentication-Paket dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz](/azure/key-vault/service-to-service-authentication). In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
 
 1. Fügen Sie Ihrer Anwendung einen Verweis auf die NuGet-Pakete [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) und [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) hinzu.
 

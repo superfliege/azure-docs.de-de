@@ -1,28 +1,27 @@
 ---
 title: Verwalten von Azure Cosmos DB-Ressourcen mit Azure Storage Explorer
 description: Erfahren Sie, wie Sie eine Verbindung mit Azure Cosmos DB herstellen und Ihre Ressourcen mithilfe von Azure Storage-Explorer verwalten.
-author: Jejiang
-tags: Azure Cosmos DB
+author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: jejiang
+ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d19aaa6e486732cb1453e3299c8e598e8fd2f507
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138125"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044619"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB-Ressourcen mit Azure Storage Explorer
 
-Mit der Verwendung von Azure Cosmos DB in Azure Storage-Explorer können Benutzer Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren. Nun können Sie mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten. Derzeit unterstützt Azure Storage-Explorer SQL-, MongoDB-, Graph- und Table-Konten.
+Mit der Verwendung von Azure Cosmos DB in Azure Storage-Explorer können Benutzer Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren. Nun können Sie mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten. Derzeit unterstützt Azure Storage-Explorer Cosmos-Konten, die für SQL-, MongoDB-, Graph- und Tabellen-APIs konfiguriert sind.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure Cosmos DB-Konto für die SQL-API <!--or MongoDB API-->. Wenn Sie kein Konto haben, können Sie im Azure-Portal ein Konto erstellen, wie unter [Azure Cosmos DB: Erstellen einer SQL-API-Web-App mit .NET und dem Azure-Portal](create-sql-api-dotnet.md) beschrieben.
+Ein Cosmos-Konto mit der SQL-API oder der MongoDB-API von Azure Cosmos DB. Wenn Sie kein Konto haben, können Sie im Azure-Portal ein Konto erstellen, wie unter [Azure Cosmos DB: Erstellen einer SQL-API-Web-App mit .NET und dem Azure-Portal](create-sql-api-dotnet.md) beschrieben.
 
 ## <a name="installation"></a>Installation
 

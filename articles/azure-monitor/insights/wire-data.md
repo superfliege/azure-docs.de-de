@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 04566009ba7b71b48cf3dfc7d51cbbdcd596dc0e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186531"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104708"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0-Lösung (Vorschauversion) in Log Analytics
 
@@ -33,7 +33,7 @@ Zusätzlich zum Log Analytics-Agent verwendet die Wire Data-Lösung Microsoft De
 
 Standardmäßig protokolliert Log Analytics Daten für CPU, Arbeitsspeicher, Datenträger sowie Netzwerkleistungsdaten von Leistungsindikatoren, die in Windows und Linux integriert sind. Zudem werden Daten von anderen Leistungsindikatoren protokolliert, die Sie angeben können. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle.  Wire Data untersucht Netzwerkdaten auf Anwendungsebene und nicht unten auf der TCP-Transportebene.  Die Lösung betrachtet keine einzelnen ACKs und SYNs.  Sobald der Handshake abgeschlossen ist, wird er als Liveverbindung betrachtet und als „Verbunden“ gekennzeichnet. Diese Liveverbindung bleibt so lange bestehen, wie beide Seiten zustimmen, dass der Socket offen ist und Daten in beide Richtungen übertragen werden können.  Sobald eine Seite die Verbindung schließt, wird sie als „Getrennt“ markiert.  Aus diesem Grund wird nur die Bandbreite von erfolgreich abgeschlossenen Paketen gezählt, während erneut gesendete oder fehlerhafte Pakete nicht gemeldet werden.
 
-Wenn Sie [sFlow](http://www.sflow.org/) oder andere Software mit dem [NetFlow-Protokoll von Cisco](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html) verwendet haben, werden Ihnen die in den Daten zur Kommunikation angezeigten Statistiken und Daten bekannt vorkommen.
+Wenn Sie [sFlow](http://www.sflow.org/) oder andere Software mit dem [NetFlow-Protokoll von Cisco](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html) verwendet haben, werden Ihnen die in den Daten zur Kommunikation angezeigten Statistiken und Daten bekannt vorkommen.
 
 Beispiele für die Typen von integrierten Abfragen von Protokollsuchen:
 

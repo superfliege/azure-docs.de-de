@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 97352cdc89aabe312bf500901347acaf5238e871
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436992"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809878"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
@@ -219,7 +219,7 @@ Dieses Cmdlet legt die folgenden Berechtigungen fest:
 |-----|-----|-----|-----| 
 |ZULASSEN |AD DS-Connector-Konto |Generisches Lesen/Schreiben |Nachfolger-Gruppenobjekte| 
 |ZULASSEN |AD DS-Connector-Konto |Erstellen/Löschen von untergeordneten Objekten |Dieses Objekt und alle Nachfolgerobjekte| 
-|ZULASSEN |AD DS-Connector-Konto |Löschen/Löschen eines Objekts und aller seiner untergeordneten Elemente |Dieses Objekt und alle Nachfolgerobjekte|
+|ZULASSEN |AD DS-Connector-Konto |Erstellen/Löschen eines Objekts und aller seiner untergeordneten Elemente |Dieses Objekt und alle Nachfolgerobjekte|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Berechtigungen für eine Exchange-Hybridbereitstellung 
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn eine Exchange-Hybridbereitstellung verwendet wird, führen Sie Folgendes aus: 

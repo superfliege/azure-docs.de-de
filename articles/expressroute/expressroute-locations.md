@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2018
 ms.author: pareshmu
-ms.openlocfilehash: 7c3a40f17583e9a7ef9ab02bcf6563ef4ccc5982
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: bc7f43c61cef8ef504d24c03c1cdc3e74f404610
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652947"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052852"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -105,7 +105,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Unterstützt |Unterstützt | Amsterdam, Silicon Valley, Toronto |
 | **Jisc** |Unterstützt |Unterstützt |London |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Unterstützt |Unterstützt |Seoul |
-| **[KPN](http://www.kpn.com/cloudconnect)** | Unterstützt | Unterstützt | Amsterdam | 
+| **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Unterstützt | Unterstützt | Amsterdam | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, London, Newport, Sao Paulo, Seattle, Silicon Valley, Singapore, Washington DC |
 | **LG CNS** |Unterstützt |Unterstützt |Busan, Seoul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg |
@@ -137,7 +137,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg |
 | **TIME dotCom** | Unterstützt | Unterstützt | Kuala Lumpur |
 | **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |Unterstützt |Unterstützt |Sao Paulo |
-| **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Hongkong, London, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
+| **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Hongkong, London, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Unterstützt |Nicht unterstützt |London, Singapur |
 | **Vodafone Idea** | Unterstützt | Unterstützt | Mumbai2 |
 | **[Zayo](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, London, Los Angeles, Montreal, New York, Seattle, Silicon Valley, Toronto, Washington DC |
@@ -285,7 +285,6 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 | **[Ensyst](http://www.ensyst.com.au)** | Asien
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | Nordamerika |
 | **[FlexManage](http://www.flexmanage.com/cloud)** | Nordamerika |
-| **[Inframon](http://www.inframon.com/partner/microsoft/)** | Europa |
 | **[Lightstream](https://www.ltstream.com/expressroute)** | Nordamerika |
 | **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | Australien |
 | **[MOQdigital](http://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Australien |

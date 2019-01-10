@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679595"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050590"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Optionen für die Remoteüberwachungsarchitektur
 
@@ -51,7 +51,7 @@ Azure IoT Hub wird als Cloudgateway der Remoteüberwachungslösung verwendet. [I
 
 Für IoT-Gerätekonnektivität können Sie Folgendes verwenden:
 
-- Die [IoT Hub-Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) zum Implementieren einer nativen Clientanwendung für Ihr Gerät. Die SDKs bieten Wrapper für die IoT Hub-REST-API und verarbeiten Szenarios wie beispielsweise Wiederholungen.
+- Die [IoT Hub-Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) zum Implementieren einer nativen Clientanwendung für Ihr Gerät. Die SDKs bieten Wrapper für die IoT Hub-REST-API und verarbeiten Szenarios wie beispielsweise Wiederholungen.
 - Die Integration mit Azure IoT Edge zum Bereitstellen und Verwalten von benutzerdefinierten Modulen, die in Containern auf Ihren Geräten ausgeführt werden.
 - Die Integration mit der automatischen Geräteverwaltung im IoT Hub zur Massenverwaltung verbundener Geräte.
 

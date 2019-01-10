@@ -14,28 +14,14 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 2e65c5f0d6c2d493abcd61bea4077cbdd8ff95fa
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 135ee9f6b833165cd393b9c5ca582e0ee9499e0f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331034"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54057379"
 ---
 ## <a name="register-your-application"></a>Anwendung registrieren
-
-Sie haben mehrere Möglichkeiten, eine Anwendung zu registrieren. Wählen Sie die Option aus, die Ihren Anforderungen am besten entspricht:
-* [Expressmodus: Konfigurieren der App mithilfe des SPA-Schnellstarts](#option-1-register-your-application-express-mode)
-* [Erweiterter Modus: Manuelles Konfigurieren der App-Einstellungen](#option-2-register-your-application-advanced-mode)
-
-### <a name="option-1-register-your-application-express-mode"></a>Option 1: Registrieren Sie Ihre Anwendung (Expressmodus)
-
-1. Melden Sie sich beim [Azure-Portal – App-Registrierung (Vorschau)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) an, um eine Anwendung zu registrieren.
-1. Geben Sie auf der Seite **Anwendung registrieren** einen Namen für Ihre Anwendung ein.
-1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
-1. Wenn Sie so weit sind, klicken Sie auf **Registrieren**.
-1. Befolgen Sie die Schnellstartanweisungen, um Ihre neue Anwendung mit einem Klick herunterzuladen und automatisch für Sie zu konfigurieren.
-
-### <a name="option-2-register-your-application-advanced-mode"></a>Option 2: Registrieren Sie Ihre Anwendung (Erweiterter Modus)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um eine Anwendung zu registrieren.
 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
@@ -47,7 +33,7 @@ Sie haben mehrere Möglichkeiten, eine Anwendung zu registrieren. Wählen Sie di
 1. Notieren Sie sich auf der Seite **Übersicht** den Wert von **Anwendungsclient-ID**.
 1. Für diesen Schnellstart muss der [Flow zur impliziten Genehmigung](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie im linken Navigationsbereich der registrierten Anwendung **Authentifizierung** aus.
 1. Aktivieren Sie unter **Erweiterte Einstellungen** und **Implizite Gewährung** die Kontrollkästchen **ID-Token** und **Zugriffstoken**. ID-Token und Zugriffstoken sind erforderlich, da diese App Benutzer anmelden und eine API aufrufen muss.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 > #### <a name="setting-the-redirect-url-for-node"></a>Festlegen der Umleitungs-URL für Node
 > Für Node.js können Sie den Webserverport in der Datei *server.js* festlegen. In diesem Tutorial wird der Port 30662 als Referenz genutzt, aber Sie können auch einen beliebigen anderen Port verwenden, der verfügbar ist. Befolgen Sie die unten angegebene Anleitung zum Einrichten einer Umleitungs-URL in den Registrierungsinformationen der Anwendung:<br/>

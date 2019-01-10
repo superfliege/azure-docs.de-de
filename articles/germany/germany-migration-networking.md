@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 179e16a4ced3b1d3203756eccf5820ce33b7082d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 00cecdf2acfa526db08002acedcab9d885a78856
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964297"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053203"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>Migrieren von Netzwerkressourcen zu Azure weltweit
 
@@ -93,7 +93,7 @@ Weitere Informationen finden Sie unter:
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials) durcharbeiten.
 - Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway?view=azurermps-6.5.0).
-- Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoftcom/ralfwi/2017/02/02/connecting-clouds/).
+- Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/).
  
 ## <a name="application-gateway"></a>Application Gateway
 
@@ -157,7 +157,7 @@ Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure
 
 Weitere Informationen finden Sie unter:
 
-- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials) durcharbeiten.
 - Im Artikel [Übersicht über Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Erfahren Sie mehr über [Datenflussprotokolle für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-portal.md).
 - Erfahren Sie mehr über [Verbindungsmonitor](../network-watcher/connection-monitor.md).
@@ -178,8 +178,8 @@ Sie können zusätzliche Endpunkte in der Zielumgebung definieren, indem Sie den
 
 Weitere Informationen finden Sie unter:
 
-- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials) durcharbeiten.
-- Lesen Sie auch den Artikel [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials) durcharbeiten.
+- Lesen Sie [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 - Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](../traffic-manager/traffic-manager-create-profile.md).
 
 ## <a name="load-balancer"></a>Load Balancer

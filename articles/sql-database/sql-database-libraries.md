@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: b8e41b77bfb47a08d443fb05e9d59f3f0f958358
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/03/2019
+ms.openlocfilehash: 29a6c7107a57babb5dc81fa22146897d3958f0f0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967911"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036340"
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Verbindungsbibliotheken und -frameworks für SQL Server
 
@@ -29,7 +29,7 @@ Die folgende Tabelle enthält Verbindungsbibliotheken oder *Treiber*, die Client
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET für SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Download](https://www.microsoft.com/net/download/) | [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Microsoft JDBC-Treiber für SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Download](https://go.microsoft.com/fwlink/?linkid=852460) |  [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows, Linux, macOS| [PHP SQL-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Download](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu/)
+| PHP | Windows, Linux, macOS| [PHP SQL-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Download](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Node.js-Treiber für SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Installieren](https://msdn.microsoft.com/library/mt652094.aspx) |  [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python-SQL-Treiber](https://msdn.microsoft.com/library/mt652092.aspx) | Installationsoptionen: <br/> \*[pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \*[pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [Ruby-Treiber für SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Installieren](https://msdn.microsoft.com/library/mt711041.aspx) | [Erste Schritte](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)

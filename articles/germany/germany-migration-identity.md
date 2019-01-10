@@ -10,10 +10,10 @@ ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 0417deb3573615d83da50c0b584e8446cb1528ca
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
+ms.lasthandoff: 01/07/2019
 ms.locfileid: "53321281"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>Migrieren von Identitätsressourcen zu Azure weltweit

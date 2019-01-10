@@ -1,19 +1,20 @@
 ---
 title: Hinzufügen von Blobs zu Objekten in Azure Digital Twins | Microsoft-Dokumentation
-description: Grundlegendes zum Hinzufügen von Blobs zu Objekten in Azure Digital Twins
+description: Erfahren Sie, wie Sie Objekten in Azure Digital Twins Blobs hinzufügen.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
-ms.openlocfilehash: 8a68ba35ddf7caacbf2339d87c5aeef80f470ba4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725623"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974512"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
@@ -21,10 +22,7 @@ Blobs sind unstrukturierte Darstellungen gängiger Dateitypen (z. B. Bilder oder
 
 Azure Digital Twins unterstützt das Anfügen von Blobs an Geräte, Räume und Benutzer. Blobs können ein Profilbild für einen Benutzer, ein Gerätefoto, ein Video, eine Karte oder ein Protokoll darstellen.
 
-> [!NOTE]
-> In diesem Artikel wird Folgendes vorausgesetzt:
-> * Ihre Instanz ist ordnungsgemäß für den Empfang von Verwaltungs-API-Anforderungen konfiguriert.
-> * Sie haben sich ordnungsgemäß über einen REST-Client Ihrer Wahl authentifiziert.
+[!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
 ## <a name="uploading-blobs-an-overview"></a>Hochladen von Blobs: Übersicht
 
@@ -32,7 +30,7 @@ Sie können Blobs unter Verwendung mehrteiliger Anforderungen in bestimmte Endpu
 
 > [!IMPORTANT]
 > Mehrteilige Anforderungen müssen drei Informationselemente umfassen:
-> * Header vom Typ **Content-Type**:
+> * Einen Header vom Typ **Content-Type**:
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
 > * Element vom Typ **Content-Disposition**: `form-data; name="metadata"`
@@ -93,9 +91,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Parameterwert | Ersetzen durch |
+| Wert | Ersetzen durch |
 | --- | --- |
-| *USER_DEFINED_BOUNDARY* | Name für die Begrenzung mehrteiliger Inhalte |
+| USER_DEFINED_BOUNDARY | Name für die Begrenzung mehrteiliger Inhalte |
 
 Der folgende Code ist eine .NET-Implementierung des gleichen Blob-Uploads mit der Klasse [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
 
@@ -116,7 +114,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 ## <a name="api-endpoints"></a>API-Endpunkte
 
-Die folgenden Abschnitte enthalten ausführliche Informationen zu wichtigen Endpunkten und ihren Funktionen.
+Die folgenden Abschnitte beschreiben die wichtigsten blobbezogenen API-Endpunkte und ihre Funktionen.
 
 ### <a name="devices"></a>Geräte
 
@@ -144,7 +142,7 @@ Bei erfolgreichen Anforderungen wird in der Antwort ein **DeviceBlob**-JSON-Obje
 > [!TIP]
 > Verwenden Sie die vorherige Tabelle, um erfolgreich zurückgegebene Anforderungsdaten zu verarbeiten.
 
-### <a name="spaces"></a>Räume
+### <a name="spaces"></a>Leerzeichen
 
 Blobs können auch an Räume angefügt werden. Die folgende Abbildung enthält alle Raum-API-Endpunkte für die Verarbeitung von Blobs. Aufgelistet sind auch alle Pfadparameter, die ggf. an diese Endpunkte übergeben werden müssen.
 

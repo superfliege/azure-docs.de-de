@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 3416d257a23e94460199a1ddfe63302ff55ad5a5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 58e853a3e9df0c3ba78b41f0c62e37bbcc3cdb5a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285049"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754032"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -43,13 +43,13 @@ Die App für die Patchorchestrierung umfasst die folgenden Features:
 
 Die App für die Patchorchestrierung besteht aus den folgenden Teilkomponenten:
 
-- **Koordinatordienst**: Dieser zustandsbehaftete Dienst ist für Folgendes zuständig:
+- **Koordinatordienst:** Dieser zustandsbehaftete Dienst ist für Folgendes zuständig:
     - Koordinieren der Windows Update-Aufträge im gesamten Cluster.
     - Speichern der Ergebnisse der abgeschlossenen Windows Update-Vorgänge.
-- **Knoten-Agent-Dienst**: Dieser zustandslose Dienst wird auf allen Service Fabric-Clusterknoten ausgeführt. Der Dienst ist für Folgendes zuständig:
+- **Knoten-Agent-Dienst:** Dieser zustandslose Dienst wird auf allen Service Fabric-Clusterknoten ausgeführt. Der Dienst ist für Folgendes zuständig:
     - Bootstrapping des Knoten-Agent-NT-Diensts.
     - Überwachen des Knoten-Agent-NT-Diensts.
-- **Knoten-Agent-NT-Dienst**: Dieser Windows NT-Dienst wird mit Berechtigungen einer höheren Ebene ausgeführt (SYSTEM). Im Gegensatz dazu werden der Knoten-Agent-Dienst und der Koordinatordienst mit niedrigeren Berechtigungen ausgeführt (NETZWERKDIENST). Der Dienst ist für die Ausführung der folgenden Windows Update-Aufträge auf allen Clusterknoten zuständig:
+- **Knoten-Agent-NT-Dienst:** Dieser Windows NT-Dienst wird mit erhöhten Berechtigungen (SYSTEM) ausgeführt. Im Gegensatz dazu werden der Knoten-Agent-Dienst und der Koordinatordienst mit niedrigeren Berechtigungen ausgeführt (NETZWERKDIENST). Der Dienst ist für die Ausführung der folgenden Windows Update-Aufträge auf allen Clusterknoten zuständig:
     - Deaktivieren der automatischen Windows Update-Funktion auf dem Knoten.
     - Herunterladen und Installieren von Windows Update entsprechend der vom Benutzer bereitgestellten Richtlinie.
     - Neustarten des Computers nach der Windows Update-Installation.
@@ -151,12 +151,12 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 |:-|-|-|
 |MaxResultsToCache    |Long                              | Maximale Anzahl von Windows Update-Ergebnissen, die zwischengespeichert werden sollen. <br>Der Standardwert ist 3000, wobei Folgendes angenommen wird: <br> – Es sind 20 Knoten vorhanden. <br> – Jeden Monat können fünf Updates auf einem Knoten erfolgen. <br> – Pro Vorgang können zehn Ergebnisse vorliegen. <br> – Es sollen die Ergebnisse für die letzten drei Monaten gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Windows Update wird immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update wird immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können Windows Update verwenden.)<br> Entscheiden Sie mithilfe des Abschnitts [Häufig gestellte Fragen](#frequently-asked-questions), welche Richtlinie für Ihren Cluster am besten geeignet ist.
-|LogsDiskQuotaInMB   |Long  <br> (Standardwert: 1024)               |Maximale Größe der Protokolle für die App für die Patchorchestrierung in MB, die lokal auf jedem Knoten beibehalten werden können.
-| WUQuery               | Zeichenfolge<br>(Standardwert: "IsInstalled=0")                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
-| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standardwert: True)                 | Dieses Flag ermöglicht die Installation von Windows-Betriebssystemupdates.            |
-| WUOperationTimeOutInMinutes | int <br>(Standardwert: 90)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
-| WURescheduleCount     | int <br> (Standardwert: 5)                  | Gibt an, wie oft der Dienst das Windows Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
-| WURescheduleTimeInMinutes | int <br>(Standardwert: 30) | Das Intervall, nach dem der Dienst das Windows-Update erneut plant, falls der Fehler weiterhin besteht. |
+|LogsDiskQuotaInMB   |Long  <br> (Standard: 1024)               |Maximale Größe der Protokolle für die App für die Patchorchestrierung in MB, die lokal auf jedem Knoten beibehalten werden können.
+| WUQuery               | Zeichenfolge<br>(Standard: „IsInstalled=0“)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standard: TRUE)                 | Dieses Flag ermöglicht die Installation von Windows-Betriebssystemupdates.            |
+| WUOperationTimeOutInMinutes | int <br>(Standard: 90)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
+| WURescheduleCount     | int <br> (Standard: 5)                  | Gibt an, wie oft der Dienst das Windows Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
+| WURescheduleTimeInMinutes | int <br>(Standard: 30) | Das Intervall, nach dem der Dienst das Windows-Update erneut plant, falls der Fehler weiterhin besteht. |
 | WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5,12:22:32. <br> – Wöchentlich, TAG, HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Uhrzeiten sind in UTC angegeben.|
 | AcceptWindowsUpdateEula | Boolescher Wert <br>(Standardwert: true) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
 
@@ -316,7 +316,7 @@ Wenn Ihr Cluster die Ausführung auf N-1 der Upgradedomänen während des Patchz
 
 F: **Wie lange dauert das Patchen eines Knotens?**
 
-A. Das Patchen eines Knotens kann von Minuten (z.B.: [Windows Defender-Definitionsupdates](https://www.microsoft.com/wdsi/definitions)) bis zu Stunden (z.B.: [kumulative Windows-Updates](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) dauern. Der Zeitaufwand für das Patchen eines Knotens hängt größtenteils von Folgendem ab: 
+A. Das Patchen eines Knotens kann Minuten (z.B. [Windows Defender-Definitionsupdates](https://www.microsoft.com/wdsi/definitions)) bis Stunden (z.B. [kumulative Windows-Updates](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) dauern. Der Zeitaufwand für das Patchen eines Knotens hängt größtenteils von Folgendem ab: 
  - Der Größe der Updates.
  - Der Anzahl der Updates, die in einem Patchfenster angewendet werden müssen.
  - Der zum Installieren der Updates, Neustarten des Knotens (falls erforderlich) und Beenden der nach dem Neustart auszuführenden Installationsschritte benötigten Zeit.
@@ -327,7 +327,7 @@ F: **Wie lange dauert es, einen kompletten Cluster zu patchen?**
 A. Die zum Patchen eines kompletten Clusters benötigte Zeit hängt von den folgenden Faktoren ab:
 
 - Der zum Patchen eines Knotens benötigten Zeit.
-- Richtlinie des Koordinatordiensts. – Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird, was langsamer wäre als `UpgradeDomainWise`. Beispiel: Das Patchen eines Knotens dauert ca. 1 Stunde. Ein Cluster mit 20 Knoten (gleichen Typs) mit 5 Upgradedomänen mit jeweils 4 Knoten soll gepatcht werden.
+- Richtlinie des Koordinatordiensts. – Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird, was langsamer wäre als `UpgradeDomainWise`. Beispiel:  Das Patchen eines Knotens dauert ca. 1 Stunde. Ein Cluster mit 20 Knoten (gleichen Typs) mit 5 Upgradedomänen mit jeweils 4 Knoten soll gepatcht werden.
     - Das Patchen des gesamten Clusters sollte mit Richtlinie `NodeWise` ca. 20 Stunden dauern.
     - Es sollte mit Richtlinie `UpgradeDomainWise` ca. 5 Stunden dauern.
 - Clusterlast: Bei jedem Patchvorgang muss die Kundenworkload zu anderen verfügbaren Knoten im Cluster verschoben werden. Knoten, die gerade gepatcht werden, sind während dieser Zeit im Zustand [Deaktiviert](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling). Wenn der Cluster in der Nähe der Spitzenlast ausgeführt wird, würde die Deaktivierung länger dauern. Daher scheint der gesamte Patchprozess unter solchen Belastungsbedingungen langsam zu sein.

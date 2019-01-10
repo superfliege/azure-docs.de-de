@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 10dc25740eca43c7cbd39b8ec783084e048d2af2
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637600"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631432"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -34,12 +34,14 @@ Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2�
 
 ## <a name="upgrade-with-powershell"></a>Aktualisieren mit PowerShell
 
-Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit PowerShell ein Upgrade auf ein Konto vom Typ „Allgemein v1“ durchführen möchten, sollten Sie zuerst PowerShell aktualisieren, damit die aktuelle Version des **AzureRm.Storage**-Moduls verwendet wird. Informationen zur Installation von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Wenn Sie für ein Konto vom Typ „Universell V1“ mit PowerShell ein Upgrade auf ein Konto vom Typ „Universell V2“ durchführen möchten, sollten Sie zuerst PowerShell aktualisieren, damit die aktuelle Version des Moduls **Az.Storage** verwendet wird. Informationen zur Installation von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
 
 Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie den Namen Ihrer Ressourcengruppe und des Speicherkontos:
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
 
 ## <a name="upgrade-with-azure-cli"></a>Aktualisieren per Azure CLI
@@ -69,17 +71,17 @@ In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Ar
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
 
-* **Speicherkosten**: Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
+* **Speicherkosten:** Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
 
-* **Kosten für den Datenzugriff**: Je „cooler“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherebenen „Cool“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
+* **Kosten für den Datenzugriff:** Je „kälter“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherebenen „Cool“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
 
-* **Transaktionskosten**: Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „cooler“ die Ebene ist.
+* **Transaktionskosten:** Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „kälter“ die Ebene ist.
 
-* **Datenübertragungskosten bei Georeplikation**: Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation, z.B. GRS und RA-GRS. Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
+* **Datenübertragungskosten bei Georeplikation:** Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation (einschließlich GRS und RA-GRS). Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
 
-* **Kosten für ausgehende Datenübertragungen**: Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
+* **Kosten für ausgehende Datenübertragungen:** Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
 
-* **Änderung der Speicherebene**: Bei einem Wechsel der Kontospeicherebene von „Cool“ zu „Hot“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Kontospeicherebene von „Hot“ in „Cool“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Cool“ entspricht (nur GPv2-Konten).
+* **Änderung der Speicherebene:** Bei einem Wechsel der Kontospeicherebene von „Kalt“ zu „Heiß“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Kontospeicherebene von „Hot“ in „Cool“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Cool“ entspricht (nur GPv2-Konten).
 
 > [!NOTE]
 > Weitere Informationen zum Preismodell für Speicherkonten finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Weitere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie auf der Seite [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).

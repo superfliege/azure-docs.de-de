@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 7e1f2411db828917d7a3c5e21348b553a5a5a3bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087507"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719597"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Schützen von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
@@ -24,12 +24,12 @@ Um Aufrufe Ihrer APIs zu schützen, können Sie die Azure Active Directory-Authe
 
 Sie können Aufrufe Ihrer benutzerdefinierten API auf folgende Arten sichern:
 
-* [Keine Änderungen am Code](#no-code): Schützen Sie Ihre API mit [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) über das Azure-Portal, damit Sie Ihren Code nicht aktualisieren bzw. Ihre API nicht bereitstellen müssen.
+* [Keine Änderungen am Code:](#no-code) Schützen Sie Ihre API mit [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) über das Azure-Portal, damit Sie Ihren Code nicht aktualisieren bzw. Ihre API nicht erneut bereitstellen müssen.
 
   > [!NOTE]
   > Bei der Azure AD-Authentifizierung, die Sie im Azure-Portal aktivieren, wird standardmäßig keine fein abgestufte Autorisierung durchgeführt. Beispielsweise sperrt diese Authentifizierung Ihre API nur für einen bestimmten Mandanten und nicht für einen bestimmten Benutzer oder eine App. 
 
-* [Aktualisieren Ihres API-Codes](#update-code): Schützen Sie Ihre API, indem Sie die [Zertifikatsauthentifizierung](#certificate), [Standardauthentifizierung](#basic), oder [Azure AD-Authentifizierung](#azure-ad-code) über Code erzwingen.
+* [Aktualisieren Ihres API-Codes:](#update-code) Schützen Sie Ihre API, indem Sie die [Zertifikatsauthentifizierung](#certificate), [Standardauthentifizierung](#basic) oder [Azure AD-Authentifizierung](#azure-ad-code) über Code erzwingen.
 
 <a name="no-code"></a>
 
@@ -266,7 +266,7 @@ Extrahieren Sie den Header, der das JSON Web Token (JWT) enthält, um den API-Zu
 
 <!-- Going further, to implement this authentication entirely in your own code, 
 and not use the Azure portal, learn how to 
-[authenticate with on-premises Active Directory in your Azure app](../app-service/app-service-authentication-overview.md).
+[authenticate with on-premises Active Directory in your Azure app](../app-service/overview-authentication-authorization.md).
 
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->

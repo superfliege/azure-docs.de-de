@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cc96da060a7a91e0e3118c436a93bdafca3b0372
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1c2f7b46daf7b96d3a6f47dac647d5ed90461e8e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633009"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156254"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -121,7 +121,7 @@ Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **Co
 3. Öffnen Sie die Erweiterungsdatei. Beispiel: *TrustFrameworkExtensions.xml*. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 4. Fügen Sie den gesamten Inhalt des **ContentDefinitions**-Elements ein, das Sie als untergeordnetes Element des **BuildingBlocks**-Elements kopiert haben. 
 5. Suchen Sie dem **ContentDefinition**-Element, das `Id="api.signuporsignin"` in der kopierten XML-Datei enthält.
-6. Ändern Sie den Wert von **LoadUri** in die URL der HTML-Datei, die Sie in den Speicher hochgeladen haben. Beispiel: https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html.
+6. Ändern Sie den Wert von **LoadUri** in die URL der HTML-Datei, die Sie in den Speicher hochgeladen haben. Beispiel: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
     
     Ihre benutzerdefinierte Richtlinie sollte wie folgt aussehen:
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 0a3570e8907369d5cefc1197eef60d682659d0ed
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3d1821ccc3f3bc16bffd8a19d3014b5ea4876768
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261822"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715604"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Empfohlene Methoden für Azure App Service
 In diesem Artikel werden die empfohlenen Methoden für die Verwendung von [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)zusammengefasst. 
@@ -39,7 +39,7 @@ Wenn Sie durch Überwachung oder Dienstempfehlungen feststellen, dass eine App m
 ## <a name="CPUresources"></a>Wenn Apps mehr CPU-Leistung als erwartet beanspruchen
 Wenn Sie feststellen, dass eine App mehr CPU-Leistung als erwartet beansprucht, oder wenn laut Überwachung oder Dienstempfehlungen wiederholt Rechenlastspitzen zu verzeichnen sind, sollten Sie in Betracht ziehen, den App Service-Plan zentral oder horizontal hochzuskalieren. Bei einer zustandsbehafteten Anwendung ist eine zentrale Hochskalierung die einzige Option. Wenn Ihre Anwendung jedoch zustandslos ist, erreichen Sie mit einer horizontalen Hochskalierung mehr Flexibilität und ein höheres Skalierungspotenzial. 
 
-Weitere Informationen zu „zustandsbehafteten“ und „zustandslosen“ Anwendungen bietet das Video über das [Planen einer skalierbaren End-to-End-Anwendung mit mehreren Ebenen in einer Microsoft Azure-Web-App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Weitere Informationen zur Skalierung von App Service und Optionen zur automatischen Skalierung finden Sie unter [Skalieren einer Web-App in Azure App Service](web-sites-scale.md).  
+Weitere Informationen zu „zustandsbehafteten“ und „zustandslosen“ Anwendungen bietet das Video über das [Planen einer skalierbaren End-to-End-Anwendung mit mehreren Ebenen in Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Weitere Informationen zur Skalierung von App Service und Optionen zur automatischen Skalierung finden Sie unter [Skalieren einer Web-App in Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>Wenn Socketressourcen erschöpft sind
 Eine häufige Ursache für das Erschöpfen ausgehender TCP-Verbindungen ist die Verwendung von Clientbibliotheken, die nicht zur Wiederverwendung von TCP-Verbindungen implementiert wurden, oder im Fall eines übergeordneten Protokolls wie HTTP die fehlende Nutzung von Keep-Alive. Informieren Sie sich in den Dokumentationen der einzelnen Bibliotheken, auf die von den Apps in Ihrem App Service-Plan verwiesen wird, ob sie konfiguriert sind oder in Ihrem Code darauf zugegriffen wird, um so eine effiziente Wiederverwendung ausgehender Verbindungen zu gewährleisten. Befolgen Sie auch den Leitfaden zur Bibliotheksdokumentation für eine ordnungsgemäße Erstellung und Freigabe oder Bereinigung, um Verbindungsverluste zu vermeiden. Während diese Clientbibliotheksuntersuchungen ausgeführt werden, können die Auswirkungen durch ein horizontales Hochskalieren auf mehrere Instanzen verringert werden.
@@ -68,7 +68,7 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ## <a name="appbackup"></a>Wenn die Sicherung Ihrer App fehlerhaft zu werden beginnt
 Die zwei häufigsten Gründe, warum eine App-Sicherung misslingt, sind ungültige Speichereinstellungen und eine ungültige Datenbankkonfiguration. Diese Fehler treten in der Regel auf, wenn Änderungen an Speicher- oder Datenbankressourcen oder am Zugriff auf diese Ressourcen erfolgt sind (z.B. eine Aktualisierung der Anmeldeinformationen für die in den Sicherungseinstellungen ausgewählte Datenbank). Sicherungen erfolgen meist gemäß einem Zeitplan und erfordern Zugriff auf Speicher (für die Ausgabe der gesicherten Dateien) und Datenbanken (zum Kopieren und Lesen von Inhalten, die in die Sicherung einbezogen werden sollen). Das Ergebnis des Fehlens eines Zugriff auf diese Ressourcen wäre ein durchgängiger Ausfall von Sicherungen. 
 
-Wenn Sicherungsfehler auftreten, überprüfen Sie die letzten Ergebnisse, um herauszufinden, welche Art von Fehler auftritt. Überprüfen und ändern Sie bei Speicherzugriffsfehlern die in der Sicherungskonfiguration verwendeten Speichereinstellungen. Überprüfen und ändern Sie bei Fehlern beim Datenbankzugriff Ihre Verbindungszeichenfolgen in den App-Einstellungen. Fahren Sie dann mit dem Ändern Ihrer Sicherungskonfiguration fort, sodass die erforderlichen Datenbanken einbezogen werden. Weitere Informationen zu App-Sicherungen finden Sie unter [Sichern von Web-Apps in Azure App Service](web-sites-backup.md).
+Wenn Sicherungsfehler auftreten, überprüfen Sie die letzten Ergebnisse, um herauszufinden, welche Art von Fehler auftritt. Überprüfen und ändern Sie bei Speicherzugriffsfehlern die in der Sicherungskonfiguration verwendeten Speichereinstellungen. Überprüfen und ändern Sie bei Fehlern beim Datenbankzugriff Ihre Verbindungszeichenfolgen in den App-Einstellungen. Fahren Sie dann mit dem Ändern Ihrer Sicherungskonfiguration fort, sodass die erforderlichen Datenbanken einbezogen werden. Weitere Informationen zu App-Sicherungen finden Sie unter [Sichern von Web-Apps in Azure App Service](manage-backup.md).
 
 ## <a name="nodejs"></a>Wenn neue Node.js-Apps in Azure App Service bereitgestellt werden
 Die Azure App Service-Standardkonfiguration für Node.js-Apps soll den Bedürfnissen der am häufigsten verwendeten Apps am besten entsprechen. Wenn die Konfiguration für Ihre Node.js-App von der personalisierten Abstimmung zur Leistungsverbesserung oder Optimierung des Ressourceneinsatzes für CPU-/Speicher-/Netzwerkressourcen profitieren würden, finden Sie weitere Informationen unter [Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen bei Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Dieser Artikel beschreibt die iisnode-Einstellungen, die Sie möglicherweise für Ihre Node.js-App konfigurieren müssen, sowie die verschiedenen Szenarien oder Probleme, mit denen Ihre App möglicherweise konfrontiert wird, und zeigt, wie Sie diese Probleme beheben.

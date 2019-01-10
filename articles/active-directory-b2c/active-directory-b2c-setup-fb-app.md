@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b1fbf77bfb771bd94ed9acdecb3c54e4c6894687
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 183afaeb40b90de078a44f4677dd0218b8d86ba8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182109"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968983"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Um ein Facebook-Konto als Identitätsanbieter in Azure Active Directory (Azure A
 13. Wählen Sie **Products** (Produkte) und dann **Set up** (Einrichten) unter **Facebook Login** (Facebook-Anmeldung) aus.
 14. Wählen Sie unter **Facebook Login** (Facebook-Anmeldung) die Option **Settings** (Einstellungen) aus.
 15. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Klicken Sie unten auf der Seite auf **Save Changes**.
-16. Um Ihre Facebook-Anwendung in Azure AD B2C verfügbar zu machen, wählen Sie **App Review** (App-Überprüfung) aus, legen Sie **Make My Application public?** (Meine Anwendung öffentlich machen?) auf **YES** (Ja) fest, und klicken Sie dann auf **Confirm** (Bestätigen).
+16. Um Ihre Facebook-Anwendung in Azure AD B2C verfügbar zu machen, klicken Sie rechts oben auf der Seite auf den Statusselektor, und schalten ihn auf **Ein** um. Damit machen Sie die Anwendung öffentlich. Klicken Sie dann auf **Bestätigen**.  An diesem Punkt sollte sich der Status von **Entwicklung** in **Live** ändern.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurieren eines Facebook-Kontos als Identitätsanbieter
 

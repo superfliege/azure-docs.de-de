@@ -1,10 +1,11 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Zscaler One | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Zscaler One | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Zscaler One konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: f352e00d-68d3-4a77-bb92-717d055da56f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -12,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a6abe3a9af98574ffd0a00d21fd0247785f7a5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dfe9ad20844eeae30327cf1eb3e9289d094900b2
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438289"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794106"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Tutorial: Azure Active Directory-Integration in Zscaler One
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Tutorial: Azure Active Directory-Integration von Zscaler One
 
 In diesem Tutorial erfahren Sie, wie Sie Zscaler One in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Zscaler One in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Zscaler One hat.
-- Sie können Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Zscaler One (Single Sign-On, SSO; einmaliges Anmelden) anzumelden.
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Zscaler One anzumelden (Single Sign-On, SSO, einmaliges Anmelden).
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
@@ -46,54 +47,50 @@ Um die Azure AD-Integration in Zscaler One konfigurieren zu können, ist Folgend
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie hier eine einmonatige Testversion anfordern: [Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
+
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Zscaler One aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-zscaler-one-from-the-gallery"></a>Hinzufügen von Zscaler One aus dem Katalog
+
 Zum Konfigurieren der Integration von Zscaler One in Azure AD müssen Sie Zscaler One aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Zscaler One aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“][1]
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![ANWENDUNGEN][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“][2]
 
-    ![ANWENDUNGEN][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld den Namen **Zscaler One** ein.
+    ![Schaltfläche „Neue Anwendung“][3]
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-one-tutorial/tutorial_zscalerone_search.png)
+4. Geben Sie im Suchfeld den Namen **Zscaler One** ein, wählen Sie im Ergebnisbereich den Eintrag **Zscaler One** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-1. Wählen Sie im Ergebnisbereich die Option **Zscaler One** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![Zscaler One in der Ergebnisliste](./media/zscaler-one-tutorial/tutorial_zscalerone_addfromgallery.png)
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-one-tutorial/tutorial_zscalerone_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zscaler One mithilfe einer Testbenutzerin namens Britta Simon.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Zscaler One als Pendant zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Zscaler One muss eine Linkbeziehung eingerichtet werden.
 
-Weisen Sie in Zscaler One den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
-
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Zscaler One müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-1. **[Konfigurieren von Proxyeinstellungen](#configuring-proxy-settings)** zum Konfigurieren der Proxyeinstellungen in Internet Explorer
-1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines Zscaler One-Testbenutzers](#creating-a-zscaler-one-test-user)**, um ein Pendant von Britta Simon in Zscaler One zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+3. **[Erstellen eines Zscaler One-Testbenutzers](#creating-a-zscaler-one-test-user)**, um ein Pendant von Britta Simon in Zscaler One zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -103,70 +100,101 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Zscaler One** auf **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Configure single sign-on](./media/zscaler-one-tutorial/tutorial_zscalerone_samlbase.png)
+2. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie im Abschnitt **Domäne und URLs für Zscaler One** die folgenden Schritte aus:
+    ![Configure single sign-on](common/tutorial_general_301.png)
 
-    ![Configure single sign-on](./media/zscaler-one-tutorial/tutorial_zscalerone_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+
+    ![Configure single sign-on](common/editconfigure.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für Zscaler One](./media/zscaler-one-tutorial/tutorial_zscalerone_url.png)
 
     Geben Sie im Textfeld „Anmelde-URL“ die von Ihren Benutzern für die Anmeldung bei Ihrer Zscaler One-Anwendung verwendete URL ein.
 
     > [!NOTE] 
     > Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Zscaler One-Client](https://www.zscaler.com/company/contact), um diese Werte zu erhalten.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+5. Die Zscaler One-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute und Ansprüche** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen.
 
-    ![Configure single sign-on](./media/zscaler-one-tutorial/tutorial_zscalerone_certificate.png) 
+    ![Attributlink](./media/zscaler-one-tutorial/tutorial_zscalerone_attribute.png)
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/zscaler-one-tutorial/tutorial_general_400.png)
+    | NAME  | Quellattribut  |
+    | ---------| ------------ |
+    | memberOf     | user.assignedroles |
 
-1. Klicken Sie im Abschnitt **Zscaler One-Konfiguration** auf **Zscaler One konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![Configure single sign-on](./media/zscaler-one-tutorial/tutorial_zscalerone_configure.png) 
+    ![image](./common/new_save_attribute.png)
+    
+    ![image](./common/new_attribute_details.png)
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler One-Unternehmenswebsite als Administrator an.
+    b. Wählen Sie in der Liste **Quellattribut** den Attributwert aus.
 
-1. Klicken Sie oben im Menü auf **Verwaltung**.
+    c. Klicken Sie auf **OK**.
+
+    d. Klicken Sie auf **Speichern**.
+
+    > [!NOTE]
+    > Klicken Sie [hier](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
+
+7. Klicken Sie auf der Seite **SAML-Signaturzertifikat** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das **Zertifikat (Base64)** herunterzuladen. Speichern Sie die Zertifikatsdatei anschließend auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](./media/zscaler-one-tutorial/tutorial_zscalerone_certificate.png) 
+
+8. Kopieren Sie im Abschnitt **Zscaler One einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+    ![Zscaler One-Konfiguration](common/configuresection.png)
+
+9. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler One-Unternehmenswebsite als Administrator an.
+
+10. Navigieren Sie zu **Verwaltung > Authentifizierung > Authentifizierungseinstellungen**, und führen Sie die folgenden Schritte aus:
    
     ![Verwaltung](./media/zscaler-one-tutorial/ic800206.png "Verwaltung")
 
-1. Klicken Sie unter **Administratoren & Rollen verwalten** auf **Benutzer & Authentifizierung verwalten**.   
+    a. Wählen Sie **SAML** als Authentifizierungstyp aus.
+
+    b. Klicken Sie auf **Configure SAML**.
+
+11. Führen Sie im Fenster **SAML bearbeiten** die folgenden Schritte aus, und klicken Sie dann auf „Speichern“.  
             
-    ![Benutzer &amp; Authentifizierung verwalten](./media/zscaler-one-tutorial/ic800207.png "Benutzer &amp; Authentifizierung verwalten")
-
-1. Führen Sie im Abschnitt **Auswählen von Authentifizierungsoptionen für Ihre Organisation** die folgenden Schritte aus:   
-                
-    ![Authentifizierung](./media/zscaler-one-tutorial/ic800208.png "Authentifizierung")
-   
-    a. Wählen Sie **Authentifizeren mit der einmaligen Anmeldung für SAML**.
-
-    b. Klicken Sie auf **Einzelne Parameter der einmaligen Anmeldung für SAML konfigurieren**.
-
-1. Führen Sie auf der Dialogfeldseite **Parameter der einmaligen Anmeldung für SAML konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Fertig**.
-
-    ![Einmaliges Anmelden](./media/zscaler-one-tutorial/ic800209.png "des einmaligen Anmeldens")
+    ![Benutzer &amp; Authentifizierung verwalten](./media/zscaler-one-tutorial/ic800208.png "Benutzer &amp; Authentifizierung verwalten")
     
-    a. Fügen Sie den Wert der **SAML-Dienst-URL für einmaliges Anmelden**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **URL des SAML-Portals, zu dem Benutzer zur Authentifizierung geleitet werden** ein.
-    
-    b. Geben Sie im Textfeld **Attribut mit Anmeldenamen** die **NameID** ein.
-    
-    c. Klicken Sie auf **Zscaler pem**, um das heruntergeladene Zertifikat hochzuladen.
-    
-    d. Wählen Sie **Automatische SAML-Bereitstellung aktivieren**.
+    a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
-1. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
+    b. Geben Sie im Textfeld **Login Name Attribute** (Anmeldenamenattribut) die Zeichenfolge **NameID** ein.
 
-    ![Verwaltung](./media/zscaler-one-tutorial/ic800210.png "Verwaltung")
-    
-    a. Klicken Sie auf **Speichern**.
+    c. Klicken Sie auf **Upload** (Hochladen), um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal unter **Public SSL Certificate** (Öffentliches SSL-Zertifikat) heruntergeladen haben.
 
-    b. Klicken Sie auf **Jetzt aktivieren**.
+    d. Betätigen Sie den Umschalter **Automatische SAML-Bereitstellung aktivieren**.
+
+    e. Geben Sie im Textfeld **User Display Name Attribute** (Benutzeranzeigename-Attribut) die Zeichenfolge **displayName** ein, wenn Sie die automatische SAML-Bereitstellung für displayName-Attribute aktivieren möchten.
+
+    f. Geben Sie im Textfeld **Group Name Attribute** (Gruppennamenattribut) die Zeichenfolge **memberOf** ein, wenn Sie die automatische SAML-Bereitstellung für memberOf-Attribute aktivieren möchten.
+
+    g. Geben Sie unter **Department Name Attribute** (Abteilungsnamenattribut) die Zeichenfolge **department** ein, wenn Sie die automatische SAML-Bereitstellung für Abteilungsattribute aktivieren möchten.
+
+    i. Klicken Sie auf **Speichern**.
+
+12. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
+
+    ![Verwaltung](./media/zscaler-one-tutorial/ic800207.png)
+
+    a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
+
+    b. Klicken Sie auf **Aktivieren**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
@@ -189,7 +217,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Wählen Sie **Proxyserver für LAN verwenden** aus.
 
-    b. Geben Sie in das Textfeld „Adresse“ **gateway.zscalerone.net**ein.
+    b. Geben Sie im Textfeld „Adresse“ die Adresse **gateway.Zscaler One.net** ein.
 
     c. Geben Sie im Textfeld „Port“ **80**ein.
 
@@ -199,102 +227,69 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie zum Schließen des Dialogfelds **Internetoptionen** auf **OK**.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Azure AD-Benutzer erstellen][100]
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-one-tutorial/create_aaduser_01.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](common/create_aaduser_01.png) 
 
-1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-one-tutorial/create_aaduser_02.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-one-tutorial/create_aaduser_03.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](common/create_aaduser_02.png)
 
-1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-one-tutorial/create_aaduser_04.png) 
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+    d. Klicken Sie auf **Erstellen**.
 
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Create**.
- 
 ### <a name="creating-a-zscaler-one-test-user"></a>Erstellen eines Zscaler One-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Zscaler One anmelden können, müssen sie in Zscaler One bereitgestellt werden. Im Fall von Zscaler One ist die Bereitstellung eine manuelle Aufgabe.
-
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
-
-1. Melden Sie sich bei Ihrem **Zscaler One** -Mandanten an.
-
-1. Klicken Sie auf **Verwaltung**.   
-   
-    ![Verwaltung](./media/zscaler-one-tutorial/ic781035.png "Verwaltung")
-
-1. Klicken Sie auf **Benutzerverwaltung**.   
-        
-     ![Hinzufügen](./media/zscaler-one-tutorial/ic781036.png "Hinzufügen")
-
-1. Klicken Sie auf der Registerkarte **Benutzer** auf **Hinzufügen**.
-      
-    ![Hinzufügen](./media/zscaler-one-tutorial/ic781037.png "Hinzufügen")
-
-1. Führen Sie im Abschnitt "Benutzer hinzufügen" die folgenden Schritte aus:
-        
-    ![Benutzer hinzufügen](./media/zscaler-one-tutorial/ic781038.png "Benutzer hinzufügen")
-   
-    a. Geben Sie die entsprechenden Werte in die Felder **Benutzer-ID**, **Benutzeranzeigename**, **Kennwort** und **Kennwort bestätigen** ein, und wählen Sie dann **Gruppen** und die **Abteilung** eines gültigen Azure AD-Kontos aus, das Sie bereitstellen möchten.
-
-    b. Klicken Sie auf **Speichern**.
-
-> [!NOTE]
-> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Zscaler One-Benutzerkonten oder mithilfe der von Zscaler One bereitgestellten APIs erstellen.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Zscaler One. Zscaler One unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Zscaler One ein neuer Benutzer erstellt.
+>[!Note]
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler One](https://www.zscaler.com/company/contact).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Zscaler One gewähren.
 
-![Benutzer zuweisen][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-**Um Britta Simon Zscaler One zuzuweisen, führen Sie die folgenden Schritte aus:**
+    ![Benutzer zuweisen][201]
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Liste der Anwendungen **Zscaler One** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![Configure single sign-on](./media/zscaler-one-tutorial/tutorial_zscalerone_app.png)
 
-1. Wählen Sie in der Liste der Anwendungen **Zscaler One** aus.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Configure single sign-on](./media/zscaler-one-tutorial/tutorial_zscalerone_app.png) 
+    ![Benutzer zuweisen][202]
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
-
-    ![Benutzer zuweisen][202] 
-
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken auf die Schaltfläche **Hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste den Benutzer **Britta Simon** aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
+6. Wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Benutzerrolle aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
+
+    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
+
+7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
+
+    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_assign.png)
+
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
@@ -309,15 +304,13 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 <!--Image references-->
 
-[1]: ./media/zscaler-one-tutorial/tutorial_general_01.png
-[2]: ./media/zscaler-one-tutorial/tutorial_general_02.png
-[3]: ./media/zscaler-one-tutorial/tutorial_general_03.png
-[4]: ./media/zscaler-one-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/zscaler-one-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/zscaler-one-tutorial/tutorial_general_200.png
-[201]: ./media/zscaler-one-tutorial/tutorial_general_201.png
-[202]: ./media/zscaler-one-tutorial/tutorial_general_202.png
-[203]: ./media/zscaler-one-tutorial/tutorial_general_203.png
-
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

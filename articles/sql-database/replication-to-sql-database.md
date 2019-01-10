@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 44d6135c8a259d3d4c791d359136963483088c5a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a4b1b4a7e106ad9dcd1746030daac562d7f123bc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567892"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041525"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
 
@@ -40,7 +40,7 @@ Die SQL Server-Replikation kann für Einzeldatenbanken und in einem Pool zusamme
 - SQL Server 2014 (12.x) RTM CU10
 - SQL Server 2012 (11.x) SP2 CU8 oder SP3
 - Der Versuch, Replikationen mit einer älteren Version zu konfigurieren, kann zu dem Fehler mit der Nummer MSSQL_REPL20084 (Der Prozess konnte keine Verbindung mit dem Abonnenten herstellen.) oder MSSQL_REPL40532 (Der von der Anmeldung angeforderte Server \<Name> kann nicht geöffnet werden. Fehler bei der Anmeldung.) führen.  
-- Um alle Features von Azure SQL-Datenbank verwenden zu können, müssen Sie die neuesten Versionen von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und [SQL Server Data Tools](https://docs.microsoft.com//sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) verwenden.  
+- Um alle Features von Azure SQL-Datenbank verwenden zu können, müssen Sie die neuesten Versionen von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) verwenden.  
   
 ## <a name="remarks"></a>Anmerkungen
 

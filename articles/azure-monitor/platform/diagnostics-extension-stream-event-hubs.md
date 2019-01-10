@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: bb240437870ce5457e40e8dcc3b31f3909b546fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607131"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103365"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamen von Azure-Diagnosedaten im heißen Pfad mithilfe von Event Hubs
 Die Azure-Diagnose bietet flexible Methoden zum Erfassen von Metriken und Protokollen virtueller Computer in Clouddiensten sowie zur Übertragung der Ergebnisse an Azure Storage. Seit März 2016 (SDK 2.9) haben Sie die Möglichkeit, benutzerdefinierte Datenquellen als Sendeziel für Diagnose zu verwenden und heiße Daten mithilfe von [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) innerhalb von Sekunden zu übertragen.
@@ -316,7 +316,7 @@ namespace EventHubListener
     Vergewissern Sie sich zunächst, dass die Event Hub- und Konfigurationsinformationen richtig sind (wie zuvor beschrieben). Manchmal wird **PrivateConfig** bei einer Bereitstellungsaktualisierung zurückgesetzt. Zur Beseitigung des Problems wird empfohlen, alle Änderungen an der *.wadcfgx* -Datei im Projekt durchzuführen und dann ein vollständiges Anwendungsupdate per Push zu übertragen. Wenn dies nicht möglich ist, stellen Sie sicher, dass mit dem Diagnoseupdate eine vollständige **PrivateConfig** einschließlich des SAS-Schlüssels per Push übertragen wird.  
 * Ich habe die empfohlenen Schritte ausgeführt, aber der Event Hub funktioniert weiterhin nicht.
 
-    Überprüfen Sie die Azure Storage-Tabelle, die Protokolle und Fehler zur Azure-Diagnose selbst enthält: **WADDiagnosticInfrastructureLogsTable**. Sie können hierzu beispielsweise mit dem Tool [Azure Storage-Explorer](http://www.storageexplorer.com) eine Verbindung mit diesem Speicherkonto herstellen, diese Tabelle anzeigen und eine Abfrage nach einem TimeStamp innerhalb der letzten 24 Stunden hinzufügen. Sie können das Tool verwenden, um eine CSV-Datei zu exportieren und in einer Anwendung wie Microsoft Excel zu öffnen. Excel erleichtert das Suchen nach Callingcard-Zeichenfolgen wie **EventHubs**, um festzustellen, welcher Fehler gemeldet wird.  
+    Überprüfen Sie die Azure Storage-Tabelle, die Protokolle und Fehler zur Azure-Diagnose selbst enthält: **WADDiagnosticInfrastructureLogsTable**. Sie können hierzu beispielsweise mit dem Tool [Azure Storage-Explorer](https://www.storageexplorer.com) eine Verbindung mit diesem Speicherkonto herstellen, diese Tabelle anzeigen und eine Abfrage nach einem TimeStamp innerhalb der letzten 24 Stunden hinzufügen. Sie können das Tool verwenden, um eine CSV-Datei zu exportieren und in einer Anwendung wie Microsoft Excel zu öffnen. Excel erleichtert das Suchen nach Callingcard-Zeichenfolgen wie **EventHubs**, um festzustellen, welcher Fehler gemeldet wird.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 •    [Weitere Informationen zu Event Hubs](https://azure.microsoft.com/services/event-hubs/)

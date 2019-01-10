@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 24a9b014028bf99673881904e17ec0911d0b5063
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 94a072d3c8bde9e4fb16342db1e0705bfc22cf77
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952051"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539584"
 ---
 # <a name="application-types-for-v20"></a>Anwendungstypen für v2. 0
 
@@ -75,7 +75,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und in der [Referenz zu `id_token`](id-tokens.md).
+Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [`id_token`](id-tokens.md).
 
 In Webserver-Apps werden beim Authentifizierungsablauf für die Anmeldung folgende allgemeine Schritte ausgeführt:
 
@@ -99,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-Die Web-API verwendet das Zugriffstoken zum Überprüfen der Identität des API-Aufrufers und zum Extrahieren von Informationen über den Aufrufer aus Ansprüchen, die im Zugriffstoken codiert sind. Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und in der [Referenz zu `id_token`](id-tokens.md).
+Die Web-API verwendet das Zugriffstoken zum Überprüfen der Identität des API-Aufrufers und zum Extrahieren von Informationen über den Aufrufer aus Ansprüchen, die im Zugriffstoken codiert sind. Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [`id_token`](id-tokens.md).
 
 Eine Web-API kann Benutzern die Möglichkeit geben, sich für oder gegen bestimmte Funktionen oder Daten zu entscheiden, indem sie Berechtigungen erhalten, die auch [Bereiche](v2-permissions-and-consent.md) genannt werden. Damit eine aufrufende App Berechtigungen für einen Bereich erhält, muss der Benutzer während eines Ablaufs seine Zustimmung für den Bereich erteilen. Der v2.0-Endpunkt fragt die Zustimmung des Benutzers ab und zeichnet dann die Berechtigungen in allen Zugriffstoken auf, die die Web-API empfängt. Die Web-API überprüft das Zugriffstoken, das bei jedem Aufruf empfangen wird, und führt Autorisierungsprüfungen durch.
 
@@ -121,7 +121,7 @@ Bei diesem Ablauf empfängt die App bei der Anmeldung des Benutzers einen Autori
 
 ## <a name="daemons-and-server-side-apps"></a>Daemons und serverseitige Apps
 
-Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff ausgeführt werden, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen.
+Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff ausgeführt werden, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen. Sie können die Identität der App mit einem geheimen Clientschlüssel oder einem Zertifikat nachweisen. Weitere Informationen finden Sie unter [Authentifizierung bei Azure AD in Daemon-Apps mit Zertifikaten](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
 Bei diesem Ablauf erhält die App Token durch die direkte Interaktion mit dem `/token`-Endpunkt:
 

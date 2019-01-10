@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/12/2018
+ms.date: 12/20/2018
 ms.author: rolyon
-ms.openlocfilehash: 6ec3ca7c1323b342612293c5ea3ca1443370c9b4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0a5d58d0403471d591ce2aa2ed9de9092127ea15
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386383"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744104"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
@@ -87,7 +87,9 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 
 1. Legen Sie **Benutzer müssen die Nutzungsbedingungen erweitern** auf **Ein** fest, damit die Endbenutzer die Nutzungsbedingungen anzeigen müssen, bevor sie diesen zustimmen können.
 
-1. Wenn die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen sollen, über das der Zugriff erfolgt, legen Sie **Zustimmung der Benutzer auf jedem Gerät erforderlich** auf **Ein** fest. Weitere Informationen finden Sie unter [Nutzungsbedingungen pro Gerät](#per-device-terms-of-use).
+1. Wenn die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen sollen, über das der Zugriff erfolgt, legen Sie **Zustimmung der Benutzer auf jedem Gerät erforderlich** auf **Ein** fest.
+
+    Wenn die Einstellung **Zustimmung der Benutzer auf jedem Gerät erforderlich** nicht angezeigt wird, liegt das daran, dass dieses Feature in Ihrer Region noch nicht bereitgestellt wurde. Dieses Feature wird voraussichtlich Anfang Januar 2019 vollständig bereitgestellt. Weitere Informationen finden Sie unter [Nutzungsbedingungen pro Gerät](#per-device-terms-of-use).
 
 1. Wenn die Zustimmungen zu Nutzungsbedingungen nach einem Zeitplan ablaufen sollen, legen Sie **Ablauf für Einwilligungen** auf **Ein** fest. Wenn diese Option aktiviert ist, werden zwei zusätzliche Zeitplaneinstellungen angezeigt.
 
@@ -128,9 +130,9 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
     | **Richtlinie für bedingten Zugriff später erstellen** | Diese Nutzungsbedingungen werden in der Zuweisungssteuerungsliste angezeigt, wenn Sie eine Richtlinie für bedingten Zugriff erstellen. |
 
     >[!IMPORTANT]
-    >Die Richtliniensteuerungen für den bedingten Zugriff (einschließlich Nutzungsbedingungen) unterstützen die Erzwingung für Dienstkonten nicht.  Es wird empfohlen, alle Dienstkonten von der Richtlinie für den bedingten Zugriff auszuschließen.
+    >Die Richtliniensteuerungen für den bedingten Zugriff (einschließlich Nutzungsbedingungen) unterstützen die Erzwingung für Dienstkonten nicht. Es wird empfohlen, alle Dienstkonten von der Richtlinie für den bedingten Zugriff auszuschließen.
 
-     Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis auf die Ebene einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps](../conditional-access/require-tou.md).
+     Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis auf die Ebene einer spezifischen Cloudanwendung oder Benutzergruppe. Weitere Informationen finden Sie unter [Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps](../conditional-access/require-tou.md).
 
 1. Klicken Sie auf **Create**.
 
@@ -208,7 +210,7 @@ Benutzer können die Nutzungsbedingungen, die sie akzeptiert haben, wie folgt le
 
     ![Profil – Nutzungsbedingungen lesen](./media/active-directory-tou/tou13a.png)
 
-1. Hier können Sie sich die akzeptierten Nutzungsbedingungen ansehen. 
+1. Hier können Sie sich die akzeptierten Nutzungsbedingungen ansehen.
 
 ## <a name="edit-terms-of-use-details"></a>Bearbeiten der Details der Nutzungsbedingungen
 Sie können einige Details der Nutzungsbedingungen bearbeiten, aber kein vorhandenes Dokument ändern. Im Folgenden wird das Verfahren zum Bearbeiten von Details beschrieben.
@@ -251,6 +253,9 @@ Im Folgenden wird das Verfahren zum Hinzufügen einer Sprache der Nutzungsbeding
 ## <a name="per-device-terms-of-use"></a>Nutzungsbedingungen pro Gerät
 
 Mit der Einstellung **Zustimmung der Benutzer auf jedem Gerät erforderlich** können Sie erzwingen, dass die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen müssen, über das der Zugriff erfolgt. Die Endbenutzer müssen ihre Geräte in Azure AD einbinden. Nach der Einbindung eines Geräts wird die Geräte-ID verwendet, um die Nutzungsbedingungen auf jedem Gerät zu erzwingen.
+
+> [!NOTE]
+> Wenn die Einstellung **Zustimmung der Benutzer auf jedem Gerät erforderlich** beim Erstellen neuer Nutzungsbedingungen nicht angezeigt wird, liegt das daran, dass dieses Feature in Ihrer Region noch nicht bereitgestellt wurde. Dieses Feature wird voraussichtlich Anfang Januar 2019 vollständig bereitgestellt.
 
 Nachstehend finden Sie eine Liste der unterstützten Plattformen und Softwareanwendungen.
 
@@ -300,7 +305,7 @@ Veraltete Nutzungsbedingungen können wie folgt gelöscht werden:
     Ihre Nutzungsbedingungen werden nicht mehr angezeigt.
 
 ## <a name="deleted-users-and-active-terms-of-use"></a>Gelöschte Benutzer und aktive Nutzungsbedingungen
-Ein gelöschter Benutzer befindet sich in Azure AD standardmäßig 30 Tage lang in einem gelöschten Zustand. In diesem Zeitraum kann er von einem Administrator wiederhergestellt werden, sofern erforderlich.  Nach 30 Tagen wird dieser Benutzer endgültig gelöscht.  Darüber hinaus kann ein globaler Administrator über das Azure Active Directory-Portal explizit [einen kürzlich gelöschten Benutzer endgültig löschen](../fundamentals/active-directory-users-restore.md), bevor dieser Zeitraum abgelaufen ist.  Wurde ein Benutzer endgültig gelöscht, werden nachfolgende Daten für diesen Benutzer aus den aktiven Nutzungsbedingungen entfernt.  Überwachungsinformationen zu gelöschten Benutzern verbleiben im Überwachungsprotokoll.
+Ein gelöschter Benutzer befindet sich in Azure AD standardmäßig 30 Tage lang in einem gelöschten Zustand. In diesem Zeitraum kann er von einem Administrator wiederhergestellt werden, sofern erforderlich. Nach 30 Tagen wird dieser Benutzer endgültig gelöscht. Darüber hinaus kann ein globaler Administrator über das Azure Active Directory-Portal explizit [einen kürzlich gelöschten Benutzer endgültig löschen](../fundamentals/active-directory-users-restore.md), bevor dieser Zeitraum abgelaufen ist. Wurde ein Benutzer endgültig gelöscht, werden nachfolgende Daten für diesen Benutzer aus den aktiven Nutzungsbedingungen entfernt. Überwachungsinformationen zu gelöschten Benutzern verbleiben im Überwachungsprotokoll.
 
 ## <a name="policy-changes"></a>Richtlinienänderungen
 Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall werden dem Administrator Cloudprobleme oder Azure AD-Tokenprobleme angezeigt. Der Administrator muss sich ab- und dann erneut anmelden, um die neue Richtlinie zu erfüllen.
@@ -336,43 +341,43 @@ Sie können für die App Microsoft Intune-Registrierung eine Richtlinie für bed
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**F: Wie sehe ich, wann/ob ein Benutzer Nutzungsbedingungen akzeptiert hat?**</br>
+**F: Wie sehe ich, wann/ob ein Benutzer Nutzungsbedingungen akzeptiert hat?**<br />
 A: Klicken Sie auf dem Blatt für Nutzungsbedingungen auf die Zahl unter **Akzeptiert**. Sie können die Zustimmungsaktivität auch in den Azure AD-Überwachungsprotokollen anzeigen oder suchen. Weitere Informationen finden Sie unter [Anzeigen des Berichts über abgelehnte und akzeptierte Nutzungsbedingungen](#view-who-has-accepted-and-declined) und [Anzeigen der Azure AD-Überwachungsprotokolle](#view-azure-ad-audit-logs).
 
-**F: Wie lange werden die Informationen gespeichert?**</br>
+**F: Wie lange werden die Informationen gespeichert?**<br />
 A: Die Benutzeranzahl im Bericht zu den Nutzungsbedingungen sowie die Angabe, wer die Bedingungen akzeptiert/abgelehnt hat, werden für die Lebensdauer der Nutzungsbedingungen gespeichert. Die Azure AD-Überwachungsprotokolle werden 30 Tage lang gespeichert.
 
-**F: Warum sehe ich eine andere Anzahl von Zustimmungen im Bericht zu den Nutzungsbedingungen als in den Azure AD-Überwachungsprotokollen?**</br>
+**F: Warum sehe ich eine andere Anzahl von Zustimmungen im Bericht zu den Nutzungsbedingungen als in den Azure AD-Überwachungsprotokollen?**<br />
 A: Der Bericht zu den Nutzungsbedingungen wird für die Lebensdauer dieser Nutzungsbedingungen gespeichert, während die Azure AD-Überwachungsprotokolle (nur) 30 Tage lang gespeichert werden. Darüber hinaus werden im Bericht zu den Nutzungsbedingungen nur der aktuelle Zustimmungsstatus der Benutzer angezeigt. Lehnt ein Benutzer z.B. die Nutzungsbedingungen ab und akzeptiert sie aber später, enthält der Bericht zu den Nutzungsbedingungen nur die Zustimmung. Wenn Sie den Verlauf anzeigen möchten, können Sie in den Azure AD-Überwachungsprotokollen nachsehen.
 
-**F: Müssen Benutzer den Nutzungsbedingungen erneut zustimmen, wenn ich die Details der Nutzungsbedingungen bearbeite?**</br>
+**F: Müssen Benutzer den Nutzungsbedingungen erneut zustimmen, wenn ich die Details der Nutzungsbedingungen bearbeite?**<br />
 A: Nein. Wenn ein Administrator die Details der Nutzungsbedingungen (den Namen, den Anzeigenamen, die Option „Benutzer müssen die Nutzungsbedingungen erweitern“ oder „Sprache hinzufügen“) bearbeitet, müssen die Benutzer den neuen Bedingungen nicht erneut zustimmen.
 
-**F: Kann ich ein vorhandenes Dokument mit Nutzungsbedingungen aktualisieren?**</br>
+**F: Kann ich ein vorhandenes Dokument mit Nutzungsbedingungen aktualisieren?**<br />
 A: Derzeit können Sie ein vorhandenes Dokument mit Nutzungsbedingungen nicht aktualisieren. Um ein Dokument mit Nutzungsbedingungen zu ändern, müssen Sie eine neue Instanz der Nutzungsbedingungen erstellen.
 
-**F: Wenn das PDF-Dokument mit den Nutzungsbedingungen Links enthält, können Benutzer darauf klicken?**</br>
+**F: Wenn das PDF-Dokument mit den Nutzungsbedingungen Links enthält, können Benutzer darauf klicken?**<br />
 A: Die PDF-Datei wird standardmäßig im JPEG-Format gerendert, damit Benutzer nicht auf Links klicken können. Benutzer haben die Möglichkeit, auf die Option **Probleme mit der Anzeige? Klicken Sie hier** zu klicken. Dadurch wird die PDF-Datei nativ gerendert, und Links werden unterstützt.
 
-**F: Können Nutzungsbedingungen mehrere Sprachen unterstützen?**</br>
+**F: Können Nutzungsbedingungen mehrere Sprachen unterstützen?**<br />
 A: Ja. Derzeit sind 108 verschiedene Sprachen verfügbar, die ein Administrator für eine einzelne Version der Nutzungsbedingungen konfigurieren kann. Ein Administrator kann mehrere PDF-Dokumente hochladen und diese Dokumente mit einer unterstützten Sprache (bis zu 108) kennzeichnen. Wenn sich Endbenutzer anmelden, wird die Spracheinstellung des Browsers überprüft und das entsprechende Dokument angezeigt. Wenn es keine Übereinstimmung gibt, wird das Standarddokument angezeigt. Dies ist das erste Dokument, das hochgeladen wurde.
 
-**F: Wann werden die Nutzungsbedingungen ausgelöst?**</br>
+**F: Wann werden die Nutzungsbedingungen ausgelöst?**<br />
 A: Die Nutzungsbedingungen werden bei der Anmeldung ausgelöst.
 
-**F: Für welche Anwendungen kann ich Nutzungsbedingungen verwenden?**</br>
-A: Sie können eine Richtlinie für bedingten Zugriff für Unternehmensanwendungen mit moderner Authentifizierung erstellen.  Weitere Informationen finden Sie unter [Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory](./../manage-apps/view-applications-portal.md).
+**F: Für welche Anwendungen kann ich Nutzungsbedingungen verwenden?**<br />
+A: Sie können eine Richtlinie für bedingten Zugriff für Unternehmensanwendungen mit moderner Authentifizierung erstellen. Weitere Informationen finden Sie unter [Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory](./../manage-apps/view-applications-portal.md).
 
-**F: Kann ich einem bestimmten Benutzer oder einer bestimmten App mehrere Nutzungsbedingungen hinzufügen?**</br>
+**F: Kann ich einem bestimmten Benutzer oder einer bestimmten App mehrere Nutzungsbedingungen hinzufügen?**<br />
 A: Ja. Erstellen Sie hierzu mehrere Richtlinien für bedingten Zugriff, und richten Sie sie auf die entsprechenden Gruppen oder Anwendungen aus. Wenn für einen Benutzer mehrere Nutzungsbedingungen gelten, muss er jeweils den einzelnen Nutzungsbedingungen zustimmen.
- 
-**F: Was passiert, wenn ein Benutzer die Nutzungsbedingungen ablehnt?**</br>
+
+**F: Was passiert, wenn ein Benutzer die Nutzungsbedingungen ablehnt?**<br />
 A: Der Benutzer kann nicht auf die Anwendung zugreifen. Wenn der Benutzer auf die Anwendung zugreifen möchte, muss er sich erneut anmelden und den Nutzungsbedingungen zustimmen.
- 
-**F: Ist es möglich, die Zustimmung zu zuvor akzeptierten Nutzungsbedingungen zu widerrufen?**</br>
+
+**F: Ist es möglich, die Zustimmung zu zuvor akzeptierten Nutzungsbedingungen zu widerrufen?**<br />
 A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-can-review-their-terms-of-use), aber zurzeit besteht keine Möglichkeit, die Zustimmung zu widerrufen.
 
-**F: Was geschieht, wenn ich auch Intune-Nutzungsbedingungen verwende?**</br>
+**F: Was geschieht, wenn ich auch Intune-Nutzungsbedingungen verwende?**<br />
 A: Wenn Sie sowohl Azure AD-Nutzungsbedingungen als auch [Intune-Nutzungsbedingungen](/intune/terms-and-conditions-create) konfiguriert haben, muss der Benutzer beide akzeptieren. Weitere Informationen finden Sie im Blogbeitrag [Choosing the right Terms solution for your organization](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) (Auswählen der richtigen Lösung für Bestimmungen für Ihre Organisation).
 
 ## <a name="next-steps"></a>Nächste Schritte

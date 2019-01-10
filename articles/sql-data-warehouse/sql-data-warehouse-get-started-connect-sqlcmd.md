@@ -1,6 +1,6 @@
 ---
 title: Verbinden mit Azure SQL Data Warehouse mithilfe von sqlcmd | Microsoft-Dokumentation
-description: Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.
+description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.
 services: sql-data-warehouse
 author: kavithaj
 manager: craigg
@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 94f3955f9ce94fa52e89180fa649c4e412b80109
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 2534d668132db4c66b5e54c33849b76a8f93c348
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247712"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976408"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Verbinden mit SQL Data Warehouse per sqlcmd
 > [!div class="op_single_selector"]
@@ -32,14 +32,14 @@ Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit
 ## <a name="1-connect"></a>1. Verbinden
 Öffnen Sie zur Verwendung von [sqlcmd][sqlcmd] die Eingabeaufforderung, und geben Sie **sqlcmd** sowie die Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
 
-* **Server (-S):** Server in Form von `<`Servername`>`.database.windows.net.
-* **Datenbank (-D)** : Datenbankname.
-* **Bezeichner in Anführungszeichen aktivieren (-I)** : Bezeichner müssen in Anführungszeichen eingeschlossen sein, um die Verbindung mit einer SQL Data Warehouse-Instanz herzustellen.
+* **Server (-S):** Server in Form von `<`Servername`>`.database.windows.net
+* **Datenbank (-d):** Datenbankname.
+* **Bezeichner in Anführungszeichen aktivieren (-I):** Bezeichner müssen in Anführungszeichen eingeschlossen sein, um die Verbindung mit einer SQL Data Warehouse-Instanz herzustellen.
 
 Zur Verwendung der SQL Server-Authentifizierung müssen Sie die Parameter für Benutzername und Kennwort hinzufügen:
 
-* **Benutzer (-U):** Serverbenutzer im Format `<`Benutzer`>`.
-* **Kennwort (-P)** : Das Kennwort des Benutzers.
+* **Benutzer (-U):** Serverbenutzer im Format `<`Benutzer`>`
+* **Kennwort (-P):** Das Kennwort des Benutzers.
 
 Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 

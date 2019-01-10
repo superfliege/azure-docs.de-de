@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 74d6acb03f9ba984d35caf1f5c7963f686cda5a7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 47ce2b39f1733c99ef8c15926d42aa62e1fcd44c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219255"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634557"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure-Speicherkonto
 
@@ -176,12 +176,14 @@ Verwenden Sie den CLI-Befehl [az storage account update](https://docs.microsoft.
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das PowerShell-Cmdlet [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das `-CustomDomainName`-Argument an, um die Registrierung einer benutzerdefinierten Domäne zu entfernen.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Verwenden Sie das PowerShell-Cmdlet [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das Argument `-CustomDomainName` an, um die Registrierung einer benutzerdefinierten Domäne zu entfernen.
 
 * Befehlsformat:
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "<resource-group-name>" `
       -AccountName "<storage-account-name>" `
       -CustomDomainName ""
@@ -190,7 +192,7 @@ Verwenden Sie das PowerShell-Cmdlet [Set-AzureRmStorageAccount](/powershell/modu
 * Befehlsbeispiel:
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "myresourcegroup" `
       -AccountName "mystorageaccount" `
       -CustomDomainName ""

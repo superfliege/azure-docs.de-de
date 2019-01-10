@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: e68099609e5a4a27dfae7956fa43634d38311a22
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 01781725e3224e2cab49a5e7cc7dcc33030ce9fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015771"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971551"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -113,7 +113,7 @@ Im November 2017 werden alle Access Control-Komponenten in vollem Umfang unterst
 
 Dies ist der Zeitplan für die Deaktivierung von Access Control-Komponenten:
 
-- **November 2017**:  Die Azure AD-Administratoroberfläche im klassischen Azure-Portal wird [deaktiviert](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Zu diesem Zeitpunkt können Namespaces für Access Control unter der folgenden neuen dedizierten URL verwaltet werden: `https://manage.windowsazure.com?restoreClassic=true`. Verwenden Sie diesen URl, um Ihre vorhandenen Namespaces anzuzeigen, Namespaces zu aktivieren und deaktivieren und ggf. zu löschen.
+- **November 2017:**  Die Azure AD-Administratoroberfläche im klassischen Azure-Portal wird [deaktiviert](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Zu diesem Zeitpunkt können Namespaces für Access Control unter der folgenden neuen dedizierten URL verwaltet werden: `https://manage.windowsazure.com?restoreClassic=true`. Verwenden Sie diesen URl, um Ihre vorhandenen Namespaces anzuzeigen, Namespaces zu aktivieren und deaktivieren und ggf. zu löschen.
 - **2. April 2018**: Das klassische Azure-Portal ist vollständig deaktiviert. Dies bedeutet, dass Namespaces für Access Control nicht mehr über jede URL verwaltet werden können. Zu diesem Zeitpunkt können Sie Ihre Access Control-Namespaces nicht deaktivieren oder aktivieren, löschen oder aufzählen. Das Access Control-Verwaltungsportal ist jedoch voll funktionsfähig und befindet sich unter „`https://\<namespace\>.accesscontrol.windows.net`“. Alle sonstigen Komponenten von Access Control arbeiten weiterhin normal.
 - **7. November 2018**: Alle Komponenten von Access Control werden endgültig heruntergefahren. Dazu zählen das Access Control-Verwaltungsportal, der Verwaltungsdienst, STS und das Tokentransformationsregel-Modul. Zu diesem Zeitpunkt tritt bei allen Anforderungen, die an Access Control (unter der Adresse „\<namespace\>.accesscontrol.windows.net“) gesendet werden, ein Fehler auf. Alle vorhandenen Apps und Dienste müssen vor diesem Zeitpunkt zu anderen Technologien migriert worden sein.
 

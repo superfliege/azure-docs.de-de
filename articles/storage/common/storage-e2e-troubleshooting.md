@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262317"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634506"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -94,6 +94,8 @@ Folgen Sie zum Konfigurieren der Protokollierung und der Metriken für das Speic
 
 **Über PowerShell**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 1. Verwenden Sie das [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) -Cmdlet, um Ihr Azure-Benutzerkonto dem PowerShell-Fenster hinzuzufügen:
@@ -114,13 +116,13 @@ Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installier
 4. Aktivieren Sie die Speicherprotokollierung für den Blobdienst:
    
     ```powershell
-    Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 5. Aktivieren Sie die Speichermetriken für den Blob-Dienst, und stellen Sie dabei sicher, dass **-MetricsType** auf `Minute` festgelegt ist:
    
     ```powershell
-    Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurieren der clientseitigen .NET-Protokollierung
@@ -198,11 +200,11 @@ Message Analyzer enthält Ressourcen für Azure Storage, mit denen Sie Server-, 
 2. Starten Sie Message Analyzer.
 3. Wählen Sie im Menü **Extras** die Option **Asset-Manager**. Wählen Sie im Dialogfeld **Asset-Manager** die Option **Downloads**, und filtern Sie die Anzeige nach **Azure Storage**. Die Azure-Speicherressourcen werden angezeigt, wie in der folgenden Abbildung dargestellt.
 4. Klicken Sie auf **Sync All Displayed Items** , um die Azure-Speicherressourcen zu installieren. Die verfügbaren Ressourcen umfassen:
-   * **Azure Storage Color Rules:** Die Azure-Speicherfarbregeln ermöglichen Ihnen die Angabe bestimmter Filter, die mithilfe von Farbe, Text und Schriftarten Nachrichten hervorheben, die bestimmte Informationen einer Nachverfolgung enthalten.
-   * **Azure Storage Charts:** Azure-Speicherdiagramme sind vordefinierte Diagramme, die Server-Protokolldaten grafisch darstellen. Beachten Sie, dass für die Verwendung der Azure-Speicherdiagramme zum jetzigen Zeitpunkt das Serverprotokoll nur in das Analyseraster geladen werden kann.
-   * **Azure Storage Parsers:** Die Azure-Speicherparser analysieren die Client-, Server- und HTTP-Protokolle des Azure-Speichers, um sie im Analyseraster anzuzeigen.
-   * **Azure Storage Filters:** Azure-Speicherfilter sind vordefinierte Kriterien, die Sie für die Abfrage der Daten im Analyseraster verwenden können.
-   * **Azure Storage View Layouts:** Azure-Speicheransichtslayouts sind vordefinierte Spaltenlayouts und -gruppierungen im Analyseraster.
+   * **Azure Storage-Farbregeln:** Die Azure Storage-Farbregeln ermöglichen die Angabe bestimmter Filter, die mithilfe von Farbe, Text und Schriftarten Nachrichten hervorheben, die bestimmte Informationen einer Nachverfolgung enthalten.
+   * **Azure Storage-Diagramme:** Azure Storage-Diagramme sind vordefinierte Diagramme, die Serverprotokolldaten grafisch darstellen. Beachten Sie, dass für die Verwendung der Azure-Speicherdiagramme zum jetzigen Zeitpunkt das Serverprotokoll nur in das Analyseraster geladen werden kann.
+   * **Azure Storage-Parser:** Die Azure Storage-Parser analysieren die Client-, Server- und HTTP-Protokolle von Azure Storage, um sie im Analyseraster anzuzeigen.
+   * **Azure Storage-Filter:** Azure Storage-Filter sind vordefinierte Kriterien, die Sie für die Abfrage der Daten im Analyseraster verwenden können.
+   * **Azure Storage-Anzeigelayouts:** Azure Storage-Anzeigelayouts sind vordefinierte Spaltenlayouts und -gruppierungen im Analyseraster.
 5. Starten Sie Message Analyzer nach der Installation der Ressourcen neu.
 
 ![Message Analyzer: Asset-Manager](./media/storage-e2e-troubleshooting/mma-start-page-1.png)

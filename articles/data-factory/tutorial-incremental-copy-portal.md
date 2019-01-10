@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: e31f35aadfa7e46426a1779cdc057691bef91336
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ad490630d3ce5d625bce05c75c20fa71a7aa2d29
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965546"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014539"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden. 

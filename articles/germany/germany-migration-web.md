@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 55360eb42f264f3e854d43547d59aae3825c7caa
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d1bfce9b58f6b0cd681b6b4dac70c925084db193
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968110"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599766"
 ---
 # <a name="migrate-web-resources-to-global-azure"></a>Migrieren von Webressourcen zu Azure weltweit
 
@@ -33,7 +33,7 @@ Weitere Informationen finden Sie unter:
 - Informieren Sie sich darüber, wie eine [Azure Resource Manager-Vorlage exportiert wird](../azure-resource-manager/resource-manager-export-template.md).
 - Erfahren Sie, wie Sie [eine Azure Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
 - Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-- Lesen Sie die [Übersicht über Azure App Service](../app-service/app-service-web-overview.md).
+- Lesen Sie die [Übersicht über Azure App Service](../app-service/overview.md).
 - Verschaffen Sie sich einen [Überblick über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
 - Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496456"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968807"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Erste Schritte mit ML Services in Azure HDInsight
 
@@ -22,8 +22,8 @@ Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit diese
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Ein Azure-Abonnement**: Bevor Sie mit diesem Tutorial beginnen, müssen Sie über ein Azure-Abonnement verfügen. Weitere Informationen finden Sie unter [Get Microsoft Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (Beziehen der kostenlosen Testversion von Microsoft Azure).
-* **Ein Secure Shell-Client (SSH)**: Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Ein Azure-Abonnement**: Für dieses Tutorial wird ein Azure-Abonnement benötigt. Weitere Informationen finden Sie unter [Get Microsoft Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (Beziehen der kostenlosen Testversion von Microsoft Azure).
+* **Ein SSH-Client (Secure Shell):** Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
@@ -31,14 +31,14 @@ Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit diese
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf **Ressource erstellen** > **Daten und Analysen** > **HDInsight**.
+2. Navigieren Sie zu **+ Ressource erstellen** > **Analytics** > **HDInsight**.
 
 3. Geben Sie unter **Grundlagen** Folgendes ein:
 
-    * **Clustername**: Der Name des HDInsight-Clusters.
+    * **Clustername:** Name des HDInsight-Clusters.
     * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.
-    * **Benutzername für Clusteranmeldung** und **Kennwort für Clusteranmeldung**: Die Anmeldung beim Zugriff auf den Cluster über HTTPS. Sie verwenden diese Anmeldeinformationen für den Zugriff auf Dienste wie die Apache Ambari-Webbenutzeroberfläche oder die REST-API.
-    * **Secure Shell (SSH)-Benutzername**: Die für den Clusterzugriff über SSH verwendete Anmeldung. Das Kennwort ist standardmäßig mit dem Kennwort für die Clusteranmeldung identisch.
+    * **Benutzername für Clusteranmeldung** und **Kennwort für Clusteranmeldung**: Die für den Clusterzugriff über HTTPS verwendete Anmeldung. Sie verwenden diese Anmeldeinformationen für den Zugriff auf Dienste wie die Apache Ambari-Webbenutzeroberfläche oder die REST-API.
+    * **SSH-Benutzername (Secure Shell):** Die für den Clusterzugriff über SSH verwendete Anmeldung. Das Kennwort ist standardmäßig mit dem Kennwort für die Clusteranmeldung identisch.
     * **Ressourcengruppe**: Die Ressourcengruppe, in der der Cluster erstellt wird.
     * **Standort**: Die Azure-Region, in der der Cluster erstellt werden soll.
 
@@ -46,13 +46,13 @@ Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit diese
 
 4. Wählen Sie **Clustertyp** aus, und legen Sie dann im Abschnitt **Clusterkonfiguration** die folgenden Werte fest:
 
-    * **Clustertyp**: ML Services
+    * **Clustertyp:** ML Services
 
     * **Betriebssystem**: Linux
 
     * **Version**: ML Server 9.3 (HDI 3.6). Versionsanmerkungen für ML Server 9.3 finden Sie unter [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server).
 
-    * **R Studio Community Edition für ML Server**: Diese browserbasierte IDE wird standardmäßig auf dem Edgeknoten installiert. Deaktivieren Sie das Kontrollkästchen, falls Sie die Installation nicht wünschen. Wenn Sie eine Installation durchführen, ist die URL für den Zugriff auf die RStudio Server-Anmeldung auf einem Blatt der Portalanwendung für Ihren Cluster verfügbar, nachdem dieser erstellt wurde.
+    * **RStudio Community Edition für ML Server:** Diese browserbasierte IDE wird standardmäßig auf dem Edgeknoten installiert. Deaktivieren Sie das Kontrollkästchen, falls Sie die Installation nicht wünschen. Wenn Sie eine Installation durchführen, ist die URL für den Zugriff auf die RStudio Server-Anmeldung auf einem Blatt der Portalanwendung für Ihren Cluster verfügbar, nachdem dieser erstellt wurde.
 
         ![Grundlegende Details zu Clustern](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -66,7 +66,7 @@ Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit diese
 
     ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/r-server-get-started/clustersummary.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Das Erstellen des Clusters kann bis zu 20 Minuten dauern.
 
 <a name="connect-to-rstudio-server"></a>
@@ -78,15 +78,16 @@ Sie können mit einer der beiden folgenden Methoden auf die RStudio-Anmeldung zu
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **Option 2**: Öffnen Sie den ML Services-Cluster im Azure-Portal, und klicken Sie unter **Direktlinks** auf **ML Services-Dashboards**.
-
-     ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/r-server-get-started/dashboard-quick-links.png)
-
-    Klicken Sie unter **Clusterdashboards** auf **R Studio Server**.
+* **Option 2:** Verwenden des Azure-Portals.
+Im Portal:
+  1. Wählen Sie im Menü links **Alle Dienste** aus.
+  2. Wählen Sie unter **ANALYTICS** die Option **HDInsight-Cluster** aus.
+  3. Wählen Sie auf der Seite **HDInsight-Cluster** den Namen Ihres Clusters aus.
+  4. Wählen Sie unter **ML Services-Dashboards** die Option **R Studio-Server** aus. 
 
     ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Unabhängig von der verwendeten Zugriffsmethode müssen Sie sich bei der ersten Anmeldung zweimal authentifizieren.  Geben Sie für die erste Authentifizierungseingabeaufforderung die *Benutzer-ID* und das *Kennwort* für den Clusteradministrator an. Geben Sie für die zweite Authentifizierungseingabeaufforderung die *Benutzer-ID* und das *Kennwort* für SSH an. Für nachfolgende Anmeldungen sind dann nur noch die SSH-Anmeldeinformationen erforderlich.
 
 Nachdem die Verbindung hergestellt wurde, sollte die Anzeige in etwa wie im folgenden Screenshot aussehen:
@@ -221,7 +222,7 @@ Sie können die Erstellung des ML Services-Clusters für HDInsight über das SDK
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](../hdinsight-administer-use-portal-linux.md#create-clusters) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](../hdinsight-hadoop-create-linux-clusters-portal.md) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999058"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189608"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
 
@@ -63,11 +63,11 @@ Um einen Knoten herunterzufahren, neu zu starten oder zu entfernen, suchen Sie d
 > [!NOTE] 
 > IP-Adressen können zwischen Clusterknoten verschoben werden, wenn sich die Anzahl der aktiven Knoten ändert.
 
-Weitere Informationen finden Sie unter [Cluster > FXT-Knoten](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>) in der Anleitung zu den Clustereinstellungen von Avere.
+Weitere Informationen finden Sie unter [Cluster > FXT-Knoten](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) in der Anleitung zu den Clustereinstellungen von Avere.
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Beenden oder Neustarten des Clusters über die Avere-Systemsteuerung
 
-Auf der Einstellungsseite **Systemwartung** finden Sie Befehle zum Neustarten von Clusterdiensten, zum Neustarten des Clusters oder zum sicheren Herunterfahren des Clusters. Weitere Informationen finden Sie unter [Verwaltung > Systemwartung](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>) (in der Anleitung zu den Clustereinstellungen von Avere).
+Auf der Einstellungsseite **Systemwartung** finden Sie Befehle zum Neustarten von Clusterdiensten, zum Neustarten des Clusters oder zum sicheren Herunterfahren des Clusters. Weitere Informationen finden Sie unter [Verwaltung > Systemwartung](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (in der Anleitung zu den Clustereinstellungen von Avere).
 
 Wenn ein Cluster heruntergefahren wird, veröffentlicht er zunächst Statusmeldungen auf der Registerkarte **Dashboard**. Nach einigen Augenblicken reagiert die Avere-Systemsteuerungssitzung nicht mehr, was darauf hinweist, dass der Cluster heruntergefahren ist.
 

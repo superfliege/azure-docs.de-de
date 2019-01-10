@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824301"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976363"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -37,10 +37,10 @@ Abhängig von der Cloudregion, in der sich der virtuelle Computer befindet, verw
 
 Wenn Sie versuchen, eine Azure Windows-VM zu aktivieren, wird eine Fehlermeldung ausgegeben, die in etwa so aussieht:
 
-**Fehler: 0xC004F074 Vom Softwarelizenzierungsdienst wurde gemeldet, dass der Computer nicht aktiviert werden konnte. Es konnte kein Schlüsselverwaltungsdienst (Key Management Service, KMS) erreicht werden. Weitere Informationen finden Sie im Anwendungsereignisprotokoll.**
+**Error: 0xC004F074 – vom Softwarelizenzierungsdienst wurde gemeldet, dass der Computer nicht aktiviert werden konnte. Es konnte kein Schlüsselverwaltungsdienst (Key Management Service, KMS) erreicht werden. Weitere Informationen finden Sie im Anwendungsereignisprotokoll.**
 
 ## <a name="cause"></a>Ursache
-In der Regel treten Probleme bei der VM-Aktivierung in Azure auf, wenn die Windows-VM nicht mithilfe des geeigneten Setupschlüssel des KMS-Clients konfiguriert wurde oder die Windows-VM sich nicht mit dem Azure KMS-Dienst verbinden kann (kms.core.windows.net, port 1668). 
+In der Regel treten Probleme bei der VM-Aktivierung in Azure auf, wenn die Windows-VM nicht mithilfe des geeigneten KMS-Clientsetupschlüssel konfiguriert wurde oder die Windows-VM keine Verbindung mit dem Azure KMS-Dienst (kms.core.windows.net, Port 1688) herstellen kann. 
 
 ## <a name="solution"></a>Lösung
 
@@ -86,7 +86,7 @@ Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Au
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    Der Befehl sollte Folgendes zurückgeben: Der Schlüsselverwaltungsdienst-Computername wurde erfolgreich auf kms.core.windows.net:1688 festgelegt.
+    Der Befehl sollte Folgendes zurückgeben: Der Schlüsselverwaltungsdienst-Computername wurde erfolgreich auf „kms.core.windows.net:1688“ festgelegt.
 
 4. Überprüfen Sie mithilfe von Psping, dass Sie eine Verbindung mit dem KMS-Server besitzen. Wechseln Sie zu dem Ordner, in dem Sie den Download „pstools.zip“ extrahiert haben, und führen Sie dann Folgendes aus:
   
@@ -94,7 +94,7 @@ Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Au
     \psping.exe kms.core.windows.net:1688
     ```
   
-  Stellen Sie auf der vorletzten Zeile der Ausgabe sicher, dass Folgendes angezeigt wird: Sent = 4, Received = 4, Lost = 0 (0% loss).
+  Die vorletzte Zeile der Ausgabe muss Folgendes enthalten: Sent = 4, Received = 4, Lost = 0 (0% loss).
 
   Wenn „Lost“ größer als 0 (null) ist, hat der virtuelle Computer keine Verbindung zum KMS-Server. In diesem Fall müssen Sie sicherstellen, dass der DNS-Server „kms.core.windows.net“ auflösen kann, falls sich der virtuelle Computer in einem virtuellen Netzwerk befindet und für ihn ein benutzerdefinierter DNS-Server angegeben ist. Ändern Sie alternativ den DNS-Server in einen, der „kms.core.windows.net“ auflösen kann.
 

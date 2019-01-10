@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3c809638cef89d111a032e5876b1f2f1b2c1eb7b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272863"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602345"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
@@ -104,7 +104,7 @@ Weitere Informationen zur Behebung dieser Arten von Problemen finden in folgende
 
 - Blogbeitrag zum [Ermitteln eines Parameters](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
 - Blogbeitrag zu [Problemen und Lösungen für die Parameterermittlung](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/)
-- Blogbeitrag zur [Parameterermittlung anhand des Beispiels von Elefant und Maus](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)
+- Blogbeitrag zur [Parameterermittlung anhand des Beispiels von Elefant und Maus](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)
 - Blogbeitrag zu [dynamischem SQL im Vergleich zur Qualität des Abfrageplans für parametrisierte Abfragen](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Behandeln von Problemen der Kompilierungsaktivität aufgrund falscher Parametrisierung

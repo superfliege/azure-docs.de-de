@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: be08740024e87179a48f3dfd6f8406fa6a2bbca6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 11de58a64f956bd7dd1cc9c4ca8498de8c0b9d05
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963520"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023956"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -233,7 +232,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
 ### <a name="create-azure-sql-database-linked-service"></a>Erstellen Sie einen Azure SQL-Datenbank -verknüpften Dienst.
 In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit der Data Factory.
 
-1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** und dem folgenden Inhalt: Ersetzen Sie **&lt;server&gt; &lt;database name **, &lt;user id&gt; und &lt;password&gt;** durch den Namen Ihrer Azure SQL Server-Instanz, den Namen Ihrer Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern. 
+1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** und dem folgenden Inhalt: Ersetzen Sie server database name **, &lt;user id&gt; und &lt;password&gt;** durch den Namen Ihrer Azure SQL Server-Instanz, den Namen Ihrer Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern. 
 
     ```json
     {

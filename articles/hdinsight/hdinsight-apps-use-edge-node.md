@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5994abaf0276d915553494b7272d2a8abed451bb
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: da6435c6e3ea5fe88b605bd65c5d0e10f1772450
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498617"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717465"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
@@ -57,15 +57,15 @@ Die Größe des Edgeknotens des virtuellen Computers muss den VM-Größenanforde
 
 Nach der Erstellung eines Edgeknotens können Sie über SSH eine Verbindung zum Edgeknoten herstellen und Client-Tools ausführen, um auf den Hadoop-Cluster in HDInsight zuzugreifen.
 
-> [!WARNING] 
+> [!WARNING]   
 > Für auf dem Edgeknoten installierte benutzerdefinierte Komponenten stellt Microsoft wirtschaftlich angemessenen Support bereit. Dadurch werden unter Umständen bei Ihnen auftretende Probleme behoben. Alternativ erhalten Sie unter Umständen weitere Unterstützung über Communityressourcen. Im Anschluss finden Sie einige besonders aktive Websites, auf denen Sie Unterstützung von der Community erhalten:
 >
 > * [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
-> * [http://stackoverflow.com](http://stackoverflow.com).
+> * [https://stackoverflow.com](https://stackoverflow.com).
 >
-> Bei Verwendung einer Apache-Technologie finden Sie hilfreiche Informationen ggf. auf den Apache-Projektwebsites unter [http://apache.org](http://apache.org), beispielsweise auf der Website für [Apache Hadoop](http://hadoop.apache.org/).
+> Bei Verwendung einer Apache-Technologie finden Sie hilfreiche Informationen ggf. auf den Apache-Projektwebsites unter [https://apache.org](https://apache.org), beispielsweise auf der Website für [Apache Hadoop](https://hadoop.apache.org/).
 
-> [!NOTE]
+> [!NOTE]  
 > Wie bei den anderen Clusterknoten werden die Patches von Edgeknoten ebenfalls verwaltet.  Weitere Informationen finden Sie unter [Patchen des Betriebssystems für HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster
@@ -81,13 +81,13 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgekn
    * **Abonnement**: Wählen Sie ein Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.
    * **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, die für den vorhandenen HDInsight-Cluster verwendet wird.
    * **Standort**: Wählen Sie den Standort des vorhandenen HDInsight-Clusters aus.
-   * **Clustername**: Geben Sie den Namen eines vorhandenen HDInsight-Clusters ein.
-   * **Größe des Edgeknotens**: Wählen Sie eine der VM-Größen aus. Die Größe des virtuellen Computers muss den VM-Größenanforderungen des Workerknotens entsprechen. Die empfohlene VM-Größe des Workerknotens finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
-   * **Präfix des Edgeknotens**: Der Standardwert ist **new**.  Wenn Sie den Standardwert verwenden, heißt der Edgeknoten **new-edgenode**.  Sie können das Präfix im Portal anpassen. Sie können auch den vollständigen Namen in der Vorlage anpassen.
+   * **Clustername:** Geben Sie den Namen eines vorhandenen HDInsight-Clusters ein.
+   * **Edge Node Size** (Edgeknotengröße): Wählen Sie eine der VM-Größen aus. Die Größe des virtuellen Computers muss den VM-Größenanforderungen des Workerknotens entsprechen. Die empfohlene VM-Größe des Workerknotens finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+   * **Edge Node Prefix** (Edgeknotenpräfix): Der Standardwert lautet **new**.  Wenn Sie den Standardwert verwenden, heißt der Edgeknoten **new-edgenode**.  Sie können das Präfix im Portal anpassen. Sie können auch den vollständigen Namen in der Vorlage anpassen.
 
 4. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und klicken Sie anschließend auf **Kaufen**, um den Edgeknoten zu erstellen.
 
->[!IMPORTANT]
+>[!IMPORTANT]  
 > Stellen Sie sicher, dass Sie die Azure-Ressourcengruppe für den vorhandenen HDInsight-Cluster auswählen.  Andernfalls erhalten Sie die Fehlermeldung „Angeforderter Vorgang kann nicht auf die geschachtelte Ressource angewendet werden. Übergeordnete Ressource &lt;ClusterName > nicht gefunden.“
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Hinzufügen eines Edgeknotens beim Erstellen eines Clusters
@@ -103,15 +103,15 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
    
    * **Abonnement**: Wählen Sie ein Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.
    * **Ressourcengruppe**: Erstellen Sie eine neue Ressourcengruppe für den Cluster.
-   * **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus.
-   * **Clustername**: Geben Sie einen Namen für den neu zu erstellenden Cluster ein.
-   * **Benutzername für Clusteranmeldung**: Geben Sie den Hadoop-HTTP-Benutzernamen ein.  Der Standardname lautet **admin**.
-   * **Kennwort für Clusteranmeldung**: Geben Sie das Hadoop-HTTP-Benutzerkennwort ein.
-   * **SSH-Benutzername**: Geben Sie den SSH-Benutzernamen ein. Der Standardname ist **sshuser**.
-   * **SSH-Kennwort**: Geben Sie das SSH-Benutzerkennwort ein.
-   * **Skriptaktion installieren** Behalten Sie für die Bearbeitung dieses Tutorials den Standardwert bei.
+   * **Standort**: Wählen Sie einen Speicherort für die Ressourcengruppe aus.
+   * **Clustername:** Geben Sie einen Namen für den neu zu erstellenden Cluster ein.
+   * **Benutzername für Clusteranmeldung**: Geben Sie den Namen des Hadoop-HTTP-Benutzers ein.  Der Standardname lautet **admin**.
+   * **Kennwort für Clusteranmeldung**: Geben Sie das Kennwort des Hadoop-HTTP-Benutzers ein.
+   * **SSH-Benutzername:** Geben Sie den Namen des SSH-Benutzers ein. Der Standardname ist **sshuser**.
+   * **SSH-Kennwort:** Geben Sie das Kennwort des SSH-Benutzers ein.
+   * **Install Script Action** (Skriptaktion installieren): Behalten Sie für die Bearbeitung dieses Tutorials den Standardwert bei.
      
-     Einige Eigenschaften sind in der Vorlage hartcodiert: Clustertyp, Anzahl der Clusterworkerknoten, Edgeknotengröße und Edgeknotenname.
+     Einige Eigenschaften wurden in der Vorlage hartcodiert: „Clustertyp“, „Anzahl der Workerknoten im Cluster“, „Edge node size“ (Edgeknotengröße) und „Edge node name“ (Edgeknotenname).
 4. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und klicken Sie anschließend auf **Kaufen**, um den Cluster mit dem Edgeknoten zu erstellen.
 
 ## <a name="add-multiple-edge-nodes"></a>Hinzufügen mehrerer Edgeknoten
@@ -155,10 +155,10 @@ Sie können einen Edgeknoten aus dem Azure-Portal löschen.
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie einen Edgeknoten hinzufügen und auf den Edgeknoten zuzugreifen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Installieren von HDInsight-Anwendungen](hdinsight-apps-install-applications.md): Hier erfahren Sie, wie Sie eine HDInsight-Anwendung in Ihren Clustern installieren.
+* [Installieren von HDInsight-Anwendungen:](hdinsight-apps-install-applications.md) Erfahren Sie, wie Sie eine HDInsight-Anwendung auf Ihren Clustern installieren.
 * [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 * [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Hier erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx)(MSDN: Installieren einer HDInsight-Anwendung): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
+* [MSDN: Installieren einer HDInsight-Anwendung](https://msdn.microsoft.com/library/mt706515.aspx): Erfahren Sie, wie HDInsight-Anwendungen definiert werden.
 * [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 * [Erstellen von Linux-basierten Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie Resource Manager-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 

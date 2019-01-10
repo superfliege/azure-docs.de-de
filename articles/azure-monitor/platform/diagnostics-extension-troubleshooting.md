@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1ddadcf17a5733767e24505b970b2ac21c8d7fa8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325473"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103943"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -118,7 +118,7 @@ Die Diagnosekonfiguration enthält eine Anleitung zum Sammeln von Daten eines be
 #### <a name="is-the-host-generating-data"></a>Generierung von Daten durch den Host
 - **Leistungsindikatoren**: Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
 
-- **Ablaufverfolgungsprotokolle**:  Führen Sie den Remotezugriff auf die VM durch, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter http://msdn.microsoft.com/library/sk36c28t.aspx.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
+- **Ablaufverfolgungsprotokolle**:  Führen Sie den Remotezugriff auf die VM durch, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter https://msdn.microsoft.com/library/sk36c28t.aspx.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
 Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter [Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen](#more-about-trace-logs-missing) weiter.
 
 - **ETW-Ablaufverfolgungen**: Führen Sie den Remotezugriff auf die VM durch, und installieren Sie PerfView.  Führen Sie in PerfView Folgendes aus: **File** > **User Command** > **Listen etwprovider1** > **etwprovider2** (Datei > Benutzerbefehl > Lauschen etwprovider1 > etwprovider2) usw. Beim Befehl **Listen** (Lauschen) wird die Groß-/Kleinschreibung beachtet, und die kommagetrennte Liste mit ETW-Anbietern darf keine Leerstellen enthalten. Falls der Befehl nicht ausgeführt werden kann, können Sie im PerfView-Tool unten rechts die Schaltfläche **Log** (Protokoll) wählen, um anzuzeigen, was ausgeführt werden sollte und wie das Ergebnis lautet.  Es wird ein neues Fenster angezeigt, wenn die Eingabe korrekt ist. Nach einigen Sekunden werden die ersten Ereignisablaufverfolgungen für Windows angezeigt.
@@ -217,9 +217,9 @@ Greifen Sie alternativ dazu per Remotedesktop auf den Computer zu, und sehen Sie
 
 Suchen Sie jeweils nach **Microsoft.Azure.Diagnostics** und dann nach dem Feld **xmlCfg** oder **WadCfg**.
 
-Wenn Sie auf einem virtuellen Computer suchen und das Feld **WadCfg** vorhanden ist, bedeutet dies, dass die Konfiguration im JSON-Format vorliegt. Wenn das Feld **xmlCfg** vorhanden ist, bedeutet dies, dass die Konfigurationsdatei im XML-Format vorliegt und Base64-codiert ist. Sie müssen sie [decodieren](http://www.bing.com/search?q=base64+decoder), um die von der Diagnose geladenen XML-Daten anzuzeigen.
+Wenn Sie auf einem virtuellen Computer suchen und das Feld **WadCfg** vorhanden ist, bedeutet dies, dass die Konfiguration im JSON-Format vorliegt. Wenn das Feld **xmlCfg** vorhanden ist, bedeutet dies, dass die Konfigurationsdatei im XML-Format vorliegt und Base64-codiert ist. Sie müssen sie [decodieren](https://www.bing.com/search?q=base64+decoder), um die von der Diagnose geladenen XML-Daten anzuzeigen.
 
-Wenn Sie bei der Clouddienstrolle die Konfiguration vom Datenträger auswählen, sind die Daten Base64-codiert. Sie müssen sie also [decodieren](http://www.bing.com/search?q=base64+decoder), um die XML-Daten anzuzeigen, die von der Diagnose geladen wurden.
+Wenn Sie bei der Clouddienstrolle die Konfiguration vom Datenträger auswählen, sind die Daten Base64-codiert. Sie müssen sie also [decodieren](https://www.bing.com/search?q=base64+decoder), um die XML-Daten anzuzeigen, die von der Diagnose geladen wurden.
 
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure-Diagnose-Plug-In – Exitcodes
 Das Plug-In gibt die folgenden Exitcodes zurück:

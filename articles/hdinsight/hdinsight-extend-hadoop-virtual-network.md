@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 308527bce2048921c2af65aa78a12d8ef2c2bed2
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0119e05ce5cb8d1c2e27936dc44896b7acef9312
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497788"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725965"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
@@ -27,10 +27,10 @@ Es wird beschrieben, wie Sie HDInsight mit einem [Azure Virtual Network](../virt
 
 * Direktes Zuweisen von [Apache Hadoop](https://hadoop.apache.org/)-Diensten, die nicht öffentlich über das Internet verfügbar sind. Zum Beispiel [Apache Kafka](https://kafka.apache.org/)-APIs oder die [Apache HBase](https://hbase.apache.org/)-Java-API.
 
-> [!WARNING]
+> [!WARNING]  
 > Für die Informationen in diesem Dokument ist es erforderlich, dass Sie mit TCP/IP-Netzwerken vertraut sind. Falls Sie nicht mit TCP/IP-Netzwerken vertraut sind, sollten Sie sich an eine Person wenden, die über die entsprechenden Kenntnisse verfügt, bevor Sie Änderungen an Produktionsnetzwerken vornehmen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Eine ausführliche Anleitung zum Herstellen einer Verbindung von HDInsight mit Ihrem lokalen Netzwerk mithilfe eines virtuellen Azure-Netzwerks finden Sie im Dokument [Verbinden von HDInsight mit Ihrem lokalen Netzwerk](connect-on-premises-network.md).
 
 ## <a name="planning"></a>Planung
@@ -53,7 +53,7 @@ Sie müssen die folgenden Fragen beantworten, wenn Sie die Installation von HDIn
 
 Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen neuen HDInsight-Cluster einem vorhandenen Azure Virtual Network hinzufügen.
 
-> [!NOTE]
+> [!NOTE]  
 > Ein vorhandener HDInsight-Cluster kann in einem virtuellen Netzwerk nicht hinzugefügt werden.
 
 1. Verwenden Sie das klassische oder das Resource Manager-Bereitstellungsmodell für das virtuelle Netzwerk?
@@ -88,7 +88,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
 
         Weitere Informationen finden Sie im Dokument zur [Problembehandlung bei Netzwerksicherheitsgruppen](../virtual-network/diagnose-network-traffic-filter-problem.md).
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Netzwerksicherheitsgruppen-Regeln werden der Reihenfolge nach basierend auf der Regelpriorität angewendet. Die erste Regel, die mit dem Datenverkehrsmuster übereinstimmt, wird angewendet, und auf diesen Datenverkehr werden dann keine anderen Regeln angewendet. Sortieren Sie die Regeln von „weniger strikt“ bis „strikt“. Weitere Informationen finden Sie im Dokument [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
     * Benutzerdefinierte Routen
@@ -112,7 +112,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
     * [Erstellen von HDInsight-Clustern mit der klassischen Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Erstellen von Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Das Hinzufügen von HDInsight zu einem virtuellen Netzwerk ist ein optionaler Konfigurationsschritt. Achten Sie darauf, beim Konfigurieren des Clusters das virtuelle Netzwerk auszuwählen.
 
 ## <a id="multinet"></a>Verbinden von mehreren Netzwerken
@@ -132,7 +132,7 @@ Azure ermöglicht die Namensauflösung für Azure-Dienste, die in einem virtuell
 
 Bei der Standardnamensauflösung ist es für HDInsight __nicht__ zulässig, die Namen von Ressourcen in Netzwerken aufzulösen, die mit dem virtuellen Netzwerk verknüpft sind. Beispielsweise ist es eine gängige Vorgehensweise, Ihr lokales Netzwerk mit dem virtuellen Netzwerk zu verknüpfen. Allein mit der Standardnamensauflösung kann HDInsight nicht anhand des Namens auf Ressourcen im lokalen Netzwerk zugreifen. Das Gegenteil gilt ebenfalls: Ressourcen in Ihrem lokalen Netzwerk können anhand des Namens nicht auf Ressourcen im virtuellen Netzwerk zugreifen.
 
-> [!WARNING]
+> [!WARNING]  
 > Sie müssen den benutzerdefinierten DNS-Server erstellen und das virtuelle Netzwerk für seine Verwendung konfigurieren, bevor Sie den HDInsight-Cluster erstellen.
 
 Die Ausführung der folgenden Aktionen ist erforderlich, um die Namensauflösung zwischen dem virtuellen Netzwerk und Ressourcen in verknüpften Netzwerken zu aktivieren:
@@ -153,7 +153,7 @@ Die Ausführung der folgenden Aktionen ist erforderlich, um die Namensauflösung
 
             * Leiten Sie alle anderen Anforderungen an den lokalen DNS-Server weiter. Das lokale DNS verarbeitet alle anderen Anforderungen der Namensauflösung. Dies gilt auch für Internetressourcen, z.B. „Microsoft.com“.
 
-        * __Lokales DNS__: Leiten Sie Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den benutzerdefinierten DNS-Server weiter. Der benutzerdefinierte DNS-Server leitet die Daten dann an den rekursiven Azure-Resolver weiter.
+        * __Lokales DNS:__ Leiten Sie Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den benutzerdefinierten DNS-Server weiter. Der benutzerdefinierte DNS-Server leitet die Daten dann an den rekursiven Azure-Resolver weiter.
 
         Bei dieser Konfiguration werden Anforderungen von vollqualifizierten Domänennamen, die das DNS-Suffix des virtuellen Netzwerks enthalten, an den benutzerdefinierten DNS-Server weiter. Alle anderen Anforderungen (auch für öffentliche Internetadressen) werden vom lokalen DNS-Server verarbeitet.
 
@@ -201,7 +201,7 @@ Verwenden Sie die folgenden Schritte, um über das virtuelle Netzwerk eine Verbi
 
     Suchen Sie in der Liste mit den zurückgegebenen Knoten nach dem FQDN für die Hauptknoten, und verwenden Sie die FQDNs, um eine Verbindung mit Ambari und anderen Webdiensten herzustellen. Verwenden Sie beispielsweise `http://<headnode-fqdn>:8080`, um auf Ambari zuzugreifen.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Einige der auf den Hauptknoten gehosteten Dienste sind jeweils nur auf einem Knoten aktiv. Wenn Sie versuchen, auf einen Dienst auf einem der Hauptknoten zuzugreifen, und der Fehler 404 zurückgegeben wird, wechseln Sie zum anderen Hauptknoten.
 
 2. Informationen dazu, wie Sie den Knoten und Port ermitteln, auf dem ein Dienst verfügbar ist, finden Sie im Dokument [Von HDInsight verwendete Ports und URIs](./hdinsight-hadoop-port-settings-for-services.md).
@@ -212,7 +212,7 @@ Sie können den Netzwerkdatenverkehr in einem Azure Virtual Network mit den folg
 
 * Mit **Netzwerksicherheitsgruppen** (NSGs) können Sie ein- und ausgehenden Datenverkehr für das Netzwerk filtern. Weitere Informationen finden Sie im Dokument [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
-    > [!WARNING]
+    > [!WARNING]  
     > HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs. Der gesamte ausgehende Datenverkehr sollte zugelassen werden.
 
 * **Benutzerdefinierte Routen** (UDR) definieren, wie Datenverkehr zwischen Ressourcen im Netzwerk fließt. Weitere Informationen finden Sie im Dokument [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
@@ -234,7 +234,7 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** oder **benutzerdefinierte Routen
 3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen oder benutzerdefinierten Routen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
     * __Netzwerksicherheitsgruppen__: Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu. Dadurch wird sichergestellt, dass HDInsight-Verwaltungsdienste den Cluster außerhalb des VNET erreichen können.
-    * __Benutzerdefinierte Routen__: Wenn Sie benutzerdefinierte Routen verwenden möchten, erstellen Sie eine Route zu jeder IP-Adresse, und legen Sie __Typ des nächsten Hops__ auf __Internet__ fest. Sie sollten auch jeglichen anderen ausgehenden Datenverkehr vom VNET ohne Einschränkung zulassen. Beispielsweise können Sie den gesamten verbliebenen Datenverkehr zu Überwachungszwecken an Ihre Azure-Firewall oder die virtuelle Netzwerkappliance (in Azure gehostet) weiterleiten, der ausgehende Datenverkehr sollte jedoch nicht blockiert werden.
+    * __Benutzerdefinierte Routen:__ Wenn Sie benutzerdefinierte Routen verwenden möchten, erstellen Sie eine Route zu jeder IP-Adresse, und legen Sie __Typ des nächsten Hops__ auf __Internet__ fest. Sie sollten auch jeglichen anderen ausgehenden Datenverkehr vom VNET ohne Einschränkung zulassen. Beispielsweise können Sie den gesamten verbliebenen Datenverkehr zu Überwachungszwecken an Ihre Azure-Firewall oder die virtuelle Netzwerkappliance (in Azure gehostet) weiterleiten, der ausgehende Datenverkehr sollte jedoch nicht blockiert werden.
 
 Weitere Informationen zu Netzwerksicherheitsgruppen oder benutzerdefinierten Routen finden Sie in der folgenden Dokumentation:
 
@@ -248,7 +248,7 @@ Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der f
 
 ## <a id="hdinsight-ip"></a>Erforderliche IP-Adressen
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Azure-Integritäts- und Verwaltungsdienste müssen mit HDInsight kommunizieren können. Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, erlauben Sie Datenverkehr von den IP-Adressen für diese Dienste, HDInsight zu erreichen.
 >
 > Wenn Sie zum Steuern des Datenverkehrs keine Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, können Sie diesen Abschnitt ignorieren.
@@ -266,7 +266,7 @@ Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, m�
 
 2. Wenn sich Ihr HDInsight-Cluster in einer der folgenden Regionen befindet, müssen Sie Datenverkehr von den für die Region aufgeführten IP-Adressen zulassen:
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier IP-Adressen aus Schritt 1.
 
     | Country | Region | Zulässige IP-Adressen | Zulässiger Port | Richtung |
@@ -330,14 +330,14 @@ Mit der folgenden Resource Manager-Vorlage wird ein virtuelles Netzwerk erstellt
 
 * [Deploy a secured Azure Virtual Network and an HDInsight Hadoop cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/) (Bereitstellen eines geschützten Azure Virtual Network und eines HDInsight Hadoop-Clusters)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Verwenden Sie das folgende PowerShell-Skript, um ein virtuelles Netzwerk zu erstellen, bei dem eingehender Datenverkehr eingeschränkt und Datenverkehr von den IP-Adressen für die Region „Europa, Norden“ zugelassen wird.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
 
 ```powershell
@@ -435,7 +435,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 $vnet | Set-AzureRmVirtualNetwork
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > In diesem Beispiel wird veranschaulicht, wie Sie Regeln hinzufügen, um eingehenden Datenverkehr für die erforderlichen IP-Adressen zuzulassen. Es enthält keine Regel zum Einschränken des Zugriffs in eingehender Richtung von anderen Quellen.
 >
 > Im folgenden Beispiel wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
@@ -458,7 +458,7 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 
 2. Gehen Sie wie folgt vor, um der neuen Netzwerksicherheitsgruppe Regeln hinzuzufügen, die eingehende Kommunikation auf Port 443 aus dem Azure HDInsight-Integritäts- und Verwaltungsdienst ermöglichen. Ersetzen Sie **RESOURCEGROUPNAME** durch den Namen der Ressourcengruppe, die das virtuelle Azure-Netzwerk enthält.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
 
     ```azurecli
@@ -490,7 +490,7 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 
     Nachdem die Ausführung dieses Befehls abgeschlossen ist, können Sie HDInsight im virtuellen Netzwerk installieren.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Mit diesen Schritten wird nur der Zugriff auf den HDInsight-Integritäts- und -Verwaltungsdienst in der Azure-Cloud ermöglicht. Jeder andere Zugriff auf den HDInsight-Cluster von außerhalb des virtuellen Netzwerks wird blockiert. Wenn Sie den Zugriff von außerhalb des virtuellen Netzwerks ermöglichen möchten, müssen Sie zusätzliche Netzwerksicherheitsgruppen-Regeln hinzufügen.
 >
 > Im folgenden Beispiel wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
@@ -499,7 +499,7 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 > az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 > ```
 
-## <a id="example-dns"></a>Beispiel: DNS-Konfiguration
+## <a id="example-dns"></a> Beispiel: DNS-Konfiguration
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Namensauflösung zwischen einem virtuellen Netzwerk und einem verbundenen lokalen Netzwerk
 
@@ -580,7 +580,7 @@ Auf dem benutzerdefinierten DNS-Server im virtuellen Netzwerk:
 
 4. Fügen Sie dem lokalen DNS-Server eine bedingte Weiterleitung hinzu. Konfigurieren Sie die bedingte Weiterleitung, um Anforderungen für das DNS-Suffix aus Schritt 1 an den benutzerdefinierten DNS-Server zu senden.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Die Dokumentation Ihrer DNS-Software enthält ausführliche Informationen zum Hinzufügen einer bedingten Weiterleitung.
 
 Nach Ausführung dieser Schritte können Sie mit den Ressourcen in beiden Netzwerken eine Verbindung herstellen, indem Sie vollqualifizierte Domänennamen (FQDNs) verwenden. Sie können HDInsight jetzt im virtuellen Netzwerk installieren.

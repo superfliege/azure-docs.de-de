@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193857"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716139"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -38,15 +38,15 @@ HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region fi
 
 ### <a name="location-of-default-storage"></a>Speicherort des Standardspeichers
 
-Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Store, muss sich am gleichen Speicherort wie Ihr Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Storage Gen1 ist in einigen Regionen verfügbar – unter *Speicher* auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) können Sie sich über die aktuelle Verfügbarkeit von Data Lake Store informieren.
+Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Storage, muss sich am gleichen Standort wie der Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Storage Gen1 ist in einigen Regionen verfügbar – unter *Speicher* auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) können Sie sich über die aktuelle Verfügbarkeit von Data Lake Storage informieren.
 
 ### <a name="location-of-existing-data"></a>Speicherort der vorhandenen Daten
 
-Wenn Sie bereits ein Speicherkonto oder einen Data Lake Store haben, wo Ihre Daten gespeichert sind, und diesen Speicher als Standardspeicher für Ihren Cluster verwenden möchten, müssen Sie Ihren Cluster an demselben Speicherort bereitstellen.
+Wenn Sie bereits über ein Speicherkonto oder Data Lake Storage mit Ihren Daten verfügen und diesen Speicher als Standardspeicher für Ihren Cluster verwenden möchten, müssen Sie dem Cluster am selben Standort bereitstellen.
 
 ### <a name="storage-size"></a>Speichergröße
 
-Nachdem Sie einen HDInsight-Cluster bereitgestellt haben, können Sie zusätzliche Azure Storage-Konten anfügen oder auf andere Data Lake Stores zugreifen. Alle Ihre Speicherkonten müssen sich an demselben Speicherort wie Ihr Cluster befinden. Ein Data Lake Store kann sich an einem anderen Speicherort befinden, obwohl dies zu einer gewissen Latenz beim Lese/Schreiben von Daten führen kann.
+Nachdem Sie einen HDInsight-Cluster bereitgestellt haben, können Sie zusätzliche Azure Storage-Konten anfügen oder auf andere Data Lake Storages zugreifen. Alle Ihre Speicherkonten müssen sich an demselben Speicherort wie Ihr Cluster befinden. Ein Data Lake Storage kann sich an einem anderen Standort befinden, obwohl dies zu einer gewissen Latenz beim Lesen/Schreiben von Daten führen kann.
 
 Für Azure Storage gelten einige [Kapazitätsgrenzen](../azure-subscription-service-limits.md#storage-limits), während Data Lake Storage Gen1 praktisch unbegrenzt ist.
 
@@ -75,7 +75,7 @@ Größe und Typ des virtuellen Computers richten sich nach CPU-Verarbeitungsleis
 
 * RAM: Die VM-Größe bestimmt auch, wie viel RAM die VM bietet. Stellen Sie für Workloads, bei denen Daten eher für die Verarbeitung im Arbeitsspeicher gespeichert als vom Datenträger gelesen werden, sicher, dass Ihre Workerknoten ausreichend Arbeitsspeicher für die Datenmenge aufweisen.
 
-* Netzwerk: Bei den meisten Clustertypen befinden sich die vom Cluster verarbeiteten Daten nicht auf dem lokalen Datenträger, sondern in einem externen Speicherdienst wie Data Lake Store oder Azure Storage. Berücksichtigen Sie die Netzwerkbandbreite und den Durchsatz zwischen der Knoten-VM und dem Speicherdienst. Die für einen virtuellen Computer verfügbare Netzwerkbandbreite wird bei Erweiterungen in der Regel heraufgesetzt. Weitere Informationen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Netzwerk: Bei den meisten Clustertypen befinden sich die vom Cluster verarbeiteten Daten nicht auf dem lokalen Datenträger, sondern in einem externen Speicherdienst wie Data Lake Storage oder Azure Storage. Berücksichtigen Sie die Netzwerkbandbreite und den Durchsatz zwischen der Knoten-VM und dem Speicherdienst. Die für einen virtuellen Computer verfügbare Netzwerkbandbreite wird bei Erweiterungen in der Regel heraufgesetzt. Weitere Informationen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Auswahl der Clusterskalierung
 
@@ -89,7 +89,7 @@ Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren
 
 Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Cluster nur zu bestimmten Zeiten betreiben müssen, können Sie [mithilfe von Azure Data Factory bedarfsgesteuerte Cluster erstellen](hdinsight-hadoop-create-linux-clusters-adf.md). Sie können auch PowerShell-Skripts erstellen, die Ihren Cluster bereitstellen und löschen, und diese Skripts mit [Azure Automation](https://azure.microsoft.com/services/automation/) planen.
 
-> [!NOTE]
+> [!NOTE]  
 > Wenn ein Cluster gelöscht wird, wird sein standardmäßiger Hive-Metastore ebenfalls gelöscht. Um den Metastore für die nächste Clusterneuerstellung beizubehalten, verwenden Sie einen externen Metadatenspeicher, z.B. Azure Database oder [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
@@ -120,7 +120,7 @@ Um das Problem auf einem lokalen Cluster mit einzelnem Knoten zu identifizieren,
 1. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 1. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.
 
-> [!Note]
+> [!NOTE]  
 > Wenn Sie das HDInsight-Kernkontingent in einer privaten Region erhöhen müssen, [senden Sie eine Whitelist-Anforderung](https://aka.ms/canaryintwhitelist).
 
 Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).

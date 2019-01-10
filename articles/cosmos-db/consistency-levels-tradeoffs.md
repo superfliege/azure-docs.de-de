@@ -1,19 +1,18 @@
 ---
 title: Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
 description: Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
-keywords: Konsistenz, Leistung, Azure Cosmos DB, Azure, Microsoft Azure
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: af17815d2dcf36909ba9b2109f0f9939c79508c0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 52f08511d16e216ced7e3d1de11eae960cdbaeb8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848696"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041865"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
 
@@ -21,11 +20,11 @@ Bei verteilten Datenbanken, die mithilfe der Replikation Hochverfügbarkeit, nie
 
 Azure Cosmos DB bietet in Bezug auf die Datenkonsistenz vielfältige Auswahlmöglichkeiten. Dieser Ansatz beinhaltet mehr Optionen als die beiden Extreme der starken und der letztlichen Konsistenz. Sie können im Hinblick auf die Konsistenz aus fünf gut definierten Modellen auswählen. Diese sind (vom stärksten bis zum schwächsten Modell):
 
-- Starke Konsistenz 
-- Begrenzte Veraltung 
-- Sitzungskonsistenz 
-- Präfixkonsistenz 
-- Letztliche Konsistenz 
+- STARK (Strong) 
+- Bounded staleness 
+- Sitzung 
+- Konsistentes Präfix 
+- Letztlich (Eventual) 
 
 Jedes der fünf Modelle bietet Verfügbarkeits- und Leistungskompromisse und wird durch eine umfassende SLA abgesichert.
 
@@ -33,7 +32,7 @@ Jedes der fünf Modelle bietet Verfügbarkeits- und Leistungskompromisse und wir
 
 - Für alle Konsistenzebenen wird eine Leselatenz garantiert, die jederzeit unter 10 Millisekunden im 99. Perzentil liegt. Diese Leselatenz wird durch die SLA abgesichert. Die durchschnittliche Leselatenz (im 50. Perzentil) beträgt typischerweise 2 Millisekunden oder weniger. Eine Ausnahme bei dieser Garantie bilden Azure Cosmos-Konten, die sich über mehrere Regionen erstrecken und mit starker Konsistenz konfiguriert sind.
 
--  Für die verbleibenden Konsistenzebenen wird eine Schreiblatenz garantiert, die jederzeit unter 10 Millisekunden im 99. Perzentil liegt. Diese Schreiblatenz wird durch die SLA abgesichert. Die durchschnittliche Schreiblatenz (im 50. Perzentil) beträgt üblicherweise 5 Millisekunden oder weniger.
+-  Für die verbleibenden Konsistenzebenen wird eine Schreiblatenz garantiert, die jederzeit unter 10 Millisekunden im 99. Perzentil liegt. Außerdem wird sie durch die SLA unterstützt. Die durchschnittliche Schreiblatenz (im 50. Perzentil) beträgt üblicherweise 5 Millisekunden oder weniger.
 
 Einige Azure Cosmos-Konten umfassen möglicherweise mehrere Regionen mit starker Konsistenz. In diesem Fall beträgt die garantierte Schreiblatenz < (2 * RTT [Roundtripzeit]) + 10 Millisekunden im 99. Perzentil. Für die Ermittlung der RTT werden die beiden am weitesten entfernten Regionen für Ihr Azure Cosmos-Konto herangezogen. Sie entspricht der Roundtripzeit zwischen den zwei am weitesten voneinander entfernten Regionen, die Ihrem Azure Cosmos-Konto zugeordnet sind. Diese Option befindet sich zurzeit in der Vorschau. 
 

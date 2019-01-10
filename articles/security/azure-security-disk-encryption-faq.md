@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: ba955e9e71926a513f6c083acb6508b3ec330d17
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4f940170168147e4e778714e947ab6b558cb2bd5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094558"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076670"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption für virtuelle IaaS-Computer – FAQ
 
@@ -44,10 +44,10 @@ Azure Disk Encryption wird für die folgenden Linux-Serverdistributionen und -Ve
 | --- | --- |--- |
 | Ubuntu | 16.04-DAILY-LTS | Betriebssystem- und andere Datenträger |
 | Ubuntu | 14.04.5-DAILY-LTS | Betriebssystem- und andere Datenträger |
-| RHEL | 7,5 | Datenträger* |
-| RHEL | 7.4 | Datenträger* |
-| RHEL | 7.3 | Datenträger* |
-| RHEL | 7.2 | Datenträger* |
+| RHEL | 7,5 | Betriebssystem- und andere Datenträger* |
+| RHEL | 7.4 | Betriebssystem- und andere Datenträger* |
+| RHEL | 7.3 | Betriebssystem- und andere Datenträger* |
+| RHEL | 7.2 | Betriebssystem- und andere Datenträger* |
 | RHEL | 6,8 | Datenträger* |
 | RHEL | 6.7 | Datenträger* |
 | CentOS | 7.4 | Betriebssystem- und andere Datenträger |
@@ -67,7 +67,7 @@ Azure Disk Encryption wird für die folgenden Linux-Serverdistributionen und -Ve
 | SLES | 11 SP4 | Datenträger |
 
 
-*__ADE wird für RHEL für Datenträger unterstützt. Die aktuelle ADE-Implementierung kann zwar für Betriebssystemdatenträger verwendet werden, wird aber derzeit nicht gemeinsam unterstützt. Microsoft und Red Hat arbeiten an einer gemeinsam unterstützten Lösung. In der Zwischenzeit können Sie die Informationen im Artikel [Azure Disk Encryption für Linux](azure-security-disk-encryption-linux.md) verwenden.__
+*__Eine neue ADE-Implementierung wird für Betriebssystem- und andere Datenträger für RHEL7-Images mit nutzungsbasierter Bezahlung unterstützt. ADE wird derzeit nicht für RHEL-BYOS-Images (Bring-Your-Own-Subscription) unterstützt. Weitere Informationen finden Sie unter [Azure Disk Encryption für Linux](azure-security-disk-encryption-linux.md).__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Wie sehen die ersten Schritte mit Azure Disk Encryption aus?
 

@@ -4,19 +4,20 @@ titleSuffix: Azure Cosmos DB
 description: Dieses Tutorial beschreibt, wie Sie eine Node.js-Anwendung erstellen, indem Sie Angular und Express verwenden, um die in Cosmos DB gespeicherten Daten zu verwalten. In diesem Teil verwenden Sie Mongoose, um eine Verbindung mit Azure Cosmos DB herzustellen.
 author: johnpapa
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
+ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 03b1f1d5fa1320f08059ed755f6f4f7d1c08d35e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b550107056ec22af3a18ce0396559ad4ef8d245b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793700"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034283"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Verwenden von Mongoose zum Herstellen einer Verbindung mit Cosmos DB
 
@@ -160,7 +161,7 @@ Nun müssen Sie das Schema der Daten definieren, die in Azure Cosmos DB gespeich
    module.exports = Hero;
    ```
 
-## <a name="create-a-hero-service"></a>Erstellen eines Hero-Diensts
+## <a name="create-a-hero-service"></a>Erstellen eines hero-Diensts
 
 Nachdem Sie das Hero-Modell erstellt haben, müssen Sie einen Dienst definieren, um die Daten zu lesen und Auflistungs-, Erstellungs-, Lösch- und Aktualisierungsvorgänge auszuführen. Verwenden Sie die folgenden Schritte, um einen _Hero-Dienst_ zu erstellen, der die Daten aus Azure Cosmos DB abfragt:
 

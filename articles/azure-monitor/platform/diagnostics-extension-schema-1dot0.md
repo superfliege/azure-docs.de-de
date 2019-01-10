@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 333fec5b9459979d7735f0dd292d7367d86353fe
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7c5bfa96e7f9ef7812b8487c479b34d926633287
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325528"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105915"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.0
 > [!NOTE]
@@ -25,7 +25,7 @@ Azure-Diagnose wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure M
 
 Die Azure-Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um den Diagnosemonitor zu initialisieren. Diese Datei wird verwendet, um beim Start des Diagnosemonitors Diagnosekonfigurationseinstellungen zu initialisieren.  
 
- Standardmäßig wird die Konfigurationsschemadatei der Azure-Diagnose im `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas`-Verzeichnis installiert. Ersetzen Sie `<version>` durch die installierte Version des [Azure SDK](http://www.windowsazure.com/develop/downloads/).  
+ Standardmäßig wird die Konfigurationsschemadatei der Azure-Diagnose im `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas`-Verzeichnis installiert. Ersetzen Sie `<version>` durch die installierte Version des [Azure SDK](https://www.windowsazure.com/develop/downloads/).  
 
 > [!NOTE]
 >  Die Diagnosekonfigurationsdatei wird in der Regel mit Starttasks verwendet, die das Sammeln von Diagnosedaten zu einem früheren Zeitpunkt im Startprozess erfordern. Weitere Informationen über die Verwendung der Azure-Diagnose finden Sie unter [Sammeln von Protokollierungsdaten mit der Azure-Diagnose](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
@@ -109,7 +109,7 @@ Attribute:
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs-Element  
 Definiert die Pufferkonfiguration für die Protokolle, die von der zugrunde liegenden Diagnoseinfrastruktur generiert werden.
 
-Übergeordnetes Element: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).  
+Übergeordnetes Element: [DiagnosticMonitorConfiguration-Element](#DiagnosticMonitorConfiguration).  
 
 Attribute:
 

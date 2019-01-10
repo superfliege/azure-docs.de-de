@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: 05c089c0e92672b3602bd9c7bfb3263c56db76ef
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633298"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728039"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
 
@@ -29,7 +29,7 @@ Filter sind serverseitige Regeln, die Ihren Kunden Folgendes ermöglichen:
 - Wiedergabe von einzelnen Abschnitten eines Videos (anstelle des gesamten Videos) Beispiel: 
 
     - Verringern des Manifests, um einen Subclip eines Liveereignisses anzuzeigen („Filtern von Subclips“), oder
-    - Kürzen des Starts eines Videos („Kürzen eines Videos“)
+    - Kürzen des Starts eines Videos ("Kürzen eines Videos").
 
 - Ausschließliche Bereitstellung der angegebenen Wiedergaben und/oder Sprachspuren, die vom Gerät für die Inhaltswiedergabe unterstützt werden („Filtern der Wiedergabe“) 
 - Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben („Anpassen des Präsentationsfensters“)
@@ -40,14 +40,14 @@ In diesem Thema werden die [Konzepte](#concepts) beschrieben und die [Filterdefi
 
 ### <a name="dynamic-manifests"></a>Dynamische Manifeste
 
-Media Services bietet **dynamische Manifeste**, die auf vordefinierten [Filtern](#filters) basieren. Nachdem Sie Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Die Filter können auf Streaminprotokolle mit adaptiver Bitrate angewendet werden: Apple HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming. 
+Media Services bietet **dynamische Manifeste**, die auf vordefinierten [Filtern](#filters) basieren. Nachdem Sie Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Auf Streamingprotokolle mit adaptiver Bitrate können Filter angewandt werden: Apple HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming. 
 
 Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
 
 |Protokoll|Beispiel|
 |---|---|
-|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=myAccountFilter)`|
-|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=myAccountFilter)`|
+|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -58,7 +58,7 @@ Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
 
 ### <a name="manifest-files"></a>Manifestdateien
 
-Wenn Sie ein Medienobjekt für das Streaming mit adaptiver Bitrate codieren, wird eine **Manifestdatei** (Wiedergabelistendatei) erstellt (die Datei ist textbasiert oder XML-basiert). Die **Manifestdatei** enthält Streamingmetadaten wie z.B. Typ (Audio, Video oder Text), Spurenname, Start-und Endzeit, Bitrate (Qualität), Sprachen, Präsentationsfenster (gleitendes Fenster mit fester Dauer) und Videocodec (FourCC). Sie weist den Player zudem zum Abrufen des nächsten Fragments an, indem Informationen zu den nächsten für die Wiedergabe verfügbaren Videofragmenten und den zugehörigen Speicherorten angezeigt werden. Fragmente (oder Segmente) sind die eigentlichen „Blöcke“ von Videoinhalten.
+Wenn Sie ein Medienobjekt für das Streaming mit adaptiver Bitrate codieren, wird eine **Manifestdatei** (Wiedergabelistendatei) erstellt (die Datei ist textbasiert oder XML-basiert). Die **Manifestdatei** enthält Streamingmetadaten wie z. B. Typ (Audio, Video oder Text), Spurenname, Start-und Endzeit, Bitrate (Qualität), Sprachen, Präsentationsfenster (variables Fenster mit fester Dauer) und Videocodec (FourCC). Sie weist den Player zudem zum Abrufen des nächsten Fragments an, indem Informationen zu den nächsten für die Wiedergabe verfügbaren Videofragmenten und den zugehörigen Speicherorten angezeigt werden. Fragmente (oder Segmente) sind die eigentlichen „Blöcke“ von Videoinhalten.
 
 Hier ein Beispiel für eine HLS-Manifestdatei: 
 
@@ -110,7 +110,7 @@ Abhängig vom Szenario entscheiden Sie, welcher Filtertyp (Medienobjektfilter od
 
 Sie verwenden die folgenden Eigenschaften zum Beschreiben der Filter. 
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |firstQuality|Die erste Qualitätsstufe der Bitrate für den Filter.|
 |presentationTimeRange|Der Bereich der Präsentationszeit. Diese Eigenschaft wird zum Filtern der Start-/Endpunkte des Manifests, der Länge des Präsentationsfensters und der Livestartposition verwendet. <br/>Weitere Informationen finden Sie unter [PresentationTimeRange](#PresentationTimeRange).|
@@ -120,7 +120,7 @@ Sie verwenden die folgenden Eigenschaften zum Beschreiben der Filter.
 
 Verwenden Sie diese Eigenschaft mit **Medienobjektfiltern**. Es wird nicht empfohlen, die Eigenschaft mit **Kontofiltern** festzulegen.
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |**endTimestamp**|Die Grenze für den absoluten Endpunkt. Gilt für Video on Demand (VoD). Bei einer Livepräsentation wird diese Eigenschaft stillschweigend ignoriert und angewendet, wenn die Präsentation endet und der Stream zu VoD wird.<br/><br/>Der Wert repräsentiert einen absoluten Endpunkt des Streams. Er wird auf den nächstgelegenen GOP-Start gerundet.<br/><br/>Verwenden Sie „StartTimestamp“ und „EndTimestamp“, um die Wiedergabeliste (das Manifest) zu kürzen. Beispielsweise wird durch die Festlegung „StartTimestamp=40000000“ und „EndTimestamp = 100000000“ eine Wiedergabeliste generiert, die Medien zwischen „StartTimestamp“ und „EndTimestamp“ enthält. Wenn ein Fragment die Grenze überschreitet, wird das gesamte Fragment in das Manifest aufgenommen.<br/><br/>Siehe auch die folgende Definition für **forceEndTimestamp**.|
 |**forceEndTimestamp**|Gilt für Livefilter.<br/><br/>**forceEndTimestamp** ist ein boolescher Wert. Er gibt an, ob **endTimestamp** auf einen gültigen Wert festgelegt wurde oder nicht. <br/><br/>Lautet der Wert **true**, muss **endTimestamp** angegeben werden. Erfolgt keine Angabe, wird eine fehlerhafte Anforderung zurückgegeben.<br/><br/>Wenn Sie beispielsweise einen Filter definieren möchten, der bei Minute 5 des Eingangsvideos beginnt und bis zum Ende des Streams dauert, würden Sie **forceEndTimestamp** auf „false“ festlegen und die Einstellung **endTimestamp** auslassen.|
@@ -135,13 +135,13 @@ Sie geben eine Liste von Eigenschaftsbedingungen für die Filterung nach Spuren 
 
 Spureigenschaftsbedingungen für die Filterung beschreiben Spurtypen, Werte (siehe nachstehende Tabelle) und Vorgänge („Equal“, „NotEqual“). 
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |**Bitrate**|Verwenden Sie die Bitrate der Spur zur Filterung.<br/><br/>Der empfohlene Wert ist ein Bereich aus Bitraten in Bits pro Sekunde. Beispiel: 0-2427000.<br/><br/>Hinweis: Sie können einen bestimmten Wert für die Bitrate angeben, z.B. 250000 (Bits pro Sekunde), dieser Ansatz wird jedoch nicht empfohlen, weil die exakten Bitraten je nach Medienobjekt unterschiedlich sein können.|
 |**FourCC**|Verwenden Sie den FourCC-Wert der Spur für die Filterung.<br/><br/>Der Wert ist das erste Element des Codecs-Formats, wie angegeben in [RFC 6381](https://tools.ietf.org/html/rfc6381). Aktuell werden die folgenden Codecs unterstützt: <br/>Für Video: avc1, hev1, hvc1<br/>Für Audio: mp4a, ec-3<br/><br/>Um die FourCC-Wert für die Spuren in einem Medienobjekt zu bestimmen, müssen Sie die [Manifestdatei abrufen und untersuchen](#get-and-examine-manifest-files).|
-|**Language**|Verwenden Sie die Sprache der Spur zur Filterung.<br/><br/>Der Wert ist das Tag einer Sprache, die Sie einschließen möchten, wie angegeben in RFC 5646. Beispiel: „en“.|
+|**Sprache**|Verwenden Sie die Sprache der Spur zur Filterung.<br/><br/>Der Wert ist das Tag einer Sprache, die Sie einschließen möchten, wie angegeben in RFC 5646. Beispiel: „en“.|
 |**Name**|Verwenden Sie den Namen der Spur zur Filterung.|
-|**Type**|Verwenden Sie den Typ der Spur zur Filterung.<br/><br/>Die folgenden Werte sind zulässig: video, audio, text|
+|**Typ**|Verwenden Sie den Typ der Spur zur Filterung.<br/><br/>Die folgenden Werte sind zulässig: video, audio, text|
 
 ### <a name="example"></a>Beispiel
 
@@ -206,12 +206,12 @@ Mit dynamischen Manifesten können Sie beispielsweise Geräteprofile für Mobilt
 
 ![Beispiel für das Filtern der Wiedergabe][renditions2]
 
-Im folgenden Beispiel wurde ein Encoder zum Codieren eines Zwischenassets in sieben ISO-MP4s-Videowiedergaben (von 180p bis 1080p) verwendet. Das codierte Medienobjekt kann dynamisch in eines der folgenden Streamingprotokolle gepackt werden: HLS, MPEG DASH und Smooth.  Oben in der Abbildung ist das HLS-Manifest für das Medienobjekt ohne Filter dargestellt (es enthält alle sieben Wiedergaben).  Links unten ist das HLS-Manifest abgebildet, auf das der Filter „ott“ angewendet wurde. Der Filter „ott“ gibt an, dass alle Bitraten unter 1 MBit/s entfernt werden. Dies führte dazu, dass zwei Qualitätsstufen in der Antwort entfernt wurden. Rechts unten ist das HLS-Manifest abgebildet, auf das der Filter „mobile“ angewandt wurde. Der Filter „mobile“ gibt an, dass Wiedergaben mit einer größeren Auflösung als 720p entfernt werden. Dies führte dazu, dass zwei Wiedergaben mit 1080p gelöscht wurden.
+Im folgenden Beispiel wurde ein Encoder zum Codieren eines Zwischenassets in sieben ISO-MP4s-Videowiedergaben (von 180p bis 1080p) verwendet. Das codierte Medienobjekt kann dynamisch in eines der folgenden Streamingprotokolle gepackt werden: HLS, MPEG-DASH und Smooth.  Oben in der Abbildung ist das HLS-Manifest für das Medienobjekt ohne Filter dargestellt (es enthält alle sieben Wiedergaben).  Links unten ist das HLS-Manifest abgebildet, auf das der Filter "ott" angewendet wurde. Der Filter „ott“ gibt an, dass alle Bitraten unter 1 MBit/s entfernt werden. Dies führte dazu, dass zwei Qualitätsstufen in der Antwort entfernt wurden. Rechts unten ist das HLS-Manifest abgebildet, auf das der Filter „mobile“ angewandt wurde. Der Filter "mobile" gibt an, dass Wiedergaben mit einer größeren Auflösung als 720p entfernt werden. Dies führte dazu, dass zwei Wiedergaben mit 1080p gelöscht wurden.
 
 ![Filtern der Wiedergabe][renditions1]
 
 ## <a name="removing-language-tracks"></a>Entfernen von Sprachspuren
-Ihre Medienobjekte können mehrere Audiosprachen enthalten, z.B. Englisch, Spanisch, Französisch usw. In der Regel verwaltet das Player-SDK die Auswahl der Standardaudiospur und verfügbare Audiospuren entsprechend der Benutzerauswahl. Es ist schwierig, solche Player-SDKs zu entwickeln. Sie erfordern verschiedene Implementierungen in gerätespezifischen Player-Frameworks. Außerdem sind die Player-APIs auf manchen Plattformen eingeschränkt und umfassen keine Funktion zur Audioauswahl, sodass Benutzer die Standardaudiospur nicht auswählen oder ändern können. Mit Filtern für Medienobjekte können Sie das Verhalten steuern, indem Sie Filter erstellen, die nur die gewünschten Audiosprachen enthalten.
+Ihre Medienobjekte können mehrere Audiosprachen enthalten, z. B. Englisch, Spanisch, Französisch usw. In der Regel verwaltet das Player-SDK die Auswahl der Standardaudiospur und verfügbare Audiospuren entsprechend der Benutzerauswahl. Es ist schwierig, solche Player-SDKs zu entwickeln. Sie erfordern verschiedene Implementierungen in gerätespezifischen Player-Frameworks. Außerdem sind die Player-APIs auf manchen Plattformen eingeschränkt und umfassen keine Funktion zur Audioauswahl, sodass Benutzer die Standardaudiospur nicht auswählen oder ändern können. Mit Filtern für Medienobjekte können Sie das Verhalten steuern, indem Sie Filter erstellen, die nur die gewünschten Audiosprachen enthalten.
 
 ![Filtern der Sprachspuren][language_filter]
 
@@ -254,7 +254,7 @@ Sie können auch mehrere Filter in einer einzelnen URL kombinieren.
 
 Das folgende Szenario zeigt, warum es sinnvoll sein kann, Filter zu kombinieren:
 
-1. Sie müssen Ihre Videoqualitäten für mobile Geräte wie Android oder iPad filtern (um die Videoqualitäten einzuschränken). Zum Entfernen der unerwünschten Qualitätsstufen würden Sie einen Kontofilter erstellen, der für die Geräteprofile geeignet ist. Kontofilter können für alle Medienobjekte desselben Media Services-Konto ohne weitere Zuordnung verwendet werden. 
+1. Sie müssen Ihre Videoqualitäten für mobile Geräte wie Android oder iPAD filtern (um die Videoqualitäten einzuschränken). Zum Entfernen der unerwünschten Qualitätsstufen würden Sie einen Kontofilter erstellen, der für die Geräteprofile geeignet ist. Kontofilter können für alle Medienobjekte desselben Media Services-Konto ohne weitere Zuordnung verwendet werden. 
 2. Sie möchten außerdem die Start- und Endzeit Zeit eines Medienobjekts kürzen. Zu diesem Zweck erstellen Sie einen Medienobjektfilter und legen die Start-/Endzeit fest. 
 3. Sie möchten die beiden Filter kombinieren (ohne Kombination müssen Sie den Qualitätsfilter zum Kürzungsfilter hinzufügen, was die Verwendung des Filters erschweren würde).
 

@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3fb9f98e94191c019b78c5666d2ff5336cc895eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429387"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021865"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 
@@ -82,7 +81,7 @@ Dieser Abschnitt enthält Beispiele für die Einstellungen für ereignisbasierte
 > [!IMPORTANT]
 > Sie müssen das Segment `/blobs/` des Pfads wie in den folgenden Beispielen gezeigt immer dann einbeziehen, wenn Sie Container und Ordner, Container und Datei oder Container, Ordner und Datei angeben.
 
-| Eigenschaft | Beispiel | Beschreibung |
+| Eigenschaft | Beispiel | BESCHREIBUNG |
 |---|---|---|
 | **Blobpfad beginnt mit** | `/containername/` | Empfängt Ereignisse für ein beliebiges Blob im Container. |
 | **Blobpfad beginnt mit** | `/containername/blobs/foldername/` | Empfängt Ereignisse für ein beliebiges Blob im Container `containername` und Ordner `foldername`. |

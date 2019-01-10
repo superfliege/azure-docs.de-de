@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 81bfd5e0354fefea4690e6871dd5e846f41dc6d8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981774"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015521"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtern von Telemetriedaten in einer Java-Web-App
 
@@ -31,7 +31,7 @@ Es folgen die Standardfilter:
 
 > [!NOTE]
 > Filter verzerren die Metriken Ihrer App. Wenn Sie z.B. langsame Reaktionszeiten untersuchen möchten, legen Sie einen Filter fest, der schnelle Antwortzeiten ausschließt. Ihnen sollte jedoch klar sein, dass die von Application Insights gemeldeten durchschnittlichen Antwortzeiten langsamer als die tatsächliche Geschwindigkeit sind und dass die Anzahl der Anforderungen kleiner als die tatsächliche Anzahl ist.
-> Wenn dies von Belang ist, arbeiten Sie stattdessen mit [Stichproben](../../application-insights/app-insights-sampling.md).
+> Wenn dies von Belang ist, arbeiten Sie stattdessen mit [Stichproben](../../azure-monitor/app/sampling.md).
 
 ## <a name="setting-filters"></a>Festlegen von Filtern
 
@@ -262,4 +262,4 @@ In „ApplicationInsights.xml“:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Stichproben](../../application-insights/app-insights-sampling.md): Erwägen Sie die Stichprobennahme als Alternative, die Ihre Metriken nicht verzerrt.
+* [Stichproben](../../azure-monitor/app/sampling.md): Erwägen Sie die Stichprobennahme als Alternative, die Ihre Metriken nicht verzerrt.

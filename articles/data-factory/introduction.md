@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 87df752f62956cffd455358059a3ab7b275b6a5d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9704002a30556c76c65ddcad1cb576fbf4502b55
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090495"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014300"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
-> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-introduction.md)
 > * [Aktuelle Version](introduction.md)
 

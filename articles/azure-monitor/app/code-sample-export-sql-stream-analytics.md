@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8ed645066eef93ae02722858381af77854d7d1eb
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 502ccf15fe3e2f803febb711d4ea8850abbaea85
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001879"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116584"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
 Dieser Artikel zeigt, wie Sie Ihre Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in eine Azure SQL-Datenbank verschieben. 
@@ -249,7 +249,7 @@ Nach einigen Minuten wechseln Sie zurück zu den SQL Server-Verwaltungstools, un
 
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Exportieren in PowerBI mit Stream Analytics](../../application-insights/app-insights-export-power-bi.md)
+* [Exportieren in PowerBI mit Stream Analytics](../../azure-monitor/app/export-power-bi.md )
 * [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](../../azure-monitor/app/export-data-model.md)
 * [Fortlaufender Export in Application Insights](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
@@ -260,5 +260,5 @@ Nach einigen Minuten wechseln Sie zurück zu den SQL Server-Verwaltungstools, un
 [export]: ../../azure-monitor/app/export-telemetry.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [portal]: https://portal.azure.com/
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Passthrough-Authentifizierung – Häufig gestellte Fragen | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Pass-Through-Authentifizierung – häufig gestellte Fragen | Microsoft-Dokumentation'
 description: In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Passthrough-Authentifizierung von Azure Active Directory.
 services: active-directory
 keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619815"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789091"
 ---
-# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
+# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
 In diesem Artikel werden häufig gestellte Fragen zur Passthrough-Authentifizierung von Azure Active Directory (Azure AD) behandelt. Der Inhalt wird bei Bedarf aktualisiert.
 
@@ -62,7 +62,7 @@ Damit dieses Feature funktioniert, benötigen Sie Version 1.1.750.0 oder höher 
 
 Wenn Sie das [Kennwortrückschreiben](../authentication/concept-sspr-writeback.md) für einen bestimmten Benutzer konfiguriert haben und der Benutzer sich mit der Passthrough-Authentifizierung anmeldet, kann er sein Kennwort ändern oder zurücksetzen. Die Kennwörter werden erwartungsgemäß in das lokale Active Directory zurückgeschrieben.
 
-Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfiguriert haben oder der Benutzer keine gültige Azure AD hat, kann der Benutzer sein Kennwort in der Cloud nicht aktualisieren. Das Kennwort lässt sich nicht aktualisieren, auch wenn es bereits abgelaufen ist. Der Benutzer sieht dann folgende Meldung: „Eine Kennwortänderung auf dieser Website wird von Ihrer Organisation nicht gestattet. Ändern Sie Ihr Kennwort anhand der von Ihrer Organisation empfohlenen Methode, oder bitten Sie Ihren Administrator um Hilfe. Der Benutzer oder der Administrator muss das Kennwort im lokalen Active Directory zurücksetzen.
+Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfiguriert haben oder der Benutzer keine gültige Azure AD hat, kann der Benutzer sein Kennwort in der Cloud nicht aktualisieren. Das Kennwort lässt sich nicht aktualisieren, auch wenn es bereits abgelaufen ist. Dem Benutzer wird stattdessen diese Meldung angezeigt: „Eine Kennwortänderung auf dieser Website wird von Ihrer Organisation nicht gestattet. Ändern Sie Ihr Kennwort anhand der von Ihrer Organisation empfohlenen Methode, oder bitten Sie Ihren Administrator um Hilfe. Der Benutzer oder der Administrator muss das Kennwort im lokalen Active Directory zurücksetzen.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Wie schützt die Passthrough-Authentifizierung vor Brute-Force-Kennwortangriffen?
 
@@ -74,7 +74,7 @@ Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfigu
 - Die Authentifizierungs-Agents stellen HTTP-Anforderungen über Port 80, um die SSL-Zertifikatsperrlisten (CRLs) herunterzuladen.
 
      >[!NOTE]
-     >In kürzlich veröffentlichten Updates wurde die Zahl der Ports, die für diese Funktion erforderlich sind, gesenkt. Wenn Sie eine ältere Version von Azure AD Connect oder des Authentifizierungs-Agents verwenden, halten Sie auch folgende Ports offen: 5671, 8080, 9090, 9091, 9350, 9352 und 10100-10120.
+     >In kürzlich veröffentlichten Updates wurde die Zahl der Ports, die für diese Funktion erforderlich sind, gesenkt. Wenn Sie eine ältere Version von Azure AD Connect oder des Authentifizierungs-Agents verwenden, halten Sie auch folgende Ports offen: 5671, 8080, 9090, 9091, 9350, 9352 und 10100–10120.
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Können die Passthrough-Authentifizierungs-Agents über einen ausgehenden Webproxyserver kommunizieren?
 
@@ -83,7 +83,7 @@ Ja. Wenn in Ihrer lokalen Umgebung WPAD (Web Proxy Auto-Discovery) aktiviert ist
 Wenn in Ihrer Umgebung kein WPAD verwendet wird, können Sie Proxyinformationen (wie unten gezeigt) hinzufügen, um einem Passthrough-Authentifizierungs-Agent die Kommunikation mit Azure AD zu ermöglichen:
 - Konfigurieren Sie Proxyinformationen im Internet Explorer, bevor Sie den Passthrough-Authentifizierungs-Agent auf dem Server installieren. Dadurch können Sie die Installation des Authentifizierungs-Agents abschließen. Er wird im Admin-Portal jedoch nach wie vor als **Inaktiv** angezeigt.
 - Wechseln Sie auf dem Server zu „C:\Programme\Microsoft Azure AD Connect Authentication Agent“.
-- Bearbeiten Sie die Konfigurationsdatei „AzureADConnectAuthenticationAgentService“, und fügen Sie die folgenden Zeilen hinzu (ersetzen Sie http://contosoproxy.com:8080 durch Ihre tatsächliche Proxyadresse):
+- Bearbeiten Sie die Konfigurationsdatei „AzureADConnectAuthenticationAgentService“, und fügen Sie die folgenden Zeilen hinzu (ersetzen Sie „http\://contosoproxy.com:8080“ durch Ihre tatsächliche Proxyadresse):
 
 ```
    <system.net>
@@ -171,13 +171,13 @@ Mandanten, die nach dem 15. Juni 2015 erstellt wurden, synchronisieren UPN-Ände
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Aktuelle Einschränkungen:](how-to-connect-pta-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
-- [Schnellstart:](how-to-connect-pta-quick-start.md) Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
+- [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Informieren Sie sich darüber, welche Szenarien unterstützt werden.
+- [Schnellstart](how-to-connect-pta-quick-start.md): Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD.
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
-- [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
-- [Technische Einzelheiten:](how-to-connect-pta-how-it-works.md) Informationen zur Funktionsweise der Passthrough-Authentifizierung
-- [Problembehandlung:](tshoot-connect-pass-through-authentication.md) Informationen zum Beheben von allgemeinen Problemen, die es bei der Passthrough-Authentifizierung geben kann
-- [Ausführliche Informationen zur Sicherheit:](how-to-connect-pta-security-deep-dive.md) Technische Informationen zur Passthrough-Authentifizierung
-- [Nahtloses SSO mit Azure AD](how-to-connect-sso.md): Informationen zu dieser Ergänzungsfunktion
-- [UserVoice:](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Anfordern neuer Features über das Azure Active Directory-Forum
+- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Erfahren Sie, wie Sie die Smart Lockout-Funktion für Ihren Mandanten zum Schutz von Benutzerkonten konfigurieren.
+- [Technische Einzelheiten](how-to-connect-pta-how-it-works.md): Hier finden Sie Informationen zur Funktionsweise der Passthrough-Authentifizierung.
+- [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.
+- [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): Hier erhalten Sie ausführliche technische Informationen zur Pass-Through-Authentifizierung.
+- [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.
 

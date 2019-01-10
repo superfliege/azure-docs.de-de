@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 030ec9db16f90430a544ca8715a4e1dea02e2c62
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 71f024c81983fcb9c3e99bdf633a5bde306452b8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873239"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051236"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Clientbibliothek für elastische Datenbanken mit Entity Framework
 Dieses Dokument zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit diese die Funktionen der [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md)nutzen kann. Der Schwerpunkt liegt auf der Erstellung der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem **Code First**-Ansatz von Entity Framework. Das Tutorial [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542.aspx) für EF wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen.
@@ -236,13 +236,13 @@ Das Beispiel zeigt die **RegisterNewShard** -Methode, die den Shard in der Shard
         } 
 
         // Only static methods are allowed in calls into base class c'tors 
-        private static string SetInitializerForConnection(string connnectionString) 
+        private static string SetInitializerForConnection(string connectionString) 
         { 
             // You want existence checks so that the schema can get deployed 
             Database.SetInitializer<ElasticScaleContext<T>>( 
         new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
-            return connnectionString; 
+            return connectionString; 
         } 
 
 Möglicherweise muss die Version des Konstruktors, die von der Basisklasse geerbt wird, verwendet werden. Jedoch muss der Code sicherstellen, dass der Standard-Initialisierer für EF zum Herstellen der Verbindung verwendet wird. Daher der kurze Umweg in die statische Methode, bevor der Basisklassen-Konstruktor mit der Verbindungszeichenfolge aufgerufen wird. Beachten Sie, dass die Registrierung von Shards in einer anderen Anwendungsdomäne bzw. einem anderen Prozess ausgeführt werden soll, damit kein Konflikt mit den Einstellungen der Initialisierer für EF entsteht. 

@@ -3,19 +3,19 @@ title: 'Tutorial: Erstellen einer einseitigen Web-App – Bing-Bildersuche-API'
 titleSuffix: Azure cognitive services
 description: Mit der Bing-Bildersuche-API können Sie im Web nach relevanten Bildern in hoher Qualität suchen. Erstellen Sie mithilfe dieses Tutorials eine einseitige Webanwendung, die Suchabfragen an die API senden und die Ergebnisse auf der Webseite anzeigen kann.
 services: cognitive-services
-author: aahi
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/12/2018
 ms.author: aahi
-ms.openlocfilehash: e2013b28e8c829d49efe662a9b0eba245c6d5fab
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7ab94c6d935222c65c1259f1ce3b01d10f78ec1
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253951"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062858"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API
 

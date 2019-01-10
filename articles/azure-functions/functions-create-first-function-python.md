@@ -11,18 +11,18 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: a5abc90f5a40911538b6516622203f595adfed5c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 140fc870500054d0652b48bc602706398371fa8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091814"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039057"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Erstellen Ihrer ersten Python-Funktion in Azure (Vorschauversion)
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-In diesem Schnellstartartikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) Ihre erste [serverlose](https://azure.microsoft.com/overview/serverless-computing/) Python-Funktions-App erstellen, die unter Linux ausgeführt wird. Der Funktionscode wird lokal erstellt und dann über [Azure Functions Core Tools](functions-run-local.md) in Azure bereitgestellt. Weitere Informationen zu den besonderen Aspekten in Bezug auf die Vorschauversion, was die Ausführung Ihrer Funktions-Apps unter Linux betrifft, finden Sie im Artikel zu [Functions unter Linux](https://aka.ms/funclinux).
+In diesem Schnellstartartikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) Ihre erste [serverlose](https://azure.com/serverless) Python-Funktions-App erstellen, die unter Linux ausgeführt wird. Der Funktionscode wird lokal erstellt und dann über [Azure Functions Core Tools](functions-run-local.md) in Azure bereitgestellt. Weitere Informationen zu den besonderen Aspekten in Bezug auf die Vorschauversion, was die Ausführung Ihrer Funktions-Apps unter Linux betrifft, finden Sie im Artikel zu [Functions unter Linux](https://aka.ms/funclinux).
 
 Die folgenden Schritte werden für Mac-, Windows- oder Linux-Computer unterstützt.
 

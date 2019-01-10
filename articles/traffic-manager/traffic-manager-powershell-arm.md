@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93d52101569e911c90377f26a9773d61eeaaf229
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237926"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653678"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Verwenden von PowerShell zum Verwalten von Traffic Manager
 
@@ -111,7 +111,7 @@ In allen drei Fällen können Endpunkte auf zwei Arten hinzugefügt werden:
 
 Azure-Endpunkte verweisen auf in Azure gehostete Dienste. Zwei Arten von Azure-Endpunkten werden unterstützt:
 
-1. Azure-Web-Apps 
+1. Azure App Service
 2. Azure-PublicIpAddress-Ressourcen (die an einen Load Balancer oder an die Netzwerkkarte eines virtuellen Computers angefügt werden können). Der PublicIpAddress-Ressource muss ein DNS-Name zugewiesen werden, damit sie in Traffic Manager verwendet werden kann.
 
 In jedem Fall gilt Folgendes:
@@ -121,9 +121,9 @@ In jedem Fall gilt Folgendes:
 * Die Angabe von „Weight“ ist optional. Eine Gewichtung (Weight) werden nur verwendet, wenn das Profil für die Verwendung der gewichteten Datenverkehr-Routingmethode konfiguriert ist. Andernfalls wird der Parameter ignoriert. Wenn angegeben, muss der Wert eine Zahl zwischen 1 und 1.000 sein. Der Standardwert ist „1“.
 * Die Angabe von „Priority“ ist optional. Prioritäten werden nur verwendet, wenn das Profil für die Verwendung der Prioritätsmethode für das Datenverkehrrouting konfiguriert ist. Andernfalls wird der Parameter ignoriert. Gültige Werte reichen von 1 bis 1.000, wobei niedrigere Werte eine höhere Priorität anzeigen. Wenn Sie für einen Endpunkt Prioritäten angeben, müssen Sie für alle Endpunkte Prioritäten angeben. Wenn keine Prioritäten angegeben werden, werden Standardwerte beginnend mit 1 in der Reihenfolge angewendet, in der Endpunkte aufgeführt sind.
 
-### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Beispiel 1: Hinzufügen von Web-App-Endpunkten mithilfe von `Add-AzureRmTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Beispiel 1: Hinzufügen von App Service-Endpunkten mithilfe von `Add-AzureRmTrafficManagerEndpointConfig`
 
-In diesem Beispiel erstellen wir ein Traffic Manager-Profil und fügen zwei Web-App-Endpunkte mithilfe des Cmdlets `Add-AzureRmTrafficManagerEndpointConfig` hinzu.
+In diesem Beispiel erstellen wir ein Traffic Manager-Profil und fügen zwei App Service-Endpunkte mithilfe des Cmdlets `Add-AzureRmTrafficManagerEndpointConfig` hinzu.
 
 ```powershell
 $profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -133,7 +133,7 @@ $webapp2 = Get-AzureRMWebApp -Name webapp2
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen eines publicIpAddress-Endpunkts mit `New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen eines publicIpAddress-Endpunkts mit `New-AzureRmTrafficManagerEndpoint`
 
 In diesem Beispiel wird eine Ressource für eine öffentliche IP-Adresse zum Traffic Manager-Profil hinzugefügt. Für die öffentliche IP-Adresse muss ein DNS-Name konfiguriert sein. Sie kann an die Netzwerkkarte eines virtuellen Computers oder an einen Load Balancer gebunden sein.
 
@@ -152,7 +152,7 @@ Beachten Sie beim Angeben von externen Endpunkten Folgendes:
 * EndpointLocation ist erforderlich, wenn die Leistungsmethode für das Datenverkehrrouting verwendet wird. Andernfalls ist die Angabe optional. Der Wert muss ein [gültiger Azure-Regionsname](https://azure.microsoft.com/regions/) sein.
 * „Weight“ und „Priority“ sind optional.
 
-### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Beispiel 1: Hinzufügen von externen Endpunkten mithilfe von `Add-AzureRmTrafficManagerEndpointConfig` und `Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Beispiel 1: Hinzufügen von externen Endpunkten mithilfe von `Add-AzureRmTrafficManagerEndpointConfig` und `Set-AzureRmTrafficManagerProfile`
 
 In diesem Beispiel erstellen wir ein Traffic Manager-Profil, fügen zwei externe Endpunkte hinzu und übernehmen die Änderungen.
 
@@ -163,7 +163,7 @@ Add-AzureRmTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManage
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen von externen Endpunkten mithilfe von `New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen von externen Endpunkten mithilfe von `New-AzureRmTrafficManagerEndpoint`
 
 In diesem Beispiel fügen wir einem vorhandenen Profil einen externen Endpunkt hinzu. Das Profil wird mithilfe der Profil- und Ressourcengruppennamen angegeben.
 
@@ -182,7 +182,7 @@ Geschachtelte Endpunkte sind beim übergeordneten Profil mittels eines spezielle
 * „Weight“ und „Priority“ sind wie bei Azure-Endpunkten optional.
 * Der Parameter „MinChildEndpoints“ ist optional. Der Standardwert ist „1“. Falls die Anzahl der verfügbaren Endpunkte unter diesen Schwellenwert fällt, betrachtet das übergeordnete Profil das untergeordnete Profil als „heruntergestuft“ und leitet den Verkehr auf die anderen Endpunkte des übergeordneten Profils um.
 
-### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Beispiel 1: Hinzufügen von geschachtelten Endpunkten mithilfe von `Add-AzureRmTrafficManagerEndpointConfig` und `Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Beispiel 1: Hinzufügen von geschachtelten Endpunkten mithilfe von `Add-AzureRmTrafficManagerEndpointConfig` und `Set-AzureRmTrafficManagerProfile`
 
 In diesem Beispiel erstellen wir neue unter- und übergeordnete Traffic Manager-Profile, fügen die untergeordneten Profile den übergeordneten als geschachtelte Endpunkte hinzu und übermitteln diese Änderungen.
 
@@ -195,7 +195,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 Aus Platzgründen haben wir den untergeordneten oder übergeordneten Profilen in diesem Beispiel keine anderen Endpunkte hinzugefügt.
 
-### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen von geschachtelten Endpunkten mithilfe von `New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen von geschachtelten Endpunkten mithilfe von `New-AzureRmTrafficManagerEndpoint`
 
 In diesem Beispiel fügen wir einem vorhandenen übergeordneten Profil ein vorhandenes untergeordnetes Profil als einen geschachtelten Endpunkt hinzu. Das Profil wird mithilfe der Profil- und Ressourcengruppennamen angegeben.
 
@@ -223,7 +223,7 @@ Es gibt zwei Möglichkeiten zum Aktualisieren eines vorhandenen Traffic Manager-
 1. Rufen Sie das Traffic Manager-Profil mithilfe von `Get-AzureRmTrafficManagerProfile` ab, aktualisieren Sie die Endpunkteigenschaften im Profil, und übernehmen Sie anschließend die Änderungen mit `Set-AzureRmTrafficManagerProfile`. Diese Methode hat den Vorteil, dass mehrere Endpunkte in einem einzigen Vorgang aktualisiert werden können.
 2. Rufen Sie den Traffic Manager-Endpunkt mithilfe von `Get-AzureRmTrafficManagerEndpoint` ab, aktualisieren Sie die Endpunkteigenschaften, und übernehmen Sie anschließend die Änderungen mit `Set-AzureRmTrafficManagerEndpoint`. Diese Methode ist einfacher, da keine Indizierung im Endpunktarray im Profil erforderlich ist.
 
-### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>Beispiel 1: Aktualisieren von Endpunkten mithilfe von `Get-AzureRmTrafficManagerProfile` und `Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>Beispiel 1: Aktualisieren von Endpunkten mithilfe von `Get-AzureRmTrafficManagerProfile` und `Set-AzureRmTrafficManagerProfile`
 
 In diesem Beispiel ändern wir die Priorität für zwei Endpunkte innerhalb eines vorhandenen Profils.
 
@@ -234,7 +234,7 @@ $profile.Endpoints[1].Priority = 1
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>Beispiel 2: Aktualisieren eines Endpunkts mithilfe von `Get-AzureRmTrafficManagerEndpoint` und `Set-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>Beispiel 2: Aktualisieren eines Endpunkts mithilfe von `Get-AzureRmTrafficManagerEndpoint` und `Set-AzureRmTrafficManagerEndpoint`
 
 In diesem Beispiel ändern wir die Gewichtung für einen Endpunkt innerhalb eines vorhandenen Profils.
 
@@ -249,7 +249,7 @@ Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 Mit Traffic Manager können einzelne Endpunkte und sogar ganze Profile aktiviert und deaktiviert werden.
 Diese Änderungen können durch Abrufen, Aktualisieren und Festlegen des Endpunkts oder der Profilressourcen vorgenommen werden. Um diese allgemeinen Vorgänge zu vereinfachen, werden sie auch über dedizierte Cmdlets unterstützt.
 
-### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Beispiel 1: Aktivieren und Deaktivieren eines Traffic Manager-Profils
+### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Beispiel 1: Aktivieren und Deaktivieren eines Traffic Manager-Profils
 
 Verwenden Sie zum Aktivieren eines Traffic Manager-Profils `Enable-AzureRmTrafficManagerProfile`. Das Profil kann mithilfe eines Profilobjekts angegeben werden. Das Profilobjekt kann über die Pipeline oder über den Parameter „-TrafficManagerProfile“ übergeben werden. In diesem Beispiel geben wir das Profil durch den Profil- und Ressourcegruppennamen an.
 
@@ -265,7 +265,7 @@ Disable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResour
 
 Das Cmdlet „Disable-AzureRmTrafficManagerProfile“ fordert zur Bestätigung auf. Diese Aufforderung kann mit dem Parameter '-Force' unterdrückt werden.
 
-### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Beispiel 2: Aktivieren und Deaktivieren eines Traffic Manager-Endpunkts
+### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Beispiel 2: Aktivieren und Deaktivieren eines Traffic Manager-Endpunkts
 
 Verwenden Sie zum Aktivieren eines Traffic Manager-Endpunkts `Enable-AzureRmTrafficManagerEndpoint`. Es gibt zwei Möglichkeiten zum Angeben des Endpunkts:
 

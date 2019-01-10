@@ -4,17 +4,17 @@ description: Verwenden Sie Terraform mit Azure Cloud Shell, um die Authentifizie
 services: terraform
 ms.service: terraform
 keywords: Terraform DevOps, Skalierungsgruppe, virtueller Computer, Netzwerk, Speicher, Module
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: a5f44edf201ce9a2e2c0da6b5da9031958a11fdc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: af71cf07ea12e605f57d34b530fcbcd61838128b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959307"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074528"
 ---
 # <a name="terraform-cloud-shell-development"></a>Entwicklung mit Terraform und Cloud Shell 
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 26aeb5641533125dcd909ae96d28c8274677cf30
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8d7b18dfd88a1a136e8b6e11f9f712e9212d6dd5
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013440"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788802"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -135,10 +135,8 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 ## <a name="scale-clusters"></a>Skalieren von Clustern
 Mithilfe der Clusterskalierung können Sie die Anzahl der von einem in Azure HDInsight ausgeführten Cluster verwendeten Workerknoten ändern, ohne den Cluster neu erstellen zu müssen.
 
-> [!NOTE]
-> Es werden nur Cluster mit HDInsight-Versionen ab 3.1.3 unterstützt. Überprüfen Sie ggf. auf der Seite „Eigenschaften“ die Version Ihres Clusters.  Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
-> 
-> 
+> [!NOTE]  
+> Es werden nur Cluster mit HDInsight-Versionen ab 3.1.3 unterstützt. Überprüfen Sie ggf. auf der Seite „Eigenschaften“ die Version Ihres Clusters.  Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](hdinsight-administer-use-portal-linux.md#showClusters).
 
 Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unterstützten Clustertypen:
 
@@ -165,7 +163,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
   * Storm-Webbenutzeroberfläche
   * Befehlszeilenschnittstelle (CLI)
     
-    Weitere Informationen finden Sie in der Dokumentation zu [Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) .
+    Weitere Informationen finden Sie in der Dokumentation zu [Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) .
     
     Die Storm-Webbenutzeroberfläche ist für den HDInsight-Cluster verfügbar:
     
@@ -220,10 +218,8 @@ var httpParams = new HttpSettingsParameters
 _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Cluster Name>, httpParams);
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Durch Gewähren/Widerrufen des Zugriffs werden der Benutzername und das Kennwort des Clusterbenutzers zurückgesetzt.
-> 
-> 
 
 Dies kann auch über das Portal durchgeführt werden. Siehe [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal].
 
@@ -242,7 +238,7 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>Übermitteln von Aufträgen
-**So übermitteln Sie Apache Hadoop MapReduce-Aufträge**
+**So übermitteln Sie MapReduce-Aufträge**
 
 Weitere Informationen finden Sie unter [Ausführen von MapReduce-Beispielen in HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 

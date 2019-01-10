@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 1d199275d6c17dff72c020bd3a9807f50af8af1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 69959db83ba99989f7c701f94cf1b17e1721bb47
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544038"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104436"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
@@ -134,7 +134,7 @@ Im folgenden vollständigen Beispiel wird eine Logik-App erstellt und das Stream
     },
     "testUri": {
       "type": "string",
-      "defaultValue": "http://azure.microsoft.com/status/feed/"
+      "defaultValue": "https://azure.microsoft.com/status/feed/"
     },
     "settingName": {
       "type": "string",

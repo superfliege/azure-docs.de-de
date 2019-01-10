@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights – Zeitreihenmodell | Microsoft-Dokumentation
+title: Zeitreihenmodell in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
 description: Grundlegendes zum Zeitreihenmodell in Azure Time Series.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278184"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716581"
 ---
 # <a name="time-series-model"></a>Time Series-Modell
 
@@ -136,7 +136,7 @@ Sehen Sie sich das folgende Beispiel an, bei dem die Hierarchie H1 *Gebäude* (b
  H1 = [“building”, “floor”, “room”]
 ```
 
-In Abhängigkeit von den *Instanzenfeldern* werden die Hierarchieattribute und -werte wie in der folgenden Tabelle angezeigt: 
+In Abhängigkeit von den *Instanzenfeldern* werden die Hierarchieattribute und -werte wie in der folgenden Tabelle angezeigt:
 
 | Time Series-ID | Instanzenfelder |
 | --- | --- |
@@ -144,9 +144,9 @@ In Abhängigkeit von den *Instanzenfeldern* werden die Hierarchieattribute und -
 | ID2 | "building" = "1000", "room" = "55" |
 | ID3 | "floor" = "10" |
 | ID4 | "building" = "1000", "floor" = "10"  |
-| ID5 | |
+| ID5 | Weder „building“ noch „floor“ noch „room“ wurde festgelegt. |
 
-In dem vorherigen Beispiel wird ID1 als Teil der Hierarchie H1 in der Benutzeroberfläche angezeigt, und der Rest wird unter *Unparented Instances* (Instanzen ohne übergeordnete Elemente) klassifiziert, weil sie nicht der angegebenen Datenhierarchie entsprechen.
+Im vorherigen Beispiel werden ID1 und ID4 als Teile der Hierarchie H1 im Azure Time Series Insights-Explorer angezeigt, und die restlichen Elemente werden unter *Unparented Instances* (Instanzen ohne übergeordnete Elemente) klassifiziert, da sie nicht der angegebenen Datenhierarchie entsprechen.
 
 ## <a name="time-series-model-instances"></a>Zeitreihenmodellinstanzen
 

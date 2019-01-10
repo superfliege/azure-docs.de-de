@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3e6a11a8c225afb220f290cee2db39c36750b401
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529678"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632143"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -32,12 +32,15 @@ Gehen Sie wie folgt vor, um Metriken im [Azure-Portal](https://portal.azure.com)
 1. Prüfen Sie, ob der **Status** auf **Ein** festgelegt ist.
 1. Wählen Sie die Metriken für die Dienste, die Sie überwachen möchten.
 1. Geben Sie eine Aufbewahrungsrichtlinie an, um festzulegen, wie lange Metriken und Protokolldaten beibehalten werden sollen.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 Das [Azure-Portal](https://portal.azure.com) unterstützt zurzeit die Konfiguration von minütlichen Metriken in Ihrem Speicherkonto nicht. Sie müssen minütliche Metriken mithilfe von PowerShell oder programmgesteuert aktivieren.
 
 ## <a name="how-to-enable-metrics-using-powershell"></a>Aktivieren von Metriken mithilfe von PowerShell
-Sie können PowerShell auf Ihrem lokalen Computer zum Konfigurieren der Speichermetriken in Ihrem Speicherkonto verwenden, indem Sie das Azure PowerShell-Cmdlet "Get-AzureStorageServiceMetricsProperty" ausführen, um die aktuellen Einstellungen abzurufen. Mithilfe des Cmdlets "Set-AzureStorageServiceMetricsProperty" können Sie die aktuellen Einstellungen ändern.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Sie können PowerShell auf Ihrem lokalen Computer zum Konfigurieren der Speichermetriken in Ihrem Speicherkonto verwenden, indem Sie das Azure PowerShell-Cmdlet „Get-AzStorageServiceMetricsProperty“ ausführen, um die aktuellen Einstellungen abzurufen. Mithilfe des Cmdlets „Set-AzStorageServiceMetricsProperty“ können Sie die aktuellen Einstellungen ändern.
 
 Die Cmdlets zur Steuerung der Speichermetriken verwenden die folgenden Parameter:
 
@@ -48,16 +51,16 @@ Die Cmdlets zur Steuerung der Speichermetriken verwenden die folgenden Parameter
 Der folgende Befehl aktiviert z. B. minütliche Metriken für den Blob-Dienst in Ihrem Standardspeicherkonto mit einem Aufbewahrungszeitraum, der auf fünf Tage festgelegt ist:
 
 ```powershell
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
 ```
 
 Der folgende Befehl ruft die aktuelle stündliche Metrikstufe und die Aufbewahrungstage für den Blob-Dienst in Ihrem Standardspeicherkonto ab:
 
 ```powershell
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>Programmgesteuertes Aktivieren von Speichermetriken
 Der folgende C#-Codeausschnitt zeigt, wie Metriken und Protokollierung für den Blob-Dienst mithilfe der Speicherclientbibliothek für .NET aktiviert werden:

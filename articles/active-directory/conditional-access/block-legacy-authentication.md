@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ddfea3ec7380a36f937052a6a994504ca081f187
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2abf0afb3b6e1cd80168fa3f295297551b9bf7ce
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021842"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755154"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -82,7 +82,7 @@ Wenn Sie die Legacyauthentifizierung für Ihre Organisation blockieren möchten,
 - Zugriff blockieren
  
 
-![Zuweisungen](./media/block-legacy-authentication/03.png)
+![Arbeitsaufträge](./media/block-legacy-authentication/03.png)
 
 
 
@@ -91,7 +91,7 @@ Azure verfügt über eine Sicherheitsfunktion, die Sie am Erstellen einer solche
 ![Die Richtlinienkonfiguration wird nicht unterstützt.](./media/block-legacy-authentication/04.png)
 
 
-Diese Sicherheitsfunktion ist erforderlich, weil das *Blockieren aller Benutzer und aller Cloud-Apps* potenziell dazu führen kann, für Ihre gesamte Organisation die Anmeldung bei Ihrem Mandanten zu blockieren. Sie müssen mindestens einen Benutzer davon ausschließen, um die Mindestanforderung der Best Practices zu erfüllen. Sie haben auch die folgende Auswahlmöglichkeit: 
+Diese Sicherheitsfunktion ist erforderlich, weil das *Blockieren aller Benutzer und aller Cloud-Apps* potenziell dazu führen kann, für Ihre gesamte Organisation die Anmeldung bei Ihrem Mandanten zu blockieren. Sie müssen mindestens einen Benutzer davon ausschließen, um die Mindestanforderung der Best Practices zu erfüllen. Sie können auch eine Verzeichnisrolle ausschließen.
 
 ![Die Richtlinienkonfiguration wird nicht unterstützt.](./media/block-legacy-authentication/05.png)
 

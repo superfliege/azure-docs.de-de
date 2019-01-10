@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f53233edd17fa7097dde67bbce16b1ece668c721
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140029"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554859"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
 Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann einen sicheren Zugriff auf Ihre Azure Machine Learning-Datasets aus einer lokalen Python-Umgebung aktivieren und ermöglicht die Erstellung und Verwaltung von Datasets im Arbeitsbereich.
 
 Dieses Thema enthält Anweisungen zu:
 
-* Installation der Machine Learning Python-Clientbibliothek 
+* Installation der Machine Learning Python-Clientbibliothek
 * Zugriff auf und Hochladen von Datasets, einschließlich Anweisungen zur Autorisierung des Zugriffs auf Azure Machine Learning Datasets aus Ihrer lokalen Python-Umgebung
 * Zugriff auf Zwischen-Datasets von Experimenten
 * Verwendung der Python-Clientbibliothek zum Auflisten von Datasets, Zugriff auf Metadaten, Lesen des Inhalts eines Datasets, Erstellen neuer Datasets und Aktualisieren vorhandener Datasets
@@ -49,7 +49,7 @@ Außerdem muss die Azure Machine Learning Python-Clientbibliothek zum Ausführen
 
     pip install azureml
 
-Alternativ können Sie von den Quellen auf [Github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python)herunterladen und installieren.
+Alternativ können Sie von den Quellen auf [GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) herunterladen und installieren.
 
     python setup.py install
 
@@ -74,11 +74,11 @@ Wenn Ihre Rolle nicht als **Besitzer**festgelegt ist, können Sie darum bitten, 
 
 Um das Autorisierungstoken zu erhalten, führen Sie eine der folgenden Aktionen durch:
 
-* Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihren Autorisierungstoken auf der Seite „Einstellungen“ von ihrem Arbeitsbereich im Studio zugreifen. Wählen Sie im linken Bereich **Einstellungen**, und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen.  Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
+* Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihren Autorisierungstoken auf der Seite „Einstellungen“ von ihrem Arbeitsbereich im Studio zugreifen. Wählen Sie im linken Bereich **Einstellungen**, und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen. Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
 
 ![Autorisierungstoken](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Bitten Sie darum, zur Rolle „Besitzer“ hochgestuft zu werden.  Zu diesem Zweck muss ein aktueller Besitzer des Arbeitsbereichs Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
+* Bitten Sie darum, zur Rolle „Besitzer“ hochgestuft zu werden. Zu diesem Zweck muss ein aktueller Besitzer des Arbeitsbereichs Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
 
 Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben, können sie auf den Arbeitsbereich mithilfe des Codeausschnitts unabhängig von ihrer Rolle zugreifen.
 

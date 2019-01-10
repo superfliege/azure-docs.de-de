@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42143488"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789466"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Einführung in die Überwachung von Clouddiensten
 
-Sie können wichtige Leistungsmetriken für beliebige Clouddienste überwachen. Für jede Clouddienstrolle werden minimale Daten zur CPU-Nutzung, Netzwerkverwendung und Datenträgerverwendung erfasst. Wenn auf eine Rolle des Clouddiensts die Erweiterung `Microsoft.Azure.Diagnostics` angewendet wurde, können für die Rolle zusätzliche Datenpunkte erfasst werden. Dieser Artikel bietet eine Einführung in die Azure-Diagnose für Clouddienste.
+Sie können wichtige Leistungsmetriken für beliebige Clouddienste überwachen. Jede Clouddienstrolle erfasst Mindestdaten: CPU-, Netzwerk- und Datenträgerverwendung. Wenn auf eine Rolle des Clouddiensts die Erweiterung `Microsoft.Azure.Diagnostics` angewendet wurde, können für die Rolle zusätzliche Datenpunkte erfasst werden. Dieser Artikel bietet eine Einführung in die Azure-Diagnose für Clouddienste.
 
 Bei der grundlegenden Überwachung werden alle drei Minuten Leistungsindikatordaten aus den Rolleninstanzen abgefragt und erfasst. Daten aus der grundlegenden Überwachung werden nicht unter Ihrem Speicherkonto gespeichert und verursachen keine zusätzlichen Kosten.
 
@@ -93,13 +93,13 @@ Wahrscheinlich verfügen Sie über zwei **.cscfg**-Dateien, eine mit dem Namen *
 
 ## <a name="use-application-insights"></a>Verwenden von Application Insights
 
-Wenn Sie den Clouddienst über Visual Studio veröffentlichen, können Sie die Diagnosedaten an Application Insights senden. Sie können die Azure-Ressource von Application Insights dann erstellen oder die Daten an eine vorhandene Azure-Ressource senden. Ihr Clouddienst kann von Application Insights auf Verfügbarkeit, Leistung, Fehler und Auslastung überwacht werden. Application Insights können benutzerdefinierte Diagramme hinzugefügt werden. So haben Sie immer die relevanten Daten im Blick. Rolleninstanzdaten können mithilfe des Application Insights SDKs in Ihrem Clouddienstprojekt erfasst werden. Weitere Informationen zur Integration von Application Insights finden Sie unter [Application Insights für Azure Cloud Services](../application-insights/app-insights-cloudservices.md).
+Wenn Sie den Clouddienst über Visual Studio veröffentlichen, können Sie die Diagnosedaten an Application Insights senden. Sie können die Azure-Ressource von Application Insights dann erstellen oder die Daten an eine vorhandene Azure-Ressource senden. Ihr Clouddienst kann von Application Insights auf Verfügbarkeit, Leistung, Fehler und Auslastung überwacht werden. Application Insights können benutzerdefinierte Diagramme hinzugefügt werden. So haben Sie immer die relevanten Daten im Blick. Rolleninstanzdaten können mithilfe des Application Insights SDKs in Ihrem Clouddienstprojekt erfasst werden. Weitere Informationen zur Integration von Application Insights finden Sie unter [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md).
 
 Hinweis: Sie können die Leistungsindikatoren (und weiteren Einstellungen), die Sie über die Microsoft Azure-Diagnoseerweiterung festgelegt haben, mithilfe von Application Insights anzeigen, erhalten allerdings noch bessere Darstellungsmöglichkeiten, wenn Sie das Application Insights SDK in die Worker- und Webrollen integrieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Informationen zu Application Insights mit Cloud Services](../application-insights/app-insights-cloudservices.md)
+- [Informationen zu Application Insights mit Cloud Services](../azure-monitor/app/cloudservices.md)
 - [Einrichten von Leistungsindikatoren](diagnostics-performance-counters.md)
 

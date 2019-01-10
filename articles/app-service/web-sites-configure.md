@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Web-Apps – Azure App Service
-description: Konfigurieren einer Web-App in Azure App Service
+title: Konfigurieren von Apps – Azure App Service
+description: Konfigurieren einer App in Azure App Service
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,22 +15,20 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269429"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716462"
 ---
-# <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
+# <a name="configure-apps-in-azure-app-service"></a>Konfigurieren von Apps in Azure App Service
 
-In diesem Thema wird erläutert, wie Sie eine Web-App mit dem [Azure-Portal]konfigurieren.
-
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+In diesem Thema wird erläutert, wie Sie eine Web-App, ein mobiles Back-End oder eine API-App über das [Azure-Portal] konfigurieren.
 
 ## <a name="application-settings"></a>Anwendungseinstellungen
-1. Öffnen Sie im [Azure-Portal]das Blatt für die Web-App.
-3. Klicken Sie auf **Anwendungseinstellungen**.
+1. Öffnen Sie im [Azure-Portal] das Blatt für die App.
+2. Klicken Sie auf **Anwendungseinstellungen**.
 
 ![Anwendungseinstellungen][configure01]
 
@@ -47,14 +45,14 @@ Das Blatt **Anwendungseinstellungen** enthält Einstellungen, die unter verschie
 Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Optionen für .NET, PHP und Python deaktiviert.
 
 <a name="platform"></a>
-**Plattform**. Bestimmt, ob Ihre Web-App in einer 32-Bit- oder 64-Bit-Umgebung ausgeführt wird. Für die 64-Bit-Umgebung ist die Ebene „Basic“ oder „Standard“ erforderlich. Die Ebenen „Kostenlos“ und „Freigegeben“ werden immer in einer 32-Bit-Umgebung ausgeführt.
+**Plattform**. Wählt aus, ob Ihre App in einer 32-Bit- oder 64-Bit-Umgebung ausgeführt wird. Für die 64-Bit-Umgebung ist die Ebene „Basic“ oder „Standard“ erforderlich. Die Ebenen „Kostenlos“ und „Freigegeben“ werden immer in einer 32-Bit-Umgebung ausgeführt.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Websockets**. Legen Sie **EIN** fest, um das WebSocket-Protokoll zu aktivieren, beispielsweise wenn Ihre Web-App [ASP.NET SignalR] oder [socket.io](https://socket.io/) verwendet.
+**Websockets**. Legen Sie **EIN** fest, um das WebSocket-Protokoll zu aktivieren, beispielsweise wenn Ihre App [ASP.NET SignalR] oder [socket.io](https://socket.io/) verwendet.
 
 <a name="alwayson"></a>
-**Always On**. Standardmäßig werden Web-Apps entladen, wenn sie einige Zeit im Leerlauf waren. Dadurch spart das System Ressourcen. Im Modus „Basic“ oder „Standard“ können Sie **Always On** aktivieren, sodass die Web-App permanent geladen bleibt. Wenn Ihre App fortlaufende WebJobs oder unter Verwendung eines CRON-Ausdrucks ausgelöste WebJobs ausführt, sollten Sie **Always On** aktivieren. Ansonsten werden die Webaufträge möglicherweise nicht zuverlässig ausgeführt.
+**Always On**. Standardmäßig werden Apps entladen, wenn sie sich einige Zeit im Leerlauf befunden haben. Dadurch spart das System Ressourcen. Im Modus „Basic“ oder „Standard“ können Sie **Always On** aktivieren, sodass die Web-App permanent geladen bleibt. Wenn Ihre App fortlaufende WebJobs oder unter Verwendung eines CRON-Ausdrucks ausgelöste WebJobs ausführt, sollten Sie **Always On** aktivieren. Ansonsten werden die Webaufträge möglicherweise nicht zuverlässig ausgeführt.
 
 **Verwalteter Pipelinemodus**. Legt den IIS- [Pipelinemodus]fest. Lassen Sie diese Einstellung bei "Integriert" (der Standard), sofern Sie nicht eine ältere App haben, die eine ältere IIS-Version erfordert.
 
@@ -65,13 +63,13 @@ Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Opt
 
 **ARR-Affinität**. In einer App, die auf mehrere VM-Instanzen skaliert ist, garantieren ARR Affinität-Cookies, dass der Client für die Dauer der Sitzung an dieselbe Instanz weitergeleitet wird. Um die Leistung zustandsloser Anwendungen zu verbessern, setzen Sie diese Option auf **Aus**.   
 
-**Automatisch tauschen**. Wenn Sie "Auto Swap" für einen Bereitstellungsslot aktivieren, ändert App Service den Status der Web-App automatisch in Produktion, wenn Sie eine Aktualisierung an diesen Slot übermitteln. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service in Stagingslots](web-sites-staged-publishing.md).
+**Automatisch tauschen**. Wenn Sie Auto Swap für einen Bereitstellungsslot aktivieren, ändert App Service den Status der App automatisch in „Produktion“, wenn Sie ein Update an diesen Slot übermitteln. Weitere Informationen finden Sie unter [Bereitstellen von Apps in Azure App Service in Stagingslots](deploy-staging-slots.md).
 
 ### <a name="debugging"></a>Debuggen
-**Remotedebuggen**. Aktiviert das Remotedebugging. Wenn diese Option aktiviert ist, können Sie mit dem Remotedebugger in Visual Studio direkt eine Verbindung mit Ihrer Web-App herstellen. Das Remotedebuggen bleibt 48 Stunden aktiviert. 
+**Remotedebuggen**. Aktiviert das Remotedebugging. Wenn diese Option aktiviert ist, können Sie mit dem Remotedebugger in Visual Studio direkt eine Verbindung mit Ihrer App herstellen. Das Remotedebuggen bleibt 48 Stunden aktiviert. 
 
 ### <a name="app-settings"></a>App-Einstellungen
-Dieser Abschnitt enthält Name-Wert-Paare, die Ihre Web-App beim Start lädt. 
+Dieser Abschnitt enthält Name-Wert-Paare, die Ihre App beim Start lädt. 
 
 * Bei .NET-Apps werden diese Einstellungen zur Laufzeit in die `AppSettings` der .NET-Konfiguration eingefügt, wobei vorhandene Einstellungen überschrieben werden. 
 * Wenn Sie bei App Service unter Linux oder Web-App für Container eine verschachtelte JSON-Schlüsselstruktur im Namen verwenden, wie etwa `ApplicationInsights:InstrumentationKey`, müssen Sie `ApplicationInsights__InstrumentationKey` als Schlüsselnamen verwenden. Beachten Sie also, dass jeder `:` durch `__` (d.h. doppelten Unterstrich) ersetzt werden muss.
@@ -102,7 +100,7 @@ Verbindungszeichenfolgen können über Key Vault mithilfe von [Key Vault-Referen
 ### <a name="default-documents"></a>Standarddokumente
 Das Standarddokument ist die Webseite, die an der Stamm-URL für eine Website angezeigt wird.  Die erste übereinstimmende Datei in der Liste wird verwendet. 
 
-Web-Apps verwenden unter Umständen Module, die eine Weiterleitung auf Basis der URL ausführen und keinen statischen Inhalt bereitstellen. In diesem Fall gibt es kein Standarddokument als solches.    
+Apps verwenden möglicherweise Module, die eine Weiterleitung anhand der URL ausführen und keinen statischen Inhalt bereitstellen. In diesem Fall gibt es kein Standarddokument.    
 
 ### <a name="handler-mappings"></a>Handlerzuordnungen
 Fügen Sie in diesem Bereich benutzerdefinierte Skriptprozessoren hinzu, die Anforderungen für bestimmte Dateierweiterungen verarbeiten. 
@@ -117,7 +115,7 @@ Um die virtuellen Anwendungen und Verzeichnisse zu konfigurieren, geben Sie jede
 ## <a name="enabling-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
 So aktivieren Sie Diagnoseprotokolle
 
-1. Klicken Sie auf dem Blatt für die Web-App auf **Alle Einstellungen**.
+1. Klicken Sie auf dem Blatt für die App auf **Alle Einstellungen**.
 2. Klicken Sie auf **Diagnoseprotokolle**. 
 
 Optionen zum Erstellen von Diagnoseprotokollen über eine Webanwendung, die die Protokollierung unterstützt: 
@@ -134,31 +132,31 @@ Optionen zum Erstellen von Diagnoseprotokollen über eine Webanwendung, die die 
 
 Zum Anzeigen der Protokolldateien müssen Sie die FTP-Anmeldeinformationen wie folgt bereitstellen:
 
-1. Klicken Sie auf dem Blatt für die Web-App auf **Alle Einstellungen**.
+1. Klicken Sie auf dem Blatt für die App auf **Alle Einstellungen**.
 2. Klicken Sie auf **Anmeldeinformationen für die Bereitstellung**.
 3. Geben Sie einen Benutzernamen und ein Kennwort ein.
 4. Klicken Sie auf **Speichern**.
 
 ![Anmeldeinformationen für die Bereitstellung zurücksetzen][configure03]
 
-Der vollständige FTP-Benutzername lautet „App\Benutzername“. Dabei ist *App* der Name Ihrer Web-App. Den Benutzernamen finden Sie auf dem Blatt der Web-App unter **Zusammenfassung**.
+Der vollständige FTP-Benutzername lautet „App\Benutzername“. Dabei ist *App* der Name Ihrer App. Den Benutzernamen finden Sie auf dem Blatt der App unter **Zusammenfassung**.
 
 ![FTP-Anmeldeinformationen für die Bereitstellung][configure02]
 
 ## <a name="other-configuration-tasks"></a>Weitere Konfigurationsaufgaben
 ### <a name="ssl"></a>SSL
-Im Modus "Basic" oder "Standard" können Sie SSL-Zertifikate für benutzerdefinierte Domänen hochladen. Weitere Informationen finden Sie unter [Aktivieren von HTTPS für eine Web-App](app-service-web-tutorial-custom-ssl.md). 
+Im Modus "Basic" oder "Standard" können Sie SSL-Zertifikate für benutzerdefinierte Domänen hochladen. Weitere Informationen finden Sie unter [Aktivieren von HTTPS für eine App](app-service-web-tutorial-custom-ssl.md). 
 
 Klicken Sie zum Anzeigen der hochgeladenen Zertifikate auf **Alle Einstellungen** > **Benutzerdefinierte Domänen und SSL**konfigurieren.
 
 ### <a name="domain-names"></a>Domänennamen
-Fügen Sie Ihrer Web-App benutzerdefinierte Domänennamen hinzu. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Service](app-service-web-tutorial-custom-domain.md).
+Fügen Sie Ihrer App benutzerdefinierte Domänennamen hinzu. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine App in Azure App Service](app-service-web-tutorial-custom-domain.md).
 
 Klicken Sie zum Anzeigen des Domänennamens auf **Alle Einstellungen** > **Benutzerdefinierte Domänen und SSL**konfigurieren.
 
 ### <a name="deployments"></a>Bereitstellungen
-* Legen Sie die kontinuierliche Bereitstellung fest. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service mit Git](app-service-deploy-local-git.md).
-* Bereitstellungsslots. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service in Stagingumgebungen].
+* Legen Sie die kontinuierliche Bereitstellung fest. Weitere Informationen finden Sie unter [Bereitstellen von Apps in Azure App Service mit Git](deploy-local-git.md).
+* Bereitstellungsslots. Weitere Informationen finden Sie unter [Bereitstellen in Stagingumgebungen für Azure App Service].
 
 Klicken Sie zum Anzeigen der Bereitstellungsslots auf **Alle Einstellungen** > **Bereitstellungsslots**.
 
@@ -167,29 +165,23 @@ Im Modus „Basic“ oder „Standard“ können Sie die Verfügbarkeit von HTTP
 
 Weitere Informationen finden Sie unter [Gewusst wie: Überwachen des Web-Endpunktstatus].
 
-> [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen]sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-> 
-> 
-
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]
 * [Aktivieren von HTTPS für eine App in Azure App Service]
-* [Skalieren einer Web-App in Azure App Service]
-* [Grundlagen der Überwachung von Web-Apps in Azure App Service]
+* [Skalieren einer App in Azure App Service]
+* [Grundlagen der Überwachung in Azure App Service]
 
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure-Portal]: https://portal.azure.com/
 [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]: ./app-service-web-tutorial-custom-domain.md
-[Bereitstellen von Web-Apps in Azure App Service in Stagingumgebungen]: ./web-sites-staged-publishing.md
+[Bereitstellen in Stagingumgebungen für Azure App Service]: ./deploy-staging-slots.md
 [Aktivieren von HTTPS für eine App in Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
 [Gewusst wie: Überwachen des Web-Endpunktstatus]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Grundlagen der Überwachung von Web-Apps in Azure App Service]: ./web-sites-monitor.md
+[Grundlagen der Überwachung in Azure App Service]: ./web-sites-monitor.md
 [Pipelinemodus]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Skalieren einer Web-App in Azure App Service]: ./web-sites-scale.md
-[App Service testen]: https://azure.microsoft.com/try/app-service/
+[Skalieren einer App in Azure App Service]: ./web-sites-scale.md
 
 <!-- IMG List -->
 

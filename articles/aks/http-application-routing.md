@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0bca7281c390388bd860219fb6f2eacb96b99df0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384972"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742387"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
@@ -28,10 +28,10 @@ Wenn Sie dieses Add-On aktivieren, erstellt es eine DNS-Zone in Ihrem Abonnement
 
 Das Add-On stellt zwei Komponenten bereit: einen [Kubernetes-Eingangscontroller][ingress] und einen [externen DNS-Controller][external-dns].
 
-- **Eingangscontroller**: Der Eingangscontroller ist über einen Kubernetes-Dienst vom Typ „LoadBalancer“ mit dem Internet verbunden. Er überwacht und implementiert [Kubernetes-Eingangsressourcen][ingress-resource], die Routen zu Anwendungsendpunkten erstellen.
-- **Externer DNS-Controller**: Er überwacht die Kubernetes-Eingangsressourcen und erstellt in der clusterspezifischen DNS-Zone DNS-A-Einträge.
+- **Eingangscontroller:** Der Eingangscontroller ist über einen Kubernetes-Dienst vom Typ LoadBalancer mit dem Internet verbunden. Er überwacht und implementiert [Kubernetes-Eingangsressourcen][ingress-resource], die Routen zu Anwendungsendpunkten erstellen.
+- **Externer DNS-Controller:** Überwacht die Kubernetes-Eingangsressourcen und erstellt in der clusterspezifischen DNS-Zone DNS-A-Datensätze.
 
-## <a name="deploy-http-routing-cli"></a>Bereitstellen von HTTP-Routing: CLI
+## <a name="deploy-http-routing-cli"></a>Bereitstellen von HTTP-Routing: Befehlszeilenschnittstelle (CLI)
 
 Das Add-On für HTTP-Anwendungsrouting kann beim Bereitstellen eines AKS-Clusters über die Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) aktiviert werden. Verwenden Sie hierzu den Befehl [az aks create][az-aks-create] mit dem Argument `--enable-addons`.
 
@@ -174,6 +174,36 @@ Die HTTP-Routinglösung kann mithilfe der Azure CLI entfernt werden. Dazu führe
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
+Wenn das Routing-Add-On für HTTP-Anwendungen deaktiviert ist, verbleiben eventuell einige Kubernetes-Ressourcen im Cluster. Zu diesen Ressourcen zählen *configMaps* und *secrets*, die im Namespace *kube-system* erstellt werden. Wenn Sie stets einen sauberen Cluster haben möchten, empfiehlt es sich, diese Ressourcen zu entfernen.
+
+Suchen Sie mit den folgenden [kubectl get][kubectl-get]-Befehlen nach Ressourcen des Typs *addon-http-application-routing*:
+
+```console
+kubectl get deployments --namespace kube-system
+kubectl get services --namespace kube-system
+kubectl get configmaps --namespace kube-system
+kubectl get secrets --namespace kube-system
+```
+
+Die folgende Beispielausgabe zeigt configMaps, die gelöscht werden sollten:
+
+```
+$ kubectl get configmaps --namespace kube-system
+
+NAMESPACE     NAME                                                       DATA   AGE
+kube-system   addon-http-application-routing-nginx-configuration         0      9m7s
+kube-system   addon-http-application-routing-tcp-services                0      9m7s
+kube-system   addon-http-application-routing-udp-services                0      9m7s
+```
+
+Verwenden Sie zum Löschen von Ressourcen den Befehl [kubectl delete][kubectl-delete]. Geben Sie den Ressourcentyp, den Ressourcennamen und den Namespace an. Das folgende Beispiel löscht eine der vorherigen configMaps:
+
+```console
+kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
+```
+
+Wiederholen Sie den vorherigen Schritt `kubectl delete` für alle Ressourcen des Typs *addon-http-application-routing*, die sich noch in Ihrem Cluster befinden.
+
 ## <a name="troubleshoot"></a>Problembehandlung
 
 Verwenden Sie den Befehl [kubectl logs][kubectl-logs], um die Anwendungsprotokolle für die externe DNS-Anwendung anzuzeigen. Die Protokolle sollten bestätigen, dass ein A- und TXT-DNS-Eintrag erfolgreich erstellt wurden.
@@ -256,6 +286,7 @@ Informationen zur Installation eines HTTPS-gesicherten Eingangscontrollers in AK
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [ingress-resource]: https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource

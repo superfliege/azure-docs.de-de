@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: 5b0543b28117d349ceaef173a1201574cf2b3682
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 36a448a861bdfdcd85e532578383b14e56f54b1a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604547"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039094"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Behandeln von Konnektivitätsproblemen für Azure SQL-Datenbank mithilfe von Resource Health
 
@@ -77,6 +77,6 @@ Neukonfigurationen gelten als vorübergehende Bedingungen und werden von Zeit zu
 
 - Informieren Sie sich ausführlicher über [Wiederholungslogik für vorübergehende Fehler](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors).
 - Machen Sie sich mit [Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank](./sql-database-connectivity-issues.md) vertraut.
-- Beschäftigen Sie sich eingehender mit dem [Konfigurieren von Resource Health-Warnungen](/articles/service-health/resource-health-alert-arm-template-guide.md).
-- Verschaffen Sie sich einen Überblick über [Resource Health](/articles/service-health/resource-health-overview.md).
-- Lesen Sie die [häufig gestellten Fragen zu Resource Health](/articles/service-health/resource-health-faq.md).
+- Beschäftigen Sie sich eingehender mit dem [Konfigurieren von Resource Health-Warnungen](../service-health/resource-health-alert-arm-template-guide.md).
+- Verschaffen Sie sich einen Überblick über [Resource Health](../service-health/resource-health-overview.md).
+- Lesen Sie die [häufig gestellten Fragen zu Resource Health](../service-health/resource-health-faq.md).

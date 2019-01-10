@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: abd64b7d2fa7930f5b6177c7ac037840da34dc18
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333580"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753131"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Aufbewahrungsrichtlinien für Azure Active Directory-Berichte
 
@@ -53,17 +53,19 @@ Die Erfassung von Sicherheitssignalen beginnt, wenn Sie sich für die Verwendung
 
 **Aktivitätsberichte**    
 
-| Bericht                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Verzeichnisprüfbericht        | 7 Tage        | 30 Tage             | 30 Tage             |
-| Benutzeranmeldeaktivität       | N/V           | 30 Tage             | 30 Tage             |
-| Azure MFA-Nutzung        | 30 Tage       | 30 Tage             | 30 Tage             |
+| Bericht                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--            | :--                 | :--                 |
+| Verzeichnisprüfbericht        | 7 Tage        |  7 Tage        | 30 Tage             | 30 Tage             |
+| Benutzeranmeldeaktivität       | N/V           |  N/V           | 30 Tage             | 30 Tage             |
+| Azure MFA-Nutzung        | 30 Tage       |  30 Tage       | 30 Tage             | 30 Tage             |
+
+Sie können die Aktivitätsdaten zu Überwachung und Anmeldung länger als den oben beschriebenen Standardaufbewahrungszeitraum speichern, indem Sie sie mit Azure Monitor an ein Azure Storage-Konto weiterleiten. Weitere Informationen finden Sie unter [Archivieren von Azure AD-Protokollen in einem Azure Storage-Konto](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 **Sicherheitssignale**
 
-| Bericht         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--            | :--           | :--                 | :--                 |
-| Gefährdete Benutzer  | 7 Tage        | 30 Tage             | 90 Tage             |
-| Riskante Anmeldungen | 7 Tage        | 30 Tage             | 90 Tage             |
+| Bericht         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--            | :--           | :--            | :--                 | :--                 |
+| Gefährdete Benutzer  | 7 Tage        | 7 Tage         | 30 Tage             | 90 Tage             |
+| Riskante Anmeldungen | 7 Tage        | 7 Tage         |  30 Tage            | 90 Tage             |
 
 ---

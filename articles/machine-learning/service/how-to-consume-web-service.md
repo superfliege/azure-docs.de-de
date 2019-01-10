@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines Clients zum Nutzen eines bereitgestellten Webdiensts
 titleSuffix: Azure Machine Learning service
-description: 'Erfahren Sie, wie ein Webdienst genutzt werden kann, der bei der Bereitstellung eines Modells mit dem Azure Machine Learning-Modell generiert wurde: der Webdienst, der eine REST-API bereitstellt. Erstellen Sie Clients für diese API mithilfe einer Programmiersprache Ihrer Wahl.'
+description: Erfahren Sie, wie ein Webdienst genutzt werden kann, der bei der Bereitstellung eines Modells mit dem Azure Machine Learning-Modell generiert wurde. Der Webdienst stellt eine REST-API bereit. Erstellen Sie Clients für diese API mithilfe einer Programmiersprache Ihrer Wahl.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: efa24fcb624c7613ce16028d7ba06af4d4d2153c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251129"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753386"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
 Durch die Bereitstellung eines Azure Machine Learning-Modells als Webdienst wird eine REST-API erstellt. Sie können Daten an diese API senden und die vom Modell zurückgegebene Vorhersage empfangen. In diesem Dokument erfahren Sie, wie Sie Clients für den Webdienst mithilfe von C#, Go, Java und Python erstellen.
 
-Ein Webdienst wird erstellt, wenn Sie ein Image für Azure Container Instances, Azure Kubernetes Service oder Project Brainwave (Field Programmable Gate Arrays) bereitstellen. Images werden aus registrierten Modellen und Bewertungsdateien erstellt. Der URI für den Zugriff auf einen Webdienst kann über das [Azure Machine Learning SDK](https://aka.ms/aml-sdk) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel verwenden.
+Sie erstellen einen Webdienst, wenn Sie ein Image für Azure Container Instances, Azure Kubernetes Service oder Project Brainwave (Field Programmable Gate Arrays) bereitstellen. Sie erstellen Images aus registrierten Modellen und Bewertungsdateien. Der URI für den Zugriff auf einen Webdienst kann über das [Azure Machine Learning SDK](https://aka.ms/aml-sdk) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel verwenden.
 
-Dies ist der allgemeine Workflow beim Erstellen eines Clients, der einen ML-Webdienst verwendet:
+Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine Learning-Webdienst verwendet:
 
 1. Verwenden des SDK zum Abrufen der Verbindungsinformationen
 1. Festlegen des Typs der vom Modell verwendeten Anforderungsdaten
-1. Erstellen einer Anwendung zum Aufrufen des Webdiensts
+1. Erstellen einer Anwendung, die den Webdienst aufruft
 
 ## <a name="connection-information"></a>Verbindungsinformationen
 
 > [!NOTE]
-> Das Azure Machine Learning SDK wird zum Abrufen der Webdienstinformationen verwendet. Dies ist ein Python SDK. Es wird zum Abrufen von Informationen zu den Webdiensten verwendet. Sie können jedoch eine beliebige Sprache verwenden, um einen Client für den Dienst zu erstellen.
+> Verwenden Sie das Azure Machine Learning SDK zum Abrufen der Webdienstinformationen. Dies ist ein Python SDK. Sie können eine beliebige Sprache verwenden, um einen Client für den Dienst zu erstellen.
 
-Die Verbindungsinformationen für den Webdienst können über das Azure Machine Learning SDK abgerufen werden. Die Klasse [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) stellt die erforderlichen Informationen zum Erstellen eines Clients bereit. Die folgenden `Webservice`-Eigenschaften sind hilfreich, wenn Sie eine Clientanwendung erstellen:
+Die [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)-Klasse stellt die erforderlichen Informationen zum Erstellen eines Clients bereit. Die folgenden `Webservice`-Eigenschaften sind hilfreich, wenn Sie eine Clientanwendung erstellen:
 
 * `auth_enabled`: `True`, wenn die Authentifizierung aktiviert ist, andernfalls `False`.
 * `scoring_uri`: Die REST-API-Adresse.
@@ -69,12 +69,12 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
 
 ### <a name="authentication-key"></a>Authentifizierungsschlüssel
 
-Authentifizierungsschlüssel werden automatisch erstellt, wenn die Authentifizierung für eine Bereitstellung aktiviert ist.
+Wenn Sie Authentifizierung für eine Bereitstellung aktivieren, werden automatisch Authentifizierungsschlüssel erstellt.
 
-* Die Authentifizierung ist __standardmäßig aktiviert__, wenn die Bereitstellung in __Azure Kubernetes Service__ erfolgt.
-* Die Authentifizierung ist __standardmäßig deaktiviert__, wenn die Bereitstellung in __Azure Container Instances__ erfolgt.
+* Die Authentifizierung ist standardmäßig aktiviert, wenn die Bereitstellung in Azure Kubernetes Service erfolgt.
+* Die Authentifizierung ist standardmäßig deaktiviert, wenn die Bereitstellung in Azure Container Instances erfolgt.
 
-Um die Authentifizierung zu steuern, verwenden Sie den Parameter `auth_enabled` beim Erstellen oder Aktualisieren einer Bereitstellung.
+Um die Authentifizierung zu steuern, verwenden Sie den `auth_enabled`-Parameter beim Erstellen oder Aktualisieren einer Bereitstellung.
 
 Wenn die Authentifizierung aktiviert ist, können Sie mithilfe der Methode `get_keys` einen primären und einen sekundären Authentifizierungsschlüssel abrufen:
 
@@ -102,7 +102,7 @@ Die REST-API erwartet als Hauptteil der Anforderung ein JSON-Dokument mit der fo
 > [!IMPORTANT]
 > Die Struktur der Daten muss dem entsprechen, was vom Bewertungsskript und vom Modell im Dienst erwartet wird. Die Daten können vor der Übergabe an das Modell vom Bewertungsskript geändert werden.
 
-Beispielsweise erwartet das Modell im Beispiel [Train within Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) ein Array mit 10 Ziffern. Das Bewertungsskript für dieses Beispiel erstellt ein numpy-Array aus der Anforderung und übergibt es an das Modell. Das folgende Beispiel zeigt die Daten, die von diesem Dienst erwartet werden:
+Beispielsweise erwartet das Modell im Beispiel [Train within Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) ein Array mit 10 Ziffern. Das Bewertungsskript für dieses Beispiel erstellt ein NumPy-Array aus der Anforderung und übergibt es an das Modell. Das folgende Beispiel zeigt die Daten, die von diesem Dienst erwartet werden:
 
 ```json
 {
@@ -155,9 +155,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> Die Dinge im Namespace `azureml.contrib` ändern sich häufig, während wir daran arbeiten, den Dienst zu verbessern. Daher sollte alles in diesem Namespace als Vorschau und als von Microsoft nicht vollständig unterstützt betrachtet werden.
+> Der Namespace `azureml.contrib` ändert sich häufig, während wir daran arbeiten, den Dienst zu verbessern. Daher sollte alles in diesem Namespace als Vorschau und als von Microsoft nicht vollständig unterstützt betrachtet werden.
 >
-> Wenn Sie dies in Ihrer lokalen Entwicklungsumgebung testen müssen, können Sie die Komponenten im contrib-Namespace mit dem folgenden Befehl installieren:
+> Wenn Sie dies in Ihrer lokalen Entwicklungsumgebung testen müssen, können Sie die Komponenten im Namespace `contrib` mit dem folgenden Befehl installieren:
 > 
 > ```shell
 > pip install azureml-contrib-services

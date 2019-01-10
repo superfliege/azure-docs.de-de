@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 893e44b3298a03559b7dea4721e3bbbab0c65897
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4d5b98ab001bcb30091590880954c7075701e53b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615924"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607352"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Datenbanksichten in Azure Blockchain Workbench
 
@@ -27,7 +27,7 @@ Dieser Abschnitt enthält eine Übersicht über die Datenbanksichten und die dar
 
 > [!NOTE]
 > Jegliche direkte Nutzung von Datenbanktabellen, die in der Datenbank außerhalb dieser Sichten vorliegen, wird nicht unterstützt (obwohl die Nutzung theoretisch möglich ist).
-> 
+>
 
 ## <a name="vwapplication"></a>vwApplication
 
@@ -39,11 +39,11 @@ Diese Sicht enthält Details zu **Anwendungen**, die in Azure Blockchain Workben
 | ApplicationName                  | nvarchar(50)  | Nein           | Der Name der Anwendung. |
 | ApplicationDescription           | nvarchar(255) | JA         | Eine Beschreibung der Anwendung. |
 | ApplicationDisplayName           | nvarchar(255) | Nein           | Der Name, der auf einer Benutzeroberfläche angezeigt wird. |
-| ApplicationEnabled               | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.</br> **Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
+| ApplicationEnabled               | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.<br /> **Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
 | UploadedDtTm                     | datetime2(7)  | Nein           | Das Datum und die Uhrzeit eines Vertragsuploads. |
 | UploadedByUserId                 | int           | Nein           | Die ID des Benutzers, der die Anwendung hochgeladen hat. |
 | UploadedByUserExternalId         | nvarchar(255) | Nein           | Der externe Bezeichner für den Benutzer, der die Anwendung hochgeladen hat. Standardmäßig ist dies die ID für den Benutzer aus der Azure Active Directory-Instanz für das Konsortium.                                                                                                |
-| UploadedByUserProvisioningStatus | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: </br>0 – Benutzer wurde von der API erstellt<br>1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet</br>2 – Der Benutzer wurde vollständig bereitgestellt                         |
+| UploadedByUserProvisioningStatus | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: <br />0 – Benutzer wurde von der API erstellt<br />1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br />2 – Der Benutzer wurde vollständig bereitgestellt                         |
 | UploadedByUserFirstName          | nvarchar(50)  | JA         | Der Vorname des Benutzers, der den Vertrag hochgeladen hat. |
 | UploadedByUserLastName           | nvarchar(50)  | JA         | Der Nachname des Benutzers, der den Vertrag hochgeladen hat. |
 | UploadedByUserEmailAddress       | nvarchar(255) | JA         | Die E-Mail-Adresse des Benutzers, der den Vertrag hochgeladen hat. |
@@ -81,7 +81,7 @@ In einer Anwendung vom Typ *Assetübertragung* kann *John Smith* beispielsweise 
 | ApplicationRoleDescription | nvarchar(255) | JA         | Eine Beschreibung der Rolle.                                                                                                                                                                                                             |
 | UserId                     | int           | Nein           | Die ID des Benutzers, der der Rolle zugeordnet ist. |
 | UserExternalId             | nvarchar(255) | Nein           | Der externe Bezeichner für den Benutzer, der der Rolle zugeordnet ist. Standardmäßig ist dies die ID für den Benutzer aus der Azure Active Directory-Instanz für das Konsortium.                                                                     |
-| UserProvisioningStatus     | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: </br>0 – Benutzer wurde von der API erstellt</br>1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br>2 – Der Benutzer wurde vollständig bereitgestellt |
+| UserProvisioningStatus     | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: <br />0 – Benutzer wurde von der API erstellt<br />1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br />2 – Der Benutzer wurde vollständig bereitgestellt |
 | UserFirstName              | nvarchar(50)  | JA         | Der Vorname des Benutzers, der der Rolle zugeordnet ist. |
 | UserLastName               | nvarchar(255) | JA         | Der Nachname des Benutzers, der der Rolle zugeordnet ist. |
 | UserEmailAddress           | nvarchar(255) | JA         | Die E-Mail-Adresse des Benutzers, der der Rolle zugeordnet ist. |
@@ -103,7 +103,7 @@ Diese Sicht enthält Details zu den in Azure Blockchain Workbench definierten Ve
 | LedgerDisplayName        | nvarchar(255) | Nein           | Der Name des Ledgers, der auf der Benutzeroberfläche angezeigt wird. |
 | UserId                   | int           | Nein           | Die ID des Benutzers, der der Verbindung zugeordnet ist. |
 | UserExternalId           | nvarchar(255) | Nein           | Der externe Bezeichner für den Benutzer, der der Verbindung zugeordnet ist. Standardmäßig ist dies die ID für den Benutzer aus der Azure Active Directory-Instanz für das Konsortium. |
-| UserProvisioningStatus   | int           | Nein           |Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: </br>0 – Benutzer wurde von der API erstellt</br>1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br>2 – Der Benutzer wurde vollständig bereitgestellt |
+| UserProvisioningStatus   | int           | Nein           |Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: <br />0 – Benutzer wurde von der API erstellt<br />1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br />2 – Der Benutzer wurde vollständig bereitgestellt |
 | UserFirstName            | nvarchar(50)  | JA         | Der Vorname des Benutzers, der der Verbindung zugeordnet ist. |
 | UserLastName             | nvarchar(255) | JA         | Der Nachname des Benutzers, der der Verbindung zugeordnet ist. |
 | UserEmailAddress         | nvarchar(255) | JA         | Die E-Mail-Adresse des Benutzers, der der Verbindung zugeordnet ist. |
@@ -129,7 +129,7 @@ Diese Sicht enthält Details zu bereitgestellten Verträgen. Für jeden Vertrag 
 | ApplicationId                            | int            | Nein           | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                          | nvarchar (50)  | Nein           | Der Name der Anwendung. |
 | ApplicationDisplayName                   | nvarchar(255) | Nein           | Der Name, der auf einer Benutzeroberfläche angezeigt wird. |
-| ApplicationEnabled                       | Bit            | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.</br> **Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank.  |
+| ApplicationEnabled                       | Bit            | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.<br /> **Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank.  |
 | WorkflowId                               | int            | Nein           | Ein eindeutiger Bezeichner für den Workflow, der einem Vertrag zugeordnet ist. |
 | WorkflowName                             | nvarchar(50)   | Nein           | Der Name des Workflows, der einem Vertrag zugeordnet ist. |
 | WorkflowDisplayName                      | nvarchar(255)  | Nein           | Der Name des Workflows, der dem Vertrag zugeordnet ist und auf der Benutzeroberfläche angezeigt wird. |
@@ -138,11 +138,11 @@ Diese Sicht enthält Details zu bereitgestellten Verträgen. Für jeden Vertrag 
 | ContractFileName                         | int            | Nein           | Der Name der Datei, die den Smart Contract-Code für diesen Workflow enthält. |
 | ContractUploadedDtTm                     | int            | Nein           | Das Datum und die Uhrzeit des Vertragscodeuploads. |
 | ContractId                               | int            | Nein           | Der eindeutige Bezeichner für den Vertrag. |
-| ContractProvisioningStatus               | int            | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: </br>0 – Der Vertrag wurde von der API in der Datenbank erstellt</br>1 – Der Vertrag wurde an den Ledger gesendet</br>2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich</br>3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.</br>5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. </br></br>Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
+| ContractProvisioningStatus               | int            | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: <br />0 – Der Vertrag wurde von der API in der Datenbank erstellt<br />1 – Der Vertrag wurde an den Ledger gesendet<br />2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich<br />3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.<br />5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. <br /><br />Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
 | ContractLedgerIdentifier                 | nvarchar(255) |             | Die E-Mail-Adresse des Benutzers, der den Vertrag bereitgestellt hat. |
 | ContractDeployedByUserId                 | int            | Nein           | Ein externer Bezeichner für den Benutzer, der den Vertrag bereitgestellt hat. Standardmäßig ist dies die GUID, die die Azure Active Directory-ID für den Benutzer darstellt.                                                                                                          |
 | ContractDeployedByUserExternalId         | nvarchar(255)  | Nein           | Ein externer Bezeichner für den Benutzer, der den Vertrag bereitgestellt hat. Standardmäßig ist dies die GUID, die die Azure Active Directory-ID für den Benutzer darstellt.                                                                                                         |
-| ContractDeployedByUserProvisioningStatus | int            | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: </br>0 – Benutzer wurde von der API erstellt</br>1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet </br>2 – Der Benutzer wurde vollständig bereitgestellt                     |
+| ContractDeployedByUserProvisioningStatus | int            | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: <br />0 – Benutzer wurde von der API erstellt<br />1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet <br />2 – Der Benutzer wurde vollständig bereitgestellt                     |
 | ContractDeployedByUserFirstName          | nvarchar(50)   | JA         | Der Vorname des Benutzers, der den Vertrag bereitgestellt hat. |
 | ContractDeployedByUserLastName           | nvarchar(255)  | JA         | Der Nachname des Benutzers, der den Vertrag bereitgestellt hat. |
 | ContractDeployedByUserEmailAddress       | nvarchar(255)  | JA         | Die E-Mail-Adresse des Benutzers, der den Vertrag bereitgestellt hat. |
@@ -169,8 +169,8 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf Aktionen, die 
 | WorkflowName                             | nvarchar(50)  | Nein           | Der Name des Workflows. |
 | WorkflowDisplayName                      | nvarchar(255) | Nein           | Der Name des Workflows, der auf einer Benutzeroberfläche angezeigt wird. |
 | WorkflowDescription                      | nvarchar(255) | JA         | Die Beschreibung des Workflows. |
-| ContractId                               | int           | Nein           | Ein eindeutiger Bezeichner für den Vertrag. |
-| ContractProvisioningStatus               | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: </br>0 – Der Vertrag wurde von der API in der Datenbank erstellt</br>1 – Der Vertrag wurde an den Ledger gesendet</br>2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich</br>3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.</br>5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. </br></br>Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractActionV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
+| ContractId                               | int           | Nein           | Ein eindeutiger Bezeichner für den Vertrag |
+| ContractProvisioningStatus               | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: <br />0 – Der Vertrag wurde von der API in der Datenbank erstellt<br />1 – Der Vertrag wurde an den Ledger gesendet<br />2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich<br />3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.<br />5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. <br /><br />Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractActionV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
 | ContractCodeId                           | int           | Nein           | Ein eindeutiger Bezeichner für die Codeimplementierung des Vertrags. |
 | ContractLedgerIdentifier                 | nvarchar(255) | JA         | Ein eindeutiger Bezeichner, der der bereitgestellten Version eines Smart Contracts für einen bestimmten Distributed Ledger zugeordnet ist. Beispiel: Ethereum. |
 | ContractDeployedByUserId                 | int           | Nein           | Der eindeutige Bezeichner des Benutzers, der den Vertrag bereitgestellt hat. |
@@ -183,12 +183,12 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf Aktionen, die 
 | WorkflowFunctionDisplayName              | nvarchar(255) | Nein           | Der Name einer Funktion für die Anzeige auf der Benutzeroberfläche. |
 | WorkflowFunctionDescription              | nvarchar(255) | Nein           | Die Beschreibung der Funktion. |
 | ContractActionId                         | int           | Nein           | Der eindeutige Bezeichner für eine Vertragsaktion. |
-| ContractActionProvisioningStatus         | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für die Vertragsaktion. Mögliche Werte: </br>0 – Die Vertragsaktion wurde von der API in der Datenbank erstellt</br>1 – Die Vertragsaktion wurde an den Ledger gesendet</br>2 – Die Bereitstellung der Vertragsaktion im Ledger war erfolgreich</br>3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.</br>5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. </br></br>Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractActionV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
+| ContractActionProvisioningStatus         | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für die Vertragsaktion. Mögliche Werte: <br />0 – Die Vertragsaktion wurde von der API in der Datenbank erstellt<br />1 – Die Vertragsaktion wurde an den Ledger gesendet<br />2 – Die Bereitstellung der Vertragsaktion im Ledger war erfolgreich<br />3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.<br />5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. <br /><br />Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractActionV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
 | ContractActionTimestamp                  | datetime(2,7) | Nein           | Der Zeitstempel der Vertragsaktion. |
 | ContractActionExecutedByUserId           | int           | Nein           | Eindeutiger Bezeichner des Benutzers, der die Vertragsaktion ausgeführt hat. |
 | ContractActionExecutedByUserFirstName    | int           | JA         | Der Vorname des Benutzers, der die Vertragsaktion ausgeführt hat. |
 | ContractActionExecutedByUserLastName     | nvarchar(50)  | JA         | Der Nachname des Benutzers, der die Vertragsaktion ausgeführt hat. |
-| ContractActionExecutedByUserExternalId   | nvarchar(255) | JA         | Externer Bezeichner des Benutzers, der die Vertragsaktion durchgeführt hat.  Standardmäßig ist dies die GUID, die die Identität in der Azure Active Directory-Instanz des Konsortiums darstellt. |
+| ContractActionExecutedByUserExternalId   | nvarchar(255) | JA         | Externer Bezeichner des Benutzers, der die Vertragsaktion durchgeführt hat. Standardmäßig ist dies die GUID, die die Identität in der Azure Active Directory-Instanz des Konsortiums darstellt. |
 | ContractActionExecutedByUserEmailAddress | nvarchar(255) | JA         | Die E-Mail-Adresse des Benutzers, der die Vertragsaktion ausgeführt hat. |
 | WorkflowFunctionParameterId              | int           | Nein           | Ein eindeutiger Bezeichner für einen Parameter der Funktion. |
 | WorkflowFunctionParameterName            | nvarchar(50)  | Nein           | Der Name eines Parameters der Funktion. |
@@ -196,7 +196,7 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf Aktionen, die 
 | WorkflowFunctionParameterDataTypeId      | int           | Nein           | Der eindeutige Bezeichner für den Datentyp, der einem Workflowfunktionsparameter zugeordnet ist. |
 | WorkflowParameterDataTypeName            | nvarchar(50)  | Nein           | Der Name eines Datentyps, der einem Workflowfunktionsparameter zugeordnet ist. |
 | ContractActionParameterValue             | nvarchar(255) | Nein           | Der Wert für den Parameter, der im Smart Contract gespeichert ist. |
-| BlockHash                                | nvarchar(255) | JA         | Der Hash des Blocks. |
+| BlockHash                                | nvarchar(255) | JA         | Der Hash des Blocks |
 | BlockNumber                              | int           | JA         | Die Nummer des Blocks im Ledger. |
 | BlockTimestamp                           | datetime(2,7) | JA         | Der Zeitstempel des Blocks. |
 | TransactionId                            | int           | Nein           | Ein eindeutiger Bezeichner für die Transaktion. |
@@ -204,7 +204,7 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf Aktionen, die 
 | TransactionTo                            | nvarchar(255) | JA         | Die Partei, mit der die Transaktion zusammen durchgeführt wurde. |
 | TransactionHash                          | nvarchar(255) | JA         | Der Hash einer Transaktion. |
 | TransactionIsWorkbenchTransaction        | Bit           | JA         | Ein Bit, mit dem identifiziert wird, ob die Transaktion eine Azure Blockchain Workbench-Transaktion ist. |
-| TransactionProvisioningStatus            | int           | JA         | Identifiziert den aktuellen Status des Bereitstellungsprozesses für die Transaktion. Mögliche Werte: </br>0 – Die Transaktion wurde von der API in der Datenbank erstellt</br>1 – Die Transaktion wurde an den Ledger gesendet</br>2 – Die Bereitstellung der Transaktion im Ledger war erfolgreich                 |
+| TransactionProvisioningStatus            | int           | JA         | Identifiziert den aktuellen Status des Bereitstellungsprozesses für die Transaktion. Mögliche Werte: <br />0 – Die Transaktion wurde von der API in der Datenbank erstellt<br />1 – Die Transaktion wurde an den Ledger gesendet<br />2 – Die Bereitstellung der Transaktion im Ledger war erfolgreich                 |
 | TransactionValue                         | decimal(32,2) | JA         | Der Wert der Transaktion. |
 
 ## <a name="vwcontractproperty"></a>vwContractProperty
@@ -223,13 +223,13 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf Eigenschaften,
 | ApplicationId                      | int           | Nein           | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                    | nvarchar(50)  | Nein           | Der Name der Anwendung. |
 | ApplicationDisplayName             | nvarchar(255) | Nein           | Der Name, der auf einer Benutzeroberfläche angezeigt wird. |
-| ApplicationEnabled                 | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.</br>**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank.                      |
+| ApplicationEnabled                 | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.<br />**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank.                      |
 | WorkflowId                         | int           | Nein           | Der eindeutige Bezeichner für den Workflow. |
 | WorkflowName                       | nvarchar(50)  | Nein           | Der Name des Workflows. |
 | WorkflowDisplayName                | nvarchar(255) | Nein           | Der Name des Workflows, der auf der Benutzeroberfläche angezeigt wird. |
 | WorkflowDescription                | nvarchar(255) | JA         | Die Beschreibung des Workflows. |
 | ContractId                         | int           | Nein           | Der eindeutige Bezeichner für den Vertrag. |
-| ContractProvisioningStatus         | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: </br>0 – Der Vertrag wurde von der API in der Datenbank erstellt</br>1 – Der Vertrag wurde an den Ledger gesendet</br>2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich</br>3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.</br>5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. </br></br>Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractPropertyV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
+| ContractProvisioningStatus         | int           | Nein           | Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: <br />0 – Der Vertrag wurde von der API in der Datenbank erstellt<br />1 – Der Vertrag wurde an den Ledger gesendet<br />2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich<br />3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.<br />5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. <br /><br />Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractPropertyV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
 | ContractCodeId                     | int           | Nein           | Ein eindeutiger Bezeichner für die Codeimplementierung des Vertrags. |
 | ContractLedgerIdentifier           | nvarchar(255) | JA         | Ein eindeutiger Bezeichner, der der bereitgestellten Version eines Smart Contracts für einen bestimmten Distributed Ledger zugeordnet ist. Beispiel: Ethereum. |
 | ContractDeployedByUserId           | int           | Nein           | Der eindeutige Bezeichner des Benutzers, der den Vertrag bereitgestellt hat. |
@@ -263,14 +263,14 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf den Status ein
 | ApplicationId                      | int           | Nein           | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                    | nvarchar(50)  | Nein           | Der Name der Anwendung. |
 | ApplicationDisplayName             | nvarchar(255) | Nein           | Der Name, der auf einer Benutzeroberfläche angezeigt wird. |
-| ApplicationEnabled                 | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.</br>**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
+| ApplicationEnabled                 | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.<br />**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
 | WorkflowId                         | int           | Nein           | Ein eindeutiger Bezeichner für den Workflow. |
 | WorkflowName                       | nvarchar(50)  | Nein           | Der Name des Workflows. |
 | WorkflowDisplayName                | nvarchar(255) | Nein           | Der Name, der auf der Benutzeroberfläche angezeigt wird. |
 | WorkflowDescription                | nvarchar(255) | JA         | Die Beschreibung des Workflows. |
 | ContractLedgerImplementationId     | nvarchar(255) | JA         | Ein eindeutiger Bezeichner, der der bereitgestellten Version eines Smart Contracts für einen bestimmten Distributed Ledger zugeordnet ist. Beispiel: Ethereum. |
-| ContractId                         | int           | Nein           | Ein eindeutiger Bezeichner für den Vertrag. |
-| ContractProvisioningStatus         | int           | Nein           |Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: </br>0 – Der Vertrag wurde von der API in der Datenbank erstellt</br>1 – Der Vertrag wurde an den Ledger gesendet</br>2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich</br>3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.</br>5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. </br></br>Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractStateV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
+| ContractId                         | int           | Nein           | Ein eindeutiger Bezeichner für den Vertrag |
+| ContractProvisioningStatus         | int           | Nein           |Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Vertrag. Mögliche Werte: <br />0 – Der Vertrag wurde von der API in der Datenbank erstellt<br />1 – Der Vertrag wurde an den Ledger gesendet<br />2 – Die Bereitstellung des Vertrags im Ledger war erfolgreich<br />3 oder 4 – Der Vertrag konnte nicht im Ledger bereitgestellt werden.<br />5 – Die Bereitstellung des Vertrags im Ledger war erfolgreich. <br /><br />Ab Version 1.5 werden die Werte 0 bis 5 unterstützt. Für Abwärtskompatibilität im aktuellen Release ist die Sicht **vwContractStateV0** verfügbar, die nur Werte von 0 bis 2 unterstützt. |
 | ConnectionId                       | int           | Nein           | Ein eindeutiger Bezeichner für die Blockchain-Instanz, auf der der Workflow bereitgestellt wird. |
 | ContractCodeId                     | int           | Nein           | Ein eindeutiger Bezeichner für die Codeimplementierung des Vertrags. |
 | ContractDeployedByUserId           | int           | Nein           | Eindeutiger Bezeichner des Benutzers, der den Vertrag bereitgestellt hat. |
@@ -297,7 +297,7 @@ Diese Sicht enthält Details zu den Konsortiumsmitgliedern, die für die Nutzung
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | Nein           | Ein eindeutiger Bezeichner für einen Benutzer. |
 | ExternalID         | nvarchar(255) | Nein           | Ein externer Bezeichner für einen Benutzer. Standardmäßig ist dies die GUID, die die Azure Active Directory-ID für den Benutzer darstellt. |
-| ProvisioningStatus | int           | Nein           |Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: </br>0 – Benutzer wurde von der API erstellt</br>1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br>2 – Der Benutzer wurde vollständig bereitgestellt |
+| ProvisioningStatus | int           | Nein           |Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: <br />0 – Benutzer wurde von der API erstellt<br />1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br />2 – Der Benutzer wurde vollständig bereitgestellt |
 | FirstName          | nvarchar(50)  | JA         | Der Vorname des Benutzers. |
 | LastName           | nvarchar(50)  | JA         | Der Nachname des Benutzers. |
 | EmailAddress       | nvarchar(255) | JA         | Die E-Mail-Adresse des Benutzers. |
@@ -331,7 +331,7 @@ Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Fu
 
 ## <a name="vwworkflowfunction"></a>vwWorkflowFunction
 
-Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Funktionen und Parameter des Workflows. Sie ist auf die Berichterstellung ausgelegt und enthält auch die Metadaten zu der Anwendung, die dem Workflow zugeordnet ist. Diese Sicht enthält Daten aus mehreren zugrunde liegenden Tabellen, um die Berichterstellung für Workflows zu ermöglichen.  Für jede Workflowfunktion enthält diese Sicht die folgenden Daten:
+Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Funktionen und Parameter des Workflows. Sie ist auf die Berichterstellung ausgelegt und enthält auch die Metadaten zu der Anwendung, die dem Workflow zugeordnet ist. Diese Sicht enthält Daten aus mehreren zugrunde liegenden Tabellen, um die Berichterstellung für Workflows zu ermöglichen. Für jede Workflowfunktion enthält diese Sicht die folgenden Daten:
 
 -   Zugeordnete Anwendungsdefinition
 -   Zugeordnete Workflowdefinition
@@ -371,7 +371,7 @@ Diese Sicht stellt die Eigenschaften dar, die für einen Workflow definiert werd
 | ApplicationId                | int           | Nein           | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName              | nvarchar(50)  | Nein           | Der Name der Anwendung. |
 | ApplicationDisplayName       | nvarchar(255) | Nein           | Der Name, der auf einer Benutzeroberfläche angezeigt wird. |
-| ApplicationEnabled           | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.</br>**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
+| ApplicationEnabled           | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.<br />**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
 | WorkflowId                   | int           | Nein           | Ein eindeutiger Bezeichner für den Workflow. |
 | WorkflowName                 | nvarchar(50)  | Nein           | Der Name des Workflows. |
 | WorkflowDisplayName          | nvarchar(255) | Nein           | Der Name, der für den Workflow auf einer Benutzeroberfläche angezeigt wird. |
@@ -398,7 +398,7 @@ Diese Sicht enthält die Eigenschaften, die einem Workflow zugeordnet sind. Für
 | ApplicationId                | int           | Nein           | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName              | nvarchar(50)  | Nein           | Der Name der Anwendung. |
 | ApplicationDisplayName       | nvarchar(255) | Nein           | Eine Beschreibung der Anwendung. |
-| ApplicationEnabled           | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.</br>**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
+| ApplicationEnabled           | Bit           | Nein           | Ermittelt, ob die Anwendung derzeit aktiviert ist.<br />**Hinweis:** Eine Anwendung kann in der Datenbank zwar als deaktiviert angegeben werden, aber die zugeordneten Verträge verbleiben in der Blockchain-Komponente, und Daten zu diesen Verträgen verbleiben in der Datenbank. |
 | WorkflowId                   | int           | Nein           | Der eindeutige Bezeichner für den Workflow. |
 | WorkflowName                 | nvarchar(50)  | Nein           | Der Name des Workflows. |
 | WorkflowDisplayName          | nvarchar(255) | Nein           | Der Name, der auf der Benutzeroberfläche für den Workflow angezeigt wird. |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: 97fb5c2558d55b3f80f2e771971faa109a930c5f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c27cee4842c0e65e1737f100a215cff82a0fd439
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626455"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033093"
 ---
 # <a name="manage-indexing-in-azure-cosmos-db"></a>Verwalten der Indizierung in Azure Cosmos DB
 
@@ -57,5 +57,5 @@ Weitere Informationen zur Indizierung erhalten Sie in den folgenden Artikeln:
 
 * [Indexing in Azure Cosmos DB](index-overview.md) (Indizierung in Azure Cosmos DB)
 * [Indexing policy in Azure Cosmos DB](index-policy.md) (Indizierungsrichtlinie in Azure Cosmos DB)
-* [Index types in Azure Cosmos DB](index-types.md) (Indextypen in Azure Cosmos DB)
+* [Indextypen](index-types.md)
 * [Index paths in Azure Cosmos DB](index-paths.md) (Indexpfade in Azure Cosmos DB)

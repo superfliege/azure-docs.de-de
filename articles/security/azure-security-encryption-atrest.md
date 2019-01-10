@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 1bcd9dfe2d7a846dd040944509be916c1964ba48
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420386"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994401"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -104,7 +104,7 @@ Ziehen Sie für die clientseitige Verschlüsselung folgendes in Betracht:
 - Die Kunden bewahren die Schlüssel lokal auf (oder in anderen sicheren Speichern). Schlüssel sind für Azure-Dienste nicht verfügbar
 - Reduzierte Cloud-Funktionen
 
-Die in Azure unterstützten Verschlüsselungsmodelle können in zwei Hauptgruppen aufgeteilt werden: „Kundenverschlüsselung“ und „serverseitige Verschlüsselung“, wie bereits erwähnt. Unabhängig vom Verschlüsselungsmodell für ruhende Daten wird für Azure-Dienste immer der Einsatz eines sicheren Datentransports wie TLS oder HTTPS empfohlen. Deshalb sollte das Datentransportprotokoll die Verschlüsselung während des Datentransport behandeln und sollte kein ausschlaggebender Faktor bei der Entscheidung für oder gegen ein Verschlüsselungsmodell für ruhende Daten sein.
+Die unterstützten Verschlüsselungsmodelle in Azure können in zwei Hauptgruppen unterteilt werden: „Clientverschlüsselung“ und „serverseitige Verschlüsselung“ (wie bereits erwähnt). Unabhängig vom Verschlüsselungsmodell für ruhende Daten wird für Azure-Dienste immer der Einsatz eines sicheren Datentransports wie TLS oder HTTPS empfohlen. Deshalb sollte das Datentransportprotokoll die Verschlüsselung während des Datentransport behandeln und sollte kein ausschlaggebender Faktor bei der Entscheidung für oder gegen ein Verschlüsselungsmodell für ruhende Daten sein.
 
 ### <a name="client-encryption-model"></a>Clientverschlüsselungsmodell
 
@@ -201,7 +201,7 @@ Wenn die serverseitige Verschlüsselung mit vom Server verwalteten Schlüsseln a
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Verschlüsselung ruhender Daten in Microsoft-Clouddiensten
 
-Microsoft-Clouddienste werden in drei Cloudmodellen verwendet: IaaS, PaaS und SaaS. Unten finden Sie Beispiele, wie diese in das jeweilige Modell passen:
+Microsoft Cloud-Dienste werden in drei Cloudmodellen verwendet: IaaS, PaaS und SaaS. Unten finden Sie Beispiele, wie diese in das jeweilige Modell passen:
 
 - Softwaredienste, sogenannte Software-as-a-Servive (SaaS), denen Anwendungen über die Cloud bereitgestellt werden, z.B. Office 365.
 - Plattformdienste, mit denen Kunden die Cloud in ihren Anwendungen nutzen, z.B. für Speicherung, Analysen und Service Bus-Funktionalität.
@@ -243,7 +243,7 @@ Jeder Kunde, der Funktionen von Azure-IaaS verwendet, kann die Verschlüsselung 
 
 Alle Azure Storage-Dienste (Blob Storage, Queue Storage, Table Storage und Azure Files) unterstützen die serverseitige Verschlüsselung im Ruhezustand. Manche Dienste unterstützen auch von Kunden verwaltete Schlüssel und clientseitige Verschlüsselung.  
 
-- Serverseitig: Alle Azure Storage-Dienste ermöglichen standardmäßig die serverseitige Verschlüsselung mithilfe von dienstverwalteten Schlüsseln, was für die Anwendung transparent ist. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob Storage und Azure Files unterstützen auch von Kunden verwaltete RSA-Schlüssel mit 2048 Bit in Azure Key Vault. Weitere Informationen finden Sie unter [Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
+- Serverseitig: Alle Azure Storage-Dienste ermöglichen standardmäßig die serverseitige Verschlüsselung mithilfe von dienstverwalteten Schlüsseln – transparent für die Anwendung. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob Storage und Azure Files unterstützen auch von Kunden verwaltete RSA-Schlüssel mit 2048 Bit in Azure Key Vault. Weitere Informationen finden Sie unter [Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 - Clientseitig: Azure-Blobs, -Tabellen und -Warteschlangen unterstützen die clientseitige Verschlüsselung. Beim Verwenden der clientseitigen Verschlüsselung verschlüsseln Kunden die Daten und laden die Daten als verschlüsselte Blobs hoch. Der Kunde ist für die Schlüsselverwaltung verantwortlich. Weitere Informationen finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
@@ -262,6 +262,7 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Datenträger (IaaS)                      | -                  | Ja, RSA 2048 Bit  | -                  |
 | SQL Server (IaaS)                | JA                | Ja, RSA 2048 Bit  | JA                |
 | Azure SQL-Datenbank/Azure SQL Data Warehouse | JA                | Ja, RSA 2048 Bit  | JA                |
+| Azure SQL (verwaltete Datenbank-Instanz) | JA                | RSA 2048 Bit, Vorschauversion  | JA                |
 | Azure Storage (Block-/Seitenblobs) | JA                | Ja, RSA 2048 Bit  | JA                |
 | Azure Storage (Dateien)            | JA                | Ja, RSA 2048 Bit  | -                  |
 | Azure Storage (Tabellen, Warteschlangen)   | JA                | -                  | JA                |

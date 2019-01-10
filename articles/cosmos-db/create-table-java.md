@@ -1,21 +1,19 @@
 ---
 title: 'Schnellstart: Tabellen-API mit Java: Azure Cosmos DB'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Table-API von Azure Cosmos DB eine Anwendung mit dem Azure-Portal und Java erstellen.
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 9ca1a4ba1a4eb8857314235a6294e2fa592fb55b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b0fda94f3120f1f228836713456d584d33c08a48
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164244"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033124"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App mit Java und Azure Cosmos DB
 

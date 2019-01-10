@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: 85f93e15cfce1d44567c48c6c6f4b38c42dfb296
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a15c983291d35063884178f7b84e21fe4908b49a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416391"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632313"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -37,7 +37,7 @@ Das Automatisierungsskript ist auf die Azure Resource Manager-Bereitstellung und
 
 **Fallen für das Kopieren von Daten zwischen zwei Dateifreigaben im selben Speicherkonto in der gleichen Region Gebühren an?**
 
-Nein. Für diesen Vorgang fallen keine Gebühren an.
+ Nein. Für diesen Vorgang fallen keine Gebühren an.
 
 **Wie kann ich mein gesamtes Speicherkonto in einem anderen Speicherkonto sichern?**
 
@@ -118,6 +118,8 @@ Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy unter W
 
 **Wie verschiebe ich verwaltete Datenträger in ein anderes Speicherkonto?**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Folgen Sie diesen Schritten:
 
 1.  Beenden Sie den virtuellen Computer, an den der verwaltete Datenträger angefügt ist.
@@ -125,15 +127,15 @@ Folgen Sie diesen Schritten:
 2.  Kopieren Sie die VHD-Datei des verwalteten Datenträgers durch Ausführen des folgenden Azure PowerShell-Skripts von einem Bereich in einen anderen:
 
     ```
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionId <ID>
+    Select-AzSubscription -SubscriptionId <ID>
 
-    $sas = Grant-AzureRmDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
+    $sas = Grant-AzDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
 
-    $destContext = New-AzureStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
+    $destContext = New-AzStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
 
-    Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
+    Start-AzStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
 3.  Erstellen Sie einen verwalteten Datenträger, indem Sie die VHD-Datei in einer anderen Region verwenden, in die Sie die VHD kopiert haben. Führen Sie hierzu das folgende Azure PowerShell-Skript aus:  
@@ -151,9 +153,9 @@ Folgen Sie diesen Schritten:
 
     $storageType = 'StandardLRS'
 
-    $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
+    $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
 
-    $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+    $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
 Weitere Informationen zum Bereitstellen eines virtuellen Computers über einen verwalteten Datenträger finden Sie unter [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
@@ -191,7 +193,7 @@ Sie können eine VHD mit dem [Storage-Explorer](https://azure.microsoft.com/feat
 
 **Gelten für das Ändern der Replikation eines Speicherkontos von georedundantem Speicher in lokal redundanten Speicher bestimmte Voraussetzungen?**
 
-Nein. 
+ Nein. 
 
 **Wie greife ich auf redundanten Azure Files-Speicher zu?**
 
@@ -234,7 +236,7 @@ Wenn Sie über virtuelle Computer verfügen, müssen Sie vor der Migration der S
 
 **Wie verschiebe ich Ressourcen von einem klassischen Speicherkonto in ein Azure Resource Manager-Speicherkonto?**
 
-Sie können das Cmdlet **Move-AzureStorageAccount** verwenden. Dieses Cmdlet verfügt über mehrere Schritte (überprüfen, vorbereiten, committen). Sie können die Verschiebung überprüfen, bevor Sie sie durchführen.
+Sie können das Cmdlet **Move-AzStorageAccount** verwenden. Dieses Cmdlet verfügt über mehrere Schritte (überprüfen, vorbereiten, committen). Sie können die Verschiebung überprüfen, bevor Sie sie durchführen.
 
 Wenn Sie über virtuelle Computer verfügen, müssen Sie vor der Migration der Speicherkontodaten weitere Schritte ausführen. Weitere Informationen finden Sie unter [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 
@@ -274,11 +276,11 @@ So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
 -   Bei Verwendung von georedundantem Speicher mit Lesezugriff können Sie jederzeit auf Daten in der sekundären Region zugreifen. Verwenden Sie eine der folgenden Methoden an:  
       
-    - **AzCopy**: Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:   
+    - **AzCopy:** Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:   
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS-Token**: Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md).
+    - **SAS-Token:** Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md).
 
 **Wie verwende ich eine benutzerdefinierte HTTPS-Domäne mit meinem Speicherkonto? Wie erreiche ich beispielsweise, dass „https://mystorageaccountname.blob.core.windows.net/images/image.gif“ als „https://www.contoso.com/images/image.gif“ angezeigt wird?**
 

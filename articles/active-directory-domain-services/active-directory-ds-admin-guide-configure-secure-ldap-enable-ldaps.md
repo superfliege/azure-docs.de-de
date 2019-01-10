@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 74d6748a4d595e330103497dcc97ac57e01db250
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1cfecca7d7b8a3f554466d95c666e2cbddbffde
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158617"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975677"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Aktivieren von sicherem LDAP (LDAPS) für eine über Azure AD Domain Services verwaltete Domäne
 
@@ -51,7 +51,7 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 5. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet deaktiviert. Ändern Sie ggf. die Einstellung für **Sicheren LDAP-Zugriff über das Internet aktivieren** in **Aktivieren**.
 
     > [!WARNING]
-    > Wenn Sie sicheren LDAP-Zugriff über das Internet aktivieren, ist Ihre Domäne anfällig für über das Internet ausgeführte Brute-Force-Angriffe mit Kennwörtern. Daher sollten Sie eine NSG einrichten, um den Zugriff auf erforderliche Quell-IP-Adressbereiche zu sperren. Beachten Sie die Anweisungen unter [Aufgabe 5: LDAPS-Zugriff auf Ihre verwaltete Domäne über das Internet sperren](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
+    > Wenn Sie sicheren LDAP-Zugriff über das Internet aktivieren, ist Ihre Domäne anfällig für über das Internet ausgeführte Brute-Force-Angriffe mit Kennwörtern. Daher sollten Sie eine NSG einrichten, um den Zugriff auf erforderliche Quell-IP-Adressbereiche zu sperren. Beachten Sie die Anweisungen unter [Aufgabe 5: LDAPS-Zugriff auf Ihre verwaltete Domäne über das Internet sperren](active-directory-ds-ldaps-bind-lockdown.md#task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
     >
 
 6. Klicken Sie auf das Ordnersymbol hinter der **PFX-Datei mit sicherem LDAP-Zertifikat**. Geben Sie den Pfad zu der PFX-Datei mit dem Zertifikat für den sicheren LDAP-Zugriff auf die verwaltete Domäne an.

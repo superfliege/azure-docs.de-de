@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 378f4609efcc9e9f0652b9ec68f5374b1fe3626a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6e596b0db1a03efbf6b029487ed956105b632edb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959647"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972803"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Ändern des Clusters von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht. In diesem Artikel wird beschrieben, wie Sie einen aktuell ausgeführten Service Fabric-Cluster für die Verwendung des allgemeinen Namens (anstelle des Zertifikatfingerabdrucks) aktualisieren.
+
+>[!NOTE]
+> Wenn in Ihrer Vorlage zwei Fingerabdrücke deklariert sind, müssen Sie zwei Bereitstellungen durchführen.  Die erste Bereitstellung muss abgeschlossen sein, bevor Sie die Schritte in diesem Artikel ausführen.  Die erste Bereitstellung legt Ihre **thumbprint**-Eigenschaft in der Vorlage auf das verwendete Zertifikat fest und entfernt die **thumbprintSecondary**-Eigenschaft.  Für die zweite Bereitstellung befolgen Sie die Schritte in diesem Artikel.
  
 ## <a name="get-a-certificate"></a>Abrufen eines Zertifikats
 Fordern Sie zunächst ein Zertifikat von einer [Zertifizierungsstelle (CA)](https://wikipedia.org/wiki/Certificate_authority) an.  Der allgemeine Name des Zertifikats sollte der Hostname des Clusters sein.  Beispiel: "meinclustername.southcentralus.cloudapp.azure.com".  
