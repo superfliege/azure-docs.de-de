@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 6a374e7c83fc4054774d8605c93241ba8f22b9b5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.reviewer: sngun
+ms.openlocfilehash: 5df11eb4e1b759d66200c09cabc8752532d0873c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263475"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042154"
 ---
 # <a name="understanding-your-azure-cosmos-db-bill"></a>Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -93,7 +94,7 @@ Sie können jederzeit Azure-Regionen auf der ganzen Welt zu Ihrem Azure Cosmos D
 
 Angenommen, Sie haben einen Azure Cosmos-Container in der Region „USA, Westen“. Der Container wird mit einem Durchsatz von 10.000 RUs/Sek. erstellt, und Sie benötigen in diesem Monat einen Speicher von 1 TB für Ihre Daten. Angenommen, Sie fügen Ihrem Azure Cosmos-Konto drei weitere Regionen („USA, Osten“, „Europa, Norden“ und „Asien, Osten“) mit jeweils der gleichen Speicherkapazität und dem gleichen Durchsatz hinzu. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 30 Tagen) sieht dann wie folgt aus: 
 
-|**Position** |**Nutzung (Monat)** |**Rate** |**Monatliche Kosten** |
+|**Element** |**Nutzung (Monat)** |**Rate** |**Monatliche Kosten** |
 |---------|---------|---------|-------|
 |Durchsatzabrechnung für Container in „USA, Westen“      | 10.000 RUs/Sek. x 24 x 30    |0,008 US-Dollar pro 100 RUs/Sek. pro Stunde   |576 US-Dollar|
 |Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“       | 3 x 10.000 RUs/Sek. x 24 x 30    |0,008 US-Dollar pro 100 RUs/Sek. pro Stunde  |1.728 US-Dollar|
@@ -107,7 +108,7 @@ Angenommen, Sie haben einen Azure Cosmos-Container in der Region „USA, Westen�
 
 Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Westen“. Der Container wird mit einem Durchsatz von 10.000 RUs/Sek. erstellt, und Sie benötigen in diesem Monat einen Speicher von 1 TB für Ihre Daten. Angenommen, Sie fügen drei weitere Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ hinzu, wobei für jede Region die gleiche Speicherkapazität und der gleiche Durchsatz bereitgestellt werden. Außerdem sollen die Container in allen, mit Ihrem Azure Cosmos-Konto verknüpften Regionen für Schreibanforderungen ausgelegt sein. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 30 Tagen) sieht dann wie folgt aus:
 
-|**Position** |**Nutzung (Monat)**|**Rate** |**Monatliche Kosten** |
+|**Element** |**Nutzung (Monat)**|**Rate** |**Monatliche Kosten** |
 |---------|---------|---------|-------|
 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)       | 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde    |1.152 US-Dollar |
 |Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibanforderungen für alle Regionen)        | (3+1) x 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde   |4.608 US-Dollar |
@@ -177,7 +178,7 @@ Visuell werden die Änderungen im insgesamt bereitgestellten Durchsatz während 
 
 Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgesetzt) wie folgt berechnet:
 
-|**Stunden**  |**RUs/Sek.** |**Position** |**Nutzung (stündlich)** |**Kosten** |
+|**Stunden**  |**RUs/Sek.** |**Element** |**Nutzung (stündlich)** |**Kosten** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1: 10.000 <br/>D2: 30.000 <br/>C1: 20.000 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |960 US-Dollar  |
 | | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2.880 US-Dollar  |
@@ -235,7 +236,7 @@ Ihre Gesamtrechnung (ohne reservierte Kapazität) sähe wie folgt aus (30 Tage o
 
 |**Region**| **Stundenpreis pro 100 RUs/Sek.**|**Einheiten (RUs/Sek.)**|**Rechnungsbetrag (pro Stunde)**| **Rechnungsbetrag (pro Monat)**|
 |----|----|----|----|----|
-|USA, Osten|0,008 US-Dollar |50.000|4 US-Dollar|2.880 US-Dollar |
+|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2.880 US-Dollar |
 |Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3.240 US-Dollar |
 |Gesamt|||8,50 US-Dollar|6.120 US-Dollar |
 
@@ -249,7 +250,7 @@ Was Sie tatsächlich erworben haben, ist ein Guthaben von 8 US-Dollar pro Stunde
 
 |**Region**| **Stundenpreis pro 100 RUs/Sek.**|**Einheiten (RUs/Sek.)**| **Rechnungsbetrag (pro Stunde)**| **Rechnungsbetrag (pro Monat)**|
 |----|----|----|----|----|
-|USA, Osten|0,008 US-Dollar |50.000|4 US-Dollar|2.880 US-Dollar |
+|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2.880 US-Dollar |
 |Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3.240 US-Dollar |
 |||Nutzungsbasierte Bezahlung|8,50 US-Dollar|6.120 US-Dollar|
 |Erworbene reservierte Kapazität|0,0064 US-Dollar (20 % Rabatt) |Kapazität im Wert von 100 RUs/Sek. bzw. 8 US-Dollar vorab erworben |- 8 US-Dollar|- 5.760 US-Dollar |
