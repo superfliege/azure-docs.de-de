@@ -1,7 +1,7 @@
 ---
 title: 'Demo: Unterhaltungslernmodell, Kennwortzurücksetzung – Microsoft Cognitive Services | Microsoft-Dokumentation'
 titleSuffix: Azure
-description: Erstellen einer Demo in einem Unterhaltungslernmodell
+description: Erfahren Sie, wie Sie eine Demo in einem Unterhaltungslernmodell erstellen.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,21 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 409647da146a2844384204cb03de5028d45e5763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240867"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792389"
 ---
-# <a name="demo-password-reset"></a>Demo: Kennwortzurücksetzung
-Diese Demo zeigt, wie Sie mithilfe eines einfachen Bots für den technischen Support Ihr Kennwort zurücksetzen. 
-
-Sie erfahren, wie das Unterhaltungslernmodul schwierige Dialogabläufe und Sequenzen aus mehreren Aktionen (einschließlich domänenexterner Klasse) erlernen kann. Diese Demo verwendet keine Codes oder Entitäten.
+# <a name="demo-password-reset"></a>Demo: Zurücksetzen des Kennworts
+Dieses Tutorial veranschaulicht einen einfachen technischen Support-Bot, der von Conversation Learner unterstützt wird und bei Kennwortzurücksetzungen helfen kann. Das Modell des Bots kann schwierige Dialogabläufe und Sequenzen aus mehreren Aktionen (einschließlich domänenexterner Klasse) erlernen. Die Aufgabe kann ohne Code oder Entitäten abgeschlossen werden.
 
 ## <a name="video"></a>Video
 
-[![Demo: Kennwort – Vorschau](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
+[![Demo: Kennwort – Vorschau](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>Anforderungen
 Für dieses Tutorial muss der Kennwortzurücksetzung-Bot ausgeführt werden.
@@ -37,41 +35,48 @@ Klicken Sie in der Modellliste der Webbenutzeroberfläche auf „Tutorial Demo P
 
 ### <a name="actions"></a>Aktionen
 
-Wir haben mehrere Aktionen erstellt, bei denen der Benutzer Hilfe mit dem Kennwort benötigt (inklusive Lösungen).
+Das Modell enthält eine Reihe von Aktionen, die Benutzern bei der Lösung gängiger Kennwortprobleme helfen sollen.
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
 ### <a name="training-dialogs"></a>Trainingsdialoge
 
-Es gibt mehrere Trainingsdialoge. Außerdem gibt es Demos für eine domänenexterne Klasse. Benutzeranforderungen wie „Wegbeschreibung“ sind beispielsweise domänenextern. Der Bot erhielt einige Beispiele für solche Anforderungen und kann diese mit „I can't help with that“ (Dabei kann ich leider nicht helfen) beantworten.
+Das Modell enthält auch mehrere Trainingsdialoge, darunter einige, die Training für domänenexterne Klassen demonstrieren. Darunter fallen beispielsweise Wegbeschreibungen, die von Benutzern angefordert werden. Der Beispielbot wurde zu Demonstrationszwecken mit einigen dieser Klassen trainiert und reagiert einfach mit der Antwort, dass er bei einem bestimmten Anliegen nicht helfen kann. Die Liste der vorhandenen Trainingsdialoge befindet sich im linken Bereich unter „Train Dialogs“ (Trainingsdialoge).
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-Probieren Sie als Beispiel eine Trainingssitzung aus.
+1. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge) und anschließend auf die Schaltfläche „New Train Dialog“ (Neuer Trainingsdialog).
+2. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „I lost my password“ (Ich habe mein Kennwort vergessen) ein.
+3. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+4. Wählen Sie die Antwort „Is that for your local account or Microsoft account?“ (Für Ihr lokales Konto oder Ihr Microsoft-Konto?) aus.
+5. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „local account please“ (lokales Konto bitte) ein.
+6. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+7. Wählen Sie die Antwort „Which version of Windows do you have?“ (Welche Windows-Version verwenden Sie?) aus.
+8. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „Windows XP“ ein.
+9. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+10. Klicken Sie auf die Schaltfläche „+ Aktion“.
+11. Geben Sie im Feld „Bot's response...“ (Antwort des Bots...) die Zeichenfolge „SOLUTION: How to reset password on Windows XP“ (LÖSUNG: Kennwortzurücksetzung unter Windows XP) ein.
+12. Klicken Sie auf die Schaltfläche „Erstellen“.
 
-1. Klicken Sie auf „Train Dialogs“ (Trainingsdialoge) und dann auf „New Train Dialog“ (Neuer Trainingsdialog).
-1. Geben Sie „I lost my password“ (Ich habe mein Kennwort vergessen) ein.
-2. Klicken Sie auf „Score Action“ (Bewertungsaktion).
-3. Klicken Sie zum Auswählen auf „Is that for your local account or Microsoft account?“ (Für Ihr lokales Konto oder Ihr Microsoft-Konto?).
-4. Geben Sie „Local account“ (Lokales Konto) ein.
-5. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
-3. Klicken Sie zum Auswählen auf „Which version of Windows do you have?“ (Welche Windows-Version verwenden Sie?).
-4. Geben Sie „Windows 8“ ein.
-5. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
-6. Wählen Sie „SOLUTION: how to reset password on Windows 8“ (LÖSUNG: Kennwortzurücksetzung unter Windows 8).
-4. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
+### <a name="training-dialogs-for-out-of-domain-scenarios"></a>Trainingsdialoge für domänenexterne Szenarien
 
-So trainieren Sie den Bot, domänenexterne Klassen zu erlernen.
-
-1. Klicken Sie auf „Train Dialogs“ (Trainingsdialoge) und dann auf „New Train Dialog“ (Neuer Trainingsdialog).
-1. Geben Sie „web search“ (Websuche) ein.
-    - Dies ist ein Beispiel für eine domänenexterne Klasse. 
-2. Klicken Sie auf „Score Action“ (Bewertungsaktion).
-3. Klicken Sie zum Auswählen auf „Sorry, I can't help with that“ (Dabei kann ich leider nicht helfen).
-    - Der Wert für diese Option ist zurzeit niedrig. Nachdem Sie den Bot mehr trainiert haben, wird der Wert allerdings steigen.
-4. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
-
-Sie haben gelernt, wie Sie eine grundlegende Demo für den technischen Support erstellen und wie diese erlernt, Lösungen bereitzustellen, und mit nichtmusterhaften Abfragen umzugehen.
+1. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge) und anschließend auf den vorhandenen Trainingsdialog „toy stores“ (Spielwarengeschäfte).
+2. Klicken Sie im Chatbereich auf die Äußerung „toy stores“ (Spielwarengeschäfte).
+3. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „web search“ (Websuche) ein, und drücken Sie die EINGABETASTE.
+4. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „flight booking“ (Flugbuchung) ein, und drücken Sie die EINGABETASTE.
+5. Klicken Sie auf die Schaltfläche „Änderungen speichern“.
+6. Klicken Sie auf die Schaltfläche „Save Edit“ (Bearbeitung) speichern.
+7. Klicken Sie im linken Bereich auf „Log Dialogs“ (Protokolldialoge) und anschließend auf die Schaltfläche „New Log Dialog“ (Neuer Protokolldialog).
+8. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „i can't find my password“ (Ich kann mein Kennwort nicht finden) ein.
+9. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „Microsoft-Konto“ ein.
+10. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „thanks“ (Danke) ein.
+11. Klicken Sie auf die Schaltfläche „Done Testing“ (Tests abgeschlossen).
+12. Klicken Sie in der Rasteransicht auf den Protokolldialog „i can't find my password“ (Ich kann mein Kennwort nicht finden).
+13. Klicken Sie im Chatbereich auf die falsch gerenderte Antwort „Solution: How to reset a Microsoft Account Password“ (Lösung: Zurücksetzen eines Microsoft-Kontokennworts).
+14. Klicken Sie auf die Schaltfläche „+ Aktion“.
+15. Geben Sie im Feld „Bot's response...“ (Antwort des Bots...) die Zeichenfolge „You are welcome“ (Gern geschehen) ein.
+16. Klicken Sie auf die Schaltfläche „Erstellen“.
+17. Klicken Sie auf die Schaltfläche „Save As Train Dialog“ (Als Trainingsdialog speichern).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,23 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e23ff60a0a2ea10ace09130ba115e72b4e1c9ad7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9b35c0fd412dd48137a3cb362f20fae067c80461
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249811"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792627"
 ---
 # <a name="demo-pizza-order"></a>Demo: Pizzabestellung
-In dieser Demo wird ein Pizzabestellungsbot gezeigt. Er ermöglicht das Bestellen einer einzelnen Pizza mithilfe der folgenden Funktionalität:
+Diese Demo veranschaulicht einen Bot für Pizzabestellung. Er unterstützt das Bestellen einzelner Pizzas durch:
 
 - Erkennen von Pizzabelägen in Benutzeräußerungen
-- Prüfen, ob Pizzabeläge vorrätig sind oder nicht, und entsprechendes Antworten
-- Speichern von Pizzabelägen aus einer vorherigen Bestellung und Anbieten einer neuen Bestellung mit den gleichen Belägen
+- Verwalten eines Belägebestands und entsprechendes Reagieren
+- Speichern vorheriger Bestellungen und Beschleunigen der erneuten Bestellung einer identischen Pizza
 
 ## <a name="video"></a>Video
 
-[![Demo Pizza – Vorschau](https://aka.ms/cl-demo-pizza-preview)](https://aka.ms/blis-demo-pizza)
+[![Demo Pizza – Vorschau](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der Pizzabestellungsbot ausgeführt werden.
@@ -39,72 +39,66 @@ Klicken Sie in der Modellliste der Webbenutzeroberfläche auf „TutorialDemo Pi
 
 ## <a name="entities"></a>Entitäten
 
-Sie haben drei Entitäten erstellt.
+Das Modell enthält drei Entitäten:
 
-- Toppings: Diese Entität sammelt die Beläge, um die der Benutzer gebeten hat. Die gültigen Beläge, die vorrätig sind, werden aufgenommen. Es wird geprüft, ob ein Belag vorrätig ist oder nicht.
-- OutofStock: Mit dieser Entität wird dem Benutzer zurückgemeldet, dass der ausgewählte Belag nicht vorrätig ist.
-- LastToppings: Nachdem eine Bestellung aufgegeben wurde, wird mithilfe dieser Entität dem Benutzer die Liste der in seiner Bestellung genannten Beläge angeboten.
+- „Toppings“ sammelt angegebene Beläge des Benutzers, falls verfügbar.
+- „OutofStock“ teilt dem Benutzer mit, dass der ausgewählte Belag nicht vorrätig ist.
+- „LastToppings“ enthält die Beläge aus der vorherigen Bestellung.
 
 ![](../media/tutorial_pizza_entities.PNG)
 
 ### <a name="actions"></a>Aktionen
 
-Sie haben eine Reihe von Aktionen erstellt. Dazu gehört die Frage, welchen Belag der Benutzer auf seiner Pizza wünscht, die Angabe, welche Beläge bereits hinzugefügt sind, usw.
+Das Modell enthält eine Reihe von Aktionen, mit denen der Benutzer nach seiner Belagauswahl, gesammelten Belägen und mehr gefragt wird.
 
-Es finden auch zwei API-Aufrufe statt:
+Außerdem werden zwei API-Aufrufe bereitgestellt:
 
-- FinalizeOrder: Hiermit wird die Pizzabestellung aufgegeben.
-- UseLastToppings: Hiermit werden die Beläge aus der vorherigen Bestellung übernommen. 
+- „FinalizeOrder“ verarbeitet den Bestellvorgang.
+- „UseLastToppings“ verarbeitet Informationen zu bisherigen Belägen.
 
 ![](../media/tutorial_pizza_actions.PNG)
 
 ### <a name="training-dialogs"></a>Trainingsdialoge
-Sie haben einige Trainingsdialoge definiert. 
+
+Das Modell enthält mehrere Trainingsdialoge.
 
 ![](../media/tutorial_pizza_dialogs.PNG)
 
-Probieren Sie als Beispiel eine Trainingssitzung aus.
+Wir trainieren das Modell noch ein wenig mehr, indem wir einen weiteren Trainingsdialog erstellen.
 
-1. Klicken Sie erst auf „Trainingsdialoge“ und dann auf „Neuer Trainingsdialog“.
-1. Geben Sie „order a pizza“ (Pizza bestellen) ein.
-2. Klicken Sie auf „Score Action“ (Bewertungsaktion).
-3. Wählen Sie „what would you like on your pizza?“ (Welchen Belag wünschen Sie auf Ihrer Pizza) durch Klicken aus.
-4. Geben Sie „mushrooms and cheese“ (Pilze und Käse) ein.
-    - Beachten Sie, dass LUIS beides als Beläge gekennzeichnet hat. Wenn das nicht richtig wäre, könnten Sie darauf klicken, um die Einträge hervorzuheben, und sie dann ändern.
-    - Das Pluszeichen neben der Entität bedeutet, dass sie zur Gruppe der Beläge hinzugefügt wird.
-5. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
-    - Beachten Sie, dass sich `mushrooms` und `cheese` nicht im Speicher für „Toppings“ befinden.
-3. Wählen Sie „you have $Toppings on your pizza“ (Sie haben $Toppings auf Ihrer Pizza) durch Klicken aus.
-    - Beachten Sie, dass dies eine Aktion ohne Wartezeit ist und der Bot daher zur nächsten Aktion auffordert.
-6. Wählen Sie „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
-7. Geben Sie „remove mushrooms and add peppers“ (Pilze entfernen und Paprika hinzufügen) ein.
-    - Beachten Sie, dass neben `mushroom` ein Minuszeichen angezeigt wird, damit diese Auswahl entfernt wird. Und neben `peppers` wird ein Pluszeichen angezeigt, damit dies zu den Belägen hinzugefügt werden kann.
-2. Klicken Sie auf „Score Action“ (Bewertungsaktion).
-    - Beachten Sie, dass `peppers` jetzt fett formatiert ist, da dieser Eintrag neu ist. `mushrooms` hingegen ist durchgestrichen.
-8. Wählen Sie „you have $Toppings on your pizza“ (Sie haben $Toppings auf Ihrer Pizza) durch Klicken aus.
-6. Wählen Sie „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
-7. Geben Sie „add peas“ (Erbsen hinzufügen) ein.
-    - `Peas` ist ein Beispiel für einen Belag, der nicht vorrätig ist. Er ist dennoch als Belag gekennzeichnet.
-2. Klicken Sie auf „Score Action“ (Bewertungsaktion).
-    - `Peas` werden als nicht vorrätig (OutOfStock) angezeigt.
-    - Um anzuzeigen, wie es dazu gekommen ist, öffnen Sie den Code unter `C:\<\installedpath>\src\demos\demoPizzaOrder.ts`. Schauen Sie sich die „EntityDetectionCallback“-Methode an. Diese Methode wird nach jeder Auswahl eines Belags aufgerufen, um festzustellen, ob er vorrätig ist. Ist das nicht der Fall, wird er aus der Gruppe der Beläge gelöscht und zur Entität „OutOfStock“ hinzugefügt. Die „inStock“-Variable ist oberhalb dieser Methode definiert und enthält die Liste der vorrätigen Beläge.
-6. Wählen Sie „We don't have $OutOfStock“ ($OutOfStock ist nicht vorrätig) aus.
-7. Wählen Sie „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
-8. Geben Sie „no“ (Nein) ein.
-9. Klicken Sie auf „Bewertungsaktionen“.
-10. Wählen Sie den API-Aufruf „FinalizeOrder“ aus. 
-    - Dadurch wird die im Code definierte Funktion „FinalizeOrder“ aufgerufen. Die Anzeige der Beläge wird gelöscht, und „your order is on its way“ (Ihre Bestellung wird bearbeitet) wird zurückgegeben. 
-2. Geben Sie „order another“ (Weitere Bestellung) ein. Es beginnt nun eine neue Bestellung.
-9. Klicken Sie auf „Score Action“ (Bewertungsaktion).
-    - Käse und Paprika sind als Beläge aus der letzten Bestellung im Speicher enthalten.
-1. Wählen Sie „Would you like $LastToppings“ (Wünschen Sie $LastToppings) aus.
-2. Geben Sie „yes“ (Ja) ein.
-3. Klicken Sie auf „Bewertungsaktionen“.
-    - Der Bot möchte die Aktion „UseLastToppings“ ausführen. Dies ist die zweite der beiden Rückrufmethoden. Sie kopiert die Beläge der letzten Bestellung und beendet die Anzeige dieser Beläge. Auf diese Weise wird die letzte Bestellung gespeichert, und wenn der Benutzer eine weitere Pizza wünscht, werden diese Beläge als Optionen angezeigt.
-2. Wählen Sie „you have $Toppings on your pizza“ (Sie haben $Toppings auf Ihrer Pizza) durch Klicken aus.
-3. Wählen Sie „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
-8. Geben Sie „No“ (Nein) ein.
-4. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
+1. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge) und anschließend auf die Schaltfläche „New Train Dialog“ (Neuer Trainingsdialog).
+2. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „Order a pizza with cheese“ (Pizza mit Käse bestellen) ein.
+    - Das Wort „cheese“ (Käse) wurde von der Entitätsextraktionsfunktion extrahiert.
+3. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+4. Wählen Sie die Antwort „You have cheese on your pizza.“ (Sie haben Käse auf Ihrer Pizza.) aus.
+5. Wählen Sie die Antwort „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
+6. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „add mushrooms and pepper“ (Paprika und Pilze hinzufügen) ein.
+7. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+8. Wählen Sie die Antwort „You have cheese, mushrooms and peppers on your pizza.“ (Sie haben Käse, Pilze und Paprika auf Ihrer Pizza.) aus.
+9. Wählen Sie die Antwort „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
+10. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „remove peppers and add sausage“ (Paprika entfernen und Wurst hinzufügen) ein.
+11. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+12. Wählen Sie die Antwort „You have cheese, mushrooms and sausage on your pizza.“ (Sie haben Käse, Pilze und Wurst auf Ihrer Pizza.) aus.
+13. Wählen Sie die Antwort „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
+14. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „add yam“ (Süßkartoffel hinzufügen) ein.
+15. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+    - Der Wert „yam“ (Süßkartoffel) wurde vom Rückrufcode zur Entitätserkennung der Entität „OutofStock“ hinzugefügt, da der Text keinen unterstützten Zutaten entsprach.
+16. Wählen Sie die Antwort „OutOfStock“ aus.
+17. Wählen Sie die Antwort „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
+18. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „no“ (Nein) ein.
+    - Das „no“ ist nicht als Absichtstyp markiert. Stattdessen wählen wir die entsprechende Aktion basierend auf dem aktuellen Kontext aus.
+19. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+20. Wählen Sie die Antwort „FinalizeOrder“ aus.
+    - Durch die Auswahl dieser Aktion wurden die aktuellen Beläge des Kunden in der Entität „LastToppings“ gespeichert, und die Entität „Toppings“ wurde vom Rückrufcode „FinalizeOrder“ gelöscht.
+21. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „order another“ (Weitere Bestellung) ein.
+22. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+23. Wählen Sie die Antwort „Would you like cheese, mushrooms and sausage?“ (Möchten Sie Käse, Pilze und Wurst?) aus.
+    - Diese Aktion ist jetzt verfügbar, da die Entität „LastToppings“ festgelegt ist.
+24. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „yes“ (Ja) ein.
+25. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
+26. Wählen Sie die Antwort „UseLastToppings“ aus.
+27. Wählen Sie die Antwort „You have cheese, mushrooms and sausage on your pizza.“ (Sie haben Käse, Pilze und Wurst auf Ihrer Pizza.) aus.
+28. Wählen Sie die Antwort „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) aus.
 
 ![](../media/tutorial_pizza_callbackcode.PNG)
 
@@ -113,4 +107,4 @@ Probieren Sie als Beispiel eine Trainingssitzung aus.
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Demo – VR-App-Starter](./demo-vr-app-launcher.md)
+> [Bereitstellen eines Unterhaltungslernmodul-Bots](../deploy-to-bf.md)

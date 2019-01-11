@@ -1,132 +1,285 @@
 ---
-title: Grundlegendes zu Azure Digital Twins-Gerätekonnektivität und -Authentifizierung | Microsoft-Dokumentation
-description: Verwenden von Azure Digital Twins, um Geräte zu verbinden und zu authentifizieren
+title: Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins | Microsoft-Dokumentation
+description: Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/26/2018
 ms.author: lyrana
-ms.openlocfilehash: f032e3ebf6a10411057cd6d41df0cad6248f328b
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 72a42e273029bd42d77531953ff5cbfc0fe5c295
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636236"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810898"
 ---
-# <a name="create-and-manage-role-assignments"></a>Erstellen und Verwalten von Rollenzuweisungen
+# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
 In Azure Digital Twins wird rollenbasierte Zugriffssteuerung ([Role-Based Access Control, RBAC](./security-role-based-access-control.md)) verwendet, um Zugriffe auf Ressourcen zu verwalten.
 
-Jede Rollenzuweisung enthält:
+## <a name="role-assignments-overview"></a>Übersicht der Rollenzuweisungen
 
-* **Objektbezeichner**: Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname
-* **Objektbezeichnertyp**
-* **Rollendefinitions-ID**
-* **Raumpfad**
-* **Mandanten-ID**: In den meisten Fällen eine Azure Active Directory-Mandanten-ID
+Jede Rollenzuweisung entspricht der folgenden Definition:
+
+```JSON
+{
+  "roleId": "00e00ad7-00d4-4007-853b-b9968ad000d1",
+  "objectId": "be2c6daa-a3a0-0c0a-b0da-c000000fbc5f",
+  "objectIdType": "ServicePrincipalId",
+  "path": "/",
+  "tenantId": "00f000bf-86f1-00aa-91ab-2d7cd000db47"
+}
+```
+
+In der folgenden Tabelle werden die einzelnen Attribute beschrieben:
+
+| Attribut | NAME | Erforderlich | Typ | BESCHREIBUNG |
+| --- | --- | --- | --- | --- |
+| roleId | Bezeichner der Rollendefinition | JA | Zeichenfolge | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
+| objectId | Objektbezeichner | JA | Zeichenfolge | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
+| objectIdType | Objektbezeichnertyp | JA | Zeichenfolge | Die Art des verwendeten Objektbezeichners. Siehe unten unter **Unterstützte ObjektIdTypes**. |
+| path | Raumpfad | JA | Zeichenfolge | Der vollständige Zugriffspfad für das `Space`-Objekt. Ein Beispiel ist `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
+| tenantId | Mandanten-ID | Variabel | Zeichenfolge | In den meisten Fällen eine Azure Active Directory-Mandanten-ID. Nicht zulässig für den `DeviceId`- und den `TenantId`-objectIdType. Erforderlich für den `UserId`- und den `ServicePrincipalId`-objectIdType. Optional für den DomainName-objectIdType. |
+
+### <a name="supported-role-definition-identifiers"></a>Unterstützte Rollendefinitionsbezeichner
+
+Jede Rollenzuweisung ordnet einer Entität in Ihrer Azure Digital Twins-Umgebung eine Rollendefinition zu.
+
+[!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
+
+### <a name="supported-object-identifier-types"></a>Unterstützte Objektbezeichnertypen
+
+Zuvor wurde das Attribut **objectIdType** eingeführt.
+
+[!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
+
+## <a name="role-assignment-operations"></a>Rollenzuweisungsvorgänge
+
+Azure Digital Twins unterstützt vollständige *ERSTELLEN*, *LESEN* und *LÖSCHEN*-Vorgänge für Rollenzuweisungen. *AKTUALISIEREN*-Vorgänge werden verarbeitet, indem Rollenzuweisungen hinzugefügt oder entfernt werden oder der Knoten [Raumintelligenzgraph](./concepts-objectmodel-spatialgraph.md), auf den Rollenzuweisungen Zugriff gewähren, geändert wird.
+
+![Rollenzuweisungs-Endpunkte][1]
+
+Die bereitgestellte Swagger-Referenzdokumentation enthält weitere Informationen zu allen verfügbaren API-Endpunkten, Anforderungsvorgängen und Definitionen.
+
+[!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-## <a name="role-definition-identifiers"></a>Rollendefinitionsbezeichner
+<div id="grant"></div>
 
-In der folgenden Tabelle ist angegeben, was über die System/Rollen-API abgerufen werden kann.
+### <a name="grant-permissions-to-your-service-principal"></a>Gewähren von Berechtigungen für Ihren Dienstprinzipal
 
-| **Rolle** | **Bezeichner** |
-| --- | --- |
-| Space Administrator | 98e44ad7-28d4-4007-853b-b9968ad132d1 |
-| Benutzeradministrator| dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
-| Device Administrator | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
-| Key Administrator | 5a0b1afc-e118-4068-969f-b50efb8e5da6 |
-| Token Administrator | 38a3bb21-5424-43b4-b0bf-78ee228840c3 |
-| Benutzer | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
-| Support Specialist | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
-| Device Installer | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| Gatewaygerät | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |
+Das Gewähren von Berechtigungen für Ihren Dienstprinzipal ist häufig einer der ersten Schritte, die Sie bei der Arbeit mit Azure Digital Twins ausführen. Er umfasst:
 
-## <a name="supported-objectidtypes"></a>Unterstützte Objekt-ID-Typen (ObjectIdTypes)
+1. Anmelden bei Ihrer Azure-Instanz mithilfe von PowerShell.
+1. Abrufen Ihrer Dienstprinzipalinformationen.
+1. Zuweisen der gewünschten Rolle zu Ihrem Dienstprinzipal.
 
-Unterstützte `ObjectIdTypes`:
+Ihre Anwendungs-ID wird Ihnen von Azure Active Directory bereitgestellt. Weitere Informationen zum Konfigurieren und Bereitstellen eines Azure Digital Twins in Active Directory finden Sie im [Schnellstart](./quickstart-view-occupancy-dotnet.md).
 
-* `UserId`
-* `DeviceId`
-* `DomainName`
-* `TenantId`
-* `ServicePrincipalId`
-* `UserDefinedFunctionId`
+Nachdem Sie über die Anwendungs-ID verfügen, führen Sie die folgenden PowerShell-Befehle aus:
 
-## <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
-
-```plaintext
-HTTP POST YOUR_MANAGEMENT_API_URL/roleassignments
+```shell
+Login-AzureRmAccount
+Get-AzureRmADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
-| **Name** | **Erforderlich** | **Typ** | **Beschreibung** |
+Ein Benutzer mit der Rolle **Administrator** kann einem Benutzer die Rolle „Raumadministrator“ zuweisen, indem er eine authentifizierte HTTP-POST-Anforderung an folgende URL stellt:
+
+```plaintext
+YOUR_MANAGEMENT_API_URL/roleassignments
+```
+
+Mit folgendem JSON-Text:
+
+```JSON
+{
+  "roleId": "98e44ad7-28d4-4007-853b-b9968ad132d1",
+  "objectId": "YOUR_SERVICE_PRINCIPLE_OBJECT_ID",
+  "objectIdType": "ServicePrincipalId",
+  "path": "YOUR_PATH",
+  "tenantId": "YOUR_TENANT_ID"
+}
+```
+
+<div id="all"></div>
+
+### <a name="retrieve-all-roles"></a>Abrufen aller Rollen
+
+![Systemrollen][2]
+
+Um alle verfügbaren Rollen (Rollendefinitionen) aufzulisten, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
+
+```plaintext
+YOUR_MANAGEMENT_API_URL/system/roles
+```
+
+Eine erfolgreiche Anforderung gibt ein JSON-Array mit Einträgen für jede Rolle zurück, die zugewiesen werden kann:
+
+```JSON
+[
+    {
+        "id": "3cdfde07-bc16-40d9-bed3-66d49a8f52ae",
+        "name": "DeviceAdministrator",
+        "permissions": [
+            {
+                "notActions": [],
+                "actions": [
+                    "Read",
+                    "Create",
+                    "Update",
+                    "Delete"
+                ],
+                "condition": "@Resource.Type Any_of {'Device', 'DeviceBlobMetadata', 'DeviceExtendedProperty', 'Sensor', 'SensorBlobMetadata', 'SensorExtendedProperty'} || ( @Resource.Type == 'ExtendedType' && (!Exists @Resource.Category || @Resource.Category Any_of { 'DeviceSubtype', 'DeviceType', 'DeviceBlobType', 'DeviceBlobSubtype', 'SensorBlobSubtype', 'SensorBlobType', 'SensorDataSubtype', 'SensorDataType', 'SensorDataUnitType', 'SensorPortType', 'SensorType' } ) )"
+            },
+            {
+                "notActions": [],
+                "actions": [
+                    "Read"
+                ],
+                "condition": "@Resource.Type == 'Space' && @Resource.Category == 'WithoutSpecifiedRbacResourceTypes' || @Resource.Type Any_of {'ExtendedPropertyKey', 'SpaceExtendedProperty', 'SpaceBlobMetadata', 'SpaceResource', 'Matcher'}"
+            }
+        ],
+        "accessControlPath": "/system",
+        "friendlyPath": "/system",
+        "accessControlType": "System"
+    }
+]
+```
+
+<div id="check"></div>
+
+### <a name="check-a-specific-role-assignment"></a>Überprüfen einer bestimmten Rollenzuweisung
+
+Um eine bestimmte Rollenzuweisung zu überprüfen, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
+
+```plaintext
+YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
+```
+
+| **Parameterwert** | **Erforderlich** |  **Typ** |  **Beschreibung** |
 | --- | --- | --- | --- |
-| roleId| JA |Zeichenfolge | Der Bezeichner der Rollendefinition. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln. |
-| objectId | JA |Zeichenfolge | Die Objekt-ID für die Rollenzuweisung, die entsprechend dem ihr zugeordneten Typ formatiert sein muss. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
-| objectIdType | JA |Zeichenfolge | Der Typ der Rollenzuweisung. Muss eine der folgenden Zeilen in dieser Tabelle sein. |
-| tenantId | Variabel | Zeichenfolge |Der Mandantenbezeichner. Nicht zulässig für den `DeviceId`- und den `TenantId`-objectIdType. Erforderlich für den `UserId`- und den `ServicePrincipalId`-objectIdType. Optional für den DomainName-objectIdType. |
-| path* | JA | Zeichenfolge |Der vollständige Zugriffspfad für das `Space`-Objekt. Ein Beispiel ist `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
+| YOUR_USER_ID |  True | Zeichenfolge |   Die objectId für objectIdType „UserId“. |
+| YOUR_PATH | True | Zeichenfolge |   Der ausgewählte Pfad, für den der Zugriff überprüft werden solle. |
+| YOUR_ACCESS_TYPE |  True | Zeichenfolge |   Der Zugriffstyp, auf den überprüft werden soll. |
+| YOUR_RESOURCE_TYPE | True | Zeichenfolge |  Die zu überprüfende Ressource. |
 
-## <a name="sample-configuration"></a>Beispielkonfiguration
+Eine erfolgreiche Anforderung gibt einen booleschen `true`- oder `false`-Wert zurück, um anzuzeigen, ob dem Benutzer der Zugriffstyp für den angegebenen Pfad und die Ressource zugewiesen wurde.
 
-In diesem Beispiel benötigt ein Benutzer Administratorzugriff auf eine Ebene eines Mandantenraums.
+### <a name="get-role-assignments-by-path"></a>Abrufen von Rollenzuweisungen nach Pfad
 
-  ```JSON
-    {
-      "RoleId": "98e44ad7-28d4-4007-853b-b9968ad132d1",
-      "ObjectId" : " 0fc863bb-eb51-4704-a312-7d635d70e599",
-      "ObjectIdType" : "UserId",
-      "TenantId": " a0c20ae6-e830-4c60-993d-a91ce6032724",
-      "Path": "/ 091e349c-c0ea-43d4-93cf-6b57abd23a44/ d84e82e6-84d5-45a4-bd9d-006a118e3bab"
-    }
-  ```
-
-In diesem Beispiel führt eine Anwendung Testszenarien aus, um Geräte und Sensoren zu simulieren.
-
-  ```JSON
-    {
-      "RoleId": "98e44ad7-28d4-4007-853b-b9968ad132d1",
-      "ObjectId" : "cabf7acd-af0b-41c5-959a-ce2f4c26565b",
-      "ObjectIdType" : "ServicePrincipalId",
-      "TenantId": " a0c20ae6-e830-4c60-993d-a91ce6032724",
-      "Path": "/"
-    }
-  ```
-
-Alle Benutzer, die Teil einer Domäne sind, erhalten Lesezugriff für Räume, Sensoren und Benutzer. Dieser Zugriff umfasst auch die entsprechenden zugehörigen Objekte.
-
-  ```JSON
-    {
-      "RoleId": " b1ffdb77-c635-4e7e-ad25-948237d85b30",
-      "ObjectId" : "@microsoft.com",
-      "ObjectIdType" : "DomainName",
-      "Path": "/091e349c-c0ea-43d4-93cf-6b57abd23a44"
-    }
-  ```
-
-Verwenden Sie GET, um eine Rollenzuweisung abzurufen.
+Um alle Rollenzuweisungen für einen Pfad abzurufen, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
 
 ```plaintext
-HTTP GET YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
+YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| **Name** | **In** | **Erforderlich** |    **Typ** |  **Beschreibung** |
-| --- | --- | --- | --- | --- |
-| YOUR_PATH | path | True | Zeichenfolge |    Der vollständige Pfad zum Raum |
+| Wert | Ersetzen durch |
+| --- | --- |
+| YOUR_PATH | Der vollständige Pfad zum Raum |
 
-Verwenden Sie DELETE, um eine Rollenzuweisung zu löschen.
+Eine erfolgreiche Anforderung gibt ein JSON-Array mit jeder Rollenzuweisung zurück, die dem ausgewählten Parameter **Pfad** zugeordnet ist:
+
+```JSON
+[
+    {
+        "id": "0000c484-698e-46fd-a3fd-c12aa11e53a1",
+        "roleId": "98e44ad7-28d4-4007-853b-b9968ad132d1",
+        "objectId": "0de38846-1aa5-000c-a46d-ea3d8ca8ee5e",
+        "objectIdType": "UserId",
+        "path": "/"
+    }
+]
+```
+
+### <a name="revoke-a-permission"></a>Widerrufen einer Berechtigung
+
+Um eine Berechtigung eines Empfängers zu widerrufen, löschen Sie die Rollenzuweisung, indem Sie eine authentifizierte HTTP-DELETE-Anforderung stellen:
 
 ```plaintext
-HTTP DELETE YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ID
+YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
-| **Name** | **In** | **Erforderlich** | **Typ** | **Beschreibung** |
-| --- | --- | --- | --- | --- |
-| YOUR_ROLE_ID | path | True | Zeichenfolge | Rollenzuweisungs-ID |
+| Parameter | Ersetzen durch |
+| --- | --- |
+| *YOUR_ROLE_ASSIGNMENT_ID* | Die **ID** der zu entfernenden Rollenzuweisung |
+
+Eine erfolgreicher DELETE-Anforderung gibt einen Antwortstatus „204“ zurück. Überprüfen Sie das Entfernen der Rollenzuweisung, indem Sie [überprüfen](#check), ob die Rollenzuweisung noch gültig ist.
+
+### <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
+
+Um eine Rollenzuweisung zu erstellen, stellen Sie eine authentifizierte HTTP-POST-Anforderung an folgende URL:
+
+```plaintext
+YOUR_MANAGEMENT_API_URL/roleassignments
+```
+
+Überprüfen Sie, ob der JSON-Text das folgende Schema einhält:
+
+```JSON
+{
+  "roleId": "YOUR_ROLE_ID",
+  "objectId": "YOUR_OBJECT_ID",
+  "objectIdType": "YOUR_OBJECT_ID_TYPE",
+  "path": "YOUR_PATH",
+  "tenantId": "YOUR_TENANT_ID"
+}
+```
+
+Eine erfolgreiche Anforderung gibt einen Antwortstatus „201“ zurück, zusammen mit der **ID** der neu erstellten Rollenzuweisung:
+
+```JSON
+"d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
+```
+
+## <a name="configuration-examples"></a>Konfigurationsbeispiele
+
+Die folgenden Beispiele veranschaulichen, wie Sie Ihren JSON-Text in verschiedenen, häufig auftretenden Rollenzuweisungsszenarios konfigurieren sollten.
+
+* **Beispiel**: Ein Benutzer benötigt Administratorzugriff auf eine Ebene eines Mandantenraums.
+
+   ```JSON
+   {
+    "roleId": "98e44ad7-28d4-4007-853b-b9968ad132d1",
+    "objectId" : " 0fc863aa-eb51-4704-a312-7d635d70e000",
+    "objectIdType" : "UserId",
+    "tenantId": " a0c20ae6-e830-4c60-993d-a00ce6032724",
+    "path": "/ 000e349c-c0ea-43d4-93cf-6b00abd23a44/ d84e82e6-84d5-45a4-bd9d-006a000e3bab"
+   }
+   ```
+
+* **Beispiel**: Eine Anwendung führt Testszenarien aus, in denen Geräte und Sensoren simuliert werden.
+
+   ```JSON
+   {
+    "roleId": "98e44ad7-28d4-0007-853b-b9968ad132d1",
+    "objectId" : "cabf7aaa-af0b-41c5-000a-ce2f4c20000b",
+    "objectIdType" : "ServicePrincipalId",
+    "tenantId": " a0c20ae6-e000-4c60-993d-a91ce6000724",
+    "path": "/"
+   }
+    ```
+
+* **Beispiel**: Alle Benutzer, die Teil einer Domäne sind, erhalten Lesezugriff für Räume, Sensoren und Benutzer. Dieser Zugriff umfasst auch die entsprechenden zugehörigen Objekte.
+
+   ```JSON
+   {
+    "roleId": " b1ffdb77-c635-4e7e-ad25-948237d85b30",
+    "objectId" : "@microsoft.com",
+    "objectIdType" : "DomainName",
+    "path": "/000e349c-c0ea-43d4-93cf-6b00abd23a00"
+   }
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Azure Digital Twins-Sicherheit finden Sie unter [API-Authentifizierung](./security-authenticating-apis.md).
+Informationen zum Überprüfen der rollenbasierten Zugriffssteuerung (RBAC) in Azure Digital Twins finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](./security-authenticating-apis.md).
+
+Informationen zur API-Authentifizierung in Azure Digital Twins finden Sie unter [API-Authentifizierung](./security-authenticating-apis.md).
+
+<!-- Images -->
+[1]: media/security-roles/roleassignments.png
+[2]: media/security-roles/system.png

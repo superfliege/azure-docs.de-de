@@ -1,7 +1,7 @@
 ---
 title: Computeziele für das Modelltraining
 titleSuffix: Azure Machine Learning service
-description: Konfigurieren Sie die Trainingsumgebungen (Computeziele) für das Machine Learning-Modelltraining. Sie können problemlos zwischen Trainingsumgebungen wechseln. Beginnen Sie lokal mit dem Trainieren, und wenn ein horizontales Hochskalieren erforderlich ist, wechseln Sie zu einem cloudbasierten Computeziel. Databricks
+description: Konfigurieren Sie die Trainingsumgebungen (Computeziele) für das Machine Learning-Modelltraining. Sie können problemlos zwischen Trainingsumgebungen wechseln. Beginnen Sie das Training lokal. Wenn ein horizontales Hochskalieren erforderlich ist, wechseln Sie zu einem cloudbasierten Computeziel.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -12,33 +12,31 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 664d56daf3e70e2e5699d0c07331c466c60e06c5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9037f6d7602f186bc30e55acbc050280bca134ee
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338857"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794463"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining
 
-Mit Azure Machine Learning Service können Sie Ihr Modell in unterschiedlichen Computeressourcen trainieren. Diese Computeressourcen, die sogenannten __Computeziele__, können lokal oder in der Cloud gehostet sein. In diesem Dokument erfahren Sie mehr über die unterstützten Computeziele und deren Verwendung.
+Mit Azure Machine Learning Service können Sie Ihr Modell in unterschiedlichen Computeressourcen trainieren. Diese Computeressourcen, die sogenannten __Computeziele__, können lokal oder in der Cloud gehostet sein. In diesem Artikel erfahren Sie mehr über die unterstützten Computeziele und deren Verwendung.
 
-Ein Computeziel ist eine Ressource, in der Ihr Trainingsskript ausgeführt oder Ihr Modell bei der Bereitstellung als Webdienst gehostet wird. Sie können Computeziele mit dem Azure Machine Learning SDK, im Azure-Portal oder über die Azure-Befehlszeilenschnittstelle (Azure CLI) erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning Service-Arbeitsbereich anfügen, um sie verwenden zu können.
+Ein Computeziel ist eine Ressource, in der Ihr Trainingsskript ausgeführt oder Ihr Modell bei der Bereitstellung als Webdienst gehostet wird. Sie können Computeziele mit dem Azure Machine Learning SDK, im Azure-Portal oder über die Azure-Befehlszeilenschnittstelle (Azure CLI) erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen Azure HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning Service-Arbeitsbereich anfügen, um sie verwenden zu können.
 
 Azure Machine Learning unterstützt drei allgemeine Kategorien von Computezielen:
 
-* __Lokal__: Ihr lokaler Computer oder eine cloudbasierte VM, den bzw. die Sie als Entwicklungs-/Experimentierumgebung verwenden. 
-
+* __Lokal__: Ihr lokaler Computer oder ein cloudbasierter virtueller Computer (VM), den Sie als Entwicklungs- und Experimentierumgebung verwenden. 
 * __Verwaltete Computeressourcen__: Azure Machine Learning Compute ist ein Computeangebot, das von Azure Machine Learning Service verwaltet wird. Es ermöglicht Ihnen das einfache Erstellen von Computezielen mit einem einzelnen oder mehreren Knoten zum Trainieren, Testen und Ausführen von Batchrückschlüssen.
-
-* __Angefügte Computeressourcen__: Sie können auch Ihre eigenen Azure-Cloudcomputeressourcen verwenden und diese an Azure Machine Learning anfügen. Im Folgenden erfahren Sie mehr über die unterstützten Computezieltypen und ihre Verwendung.
+* __Angefügte Computeressourcen__: Sie können auch Ihre eigenen Azure-Cloudcomputeressourcen verwenden und diese an Azure Machine Learning anfügen. In den folgenden Abschnitten erfahren Sie mehr über die unterstützten Computezieltypen und ihre Verwendung.
 
 
 ## <a name="supported-compute-targets"></a>Unterstützte Computeziele
 
-Azure Machine Learning Service bietet unterschiedliche Unterstützung für die verschiedenen Computeziele. Ein typischer Modellentwicklungslebenszyklus beginnt mit der Entwicklung/Experimenten mit einer kleinen Menge von Daten. In dieser Phase empfehlen wir die Verwendung einer lokalen Umgebung. Verwenden Sie beispielsweise Ihren lokalen Computer oder eine cloudbasierte VM. Wenn Sie Ihr Training zur Verwendung größerer Datasets zentral hochskalieren oder sich für ein verteiltes Training entscheiden, empfehlen wir, mit Azure Machine Learning Compute einen Cluster mit einem einzelnen oder mehreren Knoten zu erstellen, der bei jeder Übermittlung einer Ausführung automatisch skaliert wird. Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien variiert jedoch wie unten beschrieben:
+Azure Machine Learning Service bietet unterschiedliche Unterstützung für die verschiedenen Computeziele. Ein typischer Lebenszyklus der Modellentwicklung beginnt mit der Entwicklung und dem Experimenten mit einer kleinen Menge von Daten. In dieser Phase wird empfohlen, dass Sie eine lokale Umgebung wie Ihren lokalen Computer oder eine cloudbasierte VM verwenden. Wenn Sie Ihr Training zur Verwendung größerer Datasets zentral hochskalieren oder sich für ein verteiltes Training entscheiden, erstellen Sie mithilfe einer Azure Machine Learning Compute-Umgebung einen Cluster mit einem einzelnen oder mehreren Knoten, der bei jeder Übermittlung einer Ausführung automatisch skaliert wird. Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien variiert jedoch wie in der folgenden Tabelle beschrieben:
 
-|Computeziel| GPU-Beschleunigung | Automatisierte Hyperparameteroptimierung | Automatisiertes maschinelles Lernen | Pipelineunterstützung|
+|Computeziel| GPU-Beschleunigung | Automatisiert<br/> Hyperparameteroptimierung | Automatisiert</br> Machine Learning | Pipelineunterstützung|
 |----|:----:|:----:|:----:|:----:|
 |[Lokaler Computer](#local)| Vielleicht | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -48,69 +46,66 @@ Azure Machine Learning Service bietet unterschiedliche Unterstützung für die v
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 > [!IMPORTANT]
-> <a id="pipeline-only"></a>__*__ Azure Databricks und Azure Data Lake Analytics können __nur__ in einer Pipeline verwendet werden. Weitere Informationen zu Pipelines finden Sie unter [Pipelines in Azure Machine Learning](concept-ml-pipelines.md).
-
-> [!IMPORTANT]
-> Azure Machine Learning Compute muss in einem Arbeitsbereich erstellt werden. Es ist nicht möglich, vorhandene Instanzen an einen Arbeitsbereich anzufügen.
+> <a id="pipeline-only"></a>__*__ _Azure Databricks und Azure Data Lake Analytics können nur in einer Pipeline verwendet werden._<br/>
+> Weitere Informationen zu Pipelines finden Sie unter [Pipelines in Azure Machine Learning](concept-ml-pipelines.md).
+>
+> Die Azure Machine Learning Compute-Umgebung muss in einem Arbeitsbereich erstellt werden. Es ist nicht möglich, vorhandene Instanzen an einen Arbeitsbereich anzufügen.
 >
 > Andere Computeziele müssen außerhalb von Azure Machine Learning erstellt und dann an Ihren Arbeitsbereich angefügt werden.
-
-> [!NOTE]
-> Für einige Computeziele sind beim Trainieren eines Modells Docker-Containerimages erforderlich. Das GPU-Basisimage darf nur für Microsoft Azure-Dienste verwendet werden. Folgende Dienste sind für das Modelltraining verfügbar:
 >
+> Für einige Computeziele sind beim Training eines Modells Docker-Containerimages erforderlich. Das GPU-Basisimage darf nur für Microsoft Azure-Dienste verwendet werden. Folgende Dienste sind für das Modelltraining verfügbar:
 > * Azure Machine Learning Compute
 > * Azure Kubernetes Service
-> * Data Science Virtual Machine
+> * Windows Data Science Virtual Machine (DSVM)
 
 ## <a name="workflow"></a>Workflow
 
 Beim Workflow zum Entwickeln und Bereitstellen eines Modells mit Azure Machine Learning werden die folgenden Schritte ausgeführt:
 
-1. Entwickeln von Machine Learning-Trainingsskripts in Python.
-1. Erstellen und Konfigurieren oder Anfügen eines vorhandenen Computeziels.
+1. Entwickeln der Machine Learning-Trainingsskripts in Python.
+1. Erstellen und Konfigurieren des Computeziels oder Anfügen eines vorhandenen Computeziels.
 1. Übermitteln der Trainingsskripts an das Computeziel.
 1. Überprüfen der Ergebnisse, um das beste Modell zu ermitteln.
 1. Registrieren des Modells in der Modellregistrierung.
 1. Bereitstellen des Modells.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Ihr Trainingsskript ist nicht an ein bestimmtes Computeziel gebunden. Sie können zunächst auf Ihrem lokalen Computer mit dem Trainieren beginnen und anschließend das Computeziel wechseln, ohne dass Sie das Trainingsskript umschreiben müssen.
+> 
+> Wenn Sie ein Computeziel mit Ihrem Arbeitsbereich verknüpfen, indem Sie eine verwaltete Computeressource erstellen oder eine vorhandene Computeressource anfügen, müssen Sie einen Namen für Ihr Computeziel angeben. Der Name muss 2 bis 16 Zeichen haben.
 
-> [!TIP]
-> Wenn Sie ein Computeziel mit Ihrem Arbeitsbereich verknüpfen (durch Erstellen einer verwalteten Computeressource oder Anfügen einer vorhandenen Computeressource), müssen Sie einen Namen für Ihr Computeziel angeben. Dieser Name muss 2 bis 16 Zeichen lang sein.
-
-Der Wechsel von einem Computeziel zu einem anderen umfasst das Erstellen einer [Laufzeitkonfiguration](concept-azure-machine-learning-architecture.md#run-configuration). Die Laufzeitkonfiguration definiert, wie das Skript auf dem Computeziel ausgeführt werden soll.
+Um von einem Computeziel zu einem anderen zu wechseln, benötigen Sie eine [Laufzeitkonfiguration](concept-azure-machine-learning-architecture.md#run-configuration). Die Laufzeitkonfiguration definiert, wie das Skript auf dem Computeziel ausgeführt werden soll.
 
 ## <a name="training-scripts"></a>Trainingsskripts
 
-Wenn Sie eine Trainingsausführung starten, wird eine Momentaufnahme des Verzeichnisses, das Ihre Trainingsskripts enthält, erstellt und an das Computeziel gesendet. Weitere Informationen finden Sie auf unter [Snapshots](concept-azure-machine-learning-architecture.md#snapshot) (Momentaufnahmen).
+Wenn Sie eine Trainingsausführung starten, wird eine Momentaufnahme des Verzeichnisses, das Ihre Trainingsskripts enthält, erstellt und an das Computeziel gesendet. Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshot).
 
 ## <a id="local"></a>Lokaler Computer
 
-Beim lokalen Trainieren verwenden Sie das SDK zum Übermitteln des Trainingsvorgangs. Sie können eine vom Benutzer oder vom System verwaltete Umgebung zum Trainieren verwenden.
+Beim lokalen Trainieren verwenden Sie das SDK zum Übermitteln des Trainingsvorgangs. Sie können zum Training eine vom Benutzer oder System verwaltete Umgebung verwenden.
 
 ### <a name="user-managed-environment"></a>Vom Benutzer verwaltete Umgebung
 
-In einer vom Benutzer verwalteten Umgebung müssen Sie sicherstellen, dass alle erforderlichen Pakete in der Python-Umgebung verfügbar sind, in der Sie das Skript ausführen möchten. Der folgende Codeausschnitt ist ein Beispiel für die Trainingskonfiguration für eine vom Benutzer verwaltete Umgebung:
+Stellen Sie in einer vom Benutzer verwalteten Umgebung sicher, dass alle erforderlichen Pakete in der Python-Umgebung verfügbar sind, in der Sie das Skript ausführen. Der folgende Codeausschnitt ist ein Beispiel der Trainingskonfiguration für eine vom Benutzer verwaltete Umgebung:
 
 ```python
 from azureml.core.runconfig import RunConfiguration
 
-# Editing a run configuration property on-fly.
+# Edit a run configuration property on the fly.
 run_config_user_managed = RunConfiguration()
 
 run_config_user_managed.environment.python.user_managed_dependencies = True
 
-# You can choose a specific Python environment by pointing to a Python path 
-#run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
+# Choose a specific Python environment by pointing to a Python path. For example:
+# run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
 
   
 ### <a name="system-managed-environment"></a>Vom System verwaltete Umgebung
 
-Vom System verwaltete Umgebungen hängen davon ab, dass Conda die Abhängigkeiten verwaltet. Conda erstellt eine Datei mit dem Namen `conda_dependencies.yml`, die eine Liste der Abhängigkeiten enthält. Sie können anschließend vom System die Erstellung einer neuen Conda-Umgebung anfordern und Ihre Skripts darin ausführen. Vom System verwaltete Umgebungen können später wiederverwendet werden, sofern die `conda_dependencies.yml`-Dateien unverändert bleiben. 
+Vom System verwaltete Umgebungen hängen davon ab, dass Conda die Abhängigkeiten verwaltet. Conda erstellt eine Datei mit dem Namen **conda_dependencies.yml**, die eine Liste der Abhängigkeiten enthält. Sie können vom System die Erstellung einer neuen Conda-Umgebung anfordern und Ihre Skripts darin ausführen. Vom System verwaltete Umgebungen können später wiederverwendet werden, sofern die Datei „conda_dependencies.yml“ unverändert bleibt. 
 
-Bis eine neue Umgebung erstmals eingerichtet ist, können einige Minuten vergehen, je nach der Größe der erforderlichen Abhängigkeiten. Der folgende Codeausschnitt zeigt die Erstellung einer vom System verwalteten Umgebung, die von scikit-learn abhängig ist:
+Bis eine neue Umgebung erstmals eingerichtet ist, können je nach Größe der erforderlichen Abhängigkeiten einige Minuten vergehen. Der folgende Codeausschnitt veranschaulicht das Erstellen einer vom System verwalteten Umgebung, die von scikit-learn abhängig ist:
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -121,56 +116,57 @@ run_config_system_managed = RunConfiguration()
 run_config_system_managed.environment.python.user_managed_dependencies = False
 run_config_system_managed.auto_prepare_environment = True
 
-# Specify conda dependencies with scikit-learn
+# Specify the conda dependencies with scikit-learn
 
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
 
 ## <a id="amlcompute"></a>Azure Machine Learning Compute
 
-Azure Machine Learning Compute ist eine verwaltete Computeinfrastruktur, die dem Benutzer das einfache Erstellen von Computezielen mit einem einzigen oder mehreren Knoten ermöglicht. Das Computeziel wird __in Ihrer Arbeitsbereichsregion__ erstellt und ist eine Ressource, die für andere Benutzer im Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer __Containerumgebung__ ausgeführt und verpackt die Abhängigkeiten Ihres Modells in einem Docker-Container.
+Azure Machine Learning Compute ist eine verwaltete Compute-Infrastruktur, die dem Benutzer das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion als Ressource erstellt, die für andere Benutzer im Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einem Docker-Container.
 
 Sie können Azure Machine Learning Compute verwenden, um den Trainingsprozess auf einen Cluster von CPU- oder GPU-Computeknoten in der Cloud zu verteilen. Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
 > [!NOTE]
-> Bei Azure Machine Learning Compute gelten bestimmte Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie im Dokument [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
+> Bei Azure Machine Learning Compute gelten Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie unter [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 Sie können eine Azure Machine Learning Compute-Umgebung bedarfsgesteuert beim Planen einer Ausführung oder als persistente Ressource erstellen.
 
 ### <a name="run-based-creation"></a>Ausführungsbasierte Erstellung
 
-Sie können eine Azure Machine Learning Compute-Umgebung als Computeziel zur Laufzeit erstellen. Das Computeziel wird in diesem Fall automatisch für die Ausführung erstellt, auf die in der Ausführungskonfiguration angegebene maximale Knotenanzahl (max_nodes) zentral hochskaliert und nach Abschluss der Ausführung __automatisch gelöscht__.
+Sie können eine Azure Machine Learning Compute-Umgebung als Computeziel zur Laufzeit erstellen. Das Computeziel wird in diesem Fall automatisch für die Ausführung erstellt und auf die in der Ausführungskonfiguration angegebene maximale Knotenanzahl **max_nodes** zentral hochskaliert. Es wird nach Abschluss der Ausführung automatisch gelöscht.
 
 > [!IMPORTANT]
-> Die ausführungsbasierte Erstellung von Azure Machine Learning Compute ist zurzeit als Vorschauversion verfügbar. Verwenden Sie die ausführungsbasierte Erstellung nicht, wenn Sie die Hyperparameteroptimierung oder automatisiertes maschinelles Lernen nutzen. Falls Sie die Hyperparameteroptimierung oder automatisiertes maschinelles Lernen verwenden müssen, erstellen Sie die Azure Machine Learning Compute-Umgebung, bevor Sie eine Ausführung übermitteln.
+> Die ausführungsbasierte Erstellung einer Azure Machine Learning Compute-Umgebung ist zurzeit in der Vorschauphase. Verwenden Sie die ausführungsbasierte Erstellung nicht, wenn Sie die Hyperparameteroptimierung oder automatisiertes maschinelles Lernen nutzen. Um die Hyperparameteroptimierung oder automatisiertes maschinelles Lernen zu verwenden, erstellen Sie die Azure Machine Learning Compute-Umgebung, bevor Sie eine Ausführung übermitteln.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
 
-#Let us first list the supported VM families for Azure Machine Learning Compute
+# First, list the supported VM families for Azure Machine Learning Compute
 AmlCompute.supported_vmsizes()
 
 from azureml.core.runconfig import RunConfiguration
 
-# create a new runconfig object
+# Create a new runconfig object
 run_config = RunConfiguration()
 
-# signal that you want to use AmlCompute to execute script.
+# Signal that you want to use AmlCompute to execute the script
 run_config.target = "amlcompute"
 
-# AmlCompute will be created in the same region as workspace. Set vm size for AmlCompute from the list returned above
+# AmlCompute is created in the same region as your workspace
+# Set the VM size for AmlCompute from the list of supported_vmsizes
 run_config.amlcompute.vm_size = 'STANDARD_D2_V2'
 
 ```
 
-### <a name="persistent-compute-basic"></a>Persistente Computeressource (Standard)
+### <a name="persistent-compute-basic"></a>Persistente Computeressource: Standard
 
-Eine persistente Azure Machine Learning Compute-Ressource kann für mehrere Aufträge wiederverwendet werden. Sie kann für andere Benutzer im Arbeitsbereich freigegeben werden und bleibt zwischen Aufträgen erhalten.
+Eine persistente Azure Machine Learning Compute-Umgebung kann für Aufträge wiederverwendet werden. Sie kann für andere Benutzer im Arbeitsbereich freigegeben werden und bleibt zwischen Aufträgen erhalten.
 
-Um eine persistente Azure Machine Learning Compute-Ressource zu erstellen, geben Sie die Parameter `vm_size` und `max_nodes` an. Azure Machine Learning verwendet dann intelligente Standardwerte für die restlichen Parameter.  Das Computeziel wird beispielsweise so eingerichtet, dass es bei Nichtverwendung automatisch auf null Knoten zentral herunterskaliert wird und je nach Bedarf dedizierte VMs zum Ausführen Ihrer Aufträge erstellt. 
+Um eine persistente Azure Machine Learning Compute-Umgebung zu erstellen, geben Sie die Parameter **vm_size** und **max_nodes** an. Azure Machine Learning verwendet dann für die restlichen Eigenschaften intelligente Standardwerte. Das Computeziel wird automatisch auf null Knoten zentral herunterskaliert und erstellt je nach Bedarf dedizierte VMs zum Ausführen Ihrer Aufträge. 
 
-* **vm_size**: VM-Familie der von Azure Machine Learning Compute erstellten Knoten.
-* **max_nodes**: Maximale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch skaliert wird.
+* **vm_size**: Die VM-Familie der von Azure Machine Learning Compute erstellten Knoten.
+* **max_nodes**: Die maximale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch hochskaliert wird.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -179,7 +175,7 @@ from azureml.core.compute_target import ComputeTargetException
 # Choose a name for your CPU cluster
 cpu_cluster_name = "cpucluster"
 
-# Verify that cluster does not exist already
+# Verify that the cluster doesn't already exist
 try:
     cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
     print('Found existing cluster, use it.')
@@ -192,21 +188,21 @@ cpu_cluster.wait_for_completion(show_output=True)
 
 ```
 
-### <a name="persistent-compute-advanced"></a>Persistente Computeressource (Erweitert)
+### <a name="persistent-compute-advanced"></a>Persistente Computeressource: Erweitert
 
-Sie können beim Erstellen einer Azure Machine Learning Compute-Ressource auch mehrere erweiterte Eigenschaften konfigurieren.  Mithilfe dieser Eigenschaften können Sie einen persistenten Cluster mit einer festen Größe oder in einem vorhandenen virtuellen Azure-Netzwerk in Ihrem Abonnement erstellen.
+Sie können beim Erstellen einer Azure Machine Learning Compute-Umgebung auch mehrere erweiterte Eigenschaften konfigurieren. Mithilfe der Eigenschaften können Sie einen persistenten Cluster mit einer festen Größe oder in einem vorhandenen virtuellen Azure-Netzwerk in Ihrem Abonnement erstellen.
 
-Zusätzlich zu `vm_size` und `max_nodes` können Sie die folgenden Eigenschaften verwenden:
+Neben den Eigenschaften **vm_size** und **max_nodes** können Sie auch die folgenden Eigenschaften verwenden:
 
-* **min_nodes**: Mindestanzahl von Knoten (Standardwert: 0), auf die das Computeziel während der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch zentral herunterskaliert wird.
-* **vm_priority**: Sie können beim Erstellen einer Azure Machine Learning Compute-Ressource zwischen dedizierten VMs (dedicated) und VMs mit niedriger Priorität (lowpriority) wählen. Der Standardwert dieser Eigenschaft ist „dedicated“. VMs mit niedriger Priorität verwenden überschüssige Kapazität von Azure und sind daher kostengünstiger. Bei ihnen besteht jedoch das Risiko, dass Ihre Ausführung vorzeitig entfernt wird.
-* **idle_seconds_before_scaledown**: Leerlaufzeit (Standardwert: 120 Sekunden), die nach Abschluss der Ausführung gewartet werden soll, bevor das Computeziel automatisch auf „min_nodes“ zentral herunterskaliert wird.
-* **vnet_resourcegroup_name**: Ressourcengruppe des __vorhandenen__ virtuellen Netzwerks. Die Azure Machine Learning Compute-Ressource wird in diesem virtuellen Netzwerk erstellt.
-* **vnet_name**: Name des virtuellen Netzwerks. Das virtuelle Netzwerk muss sich in derselben Region befinden wie Ihr Azure Machine Learning-Arbeitsbereich.
-* **subnet_name**: Name des Subnetzes innerhalb des virtuellen Netzwerks. Azure Machine Learning Compute-Ressourcen werden IP-Adressen aus diesem Subnetzbereich zugewiesen.
+* **min_nodes**: Die minimale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in einer Azure Machine Learning Compute-Umgebung automatisch herunterskaliert wird. Das Standardminimum ist null (0) Knoten.
+* **vm_priority**: Der Typ der zu verwendenden VM, wenn Sie eine Azure Machine Learning Compute-Umgebungsressource erstellen. Sie können zwischen **dedicated** (dediziert, Standard) und **lowpriority** (niedrige Priorität) wählen. VMs mit niedriger Priorität nutzen überschüssige Kapazität in Azure. Diese VMs sind kostengünstiger, aber Ausführungen können vorzeitig beendet werden, wenn diese VMs zum Einsatz kommen.
+* **idle_seconds_before_scaledown**: Die Dauer der Leerlaufzeit, die nach Beendigung einer Ausführung und vor der automatischen Skalierung auf die Anzahl von **min_nodes** gewartet wird. Die Standardleerlaufzeit ist 120 Sekunden.
+* **vnet_resourcegroup_name**: Die Ressourcengruppe des __vorhandenen__ virtuellen Netzwerks. Die Azure Machine Learning Compute-Umgebung wird in diesem virtuellen Netzwerk erstellt.
+* **vnet_name**: Der Name des virtuellen Netzwerks. Das virtuelle Netzwerk muss sich in derselben Region befinden wie Ihr Azure Machine Learning-Arbeitsbereich.
+* **subnet_name**: Der Name des Subnetzes innerhalb des virtuellen Netzwerks. Den Azure Machine Learning Compute-Umgebungsressourcen werden IP-Adressen aus diesem Subnetzbereich zugewiesen.
 
 > [!TIP]
-> Beim Erstellen einer persistenten Azure Machine Learning Compute-Ressource können Sie auch die Eigenschaften der Ressource aktualisieren, beispielsweise „min_nodes“ oder „max_nodes“. Rufen Sie dazu einfach die `update()`-Funktion auf.
+> Beim Erstellen einer persistenten Azure Machine Learning Compute-Umgebungsressource können Sie auch Eigenschaften wie die Anzahl von **min_nodes** oder **max_nodes** aktualisieren. Um eine Eigenschaft zu aktualisieren, rufen Sie die `update()`-Funktion für die Eigenschaft auf.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -215,7 +211,7 @@ from azureml.core.compute_target import ComputeTargetException
 # Choose a name for your CPU cluster
 cpu_cluster_name = "cpucluster"
 
-# Verify that cluster does not exist already
+# Verify that the cluster doesn't already exist 
 try:
     cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
     print('Found existing cluster, use it.')
@@ -237,85 +233,86 @@ cpu_cluster.wait_for_completion(show_output=True)
 
 ## <a id="vm"></a>Remote-VM
 
-Azure Machine Learning bietet Ihnen auch die Möglichkeit, eine eigene Computeressource zu verwenden und diese an Ihren Arbeitsbereich anzufügen. Eine Remote-VM, auf die über Azure Machine Learning Service zugegriffen werden kann, ist ein solcher Ressourcentyp. Die Ressource kann entweder eine Azure-VM oder ein Remoteserver in Ihrer Organisation oder lokalen Bereitstellung sein. Durch Angabe der IP-Adresse und Anmeldeinformationen (Benutzername/Kennwort oder SSH-Schlüssel) können Sie jede VM, auf die zugegriffen werden kann, für Remoteausführungen verwenden.
-Sie können eine systemseitig erstellte Conda-Umgebung, eine bereits vorhandene Python-Umgebung oder einen Docker-Container verwenden. Die Ausführung mit einem Docker-Container setzt voraus, dass die Docker-Engine auf der VM ausgeführt wird. Diese Funktion ist besonders nützlich, wenn Sie eine cloudbasierte Entwicklungs-/Experimentierumgebung nutzen möchten, die Ihnen mehr Flexibilität bietet als Ihr lokaler Computer.
+Azure Machine Learning bietet Ihnen auch die Möglichkeit, eine eigene Computeressource zu verwenden und diese an Ihren Arbeitsbereich anzufügen. Eine Remote-VM, auf die über Azure Machine Learning Service zugegriffen werden kann, ist ein solcher Ressourcentyp. Die Ressource kann entweder eine Azure-VM, ein Remoteserver in Ihrer Organisation oder lokal sein. Durch Angabe der IP-Adresse und Anmeldeinformationen (Benutzername und Kennwort oder SSH-Schlüssel) können Sie jede VM, auf die zugegriffen werden kann, für Remoteausführungen verwenden.
+Sie können eine systemseitig erstellte Conda-Umgebung, eine vorhandene Python-Umgebung oder einen Docker-Container verwenden. Bei Ausführung mit einem Docker-Container muss die Docker-Engine auf der VM ausgeführt werden. Die Remote-VM-Funktion ist besonders nützlich, wenn Sie eine cloudbasierte Entwicklungs- und Experimentierumgebung nutzen möchten, die Ihnen mehr Flexibilität bietet als Ihr lokaler Computer.
 
 > [!TIP]
-> Für dieses Szenario empfehlen wir, Data Science Virtual Machine (DSVM) als Azure-VM zu verwenden. DSVM ist eine vorkonfigurierte Data Science- und KI-Entwicklungsumgebung in Azure mit einer eigens zusammengestellten Auswahl von Tools und Frameworks für den gesamten Lebenszyklus der Machine Learning-Entwicklung. Weitere Informationen zur Verwendung von Data Science Virtual Machine mit Azure Machine Learning finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
+> Verwenden Sie für dieses Szenario DSVM (Data Science Virtual Machine) als Azure-VM. Diese VM ist eine vorkonfigurierte Data Science- und KI-Entwicklungsumgebung in Azure mit einer eigens zusammengestellten Auswahl von Tools und Frameworks für den gesamten Lebenszyklus der Machine Learning-Entwicklung. Weitere Informationen zum Verwenden der DSVM mit Azure Machine Learning finden Sie unter [Konfigurieren einer Entwicklungsumgebung](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
 > [!WARNING]
-> Azure Machine Learning unterstützt nur virtuelle Computer, die Ubuntu ausführen. Beim Erstellen oder Auswählen eines virtuellen Computers muss dieser Ubuntu verwenden.
+> Azure Machine Learning unterstützt nur virtuelle Computer, auf denen Ubuntu ausgeführt wird. Wenn Sie eine VM erstellen oder eine vorhandene VM auswählen, müssen Sie eine VM auswählen, die Ubuntu verwendet.
 
-Die folgenden Schritte verwenden das SDK zum Konfigurieren einer Data Science Virtual Machine (DSVM) als Trainingsziel:
+In den folgenden Schritten wird mit dem SDK eine DSVM als Trainingsziel konfiguriert:
 
-1. Um einen vorhandenen virtuellen Computer als Computeziel anzufügen, müssen Sie den vollqualifizierten Domänennamen, den Anmeldenamen und das Kennwort für den virtuellen Computer bereitstellen.  Ersetzen Sie in diesem Beispiel ```<fqdn>``` durch den öffentlichen vollqualifizierten Domänennamen des virtuellen Computers oder die öffentliche IP-Adresse. Ersetzen Sie ```<username>``` und ```<password>``` durch den SSH-Benutzer und das Kennwort für den virtuellen Computer:
+1. Um einen vorhandenen virtuellen Computer als Computeziel anzufügen, müssen Sie den vollqualifizierten Domänennamen (FQDN), Benutzernamen und das Kennwort für die VM bereitstellen. Ersetzen Sie in diesem Beispiel \<fqdn> durch den öffentlichen FQDN der VM oder die öffentliche IP-Adresse. Ersetzen Sie im folgenden Befehl \<username> und \<password> durch den SSH-Benutzernamen und das Kennwort für die VM.
 
     ```python
     from azureml.core.compute import RemoteCompute, ComputeTarget
     
-    # Create compute config.
+    # Create the compute config
     attach_config = RemoteCompute.attach_configuration(address = "ipaddress",
                                                        ssh_port=22,
                                                        username='<username>',
                                                        password="<password>")
-    # If using SSH instead of a password, use this:
-    #                                                  ssh_port=22,
-    #                                                   username='<username>',
-    #                                                   password=None,
-    #                                                   private_key_file="path-to-file",
-    #                                                   private_key_passphrase="passphrase")
 
-    # Attach the compute
+    # If you use SSH instead of a password, use this code:
+    #                                                  ssh_port=22,
+    #                                                  username='<username>',
+    #                                                  password=None,
+    #                                                  private_key_file="path-to-file",
+    #                                                  private_key_passphrase="passphrase")
+
+    # Attach the compute target
     compute = ComputeTarget.attach(ws, "attach-dsvm", attach_config)
 
     compute.wait_for_completion(show_output=True)
     ```
 
-1. Erstellen Sie eine Konfiguration für das DSVM-Computeziel. Zum Erstellen und Konfigurieren der Trainingsumgebung in DSVM werden Docker und Conda verwendet:
+1. Erstellen Sie eine Konfiguration für das DSVM-Computeziel. Zum Erstellen und Konfigurieren der Trainingsumgebung in der DSVM werden Docker und Conda verwendet.
 
     ```python
     from azureml.core.runconfig import RunConfiguration
     from azureml.core.conda_dependencies import CondaDependencies
 
-    # Load the "cpu-dsvm.runconfig" file (created by the above attach operation) in memory
+    # Load into memory the cpu-dsvm.runconfig file created in the previous attach operation
     run_config = RunConfiguration(framework = "python")
 
-    # Set compute target to the Linux DSVM
+    # Set the compute target to the Linux DSVM
     run_config.target = compute_target_name
 
     # Use Docker in the remote VM
     run_config.environment.docker.enabled = True
 
-    # Use CPU base image
-    # If you want to use GPU in DSVM, you must also use GPU base Docker image azureml.core.runconfig.DEFAULT_GPU_IMAGE
+    # Use the CPU base image
+    # To use GPU in DSVM, you must also use the GPU base Docker image "azureml.core.runconfig.DEFAULT_GPU_IMAGE"
     run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
     print('Base Docker image is:', run_config.environment.docker.base_image)
 
-    # Ask system to provision a new one based on the conda_dependencies.yml file
+    # Ask the system to provision a new conda environment based on the conda_dependencies.yml file
     run_config.environment.python.user_managed_dependencies = False
 
-    # Prepare the Docker and conda environment automatically when used the first time.
+    # Prepare the Docker and conda environment automatically when they're used for the first time
     run_config.prepare_environment = True
 
-    # specify CondaDependencies obj
+    # Specify the CondaDependencies object
     run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 
     ```
 
 ## <a id="databricks"></a>Azure Databricks
 
-Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Sie kann beim Trainieren von Modellen mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
+Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Die Umgebung kann beim Training von Modellen mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
 
 > [!IMPORTANT]
 > Ein Azure Databricks-Computeziel kann nur in einer Machine Learning-Pipeline verwendet werden.
 >
-> Sie müssen einen Azure Databricks-Arbeitsbereich erstellen, um ihn zum Trainieren Ihres Modells zu verwenden. Informationen zum Erstellen dieser Ressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+> Sie müssen einen Azure Databricks-Arbeitsbereich erstellen, um ihn zum Training Ihres Modells zu verwenden. Informationen zum Erstellen dieser Ressource finden Sie unter [Ausführen eines Spark-Auftrags in Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
 
 Um Azure Databricks als Computeziel anzufügen, müssen Sie das Azure Machine Learning SDK verwenden und die folgenden Informationen angeben:
 
 * __Computename__: Der Name, der dieser Computeressource zugewiesen werden soll.
 * __Name des Databricks-Arbeitsbereichs__: Der Name des Azure Databricks-Arbeitsbereichs.
-* __Zugriffstoken__: Das zur Authentifizierung bei Azure Databricks verwendete Zugriffstoken. Informationen zum Generieren eines Zugriffstokens finden Sie im Dokument [Authentifizierung](https://docs.azuredatabricks.net/api/latest/authentication.html).
+* __Zugriffstoken__: Das zur Authentifizierung bei Azure Databricks verwendete Zugriffstoken. Informationen zum Generieren eines Zugriffstokens finden Sie unter [Authentifizierung](https://docs.azuredatabricks.net/api/latest/authentication.html).
 
 Der folgende Code veranschaulicht, wie Azure Databricks als Computeziel angefügt wird:
 
@@ -334,7 +331,7 @@ except ComputeTargetException:
     print('databricks_workspace_name {}'.format(databricks_workspace_name))
     print('databricks_access_token {}'.format(databricks_access_token))
 
-    # Create attach config
+    # Create the attach config
     attach_config = DatabricksCompute.attach_configuration(resource_group = databricks_resource_group,
                                                            workspace_name = databricks_workspace_name,
                                                            access_token = databricks_access_token)
@@ -349,12 +346,12 @@ except ComputeTargetException:
 
 ## <a id="adla"></a>Azure Data Lake Analytics
 
-Azure Data Lake Analytics ist eine umfangreiche Datenanalyseplattform in der Azure-Cloud. Sie kann beim Trainieren von Modellen mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
+Azure Data Lake Analytics ist eine umfangreiche Datenanalyseplattform in der Azure-Cloud. Die Plattform kann beim Training von Modellen mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
 
 > [!IMPORTANT]
 > Ein Azure Data Lake Analytics-Computeziel kann nur in einer Machine Learning-Pipeline verwendet werden.
 >
-> Sie müssen ein Azure Data Lake Analytics-Konto erstellen, um es zum Trainieren Ihres Modells zu verwenden. Informationen zum Erstellen dieser Ressource finden Sie im Dokument [Erste Schritte mit Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
+> Sie müssen ein Azure Data Lake Analytics-Konto erstellen, um es zum Training Ihres Modells verwenden zu können. Informationen zum Erstellen dieser Ressource finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
 
 Um Data Lake Analytics als Computeziel anzufügen, müssen Sie das Azure Machine Learning SDK verwenden und die folgenden Informationen angeben:
 
@@ -377,10 +374,11 @@ except ComputeTargetException:
     print('adla_compute_name {}'.format(adla_compute_name))
     print('adla_resource_id {}'.format(adla_resource_group))
     print('adla_account_name {}'.format(adla_account_name))
-    # create attach config
+    
+    # Create the attach config
     attach_config = AdlaCompute.attach_configuration(resource_group = adla_resource_group,
                                                      account_name = adla_account_name)
-    # Attach ADLA
+    # Attach the ADLA
     adla_compute = ComputeTarget.attach(
              ws,
              adla_compute_name,
@@ -391,31 +389,31 @@ except ComputeTargetException:
 ```
 
 > [!TIP]
-> Azure Machine Learning-Pipelines können nur ausgeführt werden, wenn die Daten im Standarddatenspeicher des Data Lake Analytics-Kontos gespeichert werden. Wenn die Daten, die Sie verwenden möchten, in einem nicht standardmäßigen Speicher gespeichert sind, können Sie die Daten mithilfe von [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) vor dem Trainieren kopieren.
+> Azure Machine Learning-Pipelines funktionieren nur mit Dateien, die im Standarddatenspeicher des Data Lake Analytics-Kontos gespeichert sind. Wenn die benötigten Daten nicht ein einem Standardspeicher gespeichert sind, können Sie die Daten mithilfe eines [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py)-Vorgangs vor dem Training des Modells kopieren.
 
 ## <a id="hdinsight"></a>Azure HDInsight 
 
-HDInsight ist eine beliebte Plattform für Big Data-Analysen. Sie stellt Apache Spark bereit, das zum Trainieren Ihres Modells verwendet werden kann.
+Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattform stellt Apache Spark bereit, das zum Training Ihres Modells verwendet werden kann.
 
 > [!IMPORTANT]
-> Erstellen Sie den HDInsight-Cluster, bevor Sie ihn zum Trainieren Ihres Modells verwenden. Informationen zum Erstellen von Spark auf einem HDInsight-Cluster finden Sie unter [Schnellstart: Erstellen eines Spark-Clusters in HDInsight mithilfe einer Vorlage](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql).
+> Erstellen Sie den HDInsight-Cluster, bevor Sie ihn zum Training Ihres Modells verwenden. Informationen zum Erstellen von Spark in einem HDInsight-Cluster finden Sie unter [Erstellen eines Spark-Clusters in HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql).
 >
 > Beim Erstellen des Clusters müssen Sie einen SSH-Benutzernamen und ein Kennwort angeben. Notieren Sie diese Werte, da Sie sie benötigen, wenn Sie HDInsight als Computeziel verwenden.
 >
-> Sobald der Cluster erstellt wurde, hat er den vollqualifizierten Domänennamen (FQDN) `<clustername>.azurehdinsight.net`, wobei `<clustername>` der Name ist, die Sie für den Cluster angegeben haben. Sie benötigen diese Adresse (oder die öffentliche IP-Adresse des Clusters), um sie als Computeziel zu verwenden.
+> Nach Erstellen des Clusters hat dieser den FQDN \<clustername>.azurehdinsight.net, wobei \<clustername> der Name ist, den Sie für den Cluster angegeben haben. Sie benötigen die FQDN-Adresse (oder die öffentliche IP-Adresse des Clusters), um den Cluster als Computeziel zu verwenden.
 
-Um HDInsight als Computeziel zu konfigurieren, müssen Sie den vollqualifizierten Domänennamen, den Clusteranmeldenamen und das Kennwort für den HDInsight-Cluster bereitstellen. Im folgenden Beispiel wird das SDK zum Anfügen eines Clusters zu Ihrem Arbeitsbereich verwendet. Ersetzen Sie in diesem Beispiel `<fqdn>` durch den öffentlichen vollqualifizierten Domänennamen des Clusters oder die öffentliche IP-Adresse. Ersetzen Sie `<username>` und `<password>` durch den SSH-Benutzer und das Kennwort für den Cluster:
+Um HDInsight als Computeziel zu konfigurieren, müssen Sie den FQDN, Benutzernamen und das Kennwort für den HDInsight-Cluster bereitstellen. Im folgenden Beispiel wird das SDK zum Anfügen eines Clusters zu Ihrem Arbeitsbereich verwendet. Ersetzen Sie in diesem Beispiel \<fqdn> durch den öffentlichen FQDN des Clusters oder die öffentliche IP-Adresse. Ersetzen Sie \<username> und \<password> durch den SSH-Benutzernamen und das Kennwort für den Cluster.
 
 > [!NOTE]
-> Besuchen Sie das Azure-Portal, und wählen Sie Ihren HDInsight-Cluster aus, um den FQDN für Ihren Cluster zu finden. Im Abschnitt __Übersicht__ ist der FQDN Teil des Eintrags __URL__. Entfernen Sie einfach `https://` am Anfang des Werts.
->
-> ![Screenshot der HDInsight-Clusterübersicht mit hervorgehobenem URL-Eintrag](./media/how-to-set-up-training-targets/hdinsight-overview.png)
+> Besuchen Sie das Azure-Portal, und wählen Sie Ihren HDInsight-Cluster aus, um den FQDN für Ihren Cluster zu finden. Unter __Übersicht__ finden Sie im Eintrag __URL__ den FQDN. Um den FQDN zu erhalten, entfernen Sie das Präfix „https:\//“ am Anfang des Eintrags.
+
+![Abrufen des FQDN für einen HDInsight-Cluster im Azure-Portal](./media/how-to-set-up-training-targets/hdinsight-overview.png)
 
 ```python
 from azureml.core.compute import HDInsightCompute, ComputeTarget
 
 try:
-    # Attaches a HDInsight cluster as a compute target.
+    # Attach an HDInsight cluster as a compute target
     attach_config = HDInsightCompute.attach_configuration(address = "fqdn-or-ipaddress",
                                                           ssh_port = 22,
                                                           username = "username",
@@ -427,34 +425,35 @@ except UserErrorException as e:
     print("Caught = {}".format(e.message))
     print("Compute config already attached.")
 
-# Configure HDInsight run
-# load the runconfig object from the "myhdi.runconfig" file generated by the attach operaton above.
+# Configure the HDInsight run
+# Load the runconfig object from the myhdi.runconfig file generated in the previous attach operation
 run_config = RunConfiguration.load(project_object = project, run_config_name = 'myhdi')
 
-# ask system to prepare the conda environment automatically when used for the first time
+# Ask the system to prepare the conda environment automatically when it's used for the first time
 run_config.auto_prepare_environment = True
 ```
 
-## <a name="submit-training-run"></a>Übermitteln der Trainingsausführung
+## <a name="submit-training-runs"></a>Übermitteln von Trainingsausführungen
 
 Eine Trainingsausführung kann auf zwei Arten übermittelt werden:
 
-* Übermitteln eines `ScriptRunConfig`-Objekts
-* Übermitteln eines `Pipeline`-Objekts
+* Übermitteln Sie eine Trainingsausführung mithilfe eines `ScriptRunConfig`-Objekts.
+* Übermitteln Sie eine Trainingsausführung mithilfe eines `Pipeline`-Objekts.
 
 > [!IMPORTANT]
 > Die Azure Databricks- und Azure Data Lake Analytics-Computeziele können nur in einer Pipeline verwendet werden.
+>
 > Das lokale Computeziel kann nicht in einer Pipeline verwendet werden.
 
-### <a name="submit-using-scriptrunconfig"></a>Übermitteln mithilfe von `ScriptRunConfig`
+### <a name="scriptrunconfig-object"></a>ScriptRunConfig-Objekt
 
-Das Codemuster zum Übermitteln einer Trainingsausführung mithilfe von `ScriptRunConfig` ist unabhängig vom Computeziel immer gleich:
+Das Codemuster für die Übermittlung einer Trainingsausführung mit dem `ScriptRunConfig`-Objekt ist für alle Arten von Computezielen gleich:
 
-* Erstellen Sie ein `ScriptRunConfig`-Objekt mithilfe der Ausführungskonfiguration für das Computeziel.
-* Übermitteln Sie die Ausführung.
-* Warten Sie, bis die Ausführung abgeschlossen ist.
+1. Erstellen Sie ein `ScriptRunConfig`-Objekt mithilfe der Ausführungskonfiguration für das Computeziel.
+1. Übermitteln Sie die Ausführung.
+1. Warten Sie, bis die Ausführung abgeschlossen ist.
 
-Im folgenden Beispiel wird die Konfiguration für das vom System verwaltete lokale Computeziel verwendet, die weiter oben in diesem Dokument erstellt wurde:
+Im folgenden Beispiel wird die Konfiguration für das vom System verwaltete lokale Computeziel verwendet, die weiter oben erstellt wurde:
 
 ```python
 src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
@@ -463,15 +462,15 @@ run.wait_for_completion(show_output = True)
 ```
 
 
-### <a name="submit-using-a-pipeline"></a>Übermitteln über eine Pipeline
+### <a name="pipeline-object"></a>Pipelineobjekt
 
-Das Codemuster zum Übermitteln einer Trainingsausführung über eine Pipeline ist unabhängig vom Computeziel immer gleich:
+Das Codemuster für die Übermittlung einer Trainingsausführung mit einem `Pipeline`-Objekt ist für alle Arten von Computezielen gleich:
 
-* Fügen Sie der Pipeline einen Schritt für die Computeressource hinzu.
-* Übermitteln Sie eine Ausführung über die Pipeline.
-* Warten Sie, bis die Ausführung abgeschlossen ist.
+1. Fügen Sie dem `Pipeline`-Objekt einen Schritt für die Computeressource hinzu.
+1. Übermitteln Sie eine Ausführung über die Pipeline.
+1. Warten Sie, bis die Ausführung abgeschlossen ist.
 
-Im folgenden Beispiel wird das Azure Databricks-Computeziel verwendet, das weiter oben in diesem Dokument erstellt wurde:
+Im folgenden Beispiel wird das Azure Databricks-Computeziel verwendet, das weiter oben erstellt wurde:
 
 ```python
 dbStep = DatabricksStep(
@@ -485,86 +484,93 @@ dbStep = DatabricksStep(
     databricks_compute=databricks_compute,
     allow_reuse=False
 )
-# list of steps to run
+
+# List of steps to run
 steps = [dbStep]
 pipeline = Pipeline(workspace=ws, steps=steps)
 pipeline_run = Experiment(ws, 'Demo_experiment').submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Weitere Informationen zu Machine Learning-Pipelines finden Sie im Dokument [Pipelines und Azure Machine Learning](concept-ml-pipelines.md).
+Weitere Informationen zu Machine Learning-Pipelines finden Sie unter [Pipelines und Azure Machine Learning](concept-ml-pipelines.md).
 
-Beispiele für Jupyter Notebooks, die das Training über eine Pipeline veranschaulichen, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline).
+Beispiele für Jupyter Notebooks, die das Training eines Modells über eine Pipeline veranschaulichen, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline).
 
-## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Computeanzeige und -einrichtung mithilfe des Azure-Portals
+## <a name="access-computes-in-the-azure-portal"></a>Zugreifen auf Computeziele im Azure-Portal
 
-Sie können anzeigen, welche Computeziele Ihrem Arbeitsbereich aus dem Azure-Portal zugeordnet sind. Führen Sie die folgenden Schritte aus, um die Liste abzurufen:
+Sie können im Azure-Portal auf Computeziele zugreifen, die Ihrem Arbeitsbereich zugeordnet sind. 
 
-1. Besuchen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu Ihrem Arbeitsbereich.
-2. Klicken Sie auf den Link __Compute__im Abschnitt __Anwendungen__.
+### <a name="view-compute-targets"></a>Anzeigen von Computezielen
 
-    ![Registerkarte „Computer“ anzeigen](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
+Um die Compute-Ziele für Ihren Arbeitsbereich anzuzeigen, führen Sie die folgenden Schritte aus:
+
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie Ihren Arbeitsbereich.
+1. Wählen Sie unter __Anwendungen__ den Eintrag __Compute__.
+
+    ![Anzeigen von Computezielen](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
 ### <a name="create-a-compute-target"></a>Erstellen eines Computeziels
 
-Führen Sie die oben genannten Schritte aus, um eine Liste von Computezielen anzuzeigen, und führen Sie dann die folgenden Schritte aus, um ein Computeziel zu erstellen:
+Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus. Führen Sie dann die folgenden Schritte aus, um ein Computeziel zu erstellen:
 
-1. Klicken Sie auf das Symbol __+__, um ein Computeziel hinzuzufügen.
+1. Klicken Sie auf das Pluszeichen (+), um ein Computeziel hinzuzufügen.
 
-    ![Compute hinzufügen ](./media/how-to-set-up-training-targets/add-compute-target.png)
+    ![Hinzufügen eines Computeziels](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. Geben Sie einen Namen für das Computeziel ein.
-1. Wählen Sie **Machine Learning Compute** als Computetyp für das __Training__ aus.
+1. Wählen Sie **Machine Learning Compute** als Computetyp für __Training__ aus.
 
     > [!IMPORTANT]
-    > Sie können nur Azure Machine Learning Compute als verwaltete Computeressource für das Training erstellen.
+    > Sie können nur eine Azure Machine Learning Compute-Umgebung als verwaltete Computeressource für das Training erstellen.
 
-1. Füllen Sie die erforderlichen Felder des Formulars aus, und geben Sie insbesondere die VM-Familie und die maximale Anzahl von Knoten für die Skalierung des Computeziels an. 
-1. Klicken Sie auf __Erstellen__
-1. Sie können den Status des Erstellungsvorgangs anzeigen, indem Sie das Computeziel in der Liste auswählen.
+1. Füllen Sie das Formular aus. Geben Sie für die Einrichtung des Computeziels Werte für die Pflichteigenschaften ein, insbesondere die **VM-Familie** und die **maximale Anzahl von Knoten**. 
+1. Klicken Sie auf __Erstellen__.
+1. Sie können den Status des Erstellungsvorgangs anzeigen, indem Sie das Computeziel in der Liste auswählen:
 
-    ![Anzeigen der Computeliste](./media/how-to-set-up-training-targets/View_list.png)
+    ![Auswählen eines Computeziels zum Anzeigen des Status des Erstellungsvorgangs](./media/how-to-set-up-training-targets/View_list.png)
 
-1. Daraufhin werden die Details für das Computeziel angezeigt.
+1. Daraufhin werden die Details für das Computeziel angezeigt:
 
-    ![Anzeigen der Details](./media/how-to-set-up-training-targets/compute-target-details.png)
+    ![Anzeigen der Details des Computeziels](./media/how-to-set-up-training-targets/compute-target-details.png)
 
-1. Jetzt können Sie wie oben beschrieben eine Ausführung für diese Ziele übermitteln.
+Nun können Sie, wie zuvor beschrieben, eine Ausführung mit den Computezielen übermitteln.
 
 
-### <a name="reuse-existing-compute-in-your-workspace"></a>Wiederverwenden von vorhandenem Compute in Ihrem Arbeitsbereich
+### <a name="reuse-existing-compute-targets"></a>Wiederverwenden vorhandener Computeziele
 
-Führen Sie die oben genannten Schritte aus, um eine Liste von Computezielen anzuzeigen, und führen Sie dann die folgenden Schritte aus, um ein Computeziel wiederzuverwenden:
+Führen Sie die zuvor beschriebenen Schritte aus, um die Liste der Computeziele anzuzeigen. Führen Sie dann die folgenden Schritte aus, um ein Computeziel wiederzuverwenden:
 
-1. Klicken Sie auf das Symbol **+**, um ein Computeziel hinzuzufügen.
-2. Geben Sie einen Namen für das Computeziel ein.
-3. Wählen Sie den Computetyp aus, den Sie für das __Training__ anfügen möchten.
+1. Klicken Sie auf das Pluszeichen (+), um ein Computeziel hinzuzufügen.
+1. Geben Sie einen Namen für das Computeziel ein.
+1. Wählen Sie den Computetyp aus, den Sie für __Training__ anfügen möchten:
 
     > [!IMPORTANT]
-    > Nicht alle Computetypen können im Portal angefügt werden.
-    > Derzeit können folgende Typen für das Training angefügt werden:
-    > 
-    > * Remote-VM
-    > * Databricks
-    > * Data Lake Analytics
-    > * HDInsight
+    > Nicht alle Computetypen können im Azure-Portal angefügt werden.
+    > Derzeit können folgende Computetypen für das Training angefügt werden:
+    >
+    > * Eine Remote-VM
+    > * Azure Databricks
+    > * Azure Data Lake Analytics
+    > * Azure HDInsight
 
-1. Füllen Sie die erforderlichen Felder des Formulars aus.
+1. Füllen Sie das Formular aus, und geben Sie Werte für die Pflichteigenschaften an.
 
     > [!NOTE]
-    > Microsoft empfiehlt die Verwendung von SSH-Schlüsseln, da sie sicherer als Kennwörter sind. Kennwörter sind anfällig für Brute-Force-Angriffen, während SSH-Schlüssel auf kryptografischen Signaturen basieren. Informationen zum Erstellen von SSH-Schlüsseln für die Verwendung mit Azure Virtual Machines finden Sie in den folgenden Dokumenten:
+    > Microsoft empfiehlt die Verwendung von SSH-Schlüsseln, die sicherer als Kennwörter sind. Kennwörter sind anfällig für Brute-Force-Angriffe. SSH-Schlüssel basieren auf kryptografische Signaturen. Informationen zum Erstellen von SSH-Schlüsseln für die Verwendung mit Azure Virtual Machines finden Sie in den folgenden Dokumenten:
     >
-    > * [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure]( https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Verwenden von SSH-Schlüsseln mit Windows in Azure]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [Verwenden von SSH-Schlüsseln mit Windows in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-1. Wählen Sie „Anfügen“ aus.
+1. Wählen Sie __Anfügen__ aus.
 1. Sie können den Status des Anfügevorgangs anzeigen, indem Sie das Computeziel in der Liste auswählen.
-1. Jetzt können Sie wie oben beschrieben eine Ausführung für diese Ziele übermitteln.
 
-## <a name="examples"></a>Beispiele
+Nun können Sie, wie zuvor beschrieben, eine Ausführung mit diesen Computezielen übermitteln.
+
+## <a name="notebook-examples"></a>Notebook-Beispiele
+
 Beispiele finden Sie in den folgenden Notebooks:
-* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
 
+* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
