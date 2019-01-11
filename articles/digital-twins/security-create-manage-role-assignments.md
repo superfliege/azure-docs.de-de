@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 72a42e273029bd42d77531953ff5cbfc0fe5c295
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810898"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118590"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
@@ -276,9 +276,9 @@ Die folgenden Beispiele veranschaulichen, wie Sie Ihren JSON-Text in verschieden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Überprüfen der rollenbasierten Zugriffssteuerung (RBAC) in Azure Digital Twins finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](./security-authenticating-apis.md).
+- Informationen zum Überprüfen der rollenbasierten Zugriffssteuerung (RBAC) in Azure Digital Twins finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](./security-authenticating-apis.md).
 
-Informationen zur API-Authentifizierung in Azure Digital Twins finden Sie unter [API-Authentifizierung](./security-authenticating-apis.md).
+- Informationen zur API-Authentifizierung in Azure Digital Twins finden Sie unter [API-Authentifizierung](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/security-roles/roleassignments.png

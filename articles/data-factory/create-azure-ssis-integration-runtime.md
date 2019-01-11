@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/26/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f5305c2d077f909a4b6c7c5e6905376d655dd60d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b772aa314316906a4079e3d6b8b4e0aeb0f54fba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794565"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022987"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory
 In diesem Artikel werden die Schritte für die Bereitstellung von Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen und Ausführen von SQL Server Integration Services-Paketen (SSIS) in dieser Integration Runtime in Azure verwenden. 
@@ -56,7 +55,7 @@ Wenn Sie Azure-SSIS IR bereitstellen, werden auch das Azure Feature Pack für SS
 ### <a name="region-support"></a>Unterstützung für Regionen
 Eine Liste mit den Azure-Regionen, in denen ADF und Azure-SSIS IR zurzeit verfügbar sind, finden Sie unter [ADF- und SSIS IR-Verfügbarkeit nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
 
-### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>Vergleich zwischen logischem Azure SQL-Datenbankserver und verwalteter SQL-Datenbank-Instanz
+### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>Vergleich zwischen logischem Azure SQL-Datenbank-Server und verwalteter SQL-Datenbank-Instanz
 
 In der folgenden Tabelle werden bestimmte Features des Azure SQL-Datenbankservers und der verwalteten Instanz in Bezug auf Azure-SSIR IR verglichen:
 
@@ -66,7 +65,7 @@ In der folgenden Tabelle werden bestimmte Features des Azure SQL-Datenbankserver
 | **Authentifizierung** | Sie können SSISDB mit einem Benutzer für eigenständige Datenbank erstellen, der eine beliebige AAD-Gruppe mit der verwalteten Identität Ihrer ADF als ein Mitglied in der Rolle **Db_owner** darstellt.<br/><br/>Informationen finden Sie unter [Aktivieren der Azure AD-Authentifizierung zum Erstellen von SSISDB auf einem Azure SQL-Datenbankserver](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Sie können SSISDB mit einem Benutzer für eigenständige Datenbank erstellen, der die verwaltete Identität Ihrer ADF darstellt. <br/><br/>Informationen finden Sie unter [Aktivieren der Azure AD-Authentifizierung zum Erstellen von SSISDB in einer verwalteten Azure SQL-Datenbank-Instanz](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Dienstebene** | Wenn Sie Azure-SSIS IR mit Ihrem Azure SQL-Datenbankserver erstellen, können Sie die Dienstebene für SSISDB auswählen. Es gibt mehrere Dienstebenen. | Wenn Sie Azure-SSIS IR mit Ihrer verwalteten Instanz erstellen, können Sie die Dienstebene für SSISDB nicht auswählen. Alle Datenbanken in Ihrer verwalteten Instanz nutzen dieselbe Ressource, die dieser Instanz zugeordnet ist, gemeinsam. |
 | **Virtuelles Netzwerk** | Unterstützt nur virtuelle Azure Resource Manager-Netzwerke, denen Ihre Azure-SSIS IR beitreten kann, wenn Sie den Azure SQL-Datenbankserver mit Dienstendpunkten im virtuellen Netzwerk verwenden oder Zugriff auf lokale Datenspeicher benötigen. | Unterstützt nur virtuelle Azure Resource Manager-Netzwerke, denen Ihre Azure-SSIS IR beitreten kann. Das virtuelle Netzwerk ist immer erforderlich.<br/><br/>Wenn Sie Ihre Azure-SSIS IR mit demselben virtuellen Netzwerk verknüpfen wie Ihre verwaltete Instanz, stellen Sie sicher, dass sich Ihre Azure-SSIS IR in einem anderen Subnetz als Ihre verwaltete Instanz befindet. Wenn Sie Ihre Azure-SSIS IR mit einem anderen virtuellen Netzwerk verknüpfen als Ihre verwaltete Instanz, empfiehlt sich ein Peering virtueller Netzwerke oder eine Verbindung zwischen den virtuellen Netzwerken. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md). |
-| **Verteilte Transaktionen** | Unterstützt über elastische Transaktionen. MSDTC-Transaktionen (Microsoft Distributed Transaction Coordinator) werden nicht unterstützt. Wenn Ihre SSIS-Pakete MSDTC verwenden, um verteilte Transaktionen zu koordinieren, sollten Sie eine Migration zu elastischen Transaktionen für Azure SQL-Datenbank erwägen. Weitere Informationen finden Sie unter [Verteilte Transaktionen über Clouddatenbanken](../sql-database/sql-database-elastic-transactions-overview.md). | Nicht unterstützt. |
+| **Verteilte Transaktionen** | Unterstützt über elastische Transaktionen. MS DTC-Transaktionen (Microsoft Distributed Transaction Coordinator) werden nicht unterstützt. Wenn Ihre SSIS-Pakete MSDTC verwenden, um verteilte Transaktionen zu koordinieren, sollten Sie eine Migration zu elastischen Transaktionen für Azure SQL-Datenbank erwägen. Weitere Informationen finden Sie unter [Verteilte Transaktionen über Clouddatenbanken](../sql-database/sql-database-elastic-transactions-overview.md). | Nicht unterstützt. |
 | | | |
 
 ## <a name="azure-portal"></a>Azure-Portal

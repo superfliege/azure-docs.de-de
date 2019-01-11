@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 7373cc23654e2168963a364e4b4069331bf196c5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969929"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063866"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ Sie können Daten von Amazon S3 in beliebige unterstützte Senkendatenspeicher k
 Der Amazon S3-Connector unterstützt insbesondere das Kopieren von Dateien im jeweiligen Zustand oder Analysieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
->Mit diesem Amazon S3-Connector können Sie Daten von **allen S3-kompatiblen Speicheranbietern** kopieren, z.B. aus [Google Cloud Storage](#copy-from-google-cloud-storage). Geben Sie die entsprechende Dienst-URL in der Konfiguration des verknüpften Diensts an.
+>Mit diesem Amazon S3-Connector können Sie Daten von **allen S3-kompatiblen Speicheranbietern** kopieren, z.B. aus [Google Cloud Storage](connector-google-cloud-storage.md). Geben Sie die entsprechende Dienst-URL in der Konfiguration des verknüpften Diensts an.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -212,35 +212,6 @@ Legen Sie zum Kopieren von Daten aus Amazon S3 den Quelltyp in der Kopieraktivit
         }
     }
 ]
-```
-
-## <a name="copy-from-google-cloud-storage"></a>Kopieren aus Google Cloud Storage
-
-Da Google Cloud Storage S3-kompatible Interoperabilität bietet, können Sie den Amazon S3-Connector verwenden, um Daten aus Google Cloud Storage in beliebige [unterstützte Senkendatenspeicher](copy-activity-overview.md#supported-data-stores-and-formats) zu kopieren. 
-
-Sie finden den jeweiligen Google Cloud Storage-Eintrag im Connector-Katalog auf der ADF-Erstellungsbenutzeroberfläche. Dieser wird automatisch in die Dienst-URL als `https://storage.googleapis.com` eingefügt. Den Zugriffsschlüssel und den geheimen Schlüssel finden Sie unter **Google Cloud Storage** > **Einstellungen** > **Interoperabilität**. Lesen Sie diesen Artikel von Anfang an, um eine detaillierte Übersicht über die Verwendung des S3-Connectors zum Kopieren von Daten zu erhalten.
-
-**Beispiel für einen verknüpften Dienst:**
-
-```json
-{
-    "name": "GoogleCloudStorageLinkedService",
-    "properties": {
-        "type": "AmazonS3",
-        "typeProperties": {
-            "accessKeyId": "<access key id>",
-            "secretAccessKey": {
-                "type": "SecureString",
-                "value": "<secret access key>"
-            },
-            "serviceUrl": "https://storage.googleapis.com"
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
