@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 30546d31e96d7d7fa1009f16a50fe8fda12ead67
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105103"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725053"
 ---
 # <a name="configure-containers"></a>Konfigurieren von Containern
 
@@ -113,10 +113,10 @@ Der Container für die Gesichtserkennung kann Blob-, Cache-, Meta- und Warteschl
   Alle vier Datentypen werden im Arbeitsspeicher gespeichert. Sie sind weder verteilt noch persistent. Wenn der Container für die Gesichtserkennung beendet oder entfernt wird, gehen sämtliche Daten für den betreffenden Container im Speicher verloren.  
   Dies ist das Standardspeicherszenario für den Container für die Gesichtserkennung.
 * Azure  
-  Der Container für die Gesichtserkennung verwendet Azure Storage und Azure Cosmos DB, um diese vier Datentypen auf permanente Speicher zu verteilen. Blob- und Warteschlangendaten werden durch Azure Storage verarbeitet. Meta- und Cachedaten werden von Azure Cosmos DB mithilfe der MongoDB-API verarbeitet. Wenn der Container für die Gesichtserkennung beendet oder entfernt wird, werden sämtliche gespeicherte Daten für den betreffenden Container in Azure Storage und Azure Cosmos DB gespeichert.  
+  Der Container für die Gesichtserkennung verwendet Azure Storage und Azure Cosmos DB, um diese vier Datentypen auf permanente Speicher zu verteilen. Blob- und Warteschlangendaten werden durch Azure Storage verarbeitet. Meta- und Cachedaten werden von Azure Cosmos DB verarbeitet. Wenn der Container für die Gesichtserkennung beendet oder entfernt wird, werden sämtliche gespeicherte Daten für den betreffenden Container in Azure Storage und Azure Cosmos DB gespeichert.  
   Für die Ressourcen, die beim Azure-Speicherszenario verwendet werden, gelten die folgenden zusätzlichen Anforderungen:
   * Die Azure Storage-Ressource muss den Kontotyp StorageV2 verwenden.
-  * Die Azure Cosmos DB-Ressource muss die MongoDB-API verwenden.
+  * Die Azure Cosmos DB-Ressource muss die Azure Cosmos DB für MongoDB-API verwenden.
 
 Die Speicherszenarien und die zugehörigen Konfigurationseinstellungen werden vom `Storage`-Objekt unter dem Konfigurationsabschnitt `CloudAI` verwaltet. Die folgenden Konfigurationseinstellungen sind im `Storage`-Objekt verfügbar:
 

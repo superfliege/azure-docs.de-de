@@ -1,7 +1,7 @@
 ---
 title: Erkennen von Bildtypen – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: Konzepte zur Erkennung von Bildtypen mithilfe der Maschinelles Sehen-API.
+description: Machen Sie sich mit Konzepten der Bildtyperkennung der Maschinelles Sehen-API vertraut.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: ecdbdd60af41ee14070f2f45dfe50875e38ac3b3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 04062d5625126712c5f14c41d610d55caf4c28b5
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342003"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583101"
 ---
-# <a name="detecting-image-types"></a>Erkennen von Bildtypen
+# <a name="detecting-image-types-with-computer-vision"></a>Erkennen von Bildtypen mit maschinellem Sehen
 
 Das maschinelle Sehen kann den Inhaltstyp von Bildern analysieren, indem es angibt, ob es sich bei einem Bild um eine ClipArt handelt, indem die Wahrscheinlichkeit anhand einer Skala oder einer Linienzeichnung bewertet wird.
 
@@ -36,7 +37,7 @@ Das maschinelle Sehen analysiert ein Bild und bewertet die Wahrscheinlichkeit, d
 
 Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen bei der Bewertung der Wahrscheinlichkeit, dass es sich bei den Beispielbildern um ClipArts handelt, zurückgibt.
 
-![Bildanalyse: Cheese Clip Art](./Images/cheese_clipart.png)
+![Ein ClipArt-Bild einer Käsescheibe](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -53,7 +54,7 @@ Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen bei der Bew
 }
 ```
 
-![Bildanalyse: House Yard](./Images/house_yard.png)
+![Ein blaues Haus mit Vorgarten](./Images/house_yard.png)
 
 ```json
 {
@@ -78,7 +79,7 @@ Das maschinelle Sehen analysiert ein Bild und gibt einen booleschen Wert zurück
 
 Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen zurückgibt, um anzugeben, ob es sich bei den Beispielbildern um Strichzeichnungen handelt.
 
-![Bildanalyse: Lion Drawing](./Images/lion_drawing.png)
+![Eine Strichzeichnung eines Löwen](./Images/lion_drawing.png)
 
 ```json
 {
@@ -95,7 +96,7 @@ Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen zurückgibt
 }
 ```
 
-![Bildanalyse: Flower](./Images/flower.png)
+![Eine weiße Blume vor einem grünen Hintergrund](./Images/flower.png)
 
 ```json
 {

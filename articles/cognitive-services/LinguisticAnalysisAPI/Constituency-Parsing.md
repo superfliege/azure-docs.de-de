@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8d6e768e5cf846cb2c34ceb61d269854418e1dc5
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238623"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976595"
 ---
 # <a name="constituency-parsing"></a>Konstituentenanalyse
 
@@ -61,7 +61,7 @@ Eine natürliche Darstellung dieser Phrasen ist eine Struktur wie etwa im folgen
 ![Struktur](./Images/tree.png)
 
 In dieser Struktur handelt es sich bei den mit „NP“ gekennzeichneten Verzweigungen um Nominalphrasen.
-Von diesen Phrasen gibt es mehrere: *I*, *a new hybrid automobile*, *Bluetooth* und *a new hybrid automobile with Bluetooth*.
+Von diesen Phrasen gibt es mehrere: *I* (ich), *a new hybrid automobile* (ein neues Hybridauto), *Bluetooth* (Bluetooth-Funktionalität) und *a new hybrid automobile with Bluetooth* (ein neues Hybridauto mit Bluetooth-Funktionalität).
 
 ## <a name="phrase-types"></a>Arten von Phrasen
 
@@ -97,4 +97,4 @@ Von diesen Phrasen gibt es mehrere: *I*, *a new hybrid automobile*, *Bluetooth* 
 
 ## <a name="specification"></a>Spezifikation
 
-Bei den hier aufgeführten Strukturen werden S-Phrasen aus der [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) verwendet.
+Bei den hier aufgeführten Strukturen werden S-Phrasen aus der [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) verwendet.

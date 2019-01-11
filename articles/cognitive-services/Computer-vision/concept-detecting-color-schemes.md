@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 5d0cb6ca751c844846288e8fe26f6ae542e89831
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 90eacdb120603fdb68c0f6c3de3457964ec5fd75
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339491"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579361"
 ---
-# <a name="detecting-color-schemes"></a>Erkennen von Farbschemas
+# <a name="detect-color-schemes-in-images"></a>Erkennen von Farbschemas auf Bildern
 
 Das maschinelle Sehen extrahiert Farben aus einem Bild. Die Farben werden dann in drei verschiedenen Kontexten analysiert: die vorherrschende Vordergrundfarbe, die vorherrschende Hintergrundfarbe und die vorherrschenden Farben für das gesamte Bild. Sie werden in 12 vorherrschende Akzentfarben gruppiert. Diese Akzentfarben sind Schwarz, Blau, Brown, Grau, Grün, Orange, Rosa, Violett, Rot, Aquamarin, Weiß und Gelb. Das maschinelle Sehen analysiert die aus einem Bild extrahierten Farben, um dem Betrachter eine Akzentfarbe zurückzugeben, die die kräftigste Farbe für das Bild darstellt, durch eine Kombination aus vorherrschenden Farben und Sättigung. Je nach Farben in einem Bild können einfach Schwarz und Weiß oder Akzentfarben in hexadezimalen Farbcodes zurückgegeben werden. Das maschinelle Sehen gibt auch einen booleschen Wert zurück, der angibt, ob es sich um ein Schwarzweiß-Bild handelt.
 
@@ -51,8 +52,8 @@ In der folgenden Tabelle werden die vorherrschenden Vorder-, Hintergrund- und Bi
 
 | Image | Vorherrschende Farben |
 |-------|-----------------|
-|![Bildanalyse: Flower](./Images/flower.png)| Vordergrund: Schwarz<br/>Hintergrund: Weiß<br/>Farben: Schwarz, Weiß, Grün|
-![Bildanalyse: Train Station](./Images/train_station.png) | Vordergrund: Schwarz<br/>Hintergrund: Schwarz<br/>Farben: Schwarz |
+|![Eine weiße Blume vor einem grünen Hintergrund](./Images/flower.png)| Vordergrund: Schwarz<br/>Hintergrund: Weiß<br/>Farben: Schwarz, Weiß, Grün|
+![Ein Zug, der durch einen Bahnhof fährt](./Images/train_station.png) | Vordergrund: Schwarz<br/>Hintergrund: Schwarz<br/>Farben: Schwarz |
 
 ### <a name="accent-color-examples"></a>Beispiele für Akzentfarben
 
@@ -60,9 +61,9 @@ In der folgenden Tabelle werden die vorherrschenden Vorder-, Hintergrund- und Bi
 
 | Image | Akzentfarbe |
 |-------|--------------|
-|![Outdoor Mountain](./Images/mountain_vista.png) | #BB6D10 |
-|![Bildanalyse: Flower](./Images/flower.png) | #C6A205 |
-|![Bildanalyse: Train Station](./Images/train_station.png) | #474A84 |
+|![Eine Person, die bei Sonnenuntergang auf einem Gebirgsfelsen steht](./Images/mountain_vista.png) | #BB6D10 |
+|![Eine weiße Blume vor einem grünen Hintergrund](./Images/flower.png) | #C6A205 |
+|![Ein Zug, der durch einen Bahnhof fährt](./Images/train_station.png) | #474A84 |
 
 ### <a name="black--white-detection-examples"></a>Beispiele für die Schwarzweiß-Erkennung
 
@@ -70,8 +71,8 @@ In der folgenden Tabelle ist angegeben, ob die einzelnen Beispielbilder schwarzw
 
 | Image | Schwarzweiß? |
 |-------|----------------|
-|![Bildanalyse: Building](./Images/bw_buildings.png) | true |
-|![Bildanalyse: House Yard](./Images/house_yard.png) | false |
+|![Ein Schwarzweißbild von Gebäuden in Manhattan](./Images/bw_buildings.png) | true |
+|![Ein blaues Haus mit Vorgarten](./Images/house_yard.png) | false |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

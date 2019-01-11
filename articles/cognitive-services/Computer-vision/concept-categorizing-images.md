@@ -1,7 +1,7 @@
 ---
 title: Kategorisieren von Bildern – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: Konzepte zur Kategorisierung von Bildern mithilfe der Maschinelles Sehen-API.
+description: Machen Sie sich mit Konzepten des Bildkategorisierungsfeatures der Maschinelles Sehen-API vertraut.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 7062d98d40c15f4e9e873038fc12fc1b104c996d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333478"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579497"
 ---
-# <a name="categorizing-images"></a>Kategorisieren von Bildern
+# <a name="image-categorization-with-computer-vision"></a>Bildkategorisierung mit maschinellem Sehen
 
 Zusätzlich zu Tagging und Beschreibungen gibt das maschinelle Sehen auf der Taxonomie basierende Kategorien zurück, die in früheren Versionen definiert wurden. Diese Kategorien sind als eine Taxonomie mit über-/untergeordneten vererbbaren Hierarchien organisiert. Alle Kategorien sind in Englisch. Sie können einzeln oder in Kombination mit unseren neuen Taggingmodellen verwendet werden.
 
@@ -25,13 +26,13 @@ Zusätzlich zu Tagging und Beschreibungen gibt das maschinelle Sehen auf der Tax
 
 Basierend auf einer Liste mit 86 Kategorien, die in der folgenden Abbildung dargestellt sind, kann ein Bild in allgemeine bis spezifische Kategorien eingeordnet werden. Die vollständige Taxonomie im Textformat finden Sie unter [Kategorietaxonomie](category-taxonomy.md).
 
-![gruppierte Listen aller Kategorien in der Kategorietaxonomie](./Images/analyze_categories-v2.png)
+![Gruppierte Listen aller Kategorien in der Kategorietaxonomie](./Images/analyze_categories-v2.png)
 
 ## <a name="image-categorization-examples"></a>Beispiele für die Kategorisierung von Bildern
 
 Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen bei der Kategorisierung des Beispielbilds anhand seiner visuellen Merkmale zurückgibt.
 
-![Woman Roof](./Images/woman_roof.png)
+![Eine Frau auf dem Dach eines Wohnblocks](./Images/woman_roof.png)
 
 ```json
 {
@@ -54,10 +55,10 @@ Die folgende Tabelle zeigt einen typischen Satz von Bildern und die vom maschine
 
 | Image | Category (Kategorie) |
 |-------|----------|
-| ![Family Photo](./Images/family_photo.png) | people_group |
-| ![Cute Dog](./Images/cute_dog.png) | animal_dog |
-| ![Outdoor Mountain](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Bildanalyse: Food Bread](./Images/bread.png) | food_bread |
+| ![Vier Personen, die zusammen als Familie posieren](./Images/family_photo.png) | people_group |
+| ![Ein Welpe, der in einem Feld sitzt](./Images/cute_dog.png) | animal_dog |
+| ![Eine Person, die bei Sonnenuntergang auf einem Gebirgsfelsen steht](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Mehrere Brötchen auf einem Tisch](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: fcda4fba376fbe1f527d60aa5a27f7e7f0713e3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977705"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157104"
 ---
 <h1>Azure Data Box</h1>
 <p>Die Produkte der Azure Data Box-Familie bieten unterschiedliche Speicherkapazitäten, um Terabytes (TB) an Daten schnell, kostengünstig und zuverlässig an Azure zu senden. Microsoft beschleunigt die sichere Datenübertragung, indem Ihnen proprietäre Speichergeräte zugesandt werden, die eine Offline- oder Netzwerkdatenübertragung ermöglichen.</p>
@@ -35,7 +35,7 @@ ms.locfileid: "46977705"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk<SUP>-Vorschau</SUP></b> für Datenmengen < 40TB. Microsoft liefert Ihnen 1 bis 5 verschlüsselte Festkörperlaufwerke (Solid-State Drives, SSDs), die Sie nach dem Kopieren der Daten zurücksenden.</p>
+                            <p><b>Data Box Disk</b> für Datenmengen von unter 40 TB. Microsoft liefert Ihnen 1 bis 5 verschlüsselte Festkörperlaufwerke (Solid-State Drives, SSDs), die Sie nach dem Kopieren der Daten zurücksenden.</p>
                         </div>
                     </div>
                 </div>

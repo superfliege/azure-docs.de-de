@@ -9,40 +9,43 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 11798c3bfd4032ad10c738032a816a2a0488ce67
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e3b1655207f3baba6ea6e3cf2f00e3540a3602ad
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090532"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969368"
 ---
-# <a name="install-and-run-containers"></a>Installieren und Ausführen von Containern
+# <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
-Die Verwendung von Containern ist ein Ansatz zur Softwareverteilung, bei dem eine Anwendung oder ein Dienst als Containerimage gepackt wird. Die Konfiguration und die Abhängigkeiten der Anwendung bzw. des Diensts sind im Containerimage enthalten. Das Containerimage kann anschließend mit geringer oder ganz ohne Bearbeitung auf einem Containerhost bereitgestellt werden. Container sind voneinander und vom zugrunde liegenden Betriebssystem isoliert und nehmen weniger Speicher in Anspruch als ein virtueller Computer. Container können für kurzfristige Aufgaben über Containerimages instanziiert und wieder entfernt werden, wenn sie nicht mehr benötigt werden.
-
-Die Textanalyse stellt die folgenden Docker-Container bereit, die jeweils eine Teilmenge der Funktionen enthalten:
-
-| Container| BESCHREIBUNG |
-|----------|-------------|
-|Schlüsselwortextraktion | Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. |
-|Spracherkennung | Erkennt für bis zu 120 Sprachen, in welcher Sprache der eingegebene Text geschrieben wurde, und gibt diese aus. Der Container gibt einen einzelnen Sprachcode für jedes Dokument aus, das in der Anforderung enthalten ist. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. |
-|Standpunktanalyse | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Die API gibt für jedes Dokument eine Bewertung des Standpunkts zwischen 0 und 1 zurück. Hierbei entspricht 1 einer positiven Bewertung. Die Analysemodelle sind mithilfe großer Textmengen und Microsoft-Technologien für natürliche Sprache vortrainiert. Für [ausgewählte Sprachen](../language-support.md) kann die API jeden bereitgestellten unformatierten Text analysieren und bewerten und der aufrufenden Anwendung direkt Ergebnisse zurückgeben. |
+Container für die Textanalyse ermöglichen eine erweiterte Verarbeitung von natürlicher Sprache anhand von unformatiertem Text und bieten drei Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung. Die Entitätsverknüpfung wird derzeit in Containern nicht unterstützt. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Zum Ausführen eines Containers für die Textanalyse benötigen Sie Folgendes:
 
 ## <a name="preparation"></a>Vorbereitung
 
 Zur Verwendung des Containers für die Textanalyse müssen die folgenden Voraussetzungen erfüllt sein:
 
-**Docker-Engine:** Die Docker-Engine muss lokal installiert sein. Docker stellt Pakete zur Konfiguration der Docker-Umgebung unter [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms) und [Windows](https://docs.docker.com/docker-for-windows/) zur Verfügung. Unter Windows muss Docker für die Unterstützung von Linux-Containern konfiguriert werden. Docker-Container können auch direkt für [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/) oder einen [Kubernetes](https://kubernetes.io/)-Cluster mit Bereitstellung in [Azure Stack](/azure/azure-stack/) bereitgestellt werden. Weitere Informationen zum Bereitstellen von Kubernetes in Azure Stack finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+|Erforderlich|Zweck|
+|--|--|
+|Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
+|Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
+|Textanalyseressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ [_Textanalyse_](text-analytics-how-to-access-key.md), um den entsprechenden Abrechnungsschlüssel und den URI des Abrechnungsendpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite der Textanalyse zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{BILLING_KEY}**: Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}**: Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
-Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können.
+### <a name="the-host-computer"></a>Der Hostcomputer
 
-**Kenntnisse von Microsoft Container Registry und Docker:** Sie sollten über Grundkenntnisse der Konzepte von Microsoft Container Registry und Docker verfügen, einschließlich Registrierungen, Repositorys, Container und Containerimages, und die grundlegenden `docker`-Befehle kennen.  
+Der **Host** ist der Computer, auf dem der Docker-Container ausgeführt wird. Dies kann ein lokaler Computer oder ein Docker-Hostingdienst in Azure sein, einschließlich:
 
-Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
+* [Azure Kubernetes Service](../../../aks/index.yml)
+* [Azure Container Instances](../../../container-instances/index.yml)
+* Ein in [Azure Stack](../../../azure-stack/index.yml) bereitgestellter [Kubernetes](https://kubernetes.io/)-Cluster. Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](../../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
@@ -54,9 +57,11 @@ In der folgenden Tabelle werden die Mindestanforderungen und Empfehlungen für C
 |Spracherkennung | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |
 |Standpunktanalyse | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |
 
-## <a name="download-container-images-from-microsoft-container-registry"></a>Herunterladen von Containerimages aus der Microsoft Container Registry
+Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
-In der Microsoft Container Registry stehen Containerimages für die Textanalyse zur Verfügung. Die folgende Tabelle enthält die Repositorys, die über die Microsoft Container Registry für Container für die Textanalyse verfügbar sind. Jedes Repository enthält ein Containerimage, das heruntergeladen werden muss, um den Container lokal auszuführen.
+## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
+
+In der Microsoft Container Registry stehen Containerimages für die Textanalyse zur Verfügung. 
 
 | Container | Repository |
 |-----------|------------|
@@ -64,11 +69,7 @@ In der Microsoft Container Registry stehen Containerimages für die Textanalyse 
 |Spracherkennung | `mcr.microsoft.com/azure-cognitive-services/language` |
 |Standpunktanalyse | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-Verwenden Sie den Befehl [docker pull](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage aus einem Repository herunterzuladen. Verwenden Sie beispielsweise den folgenden Befehl, um das neueste Containerimage für die Schlüsselbegriffserkennung aus dem Repository herunterzuladen:
-
-```Docker
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
-```
+Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage aus Microsoft Container Registry herunterzuladen.
 
 Eine vollständige Beschreibung der verfügbaren Tags für die Container für die Textanalyse finden Sie in den folgenden Containern im Docker-Hub:
 
@@ -76,68 +77,109 @@ Eine vollständige Beschreibung der verfügbaren Tags für die Container für di
 * [Sprachenerkennung](https://go.microsoft.com/fwlink/?linkid=2018759)
 * [Standpunktanalyse](https://go.microsoft.com/fwlink/?linkid=2018654)
 
-> [!TIP]
-> Mithilfe des Befehls [docker images](https://docs.docker.com/engine/reference/commandline/images/) können Sie Ihre heruntergeladenen Containerimages auflisten. Mit dem folgenden Befehl werden beispielsweise die ID, das Repository und das Tag jedes heruntergeladenen Containerimages in Form einer Tabelle aufgelistet:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->  ```
->
 
-## <a name="instantiate-a-container-from-a-downloaded-container-image"></a>Instanziieren eines Containers über ein heruntergeladenes Containerimage
-
-Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um einen Container über ein heruntergeladenes Containerimage zu instanziieren. Der folgende Befehl führt beispielsweise folgende Aktionen durch:
-
-* Instanziieren eines Containers über das Containerimage für die Standpunktanalyse
-* Zuweisen von einem CPU-Kern und 8 GB Arbeitsspeicher
-* Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
-* Automatisches Entfernen des Containers, nachdem er beendet wurde
+### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Docker-Pullvorgang für den Schlüsselbegriffserkennungs-Container
 
 ```Docker
-docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0 ApiKey=0123456789
-
+docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 ```
+
+### <a name="docker-pull-for-the-language-detection-container"></a>Docker-Pullvorgang für den Sprachenerkennungscontainer
+
+```Docker
+docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
+```
+
+### <a name="docker-pull-for-the-sentiment-container"></a>Docker-Pullvorgang für den Stimmungscontainer
+
+```Docker
+docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
+```
+
+### <a name="listing-the-containers"></a>Auflisten der Container
+
+Mithilfe des Befehls [docker images](https://docs.docker.com/engine/reference/commandline/images/) können Sie Ihre heruntergeladenen Containerimages auflisten. Mit dem folgenden Befehl werden beispielsweise die ID, das Repository und das Tag jedes heruntergeladenen Containerimages in Form einer Tabelle aufgelistet:
+
+```Docker
+docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
+```
+
+
+## <a name="how-to-use-the-container"></a>Verwenden des Containers
+
+Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, können Sie über den folgenden Prozess mit dem Container arbeiten.
+
+1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Abrechnungseinstellungen. Es sind noch weitere [Beispiele](../text-analytics-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
+1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint) 
+
+## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
+
+Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um einen der drei Container auszuführen. Für den Befehl werden die folgenden Parameter verwendet:
+
+| Platzhalter | Wert |
+|-------------|-------|
+|{BILLING_KEY} | Dieser Schlüssel wird zum Starten des Containers verwendet und steht im Azure-Portal auf der Schlüsselseite der Textanalyse zur Verfügung.  |
+|{BILLING_ENDPOINT_URI} | Den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Übersichtsseite der Textanalyse.|
+
+Ersetzen Sie im folgenden Beispiel für den Befehl `docker run` diese Parameter durch Ihre eigenen Werte.
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+mcr.microsoft.com/azure-cognitive-services/keyphrase \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}
+```
+
+Dieser Befehl:
+
+* Führt einen Schlüsselbegriffserkennungs-Container auf der Grundlage des Containerimages aus.
+* Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu.
+* Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
+* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar. 
+
+Es sind noch weitere [Beispiele](../text-analytics-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
 
 > [!IMPORTANT]
-> Die Befehlszeilenoptionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container zu instanziieren, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
+> Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
-Nach der Instanziierung können Sie Vorgänge aus dem Container über den Host-URI des Containers aufrufen. Beispielsweise steht der folgende Host-URI für den Container für die Standpunktanalyse, der im vorherigen Beispiel instanziiert wurde:
+## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
-```http
-http://localhost:5000/
-```
+Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
+
+Verwenden Sie für Container-APIs den Host https://localhost:5000.
+
+## <a name="stop-the-container"></a>Beenden des Containers
+
+[!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](../text-analytics-resource-container-config.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
+
+## <a name="containers-api-documentation"></a>API-Dokumentation des Containers
+
+Der Container stellt eine umfassende Dokumentation für die Endpunkte sowie die Funktion `Try it now` bereit. Dieses Feature ermöglicht Ihnen die Eingabe Ihrer Einstellungen in einem webbasierten HTML-Formular, sodass Sie die Abfrage ausführen können, ohne Code schreiben zu müssen. Nach der Rückgabe der Abfrage wird ein cURL-Beispielbefehl bereitgestellt, der das erforderliche Format für HTTP-Header und -Text veranschaulicht. 
 
 > [!TIP]
-> Über den relativen `/swagger`-URI für einen Container können Sie auf die [OpenAPI-Spezifikation](https://swagger.io/docs/specification/about/) (früher Swagger-Spezifikation) zugreifen, in der die vom instanziierten Container unterstützten Vorgänge beschrieben werden. Der folgende URI bietet beispielsweise Zugriff auf die OpenAPI-Spezifikation für den Container für die Standpunktanalyse, der im vorherigen Beispiel instanziiert wurde:
+> In der [OpenAPI-Spezifikation](https://swagger.io/docs/specification/about/) werden die API-Vorgänge beschrieben, die vom Container vom relativen URI `/swagger` unterstützt werden. Beispiel: 
 >
 >  ```http
 >  http://localhost:5000/swagger
 >  ```
 
-Sie können entweder die in Ihrem Container verfügbaren [REST-API-Vorgänge aufrufen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api) oder die [Clientbibliothek für die Textanalyse-API von Azure Cognitive Services](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics) verwenden, um diese Vorgänge aufzurufen.  
-> [!IMPORTANT]
-> Sie benötigen Version 2.1.0 oder höher des Azure Cognitive Services SDK für die Textanalyse, wenn Sie die Clientbibliothek mit Ihrem Container verwenden möchten.
+## <a name="billing"></a>Abrechnung
 
-Der einzige Unterschied zwischen dem Aufrufen eines bestimmten Vorgangs aus dem Container und dem Aufrufen desselben Vorgangs von einem entsprechenden Dienst in Azure ist, dass Sie den Host-URI des Containers anstelle des Host-URI einer Azure-Region verwenden, um den Vorgang aufzurufen. Wenn Sie z.B. eine Instanz der Textanalyse, die in der Azure-Region „USA, Westen“ ausgeführt wird, verwenden möchten, rufen Sie den folgenden REST-API-Vorgang auf:
+Der Container für die Textanalyse sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Textanalyse_ in Ihrem Azure-Konto. 
 
-```http
-POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
-```
+Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft. 
 
-Wenn Sie einen Container für die Schlüsselbegriffserkennung, der auf dem lokalen Computer ausgeführt wird, mit der Standardkonfiguration verwenden möchten, rufen Sie den folgenden REST-API-Vorgang auf:
+Der Befehl `docker run` verwendet folgende Argumente für Abrechnungszwecke:
 
-```http
-POST http://localhost:5000/text/analytics/v2.0/keyPhrases
-```
-
-### <a name="billing"></a>Abrechnung
-
-Der Container für die Textanalyse sendet Abrechnungsinformationen an Azure und verwendet dafür eine entsprechende Textanalyseressource in Ihrem Azure-Konto. Die folgenden Befehlszeilenoptionen werden zu Abrechnungszwecken vom Container für die Textanalyse verwendet:
-
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 |--------|-------------|
-| `ApiKey` | Der API-Schlüssel der Textanalyseressource, der zum Nachzuverfolgen von Abrechnungsinformationen verwendet wird.<br/>Der Wert dieser Option muss für die bereitgestellte Azure-Ressource für die Textanalyse, die in `Billing` angegeben wurde, auf einen API-Schlüssel festgelegt werden. |
-| `Billing` | Der Endpunkt der Textanalyseressource, der zum Nachzuverfolgen von Abrechnungsinformationen verwendet wird.<br/>Der Wert dieser Option muss auf den Endpunkt-URI einer bereitgestellten Azure-Ressource für die Textanalyse festgelegt werden.|
+| `ApiKey` | Der API-Schlüssel der Ressource vom Typ _Textanalyse_ zum Nachverfolgen von Abrechnungsinformationen. |
+| `Billing` | Der Endpunkt der Ressource vom Typ _Textanalyse_ zum Nachverfolgen von Abrechnungsinformationen.|
 | `Eula` | Gibt an, dass Sie die Lizenz für den Container akzeptiert haben.<br/>Der Wert dieser Option muss auf `accept` festgelegt werden. |
 
 > [!IMPORTANT]
@@ -161,6 +203,5 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](../text-analytics-resource-container-config.md).
-* In der [Übersicht zur Textanalyse](../overview.md) finden Sie weitere Informationen zu Schlüsselbegriffserkennung, Sprachenerkennung und Standpunktanalyse  
-* Details zu den vom Container unterstützten Methoden finden Sie unter [Textanalyse-API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6).
-* Unter [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit der Funktionalität des maschinellen Sehens.
+* Unter [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit der Funktion.
+

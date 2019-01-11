@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2d6f7e2fd332e1687db1564befeb6f531045c5dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271384"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993062"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Features für Begriffslisten in Ihrer LUIS-App
 
@@ -29,6 +29,10 @@ Eine Ausdrucksliste enthält eine Gruppe von Werten (Wörter oder Ausdrücke), d
 
 Eine Ausdrucksliste ist Teil des Vokabulars der App-Domäne als zweiter Hinweis zu diesen Wörtern für LUIS.
 
+## <a name="phrase-lists-help-all-models"></a>Begriffslisten: hilfreich für alle Modelle
+
+Begriffslisten sind nicht mit einer bestimmten Absicht oder Entität verknüpft, sondern kommen allen Modellen zugute. Sie dienen zur Verbesserung der Absichtserkennung und der Entitätsklassifizierung.
+
 ## <a name="how-to-use-phrase-lists"></a>Verwenden von Ausdruckslisten
 Im [Tutorial für einfache Entität](luis-quickstart-primary-and-secondary-data.md) der Human Resource-App verwendet die App eine Begriffsliste **Job** mit Jobtypen wie z.B. Programmierer, Dachdecker und Sekretärin. Wenn Sie einen dieser Werte als durch maschinelles Lernen erworbene Entität bezeichnen, lernt LUIS, die anderen zu erkennen. 
 
@@ -40,6 +44,7 @@ Eine Ausdrucksliste kann austauschbar oder nicht austauschbar sein. Eine *austau
 |Nicht austauschbar|App-Vokabular, das spezifisch für Ihre App ist und keinen allgemeinen Wörtern in der jeweiligen Sprache entspricht.|
 
 Begriffslisten helfen nicht nur bei der Erkennung von Entitäten, sondern auch bei der Klassifizierung von Absichten, die nicht austauschbar sind, z.B. durch das Hinzufügen von Wörtern aus dem Vokabular, die in der englischen Sprache nicht bekannt sind.
+
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

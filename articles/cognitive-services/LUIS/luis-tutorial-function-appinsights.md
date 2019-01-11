@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ab9e4a3d129243ec069031c5e7233f341b545e4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255600"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713963"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Hinzufügen von LUIS-Ergebnissen zu Application Insights und Azure-Funktionen
 In diesem Tutorial werden [Application Insights](https://azure.microsoft.com/services/application-insights/)-Telemetriedatenspeichern Informationen aus LUIS-Anforderungen und -Antworten hinzugefügt. Sobald Sie über diese Daten verfügen, können Sie sie mit der Sprache Kusto oder mit Power BI abfragen, um Absichten und Entitäten einer Äußerung in Echtzeit zu analysieren, zu aggregieren und Berichte dazu zu erstellen. Diese Analyse hilft Ihnen dabei, zu ermitteln, ob Sie die Absichten und Entitäten aus Ihrer LUIS-App hinzufügen oder bearbeiten sollten.
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!Tip]
 > Wenn Sie noch kein Abonnement besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
 
-Der gesamte Code in diesem Tutorial ist über das [GitHub-Repository für LUIS-Beispiele](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) verfügbar, und jede Zeile, die zu diesem Tutorial gehört, ist mit `//APPINSIGHT:` kommentiert. 
+Der gesamte Code in diesem Tutorial ist über das [GitHub-Repository für Azure-Beispiele](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) verfügbar, und jede Zeile, die zu diesem Tutorial gehört, ist mit `//APPINSIGHT:` kommentiert. 
 
 ## <a name="web-app-bot-with-luis"></a>Web-App-Bot mit LUIS
 In diesem Tutorial wird vorausgesetzt, dass Sie über Code wie den folgenden verfügen oder das [andere Tutorial](luis-nodejs-tutorial-build-bot-framework-sample.md) abgeschlossen haben: 
@@ -51,11 +51,11 @@ Damit der Web-App-Bot LUIS-Anforderungen und -Antworten erfassen kann, muss das 
 
 1. Wählen Sie im Azure-Portal im Web-App-Bot-Dienst im Abschnitt **Botverwaltung** die Option **Erstellen** aus. 
 
-    ![Suchen nach Application Insights](./media/luis-tutorial-appinsights/build.png)
+    ![Wählen Sie im Azure-Portal im Web-App-Bot-Dienst im Abschnitt „Botverwaltung“ die Option „Erstellen“ aus. ](./media/luis-tutorial-appinsights/build.png)
 
 2. Eine neue Browserregisterkarte für den App Service-Editor wird geöffnet. Wählen Sie in der oberen Leiste den Namen der App aus, und klicken Sie dann auf **Kudu-Konsole öffnen**. 
 
-    ![Suchen nach Application Insights](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![Wählen Sie auf der oberen Leiste den Namen der App aus, und klicken Sie dann auf „Kudu-Konsole öffnen“. ](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. Geben Sie in der Konsole folgenden Befehl ein. um Application Insights und die underscore-Pakete zu installieren:
 
@@ -63,7 +63,7 @@ Damit der Web-App-Bot LUIS-Anforderungen und -Antworten erfassen kann, muss das 
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![Suchen nach Application Insights](./media/luis-tutorial-appinsights/npm-install.png)
+    ![Verwenden von npm-Befehlen zum Installieren von Application Insights und den underscore-Paketen](./media/luis-tutorial-appinsights/npm-install.png)
 
     Warten Sie, bis die Installation der Pakete abgeschlossen ist:
 
@@ -112,9 +112,7 @@ Damit der Web-App-Bot LUIS-Anforderungen und -Antworten erfassen kann, muss das 
 
 1. Wählen Sie im Portal **Alle Ressourcen** aus, und filtern Sie dann nach dem Namen des Web-App-Bots. Klicken Sie auf die Ressource mit dem Typ **Application Insights**. Das Symbol für Application Insights ist eine Glühbirne. 
 
-    ![Suchen nach Application Insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-
+    ![[Suchen nach App Insights im Azure-Portal](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. Nachdem die Ressource geöffnet wurde, klicken Sie auf das Symbol **Suchen** (Lupensymbol) im Bereich ganz rechts. Ein neuer Bereich wird rechts angezeigt. Je nach Umfang der gefundenen Telemetriedaten kann es einen Moment dauern, bis der Bereich angezeigt wird. Suchen Sie nach `LUIS-results`, und drücken Sie die EINGABETASTE auf der Tastatur. Die Liste ist nur auf LUIS-Abfrageergebnisse beschränkt, die mit diesem Tutorial hinzugefügt wurden.
 

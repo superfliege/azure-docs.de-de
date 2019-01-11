@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f9f0c52c187b36416dbc77f280a8f6148cf1cbbc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138686"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971051"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Konzepte zu Absichten in Ihrer LUIS-App
 
@@ -58,7 +58,7 @@ Ebenso entsprechen [Äußerungen](luis-concept-utterance.md) einer einzigen Absi
 [Vordefinierte Domänen](luis-how-to-use-prebuilt-domains.md) enthalten Absichten mit Äußerungen.  
 
 ## <a name="none-intent-is-fallback-for-app"></a>Absicht „None“ als Fallback für die App
-Die Absicht **None** ist eine Sammel- bzw. Ausweichabsicht. Sie dient dazu, LUIS Äußerungen beizubringen, die in der App-Domäne (dem Themenbereich) nicht wichtig sind. Die Absicht **None** sollte zwischen 10 und 20 Prozent der gesamten Äußerungen in der Anwendung ausmachen. Lassen Sie sie nicht leer. 
+Die Absicht **None** ist eine Sammel- bzw. Ausweichabsicht. Sie dient dazu, LUIS Äußerungen beizubringen, die in der App-Domäne (dem Themenbereich) nicht wichtig sind. Die Absicht **None** sollte zwischen 10 und 20 Prozent der gesamten Äußerungen in der Anwendung ausmachen. Lassen Sie „None“ (Keine) nicht leer. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Absicht „None“ unterstützt Konversationsführung
 Wenn eine Äußerung als Absicht „None“ vorhergesagt und an den Chatbot mit dieser Vorhersage zurückgegeben wird, kann der Bot weitere Fragen stellen oder ein Menü angeben, über das der Benutzer gültige Auswahlmöglichkeiten für den Chatbot angeben kann. 

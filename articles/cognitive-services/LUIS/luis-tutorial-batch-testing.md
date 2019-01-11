@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106038"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754389"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>Tutorial 2: Testen von Datasets in Batches
+# <a name="tutorial-batch-test-data-sets"></a>Tutorial: Testen von Datasets in Batches
 
 Dieses Tutorial veranschaulicht die Verwendung von Batchtests zum Ermitteln von Problemen bei der Vorhersage für Äußerungen in Ihrer App und zu ihrer Behebung.  
 
@@ -36,7 +36,7 @@ Wenn Sie eine andere App als die in diesem Tutorial verwenden, verwenden Sie *ni
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App
+> * Importieren der Beispiel-App
 > * Erstellen einer Batchtestdatei 
 > * Ausführen eines Batchtests
 > * Überprüfen der Testergebnisse
@@ -45,13 +45,13 @@ Wenn Sie eine andere App als die in diesem Tutorial verwenden, verwenden Sie *ni
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+## <a name="import-example-app"></a>Importieren der Beispiel-App
 
 Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+Führen Sie die folgenden Schritte aus:
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json) herunter, und speichern Sie sie.
 
 2. Importieren Sie den JSON-Code in eine neue App.
 
@@ -61,7 +61,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
 ## <a name="batch-file"></a>Batchdatei
 
-1. Erstellen Sie `HumanResources-jobs-batch.json` in einem Text-Editor, oder [laden Sie](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) es herunter. 
+1. Erstellen Sie `HumanResources-jobs-batch.json` in einem Text-Editor, oder [laden Sie](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) es herunter. 
 
 2. Fügen Sie in die JSON-formatierte Batchdatei Äußerungen mit der **Absicht** hinzu, für die Sie im Test eine Vorhersage erhalten möchten. 
 
@@ -177,7 +177,7 @@ Wenn Sie zum ersten Mal Batchdateien schreiben und testen, sollten Sie für den 
 
 Der Wert einer **Job**-Entität, die in den Testäußerungen angegeben wurde, besteht in der Regel aus einem oder zwei Wörtern, wobei einige Beispiele mehr Wörter enthalten. Wenn _Ihre eigene_ Personalabteilungs-App üblicherweise Auftragsnamen mit einer Vielzahl von Wörtern enthält, wären die mit der **Job**-Entität in dieser App bezeichneten Beispieläußerungen nicht gut geeignet.
 
-1. Erstellen Sie `HumanResources-entities-batch.json` in einem Text-Editor, wie etwa [VSCode](https://code.visualstudio.com/), oder [laden Sie](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) es herunter.
+1. Erstellen Sie `HumanResources-entities-batch.json` in einem Text-Editor, wie etwa [VSCode](https://code.visualstudio.com/), oder [laden Sie](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) es herunter.
 
 
 2. Fügen Sie in der JSON-formatierten Batchdatei ein Array von Objekten hinzu, das Äußerungen mit der **Absicht** enthält, für die im Test Vorhersagen erzeugt und für die Standorte von Entitäten in der Äußerung vorhergesagt werden sollen. Da eine Entität auf Token basiert, achten Sie darauf, dass jede Entität mit einem Zeichen beginnt und endet. Die Äußerung darf nicht mit einem Leerraum beginnen oder enden. Denn dieser verursacht einen Fehler beim Import der Batchdatei.  

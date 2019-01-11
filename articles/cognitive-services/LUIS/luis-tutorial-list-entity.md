@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4cac20cb44c2400e44ff2ca0939b1537f0b20734
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259238"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727181"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
 Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!Tip]
 > Wenn Sie noch kein Abonnement besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
 
-Der gesamte Code in diesem Tutorial ist im [GitHub-Repository mit Beispielen zu LUIS](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity) verfügbar. 
+Der gesamte Code in diesem Tutorial ist im [GitHub-Repository mit Azure-Beispielen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity) verfügbar. 
 
 ## <a name="use-homeautomation-app"></a>Verwenden der HomeAutomation-App
 Die HomeAutomation-App ermöglicht die Steuerung von Geräten wie Beleuchtungen, Unterhaltungselektronik und Gebäudesystemen (z.B. Heizung und Kühlung). Solche Systeme werden unterschiedlich benannt, beispielsweise mit herstellerspezifischen Namen, umgangssprachlichen Bezeichnungen und Akronymen. 

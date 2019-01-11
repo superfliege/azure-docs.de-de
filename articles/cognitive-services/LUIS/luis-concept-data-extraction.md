@@ -11,24 +11,24 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a97da5542395b57fa9a6ca6e4c38dd25e524ec3e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098645"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969419"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>Extrahieren von Daten aus Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
 
-Am schwierigsten sind Daten zu extrahieren, die maschinell gelernt wurden, da es sich nicht um genaue Textübereinstimmungen handelt. Das Extrahieren von Daten aus maschinell erlernten [Entitäten](luis-concept-entity-types.md) muss als Teil des [Erstellungszyklus](luis-concept-app-iteration.md) durchgeführt werden, bis Sie sicher sind, dass Sie die erwarteten Daten erhalten.
+Am schwierigsten sind Daten zu extrahieren, die maschinell gelernt wurden, da es sich nicht um genaue Textübereinstimmungen handelt. Das Extrahieren von Daten aus maschinell erlernten [Entitäten](luis-concept-entity-types.md) muss im Rahmen des [Erstellungszyklus](luis-concept-app-iteration.md) erfolgen, bis Sie sicher sind, dass Sie die erwarteten Daten erhalten.
 
 ## <a name="data-location-and-key-usage"></a>Speicherort der Daten und Schlüsselverwendung
 LUIS stellt die Daten vom veröffentlichten [Endpunkt](luis-glossary.md#endpoint) bereit. Die **HTTPS-Anforderung** (POST oder GET) enthält die Äußerung sowie einige optionale Konfigurationen wie z.B. Staging- oder Produktionsumgebung.
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-Die `appID` finden Sie auf der Seite **Einstellungen** Ihrer LUIS-App sowie in der URL (nach `/apps/`), wenn Sie diese LUIS-App bearbeiten. Der `subscription-key` ist der Endpunktschlüssel, der für Abfragen an Ihre App verwendet wird. Sie können zwar Ihren kostenlosen Erstellungs-/Startschlüssel verwenden, während Sie LUIS erlernen, es ist aber wichtig, dass Sie den Endpunktschlüssel in einen Schlüssel ändern, der die [erwartete LUIS-Nutzung](luis-boundaries.md#key-limits) unterstützt. Die Einheit für das `timezoneOffset` ist Minuten.
+Die App-ID (`appID`) finden Sie auf der Seite **Einstellungen** Ihrer LUIS-App sowie in der URL (nach `/apps/`), wenn Sie diese LUIS-App bearbeiten. Der `subscription-key` ist der Endpunktschlüssel, der für Abfragen an Ihre App verwendet wird. Sie können zwar Ihren kostenlosen Erstellungs-/Startschlüssel verwenden, während Sie sich mit LUIS vertraut machen, es ist aber wichtig, dass Sie den Endpunktschlüssel in einen Schlüssel ändern, der die [erwartete LUIS-Nutzung](luis-boundaries.md#key-limits) unterstützt. Die Einheit für das `timezoneOffset` ist Minuten.
 
 Die **HTTPS-Antwort** enthält alle Informationen zur Absicht und den Entitäten, die LUIS anhand des aktuell veröffentlichten Modells auf dem Staging- oder Produktionsendpunkt ermitteln konnte. Die Endpunkt-URL befindet sich auf der [LUIS](luis-reference-regions.md)-Website auf der Seite **Schlüssel und Endpunkte** im Abschnitt **Verwalten**.
 
@@ -260,7 +260,7 @@ Zusammengesetzte Entitäten werden in einem Array vom Typ `compositeEntities` zu
 
 ## <a name="list-entity-data"></a>Daten von Listenentitäten
 
-Ein [Listenentität](luis-concept-entity-types.md) wird nicht maschinell erlernt. Sie stellt eine genaue Textübereinstimmung dar. Eine Liste stellt die enthaltenen Elemente zusammen mit Synonymen für diese Einträge dar. LUIS kennzeichnet jede Übereinstimmung für ein Element in einer Liste in der Antwort als eine Entität. Ein Synonym kann in mehreren Listen enthalten sein.
+Eine [Listenentität](luis-concept-entity-types.md) wird nicht maschinell erlernt. Sie stellt eine genaue Textübereinstimmung dar. Eine Liste stellt die enthaltenen Elemente zusammen mit Synonymen für diese Einträge dar. LUIS kennzeichnet jede Übereinstimmung für ein Element in einer Liste in der Antwort als eine Entität. Ein Synonym kann in mehreren Listen enthalten sein.
 
 Angenommen, die App enthält die Liste `Cities`, die Variationen von Städtenamen einschließlich Ort des Flughafens (Sea-tac), Flughafencode (SEA), Postleitzahl (98101) und Vorwahl (206) ermöglicht.
 
@@ -425,7 +425,11 @@ Entitäten aus [regulären Ausdrücken](luis-concept-entity-types.md) werden bas
 ```
 
 ## <a name="extracting-names"></a>Extrahieren von Namen
-Das Abrufen von Namen aus einer Äußerung ist schwierig, da es sich bei einem Namen um nahezu jede Kombination aus Buchstaben und Wörtern handeln kann. Je nach Art von Namen, die Sie extrahieren möchten, haben Sie verschiedene Optionen. Dies sind keine Regeln, sondern eher Richtlinien.
+Das Abrufen von Namen aus einer Äußerung ist schwierig, da es sich bei einem Namen um nahezu jede Kombination aus Buchstaben und Wörtern handeln kann. Je nach Art des Namens, den Sie extrahieren möchten, haben Sie verschiedene Optionen. Die folgenden Vorschläge sind keine Regeln, sondern eher Richtlinien.
+
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Hinzufügen der vordefinierten Entitäten „PersonName“ und „GeographyV2“
+
+Die Entitäten [PersonName](luis-reference-prebuilt-person.md) und [GeographyV2](luis-reference-prebuilt-geographyV2.md) sind in einigen [Sprachkulturen](luis-reference-prebuilt-entities.md) verfügbar. 
 
 ### <a name="names-of-people"></a>Namen von Personen
 Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorgaben. Verwenden Sie entweder eine hierarchische Entität mit Vor- und Nachnamen als untergeordnete Entitäten oder eine einfache Entität mit den Vor- und Nachnamen als Rollen. Geben Sie unbedingt Beispiele an, bei denen die Vor- und Nachnamen an unterschiedlichen Positionen in der Äußerung, in Äußerungen von verschiedener Länge und in Äußerungen aller Absichten (einschließlich der Absicht „None“) verwendet werden. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
@@ -434,7 +438,7 @@ Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorga
 Namen von Orten sind feststehend und bekannt. Sie umfassen z.B. Städte, Landkreise, Bundesländer, Provinzen und Länder. Wenn Ihre App einen bekannten Satz von Standorten verwendet, sollten Sie eine Listenentität in Erwägung ziehen. Wenn Sie alle Ortsnamen finden müssen, erstellen Sie eine einfache Entität, und geben Sie verschiedene Beispiele an. Fügen Sie eine Ausdrucksliste mit Ortsnamen hinzu, um anzugeben, wie Ortsnamen in Ihrer App vorkommen. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
 
 ### <a name="new-and-emerging-names"></a>Neue und sich entwickelnde Namen
-Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Dies ist die schwierigste Form der Datenextraktion. Beginnen Sie mit einer einfachen Entität, und fügen Sie eine Ausdrucksliste hinzu. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
+Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Solche Namen sind besonders schwer zu extrahieren. Beginnen Sie mit einer einfachen Entität, und fügen Sie eine Ausdrucksliste hinzu. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
 
 ## <a name="pattern-roles-data"></a>Daten von Musterrollen
 Rollen sind kontextabhängige Unterschiede von Entitäten.
@@ -603,6 +607,7 @@ Die Entität zu Schlüsselbegriffserkennung gibt Schlüsselausdrücke in der Äu
 ```
 
 ## <a name="data-matching-multiple-entities"></a>Datenabgleich bei mehreren Entitäten
+
 LUIS gibt alle Entitäten zurück, die in der Äußerung ermittelt wurden. Daher muss Ihr Chatbot seine Entscheidung basierend auf den Ergebnissen treffen. Eine Äußerung kann viele Entitäten enthalten:
 
 `book me 2 adult business tickets to paris tomorrow on air france`
@@ -728,6 +733,46 @@ Der LUIS-Endpunkt kann die gleichen Daten in verschiedenen Entitäten erkennen:
           "value": "business"
         }
       ]
+    }
+  ]
+}
+```
+
+## <a name="data-matching-multiple-list-entities"></a>Daten, die mehreren Listenentitäten entsprechen
+
+Wenn ein Wort oder ein Ausdruck mit mehreren Listenentitäten übereinstimmt, wird bei der Endpunktabfrage jede Listenentität zurückgegeben.
+
+Wenn die App bei der Abfrage `when is the best time to go to red rock?` das Wort `red` in mehreren Listenentitäten enthält, erkennt LUIS alle Entitäten und gibt als Teil der JSON-Endpunktantwort ein Array von Entitäten zurück: 
+
+```JSON
+{
+  "query": "when is the best time to go to red rock?",
+  "topScoringIntent": {
+    "intent": "Calendar.Find",
+    "score": 0.06701678
+  },
+  "entities": [
+    {
+      "entity": "red",
+      "type": "Colors",
+      "startIndex": 31,
+      "endIndex": 33,
+      "resolution": {
+        "values": [
+          "Red"
+        ]
+      }
+    },
+    {
+      "entity": "red rock",
+      "type": "Cities",
+      "startIndex": 31,
+      "endIndex": 38,
+      "resolution": {
+        "values": [
+          "Destinations"
+        ]
+      }
     }
   ]
 }

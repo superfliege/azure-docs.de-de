@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 6572a9b72554691441cb258a87a5db4ba7845087
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a02be1ba29ad43b90c99a5d1e275b96b3b4023d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077119"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718723"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
@@ -130,7 +130,7 @@ Wenn Sie einen detaillierteren Migrationsbericht über Ihre Projekte, Trainings 
 * Es ist nur eine Migration pro Projekt zulässig.  Wenn Sie eine Migration für ein Projekt wiederholen müssen, kontaktieren Sie uns.
 * Zurzeit unterstützt Benutzerdefinierter Translator 36 Sprachen für die Übersetzung aus der englischen Sprache und in diese – und wir arbeiten daran, weitere Sprachen hinzufügen.  Hub erfordert keine Baselinemodelle und unterstützt daher mehrere Tausend Sprachen.  Sie können zwar ein nicht unterstütztes Sprachpaar migrieren, dabei werden aber nur die Dokumente und Projektdefinitionen migriert.  Sie können das neue Modell nicht trainieren.  Darüber hinaus werden diese Dokumente und Projekte als inaktiv angezeigt, um anzugeben, dass sie zu diesem Zeitpunkt nicht verwendbar sind. Wenn eine Unterstützung für diese Projekte und/oder Dokumente hinzugefügt wird, werden sie aktiviert und sind damit trainierbar.
 * Benutzerdefinierter Translator unterstützt derzeit keine einsprachigen Trainingsdaten.  Wie bei nicht unterstützten Sprachpaaren können Sie einsprachige Dokumente zwar migrieren, aber sie werden als inaktiv angezeigt, bis einsprachige Daten unterstützt werden.  
-* Benutzerdefinierter Translator benötigt für das Trainieren 10.000 parallele Sätze.  Microsoft-Hub konnte auch mit einem kleineren Datensatz trainiert werden.  Wenn ein Training, das diese Anforderungen nicht erfüllt, migriert wird, wird es trainiert.
+* Benutzerdefinierter Translator benötigt für das Trainieren 10.000 parallele Sätze.  Microsoft-Hub konnte auch mit einem kleineren Datensatz trainiert werden. Wird ein Training migriert, das diese Anforderungen nicht erfüllt, findet kein Training statt.
 
 
 ## <a name="custom-translator-versus-hub"></a>Benutzerdefinierter Translator im Vergleich zum Hub

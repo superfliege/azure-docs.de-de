@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0b2c8d0e3484538ca5c988a7fad56fb82b97902
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133145"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993162"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testen von Batches mit 1.000 Äußerungen im LUIS-Portal
 
@@ -48,7 +48,7 @@ Alle benutzerdefinierten Entitäten im Modell werden auch dann im Batchtest-Enti
 
 Die Batchdatei besteht aus Äußerungen. Jeder Äußerung muss eine erwartete Absichtsvorhersage in Verbindung mit allen [maschinell gelernten Entitäten](luis-concept-entity-types.md#types-of-entities), deren Erkennung Sie erwarten, zugeordnet sein. 
 
-## <a name="batch-syntax-template"></a>Batchsyntaxvorlage
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Batchsyntaxvorlage für Absichten mit Entitäten
 
 Verwenden Sie die folgende Vorlage, um die Batchdatei zu starten:
 
@@ -75,6 +75,22 @@ Verwenden Sie die folgende Vorlage, um die Batchdatei zu starten:
 ```
 
 Die Batchdatei erkennt anhand der Eigenschaften **startPos** und **endPos** Anfang und Ende einer Entität. Die Werte sind nullbasiert und dürfen nicht mit einem Leerzeichen beginnen oder enden. Dies ist ein Unterschied zu den Abfrageprotokollen, die die Eigenschaften startIndex und endIndex verwenden. 
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Batchsyntaxvorlage für Absichten ohne Entitäten
+
+Verwenden Sie die folgende Vorlage, um Ihre Batchdatei ohne Entitäten zu starten:
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+Wenn Sie keine Entitäten testen möchten, schließen Sie die Eigenschaft `entities` ein, und legen Sie den Wert auf ein leeres Array (`[]`) fest.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Häufige Fehler beim Importieren eines Batches

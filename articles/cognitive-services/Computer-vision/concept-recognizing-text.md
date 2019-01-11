@@ -1,5 +1,5 @@
 ---
-title: Erkennen von gedrucktem und handschriftlichem Text – Maschinelles Sehen
+title: Erkennen von gedrucktem und handschriftlichem Text – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zur Erkennung von gedrucktem und handschriftlichem Text in Bildern mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 6827bf5f983834dc5222a3f3028386f8bbcb253a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: b23140eef4de904fb862253b6511b6fc2b1ce6dd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338099"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582268"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Erkennen von gedrucktem und handschriftlichem Text
 

@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 61d3869559d88e14c0b9a3c3e23cd8a1f9c2b6c4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 701f97a006e7457fcbdcc835f87832b269f986a8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626992"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630341"
 ---
 # <a name="view-system-test-results"></a>Anzeigen der Ergebnisse von Systemtests
 
@@ -26,7 +26,7 @@ Wählen Sie ein Projekt und anschließend die Modellregisterkarte des Projekts a
 
 Die Registerkarte „Test“ umfasst Folgendes:
 
-1.  System Test Results (Systemtestergebnisse): Das Ergebnis des Testprozesses in den Trainings. Der Testprozess erzeugt die BLEU-Bewertung.
+1.  **System Test Results** (Systemtestergebnisse): Das Ergebnis des Testprozesses in den Trainings. Der Testprozess erzeugt die BLEU-Bewertung.
 
     **Sentence Count** (Satzanzahl): Gibt an, wie viele parallele Sätze im Testsatz verwendet wurden.
 
@@ -54,11 +54,11 @@ Klicken Sie auf den Link zum Herunterladen der Übersetzungen, um eine ZIP-Datei
 
 Dieses heruntergeladene ZIP-Archiv enthält drei Dateien:
 
-1.  custom.mt.txt: Diese Datei enthält maschinelle Übersetzungen von Sätzen aus der Ausgangssprache in die Zielsprache, die auf der Grundlage des mit Benutzerdaten trainierten Modells generiert wurden.
+1.  **custom.mt.txt:** Diese Datei enthält maschinelle Übersetzungen von Sätzen aus der Ausgangssprache in die Zielsprache, die auf der Grundlage des mit Benutzerdaten trainierten Modells generiert wurden.
 
-2.  ref.txt: Diese Datei enthält vom Benutzer bereitgestellte Übersetzungen von Sätzen aus der Ausgangssprache in die Zielsprache.
+2.  **ref.txt:** Diese Datei enthält vom Benutzer bereitgestellte Übersetzungen von Sätzen aus der Ausgangssprache in die Zielsprache.
 
-3.  source.txt: Diese Datei enthält Sätze in der Ausgangssprache.
+3.  **source.txt:** Diese Datei enthält Sätze in der Ausgangssprache.
 
     ![Heruntergeladene Systemtestergebnisse](media/how-to/how-to-download-system-test.png)
 
@@ -73,14 +73,29 @@ So fordern Sie eine Bereitstellung an:
     ![Bereitstellen des Modells](media/how-to/how-to-deploy-model.png)
 
 3.  Klicken Sie auf „Bereitstellen“.
-4.  Wählen Sie die Regionen aus, in denen das Modell bereitgestellt werden soll, und klicken Sie auf „Speichern“. Sie können mehrere Regionen auswählen.
+4.  Wählen Sie **Bereitgestellt** für die Regionen aus, in denen das Modell bereitgestellt werden soll, und klicken Sie auf „Speichern“. **Bereitgestellt** kann für mehrere Regionen ausgewählt werden.
 
     ![Bereitstellen des Modells](media/how-to/how-to-deploy-model-regions.png)
 
 5.  Der Status Ihres Modells wird in der Spalte „Status“ angezeigt.
 
+## <a name="update-deployment-settings"></a>Aktualisieren der Bereitstellungseinstellungen
+
+So aktualisieren Sie die Bereitstellungseinstellungen:
+
+1.  Wählen Sie ein Projekt aus, und navigieren Sie zur Registerkarte **Modelle**.
+
+2. Bei erfolgreich bereitgestellten Modellen wird die Schaltfläche **Aktualisieren** angezeigt.
+
+    ![Bereitstellen des Modells](media/how-to/how-to-update-undeploy-model.png)
+
+3.  Wählen Sie **Update** aus.
+4.  Wählen Sie **Bereitgestellt** oder **Undeployed** (Nicht bereitgestellt) für die Regionen aus, in denen das Modell bereitgestellt oder nicht bereitgestellt werden soll, und klicken Sie auf **Speichern**.
+
+    ![Bereitstellen des Modells](media/how-to/how-to-undeploy-model.png)
+
 >[!Note]
->Wurde ein Modell bereits bereitgestellt, wird für das Modell die Schaltfläche „Bereitstellung zurücknehmen“ angezeigt. Klicken Sie zum Zurücknehmen der Bereitstellung eines Modells auf „Bereitstellung zurücknehmen“.
+>Falls Sie für alle Regionen **Undeployed** (Nicht bereitgestellt) ausgewählt haben, wird die Bereitstellung des Modells in allen Regionen aufgehoben, und das Modell wird in einen nicht bereitgestellten Zustand versetzt. Es ist nun nicht mehr zur Verwendung verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

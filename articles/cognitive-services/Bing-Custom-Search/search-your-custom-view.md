@@ -10,45 +10,44 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 58472d535be41fdd3e1139756f867f683509d9a3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 77a1756aba0d8473051cdf335f33ed9ca5a8fb24
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161734"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558327"
 ---
-# <a name="call-your-custom-search"></a>Aufrufen der benutzerdefinierten Suche
+# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Aufrufen Ihrer Instanz der benutzerdefinierten Bing-Suche über das Portal
 
-Sie benötigen einen Cognitive Services-Abonnementschlüssel, bevor Sie erstmals über die API für die benutzerdefinierte Suche Suchergebnisse für Ihre Instanz aufrufen können. Wie Sie einen Schlüssel für die API für die benutzerdefinierte Suche erhalten, erfahren Sie unter [Cognitive Services-Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+Nachdem Sie Ihre benutzerdefinierte Suche konfiguriert haben, können Sie sie im [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche testen. 
+
+![Screenshot des Portals für die benutzerdefinierte Bing-Suche](media/portal-search-screen.png)
+## <a name="create-a-search-query"></a>Erstellen einer Suchabfrage 
+
+Wählen Sie nach der Anmeldung beim [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche Ihre Suchinstanz aus, und klicken Sie auf die Registerkarte **Produktion**. Wählen Sie unter **Endpunkte** einen API-Endpunkt aus (etwa die Web-API). Welche Endpunkte angezeigt werden, hängt von Ihrem Abonnement ab.
+
+Geben Sie zum Erstellen einer Suchabfrage die Parameterwerte für Ihren Endpunkt ein. Beachten Sie, dass die im Portal angezeigten Parameter je nach gewähltem Endpunkt variieren können. Weitere Informationen finden Sie in der [Referenz zur API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters). 
+
+Im Anschluss finden Sie einige wichtige Parameter:
 
 
-## <a name="try-it-out"></a>Ausprobieren
+|Parameter  |Beschreibung  |
+|---------|---------|
+|Abfrage     | Der gewünschte Suchbegriff. Nur für Endpunkte für die Web-, Bilder-, Video- und Vorschlagssuche verfügbar. |
+|Benutzerdefinierte Konfigurations-ID | Die Konfigurations-ID der ausgewählten benutzerdefinierten Suchinstanz. Dieses Feld ist schreibgeschützt. |
+|Markt     | Der Markt, aus dem die Ergebnisse stammen sollen. Nur für Endpunkte für die Web-, Bilder- und Videosuche und die gehostete Benutzeroberfläche verfügbar.        |
+|Abonnementschlüssel | Der Abonnementschlüssel für den Test. Sie können einen Schlüssel in der Dropdownliste auswählen oder manuell einen Schlüssel eingeben.          |
 
-Nachdem Sie Ihre benutzerdefinierte Suche konfiguriert haben, können Sie die Konfiguration über das Portal für die benutzerdefinierte Suche testen. 
+Wenn Sie auf **Zusätzliche Parameter** klicken, werden die folgenden Parameter angezeigt:  
 
-1. Melden Sie sich bei der [benutzerdefinierten Suche](https://customsearch.ai) an.
-2. Klicken Sie auf eine Instanz der benutzerdefinierten Suche in der Liste der Instanzen.
-3. Klicken Sie auf die Registerkarte **Produktion**. 
-4. Wählen Sie auf der Registerkarte **Endpunkte** einen Endpunkt aus (z.B. Web-API). Ihr Abonnement legt fest, welche Endpunkte angezeigt werden (Abonnementoptionen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)). 
-5. Geben Sie die Parameterwerte an. 
-
-    Im Folgenden werden die möglichen Parameter, die Sie festlegen können, angegeben (die tatsächliche Liste hängt vom ausgewählten Endpunkt ab). Zusätzliche Informationen zu diesen Parametern finden Sie in der Referenz zur [API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters).
-
-    - **Abfrage**: der gesuchte Suchbegriff. Nur für Endpunkte für die Web-, Bilder-, Video- und Vorschlagssuche verfügbar.
-    - **Benutzerdefinierte Konfigurations-ID**: die Konfigurations-ID der ausgewählten benutzerdefinierten Suchinstanz. Dieses Feld ist schreibgeschützt.
-    - **Markt**: der Markt, aus dem die Ergebnisse stammen. Nur für Endpunkte für die Web-, Bilder- und Videosuche und die gehostete Benutzeroberfläche verfügbar.
-    - **Abonnementschlüssel**: der Abonnementschlüssel zum Testen. Sie können einen Schlüssel in der Dropdownliste auswählen, oder einen Schlüssel manuell eingeben.  
-      
-    Wenn Sie auf **Zusätzliche Parameter** klicken, werden die folgenden Parameter angezeigt:  
-      
-    - **Sichere Suche**: ein Filter, der Webseiten nach jugendgefährdenden Inhalten durchsucht. Nur für Endpunkte für die Web-, Bilder- und Videosuche und die gehostete Benutzeroberfläche verfügbar.
-    - **Sprache der Benutzeroberfläche:** die Sprache für Zeichenfolgen auf der Benutzeroberfläche. Wenn Sie beispielsweise Bilder und Videos in der gehosteten Benutzeroberfläche aktivieren, wird auf den Registerkarten **Bild** und **Video** die angegebene Sprache verwendet.
-    - **Anzahl**: die Anzahl der Suchergebnisse, die bei der Antwort zurückgegeben werden. Nur für Endpunkte für die Web-, Bilder- und Videosuche verfügbar.
-    - **Offset:** die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden. Nur für Endpunkte für die Web-, Bilder- und Videosuche verfügbar.
-
-6. Nachdem Sie alle erforderlichen Optionen angegeben haben, klicken Sie auf **Aufrufen**, um die JSON-Antwort im rechten Bereich anzuzeigen. 
-
-Wenn Sie den Endpunkt für die gehostete Benutzeroberfläche auswählen, können Sie die Suche im unteren Bereich testen.
+|Parameter  |Beschreibung  |
+|---------|---------|
+|Sichere Suche     | Ein Filter, der Webseiten nach jugendgefährdenden Inhalten durchsucht. Nur für Endpunkte für die Web-, Bilder- und Videosuche und die gehostete Benutzeroberfläche verfügbar.        |
+|Benutzeroberflächensprache    | Die Sprache für Zeichenfolgen auf der Benutzeroberfläche. Wenn Sie beispielsweise Bilder und Videos in der gehosteten Benutzeroberfläche aktivieren, wird auf den Registerkarten **Bild** und **Video** die angegebene Sprache verwendet.        |
+|Count     | Die Anzahl von Suchergebnissen, die in der Antwort zurückgegeben werden sollen. Nur für Endpunkte für die Web-, Bilder- und Videosuche verfügbar.         |
+|Offset    | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden. Nur für Endpunkte für die Web-, Bilder- und Videosuche verfügbar.        |
+    
+Nachdem Sie alle erforderlichen Optionen angegeben haben, klicken Sie auf **Aufrufen**, um die JSON-Antwort im rechten Bereich anzuzeigen. Wenn Sie den Endpunkt für die gehostete Benutzeroberfläche auswählen, können Sie die Suche im unteren Bereich testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

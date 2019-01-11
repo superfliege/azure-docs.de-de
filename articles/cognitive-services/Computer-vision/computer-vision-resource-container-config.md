@@ -1,24 +1,24 @@
 ---
-title: Konfigurieren von Containern
-titlesuffix: Computer Vision - Azure Cognitive Services
-description: Konfigurationseinstellungen für Container in Maschinelles Sehen.
+title: Konfigurieren von Containern – maschinelles Sehen
+titlesuffix: Azure Cognitive Services
+description: Konfigurieren Sie verschiedene Einstellungen für Texterkennungscontainer für maschinelles Sehen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: f71cbe965e70dfce1b29cf0e5f9ea44faf0a4e27
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077017"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579786"
 ---
-# <a name="configure-containers"></a>Konfigurieren von Containern
+# <a name="configure-recognize-text-containers"></a>Konfigurieren von Texterkennungscontainern
 
 Maschinelles Sehen stellt für den Texterkennungscontainer ein allgemeines Konfigurationsframework bereit, sodass Sie ganz einfach Aspekte wie Speicher, Protokollierung und Telemetrie sowie Sicherheitseinstellungen für Ihre Container konfigurieren und verwalten können.
 
@@ -41,7 +41,7 @@ Die Werte für Umgebungsvariablen haben Vorrang vor den Werten für Befehlszeile
 
 ### <a name="configuration-settings-as-environment-variables"></a>Konfigurationseinstellungen als Umgebungsvariablen
 
-Sie können die [ASP.NET Core-Syntax für Umgebungsvariablen](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment) verwenden, um Konfigurationseinstellungen anzugeben.
+Sie können die [ASP.NET Core-Syntax für Umgebungsvariablen](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#environment-variables-configuration-provider) verwenden, um Konfigurationseinstellungen anzugeben.
 
 Der Container liest Benutzerumgebungsvariablen, wenn er instanziiert wird. Ist eine Umgebungsvariable vorhanden, setzt deren Wert den Standardwert für die angegebene Konfigurationseinstellung außer Kraft. Die Verwendung von Umgebungsvariablen hat den Vorteil, dass vor dem Instanziieren von Containern mehrere Konfigurationseinstellungen festgelegt werden und mehrere Container automatisch den gleichen Satz von Konfigurationseinstellungen verwenden können.
 
@@ -133,7 +133,7 @@ Die `Logging`-Konfigurationseinstellungen dienen zur Verwaltung der ASP.NET Core
   | `Format` | Zeichenfolge | Das Ausgabeformat für Protokolldateien.<br/> **Hinweis:** Dieser Wert muss auf `json` festgelegt werden, um den Protokollanbieter zu aktivieren. Wenn dieser Wert bei der Containerinstanziierung angegeben wird, ohne eine Ausgabeeinbindung anzugeben, tritt ein Fehler auf. |
   | `MaxFileSize` | Ganze Zahl  | Die maximale Größe einer Protokolldatei (in MB). Wenn die Größe der aktuellen Protokolldatei diesen Wert erreicht oder übersteigt, wird vom Protokollanbieter eine neue Protokolldatei erstellt. Bei Angabe von „-1“ wird die Größe der Protokolldatei nur durch die maximal zulässige Dateigröße für die Ausgabeeinbindung begrenzt (sofern vorhanden). Der Standardwert ist 1. |
 
-Weitere Informationen zum Konfigurieren der ASP.NET Core-Protokollierungsunterstützung finden Sie unter [Protokollierung in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
+Weitere Informationen zum Konfigurieren der ASP.NET Core-Protokollierungsunterstützung finden Sie unter [Protokollierung in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration).
 
 ## <a name="mounts-configuration-settings"></a>Konfigurationseinstellungen für Einbindungen
 

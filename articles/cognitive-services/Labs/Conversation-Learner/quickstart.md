@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3d029c91debfc8ed3ac24e831224426a2780b763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166131"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791070"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Erstellen eines Unterhaltungslernmodells mithilfe von Node.js
 
@@ -112,14 +112,11 @@ Durch die obigen Anweisungen wurde der generische leere Bot gestartet.  So führ
   npm run demo-password
   npm run demo-pizza
   npm run demo-storage
-  npm run demo-vrapp
   ```
 
 4. Wenn Sie dies nicht bereits getan haben, wechseln Sie zur Webbenutzeroberfläche des Unterhaltungslernmoduls in Chrome, indem Sie http://localhost:5050/home laden. 
 
-5. Klicken Sie auf „Tutorials importieren“ (dies muss nur einmal durchgeführt werden).  Dies dauert etwa eine Minute und kopiert die Unterhaltungslernmodelle für alle Tutorials in Ihr Konto für das Unterhaltungslernmodul.
-
-6. Klicken Sie auf das Demomodell auf der Benutzeroberfläche des Unterhaltungslernmoduls, das der von Ihnen gestarteten Demo entspricht.
+5. Klicken Sie auf „Tutorials importieren“, und wählen Sie auf der Conversation Learner-Benutzeroberfläche das Demomodell aus, das der von Ihnen gestarteten Demo entspricht.
 
 Die Quelldateien für die Demos befinden sich unter `cl-bot-01/src/demos`.
 
@@ -181,4 +178,4 @@ Für dieses Projekt wird der [Microsoft Open Source Code of Conduct](https://ope
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Hallo Welt](./tutorials/1-hello-world.md)
+> [Hallo Welt](./tutorials/01-hello-world.md)

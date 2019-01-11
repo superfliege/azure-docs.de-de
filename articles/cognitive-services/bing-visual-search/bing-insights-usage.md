@@ -10,20 +10,20 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 40b9685c56dd494e82c05bff9ed75f425a3006ff
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 39468a4a143d184fcc964ae88f82ad7254e4f3b0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886626"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741741"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Beispiele für die Nutzung von Bing-Auswertungen
 
-Dieser Abschnitt enthält Beispiele dafür, wie Bing Auswertungen auf bing.com anzeigen kann.
+Dieser Artikel enthält Beispiele dafür, wie Bing Bildauswertungen auf bing.com verwendet und anzeigt.
 
 ## <a name="pagesincluding-insight-example"></a>Beispiel für eine Auswertung vom Typ PagesIncluding
 
-Nachfolgend sehen Sie, wie Bing Webseiten anzeigen kann, die das Bild enthalten. Im Beispiel wird ein Link zur ersten Webseite angezeigt, und der Benutzer kann die Liste der anderen Webseiten, die das Bild enthalten, erweitern und reduzieren.
+Im folgenden Beispiel wird ein Link zur ersten Webseite angezeigt, und der Benutzer kann die Liste der anderen Webseiten, die das Bild enthalten, erweitern und reduzieren.
 
 ![Erweiterte Liste von Seiten mit dem Bild](./media/pages-including.PNG)
 
@@ -83,9 +83,7 @@ Nicht standardmäßige Tags umfassen den Begrenzungsrahmen, der den relevanten B
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu dem JSON-Code hinter diesen Beispielen finden Sie unter [Standardinformationen](default-insights-tag.md) und [JSON-Antwort](overview.md#the-response).
-
-Die Schnellstartanleitungen [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md) ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung.
+Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

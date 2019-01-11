@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5d4c564ac797f40d7f6e9b169a6c864d3ef8147b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f95dec8a539a92a0397421fbde411f646eeca3ca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165162"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720083"
 ---
-# <a name="find-endpoint-region-with-c"></a>Suchen der Endpunktregion mit C# 
+# <a name="programmatically-find-endpoint-region-with-c"></a>Programmgesteuertes Suchen der Endpunktregion mit C# 
 Wenn Ihnen die LUIS-App-ID und die LUIS-Abonnement-ID bekannt sind, können Sie herausfinden, welche Region Sie für Endpunktabfragen verwenden müssen.
 
 > [!NOTE] 
-> Die vollständige C#-Lösung steht im [GitHub-Repository mit **LUIS-Beispielen**](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/csharp/) zur Verfügung.
+> Die vollständige C#-Lösung steht im [GitHub-Repository mit **Azure-Beispielen**](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/find-region/csharp/) zur Verfügung.
 
 ## <a name="luis-endpoint-query-strategy"></a>LUIS-Endpunkt-Abfragestrategie
 Für jede LUIS-Endpunktabfrage benötigen Sie Folgendes:

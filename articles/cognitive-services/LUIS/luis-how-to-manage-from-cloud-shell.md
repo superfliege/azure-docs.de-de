@@ -1,7 +1,7 @@
 ---
 title: Nutzungsdaten – Cloud Shell
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Erfahren Sie, wie Sie Nutzungsinformationen für LUIS in der Azure Cloud Shell abrufen können.
+description: Hier erfahren Sie, wie Sie Informationen zur Nutzung der Endpunkt-Trefferanzahl in Azure Cloud Shell für LUIS abrufen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,21 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 703332ece0208856bfbedb852b4b1e985d157dc9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133474"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605944"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Nutzungsdaten für den LUIS-Dienst in der Azure Cloud Shell
+
+Hier erfahren Sie, wie Sie Informationen zur Nutzung der Endpunkt-Trefferanzahl in Azure Cloud Shell für LUIS abrufen.
+
 Das Azure-Portal ermöglicht Ihnen die Verwendung von PowerShell-Cmdlets zum Arbeiten mit LUIS-Ressourcen. 
 
 Mithilfe dieser Cmdlets können Sie ein LUIS-Abonnement [erstellen](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0), Informationen über das Abonnement abrufen, einschließlich der [Nutzung](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), und das Abonnement [entfernen](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0). 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud Shell-Speicherkonto und Authentifizierung
+
 Um PowerShell in der [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) im Azure-Portal verwenden zu können, benötigen Sie ein Azure-Speicherkonto. Wenn Sie nicht über ein [Speicherkonto](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) verfügen, werden Sie aufgefordert, eins zu erstellen. Das Speicherkonto ermöglicht Ihnen das Speichern von PowerShell-Skripts in der Cloud Shell.  
 
 Darüber hinaus müssen Sie sich in der Cloud Shell bei Azure authentifizieren, um auf Ressourcen zuzugreifen. 
@@ -31,6 +35,7 @@ Darüber hinaus müssen Sie sich in der Cloud Shell bei Azure authentifizieren, 
 Sobald Sie über ein Speicherkonto verfügen und authentifiziert sind, können Sie PowerShell-Cmdlets ausführen.
 
 ## <a name="open-cloud-shell"></a>Öffnen von Cloud Shell
+
 Wenn Sie die Cloud Shell im Azure-Portal verwenden, arbeiten Sie immer mit der aktuellsten PowerShell-Version. 
 
 Verwenden Sie die Schaltfläche **Launch Cloud Shell** (Cloud Shell starten), um die Cloud Shell zu öffnen, oder öffnen Sie einen Browser mit [https://shell.azure.com](https://shell.azure.com). Wählen Sie Power Shell als Umgebung. Wenn Sie kein Azure-Speicherkonto haben, müssen Sie eines erstellen. 

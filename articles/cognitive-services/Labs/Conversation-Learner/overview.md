@@ -10,20 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9cbf0e60382ef17d68aab47cf5f24ea9b8434f13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376218"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790774"
 ---
 # <a name="what-is-conversation-learner"></a>Was ist das Unterhaltungslernmodul?
 
 Mit dem Unterhaltungslernmodul können Sie Unterhaltungsschnittstellen erstellen und trainieren, die anhand von Beispielinteraktionen lernen. 
 
-Im Gegensatz zu herkömmlichen Konzepten berücksichtigt das Unterhaltungslernmodul den End-to-End-Kontext eines Dialogs, um die Antworten zu verbessern und überzeugendere Benutzererlebnisse zu ermöglichen. Das Unterhaltungslernmodul umfasst eine breite Palette von aufgabenorientierten Anwendungsfällen und wendet maschinelles Lernen im Hintergrund an, um dafür zu sorgen, dass Bots und intelligente Agents die Benutzer weniger frustrieren, keine zusätzlichen Kundendienstkosten entstehen und die Interaktion damit intuitiver wird.
+Im Gegensatz zu herkömmlichen Konzepten berücksichtigt das Unterhaltungslernmodul den End-to-End-Kontext eines Dialogs, um die Antworten zu verbessern und überzeugendere Benutzererlebnisse zu ermöglichen. Conversation Learner umfasst eine breite Palette von aufgabenorientierten Anwendungsfällen und wendet maschinelles Lernen im Hintergrund an, um dafür zu sorgen, dass Bots und intelligente Agents die Benutzer weniger frustrieren, keine zusätzlichen Kundendienstkosten verursachen und eine intuitivere Interaktion ermöglichen.
 
-Zu Beginn gibt der Entwickler prototypische Dialoge ein, die imitiert werden sollen. Bei der Eingabe weiterer Dialoge wird das Modell kontinuierlich aktualisiert, und der Entwickler kann sehen, wie gut sich das Modell verallgemeinert. Sobald das Modell gut funktioniert, kann der Bot für Endbenutzer bereitgestellt werden. Das Unterhaltungslernmodul protokolliert Unterhaltungen mit Benutzern, und der Entwickler kann diese Unterhaltungen überprüfen. Wenn Fehler entdeckt werden, kann der Entwickler direkt eine Korrektur vornehmen. Das Modell wird neu trainiert und steht sofort wieder zur Verfügung.
+Entwickler geben zunächst Prototypdialoge ein, die sie imitieren möchten. Das Modell lernt anhand weiterer eingegebener Dialoge. Sobald das Modell gut funktioniert, kann der Bot für Endbenutzer bereitgestellt werden. Das Unterhaltungslernmodul protokolliert Unterhaltungen mit Benutzern, und der Entwickler kann diese Unterhaltungen überprüfen. Wenn Fehler entdeckt werden, kann der Entwickler direkt eine Korrektur vornehmen. Das Modell wird neu trainiert und steht sofort wieder zur Verfügung.
 
 Dieser Ansatz reduziert die manuelle Codierung der Dialogsteuerungslogik und ermöglicht Geschäftsinhabern oder Domänenexperten die Mitwirkung an einer Unterhaltungsschnittstelle ohne vorherige Kenntnisse des maschinellen Lernens. Unabhängig davon, ob das Unterhaltungslernmodul als Teil eines Bot, eines intelligenten Geräts oder eines intelligenten Agents bereitgestellt wird, kann es neue Fähigkeiten, Verhaltensweisen oder Kompetenzen schnell iterieren und deren Qualität schnell verbessern. 
 

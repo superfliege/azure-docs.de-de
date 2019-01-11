@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e055d1e10ddf8c18c84af5376cf4a284d48fde6b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086605"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603326"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Bearbeiten einer Wissensdatenbank in QnA Maker
 
@@ -71,7 +71,7 @@ Fügen Sie alternative Fragen zu einem vorhandenen Fragen-und-Antworten-Paar hin
 ## <a name="add-metadata"></a>Hinzufügen von Metadaten
 
 
-Fügen Sie Metadatenpaare durch Auswahl des Filtersymbols hinzu.
+Fügen Sie Metadatenpaare durch Auswahl des Metadatensymbols hinzu.
 
 ![Hinzufügen von Metadaten](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -80,11 +80,17 @@ Fügen Sie Metadatenpaare durch Auswahl des Filtersymbols hinzu.
 
 ## <a name="manage-large-knowledge-bases"></a>Verwalten großer Wissensdatenbanken
 
-1. Die Fragen und Antworten sind nach der Datenquelle **gruppiert**, aus der sie extrahiert wurden. Sie können die Datenquelle erweitern oder reduzieren.
-2. Sie können in der Wissensdatenbank **suchen**, indem Sie einen Suchbegriff in das Textfeld am oberen Rand der Wissensdatenbanktabelle eingeben. Drücken Sie die EINGABETASTE, um in den Fragen, Antworten oder Metadaten danach zu suchen. Klicken Sie auf das X-Symbol, um den Suchfilter zu entfernen.
-3. Mithilfe der **Paginierung** können Sie große Wissensdatenbanken verwalten.
+* **Datenquellengruppen:** Die Fragen und Antworten werden nach der Datenquelle gruppiert, aus der sie extrahiert wurden. Sie können die Datenquelle erweitern oder reduzieren.
 
-    ![Suchen, Paginieren, Gruppieren](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Verwenden der Datenquellenleiste von QnA Maker, um Datenquellenfragen und -antworten zu reduzieren bzw. zu erweitern](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+
+* **Durchsuchen der Wissensdatenbank:** Sie können in der Wissensdatenbank suchen, indem Sie einen Suchbegriff in das Textfeld am oberen Rand der Wissensdatenbanktabelle eingeben. Drücken Sie die EINGABETASTE, um in den Fragen, Antworten oder Metadaten danach zu suchen. Klicken Sie auf das X-Symbol, um den Suchfilter zu entfernen.
+
+    ![Verwenden des Suchfelds von QnA Maker (über den Fragen und Antworten), um nur Elemente anzuzeigen, die den Filterkriterien entsprechen](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+* **Paginierung:** Navigieren Sie zur Verwaltung umfangreicher Wissensdatenbanken schnell durch Datenquellen.
+
+    ![Verwenden der Paginierungsfeatures von QnA Maker (über den Fragen und Antworten), um seitenweise durch Fragen und Antworten zu navigieren](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>Löschen von Wissensdatenbanken
 

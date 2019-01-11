@@ -1,7 +1,7 @@
 ---
-title: Erkennen domänenspezifischer Inhalte – Maschinelles Sehen
+title: Erkennen domänenspezifischer Inhalte – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: Konzepte zur Beschreibung von Bildern mithilfe der Maschinelles Sehen-API.
+description: Hier erfahren Sie, wie Sie eine Bildkategorisierungsdomäne angeben, um ausführlichere Informationen zu einem Bild zurückzugeben.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: a9c71fa7e5d86cfeb4fe6fab44bbce241546ccb8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 50942634bd50974453c242d1980db9fc589bd47e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342557"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579208"
 ---
 # <a name="detecting-domain-specific-content"></a>Erkennen domänenspezifischer Inhalte
 

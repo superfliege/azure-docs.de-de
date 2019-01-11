@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 52b6265722d5cfbf8baf54e1785ace627aa0892f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 07d3f5d365fa5c552ccb61c97532a9931b7e282e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341666"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583679"
 ---
-# <a name="extracting-text-with-ocr"></a>Extrahieren von Text mit OCR
+# <a name="extracting-text-with-optical-character-recognition"></a>Extrahieren von Text mit optischer Zeichenerkennung
 
 Die optische Zeichenerkennungstechnologie (OCR) beim maschinellen Sehen erkennt Textinhalte in einem Bild und extrahiert den erkannten Text in einen computerlesbaren Zeichendatenstrom. Sie können das Ergebnis für die Suche und zahlreiche andere Zwecke wie medizinische Aufzeichnungen, Sicherheit und das Bankwesen verwenden. Die Sprache wird automatisch erkannt. OCR spart Zeit und erleichtert Benutzern das Leben, da sie den Text nicht mehr transkribieren müssen, sondern ihn fotografieren können.
 
@@ -25,7 +26,7 @@ OCR unterstützt 25 Sprachen. Diese Sprachen sind: Arabisch, Chinesisch (traditi
 
 Bei Bedarf korrigiert OCR die Drehung des erkannten Texts in Grad um die horizontale Bildachse. OCR stellt die Frame-Koordinaten jedes Worts bereit, wie es in der folgenden Abbildung dargestellt ist.
 
-![OCR-Übersicht](./Images/vision-overview-ocr.png)
+![Diagramm, das zeigt, wie ein Bild gedreht und der darauf befindliche Text gelesen und eingegrenzt wird](./Images/vision-overview-ocr.png)
 
 ## <a name="ocr-requirements"></a>OCR-Anforderungen
 

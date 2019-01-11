@@ -11,14 +11,15 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 478727a4d3628fbe6a385e3beb28201c228f9e2d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8ea180131ce2f9e1288c3ffb928170be55a77de7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078233"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598449"
 ---
-# <a name="luis-api-http-response-codes"></a>LUIS-API – HTTP-Antwortcodes
+# <a name="common-api-response-codes-and-their-meaning"></a>Allgemeine API-Antwortcodes und ihre Bedeutung
+
 Die APIs für die Erstellung ([authoring](https://aka.ms/luis-authoring-apis)) und für Endpunkte ([endpoint](https://aka.ms/luis-endpoint-apis)) geben HTTP-Antwortcodes zurück. Antwortnachrichten enthalten spezifische Informationen zu einer Anforderung, aber es wird ein allgemeiner HTTP-Antwortstatuscode verwendet. 
 
 ## <a name="common-status-codes"></a>Häufige Statuscodes
@@ -38,3 +39,7 @@ In der folgenden Tabelle sind einige der häufigsten HTTP-Antwortstatuscodes fü
 |410|Endpunkt|Anwendung muss neu trainiert und erneut veröffentlicht werden|
 |414|Endpunkt|Abfrage überschreitet maximale Zeichenzahl|
 |429|Erstellung, Endpunkt|Ratenlimit wurde überschritten (Anforderungen/Sekunde)|
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* REST-API-Dokumentation für [Erstellung](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) und [Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)

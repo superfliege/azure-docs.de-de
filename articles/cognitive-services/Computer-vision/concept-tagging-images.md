@@ -1,7 +1,7 @@
 ---
-title: Taggen von Bildern – Maschinelles Sehen
+title: Anwenden von Inhaltstags auf Bilder – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: Konzepte zum Tagging von Bildern mithilfe der Maschinelles Sehen-API.
+description: Machen Sie sich mit Konzepten des Bildmarkierungsfeatures der Maschinelles Sehen-API vertraut.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 7e9181b6e805a768ca5dd8ed558b8feea45f22d3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: caf4d8a4ee3ccee181d233716e0a645150a201c3
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960906"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582931"
 ---
-# <a name="tagging-images"></a>Taggen von Bildern
+# <a name="applying-content-tags-to-images"></a>Anwenden von Inhaltstags auf Bilder
 
 Maschinelles Sehen gibt Tags basierend auf Tausenden erkennbaren Objekten, Lebewesen, Landschaften und Aktionen zurück. Wenn Tags nicht eindeutig sind oder nicht zum Allgemeinwissen gehören, enthält die API-Antwort „Hinweise“, um die Bedeutung des Tags in einem bekannten Kontext zu erläutern. Tags sind nicht als eine Taxonomie organisiert, und es sind keine Vererbungshierarchien vorhanden. Eine Auflistung von Inhaltstags bildet die Grundlage für eine „Bildbeschreibung“, die in einer für Menschen lesbaren Sprache in vollständigen Sätzen angezeigt wird. Beachten Sie, dass derzeit nur Englisch als Sprache für Bildbeschreibungen unterstützt wird.
 
@@ -27,7 +28,7 @@ Nachdem Sie ein Bild hochgeladen oder eine Bild-URL angegeben haben, geben die A
 
 Die folgende JSON-Antwort veranschaulicht, was vom maschinellen Sehen beim Taggen von visuellen Merkmalen zurückgegeben wird, die im Beispielbild erkannt wurden.
 
-![House_Yard](./Images/house_yard.png).
+![Ein blaues Haus mit Vorgarten](./Images/house_yard.png).
 
 ```json
 {

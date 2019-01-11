@@ -1,7 +1,7 @@
 ---
 title: Erkennen von Gesichtern – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: Konzepte zur Erkennung von Gesichtern mithilfe der Maschinelles Sehen-API.
+description: Machen Sie sich mit Konzepten des Gesichtserkennungsfeatures der Maschinelles Sehen-API vertraut.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 0c6485bff4ad11aab37139cd2aa2d3660bddac0e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342312"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580535"
 ---
-# <a name="detecting-faces"></a>Erkennen von Gesichtern
+# <a name="face-detection-with-computer-vision"></a>Gesichtserkennung mit maschinellem Sehen
 
 Das maschinelle Sehen erkennt menschliche Gesichter auf einem Bild und generiert Alter, Geschlecht und Rechteck für jedes erkannte Gesicht. Maschinelles Sehen bietet einen Teil der Funktionen aus der [Gesichtserkennung](/azure/cognitive-services/face/). Der Gesichtserkennungsdienst ermöglicht eine detailliertere Analyse zur Erkennung von Gesichtsausdruck, Kopfhaltung und Ähnlichem.  
 

@@ -9,19 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18a32f5e07470f71ba276fbe3a2633150b1bf188
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079210"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754663"
 ---
-# <a name="tutorial-6-group-and-extract-related-data"></a>Tutorial 6: Gruppieren und Extrahieren zugehöriger Daten
+# <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 
-Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten. Sie ähnelt einer hierarchischen Entität, kann aber verschiedene Typen von Entitäten enthalten. 
+Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten. Sie ähnelt einer hierarchischen Entität, kann aber verschiedene Arten von Entitäten enthalten. 
 
 Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da für die Daten Folgendes gilt:
 
@@ -33,7 +33,8 @@ Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da f�
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Verwenden der vorhandenen Tutorial-App
+> * Importieren der Beispiel-App
+> * Erstellen einer Absicht
 > * Zusammengesetzte Entität hinzufügen 
 > * Trainieren
 > * Veröffentlichen
@@ -41,286 +42,139 @@ Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da f�
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Verwenden der vorhandenen App
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+## <a name="import-example-app"></a>Importieren der Beispiel-App
 
-Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
-
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [JSON-Datei der App](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) aus dem Tutorial zum Entitätstyp „Liste“ herunter, und speichern Sie sie.
 
 2. Importieren Sie den JSON-Code in eine neue App.
 
 3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `composite`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 
-
 ## <a name="composite-entity"></a>Entität vom Typ „Composite“
-Erstellen Sie eine zusammengesetzte Entität, wenn die einzelnen Entitäten logisch gruppiert werden können und diese logische Gruppierung hilfreich für die Clientanwendung ist. 
 
-In dieser App ist der Name des Mitarbeiters in der Listenentität **Employee** definiert, und er umfasst Synonyme zum Namen, E-Mail-Adresse, die Durchwahl der Firmentelefonnummer, die Mobiltelefonnummer und die US-amerikanische Steuernummer. 
+In dieser App ist der Abteilungsname in der Listenentität **Department** (Abteilung) definiert (einschließlich Synonymen). 
 
-Die Absicht **MoveEmployee** weist Beispieläußerungen auf, um anzufordern, dass ein Mitarbeiter von einem Gebäude oder Büro in ein anderes verlegt wird. Gebäudenamen sind alphabetisch: „A“, „B“ usw., während die Büros numerisch sind: „1234“, „13245“. 
+Die Absicht **TransferEmployeeToDepartment** verfügt über Beispieläußerungen, um die Versetzung eines Mitarbeiters in eine neue Abteilung anzufordern. 
 
-Zu Beispieläußerungen in der Absicht **MoveEmployee** zählen Folgende:
+Im Anschluss finden Sie einige Beispieläußerungen für diese Absicht:
 
 |Beispiele für Äußerungen|
 |--|
-|Move John W . Smith to a-2345|
-|shift x12345 to h-1234 tomorrow (x12345 morgen nach h-1234 verlagern)|
+|„move John W. Smith to the accounting department“ (John W. Smith in die Buchhaltungsabteilung versetzen)|
+|„transfer Jill Jones to R&D“ (Jill Jones in die Abteilung für Forschung und Entwicklung versetzen)|
  
-Die Anforderung zur Verlegung sollte den Mitarbeiter (mit sämtlichen Synonymen) und den endgültigen Gebäude- bzw. Bürostandort umfassen. Die Anforderung kann zudem das ursprüngliche Büro sowie ein Datum umfassen, an dem die Verlegung geschehen soll. 
+Die Versetzungsanforderung muss den Namen der Abteilung und den Namen des Mitarbeiters enthalten. 
 
-Die aus dem Endpunkt extrahierten Daten sollten diese Informationen enthalten und in einer zusammengesetzten Entität namens `RequestEmployeeMove` zurückgeben:
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Hinzufügen der vordefinierten Entität „PersonName“, um die Extraktion allgemeiner Datentypen zu vereinfachen
 
-```json
-"compositeEntities": [
-  {
-    "parentType": "RequestEmployeeMove",
-    "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-    "children": [
-      {
-        "type": "builtin.datetimeV2.datetime",
-        "value": "march 3 2 p.m"
-      },
-      {
-        "type": "Locations::Destination",
-        "value": "z - 2345"
-      },
-      {
-        "type": "Employee",
-        "value": "jill jones"
-      },
-      {
-        "type": "Locations::Origin",
-        "value": "a - 1234"
-      }
-    ]
-  }
-]
-```
+LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner Daten. 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. Wählen Sie im oberen Navigationsbereich die Option **Erstellen** und anschließend im linken Navigationsmenü die Option **Entitäten** aus.
 
-2. Wählen Sie auf der Seite **Absichten** die Option **MoveEmployee** aus. 
+1. Wählen Sie die Schaltfläche **Manage prebuilt entity** (Vordefinierte Entität verwalten) aus.
 
-3. Wählen Sie das Lupensymbol auf der Symbolleiste aus, um die Liste von Äußerungen zu filtern. 
+1. Wählen Sie in der Liste mit den vordefinierten Entitäten die Option **[PersonName](luis-reference-prebuilt-person.md)** und dann **Fertig** aus.
 
-    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Lupensymbol](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Lupensymbol")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    ![Screenshot: Auswahl von „number“ im Dialogfeld mit den vordefinierten Entitäten](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
-4. Geben Sie `tomorrow` in das Filtertextfeld ein, um nach der Äußerung `shift x12345 to h-1234 tomorrow` zu suchen.
+    Diese Entität hilft Ihnen dabei, Ihre Clientanwendung mit einer Namenserkennung auszustatten.
 
-    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Filter „tomorrow“](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobenem Filter „tomorrow“")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+## <a name="create-composite-entity-from-example-utterances"></a>Erstellen einer zusammengesetzten Entität auf der Grundlage von Beispieläußerungen
 
-    Eine andere Methode besteht darin, die Entität nach „datetimeV2“ zu filtern und dabei **Entitätsfilter** und dann **datetimeV2** aus der Liste auszuwählen. 
+1. Wählen Sie im linken Navigationsbereich **Absichten** aus.
 
-5. Wählen Sie als erste Entität `Employee` aus, und klicken Sie dann in der Liste des Popupmenüs auf **Zusammengesetzte Entität umschließen**. 
+1. Wählen Sie in der Liste mit den Absichten die Option **TransferEmployeeToDepartment** aus.
 
-    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+1. Wählen Sie in der ersten Äußerung die Entität „personName“ (`John Jackson`) aus. Wählen Sie anschließend im Popupmenü für die folgende Äußerung die Option **Start wrapping composite entity** (Mit Umschließung der zusammengesetzten Entität beginnen) aus:
 
+    `place John Jackson in engineering`
 
-6. Wählen Sie dann die letzte Entität `datetimeV2` in der Äußerung aus. Die markierten Wörter werden grün unterstrichen, was auf eine zusammengesetzte Entität hinweist. Geben Sie im Popupmenü den zusammengesetzten Namen `RequestEmployeeMove` ein, und drücken Sie die EINGABETASTE. 
+1. Wählen Sie dann die letzte Entität `engineering` in der Äußerung aus. Die markierten Wörter werden grün unterstrichen, was auf eine zusammengesetzte Entität hinweist. Geben Sie im Popupmenü den zusammengesetzten Namen `TransferEmployeeInfo` ein, und drücken Sie die EINGABETASTE. 
 
-    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität und Hervorhebung der Schaltfläche „Neue zusammengesetzte Entität erstellen“](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität und Hervorhebung der Schaltfläche „Neue zusammengesetzte Entität erstellen“")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+1. Unter **Welche Arten von Entitäten möchten Sie erstellen?** sind alle Pflichtfelder in der Liste enthalten: `personName` und `Department`. Wählen Sie **Fertig**aus. 
 
-7. Unter **Welche Arten von Entitäten möchten Sie erstellen?** sind fast alle Pflichtfelder in der Liste aufgeführt. Nur der Ursprungsort fehlt. Klicken Sie auf **Untergeordnete Entität hinzufügen**, auf **Locations::Origin** in der Liste der vorhandenen Entitäten und anschließend auf **Fertig**. 
-
-    Beachten Sie, dass der zusammengesetzten Entität die vordefinierte Entität „Zahl“ hinzugefügt wurde. Wenn eine vordefinierte Entität zwischen dem Anfangs- und dem Endtoken einer zusammengesetzten Entität auftreten kann, muss die zusammengesetzte Entität diese vordefinierten Entitäten enthalten. Wenn die vordefinierten Entitäten nicht enthalten sind, wird die zusammengesetzte Entität nicht ordnungsgemäß vorhergesagt, wohl aber die Einzelelemente.
-
-    ![Screenshot der LUIS-App zur Absicht „MoveEmployee“ mit Hinzufügung einer weiteren Entität im Popupfenster](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
-
-8. Klicken Sie auf der Symbolleiste auf das Lupensymbol, um den Filter zu entfernen. 
-
-9. Entfernen Sie das Wort `tomorrow` aus dem Filter, so dass Sie wieder alle Beispieläußerungen sehen können. 
+    Beachten Sie, dass der zusammengesetzten Entität die vordefinierte Entität „personName“ hinzugefügt wurde. Wenn eine vordefinierte Entität zwischen dem Anfangs- und dem Endtoken einer zusammengesetzten Entität auftreten kann, muss die zusammengesetzte Entität diese vordefinierten Entitäten enthalten. Wenn die vordefinierten Entitäten nicht enthalten sind, wird die zusammengesetzte Entität nicht ordnungsgemäß vorhergesagt, wohl aber die Einzelelemente.
 
 ## <a name="label-example-utterances-with-composite-entity"></a>Bezeichnen von Beispieläußerungen mit zusammengesetzter Entität
 
 
 1. Wählen Sie in jeder Beispieläußerung die Entität ganz links aus, die sich in der zusammengesetzten Entität befinden sollte. Klicken Sie dann auf **Zusammengesetzte Entität umschließen**.
 
-    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der ersten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+1. Wählen Sie das letzte Wort in der zusammengesetzten Entität und anschließend im Popupmenü die Option **TransferEmployeeInfo** aus. 
 
-2. Wählen Sie das letzte Wort in der zusammengesetzten Entität und im Popupmenü dann **RequestEmployeeMove** aus. 
+1. Überprüfen Sie, ob alle Äußerungen in der Absicht mit der zusammengesetzten Entität bezeichnet sind. 
 
-    [![Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Screenshot von LUIS zur Absicht „MoveEmployee“ mit hervorgehobener Auswahl der letzten Entität in der zusammengesetzten Entität")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
-
-3. Überprüfen Sie, ob alle Äußerungen in der Absicht mit der zusammengesetzten Entität bezeichnet sind. 
-
-    [![Screenshot von LUIS zu „MoveEmployee“ mit allen bezeichneten Äußerungen](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Screenshot von LUIS zu „MoveEmployee“ mit allen bezeichneten Äußerungen")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
-
-## <a name="train"></a>Trainieren
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Veröffentlichen
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen der App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Abrufen von Absicht und Entitätsvorhersage vom Endpunkt 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Geben Sie in der Adressleiste am Ende der URL `Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (query) der Äußerung). 
+2. Geben Sie in der Adressleiste am Ende der URL `Move Jill Jones to DevOps` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (query) der Äußerung). 
 
     Da mit diesem Test überprüft werden soll, ob die zusammengesetzte Entität korrekt extrahiert wurde, kann ein Test entweder eine vorhandene Beispieläußerung oder eine neue Äußerung enthalten. Ein guter Test beinhaltet alle untergeordneten Entitäten in der zusammengesetzten Entität.
 
     ```json
     {
-      "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
+      "query": "Move Jill Jones to DevOps",
       "topScoringIntent": {
-        "intent": "MoveEmployee",
-        "score": 0.9959525
+        "intent": "TransferEmployeeToDepartment",
+        "score": 0.9882747
       },
       "intents": [
         {
-          "intent": "MoveEmployee",
-          "score": 0.9959525
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.009858314
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.00728598563
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.0058053555
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.005371796
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00266987388
+          "intent": "TransferEmployeeToDepartment",
+          "score": 0.9882747
         },
         {
           "intent": "None",
-          "score": 0.00123299169
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00116407464
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00102653319
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.0006628214
+          "score": 0.00925369747
         }
       ],
       "entities": [
         {
-          "entity": "march 3 2 p.m",
-          "type": "builtin.datetimeV2.datetime",
-          "startIndex": 41,
-          "endIndex": 54,
-          "resolution": {
-            "values": [
-              {
-                "timex": "XXXX-03-03T14",
-                "type": "datetime",
-                "value": "2018-03-03 14:00:00"
-              },
-              {
-                "timex": "XXXX-03-03T14",
-                "type": "datetime",
-                "value": "2019-03-03 14:00:00"
-              }
-            ]
-          }
-        },
-        {
           "entity": "jill jones",
-          "type": "Employee",
+          "type": "builtin.personName",
           "startIndex": 5,
-          "endIndex": 14,
+          "endIndex": 14
+        },
+        {
+          "entity": "devops",
+          "type": "Department",
+          "startIndex": 19,
+          "endIndex": 24,
           "resolution": {
             "values": [
-              "Employee-45612"
+              "Development Operations"
             ]
           }
         },
         {
-          "entity": "z - 2345",
-          "type": "Locations::Destination",
-          "startIndex": 31,
-          "endIndex": 36,
-          "score": 0.9690751
-        },
-        {
-          "entity": "a - 1234",
-          "type": "Locations::Origin",
-          "startIndex": 21,
-          "endIndex": 26,
-          "score": 0.9713137
-        },
-        {
-          "entity": "-1234",
-          "type": "builtin.number",
-          "startIndex": 22,
-          "endIndex": 26,
-          "resolution": {
-            "value": "-1234"
-          }
-        },
-        {
-          "entity": "-2345",
-          "type": "builtin.number",
-          "startIndex": 32,
-          "endIndex": 36,
-          "resolution": {
-            "value": "-2345"
-          }
-        },
-        {
-          "entity": "3",
-          "type": "builtin.number",
-          "startIndex": 47,
-          "endIndex": 47,
-          "resolution": {
-            "value": "3"
-          }
-        },
-        {
-          "entity": "2",
-          "type": "builtin.number",
-          "startIndex": 50,
-          "endIndex": 50,
-          "resolution": {
-            "value": "2"
-          }
-        },
-        {
-          "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-          "type": "RequestEmployeeMove",
+          "entity": "jill jones to devops",
+          "type": "TransferEmployeeInfo",
           "startIndex": 5,
-          "endIndex": 54,
-          "score": 0.4027723
+          "endIndex": 24,
+          "score": 0.9607566
         }
       ],
       "compositeEntities": [
         {
-          "parentType": "RequestEmployeeMove",
-          "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+          "parentType": "TransferEmployeeInfo",
+          "value": "jill jones to devops",
           "children": [
             {
-              "type": "builtin.datetimeV2.datetime",
-              "value": "march 3 2 p.m"
-            },
-            {
-              "type": "Locations::Destination",
-              "value": "z - 2345"
-            },
-            {
-              "type": "Employee",
+              "type": "builtin.personName",
               "value": "jill jones"
             },
             {
-              "type": "Locations::Origin",
-              "value": "a - 1234"
+              "type": "Department",
+              "value": "devops"
             }
           ]
         }
@@ -334,9 +188,18 @@ Die aus dem Endpunkt extrahierten Daten sollten diese Informationen enthalten un
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Verwandte Informationen
+
+* [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intents-only.md)
+* [Informationen zum Konzept der zusammengesetzten Entität](luis-concept-entity-types.md)
+* [Informationen zum Trainieren](luis-how-to-train.md)
+* [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
+* [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde eine zusammengesetzte Entität zur Verkapselung vorhandener Entitäten verwendet. Dadurch kann die Clientanwendung eine Gruppe auf einander bezogener Daten in verschiedenen Datentypen finden, um die Unterhaltung fortzusetzen. Eine Clientanwendung für diese Personalwesen-App könnte fragen, an welchem Tag und um welche Uhrzeit die Verlegung beginnen und enden muss. Sie könnte auch nach anderen Logistikdetails der Verlegung fragen, wie etwa einem physischen Telefon. 
+In diesem Tutorial wurde eine zusammengesetzte Entität zur Verkapselung vorhandener Entitäten verwendet. Dadurch kann die Clientanwendung eine Gruppe auf einander bezogener Daten in verschiedenen Datentypen finden, um die Unterhaltung fortzusetzen. Eine Clientanwendung für diese Personalwesen-App könnte fragen, an welchem Tag und um welche Uhrzeit die Verlegung beginnen und enden muss. Sie kann auch nach anderen Logistikdetails fragen (etwa nach einem physischen Telefon). 
 
 > [!div class="nextstepaction"] 
 > [Erfahren Sie, wie eine einfache Entität mit einer Ausdrucksliste hinzugefügt wird.](luis-quickstart-primary-and-secondary-data.md)  

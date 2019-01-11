@@ -10,12 +10,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6f88ff8ecd1aee588cb82c08ae2eda58fe2eb1e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f3d2276c92868bd2f9d98b119bc31aee4db13a81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626937"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717551"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Definition: Custom Translator-Arbeitsbereich
 
@@ -31,7 +31,7 @@ Ein Projekt ist ein Wrapper für Modelle, Dokumente und Tests. Jedes Projekt ent
 
 Die Kategorie bestimmt die Domäne – den zu verwendenden Terminologie- und Stilbereich – Ihres Projekts. Wählen Sie die Kategorie aus, die für Ihre Dokumente am relevantesten ist. In einigen Fällen beeinflusst die Wahl der Kategorie direkt das Verhalten von Custom Translator.
 
-Es gibt noch keine benutzerdefinierten Modelle für Kategorien, mit Ausnahme eines allgemeinen Grundsystems. Dennoch wird Benutzern empfohlen, die für ihre Domäne am besten geeignete Kategorie auszuwählen, damit sie als Bezeichner für CategoryID verwendet werden kann. Wenn Sie für Projekte im Technologiebereich „Technologie“ auswählen, kann Ihr Projekt ein Grundmodell nutzen, sobald es verfügbar ist.
+Es stehen zwei Gruppen von Grundmodellen zur Verfügung: „Allgemein“ und „Technologie“. Wenn Sie die Kategorie **Technologie** auswählen, werden die Grundmodelle vom Typ „Technologie“ verwendet. Bei jeder anderen Kategorieauswahl werden die allgemeinen Grundmodelle verwendet. Das Grundmodell „Technologie“ eignet sich gut für den Technologiebereich, liefert jedoch weniger gute Ergebnisse, wenn die zu übersetzenden Sätze nicht in diesen Bereich fallen. Die Kategorie „Technologie“ sollte daher nur gewählt werden, wenn die Sätze eindeutig in den Technologiebereich fallen.
 
 Sie können in einem Arbeitsbereich Projekte für das gleiche Sprachenpaar in verschiedenen Kategorien erstellen. Custom Translator verhindert die Erstellung von Projektduplikaten mit demselben Sprachenpaar und derselben Kategorie. Diese Einschränkung lässt sich vermeiden, indem Sie Ihrem Projekt eine Bezeichnung zuweisen. Verwenden Sie Bezeichnungen nur, wenn Sie Übersetzungssysteme für mehrere Kunden erstellen, da das Hinzufügen einer eindeutigen Bezeichnung zu Ihrem Projekt in CategoryID Ihres Projekt angezeigt wird.
 

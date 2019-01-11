@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342652"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584444"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Tutorial: Erstellen einer Bildverarbeitungs-App – C&#35;
 
@@ -101,7 +102,7 @@ Sie können die Beispiel-App ausführen, um ihre Interaktion mit Ihnen und der C
    > Microsoft empfängt die Bilder, die Sie hochladen, und nutzt sie ggf. zur Verbesserung der Maschinelles Sehen-API und der dazugehörigen Dienste. Wenn Sie ein Bild übermitteln, bestätigen Sie dadurch, dass Sie sich an unsere [Verhaltensregeln für Entwickler](https://azure.microsoft.com/support/legal/developer-code-of-conduct/) gehalten haben.
 
    Der folgende Screenshot zeigt die Seite für das Szenario „Bild analysieren“ nach dem Analysieren eines Beispielbilds.
-   ![Seite für das Szenario „Bild analysieren“](../Images/Analyze_Image_Example.PNG)
+   ![Screenshot der Seite für die Bildanalyse](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>Untersuchen der Beispiel-App
 
