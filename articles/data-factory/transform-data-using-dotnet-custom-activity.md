@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 424de36dbbd3b09e635679900110148b9edd0242
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: bfacad5064862f8ff20fc33b2b242c00ec416661
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422881"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000355"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -104,10 +104,12 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 | type                  | Für die benutzerdefinierte Aktivität ist der Aktivitätstyp **Custom**. | JA      |
 | linkedServiceName     | Mit Azure Batch verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  | JA      |
 | command               | Befehl der benutzerdefinierten Anwendung, der ausgeführt werden soll. Wenn die Anwendung bereits auf dem Knoten des Azure Batch-Pools verfügbar ist, können „resourceLinkedService“ und „folderPath“ übersprungen werden. Sie können beispielsweise den Befehl `cmd /c dir` angeben, was vom Knoten des Azure Batch-Pools nativ unterstützt wird. | JA      |
-| resourceLinkedService | Mit dem Speicherkonto verknüpfter Azure Storage-Dienst, in dem die benutzerdefinierte Anwendung gespeichert wird. | Nein        |
-| folderPath            | Pfad zum Ordner der benutzerdefinierten Anwendung und allen ihren abhängigen Elementen<br/><br/>Wenn Sie Abhängigkeiten in Unterordnern gespeichert haben (also in einer hierarchischen Ordnerstruktur unter *folderPath*), wird die Ordnerstruktur zurzeit abgeflacht, wenn die Dateien nach Azure Batch kopiert werden. Das heißt, alle Dateien werden in einen einzigen Ordner ohne Unterordner kopiert. Um dieses Verhalten zu umgehen, sollten Sie die Dateien komprimieren, die komprimierte Datei kopieren und dann mit benutzerdefiniertem Code am gewünschten Speicherort entpacken. | Nein        |
+| resourceLinkedService | Mit dem Speicherkonto verknüpfter Azure Storage-Dienst, in dem die benutzerdefinierte Anwendung gespeichert wird. | Nein&#42;       |
+| folderPath            | Pfad zum Ordner der benutzerdefinierten Anwendung und allen ihren abhängigen Elementen<br/><br/>Wenn Sie Abhängigkeiten in Unterordnern gespeichert haben (also in einer hierarchischen Ordnerstruktur unter *folderPath*), wird die Ordnerstruktur zurzeit abgeflacht, wenn die Dateien nach Azure Batch kopiert werden. Das heißt, alle Dateien werden in einen einzigen Ordner ohne Unterordner kopiert. Um dieses Verhalten zu umgehen, sollten Sie die Dateien komprimieren, die komprimierte Datei kopieren und dann mit benutzerdefiniertem Code am gewünschten Speicherort entpacken. | Nein&#42;       |
 | referenceObjects      | Array vorhandener verknüpfter Dienste und Datasets. Die referenzierten verknüpften Dienste und Datasets werden im JSON-Format an die benutzerdefinierte Anwendung übergeben, sodass Ihr benutzerdefinierter Code auf Data Factory-Ressourcen verweisen kann. | Nein        |
 | extendedProperties    | Benutzerdefinierte Eigenschaften, die im JSON-Format an die benutzerdefinierte Anwendung übergeben werden können, sodass Ihr benutzerdefinierter Code auf zusätzliche Eigenschaften verweisen kann. | Nein        |
+
+&#42; Die Eigenschaften `resourceLinkedService` und `folderPath` sollte entweder beide angegeben oder beide ausgelassen werden.
 
 ## <a name="custom-activity-permissions"></a>Berechtigungen für benutzerdefinierte Aktivitäten
 
@@ -353,7 +355,7 @@ Ein vollständiges Beispiel dafür, wie das Beispiel mit der End-to-End-DLL und 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatische Skalierung von Azure Batch
 Sie können einen Azure Batch-Pool auch mit dem Feature **Automatisch skalieren** erstellen. Sie können z.B. einen Azure Batch-Pool ohne dedizierte VM erstellen und dabei eine Formel für die automatische Skalierung angeben, die von der Anzahl der ausstehenden Aufgaben abhängig ist. 
 
-Mit der hier angeführten Beispielformel wird folgendes Verhalten erzielt: Anfänglich umfasst der Pool nach seiner Erstellung einen virtuellen Computer. Die Metrik „$PendingTasks“ legt die Anzahl der Aufgaben im ausgeführten und im aktiven (in der Warteschlange) Zustand fest.  Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt TargetDedicated auf den entsprechenden Wert fest. Dadurch wird sichergestellt, dass TargetDedicated nie die Anzahl von 25 virtuellen Computern überschreitet. Wenn also neue Aufgaben gesendet werden, wächst der Pool automatisch an. Beim Abschluss von Aufgaben werden virtuelle Computer nacheinander frei, und durch die automatische Skalierung werden diese virtuellen Computer reduziert. startingNumberOfVMs und maxNumberofVMs können entsprechend den jeweiligen Anforderungen angepasst werden.
+Mit dieser Beispielformel wird folgendes Verhalten erreicht: Nachdem der Pool erstellt wurde, wird er mit einer VM gestartet. Die Metrik „$PendingTasks“ legt die Anzahl der Aufgaben im ausgeführten und im aktiven (in der Warteschlange) Zustand fest.  Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt TargetDedicated auf den entsprechenden Wert fest. Dadurch wird sichergestellt, dass TargetDedicated nie die Anzahl von 25 virtuellen Computern überschreitet. Wenn also neue Aufgaben gesendet werden, wächst der Pool automatisch an. Beim Abschluss von Aufgaben werden virtuelle Computer nacheinander frei, und durch die automatische Skalierung werden diese virtuellen Computer reduziert. startingNumberOfVMs und maxNumberofVMs können entsprechend den jeweiligen Anforderungen angepasst werden.
 
 Formel für die automatische Skalierung:
 

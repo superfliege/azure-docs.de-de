@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 2542364db3a895c060c752beeb0cfabf75834f7d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970270"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055046"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -66,7 +66,7 @@ Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/referenc
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
-Eine vollständige Beschreibung der verfügbaren Tags, wie das im vorherigen Befehl verwendete `latest`, finden Sie unter [LUIS](https://hub.docker.com/r/microsoft/azure-cognitive-services-luis/) im Docker-Hub.
+Eine vollständige Beschreibung der verfügbaren Tags, wie das im vorherigen Befehl verwendete `latest`, finden Sie unter [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) im Docker-Hub.
 
 > [!TIP]
 > Mithilfe des Befehls [docker images](https://docs.docker.com/engine/reference/commandline/images/) können Sie Ihre heruntergeladenen Containerimages auflisten. Mit dem folgenden Befehl werden beispielsweise die ID, das Repository und das Tag jedes heruntergeladenen Containerimages in Form einer Tabelle aufgelistet:

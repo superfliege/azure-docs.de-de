@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: ca64c87a0211ae00218493fe7bfddcbbb81a032a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ac72de799ce7cd00e939e9b67f1ef5574ce3eed3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109438"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972565"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-create-pipelines.md)
 > * [Aktuelle Version](concepts-pipelines-activities.md)
 
@@ -97,7 +97,7 @@ Eine Pipeline wird wie folgt im JSON-Format definiert:
 
 Tag | BESCHREIBUNG | Typ | Erforderlich
 --- | ----------- | ---- | --------
-name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Zeichenfolge | JA
+name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Zeichenfolge | JA
 Beschreibung | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | Zeichenfolge | Nein 
 Aktivitäten | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im Abschnitt [Aktivitäts-JSON](#activity-json). | Array | JA
 Parameter | Im Abschnitt **Parameter** kann mindestens ein Parameter in der Pipeline definiert werden. Dadurch wird die Pipeline flexibel wiederverwendbar. | Auflisten | Nein 
@@ -130,7 +130,7 @@ In der folgenden Tabelle werden Eigenschaften in der JSON-Definition der Aktivit
 
 Tag | BESCHREIBUNG | Erforderlich
 --- | ----------- | ---------
-name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) enden.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | JA</li></ul>
+name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | JA</li></ul>
 Beschreibung | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | JA
 type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | JA
 linkedServiceName | Name des verknüpften Diensts, der von der Aktivität verwendet wird.<br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. | „Ja“ für HDInsight-Aktivität, Azure Machine Learning-Aktivität für die Batchbewertung und Aktivität vom Typ „Gespeicherte Prozedur“. <br/><br/>„Nein“ für alle übrigen
@@ -170,10 +170,10 @@ Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität und bieten Konfi
 ```
 JSON-Name | BESCHREIBUNG | Zulässige Werte | Erforderlich
 --------- | ----------- | -------------- | --------
-timeout | Gibt das Zeitlimit für die Ausführung der Aktivität an. | Timespan | Nein. Das Standard-Zeitlimit beträgt 7 Tage.
-retry | Maximale Anzahl der Wiederholungsversuche. | Ganze Zahl  | Nein. Der Standardwert ist 0.
-retryIntervalInSeconds | Verzögerung zwischen den Wiederholungsversuchen in Sekunden. | Ganze Zahl  | Nein. Der Standardwert ist 20 Sekunden.
-secureOutput | Bei Festlegung auf „true“ wird die Ausgabe der Aktivität als sicher betrachtet und von der Überwachung nicht protokolliert. | Boolescher Wert | Nein. Die Standardeinstellung ist "false".
+timeout | Gibt das Zeitlimit für die Ausführung der Aktivität an. | Timespan |  Nein. Das Standard-Zeitlimit beträgt 7 Tage.
+retry | Maximale Anzahl der Wiederholungsversuche. | Ganze Zahl  |  Nein. Der Standardwert ist 0.
+retryIntervalInSeconds | Verzögerung zwischen den Wiederholungsversuchen in Sekunden. | Ganze Zahl  |  Nein. Der Standardwert ist 20 Sekunden.
+secureOutput | Bei Festlegung auf „true“ wird die Ausgabe der Aktivität als sicher betrachtet und von der Überwachung nicht protokolliert. | Boolescher Wert |  Nein. Die Standardeinstellung ist "false".
 
 ### <a name="control-activity"></a>Steuerungsaktivität
 Steuerungsaktivitäten besitzen auf oberster Ebene die folgende Struktur:
@@ -194,7 +194,7 @@ Steuerungsaktivitäten besitzen auf oberster Ebene die folgende Struktur:
 
 Tag | BESCHREIBUNG | Erforderlich
 --- | ----------- | --------
-name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt.<br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) enden.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | JA</li><ul>
+name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt.<br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | JA</li><ul>
 Beschreibung | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | JA
 type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | JA
 typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom jeweiligen Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein 

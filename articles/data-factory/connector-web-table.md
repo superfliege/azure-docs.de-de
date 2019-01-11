@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 995bf4586b88671c65077d965b0588de8de74e5c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3e62dbc31976187f4bd37a3567169da2ffa0909b
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048933"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807651"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,11 +27,17 @@ ms.locfileid: "37048933"
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Webtabellendatenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
+Die Unterschiede zwischen diesem Webtabellenconnector, dem [REST-Connector](connector-rest.md) und dem [HTTP-Connector](connector-http.md) sind die folgenden:
+
+- **Webtabellenconnector:** Dieser extrahiert Tabelleninhalte aus einer HTML-Webseite.
+- **REST-Connector:** Dieser unterstützt insbesondere das Kopieren von Daten aus RESTful-APIs.
+- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. 
+
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 Sie können Daten aus einer Webtabellendatenbank in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser Webconnector unterstützt insbesondere das **Extrahieren von Tabelleninhalten einer HTML-Seite**. Verwenden Sie zum Abrufen von Daten von einem HTTP(S)-Endpunkt stattdessen den [HTTP-Connector](connector-http.md).
+Dieser Webconnector unterstützt insbesondere das **Extrahieren von Tabelleninhalten einer HTML-Seite**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,10 +55,10 @@ Folgende Eigenschaften werden für den mit einer Webtabelle verknüpften Dienst 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die Typeigenschaft muss auf **Web** |Ja |
-| URL | URL der Webquelle |Ja |
-| authenticationType | Zulässiger Wert: **Anonymous**. |Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Web** |JA |
+| URL | URL der Webquelle |JA |
+| authenticationType | Zulässiger Wert: **Anonymous** |JA |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |JA |
 
 **Beispiel:**
 
@@ -81,9 +87,9 @@ Legen Sie zum Kopieren von Daten aus einer Webtabelle die „type“-Eigenschaft
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft des Datasets muss auf **WebTable** festgelegt werden. | Ja |
-| path |Eine relative URL zu der Ressource, die die Tabelle enthält. |Nein. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. |
-| index |Der Index der Tabelle in der Ressource. Im Abschnitt [Abrufen des Indexes einer Tabelle auf einer HTML-Seite](#get-index-of-a-table-in-an-html-page) werden die Schritte zum Abrufen des Indexes einer Tabelle auf einer HTML-Seite beschrieben. |Ja |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **WebTable** | JA |
+| path |Eine relative URL zu der Ressource, die die Tabelle enthält. | Nein. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. |
+| index |Der Index der Tabelle in der Ressource. Im Abschnitt [Abrufen des Indexes einer Tabelle auf einer HTML-Seite](#get-index-of-a-table-in-an-html-page) werden die Schritte zum Abrufen des Indexes einer Tabelle auf einer HTML-Seite beschrieben. |JA |
 
 **Beispiel:**
 

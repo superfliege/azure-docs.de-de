@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: f15a0670932a9017c079ff0cf1e7cb4ad598a9c4
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 326f0e21582c1aee03c8a44adcd709f3ddf59b0b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004919"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119627"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -53,10 +53,10 @@ Application Insights erleichtert das Verständnis der basierend auf den aktuelle
 
 ![Auswählen von Preisen](./media/pricing/pricing-001.png)
 
-A. Überprüfen Sie Ihr Datenvolumen für den Monat. Dies schließt alle nach einer beliebigen [Stichprobenerstellung](../../application-insights/app-insights-sampling.md) in Ihren Server- und Client-Apps sowie Verfügbarkeitstests empfangenen und beibehaltenen Daten ein.  
+A. Überprüfen Sie Ihr Datenvolumen für den Monat. Dies schließt alle nach einer beliebigen [Stichprobenerstellung](../../azure-monitor/app/sampling.md) in Ihren Server- und Client-Apps sowie Verfügbarkeitstests empfangenen und beibehaltenen Daten ein.  
 B: Für [Webtests mit mehreren Schritten](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)  
 C. Zeigen Sie Trends zum Datenvolumen für den letzten Monat an.  
-D: Aktivieren Sie die Datenerfassungs-[Stichprobenerstellung](../../application-insights/app-insights-sampling.md).   
+D: Aktivieren Sie die Datenerfassungs-[Stichprobenerstellung](../../azure-monitor/app/sampling.md).   
 E. Legen Sie die Obergrenze für das tägliche Datenvolumen fest.  
 
 Um die Nutzung von Application Insights genauer zu untersuchen, öffnen Sie die Seite **Metriken**, fügen Sie die Metrik „Datenpunktvolumen“ hinzu, und wählen Sie dann die Option *Apply splitting* (Aufteilung anwenden) aus, um die Daten nach Telemetrieelementtyp aufzuteilen. 
@@ -68,7 +68,7 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 ## <a name="data-rate"></a>Datenrate
 Das Volumen der Daten, die Sie senden, ist auf dreierlei Weise beschränkt:
 
-* **Stichprobenerstellung**: Mit der Stichprobenerstellung kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringert werden. Die Stichprobenerstellung ist Ihr wichtigstes Tool, um die Menge der von Ihnen gesendeten Daten zu optimieren. Erfahren Sie mehr über die [Merkmale von Stichproben](../../application-insights/app-insights-sampling.md). 
+* **Stichprobenerstellung**: Mit der Stichprobenerstellung kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringert werden. Die Stichprobenerstellung ist Ihr wichtigstes Tool, um die Menge der von Ihnen gesendeten Daten zu optimieren. Erfahren Sie mehr über die [Merkmale von Stichproben](../../azure-monitor/app/sampling.md). 
 * **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource im Azure-Portal ist die tägliche Obergrenze auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Zur Vereinfachung von Tests ist der Standardwert für die tägliche Obergrenze festgelegt. Es ist vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. 
 
     Die Obergrenze liegt bei 1.000 GB pro Tag, es sei denn, Sie fordern einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr an. 
@@ -91,7 +91,7 @@ Sie können eine der folgenden Optionen verwenden, um festzustellen, wie viele D
 ## <a name="reduce-your-data-rate"></a>Verringern der Datenrate
 Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu reduzieren:
 
-* Verwenden Sie [Stichproben](../../application-insights/app-insights-sampling.md). Durch diese Technologie wird Ihre Datenrate ohne Datenschiefe bei Ihren Metriken reduziert. Sie können weiterhin zwischen verwandten Elementen in der Search navigieren. Bei Server-Apps erfolgt die Stichprobenerstellung automatisch.
+* Verwenden Sie [Stichproben](../../azure-monitor/app/sampling.md). Durch diese Technologie wird Ihre Datenrate ohne Datenschiefe bei Ihren Metriken reduziert. Sie können weiterhin zwischen verwandten Elementen in der Search navigieren. Bei Server-Apps erfolgt die Stichprobenerstellung automatisch.
 * [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](../../azure-monitor/app/javascript.md#detailed-configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
 * [Bearbeiten Sie „ApplicationInsights.config“](../../azure-monitor/app/configuration-with-applicationinsights-config.md), um nicht benötigte Sammlungsmodule zu deaktivieren. Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
 * Teilen Sie Ihre Telemetrie auf getrennte Instrumentierungsschlüssel auf. 
@@ -101,20 +101,20 @@ Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu re
 
 Zur Beschränkung der gesammelten Daten können Sie die Obergrenze für das tägliche Volumen verwenden. Wenn die Obergrenze erreicht ist, gehen sämtliche Telemetriedaten, die von Ihrer Anwendung gesendet wurden, für den restlichen Tag verloren. Von einer Erreichung der täglichen Obergrenze durch Ihre Anwendung wird *abgeraten*. Die Integrität und Leistung Ihrer Anwendung kann nicht nachverfolgt werden, nachdem sie die tägliche Obergrenze erreicht haben.
 
-Verwenden Sie anstelle der Obergrenze für das tägliche Volumen die [Stichprobenerstellung](../../application-insights/app-insights-sampling.md), um das Datenvolumen auf das gewünschte Niveau festzulegen. Verwenden Sie dann als letztes Mittel die tägliche Obergrenze für den Fall, dass Ihre Anwendung unerwartet beginnt, weitaus größere Mengen an Telemetriedaten zu senden.
+Verwenden Sie anstelle der Obergrenze für das tägliche Volumen die [Stichprobenerstellung](../../azure-monitor/app/sampling.md), um das Datenvolumen auf das gewünschte Niveau festzulegen. Verwenden Sie dann als letztes Mittel die tägliche Obergrenze für den Fall, dass Ihre Anwendung unerwartet beginnt, weitaus größere Mengen an Telemetriedaten zu senden.
 
 Um die tägliche Obergrenze zu ändern, klicken Sie im Abschnitt **Konfigurieren** Ihrer Application Insights-Ressource auf der Seite **Nutzung und geschätzte Kosten** auf **Tägliche Obergrenze**.
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-003.png)
 
 ## <a name="sampling"></a>Stichproben
-Die [Stichprobenerstellung](../../application-insights/app-insights-sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln. So erhalten Sie auch korrekte Ereigniszahlen.
+Die [Stichprobenerstellung](../../azure-monitor/app/sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln. So erhalten Sie auch korrekte Ereigniszahlen.
 
 Die Stichprobenerstellung ist eine effektive Möglichkeit, die Gebühren zu senken und innerhalb Ihres monatlichen Kontingents zu bleiben. Der Algorithmus für die Stichprobenerstellung behält Elemente in Bezug auf die Telemetrie bei, sodass Sie beispielsweise in Search die Anforderung ermitteln können, die in Beziehung zu einer bestimmten Ausnahme steht. Der Algorithmus behält außerdem korrekte Zahlenwerte bei, sodass Sie im Metrik-Explorer die richtigen Werte für Anforderungsraten, Ausnahmeraten und weitere Messwerte sehen.
 
 Es gibt verschiedene Formen der Stichprobenerstellung.
 
-* Die [adaptive Stichprobenerstellung](../../application-insights/app-insights-sampling.md) ist die Standardeinstellung für das ASP.NET-SDK. Die adaptive Stichprobenerstellung wird automatisch an die Menge der an Ihre App gesendeten Telemetriedaten angepasst. Sie erfolgt im SDK Ihrer Web-App automatisch, sodass der Telemetriedatenverkehr im Netzwerk verringert wird. 
+* Die [adaptive Stichprobenerstellung](../../azure-monitor/app/sampling.md) ist die Standardeinstellung für das ASP.NET-SDK. Die adaptive Stichprobenerstellung wird automatisch an die Menge der an Ihre App gesendeten Telemetriedaten angepasst. Sie erfolgt im SDK Ihrer Web-App automatisch, sodass der Telemetriedatenverkehr im Netzwerk verringert wird. 
 * *Erfassungs-Stichprobenerstellung* stellt eine Alternative dar, die an dem Punkt arbeitet, an dem Telemetriedaten von Ihrer App den Application Insights-Dienst erreichen. Die Erfassungs-Stichprobenerstellung wirkt sich nicht auf die Menge der Telemetriedaten aus, die von Ihrer App gesendet werden, verringert jedoch die Menge der Daten, die vom Dienst beibehalten werden. Mit der Erfassungs-Stichprobenerstellung können Sie das Kontingent verringern, das von Telemetriedaten von Browsern und anderen SDKs beansprucht wird.
 
 Um die Erfassungs-Stichprobenerstellung festzulegen, navigieren Sie zum Bereich **Preise**:
@@ -196,9 +196,9 @@ Da dieser Tarif nur für Kunden mit einem Operations Management Suite-Abonnement
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Stichproben](../../application-insights/app-insights-sampling.md)
+* [Stichproben](../../azure-monitor/app/sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[start]: ../../application-insights/app-insights-overview.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[start]: ../../azure-monitor/app/app-insights-overview.md
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/

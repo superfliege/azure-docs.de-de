@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3498deb85b84c9c47544be1d8c3709c9fc78ae1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100246"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974359"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -24,9 +24,9 @@ Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** mö
 
 * [Textformat](#text-format)
 * [JSON-Format](#json-format)
-* [Avro-Format](#avro-format)
-* [ORC-Format](#orc-format)
 * [Parquet-Format](#parquet-format)
+* [ORC-Format](#orc-format)
+* [Avro-Format](#avro-format)
 
 > [!TIP]
 > Informationen dazu, wie die Kopieraktivität die Quelldaten der Senke zuordnet, finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). Darin enthalten ist auch das Bestimmen der Metadaten basierend auf Ihren Dateiformateinstellungen sowie Tipps, wann der Abschnitt [Dataset`structure`](concepts-datasets-linked-services.md#dataset-structure) anzugeben ist.
@@ -91,8 +91,8 @@ Wenn Sie JSON-Dateien analysieren oder die Daten im JSON-Format schreiben möcht
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | filePattern |Geben Sie das Muster der in jeder JSON-Datei gespeicherten Daten an. Zulässige Werte sind **setOfObjects** und **arrayOfObjects**. Der **Standardwert** ist **setOfObjects**. Weitere Informationen zu diesen Mustern finden Sie im Abschnitt [JSON-Dateimuster](#json-file-patterns). |Nein  |
-| jsonNodeReference | Falls Sie Daten durchlaufen und aus den Objekten in einem Arrayfeld mit demselben Muster extrahieren möchten, legen Sie den JSON-Pfad dieses Arrays fest. Diese Eigenschaft wird nur beim Kopieren von Daten aus JSON-Dateien unterstützt. | Nein  |
-| jsonPathDefinition | Geben Sie den JSON-Pfadausdruck für jede Spaltenzuordnung mit einem benutzerdefinierten Spaltennamen (beginnend mit einem Kleinbuchstaben) an. Diese Eigenschaft wird nur beim Kopieren von Daten aus JSON-Dateien unterstützt. Sie können zudem Daten aus dem Objekt oder Array extrahieren. <br/><br/> Bei Feldern unter dem Stammobjekt beginnen Sie mit Stamm „$“. Bei Feldern innerhalb des Arrays, die anhand der `jsonNodeReference`-Eigenschaft ausgewählt werden, beginnen Sie mit dem Arrayelement. Informationen zum Konfigurieren finden Sie im Abschnitt [JsonFormat-Beispiel](#jsonformat-example). | Nein  |
+| jsonNodeReference | Falls Sie Daten durchlaufen und aus den Objekten in einem Arrayfeld mit demselben Muster extrahieren möchten, legen Sie den JSON-Pfad dieses Arrays fest. Diese Eigenschaft wird nur beim Kopieren von Daten **aus** JSON-Dateien unterstützt. | Nein  |
+| jsonPathDefinition | Geben Sie den JSON-Pfadausdruck für jede Spaltenzuordnung mit einem benutzerdefinierten Spaltennamen (beginnend mit einem Kleinbuchstaben) an. Diese Eigenschaft wird nur beim Kopieren von Daten **aus** JSON-Dateien unterstützt. Sie können zudem Daten aus dem Objekt oder Array extrahieren. <br/><br/> Bei Feldern unter dem Stammobjekt beginnen Sie mit Stamm „$“. Bei Feldern innerhalb des Arrays, die anhand der `jsonNodeReference`-Eigenschaft ausgewählt werden, beginnen Sie mit dem Arrayelement. Informationen zum Konfigurieren finden Sie im Abschnitt [JsonFormat-Beispiel](#jsonformat-example). | Nein  |
 | encodingName |Geben Sie den Codierungsnamen an. Die Liste mit den gültigen Codierungsnamen finden Sie unter: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx)-Eigenschaft. Beispiel: Windows-1250 oder Shift-JIS. Der **Standardwert** lautet: **UTF-8**. |Nein  |
 | nestingSeparator |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. Der Standardwert ist „.“ (Punkt). |Nein  |
 
@@ -190,8 +190,6 @@ Die Kopieraktivität kann die Muster der folgenden JSON-Dateien analysieren:
 ### <a name="jsonformat-example"></a>JsonFormat-Beispiel
 
 **Fall 1: Kopieren von Daten aus JSON-Dateien**
-
-Betrachten Sie dazu die zwei folgenden Beispiele beim Kopieren von Daten aus JSON-Dateien. Die zu beachtenden allgemeinen Punkte:
 
 **Beispiel 1: Extrahieren von Daten aus Objekt und Array**
 
@@ -405,22 +403,51 @@ Das Ausgabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefiniti
 }
 ```
 
-## <a name="avro-format"></a>AVRO-Format
+## <a name="parquet-format"></a>Parquet-Format
 
-Wenn Sie Avro-Dateien analysieren oder die Daten im Avro-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **AvroFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
+Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **OrcFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
 
 ```json
 "format":
 {
-    "type": "AvroFormat",
+    "type": "ParquetFormat"
 }
 ```
 
-Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das [Apache Hive-Tutorial](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)an.
+> [!IMPORTANT]
+> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](https://go.microsoft.com/fwlink/?LinkId=808605).
+>
 
 Beachten Sie folgende Punkte:
 
-* [Komplexe Datentypen](http://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
+* Komplexe Datentypen werden nicht unterstützt (MAP, LIST).
+* Ein Leerzeichen im Spaltennamen wird nicht unterstützt.
+* Für die Parquet-Datei stehen die folgenden komprimierungsbezogenen Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus Parquet-Dateien in jedem der oben genannten komprimierten Formate mit Ausnahme von LZO. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+
+### <a name="data-type-mapping-for-parquet-files"></a>Datentypzuordnung für Parquet-Dateien
+
+| Data Factory-Zwischendatentyp | Primitiver Parquet-Typ | Ursprünglicher Parquet-Typ (Deserialisieren) | Ursprünglicher Parquet-Typ (Serialisieren) |
+|:--- |:--- |:--- |:--- |
+| Boolescher Wert | Boolescher Wert | N/V | N/V |
+| SByte | Int32 | Int8 | Int8 |
+| Byte | Int32 | UInt8 | Int16 |
+| Int16 | Int32 | Int16 | Int16 |
+| UInt16 | Int32 | UInt16 | Int32 |
+| Int32 | Int32 | Int32 | Int32 |
+| UInt32 | Int64 | UInt32 | Int64 |
+| Int64 | Int64 | Int64 | Int64 |
+| UInt64 | Int64/binär | UInt64 | DECIMAL |
+| Single | Float | N/V | N/V |
+| Double | Double | N/V | N/V |
+| DECIMAL | Binär | DECIMAL | DECIMAL |
+| Zeichenfolge | Binär | Utf8 | Utf8 |
+| Datetime | Int96 | N/V | N/V |
+| Zeitraum | Int96 | N/V | N/V |
+| DateTimeOffset | Int96 | N/V | N/V |
+| ByteArray | Binär | N/V | N/V |
+| Guid | Binär | Utf8 | Utf8 |
+| Char | Binär | Utf8 | Utf8 |
+| CharArray | Nicht unterstützt | N/V | N/V |
 
 ## <a name="orc-format"></a>ORC-Format
 
@@ -440,6 +467,7 @@ Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten
 Beachten Sie folgende Punkte:
 
 * Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
+* Ein Leerzeichen im Spaltennamen wird nicht unterstützt.
 * Für die ORC-Datei stehen drei [komprimierungsbezogene Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB und SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Datentypzuordnung für ORC-Dateien
@@ -466,50 +494,22 @@ Beachten Sie folgende Punkte:
 | Guid | Zeichenfolge |
 | Char | Char(1) |
 
-## <a name="parquet-format"></a>Parquet-Format
+## <a name="avro-format"></a>AVRO-Format
 
-Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **OrcFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
+Wenn Sie Avro-Dateien analysieren oder die Daten im Avro-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **AvroFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
 
 ```json
 "format":
 {
-    "type": "ParquetFormat"
+    "type": "AvroFormat",
 }
 ```
 
-> [!IMPORTANT]
-> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](https://go.microsoft.com/fwlink/?LinkId=808605).
->
+Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das [Apache Hive-Tutorial](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)an.
 
 Beachten Sie folgende Punkte:
 
-* Komplexe Datentypen werden nicht unterstützt (MAP, LIST).
-* Für die Parquet-Datei stehen die folgenden komprimierungsbezogenen Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus Parquet-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
-
-### <a name="data-type-mapping-for-parquet-files"></a>Datentypzuordnung für Parquet-Dateien
-
-| Data Factory-Zwischendatentyp | Primitiver Parquet-Typ | Ursprünglicher Parquet-Typ (Deserialisieren) | Ursprünglicher Parquet-Typ (Serialisieren) |
-|:--- |:--- |:--- |:--- |
-| Boolescher Wert | Boolescher Wert | N/V | N/V |
-| SByte | Int32 | Int8 | Int8 |
-| Byte | Int32 | UInt8 | Int16 |
-| Int16 | Int32 | Int16 | Int16 |
-| UInt16 | Int32 | UInt16 | Int32 |
-| Int32 | Int32 | Int32 | Int32 |
-| UInt32 | Int64 | UInt32 | Int64 |
-| Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/binär | UInt64 | DECIMAL |
-| Single | Float | N/V | N/V |
-| Double | Double | N/V | N/V |
-| DECIMAL | Binär | DECIMAL | DECIMAL |
-| Zeichenfolge | Binär | Utf8 | Utf8 |
-| Datetime | Int96 | N/V | N/V |
-| Zeitraum | Int96 | N/V | N/V |
-| DateTimeOffset | Int96 | N/V | N/V |
-| ByteArray | Binär | N/V | N/V |
-| Guid | Binär | Utf8 | Utf8 |
-| Char | Binär | Utf8 | Utf8 |
-| CharArray | Nicht unterstützt | N/V | N/V |
+* [Komplexe Datentypen](http://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
 
 ## <a name="compression-support"></a>Unterstützung für die Komprimierung
 
@@ -554,7 +554,7 @@ Der Abschnitt für die **Komprimierung** enthält zwei Eigenschaften:
   * **Schnellstes:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist.
   * **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt.
 
-    Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx).
+    Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) .
 
 > [!NOTE]
 > Für Daten im **AvroFormat**, **OrcFormat** oder **ParquetFormat** werden keine Komprimierungseinstellungen unterstützt. Beim Lesen der Daten in diesen Formaten erkennt und verwendet Data Factory den Komprimierungscodec in den Metadaten. Für das Schreiben in eine Datei in diesen Formaten wählt Data Factory den Standardkomprimierungscodec für das jeweilige Format. Beispiel: ZLIB für OrcFormat und SNAPPY für ParquetFormat.

@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 9098e8e6af76ed14ad42d5fe5917fcd36097c222
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7373cc23654e2168963a364e4b4069331bf196c5
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103284"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969929"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,6 +29,9 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 Sie können Daten von Amazon S3 in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Der Amazon S3-Connector unterstützt insbesondere das Kopieren von Dateien im jeweiligen Zustand oder Analysieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
+
+>[!TIP]
+>Mit diesem Amazon S3-Connector können Sie Daten von **allen S3-kompatiblen Speicheranbietern** kopieren, z.B. aus [Google Cloud Storage](#copy-from-google-cloud-storage). Geben Sie die entsprechende Dienst-URL in der Konfiguration des verknüpften Diensts an.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -54,7 +57,11 @@ Folgende Eigenschaften werden für den mit Amazon S3 verknüpften Dienst unterst
 | type | Die type-Eigenschaft muss auf **AmazonS3** festgelegt werden. | JA |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. |JA |
 | secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |JA |
+| serviceUrl | Geben Sie den benutzerdefinierten S3-Endpunkt an, wenn Sie Daten von einem anderen S3-kompatiblen Speicheranbieter als dem offiziellen Amazon S3-Dienst kopieren. Um beispielsweise [Daten aus Google Cloud Storage zu kopieren](#copy-from-google-cloud-storage), geben Sie `https://storage.googleapis.com` an. | Nein  |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+
+>[!TIP]
+>Geben Sie die URL des benutzerdefinierten S3-Diensts an, wenn Sie Daten aus einem anderen S3-kompatiblen Speicher als dem offiziellen Amazon S3-Dienst kopieren.
 
 >[!NOTE]
 >Dieser Connector erfordert Zugriffsschlüssel für ein IAM-Konto zum Kopieren von Daten aus Amazon S3. [Temporäre Sicherheitsanmeldeinformationen](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) werden nicht unterstützt.
@@ -70,8 +77,8 @@ Beispiel:
         "typeProperties": {
             "accessKeyId": "<access key id>",
             "secretAccessKey": {
-                    "type": "SecureString",
-                    "value": "<secret access key>"
+                "type": "SecureString",
+                "value": "<secret access key>"
             }
         },
         "connectVia": {
@@ -206,5 +213,35 @@ Legen Sie zum Kopieren von Daten aus Amazon S3 den Quelltyp in der Kopieraktivit
     }
 ]
 ```
+
+## <a name="copy-from-google-cloud-storage"></a>Kopieren aus Google Cloud Storage
+
+Da Google Cloud Storage S3-kompatible Interoperabilität bietet, können Sie den Amazon S3-Connector verwenden, um Daten aus Google Cloud Storage in beliebige [unterstützte Senkendatenspeicher](copy-activity-overview.md#supported-data-stores-and-formats) zu kopieren. 
+
+Sie finden den jeweiligen Google Cloud Storage-Eintrag im Connector-Katalog auf der ADF-Erstellungsbenutzeroberfläche. Dieser wird automatisch in die Dienst-URL als `https://storage.googleapis.com` eingefügt. Den Zugriffsschlüssel und den geheimen Schlüssel finden Sie unter **Google Cloud Storage** > **Einstellungen** > **Interoperabilität**. Lesen Sie diesen Artikel von Anfang an, um eine detaillierte Übersicht über die Verwendung des S3-Connectors zum Kopieren von Daten zu erhalten.
+
+**Beispiel für einen verknüpften Dienst:**
+
+```json
+{
+    "name": "GoogleCloudStorageLinkedService",
+    "properties": {
+        "type": "AmazonS3",
+        "typeProperties": {
+            "accessKeyId": "<access key id>",
+            "secretAccessKey": {
+                "type": "SecureString",
+                "value": "<secret access key>"
+            },
+            "serviceUrl": "https://storage.googleapis.com"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).

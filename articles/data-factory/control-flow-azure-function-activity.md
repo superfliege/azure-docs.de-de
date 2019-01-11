@@ -11,20 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 12/20/2018
 ms.author: douglasl
-ms.openlocfilehash: ef93c62a2e2084a43eeda578c889a568d04db4f1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4b185236e5925152acb5f8a733e117186a2318cf
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52854387"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53740891"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivität „Azure Function“ in Azure Data Factory
 
 Mit der Aktivität „Azure Function“ können Sie [Azure-Funktionen](../azure-functions/functions-overview.md) in einer Data Factory-Pipeline ausführen. Um eine Azure-Funktion auszuführen, müssen Sie einen verknüpften Dienst erstellen sowie eine Aktivität, die die auszuführende Azure-Funktion angibt.
 
 ## <a name="azure-function-linked-service"></a>Verknüpfter Dienst der Azure-Funktion
+
+Der Rückgabetyp der Azure-Funktion muss ein gültiges JObject sein. Jeder andere Typ schlägt fehl und löst den generischen Benutzerfehler *Fehler beim Aufrufen des Endpunkts* aus.
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
 | --- | --- | --- |
@@ -43,10 +45,16 @@ Mit der Aktivität „Azure Function“ können Sie [Azure-Funktionen](../azure-
 | Funktionsname  | Name der Funktion in der Azure-Funktions-App, die diese Aktivität aufruft. | Zeichenfolge | Ja |
 | method  | REST-API-Methode für den Funktionsaufruf | Unterstützte Zeichenfolgentypen: „GET“, „POST“, „PUT“   | Ja |
 | Header  | Header, die in der Anforderung gesendet werden. So legen Sie beispielsweise die Sprache und den Typ für eine Anforderung fest: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein  |
-| body  | Text, der zusammen mit der Anforderung an die API-Methode der Funktion gesendet wird  | Zeichenfolge (oder Ausdruck mit resultType der Zeichenfolge).   | Erforderlich für PUT/POST-Methoden |
+| body  | Text, der zusammen mit der Anforderung an die API-Methode der Funktion gesendet wird  | Zeichenfolge (oder Ausdruck mit resultType der Zeichenfolge) oder Objekt.   | Erforderlich für PUT/POST-Methoden |
 |   |   |   | |
 
 Weitere Informationen finden Sie in den Details zum Schema der Anforderungsnutzlast im Abschnitt  [Schema der Anforderungsnutzlast](control-flow-web-activity.md#request-payload-schema) .
+
+## <a name="more-info"></a>Weitere Informationen
+
+Die Azure-Funktionsaktivität unterstützt **Routing**. Wenn Ihre App z.B. das Routing `https://functionAPP.azurewebsites.net/api/functionName/{value}?code=<secret>` verwendet, weist `functionName` die Form `functionName/{value}` auf und kann zur Bereitstellung des gewünschten `functionName`-Elements zur Laufzeit parametrisiert werden.
+
+Die Azure-Funktionsaktivität unterstützt auch **Abfragen**. Eine Abfrage muss Teil von `functionName` sein, z.B. `HttpTriggerCSharp2?name=hello`, wobei `HttpTriggerCSharp2` für `function name` steht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
