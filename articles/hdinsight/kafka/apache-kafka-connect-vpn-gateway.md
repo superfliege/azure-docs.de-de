@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a37e67f299262a7e0b353564c24c789859dcec7c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307473"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605006"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
@@ -49,7 +49,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
 
     Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung mit Apache Kafka über einen VPN-Client](#vpnclient).
 
-    > [!WARNING]
+    > [!WARNING]  
     > Diese Konfiguration wird aufgrund der folgenden Einschränkungen nur für Entwicklungszwecke empfohlen:
     >
     > * Jeder Client muss eine Verbindung mithilfe eines VPN-Software-Clients herstellen.
@@ -61,7 +61,7 @@ Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk 
 
 Um ein Kafka-Cluster zu erstellen, das mit Ihrem lokalen Netzwerk kommuniziert, führen Sie die Schritte im Dokument [Connect HDInsight to your on-premises network (Verbinden von HDInsight mit Ihrem lokalen Netzwerk)](./../connect-on-premises-network.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenn Sie das HDInsight-Cluster erstellen, wählen Sie den Clustertyp __Kafka__ aus.
 
 Mit diesen Schritten erstellen Sie die folgende Konfiguration:
@@ -186,7 +186,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration 
         -VpnClientRootCertificates $p2sRootCert
     ```
 
-    > [!WARNING]
+    > [!WARNING]  
     > Dieser Prozess kann mehrere Minuten dauern.
 
 5. Verwenden Sie den folgenden Code, um das Azure-Speicherkonto und Blobcontainer zu erstellen:
@@ -232,7 +232,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration 
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]
+  > [!WARNING]  
   > Für diesen Prozess werden etwa 15 Minuten benötigt.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurieren von Kafka zum Ankündigen der IP-Adresse
@@ -317,7 +317,7 @@ Um die Konnektivität mit Kafka zu überprüfen, führen Sie die folgenden Schri
 
     Speichern Sie die zurückgegebenen Informationen, um sie in den nächsten Schritten zu verwenden.
 
-2. Verwenden Sie Folgendes zum Installieren des [kafka-python](http://kafka-python.readthedocs.io/)-Clients:
+2. Verwenden Sie Folgendes zum Installieren des [kafka-python](https://kafka-python.readthedocs.io/)-Clients:
 
         pip install kafka-python
 

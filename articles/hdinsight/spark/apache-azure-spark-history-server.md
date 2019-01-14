@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497267"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792780"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
@@ -26,7 +26,7 @@ Der Apache Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlosse
 
 ### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Öffnen der Webbenutzeroberfläche des Apache Spark-Verlaufsservers über das Azure-Portal
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Spark-Cluster. Weitere Informationen finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Spark-Cluster. Weitere Informationen finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Klicken Sie unter **Quicklinks** auf **Clusterdashboard** und dann auf **Spark-Verlaufsserver**. Geben Sie bei Aufforderung die Anmeldeinformationen für den Spark-Cluster ein. 
 
     ![Spark-Verlaufsserver](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-Verlaufsserver")
@@ -107,10 +107,10 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
 + Geben Sie den Auftrag wieder, indem Sie auf die Schaltfläche **Wiedergabe** klicken. Sie können die Wiedergabe jederzeit beenden, indem Sie auf die Schaltfläche „Beenden“ klicken. Die Aufgaben werden in Farbe angezeigt, um verschiedene Status bei der Wiedergabe darzustellen:
 
     + Grün für Erfolg: Der Auftrag wurde erfolgreich abgeschlossen.
-    + Orange für Wiederholung: Instanzen von Aufgaben mit Fehlern, die aber keine Auswirkungen auf das endgültige Ergebnis des Auftrags haben. Für diese Aufgaben gibt es doppelte oder Wiederholungsinstanzen, die später möglicherweise erfolgreich sind.
+    + Orange für Wiederholung: Instanzen fehlgeschlagene Aufgaben, die aber keine Auswirkungen auf das endgültige Ergebnis des Auftrags haben. Für diese Aufgaben gibt es doppelte oder Wiederholungsinstanzen, die später möglicherweise erfolgreich sind.
     + Blau für Ausführung: Die Aufgabe wird ausgeführt.
     + Weiß für wartende oder übersprungene Aufgaben: Die Aufgabe wartet auf die Ausführung, oder die Phase wurde übersprungen.
-    + Rot für Fehler: Aufgaben mit Fehlern.
+    + Rot für Fehler: Die Aufgabe ist fehlgeschlagen.
 
     ![Diagrammfarbbeispiel: Ausführung](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -119,7 +119,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
 
     ![Diagrammfarbbeispiel: Fehler](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
-    > [!NOTE]
+    > [!NOTE]  
     > Die Wiedergabe ist für jeden Auftrag zulässig. Für einen unvollständigen Auftrag wird die Wiedergabe nicht unterstützt.
 
 
@@ -132,8 +132,8 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
     ![Diagramm-QuickInfo](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Auf der Registerkarte „Auftragsgraph“ wird für die Phasen eine QuickInfo und ein kleines Symbol angezeigt, wenn sie Aufgaben enthalten, die den folgenden Bedingungen entsprechen:
-    + Datenschiefe: Größe der gelesenen Daten > durchschnittliche Größe der gelesenen Daten aller Aufgaben innerhalb dieser Phase * 2 und Größe der gelesenen Daten > 10 MB
-    + Zeitabweichung: Ausführungszeit > durchschnittliche Ausführungszeit aller Aufgaben innerhalb dieser Phase * 2 und Ausführungszeit > 2 Minuten
+    + Datenschiefe: Größe der gelesenen Daten > Durchschnittliche Größe der gelesenen Daten aller Aufgaben innerhalb dieser Phase x 2 und Größe der gelesenen Daten > 10 MB.
+    + Zeitabweichung: Ausführungszeit > durchschnittliche Ausführungszeit aller Aufgaben innerhalb dieser Phase x 2 und Ausführungszeit > 2 Minuten.
 
     ![Diagramm mit Symbol für Zeitabweichung](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
@@ -147,10 +147,10 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
     + Zeilenanzahl: die Summe der Eingabedatensätze, Ausgabedatensätze, Shuffle-Lesedatensätze und Shuffle-Schreibdatensätze
     + Fortschritt
 
-    > [!NOTE]
+    > [!NOTE]  
     > Standardmäßig zeigt der Diagrammknoten des Auftrags Informationen zum letzten Versuch der einzelnen Phasen an (mit Ausnahme der Zeit für die Phasenausführung), aber während der Wiedergabe zeigt der Diagrammknoten Informationen zu jedem Versuch an.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Für die Datengröße von Lese- und Schreibvorgängen verwenden wir 1 MB = 1000 KB = 1000 * 1000 Bytes.
 
 + Senden Sie Feedback mit Problemen, indem Sie auf **Feedback abgeben** klicken.

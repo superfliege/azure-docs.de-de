@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a00f3d2ea4e191bb7860b88d39ff0ccaa338e0ff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567161"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714235"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -110,7 +110,7 @@ Außerdem hilft das Azure Security Center bei Sicherheitsvorgängen, indem Ihnen
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Anwendungssicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="web-application-vulnerability-scanning"></a>Sicherheitsrisikoprüfung für Webanwendungen
-Eine der einfachsten Möglichkeiten, mit der Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/app-service-web-overview) auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
+Eine der einfachsten Möglichkeiten, mit der Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/overview) auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
 
 ### <a name="penetration-testing"></a>Penetrationstests
 Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
@@ -119,13 +119,13 @@ Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine and
 Die Web Application Firewall (WAF) in [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) hilft beim Schutz von Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen. Dazu bietet sie Schutz vor den Sicherheitsrisiken, die das [Open Web Application Security Project (OWASP) als die zehn häufigsten ermittelt hat](https://msdn.microsoft.com/library/).
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
-Mithilfe des [Authentifizierungs-/Autorisierungsfeatures von App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) kann Ihre Anwendung Benutzer anmelden, sodass Sie keine Codeänderungen für das Back-End der App vornehmen müssen. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit.
+Mithilfe des [Authentifizierungs-/Autorisierungsfeatures von App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) kann Ihre Anwendung Benutzer anmelden, sodass Sie keine Codeänderungen für das Back-End der App vornehmen müssen. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit.
 
 ### <a name="layered-security-architecture"></a>Mehrstufige Sicherheitsarchitektur
 Da [App Service-Umgebungen](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) eine in einem [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede Anwendungsschicht gewähren können. Üblicherweise sollten API-Back-Ends nicht dem allgemeinen Internetzugriff preisgegeben werden, und APIs sollten nur von Upstream-Web-Apps aufgerufen werden können. Um den öffentlichen Zugriff auf API-Anwendungen zu beschränken, können [Netzwerksicherheitsgruppen (Network Security Groups, NSGs)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) in Azure Virtual Network-Subnetzen mit App Service-Umgebungen verwendet werden.
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Webserver- und Anwendungsdiagnose
-App Service-Web-Apps bieten Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Diese sind logisch in [Webserverdiagnose](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) und [Anwendungsdiagnose](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx) unterteilt. Ein Webserver bezieht zwei wichtige Fortschritte bei der Diagnose und Problembehandlung von Websites und Anwendungen ein.
+App Service-Web-Apps bieten Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Diese sind logisch in [Webserverdiagnose](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) und [Anwendungsdiagnose](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx) unterteilt. Ein Webserver bezieht zwei wichtige Fortschritte bei der Diagnose und Problembehandlung von Websites und Anwendungen ein.
 
 Das erste neue Feature sind Zustandsinformationen in Echtzeit zu Anwendungspools, Workerprozessen, Websites, Anwendungsdomänen und aktiven Anforderungen. Der zweite Vorteil sind ausführliche Ablaufverfolgungsereignisse, die eine Anforderung während des vollständigen Prozesses (Anforderung und Antwort) nachverfolgen.
 
@@ -141,7 +141,7 @@ Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 -   Webserverprotokollierung – Informationen über HTTP-Transaktionen im erweiterten W3C-Protokolldateiformat. Dies ist hilfreich, wenn Sie allgemeine Website-Kennzahlen ermitteln möchten, wie die Anzahl der verarbeiteten Anfragen oder wie viele Anforderungen von einer bestimmten IP-Adresse stammen.
 
 #### <a name="application-diagnostics"></a>Anwendungsdiagnose
-Mit der Option [Anwendungsdiagnose](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Bei der Anwendungsdiagnose gibt es zwei Hauptarten von Ereignissen, die sich auf die Anwendungsleistung oder die Anwendungsausfälle und -fehler beziehen. Die Ausfälle und Fehler können weiter in Verbindungsfehler, Sicherheitsfehler und Ausfallprobleme unterteilt werden. Ausfallprobleme beziehen sich in der Regel auf ein Problem mit dem Anwendungscode.
+Mit der Option [Anwendungsdiagnose](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Bei der Anwendungsdiagnose gibt es zwei Hauptarten von Ereignissen, die sich auf die Anwendungsleistung oder die Anwendungsausfälle und -fehler beziehen. Die Ausfälle und Fehler können weiter in Verbindungsfehler, Sicherheitsfehler und Ausfallprobleme unterteilt werden. Ausfallprobleme beziehen sich in der Regel auf ein Problem mit dem Anwendungscode.
 
 Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angezeigt werden:
 
@@ -149,7 +149,7 @@ Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angeze
 -   Anwendungsfehler (Ausnahmeereignisse werden angezeigt)
 -   Leistung (Leistungsereignisse werden angezeigt)
 
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
@@ -289,7 +289,7 @@ Sie können die Liste der in einem VNet verwendeten DNS-Server im Verwaltungspor
 Das [Domain Name System](https://technet.microsoft.com/library/bb629410.aspx) (DNS) ist für die Übersetzung (oder Auflösung) eines Website- oder Dienstnamens in die IP-Adresse verantwortlich. [Azure DNS ist ein Hostingdienst](https://docs.microsoft.com/azure/dns/dns-overview) für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten. DNS unterstützt den Verfügbarkeitsaspekt der drei Sicherheitsbereiche „Vertraulichkeit“, „Integrität“ und „Verfügbarkeit“.
 ### <a name="log-analytics-nsgs"></a>Netzwerksicherheitsgruppen für Log Analytics
 Sie können die folgenden Diagnoseprotokoll-Kategorien für Netzwerksicherheitsgruppen aktivieren:
--   Ereignis: Enthält Einträge, für die NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
+-   Ereignis: Enthält Einträge, für die anhand der MAC-Adresse NSG-Regeln auf virtuelle Computer und Instanzrollen angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
 
 -   Regelzähler: Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 

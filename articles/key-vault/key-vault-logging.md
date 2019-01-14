@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault-Protokollierung | Microsoft Docs
+title: Azure Key Vault-Protokollierung – Azure Key Vault | Microsoft-Dokumentation
 description: Dieses Tutorial dient als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung.
 services: key-vault
 documentationcenter: ''
@@ -12,19 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 9790cd7c79efa1b64220f9e128de9a3b8eb902c0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8e3076f2176739f5b9df5776f27d7483c9fd2692
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426943"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000409"
 ---
 # <a name="azure-key-vault-logging"></a>Azure-Schlüsseltresor-Protokollierung
+
 Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Einführung
+
 Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Hierfür können Sie die Protokollierung für den Schlüsseltresor aktivieren, bei der Informationen im von Ihnen bereitgestellten Azure-Speicherkonto gespeichert werden. Ein neuer Container mit dem Namen **insights-logs-auditevent** wird für Ihr angegebenes Speicherkonto automatisch erstellt, und Sie können dieses Speicherkonto verwenden, um Protokolle für mehrere Schlüsseltresore zu sammeln.
 
 Sie können auf Ihre Protokollinformationen spätestens zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. In den meisten Fällen geht es aber schneller.  Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
@@ -44,6 +46,7 @@ Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schl
 Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird  
@@ -51,19 +54,26 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
 ## <a id="connect"></a>Verbindungsherstellung mit Ihren Abonnements
+
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:  
 
-    Connect-AzureRmAccount
+```PowerShell
+Connect-AzureRmAccount
+```
 
 Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Azure PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind, und verwendet standardmäßig das erste Abonnement.
 
 Wenn Sie über mehrere Abonnements verfügen, müssen Sie unter Umständen ein bestimmtes Abonnement angeben, das zum Erstellen der Azure Key Vault-Instanz verwendet wurde. Geben Sie Folgendes ein, um die Abonnements für Ihr Konto anzuzeigen:
 
+```PowerShell
     Get-AzureRmSubscription
+```
 
 Geben Sie dann Folgendes ein, um das Abonnement anzugeben, das dem zu protokollierenden Schlüsseltresor zugeordnet ist:
 
-    Set-AzureRmContext -SubscriptionId <subscription ID>
+```PowerShell
+Set-AzureRmContext -SubscriptionId <subscription ID>
+```
 
 > [!NOTE]
 > Dies ist ein wichtiger Schritt und besonders hilfreich, wenn Ihrem Konto mehrere Abonnements zugeordnet sind. Wenn dieser Schritt übersprungen wird, tritt bei der Registrierung von Microsoft.Insights möglicherweise ein Fehler auf.
@@ -73,12 +83,14 @@ Geben Sie dann Folgendes ein, um das Abonnement anzugeben, das dem zu protokolli
 Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="storage"></a>Erstellen eines neuen Speicherkontos für Ihre Protokolle
+
 Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, aber wir erstellen ein neues Speicherkonto, das den Schlüsseltresor-Protokollen zugeordnet wird. Wir speichern die Details in einer Variablen mit dem Namen **sa**, damit wir sie später leicht angeben können.
 
 Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Ressourcengruppe wie die Gruppe, die unseren Schlüsseltresor enthält. Im [Tutorial zu den ersten Schritten](key-vault-get-started.md)hat diese Ressourcengruppe den Namen **ContosoResourceGroup** , und wir nutzen auch wieder den Standort Ostasien. Ersetzen Sie diese Werte nach Bedarf durch Ihre eigenen Werte:
 
-    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
-
+```PowerShell
+ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
+```
 
 > [!NOTE]
 > Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, muss dafür dasselbe Abonnement wie für den Schlüsseltresor verwendet werden. Außerdem muss das Resource Manager-Bereitstellungsmodell genutzt werden, nicht das klassische Bereitstellungsmodell.
@@ -86,15 +98,20 @@ Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Re
 >
 
 ## <a id="identify"></a>Identifizieren des Schlüsseltresors für Ihre Protokolle
+
 In unserem Tutorial zu den ersten Schritten lautete der Name des Schlüsseltresors **ContosoKeyVault**. Wir nutzen den Namen also weiter und speichern die Details in einer Variablen mit dem Namen **kv**:
 
-    $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
-
+```PowerShell
+$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+```
 
 ## <a id="enable"></a>Aktivieren der Protokollierung
-Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Set-AzureRmDiagnosticSetting-Cmdlet zusammen mit den Variablen, die wir für unser neues Speicherkonto und unseren Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf „AuditEvent“ (einzige Kategorie für Key Vault-Protokollierung) fest:
 
-    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Set-AzureRmDiagnosticSetting-Cmdlet zusammen mit den Variablen, die wir für unser neues Speicherkonto und unseren Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf „AuditEvent“ (einzige Kategorie für die Key Vault-Protokollierung) fest:
+
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+```
 
 Die Ausgabe enthält z. B. Folgendes:
 
@@ -108,12 +125,13 @@ Die Ausgabe enthält z. B. Folgendes:
         Enabled : False
         Days    : 0
 
-
 So wird bestätigt, dass die Protokollierung für Ihren Schlüsseltresor jetzt aktiviert ist und Informationen in Ihrem Speicherkonto gespeichert werden.
 
 Optional können Sie eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, mit der ältere Protokolle automatisch gelöscht werden. Richten Sie die Aufbewahrungsrichtlinie beispielsweise wie folgt ein: Legen Sie das Flag **-RetentionEnabled** auf **$true** und den Parameter **-RetentionInDays** auf **90** fest, sodass Protokolle, die älter sind als 90 Tage, automatisch gelöscht werden.
 
-    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
+```
 
 Protokollierte Daten:
 
@@ -123,15 +141,21 @@ Protokollierte Daten:
 * Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Wenn Anforderungen beispielsweise über kein Bearertoken verfügen oder falsch formatiert oder abgelaufen sind, ist deren Token ungültig.  
 
 ## <a id="access"></a>Zugreifen auf Ihre Protokolle
+
 Schlüsseltresorprotokolle werden im Container **insights-logs-auditevent** im von Ihnen angegebenen Speicherkonto gespeichert. Geben Sie Folgendes ein, um alle Blobs in diesem Container aufzulisten:
 
-Erstellen Sie zunächst eine Variable für den Containernamen. Diese wird im gesamten weiteren Verlauf exemplarischen Vorgehensweise verwendet.
+Erstellen Sie zunächst eine Variable für den Containernamen. Diese wird im gesamten weiteren Verlauf der exemplarischen Vorgehensweise verwendet.
 
-    $container = 'insights-logs-auditevent'
+```PowerShell
+$container = 'insights-logs-auditevent'
+```
 
 Geben Sie Folgendes ein, um alle Blobs in diesem Container aufzulisten:
 
-    Get-AzureStorageBlob -Container $container -Context $sa.Context
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context
+```
+
 Die Ausgabe sieht etwa wie folgt aus:
 
 **Container-URI: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
@@ -153,15 +177,21 @@ Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen v
 
 Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel: 
 
-    New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
+```PowerShell 
+New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
+```
 
 Rufen Sie anschließend eine Liste mit allen Blobs ab:  
 
-    $blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+```PowerShell
+$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+```
 
 Leiten Sie diese Liste an Get-AzureStorageBlobContent um, um die Blobs in Ihren Zielordner herunterzuladen:
 
-    $blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
+```PowerShell
+$blobs | Get-AzureStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
+```
 
 Beim Ausführen dieses zweiten Befehls wird mit dem Trennzeichen **/** in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Diese Struktur wird zum Herunterladen und Speichern der Blobs als Dateien verwendet.
 
@@ -169,13 +199,21 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 * Bei Verwendung mehrerer Schlüsseltresore und einem Download von Protokollen nur für einen Schlüsseltresor mit dem Namen CONTOSOKEYVAULT3:
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+```
+
 * Wenn Sie über mehrere Ressourcengruppen verfügen und nur Protokolle für eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+```
+
 * Wenn Sie alle Protokolle für den Monat Januar 2016 herunterladen möchten, verwenden Sie `-Blob '*/year=2016/m=01/*'`:
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+```
 
 Sie können sich nun ansehen, was in den Protokollen enthalten ist. Bevor Sie fortfahren, ist es ratsam, sich mit zwei weiteren Parametern für Get-AzureRmDiagnosticSetting vertraut zu machen:
 
@@ -183,7 +221,14 @@ Sie können sich nun ansehen, was in den Protokollen enthalten ist. Bevor Sie fo
 * Zum Deaktivieren der Protokollierung für Ihre Schlüsseltresorressource: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
 ## <a id="interpret"></a>Interpretieren der Key Vault-Protokolle
-Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Dies ist ein Beispiel für einen Protokolleintrag nach der Ausführung von `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
+
+Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Wird ausgeführt
+
+```PowerShell
+Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
+```
+
+Gibt einen Protokolleintrag zurück, der dem unten angegebenen Wert ähnelt:
 
     {
         "records":
@@ -205,7 +250,6 @@ Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Dies is
             }
         ]
     }
-
 
 In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt.
 
@@ -268,6 +312,7 @@ Die folgende Tabelle enthält das operationName-Element und den entsprechenden R
 Sie können die Azure Key Vault-Lösung in Log Analytics verwenden, um AuditEvent-Protokolle von Azure Key Vault zu überprüfen. Weitere Informationen, z.B. zur Einrichtung, finden Sie unter [Azure Key Vault-Lösung in Log Analytics](../azure-monitor/insights/azure-key-vault.md). Dieser Artikel enthält auch eine Anleitung für die Migration von der alten Key Vault-Lösung, die während der Vorschauphase von Log Analytics bereitgestellt wurde. Damit haben Sie Ihre Protokolle zuerst an ein Azure Storage-Konto weitergeleitet und Log Analytics für das Lesen von diesem Konto konfiguriert.
 
 ## <a id="next"></a>Nächste Schritte
+
 Ein Tutorial zur Verwendung von Azure Key Vault in einer Webanwendung finden Sie unter [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md).
 
 Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](key-vault-developers-guide.md).

@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233513"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600715"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -25,11 +25,11 @@ Obwohl Azure Logic Apps [100+ integrierte Connectors](../connectors/apis-list.md
 * Um Kunden zu helfen, Ihren Dienst zum Verwalten professioneller oder persönlicher Aufgaben zu verwenden.
 * Erweitern von Reichweite, Erkennbarkeit und Verwendung Ihres Diensts.
 
-Connectors sind grundsätzlich Web-APIs, die REST-APIs für austauschbare Schnittstellen, [Swagger-Metadatenformat](http://swagger.io/specification/) für Dokumentation und JSON als Datenaustauschformat verwenden. Da Connectors REST-APIs sind, die über HTTP-Endpunkte kommunizieren, können Sie eine beliebige Sprache wie .NET, Java oder Node.js für die Erstellung von Connectors verwenden. Sie können Ihre APIs auch in [Azure App Service](../app-service/app-service-web-overview.md) hosten, einem „Platform as a Service“-Angebot (PaaS), das eine der besten, einfachsten und skalierbarsten Möglichkeiten zum Hosten von APIs bietet. 
+Connectors sind grundsätzlich Web-APIs, die REST-APIs für austauschbare Schnittstellen, [Swagger-Metadatenformat](http://swagger.io/specification/) für Dokumentation und JSON als Datenaustauschformat verwenden. Da Connectors REST-APIs sind, die über HTTP-Endpunkte kommunizieren, können Sie eine beliebige Sprache wie .NET, Java oder Node.js für die Erstellung von Connectors verwenden. Sie können Ihre APIs auch in [Azure App Service](../app-service/overview.md) hosten, einem „Platform as a Service“-Angebot (PaaS), das eine der besten, einfachsten und skalierbarsten Möglichkeiten zum Hosten von APIs bietet. 
 
 Damit benutzerdefinierte APIs mit Logik-Apps funktionieren, kann Ihre API [*Aktionen*](./logic-apps-overview.md#logic-app-concepts) bereitstellen, die bestimmte Aufgaben in Logis App-Workflows ausführen. Ihre API kann auch als [*Trigger*](./logic-apps-overview.md#logic-app-concepts) dienen, der einen Logik-App-Workflow startet, wenn neue Daten oder ein Ereignis eine angegebene Bedingung erfüllen. Dieses Thema beschreibt allgemeine Muster, die Sie zum Erstellen von Aktionen und Triggern in Ihrer API befolgen können, basierend auf dem Verhalten, dass Ihre API bieten soll.
 
-Sie können Ihre APIs in [Azure App Service](../app-service/app-service-web-overview.md) hosten, einem PaaS-Angebot (Platform-as-a-Service), das ein einfaches API-Hosting mit hoher Skalierbarkeit ermöglicht.
+Sie können Ihre APIs in [Azure App Service](../app-service/overview.md) hosten, einem PaaS-Angebot (Platform-as-a-Service), das ein einfaches API-Hosting mit hoher Skalierbarkeit ermöglicht.
 
 > [!TIP] 
 > Sie können Ihre APIs zwar als Web-Apps bereitstellen, sollten jedoch in Erwägung ziehen, Ihre APIs als API-Apps bereitzustellen. Dadurch wird das Erstellen, Hosten und Nutzen der APIs in der Cloud und lokal vereinfacht. Sie müssen keinen Code in Ihren APIs ändern. Stellen Sie einfach Ihren Code für eine API-App bereit. Erfahren Sie beispielsweise, wie Sie mit den folgenden Sprachen API-Apps erstellen: 
@@ -104,9 +104,9 @@ Hier werden die einzelnen Schritte Ihrer API aus API-Sicht beschrieben:
    
    Die `202 ACCEPTED`-Antwort sollte diese Header enthalten:
    
-   * *Erforderlich*: Ein `location`-Header, der den absoluten Pfad zu einer URL angibt, über die die Logic Apps-Engine den Auftragsstatus Ihrer API überprüfen kann
+   * *Erforderlich*: Ein `location`-Header, der den absoluten Pfad zu einer URL angibt, über die die Logic Apps-Engine den Auftragsstatus Ihrer API überprüfen kann.
 
-   * *Optional*: Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die die Engine vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
+   * *Optional:* Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die die Engine vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
 
      Standardmäßig führt die Engine alle 20 Sekunden eine Überprüfung durch. Schließen Sie zum Angeben eines anderen Zeitintervalls den `retry-after`-Header und die Anzahl der Sekunden bis zum nächsten Abruf ein.
 

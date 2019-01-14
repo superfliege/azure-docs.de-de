@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 12/04/2018
+ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7e55304fb02078c71b91b2904475a4bee4bcc018
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9e3297b2493ea12f9da50556e4fc9e72d625fd25
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436958"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583448"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -25,7 +25,7 @@ Automatisiertes maschinelles Lernen ist der Vorgang, bei dem Trainingsdaten mit 
 ## <a name="how-it-works"></a>So funktioniert's
 
 1. Sie konfigurieren die Art des zu lösenden Problems für das maschinelle Lernen. Die folgenden Kategorien des überwachten Lernens werden unterstützt:
-   + Klassifizierung
+   + Classification
    + Regression
    + Vorhersagen
 
@@ -65,9 +65,10 @@ Verwenden Sie dieses [Beispiel-Notebook](https://github.com/Azure/MachineLearnin
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erstellt werden, und sehen Sie sich Beispiele dazu an:
++ [Beispiele: Verwenden von Jupyter-Notebooks zum Erkunden von Azure Machine Learning Service](samples-notebooks.md#automated-ml-setup)
 
 + [Tutorial: Automatisches Trainieren eines Klassifizierungsmodells mithilfe von Azure Automated Machine Learning](tutorial-auto-train-models.md)
 
-+ [Konfigurieren der Einstellungen für automatisches Training](how-to-configure-auto-train.md)
++ [Verwenden von automatischem Training für eine Remoteressource](how-to-auto-train-remote.md)
 
-+ [Verwenden von automatischem Training für eine Remoteressource](how-to-auto-train-remote.md) 
++ [Konfigurieren der Einstellungen für automatisches Training](how-to-configure-auto-train.md)

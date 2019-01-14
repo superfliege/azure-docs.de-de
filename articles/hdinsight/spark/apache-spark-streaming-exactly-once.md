@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580999"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651774"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Erstellen von Apache Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“
 
@@ -30,10 +30,10 @@ Dieser Artikel zeigt das Konfigurieren von Spark Streaming für die genau einmal
 Betrachten Sie zuerst, wie alle Systemfehlerpunkte neu starten, nachdem ein Problem aufgetreten ist, und wie Sie Datenverluste vermeiden können. Eine Spark Streaming-Anwendung hat:
 
 * Eine Eingabequelle
-* Mindestens ein Empfängerprozess, der Daten aus der Eingabequelle abruft
+* Mindestens einen Empfängerprozess, der Daten aus der Eingabequelle abruft
 * Aufgaben, die die Daten verarbeiten
 * Eine Ausgabesenke
-* Ein Treiberprozess, der den Auftrag mit langer Ausführungszeit verwaltet
+* Einen Treiberprozess, der den Auftrag mit langer Ausführungszeit verwaltet
 
 Die „Exactly-Once“-Semantik erfordert, dass keine Daten an irgendeiner Stelle verloren gehen, und dass die Nachrichtenverarbeitung neu gestartet werden kann, unabhängig davon, wo der Fehler auftritt.
 
@@ -41,7 +41,7 @@ Die „Exactly-Once“-Semantik erfordert, dass keine Daten an irgendeiner Stell
 
 Die Quelle, aus der Ihre Spark Streaming-Anwendung Ihre Ereignisse liest, muss *wiedergebbar* sein. Dies bedeutet, dass in Fällen, in denen die Nachricht abgerufen wurde, jedoch dann ein Fehler im System auftrat, bevor die Nachricht persistent gespeichert oder verarbeitet werden konnte, die Quelle die gleiche Nachricht erneut bereitstellen muss.
 
-In Azure stellen sowohl Azure Event Hubs als auch [Apache Kafka](https://kafka.apache.org/) in HDInsight wiedergebbare Quellen bereit. Weitere Beispiele für wiedergebbare Quellen sind ein fehlertolerantes Dateisystem wie [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), Azure Storage-Blobs oder Azure Data Lake Store, wo alle Daten auf unbegrenzte Zeit aufbewahrt werden und Sie die Daten zu einem beliebigen Zeitpunkt in ihrer Gesamtheit erneut lesen können.
+In Azure stellen sowohl Azure Event Hubs als auch [Apache Kafka](https://kafka.apache.org/) in HDInsight wiedergebbare Quellen bereit. Ein weiteres Beispiel für wiedergebbare Quellen ist ein fehlertolerantes Dateisystem wie [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), Azure Storage-Blobs oder Azure Data Lake Storage, wo alle Daten auf unbegrenzte Zeit aufbewahrt werden und Sie die Daten zu einem beliebigen Zeitpunkt in ihrer Gesamtheit erneut lesen können.
 
 ### <a name="reliable-receivers"></a>Zuverlässige Empfänger
 
@@ -49,7 +49,7 @@ In Spark Streaming haben Datenquellen wie Event Hubs und Kafka *zuverlässige Em
 
 ### <a name="use-the-write-ahead-log"></a>Verwenden des Write-Ahead-Protokolls
 
-Spark Streaming unterstützt die Verwendung eines Write-Ahead-Protokolls, in dem jedes empfangene Ereignis zunächst in das Prüfpunktverzeichnis von Spark in einem fehlertoleranten Speicher geschrieben und dann in einem Resilient Distributed Dataset (RDD) gespeichert wird. In Azure ist der fehlertolerante Speicher HDFS, gesichert entweder durch Azure Storage oder Azure Data Lake Store. In Ihrer Spark Streaming-Anwendung wird das Write-Ahead-Protokoll durch Festlegen der `spark.streaming.receiver.writeAheadLog.enable`-Konfigurationseinstellung für alle Empfänger auf `true` aktiviert. Das Write-Ahead-Protokoll bietet Fehlertoleranz bei Ausfällen sowohl der Treiber als auch der Executors.
+Spark Streaming unterstützt die Verwendung eines Write-Ahead-Protokolls, in dem jedes empfangene Ereignis zunächst in das Prüfpunktverzeichnis von Spark in einem fehlertoleranten Speicher geschrieben und dann in einem Resilient Distributed Dataset (RDD) gespeichert wird. In Azure ist der fehlertolerante Speicher HDFS, gesichert entweder durch Azure Storage oder Azure Data Lake Storage. In Ihrer Spark Streaming-Anwendung wird das Write-Ahead-Protokoll durch Festlegen der `spark.streaming.receiver.writeAheadLog.enable`-Konfigurationseinstellung für alle Empfänger auf `true` aktiviert. Das Write-Ahead-Protokoll bietet Fehlertoleranz bei Ausfällen sowohl der Treiber als auch der Executors.
 
 Für Worker, die Aufgaben mit den Ereignisdaten ausführen, wird jede RDD definitionsgemäß auf mehrere Worker sowohl repliziert als auch verteilt. Wenn bei einer Aufgabe ein Fehler auftritt, weil der ausführende Worker abstürzt, wird die Aufgabe auf einem anderen Worker neu gestartet, der über ein Replikat der Ereignisdaten verfügt – daher geht das Ereignis nicht verloren.
 
@@ -66,7 +66,7 @@ Prüfpunkte werden in Spark Streaming in zwei Schritten aktiviert.
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    In HDInsight sollten diese Prüfpunkte in Standardspeicher gespeichert werden, der Ihrem Cluster angefügt ist – entweder Azure Storage oder Azure Data Lake Store.
+    In HDInsight sollten diese Prüfpunkte in dem Standardspeicher gespeichert werden, der Ihrem Cluster angefügt ist – entweder Azure Storage oder Azure Data Lake Storage.
 
 2. Geben Sie als Nächstes ein Prüfpunktintervall (in Sekunden) auf dem DStream an. Bei jedem Intervall werden aus dem Eingabeereignis abgeleitete Zustandsdaten dauerhaft im Speicher abgelegt. Persistente Zustandsdaten können den beim Neuerstellen des Zustands aus dem Quellereignis erforderlichen Rechenaufwand reduzieren.
 
@@ -85,7 +85,7 @@ Sie können idempotente Senken durch Implementierung von Logik erstellen, die zu
 
 Sie könnten z.B. eine gespeicherte Prozedur mit Azure SQL-Datenbank verwenden, die Ereignisse in eine Tabelle einfügt. Diese gespeicherte Prozedur sucht zuerst mit den Schlüsselfeldern nach dem Ereignis, und nur dann, wenn kein entsprechendes Ereignis gefunden wird, wird der Datensatz in die Tabelle eingefügt.
 
-Ein weiteres Beispiel ist die Verwendung eines partitionierten Dateisystems wie Azure Storage-Blobs oder Azure Data Lake Store. In diesem Fall muss Ihre Senkenlogik nicht überprüfen, ob die Datei vorhanden ist. Wenn die Datei, die das Ereignis darstellt, vorhanden ist, wird sie einfach mit denselben Daten überschrieben. Andernfalls wird eine neue Datei unter dem berechneten Pfad erstellt.
+Ein weiteres Beispiel ist die Verwendung eines partitionierten Dateisystems wie Azure Storage-Blobs oder Azure Data Lake Storage. In diesem Fall muss Ihre Senkenlogik nicht überprüfen, ob die Datei vorhanden ist. Wenn die Datei, die das Ereignis darstellt, vorhanden ist, wird sie einfach mit denselben Daten überschrieben. Andernfalls wird eine neue Datei unter dem berechneten Pfad erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

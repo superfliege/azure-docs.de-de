@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308216"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653304"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Bewährte Methoden für Leistung – Apache Phoenix
 
-Der wichtigste Leistungsaspekt von [Apache Phoenix](https://phoenix.apache.org/) ist die Optimierung der zugrunde liegenden [Apache HBase](http://hbase.apache.org/)-Lösung. Phoenix erstellt auf der Grundlage von HBase ein relationales Datenmodell, das SQL-Abfragen in HBase-Vorgänge (beispielsweise Scans) konvertiert. Die Leistung von Phoenix wird durch das Design Ihres Tabellenschemas, die gewählten Felder in Ihrem Primärschlüssel und deren Reihenfolge sowie durch den Einsatz von Indizes beeinflusst.
+Der wichtigste Leistungsaspekt von [Apache Phoenix](https://phoenix.apache.org/) ist die Optimierung der zugrunde liegenden [Apache HBase](https://hbase.apache.org/)-Lösung. Phoenix erstellt auf der Grundlage von HBase ein relationales Datenmodell, das SQL-Abfragen in HBase-Vorgänge (beispielsweise Scans) konvertiert. Die Leistung von Phoenix wird durch das Design Ihres Tabellenschemas, die gewählten Felder in Ihrem Primärschlüssel und deren Reihenfolge sowie durch den Einsatz von Indizes beeinflusst.
 
 ## <a name="table-schema-design"></a>Design des Tabellenschemas
 
@@ -225,9 +225,9 @@ Wenn Schreibgeschwindigkeit in Ihrem Szenario wichtiger ist als Datenintegrität
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-Ausführliche Informationen hierzu und zu anderen Optionen finden Sie unter [Phoenix Grammar](http://phoenix.apache.org/language/index.html#options) (Phoenix-Grammatik).
+Ausführliche Informationen hierzu und zu anderen Optionen finden Sie unter [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html#options) (Apache Phoenix-Grammatik).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Optimierungsleitfaden für Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
-* [Secondary Indexing](http://phoenix.apache.org/secondary_indexing.html) (Sekundäre Indizes)
+* [Secondary Indexing](https://phoenix.apache.org/secondary_indexing.html) (Sekundäre Indizes)

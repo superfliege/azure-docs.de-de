@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: d2aeb41c2fcc11c37ec56707932eabcf63e026a0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4be346163fd54c0c5f962d15bc2433c7fab49e0b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497207"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650942"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Installieren einer veröffentlichten Anwendung – H2O Sparkling Water
 
-In diesem Artikel erfahren Sie, wie Sie die veröffentlichte [Apache Hadoop](https://hadoop.apache.org/)-Anwendung [H2O Sparkling Water](http://www.h2o.ai/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
+In diesem Artikel erfahren Sie, wie Sie die veröffentlichte [Apache Hadoop](https://hadoop.apache.org/)-Anwendung [H2O Sparkling Water](https://www.h2o.ai/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-h2o-sparkling-water"></a>Grundlegendes zu H2O Sparkling Water
 
@@ -34,7 +34,7 @@ H2O Sparkling Water bietet Folgendes:
 ### <a name="resource-links"></a>Ressourcenlinks
 
 * [H2O.ai-Entwicklungsroadmap](http://jira.h2o.ai/)
-* [H2O.ai-Startseite](http://www.h2o.ai/)
+* [H2O.ai-Startseite](https://www.h2o.ai/)
 * [H2O.ai-Dokumentation](http://docs.h2o.ai/)
 * [H2O.ai-Support](https://support.h2o.ai/)
 * [H2O.ai-Open Source-Codebasis](https://github.com/h2oai/)
@@ -69,7 +69,7 @@ Eine ausführliche Installationsanleitung für diese und andere verfügbare ISV-
 
 5. Nachdem der H2O-Cluster eingerichtet wurde und ausgeführt wird, öffnen Sie H2O Flow, indem Sie zu **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`** wechseln.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Wenn Sie H2O nicht öffnen können, löschen Sie Ihren Browsercache. Falls H2O weiterhin nicht geöffnet werde kann, weist Ihr Cluster möglicherweise nicht genügend Ressourcen auf. Erhöhen Sie in Ihrem Clusterbereich die Anzahl von Workerknoten unterhalb von **Scale cluster** (Cluster skalieren).
 
     ![H2O Flow-Dashboard](./media/hdinsight-apps-install-h2o/h2o-flow.png)
@@ -95,8 +95,8 @@ Das ist alles! Sie haben innerhalb von wenigen Minuten künstliche Intelligenz i
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [H2O-Dokumentation](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/index.html)
-* [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight:](hdinsight-apps-install-custom-applications.md) Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
+* [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 * [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Hier erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx)(MSDN: Installieren einer HDInsight-Anwendung): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
+* [MSDN: Installieren einer HDInsight-Anwendung](https://msdn.microsoft.com/library/mt706515.aspx): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
 * [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe einer Skriptaktion zusätzliche Anwendungen installieren.
-* [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md): Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.
+* [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md): Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.

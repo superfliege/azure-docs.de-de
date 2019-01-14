@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: b110a57526d6e23ba53afce0a91d735fad6d247c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215888"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604098"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurieren von Postman für Media Services-REST-API-Aufrufe
 
@@ -30,7 +30,7 @@ In diesem Artikel wird veranschaulicht, wie Sie **Postman** so konfigurieren, da
 - Beschaffen Sie die Informationen, die für den [Zugriff auf APIs](access-api-cli-how-to.md) benötigt werden.
 - Installieren Sie den REST-Client von [Postman](https://www.getpostman.com/), um die REST-APIs auszuführen, die in einigen der AMS REST-Tutorials gezeigt werden. 
 
-    Wir verwenden **Postman**, aber jedes REST-Tool wäre geeignet. Andere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
+    Wir verwenden **Postman**, aber jedes REST-Tool wäre geeignet. Weitere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Herunterladen von Postman-Dateien
 
@@ -85,7 +85,7 @@ Bevor Sie mit dem Ändern von AMS v3-Ressourcen beginnen, müssen Sie das Azure 
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. Die zurückgegebene Antwort enthält das Token und legt die Umgebungsvariable „AccessToken“ auf den Tokenwert fest. Klicken Sie zum Anzeigen des Codes, der „AccessToken“ festlegt, auf die Registerkarte **Tests**. 
+4. Die zurückgegebene Antwort enthält das Token und legt die Umgebungsvariable „AccessToken“ auf den Tokenwert fest.  
 
     ![Abrufen des AAD-Tokens](./media/develop-with-postman/postman-get-aad-auth-token.png)
 

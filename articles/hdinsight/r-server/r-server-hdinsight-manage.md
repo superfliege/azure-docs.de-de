@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497539"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584393"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Verwalten eines ML Services-Clusters in Azure HDInsight
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie einen vorhandenen ML Services-Cluster in
 
 * **Ein ML Services-Cluster in HDInsight:** Anweisungen finden Sie unter [Erste Schritte mit ML Services in HDInsight](r-server-get-started.md).
 
-* **Ein Secure Shell-Client (SSH)**: Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Ein SSH-Client (Secure Shell):** Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Aktivieren mehrerer gleichzeitiger Benutzer
@@ -80,7 +80,7 @@ Beachten Sie außerdem, dass die neu hinzugefügten Benutzer nicht über Stammbe
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Herstellen einer Remoteverbindung mit Microsoft ML Services
 
-Sie können den Zugriff auf den HDInsight Spark-Computekontext über eine auf Ihrem Desktop ausgeführte Remoteinstanz von ML Client einrichten. Hierfür müssen Sie die Optionen (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches und sshProfileScript) beim Definieren des RxSpark-Rechenkontexts auf Ihrem Laptop angeben: Beispiel:
+Sie können den Zugriff auf den HDInsight Spark-Computekontext über eine auf Ihrem Desktop ausgeführte Remoteinstanz von ML Client einrichten. Hierfür müssen Sie die Optionen (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches und sshProfileScript) beim Definieren des RxSpark-Computekontexts auf Ihrem Laptop angeben: Beispiel: 
 
     myNameNode <- "default"
     myPort <- 0
@@ -299,10 +299,8 @@ Falls Sie zusätzliche R-Pakete auf dem Edgeknoten installieren möchten, könne
 
 Um R-Pakete auf den Workerknoten des Clusters zu installieren, müssen Sie eine Skriptaktion verwenden. Skriptaktionen sind Bash-Skripts, mit denen Konfigurationsänderungen am HDInsight-Cluster vorgenommen werden oder zusätzliche Software (etwa zusätzliche R-Pakete) installiert wird. 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Skriptaktionen können nur zum Installieren zusätzlicher R-Pakete verwendet werden, nachdem der Cluster erstellt wurde. Verwenden Sie dieses Verfahren nicht bei der Clustererstellung, da für das Skript ML Services vollständig konfiguriert sein muss.
->
->
 
 1. Befolgen Sie die Schritte unter [Anpassen von Clustern mithilfe von Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -312,7 +310,7 @@ Um R-Pakete auf den Workerknoten des Clusters zu installieren, müssen Sie eine 
 
    * Geben Sie einen **Namen** für die Skriptaktion an.
 
-    * Geben Sie für **Bash-Skript-URI** `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` ein. Dies ist das Skript, das zusätzliche R-Pakete auf dem Workerknoten installiert
+    * Geben Sie für **Bash-Skript-URI** `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` ein. Dies ist das Skript, das zusätzliche R-Pakete auf dem Workerknoten installiert
 
    * Aktivieren Sie nur das Kontrollkästchen für **Worker**.
 

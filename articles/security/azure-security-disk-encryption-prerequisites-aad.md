@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/13/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9beb782496c9234a93f17ffc825e9b4501f2296
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 071f07e9d485a5fab5f2ce3d23a383e974001143
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342407"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158020"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Voraussetzungen für Azure Disk Encryption (Vorgängerversion)
 
@@ -23,8 +23,9 @@ ms.locfileid: "53342407"
 
 Bevor Sie Azure Disk Encryption auf Azure-IaaS-VMs für die unterstützten Szenarien aktivieren, die im Artikel [Azure Disk Encryption – Übersicht](azure-security-disk-encryption-overview.md) erörtert werden, beachten Sie die folgenden Voraussetzungen. 
 
-> [!NOTE]
-> Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann. Sie müssen über ein gültiges aktives Azure-Abonnement verfügen, um in den unterstützten Regionen Ressourcen in Azure zu erstellen.
+> [!WARNING]
+> - Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann. Sie müssen über ein gültiges aktives Azure-Abonnement verfügen, um in den unterstützten Regionen Ressourcen in Azure zu erstellen.
+> - Wenn Sie zuvor [Azure Disk Encryption mit Azure AD-App](azure-security-disk-encryption-prerequisites-aad.md) zum Verschlüsseln dieses virtuellen Computers verwendet haben, müssen Sie diese Verschlüsselungsoption auch weiterhin für Ihren virtuellen Computer verwenden. Sie können [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) nicht auf diesem verschlüsselten virtuellen Computer verwenden, da dies kein unterstütztes Szenario ist. Das bedeutet, das Verlassen der AAD-Anwendung für diesen verschlüsselten virtuellen Computer wird noch nicht unterstützt. 
 
 
 ## <a name="bkmk_OSs"></a> Unterstützte Betriebssysteme
@@ -79,11 +80,10 @@ Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubi
 [Azure PowerShell](/powershell/azure/overview) bietet eine Reihe von Cmdlets, die das [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Modell für die Verwaltung von Azure-Ressourcen verwenden. Azure PowerShell kann mit [Azure Cloud Shell](../cloud-shell/overview.md) im Browser verwendet oder auf dem lokalen Computer installiert (siehe Anleitung unten) und in einer beliebigen PowerShell-Sitzung verwendet werden. Falls Sie die lokale Installation bereits durchgeführt haben, verwenden Sie die neueste Version des Azure PowerShell SDKs, um Azure Disk Encryption zu konfigurieren. Laden Sie die neueste Version von [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) herunter.
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Installieren Sie Azure PowerShell für die Verwendung auf Ihrem lokalen Computer (optional):  
-1. Folgen Sie den Anweisungen unter dem Link für Ihr Betriebssystem, und fahren Sie dann mit den weiteren Schritten fort.      
-    - [Installieren und Konfigurieren von Azure PowerShell unter Windows](/powershell/azure/install-azurerm-ps) 
+1. Folgen Sie den Anweisungen unter dem Link für Ihr Betriebssystem, und fahren Sie dann mit den weiteren Schritten fort.
+    - [Installieren und Konfigurieren von Azure PowerShell unter Windows](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0) 
         - Installieren Sie PowerShellGet und Azure PowerShell, und laden Sie das AzureRM-Modul herunter. 
-    - [Installieren und Konfigurieren von Azure PowerShell unter macOS und Linux](/powershell/azure/install-azurermps-maclinux)
-        -  Installieren Sie PowerShell Core und Azure PowerShell für .NET Core, und laden Sie das Az-Modul herunter.
+
 2. Installieren sie das [Azure Active Directory PowerShell-Modul](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
 
      ```powershell

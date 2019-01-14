@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 30bfaad8fcc1a837a37689280149a6dbe20b7c1d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634344"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628150"
 ---
 # <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Verwenden von Apache Hive mit Windows-basiertem HDInsight zum Analysieren von Websiteprotokollen
 Erfahren Sie, wie Sie Website-Protokolle mit HiveQL in HDInsight analysieren können. Mit der Analyse von Websiteprotokollen können Sie Ihr Publikum nach ähnlichen Aktivitäten gruppieren, Seitenbesucher nach demografischen Daten kategorisieren, die angezeigten Inhalte und die Ursprungsseiten ermitteln und vieles mehr.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument funktionieren nur mit einem Windows-basierten HDInsight-Cluster. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 In diesem Beispiel analysieren Sie Websiteprotokolle in einem HDInsight-Cluster, um Einblicke in die Häufigkeit von Besuchen der Website von externen Websites pro Tag zu erhalten. Sie generieren zudem eine Zusammenfassung der Websitefehler, die bei den Benutzern auftreten. Folgendes wird vermittelt:
@@ -32,7 +32,7 @@ In diesem Beispiel analysieren Sie Websiteprotokolle in einem HDInsight-Cluster,
 ![HDI.Samples.Website.Log.Analysis](./media/apache-hive-analyze-website-log/hdinsight-weblogs-sample.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Sie müssen einen Hadoop-Cluster unter Azure HDInsight bereitgestellt haben. Anweisungen finden Sie unter [Bereitstellen eines HDInsight-Clusters](../hdinsight-hadoop-provision-linux-clusters.md).
+* Sie müssen einen Apache Hadoop-Cluster unter Azure HDInsight bereitgestellt haben. Anweisungen finden Sie unter [Bereitstellen eines HDInsight-Clusters](../hdinsight-hadoop-provision-linux-clusters.md).
 * Microsoft Excel 2013 oder Excel 2010 muss installiert sein.
 * Sie benötigen den [Microsoft Hive ODBC-Treiber](https://www.microsoft.com/download/details.aspx?id=40886) , um die Daten aus Hive in Excel zu importieren.
 

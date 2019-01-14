@@ -4,12 +4,12 @@ ms.service: application-insights
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3986b77cfad167134bf8ada1e3cbb73ad64dd3ca
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572162"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728981"
 ---
 Auflistung von benutzerdefinierten Messungen. Verwenden Sie diese Auflistung, um benannte, dem Telemetrieelement zugeordnete Messungen zu melden. Typische Anwendungsfälle:
 - Größe der Nutzlast der Abhängigkeitstelemetrie
@@ -25,6 +25,6 @@ customEvents
 ```
 
  > [!NOTE]
- > Benutzerdefinierte Messungen werden dem Telemetrieelement zugeordnet, zu dem sie gehören. Sie unterliegen dem Sampling mit dem Telemetrieelement, das diese Messungen enthält. Verwenden Sie [Metriktelemetrie](../articles/application-insights/app-insights-api-custom-events-metrics.md), um eine Messung nachzuverfolgen, die einen Wert besitzt, der von anderen Telemetrietypen unabhängig ist.
+ > Benutzerdefinierte Messungen werden dem Telemetrieelement zugeordnet, zu dem sie gehören. Sie unterliegen dem Sampling mit dem Telemetrieelement, das diese Messungen enthält. Verwenden Sie [Metriktelemetrie](../articles/azure-monitor/app/api-custom-events-metrics.md), um eine Messung nachzuverfolgen, die einen Wert besitzt, der von anderen Telemetrietypen unabhängig ist.
 
 Maximale Schlüssellänge: 150

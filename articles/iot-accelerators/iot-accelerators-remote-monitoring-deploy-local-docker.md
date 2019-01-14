@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: cf3c30d33e618ae3fd9d4ad942c77d211a414e82
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288543"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601150"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Sie erfahren, wie Sie die Microservices in lokalen Docker-Containern bereitstellen. Bei einer lokalen Bereitstellung von Microservices werden die folgenden Clouddienste verwendet: IoT Hub, Cosmos DB, Azure Stream Analytics und Azure Time Series Insights-Dienste in der Cloud.
+In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Sie erfahren, wie Sie die Microservices in lokalen Docker-Containern bereitstellen. Eine lokale Microservices-Bereitstellung verwendet die folgenden Clouddienste: IoT Hub, Cosmos DB, Azure Stream Analytics und Azure Time Series Insights-Dienste in der Cloud.
 
 Wenn Sie den Solution Accelerator für die Remoteüberwachung in einer IDE auf Ihrem lokalen Computer ausführen möchten, finden Sie entsprechende Informationen unter [Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -27,7 +27,7 @@ Wenn Sie den Solution Accelerator für die Remoteüberwachung in einer IDE auf I
 
 Für die Bereitstellung der vom Solution Accelerator für die Remoteüberwachung benötigten Azure-Dienste benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](http://azure.microsoft.com/pricing/free-trial/).
+Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Einrichtung des Computers
 
@@ -72,11 +72,11 @@ Wenn Sie diesen Befehl zum ersten Mal ausführen, lädt Docker die Microservice-
 > [!TIP]
 > Microsoft veröffentlicht regelmäßig neue Docker-Images mit neuen Funktionen. Mit den folgenden Befehlen können Sie die lokalen Docker-Container und die entsprechenden Images bereinigen, bevor Sie die neuesten Container und Images abrufen:
 
-    ```cmd/sh
-    docker list
-    docker rm <list_of_containers>
-    docker rmi <list_of_images>
-    ```
+```cmd/sh
+docker list
+docker rm <list_of_containers>
+docker rmi <list_of_images>
+```
 
 Sie können zum Anzeigen der Protokolle aus dem Container eine separate Shell verwenden. Suchen Sie zuerst die Container-ID mithilfe des `docker ps`-Befehls. Verwenden Sie dann `docker logs {container-id} --tail 1000` zum Anzeigen der letzten 1000 Einträge für den angegebenen Container.
 

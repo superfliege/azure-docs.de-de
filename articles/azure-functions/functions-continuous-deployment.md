@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301547"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548594"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 Mit Azure Functions können Sie Ihre Funktionen-App unter Verwendung von App Service-Continuous Integration problemlos bereitstellen. Functions kann mit Bitbucket, Dropbox, GitHub und Azure DevOps integriert werden. Dies ermöglicht einen Workflow, bei dem Funktionscodeaktualisierungen, die durch einen dieser integrierten Dienste erfolgt sind, die Bereitstellung in Azure auslösen. Sollten Sie noch nicht mit Azure Functions vertraut sein, sehen Sie sich zuerst die [Übersicht zu Azure Functions](functions-overview.md)an.
@@ -26,7 +26,7 @@ Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei 
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
 * Externes Repository (Git oder Mercurial)
-* [Lokales Git-Repository](../app-service/app-service-deploy-local-git.md)
+* [Lokales Git-Repository](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
 * [Azure DevOps Services](https://www.visualstudio.com/team-services/)
@@ -52,7 +52,7 @@ Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktione
  
     ![Continuous Deployment einrichten](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. Klicken Sie auf dem Blatt **Bereitstellungsquelle** auf **Quelle auswählen**, geben Sie die Informationen für die gewünschte Bereitstellungsquelle ein, und klicken Sie auf **OK**.
+3. Klicken Sie auf dem Blatt **Bereitstellungsquelle** auf **Quelle auswählen**, geben Sie die Informationen für die gewünschte Bereitstellungsquelle ein, und klicken Sie auf **OK**.
    
     ![Bereitstellungsquelle auswählen](./media/functions-continuous-deployment/choose-deployment-source.png)
 
@@ -95,7 +95,7 @@ Wenn Sie über Funktionen verfügen, die Sie im Portal erstellt und verwaltet ha
 
 - [Gewusst wie: Konfigurieren von Anmeldeinformationen für die Bereitstellung](#credentials)
 - [Gewusst wie: Herunterladen von Dateien per FTP](#downftp)
-- [Herunterladen von Dateien mithilfe des lokalen Git-Repositorys](#downgit)
+- [Gewusst wie: Herunterladen von Dateien mithilfe des lokalen Git-Repositorys](#downgit)
 
 <a name="credentials"></a>
 #### <a name="how-to-configure-deployment-credentials"></a>Gewusst wie: Konfigurieren von Anmeldeinformationen für die Bereitstellung
@@ -119,7 +119,7 @@ Bevor Sie über FTP oder ein lokales Git-Repository Dateien aus Ihrer Funktionen
 2. Verwenden Sie im FTP-Client die gesammelten Verbindungsinformationen, um eine Verbindung mit Ihrer App herzustellen und die Quelldateien für Ihre Funktionen herunterzuladen.
 
 <a name="downgit"></a>
-#### <a name="how-to-download-files-using-a-local-git-repository"></a>Herunterladen von Dateien mithilfe des lokalen Git-Repositorys
+#### <a name="how-to-download-files-using-a-local-git-repository"></a>Gewusst wie: Herunterladen von Dateien mithilfe eines lokalen Git-Repositorys
 
 1. Klicken Sie in der Funktionen-App im [Azure-Portal](https://portal.azure.com) auf **Plattformfeatures** und auf **Bereitstellungsoptionen**. 
    

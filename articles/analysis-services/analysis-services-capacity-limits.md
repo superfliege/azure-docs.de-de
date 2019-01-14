@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c2cebe2225e475ccd40460e7b10a6ba3ed428d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: beb0c1f9d6b54c029af48684fd81b38699dd2720
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723738"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630647"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Grenzwerte von Azure Analysis Services-Ressourcen und -Objekten
 
@@ -23,7 +23,7 @@ In diesem Artikel beschreibt Ressourcen- und Modellobjektgrenzwerte.
 
 ### <a name="developer-tier"></a>Developer-Tarif
 
-Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
+Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif nicht verfügbar. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
 
 |Plan  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
@@ -32,7 +32,7 @@ Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. 
 
 ### <a name="basic-tier"></a>Basic-Tarif
 
-Der Tarif wird für Produktionslösungen mit kleineren Tabellenmodellen, einer begrenzten Anzahl von gleichzeitig aktiven Benutzern und einfachen Anforderungen an die Datenaktualisierung empfohlen. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Features wie Perspektiven, mehrere Partitionen und das DirectQuery-Tabellenmodell werden für diesen Tarif *nicht unterstützt*.  
+Der Tarif wird für Produktionslösungen mit kleineren Tabellenmodellen, einer begrenzten Anzahl von gleichzeitig aktiven Benutzern und einfachen Anforderungen an die Datenaktualisierung empfohlen. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Features wie Perspektiven, mehrere Partitionen und das DirectQuery-Tabellenmodell werden für diesen Tarif nicht unterstützt.  
 
 |Plan  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
@@ -67,9 +67,9 @@ Hierbei handelt um theoretische Grenzwerte. Die Leistung wird bei geringeren Wer
 |Ebenen in einer Hierarchie|15.999|  
 |Beziehungen|8.000|  
 |Schlüsselspalten in allen Tabellen|15.999|  
-|Messungen in einer Tabellen|2^31-1 = 2.147483.647|  
+|Messungen in Tabellen|2^31-1 = 2.147483.647|  
 |Von einer Abfrage zurückgegebene Zellen|2^31-1 = 2.147483.647|  
-|Datensatzgröße der Quellabfrage|64 KB|  
+|Datensatzgröße der Quellabfrage|64 K|  
 |Länge des Objektnamens|512 Zeichen|  
 
 

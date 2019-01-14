@@ -7,19 +7,16 @@ ms.service: application-gateway
 ms.workload: infrastructure-services
 ms.date: 11/6/2018
 ms.author: victorh
-ms.openlocfilehash: f89841c7712737d2d55601c6525e975274b4a103
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: bed406f90c8da62919337c1fa9f30221b0ba8d90
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036716"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752723"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>WAF-Anforderungsgrößenlimits und Ausschlusslisten (Öffentliche Vorschau)
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>WAF-Anforderungsgrößenlimits und Ausschlusslisten
 
 Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz für Webanwendungen. Dieser Artikel beschreibt die Konfiguration von WAF-Anforderungsgrößenlimits und -Ausschlusslisten.
-
-> [!IMPORTANT]
-> Die Konfiguration von WAF-Anforderungsgrößenlimits und -Ausschlusslisten befindet sich derzeit in der öffentlichen Vorschau. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="waf-request-size-limits"></a>WAF-Anforderungsgrößenlimits
 
@@ -52,10 +49,10 @@ Sie können eine exakte Übereinstimmung für Anforderungsheader, Test, Cookies 
 
 Für Übereinstimmungskriterien werden die folgenden Operatoren unterstützt:
 
-- **Equals** (gleich): Dieser Operator wird für exakte Übereinstimmungen verwendet. Verwenden Sie beispielsweise zum Auswählen eines Headers namens **bearerToken** den Operator „equals“ mit dem Selektor **bearerToken**.
-- **Starts with** (beginnt mit): Dieser Operator gleicht alle Felder ab, die mit dem angegebenen Selektorwert beginnen.
-- **Ends with** (endet mit): Dieser Operator gleicht alle Anforderungsfelder ab, die auf den angegebenen Selektorwert enden.
-- **Contains** (enthält): Dieser Operator gleicht alle Anforderungsfelder ab, die den angegebenen Selektorwert enthalten.
+- **Equals** (gleich):  Dieser Operator wird für exakte Übereinstimmungen verwendet. Verwenden Sie beispielsweise zum Auswählen eines Headers namens **bearerToken** den Operator „equals“ mit dem Selektor **bearerToken**.
+- **Starts with** (beginnt mit):  Dieser Operator gleicht alle Felder ab, die mit dem angegebenen Selektorwert beginnen.
+- **Ends with** (endet mit):   Dieser Operator gleicht alle Anforderungsfelder ab, die auf den angegebenen Selektorwert enden.
+- **Contains** (enthält):  Dieser Operator gleicht alle Anforderungsfelder ab, die den angegebenen Selektorwert enthalten.
 
 In allen Fällen muss beim Abgleich die Groß-/Kleinschreibung beachtet werden, und reguläre Ausdrücke sind nicht als Selektor zulässig.
 

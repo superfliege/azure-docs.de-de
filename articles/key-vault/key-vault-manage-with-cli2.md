@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure Key Vault mit der CLI | Microsoft-Dokumentation
+title: Verwalten von Azure Key Vault mit der CLI – Azure Key Vault | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Automatisieren von häufigen Aufgaben in Key Vault mithilfe der Azure CLI
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 632620bf8140ba855198a9354fbd7e50604e18c3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256448"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000307"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -133,7 +133,7 @@ az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGro
 
 Die Ausgabe dieses Befehls zeigt die Eigenschaften des Schlüsseltresors, den Sie erstellt haben. Die zwei wichtigsten Eigenschaften sind diese:
 
-* **name**: Im Beispiel lautet der Name „ContosoKeyVault“. Sie verwenden diesen Namen für andere Key Vault-Befehle.
+* **Name**: Im Beispiel lautet der Name „ContosoKeyVault“. Sie verwenden diesen Namen für andere Key Vault-Befehle.
 * **vaultUri**: In diesem Beispiel lautet der URI https://contosokeyvault.vault.azure.net. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 Ihr Azure-Konto ist jetzt autorisiert, Vorgänge in diesem Schlüsseltresor durchzuführen. Derzeit ist noch keine andere Person autorisiert.
@@ -228,18 +228,18 @@ az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 Verwenden Sie [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um erweiterte Richtlinien für den Schlüsseltresor zu aktivieren. 
 
- Aktivieren Sie Key Vault für die Bereitstellung. Mit dem folgenden Befehl ermöglichen Sie virtuellen Computern das Abrufen von Zertifikaten aus dem Schlüsseltresor, die als Geheimnis gespeichert sind.
+ Aktivieren von Key Vault für die Bereitstellung: Virtuelle Computer können Zertifikate aus dem Tresor abrufen, die als Geheimnisse gespeichert sind.
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-deployment 'true'
  ``` 
 
-Aktivieren Sie Key Vault für die Datenträgerverschlüsselung. Dieser Befehl ist für die Verwendung des Tresors für Azure Disk Encryption erforderlich.
+Aktivieren von Key Vault für die Datenträgerverschlüsselung: Dieser Befehl ist für die Verwendung des Tresors für Azure Disk Encryption erforderlich.
 
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
  ```  
 
-Aktivieren Sie Key Vault für die Vorlagenbereitstellung. Mit dem folgenden Befehl ermöglichen Sie dem Resource Manager das Abrufen von Geheimnissen aus dem Tresor.
+Aktivieren von Key Vault für die Vorlagenbereitstellung: Der Resource Manager kann Geheimnisse aus dem Tresor abrufen.
  ```azurecli 
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```

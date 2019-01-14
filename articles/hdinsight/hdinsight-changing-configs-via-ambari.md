@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498663"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722922"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Verwenden von Apache Ambari zum Optimieren von HDInsight-Clusterkonfigurationen
 
-HDInsight stellt [Apache Hadoop](https://hadoop.apache.org/)-Cluster für größere Datenverarbeitungsanwendungen bereit. Das Verwalten, Überwachen und Optimieren dieser komplexen Cluster mit mehreren Knoten kann eine Herausforderung darstellen. [Apache Ambari](http://ambari.apache.org/) ist eine Webbenutzeroberfläche zum Verwalten und Überwachen von HDInsight-Linux-Clustern.  Verwenden Sie für Windows-Cluster die [Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight stellt [Apache Hadoop](https://hadoop.apache.org/)-Cluster für größere Datenverarbeitungsanwendungen bereit. Das Verwalten, Überwachen und Optimieren dieser komplexen Cluster mit mehreren Knoten kann eine Herausforderung darstellen. [Apache Ambari](https://ambari.apache.org/) ist eine Webbenutzeroberfläche zum Verwalten und Überwachen von HDInsight-Linux-Clustern.  Verwenden Sie für Windows-Cluster die [Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 Eine Einführung in die Nutzung der Ambari-Webbenutzeroberfläche finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
@@ -68,7 +68,7 @@ In den folgenden Abschnitten werden die Konfigurationsoptionen zur Optimierung d
 
 ### <a name="set-the-hive-execution-engine"></a>Festlegen des Hive-Ausführungsmoduls
 
-Hive verfügt über zwei Ausführungs-Engines: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) und [Apache TEZ](https://tez.apache.org/). Tez ist schneller als MapReduce. Für HDInsight Linux-Cluster wird Tez als Standardausführungsmodul verwendet. Gehen Sie wie folgt vor, um das Ausführungsmodul zu ändern:
+Hive verfügt über zwei Ausführungsmodule: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) und [Apache TEZ](https://tez.apache.org/). Tez ist schneller als MapReduce. Für HDInsight Linux-Cluster wird Tez als Standardausführungsmodul verwendet. Gehen Sie wie folgt vor, um das Ausführungsmodul zu ändern:
 
 1. Geben Sie auf der Hive-Registerkarte **Configs** (Konfigurationen) im Feld „Filter“ den Text **execution engine** (Ausführungsmodul) ein.
 
@@ -189,7 +189,7 @@ Hier gilt die folgende allgemeine Regel: Es ist wichtig, dass die Komprimierungs
 
     ![Hive-Ausführung – Zwischenkomprimierung](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Wählen Sie zum Komprimieren von Zwischendateien auch dann einen Komprimierungscodec mit geringeren CPU-Kosten aus, wenn der Codec nicht über eine hohe Komprimierungsausgabe verfügt.
 
 1. Fügen Sie zum Festlegen des Codecs für die Zwischenkomprimierung die benutzerdefinierte Eigenschaft `mapred.map.output.compression.codec` der Datei `hive-site.xml` oder `mapred-site.xml` hinzu.
@@ -210,7 +210,7 @@ Hier gilt die folgende allgemeine Regel: Es ist wichtig, dass die Komprimierungs
 
     Die Zwischendatei wird per Snappy-Komprimierung verkleinert. Nach dem Hinzufügen der Eigenschaft wird sie im Bereich „Custom hive-site“ (Benutzerdefinierte Hive-Site) angezeigt.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Mit dieser Prozedur wird die Datei `$HADOOP_HOME/conf/hive-site.xml` geändert.
 
 ### <a name="compress-final-output"></a>Komprimieren der endgültigen Ausgabe
@@ -299,7 +299,7 @@ Weitere Empfehlungen zum Optimieren des Hive-Ausführungsmoduls:
 
     ![Erweiterte Pig-Eigenschaften](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
-> [!NOTE]
+> [!NOTE]  
 > Alle Einstellungen auf Sitzungsebene setzen die Eigenschaftswerte in der Datei `pig.properties` außer Kraft.
 
 ### <a name="tune-execution-engine"></a>Optimieren des Ausführungsmoduls
@@ -408,7 +408,7 @@ Mit der Einstellung `hbase.client.scanner.caching` wird die Anzahl von Zeilen de
 
 ![HBase – Anzahl von abgerufenen Zeilen](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Legen Sie den Wert nicht so fest, dass der Zeitraum zwischen dem Aufruf der nächsten Methode auf einem Scanner größer als der Zeitraum für den Scanner-Timeout ist. Die Dauer bis zum Scanner-Timeout wird mit der Eigenschaft `hbase.regionserver.lease.period` definiert.
 
 

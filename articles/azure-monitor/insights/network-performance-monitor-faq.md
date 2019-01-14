@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c792881b02eba7207b20c4b4807d8afbc1adb87f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166607"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543987"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -70,6 +70,9 @@ Das Skript konfiguriert nur die lokale Windows-Firewall. Wenn Sie Netzwerkfirewa
 
 ### <a name="how-many-agents-should-i-use"></a>Wie viele Agents sollte ich verwenden?
 Sie sollten mindestens einen Agent für jedes Subnetz verwenden, das Sie überwachen möchten.
+
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Was ist die maximale Anzahl von Agents, die ich verwenden kann, bevor der Fehler „...Sie haben Ihr Konfigurationslimit erreicht“ angezeigt wird?
+NPM beschränkt die Anzahl von IPs auf 5.000 IPs pro Arbeitsbereich. Wenn ein Knoten sowohl IPv4- als auch IPv6-Adressen besitzt, wird dies als 2 IPs für diesen Knoten gezählt. Daher würde dieser Grenzwert von 5.000 IPs die Obergrenze für die Anzahl der Agents bestimmen. Sie können die inaktiven Agents von der Registerkarte „Knoten“ in „NPM“ >> „Konfigurieren“ löschen. NPM pflegt außerdem einen Verlauf aller IPs, die jemals der VM zugwiesen wurden, die den Agent hostet, und diese werden auch als separate IPs gezählt, die zu dieser Obergrenze von 5.000 IPs beitragen. Um IPs für Ihren Arbeitsbereich freizugeben, können Sie die Seite „Knoten“ verwenden, um die IPs zu löschen, die nicht verwendet werden.
 
 ## <a name="monitoring"></a>Überwachung
 

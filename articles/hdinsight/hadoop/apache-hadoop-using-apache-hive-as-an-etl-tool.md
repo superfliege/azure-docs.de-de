@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f8fb036eaca35e41d89b0a9610ebcd68e65f40f9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632542"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630257"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Verwenden von Apache Hive als Tool zum Extrahieren, Transformieren und Laden (ETL)
 
-In der Regel müssen Sie eingehende Daten bereinigen und transformieren, bevor Sie sie auf ein Ziel laden, das für Analysezwecke geeignet ist. ETL-Vorgänge (Extrahieren, Transformieren und Laden) werden genutzt, um Daten vorzubereiten und auf ein Datenziel zu laden.  Apache Hive in HDInsight kann unstrukturierte Daten lesen, die Daten je nach Bedarf verarbeiten und sie dann in ein relationales Data Warehouse für Systeme zur Entscheidungsunterstützung laden. Bei diesem Ansatz werden Daten aus der Quelle extrahiert und in skalierbarem Speicher gespeichert, z.B. Azure Storage-Blobs oder Azure Data Lake Store. Die Daten werden dann transformiert, indem eine Sequenz mit Hive-Abfragen verwendet wird, und abschließend in Hive bereitgestellt, um das Massenladen in den Zieldatenspeicher vorzubereiten.
+In der Regel müssen Sie eingehende Daten bereinigen und transformieren, bevor Sie sie auf ein Ziel laden, das für Analysezwecke geeignet ist. ETL-Vorgänge (Extrahieren, Transformieren und Laden) werden genutzt, um Daten vorzubereiten und auf ein Datenziel zu laden.  Apache Hive in HDInsight kann unstrukturierte Daten lesen, die Daten je nach Bedarf verarbeiten und sie dann in ein relationales Data Warehouse für Systeme zur Entscheidungsunterstützung laden. Bei diesem Ansatz werden Daten aus der Quelle extrahiert und in skalierbarem Speicher gespeichert, z.B. Azure Storage-Blobs oder Azure Data Lake Storage. Die Daten werden dann transformiert, indem eine Sequenz mit Hive-Abfragen verwendet wird, und abschließend in Hive bereitgestellt, um das Massenladen in den Zieldatenspeicher vorzubereiten.
 
 ## <a name="use-case-and-model-overview"></a>Übersicht über den Anwendungsfall und das Modell
 
@@ -30,7 +30,7 @@ Hadoop wird normalerweise in ETL-Prozessen verwendet, bei denen entweder eine ho
 
 Normalerweise gelten für die Verwendung von Hive zur Durchführung des ETL-Vorgangs die folgenden Schritte:
 
-1. Laden Sie Daten in Azure Data Lake Store oder Azure Blob Storage.
+1. Laden Sie Daten in Azure Data Lake Storage oder Azure Blob Storage.
 2. Erstellen Sie eine Metadatenspeicher-Datenbank (mit Azure SQL-Datenbank), die von Hive beim Speichern Ihrer Schemas verwendet werden kann.
 3. Erstellen Sie einen HDInsight-Cluster, und stellen Sie eine Verbindung mit dem Datenspeicher her.
 4. Definieren Sie das Schema, das zur Lesezeit auf Daten im Datenspeicher angewendet werden soll:
@@ -51,7 +51,7 @@ Normalerweise gelten für die Verwendung von Hive zur Durchführung des ETL-Vorg
 
 5. Transformieren Sie die Daten, und laden Sie sie auf das Ziel.  Es gibt mehrere Möglichkeiten, Hive während der Transformation und beim Laden zu verwenden:
 
-    * Führen Sie mit Hive das Abfragen und Vorbereiten der Daten durch. Speichern Sie sie im CSV-Format in Azure Data Lake Store oder Azure Blob Storage.  Verwenden Sie anschließend ein Tool wie SQL Server Integration Services (SSIS), um diese CSVs zu beschaffen, und laden Sie die Daten dann in eine relationale Zieldatenbank, z.B. SQL Server.
+    * Führen Sie mit Hive das Abfragen und Vorbereiten der Daten durch. Speichern Sie sie im CSV-Format in Azure Data Lake Storage oder Azure Blob Storage.  Verwenden Sie anschließend ein Tool wie SQL Server Integration Services (SSIS), um diese CSVs zu beschaffen, und laden Sie die Daten dann in eine relationale Zieldatenbank, z.B. SQL Server.
     * Fragen Sie die Daten aus Excel oder über C# ab, indem Sie den Hive ODBC-Treiber verwenden.
     * Verwenden Sie [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md), um die vorbereiteten CSV-Flatfiles zu lesen, und laden Sie sie in die relationale Zieldatenbank.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409920"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743356"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -180,10 +180,10 @@ Ein Beispiel zum Erstellen eines HDInsight-Clusters, der die SAS verwendet, befi
    > [!IMPORTANT]  
    > Wenn Sie zur Angabe des HTTP/S- oder SSH-Benutzernamens und Kennworts aufgefordert werden, müssen Sie ein Kennwort angeben, das die folgenden Kriterien erfüllt:
    >
-   > * Mindestens 10 Zeichen
-   > * Mindestens eine Ziffer
-   > * Mindestens ein nicht alphanumerisches Zeichen
-   > * Mindestens ein Groß- oder Kleinbuchstaben
+   > * Mindestens 10 Zeichen.
+   > * Mindestens eine Ziffer.
+   > * Mindestens ein nicht alphanumerisches Zeichen.
+   > * Mindestens ein Groß- oder Kleinbuchstaben.
 
 Die Ausführung dieses Skripts dauert eine Weile, meist etwa 15 Minuten. Wenn das Skript ohne Fehler abgeschlossen wird, wurde der Cluster erstellt.
 
@@ -290,10 +290,10 @@ Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folge
 
 **Lösung:** Verwenden Sie ein Kennwort, das folgende Kriterien erfüllt:
 
-* Mindestens 10 Zeichen
-* Mindestens eine Ziffer
-* Mindestens ein nicht alphanumerisches Zeichen
-* Mindestens ein Groß- oder Kleinbuchstaben
+* Mindestens 10 Zeichen.
+* Mindestens eine Ziffer.
+* Mindestens ein nicht alphanumerisches Zeichen.
+* Mindestens ein Groß- oder Kleinbuchstaben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

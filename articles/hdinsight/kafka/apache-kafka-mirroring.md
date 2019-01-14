@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309037"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581027"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight
 
@@ -22,7 +22,7 @@ Erfahren Sie, wie Sie die Spiegelungsfunktion von Apache Kafka verwenden, um The
 
 In diesem Beispiel wird das Spiegelung zum Replizieren von Themen zwischen zwei HDInsight-Clustern verwendet. Beide Cluster befinden sich in einem virtuellen Azure-Netzwerk in der gleichen Region.
 
-> [!WARNING]
+> [!WARNING]  
 > Die Spiegelung sollte nicht als Mittel zum Erzielen von Fehlertoleranz angesehen werden. Der Versatz von Elementen in einem Thema unterscheidet sich für Quell- und Zielcluster, sodass diese für Clients nicht austauschbar sind.
 >
 > Falls Sie Bedenken wegen der Fehlertoleranz haben, sollten Sie die Replikation für die Themen in Ihrem Cluster festlegen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
@@ -51,7 +51,7 @@ Wenn Sie eine Spiegelung zwischen Kafka-Clustern in unterschiedlichen Netzwerken
 
     Beim Erstellen eines virtuellen Azure-Netzwerks müssen Sie einen benutzerdefinierten DNS-Server und die IP-Adresse für den Server angeben, anstatt das automatisch bereitgestellte DNS des Netzwerks zu verwenden. Nach der Erstellung des virtuellen Netzwerks müssen Sie dann einen virtuellen Azure-Computer erstellen, für den diese IP-Adresse verwendet wird, und anschließend die DNS-Software darauf installieren und konfigurieren.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Erstellen und konfigurieren Sie den benutzerdefinierten DNS-Server, bevor Sie HDInsight im virtuellen Netzwerk installieren. Es ist keine zusätzliche Konfiguration erforderlich, damit HDInsight den für das virtuelle Netzwerk konfigurierten DNS-Server verwenden kann.
 
 Weitere Informationen zum Verbinden von zwei virtuellen Azure-Netzwerken finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
@@ -66,7 +66,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk und Kafka-Cluster manuell zu
    
     Die Azure Resource Manager-Vorlage finden Sie unter **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten. Diese Vorlage erstellt einen Kafka-Cluster, der drei Workerknoten enthält.
 
 2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Blatt **Benutzerdefinierte Bereitstellung** aufzufüllen:
@@ -77,9 +77,9 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk und Kafka-Cluster manuell zu
 
     * **Standort**: Wählen Sie einen Standort in Ihrer Nähe aus.
      
-    * **Base Cluster Name** (Cluster-Basisname): Dieser Wert wird als Basisname für den Kafka-Cluster verwendet. Beispiel: Mit der Eingabe von **hdi** werden Cluster mit den Namen **source-hdi** und **dest-hdi** erstellt.
+    * **Basisclustername**: Dieser Wert wird als Basisname für den Kafka-Cluster verwendet. Beispiel: Mit der Eingabe von **hdi** werden Cluster mit den Namen **source-hdi** und **dest-hdi** erstellt.
 
-    * **Benutzername für Clusteranmeldung**: Administratorbenutzername für die Kafka-Quell- und -Zielcluster.
+    * **Benutzername für Clusteranmeldung**: Der Administratorbenutzername für die Kafka-Quell- und -Zielcluster.
 
     * **Kennwort für Clusteranmeldung**: Das Administratorbenutzerkennwort für die Kafka-Quell- und -Zielcluster.
 
@@ -91,7 +91,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk und Kafka-Cluster manuell zu
 
 4. Aktivieren Sie zum Schluss **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Namen der HDInsight-Cluster lauten **source-BASENAME** und **dest-BASENAME**, wobei BASENAME der Name ist, den Sie für die Vorlage angegeben haben. Sie verwenden diese Namen in späteren Schritten, wenn Sie eine Verbindung mit den Clustern herstellen.
 
 ## <a name="create-topics"></a>Erstellen von Themen
@@ -228,7 +228,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk und Kafka-Cluster manuell zu
 
         Ersetzen Sie `testtopic` durch den Namen des zu erstellenden Themas.
 
-    * **Konfigurieren des Clusters für die automatische Themaerstellung**: Bei dieser Option können MirrorMaker zum automatischen Erstellen von Themen verwendet werden. Die Themen werden jedoch möglicherweise mit einer unterschiedlichen Anzahl von Partitionen bzw. einem anderen Replikationsfaktor als im Quellthema erstellt.
+    * **Konfigurieren des Clusters für die automatische Themaerstellung**: Bei dieser Option kann MirrorMaker zum automatischen Erstellen von Themen verwendet werden. Die Themen werden jedoch möglicherweise mit einer unterschiedlichen Anzahl von Partitionen bzw. einem anderen Replikationsfaktor als im Quellthema erstellt.
 
         Um den Zielcluster für das automatische Erstellen von Themen zu konfigurieren, führen Sie diese Schritte aus:
 

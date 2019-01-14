@@ -1,5 +1,5 @@
 ---
-title: Integrieren von Azure Time Series Insights mit Remoteüberwachung | Microsoft-Dokumentation
+title: Integrieren von Time Series Insights mit Remoteüberwachung – Azure | Microsoft-Dokumentation
 description: In diesem Gewusst wie-Artikel wird beschrieben, wie Sie Time Series Insights für eine vorhandene Lösung für die Remoteüberwachung konfigurieren, die nicht bereits über Time Series Insights verfügt.
 author: aditidugar
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253815"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633741"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Stellen Sie als Nächstes Time Series Insights als zusätzliche Ressource in Ihrer Lösung für die Remoteüberwachung bereit, und stellen Sie dafür eine Verbindung mit dem IoT-Hub her.
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Wählen Sie **Ressource erstellen** > **Internet der Dinge** > **Time Series Insights**.
 
@@ -164,12 +164,13 @@ Im nächsten Schritt wird der Azure Stream Analytics-Manager-Microservice konfig
 
 .NET: 
 
-```
+```cmd/sh
 docker pull azureiotpcs/asa-manager-dotnet:1.0.2
 ```
 
 Java:
-```
+
+```cmd/sh
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
@@ -178,13 +179,14 @@ docker pull azureiotpcs/asa-manager-java:1.0.2
 Führen Sie einen Pull für den aktuellen Telemetriedaten-Microservice aus, indem Sie an der Eingabeaufforderung den folgenden Befehl eingeben:
 
 .NET:
-```
+
+```cmd/sh
 docker pull azureiotpcs/telemetry-dotnet:1.0.2
 ```
 
 Java:
 
-```
+```cmd/sh
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
@@ -192,7 +194,7 @@ docker pull azureiotpcs/telemetry-java:1.0.2
 
 Wir empfehlen Ihnen, die Benutzeroberfläche so anzupassen, dass sie einen einfachen Link zur Umgebung enthält, damit Sie Ihre Daten leicht im Time Series Insights-Explorer anzeigen können. Führen Sie hierzu einen Pull für die aktuellen Änderungen zur Webbenutzeroberfläche aus, indem Sie den folgenden Befehl verwenden:
 
-```
+```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 ```
 
@@ -220,7 +222,7 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `basic` für die 
 
 1. Fügen Sie jedem Microservice in der Docker Compose-YAML-Datei und dem Skript `env-setup` auf dem virtuellen Computer die folgenden Umgebungsvariablen hinzu:
 
-    ```
+    ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
     PCS_TSI_FQDN={TSI Data Access FQDN}
     PCS_AAD_TENANT={AAD Tenant Id}
@@ -244,7 +246,7 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `standard` für d
 
 1. Suchen Sie nach der Konfigurationszuordnung, um die folgenden neuen Umgebungsvariablen für TSI hinzuzufügen:
 
-    ```
+    ```yaml
     telemetry.storage.type: "tsi"
     telemetry.tsi.fqdn: "{TSI Data Access FQDN}"
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
@@ -252,7 +254,7 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `standard` für d
 
 4. Bearbeiten Sie die YAML-Vorlagendatei für den Telemetriedienst-Pod:
 
-    ```
+    ```yaml
     - name: PCS_AAD_TENANT
         valueFrom:
         configMapKeyRef:
@@ -282,7 +284,7 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `standard` für d
 
 5. Bearbeiten Sie die YAML-Vorlagendatei für den ASA-Manager-Dienst-Pod:
 
-    ```
+    ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
         valueFrom:
         configMapKeyRef:

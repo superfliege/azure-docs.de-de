@@ -1,22 +1,21 @@
 ---
 title: Leistungsempfehlungen in Azure Database for PostgreSQL
 description: Dieser Artikel beschreibt die Empfehlungen zur Leistung, die in Azure Database for PostgreSQL erzielt werden kann.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 46a4e69ecb08276e12ccc197de2d3ad838628b78
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 1dedc08f27d1a483290dc61cce879290ca66592d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378600"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548091"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Leistungsempfehlungen in Azure Database for PostgreSQL
 
-**Gilt für:** Azure Database for PostgreSQL 9.6 und 10
+**Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
 
 > [!IMPORTANT]
 > Die Leistungsempfehlungen befinden sich in der Public Preview.

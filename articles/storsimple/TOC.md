@@ -109,7 +109,7 @@
 ##### [Verwalten von Speicherkonten](storsimple-8000-manage-storage-accounts.md)
 ##### [Verwalten von Volumecontainern](storsimple-8000-manage-volume-containers.md)
 ##### [Verwalten von Volumes – aktuell](storsimple-8000-manage-volumes-u2.md)
-###### [Häufig gestellte Fragen: lokale Volumes](storsimple-8000-local-volume-faq.md)
+###### [Häufig gestellte Fragen: Lokale Volumes](storsimple-8000-local-volume-faq.md)
 ##### [Rollenbasierte Zugriffssteuerung](storsimple-8000-role-based-access-control.md)
 ##### [Verwalten von ACRs](storsimple-8000-manage-acrs.md)
 ##### [Verwalten von Bandbreitenvorlagen](storsimple-8000-manage-bandwidth-templates.md)
@@ -209,7 +209,7 @@
 ## Verweis
 ### [REST-API](https://docs.microsoft.com/rest/api/storsimple)
 ### [Windows PowerShell für StorSimple-Cmdlets](https://technet.microsoft.com/library/dn688168.aspx)
-
+### [Resource Manager: Vorlage](/azure/templates/microsoft.storsimple/allversions)
 
 # StorSimple Data Manager
 

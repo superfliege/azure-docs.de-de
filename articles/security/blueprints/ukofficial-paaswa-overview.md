@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409019"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718493"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -102,17 +102,17 @@ Bei [Azure-Ratgeber](https://docs.microsoft.com/azure/advisor/advisor-overview) 
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Für Azure-Web-Apps wird eine vollständig verwaltete Webhostingumgebung für Webanwendungen bereitgestellt, die in Java, PHP, Node.js, Python, HTML und C# entwickelt werden, ohne dass die Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) oder ein anderes Git-Repository.
+Azure App Service stellt eine vollständig verwaltete Webhostingumgebung für Webanwendungen bereit, die in Java, PHP, Node.js, Python, HTML und C# entwickelt werden, ohne dass die Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) oder ein anderes Git-Repository.
 
 App Service ist [mit ISO, SOC und PCI konform](https://www.microsoft.com/TrustCenter/) und kann Benutzer per [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) oder Anmeldung für soziale Netzwerke ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter) und [Microsoft-Authentifizierung](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)) authentifiziert werden.
 
-Die Pläne „Basic“, „Standard“ und „Premium“ eignen sich für Produktionsworkloads und werden auf dedizierten virtuellen Computerinstanzen ausgeführt. Jede Instanz kann mehrere Anwendungen und Domänen unterstützen. Außerdem unterstützt App Service [Einschränkungen für IP-Adressen](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), um den Datenverkehr für vertrauenswürdige IP-Adressen zu schützen, falls dies erforderlich ist. Darüber hinaus werden die [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) unterstützt, um für eine sichere Verbindung mit anderen PaaS-Diensten zu sorgen, z. B. [Key Vault](https://azure.microsoft.com/services/key-vault/) und [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/). Wenn zusätzliche Sicherheit benötigt wird, werden Ihre Apps unter dem Isolated-Plan in einer privaten, dedizierten Azure-Umgebung gehostet. Er eignet sich ideal für Apps, die eine sichere Verbindung mit dem lokalen Netzwerk oder zusätzliche Leistung und Skalierung erfordern.
+Die Pläne „Basic“, „Standard“ und „Premium“ eignen sich für Produktionsworkloads und werden auf dedizierten virtuellen Computerinstanzen ausgeführt. Jede Instanz kann mehrere Anwendungen und Domänen unterstützen. Außerdem unterstützt App Service [Einschränkungen für IP-Adressen](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), um den Datenverkehr für vertrauenswürdige IP-Adressen zu schützen, falls dies erforderlich ist. Darüber hinaus werden die [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/app-service/overview-managed-identity) unterstützt, um für eine sichere Verbindung mit anderen PaaS-Diensten zu sorgen, z. B. [Key Vault](https://azure.microsoft.com/services/key-vault/) und [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/). Wenn zusätzliche Sicherheit benötigt wird, werden Ihre Apps unter dem Isolated-Plan in einer privaten, dedizierten Azure-Umgebung gehostet. Er eignet sich ideal für Apps, die eine sichere Verbindung mit dem lokalen Netzwerk oder zusätzliche Leistung und Skalierung erfordern.
 
 Mit dieser Vorlage werden die folgenden App Service-Features bereitgestellt:
 
-- App Service-Plantarif [Standard](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)
-- Mehrere Web-App-[Bereitstellungsslots](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): Dev, Vorschauversion, QA, UAT und natürlich Produktion (Standardslot).
-- [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) für die Verbindungsherstellung mit [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (kann auch verwendet werden, um Zugriff auf [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) zu ermöglichen) 
+- App Service-Plantarif [Standard](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)
+- Mehrere App Service-[Bereitstellungsslots](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Dev, Vorschauversion, QA, UAT und natürlich Produktion (Standardslot).
+- [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/app-service/overview-managed-identity) für die Verbindungsherstellung mit [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (kann auch verwendet werden, um Zugriff auf [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) zu ermöglichen) 
 - Integration mit [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) zur Überwachung der Leistung
 - [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - [Metrikwarnungen](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -163,7 +163,7 @@ Ausführliche Informationen zum Schützen von Azure Storage finden Sie im [Siche
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>Azure Key Vault in dieser Vorlage
 
-- Enthält den Speicherzugriffsschlüssel, und die [verwaltete Identität](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) der für den Kunden bestimmten Web-App verfügt über Lesezugriff
+- Enthält den Speicherzugriffsschlüssel, und die [verwaltete Identität](https://docs.microsoft.com/azure/app-service/overview-managed-identity) der für den Kunden bestimmten Web-App verfügt über Lesezugriff
 - Enthält das SQL Server-DBA-Kennwort (in einem separaten Tresor)
 - Diagnoseprotokollierung
 

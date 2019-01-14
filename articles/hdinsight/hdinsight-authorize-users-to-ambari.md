@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496876"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725268"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorisieren von Benutzern für Apache Ambari-Ansichten
 
 [HDInsight-Cluster mit aktiviertem Enterprise-Sicherheitspaket (ESP)](./domain-joined/apache-domain-joined-introduction.md) stellen Funktionen auf Unternehmensniveau bereit, einschließlich einer auf Azure Active Directory basierenden Authentifizierung. Sie können [neue Benutzer synchronisieren](hdinsight-sync-aad-users-to-cluster.md), die zu Azure AD-Gruppen mit Clusterzugriff hinzugefügt wurden, um diesen bestimmten Benutzern das Ausführen bestimmter Aktionen zu ermöglichen. Arbeiten mit Benutzern, Gruppen und Berechtigungen in [Apache Ambari](https://ambari.apache.org/) wird sowohl für ESP-HDInsight-Cluster als auch für den standardmäßigen HDInsight-Cluster unterstützt.
 
-Active Directory-Benutzer können sich mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie Clusterinteraktionen mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie [Hue](http://gethue.com/), Ambari-Ansichten, ODBC, JDBC, PowerShell und REST-APIs authentifizieren.
+Active Directory-Benutzer können sich mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie Clusterinteraktionen mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie [Hue](https://gethue.com/), Ambari-Ansichten, ODBC, JDBC, PowerShell und REST-APIs authentifizieren.
 
-> [!WARNING]
+> [!WARNING]  
 > Ändern Sie nicht das Kennwort für den Ambari-Watchdog (hdinsightwatchdog) in Ihrem Linux-basierten HDInsight-Cluster. Durch eine Kennwortänderung wird die Möglichkeit zum Verwenden von Skriptaktionen oder zum Durchführen von Skalierungsvorgängen mit Ihren Cluster deaktiviert.
 
 Falls noch nicht geschehen, führen Sie [diese Anweisungen](./domain-joined/apache-domain-joined-configure.md) aus, um einen neuen ESP-Cluster bereitzustellen.

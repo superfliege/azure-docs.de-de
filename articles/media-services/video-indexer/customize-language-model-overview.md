@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: anzaman
-ms.openlocfilehash: aa2c089659d202222e7dd5e41ae56bf2a683bb1e
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: b309d0969eb313c90e94af0a32123b7d45b4bef0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323028"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601388"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Anpassen eines Sprachmodells mit Video Indexer
 
-Video Indexer unterstützt die automatische Spracherkennung durch die Integration in Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Sie können das Sprachmodell anpassen, indem Sie den Anpassungstext hochladen. Dies ist Text aus der Domäne, an dessen Vokabular sich das Modul anpassen soll. Nachdem Sie Ihr Modell trainiert haben, werden neue Wörter aus dem Anpassungstext erkannt, und die Standardaussprache wird übernommen. Darüber hinaus lernt das Sprachmodell neue Wortsequenzen, für die die Wahrscheinlichkeit des Auftretens hoch ist. Benutzerdefinierte Sprachmodelle werden für Englisch, Deutsch, Spanisch, Arabisch, Französisch, Hindi, Italienisch, Japanisch, Portugiesisch, Russisch und Chinesisch unterstützt.
+Video Indexer unterstützt die automatische Spracherkennung durch die Integration in Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Sie können das Sprachmodell anpassen, indem Sie den Anpassungstext hochladen. Dies ist Text aus der Domäne, an dessen Vokabular sich das Modul anpassen soll. Nachdem Sie Ihr Modell trainiert haben, werden neue Wörter aus dem Anpassungstext erkannt, und die Standardaussprache wird übernommen. Darüber hinaus lernt das Sprachmodell neue Wortsequenzen, für die die Wahrscheinlichkeit des Auftretens hoch ist. Benutzerdefinierte Sprachmodelle werden für Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch (vereinfacht), Japanisch, Russisch, Portugiesisch (Brasilien), Hindi und Koreanisch unterstützt. 
 
 Wir verwenden ein sehr spezifisches Wort wie „Kubernetes“ (im Kontext des Azure Kubernetes Service) als Beispiel. Da das Wort für Video Indexer neu ist, wird es als „Communitys“ erkannt. Sie müssen das Modell trainieren, damit „Kubernetes“ richtig erkannt wird. In anderen Fällen sind die Wörter zwar vorhanden, aber das Sprachmodell erwartet ihr Vorkommen in einem bestimmten Kontext nicht. Im Englischen handelt es sich bei „container service“ beispielsweise nicht um eine Folge von zwei Wörtern, die von einem nicht speziell trainierten Sprachmodell als spezifische Wortfolge erkannt wird.
 

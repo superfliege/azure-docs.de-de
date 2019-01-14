@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 127bd965fdce93ae44fbb38a037477174c9cb3fe
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583243"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652234"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurieren von Apache Spark-Einstellungen
 
@@ -33,7 +33,7 @@ Verwenden Sie die am besten geeignete Spark-Version für Ihren Cluster.  Der HDI
 Beim Erstellen eines neuen Clusters können Sie zwischen verschiedenen Spark-Versionen wählen. Die vollständige Liste finden Sie unter [HDInsight-Komponenten und -Versionen](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 
 
-> [!NOTE]
+> [!NOTE]  
 > Die Standardversion von Apache Spark im HDInsight-Dienst kann ohne vorherige Ankündigung geändert werden. Wenn eine Versionsabhängigkeit vorliegt, empfiehlt Microsoft, die spezifische Version anzugeben, wenn Sie Cluster mit .NET SDK, Azure PowerShell und der klassischen Azure-Befehlszeilenschnittstelle erstellen.
 
 Apache Spark verfügt über drei Speicherorte für die Systemkonfiguration:
@@ -76,7 +76,7 @@ Zum Anzeigen und Ändern einzelner Spark-Konfigurationswerte wählen Sie einen L
 
 Wenn Sie eine nicht standardmäßige Gruppe von Konfigurationswerten erstellen, können Sie auch den Verlauf der Konfigurationsaktualisierungen anzeigen.  Dieser Konfigurationsverlauf kann sich als nützlich erweisen, wenn Sie überprüfen möchten, welche nicht standardmäßige Konfiguration eine optimale Leistung liefert.
 
-> [!NOTE]
+> [!NOTE]  
 > Wenn Sie allgemeine Spark-Clusterkonfigurationseinstellungen anzeigen, jedoch nicht ändern möchten, wählen Sie die Registerkarte **Environment** (Umgebung) auf der Benutzeroberfläche der **Spark-Aufträge** der obersten Ebene aus.
 
 ## <a name="configuring-spark-executors"></a>Konfigurieren von Spark-Executors
@@ -89,7 +89,7 @@ Spark-Aufträge verwenden Workerressourcen, insbesondere Arbeitsspeicher. Daher 
 
 Dabei werden die folgenden drei Schlüsselparameter zur Optimierung von Spark-Konfigurationen zur Verbesserung von Anwendungsanforderungen häufig angepasst: `spark.executor.instances`, `spark.executor.cores` und `spark.executor.memory`. Ein Executor ist ein Prozess, der für eine Spark-Anwendung gestartet wird. Ein Executor wird auf dem Workerknoten ausgeführt und ist für die Ausführung der Aufgaben für die Anwendung zuständig. Die Standardanzahl von Executors und die Executorgrößen für jeden Cluster werden basierend auf der Anzahl der Workerknoten und der Größe der Workerknoten berechnet. Diese werden in `spark-defaults.conf` im Clusterhauptknoten gespeichert.  Sie können diese Werte in einem ausgeführten Cluster durch Auswählen des Links **Custom spark-defaults** in der Ambari-Webbenutzeroberfläche bearbeiten.  Nachdem Sie Änderungen vorgenommen haben, werden Sie aufgefordert, alle betroffenen Dienste neu zu starten (**Restart**).
 
-> [!NOTE]
+> [!NOTE]  
 > Diese drei Konfigurationsparameter können auf Clusterebene (für alle Anwendungen, die im Cluster ausgeführt werden) konfiguriert und auch für jede einzelne Anwendung angegeben werden.
 
 Die Spark-Anwendungsbenutzeroberfläche stellt eine weitere Informationsquelle zu den von den Spark-Executors verwendeten Ressourcen dar.  Wählen Sie in der Spark-Benutzeroberfläche die Registerkarte **Executors** aus, um die Zusammenfassungs- und Detailansicht der Konfiguration und der von den Executors verwendeten Ressourcen anzuzeigen.  In diesen Ansichten können Sie feststellen, ob Standardwerte für Spark-Executors für den gesamten Cluster oder einen bestimmten Satz von Auftragsausführungen geändert werden müssen.
@@ -123,15 +123,15 @@ YARN steuert den maximal von den Containern auf jedem Spark-Knoten verwendeten G
 
 Spark-Cluster in HDInsight enthalten standardmäßig eine Reihe von Komponenten. Jede dieser Komponenten umfasst Standardkonfigurationswerte, die nach Bedarf überschrieben werden können.
 
-* Spark Core: Spark Core, Spark SQL, Spark Streaming-APIs, GraphX und MLlib
-* Anaconda: ein Python-Paket-Manager
-* [Apache Livy](https://livy.incubator.apache.org/): die Apache Spark-REST-API, die zum Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster verwendet wird
-* [Jupyter](https://jupyter.org/) und [Apache Zeppelin](https://zeppelin.apache.org/) Notebooks: interaktive browserbasierte Benutzeroberfläche zur Interaktion mit dem Spark-Cluster
-* ODBC-Treiber: verbindet Spark-Cluster in HDInsight mit BI-Tools (Business Intelligence), z.B. Microsoft Power BI und Tableau
+* Spark Core: Spark Core, Spark SQL, Spark Streaming-APIs, GraphX und Apache Spark MLlib.
+* Anaconda: ein Python-Paket-Manager.
+* [Apache Livy](https://livy.incubator.apache.org/): die Apache Spark-REST-API, die zum Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster verwendet wird.
+* [Jupyter](https://jupyter.org/) und [Apache Zeppelin](https://zeppelin.apache.org/) Notebooks: interaktive browserbasierte Benutzeroberfläche zur Interaktion mit dem Spark-Cluster.
+* ODBC-Treiber: verbindet Spark-Cluster in HDInsight mit BI-Tools (Business Intelligence), z.B. Microsoft Power BI und Tableau.
 
 Für Anwendungen, die im Jupyter Notebook ausgeführt werden, können Sie mit dem Befehl `%%configure` Konfigurationsänderungen im eigentlichen Notebook vornehmen. Die Konfigurationsänderungen werden auf die Spark-Aufträge angewendet, die über Ihre Notebook-Instanz ausgeführt werden. Sie sollten diese Änderungen am Anfang der Anwendung vornehmen, bevor Sie die erste Codezelle ausführen. Die geänderte Konfiguration wird auf die Livy-Sitzung angewendet, wenn sie erstellt wird.
 
-> [!NOTE]
+> [!NOTE]  
 > Zum Ändern der Konfiguration zu einem späteren Zeitpunkt in der Anwendung verwenden Sie den Parameter `-f` (force). Dadurch geht jedoch der gesamte Fortschritt in der Anwendung verloren.
 
 Der folgende Code zeigt, wie die Konfiguration für eine in einem Jupyter Notebook ausgeführte Anwendung geändert wird.

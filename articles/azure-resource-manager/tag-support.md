@@ -4,14 +4,14 @@ description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält De
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/20/2018
+ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 580955d3c6fd7a33c152e49e601d8078eb169a22
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 50ea7a2446b5560bd208b2da128fa877068ce452
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409665"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000290"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt.
@@ -24,15 +24,20 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="ad-hybrid-health-service"></a>AD Hybrid Health Service
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| services | Nein  | 
-| addsservices | Nein  | 
-| Konfiguration | Nein  | 
-| agents | Nein  | 
+| addsservices | Nein  |
 | aadsupportcases | Nein  | 
-| reports | Nein  | 
-| servicehealthmetrics | Nein  | 
-| Protokolle | Nein  | 
+| agents | Nein  | 
 | anonymousapiusers | Nein  | 
+| Konfiguration | Nein  | 
+| Protokolle | Nein  | 
+| reports | Nein  | 
+| services | Nein  | 
+| servicehealthmetrics | Nein  | 
+
+## <a name="aks"></a>AKS
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| managedClusters | JA | 
 
 ## <a name="analysis-services"></a>Analysis Services
 | Ressourcentyp | Tagunterstützung |
@@ -43,11 +48,11 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | apiManagementAccounts | Nein  | 
-| apiManagementAccounts/connectionProviders | Nein  | 
-| apiManagementAccounts/connections | Nein  | 
-| apiManagementAccounts/connectionAcls | Nein  | 
-| apiManagementAccounts/connectionProviderAcls | Nein  | 
 | apiManagementAccounts/apis | Nein  | 
+| apiManagementAccounts/connectionAcls | Nein  | 
+| apiManagementAccounts/connectionProviders | Nein  | 
+| apiManagementAccounts/connectionProviderAcls | Nein  | 
+| apiManagementAccounts/connections | Nein  | 
 
 ## <a name="api-management"></a>API Management
 | Ressourcentyp | Tagunterstützung |
@@ -58,11 +63,48 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | automationAccounts | JA | 
-| automationAccounts/runbooks | JA | 
 | automationAccounts/configurations | JA | 
-| automationAccounts/webhooks | Nein  | 
-| automationAccounts/softwareUpdateConfigurations | Nein  | 
 | automationAccounts/jobs | Nein  | 
+| automationAccounts/runbooks | JA | 
+| automationAccounts/softwareUpdateConfigurations | Nein  | 
+| automationAccounts/webhooks | Nein  | 
+
+## <a name="azure-database-for-mariadb"></a>Azure Database for MariaDB
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| servers | JA | 
+| servers/configurations | Nein  |
+| servers/databases | Nein  |
+| servers/firewallRules | Nein  |
+| servers/recoverableServers | Nein  | 
+| servers/securityAlertPolicies | Nein  |
+| servers/virtualNetworkRules | Nein  | 
+
+## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| servers | JA | 
+| servers/configurations | Nein  |
+| servers/databases | Nein  |
+| servers/firewallRules | Nein  |
+| servers/recoverableServers | Nein  | 
+| servers/securityAlertPolicies | Nein  |
+| servers/virtualNetworkRules | Nein  | 
+
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| servers | JA | 
+| servers/advisors | Nein  | 
+| servers/configurations | Nein  |
+| servers/databases | Nein  |
+| servers/firewallRules | Nein  |
+| servers/queryTexts | Nein  | 
+| servers/recoverableServers | Nein  | 
+| servers/securityAlertPolicies | Nein  |
+| servers/topQueryStatistics | Nein  | 
+| servers/virtualNetworkRules | Nein  | 
+| servers/waitStatistics | Nein  | 
 
 ## <a name="batch"></a>Batch
 | Ressourcentyp | Tagunterstützung |
@@ -87,12 +129,12 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="cdn"></a>CDN
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| edgenodes | Nein  | 
 | Profile | JA | 
 | profiles/endpoints | JA | 
-| profiles/endpoints/origins | Nein  | 
 | profiles/endpoints/customdomains | Nein  | 
+| profiles/endpoints/origins | Nein  | 
 | validateProbe | Nein  | 
-| edgenodes | Nein  | 
 
 ## <a name="classic-compute"></a>Klassische Computeressourcen
 | Ressourcentyp | Tagunterstützung |
@@ -114,8 +156,8 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | virtualNetworks | Nein  | 
-| virtualNetworks/virtualNetworkPeerings | Nein  | 
 | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nein  | 
+| virtualNetworks/virtualNetworkPeerings | Nein  | 
 
 ## <a name="classic-storage"></a>Klassischer Speicher
 | Ressourcentyp | Tagunterstützung |
@@ -127,23 +169,23 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | availabilitySets | JA | 
-| virtualMachines | JA | 
-| virtualMachines/extensions | JA | 
-| virtualMachineScaleSets | JA | 
-| virtualMachineScaleSets/extensions | Nein  | 
-| virtualMachineScaleSets/virtualMachines | Nein  | 
-| virtualMachineScaleSets/networkInterfaces | Nein  | 
-| virtualMachineScaleSets/virtualMachines/networkInterfaces | Nein  | 
-| virtualMachineScaleSets/publicIPAddresses | Nein  | 
+| disks | JA | 
+| images | JA | 
 | restorePointCollections | JA | 
 | restorePointCollections/restorePoints | Nein  | 
-| virtualMachines/diagnosticSettings | Nein  | 
-| virtualMachines/metricDefinitions | Nein  | 
 | sharedVMImages | JA | 
 | sharedVMImages/versions | JA | 
-| disks | JA | 
 | snapshots | JA | 
-| images | JA | 
+| virtualMachines | JA | 
+| virtualMachines/diagnosticSettings | Nein  | 
+| virtualMachines/extensions | JA | 
+| virtualMachines/metricDefinitions | Nein  | 
+| virtualMachineScaleSets | JA | 
+| virtualMachineScaleSets/extensions | Nein  | 
+| virtualMachineScaleSets/networkInterfaces | Nein  | 
+| virtualMachineScaleSets/publicIPAddresses | Nein  | 
+| virtualMachineScaleSets/virtualMachines | Nein  | 
+| virtualMachineScaleSets/virtualMachines/networkInterfaces | Nein  | 
 
 ## <a name="container"></a>Container
 | Ressourcentyp | Tagunterstützung |
@@ -155,6 +197,14 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | ------------- | ----------- |
 | containerGroups | JA | 
 | serviceAssociationLinks | Nein  | 
+
+## <a name="container-registry"></a>Containerregistrierung
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| registries | JA | 
+| registries/replications | JA |
+| registries/tasks | JA |
+| registries/webhooks | JA |
 
 ## <a name="container-service"></a>Container Service
 | Ressourcentyp | Tagunterstützung |
@@ -177,6 +227,11 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | ------------- | ----------- |
 | Connectors | JA | 
 
+## <a name="data-box"></a>Data Box
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| jobs | JA | 
+
 ## <a name="data-box-edge"></a>Data Box Edge
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
@@ -196,11 +251,11 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | dataFactories | JA | 
-| factories | JA | 
-| factories/integrationRuntimes | Nein  | 
 | dataFactories/diagnosticSettings | Nein  | 
 | dataFactories/metricDefinitions | Nein  | 
 | dataFactorySchema | Nein  | 
+| factories | JA | 
+| factories/integrationRuntimes | Nein  | 
 
 ## <a name="devices"></a>Geräte
 | Ressourcentyp | Tagunterstützung |
@@ -218,9 +273,24 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | labs | JA | 
-| schedules | JA | 
-| labs/virtualMachines | JA | 
+| labs/artifactsources | JA |
+| labs/costs | JA |
+| labs/customimages | JA |
+| labs/formulas | JA |
+| labs/notificationchannels | JA |
+| labs/policysets/policies | JA |
+| labs/schedules | JA |
 | labs/serviceRunners | JA | 
+| labs/users | JA |
+| labs/users/disks | JA |
+| labs/users/environments | JA |
+| labs/users/secrets | JA |
+| labs/users/servicefabrics | JA |
+| labs/users/servicefabrics/schedules | JA |
+| labs/virtualMachines | JA | 
+| labs/virtualmachines/schedules | JA |
+| labs/virtualnetworks | JA |
+| schedules | JA | 
 
 ## <a name="dynamics-lcs"></a>Dynamics LCS
 | Ressourcentyp | Tagunterstützung |
@@ -232,18 +302,23 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="event-grid"></a>Event Grid
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| eventSubscriptions | Nein  | 
-| topics | JA | 
 | domains | JA | 
 | domains/topics | Nein  | 
-| topicTypes | Nein  | 
+| eventSubscriptions | Nein  | 
 | extensionTopics | Nein  | 
+| topics | JA | 
+| topicTypes | Nein  | 
 
 ## <a name="event-hub"></a>Event Hub
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| namespaces | JA | 
 | clusters | JA | 
+| namespaces | JA | 
+| namespaces/AuthorizationRules | Nein  |
+| namespaces/disasterRecoveryConfigs | Nein  |
+| namespaces/eventhubs | Nein  |
+| namespaces/eventhubs/authorizationRules | Nein  |
+| namespaces/eventhubs/consumergroups | Nein  |
 
 ## <a name="hana-on-azure"></a>Hana in Azure
 | Ressourcentyp | Tagunterstützung |
@@ -264,28 +339,32 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="insights"></a>Einblicke
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| components | JA | 
-| components/query | Nein  | 
-| components/metrics | Nein  | 
-| components/events | Nein  | 
-| webtests | JA | 
-| Abfragen | Nein  | 
-| scheduledqueryrules | JA | 
-| components/pricingPlans | Nein  | 
-| migrateToNewPricingModel | Nein  | 
-| rollbackToLegacyPricingModel | Nein  | 
+| actionGroups | JA |
+| activityLogAlerts | JA |
+| alertrules | JA |
 | automatedExportSettings | Nein  | 
-| workbooks | JA | 
-| myWorkbooks | Nein  | 
+| components | JA | 
+| components/events | Nein  | 
+| components/metrics | Nein  | 
+| components/pricingPlans | Nein  | 
+| components/query | Nein  | 
 | Protokolle | Nein  | 
+| metricAlerts | JA |
+| migrateToNewPricingModel | Nein  | 
+| myWorkbooks | Nein  | 
+| Abfragen | Nein  | 
+| rollbackToLegacyPricingModel | Nein  | 
+| scheduledqueryrules | JA | 
+| webtests | JA | 
+| workbooks | JA | 
 
 ## <a name="key-vault"></a>Key Vault
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Tresore | JA | 
-| vaults/secrets | Nein  | 
-| vaults/accessPolicies | Nein  | 
 | deletedVaults | Nein  | 
+| Tresore | JA | 
+| vaults/accessPolicies | Nein  | 
+| vaults/secrets | Nein  | 
 
 ## <a name="log-analytics"></a>Log Analytics
 | Ressourcentyp | Tagunterstützung |
@@ -295,8 +374,8 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="logic"></a>Logik
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Workflows | JA | 
 | integrationAccounts | JA | 
+| Workflows | JA | 
 
 ## <a name="machine-learning-services"></a>Machine Learning Services
 | Ressourcentyp | Tagunterstützung |
@@ -309,13 +388,6 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | ------------- | ----------- |
 | Identities | Nein  | 
 | userAssignedIdentities | JA | 
-
-## <a name="mariadb"></a>MariaDB
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
-| servers | JA | 
-| servers/recoverableServers | Nein  | 
-| servers/virtualNetworkRules | Nein  | 
 
 ## <a name="marketplace-apps"></a>Marketplace-App
 | Ressourcentyp | Tagunterstützung |
@@ -332,64 +404,57 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | mediaservices | JA | 
+| mediaservices/accountFilters | Nein  | 
 | mediaservices/assets | Nein  | 
+| mediaservices/assets/assetFilters | Nein  | 
 | mediaservices/contentKeyPolicies | Nein  | 
-| mediaservices/streamingLocators | Nein  | 
-| mediaservices/streamingPolicies | Nein  | 
 | mediaservices/eventGridFilters | Nein  | 
-| mediaservices/transforms | Nein  | 
-| mediaservices/transforms/jobs | Nein  | 
-| mediaservices/streamingEndpoints | JA | 
+| mediaservices/liveEventOperations | Nein  | 
 | mediaservices/liveEvents | JA | 
 | mediaservices/liveEvents/liveOutputs | Nein  | 
-| mediaservices/streamingEndpointOperations | Nein  | 
-| mediaservices/liveEventOperations | Nein  | 
 | mediaservices/liveOutputOperations | Nein  | 
-| mediaservices/assets/assetFilters | Nein  | 
-| mediaservices/accountFilters | Nein  | 
-
-## <a name="mysql"></a>MySQL
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
-| servers | JA | 
-| servers/recoverableServers | Nein  | 
-| servers/virtualNetworkRules | Nein  | 
+| mediaservices/streamingEndpoints | JA | 
+| mediaservices/streamingEndpointOperations | Nein  | 
+| mediaservices/streamingLocators | Nein  | 
+| mediaservices/streamingPolicies | Nein  | 
+| mediaservices/transforms | Nein  | 
+| mediaservices/transforms/jobs | Nein  | 
 
 ## <a name="network"></a>Netzwerk
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| virtualNetworks | JA | 
-| publicIPAddresses | JA | 
-| networkInterfaces | JA | 
+| applicationGateways | JA | 
+| applicationSecurityGroups | JA | 
+| azureFirewalls | JA | 
+| connections | JA | 
+| ddosProtectionPlans | JA | 
+| expressRouteCircuits | JA | 
+| frontdoors | JA | 
+| frontdoorWebApplicationFirewallPolicies | JA | 
 | interfaceEndpoints | JA | 
 | loadBalancers | JA | 
-| networkSecurityGroups | JA | 
-| applicationSecurityGroups | JA | 
-| serviceEndpointPolicies | JA | 
+| localNetworkGateways | JA | 
 | networkIntentPolicies | JA | 
-| routeTables | JA | 
-| publicIPPrefixes | JA | 
+| networkInterfaces | JA | 
+| networkProfiles | JA | 
+| networkSecurityGroups | JA | 
 | networkWatchers | JA | 
 | networkWatchers/connectionMonitors | JA | 
 | networkWatchers/lenses | JA | 
 | networkWatchers/pingMeshes | JA | 
-| virtualNetworkGateways | JA | 
-| localNetworkGateways | JA | 
-| connections | JA | 
-| applicationGateways | JA | 
-| expressRouteCircuits | JA | 
-| routeFilters | JA | 
-| virtualWans | JA | 
-| vpnSites | JA | 
-| virtualHubs | JA | 
-| vpnGateways | JA | 
-| azureFirewalls | JA | 
-| virtualNetworkTaps | JA | 
 | privateLinkServices | JA | 
-| ddosProtectionPlans | JA | 
-| networkProfiles | JA | 
-| frontdoors | JA | 
-| frontdoorWebApplicationFirewallPolicies | JA | 
+| publicIPAddresses | JA | 
+| publicIPPrefixes | JA | 
+| routeFilters | JA | 
+| routeTables | JA | 
+| serviceEndpointPolicies | JA | 
+| virtualHubs | JA | 
+| virtualNetworks | JA | 
+| virtualNetworkGateways | JA | 
+| virtualNetworkTaps | JA | 
+| virtualWans | JA | 
+| vpnGateways | JA | 
+| vpnSites | JA | 
 | webApplicationFirewallPolicies | JA | 
 
 ## <a name="notification-hubs"></a>Notification Hubs
@@ -397,6 +462,20 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | ------------- | ----------- |
 | namespaces | JA | 
 | namespaces/notificationHubs | JA | 
+
+## <a name="operational-insights"></a>Operational Insights
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| workspaces | JA |
+| workspaces/dataSources | JA |
+| workspaces/linkedServices | JA |
+| workspaces/savedSearches | Nein  |
+| workspaces/storageInsightConfigs | JA |
+
+## <a name="operations-management"></a>Operations Management
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| solutions | Nein  |
 
 ## <a name="portal"></a>Portal
 | Ressourcentyp | Tagunterstützung |
@@ -408,17 +487,6 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | ------------- | ----------- |
 | rootResources | JA | 
 
-## <a name="postgresql"></a>PostgreSQL
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
-| servers | JA | 
-| servers/recoverableServers | Nein  | 
-| servers/virtualNetworkRules | Nein  | 
-| servers/topQueryStatistics | Nein  | 
-| servers/queryTexts | Nein  | 
-| servers/waitStatistics | Nein  | 
-| servers/advisors | Nein  | 
-
 ## <a name="power-bi"></a>Power BI
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
@@ -427,8 +495,8 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="recovery-services"></a>Recovery Services
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Tresore | JA | 
 | backupProtectedItems | Nein  | 
+| Tresore | JA | 
 
 ## <a name="relay"></a>Relay
 | Ressourcentyp | Tagunterstützung |
@@ -450,8 +518,8 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="search"></a>Suchen,
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| searchServices | JA | 
 | resourceHealthMetadata | Nein  | 
+| searchServices | JA | 
 
 ## <a name="security"></a>Sicherheit
 | Ressourcentyp | Tagunterstützung |
@@ -494,6 +562,64 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | applicationDefinitions | JA | 
 | jitRequests | JA | 
 
+## <a name="sql"></a>SQL
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| locations/instanceFailoverGroups | Nein  |
+| managedInstances | JA |
+| managedInstances/databases | JA |
+| managedInstances/databases/backupShortTermRetentionPolicies | Nein  |
+| managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nein  |
+| managedInstances/databases/vulnerabilityAssessments | Nein  |
+| managedInstances/databases/vulnerabilityAssessments/rules/baselines | Nein  |
+| managedInstances/encryptionProtector | Nein  |
+| managedInstances/keys | Nein  |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nein  |
+| managedInstances/vulnerabilityAssessments | Nein  |
+| servers | JA |
+| servers/administrators | Nein  |
+| servers/advisors | Nein  |
+| servers/auditingSettings | Nein  |
+| servers/backupLongTermRetentionVaults | Nein  |
+| servers/communicationLinks | Nein  |
+| servers/connectionPolicies | Nein  |
+| servers/databases | JA |
+| servers/databases/advisors | Nein  |
+| servers/databases/auditingSettings | Nein  |
+| servers/databases/backupLongTermRetentionPolicies | Nein  |
+| servers/databases/backupShortTermRetentionPolicies | Nein  |
+| servers/databases/connectionPolicies | Nein  |
+| servers/databases/dataMaskingPolicies | Nein  |
+| servers/databases/dataMaskingPolicies/rules | Nein  |
+| servers/databases/extendedAuditingSettings | Nein  |
+| servers/databases/extensions | Nein  |
+| servers/databases/geoBackupPolicies | Nein  |
+| servers/databases/schemas/tables/columns/sensitivityLabels | Nein  |
+| servers/databases/securityAlertPolicies | Nein  |
+| servers/databases/syncGroups | Nein  |
+| servers/databases/syncGroups/syncMembers | Nein  |
+| servers/databases/transparentDataEncryption | Nein  |
+| servers/databases/vulnerabilityAssessments | Nein  |
+| servers/databases/vulnerabilityAssessments/rules/baselines | Nein  |
+| servers/disasterRecoveryConfiguration | Nein  |
+| servers/dnsAliases | Nein  |
+| servers/elasticPools | JA |
+| servers/encryptionProtector | Nein  |
+| servers/extendedAuditingSettings | Nein  |
+| servers/failoverGroups | JA |
+| servers/firewallRules | Nein  |
+| servers/jobAgents | JA |
+| servers/jobAgents/credentials | Nein  |
+| servers/jobAgents/jobs | Nein  |
+| servers/jobAgents/jobs/executions | Nein  |
+| servers/jobAgents/jobs/steps | Nein  |
+| servers/jobAgents/targetGroups | Nein  |
+| servers/keys | Nein  |
+| servers/securityAlertPolicies | Nein  |
+| servers/syncAgents | Nein  |
+| servers/virtualNetworkRules | Nein  |
+| servers/vulnerabilityAssessments | Nein  |
+
 ## <a name="sql-virtual-machine"></a>Virtueller SQL-Computer
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
@@ -504,20 +630,20 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | ------------- | ----------- |
 | storageAccounts | JA | 
 | storageAccounts/blobServices | Nein  | 
-| storageAccounts/tableServices | Nein  | 
-| storageAccounts/queueServices | Nein  | 
 | storageAccounts/fileServices | Nein  | 
+| storageAccounts/queueServices | Nein  | 
 | storageAccounts/services | Nein  | 
 | storageAccounts/services/metricDefinitions | Nein  | 
+| storageAccounts/tableServices | Nein  | 
 
 ## <a name="storage-sync"></a>Speichersynchronisierung
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | storageSyncServices | JA | 
+| storageSyncServices/registeredServers | Nein  | 
 | storageSyncServices/syncGroups | Nein  | 
 | storageSyncServices/syncGroups/cloudEndpoints | Nein  | 
 | storageSyncServices/syncGroups/serverEndpoints | Nein  | 
-| storageSyncServices/registeredServers | Nein  | 
 | storageSyncServices/workflows | Nein  | 
 
 ## <a name="storsimple"></a>Storsimple
@@ -547,53 +673,50 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Konto | JA | 
-| account/project | JA | 
 | account/extension | JA | 
-| Konto | JA | 
 | account/project | JA | 
-| account/extension | JA | 
 
 ## <a name="web"></a>Web
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| sites/instances | Nein  | 
-| sites/slots/instances | Nein  | 
-| sites/instances/extensions | Nein  | 
-| sites/slots/instances/extensions | Nein  | 
-| publishingUsers | Nein  | 
-| validate | Nein  | 
-| sourceControls | Nein  | 
-| sites/hostNameBindings | Nein  | 
-| sites/domainOwnershipIdentifiers | Nein  | 
-| sites/slots/hostNameBindings | Nein  | 
+| apiManagementAccounts | Nein  | 
+| apiManagementAccounts/apiAcls | Nein  | 
+| apiManagementAccounts/apis | Nein  | 
+| apiManagementAccounts/apis/apiAcls | Nein  | 
+| apiManagementAccounts/apis/connectionAcls | Nein  | 
+| apiManagementAccounts/apis/connections | Nein  | 
+| apiManagementAccounts/apis/connections/connectionAcls | Nein  | 
+| apiManagementAccounts/apis/localizedDefinitions | Nein  | 
+| apiManagementAccounts/connectionAcls | Nein  | 
+| apiManagementAccounts/connections | Nein  | 
+| billingMeters | Nein  | 
 | certificates | JA | 
+| connectionGateways | JA | 
+| connections | JA | 
+| customApis | JA | 
+| deletedSites | Nein  | 
+| functions | Nein  | 
+| hostingEnvironments | JA | 
+| hostingEnvironments/metrics | Nein  | 
+| hostingEnvironments/multiRolePools | Nein  | 
+| hostingEnvironments/workerPools | Nein  | 
+| publishingUsers | Nein  | 
 | serverFarms | JA | 
 | serverFarms/workers | Nein  | 
 | sites | JA | 
-| sites/slots | JA | 
+| sites/domainOwnershipIdentifiers | Nein  | 
+| sites/hostNameBindings | Nein  | 
+| sites/instances | Nein  | 
+| sites/instances/extensions | Nein  | 
 | sites/metrics | Nein  | 
-| sites/slots/metrics | Nein  | 
 | sites/premieraddons | JA | 
-| hostingEnvironments | JA | 
-| hostingEnvironments/multiRolePools | Nein  | 
-| hostingEnvironments/workerPools | Nein  | 
-| hostingEnvironments/metrics | Nein  | 
-| functions | Nein  | 
-| deletedSites | Nein  | 
-| apiManagementAccounts | Nein  | 
-| apiManagementAccounts/connections | Nein  | 
-| apiManagementAccounts/connectionAcls | Nein  | 
-| apiManagementAccounts/apis/connections/connectionAcls | Nein  | 
-| apiManagementAccounts/apis/connectionAcls | Nein  | 
-| apiManagementAccounts/apiAcls | Nein  | 
-| apiManagementAccounts/apis/apiAcls | Nein  | 
-| apiManagementAccounts/apis | Nein  | 
-| apiManagementAccounts/apis/localizedDefinitions | Nein  | 
-| apiManagementAccounts/apis/connections | Nein  | 
-| connections | JA | 
-| customApis | JA | 
-| connectionGateways | JA | 
-| billingMeters | Nein  | 
+| sites/slots | JA | 
+| sites/slots/hostNameBindings | Nein  | 
+| sites/slots/instances | Nein  | 
+| sites/slots/instances/extensions | Nein  | 
+| sites/slots/metrics | Nein  | 
+| sourceControls | Nein  | 
+| validate | Nein  | 
 | verifyHostingEnvironmentVnet | Nein  | 
 
 ## <a name="xrm"></a>XRM

@@ -9,28 +9,28 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 61f5f0d0b9e88174f82e960eb5d92db99d0cae71
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582842"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635401"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight 
 
-Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von [Apache Storm](http://storm.apache.org/)-Topologien, die unter Storm in HDInsight-Clustern ausgeführt werden.
+Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von [Apache Storm](https://storm.apache.org/)-Topologien, die unter Storm in HDInsight-Clustern ausgeführt werden.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument erfordern einen Linux-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
 >
-> Informationen zur Bereitstellung und Überwachung von Topologien in Windows-basiertem HDInsight finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in Windows-basiertem HDInsight](apache-storm-deploy-monitor-topology.md)
+> Informationen zur Bereitstellung und Überwachung von Topologien in Windows-basiertem HDInsight finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in Windows-basiertem HDInsight](apache-storm-deploy-monitor-topology.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Storm unter Linux in einem HDInsight-Cluster**: Informationen zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit Apache Storm in HDInsight](apache-storm-tutorial-get-started-linux.md) .
 
-* (Optional:) **Kenntnisse mit SSH und SCP:** Weitere Informationen finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* (Optional) **Erfahrung mit SSH und SCP**: Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * (Optional) **Visual Studio**: Azure SDK 2.5.1 oder höher und die Data Lake-Tools für Visual Studio. Weitere Informationen finden Sie unter [Erste Schritte mit den Data Lake-Tools für Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
@@ -51,7 +51,7 @@ Mithilfe der HDInsight-Tools können C#- oder hybride Topologien an Ihre Storm-C
 
 1. Wenn Sie die neueste Version der Data Lake-Tools für Visual Studio noch nicht installiert haben, finden Sie Informationen dazu unter [Erste Schritte mit den Data Lake-Tools für Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Die Data Lake-Tools für Visual Studio wurden zuvor als HDInsight-Tools für Visual Studio bezeichnet.
     >
     > Data Lake-Tools für Visual Studio sind in der __Azure-Arbeitslast__ für Visual Studio 2017 enthalten.
@@ -64,7 +64,7 @@ Mithilfe der HDInsight-Tools können C#- oder hybride Topologien an Ihre Storm-C
 
 4. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **An Storm in HDInsight übermitteln** aus.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein. Wenn Sie über mehrere Abonnements verfügen, melden Sie sich bei dem Abonnement an, das Ihren Storm-Cluster in HDInsight enthält.
 
 5. Wählen Sie in der Dropdownliste **Storm Cluster** Ihren Storm-Cluster in HDInsight und dann die Option **Übermitteln** aus. Sie können über das Fenster **Ausgabe** überwachen, ob die Übermittlung erfolgreich ausgeführt wurde.
@@ -83,7 +83,7 @@ Mithilfe der HDInsight-Tools können C#- oder hybride Topologien an Ihre Storm-C
 
     Dieser Befehl startet die WordCount-Beispieltopologie auf dem Cluster. Diese Topologie generiert nach dem Zufallsprinzip Sätze und zählt dann die Instanzen jedes Worts in den Sätzen.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Wenn die Topologie an den Cluster gesendet wird, müssen Sie zuerst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Um die Datei auf den Cluster zu kopieren, können Sie den `scp`-Befehl verwenden. Zum Beispiel, `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
    >
    > Das Beispiel "WordCount" und andere Storm-Starter-Beispiele sind unter `/usr/hdp/current/storm-client/contrib/storm-starter/`bereits auf dem Cluster enthalten.
@@ -98,7 +98,7 @@ Wenn eine Topologie mithilfe von Visual Studio übermittelt wurde, wird die Ansi
 
 ![Visual Studio Monitor](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Sie können die **Storm-Topologien** auch im **Server-Explorer** anzeigen, indem Sie **Azure** > **HDInsight** erweitern und dann mit der rechten Maustaste auf einen Storm-Cluster in HDInsight klicken und **View Storm Topologies** auswählen.
 
 Wählen Sie die Form für die Spouts oder Bolts aus, um Informationen über diese Komponenten anzuzeigen. Für jedes ausgewählte Element wird ein neues Fenster geöffnet.
@@ -113,7 +113,7 @@ Durch das Ausgleichen einer Topologie kann das System die Parallelität der Topo
 
 Verwenden Sie für den Ausgleich einer Topologie die Schaltfläche __Neu ausgleichen__ oben in der __Topologiezusammenfassung__.
 
-> [!WARNING]
+> [!WARNING]  
 > Beim Ausgleichen einer Topologie wird diese zunächst deaktiviert. Anschließend werden die Worker gleichmäßig auf den Cluster verteilt, und zum Schluss wird die Topologie wieder in den Zustand vor dem Ausgleich zurückgesetzt. Wenn die Topologie also z.B. aktiv war, wird sie wieder aktiviert. Wenn sie deaktiviert war, bleibt sie deaktiviert.
 
 ### <a name="kill-a-topology"></a>Beenden einer Topologie
@@ -154,7 +154,7 @@ Storm-Topologien werden, nachdem sie einmal gestartet wurden, so lange ausgefüh
 
 Durch das Ausgleichen einer Topologie kann das System die Parallelität der Topologie überarbeiten. Wenn Sie z.B. die Größe des Clusters geändert haben, um zusätzliche Notizen hinzuzufügen, ermöglicht ein Ausgleich einer Topologie, die neuen Knoten zu erkennen.
 
-> [!WARNING]
+> [!WARNING]  
 > Beim Ausgleichen einer Topologie wird diese zunächst deaktiviert. Anschließend werden die Worker gleichmäßig auf den Cluster verteilt, und zum Schluss wird die Topologie wieder in den Zustand vor dem Ausgleich zurückgesetzt. Wenn die Topologie also z.B. aktiv war, wird sie wieder aktiviert. Wenn sie deaktiviert war, bleibt sie deaktiviert.
 
     storm rebalance TOPOLOGYNAME
@@ -163,54 +163,54 @@ Durch das Ausgleichen einer Topologie kann das System die Parallelität der Topo
 
 Die Storm-Benutzeroberfläche bietet eine Weboberfläche zum Arbeiten mit ausgeführten Topologien und befindet sich auf dem HDInsight-Cluster. Wenn Sie die Storm-Benutzeroberfläche anzeigen möchten, öffnen Sie **https://CLUSTERNAME.azurehdinsight.net/stormui** in einem Browser, wobei **CLUSTERNAME** der Name Ihres Clusters ist.
 
-> [!NOTE]
+> [!NOTE]  
 > Wenn Sie dazu aufgefordert werden, einen Benutzernamen und ein Kennwort anzugeben, geben Sie den Namen des Cluster-Administrators (Admin) und das entsprechende Kennwort ein, die Sie beim Erstellen des Clusters verwendet haben.
 
 ### <a name="main-page"></a>Hauptseite
 
 Die Hauptseite der Storm-Benutzeroberfläche bietet die folgenden Informationen:
 
-* **Clusterzusammenfassung:** grundlegende Informationen zum Storm-Cluster.
-* **Topologiezusammenfassung:** eine Liste der aktiven Topologien. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Topologien anzuzeigen.
-* **Supervisor-Zusammenfassung:** Informationen zum Storm-Supervisor.
-* **Nimbus-Konfiguration:** die Nimbus-Konfiguration für den Cluster.
+* **Clusterzusammenfassung**: Grundlegende Informationen zum Storm-Cluster.
+* **Topologiezusammenfassung**: Eine Liste der aktiven Topologien. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Topologien anzuzeigen.
+* **Supervisor-Zusammenfassung**: Informationen zum Storm-Supervisor.
+* **Nimbus-Konfiguration**: Die Nimbus-Konfiguration für den Cluster.
 
 ### <a name="topology-summary"></a>Topologiezusammenfassung:
 
 Wenn Sie einen Link aus dem Abschnitt **Topologiezusammenfassung** auswählen, werden die folgenden Informationen zur Topologie angezeigt:
 
-* **Topologiezusammenfassung:** grundlegende Informationen zur Topologie.
-* **Topologieaktionen:** Verwaltungsaktionen, die für die Topologie ausgeführt werden können.
+* **Topologiezusammenfassung**: Grundlegende Informationen zur Topologie.
+* **Topologieaktionen**: Verwaltungsaktionen, die für die Topologie ausgeführt werden können.
 
-  * **Aktivieren:** setzt die Verarbeitung einer deaktivierten Topologie fort.
-  * **Deaktivieren:** hält eine aktive Topologie an.
-  * **Ausgleichen:** passt die Parallelität der Topologie an. Sie sollten aktive Topologien ausgleichen, nachdem Sie die Anzahl der Knoten im Cluster geändert haben. Dieser Vorgang ermöglicht der Topologie, die Parallelität anzupassen, um die höhere oder geringere Anzahl der Knoten im Cluster zu kompensieren.
+  * **Aktivieren**: Setzt die Verarbeitung einer deaktivierten Topologie fort.
+  * **Deaktivieren**: Hält eine aktive Topologie an.
+  * **Ausgleichen**: Passt die Parallelität der Topologie an. Sie sollten aktive Topologien ausgleichen, nachdem Sie die Anzahl der Knoten im Cluster geändert haben. Dieser Vorgang ermöglicht der Topologie, die Parallelität anzupassen, um die höhere oder geringere Anzahl der Knoten im Cluster zu kompensieren.
 
-    Weitere Informationen finden Sie unter <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Grundlegendes zur Parallelität einer Apache Storm-Topologie</a> (in englischer Sprache).
-  * **Beenden:** beendet eine Storm-Topologie nach dem angegebenen Timeout.
-* **Topologiestatistik:** Statistiken zur Topologie. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
-* **Spouts:** die von der Topologie verwendeten Spouts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Spouts anzuzeigen.
-* **Bolts:** die von der Topologie verwendeten Bolts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Bolts anzuzeigen.
-* **Topologiekonfiguration:** die Konfiguration der ausgewählten Topologie.
+    Weitere Informationen finden Sie unter <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Grundlegendes zur Parallelität einer Apache Storm-Topologie</a>.
+  * **Beenden**: Beendet eine Storm-Topologie nach dem angegebenen Zeitlimit.
+* **Topologiestatistik**: Statistiken zur Topologie. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
+* **Spouts**: Die von der Topologie verwendeten Spouts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Spouts anzuzeigen.
+* **Bolts**: Die von der Topologie verwendeten Bolts. Verwenden Sie die Links in diesem Abschnitt, um weitere Informationen zu bestimmten Bolts anzuzeigen.
+* **Topologiekonfiguration**: Die Konfiguration der ausgewählten Topologie.
 
 ### <a name="spout-and-bolt-summary"></a>Spout und Bolt: Zusammenfassung
 
 Wenn Sie im Abschnitt **Spouts** oder **Bolts** einen Spout auswählen, werden die folgenden Informationen zum ausgewählten Element angezeigt:
 
-* **Komponentenübersicht:** grundlegende Informationen zum Spout oder Bolt.
-* **Statistik für Spout/Bolt:** Statistiken zum Spout oder Bolt. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
+* **Komponentenzusammenfassung**: Grundlegende Informationen zum Spout oder Bolt.
+* **Statistik für Spout/Bolt**: Statistiken zum Spout oder Bolt. Verwenden Sie die Links in der Spalte **Fenster**, um den Zeitrahmen für die verbleibenden Einträge auf der Seite festzulegen.
 * **Eingabestatistik** (nur Bolt): Informationen zu den Eingabedatenströmen, die vom Bolt verbraucht werden.
-* **Ausgabestatistik**: Informationen zu den Datenströmen, die von diesem Spout oder Bolt ausgegeben werden.
-* **Ausführer:** Informationen zu den Instanzen von Spout oder Bolt. Wählen Sie den Eintrag **Port** für einen bestimmten Ausführer aus, um ein Protokoll mit Diagnoseinformationen anzuzeigen, das für diese Instanz generiert wurde.
+* **Ausgabestatistik**: Informationen zu den Datenströmen, die vom Spout oder Bolt ausgegeben werden.
+* **Ausführer**: Informationen zu den Instanzen von Spout oder Bolt. Wählen Sie den Eintrag **Port** für einen bestimmten Ausführer aus, um ein Protokoll mit Diagnoseinformationen anzuzeigen, das für diese Instanz generiert wurde.
 * **Fehler**: Fehlerinformationen für diesen Spout oder Bolt.
 
 ## <a name="monitor-and-manage-rest-api"></a>Überwachen und Verwalten: REST-API
 
 Die Storm-Benutzeroberfläche baut auf der REST-API auf, sodass Sie mithilfe der REST-API ähnliche Verwaltungs- und Überwachungsfunktionen ausführen können. Mithilfe der REST-API können Sie benutzerdefinierte Tools zum Verwalten und Überwachen von Storm-Topologien erstellen.
 
-Weitere Informationen finden Sie unter [REST-API der Apache Storm-Benutzeroberfläche](http://storm.apache.org/releases/current/STORM-UI-REST-API.html)(in englischer Sprache). Die folgenden Informationen gelten für die Verwendung der REST-API mit Apache Storm in HDInsight.
+Weitere Informationen finden Sie unter [REST-API der Apache Storm-Benutzeroberfläche](https://storm.apache.org/releases/current/STORM-UI-REST-API.html)(in englischer Sprache). Die folgenden Informationen gelten für die Verwendung der REST-API mit Apache Storm in HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Storm-REST-API ist nicht öffentlich über das Internet verfügbar. Der Zugriff muss über einen SSH-Tunnel zum Hauptknoten des HDInsight-Clusters erfolgen. Weitere Informationen zum Erstellen und Verwenden eines SSH-Tunnels finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Apache Oozie und andere Webbenutzeroberflächen](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 ### <a name="base-uri"></a>Basis-URI
@@ -227,7 +227,7 @@ Sie können den vollqualifizierten Domänennamen (FQDN) für den Clusterhauptkno
 
 Anforderungen an die REST-API müssen die **Standardauthentifizierung**und somit den Benutzernamen und das Kennwort des HDInsight-Clusteradministrators verwenden.
 
-> [!NOTE]
+> [!NOTE]  
 > Da die Standardauthentifizierung unverschlüsselt gesendet wird, sollten Sie **immer** HTTPS verwenden, um die Kommunikation mit dem Cluster zu schützen.
 
 ### <a name="return-values"></a>Rückgabewerte

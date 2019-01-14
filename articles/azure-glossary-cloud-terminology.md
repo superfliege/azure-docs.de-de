@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963593"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600300"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -37,7 +37,7 @@ Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement m
 Ein anderer Name für [App Service-App](#app-service-app).
 
 ## <a name="app-service-app"></a>App Service-App
-Die Computeressourcen, die [Azure App Service](app-service/app-service-web-overview.md) zum Hosten einer Website oder Webanwendung, einer Web-API oder eines [Back-Ends für mobile Apps](app-service-mobile/app-service-mobile-value-prop.md) bereitstellt. App Service-Apps werden auch als *App Services*, *Web-Apps*, *API-Apps* und *mobile Apps* bezeichnet.
+Die Computeressourcen, die [Azure App Service](app-service/overview.md) zum Hosten einer Website oder Webanwendung, einer Web-API oder eines [Back-Ends für mobile Apps](app-service-mobile/app-service-mobile-value-prop.md) bereitstellt. App Service-Apps werden auch als *App Services*, *Web-Apps*, *API-Apps* und *mobile Apps* bezeichnet.
 
 ## <a name="availability-set"></a>Verfügbarkeitsgruppe
 Eine Sammlung virtueller Computer, die gemeinsam verwaltet werden, um Anwendungsredundanz und -zuverlässigkeit zu bieten. Durch die Verwendung einer Verfügbarkeitsgruppe wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist.  
@@ -112,7 +112,7 @@ Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Mana
 
 ## <a name="role"></a>role
 Eine Möglichkeit zum Steuern des Zugriffs, die Benutzern, Gruppen und Diensten zugewiesen werden kann. Rollen können verschiedene Aktionen ausführen und so beispielsweise Azure-Ressourcen erstellen, verwalten und lesen.  
-Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](role-based-access-control/built-in-roles.md).
+Siehe [RBAC: Integrierte Rollen](role-based-access-control/built-in-roles.md).
 
 ## <a name="sla"></a>Vereinbarung zum Servicelevel (SLA)
 In dieser Vereinbarung ist die garantierte Verfügbarkeit und Konnektivität beschrieben, die Microsoft zusichert. Jeder Azure-Dienst verfügt über eine bestimmte Vereinbarung zum Servicelevel.  

@@ -1,22 +1,21 @@
 ---
 title: Abfragespeicher in Azure Database for PostgreSQL
 description: In diesem Artikel wird das Abfragespeicherfeature in Azure Database for PostgreSQL beschrieben.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 5b760c9148e26421c0df1ffe936365aae4971543
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379160"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546911"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
-**Gilt für:** Azure Database for PostgreSQL 9.6 und 10
+**Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
 
 > [!IMPORTANT]
 > Das Abfragespeicherfeature befindet sich in der Public Preview-Phase.
@@ -114,30 +113,30 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 |runtime_stats_entry_id |bigint | | Die ID aus der Tabelle runtime_stats_entries|
 |user_id    |oid    |pg_authid.oid  |Die OID des Benutzers, der die Anweisung ausgeführt hat|
 |db_id  |oid    |pg_database.oid    |Die OID der Datenbank, in der die Anweisung ausgeführt wurde|
-|query_id   |bigint  || Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
-|query_sql_text |Varchar(10000)  || Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
+|query_id   |bigint  || Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
+|query_sql_text |Varchar(10000)  || Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
 |plan_id    |bigint |   |ID des Plans, der dieser Abfrage entspricht, noch nicht verfügbar|
 |start_time |timestamp  ||  Abfragen werden nach Zeitrahmen zusammengefasst. Die Zeitspanne eines Zeitrahmens beträgt standardmäßig 15 Minuten. Dies ist die Startzeit des Zeitrahmens für diesen Eintrag.|
 |end_time   |timestamp  ||  Dies ist die Endzeit des Zeitrahmens für diesen Eintrag.|
-|calls  |bigint  || Häufigkeit der Abfrageausführung|
-|total_time |double precision   ||  Gesamte Abfrageausführungsdauer in Millisekunden|
+|calls  |bigint  || Häufigkeit der Abfrageausführung|
+|total_time |double precision   ||  Gesamte Abfrageausführungsdauer in Millisekunden|
 |min_time   |double precision   ||  Mindestwert der Abfrageausführungsdauer in Millisekunden|
 |max_time   |double precision   ||  Höchstwert der Abfrageausführungsdauer in Millisekunden|
 |mean_time  |double precision   ||  Durchschnittliche Abfrageausführungsdauer in Millisekunden|
 |stddev_time|   double precision    ||  Standardabweichung der Abfrageausführungsdauer in Millisekunden |
-|rows   |bigint ||  Gesamtanzahl der Zeilen, die abgerufen wurden oder von der Anweisung betroffen sind|
-|shared_blks_hit|   bigint  ||  Gesamtanzahl der freigegebenen Blockcachetreffer der Anweisung|
+|rows   |bigint ||  Gesamtanzahl der Zeilen, die abgerufen wurden oder von der Anweisung betroffen sind|
+|shared_blks_hit|   bigint  ||  Gesamtanzahl der freigegebenen Blockcachetreffer der Anweisung|
 |shared_blks_read|  bigint  ||  Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung gelesen wurden|
-|shared_blks_dirtied|   bigint   || Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geändert wurden |
-|shared_blks_written|   bigint  ||  Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geschrieben wurden|
+|shared_blks_dirtied|   bigint   || Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geändert wurden |
+|shared_blks_written|   bigint  ||  Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geschrieben wurden|
 |local_blks_hit|    bigint ||   Gesamtanzahl der lokalen Blockcachetreffer der Anweisung|
-|local_blks_read|   bigint   || Gesamtanzahl der lokalen Blöcke, die von der Anweisung gelesen wurden|
-|local_blks_dirtied|    bigint  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geändert wurden|
-|local_blks_written|    bigint  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geschrieben wurden|
-|temp_blks_read |bigint  || Gesamtanzahl der temporären Blöcke, die von der Anweisung gelesen wurden|
-|temp_blks_written| bigint   || Gesamtanzahl der temporären Blöcke, die von der Anweisung geschrieben wurden|
-|blk_read_time  |double precision    || Gesamte Zeit, die die Anweisung zum Lesen von Blöcken benötigt hat, in Millisekunden (wenn track_io_timing aktiviert ist, andernfalls Null)|
-|blk_write_time |double precision    || Gesamte Zeit, die die Anweisung zum Schreiben von Blöcken benötigt hat, in Millisekunden (wenn track_io_timing aktiviert ist, andernfalls Null)|
+|local_blks_read|   bigint   || Gesamtanzahl der lokalen Blöcke, die von der Anweisung gelesen wurden|
+|local_blks_dirtied|    bigint  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geändert wurden|
+|local_blks_written|    bigint  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geschrieben wurden|
+|temp_blks_read |bigint  || Gesamtanzahl der temporären Blöcke, die von der Anweisung gelesen wurden|
+|temp_blks_written| bigint   || Gesamtanzahl der temporären Blöcke, die von der Anweisung geschrieben wurden|
+|blk_read_time  |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Lesen von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
+|blk_write_time |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Schreiben von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
     
 ### <a name="querystorequerytextsview"></a>query_store.query_texts_view
 Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden einzelnen query_text gibt es eine Zeile.
@@ -145,7 +144,7 @@ Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden 
 |**Name**|  **Typ**|   **Beschreibung**|
 |---|---|---|
 |query_text_id  |bigint     |ID der Tabelle query_texts|
-|query_sql_text |Varchar(10000)     |Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
+|query_sql_text |Varchar(10000)     |Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
 
 ### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
 Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und jedes Ereignis.
@@ -154,8 +153,8 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |Die OID des Benutzers, der die Anweisung ausgeführt hat|
 |db_id  |oid    |pg_database.oid    |Die OID der Datenbank, in der die Anweisung ausgeführt wurde|
-|query_id   |bigint     ||Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
-|event_type |text       ||Der Typ des Ereignisses, auf das das Back-End wartet|
+|query_id   |bigint     ||Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
+|event_type |text       ||Der Typ des Ereignisses, auf das das Back-End wartet|
 |event  |text       ||Der Warteereignisname, wenn das Back-End derzeit wartet|
 |calls  |Ganze Zahl         ||Nummer des gleichen erfassten Ereignisses|
 
@@ -163,11 +162,11 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 ### <a name="functions"></a>Functions
 Query_store.qs_reset() gibt „void“ zurück
 
-`qs_reset` verwirft alle Statistiken, die bisher vom Abfragespeicher gesammelt werden. Diese Funktion kann nur von der Serveradministratorrolle ausgeführt werden.
+`qs_reset`  verwirft alle Statistiken, die bisher vom Abfragespeicher gesammelt wurden. Diese Funktion kann nur von der Serveradministratorrolle ausgeführt werden.
 
 Query_store.staging_data_reset() gibt „void“ zurück
 
-`staging_data_reset` verwirft alle Statistiken, die vom Abfragespeicher im Arbeitsspeicher erfasst werden (d.h. die Daten im Arbeitsspeicher, für die noch kein Flushvorgang in die Datenbank durchgeführt wurde). Diese Funktion kann nur von der Serveradministratorrolle ausgeführt werden.
+`staging_data_reset`  verwirft alle Statistiken, die vom Abfragespeicher im Arbeitsspeicher erfasst wurden (d. h. die Daten im Arbeitsspeicher, für die noch kein Flushvorgang in die Datenbank durchgeführt wurde). Diese Funktion kann nur von der Serveradministratorrolle ausgeführt werden.
 
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 - Wenn ein PostgreSQL-Server über den Parameter „default_transaction_read_only“ verfügt, kann der Abfragespeicher keine Daten erfassen.

@@ -11,18 +11,18 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: fb0760f24b8f384818db8154ffe871d7fd4ce429
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 986a05dab29226ff492269587ab6c0f49585cef6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138343"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119906"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights
 
-[Application Insights](../application-insights/app-insights-overview.md) bietet Entwicklern eine elegante und effektive Methode zum Überwachen und Debuggen von in Azure-Diensten bereitgestellten Anwendungen. Mit Application Insights können Sie Leistungsindikatoren und Ausnahmen überwachen sowie Ihren Code mit benutzerdefinierten Metriken und einer Ablaufverfolgung instrumentieren. Die Integration von Application Insights in Ihre Azure Batch-Anwendung bietet Ihnen die Möglichkeit, umfassende Einblicke in das Verhalten zu gewinnen und Probleme nahezu in Echtzeit zu untersuchen.
+[Application Insights](../azure-monitor/app/app-insights-overview.md) bietet Entwicklern eine elegante und effektive Methode zum Überwachen und Debuggen von in Azure-Diensten bereitgestellten Anwendungen. Mit Application Insights können Sie Leistungsindikatoren und Ausnahmen überwachen sowie Ihren Code mit benutzerdefinierten Metriken und einer Ablaufverfolgung instrumentieren. Die Integration von Application Insights in Ihre Azure Batch-Anwendung bietet Ihnen die Möglichkeit, umfassende Einblicke in das Verhalten zu gewinnen und Probleme nahezu in Echtzeit zu untersuchen.
 
-In diesem Artikel wird beschrieben, wie Sie die Application Insights-Bibliothek in Ihrer Azure Batch-.NET-Lösung hinzufügen und konfigurieren und den Anwendungscode instrumentieren. Zudem werden Methoden zum Überwachen Ihrer Anwendung über das Azure-Portal und Erstellen benutzerdefinierter Dashboards vorgestellt. Informationen zur Unterstützung von Application Insights in anderen Programmiersprachen finden Sie in der [Dokumentation zu Sprachen, Plattformen und Integrationen](../application-insights/app-insights-platforms.md).
+In diesem Artikel wird beschrieben, wie Sie die Application Insights-Bibliothek in Ihrer Azure Batch-.NET-Lösung hinzufügen und konfigurieren und den Anwendungscode instrumentieren. Zudem werden Methoden zum Überwachen Ihrer Anwendung über das Azure-Portal und Erstellen benutzerdefinierter Dashboards vorgestellt. Informationen zur Unterstützung von Application Insights in anderen Programmiersprachen finden Sie in der [Dokumentation zu Sprachen, Plattformen und Integrationen](../azure-monitor/app/platforms.md).
 
 Für diesen Artikel ist auf [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) eine begleitende C#-Beispiellösung mit Code verfügbar. In diesem Beispiel wird dem Beispiel [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) Application Insights-Instrumentierungscode hinzugefügt. Falls Sie nicht mit diesem Beispiel vertraut sind, sollten Sie versuchen, zunächst TopNWords zu erstellen und auszuführen. Dadurch können Sie sich mit dem grundlegenden Batch-Workflow der parallelen Verarbeitung eines Satzes von Eingabeblobs auf mehreren Computeknoten vertraut machen. 
 
@@ -35,11 +35,11 @@ Für diesen Artikel ist auf [GitHub](https://github.com/Azure/azure-batch-sample
 
 * [Ein Batch-Konto und ein verknüpftes Speicherkonto](batch-account-create-portal.md)
 
-* [Eine Application Insights-Ressource](../application-insights/app-insights-create-new-resource.md)
+* [Eine Application Insights-Ressource](../azure-monitor/app/create-new-resource.md )
   
    * Verwenden Sie das Azure-Portal, um eine Application Insights-*Ressource* zu erstellen. Klicken Sie auf *Allgemein* **Anwendungstyp**.
 
-   * Kopieren Sie den [Instrumentierungsschlüssel](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) aus dem Portal. Sie benötigen ihn an späterer Stelle dieses Artikels.
+   * Kopieren Sie den [Instrumentierungsschlüssel](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) aus dem Portal. Sie benötigen ihn an späterer Stelle dieses Artikels.
   
   > [!NOTE]
   > Möglicherweise werden Ihnen Gebühren für die in Application Insights gespeicherten Daten [in Rechnung gestellt](https://azure.microsoft.com/pricing/details/application-insights/). Dies gilt auch für die in diesem Artikel beschriebenen Diagnose- und Überwachungsdaten.
@@ -56,14 +56,14 @@ Verweisen Sie in Ihrer .NET-Anwendung mit dem Namespace **Microsoft.ApplicationI
 
 ## <a name="instrument-your-code"></a>Instrumentieren des Codes
 
-Um Ihren Code zu instrumentieren, muss Ihre Lösung einen Application Insights-[TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) erstellen. Im Beispiel lädt der TelemetryClient seine Konfiguration aus der Datei [ApplicationInsights.config](../application-insights/app-insights-configuration-with-applicationinsights-config.md). Denken Sie daran, die Datei „ApplicationInsights.config“ in den folgenden Projekten mit Ihrem Application Insights-Instrumentierungsschlüssel zu aktualisieren: „Microsoft.Azure.Batch.Samples.TelemetryStartTask“ und „TopNWordsSample“.
+Um Ihren Code zu instrumentieren, muss Ihre Lösung einen Application Insights-[TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) erstellen. Im Beispiel lädt der TelemetryClient seine Konfiguration aus der Datei [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md). Denken Sie daran, die Datei „ApplicationInsights.config“ in den folgenden Projekten mit Ihrem Application Insights-Instrumentierungsschlüssel zu aktualisieren: „Microsoft.Azure.Batch.Samples.TelemetryStartTask“ und „TopNWordsSample“.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
 Fügen Sie den Instrumentierungsschlüssel auch in der Datei „TopNWords.cs“ hinzu.
 
-Das Beispiel in „TopNWords.cs“ verwendet die folgenden [Instrumentierungsaufrufe](../application-insights/app-insights-api-custom-events-metrics.md) aus der Application Insights-API:
+Das Beispiel in „TopNWords.cs“ verwendet die folgenden [Instrumentierungsaufrufe](../azure-monitor/app/api-custom-events-metrics.md) aus der Application Insights-API:
 * `TrackMetric()`: Verfolgt nach, wie lange ein Computeknoten im Durchschnitt zum Herunterladen der erforderlichen Textdatei benötigt.
 * `TrackTrace()`: Fügt dem Code Debugaufrufe hinzu.
 * `TrackEvent()`: Verfolgt relevante Ereignisse nach, die aufgezeichnet werden sollen.
@@ -125,7 +125,7 @@ public void CountWords(string blobName, int numTopN, string storageAccountName, 
 ```
 
 ### <a name="azure-batch-telemetry-initializer-helper"></a>Azure Batch-Telemetrie-Initialisierer-Hilfsprogramm
-Beim Melden von Telemetriedaten für einen bestimmten Server und eine bestimmte Instanz verwendet Application Insights die Azure-VM-Rolle und den VM-Namen für die Standardwerte. Im Kontext von Azure Batch zeigt das Beispiel, wie stattdessen der Name des Pools und der Name des Computeknotens verwendet werden. Verwenden Sie einen [Telemetrie-Initialisierer](../application-insights/app-insights-api-filtering-sampling.md#add-properties), um die Standardwerte außer Kraft zu setzen. 
+Beim Melden von Telemetriedaten für einen bestimmten Server und eine bestimmte Instanz verwendet Application Insights die Azure-VM-Rolle und den VM-Namen für die Standardwerte. Im Kontext von Azure Batch zeigt das Beispiel, wie stattdessen der Name des Pools und der Name des Computeknotens verwendet werden. Verwenden Sie einen [Telemetrie-Initialisierer](../azure-monitor/app/api-filtering-sampling.md#add-properties), um die Standardwerte außer Kraft zu setzen. 
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -338,12 +338,12 @@ pool.StartTask = new StartTask()
 
 ## <a name="throttle-and-sample-data"></a>Drosselung und Beispieldaten 
 
-Da in der Produktionsumgebung ausgeführte Azure Batch-Anwendungen sehr umfangreich sind, möchten Sie möglicherweise zur Kostenkontrolle die Menge an Daten begrenzen, die von Application Insights erfasst werden. Einige Mechanismen, die Sie dazu verwenden können, finden Sie unter [Erstellen von Stichproben in Application Insights](../application-insights/app-insights-sampling.md).
+Da in der Produktionsumgebung ausgeführte Azure Batch-Anwendungen sehr umfangreich sind, möchten Sie möglicherweise zur Kostenkontrolle die Menge an Daten begrenzen, die von Application Insights erfasst werden. Einige Mechanismen, die Sie dazu verwenden können, finden Sie unter [Erstellen von Stichproben in Application Insights](../azure-monitor/app/sampling.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Application Insights](../application-insights/app-insights-overview.md).
+* Erfahren Sie mehr über [Application Insights](../azure-monitor/app/app-insights-overview.md).
 
-* Informationen zur Unterstützung von Application Insights in anderen Programmiersprachen finden Sie in der [Dokumentation zu Sprachen, Plattformen und Integrationen](../application-insights/app-insights-platforms.md).
+* Informationen zur Unterstützung von Application Insights in anderen Programmiersprachen finden Sie in der [Dokumentation zu Sprachen, Plattformen und Integrationen](../azure-monitor/app/platforms.md).
 
 

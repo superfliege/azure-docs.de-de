@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b9c8f1af612c220534e45c5c66651f0ad8600826
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634412"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628185"
 ---
 # <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>Analysieren von Sensordaten mit der Apache Hive-Abfragekonsole für Apache Hadoop in HDInsight
 
-Erfahren Sie, wie Sie Sensordaten mithilfe der Hive-Abfragekonsole in HDInsight (Apache Hadoop) analysieren und die Daten anschließend in Microsoft Excel mithilfe von Power View visualisieren können.
+Erfahren Sie, wie Sie Sensordaten mithilfe der Apache Hive-Abfragekonsole in HDInsight (Apache Hadoop) analysieren und die Daten anschließend in Microsoft Excel mithilfe von Power View visualisieren können.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Schritte in diesem Dokument funktionieren nur mit einem Windows-basierten HDInsight-Cluster. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
@@ -35,10 +35,10 @@ In diesem Beispiel verwenden Sie Hive, um Verlaufsdaten zu verarbeiten und Probl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein HDInsight-Cluster (Hadoop): Unter [Erstellen von Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) finden Sie weitere Informationen zur Erstellung von Clustern.
+* Ein HDInsight-Cluster (Hadoop): Unter [Erstellen von Apache Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) finden Sie weitere Informationen zur Erstellung von Clustern.
 * Microsoft Excel 2013 (PowerPivot für Datenanalysten – Microsoft Excel 2010)
 
-  > [!NOTE]
+  > [!NOTE]  
   > Microsoft Excel dient zur Visualisierung von Daten mithilfe von [Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US).
 
 * [Microsoft Hive ODBC-Treiber](https://www.microsoft.com/download/details.aspx?id=40886)

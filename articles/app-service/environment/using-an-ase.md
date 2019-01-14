@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274716"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630664"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
@@ -39,22 +39,22 @@ Die Azure App Service-Umgebung ist eine Bereitstellung des Azure App Service in 
 
 Sie können eine ASE (ASEv1 und ASEv2) mit einer externen oder internen virtuellen IP (VIP) für den App-Zugriff bereitstellen. Die Bereitstellung mit einer externen VIP wird im Allgemeinen als externe ASE bezeichnet. Die interne Version wird als ILB-ASE bezeichnet, da ein interner Load Balancer (ILB) verwendet wird. Weitere Informationen zur ILB-ASE finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
 
-## <a name="create-a-web-app-in-an-ase"></a>Erstellen einer Web-App in einer ASE ##
+## <a name="create-an-app-in-an-ase"></a>Erstellen einer App in einer ASE ##
 
-Um eine Web-App in einer ASE zu erstellen, verwenden Sie den gleichen Prozess wie bei der normalen Erstellung, jedoch mit einigen kleinen Unterschieden. Beim Erstellen eines neuen App Service-Plans gilt:
+Um eine App in einer ASE zu erstellen, verwenden Sie den gleichen Prozess wie bei der normalen Erstellung, jedoch mit einigen kleinen Unterschieden. Beim Erstellen eines neuen App Service-Plans gilt:
 
 - Anstatt einen geografischen Standort auszuwählen, an dem Sie Ihre App bereitstellen, wählen Sie eine ASE als Ihren Standort aus.
 - Alle in einer ASE erstellen App Service-Pläne müssen im Tarif „Isoliert“ enthalten sein.
 
 Wenn Sie über keine ASE verfügen, können Sie eine erstellen. Folgen Sie hierzu den Anweisungen in [Erstellen einer App Service-Umgebung][MakeExternalASE].
 
-So erstellen Sie eine Web-App in einer ASE:
+So erstellen Sie eine App in einer ASE
 
 1. Wählen Sie **Ressource erstellen** > **Web + Mobil** > **Web-Apps** aus.
 
-2. Geben Sie einen Namen für die Web-App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
+2. Geben Sie einen Namen für die App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
 
-    ![Namensauswahl für Web-Apps][1]
+    ![Namensauswahl für Apps][1]
 
 1. Wählen Sie ein Abonnement aus.
 
@@ -80,10 +80,10 @@ So erstellen Sie eine Web-App in einer ASE:
     ![Isolierte Tarife][2]
 
     > [!NOTE]
-    > Linux-Web-Apps und Windows-Web-Apps können sich nicht im selben App Service-Plan befinden, jedoch in derselben App Service-Umgebung. 
+    > Linux-Apps und Windows-Apps können sich nicht im selben App Service-Plan befinden, jedoch in derselben App Service-Umgebung. 
     >
 
-1. Klicken Sie auf **Erstellen**.
+2. Klicken Sie auf **Erstellen**.
 
 ## <a name="how-scale-works"></a>Skalieren ##
 
@@ -97,7 +97,7 @@ In einer ASE können Sie auf 100 Instanzen zentral hochskalieren. Diese 100 Inst
 
 ## <a name="ip-addresses"></a>IP-Adressen ##
 
-In App Service gibt es die Möglichkeit, eine dedizierte IP-Adresse an eine App zu vergeben. Diese Funktion ist nach dem Konfigurieren einer IP-basierten SSL verfügbar, wie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps][ConfigureSSL] beschrieben. In einer ASE gibt es jedoch eine wichtige Ausnahme. Sie können keine zusätzlichen IP-Adressen hinzufügen, die für eine IP-basierte SSL in einer ILB-ASE verwendet werden sollen.
+In App Service gibt es die Möglichkeit, eine dedizierte IP-Adresse an eine App zu vergeben. Diese Funktion ist nach dem Konfigurieren einer IP-basierten SSL verfügbar, wie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure App Service][ConfigureSSL] beschrieben. In einer ASE gibt es jedoch eine wichtige Ausnahme. Sie können keine zusätzlichen IP-Adressen hinzufügen, die für eine IP-basierte SSL in einer ILB-ASE verwendet werden sollen.
 
 In ASEv1 müssen die IP-Adressen vor der Verwendung als Ressourcen zugewiesen werden. In ASEv2 können Sie die IP-Adressen einfach genau wie im mehrinstanzenfähigen App Service aus der App heraus verwenden. In einer ASEv2 mit bis zu 30 IP-Adressen ist immer eine freie Adresse vorhanden. Bei jeder Verwendung einer IP-Adresse wird eine weitere hinzugefügt, sodass immer eine sofort verfügbare Adresse zur Verfügung steht. Bei der Vergabe einer weiteren IP-Adresse ist eine zeitliche Verzögerung erforderlich. Daher können IP-Adressen nicht in schneller Abfolge hinzugefügt werden.
 
@@ -187,6 +187,6 @@ So löschen Sie eine ASE
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[AppDeploy]: ../app-service-deploy-local-git.md
+[AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

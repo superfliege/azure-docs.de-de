@@ -2,24 +2,27 @@
 title: Geräteschema in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt das JSON-Schema, das ein simuliertes Gerät in der Remoteüberwachungslösung definiert.
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: f312f29e14c371e7b500f3eee6471151e3544513
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338854"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635526"
 ---
 # <a name="understand-the-device-model-schema"></a>Grundlegendes zum Gerätemodellschema
 
-Sie können simulierte Geräte in der Remoteüberwachungslösung verwenden, um ihr Verhalten zu testen. Beim Bereitstellen der Remoteüberwachungslösung wird automatisch eine Sammlung simulierter Geräte bereitgestellt. Sie können die vorhandenen simulierten Geräte anpassen oder eigene erstellen.
+Sie können simulierte Geräte in der Remoteüberwachungslösung verwenden, um ihr Verhalten zu testen. Die Remoteüberwachungslösung enthält einen Gerätesimulationsdienst zum Ausführen von simulierten Geräten. Beim Bereitstellen der Remoteüberwachungslösung wird automatisch eine Sammlung simulierter Geräte bereitgestellt. Sie können die vorhandenen simulierten Geräte anpassen oder eigene erstellen.
 
 Dieser Artikel beschreibt das Gerätemodellschema, das die Funktionen und das Verhalten eines simulierten Geräts bestimmt. Das Gerätemodell ist in einer JSON-Datei gespeichert.
+
+> [!NOTE]
+> Dieses Gerätemodellschema gilt nur für simulierte Geräte, die im Gerätesimulationsdienst gehostet werden. Wenn Sie ein physisches Gerät erstellen möchten, lesen Sie [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Node.js)](iot-accelerators-connecting-devices.md).
 
 Die folgenden Artikel beziehen sich auf den aktuellen Artikel:
 

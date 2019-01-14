@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583212"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652080"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Übersicht über Apache Spark-Streaming
 
@@ -203,7 +203,7 @@ Zu den in der Spark-Streaming-API verfügbaren „Gleitendes Fenster“-Funktion
 
 ## <a name="checkpointing"></a>Setzen von Prüfpunkten
 
-Um Resilienz und Fehlertoleranz zu gewährleisten, stellt das Spark-Streaming mithilfe von Prüfpunkten sicher, dass die Datenstromverarbeitung auch bei Knotenfehlern kontinuierlich durchgeführt werden kann. In HDInsight erstellt Spark Prüfpunkte in permanentem Speicher (Azure Storage oder Data Lake Store). Diese Prüfpunkte speichern die Metadaten der Streaminganwendung, z.B. die Konfiguration, die von der Anwendung definierten Vorgänge und alle Batches, die in die Warteschlange gestellt, aber noch nicht verarbeitet wurden. In einigen Fällen beinhalten die Prüfpunkte auch das Speichern der Daten in den RDDs, um die Neuerstellung des Zustands der Daten aus den Daten, die in den von Spark verwalteten RDDs vorhanden sind, zu beschleunigen.
+Um Resilienz und Fehlertoleranz zu gewährleisten, stellt das Spark-Streaming mithilfe von Prüfpunkten sicher, dass die Datenstromverarbeitung auch bei Knotenfehlern kontinuierlich durchgeführt werden kann. In HDInsight erstellt Spark Prüfpunkte in permanentem Speicher (Azure Storage oder Data Lake Storage). Diese Prüfpunkte speichern die Metadaten der Streaminganwendung, z.B. die Konfiguration, die von der Anwendung definierten Vorgänge und alle Batches, die in die Warteschlange gestellt, aber noch nicht verarbeitet wurden. In einigen Fällen beinhalten die Prüfpunkte auch das Speichern der Daten in den RDDs, um die Neuerstellung des Zustands der Daten aus den Daten, die in den von Spark verwalteten RDDs vorhanden sind, zu beschleunigen.
 
 ## <a name="deploying-spark-streaming-applications"></a>Bereitstellen von Spark-Streaminganwendungen
 

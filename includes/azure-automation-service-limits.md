@@ -5,16 +5,18 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3ae2289112948dea7d2649c4fad6b1cafb3804b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285805"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444139"
 ---
+#### <a name="process-automation"></a>Prozessautomatisierung
+
 | Ressource | Maximales Limit |Notizen|
 | --- | --- |---|
 | Max. Anzahl von neuen Aufträgen, die alle 30 Sekunden pro Automation-Konto (nicht geplante Aufträge) übermittelt werden können |100 |Wenn dieser Grenzwert erreicht wird, treten bei nachfolgenden Anforderungen zum Erstellen eines Auftrags Fehler auf. Der Client empfängt eine Fehlerantwort.|
@@ -33,5 +35,19 @@ ms.locfileid: "51285805"
 | Maximale Anzahl von Runbookparametern   | 50|Sie können einen JSON- oder XML-Zeichenfolge an einen Parameter übergeben und ihn mit dem Runbook analysieren, wenn Sie das Limit von 50 Parametern erreichen.|
 | Maximale Größe für Webhooknutzlast |  512 KB|
 | Max. Anzahl von Tagen, die Auftragsdaten aufbewahrt werden|30 Tage|
+| Maximale Größe des PowerShell-Workflowstatus |5 MB| Gilt für PowerShell-Workflow-Runbooks, wenn Prüfpunkte für Workflows eingerichtet werden.|
 
 **<sup>1</sup>** Eine Sandbox ist eine gemeinsam verwendete Umgebung, die von mehreren Aufträgen verwendet werden kann. Aufträge, die eine gemeinsame Sandbox verwenden, sind durch die Ressourceneinschränkungen der Sandbox gebunden.
+
+#### <a name="change-tracking-and-inventory"></a>Änderungsnachverfolgung und Bestand
+
+Die folgende Tabelle zeigt die Grenzen der nachverfolgten Elemente pro Computer für die Änderungsnachverfolgung.
+
+| **Ressource** | **Begrenzung**| **Hinweise** |
+|---|---|---|
+|Datei|500||
+|Registrierung|250||
+|Windows-Software|250|Softwareupdates nicht inbegriffen|
+|Linux-Pakete|1250||
+|Dienste|250||
+|Daemon|250||

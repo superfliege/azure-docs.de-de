@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496924"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579956"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -22,13 +22,13 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Ein ML Services-Cluster in HDInsight:** Anweisungen finden Sie unter [Erste Schritte mit ML Services in HDInsight](r-server-get-started.md).
+* **Ein ML Services-Cluster in HDInsight**: Anweisungen finden Sie unter [Erste Schritte mit ML Services in HDInsight](r-server-get-started.md).
 
-* **Ein Secure Shell-Client (SSH)**: Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Ein SSH-Client (Secure Shell)**: Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Operationalisieren des ML Services-Clusters mit der Konfiguration mit einem einzelnen Computer
 
-> [!NOTE]
+> [!NOTE]  
 > Die nachstehenden Schritte gelten für R Server 9.0 und ML Server 9.1. Für ML Server 9.3 finden Sie weitere Hinweise unter [Verwenden des Verwaltungstools zum Verwalten der Operationalisierungskonfiguration](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. Stellen Sie per SSH eine Verbindung mit dem Edgeknoten her.
@@ -159,7 +159,7 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 * Heben Sie die Auswahl der Workerknoten auf, und wählen Sie die Hauptknoten aus.
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Alle Komponenten beenden** aus.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Schritt 2: Konfigurieren von Serverknoten auf allen außer Betrieb gesetzten Workerknoten
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Schritt 2: Konfigurieren von Computeknoten auf allen außer Betrieb gesetzten Workerknoten
 
 1. Stellen Sie per SSH eine Verbindung mit jedem außer Betrieb gesetzten Workerknoten her.
 
@@ -173,7 +173,7 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
 1. Beenden Sie das Verwaltungshilfsprogramm.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Schritt 3: Hinzufügen von Details zu Serverknoten auf Webknoten
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Schritt 3: Hinzufügen von Details zu Computeknoten auf Webknoten
 
 Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Serverknoten konfiguriert sind, kehren Sie zum Edgeknoten zurück und fügen die IP-Adressen der außer Betrieb gesetzten Workerknoten der Konfiguration des Webknotens von ML Server hinzu:
 
