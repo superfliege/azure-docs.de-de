@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: raynew
-ms.openlocfilehash: 0c394a92bff3ace210ee0db156f47bb8912bf45d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c1bd92b9c4611465b680f195e4881a447f4bb701
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631582"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044398"
 ---
 # <a name="back-up-azure-vms-with-the-azure-backup-service"></a>Vorbereiten der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst
 
@@ -290,7 +290,7 @@ So führen Sie den ersten Sicherungsauftrag aus:
   Anhand von Bereitstellungsbenachrichtigungen werden Sie darüber informiert, dass der Sicherungsauftrag ausgelöst wurde und dass Sie den Status des Auftrags auf der Seite „Sicherungsaufträge“ überwachen können. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
   > [!NOTE]
-  > Alle von Azure Backup gesicherten Daten werden im Ruhezustand mit der [Speicherdienstverschlüsselung (Storage Service Encryption, SSE)](../storage/common/storage-service-encryption.md) verschlüsselt.
+  > - Alle von Azure Backup gesicherten Daten werden im Ruhezustand mit der [Speicherdienstverschlüsselung (Storage Service Encryption, SSE)](../storage/common/storage-service-encryption.md) verschlüsselt.
   >
   >
 
@@ -339,4 +339,3 @@ Die Kosten für die Sicherung virtueller Azure-Computer hängen von der Anzahl g
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Verwalten](backup-azure-manage-vms.md) Sie Ihre Sicherungen.
-

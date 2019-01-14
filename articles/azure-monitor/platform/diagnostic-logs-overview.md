@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 08ad8964fee2d94677832fa664ed2e18cb9f772c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550969"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104980"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -83,7 +83,7 @@ Die Erfassung von Diagnoseprotokollen kann [bei der Ressourcenerstellung in eine
 
 Sie können die Erfassung von Diagnoseprotokollen für Ressourcen nach dem Erstellen einer Ressource im Azure-Portal aktivieren, indem Sie entweder zu einer bestimmten Ressource oder zu Azure Monitor navigieren. So aktivieren Sie dies über Azure Monitor:
 
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu Azure Monitor, und klicken Sie auf **Diagnoseeinstellungen**.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Azure Monitor, und klicken Sie auf **Diagnoseeinstellungen**.
 
     ![Abschnitt „Überwachung“ von Azure Monitor](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 

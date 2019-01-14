@@ -1,5 +1,5 @@
 ---
-title: Schützen einer Azure Key Vault-Instanz | Microsoft-Dokumentation
+title: Schützen einer Azure Key Vault-Instanz – Azure Key Vault | Microsoft-Dokumentation
 description: Verwalten Sie Zugriffsberechtigungen für den Azure Key Vault, Schlüssel und Geheimnisse. In diesem Artikel wird das Authentifizierungs- und Autorisierungsmodell für Key Vault und das Schützen eines Schlüsseltresors behandelt.
 services: key-vault
 documentationcenter: ''
@@ -10,21 +10,22 @@ ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 67f24bbccdd2dcf5cca09e09557d7ebebd0a5c2d
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 9877698c8c6af68c5ffd88dab37150274ce87b37
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891077"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077333"
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
+
 Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter). Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, müssen Sie den Zugriff auf Schlüsseltresore schützen, sodass nur autorisierte Anwendungen und Benutzer zugelassen sind. In diesem Artikel finden Sie eine Übersicht des Modells für den Zugriff auf Schlüsseltresore. Zudem werden Authentifizierung und Autorisierung erläutert, und es wird beschrieben, wie Sie den Zugriff schützen können.
 
 ## <a name="overview"></a>Übersicht
+
 Der Zugriff auf eine Key Vault-Instanz wird über zwei separate Schnittstellen gesteuert: die Verwaltungsebene und die Datenebene. 
 Über die **Verwaltungsebene** wird der Tresor verwaltet, indem er beispielsweise erstellt, aktualisiert oder gelöscht wird. 
 Über die **Datenebene** werden die Geheimnisse in einem Tresor verwaltet, indem sie beispielsweise in einem Tresor erstellt, aktualisiert, gelöscht oder gelesen werden. Auf beiden Ebenen kann ein Aufrufer (ein Benutzer oder eine Anwendung) erst nach ordnungsgemäßer Authentifizierung und Autorisierung auf den Schlüsseltresor zugreifen. Bei der Authentifizierung wird die Identität des Aufrufers ermittelt. Bei der Autorisierung wird dagegen bestimmt, welche Vorgänge der Aufrufer ausführen darf.
@@ -38,9 +39,11 @@ Im Anschluss finden Sie eine kurze Übersicht über die behandelten Themen:
 Für die Authentifizierung verwenden beide Ebenen Azure Active Directory (Azure AD). Für die Autorisierung wird auf der Verwaltungsebene die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, während auf der Datenebene Key Vault-Zugriffsrichtlinien zum Einsatz kommen.
 
 ## <a name="authenticate-by-using-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
+
 Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser automatisch mit dem Azure AD-Mandanten des Abonnements verknüpft. Alle Aufrufer müssen bei diesem Mandanten registriert sein und sich authentifizieren, um auf den Schlüsseltresor zugreifen zu können. Diese Anforderung gilt sowohl auf der Verwaltungs- als auch auf der Datenebene. In beiden Fällen kann eine Anwendung auf zwei Arten auf Key Vault zugreifen:
 
-* **Benutzer- und App-Zugriff:** Diese Methode wird für Anwendungen verwendet, die im Auftrag eines angemeldeten Benutzers auf Key Vault zugreifen. Beispiele hierfür wären etwa Azure PowerShell und das Azure-Portal. Es gibt zwei Möglichkeiten, Benutzern Zugriff zu gewähren: 
+* **Benutzer- und App-Zugriff:** Diese Methode wird für Anwendungen verwendet, die im Auftrag eines angemeldeten Benutzers auf Key Vault zugreifen. Beispiele hierfür wären etwa Azure PowerShell und das Azure-Portal. Es gibt zwei Möglichkeiten, Benutzern Zugriff zu gewähren:
+
   - Zugriff auf Key Vault über eine Anwendung.
   - Zugriff auf Key Vault nur dann gewähren, wenn eine bestimmte Anwendung verwendet wird (als Verbundidentität bezeichnet).
 
@@ -57,6 +60,7 @@ Das Verwenden eines einzelnen Mechanismus für die Authentifizierung für beide 
 * Organisationen können die Authentifizierung über die Optionen in Azure AD anpassen und so beispielsweise die mehrstufige Authentifizierung aktivieren, um die Sicherheit zu verbessern.
 
 ## <a name="the-management-plane-and-the-data-plane"></a>Verwaltungsebene und Datenebene
+
 Verwenden Sie die Verwaltungsebene, um den Schlüsseltresor zu verwalten. Hierzu zählen Vorgänge wie das Verwalten von Attributen und Festlegen von Richtlinien für den Zugriff auf die Datenebene. Verwenden Sie die Datenebene, um die in der Key Vault-Instanz gespeicherten Schlüssel, Geheimnisse und Zertifikate hinzuzufügen, zu löschen oder zu ändern.
 
 Der Zugriff auf die Schnittstellen der Verwaltungs- und der Datenebene erfolgt über die in der folgenden Tabelle aufgelisteten unterschiedlichen Endpunkte. Die zweite Spalte in der Tabelle gibt Aufschluss über die DNS-Namen für diese Endpunkte in verschiedenen Azure-Umgebungen. In der dritten Spalte werden die Vorgänge beschrieben, die Sie über die jeweilige Zugriffsebene ausführen können. Jede Zugriffsebene verfügt auch über einen eigenen Zugriffssteuerungsmechanismus. Die Zugriffssteuerung auf Verwaltungsebene wird mit der rollenbasierten Zugriffssteuerung (RBAC, Role-Based Access Control) von Azure Resource Manager festgelegt. Die Zugriffssteuerung auf Datenebene wird mithilfe der Richtlinie für den Zugriff auf Key Vault festgelegt.
@@ -69,6 +73,7 @@ Der Zugriff auf die Schnittstellen der Verwaltungs- und der Datenebene erfolgt �
 Die Zugriffsteuerungen für die Verwaltungs- und die Datenebene sind voneinander unabhängig. Wenn Sie z.B. einer Anwendung den Zugriff auf Schlüssel in einem Schlüsseltresor gewähren möchten, müssen Sie nur Zugriff auf die Datenebene gewähren. Der Zugriff wird über Zugriffsrichtlinien für Key Vault gewährt. Im Gegensatz dazu benötigt ein Benutzer, der Key Vault-Eigenschaften und -Tags lesen muss, jedoch keine Zugriffsdaten (Schlüssel, Geheimnisse oder Zertifikate), sondern nur Zugriff auf die Steuerungsebene. Sie können den Zugriff gewähren, indem Sie dem Benutzer mit der rollenbasierten Zugriffssteuerung Lesezugriff zuweisen.
 
 ## <a name="management-plane-access-control"></a>Zugriffssteuerung auf der Verwaltungsebene
+
 Auf der Verwaltungsebene werden Vorgänge ausgeführt, die sich auf den Schlüsseltresor selbst auswirken, wie etwa:
 
 - Erstellen oder Löschen eines Schlüsseltresors.
@@ -79,6 +84,7 @@ Auf der Verwaltungsebene werden Vorgänge ausgeführt, die sich auf den Schlüss
 Die Zugriffssteuerung auf der Verwaltungsebene basiert auf RBAC.  
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+
 Jedes Azure-Abonnement hat eine Instanz von Azure AD. Sie können Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis Verwaltungszugriff auf Ressourcen im Azure-Abonnement gewähren, für die das Azure Resource Manager-Bereitstellungsmodell verwendet wird. Diese Art von Zugriffssteuerung wird als rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bezeichnet. Zur Verwaltung dieses Zugriffs können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [Azure Resource Manager-REST-APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx) verwenden.
 
 Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene. So können Sie beispielsweise Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen.
@@ -87,15 +93,16 @@ Durch Zuweisen geeigneter RBAC-Rollen können Sie Benutzern, Gruppen und Anwendu
 
 > [!IMPORTANT]
 > Hinweis: Falls ein Benutzer für eine Key Vault-Verwaltungsebene über Mitwirkungsberechtigungen verfügt, kann dieser sich durch das Festlegen einer Key Vault-Zugriffsrichtlinie selbst Zugriff auf die Datenebene gewähren. Deshalb sollten sie stets kontrollieren, wer als Mitwirkender auf Ihre Schlüsseltresore zugreifen kann. Stellen Sie sicher, dass nur autorisierte Personen auf Ihre Schlüsseltresore, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
-> 
-> 
+>
 
 ## <a name="data-plane-access-control"></a>Zugriffssteuerung auf der Datenebene
+
 Vorgänge in der Key Vault-Datenebene gelten für gespeicherte Objekte wie Schlüssel, Geheimnisse und Zertifikate. Zu wichtigen Vorgängen zählen das Erstellen, Importieren, Aktualisieren, Auflisten, Sichern und Wiederherstellen von Schlüsseln. Zu kryptografischen Vorgängen zählen das Signieren, Überprüfen, Verschlüsseln, Entschlüsseln, Umschließen, Entpacken, Festlegen von Tags und das Festlegen anderer Attribute für Schlüssel. Auf ähnliche Weise zählen Abrufen, Festlegen, Auflisten und Löschen zu den Vorgängen für Geheimnisse.
 
 Der Datenebenenzugriff wird durch das Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz gewährt. Ein Benutzer, eine Gruppe oder eine Anwendung muss über Mitwirkungsberechtigungen für die Verwaltungsebene einer Key Vault-Instanz verfügen, um Zugriffsrichtlinien für diese Instanz festlegen zu können. Sie können einem Benutzer, einer Gruppe oder einer Anwendung Zugriff auf das Ausführen bestimmter Vorgänge für Schlüssel oder Geheimnisse in einer Key Vault-Instanz gewähren. Key Vault unterstützt bis zu 1024 Zugriffsrichtlinien. Erstellen Sie eine Azure AD-Sicherheitsgruppe, und fügen Sie ihr Benutzer hinzu, um mehreren Benutzern Datenebenenzugriff zu gewähren.
 
 ### <a name="key-vault-access-policies"></a>Key Vault-Zugriffsrichtlinien
+
 Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Dadurch haben Sie beispielsweise die Möglichkeit, einem Benutzer nur Zugriff auf Schlüssel und keine Berechtigungen für Geheimnisse zu gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse oder Zertifikate gelten auf Tresorebene. Die Key Vault-Zugriffsrichtlinie unterstützt keine differenzierten Berechtigungen auf Objektebene, wie z. B. für bestimmte Schlüssel, Geheimnisse oder Zertifikate. Zum Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI-Tools](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.
 
 > [!IMPORTANT]
@@ -104,6 +111,7 @@ Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüsse
 Sie können den Datenebenenzugriff nicht nur über Zugriffsrichtlinien, sondern auch über [Dienstendpunkte virtueller Netzwerke für den Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) einschränken. Konfigurieren Sie [Firewallregeln und Regeln für virtuelle Netzwerke](key-vault-network-security.md), um eine zusätzliche Sicherheitsebene zu erstellen.
 
 ## <a name="example"></a>Beispiel
+
 Angenommen, Sie entwickeln eine Anwendung, die ein Zertifikat für SSL, Azure Storage zum Speichern von Daten und einen RSA-Schlüssel mit 2.048 Bit für Signierungsvorgänge verwendet. Nehmen Sie weiterhin an, dass diese Anwendung in einer Azure-VM (oder einer VM-Skalierungsgruppe) ausgeführt wird. In diesem Fall können Sie alle Anwendungsgeheimnisse sowie das Bootstrapzertifikat, mit dem sich die Anwendung über Azure AD authentifiziert, in einem Schlüsseltresor speichern.
 
 Im Anschluss finden Sie eine Zusammenfassung aller Typen von Schlüsseln und Geheimnissen, die gespeichert werden:
@@ -167,14 +175,14 @@ Den im Anschluss bereitgestellten PowerShell-Codeausschnitten liegen folgende An
 
 Zunächst weist der Abonnementadministrator dem Sicherheitsteam die Rollen `key vault Contributor` und `User Access Administrator` zu. Mit diesen Rollen kann das Sicherheitsteam den Zugriff auf andere Ressourcen sowie Schlüsseltresore in der Ressourcengruppe „ContosoAppRG“ verwalten.
 
-```
+```PowerShell
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
 Das folgende Skript zeigt, wie das Sicherheitsteam einen Schlüsseltresor erstellen und Protokollierung sowie Zugriffsberechtigungen einrichten kann. Weitere Informationen zur Richtlinie für Berechtigungen zum Zugriff auf Schlüsseltresore finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md).
 
-```
+```PowerShell
 # Create key vault and enable logging
 $sa = Get-AzureRmStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
 $kv = New-AzureRmKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
@@ -214,6 +222,7 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis kö
 Sie sollten den Zugriff auf Ihren Schlüsseltresor weiterhin durch die [Konfiguration von Key Vault-Firewalls und virtuellen Netzwerken](key-vault-network-security.md) schützen.
 
 ## <a name="resources"></a>Ressourcen
+
 * [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
   
 * [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md)
@@ -241,6 +250,7 @@ Sie sollten den Zugriff auf Ihren Schlüsseltresor weiterhin durch die [Konfigur
 * [Festlegen](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) und [Entfernen](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy) von Key Vault-Zugriffsrichtlinien mithilfe von PowerShell
   
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Konfigurieren von Key Vault-Firewalls und virtuellen Netzwerken](key-vault-network-security.md)
 
 Ein Lernprogramm für den Einstieg für Administratoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).

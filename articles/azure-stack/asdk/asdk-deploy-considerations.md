@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 22032f9d2e60d3c51546c32df8b98f9633c95535
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4bcb71829b2fb5f35398f36dee36d4e98c5a609b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726540"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106732"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Überlegungen zur Planung der Azure Stack-Bereitstellung
 Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) sicher, dass der Development Kit-Hostcomputer die in diesem Artikel beschriebenen Anforderungen erfüllt.
@@ -82,7 +82,7 @@ Wenn Sie die AD FS-Bereitstellungsoption nutzen, müssen Sie Azure Stack erneut 
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory-Konten
 Zum Bereitstellen von Azure Stack über ein Azure AD-Konto müssen Sie vor dem Ausführen des PowerShell-Bereitstellungsskripts ein Azure AD-Konto vorbereiten. Dieses Konto wird der globale Administrator für den Azure AD-Mandanten. Es wird zum Bereitzustellen und Delegieren von Anwendungen und Dienstprinzipalen für alle Azure Stack-Dienste verwendet, die mit Azure Active Directory und Graph-API interagieren. Es fungiert außerdem als Besitzer des Standardanbieterabonnements (den Sie später jedoch ändern können). Mit diesem Konto können Sie sich beim Administratorportal Ihres Azure Stack-Systems anmelden.
 
-1. Erstellen Sie ein Azure AD-Konto, das Verzeichnisadministrator für mindestens eine Azure AD-Instanz ist. Wenn Sie bereits eines haben, können Sie es verwenden. Andernfalls können Sie unter [https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/) kostenlos eins erstellen (in China verwenden Sie stattdessen <http://go.microsoft.com/fwlink/?LinkID=717821>). Wenn Sie [Azure Stack zu einem späteren Zeitpunkt bei Azure registrieren](asdk-register.md) möchten, benötigen Sie auch ein Abonnement in diesem neu erstellten Konto.
+1. Erstellen Sie ein Azure AD-Konto, das Verzeichnisadministrator für mindestens eine Azure AD-Instanz ist. Wenn Sie bereits eines haben, können Sie es verwenden. Andernfalls können Sie unter [https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/) kostenlos eins erstellen (in China verwenden Sie stattdessen <https://go.microsoft.com/fwlink/?LinkID=717821>). Wenn Sie [Azure Stack zu einem späteren Zeitpunkt bei Azure registrieren](asdk-register.md) möchten, benötigen Sie auch ein Abonnement in diesem neu erstellten Konto.
    
     Speichern Sie diese Anmeldeinformationen zur Verwendung durch den Dienstadministrator. Dieses Konto kann Ressourcenclouds, Benutzerkonten, Mandantenpläne, Kontingente und Preise konfigurieren und verwalten. Im Portal ist es möglich, Websiteclouds und private Clouds mit virtuellen Computern sowie Pläne zu erstellen und Benutzerabonnements zu verwalten.
 1. Erstellen Sie mindestens ein Testbenutzerkonto in Ihrem Azure AD-Verzeichnis, damit Sie sich als Mandant beim Development Kit anmelden können.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5361c8940c8c7dba5338a3f5a0ed18910f7e45a0
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c7d236769d5e9adca0402affc2d0eccdf78a6837
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410328"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107751"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-ad"></a>Migrieren vom Verbund zur Pass-Through-Authentifizierung für Azure AD
 Das folgende Dokument enthält Anleitungen zum Verschieben von AD FS zur Pass-Through-Authentifizierung.
@@ -121,9 +121,9 @@ Vor dem Konvertieren von „Verbund“ in „Verwaltet“ sollten Sie genau übe
 |-|-|
 | Sie behalten AD FS für diese anderen Anwendungen bei.| Sie werden sowohl AD FS als auch Azure AD verwenden und müssen daher die Benutzerfreundlichkeit berücksichtigen. Benutzer müssen sich möglicherweise in einigen Szenarios zweimal authentifizieren: einmal für Azure AD (wo anschließend das einmalige Anmelden für andere Anwendungen wie Office 365 verwendet wird) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellungen der vertrauenden Seite gebunden sind. |
 | AD FS ist stark angepasst und hängt von bestimmten Anpassungseinstellungen in der Datei „onload.js“ ab, die nicht in Azure AD dupliziert werden können (z. B. haben Sie die Anmeldung so verändert, dass Benutzer nur ein SamAccountName-Format für ihren Benutzernamen und keinen Benutzerprinzipalnamen eingeben müssen, oder es liegt ein starkes Branding für die Anmeldung vor).| Sie müssen überprüfen, ob Ihre aktuellen Anpassungsanforderungen von Azure AD erfüllt werden können, bevor Sie fortfahren. Weitere Informationen und Anleitungen finden Sie in den Abschnitten „AD FS-Branding“ und „AD FS-Anpassung“.|
-| Sie blockieren ältere Authentifizierungsclients über AD FS.| Ersetzen Sie die Steuerelemente zum Blockieren älterer Authentifizierungsclients, die derzeit in AD FS vorhanden sind, durch eine Kombination aus der [bedingten Zugriffssteuerung für ältere Authentifizierungsmethoden](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) und den [Clientzugriffsregeln in Exchange Online](http://aka.ms/EXOCAR). |
+| Sie blockieren ältere Authentifizierungsclients über AD FS.| Ersetzen Sie die Steuerelemente zum Blockieren älterer Authentifizierungsclients, die derzeit in AD FS vorhanden sind, durch eine Kombination aus der [bedingten Zugriffssteuerung für ältere Authentifizierungsmethoden](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) und den [Clientzugriffsregeln in Exchange Online](https://aka.ms/EXOCAR). |
 | Ihre Benutzer müssen MFA bei der Authentifizierung bei AD FS für die lokale MFA-Serverlösung ausführen.| Sie können keine MFA-Abfrage über die lokale MFA-Lösung in den Authentifizierungsablauf für eine verwaltete Domäne einfügen. Nach der Konvertierung der Domäne können Sie dafür jedoch den MFA-Dienst verwenden. Wenn Ihre Benutzer Azure MFA derzeit nicht verwenden, ist hierfür ein einmaliger Registrierungsschritt für Endbenutzer erforderlich, auf den Sie sich und Ihre Endbenutzer vorbereiten müssen. |
-| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Office 365 zu steuern.| Ersetzen Sie diese durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) und die [Clientzugriffsregeln für Exchange Online](http://aka.ms/EXOCAR).|
+| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Office 365 zu steuern.| Ersetzen Sie diese durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) und die [Clientzugriffsregeln für Exchange Online](https://aka.ms/EXOCAR).|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>Überlegungen zu allgemeinen AD FS-Anpassungen
 
@@ -333,7 +333,7 @@ Die Konvertierung erfolgt mithilfe des Azure AD PowerShell-Moduls.
 
 Als Ihr Mandant mit der Einstellung „Verbund“ verwendet wurde, wurden die Benutzer von der Azure AD-Anmeldeseite zu Ihrer AD FS-Umgebung umgeleitet. Da der Mandant jetzt so konfiguriert ist, dass anstelle von „Verbund“ die Pass-Through-Authentifizierung verwendet wird, werden die Benutzer nicht mehr zu AD FS umgeleitet, sondern melden sich direkt über die Azure AD-Anmeldeseite an.
 
-Öffnen Sie Internet Explorer im InPrivate-Modus, um zu vermeiden, dass Sie über das nahtlose einmalige Anmelden automatisch angemeldet werden, und navigieren Sie zur Office 365-Anmeldeseite ([http://portal.office.com](http://portal.office.com/)). Geben Sie den **UPN** des Benutzers ein, und klicken Sie auf **Weiter**. Stellen Sie sicher, dass Sie den UPN eines Hybridbenutzers eingeben, der von Ihrem lokalen Active Directory synchronisiert wurde und der zuvor zu einem Verbund gehörte. Dem Benutzer wird ein Bildschirm angezeigt, auf dem er seinen Benutzernamen und das Kennwort eingeben kann.
+Öffnen Sie Internet Explorer im InPrivate-Modus, um zu vermeiden, dass Sie über das nahtlose einmalige Anmelden automatisch angemeldet werden, und navigieren Sie zur Office 365-Anmeldeseite ([https://portal.office.com](https://portal.office.com/)). Geben Sie den **UPN** des Benutzers ein, und klicken Sie auf **Weiter**. Stellen Sie sicher, dass Sie den UPN eines Hybridbenutzers eingeben, der von Ihrem lokalen Active Directory synchronisiert wurde und der zuvor zu einem Verbund gehörte. Dem Benutzer wird ein Bildschirm angezeigt, auf dem er seinen Benutzernamen und das Kennwort eingeben kann.
 
 ![Bild 18](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
 

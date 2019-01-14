@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632686"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051851"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -36,7 +36,7 @@ Diese [Schemadatei](https://github.com/Azure/iisnode/blob/master/src/config/iisn
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Mit dieser Einstellung wird die Anzahl von Node-Prozessen gesteuert, die pro IIS-Anwendung gestartet werden. Der Standardwert ist 1. Sie können so viele Instanzen von „node.exe“ starten, wie VM-vCPUs vorhanden sind, indem Sie diesen Wert in 0 ändern. Für die meisten Anwendungen ist der empfohlene Wert 0, damit Sie alle vCPUs des Computers nutzen können. Für „node.exe“ gilt das Singlethread-Verfahren, sodass eine „node.exe“-Instanz maximal eine vCPU nutzt. Sie möchten erreichen, dass alle vCPUs genutzt werden, um für Ihre Node-anwendung die höchste Leistung zu erzielen.
+Mit dieser Einstellung wird die Anzahl von Knotenprozessen gesteuert, die pro IIS-Anwendung gestartet werden. Der Standardwert ist 1. Sie können so viele Instanzen von „node.exe“ starten, wie VM-vCPUs vorhanden sind, indem Sie diesen Wert in 0 ändern. Für die meisten Anwendungen ist der empfohlene Wert 0, damit Sie alle vCPUs des Computers nutzen können. Für „node.exe“ gilt das Singlethread-Verfahren, sodass eine „node.exe“-Instanz maximal eine vCPU nutzt. Sie möchten erreichen, dass alle vCPUs genutzt werden, um für Ihre Knotenanwendung die höchste Leistung zu erzielen.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
@@ -110,7 +110,7 @@ Der Standardwert ist „false“. Wenn „true“ festgelegt ist, fügt iisnode 
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
-Mit dieser Einstellung wird die Protokollierung von stdout und stderr durch iisnode gesteuert. iisnode erfasst stdout/stderr von Node-Prozessen, die gestartet werden, und führt Schreibvorgänge in das Verzeichnis durch, das unter der Einstellung „logDirectory“ angegeben ist. Nach der Aktivierung schreibt Ihre Anwendung Protokolle in das Dateisystem. Je nach Umfang der von der Anwendung durchgeführten Protokollierung kann es hierbei auch zu Leistungseinbußen kommen.
+Mit dieser Einstellung wird die Protokollierung von stdout und stderr durch iisnode gesteuert. iisnode erfasst stdout/stderr von Knotenprozessen, die gestartet werden, und führt Schreibvorgänge in das Verzeichnis durch, das unter der Einstellung „logDirectory“ angegeben ist. Nach der Aktivierung schreibt Ihre Anwendung Protokolle in das Dateisystem. Je nach Umfang der von der Anwendung durchgeführten Protokollierung kann es hierbei auch zu Leistungseinbußen kommen.
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
@@ -126,7 +126,7 @@ Weitere Informationen zum Debuggen finden Sie unter [Debug node.js applications 
 
 ### <a name="my-node-application-is-making-excessive-outbound-calls"></a>Meine Node-Anwendung führt zu viele ausgehende Aufrufe durch.
 
-Viele Anwendungen stellen im Rahmen ihres normalen Betriebs ausgehende Verbindungen her. Wenn beispielsweise eine Anforderung empfangen wird, nimmt Ihre Node-App in der Regel Kontakt mit einer REST-API an einem anderen Ort auf, um Informationen zur Verarbeitung der Anforderung zu erhalten. Es ist ratsam, für http- oder https-Aufrufe einen Keep-Alive-Agent zu verwenden. Sie können zum Durchführen dieser ausgehenden Aufrufe das agentkeepalive-Modul als Keep-Alive-Agent verwenden.
+Viele Anwendungen stellen im Rahmen ihres normalen Betriebs ausgehende Verbindungen her. Wenn beispielsweise eine Anforderung empfangen wird, nimmt Ihre Knoten-App in der Regel Kontakt mit einer REST-API an einem anderen Ort auf, um Informationen zur Verarbeitung der Anforderung zu erhalten. Es ist ratsam, für http- oder https-Aufrufe einen Keep-Alive-Agent zu verwenden. Sie können zum Durchführen dieser ausgehenden Aufrufe das agentkeepalive-Modul als Keep-Alive-Agent verwenden.
 
 Das agentkeepalive-Modul stellt sicher, dass Sockets auf Ihrer Azure-Web-App-VM wieder verwendet werden. Das Erstellen eines neuen Sockets für jede ausgehende Anforderung erzeugt zusätzlichen Mehraufwand für Ihre Anwendung. Durch die Wiederverwendung von Sockets für ausgehende Anforderungen wird sichergestellt, dass Ihre Anwendung die pro VM zugeordnete maximale Anzahl von Sockets (maxSockets) nicht überschreitet. Die Empfehlung für Azure App Service lautet, den maxSockets-Wert für agentKeepAlive auf insgesamt 160 Sockets pro VM (4 Instanzen von „node.exe“ \* 40 maxSockets/Instanz) festzulegen.
 
@@ -147,7 +147,7 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Der CPU-Verbrauch meiner Node-Anwendung ist zu hoch.
 
-Möglicherweise erhalten Sie von Azure App Service in Ihrem Portal eine Empfehlung zum hohen CPU-Verbrauch. Sie können auch Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der CPU-Nutzung im [Azure-Portal-Dashboard](../application-insights/app-insights-web-monitor-performance.md)die MAX-Werte für die CPU an, damit Ihnen die Spitzenwerte nicht entgehen.
+Möglicherweise erhalten Sie von Azure App Service in Ihrem Portal eine Empfehlung zum hohen CPU-Verbrauch. Sie können auch Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der CPU-Nutzung im [Azure-Portal-Dashboard](../azure-monitor/app/web-monitor-performance.md)die MAX-Werte für die CPU an, damit Ihnen die Spitzenwerte nicht entgehen.
 Falls Sie der Meinung sind, dass der CPU-Verbrauch Ihrer Anwendung zu hoch ist, und den Grund dafür nicht kennen, können Sie zur Überprüfung ein Profil für Ihre Node-Anwendung erstellen.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilerstellung für die Node-Anwendung in Azure App Service mit V8-Profiler
@@ -220,7 +220,7 @@ Sie sehen, dass 95% der Zeit von der WriteConsoleLog-Funktion verbraucht wurde. 
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Der Arbeitsspeicherverbrauch meiner Node-Anwendung ist zu hoch
 
-Wenn Ihre Anwendung zu viel Arbeitsspeicher verbraucht, wird für Azure App Service im Portal ein entsprechender Hinweis angezeigt. Sie können Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der Arbeitsspeichernutzung im [Azure-Portal-Dashboard](../application-insights/app-insights-web-monitor-performance.md) die MAX-Werte für den Arbeitsspeicher an, damit Ihnen die Spitzenwerte nicht entgehen.
+Wenn Ihre Anwendung zu viel Arbeitsspeicher verbraucht, wird für Azure App Service im Portal ein entsprechender Hinweis angezeigt. Sie können Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der Arbeitsspeichernutzung im [Azure-Portal-Dashboard](../azure-monitor/app/web-monitor-performance.md) die MAX-Werte für den Arbeitsspeicher an, damit Ihnen die Spitzenwerte nicht entgehen.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Erkennung von Arbeitsspeicherverlusten und Heap-Diff für „node.js“
 

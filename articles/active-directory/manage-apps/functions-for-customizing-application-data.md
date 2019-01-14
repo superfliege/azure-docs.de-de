@@ -1,5 +1,5 @@
 ---
-title: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory | Microsoft Docs
+title: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren.
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 7a7f959f54281dcce5b8d1349f5d6607f0e5da30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 867fdd57df163f37d86572798aaae6d78d43f479
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345792"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973722"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -27,14 +27,14 @@ Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer de
 Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von Visual Basic for Applications (VBA) ähnlich.
 
 * Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen:  <br>
-  *Funktionsname(<<Argument 1>>,<<argument N>>)*
-* Sie können Funktionen ineinander verschachteln. Beispiel:  <br> *FunktionEins(FunktionZwei(&lt;<argument1>&gt;))*
+  *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
+* Sie können Funktionen ineinander verschachteln. Beispiel:  <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Sie können drei verschiedene Argumententypen an die Funktionen übergeben:
   
   1. Attribute, die in eckige Klammern eingeschlossen werden müssen. Beispiel: [Attributname]
-  2. Zeichenfolgenkonstanten, die in doppelte Anführungszeichen eingeschlossen werden müssen. Beispiel: "USA"
-  3. Andere Funktionen Beispiel: FunktionEins(<<argument1>>, FunktionZwei(<<argument2>>))
-* Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel: "Firmenname: \"Contoso\""
+  2. Zeichenfolgenkonstanten, die in doppelte Anführungszeichen eingeschlossen werden müssen. Beispiel:  „USA“
+  3. Andere Funktionen Beispiel:  FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
+* Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel:  „Unternehmensname: \"Contoso\"“
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
 [Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
@@ -63,7 +63,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 | NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **Ausgabeformat** |Erforderlich |Zeichenfolge |Format des Ausgabedatums. |
 
 - - -
@@ -79,7 +79,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 | NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
 | **Trennzeichen** |Erforderlich |Zeichenfolge |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-| **Quelle1  … QuelleN ** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+| **source1 … sourceN** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -141,6 +141,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
   * Ist ein Wert für **Quelle** vorhanden, wird der Ersatzwert aus der Eigenschaft mit **Ersatzeigenschaftsname** unter Verwendung von **RegexMuster** und **RegexGruppenname** extrahiert. Der Ersatzwert wird als Ergebnis zurückgegeben.
 
 **Parameter:**<br> 
+
 | NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
@@ -166,7 +167,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN ** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
+| **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
 
 
 - - -
@@ -240,9 +241,9 @@ Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben
 
 **Beispieleingabe/-ausgabe:** <br>
 
-* **EINGABE** (givenName): "John"
-* **EINGABE** (surname): "Doe"
-* **AUSGABE**: "JohDoe"
+* **EINGABE** (givenName): „John“
+* **EINGABE** (surname): „Doe“
+* **AUSGABE**:  „JohDoe“
 
 ### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
 Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent ersetzen.
@@ -252,8 +253,8 @@ NormalizeDiacritics([givenName])
 
 **Beispieleingabe/-ausgabe:** <br>
 
-* **EINGABE** (givenName): "Zoë"
-* **AUSGABE**: "Zoe"
+* **EINGABE** (givenName): „Zoë“
+* **AUSGABE**:  „Zoe“
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
 
@@ -266,8 +267,8 @@ Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 
 **Beispieleingabe/-ausgabe:**
 
-* **EINGABE** (extensionAttribute1): "20150123105347.1Z"
-* **AUSGABE**: "2015-01-23"
+* **EINGABE** (extensionAttribute1): 20150123105347.1Z
+* **AUSGABE**:  2015-01-23
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
 
@@ -280,8 +281,8 @@ Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, d
 
 **Beispieleingabe/-ausgabe:**
 
-* **EINGABE** (state): "QLD"
-* **AUSGABE**: "Australien/Brisbane"
+* **EINGABE** (state): „QLD“
+* **AUSGABE**: „Australien/Brisbane“
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generieren eines eindeutigen Werts für das Attribut userPrincipalName (UPN)
 
@@ -297,8 +298,8 @@ Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wer
 
 **Beispieleingabe/-ausgabe:**
 
-* **INPUT** (PreferredFirstName): "John"
-* **INPUT** (PreferredLastName): "Smith"
+* **EINGABE** (PreferredFirstName): „John“
+* **EINGABE** (PreferredLastName): „Smith“
 * **OUTPUT**: "John.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com nicht bereits im Verzeichnis vorhanden ist
 * **OUTPUT**: "J.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com bereits im Verzeichnis vorhanden ist
 * **OUTPUT**: "Jo.Smith@contoso.com", wenn die beiden obigen UPN-Werte bereits im Verzeichnis enthalten sind

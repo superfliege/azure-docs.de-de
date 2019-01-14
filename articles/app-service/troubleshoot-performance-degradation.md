@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 790aab75b311b116e6ca03af016e181c11019e27
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9c66a937ffd9155569820c47c99946d186c55cce
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726645"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052154"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger App-Leistung in Azure App Service
 In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beheben.
@@ -92,7 +92,7 @@ Jede App Service-App bietet einen erweiterbaren Verwaltungsendpunkt, mit dem Sie
 - Quellcode-Editoren wie [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Verwaltungstools für verbundene Ressourcen wie eine MySQL-Datenbank, die mit einer App verbunden ist.
 
-Ebenfalls zur Verfügung steht [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), eine Websiteerweiterung für die Leistungsüberwachung. Um Application Insights zu verwenden, erstellen Sie ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen. Weitere Informationen finden Sie unter [Leistungsüberwachung in Webanwendungen](../application-insights/app-insights-web-monitor-performance.md).
+Ebenfalls zur Verfügung steht [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), eine Websiteerweiterung für die Leistungsüberwachung. Um Application Insights zu verwenden, erstellen Sie ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen. Weitere Informationen finden Sie unter [Leistungsüberwachung in Webanwendungen](../azure-monitor/app/web-monitor-performance.md).
 
 <a name="collect" />
 
@@ -114,7 +114,7 @@ Durch die Aktivierung von Application Insights Profiler können Sie mit der Erfa
 
 Application Insights Profiler bietet Statistiken zur Antwortzeit aller Webaufrufe und Ablaufverfolgungen, in denen angegeben ist, welche Codezeile die langsamen Antwortzeiten verursacht hat. Mitunter arbeitet die App Service-App langsam, da der Code nicht effektiv geschrieben wurde. Beispiele hierfür sind sequenzieller Code, der parallel ausgeführt werden kann, und unerwünschte Datenbanksperrkonflikte. Durch das Beseitigen dieser Engpässe im Code lässt sich die Leistung der App steigern, die aber ohne das Einrichten aufwendiger Ablaufverfolgungen und Protokolle schwer zu finden sind. Durch die von Application Insights Profiler gesammelten Ablaufverfolgungen können die Codezeilen identifiziert werden, die zur Verlangsamung der Anwendung führen. So kann dieses Problem in Bezug auf App Service-Apps behoben werden.
 
- Weitere Informationen finden Sie unter [Profilerstellung für Live-Azure App Service-Apps mit Application Insights](../application-insights/app-insights-profiler.md).
+ Weitere Informationen finden Sie unter [Profilerstellung für Live-Azure App Service-Apps mit Application Insights](../azure-monitor/app/profiler.md).
 
 ##### <a name="use-remote-profiling"></a>Verwenden von Remoteprofilerstellung
 In Azure App Service kann eine Remoteprofilerstellung von Web-Apps, API-Apps, mobilen Back Ends und WebJobs ausgeführt werden. Wählen Sie diese Option, wenn Sie Zugriff auf die App-Ressource haben und wissen, wie das Problem reproduziert werden kann, oder wenn Sie das genaue Zeitintervall kennen, in dem das Leistungsproblem auftritt.

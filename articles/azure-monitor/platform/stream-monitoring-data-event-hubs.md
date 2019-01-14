@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a39d497c90f49f8699b9d27be175e501973804c5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811510"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118386"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
@@ -26,7 +26,7 @@ Azure Monitor stellt eine zentrale Pipeline für den Zugriff auf sämtliche Übe
 In Ihrer Azure-Umgebung gibt es mehrere Schichten von Überwachungsdaten, weshalb die Zugriffsmethode für Daten aus verschiedenen Schichten geringfügig variiert. Diese Schichten lassen sich in der Regel wie folgt definieren:
 
 - **Überwachungsdaten zu Anwendungen:** Daten zur Leistung und Funktionalität des von Ihnen geschriebenen Codes, den Sie in Azure ausführen. Zu Anwendungsüberwachungsdaten zählen z.B. Leistungsablaufverfolgungen, Anwendungsprotokolle und benutzerspezifische Telemetriedaten. Anwendungsüberwachungsdaten werden in der Regel auf einer der folgenden Arten gesammelt:
-  - Durch Instrumentieren des Codes mit einem SDK wie dem [Application Insights-SDK](../../application-insights/app-insights-overview.md)
+  - Durch Instrumentieren des Codes mit einem SDK wie dem [Application Insights-SDK](../../azure-monitor/app/app-insights-overview.md)
   - Durch Ausführen eines Überwachungs-Agents, der nach neuen Anwendungsprotokollen auf dem Computer lauscht, auf dem Ihre Anwendung ausgeführt wird (z.B. der [Azure-Diagnose-Agent für Windows](./../../azure-monitor/platform/diagnostics-extension-overview.md) oder [Azure-Diagnose-Agent für Linux](../../virtual-machines/extensions/diagnostics-linux.md))
 - **Überwachungsdaten zum Gast-BS:** Daten zum Betriebssystem, unter dem die Anwendung ausgeführt wird. Zu Überwachungsdaten zum Gast-BS zählen z.B. das Linux-Syslog oder Windows-Systemereignisse. Um diesen Typ von Daten zu sammeln, müssen Sie einen Agent wie den [Azure-Diagnose-Agent für Windows](./../../azure-monitor/platform/diagnostics-extension-overview.md) oder [Azure-Diagnose-Agent für Linux](../../virtual-machines/extensions/diagnostics-linux.md) installieren.
 - **Überwachungsdaten zur Azure-Ressource:** Daten zum Betrieb einer Azure-Ressource. Bei einigen Arten von Azure-Ressourcen wie virtuellen Computern gibt es ein Gast-BS und Anwendungen, die für die Überwachung innerhalb dieses Azure-Diensts vorgesehen sind. Bei anderen Azure-Ressourcen wie Netzwerksicherheitsgruppen sind Überwachungsdaten zu Ressourcen in der höchsten Datenschicht verfügbar (da weder ein Gast-BS noch eine Anwendung in diesen Ressourcen ausgeführt wird). Diese Daten können mithilfe von [Ressourcendiagnoseeinstellungen](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) gesammelt werden.
@@ -98,7 +98,7 @@ Mit dem [Azure-Diagnose-Agent für Windows](./../../azure-monitor/platform/diagn
 
 ## <a name="application-monitoring-data"></a>Überwachungsdaten zu Anwendungen
 
-Für Überwachungsdaten zu Anwendungen muss Ihr Code mit einem SDK instrumentiert sein. Deshalb gibt es keine allgemeine Lösung, um Überwachungsdaten zu Anwendungen an einen Event Hub in Azure weiterzuleiten. Allerdings ist [Azure Application Insights](../../application-insights/app-insights-overview.md) ein Dienst, der zum Sammeln von Azure-Daten auf Anwendungsebene verwendet werden kann. Wenn Sie Application Insights verwenden, können Sie Überwachungsdaten folgendermaßen an einen Event Hub streamen:
+Für Überwachungsdaten zu Anwendungen muss Ihr Code mit einem SDK instrumentiert sein. Deshalb gibt es keine allgemeine Lösung, um Überwachungsdaten zu Anwendungen an einen Event Hub in Azure weiterzuleiten. Allerdings ist [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) ein Dienst, der zum Sammeln von Azure-Daten auf Anwendungsebene verwendet werden kann. Wenn Sie Application Insights verwenden, können Sie Überwachungsdaten folgendermaßen an einen Event Hub streamen:
 
 1. [Richten Sie den fortlaufenden Export](../../azure-monitor/app/export-telemetry.md) der Application Insights-Daten in ein Speicherkonto ein.
 
@@ -108,7 +108,7 @@ Für Überwachungsdaten zu Anwendungen muss Ihr Code mit einem SDK instrumentier
 
 Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor ermöglicht eine einfache Integration in SIEM- und Überwachungstools von Partnern. Die meisten Tools benötigen die Event Hub-Verbindungszeichenfolge und bestimmte Berechtigungen für Ihr Azure-Abonnement zum Lesen von Daten aus dem Event Hub. Im Folgenden wird eine nicht erschöpfende Liste von Tools mit der Azure Monitor-Integration aufgeführt:
 
-* **IBM QRadar**: Das DSM und Event Hub-Protokoll von Microsoft Azure sind zum Download auf der [Website des IBM-Supports](http://www.ibm.com/support) erhältlich. Weitere Informationen zur Integration in Azure finden Sie [hier](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+* **IBM QRadar**: Das DSM und Event Hub-Protokoll von Microsoft Azure sind zum Download auf der [Website des IBM-Supports](https://www.ibm.com/support) erhältlich. Weitere Informationen zur Integration in Azure finden Sie [hier](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
 * **Splunk**: Abhängig vom Splunk-Setup gibt es zwei Ansätze:
     1. [Das Azure Monitor-Add-On für Splunk](https://splunkbase.splunk.com/app/3534/) steht in der Splunkbase und in einem Open Source-Projekt zur Verfügung. Die Dokumentation finden Sie [hier](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Wenn Sie in Ihrer Splunk-Instanz ein Add-On nicht installieren können (etwa bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud), können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu [diese Funktion, die durch neue Nachrichten im Event Hub ausgelöst wird](https://github.com/Microsoft/AzureFunctionforSplunkVS).
