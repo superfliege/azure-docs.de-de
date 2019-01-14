@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e655624a30332630c28cbd555dac26098adeb68b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870705"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976918"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
 HDInsight verfügt über eine Konfigurationsmethode mit der Bezeichnung **Skriptaktionen**, mit der benutzerdefinierte Skripts zum Anpassen des Clusters aufgerufen werden. Diese Skripts werden auch zum Installieren weitere Komponenten und zum Ändern von Konfigurationseinstellungen verwendet. Skriptaktionen können während oder nach der Clustererstellung verwendet werden.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Die Möglichkeit zum Verwenden von Skriptaktionen in einem bereits ausgeführten Cluster ist nur für Linux-basierte HDInsight-Cluster verfügbar.
 >
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -53,12 +53,12 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
 
 * Sie müssen als URI gespeichert werden, der über den HDInsight-Cluster verfügbar ist. Dies sind zwei mögliche Speicherorte:
 
-    * Ein **Azure Data Lake Store**-Konto, auf das vom HDInsight-Cluster aus zugegriffen werden kann. Weitere Informationen zur Verwendung von Azure Data Lake Store mit HDInsight finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+    * Ein **Azure Data Lake Storage**-Konto, auf das der HDInsight-Cluster zugreifen kann. Weitere Informationen zur Verwendung von Azure Data Lake Storage mit HDInsight finden Sie unter [Quickstart: Set up clusters in HDInsight (Schnellstart: Einrichten von Clustern in HDInsight)](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-        Bei der Verwendung eines Skripts, das im Data Lake Store gespeichert ist, lautet das URI-Format `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+        Bei der Verwendung eines Skripts, das in Data Lake Storage gespeichert ist, lautet das URI-Format `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
 
-        > [!NOTE]
-        > Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Store genutzt wird, muss über Lesezugriff auf das Skript verfügen.
+        > [!NOTE]  
+        > Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Storage genutzt wird, muss über Lesezugriff auf das Skript verfügen.
 
     * Ein Blob in einem **Azure Storage-Konto**, das entweder das primäre oder das zusätzliche Speicherkonto für den HDInsight-Cluster darstellt. HDInsight wird während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt.
 
@@ -66,7 +66,7 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
 
         URIs finden Sie z.B. im Abschnitt [Script Action-Beispielskripts](#example-script-action-scripts).
 
-        > [!WARNING]
+        > [!WARNING]  
         > HDInsight unterstützt nur Blobs in Azure Storage-Konten im Standard-Tarif. 
 
 * Sie können auf die **ausschließliche Ausführung auf bestimmten Knotentypen** beschränkt werden, z.B. Hauptknoten oder Workerknoten.
@@ -75,12 +75,12 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
 
     **Permanente** Skripts werden verwendet, um mithilfe von Skalierungsvorgängen neue Arbeitsknoten anzupassen, die dem Cluster hinzugefügt wurden. Bei Skalierungsvorgängen kann ein permanentes Skript auch Änderungen auf einen anderen Knotentyp anwenden, z.B. einen Hauptknoten.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Permanente Skriptaktionen müssen einen eindeutigen Namen haben.
 
     **Ad-hoc**-Skripts werden nicht beibehalten. Sie gelten nicht für Workerknoten, die dem Cluster hinzugefügt werden, nachdem das Skript ausgeführt wurde. Sie können ein Ad-hoc-Skript aber nachträglich in ein permanentes Skript oder ein permanentes Skript in ein Ad-hoc-Skript umwandeln.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Skriptaktionen, die während der Clustererstellung verwendet werden, werden automatisch zu permanenten Skripts.
   >
   > Skripts, deren Ausführung nicht erfolgreich ist, werden nicht zu permanenten Skripts. Dies gilt auch, wenn Sie speziell angeben, dass dies der Fall sein soll.
@@ -93,7 +93,7 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
 
 Der Cluster protokolliert den Verlauf aller Skripts, die ausgeführt wurden. Der Verlauf ist nützlich, wenn Sie die ID eines Skripts für die Herauf- oder Herabstufung von Vorgängen finden müssen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Es gibt keine automatische Möglichkeit, die von einer Skriptaktion vorgenommenen Änderungen rückgängig zu machen. Sie können die Änderungen entweder manuell zurückzusetzen oder ein Skript angeben, das sie zurücksetzt.
 
 ### <a name="script-action-in-the-cluster-creation-process"></a>Skriptaktionen im Clustererstellungsvorgang
@@ -110,13 +110,13 @@ Das folgende Diagramm veranschaulicht, wann Skriptaktionen während des Erstellu
 
 Das Skript wird ausgeführt, während HDInsight konfiguriert wird. Das Skript wird parallel auf allen angegebenen Knoten im Cluster ausgeführt. Die Ausführung erfolgt dabei mit Stammberechtigungen für die Knoten.
 
-> [!NOTE]
+> [!NOTE]  
 > Sie können Dienste beenden und starten, einschließlich Diensten in Zusammenhang mit Apache Hadoop. Wenn Sie Dienste beenden, müssen Sie sicherstellen, dass der Ambari-Dienst und andere Dienste in Zusammenhang mit Hadoop ausgeführt werden, ehe die Ausführung des Skripts beendet wird. Diese Dienste werden benötigt, um die Integrität und den Status des Clusters erfolgreich zu ermitteln, während dieser erstellt wird.
 
 
 Sie können während der Clustererstellung gleichzeitig mehrere Skriptaktionen verwenden. Diese Skripts werden in der Reihenfolge aufgerufen, in der sie angegeben wurden.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen sein, andernfalls tritt ein Timeout ein. Während der Clusterbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
 >
 > Um die Ausführungsdauer des Skripts zu minimieren, vermeiden Sie Aufgaben wie das Herunterladen und Kompilieren von Anwendungen aus der Quelle. Kompilieren Sie Anwendungen vor, und speichern Sie die Binärdateien in Azure Storage.
@@ -126,7 +126,7 @@ Sie können während der Clustererstellung gleichzeitig mehrere Skriptaktionen v
 
 Ein Fehler in einem Skript, das in einem bereits ausgeführten Cluster ausgeführt wird, führt nicht automatisch dazu, dass der Cluster in einen Fehlerstatus versetzt wird. Nachdem ein Skript abgeschlossen wurde, sollte der Cluster wieder in den Ausführungszustand zurückkehren.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Auch wenn der Cluster den Status „Wird ausgeführt“ aufweist, kann das fehlerhafte Skript Schaden angerichtet haben. Ein Skript könnte beispielsweise vom Cluster benötigte Dateien löschen.
 >
 > Skriptaktionen werden mit Stammberechtigungen ausgeführt. Stellen Sie also sicher, dass Sie die Auswirkungen eines Skripts verstehen, bevor Sie es auf den Cluster anwenden.
@@ -138,7 +138,7 @@ Beim Anwenden eines Skripts auf einen Cluster ändert sich der Clusterstatus fü
     EndTime           : 8/14/2017 7:41:05 PM
     Status            : Succeeded
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenn Sie nach dem Erstellen des Clusters das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise Fehler verursachen. Wenn Sie Skriptaktionen beibehalten, deren Ziel Workerknoten sind, können sie zu Fehlern führen, wenn Sie den Cluster skalieren.
 
 ## <a name="example-script-action-scripts"></a>Beispielskripts für Skriptaktionen
@@ -242,16 +242,17 @@ In diesem Abschnitt erfahren Sie, wie Sie Skriptaktionen auf einen ausgeführten
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-portal"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster über das Azure-Portal
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren HDInsight-Cluster aus.
+Über das [Azure-Portal](https://portal.azure.com):
 
-2. Wählen Sie in der Übersicht für den HDInsight-Cluster die Kachel **Skriptaktionen** aus.
+1. Wählen Sie im Menü links **Alle Dienste** aus.
 
-    ![Kachel „Skriptaktionen“](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
+1. Wählen Sie unter **ANALYSEN** die Option **HDInsight clusters** (HDInsight-Cluster) aus.
 
-   > [!NOTE]
-   > Sie können auch im Abschnitt „Einstellungen“ die Option **Alle Einstellungen** und anschließend **Skriptaktionen** auswählen.
+1. Wählen Sie Ihren Cluster aus der Liste aus, und die Standardansicht wird geöffnet.
 
-3. Wählen Sie oben im Abschnitt „Skriptaktionen“ die Option **Neue übermitteln** aus.
+1. Klicken Sie in der Standardansicht unter **Einstellungen** auf **Script actions** (Skriptaktionen).
+
+1. Wählen Sie oben auf der Seite **Script actions** (Skriptaktionen) die Option **+ Submit new** (+ Neue übermitteln) aus.
 
     ![Hinzufügen eines Skripts zu einem ausgeführten Cluster](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
@@ -342,14 +343,15 @@ Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET 
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren HDInsight-Cluster aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie in der Übersicht für den HDInsight-Cluster die Kachel **Skriptaktionen** aus.
+1. Wählen Sie im Menü links **Alle Dienste** aus.
 
-    ![Kachel „Skriptaktionen“](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
+1. Wählen Sie unter **ANALYSEN** die Option **HDInsight clusters** (HDInsight-Cluster) aus.
 
-   > [!NOTE]
-   > Sie können auch im Abschnitt „Einstellungen“ die Option **Alle Einstellungen** und anschließend **Skriptaktionen** auswählen.
+1. Wählen Sie Ihren Cluster aus der Liste aus, und die Standardansicht wird geöffnet.
+
+1. Klicken Sie in der Standardansicht unter **Einstellungen** auf **Script actions** (Skriptaktionen).
 
 4. Ein Verlauf der Skripts für diesen Cluster wird im Abschnitt „Skriptaktionen“ angezeigt. Zu diesen Informationen gehört auch eine Liste der gespeicherten Skripts. Im Screenshot unten sehen Sie, dass das Solr-Skript für diesen Cluster ausgeführt wurde. Der Screenshot zeigt keine dauerhaft gespeicherten Skripts.
 
@@ -372,7 +374,7 @@ Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET 
 | Set-AzureRmHDInsightPersistedScriptAction |Höherstufen einer Ad-hoc-Skriptaktion zu einer permanenten Skriptaktion |
 | Remove-AzureRmHDInsightPersistedScriptAction |Herunterstufen einer permanenten Skriptaktion auf eine Ad-hoc-Aktion |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Mit `Remove-AzureRmHDInsightPersistedScriptAction` werden die durch ein Skript ausgeführten Aktionen nicht rückgängig gemacht. Dieses Cmdlet entfernt nur das Flag für die dauerhafte Speicherung.
 
 Im folgenden Beispielskript wird veranschaulicht, wie die Cmdlets zuerst zum Höherstufen und dann zum Herunterstufen eines Skripts verwendet werden.
@@ -390,14 +392,14 @@ Im folgenden Beispielskript wird veranschaulicht, wie die Cmdlets zuerst zum Hö
 | `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` |Höherstufen einer Ad-hoc-Skriptaktion zu einer permanenten Skriptaktion |
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` |Herunterstufen einer permanenten Skriptaktion auf eine Ad-hoc-Aktion |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Mit `azure hdinsight script-action persisted delete` werden die durch ein Skript ausgeführten Aktionen nicht rückgängig gemacht. Dieses Cmdlet entfernt nur das Flag für die dauerhafte Speicherung.
 
 ### <a name="using-the-hdinsight-net-sdk"></a>Verwenden des HDInsight .NET SDK
 
 Ein Beispiel für die Verwendung des .NET SDKs zum Abrufen des Skriptverlaufs aus einem Cluster sowie zum Höherstufen oder Herabstufen von Skripts finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
-> [!NOTE]
+> [!NOTE]  
 > Dieses Beispiel veranschaulicht auch die Installation einer HDInsight-Anwendung mit dem .NET SDK.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Unterstützung für Open-Source-Software in HDInsight-Clustern
@@ -409,10 +411,10 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 * **Integrierte Komponenten** – Diese Komponenten sind in HDInsight-Clustern vorinstalliert und stellen Kernfunktionen des Clusters bereit. So gehören beispielsweise [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Resource Manager, die Hive-Abfragesprache ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)) und die [Apache Mahout](https://mahout.apache.org/) Library zu dieser Kategorie. Eine vollständige Liste der Clusterkomponenten finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen](hdinsight-component-versioning.md).
 * **Benutzerdefinierte Komponenten** – Als Benutzer des Clusters können Sie in Ihrem Workload eine beliebige in der Community verfügbare oder von Ihnen erstellte Komponente installieren oder verwenden.
 
-> [!WARNING]
+> [!WARNING]  
 > Mit dem HDInsight-Cluster bereitgestellte Komponenten werden vollständig unterstützt. Der Microsoft-Support unterstützt Sie beim Isolieren und Beheben von Problemen im Zusammenhang mit diesen Komponenten.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Der Microsoft-Support kann das Problem möglicherweise beheben, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org). Beispiel: [Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Der Microsoft-Support kann das Problem möglicherweise beheben, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [https://apache.org](https://apache.org). Beispiel: [Hadoop](https://hadoop.apache.org/).
 
 Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponenten zu verwenden. Unabhängig davon, wie die Komponente verwendet wird oder im Cluster installiert ist, gilt der gleiche Supportumfang. Die folgende Liste enthält die am häufigsten genutzten Möglichkeiten für die Verwendung von benutzerdefinierten Komponenten in HDInsight-Clustern:
 
@@ -474,7 +476,7 @@ Wenn bei der Clustererstellung aufgrund eines Fehlers in einem Skript ein Fehler
 
 ### <a name="ambari-watchdog"></a>Ambari-Watchdog
 
-> [!WARNING]
+> [!WARNING]  
 > Vermeiden Sie es, das Kennwort für die Ambari-Watchdog-Komponente (hdinsightwatchdog) in Ihrem Linux-basierten HDInsight-Cluster zu ändern. Wenn Sie das Kennwort für dieses Konto ändern, ist es nicht mehr möglich, im HDInsight-Cluster neue Skriptaktionen auszuführen.
 
 ### <a name="cant-import-name-blobservice"></a>„Cannot import name BlobService“ (Name BlobService kann nicht importiert werden)

@@ -1,20 +1,17 @@
 ---
 title: Serverprotokolle für Azure Database for MySQL
 description: Beschreibt die Protokolle, die in Azure Database for MySQL verfügbar sind, sowie die verfügbaren Parameter zum Aktivieren verschiedener Protokolliergrade.
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/03/2018
-ms.openlocfilehash: 73be0e4ecff4bc0d9b69249430bba69a93cc54ae
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c9f8fc4bee370f287b40275b76fa98d2552d7600
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093781"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545072"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Serverprotokolle in Azure Database for MySQL
 In Azure Database for MySQL ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen. 
@@ -42,12 +39,12 @@ Weitere Parameter, die Sie anpassen können:
 - **long_query_time**: Die Abfrage wird protokolliert, wenn sie länger als „long_query_time“ (in Sekunden) dauert. Der Standardwert ist 10 Sekunden.
 - **log_slow_admin_statements**: Wenn „ON“, sind administrative Anweisungen wie ALTER_TABLE und ANALYZE_TABLE in den Anweisungen enthalten, die in „slow_query_log“ geschrieben werden.
 - **log_queries_not_using_indexes**: Bestimmt, ob Abfragen, die keine Indizes verwenden, in „slow_query_log“ protokolliert werden.
-- **log_throttle_queries_not_using_indexes**: Dieser Parameter schränkt die Anzahl der Nichtindexabfragen ein, die in das Protokoll für langsame Abfragen geschrieben werden können. Dieser Parameter wird wirksam, wenn „log_queries_not_using_indexes“ auf „ON“ festgelegt ist.
+- **log_throttle_queries_not_using_indexes**: Dieser Parameter begrenzt die Anzahl der Nichtindexabfragen, die in das Protokoll für langsame Abfragen geschrieben werden können. Dieser Parameter wird wirksam, wenn „log_queries_not_using_indexes“ auf „ON“ festgelegt ist.
 
 Vollständige Beschreibungen der Parameter des Protokolls für langsame Abfragen finden Sie in der [MySQL-Dokumentation zum Protokoll für langsame Abfragen](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Azure Database for MySQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle zu langsamen Abfragen auf Ihrem MySQL-Server aktiviert haben, können Sie diese an Log Analytics, Event Hubs oder Azure Storage ausgeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Azure Database for MySQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle zu langsamen Abfragen auf Ihrem MySQL-Server aktiviert haben, können Sie diese an Log Analytics, Event Hubs oder Azure Storage ausgeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. Je nach Ausgabemethode können die enthaltenen Felder und ihre Reihenfolge variieren.
 
@@ -56,20 +53,20 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | TenantId | Ihre Mandanten-ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Zeitstempel für den Aufzeichnungsbeginn des Protokolls in UTC |
-| Type | Typ des Protokolls Immer `AzureDiagnostics` |
+| Typ | Typ des Protokolls Immer `AzureDiagnostics` |
 | SubscriptionId | GUID für das Abonnement, zu dem der Server gehört |
 | ResourceGroup | Name der Ressourcengruppe, zu der der Server gehört |
 | ResourceProvider | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORMYSQL` |
 | ResourceType | `Servers` |
 | ResourceId | Ressourcen-URI |
 | Ressource | Name des Servers |
-| Category | `MySqlSlowLogs` |
-| OperationName | `LogEvent` |
+| Category (Kategorie) | `MySqlSlowLogs` |
+| NameVorgang | `LogEvent` |
 | Logical_server_name_s | Name des Servers |
 | start_time_t [UTC] | Uhrzeit, zu der die Abfrage begann |
 | query_time_s | Gesamtzeit, die die Abfrage zur Ausführung benötigte |
 | lock_time_s | Gesamtzeit, über die die Abfrage gesperrt war |
-| user_host_s | Benutzername |
+| user_host_s | Username |
 | rows_sent_s | Anzahl gesendeter Zeilen |
 | rows_examined_s | Anzahl untersuchter Zeilen |
 | last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |

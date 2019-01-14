@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 991748c33eae607e97b3916a913b111af7b3b75a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258898"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714473"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurieren des PremiumV2-Tarifs für Azure App Service
 
@@ -29,7 +29,7 @@ Der neue Tarif **PremiumV2** bietet Ihnen schnellere Prozessoren und SSD-Speiche
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum zentralen Hochskalieren einer Web-App auf **PremiumV2** benötigen Sie eine Web-App in Azure App Service, die in einem niedrigeren Tarif als **PremiumV2** ausgeführt wird. Die App muss in einer App Service-Bereitstellung ausgeführt werden, die PremiumV2 unterstützt.
+Zum zentralen Hochskalieren einer App auf **PremiumV2** benötigen Sie eine Azure App Service-App, die in einem niedrigeren Tarif als **PremiumV2** ausgeführt wird. Die App muss in einer App Service-Bereitstellung ausgeführt werden, die PremiumV2 unterstützt.
 
 <a name="availability"></a>
 
@@ -47,7 +47,7 @@ az appservice list-locations --sku P1V2
 
 ## <a name="create-an-app-in-premiumv2-tier"></a>Erstellen einer Anwendung im PremiumV2-Tarif
 
-Der Tarif einer App Service-App wird im [App Service-Plan](azure-web-sites-web-hosting-plans-in-depth-overview.md) definiert, in dem die App ausgeführt wird. Sie können einen eigenständigen App Service-Plan oder einen App Service-Plan im Rahmen der Erstellung der Web-App erstellen.
+Der Tarif einer App Service-App wird im [App Service-Plan](overview-hosting-plans.md) definiert, in dem die App ausgeführt wird. Sie können einen App Service-Plan eigenständig oder im Rahmen der Erstellung der App erstellen.
 
 Wählen Sie beim Konfigurieren des App Service-Plans im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> die Option **Tarif** aus. 
 
@@ -88,7 +88,7 @@ Einige App Service-Pläne können nicht auf den PremiumV2-Tarif hochskaliert wer
 
 Wenn Ihre App in einer App Service-Bereitstellung ausgeführt wird, in der **PremiumV2** nicht verfügbar ist, oder Ihre App in einer Region ausgeführt wird, die **PremiumV2** nicht unterstützt wird, müssen Sie Ihre App erneut bereitstellen, um von **PremiumV2** profitieren zu können.  Sie haben zwei Möglichkeiten:
 
-- Erstellen Sie eine **neue** Ressourcengruppe, und erstellen Sie dann eine **neue** Web-App und einen neuen App Service-Plan in der **neuen** Ressourcengruppe. Wählen Sie während der Erstellung die gewünschte Azure-Region aus.  Sie **müssen** bei der Erstellung des neuen App Service-Plans den **PremiumV2**-Plan wählen.  Dadurch stellen Sie sicher, dass die Kombination aus Ressourcengruppe, App Service-Plan und Azure-Region dazu führt, dass der App Service-Plan in einer App Service-Bereitstellung erstellt wird, die **PremiumV2** unterstützt.  Stellen Sie Ihren Anwendungscode dann in der neu erstellten App und im App Service-Plan erneut bereit. Bei Bedarf können Sie den App Service-Plan von **PremiumV2** wieder herunterskalieren, um Kosten zu sparen, und später mit **PremiumV2** wieder hochskalieren.
+- Erstellen Sie eine **neue** Ressourcengruppe, und erstellen Sie dann eine **neue** App und einen neuen App Service-Plan in der **neuen** Ressourcengruppe. Wählen Sie während der Erstellung die gewünschte Azure-Region aus.  Sie **müssen** bei der Erstellung des neuen App Service-Plans den **PremiumV2**-Plan wählen.  Dadurch stellen Sie sicher, dass die Kombination aus Ressourcengruppe, App Service-Plan und Azure-Region dazu führt, dass der App Service-Plan in einer App Service-Bereitstellung erstellt wird, die **PremiumV2** unterstützt.  Stellen Sie Ihren Anwendungscode dann in der neu erstellten App und im App Service-Plan erneut bereit. Bei Bedarf können Sie den App Service-Plan von **PremiumV2** wieder herunterskalieren, um Kosten zu sparen, und später mit **PremiumV2** wieder hochskalieren.
 - Wenn Ihre App bereits in einem vorhandenen **Premium**-Tarif ausgeführt wird, können Sie Ihre App mit allen App-Einstellungen, Verbindungszeichenfolgen und der Bereitstellungskonfiguration in einen neuen App Service-Plan klonen, der **PremiumV2** verwendet.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)

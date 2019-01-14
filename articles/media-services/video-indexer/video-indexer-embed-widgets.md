@@ -7,18 +7,22 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/25/2018
 ms.author: juliako
-ms.openlocfilehash: a051f40cb5586cae58d8e4939f4fcee35438bf69
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291854"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791821"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
 In diesem Artikel wird gezeigt, wie Sie Video Indexer-Widgets in Ihre Anwendungen einbetten können. Video Indexer unterstützt das Einbetten von zwei Widget-Typen in Ihre Anwendung: **Kognitive Erkenntnisse** und **Player**. 
+
+> [!NOTE]
+> Ab dem 1. Februar 2018 wird die Version 1 des Widgets **Kognitive Erkenntnisse** eingestellt. Die Version der Einbettungs-URL wird standardmäßig zu `version=2`.
+
 ## <a name="widget-types"></a>Typen von Widgets
 
 ### <a name="cognitive-insights-widget"></a>Widget „Kognitive Erkenntnisse“
@@ -27,8 +31,8 @@ Ein Widget vom Typ **Kognitive Erkenntnisse** enthält alle visuellen Erkenntnis
 
 |NAME|Definition|BESCHREIBUNG|
 |---|---|---|
-|Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Der URL-Parameter **widgets** wird bei Verwenden von **version=2** nicht unterstützt. |
-|Version|Versionen des Widgets **Kognitive Erkenntnisse**|Zum Abrufen der neuesten Updates für das Widget „Kognitive Erkenntnisse“ fügen Sie den Abfrageparameter `?version=2` an die Einbettungs-URL an. Zum Beispiel, `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Um die ältere Version abzurufen, entfernen Sie einfach `version=2` aus der URL.
+|Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Hinweis: Der URL-Parameter **widgets** wird bei Verwenden von **version=2** nicht unterstützt. |
+|Version|Versionen des Widgets **Kognitive Erkenntnisse**|Fügen Sie den Abfrageparameter `?version=2` an die Einbettungs-URL an, um die neuesten Updates für das Widget „Kognitive Erkenntnisse“ abzurufen. Zum Beispiel, `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Um die ältere Version abzurufen, entfernen Sie einfach `version=2` aus der URL.
 
 ### <a name="player-widget"></a>Player-Widget
 
@@ -39,7 +43,7 @@ Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate st
 |t|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/>Beispiel: t=60|
 |captions|Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die Beschriftungen verfügbar sind.<br/>Beispiel: captions=en-US|
 |showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: showCaptions=true|
-|type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: type=audio|
+|type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: type=audio|"
 |autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: TRUE).<br/>Beispiel: autoplay=false|
 |Language|Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: language=de-DE|
 

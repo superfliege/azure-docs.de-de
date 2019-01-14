@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Azure Batch-Workloads auf kostengünstigen VMs mit niedriger Priorität | Microsoft-Dokumentation
+title: Ausführen von Workloads auf kostengünstigen VMs mit niedriger Priorität – Azure Batch | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie VMs mit niedriger Priorität bereitstellen, um die Kosten von Azure Batch-Workloads zu verringern.
 services: batch
 author: mscurrell
@@ -11,12 +11,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec18
+ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093002"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546792"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 
@@ -42,11 +43,11 @@ Welche Workloads sind aufgrund der besonderen Merkmale von VMs mit niedriger Pri
 
 Einige Beispiele für Anwendungsfälle mit Batchverarbeitung, die gut für VMs mit niedriger Priorität geeignet sind:
 
--   **Entwicklung und Tests**: Insbesondere bei der Entwicklung von umfangreichen Lösungen können beträchtliche Einsparungen realisiert werden. Alle Arten von Tests können profitieren, aber umfangreiche Auslastungstests und Regressionstests sind besonders gut geeignete Fälle.
+-   **Entwicklung und Tests**: Insbesondere bei der Entwicklung von umfangreichen Lösungen lassen sich beträchtliche Einsparungen realisieren. Alle Arten von Tests können profitieren, aber umfangreiche Auslastungstests und Regressionstests sind besonders gut geeignete Fälle.
 
--   **Ergänzen der bedarfsgesteuerten Kapazität**: VMs mit niedriger Priorität können zum Ergänzen normaler dedizierter VMs verwendet werden – bei Verfügbarkeit können Aufträge skaliert und daher schneller und zu niedrigeren Kosten abgeschlossen werden; bei Nichtverfügbarkeit stehen weiterhin die normalerweise bereitgestellten dedizierten VMs zur Verfügung.
+-   **Ergänzen der bedarfsgesteuerten Kapazität**: Normale dedizierte VMs können durch VMs mit niedriger Priorität ergänzt werden: bei Verfügbarkeit dieser VMs können Aufträge skaliert und daher schneller und kostengünstiger abgeschlossen werden; bei Nichtverfügbarkeit stehen weiterhin die regulär bereitgestellten dedizierten VMs zur Verfügung.
 
--   **Flexible Auftragsausführungszeit**: Wenn die Zeit, in der Aufträge abgeschlossen werden müssen, flexibel ist, können potenzielle Rückgänge in der Kapazität toleriert werden. Durch das Hinzufügen von VMs mit niedriger Priorität werden Aufträge werden jedoch häufig schneller und kostengünstiger ausgeführt.
+-   **Flexible Auftragsausführungszeit**: Wenn die Zeit, in der Aufträge abgeschlossen werden müssen, flexibel ist, können potenzielle Kapazitätseinbußen toleriert werden. Durch Hinzufügen von VMs mit niedriger Priorität lassen sich Aufträge jedoch häufig schneller und kostengünstiger ausführen.
 
 Batchpools können auf verschiedene Weise für VMs mit niedriger Priorität konfiguriert werden, je nachdem, wie flexibel die Ausführungszeit des Auftrags ist:
 

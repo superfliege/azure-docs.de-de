@@ -11,12 +11,12 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d1381ff16d0de382634b06fd081f1827588f8ee9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1caf8455816bd86411a75821ee33516e8aad5de3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435105"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002262"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -180,3 +180,7 @@ In diesem Beispiel verwenden Sie eine Adresse im Bereich 192.168.0.0/24.
 
 Öffnen Sie auf der Gast-VM einen Browser, und navigieren Sie zu einer Webseite.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
+
+## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>Einrichten der Intranetkonnektivität für die Gast-VM
+
+Anleitungen zum Aktivieren der transparenten Konnektivität zwischen Gast-VMs und Azure-VMs finden Sie in [diesem Dokument](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network).

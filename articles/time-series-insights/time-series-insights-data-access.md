@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights Preview-Sicherheit – Konfigurieren der Sicherheit für Zugriff auf und Verwaltung von Azure Time Series Insights Preview | Microsoft-Dokumentation
+title: Konfigurieren der Sicherheit für den Zugriff und die Verwaltung von Azure Time Series Insights Preview | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Sie die Sicherheit und Berechtigungen als Verwaltungszugriffsrichtlinien und Datenzugriffsrichtlinien konfigurieren, um Azure Time Series Insights Preview zu schützen.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f8eb66feecd58b766b3414b1bbc6bd4e27bf4f7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9aea7a9c9dd96bf30ebb3def9354df9e4bd30114
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275464"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558516"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gewähren von Datenzugriff für eine Umgebung
 

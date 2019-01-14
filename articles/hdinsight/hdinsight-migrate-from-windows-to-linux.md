@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437128"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743645"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
 
@@ -119,7 +119,7 @@ Dieser Abschnitt enthält Informationen zu Unterschieden beim Erstellen von Clus
 
 ### <a name="ssh-user"></a>SSH-Benutzer
 
-Linux-basierte HDInsight-Cluster nutzen **Secure Shell (SSH)** als Protokoll, um Clusterknoten Remotezugriff zu gewähren. Im Gegensatz zu Remotedesktop für Windows-basierte Cluster enthalten die meisten SSH-Clients keine grafische Benutzeroberfläche. Stattdessen stellt SSH-Clients eine Befehlszeile bereit, über die Sie Befehlen im Cluster ausführen können. Einige Clients (z.B. [MobaXterm](http://mobaxterm.mobatek.net/)) bieten zusätzlich zu einer Remotebefehlszeile einen grafischen Dateisystembrowser.
+Linux-basierte HDInsight-Cluster nutzen **Secure Shell (SSH)** als Protokoll, um Clusterknoten Remotezugriff zu gewähren. Im Gegensatz zu Remotedesktop für Windows-basierte Cluster enthalten die meisten SSH-Clients keine grafische Benutzeroberfläche. Stattdessen stellt SSH-Clients eine Befehlszeile bereit, über die Sie Befehlen im Cluster ausführen können. Einige Clients (z.B. [MobaXterm](https://mobaxterm.mobatek.net/)) bieten zusätzlich zu einer Remotebefehlszeile einen grafischen Dateisystembrowser.
 
 Während der Clustererstellung müssen Sie einen SSH-Benutzer und entweder ein **Kennwort** oder ein **öffentliches Schlüsselzertifikat** für die Authentifizierung bereitstellen.
 
@@ -199,7 +199,7 @@ Das folgende Diagramm enthält Hilfestellungen zum Migrieren Ihrer Hive-Workload
 | `set hive.execution.engine=tez;` zum Aktivieren von Tez |Apache Tez ist die Standard-Ausführungs-Engine für Linux-basierte Cluster. Die SET-Anweisung wird also nicht mehr benötigt. |
 | Benutzerdefinierte C#-Funktionen | Informationen zum Überprüfen von C#-Komponenten mit Linux-basiertem HDInsight finden Sie unter [Migrieren von .NET-Lösungen in Linux-basiertes HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | CMD-Dateien oder -Skripts auf dem Server, die als Teil eines Hive-Auftrags aufgerufen wurden |Verwenden von Bash-Skripts |
-| `hive` -Befehl von Remotedesktop |Verwenden von [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) oder [Apache Hive in einer SSH-Sitzung](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` -Befehl von Remotedesktop |Verwenden von [Apache Hive Beeline](hadoop/apache-hadoop-use-hive-beeline.md) oder [Apache Hive in einer SSH-Sitzung](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -220,7 +220,7 @@ Das folgende Diagramm enthält Hilfestellungen zum Migrieren Ihrer Hive-Workload
 > [!IMPORTANT]  
 > Wenn Sie einen externen Oozie-Metastore verwenden, sollten Sie den Metastore vor der Verwendung mit Linux-basiertem HDInsight sichern. Linux-basiertes HDInsight wird mit neueren Versionen von Oozie bereitgestellt, die möglicherweise Inkompatibilitäten mit in früheren Versionen erstellten Metastores aufweisen.
 
-Oozie-Workflows erlauben Shellaktionen. Bei Shellaktionen wird die Standardshell für das Betriebssystem zum Ausführen von Befehlszeilenbefehlen verwendet. Wenn Sie über Oozie-Workflows verfügen, die auf der Windows-Shell beruhen, müssen Sie die Workflows so umschreiben, dass sie auf der Linux-Shellumgebung (Bash) basieren. Weitere Informationen zur Verwendung von Shellaktionen mit Oozie finden Sie unter [Oozie shell action extension](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html) (Erweiterung für Oozie-Shellaktionen).
+Oozie-Workflows erlauben Shellaktionen. Bei Shellaktionen wird die Standardshell für das Betriebssystem zum Ausführen von Befehlszeilenbefehlen verwendet. Wenn Sie über Oozie-Workflows verfügen, die auf der Windows-Shell beruhen, müssen Sie die Workflows so umschreiben, dass sie auf der Linux-Shellumgebung (Bash) basieren. Weitere Informationen zur Verwendung von Shellaktionen mit Oozie finden Sie unter [Oozie shell action extension](https://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html) (Erweiterung für Oozie-Shellaktionen).
 
 Wenn C#-Anwendungen in Ihrem Workflow verwendet werden, überprüfen Sie diese Anwendungen in einer Linux-Umgebung. Weitere Informationen finden Sie unter [Migrieren von .NET-Lösungen in Linux-basiertes HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 

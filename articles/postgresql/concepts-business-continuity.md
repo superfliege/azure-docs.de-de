@@ -1,20 +1,17 @@
 ---
 title: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
 description: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: a0ff57037d6639f5778e27d6cf697b90038ab3b3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c8c62f6a80cf06e3444c4c3efd9979e723dcf488
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717062"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559041"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
 
@@ -49,7 +46,7 @@ Eine Möglichkeit ist, einfach zu warten, bis der Server wieder online ist, wenn
 Die andere Option ist die Verwendung des Geowiederherstellungsfeatures von Azure Database for PostgreSQL, das den Server mithilfe von georedundanten Sicherungen wiederherstellt. Auf diese Sicherungen kann selbst dann zugegriffen werden, wenn die Region, in der Ihr Server gehostet wird, offline ist. Sie können eine Wiederherstellung aus diesen Sicherungen in eine andere Region ausführen und den Server wieder online schalten.
 
 > [!IMPORTANT]
-> Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben. Wenn Sie von lokal redundanten zu georedundanten Sicherungen für einen bereits vorhandenen Server wechseln möchten, müssen Sie mit „mysqldump“ ein Speicherabbild Ihres vorhandenen Servers erstellen und ihn auf einem neu erstellten Server wiederherstellen, der mit georedundanten Sicherungen konfiguriert ist.
+> Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben. Wenn Sie für einen vorhandenen Server von lokal redundanten zu georedundanten Sicherungen wechseln möchten, müssen Sie mit „pg_dump“ ein Speicherabbild Ihres vorhandenen Servers erstellen und dieses auf einem neu erstellten Server wiederherstellen, der mit georedundanten Sicherungen konfiguriert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu automatisierten Sicherungen finden Sie unter [Sicherungen in Azure Database for PostgreSQL](concepts-backup.md). 

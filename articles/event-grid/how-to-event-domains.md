@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 12/17/2018
+ms.openlocfilehash: 08faef2eaf5c9cd09172d455c464531e293d5f3e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298529"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554587"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Verwalten von Themen und Veröffentlichen von Ereignissen mithilfe von Ereignisdomänen
 
@@ -139,7 +139,7 @@ Berechtigungen, die für ein Thema festgelegt sind, werden in Azure Active Direc
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Veröffentlichen von Ereignissen in einer Event Grid-Domäne
 
-Das Veröffentlichen von Ereignissen für eine Domäne ist identisch mit dem [Veröffentlichen für ein benutzerdefiniertes Thema](./post-to-custom-topic.md). Der einzige Unterschied besteht darin, dass Sie das Thema angeben müssen, an das jedes Ereignis gesendet werden soll. Das folgende Array von Ereignissen würde zu einem Ereignis mit `"id": "1111"` für Thema `foo` führen, während ein Ereignis mit `"id": "2222"` an Thema `bar` gesendet würde:
+Das Veröffentlichen von Ereignissen für eine Domäne ist identisch mit dem [Veröffentlichen für ein benutzerdefiniertes Thema](./post-to-custom-topic.md). Allerdings veröffentlichen Sie nicht für ein benutzerdefiniertes Thema, sondern Sie veröffentlichen alle Ereignisse im Domänenendpunkt. In den JSON-Ereignisdaten geben Sie das Thema an, an das die Ereignisse gesendet werden sollen. Das folgende Array von Ereignissen würde zu einem Ereignis mit `"id": "1111"` für Thema `demotopic1` führen, während ein Ereignis mit `"id": "2222"` an Thema `demotopic2` gesendet würde:
 
 ```json
 [{
@@ -168,7 +168,15 @@ Das Veröffentlichen von Ereignissen für eine Domäne ist identisch mit dem [Ve
 }]
 ```
 
-Verwenden Sie Folgendes, um die Schlüssel für eine Domäne per Azure CLI abzurufen:
+Um den Domänenendpunkt mit der Azure CLI abzurufen, verwenden Sie Folgendes:
+
+```azurecli-interactive
+az eventgrid domain show \
+  -g <my-resource-group> \
+  -n <my-domain>
+```
+
+Um die Schlüssel für eine Domäne abzurufen, verwenden Sie Folgendes:
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -176,7 +184,15 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-Verwenden Sie für PowerShell Folgendes:
+Um den Domänenendpunkt mit der PowerShell abzurufen, verwenden Sie Folgendes:
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
+Um die Schlüssel für eine Domäne abzurufen, verwenden Sie Folgendes:
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `

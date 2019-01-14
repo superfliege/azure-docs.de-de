@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f7567d0c3bfdfc7bd44b918c9f2feda7499386e8
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984078"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554672"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -34,7 +34,7 @@ Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig 
 4.  Sobald Sie die Grenzen dessen, was ein Auftrag mit 6 SUs erreichen kann, bestimmt haben, können Sie die Verarbeitungskapazität des Auftrags linear extrapolieren, je mehr SUs Sie hinzufügen. Dies gilt jedoch nur unter der Voraussetzung, dass keine Datenschiefe vorliegt, die dazu führt, dass bestimmte Partitionen einen überaus hohen Datendurchsatz aufweisen.
 
 > [!NOTE]
-> Wählen Sie die richtige Anzahl von Streamingeinheiten: Da Stream Analytics für jede hinzugefügte Gruppe aus 6 SUs einen Verarbeitungsknoten erstellt, wird empfohlen, die Anzahl der Eingabepartitionen durch die Anzahl der Knoten zu teilen, damit die Partitionen gleichmäßig auf die Knoten aufgeteilt werden können.
+> Wählen Sie die richtige Anzahl von Streamingeinheiten aus: Da Stream Analytics für jeweils 6 hinzugefügte SUs einen Verarbeitungsknoten erstellt, wird empfohlen, die Anzahl der Eingabepartitionen als durch die Anzahl der Knoten teilbar festzulegen, damit die Partitionen gleichmäßig auf die Knoten aufgeteilt werden können.
 > Beispiel: Sie haben gemessen, dass Ihr 6-SU-Auftrag eine Verarbeitungsrate von 4 MB/s erreichen kann. Die Anzahl Ihrer Eingabepartitionen beträgt 4. Sie können festlegen, dass Aufträge mit 12 SUs ungefähr eine Verarbeitungsrate von 8 MB/s erreichen und Aufträge mit 24 SUs 16 MB/s erreichen sollen. Anschließend können Sie entscheiden, auf welchen Wert die Anzahl der SUs für den Auftrag in Abhängigkeit von der Eingangsrate erhöht werden soll.
 
 
@@ -48,15 +48,16 @@ Wenn Ihre Abfrage keinen hohen Parallelitätsgrad aufweist, können Sie folgende
 
 Abfrage:
 
-    WITH Step1 AS (
-    SELECT COUNT(*) AS Count, TollBoothId, PartitionId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1
-    GROUP BY TumblingWindow(minute, 3), TollBoothId
-
+ ```SQL
+ WITH Step1 AS (
+ SELECT COUNT(*) AS Count, TollBoothId, PartitionId
+ FROM Input1 Partition By PartitionId
+ GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+ )
+ SELECT SUM(Count) AS Count, TollBoothId
+ FROM Step1
+ GROUP BY TumblingWindow(minute, 3), TollBoothId
+ ```
 In der obigen Abfrage zählen Sie die Anzahl der Fahrzeuge pro Mautstation pro Partition und addieren dann die Anzahl aller Partitionen.
 
 Weisen Sie nach der Partitionierung für jede Partition des Schritts bis zu 6 SUs zu, wobei jede Partition maximal 6 SUs aufweisen kann. Jede Partition kann somit auf einen eigenen Verarbeitungsknoten platziert werden.

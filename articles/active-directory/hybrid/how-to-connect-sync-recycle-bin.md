@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 12/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 378e1d3aab992e9b4e6f2263c26ea4268a43d678
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d1a09c077adbc3c9176740bce69bf051a912bc22
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306159"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555573"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect-Synchronisierung: Aktivieren des AD-Papierkorbs
 Es wird empfohlen, den Active Directory-Papierkorb für Ihre lokalen Active Directory-Instanzen, die mit Azure AD synchronisiert werden, zu aktivieren. 
@@ -40,7 +40,8 @@ Dieses Feature unterstützt Sie folgendermaßen beim Wiederherstellen von Azure 
 > [!NOTE]
 > Standardmäßig behält Azure AD gelöschte Azure AD-Benutzerobjekte im vorläufig gelöschten Zustand für 30 Tage bei, bevor sie dauerhaft gelöscht werden. Allerdings können Administratoren das Löschen dieser Objekte beschleunigen. Sobald die Objekte dauerhaft gelöscht wurden, können sie nicht mehr wiederhergestellt werden, selbst wenn das Feature für den lokalen AD-Papierkorb aktiviert ist.
 
-
+>[!NOTE]
+>Wurde ein Benutzer aus dem lokalen Synchronisierungsbereich entfernt und in der Cloud gelöscht, wurde der DirSyncEnabled-Status des Kontos früher fälschlicherweise auf „False“ festgelegt. Wurde dieser Benutzer anschließend manuell aus dem Azure AD-Papierkorb wiederhergestellt, wurde für das Konto der falsche Status „Nur Cloud“ angezeigt. Dieser Fehler wurde nun behoben. Der Wert des DirSyncEnabled-Status bleibt immer „True“, wenn ein Benutzer aus dem Synchronisierungsbereich entfernt, dann vorläufig gelöscht und anschließend aus dem Azure AD-Papierkorb manuell wiederhergestellt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 **Übersichtsthemen**

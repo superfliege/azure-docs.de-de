@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9ffb67a2d3d07e75df29070ca198bac1661f95cc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c4cf59e6aa7e6edc73db2e22b9fa8ce40301b07c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212963"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790332"
 ---
 <a name="saas-sell-through-azure---apis"></a>SaaS – Verkaufen über Azure: APIs
 ==============================
@@ -67,8 +67,8 @@ Führen Sie die folgenden Schritte aus, um mit dem Azure-Portal eine neue Anwend
         - Wählen Sie für [Clientanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), die lokal auf dem Gerät installiert sind, die Option **Nativ** aus. Diese Einstellung wird für öffentliche [native OAuth-Clients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) verwendet.
         - Wählen Sie die Option **Web-App/API** für [Clientanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) und [Ressourcen-/API-Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client) verwendet.
         Außerdem kann dieselbe Anwendung sowohl einen Client als auch eine Ressource/API verfügbar machen.
-    -   **Anmelde-URL**: Geben Sie für Anwendungen vom Typ „Web-App/API“ die Basis-URL Ihrer App an. **http://localhost:31544** kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können sich mit dieser URL dann bei einer Webclientanwendung anmelden.
-    -   **Umleitungs-URI**: Geben Sie für Anwendungen vom Typ „Nativ“ den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. **http://MyFirstAADApp**.
+    -   **Anmelde-URL**: Geben Sie für Web-Apps/API-Anwendungen die Basis-URL Ihrer App an. **http://localhost:31544** kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können sich mit dieser URL dann bei einer Webclientanwendung anmelden.
+    -   **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. **http://MyFirstAADApp**.
 
         ![SaaS: AD-App-Registrierungen](media/saas-offer-publish-with-subscription-apis/saas-offer-app-registration-2.png) Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstart-Einrichtungsanleitungen, die im Abschnitt „Erste Schritte“ des [Azure AD-Entwicklerhandbuchs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started) verfügbar sind.
 
@@ -136,7 +136,7 @@ Beispiel für Antworttoken:
       "ext_expires_in": "0",
       "expires_on": "15251…",
       "not_before": "15251…",
-      "resource": "b3cca048-ed2e-406c-aff2-40cf19fe7bf5",
+      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
@@ -172,7 +172,7 @@ Eine POST-Aktion beim Auflösen des Endpunkts ermöglicht Benutzern das Auflöse
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser korreliert alle Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | Inhaltstyp       | JA          | `application/json`                                        |
 | authorization      | JA          | JWT-Bearertoken (JSON Web Token)                    |
-| x-ms-marketplace-token| JA| Der Tokenabfrageparameter in der URL, wenn der Benutzer von Azure zur Website des SaaS-ISV umgeleitet wird. **Hinweis:** Führen Sie eine URL-Decodierung des Tokenwerts aus dem Browser durch, bevor Sie ihn verwenden.|
+| x-ms-marketplace-token| JA| Der Tokenabfrageparameter in der URL, wenn der Benutzer von Azure zur Website des SaaS-ISV umgeleitet wird. **Hinweis:** Dieses Token ist nur eine Stunde lang gültig. Führen Sie zusätzlich eine URL-Decodierung des Tokenwerts im Browser durch, bevor Sie ihn verwenden.|
 |  |  |  |
   
 
@@ -201,7 +201,7 @@ Eine POST-Aktion beim Auflösen des Endpunkts ermöglicht Benutzern das Auflöse
 | **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | Token erfolgreich aufgelöst.                                                            |
-| 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder eine ungültige API-Version wurde angegeben. Fehler beim Auflösen des Tokens, da das Token entweder falsch formatiert oder abgelaufen ist. |
+| 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder eine ungültige API-Version wurde angegeben. Fehler beim Auflösen des Tokens, da das Token entweder falsch formatiert oder abgelaufen ist (nach dem Generieren ist das Token nur eine Stunde lang gültig). |
 | 403                  | `Forbidden`          | Der Aufrufer ist zum Durchführen dieses Vorgangs nicht autorisiert.                                 |
 | 429                  | `RequestThrottleId`  | Der Dienst ist mit der Verarbeitung von Anforderungen ausgelastet, versuchen Sie es später erneut.                                |
 | 503                  | `ServiceUnavailable` | Der Dienst ist vorübergehend ausgefallen, versuchen Sie es später erneut.                                        |
@@ -513,7 +513,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 | offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat.         |
 | planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.          |
 | saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements.                |
-| saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`: Azure-Abonnement ist angehalten.  |
+| saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
 | created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC. |
 | lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC. |
 |  |  |  |
@@ -587,7 +587,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 | offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat.         |
 | planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.          |
 | saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements.                |
-| saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`: Azure-Abonnement ist angehalten.  |
+| saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
 | created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC. |
 | lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC. |
 |  |  |  |
@@ -612,4 +612,36 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 | x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
 | x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
 | Retry-After        | Nein            | Intervall, in dem der Client den Status überprüfen kann.                                                       |
+|  |  |  |
+
+### <a name="saas-webhook"></a>SaaS-Webhook
+
+Ein SaaS-Webhook wird verwendet, um Änderungen proaktiv an den SaaS-Dienst zu melden. Diese POST-API muss nicht authentifiziert werden und wird vom Microsoft-Dienst aufgerufen. Der SaaS-Dienst muss die API-Vorgänge zur Überprüfung und Autorisierung aufrufen, bevor er auf die Webhookbenachrichtigung reagieren kann. 
+
+
+*Text*
+
+``` json
+  { 
+    "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
+    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
+    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
+    "offerId": "sampleSaaSOffer", // Provided with "Update" action
+    "publisherId": "contoso", 
+    "planId": "silver",     // Provided with "Update" action
+    "action": "Activate", // Activate/Delete/Suspend/Reinstate/Update
+    "timeStamp": "2018-12-01T00:00:00"
+  }
+```
+
+| **Parametername**     | **Datentyp** | **Beschreibung**                               |
+|------------------------|---------------|-----------------------------------------------|
+| id  | Zeichenfolge       | Eindeutige ID für den ausgelösten Vorgang.                |
+| activityId   | Zeichenfolge        | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet.               |
+| subscriptionId                     | Zeichenfolge        | ID der SaaS-Abonnementsressource in Azure.    |
+| offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat. Nur mit der Aktion „Update“ bereitgestellt.        |
+| publisherId                | Zeichenfolge        | Herausgeber-ID des SaaS-Angebots         |
+| planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat. Nur mit der Aktion „Update“ bereitgestellt.          |
+| action                 | Zeichenfolge        | Die Aktion, die diese Benachrichtigung auslöst. Mögliche Werte: Activate, Delete, Suspend, Reinstate, Update          |
+| timeStamp                 | Zeichenfolge        | Zeitstempelwert in UTC, als diese Benachrichtigung ausgelöst wurde.          |
 |  |  |  |

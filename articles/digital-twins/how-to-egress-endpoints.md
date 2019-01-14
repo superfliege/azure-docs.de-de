@@ -1,25 +1,71 @@
 ---
 title: Ausgang und Endpunkte in Azure Digital Twins | Microsoft-Dokumentation
-description: Leitfaden für die Erstellung von Endpunkten mit Azure Digital Twins
+description: Leitfaden für die Erstellung von Endpunkten mit Azure Digital Twins.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 12/31/2018
 ms.author: alinast
-ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636304"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994819"
 ---
 # <a name="egress-and-endpoints"></a>Ausgang und Endpunkte
 
-Azure Digital Twins unterstützt das Konzept von **Endpunkten**. Jeder Endpunkt stellt eine Nachricht oder einen Ereignisbroker im Azure-Abonnement des Benutzers dar. Ereignisse und Nachrichten können an Azure Event Hubs, Azure Event Grid und Azure Service Bus-Themen gesendet werden.
+Bei *Endpunkten* von Azure Digital Twins handelt es sich um eine Nachricht oder einen Ereignisbroker in einem Azure-Abonnement eines Benutzers. Ereignisse und Nachrichten können an Azure Event Hubs, Azure Event Grid und Azure Service Bus-Themen gesendet werden.
 
-Ereignisse werden entsprechend den vordefinierten Routingeinstellungen an Endpunkte gesendet. Der Benutzer kann festlegen, welcher Endpunkt die folgenden Ereignisse empfangen soll: 
+Ereignisse werden entsprechend den vordefinierten Routingeinstellungen an Endpunkte weitergeleitet. Die Benutzer legen fest, welche *Ereignistypen* jeder Endpunkt empfangen kann.
+
+Weitere Informationen zu Ereignissen, Routing und Ereignistypen finden Sie unter [Routing events and messages in Azure Digital Twins (Weiterleiten von Ereignissen und Nachrichten)](./concepts-events-routing.md).
+
+## <a name="events"></a>Ereignisse
+
+Ereignisse werden von IoT-Objekten wie Geräte und Sensoren zur Verarbeitung durch Azure-Nachrichtenbroker und -Ereignisbroker gesendet. Ereignisse werden durch das folgende [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md) definiert.
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "subject": "ExtendedPropertyKey",
+  "data": {
+    "SpacesToNotify": [
+      "3a16d146-ca39-49ee-b803-17a18a12ba36"
+    ],
+    "Id": "00000000-0000-0000-0000-000000000000",
+      "Type": "ExtendedPropertyKey",
+    "AccessType": "Create"
+  },
+  "eventType": "TopologyOperation",
+  "eventTime": "2018-04-17T17:41:54.9400177Z",
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
+}
+```
+
+| Attribut | Typ | BESCHREIBUNG |
+| --- | --- | --- |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| data | object | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+
+Weitere Informationen zum Event Grid-Ereignisschema:
+
+- Lesen Sie den Artikel [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md).
+- Lesen Sie die Referenz zur [EventGridEvent-Schnittstelle](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+
+## <a name="event-types"></a>Ereignistypen
+
+Ereignistypen klassifizieren die Art des Ereignisses und werden im Feld **eventType** festgelegt. Die folgende Liste gibt verfügbare Ereignistypen an:
 
 - TopologyOperation
 - UdfCustom
@@ -27,15 +73,11 @@ Ereignisse werden entsprechend den vordefinierten Routingeinstellungen an Endpun
 - SpaceChange
 - DeviceMessage
 
-Grundlegende Informationen zur Weiterleitung von Ereignissen und zu Ereignistypen finden Sie unter [Weiterleiten von Ereignissen und Nachrichten](concepts-events-routing.md).
-
-## <a name="event-types-description"></a>Beschreibung der Ereignistypen
-
-Die Ereignisformate für jeden der Ereignistypen werden in den folgenden Abschnitten beschrieben.
+Die Ereignisformate für jeden Ereignistypen werden in den folgenden Unterabschnitten näher beschrieben.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** gilt für Änderungen des Graphen. Die **subject**-Eigenschaft gibt den Typ des betroffenen Objekts an. Die folgenden Objekttypen können dieses Ereignis auslösen: 
+**TopologyOperation** gilt für Änderungen des Graphen. Die **subject**-Eigenschaft gibt den Typ des betroffenen Objekts an. Die folgenden Objekttypen können dieses Ereignis auslösen:
 
 - Gerät
 - DeviceBlobMetadata
@@ -86,7 +128,7 @@ Die Ereignisformate für jeden der Ereignistypen werden in den folgenden Abschni
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** ist ein Ereignis, das von einer benutzerdefinierten Funktion (User-Defined Function, UDF) gesendet wurde. 
+**UdfCustom** ist ein Ereignis, das von einer benutzerdefinierten Funktion (User-Defined Function, UDF) gesendet wurde.
   
 > [!IMPORTANT]  
 > Dieses Ereignis muss explizit von der benutzerdefinierten Funktion selbst gesendet werden.
@@ -195,10 +237,19 @@ Mit **DeviceMessage** können Sie eine **EventHub**-Verbindung angeben, an die T
 
 ## <a name="configure-endpoints"></a>Endpunkte konfigurieren
 
-Endpunktverwaltung erfolgt über die Endpunkte-API. Die folgenden Beispiele veranschaulichen, wie die verschiedenen unterstützten Endpunkte konfiguriert werden. Achten Sie besonders auf das Array für Ereignistypen (eventTypes), weil es das Routing (Weiterleiten) für den Endpunkt definiert:
+Endpunktverwaltung erfolgt über die Endpunkte-API.
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
+Die folgenden Beispiele veranschaulichen, wie die unterstützten Endpunkte konfiguriert werden.
+
+>[!IMPORTANT]
+> Achten Sie auf das Attribut **eventTypes**. Es definiert die Ereignistypen, die vom Endpunkt bearbeitet werden, und bestimmt sein Routing.
+
+Eine authentifizierte HTTP POST-Anforderung mit
 
 ```plaintext
-POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
+YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
 - Ereignistypen für das Weiterleiten an Service Bus: **SensorChange**, **SpaceChange** und **TopologyOperation**.

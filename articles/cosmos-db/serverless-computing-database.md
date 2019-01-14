@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: f0f0308233334e2662704e818c765c625a80019d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d013f2cdd9f33f55d579638386355e5cbaccb7e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878300"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714949"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 
@@ -29,7 +29,7 @@ Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverl
 * Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an einen Azure Cosmos DB-Container. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
 
 > [!NOTE]
-> Zurzeit werden Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen nur für die Verwendung mit der SQL-API unterstützt. Für alle anderen Azure Cosmos DB-APIs (einschließlich MongoDB-API, Cassandra-API, Gremlin-API und Tabellen-API) müssen Sie für den Datenbankzugriff aus Ihrer Funktion den statischen Client für Ihre API verwenden.
+> Zurzeit werden Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen nur für die Verwendung mit der SQL-API unterstützt. Für alle anderen Azure Cosmos DB-APIs müssen Sie für den Datenbankzugriff aus Ihrer Funktion den statischen Client für Ihre API verwenden.
 
 
 In der folgenden Abbildung wird jede einzelne dieser drei Integrationen veranschaulicht: 

@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Azure IoT-Solution Accelerators | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu IoT-Solution Accelerators (Azure) | Microsoft-Dokumentation
 description: Häufig gestellte Fragen zu IoT-Solution Accelerators
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 294eae1dd5e591d12fdb82f62ea013ba54489686
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 59271a96c5ad1a92483ca585fc30f1e9de0ed4f7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253336"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608748"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Häufig gestellte Fragen zu IoT-Solution Accelerators
 
@@ -40,7 +40,28 @@ Derzeit wird die Microservices-Architektur nur in der Remoteüberwachungslösung
 
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Welche Vorteile bietet die neue auf Microservices basierende Open-Source-Architektur im neuen Update?
 
-In den letzten beiden Jahren hat sich die Cloudarchitektur stark weiterentwickelt. Microservices haben sich als hervorragendes Muster für mehr Skalierbarkeit und Flexibilität ohne Einbußen bei der Entwicklungsgeschwindigkeit erwiesen. Mehrere Microsoft-Dienste nutzen dieses Architekturmuster intern mit hervorragenden Ergebnissen bei Zuverlässigkeit und Skalierbarkeit. Wir setzen diese Erkenntnisse in die Praxis um, damit unsere Kunden davon profitieren können.
+In den letzten beiden Jahren hat sich die Cloudarchitektur stark weiterentwickelt. Microservices haben sich als hervorragendes Muster für mehr Skalierbarkeit und Flexibilität ohne Einbußen bei der Entwicklungsgeschwindigkeit erwiesen. Mehrere Microsoft-Dienste nutzen dieses Architekturmuster intern mit hervorragenden Ergebnissen bei Zuverlässigkeit und Skalierbarkeit. Microsoft hat diese Erfahrungen mit dem Solution Accelerator umgesetzt, sodass auch die Kunden von diesen profitieren können.
+
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Ich bin Dienstadministrator und möchte die Verzeichniszuordnung zwischen meinem Abonnement und einen bestimmten Azure AD-Mandanten ändern. Wie führe ich diese Aufgabe aus?
+
+Informationen dazu finden Sie unter [Hinzufügen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Ich möchte bei der Anmeldung über ein Organisationskonto einen Dienstadministrator oder Co-Administrator ändern.
+
+Lesen Sie den Supportartikel [Ändern des Dienstadministrators und des Co-Administrators bei Anmeldung über ein Organisationskonto](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
+
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Warum wird dieser Fehler angezeigt? „Ihr Konto hat nicht die erforderlichen Berechtigungen zum Erstellen einer Lösung. Wenden Sie sich an den Administrator Ihres Kontos, oder versuchen Sie es mit einem anderen Konto.“
+
+Orientieren Sie sich an folgendem Diagramm:
+
+![Flussdiagramm für Berechtigungen](media/iot-accelerators-faq/flowchart.png)
+
+> [!NOTE]
+> Wenn der Fehler auch nach der Überprüfung noch angezeigt wird und Sie globaler Administrator des Azure AD-Mandanten und Co-Administrator des Abonnements sind, können Sie Ihren Kontoadministrator bitten, den Benutzer zu entfernen und die erforderlichen Berechtigungen in dieser Reihenfolge neu zuzuweisen. Fügen Sie zuerst den Benutzer als globalen Administrator hinzu, und fügen Sie den Benutzer dann als Co-Administrator für das Azure-Abonnement hinzu. Falls die Probleme weiterhin bestehen, nutzen Sie die Option [Hilfe und Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Weshalb wird dieser Fehler angezeigt, wenn ich ein Azure-Abonnement habe? „Zum Erstellen vorkonfigurierter Lösungen ist ein Azure-Abonnement erforderlich. In nur wenigen Minuten können Sie ein kostenloses Testkonto erstellen.“
+
+Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfen Sie die Mandantenzuordnung für Ihr Abonnement, und prüfen Sie, ob der richtige Mandant in der Dropdownliste ausgewählt wurde. Überprüfen Sie anschließend anhand des obigen Diagramms die Zuordnung Ihres Abonnements und dieses Azure AD-Mandanten.
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Wo finde ich Informationen über die Vorgängerversion der Lösung für die Remoteüberwachung?
 
@@ -52,7 +73,7 @@ Ja, die neue Remoteüberwachung ist in den gleichen geografischen Regionen verf�
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Was ist der Unterschied zwischen dem Löschen einer Ressourcengruppe im Azure-Portal und dem Klicken auf „Löschen“ für einen Solution Accelerator unter azureiotsuite.com?
 
-* Wenn Sie unter [azureiotsuite.com](https://www.azureiotsolutions.com/) einen Solution Accelerator löschen, werden alle Ressourcen gelöscht, die beim Erstellen des Solution Accelerators bereitgestellt waren. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht.
+* Wenn Sie den Solution Accelerator unter [azureiotsuite.com](https://www.azureiotsolutions.com/) löschen, werden alle Ressourcen gelöscht, die beim Erstellen des Solution Accelerators bereitgestellt wurden. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht.
 * Wenn Sie die Ressourcengruppe im [Azure-Portal](https://portal.azure.com) löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen auch die Azure Active Directory-Anwendung löschen, die dem Solution Accelerator zugeordnet ist.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Kann ich meine bestehenden Investitionen in Azure IoT-Solution Accelerators weiterhin nutzen?
@@ -78,7 +99,7 @@ Zwei. In einem Azure-Abonnement können für Bing Karten für Unternehmen nur zw
 
 Derzeit können Sie mit einem Konto für [Microsoft Azure für DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) keinen Solution Accelerator erstellen. Sie können jedoch in wenigen Minuten ein [kostenloses Testkonto für Azure](https://azure.microsoft.com/free/) einrichten, mit dem Sie einen Solution Accelerator erstellen können.
 
-### <a name="how-do-i-delete-an-aad-tenant"></a>Wie lösche ich einen AAD-Mandanten?
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Gewusst wie: Löschen eines Azure AD-Mandanten
 
 Informationen hierzu finden Sie im Blogbeitrag von Eric Golpe: [Walkthrough of Deleting an Azure AD Tenant](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx) (Exemplarische Vorgehensweise zum Löschen eines Azure AD-Mandanten).
 

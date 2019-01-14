@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: ea7b4def23f766e6cda1e1e8e1d4e8dc7be302fe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/16/2018
+ms.openlocfilehash: 40f6b6effa509fd2cfa40ecfc758ac37e0a66778
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997594"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538615"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection für Azure SQL-Datenbank
 
@@ -30,7 +30,7 @@ SQL Advanced Threat Protection (ATP) stellt eine Reihe erweiterter SQL-Sicherhei
 - [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Service, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Er bietet Einblicke in Ihren Sicherheitsstatus, enthält umsetzbare Schritte zum Beheben von Sicherheitsproblemen und verbessert Ihre Datenbanksicherheit.
 - [Bedrohungserkennung](sql-database-threat-detection-overview.md) dient zum Erkennen anomaler Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbank zuzugreifen oder sie missbräuchlich zu nutzen. Sie überwacht Ihre Datenbank fortlaufend auf verdächtige Aktivitäten und bietet sofortige Sicherheitswarnungen zu potenziellen Sicherheitslücken, Angriffe durch Einschleusung von SQL-Befehlen und ungewöhnliche Datenbankzugriffsmuster. Die Warnungen der Bedrohungserkennung enthalten Details zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann.
 
-Aktivieren Sie SQL ATP einmal, um alle diese enthaltenen Features zu aktivieren. Sie können mit einem Klick ATP für Ihren gesamten Datenbankserver aktivieren und diesen Dienst so für alle Datenbanken auf dem Server verfügbar machen. 
+Aktivieren Sie SQL ATP einmal, um alle diese enthaltenen Features zu aktivieren. Sie können mit einem Klick ATP für Ihren gesamten Datenbankserver aktivieren und diesen Dienst so für alle Datenbanken auf dem Server verfügbar machen. Das Aktivieren oder Verwalten von ATP-Einstellungen erfordert die Zugehörigkeit zur Rolle [SQL-Sicherheits-Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager), „SQL-Datenbankadministrator“ oder „SQL Server-Administrator“. 
 
 Die Preise für ATP sind am Standardtarif von Azure Security Center ausgerichtet, wobei jeder geschützte SQL-Datenbank-Server als ein Knoten betrachtet wird. Für neue zu schützende Ressourcen kann der Standardtarif von Security Center kostenlos getestet werden. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 

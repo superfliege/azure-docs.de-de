@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 56a36e61bb9938ceb7e3cdaf2676c24c037b1d16
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585716"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553409"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -86,8 +86,8 @@ Sie richten ein privates Speicherkonto für die VM-Diagnose ein.
 Managed Disks unterstützt drei zentrale Standardrollen:
 
 * Besitzer: Kann alles verwalten, einschließlich des Zugriffs
-* Mitwirkende: Kann alles mit Ausnahme des Zugriffs verwalten
-* Leser: Kann alles anzeigen, aber keine Änderungen vornehmen
+* Mitwirkender: Kann alles außer den Zugriff verwalten
+* Leser: Kann alles anzeigen, jedoch keine Änderungen vornehmen
 
 **Kann ich einen verwalteten Datenträger in ein privates Speicherkonto kopieren oder exportieren?**
 
@@ -137,9 +137,9 @@ Nein. Wenn der neue Datenträger erstellt wird, handelt es sich dabei um eine vo
 
 Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen nicht verwalteten Datenträger umbenennen, sofern dieser aktuell nicht an eine virtuelle Festplatte oder einen virtuellen Computer angefügt ist.
 
-**Kann ich die GBT-Partitionierung auf Azure-Datenträgern verwenden?**
+**Kann ich die GPT-Partitionierung auf Azure-Datenträgern verwenden?**
 
-Die GBT-Partitionierung kann nur auf Datenträgern, nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
+Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 
@@ -188,6 +188,10 @@ Nein, Standard-SSD-Datenträger sind nur als verwaltete Datenträger verfügbar.
 Nein, Standard-SSDs weisen keine SLA für Einzelinstanz-VMs auf. Verwenden Sie Premium-SSD-Datenträger für eine SLA für Einzelinstanz-VMs.
 
 ## <a name="migrate-to-managed-disks"></a>Migrieren zu Managed Disks
+
+**Hat die Migration Auswirkungen auf die Leistung von Managed Disks?**
+
+Migration umfasst das Verschieben des Datenträgers von einem Speicherort zu einem anderen. Dies wird über eine Hintergrundkopie der Daten orchestriert, die bis zum Abschluss mehrere Stunden dauern kann, je nach der Menge der Daten auf den Datenträgern meist weniger als 24 Stunden. Während dieser Zeit können bei Ihrer Anwendung höhere Latenzen bei Lesevorgängen als üblich auftreten, da einige Lesevorgänge an den ursprünglichen Speicherort umgeleitet werden können, sodass es länger dauert, sie abzuschließen. Die Latenz beim Schreiben ist während dieses Zeitraums nicht betroffen.  
 
 **Welche Änderungen sind in einer bereits vorhandenen Azure Backup-Dienstkonfiguration vor/nach der Migration zu Managed Disks erforderlich?**
 
@@ -262,7 +266,7 @@ JA
 
  Nein. Wenn Sie allerdings eine VHD-Datei von einem verschlüsselten, verwalteten Datenträger oder einer Momentaufnahme in ein verschlüsseltes Speicherkonto exportieren, ist sie verschlüsselt. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Premium-Datenträger (verwaltet und nicht verwaltet)
+## <a name="premium-disks-managed-and-unmanaged"></a>Premium-Datenträger: verwaltet und nicht verwaltet
 
 **Kann ich sowohl Premium- als auch Standard-Datenträger anfügen, wenn ein virtueller Computer eine Größenserie mit Unterstützung für Premium-SSD-Datenträger (beispielsweise DSv2) verwendet?** 
 
@@ -312,10 +316,10 @@ Sie müssen Ihre vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, d
 
 |Azure-Tools      | Unterstützte Versionen                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Versionsnummer 4.1.0: Version Juni 2017 oder höher|
-|Azure-CLI V1     | Versionsnummer 0.10.13: Version Mai 2017 oder höher|
-|Azure CLI v2     | Versionsnummer 2.0.12: Release von Juli 2017 oder höher|
-|AzCopy           | Versionsnummer 6.1.0: Version Juni 2017 oder höher|
+|Azure PowerShell | Versionsnummer 4.1.0: Release vom Juni 2017 oder später|
+|Azure-CLI V1     | Versionsnummer 0.10.13: Release vom Mai 2017 oder später|
+|Azure CLI v2     | Versionsnummer 2.0.12: Release vom Juli 2017 oder später|
+|AzCopy           | Versionsnummer 6.1.0: Release vom Juni 2017 oder später|
 
 **Werden P4- und P6-Datenträgergrößen für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
 
@@ -339,7 +343,7 @@ Die maximale Datenträgergröße, die vom Azure Backup- und vom Azure Site Recov
 
 **Welche VM-Größen werden für große Datenträger (> 4 TiB) empfohlen, damit SSD Standard- und HDD Standard-Datenträger optimale Werte für IOPS und Bandbreite erzielen?**
 
-Um den Datenträgerdurchsatz großer SSD Standard- und HDD Standard-Datenträger (> 4 TB) von über 500 IOPS und 60 MiB/s zu erzielen, verwenden Sie zur Leistungsoptimierung eine der folgenden VM-Größen: B-Serie, DSv2-Serie, Dsv3-Serie, ESv3-Serie, Fs-Serie Fsv2-Serie, M-Serie, GS-Serie, NCv2-Serie, NCv3-Serie oder Ls-Serie.
+Um für SSD Standard und HDD Standard mit großen Datenträgern (> 4 TB) einen Datenträgerdurchsatz über 500 IOPS und 60 MiB/s zu erzielen, sollten Sie zum Optimieren Ihrer Leistung eine der folgenden VM-Größen verwenden: VMs der Serien B, DSv2, Dsv3, ESv3, Fs, Fsv2, M, GS, NCv2, NCv3 oder Ls.
 
 **In welchen Regionen werden Größen von mehr als 4 TiB für verwaltete Datenträger unterstützt?**
 

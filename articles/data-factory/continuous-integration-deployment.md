@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 950336db215bbca76f20c15527397212c6fe5ffd
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623773"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554927"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory
 
@@ -73,7 +73,7 @@ Hier sind die Schritte zum Einrichten eines Azure Pipelines-Release angegeben, m
 
 ![Diagramm von Continuous Integration mit Azure Pipelines](media/continuous-integration-deployment/continuous-integration-image12.png)
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 -   Ein Azure-Abonnement, das mit Team Foundation Server oder Azure Repos verknüpft ist und für das der [*Azure Resource Manager-Dienstendpunkt*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm) verwendet wird.
 
@@ -733,12 +733,12 @@ Dies ist ein Beispielskript zum Beenden von Triggern vor der Bereitstellung und 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder="$(env:System.DefaultWorkingDirectory)/Dev/",
-    [parameter(Mandatory = $false)] [String] $armTemplate="$rootFolder\arm_template.json",
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName="sampleuser-datafactory",
-    [parameter(Mandatory = $false)] [String] $DataFactoryName="sampleuserdemo2",
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true
-
+    [parameter(Mandatory = $false)] [String] $rootFolder,
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
 )
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
@@ -762,7 +762,6 @@ if ($predeployment -eq $true) {
     }
 }
 else {
-
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
@@ -789,7 +788,7 @@ else {
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
 
-    #delte resources
+    #Delete resources
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
@@ -820,7 +819,25 @@ else {
         Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
-    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
@@ -958,3 +975,17 @@ Das folgende Beispiel zeigt eine Datei mit Beispielparametern. Verwenden Sie die
     }
 }
 ```
+
+## <a name="linked-resource-manager-templates"></a>Verknüpfte Resource Manager-Vorlagen
+
+Wenn Sie Continuous Integration und Continuous Deployment (CI/CD) für Ihre Data Factory-Instanzen eingerichtet haben, stellen Sie möglicherweise fest, dass Sie bei Resource Manager-Vorlagen an Grenzen stoßen, wenn Ihre Data Factory größer wird. Dies betrifft z.B. die maximale Anzahl von Ressourcen oder die maximale Nutzlast in einer Resource Manager-Vorlage. In solchen Szenarien kann Data Factory nicht nur die vollständige Resource Manager-Vorlage für eine Factory-Instanz erstellen, sondern generiert jetzt auch verknüpfte Resource Manager-Vorlagen. Damit wird die Nutzlast einer Factory auf mehrere Dateien aufgeteilt, sodass die erwähnten Grenzen keine Rolle spielen.
+
+Wenn Sie Git konfiguriert haben, werden die verknüpften Vorlagen zusammen mit den vollständigen Resource Manager-Vorlagen im Branch `adf_publish` in einem neuen Ordner namens `linkedTemplates` generiert und gespeichert.
+
+![Ordner für verknüpfte Resource Manager-Vorlagen](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+
+Verknüpfte Resource Manager-Vorlagen verfügen in der Regel über eine Mastervorlage und eine Reihe von untergeordneten Vorlagen, die mit der Mastervorlage verknüpft sind. Die übergeordnete Vorlage wird als `ArmTemplate_master.json` bezeichnet, und die untergeordneten Vorlagen werden nach dem Muster `ArmTemplate_0.json`, `ArmTemplate_1.json` usw. benannt. Um statt der vollständigen Resource Manager-Vorlage verknüpfte Vorlagen zu verwenden, aktualisieren Sie Ihren CI/CD-Task so, dass dieser auf `ArmTemplate_master.json` statt auf `ArmTemplateForFactory.json` (die vollständige Resource Manager-Vorlage) verweist. Resource Manager erfordert auch, dass Sie die verknüpften Vorlagen in ein Speicherkonto hochladen, sodass Azure während der Bereitstellung darauf zugreifen kann. Weitere Informationen finden Sie unter [Deploying Linked ARM Templates with VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/) (Bereitstellen von verknüpften ARM-Vorlagen mit VSTS).
+
+Denken Sie daran, die Data Factory-Skripts vor und nach dem Bereitstellungstask zu Ihrer CI/CD-Pipeline hinzuzufügen.
+
+Wenn Sie Git nicht konfiguriert haben, kann über die Geste **ARM-Vorlage exportieren** auf die verknüpften Vorlagen zugegriffen werden.

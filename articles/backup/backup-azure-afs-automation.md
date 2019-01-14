@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 90623981f67bbed15ade743192525676e58a0a83
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 30fc36f29a7602e2bc3f192b445474bfc50e9434
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318397"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632634"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>Verwenden von PowerShell zum Sichern und Wiederherstellen von Azure-Dateifreigaben
 
@@ -34,11 +34,11 @@ Sehen Sie sich die [Azure Backup - Recovery Services-Cmdlets](https://docs.micro
 ## <a name="setup-and-registration"></a>Einrichtung und Registrierung
 
 > [!NOTE]
-> Wie [hier](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0) erwähnt, endet die Unterstützung für neue Features im AzureRM-Modul im November 2018. Aus diesem Grund bieten wir im neuen Azure PowerShell-Modul (Az PS) Unterstützung für das Sichern von Azure-Dateifreigaben. Darüber hinaus ist die Integration in die GA-Version des Azure-Moduls geplant.
+> Wie [hier](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0) erwähnt, endet die Unterstützung für neue Features im AzureRM-Modul im November 2018. Aus diesem Grund bieten wir im jetzt allgemein verfügbaren neuen Azure PowerShell-Modul (Az PS) Unterstützung für das Sichern von Azure-Dateifreigaben.
 
 Vorbereitung:
 
-1. [Laden Sie die neueste Azure PowerShell-Version herunter](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (erforderliche Mindestversion: 0.7.0).
+1. [Laden Sie die neueste Azure PowerShell-Version herunter](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (erforderliche Mindestversion: 1.0.0).
 
 2. Ermitteln Sie die Azure-PowerShell-Cmdlets zur Datensicherung mithilfe des folgenden Befehls:
 
@@ -52,7 +52,7 @@ Vorbereitung:
 3. Melden Sie sich mithilfe von **Connect-AzAccount** bei Ihrem Azure-Konto an. Dieses Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert:
 
     * Alternativ können Sie Ihre Kontoanmeldeinformationen als Parameter im Cmdlet **Connect-AzAccount** mit dem Parameter **-Credential** angeben.
-    * Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel: **Connect-AzAccount -Tenant „fabrikam.com“**
+    * Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel:  **Connect-AzAccount -Tenant „fabrikam.com“**
 
 4. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 
@@ -158,6 +158,8 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 ----                 ------------       -------------------- ----------                ----------
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
+
+Die Richtlinie „NewAFSPolicy“führt eine tägliche Sicherung aus und bewahrt sie 30 Tage auf.
 
 ### <a name="enable-protection"></a>Schutz aktivieren
 

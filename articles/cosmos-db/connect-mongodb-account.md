@@ -1,23 +1,23 @@
 ---
-title: MongoDB-Verbindungszeichenfolge für ein Azure Cosmos DB-Konto
-description: In diesem Artikel erfahren Sie, wie Sie Ihre MongoDB-App mithilfe einer MongoDB-Verbindungszeichenfolge mit einem Azure Cosmos DB-Konto verbinden.
+title: Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB
+description: Erfahren Sie, wie Sie Ihre MongoDB-App mit Azure Cosmos DB verbinden.
 keywords: MongoDB-Verbindungszeichenfolge
 services: cosmos-db
-author: slyons
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/19/2017
-ms.author: sclyon
-ms.openlocfilehash: a78a77e16e9a810c0be03656aa48b02cc8e6e5e6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 9a6cbc551704541f3e4ead40567f272205b71325
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849257"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791386"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB
-In diesem Artikel erfahren Sie, wie Sie Ihre MongoDB-App mithilfe einer MongoDB-Verbindungszeichenfolge mit einem Azure Cosmos DB-Konto verbinden. Anschließend können Sie eine Azure Cosmos DB-Datenbank als Datenspeicher für Ihre MongoDB-App verwenden. 
+In diesem Artikel erfahren Sie, wie Sie Ihre MongoDB-App mithilfe einer MongoDB-Verbindungszeichenfolge mit Azure Cosmos DB verbinden. Anschließend können Sie eine Azure Cosmos DB-Datenbank als Datenspeicher für Ihre MongoDB-App verwenden. 
 
 Dieses Tutorial zeigt zwei Möglichkeiten, um Informationen zur Verbindungszeichenfolge abzurufen:
 
@@ -27,11 +27,11 @@ Dieses Tutorial zeigt zwei Möglichkeiten, um Informationen zur Verbindungszeich
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto. Wenn Sie noch kein Azure-Konto besitzen, erstellen Sie jetzt ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/). 
-- Ein Azure Cosmos DB-Konto. Weitere Anweisungen finden Sie unter [Erstellen einer Web-App mit einer MongoDB-API durch .NET und das Azure-Portal](create-mongodb-dotnet.md).
+- Ein Cosmos-Konto. Anweisungen hierzu finden Sie unter [Erstellen einer Web-App mit der API für MongoDB von Azure Cosmos DB und dem .NET SDK](create-mongodb-dotnet.md).
 
 ## <a id="QuickstartConnection"></a>Abrufen der MongoDB-Verbindungszeichenfolge mithilfe der Schnellstartmethode
 1. Melden Sie sich über einen Internetbrowser beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf dem Blatt **Azure Cosmos DB** die API für das MongoDB-Konto aus. 
+2. Wählen Sie die API auf dem Blatt **Azure Cosmos DB** aus. 
 3. Klicken Sie im linken Bereich des Kontoblatts auf **Schnellstart**. 
 4. Wählen Sie Ihre Plattform aus (**.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Wenn der gewünschte Treiber oder das gewünschte Tool nicht aufgeführt wird, machen Sie sich keine Sorgen: Wir stellen kontinuierlich weitere Ausschnitte von Verbindungscodes zur Verfügung. Tragen Sie im unteren Bereich ein, welche Inhalte Sie sehen möchten. Informationen darüber, wie Sie eine eigene Verbindung erstellen können, finden Sie unter [Abrufen der Informationen zur Verbindungszeichenfolge für das Konto](#GetCustomConnection).
 5. Kopieren Sie den Codeausschnitt, und fügen Sie ihn in Ihre MongoDB-App ein.
@@ -40,7 +40,7 @@ Dieses Tutorial zeigt zwei Möglichkeiten, um Informationen zur Verbindungszeich
 
 ## <a id="GetCustomConnection"></a> Abrufen der MongoDB-Verbindungszeichenfolge zum Anpassen
 1. Melden Sie sich über einen Internetbrowser beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf dem Blatt **Azure Cosmos DB** die API für das MongoDB-Konto aus. 
+2. Wählen Sie die API auf dem Blatt **Azure Cosmos DB** aus. 
 3. Klicken Sie im linken Bereich des Kontoblatts auf **Verbindungszeichenfolge**. 
 4. Das Blatt **Verbindungszeichenfolge** wird geöffnet. Es enthält alle erforderlichen Informationen, um mithilfe eines Treibers für MongoDB eine Verbindung mit dem Konto herzustellen, einschließlich einer vorab erstellten Verbindungszeichenfolge.
 
@@ -58,9 +58,9 @@ Azure Cosmos DB unterstützt das standardmäßige URI-Format für MongoDB-Verbin
 
 Die Werte dieser Zeichenfolge werden auf dem zuvor gezeigten Blatt **Verbindungszeichenfolge** angezeigt:
 
-* Benutzername (erforderlich): Der Azure Cosmos DB-Kontoname.
-* Kennwort (erforderlich): Das Azure Cosmos DB-Kontokennwort.
-* Host (erforderlich): Der FQDN des Azure Cosmos DB-Kontos.
+* Benutzername (erforderlich): Cosmos-Kontoname.
+* Kennwort (erforderlich): Cosmos-Kontokennwort.
+* Host (erforderlich): FQDN des Cosmos-Kontos.
 * Port (erforderlich): 10255
 * Datenbank (optional): Die Datenbank, die die Verbindung verwendet. Wenn keine Datenbank angegeben wird, wird standardmäßig die Datenbank „test“ verwendet.
 * ssl=true (erforderlich)
@@ -70,5 +70,7 @@ Sehen Sie sich beispielsweise das Konto auf dem Blatt **Verbindungszeichenfolge*
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie, wie Sie [Studio 3T (MongoChef)](mongodb-mongochef.md) mit einer Azure Cosmos DB-API für das MongoDB-Konto verwenden.
-* Machen Sie sich anhand von [Beispielen](mongodb-samples.md) mit der Azure Cosmos DB-API für MongoDB vertraut.
+
+- Erfahren Sie, wie Sie [Studio 3T](mongodb-mongochef.md) mit der API für MongoDB von Azure Cosmos DB verwenden.
+- Erfahren Sie, wie Sie [Robo 3T](mongodb-robomongo.md) mit der API für MongoDB von Azure Cosmos DB verwenden.
+- Untersuchen Sie MongoDB-[Beispiele](mongodb-samples.md) mit der API für MongoDB von Azure Cosmos DB.

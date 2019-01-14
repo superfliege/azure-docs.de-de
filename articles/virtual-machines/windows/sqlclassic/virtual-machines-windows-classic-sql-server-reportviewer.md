@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 514e85fc61240834d8db152ece65a4f9cce9023e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b554dc1fa33519d87aa0c9c5ba9130b47cbea142
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250406"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971749"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Verwenden von ReportViewer auf einer in Azure gehosteten Website
-> [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> [!IMPORTANT]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 Sie können eine Microsoft Azure-Website mit dem Visual Studio-Steuerelement „ReportViewer“ erstellen, in dem ein Bericht angezeigt wird, der auf einem virtuellen Microsoft Azure-Computer gespeichert ist. Das ReportViewer-Steuerelement ist eine Webanwendung, die Sie mithilfe der Vorlage für ASP.NET-Webanwendungen erstellen.
 
@@ -42,7 +42,7 @@ Lesen Sie den Abschnitt "Allgemeine Empfehlungen und bewährte Methoden" in [SQL
 
 > [!NOTE]
 > ReportViewer-Steuerelemente werden mit Visual Studio Standard Edition oder höher geliefert. Wenn Sie die Web Developer Express Edition verwenden, müssen Sie die [MICROSOFT REPORT VIEWER 2012 RUNTIME](https://www.microsoft.com/download/details.aspx?id=35747) installieren, damit Sie die ReportViewer-Laufzeitfunktionen verwenden können.
-> 
+>
 > Ein im lokalen Verarbeitungsmodus konfiguriertes ReportViewer-Steuerelement wird in Microsoft Azure nicht unterstützt.
 
 ## <a name="adding-assemblies-to-the-deployment-package"></a>Hinzufügen von Assemblys zu dem Bereitstellungspaket
@@ -51,7 +51,7 @@ Wenn Sie Ihre ASP.NET-Anwendung lokal hosten, werden die ReportViewer-Assemblys 
 Im Remoteverarbeitungsmodus verwendet das ReportViewer-Steuerelement die folgenden Assemblys:
 
 * **Microsoft.ReportViewer.WebForms.dll**: Enthält den ReportViewer-Code, den Sie benötigen, um das ReportViewer-Steuerelement auf Ihrer Seite zu verwenden. Ein Verweis auf diese Assembly wird dem Projekt hinzugefügt, wenn Sie ein ReportViewer-Steuerelement auf einer ASP.NET-Seite in Ihrem Projekt ablegen.
-* **Microsoft.ReportViewer.Common.dll**: Enthält Klassen, die vom ReportViewer-Steuerelement zur Laufzeit verwendet. Diese Assembly wird Ihrem Projekt nicht automatisch hinzugefügt.
+* **Microsoft.ReportViewer.Common.dll**: Enthält Klassen, die vom ReportViewer-Steuerelement zur Laufzeit verwendet werden. Diese Assembly wird Ihrem Projekt nicht automatisch hinzugefügt.
 
 ### <a name="to-add-a-reference-to-microsoftreportviewercommon"></a>So fügen Sie einen Verweis auf „Microsoft.ReportViewer.Common“ hinzu
 * Klicken Sie mit der rechten Maustaste auf den Knoten **Verweise** des Projekts, wählen Sie **Verweis hinzufügen** und die Assembly auf der .NET-Registerkarte aus, und klicken Sie auf **OK**.
@@ -71,21 +71,21 @@ Im Remoteverarbeitungsmodus verwendet das ReportViewer-Steuerelement die folgend
 
 ### <a name="to-configure-for-localized-reportviewer-control"></a>So konfigurieren Sie für ein lokalisiertes ReportViewer-Steuerelement
 1. Gehen Sie gemäß den oben angegebenen Anweisungen vor, um das verteilbare Microsoft Report Viewer 2012-Laufzeit-Paket herunterzuladen und zu installieren.
-2. Erstellen Sie im Projekt den Ordner <language>, und kopieren Sie die zugehörigen Ressourcenassemblydateien. Folgende Ressourcenassemblydateien müssen kopiert werden: **Microsoft.ReportViewer.Webforms.Resources.dll** und **Microsoft.ReportViewer.Common.Resources.dll**. Wählen Sie die Ressourcenassemblydateien aus, und legen Sie im Eigenschaftenbereich die Eigenschaft **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** fest.
+2. Erstellen Sie im Projekt den \<Sprachordner\>, und kopieren Sie die zugehörigen Ressourcenassemblydateien. Dies sind die zu kopierenden Ressourcenassemblydateien: **Microsoft.ReportViewer.Webforms.Resources.dll** und **Microsoft.ReportViewer.Common.Resources.dll**. Wählen Sie die Ressourcenassemblydateien aus, und legen Sie im Eigenschaftenbereich die Eigenschaft **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** fest.
 3. Legen Sie die Kultur und Benutzeroberflächenkultur für das Webprojekt fest. Weitere Informationen dazu, wie die Kultur und Benutzeroberflächenkultur für eine ASP.NET-Webseite festgelegt werden, finden Sie unter [Vorgehensweise: Festlegen der Kultur und Benutzeroberflächenkultur für die Globalisierung von ASP.NET-Webseiten](https://go.microsoft.com/fwlink/?LinkId=237461).
 
 ## <a name="configuring-authentication-and-authorization"></a>Konfigurieren von Authentifizierung und Autorisierung
 Das ReportViewer-Steuerelement muss geeignete Anmeldeinformationen verwenden, um sich beim Berichtsserver zu authentifizieren, und die Anmeldeinformationen müssen vom Berichtsserver autorisiert werden, damit Sie auf die gewünschten Berichte zuzugreifen können. Informationen über die Authentifizierung finden Sie im Whitepaper [ReportViewer-Steuerelement von Reporting Services und Berichtsserver, die auf virtuellen Microsoft Azure-Computern basieren](https://msdn.microsoft.com/library/azure/dn753698.aspx).
 
 ## <a name="publish-the-aspnet-web-application-to-azure"></a>Veröffentlichen der ASP.NET-Webanwendung in Azure
-Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie unter [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) und [Erste Schritte mit Web-Apps und ASP.NET](../../../app-service/app-service-web-get-started-dotnet.md).
+Anweisungen zum Veröffentlichen einer ASP.NET-Webanwendung in Azure finden Sie unter [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in Azure aus Visual Studio](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) und [Erste Schritte mit Web-Apps und ASP.NET](../../../app-service/app-service-web-get-started-dotnet.md).
 
 > [!IMPORTANT]
 > Wenn der Befehl „Azure-Bereitstellungsprojekt hinzufügen“ oder „Azure-Clouddienst-Projekt hinzufügen“ nicht im Kontextmenü im Projektmappen-Explorer angezeigt wird, müssen Sie das Zielframework für das Projekt in .NET Framework 4 ändern.
-> 
+>
 > Die beiden Befehle bieten im Wesentlichen die gleiche Funktionalität. Je nachdem, welche Version von Microsoft Azure SDK Sie installiert haben, wird der entsprechende dieser beiden Befehle im Kontextmenü angezeigt.
-> 
-> 
+>
+>
 
 ## <a name="resources"></a>Ressourcen
 [Microsoft-Berichte](https://go.microsoft.com/fwlink/?LinkId=205399)
@@ -93,4 +93,3 @@ Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie
 [SQL Server-Business Intelligence auf virtuellen Azure-Computern](../classic/ps-sql-bi.md)
 
 [Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](../classic/ps-sql-report.md)
-

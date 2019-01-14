@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dddb42f53d4bb59113df937799bd4de10d31491c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5102f2b43819c279d0087754b29a616812e5a5f2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338778"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556559"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt
 
@@ -33,7 +33,7 @@ Das IEF sendet Daten in Ansprüchen und erhält Daten in Ansprüchen zurück. De
 
 Sie können die empfangenen Ansprüche später zum Ändern des Ausführungsablaufs verwenden.
 
-Sie können die Interaktion auch als Validierungsprofil entwerfen. Weitere Informationen hierzu finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Validierung der Benutzereingabe](active-directory-b2c-rest-api-validation-custom.md).
+Sie können die Interaktion auch als Validierungsprofil entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Validierung der Benutzereingabe](active-directory-b2c-rest-api-validation-custom.md).
 
 In diesem Szenario sollten Sie folgendermaßen vorgehen, wenn ein Benutzer eine Profilbearbeitung durchführt:
 
@@ -97,6 +97,7 @@ Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, d
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
@@ -211,7 +212,7 @@ Der endgültige XML-Code für die User Journey sollte wie folgt aussehen:
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Schritt 5: Hinzufügen des `city`-Anspruchs zur Datei mit den Richtlinien der vertrauenden Seite, damit der Anspruch an Ihre Anwendung gesendet wird
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Schritt 5: Hinzufügen des `city`-Anspruchs zur Richtliniendatei der vertrauenden Seite, damit der Anspruch an Ihre Anwendung gesendet wird
 
 Bearbeiten Sie die Datei „ProfileEdit.xml“ der vertrauenden Seite, und ändern Sie das `<TechnicalProfile Id="PolicyProfile">`-Element, um Folgendes hinzuzufügen: `<OutputClaim ClaimTypeReferenceId="city" />`.
 
@@ -232,8 +233,8 @@ Nachdem Sie den neuen Anspruch hinzufügen, sieht das technische Profil wie folg
 
 Überschreiben Sie die vorhandenen Versionen der Richtlinie.
 
-1.  (Optional) Bevor Sie fortfahren, speichern Sie die vorhandene Version Ihrer Erweiterungsdatei (durch Herunterladen). Um die anfängliche Komplexität gering zu halten, empfehlen wir Ihnen, nicht mehrere Versionen der Datei mit den Erweiterungen hochzuladen.
-2.  (Optional) Benennen Sie die neue Version der Richtlinien-ID für die Datei mit der Richtlinienbearbeitung, indem Sie `PolicyId="B2C_1A_TrustFrameworkProfileEdit"` ändern.
+1.  (Optional:) Speichern Sie die vorhandene Version Ihrer Erweiterungsdatei (durch Herunterladen), bevor Sie fortfahren. Um die anfängliche Komplexität gering zu halten, empfehlen wir Ihnen, nicht mehrere Versionen der Datei mit den Erweiterungen hochzuladen.
+2.  (Optional:) Benennen Sie die neue Version der Richtlinien-ID für die Datei mit der Richtlinienbearbeitung, indem Sie `PolicyId="B2C_1A_TrustFrameworkProfileEdit"` ändern.
 3.  Laden Sie die Erweiterungsdatei hoch.
 4.  Laden Sie die Datei der vertrauenden Seite mit der Richtlinienbearbeitung hoch.
 5.  Verwenden Sie **Jetzt ausführen**, um die Richtlinie zu testen. Überprüfen Sie das Token, das vom IEF an die Anwendung zurückgegeben wird.

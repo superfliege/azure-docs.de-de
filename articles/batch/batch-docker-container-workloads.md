@@ -1,5 +1,5 @@
 ---
-title: Containerworkloads in Azure Batch | Microsoft-Dokumentation
+title: Containerworkloads – Azure Batch | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Anwendungen aus Containerimages in Azure Batch ausführen.
 services: batch
 author: dlepow
@@ -10,12 +10,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 1d915482a3a8b1f6416b50ab52de997a9d33294f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.custom: seodec18
+ms.openlocfilehash: 4d4dc5d01959406e71859fcbde6de1e36b5871aa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262430"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540995"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
@@ -29,7 +30,7 @@ Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen v
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **SDK-Versionen**: Die Batch SDKs unterstützen Containerimages ab den folgenden Versionen:
+* **SDK-Versionen**: Die Batch-SDKs unterstützen Containerimages der folgenden Versionen:
     * Batch REST API, Version 2017-09-01.6.0
     * Batch .NET SDK, Version 8.0.0
     * Batch Python SDK, Version 4.0
@@ -38,7 +39,7 @@ Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen v
 
 * **Konten**: Sie müssen in Ihrem Azure-Abonnement ein Batch-Konto und optional ein Azure Storage-Konto erstellen.
 
-* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ angegeben sind. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md). 
+* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ beschrieben werden. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md). 
 
 ### <a name="limitations"></a>Einschränkungen
 

@@ -11,22 +11,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2018
+ms.date: 12/202018
 ms.author: jingwang
-ms.openlocfilehash: 1f3e9be3a0048c4bf2e87ac23cbdc76b1aaa649f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 61ac0eeeb177ffccbe10d4ab049d3541ac6aeb60
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166405"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810422"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-http-connector.md)
 > * [Aktuelle Version](connector-http.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von einem HTTP-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+
+Die Unterschiede zwischen diesem HTTP-Connector, dem [REST-Connector](connector-rest.md) und dem [Webtabellenconnector](connector-web-table.md) sind die folgenden:
+
+- **REST-Connector:** Dieser unterstützt insbesondere das Kopieren von Daten aus RESTful-APIs. 
+- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Solange der REST-Connector noch nicht verfügbar ist, verwenden Sie möglicherweise den HTTP-Connector, um Daten aus RESTful-APIs zu kopieren. Dieser wird unterstützt, hat jedoch weniger Funktionen als der REST-Connector.
+- **Webtabellenconnector:** Dieser extrahiert Tabelleninhalte aus einer HTML-Webseite.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -35,10 +41,8 @@ Sie können Daten aus einer HTTP-Quelle in beliebige unterstützte Senkendatensp
 Sie können diesen HTTP-Connector für die folgenden Aufgaben verwenden:
 
 - Abrufen von Daten von einem HTTP/HTTPS-Endpunkt mithilfe der HTTP-Methoden **GET** oder **POST**.
-- Abrufen von Daten mithilfe der folgenden Authentifizierungstypen: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**.
+- Abrufen von Daten mithilfe eines der folgenden Authentifizierungstypen: **Anonym**, **Standard**, **Digest**, **Windows**, **Clientzertifikat**.
 - Kopieren der HTTP-Antwort im jeweiligen Zustand oder Analysieren der HTTP-Antwort mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
-
-Der Unterschied zwischen diesem Connector und dem [Webtabellenconnector](connector-web-table.md) besteht darin, dass der Webtabellenconnector zur Extraktion von Tabelleninhalten aus einer HTML-Webseite verwendet wird.
 
 > [!TIP]
 > Um eine HTTP-Anforderung für den Datenabruf zu testen, bevor Sie den HTTP-Connector in Data Factory konfigurieren, informieren Sie sich über die API-Spezifikation für Header- und Textanforderungen. Sie können Tools wie Postman oder einen Webbrowser für die Überprüfung verwenden.
@@ -171,7 +175,7 @@ Legen Sie zum Kopieren von Daten aus HTTP die **type**-Eigenschaft des Datasets 
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein  |
 | requestBody | Der Text der HTTP-Anforderung. | Nein  |
 | format | Wenn Sie Daten vom HTTP-Endpunkt im vorliegenden Zustand abrufen möchten, ohne diese analysieren und in einen dateibasierten Speicher kopieren zu müssen, überspringen Sie den Abschnitt **format** in den Definitionen des Eingabe- und Ausgabedatasets.<br/><br/>Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Legen Sie die **type**-Eigenschaft unter **format** auf einen dieser Werte fest. Weitere Informationen finden Sie unter [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein  |
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Unterstützte Typen: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**.<br/>Unterstützte Grade: **Optimal** und **Fastest**. |Nein  |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Unterstützte Typen: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**.<br/>Folgende Ebenen werden unterstützt:  **Optimal** und **Fastest**. |Nein  |
 
 > [!NOTE]
 > Die unterstützte Nutzlastgröße für HTTP-Anforderungen beträgt etwa 500 KB. Wenn die Nutzlast, die Sie an Ihre Webendpunkt übergeben möchten, größer als 500 KB ist, sollten Sie eine Aufteilung der Nutzlast in kleinere Blöcke erwägen.
@@ -195,7 +199,7 @@ Legen Sie zum Kopieren von Daten aus HTTP die **type**-Eigenschaft des Datasets 
 }
 ```
 
-**Beispiel 2: Verwenden der Post-Methode**
+**Beispiel 2: Verwenden der POST-Methode**
 
 ```json
 {

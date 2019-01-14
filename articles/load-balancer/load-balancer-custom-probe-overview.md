@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: f9ada3518c4354b112e9e288da89ee9659629b1c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 51d781f331bcbc08642dc32c21baa150e9e5eee6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435122"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538684"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -201,7 +201,7 @@ Wenn Sie die [IP-Quelladresse](#probesource) des Tests in Ihren Firewallrichtlin
 
 Damit der Load Balancer-Integritätstest Ihre Instanz als online markieren kann, **müssen** Sie diese IP-Adresse in allen Azure-[Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) und lokalen Firewallrichtlinien zulassen.  Standardmäßig enthält jede Netzwerksicherheitsgruppe das [Diensttag](../virtual-network/security-overview.md#service-tags) „AzureLoadBalancer“, um Datenverkehr im Rahmen von Integritätstests zulassen.
 
-Wenn Sie einen Integritätstestfehler überprüfen oder eine einzelne Instanz als offline markieren möchten, können Sie eine [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md) verwenden, um den Integritätstest explizit zu blockieren (Zielport oder [IP-Quelladresse](#probesource)), und den Fehler für einen Test simulieren.
+Wenn Sie einen Integritätstestfehler überprüfen oder eine einzelne Instanz abgrenzen möchten, können Sie eine [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md) verwenden, um den Integritätstest explizit zu blockieren (Zielport oder [IP-Quelladresse](#probesource)), und den Fehler für einen Test simulieren.
 
 Konfigurieren Sie Ihr VNET nicht mit dem für Microsoft reservierten IP-Adressbereich mit 168.63.129.16.  Solche Konfigurationen verursachen ein Konflikt mit der IP-Adresse des Integritätstests und können dazu führen, dass Ihr Szenario fehlschlägt.
 

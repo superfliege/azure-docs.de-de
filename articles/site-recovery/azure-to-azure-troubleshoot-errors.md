@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 84462b98e1006cadf34adecf948efd39ad4f69d6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313971"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973552"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
 
@@ -278,6 +278,14 @@ Um die Replikation auf dem virtuellen Computer zu aktivieren, muss der Bereitste
 
 Sie können die Konsole „Dienste“ öffnen und sicherstellen, dass für „COM+-Systemanwendung“ und „Volumeschattenkopie“ die Option „Starttyp“ nicht auf „Deaktiviert“ festgelegt ist.
   ![com-error](./media/azure-to-azure-troubleshoot-errors/com-error.png)
+
+## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nicht unterstützte Größe verwalteter Datenträger (Fehlercode: 150172)
+
+
+**Fehlercode** | **Mögliche Ursachen** | **Empfehlungen**
+--- | --- | ---
+150172<br></br>**Meldung**: Schutz konnte für den virtuellen Computer nicht aktiviert werden, da dieser einen (DiskName) mit einer Größe von (DiskSize) besitzt. Das ist kleiner als das unterstützte Minimum von 10 GB. | Der Datenträger ist kleiner als die unterstützte Größe von 1024 MB.| Stellen Sie sicher, dass die Datenträgergrößen innerhalb des unterstützten Größenbereichs liegen, und wiederholen Sie den Vorgang. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Replizieren virtueller Azure-Computer](site-recovery-replicate-azure-to-azure.md)

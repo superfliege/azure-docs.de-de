@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: rajanaki
-ms.openlocfilehash: e965848b0c3c009444762dafdf42acc080b6915e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834951"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791879"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Erneutes Schützen und Ausführen eines Failbacks für Computer auf einen lokalen Standort nach einem Failover auf Azure
 
@@ -61,8 +61,8 @@ So stellen Sie einen Prozessserver in Azure bereit:
 
 Der Masterzielserver empfängt Failbackdaten. Standardmäßig wird der Masterzielserver auf dem lokalen Konfigurationsserver ausgeführt. Je nach Datenverkehrsvolumen beim Failback müssen Sie jedoch u.U. einen separaten Masterzielserver für das Failback erstellen. Gehen Sie zum Erstellen wie folgt vor:
 
-* [Richten Sie einen Linux-Masterzielserver](vmware-azure-install-linux-master-target.md) für Failbacks von Linux-VMs ein. Dies ist erforderlich.
-* Erstellen Sie optional einen separaten Masterzielserver für das Failback virtueller Windows-Computer. Führen Sie zu diesem Zweck das einheitliche Setup erneut aus, und wählen Sie dabei die Erstellung eines Masterzielservers aus. [Weitere Informationen](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
+* [Richten Sie einen Linux-Masterzielserver](vmware-azure-install-linux-master-target.md) für Failbacks von Linux-VMs ein. Dies ist erforderlich. Beachten Sie, dass der Masterzielserver auf der LVM nicht unterstützt wird.
+* Erstellen Sie optional einen separaten Masterzielserver für das Failback virtueller Windows-Computer. Führen Sie zu diesem Zweck das einheitliche Setup erneut aus, und wählen Sie dabei die Erstellung eines Masterzielservers aus. [Weitere Informationen](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers) 
 
 Nachdem Sie einen Masterzielserver erstellt haben, führen Sie folgende Aufgaben aus:
 
@@ -122,7 +122,7 @@ Beachten Sie die folgenden Informationen:
 - Wenn der Konfigurationsserver auf dem Prozessserver nicht erreichbar ist, können Sie Telnet verwenden, um die Konnektivität mit dem Konfigurationsserver an Port 443 zu überprüfen. Sie können auch versuchen, den Konfigurationsserver auf dem Prozessserver per Ping zu erreichen. Ein Prozessserver sollte außerdem einen Takt aufweisen, wenn er mit dem Konfigurationsserver verbunden ist.
 - Für einen Server vom Typ Windows Server 2008 R2 SP1, der als physischer lokaler Server geschützt wird, kann kein Failback von Azure zu einem lokalen Standort durchgeführt werden.
 - In den folgenden Situationen ist kein Failback möglich:
-    - Sie haben Computer zu Azure migriert. [Weitere Informationen](migrate-overview.md#what-do-we-mean-by-migration).
+    - Sie haben Computer zu Azure migriert. [Weitere Informationen](migrate-overview.md#what-do-we-mean-by-migration)
     - Sie haben eine VM in eine andere Ressourcengruppe verschoben.
     - Sie haben die Azure-VM gelöscht.
     - Sie haben den Schutz des virtuellen Computers deaktiviert.

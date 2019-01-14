@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 07274269e9902a336181c89ee5c02edd52b6ab01
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849495"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723925"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
+# <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
 
 [Azure Site Recovery](site-recovery-overview.md) unterstützt für Mandantenabonnements Umgebungen mit mehreren Mandanten. Unterstützt wird außerdem die Mehrmandantenfähigkeit für Mandantenabonnements, die über das Microsoft Cloud Solution Provider-Programm (CSP) erstellt und verwaltet werden.
 
@@ -58,7 +58,7 @@ Jeder Konfigurationsserver im Szenario mit mehreren Mandanten verwendet zwei Kon
 
 - **vCenter-Zugriffskonto**: Dieses Konto dient zum Ermitteln von Mandanten-VMs. Diesem sind vCenter-Zugriffsberechtigungen zugewiesen. Um Zugriffslücken zu vermeiden, wird empfohlen, dass Partner diese Anmeldeinformationen selbst in das Konfigurationstool eingeben.
 
-- **VM-Zugriffskonto**: Dieses Konto dient zum Installieren des Mobilitätsdienst-Agents auf den VMs des Mandanten mittels automatischer Übertragung mithilfe von Push. Hierbei handelt es sich in der Regel um ein Domänenkonto, das ein Mandant ggf. für einen Partner bereitstellt, oder ein Konto, das der Partner direkt verwaltet. Wenn ein Mandant die Details nicht direkt an den Partner weitergeben möchte, kann die Eingabe der Anmeldeinformationen im Rahmen eines zeitlich begrenzten Zugriffs auf den Konfigurationsserver ermöglicht werden. Alternativ kann der Mandant die Mobilitätsdienst-Agents in Zusammenarbeit mit dem Partner manuell installieren.
+- **VM-Zugriffskonto**: Dieses Konto dient zum Installieren des Mobilitätsdienst-Agents auf den VMs des Mandanten mittels automatischer Übertragung mithilfe von Push. Hierbei handelt es sich in der Regel um ein Domänenkonto, das ein Mandant ggf. für einen Partner bereitstellt, oder ein Konto, das der Partner direkt verwaltet. Wenn ein Mandant die Details nicht direkt an den Partner weitergeben möchte, kann die Eingabe der Anmeldeinformationen im Rahmen eines zeitlich begrenzten Zugriffs auf den Konfigurationsserver ermöglicht werden. Alternativ kann der Mandant die Mobility Service-Agents in Zusammenarbeit mit dem Partner manuell installieren.
 
 ## <a name="vcenter-account-requirements"></a>Anforderungen an das vCenter-Konto
 

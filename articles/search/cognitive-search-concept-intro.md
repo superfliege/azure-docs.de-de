@@ -1,5 +1,5 @@
 ---
-title: Kognitive Suche für die Datenextrahierung und die KI-Verarbeitung natürlicher Sprache – Azure Search
+title: Prozess für kognitive Suche, Datenextrahierung und KI-Verarbeitung natürlicher Sprache – Azure Search
 description: Inhaltsextrahierung, Verarbeitung natürlicher Sprache (NLP, Natural Language Processing) und Bildverarbeitung zum Erstellen durchsuchbarer Inhalte in der Azure Search-Indizierung mithilfe von kognitiven Fähigkeiten und KI-Algorithmen.
 manager: cgronlun
 author: HeidiSteen
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2bb32ccaeb5960fa69dcdc356523abc199fd5f4f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315603"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633792"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
@@ -32,7 +32,7 @@ Die kognitiven Fähigkeiten in Azure Search basieren auf denselben KI-Algorithme
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden. Die Architektur ist erweiterbar. Falls die integrierten Fähigkeiten also nicht ausreichen, können Sie [benutzerdefinierte Fähigkeiten](cognitive-search-create-custom-skill-example.md) erstellen und anfügen, um die benutzerdefinierte Verarbeitung zu integrieren. Beispiele hierfür sind ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, z.B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
 > [!NOTE]
-> Seit dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Somit können wir mit der Gebührenberechnung für die Ausführung von Qualifikationsgruppen beginnen. Außerdem wird seit diesem Datum die Bildextraktion als Teil der Aufschlüsselung von Dokumenten in Rechnung gestellt. Die Textextraktion aus Dokumenten wird weiterhin ohne zusätzliche Kosten angeboten.
+> Seit dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Somit können wir mit der Gebührenberechnung für die Ausführung von Qualifikationsgruppen beginnen. Außerdem wird seit diesem Datum die Bildextraktion als Teil der Aufschlüsselung von Dokumenten in Rechnung gestellt. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
 >
 > Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 

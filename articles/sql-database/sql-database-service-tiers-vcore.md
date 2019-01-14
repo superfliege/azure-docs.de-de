@@ -11,20 +11,20 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 11/27/2018
-ms.openlocfilehash: 4aaaf2e7a918ab91aebd1e1f1f6d166d6cadf19a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/02/2019
+ms.openlocfilehash: f756f043a7ab3c9086b21b8bdb88a5a6a7ed60df
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437061"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001599"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>V-Kern-Diensttarife, Azure-Hybridvorteil und Migration
 
 Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Es ermöglicht Ihnen auch die Wahl der Hardwaregeneration:
 
 - Gen 4: bis zu 24 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
-- Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,5. GB pro Kern, schnelle eNVM-SSD
+- Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,1 GB pro Kern, schnelle eNVM-SSD
 
 Mit dem V-Kern-Modell können Sie auch den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) nutzen, um Kosten einzusparen.
 
@@ -33,16 +33,16 @@ Mit dem V-Kern-Modell können Sie auch den [Azure-Hybridvorteil für SQL Server]
 
 ## <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
-Das Modell mit virtuellem Kern bietet zwei Diensttarife: „Universell“und „Unternehmenskritisch“. Diensttarife unterscheiden sich in Bezug auf Computegrößen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und E/A-Bereich. Der Kunde muss den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Sie müssen den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Navigieren Sie im Azure-Portal zu „Server“ (nicht zu „Datenbank“) > Verwaltete Sicherungen > Richtlinie konfigurieren > Konfiguration der Point-in-Time-Wiederherstellung > 7–35 Tage.
+Das Modell mit virtuellem Kern bietet drei Diensttarife: „Universell“, Hyperscale“ und „Unternehmenskritisch“. Diensttarife unterscheiden sich in Bezug auf Computegrößen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und -größe sowie E/A-Bereich. Sie müssen den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Navigieren Sie im Azure-Portal zu „Server“ (nicht zu „Datenbank“) > Verwaltete Sicherungen > Richtlinie konfigurieren > Konfiguration der Point-in-Time-Wiederherstellung > 7–35 Tage.
 
-Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle verdeutlicht:
+Die folgende Tabelle zeigt die Unterschiede zwischen diesen drei Tarifen:
 
-||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale (Vorschau)**|
+||**Universell**|**Unternehmenskritisch**|**Hyperscale (Vorschau)**|
 |---|---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung|
 |Compute|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|
 |Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern |Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern|
-|Storage|Verwendet [Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md):<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher:<br/>Einzeldatenbank: 5 GB – 1 TB<br/>Verwaltete Instanz: 32 GB – 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
+|Storage|Verwendet [Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md):<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher:<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
 |E/A-Durchsatz (ungefähr)|Einzeldatenbank: 500 IOPS pro V-Kern mit maximal 7.000 IOPS</br>Verwaltete Instanz: Hängt von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) ab|5000 IOPS pro Kern mit maximal 200.000 IOPS|TBD|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>Zonenredundante HA|?|
 |Backups|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|Sicherung auf der Grundlage von Momentaufnahmen im Azure-Remotespeicher. Diese Momentaufnahmen werden für die schnelle Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind sehr schnell und entsprechen nicht der Größe eines Datenvorgangs (benötigen eher Minuten als Stunden oder Tage).|
@@ -63,7 +63,7 @@ Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häuf
 
 ## <a name="azure-hybrid-benefit"></a>Azure-Hybridvorteil
 
-Beim V-Kern-basierten Kaufmodell können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwenden. Bei diesem Azure-Vorteil können Sie Ihre lokalen SQL Server-Lizenzen nutzen, um für SQL-Datenbank bis zu 30% zu sparen, indem Sie Software Assurance für die lokalen SQL Server-Lizenzen verwenden.
+Beim V-Kern-basierten Kaufmodell können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Bei diesem Azure-Vorteil können Sie Ihre lokalen SQL Server-Lizenzen nutzen, um für SQL-Datenbank bis zu 30% zu sparen, indem Sie Software Assurance für die lokalen SQL Server-Lizenzen verwenden.
 
 ![Preise](./media/sql-database-service-tiers/pricing.png)
 

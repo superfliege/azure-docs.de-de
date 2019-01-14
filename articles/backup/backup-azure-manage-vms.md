@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: trinadhk
-ms.openlocfilehash: 4d45db6ba6354f85c3ed67561751720b6f6f4b77
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0e599c95f40e62a4bb01a7ab698fe0ce1f738e49
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465719"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635764"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Verwalten der Sicherung virtueller Computer
 
-Dieser Artikel enthält hilfreiche Informationen zum Verwalten von VM-Sicherungen und geht auf die Sicherungswarnungen ein, die auf dem Portaldashboard zur Verfügung stehen. Die Anleitung in diesem Artikel gilt für die Verwendung von VMs mit Recovery Services-Tresoren. Die Erstellung von virtuellen Computern und der Schutz virtueller Computer werden in diesem Artikel nicht beschrieben. Eine Einführung zu dem Thema, wie Sie von Azure Resource Manager bereitgestellte VMs in Azure mit einem Recovery Services-Tresor schützen können, finden Sie unter [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)(Einführung: Sichern von VMs in einem Recovery Services-Tresor).
+Dieser Artikel enthält hilfreiche Informationen zum Verwalten von VM-Sicherungen und geht auf die Sicherungswarnungen ein, die auf dem Portaldashboard zur Verfügung stehen. Die Anleitung in diesem Artikel gilt für die Verwendung von VMs mit Recovery Services-Tresoren. Die Erstellung von virtuellen Computern und der Schutz virtueller Computer werden in diesem Artikel nicht beschrieben. Eine Einführung zu dem Thema, wie Sie von Azure Resource Manager bereitgestellte VMs in Azure mit einem Recovery Services-Tresor schützen können, finden Sie unter [Einstieg: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md).
 
 ## <a name="manage-vaults-and-protected-virtual-machines"></a>Verwalten von Tresoren und geschützten virtuellen Computern
 Im Azure-Portal ermöglicht das Dashboard für den Recovery Services-Tresor den Zugriff auf Informationen zum Tresor, z.B.:
@@ -77,7 +77,7 @@ Im vorherigen Verfahren haben Sie das Tresor-Dashboard geöffnet. So öffnen Sie
 
     ![Sicherungselemente-Dashboard mit Blatt „Einstellungen“](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
-    Über das Dashboard für die Tresorelemente können Sie viele wichtige Verwaltungsaufgaben durchführen, z.B.:
+    Über das Dashboard für die Tresorelemente können Sie viele wichtige Aufgaben durchführen, z. B.:
 
    * Ändern von Richtlinien oder Erstellen einer neuen Sicherungsrichtlinie
    * Anzeigen von Wiederherstellungspunkten und des Konsistenzstatus
@@ -85,7 +85,7 @@ Im vorherigen Verfahren haben Sie das Tresor-Dashboard geöffnet. So öffnen Sie
    * Beenden des Schutzes für virtuelle Computer
    * Fortsetzen des Schutzes eines virtuellen Computers
    * Löschen von Sicherungsdaten (oder eines Wiederherstellungspunkts)
-   * [Wiederherstellen von Sicherungsdatenträgern](backup-azure-arm-restore-vms.md#restore-backed-up-disks)
+   * [Wiederherstellen von Sicherungsdatenträgern](backup-azure-arm-restore-vms.md#create-new-restore-disks)
 
 Für die folgenden Verfahren ist der Startpunkt das Dashboard für die Tresorelemente.
 
@@ -214,4 +214,4 @@ So löschen Sie Sicherungsdaten auf einem virtuellen Computer mit *deaktivierter
     Sie werden mit einer Benachrichtigung darüber informiert, dass die Sicherungsdaten gelöscht wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Neuerstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md). Informationen zum Überwachen von Ereignissen finden Sie unter [Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern](backup-azure-monitor-vms.md).
+Informationen zum erneuten Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [Einführung: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md). Informationen zum Überwachen von Ereignissen finden Sie unter [Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern](backup-azure-monitor-vms.md).

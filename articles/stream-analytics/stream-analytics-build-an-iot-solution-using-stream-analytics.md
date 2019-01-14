@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4817efcb5cfa5f8692f2b7e5c65d411bc0d21942
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317388"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971102"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -185,7 +185,7 @@ Führen Sie diese Schritte aus, um den Streamingauftrag zu starten:
 ## <a name="review-the-cosmosdb-output-data"></a>Überprüfen der CosmosDB-Ausgabedaten
 1. Suchen Sie nach der Ressourcengruppe, die die TollApp-Ressourcen enthält.
 
-2. Wählen Sie das Azure Cosmos DB-Konto mit dem Namensmuster **tollapp<random>-cosmos** aus.
+2. Wählen Sie das Azure Cosmos DB-Konto mit dem Namensmuster **tollapp\<random\>-cosmos** aus.
 
 3. Wählen Sie die Überschrift **Daten-Explorer**, um die Seite mit dem Daten-Explorer zu öffnen.
 
@@ -303,7 +303,7 @@ Skalieren Sie den Streamingauftrag wie folgt auf mehr Streamingeinheiten zentral
 
 3. Wählen Sie unter der Überschrift „KONFIGURIEREN“ des Streamingauftrags die Option **Skalieren**.
 
-4. Verschieben Sie den Schieberegler **Streamingeinheiten** von 1 auf 6. Mit den Streamingeinheiten wird die Menge an Rechenleistung definiert, die der Auftrag erhalten kann. Wählen Sie **Speichern**aus.
+4. Verschieben Sie den Schieberegler **Streamingeinheiten** von 1 auf 6. Mit den Streamingeinheiten wird die Menge an Rechenleistung definiert, die der Auftrag erhalten kann. Wählen Sie **Speichern** aus.
 
 5. **Starten** Sie den Streamingauftrag, um die zusätzliche Skalierung zu demonstrieren. Azure Stream Analytics erreicht eine Verteilung der Arbeit auf mehr Computeressourcen und einen besseren Durchsatz, indem die Arbeit über die Spalte, die in der PARTITION BY-Klausel angegeben ist, ressourcenübergreifend partitioniert wird.
 

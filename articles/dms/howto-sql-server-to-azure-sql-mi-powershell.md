@@ -4,19 +4,19 @@ description: Erfahren Sie, wie Sie mit Azure PowerShell eine Migration vom lokal
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 64d77a17241c44c9d450b9e7602222cdb89482b7
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c4ccbe8a6f1e1923e83d2bdcbeb2d61429083aee
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247162"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724197"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrieren von einer lokalen SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von Azure PowerShell
 In diesem Artikel migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2005 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer verwalteten Azure SQL-Datenbank-Instanz. Mithilfe des Moduls `AzureRM.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer lokalen Instanz von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz migrieren.
@@ -176,7 +176,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 ### <a name="select-logins"></a>Auswählen von Benutzernamen
-Erstellen Sie eine Liste der zu migrierenden Anmeldungen, wie im folgenden Beispiel gezeigt:  Beachten Sie, dass DMS derzeit nur die Migration von SQL-Anmeldung unterstützt. 
+Erstellen Sie eine Liste der zu migrierenden Anmeldungen, wie im folgenden Beispiel gezeigt:  Beachten Sie, dass DMS zurzeit nur die Migration von SQL-Anmeldungen unterstützt. 
 
 ```powershell
 $selectedLogins = @("user1", "user2")

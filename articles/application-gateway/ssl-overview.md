@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: fcb49f532d5dfcd340baf017bd55c69d4e81e0e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945500"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630681"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Übersicht über End-to-End-SSL mit Applicaiton Gateway
 
@@ -31,7 +31,7 @@ In diesem Beispiel werden Anforderungen, für die TLS 1.2 verwendet wird, an Bac
 Application Gateway kommuniziert nur mit bekannten Back-End-Instanzen, deren Zertifikat in der Whitelist des Anwendungsgateways enthalten ist. Um die Whitelistfunktion für Zertifikate zu aktivieren, müssen Sie den öffentlichen Schlüssel der Back-End-Serverzertifikate auf das Anwendungsgateway hochladen (nicht das Stammzertifikat). Es sind dann nur Verbindungen mit bekannten und in Whitelists enthaltenen Back-Ends zulässig. Die übrigen Back-Ends führen zu einem Gatewayfehler. Selbstsignierte Zertifikate dienen nur zu Testzwecken und werden für Produktionsworkloads nicht empfohlen. Solche Zertifikate müssen, wie unter den obigen Schritten beschrieben, in der Whitelist des Anwendungsgateways enthalten sein, damit sie verwendet werden können.
 
 > [!NOTE]
-> Die Einrichtung des Authentifizierungszertifikats ist für vertrauenswürdige Azure-Dienste, z.B. Azure-Web-Apps, nicht erforderlich.
+> Die Einrichtung des Authentifizierungszertifikats ist für vertrauenswürdige Azure-Dienste wie Azure App Service nicht erforderlich.
 
 ## <a name="end-to-end-ssl-with-the-v2-sku"></a>End-to-End-SSL mit der v2-SKU
 
@@ -39,7 +39,7 @@ Authentifizierungszertifikate wurden als veraltet markiert und durch Trusted Roo
 
 - Zertifikate, die von bekannten Zertifizierungsstellen, deren CN dem Hostnamen in den HTTP-Einstellungen des Back-Ends entspricht, zertifiziert wurden, erfordern keinen zusätzlichen Schritt, damit End-to-End-SSL funktioniert. 
 
-   Wenn beispielsweise die Back-End-Zertifikate von einer bekannten Zertifizierungsstelle ausgestellt wurden, der CN „contoso.com“ lautet und in der HTTP-Einstellung des Back-Ends das Feld „Host“ ebenfalls auf „contoso.com“ festgelegt wurde, sind keine weiteren Schritte erforderlich. Sie können das Protokoll in der HTTP-Einstellung des Back-Ends auf HTTPS festlegen. In diesem Fall ist SSL sowohl für den Integritätstest als auch für den Datenpfad aktiviert. Wenn Sie Azure-Web-Apps oder andere Azure-Webdienste als Back-End verwenden, gelten diese ebenfalls als implizit vertrauenswürdig, und für End-to-End-SSL sind keine weiteren Schritte erforderlich.
+   Wenn beispielsweise die Back-End-Zertifikate von einer bekannten Zertifizierungsstelle ausgestellt wurden, der CN „contoso.com“ lautet und in der HTTP-Einstellung des Back-Ends das Feld „Host“ ebenfalls auf „contoso.com“ festgelegt wurde, sind keine weiteren Schritte erforderlich. Sie können das Protokoll in der HTTP-Einstellung des Back-Ends auf HTTPS festlegen. In diesem Fall ist SSL sowohl für den Integritätstest als auch für den Datenpfad aktiviert. Wenn Sie Azure App Service oder andere Azure-Webdienste als Back-End verwenden, gelten diese ebenfalls als implizit vertrauenswürdig, und für End-to-End-SSL sind keine weiteren Schritte erforderlich.
 - Wenn das Zertifikat selbstsigniert ist oder von einem unbekannten Vermittler signiert wurde, müssen Sie zum Aktivieren von End-to-End-SSL in der v2-SKU ein vertrauenswürdiges Stammzertifikat definieren. Application Gateway kommuniziert nur mit Back-Ends, bei denen das Stammzertifikat des Serverzertifikats mit einem der vertrauenswürdigen Stammzertifikate in der Liste der HTTP-Einstellung für das Back-End, das dem Pool zugeordnet ist, übereinstimmt.
 - Zusätzlich zur Übereinstimmung des Stammzertifikats überprüft Application Gateway auch, ob die Einstellung „Host“ in der HTTP-Einstellung des Back-Ends mit dem allgemeinen Namen (Common Name, CN), der vom SSL-Zertifikat des Back-End-Servers angegeben wird, übereinstimmt. Beim Herstellen einer SSL-Verbindung mit dem Back-End legt Application Gateway die SNI-Erweiterung (Server Name Indication, Servernamensanzeige) auf den Host fest, der in der HTTP-Einstellung des Back-Ends angegeben wurde.
 - Wenn das **Auswählen des Hostnamen aus der Back-End-Adresse** anstelle des Felds „Host“ in der HTTP-Einstellung des Back-Ends ausgewählt wurde, wird der SNI-Header immer auf den FQDN des Back-End-Pools festgelegt, und der CN im SSL-Zertifikat des Back-End-Servers muss mit diesem FQDN übereinstimmen. Mitglieder des Back-End-Pools mit IP-Adressen werden in diesem Szenario nicht unterstützt.

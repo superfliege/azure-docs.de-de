@@ -11,21 +11,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847523"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651502"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Überlegungen zur Verwendung von virtuellen Computern in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Virtuelle Azure Stack-Computer bieten bedarfsgesteuerte, skalierbare Computingressourcen. Machen Sie sich vor der Bereitstellung virtueller Computer (VMs) mit den Unterschieden zwischen den Features virtueller Computer in Azure Stack und Microsoft Azure vertraut. In diesem Artikel werden diese Unterschiede beschrieben und wichtige Überlegungen zur Planung von Bereitstellungen virtueller Computer erörtert. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Artikel [Wichtige Aspekte](azure-stack-considerations.md).
+Virtuelle Azure Stack-Computer bieten bedarfsgesteuerte, skalierbare Computingressourcen. Machen Sie sich vor der Bereitstellung virtueller Computer (VMs) mit den Unterschieden zwischen den Features virtueller Computer in Azure Stack und Microsoft Azure vertraut. In diesem Artikel werden diese Unterschiede beschrieben und wichtige Überlegungen zur Planung von Bereitstellungen virtueller Computer erörtert. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Artikel [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Cheatsheet: Unterschiede bei virtuellen Computern
 
@@ -39,6 +39,7 @@ Virtuelle Azure Stack-Computer bieten bedarfsgesteuerte, skalierbare Computingre
 | VM-Speicher | Unterstützt [verwaltete Datenträger](../../virtual-machines/windows/managed-disks-overview.md). | Verwaltete Datenträger werden in Azure Stack ab Version 1808 unterstützt. |
 | Leistung von VM-Datenträgern | Abhängig von Datenträgertyp und -größe. | Abhängig von der VM-Größe des virtuellen Computers, an den die Datenträger angefügt wurden. Lesen Sie den Artikel [In Azure Stack unterstützte VM-Größen](azure-stack-vm-sizes.md).
 | API-Versionen | Azure verfügt für alle VM-Features immer über die aktuellen API-Versionen. | Azure Stack unterstützt bestimmte Azure-Dienste und bestimmte API-Versionen für diese Dienste. Die Liste mit den unterstützten API-Versionen finden Sie in diesem Artikel im Abschnitt [API-Versionen](#api-versions). |
+| Azure-Instanzmetadatendienst | Der Azure-Instanzmetadatendienst stellt Informationen zum Ausführen von Instanzen virtueller Computer bereit, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können.  | Der Instanzmetadatendienst wird für Azure Stack nicht unterstützt. |
 |VM-Verfügbarkeitsgruppen|Mehrere Fehlerdomänen (zwei oder drei pro Region)<br>Mehrere Updatedomänen<br>Unterstützung von verwalteten Datenträgern|Mehrere Fehlerdomänen (zwei oder drei pro Region)<br>Mehrere Updatedomänen (bis zu 20)<br>Keine Unterstützung von verwalteten Datenträgern|
 |VM-Skalierungsgruppen|Unterstützung der Autoskalierung|Keine Unterstützung der Autoskalierung<br>Fügen Sie einer Skalierungsgruppe mit dem Portal, Resource Manager-Vorlagen oder PowerShell weitere Instanzen hinzu.
 

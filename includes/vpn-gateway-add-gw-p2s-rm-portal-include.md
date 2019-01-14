@@ -8,32 +8,32 @@ ms.topic: include
 ms.date: 10/24/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 977eb96f0dc7ec207c239ee8a458b47a881a1e5d
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 2d84a905cba503119f1b6e0f0a1a7cbbf91b3a1f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026634"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444149"
 ---
 1. Klicken Sie im Portal auf der linken Seite auf **+ Ressource erstellen**, und geben Sie für die Suche „Gateway für virtuelle Netzwerke“ ein. Suchen Sie in der Ausgabe nach **Virtuelles Netzwerkgateway**, und klicken Sie auf den Eintrag. Klicken Sie unten auf der Seite **Gateway für virtuelle Netzwerke** auf **Erstellen**. Die Seite **Gateway für virtuelle Netzwerke erstellen** wird geöffnet.
 2. Geben Sie auf der Seite **Gateway für virtuelle Netzwerke erstellen** die Werte für das Gateway für virtuelle Netzwerke an.
 
-  ![Felder der Seite „Gateway für virtuelle Netzwerke erstellen“](./media/vpn-gateway-add-gw-p2s-rm-portal-include/p2sgw.png "Felder der Seite „Gateway für virtuelle Netzwerke erstellen“")
+   ![Felder der Seite „Gateway für virtuelle Netzwerke erstellen“](./media/vpn-gateway-add-gw-p2s-rm-portal-include/p2sgw.png "Felder der Seite „Gateway für virtuelle Netzwerke erstellen“")
 3. Geben Sie auf der Seite **Gateway für virtuelle Netzwerke erstellen** die Werte für das Gateway für virtuelle Netzwerke an.
 
    - **Name**: Benennen Sie Ihr Gateway. Dies ist nicht das Gleiche wie das Benennen eines Gatewaysubnetzes. Hierbei handelt es sich um den Namen des Gatewayobjekts, das Sie erstellen.
-  - **Gatewaytyp**: Wählen Sie **VPN** aus. Bei VPN-Gateways wird ein virtuelles Netzwerkgateway vom Typ **VPN** verwendet. 
-  - **VPN-Typ**: Wählen Sie den für Ihre Konfiguration angegebenen VPN-Typ aus. Bei den meisten Konfigurationen wird ein routenbasierter VPN-Typ benötigt.
-  - **SKU**: Wählen Sie in der Dropdownliste die Gateway-SKU aus. Welche SKUs in der Dropdownliste aufgeführt werden, hängt vom ausgewählten VPN-Typ ab. Weitere Informationen zu Gateway-SKUs finden Sie unter [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+   - **Gatewaytyp**: Wählen Sie **VPN** aus. Bei VPN-Gateways wird ein virtuelles Netzwerkgateway vom Typ **VPN** verwendet. 
+   - **VPN-Typ**: Wählen Sie den für Ihre Konfiguration angegebenen VPN-Typ aus. Bei den meisten Konfigurationen wird ein routenbasierter VPN-Typ benötigt.
+   - **SKU**: Wählen Sie in der Dropdownliste die Gateway-SKU aus. Welche SKUs in der Dropdownliste aufgeführt werden, hängt vom ausgewählten VPN-Typ ab. Weitere Informationen zu Gateway-SKUs finden Sie unter [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-    Aktivieren Sie **Aktiv/Aktiv-Modus aktivieren** nur, wenn Sie eine Aktiv/Aktiv-Gatewaykonfiguration erstellen. Lassen Sie diese Einstellung andernfalls deaktiviert.
-  - **Standort**: Unter Umständen müssen Sie einen Bildlauf durchführen, um diese Option anzuzeigen. Passen Sie das Feld **Standort** an, um auf den Standort zu verweisen, an dem sich das virtuelle Netzwerk befindet. Beispiel: USA, Westen Wenn der Standort nicht auf die Region verweist, in der sich Ihr virtuelles Netzwerk befindet, wird das virtuelle Netzwerk nicht in der Dropdownliste angezeigt, wenn Sie im nächsten Schritt ein virtuelles Netzwerk auswählen.
-  - **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, dem Sie dieses Gateway hinzufügen möchten. Klicken Sie auf **Virtuelles Netzwerk**, um die Seite „Virtuelles Netzwerk auswählen“ zu öffnen. Wählen Sie das VNet aus. Sollte Ihr VNet nicht angezeigt werden, vergewissern Sie sich, dass das Feld „Speicherort“ auf die Region verweist, in der sich Ihr virtuelles Netzwerk befindet.
-  - **Adressbereich für Gatewaysubnetz**: Diese Einstellung wird nur angezeigt, wenn Sie zuvor kein Gatewaysubnetz für Ihr virtuelles Netzwerk erstellt haben. Falls Sie zuvor ein gültiges Gatewaysubnetz erstellt haben, wird diese Einstellung nicht angezeigt.
-  - **Öffentliche IP-Adresse**: Mit dieser Einstellung wird das Objekt für die öffentliche IP-Adresse angegeben, das dem VPN-Gateway zugeordnet wird. Die öffentliche IP-Adresse wird bei der Erstellung des VPN-Gateways diesem Objekt dynamisch zugewiesen. VPN Gateway unterstützt derzeit nur die *dynamische* Zuweisung öffentlicher IP-Adressen. Das bedeutet jedoch nicht, dass sich die IP-Adresse ändert, nachdem sie Ihrem VPN-Gateway zugewiesen wurde. Die öffentliche IP-Adresse ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Sie ändert sich nicht, wenn die Größe geändert wird, das VPN-Gateway zurückgesetzt wird oder andere interne Wartungs-/Upgradevorgänge für das VPN-Gateway durchgeführt werden.
+     Aktivieren Sie **Aktiv/Aktiv-Modus aktivieren** nur, wenn Sie eine Aktiv/Aktiv-Gatewaykonfiguration erstellen. Lassen Sie diese Einstellung andernfalls deaktiviert.
+   - **Standort**: Unter Umständen müssen Sie scrollen, um „Standort“ anzuzeigen. Passen Sie das Feld **Standort** an, um auf den Standort zu verweisen, an dem sich das virtuelle Netzwerk befindet. Beispiel: USA, Westen Wenn der Standort nicht auf die Region verweist, in der sich Ihr virtuelles Netzwerk befindet, wird das virtuelle Netzwerk nicht in der Dropdownliste angezeigt, wenn Sie im nächsten Schritt ein virtuelles Netzwerk auswählen.
+   - **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, dem Sie dieses Gateway hinzufügen möchten. Klicken Sie auf **Virtuelles Netzwerk**, um die Seite „Virtuelles Netzwerk auswählen“ zu öffnen. Wählen Sie das VNet aus. Sollte Ihr VNet nicht angezeigt werden, vergewissern Sie sich, dass das Feld „Speicherort“ auf die Region verweist, in der sich Ihr virtuelles Netzwerk befindet.
+   - **Adressbereich für Gatewaysubnetz**: Diese Einstellung wird nur angezeigt, wenn Sie zuvor kein Gatewaysubnetz für Ihr virtuelles Netzwerk erstellt haben. Falls Sie zuvor ein gültiges Gatewaysubnetz erstellt haben, wird diese Einstellung nicht angezeigt.
+   - **Öffentliche IP-Adresse**: Mit dieser Einstellung wird das Objekt für die öffentliche IP-Adresse angegeben, das dem VPN-Gateway zugeordnet wird. Die öffentliche IP-Adresse wird bei der Erstellung des VPN-Gateways diesem Objekt dynamisch zugewiesen. VPN Gateway unterstützt derzeit nur die *dynamische* Zuweisung öffentlicher IP-Adressen. Das bedeutet jedoch nicht, dass sich die IP-Adresse ändert, nachdem sie Ihrem VPN-Gateway zugewiesen wurde. Die öffentliche IP-Adresse ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Sie ändert sich nicht, wenn die Größe geändert wird, das VPN-Gateway zurückgesetzt wird oder andere interne Wartungs-/Upgradevorgänge für das VPN-Gateway durchgeführt werden.
 
-    - Lassen Sie **Neu erstellen** aktiviert.
-    - Geben Sie im Textfeld **Name** einen Namen für die öffentliche IP-Adresse ein.
+     - Lassen Sie **Neu erstellen** aktiviert.
+     - Geben Sie im Textfeld **Name** einen Namen für die öffentliche IP-Adresse ein.
 
 4. Aktivieren Sie **BGP-ASN konfigurieren** nur, wenn diese Einstellung für Ihre Konfiguration speziell erforderlich ist. Sollte diese Einstellung erforderlich sein, lautet die Standard-ASN 65515. (Dieser Wert kann jedoch geändert werden.)
 5. Überprüfen Sie die Einstellungen. Sie können unten auf der Seite auf **An Dashboard anheften** klicken, wenn das Gateway auf dem Dashboard angezeigt werden soll.

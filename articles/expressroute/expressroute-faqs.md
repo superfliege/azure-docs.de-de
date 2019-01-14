@@ -2,17 +2,18 @@
 title: Häufig gestellte Fragen zu Azure ExpressRoute | Microsoft-Dokumentation
 description: Die FAQs zu ExpressRoute enthalten Informationen zu unterstützten Azure-Diensten, Kosten, Daten und Verbindungen, SLAs, Anbietern und Standorten, Bandbreite sowie zusätzliche technische Details.
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: cherylmc
-ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 10/28/2018
+ms.author: jaredro
+ms.custom: seodec18
+ms.openlocfilehash: 6de5fefa3d70c1daecf00909d3ce44d4a4d8561c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239201"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543562"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -26,7 +27,7 @@ ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Sie b
 
 ### <a name="where-is-the-service-available"></a>Wo ist der Dienst verfügbar?
 
-Auf der folgenden Seite finden Sie Informationen bezüglich der Dienststandorte und Verfügbarkeit: [ExpressRoute-Partner und -Standorte](expressroute-locations.md).
+Auf dieser Seite finden Sie Informationen zu Standorten und Verfügbarkeit des Diensts: [ExpressRoute-Partner und Peeringstandorte](expressroute-locations.md).
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Wie kann ich ExpressRoute verwenden, um eine Verbindung mit Microsoft herzustellen, wenn ich keine Partnerschaft mit einem der ExpressRoute-Anbieterpartner habe?
 
@@ -38,7 +39,7 @@ Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.c
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Wenn ich für eine ExpressRoute-Verbindung mit einer bestimmten Bandbreite bezahle, muss die VPN-Verbindung, die ich von meinem Netzwerkdienstanbieter erworben habe, die gleiche Geschwindigkeit haben?
 
-Nein. Sie können eine VPN-Verbindung beliebiger Geschwindigkeit bei Ihrem Dienstanbieter erwerben. Die Verbindung mit Azure ist jedoch auf die von Ihnen erworbene Bandbreite der ExpressRoute-Verbindung begrenzt.
+ Nein. Sie können eine VPN-Verbindung beliebiger Geschwindigkeit bei Ihrem Dienstanbieter erwerben. Die Verbindung mit Azure ist jedoch auf die von Ihnen erworbene Bandbreite der ExpressRoute-Verbindung begrenzt.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Wenn ich für eine ExpressRoute-Verbindung mit einer bestimmten Bandbreite bezahle, habe ich die Möglichkeit, bei Bedarf höhere Geschwindigkeiten zu nutzen?
 
@@ -68,8 +69,8 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 
 * Power BI
 * Dynamics 365 for Finance and Operations (früher als „Dynamics AX Online“ bekannt)
-* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br>
-  Die folgenden Dienste werden NICHT unterstützt:
+* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br><br>
+  **Die folgenden Dienste werden NICHT unterstützt**:
     * CDN
     * Multi-Factor Authentication
     * Traffic Manager
@@ -81,7 +82,7 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 * Power BI
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Community der globalen Azure-Dienste)
-* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br>Die folgenden Dienste werden **nicht unterstützt**:
+* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br><br>**Die folgenden Dienste werden NICHT unterstützt**:
     * CDN
     * Multi-Factor Authentication
     * Traffic Manager
@@ -128,7 +129,7 @@ Wenn Ihr Dienstanbieter zwei virtuelle Ethernetverbindungen über die physische 
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Kann ich eines meiner VLANs mithilfe von ExpressRoute auf Azure erweitern?
 
-Nein. Wir unterstützen keine Schicht-2-Konnektivitätserweiterungen in Azure.
+ Nein. Wir unterstützen keine Schicht-2-Konnektivitätserweiterungen in Azure.
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>Kann mein Abonnement mehr als eine ExpressRoute-Verbindung umfassen?
 
@@ -165,7 +166,7 @@ Ja. Bei einer standardmäßigen ExpressRoute-Verbindung sind bis zu 10 Verbindun
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Ich habe mehrere Azure-Abonnements, die Virtual Networks enthalten. Kann ich Virtual Networks, die sich in unterschiedlichen Abonnements befinden, mit einer ExpressRoute-Verbindung verbinden?
 
-Ja. Sie können bis zu 10 andere Azure-Abonnements autorisieren, eine einzige ExpressRoute-Verbindung zu verwenden. Dieses Limit kann durch das Aktivieren des ExpressRoute Premium-Features erhöht werden.
+Ja. Sie können bis zu 10 virtuelle Netzwerke im selben Abonnement wie die Verbindung oder verschiedene Abonnements über eine einzige ExpressRoute-Leitung verbinden. Dieses Limit kann durch das Aktivieren des ExpressRoute Premium-Features erhöht werden.
 
 Weitere Informationen finden Sie unter [Freigeben einer ExpressRoute-Verbindung für mehrere Abonnements](expressroute-howto-linkvnet-arm.md).
 
@@ -265,7 +266,7 @@ Sie können ExpressRoute Premium deaktivieren, indem Sie die REST-API oder das P
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Kann ich die Features der Premium-Features auswählen, die ich nutzen möchte?
 
-Nein. Sie können die Features nicht auswählen. Wenn Sie ExpressRoute Premium aktivieren, werden alle Features aktiviert.
+ Nein. Sie können die Features nicht auswählen. Wenn Sie ExpressRoute Premium aktivieren, werden alle Features aktiviert.
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>Wie viel kostet ExpressRoute Premium?
 

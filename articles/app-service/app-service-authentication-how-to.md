@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409750"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722650"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
-Dieser Artikel zeigt, wie Sie die integrierte [Authentifizierung und Autorisierung in App Service](app-service-authentication-overview.md) anpassen und Identitäten über Ihre Anwendung verwalten. 
+Dieser Artikel zeigt, wie Sie die integrierte [Authentifizierung und Autorisierung in App Service](overview-authentication-authorization.md) anpassen und Identitäten über Ihre Anwendung verwalten. 
 
 Sehen Sie sich eines der folgenden Tutorials an, um sofort loszulegen:
 
@@ -37,13 +37,13 @@ Sehen Sie sich eines der folgenden Tutorials an, um sofort loszulegen:
 
 ## <a name="use-multiple-sign-in-providers"></a>Verwenden mehrerer Anmeldungsanbieter
 
-Die Portalkonfiguration bietet keine einfache Möglichkeit, Ihren Benutzern mehrere Anmeldungsanbieter (z.B. sowohl Facebook als auch Twitter) bereitzustellen. Allerdings lässt sich diese Funktionalität Ihrer Web-App problemlos hinzufügen. Dazu sind folgende Schritte erforderlich:
+Die Portalkonfiguration bietet keine einfache Möglichkeit, Ihren Benutzern mehrere Anmeldungsanbieter (z.B. sowohl Facebook als auch Twitter) bereitzustellen. Allerdings lässt sich diese Funktionalität Ihrer App problemlos hinzufügen. Dazu sind folgende Schritte erforderlich:
 
 Zunächst konfigurieren Sie im Azure-Portal auf der Seite **Authentifizierung/Autorisierung** alle Identitätsanbieter, die Sie aktivieren möchten.
 
 Wählen Sie für **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** die Option **Anonyme Anforderungen zulassen (keine Aktion)** aus.
 
-Fügen Sie auf der Anmeldeseite, der Navigationsleiste oder an einer anderen Stelle in Ihrer Web-App einen Anmeldelink für alle Anbieter hinzu, die Sie aktiviert haben (`/.auth/login/<provider>`). Beispiel: 
+Fügen Sie auf der Anmeldeseite, der Navigationsleiste oder an einer anderen Stelle in Ihrer App einen Anmeldelink für alle Anbieter hinzu, die Sie aktiviert haben (`/.auth/login/<provider>`). Beispiel: 
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -63,7 +63,7 @@ Um den Benutzer nach der Anmeldung auf eine benutzerdefinierte URL umzuleiten, v
 
 ## <a name="validate-tokens-from-providers"></a>Überprüfen von Token von einem Anbieter
 
-In einer clientgeführten Anmeldung meldet die Anwendung den Benutzer manuell beim Anbieter an und sendet dann das Authentifizierungstoken zur Überprüfung an App Service. (Informationen hierzu finden Sie unter [Authentifizierungsflow](app-service-authentication-overview.md#authentication-flow).) Diese Überprüfung allein gewährt Ihnen noch keinen Zugriff auf die gewünschten App-Ressourcen. Bei erfolgreicher Überprüfung erhalten Sie jedoch ein Sitzungstoken, das Sie für den Zugriff auf App-Ressourcen verwenden können. 
+In einer clientgeführten Anmeldung meldet die Anwendung den Benutzer manuell beim Anbieter an und sendet dann das Authentifizierungstoken zur Überprüfung an App Service. (Informationen hierzu finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).) Diese Überprüfung allein gewährt Ihnen noch keinen Zugriff auf die gewünschten App-Ressourcen. Bei erfolgreicher Überprüfung erhalten Sie jedoch ein Sitzungstoken, das Sie für den Zugriff auf App-Ressourcen verwenden können. 
 
 Um das Anbietertoken zu überprüfen, muss die App Service-App zunächst mit dem gewünschten Anbieter konfiguriert werden. Zur Laufzeit, nachdem Sie das Authentifizierungstoken von Ihrem Anbieter abgerufen haben, posten Sie das Token zur Überprüfung unter `/.auth/login/<provider>`. Beispiel:  
 
@@ -186,15 +186,15 @@ Wenn das Zugriffstoken Ihres Anbieters abläuft, müssen Sie den Benutzer erneut
 - **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](configure-authentication-provider-microsoft.md) den Bereich `wl.offline_access` aus.
 - **Azure Active Directory:** Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.
-    1. Navigieren Sie im linken Browser zu **subscriptions** > **_\<Name des\_Abonnements_** > **resourceGroups** > _**\<Name\_der\_Ressourcengruppe>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<App\_Name>**_ > **config** > **authsettings**. 
-    1. Klicken Sie auf **Edit**.
-    1. Ändern Sie die folgende Eigenschaft. Ersetzen Sie _\<app\_id>_ mit der ID der Azure Active Directory-Anwendung des Diensts, auf den Sie zugreifen möchten.
+    2. Navigieren Sie im linken Browser zu **subscriptions** > **_\<Name des\_Abonnements_** > **resourceGroups** > _**\<Name\_der\_Ressourcengruppe>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<App\_Name>**_ > **config** > **authsettings**. 
+    3. Klicken Sie auf **Edit**.
+    4. Ändern Sie die folgende Eigenschaft. Ersetzen Sie _\<app\_id>_ mit der ID der Azure Active Directory-Anwendung des Diensts, auf den Sie zugreifen möchten.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    1. Klicken Sie auf **Put**. 
+    5. Klicken Sie auf **Put**. 
 
 Sobald Ihr Anbieter konfiguriert ist, können Sie im Tokenspeicher [das Aktualisierungstoken und die Ablaufzeit für das Zugriffstoken suchen](#retrieve-tokens-in-app-code). 
 

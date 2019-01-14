@@ -2,25 +2,21 @@
 title: Verwenden von vorhandenen lokalen Proxyservern und Azure AD | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie vorhandene lokale Proxyserver verwenden.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6409b9313aa9b036e24ea50435659b3653ac01e0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404952"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720100"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -98,7 +94,7 @@ Bearbeiten Sie hierfür die Datei „C:\Programme\Microsoft AAD App Proxy Connec
 
 Konfigurieren Sie anschließend den Connectorupdatedienst für die Verwendung des Proxys, indem Sie eine ähnliche Änderung an der Datei „C:\Programme\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config“ vornehmen.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Schritt 2: Konfigurieren des Proxys für das Akzeptieren von Datenverkehr vom Connector und den dazugehörigen Diensten
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Schritt 2: Konfigurieren des Proxys, durch den der Datenverkehr vom Connector und den zugehörigen Diensten geleitet werden soll
 
 Auf dem Proxy für ausgehenden Datenverkehr sind vier Aspekte zu beachten:
 * Proxyregeln für ausgehenden Datenverkehr
@@ -107,15 +103,16 @@ Auf dem Proxy für ausgehenden Datenverkehr sind vier Aspekte zu beachten:
 * SSL-Überprüfung
 
 #### <a name="proxy-outbound-rules"></a>Proxyregeln für ausgehenden Datenverkehr
-Lassen Sie in Bezug auf den Connectordienstzugriff den Zugriff auf die folgenden Endpunkte zu:
+Lassen Sie den Zugriff auf die folgenden URLs zu:
 
-* *.msappproxy.net
-* *.servicebus.windows.net
+| URL | Wie diese verwendet wird |
+| --- | --- |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure verwendet diese URLs, um Zertifikate zu überprüfen. |
+| login.windows.net<br>login.microsoftonline.com | Der Connector verwendet diese URLs während der Registrierung. |
 
-Lassen Sie für die erste Registrierung den Zugriff auf die folgenden Endpunkte zu:
+Wenn Ihre Firewall oder Ihr Proxy DNS-Whitelisting zulässt, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ per Whitelist verwalten. Andernfalls müssen Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
 
-* login.windows.net
-* login.microsoftonline.com
 
 Wenn Sie die Konnektivität nicht über den FQDN zulassen können und stattdessen IP-Adressbereiche angeben müssen, verwenden Sie diese Optionen:
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c203334b0ea1b47aa1884155f477e34bd8f2e1db
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878329"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724758"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Sichern des Zugriffs auf Azure Cosmos DB-Daten
 Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gespeicherte Daten.
@@ -188,7 +188,7 @@ Um Ihrem Benutzerkonto Azure Cosmos DB-Kontoleserzugriff hinzuzufügen, lassen S
 Die Entität kann jetzt Azure Cosmos DB-Ressourcen lesen.
 
 ## <a name="delete-or-export-user-data"></a>Löschen oder Exportieren von Benutzerdaten
-Mithilfe von Azure Cosmos DB können Sie alle personenbezogenen Daten, die sich in einer Datenbank oder in Sammlungen befinden, durchsuchen, auswählen, ändern und löschen. Azure Cosmos DB stellt APIs für das Auffinden und Löschen von personenbezogenen Daten bereit, die Nutzung der APIs und die Entwicklung der erforderlichen Logik zum Löschen der personenbezogenen Daten liegt jedoch in Ihrer Verantwortung. Jede API für mehrere Modelle (SQL-API, MongoDB-API, Gremlin-API, Cassandra-API, Tabellen-API) stellt SDKs für verschiedene Sprachen bereit, die Methoden zum Durchsuchen und Löschen von personenbezogenen Daten enthalten. Sie können darüber hinaus die [TTL-Funktion (time-to-live)](time-to-live.md) verwenden, um Daten nach einem festgelegten Zeitraum automatisch zu löschen, wodurch keine weiteren Kosten anfallen.
+Mithilfe von Azure Cosmos DB können Sie alle personenbezogenen Daten, die sich in einer Datenbank oder in Sammlungen befinden, durchsuchen, auswählen, ändern und löschen. Azure Cosmos DB stellt APIs für das Auffinden und Löschen von personenbezogenen Daten bereit, die Nutzung der APIs und die Entwicklung der erforderlichen Logik zum Löschen der personenbezogenen Daten liegt jedoch in Ihrer Verantwortung. Jede API für mehrere Modelle (SQL, MongoDB, Gremlin, Cassandra, Tabelle) stellt SDKs für verschiedene Sprachen bereit, die Methoden zum Durchsuchen und Löschen von personenbezogenen Daten enthalten. Sie können darüber hinaus die [TTL-Funktion (time-to-live)](time-to-live.md) verwenden, um Daten nach einem festgelegten Zeitraum automatisch zu löschen, wodurch keine weiteren Kosten anfallen.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

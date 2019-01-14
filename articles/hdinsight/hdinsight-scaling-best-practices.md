@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 3e664fc83fde937b26a4726f997da4c0cb4d8f8a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 30f96c54dd916188296ca0245d4095a32ae0bbe4
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407880"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742880"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skalieren von HDInsight-Clustern
 
@@ -152,7 +152,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 ![Deaktivierter abgesicherter Modus](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
 > [!NOTE]  
-> Der `-D`-Schalter ist erforderlich, da das Standarddateisystem in HDInsight entweder Azure Storage oder Azure Data Lake Store ist. `-D` gibt an, dass die Befehle im lokalen HDFS-Dateisystem ausgeführt werden.
+> Der `-D`-Schalter ist erforderlich, da das Standarddateisystem in HDInsight entweder Azure Storage oder Azure Data Lake Storage ist. `-D` gibt an, dass die Befehle im lokalen HDFS-Dateisystem ausgeführt werden.
 
 Als Nächstes können Sie einen Bericht anzeigen, der die Details des HDFS-Status enthält:
 

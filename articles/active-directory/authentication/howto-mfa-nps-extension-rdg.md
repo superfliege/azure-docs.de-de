@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: db7591c98147a5728486843efb0c807b6094557a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277980"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601473"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -26,7 +26,7 @@ Die Netzwerkrichtlinienserver-Erweiterung (NPS) für Azure ermöglicht Kunden, i
 Dieser Artikel enthält schrittweise Anleitungen zum Integrieren der NPS-Infrastruktur in Azure MFA mithilfe der NPS-Erweiterung für Azure. Dies ermöglicht eine sichere Überprüfung von Benutzern, die sich bei einem Remotedesktopgateway anmelden.
 
 > [!NOTE]
-> Dieser Artikel sollte nicht für Bereitstellungen von MFA Server verwendet werden. Er gilt nur für Azure MFA (cloudbasiert).
+> Dieser Artikel sollte nicht für Bereitstellungen von MFA Server verwendet werden, sondern nur für (cloudbasierte) Azure MFA-Bereitstellungen.
 
 Die Netzwerkrichtlinien- und Zugriffsdienste (Network Policy and Access Services, NPS) bieten Organisationen folgende Möglichkeiten:
 
@@ -86,7 +86,7 @@ Die NPS-Erweiterung erfordert Windows Server 2008 R2 SP1 oder höher mit install
 
 ### <a name="network-policy-and-access-services-nps-role"></a>Netzwerkrichtlinien- und Zugriffsdienste-Rolle (Network Policy and Access Services, NPS)
 
-Der NPS-Rollendienst bietet sowohl die RADIUS-Server- und -Clientfunktionalität als auch den Netzwerkzugriffsrichtlinien-Integritätsdienst. Diese Rolle muss auf mindestens zwei Computern in Ihrer Infrastruktur installiert werden: dem Remotedesktopgateway und einem anderen Mitgliedsserver oder Domänencontroller. Standardmäßig ist die Rolle bereits auf dem Computer vorhanden, der als Remotedesktopgateway konfiguriert ist.  Sie müssen auch die NPS-Rolle auf mindestens einem anderen Computer installieren, z.B. einen Domänencontroller oder Mitgliedsserver.
+Der NPS-Rollendienst bietet sowohl die RADIUS-Server- und -Clientfunktionalität als auch den Netzwerkzugriffsrichtlinien-Integritätsdienst. Diese Rolle muss auf mindestens zwei Computern in Ihrer Infrastruktur installiert werden: auf dem Remotedesktopgateway und einem anderen Mitgliedsserver oder Domänencontroller. Standardmäßig ist die Rolle bereits auf dem Computer vorhanden, der als Remotedesktopgateway konfiguriert ist.  Sie müssen auch die NPS-Rolle auf mindestens einem anderen Computer installieren, z.B. einen Domänencontroller oder Mitgliedsserver.
 
 Informationen zum Installieren des NPS-Rollendiensts für Windows Server 2012 oder älter finden Sie unter [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx) (Installieren eines NAP-Integritätsrichtlinienservers). Eine Beschreibung der bewährten Methoden für NPS einschließlich der Empfehlung zum Installieren von NPS auf einem Domänencontroller finden Sie unter [Best Practices for NPS](https://technet.microsoft.com/library/cc771746) (Bewährte Methoden für NPS).
 
@@ -162,7 +162,7 @@ Um das Skript zu verwenden, geben Sie die Erweiterung mit Ihren Azure AD-Adminis
 
 1. Öffnen Sie eine administrative Windows PowerShell-Eingabeaufforderung.
 1. Geben Sie an der PowerShell-Eingabeaufforderung `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` ein, und drücken Sie die **EINGABETASTE**.
-1. Geben Sie `.\AzureMfsNpsExtnConfigSetup.ps1` ein, und drücken Sie die **EINGABETASTE**. Das Skript überprüft, ob das Azure Active Directory PowerShell-Modul installiert ist. Wenn es nicht installiert ist, installiert das Skript das Modul für Sie.
+1. Geben Sie `.\AzureMfaNpsExtnConfigSetup.ps1` ein, und drücken Sie die **EINGABETASTE**. Das Skript überprüft, ob das Azure Active Directory PowerShell-Modul installiert ist. Wenn es nicht installiert ist, installiert das Skript das Modul für Sie.
 
   ![Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   

@@ -14,16 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0f4ff7c11952e6e222104b3953c547a91b4fc124
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223071"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753964"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Veröffentlichungsleitfaden für Azure Marketplace und AppSource
 
 Dieser Marketplace-Veröffentlichungsleitfaden soll neue und vorhandene Herausgeber dabei unterstützen, [Azure Marketplace](https://azuremarketplace.microsoft.com) und [Microsoft AppSource](https://appsource.microsoft.com) zu nutzen, um ihr Geschäft im Rahmen der Partnerschaft mit Microsoft auszubauen, indem sie Anwendungen und Dienste auflisten.
+
+>[!Note]
+>Dieser Marketplace bezieht sich auf Azure Marketplace und AppSource.  Weitere Informationen finden Sie unter [Ein Marketplace, zwei Storefronts](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace).
 
 In diesem Leitfaden werden die folgenden Themen behandelt: 
 *   Definition und Funktionsweise des Marketplace 
@@ -60,9 +63,9 @@ Erhalten Sie Einblicke in die Performance Ihrer Auflistungen durch Ihnen über d
 
 Neue Auflistungen im Marketplace haben Anspruch auf ein breit gefächertes Angebot an kostenlosen Vorteilen, um Partner dabei zu unterstützen, ihr Geschäft im Marketplace auszubauen. Diese Vorteile lassen sich in folgende Kategorien einteilen: 
 
-*   Technisch: alles, was Sie benötigen, um Ihre Anwendung startklar zu machen. Angefangen beim technischen Support, Anwendungs- und Architekturentwurf bis hin zum Azure-Guthaben für Entwicklung und Tests. 
+*   Technisch: Alles, was Sie benötigen, um Ihre Anwendung startklar zu machen. Angefangen beim technischen Support, Anwendungs- und Architekturentwurf bis hin zum Azure-Guthaben für Entwicklung und Tests. 
 
-*   Co-Marketing: Alles, was Sie benötigen, um Ihr Angebot zu lancieren. Kostenlose Microsoft-Grundlagen zur Markteinführung als Unterstützung bei der Einführung und Bewerbung Ihrer Lösung. Möglicherweise haben Sie auch Anspruch auf eine zusätzliche Teilnahme an Microsoft-Marketingkampagnen und die Gelegenheit, dass Ihre Lösung im Marketplace präsentiert wird.
+*   Co-Marketing: Alles, was Sie benötigen, um Ihr Angebot startklar zu machen. Kostenlose Microsoft-Grundlagen zur Markteinführung als Unterstützung bei der Einführung und Bewerbung Ihrer Lösung. Möglicherweise haben Sie auch Anspruch auf eine zusätzliche Teilnahme an Microsoft-Marketingkampagnen und die Gelegenheit, dass Ihre Lösung im Marketplace präsentiert wird.
 
 *   Co-Selling: Beginnen oder beschleunigen Sie Ihren Vertriebsprozess mit Microsoft über den Marketplace. Zugriff auf Programme und Support zur Förderung des gemeinsamen Vertriebs mit Microsoft-Teams.
 

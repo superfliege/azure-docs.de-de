@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Key Vault | Microsoft Docs
+title: Erste Schritte mit Azure Key Vault – Azure Key Vault | Microsoft-Dokumentation
 description: Verwenden Sie dieses Tutorials für den Einstieg in den Azure-Schlüsseltresor, um einen geschützten Container in Azure zu erstellen, in dem Sie kryptografischen Schlüssel und geheime Schlüssel in Azure speichern und verwalten.
 services: key-vault
 documentationcenter: ''
@@ -12,17 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 72e17d5628be307d6c73cd2bba7576d0e734af15
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864898"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999066"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Erste Schritte mit dem Azure-Schlüsseltresor
+
 Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Key Vault mit PowerShell und führt Sie durch die folgenden Aktivitäten:
+
 - Erstellen eines festgeschriebenen Containers (Tresors) in Azure
 - Verwenden von KeyVault zum Speichern und Verwalten von Kryptografieschlüsseln und Geheimnissen in Azure
 - Verwenden dieses Schlüssels oder Kennworts in einer Anwendung
@@ -32,6 +34,7 @@ Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informati
 Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli2.md).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
+
 Bevor Sie fortfahren, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren.
@@ -59,6 +62,7 @@ Lesen Sie ggf. auch die folgenden Artikel, um sich mit dem Azure Resource Manage
 * [Verwenden von Azure PowerShell mit dem Ressourcen-Manager](../powershell-azure-resource-manager.md)
 
 ## <a id="connect"></a>Verbindungsherstellung mit Ihren Abonnements
+
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:  
 
 ```PowerShell
@@ -88,6 +92,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="resource"></a>Erstellen einer neuen Ressourcengruppe
+
 Wenn Sie den Azure-Ressourcen-Manager verwenden, werden alle zugehörigen Ressourcen in einer Ressourcengruppe erstellt. Im Rahmen dieses Tutorials erstellen wir eine neue Ressourcengruppe mit dem Namen **ContosoResourceGroup** :
 
 ```powershell
@@ -95,6 +100,7 @@ New-AzureRmResourceGroup –Name 'ContosoResourceGroup' –Location 'East US'
 ```
 
 ## <a id="vault"></a>Erstellen eines Schlüsseltresors
+
 Verwenden Sie das Cmdlet [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault), um einen Schlüsseltresor zu erstellen. Dieses Cmdlet verfügt über drei erforderliche Parameter: einen für den **Ressourcengruppennamen**, einen für den **Schlüsseltresornamen** und einen für den **geografischen Standort**.
 
 Angenommen, Sie verwenden folgende Werte:
@@ -122,6 +128,7 @@ Ihr Azure-Konto ist jetzt autorisiert, Vorgänge in diesem Schlüsseltresor durc
 >
 
 ## <a id="add"></a>Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
+
 Möglicherweise müssen Sie auf verschiedene Arten mit Key Vault und Schlüsseln oder Geheimnissen interagieren.
 
 ### <a name="azure-key-vault-generates-a-software-protected-key"></a>Azure Key Vault generiert einen softwaregeschützten Schlüssel.
@@ -204,6 +211,7 @@ Geben Sie Folgendes ein, um den Wert im Geheimnis als Nur-Text anzuzeigen:
 Jetzt können Ihr Schlüsseltresor und Schlüssel oder Geheimnis von Anwendungen verwendet werden. Nun autorisieren Sie die Anwendungen zur Verwendung.  
 
 ## <a id="register"></a>Registrieren einer Anwendung mit Azure Active Directory
+
 Dieser Schritt wird üblicherweise durch einen Entwickler auf einem separaten Computer durchgeführt. Dieser Schritt ist nicht auf Azure Key Vault beschränkt. Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Directory finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) oder [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 > [!IMPORTANT]
@@ -222,8 +230,10 @@ So registrieren Sie die Anwendungen in Azure Active Directory
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Bereich auf **App-Registrierungen**. Falls keine App-Registrierungen angezeigt werden, klicken Sie auf **Weitere Dienste**.  
-    > [!NOTE]
-    > Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement enthalten ist, mit dem Sie Ihren Schlüsseltresor erstellt haben. 
+
+> [!NOTE]
+> Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement enthalten ist, mit dem Sie Ihren Schlüsseltresor erstellt haben.
+
 3. Klicken Sie auf **Registrierung einer neuen Anwendung**.
 4. Geben Sie auf dem Blatt **Erstellen** einen Namen für die Anwendung ein, wählen Sie dann **WEBANWENDUNG UND/ODER WEB-API** (Standardeinstellung) aus, und geben Sie die **ANMELDE-URL** für die Webanwendung ein. Falls Sie diese Information gerade nicht zur Hand haben, können Sie einen Fantasiewert angeben (beispielsweise http://test1.contoso.com). Hierbei spielt es keine Rolle, ob diese Websites wirklich vorhanden sind. 
 
@@ -240,9 +250,11 @@ So registrieren Sie die Anwendungen in Azure Active Directory
 10. Sie verwenden die **Anwendungs-ID** und die Informationen zum **Schlüssel** im nächsten Schritt, um Berechtigungen für den Tresor festzulegen.
 
 ## <a id="authorize"></a>Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels
+
 Die Anwendung kann auf zwei Arten für den Zugriff auf den Schlüssel oder das Geheimnis im Tresor autorisiert werden.
 
 ### <a name="using-powershell"></a>Verwenden von PowerShell
+
 Wenn Sie PowerShell verwenden möchten, verwenden Sie das Cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
 Wenn Ihr Tresorname beispielsweise **ContosoKeyVault** lautet, die Anwendung, die Sie autorisieren möchten, über die Client-ID 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed verfügt und Sie die Anwendung zum Entschlüsseln und Anmelden mit Schlüsseln in Ihrem Tresor autorisieren möchten, führen Sie das folgende Cmdlet aus:
@@ -256,7 +268,9 @@ Wenn Sie dieselbe Anwendung so autorisieren möchten, dass sie geheime Schlüsse
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 ```
+
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
+
 So ändern Sie die Autorisierung einer Anwendung für die Verwendung von Schlüsseln oder Geheimnissen:
 1. Klicken Sie auf dem Ressourcenblatt von Key Vault auf **Zugriffsrichtlinien**.
 2. Klicken Sie oben auf dem Blatt auf die Schaltfläche „+ Neu hinzufügen“.
@@ -265,6 +279,7 @@ So ändern Sie die Autorisierung einer Anwendung für die Verwendung von Schlüs
 5. Wählen Sie in der Dropdownliste **Berechtigungen für Geheimnis** die Option „Abrufen“ aus, um der Anwendung das Lesen von Geheimnissen aus dem Tresor zu ermöglichen.
 
 ## <a id="HSM"></a>Verwenden eines Hardwaresicherheitsmoduls (HSM)
+
 Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Diese Schlüssel verbleiben immer innerhalb der HSM-Grenzen. Die HSMs sind FIPS 140-2 Ebene 2 überprüft. Wenn diese Anforderung auf Sie nicht zutrifft, überspringen Sie diesen Abschnitt, und wechseln Sie zu [Löschen des Schlüsseltresors und zugeordneter Schlüssel und geheimer Schlüssel](#delete).
 
 Zum Erstellen dieser HSM-geschützten Schlüssel müssen Sie die [Azure Key Vault Premium-Dienstebene verwenden, um HSM-geschützte Schlüssel zu unterstützen](https://azure.microsoft.com/pricing/details/key-vault/). Darüber hinaus steht diese Funktion nicht für Azure China zur Verfügung.
@@ -274,7 +289,6 @@ Wenn Sie den Schlüsseltresor erstellen, fügen Sie den Parameter **-SKU** hinzu
 ```powershell
 New-AzureRmKeyVault -Name 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US' -SKU 'Premium'
 ```
-
 
 Sie können diesem Schlüsseltresor softwaregeschützte Schlüssel (wie weiter oben gezeigt) und HSM-geschützte Schlüssel hinzufügen. Legen Sie den Parameter **-Destination** auf "HSM" fest, um einen HSM-geschützten Schlüssel zu erstellen:
 
@@ -297,6 +311,7 @@ $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstH
 Ausführlichere Informationen zum Generieren dieses BYOK-Pakets finden Sie unter [Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor](key-vault-hsm-protected-keys.md).
 
 ## <a id="delete"></a>Löschen des Schlüsseltresors und der zugeordneten Schlüssel und geheimen Schlüssel
+
 Wenn Sie den Schlüsseltresor und die darin enthaltenen Schlüssel und geheimen Schlüssel nicht mehr benötigen, können Sie den Schlüsseltresor mit dem Cmdlet [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault) löschen:
 
 ```powershell
@@ -310,6 +325,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 ```
 
 ## <a id="other"></a>Weitere Azure PowerShell-Cmdlets
+
 Die folgenden weiteren Befehle sind möglicherweise ebenfalls für das Verwalten eines Azure-Schlüsseltresors von Nutzen:
 
 - `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: Dieser Befehl ruft eine tabellarische Anzeige aller Schlüssel und ausgewählten Eigenschaften ab.

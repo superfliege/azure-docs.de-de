@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
 ms.author: anuragm
-ms.openlocfilehash: 027fc4098e7760de276a8548453bb83599ed0521
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a81c0b9c87db85771fcecab87c6b9ac88dcbd472
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605211"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581844"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure
 
@@ -38,8 +38,8 @@ Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stil
 
    - **VMSnapshotScriptPluginConfig.json:** Berechtigung „600“. Beispiel: Nur der Root-Benutzer darf die Berechtigungen „read“ und „write“ für diese Datei haben. Kein Benutzer darf die Berechtigung „execute“ haben.
 
-   - **Pre-Skript-Datei:** Berechtigung „700“.  Beispiel: Nur der Root-Benutzer darf die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben.
-  
+   - **Pre-Skriptdatei:** Berechtigung „700“.  Beispiel: Nur der Root-Benutzer darf die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben.
+
    - **Post-Skript:** Berechtigung „700“. Beispiel: Nur der Root-Benutzer darf die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben.
 
    > [!Important]
@@ -48,11 +48,11 @@ Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stil
    >
 
 5. Konfigurieren Sie **VMSnapshotScriptPluginConfig.json** entsprechend der folgenden Beschreibung:
-    - **pluginName:** Lassen Sie dieses Feld unverändert, da die Skripts andernfalls unter Umständen nicht wie erwartet ausgeführt werden.
+    - **pluginName:** Lassen Sie dieses Feld unverändert, da die Skripts andernfalls ggf. nicht wie erwartet ausgeführt werden.
 
     - **preScriptLocation:** Geben Sie den vollständigen Pfad des Pre-Skripts auf der zu sichernden VM an.
 
-    - **postScriptLocation**: Geben Sie den vollständigen Pfad des Post-Skripts auf der zu sichernden VM an.
+    - **postScriptLocation:** Geben Sie den vollständigen Pfad des Post-Skripts auf der zu sichernden VM an.
 
     - **preScriptParams:** Geben Sie die optionalen Parameter an, die an das Pre-Skript übergeben werden müssen. Alle Parameter müssen in Anführungszeichen eingeschlossen werden. Trennen Sie die Parameter durch ein Komma, falls Sie mehrere Parameter verwenden.
 
@@ -60,11 +60,11 @@ Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stil
 
     - **preScriptNoOfRetries:** Legen Sie die Häufigkeit fest, mit der das Pre-Skript bei einem Fehler vor seinem Abschluss wiederholt werden soll. Null bedeutet nur einen Versuch und keine Wiederholung bei einem Fehler.
 
-    - **postScriptNoOfRetries:** Legen Sie die Häufigkeit fest, mit der das Post-Skript bei einem Fehler vor seinem Abschluss wiederholt werden soll. Null bedeutet nur einen Versuch und keine Wiederholung bei einem Fehler.
-    
-    - **timeoutInSeconds:** Geben Sie individuelle Timeouts für das Pre-Skript und das Post-Skript an.
+    - **postScriptNoOfRetries:**  Legen Sie die Häufigkeit fest, mit der das Post-Skript bei einem Fehler vor seinem Abschluss wiederholt werden soll. Null bedeutet nur einen Versuch und keine Wiederholung bei einem Fehler.
 
-    - **continueBackupOnFailure:** Legen Sie diesen Wert auf **TRUE** fest, wenn Azure Backup bei einem Pre-Skript- oder Post-Skript-Fehler zu einer dateisystem- bzw. absturzkonsistenten Sicherung wechseln soll. Bei Festlegung auf **FALSE** misslingt die Sicherung bei einem Skriptfehler (außer bei einer VM mit einzelnem Datenträger, bei der unabhängig von dieser Einstellung auf eine absturzkonsistente Sicherung zurückgegriffen wird).
+    - **timeoutInSeconds:** Geben Sie individuelle Timeouts für das Pre-Skript und das Post-Skript an (der Höchstwert beträgt 1800).
+
+    - **continueBackupOnFailure:** Legen Sie diesen Wert auf **TRUE** fest, wenn Azure Backup bei einem Pre- oder Post-Skript-Fehler zu einer dateisystem- bzw. absturzkonsistenten Sicherung wechseln soll. Bei Festlegung auf **FALSE** misslingt die Sicherung bei einem Skriptfehler (außer bei einer VM mit einzelnem Datenträger, bei der unabhängig von dieser Einstellung auf eine absturzkonsistente Sicherung zurückgegriffen wird).
 
     - **fsFreezeEnabled:** Geben Sie an, ob unter Linux „fsfreeze“ aufgerufen werden soll, während die VM-Momentaufnahme erstellt wird, um Dateisystemkonsistenz sicherzustellen. Wir empfehlen die Beibehaltung dieser Einstellung auf **TRUE**, es sei denn, Ihre Anwendung ist von der Deaktivierung von „fsfreeze“ abhängig.
 

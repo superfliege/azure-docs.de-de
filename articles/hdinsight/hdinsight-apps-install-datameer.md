@@ -9,26 +9,26 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9e9ccb1ba3d19e0240df869dfea1e27ac4124c34
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 947abea50685b04c3500a13a950375c32547efaf
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498768"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652964"
 ---
 # <a name="install-published-application---datameer"></a>Installieren einer veröffentlichten Anwendung – Datameer
 
-In diesem Artikel wird beschrieben, wie Sie die veröffentlichte [Apache Hadoop](https://hadoop.apache.org/)-Anwendung [Datameer](https://www.datameer.com/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Apache Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
+In diesem Artikel wird beschrieben, wie Sie die veröffentlichte [Apache Hadoop](https://hadoop.apache.org/)-Anwendung [Datameer](https://www.datameer.com/) in Azure HDInsight installieren und ausführen. Eine Übersicht über die HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Apache Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-datameer"></a>Informationen zu Datameer
 
-Datameer ist eine native Anwendung für die Hadoop-Plattform. Sie erweitert die vorhandenen Azure HDInsight-Funktionen und bietet eine schnelle Integration, Vorbereitung und Analyse strukturierter und unstrukturierter Daten. Datameer kann auf über 70 Quellen und Formate zugreifen: strukturiert, halbstrukturiert und unstrukturiert. Sie können Daten direkt hochladen oder über ihre eindeutigen Datenverknüpfungen bedarfsgesteuert abfragen. Die Self-Service-Funktionen und die aus der Tabellenkalkulation bekannte Benutzeroberfläche von Datameer verringern die Komplexität von Big Data-Technologie und sorgen dafür, dass sich Benutzer schnell zurechtfinden. Die Tabellenkalkulationsoberfläche ermöglicht die einfache Eingabe deklarativer Formeln, die dann in optimierte Hadoop-Aufträge umgewandelt werden. Mit Datameer und Ihren BI- und Excel-Kenntnissen können Sie in kürzester Zeit Hadoop in der Cloud verwenden. Weitere Informationen finden Sie in der [Datameer-Dokumentation](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
+Datameer ist eine native Anwendung für die Hadoop-Plattform. Sie erweitert die vorhandenen Azure HDInsight-Funktionen und bietet eine schnelle Integration, Vorbereitung und Analyse strukturierter und unstrukturierter Daten. Datameer kann auf über 70 Quellen und Formate zugreifen: strukturiert, halbstrukturiert und unstrukturiert. Sie können Daten direkt hochladen oder über ihre eindeutigen Datenverknüpfungen bedarfsgesteuert abfragen. Die Self-Service-Funktionen und die aus der Tabellenkalkulation bekannte Benutzeroberfläche von Datameer verringern die Komplexität von Big Data-Technologie und sorgen dafür, dass sich Benutzer schnell zurechtfinden. Die Tabellenkalkulationsoberfläche ermöglicht die einfache Eingabe deklarativer Formeln, die dann in optimierte Hadoop-Aufträge umgewandelt werden. Mit Datameer und Ihren BI- und Excel-Kenntnissen können Sie in kürzester Zeit Hadoop in der Cloud verwenden. Weitere Informationen finden Sie in der [Datameer-Dokumentation](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um diese App in einem neuen HDInsight-Cluster oder in einem vorhandenen Cluster zu installieren, müssen Sie über die folgende Konfiguration verfügen:
 
-* Clusterebene: Standard
+* Clustertarif: Standard
 * Clustertyp: Hadoop
 * Clusterversion: 3.4
 
@@ -64,7 +64,7 @@ In den folgenden Schritten wird eine Hello World-Demonstration gezeigt.
 
     ![Dateiupload](./media/hdinsight-apps-install-datameer/upload-browse.png)
 
-4. Nennen Sie die Datei **Hello World**, und platzieren Sie sie in einem neuen Ordner. Benennen Sie den neuen Ordner in „Demo“ um. Wählen Sie **Speichern**aus.
+4. Nennen Sie die Datei **Hello World**, und platzieren Sie sie in einem neuen Ordner. Benennen Sie den neuen Ordner in „Demo“ um. Wählen Sie **Speichern** aus.
 
     ![Speichern](./media/hdinsight-apps-install-datameer/save.png)
 
@@ -106,9 +106,9 @@ Glückwunsch! Sie haben eine Visualisierung Ihrer Daten erstellt, ohne Code schr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Datameer-Dokumentation](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)
-* [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight:](hdinsight-apps-install-custom-applications.md) Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
-* [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Hier erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx)(MSDN: Installieren einer HDInsight-Anwendung): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
-* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe einer Skriptaktion zusätzliche Anwendungen installieren.
-* [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md): Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.
+* [Datameer-Dokumentation](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)
+* [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
+* [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
+* [MSDN: Installieren einer HDInsight-Anwendung](https://msdn.microsoft.com/library/mt706515.aspx): Erfahren Sie, wie HDInsight-Anwendungen definiert werden.
+* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Erfahren Sie, wie Sie eine Skriptaktion verwenden, um zusätzliche Anwendungen zu installieren.
+* [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md): Erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.

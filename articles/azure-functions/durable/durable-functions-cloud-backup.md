@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d3dfcb74852f90615af90f9eab3711b1b235c53e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7bb2a68209e657b1e3ff8c3a61730d42f04a3b8a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341387"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727376"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Auffächerungsszenario (nach innen und außen) in Durable Functions – Beispiel der Cloudsicherung
 
@@ -172,6 +172,9 @@ Jetzt können Sie sehen, dass die Orchestrierung abgeschlossen ist und wie viel 
 ## <a name="visual-studio-sample-code"></a>Visual Studio-Beispielcode
 
 So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt aus:
+
+> [!NOTE]
+> Sie müssen das `Microsoft.Azure.WebJobs.Extensions.Storage`-NuGet-Paket installieren, um den unten stehenden Beispielcode auszuführen.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 

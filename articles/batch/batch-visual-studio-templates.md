@@ -1,9 +1,9 @@
 ---
-title: Erstellen von Batch-Lösungen mit Visual Studio-Vorlagen – Azure | Microsoft-Dokumentation
+title: Erstellen von Lösungen mit Visual Studio-Vorlagen – Azure Batch | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114095"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538122"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
@@ -62,7 +62,7 @@ Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
     
     * Azure Batch-Auftrags-Manager mit Auftragsteilung
     * Azure Batch-Aufgabenprozessor
-  * Laden Sie die Vorlagen aus dem Onlinekatalog für Visual Studio herunter: [Microsoft Azure Batch-Projektvorlagen][vs_gallery_templates].
+  * Laden Sie die Vorlagen aus dem Onlinekatalog für Visual Studio herunter: [Microsoft Azure Batch-Projektvorlagen][vs_gallery_templates]
 * Wenn Sie die Nutzung der Funktion [Anwendungspakete](batch-application-packages.md) planen, um den Auftrags-Manager und Aufgabenprozessor für die Batch-Computeknoten bereitzustellen, müssen Sie ein Speicherkonto mit Ihrem Batch-Konto verknüpfen.
 
 ## <a name="preparation"></a>Vorbereitung
@@ -111,11 +111,11 @@ Im restlichen Teil dieses Abschnitts werden die unterschiedlichen Dateien und ih
 
 **Frameworkdateien**
 
-* `Configuration.cs`: Kapselt das Laden von Auftragskonfigurationsdaten, z.B. Batch-Kontodetails, Anmeldeinformationen für verknüpfte Speicherkonten, Auftrags- und Aufgabeninformationen und Auftragsparameter. Außerdem wird der Zugriff auf von Batch definierte Umgebungsvariablen (siehe „Umgebungseinstellungen für Aufgaben“ in der Batch-Dokumentation) über die Configuration.EnvironmentVariable-Klasse ermöglicht.
+* `Configuration.cs`: Kapselt das Laden von Auftragskonfigurationsdaten, z. B. Batch-Kontodetails, Anmeldeinformationen für verknüpfte Speicherkonten, Auftrags- und Aufgabeninformationen und Auftragsparameter. Außerdem wird der Zugriff auf von Batch definierte Umgebungsvariablen (siehe „Umgebungseinstellungen für Aufgaben“ in der Batch-Dokumentation) über die Configuration.EnvironmentVariable-Klasse ermöglicht.
 * `IConfiguration.cs`: Abstrahiert die Implementierung der Configuration-Klasse, sodass Sie für Ihre Auftragsteilung einen Komponententest durchführen können, indem Sie ein „falsches“ Konfigurationsobjekt verwenden.
 * `JobManager.cs`: Orchestriert die Komponenten des Auftrags-Manager-Programms. Sie ist für die Initialisierung der Auftragsteilung, das Aufrufen der Auftragsteilung und das Zustellen der Aufgaben zuständig, die von der Auftragsteilung an den Aufgabenabsender zurückgegeben werden.
-* `JobManagerException.cs`: Steht für einen Fehler, aufgrund dessen der Auftrags-Manager beendet werden muss. JobManagerException wird zum Umschließen von „erwarteten“ Fehlern verwendet, wenn bestimmte Diagnoseinformationen im Rahmen der Beendigung bereitgestellt werden können.
-* `TaskSubmitter.cs`: Diese Klasse ist für das Hinzufügen von Aufgaben, die von der Auftragsteilung zurückgegeben werden, an den Batch-Auftrag zuständig. Die JobManager-Klasse aggregiert die Sequenz der Aufgaben in Batches, um das effiziente und gleichzeitig rechtzeitige Hinzufügen zum Auftrag sicherzustellen. Anschließend wird „TaskSubmitter.SubmitTasks“ in einem Hintergrundthread für jeden Batch aufgerufen.
+* `JobManagerException.cs`: Stellt einen Fehler dar, aufgrund dessen der Auftrags-Manager beendet werden muss. JobManagerException wird zum Umschließen von „erwarteten“ Fehlern verwendet, wenn bestimmte Diagnoseinformationen im Rahmen der Beendigung bereitgestellt werden können.
+* `TaskSubmitter.cs`: Diese Klasse ist für das Hinzufügen von Aufgaben, die von der Auftragsteilung zurückgegeben werden, zum Batch-Auftrag zuständig. Die JobManager-Klasse aggregiert die Sequenz der Aufgaben in Batches, um das effiziente und gleichzeitig rechtzeitige Hinzufügen zum Auftrag sicherzustellen. Anschließend wird „TaskSubmitter.SubmitTasks“ in einem Hintergrundthread für jeden Batch aufgerufen.
 
 **Auftragsteilung**
 
@@ -123,7 +123,7 @@ Im restlichen Teil dieses Abschnitts werden die unterschiedlichen Dateien und ih
 
 **.NET-Befehlszeilen-Standardprojektdateien**
 
-* `App.config`: Standardkonfigurationsdatei der .NET-Anwendung.
+* `App.config`: Standardmäßige .NET-Anwendungskonfigurationsdatei.
 * `Packages.config`: Standardabhängigkeitsdatei des NuGet-Pakets.
 * `Program.cs`: Enthält den Programmeinstiegspunkt und eine Ausnahmebehandlung auf oberster Ebene.
 
@@ -280,9 +280,9 @@ Im restlichen Teil dieses Abschnitts werden die unterschiedlichen Dateien und ih
 
 **Frameworkdateien**
 
-* `Configuration.cs`: Kapselt das Laden von Auftragskonfigurationsdaten, z.B. Batch-Kontodetails, Anmeldeinformationen für verknüpfte Speicherkonten, Auftrags- und Aufgabeninformationen und Auftragsparameter. Außerdem wird der Zugriff auf von Batch definierte Umgebungsvariablen (siehe „Umgebungseinstellungen für Aufgaben“ in der Batch-Dokumentation) über die Configuration.EnvironmentVariable-Klasse ermöglicht.
+* `Configuration.cs`: Kapselt das Laden von Auftragskonfigurationsdaten, z. B. Batch-Kontodetails, Anmeldeinformationen für verknüpfte Speicherkonten, Auftrags- und Aufgabeninformationen und Auftragsparameter. Außerdem wird der Zugriff auf von Batch definierte Umgebungsvariablen (siehe „Umgebungseinstellungen für Aufgaben“ in der Batch-Dokumentation) über die Configuration.EnvironmentVariable-Klasse ermöglicht.
 * `IConfiguration.cs`: Abstrahiert die Implementierung der Configuration-Klasse, sodass Sie für Ihre Auftragsteilung einen Komponententest durchführen können, indem Sie ein „falsches“ Konfigurationsobjekt verwenden.
-* `TaskProcessorException.cs`: Steht für einen Fehler, aufgrund dessen der Auftrags-Manager beendet werden muss. TaskProcessorException wird zum Umschließen von „erwarteten“ Fehlern verwendet, wenn bestimmte Diagnoseinformationen im Rahmen der Beendigung bereitgestellt werden können.
+* `TaskProcessorException.cs`: Stellt einen Fehler dar, aufgrund dessen der Auftrags-Manager beendet werden muss. TaskProcessorException wird zum Umschließen von „erwarteten“ Fehlern verwendet, wenn bestimmte Diagnoseinformationen im Rahmen der Beendigung bereitgestellt werden können.
 
 **Aufgabenprozessor**
 
@@ -297,7 +297,7 @@ Im restlichen Teil dieses Abschnitts werden die unterschiedlichen Dateien und ih
 
 **.NET-Befehlszeilen-Standardprojektdateien**
 
-* `App.config`: Standardkonfigurationsdatei der .NET-Anwendung.
+* `App.config`: Standardmäßige .NET-Anwendungskonfigurationsdatei.
 * `Packages.config`: Standardabhängigkeitsdatei des NuGet-Pakets.
 * `Program.cs`: Enthält den Programmeinstiegspunkt und eine Ausnahmebehandlung auf oberster Ebene.
 

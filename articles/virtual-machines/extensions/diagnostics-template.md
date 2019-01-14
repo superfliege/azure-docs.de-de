@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 792a3401c483327eb7fb9fcd88039bc09025b3ef
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 85e9b49cb8be1a3f53ca0f3b4816e6165b68bde0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944952"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993109"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen
 Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure Resource Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](../windows/template-description.md#extensions) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.  
@@ -92,13 +92,13 @@ Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vor
     "type": "string",
     "metadata": {
 "description": "The name of an existing storage account to which diagnostics data is transfered."
-    }        
+    }
 },
 "existingdiagnosticsStorageResourceGroup": {
     "type": "string",
     "metadata": {
 "description": "The resource group for the storage account specified in existingdiagnosticsStorageAccountName"
-      }
+    }
 }
 ```
 
@@ -158,23 +158,23 @@ Die MetricAggregation-Werte *PT1M* und *PT1H* weisen auf eine Aggregierung währ
 ## <a name="wadmetrics-tables-in-storage"></a>WADMetrics-Tabellen im Speicher
 Mit der oben angegebenen Metrikkonfiguration werden Tabellen mit den folgenden Benennungskonventionen in Ihrem Diagnosespeicherkonto erstellt:
 
-* **WADMetrics**: Standardpräfix für alle WADMetrics-Tabellen.
-* **PT1H** oder **PT1M**: Weist darauf hin, dass die Tabelle Daten enthält, die während einer Stunde bzw. einer Minute aggregiert wurden.
+* **WADMetrics**: Standardpräfix für alle WADMetrics-Tabellen
+* **PT1H** oder **PT1M**: Weist darauf hin, dass die Tabelle Daten enthält, die im Verlauf einer Stunde bzw. einer Minute aggregiert wurden.
 * **P10D**: Gibt an, dass die Tabelle Daten für einen Zeitraum von 10 Tagen ab dem Tag enthält, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
 * **V2S**: Zeichenfolgenkonstante.
-* **jjjjmmdd**: Das Datum, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
+* **jjjjmmtt**: Das Datum, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
 
 Beispiel: *WADMetricsPT1HP10DV2S20151108* enthält Metrikdaten, die ab dem 11. November 2015 zehn Tage lang gesammelt und innerhalb einer Stunde aggregiert wurden.    
 
 Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 
-* **PartitionKey:** Der Partitionsschlüssel wird basierend auf dem *resourceID*-Wert gebildet, um die VM-Ressource eindeutig zu identifizieren. Beispiel: 002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>  
+* **PartitionKey**: Der Partitionsschlüssel wird basierend auf dem *resourceID*-Wert gebildet, um die VM-Ressource eindeutig zu identifizieren. Beispiel: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
 * **RowKey**: Weist das Format `<Descending time tick>:<Performance Counter Name>` auf. Zur Berechnung der absteigenden Zeiteinheiten werden die maximalen Zeiteinheiten abzüglich der Anfangszeit des Aggregationszeitraums herangezogen. Wenn der Stichprobenzeitraum beispielsweise am 10. November 2015 um 00:00 (UTC) startet, lautet die Berechnung: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Für den Leistungsindikator zum verfügbaren Arbeitsspeicher in Bytes sieht der Zeilenschlüssel so aus: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`.
-* **CounterName**: Der Name des Leistungsindikators. Entspricht dem in der XML-Konfiguration definierten *counterSpecifier* -Wert.
+* **CounterName**: Ist der Name des Leistungsindikators. Entspricht dem in der XML-Konfiguration definierten *counterSpecifier* -Wert.
 * **Maximum**: Der Höchstwert des Leistungsindikators während des Aggregationszeitraums.
-* **Minimum**: Der Mindestwert des Leistungsindikators während des Aggregationszeitraums.
+* **Minimum**: Der Minimalwert des Leistungsindikators während des Aggregationszeitraums.
 * **Total**: Die Summe aller Werte des Leistungsindikators, die während des Aggregationszeitraums gemeldet wurden.
-* **Count**: Die Gesamtanzahl von Werten, die für den Leistungsindikator gemeldet wurden.
+* **Count**: Die Gesamtzahl der Werte, die für den Leistungsindikator gemeldet wurden.
 * **Average**: Der Durchschnittswert (Total/Count) des Leistungsindikators während des Aggregationszeitraums.
 
 ## <a name="next-steps"></a>Nächste Schritte

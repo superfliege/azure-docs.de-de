@@ -6,50 +6,83 @@ author: HeidiSteen
 manager: cgronlun
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 12/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9c9af69e45af6a70c5327393a1c10385ba2c2aed
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 55de72b2a82dea3dfe763d786966565beb229042
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316895"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745090"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Neuerstellen eines Azure Search-Indexes
 
-Wenn ein Index neu erstellt wird, wird dessen Struktur geändert. Dadurch wird wiederum der physische Ausdruck des Indexes in Ihrem Azure Search-Dienst verändert. Im Gegensatz dazu handelt es sich bei der Aktualisierung des Indexes um ein Update, das nur den Inhalt und insbesondere die neusten Änderungen betrifft, die von einer zugehörigen externen Datenquelle ausgehen. In diesem Artikel erhalten Sie Anweisungen zum grundlegenden und strukturellen Aktualisieren von Indizes.
+In diesem Artikel werden die Neuerstellung eines Azure Search-Indexes und die Umstände erläutert, unter denen eine Neuerstellung erforderlich ist. Außerdem werden Empfehlungen bereitgestellt, wie die Auswirkungen von Neuerstellungen auf laufende Abfrageanforderungen auf ein Mindestmaß reduziert werden können.
 
-Für Indexupdates sind Lese-/Schreibberechtigungen auf Dienstebene erforderlich. Sie können programmgesteuert REST- oder .NET-APIs für eine vollständige Neuerstellung oder eine inkrementelle Indizierung von Inhalt mit Parametern aufrufen, die Updateoptionen angeben. 
+Eine *Neuerstellung* bezieht sich auf Löschen und Neuerstellen der physischen Datenstrukturen, die einem Index zugeordnet sind, einschließlich aller auf Feldern basierenden invertierten Indizes. In Azure Search können bestimmte Felder nicht gelöscht und neu erstellt werden. Um einen Index neu zu erstellen, muss der gesamte Feldspeicher gelöscht, basierend auf einem vorhandenen oder überarbeiteten Indexschema neu erstellt und dann mit Daten neu aufgefüllt werden, die mithilfe von Push an den Index übertragen oder per Pull aus externen Quellen bezogen werden. Normalerweise werden Indizes während der Entwicklung neu erstellt. Es kann jedoch vorkommen, dass Sie einen Index auf Produktionsebene neu erstellen müssen, um Strukturänderungen zu berücksichtigen, wenn beispielsweise komplexe Typen hinzugefügt werden.
 
-In der Regel sind Updates eines Indexes bedarfsgesteuert. Sie können aber für Indizes, die mit quellenspezifischen [Indexern](search-indexer-overview.md) aufgefüllt werden, auch einen integrierten Scheduler verwenden. Der Scheduler unterstützt Aktualisierungen des Dokuments im 15-Minuten-Takt. Sie können aber je nach Bedarf auch ein anderes Intervall und Muster anwenden. Wenn Sie häufiger Aktualisierungen durchführen möchten, müssen Sie manuelle Indexupdates vornehmen, indem Sie z.B. Transaktionen doppelt schreiben, indem Sie die externe Datenquelle und den Azure Search-Index gleichzeitig aktualisieren.
+Im Gegensatz zu Neuerstellungen, bei denen ein Index offlinegeschaltet wird, wird die *Datenaktualisierung* als Hintergrundaufgabe ausgeführt. Sie können Dokumente mit minimalen Unterbrechungen für Abfrageworkloads hinzufügen, entfernen und ersetzen, auch wenn die Ausführung von Abfragen in der Regel längere Zeit in Anspruch nimmt. Weitere Informationen zum Aktualisieren von Indexinhalten finden Sie unter [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="full-rebuilds"></a>Vollständige Neuerstellungen
+## <a name="rebuild-conditions"></a>Bedingungen für die Neuerstellung
 
-Für viele Updatetypen ist eine vollständige Neuerstellung erforderlich. Eine vollständige Neuerstellung umfasst das Löschen eines Indexes, von Daten und Metadaten und die anschließende Wiederauffüllung des Indexes über externe Datenquellen. [Löschen](https://docs.microsoft.com/rest/api/searchservice/delete-index) und [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) Sie den Index programmgesteuert, und [laden](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) Sie ihn erneut, um diesen anschließend neu zu erstellen. 
+| Bedingung | BESCHREIBUNG |
+|-----------|-------------|
+| Ändern einer Felddefinition | Für die Überarbeitung eines Namens, Datentyps oder spezifischer [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index) (durchsuchbar, filterbar, sortierbar, facettenreich) ist eine vollständige Neuerstellung erforderlich. |
+| Löschen eines Felds | Um alle Spuren eines Felds physisch entfernen zu können, müssen Sie den Index neu erstellen. Wenn eine sofortige Wiederherstellung nicht sinnvoll ist, ändern die meisten Entwickler den Anwendungscode so, dass der Zugriff auf das Feld „gelöscht“ deaktiviert wird. Die Felddefinition und die Inhalte bleiben bis zur nächsten Neuerstellung im Index, und es wird ein Schema verwendet, bei dem das betreffende Feld ausgelassen wird. |
+| Wechseln von Tarifen | Wenn Sie mehr Kapazität benötigen, gibt es kein direktes Upgrade. Am neuen Kapazitätspunkt wird ein neuer Dienst erstellt, und Indizes müssen von Grund auf für den neuen Dienst erstellt werden. |
 
-Beachten Sie nach der Neuerstellung, dass abweichende Abfrageergebnisse zu erwarten sind, wenn Sie Abfragemuster und Bewertungsprofile getestet haben und sich der zugrundeliegende Inhalt geändert hat.
+Alle übrigen Änderungen können ohne Auswirkungen auf die vorhandenen physischen Strukturen vorgenommen werden. Insbesondere ist für die folgenden Änderungen *keine* Indexneuerstellung erforderlich:
 
-## <a name="when-to-rebuild"></a>Zeitpunkt einer Neuerstellung
++ Hinzufügen eines neuen Felds
++ Festlegen des Attribut **Abrufbar** für ein vorhandenes Feld
++ Festlegen eines Analysetools für ein vorhandenes Feld
++ Hinzufügen, Aktualisieren oder Löschen von Bewertungsprofilen
++ Hinzufügen, Aktualisieren oder Löschen von CORS-Einstellungen
++ Hinzufügen, Aktualisieren oder Löschen von Vorschlagsfunktionen
++ Hinzufügen, Aktualisieren oder Löschen von synonymMaps
 
-Planen Sie häufige, vollständige Neuerstellungen für die aktive Entwicklung ein, wenn sich Indexschemas im Flux-Zustand befinden.
-
-| Änderung | Neuerstellungsstatus|
-|--------------|---------------|
-| Ändern eines Feldnamens, Datentyps oder der [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index) | Wenn eine Felddefinition geändert wird, entstehen mit Ausnahme der folgenden [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index) in der Regel Einbußen bei der Neuerstellung: „Retrievable“, „SearchAnalyzer“ und „SynonymMaps“. Sie können die Retrievable-, SearchAnalyzer- und SynonymMaps-Attribute zu einem bereits vorhandenen Feld hinzufügen und müssen keinen Index neu erstellen.|
-| Hinzufügen eines Felds | Es ist nicht zwingend eine Neuerstellung erforderlich. Bereits vorhandenen indizierten Dokumenten wird ein NULL-Wert für das neue Feld hinzugefügt. Bei einer späteren Neuindizierung ersetzen Werte aus Quelldaten die von Azure Search hinzugefügten NULL-Werte. |
-| Löschen eines Felds | Sie können ein Feld nicht direkt über einen Azure Search-Index löschen. Stattdessen sollte Ihre Anwendung das Feld „Gelöscht“ ignorieren, damit es nicht mehr verwendet wird. Die Felddefinition und die Inhalte bleiben im Index, bis Sie Ihren Index das nächste Mal unter Verwendung eines Schemas neu erstellen, das das betreffende Feld auslässt.|
-
-> [!Note]
-> Außerdem ist eine Neuerstellung erforderlich, wenn Sie die Schicht wechseln. Wenn Sie sich gleichzeitig für mehr Kapazitäten entscheiden, gibt es kein direktes Upgrade. Es muss am neuen Kapazitätspunkt ein neuer Dienst erstellt werden, und Indizes müssen von Grund auf für den neuen Dienst erstellt werden. 
+Wenn Sie ein neues Feld hinzufügen, erhalten vorhandene indizierte Dokumente einen NULL-Wert für das neue Feld. Bei einer späteren Datenaktualisierung ersetzen Werte aus externen Quelldaten die von Azure Search hinzugefügten NULL-Werte.
 
 ## <a name="partial-or-incremental-indexing"></a>Teilindizierung oder inkrementelle Indizierung
 
-Sobald ein Index hergestellt wird, ändert sich der Fokus auf die inkrementelle Indizierung. Dabei entstehen in der Regel keine wahrnehmbaren Dienstausfälle. Bei der Teilindizierung oder der inkrementellen Indizierung handelt es sich um eine Workload, die sich nur auf den Inhalt bezieht und den Inhalt des Suchindex synchronisiert, um den Zustand des Inhalts in einer zugehörigen Datenquelle zu reflektieren. Ein Dokument, das der Quelle hinzugefügt oder aus ihr entfernt wird, wird auch dem Index hinzugefügt bzw. aus ihm entfernt. Rufen Sie im Code den Vorgang [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) oder das entsprechende .NET-Äquivalent auf.
+In Azure Search können Sie die Indizierung nicht auf Feldbasis steuern und bestimmte Felder löschen oder neu erstellen. Ebenso gibt es keinen integrierten Mechanismus für das [Indizieren von Dokumenten basierend auf Kriterien](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Alle Anforderungen im Hinblick auf die kriteriengesteuerte Indizierung müssen durch benutzerdefinierten Code abgedeckt werden.
 
-> [!Note]
-> Wenn Sie Indexer verwenden, die externe Datenquellen auffüllen, werden Mechanismen für die Änderungsnachverfolgung in Quellsystemen für die inkrementelle Indizierung genutzt. Für den [Azure Blob-Speicher](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) wird ein `lastModified`-Feld verwendet. Im [Azure-Tabellenspeicher](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection) dient `timestamp` demselben Zweck. Genauso weisen sowohl der [Azure SQL-Datenbank-Indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) als auch der [Azure Cosmos DB-Indexer](search-howto-index-cosmosdb.md#indexing-changed-documents) Felder zum Kennzeichnen von Zeilenupdates auf. Weitere Informationen zu Indexern finden Sie in der [Indexer-Übersicht](search-indexer-overview.md).
+Eine Möglichkeit, die jedoch einfach umzusetzen ist, ist die *Aktualisierung von Dokumenten* in einem Index. Für viele Suchlösungen sind die externen Quelldaten nur temporär zugänglich, und die Synchronisierung zwischen Quelldaten und einem Suchindex ist gängige Praxis. Rufen Sie im Code den Vorgang zum [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) oder die [.NET-Entsprechung](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexesoperationsextensions.createorupdate?view=azure-dotnet) auf, um den Indexinhalt zu aktualisieren oder um Werte für ein neues Feld hinzuzufügen.
 
+## <a name="partial-indexing-with-indexers"></a>Teilindizierung mit Indexern
+
+[Indexer](search-indexer-overview.md) vereinfachen die Aufgabe der Datenaktualisierung. Ein Indexer kann nur eine einzige Tabelle oder Sicht in der externen Datenquelle indizieren. Zum Indizieren mehrerer Tabellen besteht der einfachste Ansatz darin, eine Sicht zu erstellen, die Tabellen verknüpft und die Spalten projiziert, die Sie indizieren möchten. 
+
+Wenn Sie Indexer verwenden, die Daten aus externen Quellen durchforsten, überprüfen Sie die Quelldaten auf eine Spalte „High Water Mark“ (Obergrenzenmarkierung). Falls vorhanden, können Sie diese zur Erkennung inkrementeller Änderungen verwenden, indem Sie nur die Zeilen mit neuen oder überarbeiteten Inhalten auswählen. Für den [Azure Blob-Speicher](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) wird ein `lastModified`-Feld verwendet. Im [Azure-Tabellenspeicher](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection) dient `timestamp` demselben Zweck. Genauso weisen sowohl der [Azure SQL-Datenbank-Indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) als auch der [Azure Cosmos DB-Indexer](search-howto-index-cosmosdb.md#indexing-changed-documents) Felder zum Kennzeichnen von Zeilenupdates auf. 
+
+Weitere Informationen zu Indexern finden Sie in der [Übersicht über Indexer](search-indexer-overview.md) und im Artikel zur [REST-API zum Zurücksetzen von Indexern](https://docs.microsoft.com/rest/api/searchservice/reset-indexer).
+
+## <a name="how-to-rebuild-an-index"></a>Neuerstellen eines Indexes
+
+Planen Sie häufige, vollständige Neuerstellungen für die aktive Entwicklung ein, wenn sich Indexschemas im Flux-Zustand befinden. Für Anwendungen, die bereits in der Produktion eingesetzt werden, empfiehlt sich die Erstellung eines neuen Indexes, der parallel zu einem vorhandenen Index ausgeführt wird, um eine Downtime von Abfragen zu vermeiden.
+
+Wenn Sie strikte SLA-Anforderungen einhalten müssen, sollten Sie speziell für diese Aufgabe einen neuen Dienst bereitstellen, bei dem Entwicklung und Indizierung vollständig isoliert von einem Produktionsindex stattfinden. Ein separater Dienst wird auf eigener Hardware ausgeführt, sodass keine Ressourcenkonflikte entstehen können. Nach Abschluss der Entwicklung behalten Sie den neuen Index bei und leiten Abfragen an den neuen Endpunkt und Index um, oder Sie führen fertiggestellten Code aus, um einen überarbeiteten Index für Ihren ursprünglichen Azure Search-Dienst zu veröffentlichen. Zurzeit gibt es keinen Mechanismus zum Verschieben eines sofort einsatzbereiten Indexes zu einem anderen Dienst.
+
+Für Indexupdates sind Lese-/Schreibberechtigungen auf Dienstebene erforderlich. Sie können programmgesteuert die [REST-API zur Indexaktualisierung](https://docs.microsoft.com/rest/api/searchservice/update-index) oder .NET-APIs für eine vollständige Neuerstellung aufrufen. Die Anforderung ist identisch mit der [REST-API zur Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index), besitzt aber einen anderen Kontext.
+
+1. Wenn Sie den Indexnamen wiederverwenden, [löschen Sie den vorhandenen Index](https://docs.microsoft.com/rest/api/searchservice/delete-index). Alle Abfragen, die sich an diesen Index richten, werden sofort gelöscht. Das Löschen eines Indexes kann nicht rückgängig gemacht werden. Der physische Speicher für die Feldsammlung und andere Konstrukte wird zerstört. Die Auswirkungen des Löschvorgangs für einen Index müssen Ihnen unbedingt klar sein, bevor Sie den Index löschen. 
+
+2. Geben Sie ein Indexschema mit den geänderten oder modifizierten Felddefinitionen an. Schemaanforderungen werden unter [Erstellen eines Indexes](https://docs.microsoft.com/rest/api/searchservice/create-index) dokumentiert.
+
+3. Geben Sie einen [Administratorschlüssel](https://docs.microsoft.com/azure/search/search-security-api-keys) für die Anforderung an.
+
+4. Senden Sie einen Befehl [Index aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index), um den physischen Ausdruck des Indexes in Azure Search neu zu erstellen. Der Anforderungstext enthält das Indexschema sowie Konstrukte für Bewertungsprofile, Analysetools, Vorschlagsfunktionen und CORS-Optionen.
+
+5. [Laden Sie den Index mit Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) aus einer externen Quelle. Sie können diese API auch verwenden, wenn Sie ein vorhandenes, nicht geändertes Indexschema mit aktualisierten Dokumenten aktualisieren.
+
+Bei der Indexerstellung wird für jedes Feld im Indexschema physischer Speicher zugewiesen, und für jedes durchsuchbare Feld wird ein invertierter Index erstellt. Nicht durchsuchbare Felder können in Filtern oder Ausdrücken verwendet werden, besitzen aber keine invertierten Indizes und können nicht mit der Volltextsuche durchsucht werden. Bei einer Indexneuerstellung werden diese invertierten Indizes gelöscht und basierend auf dem von Ihnen angegebenen Indexschema neu erstellt.
+
+Wenn Sie den Index laden, wird der invertierte Index der einzelnen Felder mit allen eindeutigen, mit Token versehenen Wörtern aus den einzelnen Dokumenten aufgefüllt, zusammen mit einer Zuordnung zu entsprechenden Dokument-IDs. Beim Indizieren eines Datasets mit Hotels enthält ein invertierter Index, der für ein Feld „Stadt“ erstellt wurde, beispielsweise Begriffe für Seattle, Portland usw. Bei Dokumenten, die Seattle oder Portland im Feld „Stadt“ enthalten, wird die Dokument-ID neben dem Begriff aufgeführt. Bei jedem Vorgang zum [Hinzufügen, Aktualisieren oder Löschen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) wird die Liste aus Begriffen und Dokument-IDs entsprechend aktualisiert.
+
+## <a name="view-updates"></a>Anzeigen von Updates
+
+Sie können mit der Abfrage eines Indexes beginnen, sobald das erste Dokument geladen wurde. Wenn Sie die ID eines Dokuments kennen, gibt die [REST-API zur Dokumentsuche](https://docs.microsoft.com/rest/api/searchservice/lookup-document) das jeweilige Dokument zurück. Für umfangreichere Testvorgänge sollten Sie warten, bis der Index vollständig geladen wurde, und anschließend den erwarteten Kontext anhand von Abfragen überprüfen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

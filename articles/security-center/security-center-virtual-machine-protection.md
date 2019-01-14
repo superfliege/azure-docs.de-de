@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 454478fa02b8f4e71bc4efb61e1b8c194b927bc6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9c1eff58be52b0b4bd9561db51986c9f509d64ee
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340826"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723228"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
@@ -34,27 +34,24 @@ Sie können eine Liste aller Probleme anzeigen, indem Sie auf **Empfehlungen** k
 Eine vollständige Liste der Empfehlungen für Compute Services und App Services finden Sie unter [Empfehlungen](security-center-virtual-machine-recommendations.md).
 
 Wählen Sie zum Fortsetzen des Vorgangs unter **Ressourcen** oder im Security Center-Hauptmenü die Option **Compute und Apps** aus.
-![Security Center-Dashboard][1]
+![Security Center-Dashboard](./media/security-center-virtual-machine-recommendations/overview.png)
 
 ## <a name="monitor-compute-and-app-services"></a>Überwachen von Compute Services und App Services
-**Compute** umfasst vier Registerkarten:
+Unter **Compute und Apps** finden Sie die folgenden Registerkarten:
 
 - **Übersicht:** Überwachung und von Security Center identifizierte Empfehlungen
 - **VMs und Computer:** Liste Ihrer virtuellen und physischen Computer sowie deren aktueller Sicherheitsstatus
 - **Clouddienste:** Liste mit Ihren von Security Center überwachten Web- und Workerrollen
 - **App Services (Vorschau):** Liste mit Ihren App Service-Umgebungen und deren jeweiliger aktueller Sicherheitsstatus.
-Wählen Sie zum Fortsetzen des Vorgangs unter **Ressourcen** oder im Security Center-Hauptmenü die Option **Compute und Apps** aus.
+- **Container (Vorschau)**: Liste der auf IaaS-Linux-Computern gehosteten Container und Bewertung der Sicherheit ihrer Docker-Konfigurationen.
+- **VM-Skalierungsgruppen (Vorschau)**: Liste Ihrer Skalierungsgruppen und Empfehlungen für jede Gruppe.
+- **Computeressourcen (Vorschauversion)**: Liste mit Empfehlungen für Ihre Computeressourcen wie Service Fabric-Cluster und Event Hubs.
 
-![Compute][2]
+Wählen Sie zum Fortsetzen des Vorgangs **Compute und Apps** unter **Ressourcensicherheitshygiene** aus.
+
+![Compute](./media/security-center-virtual-machine-recommendations/compute.png)
 
 Auf den einzelnen Registerkarten können sich jeweils mehrere Abschnitte befinden, und in jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zu den empfohlenen Problembehandlungsschritten für ein bestimmtes Problem anzuzeigen.
-
-### <a name="monitoring-recommendations"></a>Überwachen der Empfehlungen
-Dieser Abschnitt enthält die Gesamtanzahl und den jeweils aktuellen Status der virtuellen und physischen Computer, die für die automatische Bereitstellung initialisiert wurden. Dieses Beispiel enthält eine Empfehlung: **Integritätsprobleme des Überwachungs-Agents**. Wählen Sie diese Empfehlung aus.
-
-![Integritätsprobleme des Überwachungs-Agents][3]
-
-**Integritätsprobleme des Überwachungs-Agents** wird geöffnet. Virtuelle und physische Computer, die von Security Center nicht überwacht werden können, werden aufgeführt. Wählen Sie einen virtuellen oder physischen Computer aus, um ausführliche Informationen anzuzeigen. Unter **ZUSTANDSÜBERWACHUNG** wird ein Grund angegeben, warum die Überwachung mit Security Center nicht durchgeführt werden kann. Das [Handbuch zur Problembehandlung für Security Center](security-center-troubleshooting-guide.md) enthält eine Liste mit Werten, Beschreibungen und Lösungsschritten für die **ZUSTANDSÜBERWACHUNG**.
 
 ### Nicht überwachte virtuelle und physische Computer <a name="unmonitored-vms-and-computers"></a>
 Ein virtueller oder physischer Computer gilt als nicht von Security Center überwacht, wenn auf dem Computer die Microsoft Monitoring Agent-Erweiterung nicht ausgeführt wird. Auf einem Computer kann bereits ein lokaler Agent installiert sein, z.B. der OMS-Direkt-Agent oder der SCOM-Agent. Computer mit diesen Agents werden als nicht überwacht angesehen, da diese Agents in Security Center nicht vollständig unterstützt werden. Die Microsoft Monitoring Agent-Erweiterung ist erforderlich, um von allen Security Center-Vorteilen vollständig profitieren zu können.
@@ -64,13 +61,9 @@ Sie können die Erweiterung auf dem nicht überwachten virtuellen oder physische
 Weitere Informationen zu den Gründen, warum Security Center keine VMs und Computer erfolgreich überwachen kann, die für die automatische Bereitstellung initialisiert wurden, finden Sie unter [Integritätsprobleme des Überwachungs-Agents](security-center-troubleshooting-guide.md#mon-agent).
 
 ### <a name="recommendations"></a>Empfehlungen
-Dieser Abschnitt enthält eine Reihe von Empfehlungen für die einzelnen virtuellen und physischen Computer, Web- und Workerrollen, Azure App Service-Web-Apps und Azure App Service-Umgebungen, die von Security Center überwacht werden. Die erste Spalte enthält die Empfehlung. Die zweite Spalte enthält die Gesamtanzahl der Ressourcen, die diese Empfehlung betrifft. Die dritte Spalte gibt Aufschluss über den Schweregrad des Problems, wie im folgenden Screenshot zu sehen:
+Dieser Abschnitt enthält eine Reihe von Empfehlungen für die einzelnen virtuellen und physischen Computer, Web- und Workerrollen, Azure App Service-Web-Apps und Azure App Service-Umgebungen, die von Security Center überwacht werden. Die erste Spalte enthält die Empfehlung. Die zweite Spalte enthält die Gesamtanzahl der Ressourcen, die diese Empfehlung betrifft. Die dritte Spalte gibt den Schweregrad des Problems an.
 
-![Empfehlungen][4]
-
-Jeder Empfehlung ist eine Reihe von Aktionen zugeordnet, die ausgeführt werden können, nachdem Sie sie ausgewählt haben. Wenn Sie beispielsweise **Fehlende Systemupdates** auswählen, wird wie im folgenden Screenshot die Anzahl der virtuellen und physischen Computer, auf denen Patches fehlen, und der Schweregrad des fehlenden Updates angezeigt:
-
-![Systemupdates anwenden][5]
+Jeder Empfehlung ist eine Reihe von Aktionen zugeordnet, die ausgeführt werden können, nachdem Sie sie ausgewählt haben. Wenn Sie beispielsweise **Fehlende Systemupdates** auswählen, werden die Anzahl der virtuellen und physischen Computer, auf denen Patches fehlen, und der Schweregrad des fehlenden Updates angezeigt.
 
 Für **Systemupdates anwenden** werden zwei Diagramme mit einer Zusammenfassung kritischer Updates angezeigt (eines für Windows, eines für Linux). Der zweite Teil enthält eine Tabelle mit folgenden Informationen:
 
@@ -91,7 +84,6 @@ Für **Systemupdates anwenden** werden zwei Diagramme mit einer Zusammenfassung 
 
 Klicken Sie zum Anzeigen der Empfehlungsdetails in der Liste auf den Namen des fehlenden Updates.
 
-![Empfehlungsdetails][6]
 
 > [!NOTE]
 > Hier werden die gleichen Sicherheitsempfehlungen aufgeführt wie unter der Kachel **Empfehlungen**. Weitere Informationen zur Anwendung von Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
@@ -99,42 +91,39 @@ Klicken Sie zum Anzeigen der Empfehlungsdetails in der Liste auf den Namen des f
 >
 
 ### <a name="vms-and-computers"></a>VMs und Computer
-Der Abschnitt „VMs und Computer“ enthält eine Übersicht über alle Empfehlungen für virtuelle und physische Computer. Jede Spalte steht für eine Gruppe von Empfehlungen, wie im folgenden Screenshot zu sehen:
+Der Abschnitt „VMs und Computer“ enthält eine Übersicht über alle Empfehlungen für virtuelle und physische Computer. Jede Spalte steht für eine Gruppe von Empfehlungen.
 
-![Empfehlungen für virtuelle und physische Computer][7]
+![Empfehlungen für virtuelle und physische Computer](./media/security-center-virtual-machine-recommendations/vm-computers.png)
 
 Die Liste enthält vier Arten von Symbolen:
 
-![Nicht-Azure-Computer][8] Azure-fremder Computer
+![Nicht-Azure-Computer](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Azure-fremder Computer
 
-![Virtueller Azure Resource Manager-Computer][9] Virtueller Azure Resource Manager-Computer
+![Virtueller Azure Resource Manager-Computer](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Virtueller Azure Resource Manager-Computer
 
-![Klassischer virtueller Azure-Computer][10] Klassischer virtueller Azure-Computer
+![Klassischer virtueller Azure-Computer](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Klassischer virtueller Azure-Computer
 
-![Virtuelle Computer, die anhand des Arbeitsbereichs identifiziert werden][11] Virtuelle Computer, die nur anhand des Arbeitsbereichs identifiziert werden, der dem angezeigten Abonnement angehört. Dazu zählen virtuelle Computer aus anderen Abonnements, die dem Arbeitsbereich in diesem Abonnement unterstellt sind, sowie virtuelle Computer, die mit dem direkten SCOM-Agent installiert wurden und über keine Ressourcen-ID verfügen.
 
-Anhand des Symbols unter der jeweiligen Empfehlung sehen Sie sofort, bei welchem virtuellen oder physischen Computer eine Aktion erforderlich ist und um welche Art von Empfehlung es sich handelt. Mithilfe der Option „Filter“ können Sie zudem auswählen, welche Optionen auf diesem Bildschirm angezeigt werden sollen.
+![Virtuelle Computer, die anhand des Arbeitsbereichs identifiziert werden](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuelle Computer, die nur anhand des Arbeitsbereichs identifiziert werden, der dem angezeigten Abonnement angehört. Dazu zählen virtuelle Computer aus anderen Abonnements, die dem Arbeitsbereich in diesem Abonnement unterstellt sind, sowie virtuelle Computer, die mit dem direkten SCOM-Agent installiert wurden und über keine Ressourcen-ID verfügen.
 
-![Filter][12]
+Anhand des Symbols unter der jeweiligen Empfehlung sehen Sie sofort, bei welchem virtuellen oder physischen Computer eine Aktion erforderlich ist und um welche Art von Empfehlung es sich handelt. Sie können auch die Filter verwenden, um die Liste nach **Ressourcentyp** und **Schweregrad** zu durchsuchen.
 
-Im vorherigen Beispiel wird für einen virtuellen Computer eine dringende Empfehlung in Bezug auf den Endpunktschutz angezeigt. Wählen Sie den virtuellen Computer aus, um weitere Informationen anzuzeigen:
-
-![Kritische Empfehlung][13]
-
+Um einen Drilldown in die Sicherheitsempfehlungen für jeden virtuellen Computer durchzuführen, klicken Sie auf den virtuellen Computer.
 Hier finden Sie die Sicherheitsdetails für den virtuellen oder physischen Computer. Im unteren Bereich des Blatts werden die empfohlene Aktion und der Schweregrad des jeweiligen Problems angezeigt.
+![Clouddienste](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>Clouddienste
-Für Clouddienste wird eine Empfehlung erstellt, wenn die Betriebssystemversion nicht mehr aktuell ist, wie im folgenden Screenshot zu sehen:
+Für Clouddienste wird eine Empfehlung erstellt, wenn die Betriebssystemversion nicht mehr aktuell ist.
 
-![Clouddienste][14]
+![Clouddienste](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
 
-In einem Szenario, in dem eine Empfehlung vorliegt (was im vorherigen Beispiel nicht der Fall ist), muss die Betriebssystemversion mithilfe der Schritte aus der Empfehlung aktualisiert werden. Ist ein Update verfügbar, erhalten Sie eine Warnung (rot oder orange, je nach Schweregrad des Problems). Wenn Sie diese Warnung in „WebRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) oder „WorkerRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) auswählen, werden weitere Details zur Empfehlung angezeigt, wie im folgenden Screenshot zu sehen:
-
-![WorkerRole1][15]
+In einem Szenario, in dem eine Empfehlung vorliegt (was im vorherigen Beispiel nicht der Fall ist), muss die Betriebssystemversion mithilfe der Schritte aus der Empfehlung aktualisiert werden. Ist ein Update verfügbar, erhalten Sie eine Warnung (rot oder orange, je nach Schweregrad des Problems). Wenn Sie diese Warnung in „WebRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) oder „WorkerRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) auswählen, werden weitere Details zur Empfehlung angezeigt.
 
 Eine Erläuterung der Empfehlung erhalten Sie, wenn Sie in der Spalte **BESCHREIBUNG** auf **Betriebssystemversion aktualisieren** klicken.
 
-![Betriebssystemversion aktualisieren][16]
+
+
+![Betriebssystemversion aktualisieren](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
 ### <a name="app-services-preview"></a>App Services (Vorschau)
 
@@ -145,15 +134,15 @@ Eine Erläuterung der Empfehlung erhalten Sie, wenn Sie in der Spalte **BESCHREI
 
 Unter **App Services** wird eine Liste Ihrer App Service-Umgebungen und die Integritätszusammenfassung basierend auf der von Security Center ausgeführten Bewertung angezeigt.
 
-![App Services][17]
+![App Services](./media/security-center-virtual-machine-recommendations/app-services.png)
 
 Die Liste enthält drei Arten von Symbolen:
 
-![App Service-Umgebung][18] App Service-Umgebung
+![App Service-Umgebung](./media/security-center-virtual-machine-recommendations/ase.png) App Service-Umgebung
 
-![Webanwendung][19] Webanwendung
+![Webanwendung](./media/security-center-virtual-machine-recommendations/web-app.png) Webanwendung
 
-![Funktionsanwendung][24] Funktionsanwendung
+![Funktionsanwendung](./media/security-center-virtual-machine-recommendations/function-app.png) Funktionsanwendung
 
 1. Wählen Sie eine Webanwendung aus. Eine zusammenfassende Darstellung mit drei Registerkarten wird geöffnet:
 
@@ -163,53 +152,41 @@ Die Liste enthält drei Arten von Symbolen:
 
   Unter **Empfehlungen** finden Sie eine Liste der Empfehlungen für die ausgewählte Webanwendung und den Schweregrad der einzelnen Empfehlungen.
 
-  ![Zusammenfassung][20]
+  ![Empfehlungen für App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 2. Wählen Sie eine Empfehlung aus, um eine Beschreibung der Empfehlung und eine Liste von fehlerhaften und fehlerfreien sowie nicht überprüften Ressourcen anzuzeigen.
 
-  ![Empfehlungsbeschreibung][21]
+ - In der Spalte **Bestandene Bewertungen** finden Sie eine Liste der bestandenen Bewertungen.  Der Schweregrad dieser Bewertungen wird immer in Grün angezeigt.
 
-  Unter **Bestandene Bewertungen** finden Sie eine Liste der bestandenen Bewertungen.  Der Schweregrad dieser Bewertungen wird immer in Grün angezeigt.
+ -  Wählen Sie eine bestandene Bewertung in der Liste aus, um eine Beschreibung der Bewertung, eine Liste von fehlerhaften und fehlerfreien Ressourcen und eine Liste von nicht überprüften Ressourcen anzuzeigen. Zwar ist eine Registerkarte für fehlerhafte Ressourcen vorhanden, diese Liste ist aber immer leer, da die Bewertung bestanden wurde.
 
-  ![Bestandene Bewertungen][22]
+    ![App Service-Wiederherstellung](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-3. Wählen Sie eine bestandene Bewertung in der Liste aus, um eine Beschreibung der Bewertung, eine Liste von fehlerhaften und fehlerfreien Ressourcen und eine Liste von nicht überprüften Ressourcen anzuzeigen. Zwar ist eine Registerkarte für fehlerhafte Ressourcen vorhanden, diese Liste ist aber immer leer, da die Bewertung bestanden wurde.
+## <a name="virtual-machine-scale-sets-preview"></a>VM-Skalierungsgruppen (Vorschau)
+Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen und es sich empfiehlt, dass Sie den Microsoft Monitoring Agent auf diesen Skalierungsgruppen installieren. 
 
-    ![Fehlerfreie Ressourcen][23]
+So installieren Sie den Microsoft Monitoring Agent: 
+
+1. Wählen Sie die Empfehlung **Überwachungs-Agent für VM-Skalierungsgruppen installieren** aus. Sie erhalten eine Liste der nicht überwachten Skalierungsgruppen.
+2. Wählen Sie eine Skalierungsgruppe in fehlerhaftem Zustand aus. Führen Sie die Anweisungen zum Installieren des Überwachungs-Agents mit einem vorhandenen aufgefüllten Arbeitsbereich aus, oder erstellen Sie einen neuen. Stellen Sie unbedingt den [Tarif](security-center-pricing.md) des Arbeitsbereichs ein, wenn er nicht festgelegt ist.
+
+ ![Installieren von MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+Wenn Sie neue Skalierungsgruppen festlegen möchten, um automatisch den Microsoft Monitoring Agent zu installieren:
+1. Wechseln Sie zu Azure Policy, und klicken Sie auf **Definitionen**.
+2. Suchen Sie nach der Richtlinie **Bereitstellen von Log Analytics-Agent für Windows-VM-Skalierungsgruppen**, und klicken Sie darauf.
+3. Klicken Sie auf **Zuweisen**.
+4. Legen Sie **Bereich** und **Log Analytics-Arbeitsbereich** fest, und klicken Sie auf **Zuweisen**.
+
+Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für alle vorhandenen Skalierungsgruppen festlegen möchten, wenden Sie unter **Wiederherstellung** die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
+
 
 ## <a name="compute-and-app-recommendations"></a>Compute- und App-Empfehlungen
 |Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
 |----|----|----|----|
-|Computer|50|Monitoring Agent auf Ihren Computern installieren|Installieren Sie den Überwachungs-Agent, um die Datensammlung, das Prüfen auf Updates, die Baselineüberprüfung und Endpoint Protection auf jedem Computer zu aktivieren.|
-|Computer|50|Automatische Bereitstellung und Datensammlung für Ihre Abonnements aktivieren |Aktivieren Sie die automatische Bereitstellung und Datensammlung für Computer in Ihren Abonnements, um die Datensammlung, das Prüfen auf Updates, die Baselineüberprüfung und Endpoint Protection auf jedem Computer zu aktivieren, der Ihren Abonnements hinzugefügt wird.|
-|Computer|40|Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben|Beheben Sie Monitoring Agent-Probleme auf Ihren Computern mithilfe der Anweisungen im Handbuch zur Problembehandlung, um den vollständigen Security Center-Schutz zu erhalten.| 
-|Computer|40|Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben|Beheben Sie Monitoring Agent-Probleme auf Ihren Computern mithilfe der Anweisungen im Handbuch zur Problembehandlung, um den vollständigen Security Center-Schutz zu erhalten.|
-|Computer|40|Problembehandlung für fehlende Überprüfungsdaten auf Ihren Computern durchführen|Führen Sie eine Problembehandlung für fehlende Überprüfungsdaten auf virtuellen und physischen Computern durch. Fehlende Überprüfungsdaten auf Ihren Computern führen dazu, dass Sicherheitsbewertungen wie das Prüfen auf Updates, die Baselineüberprüfung und die Überprüfung der Endpoint Protection-Lösung nicht durchgeführt werden.|
-|Computer|40|Systemupdates auf Ihren Computern installieren|Installieren Sie fehlende Systemsicherheitsupdates und kritische Updates zum Schutz Ihrer virtuellen und physischen Windows- und Linux-Computer.
-|Computer|40|Betriebssystemversion für Ihre Clouddienstrollen aktualisieren|Aktualisieren Sie die Betriebssystemversion für Ihre Clouddienstrollen auf die aktuelle Version für Ihre Betriebssystemfamilie.|
-|Computer|35|Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer beseitigen|Beseitigen Sie Sicherheitsrisiken in der Sicherheitskonfiguration Ihrer Computer, um sie vor Angriffen zu schützen. |
-|Computer|35|Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Container beseitigen|Beseitigen Sie Sicherheitsrisiken in der Sicherheitskonfiguration von Computern, auf denen Docker installiert ist, um sie vor Angriffen zu schützen.|
-|Computer|25|Adaptive Anwendungssteuerung aktivieren|Aktivieren Sie Anwendungssteuerung, um zu steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können. Dadurch sind Ihre virtuellen Computer besser gegen Schadsoftware abgesichert. Security Center nutzt maschinelles Lernen, um die auf den einzelnen virtuellen Computern ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden von Zulassungsregeln, die auf diesen Daten basieren. Dadurch können Sie Zulassungsregeln für Anwendungen einfacher konfigurieren und verwalten.|
-|Computer|20|Endpoint Protection-Lösung auf Ihren Computern installieren|Installieren Sie eine Endpoint Protection-Lösung auf Ihren virtuellen Computern, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen.|
-|Computer|20|Computer zum Anwenden von Systemupdates neu starten|Starten Sie Ihre Computer neu, um die Systemupdates anzuwenden und Ihre Computer vor Sicherheitsrisiken zu schützen.|
 |App Service|20|Zugriff auf Webanwendung nur über HTTPS gestatten|Beschränken Sie den Zugriff von Webanwendungen nur auf HTTPS.|
 |App Service|20|Zugriff auf Funktions-App nur über HTTPS gestatten|Beschränken Sie den Zugriff von Funktionen-Apps nur auf HTTPS.|
-|Computer|15|Datenträgerverschlüsselung auf Ihre virtuellen Computer anwenden|Verschlüsseln Sie die Datenträger Ihrer virtuellen Computer mit Azure Disk Encryption für virtuelle Windows- und Linux-Computer. Azure Disk Encryption (ADE) verwendet das BitLocker-Feature (Branchenstandard) von Windows und das DM-Crypt-Feature von Linux, um das Betriebssystem und den Datenträger zu verschlüsseln. Dies trägt zum Schutz Ihrer Daten und zur Erfüllung der Sicherheits- und Complianceanforderungen im Azure-Schlüsseltresor des Kunden bei. Wenn Ihre Compliance- und Sicherheitsauflagen eine End-to-End-Datenverschlüsselung mithilfe von Verschlüsselungsschlüsseln – einschließlich Verschlüsselung der kurzlebigen (lokal angeschlossenen temporären) Festplatte – vorsehen, nutzen Sie Azure Disk Encryption. Alternativ werden verwaltete Datenträger im Ruhezustand standardmäßig mit der Azure Speicherdienstverschlüsselung verschlüsselt. Hierbei werden von Microsoft verwaltete Schlüssel in Azure als Verschlüsselungsschlüssel verwendet. Wenn dieses Szenario Ihren Compliance- und Sicherheitsanforderungen entspricht, können Sie die standardmäßige Verschlüsselung für verwaltete Datenträger nutzen, um Ihre Anforderungen zu erfüllen.|
-|Computeressourcen (Service Fabric)|10|Azure Active Directory für Clientauthentifizierung in Service Fabric verwenden|Führen Sie die Clientauthentifizierung in Service Fabric ausschließlich über Azure Active Directory durch.|
-|Computeressourcen (Automation-Konto)|5| Verschlüsselung des Automation-Kontos aktivieren|Aktivieren Sie die Verschlüsselung für Variablenobjekte von Automation-Konten, wenn vertrauliche Daten gespeichert werden.|
 |App Service|5|Diagnoseprotokolle in App-Dienst aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Lastenausgleich)|5|Diagnoseprotokolle in Load Balancer aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Suche)|5|Diagnoseprotokolle in Suchdienst aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Service Bus)|5|Diagnoseprotokolle in Service Bus aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Stream Analytics)|5|Diagnoseprotokolle in Azure Stream Analytics aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Service Fabric)|5|Diagnoseprotokolle in Service Fabric aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Batch)|5|Diagnoseprotokolle in Batch-Konten aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Event Hub)|5|Diagnoseprotokolle in Event Hub aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computeressourcen (Logik-Apps)|5|Diagnoseprotokolle in Logic Apps aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Computer|30|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|
-|Computer|15|Web Application Firewall hinzufügen| Stellen Sie eine Web Application Firewall (WAF) bereit, um Ihre Webanwendungen zu schützen. |
-|Computer|30|Sicherheitsrisiken beseitigen – durch eine Lösung zur Sicherheitsrisikobewertung|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
-|Computeressourcen (Service Fabric)|15|Eigenschaft „ClusterProtectionLevel“ in Service Fabric auf „EncryptAndSign“ festlegen (Vorschauversion)|Service Fabric bietet drei Schutzebenen („None“, „Sign“ und „EncryptAndSign“) für die Kommunikation zwischen zwei Knoten unter Verwendung eines primären Clusterzertifikats.  Legen Sie die Schutzebene fest, um sicherzustellen, dass alle zwischen zwei Knoten übertragenen Nachrichten verschlüsselt und digital signiert werden. |
 |App Service|10|Remotedebuggen muss für Webanwendung deaktiviert werden|Deaktivieren Sie das Debuggen für eine Webanwendung, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine Funktions-App geöffnet sein.|
 |App Service|10|Remotedebuggen muss für Funktionsanwendung deaktiviert werden|Deaktivieren Sie das Debuggen für eine Funktionen-App, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine Funktions-App geöffnet sein.|
 |App Service|10|IP-Einschränkungen für Webanwendung konfigurieren|Definieren Sie eine Liste mit IP-Adressen, die auf Ihre Anwendung zugreifen dürfen. Mithilfe von IP-Einschränkungen kann eine Webanwendung vor gängigen Angriffen geschützt werden.|
@@ -219,21 +196,55 @@ Die Liste enthält drei Arten von Symbolen:
 |App Service|5|WebSockets für Funktions-App deaktivieren|Prüfen Sie die Verwendung von Websockets innerhalb von Funktionen-Apps. Das WebSockets-Protokoll ist für verschiedene Arten von Sicherheitsrisiken anfällig.|
 |App Service|5|Benutzerdefinierte Domänen für Webanwendung verwenden|Verwenden Sie benutzerdefinierte Domänen, damit eine Webanwendung vor gängigen Angriffen wie Phishing und anderen DNS-bezogenen Angriffen geschützt wird.|
 |App Service|5|Benutzerdefinierte Domänen für Funktions-App verwenden|Verwenden Sie benutzerdefinierte Domänen, damit eine Funktions-App vor gängigen Angriffen wie Phishing und anderen DNS-bezogenen Angriffen geschützt wird.|
-|Computeressourcen (Batch)|1|Metrikwarnungsregeln für Batch-Konto konfigurieren|Konfigurieren Sie Metrikwarnungsregeln für das Batch-Konto, und aktivieren Sie die Metriken „Abgeschlossene Ereignisse zum Löschen von Pools“ und „Startereignisse zum Löschen von Pools“.|
-|Computeressourcen (Service Bus)|1|Alle Autorisierungsregeln außer RootManageSharedAccessKey aus Service Bus-Namespace entfernen |Service Bus-Clients dürfen keine Zugriffsrichtlinie auf Namespace-Ebene verwenden, die Zugriff auf alle Warteschlangen und Themen in einem Namespace bereitstellt. Um dem Sicherheitsmodell der geringsten Rechte zu entsprechen, müssen Sie Zugriffsrichtlinien auf Entitätsebene erstellen, damit nur der jeweiligen Entität Zugriff auf Warteschlangen und Themen gewährt wird.|
-|Computeressourcen (Event Hub)|1|Alle Autorisierungsregeln außer RootManageSharedAccessKey aus Event Hub-Namespace entfernen |Event Hub-Clients dürfen keine Zugriffsrichtlinie auf Namespace-Ebene verwenden, die Zugriff auf alle Warteschlangen und Themen in einem Namespace bereitstellt. Um dem Sicherheitsmodell der geringsten Rechte zu entsprechen, müssen Sie Zugriffsrichtlinien auf Entitätsebene erstellen, damit nur der jeweiligen Entität Zugriff auf Warteschlangen und Themen gewährt wird.|
-|Computeressourcen (Event Hub)|5|Autorisierungsregeln für die Event Hub-Entität definieren|Überwachen Sie Autorisierungsregeln in der Event Hub-Entität, um die geringstmöglichen Zugriffsberechtigungen zu erteilen.|
-|Computer|30|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|
 |App Service|20|Nicht jeder Ressource den Zugriff auf Ihre Webanwendungen über CORS gestatten|Ermöglichen Sie nur erforderlichen Domänen die Interaktion mit Ihrer Webanwendung. Bei der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) sollte nicht allen Domänen gestattet werden, auf Ihre Webanwendung zuzugreifen.|
 |App Service|20|Nicht jeder Ressource den Zugriff auf Ihre Funktions-App über CORS gestatten| Ermöglichen Sie nur erforderlichen Domänen die Interaktion mit Ihrer Funktionsanwendung. Bei der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) sollte nicht allen Domänen gestattet werden, auf Ihre Funktionsanwendung zuzugreifen.|
-|Computer|15|Web Application Firewall hinzufügen| Stellen Sie eine Web Application Firewall (WAF) bereit, um Ihre Webanwendungen zu schützen. |
 |App Service|10|Die neueste unterstützte .NET Framework-Version für Webanwendungen verwenden|Verwenden Sie die neueste .NET Framework-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
 |App Service|10|Die neueste unterstützte Java-Version für Webanwendungen verwenden|Verwenden Sie die neueste Java-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
 |App Service|10|Die neueste unterstützte PHP-Version für Webanwendungen verwenden|Verwenden Sie die neueste PHP-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
 |App Service|10|Die neueste unterstützte Node.js-Version für Webanwendungen verwenden|Verwenden Sie die neueste Node.js-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
 |App Service|10|Die neueste unterstützte Python-Version für Webanwendungen verwenden|Verwenden Sie die neueste Python-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
-|VMs und Computer|1|Virtuelle Computer zu neuen AzureRM-Ressourcen migrieren|Verwenden Sie den neuen Azure Resource Manager v2 für Ihre virtuellen Computer, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, ARM-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung. |
-|Computer|30|Sicherheitsrisiken beseitigen – durch eine Lösung zur Sicherheitsrisikobewertung|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
+|Computeressourcen (Batch)|1|Metrikwarnungsregeln für Batch-Konto konfigurieren|Konfigurieren Sie Metrikwarnungsregeln für das Batch-Konto, und aktivieren Sie die Metriken „Abgeschlossene Ereignisse zum Löschen von Pools“ und „Startereignisse zum Löschen von Pools“.|
+|Computeressourcen (Service Fabric)|10|Azure Active Directory für Clientauthentifizierung in Service Fabric verwenden|Führen Sie die Clientauthentifizierung in Service Fabric ausschließlich über Azure Active Directory durch.|
+|Computeressourcen (Automation-Konto)|5| Verschlüsselung des Automation-Kontos aktivieren|Aktivieren Sie die Verschlüsselung für Variablenobjekte von Automation-Konten, wenn vertrauliche Daten gespeichert werden.|
+|Computeressourcen (Lastenausgleich)|5|Diagnoseprotokolle in Load Balancer aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Suche)|5|Diagnoseprotokolle in Suchdienst aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Service Bus)|5|Diagnoseprotokolle in Service Bus aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Stream Analytics)|5|Diagnoseprotokolle in Azure Stream Analytics aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Service Fabric)|5|Diagnoseprotokolle in Service Fabric aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Batch)|5|Diagnoseprotokolle in Batch-Konten aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Event Hub)|5|Diagnoseprotokolle in Event Hub aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Logik-Apps)|5|Diagnoseprotokolle in Logic Apps aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Computeressourcen (Service Fabric)|15|Eigenschaft „ClusterProtectionLevel“ in Service Fabric auf „EncryptAndSign“ festlegen (Vorschauversion)|Service Fabric bietet drei Schutzebenen („None“, „Sign“ und „EncryptAndSign“) für die Kommunikation zwischen zwei Knoten unter Verwendung eines primären Clusterzertifikats.  Legen Sie die Schutzebene fest, um sicherzustellen, dass alle zwischen zwei Knoten übertragenen Nachrichten verschlüsselt und digital signiert werden. |
+|Computeressourcen (Service Bus)|1|Alle Autorisierungsregeln außer RootManageSharedAccessKey aus Service Bus-Namespace entfernen |Service Bus-Clients dürfen keine Zugriffsrichtlinie auf Namespace-Ebene verwenden, die Zugriff auf alle Warteschlangen und Themen in einem Namespace bereitstellt. Um dem Sicherheitsmodell der geringsten Rechte zu entsprechen, müssen Sie Zugriffsrichtlinien auf Entitätsebene erstellen, damit nur der jeweiligen Entität Zugriff auf Warteschlangen und Themen gewährt wird.|
+|Computeressourcen (Event Hub)|1|Alle Autorisierungsregeln außer RootManageSharedAccessKey aus Event Hub-Namespace entfernen |Event Hub-Clients dürfen keine Zugriffsrichtlinie auf Namespace-Ebene verwenden, die Zugriff auf alle Warteschlangen und Themen in einem Namespace bereitstellt. Um dem Sicherheitsmodell der geringsten Rechte zu entsprechen, müssen Sie Zugriffsrichtlinien auf Entitätsebene erstellen, damit nur der jeweiligen Entität Zugriff auf Warteschlangen und Themen gewährt wird.|
+|Computeressourcen (Event Hub)|5|Autorisierungsregeln für die Event Hub-Entität definieren|Überwachen Sie Autorisierungsregeln in der Event Hub-Entität, um die geringstmöglichen Zugriffsberechtigungen zu erteilen.|
+|Computer|50|Monitoring Agent auf Ihren Computern installieren|Installieren Sie den Überwachungs-Agent, um die Datensammlung, das Prüfen auf Updates, die Baselineüberprüfung und Endpoint Protection auf jedem Computer zu aktivieren.|
+|Computer|50|Automatische Bereitstellung und Datensammlung für Ihre Abonnements aktivieren |Aktivieren Sie die automatische Bereitstellung und Datensammlung für Computer in Ihren Abonnements, um die Datensammlung, das Prüfen auf Updates, die Baselineüberprüfung und Endpoint Protection auf jedem Computer zu aktivieren, der Ihren Abonnements hinzugefügt wird.|
+|Computer|40|Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben|Beheben Sie Monitoring Agent-Probleme auf Ihren Computern mithilfe der Anweisungen im Handbuch zur Problembehandlung, um den vollständigen Security Center-Schutz zu erhalten.| 
+|Computer|40|Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben|Beheben Sie Monitoring Agent-Probleme auf Ihren Computern mithilfe der Anweisungen im Handbuch zur Problembehandlung, um den vollständigen Security Center-Schutz zu erhalten.|
+|Computer|40|Problembehandlung für fehlende Überprüfungsdaten auf Ihren Computern durchführen|Führen Sie eine Problembehandlung für fehlende Überprüfungsdaten auf virtuellen und physischen Computern durch. Fehlende Überprüfungsdaten auf Ihren Computern führen dazu, dass Sicherheitsbewertungen wie das Prüfen auf Updates, die Baselineüberprüfung und die Überprüfung der Endpoint Protection-Lösung nicht durchgeführt werden.|
+|Computer|40|Systemupdates auf Ihren Computern installieren|Installieren Sie fehlende Systemsicherheitsupdates und kritische Updates zum Schutz Ihrer virtuellen und physischen Windows- und Linux-Computer.
+|Computer|15|Web Application Firewall hinzufügen| Stellen Sie eine Web Application Firewall (WAF) bereit, um Ihre Webanwendungen zu schützen. |
+|Computer|40|Betriebssystemversion für Ihre Clouddienstrollen aktualisieren|Aktualisieren Sie die Betriebssystemversion für Ihre Clouddienstrollen auf die aktuelle Version für Ihre Betriebssystemfamilie.|
+|Computer|35|Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer beseitigen|Beseitigen Sie Sicherheitsrisiken in der Sicherheitskonfiguration Ihrer Computer, um sie vor Angriffen zu schützen. |
+|Computer|35|Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Container beseitigen|Beseitigen Sie Sicherheitsrisiken in der Sicherheitskonfiguration von Computern, auf denen Docker installiert ist, um sie vor Angriffen zu schützen.|
+|Computer|25|Adaptive Anwendungssteuerung aktivieren|Aktivieren Sie Anwendungssteuerung, um zu steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können. Dadurch sind Ihre virtuellen Computer besser gegen Schadsoftware abgesichert. Security Center nutzt maschinelles Lernen, um die auf den einzelnen virtuellen Computern ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden von Zulassungsregeln, die auf diesen Daten basieren. Dadurch können Sie Zulassungsregeln für Anwendungen einfacher konfigurieren und verwalten.|
+|Computer|20|Endpoint Protection-Lösung auf Ihren Computern installieren|Installieren Sie eine Endpoint Protection-Lösung auf Ihren virtuellen Computern, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen.|
+|Computer|20|Computer zum Anwenden von Systemupdates neu starten|Starten Sie Ihre Computer neu, um die Systemupdates anzuwenden und Ihre Computer vor Sicherheitsrisiken zu schützen.|
+|Computer|15|Datenträgerverschlüsselung auf Ihre virtuellen Computer anwenden|Verschlüsseln Sie die Datenträger Ihrer virtuellen Computer mit Azure Disk Encryption für virtuelle Windows- und Linux-Computer. Azure Disk Encryption (ADE) verwendet das BitLocker-Feature (Branchenstandard) von Windows und das DM-Crypt-Feature von Linux, um das Betriebssystem und den Datenträger zu verschlüsseln. Dies trägt zum Schutz Ihrer Daten und zur Erfüllung der Sicherheits- und Complianceanforderungen im Azure-Schlüsseltresor des Kunden bei. Wenn Ihre Compliance- und Sicherheitsauflagen eine End-to-End-Datenverschlüsselung mithilfe von Verschlüsselungsschlüsseln – einschließlich Verschlüsselung der kurzlebigen (lokal angeschlossenen temporären) Festplatte – vorsehen, nutzen Sie Azure Disk Encryption. Alternativ werden verwaltete Datenträger im Ruhezustand standardmäßig mit der Azure Speicherdienstverschlüsselung verschlüsselt. Hierbei werden von Microsoft verwaltete Schlüssel in Azure als Verschlüsselungsschlüssel verwendet. Wenn dieses Szenario Ihren Compliance- und Sicherheitsanforderungen entspricht, können Sie die standardmäßige Verschlüsselung für verwaltete Datenträger nutzen, um Ihre Anforderungen zu erfüllen.|
+|Computer|30|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|
+|Computer|15|Web Application Firewall hinzufügen| Stellen Sie eine Web Application Firewall (WAF) bereit, um Ihre Webanwendungen zu schützen. |
+|Computer|30|Sicherheitsrisiken mit einer Lösung zur Sicherheitsrisikobewertung beseitigen|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
+|Computer|30|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|
+|Computer|1|Virtuelle Computer zu neuen Azure Resource Manager-Ressourcen migrieren|Verwenden Sie Azure Resource Manager für Ihre virtuellen Computer, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung. |
+|Computer|30|Sicherheitsrisiken mit einer Lösung zur Sicherheitsrisikobewertung beseitigen|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
+|VM-Skalierungsgruppe |4|Diagnoseprotokolle in Virtual Machine Scale Sets aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. So können Sie Aktivitätsspuren zu Untersuchungszwecken neu erstellen. Dies ist nützlich, wenn ein Sicherheitsvorfall eintritt, oder Ihr Netzwerk kompromittiert ist.|
+|VM-Skalierungsgruppe|35|Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen beseitigen|Beseitigen Sie Sicherheitsrisiken in der Sicherheitskonfiguration Ihrer VM-Skalierungsgruppen, um sie vor Angriffen zu schützen. |
+|VM-Skalierungsgruppe|5|Endpoint Protection-Integritätsfehler in VM-Skalierungsgruppen beheben|Beheben Sie Endpoint Protection-Integritätsfehler in Ihren VM-Skalierungsgruppen, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen. |
+|VM-Skalierungsgruppe|10|Endpoint Protection-Lösung in VM-Skalierungsgruppen installieren|Installieren Sie eine Endpoint Protection-Lösung in Ihren VM-Skalierungsgruppen, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen. |
+|VM-Skalierungsgruppe|40|Systemupdates für VM-Skalierungsgruppen installieren|Installieren Sie fehlende Systemsicherheitsupdates und kritische Updates zum Schutz Ihrer Windows- und Linux-VM-Skalierungsgruppen. |
+ 
+
 
 
 
@@ -253,28 +264,3 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 
-<!--Image references-->
-[1]: ./media/security-center-virtual-machine-recommendations/overview.png
-[2]: ./media/security-center-virtual-machine-recommendations/compute.png
-[3]: ./media/security-center-virtual-machine-recommendations/monitoring-agent-health-issues.png
-[4]: ./media/security-center-virtual-machine-recommendations/compute-recommendations.png
-[5]: ./media/security-center-virtual-machine-recommendations/apply-system-updates.png
-[6]: ./media/security-center-virtual-machine-recommendations/missing-update-details.png
-[7]: ./media/security-center-virtual-machine-recommendations/vm-computers.png
-[8]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png
-[9]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png
-[10]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png
-[11]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png
-[12]: ./media/security-center-virtual-machine-recommendations/filter.png
-[13]: ./media/security-center-virtual-machine-recommendations/vm-detail.png
-[14]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png
-[15]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new3.png
-[16]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png
-[17]: ./media/security-center-virtual-machine-recommendations/app-services.png
-[18]: ./media/security-center-virtual-machine-recommendations/ase.png
-[19]: ./media/security-center-virtual-machine-recommendations/web-app.png
-[20]: ./media/security-center-virtual-machine-recommendations/recommendation.png
-[21]: ./media/security-center-virtual-machine-recommendations/recommendation-desc.png
-[22]: ./media/security-center-virtual-machine-recommendations/passed-assessment.png
-[23]: ./media/security-center-virtual-machine-recommendations/healthy-resources.png
-[24]: ./media/security-center-virtual-machine-recommendations/function-app.png

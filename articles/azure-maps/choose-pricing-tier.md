@@ -3,17 +3,17 @@ title: Auswählen des richtigen Tarifs für Azure Maps | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die von Azure Maps angebotenen Tarife
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 028a227eefb319d19c9274082626a007bd9161de
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998379"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993959"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>Auswählen des richtigen Tarifs in Azure Maps
 
@@ -53,9 +53,8 @@ Einen besseren Eindruck von den Tarifen S0 und S1 verschafft Ihnen die Tabelle m
 
 | Tarif  |        Tarife und Kundenzielgruppen                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>Der Tarif S0 richtet sich an Kunden mit kleinen oder mittelgroßen Unternehmen. Dies ist der richtige Tarif für Sie, wenn Sie keine große Anzahl gleichzeitiger Benutzer erwarten und Ihre Dienstanforderungen von den Kerngeofunktions-APIs gemäß den Angaben in der folgenden Tabelle erfüllt werden. Dieser Tarif ist allgemein verfügbar und anwendbar auf Anwendungen in allen Phasen der Produktion, von der Entwicklung einer Machbarkeitsstudie und frühen Testphasen bis hin zur Produktion und Bereitstellung.<p>|
+| S0            |    <p>Der Tarif S0 richtet sich an Kunden mit kleinen oder mittelgroßen Unternehmen. Dies ist der richtige Tarif für Sie, wenn Sie keine große Anzahl gleichzeitiger Benutzer erwarten und Ihre Dienstanforderungen von den Haupt-Geo-APIs gemäß den Angaben in der oben aufgeführten Tabelle erfüllt werden. Dieser Tarif ist allgemein verfügbar und anwendbar auf Anwendungen in allen Phasen der Produktion, von der Entwicklung einer Machbarkeitsstudie und frühen Testphasen bis hin zur Produktion und Bereitstellung.<p>|
 | S1            |    <p>Der Tarif S1 richtet sich an Kunden, die Unterstützung für große Unternehmen, unternehmenskritische Anwendungen, eine große Anzahl gleichzeitiger Benutzer benötigen oder komplexe Geodienste benötigen.</p>|
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

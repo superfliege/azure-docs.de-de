@@ -1,5 +1,5 @@
 ---
-title: Ändern und erneutes Bereitstellen eines Microservice | Microsoft-Dokumentation
+title: Ändern und erneutes Bereitstellen eines Microservice – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie einen Microservice in der Remoteüberwachungslösung ändern und erneut bereitstellen.
 author: dominicbetts
 ms.author: dobett
@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 563de3d062b2c49d6b7ba23ae405e75283270815
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315756"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631896"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Anpassen und erneutes Bereitstellen eines Microservice
 
-In diesem Tutorial erfahren Sie, wie Sie einen der [Microservices](http://azure.com/microservices) in der Remoteüberwachungslösung bearbeiten, ein Image Ihres Microservice erstellen, das Image in Ihrem Docker-Hub bereitstellen und es anschließend in der Remoteüberwachungslösung verwenden. Dieses Konzept wird im vorliegenden Tutorial anhand eines einfachen Szenarios veranschaulicht, in dem Sie eine Microservice-API aufrufen und die Statusmeldung von „Alive and Well“ in „New Edits Made Here!“ ändern.
+In diesem Tutorial erfahren Sie, wie Sie einen der [Microservices](https://azure.com/microservices) in der Remoteüberwachungslösung bearbeiten, ein Image Ihres Microservice erstellen, das Image in Ihrem Docker-Hub bereitstellen und es anschließend in der Remoteüberwachungslösung verwenden. Dieses Konzept wird im vorliegenden Tutorial anhand eines einfachen Szenarios veranschaulicht, in dem Sie eine Microservice-API aufrufen und die Statusmeldung von „Alive and Well“ in „New Edits Made Here!“ ändern.
 
 Die in der Remoteüberwachungslösung verwendeten Microservices basieren auf Docker-Images, die aus einem Docker-Hub gepullt werden. 
 
@@ -77,7 +77,7 @@ In diesem Teil rufen Sie die Standard-API des IoT Hub-Manager-Microservice auf. 
     
     Für Windows benötigen Sie folgende Eingabe:
     
-    ```
+    ```cmd
     ./build.cmd
     ```
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 12fab05ef7c459419c8aaf319098fddaae1416e6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241244"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974045"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
 
@@ -143,17 +143,17 @@ Administratoren können die Teilnahme am Konsens an eine Reihe von Validierungsk
 -   **Überwachbarer Änderungsverlauf**: Jede Änderung wird für die Blockchain aufgezeichnet, um für Transparenz und Überwachbarkeit zu sorgen.
 
 #### <a name="getting-started-with-governance"></a>Erste Schritte mit Governance
-Wenn Sie verschiedene Transaktionen über die Governance-DApp durchführen möchten, müssen Sie eine Ethereum-Wallet nutzen.  Die Verwendung einer Wallet im Browser, wie z.B. [MetaMask](https://metamask.io), stellt den einfachsten Ansatz dar. Da es sich hierbei jedoch um im Netzwerk bereitgestellte Smart Contracts handelt, müssen Sie Ihre Interaktionen mit dem Governance-Vertrag möglicherweise auch automatisieren.
+Wenn Sie verschiedene Transaktionen über die Governance-DApp durchführen möchten, müssen Sie ein Ethereum-Wallet nutzen.  Die Verwendung eines Wallets im Browser, wie z.B. [MetaMask](https://metamask.io), stellt den einfachsten Ansatz dar. Da es sich hierbei jedoch um im Netzwerk bereitgestellte Smart Contracts handelt, müssen Sie Ihre Interaktionen mit dem Governance-Vertrag möglicherweise auch automatisieren.
 
-Navigieren Sie nach der Installation von MetaMask zu der Governance-DApp im Browser.  Sie finden die URL in der E-Mail zur Bestätigung der Bereitstellung oder über das Azure-Portal in der Bereitstellungsausgabe.  Wenn Sie keine Wallet im Browser installiert haben, können Sie keine Aktionen ausführen. Sie können jedoch weiterhin den Administratorstatus lesen.  
+Navigieren Sie nach der Installation von MetaMask zu der Governance-DApp im Browser.  Sie finden die URL in der E-Mail zur Bestätigung der Bereitstellung oder über das Azure-Portal in der Bereitstellungsausgabe.  Wenn Sie kein Wallet im Browser installiert haben, können Sie keine Aktionen ausführen. Sie können jedoch weiterhin den Administratorstatus lesen.  
 
 #### <a name="becoming-an-admin"></a>Administrator werden
-Wenn Sie das erste Mitglied sind, das im Netzwerk eine Bereitstellung durchgeführt hat, werden Sie automatisch Administrator, und Ihre Paritätsknoten werden als Validierungssteuerelemente aufgeführt.  Wenn Sie dem Netzwerk beitreten, müssen Sie mit einer Mehrheit (mehr als 50 %) der vorhandenen Administrator als Administrator gewählt werden.  Wenn Sie sich dagegen entscheiden, Administrator zu werden, synchronisieren und überprüfen Ihre Knoten weiterhin die Blockchain. Sie sind jedoch nicht an der Blockerstellung beteiligt. Klicken Sie zum Starten des Abstimmungsprozesses, um Administrator zu werden, auf __Nominierung__, und geben Sie Ihre Ethereum-Adresse und den Alias ein.
+Wenn Sie das erste Mitglied sind, das im Netzwerk eine Bereitstellung durchgeführt hat, werden Sie automatisch Administrator, und Ihre Paritätsknoten werden als Validierungssteuerelemente aufgeführt.  Wenn Sie dem Netzwerk beitreten, müssen Sie von einer Mehrheit der vorhandenen Administratoren (mehr als 50 %) zum Administrator gewählt werden.  Wenn Sie sich dagegen entscheiden, Administrator zu werden, synchronisieren und überprüfen Ihre Knoten weiterhin die Blockchain. Sie sind jedoch nicht an der Blockerstellung beteiligt. Klicken Sie zum Starten des Abstimmungsprozesses, um Administrator zu werden, auf __Nominierung__, und geben Sie Ihre Ethereum-Adresse und den Alias ein.
 
 ![Nominierung](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
 #### <a name="candidates"></a>Kandidaten
-Durch Auswahl der Registerkarte __Kandidaten__ werden Ihnen die aktuellen Registerkarte zeigt Ihnen den aktuellen Kandidaten für Administratoren angezeigt.  Sobald ein Kandidat eine Stimmenmehrheit von den aktuellen Administratoren erreicht, wird er zum Administrator ernannt.  Wenn Sie für einen Kandidaten abstimmen möchten, wählen Sie die Zeile aus und klicken Sie oben auf „Abstimmen“.  Wenn Sie Ihre Meinung zu einer abgegebenen Stimme ändern, können Sie den Kandidaten auswählen und auf „Rescind vote“ (Abstimmung widerrufen) klicken.
+Auf der Registerkarte __Kandidaten__ werden Ihnen die aktuellen Bewerber für Administratoren angezeigt.  Sobald ein Kandidat eine Stimmenmehrheit von den aktuellen Administratoren erreicht, wird er zum Administrator ernannt.  Wenn Sie für einen Kandidaten abstimmen möchten, wählen Sie die Zeile aus und klicken Sie oben auf „Abstimmen“.  Wenn Sie Ihre Meinung zu einer abgegebenen Stimme ändern, können Sie den Kandidaten auswählen und auf „Rescind vote“ (Abstimmung widerrufen) klicken.
 
 ![Kandidaten](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
 
@@ -164,7 +164,7 @@ Auf der Registerkarte __Administratoren__ wird die aktuelle Gruppe der Administr
 ![Administratoren](./media/ethereum-poa-deployment/governance-dapp-admins.png)
 
 #### <a name="validators"></a>Validierungssteuerelemente
-Durch die Auswahl der Registerkarte __Validierungssteuerelemente__ im linken Menü werden die aktuell bereitgestellten Paritätsknoten dieser Instanz mit dem zugehörigen Status (Knotentyp) angezeigt.  Beachten Sie, dass jedem Mitglied des Konsortiums in dieser Liste andere Validierungssteuerelemente angezeigt werden, da in dieser Ansicht die aktuell bereitgestellten Mitglieder des Konsortiums dargestellt werden.  Handelt es sich hierbei um eine neu bereitgestellte Instanz, zu der Sie Ihre Validierungssteuerelemente noch nicht hinzugefügt haben, wird Ihnen die Option „Add Validators“ (Validierungssteuerelemente hinzufügen) angezeigt.  Durch Auswahl dieser Option wird automatisch Reihe von regional ausgewogenen Paritätsknoten ausgewählt, die Ihren Validierungssteuerelementen zugewiesen werden.  Wenn Sie mit Ihren bereitgestellten Knoten die zulässige Kapazität überschreiten, werden die verbleibenden Knoten zu Transaktionsknoten im Netzwerk.
+Durch die Auswahl der Registerkarte __Validierungssteuerelemente__ im linken Menü werden die aktuell bereitgestellten Paritätsknoten dieser Instanz mit dem zugehörigen Status (Knotentyp) angezeigt.  Beachten Sie, dass jedem Mitglied des Konsortiums in dieser Liste andere Validierungssteuerelemente angezeigt werden, da in dieser Ansicht die aktuell bereitgestellten Mitglieder des Konsortiums dargestellt werden.  Handelt es sich hierbei um eine neu bereitgestellte Instanz, zu der Sie Ihre Validierungssteuerelemente noch nicht hinzugefügt haben, wird Ihnen die Option „Add Validators“ (Validierungssteuerelemente hinzufügen) angezeigt.  Durch Auswahl dieser Option wird automatisch eine Reihe regional ausgewogener Paritätsknoten ausgewählt, die Ihren Validierungssteuerelementen zugewiesen werden.  Wenn Sie mit Ihren bereitgestellten Knoten die zulässige Kapazität überschreiten, werden die verbleibenden Knoten zu Transaktionsknoten im Netzwerk.
 
 Die Adresse der einzelnen Validierungssteuerelemente wird automatisch über den [Identitätsspeicher](#identity-store) in Azure zugewiesen.  Wenn ein Knoten ausfällt, gibt er seine Identität auf, wodurch ein anderer Knoten in Ihrer Bereitstellung den Platz dieses Knotens übernehmen kann.  Dadurch wird sichergestellt, dass Ihre Teilnahme am Konsens hoch verfügbar ist.
 
@@ -198,7 +198,7 @@ Für diesen Prozess ist ein Azure-Abonnement erforderlich, das dafür ausgelegt 
 
 Sobald ein Abonnement gesichert ist, wechseln Sie zum Azure-Portal. Wählen Sie „+“ > „Marketplace“ („Alle anzeigen“), und suchen Sie nach „Ethereum-PoA-Konsortium“.
 
-Im folgenden Abschnitt wird das Konfigurieren des Netzwerk-Fußabdrucks für das erste Mitglied Schritt für Schritt beschrieben. Der Bereitstellungsablauf ist in fünf Schritte unterteilt: Grundlagen, Bereitstellungsregionen, Netzwerkgröße und -leistung, Ethereum-Einstellungen und Azure Monitor.
+Im folgenden Abschnitt wird das Konfigurieren des Netzwerk-Fußabdrucks für das erste Mitglied Schritt für Schritt beschrieben. Der Ablauf der Bereitstellung ist in fünf Schritte unterteilt: Grundlagen, Bereitstellungsregionen, Netzwerkgröße und -leistung, Ethereum-Einstellungen und Azure Monitor.
 
 #### <a name="basics"></a>Grundlagen
 
@@ -212,7 +212,7 @@ Neues Netzwerk erstellen oder vorhandenem Netzwerk beitreten?|Erstellen Sie ein 
 E-Mail-Adresse (optional)|Sie erhalten eine E-Mail-Benachrichtigung mit Informationen zu Ihrer Bereitstellung, wenn die Bereitstellung abgeschlossen ist.|Gültige E-Mail-Adresse|Nicht verfügbar
 VM-Benutzername|Der Benutzername des Administrators für jede bereitgestellte VM (nur alphanumerische Zeichen).|1 bis 64 Zeichen|Nicht verfügbar
 Authentifizierungsart|Die Methode zur Authentifizierung des virtuellen Computers.|Kennwort oder öffentlicher SSH-Schlüssel|Kennwort
-Kennwort (Authentifizierungstyp = Kennwort)|Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers.  Das Kennwort muss 3 der folgenden Zeichen umfassen: 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Ziffer und 1 Sonderzeichen. Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12 bis 72 Zeichen|Nicht verfügbar
+Kennwort (Authentifizierungstyp = Kennwort)|Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers.  Das Kennwort muss drei der folgenden Elemente enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen. Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12 bis 72 Zeichen|Nicht verfügbar
 SSH-Schlüssel (Authentifizierungstyp = öffentlicher Schlüssel)|Der Secure Shell-Schlüssel für die Remoteanmeldung.||Nicht verfügbar
 Abonnement|Das Abonnement, für das das Konsortiumsnetzwerk bereitgestellt wird.||Nicht verfügbar
 Ressourcengruppe|Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird.||Nicht verfügbar
@@ -744,7 +744,7 @@ $ truffle migrate --network poa
 
 ### <a name="debug-smart-contract-with-truffle"></a>Debuggen eines Smart Contract mit Truffle
 
-Truffle verfügt über ein lokales Entwicklungsnetzwerk, das zum Debuggen von Smart Contracts verfügbar ist. Das vollständige Tutorial finden Sie [hier](http://truffleframework.com/tutorials/debugging-a-smart-contract).
+Truffle verfügt über ein lokales Entwicklungsnetzwerk, das zum Debuggen von Smart Contracts verfügbar ist. Das vollständige Tutorial finden Sie [hier](https://truffleframework.com/tutorials/debugging-a-smart-contract).
 
 ### <a name="webassembly-wasm-support"></a>Unterstützung von WebAssembly (WASM)
 
@@ -760,7 +760,7 @@ Die WebAssembly-Unterstützung ist für neu bereitgestellte PoA-Netzwerke bereit
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Mir sind im Netzwerk einige Transaktionen aufgefallen, die ich nicht gesendet habe. Woher kommen diese Transaktionen?
 
-Es ist unsicher, die [persönliche API](https://web3js.readthedocs.io/en/1.0/web3-eth-personal.html) zu entsperren. Bots lauschen auf nicht gesperrte Ethereum-Konten und versuchen, das Guthaben abzuschöpfen. Der Bot nimmt an, dass diese Konten echtes Ether-Guthaben enthalten, und versucht, als Erster an das Guthaben zu gelangen. Sie sollten die persönliche API im Netzwerk nicht aktivieren. Signieren Sie die Transaktionen stattdessen vorab, indem Sie entweder manuell vorgehen und eine Wallet wie MetaMask verwenden, oder die programmgesteuerte Vorgehensweise wählen. Dies wird im Abschnitt [Programmgesteuertes Interagieren mit einem Smart Contract](#programmatically-interacting-with-a-smart-contract) beschrieben.
+Es ist unsicher, die [persönliche API](https://web3js.readthedocs.io/en/1.0/web3-eth-personal.html) zu entsperren. Bots lauschen auf nicht gesperrte Ethereum-Konten und versuchen, das Guthaben abzuschöpfen. Der Bot nimmt an, dass diese Konten echtes Ether-Guthaben enthalten, und versucht, als Erster an das Guthaben zu gelangen. Sie sollten die persönliche API im Netzwerk nicht aktivieren. Signieren Sie die Transaktionen stattdessen vorab, indem Sie entweder manuell vorgehen und ein Wallet wie MetaMask verwenden, oder die programmgesteuerte Vorgehensweise wählen. Dies wird im Abschnitt [Programmgesteuertes Interagieren mit einem Smart Contract](#programmatically-interacting-with-a-smart-contract) beschrieben.
 
 #### <a name="how-to-ssh-onto-a-vm"></a>Wie stelle ich eine SSH-Verbindung mit einem virtuellen Computer her?
 

@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d810b8be496bbfd1c5bd88d8221e77dd5b76c889
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622964"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651451"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Verwenden des Power BI-Inhaltspakets für Azure Active Directory
 
@@ -32,7 +32,7 @@ Das Power BI-Inhaltspaket für Azure Active Directory (Azure AD) enthält vorkon
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen eine Azure AD Premium-Lizenz (P1/P2), um das Inhaltspaket verwenden zu können. 
+Sie benötigen eine Azure AD Premium-Lizenz (P1/P2), um das Inhaltspaket verwenden zu können. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen.
 
 ## <a name="install-the-content-pack"></a>Installieren des Inhaltspakets
 
@@ -42,9 +42,9 @@ Im [Schnellstart](quickstart-install-power-bi-content-pack.md) finden Sie Inform
 
 Die folgenden Berichte sind im Power-BI-Inhaltspaket für Azure AD enthalten. Die Berichte enthalten Daten aus den **letzten 30 Tagen**.
 
-**Bericht zur App-Nutzung und zu Trends**: Dieser Bericht liefert Ihnen einen Einblick in die Anwendungen, die in Ihrer Organisation verwendet werden. Sie können eine Liste der am häufigsten verwendeten Anwendungen abrufen, oder Sie können herausfinden, wie eine Anwendung verwendet wird, die vor kurzem in Ihrer Organisation eingeführt wurde. Dadurch können Sie die Nutzung im Laufe der Zeit nachverfolgen und verbessern.
+**Bericht zur App-Nutzung und zu Trends**:  Dieser Bericht bietet Ihnen einen Einblick in die Anwendungen, die in Ihrer Organisation verwendet werden. Sie können eine Liste der am häufigsten verwendeten Anwendungen abrufen, oder Sie können herausfinden, wie eine Anwendung verwendet wird, die vor kurzem in Ihrer Organisation eingeführt wurde. Dadurch können Sie die Nutzung im Laufe der Zeit nachverfolgen und verbessern.
 
-**Anmeldungen nach Ort und Benutzer**: Dieser Bericht enthält Daten für alle Anmeldungen, die mit einer Azure-Identität ausgeführt wurden. Mit diesem Bericht können Sie einzelne Anmeldungen eingehender untersuchen und beispielsweise folgende Fragen beantworten:
+**Anmeldungen nach Ort und Benutzer**: Dieser Bericht enthält Daten zu allen Anmeldungen, die mit einer Azure-Identität ausgeführt wurden. Mit diesem Bericht können Sie einzelne Anmeldungen eingehender untersuchen und beispielsweise folgende Fragen beantworten:
 
 - An welchem Ort hat sich der Benutzer angemeldet?
 - Welcher Benutzer hat sich am häufigsten angemeldet, und von wo aus erfolgen die Anmeldungen? 
@@ -52,9 +52,9 @@ Die folgenden Berichte sind im Power-BI-Inhaltspaket für Azure AD enthalten. Di
  
 Sie können die Ergebnisse auch filtern, indem Sie ein bestimmtes Datum oder einen Ort auswählen.
 
-**Eindeutige Benutzer pro App**: Dieser Bericht bietet einen Überblick über alle eindeutigen Benutzer, die eine bestimmte App verwenden. Er enthält nur Benutzer, die sich *erfolgreich* an einer Anwendung angemeldet haben.
+**Eindeutige Benutzer pro App**:  Dieser Bericht bietet einen Überblick über alle eindeutigen Benutzer, die eine bestimmte App verwenden. Er enthält nur Benutzer, die sich *erfolgreich* an einer Anwendung angemeldet haben.
 
-**Geräteanmeldungen**: Mit diesem Bericht können Sie die verschiedenen Geräteprofile verstehen, die in Ihrer Organisation verwendet werden, und basierend auf der Nutzung Geräterichtlinien festlegen. Er enthält Daten zum Typ des Betriebssystems und der Browser, die für die Anmeldung bei Anwendungen verwendet wurden, sowie ausführliche Informationen zu den Benutzern, einschließlich der folgenden:
+**Geräteanmeldungen**: Dieser Bericht unterstützt Sie dabei, die verschiedenen in Ihrer Organisation verwendeten Geräteprofile zu verstehen und basierend auf der Nutzung Geräterichtlinien festzulegen. Er enthält Daten zum Typ des Betriebssystems und der Browser, die für die Anmeldung bei Anwendungen verwendet wurden, sowie ausführliche Informationen zu den Benutzern, einschließlich der folgenden:
 
 - Benutzername
 - IP-Adresse
@@ -65,21 +65,21 @@ Sie können die Ergebnisse auch filtern, indem Sie ein bestimmtes Datum oder ein
 
 ## <a name="customize-azure-ad-activity-content-pack"></a>Anpassen des Inhaltspakets für Azure AD-Aktivitäten
 
-**Visualisierung ändern**: Sie können die Visualisierung eines Berichts ändern, indem Sie auf **Bericht bearbeiten** klicken und die gewünschte Visualisierung auswählen.
+**Visualisierung ändern**:  Sie können die Visualisierung eines Berichts ändern, indem Sie auf **Bericht bearbeiten** klicken und die gewünschte Visualisierung auswählen.
  
 ![Azure Active Directory-Power BI-Inhaltspaket](./media/howto-power-bi-content-pack/09.png) 
  
 ![Azure Active Directory-Power BI-Inhaltspaket](./media/howto-power-bi-content-pack/10.png) 
 
-**Zusätzliche Felder einfügen**: Sie können dem Bericht ein Feld hinzufügen oder es entfernen, indem Sie die Visualisierung auswählen, für die Sie das Feld hinzufügen oder entfernen möchten. Beispielsweise können Sie das Feld „Anmeldestatus“ zur Tabellenansicht hinzufügen, wie unten dargestellt. 
+**Zusätzliche Felder einfügen**:  Sie können dem Bericht ein Feld hinzufügen oder ein Feld daraus entfernen, indem Sie die Visualisierung auswählen, für die Sie das Feld hinzufügen oder entfernen möchten. Beispielsweise können Sie das Feld „Anmeldestatus“ zur Tabellenansicht hinzufügen, wie unten dargestellt. 
  
 ![Azure Active Directory-Power BI-Inhaltspaket](./media/howto-power-bi-content-pack/11.png) 
 
-**Visualisierungen an das Dashboard anheften**: Sie können Ihr Dashboard anpassen, indem Sie Ihre eigenen Visualisierungen in den Bericht einfügen und im Dashboard anheften. 
+**Visualisierungen an das Dashboard anheften**:  Sie können Ihr Dashboard anpassen, indem Sie Ihre eigenen Visualisierungen in den Bericht einfügen und an das Dashboard anheften. 
 
 ![Azure Active Directory-Power BI-Inhaltspaket](./media/howto-power-bi-content-pack/13.png) 
  
-**Freigabe des Dashboards**: Sie können das Dashboard auch für die Benutzer in Ihrer Organisation freigeben. Nachdem Sie den Bericht freigegeben haben, können Benutzer die von Ihnen ausgewählten Felder im Bericht sehen.
+**Freigeben des Dashboards**: Sie können das Dashboard auch für die Benutzer in Ihrer Organisation freigeben. Nachdem Sie den Bericht freigegeben haben, können Benutzer die von Ihnen ausgewählten Felder im Bericht sehen.
  
 ![Azure Active Directory-Power BI-Inhaltspaket](./media/howto-power-bi-content-pack/14.png) 
 

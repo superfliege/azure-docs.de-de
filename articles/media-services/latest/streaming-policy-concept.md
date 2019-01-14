@@ -9,21 +9,21 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/22/2018
 ms.author: juliako
-ms.openlocfilehash: c5f441fef95989e5c82586d96fc6c10e00a9627c
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d74ce913a2189dd1062b30f9def919cbbabe7b64
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085494"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742523"
 ---
 # <a name="streaming-policies"></a>Streamingrichtlinien
 
-In Azure Media Services v3 können Sie mithilfe von Streamingrichtlinien Streamingprotokolle und Verschlüsselungsoptionen für Ihre StreamingLocators definieren. Sie können entweder den Namen der von Ihnen erstellten Streamingrichtlinie angeben oder eine der vordefinierten Streamingrichtlinien verwenden. Derzeit sind folgende vordefinierte Streamingrichtlinien verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.
+In Azure Media Services v3 können Sie mithilfe von Streamingrichtlinien Streamingprotokolle und Verschlüsselungsoptionen für Ihre StreamingLocators definieren. Sie können entweder den Namen der von Ihnen erstellten Streamingrichtlinie angeben oder eine der vordefinierten Streamingrichtlinien verwenden. Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.
 
 > [!IMPORTANT]
-> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre StreamingLocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Ihr Media Services-Konto weist ein Kontingent für die Anzahl von StreamingPolicy-Einträgen auf. Sie sollten nicht für jeden StreamingLocator eine neue StreamingPolicy erstellen.
+> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Menge solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und -protokolle benötigt werden. Ihr Media Services-Konto weist ein Kontingent für die Anzahl von Streamingrichtlinieneinträgen auf. Sie sollten nicht für jeden Streaminglocator eine neue Streamingrichtlinie erstellen.
 
 ## <a name="streamingpolicy-definition"></a>StreamingPolicy-Definition
 
@@ -82,9 +82,9 @@ Die folgende Tabelle zeigt, wie diese Optionen auf die StreamingPolicy-Eigenscha
 Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
 
 > [!TIP]
-> Sie sollten immer den Link „Weiter“ verwenden, um die Sammlung zu durchlaufen, und keine bestimmte Seitengröße als Referenz verwenden.
+> Verwenden Sie immer den Link „Weiter“ zum Enumerieren der Auflistung und keine bestimmte Seitengröße als Referenz.
 
-Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine \@odata.nextLink-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
+Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
 
 Wenn während des Durchlaufens der Sammlung StreamingPolicy-Objekte erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde.) 
 

@@ -5,18 +5,19 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: ae2f32a02005bc015d2521e576ea5625bef2d377
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1c37b764b47856d3a369228d3f224f2a464029bb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846010"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790655"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
 Sie erhalten unter Umständen eine bestimmte Fehlermeldung, wenn Sie ihre virtuellen VMware-Computer oder Ihre physischen Server mithilfe von Azure Site Recovery schützen. Dieser Artikel beschreibt einige häufig auftretende Probleme bei der Replikation von lokalen VMware-VMs und physischen Servern in Azure mithilfe von [Azure Site Recovery](site-recovery-overview.md).
+
 
 ## <a name="initial-replication-issues"></a>Probleme bei der Erstreplikation
 
@@ -33,7 +34,7 @@ Wenn keine Verbindung hergestellt werden kann, lassen Sie den eingehenden Port 9
 
 * Prüfen Sie den Status des Diensts `InMage Scout VX Agent – Sentinel/OutpostStart`, wenn er nicht ausgeführt wird, und überprüfen Sie, ob das Problem weiterhin besteht.   
 
-## <a name="verify-the-process-server"></a>Überprüfen des Prozessservers
+### <a name="verify-the-process-server"></a>Überprüfen des Prozessservers
 
 * **Überprüfen Sie, ob der Prozessserver aktiv Daten mithilfe von Push an Azure überträgt.**
 
@@ -87,6 +88,19 @@ Klicken Sie nach dem Öffnen auf „Aktion“ > „Eigenschaften ändern“. Auf
 
 
 * **Vergewissern Sie sich, dass die Bandbreite auf dem Prozessserver nicht eingeschränkt wird:**  Erhöhen Sie die Bandbreite, und überprüfen Sie, ob das Problem weiterhin besteht.
+
+## <a name="source-machine-to-be-protected-through-site-recovery-is-not-listed-on-azure-portal"></a>Der Quellcomputer, der durch Site Recovery geschützt werden soll, ist nicht im Azure-Portal aufgeführt
+
+Bei dem Versuch, den Quellcomputer auszuwählen, um Replikation mithilfe von Azure Site Recovery zu aktivieren, steht der Computer möglicherweise nicht für die Fortsetzung des Vorgangs zur Verfügung, aus einem der folgenden Gründe
+
+* Wenn sich unter dem vCenter zwei virtuelle Computer mit der gleichen Instanz-UUID befinden, wird der erste virtuelle Computer vom Konfigurationsserver ermittelt und im Portal angezeigt. Um das Problem zu beheben, stellen Sie sicher, dass keine zwei virtuellen Computer über die gleiche Instanz-UUID verfügen.
+* Stellen Sie sicher, dass Sie während der Einrichtung der Konfiguration mithilfe der OVF-Vorlage oder des vereinheitlichten Setups die richtigen vCenter-Anmeldeinformationen hinzugefügt haben. Informationen zum Überprüfen der hinzugefügten Anmeldeinformationen finden Sie in den [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery) veröffentlichten Richtlinien.
+* Wenn die für den Zugriff auf vCenter bereitgestellten Berechtigungen nicht ausreichend sind, kann dies zu Fehlern bei der Ermittlung von virtuellen Computern führen. Achten Sie darauf, dass die [hier](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) angegebenen Berechtigungen dem vCenter-Benutzerkonto hinzugefügt werden.
+* Wenn der virtuelle Computer bereits mithilfe von Site Recovery geschützt wird, steht er nicht für den Schutz zur Verfügung. Stellen Sie sicher, dass der in Frage stehende virtuelle Computer noch nicht durch einen anderen Benutzer oder unter einem anderen Abonnement geschützt wurde.
+
+## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Geschützte virtuelle Computer werden im Portal grau dargestellt
+
+Virtuelle Computer, die unter Site Recovery repliziert werden, werden grau dargestellt, wenn doppelte Einträge im System vorhanden sind. Lesen Sie die Richtlinien [hier](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx), um die veralteten Einträge zu löschen und das Problem zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie weitere Unterstützung benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker wird Sie bei Ihrem Problem unterstützen.

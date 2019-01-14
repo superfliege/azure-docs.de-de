@@ -1,6 +1,6 @@
 ---
 title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy v10 (Vorschau) | Microsoft-Dokumentation
-description: Verwenden Sie das Hilfsprogramm AzCopy v10 (Vorschau) zum Verschieben oder Kopieren von Daten in oder aus Blob-, Tabellen- und Dateiinhalte(n). Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
+description: Verwenden Sie das Hilfsprogramm AzCopy v10 (Vorschau) zum Verschieben oder Kopieren von Daten in oder aus Blob-, Data Lake- und Dateiinhalte(n). Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: af45081df280f5542b5ba70892ee74c05b3e99cc
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958411"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808115"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Übertragen von Daten mit AzCopy v10 (Vorschau)
 
@@ -54,18 +54,24 @@ Eine Installation von AzCopy v10 ist nicht erforderlich. Öffnen Sie eine bevorz
 ## <a name="authentication-options"></a>Authentifizierungsoptionen
 
 Mit AzCopy v10 können Sie die folgenden Optionen bei der Authentifizierung mit Azure Storage verwenden:
-- Azure Active Directory Verwenden Sie ```.\azcopy login```, um sich mit Azure Active Directory anzumelden.  Dem Benutzer muss die [Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) sein, damit er in den Blobspeicher mithilfe von Azure Active Directory-Authentifizierung schreiben kann.
-- SAS-Token, das an den Blobpfad angefügt werden muss. Sie können das SAS-Token mit dem Azure-Portal, mit [Storage-Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), mit [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestorageblobsastoken?view=azurermps-6.9.0) oder mit anderen Tools Ihrer Wahl generieren. Weitere Informationen finden Sie unter [Beispiele](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Azure Active Directory [unterstützt von Blob und ADLS Gen2]**. Verwenden Sie ```.\azcopy login```, um sich mit Azure Active Directory anzumelden.  Dem Benutzer muss die [Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) sein, damit er in den Blobspeicher mithilfe von Azure Active Directory-Authentifizierung schreiben kann.
+- **SAS-Token [unterstützt von Blob und Dateidienst]**. Fügen Sie das SAS-Token dem Blobpfad in der Befehlszeile hinzu, um es zu verwenden. Sie können das SAS-Token mit dem Azure-Portal, mit [Storage-Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), mit [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStorageblobsastoken) oder mit anderen Tools Ihrer Wahl generieren. Weitere Informationen finden Sie unter [Beispiele](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 ## <a name="getting-started"></a>Erste Schritte
 
-AzCopy v10 verfügt über eine einfache selbstdokumentierte Syntax. Die allgemeine Syntax sieht wie folgt aus:
+AzCopy v10 verfügt über eine einfache selbstdokumentierte Syntax. Die allgemeine Syntax sieht wie folgt aus, wenn Sie sich bei Azure Active Directory angemeldet haben:
 
 ```azcopy
 .\azcopy <command> <arguments> --<flag-name>=<flag-value>
-# Example:
+# Examples if you have logged into the Azure Active Directory:
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/containersastoken" --recursive=true
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile"
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
+
+# Examples if you are using SAS tokens to authenticate:
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?sastoken" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?sastoken"
 ```
 
 Eine Liste der verfügbaren Befehle können Sie folgendermaßen abrufen:
@@ -84,15 +90,27 @@ Um die Hilfeseite und Beispiele für einen bestimmten Befehl anzuzeigen, führen
 .\azcopy cp -h
 ```
 
-## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>Erstellen eines Dateisystems (nur Azure Data Lake Storage Gen2)
+## <a name="create-a-blob-container-or-file-share"></a>Erstellen eines Blobcontainers oder einer Dateifreigabe 
 
-Wenn Sie hierarchische Namespaces in Ihrem Blobspeicherkonto aktiviert haben, können Sie mit dem folgenden Befehl ein neues Dateisystem erstellen, damit Sie eine Downloaddatei hochladen können.
+**Erstellen eines Blobcontainers**
 
 ```azcopy
-.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+.\azcopy make "https://account.blob.core.windows.net/container-name"
 ```
 
-Der ``account``-Teil dieser Zeichenfolge ist der Name Ihres Speicherkontos. Der ``top-level-resource-name``-Teil dieser Zeichenfolge ist der Name des Dateisystems, das Sie erstellen möchten.
+**Erstellen einer Dateifreigabe**
+
+```azcopy
+.\azcopy make "https://account.file.core.windows.net/share-name"
+```
+
+**Erstellen eines Blobcontainers mit ADLS Gen2**
+
+Wenn Sie hierarchische Namespaces in Ihrem Blobspeicherkonto aktiviert haben, können Sie mit dem folgenden Befehl ein neues Dateisystem (Blobcontainer) erstellen, damit Sie Dateien hochladen können.
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name"
+```
 
 ## <a name="copy-data-to-azure-storage"></a>Kopieren von Daten in Azure Storage
 
@@ -102,37 +120,22 @@ Verwenden Sie den Kopierbefehl, um Daten aus der Quelle in das Ziel zu übertrag
 - Azure-Datei/Verzeichnis/Dateifreigabe-URI
 - Azure Data Lake Storage Gen2-Dateisystem/Verzeichnis/Datei-URI
 
-> [!NOTE]
-> Zu diesem Zeitpunkt unterstützt AzCopy v10 nur das Kopieren von Blockblobs zwischen zwei Speicherkonten.
-
 ```azcopy
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
 # Using alias instead
 .\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
 ```
 
-Der folgende Befehl lädt alle Dateien unter dem Ordner „C:\local\path“ rekursiv in den Container „mycontainer1“ hoch:
+Der folgende Befehl lädt alle Dateien unter dem Ordner `C:\local\path` rekursiv in den Container `mycontainer1` hoch und erstellt im Container das Verzeichnis `path`:
 
 ```azcopy
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
-Wenn Sie hierarchische Namespaces in Ihrem Blobspeicherkonto aktiviert haben, können Sie mit dem folgenden Befehl Dateien in Ihr Dateisystem hochladen:
-
-```azcopy
-.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
-```
-
-Der folgende Befehl lädt alle Dateien unter dem Ordner „C:\local\path“ (nicht rekursiv, also ohne Unterverzeichnisse) in den Container „mycontainer1“ hoch:
+Der folgende Befehl lädt alle Dateien unter dem Ordner `C:\local\path` (nicht rekursiv, also ohne Unterverzeichnisse) in den Container `mycontainer1` hoch:
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
-```
-
-Wenn Sie hierarchische Namespaces in Ihrem Blobspeicherkonto aktiviert haben, können Sie den folgenden Befehl verwenden:
-
-```azcopy
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 Um weitere Beispiele abzurufen, verwenden Sie den folgenden Befehl:
@@ -143,23 +146,21 @@ Um weitere Beispiele abzurufen, verwenden Sie den folgenden Befehl:
 
 ## <a name="copy-data-between-two-storage-accounts"></a>Kopieren von Daten zwischen zwei Speicherkonten
 
-Das Kopieren von Daten zwischen zwei Speicherkonten verwendet die [Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url)-API und nutzt nicht die Netzwerkbandbreite des Clientcomputers. Daten werden zwischen zwei Azure Storage-Servern direkt kopiert, während AzCopy den Kopiervorgang einfach orchestriert. 
+Das Kopieren von Daten zwischen zwei Speicherkonten verwendet die [Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url)-API und nutzt nicht die Netzwerkbandbreite des Clientcomputers. Daten werden zwischen zwei Azure Storage-Servern direkt kopiert, während AzCopy den Kopiervorgang einfach orchestriert. Diese Option ist derzeit nur für Blob Storage verfügbar.
 
 Um die Daten zwischen zwei Speicherkonten zu kopieren, verwenden Sie den folgenden Befehl:
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
-Um mit Blobspeicherkonten zu arbeiten, für die hierarchische Namespaces aktiviert sind, ersetzen Sie in diesen Beispielen die Zeichenkette ``blob.core.windows.net`` durch ``dfs.core.windows.net``.
-
 > [!NOTE]
 > Der Befehl zählt alle Blobcontainer auf und kopiert sie in das Zielkonto. Zu diesem Zeitpunkt unterstützt AzCopy v10 nur das Kopieren von Blockblobs zwischen zwei Speicherkonten. Alle anderen Speicherkontoobjekte (Anfügeblobs, Seitenblobs, Dateien, Tabellen und Warteschlangen) werden übersprungen.
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Kopieren eines VHD-Image in ein Speicherkonto
 
-AzCopy v10 lädt Daten standardmäßig in Blockblobs hoch. Wenn eine Quelldatei jedoch die Erweiterung VHD aufweist, lädt AzCopy v10 sie standardmäßig in ein Seitenblob hoch. Dieses Verhalten ist nicht konfigurierbar.
+AzCopy v10 lädt Daten standardmäßig in Blockblobs hoch. Wenn eine Quelldatei jedoch die Erweiterung VHD aufweist, lädt AzCopy v10 sie standardmäßig in ein Seitenblob hoch. Dieses Verhalten ist derzeit nicht konfigurierbar.
 
-## <a name="sync-incremental-copy-and-delete"></a>Sync: inkrementelles Kopieren und Löschen
+## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Sync: inkrementelles Kopieren und Löschen (nur Blob Storage)
 
 > [!NOTE]
 > Der Sync-Befehl synchronisiert Inhalte aus der Quelle mit dem Ziel und beinhaltet das LÖSCHEN von Zieldateien, wenn diese in der Quelle nicht vorhanden sind. Stellen Sie sicher, dass Sie das Ziel verwenden, das Sie synchronisieren möchten.
@@ -177,9 +178,7 @@ Auf die gleiche Weise können Sie einen Blobcontainer mit einem lokalen Dateisys
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-Mit diesem Befehl können Sie die Quelle inkrementell basierend auf den Zeitstempeln der letzten Änderung mit dem Ziel synchronisieren. Wenn Sie eine Datei in der Quelle hinzufügen oder löschen, verfährt AzCopy v10 im Ziel auf die gleiche Weise.
-
-[!NOTE] Um mit Blobspeicherkonten zu arbeiten, für die hierarchische Namespaces aktiviert sind, ersetzen Sie in diesen Beispielen die Zeichenfolge ``blob.core.windows.net`` durch ``dfs.core.windows.net``.
+Mit diesem Befehl können Sie die Quelle inkrementell basierend auf den Zeitstempeln der letzten Änderung mit dem Ziel synchronisieren. Wenn Sie eine Datei in der Quelle hinzufügen oder löschen, verfährt AzCopy v10 im Ziel auf die gleiche Weise. Vor dem Löschen fragt AzCopy eine Bestätigung des Löschens der Dateien ab.
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 
@@ -246,6 +245,10 @@ Sie können einen fehlerhaften/abgebrochenen Auftrag mithilfe seines Bezeichners
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
 ```
+
+### <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
+
+Standardmäßig ist die AzCopy-Protokollebene auf INFO festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz zu sparen, überschreiben Sie die Einstellung mit der ``--log-level``-Option. Verfügbare Protokollebenen sind: DEBUG, INFO, WARNING, ERROR, PANIC und FATAL.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

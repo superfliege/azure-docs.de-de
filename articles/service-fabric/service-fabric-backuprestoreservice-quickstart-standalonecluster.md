@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 2ff7221a3742f59cdef2c5c7c220cc80148b94d0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b8f7142b2bd8e07e4b92c37b7e06bc4fe09efb73
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721560"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580415"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -146,6 +146,9 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+> [!IMPORTANT]
+> Aufgrund eines Problems in der Runtime müssen Sie sicherstellen, dass die Beibehaltungsdauer in der Aufbewahrungsrichtlinie auf weniger als 24 Tage festgelegt ist. Andernfalls kommt es für den Sicherungs-/Wiederherstellungsdienst nach dem Replikatfailover zu einem Quorumverlust.
+
 ### <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach dem Definieren der Richtlinie zum Erfüllen der Datenschutzanforderungen der Anwendung muss die Sicherungsrichtlinie mit der Anwendung verknüpft werden. Je nach Anforderungen kann die Sicherungsrichtlinie einer Anwendung, einem Dienst oder einer Partition zugeordnet werden.
 
@@ -222,9 +225,13 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+## <a name="known-issues"></a>Bekannte Probleme
+- Stellen Sie sicher, dass die Beibehaltungsdauer auf weniger als 24 Tage festgelegt ist. 
+- Der Sicherungs-/Wiederherstellungsdienst kann nur für Gebietsschemata verwendet werden, in denen das Dezimaltrennzeichen „.“ lautet.
+- Der Sicherungs-/Wiederherstellungsdienst kann nicht auf einem Cluster mit gMSA-basierter Sicherheit ausgeführt werden.
+
 ## <a name="limitation-caveats"></a>Einschränkungen/ Vorbehalte
 - Keine in Service Fabric integrierten PowerShell-Cmdlets.
-- Keine Unterstützung für die Service Fabric-CLI.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
 
 ## <a name="next-steps"></a>Nächste Schritte

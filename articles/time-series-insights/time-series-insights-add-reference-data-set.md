@@ -1,5 +1,5 @@
 ---
-title: Verweisdaten in Azure Time Series Insights – Hinzufügen eines Verweisdatasets zu Ihrer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
+title: Hinzufügen eines Verweis-DataSets zu Ihrer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Ihrer Azure Time Series Insights-Umgebung ein Verweisdataset zum Ergänzen der Daten hinzufügen.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: de5f4735e7dde7a3e631d14c83d42ccb9fd5c9db
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f0110ea79d05c0da57ac2d2e1f52194bed12152c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273832"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555556"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -60,9 +60,9 @@ Verweisdaten werden nicht rückwirkend verknüpft. Das bedeutet, dass nur aktuel
    - Fügen Sie die Daten in den Text-Editor ein. Klicken Sie dann auf die Schaltfläche **Referenzdaten analysieren**.
    - Klicken Sie auf die Schaltfläche **Datei auswählen**, um Daten aus einer lokalen Textdatei hinzuzufügen. 
 
-   Fügen Sie beispielsweise CSV-Daten ein:  ![Eingefügte CSV-Daten](media/add-reference-data-set/csv_data_pasted.png)
+   Fügen Sie beispielsweise CSV-Daten ein: ![Eingefügte CSV-Daten](media/add-reference-data-set/csv_data_pasted.png)
 
-   Fügen Sie beispielsweise JSON-Array-Daten ein:  ![Eingefügte JSON-Daten](media/add-reference-data-set/json_data_pasted.png)
+   Fügen Sie beispielsweise JSON-Arraydaten ein: ![Eingefügte JSON-Daten](media/add-reference-data-set/json_data_pasted.png)
 
    Falls beim Analysieren der Datenwerte ein Fehler auftritt, wird er unten auf der Seite in Rot angezeigt. Beispiel: `CSV parsing error, no rows extracted`
 

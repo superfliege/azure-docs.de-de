@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 12/12/2018
-ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314396"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789906"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -135,9 +135,8 @@ Weitere Artikel zur WMI-Problembehandlung finden Sie unter den folgenden Links.
 
 ## <a name="unsupported-operating-systems"></a>Nicht unterstützte Betriebssysteme
 
-Eine andere häufige Ursache für Fehler ist ein nicht unterstütztes Betriebssystem. Stellen Sie sicher, dass Sie ein unterstütztes Betriebssystem/eine unterstützte Kernel-Version verwenden, um eine erfolgreiche Installation von Mobility Service zu ermöglichen.
-
-Informationen zu den von Azure Site Recovery unterstützten Betriebssystemen finden Sie in unserem [Dokument zur Unterstützungsmatrix](vmware-physical-azure-support-matrix.md#replicated-machines).
+Eine andere häufige Ursache für Fehler ist ein nicht unterstütztes Betriebssystem. Stellen Sie sicher, dass Sie ein unterstütztes Betriebssystem/eine unterstützte Kernel-Version verwenden, um eine erfolgreiche Installation von Mobility Service zu ermöglichen. Verwenden Sie keine privaten Patches.
+In der [Dokumentation zur Unterstützungsmatrix](vmware-physical-azure-support-matrix.md#replicated-machines) können Sie sich eine Liste aller von Azure Site Recovery unterstützen Betriebssysteme und Kernelversionen ansehen.
 
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Start- und Systempartitionen/Volumes sind nicht derselbe Datenträger (Fehler-ID: 95309)
 
@@ -146,6 +145,10 @@ Vor Version 9.20 wurden Start- und Systempartitionen/Volumes auf verschiedenen D
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systempartition auf mehreren Datenträgern (Fehler-ID: 95313)
 
 Vor Version 9.20 wurden Stammpartitionen oder Volumes auf mehreren Datenträgern als Konfiguration nicht unterstützt. Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) wird diese Konfiguration unterstützt. Verwenden Sie für diese Unterstützung die neueste Version.
+
+## <a name="grub-uuid-failure-errorid-95320"></a>Fehler bei der UUID von GRUB (Fehler-ID: 95320)
+
+Wenn GRUB auf dem Quellcomputer den Gerätenamen statt des UUID verwendet, tritt ein Fehler bei der Installation des Mobilitäts-Agents auf. Wenden Sie sich an den Systemadministrator, um die GRUB-Datei anzupassen.
 
 ## <a name="lvm-support-from-920-version"></a>LVM-Unterstützung ab Version 9.20
 

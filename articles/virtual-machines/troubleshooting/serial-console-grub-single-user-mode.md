@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211382"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580143"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
 GRUB steht für GRand Unified Bootloader. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
@@ -28,10 +28,10 @@ Der Einzelbenutzermodus ist eine minimale Umgebung mit minimaler Funktionalität
 
 Der Einzelbenutzermodus ist auch in Situationen hilfreich, in denen Ihr virtueller Computer nur für die Anmeldung mit SSH-Schlüsseln konfiguriert werden kann. In diesem Fall können Sie den Einzelbenutzermodus verwenden, um ein Konto mit Kennwortauthentifizierung zu erstellen.
 
-Damit Sie in den Einzelbenutzermodus wechseln können, müssen Sie GRUB beim Starten Ihres virtuellen Computers aktivieren und dann die Startkonfiguration in GRUB ändern. Hierzu kann die serielle Konsole des virtuellen Computers verwendet werden. 
+Damit Sie in den Einzelbenutzermodus wechseln können, müssen Sie GRUB beim Starten Ihres virtuellen Computers aktivieren und dann die Startkonfiguration in GRUB ändern. Hierzu kann die serielle Konsole des virtuellen Computers verwendet werden.
 
 ## <a name="general-grub-access"></a>Allgemeiner GRUB-Zugriff
-Damit Sie auf GRUB zugreifen können, müssen Sie Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist. Einige Distributionen erfordern Tastatureingaben zum Anzeigen von GRUB, während andere Distributionen GRUB automatisch ein paar Sekunden lang anzeigen und Benutzereingaben über die Tastatur zulassen, um das Timeout abzubrechen. 
+Damit Sie auf GRUB zugreifen können, müssen Sie Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist. Einige Distributionen erfordern Tastatureingaben zum Anzeigen von GRUB, während andere Distributionen GRUB automatisch ein paar Sekunden lang anzeigen und Benutzereingaben über die Tastatur zulassen, um das Timeout abzubrechen.
 
 Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. Distributionsspezifische Informationen finden Sie weiter unten und unter [diesem Link](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
@@ -63,11 +63,11 @@ Für den Einzelbenutzermodus in RHEL muss der Root-Benutzer aktiviert werden. Di
 
 1. Melden Sie sich über SSH beim Red Hat-System an.
 1. Wechseln Sie zum Stamm.
-1. Aktivieren Sie das Kennwort für den Root-Benutzer. 
+1. Aktivieren Sie das Kennwort für den Root-Benutzer.
     * `passwd root` (Legen Sie ein sicheres Root-Kennwort fest.)
 1. Stellen Sie sicher, dass sich der Root-Benutzer nur über ttyS0 anmelden kann.
     * `edit /etc/ssh/sshd_config`, und stellen Sie sicher, dass „PermitRootLogIn“ auf „no“ festgelegt ist.
-    * `edit /etc/securetty file`, um die Anmeldung nur über ttyS0 zuzulassen. 
+    * `edit /etc/securetty file`, um die Anmeldung nur über ttyS0 zuzulassen.
 
 Wenn das System nun im Einzelbenutzermodus gestartet wird, können Sie sich über das Root-Kennwort anmelden.
 
@@ -83,7 +83,7 @@ Wenn Sie GRUB und den Stammzugriff wie oben beschrieben eingerichtet haben, kön
 1. Fügen Sie am Ende der Zeile Folgendes hinzu: `systemd.unit=rescue.target`
     * Dadurch starten Sie im Einzelbenutzermodus. Wenn Sie den Notfallmodus verwenden möchten, fügen Sie anstelle von `systemd.unit=rescue.target` am Ende der Zeile `systemd.unit=emergency.target` hinzu.
 1. Drücken Sie STRG+X, um den Modus zu beenden und einen Neustart mit den angewendeten Einstellungen durchzuführen.
-1. Sie werden zur Eingabe des Administratorkennworts aufgefordert, bevor Sie in den Einzelbenutzermodus wechseln können. Dies ist das Kennwort, das Sie in den obigen Anweisungen erstellt haben.    
+1. Sie werden zur Eingabe des Administratorkennworts aufgefordert, bevor Sie in den Einzelbenutzermodus wechseln können. Dies ist das Kennwort, das Sie in den obigen Anweisungen erstellt haben.
 
     ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
@@ -104,11 +104,11 @@ Wenn Sie die obigen Schritte zum Aktivieren des Stammbenutzers nicht ausgeführt
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Hinweis: Wenn Sie den obigen Anweisungen folgen, gelangen Sie in die Notfall-Shell, sodass Sie auch Aufgaben wie das Bearbeiten von `fstab` ausführen können. Im Allgemeinen wird jedoch empfohlen, das Stammkennwort zurückzusetzen und damit den Einzelbenutzermodus zu aktivieren. 
+> Hinweis: Wenn Sie den obigen Anweisungen folgen, gelangen Sie in die Notfall-Shell, sodass Sie auch Aufgaben wie das Bearbeiten von `fstab` ausführen können. Im Allgemeinen wird jedoch empfohlen, das Stammkennwort zurückzusetzen und damit den Einzelbenutzermodus zu aktivieren.
 
 
 ## <a name="access-for-centos"></a>Zugriff für CentOS
-Ähnlich wie in Red Hat Enterprise Linux erfordert der Einzelbenutzermodus in CentOS, dass GRUB und der Stammbenutzer aktiviert sind. 
+Ähnlich wie in Red Hat Enterprise Linux erfordert der Einzelbenutzermodus in CentOS, dass GRUB und der Stammbenutzer aktiviert sind.
 
 ### <a name="grub-access-in-centos"></a>GRUB-Zugriff in CentOS
 In CentOS ist GRUB standardmäßig aktiviert. Starten Sie zum Aktivieren des GRUB-Modus Ihre VM mit `sudo reboot` neu, und drücken Sie eine beliebige Taste. Daraufhin wird der GRUB-Bildschirm angezeigt.
@@ -116,8 +116,8 @@ In CentOS ist GRUB standardmäßig aktiviert. Starten Sie zum Aktivieren des GRU
 ### <a name="single-user-mode-in-centos"></a>Einzelbenutzermodus in CentOS
 Befolgen Sie die obigen Anweisungen für RHEL, um den Einzelbenutzermodus in CentOS zu aktivieren.
 
-## <a name="access-for-ubuntu"></a>Zugriff für Ubuntu 
-Ubuntu-Images erfordern kein Stammkennwort. Wenn das System im Einzelbenutzermodus gestartet wird, können Sie es ohne zusätzliche Anmeldeinformationen verwenden. 
+## <a name="access-for-ubuntu"></a>Zugriff für Ubuntu
+Ubuntu-Images erfordern kein Stammkennwort. Wenn das System im Einzelbenutzermodus gestartet wird, können Sie es ohne zusätzliche Anmeldeinformationen verwenden.
 
 ### <a name="grub-access-in-ubuntu"></a>GRUB-Zugriff in Ubuntu
 Halten Sie zum Zugreifen auf GRUB während des Starts der VM die ESC-TASTE gedrückt.
@@ -137,8 +137,17 @@ Ubuntu aktiviert automatisch den Einzelbenutzermodus, wenn ein normaler Start ni
 1. Fügen Sie `single` nach `ro` hinzu, und achten Sie darauf, dass vor und nach `single` ein Leerzeichen vorhanden ist.
 1. Drücken Sie STRG+X, um einen Neustart mit diesen Einstellungen durchzuführen und den Einzelbenutzermodus zu aktivieren.
 
+### <a name="using-grub-to-invoke-bash-in-ubuntu"></a>Verwenden von GRUB zum Aufrufen der Bash in Ubuntu
+In einigen Situationen (etwa bei einem vergessenen Stammkennwort) sind Sie möglicherweise auch nach dem Ausführen der vorstehenden Anweisungen nicht in der Lage, in Ihrer Ubuntu-VM auf den Einzelbenutzermodus zuzugreifen. Sie können den Kernel auch anweisen, /bin/bash als init anstelle von system init auszuführen, wodurch Sie eine Bash-Shell erhalten, die Ihnen die Systemwartung ermöglicht. Gehen Sie folgendermaßen vor:
+
+1. Drücken Sie auf dem GRUB-Bildschirm „e“, um Ihren Starteintrag (Ubuntu-Eintrag) zu bearbeiten.
+1. Suchen Sie nach der Zeile, die mit `linux` beginnt, und dann nach `ro`.
+1. Ersetzen Sie `ro` durch `rw init=/bin/bash`.
+    - Dadurch wird Ihr Dateisystem mit Lese-/Schreibzugriff eingebunden und /bin/bash als init-Prozess verwendet.
+1. Drücken Sie STRG+X, um einen Neustart mit diesen Einstellungen durchzuführen.
+
 ## <a name="access-for-coreos"></a>Zugriff für CoreOS
-Der Einzelbenutzermodus in CoreOS erfordert, dass GRUB aktiviert ist. 
+Der Einzelbenutzermodus in CoreOS erfordert, dass GRUB aktiviert ist.
 
 ### <a name="grub-access-in-coreos"></a>GRUB-Zugriff in CoreOS
 Drücken Sie zum Zugreifen auf GRUB während des Starts der VM eine beliebige Taste.
@@ -151,13 +160,13 @@ CoreOS aktiviert automatisch den Einzelbenutzermodus, wenn ein normaler Start ni
 1. Drücken Sie STRG+X, um einen Neustart mit diesen Einstellungen durchzuführen und den Einzelbenutzermodus zu aktivieren.
 
 ## <a name="access-for-suse-sles"></a>Zugriff für SUSE SLES
-Neuere Images von SLES 12 SP3 und höher ermöglichen den Zugriff über die serielle Konsole, wenn das System im Notfallmodus gestartet wird. 
+Neuere Images von SLES 12 SP3 und höher ermöglichen den Zugriff über die serielle Konsole, wenn das System im Notfallmodus gestartet wird.
 
 ### <a name="grub-access-in-suse-sles"></a>GRUB-Zugriff in SUSE SLES
 Der GRUB-Zugriff in SLES erfordert eine Bootloaderkonfiguration über YaST. Gehen Sie dazu wie folgt vor:
 
-1. Stellen Sie eine SSH-Verbindung mit Ihrer SLES-VM her, und führen Sie `sudo yast bootloader` aus. Navigieren Sie mit den Tasten `tab` und `enter` sowie den Pfeiltasten durch das Menü. 
-1. Navigieren Sie zu `Kernel Parameters`, und überprüfen Sie `Use serial console`. 
+1. Stellen Sie eine SSH-Verbindung mit Ihrer SLES-VM her, und führen Sie `sudo yast bootloader` aus. Navigieren Sie mit den Tasten `tab` und `enter` sowie den Pfeiltasten durch das Menü.
+1. Navigieren Sie zu `Kernel Parameters`, und überprüfen Sie `Use serial console`.
 1. Fügen Sie den Konsolenargumenten `serial --unit=0 --speed=9600 --parity=no` hinzu.
 
 1. Drücken Sie zum Speichern Ihrer Einstellungen und Beenden F10.
@@ -176,7 +185,7 @@ Die Notfall-Shell wird automatisch geöffnet, wenn SLES nicht normal gestartet w
 > Beachten Sie, dass die Notfall-Shell mit einem _schreibgeschützten_ Dateisystem aktiviert wird. Wenn Sie Dateien bearbeiten möchten, müssen Sie das Dateisystem mit Lese-/Schreibberechtigungen erneut einbinden. Geben Sie dazu in der Shell `mount -o remount,rw /` ein.
 
 ## <a name="access-for-oracle-linux"></a>Zugriff für Oracle Linux
-Ähnlich wie in Red Hat Enterprise Linux erfordert der Einzelbenutzermodus in Oracle Linux, dass GRUB und der Stammbenutzer aktiviert sind. 
+Ähnlich wie in Red Hat Enterprise Linux erfordert der Einzelbenutzermodus in Oracle Linux, dass GRUB und der Stammbenutzer aktiviert sind.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB-Zugriff in Oracle Linux
 In Oracle Linux ist GRUB standardmäßig aktiviert. Starten Sie zum Aktivieren des GRUB-Modus Ihre VM mit `sudo reboot` neu, und drücken Sie die ESC-TASTE. Daraufhin wird der GRUB-Bildschirm angezeigt.

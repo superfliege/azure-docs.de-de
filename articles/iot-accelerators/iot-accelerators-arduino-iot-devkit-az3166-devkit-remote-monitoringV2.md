@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 7f67868f6220ab2940aa8ac4d4bf24f82191cc22
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b14a36e79488f586173a6f4c8b81a24d8ce24806
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620250"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727495"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Verbinden eines IoT DevKit-Geräts mit dem Solution Accelerator für die Remoteüberwachung
 
@@ -22,24 +22,21 @@ ms.locfileid: "52620250"
 
 In dieser Schrittanleitung wird gezeigt, wie Sie eine Beispielanwendung auf Ihrem IoT DevKit-Gerät ausführen. Der Beispielcode sendet Telemetriedaten von den Sensoren auf dem DevKit-Gerät an Ihren Solution Accelerator.
 
-Das [IoT DevKit](https://aka.ms/iot-devkit) ist ein mit Arduino kompatibles All-in-One-Board mit umfangreichen Peripheriegeräten und Sensoren. Sie können dafür in Visual Studio Code mithilfe der [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) entwickeln. Der [Projektkatalog](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) enthält Beispielanwendungen, die Sie beim Erstellen von Prototypen für IoT-Lösungen unterstützen.
+Das [MXChip IoT DevKit](https://aka.ms/iot-devkit) ist ein mit Arduino kompatibles All-in-One-Board mit umfangreichen Peripheriegeräten und Sensoren. Mit den Erweiterungspaketen [Azure IoT Device Workbench](https://aka.ms/iot-workbench) und [Azure IoT Tools](https://aka.ms/azure-iot-tools) können Sie in Visual Studio Code dafür entwickeln. Der [Projektkatalog](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) enthält Beispielanwendungen, die Sie beim Erstellen von Prototypen für IoT-Lösungen unterstützen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Befolgen Sie den [Leitfaden zu den ersten Schritten mit dem IoT DevKit](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started), und führen Sie nur die folgenden Abschnitte aus:
+Um die Schritte in diesem Tutorial auszuführen, erledigen Sie zuerst die folgenden Aufgaben:
 
-* Vorbereiten der Hardware
-* Konfigurieren von WLAN
-* Starten unter Verwendung von DevKit
-* Vorbereiten der Entwicklungsumgebung
+* Bereiten Sie Ihr DevKit vor, indem Sie die in [Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub in der Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) beschriebenen Schritte ausführen.
 
-## <a name="open-the-sample"></a>Öffnen des Beispiels
+## <a name="open-sample-project"></a>Öffnen eines Beispielprojekts
 
 So öffnen Sie das Remoteüberwachungsbeispiel in VS Code:
 
 1. Stellen Sie sicher, dass Ihr IoT DevKit nicht mit Ihrem Computer verbunden ist. Starten Sie zuerst Visual Studio Code, und stellen Sie dann eine Verbindung von DevKit mit Ihrem Computer her.
 
-1. Klicken Sie auf `F1`, um die Befehlspalette zu öffnen, geben Sie **IoT Workbench: Beispiele** ein, und wählen Sie es aus. Wählen Sie dann **IoT DevKit** als Board aus.
+1. Drücken Sie `F1`, um die Befehlspalette zu öffnen, geben Sie **Azure IoT Device Workbench: Open Examples** (Azure IoT Device Workbench: Beispiele öffnen) ein, und wählen Sie den angezeigten Befehl aus. Wählen Sie dann **IoT DevKit** als Board aus.
 
 1. Suchen Sie **Remoteüberwachung**, und klicken Sie auf **Beispiel öffnen**. Daraufhin wird ein neues VS Code-Fenster mit dem Projektordner geöffnet:
 
@@ -58,7 +55,7 @@ So konfigurieren Sie die Verbindungszeichenfolge des IoT Hub-Geräts auf Ihrem D
 
     ![IoT DevKit-Konfigurationsmodus](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. Drücken Sie **F1**, um die Befehlspalette zu öffnen, und geben Sie Folgendes ein, bzw. wählen Sie Folgendes aus: **IoT Workbench: Gerät > Geräteeinstellungen konfigurieren**.
+1. Drücken Sie **F1**, um die Befehlspalette zu öffnen, geben Sie **Azure IoT Device Workbench: Configure Device Settings > Config Device Connection String** (Azure IoT Device Workbenche: Geräteeinstellungen konfigurieren > Geräte-Verbindungszeichenfolge konfigurieren) ein, und wählen Sie den angezeigten Befehl aus.
 
 1. Fügen Sie die zuvor kopierte Verbindungszeichenfolge ein, und drücken Sie die **EINGABETASTE**, um das Gerät zu konfigurieren.
 
@@ -66,13 +63,11 @@ So konfigurieren Sie die Verbindungszeichenfolge des IoT Hub-Geräts auf Ihrem D
 
 So erstellen Sie den Gerätecode und laden ihn hoch:
 
-1. Drücken Sie **F1**, um die Befehlspalette zu öffnen, und geben Sie Folgendes ein, bzw. wählen Sie Folgendes aus: **IoT Workbench: Gerät > Gerät hochladen**:
-
-    ![IoT Workbench: Gerät > Hochladen](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-upload.png)
+1. Drücken Sie `F1`, um die Befehlspalette zu öffnen, geben Sie **Azure IoT Device Workbench: Upload Device Code** (Azure IoT Device Workbench: Gerätecode hochladen) ein, und wählen Sie den angezeigten Befehl aus.
 
 1. VS Code kompiliert und lädt den Code auf Ihr DevKit-Gerät hoch:
 
-    ![IoT Workbench: Gerät > Hochgeladen](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
+    ![IoT Workbench: Device > Uploaded (IoT Workbench: Gerät > Hochgeladen)](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
 
 1. Das DevKit-Gerät wird neu gestartet und führt den Code aus, den Sie hochgeladen haben.
 
@@ -104,7 +99,7 @@ So ändern Sie die Farbe einer der DevKit-LEDs mithilfe der Methode **LedColor**
 
 1. Konfigurieren Sie die Aufträge mithilfe der folgenden Werte, und klicken Sie auf **Anwenden**:
 
-    * Wählen Sie „Auftrag: **Run-Methode**“ aus.
+    * Auftrag auswählen: **Run-Methode**
     * Methodenname: **LedColor**
     * Auftragsname: **ChangeLedColor**
 
@@ -126,7 +121,7 @@ Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf de
 
 Wenn Probleme auftreten, lesen Sie die [häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/), oder wenden Sie sich über folgende Kanäle an uns:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Nächste Schritte

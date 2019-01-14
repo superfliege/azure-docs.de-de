@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016692"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537619"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -39,7 +39,7 @@ Ja.
 
 Mit der Service Fabric-Kernclusteringtechnologie können Computer an beliebigen Orten auf der ganzen Welt verknüpft werden, solange diese über ein Netzwerk miteinander verbunden sind. Die Erstellung und Ausführung eines solchen Clusters kann jedoch komplex sein.
 
-Wenn Sie sich für dieses Szenario interessieren, wird empfohlen, entweder über die [Liste mit Service Fabric-Problemen auf Github ](https://github.com/azure/service-fabric-issues) den Kontakt herzustellen oder sich an einen Supportmitarbeiter zu wenden, um weitere Anleitungen zu erhalten. Das Service Fabric-Team arbeitet an der Bereitstellung zusätzlicher Anleitungen und Empfehlungen für dieses Szenario. 
+Wenn Sie sich für dieses Szenario interessieren, wird empfohlen, entweder über die [Liste mit Service Fabric-Problemen auf GitHub ](https://github.com/azure/service-fabric-issues) den Kontakt herzustellen oder sich an einen Supportmitarbeiter zu wenden, um weitere Anleitungen zu erhalten. Das Service Fabric-Team arbeitet an der Bereitstellung zusätzlicher Anleitungen und Empfehlungen für dieses Szenario. 
 
 Einige Aspekte, die zu berücksichtigen sind: 
 
@@ -64,9 +64,16 @@ Es gibt derzeit andere Probleme mit großen VM-Skalierungsgruppen, z.B. den Mang
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Was ist die Mindestgröße für einen Service Fabric-Cluster? Warum darf er nicht kleiner sein?
 
-Die unterstützte Mindestgröße für einen Service Fabric-Cluster, auf dem Produktionsworkloads ausgeführt werden, beträgt fünf Knoten. Für Entwicklungs-/Testszenarios unterstützen wir Cluster mit drei Knoten.
+Die unterstützte Mindestgröße für einen Service Fabric-Cluster, auf dem Produktionsworkloads ausgeführt werden, beträgt fünf Knoten. Für Entwicklungszenarios unterstützen wir Cluster mit einem Knoten (optimiert für eine schnelle Entwicklung in Visual Studio) und Cluster mit fünf Knoten.
 
-Diese Mindestwerte gelten, weil auf dem Service Fabric-Cluster ein Satz zustandsbehafteter Systemdienste ausgeführt werden, darunter der Naming Service und der Failover-Manager. Diese Dienste verfolgen, welche Dienste auf dem Cluster bereitgestellt wurden und wo sie zurzeit gehostet werden, und sind von starker Konsistenz abhängig. Diese starke Konsistenz ist wiederum von der Möglichkeit abhängig, ein *Quorum* für jedes Update am Zustand dieser Dienste abzurufen, wobei ein Quorum die strikte Mehrheit der Replikate (N/2 + 1) für einen bestimmten Dienst darstellt.
+Ein Produktionscluster muss aus den folgenden drei Gründen mindestens 5 Knoten umfassen:
+1. Selbst wenn keine Benutzerdienste ausgeführt werden, führt ein Service Fabric-Cluster verschiedene zustandsbehaftete Systemdienste aus, darunter Naming Service und Failover-Manager-Dienst. Diese Systemdienste sind für die Aufrechterhaltung des Clusterbetriebs unerlässlich.
+2. Es wird immer ein Replikat eines Dienstes pro Knoten platziert, sodass die Clustergröße die Obergrenze für die Anzahl von Replikaten ist, die ein Dienst (eigentlich eine Partition) aufweisen kann.
+3. Da bei einem Clusterupgrade mindestens ein Knoten heruntergefahren wird, sollte ein Puffer von mindestens einem Knoten vorhanden sein. Deshalb wird angestrebt, dass ein Produktionscluster mindestens zwei Knoten *zusätzlich* zum absoluten Mindestwert aufweist. Der absolute Mindestwert ist die Quorumgröße eines Systemdienstes, wie nachstehend erläutert wird.  
+
+Es wird angestrebt, dass der Cluster auch bei einem gleichzeitigen Ausfall von zwei Knoten verfügbar bleibt. Damit ein Service Fabric-Cluster verfügbar ist, müssen die Systemdienste verfügbar sein. Zustandsbehaftete Systemdienste wie z.B. Naming Service und Failover-Manager-Dienst verfolgen, welche Dienste auf dem Cluster bereitgestellt wurden und wo sie zurzeit gehostet werden, und sind von starker Konsistenz abhängig. Diese starke Konsistenz ist wiederum von der Möglichkeit abhängig, ein *Quorum* für jedes Update am Zustand dieser Dienste abzurufen, wobei ein Quorum die strikte Mehrheit der Replikate (N/2 + 1) für einen bestimmten Dienst darstellt. Wenn also Resilienz gegenüber einem gleichzeitigen Verlust von zwei Knoten (also einem gleichzeitigen Verlust von zwei Replikaten eines Systemdienstes) erreicht werden soll, muss ClusterSize - QuorumSize >= 2 sein, wodurch sich eine Mindestgröße von 5 ergibt. Zeigen wir dies an einem Beispiel: Angenommen, der Cluster umfasst N Knoten, und es liegen N Replikate eines Systemdienstes vor – einer auf jedem Knoten. Die Quorumgröße für einen Systemdienst ist (N/2 + 1). Die obige Ungleichung lautet N - (N/2 + 1) >= 2. Es müssen zwei Fälle berücksichtigt werden: N ist gerade und N ist ungerade. Wenn N gerade ist, z.B. N = 2\*m, wobei gilt: m >= 1, lautet die Ungleichung 2\*m - (2\*m/2 + 1) >= 2 oder m >= 3. Der Mindestwert für N ist 6, und dies wird bei m = 3 erreicht. Wenn andererseits N ungerade ist, z.B. N = 2\*m+1, wobei gilt: m >= 1, lautet die Ungleichung 2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 oder 2\*m+1 - (m+1) >= 2 oder m >= 2. Der Mindestwert für N ist 5, und dies wird bei m = 2 erreicht. Daher lautet unter allen Werten von N, die die Ungleichung ClusterSize - QuorumSize >= 2 erfüllen, der Mindestwert 5.
+
+Beachten Sie, dass wir im obigen Argument davon ausgegangen sind, dass jeder Knoten eine Kopie eines Systemdienstes umfasst, sodass die Quorumgröße basierend auf der Anzahl von Knoten im Cluster berechnet wird. Durch die Änderung von *TargetReplicaSetSize* könnten wir jedoch die Quorumgröße unter (N/2+1) verringern. Dies könnte den Eindruck erwecken, dass ein Cluster verwendet werden kann, der weniger als 5 Knoten umfasst und dennoch 2 zusätzliche Knoten über der Quorumgröße aufweist. Ein Beispiel: Wenn in einem 4-Knoten-Cluster TargetReplicaSetSize auf 3 festgelegt wird, lautet die Quorumgröße basierend auf TargetReplicaSetSize (3/2 + 1) oder 2, also ergibt sich: ClusterSize - QuorumSize = 4-2 >= 2. Es kann jedoch nicht garantiert werden, dass der Systemdienst das Quorum erfüllt oder übererfüllt, wenn ein beliebiges Knotenpaar gleichzeitig ausfällt. Es könnte sein, dass die beiden ausgefallenen Knoten zwei Replikate gehostet haben, sodass es beim Systemdienst zu einem Quorumverlust kommt (weil nur noch eine einzige Kopie verbleibt) und der Dienst nicht mehr verfügbar ist.
 
 Untersuchen wir vor diesem Hintergrund einige mögliche Clusterkonfigurationen:
 
@@ -74,9 +81,13 @@ Untersuchen wir vor diesem Hintergrund einige mögliche Clusterkonfigurationen:
 
 **Zwei Knoten**: Ein Quorum für einen Dienst, der über zwei Knoten bereitgestellt wird (N = 2), ist 2 (2/2 + 1 = 2). Wenn ein einzelnes Replikat verloren geht, ist es unmöglich, ein Quorum zu erstellen. Da es zum Ausführen eines Dienstupgrades erforderlich ist, ein Replikat vorübergehend außer Betrieb zu nehmen, ist dies keine nützlich Konfiguration.
 
-**Drei Knoten**: Mit drei Knoten (N = 3) liegt die Anforderung zum Erstellen eines Quorums noch immer bei zwei Knoten (3/2 + 1 = 2). Dies bedeutet, dass Sie einen einzelnen Knoten verlieren und weiterhin ein Quorum beibehalten können.
+**Drei Knoten**: Mit drei Knoten (N = 3) liegt die Anforderung zum Erstellen eines Quorums noch immer bei zwei Knoten (3/2 + 1 = 2). Dies bedeutet, dass Sie einen einzelnen Knoten verlieren und das Quorum dennoch beibehalten können. Der gleichzeitige Ausfall von zwei Knoten führt jedoch dazu, dass es bei den Systemdiensten zu einem Quorumverlust kommt und der Cluster nicht mehr verfügbar ist.
 
-Die Clusterkonfiguration mit drei Knoten wird für Dev/Test unterstützt, da Sie sicher Upgrades ausführen und den Ausfall einzelner Knoten überstehen können, solange sie nicht gleichzeitig ausfallen. Für Produktionsworkflows müssen Sie solche gleichzeitigen Ausfälle abfedern können, daher sind fünf Knoten erforderlich.
+**Vier Knoten**: Mit vier Knoten (N = 4) liegt die Anforderung zum Erstellen eines Quorums bei drei Knoten (4/2 + 1 = 3). Dies bedeutet, dass Sie einen einzelnen Knoten verlieren und das Quorum dennoch beibehalten können. Der gleichzeitige Ausfall von zwei Knoten führt jedoch dazu, dass es bei den Systemdiensten zu einem Quorumverlust kommt und der Cluster nicht mehr verfügbar ist.
+
+**Fünf Knoten**: Mit fünf Knoten (N = 5) liegt die Anforderung zum Erstellen eines Quorums weiterhin bei drei Knoten (5/2 + 1 = 3). Dies bedeutet, dass Sie zwei Knoten gleichzeitig verlieren und das Quorum für die Systemdienste weiter beibehalten können.
+
+Bei Produktionsworkloads müssen Sie für Resilienz gegenüber dem gleichzeitigen Ausfall von mindestens zwei Knoten (z.B. einer durch ein Clusterupgrade, ein weiterer aus anderen Gründen) sorgen, deshalb sind fünf Knoten erforderlich.
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Kann ich meinen Cluster am Abend/Wochenende abschalten, um Kosten zu sparen?
 
@@ -93,7 +104,7 @@ Wir arbeiten an einer optimierten Lösung, derzeit müssen Sie jedoch das Upgrad
 Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [Verschlüsseln von Datenträgern (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) und [Verschlüsseln von Datenträgern (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich virtuelle Computer mit niedriger Priorität in einem Clusterknotentyp verwenden (VM-Skalierungsgruppe)?
-Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt. 
+ Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt. 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Welche Verzeichnisse und Prozesse muss ich ausschließen, wenn ein Antivirenprogramm in meinem Cluster ausgeführt wird?
 

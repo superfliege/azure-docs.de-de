@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410277"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994367"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
 
@@ -88,7 +88,7 @@ Wählen Sie zum Öffnen einer Liste mit den Dienstansichten auf der Azure-Portal
 
 #### <a name="check-for-azure-service-outages"></a>Durchführen einer Prüfung auf Ausfälle von Azure-Diensten
 
-HDInsight basiert auf mehreren Azure-Diensten. Es werden virtuelle Server in Azure HDInsight ausgeführt, Daten und Skripts werden in Azure Blob Storage oder Azure Data Lake Store gespeichert, und Protokolldateien werden in Azure Table Storage indiziert. Störungen dieser Dienste sind zwar selten, können aber zu Problemen in HDInsight führen. Überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/) im entsprechenden Dashboard, falls für Ihren Cluster unerwartete Verlangsamungen oder Fehler auftreten. Der Status der einzelnen Dienste ist nach Region aufgeführt. Überprüfen Sie die Region Ihres Clusters und die Regionen für alle dazugehörigen Dienste.
+HDInsight basiert auf mehreren Azure-Diensten. Virtuelle Server werden in Azure HDInsight ausgeführt, Daten und Skripts werden in Azure Blob Storage oder Azure Data Lake Storage gespeichert, und Protokolldateien werden in Azure Table Storage indiziert. Störungen dieser Dienste sind zwar selten, können aber zu Problemen in HDInsight führen. Überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/) im entsprechenden Dashboard, falls für Ihren Cluster unerwartete Verlangsamungen oder Fehler auftreten. Der Status der einzelnen Dienste ist nach Region aufgeführt. Überprüfen Sie die Region Ihres Clusters und die Regionen für alle dazugehörigen Dienste.
 
 #### <a name="check-azure-service-usage-limits"></a>Überprüfen der Nutzungseinschränkungen von Azure-Diensten
 

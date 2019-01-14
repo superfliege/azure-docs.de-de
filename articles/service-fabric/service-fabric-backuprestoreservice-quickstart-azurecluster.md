@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 57848a7a4d8e627e952a9f46d438b073c73d833a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a9b90fe119bc56620a7bd3087d4842f604fc18f0
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725861"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582540"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -150,6 +150,9 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestor
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
+> [!IMPORTANT]
+> Aufgrund eines Problems in der Runtime müssen Sie sicherstellen, dass die Beibehaltungsdauer in der Aufbewahrungsrichtlinie auf weniger als 24 Tage festgelegt ist. Andernfalls kommt es für den Sicherungs-/Wiederherstellungsdienst nach dem Replikatfailover zu einem Quorumsverlust.
+
 ### <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach dem Definieren der Sicherungsrichtlinie zum Erfüllen der Datenschutzanforderungen der Anwendung muss die Sicherungsrichtlinie mit der Anwendung verknüpft werden. Je nach Anforderungen kann die Sicherungsrichtlinie einer Anwendung, einem Dienst oder einer Partition zugeordnet werden.
 
@@ -228,8 +231,10 @@ FailureError            :
 
 ## <a name="limitation-caveats"></a>Einschränkungen/ Vorbehalte
 - Keine in Service Fabric integrierten PowerShell-Cmdlets.
-- Keine Unterstützung für die Service Fabric-CLI.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
+
+## <a name="known-issues"></a>Bekannte Probleme
+- Stellen Sie sicher, dass die Beibehaltungsdauer auf weniger als 24 Tage konfiguriert ist. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)

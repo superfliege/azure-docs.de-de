@@ -1,22 +1,23 @@
 ---
-title: Nutzen der End-to-End-Ausführung von Azure Batch-Aufträgen mithilfe von Vorlagen | Microsoft-Dokumentation
+title: End-to-End-Ausführung von Aufträgen mithilfe von Vorlagen – Azure Batch | Microsoft-Dokumentation
 description: Erstellen Sie Batch-Pools, -Aufträge und -Aufgaben mit Vorlagendateien und der Azure CLI.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 08/02/2018
-ms.author: danlep
-ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5e592845f96cb0734daf3c9e07d60005de260386
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964291"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547676"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung
 
@@ -37,7 +38,7 @@ Batch-Vorlagen basieren auf der [vorhandenen Unterstützung für Batch in der Az
 
 Aufträge nutzen in der Regel Eingabedatendateien und generieren Ausgabedatendateien. Ein Speicherkonto ist standardmäßig mit jedem Batch-Konto verknüpft. Übertragen Sie mithilfe der CLI ohne Codierung und Speicheranmeldeinformationen Dateien in dieses und aus diesem Speicherkonto.
 
-Eine gängige Anwendung für die Verarbeitung von Audio- und Videodateien ist beispielsweise [ffmpeg](http://ffmpeg.org/). Nachfolgend sind die Schritte aufgeführt, die Sie in der Azure Batch-CLI ausführen, um ffmpeg aufzurufen und Videoquelldateien in anderen Auflösungen zu transcodieren.
+Eine gängige Anwendung für die Verarbeitung von Audio- und Videodateien ist beispielsweise [ffmpeg](https://ffmpeg.org/). Nachfolgend sind die Schritte aufgeführt, die Sie in der Azure Batch-CLI ausführen, um ffmpeg aufzurufen und Videoquelldateien in anderen Auflösungen zu transcodieren.
 
 -   Erstellen Sie eine Poolvorlage. Der Benutzer, der die Vorlage erstellt, weiß, wie die ffmpeg-Anwendung und deren Anforderungen aufgerufen werden. Der Benutzer gibt das entsprechende BS, die VM-Größe, die Methode für die Installation von ffmpeg (z.B. über ein Anwendungspaket oder mithilfe eines Paket-Managers) und andere Pooleigenschaftenwerte an. Parameter werden bei der Verwendung der Vorlage erstellt, nur die Pool-ID und die Anzahl der VMs müssen angegeben werden.
 

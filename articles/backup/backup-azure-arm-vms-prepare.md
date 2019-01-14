@@ -1,316 +1,289 @@
 ---
-title: 'Azure Backup: Vorbereiten der Sicherung virtueller Computer'
-description: Vergewissern Sie sich, dass Ihre Umgebung für die Sicherung virtueller Computer in Azure vorbereitet ist.
+title: Vorbereiten der Sicherung virtueller Azure-Computer mit Azure Backup
+description: In diesem Artikel wird beschrieben, wie virtuelle Azure-Computer auf die Sicherung mit dem Azure Backup-Dienst vorbereitet werden.
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keywords: Sicherung; Sichern;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/17/2018
 ms.author: raynew
-ms.openlocfilehash: d24b2773aa056b33a4067d5d84677d186d25b195
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ee7a9c407a26f9334a854c98793db8fc01244e2a
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255073"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994673"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Vorbereiten der Sicherung virtueller Azure-Computer
 
-Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Azure Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt. Wenn Sie einen virtuellen Computer sichern, werden die Sicherungsdaten oder Wiederherstellungspunkte in einem Recovery Services-Sicherungstresor gespeichert.
+In diesem Artikel wird beschrieben, wie Sie die Sicherung eines virtuellen Azure-Computers (VM) mit einem Recovery Services-Tresor von [Azure Backup](backup-introduction-to-azure-backup.md) vorbereiten. Die Vorbereitung der Sicherung umfasst Folgendes:
+
+
+> [!div class="checklist"]
+> * Vorbereitung: Überprüfen der unterstützten Szenarios und Einschränkungen
+> * Voraussetzungen: Überprüfen der Anforderungen von Azure-VMs und der Netzwerkkonnektivität
+> * Erstellen eines Tresors.
+> * Einrichten der Speicherreplikation
+> * Ermitteln von VMs und Konfigurieren von Sicherungseinstellungen und Richtlinien
+> * Aktivieren der Sicherung für ausgewählte VMs
+
+
+> [!NOTE]
+   > In diesem Artikel wird beschrieben, wie Sie Azure-VMs sichern, indem Sie einen Tresor einrichten und die zu sichernden VMs auswählen. Dies ist hilfreich, wenn Sie mehrere VMs sichern möchten. Sie können eine Azure-VM auch direkt über die zugehörigen VM-Einstellungen sichern. [Weitere Informationen](backup-azure-vms-first-look-arm.md)
+
+## <a name="before-you-start"></a>Vorbereitung
+
+1. [Verschaffen Sie sich einen Überblick](backup-azure-vms-introduction.md) über Azure Backup für Azure-VMs.
+2. Überprüfen Sie die folgenden Einschränkungen und Informationen zur Unterstützung.
+
+   **Unterstützung/Einschränkung** | **Details**
+   --- | ---
+   **Windows-Betriebssystem** | Windows Server 2008 R2 (64 Bit) oder höher.<br/><br/> Windows Client 7 (64-Bit) oder höher.
+   **Linux-Betriebssystem** | Mit Ausnahme von CoreOS Linux können Sie alle 64-Bit-Linux-Verteilungen sichern, die [von Azure unterstützt](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) werden.<br/><br/> Überprüfen Sie, welche Linux-Betriebssysteme die [Dateiwiederherstellung unterstützen](backup-azure-restore-files-from-vm.md#for-linux-os).<br/><br/> Auch andere Linux-Distributionen können funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Diese Verteilungen werden jedoch nicht unterstützt.
+   **Region** | Sie können Azure-VMs in allen [unterstützten Regionen](https://azure.microsoft.com/regions/#services) sichern. Wenn eine Region nicht unterstützt wird, können Sie diese beim Erstellen des Tresors nicht auswählen.<br/><br/> Sie können nicht über mehrere Azure-Regionen hinweg sichern und wiederherstellen. Dies funktioniert nur innerhalb einer Region.
+   **Datenträgerlimit** | Sie können keine VMs mit mehr als 16 Datenträgern sichern.
+   **Freigegebener Speicher** | Das Sichern von VMs mit CSV oder Dateiservern mit horizontaler Skalierung wird nicht empfohlen. CSV-Schreiber schlagen voraussichtlich fehl.
+   **Linux-Verschlüsselung** | Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
+   **VM-Konsistenz:** | Azure Backup unterstützt keine Multi-VM-Konsistenz.
+   **Netzwerk** | Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die gesicherten Daten einbezogen.<br/><br/>
+   **Momentaufnahmen** | Das Erstellen von Momentaufnahmen auf Datenträgern mit aktivierter Schreibbeschleunigung wird nicht unterstützt. Dies hindert Azure Backup am Erstellen einer App-konsistenten Momentaufnahme aller VM-Datenträger.
+   **PowerShell** | Es gibt einige Aktionen, die nur mit PowerShell verfügbar sind:<br/><br/> – das Wiederherstellen von VMs, die von internen bzw. externen Lastenausgleichsmodulen oder mit mehreren reservierten IP-Adressen oder Adaptern verwaltet werden [Weitere Informationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)<br/><br/> – das Wiederherstellen einer Domänencontroller-VM in einer Konfiguration mit mehreren Domänencontrollern [Weitere Informationen](backup-azure-arm-restore-vms.md#restore-domain-controller-vms)
+   **Systemzeit** | Azure Backup unterstützt keine automatische Uhrzeitanpassung an die Sommerzeit für die Sicherungen von Azure-VMs. Sicherungsrichtlinien können bei Bedarf angepasst werden.
+   **Speicherkonten** | Wenn Sie ein Speicherkonto mit Netzwerkeinschränkung verwenden, stellen Sie sicher, dass Sie die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktivieren, damit der Azure Backup-Dienst auf das Konto zugreifen kann. Die Wiederherstellung auf Elementebene wird für Speicherkonten mit Netzwerkeinschränkung nicht unterstützt.<br/><br/> Stellen Sie sicher, dass die Einstellung **Firewalls und virtuelle Netzwerke** eines Speicherkontos den Zugriff über **alle Netzwerke** zulässt.
+
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie müssen den Tresor in der gleichen Region wie die Azure-VMs erstellen, die gesichert werden sollen.
+- Überprüfen Sie die Regionen der Azure-VMs, bevor Sie beginnen.
+    - Wenn Sie über VMs in verschiedenen Regionen verfügen, sollten Sie in jeder dieser Regionen einen Tresor erstellen.
+    - Zum Speichern der Sicherungsdaten müssen Sie keine Speicherkonten angeben. Der Tresor und der Azure Backup-Dienst nehmen dies automatisch vor.
+- Stellen Sie sicher, dass der VM-Agent auf den Azure-VMs installiert ist, die gesichert werden sollen.
 
 
 
-Bevor Sie einen mit dem Resource Manager bereitgestellten virtuellen Computer schützen (oder sichern) können, stellen Sie sicher, dass folgende Voraussetzungen erfüllt sind:
+### <a name="install-the-vm-agent"></a>Installieren des VM-Agents
 
-* Erstellen oder identifizieren Sie einen Recovery Services-Tresor *in der Region, in der sich auch Ihr virtueller Computer befindet*.
-* Wählen Sie ein Szenario aus, definieren Sie die Sicherungsrichtlinie, und definieren Sie die zu schützenden Elemente.
-* Überprüfen Sie, ob ein VM-Agent (Erweiterung) auf dem virtuellen Computer installiert ist.
-* Überprüfen Sie die Netzwerkverbindung.
-* Wenn Sie für virtuelle Linux-Computer die Sicherungsumgebung für anwendungskonsistente Sicherungen anpassen möchten, führen Sie die [Schritte zum Konfigurieren von Skripts vor und nach der Momentaufnahme](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) aus.
+Azure Backup installiert eine Sicherungserweiterung (VM Snapshot oder VM Snapshot Linux) auf dem VM-Agent, der auf der Azure-VM ausgeführt wird.
+    -  Der Azure-VM-Agent wird standardmäßig auf jeder Windows-VM installiert, die auf der Grundlage eines Azure Marketplace-Image bereitgestellt wird. Wenn Sie ein Azure Marketplace-Image über das Portal, mithilfe von PowerShell, über die CLI (Befehlszeilenschnittstelle) oder unter Verwendung einer Azure Resource Manager-Vorlage bereitstellen, wird der Azure-VM-Agent ebenfalls installiert.
+    - Wenn Sie eine VM von einem lokalen Speicher in Azure migriert haben, ist der Agent noch nicht installiert, und Sie müssen die Installation durchführen, bevor Sie die Sicherung für die VM aktivieren können.
 
-Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-arm-vms.md)fort. Wenn Sie mindestens eine dieser Voraussetzungen einrichten oder überprüfen müssen, führt dieser Artikel Sie durch die jeweiligen Schritte.
+Installieren Sie den Agent bei Bedarf wie folgt:
 
-## <a name="supported-operating-systems-for-backup"></a>Unterstützte Betriebssystems für die Sicherung
+**VM** | **Details**
+--- | ---
+**Virtuelle Windows-Computer** | [Laden Sie den Agent herunter](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409), und installieren Sie ihn mit Administratorberechtigungen auf der VM.<br/><br/> Unter *C:\WindowsAzure\Packages* können Sie sich vergewissern, dass die Installation erfolgreich abgeschlossen wurde, indem Sie mit der rechten Maustaste auf „WaAppAgent.exe“ klicken und dann auf **Eigenschaften** > Registerkarte **Details** klicken. Für **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein.
+**Virtuelle Linux-Computer** | Für die Installation und Upgrades des Azure Linux-Agents sollte nach Möglichkeit ein RPM- oder DEB-Paket aus dem Paketrepository Ihrer Verteilung installiert werden. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) in ihre jeweiligen Images und Repositorys integriert. Der Agent steht auf [GitHub](https://github.com/Azure/WALinuxAgent) zur Verfügung, jedoch wird die Installation über GitHub nicht empfohlen.
+Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, vergewissern Sie sich mithilfe der folgenden Tabelle, dass der Azure-VM-Agent auf dem virtuellen Computer ordnungsgemäß installiert ist. Die Tabelle enthält weitere Informationen zum VM-Agent für virtuelle Windows- und Linux-Computer.
 
- * **Linux:** Azure Backup unterstützt [eine Reihe der von Azure unterstützten Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (mit Ausnahme von CoreOS Linux und 32-Bit-Betriebssystemen). Eine Liste mit den Linux-Betriebssystemen, die die Dateiwiederherstellung unterstützen, finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md#for-linux-os).
+### <a name="establish-network-connectivity"></a>Herstellen der Netzwerkverbindung
 
-    > [!NOTE]
-    > Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Allerdings werden diese Distributionen nicht unterstützt.
-    >
- * **Windows Server**, **Windows-Client**:  Versionen vor Windows Server 2008 R2 oder Windows 7 werden nicht unterstützt.
+Die Sicherungserweiterung, die auf der VM ausgeführt wird, muss über ausgehenden Zugriff auf öffentliche Azure-IP-Adressen verfügen. Den Zugriff können Sie wie folgt zulassen:
 
 
-## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
-Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen vertraut:
+- **NSG-Regeln:** Lassen Sie die [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) zu. Sie können eine Regel hinzufügen, die den Zugriff auf den Azure Backup-Dienst mithilfe eines [Diensttags](../virtual-network/security-overview.md#service-tags) zulässt, anstatt jeden Adressbereich individuell zuzulassen und diese mit der Zeit zu verwalten.
+- **Proxy:** Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit.
+- **Azure Firewall:** Lassen Sie den Datenverkehr mit der VM durch Azure Firewall mithilfe eines FQDN-Tags (vollqualifizierter Domänenname) für den Azure Backup-Dienst zu.
 
-* Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
-* Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
-* Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Wenn dies der Fall ist, wird ein Fehler bei CSV-Schreibern erwartet. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz.
-* Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
-* Die Option **Vorhandene ersetzen** in der **Wiederherstellungskonfiguration** hilft dabei, vorhandene Datenträger des aktuellen virtuellen Computers durch den ausgewählten Wiederherstellungspunkt zu ersetzen. Dieser Vorgang kann nur ausgeführt werden, wenn der aktuelle virtuelle Computer vorhanden ist. 
-* Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
-* Stellen Sie beim Konfigurieren der Sicherung sicher, dass die Speicherkontoeinstellungen für **Firewalls und virtuelle Netzwerke** Zugriff von allen Netzwerken zulassen.
-* Wählen Sie für ausgewählte Netzwerke nach dem Konfigurieren der Firewall- und VNet-Einstellungen für Ihr Speicherkonto die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** als Ausnahme aus, damit der Azure Backup-Dienst auf das Speicherkonto mit Netzwerkeinschränkung zugreifen kann. Die Wiederherstellung auf Elementebene wird für Speicherkonten mit Netzwerkeinschränkung nicht unterstützt.
-* Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
-* Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
-* Momentaufnahmen des Datenträgers, für den die Schreibbeschleunigung aktiviert ist, werden nicht unterstützt. Aufgrund dieser Einschränkung kann der Azure Backup-Dienst keine anwendungskonsistente Momentaufnahme aller Datenträger der VM erstellen.
-* Azure Backup unterstützt keine automatische Sommerzeitanpassung der Uhr für die Sicherung virtueller Azure-Computer. Ändern Sie bei Bedarf die Richtlinie, um die Sommerzeit zu berücksichtigen.
-* Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
-  * Virtuelle Computer unter Load Balancer-Konfiguration (intern und extern)
-  * Virtuelle Computer mit mehreren reservierten IP-Adressen
-  * Virtuelle Computer mit mehreren Netzwerkadaptern
+Berücksichtigen Sie die Vor- und Nachteile bei Ihrer Entscheidung.
 
-  > [!NOTE]
-  > Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Dabei handelt es sich um eine neue Art von dauerhaftem Speicher für virtuelle Microsoft Azure-Computer. Dieser wird für verwaltete Datenträger im [Azure VM-Sicherungsstapel V2](backup-upgrade-to-vm-backup-stack-v2.md) unterstützt.
+**Option** | **Vorteile** | **Nachteile**
+--- | --- | ---
+**NSG** | Keine zusätzlichen Kosten. Einfache Verwaltung mit Diensttags. | Ermöglicht den Zugriff auf Azure insgesamt, nicht nur auf den Speicher. |
+**HTTP-Proxy** | Die Feinsteuerung über die Speicher-URLs ist möglich.<br/><br/> Zentraler Punkt für Internetzugriff auf virtuelle Computer.<br/><br/> Zusätzliche Kosten für den Proxy.
+**FQDN-Tags** | Einfache Verwendung, wenn Azure Firewall in einem VNet-Subnetz eingerichtet ist. | Es können keine eigenen FQDN-Tags erstellt werden, und die FQDNs in einem Tag können nicht geändert werden.
 
-## <a name="create-a-recovery-services-vault-for-a-vm"></a>Erstellen eines Recovery Services-Tresors für einen virtuellen Computer
-Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.
 
-So erstellen Sie einen Recovery Services-Tresor
+
+Wenn Sie verwaltete Azure-Datenträger verwenden, müssen Sie in den Firewalls möglicherweise einen weiteren Port öffnen (Port 8443).
+
+
+
+### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Einrichten einer NSG-Regel (Netzwerksicherheitsgruppe) zum Zulassen des ausgehenden Zugriffs auf Azure
+
+Wenn der Zugriff Ihrer Azure-VM durch eine NSG verwaltet wird, lassen Sie den ausgehenden Zugriff auf die erforderlichen Bereiche und Ports für den Sicherungsspeicher zu.
+
+
+
+1. Klicken Sie in der VM unter **Netzwerk** auf **Regel für ausgehenden Port hinzufügen**.
+- Wenn Sie über eine Regel verfügen, die den Zugriff verhindert, muss die neue Zulassungsregel höhergestellt werden. Wenn Sie beispielsweise über eine **Deny_All**-Regel mit der Priorität 1.000 verfügen, muss für Ihre neue Regel ein Wert unter 1.000 festgelegt werden.
+2. Klicken Sie unter **Ausgangssicherheitsregel hinzufügen** auf **Erweitert**.
+3. Wählen Sie **VirtualNetwork** als Quelle aus.
+4. Geben Sie für **Quellportbereiche** ein Sternchen (*) ein, um ausgehenden Zugriff über alle Ports zuzulassen.
+5. Wählen Sie **Diensttag** als **Ziel** aus. Wählen Sie „Storage.<region>“ aus der Liste aus. Wählen dabei die Region aus, in der sich der Tresor und die VMs befinden, die gesichert werden sollen.
+6. Wählen Sie unter **Zielportbereiche** den entsprechenden Port aus.
+
+    - Für VMs mit nicht verwalteten Datenträgern und nicht verschlüsseltem Speicherkonto: 80
+    - Für VMs mit nicht verwalteten Datenträgern und verschlüsseltem Speicherkonto: 443 (Standardeinstellung)
+    - Für verwaltete VMs: 8443
+1. Wählen Sie für **Protokoll** die Option **TCP** aus.
+2. Geben Sie unter **Priorität** einen Prioritätswert ein, der geringer als alle höheren Ablehnungsregeln ist.
+3. Geben Sie einen Namen und eine Beschreibung für die Regel ein, und klicken Sie dann auf **OK**.
+
+Sie können die NSG-Regel auf mehrere VMs anwenden, um Azure Backup den ausgehenden Zugriff auf Azure zu genehmigen.
+
+Dieses Video führt Sie durch diesen Prozess.
+
+>[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
+
+
+
+### <a name="route-backup-traffic-through-a-proxy"></a>Routen des Sicherungsdatenverkehrs über einen Proxy
+
+Sie können den Sicherungsdatenverkehr über ein Proxy routen und dem Proxy dann den Zugriff auf die erforderlichen Azure-Bereiche gewähren.
+
+Sie sollten Ihre Proxy-VM wie folgt konfigurieren:
+
+- Die Azure-VM sollte jeglichen HTTP-Datenverkehr an das öffentliche Internet über den Proxy routen.
+- Der Proxy sollte jeglichen eingehenden Datenverkehr von VMs im entsprechenden virtuellen Netzwerk (VNet) zulassen.
+- Die NSG **NSF-lockdown** benötigt eine Regel, die ausgehenden Internetdatenverkehr vom virtuellen Proxy-Computer zulässt.
+
+Im Folgenden wird das Einrichten des Proxys beschrieben. Dabei werden Beispielwerte verwendet. Fügen Sie stattdessen Ihre eigenen Werte ein.
+
+#### <a name="set-up-a-system-account-proxy"></a>Einrichten eines Proxys für das Systemkonto
+Wenn Sie über keinen Proxy für das Systemkonto verfügen, richten Sie wie folgt einen ein:
+
+1. Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553) herunter.
+2. Führen Sie den Befehl **PsExec.exe -i -s cmd.exe** aus, um die Eingabeaufforderung mit einem Systemkonto auszuführen.
+3. Führen Sie den Browser im Systemkontext aus. Beispiel:  **PROGRAMFILES%\Internet Explorer\iexplore.exe** für Internet Explorer.  
+4. Definieren Sie die Proxyeinstellungen.
+    - Unter Linux:
+        - Fügen Sie die folgende Zeile in die Datei **/etc/environment** ein:
+            - **http_proxy=http://proxy IP address:proxy port**
+        - Fügen Sie die folgenden Zeilen in die Datei **/etc/waagent.conf** ein:
+            - **HttpProxy.Host=proxy IP address**
+            - **HttpProxy.Port=proxy port**
+    - Legen Sie unter Windows in den Browsereinstellungen fest, dass ein Proxy verwendet werden soll. Wenn Sie derzeit einen Proxy auf einem Benutzerkonto verwenden, können Sie das folgende Skript verwenden, um die Einstellung für das Systemkonto anzuwenden.
+        ```
+       $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
+       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
+       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
+       $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
+       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
+
+        ```
+
+#### <a name="allow-incoming-connections-on-the-proxy"></a>Zulassen von eingehenden Verbindungen über den Proxy
+
+1. Lassen Sie eingehende Verbindungen in den Proxyeinstellungen zu.
+2. Öffnen Sie beispielsweise **Windows Firewall mit erweiterter Sicherheit**.
+    - Klicken Sie mit der rechten Maustaste auf **Eingangsregeln** > **Neue Regel**.
+    - Klicken Sie unter **Regeltyp** auf **Benutzerdefiniert** > **Weiter**.
+    - Klicken Sie unter **Programm** auf **Alle Programme** > **Weiter**.
+    - Legen Sie unter **Protokolle und Ports** den Typ **TCP**, für **Lokale Ports** die Option **Bestimmte Ports** und für **Remoteport** die Option **Alle Ports** fest.
+    - Beenden Sie den Assistenten, und legen Sie einen Namen für die Regel fest.
+
+#### <a name="add-an-exception-rule-to-the-nsg"></a>Hinzufügen einer Ausnahmeregel zur NSG
+
+Lassen Sie für die NSG **NSF-lockdown** den Datenverkehr über alle Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu.
+
+- Das folgende PowerShell-Skript enthält ein Beispiel zum Zulassen des Datenverkehrs.
+- Anstatt den ausgehenden Datenverkehr an alle öffentlichen Internetadressen zuzulassen, können Sie einen IP-Adressbereich (-DestinationPortRange) festlegen oder den Diensttag „storage.region“ verwenden.   
+
+    ```
+    Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
+    Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
+    ```
+### <a name="allow-firewall-access-with-fqdn-tag"></a>Zulassen des Firewallzugriffs mithilfe des FQDN-Tags
+
+Sie können Azure Firewall so konfigurieren, dass der ausgehende Zugriff für Netzwerkdatenverkehr an Azure Backup zugelassen wird.
+
+- [Weitere Informationen](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) zum Bereitstellen von Azure Firewall.
+- [Erfahren Sie mehr](https://docs.microsoft.com/azure/firewall/fqdn-tags) über FQDN-Tags.
+
+
+## <a name="create-a-vault"></a>Erstellen eines Tresors
+
+Ein Recovery Services-Tresor für Azure Backup speichert Sicherungen und Wiederherstellungspunkte, die im Laufe der Zeit erstellt wurden, sowie Sicherungsrichtlinien, die zu gesicherten VMs gehören. Erstellen Sie wie folgt einen Tresor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie im Menü **Hub** die Option **Durchsuchen**, und geben Sie dann **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**.
+2. Wählen Sie im Menü **Hub** die Option **Durchsuchen** aus, und geben Sie dann **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**.
 
     ![Eingabe im Feld und Auswahl von „Recovery Services-Tresore“ in den Ergebnissen](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
     Die Liste mit den Recovery Services-Tresoren wird angezeigt.
-1. Wählen Sie im Menü **Recovery Services-Tresore** die Option **Hinzufügen**.
+3. Wählen Sie im Menü **Recovery Services-Tresore** die Option **Hinzufügen**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
     Der Bereich **Recovery Services-Tresore** wird geöffnet. Sie werden aufgefordert, Informationen für **Name**, **Abonnement**, **Ressourcengruppe** und **Speicherort** anzugeben.
 
     ![Bereich „Recovery Services-Tresore“](./media/backup-azure-arm-vms-prepare/rs-vault-attributes.png)
-1. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen mit 2 bis 50 Zeichen ein. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-1. Wählen Sie **Abonnement** aus, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
-1. Wählen Sie **Ressourcengruppe** aus, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder wählen Sie **Neu** aus, um eine neue Ressourcengruppe zu erstellen. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-1. Wählen Sie **Standort** aus, um die geografische Region für den Tresor auszuwählen. Der Tresor *muss* sich in derselben Region wie die zu schützenden virtuellen Computer befinden.
-
-   > [!IMPORTANT]
-   > Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Wenn Sie über virtuelle Computer in mehreren Regionen verfügen, müssen Sie in jeder Region einen Recovery Services-Tresor erstellen. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und der Azure Backup-Dienst nehmen dies automatisch vor.
-   >
-   >
-
-1. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Statusbenachrichtigungen rechts oben im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
-
+4. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird.
+    - Der Name muss für das Azure-Abonnement eindeutig sein.
+    - Er kann zwischen 2 bis 50 Zeichen enthalten.
+    - Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+5. Wählen Sie **Abonnement** aus, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
+6. Wählen Sie **Ressourcengruppe** aus, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder wählen Sie **Neu** aus, um eine neue Ressourcengruppe zu erstellen. Weitere Informationen zu [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md).
+7. Wählen Sie **Standort** aus, um die geografische Region für den Tresor auszuwählen. Der Tresor *muss* sich in derselben Region wie die zu sichernden VMs befinden.
+8. Klicken Sie auf **Erstellen**.
+    - Es kann eine Weile dauern, bis der Tresor fertiggestellt wird.
+    - Verfolgen Sie die Statusbenachrichtigungen rechts oben im Portal.
     ![Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-Nachdem Sie Ihren Tresor erstellt haben, widmen wir uns nun dem Festlegen der Speicherreplikation.
+Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
 
-## <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
-Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie die Option mit dem georedundanten Speicher für Ihre primäre Sicherung bei. Wenn Sie eine günstigere und weniger langfristige Option wünschen, wählen Sie lokal redundanten Speicher.
+## <a name="set-up-storage-replication"></a>Einrichten der Speicherreplikation
 
-So bearbeiten Sie die Einstellung für die Speicherreplikation:
+Standardmäßig verfügt Ihr Tresor über einen [georedundanten Speicher (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). GRS wird als primäre Sicherung empfohlen, dennoch können Sie [lokal redundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) als günstigere Alternative nutzen. 
 
-1. Wählen Sie im Bereich **Recovery Services-Tresore** Ihren Tresor aus.
-    Wenn Sie Ihren Tresor auswählen, werden der Bereich **Einstellungen** (auf dem oben der Name des Tresors angegeben ist) sowie der Bereich mit den Tresordetails geöffnet.
+Passen Sie die Speicherreplikation wie folgt an:
 
-   ![Auswählen des Tresors aus der Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
-
-1. Scrollen Sie im Bereich **Einstellungen** mithilfe des vertikalen Schiebereglers nach unten zum **Verwaltungsabschnitt**, und klicken Sie auf **Sicherungsinfrastruktur**. Wählen Sie im Abschnitt **Allgemein** die Option **Sicherungskonfiguration**. Wählen Sie im Bereich **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher.
+1. Klicken Sie im Tresor auf **Sicherungsinfrastruktur**, und klicken Sie dann auf **Sicherungskonfiguration**.
 
    ![Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
-   Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin den georedundanten Speicher. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie „Lokal redundanter Speicher“ aus. Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
+2. Passen Sie die Speicherredundanzmethode in der **Sicherungskonfiguration** nach belieben an, und klicken Sie dann auf **Speichern**.
 
-1. Wenn Sie den Speicherreplikationstyp geändert haben, wählen Sie **Speichern**.
 
-Nachdem Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
+## <a name="configure-backup"></a>Konfigurieren der Sicherung
 
-## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Auswählen eines Sicherungsziels, Festlegen der Richtlinie und Definieren von zu schützenden Elementen
-Bevor Sie einen virtuellen Computer mit einem Recovery Services-Tresor registrieren, führen Sie den Ermittlungsprozess aus, um alle neuen dem Abonnement hinzugefügte virtuellen Computer zu identifizieren. Während des Ermittlungsprozesses fragt Azure die Liste der virtuellen Computer im Abonnement ab. Wenn neue virtuelle Computer gefunden werden, werden im Portal der Clouddienstname und die zugeordnete Region angezeigt. Das *Szenario* bezeichnet im Kontext des Azure-Portals das, was Sie im Recovery Services-Tresor eingeben. Die *Richtlinie* gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte.
+Ermitteln Sie die VMs im Abonnement, und konfigurieren Sie die Sicherung.
 
-1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 2 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im Menü **Hub** die Option **Weitere Dienste** aus.
-
-   a. Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
-
-      ![Eingabe im Feld und Auswahl von „Recovery Services-Tresore“ in den Ergebnissen](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
-
-      Die Liste mit den Recovery Services-Tresoren wird angezeigt. Wenn in Ihrem Abonnement keine Tresore vorhanden sind, ist diese Liste leer.
-
-      ![Ansicht der Liste mit den Recovery Services-Tresoren](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
-
-   b. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus.
-
-      Der Bereich **Einstellungen** und das Tresordashboard für den ausgewählten Tresor werden geöffnet.
-
-      ![Bereich „Einstellungen“ und Tresordashboard](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
-1. Wählen Sie im Menü des Tresordashboards die Option **Sicherung**.
+1. Klicken Sie im Tresor auf **Übersicht**, und klicken Sie dann auf **+ Sicherung**.
 
    ![Schaltfläche „Sicherung“](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
    Die Bereiche **Sicherung** und **Sicherungsziel** werden geöffnet.
 
-1. Legen Sie im Bereich **Sicherungsziel** die Option **Wo wird Ihre Workload ausgeführt?** auf **Azure** und die Option **Was möchten Sie sichern?** auf **Virtueller Computer** fest. Wählen Sie dann **OK**aus.
+2. Wählen Sie **Azure** unter **Sicherungsziel**> **Wo wird Ihre Workload ausgeführt?** aus. Klicken Sie unter **Was möchten Sie sichern?** auf **Virtueller Computer** >  **OK**. Dadurch wird die VM-Erweiterung im Tresor registriert.
 
    ![Bereiche „Sicherung“ und „Sicherungsziel“](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
    In diesem Schritt wird die VM-Erweiterung im Tresor registriert. Der Bereich **Sicherungsziel** wird geschlossen, und der Bereich **Sicherungsrichtlinie** wird geöffnet.
 
-   ![Bereiche „Sicherung“ und „Sicherungsrichtlinie“](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
-1. Wählen Sie im Bereich **Sicherungsrichtlinie** die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten.
+3. Wählen Sie unter **Sicherungsrichtlinie** die Richtlinie aus, die dem Tresor zugeordnet werden soll. Klicken Sie dann auf **OK**.
+    - Die Details zur Standardrichtlinie werden unter dem Dropdownmenü aufgeführt.
+    - Klicken Sie auf **Neu erstellen**, um eine Richtlinie zu erstellen. Erfahren Sie mehr über das [Definieren einer Richtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy).
 
-   ![Sicherungsrichtlinie auswählen](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
+    ![Bereiche „Sicherung“ und „Sicherungsrichtlinie“](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
-   Die Details zur Standardrichtlinie werden unter dem Dropdownmenü aufgeführt. Wählen Sie im Dropdownmenü die Option **Neu erstellen** aus, wenn Sie eine neue Richtlinie erstellen möchten. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy).
-    Wählen Sie **OK**, um die Sicherungsrichtlinie mit dem Tresor zu verknüpfen.
+4. Wählen Sie im Bereich **Virtuelle Computer auswählen** die VMs aus, für die die festgelegte Sicherungsrichtlinie verwendet werden soll, und klicken Sie dann auf **OK**.
 
-   Der Bereich **Sicherungsrichtlinie** wird geschlossen, und der Bereich **Virtuelle Computer auswählen** wird geöffnet.
-1. Wählen Sie im Bereich **Virtuelle Computer auswählen** die virtuellen Computer aus, die der angegebenen Richtlinie zugeordnet werden sollen, und wählen Sie **OK**.
+    - Die ausgewählte VM wird überprüft.
+    - Sie können nur VMs auswählen, die sich in der gleichen Region wie der Tresor befinden. VMs können nur in einem Tresor gesichert werden.
 
    ![Bereich „Virtuelle Computer auswählen“](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-   Der ausgewählte virtuelle Computer wird überprüft. Falls die erwarteten virtuellen Computer nicht angezeigt werden, sollten Sie überprüfen, ob sie sich in der gleichen Azure-Region wie der Recovery Services-Tresor befinden. Wenn die virtuellen Computer dennoch nicht angezeigt werden, stellen Sie sicher, dass sie nicht bereits durch einen anderen Tresor geschützt sind. Die Region des Recovery Services-Tresors wird auf dem Tresordashboard angezeigt.
+5. Klicken Sie unter **Sicherung** auf **Sicherung aktivieren**.
 
-1. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, wählen Sie im Bereich **Sicherung** die Option **Sicherung aktivieren**. Mit diesem Schritt wird die Richtlinie im Tresor und auf den virtuellen Computern bereitgestellt. Der erste Wiederherstellungspunkt für den virtuellen Computer wird in diesem Schritt nicht erstellt.
+   - Damit wird die Richtlinie für den Tresor und die VMs bereitgestellt, und die Sicherungserweiterung wird auf dem VM-Agent auf der Azure-VM installiert.
+   - Mit diesem Schritt wird der erste Wiederherstellungspunkt für die VM nicht erstellt.
 
    ![Schaltfläche „Sicherung aktivieren“](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie nach dem Zeitplan ausgeführt. Wenn Sie einen bedarfsgesteuerten Sicherungsauftrag generieren möchten, um die virtuellen Computer jetzt zu sichern, finden Sie weitere Informationen unter [Auslösen des Sicherungsauftrags](./backup-azure-vms-first-look-arm.md#initial-backup).
+Nach dem Aktivieren der Sicherung:
 
-Wenn Sie Probleme beim Registrieren des virtuellen Computers haben, überprüfen Sie die folgenden Informationen zum Installieren des VM-Agents und zu Netzwerkverbindungen. Die folgenden Informationen sind wahrscheinlich nicht erforderlich, wenn Sie in Azure erstellte virtuelle Computer schützen möchten. Wenn Sie jedoch Ihre virtuellen Computer zu Azure migriert haben, vergewissern Sie sich, dass Sie den VM-Agent ordnungsgemäß installiert haben und dass Ihr virtueller Computer mit dem virtuellen Netzwerk kommunizieren kann.
+- Die Sicherungsrichtlinie wird gemäß Ihres Sicherungszeitplans ausgeführt.
+- Die Sicherungserweiterung wird vom Sicherungsdienst unabhängig davon installiert, ob der virtuelle Computer ausgeführt wird oder nicht.
+    - Bei einem ausgeführten virtuellen Computer besteht zudem die größte Chance auf einen anwendungskonsistenten Wiederherstellungspunkt.
+    -  Der virtuelle Computer wird jedoch auch gesichert, wenn er ausgeschaltet ist und die Erweiterung nicht installiert werden kann. Dies wird als *Offline-VM* bezeichnet. In diesem Fall ist der Wiederherstellungspunkt *absturzkonsistent*.
+- Wenn Sie für die VM sofort eine bedarfsgesteuerte Sicherung generieren möchten, klicken Sie unter **Sicherungselemente** auf die Auslassungspunkte (...) neben der VM, und klicken Sie dann auf **Jetzt sichern**.
 
-## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Installieren des VM-Agents auf dem virtuellen Computer
-Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/extensions/agent-windows.md) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden.
-
-Die folgenden Informationen werden für Situationen bereitgestellt, in denen Sie *keinen* in Azure Marketplace erstellten virtuellen Computer verwenden. **Angenommen, Sie haben einen virtuellen Computer aus einem lokalen Rechenzentrum migriert. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.**
-
-**Hinweis**: Nach der Installation des VM-Agents müssen Sie Azure PowerShell verwenden, um die „ProvisionGuestAgent“-Eigenschaft zu aktualisieren, damit Azure weiß, dass der Agent auf dem virtuellen Computer installiert ist.
-
-Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, vergewissern Sie sich mithilfe der folgenden Tabelle, dass der Azure-VM-Agent auf dem virtuellen Computer ordnungsgemäß installiert ist. Die Tabelle enthält weitere Informationen zum VM-Agent für virtuelle Windows- und Linux-Computer.
-
-| **Vorgang** | **Windows** | **Linux** |
-| --- | --- | --- |
-| Installieren des VM-Agent |Laden Sie den [Agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. |<li> Installieren Sie den neuesten [Linux-Agent](../virtual-machines/extensions/agent-linux.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu installieren.  |
-| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu aktualisieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt über GitHub zu aktualisieren.<br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
-| Überprüfen der VM-Agent-Installation |<li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\WindowsAzure\Packages*. <li>Dieser Ordner enthält die Datei "WaAppAgent.exe".<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |N/V |
-
-### <a name="backup-extension"></a>Backup-Erweiterung
-Nachdem der VM-Agent auf dem virtuellen Computer installiert wurde, installiert der Azure Backup-Dienst die Sicherungserweiterung für den VM-Agent. Der Sicherungsdienst installiert nahtlos Upgrades und Patches für die Sicherungserweiterung.
-
-Die Sicherungserweiterung wird vom Sicherungsdienst unabhängig davon installiert, ob der virtuelle Computer ausgeführt wird oder nicht. Bei einem ausgeführten virtuellen Computer besteht zudem die größte Chance auf einen anwendungskonsistenten Wiederherstellungspunkt. Der Sicherungsdienst setzt die Sicherung des virtuellen Computers jedoch auch dann fort, wenn dieser ausgeschaltet wurde und die Erweiterung nicht installiert werden konnte. Dies wird als *Offline-VM* bezeichnet. In diesem Fall ist der Wiederherstellungspunkt *absturzkonsistent*.
-
-## <a name="establish-network-connectivity"></a>Herstellen der Netzwerkverbindung
-Zum Verwalten der VM-Momentaufnahmen benötigt die Sicherungserweiterung eine Verbindung mit den öffentlichen Azure-IP-Adressen. Ohne die richtige Internetverbindung tritt bei diesen HTTP-Anforderungen des virtuellen Computers ein Timeout auf, und der Sicherungsvorgang funktioniert nicht. Wenn in Ihrer Bereitstellung Zugriffseinschränkungen aktiv sind (z.B. über eine Netzwerksicherheitsgruppe [NSG]), wählen Sie eine der folgenden Optionen für die Bereitstellung eines freien Pfades für den Sicherungsdatenverkehr:
-
-* [Setzen Sie die IP-Bereiche der Azure-Rechenzentren auf die Whitelist](https://www.microsoft.com/download/details.aspx?id=41653).
-* Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit.
-
-Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse zwischen Verwaltbarkeit, differenzierter Kontrolle und Kosten abwägen.
-
-| Option | Vorteile | Nachteile |
-| --- | --- | --- |
-| Whitelist der IP-Bereiche |Keine zusätzlichen Kosten.<br><br>Verwenden Sie zum Öffnen des Zugriffs in einer Netzwerksicherheitsgruppe das **Set-AzureNetworkSecurityRule**-Cmdlet. |Komplexe Verwaltung, da sich die betroffenen IP-Bereiche im Laufe der Zeit ändern.<br><br>Ermöglicht den Zugriff auf Azure insgesamt, nicht nur auf den Speicher. |
-| Verwenden eines HTTP-Proxys |Feinsteuerung im Proxy über die Speicher-URLs ist zulässig.<br><br>Zentraler Punkt für Internetzugriff auf virtuelle Computer.<br><br>Unterliegt keinen Azure-IP-Adressänderungen. |Zusätzliche Kosten für die Ausführung eines virtuellen Computers mit Proxysoftware. |
-
-### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Whitelist der IP-Bereiche der Azure-Rechenzentren
-Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Bereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Azure-Website](https://www.microsoft.com/download/details.aspx?id=41653).
-
-Mit [Diensttags](../virtual-network/security-overview.md#service-tags) können Sie Verbindungen zum Speichern bestimmter Regionen zulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto zulässt, eine höhere Priorität hat, als die Regel, die den Internetzugriff blockiert.
-
-![NSG mit Speichertags für eine Region](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-Das folgende Video führt Sie durch die Schrittanleitung zum Konfigurieren von Diensttags:
-
->[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
-
-> [!NOTE]
-> Eine Liste der Speicherdiensttags und Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
-
-### <a name="use-an-http-proxy-for-vm-backups"></a>Verwenden eines HTTP-Proxys für die Sicherung von virtuellen Computern
-Beim Sichern eines virtuellen Computers werden die Befehle für die Momentaufnahmenverwaltung von der Sicherungserweiterung auf der dem virtuellen Computer per HTTPS-API an Azure Storage gesendet. Leiten Sie den Datenverkehr der Sicherungserweiterung über den HTTP-Proxy, da dies die einzige Komponente ist, die für den Zugriff auf das öffentliche Internet konfiguriert ist.
-
-> [!NOTE]
-> Wir empfehlen keine bestimmte Proxysoftware zur Verwendung. Stellen Sie sicher, dass Sie einen Proxy wählen, der mit den folgenden Konfigurationsschritten kompatibel ist.
->
->
-
-Die folgende Beispielabbildung zeigt die drei Konfigurationsschritte, die zur Verwendung einen HTTP-Proxys erforderlich sind:
-
-* Der virtuelle App-Computer leitet den gesamten HTTP-Datenverkehr für das öffentliche Internet über den virtuellen Proxy-Computer.
-* Der virtuelle Proxy-Computer lässt eingehenden Datenverkehr von virtuellen Computern in das virtuelle Netzwerk zu.
-* Die Netzwerksicherheitsgruppe mit dem Namen „NSF-lockdown“ benötigt eine Sicherheitsregel, die ausgehenden Internetdatenverkehr vom virtuellen Proxy-Computer zulässt.
-
-Führen Sie die folgenden Schritte aus, um einen HTTP-Proxy für die Kommunikation mit dem öffentlichen Internet zu verwenden.
-
-> [!NOTE]
-> In diesen Schritten werden spezifische Namen und Werte für dieses Beispiel verwendet. Verwenden Sie beim Eingeben bzw. Ausschneiden und Einfügen von Informationen in Ihren Code die Namen und Werte für Ihre Bereitstellung.
-
-#### <a name="step-1-configure-outgoing-network-connections"></a>Schritt 1: Ausgehende Netzwerkverbindungen konfigurieren 
-###### <a name="for-windows-machines"></a>Für Windows-Computer
-Mit diesem Verfahren wird die Proxyserverkonfiguration für das lokale Systemkonto eingerichtet.
-
-1. Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553) herunter.
-1. Öffnen Sie Internet Explorer, indem Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten ausführen:
-
-    ```
-    psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
-    ```
-
-1. Rufen Sie in Internet Explorer **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen** auf.
-1. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest.
-1. Schließen Sie Internet Explorer.
-
-Mit dem folgenden Skript wird eine computerweite Proxykonfiguration eingerichtet und für den gesamten ausgehenden HTTP/HTTPS-Datenverkehr verwendet. Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Systemkonto) eingerichtet haben, verwenden Sie dieses Skript, um die Einstellungen dem SYSTEMKONTO zuzuweisen.
-
-```
-   $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-   $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
-```
-
-> [!NOTE]
-> Wenn das Proxyserverprotokoll den Eintrag „(407) Proxyauthentifizierung erforderlich“ enthält, überprüfen Sie, ob Ihre Authentifizierung ordnungsgemäß eingerichtet ist.
->
->
-
-###### <a name="for-linux-machines"></a>Für Linux-Computer
-Fügen Sie der Datei ```/etc/environment``` die folgende Zeile hinzu:
-
-```
-http_proxy=http://<proxy IP>:<proxy port>
-```
-
-Fügen Sie der Datei ```/etc/waagent.conf``` die folgenden Zeilen hinzu:
-
-```
-HttpProxy.Host=<proxy IP>
-HttpProxy.Port=<proxy port>
-```
-
-#### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>Schritt 2: Zulassen von eingehenden Verbindungen auf dem Proxyserver
-1. Öffnen Sie auf dem Proxyserver die Windows-Firewall. Die einfachste Möglichkeit zum Zugriff auf die Firewall besteht darin, die **Windows-Firewall mit erweiterter Sicherheit** zu suchen.
-1. Klicken Sie im Dialogfeld **Windows-Firewall mit erweiterter Sicherheit** mit der rechten Maustaste auf **Regeln für eingehenden Datenverkehr**, und wählen Sie **Neue Regel**.
-1. Wählen Sie im Assistenten für neue eingehende Regeln auf der Seite **Regeltyp** die Option **Benutzerdefiniert** aus, und wählen Sie **Weiter**.
-1. Wählen Sie die auf der Seite **Programm** die Option **Alle Programme** aus, und wählen Sie **Weiter**.
-1. Geben Sie auf der Seite **Protokoll und Ports** die folgenden Informationen ein, und wählen Sie **Weiter**:
-   * Wählen Sie **TCP** als **Protokolltyp** aus.
-   * Wählen Sie für **Lokaler Port** die Option **Bestimmte Ports** aus. Geben Sie im folgenden Feld die Anzahl der konfigurierten Proxyports an.
-   * Wählen Sie bei **Remoteport** die Option **Alle Ports** aus.
-
-Übernehmen Sie im weiteren Verlauf des Assistenten bis zum Ende die Standardeinstellungen. Geben Sie dann dieser Regel einen Namen.
-
-#### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>Schritt 3: Hinzufügen einer Ausnahmeregel zur NSG
-Der folgende Befehl fügt der NSG eine Ausnahme hinzu. Diese Ausnahme lässt TCP-Datenverkehr von allen Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu. Falls Sie einen bestimmten Port im öffentlichen Internet benötigen, müssen Sie ```-DestinationPortRange``` diesen Port hinzufügen.
-
-Geben Sie an einer Azure PowerShell-Eingabeaufforderung den folgenden Befehl ein:
-
-```
-Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
-Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
-```
-
-## <a name="questions"></a>Fragen?
-Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet. Der nächste logische Schritt besteht darin, eine Sicherung zu erstellen. Der Planungsartikel enthält ausführlichere Informationen zum Sichern virtueller Computer.
 
-* [Sichern virtueller Computer](backup-azure-arm-vms.md)
-* [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
-* [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
+- Beheben von Problemen, die bei [Azure-VM-Agents](/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) oder [Azure-VM-Sicherungen](backup-azure-vms-troubleshoot.md) auftreten können.
+- [Sichern virtueller Azure-Computer](backup-azure-vms-first-look-arm.md)

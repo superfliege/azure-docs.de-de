@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091042"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000545"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -42,11 +42,12 @@ Bei der Arbeit mit Stream Analytics können Sie Partitionierung in den Ausgaben 
 -   Azure Table
 -   Blob Storage (Partitionsschlüssel kann explizit festgelegt werden)
 -   Cosmos DB (Partitionsschlüssel muss explizit festgelegt werden)
--   Event Hub (Partitionsschlüssel muss explizit festgelegt werden)
+-   Event Hubs (Partitionsschlüssel muss explizit festgelegt werden)
 -   IoT Hub (Partitionsschlüssel muss explizit festgelegt werden)
 -   Service Bus
+- SQL und SQL Data Warehouse mit optionaler Partitionierung: Weitere Informationen finden Sie auf der Seite [Ausgabe an Azure SQL-Datenbank](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
-Power BI, SQL und SQL Data Warehouse-Ausgaben unterstützen keine Partitionierung. Sie können die Eingabe aber dennoch partitionieren, wie in [diesem Abschnitt](#multi-step-query-with-different-partition-by-values) beschrieben. 
+Power BI unterstützt keine Partitionierung. Sie können die Eingabe aber dennoch partitionieren, wie in [diesem Abschnitt](#multi-step-query-with-different-partition-by-values) beschrieben. 
 
 Weitere Informationen zu den Partitionen finden Sie in den folgenden Artikeln:
 
@@ -115,9 +116,9 @@ In diesem Fall spielt es keine Rolle, um welche Abfrage es sich handelt. Wenn di
 
 ### <a name="query-using-non-partitioned-output"></a>Abfragen mit nicht partitionierter Ausgabe
 * Eingabe: Event Hub mit 8 Partitionen
-* Ausgabe: PowerBI
+* Ausgabe: Power BI
 
-Bei der Power BI-Ausgabe wird derzeit keine Partitionierung unterstützt. Daher besteht in diesem Szenario keine hochgradige Parallelität.
+Die Power BI-Ausgabe unterstützt derzeit keine Partitionierung. Daher besteht in diesem Szenario keine hochgradige Parallelität.
 
 ### <a name="multi-step-query-with-different-partition-by-values"></a>Mehrstufige Abfrage mit unterschiedlichen Werten für „Partition by“
 * Eingabe: Event Hub mit 8 Partitionen

@@ -1,9 +1,9 @@
 ---
-title: Verwalten von Batch-Kontoressourcen mit der Clientbibliothek für .NET – Azure | Microsoft-Dokumentation
+title: Verwalten von Kontoressourcen mit der Clientbibliothek für .NET – Azure Batch | Microsoft-Dokumentation
 description: Erstellen, löschen und ändern Sie Azure-Batch-Kontoressourcen mit der Batch Management .NET-Bibliothek.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/24/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: c65a71d9e64a1ea3f60abbe2e420652c12ba030e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505383"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549519"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Verwalten von Batch-Konten und -Kontingenten mit der Batch Management-Clientbibliothek für .NET
 
@@ -153,7 +153,7 @@ Die Batch Management .NET-Bibliothek ist ein Azure-Ressourcenanbieterclient, der
 
 ## <a name="sample-project-on-github"></a>Beispielprojekt auf GitHub
 
-Sehen Sie sich das Beispielprojekt [AccountManagment][acct_mgmt_sample] auf GitHub an, um Batch Management .NET in Aktion zu erleben. Die AccountManagment-Beispielanwendung veranschaulicht die folgenden Vorgänge:
+Sehen Sie sich das Beispielprojekt [AccountManagement][acct_mgmt_sample] auf GitHub an, um Batch Management .NET in Aktion zu erleben. Die AccountManagement-Beispielanwendung veranschaulicht die folgenden Vorgänge:
 
 1. Erwerben eines Sicherheitstokens von Azure Active AD mithilfe von [ADAL][aad_adal]. Wenn der Benutzer noch nicht angemeldet ist, wird er aufgefordert, die Azure-Anmeldeinformationen einzugeben.
 2. Erstellen eines [SubscriptionClient][resman_subclient]-Elements mit einem von Azure AD abgerufenen Sicherheitstoken, um Azure nach einer Liste mit Abonnements abzufragen, die dem Konto zugeordnet sind. Der Benutzer kann ein Abonnement in der Liste auswählen, wenn diese mehrere Abonnements enthält.
@@ -181,9 +181,9 @@ Um die Beispielanwendung erfolgreich ausführen zu können, müssen Sie sie zun�
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Authentifizierungsszenarien für Azure AD"
 [aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Integrieren von Anwendungen in Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx
-[azure_portal]: http://portal.azure.com
+[azure_portal]: https://portal.azure.com
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [azure_tokencreds]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.tokencloudcredentials.aspx
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer

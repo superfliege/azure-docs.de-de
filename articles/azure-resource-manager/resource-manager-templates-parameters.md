@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83ba1b94413990c0eb8dff42c49d46456a658d5a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417768"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722141"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen
 Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte resources, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter angeben, aber ohne Parameter stellt Ihre Vorlage immer die gleichen Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
@@ -188,74 +188,6 @@ Verweisen Sie anschließend auf die Untereigenschaften des Parameters, indem Sie
 ]
 ```
 
-## <a name="recommendations"></a>Empfehlungen
-Die folgenden Informationen können bei der Verwendung von Parametern hilfreich sein:
-
-* Verwenden Sie möglichst wenig Parameter. Verwenden Sie nach Möglichkeit eine Variable oder einen Literalwert. Verwenden Sie Parameter nur in den folgenden Szenarien:
-   
-   * Einstellungen, die sie an die Umgebung (SKU, Größe, Kapazität) anpassen möchten.
-   * Ressourcennamen, die Sie zur leichteren Identifizierung angeben möchten
-   * Werte, die Sie häufig nutzen, um andere Aufgaben zu erledigen (z.B. Benutzername des Administrators)
-   * Geheimnisse (z.B. Kennwörter)
-   * Anzahl oder Array von Werten, die beim Erstellen von mehr als einer Instanz eines Ressourcentyps verwendet werden.
-* Verwenden Sie die camel-Schreibweise für Parameternamen.
-* Geben Sie für jeden Parameter in den Metadaten eine Beschreibung an.
-
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* Definieren Sie Standardwerte für Parameter (außer für Kennwörter und SSH-Schlüssel). Durch das Angeben eines Standardwerts wird der Parameter während der Bereitstellung optional. Der Standardwert kann eine leere Zeichenfolge sein. 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
-        }
-   }
-   ```
-
-* Verwenden Sie **securestring** für alle Kennwörter und geheimen Schlüssel. Wenn Sie vertrauliche Daten an ein JSON-Objekt übergeben, verwenden Sie den Typ **secureObject**. Vorlagenparameter des Typs „securestring“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden. 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
-
-* Verwenden Sie einen Parameter für die Angabe von Standorten, und nutzen Sie diesen Parameterwert nach Möglichkeit so oft wie möglich bei Ressourcen, die sich wahrscheinlich am selben Standort befinden. Durch diese Vorgehensweise werden Benutzer weniger häufig zur Angabe von Speicherortinformationen aufgefordert. Wenn ein Ressourcentyp nur von einer begrenzten Anzahl von Standorten unterstützt wird, können Sie einen gültigen Standort direkt in der Vorlage angeben oder einen weiteren Standortparameter hinzufügen. Wenn eine Organisation die zulässigen Regionen für Benutzer einschränkt, kann ein Benutzer durch den Ausdruck **resourceGroup().location** an der Bereitstellung der Vorlage gehindert werden. Beispiel: Ein Benutzer erstellt eine Ressourcengruppe in einer Region. Ein zweiter Benutzer muss Bereitstellungen für diese Ressourcengruppe durchführen, hat aber keinen Zugriff auf die Region. 
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
-         "location": "[parameters('location')]",
-         ...
-     }
-   ]
-   ```
-    
-* Vermeiden Sie das Verwenden eines Parameters oder einer Variablen für die API-Version eines Ressourcentyps. Ressourceneigenschaften und -werte können je nach Versionsnummer variieren. Mithilfe von IntelliSense kann in Code-Editoren nicht das richtige Schema ermittelt werden, wenn die API-Version auf einen Parameter oder eine Variable festgelegt ist. Stattdessen sollten Sie die API-Version in der Vorlage hartcodieren.
-* Vermeiden Sie das Angeben eines Parameternamens in der Vorlage, der mit einem Parameter im Bereitstellungsbefehl übereinstimmt. Resource Manager löst diesen Namenskonflikt durch Hinzufügen des Postfix-Elements **FromTemplate** zum Vorlagenparameter. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) verursacht. Sie werden während der Bereitstellung zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert.
-
 ## <a name="example-templates"></a>Beispielvorlagen
 
 Diese Beispielvorlagen veranschaulichen einige Szenarien für die Verwendung von Parametern. Stellen Sie sie bereit, um zu testen, wie Parameter in verschiedenen Szenarien verarbeitet werden.
@@ -269,5 +201,5 @@ Diese Beispielvorlagen veranschaulichen einige Szenarien für die Verwendung von
 
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 * Informationen zum Eingeben der Parameterwerte während der Bereitstellung finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md). 
-* Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
+* Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Azure Resource Manager template best practices (Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen)](template-best-practices.md).
 * Informationen zur Verwendung eines Parameterobjekts finden Sie unter [Verwenden eines Objekts als Parameter in einer Azure Resource Manager-Vorlage](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).

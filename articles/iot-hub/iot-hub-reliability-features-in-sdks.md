@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8951680ca9488dabffd02ee084e3f6827122276e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a51efa18672b81ef3e23e292abbe2b34c1936205
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957451"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994741"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs
 
@@ -62,13 +62,13 @@ Die folgenden Schritte beschreiben den Wiederholungsvorgang bei Erkennen von Ver
 1. Das SDK erkennt den Fehler und den damit verbundenen Fehler im Netzwerk, Protokoll oder in der Anwendung.
 1. Das SDK verwendet den Fehlerfilter, um den Fehlertyp zu ermitteln und zu ermitteln, ob eine Wiederholung erforderlich ist.
 1. Wenn das SDK einen **nicht behebbaren Fehler** erkennt, werden Vorgänge wie Verbinden, Senden und Empfangen abgebrochen. Das SDK benachrichtigt den Benutzer. Beispiele für nicht behebbare Fehler sind Authentifizierungsfehler oder Fehler aufgrund eines falschen Endpunkts.
-1. Wenn das SDK einen **behebbaren Fehler** erkennt, wird die Wiederholung entsprechend der angegebenen Wiederholungsrichtlinie durchgeführt, bis das definierte Zeitlimit abläuft.
+1. Wenn das SDK einen **behebbaren Fehler** erkennt, wird die Wiederholung entsprechend der angegebenen Wiederholungsrichtlinie durchgeführt, bis das definierte Zeitlimit abläuft.  Beachten Sie, dass das SDK standardmäßig eine Wiederholungsrichtlinie per **exponentiellem Backoff mit Jitter** verwendet.
 1. Wenn das definierte Zeitlimit abläuft, versucht das SDK nicht mehr, eine Verbindung herzustellen oder eine Nachricht zu senden, und benachrichtigt den Benutzer.
 1. Das SDK ermöglicht dem Benutzer, einen Rückruf anzufügen, um Änderungen am Verbindungsstatus zu empfangen.
 
 Die SDKs umfassen drei Wiederholungsrichtlinien:
 
-- **Exponentielles Backoff mit Jitter**: Diese standardmäßige Wiederholungsrichtlinie ist am Anfang eher aggressiv, verlangsamt sich und erreicht dann eine maximale Verzögerung. Der Entwurf basiert auf der [Wiederholungsanleitung](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific) im Azure Architecture Center.
+- **Exponentielles Backoff mit Jitter**: Diese standardmäßige Wiederholungsrichtlinie ist am Anfang eher aggressiv, verlangsamt sich und erreicht dann eine maximale Verzögerung. Der Entwurf basiert auf der [Wiederholungsanleitung](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific) im Azure Architecture Center. 
 - **Benutzerdefinierte Wiederholung**: Für einige SDK-Sprachen können Sie eine benutzerdefinierte Wiederholungsrichtlinie entwerfen, die für Ihr Szenario besser geeignet ist, und diese dann in die Wiederholungsrichtlinie (RetryPolicy) einfügen. Für das C SDK ist die benutzerdefinierte Wiederholung nicht verfügbar.
 - **Keine Wiederholung**: Sie können die Wiederholungsrichtlinie auf „no retry“ festlegen, wodurch die Wiederholungslogik deaktiviert wird. Das SDK versucht, einmal eine Verbindung herzustellen und einmal eine Nachricht zu senden, vorausgesetzt, die Verbindung ist hergestellt. Diese Richtlinie wird typischerweise in Szenarien verwendet, in denen Bandbreiten- oder Kostenaspekte eine Rolle spielen. Bei dieser Option gehen Nachrichten, die nicht gesendet werden können, verloren und können nicht wiederhergestellt werden.
 

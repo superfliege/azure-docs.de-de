@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: bcd550ac8f4b75002648f2e4737a4683349aa45f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: a7ba66fae3f2a8426cc333cca109a4c6793d1da2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384631"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724320"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH
 
@@ -63,7 +63,7 @@ In Microsoft Windows werden standardmäßig keine SSH-Clients installiert. Die `
 
 * [Git (https://git-scm.com/)](https://git-scm.com/): Die Befehle `ssh` und `scp` sind über die GitBash-Befehlszeile verfügbar.
 
-Es gibt auch mehrere grafische SSH-Clients, wie z. B. [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) und [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Diese Clients können zum Herstellen einer Verbindung mit HDInsight verwendet werden, aber der Prozess der Verbindungsherstellung ist anders als bei der Nutzung des Hilfsprogramms `ssh`. Weitere Informationen finden Sie in der Dokumentation des grafischen Clients, den Sie verwenden.
+Es gibt auch mehrere grafische SSH-Clients, wie z. B. [PuTTY (https://www.chiark.greenend.org.uk/~sgtatham/putty/)](https://www.chiark.greenend.org.uk/~sgtatham/putty/) und [MobaXterm (https://mobaxterm.mobatek.net/)](https://mobaxterm.mobatek.net/). Diese Clients können zum Herstellen einer Verbindung mit HDInsight verwendet werden, aber der Prozess der Verbindungsherstellung ist anders als bei der Nutzung des Hilfsprogramms `ssh`. Weitere Informationen finden Sie in der Dokumentation des grafischen Clients, den Sie verwenden.
 
 ## <a id="sshkey"></a>Authentifizierung: SSH-Schlüssel
 
@@ -252,7 +252,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 >
 > * [Verwenden von Azure Storage mit Azure HDInsight-Clustern](hdinsight-hadoop-use-blob-storage.md)
 >
-> * [Verwenden von Data Lake Store mit Azure HDInsight-Clustern](hdinsight-hadoop-use-data-lake-store.md)
+> * [HDInsight mit Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,16 +10,16 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679714"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713178"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
-Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetzung von Texten. Die neuronale maschinelle Übersetzung (NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende, maschinelle Übersetzungen und steht standardmäßig in V3 der Textübersetzungs-API bereit, wenn ein neuronales System verfügbar ist. 
+Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetzung von Texten. Die neuronale maschinelle Übersetzung (NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende, maschinelle Übersetzungen und steht standardmäßig in V3 der Translator-Text-API bereit, wenn ein neuronales System verfügbar ist. 
 
 [Weitere Informationen zur Funktionsweise von maschineller Übersetzung](https://www.microsoft.com/translator/mt.aspx)
 
@@ -39,9 +39,8 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 |:-----|:-----:|:-----|:-----|
 |Afrikaans| `af`    |Nur statistisches System|  Neuronal|
 |Arabisch|    `ar`    |Neuronales System verfügbar|  Neuronal|
-|Arabisch, Levantine| `apc`   |Neuronales System verfügbar|  Neuronal|
 |Bengalisch|    `bn`    |Neuronales System verfügbar|  Neuronal|
-|Bosnisch (Lateinisch)|   `bs`    |Nur statistisches System|  Statistisch|
+|Bosnisch (Lateinisch)|   `bs`    |Neuronales System verfügbar|  Neuronal|
 |Bulgarisch| `bg`    |Neuronales System verfügbar|  Neuronal|
 |Chinesisch (traditionell)|   `yue`   |Nur statistisches System|  Statistisch|
 |Katalanisch|   `ca`    |Nur statistisches System|  Statistisch|
@@ -109,26 +108,26 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 
 | Sprache    | Sprachcode | Skript | Von/In | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabisch | ar | Arabisch | <--> | Lateinisch |
-|Bengalisch  | bn | Bangla | <--> | Lateinisch |
-| Chinesisch (vereinfacht) | zh-Hans | Chinesisch (vereinfacht) | <--> | Lateinisch |
-| Chinesisch (vereinfacht) | zh-Hans | Chinesisch (vereinfacht) | <--> | Chinesisch (traditionell) |
-| Chinesisch (traditionell) | zh-Hant | Chinesisch (traditionell) | <--> | Lateinisch |
-| Chinesisch (traditionell) | zh-Hant | Chinesisch (traditionell) | <--> | Chinesisch (vereinfacht) |
-| Gujarati | gu  | Gujarati | --> | Lateinisch |
-| Hebräisch | he | Hebräisch | <--> | Lateinisch |
-| Hindi | hi | Devanagari | <--> | Lateinisch |
-| Japanisch | ja | Japanisch | <--> | Lateinisch |
-| Kannada | kn | Kannada | --> | Lateinisch |
-| Malayalam | ml | Malayalam | --> | Lateinisch |
-| Marathi | mr | Devanagari | --> | Lateinisch |
-| Oriya | oder | Oriya | <--> | Lateinisch |
-| Pandschabi | pa | Gurmukhi | <--> | Lateinisch  |
-| Serbisch (Kyrillisch) | sr-Cyrl | Kyrillisch  | --> | Lateinisch |
-| Serbisch (Lateinisch) | sr-Latn | Lateinisch | --> | Kyrillisch |
-| Tamilisch | ta | Tamilisch | --> | Lateinisch |
-| Telugu | te | Telugu | --> | Lateinisch |
-| Thailändisch | th | Thailändisch | <--> | Lateinisch |
+| Arabisch | `ar` | Arabisch `Arab` | <--> | Latein `Latn` |
+|Bengalisch  | `bn` | Bangla `Beng` | <--> | Latein `Latn` |
+| Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Latein `Latn` |
+| Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Chinesisch (traditionell) `Hant`|
+| Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Latein `Latn` |
+| Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Chinesisch (vereinfacht) `Hans` |
+| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latein `Latn` |
+| Hebräisch | `he` | Hebräisch `Hebr` | <--> | Latein `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Latein `Latn` |
+| Japanisch | `ja` | Japanisch `Jpan` | <--> | Latein `Latn` |
+| Kannada | `kn` | Kannada `Knda` | --> | Latein `Latn` |
+| Malayalam | `ml` | Malayalam `Mlym` | --> | Latein `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Latein `Latn` |
+| Oriya | `or` | Oriya `Orya` | <--> | Latein `Latn` |
+| Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Latein `Latn`  |
+| Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Latein `Latn` |
+| Serbisch (Lateinisch) | `sr-Latn` | Latein `Latn` | --> | Kyrillisch `Cyrl`|
+| Tamilisch | `ta` | Tamilisch `Taml` | --> | Latein `Latn` |
+| Telugu | `te` | Telugu `Telu` | --> | Latein `Latn` |
+| Thailändisch | `th` | Thailändisch `Thai` | <--> | Latein `Latn` |
 
 ## <a name="dictionary"></a>Wörterbuch
 
@@ -187,9 +186,9 @@ Das Wörterbuch unterstützt die Übertragung der folgenden Sprachen in das oder
 | Vietnamesisch      | `vi`          |
 | Walisisch      | `cy`          |
 
-## <a name="languages-detected-by-the-detect-method"></a>Mit der „Detect“-Methode erkannte Sprachen
+## <a name="detect"></a>Erkennen
 
-Die folgenden Sprachen können von der „Detect“-Methode erkannt werden. Mithilfe von „Detect“ können Sprachen erkannt werden, die nicht von Microsoft Translator übersetzt werden können.
+Die folgenden Sprachen werden von der „Detect“-Methode unterstützt. Mithilfe von „Detect“ können Sprachen erkannt werden, die nicht von Microsoft Translator übersetzt werden können.
 
 | Sprache    |
 |:----------- |
@@ -261,11 +260,55 @@ Die folgenden Sprachen können von der „Detect“-Methode erkannt werden. Mith
 | Walisisch |
 | Jiddisch |
 
-## <a name="access-the-list-programmatically"></a>Programmgesteuertes Zugreifen auf die Liste
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programmgesteuerter Zugriff auf die Textübersetzungs-API-Sprachliste
 
-Mithilfe des Vorgangs „Languages“ der Text-API in V3.0 können Sie programmgesteuert auf die Liste der unterstützten Sprachen zugreifen. Sie können die Liste nach Funktion, Sprachcode sowie Sprachname in Englisch oder jeder anderen unterstützten Sprache anzeigen. Sobald neue Sprachen verfügbar sind, wird diese Liste automatisch vom Microsoft Translator-Dienst aktualisiert.
+Sie können eine Liste der unterstützten Sprachen für die Textübersetzungs-API v3. 0 mit der Sprachen-Methode abrufen. Sie können die Liste nach Funktion, Sprachcode sowie Sprachname in Englisch oder jeder anderen unterstützten Sprache anzeigen. Sobald neue Sprachen verfügbar gemacht werden, wird diese Liste automatisch vom Microsoft Translator-Dienst aktualisiert.
 
 [Anzeigen der Referenzdokumentation zum Vorgang „Languages“](reference/v3-0-languages.md)
+
+## <a name="customization"></a>Anpassung
+
+Die folgenden Sprachen sind für die Anpassung mit [Benutzerdefinierter Translator](http://aka.ms/CustomTranslator) verfügbar.
+
+| Sprache    | Sprachcode |
+|:----------- |:-------------:|
+| Arabisch       | `ar`          |
+| Bengalisch      | `bn`          |
+| Bosnisch (Lateinisch)      | `bs`          |
+| Bulgarisch      | `bg`          |
+| Chinesisch (vereinfacht)      | `zh-Hans`          |
+| Kroatisch      | `hr`          |
+| Tschechisch      | `cs`          |
+| Dänisch      | `da`          |
+| Niederländisch      | `nl`          |
+| Englisch    | `en`     |
+| Estnisch      | `et`          |
+| Finnisch      | `fi`          |
+| Französisch      | `fr`          |
+| Deutsch      | `de`          |
+| Griechisch      | `el`          |
+| Hebräisch      | `he`          |
+| Hindi      | `hi`          |
+| Ungarisch      | `hu`          |
+| Italienisch      | `it`          |
+| Japanisch      | `ja`          |
+| Koreanisch      | `ko`          |
+| Lettisch      | `lv`          |
+| Litauisch      | `lt`          |
+| Norwegisch      | `nb`          |
+| Polnisch      | `pl`          |
+| Portugiesisch      | `pt`          |
+| Rumänisch      | `ro`          |
+| Russisch      | `ru`          |
+| Serbisch (Lateinisch)      | `sr-Latn`          |
+| Slowakisch     | `sk`          |
+| Slowenisch      | `sl`          |
+| Spanisch      | `es`          |
+| Schwedisch      | `sv`          |
+| Thailändisch      | `th`          |
+| Türkisch      | `tr`          |
+| Ukrainisch      | `uk`          |
+| Vietnamesisch      | `vi`          |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Zugreifen auf die Liste auf der Microsoft Translator-Website
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Time Series Insights: JSON – Bewährte Methoden für die JSON-Strukturierung in Azure Time Series Insights-Abfragen | Microsoft-Dokumentation'
+title: Bewährte Methoden für die JSON-Strukturierung in Azure Time Series Insights-Abfragen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Effizienz Ihrer Azure Time Series Insights-Abfragen steigern.
 services: time-series-insights
 author: ashannon7
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 284bbf435c7940658753e7bbf1daff00a79d57a1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: aa09183d1dbb78822b6c46333dada3ed7f54811a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273849"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554570"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung 
 
@@ -97,7 +97,7 @@ Verweisdatentabelle (Schlüsseleigenschaft ist „deviceID“):
 
 Time Series Insights-Ereignistabelle (flache Ansicht):
 
-| deviceId | messageId | deviceLocation |  timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
+| deviceId | messageId | deviceLocation | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
 | --- | --- | --- | --- | --- | --- |
 | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
 | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
@@ -173,7 +173,7 @@ Verweisdaten (Schlüsseleigenschaften sind „deviceId“ und „series.tagId“
 
 Time Series Insights-Ereignistabelle (flache Ansicht):
 
-| deviceId | series.tagId | messageId | deviceLocation | type | unit |  timestamp | series.value |
+| deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
 | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 34.7 |

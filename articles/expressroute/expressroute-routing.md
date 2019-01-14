@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 73dc4b14214c10966dca1a6cd7ebd41af019f640
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 5dde36bb8710190627a8780ed740957e62a57da0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406554"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994580"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -135,7 +135,7 @@ Standardrouten sind nur für Sitzungen mit privatem Azure-Peering zulässig. In 
 
  Um die Konnektivität mit anderen Azure-Diensten und Infrastrukturdiensten zu ermöglichen, müssen Sie sicherstellen, dass eines der folgenden Elemente vorhanden ist:
 
-* Öffentliches Azure-Peering ist zum Leiten von Datenverkehr an öffentliche Endpunkte aktiviert.
+* Öffentliches Azure-Peering ist zum Weiterleiten von Datenverkehr an öffentliche Endpunkte aktiviert.
 * Sie verwenden das benutzerdefinierte Routing, um Internetkonnektivität für alle Subnetze zuzulassen, die dies erfordern.
 
 > [!NOTE]

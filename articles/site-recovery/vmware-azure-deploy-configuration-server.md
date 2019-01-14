@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251027"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794353"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -97,7 +97,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 ### <a name="configure-settings"></a>Konfigurieren von Einstellungen
 
-1. Klicken Sie im Assistenten für die Konfigurationsserververwaltung auf **Konnektivität einrichten**, und wählen Sie anschließend die NIC aus, die der Verarbeitungsserver nutzt, um den Replikationsdatenverkehr zu empfangen. Klicken Sie dann auf **Speichern**. Diese Einstellung kann nach der Konfiguration nicht mehr geändert werden.
+1. Klicken Sie im Assistenten für die Konfigurationsserververwaltung auf **Konnektivität einrichten**, und wählen Sie anschließend die NIC aus, die der Verarbeitungsserver nutzt, um den Replikationsdatenverkehr zu empfangen. Klicken Sie dann auf **Speichern**. Diese Einstellung kann nach der Konfiguration nicht mehr geändert werden. Es wird dringend empfohlen, die IP-Adresse eines Konfigurationsservers nicht zu ändern. Stellen Sie sicher, dass es sich bei den dem Konfigurationsserver zugewiesenen IPs um STATISCHE IPs, nicht um DHCP-IPs handelt.
 2. Melden Sie sich unter **Recovery Services-Tresor auswählen** bei Microsoft Azure an, und wählen Sie Ihr Azure-Abonnement, die entsprechende Ressourcengruppe sowie den entsprechenden Tresor aus.
 
     > [!NOTE]
@@ -150,7 +150,11 @@ Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie siche
     Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter „Server“ auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
 8. Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
 
-    **Nein**, die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt. 
+    **Nein**, die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt.
+
+9. Kann ich die IP eines Konfigurationsservers ändern?
+
+    **Nein**, es wird dringend empfohlen, die IP-Adresse eines Konfigurationsservers nicht zu ändern. Stellen Sie sicher, dass es sich bei allen dem Konfigurationsserver zugewiesenen IPs um STATISCHE IPs, nicht um DHCP-IPs handelt.
 
 ## <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
 

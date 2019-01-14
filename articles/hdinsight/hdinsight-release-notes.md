@@ -2,19 +2,19 @@
 title: Anmerkungen zu dieser Version von Azure HDInsight
 description: Die neuesten Versionshinweise für Azure HDInsight. Rufen Sie Tipps zur Entwicklung und Details für Hadoop, Spark, R Server, Hive und mehr ab.
 services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/01/2018
-ms.author: hrasheed
-ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/02/2019
+ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438862"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000076"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Anmerkungen zu dieser Version von Azure HDInsight
 
@@ -35,7 +35,7 @@ Die neuen Updates und Funktionen fallen in die folgenden Kategorien:
 
     a.  [**Neue Features in Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Neue Features in Apache Kafka 1.0**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Neue Features in Apache Kafka 1.0**](https://kafka.apache.org/downloads#1.0.0)
 
 2.  ***Update von R Server 9.1 auf Machine Learning Services 9.3***: Mit diesem Release erhalten Data Scientists und Entwickler das Beste aus dem Open-Source-Bereich ergänzt durch algorithmische Innovationen und einfache Operationalisierung, alles in ihrer bevorzugten Sprache mit der Geschwindigkeit von Apache Spark. Dieses Release erweitert die in R Server angebotenen Funktionen um die Unterstützung für Python, was zur Änderung des Clusternamens von R Server zu ML Services geführt hat. 
 
@@ -1300,14 +1300,24 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 
 |**Apache-Komponente**|**Apache JIRA**|**Zusammenfassung**|**Details**|
 |--|--|--|--|
-|**Spark 2.3** |**N/V** |**Änderungen, die in den Versionsanmerkungen zu Apache Spark dokumentiert sind** |– Es gibt ein Dokument für veraltete Komponenten und einen Leitfaden für Verhaltensänderungen, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Für den SQL-Abschnitt gibt es einen weiteren ausführlichen Leitfaden zur Migration (von 2.2 zu 2.3), http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2.3** |**N/V** |**Änderungen, die in den Versionsanmerkungen zu Apache Spark dokumentiert sind** |– Es gibt ein Dokument für veraltete Komponenten und einen Leitfaden für Verhaltensänderungen, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Für den SQL-Abschnitt gibt es einen weiteren ausführlichen Leitfaden zur Migration (von 2.2 zu 2.3), https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark-Auftrag wird erfolgreich abgeschlossen, aber es besteht ein HDFS-Fehler aufgrund eines vollen Datenträgerkontingents |**Szenario:** Ausführen von **insert overwrite**, wenn ein Kontingent auf den Papierkorb des Benutzers festgelegt ist, der den Befehl ausführt.<br /><br />**Vorheriges Verhalten:** Der Auftrag wird erfolgreich abgeschlossen, obwohl die Daten nicht in den Papierkorb verschoben werden. Das Ergebnis kann fälschlicherweise einige Daten enthalten, die zuvor in der Tabelle vorhanden waren.<br /><br />**Neues Verhalten:** Wenn das Verschieben der Daten in den Papierkorb fehlschlägt, werden die Dateien dauerhaft gelöscht.|
-|**Kafka 1.0**|**N/V**|**Änderungen, die in den Versionsanmerkungen zu Apache Spark dokumentiert sind** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1.0**|**N/V**|**Änderungen, die in den Versionsanmerkungen zu Apache Spark dokumentiert sind** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |Zusätzliche Ranger Hive-Richtlinien sind für INSERT OVERWRITE erforderlich |**Szenario:** Zusätzliche Ranger Hive-Richtlinien sind für **INSERT OVERWRITE** erforderlich<br /><br />**Vorheriges Verhalten:** Hive-Abfragen von **INSERT OVERWRITE** werden wie gewohnt erfolgreich ausgeführt.<br /><br />**Neues Verhalten:** Hive-Abfragen von **INSERT OVERWRITE** schlagen unerwartet nach dem Upgrade auf HDP-2.6.x mit der folgenden Fehlermeldung fehl:<br /><br />Fehler beim Kompilieren der Anweisung: FEHLER: Berechtigung für HiveAccessControlException wurde verweigert: Benutzer „Jdoe“ verfügt über keine Schreibberechtigung für /tmp/\*(state=42000,code=40000)<br /><br />Ab HDP-2.6.0 erfordern Hive-Abfragen von **INSERT OVERWRITE** eine Ranger-URI-Richtline, um Schreibvorgänge zuzulassen, selbst wenn der Benutzer über eine HDFS-Richtlinie über Schreibberichtigungen verfügt.<br /><br />**Problemumgehung/Erwartete Kundenaktion:**<br /><br />1. Erstellen Sie eine neue Richtlinie im Hive-Repository.<br />2. Wählen Sie „URI“ in der Dropdownliste aus, bei der „Database“ angezeigt wird.<br />3. Aktualisieren Sie den Pfad (z.B. /tmp/*)<br />4. Fügen Sie die Benutzer und Gruppen hinzu, und speichern Sie die Änderungen.<br />5. Wiederholen Sie die INSERT-Abfrage.|
 |**HDFS**|**N/V** |HDFS sollte mehrere KMS-URI unterstützen |**Vorheriges Verhalten:** Die dfs.encryption.key.provider.uri-Eigenschaft wurde verwendet, um den Pfad des KMS-Anbieters zu konfigurieren.<br /><br />**Neues Verhalten:** dfs.encryption.key.provider.uri ist nun veraltet und wurde zum Konfigurieren des Pfads des KMS-Anbieters durch hadoop.security.key.provider.path ersetzt.|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Option zum Deaktivieren des Planers |**Betroffene Komponente:** Zeppelin-Server<br /><br />**Vorheriges Verhalten:** In vorherigen Releases von Zeppelin gab es keine Option zum Deaktivieren des Planers.<br /><br />**Neues Verhalten:** Standardmäßig wird der Planer nicht mehr für Benutzer angezeigt, da er standardmäßig deaktiviert ist.<br /><br />**Problemumgehung/Erwartete Kundenaktion:** Wenn Sie den Planer aktivieren möchten, müssen Sie azeppelin.notebook.cron.enable mit dem Wert TRUE in einer benutzerdefinierten „zeppelin-site.xml“ in den Zeppelin-Einstellungen von Ambari hinzufügen.|
 
 ## <a name="known-issues"></a>Bekannte Probleme
+
+-   **HDInsight-Integration in ADLS Gen 2**: In HDInsight-ESP-Clustern mit Azure Data Lake Storage Gen 2 können bei Benutzerverzeichnissen und -berechtigungen zwei Probleme auftreten:
+   
+   1. Die Stammverzeichnisse für Benutzer werden in „Head Node 1“ nicht erstellt. Um dieses Problem zu umgehen, erstellen Sie die Verzeichnisse manuell, und ändern Sie den Besitz in den Benutzerprinzipalnamen des jeweiligen Benutzers.
+   
+   2. Berechtigungen im Verzeichnis „/hdp“ werden zurzeit nicht auf 751 festgelegt. Diese müssen folgendermaßen festgelegt werden: 
+      ```bash
+      chmod 751 /hdp 
+      chmod –R 755 /hdp/apps
+      ```
 
 -   **Spark 2.3**
 
@@ -1409,6 +1419,10 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
             val = \_.escape(val);//Line No:460
             
             Nach dem Entfernen der obigen Zeile können Sie mit der Ranger-Benutzeroberfläche Richtlinien mit Richtlinienbedingungen erstellen, die Sonderzeichen enthalten, und die Richtlinienauswertung wird für die gleiche Richtlinie erfolgreich ausgeführt.
+
+**HDInsight-Integration in ADLS Gen 2: Probleme bei Benutzerverzeichnissen und -berechtigungen in ESP-Clustern**
+    1.  Die Stammverzeichnisse für Benutzer werden in „Head Node 1“ nicht erstellt. Um dieses Problem zu umgehen, erstellen Sie die Verzeichnisse manuell, und ändern Sie den Besitz in den Benutzerprinzipalnamen des jeweiligen Benutzers.
+    2.  Berechtigungen im Verzeichnis „/hdp“ werden zurzeit nicht auf 751 festgelegt. Diese müssen folgendermaßen festgelegt werden:  „chmod 751 /hdp“ bzw.  „chmod –R 755 /hdp/apps“.
 
 ## <a name="deprecation"></a>Eingestellte Unterstützung
 

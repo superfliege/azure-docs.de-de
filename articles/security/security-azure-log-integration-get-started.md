@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Log Integration | Microsoft Docs
+title: Erste Schritte mit Azure Log Integration | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Azure Log Integration-Dienst installieren und Protokolle aus Azure Storage sowie Azure-Überwachungsprotokolle und Azure Security Center-Warnungen integrieren.
 services: security
 documentationcenter: na
@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036801"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602187"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration mit Azure-Diagnoseprotokollierung und Windows-Ereignisweiterleitung
 
@@ -151,7 +151,7 @@ Nach Abschluss des grundlegenden Setups sind Sie bereit, die auf die Installatio
 In diesem Schritt konfigurieren Sie den Computer, auf dem der Azure Log Integration-Dienst ausgeführt wird, um eine Verbindung mit dem Speicherkonto herzustellen, das die Protokolldateien enthält.
 
 Zum Abschließen dieses Schritts sind einige Angaben erforderlich:  
-* **FriendlyNameForSource**: Ein Anzeigename, den Sie auf das Speicherkonto anwenden können, das Sie für den virtuellen Computer zum Speichern der Informationen aus der Azure-Diagnose konfiguriert haben.
+* **FriendlyNameForSource**: Diesen Anzeigenamen können Sie auf das Speicherkonto anwenden, das Sie für den virtuellen Computer zum Speichern der Informationen aus der Azure-Diagnose konfiguriert haben.
 * **StorageAccountName**: Der Name des Speicherkontos, das Sie beim Konfigurieren der Azure-Diagnose angegeben haben.  
 * **StorageKey**: Der Speicherschlüssel für das Speicherkonto, in dem die Azure-Diagnoseinformationen für diesen virtuellen Computer gespeichert werden.  
 
@@ -198,7 +198,7 @@ Im folgenden Video werden die oben beschriebenen Schritte behandelt:<br /><br />
 ## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>Wie ist vorzugehen, wenn im Ordner „Weitergeleitete Ereignisse“ keine Daten angezeigt werden?
 Sollten im Ordner „Weitergeleitete Ereignisse“ nach einer Stunde immer noch keine Daten angezeigt werden, führen Sie die folgenden Schritte aus:
 
-1. Überprüfen Sie den Computer, der den Azure Log Integration-Dienst ausführt. Vergewissern Sie sich, dass er auf Azure zugreifen kann. Versuchen Sie in einem Browser, zum [Azure-Portal](http://portal.azure.com) zu navigieren, um die Konnektivität zu testen.
+1. Überprüfen Sie den Computer, der den Azure Log Integration-Dienst ausführt. Vergewissern Sie sich, dass er auf Azure zugreifen kann. Versuchen Sie in einem Browser, zum [Azure-Portal](https://portal.azure.com) zu navigieren, um die Konnektivität zu testen.
 2. Vergewissern Sie sich, dass das Benutzerkonto „Azlog“ über Schreibberechtigung für den Ordner „users\Azlog“ verfügt.
   1. Öffnen Sie den Datei-Explorer.
   2. Navigieren Sie zu „C:\Benutzer“.
@@ -243,7 +243,7 @@ Sie können zudem eine [Supportanfrage](../azure-supportability/how-to-create-az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Log Integration finden Sie in den folgenden Artikeln: Zur Vorbereitung auf die Schritte in diesem Artikel müssen zunächst die im Artikel „Erste Schritte“ genannten Schritte ausgeführt werden.
+Weitere Informationen zu Azure Log Integration finden Sie in den folgenden Artikeln: Zur Vorbereitung auf die Schritte in diesem Artikel müssen zunächst die Schritte im Artikel „Erste Schritte“ ausgeführt werden.
 
 * [Microsoft Azure Log Integration for Azure logs](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure Log Integration für Azure-Protokolle, in englischer Sprache). Diese Seite im Download Center bietet Details, Systemanforderungen und Installationsanweisungen für Azure Log Integration.
 * [Einführung in Azure Log Integration](security-azure-log-integration-overview.md). Dieser Artikel stellt Azure Log Integration, die wichtigsten Funktionen sowie die Funktionsweise vor.

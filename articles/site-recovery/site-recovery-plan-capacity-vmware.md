@@ -4,15 +4,15 @@ description: Verwenden Sie diesen Artikel zum Planen der Kapazität und Skalieru
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 12/11/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: f724837e8cce733680b98a5df5690e6a8dfbf6ee
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f644416a9e56009aadd0f8e1b217402d625af84
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258847"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788734"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
 
@@ -20,7 +20,7 @@ Verwenden Sie diesen Artikel, um zu ermitteln, wie die Kapazität und die Skalie
 
 ## <a name="how-do-i-start-capacity-planning"></a>Wie beginne ich mit der Kapazitätsplanung?
 
-Sammeln Sie für die VMware-Replikation mit dem [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) Informationen zu Ihrer Replikationsumgebung. [Hier](site-recovery-deployment-planner.md) finden Sie weitere Informationen zu diesem Tool. Sie sammeln Informationen über kompatible und inkompatible VMs, Datenträger pro VM und Datenänderungen pro Datenträger. Zudem behandelt das Tool Anforderungen an Netzwerkbandbreite und die erforderliche Azure-Infrastruktur für eine erfolgreiche Replikation und ein erfolgreiches Testfailover.
+Sammeln Sie mit dem [Azure Site Recovery-Bereitstellungsplaner](https://aka.ms/asr-deployment-planner-doc) für die VMware-Replikation Informationen zu Ihrer Replikationsumgebung, um die Anforderungen für die Azure Site Recovery-Infrastruktur zu ermitteln. [Hier](site-recovery-deployment-planner.md) finden Sie weitere Informationen zu diesem Tool. Dieses Tool stellt einen Bericht mit vollständigen Informationen zu kompatiblen und inkompatiblen VMs, zu den Datenträgern pro VM und zur Datenänderungsrate pro Datenträger bereit. Außerdem stellt das Tool eine Zusammenfassung der Netzwerkbandbreitenanforderungen zum Erreichen des RPO-Ziels und der erforderlichen Azure-Infrastruktur bereit, die für erfolgreiche Replikation und Testfailovers benötigt wird.
 
 ## <a name="capacity-considerations"></a>Überlegungen zur Kapazität
 
@@ -30,45 +30,59 @@ Sammeln Sie für die VMware-Replikation mit dem [Azure Site Recovery Deployment 
 **Konfigurationsserver** | Der Konfigurationsserver muss in der Lage sein, die tägliche Änderungsrate für alle auf geschützten Computern ausgeführten Workloads zu bewältigen, und er muss über genügend Bandbreite verfügen, um Daten kontinuierlich in den Azure-Speicher zu replizieren.<br/><br/> Als bewährte Methode sollten Sie den Konfigurationsserver im selben Netzwerk und LAN-Segment platzieren, in dem sich auch die zu schützenden Computer befinden. Er kann in einem anderen Netzwerk platziert werden, aber die zu schützenden Computer sollten für ihn über Layer 3-Netzwerksichtbarkeit verfügen.<br/><br/> Die empfohlenen Größen für den Konfigurationsserver werden in der Tabelle im folgenden Abschnitt zusammengefasst.
 **Prozessserver** | Der erste Prozessserver wird standardmäßig auf dem Konfigurationsserver installiert. Sie können zusätzliche Prozessserver bereitstellen, um Ihre Umgebung zu skalieren. <br/><br/> Der Prozessserver empfängt Replikationsdaten von geschützten Computern und optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung. Anschließend sendet er die Daten an Azure. Der Prozessservercomputer muss über genügend Ressourcen zum Ausführen dieser Aufgaben verfügen.<br/><br/> Der Prozessserver verwendet einen datenträgerbasierten Cache. Verwenden Sie einen separaten Cachedatenträger mit einer Größe von mindestens 600 GB, um Datenänderungen bei einem Netzwerkengpass oder -ausfall zwischenspeichern und verarbeiten zu können.
 
-## <a name="size-recommendations-for-the-configuration-server"></a>Empfohlene Größen für den Konfigurationsserver
+## <a name="size-recommendations-for-the-configuration-serverin-built-process-server"></a>Empfohlene Größen für den Konfigurationsserver bzw. integrierte Prozessserver
+
+Jeder Konfigurationsserver, der mit der [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) bereitgestellt wird, verfügt über einen integrierten Prozessserver. Ressourcen wie CPU, Arbeitsspeicher und freier Speicherplatz eines Konfigurationsservers werden zu einer anderen Rate ausgelastet, wenn integrierte Prozessserver zum Schutz der VMs verwendet werden. Daher variieren die Anforderungen, wenn ein integrierter Prozessserver verwendet wird.
+Ein Konfigurationsserver, für den integrierte Prozessserver zum Schutz der Arbeitsauslastung verwendet werden, kann basierend auf den folgenden Konfigurationen bis zu 200 virtuelle Computer ausführen.
 
 **CPU** | **Arbeitsspeicher** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
 --- | --- | --- | --- | ---
 8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Weniger als 100 Computer replizieren.
 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) | 18 GB | 600 GB | 500 GB bis 1 TB | Zwischen 100 und 150 Computer replizieren.
 16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 GB | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 200 Computer replizieren.
-Bereitstellen eines weiteren Prozessservers | | | > 2 TB | Stellen Sie zusätzliche Prozessserver bereit, wenn Sie mehr als 200 Computer replizieren oder wenn die tägliche Änderungsrate 2 TB überschreitet.
+Bereitstellen eines weiteren Konfigurationsservers mit der [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Stellen Sie einen neuen Konfigurationsserver bereit, wenn Sie mehr als 200 Computer replizieren.
+Bereitstellen eines weiteren [Prozessservers](vmware-azure-set-up-process-server-scale.md#download-installation-file) | | | >2 TB| Stellen Sie einen neuen Prozessserver für die horizontale Skalierung bereit, wenn die gesamte tägliche Datenänderungsrate 2 TB überschreitet.
 
 Hinweis:
 
 * Jeder Quellcomputer ist mit 3 Datenträgern von jeweils 100 GB konfiguriert.
 * Bei den Benchmarkingmessungen für den Cachedatenträger wurde ein Speicher aus 8 SAS-Laufwerken mit 10.000 U/min und RAID 10 verwendet.
 
+## <a name="size-recommendations-for-the-configuration-server"></a>Empfohlene Größen für den Konfigurationsserver
+
+Wenn Sie nicht beabsichtigen, den Konfigurationsserver als Prozessserver zu verwenden, führen Sie die folgende Konfiguration durch, um bis zu 650 VMs verwenden zu können.
+
+**CPU** | **RAM** | **Größe des Betriebssystemdatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
+--- | --- | --- | --- | ---
+24 vCPUs (2 Sockets * 12 Kerne \@ 2,5 GHz)| 32 GB | 80 GB | Nicht zutreffend | Bis zu 650 VMs
+
+Jeder Quellcomputer ist mit drei Datenträgern von jeweils 100 GB konfiguriert.
+
+Da die Prozessserverfunktionalität nicht verwendet wird, ist die Datenänderungsrate irrelevant. Sie können Ihre Arbeitsauslastung von einem integrierten Prozessserver in einen anderen Prozessserver für die horizontale Skalierung verschieben, indem Sie die [hier](vmware-azure-manage-process-server.md#balance-the-load-on-process-server) beschriebenen Anweisungen ausführen.
+
 ## <a name="size-recommendations-for-the-process-server"></a>Empfohlene Größen für den Prozessserver
 
-Wenn Sie mehr als 200 Computer schützen müssen oder die tägliche Änderungsrate größer als 2 TB ist, können Sie Prozessserver zum Verarbeiten der Replikationslast hinzufügen. Zum horizontalen Hochskalieren haben Sie folgende Möglichkeiten:
+Der Prozessserver ist die Komponente, die den Datenreplikationsprozess in Azure Site Recovery verarbeitet. Wenn die tägliche Änderungsrate 2 TB überschreitet, müssen Sie einen Prozessserver für die horizontale Skalierung hinzufügen, um die Replikationslast zu verarbeiten. Zum horizontalen Hochskalieren haben Sie folgende Möglichkeiten:
 
-* Erhöhen Sie die Anzahl von Konfigurationsservern. Beispielsweise können Sie mit zwei Konfigurationsservern bis zu 400 Computer schützen.
-* Fügen Sie weitere Prozessserver hinzu, und verwenden Sie diese anstelle des Konfigurationsservers (oder als Ergänzung zu diesem) für die Abwicklung des Datenverkehrs.
+* Erhöhen Sie die Anzahl der Konfigurationsserver, indem Sie sie mit der [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) bereitstellen. Beispielsweise können Sie mit zwei Konfigurationsservern bis zu 400 Computer schützen.
+* Fügen Sie weitere [Prozessserver für die horizontale Skalierung](vmware-azure-set-up-process-server-scale.md#download-installation-file) hinzu, und verwenden Sie diese anstelle des Konfigurationsservers (oder als Ergänzung zu diesem) für die Verarbeitung des Replikationsdatenverkehrs.
 
 Die folgende Tabelle beschreibt dieses Szenario:
 
-* Sie planen nicht, den Konfigurationsserver als Prozessserver zu verwenden.
-* Sie haben einen zusätzlichen Prozessserver eingerichtet.
-* Sie haben geschützte virtuelle Computer so konfiguriert, dass sie den zusätzlichen Prozessserver verwenden.
+* Sie haben einen Prozessserver für die horizontale Skalierung eingerichtet.
+* Sie haben geschützte VMs für die Verwendung des Prozessservers für die horizontale Skalierung konfiguriert.
 * Jeder geschützte Quellcomputer ist mit drei Datenträgern von jeweils 100 GB konfiguriert.
 
-**Konfigurationsserver** | **Zusätzlicher Prozessserver** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
---- | --- | --- | --- | ---
-8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 16 GB Arbeitsspeicher | 4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Maximal 85 Computer replizieren.
-8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 16 GB Arbeitsspeicher | 8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 250 GB bis 1 TB | Zwischen 85 und 150 Computer replizieren.
-12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 18 GB Arbeitsspeicher | 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 225 Computer replizieren.
+**Zusätzlicher Prozessserver** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
+--- | --- | --- | ---
+4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Maximal 85 Computer replizieren.
+8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 250 GB bis 1 TB | Zwischen 85 und 150 Computer replizieren.
+12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 225 Computer replizieren.
 
-Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen.  Beim zentralen Hochskalieren stellen Sie wenige besonders leistungsstarke Konfigurations- und Prozessserver bereit. Beim horizontalen Hochskalieren stellen Sie mehr Server mit geringeren Ressourcen bereit. Wenn Sie zum Beispiel 220 Computer schützen müssen, können Sie sich für eine der beiden folgenden Optionen entscheiden:
+Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen.  Beim zentralen Hochskalieren stellen Sie wenige besonders leistungsstarke Konfigurations- und Prozessserver bereit. Beim horizontalen Hochskalieren stellen Sie mehr Server mit geringeren Ressourcen bereit. Wenn Sie zum Beispiel 200 Computer mit einer täglichen gesamten Datenänderungsrate von 1,5 TB schützen müssen, können Sie sich für eine der beiden folgenden Optionen entscheiden:
 
-* Richten Sie den Konfigurationsserver mit 12 vCPUs, 18 GB Arbeitsspeicher, und einen zusätzlichen Prozessserver mit 12 vCPUs, 24 GB Speicher ein. Konfigurieren Sie die geschützten Computer so, dass sie nur den zusätzlichen Prozessserver verwenden.
-* Konfigurieren Sie zwei Konfigurationsserver (2 x 8 vCPUs, 16 GB RAM) und zwei zusätzliche Prozessserver (1 x 8 vCPUs und 1 x 4 vCPUs für 135 + 85 (220) Computer). Konfigurieren Sie die geschützten Computer so, dass sie nur die zusätzlichen Prozessserver verwenden.
-
+* Richten Sie einen einzelnen Prozessserver mit 16 vCPUs und 24 GB RAM ein.
+* Oder richten Sie zwei Prozessserver ein (jeweils 8 vCPUs und 12 GB RAM).
 
 ## <a name="control-network-bandwidth"></a>Steuern der Netzwerkbandbreite
 
@@ -104,6 +118,16 @@ Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com
    * Um die Bandbreite für den Failbackdatenverkehr von Azure zu beeinflussen, ändern Sie den Wert von **DownloadThreadsPerVM**.
 2. Der Standardwert ist 4. In einem absichtlich mit großen Reserven ausgestatteten Netzwerk müssen die Standardwerte dieser Registrierungsschlüssel geändert werden. Der maximale Wert beträgt 32. Überwachen Sie den Datenverkehr, um den Wert zu optimieren.
 
+## <a name="setup-azure-site-recovery-infrastructure-to-protect-more-than-500-virtual-machines"></a>Einrichten der Azure Site Recovery-Infrastruktur zum Schützen von mehr als 500 VMs
+
+Bevor Sie die Azure Site Recovery-Infrastruktur einrichten, müssen Sie auf die Umgebung zugreifen, um die folgenden Faktoren zu ermitteln: die kompatiblen VMs, die tägliche Datenänderungsrate, die für das RPO-Ziel erforderliche Netzwerkbandbreite, die Anzahl der erforderlichen Azure Site Recovery-Komponenten, die für die Erstreplikation erforderliche Zeit usw.
+
+1. Stellen Sie sicher, dass Sie den Bereitstellungsplaner mithilfe der [hier](site-recovery-deployment-planner.md) aufgeführten Anweisungen ausführen, um diese Parameter zu ermitteln.
+2. Stellen Sie einen Konfigurationsserver gemäß der [hier](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server) aufgeführten Anforderungen bereit. Stellen Sie einen weiteren Konfigurationsserver bereit, wenn Ihre Produktionsarbeitsauslastung 650 VMs überschreitet.
+3. Stellen Sie einen [Prozessserver für die horizontale Skalierung](vmware-azure-set-up-process-server-scale.md#download-installation-file) basierend auf der ermittelten täglichen Datenänderungsrate mithilfe der [hier](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server) aufgeführten Anweisungen bereit.
+4. Wenn Sie erwarten, dass die Datenänderungsrate für einen VM-Datenträger 2 MBps überschreitet, [richten Sie ein Premium-Speicherkonto ein](tutorial-prepare-azure.md#create-a-storage-account). Da der Bereitstellungsplaner für einen bestimmten Zeitraums ausgeführt wird, werden Spitzen der Datenänderungsrate während anderen Zeiträumen möglicherweise nicht im Bericht erfasst.
+5. [Legen Sie die Netzwerkbandbreite](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) gemäß des gewünschten RPO-Ziels fest.
+6. Führen Sie die Anweisungen im [Abschnitt zur Vorgehensweise](vmware-azure-set-up-source.md) aus, um die Notfallwiederherstellung für Ihre Arbeitsauslastung zu aktivieren, nachdem Sie die Infrastruktur eingerichtet haben.
 
 ## <a name="deploy-additional-process-servers"></a>Bereitstellen zusätzlicher Prozessserver
 

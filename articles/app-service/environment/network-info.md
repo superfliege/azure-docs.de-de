@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271010"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630460"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -151,7 +151,7 @@ Alle diese IP-Adressen sind von der ASE-Benutzeroberfläche aus auf einfache Wei
 
 ### <a name="app-assigned-ip-addresses"></a>Von der App zugewiesene IP-Adressen ###
 
-Mit einer externen ASE können Sie einzelnen Apps IP-Adressen zuweisen. Dies ist mit einer ILB-ASE nicht möglich. Weitere Informationen zum Konfigurieren einer eigenen IP-Adresse für Ihre App finden Sie in [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](../app-service-web-tutorial-custom-ssl.md).
+Mit einer externen ASE können Sie einzelnen Apps IP-Adressen zuweisen. Dies ist mit einer ILB-ASE nicht möglich. Weitere Informationen zum Konfigurieren einer eigenen IP-Adresse für Ihre App finden Sie in [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure App Service](../app-service-web-tutorial-custom-ssl.md).
 
 Wenn eine App über eine eigene IP-basierte SSL-Adresse verfügt, reserviert die ASE zwei Ports für die Zuordnung zu dieser IP-Adresse. Ein Port wird für den HTTP-Datenverkehr verwendet, während der andere Port für den HTTPS-Datenverkehr bestimmt ist. Diese Ports werden im Bereich „IP-Adressen“ der ASE-Benutzeroberfläche angezeigt. Der Datenverkehr muss diese Ports von der VIP aus erreichen können, da sonst nicht auf die Apps zugegriffen werden kann. Diese Anforderung ist beim Konfigurieren von Netzwerksicherheitsgruppen (NSGs) unbedingt zu berücksichtigen.
 
@@ -192,7 +192,7 @@ Führen Sie diese Schritte aus, um die gleichen Routen manuell zu erstellen:
 
 3. Wählen Sie in der Benutzeroberfläche Ihrer Routentabelle **Routen** > **Hinzufügen**.
 
-4. Legen Sie als **Typ des nächsten Hops** **Internet** und als **Adresspräfix** **0.0.0.0/0** fest. Wählen Sie **Speichern**aus.
+4. Legen Sie als **Typ des nächsten Hops** **Internet** und als **Adresspräfix** **0.0.0.0/0** fest. Wählen Sie **Speichern** aus.
 
     Folgendes sollte angezeigt werden:
 

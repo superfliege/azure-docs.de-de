@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262600"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602170"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -29,8 +29,8 @@ Microsoft bietet jetzt eine Methode an, um Partner bei der besseren Verfolgung d
 
 Als Microsoft-Partner können Sie die Azure-Nutzung allen Azure-Ressourcen zuordnen, die Sie für einen Kunden bereitstellen. Sie können die Zuordnung über den Azure Marketplace, das Schnellstartrepository, private GitHub-Repositorys und direkte Kundeninteraktion herstellen. Für die Nachverfolgung stehen zwei Ansätze zur Verfügung:
 
-- Azure Resource Manager-Vorlagen: Resource Manager-Vorlagen oder Lösungsvorlagen zum Bereitstellen der Azure-Dienste zum Ausführen der Software des Partners. Partner können Resource Manager-Vorlagen erstellen, um die Infrastruktur und Konfiguration ihrer Azure-Lösung zu definieren. Mit einer Resource Manager-Vorlage können Sie und Ihre Kunden die Lösung während des gesamten Lebenszyklus bereitstellen. Sie können sicher sein, dass Ihre Ressourcen in einem konsistenten Zustand bereitgestellt werden. 
-- Azure Resource Manager-APIs: Partner können die Azure Resource Manager-APIs direkt aufrufen, um eine Resource Manager-Vorlage bereitzustellen, oder um API-Aufrufe für die direkte Bereitstellung von Azure-Diensten zu generieren. 
+- Azure Resource Manager-Vorlagen: Resource Manager-Vorlagen oder Lösungsvorlagen dienen zum Bereitstellen der Azure-Dienste zum Ausführen der Software des Partners. Partner können Resource Manager-Vorlagen erstellen, um die Infrastruktur und Konfiguration ihrer Azure-Lösung zu definieren. Mit einer Resource Manager-Vorlage können Sie und Ihre Kunden die Lösung während des gesamten Lebenszyklus bereitstellen. Sie können sicher sein, dass Ihre Ressourcen in einem konsistenten Zustand bereitgestellt werden. 
+- Azure Resource Manager-APIs: Partner können die Resource Manager-APIs direkt aufrufen, um eine Resource Manager-Vorlage bereitzustellen oder um API-Aufrufe für die direkte Bereitstellung von Azure-Diensten zu generieren. 
 
 Die Zuordnung der Nutzung durch Kunden ist für alle [Lösungsvorlagen](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) erforderlich, die über den Azure Marketplace veröffentlicht werden. 
 
@@ -175,7 +175,7 @@ Nachdem Sie die GUID in der Vorlage oder im Benutzer-Agent hinzugefügt und die 
    
    ![Weitere GUID und Angebotsbeschreibung eingeben](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
    ![„Speichern“ auswählen](media/marketplace-publishers-guide/guid-dev-center-save.png)
 
@@ -270,15 +270,11 @@ Microsoft stellt Partnern eine Ansicht der Kundenbereitstellungen ihrer Vorlagen
 
 **Wer kann einer Vorlage eine GUID hinzufügen?**
 
-Mit der Nachverfolgungsressource soll die Lösung des Partners mit der Azure-Nutzung durch den Kunden verknüpft werden. Die Nutzungsdaten sind an die Microsoft Partner Network-Identität des Partners (MPN-ID) gebunden. Die Berichterstellung steht Partnern im Cloud-Partnerportal (CPP) zur Verfügung.
+Mit der Nachverfolgungsressource soll die Lösung des Partners mit der Azure-Nutzung durch den Kunden verknüpft werden. Die Nutzungsdaten sind an die Microsoft Partner Network-Identität des Partners (MPN-ID) gebunden. 
 
 **Kann eine GUID geändert werden, nachdem sie hinzugefügt wurde?**
  
 Ja, ein Kunde oder Implementierungspartner kann die Vorlage anpassen und die GUID ändern oder entfernen. Es wird empfohlen, dass Partner ihren Kunden und Partnern proaktiv die Funktion der Ressource und der GUID beschrieben, um das Entfernen oder Ändern der Nachverfolgungs-GUID zu verhindern. Eine Änderung der GUID hat nur Auswirkungen auf neue, noch nicht vorhandene Bereitstellungen und Ressourcen.
-
-**Wann ist die Berichterstellung verfügbar?**
-
-Eine Betaversion der Berichterstellung sollte in Kürze verfügbar sein. Die Berichterstellung wird in das Cloud-Partnerportal (CPP) integriert.
 
 **Kann ich Vorlagen nachverfolgen, die nicht über ein Microsoft-Repository, sondern z.B. über GitHub bereitgestellt wurden?**
 

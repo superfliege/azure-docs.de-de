@@ -9,32 +9,30 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 0d78ae294cea383fbe59a1f7968d8bf18b1942d1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ac0c727e41ad9b361ea9f558a97f16446c12ef0e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422955"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793375"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
 
-* Sie können einen neuen virtuellen Computer erstellen, der den gesicherten virtuellen Computer zu einem bestimmten Zeitpunkt darstellt.
-* Sie können Datenträger wiederherstellen und die zugehörige Vorlage des Prozesses verwenden, um den wiederhergestellten virtuellen Computer anzupassen oder einzelne Dateien wiederherzustellen.
+* Erstellen eines neuen virtuellen Computers: über eine Zeitpunktwiederherstellung Ihrer gesicherten virtuellen Computers.
+* Wiederherstellen von Datenträgern: Verwenden Sie die zugehörige Vorlage des Prozesses, um den wiederhergestellten virtuellen Computer anzupassen oder einzelne Dateien wiederherzustellen.
 
 In diesem Artikel wird erläutert, wie ein virtueller Computer als neuer virtueller Computer wiederhergestellt wird oder alle gesicherten Datenträger wiederhergestellt werden. Informationen zur Wiederherstellung einzelner Dateien finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md).
 
 ![Drei Möglichkeiten zum Wiederherstellen auf der Grundlage einer VM-Sicherung](./media/backup-azure-arm-restore-vms/azure-vm-backup-restore.png)
 
-> [!NOTE]
-> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Azure Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel enthält die Informationen und Verfahren, die für die Wiederherstellung bereitgestellter virtueller Computer mithilfe des Resource Manager-Modells verwendet werden.
->
->
 
 Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus einer VM-Sicherung umfasst zwei Schritte:
 
 * Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
-* Auswählen des Wiederherstellungstyps, Erstellen eines neuen virtuellen Computers oder Wiederherstellen eines Datenträgers und Angeben der erforderlichen Parameter
+* Auswählen des Wiederherstellungstyps
+    - Option 1: Erstellen eines neuen virtuellen Computers
+    - Option 2: Wiederherstellen von Datenträgern
 
 ## <a name="select-a-restore-point-for-restore"></a>Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
@@ -60,106 +58,84 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
     ![Liste der virtuellen Computer im Tresor](./media/backup-azure-arm-restore-vms/list-of-vms-in-vault1.png)
 
 7. Wählen Sie in der Liste einen virtuellen Computer aus, um auf das Dashboard zu öffnen. Das VM-Dashboard wird geöffnet und zeigt den Überwachungsbereich an, der die **Wiederherstellungspunkte** enthält. Alle Vorgänge auf VM-Ebene wie **Jetzt sichern**, **Dateiwiederherstellung**, **Sicherung beenden** können von diesem Blatt aus durchgeführt werden.
-Die Wiederherstellung kann auf vielfältige Weise von diesem Blatt aus durchgeführt werden. Beachten Sie, dass dieses Blatt nur die Wiederherstellungspunkte der letzten 30 Tage auflistet.
+Die Wiederherstellung kann auf vielfältige Weise von diesem Blatt aus durchgeführt werden. Beachten Sie, dass auf diesem Blatt nur die Wiederherstellungspunkte der letzten 30 Tage auflistet werden.
 
-    a) Klicken Sie mit der rechten Maustaste auf den Wiederherstellungspunkt auf diesem Blatt (weniger als 30 Tage) und starten Sie **Virtuellen Computer wiederherstellen**.
-
-    b) Um Wiederherstellungspunkte für mehr als 30 Tage wiederherzustellen, können Sie das auf dem Blatt bereitgestellte „Hier klicken“ verwenden.
-
-    c) **Virtuellen Computer wiederherstellen** im Menükopf bietet eine Option, um die virtuellen Computer für benutzerdefinierte Datumsbereiche wie gewünscht aufzulisten und zu filtern.
-
-    Verwenden Sie die Option „Filter“, um den Zeitbereich der angezeigten Wiederherstellungspunkte zu ändern. Standardmäßig werden Wiederherstellungspunkte jeglicher Konsistenz angezeigt. Ändern Sie den Filter „Alle Wiederherstellungspunkte“, um eine bestimmte Konsistenz der Wiederherstellungspunkte auszuwählen. Weitere Informationen zu den einzelnen Typen von Wiederherstellungspunkten finden Sie unter [Datenkonsistenz](backup-azure-vms-introduction.md#data-consistency).
-
-    Optionen für die Konsistenz des Wiederherstellungspunkts:
-    - Absturzkonsistente Wiederherstellungspunkte
-    - Anwendungskonsistente Wiederherstellungspunkte
-    - Dateisystemkonsistente Wiederherstellungspunkte
-    - Alle Wiederherstellungspunkte
+    - Klicken Sie mit der rechten Maustaste auf den virtuellen Computer und dann auf **Virtuellen Computer wiederherstellen**, um eine Wiederherstellung über einen Wiederherstellungspunkt der letzten 30 Tage durchzuführen.
+    - Klicken Sie auf den Link unter **Wiederherstellungspunkte**, um eine Wiederherstellung über einen Wiederherstellungspunkt durchzuführen, der älter als 30 Tage ist.
+    - Klicken Sie im Menü auf **Virtuellen Computer wiederherstellen**, um virtuelle Computer mit benutzerdefinierten Daten aufzulisten und zu filtern. Verwenden Sie den Filter, um den Zeitbereich für die angezeigten Wiederherstellungspunkte zu ändern. Sie können auch nach unterschiedlichen Datenkonsistenztypen filtern.
+8. Überprüfen Sie die Einstellungen für den Wiederherstellungspunkt:
+    - Die Datenkonsistenz zeigt den [Konsistenztyp](backup-azure-vms-introduction.md#consistency-types) für den Wiederherstellungspunkt an.
+    - Der **Wiederherstellungstyp** zeigt an, wo der Punkt gespeichert wird (in einem Speicherkonto, im Tresor oder in beiden). Erfahren Sie mehr über [sofortige Wiederherstellungspunkte](https://azure.microsoft.com/blog/large-disk-support/).
 
   ![Wiederherstellungspunkte](./media/backup-azure-arm-restore-vms/vm-blade1.png)
+9. Wählen Sie einen Wiederherstellungspunkt aus.
 
-    >  [!NOTE]
-    > Der Wiederherstellungstyp gibt an, ob sie sich im Kundenspeicherkonto, im Tresor oder in beiden befindet. Erfahren Sie mehr über [Sofortiger Wiederherstellungspunkt](https://azure.microsoft.com/blog/large-disk-support/).
-
-8. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellungspunkt**.
-
-    ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-arm-restore-vms/select-recovery-point1.png)
-
-    Auf dem Blatt **Wiederherstellen** wird angezeigt, dass der Wiederherstellungspunkt festgelegt wird, wenn Sie auf **OK** klicken.
-9. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-a-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
+10. Klicken Sie auf **Konfiguration wiederherstellen**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
 
 ## <a name="choose-a-vm-restore-configuration"></a>Auswählen einer Konfiguration für die VM-Wiederherstellung
 Wählen Sie nach der Auswahl des Wiederherstellungspunkts eine Konfiguration für die VM-Wiederherstellung aus. Zum Konfigurieren des wiederhergestellten virtuellen Computers können Sie das Azure-Portal oder PowerShell verwenden.
 
-1. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-a-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
-2. Dieses Blatt verfügt derzeit über zwei Optionen: **Neu erstellen** (Standardeinstellung) und **Vorhandene ersetzen**. Letztere Option ist eine direkte Wiederherstellung, um die Datenträger zu ersetzen, die nur die vorhandenen Konfigurationen und Erweiterungen beibehalten.
+### <a name="restore-options"></a>Wiederherstellungsoptionen
+
+**Option** | **Details**
+--- | ---
+**Neu erstellen > VM erstellen** | Entspricht der schnellen Erstellung eines virtuellen Computers. Ein einfacher virtueller Computer wird über einen Wiederherstellungspunkt betriebsbereit gemacht.<br/><br/> Die Einstellungen des virtuellen Computers können als Teil des Wiederherstellungsprozesses geändert werden.
+**Neu erstellen > Restore disk (Datenträger wiederherstellen)** | Es wird ein virtueller Computer erstellt, den Sie als Teil des Wiederherstellungsprozesses anpassen können.<br/><br/> Mit dieser Option werden virtuelle Festplatten in das von Ihnen angegebene Speicherkonto kopiert.<br/><br/> Das Konto sollte sich am gleichen Speicherort wie der Tresor befinden.<br/><br/> Wenn Sie kein geeignetes Speicherkonto besitzen, müssen Sie eines erstellen.<br/><br/> Der Replikationstyp des Speicherkontos wird in Klammern angezeigt. Der zonenredundante Speicher (Zone Redundant Storage, ZRS) wird nicht unterstützt.<br/><br/> Über das Speicherkonto können Sie die wiederhergestellten Datenträger an einen vorhandenen virtuellen Computer anfügen. Alternativ können Sie einen neuen virtuellen Computer mithilfe von PowerShell aus den wiederhergestellten Datenträgern erstellen.
+**Vorhandene ersetzen** | Mit dieser Option müssen Sie keinen virtuellen Computer erstellen.<br/><br/> Der aktuelle virtuelle Computer muss jedoch vorhanden sein. Wenn dieser gelöscht wurde, kann diese Option nicht verwendet werden.<br/><br/> Azure Backup erstellt eine Momentaufnahme des vorhandenen virtuellen Computers und speichert diese am angegebenen Stagingspeicherort. Die vorhandenen Datenträger, die mit dem virtuellen Computer verbunden sind, werden daraufhin durch den ausgewählten Wiederherstellungspunkt ersetzt. Die zuvor erstellte Momentaufnahme wird in den Tresor kopiert und gemäß Ihrer Aufbewahrungsrichtlinie als Wiederherstellungspunkt gespeichert.<br/><br/> Die Option „Vorhandene ersetzen“ wird für nicht verschlüsselte verwaltete VMs unterstützt. Für nicht verwaltete Datenträger, [generalisierte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) oder für virtuelle Computer, die mit [benutzerdefinierten Images](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) erstellt wurden, wird sie nicht unterstützt.<br/><br/> Wenn der Wiederherstellungspunkt mehr oder weniger Datenträger als der aktuelle virtuelle Computer aufweist, dann übernimmt er die Anzahl des virtuellen Computers.
 
 > [!NOTE]
-> Wir arbeiten in den nächsten Monaten daran, den gesamten virtuellen Computer durch die Datenträger, Netzwerkeinstellungen, Konfigurationen und Erweiterungen zu ersetzen.
->
->
+> Wenn Sie einen virtuellen Computer mit erweiterten Netzwerkeinstellungen wiederherstellen möchten, stellen Sie diesen mit PowerShell wieder her, zum Beispiel wenn die Einstellungen von einem internen oder externen Lastenausgleich verwaltet werden oder über mehrere NICs oder mehrere IP-Adressen verfügen. [Weitere Informationen](#restore-vms-with-special-network-configurations)
+> Wenn ein virtueller Windows-Computer [HUB-Lizenzierung](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, verwenden Sie die Option **Neu erstellen > Restore disk (Datenträger wiederherstellen)** und anschließend PowerShell, oder stellen Sie die Vorlage wieder her, um den virtuellen Computer wiederherzustellen, wobei **Lizenztyp** auf **Windows_Server** festgelegt ist. Diese Einstellung kann auch nach dem Erstellen des virtuellen Computers angewendet werden.
 
- Bei der Option **Neu erstellen**, die die Daten auf einem neuen virtuellen Computer oder einem neuen Datenträger wiederherstellt, haben Sie zwei Möglichkeiten:
 
- ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/restore-configuration-create-new.png)
+Geben Sie die Einstellungen zur Wiederherstellung wie folgt an:
 
- - **Virtuellen Computer erstellen**
- - **Datenträger wiederherstellen**
+1. Wählen Sie unter **Wiederherstellen** einen [Wiederherstellungspunkt](#select-a-restore-point-for-restore) und dann **Wiederherstellungskonfiguration** aus.
+2. Wählen Sie unter **Wiederherstellungskonfiguration** aus, wie Sie den virtuellen Computer entsprechend den Einstellungen wiederherstellen möchten, die in der Tabelle oben zusammengefasst sind.
 
-![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/restore-configuration-create-new1.png)
+    ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/restore-configuration-create-new1.png)
 
-Das Portal bietet für einen wiederhergestellten virtuellen Computer die Option **Schnellerfassung**. Wenn Sie die Konfiguration des virtuellen Computers oder die Namen der Ressourcen anpassen möchten, die beim Erstellen einer neuen VM-Auswahl erstellt wurden, verwenden Sie PowerShell oder das Portal zum Wiederherstellen gesicherter Datenträger. Fügen Sie sie mithilfe von PowerShell-Befehlen an eine Auswahl von VM-Konfigurationen an. Sie können auch die mit wiederhergestellten Datenträgern bereitgestellte Vorlage verwenden, um den wiederhergestellten virtuellen Computer anzupassen. Informationen zum Wiederherstellen von virtuellen Computern mit mehreren Netzwerkkarten oder einem Lastenausgleichsmodul finden Sie unter [Wiederherstellen virtueller Computer über das Azure-Portal](#restore-vms-with-special-network-configurations). Wenn der virtuelle Windows-Computer [HUB-Lizenzierung](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, müssen Sie zum Erstellen des virtuellen Computers Datenträger wiederherstellen und PowerShell bzw. eine Vorlage verwenden, wie in diesem Artikel beschrieben. Stellen Sie sicher, dass Sie beim Erstellen des virtuellen Computers für **Lizenztyp** den Wert „Windows_Server“ angeben, um auf dem wiederhergestellten virtuellen Computer von den HUB-Vorteilen zu profitieren. Beachten Sie, dass dies auch später nach der Erstellung des virtuellen Computers erfolgen kann.
 
-## <a name="create-a-new-vm-from-a-restore-point"></a>Erstellen eines neuen virtuellen Computer über einen Wiederherstellungspunkt
-1. Geben Sie auf dem im vorherigen Abschnitt erwähnten Blatt **Konfiguration wiederherstellen** Werte für jedes der folgenden Felder ein oder wählen Sie sie aus:
+## <a name="create-new-create-a-vm"></a>Neu erstellen > Virtuellen Computer erstellen
 
-    a. **Wiederherstellungstyp**. Erstellen Sie eine VM.
-
-    b. **Name des virtuellen Computers**. Geben Sie den Namen des virtuellen Computers ein, der im Abonnement nicht vorhanden ist.
-
-    c. **Ressourcengruppe**. Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Wenn Sie einen klassischen virtuellen Computer wiederherstellen möchten, verwenden Sie dieses Feld, um den Namen eines neuen Clouddiensts anzugeben. Wenn Sie eine neue Ressourcengruppe/einen neuen Clouddienst erstellen, muss der Name global eindeutig sein. In der Regel wird der Name des Clouddiensts einer öffentlich zugänglichen URL zugeordnet, z.B. [cloudservice].cloudapp.net. Wenn Sie versuchen, einen bereits verwendeten Namen für die Cloudressourcengruppe/den Clouddienst zu verwenden, weist Azure der Ressourcengruppe/dem Clouddienst den Namen des virtuellen Computers zu. Azure zeigt Ressourcengruppen/Clouddienste und virtuelle Computer an, die keiner Affinitätsgruppe zugeordnet sind. Weitere Informationen finden Sie unter [Migrieren eines (klassischen) virtuellen Netzwerks aus einer Affinitätsgruppe in eine Region](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
-
-    d. **Virtuelles Netzwerk**. Wählen Sie das virtuelle Netzwerk aus, wenn Sie einen virtuellen Computer erstellen. Das Feld enthält alle dem Abonnement zugeordneten virtuellen Netzwerke. Die Ressourcengruppe des virtuellen Computers wird in Klammern angezeigt.
-
-    e. **Subnetz**. Wenn das virtuelle Netzwerk über Subnetze verfügt, ist das erste Subnetz standardmäßig ausgewählt. Wenn zusätzliche Subnetze vorhanden sind, wählen Sie das gewünschte Subnetz aus.
-
-    f. **Speicherort**. Speicherkonten sind der Stagingort. In diesem Menü werden die Speicherkonten aufgelistet, die sich am gleichen Standort wie der Recovery Services-Tresor befinden. Zonenredundante Speicherkonten werden nicht unterstützt. Wenn keine Speicherkonten mit dem gleichen Standort wie der Recovery Services-Tresor vorhanden sind, müssen Sie vor dem Starten des Wiederherstellungsvorgangs eins erstellen. Der Replikationstyp des Speicherkontos wird in Klammern angezeigt.
+1. Wählen Sie unter **Konfiguration wiederherstellen** > **Neu erstellen** > **Wiederherstellungstyp** die Option **Virtuellen Computer erstellen** aus.
+2. Geben Sie unter **Name des virtuellen Computers** einen virtuellen Computer an, der nicht im Abonnement vorhanden ist.
+3. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den neuen virtuellen Computer aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen. Wenn Sie einen Namen zuweisen, der bereits vorhanden ist, weist Azure der Gruppe denselben Namen wie der VM zu.
+4. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk aus, in das der virtuelle Computer platziert wird. Alle dem Abonnement zugeordneten VNETs werden angezeigt. Wählen Sie das Subnetz aus. Das erste Subnetz wird standardmäßig ausgewählt.
+5. Geben Sie unter **Speicherort** den Speichertyp an, der für den virtuellen Computer verwendet wird.
 
     ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-    > [!NOTE]
-    > * Ein virtuelles Netzwerk ist optional für einen klassische virtuellen Computer und obligatorisch für einem vom Resource Manager bereitgestellten virtuellen Computer.
+6. Klicken Sie unter **Konfiguration wiederherstellen** auf **OK**. Klicken Sie unter **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
 
-    > * Der im Speicherkonto (Premium oder Standard) am Stagingort angegebene Speichertyp entscheidet über den Speichertyp des Wiederherstellungsdatenträgers. Derzeit wird der gemischte Modus beim Wiederherstellen von Datenträgern nicht unterstützt.
-    >
-    >
 
-2. Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die Wiederherstellungskonfiguration abzuschließen. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
 
-## <a name="restore-backed-up-disks"></a>Wiederherstellen von gesicherten Datenträgern
-Der Wiederherstellungstypwert **Datenträger wiederherstellen** auf dem Blatt **Konfiguration wiederherstellen** ermöglicht es, einen virtuellen Computer mit angepassten Konfigurationen zu erstellen. Beim Wiederherstellen von Datenträgern sollte sich das zu wählende Speicherkonto am selben Ort befinden wie der Recovery Services-Tresor. Wenn keine Speicherkonten mit dem gleichen Standort wie der Recovery Services-Tresor vorhanden sind, müssen Sie ein Speicherkonto erstellen. ZRS-Speicherkonten werden nicht unterstützt. Der Replikationstyp des Speicherkonto wird in Klammern angezeigt.
+## <a name="create-new-restore-disks"></a>Neu erstellen > Restore disk (Datenträger wiederherstellen)
 
-Vorgang nach der Wiederherstellung, siehe unten:
-* [Verwenden der Vorlage, um den wiederhergestellten virtuellen Computer anzupassen](#use-templates-to-customize-restore-vm)
-* [Verwenden der wiederhergestellten Datenträger, um sie einem vorhandenen virtuellen Computer anzufügen](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Erstellen eines neuen virtuellen Computers aus wiederhergestellten Datenträgern mithilfe von PowerShell](./backup-azure-vms-automation.md#restore-an-azure-vm)
+1. Wählen Sie unter **Konfiguration wiederherstellen** > **Neu erstellen** > **Wiederherstellungstyp** die Option **Datenträger wiederherstellen** aus.
+2. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den wiederhergestellten Datenträger aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen.
+3. Geben Sie für das **Speicherkonto** das Konto an, in das die virtuellen Festplatten kopiert werden sollen. Stellen Sie sicher, dass sich das Konto in derselben Region wie der Tresor befindet.
 
-Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die Wiederherstellungskonfiguration abzuschließen. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
+    ![Konfiguration der Wiederherstellung abgeschlossen](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-![Konfiguration der Wiederherstellung abgeschlossen](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+4. Klicken Sie unter **Konfiguration wiederherstellen** auf **OK**. Klicken Sie unter **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
+5. Nachdem der Datenträger wiederhergestellt wurde, können Sie eine der folgenden Aktionen durchführen, um den Wiederherstellungsvorgang für den virtuellen Computer abzuschließen.
 
-Die **direkte Wiederherstellung** erfolgt über die Registerkarte **Vorhandene ersetzen**.
+    - Verwenden Sie die Vorlage, die als Teil des Wiederherstellungsvorgangs generiert wurde, um Einstellungen anzupassen und die Bereitstellung des virtuellen Computers auszulösen. Bearbeiten Sie die Standardeinstellungen für die Vorlage, und übermitteln Sie die Vorlage für die Bereitstellung des virtuellen Computers.
+    - Sie können den wiederhergestellten Datenträger an einen vorhandenen virtuellen Computer [anfügen](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps).
+    - Sie können [einen neuen virtuellen Computer](backup-azure-vms-automation.md#restore-an-azure-vm) aus den wiederhergestellten Datenträgern mithilfe von PowerShell erstellen.
 
-## <a name="replace-existing-disks-from-a-restore-point"></a>Ersetzen vorhandener Datenträger über einen Wiederherstellungspunkt
-Die Option **Vorhandene ersetzen** hilft dabei, vorhandene Datenträger im aktuellen virtuellen Computer durch den ausgewählten Wiederherstellungspunkt zu ersetzen. Dieser Vorgang kann nur ausgeführt werden, wenn der aktuelle virtuelle Computer vorhanden ist. Wenn er aus irgendeinem Grund gelöscht wurde, kann dieser Vorgang nicht durchgeführt werden. Alternativ wird empfohlen, **Neu erstellen** für den virtuellen Computer oder die Datenträger durchzuführen, um mit den Wiederherstellungsvorgängen fortzufahren. Bei diesem Vorgang werden die Daten als Vorsichtsmaßnahme vor dem Initiieren der Datenträgerersetzungsvorgänge gesichert. Dadurch werden im Tresor eine Momentaufnahme und ein Wiederherstellungspunkt erstellt und mit der Beibehaltungsdauer versehen, die in der konfigurierten Sicherungsrichtlinie geplant wurde. Wenn der Wiederherstellungspunkt mehr/weniger Datenträger als der aktuelle virtuelle Computer aufweist, dann wird die Anzahl der Datenträger im Wiederherstellungspunkt nur auf dem virtuellen Computer angezeigt. Die Option **Vorhandene ersetzen** wird derzeit nur für verwaltete Datenträger und unverschlüsselte virtuelle Computer unterstützt. Für [generalisierte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) und für virtuelle Computer, die mit [benutzerdefinierte Images](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) erstellt wurden, wird sie nicht unterstützt.  
 
- Auf dem Blatt **Konfiguration wiederherstellen** muss als einzige Eingabe **Stagingort** ausgewählt werden.
+## <a name="replace-existing-disks"></a>Ersetzen vorhandener Datenträger
+
+Verwenden Sie diese Option, um vorhandene Datenträger im aktuellen virtuellen Computer durch den ausgewählten Wiederherstellungspunkt zu ersetzen.
+
+1. Klicken Sie unter **Konfiguration wiederherstellen** auf **Vorhandene ersetzen**.
+2. Wählen Sie für den **Wiederherstellungstyp** die Option **Replace disk/s** (Datenträger ersetzen) aus (diese ist der Wiederherstellungspunkt, der den bzw. die vorhandenen VM-Datenträger ersetzt).
+3. Geben Sie für den **Stagingspeicherort** an, an dem Momentaufnahmen der aktuellen verwalteten Datenträger gespeichert werden sollen.
 
    ![Assistent für die Wiederherstellungskonfiguration – Vorhandene ersetzen](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
- a. **Wiederherstellungstyp**. Ersetzen Sie die Datenträger, die angeben, dass der ausgewählte Wiederherstellungspunkt die Datenträger im vorhandenen virtuellen Computer ersetzt.
-
- b. **Stagingort**. Speicherkonten sind der Stagingort für verwaltete Datenträger. In diesem Menü werden die Speicherkonten aufgelistet, die sich am gleichen Standort wie der Recovery Services-Tresor befinden. Zonenredundante Speicherkonten werden nicht unterstützt. Wenn keine Speicherkonten mit dem gleichen Standort wie der Recovery Services-Tresor vorhanden sind, müssen Sie vor dem Starten des Wiederherstellungsvorgangs eins erstellen. Der Replikationstyp des Speicherkontos wird in Klammern angezeigt.
 
 ## <a name="track-the-restore-operation"></a>Nachverfolgen des Wiederherstellungsvorgangs
 Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen des Wiederherstellungsvorgangs. Der Sicherungsdienst erstellt außerdem die Benachrichtigung und zeigt sie vorübergehend im Bereich **Benachrichtigung** des Portals an. Wenn die Benachrichtigung nicht angezeigt wird, klicken Sie auf das Symbol **Benachrichtigungen**, um Ihre Benachrichtigungen anzuzeigen.
@@ -171,6 +147,15 @@ Klicken Sie auf den Link der Benachrichtigungen, um zur Liste **BackupJobs** zu 
 Das Blatt **Sicherungsaufträge** wird geöffnet und zeigt die Liste der Aufträge an.
 
 ![Liste der virtuellen Computer in einem Tresor](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
+
+Auf dem Blatt **Wiederherstellungsdetails** ist die **Statusanzeige** nun verfügbar. Das Blatt **Wiederherstellungsdetails** kann durch Klicken auf einen beliebigen Wiederherstellungsauftrag geöffnet werden, der den Status **In Bearbeitung** aufweist. Die **Statusanzeige** ist bei allen Arten von Wiederherstellungsvorgängen verfügbar, z. B. **Neu erstellen**, **Datenträger wiederherstellen** und **Vorhandene ersetzen**. Die Details, die in der Statusanzeige unter Restore (Wiederherstellen) enthalten sind, sind Informationen zur **geschätzten Dauer der Wiederherstellung**, zum **Fortschritt der Wiederherstellung** und **zur Anzahl der übertragenen Bytes**.
+
+Details zur Statusanzeige für die Wiederherstellung sind nachfolgend angegeben:
+
+- Die **geschätzte Dauer der Wiederherstellung** gibt zunächst an, wieviel Zeit benötigt wird, um den Wiederherstellungsvorgang abzuschließen. Während der Vorgang weiter ausgeführt wird, verringert sich die benötigte Zeit und erreicht schließlich 0, sobald der Wiederherstellungsvorgang abgeschlossen ist.
+- Der **Fortschritt der Wiederherstellung** gibt an, zu wie viel Prozent der Wiederherstellungsvorgang bereits abgeschlossen ist.
+- Die **Anzahl der übertragenen Bytes** ist in der untergeordneten Aufgabe verfügbar, wenn die Wiederherstellung über die Option zum Herstellen eines neuen virtuellen Computers durchgeführt wird. Sie erhalten Informationen darüber, wie viele Bytes im Vergleich zu der Gesamtzahl der insgesamt zu übertragenden Bytes bereits übertragen wurden.
+
 
 ## <a name="use-templates-to-customize-a-restored-vm"></a>Verwenden von Vorlagen zum Anpassen eines wiederhergestellten virtuellen Computers
 Verwenden Sie [nach Abschluss der Datenträgerwiederherstellung](#Track-the-restore-operation) die Vorlage, die im Rahmen des Wiederherstellungsvorgangs generiert wurde, um einen neuen virtuellen Computer mit einer anderen Konfiguration als der Sicherungskonfiguration zu erstellen. Sie können mit der Vorlage auch Namen von Ressourcen anpassen, die beim Erstellen eines neuen virtuellen Computers über einen Wiederherstellungspunkt erstellt wurden.

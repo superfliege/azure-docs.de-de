@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e979930ed504dafe330b774725f4193f1c15ed17
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301015"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793987"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -63,7 +63,7 @@ Bei Verwendung von Visual Studio können Sie die Erweiterungen abrufen, indem Si
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurieren von Authentifizierung/Autorisierung
 
-Für die in diesem Artikel beschriebenen Bindungen muss eine Identität verwendet werden. Dies ermöglicht Microsoft Graph, Berechtigungen zu erzwingen und Interaktionen zu überwachen. Die Identität kann ein Benutzer sein, der auf Ihre Anwendung zugreift, oder die Anwendung selbst. Um diese Identität zu konfigurieren, richten Sie [App Service-Authentifizierung/-Autorisierung](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) mit Azure Active Directory ein. Sie müssen auch alle Ressourcenberechtigungen anfordern, die in Ihren Funktionen benötigt werden.
+Für die in diesem Artikel beschriebenen Bindungen muss eine Identität verwendet werden. Dies ermöglicht Microsoft Graph, Berechtigungen zu erzwingen und Interaktionen zu überwachen. Die Identität kann ein Benutzer sein, der auf Ihre Anwendung zugreift, oder die Anwendung selbst. Um diese Identität zu konfigurieren, richten Sie [App Service-Authentifizierung/-Autorisierung](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) mit Azure Active Directory ein. Sie müssen auch alle Ressourcenberechtigungen anfordern, die in Ihren Funktionen benötigt werden.
 
 > [!Note] 
 > Die Microsoft Graph-Erweiterung unterstützt nur die Azure AD-Authentifizierung. Benutzer müssen sich mit einem Geschäfts-, Schul- oder Unikonto anmelden.
@@ -226,7 +226,8 @@ Die Bindung selbst erfordert keine Azure AD-Berechtigungen, aber je nach Verwend
 
 In Code wird das Token immer als Zeichenfolge angegeben.
 
-
+> [!Note]
+> Bei der lokalen Entwicklung mit der Option `userFromId`, `userFromToken` oder`userFromRequest` kann das erforderliche Token [manuell abgerufen](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) und im Anforderungsheader `X-MS-TOKEN-AAD-ID-TOKEN` von einer aufrufenden Clientanwendung angegeben werden.
 
 
 <a name="excel-input"></a>

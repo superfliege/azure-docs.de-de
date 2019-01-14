@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: 351213749dcec2b4c16728c04230c75a12179118
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e7644128a3f0e0ea531933286e95b15149fdebd3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411282"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557858"
 ---
 # <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Aktualisieren von Windows Server 2012 R2-Hosts und SCVMM 2012 R2-Instanzen, die mit Azure Site Recovery konfiguriert sind, auf Windows Server 2016 und SCVMM 2016
 
@@ -49,7 +49,7 @@ Beachten Sie Folgendes, bevor Sie das Upgrade durchführen:
     - Notieren Sie die VMM-ID des primären 2012 R2-VMM-Servers und des 2012 R2-VMM-Wiederherstellungsservers. Die VMM-ID finden Sie in der Registrierung unter „HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup“.
     - Stellen Sie sicher, dass die neuen SCVMM-Instanzen, die Sie dem Cluster hinzufügen, die gleichen Namen wie zuvor aufweisen. 
 
-- Wenn Sie zwischen zwei Standorten replizieren, die auf beiden Seiten von SCVMM verwaltet werden, müssen Sie zuerst den Wiederherstellungsstandort und danach den primären Standort aktualisieren.
+- Wenn Sie zwischen zwei Standorten replizieren, die auf beiden Seiten von SCVMM verwaltet werden, müssen Sie zuerst ein Upgrade des Wiederherstellungsstandorts und danach ein Upgrade des primären Standort durchführen.
 > [!WARNING]
 > Wählen Sie während des Upgrades von SCVMM 2012 R2 unter „Verwaltung verteilter Schlüssel“ die Option **Store encryption keys in Active Directory** (Verschlüsselungsschlüssel in Active Directory speichern) aus. Gehen Sie bei der Auswahl der Einstellungen für das Dienstkonto und die Verwaltung verteilter Schlüssel sorgfältig vor. Abhängig von Ihrer Auswahl sind verschlüsselte Daten (z. B. Kennwörter in Vorlagen) nach dem Upgrade möglicherweise nicht verfügbar, wodurch die Replikation mit Azure Site Recovery beeinträchtigt werden kann.
 
@@ -109,5 +109,5 @@ Bevor Sie Ihre Windows Server 2012 R2-Hosts aktualisieren, müssen Sie SCVMM 201
 4.  Wechseln Sie zum Azure-Portal, und überprüfen Sie den replizierten Integritätsstatus der VMs im Recovery Services-Tresor. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie die Hosts aktualisiert haben, können Sie ein [Testfailover](tutorial-dr-drill-azure.md) ausführen, um die Integrität Ihres Replikations- und Notfallwiederherstellungsstatus zu testen.
+Nachdem das Upgrade der Hosts abgeschlossen ist, können Sie ein [Testfailover](tutorial-dr-drill-azure.md) ausführen, um die Integrität Ihres Replikations- und Notfallwiederherstellungsstatus zu testen.
 

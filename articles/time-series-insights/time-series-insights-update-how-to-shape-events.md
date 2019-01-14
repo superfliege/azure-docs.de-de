@@ -1,5 +1,5 @@
 ---
-title: Strukturieren von Ereignissen in Azure Time Series Insights Preview – Strukturieren von Ereignissen mit Azure Time Series Insights Preview | Microsoft-Dokumentation
+title: Strukturieren von Ereignissen in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
 description: Grundlagen zum Strukturieren von Ereignissen mit Azure Time Series Insights Preview.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b0ce3b5bbd58c594147f64de9f06f248f4a87fc3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: eb398ad621167ad9f9b245fb8aa98c6942b87668
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269072"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557426"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Strukturieren von Ereignissen in Azure Time Series Insights Preview
 
@@ -110,7 +110,7 @@ Im folgenden Beispiel wird eine einzelne IoT Hub-Nachricht verwendet, bei der da
 
 Time Series Insights Preview verknüpft eine Tabelle (nach deren Vereinfachung) während der Abfragezeit. Die Tabelle enthält zusätzliche Spalten, z. B. **Typ**. Im folgenden Beispiel wird veranschaulicht, wie Sie Ihre Telemetriedaten [strukturieren](./time-series-insights-send-events.md#json) können:
 
-| deviceId  | Typ | L1 | L2 |  timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
+| deviceId  | Typ | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | `FXXX` | Default_Type | REVOLT SIMULATOR | Battery System | 2018-01-17T01:17:00Z |    1.0172575712203979 |    34.7 |
 | `FXXX` | LINE_DATA    REVOLT | SIMULATOR |    Battery System |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |

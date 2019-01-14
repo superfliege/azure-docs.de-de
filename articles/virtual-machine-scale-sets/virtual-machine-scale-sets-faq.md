@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2a33283d735532d4cc4c11bc3910377f15aaa730
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139366"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002687"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -167,48 +167,16 @@ Der Code ist für Windows und Linux geeignet.
 Weitere Informationen finden Sie unter [Create or update a set](https://msdn.microsoft.com/library/mt589035.aspx) (Erstellen oder Aktualisieren einer Gruppe).
 
 
-### <a name="example-of-self-signed-certificate"></a>Beispiel für ein selbstsigniertes Zertifikat
+### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Beispiel für selbstsignierte Zertifikate, die für Azure Service Fabric-Cluster bereitgestellt werden.
+Verwenden Sie für das neueste Beispiel die folgende Azure-CLI-Anweisung innerhalb von Azure Shell, und lesen Sie die Dokumentation zum Service Fabrics CLI-Modulbeispiel, die über stdout gedruckt wird:
 
-1.  Erstellen Sie ein selbstsigniertes Zertifikat in einem Schlüsseltresor.
+```bash
+az sf cluster create -h
+```
 
-    Verwenden Sie die folgenden PowerShell-Befehle:
+Bitte arbeiten Sie die Keyvaults-Dokumentation bezüglich der neuesten über APIs unterstützten Zertifikatoperationen in Azure durch.
 
-    ```powershell
-    Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
-
-    Connect-AzureRmAccount
-
-    Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-    ```
-
-    Mit diesem Befehl erhalten Sie die Eingabe für die Azure Resource Manager-Vorlage.
-
-    Ein Beispiel für die Erstellung eines selbstsignierten Zertifikats in einem Schlüsseltresor finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
-
-2.  Ändern Sie die Resource Manager-Vorlage.
-
-    Fügen Sie **virtualMachineProfile** die folgende Eigenschaft als Teil der VM-Skalierungsgruppenressource hinzu:
-
-    ```json 
-    "osProfile": {
-        "computerNamePrefix": "[variables('namingInfix')]",
-        "adminUsername": "[parameters('adminUsername')]",
-        "adminPassword": "[parameters('adminPassword')]",
-        "secrets": [
-            {
-                "sourceVault": {
-                    "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                },
-                "vaultCertificates": [
-                    {
-                        "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                        "certificateStore": "My"
-                    }
-                ]
-            }
-        ]
-    }
-    ```
+Selbstsignierte Zertifikate können nicht für verteilte Vertrauensstellungen verwendet werden, die von einer Zertifizierungsstelle bereitgestellt werden, und sie sollten nicht für Service Fabric Cluster verwendet werden, die zum Hosten von Produktionslösungen von Unternehmen bestimmt sind; weitere Anleitungen zur Service Fabric-Sicherheit finden Sie in [Azure Service Fabric Security Best Practices](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices) (Azure Service Fabric-Sicherheit – bewährte Methoden) und [Service Fabric cluster security scenarios](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/) (Service Fabric Cluster-Sicherheitsszenarien).
   
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Kann ich ein SSH-Schlüsselpaar für die SSH-Authentifizierung mit einer Linux-VM-Skalierungsgruppe über eine Resource Manager-Vorlage angeben?  
@@ -389,7 +357,7 @@ Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microso
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Können [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/msi-overview) zusammen mit einer VM-Skalierungsgruppe verwendet werden?
 
-Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux) Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)
+Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)
 
 
 ## <a name="extensions"></a>Erweiterungen
@@ -559,7 +527,7 @@ Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewe
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Wie führe ich ein VIP-Swap für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region aus?
 
-Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen.  Beispiele finden Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine schnellere Option ist die Verwendung von Azure Application Gateway mit zwei Back-End-Pools und einer Routingregel. Alternativ können Sie Ihre Anwendung mit [Azure App Service](https://azure.microsoft.com/services/app-service/) hosten. Dieser Dienst bietet Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots.
+Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen. Ein Beispiel finden Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine schnellere Option ist die Verwendung von Azure Application Gateway mit zwei Back-End-Pools und einer Routingregel. Alternativ können Sie Ihre Anwendung mit [Azure App Service](https://azure.microsoft.com/services/app-service/) hosten. Dieser Dienst bietet Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Wie gebe ich einen Bereich privater IP-Adressen für die statische private IP-Adresszuordnung an?
 
@@ -573,7 +541,7 @@ Informationen zum Bereitstellen einer VM-Skalierungsgruppe für ein vorhandenes 
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Wie füge ich die IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe der Ausgabe einer Vorlage hinzu?
 
-Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [ARM: Get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (ARM: Abrufen der privaten IP-Adressen einer VMSS).
+Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [Azure Resource Manager: Get virtual machine scale sets private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (Azure Resource Manager: Abrufen der privaten IPs von VM-Skalierungsgruppen).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Kann ich Skalierungsgruppen mit beschleunigten Netzwerken verwenden?
 

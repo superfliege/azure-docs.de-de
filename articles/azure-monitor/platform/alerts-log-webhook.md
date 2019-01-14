@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 4502f7232d2bcfaf4a32a384d24556cd668dc50b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283376"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720304"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alerts-log.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -79,7 +79,7 @@ Um Suchergebnisse in eine benutzerdefinierte Nutzlast einzuschließen, muss **In
 Dieser Abschnitt zeigt eine Beispielnutzlast für den Webhook für Protokollwarnungen, einschließlich Fällen mit Standardnutzlast und benutzerdefinierter Nutzlast.
 
 > [!NOTE]
-> Zum Gewährleisten der Abwärtskompatibilität ist die Standard-Webhooknutzlast für Warnungen mit Azure Log Analytics identisch mit der [Log Analytics-Warnungsverwaltung](alerts-metric.md). Für Protokollwarnungen mit [Application Insights](../../application-insights/app-insights-analytics.md) basiert die Standard-Webhooknutzlast aber auf dem Aktionsgruppenschema.
+> Zum Gewährleisten der Abwärtskompatibilität ist die Standard-Webhooknutzlast für Warnungen mit Azure Log Analytics identisch mit der [Log Analytics-Warnungsverwaltung](alerts-metric.md). Für Protokollwarnungen mit [Application Insights](../../azure-monitor/app/analytics.md) basiert die Standard-Webhooknutzlast aber auf dem Aktionsgruppenschema.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standardwebhook für Protokollwarnungen 
 In beiden Beispielen wurde eine Pseudonutzlast mit nur zwei Spalten und zwei Zeilen angegeben.
@@ -200,5 +200,5 @@ Im Folgenden sehen Sie eine Beispielnutzlast für eine benutzerdefinierte Webhoo
 - Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](alerts-unified-log.md).
 - Grundlegendes zur [Verwaltung von Protokollwarnungen in Azure](alerts-log.md)
 - Erstellen und Verwalten von [Aktionsgruppen in Azure](action-groups.md)
-- Weitere Informationen zu [Application Insights](../../application-insights/app-insights-analytics.md)
+- Weitere Informationen zu [Application Insights](../../azure-monitor/app/analytics.md)
 - Erfahren Sie mehr über [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 

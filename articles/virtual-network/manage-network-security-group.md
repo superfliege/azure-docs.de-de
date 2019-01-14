@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 3ac7ab0aac190ab53075a6a4ee24fca3ee7eeb84
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: d6dfd88f9349312cc81d760a2c473f32ff932885
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227519"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543079"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe 
 
@@ -68,7 +68,7 @@ Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Ne
 1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
 2. Wählen Sie in der Liste die Netzwerksicherheitsgruppe aus, für die Sie Details anzeigen möchten. Unter **EINSTELLUNGEN** sehen Sie die **Eingangssicherheitsregeln** und **Ausgangssicherheitsregeln**, die **Netzwerkschnittstellen** und **Subnetze**, denen die Netzwerksicherheitsgruppe zugeordnet ist. Sie können auch **Diagnoseprotokolle** aktivieren oder deaktivieren und **Effektive Sicherheitsregeln** anzeigen. Weitere Informationen finden Sie unter [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](virtual-network-nsg-manage-log.md) und [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](diagnose-network-traffic-filter-problem.md).
 3. Weitere Informationen zu allgemeinen aufgelisteten Azure-Einstellungen finden Sie in den folgenden Artikeln:
-    *   [Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+    *   [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md)
     *   [Zugriffssteuerung (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Sperren](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -233,7 +233,7 @@ Eine Anwendungssicherheitsgruppe muss keine Netzwerkschnittstellen enthalten, ka
 3. Wählen Sie die Anwendungssicherheitsgruppe aus, für die Sie die Einstellungen ändern möchten. Sie können Tags hinzufügen oder entfernen oder der Anwendungssicherheitsgruppe Berechtigungen zuweisen oder diese entfernen.
 
 - Azure CLI: [az network asg update](/cli/azure/network/asg#az-network-asg-update)
-- PowerShell: Kein PowerShell-Cmdlet.
+- PowerShell: Kein PowerShell-Cmdlet
 
 ### <a name="delete-an-application-security-group"></a>Löschen einer Anwendungssicherheitsgruppe
 

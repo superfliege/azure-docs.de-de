@@ -11,22 +11,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/15/2018
+ms.date: 12/14/2018
 ms.author: raiye
-ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 94cf90dbc41533b8f5d41a0bdb18e5cdcb7be474
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854270"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541029"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
-## <a name="november-2018-guest-os"></a>Gastbetriebssystem für November 2018
+## <a name="december-2018-guest-os"></a>Gastbetriebssystem für Dezember 2018
 
 >[!NOTE]
->Das Gastbetriebssystem für November wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für November enthalten. Änderungen der Liste vorbehalten.
+>Das Gastbetriebssystem für Dezember wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Dezember enthalten. Änderungen der Liste vorbehalten.
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 18-12 | [4471321] | Sicherheitsupdates für Windows 10 | 5.26 | 11. Dezember 2018 |
+| Rel 18-12 | [4471328] | Windows-Sicherheit   | 2.81 | 11. Dezember 2018 |
+| Rel 18-12 | [4471326] | Windows-Sicherheit   | 3.68 | 11. Dezember 2018 |
+| Rel 18-12 | [4471322] | Windows-Sicherheit   | 4.61 | 11. Dezember 2018 |
+| Rel 18-12 | [4470600] | .NET 3.x Security  | 2.81 | 11. Dezember 2018 |
+| Rel 18-12 | [4470601] | .NET 3.x Security  | 3.68 | 11. Dezember 2018|
+| Rel 18-12 | [4470602] | .NET 3.x Security  | 4.61 | 11. Dezember 2018 |
+| Rel 18-12 | [4470493] | .NET 4.x Security  | 2.81 | 11. Dezember 2018 |
+| Rel 18-12 | [4470492] | .NET 4.x Security  | 3.68 | 11. Dezember 2018 |
+| Rel 18-12 | [4470491] | .NET 4.x Security  | 4.61| 11. Dezember 2018 |
+| Rel 18-12 | [4471331] | Blinken  | 3.68, 4.61, 5.26 | 5. Dezember 2018  |
+| Rel 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11. Dezember 2018 |
+| N/V | [4468323] | Zeitzonenupdate    | 2.81, 3.68, 4.61 | 13. Dezember 2018 |
+| N/V | [4467107] | Nicht sicherheitsrelevanter Rollup für November   | 2.81 | 13. November 2018 |
+| N/V | [4467701] | Nicht sicherheitsrelevanter Rollup für November     | 3.68 | 13. November 2018 |
+| N/V | [4467697] | Nicht sicherheitsrelevanter Rollup für November     | 4.61 | 13. November 2018 |
+
+[4471321]: http://support.microsoft.com/kb/4471321
+[4471328]: http://support.microsoft.com/kb/4471328
+[4471326]: http://support.microsoft.com/kb/4471326
+[4471322]: http://support.microsoft.com/kb/4471322
+[4470600]: http://support.microsoft.com/kb/4470600
+[4470601]: http://support.microsoft.com/kb/4470601
+[4470602]: http://support.microsoft.com/kb/4470602
+[4470493]: http://support.microsoft.com/kb/4470493
+[4470492]: http://support.microsoft.com/kb/4470492
+[4470491]: http://support.microsoft.com/kb/4470491
+[4471331]: http://support.microsoft.com/kb/4471331
+[4470199]: http://support.microsoft.com/kb/4470199
+[4468323]: http://support.microsoft.com/kb/4468323
+[4467107]: http://support.microsoft.com/kb/4467107
+[4467701]: http://support.microsoft.com/kb/4467701
+[4467697]: http://support.microsoft.com/kb/4467697
+
+## <a name="november-2018-guest-os"></a>Gastbetriebssystem für November 2018
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/17/2018
 ms.author: juliako
-ms.openlocfilehash: 5cc670a94958b123ac71b49cbf25661d567e4629
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 32b9664d12d6fe3a44329665c730dbc8709430f2
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083410"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650840"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Erstellen von Filtern mit der Media Services-REST-API
 
@@ -31,12 +31,13 @@ In diesem Thema wird beschrieben, wie Sie einen Filter für ein Video on Demand-
 Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
 
 - Lesen Sie [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
 - [Konfigurieren Sie Postman für Azure Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).
+
+    Befolgen Sie dabei unbedingt den letzten Schritt im Thema [Abrufen von Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
 ## <a name="define-a-filter"></a>Definieren eines Filters  
 
-Das folgende Beispiel für einen **Anforderungstext** definiert die Titelauswahlbedingungen, die dem Manifest hinzugefügt werden. Dieser Filter bezieht alle englischen EC-3-Audiotitel und alle Videotitel mit Bitraten im Bereich von 0-1.000.000 ein.
+Das folgende Beispiel für einen **Anforderungstext** definiert die Titelauswahlbedingungen, die dem Manifest hinzugefügt werden. Dieser Filter bezieht alle EC-3-Audiotitel und alle Videotitel mit Bitraten im Bereich von 0–1000000 ein.
 
 ```json
 {
@@ -50,14 +51,9 @@ Das folgende Beispiel für einen **Anforderungstext** definiert die Titelauswahl
                         "operation": "Equal"
                     },
                     {
-                        "property": "Language",
-                        "value": "en",
-                        "operation": "Equal"
-                    },
-                    {
                         "property": "FourCC",
                         "value": "EC-3",
-                        "operation": "NotEqual"
+                        "operation": "Equal"
                     }
                 ]
             },
@@ -86,7 +82,9 @@ Wählen Sie in der heruntergeladenen Sammlung von Postman **Account Filters (Kon
 
 Die **PUT**-HTTP-Anforderungsmethode ähnelt der folgenden:
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
+```
 
 Wählen Sie die Registerkarte **Text** aus, und fügen Sie den JSON-Code ein, den Sie [zuvor definiert haben](#define-a-filter).
 
@@ -98,11 +96,13 @@ Weitere Informationen finden Sie unter [Account Filters – Create Or Update](ht
 
 ## <a name="create-asset-filters"></a>Erstellen von Medienobjektfiltern  
 
-Wählen Sie in der heruntergeladenen Postman-Sammlung „Media Services v3“ **Assets** (Medienobjekte) -> **Create or update Asset Filter** (Medienobjektfilter erstellen oder aktualisieren) aus.
+Wählen Sie in der heruntergeladenen Postman-Sammlung „Media Services v3“ **Medienobjekte**->**Medienobjektfilter erstellen oder aktualisieren** aus.
 
 Die **PUT**-HTTP-Anforderungsmethode ähnelt der folgenden:
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
+```
 
 Wählen Sie die Registerkarte **Text** aus, und fügen Sie den JSON-Code ein, den Sie [zuvor definiert haben](#define-a-filter).
 

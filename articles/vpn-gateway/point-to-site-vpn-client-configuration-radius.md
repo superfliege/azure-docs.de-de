@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
 ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51252004"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Erstellen und Installieren von Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung
@@ -62,7 +62,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
  
 Bei Ausführung des Befehls wird ein Link zurückgegeben. Kopieren Sie den Link, und fügen Sie ihn in einen Webbrowser ein, um **VpnClientConfiguration.zip** herunterzuladen. Entzippen Sie die Datei, um die folgenden Ordner anzuzeigen: 
  
-* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das 32-Bit-Installer-Paket. 
+* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das Windows-32-Bit-Installer-Paket. 
 * **Generic**: Dieser Ordner enthält allgemeine Informationen zum Erstellen Ihrer eigenen VPN-Clientkonfiguration. Dieser Ordner wird für Konfigurationen der Authentifizierung mit Benutzername und Kennwort nicht benötigt.
 * **Mac**: Wenn Sie beim Erstellen des Gateways für virtuelle Netzwerke IKEv2 konfiguriert haben, wird ein Ordner mit dem Namen **Mac** angezeigt, der die Datei **mobileconfig** enthält. Diese Datei wird zum Konfigurieren von Mac-Clients verwendet.
 
@@ -193,7 +193,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 
 Bei Ausführung des Befehls wird ein Link zurückgegeben. Kopieren Sie den Link, und fügen Sie ihn in einen Webbrowser ein, um „VpnClientConfiguration.zip“ herunterzuladen. Entzippen Sie die Datei, um die folgenden Ordner anzuzeigen:
 
-* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das 32-Bit-Installer-Paket. 
+* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das Windows-32-Bit-Installer-Paket. 
 * **GenericDevice**: Dieser Ordner enthält allgemeine Informationen zum Erstellen Ihrer eigenen VPN-Clientkonfiguration.
 
 Wenn Sie die Clientkonfigurationsdateien bereits erstellt haben, können Sie diese mithilfe des Cmdlets `Get-AzureRmVpnClientConfiguration` abrufen. Wenn Sie jedoch Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vornehmen, wird die Konfiguration nicht automatisch aktualisiert. Sie müssen das Cmdlet  `New-AzureRmVpnClientConfiguration` ausführen, um einen neuen Konfigurationsdownload zu erstellen.
@@ -266,9 +266,9 @@ Wenn Sie einen anderen Authentifizierungstyp (etwa OTP) oder ein anderes Authent
  
 3. Der Ordner **GenericDevice** enthält eine XML-Datei mit dem Namen **VpnSettings**. Diese Datei enthält alle erforderlichen Informationen:
 
-   * **VpnServer**: FQDN des Azure-VPN-Gateways. Dies ist die Adresse, mit der der Client eine Verbindung herstellt.
-   * **VpnType** : Zum Herstellen einer Verbindung verwendeter Tunneltyp.
-   * **Routen**: Routen, die in Ihrem Profil konfiguriert werden müssen, damit nur Datenverkehr für das virtuelle Azure-Netzwerk über den P2S-Tunnel gesendet wird.
+   * **VpnServer**: Der vollqualifizierte Domänenname des Azure-VPN-Gateways. Dies ist die Adresse, mit der der Client eine Verbindung herstellt.
+   * **VpnType**: Der zum Herstellen einer Verbindung verwendete Tunneltyp.
+   * **Routes**: Routen, die in Ihrem Profil konfiguriert werden müssen, damit nur Datenverkehr für das virtuelle Azure-Netzwerk über den P2S-Tunnel gesendet wird.
    
    Der Ordner **GenericDevice** enthält außerdem eine CER-Datei mit dem Namen **VpnServerRoot**. Diese Datei enthält das Stammzertifikat, das zum Überprüfen des Azure-VPN-Gateways während der Einrichtung der P2S-Verbindung erforderlich ist. Installieren Sie das Zertifikat auf allen Geräten, die eine Verbindung mit dem virtuellen Azure-Netzwerk herstellen.
 

@@ -3,16 +3,15 @@ title: Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Server
 description: In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for PostgreSQL-Server erstellen können.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2018
-ms.openlocfilehash: 45d1f55e60763724aeb1b1685c5c69696475a424
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 8b1bf6f1eccefb9235751c9e113c90566dfdff79
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958099"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540824"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Server 
 In diesem Artikel wird beschrieben, wie Sie Benutzer auf einem Azure Database for PostgreSQL-Server erstellen können.
@@ -27,7 +26,7 @@ Der Azure Database for PostgreSQL-Server wird erstellt und verfügt über drei d
 
 Der Serveradministratorbenutzer ist ein Mitglied der Rolle „azure_pg_admin“. Das Serveradministratorkonto ist jedoch nicht Mitglied der Rolle „azure_superuser“. Da dieser Dienst ein verwalteter PaaS-Dienst ist, ist nur Microsoft Mitglied der Administratorrolle. 
 
-Die PostgreSQL-Engine nutzt Berechtigungen zum Steuern des Zugriffs auf Datenbankobjekte, wie in der [PostgreSQL-Produktdokumentation](https://www.postgresql.org/docs/current/static/sql-createrole.html) erläutert. In Azure Database for PostgreSQL werden dem Serveradministratorbenutzer die folgenden Berechtigungen gewährt: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION.
+Die PostgreSQL-Engine nutzt Berechtigungen zum Steuern des Zugriffs auf Datenbankobjekte, wie in der [PostgreSQL-Produktdokumentation](https://www.postgresql.org/docs/current/static/sql-createrole.html) erläutert. In Azure Database for PostgreSQL werden dem Serveradministrator folgende Berechtigungen gewährt: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
 
 Mit dem Konto des Serveradministratorbenutzers können zusätzliche Benutzer erstellt und der Rolle „azure_pg_admin“ zugeordnet werden. Außerdem kann das Serveradministratorkonto genutzt werden, um Benutzer und Rollen mit weniger Berechtigungen zu erstellen, die Zugriff auf einzelne Datenbanken und Schemas haben.
 
@@ -77,6 +76,6 @@ Mit dem Konto des Serveradministratorbenutzers können zusätzliche Benutzer ers
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Öffnen Sie die Firewall für die IP-Adressen, die den Computern der neuen Benutzer zugewiesen sind, damit diese eine Verbindung herstellen können: [Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL mithilfe des Azure-Portals](howto-manage-firewall-using-portal.md) oder [Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL mithilfe der Azure CLI](howto-manage-firewall-using-cli.md).
+Öffnen Sie die Firewall für die IP-Adressen der Computer der neuen Benutzer, um ihnen das Herstellen einer Verbindung zu ermöglichen: [Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL mithilfe des Azure-Portals](howto-manage-firewall-using-portal.md) oder über die [Azure CLI](howto-manage-firewall-using-cli.md).
 
 Weitere Informationen zur Verwaltung von Benutzerkonten finden Sie in der PostgreSQL-Produktdokumentation in den Abschnitten zu den Themen [Datenbankrollen und Berechtigungen](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT-Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html) und [Berechtigungen](https://www.postgresql.org/docs/current/static/ddl-priv.html).

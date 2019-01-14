@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: abaf69136fbed577095b3efba2ec6d4383907255
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385209"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001922"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
 Azure HDInsight-Cluster stellen Apache Hadoop in einer vertrauten Linux-Umgebung bereit, die in der Azure-Cloud ausgeführt wird. Die Lösung sollte sich größtenteils genauso wie jede andere Installation von Hadoop unter Linux verhalten. In diesem Dokument werden bestimmte Unterschiede aufgeführt, die Sie kennen sollten.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -61,28 +61,28 @@ Mit diesem Befehl wird ein JSON-Dokument mit einer Beschreibung des Diensts zur�
 
     Die Authentifizierung erfolgt unverschlüsselt. Verwenden Sie immer HTTPS, um eine sichere Verbindung zu gewährleisten.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Einige der über Ambari verfügbaren Webbenutzeroberflächen greifen über einen internen Domänennamen auf Knoten zu. Auf interne Domänennamen besteht kein öffentlicher Zugriff über das Internet. Sie erhalten ggf. die Fehlermeldung, dass der Server nicht gefunden wurde, wenn Sie versuchen, auf einige Features über das Internet zuzugreifen.
     >
     > Damit Sie die Funktionalität der Ambari-Webbenutzeroberfläche vollständig nutzen können, verwenden Sie einen SSH-Tunnel, um den Webdatenverkehr per Proxy an den Clusterhauptknoten weiterzuleiten. Weitere Informationen finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
 
 * **Ambari (REST)** – https://&lt;Clustername&gt;.azurehdinsight.net/ambari
 
-    > [!NOTE]
+    > [!NOTE]  
     > Authentifizieren Sie sich mit dem Benutzernamen und Kennwort des Clusteradministrators.
     >
     > Die Authentifizierung erfolgt unverschlüsselt. Verwenden Sie immer HTTPS, um eine sichere Verbindung zu gewährleisten.
 
 * **WebHCat (Templeton)** – https://&lt;Clustername&gt;.azurehdinsight.net/templeton
 
-    > [!NOTE]
+    > [!NOTE]  
     > Authentifizieren Sie sich mit dem Benutzernamen und Kennwort des Clusteradministrators.
     >
     > Die Authentifizierung erfolgt unverschlüsselt. Verwenden Sie immer HTTPS, um eine sichere Verbindung zu gewährleisten.
 
 * **SSH** - &lt;Clustername&gt;-ssh.azurehdinsight.net an Port 22 oder 23. Port 22 dient zum Herstellen einer Verbindung mit dem primären Hauptknoten, während 23 zum Herstellen einer Verbindung mit dem sekundären Knoten verwendet wird. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Sie können auf einem Clientcomputer nur über SSH auf die Hauptknoten des Clusters zugreifen. Nachdem die Verbindung hergestellt wurde, können Sie von einem Hauptknoten aus über SSH auf die Workerknoten zugreifen.
 
 Weitere Informationen finden Sie im Dokument [Ports für Apache Hadoop-Dienste in HDInsight](hdinsight-hadoop-port-settings-for-services.md).
@@ -96,23 +96,23 @@ Zu Hadoop zugehörige Dateien befinden sich auf den Clusterknoten in `/usr/hdp`.
 
 Beispieldaten und JAR-Dateien finden Sie im Hadoop Distributed File System unter `/example` und `/HdiSamples`.
 
-## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS, Azure Storage und Data Lake Store
+## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage und Data Lake Storage
 
 In den meisten Hadoop-Distributionen werden die Daten in HDFS gespeichert, und HDFS wird auf den Computern im Cluster durch lokalen Speicher gesichert. Die Nutzung von lokalem Speicher kann für eine cloudbasierte Lösung mit zeitabhängiger Abrechnung (pro Stunde oder pro Minute) für Computeressourcen kostenintensiv sein.
 
-Bei Verwendung von HDInsight werden die Datendateien skalierbar und zuverlässig in der Cloud gespeichert. Dazu wird Azure Blob Storage (und optional Azure Data Lake Store) verwendet. Diese Dienste bieten die folgenden Vorteile:
+Bei Verwendung von HDInsight werden die Datendateien skalierbar und zuverlässig in der Cloud gespeichert. Dazu wird Azure Blob Storage (und optional Azure Data Lake Storage) verwendet. Diese Dienste bieten die folgenden Vorteile:
 
 * Kostengünstige langfristige Speicherung
 * Zugriff über externe Dienste wie Websites, Hilfsprogramme zum Hochladen/Herunterladen von Dateien, SDKs für verschiedene Sprachen und Webbrowser
 * Große Dateikapazität und großer skalierbarer Speicher
 
-Weitere Informationen finden Sie unter [Grundlegendes zu Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) und [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+Weitere Informationen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs (Erläuterungen zu Blockblobs, Anfügeblobs und Seitenblobs)](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) und [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
-Wenn Sie entweder Azure Storage oder Data Lake Store nutzen, müssen Sie in HDInsight für den Datenzugriff keine besonderen Schritte ausführen. Mit dem folgenden Befehl werden Dateien im Ordner `/example/data` beispielsweise unabhängig davon aufgelistet, ob dieser in Azure Storage oder Data Lake Store gespeichert ist:
+Wenn Sie entweder Azure Storage oder Data Lake Storage nutzen, müssen Sie in HDInsight für den Datenzugriff keine besonderen Schritte ausführen. Mit dem folgenden Befehl werden Dateien im Ordner `/example/data` beispielsweise unabhängig davon aufgelistet, ob dieser in Azure Storage oder Data Lake Storage gespeichert ist:
 
     hdfs dfs -ls /example/data
 
-In HDInsight werden die Speicherressourcen (Azure Blob Storage und Azure Data Lake Store) von den Computeressourcen entkoppelt. Aus diesem Grund können Sie nach Bedarf HDInsight-Cluster für Berechnungen erstellen und die Cluster später nach Abschluss der Aufgaben löschen. Ihre Datendateien werden währenddessen so lange wie nötig sicher im Cloudspeicher aufbewahrt.
+In HDInsight werden die Datenspeicherressourcen (Azure Blob Storage und Azure Data Lake Store) von den Computerressourcen entkoppelt. Aus diesem Grund können Sie nach Bedarf HDInsight-Cluster für Berechnungen erstellen und die Cluster später nach Abschluss der Aufgaben löschen. Ihre Datendateien werden währenddessen so lange wie nötig sicher im Cloudspeicher aufbewahrt.
 
 ### <a name="uri-and-scheme"></a>URI und Schema
 
@@ -126,14 +126,14 @@ Nutzen Sie bei Verwendung von __Azure Storage__ eines der folgenden URI-Schemas:
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 
-Nutzen Sie bei Verwendung von __Data Lake Store__ eines der folgenden URI-Schemas:
+Nutzen Sie bei Verwendung von __Data Lake Storage__ eines der folgenden URI-Schemas:
 
-* `adl:///`: Zugriff auf den standardmäßigen Data Lake Store für den Cluster.
+* `adl:///`: Zugriff auf die standardmäßige Data Lake Storage-Instanz für den Cluster
 
-* `adl://<storage-name>.azuredatalakestore.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Data Lake Store verwendet. Wird auch verwendet, um auf Daten außerhalb des Stammverzeichnisses Ihres HDInsight-Clusters zuzugreifen.
+* `adl://<storage-name>.azuredatalakestore.net/`: Wird bei einer Verbindung mit einer nicht standardmäßigen Data Lake Storage-Instanz verwendet. Wird auch verwendet, um auf Daten außerhalb des Stammverzeichnisses Ihres HDInsight-Clusters zuzugreifen.
 
-> [!IMPORTANT]
-> Wenn Data Lake Store als Standardspeicher für HDInsight verwendet wird, müssen Sie einen Pfad innerhalb des Speichers als Stamm des HDInsight-Speichers angeben. Der Standardpfad lautet `/clusters/<cluster-name>/`.
+> [!IMPORTANT]  
+> Wenn Data Lake Storage als Standardspeicher für HDInsight verwendet wird, müssen Sie einen Pfad innerhalb des Speichers als Stamm des HDInsight-Speichers angeben. Der Standardpfad lautet `/clusters/<cluster-name>/`.
 >
 > Bei Verwendung von `/` oder `adl:///` für den Zugriff auf Daten können Sie nur auf Daten zugreifen, die im Stammverzeichnis (z.B. `/clusters/<cluster-name>/`) des Clusters gespeichert sind. Um auf Daten an beliebiger Stelle im Speicher zuzugreifen, verwenden Sie das Format `adl://<storage-name>.azuredatalakestore.net/`.
 
@@ -152,7 +152,7 @@ Dieser Befehl gibt einen Wert zurück, der in etwa wie die folgenden URIs aussie
 
     Der Kontoname ist der Name Ihres Azure Storage-Kontos Der Containername in der Blobcontainer, der der Stamm des Clusterspeichers ist.
 
-* `adl://home` bei Verwenden von Azure Data Lake Store. Verwenden Sie zum Abrufen des Data Lake Store-Namens den folgenden REST-Aufruf:
+* `adl://home`, bei Verwendung von Azure Data Lake Storage. Verwenden Sie zum Abrufen des Data Lake Storage-Namens den folgenden REST-Aufruf:
 
     ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
@@ -177,7 +177,7 @@ Es gibt viele verschiedene Möglichkeiten, wie Sie außerhalb des HDInsight-Clus
 Wenn Sie __Azure Storage__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Befehlszeilenschnittstelle für die Arbeit mit Azure. Verwenden Sie nach der Installation den Befehl `az storage`, um Hilfe zur Speicherung abzurufen, oder `az storage blob` für blobspezifische Befehle.
-* [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Python-Skript zum Arbeiten mit Blobs in Azure Storage.
+* [blobxfer.py](https://github.com/Azure/blobxfer): Python-Skript zum Arbeiten mit Blobs in Azure Storage.
 * Verschiedene SDKs:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)
@@ -188,7 +188,7 @@ Wenn Sie __Azure Storage__ nutzen, finden Sie unter den folgenden Links Methoden
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Storage-REST-API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-Wenn Sie __Azure Data Lake Store__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
+Wenn Sie __Azure Data Lake Storage__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
 
 * [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -256,9 +256,9 @@ Informationen zum Entwickeln eigener Skriptaktionen finden Sie unter [Entwickeln
 
 Einige Hadoop-Technologien werden in eigenständigen JAR-Dateien mit Funktionen bereitgestellt, die als Teil eines MapReduce-Auftrags oder aus Pig oder Hive verwendet werden. Dafür ist häufig keine Einrichtung notwendig, und sie können nach der Erstellung im Cluster hochgeladen und direkt verwendet werden. Wenn Sie sicherstellen möchten, dass die Komponente bei einem Re-Imaging des Clusters nicht beschädigt wird, können Sie die JAR-Datei im Standardspeicher Ihres Clusters (WASB oder ADL) speichern.
 
-Wenn Sie beispielsweise die neueste Version von [DataFu](http://datafu.incubator.apache.org/)verwenden möchten, können Sie eine JAR-Datei mit dem Projekt herunterladen und in den HDInsight-Cluster hochladen. Führen Sie dann die Anweisungen in der DataFu-Dokumentation aus, um sie aus Pig oder Hive zu verwenden.
+Wenn Sie beispielsweise die neueste Version von [Apache DataFu](https://datafu.incubator.apache.org/)verwenden möchten, können Sie eine JAR-Datei mit dem Projekt herunterladen und in den HDInsight-Cluster hochladen. Führen Sie dann die Anweisungen in der DataFu-Dokumentation aus, um sie aus Pig oder Hive zu verwenden.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Einige Komponenten, bei denen es sich um eigenständige JAR-Dateien handelt, werden mit HDInsight bereitgestellt, sind jedoch nicht im Pfad vorhanden. Wenn Sie eine bestimmte Komponente suchen, können Sie sie hiermit im Cluster suchen:
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
@@ -270,7 +270,7 @@ Um eine andere Version einer Komponente zu verwenden, laden Sie die benötigte V
 > [!WARNING]
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org). Beispiel: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [https://apache.org](https://apache.org). Beispiel: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

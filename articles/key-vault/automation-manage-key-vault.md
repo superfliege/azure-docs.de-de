@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure Key Vault mit Azure Automation | Microsoft Docs
+title: 'Verwalten von Azure Key Vault mit Azure Automation: Azure Key Vault | Microsoft-Dokumentation'
 description: Erfahren Sie, wie der Azure Automation-Dienst zum Verwalten des Azure-Schlüsseltresors verwendet werden kann.
 services: Key-Vault, automation
 documentationcenter: ''
@@ -12,19 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/29/2016
+ms.date: 01/02/2019
 ms.author: magoedte
-ms.openlocfilehash: be7829c35f299381a5e82621412feb13cc2e8bb2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e95e7dac0c6668078a9399342617c041eee6fd7d
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299235"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998607"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Verwalten des Azure-Schlüsseltresors mit Azure Automation
+
 Dieser Leitfaden bietet eine Einführung in den Azure Automation-Dienst und zeigt, wie Azure Automation zur einfacheren Verwaltung Ihrer Schlüssel und geheimen Schlüssel im Azure-Schlüsseltresor verwendet werden kann.
 
 ## <a name="what-is-azure-automation"></a>Was ist Azure Automation?
+
 [Azure Automation](../automation/automation-intro.md) ist ein Azure-Dienst zur Vereinfachung der Cloudverwaltung durch Prozessautomatisierung und Konfiguration des gewünschten Zustands. Mithilfe von Azure Automation können manuelle, sich wiederholende, lang andauernde und fehleranfällige Aufgaben automatisiert werden, um die Zuverlässigkeit und Effizienz für Ihre Organisation zu erhöhen und die Amortisierungszeit zu verkürzen.
 
 Azure Automation bietet eine äußerst zuverlässige, hoch verfügbare Workflow-Ausführungs-Engine, die sich mittels Skalierung an Ihre Anforderungen anpasst. In Azure Automation können Prozesse manuell, durch Drittanbietersysteme oder in geplanten Intervallen gestartet werden, sodass Aufgaben genau nach Bedarf ausgeführt werden.
@@ -32,6 +34,7 @@ Azure Automation bietet eine äußerst zuverlässige, hoch verfügbare Workflow-
 Indem Sie die Aufgaben im Zusammenhang mit der Cloudverwaltung mit Azure Automation automatisieren, verringern Sie den Verwaltungsaufwand und ermöglichen es Ihren IT- und DevOps-Mitarbeitern, sich Aufgaben zu widmen, die einen Mehrwert für Ihr Unternehmen liefern.
 
 ## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Wie kann Azure Automation beim Verwalten des Azure-Schlüsseltresors nützlich sein?
+
 Key Vault kann in Azure Automation mithilfe der [AzureRM Key Vault-Cmdlets](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) und der [klassischen Azure Key Vault-Cmdlets](https://docs.microsoft.com/powershell/module/servicemanagement/azure) verwaltet werden. Das Azure-Modul für die Verwaltung einer klassischen Key Vault-Instanz ist automatisch in Azure Automation verfügbar. Sie können das [AzureRM-KeyVault-Modul](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) in Azure Automation importieren, sodass viele Key Vault-Verwaltungsaufgaben im Dienst ausgeführt werden können. Sie können diese Cmdlets in Azure Automation auch an die Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben über Azure-Dienste und Drittanbietersysteme hinweg zu automatisieren.
 
 Mit den Azure Key Vault-Cmdlets können Sie unter anderem die folgenden Aufgaben ausführen: 
@@ -49,6 +52,7 @@ Hier sind einige Beispiele für die Verwendung von PowerShell zum Verwalten von 
 * [Setting Up and Configuring an Azure Key Vault (Einrichten und Konfigurieren eines Azure-Schlüsseltresors)](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Einsatz zum Verwalten des Azure-Schlüsseltresors vertraut gemacht haben, folgen Sie diesen Links, um weitere Informationen zu Azure Automation zu erhalten.
 
 * Weitere Informationen erhalten Sie im Lernprogramm [Erste Schritte](../automation/automation-first-runbook-graphical.md)zu Azure Automation.

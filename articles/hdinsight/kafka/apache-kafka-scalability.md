@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 1df23a35e16d4ba3562ebbc9d89a7a8003afc784
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: ab80dd86e544127fc3f40f5459ef9a587c7cd511
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498933"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581503"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Konfigurieren von Speicher und Skalierbarkeit für Apache Kafka in HDInsight
 
@@ -32,7 +32,7 @@ Das folgende Diagramm zeigt einen Vergleich zwischen Kafka in HDInsight vor verw
 
 2. Verwenden Sie im Abschnitt __Clustergröße__ das Feld __Datenträger pro Workerknoten__, um die Anzahl von Datenträgern zu konfigurieren.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Premium-Datenträger werden mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp.
 
     ![Abbildung des Abschnitts „Clustergröße“ mit hervorgehobenen Datenträgern pro Workerknoten](./media/apache-kafka-scalability/set-managed-disks-portal.png)

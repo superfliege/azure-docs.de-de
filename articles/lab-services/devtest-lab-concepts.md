@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: ce0c51a3b97c57095a336128919c5e27f860905b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1e35513d5a5a799b1f5e45cf9a5aa97c083e2087
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676469"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725200"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-Konzepte
 ## <a name="overview"></a>Übersicht
@@ -29,12 +29,12 @@ Die folgende Liste enthält wichtige DevTest Labs-Konzepte und Definitionen:
 Ein Lab ist die Infrastruktur, die eine Gruppe von Ressourcen wie z.B. virtuelle Computer (VMs) umfasst, mit der Sie diese Ressourcen besser verwalten können, indem Sie Einschränkungen und Kontingente angeben.
 
 ## <a name="virtual-machine"></a>Virtueller Computer
-Ein virtueller Azure-Computer ist eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm), die von Azure angeboten werden. Virtuelle Azure-Computer bieten Ihnen flexible Virtualisierungsmöglichkeiten, ohne dass Sie für die Ausführung physische Hardware erwerben und verwalten müssen. Allerdings müssen Sie den virtuellen Computer weiterhin warten, indem Sie bestimmte Aufgaben ausführen, z.B. Konfigurieren, Patchen und Installieren der Software, die auf ihm ausgeführt wird.
+Ein virtueller Azure-Computer ist eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](https://docs.microsoft.com/azure/app-service/overview-compare), die von Azure angeboten werden. Virtuelle Azure-Computer bieten Ihnen flexible Virtualisierungsmöglichkeiten, ohne dass Sie für die Ausführung physische Hardware erwerben und verwalten müssen. Allerdings müssen Sie den virtuellen Computer weiterhin warten, indem Sie bestimmte Aufgaben ausführen, z.B. Konfigurieren, Patchen und Installieren der Software, die auf ihm ausgeführt wird.
 
 Im Artikel [Übersicht über virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
 
 ## <a name="claimable-vm"></a>Anforderbarer virtueller Computer
-Ein anforderbarer virtueller Azure-Computer ist ein virtueller Computer, der für jeden Benutzer mit Berechtigungen im Lab zur Verwendung verfügbar ist. Ein Lab-Administrator kann virtuelle Computer mit bestimmten Basisimages und Artefakten vorbereiten und in einem freigegebenen Pool speichern. Ein Lab-Benutzer kann dann einen funktionierenden virtuellen Computer aus dem Pool anfordern, wenn er einen Computer mit dieser spezifischen Konfiguration benötigt.
+Ein anforderbarer virtueller Azure-Computer ist ein virtueller Computer, der für jeden Benutzer mit Berechtigungen im Lab zur Verwendung verfügbar ist. Ein Labadministrator kann virtuelle Computer mit bestimmten Basisimages und Artefakten vorbereiten und in einem freigegebenen Pool speichern. Ein Lab-Benutzer kann dann einen funktionierenden virtuellen Computer aus dem Pool anfordern, wenn er einen Computer mit dieser spezifischen Konfiguration benötigt.
 
 Ein anforderbarer virtueller Computer wird anfänglich keinem bestimmten Benutzer zugewiesen, er wird jedoch in der Liste jedes Benutzers unter „Claimable virtual machines“ (Anforderbare virtuelle Computer) angezeigt. Nachdem ein virtueller Computer von einem Benutzer angefordert wurde, wird er in dessen Bereich „My virtual machines“ (Meine virtuellen Computer) verschoben und kann von keinem anderen Benutzer mehr angefordert werden.
 

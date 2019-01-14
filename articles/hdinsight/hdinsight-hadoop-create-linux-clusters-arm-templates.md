@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1a053f92433b6091f0d77439399e8419a58df185
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 028d00f579e266c92b4a6d00d5ebb5b0ef7b1b60
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495155"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787542"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -31,8 +31,8 @@ Um die Anweisungen in diesem Artikel befolgen zu können, benötigen Sie:
 
 ### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 Eine Resource Manager-Vorlage vereinfacht das Erstellen der folgenden Ressourcen für Ihre Anwendung in einem einzelnen koordinierten Vorgang:
-* HDInsight-Cluster und ihre abhängigen Ressourcen (z.B. das Standardspeicherkonto)
-* Andere Ressourcen (z.B. Azure SQL-Datenbank zur Verwendung von [Apache Sqoop](http://sqoop.apache.org/))
+* HDInsight-Cluster und ihre abhängigen Ressourcen (z.B. das Standardspeicherkonto).
+* Andere Ressourcen (z.B. Azure SQL-Datenbank zur Verwendung von [Apache Sqoop](https://sqoop.apache.org/)).
 
 In der Vorlage definieren Sie die Ressourcen, die für die Anwendung erforderlich sind. Sie geben außerdem die Bereitstellungsparameter zur Eingabe von Werten für unterschiedliche Umgebungen an. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen.
 
@@ -47,9 +47,9 @@ Weitere Informationen über Resource Manager-Vorlagen finden Sie in den folgende
 
 Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement mithilfe unterschiedlicher Tools exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren.
 
-- Azure-Portal: Weitere Informationen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](../azure-resource-manager/resource-manager-export-template.md).
-- Azure PowerShell: Weitere Informationen finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen mit PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md).
-- Klassische Azure-Befehlszeilenschnittstelle: Weitere Informationen finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen mit der klassischen Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-manager-export-template-cli.md).
+- Azure-Portal: Siehe [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](../azure-resource-manager/resource-manager-export-template.md).
+- Azure PowerShell: Siehe [Exportieren von Azure Resource Manager-Vorlagen mit PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md).
+- Klassische Azure-Befehlszeilenschnittstelle: Siehe [Exportieren von Azure Resource Manager-Vorlagen mit der klassischen Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-manager-export-template-cli.md).
 
 
 ## <a name="deploy-using-the-portal"></a>Bereitstellen mit dem Portal
@@ -74,14 +74,14 @@ Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finde
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-hadoop-create-linux-clusters-portal.md) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * Weitere HDInsight-bezogene Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=hdinsight).
 * Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Ein ausführliches Beispiel für die Bereitstellung einer Anwendung finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](../app-service/app-service-deploy-complex-application-predictably.md).
+* Ein ausführliches Beispiel für die Bereitstellung einer Anwendung finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](../app-service/deploy-complex-application-predictably.md).
 * Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](../solution-dev-test-environments.md).
 * Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 * Unter [Vorlagenfunktionen](../azure-resource-manager/resource-group-template-functions.md)finden Sie eine Liste der Funktionen, die Sie in einer Azure Resource Manager-Vorlage verwenden können.

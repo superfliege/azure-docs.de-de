@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 9df2e8762d546e6115dc1205548e927cfee7bb60
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1214df922e8e656ba2ff566571d878b0031fea9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341879"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000256"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -279,11 +279,12 @@ Wenn die Verbindung für ein Gerät hergestellt wird, sendet IoT Hub Benachricht
 ```json
 {
     "telemetrySendFrequency": "5m",
-    "route": null
+    "route": null,
+    "$version": 8
 }
 ```
 
-Für Aktualisierungen von Eigenschaften bedeutet die Angabe von `null` für die Werte, dass der JSON-Objektmember gelöscht wird.
+Für Aktualisierungen von Eigenschaften bedeutet die Angabe von `null` für die Werte, dass der JSON-Objektmember gelöscht wird. Beachten Sie auch, dass `$version` die neue Version des Abschnitts mit den gewünschten Eigenschaften des Zwillings angibt.
 
 > [!IMPORTANT]
 > IoT Hub generiert Änderungsbenachrichtigungen nur, wenn Geräte verbunden sind. Achten Sie darauf, den [Ablauf zur Wiederherstellung der Geräteverbindung][lnk-devguide-twin-reconnection] zu implementieren, um für die gewünschten Eigenschaften die Synchronisierung zwischen IoT Hub und der Geräte-App aufrechtzuerhalten.

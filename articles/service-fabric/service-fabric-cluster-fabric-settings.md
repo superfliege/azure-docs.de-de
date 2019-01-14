@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 14513e23aafd05796767e1ae08d4d4c14cecdfbc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fb3e61b2b43194cb550a7c87c6841e91b4025560
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728309"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002755"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -237,7 +237,6 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="federation"></a>Verbund
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|GlobalTicketLeaseDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(300)|statischen|Geben Sie die Zeitspanne in Sekunden an. Knoten im Cluster benötigen eine globale Lease mit den Wählern. Die Wähler senden ihre globalen Leases, damit sie für diese Dauer im Cluster verteilt werden. Wenn die Dauer abläuft, geht die Lease verloren. Der Verlust eines Quorums von Leases führt dazu, dass ein Knoten das Cluster verlässt; wegen einem Kommunikationsfehler mit einem Quorum von Knoten in dieser Zeitspanne.  Dieser Wert muss basierend auf der Größe des Clusters angepasst werden. |
 |LeaseDuration |Zeit in Sekunden, Standardwert 30 |Dynamisch|Dauer einer Lease zwischen einem Knoten und seinen Nachbarn. |
 |LeaseDurationAcrossFaultDomain |Zeit in Sekunden, Standardwert 30 |Dynamisch|Dauer einer fehlerdomänenübergreifenden Lease zwischen einem Knoten und seinen Nachbarn. |
 
@@ -275,6 +274,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |SecondaryAccountType | string, Standardwert ""|statischen| Der sekundäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
 |SecondaryAccountUserName | string, Standardwert ""| statischen|Der sekundäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
 |SecondaryAccountUserPassword | SecureString, Standardwert ist leer |statischen|Das sekundäre Kontokennwort des Prinzipals für die ACL von FileStoreService-Freigaben. |
+|SecondaryFileCopyRetryDelayMilliseconds|uint, Standardwert ist 500|Dynamisch|Die Wiederholungsverzögerung beim Kopieren von Dateien (in Millisekunden).|
+|UseChunkContentInTransportMessage|Boolesch, Standardwert TRUE|Dynamisch|Das Flag für die Verwendung der neuen Version des in v6.4 eingeführten Uploadprotokolls. Diese Protokollversion verwendet Service Fabric-Transportfunktionen zum Hochladen von Dateien in den Imagespeicher, wodurch eine bessere Leistung erzielt wird als mit dem in vorherigen Versionen verwendeten SMB-Protokoll. |
 
 ## <a name="healthmanager"></a>HealthManager
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -305,15 +306,18 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ApplicationUpgradeTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(360)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für das Anwendungsupgrade. Wenn das Timeout kleiner als „ActivationTimeout“ ist, tritt für das Bereitstellungsmodul ein Fehler auf. |
 |ContainerServiceArguments|Zeichenfolge, Standardwert „-H localhost:2375 -H npipe://“|statischen|Service Fabric (SF) verwaltet den Docker-Daemon (außer auf Windows-Clientcomputern wie Win10). Diese Konfiguration ermöglicht Benutzern, benutzerdefinierte Argumente anzugeben, die beim Start an den Docker-Daemon übergeben werden sollen. Wenn Sie benutzerdefinierte Argumente angegeben, übergibt Service Fabric ausschließlich das Argument „--pidfile“ an die Docker-Engine. Benutzer sollten daher das Argument „--pidfile“ nicht in ihren benutzerdefinierten Argumenten angeben. Außerdem sollte mit den benutzerdefinierten Argumenten sichergestellt werden, dass der Docker-Daemon unter Windows an der Standard-Named Pipe (bzw. unter Linux am Unix-Domänensocket) lauscht, damit Service Fabric mit ihm kommunizieren kann.|
 |ContainerServiceLogFileMaxSizeInKb|Ganze Zahl, Standardwert 32768|statischen|Maximale Größe der Protokolldatei, die von Docker-Containern generiert wird.  Nur Windows|
+|ContainerImageDownloadTimeout|int, Anzahl von Sekunden, Standard ist 1200 (20 Minuten)|Dynamisch|Anzahl von Sekunden, bevor beim Herunterladen von Images ein Timeout auftritt.|
 |ContainerImagesToSkip|Zeichenfolge, Imagenamen getrennt durch vertikale Linie, Standardwert: „“|statischen|Der Name von mindestens einem Containerimage, das nicht gelöscht werden soll.  Wird mit dem PruneContainerImages-Parameter verwendet.|
 |ContainerServiceLogFileNamePrefix|Zeichenfolge, Standardwert „sfcontainerlogs“|statischen|Dateinamenpräfix für Protokolldateien, die von Docker-Containern generiert werden.  Nur Windows|
 |ContainerServiceLogFileRetentionCount|Ganze Zahl, Standardwert 10|statischen|Anzahl der Protokolldateien, die von Docker-Container generiert werden, bevor Protokolldateien überschrieben werden.  Nur Windows|
 |CreateFabricRuntimeTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den FabricCreateRuntime-Synchronisierungsaufruf. |
 |DefaultContainerRepositoryAccountName|string, Standardwert ""|statischen|Verwendung der Standardanmeldeinformationen anstelle der in ApplicationManifest.xml angegebenen Anmeldeinformationen. |
 |DefaultContainerRepositoryPassword|string, Standardwert ""|statischen|Verwendung der standardmäßigen Kennwortanmeldeinformationen anstelle der in ApplicationManifest.xml angegebenen Anmeldeinformationen.|
+|DefaultContainerRepositoryPasswordType|string, Standardwert ""|statischen|Wenn die Zeichenfolge nicht leer ist, kann der Wert „Encrypted“ oder „SecretsStoreRef“ lauten.|
 |DeploymentMaxFailureCount|Ganze Zahl, Standardwert 20| Dynamisch|Die Anwendungsbereitstellung wird DeploymentMaxFailureCount Mal wiederholt, bevor ein Fehler für die Bereitstellung der betreffenden Anwendung auf dem Knoten auftritt.| 
 |DeploymentMaxRetryInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das maximale Wiederholungsintervall für die Bereitstellung. Bei jedem andauernden Fehler wird das Wiederholungsintervall wie folgt berechnet: Min( DeploymentMaxRetryInterval; Anzahl andauernder Fehler * DeploymentRetryBackoffInterval). |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
+|DisableContainers|Boolesch, Standardwert FALSE|statischen|Konfiguration für das Deaktivieren von Containern – wird anstelle von „DisableContainerServiceStartOnContainerActivatorOpen“ verwendet, der veralteten Konfigurationsoption |
 |DisableDockerRequestRetry|Boolesch, Standardwert FALSE |Dynamisch| Standardmäßig kommuniziert SF mit dem DD (Docker-Daemon) mit dem Timeout „DockerRequestTimeout“ für jede an ihn gesendete HTTP-Anforderung. Reagiert der DD nicht innerhalb dieses Zeitraums, sendet SF die Anforderung erneut, sofern für den übergeordneten Vorgang noch Zeit bleibt.  Bei Hyper-V-Containern benötigt der DD manchmal erheblich mehr Zeit zum Aufrufen oder Deaktivieren des Containers. In diesem Fall fordert der DD aus Sicht von SF ein Timeout an, und SF wiederholt den Vorgang. Manchmal scheint dies den Druck auf den DD zu erhöhen. Diese Konfiguration ermöglicht es, die Wiederholung zu deaktivieren und auf eine Reaktion des DD zu warten. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
 |EnableContainerServiceDebugMode|Boolesch, Standardwert TRUE|statischen|Aktivieren/Deaktivieren der Protokollierung für Docker-Container.  Nur Windows|
@@ -323,6 +327,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |FabricContainerAppsEnabled| Boolesch, Standardwert FALSE|statischen| |
 |FirewallPolicyEnabled|Boolesch, Standardwert FALSE|statischen| Ermöglicht das Öffnen von Firewallports für die Endpunktressourcen mit expliziten Ports, die in ServiceManifest angegeben werden. |
 |GetCodePackageActivationContextTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die CodePackageActivationContext-Aufrufe. Dies gilt nicht für Ad-hoc-Dienste. |
+|GovernOnlyMainMemoryForProcesses|Boolesch, Standardwert FALSE|statischen|Das Standardverhalten der Ressourcengovernance besteht darin, einen in „MemoryInMB“ angegebenen Grenzwert für die vom Prozess verwendete Gesamtspeichermenge (Arbeitsspeicher plus Auslagerungsdateien) festzulegen. Wenn der Grenzwert überschritten wird, empfängt der Prozess eine OutOfMemory-Ausnahme. Wenn dieser Parameter auf „true“ festgelegt wird, wird dieser Grenzwert nur auf die Menge an Arbeitsspeicher angewendet, die von einem Prozess verwendet wird. Wenn dieser Grenzwert überschritten wird und die Einstellung auf „true“ festgelegt ist, lagert das Betriebssystem den Hauptspeicher auf einen Datenträger aus. |
 |IPProviderEnabled|Boolesch, Standardwert FALSE|statischen|Ermöglicht die Verwaltung von IP-Adressen. |
 |IsDefaultContainerRepositoryPasswordEncrypted|Boolesch, Standardwert FALSE|statischen|Gibt an, ob DefaultContainerRepositoryPassword verschlüsselt ist oder nicht.|
 |LinuxExternalExecutablePath|Zeichenfolge, Standardwert „/usr/bin/“ |statischen|Das primäre Verzeichnis der externen ausführbaren Befehle auf dem Knoten|
@@ -345,17 +350,9 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | --- | --- | --- | --- |
 |ActiveListeners |Uint, Standardwert 50 |statischen| Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
 |HttpGatewayHealthReportSendInterval |Zeit in Sekunden, Standardwert 30 |statischen|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem das HTTP-Gateway kumulierte Integritätsberichte an den Integritätsdienst sendet. |
+|HttpStrictTransportSecurityHeader|Zeichenfolge, Standardwert ist ""|Dynamisch| Geben Sie den HTTP Strict Transport Security-Headerwert an, der in jede vom HttpGateway gesendeten Antwort einbezogen werden soll. Wenn diese Einstellung auf eine leere Zeichenfolge festgelegt wird, wird der Header in der Gatewayantwort nicht einbezogen.|
 |IsEnabled|Boolesch, Standardwert „false“ |statischen| Aktiviert bzw. deaktiviert „HttpGateway“. „HttpGateway“ ist standardmäßig deaktiviert. |
 |MaxEntityBodySize |Uint, Standardwert 4194304 |Dynamisch|Gibt die maximale Größe des Texts an, der von einer HTTP-Anforderung erwartet werden kann. Der Standardwert ist 4 MB. Httpgateway erzeugt für eine Anforderung einen Fehler, wenn der Text größer als dieser Wert ist. Die minimale Blockgröße beim Lesen beträgt 4096 Bytes. Der Wert muss also größer oder gleich 4096. |
-
-## <a name="imagestoreclient"></a>ImageStoreClient
-| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
-| --- | --- | --- | --- |
-|ClientCopyTimeout | Zeit in Sekunden, Standardwert 1800 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Kopieranforderung der obersten Ebene an den Imagespeicherdienst. |
-|ClientDefaultTimeout | Zeit in Sekunden, Standardwert 180 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für alle anderen Anforderungen außer Upload- oder Downloadanforderungen (z. B. Vorhanden, Löschen) an den Imagespeicherdienst. |
-|ClientDownloadTimeout | Zeit in Sekunden, Standardwert 1800 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Downloadanforderung der obersten Ebene an den Imagespeicherdienst. |
-|ClientListTimeout | Zeit in Sekunden, Standardwert 600 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Listenanforderung der obersten Ebene an den Imagespeicherdienst. |
-|ClientUploadTimeout |Zeit in Sekunden, Standardwert 1800 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Uploadanforderung der obersten Ebene an den Imagespeicherdienst. |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -503,6 +500,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PlacementSearchTimeout | Zeit in Sekunden, Standardwert 0,5 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beim Platzieren von Diensten wird für maximal diese Zeitspanne gesucht, bevor ein Ergebnis zurückgegeben wird. |
 |PLBRefreshGap | Zeit in Sekunden, Standardwert 1 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Definiert die minimale Zeitspanne, die verstreichen muss, bevor PLB den Zustand erneut aktualisiert. |
 |PreferredLocationConstraintPriority | Ganze Zahl, Standardwert 2| Dynamisch|Bestimmt die Priorität der Einschränkung für den bevorzugten Speicherort: 0: Stark; 1: Schwach; 2: Optimierung; negativ: Ignorieren |
+|PreferUpgradedUDs|Boolesch, Standardwert „true“|Dynamisch|Aktiviert und deaktiviert die Logik, die ein Verschieben zu UDs bevorzugt, für die bereits ein Upgrade durchgeführt wurde.|
 |PreventTransientOvercommit | Boolesch, Standardwert „false“ | Dynamisch|Bestimmt, ob PLB sofort Ressourcen nutzen soll, die von den initiierten Datenverschiebungen freigegeben werden. Standardmäßig kann PLB Datenverschiebungen aus und in einen Knoten initiieren, sodass eine vorübergehende Überlastung entstehen kann. Wenn dieser Parameter auf TRUE festgelegt wird, wird diese Art von Überlastungen verhindert, und eine bedarfsgesteuerte Defragmentierung (placementWithMove) wird deaktiviert. |
 |ScaleoutCountConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Einschränkung für den Umfang der horizontalen Hochskalierung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |SwapPrimaryThrottlingAssociatedMetric | string, Standardwert ""|statischen| Der zugehörige Metrikname für diese Drosselung. |
@@ -590,6 +588,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |AADTokenEndpointFormat|string, Standardwert ""|statischen|AAD-Tokenendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https://login.microsoftonline.us/{0}) |
 |AdminClientClaims|string, Standardwert ""|Dynamisch|Alle möglichen Ansprüche, die von Administratorclients erwartet werden. Gleiches Format wie ClientClaims. Diese Liste wird intern ClientClaims hinzugefügt. Es besteht daher keine Notwendigkeit, die gleichen Einträge auch ClientClaims hinzuzufügen. |
 |AdminClientIdentities|string, Standardwert ""|Dynamisch|Windows-Identitäten der Fabric-Clients in der Rolle „Administrator“. Wird verwendet, um privilegierte Fabric-Vorgänge zu autorisieren. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. Der Einfachheit halber wird dem Konto, das „fabric.exe“ ausführt, automatisch die Rolle „Administrator“ zugewiesen. Dies gilt auch für die Gruppe ServiceFabricAdministrators. |
+|AppRunAsAccountGroupX509Folder|Zeichenfolge, Standard ist „/home/sfuser/sfusercerts“ |statischen|Der Ordner, in dem AppRunAsAccountGroup-X509 Zertifikate und private Schlüssel gespeichert sind |
 |CertificateExpirySafetyMargin|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(43200)|statischen|Geben Sie die Zeitspanne in Sekunden an. Sicherheitsspanne für den Zertifikatablauf. Der Status des Integritätsberichts des Zertifikats ändert sich aus „OK“ in „Warning“, wenn das Ablaufdatum diese Angabe überschreitet. Der Standardwert sind 30 Tage. |
 |CertificateHealthReportingInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600 * 8)|statischen|Geben Sie die Zeitspanne in Sekunden an. Gibt das Intervall für Zertifikatintegritätsberichte an. Der Standardwert ist 8 Stunden. Bei Festlegung auf 0 werden Zertifikatintegritätsberichte deaktiviert. |
 |ClientCertThumbprints|string, Standardwert ""|Dynamisch|Fingerabdrücke von Zertifikaten, die vom Clients für die Kommunikation mit dem Cluster verwendet werden. Cluster verwenden diese Angabe, um eingehende Verbindungen zu autorisieren. Es handelt sich um eine durch Kommas getrennte Liste. |
@@ -629,7 +628,9 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |CodePackageControl |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Neustarten von Codepaketen. |
 |CreateApplication |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für die Anwendungserstellung. |
 |CreateComposeDeployment|string, Standardwert „Admin“| Dynamisch|Erstellt eine Compose-Bereitstellung, die durch Compose-Dateien beschrieben wird. |
+|CreateGatewayResource|string, Standardwert „Admin“| Dynamisch|Erstellen einer Gatewayressource |
 |CreateName |string, Standardwert „Admin“ |Dynamisch|Sicherheitskonfiguration für die Erstellung des Benennungs-URI. |
+|CreateNetwork|string, Standardwert „Admin“ |Dynamisch|Erstellt ein Containernetzwerk |
 |CreateService |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Diensterstellung. |
 |CreateServiceFromTemplate |string, Standardwert „Admin“ |Dynamisch|Sicherheitskonfiguration für die Diensterstellung aus einer Vorlage. |
 |CreateVolume|string, Standardwert „Admin“|Dynamisch|Erstellt ein Volume. |
@@ -638,7 +639,9 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |Löschen |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfigurationen für den Imagespeicherclient-Löschvorgang. |
 |DeleteApplication |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Anwendungslöschung. |
 |DeleteComposeDeployment|string, Standardwert „Admin“| Dynamisch|Löscht die Compose-Bereitstellung. |
+|DeleteGatewayResource|string, Standardwert „Admin“| Dynamisch|Löscht eine Gatewayressource |
 |DeleteName |string, Standardwert „Admin“ |Dynamisch|Sicherheitskonfiguration für die Löschung des Benennungs-URI. |
+|DeleteNetwork|string, Standardwert „Admin“ |Dynamisch|Löscht ein Containernetzwerk |
 |DeleteService |string, Standardwert „Admin“ |Dynamisch|Sicherheitskonfiguration für die Dienstlöschung. |
 |DeleteVolume|string, Standardwert „Admin“|Dynamisch|Löscht ein Volume.| 
 |EnumerateProperties |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für die Enumeration von Benennungseigenschaften. |
@@ -655,6 +658,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |GetPartitionDataLossProgress | string, Standardwert „Admin\|\|User“ | Dynamisch|Ruft den Status für einen API-Aufruf zum Auslösen von Datenverlusten ab. |
 |GetPartitionQuorumLossProgress | string, Standardwert „Admin\|\|User“ |Dynamisch| Ruft den Status für einen API-Aufruf zum Auslösen von Quorumverlusten ab. |
 |GetPartitionRestartProgress | string, Standardwert „Admin\|\|User“ |Dynamisch| Ruft den Status für einen API-Aufruf zum Neustarten einer Partition ab. |
+|GetSecrets|string, Standardwert „Admin“|Dynamisch|Ruft Geheimniswerte ab |
 |GetServiceDescription |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Dienstbenachrichtigungen mit langen Abrufzeiten und das Lesen von Dienstbeschreibungen. |
 |GetStagingLocation |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für den Abruf des Imagespeicherclient-Stagingspeicherorts. |
 |GetStoreLocation |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für den Abruf des Imagespeicherclient-Speicherorts. |
@@ -794,7 +798,9 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | Boolesch, Standardwert „true“ |statischen| Automatische Abruf- und Aktualisierungsaktion basierend auf einer Datei für den Zielzustand. |
-|MinReplicaSetSize |Ganze Zahl, Standardwert 0 |statischen |MinReplicaSetSize für UpgradeOrchestrationService.
+|AutoupgradeInstallEnabled|Boolesch, Standardwert ist „false“|statischen|Automatische Aktion zum Abrufen, Bereitstellen und Installieren von Codeupgrades basierend auf einer Datei mit Zielzustand.|
+|GoalStateExpirationReminderInDays|Ganze Zahl, Standardwert ist 30|statischen|Legt die Anzahl von verbleibenden Tagen fest, nach denen eine Erinnerung zum Zielzustand angezeigt werden soll.|
+|MinReplicaSetSize |Ganze Zahl, Standardwert 0 |statischen |MinReplicaSetSize für UpgradeOrchestrationService.|
 |PlacementConstraints | string, Standardwert "" |statischen| PlacementConstraints für UpgradeOrchestrationService. |
 |QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für UpgradeOrchestrationService. |
 |ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60 Minuten|statischen| Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für UpgradeOrchestrationService. |
@@ -811,6 +817,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MinReplicaSetSize | Ganze Zahl, Standardwert 2 |Nicht zulässig| MinReplicaSetSize für UpgradeService. |
 |OnlyBaseUpgrade | Boolesch, Standardwert „false“ |Dynamisch|OnlyBaseUpgrade für UpgradeService. |
 |PlacementConstraints |string, Standardwert "" |Nicht zulässig|PlacementConstraints für den Aktualisierungsdienst. |
+|PollIntervalInSeconds|Timespan, Standardwert ist Common::TimeSpan::FromSeconds(60) |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall zwischen UpgradeService-Abrufen für ARM-Verwaltungsvorgänge. |
 |TargetReplicaSetSize | Ganze Zahl, Standardwert 3 |Nicht zulässig| TargetReplicaSetSize für UpgradeService. |
 |TestCabFolder | string, Standardwert "" |statischen| TestCabFolder für UpgradeService. |
 |X509FindType | string, Standardwert ""|Dynamisch| X509FindType für UpgradeService. |

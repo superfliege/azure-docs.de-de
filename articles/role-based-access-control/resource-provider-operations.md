@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fb72de7e9a61c874d4449a5b9c0422c787a7bdc0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410532"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728447"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -1867,12 +1867,12 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Devices/provisioningServices/certificates/verify/Action | Überprüft die Zertifikatsressource. |
 > | Aktion | Microsoft.Devices/provisioningServices/certificates/Write | Erstellt oder aktualisiert das Zertifikat. |
 > | Aktion | Microsoft.Devices/provisioningServices/Delete | Löscht die IotDps-Ressource. |
-> | Aktion | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
+> | Aktion | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. Hinweis: Möglicherweise benötigen Sie auch `Microsoft.Insights/diagnosticSettings/read`.  |
 > | Aktion | Microsoft.Devices/provisioningServices/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
 > | Aktion | Microsoft.Devices/provisioningServices/keys/listkeys/Action | Ruft IotDps-Schlüssel für Schlüsselnamen ab. |
 > | Aktion | Microsoft.Devices/provisioningServices/listkeys/Action | Ruft alle IotDps-Schlüssel ab. |
-> | Aktion | Microsoft.Devices/provisioningServices/logDefinitions/read | Ruft die verfügbaren Protokolldefinitionen für den Bereitstellungsdienst ab. |
-> | Aktion | Microsoft.Devices/provisioningServices/metricDefinitions/read | Ruft die verfügbaren Metriken für den Bereitstellungsdienst ab. |
+> | Aktion | Microsoft.Devices/provisioningServices/logDefinitions/read | Ruft die verfügbaren Protokolldefinitionen für den Bereitstellungsdienst ab. Hinweis: Möglicherweise benötigen Sie auch `Microsoft.Insights/logDefinitions/read`. |
+> | Aktion | Microsoft.Devices/provisioningServices/metricDefinitions/read | Ruft die verfügbaren Metriken für den Bereitstellungsdienst ab. Hinweis: Möglicherweise benötigen Sie auch `Microsoft.Insights/metricDefinitions/read`. |
 > | Aktion | Microsoft.Devices/provisioningServices/operationresults/Read | Hiermit rufen Sie das DPS-Vorgangsergebnis ab. |
 > | Aktion | Microsoft.Devices/provisioningServices/Read | Ruft die IotDps-Ressource ab. |
 > | Aktion | Microsoft.Devices/provisioningServices/skus/Read | Ruft gültige IotDps-SKUs ab. |
@@ -3920,7 +3920,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Aktionstyp | Vorgang | Beschreibung |
+> | Aktionstyp | Vorgang | BESCHREIBUNG |
 > | --- | --- | --- |
 > | Aktion | Microsoft.Portal/dashboards/delete | Entfernt das Dashboard aus dem Abonnement. |
 > | Aktion | Microsoft.Portal/dashboards/read | Liest die Dashboards für das Abonnement. |

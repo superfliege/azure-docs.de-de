@@ -8,18 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: a86902d772226be136778d200a37c451b7b7e9a5
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407251"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002194"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
 
 Big Data-Echtzeitlösungen agieren auf der Grundlage bewegter Daten. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
 
-Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Ereignisqueuing* genannt) von einem Dienst wie [Apache Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) verarbeitet. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsebene* mithilfe eines Echtzeitanalysesystems wie [Apache Storm](storm/apache-storm-overview.md) oder [Apache Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
+
+Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Ereignisqueuing* genannt) von einem Dienst wie [Apache Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) verarbeitet. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsebene* mithilfe eines Echtzeitanalysesystems wie [Apache Storm](storm/apache-storm-overview.md) oder [Apache Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
+
 
 ![HDInsight-Streamingmuster](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -37,13 +39,13 @@ Weitere Informationen finden Sie unter [Was ist Apache Storm in Azure HDInsight?
 
 ## <a name="spark-streaming"></a>Spark Streaming
 
-Spark Streaming ist eine Erweiterung für Spark, mit der Sie den gleichen Code wie für die Batchverarbeitung verwenden können. Batchabfragen und interaktive Abfragen können in einer einzelnen Anwendung kombiniert werden. Im Gegensatz zu Storm steht in Spark Streaming eine statusbehaftete Semantik vom Typ „Exactly-Once“ zur Verfügung. In Kombination mit der [Kafka Direct-API](http://spark.apache.org/docs/latest/streaming-kafka-integration.html), die sicherstellt, dass alle Kafka-Daten genau einmal von Spark Streaming empfangen werden, können End-to-End-Garantien vom Typ „Exactly-Once“ erreicht werden. Zu den Stärken von Spark Streaming zählen seine fehlertoleranten Funktionen und die damit verbundene schnelle Wiederherstellung fehlerhafter Knoten bei Verwendung mehrerer Knoten im Cluster.
+Spark Streaming ist eine Erweiterung für Spark, mit der Sie den gleichen Code wie für die Batchverarbeitung verwenden können. Batchabfragen und interaktive Abfragen können in einer einzelnen Anwendung kombiniert werden. Im Gegensatz zu Storm steht in Spark Streaming eine statusbehaftete Semantik vom Typ „Exactly-Once“ zur Verfügung. In Kombination mit der [Kafka Direct-API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die sicherstellt, dass alle Kafka-Daten genau einmal von Spark Streaming empfangen werden, können End-to-End-Garantien vom Typ „Exactly-Once“ erreicht werden. Zu den Stärken von Spark Streaming zählen seine fehlertoleranten Funktionen und die damit verbundene schnelle Wiederherstellung fehlerhafter Knoten bei Verwendung mehrerer Knoten im Cluster.
 
 Weitere Informationen finden Sie in der [Übersicht über Apache Spark-Streaming](hdinsight-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Skalieren eines Clusters
 
-Die Anzahl von Knoten im Cluster kann zwar bei der Erstellung angegeben werden, manchmal muss der Cluster jedoch abhängig von der Workload vergrößert oder verkleinert werden. Bei allen HDInsight-Clustern können Sie [die Anzahl von Knoten im Cluster ändern](hdinsight-administer-use-management-portal.md#scale-clusters). Spark-Cluster können ohne Datenverlust verworfen werden, da alle Daten in Azure Storage oder Data Lake Store gespeichert werden.
+Die Anzahl von Knoten im Cluster kann zwar bei der Erstellung angegeben werden, manchmal muss der Cluster jedoch abhängig von der Workload vergrößert oder verkleinert werden. Bei allen HDInsight-Clustern können Sie [die Anzahl von Knoten im Cluster ändern](hdinsight-administer-use-management-portal.md#scale-clusters). Spark-Cluster können ohne Datenverlust verworfen werden, da alle Daten in Azure Storage oder Data Lake Storage gespeichert werden.
 
 Die Entkopplung von Technologien hat gewisse Vorteile. Bei Kafka handelt es sich beispielsweise um eine Technologie zum Puffern von Ereignissen. Sie ist sehr E/A-lastig und benötigt nur wenig Rechenleistung. Datenstromverarbeitungslösungen wie Spark Streaming sind hingegen rechenintensive Lösungen, die virtuelle Computer mit mehr Leistung benötigen. Dank der Entkopplung dieser Technologien mittels unterschiedlicher Cluster können Sie sie unabhängig voneinander skalieren und die virtuellen Computer optimal nutzen.
 
@@ -55,7 +57,7 @@ Die Streampufferungstechnologien Event Hubs und Kafka verwenden jeweils Partitio
 
 Apache Storm und Spark Streaming unterstützen beide das Hinzufügen von Workerknoten zu ihren Clustern – und das sogar während der Datenverarbeitung.
 
-Für die Nutzung neuer Knoten, die durch die Skalierung von Storm hinzugefügt wurden, müssen Sie sämtliche Storm-Topologien ausgleichen, die vor dem Vergrößern des Clusters gestartet wurden. Dieser Ausgleich kann über die Webbenutzeroberfläche oder über die Befehlszeilenschnittstelle von Storm durchgeführt werden. Weitere Informationen finden Sie in der [Apache Storm-Dokumentation](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+Für die Nutzung neuer Knoten, die durch die Skalierung von Storm hinzugefügt wurden, müssen Sie sämtliche Storm-Topologien ausgleichen, die vor dem Vergrößern des Clusters gestartet wurden. Dieser Ausgleich kann über die Webbenutzeroberfläche oder über die Befehlszeilenschnittstelle von Storm durchgeführt werden. Weitere Informationen finden Sie in der [Apache Storm-Dokumentation](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
 Apache Spark verwendet für die Konfiguration der Umgebung je nach Anwendungsanforderungen drei zentrale Parameter: `spark.executor.instances`, `spark.executor.cores` und `spark.executor.memory`. Ein *Executor* ist ein Prozess, der für eine Spark-Anwendung gestartet wird. Er wird auf dem Workerknoten ausgeführt und ist für die Ausführung der Anwendungsaufgaben zuständig. Die Standardanzahl von Executors und die Executorgrößen für jeden Cluster werden basierend auf der Anzahl von Workerknoten und der Größe der Workerknoten berechnet. Diese Werte werden auf den einzelnen Clusterhauptknoten in der Datei `spark-defaults.conf` gespeichert.
 

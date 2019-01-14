@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: c7ec0b29e200710070cb1243ff8bfadd5e31e8eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7b20ceb61f522bea11e7256c824a851e587cbd49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879408"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975456"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Tutorial: Erstellen bedarfsgesteuerter Apache Hadoop-Cluster in HDInsight mit Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -55,7 +55,7 @@ In diesem Abschnitt wird ein Azure PowerShell-Skript verwendet, um das Speicherk
 
 
 **So erstellen Sie mithilfe von Azure PowerShell ein Speicherkonto und kopieren die Dateien**
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Geben Sie Namen für die Azure-Ressourcengruppe und das Azure-Speicherkonto an, die anhand des Skripts erstellt werden sollen.
 > Notieren Sie den **Namen der Ressourcengruppe**, den **Namen des Speicherkontos** und den **Speicherkontoschlüssel**, die vom Skript ausgegeben werden. Sie benötigen diese Angaben im nächsten Abschnitt.
 
@@ -166,7 +166,11 @@ In diesem Artikel konfigurieren Sie die Hive-Aktivität, um einen HDInsight Hado
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
-1. Wählen Sie im Azure-Portal **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus.
+1. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen**.
+
+1. Wählen Sie unter **Azure Marketplace** die Option **Analyse** aus.
+
+1.  Wählen Sie unter **Empfohlen** die Option **Data Factory** aus.
 
     ![Azure Data Factory im Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory im Portal")
 
@@ -181,19 +185,18 @@ In diesem Artikel konfigurieren Sie die Hive-Aktivität, um einen HDInsight Hado
     |**Name** |  Geben Sie einen Namen für die Data Factory ein. Dieser Name muss global eindeutig sein.|
     |**Abonnement**     |  Wählen Sie Ihr Azure-Abonnement. |
     |**Ressourcengruppe**     | Wählen Sie **Vorhandene verwenden** und dann die Ressourcengruppe aus, die Sie mit dem PowerShell-Skript erstellt haben. |
-    |**Version**     | Wählen Sie **V2 (Vorschau)** aus. |
-    |**Location**     | Der Standort wird automatisch auf die Region festgelegt, die Sie beim Erstellen der Ressourcengruppe zuvor angegeben haben. Für dieses Tutorial wird der Standort auf **USA, Osten 2** festgelegt. |
+    |**Version**     | Wählen Sie **V2** aus. |
+    |**Location**     | Der Standort wird automatisch auf die Region festgelegt, die Sie beim Erstellen der Ressourcengruppe zuvor angegeben haben. Für dieses Tutorial wird der Standort auf **USA, Osten** festgelegt. |
     
 
-1. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus. Im Portal-Dashboard wird die neue Kachel **Bereitstellung wird übermittelt** angezeigt. Das Erstellen einer Data Factory kann zwischen 2 und 4 Minuten dauern.
+1. Klicken Sie auf **Erstellen**. Das Erstellen einer Data Factory kann zwischen 2 und 4 Minuten dauern.
 
-    ![Vorlagenbereitstellungsstatus](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "Vorlagenbereitstellungsstatus") 
- 
-1. Nachdem die Data Factory erstellt wurde, wird im Portal die Übersicht für die Data Factory angezeigt.
 
-    ![Azure Data Factory – Übersicht](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory – Übersicht")
+1. Nachdem die Data Factory erstellt wurde, erhalten Sie die Benachrichtigung **Bereitstellung erfolgreich** mit einer Schaltfläche **Zu Ressource wechseln**.  Klicken Sie auf **Zu Ressource wechseln**, um die Data Factory-Standardansicht zu öffnen.
 
 1. Wählen Sie **Erstellen und überwachen** aus, um das Azure Data Factory-Portal für das Erstellen und Überwachen zu starten.
+
+    ![Azure Data Factory – Übersicht](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory – Übersicht")
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 

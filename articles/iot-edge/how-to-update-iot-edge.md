@@ -5,23 +5,31 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8b8638d8fa428b1b867e3f126ac8b5cc992cc273
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dfad3199ba3a9cd2f3bca55be50760ddde676e70
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095153"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558191"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime
 
 Wenn neue Versionen des IoT Edge-Diensts veröffentlicht werden, sollten Sie Ihre IoT Edge-Geräte aktualisieren, damit sie über die neuesten Funktionen und Verbesserungen der Sicherheit verfügen. Dieser Artikel enthält Informationen zum Aktualisieren Ihrer IoT Edge-Geräte, wenn eine neue Version verfügbar ist. 
 
-Zwei Komponenten eines IoT Edge-Geräts müssen bei der Umstellung auf eine neue Version aktualisiert werden. Die erste ist der Sicherheitsdaemon, der auf dem Gerät ausgeführt wird und beim Starten des Geräts die Runtime startet. Der Sicherheitsdaemon kann zurzeit nur vom Gerät selbst aktualisiert werden. Die zweite Komponente ist die Runtime, die aus den Modulen Edge-Hub und Edge-Agent besteht. Je nachdem, wie Ihre Bereitstellung strukturiert ist, kann die Runtime vom Gerät oder remote aktualisiert werden. 
+Zwei Komponenten eines IoT Edge-Geräts müssen bei der Umstellung auf eine neue Version aktualisiert werden. Die erste ist der Sicherheitsdaemon, der auf dem Gerät ausgeführt wird und beim Starten des Geräts die Runtimemodule startet. Der Sicherheitsdaemon kann zurzeit nur vom Gerät selbst aktualisiert werden. Die zweite Komponente ist die Runtime, die aus den IoT Edge-Hub- und den IoT Edge-Agent-Modulen besteht. Je nachdem, wie Ihre Bereitstellung strukturiert ist, kann die Runtime vom Gerät oder remote aktualisiert werden. 
+
+>[!IMPORTANT]
+>Wenn Sie Azure IoT Edge auf einem Windows-Gerät ausführen, aktualisieren Sie nicht auf Version 1.0.5, wenn eine der folgenden Aussagen auf Ihr Gerät zutrifft: 
+>* Sie haben Ihr Gerät nicht auf Windows Build 17763 aktualisiert. IoT Edge 1.0.5 unterstützt keine Windows-Builds vor 17763.
+>* Sie führen Java- oder Node.js-Module auf Ihrem Windows-Gerät aus. Überspringen Sie die Version 1.0.5, auch wenn Sie Ihr Windows-Gerät auf den neuesten Build aktualisiert haben. 
+>
+>Weitere Informationen zu IoT Edge 1.0.5 finden Sie in den [Versionsanmerkungen zu 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Weitere Informationen darüber, wie Sie für Ihre Entwicklungstools ein Update auf die aktuelle Version verhindern können, finden Sie im [IoT-Entwicklerblog](https://aka.ms/dev-win-iot-edge-module).
+
 
 Informationen zur neuesten Version von Azure IoT Edge finden Sie unter [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) (Azure IoT Edge-Versionen).
 
@@ -42,33 +50,37 @@ apt-get install libiothsm iotedge
 
 ### <a name="windows-devices"></a>Windows-Geräte
 
-Verwenden Sie auf Windows-Geräten das PowerShell-Skript, um den Sicherheitsdaemon zu deinstallieren und dann neu zu installieren. Das Installationsskript lädt per Pull automatisch die neueste Version des Sicherheitsdaemons herunter. Sie müssen die Verbindungszeichenfolge für Ihr Gerät während des Installationsvorgangs erneut angeben. 
+Verwenden Sie auf Windows-Geräten das PowerShell-Skript, um den Sicherheitsdaemon zu deinstallieren und dann neu zu installieren. Das Installationsskript lädt per Pull automatisch die neueste Version des Sicherheitsdaemons herunter. 
 
 Deinstallieren Sie den Sicherheitsdaemon in einer PowerShell-Administratorsitzung. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-UnInstall-SecurityDaemon
+Uninstall-SecurityDaemon
 ```
 
-Installieren Sie den Sicherheitsdaemon erneut, abhängig davon, ob Ihr IoT Edge-Gerät Windows-Container oder Linux-Container verwendet. Ersetzen Sie den Ausdruck **\<Windows oder Linux\>** durch eins der Containerbetriebssysteme. 
+Wenn Sie den Befehl `Uninstall-SecurityDaemon` ohne Parameter ausführen, wird der Sicherheitsdaemon zusammen mit den beiden Runtimecontainerimages von Ihrem Gerät entfernt. Die Datei „config.yaml“ verbleibt auf dem Gerät, ebenso wie Daten der Moby-Containerengine. Durch die Beibehaltung der Konfiguration müssen Sie während des Installationsvorgangs die Verbindungszeichenfolge oder die Device Provisioning Service-Informationen für Ihr Gerät nicht erneut angeben. 
+
+Installieren Sie den Sicherheitsdaemon erneut, abhängig davon, ob Ihr IoT Edge-Gerät Windows-Container oder Linux-Container verwendet. Ersetzen Sie den Ausdruck **\<Windows oder Linux\>** durch eins der Containerbetriebssysteme. Verwenden Sie das Flag **-ExistingConfig**, um auf die vorhandene config.yaml-Datei auf Ihrem Gerät zu verweisen. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -Manual -ContainerOS <Windows or Linux>
+Install-SecurityDaemon -ExistingConfig -ContainerOS <Windows or Linux>
 ```
+
+Wenn Sie eine bestimmte Version des Sicherheitsdaemons installieren möchten, laden Sie die geeignete Datei „iotedged-windows.zip“ aus den [IoT Edge-Releases](https://github.com/Azure/azure-iotedge/releases) herunter. Verwenden Sie anschließend den Parameter `-OfflineInstallationPath`, um auf den Speicherort der heruntergeladenen Datei zu zeigen. Weitere Informationen finden Sie unter [Offlineinstallation](how-to-install-iot-edge-windows.md#offline-installation).
 
 ## <a name="update-the-runtime-containers"></a>Aktualisieren der Runtimecontainer
 
-Die Weise, in der Sie die Edge-Agent- und Edge-Hub-Container aktualisieren, hängt davon ab, ob Sie in Ihrer Bereitstellung fortlaufende Versionstags (wie 1.0) oder spezifische Versionstags (wie 1.0.2) verwenden. 
+Die Art und Weise, in der Sie die IoT Edge-Agent- und IoT Edge-Hubcontainer aktualisieren, hängt davon ab, ob Sie in Ihrer Bereitstellung fortlaufende Versionstags (wie 1.0) oder spezifische Versionstags (wie 1.0.2) verwenden. 
 
-Überprüfen Sie die Version der aktuell auf Ihrem Gerät ausgeführten IoT Edge-Agent und Edge-Hub-Module mithilfe der Befehle `iotedge logs edgeAgent` und `iotedge logs edgeHub`. 
+Überprüfen Sie die Version der aktuell auf Ihrem Gerät ausgeführten IoT Edge-Agent- und IoT Edge-Hubmodule mithilfe der Befehle `iotedge logs edgeAgent` und `iotedge logs edgeHub`. 
 
   ![Suchen der Containerversion in Protokollen](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>Grundlagen von IoT Edge-Tags
 
-Die Edge-Agent- und Edge-Hub-Images sind im Tag mit der IoT Edge-Version gekennzeichnet, der sie zugeordnet sind. Es gibt zwei Möglichkeiten zum Verwenden von Tags mit den Runtime-Images: 
+Die IoT Edge-Agent- und IoT Edge-Hubimages sind im Tag mit der IoT Edge-Version gekennzeichnet, der sie zugeordnet sind. Es gibt zwei Möglichkeiten zum Verwenden von Tags mit den Runtime-Images: 
 
 * **Fortlaufende Tags**: Verwenden Sie nur die ersten zwei Stellen der Versionsnummer, um zum neuesten Image zu gelangen, das mit diesen Stellen übereinstimmt. Beispielsweise wird, sobald eine neue Version veröffentlicht wird, 1.0 immer so aktualisiert, dass auf die neueste 1.0.x-Version verwiesen wird. Wenn die Containerruntime auf Ihrem IoT Edge-Gerät das Image erneut per Pull herunterlädt, werden die Laufzeitmodule auf die neueste Version aktualisiert. Dieses Vorgehen wird für Entwicklungszwecke vorgeschlagen. Bereitstellungen aus dem Azure-Portal weisen standardmäßig fortlaufende Tags auf. 
 * **Spezifische Tags**: Verwenden Sie alle drei Stellen der Versionsnummer, um die Imageversion explizit festzulegen. Beispielsweise ändert sich 1.0.2 nach der ursprünglichen Veröffentlichung nicht. Sie können im Bereitstellungsmanifest eine neue Versionsnummer deklarieren, wenn Sie zur Aktualisierung bereit sind. Dieses Vorgehen wird für Produktionszwecke vorgeschlagen.
@@ -77,7 +89,7 @@ Die Edge-Agent- und Edge-Hub-Images sind im Tag mit der IoT Edge-Version gekennz
 
 Wenn Sie in Ihrer Bereitstellung fortlaufende Tags verwenden (Beispiel: mcr.microsoft.com/azureiotedge-hub:**1.0**), müssen Sie die Containerruntime auf Ihrem Gerät dazu zwingen, per Pull die neueste Version des Images zu laden. 
 
-Löschen Sie die lokale Version des Images von Ihrem IoT Edge-Gerät. 
+Löschen Sie die lokale Version des Images von Ihrem IoT Edge-Gerät. Auf Windows-Computern werden bei der Deinstallation des Sicherheitsdaemons auch die Runtime-Images entfernt, sodass Sie diesen Schritt nicht erneut ausführen müssen. 
 
 ```cmd/sh
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
@@ -123,4 +135,4 @@ Aktualisieren Sie in einem JSON-Bereitstellungsmanifest die Modulimages im Absch
 
 Zeigen Sie die neuesten [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) (Azure IoT Edge-Versionen) an.
 
-Bleiben Sie mit neuesten Updates und Bekanntmachungen im [Internet of Things-Blog](https://azure.microsoft.com/blog/topics/internet-of-things/) auf dem Laufenden 
+Bleiben Sie mit neuesten Updates und Ankündigungen im [Internet of Things-Blog](https://azure.microsoft.com/blog/topics/internet-of-things/) auf dem Laufenden 

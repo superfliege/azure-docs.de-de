@@ -1,24 +1,21 @@
 ---
-title: 'Erster Einblick: Schützen von Azure-VMs mit einem Recovery Services-Tresor'
-description: Es wird beschrieben, wie Sie Azure-VMs mit einem Recovery Services-Tresor schützen. Verwenden Sie Sicherungen von mit Resource Manager bereitgestellten virtuellen Computern, klassischen bereitgestellten Computern und virtuellen Storage Premium-Computern, verschlüsselten virtuellen Computer und virtuellen Computern auf verwalteten Datenträgern, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure.
+title: Vorbereiten der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst
+description: Erfahren Sie, wie Sie Azure-VMs mit dem Azure Backup-Dienst sichern.
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/17/2018
 ms.author: raynew
-ms.custom: H1Hack27Feb2017
-keywords: Sicherungen; VM-Sicherungen
-ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0c394a92bff3ace210ee0db156f47bb8912bf45d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869927"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631582"
 ---
-# <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresor
+# <a name="back-up-azure-vms-with-the-azure-backup-service"></a>Vorbereiten der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst
 
 In diesem Artikel wird erläutert, wie Sie den Schutz für einen virtuellen Computer über das Menü für VM-Vorgänge oder den Recovery Services-Tresor konfigurieren. Recovery Services-Tresore schützen Folgendes:
 
@@ -32,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie den Schutz für einen virtuellen Comp
 
 Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie im Artikel [Sichern und Wiederherstellen virtueller Storage Premium-Computer](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Weitere Informationen zur Unterstützung für virtuelle Computer auf verwalteten Datenträgern finden Sie unter [Sichern und Wiederherstellen von virtuellen Computern auf verwalteten Datenträgern](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). Weitere Informationen zum Pre- und Post-Skript-Framework für die Linux-VM-Sicherung finden Sie unter [Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
-Informationen darüber, was Sie sichern und was Sie nicht sichern können, finden Sie unter [Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
+Informationen darüber, was Sie sichern und was Sie nicht sichern können, finden Sie unter [Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms-prepare.md#before-you-start).
 
 > [!NOTE]
 > Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren.
@@ -337,7 +334,9 @@ Der Backup-Dienst installiert die Sicherungserweiterung auch dann, wenn der virt
 Falls bei der Durchführung einiger Aufgaben in diesem Artikel Probleme auftreten, helfen Ihnen die [Anleitungen zur Problembehandlung](backup-azure-vms-troubleshoot.md)weiter.
 
 ## <a name="pricing"></a>Preise
-Die Kosten für die Sicherung virtueller Azure-Computer hängen von der Anzahl geschützter Instanzen ab. Eine Definition für eine geschützte Instanz finden Sie unter [Was ist eine geschützte Instanz?](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Ein Beispielkostenrechnung für die Sicherung eines virtuellen Computers finden Sie unter [Wie werden geschützte Instanzen berechnet?](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances). Backup-Preisinformationen finden Sie auf der [Seite mit den Preisen für Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+Die Kosten für die Sicherung virtueller Azure-Computer hängen von der Anzahl geschützter Instanzen ab. Eine Definition für eine geschützte Instanz finden Sie unter [Was ist eine geschützte Instanz?](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Backup-Preisinformationen finden Sie auf der [Seite mit den Preisen für Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
-## <a name="questions"></a>Fragen?
-Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](https://aka.ms/azurebackup_feedback).
+## <a name="next-steps"></a>Nächste Schritte
+
+[Verwalten](backup-azure-manage-vms.md) Sie Ihre Sicherungen.
+

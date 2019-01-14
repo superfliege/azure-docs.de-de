@@ -1,18 +1,18 @@
 ---
-title: Azure Container Registry-Authentifizierung mit Dienstprinzipalen
-description: Erfahren Sie, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
+title: Azure Container Registry-Authentifizierung mit einem Dienstprinzipal
+description: Gewähren Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 30f0eb04b4b7d07785854e3079bc6656889edec6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854486"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754202"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -20,9 +20,9 @@ Sie können einen Dienstprinzipal von Azure Active Directory (Azure AD) verwende
 
 ## <a name="what-is-a-service-principal"></a>Was ist ein Dienstprinzipal?
 
-*Dienstprinzipale* von Azure AD ermöglichen den Zugriff auf Azure-Ressourcen innerhalb Ihres Abonnements. Sie können sich einen Dienstprinzipal als Benutzeridentität für einen Dienst vorstellen, wobei „Dienst“ jede Anwendung, jeder Dienst oder jede Plattform sein kann, die Zugriff auf die Ressourcen benötigt. Sie haben die Möglichkeit, einen Dienstprinzipal mit Zugriffsrechten so zu konfigurieren, dass diese nur für die von Ihnen angegebenen Ressourcen gelten. Anschließend können Sie für Ihre Anwendung bzw. Ihren Dienst festlegen, dass diese bzw. dieser die Anmeldeinformationen des Dienstprinzipals verwendet, um auf diese Ressourcen zuzugreifen.
+*Dienstprinzipale* von Azure AD ermöglichen den Zugriff auf Azure-Ressourcen innerhalb Ihres Abonnements. Sie können sich einen Dienstprinzipal als Benutzeridentität für einen Dienst vorstellen, wobei „Dienst“ jede Anwendung, jeder Dienst oder jede Plattform sein kann, die Zugriff auf die Ressourcen benötigt. Sie haben die Möglichkeit, einen Dienstprinzipal mit Zugriffsrechten so zu konfigurieren, dass diese nur für die von Ihnen angegebenen Ressourcen gelten. Anschließend legen Sie für Ihre Anwendung bzw. Ihren Dienst fest, dass diese bzw. dieser die Anmeldeinformationen des Dienstprinzipals verwendet, um auf diese Ressourcen zuzugreifen.
 
-Im Rahmen der Azure Container Registry können Sie einen Azure AD-Dienstprinzipal mit Pull-, Push- und Pull- oder Besitzerberechtigungen für Ihre private Docker-Registrierung in Azure erstellen.
+Im Rahmen der Azure Container Registry können Sie einen Azure AD-Dienstprinzipal mit Pull-, Push- und Pull- oder anderen Berechtigungen für Ihre private Registrierung in Azure erstellen. Eine vollständige Liste finden Sie unter [Azure Container Registry – Rollen und Berechtigungen](container-registry-roles.md).
 
 ## <a name="why-use-a-service-principal"></a>Gründe für die Verwendung eines Dienstprinzipals
 

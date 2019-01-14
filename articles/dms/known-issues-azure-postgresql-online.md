@@ -4,19 +4,19 @@ description: Informationen zu bekannten Problemen/Migrationseinschränkungen bei
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: ec91eec9baba1f337f18e1927a87971bf1499040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282875"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724137"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for PostgreSQL
 
@@ -76,32 +76,32 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 
 ## <a name="datatype-limitations"></a>Einschränkungen bei Datentypen
 
-- **Einschränkung:** Wenn die PostgreSQL-Quelldatenbank einen ENUM-Datentyp enthält, treten bei der Migration während der fortlaufenden Synchronisierung Fehler auf.
+- **Einschränkung**: Wenn die PostgreSQL-Quelldatenbank einen ENUM-Datentyp enthält, treten bei der Migration während der fortlaufenden Synchronisierung Fehler auf.
 
-    **Problemumgehung**: Ändern Sie den ENUM-Datentyp in Azure Database for PostgreSQL in variierende Zeichen.
+    **Problemumgehung**: Ändern Sie den ENUM-Datentyp in Azure Database for PostgreSQL in „character varying“.
 
-- **Einschränkung:** Wenn in Tabellen kein Primärschlüssel vorhanden ist, treten bei der fortlaufenden Synchronisierung Fehler auf.
+- **Einschränkung**: Wenn in Tabellen kein Primärschlüssel vorhanden ist, treten bei der fortlaufenden Synchronisierung Fehler auf.
 
-    **Problemumgehung:** Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
+    **Problemumgehung**: Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
 
 ## <a name="lob-limitations"></a>LOB-Einschränkungen
 LOB-Spalten (Large Object) sind Spalten, die groß werden können. Für PostgreSQL sind XML, JSON, IMAGE, TEXT usw. Beispiele für LOB-Datentypen.
 
-- **Einschränkung:** Wenn LOB-Datentypen als Primärschlüssel verwendet werden, treten bei der Migration Fehler auf.
+- **Einschränkung**: Wenn LOB-Datentypen als Primärschlüssel verwendet werden, treten bei der Migration Fehler auf.
 
-    **Problemumgehung:** Ersetzen Sie den Primärschlüssel durch andere Datentypen oder Spalten, die keine LOB-Datentypen oder LOB-Spalten sind.
+    **Problemumgehung**: Ersetzen Sie den Primärschlüssel durch andere Datentypen oder Spalten, die keine LOB-Datentypen oder LOB-Spalten sind.
 
-- **Einschränkung:** Wenn die Länge der LOB-Spalte (Large Object) 32 KB überschreitet, werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
+- **Einschränkung**: Wenn die Länge der LOB-Spalte (Large Object) 32 KB überschreitet, werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
 
     ```
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Problemumgehung:** Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) an das Entwicklerteam.
+    **Problemumgehung**: Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) an das Entwicklerteam.
 
 - **Einschränkung**: Wenn LOB-Spalten in der Tabelle vorhanden sind und kein Primärschlüssel für die Tabelle festgelegt wurde, werden möglicherweise keine Daten für diese Tabelle migriert.
 
-    **Problemumgehung:** Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
+    **Problemumgehung**: Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10-Problemumgehung
 PostgreSQL 10.x nimmt verschiedene Änderungen an pg_xlog-Ordnernamen vor und bewirkt damit, dass die Migration nicht wie erwartet ausgeführt wird. Wenn Sie von PostgreSQL 10.x zu Azure Database for PostgreSQL 10.3 migrieren, führen Sie das folgende Skript für die PostgreSQL-Quelldatenbank aus, um eine Wrapper-Funktion um pg_xlog-Funktionen zu erstellen.

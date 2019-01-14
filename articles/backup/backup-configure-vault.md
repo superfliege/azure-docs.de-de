@@ -4,17 +4,16 @@ description: Verwenden Sie den Microsoft Azure Backup-Agent, um Windows-Dateien 
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keywords: Sicherungstresor; Windows-Server sichern; Windows sichern;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874004"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788394"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Sichern eines Windows-Servers oder -Clients in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells
 In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows-Servers (oder Windows-Clients) mithilfe von Azure Backup und des Resource Manager-Bereitstellungsmodells in Azure sichern.
@@ -183,6 +182,8 @@ Wenn Ihr Computer/Proxy nur eingeschränkten Zugang zum Internet hat, stellen Si
 Die Sicherungsrichtlinie besteht aus dem Zeitplan für die Erfassung von Wiederherstellungspunkten und dem Zeitraum, für den die Wiederherstellungspunkte gespeichert werden. Verwenden Sie den Microsoft Azure Backup-Agent, um die Sicherungsrichtlinie für Dateien und Ordner zu erstellen.
 
 ### <a name="to-create-a-backup-schedule"></a>So erstellen Sie einen Sicherungszeitplan
+
+Legen Sie den Sicherungszeitplan auf dem Computer fest, den Sie sichern möchten. Beachten Sie, dass der für die Sicherung festgelegte Zeitraum von der lokalen Computerzeit abweichen kann, da bei Azure Backup die Sommerzeit nicht berücksichtigt wird. 
 1. Öffnen Sie den Microsoft Azure Backup-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.
 
     ![Starten des Azure Backup-Agents](./media/backup-configure-vault/snap-in-search.png)

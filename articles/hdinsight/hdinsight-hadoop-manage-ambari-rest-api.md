@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384226"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715108"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -26,7 +26,7 @@ Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern du
 
 ## <a id="whatis"></a>Was ist Apache Ambari?
 
-Über die Webbenutzeroberfläche von [Apache Ambari](http://ambari.apache.org) können Hadoop-Cluster verwaltet und überwacht werden. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
+Über die Webbenutzeroberfläche von [Apache Ambari](https://ambari.apache.org) können Hadoop-Cluster verwaltet und überwacht werden. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
 
 Ambari wird standardmäßig mit Linux-basierten Clustern bereitgestellt.
 
@@ -232,7 +232,7 @@ foreach($item in $respObj.items) {
 
 ## <a name="example-get-the-default-storage"></a>Beispiel: Abrufen des Standardspeicher
 
-Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein Azure-Speicherkonto oder Data Lake Store als Standardspeicher für den Cluster verwenden. Sie können diese Informationen mit Ambari abrufen, nachdem der Cluster erstellt wurde. Sie möchten z.B. Daten außerhalb HDInsight aus dem Container lesen bzw. in ihn hineinschreiben.
+Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein Azure Storage-Konto oder Data Lake Storage als Standardspeicher für den Cluster verwenden. Sie können diese Informationen mit Ambari abrufen, nachdem der Cluster erstellt wurde. Sie möchten z.B. Daten außerhalb HDInsight aus dem Container lesen bzw. in ihn hineinschreiben.
 
 Die folgenden Beispiele rufen die Standardspeicherkonfiguration aus dem Cluster ab:
 
@@ -255,9 +255,9 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 
 * `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – dieser Wert gibt an, dass der Cluster ein Azure Storage-Konto als Standardspeicher verwendet. Der Wert `ACCOUNTNAME` ist der Name des Speicherkontos. Der Teil `CONTAINER` ist der Name des Blobcontainers im Speicherkonto. Der Container ist der Stamm des HDFS-kompatiblen Speichers für den Cluster.
 
-* `adl://home` – dieser Wert gibt an, dass der Cluster einen Azure Data Lake Store als Standardspeicher verwendet.
+* `adl://home`: Dieser Wert gibt an, dass der Cluster Azure Data Lake Storage als Standardspeicher verwendet.
 
-    Um den Kontonamen des Data Lake Store zu ermitteln, verwenden Sie die folgenden Beispiele:
+    Um den Data Lake Storage-Kontonamen zu ermitteln, verwenden Sie die folgenden Beispiele:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -271,9 +271,9 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    Der Rückgabewert ähnelt `ACCOUNTNAME.azuredatalakestore.net`, wobei `ACCOUNTNAME` der Name des Data Lake Store-Kontos ist.
+    Der Rückgabewert ähnelt `ACCOUNTNAME.azuredatalakestore.net`, wobei `ACCOUNTNAME` der Name des Data Lake Storage-Kontos ist.
 
-    Um das Verzeichnis in Data Lake Store zu suchen, das den Speicher für den Cluster enthält, verwenden Sie die folgenden Beispiele:
+    Um das Verzeichnis in der Data Lake Storage-Instanz zu suchen, die den Speicher für den Cluster enthält, verwenden Sie die folgenden Beispiele:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -287,7 +287,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    Der Rückgabewert ähnelt `/clusters/CLUSTERNAME/`. Dieser Wert entspricht dem Pfad im Data Lake Store-Konto. Dieser Pfad ist der Stamm des HDFS-kompatiblen Dateisystems für den Cluster. 
+    Der Rückgabewert ähnelt `/clusters/CLUSTERNAME/`. Dieser Wert ist ein Pfad im Data Lake Storage-Konto. Dieser Pfad ist der Stamm des HDFS-kompatiblen Dateisystems für den Cluster. 
 
 > [!NOTE]  
 > Das `Get-AzureRmHDInsightCluster`-Cmdlet von [Azure PowerShell](/powershell/azure/overview) gibt auch die Speicherinformationen für den Cluster zurück.

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 48b2d42348996f5f135d88cdf6345bca8daf8335
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409444"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103688"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -68,7 +68,7 @@ Die folgenden Schritte verwenden Homebrew zum Installieren der Core Tools unter 
 
     ```bash
     brew tap azure/functions
-    brew install azure-functions-core-tools 
+    brew install azure-functions-core-tools
     ```
 
 #### <a name="linux"></a> Linux (Ubuntu/Debian) mit APT
@@ -195,12 +195,12 @@ Die Werte für Funktions-App-Einstellungen können auch im Code als Umgebungsvar
 + [Vorkompilierter C#-Code](functions-dotnet-class-library.md#environment-variables)
 + [C#-Skript (.csx)](functions-reference-csharp.md#environment-variables)
 + [F#-Skript (.fsx)](functions-reference-fsharp.md#environment-variables)
-+ [Java](functions-reference-java.md#environment-variables) 
++ [Java](functions-reference-java.md#environment-variables)
 + [JavaScript](functions-reference-node.md#environment-variables)
 
-Wenn keine gültige Speicherverbindungszeichenfolge für **AzureWebJobsStorage** festgelegt ist und der Emulator nicht verwendet wird, erscheint die folgende Fehlermeldung:  
+Wenn keine gültige Speicherverbindungszeichenfolge für **AzureWebJobsStorage** festgelegt ist und der Emulator nicht verwendet wird, erscheint die folgende Fehlermeldung:
 
-> Missing value for AzureWebJobsStorage in local.settings.json (Fehlender Wert für AzureWebJobsStorage in local.settings.json). Dies ist für alle Nicht-HTTP-Trigger erforderlich. Sie können „func azure functionapp fetch-app-settings <functionAppName>“ ausführen oder eine Verbindungszeichenfolge in „local.settings.json“ eingeben.
+> Missing value for AzureWebJobsStorage in local.settings.json (Fehlender Wert für AzureWebJobsStorage in local.settings.json). Dies ist für alle Nicht-HTTP-Trigger erforderlich. Sie können „func azure functionapp fetch-app-settings \<functionAppName\>“ ausführen oder eine Verbindungszeichenfolge in „local.settings.json“ angeben.
 
 ### <a name="get-your-storage-connection-strings"></a>Abrufen der Speicherverbindungszeichenfolgen
 
@@ -210,7 +210,7 @@ Auch wenn der Speicheremulator für die Entwicklung verwendet wird, empfiehlt es
 
   ![Kopieren der Verbindungszeichenfolge im Azure-Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement, wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge. 
++ Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement, wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
 
   ![Kopieren der Verbindungszeichenfolge im Storage-Explorer](./media/functions-run-local/storage-explorer.png)
 
@@ -298,10 +298,10 @@ Der Befehl `host` ist nur in Version 1.x erforderlich.
 
 | Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
-| **`--build`** | Erstellen des aktuellen Projekts vor dem Ausführen. Nur Version 2.x und C#-Projekte. |
+| **`--no-build`** | Das aktuelle Projekt wird vor der Ausführung nicht erstellt. Nur für dotnet-Projekte. Standardmäßig ist „false“ festgelegt. Nur Version 2.x. |
 | **`--cert`** | Der Pfad zu einer PFX-Datei, die einen privaten Schlüssel enthält. Nur mit `--useHttps` verwendet. Nur Version 2.x. |
+| **`--cors-credentials`** | Ursprungsübergreifende authentifizierte Anforderungen (d.h. Cookies und der Authentifizierungsheader) sind nur für Version 2.x zugelassen. |
 | **`--cors`** | Eine durch Trennzeichen getrennte Liste der CORS-Ursprünge ohne Leerzeichen. |
-| **`--debug`** | Startet den Host mit geöffnetem Debugport, sodass Sie ihn in [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) oder [Visual Studio 2017](functions-dotnet-class-library.md) an den Prozess **func.exe** anfügen können. Gültige Werte sind `VSCode` und `VS`.  |
 | **`--language-worker`** | Argumente zum Konfigurieren des Spracharbeitsthreads. Nur Version 2.x. |
 | **`--nodeDebugPort -n`** | Der Port, den der Knotendebugger verwendet. Standardwert: Ein Wert aus „launch.json“ oder 5858. Nur Version 1.x. |
 | **`--password`** | Entweder das Kennwort oder eine Datei, die das Kennwort für eine PFX-Datei enthält. Nur mit `--cert` verwendet. Nur Version 2.x. |
@@ -324,13 +324,13 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Bei lokaler Ausführung wird die Authentifizierung für HTTP-Endpunkte nicht erzwungen. Das bedeutet, dass alle lokalen HTTP-Anforderungen wie `authLevel = "anonymous"` behandelt werden. Weitere Informationen finden Sie im Artikel über [HTTP-Bindungen](functions-bindings-http-webhook.md#authorization-keys). 
+>Bei lokaler Ausführung wird die Authentifizierung für HTTP-Endpunkte nicht erzwungen. Das bedeutet, dass alle lokalen HTTP-Anforderungen wie `authLevel = "anonymous"` behandelt werden. Weitere Informationen finden Sie im Artikel über [HTTP-Bindungen](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Übergeben von Testdaten an eine Funktion
 
 Um Ihre Funktionen lokal zu testen, [starten Sie den Functions-Host](#start), und rufen Sie Endpunkte auf dem lokalen Server mithilfe von HTTP-Anforderungen auf. Der aufgerufene Endpunkt hängt vom Typ der Funktion ab.
 
->[!NOTE]  
+>[!NOTE]
 > Beispiele in diesem Thema verwenden das Tool cURL, um HTTP-Anforderungen vom Terminal oder einer Eingabeaufforderung zu senden. Sie können ein Tool Ihrer Wahl verwenden, um HTTP-Anforderungen an den lokalen Server zu senden. Das Tool cURL ist auf Linux-basierten Systemen standardmäßig verfügbar. Unter Windows müssen Sie das [cURL-Tool](https://curl.haxx.se/) erst herunterladen und installieren.
 
 Allgemeinere Informationen zum Testen von Funktionen finden Sie unter [Strategien zum Testen Ihres Codes in Azure Functions](functions-test-a-function.md).
@@ -341,9 +341,9 @@ Sie rufen die folgenden Endpunkte auf, um mit HTTP und Webhooks ausgelöste Funk
 
     http://localhost:{port}/api/{function_name}
 
-Achten Sie darauf, den gleichen Servernamen und Port zu verwenden, auf die der Functions-Host lauscht. Dies können Sie der generierten Ausgabe entnehmen, wenn der Functions-Host gestartet wird. Sie können diese URL mit jeder HTTP-Methode aufrufen, die vom Trigger unterstützt wird. 
+Achten Sie darauf, den gleichen Servernamen und Port zu verwenden, auf die der Functions-Host lauscht. Dies können Sie der generierten Ausgabe entnehmen, wenn der Functions-Host gestartet wird. Sie können diese URL mit jeder HTTP-Methode aufrufen, die vom Trigger unterstützt wird.
 
-Der folgende cURL-Befehl löst die Schnellstart-Funktion `MyHttpTrigger` von einer GET-Anforderung aus, wobei der _name_-Parameter in der Abfragezeichenfolge übergeben wird. 
+Der folgende cURL-Befehl löst die Schnellstart-Funktion `MyHttpTrigger` von einer GET-Anforderung aus, wobei der _name_-Parameter in der Abfragezeichenfolge übergeben wird.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -355,11 +355,11 @@ Im folgenden Beispiel wird dieselbe Funktion über eine POST-Anforderung aufgeru
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Sie können GET-Anforderungen über einen Browser ausführen, indem Sie Daten in der Abfragezeichenfolge übergeben. Für alle anderen HTTP-Methoden müssen Sie cURL, Fiddler, Postman oder ein ähnliches HTTP-Testtool verwenden.  
+Sie können GET-Anforderungen über einen Browser ausführen, indem Sie Daten in der Abfragezeichenfolge übergeben. Für alle anderen HTTP-Methoden müssen Sie cURL, Fiddler, Postman oder ein ähnliches HTTP-Testtool verwenden.
 
 #### <a name="non-http-triggered-functions"></a>Nicht über HTTP ausgelöste Funktionen
 
-Für alle Arten von Funktionen mit Ausnahme von HTTP-Triggern und Webhooks können Sie Funktionen lokal testen, indem Sie einen Verwaltungsendpunkt aufrufen. Wenn Sie diesen Endpunkt mit einer HTTP POST-Anforderung auf dem lokalen Server aufrufen, wird die Funktion ausgelöst. Optional können Sie Testdaten im Hauptteil der POST-Anforderung an die Ausführung übergeben. Diese Funktionalität ähnelt der Registerkarte **Test** im Azure-Portal.  
+Für alle Arten von Funktionen mit Ausnahme von HTTP-Triggern und Webhooks können Sie Funktionen lokal testen, indem Sie einen Verwaltungsendpunkt aufrufen. Wenn Sie diesen Endpunkt mit einer HTTP POST-Anforderung auf dem lokalen Server aufrufen, wird die Funktion ausgelöst. Optional können Sie Testdaten im Hauptteil der POST-Anforderung an die Ausführung übergeben. Diese Funktionalität ähnelt der Registerkarte **Test** im Azure-Portal.
 
 Sie rufen den folgenden Administratorendpunkt zum Auslösen von Nicht-HTTP-Funktionen auf:
 
@@ -381,10 +381,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 #### <a name="using-the-func-run-command-in-version-1x"></a>Verwenden des Befehls `func run` in Version 1.x
 
->[!IMPORTANT]  
+>[!IMPORTANT]
 > Der Befehl `func run` wird in Version 2.x der Tools nicht unterstützt. Weitere Informationen finden Sie im Thema [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
 
-Sie können eine Funktion auch direkt aufrufen, indem Sie `func run <FunctionName>` verwenden, und Eingabedaten für die Funktion bereitstellen. Dieser Befehl ähnelt der Ausführung einer Funktion mithilfe der Registerkarte **Test** im Azure-Portal. 
+Sie können eine Funktion auch direkt aufrufen, indem Sie `func run <FunctionName>` verwenden, und Eingabedaten für die Funktion bereitstellen. Dieser Befehl ähnelt der Ausführung einer Funktion mithilfe der Registerkarte **Test** im Azure-Portal.
 
 `func run` unterstützt die folgenden Optionen:
 
@@ -410,9 +410,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 Core Tools unterstützt zwei Arten von Bereitstellungen: die Bereitstellung der Funktionsprojektdateien direkt in Ihrer Funktions-App und die Bereitstellung eines benutzerdefinierten Linux-Containers (nur in Version 2.x). Sie müssen bereits [eine Funktions-App im Azure-Abonnement erstellt haben](functions-cli-samples.md#create).
 
-In Version 2.x müssen Sie [Ihre Erweiterungen im Projekt registriert](#register-extensions) haben, bevor Sie die Veröffentlichung durchführen. Projekte, für die eine Kompilierung erforderlich ist, müssen so erstellt werden, dass die Binärdateien bereitgestellt werden können. 
+In Version 2.x müssen Sie [Ihre Erweiterungen im Projekt registriert](#register-extensions) haben, bevor Sie die Veröffentlichung durchführen. Projekte, für die eine Kompilierung erforderlich ist, müssen so erstellt werden, dass die Binärdateien bereitgestellt werden können.
 
-### <a name="project-file-deployment"></a>Bereitstellung der Projektdatei  
+### <a name="project-file-deployment"></a>Bereitstellung der Projektdatei
 
 Bei der am häufigsten verwendeten Bereitstellungsmethode wird Core Tools zum Verpacken Ihres Funktions-App-Projekts, der Binärdateien und Abhängigkeiten sowie zum Bereitstellen des Pakets in Ihrer Funktions-App verwendet. Sie können [Ihre Funktionen optional direkt aus dem Bereitstellungspaket heraus ausführen](run-functions-from-deployment-package.md).
 
@@ -424,10 +424,10 @@ func azure functionapp publish <FunctionAppName>
 
 Mit diesem Befehl wird in eine vorhandene Funktionen-App in Azure veröffentlicht. Es tritt ein Fehler auf, wenn der `<FunctionAppName>` in Ihrem Abonnement nicht vorhanden ist. Informationen zum Erstellen einer Funktions-App über die Eingabeaufforderung oder ein Terminalfenster mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen einer Funktions-App für die serverlose Ausführung](./scripts/functions-cli-create-serverless.md).
 
-Der `publish`-Befehl lädt den Inhalt des Functions-Projektverzeichnisses hoch. Wenn Sie Dateien lokal löschen, werden sie mit dem Befehl `publish` nicht aus Azure gelöscht. Sie können Dateien in Azure löschen, indem Sie das [Kudu-Tool](functions-how-to-use-azure-function-app-settings.md#kudu) im [Azure-Portal] verwenden.  
+Der `publish`-Befehl lädt den Inhalt des Functions-Projektverzeichnisses hoch. Wenn Sie Dateien lokal löschen, werden sie mit dem Befehl `publish` nicht aus Azure gelöscht. Sie können Dateien in Azure löschen, indem Sie das [Kudu-Tool](functions-how-to-use-azure-function-app-settings.md#kudu) im [Azure-Portal] verwenden.
 
->[!IMPORTANT]  
-> Wenn Sie eine Funktions-App im Azure-Portal erstellen, verwendet sie standardmäßig Version 2.x der Functions-Laufzeit. Damit die Funktions-App Version 1.x der Laufzeit verwendet, befolgen Sie die Anweisungen unter [Run on version 1.x](functions-versions.md#creating-1x-apps) (Ausführen unter Version 1.x).  
+>[!IMPORTANT]
+> Wenn Sie eine Funktions-App im Azure-Portal erstellen, verwendet sie standardmäßig Version 2.x der Functions-Laufzeit. Damit die Funktions-App Version 1.x der Laufzeit verwendet, befolgen Sie die Anweisungen unter [Run on version 1.x](functions-versions.md#creating-1x-apps) (Ausführen unter Version 1.x).
 > Sie können die Runtimeversion für eine Funktions-App, die über Funktionen verfügt, nicht ändern.
 
 Die folgenden Optionen für die Projektveröffentlichung gelten für beide Versionen (1.x und 2.x):
@@ -460,7 +460,7 @@ Mit Functions können Sie Ihre Funktionsprojekt in einem benutzerdefinierten Lin
 func deploy
 ```
 
-Die folgenden Optionen für die Bereitstellung benutzerdefinierter Container sind verfügbar: 
+Die folgenden Optionen für die Bereitstellung benutzerdefinierter Container sind verfügbar:
 
 | Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |

@@ -11,12 +11,12 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 08/01/2018
-ms.openlocfilehash: f5555d9a60934529bf8fed6db6a18dd783f46075
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c172519984cce765217a713b276db5ccc8f67183
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297467"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558599"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Erstellen Ihrer ersten serverlosen App mit Azure Logic Apps und Azure Functions – Visual Studio
 
@@ -36,23 +36,21 @@ Zum Erstellen einer serverlosen App in Visual Studio benötigen Sie folgende Ele
 
 * [Azure Logic Apps-Tools für Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551) oder [Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio)
 
-  Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. 
-  Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten. 
+  Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
 
 * [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) zum lokalen Debuggen von Functions
 
 * Internetzugriff bei Verwendung des in Visual Studio eingebetteten Logik-App-Designers
 
-  Für den Designer ist eine Internetverbindung zum Erstellen von Ressourcen in Azure und zum Lesen der Eigenschaften und Daten von Connectors in Ihrer Logik-App erforderlich. 
-  Wenn Sie beispielsweise den Dynamics CRM Online-Connector verwenden, prüft der Designer Ihre CRM-Instanz auf verfügbare standardmäßige und benutzerdefinierte Eigenschaften.
+  Für den Designer ist eine Internetverbindung zum Erstellen von Ressourcen in Azure und zum Lesen der Eigenschaften und Daten von Connectors in Ihrer Logik-App erforderlich. Wenn Sie beispielsweise den Dynamics CRM Online-Connector verwenden, prüft der Designer Ihre CRM-Instanz auf verfügbare standardmäßige und benutzerdefinierte Eigenschaften.
 
 ## <a name="create-resource-group-project"></a>Erstellen eines Ressourcengruppenprojekts
 
 Erstellen Sie für Ihre serverlose App zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). In Azure erstellen Sie Ressourcen innerhalb einer Ressourcengruppe. Dabei handelt es sich um eine logische Sammlung, die Sie zum Organisieren, Verwalten und Bereitstellen von Ressourcen für eine gesamte App als einzelnes Objekt verwenden. Für eine serverlose App in Azure umfasst Ihre Ressourcengruppe Ressourcen sowohl für Azure Logic Apps als auch für Azure Functions. Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/resource-group-overview.md).
 
-1. Starten Sie Visual Studio, und melden Sie sich mit Ihrem Azure-Konto an. 
+1. Starten Sie Visual Studio, und melden Sie sich mit Ihrem Azure-Konto an.
 
-1. Wählen Sie im Menü **Datei** die Option **Neu** > **Projekt**. 
+1. Wählen Sie im Menü **Datei** die Option **Neu** > **Projekt**.
 
    ![Erstellen eines neuen Projekts in Visual Studio](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
@@ -60,26 +58,23 @@ Erstellen Sie für Ihre serverlose App zunächst ein [Azure-Ressourcengruppenpro
 
    Wenn die Kategorie **Cloud** oder das Projekt **Azure-Ressourcengruppe** nicht vorhanden ist, vergewissern Sie sich, dass Sie das Azure SDK für Visual Studio installiert haben.
 
-1. Geben Sie einen Namen und einen Speicherort für Ihr Projekt ein. Wählen Sie dann **OK** aus. 
+1. Geben Sie einen Namen und einen Speicherort für Ihr Projekt ein. Wählen Sie dann **OK** aus.
 
-   Visual Studio fordert sie auf, eine Vorlage auszuwählen. 
-   Sie können mit einer leeren Vorlage, „Logik-App“, oder einer anderen Vorlage beginnen. In diesem Beispiel wird allerdings eine Azure-Schnellstartvorlage zum Erstellen einer serverlosen App verwendet, die eine Logik-App und einen Aufruf einer Azure-Funktion enthält.
+   Visual Studio fordert sie auf, eine Vorlage auszuwählen. Sie können mit einer leeren Vorlage, „Logik-App“, oder einer anderen Vorlage beginnen. In diesem Beispiel wird allerdings eine Azure-Schnellstartvorlage zum Erstellen einer serverlosen App verwendet, die eine Logik-App und einen Aufruf einer Azure-Funktion enthält.
 
    Wenn Sie in Visual Studio nur eine Logik-App erstellen möchten, wählen Sie die Vorlage **Logik-App** aus. Diese Vorlage erstellt eine leere Logik-App, die im Logik-App-Designer geöffnet wird, ohne dass Sie Ihre Projektmappe in einer Azure-Ressourcengruppe vorab bereitstellen müssen.
 
-1. Wählen Sie unter **Vorlagen von diesem Speicherort anzeigen** die Option **Azure-Schnellstart (github/Azure/azure-quickstart-templates)** aus. 
+1. Wählen Sie unter **Vorlagen von diesem Speicherort anzeigen** die Option **Azure-Schnellstart (GitHub/Azure/azure-quickstart-templates)** aus.
 
-1. Geben Sie im Suchfeld „Logik-App“ als Filter ein, und wählen Sie die folgende serverlose Schnellstartvorlage und dann **OK** aus: **101-logic-app-and-function-app**
+1. Geben Sie im Suchfeld „Logik-App“ als Filter ein, wählen Sie die folgende serverlose Schnellstartvorlage aus, und klicken Sie auf **OK**: **101-logic-app-and-function-app**.
 
    ![Auswählen der Azure-Schnellstartvorlage](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
-   Visual Studio erstellt und öffnet eine Projektmappe für Ihr Ressourcengruppenprojekt. 
-   Die von Ihnen ausgewählte Schnellstartvorlage erstellt in Ihrem Ressourcengruppenprojekt die Bereitstellungsvorlage `azuredeploy.json`. 
-   Diese Bereitstellungsvorlage enthält die Definition für eine einfache Logik-App, die bei einer HTTP-Anforderung ausgelöst wird, eine Azure-Funktion aufruft und das Ergebnis als HTTP-Antwort zurückgibt. 
+   Visual Studio erstellt und öffnet eine Projektmappe für Ihr Ressourcengruppenprojekt. Die von Ihnen ausgewählte Schnellstartvorlage erstellt in Ihrem Ressourcengruppenprojekt die Bereitstellungsvorlage `azuredeploy.json`. Diese Bereitstellungsvorlage enthält die Definition für eine einfache Logik-App, die bei einer HTTP-Anforderung ausgelöst wird, eine Azure-Funktion aufruft und das Ergebnis als HTTP-Antwort zurückgibt.
    
    ![Neue serverlose Lösung](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
-1. Als Nächstes müssen Sie Ihre Projektmappe in Azure bereitstellen, bevor Sie die Bereitstellungsvorlage öffnen und die Ressourcen für Ihre serverlose App überprüfen können. 
+1. Als Nächstes müssen Sie Ihre Projektmappe in Azure bereitstellen, bevor Sie die Bereitstellungsvorlage öffnen und die Ressourcen für Ihre serverlose App überprüfen können.
 
 ## <a name="deploy-your-solution"></a>Bereitstellen der Lösung
 
@@ -97,8 +92,7 @@ Bevor Sie Ihre Logik-App mit dem Logik-App-Designer in Visual Studio öffnen kö
 
    ![Bereitstellen von Namen für Ihre Logik-App und Funktions-App](./media/logic-apps-serverless-get-started-vs/logic-function-app-name-parameters.png)
 
-   Wenn Visual Studio mit der Bereitstellung in Ihrer angegebenen Ressourcengruppe beginnt, wird der Bereitstellungsstatus Ihrer Projektmappe im Visual Studio-Fenster **Ausgabe** angezeigt. 
-   Nach Abschluss der Bereitstellung ist Ihre Logik-App im Azure-Portal live.
+   Wenn Visual Studio mit der Bereitstellung in Ihrer angegebenen Ressourcengruppe beginnt, wird der Bereitstellungsstatus Ihrer Projektmappe im Visual Studio-Fenster **Ausgabe** angezeigt. Nach Abschluss der Bereitstellung ist Ihre Logik-App im Azure-Portal live.
 
 ## <a name="edit-logic-app-in-visual-studio"></a>Bearbeiten der Logik-App in Visual Studio
 
@@ -126,13 +120,13 @@ Ihre Bereitstellungsvorlage stellt alle in Ihrer Projektmappe aus dem Git-Reposi
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>Verwalten von Logik-Apps und Anzeigen des Ausführungsverlaufs
 
-Bei Logik-Apps, die in Azure bereits bereitgestellt wurden, können Sie weiterhin den Ausführungsverlauf bearbeiten, verwalten und anzeigen sowie diese Apps aus Visual Studio heraus deaktivieren. 
+Bei Logik-Apps, die in Azure bereits bereitgestellt wurden, können Sie weiterhin den Ausführungsverlauf bearbeiten, verwalten und anzeigen sowie diese Apps aus Visual Studio heraus deaktivieren.
 
-1. Öffnen Sie im Menü **Ansicht** in Visual Studio **Cloud-Explorer**. 
+1. Öffnen Sie im Menü **Ansicht** in Visual Studio **Cloud-Explorer**.
 
 1. Wählen Sie unter **Alle Abonnements** das Azure-Abonnement aus, das mit den zu verwaltenden Logik-Apps verknüpft ist. Wählen Sie dann **Übernehmen** aus.
 
-1. Wählen Sie unter **Logic Apps** Ihre Logik-App aus. Wählen Sie im Kontextmenü dieser App **Mit Logik-App-Editor öffnen** aus. 
+1. Wählen Sie unter **Logic Apps** Ihre Logik-App aus. Wählen Sie im Kontextmenü dieser App **Mit Logik-App-Editor öffnen** aus.
 
 Jetzt können Sie die bereits veröffentlichte Logik-App in Ihr Ressourcengruppenprojekt herunterladen. Obwohl Sie vielleicht eine Logik-App im Azure-Portal gestartet haben, können Sie diese App also weiterhin in Visual Studio importieren und verwalten. Weitere Informationen finden Sie unter [Verwalten von Logik-Apps mit Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 

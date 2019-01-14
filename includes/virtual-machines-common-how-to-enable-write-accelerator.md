@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b2733bed4418fdfcaefb20c04683cb6a229134e9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400216"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594280"
 ---
 # <a name="enable-write-accelerator"></a>Aktivieren der Schreibbeschleunigung
 
@@ -41,7 +41,7 @@ Für SAP-spezifische VM-Konfigurationen sollte das Aktivieren der Schreibbeschle
 Bei der Verwendung der Schreibbeschleunigung für einen Azure-Datenträger/eine Azure-VHD gelten folgende Einschränkungen:
 
 - Die Premium-Datenträgerzwischenspeicherung muss auf „Keine“ oder „Schreibgeschützt“ festgelegt werden. Alle anderen Zwischenspeicherungsmodi werden nicht unterstützt.
-- Momentaufnahmen eines Datenträgers, für den die Schreibbeschleunigung aktiviert ist, werden noch nicht unterstützt. Aufgrund dieser Einschränkung kann der Azure Backup-Dienst keine anwendungskonsistente Momentaufnahme aller Datenträger der VM erstellen.
+- Momentaufnahmen werden derzeit nicht für Datenträger mit aktivierter Schreibbeschleunigung unterstützt. Während der Sicherung schließt der Azure Backup-Dienst an die VM angefügte Datenträger mit aktivierter Schreibbeschleunigung automatisch aus.
 - Der beschleunigte Pfad wird nur für kleinere E/A-Größen (<=32 KiB) verwendet. In Workloadsituationen, bei denen Daten in einem Massenvorgang geladen oder die Transaktionsprotokollpuffer vor ihrer persistenten Speicherung stärker befüllt werden, wird für die auf Datenträger geschriebenen E/A-Vorgänge wahrscheinlich nicht der beschleunigte Pfad verwendet.
 
 Die Anzahl von Azure Storage Premium-VHDs pro VM, die von der Schreibbeschleunigung unterstützt werden können, ist begrenzt. Die aktuellen Limits lauten wie folgt:

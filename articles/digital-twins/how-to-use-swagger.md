@@ -1,21 +1,22 @@
 ---
-title: Grundlegendes zum Verwenden von Azure Digital Twins-Swagger | Microsoft-Dokumentation
-description: Verwenden von Azure Digital Twins-Swagger
+title: 'Referenz: Grundlegendes zum Verwenden von Azure Digital Twins-Swagger | Microsoft-Dokumentation'
+description: 'Referenzdokumentation: Grundlegendes zum Verwenden von Azure Digital Twins-Swagger'
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/31/2018
 ms.author: adgera
-ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624249"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975643"
 ---
-# <a name="use-azure-digital-twins-swagger"></a>Verwenden von Azure Digital Twins-Swagger
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenzdokumentation: Azure Digital Twins-Swagger
 
 Jede bereitgestellte Azure Digital Twins-Instanz enthält ihre eigene automatisch generierte Swagger-Referenzdokumentation.
 
@@ -34,19 +35,19 @@ Swagger stellt eine interaktive Zusammenfassung Ihrer API bereit. Dazu gehören:
 * Beispielantwortinformationen zum Überprüfen und Bestätigen von HTTP-Antworten
 * Fehlercodeinformationen
 
-Swagger ist ein hervorragendes Tool zur Unterstützung beim Entwickeln und Testen von Aufrufen, die an die Verwaltungs-API gesendet werden.
+Swagger ist ein praktisches Tool zur Unterstützung beim Entwickeln und Testen von Aufrufen, die an die Azure Digital Twins-Verwaltungs-APIs gesendet werden.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Referenzmaterial
 
-In automatisch generiertem Referenzmaterial werden wichtige Konzepte und Objektmodelle erläutert.
+Das automatisch generierte Swagger-Referenzmaterial enthält eine schnelle Übersicht über wichtige Konzepte, verfügbare Verwaltungs-API-Endpunkte und eine Beschreibung aller Objektmodelle, die Sie beim Entwickeln und Testen verwenden können.
 
 Eine präzise Zusammenfassung beschreibt die API.
 
 ![Swagger-Einstieg][1]
 
-Kern-API-Objektmodelle werden ebenfalls aufgelistet.
+Verwaltungs-API-Objektmodelle werden ebenfalls aufgelistet.
 
 ![Swagger-Modelle][2]
 
@@ -58,7 +59,7 @@ Die generierten Swaggerobjektmodelle eignen sich ideal zum Anzeigen aller verfü
 
 ## <a name="endpoint-summary"></a>Zusammenfassung der Endpunkte
 
-Swagger stellt auch eine umfassende Übersicht über alle Endpunkte bereit, die die API bilden.
+Swagger stellt auch eine umfassende Übersicht über alle Endpunkte bereit, aus denen die Verwaltungs-APIs bestehen.
 
 Für jeden aufgelisteten Endpunkt werden auch die erforderlichen Anforderungsinformationen aufgeführt. Dazu gehören:
 

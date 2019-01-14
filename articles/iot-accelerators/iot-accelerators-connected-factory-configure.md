@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Connected Factory-Topologie | Microsoft-Dokumentation
+title: 'Konfigurieren der Connected Factory-Topologie: Azure | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie die Topologie eines Soluction Accelerators für Connected Factory konfigurieren.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746978"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602272"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
 
@@ -85,7 +85,7 @@ Der folgende Ausschnitt zeigt die Gliederung der Konfigurationsdatei `ContosoTop
 }
 ```
 
-Die gemeinsamen Eigenschaften von `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>` und `<station_configuration>` lauten:
+Die gemeinsamen Eigenschaften von  `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>` und `<station_configuration>` lauten:
 
 * **Name** (Zeichenfolgentyp)
 
@@ -282,7 +282,7 @@ Die OEE/KPI-Zahlen für die Connected Factory-Simulation werden parametrisiert d
 * Die OPC UA-Knotenwerte, die in die Berechnung einbezogen werden sollen.
 * Art der Berechnung der Zahl aus den Telemetriewerten.
 
-Connected Factory verwendet die von http://www.oeefoundation.org veröffentlichten OEE-Formeln.
+Connected Factory verwendet die von https://www.oeefoundation.org veröffentlichten OEE-Formeln.
 
 OPC UA-Knotenobjekte in Stationen ermöglichen eine Kennzeichnung für die Verwendung in der OEE/KPI-Berechnung. Die Eigenschaft **Relevance** gibt an, für welche OEE/KPI-Zahl der OPC UA-Knoten verwendet werden soll. Die Eigenschaft **OpCode** definiert, wie der Wert in die Berechnung einbezogen wird.
 

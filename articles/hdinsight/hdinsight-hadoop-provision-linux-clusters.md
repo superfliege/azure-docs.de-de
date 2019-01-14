@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: e760b67c1b971613de6b21102687c8ffeb556ed8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ce39b431adfd333db1e771913ed28881a193b327
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386875"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790839"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -107,12 +107,12 @@ Sie müssen den Clusterstandort nicht explizit angeben: Der Cluster befindet sic
 
 ## <a name="storage-endpoints-for-clusters"></a>Speicherendpunkte für Cluster
 
-Obwohl eine lokale Installation von Hadoop das Hadoop Distributed File System (HDFS) für die Speicherung im Cluster verwendet, nutzen Sie in der Cloud Speicherendpunkte, die mit dem Cluster verbunden sind. HDInsight-Cluster verwenden entweder [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) oder [Blobs in Azure Storage](hdinsight-hadoop-use-blob-storage.md). Durch die Verwendung von Azure Storage oder Data Lake Store können Sie die HDInsight-Cluster für die Berechnung sicher löschen und gleichzeitig Ihre Daten beibehalten. 
+Obwohl eine lokale Installation von Hadoop das Hadoop Distributed File System (HDFS) für die Speicherung im Cluster verwendet, nutzen Sie in der Cloud Speicherendpunkte, die mit dem Cluster verbunden sind. HDInsight-Cluster verwenden entweder [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) oder [Blobs in Azure Storage](hdinsight-hadoop-use-blob-storage.md). Durch Verwendung von Azure Storage oder Data Lake Storage können Sie die für Berechnungen verwendeten HDInsight-Cluster sicher löschen und gleichzeitig Ihre Daten beibehalten. 
 
 > [!WARNING]  
 > Die Verwendung eines zusätzlichen Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
 
-Während der Konfiguration geben Sie für den Standardspeicherendpunkt einen Blobcontainer für ein Azure Storage-Konto oder eine Data Lake Store-Instanz an. Der Standardspeicher enthält Anwendungs- und Systemprotokolle. Optional können Sie zusätzliche verknüpfte Azure Storage- und Data Lake Store-Konten angeben, auf die der Cluster zugreifen kann. Der HDInsight-Cluster und die abhängigen Speicherkonten müssen sich an demselben Azure-Standort befinden.
+Während der Konfiguration geben Sie für den Standardspeicherendpunkt einen Blobcontainer für ein Azure-Speicherkonto oder eine Data Lake Storage-Instanz an. Der Standardspeicher enthält Anwendungs- und Systemprotokolle. Optional können Sie zusätzliche verknüpfte Azure-Speicherkonten und Data Lake Storage-Konten angeben, auf die der Cluster zugreifen kann. Der HDInsight-Cluster und die abhängigen Speicherkonten müssen sich an demselben Azure-Standort befinden.
 
 ![Clusterspeichereinstellungen: HDFS-kompatible Speicherendpunkte](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
@@ -247,7 +247,7 @@ Ein Beispiel für die Verwendung von zwei Clustertypen in einem virtuellen Azure
 
 ## <a name="troubleshoot-access-control-issues"></a>Beheben von Problemen mit der Zugriffssteuerung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-hadoop-create-linux-clusters-portal.md) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,93 +4,120 @@ description: Hier finden Sie Antworten auf häufig gestellte Fragen zur Funktion
 services: backup
 author: trinadhk
 manager: shreeshd
-keywords: Azure VM Backup, Azure VM Restore, Sicherungsrichtlinie
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: ff97d164ee8b2059e1b46377067041d6c381052b
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 6ec178a8cb457973f39ea2dd929a3486a7696c55
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753966"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972191"
 ---
-# <a name="questions-about-the-azure-vm-backup-service"></a>Fragen zum Azure VM Backup-Dienst
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten von Azure VM Backup vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
+# <a name="frequently-asked-questions-azure-backup"></a>Häufig gestellte Fragen zu Azure Backup
 
-## <a name="configure-backup"></a>Konfigurieren der Sicherung
-### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>Unterstützen Recovery Services-Tresore klassische virtuelle Computer oder Resource Manager-basierte virtuelle Computer? <br/>
-Recovery Services-Tresore unterstützen beide Modelle.  Sie können einen klassischen virtuellen Computer oder einen virtuellen Resource Manager-Computer in einem Recovery Services-Tresor sichern.
+In diesem Artikel werden häufig gestellte Fragen zum [Azure Backup](backup-introduction-to-azure-backup.md)-Dienst beantwortet.
 
-### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Welche Konfigurationen werden von der Azure-VM-Sicherung nicht unterstützt?
-Informationen zu unterstützten Betriebssystemen finden Sie [hier](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup). Informationen zu Einschränkungen beim Sichern eines virtuellen Computers finden Sie [hier](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
+## <a name="general-questions"></a>Allgemeine Fragen
 
-### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>Warum wird mein virtueller Computer im Sicherungskonfigurations-Assistenten nicht angezeigt?
-Im Sicherungskonfigurations-Assistenten werden nur virtuelle Computer aufgeführt, die folgende Voraussetzungen erfüllen:
-  * Sie sind noch nicht geschützt: Navigieren Sie zum Ermitteln des Sicherungsstatus eines virtuellen Computers zum VM-Blatt, und überprüfen Sie über das Einstellungsmenü des Blatts den Sicherungsstatus. Weitere Informationen zum Überprüfen des Sicherungsstatus eines virtuellen Computers finden Sie [hier](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu).
-  * Er gehört zur gleichen Region wie der virtuelle Computer.
+
+### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Welche Azure-VMs können mithilfe von Azure Backup gesichert werden?
+[Lesen](backup-azure-arm-vms-prepare.md#before-you-start) Sie sich die Informationen zu unterstützten Betriebssystemen und zu Einschränkungen durch.
+
+
 
 ## <a name="backup"></a>Backup
-### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>Wird bei bedarfsbasierten Sicherungsaufträgen der gleiche Aufbewahrungszeitplan verwendet wie bei geplanten Sicherungen?
-Nein. Bei einem bedarfsbasierten Sicherungsauftrag muss die gewünschte Aufbewahrungsdauer angegeben werden. Bei Aufträgen, die über das Portal ausgelöst werden, beträgt die Aufbewahrungsdauer standardmäßig 30 Tage.
+
+### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Wird bei bedarfsbasierten Sicherungsaufträgen der gleiche Aufbewahrungszeitplan verwendet wie bei geplanten Sicherungen?
+ Nein. Bei einem bedarfsbasierten Sicherungsauftrag muss die gewünschte Aufbewahrungsdauer angegeben werden. Bei Aufträgen, die über das Portal ausgelöst werden, beträgt die Aufbewahrungsdauer standardmäßig 30 Tage.
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Ich habe kürzlich für einige virtuelle Computer Azure Disk Encryption aktiviert. Funktionieren meine Sicherungen auch weiterhin?
-Sie müssen dem Azure Backup-Dienst Zugriff auf Key Vault gewähren. Die erforderlichen Berechtigungen können Sie über PowerShell erteilen. Führen Sie dazu die Schritte des Abschnitts *Aktivieren der Sicherung* in der [PowerShell-Dokumentation](backup-azure-vms-automation.md) aus.
+Sie müssen Azure Backup Zugriff auf Key Vault gewähren. Geben Sie die Berechtigungen wie im Abschnitt zum **Aktivieren der Sicherung** in der Dokumentation zu [Azure Backup PowerShell](backup-azure-vms-automation.md) in PowerShell ein.
 
-### <a name="i-migrated-disks-of-a-vm-to-managed-disks-will-my-backups-continue-to-work"></a>Ich habe Datenträger eines virtuellen Computers zu verwalteten Datenträgern gemacht. Funktionieren meine Sicherungen auch weiterhin?
-Ja. Sicherungen funktionieren reibungslos, und die Sicherung muss nicht neu konfiguriert werden.
+### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>Ich habe VM-Datenträger zu verwalteten Datenträgern migriert. Funktionieren meine Sicherungen auch weiterhin?
+Ja, Sicherungen funktionieren reibungslos. Sie müssen keine Neukonfiguration vornehmen.
+
+### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Warum wird mein virtueller Computer im Assistenten für die Sicherungskonfiguration nicht angezeigt?
+Der Assistent zeigt nur VMs an, die sich in derselben Region wie der Tresor befinden und noch nicht gesichert wurden.
+
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Mein virtueller Computer ist heruntergefahren. Soll eine bedarfsgesteuerte oder geplante Sicherung durchgeführt werden?
-Ja. Selbst wenn ein Computer heruntergefahren ist, funktionieren Sicherungen, und der Wiederherstellungspunkt ist als absturzkonsistent gekennzeichnet. Weitere Informationen finden Sie in [diesem Artikel](backup-azure-vms-introduction.md#how-does-azure-back-up-virtual-machines) im Abschnitt zu Datenkonsistenz.
+Ja. Sicherungen werden ausgeführt, wenn ein Computer heruntergefahren wird. Der Wiederherstellungspunkt ist als absturzkonsistent gekennzeichnet.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Kann ich einen aktuellen Sicherungsauftrag abbrechen?
-Ja. Sie können einen Sicherungsauftrag in der Phase „Momentaufnahme wird erstellt...“ abbrechen. **Ein Auftrag kann nicht abgebrochen werden, wenn eine Datenübertragung von der Momentaufnahme stattfindet**.
+Ja. Sie können einen Sicherungsauftrag während des Status **Momentaufnahme wird erstellt...** abbrechen. Ein Auftrag kann nicht abgebrochen werden, wenn eine Datenübertragung von der Momentaufnahme stattfindet.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Ich habe für meine gesicherten, verwalteten Datenträger-VMs die Ressourcengruppensperre aktiviert. Funktionieren meine Sicherungen auch weiterhin?
-Wenn der Benutzer die Ressourcengruppe sperrt, kann der Backup-Dienst die älteren Wiederherstellungspunkte nicht löschen. Aus diesem Grund fangen neue Backups an fehlzuschlagen, da ein Grenzwert von maximal 18 Wiederherstellungspunkten gilt, der vom Back-End vorgegeben wird. Wenn Ihre Sicherungen nach der Ressourcengruppensperre mit einem internen Fehler fehlschlagen, befolgen Sie diese [Schritte zum Entfernen der Wiederherstellungspunktsammlung](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal).
+Wenn Sie die Ressourcengruppe sperren, kann der Azure Backup-Dienst die älteren Wiederherstellungspunkte nicht löschen.
+- Da maximal 18 Wiederherstellungspunkte vorhanden sein können, treten bei neuen Sicherungen Fehler auf.
+- Wenn Sicherungen nach der Sperre mit einem internen Fehler fehlschlagen, [befolgen Sie diese Schritte](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) zum Entfernen der Sammlung von Wiederherstellungspunkten.
 
-### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Berücksichtigt die Sicherungsrichtlinie die Sommerzeit (Daylight Saving Time, DST)?
-Nein. Denken Sie daran, dass Datum und Uhrzeit auf dem lokalen Computer in Ihrer lokalen Uhrzeit und unter Berücksichtigung der Sommerzeit angezeigt werden. Daher kann die für geplante Sicherungen konfigurierte Zeit aufgrund der DST von Ihrer lokalen Uhrzeit abweichen.
+### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Berücksichtigt die Sicherungsrichtlinie die Sommerzeit?
+ Nein. Das Datum und die Uhrzeit auf Ihrem lokalen Computer stimmt mit der aktuellen lokalen Zeit überein (Sommerzeit berücksichtigt). Die festgelegte Zeit für geplante Sicherungen kann aufgrund der Sommerzeit von der lokalen Zeit abweichen.
 
-### <a name="maximum-of-how-many-data-disks-can-i-attach-to-a-vm-to-be-backed-up-by-azure-backup"></a>Wie viele Datenträger kann ich zur Sicherung mit Azure Backup maximal an einen virtuellen Computer anfügen?
-Azure Backup unterstützt jetzt die Sicherung von virtuellen Computern mit bis zu 16 Datenträgern. Führen Sie zur Unterstützung von 16 Datenträgern ein [Upgrade auf Azure VM-Sicherungsstapel V2](backup-upgrade-to-vm-backup-stack-v2.md) durch. Alle virtuellen Computer mit aktiviertem Schutz ab 24. September 2018 werden unterstützt.
+### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Wie viele Datenträger kann ich an eine VM anfügen, die durch Azure Backup gesichert wird?
+Azure Backup kann VMs mit bis zu 16 Datenträgern sichern. Die Unterstützung von 16 Datenträgern wird in der [aktuellen Version](backup-upgrade-to-vm-backup-stack-v2.md) von Azure VM Backup Stack V2 bereitgestellt.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Unterstützt Azure Backup verwaltete SSD Standard-Datenträger?
-Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Dabei handelt es sich um eine neue Art von dauerhaftem Speicher für virtuelle Microsoft Azure-Computer. Dieser wird für verwaltete Datenträger im [Azure VM-Sicherungsstapel V2](backup-upgrade-to-vm-backup-stack-v2.md) unterstützt.
+Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Verwaltete SSD-Datenträger stellen eine neue Art dauerhaften Speichers für Azure-VMs bereit. Die Unterstützung von verwalteten SSD-Datenträgern wird in der [aktuellen Version](backup-upgrade-to-vm-backup-stack-v2.md) von Azure Backup Stack V2 bereitgestellt.
+
+### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Können ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
+Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen. Der Ausschluss von Datenträgern für VMs mit Datenträgern mit aktivierter Schreibbeschleunigung wird nur für Abonnements unterstützt, für die ein Upgrade auf Azure VM Backup Stack V2 durchgeführt wurde. Informationen zum Upgrade auf Azure VM Backup Stack V2 finden Sie in diesem [Artikel](backup-upgrade-to-vm-backup-stack-v2.md). Dieses Feature ist aktuell in folgenden Regionen verfügbar: Japan, Osten; Europa, Norden; Asien, Südosten; USA, Osten; USA, Westen 2; Europa, Westen und USA, Osten 2.
+
+
+### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Ich verfüge über eine VM mit Datenträgern mit Schreibbeschleunigung und installiertem SAP HANA. Wie kann ich diese sichern?
+Azure Backup kann den Datenträger mit aktivierter Schreibbeschleunigung nicht sichern, kann ihn aber von der Sicherung ausschließen. Die Sicherung bietet jedoch keine Datenbankkonsistenz, da die Informationen auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht gesichert werden. Sie können Datenträger mit dieser Konfiguration sichern, wenn Sie eine Sicherung des Betriebssystemdatenträgers möchten, sowie Sicherungen von Datenträgern ohne aktivierte Schreibbeschleunigung durchführen.
+
+Ich verfügen über eine private Vorschau zu einer SAP HANA-Sicherung mit einer RPO von 15 Minuten. Diese ist ähnlich wie die Sicherung von SQL-Datenbank aufgebaut und verwendet die Schnittstelle „backInt“ für Drittanbieterlösungen, die durch SAP HANA zertifiziert sind. Wenn Sie an einer privaten Vorschau interessiert sind, schreiben Sie uns an ` AskAzureBackupTeam@microsoft.com ` eine E-Mail mit dem Betreff **Sign up for private preview for backup of SAP HANA in Azure VMs** (Registrierung für die private Vorschau zur Sicherung von SAP HANA in Azure-VMs).
+
 
 ## <a name="restore"></a>Restore
-### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>Wann sollte ich Datenträger wiederherstellen und wann den gesamten virtuellen Computer?
-Bei der vollständigen Wiederherstellung eines virtuellen Azure-Computers handelt es sich gewissermaßen um eine Schnellerstellungsoption. Die VM-Wiederherstellungsoption ändert die Namen von Datenträgern, von Containern, die von diesen Datenträgern verwendet werden, öffentlichen IP-Adressen und Namen von Netzwerkschnittstellen. Die Änderung ist erforderlich, um die Eindeutigkeit von Ressourcen beizubehalten, die während der Erstellung eines virtuellen Computers erstellt werden. Sie fügt jedoch nicht den virtuellen Computer der Verfügbarkeitsgruppe hinzu.
 
-Die Datenträgerwiederherstellung sollte in folgenden Fällen verwendet werden:
-  * Zum Anpassen des virtuellen Computers, der auf der Grundlage einer Zeitpunktkonfiguration erstellt wird (beispielsweise, um die Größe zu ändern)
-  * Zum Hinzufügen von Konfigurationen, die zum Zeitpunkt der Sicherung nicht vorhanden waren
-  * Zum Steuern der Namenskonvention für erstellte Ressourcen
-  * Zum Hinzufügen des virtuellen Computers zu einer Verfügbarkeitsgruppe
-  * Für eine beliebige andere Konfiguration, die nur über PowerShell/eine deklarative Vorlagendefinition erreicht werden kann
+### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Wie entscheide ich, ob ich nur Datenträger oder eine vollständige VM wiederherstelle?
+Bei der Wiederherstellung einer VM handelt es sich gewissermaßen um eine Schnellerstellungsoption für eine Azure-VM. Diese Option ändert die Namen von Datenträgern, von Containern, die von den Datenträgern verwendet werden, von öffentlichen IP-Adressen und Netzwerkschnittstellen. Die Änderung behält bei der Erstellung einer VM eindeutige Ressourcen bei. Die VM wird nicht zu einer Verfügbarkeitsgruppe hinzugefügt.
 
-### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>Kann ich Sicherungen einer VM eines nicht verwalteten Datenträgers zur Wiederherstellung verwenden, nachdem ich meine Datenträger zu verwalteten Datenträgern upgegradet habe?
-Ja, Sie können Sicherungen verwenden, die vor der Migration von nicht verwalteten zu verwalteten Datenträgern erstellt wurden. Ein Auftrag zum Wiederherstellen einer VM erstellt standardmäßig eine VM mit nicht verwalteten Datenträgern. Sie können die Funktion „Datenträger wiederherstellen“ verwenden, um Datenträger wiederherzustellen. Diese können Sie verwenden, um eine VM auf verwalteten Datenträgern zu erstellen.
+Sie können die Option zur Wiederherstellung eines Datenträgers verwenden, wenn Sie ...
+  * ...die VM, die erstellt wird, anpassen möchten. Zum Beispiel, wenn Sie die Größe ändern möchten.
+  * ...Konfigurationseinstellungen hinzufügen möchten, die zur Zeit der Sicherung nicht vorhanden waren.
+  * ...die Namenskonvention für Ressourcen steuern möchten, die erstellt werden.
+  * ...die VM zu einer Verfügbarkeitsgruppe hinzufügen möchten.
+  * ...eine andere Einstellung hinzufügen möchten, die mithilfe von PowerShell oder einer Vorlage konfiguriert werden muss.  w
 
-### <a name="what-is-the-procedure-to-restore-a-vm-to-a-restore-point-taken-before-the-conversion-from-unmanaged-to-managed-disks-was-done-for-a-vm"></a>Wie wird eine VM auf einem Wiederherstellungspunkt wiederhergestellt, bevor die Konvertierung von nicht verwalteten zu verwalteten Datenträgern für eine VM durchgeführt wurde?
-In diesem Szenario erstellt standardmäßig ein Auftrag zum Wiederherstellen einer VM eine VM mit nicht verwalteten Datenträgern. So erstellen Sie einen virtuellen Computer mit verwalteten Datenträgern:
-1. [Wiederherstellen von nicht verwalteten Datenträgern](tutorial-restore-disk.md#restore-a-vm-disk)
-2. [Konvertieren der wiederhergestellten Datenträger in verwaltete Datenträger](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
-3. [Erstellen eines virtuellen Computers mit verwalteten Datenträgern](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
-Informationen zu PowerShell-Cmdlets finden Sie [hier](backup-azure-vms-automation.md#restore-an-azure-vm).
+### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>Kann ich Sicherungen nicht verwalteter VM-Datenträger wiederherstellen, nachdem ich ein Upgrade auf verwaltete Datenträger durchgeführt habe?
+Ja, Sie können Sicherungen verwenden, die erstellt wurden, bevor Datenträger von nicht verwaltet auf verwaltet umgestellt wurden.
+- Standardmäßig wird bei einem VM-Wiederherstellungsauftrag eine nicht verwaltete VM erstellt.
+- Jedoch können Sie Datenträger wiederherstellen und zum Erstellen einer verwalteten VM verwenden.
 
-### <a name="can-i-restore-the-vm-if-my-vm-is-deleted"></a>Kann ich den virtuellen Computer wiederherstellen, falls mein virtueller Computer gelöscht wird?
-Ja. Die Lebenszyklen eines virtuellen Computers und des entsprechenden Sicherungselements unterscheiden sich. Selbst wenn Sie den virtuellen Computer löschen, können Sie daher das entsprechende Sicherungselement im Recovery Services-Tresor aufrufen und mithilfe eines der Wiederherstellungspunkte eine Wiederherstellung auslösen.
+### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Wie kann ich eine VM auf einen Punkt vor der Migration der VM zu verwalteten Datenträgern wiederherstellen?
+Standardmäßig wird bei einem VM-Wiederherstellungsauftrag eine VM mit nicht verwalteten Datenträgern erstellt. So erstellen Sie einen virtuellen Computer mit verwalteten Datenträgern:
+1. [Stellen Sie wieder her auf nicht verwaltete Datenträger](tutorial-restore-disk.md#restore-a-vm-disk).
+2. [Konvertieren Sie die wiederhergestellten Datenträger in verwaltete Datenträger](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
+3. [Erstellen Sie eine VM mit verwalteten Datenträgern](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+
+[Hier](backup-azure-vms-automation.md#restore-an-azure-vm) finden Sie weitere Informationen dazu, wie Sie diese Schritte in PowerShell ausführen.
+
+### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Kann ich die VM wiederherstellen, die gelöscht wurde?
+Ja. Selbst wenn Sie die VM gelöscht haben, können Sie diese über das entsprechende Sicherungselement im Tresor mithilfe eines Wiederherstellungspunkts wiederherstellen.
+
+### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>Wie wird eine VM in dieselben Verfügbarkeitsgruppen wiederhergestellt?
+Bei Azure-VMs mit verwalteten Datenträgern ist die Wiederherstellung in Verfügbarkeitsgruppen durch eine Option in der Vorlage beim Wiederherstellen als verwaltete Datenträger möglich. Diese Vorlage verfügt über den Eingabeparameter **Verfügbarkeitsgruppen**.
+
+### <a name="how-do-we-get-faster-restore-performances"></a>Wie erreichen ich bei Wiederherstellungen eine schnellere Leistung?
+Es wird empfohlen, auf VM Backup Stack V2 und das [Instant Restore-Feature](backup-upgrade-to-vm-backup-stack-v2.md) (sofortige Wiederherstellung) umzusteigen, um eine schnellere Wiederherstellungsleistung zu erreichen.
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
-### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Was passiert, wenn ich eine Sicherungsrichtlinie für VMs ändere?
-Wenn eine neue Richtlinie für VMs angewendet wird, werden der Zeitplan und die Aufbewahrung der neuen Richtlinie beachtet. Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren. Bei einer Verkürzung der Aufbewahrung werden sie zum Löschen im Rahmen der nächsten Bereinigung markiert und demgemäß gelöscht.
 
-### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Wie kann ich eine VM, die in Azure Backup registriert ist, zwischen Ressourcengruppen verschieben?
-Führen Sie die folgenden Schritte aus, um die gesicherte VM erfolgreich in die Zielressourcengruppe zu verschieben:
+### <a name="what-happens-if-i-modify-a-backup-policy"></a>Was geschieht, wenn ich eine Sicherungsrichtlinie ändere?
+Die VM wird unter Verwendung der Zeitplan- und Aufbewahrungseinstellungen in der geänderten oder neuen Richtlinie gesichert.
+
+- Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert und gemäß der neuen Richtlinie aufbewahrt.
+- Bei einer Verkürzung der Aufbewahrung werden Wiederherstellungspunkte zum Löschen im Rahmen der nächsten Bereinigung markiert und dementsprechend gelöscht.
+
+### <a name="how-do-i-move-a-vm-backed-up-by-azure-backup-to-a-different-resource-group"></a>Wie verschiebe ich eine VM, die durch Azure Backup gesichert wurde, in eine andere Ressourcengruppe?
+
 1. Halten Sie die Sicherung vorübergehend an, und bewahren Sie Sicherungsdaten auf.
 2. Verschieben Sie die VM in die Zielressourcengruppe.
-3. Schützen Sie sie erneut mit demselben oder einem neuen Tresor.
+3. Aktivieren Sie die Sicherung erneut im gleichen oder einem neuen Tresor.
 
-Benutzer können eine Wiederherstellung mithilfe der verfügbaren Wiederherstellungspunkte durchführen, die vor dem Verschiebevorgang erstellt wurden.
+Sie können eine Wiederherstellung der VM mithilfe der verfügbaren Wiederherstellungspunkte durchführen, die vor dem Verschiebevorgang erstellt wurden.

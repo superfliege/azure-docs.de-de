@@ -9,24 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 3da4d6ffe8660c490d39f223dff105ed126fa10b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/03/2019
+ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283116"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033807"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
-Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem logischen Server oder aller Datenbanken in einer verwalteten Instanz in eine andere Region verwalten können (derzeit für verwaltete Instanzen als öffentliche Vorschauversion verfügbar). Hierbei wird die gleiche zugrunde liegende Technologie wie bei der [aktiven Georeplikation](sql-database-active-geo-replication.md) verwendet. Sie können ein Failover manuell initiieren, oder Sie können es mithilfe einer benutzerdefinierten Richtlinie an den SQL-Datenbank-Dienst übertragen. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Autofailover-Gruppen mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Primäre und sekundäre Server für die Datenbanken in der Failovergruppe müssen sich im selben Abonnement befinden. Autofailover-Gruppen unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.
+Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem logischen Server oder aller Datenbanken in einer verwalteten Instanz in eine andere Region verwalten können (derzeit für verwaltete Instanzen als öffentliche Vorschauversion verfügbar). Hierbei wird die gleiche zugrunde liegende Technologie wie bei der [aktiven Georeplikation](sql-database-active-geo-replication.md) verwendet. Sie können ein Failover manuell initiieren oder basierend auf einer benutzerdefinierten Richtlinie an den SQL-Datenbank-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Primäre und sekundäre Server für die Datenbanken in der Failovergruppe müssen sich im selben Abonnement befinden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.
 
 > [!NOTE]
 > Wenn Sie mit einzelnen oder in einem Pool zusammengefassten Datenbanken auf einem logischen Server arbeiten und mehrere sekundäre Datenbanken in derselben oder in verschiedenen Regionen nutzen möchten, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md).
 
-Wenn Sie Autofailover-Gruppen mit einer Richtlinie für automatisches Failover verwenden, führt jeder Ausfall, der eine oder mehrere der Datenbanken in der Gruppe betrifft, zu einem automatischen Failover. Darüber hinaus bieten Autofailover-Gruppen Lese-/Schreib-Listenerendpunkte, die während eines Failovers unverändert bleiben. Sowohl bei manueller als auch automatischer Failoveraktivierung schaltet das Failover alle sekundären Datenbanken in der Gruppe zu primären um. Nach Abschluss des Datenbankfailovers wird der DNS-Eintrag automatisch aktualisiert, um die Endpunkte in die neue Region umzuleiten. Die spezifischen RPO- und RTO-Daten finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
+Wenn Sie Autofailover-Gruppen mit einer Richtlinie für automatisches Failover verwenden, führt jeder Ausfall, der eine oder mehrere der Datenbanken in der Gruppe betrifft, zu einem automatischen Failover. Darüber hinaus bieten Gruppen für automatisches Failover Lese-/Schreib-Listenerendpunkte, die während eines Failovers unverändert bleiben. Sowohl bei manueller als auch automatischer Failoveraktivierung schaltet das Failover alle sekundären Datenbanken in der Gruppe zu primären um. Nach Abschluss des Datenbankfailovers wird der DNS-Eintrag automatisch aktualisiert, um die Endpunkte in die neue Region umzuleiten. Die spezifischen RPO- und RTO-Daten finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
 
 Wenn Sie Autofailover-Gruppen mit einer Richtlinie für automatisches Failover verwenden, führt jeder Ausfall, der Datenbanken auf dem logischen Server oder in der verwalteten Instanz betrifft, zu einem automatischen Failover. Sie können Autofailover-Gruppen über folgende Komponenten verwalten:
 
@@ -42,7 +42,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Failovergruppe**
 
-  Eine Failovergruppe ist eine Gruppe von Datenbanken, die von einem einzelnen logischen Server oder innerhalb einer einzelnen verwalteten Instanz verwaltet werden und für die als Einheit ein Failover in eine andere Region durchgeführt werden kann, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind.
+  Eine Failovergruppe ist eine Gruppe von Datenbanken, die von einem einzelnen logischen Server oder innerhalb einer einzelnen verwalteten Instanz verwaltet werden. Diese Datenbanken sind eine Einheit, für die ein Failover in eine andere Region durchgeführt werden kann, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind.
 
   - **Logische Server**
 
@@ -81,7 +81,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Nur-Lese-Failovergruppenlistener**
 
-  Ein DNS CNAME-Eintrag, der auf den Lese-/Schreib-Listener verweist, der wiederum auf die URL der sekundären Datenbank verweist. Er ermöglicht den schreibgeschützten SQL-Anwendungen das transparente Herstellen einer Verbindung mit der sekundären Datenbank unter Verwendung der angegebenen Regeln für den Lastenausgleich.
+  Ein DNS CNAME-Eintrag, der auf den schreibgeschützten Listener verweist, der wiederum auf die URL der sekundären Datenbank verweist. Er ermöglicht den schreibgeschützten SQL-Anwendungen das transparente Herstellen einer Verbindung mit der sekundären Datenbank unter Verwendung der angegebenen Regeln für den Lastenausgleich.
 
   - **DNS CNAME-Eintrag des logischen Servers für Nur-Lese-Listener**
 
@@ -175,7 +175,7 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
   Beim Erstellen einer neuen Instanz wird automatisch eine eindeutige ID als DNS-Zone generiert und in den DNS-Instanznamen eingefügt. Ein Zertifikat mit mehreren Domänen (SAN) für diese Instanz wird mit dem SAN-Feld in der Form `zone_id.database.windows.net` bereitgestellt. Dieses Zertifikat kann zum Authentifizieren der Clientverbindungen mit einer Instanz in der gleichen DNS-Zone verwendet werden. Um eine unterbrechungsfreie Verbindung mit der primären Instanz nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre Instanz in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre Instanz verwendet. Dazu wird ein optionaler Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben.
 
-  Weitere Informationen zum Erstellen der sekundären Instanz in der gleichen DNS-Zone wie die primäre Instanz finden Sie unter [Verwalten von Failovergruppen mit verwalteten Instanzen (Vorschau)](#managing-failover-groups-with-managed-instances-preview).
+  Weitere Informationen zum Erstellen der sekundären Instanz in der gleichen DNS-Zone wie die primäre Instanz finden Sie unter [Verwalten von Failovergruppen mit verwalteten Instanzen (Vorschau)](#powershell-managing-failover-groups-with-managed-instances-preview).
 
 - **Aktivieren des Replikationsdatenverkehrs zwischen zwei Instanzen**
 
@@ -201,9 +201,9 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
   > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `failover-group-name.zone_id.database.windows.net`.
   > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `failover-group-name.secondary.zone_id.database.windows.net`.
 
-- **Vorbereiten auf die Beeinträchtigung der Leistung**
+- **Vorbereitung auf die Beeinträchtigung der Leistung**
 
-  Die SQL-Failoverentscheidung ist unabhängig vom Rest der Anwendung oder der anderen verwendeten Dienste. Die Anwendung kann mit einigen Komponenten in einer Region und anderen in einer anderen „vermischt“ werden. Um die Beeinträchtigung zu vermeiden, stellen Sie redundante Anwendungsbereitstellung in der DR-Region sicher, und befolgen Sie diese [Richtlinien für die Netzwerksicherheit](#Failover groups-and-network-security).
+  Die SQL-Failoverentscheidung ist unabhängig vom Rest der Anwendung oder der anderen verwendeten Dienste. Die Anwendung kann mit einigen Komponenten in einer Region und anderen in einer anderen „vermischt“ werden. Um die Beeinträchtigung zu vermeiden, stellen Sie redundante Anwendungsbereitstellung in der DR-Region sicher, und befolgen Sie diese [Richtlinien für die Netzwerksicherheit](#failover-groups-and-network-security).
 
 - **Vorbereiten auf Datenverluste**
 
@@ -284,7 +284,7 @@ Informationen zur Verwendung der Point-in-Time-Wiederherstellung mit Failovergru
 
 ## <a name="programmatically-managing-failover-groups"></a>Programmgesteuertes Verwalten von Failovergruppen
 
-Wie bereits zuvor erwähnt, können Autofailover-Gruppen und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md).
+Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md).
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: Verwalten eines Failovers von SQL-Datenbanken mit einzelnen Datenbanken und Pools für elastische Datenbanken
 
@@ -309,14 +309,14 @@ Wie bereits zuvor erwähnt, können Autofailover-Gruppen und aktive Georeplikati
 1. Aktualisieren Sie das PowerShellGet-Modul auf Version 1.6.5 (oder die neueste Vorschauversion). Siehe [Website zur PowerShell-Vorschauversion](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
 
    ```Powershell
-      install-module powershellget -MinimumVersion 1.6.5 -force
+      install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. Führen Sie in einem neuen PowerShell-Fenster die folgenden Befehle aus:
 
    ```Powershell
-      import-module powershellget
-      get-module powershellget #verify version is 1.6.5 (or newer)
+      import-module PowerShellGet
+      get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
       import-module azurerm.sql
    ```
@@ -336,7 +336,7 @@ Wie bereits zuvor erwähnt, können Autofailover-Gruppen und aktive Georeplikati
 | API | BESCHREIBUNG |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Entfernt die Failovergruppe vom Server. |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Entfernt die Failovergruppe vom Server |
 | [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
 | [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
 | [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Ruft eine Failovergruppe ab. |
@@ -349,7 +349,7 @@ Wie bereits zuvor erwähnt, können Autofailover-Gruppen und aktive Georeplikati
 | API | BESCHREIBUNG |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/instancefailovergroups/delete) | Entfernt die Failovergruppe vom Server. |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Entfernt die Failovergruppe vom Server |
 | [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
 | [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
 | [Get Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Ruft eine Failovergruppe ab. |

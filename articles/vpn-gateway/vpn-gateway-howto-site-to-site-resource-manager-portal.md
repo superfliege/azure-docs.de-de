@@ -1,18 +1,18 @@
 ---
-title: 'Herstellen einer Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk: Site-to-Site-VPN: Portal | Microsoft-Dokumentation'
+title: 'Verbinden Ihres lokalen Netzwerks mit einem virtuellen Azure-Netzwerk: Site-to-Site-VPN: Portal | Microsoft-Dokumentation'
 description: Schritte zum Erstellen einer IPsec-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet. Anhand dieser Schritte können Sie über das Portal eine standortübergreifende Site-to-Site-VPN Gateway-Verbindung erstellen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: dd29b4af85826e350e116b31fa53031aacaba067
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457118"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651638"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -35,27 +35,27 @@ Eine Site-to-Site-VPN-Gateway-Verbindung wird verwendet, um Ihr lokales Netzwerk
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
 * Achten Sie darauf, dass Sie ein kompatibles VPN-Gerät nutzen (und über eine Person verfügen, die es konfigurieren kann). Weitere Informationen zu kompatiblen VPN-Geräten und zur Gerätekonfiguration finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md).
-* Vergewissern Sie sich, dass Sie über eine externe öffentliche IPv4-Adresse für Ihr VPN-Gerät verfügen. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
+* Vergewissern Sie sich, dass Sie über eine externe öffentliche IPv4-Adresse für Ihr VPN-Gerät verfügen.
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten. 
 
 ### <a name="values"></a>Beispielwerte
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen. Weitere Informationen zu Gatewayeinstellungen im Allgemeinen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-* **VNET-Name:** TestVNet1
+* **VNet-Name:** TestVNet1
 * **Adressraum:** 10.1.0.0/16
-* **Abonnement:** Das zu verwendende Abonnement
+* **Abonnement:** Das Abonnement, das Sie verwenden möchten
 * **Ressourcengruppe:** TestRG1
-* **Standort:** USA, Osten
-* **Subnetz:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (für diese Übung optional)
+* **Standort:** USA (Ost)
+* **Subnetz:** Front-End: 10.1.0.0/24, Back-End: 10.1.1.0/24 (für diese Übung optional)
 * **Name des Gatewaysubnetzes:** GatewaySubnet (wird im Portal automatisch ausgefüllt)
-* **Adressbereich des Gatewaysubnetzes:** 10.1.255.0/27
-* **DNS-Server:** 8.8.8.8 (optional). Die IP-Adresse Ihres DNS-Servers.
-* **Name des Gateways für virtuelle Netzwerke:** VNet1GW
-* **Öffentliche IP-Adresse:** VNet1GWIP
-* **VPN-Typ:** Routenbasiert
-* **Verbindungstyp:** Site-to-Site (IPsec)
-* **Gatewaytyp:** VPN
+* **Adressbereich für Gatewaysubnetz:** 10.1.255.0/27
+* **DNS-Server:** 8.8.8.8 – Optional. Die IP-Adresse Ihres DNS-Servers.
+* **Name des Gateways des virtuellen Netzwerks:** VNet1GW
+* **Öffentliche IP:** VNet1GWIP
+* **VPN-Typ:** routenbasiert
+* **Verbindungstyp**: Site-to-Site (IPsec)
+* **Gatewaytyp**: VPN
 * **Name des Gateways für das lokale Netzwerk:** Site1
 * **Verbindungsname:** VNet1toSite1
 * **Gemeinsam verwendeter Schlüssel:** In diesem Beispiel verwenden wir „abc123“. Sie können jedoch einen beliebigen, mit Ihrer VPN-Hardware kompatiblen Wert verwenden. Wichtig ist, dass die Werte auf beiden Seiten der Verbindung übereinstimmen.

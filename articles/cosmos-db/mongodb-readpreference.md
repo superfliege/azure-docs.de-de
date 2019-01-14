@@ -1,6 +1,6 @@
 ---
-title: Verwenden von MongoDB Read Preference mit der MongoDB-API von Azure Cosmos DB
-description: Erfahren Sie, wie Sie MongoDB Read Preference mit der MongoDB-API von Azure Cosmos DB verwenden können.
+title: Verwenden von MongoDB Read Preference mit der Azure Cosmos DB-API für MongoDB
+description: Erfahren Sie, wie Sie MongoDB Read Preference mit der Azure Cosmos DB-API für MongoDB verwenden können.
 services: cosmos-db
 author: vidhoonv
 ms.author: sclyon
@@ -9,22 +9,22 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.openlocfilehash: 4f40a2dac04102a19be7b3209c6bf37be9252cde
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 25c1872a677b05980899307a8de9f9b51fa749f9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875347"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787835"
 ---
-# <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>So verteilen Sie Lesevorgänge mithilfe von Read Preference der MongoDB-API von Azure Cosmos DB global 
+# <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Globale Verteilung von Lesevorgängen mit der Azure Cosmos DB-API für MongoDB
 
-Dieser Artikel zeigt, wie Lesevorgänge mit [MongoDB Read Preference](https://docs.mongodb.com/manual/core/read-preference/)-Einstellungen mit der MongoDB-API von Azure Cosmos DB global verteilt werden können. 
+Dieser Artikel zeigt, wie Lesevorgänge mit [MongoDB Read Preference](https://docs.mongodb.com/manual/core/read-preference/)-Einstellungen mit der Azure Cosmos DB-API für MongoDB global verteilt werden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-In diesem [Schnellstart](tutorial-global-distribution-mongodb.md)-Artikel finden Sie Anweisungen zur Verwendung des Azure-Portals zum Einrichten eines Azure Cosmos DB-Kontos mit globaler Verteilung und zum anschließendem Herstellen einer Verbindung über die MongoDB-API.
+In diesem [Schnellstart](tutorial-global-distribution-mongodb.md)-Artikel finden Sie Anweisungen zur Verwendung des Azure-Portals zum Einrichten eines Cosmos-Kontos mit globaler Verteilung und zum anschließendem Herstellen einer Verbindung.
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
@@ -52,10 +52,10 @@ cd mean
 npm install
 node index.js
 ```
-Die Anwendung versucht, eine Verbindung mit einer MongoDB-Quelle herzustellen und schlägt fehl, weil die Verbindungszeichenfolge ungültig ist. Führen Sie die Schritte in der Infodatei aus, um die `url` der Verbindungszeichenfolge zu aktualisieren. Aktualisieren Sie außerdem die Angabe `readFromRegion` in eine Leseregion in Ihrem Azure Cosmos DB-Konto. Die folgenden Anweisungen stammen aus dem NodeJS-Beispiel:
+Die Anwendung versucht, eine Verbindung mit einer MongoDB-Quelle herzustellen und schlägt fehl, weil die Verbindungszeichenfolge ungültig ist. Führen Sie die Schritte in der Infodatei aus, um die `url` der Verbindungszeichenfolge zu aktualisieren. Aktualisieren Sie außerdem die Angabe `readFromRegion` in eine Leseregion in Ihrem Cosmos-Konto. Die folgenden Anweisungen stammen aus dem NodeJS-Beispiel:
 
 ```
-* Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos DB account's values. 
+* Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
 ```
 
 Nachdem Sie diese Schritte ausgeführt haben, wird die Beispielanwendung ausgeführt und generiert die folgende Ausgabe:
@@ -74,7 +74,7 @@ readFromSecondaryfunc query completed!
 
 ## <a name="read-using-read-preference-mode"></a>Lesen mit dem Read Preference-Modus
 
-MongoDB stellt die folgenden Read Preference-Modi für Clients zur Verfügung:
+Das MongoDB-Protokoll stellt die folgenden Read Preference-Modi für Clients zur Verfügung:
 
 1. PRIMARY
 2. PRIMARY_PREFERRED
@@ -82,7 +82,7 @@ MongoDB stellt die folgenden Read Preference-Modi für Clients zur Verfügung:
 4. SECONDARY_PREFERRED
 5. NEAREST
 
-Weitere Informationen zum Verhalten der einzelnen Lesepräferenzeinstellungen finden Sie in der ausführlichen Dokumentation [Verhalten von MongoDB Read Preference](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior). In Azure Cosmos DB wird „primary“ der WRITE-Region und „secondary“ der READ-Region zugeordnet.
+Weitere Informationen zum Verhalten der einzelnen Lesepräferenzeinstellungen finden Sie in der ausführlichen Dokumentation [Verhalten von MongoDB Read Preference](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior). In Cosmos DB wird „primary“ der WRITE-Region und „secondary“ der READ-Region zugeordnet.
 
 Basierend auf allgemeine Szenarien empfiehlt sich die Verwendung der folgenden Einstellungen:
 
@@ -137,7 +137,7 @@ Verwenden Sie die entsprechenden Beispielanwendungsrepositorys für andere Platt
 
 ## <a name="read-using-tags"></a>Lesevorgänge mithilfe von Tags
 
-Zusätzlich zum Read Preference-Modus ermöglicht MongoDB die Verwendung von Tags zum Weiterleiten von Lesevorgängen. In der Azure Cosmos DB für MongoDB-API ist das `region`-Tag standardmäßig als Teil der `isMaster`-Antwort enthalten:
+Zusätzlich zum Read Preference-Modus ermöglicht das MongoDB-Protokoll die Verwendung von Tags zum Weiterleiten von Lesevorgängen. In der Cosmos DB-API für MongoDB ist das `region`-Tag standardmäßig als Teil der `isMaster`-Antwort enthalten:
 
 ```json
 "tags": {
@@ -145,7 +145,7 @@ Zusätzlich zum Read Preference-Modus ermöglicht MongoDB die Verwendung von Tag
       }
 ```
 
-Daher kann MongoClient das `region`-Tag zusammen mit dem Regionsnamen verwenden, um Lesevorgänge an bestimmte Regionen weiterzuleiten. Für Azure Cosmos DB-Konten finden Sie die Regionsnamen im Azure-Portal auf der linken Seite unter **Einstellungen > Daten global replizieren**. Diese Einstellung ist nützlich, um **Leseisolierung** zu erreichen: Fälle, in denen die Clientanwendung Lesevorgänge nur an eine bestimmte Region weiterleiten möchte. Diese Einstellung ist ideal für Szenarien vom Typ Nicht-Produktion/Analyse geeignet, die im Hintergrund ausgeführt werden und keine produktionsrelevanten Dienste sind.
+Daher kann MongoClient das `region`-Tag zusammen mit dem Regionsnamen verwenden, um Lesevorgänge an bestimmte Regionen weiterzuleiten. Für Cosmos-Konten finden Sie die Regionsnamen im Azure-Portal auf der linken Seite unter **Einstellungen > Daten global replizieren**. Diese Einstellung ist nützlich, um **Leseisolierung** zu erreichen: Fälle, in denen die Clientanwendung Lesevorgänge nur an eine bestimmte Region weiterleiten möchte. Diese Einstellung ist ideal für Szenarien vom Typ Nicht-Produktion/Analyse geeignet, die im Hintergrund ausgeführt werden und keine produktionsrelevanten Dienste sind.
 
 Der folgende Codeausschnitt aus der Beispielanwendung veranschaulicht, wie die Lesepräferenz mit Tags in NodeJS konfiguriert wird:
 
@@ -160,7 +160,7 @@ Der folgende Codeausschnitt aus der Beispielanwendung veranschaulicht, wie die L
 
 Verwenden Sie die entsprechenden Beispielanwendungsrepositorys für andere Plattformen, z.B. für [.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) und [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
 
-In diesem Artikel haben Sie erfahren, wie Lesevorgänge mit MongoDB Read Preference-Einstellungen mit der MongoDB-API von Azure Cosmos DB global verteilt werden können.
+In diesem Artikel haben Sie erfahren, wie Lesevorgänge mit MongoDB Read Preference-Einstellungen mit der Azure Cosmos DB-API für MongoDB global verteilt werden können.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -172,5 +172,5 @@ Wenn Sie diese App nicht weiterhin verwenden, löschen Sie im Azure-Portal sämt
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)
-* [Einrichten eines global replizierten Azure Cosmos DB-Kontos und Verwenden des Kontos mit der MongoDB-API](tutorial-global-distribution-mongodb.md)
-* [Lokales Entwickeln mit dem Emulator](local-emulator.md)
+* [Einrichten einer global verteilten Datenbank mit der Azure Cosmos DB-API für MongoDB](tutorial-global-distribution-mongodb.md)
+* [Lokale Entwicklung mit dem Azure Cosmos DB-Emulator](local-emulator.md)

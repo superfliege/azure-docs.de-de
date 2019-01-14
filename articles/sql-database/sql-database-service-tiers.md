@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: d801ed309b0d79dd6655c7dd59ebd17bd37de222
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164397"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726030"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Kaufmodelle für Azure SQL-Datenbank
 
@@ -44,7 +44,7 @@ In der folgenden Tabelle und im Diagramm werden diese Kaufmodelle verglichen und
 
 ## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
-Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen und physische Hardwaremerkmale (z.B. Anzahl der Kerne, Arbeitsspeicher, Speichergröße) angeboten. Beim V-Kern-basierten Kaufmodell erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen auswählen. Beim V-Kern-basierten Kaufmodell können Sie für [Einzeldatenbanken](sql-database-single-database-scale.md), [verwaltete Instanzen](sql-database-managed-instance.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) zwischen den Diensttarifen [Universell](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) und [Unternehmenskritisch](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) wählen. Für Einzeldatenbanken können Sie auch den Diensttarif [Hyperscale (Vorschau)](sql-database-service-tier-hyperscale.md) auswählen.
+Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen und physische Hardwaremerkmale (z.B. Anzahl der Kerne, Arbeitsspeicher, Speichergröße) angeboten. Beim auf dem virtuellen Kern basierenden Kaufmodell erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen auswählen. Beim V-Kern-basierten Kaufmodell können Sie für [Einzeldatenbanken](sql-database-single-database-scale.md), [verwaltete Instanzen](sql-database-managed-instance.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) zwischen den Diensttarifen [Universell](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) und [Unternehmenskritisch](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) wählen. Für Einzeldatenbanken können Sie auch den Diensttarif [Hyperscale (Vorschau)](sql-database-service-tier-hyperscale.md) auswählen.
 
 Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln auswählen, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Beim V-Kern-basierten Kaufmodell zahlen Kunden für Folgendes:
 

@@ -4,22 +4,22 @@ description: Lernen Sie den Status von Migrationsszenarios kennen, die von Azure
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/11/2018
-ms.openlocfilehash: 9eea3c28751ecaec0ffdb27e08f84cad1bf62acd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 12/19/2018
+ms.openlocfilehash: 81bd23f7e4b7065155b708703e52bc0a351696c1
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53267865"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722089"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden
-Azure Database Migration Service wurde zur Unterstützung einer Vielzahl von Migrationsszenarios (Quelle/Ziel-Paare) und sowohl für die Offline- (einmalig) als auch die Onlinemigration (fortlaufende Synchronisierung) konzipiert. Der von Azure Database Migration Service bereitgestellte Szenarioumfang wird im Laufe der Zeit erweitert. In regelmäßigen Abständen werden neue Szenarios hinzugefügt. In diesem Artikel werden die Migrationsszenarios, die derzeit von Azure Database Migration Service unterstützt werden, und der Status der einzelnen Szenarios (Private Vorschau, Öffentliche Vorschau oder Allgemein verfügbar) definiert.
+Azure Database Migration Service wurde zur Unterstützung einer Vielzahl von Migrationsszenarios (Quelle/Ziel-Paare) und sowohl für die Offline- (einmalig) als auch die Onlinemigration (fortlaufende Synchronisierung) konzipiert. Der von Azure Database Migration Service bereitgestellte Szenarioumfang wird im Laufe der Zeit erweitert. In regelmäßigen Abständen werden neue Szenarios hinzugefügt. Dieser Artikel beschreibt die Migrationsszenarien, die derzeit von Azure Database Migration Service unterstützt werden, sowie die Status der einzelnen Szenarien (private [eingeschränkte] Vorschau, öffentliche Vorschau oder allgemein verfügbar).
 
 ## <a name="offline-versus-online-migrations"></a>Offline- und Onlinemigrationen
 Beim Migrieren von Datenbanken zu Azure mit dem Azure Database Migration Service können Sie eine Migration des Typs „Offline“ oder „Online“ durchführen. Bei Migrationen des Typs *Offline* beginnt die Ausfallzeit der Anwendung mit dem Start der Migration. Bei Migrationen des Typs *Online* ist die Ausfallzeit auf die Zeit begrenzt, die bei Abschluss der Migration für die Umstellung auf die neue Umgebung erforderlich ist. Es empfiehlt sich, eine Offlinemigration zu testen, um zu ermitteln, ob die Ausfallzeit akzeptabel ist. Wenn dies nicht der Fall ist, sollten Sie eine Onlinemigration durchführen.

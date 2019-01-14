@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4cd6b375385326889226f6d4284815dfa0f47c49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408883"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971306"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -39,7 +39,7 @@ Antworten auf häufig gestellte Fragen zur Verwendung eines benutzerdefinierten 
 
 ## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Wie erwerbe ich für meine Web-App eine neue benutzerdefinierte Domäne?
 
-Weitere Informationen zum Kauf und Einrichten einer benutzerdefinierten Domäne für Ihre App Service-Web-App finden Sie unter [Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens in App Service](custom-dns-web-site-buydomains-web-app.md).
+Weitere Informationen zum Kauf und Einrichten einer benutzerdefinierten Domäne für Ihre App Service-Web-App finden Sie unter [Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens in App Service](manage-custom-dns-buy-domain.md).
 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Wie kann ich ein vorhandenes SSL-Zertifikat für meine Web-App hochladen und konfigurieren?
@@ -70,11 +70,13 @@ So richten Sie die Serverzeitzone für Ihre Web-App ein
 2. Fügen Sie unter **App-Einstellungen** diese Einstellung hinzu:
     * Schlüssel = WEBSITE_TIME_ZONE
     * Wert = *Die gewünschte Zeitzone*
-3. Wählen Sie **Speichern**aus.
+3. Wählen Sie **Speichern** aus.
+
+Akzeptierte Werte finden Sie im Artikel [Standardzeitzonen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) in der Spalte **Zeitzone**.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Warum misslingen meine fortlaufend ausgeführten WebJobs mitunter?
 
-Web-Apps werden standardmäßig entladen, wenn sie einen festgelegten Zeitraum im Leerlauf waren. Dadurch spart das System Ressourcen. In den Tarifen „Basic“ und „Standard“ können Sie die Einstellung **Always On** aktivieren, damit die Web-App die ganze Zeit geladen bleibt. Wenn Ihre Web-App fortlaufende WebJobs ausführt, sollten Sie **Always On** aktivieren, weil die WebJobs ansonsten nicht zuverlässig ausgeführt werden. Weitere Informationen finden Sie unter [Erstellen eines fortlaufend ausgeführten Webjobs](web-sites-create-web-jobs.md#CreateContinuous).
+Web-Apps werden standardmäßig entladen, wenn sie einen festgelegten Zeitraum im Leerlauf waren. Dadurch spart das System Ressourcen. In den Tarifen „Basic“ und „Standard“ können Sie die Einstellung **Always On** aktivieren, damit die Web-App die ganze Zeit geladen bleibt. Wenn Ihre Web-App fortlaufende WebJobs ausführt, sollten Sie **Always On** aktivieren, weil die WebJobs ansonsten nicht zuverlässig ausgeführt werden. Weitere Informationen finden Sie unter [Erstellen eines fortlaufend ausgeführten Webjobs](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Wie rufe ich die ausgehende IP-Adresse meiner Web-App ab?
 
@@ -124,7 +126,7 @@ Weitere Informationen finden Sie unter [Konformität von Microsoft Azure App Ser
 
 Sie können in den App Service-Plänen „Standard“ und „Premium“ die Bereitstellung Ihrer Web-App in App Service in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen. Bereitstellungsslots sind Live-Web-Apps mit eigenen Hostnamen. Elemente für Web-App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden.
 
-Weitere Informationen zur Verwendung von Bereitstellungsslots finden Sie unter [Einrichten einer Stagingumgebung in App Service](web-sites-staged-publishing.md).
+Weitere Informationen zur Verwendung von Bereitstellungsslots finden Sie unter [Einrichten einer Stagingumgebung in App Service](deploy-staging-slots.md).
 
 ## <a name="how-do-i-access-and-review-webjob-logs"></a>Wie kann ich auf WebJob-Protokolle zugreifen und diese überprüfen?
 
@@ -248,7 +250,7 @@ Sie können einen geplanten WebJob mithilfe von CRON-Ausdrücken erstellen:
     {month} {day of the week}" }
     ```
 
-Weitere Informationen zu geplanten WebJobs finden Sie unter [Erstellen eines geplanten WebJobs mithilfe eines CRON-Ausdrucks](web-sites-create-web-jobs.md#CreateScheduledCRON).
+Weitere Informationen zu geplanten WebJobs finden Sie unter [Erstellen eines geplanten WebJobs mithilfe eines CRON-Ausdrucks](webjobs-create.md#CreateScheduledCRON).
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Wir führe ich Penetrationstests für meine App Service-App aus?
 

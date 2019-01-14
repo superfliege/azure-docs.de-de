@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: dbda20554b119bfb72b939cbeb7f19e0b9093b31
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499397"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597476"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Erstellen einer Apache Spark-Machine Learning-Pipeline
 
-Die skalierbare Machine Learning-Bibliothek von Apache Spark (MLlib) bringt Modellierungsfunktionen in eine verteilte Umgebung ein. Das Spark-Paket [`spark.ml`](http://spark.apache.org/docs/latest/ml-pipeline.html) umfasst eine Gruppe von auf Dataframes aufbauenden APIs auf höherer Ebene. Mit diesen APIs können Sie praktische Machine Learning-Pipelines erstellen und optimieren.  *Spark-Machine Learning* bezieht sich auf diese Dataframe-basierte MLlib-API und nicht auf die ältere RDD-basierte Pipeline-API.
+Die skalierbare Machine Learning-Bibliothek von Apache Spark (MLlib) bringt Modellierungsfunktionen in eine verteilte Umgebung ein. Das Spark-Paket [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) umfasst eine Gruppe von auf Dataframes aufbauenden APIs auf höherer Ebene. Mit diesen APIs können Sie praktische Machine Learning-Pipelines erstellen und optimieren.  *Spark-Machine Learning* bezieht sich auf diese Dataframe-basierte MLlib-API und nicht auf die ältere RDD-basierte Pipeline-API.
 
 Bei einer Machine Learning-Pipeline (ML-Pipeline) handelt es sich um einen vollständigen Workflow, der mehrere Algorithmen für maschinelles Lernen miteinander kombiniert. Zum Verarbeiten und Lernen von Daten können viele Schritte und eine Folge von Algorithmen erforderlich sein. Pipelines definieren die Phasen und die Reihenfolge eines Prozesses für maschinelles Lernen. In MLlib werden Phasen einer Pipeline durch eine bestimmte Abfolge von Pipelinephasen dargestellt, wobei ein Transformator und ein Estimator jeweils Aufgaben ausführen.
 
@@ -30,7 +30,7 @@ Jeder zustandslosen Instanz eines Transformators oder Estimators ist ein eigener
 
 ## <a name="pipeline-example"></a>Pipelinebeispiel
 
-Zur Veranschaulichung der praktischen Verwendung einer ML-Pipeline wird in diesem Beispiel die Datendatei `HVAC.csv` verwendet, die bereits in den Standardspeicher (Azure Storage oder Data Lake Store) für Ihren HDInsight-Cluster geladen wurde. Zum Anzeigen des Inhalts der Datei navigieren Sie zum Verzeichnis `/HdiSamples/HdiSamples/SensorSampleData/hvac`. `HVAC.csv` enthält einen Satz von Zeiten mit den Zieltemperaturen und den tatsächlichen Temperaturen für HVAC-Systeme (*Heating, Ventilation, Air Conditioning*) in verschiedenen Gebäuden. Ziel ist das Trainieren des Modells für die Daten und das Generieren einer Temperaturprognose für ein bestimmtes Gebäude.
+Zur Veranschaulichung der praktischen Verwendung einer ML-Pipeline verwendet dieses Beispiel die Datendatei `HVAC.csv`, die bereits in den Standardspeicher (Azure Storage oder Data Lake Storage) für Ihren HDInsight-Cluster geladen wurde. Zum Anzeigen des Inhalts der Datei navigieren Sie zum Verzeichnis `/HdiSamples/HdiSamples/SensorSampleData/hvac`. `HVAC.csv` enthält einen Satz von Zeiten mit den Zieltemperaturen und den tatsächlichen Temperaturen für HVAC-Systeme (*Heating, Ventilation, Air Conditioning*) in verschiedenen Gebäuden. Ziel ist das Trainieren des Modells für die Daten und das Generieren einer Temperaturprognose für ein bestimmtes Gebäude.
 
 Der folgende Code:
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e247cedb732bb1290631ada4c6d423f1b3ed0dbd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: da67213b708b3ff26fe1ddd926c5cb0bba33458d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196116"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788549"
 ---
 # <a name="saas-application-technical-info-tab"></a>Registerkarte „Technische Informationen“ für SaaS-Anwendung
 
@@ -54,7 +54,7 @@ In der folgenden Tabelle sind die erforderlichen Felder für „Über Microsoft 
 |     Anweisungen für den Einstieg              |   Anweisungen für Ihre Kunden zum Herstellen einer Verbindung mit Ihrer SaaS-App. Einfache HTML-Tags zulässig ist, z. B.: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt; usw.                |
 |    URL der Angebotsseite  |   Die URL Ihrer Website, auf die Sie Ihre Kunden nach dem Erwerb im Azure-Portal leiten. Diese URL wird auch der Endpunkt, der die Verbindungs-APIs für Geschäfte mit Microsoft empfängt.                |
 |  Verbindungswebhook    |  Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (Beispiel: das Azure-Abonnement ist ungültig geworden), müssen Sie einen Webhook für die Verbindung angeben. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps</a>.                |
-|  Azure AD-Mandanten-ID und -App-ID      |   Es ist im Azure-Portal erforderlich, dass Sie eine Active Directory-App erstellen, damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Erstellen Sie für diese Felder eine AD-App, und fügen Sie die entsprechende Mandanten-ID und App-ID ein.               |
+|  Azure AD-Mandanten-ID und -App-ID      |   Es ist im Azure-Portal erforderlich, dass Sie eine Active Directory-App erstellen, damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Erstellen Sie für diese Felder eine AD-App, und fügen Sie die entsprechende Mandanten-ID und App-ID ein. Ihre App-ID ist Ihrer Herausgeber-ID zugeordnet. Stellen Sie daher sicher, dass Sie die gleiche App-ID wie in allen anderen Angeboten verwenden.             |
 
 
 Schließlich gibt es, wenn Sie **Über Microsoft verkaufen** auswählen, eine weitere „Neues Angebot“-Registerkarte namens **Pläne**. 

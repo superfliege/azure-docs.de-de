@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 4ba1e325ec978114016682aaee35be35a20ec028
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 5d2f803414db3bd118f57d317cfc32c8f22fcd5a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499119"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653254"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Installieren einer veröffentlichten Anwendung – Dataiku DSS
 
@@ -28,7 +28,7 @@ Mithilfe von DSS können Sie eine umfassende Analyselösung implementieren, ange
 
 Sie können DSS mit [Apache Hadoop](https://hadoop.apache.org/)- oder [Apache Spark](https://spark.apache.org/)-Clustern in HDInsight installieren. Hierbei können Sie auswählen, ob die Installation von DSS auf vorhandenen Clustern oder bei der Erstellung neuer Cluster erfolgen soll. DSS unterstützt außerdem Azure Blob Storage als Connector zum Lesen von Daten.
 
-Sie können mit DSS Projekte erstellen, die dann [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)- oder Spark-Aufträge generieren können. Diese Auftrage werden als reguläre MapReduce- oder Spark-Aufträge in HDInsight ausgeführt, sodass Sie den Cluster nach Bedarf skalieren können.
+Sie können mithilfe von DSS Projekte erstellen, die anschließend [MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)- oder Spark-Aufträge generieren können. Diese Auftrage werden als reguläre MapReduce- oder Spark-Aufträge in HDInsight ausgeführt, sodass Sie den Cluster nach Bedarf skalieren können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -113,8 +113,8 @@ Ausführlichere Tutorials finden Sie unter [Learn Dataiku DSS](https://www.datai
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Dokumentation zu Dataiku DSS](https://doc.dataiku.com/dss/latest/).
-* [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight:](hdinsight-apps-install-custom-applications.md) Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
-* [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Hier erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx)(MSDN: Installieren einer HDInsight-Anwendung): Hier erfahren Sie, wie Sie HDInsight-Anwendungen definieren.
-* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe einer Skriptaktion zusätzliche Anwendungen installieren.
-* [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md): Hier erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.
+* [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
+* [Veröffentlichen von HDInsight-Anwendungen](hdinsight-apps-publish-applications.md): Erfahren Sie, wie Sie benutzerdefinierte HDInsight-Anwendungen im Azure Marketplace veröffentlichen.
+* [MSDN: Installieren einer HDInsight-Anwendung](https://msdn.microsoft.com/library/mt706515.aspx): Erfahren Sie, wie HDInsight-Anwendungen definiert werden.
+* [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Erfahren Sie, wie Sie eine Skriptaktion verwenden, um zusätzliche Anwendungen zu installieren.
+* [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md): Erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster und zum Testen und Hosten von HDInsight-Anwendungen verwenden.

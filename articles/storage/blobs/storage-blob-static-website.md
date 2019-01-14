@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 36b4fbac13e012de2fbef137c6637fd7e2daea8f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161292"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598889"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Speichercontainer mit dem Namen *$web* bereitstellen. Durch das Hosten in Azure Storage können Sie serverlose Architekturen, wie [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste, verwenden.
 
-Im Unterschied zum Hosten statischer Websites werden dynamische Websites, die von serverseitigem Code abhängig sind, am besten mit [Azure-Web-Apps](/azure/app-service/app-service-web-overview) gehostet.
+Im Unterschied zum Hosten statischer Websites werden dynamische Websites, die von serverseitigem Code abhängig sind, am besten mit [Azure App Service](/azure/app-service/overview) gehostet.
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 Wenn Sie das Hosten statischer Websites in Ihrem Speicherkonto aktivieren, wählen Sie den Namen der Standarddatei aus und geben optional einen Pfad zu einer benutzerdefinierten 404-Seite an. Wenn das Feature aktiviert wird, wird ein Container namens *$web* erstellt, wenn er noch nicht vorhanden ist. 
@@ -161,6 +161,6 @@ Ja, für den Webendpunkt muss ebenso wie für den Blobendpunkt zwischen Groß-/K
 * [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md)
 * [Azure-Funktionen](/azure/azure-functions/functions-overview)
-* [Azure-Web-Apps](/azure/app-service/app-service-web-overview)
+* [Azure App Service](/azure/app-service/overview)
 * [Build a serverless web app in Azure](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)
 * [Tutorial: Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

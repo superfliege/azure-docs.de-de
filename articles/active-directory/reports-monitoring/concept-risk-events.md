@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625265"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652148"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory-Risikoereignisse
 
@@ -31,7 +31,9 @@ Es gibt zwei Bereiche, in denen Sie gemeldete Risikoereignisse überprüfen:
  - **Azure AD-Berichterstellung** – Azure AD-Sicherheitsberichte umfassen Risikoereignisse. Weitere Informationen finden Sie unter [Sicherheitsbericht zu gefährdeten Benutzern](concept-user-at-risk.md) und unter [Sicherheitsbericht zu riskanten Anmeldevorgängen](concept-risky-sign-ins.md).
 
  - **Azure AD Identity Protection** – Auch die Berichtsfunktionen von [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) umfassen Risikoereignisse.
-    
+
+Darüber hinaus können Sie die [API für Identity Protection-Risikoereignisse](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/graph-get-started.md). 
+
 Derzeit werden von Azure Active Directory sechs Typen von Risikoereignissen erkannt:
 
 - [Benutzer mit kompromittierten Anmeldeinformationen](#leaked-credentials) 
@@ -125,11 +127,11 @@ Der Schweregrad des Risikoereignisses steht für die Stärke des Signals, das zu
 
 Beispiel: 
 
-* **Hoch:** Risikoereignis mit hohem Vertraulichkeitsgrad und hohem Schweregrad. Ereignisse dieser Art sind starke Indikatoren dafür, dass die Identität des Benutzers kompromittiert wurde, und für alle betroffenen Benutzerkonten sollten sofort Korrekturmaßnahmen eingeleitet werden.
+* **Hoch**: Risikoereignis mit hohem Vertraulichkeitsgrad und hohem Schweregrad. Ereignisse dieser Art sind starke Indikatoren dafür, dass die Identität des Benutzers kompromittiert wurde, und für alle betroffenen Benutzerkonten sollten sofort Korrekturmaßnahmen eingeleitet werden.
 
 * **Mittel:** Risikoereignis mit hohem Schweregrad, aber niedrigerem Vertraulichkeitsgrad (oder umgekehrt). Diese Ereignisse sind potenziell risikobehaftet, und für alle betroffenen Benutzerkonten sollten Korrekturmaßnahmen eingeleitet werden.
 
-* **Niedrig:** Risikoereignis mit niedrigem Vertraulichkeits- und Schweregrad. Bei diesem Ereignis ist unter Umständen keine sofortige Aktion erforderlich, aber zusammen mit anderen Risikoereignissen kann auch dies ein starker Hinweis dafür sein, dass die Identität kompromittiert wurde.
+* **Niedrig**: Risikoereignis mit niedrigem Vertraulichkeits- und Schweregrad. Bei diesem Ereignis ist unter Umständen keine sofortige Aktion erforderlich, aber zusammen mit anderen Risikoereignissen kann auch dies ein starker Hinweis dafür sein, dass die Identität kompromittiert wurde.
 
 ![Risikostufe](./media/concept-risk-events/01.png)
 

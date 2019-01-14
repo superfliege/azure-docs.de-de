@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: cshoe
-ms.openlocfilehash: 39036f17b8ceafebbe3660f2074e2a6c84c4df03
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 765eab8dfc1163c4d9e0337a1af840278ae1a82c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248692"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546265"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions – Bindungen zu externen Dateien (experimentell)
 In diesem Artikel wird gezeigt, wie Dateien aus unterschiedlichen SaaS-Anbietern (z. B. Dropbox oder Google Drive) in Azure Functions verarbeitet werden können. Azure Functions unterstützt Trigger-, Eingabe- und Ausgabebindungen für externe Dateien. Diese Bindungen erstellen API-Verbindungen mit SaaS-Anbietern oder verwenden vorhandene API-Verbindungen aus der Ressourcengruppe Ihrer Funktionen-App.
@@ -31,7 +31,7 @@ In diesem Artikel wird gezeigt, wie Dateien aus unterschiedlichen SaaS-Anbietern
 |:-----|:---:|:---:|:---:|
 |[Box](https://www.box.com)|x|x|x
 |[Dropbox](https://www.dropbox.com)|x|x|x
-|[FTP](https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp)|x|x|x
+|[FTP](https://docs.microsoft.com/azure/app-service/deploy-ftp)|x|x|x
 |[OneDrive](https://onedrive.live.com)|x|x|x
 |[OneDrive for Business](https://onedrive.live.com/about/business/)|x|x|x
 |[SFTP](https://docs.microsoft.com/azure/connectors/connectors-create-api-sftp)|x|x|x
@@ -204,7 +204,7 @@ Wenn alle fünf Versuche fehlschlagen, fügt Functions eine Nachricht zu einer S
 * FileType
 * FolderName
 * FileName
-* ETag (eine Dateiversions-ID. Beispiel: „0x8D1DC6E70A277EF“)
+* ETag (eine Dateiversions-ID, z.B.: 0x8D1DC6E70A277EF)
 
 ## <a name="input"></a>Eingabe
 

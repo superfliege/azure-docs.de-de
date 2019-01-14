@@ -1,20 +1,17 @@
 ---
 title: Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
 description: Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 8d0a8ac1aedcac26f6ac67e0e1f2a9d265a9b576
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714343"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554536"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
 
@@ -49,7 +46,7 @@ Eine Möglichkeit ist, einfach zu warten, bis der Server wieder online ist, wenn
 Die andere Option ist die Verwendung des Geowiederherstellungsfeatures von Azure Database for MySQL, das den Server mithilfe von georedundanten Sicherungen wiederherstellt. Auf diese Sicherungen kann selbst dann zugegriffen werden, wenn die Region, in der Ihr Server gehostet wird, offline ist. Sie können eine Wiederherstellung aus diesen Sicherungen in eine andere Region ausführen und den Server wieder online schalten.
 
 > [!IMPORTANT]
-> Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben. Wenn Sie von lokal redundanten zu georedundanten Sicherungen für einen bestehenden Server wechseln möchten, müssen Sie mit „pg_dump“ ein Speicherabbild Ihres bestehenden Servers erstellen und ihn auf einem neu erstellten Server wiederherstellen, der mit georedundanten Sicherungen konfiguriert ist.
+> Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben. Wenn Sie für einen vorhandenen Server von lokal redundanten zu georedundanten Sicherungen wechseln möchten, müssen Sie mit „mysqldump“ ein Speicherabbild Ihres vorhandenen Servers erstellen und dieses auf einem neu erstellten Server wiederherstellen, der mit georedundanten Sicherungen konfiguriert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

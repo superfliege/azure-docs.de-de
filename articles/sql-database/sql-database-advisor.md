@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e5480e5e071d541d12e96ddd549e496c7f974f81
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f55d3eb67bb9c494a3d055e39d970c9a440dfc67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271044"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603432"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Empfehlungen zur Leistung für SQL-Datenbank
 
 Azure SQL-Datenbank lernt und passt sich an Ihre Anwendung an. Das Produkt bietet maßgeschneiderte Empfehlungen, die es Ihnen ermöglichen, die Leistung Ihrer SQL-Datenbanken zu maximieren. Die SQL-Datenbank wertet kontinuierlich den Nutzungsverlauf Ihrer SQL-Datenbanken aus und analysiert ihn. Die Empfehlungen, die bereitgestellt werden, basieren auf für die Datenbank eindeutigen Workloadmustern und tragen zur Verbesserung der Leistung bei.
 
 > [!TIP]
-> Die [automatische Optimierung](sql-database-automatic-tuning.md) ist die empfohlene Methode zur Leistungsoptimierung. [Intelligent Insights](sql-database-intelligent-insights.md) ist die empfohlene Methode zum Überwachen der Leistung. 
+> Die [automatische Optimierung](sql-database-automatic-tuning.md) ist die empfohlene Methode, um automatisch einige der häufigsten Probleme mit der Datenbankleistung zu beheben und die Leistung zu optimieren. [Query Performance Insights](sql-database-query-performance.md) ist die empfohlene Methode für grundlegende Anforderungen an die Azure SQL-Datenbank-Leistungsüberwachung. [Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md) ist die empfohlene Methode für die erweiterte Überwachung der Datenbankleistung und bietet intelligente Funktionen für die automatisierte Behebung von Leistungsproblemen.
 >
 
 ## <a name="create-index-recommendations"></a>Empfehlungen zum Erstellen eines Index

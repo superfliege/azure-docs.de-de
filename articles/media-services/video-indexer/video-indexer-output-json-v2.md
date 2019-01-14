@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 8acb1c70dc21efc87e13e0e5e94d9a61acfe01e9
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291857"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554655"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
 
@@ -78,8 +78,8 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |Attribut | BESCHREIBUNG|
 |---|---|
 |name|Der Name des Videos. Beispiel: Azure Monitor.|
-|shortId|Die ID des Videos. Beispiel: 63c6d532ff.|
-|privacyMode|Für Ihre Aufschlüsselung kann einer der folgenden Modi verwendet werden: **Private** (Privat) oder **Public** (Öffentlich). **Public**: Das Video ist für alle Benutzer Ihres Kontos und alle Personen sichtbar, die über einen Link zum Video verfügen. **Private**: Das Video ist für alle Benutzer Ihres Kontos sichtbar.|
+|id|Die ID des Videos. Beispiel: 63c6d532ff.|
+|privacyMode|Für Ihre Aufschlüsselung kann einer der folgenden Modi verwendet werden: **Private** oder **Public**. **Public**: Das Video ist für alle Benutzer Ihres Kontos und alle Personen sichtbar, die über einen Link zum Video verfügen. **Private**: Das Video ist für alle Benutzer Ihres Kontos sichtbar.|
 |duration|Enthält eine Dauer, mit der der Zeitbereich beschrieben wird, in dem eine Erkenntnis gewonnen wurde. Die Dauer wird in Sekunden angegeben.|
 |thumbnailVideoId|Die ID des Videos, aus dem die Miniaturansicht entnommen wurde.
 |thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie „Get-Thumbnail“ (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId.To“, um die eigentliche Miniaturansicht zu erhalten.|
@@ -149,7 +149,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
 Bei „insights“ (Erkenntnissen) handelt es sich um eine Reihe von Dimensionen (z.B. Transkriptzeilen, Gesichter, Marken usw.), wobei jede Dimension eine Liste mit eindeutigen Elementen umfasst (z.B. face1, face2, face3). Außerdem verfügt jedes Element über eigene Metadaten und eine Liste mit den zugehörigen Instanzen (Zeitbereiche mit zusätzlichen optionalen Metadaten).
 
-Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten und eine Liste mit seinen temporalen Instanzen (z.B. 00:00:05 - 00:00:10, 00:01:00 - 00:02:30 und 00:41:21 - 00:41:49) aufweisen. Jede temporale Instanz kann über zusätzliche Metadaten verfügen. Ein Beispiel hierfür sind die Rechteckkoordinaten des Gesichts (20,230,60,60).
+Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten und eine Liste mit seinen temporalen Instanzen aufweisen (Beispiele: 00:00:05 – 00:00:10, 00:01:00 – 00:02:30 und 00:41:21 – 00:41:49). Jede temporale Instanz kann über zusätzliche Metadaten verfügen. Ein Beispiel hierfür sind die Rechteckkoordinaten des Gesichts (20,230,60,60).
 
 |Version|Codeversion|
 |---|---|
@@ -553,7 +553,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 |NAME|BESCHREIBUNG|
 |---|---|
 |CorrespondenceCount|Anzahl von Korrespondenzen im Video.|
-|WordCount|Die Anzahl von Wörtern pro Sprecher.|
+|SpeakerWordCount|Die Anzahl von Wörtern pro Sprecher.|
 |SpeakerNumberOfFragments|Die Anzahl von Fragmenten, über die ein Sprecher im Video verfügt.|
 |SpeakerLongestMonolog|Der längste Monolog des Sprechers. Falls der Sprecher bei seinem Monolog Sprechpausen einlegt, ist diese Zeit mit enthalten. Die Ruhephasen am Anfang und Ende des Monologs werden entfernt.| 
 |SpeakerTalkToListenRatio|Die Berechnung basiert auf der Zeit für den Monolog des Sprechers (ohne Sprechpausen) geteilt durch die Gesamtzeit des Videos. Der Zeitwert wird auf die dritte Dezimalstelle gerundet.|
@@ -767,8 +767,8 @@ Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Fall
 |NAME|BESCHREIBUNG|
 |---|---|
 |id|Die ID des Themas.|
-|name|Der Name des Themas (z.B. „Pharmazeutika“).|
-|referenceId|Brotkrümel, die die Hierarchie der Themen reflektieren. Beispiel: „Gesundheit und Wohlbefinden/Medizin und Gesundheitswesen/Pharmazeutika“.|
+|name|Der Name des Themas, z.B.: „Pharmazeutika“.|
+|referenceId|Brotkrümel, die die Hierarchie der Themen reflektieren. Beispiel:  „Gesundheit und Wohlbefinden/Medizin und Gesundheitswesen/Pharmazeutika“.|
 |confidence|Die Zuverlässigkeitsbewertung im Bereich [0,1]. Je höher, desto zuverlässiger.|
 |Language|Die im Thema verwendete Sprache.|
 |iptcName|Falls erkannt, der Codename von IPTC-Medien.|

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383934"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742472"
 ---
 # <a name="monitor-cluster-performance"></a>Überwachen der Clusterleistung
 
@@ -77,11 +77,11 @@ Zu einem Leistungsengpass kann es für einen Cluster auf der Speicherebene komme
 
 Wenn Sie Azure Storage nutzen und Informationen zur Überwachung von speicherbezogenen Problemen suchen, finden Sie diese unter [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Wenn Sie Azure Data Lake Store (ADLS) als Sicherungsspeicher für Ihren Cluster verwenden, erfolgt die Drosselung bei Ihnen wahrscheinlich aufgrund von Einschränkungen der Bandbreite. Die Drosselung lässt sich in diesem Fall durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln. Informationen zu ADLS finden Sie in den folgenden Artikeln jeweils im Abschnitt zur Drosselung für den entsprechenden Dienst:
+Wenn Sie Azure Data Lake Storage (ADLS) als Sicherungsspeicher für Ihren Cluster verwenden, erfolgt die Drosselung bei Ihnen wahrscheinlich aufgrund von Einschränkungen der Bandbreite. Die Drosselung lässt sich in diesem Fall durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln. Informationen zu ADLS finden Sie in den folgenden Artikeln jeweils im Abschnitt zur Drosselung für den entsprechenden Dienst:
 
-* [Anleitung für die Leistungsoptimierung für Apache Hive in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Anleitung für die Leistungsoptimierung für Apache Storm in HDInsight und Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Anleitung für die Leistungsoptimierung für Apache Hive in HDInsight und Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [Anleitung für die Leistungsoptimierung für Apache Storm in HDInsight und Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

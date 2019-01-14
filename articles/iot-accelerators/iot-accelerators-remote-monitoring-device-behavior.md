@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 70f9ccbbe737bad4d6f88365e804d4421c418d28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: edd5da35d33aa7e79fc3e972f3ea1cfe2ef40973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164006"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631412"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementieren des Gerätemodellverhaltens
 
@@ -21,6 +21,9 @@ Der Artikel [Grundlegendes zum Gerätemodellschema](iot-accelerators-remote-moni
 
 - **State**-JavaScript-Dateien, die in festen Intervallen ausgeführt werden, um den internen Status des Geräts zu aktualisieren.
 - **Method**-JavaScript-Dateien, die ausgeführt werden, wenn die Lösung eine Methode auf dem Gerät aufruft.
+
+> [!NOTE]
+> Gerätemodellverhalten gelten nur für simulierte Geräte, die im Gerätesimulationsdienst gehostet werden. Wenn Sie ein physisches Gerät erstellen möchten, finden Sie weitere Informationen unter [Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für Remoteüberwachung](iot-accelerators-connecting-devices.md).
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

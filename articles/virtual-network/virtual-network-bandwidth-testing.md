@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: fa0adef58ae1eda8604cefc9c3d7e3a4c32d63d0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023820"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793538"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testen der Bandbreite / des Durchsatzes (NTTTCP)
 
@@ -29,10 +29,11 @@ Kopieren Sie das Tool in zwei virtuelle Azure-Computer der selben Größe. Ein v
 
 #### <a name="deploying-vms-for-testing"></a>Bereitstellen von virtuellen Computern zu Testzwecken
 Im Rahmen dieser Test sollten sich die beiden virtuellen Computer entweder im selben Clouddienst oder in der gleichen Verfügbarkeitsgruppe befinden, sodass wir deren externe IPs verwenden und die Load Balancer aus dem Text ausschließen können. Es ist möglich, einen Test mit der VIP-Adresse durchzuführen, aber diese Art von Tests geht über den Rahmen dieses Dokuments hinaus.
- 
+
 Notieren Sie die IP-Adresse des EMPFÄNGERS. Nennen wir diese IP-Adresse „a.b.c.r“
 
-Notieren Sie die Anzahl der Kerne auf dem virtuellen Computer. Nennen wir diese „\#num\_cores“  
+Notieren Sie die Anzahl der Kerne auf dem virtuellen Computer. Nennen wir diese „\#num\_cores“
+
 Führen Sie den NTTTCP-Test 300 Sekunden lang (oder 5 Minuten lang) auf der Sender-VM und der Empfänger-VM aus.
 
 Tipp: Wenn Sie diesen Test zum ersten Mal einrichten, möchten Sie womöglich eine kürzere Testperiode ausprobieren, um früher Feedback einzuholen. Nachdem das Tool wie erwartet funktioniert, erweitern Sie den Testzeitraum auf 300 Sekunden, um genaueste Ergebnisse zu erhalten.

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2cdeea546e7153c63cb1edfbc53f3644facc4f2
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877860"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743900"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Verwenden von PowerShell zum Sichern und Wiederherstellen von virtuellen Computern
 
-In diesem Artikel erfahren Sie, wie Sie eine Azure-VM mithilfe von Azure PowerShell-Cmdlets in einem Recovery Services-Tresor sichern und daraus wiederherstellen. Ein Recovery Services-Tresor ist eine Ressource von Azure Resource Manager, die für den Schutz von Daten und Objekten in den Diensten Azure Backup und Azure Site Recovery verwendet wird. 
+In diesem Artikel erfahren Sie, wie Sie eine Azure-VM mithilfe von Azure PowerShell-Cmdlets in einem Recovery Services-Tresor sichern und daraus wiederherstellen. Ein Recovery Services-Tresor ist eine Ressource von Azure Resource Manager, die für den Schutz von Daten und Objekten in den Diensten Azure Backup und Azure Site Recovery verwendet wird.
 
 > [!NOTE]
 > Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit virtuellen Computern erstellt, die mit dem Resource Manager-Modell bereitgestellt wurden.
@@ -28,6 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Azure-VM mithilfe von Azure PowerSh
 In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit PowerShell schützen und Daten von einem Wiederherstellungspunkt aus wiederherstellen.
 
 ## <a name="concepts"></a>Konzepte
+
 Wenn Sie mit dem Dienst „Azure Backup“ noch nicht vertraut sind, können Sie sich im Artikel [Was ist Azure Backup?](backup-introduction-to-azure-backup.md) eine Übersicht über den Dienst verschaffen. Stellen Sie zunächst sicher, dass die erforderlichen Voraussetzungen für Azure Backup erfüllt und Ihnen die Einschränkungen der aktuellen VM-Sicherungslösung bekannt sind.
 
 Damit Sie PowerShell effektiv nutzen können, ist es notwendig, dass Sie die Objekthierarchie verstehen und wissen, womit Sie beginnen sollten.
@@ -43,7 +44,7 @@ Vorbereitung:
 1. [Laden Sie die neueste PowerShell-Version herunter](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (erforderliche Mindestversion: 1.4.0)
 
 2. Ermitteln Sie die Azure-PowerShell-Cmdlets zur Datensicherung mithilfe des folgenden Befehls:
-   
+
     ```powershell
     Get-Command *azurermrecoveryservices*
     ```    
@@ -326,7 +327,7 @@ $rp[0]
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -350,6 +351,7 @@ So stellen Sie den Datenträger und die Konfigurationsinformationen wieder her:
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG"
 $restorejob
 ```
+
 #### <a name="restore-managed-disks"></a>Wiederherstellen von verwalteten Datenträgern
 
 > [!NOTE]
@@ -359,16 +361,15 @@ $restorejob
 
 Geben Sie den zusätzlichen Parameter **TargetResourceGroupName** an, um die RG festzulegen, in der die verwalteten Datenträger gespeichert werden.
 
-
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"
 ```
 
 Die Datei **VMConfig.JSON** wird für das Speicherkonto wiederhergestellt, und die verwalteten Datenträger werden in der angegebenen Zielressourcengruppe wiederhergestellt.
 
-
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
-```
+
+```powershell
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -397,6 +398,27 @@ Nachdem Sie die Datenträger wiederhergestellt haben, können Sie die folgenden 
 > Zum Erstellen von verschlüsselten virtuellen Computern aus wiederhergestellten Datenträgern muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle nicht über diese Berechtigung verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md).
 >
 >
+
+> [!NOTE]
+> Nach der Wiederherstellung von Datenträgern können Sie jetzt eine Bereitstellungsvorlage abrufen, die Sie direkt verwenden können, um einen neuen virtuellen Computer zu erstellen. Zum Erstellen verwalteter/nicht verwalteter VMs, die verschlüsselt/nicht verschlüsselt sind, sind nicht mehr verschiedene PS-Cmdlets erforderlich.
+
+Aus den resultierenden Auftragsdetails ergibt sich der Vorlagen-URI, der abgefragt und bereitgestellt werden kann.
+
+```powershell
+   $properties = $details.properties
+   $templateBlobURI = $properties["Template Blob Uri"]
+```
+
+Stellen Sie einfach die Vorlage bereit, um einen neuen virtuellen Computer wie [hier](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source) beschrieben zu erstellen.
+
+```powershell
+New-AzureRmResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
+```
+
+Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines virtuellen Computers mithilfe der „VMConfig“-Datei aufgelistet.
+
+> [!NOTE]
+> Es wird dringend empfohlen, die aufgeführte ausführliche Bereitstellungsvorlage zum Erstellen einer VM zu verwenden. Dieser Abschnitt (Punkte 1 bis 6) wird in Kürze veraltet sein.
 
 1. Fragen Sie die Eigenschaften des wiederhergestellten Datenträgers für die Auftragsdetails ab.
 
@@ -476,14 +498,14 @@ Nachdem Sie die Datenträger wiederhergestellt haben, können Sie die folgenden 
    * **Verwaltete, unverschlüsselte VMs**: Fügen Sie für verwaltete und unverschlüsselte VMs die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
    * **Verwaltete, verschlüsselte VMs (nur BEK)**: Fügen Sie für verwaltete, verschlüsselte VMs (nur mit BEK verschlüsselt) die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
-   
-      Verwenden Sie den folgenden Befehl, um die Verschlüsselung für die Datenträger manuell zu aktivieren.
+
+     Verwenden Sie den folgenden Befehl, um die Verschlüsselung für die Datenträger manuell zu aktivieren.
 
        ```powershell
        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
        ```
 
-   * **Verwaltete, verschlüsselte VMs (BEK und KEK)**: Fügen Sie für verwaltete, verschlüsselte VMs (mit BEK und KEK verschlüsselt) die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md). 
+   * **Verwaltete, verschlüsselte VMs (BEK und KEK)**: Fügen Sie für verwaltete, verschlüsselte VMs (mit BEK und KEK verschlüsselt) die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
       Verwenden Sie den folgenden Befehl, um die Verschlüsselung für die Datenträger manuell zu aktivieren.
 
@@ -520,7 +542,6 @@ Grundlegende Schritte zum Wiederherstellen einer Datei aus einer Sicherung von v
 * Bereitstellen der Datenträger des Wiederherstellungspunkts
 * Kopieren der erforderlichen Dateien
 * Aufheben der Bereitstellung des Datenträgers
-
 
 ### <a name="select-the-vm"></a>Auswählen des virtuellen Computers
 
@@ -575,7 +596,7 @@ Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```
+```powershell
 OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe

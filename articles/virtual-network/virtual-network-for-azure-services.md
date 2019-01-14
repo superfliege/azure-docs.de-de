@@ -1,13 +1,10 @@
 ---
-title: Virtuelles Netzwerk für Azure-Dienste | Microsoft-Dokumentation
+title: Dienste für virtuelle Netzwerke in Azure
+titlesuffix: Azure Virtual Network
 description: Informieren Sie sich über die Vorteile der Bereitstellung von Ressourcen in einem virtuellen Netzwerk. Ressourcen in virtuellen Netzwerken können miteinander und mit lokalen Ressourcen kommunizieren, ohne das Aufkommen von Datenverkehr im Internet.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 5b21ec36215dfde964b845a1ee28c02b562e1dd7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8672fbccb384a87a1b227bab7c81fdd99438d1da
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340673"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020505"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
 
 Wenn Sie Azure-Dienste in ein virtuelles Azure-Netzwerk integrieren, ermöglichen Sie damit den privaten Zugriff auf den Dienst über virtuelle Computer oder Computeressourcen im virtuellen Netzwerk.
-Sie können Azure-Dienste mit den folgenden Optionen in Ihr virtuelles Netzwerk integrieren: Direkte Bereitstellung dedizierter Instanzen des Diensts in einem virtuellen Netzwerk. Auf die Dienste kann dann innerhalb des virtuellen Netzwerks und von lokalen Netzwerken aus privat zugegriffen werden.
-Durch die Erweiterung eines virtuellen Netzwerks auf den Dienst über Dienstendpunkte. Durch Dienstendpunkte können einzelne Dienstressourcen im virtuellen Netzwerk gesichert werden.
+Sie können Azure-Dienste mit den folgenden Optionen in Ihr virtuelles Netzwerk integrieren:
+- Stellen Sie dedizierte Instanzen des Diensts in einem virtuellen Netzwerk bereit. Auf die Dienste kann dann innerhalb des virtuellen Netzwerks und von lokalen Netzwerken aus privat zugegriffen werden.
+- Erweitern Sie ein virtuelles Netzwerk über Dienstendpunkte auf den Dienst. Durch Dienstendpunkte können einzelne Dienstressourcen im virtuellen Netzwerk gesichert werden.
 
 Um mehrere Azure-Dienste in Ihr virtuelles Netzwerk zu integrieren, können Sie eines der oben genannten Muster verwenden oder mehrere Muster kombinieren. Sie können z.B. HDInsight im virtuellen Netzwerk bereitstellen und ein Speicherkonto über Dienstendpunkte im HDInsight-Subnetz sichern.
  

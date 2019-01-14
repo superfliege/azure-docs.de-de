@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163768"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995047"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Bewährte Methoden für Kostenermittlung und Größenanpassung von Workloads, die zu Azure migriert werden
 
@@ -248,7 +248,7 @@ In Azure bezahlen Sie für die Nutzung, also wenn Ressourcen tatsächlich genutz
 **Weitere Informationen:**
 - Verschaffen Sie sich einen Überblick über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) und [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview).
 - [Erhalten Sie](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations) Advisor-Empfehlungen zu Kosten.
-- [Erfahren Sie, wie Sie [Kosten für Empfehlungen optimieren](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json) und [unerwartete Gebühren vermeiden](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
+- [Erfahren Sie, wie Sie [Kosten für Empfehlungen optimieren](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json) und [unerwartete Gebühren vermeiden](https://docs.microsoft.com/azure/billing/billing-getting-started).
 - [Erfahren Sie mehr über](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) das Toolkit zur Azure-Ressourcenoptimierung (ARO).
 
 ## <a name="best-practice-implement-resource-group-budgets"></a>Bewährte Methode: Budgets für Ressourcengruppen implementieren
@@ -332,7 +332,7 @@ Nach der Migration und einer gründlichen Überprüfung dieser Arten von Aufgabe
   
 ## <a name="next-steps"></a>Nächste Schritte 
 
-Lesen Sie weitere bewährte Methoden nach:
+Sehen Sie sich weitere bewährte Methoden an:
 
 - [Bewährte Methoden](migrate-best-practices-security-management.md) für Sicherheit und Verwaltung nach der Migration.
 - [Bewährte Methoden](migrate-best-practices-networking.md) für Netzwerke nach der Migration.

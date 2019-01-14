@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung von Leistungsbeeinträchtigungen – Azure App Service | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in Azure App Service beheben.
+description: In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in Azure App Service beheben.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -17,20 +17,20 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c0642b24fc8eefd210d5b6b58e7d0c772408166a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 790aab75b311b116e6ca03af016e181c11019e27
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388465"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726645"
 ---
-# <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger Web-App-Leistung in Azure App Service
-In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)beheben.
+# <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger App-Leistung in Azure App Service
+In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beheben.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
 ## <a name="symptom"></a>Symptom
-Beim Navigieren in der Web-App werden die Seiten langsam geladen, und manchmal tritt beim Laden der Seiten ein Timeout auf.
+Beim Navigieren in der App werden die Seiten langsam geladen, und manchmal tritt beim Laden der Seiten ein Timeout auf.
 
 ## <a name="cause"></a>Ursache
 Diese Fehler sind häufig auf Probleme auf der Anwendungsebene zurückzuführen, z. B.:
@@ -47,7 +47,7 @@ Die Problembehandlung lässt sich in diesem Fall in drei unterschiedliche Aufgab
 2. [Sammeln von Daten](#collect)
 3. [Minimieren der Auswirkungen des Problems](#mitigate)
 
-[App Service-Web-Apps](app-service-web-overview.md) bietet Ihnen bei jedem Schritt verschiedene Optionen.
+[App Service](overview.md) bietet Ihnen bei jedem Schritt verschiedene Optionen.
 
 <a name="observe" />
 
@@ -55,10 +55,10 @@ Die Problembehandlung lässt sich in diesem Fall in drei unterschiedliche Aufgab
 #### <a name="track-service-health"></a>Nachverfolgen der Dienstintegrität
 Microsoft Azure informiert jeweils aktuell über Dienstunterbrechungen oder Leistungsbeeinträchtigungen. Sie können die Integrität des Diensts im [Azure-Portal](https://portal.azure.com/) nachverfolgen. Weitere Informationen finden Sie unter [Nachverfolgen der Dienstintegrität](../monitoring-and-diagnostics/insights-service-health.md).
 
-#### <a name="monitor-your-web-app"></a>Überwachen Ihrer Web-App
-Durch das Überwachen der Web-App können Sie herausfinden, ob in Ihrer Anwendung Probleme vorliegen. Klicken Sie auf dem Blatt Ihrer Web-App auf die Kachel **Anforderungen und Fehler** . Auf dem Blatt **Metrik** werden alle Metriken angezeigt, die Sie hinzufügen können.
+#### <a name="monitor-your-app"></a>Überwachen Ihrer App
+Durch das Überwachen der Web-App können Sie herausfinden, ob in Ihrer Anwendung Probleme vorliegen. Klicken Sie auf dem Blatt Ihrer App auf die Kachel **Anforderungen und Fehler**. Auf dem Blatt **Metrik** werden alle Metriken angezeigt, die Sie hinzufügen können.
 
-Folgende Metriken können Sie z. B. für Ihre Web-App überwachen:
+Sie können beispielsweise die folgenden Metriken für Ihre App überwachen:
 
 * Durchschnittlicher Arbeitssatz für Arbeitsspeicher
 * Durchschnittliche Reaktionszeit
@@ -66,15 +66,15 @@ Folgende Metriken können Sie z. B. für Ihre Web-App überwachen:
 * Arbeitssatz für Arbeitsspeicher
 * Requests
 
-![Überwachen der Web-App-Leistung](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
+![Überwachen der App-Leistung](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 Weitere Informationen finden Sie unter
 
-* [Überwachen von Web-Apps in Azure App Service](web-sites-monitor.md)
+* [Überwachen von Apps in Azure App Service](web-sites-monitor.md)
 * [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Überwachen des Web-Endpunktstatus
-Wenn Sie Ihre Web-App im Tarif **Standard** ausführen, können Sie mit Web-Apps zwei Endpunkte von drei geografischen Standorten aus überwachen.
+Wenn Sie Ihre App im Tarif **Standard** ausführen, können Sie mit App Service zwei Endpunkte von drei geografischen Standorten aus überwachen.
 
 Endpunktüberwachung konfiguriert Webtests von geografisch verteilten Standorten zum Testen der Reaktionszeit und der Verfügbarkeit von Web-URLs. Der Test führt einen HTTP GET-Aufruf für die Web-URL durch, um die Reaktionszeit und Verfügbarkeit der einzelnen Standorte zu ermitteln. Jeder konfigurierte Standort führt alle fünf Minuten einen Test aus.
 
@@ -87,37 +87,37 @@ Ein Video zur Endgeräteüberwachung finden Sie unter [Pflegen von Azure-Website
 #### <a name="application-performance-monitoring-using-extensions"></a>Überwachung der Anwendungsleistung mithilfe von Erweiterungen
 Sie können die Anwendungsleistung auch mit einer *Websiteerweiterung* überwachen.
 
-Jede App Service-Web-App bietet einen erweiterbaren Verwaltungsendpunkt, mit dem Sie eine Reihe leistungsstarker Tools verwenden können, die als Websiteerweiterungen bereitgestellt werden. Zu den Erweiterungen zählen Folgende: 
+Jede App Service-App bietet einen erweiterbaren Verwaltungsendpunkt, mit dem Sie eine Reihe leistungsstarker Tools verwenden können, die als Websiteerweiterungen bereitgestellt werden. Zu den Erweiterungen zählen Folgende: 
 
 - Quellcode-Editoren wie [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
-- Verwaltungstools für verbundene Ressourcen wie eine MySQL-Datenbank, die mit einer Web-App verbunden ist
+- Verwaltungstools für verbundene Ressourcen wie eine MySQL-Datenbank, die mit einer App verbunden ist.
 
 Ebenfalls zur Verfügung steht [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), eine Websiteerweiterung für die Leistungsüberwachung. Um Application Insights zu verwenden, erstellen Sie ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen. Weitere Informationen finden Sie unter [Leistungsüberwachung in Webanwendungen](../application-insights/app-insights-web-monitor-performance.md).
 
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Sammeln von Daten
-Die Web-Apps-Umgebung bietet Diagnosefunktionen zum Protokollieren von Informationen – sowohl über den Webserver als auch über die Webanwendung. Die Informationen sind logisch in Webserverdiagnose und Anwendungsdiagnose unterteilt.
+App Service bietet Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Die Informationen sind logisch in Webserverdiagnose und Anwendungsdiagnose unterteilt.
 
 #### <a name="enable-web-server-diagnostics"></a>Aktivieren der Webserverdiagnose
 Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 
 * **Detaillierte Fehlerprotokollierung** - Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat.
-* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies kann hilfreich sein, wenn Sie versuchen, die Leistung von Web-Apps zu verbessern oder die Ursache eines bestimmten HTTP-Fehlers zu ermitteln.
-* **Webserverprotokollierung** : Informationen zu HTTP-Transaktionen im erweiterten W3C-Protokolldateiformat. Dies ist hilfreich, wenn Sie allgemeine Web-App-Kennzahlen ermitteln möchten (etwa die Anzahl der verarbeiteten Anfragen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse).
+* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies kann hilfreich sein, wenn Sie versuchen, die Leistung von Apps zu verbessern oder die Ursache eines bestimmten HTTP-Fehlers zu ermitteln.
+* **Webserverprotokollierung** : Informationen zu HTTP-Transaktionen im erweiterten W3C-Protokolldateiformat. Dies ist hilfreich, wenn Sie allgemeine App-Kennzahlen ermitteln möchten (etwa die Anzahl der verarbeiteten Anfragen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse).
 
 #### <a name="enable-application-diagnostics"></a>Aktivieren der Anwendungsdiagnose
-Es stehen verschiedene Optionen zur Verfügung: Sie können Daten zur Anwendungsleistung von Web-Apps sammeln, Ihre Anwendung live über Visual Studio profilen oder den Anwendungscode ändern, um weitere Informationen und Ablaufverfolgungen zu protokollieren. Sie können die Optionen abhängig von dem Umfang des Zugriffs, der Ihnen für die Anwendung zur Verfügung steht, und den Erkenntnissen, die Sie durch die Überwachungstools gewonnen haben, auswählen.
+Es stehen verschiedene Optionen zur Verfügung: Sie können Daten zur Anwendungsleistung von App Service sammeln, Ihre Anwendung live über Visual Studio profilen oder den Anwendungscode ändern, um weitere Informationen und Ablaufverfolgungen zu protokollieren. Sie können die Optionen abhängig von dem Umfang des Zugriffs, der Ihnen für die Anwendung zur Verfügung steht, und den Erkenntnissen, die Sie durch die Überwachungstools gewonnen haben, auswählen.
 
 ##### <a name="use-application-insights-profiler"></a>Verwenden von Application Insights Profiler
-Durch die Aktivierung von Application Insights Profiler können Sie mit der Erfassung ausführlicher Leistungsablaufverfolgungen beginnen. Wenn Sie Probleme untersuchen müssen, die in der Vergangenheit aufgetreten sind, können Sie bis zu fünf Tage rückwirkend auf Ablaufverfolgungen zugreifen. Sie können diese Option auswählen, solange Sie im Azure-Portal Zugriff auf die Application Insights-Ressource der Web-App haben.
+Durch die Aktivierung von Application Insights Profiler können Sie mit der Erfassung ausführlicher Leistungsablaufverfolgungen beginnen. Wenn Sie Probleme untersuchen müssen, die in der Vergangenheit aufgetreten sind, können Sie bis zu fünf Tage rückwirkend auf Ablaufverfolgungen zugreifen. Sie können diese Option auswählen, solange Sie im Azure-Portal Zugriff auf die Application Insights-Ressource der App haben.
 
 Application Insights Profiler bietet Statistiken zur Antwortzeit aller Webaufrufe und Ablaufverfolgungen, in denen angegeben ist, welche Codezeile die langsamen Antwortzeiten verursacht hat. Mitunter arbeitet die App Service-App langsam, da der Code nicht effektiv geschrieben wurde. Beispiele hierfür sind sequenzieller Code, der parallel ausgeführt werden kann, und unerwünschte Datenbanksperrkonflikte. Durch das Beseitigen dieser Engpässe im Code lässt sich die Leistung der App steigern, die aber ohne das Einrichten aufwendiger Ablaufverfolgungen und Protokolle schwer zu finden sind. Durch die von Application Insights Profiler gesammelten Ablaufverfolgungen können die Codezeilen identifiziert werden, die zur Verlangsamung der Anwendung führen. So kann dieses Problem in Bezug auf App Service-Apps behoben werden.
 
- Weitere Informationen finden Sie unter [Profilerstellung für Live-Azure-Web-Apps mit Application Insights](../application-insights/app-insights-profiler.md).
+ Weitere Informationen finden Sie unter [Profilerstellung für Live-Azure App Service-Apps mit Application Insights](../application-insights/app-insights-profiler.md).
 
 ##### <a name="use-remote-profiling"></a>Verwenden von Remoteprofilerstellung
-In Azure App Service kann eine Remoteprofilerstellung von Web-Apps, API-Apps und WebJobs ausgeführt werden. Wählen Sie diese Option, wenn Sie Zugriff auf die Web-App-Ressource haben und wissen, wie das Problem reproduziert werden kann, oder wenn Sie das genaue Zeitintervall kennen, in dem das Leistungsproblem auftritt.
+In Azure App Service kann eine Remoteprofilerstellung von Web-Apps, API-Apps, mobilen Back Ends und WebJobs ausgeführt werden. Wählen Sie diese Option, wenn Sie Zugriff auf die App-Ressource haben und wissen, wie das Problem reproduziert werden kann, oder wenn Sie das genaue Zeitintervall kennen, in dem das Leistungsproblem auftritt.
 
 Die Remoteprofilerstellung ist nützlich, wenn die CPU-Auslastung des Prozesses hoch ist und der Prozess langsamer als erwartet ausgeführt wird oder wenn die Latenz von HTTP-Anforderungen außergewöhnlich hoch ist. In diesem Fall können Sie dann eine Remoteprofilerstellung des Prozesses ausführen und die CPU-Samplingaufruflisten abrufen, um die Prozessaktivität sowie die langsamsten Pfade im Code zu analysieren.
 
@@ -126,15 +126,15 @@ Weitere Informationen finden Sie unter [Unterstützung für Remoteprofilerstellu
 ##### <a name="set-up-diagnostic-traces-manually"></a>Manuelles Einrichten von Diagnoseablaufverfolgungen
 Wenn Sie Zugriff auf den Quellcode der Webanwendung haben, können Sie mit der Option „Anwendungsdiagnose“ die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse `System.Diagnostics.Trace` verwenden, um Informationen im Anwendungsdiagnoseprotokoll aufzuzeichnen. Allerdings müssen Sie den Code ändern und die Anwendung erneut bereitstellen. Diese Methode wird empfohlen, wenn Ihre App in einer Testumgebung ausgeführt wird.
 
-Ausführlichen Anweisungen zum Konfigurieren der Anwendung für die Protokollierung finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](web-sites-enable-diagnostic-log.md).
+Ausführlichen Anweisungen zum Konfigurieren der Anwendung für die Protokollierung finden Sie unter [Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service](troubleshoot-diagnostic-logs.md).
 
 #### <a name="use-the-diagnostics-tool"></a>Verwenden des Diagnosetools
-App Service stellt eine intelligente und interaktive Komponente bereit, mit der Sie Probleme bei Ihrer Web-App untersuchen können, ohne dass eine Konfiguration erforderlich ist. Wenn bei Ihrer Web-App Probleme auftreten, zeigt das Diagnosetool den Fehler auf, damit Sie die richtigen Informationen finden, um das Problem einfacher und schneller behandeln und lösen zu können.
+App Service stellt eine intelligente und interaktive Komponente bereit, mit der Sie eine Problembehandlung für Ihre App durchführen können, ohne dass eine Konfiguration erforderlich ist. Wenn bei Ihrer App Probleme auftreten, stellt das Diagnosetool Informationen zum Fehler bereit, damit Sie die richtigen Informationen finden, um das Problem einfacher und schneller behandeln und lösen zu können.
 
 Navigieren Sie für den Zugriff auf die App Service-Diagnose zu Ihrer App Service-App oder App Service-Umgebung im [Azure-Portal](https://portal.azure.com). Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**.
 
 #### <a name="use-the-kudu-debug-console"></a>Verwenden der Kudu-Debugkonsole
-Web-Apps enthält eine Debugkonsole, die Sie zum Debuggen, Untersuchen und Hochladen von Dateien verwenden können, sowie JSON-Endpunkte zum Abrufen von Informationen über Ihre Umgebung. Diese Konsole wird als *Kudu-Konsole* oder *SCM-Dashboard* für Ihre Web-App bezeichnet.
+App Service umfasst eine Debugkonsole zum Debuggen, Untersuchen und Hochladen von Dateien sowie JSON-Endpunkte zum Abrufen von Informationen über Ihre Umgebung. Diese Konsole wird als *Kudu-Konsole* oder *SCM-Dashboard* für Ihre App bezeichnet.
 
 Sie können über den Link **https://&lt;Name_Ihrer_App>.scm.azurewebsites.net/** auf das Dashboard zugreifen.
 
@@ -145,30 +145,30 @@ Die Kudu-Konsole bietet z. B. folgende Funktionen:
 * Speicherabbild zu Diagnosezwecken
 * Debugkonsole zum Ausführen von Powershell-Cmdlets und grundlegenden DOS-Befehlen
 
-Eine weitere nützliche Funktion von Kudu ist die Möglichkeit, mithilfe von Kudu und dem SysInternals-Tool „Procdump“ Speicherabbilddateien zu erstellen, wenn Ihre Anwendung Ausnahmen (erste Chance) auslöst. Bei diesen Speicherabbilddateien handelt es sich um Momentaufnahmen des Prozesses, die beim Beheben komplizierterer Probleme mit Ihrer Web-App hilfreich sein können.
+Eine weitere nützliche Funktion von Kudu ist die Möglichkeit, mithilfe von Kudu und dem SysInternals-Tool „Procdump“ Speicherabbilddateien zu erstellen, wenn Ihre Anwendung Ausnahmen (erste Chance) auslöst. Bei diesen Speicherabbilddateien handelt es sich um Momentaufnahmen des Prozesses, die beim Beheben komplizierterer Probleme mit Ihrer App hilfreich sein können.
 
 Weitere Informationen zu den verfügbaren Funktionen in Kudu finden Sie unter [Tools für Azure DevOps, die Sie kennen sollten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 
 ### <a name="3-mitigate-the-issue"></a>3. Minimieren der Auswirkungen des Problems
-#### <a name="scale-the-web-app"></a>Skalieren der Web-App
-In Azure App Service können Sie zum Steigern der Leistung und des Durchsatzes die Skalierung anpassen, mit der Sie Ihre Anwendung ausführen. Zum Hochskalieren einer Web-App müssen Sie zwei zusammenhängende Schritte ausführen: Für den App Service-Plan muss ein höherer Tarif verwendet und nach dem Tarifwechsel müssen bestimmte Einstellungen konfiguriert werden.
+#### <a name="scale-the-app"></a>Skalieren der App
+In Azure App Service können Sie zum Steigern der Leistung und des Durchsatzes die Skalierung anpassen, mit der Sie Ihre Anwendung ausführen. Für das zentrale Hochskalieren einer App sind zwei zueinander in Beziehung stehende Schritte erforderlich: Sie müssen für den App Service-Plan ein Upgrade auf einen höheren Tarif durchführen, und Sie müssen nach dem Tarifwechsel bestimmte Einstellungen konfigurieren.
 
-Weitere Informationen zur Skalierung finden Sie unter [Skalieren einer Web-App in Azure App Service](web-sites-scale.md).
+Weitere Informationen zur Skalierung finden Sie unter [Skalieren einer App in Azure App Service](web-sites-scale.md).
 
 Außerdem haben Sie die Möglichkeit, Ihre Anwendung auf mehreren Instanzen auszuführen. Das horizontale Hochskalieren erhöht nicht nur die Verarbeitungskapazität, sondern bietet auch ein gewisses Maß an Fehlertoleranz. Wenn der Prozess in einer Instanz ausfällt, können die anderen Instanzen weiterhin Anforderungen verarbeiten.
 
 Sie können die Skalierung auf „Manuell“ oder „Automatisch“ festlegen.
 
 #### <a name="use-autoheal"></a>Verwenden von „AutoHeal“
-„AutoHeal“ startet den Arbeitsprozess für Ihre App basierend auf von Ihnen ausgewählten Einstellungen neu (z. B. Konfigurationsänderungen, Anforderungen, speicherbasierte Grenzwerte oder zum Ausführen einer Anforderung benötigte Zeit). In den meisten Fällen ist das Neustarten des Prozesses die schnellste Methode zum Beheben eines Problems. Sie können die Web-App zwar immer direkt im Azure-Portal neu starten, „AutoHeal“ führt diesen Schritt jedoch automatisch für Sie aus. Sie müssen lediglich einige Trigger in der Stammdatei „web.config“ Ihrer Web-App hinzufügen. Diese Einstellungen werden immer auf die gleiche Weise angewendet, auch dann, wenn es sich bei Ihrer Anwendung nicht um eine .Net-App handelt.
+„AutoHeal“ startet den Arbeitsprozess für Ihre App basierend auf von Ihnen ausgewählten Einstellungen neu (z. B. Konfigurationsänderungen, Anforderungen, speicherbasierte Grenzwerte oder zum Ausführen einer Anforderung benötigte Zeit). In den meisten Fällen ist das Neustarten des Prozesses die schnellste Methode zum Beheben eines Problems. Sie können die App zwar immer direkt im Azure-Portal neu starten, „AutoHeal“ führt diesen Schritt jedoch automatisch für Sie aus. Sie müssen lediglich einige Trigger in der Stammdatei „web.config“ Ihrer App hinzufügen. Diese Einstellungen werden immer auf die gleiche Weise angewendet, auch dann, wenn es sich bei Ihrer Anwendung nicht um eine .Net-App handelt.
 
 Weitere Informationen finden Sie unter [Automatische Reparatur von Azure-Websites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
-#### <a name="restart-the-web-app"></a>Neustarten der Web-App
-Ein Neustart ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-Portal](https://portal.azure.com/) stehen auf dem Blatt Ihrer Web-App Optionen zum Beenden oder Neustarten der App zur Verfügung.
+#### <a name="restart-the-app"></a>Neustarten der App
+Ein Neustart ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-Portal](https://portal.azure.com/) stehen auf dem Blatt Ihrer App Optionen zum Beenden oder Neustarten der App zur Verfügung.
 
- ![Neustart der Web-App zum Beheben von Leistungsproblemen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![Neustart der App zum Beheben von Leistungsproblemen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
+Sie können Ihre App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).

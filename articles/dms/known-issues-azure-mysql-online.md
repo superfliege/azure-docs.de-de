@@ -4,19 +4,19 @@ description: Informationen zu bekannten Problemen/Migrationseinschränkungen bei
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884509"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721647"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for MySQL
 
@@ -60,27 +60,27 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
     ```
 
 ## <a name="datatype-limitations"></a>Einschränkungen bei Datentypen
-- **Einschränkung:** Wenn die MySQL-Quelldatenbank einen JSON-Datentyp enthält, treten bei der Migration während der fortlaufenden Synchronisierung Fehler auf.
+- **Einschränkung**: Wenn die MySQL-Quelldatenbank einen JSON-Datentyp enthält, tritt bei der Migration während der fortlaufenden Synchronisierung ein Fehler auf.
 
-    **Problemumgehung:** Ändern Sie den JSON-Datentyp in der MySQL-Quelldatenbank in „mediumtext“ oder „longtext“.
+    **Problemumgehung**: Ändern Sie den JSON-Datentyp in der MySQL-Quelldatenbank in „mediumtext“ oder „longtext“.
 
-- **Einschränkung:** Wenn in Tabellen kein Primärschlüssel vorhanden ist, treten bei der fortlaufenden Synchronisierung Fehler auf.
+- **Einschränkung**: Wenn in Tabellen kein Primärschlüssel vorhanden ist, tritt bei der fortlaufenden Synchronisierung ein Fehler auf.
  
-    **Problemumgehung:** Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
+    **Problemumgehung**: Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
 
 ## <a name="lob-limitations"></a>LOB-Einschränkungen
 LOB-Spalten (Large Object) sind Spalten, die groß werden können. Bei MySQL sind „Mediumtext“, „Longtext“, „Blob“, „Mediumblob“, „Longblob“ usw. einige der LOB-Datentypen.
 
-- **Einschränkung:** Wenn LOB-Datentypen als Primärschlüssel verwendet werden, treten bei der Migration Fehler auf.
+- **Einschränkung**: Wenn LOB-Datentypen als Primärschlüssel verwendet werden, tritt bei der Migration ein Fehler auf.
 
-    **Problemumgehung:** Ersetzen Sie den Primärschlüssel durch andere Datentypen oder Spalten, die keine LOB-Datentypen oder LOB-Spalten sind.
+    **Problemumgehung**: Ersetzen Sie den Primärschlüssel durch andere Datentypen oder Spalten, die keine LOB-Datentypen oder LOB-Spalten sind.
 
-- **Einschränkung:** Wenn die Länge der LOB-Spalte (Large Object) 32 KB überschreitet, werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
+- **Einschränkung**: Wenn die Länge der LOB-Spalte (Large Object) 32 KB überschreitet, werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Problemumgehung:** Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) an das Entwicklerteam. 
+    **Problemumgehung**: Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) an das Entwicklerteam. 
 
 ## <a name="other-limitations"></a>Weitere Einschränkungen
 - Kennwortzeichenfolgen mit öffnender und schließender geschweifter Klammer {  } am Anfang und Ende der Kennwortzeichenfolge werden nicht unterstützt. Diese Einschränkung gilt für Verbindungen mit der MySQL-Quelldatenbank sowie der Azure Database for MySQL-Zielinstanz.

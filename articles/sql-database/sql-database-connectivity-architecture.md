@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/20/2018
+ms.openlocfilehash: 62e4171a6895f2f425d67b9d1143fe9d3999a9b9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435717"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715901"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -26,7 +26,7 @@ In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQ
 > [!IMPORTANT]
 > **[Bevorstehende Änderung] Bei Dienstendpunktverbindungen mit Azure SQL-Servern ändert sich das Verbindungsverhalten `Default` in `Redirect`.**
 >
-> Die Änderung ist für die Regionen „Brasilien, Süden“ und „Europa, Westen“ bereits ab dem 10. November 2019 gültig. Für alle anderen Regionen tritt die Änderung am 2. Januar 2019 in Kraft.
+> Die Änderung ist für die Regionen „Brasilien, Süden“ und „Europa, Westen“ bereits ab dem 10. November 2018 gültig. Für alle anderen Regionen tritt die Änderung am 2. Januar 2019 in Kraft.
 >
 > Um zu verhindern, dass infolge dieser Änderung Verbindungen über einen Dienstendpunkt in bestehenden Umgebungen unterbrochen werden, setzen wir Telemetrie für folgende Zwecke ein:
 > - Bei Servern, bei denen wir feststellen, dass der Zugriff darauf vor der Änderung über Dienstendpunkte erfolgte, wird der Verbindungstyp in `Proxy` geändert.
@@ -93,7 +93,7 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | China, Norden 2 | 40.73.50.0 | |
 | Asien, Osten | 191.234.2.139 | 52.175.33.150 |
 | US, Osten 1 | 191.238.6.43 | 40.121.158.30 |
-| USA, Osten 2 | 191.239.224.107 | 40.79.84.180 * |
+| USA (Ost) 2 | 191.239.224.107 | 40.79.84.180 * |
 | Frankreich, Mitte | 40.79.137.0 | 40.79.129.1 |
 | Deutschland, Mitte | 51.4.144.100 | |
 | Deutschland, Nordosten | 51.5.144.179 | |

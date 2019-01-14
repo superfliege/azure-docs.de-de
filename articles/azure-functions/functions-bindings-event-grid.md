@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: e5c5c7f667959426f015e207cd32d716c493e31e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995027"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810933"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -48,7 +48,7 @@ Siehe das jeweilige sprachspezifische Beispiel für einen Event Grid-Trigger:
 
 * [C#](#c-example)
 * [C#-Skript (.csx)](#c-script-example)
-* [Java](#trigger---java-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
@@ -221,9 +221,14 @@ def main(event: func.EventGridEvent):
     logging.info("  Data: %s", event.get_json())
 ```
 
-### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
+### <a name="trigger---java-examples"></a>Trigger: Java-Beispiele
 
-Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [Java-Funktion](functions-reference-java.md), die die Bindung verwendet und ein Ereignis ausgibt.
+Dieser Abschnitt enthält folgende Beispiele:
+
+* [Event Grid-Trigger, String-Parameter](#event-grid-trigger-string-parameter-java)
+* [Event Grid-Trigger, POJO-Parameter](#event-grid-trigger-pojo-parameter-java)
+
+Die folgenden Beispiele zeigen die Triggerbindung in einer *function.json*-Datei und [Java-Funktionen](functions-reference-java.md), die die Bindung verwenden und ein Ereignis ausgeben. Dabei erhalten sie das Ereignis erst als ```String``` und dann als POJO.
 
 ```json
 {
@@ -237,16 +242,60 @@ Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* s
 }
 ```
 
-Dies ist der Java-Code:
+#### <a name="event-grid-trigger-string-parameter-java"></a>Event Grid-Trigger, String-Parameter (Java)
 
 ```java
-@FunctionName("eventGridMonitor")
+  @FunctionName("eventGridMonitorString")
   public void logEvent(
-     @EventGridTrigger(name = "event") String content,
-      final ExecutionContext context
-  ) {
-      context.getLogger().info(content);
-    }
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    String content, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: " + content);      
+  }
+```
+
+#### <a name="event-grid-trigger-pojo-parameter-java"></a>Event Grid-Trigger, POJO-Parameter (Java)
+
+In diesem Beispiel werden die folgenden POJO verwendet, die die Eigenschaften der obersten Ebene eines Event Grid-Ereignisses darstellen:
+
+```java
+import java.util.Date;
+import java.util.Map;
+
+public class EventSchema {
+
+  public String topic;
+  public String subject;
+  public String eventType;
+  public Date eventTime;
+  public String id;
+  public String dataVersion;
+  public String metadataVersion;
+  public Map<String, Object> data;
+
+}
+```
+
+Beim Eingang wird die JSON-Nutzlast des Ereignisses in das ```EventSchema```-POJO deserialisiert, damit dieses von der Funktion verwendet werden kann. Dadurch kann die Funktion auf die Ereigniseigenschaften auf objektorientierte Weise zugreifen.
+
+```java
+  @FunctionName("eventGridMonitor")
+  public void logEvent(
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    EventSchema event, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: ");
+      context.getLogger().info("Subject: " + event.subject);
+      context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
+      context.getLogger().info("Id: " + event.id);
+      context.getLogger().info("Data: " + event.data);
+  }
 ```
 
 Verwenden Sie die `EventGridTrigger`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Event Grid empfangen wird. Parameter mit diesen Anmerkungen führen dazu, dass die Funktion ausgeführt wird, wenn ein Ereignis empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit `Optional<T>`, die NULL-Werte annehmen können, verwendet werden.

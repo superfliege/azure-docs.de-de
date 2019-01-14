@@ -11,26 +11,45 @@ author: jodebrui
 ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: d850aff8ddb2a8b6cdd68620ae823d582c527581
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/18/2018
+ms.openlocfilehash: d2602b79db0950043cc84bbd1626f7c8ec6f402a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229089"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714388"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
-Mithilfe von In-Memory-Technologien in Azure SQL-Datenbank können Sie für verschiedene Workloads Leistungsverbesserungen erzielen: Transaktionen (Online Transactional Processing [OLTP]), Analysen (Online Analytical Processing [OLAP]) und gemischt (Hybrid Transaction/analytical Processing [HTAP]). Aufgrund der effizienteren Abfrage- und Transaktionsverarbeitung tragen In-Memory-Technologien auch zur Kostensenkung bei. Sie müssen in der Regel nicht zu einem höheren Datenbanktarif wechseln, um Leistungsvorteile zu erzielen. In einigen Fällen können Sie möglicherweise sogar zu einem niedrigen Tarif wechseln und dennoch in den Genuss von Leistungsverbesserungen durch In-Memory-Technologien kommen.
+In-Memory-Technologien in Azure SQL-Datenbank können zur Verbesserung der Leistung Ihrer Anwendung beitragen und potenziell Kosten für Ihre Datenbank verringern. Durch Verwenden von In-Memory-Technologien in Azure SQL-Datenbank können Sie Leistungsverbesserungen bei verschiedenen Workloads erzielen:
+- **Transaktionsverarbeitung** (Online Transactional Processing, OLTP), bei der die meisten Anforderungen einen kleineren Satz Daten lesen oder aktualisieren (z.B. CRUD-Vorgänge).
+- **Analytische Verarbeitung** (Online Analytical Processing, OLAP), bei der die meisten Abfragen komplexe Berechnungen für die Berichterstellung umfassen und eine bestimmte Anzahl von Abfragen Daten in vorhandene Tabellen lädt oder daran anfügt (so genanntes Massenladen) oder Daten aus Tabellen löscht. 
+- **Gemischte Verarbeitung** (Hybrid Transaction/Analytical Processing, HTAP), bei der sowohl OLTP- als auch OLAP-Abfragen für den gleichen Satz Daten ausgeführt werden.
+
+In-Memory-Technologien können die Leistung dieser Workloads verbessern, indem sie die zu verarbeitenden Daten im Arbeitsspeicher behalten, eine native Kompilierung der Abfragen verwenden oder eine erweiterte Verarbeitung wie z.B. Batchprozesse und SIMD-Anweisungen ausführen, die in der zugrunde liegenden Hardware verfügbar sind.
+
+Azure SQL-Datenbank verfügt über die folgenden In-Memory-Technologien:
+- *[In-Memory-OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* erhöht die Anzahl von Transaktionen pro Sekunde und reduziert die Latenz für die Transaktionsverarbeitung. Szenarien, die von In-Memory-OLTP profitieren sind: hoher Durchsatz bei der Transaktionsverarbeitung z.B. Handel treiben, Spielen, Datenerfassung von Ereignissen oder IoT-Geräten, Zwischenspeichern, Laden von Daten, temporäre Tabellen und Szenarien mit Tabellenvariablen.
+- *Gruppierte Columnstore-Indizes* reduzieren den Speicherplatzbedarf (bis um das Zehnfache) und verbessern die Leistung für Berichts- und Analyseabfragen. Verwenden Sie sie mit Faktentabellen in Ihren Data Marts, um mehr Daten in Ihrer Datenbank zu speichern und die Leistung zu verbessern. Sie können sie auch mit Verlaufsdaten in der Betriebsdatenbank verwenden, um bis zu zehnmal mehr Daten zu archivieren und abfragen zu können.
+- *Nicht gruppierte Columnstore-Indizes* für HTAP helfen beim Gewinnen von Einblicken in Echtzeit in Ihr Geschäft, indem Sie die Betriebsdatenbank direkt abfragen, ohne einen aufwendigen ETL-Prozess (Extrahieren, Transformieren, Laden) ausführen zu müssen und darauf zu warten, dass das Data Warehouse aufgefüllt wird. Nicht geclusterte Columnstore-Indizes sorgen für eine schnelle Ausführung von Analyseabfragen in der OLTP-Datenbank und reduzieren gleichzeitig die Auswirkungen auf die Betriebsworkload.
+- *Speicheroptimierte geclusterte Columnstore-Indizes* für HTAP ermöglichen eine schnelle Transaktionsverarbeitung sowie die sehr schnelle *gleichzeitige* Ausführung von Analyseabfragen derselben Daten.
+
+Sowohl Columnstore-Indizes als auch In-Memory-OLTP gehören seit 2012 bzw. 2014 zum Funktionsumfang von SQL Server. Azure SQL-Datenbank und SQL Server weisen dieselbe Implementierung von In-Memory-Technologien auf. In Zukunft werden neue Funktionen für diese Technologien zunächst in Azure SQL-Datenbank geboten, ehe sie in SQL Server verfügbar sind.
+
+## <a name="benefits-of-in-memory-technology"></a>Vorteile der In-Memory-Technologie
+
+Aufgrund der effizienteren Abfrage- und Transaktionsverarbeitung tragen In-Memory-Technologien auch zur Kostensenkung bei. Sie müssen in der Regel nicht zu einem höheren Datenbanktarif wechseln, um Leistungsvorteile zu erzielen. In einigen Fällen können Sie möglicherweise sogar zu einem niedrigen Tarif wechseln und dennoch in den Genuss von Leistungsverbesserungen durch In-Memory-Technologien kommen.
 
 Hier sind zwei Beispiele dafür, wie In-Memory-OLTP geholfen hat, die Leistung deutlich zu verbessern:
 
 - Mithilfe von In-Memory-OLTP [konnten Quorum Business Solutions ihre Workload verdoppeln und ihre DTUs um 70 % verbessern](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
     - DTU bedeutet *Database Transaction Unit* (Datenbank-Transaktionseinheit) und schließt eine Messung der Ressourcennutzung ein.
-- Das folgende Video veranschaulicht anhand einer Beispielworkload eine erhebliche Verbesserung der Ressourcennutzung: [In-Memory-OLTP in Azure SQL-Datenbank](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-    - Weitere Informationen finden Sie im Blogbeitrag [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (In-Memory-OLTP in Azure SQL-Datenbank).
+- Das folgende Video veranschaulicht die erhebliche Verbesserung der Ressourcennutzung anhand einer Beispielworkload: [In-Memory OLTP in Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (In-Memory OLTP in Azure SQL-Datenbank).
+    - Weitere Informationen finden Sie in diesem Blogbeitrag: [Blogbeitrag „In-Memory OLTP in Azure SQL Database“](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (In-Memory OLTP in Azure SQL-Datenbank)
 
-In-Memory-Technologien sind in allen Datenbanken des Tarifs „Premium“, einschließlich Datenbanken im Premium-Tarif für Pools für elastische Datenbanken, verfügbar.
+> [!NOTE]  
+>  
+>  In-Memory-Technologien sind für Azure SQL-Datenbank in den Tarifen „Premium“ und „Unternehmenskritisch“ sowie in Pools für elastische Datenbanken im Tarif „Premium“ verfügbar.
 
 Im folgende Video werden potenzielle Leistungsvorteile mit In-Memory-Technologien in Azure SQL-Datenbank erklärt. Denken Sie daran, dass der Leistungsvorteil, den Sie erzielen, stets von vielen Faktoren abhängig ist. Dazu gehören die Art der Workload und Daten, die Zugriffsmuster der Datenbank usw.
 
@@ -38,38 +57,45 @@ Im folgende Video werden potenzielle Leistungsvorteile mit In-Memory-Technologie
 >
 >
 
-Azure SQL-Datenbank verfügt über die folgenden In-Memory-Technologien:
-
-- *In-Memory-OLTP* erhöht die Transaktionsanzahl und verringert die Latenz für die Verarbeitung von Transaktionen. Szenarien, die von In-Memory-OLTP profitieren sind: hoher Durchsatz bei der Transaktionsverarbeitung z.B. Handel treiben, Spielen, Datenerfassung von Ereignissen oder IoT-Geräten, Zwischenspeichern, Laden von Daten, temporäre Tabellen und Szenarien mit Tabellenvariablen.
-- *Gruppierte Columnstore-Indizes* reduzieren den Speicherplatzbedarf (bis um das Zehnfache) und verbessern die Leistung für Berichts- und Analyseabfragen. Verwenden Sie sie mit Faktentabellen in Ihren Data Marts, um mehr Daten in Ihrer Datenbank zu speichern und die Leistung zu verbessern. Sie können sie auch mit Verlaufsdaten in der Betriebsdatenbank verwenden, um bis zu zehnmal mehr Daten zu archivieren und abfragen zu können.
-- *Nicht gruppierte Columnstore-Indizes* für HTAP helfen beim Gewinnen von Einblicken in Echtzeit in Ihr Geschäft, indem Sie die Betriebsdatenbank direkt abfragen, ohne einen aufwendigen ETL-Prozess (Extrahieren, Transformieren, Laden) ausführen zu müssen und darauf zu warten, dass das Data Warehouse aufgefüllt wird. Nicht gruppierte Columnstore-Indizes helfen beim sehr schnellen Ausführen von Analyseabfragen in der OLTP-Datenbank, während gleichzeitig die Auswirkung auf die Betriebsworkload gering gehalten wird.
-- Sie können auch eine Kombination aus einer speicheroptimierten Tabelle und einem Columnstore-Index verwenden. Diese Kombination ermöglicht eine sehr schnelle Transaktionsverarbeitung und eine *parallele* Ausführung von Analyseabfragen auf dieselben Daten.
-
-Sowohl Columnstore-Indizes als auch In-Memory-OLTP gehören seit 2012 bzw. 2014 zum Funktionsumfang von SQL Server. Azure SQL-Datenbank und SQL Server weisen dieselbe Implementierung von In-Memory-Technologien auf. In Zukunft werden neue Funktionen für diese Technologien zunächst in Azure SQL-Datenbank geboten, ehe sie in SQL Server verfügbar sind.
-
 In diesem Artikel werden Aspekte von In-Memory-OLTP und Columnstore-Indizes beschrieben, die spezifisch für Azure SQL-Datenbank sind. Außerdem sind Beispiele aufgeführt:
 - Sie erfahren etwas über die Auswirkung dieser Technologien auf Speicher und die Grenzwerte für die Datengröße.
 - Sie erfahren, wie Sie das Verschieben von Datenbanken, die diese Technologien nutzen, zwischen verschiedenen Tarifen verwalten.
 - Sie sehen zwei Beispiele, die die Verwendung von In-Memory-OLTP und Columnstore-Indizes in Azure SQL-Datenbank veranschaulichen.
 
-Weitere Informationen finden Sie in den folgenden Ressourcen.
-
-Detaillierte Informationen zu den Technologien:
-
+Weitere Informationen finden Sie unter
 - [In-Memory-OLTP: Übersicht und Verwendungsszenarien](https://msdn.microsoft.com/library/mt774593.aspx) (einschließlich Verweisen auf Fallstudien und Informationen für Einsteiger)
 - [Dokumentation für In-Memory-OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Beschreibung von Columnstore-Indizes](https://msdn.microsoft.com/library/gg492088.aspx)
 - HTAP (Hybrid Transactional/Analytical Processing), auch als [Real-time Operational Analytics](https://msdn.microsoft.com/library/dn817827.aspx) bekannt
 
-Schnelleinstieg in In-Memory-OLTP: [Quick Start 1: In-Memory OLTP Technologies for Faster T-SQL Performance](https://msdn.microsoft.com/library/mt694156.aspx) (Schnellstart 1: In-Memory-OLTP-Technologien für höhere T-SQL-Leistung): Dieser Artikel unterstützt Sie ebenfalls bei den ersten Schritten.
+## <a name="in-memory-oltp"></a>In-Memory-OLTP
+
+In-Memory-OLTP-Technologie ermöglicht extrem schnelle Datenzugriffsvorgänge, indem sämtliche Daten im Arbeitsspeicher behalten werden. Die Technologie nutzt auch spezialisierte Indizes, die native Kompilierung von Abfragen sowie latchfreien Datenzugriff zur Verbesserung der Leistung der OLTP-Workload. Es gibt zwei Möglichkeiten, die In-Memory-OLTP-Daten zu organisieren:
+- **Speicheroptimiertes Rowstoreformat**, in dem jede Zeile ein separates Arbeitsspeicherobjekt darstellt. Dies ist ein klassisches In-Memory-OLTP-Format, das für OLTP-Workloads mit hoher Leistung optimiert ist. Es gibt zwei Arten von speicheroptimierten Tabellen, die im speicheroptimierten Rowstoreformat verwendet werden können:
+  - *Dauerhafte Tabellen* (SCHEMA_AND_DATA), bei denen die im Arbeitsspeicher platzierten Zeilen nach einem Serverneustart beibehalten werden. Diese Art von Tabellen verhält sich wie herkömmliche Rowstoretabellen, bietet aber die zusätzlichen Vorteile von speicherinternen Optimierungen.
+  - *Nicht dauerhafte Tabellen* (SCHEMA_ONLY), bei denen die Zeilen nach einem Neustart nicht beibehalten werden. Diese Art von Tabelle ist für temporäre Daten (z.B. zum Austausch von temporären Tabellen) oder für Tabellen konzipiert, in die schnell Daten geladen werden müssen, bevor sie in dauerhafte Tabellen verschoben werden (so genannte Stagingtabellen).
+- **Speicheroptimiertes Columnstoreformat**, bei dem Daten in Spaltenform organisiert sind. Diese Struktur wurde für HTAP-Szenarien konzipiert, in denen Sie Analyseabfragen in der gleichen Datenstruktur ausführen müssen, in der Ihre OLTP-Workload ausgeführt wird.
+
+> [!Note]
+> Die In-Memory-OLTP-Technologie wurde für Datenstrukturen entwickelt, die vollständig im Arbeitsspeicher verbleiben können. Da die In-Memory-Daten nicht auf einen Datenträger ausgelagert werden können, müssen Sie sicherstellen, dass Sie eine Datenbank mit ausreichend Arbeitsspeicher verwenden. Weitere Informationen finden Sie unter [Datengröße und Speicherkapazität für In-Memory-OLTP](#data-size-and-storage-cap-for-in-memory-oltp).
+
+Eine kurze Einführung zu In-Memory-OLTP finden Sie hier: [Schnellstart 1: In-Memory-OLTP-Technologien für höhere T-SQL-Leistung](https://msdn.microsoft.com/library/mt694156.aspx) (Informationen für den Einstieg).
 
 Ausführliche Videos zu den Technologien:
 
 - [In-Memory-OLTP in Azure SQL-Datenbank](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) mit einer Veranschaulichung von Leistungsvorteilen und einer Anleitung, die zeigt, wie Sie diese Ergebnisse selbst reproduzieren können
-- [In-Memory-OLTP-Videos: Was es ist und wann/wie es verwendet wird (in englischer Sprache)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
-- [Columnstore-Index: Videos zur In-Memory-Analyse von der Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Videos zu In-Memory-OLTP: Was es ist und wann/wie es verwendet wird](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/) (in englischer Sprache)
 
-## <a name="storage-and-data-size"></a>Speicher- und Datengröße
+Es gibt einen programmgesteuerten Weg, um zu verstehen, ob eine vorhandene Datenbank In-Memory-OLTP unterstützt. Sie können die folgende Transact-SQL-Abfrage ausführen:
+```
+SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
+```
+Wenn die Abfrage **1** zurückgibt, wird In-Memory-OLTP in dieser Datenbank unterstützt. Die folgenden Abfragen identifizieren alle Objekte, die entfernt werden müssen, damit eine Datenbank auf „Standard“ oder „Basic“ heruntergestuft werden kann:
+```
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Datengröße und Speicherkapazität für In-Memory-OLTP
 
@@ -94,402 +120,52 @@ Bei Pools für elastische Datenbanken wird der In-Memory-OLTP-Speicher von allen
 - Konfigurieren Sie eine `Max-eDTU` oder `MaxvCore` für Datenbanken, die niedriger als die eDTU- oder V-Kern-Anzahl für den ganzen Pool ist. Dieser Maximalwert begrenzt die In-Memory-OLTP-Speichernutzung in jeder Datenbank im Pool auf die Größe, die der eDTU-Anzahl entspricht.
 - Konfigurieren Sie eine `Min-eDTU` oder `MinvCore`, die größer als 0 ist. Mit diesem Minimalwert wird sichergestellt, dass jede Datenbank im Pool die Menge des In-Memory-OLTP-Speichers zur Verfügung hat, die der konfigurierten `Min-eDTU` oder `vCore` entspricht.
 
+### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>Ändern des Diensttarifs für Datenbanken, die In-Memory-OLTP-Technologien verwenden
+
+Sie können jederzeit ein Upgrade Ihrer Datenbank oder Instanz auf einen höheren Tarif ausführen, z.B. von „Universell“ zu „Unternehmenskritisch“ (oder von „Standard“ zu „Premium“). Es steigen nur die verfügbaren Funktionen und Ressourcen.
+
+Ein Downgrade des Tarifs kann sich jedoch nachteilig auf Ihre Datenbank auswirken. Die Auswirkungen sind besonders deutlich, wenn Sie von „Unternehmenskritisch“ zu „Universell“ (oder von „Premium“ zu „Standard“ oder „Basic“) herabstufen und Ihre Datenbank In-Memory-OLTP-Objekte enthält. Speicheroptimierte Tabellen sind nach dem Downgrade nicht mehr verfügbar (auch wenn sie sichtbar bleiben). Die gleichen Aspekte gelten, wenn Sie den Tarif eines Pools für elastische Datenbanken herabstufen oder mit einer Datenbank mit In-Memory-Technologien zu einem Pool für elastische Datenbanken im Tarif Standard oder Basic wechseln.
+
+> [!Important]
+> In-Memory-OLTP wird in den Tarifen „Universell“, „Standard“ und „Basic“ nicht unterstützt. Daher ist es nicht möglich, eine Datenbank mit In-Memory-OLTP-Objekten in die Tarife „Standard“ oder „Basic“ zu verlagern.
+
+Entfernen Sie alle speicheroptimierten Tabellen und Tabellentypen sowie alle nativ kompilierten T-SQL Module, bevor Sie die Datenbank auf den Standard- oder Basic-Tarif herabstufen. 
+
+*Herunterskalieren von Ressourcen im Tarif „Unternehmenskritisch“*: Daten in speicheroptimierten Tabellen müssen in den In-Memory-OLTP-Speicher passen, der dem Tarif der Datenbank oder der verwalteten Instanz zugeordnet oder im Pool für elastische Datenbanken verfügbar ist. Wenn Sie versuchen, in einen niedrigeren Tarif zu wechseln oder die Datenbank in einen Pool zu verschieben, dem nicht genügend In-Memory-OLTP-Speicher zur Verfügung steht, misslingt der Vorgang.
+
+## <a name="in-memory-columnstore"></a>In-Memory-Columnstore
+
+Die In-Memory-Columnstoretechnologie ermöglicht es Ihnen, eine große Datenmenge in Tabellen zu speichern und abzufragen. Die Columnstoretechnologie verwendet ein spaltenbasiertes Datenspeicherformat und Batchabfragen, um eine bis zu 10-mal höhere Abfrageleistung in OLAP-Workloads zu erzielen also herkömmliche zeilenorientierte Speicher. Sie können im Vergleich zur unkomprimierten Datengröße außerdem eine bis zu 10-mal höhere Datenkomprimierung erzielen.
+Es gibt zwei Arten von Columnstoremodellen, die Sie zum Organisieren Ihrer Daten verwenden können:
+- **Geclusterter Columnstore**, in dem alle Daten in einer Tabelle im Spaltenformat organisiert werden. In diesem Modell werden alle Zeilen einer Tabelle in einem Spaltenformat platziert, das die Daten stark komprimiert und Ihnen eine schnelle Ausführung von Analyseabfragen und -berichten in der Tabelle ermöglicht. Je nach Art Ihrer Daten kann das Datenvolumen um das 10- bis 100-Fache reduziert werden. Das Modell mit Columnstoreclustern ermöglicht auch das schnelle Erfassen großer Datenmengen (Massenladen), da große Datenbatches mit mehr als 100.000 Zeilen vor dem Speichern auf dem Datenträger komprimiert werden. Dieses Modell eignet sich gut für Szenarien mit klassischen Data Warehouses. 
+- **Nicht geclusterter Columnstore**, bei dem die Daten in herkömmlichen Rowstoretabellen gespeichert sind und ein Index im Columnstoreformat vorliegt, der für die Analyseabfragen verwendet wird. Dieses Modell ermöglicht Hybrid Transactional-Analytic Processing (HTAP): die Möglichkeit, leistungsfähige Echtzeitanalysen für eine Transaktionsworkload auszuführen. OLTP-Abfragen werden in einer Rowstoretabelle ausgeführt, die für den Zugriff auf eine kleine Menge an Zeilen optimiert ist. OLAP-Abfragen dagegen werden in einem Columnstore-Index ausgeführt, der sich für Überprüfungen und Analysen besser eignet. Der Azure SQL-Datenbank-Abfrageoptimierer wählt das Rowstore- oder Columnstoreformat dynamisch basierend auf der jeweiligen Abfrage aus. Nicht geclusterte Columnstore-Indizes verringern die Größe der Daten nicht, da das ursprüngliche Dataset ohne Änderung in der ursprünglichen Rowstoretabelle beibehalten wird. Der zusätzliche Columnstore-Index sollte sich jedoch in einer Größenordnung befinden, die kleiner ist als der entsprechende B-Struktur-Index.
+
+> [!Note]
+> Die In-Memory-Columnstoretechnologie speichert nur die für die Verarbeitung erforderlichen Daten im Arbeitsspeicher. Daten, die nicht in den Arbeitsspeicher passen, werden auf einem Datenträger gespeichert. Aus diesem Grund kann die Datenmenge in In-Memory-Columnstorestrukturen die Größe des verfügbaren Arbeitsspeichers überschreiten. 
+
+Ausführliche Videos zur Technologie:
+- [Columnstore-Index: Videos zur In-Memory-Analyse von der Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/) (in englischer Sprache)
+
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Datengröße und Speicher für Columnstore-Indizes
 
 Columnstore-Indizes brauchen nicht in den Arbeitsspeicher zu passen. Deshalb ist die einzige Begrenzung der Indexgröße die maximale Gesamtgröße der Datenbank, was in den Artikeln [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md) dokumentiert ist.
 
-Wenn Sie gruppierte Columnstore-Indizes verwenden, wird eine Spaltenkomprimierung für den Basistabellenspeicher verwendet. Durch diese Komprimierung kann der Speicherbedarf Ihrer Benutzerdaten erheblich reduziert werden, d.h., Sie können mehr Daten in der Datenbank speichern. Die Komprimierung kann außerdem mit [spaltenorientierter Archivierungskomprimierung](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression) noch weiter erhöht werden. Der Grad der Komprimierung, die Sie erreichen können, hängt von der Art der Daten ab, jedoch ist eine zehnfache Komprimierung nicht ungewöhnlich.
+Wenn Sie gruppierte Columnstore-Indizes verwenden, wird eine Spaltenkomprimierung für den Basistabellenspeicher verwendet. Durch diese Komprimierung kann der Speicherbedarf Ihrer Benutzerdaten erheblich reduziert werden, d.h., Sie können mehr Daten in der Datenbank speichern. Die Komprimierung kann außerdem mit [spaltenorientierter Archivierungskomprimierung](https://msdn.microsoft.com/library/cc280449.aspx#using-columnstore-and-columnstore-archive-compression) noch weiter erhöht werden. Der Grad der Komprimierung, die Sie erreichen können, hängt von der Art der Daten ab, jedoch ist eine zehnfache Komprimierung nicht ungewöhnlich.
 
 Wenn Sie z.B. eine Datenbank mit einer maximalen Größe von 1 Terabyte (TB) haben und mithilfe von Columnstore-Indizes eine zehnfache Komprimierung erreichen, können Sie insgesamt 10 TB Benutzerdaten in der Datenbank speichern.
 
 Bei Verwendung von nicht gruppierten Columnstore-Indizes wird die Basistabelle weiterhin im herkömmlichen Rowstore-Format gespeichert. Aus diesem Grund sind die Speichereinsparungen nicht so groß wie bei gruppierten Columnstore-Indizes. Wenn Sie jedoch mehrere herkömmliche nicht gruppierte Indizes durch einen einzelnen Columnstore-Index ersetzen, können Sie dennoch allgemeine Einsparungen beim Speicherbedarf für die Tabelle erzielen.
 
-## <a name="moving-databases-that-use-in-memory-technologies-between-pricing-tiers"></a>Verschieben von Datenbanken mit In-Memory-Technologien zwischen Tarifen
+### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Ändern der Diensttarife für Datenbanken mit Columnstore-Indizes
 
-Es gibt nie Inkompatibilitäten oder andere Probleme, wenn Sie auf einen höheren Tarif heraufstufen, z.B. von Standard auf Premium. Es steigen nur die verfügbaren Funktionen und Ressourcen.
-
-Ein Downgrade des Tarifs kann sich jedoch nachteilig auf Ihre Datenbank auswirken. Die Auswirkung ist besonders deutlich, wenn Sie von Premium zu Standard oder Basic herabstufen und Ihre Datenbank In-Memory-OLTP-Objekte enthält. Speicheroptimierte Tabellen sind nach dem Downgrade nicht mehr verfügbar (auch wenn sie sichtbar bleiben). Die gleichen Aspekte gelten, wenn Sie den Tarif eines Pools für elastische Datenbanken herabstufen oder mit einer Datenbank mit In-Memory-Technologien zu einem Pool für elastische Datenbanken im Tarif Standard oder Basic wechseln.
-
-### <a name="in-memory-oltp"></a>In-Memory-OLTP
-
-*Herunterstufen auf Basic/Standard*: In-Memory-OLTP wird nicht von Datenbanken im Tarif „Standard“ oder „Basic“ unterstützt. Darüber hinaus ist es nicht möglich, mit einer Datenbank mit In-Memory OLTP-Objekten zum Tarif „Standard“ oder „Basic“ zu wechseln.
-
-Es gibt einen programmgesteuerten Weg, um zu verstehen, ob eine vorhandene Datenbank In-Memory-OLTP unterstützt. Sie können die folgende Transact-SQL-Abfrage ausführen:
-
-```
-SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
-```
-
-Wenn die Abfrage **1** zurückgibt, wird In-Memory-OLTP in dieser Datenbank unterstützt.
-
-Entfernen Sie alle speicheroptimierten Tabellen und Tabellentypen sowie alle nativ kompilierten T-SQL Module, bevor Sie die Datenbank auf den Standard- oder Basic-Tarif herabstufen. Die folgenden Abfragen identifizieren alle Objekte, die entfernt werden müssen, damit eine Datenbank auf „Standard“ oder „Basic“ heruntergestuft werden kann:
-
-```
-SELECT * FROM sys.tables WHERE is_memory_optimized=1
-SELECT * FROM sys.table_types WHERE is_memory_optimized=1
-SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
-```
-
-*Herunterstufen auf einen niedrigeren Premium-Tarif*: Daten in speicheroptimierten Tabellen müssen in den In-Memory-OLTP-Speicher passen, der dem Tarif der Datenbank zugeordnet oder im Pool für elastische Datenbanken verfügbar ist. Wenn Sie versuchen, zu einem niedrigeren Tarif zu wechseln oder die Datenbank in einen Pool zu verschieben, dem nicht genügend In-Memory-OLTP-Speicher zur Verfügung steht, misslingt der Vorgang.
-
-### <a name="columnstore-indexes"></a>ColumnStore-Indizes
-
-*Downgrade auf Basic oder Standard:* Columnstore-Indizes werden nur im Tarif Premium und Standard – S3 und höher – unterstützt, nicht im Tarif Basic. Nach dem Herabstufen Ihrer Datenbank auf einen nicht unterstützten Tarif bzw. auf eine nicht unterstützte Ebene ist der Columnstore-Index nicht mehr verfügbar. Das System verwaltet den Columnstore-Index, nutzt den Index jedoch nie. Wenn Sie später wieder auf einen unterstützten Tarif bzw. auf eine unterstützte Ebene heraufstufen, kann der Columnstore-Index sofort wieder genutzt werden.
+Das *Herabstufen einer Einzeldatenbank auf die Tarife „Basic“ oder „Standard“* ist eventuell nicht möglich, wenn der angestrebte Tarif unter S3 liegt. Columnstore-Indizes werden nur in den Tarifen „Unternehmenskritisch“ und „Premium“ sowie in den Standard-Tarifen S3 und höher unterstützt, nicht jedoch im Basic-Tarif. Nach dem Herabstufen Ihrer Datenbank auf einen nicht unterstützten Tarif bzw. auf eine nicht unterstützte Ebene ist der Columnstore-Index nicht mehr verfügbar. Das System verwaltet den Columnstore-Index, nutzt den Index jedoch nie. Wenn Sie später wieder auf einen unterstützten Tarif bzw. auf eine unterstützte Ebene heraufstufen, kann der Columnstore-Index sofort wieder genutzt werden.
 
 Wenn Sie über einen **gruppierten** Columnstore-Index verfügen, ist die gesamte Tabelle nach dem Downgrade nicht mehr verfügbar. Aus diesem Grund wird empfohlen, alle *gruppierten* Columnstore-Indizes vor dem Herabstufen Ihrer Datenbank auf einen nicht unterstützten Tarif bzw. auf eine nicht unterstützte Ebene zu löschen.
 
-*Herabstufen auf einen niedrigeren unterstützten Tarif bzw. eine niedrigere unterstützte Ebene*: Dieses Downgrade ist erfolgreich, wenn die ganze Datenbank in die maximale Datenbankgröße des Zieltarifs oder des verfügbaren Speichers im Pool für elastische Datenbanken passt. Es gibt keine spezifische Auswirkungen aus den Columnstore-Indizes.
-
+> [!Note]
+> Verwaltete Instanzen unterstützt Columnstore-Indizes in allen Tarifen.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
-
-&nbsp;
-
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. Installieren des Beispiels für In-Memory OLTP
-
-Sie können im [Azure-Portal](https://portal.azure.com/) die Beispieldatenbank „AdventureWorksLT“ mit wenigen Klicks erstellen. Anhand der Schritte in diesem Abschnitt wird erläutert, wie Sie anschließend Ihre AdventureWorksLT-Datenbank mit In-Memory-OLTP-Objekten erweitern können, und es werden Leistungsvorteile demonstriert.
-
-Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLTP finden Sie hier:
-
-- Version: [in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
-- Quellcode: [in-memory-oltp-demo-source-code](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/in-memory/ticket-reservations)
-
-#### <a name="installation-steps"></a>Installationsschritte
-
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) auf einem Server eine Datenbank vom Typ „Premium“ oder „Unternehmenskritisch“. Legen Sie die Beispieldatenbank „AdventureWorksLT“ als **Quelle** fest. Detaillierte Anweisungen finden Sie unter [Erstellen Ihrer ersten Azure SQL-Datenbank](sql-database-get-started-portal.md).
-
-2. Stellen Sie eine Verbindung mit der Datenbank mit SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)her.
-
-3. Kopieren Sie das [In-Memory OLTP Transact-SQL-Skript](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) in die Zwischenablage. Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
-
-4. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist die `MEMORY_OPTIMIZED = ON`-Klausel in den CREATE TABLE-Anweisungen. Beispiel: 
-
-
-```
-CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
-    [SalesOrderID] int IDENTITY NOT NULL PRIMARY KEY NONCLUSTERED ...,
-    ...
-) WITH (MEMORY_OPTIMIZED = ON);
-```
-
-
-#### <a name="error-40536"></a>Fehler 40536
-
-
-Wenn bei Ausführen des T-SQL-Skripts der Fehler 40536 angezeigt wird, führen Sie das folgende T-SQL-Skript aus, um zu prüfen, ob die Datenbank In-Memory unterstützt:
-
-
-```
-SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
-```
-
-
-Das Ergebnis **0** bedeutet, dass In-Memory nicht unterstützt wird. **1** bedeutet Unterstützung. Stellen Sie für die Problemdiagnose sicher, dass die Datenbank dem Premium-Tarif unterliegt.
-
-
-#### <a name="about-the-created-memory-optimized-items"></a>Informationen zu speicheroptimierten Elementen
-
-**Tabellen**: Das Beispiel enthält die folgenden speicheroptimierten Tabellen:
-
-- SalesLT.Product_inmem
-- SalesLT.SalesOrderHeader_inmem
-- SalesLT.SalesOrderDetail_inmem
-- Demo.DemoSalesOrderHeaderSeed
-- Demo.DemoSalesOrderDetailSeed
-
-
-Sie können im **Objekt-Explorer** in SSMS speicheroptimierte Tabellen untersuchen. Klicken Sie mit der rechten Maustaste auf **Tabellen** > **Filter** > **Filtereinstellungen** > **Speicheroptimiert**. Der Wert ist gleich 1.
-
-
-Oder Sie können die Katalogsichten abfragen wie z. B.:
-
-
-```
-SELECT is_memory_optimized, name, type_desc, durability_desc
-    FROM sys.tables
-    WHERE is_memory_optimized = 1;
-```
-
-
-**Nativ kompilierte gespeicherte Prozedur** Sie können „SalesLT.usp_InsertSalesOrder_inmem“ über eine Katalogsichtabfrage untersuchen:
-
-
-```
-SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
-    FROM sys.sql_modules
-    WHERE uses_native_compilation = 1;
-```
-
-
-&nbsp;
-
-### <a name="run-the-sample-oltp-workload"></a>Ausführen der OLTP-Beispielworkload
-
-Der einzige Unterschied zwischen den beiden folgenden *gespeicherten Prozeduren* ist, dass die erste Prozedur speicheroptimierte Versionen der Tabellen verwendet, während die zweite Prozedur die herkömmlichen Tabellen auf dem Datenträger nutzt:
-
-- SalesLT **.** usp_InsertSalesOrder **_inmem**
-- SalesLT **.** usp_InsertSalesOrder **_ondisk**
-
-
-In diesem Abschnitt wird veranschaulicht, wie Sie das praktische Hilfsprogramm **ostress.exe** zum Ausführen der beiden gespeicherten Prozeduren bei hohen Belastungsgraden verwenden. Sie können vergleichen, wie lange es dauert, bis die beiden Belastungstests abgeschlossen sind.
-
-
-Für das Ausführen von „ostress.exe“ wird empfohlen, dass Sie Parameterwerte übergeben, die für beide der folgenden ausgelegt sind:
-
-- Führen Sie eine große Anzahl gleichzeitiger Verbindungen mit „-n100“ aus.
-- Lassen Sie jede Verbindung eine Schleife Hunderte Male durchlaufen, indem Sie „-r500“ angeben.
-
-
-Allerdings möchten Sie möglicherweise mit wesentlich kleineren Werten wie „-n10“ und „-r50“ starten, um sicherzustellen, dass alles funktioniert.
-
-
-### <a name="script-for-ostressexe"></a>Skript für „ostress.exe“
-
-
-Dieser Abschnitt zeigt das T-SQL-Skript, das in unsere „ostress.exe“-Befehlszeile eingebettet ist. Das Skript verwendet Elemente, die von dem zuvor von Ihnen installierten T-SQL-Skript erstellt wurden.
-
-
-Das folgende Skript fügt einen Beispielauftrag mit fünf Positionen in die folgenden speicheroptimierten *Tabellen*ein:
-
-- SalesLT.SalesOrderHeader_inmem
-- SalesLT.SalesOrderDetail_inmem
-
-
-```
-DECLARE
-    @i int = 0,
-    @od SalesLT.SalesOrderDetailType_inmem,
-    @SalesOrderID int,
-    @DueDate datetime2 = sysdatetime(),
-    @CustomerID int = rand() * 8000,
-    @BillToAddressID int = rand() * 10000,
-    @ShipToAddressID int = rand() * 10000;
-
-INSERT INTO @od
-    SELECT OrderQty, ProductID
-    FROM Demo.DemoSalesOrderDetailSeed
-    WHERE OrderID= cast((rand()*60) as int);
-
-WHILE (@i < 20)
-begin;
-    EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT,
-        @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od;
-    SET @i = @i + 1;
-end
-```
-
-
-Um die *_ondisk*-Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge *_inmem* durch *_ondisk* ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
-
-
-### <a name="install-rml-utilities-and-ostress"></a>Installieren von RML-Hilfsprogrammen und ostress
-
-
-Im Idealfall planen Sie die Ausführung von „ostress.exe“ auf einer Azure-VM. Dazu erstellen Sie eine [Azure-VM](https://azure.microsoft.com/documentation/services/virtual-machines/) in der gleichen Azure-Region, in der sich die AdventureWorksLT-Datenbank befindet. Sie können „ostress.exe“ aber auch auf Ihrem Laptop ausführen.
-
-
-Installieren Sie auf der VM oder dem gewählten Host die RML-Hilfsprogramme (Replay Markup Language). Dazu zählt auch „ostress.exe“.
-
-Weitere Informationen finden Sie unter
-- Diskussion zu „ostress.exe“ unter [Beispieldatenbank für In-Memory-OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- [Beispieldatenbank für In-Memory-OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- [Blog zur Installation von „ostress.exe“](https://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
-
-
-
-<!--
-dn511655.aspx is for SQL 2014,
-[Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
-(http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
-
-whereas for SQL 2016+
-[Sample Database for In-Memory OLTP]
-(http://msdn.microsoft.com/library/mt465764.aspx)
--->
-
-
-
-### <a name="run-the-inmem-stress-workload-first"></a>Zuerst Belastungsworkload *_inmem* ausführen
-
-
-Sie können ein Fenster mit einer *RML-Eingabeaufforderung* zum Ausführen der „ostress.exe“-Befehlszeile verwenden. Die Befehlszeilenparameter weisen „ostress“ zu Folgendem an:
-
-- Ausführen von 100 Verbindungen gleichzeitig (-n100).
-- 50-maliges Ausführen des T-SQL-Skripts auf jeder Verbindung (-r50).
-
-
-```
-ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password> -d<database> -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem, @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() * 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()* 10000; INSERT INTO @od SELECT OrderQty, ProductID FROM Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int); WHILE (@i < 20) begin; EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od; set @i += 1; end"
-```
-
-
-So führen Sie die vorherige „ostress.exe“-Befehlszeile aus:
-
-
-1. Setzen Sie den Dateninhalt der Datenbank durch Ausführen des folgenden Befehls in SSMS zurück, um alle Daten zu löschen, die bei vorherigen Ausführungen eingefügt wurden:
-
-    ``` tsql
-    EXECUTE Demo.usp_DemoReset;
-    ```
-
-2. Kopieren Sie den Text der vorhergehenden „ostress.exe“-Befehlszeile in die Zwischenablage.
-
-3. Ersetzen Sie `<placeholders>` für die Parameter „-S“, „-U“, „-P“ und „-d“ durch die ordnungsgemäßen tatsächlichen Werte.
-
-4. Führen Sie die bearbeitete Befehlszeile in einem RML-Befehlsfenster aus.
-
-
-#### <a name="result-is-a-duration"></a>Das Ergebnis ist eine Dauer
-
-
-Wenn „ostress.exe“ abgeschlossen ist, wird die Testlaufdauer im RML-Befehlsfenster als letzte Zeile ausgegeben. Ein kürzerer Testlauf dauerte beispielsweise ca. 1,5 Minuten:
-
-`11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
-
-
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>Zurücksetzen, für *_ondisk* bearbeiten, danach erneut ausführen
-
-
-Sobald Sie über das Ergebnis der Ausführung von *_inmem* verfügen, führen Sie die folgenden Schritte für die Ausführung von *_ondisk* durch:
-
-
-1. Setzen Sie die Datenbank durch Ausführen des folgenden Befehls in SSMS zurück, um alle Daten zu löschen, die bei der vorherigen Ausführung eingefügt wurden:
-```
-EXECUTE Demo.usp_DemoReset;
-```
-
-2. Bearbeiten Sie die ostress.exe-Befehlszeile so, dass alle Vorkommen von *_inmem* durch *_ondisk* ersetzt werden.
-
-3. Führen Sie „ostress.exe“ ein zweites Mal aus, und erfassen Sie die Dauer.
-
-4. Setzen Sie die Datenbank erneut zurück, um auf verantwortliche Weise eine u.U. große Menge an Testdaten zu löschen.
-
-
-#### <a name="expected-comparison-results"></a>Erwartete Vergleichsergebnisse
-
-Unsere In-Memory-Tests haben für diese einfache Workload eine **neunmal** höhere Leistung ergeben, wenn „ostress“ auf einem virtuellen Azure-Computer ausgeführt wird, der sich in der gleichen Azure-Region wie die Datenbank befindet.
-
-<a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
-
-&nbsp;
-
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. Installieren des In-Memory Analytics-Beispiels
-
-
-In diesem Abschnitt vergleichen Sie die E/A- und Statistikergebnisse mit dem Verwenden eines Columnstore-Indexes im Vergleich mit einem herkömmlichen B-Struktur-Index.
-
-
-Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht gruppierten Columnstore-Index zu verwenden. Weitere Informationen finden Sie unter [Beschreibung von Columnstore-Indizes](https://msdn.microsoft.com/library/gg492088.aspx).
-
-
-
-### <a name="prepare-the-columnstore-analytics-test"></a>Vorbereiten des Columnstore-Analysetests
-
-
-1. Erstellen Sie im Azure-Portal anhand des Beispiels eine neue AdventureWorksLT-Datenbank.
- - Verwenden Sie denselben Namen.
- - Wählen Sie den Tarif „Premium“.
-
-2. Kopieren Sie [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) in die Zwischenablage.
- - Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
- - Das Skript erstellt die Dimensionstabelle und zwei Faktentabellen. Beide Faktentabellen werden mit 3,5 Mio. Zeilen aufgefüllt.
- - Die Ausführung des Skripts kann 15 dauern.
-
-3. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist das Schlüsselwort **COLUMNSTORE** in einer **CREATE INDEX**-Anweisung wie in:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
-
-4. Legen Sie „AdventureWorksLT“ auf den Kompatibilitätsgrad 130 fest: <br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
-
-    Der Kompatibilitätsgrad 130 steht nicht in direkter Beziehung mit den In-Memory-Features  Doch der Grad 130 bietet im Allgemeinen eine höhere Abfrageleistung als 120.
-
-
-#### <a name="key-tables-and-columnstore-indexes"></a>Wichtige Tabellen und Columnstore-Indizes
-
-
-- „dbo.FactResellerSalesXL_CCI“ ist eine Tabelle mit einem gruppierten Columnstore-Index, der auf *Datenebene* eine erweiterte Komprimierung aufweist.
-
-- „dbo.FactResellerSalesXL_PageCompressed“ ist eine Tabelle mit einem vergleichbaren herkömmlichen gruppierten Index, der nur auf *Seitenebene* komprimiert ist.
-
-
-#### <a name="key-queries-to-compare-the-columnstore-index"></a>Wichtige Abfragen zum Vergleichen des Columnstore-Indexes
-
-
-[Hier](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) finden Sie mehrere T-SQL-Abfragetypen, die Sie ausführen können, um Leistungssteigerungen zu erkennen. Achten Sie in Schritt 2 im T-SQL-Skript auf dieses Paar von Abfragen. Die beiden Abfragen unterscheiden sich nur in einer Zeile:
-
-
-- `FROM FactResellerSalesXL_PageCompressed a`
-- `FROM FactResellerSalesXL_CCI a`
-
-
-Für die Tabelle „FactResellerSalesXL\_CCI“ ist ein gruppierter Columnstore-Index vorhanden.
-
-Der folgende T-SQL-Skriptauszug gibt Statistiken für E/A und Dauer der Abfrage der einzelnen Tabellen zurück.
-
-
-```
-/*********************************************************************
-Step 2 -- Overview
--- Page Compressed BTree table v/s Columnstore table performance differences
--- Enable actual Query Plan in order to see Plan differences when Executing
-*/
--- Ensure Database is in 130 compatibility mode
-ALTER DATABASE AdventureworksLT SET compatibility_level = 130
-GO
-
--- Execute a typical query that joins the Fact Table with dimension tables
--- Note this query will run on the Page Compressed table, Note down the time
-SET STATISTICS IO ON
-SET STATISTICS TIME ON
-GO
-
-SELECT c.Year
-    ,e.ProductCategoryKey
-    ,FirstName + ' ' + LastName AS FullName
-    ,count(SalesOrderNumber) AS NumSales
-    ,sum(SalesAmount) AS TotalSalesAmt
-    ,Avg(SalesAmount) AS AvgSalesAmt
-    ,count(DISTINCT SalesOrderNumber) AS NumOrders
-    ,count(DISTINCT a.CustomerKey) AS CountCustomers
-FROM FactResellerSalesXL_PageCompressed a
-INNER JOIN DimProduct b ON b.ProductKey = a.ProductKey
-INNER JOIN DimCustomer d ON d.CustomerKey = a.CustomerKey
-Inner JOIN DimProductSubCategory e on e.ProductSubcategoryKey = b.ProductSubcategoryKey
-INNER JOIN DimDate c ON c.DateKey = a.OrderDateKey
-GROUP BY e.ProductCategoryKey,c.Year,d.CustomerKey,d.FirstName,d.LastName
-GO
-SET STATISTICS IO OFF
-SET STATISTICS TIME OFF
-GO
-
-
--- This is the same Prior query on a table with a clustered columnstore index CCI
--- The comparison numbers are even more dramatic the larger the table is (this is an 11 million row table only)
-SET STATISTICS IO ON
-SET STATISTICS TIME ON
-GO
-SELECT c.Year
-    ,e.ProductCategoryKey
-    ,FirstName + ' ' + LastName AS FullName
-    ,count(SalesOrderNumber) AS NumSales
-    ,sum(SalesAmount) AS TotalSalesAmt
-    ,Avg(SalesAmount) AS AvgSalesAmt
-    ,count(DISTINCT SalesOrderNumber) AS NumOrders
-    ,count(DISTINCT a.CustomerKey) AS CountCustomers
-FROM FactResellerSalesXL_CCI a
-INNER JOIN DimProduct b ON b.ProductKey = a.ProductKey
-INNER JOIN DimCustomer d ON d.CustomerKey = a.CustomerKey
-Inner JOIN DimProductSubCategory e on e.ProductSubcategoryKey = b.ProductSubcategoryKey
-INNER JOIN DimDate c ON c.DateKey = a.OrderDateKey
-GROUP BY e.ProductCategoryKey,c.Year,d.CustomerKey,d.FirstName,d.LastName
-GO
-
-SET STATISTICS IO OFF
-SET STATISTICS TIME OFF
-GO
-```
-
-In einer Datenbank mit dem P2-Tarif können Sie etwa einen neunfachen Leistungszuwachs für diese Abfrage bei Verwenden des gruppierten Columnstore-Indexes im Vergleich zum traditionellen Index erwarten. Mit P15 kann bei Verwenden des Columnstore-Indexes ein Leistungszuwachs um das 57-fache erwartet werden.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -499,6 +175,7 @@ In einer Datenbank mit dem P2-Tarif können Sie etwa einen neunfachen Leistungsz
 
 - [Überwachen des In-Memory-OLTP-Speichers](sql-database-in-memory-oltp-monitoring.md) für In-Memory-OLTP
 
+- [Ausprobieren von In-Memory-Features in Azure SQL-Datenbank](sql-database-in-memory-sample.md)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

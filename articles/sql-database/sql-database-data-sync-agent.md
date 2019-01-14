@@ -12,16 +12,19 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 11/12/2018
-ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: b5916b781c636752ada6898cfa0c03bc02891501
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685139"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715017"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung
 
 Synchronisieren von Daten mit lokalen SQL Server-Datenbanken durch Installieren und Konfigurieren des Datensynchronisierungs-Agents für die Azure SQL-Datensynchronisierung. Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Die Azure SQL-Datensynchronisierung unterstützt derzeit **keine** verwalteten Azure SQL-Datenbank-Instanzen.
 
 ## <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -136,7 +139,7 @@ Folgende Szenarien können diesen Fehler verursachen:
 
 ### <a name="agent-start"></a> Der Client-Agent startet nicht (Fehler 1069).
 
-Sie stellen fest, dass der Agent auf einem Computer, der SQL Server hostet, nicht ausgeführt wird. Wenn Sie versuchen, den Agent manuell zu starten, wird ein Dialogfeld mit folgender Fehlermeldung angezeigt: „Fehler 1069: Der Dienst konnte wegen einer fehlerhaften Anmeldung nicht gestartet werden.“
+Sie stellen fest, dass der Agent auf einem Computer, der SQL Server hostet, nicht ausgeführt wird. Wenn Sie versuchen, den Agent manuell zu starten, wird ein Dialogfeld mit folgender Fehlermeldung angezeigt: „Fehler 1069: Der Dienst wurde aufgrund eines Anmeldefehlers nicht gestartet.“
 
 ![Dialogfeld mit dem Datensynchronisierungsfehler 1069](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -318,7 +321,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie in den folgenden 
 
 -   Übersicht: [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md)
 -   Einrichten der Datensynchronisierung
-    - Im Portal: [Tutorial: Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und lokalem SQL Server](sql-database-get-started-sql-data-sync.md)
+    - Im Portal – [Tutorial: Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und lokalem SQL Server](sql-database-get-started-sql-data-sync.md)
     - Mit PowerShell
         -  [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Azure SQL-Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)

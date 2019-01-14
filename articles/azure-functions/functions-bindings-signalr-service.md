@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7a7063b9177774c5207746283dc7cd25e3dd5793
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001795"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721885"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
@@ -62,7 +62,7 @@ public static SignalRConnectionInfo GetSignalRInfo(
 
 #### <a name="authenticated-tokens"></a>Authentifizierte Token
 
-Wenn die Funktion von einem authentifizierten Client ausgelöst wird, können Sie dem erzeugten Token einen Benutzer-ID-Anspruch hinzufügen. Mithilfe von [App Service-Authentifizierung] (../app-service/app-service-authentication-overview.md) können Sie einer Funktions-App problemlos Authentifizierung hinzufügen.
+Wenn die Funktion von einem authentifizierten Client ausgelöst wird, können Sie dem erzeugten Token einen Benutzer-ID-Anspruch hinzufügen. Mithilfe von [App Service-Authentifizierung] (../app-service/overview-authentication-authorization.md) können Sie einer Funktions-App problemlos Authentifizierung hinzufügen.
 
 App Service-Authentifizierung legt HTTP-Header mit den Namen `x-ms-client-principal-id` und `x-ms-client-principal-name` fest, die die Clientprinzipal-ID bzw. den Namen des authentifizierten Benutzers enthalten. Sie können die `UserId`-Eigenschaft der Bindung mithilfe eines [Bindungsausdrucks](functions-triggers-bindings.md#binding-expressions-and-patterns) auf den Wert eines der beiden Header festlegen: `{headers.x-ms-client-principal-id}` oder `{headers.x-ms-client-principal-name}`. 
 
@@ -108,7 +108,7 @@ module.exports = function (context, req, connectionInfo) {
 
 #### <a name="authenticated-tokens"></a>Authentifizierte Token
 
-Wenn die Funktion von einem authentifizierten Client ausgelöst wird, können Sie dem erzeugten Token einen Benutzer-ID-Anspruch hinzufügen. Mithilfe von [App Service-Authentifizierung] (../app-service/app-service-authentication-overview.md) können Sie einer Funktions-App problemlos Authentifizierung hinzufügen.
+Wenn die Funktion von einem authentifizierten Client ausgelöst wird, können Sie dem erzeugten Token einen Benutzer-ID-Anspruch hinzufügen. Mithilfe von [App Service-Authentifizierung] (../app-service/overview-authentication-authorization.md) können Sie einer Funktions-App problemlos Authentifizierung hinzufügen.
 
 App Service-Authentifizierung legt HTTP-Header mit den Namen `x-ms-client-principal-id` und `x-ms-client-principal-name` fest, die die Clientprinzipal-ID bzw. den Namen des authentifizierten Benutzers enthalten. Sie können die `userId`-Eigenschaft der Bindung mithilfe eines [Bindungsausdrucks](functions-triggers-bindings.md#binding-expressions-and-patterns) auf den Wert eines der beiden Header festlegen: `{headers.x-ms-client-principal-id}` oder `{headers.x-ms-client-principal-name}`. 
 

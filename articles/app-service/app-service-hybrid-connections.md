@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258014"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653389"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen #
 
@@ -145,7 +145,7 @@ So fügen Sie Ihrem HCM eine oder mehrere Hybridverbindungen hinzu:
 1. Wählen Sie die Hybridverbindungen aus, die der HCM weiterleiten soll.
 ![Screenshot von Hybridverbindungen][9]
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 Es werden nun die Hybridverbindungen angezeigt, die Sie hinzugefügt haben. Sie können die konfigurierte Hybridverbindung auch auswählen, um Details anzuzeigen.
 
@@ -177,7 +177,7 @@ Es sind regelmäßige Updates für den Hybridverbindungs-Manager zum Beheben von
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Programmgesteuertes Hinzufügen einer Hybridverbindung zu Ihrer App ##
 
-Die unten aufgeführten APIs können direkt zum Verwalten der Hybridverbindungen verwendet werden, die mit Ihren Web-Apps verbunden sind. 
+Die unten aufgeführten APIs können direkt zum Verwalten der Hybridverbindungen verwendet werden, die mit Ihren Apps verbunden sind. 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
@@ -198,7 +198,7 @@ Das JSON-Objekt, das einer Hybridverbindung zugeordnet ist, sieht folgendermaße
       }
     }
 
-Eine Möglichkeit, diese Informationen zu verwenden, ist der ARM-Client, den Sie aus dem GitHub-Projekt [ARMClient][armclient] abrufen können. Das folgende Beispiel zeigt das Anfügen einer vorhandenen Hybridverbindung an Ihre Web-App. Erstellen Sie eine JSON-Datei über das oben angegebene Schema:
+Eine Möglichkeit, diese Informationen zu verwenden, ist der ARM-Client, den Sie aus dem GitHub-Projekt [ARMClient][armclient] abrufen können. Das folgende Beispiel zeigt das Anfügen einer vorhandenen Hybridverbindung an Ihre App. Erstellen Sie eine JSON-Datei über das oben angegebene Schema:
 
     {
       "name": "relay-demo-hc",
@@ -230,7 +230,7 @@ In App Service kann das Tool tcpping über die Konsole „Erweiterte Tools“ (K
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk-Hybridverbindungen ##
 
-Eine frühe Form dieses Features wurde als „BizTalk-Hybridverbindungen“ bezeichnet. Diese Funktion wurde am 31. Mai 2018 eingestellt und beendet. BizTalk-Hybridverbindungen wurden aus allen Web-Apps entfernt, und auf sie kann nicht über das Portal oder die API zugegriffen werden. Wenn Sie diese älteren Verbindungen noch im Hybridverbindungs-Manager konfiguriert haben, werden der Status „Nicht mehr unterstützt“ und unten ein Einstellungshinweis angezeigt.
+Eine frühe Form dieses Features wurde als „BizTalk-Hybridverbindungen“ bezeichnet. Diese Funktion wurde am 31. Mai 2018 eingestellt und beendet. BizTalk-Hybridverbindungen wurden aus allen Apps entfernt, und auf sie kann nicht über das Portal oder die API zugegriffen werden. Wenn Sie diese älteren Verbindungen noch im Hybridverbindungs-Manager konfiguriert haben, werden der Status „Nicht mehr unterstützt“ und unten ein Einstellungshinweis angezeigt.
 
 ![BizTalk-Hybridverbindungen im HCM][12]
 

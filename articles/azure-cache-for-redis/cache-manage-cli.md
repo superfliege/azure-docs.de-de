@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 54aa6f12afd83d4fb180b718ed420f62a8663ff6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b9ad2f4fd3b0ccf928dcec58b7c55778bcbdc95
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021495"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558701"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Erstellen und Verwalten von Azure Cache for Redis mit der klassischen Azure CLI
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Wenn Sie alle Azure Cache for Redis-Befehle und deren Parameter anzeigen möchte
     help:    Delete an existing Azure Cache for Redis
     help:      rediscache delete [--name <name> --resource-group <resource-group> ]
     help:
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:      rediscache list [options]
     help:
     help:    Show properties of an existing Azure Cache for Redis
@@ -150,15 +150,15 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-all-azure-cache-for-rediss-within-your-subscription-or-resource-group"></a>Auflisten aller Azure Cache for Redis-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe
-Zum Auflisten aller Azure Cache for Redis-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe verwenden Sie den folgenden Befehl:
+## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Auflisten aller Azure Cache for Redis-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe
+Verwenden Sie zum Auflisten aller Azure Cache for Redis-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe den folgenden Befehl:
 
     azure rediscache list [options]
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache list -h` -Befehl aus.
 
     C:\>azure rediscache list -h
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:
     help:    Usage: rediscache list [options]
     help:

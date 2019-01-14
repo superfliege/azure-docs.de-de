@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 84c82da933b17679e8c69c08b0c9cc7372951cfd
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3f87a4c520327f1a13a48c70502b6737c0aa9b3a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802052"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630970"
 ---
-# <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway
-Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste im gleichen Abonnement und in derselben Region zuordnen. 
+# <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
+Das lokale Datengateway sorgt für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste im gleichen Abonnement und in derselben Region zuordnen. 
 
 Das erstmalige Einrichten des Gateways ist ein Prozess mit vier Schritten:
 
@@ -94,31 +94,31 @@ Derzeit können Mandantenadministratoren nicht alle Gateways, die andere Benutze
 ### <a name="general"></a>Allgemein
 
 **F**: Benötige ich ein Gateway für Datenquellen in der Cloud, z.B. Azure SQL-Datenbank? <br/>
-**A**: Nein. Ein Gateway ist nur zum Herstellen einer Verbindung mit lokalen Datenquellen erforderlich.
+**A**:  Nein. Ein Gateway ist nur zum Herstellen einer Verbindung mit lokalen Datenquellen erforderlich.
 
 **F**: Muss das Gateway auf dem gleichen Computer wie die Datenquelle installiert werden? <br/>
-**A**: Nein. Das Gateway muss nur eine Verbindung mit dem Server herstellen können (üblicherweise im gleichen Netzwerk).
+**A**:  Nein. Das Gateway muss nur eine Verbindung mit dem Server herstellen können (üblicherweise im gleichen Netzwerk).
 
 <a name="why-azure-work-school-account"></a>
 
 **F**: Warum muss ich für die Anmeldung ein Geschäfts-, Schul- oder Unikonto verwenden? <br/>
-**A**: Sie können beim Installieren des lokalen Datengateways nur ein Geschäfts-, Schul- oder Unikonto verwenden. Dieses Konto muss sich darüber hinaus im gleichen Mandanten befinden wie das Abonnement, unter dem Sie die Gatewayressource konfigurieren. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der Benutzerprinzipalname (UPN) Ihres Azure AD-Kontos der E-Mail-Adresse.
+**A**: Sie können beim Installieren des lokalen Datengateways nur ein Geschäfts-, Schul- oder Unikonto Ihrer Organisation verwenden. Dieses Konto muss sich darüber hinaus im gleichen Mandanten befinden wie das Abonnement, unter dem Sie die Gatewayressource konfigurieren. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der Benutzerprinzipalname (UPN) Ihres Azure AD-Kontos der E-Mail-Adresse.
 
 **F**: Wo werden meine Anmeldeinformationen gespeichert ? <br/>
 **A**: Die Anmeldeinformationen, die Sie für eine Datenquelle eingeben, werden verschlüsselt und im Gatewayclouddienst gespeichert. Die Anmeldeinformationen werden im lokalen Datengateway entschlüsselt.
 
 **F**: Gibt es Anforderungen an die Netzwerkbandbreite? <br/>
-**A**: Es ist ratsam, dafür zu sorgen, dass die Netzwerkverbindung über einen guten Durchsatz verfügt. Jede Umgebung ist anders, und die Menge der zu sendenden Daten wirkt sich auf die Ergebnisse aus. ExpressRoute könnte ein Durchsatzniveau zwischen lokalen und Azure-Rechenzentren gewährleisten.
+**A**: Es ist ratsam, für einen guten Durchsatz der Netzwerkverbindung zu sorgen. Jede Umgebung ist anders, und die Menge der zu sendenden Daten wirkt sich auf die Ergebnisse aus. ExpressRoute könnte ein Durchsatzniveau zwischen lokalen und Azure-Rechenzentren gewährleisten.
 Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoch der Durchsatz ist.
 
-**F**: Wie lang ist die Wartezeit für das Ausführen von Abfragen bei einer Datenquelle aus dem Gateway? Welche Architektur ist die beste? <br/>
+**F**: Wie lang ist die Latenz beim Ausführen von Abfragen in einer Datenquelle aus dem Gateway? Welche Architektur ist die beste? <br/>
 **A**: Um die Netzwerklatenz zu reduzieren, installieren Sie das Gateway so nahe wie möglich bei der Datenquelle. Wenn Sie das Gateway auf der tatsächlichen Datenquelle installieren können, wird die Wartezeit durch diese Nähe minimiert. Berücksichtigen Sie auch die Rechenzentren. Wenn für Ihren Dienst beispielsweise das Rechenzentrum „USA, Westen“ verwendet wird und Sie SQL Server auf einer Azure-VM hosten, sollte sich die Azure-VM ebenfalls in der Region „USA, Westen“ befinden. Aufgrund dieser Nähe wird die Wartezeit verringert, und es werden Gebühren für ausgehenden Datenverkehr auf der Azure-VM vermieden.
 
 **F**: Wie werden Ergebnisse an die Cloud zurückgesendet? <br/>
 **A**: Die Ergebnisse werden über Azure Service Bus gesendet.
 
-**F**: Gibt es aus der Cloud eingehende Verbindungen mit dem Gateway? <br/>
-**A**: Nein. Das Gateway verwendet ausgehende Verbindungen mit dem Azure Service Bus.
+**F**: Gibt es eingehende Verbindungen mit dem Gateway aus der Cloud? <br/>
+**A**:  Nein. Das Gateway verwendet ausgehende Verbindungen mit dem Azure Service Bus.
 
 **F**: Was geschieht, wenn ich ausgehende Verbindungen blockiere? Was muss ich öffnen? <br/>
 **A**: Die Ports und Hosts, die das Gateway verwendet.
@@ -126,18 +126,21 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 **F**: Wie wird der eigentliche Windows-Dienst genannt?<br/>
 **A**: In „Dienste“ hat das Gateway den Namen „Lokaler Datengatewaydienst“.
 
-**F**: Kann der Gateway-Windows-Dienst mit einem Azure Active Directory-Konto ausgeführt werden? <br/>
-**A**: Nein. Der Windows-Dienst benötigt ein gültiges Windows-Konto. Standardmäßig wird er mit der Dienst-SID „NT SERVICE\PBIEgwService“ ausgeführt.
+**F**: Kann der Windows-Gatewaydienst mit einem Azure Active Directory-Konto ausgeführt werden? <br/>
+**A**:  Nein. Der Windows-Dienst benötigt ein gültiges Windows-Konto. Standardmäßig wird er mit der Dienst-SID „NT SERVICE\PBIEgwService“ ausgeführt.
 
 **F**: Wie übernehme ich ein Gateway? <br/>
-**A**: Um ein Gateway übernehmen zu können (durch Ausführen von „Einrichten/Ausführen“ unter „Systemsteuerung > Programme und Funktionen“), müssen Sie in Azure Besitzer der Gatewayressource sein und über den Wiederherstellungsschlüssel verfügen. Besitzer von Gatewayressourcen können unter Zugriffssteuerung festgelegt werden.
+**A**: Um ein Gateway übernehmen zu können (durch Ausführen von „Einrichten/Ausführen“ unter „Systemsteuerung > Programme und Funktionen“), müssen Sie Besitzer der Gatewayressource in Azure sein und über den Wiederherstellungsschlüssel verfügen. Besitzer von Gatewayressourcen können unter Zugriffssteuerung festgelegt werden.
 
 ### <a name="high-availability"></a>Hohe Verfügbarkeit und Notfallwiederherstellung
+
+**F**: Wie können wir Hochverfügbarkeit erzielen?  
+**A**: Sie können ein Gateway auf einem anderen Computer installieren, um einen Cluster zu erstellen. Weitere Informationen finden Sie in der Dokumentation zu Power BI Gateway unter [Hochverfügbarkeitscluster für lokale Datengateways](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 **F**: Welche Optionen sind für die Notfallwiederherstellung verfügbar? <br/>
 **A**: Sie können den Wiederherstellungsschlüssel verwenden, um ein Gateway wiederherzustellen oder zu verschieben. Wenn Sie das Gateway installieren, geben Sie den Wiederherstellungsschlüssel an.
 
-**F**: Welchen Vorteil hat der Wiederherstellungsschlüssel? <br/>
+**F**: Welchen Vorteil bietet der Wiederherstellungsschlüssel? <br/>
 **A**: Der Wiederherstellungsschlüssel bietet eine Möglichkeit zum Migrieren oder Wiederherstellen Ihrer Gatewayeinstellungen nach einem Notfall.
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -184,7 +187,7 @@ Telemetrie kann zur Überwachung und Problembehandlung verwendet werden. Standar
 
 **So aktivieren Sie Telemetrie**
 
-1.  Überprüfen Sie das Verzeichnis des lokalen Datengateway-Clients auf dem Computer. Es lautet in der Regel **%systemdrive%\Programme\On-premises data gateway**. Alternativ können Sie die Konsole „Dienste“ öffnen und den Pfad zur ausführbaren Datei überprüfen: eine Eigenschaft des Diensts Lokales Datengateway.
+1.  Überprüfen Sie das Verzeichnis des lokalen Datengateway-Clients auf dem Computer. Es lautet in der Regel **%systemdrive%\Programme\On-premises data gateway**. Sie können auch die Konsole „Dienste“ öffnen und den Pfad zur ausführbaren Datei überprüfen: Eine Eigenschaft des lokalen Datengatewaydiensts.
 2.  In der Datei „Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config“ im Clientverzeichnis. Ändern Sie die Einstellung „SendTelemetry“ in „true“.
         
     ```
@@ -193,7 +196,7 @@ Telemetrie kann zur Überwachung und Problembehandlung verwendet werden. Standar
         </setting>
     ```
 
-3.  Speichern Sie die Änderungen, und starten Sie den folgenden Windows-Dienst neu: Lokales Datengateway.
+3.  Speichern Sie Ihre Änderungen, und starten Sie den Windows-Dienst neu: Lokaler Datengatewaydienst.
 
 
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 0f376d6b1108b784af37b5e50dab9edba63e5f76
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0b2e49bb0e269c91ed6a1bf7294565a729082db3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713094"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975133"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster Autoscaler in Azure Kubernetes Service (AKS) – Vorschauversion
 
@@ -398,7 +398,7 @@ Den Status von Cluster Autoscaler können Sie auf zwei verschiedenen Ebenen eins
     * Ein Kandidat zum zentralen Herunterskalieren ist ein Knoten, der laut Cluster Autoscaler entfernt werden kann, ohne dass die Möglichkeit des Clusters zur Verarbeitung seiner Workload beeinträchtigt wird. 
     * Die angegebenen Zeiten geben den Zeitpunkt, an dem der Cluster zuletzt auf Kandidaten zum zentralen Herunterskalieren überprüft wurde, sowie den Zeitpunkt des letzten Übergangs an.
 
-Unter Events finden Sie zu guter Letzt fehlerhafte oder erfolgreiche Skalierungsereignisse jeglicher Art oder Ereignisse zum zentralen Herunterskalieren sowie den jeweiligen Zeitpunkt, an dem Cluster Autoscaler diese ausgeführt hat.
+Unter Events finden Sie Ereignisse zum zentralen Hoch- oder Herunterskalieren, fehlerhafte oder erfolgreiche Skalierungsereignisse jeglicher Art sowie den jeweiligen Zeitpunkt, an dem die automatische Clusterskalierung diese ausgeführt hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722376"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794242"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Grundlegendes zur Konfiguration der regelmäßigen Sicherung in Azure Service Fabric
 
@@ -138,6 +138,9 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
         }
         ```
 
+> [!IMPORTANT]
+> Aufgrund eines Problems in der Runtime müssen Sie sicherstellen, dass die Beibehaltungsdauer in der Aufbewahrungsrichtlinie auf weniger als 24 Tage festgelegt ist. Andernfalls kommt es für den Sicherungs-/Wiederherstellungsdienst nach dem Replikatfailover zu einem Quorumsverlust.
+
 ## <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach der Definition der Sicherungsrichtlinie zur Erfüllung der Datensicherungsanforderungen sollte die Sicherungsrichtlinie entweder mit einer _Anwendung_, einem _Dienst_ oder einer _Partition_ verknüpft werden.
 
@@ -214,6 +217,11 @@ Sobald das Anhalten nicht mehr erforderlich ist, kann die regelmäßige Datensic
 * Verwenden Sie die API [Dienstsicherung fortsetzen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup), um die regelmäßige Sicherung für einen _Dienst_ wieder fortzusetzen, nachdem diese angehalten wurde.
 
 * Verwenden Sie die API [Partitionssicherung fortsetzen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup), um die regelmäßige Sicherung für eine _Partition_ wieder fortzusetzen, nachdem diese angehalten wurde.
+
+### <a name="difference-between-suspend-and-disable-backups"></a>Unterschied zwischen dem Anhalten und dem Deaktivieren von Sicherungen
+Sicherungen sollten deaktiviert werden, wenn Sicherungen für eine bestimmte Anwendung, einen bestimmten Dienst oder eine bestimmte Partition nicht mehr erforderlich sind. Tatsächlich kann eine Anforderung zum Deaktivieren der Sicherung aufgerufen werden, wenn der Parameter zum Bereinigen von Sicherungen TRUE lautet. Das bedeutet, dass alle vorhandenen Sicherungen ebenfalls gelöscht werden. Das Anhalten von Sicherungen wird hingegen in Szenarien eingesetzt, in denen Sicherungen vorübergehend deaktiviert werden sollen, wenn beispielsweise der lokale Datenträger voll ist oder beim Hochladen einer Sicherung aufgrund eines bekannten Netzwerkproblems ein Fehler auftritt usw. 
+
+Während die Deaktivierung nur auf einer Ebene aufgerufen werden kann, die zuvor explizit für die Sicherung aktiviert wurde, kann das Anhalten der Sicherung auf jeder beliebigen Ebene angewendet werden, die derzeit für die Sicherung aktiviert ist – entweder direkt oder durch Vererbung/Hierarchie. Wenn die Sicherung zum Beispiel auf Anwendungsebene aktiviert ist, kann die Deaktivierung nur auf Anwendungsebene aufgerufen werden. Das Anhalten der Sicherung kann jedoch für die Anwendung sowie für jeden Dienst oder jede Partition unter dieser Anwendung aufgerufen werden. 
 
 ## <a name="auto-restore-on-data-loss"></a>Automatische Wiederherstellung bei Datenverlust
 Durch unerwartete Ausfälle können auf der Dienstpartition befindliche Daten verloren gehen. Beispielsweise wird die Festplatte für zwei von drei Replikaten einer Partition (einschließlich des primären Replikats) beschädigt oder gelöscht.

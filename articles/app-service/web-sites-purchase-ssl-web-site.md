@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268715"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714299"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
@@ -35,7 +35,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Web-App schützen, indem Sie ein A
 Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 
 - [Erstellen einer App Service-App](/azure/app-service/)
-- [Zuordnen eines Domänennamens zu Ihrer Web-App](app-service-web-tutorial-custom-domain.md) oder [Kaufen und Konfigurieren eines Domänennamens in Azure](custom-dns-web-site-buydomains-web-app.md)
+- [Zuordnen eines Domänennamens zu Ihrer Web-App](app-service-web-tutorial-custom-domain.md) oder [Kaufen und Konfigurieren eines Domänennamens in Azure](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -60,7 +60,7 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 
 Sobald der Zertifikatkaufvorgang abgeschlossen ist, müssen Sie noch ein paar Schritte ausführen, bevor Sie das Zertifikat verwenden können. 
 
-Wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann auf **Zertifikatkonfiguration** > **Schritt 1:  Speichern**.
+Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann auf **Zertifikatkonfiguration** > **Schritt 1: Speichern**.
 
 ![Bild von Bereitschaft zum Speichern in KV einfügen](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -81,7 +81,7 @@ Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repo
 
 ## <a name="verify-domain-ownership"></a>Überprüfen des Domänenbesitzes
 
-Klicken Sie auf der Seite **Zertifikatkonfiguration**, die Sie im letzten Schritt verwendet haben, auf **Schritt 2:  Überprüfen**.
+Klicken Sie auf der Seite **Zertifikatkonfiguration**, die Sie im letzten Schritt verwendet haben, auf **Schritt 2: Überprüfen**.
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -91,7 +91,7 @@ Klicken Sie auf **App Service-Überprüfung**. Da Sie die Domäne bereits Ihrer 
 > Vier Arten von Domänenüberprüfungsmethoden werden unterstützt: 
 > 
 > - **App Service**: Die einfachste Option, wenn die Domäne bereits einer App Service-App im gleichen Abonnement zugeordnet ist. Sie nutzt die Tatsache aus, dass die App Service-App den Domänenbesitz bereits überprüft hat.
-> - **Domäne**: Mit dieser Option wird eine [App Service-Domäne überprüft, die Sie von Azure erworben haben](custom-dns-web-site-buydomains-web-app.md). Azure fügt die TXT-Überprüfungseinträge automatisch für Sie hinzu und schließt den Vorgang ab.
+> - **Domäne**: Mit dieser Option wird eine [App Service-Domäne überprüft, die Sie von Azure erworben haben](manage-custom-dns-buy-domain.md). Azure fügt die TXT-Überprüfungseinträge automatisch für Sie hinzu und schließt den Vorgang ab.
 > - **E-Mail**: Mit dieser Option wird die Domäne überprüft, indem Sie eine E-Mail an den Domänenadministrator senden. Anweisungen werden bei Auswahl der Option bereitgestellt.
 > - **Manuell**: Hiermit wird die Domäne entweder mit einer HTML-Seite (nur **Standard**-Zertifikat) oder einem DNS-TXT-Eintrag überprüft. Anweisungen werden bei Auswahl der Option bereitgestellt.
 
@@ -159,4 +159,4 @@ Um das Zertifikat stattdessen manuell zu verlängern, klicken Sie auf **Manuelle
 * [Erzwingen von HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [Erzwingen von TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](app-service-web-ssl-cert-load.md)
-* [Häufig gestellte Fragen:  App Service-Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [Häufig gestellte Fragen: App Service-Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

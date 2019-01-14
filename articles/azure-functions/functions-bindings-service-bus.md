@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 0a4d5cf4731932ed72e0dc38c13a5f855a937864
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 21f8d8ad63e8ea7c134477a6171155c40a2b4dc8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317507"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792015"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -331,6 +331,9 @@ Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](functions-trigge
 |`Label`|`string`|Die anwendungsspezifische Bezeichnung.|
 |`CorrelationId`|`string`|Die Korrelations-ID.|
 |`UserProperties`|`IDictionary<String,Object>`|Die anwendungsspezifischen Nachrichteneigenschaften.|
+
+> [!NOTE]
+> Der Trigger funktioniert derzeit nur mit Warteschlangen und Abonnements, die keine Sitzungen verwenden. Verfolgen Sie [dieses Featureelement](https://github.com/Azure/azure-functions-host/issues/563) für alle weiteren Updates zu diesem Feature. 
 
 [Codebeispiele](#trigger---example) mit diesen Eigenschaften finden Sie weiter oben in diesem Artikel.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e3d938c4464fc5141b97f85220bf096920e17d00
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339592"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557280"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 
@@ -26,19 +26,19 @@ Das Framework für die Identitätsfunktion, das Azure Active Directory B2C (Azur
 ## <a name="introduction"></a>Einführung
 Mit Azure AD B2C können Sie einer User Journey Ihre eigene Geschäftslogik hinzufügen, indem Sie Ihren eigenen RESTful-Dienst aufrufen. Das Framework für die Identitätsfunktion sendet Daten an den RESTful-Dienst in einer Sammlung für *Eingabeansprüche* und erhält Daten über RESTful in einer Sammlung für *Ausgabeansprüche* zurück. Mit der RESTful-Dienstintegration haben Sie folgende Möglichkeiten:
 
-* **Überprüfen der Benutzereingabedaten:** Damit verhindern Sie, dass falsch formatierte Daten in Azure AD beibehalten werden. Wenn der Wert des Benutzers nicht gültig ist, gibt Ihr RESTful-Dienst eine Fehlermeldung zurück, in der der Benutzer angewiesen wird, einen Eintrag anzugeben. Beispielsweise können Sie überprüfen, ob die vom Benutzer angegebene E-Mail-Adresse in Ihrer Kundendatenbank vorhanden ist.
-* **Überschreiben von Eingabeansprüchen:** Wenn z.B. ein Benutzer den Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, können Sie den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird.
-* **Ergänzen von Benutzerdaten durch die weitere Integration unternehmenseigener Line-of-Business-Anwendungen:** Ihr RESTful-Dienst kann die E-Mail-Adresse des Benutzers empfangen, die Kundendatenbank abfragen und die Treuenummer des Benutzers an Azure AD B2C zurückgeben. Die Rückgabeansprüche können unter dem AAD-Benutzerkonto gespeichert, in den nächsten *Orchestrierungsschritten* ausgewertet oder in das Zugriffstoken eingebunden werden.
-* **Ausführen von benutzerdefinierter Geschäftslogik:** Sie können Pushbenachrichtigungen senden, Unternehmensdatenbanken aktualisieren, einen Benutzermigrationsprozess durchführen, Berechtigungen verwalten, Datenbanken überwachen und andere Aktionen ausführen.
+* **Überprüfen von Benutzereingabedaten**: Mit dieser Aktion verhindern Sie, dass falsch formatierte Daten in Azure AD beibehalten werden. Wenn der Wert des Benutzers nicht gültig ist, gibt Ihr RESTful-Dienst eine Fehlermeldung zurück, in der der Benutzer angewiesen wird, einen Eintrag anzugeben. Beispielsweise können Sie überprüfen, ob die vom Benutzer angegebene E-Mail-Adresse in Ihrer Kundendatenbank vorhanden ist.
+* **Überschreiben von Eingabeansprüchen**: Wenn z.B. ein Benutzer den Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, können Sie den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird.
+* **Erweitern von Benutzerdaten durch eine stärkere Integration in die Branchenanwendungen des Unternehmens**: Ihr RESTful-Dienst kann die E-Mail-Adresse des Benutzers empfangen, die Kundendatenbank abfragen und die Treuenummer des Benutzers an Azure AD B2C zurückgeben. Die Rückgabeansprüche können unter dem AAD-Benutzerkonto gespeichert, in den nächsten *Orchestrierungsschritten* ausgewertet oder in das Zugriffstoken eingebunden werden.
+* **Ausführen von benutzerdefinierter Geschäftslogik**: Sie können Pushbenachrichtigungen senden, Unternehmensdatenbanken aktualisieren, einen Benutzermigrationsprozess ausführen, Berechtigungen verwalten, Datenbanken überwachen und andere Aktionen ausführen.
 
 Sie können die Integration in die RESTful-Dienste auf folgende Weise entwerfen:
 
-* **Technisches Validierungsprofil:** Der Aufruf des RESTful-Diensts erfolgt im technischen Validierungsprofil eines angegebenen technischen Profils. Mit dem technischen Validierungsprofil werden die vom Benutzer bereitgestellten Daten überprüft, bevor die User Journey fortgesetzt wird. Beim technischen Validierungsprofil haben Sie folgende Möglichkeiten:
+* **Technisches Validierungsprofil**: Der Aufruf des RESTful-Diensts erfolgt im technischen Validierungsprofil des angegebenen technischen Profils. Mit dem technischen Validierungsprofil werden die vom Benutzer bereitgestellten Daten überprüft, bevor die User Journey fortgesetzt wird. Beim technischen Validierungsprofil haben Sie folgende Möglichkeiten:
    * Senden von Eingabeansprüchen
    * Überprüfen der Eingabeansprüche und Auslösen von benutzerdefinierten Fehlermeldungen
    * Zurücksenden von Ausgabeansprüchen
 
-* **Anspruchsaustausch:** Dieser Entwurf ähnelt dem technischen Validierungsprofil, er erfolgt aber innerhalb eines Orchestrierungsschritts. Diese Definition ist auf folgende Vorgänge beschränkt:
+* **Anspruchsaustausch**: Dieser Entwurf ähnelt dem technischen Validierungsprofil, er erfolgt aber innerhalb eines Orchestrierungsschritts. Diese Definition ist auf folgende Vorgänge beschränkt:
    * Senden von Eingabeansprüchen
    * Zurücksenden von Ausgabeansprüchen
 
@@ -260,44 +260,44 @@ Suchen Sie nach dem Knoten `<ClaimsProviders>`, und fügen Sie dann unter dem Kn
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
     
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
-        <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
-        <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-        <Metadata>
+      <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
         <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
-        </Metadata>
-        <InputClaims>
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
         <InputClaim ClaimTypeReferenceId="email" />
         <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
         <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
-        </InputClaims>
-        <OutputClaims>
+      </InputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
     </TechnicalProfile>
 
-<!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
+    <!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-        <OutputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <ValidationTechnicalProfiles>
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
         <ValidationTechnicalProfile ReferenceId="REST-API-SignUp" />
-        </ValidationTechnicalProfiles>
+      </ValidationTechnicalProfiles>
     </TechnicalProfile>
-
-    </TechnicalProfiles>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Schritt 6: Hinzufügen des `loyaltyNumber`-Anspruchs zur Datei mit den Richtlinien der vertrauenden Seite, damit der Anspruch an Ihre Anwendung gesendet wird
+## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Schritt 6: Hinzufügen des `loyaltyNumber`-Anspruchs zur Richtliniendatei der vertrauenden Seite, damit der Anspruch an Ihre Anwendung gesendet wird
 Bearbeiten Sie die Datei *SignUpOrSignIn.xml* der vertrauenden Seite, und ändern Sie das Element „TechnicalProfile Id="PolicyProfile"“, um Folgendes hinzuzufügen: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
 Nachdem Sie den neuen Anspruch hinzugefügt haben, sieht der Code für die vertrauende Seite wie folgt aus:

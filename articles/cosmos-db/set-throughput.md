@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3e992dd8ab24e4e60b81c6565ea4ec3971a9336b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075351"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036420"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Bereitstellen des Durchsatzes für Azure Cosmos-Container und -Datenbanken
 
@@ -27,9 +27,9 @@ Das Festlegen von bereitgestelltem Durchsatz für einen Container ist eine häuf
 
 Es wird empfohlen, den Durchsatz auf Containerebene zu konfigurieren, wenn Sie eine garantierte Leistung für den Container benötigen.
 
-Der für einen Azure Cosmos-Container bereitgestellte Durchsatz wird gleichmäßig auf alle logischen Partitionen des Containers aufgeteilt. Da eine oder mehrere logische Partitionen eines Containers auf einer Ressourcenpartition gehostet werden, gehören die physischen Partitionen ausschließlich zu dem Container und werden dem Durchsatz für den Container angerechnet. Die folgende Abbildung zeigt, wie eine Ressourcenpartition eine oder mehrere logische Partitionen eines Containers hostet:
+Der für einen Azure Cosmos-Container bereitgestellte Durchsatz wird gleichmäßig auf alle logischen Partitionen des Containers aufgeteilt. Da mindestens eine logische Partition eines Containers auf einer physischen Partition gehostet wird, gehören die physischen Partitionen ausschließlich zu dem Container und unterstützen den Durchsatz für den Container. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen eines Containers hostet:
 
-![Ressourcenpartition](./media/set-throughput/resource-partition.png)
+![Physische Partition](./media/set-throughput/resource-partition.png)
 
 ## <a name="setting-throughput-on-a-database"></a>Festlegen des Durchsatzes für eine Datenbank
 
@@ -47,11 +47,11 @@ Es wird empfohlen, den Durchsatz für eine Datenbank zu konfigurieren, wenn der 
 
 * Die gemeinsame Nutzung des bereitgestellten Durchsatzes einer Datenbank durch eine Gruppe von Containern ist nützlich, wenn Sie eine NoSQL-Datenbank (z.B. MongoDB, Cassandra), die in einem Cluster von virtuellen Computern oder auf lokalen physischen Servern gehostet wird, zu Azure Cosmos DB migrieren. Sie können sich den bereitgestellten Durchsatz, der für Ihre Azure Cosmos-Datenbank konfiguriert wurde, als logische Entsprechung (jedoch kostengünstiger und flexibler) zur Computekapazität des MongoDB- oder Cassandra-Clusters vorstellen.  
 
-Der einem Container innerhalb einer Datenbank bereitgestellte Durchsatz wird zu jedem Zeitpunkt auf alle logischen Partitionen des Containers aufgeteilt. Wenn Ihre Container den für eine Datenbank bereitgestellten Durchsatz gemeinsam nutzen, können Sie den Durchsatz nicht selektiv einem bestimmten Container oder einer logischen Partition zuordnen. Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der jeweiligen logischen Partition zugewiesen wurde, werden Ihre Vorgänge ratenbegrenzt. Bei einer Ratenbegrenzung können Sie entweder den Durchsatz für den gesamten Container erhöhen oder den Vorgang wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partition-data.md).
+Alle in einer Datenbank erstellten Container mit bereitgestelltem Durchsatz müssen mit einem Partitionsschlüssel erstellt werden. Der einem Container innerhalb einer Datenbank bereitgestellte Durchsatz wird zu jedem Zeitpunkt auf alle logischen Partitionen des Containers aufgeteilt. Wenn Ihre Container den für eine Datenbank bereitgestellten Durchsatz gemeinsam nutzen, können Sie den Durchsatz nicht selektiv einem bestimmten Container oder einer logischen Partition zuordnen. Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der jeweiligen logischen Partition zugewiesen wurde, werden Ihre Vorgänge ratenbegrenzt. Bei einer Ratenbegrenzung können Sie entweder den Durchsatz für den gesamten Container erhöhen oder den Vorgang wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partition-data.md).
 
-Sie können mehrere logische Partitionen, die den für eine Datenbank bereitgestellten Durchsatz gemeinsam nutzen, in einer einzelnen Ressourcenpartition hosten. Auch wenn eine einzelne logische Partition eines Containers immer im Gültigkeitsbereich einer Ressourcenpartition gilt, können „L“ logische Partitionen für „C“ Container, die den bereitgestellten Durchsatz einer Datenbank gemeinsam nutzen, auf „R“ physischen Partitionen gehostet werden. Die folgende Abbildung zeigt, wie eine Ressourcenpartition eine oder mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
+Sie können mehrere logische Partitionen, die den für eine Datenbank bereitgestellten Durchsatz gemeinsam nutzen, in einer einzelnen physischen Partition hosten. Während eine einzelne logische Partition eines Containers immer zum Gültigkeitsbereich einer physischen Partition gehört, können „L“ logische Partitionen für „C“ Container, die den bereitgestellten Durchsatz einer Datenbank gemeinsam nutzen, auf „R“ physischen Partitionen gehostet werden. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
 
-![Ressourcenpartition](./media/set-throughput/resource-partition2.png)
+![Physische Partition](./media/set-throughput/resource-partition2.png)
 
 ## <a name="setting-throughput-on-a-database-and-a-container"></a>Festlegen des Durchsatzes für eine Datenbank und einen Container
 

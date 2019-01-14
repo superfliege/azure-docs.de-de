@@ -11,27 +11,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 16275ddc4d4ad85bdac54244ceeec568603fdfef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 54c334aa9363ac5ca75cc4ad5b107524f502011e
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112098"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810610"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
-In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Senkendaten beim Kopieren der Daten ausführt.
+In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Daten der Empfangsquelle (Senkendaten) beim Kopieren der Daten ausführt.
 
 ## <a name="column-mapping"></a>Spaltenzuordnung
 
-Standardmäßig ordnet Kopieraktivität **Quelldaten nach Spaltennamen Senkendaten zu**, es sei denn, [explizite Spaltenzuordnung](#explicit-column-mapping) ist konfiguriert. Genauer gesagt, macht Kopieraktivität Folgendes:
+Die Spaltenzuordnung wird angewendet, wenn Daten zwischen tabellarischen Datencontainern kopiert werden. Standardmäßig ordnet Kopieraktivität **Quelldaten nach Spaltennamen Senkendaten zu**, es sei denn, [explizite Spaltenzuordnung](#explicit-column-mapping) ist konfiguriert. Genauer gesagt, macht Kopieraktivität Folgendes:
 
 1. Lesen von Daten aus der Quelle und Bestimmen des Quellschemas
 
     * Für Datenquellen mit vordefiniertem Schema im Datenspeicher/Datei-Format, z.B. Datenbanken/Dateien mit Metadaten (Avro/ORC/Parquet/Text mit Header), wird das Quellschema aus dem Abfrageergebnis oder Dateimetadaten extrahiert.
-    * Für Datenquellen mit flexiblem Schema, z.B. Azure Table/Cosmos DB, wird das Quellschema aus dem Abfrageergebnis abgeleitet. Sie können es überschreiben, indem Sie „structure“ im Dataset angeben.
-    * Für Textdateien ohne Header werden Standardspaltennamen mit dem Muster „Prop_0“, „Prop_1“, ... generiert. Sie können sie durch Angabe von „structure“ im Dataset überschreiben.
+    * Für Datenquellen mit flexiblem Schema, z.B. Azure Table/Cosmos DB, wird das Quellschema aus dem Abfrageergebnis abgeleitet. Sie können es überschreiben, indem Sie „structure“ im Dataset konfigurieren.
+    * Für Textdateien ohne Header werden Standardspaltennamen mit dem Muster „Prop_0“, „Prop_1“, ... generiert. Sie können sie überschreiben, indem Sie „structure“ im Dataset konfigurieren.
     * Für Dynamics-Quellen müssen Sie die Schemainformationen im Dataset im Abschnitt „structure“ angeben.
 
 2. Wenden Sie explizite Spaltenzuordnung an, falls angegeben.
@@ -135,11 +135,86 @@ Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Sp
 }
 ```
 
-Wenn Sie zum Angeben der Spaltenzuordnung die Syntax `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` verwendet haben, wird sie weiterhin unverändert unterstützt.
+Wenn Sie zum Angeben der Spaltenzuordnung die Syntax `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` verwenden, wird sie weiterhin unverändert unterstützt.
 
 **Ablauf der Spaltenzuordnung:**
 
 ![Ablauf der Spaltenzuordnung](./media/copy-activity-schema-and-type-mapping/column-mapping-sample.png)
+
+## <a name="schema-mapping"></a>Schemazuordnung
+
+Die Schemazuordnung wird angewendet, wenn Daten an Orte mit hierarchisch und tabellarisch strukturierten Daten kopiert werden, z. B. aus MongoDB/REST in eine Textdatei oder aus SQL zur Azure Cosmos DB-MongoDB-API. Folgende Eigenschaften werden im Abschnitt `translator` der Kopieraktivität unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft der Kopieraktivität „translator“ muss auf Folgendes festgelegt werden: **TabularTranslator** | JA |
+| schemaMapping | Eine Sammlung von Schlüssel-Wert-Paaren, die die Zuordnungsbeziehung von der tabellarischen zur hierarchischen Seite darstellt.<br/>- **Key:** Der Spaltenname der tabellarischen Daten wie in der Datasetstruktur definiert.<br/>- **Value:** Der Ausdruck des JSON-Pfads für jedes Feld, das extrahiert und zugeordnet werden soll. Bei Feldern unter dem Stammobjekt beginnen Sie mit Stamm „$“. Bei Feldern innerhalb des Arrays, die anhand der `collectionReference`-Eigenschaft ausgewählt werden, beginnen Sie mit dem Arrayelement.  | JA |
+| collectionReference | Wenn Sie Daten durchlaufen und Objekte **innerhalb eines Arrayfelds** mit demselben Muster extrahieren, und wenn Sie möchten, dass jedes Objekt in einer neuen Zeile steht, geben Sie den JSON-Pfad dieses Arrays für die übergreifende Anwendung an. Diese Eigenschaft wird nur unterstützt, wenn hierarchische Daten die Quelle sind. | Nein  |
+
+**Beispiel: Kopieren aus MongoDB nach SQL:**
+
+Sie besitzen zum Beispiel ein MongoDB-Dokument mit folgendem Inhalt: 
+
+```json
+{
+    "id": {
+        "$oid": "592e07800000000000000000"
+    },
+    "number": "01",
+    "date": "20170122",
+    "orders": [
+        {
+            "prod": "p1",
+            "price": 23
+        },
+        {
+            "prod": "p2",
+            "price": 13
+        },
+        {
+            "prod": "p3",
+            "price": 231
+        }
+    ],
+    "city": [ { "name": "Seattle" } ]
+}
+```
+
+Wenn Sie es in eine Azure SQL-Tabelle im folgenden Format kopieren möchten, indem Sie die Daten im Array *(order_pd und order_price)* vereinfachen und mit den allgemeinen Stamminformationen *(Anzahl, Datum und Stadt)* überkreuzt verknüpfen, dann gilt Folgendes:
+
+| orderNumber | orderDate | order_pd | order_price | city |
+| --- | --- | --- | --- | --- |
+| 01 | 20170122 | P1 | 23 | Seattle |
+| 01 | 20170122 | P2 | 13 | Seattle |
+| 01 | 20170122 | P3 | 231 | Seattle |
+
+Konfigurieren Sie die Regel für die Schemazuordnung wie im folgenden JSON-Beispiel für die Kopieraktivität:
+
+```json
+{
+    "name": "CopyFromMongoDBToSqlAzure",
+    "type": "Copy",
+    "typeProperties": {
+        "source": {
+            "type": "MongoDbV2Source"
+        },
+        "sink": {
+            "type": "SqlSink"
+        },
+        "translator": {
+            "type": "TabularTranslator",
+            "schemaMapping": {
+                "orderNumber": "$.number", 
+                "orderDate": "$.date", 
+                "order_pd": "prod", 
+                "order_price": "price",
+                "city": " $.city[0].name"
+            },
+            "collectionReference":  "$.orders"
+        }
+    }
+}
+```
 
 ## <a name="data-type-mapping"></a>Datentypzuordnung
 
@@ -152,7 +227,7 @@ Sie können die Zuordnung des nativen Typs zum Zwischendatentyp im „Datentypzu
 
 ### <a name="supported-data-types"></a>Unterstützte Datentypen
 
-Data Factory unterstützt die folgenden Zwischendatentypen: Sie können bei der Angabe von Typinformationen in der Konfiguration der [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure) folgende Werte verwenden:
+Data Factory unterstützt die folgenden Zwischendatentypen: Sie können beim Konfigurieren von Typinformationen in der Konfiguration der [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure) folgende Werte angeben:
 
 * Byte[]
 * Boolescher Wert
@@ -186,7 +261,7 @@ In folgenden Szenarien ist „structure“ in Dataset erforderlich:
 
 In folgenden Szenarien wird „structure“ im Dataset vorgeschlagen:
 
-* Kopieren aus einer Textdatei ohne Header (Eingabedataset). Sie können die Spaltennamen für die Textdatei den entsprechenden Senkenspalten angleichen, um keine explizite Spaltenzuordnung anzugeben.
+* Kopieren aus einer Textdatei ohne Header (Eingabedataset). Sie können die Spaltennamen für die Textdatei den entsprechenden Senkenspalten angleichen, um keine explizite Spaltenzuordnung zu konfigurieren.
 * Kopieren aus Datenspeichern mit flexiblem Schema, z.B. Azure Table/Cosmos DB (Eingabedataset), um zu gewährleisten, dass die erwarteten Daten (Spalten) kopiert werden, anstatt dass die Kopieraktivität das Schema bei jeder Aktivitätsausführung anhand der obersten Zeile(n) ableitet.
 
 

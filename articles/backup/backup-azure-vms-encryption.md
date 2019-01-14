@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b269b8db59c4aeecf182b6ea11b92a3980a2cd6d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567416"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583067"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup
 In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtuellen Computern mit Azure Backup beschrieben. Außerdem enthält er Details zu unterstützten Szenarien, Voraussetzungen und Problembehandlungsschritten für Fehler.
@@ -27,6 +27,10 @@ In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtu
    | --- | --- | --- |
    | **Nicht verwaltete virtuelle Computer**  | JA | JA  |
    | **Verwaltete VMs**  | JA | JA  |
+
+   > [!NOTE]
+   > Azure Backup unterstützt mit eigenständigen Schlüsseln verschlüsselte VMs. Schlüssel, die Teil eines zum Verschlüsseln eines virtuellen Computers verwendeten Zertifikats sind, werden derzeit nicht unterstützt.
+   >   
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Der virtuelle Computer wurde mit [Azure Disk Encryption](../security/azure-security-disk-encryption.md) verschlüsselt.

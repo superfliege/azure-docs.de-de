@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955132"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974436"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die Daten der Offlinesicherung in Azure hochzuladen.
@@ -76,10 +76,10 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
   Die Beschreibung der Eingaben lautet wie folgt:
 
     * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
-    * **Azure Resource Manager Storage Acccount** (Azure Resource Manager-Speicherkonto): Der Name des Resource Manager-Speicherkontos in einem beliebigen Azure-Abonnement.
-    * **Azure-Speichercontainer**: Der Name des Zielspeicherblobs im Azure Storage-Konto, in das die Sicherungsdaten vor dem Kopieren in den Recovery Services-Tresor importiert werden.
-    * **Azure-Abonnement-ID**: Die ID für das Azure-Abonnement, in dem das Azure Storage-Konto erstellt wird.
-    * **Name des Azure-Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden. 
+    * **Azure Resource Manager-Speicherkonto**: Der Name des Resource Manager-Speicherkontos in einem beliebigen Azure-Abonnement.
+    * **Azure Storage-Container**: Der Name des Zielspeicherblobs im Azure-Speicherkonto, in das die Sicherungsdaten vor dem Kopieren in den Recovery Services-Tresor importiert werden.
+    * **Azure-Abonnement-ID**: Die ID für das Azure-Abonnement, in dem das Azure-Speicherkonto erstellt wird.
+    * **Name des Azure Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden. 
   
   Geben Sie die erforderlichen Werte in den Bildschirm ein, und klicken Sie anschließend auf **Weiter**. Speichern Sie die Angaben für *Stagingspeicherort* und *Name des Azure-Importauftrags*. Diese werden zur Vorbereitung der Datenträger benötigt.
 

@@ -9,15 +9,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496862"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631820"
 ---
 # <a name="scp-programming-guide"></a>SCP-Programmierleitfaden
-SCP ist eine Plattform zur Erstellung zuverlässiger, konsistenter und leistungsfähiger Anwendungen für die Datenverarbeitung in Echtzeit. Sie basiert auf [Apache Storm](http://storm.incubator.apache.org/) , einem von den OSS-Communitys entwickelten Datenstrom-Verarbeitungssystem. Storm wurde von Nathan Marz entwickelt, und der Quellcode wurde von Twitter freigegeben. Für Storm wird [Apache ZooKeeper](http://zookeeper.apache.org/)verwendet, ein weiteres Apache-Projekt für hochzuverlässige verteilte Koordinierung und Zustandsverwaltung. 
+SCP ist eine Plattform zur Erstellung zuverlässiger, konsistenter und leistungsfähiger Anwendungen für die Datenverarbeitung in Echtzeit. Sie basiert auf [Apache Storm](https://storm.incubator.apache.org/) , einem von den OSS-Communitys entwickelten Datenstrom-Verarbeitungssystem. Storm wurde von Nathan Marz entwickelt, und der Quellcode wurde von Twitter freigegeben. Für Storm wird [Apache ZooKeeper](https://zookeeper.apache.org/)verwendet, ein weiteres Apache-Projekt für hochzuverlässige verteilte Koordinierung und Zustandsverwaltung. 
 
 Das SCP-Projekt hat nicht nur Storm für Windows portiert, sondern auch Erweiterungen und Anpassungen für das Windows-Ökosystem hinzugefügt. Die Erweiterungen beinhalten Verbesserungen und Bibliotheken für .NET-Entwickler, und die Anpassungen umfassen die Windows-basierte Bereitstellung. 
 
@@ -309,7 +309,7 @@ Für ISCPBatchBolt können wir `StormTxAttempt` aus `parms` abrufen, um zu ermit
 
 Die SCP-Plug-Ins können im Allgemeinen in zwei Modi ausgeführt werden:
 
-1. Lokaler Testmodus: In diesem Modus werden die SCP-Plug-Ins (der C\#-Benutzercode) in Visual Studio während der Entwicklungsphase ausgeführt. `LocalContext` kann in diesem Modus verwendet werden und stellt Methoden bereit, um die ausgegebenen Tupel in lokale Dateien zu serialisieren und anschließend zurück in den Speicher zu lesen.
+1. Lokaler Testmodus: In diesem Modus werden die SCP-Plug-Ins (der C\#-Benutzercode) während der Entwicklungsphase in Visual Studio ausgeführt. `LocalContext` kann in diesem Modus verwendet werden und stellt Methoden bereit, um die ausgegebenen Tupel in lokale Dateien zu serialisieren und anschließend zurück in den Speicher zu lesen.
    
         public interface ILocalContext
         {
@@ -346,7 +346,7 @@ Die SCP-Plug-Ins können im Allgemeinen in zwei Modi ausgeführt werden:
         }
 
 ## <a name="topology-specification-language"></a>Sprache für die Topologie-Spezifikation
-SCP Topology Specification ist eine domänenspezifische Sprache zum Beschreiben und Konfigurieren von SCP-Topologien. Sie basiert auf Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) von Storm und wird durch SCP erweitert.
+SCP Topology Specification ist eine domänenspezifische Sprache zum Beschreiben und Konfigurieren von SCP-Topologien. Sie basiert auf Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) von Storm und wird durch SCP erweitert.
 
 Topologiespezifikationen können direkt an das Storm-Cluster zur Ausführung mit dem ***runspec***-Befehl übermittelt werden.
 
@@ -594,7 +594,7 @@ Falls Ack aktiviert ist, verwendet der Spout ein Wörterbuch, um die Tupel zwisc
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-Das Beispiel **HelloWorldTx** verdeutlicht die Implementierung einer transaktionalen Topologie. Es enthält einen Spout mit dem Namen **generator**, einen Batch-Bolt mit dem Namen **partial-count** und einen Commit-Bolt mit dem Namen **count-sum**. Außerdem enthält das Projekt drei vorab erstellte TXT-Dateien: **DataSource0.txt**, **DataSource1.txt** und **DataSource2.txt**.
+Das Beispiel **HelloWorldTx** verdeutlicht die Implementierung einer transaktionalen Topologie. Es enthält einen Spout mit dem Namen **generator**, einen Batch-Bolt mit dem Namen **partial-count** und einen Commit-Bolt mit dem Namen **count-sum**. Es gibt auch drei vorab erstellte TXT-Dateien: **DataSource0.txt**, **DataSource1.txt** und **DataSource2.txt**.
 
 Für jede Transaktion wählt der Spout **generator** nach dem Zufallsprinzip zwei der drei vorab erstellten Dateien aus und übermittelt die beiden Dateinamen an den Bolt **partial-count**. Der Bolt **partial-count** liest zunächst den Dateinamen aus dem empfangenen Tupel, öffnet die Datei, zählt die Anzahl der Wörter in der Datei und übermittelt zuletzt die Wortzahl an den Bolt **count-sum**. Der Bolt **count-sum** erstellt die Gesamtzahl.
 

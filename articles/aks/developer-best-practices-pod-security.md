@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 8acd69480d6cd441c33ccc696794977bbfbfd975
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110934"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559075"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Best Practices für Podsicherheit in Azure Kubernetes Service (AKS)
 
-Beim Entwickeln und Ausführen von Anwendungen in Azure Kubernetes Service (AKS) ist die Sicherheit Ihrer Pods ein wichtiger Aspekt. Ihre Anwendungen sollten für das Prinzip der geringsten Anzahl von erforderlichen Berechtigungen ausgelegt sein. Die Sicherheit privater Daten ist für Kunden oberste Priorität. Sie möchten nicht zulassen, dass Anmeldeinformationen wie Datenbankverbindungszeichenketten, Schlüssel oder Geheimnisse und Zertifikate offengelegt werden, sodass Angreifer diese Geheimnisse für bösartige Zwecke nutzen könnten. Fügen Sie sie nicht Ihrem Code hinzu, und betten Sie sie nicht in Containerimages ein. Dieser Ansatz würde ein Risiko der Offenlegung darstellen und die Möglichkeit einschränken, diese Anmeldeinformationen wechseln, wenn die Containerimages neu erstellt werden müssen.
+Beim Entwickeln und Ausführen von Anwendungen in Azure Kubernetes Service (AKS) ist die Sicherheit Ihrer Pods ein wichtiger Aspekt. Ihre Anwendungen sollten auf das Prinzip der geringsten Anzahl von erforderlichen Berechtigungen ausgelegt sein. Die Sicherheit privater Daten ist für Kunden oberste Priorität. Sie möchten nicht zulassen, dass Anmeldeinformationen wie Datenbankverbindungszeichenfolgen, Schlüssel oder Geheimnisse und Zertifikate offengelegt werden, die Angreifer für bösartige Zwecke nutzen könnten. Fügen Sie sie nicht Ihrem Code hinzu, und betten Sie sie nicht in Containerimages ein. Dieser Ansatz würde ein Risiko der Offenlegung darstellen und die Möglichkeit einschränken, diese Anmeldeinformationen wechseln, wenn die Containerimages neu erstellt werden müssen.
 
 Dieser Best Practices-Artikel konzentriert sich darauf, wie Sie Pods in AKS absichern. Folgendes wird vermittelt:
 

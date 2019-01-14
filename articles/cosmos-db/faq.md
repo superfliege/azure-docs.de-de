@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 70feaae718bc6ff8e3f956f0fbc6aa395ba27061
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: ede900e135960141ed65b54dc876b1c0c2b90aaa
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410396"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809266"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Wenn Sie zuvor über ein DocumentDB-API-Konto verfügten, besitzen Sie jetzt ein
 
 ### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Was ist mit Azure DocumentDB als Dienst passiert?
 
-Der Azure DocumentDB-Dienst ist jetzt Teil des Azure Cosmos DB-Diensts und manifestiert sich in Form der SQL-API. Anwendungen, die für Azure DocumentDB erstellt wurden, können ohne Änderungen für die SQL-API von Azure Cosmos DB ausgeführt werden. Darüber hinaus unterstützt Azure Cosmos DB die Gremlin-API, die Tabellen-API, die MongoDB-API und die Cassandra-API (Vorschauversion).
+Der Azure DocumentDB-Dienst ist jetzt Teil des Azure Cosmos DB-Diensts und manifestiert sich in Form der SQL-API. Anwendungen, die für Azure DocumentDB erstellt wurden, können ohne Änderungen für die SQL-API von Azure Cosmos DB ausgeführt werden. Cosmos DB implementiert auch die Wire Protocols [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) und [Azure Table Storage](table-introduction.md) direkt im Dienst. Auf diese Weise können Sie Clienttreiber (und Tools) für die häufig verwendeten NoSQL-APIs direkt auf Ihre Cosmos-Datenbank verweisen.
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Was sind die typischen Anwendungsfälle für Azure Cosmos DB?
 
@@ -36,11 +36,11 @@ Azure Cosmos DB ist eine gute Wahl für neue Web-, Mobil-, Gaming- und IoT-Anwen
 
 In Azure Cosmos DB wird der Durchsatz in [Anforderungseinheiten](request-units.md) (Request Units, RUs) gemessen. Ein Durchsatz von einer Anforderungseinheit entspricht dem Durchsatz der GET-Anforderung für ein Dokument mit einer Größe von 1 KB. Jeder Vorgang in Azure Cosmos DB (einschließlich der Ausführung von Lese- und Schreibvorgängen, SQL-Abfragen sowie gespeicherten Prozeduren) verfügt über einen deterministischen Wert für die Anforderungseinheiten, der auf dem erforderlichen Durchsatz zum Abschließen des Vorgangs basiert. Im Hinblick auf den Durchsatz Ihrer Anwendung müssen Sie sich also keine Gedanken um das Zusammenspiel von CPU, E/A-Leistung und Arbeitsspeicher machen, sondern können mit einer einzigen Kennzahl arbeiten: der Anforderungseinheit.
 
-Sie können jeden Azure Cosmos DB-Container mit bereitgestelltem Durchsatz reservieren (Anforderungseinheiten des Durchsatzes pro Sekunde). Für Anwendungen jeder Größe können Sie Vergleichstests einzelner Anforderungen durchführen, um deren Werte für die Anforderungseinheiten zu messen. Außerdem können Sie einen Container bereitstellen, um die Gesamtsumme der Anforderungseinheiten über alle Anforderungen hinweg zu verarbeiten. Sie können den Durchsatz des Containers auch zentral hoch- oder herunterskalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. Um mehr über Anforderungseinheiten zu erfahren und Hilfe zum Ermitteln Ihrer Containeranforderungen zu erhalten, testen Sie den [Durchsatzrechner](https://www.documentdb.com/capacityplanner). Der Begriff *Container* bezieht sich hier auf eine SQL-API-Sammlung, einen Gremlin-API-Graphen, eine MongoDB-API-Sammlung und eine Tabellen-API-Tabelle.
+Sie können jeden Azure Cosmos DB-Container mit bereitgestelltem Durchsatz konfigurieren (Anforderungseinheiten des Durchsatzes pro Sekunde). Für Anwendungen jeder Größe können Sie Vergleichstests einzelner Anforderungen durchführen, um deren Werte für die Anforderungseinheiten zu messen. Außerdem können Sie einen Container bereitstellen, um die Gesamtsumme der Anforderungseinheiten über alle Anforderungen hinweg zu verarbeiten. Sie können den Durchsatz des Containers auch zentral hoch- oder herunterskalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. Um mehr über Anforderungseinheiten zu erfahren und Hilfe zum Ermitteln Ihrer Containeranforderungen zu erhalten, testen Sie den [Durchsatzrechner](https://www.documentdb.com/capacityplanner).
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Wie unterstützt Azure Cosmos DB verschiedene Datenmodelle wie Schlüssel/Wert-, einspaltige, Dokument- und Diagrammdaten?
 
-Aufgrund der ARS-Konzeption (Atoms, Records and Sequences; Atoms, Datensätze und Sequenzen), auf der Azure Cosmos DB beruht, werden Schlüssel/Wert(Tabellen)-, einspaltige, Dokument- und Diagrammdaten nativ unterstützt. Atoms, Datensätze und Sequenzen können problemlos verschiedenen Datenmodellen zugeordnet und auf diese projiziert werden. Die APIs für eine Teilmenge von Modellen sind derzeit verfügbar (SQL-, MongoDB-, Tabellen- und Gremlin-API), während andere APIs speziell für zusätzliche Datenmodelle in Zukunft bereitgestellt werden.
+Aufgrund der ARS-Konzeption (Atoms, Records and Sequences; Atoms, Datensätze und Sequenzen), auf der Azure Cosmos DB beruht, werden Schlüssel/Wert(Tabellen)-, einspaltige, Dokument- und Diagrammdaten nativ unterstützt. Atoms, Datensätze und Sequenzen können problemlos verschiedenen Datenmodellen zugeordnet und auf diese projiziert werden. Die APIs für eine Teilmenge von Modellen sind derzeit verfügbar (SQL, MongoDB, Tabelle und Gremlin), während andere APIs speziell für zusätzliche Datenmodelle in Zukunft bereitgestellt werden.
 
 Azure Cosmos DB verfügt über eine schemaagnostische Indizierungs-Engine, die alle erfassten Daten automatisch ohne Schema oder sekundäre Indizes seitens des Entwicklers indizieren kann. Die Engine basiert auf einem Satz von logischen Indexlayouts (invertiert, einspaltig, Struktur), die die Speicheranordnung von den Index- und Abfrageverarbeitungssubsystemen entkoppeln. Cosmos DB bietet auch die Möglichkeit, eine Reihe von Übertragungsprotokollen und APIs in einer erweiterbaren Weise zu unterstützen und effizient im Kerndatenmodell (1) sowie in den logischen Indexlayouts (2) zu übersetzen. So bietet es eine einzigartige native Unterstützung für mehrere Datenmodelle.
 
@@ -62,7 +62,7 @@ Ja, beide Modi sind immer vollständig verschlüsselt.
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Wie viel kostet Azure Cosmos DB?
 
-Ausführliche Informationen hierzu finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Die Nutzungsgebühren für Azure Cosmos DB werden von der Anzahl von bereitgestellten Containern, der Anzahl der Stunden, die die Container online waren, und dem bereitgestellten Durchsatz für jeden Container bestimmt. Der Begriff „Container“ bezieht sich hier auf die SQL-API-Sammlung, die Gremlin-API (Graphen), die MongoDB-API-Sammlung und die Tabellen-API-Tabellen.
+Ausführliche Informationen hierzu finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Die Nutzungsgebühren für Azure Cosmos DB werden von der Anzahl von bereitgestellten Containern, der Anzahl der Stunden, die die Container online waren, und dem bereitgestellten Durchsatz für jeden Container bestimmt.
 
 ### <a name="is-a-free-account-available"></a>Ist ein kostenloses Konto verfügbar?
 
@@ -105,7 +105,7 @@ Die folgenden Bedingungen gelten für Azure Cosmos DB-Testabonnements:
 
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Wie führe ich die Registrierung für Azure Cosmos DB durch?
 
-Azure Cosmos DB steht im Azure-Portal zur Verfügung. Registrieren Sie sich zuerst für ein Azure-Abonnement. Nach der Registrierung können Sie Ihrem Azure-Abonnement ein SQL-API-, Gremlin-API-, Tabellen-API-, MongoDB-API- oder Cassandra-API-Konto hinzufügen.
+Azure Cosmos DB steht im Azure-Portal zur Verfügung. Registrieren Sie sich zuerst für ein Azure-Abonnement. Nachdem Sie sich angemeldet haben, können Sie Ihrem Azure-Abonnement ein Azure Cosmos DB-Konto hinzufügen.
 
 ### <a name="what-is-a-master-key"></a>Was ist ein Hauptschlüssel?
 
@@ -153,7 +153,7 @@ Ja, die SQL-API unterstützt dokumentübergreifende Transaktionen, die in Form v
 
 Ein Container ist eine Gruppe von Dokumenten mit der zugehörigen JavaScript-Anwendungslogik. Ein Container ist eine fakturierbare Entität, deren [Kosten](performance-levels.md) vom Durchsatz und belegten Speicher bestimmt werden. Container können eine oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.
 
-* Bei SQL- und MongoDB-API-Konten ist ein Container einer Sammlung zugeordnet.
+* Bei der SQL-API und der Cosmos DB-API für MongoDB-Konten ist ein Container einer Sammlung zugeordnet.
 * Bei Cassandra- und Tabellen-API-Konten ist ein Container einer Tabelle zugeordnet.
 * Bei Gremlin-API-Konten ist ein Container einem Diagramm (Graphen) zugeordnet.
 
@@ -183,7 +183,7 @@ Zum Nutzen der optimistischen Nebenläufigkeit in .NET verwenden Sie die [Access
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Wie führe ich Transaktionen in der SQL-API aus?
 
-Die SQL-API unterstützt sprachintegrierte Transaktionen über gespeicherte JavaScript-Prozeduren und Trigger. Alle Datenbankvorgänge in Skripts werden im Rahmen der Momentaufnahmeisolation durchgeführt. Wenn es sich um eine Sammlung mit nur einer Partition handelt, wird der Umfang der Ausführung an die Sammlung angepasst. Falls die Sammlung partitioniert wird, wird die Ausführung an Dokumente mit dem gleichen Partitionsschlüsselwert in der Sammlung angepasst. Eine Momentaufnahme der Dokumentversionen (ETags) wird zu Beginn der Transaktion angefertigt und erst dann festgeschrieben, wenn das Skript erfolgreich ausgeführt wurde. Falls JavaScript einen Fehler ausgibt, wird für die Transaktion ein Rollback ausgeführt. Weitere Informationen finden Sie unter [Serverseitige JavaScript-Programmierung für Azure Cosmos DB](programming.md).
+Die SQL-API unterstützt sprachintegrierte Transaktionen über gespeicherte JavaScript-Prozeduren und Trigger. Alle Datenbankvorgänge in Skripts werden im Rahmen der Momentaufnahmeisolation durchgeführt. Wenn es sich um eine Sammlung mit nur einer Partition handelt, wird der Umfang der Ausführung an die Sammlung angepasst. Falls die Sammlung partitioniert wird, wird die Ausführung an Dokumente mit dem gleichen Partitionsschlüsselwert in der Sammlung angepasst. Eine Momentaufnahme der Dokumentversionen (ETags) wird zu Beginn der Transaktion angefertigt und erst dann festgeschrieben, wenn das Skript erfolgreich ausgeführt wurde. Falls JavaScript einen Fehler ausgibt, wird für die Transaktion ein Rollback ausgeführt. Weitere Informationen finden Sie unter [Serverseitige JavaScript-Programmierung für Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Wie kann ich eine Masseneinfügung für Dokumente in Cosmos DB ausführen?
 
@@ -191,7 +191,7 @@ Sie haben die folgenden Möglichkeiten, um in Azure Cosmos DB die Masseneinfügu
 
 * Das Massenexecutortool, wie unter [Verwenden der Massenexecutor-.NET-Bibliothek](bulk-executor-dot-net.md) und [Verwenden der Massenexecutor-Java-Bibliothek](bulk-executor-java.md) beschrieben.
 * Mit dem Datenmigrationstool, wie unter [Datenbankmigrationstool für Azure Cosmos DB](import-data.md) beschrieben.
-* Mit serverseitigen Verfahren, wie unter [Serverseitige JavaScript-Programmierung für Azure Cosmos DB](programming.md) beschrieben.
+* Mit serverseitigen Verfahren, wie unter [Serverseitige JavaScript-Programmierung für Azure Cosmos DB](stored-procedures-triggers-udfs.md) beschrieben.
 
 ### <a name="ive-set-up-my-container-to-use-lazy-indexing-i-see-that-my-queries-dont-return-expected-results"></a>Ich habe für meinen Container die verzögerte Indizierung eingerichtet, und bei meinen Abfragen werden nicht die erwarteten Ergebnisse zurückgegeben.
 
@@ -213,32 +213,32 @@ Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkomma
 
 Die Erstellung von Berechtigungen mit ResourceTokens ist auf der Containerebene und den untergeordneten Elementen (z.B. Dokumente, Anlagen) zulässig. Hieraus ergibt sich, dass auf Datenbank- oder Kontoebene derzeit keine Berechtigung erstellt werden kann.
 
-## <a name="mongodb-api"></a>MongoDB-API
+## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
-### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Was ist die Azure Cosmos DB-API für MongoDB?
+### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Was ist die Azure Cosmos DB-API für MongoDB?
 
-Die Azure Cosmos DB-API für MongoDB ist eine Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte Apache MongoDB-APIs und -Treiber mit der nativen Azure Cosmos DB-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z.B. automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
+Die Azure Cosmos DB-API für MongoDB ist eine Wire Protocol-Kompatibilitätsebene, die über vorhandene, von der Community unterstützte SDKs und Treiber für MongoDB eine einfache und transparente Kommunikation von Anwendungen mit der nativen Azure Cosmos DB-Datenbank-Engine ermöglicht. Entwickler können jetzt mithilfe vorhandener MongoDB-Toolketten und -Qualifikationen Anwendungen erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z.B. globale Verteilung mit Multimasterreplikation, automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
 
-### <a name="how-do-i-connect-to-my-api-for-mongodb-database"></a>Wie stelle ich eine Verbindung mit meiner API für die MongoDB-Datenbank her?
+### <a name="how-do-i-connect-to-my-database"></a>Wie stelle ich eine Verbindung mit meiner Datenbank her?
 
-Die schnellste Möglichkeit zum Herstellen einer Verbindung mit der Azure Cosmos DB-API für MongoDB besteht darin, zum [Azure-Portal](https://portal.azure.com) zu wechseln. Navigieren Sie zu Ihrem Konto, und klicken Sie dann im Navigationsmenü auf der linken Seite auf **Schnellstart**. Der Schnellstart ist die beste Möglichkeit, um Codeausschnitte abzurufen, um eine Verbindung mit Ihrer Datenbank herzustellen.
+Die schnellste Möglichkeit zum Herstellen einer Verbindung mit einer Cosmos-Datenbank mit der API für MongoDB von Azure Cosmos DB besteht darin, dass Sie zum [Azure-Portal](https://portal.azure.com) wechseln. Navigieren Sie zu Ihrem Konto, und klicken Sie dann im Navigationsmenü auf der linken Seite auf **Schnellstart**. Der Schnellstart ist die beste Möglichkeit, um Codeausschnitte abzurufen, um eine Verbindung mit Ihrer Datenbank herzustellen.
 
 Azure Cosmos DB erzwingt strenge Sicherheitsanforderungen und -standards. Azure Cosmos DB-Konten erfordern eine Authentifizierung und eine sichere Kommunikation über SSL. Verwenden Sie daher unbedingt TLSv1.2.
 
-Weitere Informationen finden Sie unter [Verbinden einer MongoDB-App mit einem DocumentDB-Konto mithilfe einer MongoDB-Verbindungszeichenfolge](connect-mongodb-account.md).
+Weitere Informationen finden Sie unter [Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB](connect-mongodb-account.md).
 
-### <a name="are-there-additional-error-codes-for-an-api-for-mongodb-database"></a>Gibt es weitere Fehlercodes für eine API für die MongoDB-Datenbank?
+Gibt es weitere Fehlercodes, die ich für den Umgang mit der Azure Cosmos DB-API für MongoDB kennen sollte?
 
-Die MongoDB-API verfügt zusätzlich zu den allgemeinen MongoDB-Fehlercodes über eigene, spezifische Fehlercodes:
+Neben den allgemeinen MongoDB-Fehlercodes verfügt die Azure Cosmos DB-API für MongoDB über eigene, spezifische Fehlercodes:
 
 | Error               | Code  | BESCHREIBUNG  | Lösung  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Erwägen Sie eine Skalierung des einem Container oder mehreren Containern zugewiesenen Durchsatzes über das Azure-Portal oder eine Wiederholung des Vorgangs. |
 | ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. <br><br>Beispiel: *&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
-### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>Wird die Verwendung des Simba-Treibers für MongoDB mit der Azure CosmosDB-API unterstützt?
+### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>Wird die Verwendung des Simba-Treibers für MongoDB mit der Azure Cosmos DB-API für MongoDB unterstützt?
 
-Ja, Sie können den Mongo-ODBC-Treiber von Simba mit der MongoDB-API von Azure CosmosDB verwenden.
+Ja, Sie können den Mongo-ODBC-Treiber von Simba mit der Azure Cosmos DB-API für MongoDB verwenden.
 
 ## <a id="table"></a>Tabellen-API
 

@@ -1,55 +1,81 @@
 ---
-title: 'Horizontales Skalieren mit integrierten Indexern: Azure Search'
-description: Fügen Sie neue Elemente zu einer Neuerstellung oder einer inkrementellen Teilindizierung hinzu, aktualisieren Sie bereits vorhandene Elemente oder Dokumente, oder löschen Sie veraltete Dokumente, um einen Azure Search-Index zu aktualisieren.
+title: Indizieren eines großen Datasets mithilfe integrierter Indexer – Azure Search
+description: Lernen Sie Strategien für die Indizierung umfangreicher Daten oder rechenintensive Indizierung über den Batchmodus, Ressourcenerstellung und Techniken für die geplante, parallele und verteilte Indizierung.
 services: search
 author: HeidiSteen
 manager: cgronlun
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f268de43f4f860458c062cb80e5bea0134b4407
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2f3d08a32384cea815f096f51b24eea596d0d118
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316671"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742234"
 ---
-# <a name="how-to-scale-out-indexing-in-azure-search"></a>Horizontales Skalieren der Indizierung in Azure Search
+# <a name="how-to-index-large-data-sets-in-azure-search"></a>Indizieren großer Datasets in Azure Search
 
-Wenn das Datenvolumen zunimmt oder die Verarbeitung geändert werden muss, stellen Sie möglicherweise fest, dass einfache [Neuerstellungen und Aufträge für die erneute Indizierung](search-howto-reindex.md) nicht ausreichend sind. 
+Wenn das Datenvolumen zunimmt oder die Verarbeitung geändert werden muss, stellen Sie möglicherweise fest, dass standardmäßige Indizierungsstrategien nicht ausreichend sind. Für Azure Search gibt es verschiedene Ansätze für die Aufnahme von größeren Datasets, angefangen bei der Art, wie Sie eine Uploadanforderung strukturieren, bis zur Verwendung eines quellenspezifischen Indexers für geplante und verteilte Workloads.
 
-Wenn Sie dem höheren Bedarf nachkommen wollen, empfehlen wir als ersten Schritt eine Erweiterung der [Staffelung und Kapazität](search-capacity-planning.md) innerhalb der Grenzen des vorhanden Diensts. 
+Die Techniken für große Datenmengen gelten auch für lang andauernde Prozesse. Insbesondere die unter [Parallelindizierung](#parallel-indexing) beschriebenen Schritte sind hilfreich für die Ausführung rechenintensiver Indizierung, z.B. Bildanalyse oder Verarbeitung natürlicher Sprache in [kognitiven Suchpipelines](cognitive-search-concept-intro.md).
 
-In einem zweiten Schritt werden Mechanismen für die skalierbare Indizierung hinzugefügt (vorausgesetzt, Sie können [Indexer](search-indexer-overview.md) verwenden). Indexer umfassen einen integrierten Scheduler, mit dem Sie die Indizierung in regelmäßigen Intervallen gliedern oder die Verarbeitung über den 24-Stunden-Rhythmus hinaus erweitern können. Außerdem können Indexer verwendet werden, um ein gewisses Maß an Parallelismus zu erreichen, wenn sie an Definitionen von Datenquellen gekoppelt werden, indem Daten partitioniert und Zeitpläne verwendet werden, um eine parallele Ausführung zu ermöglichen.
+## <a name="batch-indexing"></a>Batchindizierung
 
-### <a name="scheduled-indexing-for-large-data-sets"></a>Geplante Indizierung für große Datasets
+Eines der einfachsten Verfahren für die Indizierung eines größeren Datasets ist das Senden mehrerer Dokumente oder Datensätze in einer einzelnen Anforderung. Solange die gesamte Nutzlast kleiner als 16MB ist, kann eine Anforderung bis zu 1.000 Dokumente in einem Uploadmassenvorgang verarbeiten. Das [Add or Update Documents-REST-API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) vorausgesetzt, würden Sie 1.000 Dokumente in den Hauptteil der Anforderung packen.
 
-Zeitpläne stellen einen wichtigen Mechanismus zum Verarbeiten von großen Datasets und zum langsamen Ausführen von Analysen wie der Bildanalyse in einer Pipeline für die kognitive Suche dar. Die Indexerverarbeitung wird innerhalb von 24 Stunden ausgeführt. Wenn die Verarbeitung nicht innerhalb von 24 Stunden abgeschlossen ist, können Sie die Verhaltensweisen für die Indexerzeitplanung zu Ihrem Vorteil nutzen. 
+Die Batchindizierung wird für einzelne Anforderungen mit REST oder .NET oder über Indexer implementiert. Ein paar Indexer werden unter verschiedenen Einschränkungen eingesetzt. Insbesondere wird bei der Azure-Blobindizierung eine Batchgröße von 10 Dokumenten hinsichtlich der größeren durchschnittlichen Dokumentgröße festgelegt. Für Indexer basierend auf der [Create Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer ) können Sie das `BatchSize`-Argument zum Anpassen dieser Einstellung festlegen, damit die Eigenschaften besser Ihren Daten entsprechen. 
+
+> [!NOTE]
+> Um die Dokumentgröße niedrig zu halten, achten Sie darauf, nicht abfragbare Daten von der Anforderung auszuschließen. Bilder und andere binäre Daten können nicht direkt durchsucht werden und sollten nicht im Index gespeichert werden. Um nicht abfragbare Daten in Suchergebnisse zu integrieren, sollten Sie ein nicht durchsuchbares Feld definieren, in dem ein URL-Verweis auf die Ressource gespeichert wird.
+
+## <a name="add-resources"></a>Hinzufügen von Ressourcen
+
+Bei Diensten, die zu einem der [Standardtarife](search-sku-tier.md) bereitgestellt werden, ist die Kapazität für Speicherung und Workloads (Abfragen oder Indizierung) oft nicht ausgelastet, sodass [die Erhöhung der Partitions- und Replikateanzahl](search-capacity-planning.md) eine nahe liegende Lösung für die Unterbringung größerer Datasets ist. Für optimale Ergebnisse benötigen Sie beide Ressourcen: Partitionen zur Speicherung und Replikate für die Datenerfassung.
+
+Replikate und Partitionen sind zunehmend abzurechnende Ereignisse, die Ihre Kosten erhöhen, doch wenn Sie nicht ständig unter maximaler Auslastung indizieren, können Sie Skalierung für die Dauer des Indizierungsprozesses hinzufügen und dann nach Abschluss der Indizierung Ressourcenebenen nach unten anpassen.
+
+## <a name="use-indexers"></a>Verwenden von Indexern
+
+Mit [Indexern](search-indexer-overview.md) werden externe Datenquellen nach durchsuchbaren Inhalten durchforstet. Mehrere Indexerfunktionen sind zwar nicht speziell für die Indizierung in großem Rahmen vorgesehen, jedoch besonders nützlich zur Aufnahme größerer Datasets:
+
++ Mit Schedulern können Sie die Indizierung in regelmäßige Intervalle gliedern, sodass Sie sie im Laufe der Zeit verteilen können.
++ Geplante Indizierung kann am letzten bekannten Haltepunkt fortgesetzt werden. Wenn eine Datenquelle innerhalb eines 24-Stunden-Zeitfensters nicht vollständig durchsucht wird, setzt der Indexer die Indizierung am nächsten Tag fort, unabhängig davon, wo er aufgehört hat.
++ Partitionieren von Daten in kleinere einzelne Datenquellen ermöglicht die parallele Verarbeitung. Sie können ein großes Dataset in kleinere Datasets aufteilen und dann mehrere Datenquellendefinitionen erstellen, die gleichzeitig indiziert werden können.
+
+> [!NOTE]
+> Indexer sind datenquellenspezifisch, also eignet sich ein Indexeransatz nur für ausgewählte Datenquellen in Azure: [SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blobspeicher](search-howto-indexing-azure-blob-storage.md), [Tabellenspeicher](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+
+## <a name="scheduled-indexing"></a>Geplante Indizierung
+
+Indexerzeitpläne sind ein wichtiger Mechanismus zum Verarbeiten von großen Datasets und für lang andauernde Prozesse wie Bildanalyse in einer Pipeline für die kognitive Suche. Die Indexerverarbeitung wird innerhalb von 24 Stunden ausgeführt. Wenn die Verarbeitung nicht innerhalb von 24 Stunden abgeschlossen ist, können Sie die Verhaltensweisen für die Indexerzeitplanung zu Ihrem Vorteil nutzen. 
 
 Standardmäßig startet die geplante Indizierung zu bestimmten Zeitintervallen. Dabei wird ein Vorgang in der Regel abgeschlossen, bevor die Indizierung zum nächsten geplanten Intervall fortgesetzt wird. Wenn der Vorgang jedoch nicht innerhalb des Intervalls abgeschlossen wird, wird der Indexer beendet, da ein Timeout auftritt. Beim nächsten Intervall wird die Verarbeitung an der Stelle fortgesetzt, an der sie während des letzten Intervalls unterbrochen wurde. Dabei verfolgt das System nach, an welcher Stelle dies der Fall ist. 
 
-Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zeitraum fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
+Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zyklus fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Weitere Informationen zum Festlegen der Zeitpläne im Allgemeinen finden Sie unter [Anforderungssyntax](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax).
 
 <a name="parallel-indexing"></a>
 
 ## <a name="parallel-indexing"></a>Parallele Indizierung
 
-Sie können stattdessen auch eine Strategie zur parallelen Indizierung einrichten. Für außergewöhnliche, rechenintensive Anforderungen für die Indizierung (z.B. OCR auf gescannten Dokumenten in einer Pipeline für die kognitive Suche) eignet sich ggf. die Strategie der parallelen Indizierung für dieses spezifische Ziel. In einer Pipeline für die Anreicherung der kognitiven Suche wird die Verarbeitung der Bildanalyse und der natürlichen Sprache nicht mehr ausgeführt. Die parallele Indizierung für einen Dienst, der zum selben Zeitpunkt keine Abfrageanforderungen verarbeitet, könnte sich besonders die Option für die Arbeit durch große Textmengen von Inhalt eignen, der langsam verarbeitet wird. 
+Eine parallele Indizierungsstrategie basiert auf der gemeinsamen Indizierung mehrerer Datenquellen, wobei jede Datenquellendefinition eine Teilmenge der Daten angibt. 
 
-Eine Strategie für die parallele Verarbeitung verfügt über die folgenden Elemente:
+Für nicht routinemäßige, rechenintensive Indizierungsanforderungen – wie z.B. OCR bei gescannten Dokumenten in einer kognitiven Suchpipeline, bei der Bildanalyse oder Verarbeitung natürlicher Sprache – ist eine parallele Indizierungsstrategie häufig der richtige Ansatz für den Abschluss eines lang andauernden Prozesses in kürzestmöglicher Zeit. Wenn Sie Abfrageanforderungen vermeiden oder einschränken können, ist die parallele Indizierung für einen Dienst, der simultan keine Anforderungen verarbeitet, Ihre beste Strategie für das Durcharbeiten einer großen Inhaltsmenge, die langsam verarbeitet wird. 
+
+Parallele Verarbeitung verfügt über die folgenden Elemente:
 
 + Verteilen Sie Ihre Quelldaten auf mehrere Container oder mehrere virtuelle Ordner innerhalb desselben Containers. 
-+ Ordnen Sie jedes noch so kleine Dataset einer [Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source) zu, die an einen eignen [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) gekoppelt ist.
++ Ordnen Sie jedes noch so kleine Dataset einer eigenen [Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source) zu, die an einen eignen [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) gekoppelt ist.
 + Verweisen Sie für die kognitive Suche in jeder Indexerdefinition auf dieselbe [Fähigkeitsgruppe](https://docs.microsoft.com/rest/api/searchservice/create-skillset).
 + Schreiben Sie in denselben Suchindex für das Ziel. 
 + Legen Sie für die Ausführung aller Indexer denselben Zeitpunkt fest.
 
-> [!Note]
+> [!NOTE]
 > Azure Search unterstützt das Dedizieren von Replikaten oder Partitionen auf bestimmte Workloads nicht. Es besteht ein erhöhtes Risiko, dass die gleichzeitige Indizierung Ihr System so belastet, dass die Abfrageleistung beeinträchtigt wird. Wenn Sie über eine Testumgebung verfügen, implementieren Sie die parallele Indizierung dort zuerst, um die Vor- und Nachteile nachvollziehen zu können.
 
-## <a name="configure-parallel-indexing"></a>Konfigurieren der parallelen Indizierung
+### <a name="how-to-configure-parallel-indexing"></a>Konfigurieren der parallelen Indizierung
 
 Für Indexer basiert die Verarbeitung der Kapazität grob auf einem Indexersubsystem für jede Diensteinheit, die von Ihrem Suchdienst verwendet wird. Für Azure Search-Dienste, die für die Tarife Basic und Standard verfügbar sind, sind mehrere gleichzeitige Indexer möglich, die mindestens zwei Replikate aufweisen. 
 

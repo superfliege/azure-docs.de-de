@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 2e8c5b3d9624d3a622f16d770f68bc8614993d36
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 99cca60fe13b9757b3328d00cf66b673c95f66ea
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387481"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558429"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -26,7 +26,7 @@ Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachu
 Azure Monitor stellt Infrastrukturmetriken auf Basisebene und Protokolle für die meisten Dienste in Microsoft Azure bereit. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure-Diagnoseprotokolle sind von einer Ressource ausgegebene Protokolle mit umfangreichen, in kurzen Abständen erfassten Betriebsdaten der Ressource. Data Factory gibt die Diagnoseprotokolle in Azure Monitor.
 
 ## <a name="persist-data-factory-data"></a>Dauerhaftes Speichern von Data Factory-Daten
-Data Factory speichert nur Pipelineausführungsdaten 45 Tage lang. Wenn Sie Pipelineausführungsdaten bei Verwendung von Azure Monitor länger als 45 Tage speichern möchten, können Sie nicht nur Diagnoseprotokolle zu Analysezwecken weiterleiten, sondern sie auch in einem Speicherkonto speichern, um Factoryinformationen für einen Zeitraum Ihrer Wahl aufzubewahren.
+Data Factory speichert nur Pipelineausführungsdaten 45 Tage lang. Wenn Sie Pipelineausführungsdaten bei Verwendung von Azure Monitor länger als 45 Tage speichern möchten, können Sie nicht nur Diagnoseprotokolle zu Analysezwecken weiterleiten, sondern sie auch in einem Speicherkonto speichern, um Factoryinformationen über einen Zeitraum Ihrer Wahl aufzubewahren.
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
@@ -41,9 +41,9 @@ Sie können ein Speicherkonto oder einen Event Hub-Namespace verwenden, das/der 
 ### <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 Diagnoseprotokolle für Nicht-Computeressourcen werden mithilfe von Diagnoseeinstellungen konfiguriert. Diagnoseeinstellungen für ein Ressourcensteuerelement:
 
-* Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder Log Analytics)
-* Welche Protokollkategorien gesendet werden sollen
-* Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen
+* Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs oder Log Analytics).
+* Welche Protokollkategorien gesendet werden sollen.
+* Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen.
 * Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
 * Wenn Aufbewahrungsrichtlinien festgelegt wurden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (wenn z.B. nur die Optionen „Event Hubs“ oder „Log Analytics“ ausgewählt sind), werden die Aufbewahrungsrichtlinien ignoriert.
 * Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
@@ -465,15 +465,7 @@ Sie können u.a. die obigen Metriken visualisieren, die Abfragen hinter diesen M
 
 ## <a name="alerts"></a>Alerts
 
-Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Klicken Sie auf der Data Factory-Seite **Überwachen** auf die Schaltfläche **Warnungen**.
-
-![Option „Warnungen“](media/monitor-using-azure-monitor/alerts_image1.png)
-
-Dadurch gelangen Sie auf die Seite **Warnungen**.
-
-![Seite „Warnungen“](media/monitor-using-azure-monitor/alerts_image2.png)
-
-Sie können sich auch beim Azure-Portal anmelden und auf **Überwachen &gt; Warnungen** klicken, um direkt auf die Seite **Warnungen** zu gelangen.
+Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Überwachen -&gt; Warnungen**, um Warnungen zu erstellen.
 
 ![Warnungen im Portalmenü](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -509,4 +501,5 @@ Sie können sich auch beim Azure-Portal anmelden und auf **Überwachen &gt; Warn
     ![Aktionsgruppe, Bildschirm 4 von 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](monitor-programmatically.md) erfahren Sie mehr zum Überwachen und Verwalten von Pipelines.
+
+Im Artikel [Programmgesteuertes Überwachen einer Azure Data Factory](monitor-programmatically.md) erfahren Sie mehr über das Überwachen und Verwalten von Pipelines mit Code.

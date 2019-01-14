@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c1f4690d2ce10fe83d613b37ef2514effd2cef63
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163377"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598820"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung mit Apache Spark in HDInsight
 
@@ -22,9 +22,9 @@ In diesem Artikel erfahren Sie, wie Sie Jupyter Notebook mit den benutzerdefinie
 
 Die Installation von Jupyter und Spark Magic auf Ihrem Computer umfasst drei Hauptschritte.
 
-* Installieren von Jupyter Notebook
-* Installieren der PySpark- und Spark-Kernel mit Spark Magic
-* Konfigurieren von Spark Magic für den Zugriff auf den Spark-Cluster in HDInsight
+* Installieren Sie Jupyter Notebook.
+* Installieren Sie die PySpark- und Spark-Kernel mit Spark Magic.
+* Konfigurieren Sie Spark Magic für den Zugriff auf den Spark-Cluster in HDInsight.
 
 Weitere Informationen zu den benutzerdefinierten Kerneln und Spark Magic für Jupyter-Notebooks mit HDInsight-Clustern finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit Apache Spark-Linux-Clustern in HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
@@ -43,7 +43,7 @@ Sie müssen Python installieren, bevor Sie Jupyter Notebooks installieren könne
 
         conda install jupyter
 
-    Weitere Informationen zur Installation von Jupyter finden Sie unter [Installing Jupyter using Anaconda](http://jupyter.readthedocs.io/en/latest/install.html)(Installieren von Jupyter mit Anaconda).
+    Weitere Informationen zur Installation von Jupyter finden Sie unter [Installing Jupyter using Anaconda](https://jupyter.readthedocs.io/en/latest/install.html)(Installieren von Jupyter mit Anaconda).
 
 ## <a name="install-the-kernels-and-spark-magic"></a>Installieren der Kernel und Spark Magic
 
@@ -100,7 +100,7 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
-    >[!TIP]
+    >[!TIP]  
     >Takte werden gesendet, um sicherzustellen, dass bei Sitzungen keine Verluste auftreten. Wenn ein Computer in den Ruhezustand versetzt oder heruntergefahren wird, wird der Takt nicht gesendet, und die Sitzung wird bereinigt. Für Cluster der Version 3.4 gilt: Wenn Sie dieses Verhalten deaktivieren möchten, können Sie die Livy-Konfiguration `livy.server.interactive.heartbeat.timeout` über die Ambari-Benutzeroberfläche auf `0` festlegen. Für Cluster der Version 3.5 gilt: Wenn Sie die obige 3.5-Konfiguration nicht festlegen, wird die Sitzung nicht gelöscht.
 
 1. Starten Sie Jupyter. Geben Sie in der Eingabeaufforderung folgenden Befehl ein:
@@ -120,7 +120,7 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
 
     Wenn Sie die Ausgabe erfolgreich abrufen können, wird Ihre Verbindung zu dem HDInsight-Cluster getestet.
 
-    >[!TIP]
+    >[!TIP]  
     >Wenn Sie die Notebookkonfiguration für die Verbindung zu einem anderen Cluster aktualisieren möchten, aktualisieren Sie die Datei „config.json“ mit einem neuen Satz von Werten, wie in Schritt 3 oben dargestellt.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Warum sollte ich Jupyter auf meinem Computer installieren?
@@ -132,13 +132,13 @@ Es kann zahlreiche Gründe geben, warum Sie Jupyter auf dem Computer installiere
 * Sie können mit Notebooks lokal ohne einen Cluster arbeiten. Sie benötigen einen Cluster nur zum Testen der Notebooks, nicht für das manuelle Verwalten von Notebooks oder einer Entwicklungsumgebung.
 * Es ist möglicherweise einfacher, Ihre eigene lokale Entwicklungsumgebung zu konfigurieren, statt die Jupyter-Installation im Cluster zu konfigurieren.  Sie können sämtliche Software nutzen, die Sie lokal installiert haben, ohne Remotecluster zu konfigurieren.
 
-> [!WARNING]
+> [!WARNING]  
 > Wenn Jupyter auf dem lokalen Computer installiert ist, können mehrere Benutzer gleichzeitig das gleiche Notebook im gleichen Spark-Cluster ausführen. In diesem Fall werden mehrere Livy-Sitzungen erstellt. Wenn ein Problem auftritt, das Sie debuggen möchten, ist es eine komplexe Aufgabe nachzuverfolgen, welche Livy-Sitzung welchem Benutzer gehört.
 >
 >
 
 ## <a name="seealso"></a>Weitere Informationen
-* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
+* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 * [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)

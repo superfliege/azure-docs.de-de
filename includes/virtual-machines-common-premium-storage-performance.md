@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678185"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553528"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -35,7 +35,7 @@ Wir stellen diese Leitlinien speziell für Storage Premium bereit, da in Storage
 > Manchmal ist ein vermutetes Problem mit der Datenträgerleistung tatsächlich ein Engpass. In solchen Fällen sollten Sie Ihre [Netzwerkleistung](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md) optimieren.
 > Wenn Ihr virtueller Computer den beschleunigten Netzwerkbetrieb unterstützt, stellen Sie sicher, dass dieser aktiviert ist. Wenn er nicht aktiviert ist, können Sie ihn sowohl unter [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) als auch [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) auf bereits bereitgestellten virtuellen Computern aktivieren.
 
-Falls Sie noch nicht mit Storage Premium vertraut sind, lesen Sie zunächst die Artikel [Storage Premium: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../articles/virtual-machines/windows/premium-storage.md) und [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/common/storage-scalability-targets.md).
+Falls Sie noch nicht mit Storage Premium vertraut sind, sollten Sie zunächst die Artikel [Storage Premium: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../articles/virtual-machines/windows/premium-storage.md) und [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/common/storage-scalability-targets.md) lesen.
 
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -66,6 +66,14 @@ Aus diesem Grund ist es wichtig, die optimalen Durchsatz- und IOPS-Werte zu best
 Latenz ist die Zeit, die eine Anwendung zum Empfangen einer einzelnen Anforderung, deren Übertragung an die Speicherdatenträger und zum Zurücksenden der Antwort an den Client benötigt. Neben IOPS und Durchsatz ist dies ein weiterer wichtiger Messwert für die Leistung einer Anwendung. Die Latenz eines Storage Premium-Datenträgers ist die benötigte Zeit zum Abrufen der Informationen für eine Anforderung und deren Übermittlung zurück an die Anwendung. Storage Premium bietet durchgängig eine niedrige Latenz. Wenn Sie das Hostcache-Einstellung „ReadOnly“ für Storage Premium-Datenträger aktivieren, erhalten Sie bei Lesevorgängen eine wesentlich niedrigere Latenz. Der Datenträgercache wird weiter unten im Abschnitt *Optimieren der Anwendungsleistung*ausführlicher erläutert.
 
 Wenn Sie Ihre Anwendung optimieren, um höhere IOPS- und Durchsatzwerte zu erzielen, wirkt sich dies auf die Latenz der Anwendung aus. Prüfen Sie nach einer Optimierung der Anwendungsleistung stets die Latenz, um unerwartet hohe Latenzen zu vermeiden.
+
+Das Nachverfolgen der Vorgänge auf Steuerungsebene auf verwalteten Datenträgern kann das Verschieben des Datenträgers von einem Speicherort zu einem anderen beinhalten. Dies wird über eine Hintergrundkopie der Daten orchestriert, die bis zum Abschluss mehrere Stunden dauern kann, je nach der Menge der Daten auf den Datenträgern meist weniger als 24 Stunden. Während dieser Zeit können bei Ihrer Anwendung höhere Latenzen bei Lesevorgängen als üblich auftreten, da einige Lesevorgänge an den ursprünglichen Speicherort umgeleitet werden können, sodass es länger dauert, sie abzuschließen. Die Latenz beim Schreiben ist während dieses Zeitraums nicht betroffen.  
+
+1.  [Aktualisieren des Speichertyps](../articles/virtual-machines/windows/convert-disk-storage.md)
+2.  [Trennen und Anfügen eines Datenträgers von einer VM an eine andere](../articles/virtual-machines/windows/attach-disk-ps.md)
+3.  [Erstellen eines verwalteten Datenträgers aus einer VHD](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
+4.  [Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
+5.  [Konvertieren von nicht verwalteten Datenträgern in verwaltete Datenträger](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
 
 ## <a name="gather-application-performance-requirements"></a>Erfassen von Anforderungen an die Anwendungsleistung
 
@@ -597,7 +605,7 @@ Während der Testausführung können Sie die Anzahl der kombinierten Lese- und S
 
 Weitere Informationen zu Azure Storage Premium:
 
-* [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../articles/virtual-machines/windows/premium-storage.md)  
+* [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads](../articles/virtual-machines/windows/premium-storage.md)  
 
 Für SQL Server-Benutzer bietet sich das Lesen von Artikeln zu den bewährten Methoden für die Leistung von SQL Server an:
 

@@ -1,21 +1,21 @@
 ---
 ms.assetid: ''
-title: Dienstendpunkte virtueller Netzwerke für Azure Key Vault | Microsoft-Dokumentation
+title: 'Dienstendpunkte virtueller Netzwerke für den Azure Key Vault: Azure Key Vault | Microsoft-Dokumentation'
 description: Übersicht über Dienstendpunkte virtueller Netzwerke für Key Vault
 services: key-vault
 author: amitbapat
 ms.author: ambapat
 manager: mbaldwin
-ms.date: 08/31/2018
+ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 656007268dcf57910e4a655d85285da4fbd37425
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681516"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002421"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Dienstendpunkte virtueller Netzwerke für Azure Key Vault
 
@@ -31,6 +31,7 @@ Sie können [Key Vault-Firewalls und virtuelle Netzwerke](key-vault-network-secu
 > Key Vault-Firewalls und Regeln für virtuelle Netzwerke gelten nur für die [Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) von Key Vault. Vorgänge auf Key Vault-Steuerungsebene (z.B. Vorgänge zum Erstellen, Löschen und Ändern, das Festlegen von Zugriffsrichtlinien, Festlegen von Firewalls und Regeln für virtuelle Netzwerke) sind von Firewalls und Regeln für virtuelle Netzwerke nicht betroffen.
 
 Hier finden Sie einige Beispiele dafür, wie Sie Dienstendpunkte verwenden können:
+
 * Sie verwenden Key Vault zum Speichern von Verschlüsselungsschlüsseln, Anwendungsgeheimnissen und Zertifikaten, und Sie möchten den Zugriff auf Ihren Schlüsseltresor aus dem öffentlichen Internet blockieren.
 * Sie möchten den Zugriff auf Ihren Schlüsseltresor sperren, sodass nur Ihre Anwendung oder einige festgelegte Hosts eine Verbindung mit dem Schlüsselspeicher herstellen können.
 * Sie führen eine Anwendung in Ihrem virtuellen Azure-Netzwerk aus, und dieses virtuelle Netzwerk ist für den gesamten eingehenden und ausgehenden Datenverkehr gesperrt. Ihre Anwendung muss dennoch weiterhin eine Verbindung mit dem Schlüsseltresor herstellen, um Geheimnisse abzurufen oder Kryptografieschlüssel zu verwenden.
@@ -38,12 +39,13 @@ Hier finden Sie einige Beispiele dafür, wie Sie Dienstendpunkte verwenden könn
 ## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Key Vault-Firewalls und virtuellen Netzwerken
 
 Es folgen die erforderlichen Schritte zum Konfigurieren von Firewalls und virtuellen Netzwerken. Diese Schritte gelten unabhängig davon, ob Sie PowerShell, die Azure-Befehlszeilenschnittstelle (CLI) oder Azure-Portal verwenden.
+
 1. Aktivieren Sie die [Schlüsseltresor-Protokollierung](key-vault-logging.md), um detaillierte Zugriffsprotokolle anzuzeigen. Dies ist hilfreich bei der Diagnose, wenn Firewallregeln und Regeln für virtuelle Netzwerke den Zugriff auf einen Schlüsseltresor verhindern. (Dieser Schritt ist optional, wird aber dringend empfohlen.)
 2. Aktivieren Sie **Dienstendpunkte für Key Vault** für virtuelle Zielnetzwerke und Subnetze.
 3. Legen Sie Firewalls und Regeln für virtuelle Netzwerke für einen Schlüsseltresor fest, um den Zugriff auf diesen Schlüsseltresor aus bestimmten virtuellen Netzwerken, Subnetzen und IPv4-Adressbereichen zu beschränken.
 4. Wenn dieser Schlüsseltresor für vertrauenswürdige Microsoft-Dienste zugänglich sein soll, aktivieren Sie die Option zum Zulassen des Zugriffs auf den Schlüsselspeicher durch **vertrauenswürdige Azure-Dienste**.
 
-Weitere Details finden Sie unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](key-vault-network-security.md).
+Weitere Informationen finden Sie unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](key-vault-network-security.md).
 
 > [!IMPORTANT]
 > Nachdem Firewallregeln in Kraft sind, können Benutzer nur Vorgänge auf Key Vault-[Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) ausführen, wenn ihre Anforderungen aus zulässigen virtuellen Netzwerken oder IPv4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor aus dem Azure-Portal. Obwohl Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren können, können sie möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn ihr Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
@@ -57,6 +59,7 @@ Weitere Details finden Sie unter [Konfigurieren von Azure Key Vault-Firewalls un
 > * Derzeit werden nur IPv4-Adressen unterstützt.
 
 ## <a name="trusted-services"></a>Vertrauenswürdige Dienste
+
 Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Schlüsseltresor gewährt wird, wenn die Option **Vertrauenswürdige Dienste zulassen** aktiviert ist.
 
 |Vertrauenswürdiger Dienst|Verwendungsszenarien|

@@ -13,14 +13,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2bba11cd8b0e90f7835872e496c790aa56fcddc8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 47a89da808e2f53cf8dfc901c64eba3d78842d13
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276960"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652029"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gewusst wie: Durchführen der Problembehandlung für Anmeldefehler mit Azure Active Directory-Berichten
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gewusst wie: Beheben von Anmeldefehlern mit Azure Active Directory-Berichten
 
 Mit dem [Bericht zu Anmeldeaktivitäten](concept-sign-ins.md) in Azure Active Directory (Azure AD) können Sie Antworten auf Fragen zur Verwaltung des Zugriffs auf die Anwendungen in Ihrer Organisation finden, z.B.:
 
@@ -35,7 +35,7 @@ Darüber hinaus kann Ihnen der Bericht zu Anmeldeaktivitäten auch als Hilfe bei
 
 Erforderlich:
 
-* Ein Azure AD-Mandant mit einer Premium-Lizenz (P1/P2). 
+* Ein Azure AD-Mandant mit einer Premium-Lizenz (P1/P2). Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen.
 * Einen Benutzer, der über die Rolle **Globaler Administrator**, **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Benutzer mit Leseberechtigung für Berichte** für den Mandanten verfügt. Darüber hinaus kann jeder Benutzer auf die eigenen Anmeldungen zugreifen. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Durchführen der Problembehandlung für Anmeldefehler mit dem Bericht zu Anmeldeaktivitäten

@@ -17,17 +17,17 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51238074"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
 In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen. Im Rahmen des vollständigen Tutorials wird eine Verfügbarkeitsgruppe mit einem Datenbankreplikat in zwei SQL Server-Instanzen erstellt.
 
-**Voraussichtliche Dauer:** Etwa 30 Minuten nach Abschluss der erforderlichen Vorbereitungen.
+**Geschätzte Zeit**: Etwa 30 Minuten nach Abschluss der erforderlichen Vorbereitungen.
 
 Das Diagramm veranschaulicht, was Sie im Rahmen dieses Tutorials erstellen.
 
@@ -45,7 +45,7 @@ Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sei
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Dateifreigabe für Clusterzeuge |  
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Dienstkonto | Domänenkonto |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Agent-Dienstkonto | Domänenkonto |  
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Geöffnete Firewallports | - SQL Server: **1433** für Standardinstanz <br/> - Datenbankspiegelungsendpunkt: **5022** oder ein anderer verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein anderer verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein anderer verfügbarer Port |
+|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Geöffnete Firewallports | - SQL Server: **1433** für die Standardinstanz <br/> - Datenbankspiegelungs-Endpunkt: **5022** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein beliebiger verfügbarer Port |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Hinzufügen des Failoverclustering-Features | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Domänenkonto für die Installation | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
 
