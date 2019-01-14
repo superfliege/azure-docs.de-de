@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 878d9e635d82e52d8a47d47a135ba865f140c9e9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321885"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971119"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -60,7 +60,7 @@ Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der
 
 Die mit den HDInsight-Clusterversionen verknüpften Komponentenversionen des Hadoop-Ökosystems können sich bei Updates für HDInsight ändern. Um die Hadoop-Komponenten zu überprüfen und zu ermitteln, welche Versionen für einen Cluster verwendet werden, verwenden Sie die Ambari-REST-API. Mit dem Befehl **GetComponentInformation** rufen Sie Informationen zu Dienstkomponenten ab. Ausführliche Informationen finden Sie in der [Apache Ambari-Dokumentation][ambari-docs].
 
-> [!IMPORTANT]  
+> [!IMPORTANT]    
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](#hdinsight-windows-retirement).
 
 ### <a name="release-notes"></a>Versionshinweise
@@ -139,9 +139,9 @@ Derzeit wird das Enterprise Security Package nur durch die folgenden Clustertype
 - Spark
 - Interactive Query
 
-### <a name="support-for-azure-data-lake-store"></a>Unterstützung für Azure Data Lake-Speicher
+### <a name="support-for-azure-data-lake-storage"></a>Unterstützung für Azure Data Lake Storage
 
-Das Enterprise Security Package unterstützt die Verwendung von Azure Data Lake Store sowohl als Primärspeicher als auch als Zusatzspeicher.
+Das Enterprise-Sicherheitspaket unterstützt die Verwendung von Azure Data Lake Storage sowohl als Primärspeicher als auch als Zusatzspeicher.
 
 ### <a name="pricing-and-sla"></a>Preise und SLA
 Informationen zu Preisen und SLA für das Enterprise Security Package finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -149,7 +149,7 @@ Informationen zu Preisen und SLA für das Enterprise Security Package finden Sie
 ## <a name="hdinsight-windows-retirement"></a>HDInsight-Windows-Deaktivierung
 Microsoft Azure HDInsight-Version 3.3 war die letzte Version von HDInsight unter Windows. Das Deaktivierungstermin für HDInsight unter Windows ist der 31. Juli 2018. Wenn Sie HDInsight-Cluster unter Windows 3.3 oder früheren Versionen haben, müssen Sie HDInsight vor dem 31. Juli 2018 in Linux migrieren (HDInsight Version 3.5 oder höher). Durch die Migration in das Linux-Betriebssystem können Sie weiterhin HDInsight-Cluster erstellen und in der Größe anpassen. Unterstützung für HDInsight Version 3.3 unter Windows ist am 27. Juni 2016 abgelaufen.
 
-Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), Interactive Query, [Apache Spark](https://spark.apache.org/), HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. Zukünftige Releases von HDInsight stehen nur unter Linux zur Verfügung. Es wird keine zukünftige Version von HDInsight unter Windows geben. 
+Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), Interactive Query, [Apache Spark](https://spark.apache.org/), HDInsight-Anwendungen und Azure Data Lake Storage als primäres Dateisystem ein. Zukünftige Releases von HDInsight stehen nur unter Linux zur Verfügung. Es wird keine zukünftige Version von HDInsight unter Windows geben. 
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -172,7 +172,7 @@ Wechseln Sie im Azure-Portal zur Übersichtsseite des HDInsight-Clusters, und su
 Das HDInsight-Windows-Cluster wird wie gehabt ausgeführt, Sie können aber keine neuen HDInsight-Cluster unter Windows erstellen oder die Größe eines vorhandenen HDInsight-Windows-Clusters ändern. 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>Meine Cluster hat eine .NET-Abhängigkeit. Wie beheben ich diese Abhängigkeit unter Linux?
-Sie können Ihre Linux-Cluster-Abhängigkeit mit dem [Mono-Projekt](http://www.mono-project.com/) beheben. Diese Open Source-Implementierung von .NET ist für HDInsight-Linux-Cluster verfügbar. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](hdinsight-migrate-from-windows-to-linux.md). 
+Sie können Ihre Linux-Cluster-Abhängigkeit mit dem [Mono-Projekt](https://www.mono-project.com/) beheben. Diese Open Source-Implementierung von .NET ist für HDInsight-Linux-Cluster verfügbar. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](hdinsight-migrate-from-windows-to-linux.md). 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Ich bin ein neuer Kunde von HDInsight unter Windows. Wie kann ich ein HDInsight-Windows-Cluster erstellen?
 Seit dem 3. Juli 2017 können nur bestehende HDInsight-Windows-Kunden neue HDInsight-Windows-Cluster erstellen. Neue Kunden können keine HDInsight-Windows-Cluster über das Azure-Portal mit PowerShell oder dem SDK erstellen. Es wird empfohlen neuen Kunden, ein Linux-HDInsight-Cluster zu erstellen. Bestehende Kunden können bis zum Deaktivierungstermin von HDInsight unter Windows neue HDInsight-Windows-Cluster erstellen. 
@@ -186,7 +186,7 @@ Nein, die Preise für HDInsight sind für alle Betriebssysteme gleich.
 * Möglichkeit der aktiven Entwicklung durch die Open Source-Community für Hadoop und andere Big Data-Technologien
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>Bietet HDInsight unter Linux zusätzliche Funktionalität, die über die unter Windows verfügbare hinausgeht?
-Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Query, Spark HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. 
+Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Query, Spark HDInsight-Anwendungen und Azure Data Lake Storage als primäres Dateisystem ein. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) für HDInsight-Clusterversionen
 Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) ist als _Supportfenster_ definiert. Ein Supportfenster ist ein Zeitraum, in dem eine HDInsight-Clusterversion vom Microsoft-Kundendienst und -Support unterstützt wird. Wenn die Version ein verstrichenes _Supportablaufdatum_ hat, befindet sich das HDInsight-Cluster außerhalb des Supportfensters. Weitere Informationen zu unterstützten Versionen finden Sie in der Liste der [unterstützten Versionen von HDInsight-Clustern](hdinsight-migrate-from-windows-to-linux.md). Das Supportablaufdatum für eine bestimmte HDInsight-Version X (nachdem eine neuere X+1-Version verfügbar ist) wird berechnet als das spätere Datum von:  
@@ -203,10 +203,10 @@ Das _Deaktivierungsdatum_ ist das Datum, nach dem die Clusterversion nicht mehr 
 
 Dieser Abschnitt enthält Links zu den Anmerkungen zu dieser Version für Hortonworks Data Platform-Verteilungen und den Apache-Komponenten, die mit HDInsight verwendet werden.
 * HDInsight-Clusterversion 4.0 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) basiert.
-* HDInsight-Clusterversion 3.6 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.6](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) basiert.
-* HDInsight-Clusterversion 3.5 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) basiert. HDInsight-Clusterversion 3.5 ist das _Standard_-Hadoop-Cluster, das im Azure-Portal erstellt wird.
-* HDInsight-Clusterversion 3.4 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)basiert.
-* HDInsight-Clusterversion 3.3 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.3](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)basiert.
+* HDInsight-Clusterversion 3.6 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) basiert.
+* HDInsight-Clusterversion 3.5 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) basiert. HDInsight-Clusterversion 3.5 ist das _Standard_-Hadoop-Cluster, das im Azure-Portal erstellt wird.
+* HDInsight-Clusterversion 3.4 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)basiert.
+* HDInsight-Clusterversion 3.3 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)basiert.
 
   * Auf der Apache-Website finden Sie die [Anmerkungen zur Version von Apache Storm](https://storm.apache.org/2015/11/05/storm0100-released.html).
   * Auf der Apache-Website finden Sie die [Anmerkungen zur Version von Apache Hive](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843).
@@ -230,11 +230,11 @@ Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster
 
   | Clustertyp | Hadoop | hbase | Interactive Query | Storm | Spark  | ML Server |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Head – Standard-VM-Größe |D3 v2 |D3 v2 | D13,<br/> D14 |A4 v2 |D12 v2 |D12 v2 |
+  | Head – Standard-VM-Größe |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
   | Head – empfohlene VM-Größen |D3 v2,<br/> D4 v2,<br/> D12 v2 |D3 v2,<br/> D4 v2,<br/> D12 v2  | D13,<br/> D14 |A4 v2,<br/> A8 v2,<br/> A2m v2 |D12 v2,<br/> D13 v2,<br/> D14 v2 |D12 v2,<br/> D13 v2,<br/> D14 v2 |
-  | Worker – Standard-VM-Größe |D3 v2 |D3 v2  | D13,<br/> D14 |D3 v2 |D4 v2 | D4 v2 |
+  | Worker – Standard-VM-Größe |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
   | Worker – empfohlene VM-Größen |D3 v2,<br/> D4 v2,<br/> D12 v2 |D3 v2,<br/> D4 v2,<br/> D12 v2  | D13,<br/> D14 |D3 v2,<br/> D4 v2,<br/> D12 v2 |D4 v2,<br/> D12 v2,<br/> D13 v2,<br/> D14 v2 |D4 v2,<br/> D12 v2,<br/> D13 v2,<br/> D14 v2 |
-  | Zookeeper – Standard-VM-Größen | |A4 v2 | |A2 v2 | | |
+  | Zookeeper – Standard-VM-Größen | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
   | Zookeeper – empfohlene VM-Größen | |A4 v2,<br/> A8 v2,<br/> A2m v2 | | A2 v2,<br/> A4 v2,<br/> A8 v2 | | |
   | Edge – Standard-VM-Größe | | | | | |D4 v2 |
   | Edge – empfohlene VM-Größe | | | | | |D4 v2,<br/> D12 v2,<br/> D13 v2,<br/> D14 v2 |
@@ -242,11 +242,11 @@ Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster
 
   | Clustertyp | Hadoop | hbase | Interactive Query |Storm | Spark | ML Services |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Head – Standard-VM-Größe |D3 |D3  | D13,<br/> D14 |A3 |D12 |D12 |
+  | Head – Standard-VM-Größe |D12 |D12  | D13 |A3 |D12 |D12 |
   | Head – empfohlene VM-Größen |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
-  | Worker – Standard-VM-Größe |D3 |D3  | D13,<br/> D14 |D3 |D4 |D4 |
+  | Worker – Standard-VM-Größe |D4 |D4  |  D14 |D3 |D13 |D4 |
   | Worker – empfohlene VM-Größen |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
-  | Zookeeper – Standard-VM-Größen | |A2 | | A2 | | |
+  | Zookeeper – Standard-VM-Größen | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
   | Zookeeper – empfohlene VM-Größen | |A2,<br/> A3,<br/> A4 | |A2,<br/> A3,<br/> A4 | | |
   | Edge – Standard-VM-Größen | | | | | |D4 |
   | Edge – empfohlene VM-Größen | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
@@ -270,16 +270,16 @@ Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster
 
 [hdp-2-2]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.9/bk_HDP_RelNotes/content/ch_relnotes_v229.html
 
-[hdp-2-1-7]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
+[hdp-2-1-7]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
 
-[hdp-2-1-1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
+[hdp-2-1-1]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
 
-[hdp-2-0-8]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
+[hdp-2-0-8]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
 
-[hdp-1-3-0]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
+[hdp-1-3-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
 
 [hdp-1-1-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.1.1.16_1.html
 
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[zookeeper]: http://zookeeper.apache.org/
+[zookeeper]: https://zookeeper.apache.org/

@@ -9,48 +9,47 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: adfb30b73bbc9929bbfe3b07bd830d3f278bcc27
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d42b6b857f04c191ebdfb1687c8ee2adcad95d26
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723687"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054284"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webaktivität in Azure Data Factory
-Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben. 
+Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.
 
 ## <a name="syntax"></a>Syntax
 
 ```json
-{  
+{
    "name":"MyWebActivity",
    "type":"WebActivity",
-   "typeProperties":{  
+   "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
-      "headers":{  
+      "headers":{
          "Content-Type":"application/json"
       },
-      "authentication":{  
-         "type":"ClientCertificate",  
+      "authentication":{
+         "type":"ClientCertificate",
          "pfx":"****",
          "password":"****"
       },
-      "datasets":[  
-         {  
+      "datasets":[
+         {
             "referenceName":"<ConsumedDatasetName>",
             "type":"DatasetReference",
-            "parameters":{  
+            "parameters":{
                ...
             }
          }
       ],
-      "linkedServices":[  
-         {  
+      "linkedServices":[
+         {
             "referenceName":"<ConsumedLinkedServiceName>",
             "type":"LinkedServiceReference"
          }
@@ -93,10 +92,10 @@ Die folgende Tabelle enthält die Anforderungen für JSON-Inhalt:
 Wenn keine Authentifizierung erforderlich ist, schließen Sie die Eigenschaft „authentication“ nicht ein.
 
 ### <a name="basic"></a>Basic
-Geben Sie Benutzername und Kennwort für die Standardauthentifizierung an. 
+Geben Sie Benutzername und Kennwort für die Standardauthentifizierung an.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"Basic",
    "username":"****",
    "password":"****"
@@ -104,12 +103,12 @@ Geben Sie Benutzername und Kennwort für die Standardauthentifizierung an.
 ```
 
 ### <a name="client-certificate"></a>Clientzertifikat
-Geben Sie die Base64-codierten Inhalte einer PFX-Datei und das Kennwort an. 
+Geben Sie die Base64-codierten Inhalte einer PFX-Datei und das Kennwort an.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"ClientCertificate",
-   "pfx":"****",   
+   "pfx":"****",
    "password":"****"
 }
 ```
@@ -126,7 +125,7 @@ Geben Sie den Ressourcen-URI an, für den das Zugriffstoken mithilfe der verwalt
 ```
 
 ## <a name="request-payload-schema"></a>Schema der Anforderungsnutzlast
-Wenn Sie die POST/PUT-Methode verwenden, stellt die Eigenschaft „body“ die Nutzlast dar, die an den Endpunkt gesendet wird. Sie können verknüpfte Dienste und Datasets als Teil der Nutzlast übergeben. Dies ist das Schema für die Nutzlast: 
+Wenn Sie die POST/PUT-Methode verwenden, stellt die Eigenschaft „body“ die Nutzlast dar, die an den Endpunkt gesendet wird. Sie können verknüpfte Dienste und Datasets als Teil der Nutzlast übergeben. Dies ist das Schema für die Nutzlast:
 
 ```json
 {
@@ -145,11 +144,11 @@ Wenn Sie die POST/PUT-Methode verwenden, stellt die Eigenschaft „body“ die N
             }
         }]
     }
-} 
+}
 ```
 
 ## <a name="example"></a>Beispiel
-In diesem Beispiel ruft die Webaktivität in der Pipeline einen REST-Endpunkt auf. Sie übergibt einen verknüpften Azure SQL-Dienst und ein Azure SQL-Dataset an den Endpunkt. Der REST-Endpunkt verwendet die Azure SQL-Verbindungszeichenfolge für die Verbindung mit dem Azure SQL-Server und gibt den Namen der Instanz des SQL-Servers zurück. 
+In diesem Beispiel ruft die Webaktivität in der Pipeline einen REST-Endpunkt auf. Sie übergibt einen verknüpften Azure SQL-Dienst und ein Azure SQL-Dataset an den Endpunkt. Der REST-Endpunkt verwendet die Azure SQL-Verbindungszeichenfolge für die Verbindung mit dem Azure SQL-Server und gibt den Namen der Instanz des SQL-Servers zurück.
 
 ### <a name="pipeline-definition"></a>Definition der Pipeline
 
@@ -243,7 +242,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden:
 
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [ForEach-Aktivität](control-flow-for-each-activity.md)

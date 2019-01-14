@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 14c21db9e1da23e97815953937f434fe7f25e354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725319"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118182"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die Benutzern zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, das Erkenntnisse verwendet, die aus einzigartigen Microsoft-Funktionen stammen, u.a. aus dem [Microsoft Security Development Lifecycle](https://www.microsoft.com/sdl), dem [Microsoft Security Response Center-Programm](https://www.microsoft.com/msrc?rtc=1) und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
@@ -87,7 +87,7 @@ Mit dem [Azure Resource Manager](https://azure.microsoft.com/documentation/artic
 - Stellen Sie sicher, dass Ihre App den Datenverkehr für die nächste Produkteinführung oder Marketingkampagne bewältigen kann.
 
 **Bewährte Methode**: Überwachen der Anwendungsleistung.  
-**Detail**: [Azure Application Insights](../application-insights/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Sie können mit Application Insights Ihre Live-Web-App überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App.
+**Detail**: [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Sie können mit Application Insights Ihre Live-Web-App überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Abwenden von und Schützen vor DDoS
 Bei einem DDoS-Angriff versucht ein Angreifer, Anwendungsressourcen zu erschöpfen. Die Verfügbarkeit der Anwendung und ihre Fähigkeit, legitime Anforderungen zu verarbeiten, sollen beeinträchtigt werden. Diese Angriffe werden komplexer, ihr Ausmaß größer und ihre Auswirkungen gravierender. Jeder Endpunkt, der öffentlich über das Internet erreichbar ist, kann Ziel von DDoS-Angriffen werden.
@@ -102,7 +102,7 @@ Im Folgenden sind bewährte Methoden zum Erstellen von Anwendungen in Azure aufg
 Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil genug ist, um mit einem Denial-of-Service-Angriff fertig zu werden. Sicherheit und Datenschutz sind direkt in der Azure-Plattform integriert, beginnend mit [Security Development Lifecycle (SDL)](https://www.microsoft.com/en-us/sdl). Die SDL spricht Sicherheit in jeder Entwicklungsphase an und sorgt dafür, dass Azure kontinuierlich aktualisiert wird, um noch sicherer zu sein.
 
 **Bewährte Methode**: Entwerfen der Anwendungen für eine [horizontale Skalierung](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out), um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.  
-**Detail**: Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-is.md) einen [App Service-Plan](../app-service/overview-hosting-plans.md) aus, der mehrere Instanzen bietet.
+**Detail**: Wählen Sie für Azure App Service einen [App Service-Plan](../app-service/overview-hosting-plans.md) aus, der mehrere Instanzen bietet.
 
 Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../cloud-services/cloud-services-choose-me.md) verwenden.
 

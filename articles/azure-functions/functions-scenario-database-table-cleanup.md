@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: e59c0b6994a64972b1458c0f295f24d0a615d871
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740109"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608578"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
@@ -70,7 +70,7 @@ Sie müssen das NuGet-Paket hinzufügen, das die SqlClient-Bibliothek enthält. 
 
 1. Suchen Sie auf der Registerkarte **Durchsuchen** nach ```System.Data.SqlClient```, und wählen Sie das Element aus.
 
-1. Klicken Sie auf der Seite **System.Data.SqlClient** auf **Installieren**.
+1. Wählen Sie auf der Seite **System.Data.SqlClient** die Version `4.5.1` aus, und klicken Sie dann auf **Installieren**.
 
 1. Überprüfen Sie nach Abschluss der Installation die Änderungen, und klicken Sie anschließend auf **OK**, um das **Vorschaufenster** zu schließen.
 
@@ -139,6 +139,6 @@ Als Nächstes erfahren Sie, wie Sie Functions mit Logic Apps für die Integratio
 Weitere Informationen zu Functions finden Sie in den folgenden Artikeln:
 
 + [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-  Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
+   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 + [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
-  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  
+   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  

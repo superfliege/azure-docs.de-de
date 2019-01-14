@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 96dcb584ac23a2298463524add1aeb971f29e24b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7d6b942ea8b2bf61bee472811648e5089f280354
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725880"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102413"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 In diesem Artikel wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Ein ausführliches Tutorial zum Erstellen einer Vorlage finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
@@ -28,7 +28,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
@@ -40,7 +40,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| $schema |JA |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt.<br><br> Verwenden Sie für Bereitstellungen von Ressourcengruppen `http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>Verwenden Sie für Bereitstellungen von Abonnements `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`. |
+| $schema |JA |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt.<br><br> Verwenden Sie für Bereitstellungen von Ressourcengruppen `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>Verwenden Sie für Bereitstellungen von Abonnements `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`. |
 | contentVersion |JA |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
 | Parameter |Nein  |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
 | variables |Nein  |Werte, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen. |
@@ -52,7 +52,7 @@ Jedes Element weist Eigenschaften auf, die Sie festlegen können. Das folgende B
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "",
     "parameters": {  
         "<parameter-name>" : {

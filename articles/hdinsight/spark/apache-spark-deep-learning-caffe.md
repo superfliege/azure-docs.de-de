@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: eba66d4abf84603f1fdb5761d3ea1987983908de
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607029"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118233"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 
@@ -89,7 +89,7 @@ Der zweite Schritt umfasst das Erstellen von Caffe auf dem Hauptknoten und das a
 
     #compile CaffeOnSpark
     pushd ${CAFFE_ON_SPARK}
-    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2"
+    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2"
     make clean 
     #the build step usually takes 20~30 mins, since it has a lot maven dependencies
     make build 
@@ -120,7 +120,7 @@ Sie müssen möglicherweise mehr erledigen, als in der CaffeOnSpark-Dokumentatio
 
 Beim ersten Versuch, CaffeOnSpark zu erstellen, wird manchmal Folgendes zurückgegeben:
 
-    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
+    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2
 
 Bereinigen Sie das Coderepository mit „make clean“, und führen Sie anschließend „make build“ aus, um dieses Problem zu beheben, solange Sie über die richtigen Abhängigkeiten verfügen.
 

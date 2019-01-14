@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 378f52f0418c8c99e9ce6ca393ca10a77504698d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499581"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632021"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Windows-basierten Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -55,12 +55,10 @@ In HDInsight kann eine Vielzahl von Apache Hadoop-Komponenten verwendet werden. 
 * Verwenden Sie die Clusteranpassungsparameter im HDInsight .NET-SDK oder in Azure PowerShell während der Clustererstellung. Diese Konfigurationsänderungen bleiben während der gesamten Lebensdauer des Clusters erhalten und werden nicht vom Reimaging von Clusterknoten beeinträchtigt, das die Azure-Plattform regelmäßig zu Wartungszwecken durchführt. Weitere Informationen zur Verwendung der Clusteranpassungsparameter finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md).
 * Einige native Java-Komponenten wie [Apache Mahout](https://mahout.apache.org/) und [Cascading](https://www.cascading.org/) können im Cluster als JAR-Dateien ausgeführt werden. Diese JAR-Dateien können an Azure Blob Storage verteilt und mit den Verfahren zur Übermittlung von Hadoop-Aufträgen an HDInsight-Cluster gesendet werden. Weitere Informationen finden Sie unter [Programmgesteuerte Übermittlung von Apache Hadoop-Aufträgen](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
-  > [!NOTE]
+  > [!NOTE]  
   > Wenn bei der Bereitstellung von JAR-Dateien für HDInsight-Cluster oder beim Aufrufen von JAR-Dateien für HDInsight-Cluster Probleme auftreten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).
   >
   > Cascading wird von HDInsight nicht unterstützt, und es steht kein Microsoft-Support dafür zur Verfügung. Listen der unterstützten Komponenten finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Clusterversionen](hdinsight-component-versioning.md).
-  >
-  >
 
 Die Installation von benutzerdefinierter Software auf dem Cluster über eine Remotedesktopverbindung wird nicht unterstützt. Speichern Sie nach Möglichkeit keine Dateien auf den Laufwerken des Hauptknotens, da diese verloren gehen, wenn Sie die Cluster neu erstellen müssen. Wir empfehlen die Speicherung von Dateien in Azure Blob Storage. Blobspeicher ist persistent.
 
@@ -83,17 +81,14 @@ Die Installation von benutzerdefinierter Software auf dem Cluster über eine Rem
    * **Schnellstart**: Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
    * **Benutzer**: Dient zum Festlegen der Berechtigungen für die *Portalverwaltung* dieses Clusters für andere Benutzer in Ihrem Azure-Abonnement.
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > Die hier vorgenommenen Einstellungen betreffen *nur* den Zugriff und die Berechtigungen für diesen Cluster im Azure-Portal und haben keine Auswirkung darauf, wer eine Verbindung mit dem HDInsight-Cluster herstellen oder Aufträge übermitteln kann.
-     >
-     >
+
    * **Tags**: Mithilfe von Tags können Sie Schlüssel-Wert-Paare festlegen, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen **Projekt** erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
    * **Ambari-Ansichten**: Verknüpfung mit Ambari Web.
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > Um die vom HDInsight-Cluster bereitgestellten Dienste zu verwalten, müssen Sie Ambari Web oder die Ambari-REST-API verwenden. Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mit Apache Ambari](hdinsight-hadoop-manage-ambari.md).
-     >
-     >
 
      **Verwendung**:
 
@@ -102,32 +97,31 @@ Die Installation von benutzerdefinierter Software auf dem Cluster über eine Rem
 
     ![Azure-Portal – HDInsight-Clusternutzung](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
-   * **Eigenschaften**: Anzeigen der Clustereigenschaften
+   * **Eigenschaften**: Dient zum Anzeigen der Clustereigenschaften.
    * **Cluster-AAD-Identität**:
    * **Azure-Speicherschlüssel**: Anzeigen des Standardspeicherkontos und des dazugehörigen Schlüssels. Das Speicherkonto wird während der Clustererstellung konfiguriert.
-   * **Clusteranmeldung**: Ändern des Cluster-HTTP-Benutzernamens und des Kennworts
-   * **Externe Metastores:** Anzeigen der Metastores für [Apache Hive](https://hive.apache.org/) und [Apache Oozie](https://oozie.apache.org/). Die Metastores können nur während der Clustererstellung konfiguriert werden.
-   * **Cluster skalieren**: Erhöhen und Verringern der Anzahl der Cluster-Workerknoten
-   * **Remotedesktop**: Aktivieren und Deaktivieren von Remotedesktop (RDP)-Zugriff und Konfigurieren des RDP-Benutzernamens.  Der RDP-Benutzername muss sich vom HTTP-Benutzernamen unterscheiden.
+   * **Clusteranmeldung**: Ändern des Cluster-HTTP-Benutzernamens und des Kennworts.
+   * **Externe Metastores**: Anzeigen der Metastores für [Apache Hive](https://hive.apache.org/) und [Apache Oozie](https://oozie.apache.org/). Die Metastores können nur während der Clustererstellung konfiguriert werden.
+   * **Cluster skalieren**: Erhöhen und Verringern der Anzahl der Cluster-Workerknoten.
+   * **Remotedesktop:** Aktivieren und Deaktivieren von Remotedesktop (RDP)-Zugriff und Konfigurieren des RDP-Benutzernamens.  Der RDP-Benutzername muss sich vom HTTP-Benutzernamen unterscheiden.
    * **Registrierter Partner**:
 
-     > [!NOTE]
+     > [!NOTE]  
      > Dies ist eine generische Liste der verfügbaren Einstellungen – nicht alle stehen für alle Cluster zur Verfügung.
-     >
-     >
+
 6. Klicken Sie auf **Eigenschaften**.
 
     Der Abschnitt „Eigenschaften“ umfasst Folgendes:
 
-   * **Hostname**: Der Clustername
+   * **Hostname**: Clustername
    * **Cluster-URL**
    * **Status**: Umfasst Aborted, Accepted, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Deleting, Deleted, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization
-   * **Region**: Der Azure-Standort. Eine Liste der unterstützten Azure-Standorte, finden Sie im Dropdown-Listenfeld **Region** unter [HDInsight Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
+   * **Region**: Azure-Standort. Eine Liste der unterstützten Azure-Standorte, finden Sie im Dropdown-Listenfeld **Region** unter [HDInsight Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Erstellte Daten**
-   * **Betriebssystem**: Entweder **Windows** oder **Linux**
-   * **Typ**: Hadoop, HBase, Storm, Spark
+   * **Betriebssystem**: Entweder **Windows** oder **Linux**.
+   * **Typ**: Hadoop, HBase, Storm, Spark.
    * **Version**. Siehe [HDInsight-Versionen](hdinsight-component-versioning.md)
-   * **Abonnement**: Name des Abonnements.
+   * **Abonnement**: Abonnementname.
    * **Abonnement-ID**
    * **Primäre Datenquelle** Das Azure Blob Storage-Konto, das als Standard-Hadoop-Dateisystem verwendet wird.
    * **Workerknoten – Tarif**
@@ -145,10 +139,8 @@ Siehe auch [Anhalten/Herunterfahren von Clustern](#pauseshut-down-clusters).
 ## <a name="scale-clusters"></a>Skalieren von Clustern
 Mithilfe der Clusterskalierung können Sie die Anzahl der von einem in Azure HDInsight ausgeführten Cluster verwendeten Workerknoten ändern, ohne den Cluster neu erstellen zu müssen.
 
-> [!NOTE]
+> [!NOTE]  
 > Es werden nur Cluster mit HDInsight-Versionen ab 3.1.3 unterstützt. Überprüfen Sie ggf. auf der Seite „Eigenschaften“ die Version Ihres Clusters.  Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
->
->
 
 Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unterstützten Clustertypen:
 
@@ -175,7 +167,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
   * Apache Storm-Webbenutzeroberfläche
   * Befehlszeilenschnittstelle (CLI)
 
-    Weitere Informationen finden Sie in der Dokumentation zu [Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) .
+    Weitere Informationen finden Sie in der Dokumentation zu [Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) .
 
     Die Storm-Webbenutzeroberfläche ist für den HDInsight-Cluster verfügbar:
 
@@ -234,10 +226,8 @@ In HDInsight-Clustern stehen die folgenden HTTP-Webdienste zur Verfügung (alle 
 
 Der Zugriff auf diese Dienste wird standardmäßig gewährt. Über das Azure-Portal können Sie den Zugriff widerrufen/gewähren.
 
-> [!NOTE]
+> [!NOTE]  
 > Durch Gewähren/Widerrufen des Zugriffs werden der Benutzername und das Kennwort des Clusterbenutzers zurückgesetzt.
->
->
 
 **So gewähren/widerrufen Sie den Zugriff auf HTTP-Webdienste**
 
@@ -300,10 +290,8 @@ Sie können auch das Hilfsprogramm **Dateisystem durchsuchen** unter **Hadoop UI
 ## <a name="monitor-cluster-usage"></a>Überwachen der Clusternutzung
 Der Abschnitt **Nutzung** auf dem Blatt für den HDInsight-Cluster enthält Informationen zur Anzahl von Kernen, die für Ihr Abonnement zur Verwendung mit HDInsight verfügbar sind. Außerdem ist hier die Anzahl von Kernen angegeben, die diesem Cluster zugeordnet sind. Weiterhin wird angezeigt, wie die Kerne für die Knoten innerhalb dieses Clusters zugeordnet sind. Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Um die vom HDInsight-Cluster bereitgestellten Dienste zu überwachen, müssen Sie Ambari Web oder die Ambari-REST-API verwenden. Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mit Apache Ambari](hdinsight-hadoop-manage-ambari.md).
->
->
 
 ## <a name="open-hadoop-ui"></a>Öffnen der Hadoop-Benutzeroberfläche
 Klicken Sie in der HDInsight-Abfragekonsole auf **Hadoop UI** , um den Cluster zu überwachen, das Dateisystem zu durchsuchen und Protokolle zu prüfen. Weitere Informationen hierzu finden Sie unter [Öffnen der HDInsight-Abfragekonsole](#open-hdinsight-query-console).
@@ -325,10 +313,8 @@ Mit den Anmeldeinformationen, die Sie bei der Erstellung des Clusters für diese
 
     Der Standardwert für „Gültig bis“ ist eine Woche.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Mit dem HDInsight .NET SDK können Sie auch Remotedesktop auf einem Cluster aktivieren. Verwenden Sie die **EnableRdp**-Methode folgendermaßen für das HDInsight-Client-Objekt:**client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. Um Remotedesktop auf dem Cluster zu deaktivieren, können Sie auch **client.DisableRdp(clustername, location)** verwenden. Weitere Informationen zu diesen Methoden finden Sie unter [HDInsight .NET SDK-Referenz](https://go.microsoft.com/fwlink/?LinkId=529017). Dies gilt nur für HDInsight-Cluster unter Windows.
-   >
-   >
 
 **So stellen Sie eine Verbindung über RDP mit dem Cluster her**
 
@@ -347,7 +333,7 @@ Wenn Sie die Verbindung zum Cluster über den Remotedesktop herstellen und die H
 
     ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
-    Weitere Informationen zu Hadoop-Befehlen finden Sie in der [Apache Hadoop-Befehlsreferenz](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
+    Weitere Informationen zu Hadoop-Befehlen finden Sie in der [Apache Hadoop-Befehlsreferenz](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
 Im vorherigen Screenshot ist die Hadoop-Versionsnummer im Ordnernamen enthalten. Die Versionsnummer kann sich je nach den im Cluster installierten Hadoop-Komponenten ändern. Sie können mithilfe von Hadoop-Umgebungsvariablen auf diese Ordner verweisen. Beispiel: 
 
