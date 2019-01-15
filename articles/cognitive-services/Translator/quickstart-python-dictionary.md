@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Abrufen alternativer Übersetzungen, Python – Textübersetzungs-API'
+title: 'Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch, Python – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie alternative Übersetzungen und Verwendungsbeispiele für einen angegebenen Text finden, indem Sie Python und die Textübersetzungs-REST-API verwenden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: ab8a6d5b6d4bb52863e77b844a4008bb80d840be
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 52820a9162a20b680b85d07f8c49ac5305d4979a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993962"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158010"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen alternativer Übersetzungen mit Python
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch mithilfe von Python
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie alternative Übersetzungen und Verwendungsbeispiele für einen angegebenen Text finden, indem Sie Python und die Textübersetzungs-REST-API verwenden.
 

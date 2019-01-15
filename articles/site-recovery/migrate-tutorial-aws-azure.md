@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793069"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042052"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -33,12 +33,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Vergewissern Sie sich, dass auf den zu migrierenden virtuellen Computern eine unterstützte Betriebssystemversion ausgeführt wird. Unterstützte Versionen: 
-  - Windows Server 2016 
-  - Windows Server 2012 R2
-  - Windows Server 2012 
-  - 64-Bit-Version von Windows Server 2008 R2 SP1 oder höher
-  - Red Hat Enterprise Linux 6.7 (nur virtualisierte HVM-Instanzen) mit einem Citrix PV- oder AWS PV-Treiber. Instanzen mit RedHat PV-Treibern werden *nicht* unterstützt.
- - Der Mobilitätsdienst muss auf jeder VM installiert sein, die Sie replizieren möchten. 
+      - Windows Server 2016 
+      - Windows Server 2012 R2
+      - Windows Server 2012 
+      - 64-Bit-Version von Windows Server 2008 R2 SP1 oder höher
+      - Red Hat Enterprise Linux 6.4 bis 6.10, 7.1 bis 7.6 (nur virtualisierte HVM-Instanzen)  *(Instanzen, auf denen RedHat PV-Treiber ausgeführt werden, werden nicht unterstützt.)*
+      - CentOS 6.4 bis 6.10, 7.1 bis 7.6 (nur virtualisierte HVM-Instanzen)
+ 
+- Der Mobilitätsdienst muss auf jeder VM installiert sein, die Sie replizieren möchten. 
 
     > [!IMPORTANT]
     > Site Recovery installiert diesen Dienst automatisch, wenn Sie die Replikation für die VM aktivieren. Für die automatische Installation müssen Sie ein Konto für die EC2-Instanzen vorbereiten, mit dem Site Recovery auf die VM zugreift. Sie können ein Domänenkonto oder ein lokales Konto verwenden. 
@@ -223,7 +225,7 @@ Führen Sie das Testfailover im Portal aus:
 1. Wechseln Sie auf der Seite für Ihren Tresor zu **Geschützte Elemente** > **Replizierte Elemente**. Wählen Sie die VM aus, und wählen Sie anschließend die Option **Testfailover**.
 2. Wählen Sie einen Wiederherstellungspunkt für das Failover aus:
     - **Letzte Verarbeitung**: Führt ein Failover der VM auf den letzten Wiederherstellungspunkt aus, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Mit dieser Option wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
-    - **Letzte App-Konsistenz**: Diese Option führt ein Failover aller virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
+    - **Letzter anwendungskonsistenter Zeitpunkt**: Diese Option führt ein Failover aller virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
     - **Benutzerdefiniert**: Wählen Sie einen beliebigen Wiederherstellungspunkt aus.
 
 3. Wählen Sie unter **Testfailover** das Azure-Zielnetzwerk aus, mit dem Azure-VMs nach dem Failover verbunden werden. Dies sollte das Netzwerk sein, das Sie unter [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.

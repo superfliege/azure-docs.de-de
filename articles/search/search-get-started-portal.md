@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001786"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121548"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Schnellstart: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen
 
@@ -48,7 +48,7 @@ Viele Kunden beginnen mit dem kostenlosen Dienst (Free). Diese Version ist auf d
 
 In Abschnitten des Service-Dashboards sehen Sie, über wie viele Indizes, Indexer und Datenquellen Sie bereits verfügen. 
 
-![Listen von Indizes, Indexern und Datenquellen][media/search-get-started-portal/tiles-indexers-datasources2.png]
+![Listen mit Indizes, Indexern und Datenquellen](media/search-get-started-portal/tiles-indexers-datasources2.png)
 
 ## <a name="create-index"></a> Erstellen eines Index und Laden von Daten
 
@@ -124,9 +124,13 @@ Es kann einige Minuten dauern, bis die Seite im Portal aktualisiert ist, aber de
 
 ## <a name="view-the-index"></a>Anzeigen des Index
 
-In der Liste **Indizes** werden die vorhandenen Indizes angezeigt, so auch der Index *realestate-us-sample*, den Sie soeben im Assistenten erstellt haben.
+Die Hauptseite des Diensts enthält Links zu den Ressourcen, die unter Ihrem Azure Search-Dienst erstellt wurden.  Klicken Sie zum Anzeigen des gerade erstellten Index in der Liste mit den Links auf **Indizes**. 
 
-Über diese Liste können Sie das Indexschema anzeigen und neue Felder hinzufügen, aber vorhandene Felder können Sie nicht ändern. Vorhandene Felder verfügen über eine physische Darstellung in Azure Search und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
+   ![Liste „Indizes“ im Dashboard des Diensts](media/search-get-started-portal/indexes-list.png)
+
+In dieser Liste können Sie auf den gerade erstellten Index *realestate-us-sample* klicken und das Indexschema anzeigen. Optional können Sie auch neue Felder hinzufügen. 
+
+Auf der Registerkarte **Felder** wird das Indexschema angezeigt. Scrollen Sie in der Liste nach unten, um ein neues Feld einzugeben. In den meisten Fällen ist es nicht möglich, bereits vorhandene Felder zu ändern. Vorhandene Felder verfügen über eine physische Darstellung in Azure Search und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
 
    ![Beispiel für Indexdefinition](media/search-get-started-portal/sample-index-def.png)
 
@@ -137,6 +141,8 @@ Nehmen Sie sich kurz Zeit, um die Optionen für die Indexdefinition anzuzeigen u
 ## <a name="query-index"></a> Abfragen mit dem Suchexplorer
 
 Sie sollten nun über einen Suchindex verfügen, der über die integrierte [**Suchexplorer**](search-explorer.md)-Abfrageseite abgefragt werden kann. Sie enthält ein Suchfeld, über das Sie beliebige Abfragezeichenfolgen testen können.
+
+Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](https://docs.microsoft.com/rest/api/searchservice/search-documents) ausgelegt. Er akzeptiert aber auch [einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und Syntax für den [vollständigen Lucene-Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die für Vorgänge mit der [REST-API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) verfügbar sind.
 
 > [!TIP]
 > Die folgenden Schritte werden im [Übersichtsvideo für Azure Search](https://channel9.msdn.com/Events/Connect/2016/138) ab 6:08 vorgeführt.
@@ -150,11 +156,9 @@ Sie sollten nun über einen Suchindex verfügen, der über die integrierte [**Su
 
    ![Index- und API-Befehle](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. Geben Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
+3. Fügen Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
 
-    > [!NOTE]
-    > Der **Suchexplorer** ist nur für die Verarbeitung von [REST-API-Anforderungen](https://docs.microsoft.com/rest/api/searchservice/search-documents) ausgelegt. Er akzeptiert sowohl Syntax für [einfache Abfragen](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) als auch für [vollständige Lucene-Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die bei Vorgängen vom Typ [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents) zur Verfügung stehen.
-    >
+   ![Abfragezeichenfolge und Schaltfläche „Suchen“](media/search-get-started-portal/search-explorer-query-string-example.png)
 
 ## <a name="example-queries"></a>Beispielabfragen
 

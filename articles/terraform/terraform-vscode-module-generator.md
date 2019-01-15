@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie Sie eine Terraform-Basisvorlage in Azure mit
 services: terraform
 ms.service: terraform
 keywords: Terraform, DevOps, virtueller Computer, Azure, Yeoman
-author: v-mavick
+author: tomarchermsft
 manager: jeconnoc
-ms.author: v-mavick
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 36e4b424cdb961920fccdf7f050e28447ccbd6cf
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284334"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074518"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Erstellen einer Terraform-Basisvorlage in Azure mithilfe von Yeoman
 
@@ -28,11 +28,11 @@ In diesem Artikel erfahren Sie, wie Sie mit dem Yeoman-Modulgenerator eine Terra
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Azure-Abonnement:** Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- **Visual Studio Code**: Mit [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) untersuchen wir Dateien, die der Yeoman-Generator erstellt. Sie können einen Code-Editor Ihrer Wahl verwenden.
+- **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- **Visual Studio Code**: Mit [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) untersuchen wir Dateien, die mit dem Yeoman-Generator erstellt werden. Sie können einen Code-Editor Ihrer Wahl verwenden.
 - **Terraform**: Sie benötigen eine Installation von [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ), um das von Yeoman erstellte Modul auszuführen.
 - **Docker**: Mit [Docker](https://www.docker.com/get-started) führen wir das vom Yeoman-Generator erstellte Modul aus. (Falls gewünscht, können Sie Ruby anstelle von Docker verwenden, um das Beispielmodul auszuführen.)
-- **Go-Programmiersprache**: Sie benötigen eine Installation von [Go](https://golang.org/), da die von Yeoman generierten Testfälle in Go geschrieben sind.
+- **Programmiersprache Go**: Sie benötigen eine Installation von [Go](https://golang.org/), da die von Yeoman generierten Testfälle in Go geschrieben sind.
 
 >[!NOTE]
 >Bei den meisten in diesem Tutorial beschriebenen Verfahren spielen Befehlszeileneinträge eine Rolle. Die hier beschriebenen Schritte gelten für alle Betriebssysteme und Befehlszeilentools. In unseren Beispielen verwenden wir PowerShell für die lokale Umgebung und Git Bash für die Cloud Shell-Umgebung.
@@ -149,7 +149,7 @@ Definiert die Schritte im Buildprozess. Diese Schritte umfassen:
 - Testfälle werden in Go geschrieben.
 - Alle Codes im Test sind End-to-End-Tests.
 - End-to-End-Tests versuchen, mit Terraform alle Elemente bereitzustellen, die unter **fixture** definiert sind, und dann die Ausgabe im **template_output.go**-Code mit den vordefinierten erwarteten Werten zu vergleichen.
-- **Gopkg.lock** und **Gopkg.toml**: Definieren Sie Ihre Abhängigkeiten. 
+- **Gopkg.lock** und **Gopkg.toml**: Dienen zum Definieren Ihrer Abhängigkeiten. 
 
 ## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Testen Ihres neuen Terraform-Moduls mithilfe einer Docker-Datei
 
@@ -248,7 +248,7 @@ Alle diese Elemente sind in Cloud Shell vorinstalliert.
 
 1. Zu diesem Zeitpunkt wurde GOPATH in Ihren Umgebungsvariablen bereits von Cloud Shell für Sie konfiguriert. Geben Sie zum Anzeigen des Pfads `go env` ein.
 
-1. Erstellen Sie den Ordner „$GOPATH“, falls noch keiner vorhanden ist: Geben Sie `mkdir ~/go` ein.
+1. Erstellen Sie den Ordner „$GOPATH“, falls dieser noch nicht vorhanden ist: Geben Sie `mkdir ~/go` ein.
 
 1. Erstellen Sie einen Ordner im Ordner „$GOPATH“: Geben Sie `mkdir ~/go/src` ein. Mit diesem Ordner werden verschiedene von Ihnen erstellte Projektordner gespeichert und organisiert, etwa der Ordner „<your-module-name>“, den Sie im nächsten Schritt erstellen.
 

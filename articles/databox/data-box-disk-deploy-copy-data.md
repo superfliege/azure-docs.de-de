@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 10750b5005810ec9034d2b4c7907578949ca6821
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913804"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155200"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf den Azure Data Box-Datenträger und Durchführen der Überprüfung
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung
 
 In diesem Tutorial wird beschrieben, wie Sie Daten von Ihrem Hostcomputer kopieren und anschließend Prüfsummen generieren, um die Datenintegrität zu überprüfen.
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
-- Sie haben das [Tutorial: Installieren und Konfigurieren Ihres Azure Data Box-Datenträgers](data-box-disk-deploy-set-up.md) durchgearbeitet.
+- Sie haben die Schritte unter [Tutorial: Entpacken, Verbinden und Entsperren des Azure Data Box-Datenträgers](data-box-disk-deploy-set-up.md) ausgeführt.
 - Ihre Datenträger sind entsperrt und mit einem Clientcomputer verbunden.
 - Auf Ihrem Clientcomputer, der zum Kopieren von Daten auf die Datenträger verwendet wird, muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) ausgeführt werden.
 - Stellen Sie sicher, dass der gewünschte Speichertyp für Ihre Daten den [unterstützten Datentypen](data-box-disk-system-requirements.md#supported-storage-types) entspricht.
@@ -148,19 +148,32 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     C:\Users>
     ```
  
+    Verwenden Sie zum Optimieren der Leistung die folgenden Robocopy-Parameter beim Kopieren der Daten.
+
+    |    Plattform    |    Überwiegend kleine Dateien < 512 KB                           |    Überwiegend mittelgroße Dateien 512 KB – 1 MB                      |    Überwiegend große Dateien > 1 MB                             |   
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
+    |    Data Box Disk        |    4 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |  |
     
-7. Öffnen Sie den Zielordner, um die kopierten Dateien anzuzeigen und zu überprüfen. Laden Sie die Protokolldateien herunter, falls während des Kopierprozesses Fehler auftreten, um die Problembehandlung durchzuführen. Die Protokolldateien befinden sich an den Speicherorten, die für den Robocopy-Befehl angegeben wurden.
+    **Jede Robocopy-Sitzung kann maximal 7.000 Verzeichnisse und 150 Millionen Dateien aufweisen.*
+    
+    >[!NOTE]
+    > Die oben vorgeschlagenen Parameter basieren auf der Umgebung, die bei internen Tests verwendet wird.
+    
+    Weitere Informationen zum Robocopy-Befehl finden Sie unter [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy und einige Beispiele).
+
+6. Öffnen Sie den Zielordner, um die kopierten Dateien anzuzeigen und zu überprüfen. Laden Sie die Protokolldateien herunter, falls während des Kopierprozesses Fehler auftreten, um die Problembehandlung durchzuführen. Die Protokolldateien befinden sich an den Speicherorten, die für den Robocopy-Befehl angegeben wurden.
  
-
-
 > [!IMPORTANT]
 > - Sie sind dafür verantwortlich, die Daten in Ordner zu kopieren, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise die Blockblobdaten in den Ordner für Blockblobs. Falls das Datenformat nicht mit dem entsprechenden Ordner (Speichertyp) übereinstimmt, tritt für den Datenupload in Azure während eines späteren Schritts ein Fehler auf.
-> -  Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box-Datenträger](data-box-disk-limits.md) beschrieben sind. 
+> -  Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box-Datenträger](data-box-disk-limits.md) beschrieben sind.
 > - Falls vom Data Box-Datenträger hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb des Data Box-Datenträgers hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
 
 ### <a name="split-and-copy-data-to-disks"></a>Aufteilen und Kopieren von Daten auf Datenträger
 
 Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger verwenden und über ein umfangreiches Dataset verfügen, das aufgeteilt und auf alle Datenträger kopiert werden muss. Das Data Box-Tool zum Aufteilen/Kopieren unterstützt Sie beim Aufteilen und Kopieren der Daten auf einem Windows-Computer.
+
+>[!IMPORTANT]
+> Mit dem Data Box-Tool zum Aufteilen/Kopieren werden Ihre Daten auch überprüft. Wenn Sie das Data Box-Tool zum Aufteilen/Kopieren zum Kopieren von Daten verwenden, können Sie den [Überprüfungsschritt](#validate-data) überspringen.
 
 1. Vergewissern Sie sich auf Ihrem Windows-Computer, dass Sie das Data Box-Tool zum Aufteilen/Kopieren heruntergeladen und in einem lokalen Ordner extrahiert haben. Dieses Tool wurde zusammen mit dem Data Box Disk-Toolset für Windows heruntergeladen.
 2. Öffnen Sie den Datei-Explorer. Notieren Sie sich das Datenquelllaufwerk und die Laufwerkbuchstaben für Data Box Disk. 
@@ -176,26 +189,26 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
 
          ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
-4. Wechseln Sie zu dem Ordner, in dem die Software extrahiert wurde. Suchen Sie in dem Ordner nach der Datei „SampleConfig.json“. Hierbei handelt es sich um eine schreibgeschützte Datei, die Sie ändern und speichern können.
+4. Wechseln Sie zu dem Ordner, in dem die Software extrahiert wurde. Suchen Sie in diesem Ordner nach der Datei `SampleConfig.json`. Hierbei handelt es sich um eine schreibgeschützte Datei, die Sie ändern und speichern können.
 
    ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
-5. Ändern Sie die Datei „SampleConfig.json“.
+5. Ändern Sie die Datei `SampleConfig.json`.
  
     - Geben Sie einen Auftragsnamen an. Dadurch wird in der Data Box Disk-Ressource ein Ordner erstellt, der letztendlich als Container in dem Azure-Speicherkonto fungiert, das den Datenträgern zugeordnet ist. Der Auftragsname muss den Benennungskonventionen für Azure-Container entsprechen. 
-    - Geben Sie einen Quellpfad an, und beachten Sie das Pfadformat in der Datei „SampleConfigFile.json“. 
+    - Geben Sie einen Quellpfad an, und beachten Sie das Pfadformat in der Datei `SampleConfigFile.json`. 
     - Geben Sie die Laufwerkbuchstaben für die Zieldatenträger ein. Die Daten werden aus dem Quellpfad abgerufen und auf mehrere Datenträger kopiert.
-    - Geben Sie einen Pfad für die Protokolldateien an. Standardmäßig wird als Ziel das aktuelle Verzeichnis verwendet, in dem sich auch die EXE-Datei befindet.
+    - Geben Sie einen Pfad für die Protokolldateien an. Standardmäßig wird als Ziel das aktuelle Verzeichnis verwendet, in dem sich auch die `.exe`-Datei befindet.
 
      ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. Navigieren Sie zur Überprüfung des Dateiformats zu JSONLint. Speichern Sie die Datei unter „ConfigFile.json“. 
+6. Navigieren Sie zur Überprüfung des Dateiformats zu `JSONlint`. Speichern Sie die Datei als `ConfigFile.json`. 
 
      ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Öffnen Sie ein Eingabeaufforderungsfenster. 
 
-8. Führen Sie „DataBoxDiskSplitCopy.exe“ aus. Typ
+8. Führen Sie die Datei `DataBoxDiskSplitCopy.exe` aus. Typ
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -214,7 +227,7 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
     ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-10.png)
     ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
-    Bei näherer Betrachtung des Inhalts des Laufwerks „N:“ sehen Sie, dass für Daten im Blockblob- und Seitenblobformat zwei entsprechende Unterordner erstellt wurden.
+    Bei näherer Betrachtung des Inhalts von Laufwerk `n:` sehen Sie, dass für Daten im Blockblob- und Seitenblobformat zwei entsprechende Unterordner erstellt wurden.
     
      ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
@@ -222,15 +235,14 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Nachdem der Datenkopiervorgang abgeschlossen ist, können Sie mit der Überprüfung Ihrer Daten fortfahren. Wenn Sie das Aufteilen/Kopieren-Tool verwendet haben, können Sie die Überprüfung überspringen (mit dem Aufteilen/Kopieren-Tool wird auch eine Überprüfung durchgeführt) und mit dem nächsten Tutorial fortfahren.
 
-Nach Abschluss des Kopiervorgangs müssen die kopierten Daten überprüft werden. 
 
+## <a name="validate-data"></a>Überprüfen der Daten
 
-## <a name="validate-data"></a>Überprüfen der Daten 
+Falls Sie das Aufteilen/Kopieren-Tool nicht zum Kopieren der Daten verwendet haben, müssen Sie Ihre Daten überprüfen. Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
 
-Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
-
-1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus. 
+1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus.
     
     ![Ausgabe des Data Box Disk-Überprüfungstools](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -240,7 +252,7 @@ Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
 
     > [!TIP]
     > - Setzen Sie das Tool zwischen zwei Ausführungen zurück.
-    > - Verwenden Sie Option 1 zum Überprüfen der Dateien nur, wenn Sie ein großes Dataset mit kleinen Dateien (im KB-Bereich) nutzen. In diesen Fällen kann das Generieren der Prüfsumme sehr lange dauern und die Leistung beeinträchtigt werden.
+    > - Verwenden Sie Option 1, wenn Sie ein großes Dataset mit kleinen Dateien (KB-Bereich) verwenden. Mit dieser Option werden die Dateien nur überprüft, da die Generierung der Prüfsumme ggf. sehr lange dauern und die Leistung deutlich verlangsamt sein kann.
 
 3. Führen Sie den Befehl für jeden Datenträger einzeln aus, wenn Sie mehrere Datenträger verwenden möchten.
 
@@ -256,4 +268,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Data Box
 
 > [!div class="nextstepaction"]
 > [Zurücksenden Ihres Azure Data Box-Datenträgers an Microsoft](./data-box-disk-deploy-picked-up.md)
-

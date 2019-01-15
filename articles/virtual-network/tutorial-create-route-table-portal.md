@@ -1,5 +1,6 @@
 ---
-title: Weiterleiten von Netzwerkdatenverkehr – Tutorial – Azure-Portal | Microsoft-Dokumentation
+title: 'Weiterleiten von Netzwerkdatenverkehr: Tutorial – Azure-Portal'
+titlesuffix: Azure Virtual Network
 description: In diesem Tutorial erfahren Sie, wie Sie unter Verwendung des Azure-Portals Netzwerkdatenverkehr mit einer Routingtabelle weiterleiten.
 services: virtual-network
 documentationcenter: virtual-network
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: fbbc624bbc3d20a70a54c50296f5b74634002a67
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3422219e33c04d7cb130e064790896f5da28649a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409070"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025044"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 

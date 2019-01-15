@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Ermitteln alternativer Übersetzungen, C#: Textübersetzungs-API'
+title: 'Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch, C# – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung suchen Sie mithilfe von .NET Core und der Textübersetzungs-API alternative Übersetzungen für einen Begriff sowie Verwendungsbeispiele für diese alternativen Übersetzungen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 034b6e102d008039ddd138798900dbee17faf51d
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3460c1c62f26e2bb0a4a14238e110cdd363a7a87
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887949"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159569"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen von alternativen Übersetzungen mit C#
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch mithilfe von C#
 
 In dieser Schnellstartanleitung suchen Sie mithilfe von .NET Core und der Textübersetzungs-API alternative Übersetzungen für einen Begriff sowie Verwendungsbeispiele für diese alternativen Übersetzungen.
 
@@ -39,7 +39,7 @@ dotnet new console -o alternate-sample
 cd alternate-sample
 ```
 
-Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Er erstellt eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `alternate-sample`. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
+Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Es werden eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `alternate-sample` erstellt. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
 
 Als Nächstes müssen Sie Json.Net installieren. Führen Sie im Verzeichnis Ihres Projekts den folgenden Befehl aus:
 

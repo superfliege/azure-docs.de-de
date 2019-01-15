@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 36764b661d88f034b306251f76d47d72298308dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1ec0945996f0232553c9c1e0469289235f506611
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139995"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054825"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verw
 
 Außerdem erfahren Sie in diesem Artikel, wie Sie angeben, dass Ereignisse abhängig vom gewählten Ziel entweder in Azure Storage Blobs oder in einer Azure Data Lake Store-Instanz erfasst werden sollen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates]. Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage verwendet werden sollen, finden Sie unter [Microsoft.EventHub-Ressourcentypen](/azure/templates/microsoft.eventhub/allversions).
 
 Weitere Informationen zu Mustern und Verfahren für Benennungskonventionen für Azure-Ressourcen finden Sie unter [Benennungskonventionen für Azure-Ressourcen][Azure Resources naming conventions].
 

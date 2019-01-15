@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 86c169c84e905362e8fdb069e8ceadcb5e19fe67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602391"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075497"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kontingente und Regionsverfügbarkeit für Azure Container Instances
 
@@ -24,7 +24,7 @@ Für die Ressourcen und Funktionen aller Azure-Dienste gelten bestimmte Standard
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Azure Container Instances ist mit den angegebenen CPU- und Arbeitsspeicherlimits in den folgenden Regionen verfügbar: Die Werte sind zum Zeitpunkt der Veröffentlichung aktuell. Verwenden Sie die API zum [Auflisten von Funktionen](/rest/api/container-instances/listcapabilities/listcapabilities), um aktuelle Informationen abzurufen.
+Azure Container Instances ist mit den angegebenen CPU- und Arbeitsspeicherlimits in den folgenden Regionen verfügbar: Die Werte sind zum Zeitpunkt der Veröffentlichung aktuell. Verwenden Sie die API zum [Auflisten von Funktionen](/rest/api/container-instances/listcapabilities/listcapabilities), um aktuelle Informationen abzurufen. Verfügbarkeit und Ressourceneinschränkungen können abweichen, wenn Azure Container Instances mit einem [virtuellen Netzwerk](container-instances-vnet.md) (Vorschauversion) oder mit [GPU-Ressourcen](container-instances-gpu.md) (Vorschauversion) verwendet wird.
 
 | Standort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
 | -------- | -- | :---: | :-----------: |

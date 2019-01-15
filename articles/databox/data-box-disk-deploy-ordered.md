@@ -6,41 +6,46 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 961352dc99a164b8537fb588e038ad1b385941cc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567450"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156170"
 ---
-# <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Tutorial: Bestellen eines Azure Data Box-Datenträgers (Vorschau)
+# <a name="tutorial-order-an-azure-data-box-disk"></a>Tutorial: Bestellen von Azure Data Box Disk
 
 Azure Data Box Disk ist eine Hybrid Cloud-Lösung, die es Ihnen ermöglicht, Ihre lokalen Daten auf schnelle, einfache und zuverlässige Weise in Azure zu importieren. Sie übertragen Ihre Daten auf SSDs, die von Microsoft bereitgestellt werden, und senden die Datenträger dann zurück. Diese Daten werden dann in Azure hochgeladen.
 
 In diesem Tutorial wird beschrieben, wie Sie einen Azure Data Box-Datenträger bestellen können. In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
-> * Registrieren für einen Data Box-Datenträger
 > * Bestellen eines Data Box-Datenträgers
 > * Nachverfolgen der Bestellung
 > * Stornieren der Bestellung
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+## <a name="prerequisites"></a>Voraussetzungen
 
-> [!IMPORTANT]
-> - Data Box-Datenträger befinden sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
-> - Während der Vorschauphase kann Data Box Disk an Kunden in den USA, in West- und Nordeuropa, Kanada und Australien gesendet werden. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](data-box-disk-overview.md#region-availability).
+Vor der Bereitstellung müssen die folgenden Konfigurationsvoraussetzungen für den Data Box-Dienst und Data Box Disk erfüllt sein.
 
-## <a name="sign-up"></a>Registrieren
+### <a name="for-service"></a>Für den Dienst
 
-Der Data Box-Datenträger liegt in einer Vorschauversion vor, und Sie müssen sich für den Dienst registrieren. Führen Sie die folgenden Schritte aus, um sich für den Data Box-Dienst zu registrieren:
+Stellen Sie Folgendes sicher, bevor Sie beginnen:
+- Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
+- Sie verwenden ein Abonnement der folgenden Typen für den Data Box-Dienst:
+    - Microsoft Enterprise Agreement (EA). Erfahren Sie mehr über [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
+    - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+- Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich).
 
-1. Melden Sie sich am Azure-Portal an unter: [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
-2. Wählen Sie das Abonnement aus, das Sie für die Vorschauversion aktivieren möchten. Beantworten Sie die Fragen in Bezug auf die Größe der Daten, das Land, in dem sich die Daten befinden, den Zeitrahmen und die Datenübertragungshäufigkeit. Klicken Sie auf **Registrieren**.
-3. Nachdem Sie registriert und für die Vorschauversion aktiviert wurden, können Sie einen Data Box-Datenträger bestellen.
+### <a name="for-device"></a>Für das Gerät
+
+Stellen Sie Folgendes sicher, bevor Sie beginnen:
+- Sie haben einen Clientcomputer, von dem Sie die Daten kopieren können. Ihr Client-Computer muss folgende Voraussetzungen erfüllen:
+    - Es muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) ausgeführt werden.
+    - Wenn es sich um einen Windows-Client handelt, muss weitere [erforderliche Software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) darauf installiert sein.  
 
 ## <a name="order-data-box-disk"></a>Bestellen des Data Box-Datenträgers
 
@@ -97,7 +102,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
  
 ## <a name="track-the-order"></a>Nachverfolgen der Bestellung
 
-Nachdem Sie die Bestellung aufgegeben haben, können Sie den Status des Auftrags im Azure-Vorschauportal nachverfolgen. Navigieren Sie zu Ihrer Bestellung, und navigieren Sie dann zu **Übersicht**, um den Status anzuzeigen. Das Portal zeigt den Auftrag im Zustand **Bestellt** an. 
+Nachdem Sie die Bestellung aufgegeben haben, können Sie ihren Status im Azure-Portal nachverfolgen. Navigieren Sie zu Ihrer Bestellung, und navigieren Sie dann zu **Übersicht**, um den Status anzuzeigen. Das Portal zeigt den Auftrag im Zustand **Bestellt** an. 
 
 ![Status „Bestellt“ des Data Box-Datenträgers](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -111,17 +116,15 @@ Wenn die Datenträgervorbereitung abgeschlossen ist, zeigt das Portal die Bestel
 
 Microsoft bereitet dann Ihre Datenträger vor und versendet sie über einen regionalen Spediteur. Wenn die Datenträger versandt wurden, erhalten Sie eine Nachverfolgungsnummer. Das Portal zeigt die Bestellung im Zustand **Versandt** an.
 
-
-
 ## <a name="cancel-the-order"></a>Stornieren der Bestellung
 
-Um diese Bestellung zu stornieren, navigieren Sie im Azure-Vorschauportal zu **Übersicht**, und klicken Sie dann auf der Befehlsleiste auf **Stornieren**. 
+Um die Bestellung zu stornieren, navigieren Sie im Azure-Portal zu **Übersicht**, und klicken Sie dann auf der Befehlsleiste auf **Stornieren**. 
 
 Sie können die Bestellung nur stornieren, wenn die Datenträger bestellt sind und die Bestellung für den Versand verarbeitet wird. Sobald die Bestellung verarbeitet wurde, können Sie sie nicht mehr stornieren. 
 
 ![Auftrag stornieren](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
-Um eine stornierte Bestellung zu löschen, navigieren Sie zu **Übersicht** und klicken dann auf der Befehlsleiste auf **Löschen**. 
+Um eine stornierte Bestellung zu löschen, navigieren Sie zu **Übersicht** und klicken dann auf der Befehlsleiste auf **Löschen**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -129,7 +132,6 @@ Um eine stornierte Bestellung zu löschen, navigieren Sie zu **Übersicht** und 
 In diesem Tutorial haben Sie Informationen zu Azure Data Box-Themen erhalten, darunter die folgenden:
 
 > [!div class="checklist"]
-> * Registrieren für einen Data Box-Datenträger
 > * Bestellen des Data Box-Datenträgers
 > * Nachverfolgen der Bestellung
 > * Stornieren der Bestellung

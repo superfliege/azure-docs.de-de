@@ -3,24 +3,20 @@ title: Richtlinien für Dienstendpunkte in virtuellen Azure-Netzwerken | Microso
 description: Erfahren Sie, wie Sie virtuellen Netzwerkdatenverkehr zu Azure-Dienstressourcen mithilfe von Richtlinien für Dienstendpunkte filtern.
 services: virtual-network
 documentationcenter: na
-author: anithaa
-manager: narayan
-editor: ''
-ms.assetid: ''
+author: sumeetmittal
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: anithaa
-ms.custom: ''
-ms.openlocfilehash: 425bbc9eac112a4b999bd08940abb8b875aca61c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: sumeet.mittal
+ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433292"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051310"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)
 
@@ -28,7 +24,7 @@ Richtlinien für Dienstendpunkte in virtuellen Azure-Netzwerken (VNET, Virtual N
 
 Dieses Feature ist für die folgenden Azure-Dienste und -Regionen als __Vorschauversion__ verfügbar:
 
-__Azure Storage__: USA, Westen-Mitte, USA, Westen 2.
+__Azure Storage__: WestCentralUS, WestUS2.
 
 Aktuelle Hinweise zur Vorschauversion finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -147,10 +143,10 @@ Richtlinien für Dienstendpunkte in virtuellen Netzwerken bieten folgende Vortei
 ## <a name="scenarios"></a>Szenarien
 
 - **Mittels Peering verknüpfte, verbundene oder mehrere virtuelle Netzwerke**: Um den Datenverkehr in virtuellen Peeringnetzwerken zu filtern, sollten Endpunktrichtlinien einzeln auf diese virtuellen Netzwerke angewendet werden.
-- **Filtern des Internetdatenverkehrs zu Netzwerkappliances oder zu Azure Firewall**: Filtern Sie den Datenverkehr von Azure-Diensten mithilfe von Richtlinien für Endpunkte, und filtern Sie den Rest des Internet- oder Azure-Datenverkehrs über Appliances oder Azure Firewall. 
-- **Filtern des Datenverkehrs für in virtuellen Netzwerken bereitgestellte Azure-Dienste**: Während der Vorschau werden Richtlinien für Dienstendpunkte für verwaltete Azure-Dienste nicht unterstützt, die in Ihrem virtuellen Netzwerk bereitgestellt wurden. 
+- **Filtern von Internetdatenverkehr mit Netzwerkgeräten oder per Azure Firewall**: Hierbei wird der Datenverkehr der Azure-Dienste über Endpunkte mit Richtlinien gefiltert, und der restliche Internet- oder Azure-Datenverkehr wird über Geräte oder per Azure Firewall gefiltert. 
+- **Filtern von Datenverkehr für Azure-Dienste, die in virtuellen Netzwerken bereitgestellt werden**: Während der Vorschau werden Richtlinien für Dienstendpunkte für verwaltete Azure-Dienste, die in Ihrem virtuellen Netzwerk bereitgestellt wurden, nicht unterstützt. 
  Informationen zu bestimmten Diensten finden Sie unter [Einschränkungen](#Limitations).
-- **Filtern des Datenverkehrs zu Azure-Diensten aus lokalen Netzwerken**: Richtlinien für Dienstendpunkte gelten nur für den Datenverkehr aus Subnetzen, die den Richtlinien zugeordnet sind. Um den Zugriff auf bestimmte Azure-Dienstressourcen aus lokalen Netzwerken zuzulassen, sollte der Datenverkehr mithilfe von virtuellen Netzwerkappliances oder Firewalls gefiltert werden.
+- **Filtern von Datenverkehr aus der lokalen Umgebung für Azure-Dienste**: Dienstendpunktrichtlinien gelten nur für den Datenverkehr aus Subnetzen, die den Richtlinien zugeordnet sind. Um den Zugriff auf bestimmte Azure-Dienstressourcen aus lokalen Netzwerken zuzulassen, sollte der Datenverkehr mithilfe von virtuellen Netzwerkappliances oder Firewalls gefiltert werden.
 
 ## <a name="logging-and-troubleshooting"></a>Protokollierung und Problembehandlung
 Für Richtlinien für Dienstendpunkte steht keine zentrale Protokollierung zur Verfügung. Informationen zu Dienstdiagnoseprotokollen finden Sie unter [Protokollierung für Dienstendpunkte](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting).

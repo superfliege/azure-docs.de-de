@@ -9,14 +9,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 113e5769ee6a58785a46182064684bea5825c12c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d233f1df40d9580edfaaeb6b819c014952ad3b0c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138915"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189273"
 ---
 # <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Tutorial: Der LUIS-Bot in C# wird mit Bot Framework 4.x und dem Azure Web-App-Bot erstellt.
 Mithilfe von C# können Sie einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot erstellen. Diesen Bot verwendet die HomeAutomation-App, um eine Bot-Lösung zu implementieren. Der Bot wird im Azure [Web-App-Bot](https://docs.microsoft.com/azure/bot-service/) mit [Bot Framework, Version](https://github.com/Microsoft/botbuilder-js) v4, erstellt.
@@ -301,6 +301,7 @@ Azure Bot Service verwendet das Bot Framework SDK. Weitere Informationen zum SDK
 
 Sie haben einen Azure Bot Service erstellt, den geheimen Schlüssel des Bots und den `.bot`-Dateipfad kopiert sowie die ZIP-Datei des Codes heruntergeladen. Sie haben die vordefinierte HomeAutomation-Domäne zu der LUIS-App hinzugefügt, die im Rahmen des neuen Azure Bot Services erstellt wurde, die App dann trainiert und sie erneut veröffentlicht. Sie haben das Codeprojekt extrahiert, eine Umgebungsdatei (`.env`) erstellt und den geheimen Schlüssel des Bots sowie den `.bot`-Dateipfad festgelegt. In der bot.js-Datei haben Sie Code zum Verarbeiten der zwei neuen Absichten hinzugefügt. Dann haben Sie den Bot im Bot-Emulator getestet, um die Antwort von LUIS auf eine der neuen Absichten zu sehen. 
 
+Sehen Sie sich weitere [Beispiele](https://github.com/Microsoft/AI) mit Konversationsbots an. 
 
 > [!div class="nextstepaction"]
 > [Erstellen einer benutzerdefinierten Domäne in LUIS](luis-quickstart-intents-only.md)

@@ -1,33 +1,35 @@
 ---
 title: Erstellen einer Blockchainanwendung in Blockchain Workbench
-description: Erfahren Sie, wie Sie eine Blockchainanwendung in Blockchain Workbench erstellen.
+description: Tutorial zum Erstellen einer Blockchainanwendung in Azure Blockchain Workbench
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: a7ca3f42874bc844bc0036e37a790ffebdc5f8d8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 570d7a51bd6796a6360a4e52e637e1621a29deea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241217"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104385"
 ---
-# <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Erstellen einer Blockchainanwendung in Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Tutorial: Erstellen einer Blockchainanwendung in Blockchain Workbench
 
 Mithilfe von Azure Blockchain Workbench können Sie Blockchainanwendungen erstellen, die mehrere Workflows darstellen, die durch Konfigurations- und intelligenten Vertragscode definiert werden.
 
-Folgendes wird vermittelt:
+Sie lernen Folgendes:
 
 > [!div class="checklist"]
 > * Konfigurieren einer Blockchainanwendung
 > * Erstellen einer Datei mit intelligentem Vertragscode
 > * Hinzufügen einer Blockchainanwendung zu Blockchain Workbench
 > * Hinzufügen von Mitgliedern zur Blockchainanwendung
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -236,56 +238,17 @@ Fügen Sie das folgende Versionspragma am Anfang der intelligenten Vertragscoded
   pragma solidity ^0.4.20;
   ```
 
-### <a name="base-class"></a>Basisklasse
-
-Mithilfe der Basisklasse **WorkbenchBase** kann Blockchain Workbench den Vertrag erstellen und aktualisieren. Diese Basisklasse ist für Blockchain Workbench-spezifische intelligente Vertragscodes erforderlich. Ihr Vertrag muss von der Basisklasse **WorkbenchBase** erben.
-
-Fügen Sie in der intelligenten Vertragscodedatei `HelloBlockchain.sol` die Klasse **WorkbenchBase** am Anfang der Datei hinzu. 
-
-```
-contract WorkbenchBase {
-    event WorkbenchContractCreated(string applicationName, string workflowName, address originatingAddress);
-    event WorkbenchContractUpdated(string applicationName, string workflowName, string action, address originatingAddress);
-
-    string internal ApplicationName;
-    string internal WorkflowName;
-
-    function WorkbenchBase(string applicationName, string workflowName) internal {
-        ApplicationName = applicationName;
-        WorkflowName = workflowName;
-    }
-
-    function ContractCreated() internal {
-        WorkbenchContractCreated(ApplicationName, WorkflowName, msg.sender);
-    }
-
-    function ContractUpdated(string action) internal {
-        WorkbenchContractUpdated(ApplicationName, WorkflowName, action, msg.sender);
-    }
-}
-```
-Die Basisklasse umfasst zwei wichtige Funktionen:
-
-|Basisklassenfunktion  | Zweck  | Wann aufzurufen  |
-|---------|---------|---------|
-| ContractCreated() | Benachrichtigt Blockchain Workbench, dass ein Vertrag erstellt wurde. | Bevor der Vertragskonstruktor beendet wird. |
-| ContractUpdated() | Benachrichtigt Blockchain Workbench, dass ein Vertragszustand aktualisiert wurde. | Bevor eine Vertragsfunktion beendet wird. |
-
 ### <a name="configuration-and-smart-contract-code-relationship"></a>Beziehung zwischen Konfiguration und intelligentem Vertragscode
 
 Blockchain Workbench verwendet die Konfigurationsdatei und die intelligente Vertragscodedatei, um eine Blockchainanwendung zu erstellen. Es besteht ein Zusammenhang zwischen dem, was in der Konfiguration definiert ist, und dem Code im intelligenten Vertrag. Vertragsdetails, Funktionen, Parameter und Typen müssen übereinstimmen, um die Anwendung zu erstellen. Blockchain Workbench überprüft die Dateien vor der Erstellung der Anwendung. 
 
 ### <a name="contract"></a>Vertrag
 
-Für Blockchain Workbench müssen Verträge von der Basisklasse **WorkbenchBase** geerbt werden. Bei der Vertragsdeklaration müssen Sie den Anwendungsnamen und den Workflownamen als Argumente übergeben.
-
-Fügen Sie den Header des **Vertrags** zu Ihrer `HelloBlockchain.sol` intelligenten Vertragscodedatei hinzu. 
+Fügen Sie den Header des **Vertrags** zu Ihrer `HelloBlockchain.sol` intelligenten Vertragscodedatei hinzu.
 
 ```
-contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') {
+contract HelloBlockchain {
 ```
-
-Ihr Vertrag muss von der Basisklasse **WorkbenchBase** erben und die in der Konfigurationsdatei definierten Parameter **ApplicationName** und der Workflow **Name** übergeben. In diesem Fall sind Anwendungsname und Workflowname identisch.
 
 ### <a name="state-variables"></a>Zustandsvariablen
 
@@ -312,8 +275,6 @@ Der Konstruktor definiert Eingabeparameter für eine neue intelligente Vertragsi
 
 Schreiben Sie in die Konstruktorfunktion eine beliebige Geschäftslogik, die Sie vor dem Erstellen des Vertrags ausführen möchten. Initialisieren Sie z.B. die Zustandsvariablen mit Anfangswerten.
 
-Bevor Sie die Konstruktorfunktion beenden, rufen Sie die `ContractCreated()`-Funktion auf. Diese Funktion informiert Blockchain Workbench darüber, dass ein Vertrag erstellt wurde.
-
 Fügen Sie die Konstruktorfunktion zu Ihrem Vertrag in Ihrer intelligenten Vertragscodedatei `HelloBlockchain.sol` hinzu. 
 
 ```
@@ -323,9 +284,6 @@ Fügen Sie die Konstruktorfunktion zu Ihrem Vertrag in Ihrer intelligenten Vertr
         Requestor = msg.sender;
         RequestMessage = message;
         State = StateType.Request;
-    
-        // call ContractCreated() to create an instance of this workflow
-        ContractCreated();
     }
 ```
 
@@ -334,8 +292,6 @@ Fügen Sie die Konstruktorfunktion zu Ihrem Vertrag in Ihrer intelligenten Vertr
 Funktionen sind die ausführbaren Einheiten der Geschäftslogik innerhalb eines Vertrags. Die für die Funktion erforderlichen Parameter sind als Funktionsparameter in der Konfigurationsdatei definiert. Anzahl, Reihenfolge und Art der Parameter müssen in beiden Dateien übereinstimmen. Funktionen sind mit Übergängen in einem Blockchain Workbench-Workflow in der Konfigurationsdatei verknüpft. Ein Übergang ist eine Aktion, die ausgeführt wird, um zur nächsten Stufe des Workflows einer Anwendung zu gelangen, die durch den Vertrag festgelegt ist.
 
 Schreiben Sie eine beliebige Geschäftslogik, die Sie in der Funktion ausführen möchten. Zum Beispiel, dass der Wert einer Zustandsvariablen geändert wird.
-
-Bevor Sie die Funktion beenden, rufen Sie die `ContractUpdated()`-Funktion auf. Die Funktion informiert Blockchain Workbench darüber, dass der Vertragszustand aktualisiert wurde. Wenn Sie Zustandsänderungen in der Funktion rückgängig machen möchten, rufen Sie „revert()“ auf. „revert()“ verwirft Zustandsänderungen, die seit dem letzten Aufruf von „ContractUpdated()“ vorgenommen wurden.
 
 1. Fügen Sie die folgenden Funktionen zu Ihrem Vertrag in Ihrer intelligenten Vertragscodedatei `HelloBlockchain.sol` hinzu. 
 
@@ -347,12 +303,8 @@ Bevor Sie die Funktion beenden, rufen Sie die `ContractUpdated()`-Funktion auf. 
             {
                 revert();
             }
-    
             RequestMessage = requestMessage;
             State = StateType.Request;
-    
-            // call ContractUpdated() to record this action
-            ContractUpdated('SendRequest');
         }
     
         // call this function to send a response
@@ -360,10 +312,8 @@ Bevor Sie die Funktion beenden, rufen Sie die `ContractUpdated()`-Funktion auf. 
         {
             Responder = msg.sender;
     
-            // call ContractUpdated() to record this action
             ResponseMessage = responseMessage;
             State = StateType.Respond;
-            ContractUpdated('SendResponse');
         }
     }
     ```

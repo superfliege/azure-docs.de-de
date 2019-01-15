@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 9aab9df353ea5691b4132741e9b4a97b0afd9d17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93f8a5e806bd10824a78dd62351fd3d9be0cf32c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262147"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025826"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, wollen Sie die Details zum erfolgreichen Kopiervorgang (z.B. die geschriebene Datenmenge) in einer Erfolgsmail senden. Schlägt die Kopieraktivität fehl, wollen Sie die Details zum Fehler beim Kopieren (z.B. die Fehlermeldung) in einer Fehler-E-Mail senden. In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -204,7 +203,7 @@ Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure blob d
 
 Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses Blobdataset verweist auf den verknüpften Azure Storage-Dienst, den Sie im vorherigen Schritt erstellen und beschreibt:
 
-- Den Speicherort des Blobs, aus dem kopiert werden soll: **FolderPath** (Ordnerpfad) und **FileName** (Dateiname);
+- Den Speicherort des Blobs, aus dem kopiert werden soll: **FolderPath** (Ordnerpfad) und **FileName** (Dateiname).
 - Beachten Sie die Verwendung von Parametern für den Ordnerpfad. „SourceBlobContainer“ ist der Name des Parameters, und der Ausdruck wird mit den Werten, die während der Pipelineausführung übergeben werden ersetzt. Die Syntax zum Definieren von Parametern ist `@pipeline().parameters.<parameterName>`.
 
 Erstellen Sie eine Funktion „SourceBlobDatasetDefinition” in Ihrer Datei „Program.cs“.

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633757"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104521"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Erstellen Ihrer ersten Funktion mit Visual Studio Code
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie die [Azure Functions-Erweiterung für Vi
 
 ![Azure Functions-Code in einem Visual Studio-Projekt](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Die Erweiterung unterstützt derzeit C#, JavaScript und Java-Funktionen. Die Schritte in diesem Artikel variieren je nach ausgewählter Sprache für Ihr Azure Functions-Projekt. Die Erweiterung befindet sich derzeit in der Vorschauphase. Weitere Informationen finden Sie auf der Seite mit der [Azure Functions-Erweiterung für Visual Studio Code].
+Die Erweiterung bietet derzeit vollständige Unterstützung für C#-, JavaScript- und Java-Funktionen. Die Unterstützung für Python befindet sich derzeit in der Vorschauphase. Die Schritte in diesem Artikel variieren je nach ausgewählter Sprache für Ihr Azure Functions-Projekt. Die Erweiterung befindet sich derzeit in der Vorschauphase. Weitere Informationen finden Sie auf der Seite mit der [Azure Functions-Erweiterung für Visual Studio Code].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,7 +55,7 @@ So führen Sie diesen Schnellstart durch:
 
 ## <a name="create-an-http-triggered-function"></a>Erstellen einer durch HTTP ausgelösten Funktion
 
-1. Wählen Sie in **Azure: Funktionen** das Symbol zum Erstellen einer Funktion aus.
+1. Wählen Sie in **Azure Functions** das Symbol zum Erstellen einer Funktion aus.
 
     ![Erstellen einer Funktion](./media/functions-create-first-function-vs-code/create-function.png)
 
@@ -93,7 +93,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
 
     ![localhost-Antwort der Funktion im Browser](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
 
-1. Drücken Sie UMSCHALT+F1, um das Debuggen zu beenden.
+1. Drücken Sie UMSCHALT+F5, um das Debuggen zu beenden.
 
 Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer richtig ausgeführt wird, können Sie das Projekt in Azure veröffentlichen.
 

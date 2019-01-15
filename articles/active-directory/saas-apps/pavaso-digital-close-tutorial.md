@@ -1,33 +1,33 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit UNIFI | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und UNIFI konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration in Pavaso Digital Close | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Pavaso Digital Close konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: e1f49ee4-d2d4-4a82-9baf-0587ca1f20f6
+ms.assetid: 23d83f82-39c3-4fc2-88c9-f8074cc44d43
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/03/2019
 ms.author: jeedes
-ms.openlocfilehash: c5b237c87817af8ff84cefe6bab79956c426b28d
+ms.openlocfilehash: d07e203203b4edd1bd62be084f245825371559b1
 ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063710"
+ms.locfileid: "54067549"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Tutorial: Azure Active Directory-Integration mit UNIFI
+# <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>Tutorial: Azure Active Directory-Integration in Pavaso Digital Close
 
-In diesem Tutorial erfahren Sie, wie Sie UNIFI in Azure Active Directory (Azure AD) integrieren.
-Die Integration von UNIFI in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Pavaso Digital Close in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Pavaso Digital Close in Azure AD bietet Ihnen folgende Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf UNIFI hat.
-* Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei UNIFI angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können in Azure AD steuern, wer auf Pavaso Digital Close Zugriff hat.
+* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Pavaso Digital Close anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,23 +35,22 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit UNIFI konfigurieren zu können, benötigen Sie Folgendes:
+Zum Konfigurieren der Integration von Pavaso Digital Close in Azure AD benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* UNIFI-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Pavaso Digital Close-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* UNIFI unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
-* UNIFI unterstützt die **automatisierte** Benutzerbereitstellung.
+* Pavaso Digital Close unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-unifi-from-the-gallery"></a>Hinzufügen von UNIFI aus dem Katalog
+## <a name="adding-pavaso-digital-close-from-the-gallery"></a>Hinzufügen von Pavaso Digital Close aus dem Katalog
 
-Zum Konfigurieren der Integration von UNIFI in Azure AD müssen Sie UNIFI aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Pavaso Digital Close in Azure AD müssen Sie Pavaso Digital Close aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um UNIFI aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um Pavaso Digital Close aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -65,31 +64,31 @@ Zum Konfigurieren der Integration von UNIFI in Azure AD müssen Sie UNIFI aus de
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **UNIFI** ein, wählen Sie im Ergebnisbereich **UNIFI** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie **Pavaso Digital Close** in das Suchfeld ein, wählen Sie im Ergebnisbereich **Pavaso Digital Close** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![UNIFI in der Ergebnisliste](common/search-new-app.png)
+     ![Pavaso Digital Close in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei UNIFI mithilfe einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in UNIFI eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei [Anwendungsname] mithilfe einer Testbenutzerin namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in [Anwendungsname] eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei UNIFI müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendungsname] müssen Sie die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für UNIFI](#configure-unifi-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+2. **[Konfigurieren des einmaligen Anmeldens für Pavaso Digital Close](#configure-pavaso-digital-close-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines UNIFI-Testbenutzers](#create-unifi-test-user)**, um eine Entsprechung von Britta Simon in UNIFI zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Erstellen eines Pavaso Digital Close-Testbenutzers](#create-pavaso-digital-close-test-user)**, um eine Entsprechung von Britta Simon in Pavaso Digital Close zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UNIFI die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit [Anwendungsname] zu konfigurieren:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **UNIFI** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Pavaso Digital Close** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -103,21 +102,26 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UNIFI die
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und den URLs für UNIFI](common/idp-identifier.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Pavaso Digital Close](common/idp-intiated.png)
 
-    Geben Sie im Textfeld **Bezeichner** die URL `INVIEWlabs` ein.
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.pavaso.com/AuthServices`
+
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.pavaso.com/AuthServices/Acs`
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://app.discoverunifi.com/login`.
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.pavaso.com`.
 
-    ![image](common/both-preintegrated-signon.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Pavaso Digital Close](common/metadata-upload-additional-signon.png)
 
-6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von Pavaso Digital Close](mailto:support@pavaso.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-7. Kopieren Sie im Abschnitt **UNIFI einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
+
+7. Kopieren Sie im Abschnitt **Pavaso Digital Close einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -127,29 +131,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UNIFI die
 
     c. Abmelde-URL
 
-### <a name="configure-unifi-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für UNIFI
+### <a name="configure-pavaso-digital-close-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens bei Pavaso Digital Close
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der **UNIFI**-Unternehmenswebsite als Administrator an.
-
-2. Klicken Sie auf **Users** (Benutzer).
-
-    ![Configure single sign-on](./media/unifi-tutorial/app1.png)
-
-3. Klicken Sie auf **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen).
-
-    ![Configure single sign-on](./media/unifi-tutorial/app2.png)
-
-4. Führen Sie im Abschnitt **Add Identity Provider** (Identitätsanbieter hinzufügen) die folgenden Schritte aus:
-
-    ![Configure single sign-on](./media/unifi-tutorial/app3.png) 
-
-    a. Geben Sie im Textfeld **Provider Name** (Anbietername) den Namen des Identitätsanbieters ein.
-
-    b. Fügen Sie im Textfeld **Anbieter-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    c. Öffnen Sie das Zertifikat, dass Sie aus dem Azure-Portal heruntergeladen haben, in Editor, entfernen Sie die Tags **---BEGIN CERTIFICATE---** und **---END CERTIFICATE---**, und fügen Sie dann den restlichen Inhalt in das Textfeld **Certificate** (Zertifikat) ein.
-
-    d. Aktivieren Sie das Kontrollkästchen **is Default Provider** (ist Standardanbieter).
+Um einmaliges Anmelden aufseiten von **Pavaso Digital Close** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML**-Datei und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Pavaso Digital Close](mailto:support@pavaso.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -178,15 +162,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf UNIFI gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Pavaso Digital Close gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **UNIFI**.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**, **Alle Anwendungen** und dann **Pavaso Digital Close** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **UNIFI** aus.
+2. Wählen Sie in der Anwendungsliste **Pavaso Digital Close** aus.
 
-    ![UNIFI-Link in der Anwendungsliste](common/all-applications.png)
+    ![Pavaso Digital Close-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -202,21 +186,20 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-unifi-test-user"></a>Erstellen eines UNIFI-Testbenutzers
+### <a name="create-pavaso-digital-close-test-user"></a>Erstellen eines Pavaso Digital Close-Testbenutzers
 
-In diesem Abschnitt erstellen Sie eine Benutzerin namens Britta Simon. **UNIFI** unterstützt die automatische Benutzerbereitstellung, sodass keine manuellen Schritte erforderlich sind. Benutzer werden automatisch nach der erfolgreichen Authentifizierung über Azure AD erstellt.
+In diesem Abschnitt erstellen Sie einen Benutzer mit dem Namen Britta Simon in Pavaso Digital Close. Wenden Sie sich an das  [Supportteam von Pavaso Digital Close](mailto:support@pavaso.com), um die Benutzer in der Pavaso Digital Close-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „UNIFI“ klicken, sollten Sie automatisch bei Ihrer UNIFI-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Pavaso Digital Close“ klicken, sollten Sie automatisch bei der Pavaso Digital Close-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -9,17 +9,16 @@ ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/10/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 864c80fe0ab8b061439b5a80a111edbd1b2004b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c3b605507c3878770db2c7dcb53a2ff9bb512b6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027026"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078387"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -40,7 +39,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 3. Wählen Sie in der Ergebnisliste **Key Vault** aus.
 4. Klicken Sie im Abschnitt „Key Vault“ auf **Erstellen**.
 5. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
-    - **Namen**: Es ist ein eindeutiger Name erforderlich. Im Rahmen dieser Schnellstartanleitung verwenden wir **Contoso-vault2**. 
+    - **Name**: Es ist ein eindeutiger Name erforderlich. Im Rahmen dieser Schnellstartanleitung verwenden wir **Contoso-vault2**. 
     - **Abonnement**: Wählen Sie ein Abonnement aus.
     - Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.
     - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.
@@ -50,8 +49,8 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 Beachten Sie die beiden folgenden Eigenschaften:
 
-* **Tresorname:** In diesem Beispiel wird **Contoso-Vault2** verwendet. Dieser Name wird noch für andere Schritte benötigt.
-* **Tresor-URI:** https://contoso-vault2.vault.azure.net/ in diesem Beispiel. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
+* **Tresorname**: In diesem Beispiel wird **Contoso-Vault2** verwendet. Dieser Name wird noch für andere Schritte benötigt.
+* **Tresor-URI**: In diesem Beispiel https://contoso-vault2.vault.azure.net/. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Tresor autorisiert.
 
@@ -64,9 +63,9 @@ Ein Geheimnis kann dem Tresor mit einigen wenigen Zusatzschritten hinzugefügt w
 1. Klicken Sie auf den Key Vault-Eigenschaftenseiten auf **Geheimnisse**.
 2. Klicken Sie auf **Generieren/Importieren**.
 3. Wählen Sie auf dem Bildschirm **Geheimnis erstellen** folgende Werte aus:
-    - **Uploadoptionen:** Manuell
-    - **Name:** ExamplePassword
-    - **Wert:** Pa$$w0rd
+    - **Uploadoptionen**: Manuell
+    - **Name**: ExamplePassword
+    - **Value**: Pa$$w0rd
     - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Create**.
 
 Nachdem Sie die Meldung erhalten haben, dass das Geheimnis erfolgreich erstellt wurde, können Sie in der Liste auf das Geheimnis klicken. Daraufhin werden einige der Eigenschaften angezeigt. Wenn Sie auf die aktuelle Version klicken, sehen Sie den Wert, den Sie im vorherigen Schritt angegeben haben.

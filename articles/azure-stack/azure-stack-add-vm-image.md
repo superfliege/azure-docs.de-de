@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 11/05/2018
+ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9f5f3c4ce08cde81c883bfdac87012dcfd80b8a4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036596"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119729"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Verfügbarmachen eines VM-Images in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In Azure Stack können Sie VM-Images für Ihre Benutzer verfügbar machen. Auf diese Images kann durch Azure Resource Manager-Vorlagen verwiesen werden, sie können aber auch der Azure Marketplace-Benutzeroberfläche als Marketplace-Element hinzugefügt werden. Sie können entweder ein Image vom globalen Azure Marketplace verwenden oder Ihr eigenes benutzerdefiniertes Image hinzufügen. Sie können einen virtuellen Computer über das Portal oder Windows PowerShell hinzufügen.
 
@@ -154,7 +154,7 @@ Auf Images muss über einen Blobspeicher-URI verwiesen werden können. Bereiten 
 
 3. Melden Sie sich an Azure Stack als Bediener an. Eine entsprechende Anleitung finden Sie unter [Konfigurieren der PowerShell-Umgebung des Azure Stack-Betreibers](azure-stack-powershell-configure-admin.md).
 
-4. Erstellen Sie ein Speicherkonto in der globalen Azure- oder Azure Stack-Instanz, um Ihr benutzerdefiniertes VM-Image zu speichern. Eine Anleitung finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+4. Erstellen Sie ein Speicherkonto in der globalen Azure- oder Azure Stack-Instanz, um Ihr benutzerdefiniertes VM-Image zu speichern. Anweisungen dazu finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 5. Bereiten Sie ein Windows- oder Linux-Betriebssystemimage im VHD-Format (nicht VHDX) vor, laden Sie das Image in Ihr Speicherkonto hoch, und rufen Sie den URI ab, über den das VM-Image per PowerShell abgerufen werden kann.  
 

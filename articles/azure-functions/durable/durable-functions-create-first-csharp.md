@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341047"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038155"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie die Visual Studio 2017-Tools für Azure 
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Installieren Sie [Visual Studio 2017](https://azure.microsoft.com/downloads/), und vergewissern Sie sich, dass auch die Workload **Azure-Entwicklung** installiert ist.
+* Installieren Sie [Visual Studio 2017](https://azure.microsoft.com/downloads/). Vergewissern Sie sich, dass auch die Workload **Azure-Entwicklung** installiert ist.
 
 * Stellen Sie sicher, dass Sie über die [neuesten Azure Functions-Tools](../functions-develop-vs.md#check-your-tools-version) verfügen.
 
@@ -40,7 +40,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-a-function-app-project"></a>Erstellen eines Funktionen-App-Projekts
 
-Mit der Azure Functions-Projektvorlage in Visual Studio wird ein Projekt erstellt, das in einer Funktions-App in Azure veröffentlicht werden kann. Sie können mit einer Funktionen-App Funktionen zu logischen Einheiten gruppieren, um die Verwaltung, Bereitstellung und Freigabe von Ressourcen zu ermöglichen.
+Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktions-App in Azure veröffentlicht werden kann. Sie können mit einer Funktionen-App Funktionen zu logischen Einheiten gruppieren, um die Verwaltung, Bereitstellung und Freigabe von Ressourcen zu ermöglichen.
 
 1. Wählen Sie in Visual Studio im Menü **Datei** die Optionen **Neu** > **Projekt**.
 
@@ -58,11 +58,11 @@ Mit der Azure Functions-Projektvorlage in Visual Studio wird ein Projekt erstell
     | **Vorlage** | Leer | Erstellt eine leere Funktions-App. |
     | **Speicherkonto**  | Speicheremulator | Für die Zustandsverwaltung für dauerhafte Funktionen ist ein Speicherkonto erforderlich. |
 
-4. Klicken Sie auf **OK**, um ein leeres Projekt für Funktionen zu erstellen.
+4. Klicken Sie auf **OK**, um ein leeres Projekt für Funktionen zu erstellen. Dieses Projekt enthält die grundlegenden Konfigurationsdateien, die zum Ausführen Ihrer Funktionen benötigt werden.
 
 ## <a name="add-functions-to-the-app"></a>Hinzufügen von Funktionen zur App
 
-Visual Studio erstellt ein leeres Funktions-App-Projekt.  Es enthält die grundlegenden Konfigurationsdateien für eine App, aber noch keine Funktionen.  Wir müssen dem Projekt eine Vorlage für dauerhafte Funktionen hinzufügen.
+In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funktionscodes in Ihrem Projekt verwendet.
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen** > **Neue Azure-Funktion**.
 
@@ -74,11 +74,13 @@ Visual Studio erstellt ein leeres Funktions-App-Projekt.  Es enthält die grundl
 
     ![Auswählen der Vorlage für dauerhafte Funktionen](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
-Der App wird eine neue dauerhafte Funktion hinzugefügt.  Öffnen Sie die neue Datei, um den Inhalt anzuzeigen.  Diese dauerhafte Funktion ist ein einfaches Beispiel für die Verkettung von Funktionen.  
+Der App wird eine neue dauerhafte Funktion hinzugefügt.  Öffnen Sie die neue CS-Datei, um den Inhalt anzuzeigen. Diese dauerhafte Funktion ist ein einfaches Beispiel für eine Funktionsverkettung mit den folgenden Methoden:  
 
-* Die `RunOrchestrator`-Methode wird der Orchestratorfunktion zugeordnet.  Diese Funktion wird gestartet, erstellt eine Liste und fügt der Liste das Ergebnis von drei Funktionsaufrufen hinzu.  Nachdem die drei Funktionsaufrufe abgeschlossen wurden, wird die Liste zurückgegeben.  Die aufgerufene Funktion ist die `SayHello`-Methode (standardmäßig `<NameOfFile>_Hello`).
-* Die Funktion `SayHello` gibt ein „Hello“ zurück.
-* Mit der `HttpStart`-Methode wird die Funktion beschrieben, mit der Instanzen der Orchestrierung gestartet werden.  Sie ist einem [HTTP-Trigger](../functions-bindings-http-webhook.md) zugeordnet, mit dem eine neue Instanz des Orchestrators gestartet und eine Statusantwort zurückgegeben wird.
+| Methode | FunctionName | BESCHREIBUNG |
+| -----  | ------------ | ----------- |
+| **`RunOrchestrator`** | `<file-name>` | Verwaltet die dauerhafte Orchestrierung. In diesem Fall wird die Orchestrierung gestartet, es wird eine Liste erstellt, und das Ergebnis der drei Funktionsaufrufe wird der Liste hinzugefügt.  Wenn die drei Funktionsaufrufe abgeschlossen sind, wird die Liste zurückgegeben. |
+| **`SayHello`** | `<file-name>_Hello` | Die Funktion gibt „Hello“ zurück. Dies ist die Funktion mit der Geschäftslogik, die orchestriert wird. |
+| **`HttpStart`** | `<file-name>_HttpStart` | Eine [per HTTP ausgelöste Funktion](../functions-bindings-http-webhook.md), mit der eine Instanz der Orchestrierung gestartet und eine Antwort zur Überprüfung des Status zurückgegeben wird. |
 
 Nachdem Sie nun Ihr Funktionsprojekt und eine dauerhafte Funktion erstellt haben, können Sie sie auf Ihrem lokalen Computer testen.
 
@@ -143,4 +145,4 @@ Sie müssen in Ihrem Azure-Abonnement über eine Funktions-App verfügen, bevor 
 Sie haben Visual Studio verwendet, um eine dauerhafte C#-Funktions-App zu erstellen und zu veröffentlichen.
 
 > [!div class="nextstepaction"]
-> [Informationen zu gängigen Mustern für dauerhafte Funktionen](durable-functions-overview.md)
+> [Informationen zu gängigen Mustern für dauerhafte Funktionen](durable-functions-concepts.md)

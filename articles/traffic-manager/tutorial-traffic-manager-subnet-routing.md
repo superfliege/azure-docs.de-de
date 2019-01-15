@@ -1,10 +1,9 @@
 ---
-title: Konfigurieren der Routingmethode für Subnetzdatenverkehr mit Azure Traffic Manager | Microsoft-Dokumentation
+title: Konfigurieren der Routingmethode für Subnetzdatenverkehr mit dem Azure Traffic Manager
 description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr von Benutzersubnetzen an bestimmte Endpunkte geleitet wird.
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 20c34b820eb326a18be1c4298b0850a58599be64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8243130fc9752a47661b4c80826000d573da35c8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956233"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053073"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Weiterleiten von Datenverkehr an bestimmte Endpunkte mit Traffic Manager basierend auf einem Benutzersubnetz
 
@@ -44,7 +43,7 @@ Um den Traffic Manager in Aktion sehen zu können, müssen Sie in diesem Tutoria
 - Zwei grundlegende Websites, die in verschiedenen Azure-Regionen ausgeführt werden: **USA, Osten** (interne Website) und **Europa, Westen** (Produktionswebsite)
 - zwei Test-VMs zum Testen des Traffic Managers – ein virtueller Computer in **USA, Osten** und der zweite virtuelle Computer in **Europa, Westen**. 
 
-Mit den virtuellen Testcomputern wird veranschaulicht, wie Traffic Manager basierend auf dem Subnetz, aus dem die Benutzerabfrage stammt, Benutzerdatenverkehr an die interne Website oder die Produktionswebsite leitet.
+Mit den Test-VMs wird veranschaulicht, wie der Traffic Manager basierend auf dem Subnetz, aus dem die Benutzerabfrage stammt, Benutzerdatenverkehr an die interne Website oder die Produktionswebsite weiterleitet.
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 
@@ -155,7 +154,7 @@ In diesem Abschnitt erstellen Sie einen virtuellen Computer (*UserVMUS* und *Use
 5. Wählen Sie die folgenden Werte unter **Einstellungen** aus, und wählen Sie anschließend **OK**:
     |Einstellung|Wert|
     |---|---|
-    |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet3* für **Name** und *mySubnet3* für das Subnetz ein.|
+    |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet3* für **Name** und *mySubnet3* für das Subnetz ein.|
     |Netzwerksicherheitsgruppen (NSG)|Wählen Sie **Standard** aus, und wählen Sie in der Dropdownliste**Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **RDP** aus. |
     |Startdiagnose|Wählen Sie **Deaktiviert** aus.|
     |||
@@ -168,13 +167,13 @@ In diesem Abschnitt erstellen Sie einen virtuellen Computer (*UserVMUS* und *Use
     |---|---|
     |VM-Name | *UserVMEurope*|
     |Ressourcengruppe | Wählen Sie **Vorhandene** und dann *myResourceGroupTM2* aus.|
-    |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet4* für **Name** und *mySubnet4* für das Subnetz ein.|
+    |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet4* für **Name** und *mySubnet4* für das Subnetz ein.|
     |||
 
 8. Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen Schritten erst fort, nachdem beide VMs erstellt wurden.
 
 ## <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
-Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP der Anforderung bestimmte Endpunkte zurückgeben können.
+Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP-Adresse der Anforderung bestimmte Endpunkte zurückgeben können.
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
 2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
@@ -183,7 +182,7 @@ Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP
     | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie als Routingmethode **Subnetz** aus.                                       |
     | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie **Vorhanden**, und geben Sie *myResourceGroupTM1* ein. |
+    | Ressourcengruppe          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
     | |                              |
     |
   
@@ -210,7 +209,7 @@ Fügen Sie die beiden virtuellen Computer mit den IIS-Servern (*InternalWebsite*
 
  
 ## <a name="test-traffic-manager-profile"></a>Testen des Traffic Manager-Profils
-In diesem Abschnitt testen Sie, wie Traffic Manager Benutzerdatenverkehr von einem bestimmten Subnetz an einen bestimmten Endpunkt leitet. Um den Traffic Manager in Aktion anzuzeigen, führen Sie die folgenden Schritte aus:
+In diesem Abschnitt testen Sie, wie der Traffic Manager Benutzerdatenverkehr von einem bestimmten Subnetz an einen bestimmten Endpunkt weiterleitet. Um den Traffic Manager in Aktion anzuzeigen, führen Sie die folgenden Schritte aus:
 1. Bestimmen Sie den DNS-Namen des Traffic Manager-Profils.
 2. Zeigen Sie den Traffic Manager folgendermaßen in Aktion an:
     - Navigieren Sie auf dem virtuellen Testcomputer (*UserVMUS*), der sich in der Region **USA, Osten** befindet, in einem Webbrowser zu dem DNS-Namen Ihres Traffic Manager-Profils.

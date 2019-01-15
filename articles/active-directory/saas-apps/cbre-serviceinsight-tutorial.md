@@ -1,33 +1,33 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Pluralsight | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Pluralsight konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration in CBRE ServiceInsight | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und CBRE ServiceInsight konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
+ms.assetid: 31d7cedf-2b70-4fa4-9b05-80066d2e8bfd
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 1ad56baa6ba7aff07823a9f818fc7997411eda8a
+ms.openlocfilehash: cddd20f24ed8719e3d9b228dd2014bb894a3f141
 ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064337"
+ms.locfileid: "54067510"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Tutorial: Azure Active Directory-Integration mit Pluralsight
+# <a name="tutorial-azure-active-directory-integration-with-cbre-serviceinsight"></a>Tutorial: Azure Active Directory-Integration in CBRE ServiceInsight
 
-In diesem Tutorial erfahren Sie, wie Sie Pluralsight in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Pluralsight in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie CBRE ServiceInsight in Azure Active Directory (Azure AD) integrieren.
+Die Integration von CBRE ServiceInsight in Azure AD bietet Ihnen folgende Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Pluralsight hat.
-* Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Pluralsight angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können in Azure AD steuern, wer auf CBRE ServiceInsight Zugriff hat.
+* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CBRE ServiceInsight anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,22 +35,23 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Pluralsight konfigurieren zu können, benötigen Sie Folgendes:
+Zum Konfigurieren der Azure AD-Integration in CBRE ServiceInsight benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Pluralsight-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein CBRE ServiceInsight-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Pluralsight unterstützt **SP**-initiiertes einmaliges Anmelden.
+* CBRE ServiceInsight unterstützt **SP**-initiiertes einmaliges Anmelden.
+* CBRE ServiceInsight unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-## <a name="adding-pluralsight-from-the-gallery"></a>Hinzufügen von Pluralsight aus dem Katalog
+## <a name="adding-cbre-serviceinsight-from-the-gallery"></a>Hinzufügen von CBRE ServiceInsight aus dem Katalog
 
-Zum Konfigurieren der Integration von Pluralsight in Azure AD müssen Sie Pluralsight aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von CBRE ServiceInsight in Azure AD müssen Sie CBRE ServiceInsight aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Pluralsight aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um CBRE ServiceInsight aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -64,31 +65,31 @@ Zum Konfigurieren der Integration von Pluralsight in Azure AD müssen Sie Plural
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Pluralsight** ein, wählen Sie im Ergebnisbereich **Pluralsight** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie **CBRE ServiceInsight** in das Suchfeld ein, wählen Sie im Ergebnisbereich **CBRE ServiceInsight** aus, und klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Pluralsight in der Ergebnisliste](common/search-new-app.png)
+     ![CBRE ServiceInsight in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Pluralsight basierend auf einer Testbenutzerin mit dem Namen **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Pluralsight eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit CBRE ServiceInsight mithilfe einer Testbenutzerin namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in CBRE ServiceInsight eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Pluralsight müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei CBRE ServiceInsight müssen Sie die folgenden Aufgaben ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Pluralsight](#configure-pluralsight-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+2. **[Konfigurieren des einmaligen Anmeldens für CBRE ServiceInsight](#configure-cbre-serviceinsight-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Pluralsight-Testbenutzers](#create-pluralsight-test-user)**, um eine Entsprechung von Britta Simon in Pluralsight zu erstellen, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Erstellen eines CBRE ServiceInsight-Testbenutzers](#create-cbre-serviceinsight-test-user)**, um eine Entsprechung von Britta Simon in CBRE ServiceInsight zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Pluralsight die folgenden Schritte aus:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei CBRE ServiceInsight die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Pluralsight** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **CBRE ServiceInsight** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -102,31 +103,23 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Pluralsi
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Pluralsight](common/sp-identifier-reply.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für CBRE ServiceInsight](common/sp-signonurl.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<instancename>.pluralsight.com/sso/<companyname>`
-
-    b. Geben Sie im Feld **Bezeichner** die URL `www.pluralsight.com` ein.
-
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<instancename>.pluralsight.com/sp/ACS.saml2`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://adfs4.mainstreamsasp.com/adfs/ls/`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und Antwort-URL. Wenden Sie sich an das [Supportteam für den Pluralsight-Client](mailto:support@pluralsight.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von CBRE ServiceInsight](mailto:SISupport@cbre.com), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Pluralsight-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+5. Die CBRE ServiceInsight-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 
-    >[!NOTE]
-    >Sie können auch das Attribut **Unique ID** mit einem Wert wie beispielsweise „EmployeeID“ oder einem anderen für Ihre Organisation geeigneten Wert verwenden. Beachten Sie, dass dieses Attribut nicht erforderlich ist. Sie können es jedoch zum eindeutigen Identifizieren des Benutzers hinzufügen.
-
 6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
-    
-    | NAME | Quellattribut|
-    | --------------- | --------- |
-    | First Name (Vorname)  | user.givenname  |
-    | Nachname  | user.surname  |
-    | E-Mail  | user.mail  |
+
+    | NAME |  Quellattribut|
+    | ------------ | --------- |
+    | SSOCallerPhone | user.telephonenumber |
+    | | |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
@@ -146,15 +139,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Pluralsi
 
     g. Klicken Sie auf **Speichern**.
 
-7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/metadataxml.png)
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-### <a name="configure-pluralsight-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Pluralsight
+### <a name="configure-cbre-serviceinsight-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens bei CBRE ServiceInsight
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Pluralsight** müssen Sie die heruntergeladene **Verbundmetadaten-XML** aus dem Azure-Portal an das [Supportteam von Pluralsight](mailto:support@pluralsight.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Um einmaliges Anmelden aufseiten von **CBRE ServiceInsight** zu konfigurieren, müssen Sie die **Verbundmetadaten-URL der App** an das [Supportteam von CBRE ServiceInsight](mailto:SISupport@cbre.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
@@ -181,15 +174,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Pluralsight gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf CBRE ServiceInsight gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Pluralsight**.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**, **Alle Anwendungen** und dann **CBRE ServiceInsight** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Geben Sie in der Anwendungsliste **Pluralsight** ein, und wählen Sie den Eintrag aus.
+2. Wählen Sie in der Anwendungsliste **CBRE ServiceInsight** aus.
 
-    ![Pluralsight-Link in der Anwendungsliste](common/all-applications.png)
+    ![CBRE ServiceInsight-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -205,15 +198,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-pluralsight-test-user"></a>Erstellen eines Pluralsight-Testbenutzers
+### <a name="create-cbre-serviceinsight-test-user"></a>Erstellen eines CBRE ServiceInsight-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Pluralsight. Arbeiten Sie mit dem [Pluralsight Client-Supportteam](mailto:support@pluralsight.com) zusammen, um Benutzer im Pluralsight-Konto hinzuzufügen.  Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie einen Benutzer mit dem Namen Britta Simon in CBRE ServiceInsight. CBRE ServiceInsight unterstützt die Just-in-Time-Bereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Falls ein Benutzer noch nicht in CBRE ServiceInsight vorhanden ist, wird beim Versuch, auf CBRE ServiceInsight zuzugreifen, ein neuer Benutzer erstellt.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Pluralsight“ klicken, sollten Sie automatisch bei Ihrer Pluralsight-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „CBRE ServiceInsight“ klicken, sollten Sie automatisch bei der CBRE ServiceInsight-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
@@ -222,4 +215,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Pluralsight“ klicken, sollten Si
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

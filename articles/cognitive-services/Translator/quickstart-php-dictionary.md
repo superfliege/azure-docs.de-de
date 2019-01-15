@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Ermitteln alternativer Übersetzungen, PHP: Textübersetzungs-API'
+title: Nachschlagen von Wörtern im bilingualen Wörterbuch, PHP – Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung ermitteln Sie kontextbezogene alternative Übersetzungen und Beispiele für Begriffe. Dazu verwenden Sie die Textübersetzungs-API mit PHP.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 4d48ab8d0178b2d3fbcba2ee631ee97b30518f88
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ff1f0a97667260fa19c46bec6901113ff696aaab
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649765"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156883"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-php"></a>Schnellstart: Ermitteln alternativer Übersetzungen mit der Textübersetzungs-REST-API (PHP)
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch mithilfe von PHP
 
 In dieser Schnellstartanleitung suchen Sie mithilfe der Textübersetzungs-API Details zu möglichen alternativen Übersetzungen für einen Begriff sowie Verwendungsbeispiele für diese alternativen Übersetzungen.
 

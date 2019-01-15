@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091486"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159688"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Azure Data Box-Datenträger – Sicherheit und Schutz von Daten (Vorschauversion)
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk: Sicherheit und Schutz von Daten
 
 In diesem Artikel werden die Sicherheitsfunktionen von Azure Data Box-Datenträgern beschrieben, mit denen die einzelnen Komponenten der Data Box-Lösung und die darauf gespeicherten Daten geschützt werden. 
-
-> [!IMPORTANT]
-> Data Box-Datenträger befinden sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen.
 
 ## <a name="data-flow-through-components"></a>Datenfluss über Komponenten
 

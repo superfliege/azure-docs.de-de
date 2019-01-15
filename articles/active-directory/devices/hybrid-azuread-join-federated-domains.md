@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte konfigurieren.
+title: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Azure Active Directory-Hybrideinbindung für Verbunddomänen konfigurieren.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 3bce57f919490e1689ce40f59a3799ce451ee6e7
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 2f904690187f6f2b020cb9cc32f9a20712d8bb53
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752791"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107564"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 

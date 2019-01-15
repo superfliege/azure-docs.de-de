@@ -6,27 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 874142df31d96de36b2b5be81a863c2f31317c52
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229610"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158039"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
+# <a name="what-is-azure-data-box-disk"></a>Was ist ein Azure Data Box-Datenträger?
 
 Mit der Lösung für Microsoft Azure Data Box-Datenträger können Sie lokale Daten im Terabyte-Bereich schnell, kostengünstig und zuverlässig an Azure senden. Die sichere Datenübertragung wird beschleunigt, indem Sie ein bis fünf SSD-Datenträger (Solid-State Disks) erhalten. Diese verschlüsselten Datenträger mit einem Speicherplatz von 8 TB werden über einen regionalen Kurierdienst an Ihr Rechenzentrum gesendet. 
 
 Sie können die Datenträger über den Data Box-Dienst im Azure-Portal schnell konfigurieren, anschließen und entsperren. Kopieren Sie Ihre Daten auf die Datenträger, und senden Sie die Datenträger zurück an Azure. Im Azure-Rechenzentrum werden Ihre Daten automatisch von Laufwerken in die Cloud hochgeladen, indem ein Link für das schnelle Hochladen ins private Netzwerk verwendet wird.
-
-
-> [!IMPORTANT]
-> - Data Box-Datenträger befinden sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen. 
-> - Sie müssen sich für diesen Dienst registrieren. Navigieren Sie zum [Vorschauportal](https://aka.ms/azuredataboxfromdiskdocs), um sich zu registrieren.
-> - Während der Vorschauphase kann der Data Box-Datenträger an Kunden in den USA und in der Europäischen Union gesendet werden. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](#region-availability).
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -95,7 +89,7 @@ Weitere Informationen finden Sie unter [Azure Data Box-Datenträger – Sicherhe
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Während der Vorschauphase können per Data Box-Datenträger Daten in die folgenden Azure-Regionen übertragen werden:
+Derzeit können mit Data Box Disk Daten in die folgenden Azure-Regionen übertragen werden:
 
 
 |Azure-Region  |Azure-Region  |
@@ -112,7 +106,7 @@ Während der Vorschauphase können per Data Box-Datenträger Daten in die folgen
 
 ## <a name="pricing"></a>Preise
 
-Informationen zu den Preisen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+Informationen zu den Preisen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

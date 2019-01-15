@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Abrufen alternativer Übersetzungen, Node.js – Textübersetzungs-API'
+title: 'Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch, Node.js – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie alternative Übersetzungen und Verwendungsbeispiele für einen angegebenen Text finden, indem Sie Node.js und die Textübersetzungs-REST-API verwenden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 191afcdfb7a401755fffc028ce4119526f1e693d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: f7f779ccd10eeffc9ddfcba5dbb9abde00e1f735
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035627"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160011"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen von alternativen Übersetzungen mit Node.js
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch mithilfe von Node.js
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie alternative Übersetzungen und Verwendungsbeispiele für einen angegebenen Text finden, indem Sie Node.js und die Textübersetzungs-REST-API verwenden.
 

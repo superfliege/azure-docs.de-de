@@ -1,25 +1,33 @@
 ---
 title: Verwenden von Anwendungen in Azure Blockchain Workbench
-description: Erfahren Sie, wie Sie Anwendungsverträge in Azure Blockchain Workbench verwenden.
+description: Tutorial zur Verwendung von Anwendungsverträgen in Azure Blockchain Workbench
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fe6f164882ffce7bf22ec0c0b94107abcf6a20e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b43b125f7e96ac58a9094fc1e0e18b38f10d3e2f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241223"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107071"
 ---
-# <a name="using-applications-in-azure-blockchain-workbench"></a>Verwenden von Anwendungen in Azure Blockchain Workbench
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Tutorial: Verwenden von Anwendungen in Azure Blockchain Workbench
 
 Mithilfe von Blockchain Workbench können Sie Aktionen zu Verträgen erstellen und ausführen. Zudem können Sie Vertragsdetails wie Status und Transaktionsverlauf einsehen.
+
+Sie lernen Folgendes:
+
+> [!div class="checklist"]
+> * Erstellen eines neuen Vertrags
+> * Ausführen einer Aktion für einen Vertrag
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +44,7 @@ Sie müssen sich als Mitglied der Blockchain Workbench anmelden. Wenn keine Anwe
 
 Um einen neuen Vertrag zu erstellen, müssen Sie ein Mitglied sein, das als ein **Initiator** des Vertrags angegeben wurde. Informationen zum Definieren der Anwendungsrollen und Initiatoren für den Vertrag finden Sie in der [Übersicht über Workflows in der Konfiguration](configuration.md#workflows). Informationen zum Zuweisen von Mitgliedern zu Anwendungsrollen finden Sie unter [Hinzufügen eines Mitglieds zu einer Anwendung](manage-users.md#add-member-to-application).
 
-1. Wählen Sie im Abschnitt der Blockchain Workbench-Anwendung die Anwendungskachel aus, die den zu erstellenden Vertrag enthält. Sie erhalten eine Liste der aktiven Verträge.
+1. Wählen Sie im Abschnitt der Blockchain Workbench-Anwendung die Anwendungskachel aus, die den zu erstellenden Vertrag enthält. Eine Liste der aktiven Verträge wird angezeigt.
 
 2. Um einen neuen Vertrag zu erstellen, wählen Sie **Neuer Vertrag**.
 
@@ -82,4 +90,4 @@ Abhängig vom Status des Vertrags können Mitglieder Aktionen für den Übergang
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Problembehandlung bei Azure Blockchain Workbench](troubleshooting.md)
+> [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md)

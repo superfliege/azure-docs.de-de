@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/11/2018
+ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 9085bea06553bcb2b8cf871153ddd1fb767c04f4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277742"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077656"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -49,7 +49,7 @@ Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.m
 
 Um Ihre Kosten mithilfe der Kostenanalyse zu überprüfen, navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** &gt; **Kostenverwaltung** &gt; **Bereich ändern**, wählen Sie einen Bereich aus, und klicken Sie dann auf **Auswählen**.
 
-Der von Ihnen ausgewählte Bereich wird in der gesamten Kostenverwaltung verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Wenn Sie Bereiche verwenden, wählen Sie diese nicht mehrfach aus. Wählen Sie stattdessen einen größeren Bereich aus, in dem andere zusammengefasst werden, und filtern Sie diesen dann nach Ihren Wünschen. Dies sollten Sie verstehen, da einige Personen keinen Zugriff auf einen übergeordneten Bereich haben sollten, in den die untergeordneten Bereiche zusammengefasst werden.
+Der von Ihnen ausgewählte Bereich wird in der gesamten Kostenverwaltung verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Wenn Sie Bereiche verwenden, wählen Sie diese nicht mehrfach aus. Wählen Sie stattdessen einen größeren Bereich aus, in dem andere zusammengefasst werden, und filtern Sie diesen dann nach Ihren Wünschen. Hiermit sollten Sie sich unbedingt vertraut machen, da einige Personen keinen Zugriff auf einen übergeordneten Bereich haben sollten, unter dem untergeordnete Bereiche zusammengefasst sind.
 
 Klicken Sie auf **Kostenanalyse öffnen**.
 
@@ -86,7 +86,11 @@ Im Allgemeinen können Sie erwarten, dass Daten oder Benachrichtigungen zu verbr
 
 ![Tägliche Anzeige mit einem Beispiel täglicher Kosten für den aktuellen Monat](./media/quick-acm-cost-analysis/daily-view.png)
 
-Durch die Auswahl der Option **Gruppieren nach** können Sie eine Gruppenkategorie auswählen. Dadurch werden für das Gesamtkostendiagramm im oberen Bereich die Daten angepasst. Mit Gruppierungen können Sie auf einen Blick erkennen, wie Ihre Ausgaben anhand allgemeiner Ressourcen- und Nutzungseigenschaften wie Ressourcengruppe oder Ressourcentags kategorisiert wurden. Wählen Sie zum Gruppieren nach Tags den Tagschlüssel aus, nach dem Sie gruppieren möchten. Die Kosten werden daraufhin nach den einzelnen Werten für dieses Tag aufgeschlüsselt. Für Ressourcen, auf die das Tag nicht angewendet wurde, wird ein zusätzliches Segment angezeigt. Beachten Sie, dass Cost Management nur Ressourcentags ab dem Datum unterstützt, an dem die Tags direkt auf die Ressource angewendet werden. Ressourcengruppentags werden derzeit nicht unterstützt. Auf der folgenden Abbildung werden Azure-Kosten visualisiert, die im letzten Monat angefallen sind.
+Durch die Auswahl der Option **Gruppieren nach** können Sie eine Gruppenkategorie auswählen. Dadurch werden für das Gesamtkostendiagramm im oberen Bereich die Daten angepasst. Mit Gruppierungen können Sie auf einen Blick erkennen, wie Ihre Ausgaben anhand allgemeiner Ressourcen- und Nutzungseigenschaften wie Ressourcengruppe oder Ressourcentags kategorisiert wurden. Wählen Sie zum Gruppieren nach Tags den Tagschlüssel aus, nach dem Sie gruppieren möchten. Sie sehen, dass für jeden Wert dieses Tags die Kosten aufgeschlüsselt sind. Es ist auch ein zusätzliches Segment für Ressourcen vorhanden, auf die dieses Tag nicht angewendet wird.
+
+Die meisten [Azure-Ressourcen unterstützen das Tagging](../azure-resource-manager/tag-support.md), aber einige Tags sind in Cost Management und für die Abrechnung nicht verfügbar. Darüber hinaus werden Ressourcengruppentags nicht unterstützt. Cost Management unterstützt nur Ressourcentags ab dem Datum, an dem die Tags direkt auf die Ressource angewendet werden.
+
+Auf der folgenden Abbildung werden Azure-Kosten visualisiert, die im letzten Monat angefallen sind.
 
 ![Gruppierte tägliche akkumulierte Ansicht mit Beispiel für Azure-Dienstkosten für den letzten Monat](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
@@ -96,7 +100,7 @@ Pivotdiagramme unterhalb des Hauptdiagramms enthalten verschiedene Gruppierungen
 
 Das vorhergehende Bild zeigt die Namen der Ressourcengruppen. Sie können zum Anzeigen der Gesamtkosten pro Tag nach Tag gruppieren. Es gibt jedoch in keiner der Kostenanalyseansichten ein Option zum Anzeigen aller Tags pro Ressource oder Ressourcengruppe.
 
-Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-Ten-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Falls mehr als zehn Gruppen vorhanden sind, werden die obersten neun Kostenverursacher und zusätzlich die Gruppe **Others** (Andere) angezeigt, um alle verbleibenden Gruppen abzudecken. Beim Gruppieren nach Tags wird unter Umständen eine Gruppe vom Typ **Ohne Markierungen** für Kosten angezeigt, auf die der Tagschlüssel nicht angewendet wurde. **Keine Markierungen** wird immer zuletzt angezeigt, selbst wenn mehr Kosten ohne Markierungen als Kosten mit Markierungen vorhanden sind. Sind mindestens zehn Tagwerte vorhanden, werden Kosten ohne Markierungen unter **Andere** angezeigt.
+Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-Ten-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Wenn mehr als zehn Gruppen vorhanden sind, werden die obersten neun Kostenverursacher angezeigt. Außerdem wird die Gruppe **Andere** angezeigt, unter der alle verbleibenden Gruppen zusammengefasst sind. Beim Gruppieren nach Tags wird unter Umständen eine Gruppe vom Typ **Ohne Markierungen** für Kosten angezeigt, auf die der Tagschlüssel nicht angewendet wurde. **Keine Markierungen** wird immer zuletzt angezeigt, selbst wenn mehr Kosten ohne Markierungen als Kosten mit Markierungen vorhanden sind. Sind mindestens zehn Tagwerte vorhanden, werden Kosten ohne Markierungen unter **Andere** angezeigt.
 
 Für *klassische* virtuelle Computer (Azure Service Management, ASM), Netzwerke und Speicherressourcen werden keine ausführlichen Abrechnungsdaten bereitgestellt. Sie werden beim Gruppieren der Kosten als **Classic services** (Klassische Dienste) gruppiert.
 

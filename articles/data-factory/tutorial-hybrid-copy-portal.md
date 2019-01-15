@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614020"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021984"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie die Benutzeroberfläche (User Interface, UI) von Azure Data Factory, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
@@ -195,7 +194,7 @@ Der Name der Data Factory muss *global eindeutig* sein. Sollte für das Feld „
 
     ![Name der Integration Runtime](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. Klicken Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) auf **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten). 
+1. Wählen Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) die Option **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten) aus. 
 
     ![Link für das Express-Setup](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 
@@ -263,7 +262,7 @@ Der Name der Data Factory muss *global eindeutig* sein. Sollte für das Feld „
 
     c. Klicken Sie auf **Verbindung testen**, um die Verbindung mit Ihrem Speicherkonto zu testen.
 
-    d. Wählen Sie **Speichern**aus.
+    d. Wählen Sie **Speichern** aus.
 
     ![Einstellungen für den mit Storage verknüpften Dienst](./media/tutorial-hybrid-copy-portal/azure-storage-linked-service-settings.png) 
 

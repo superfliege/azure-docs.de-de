@@ -4,17 +4,17 @@ description: Erstellen Sie mit Terraform und HCL (HashiCorp Configuration Langua
 services: terraform
 ms.service: terraform
 keywords: Terraform, Devops, virtueller Computer, Netzwerk, Module
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 9870eac87204f24993ab71e373dcab3a8ead3e89
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667599"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075349"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Erstellen eines VM-Clusters mit Terraform und HCL
 
@@ -62,7 +62,7 @@ In diesem Abschnitt generieren Sie einen Azure-Dienstprinzipal und zwei Terrafor
 
 6. Erstellen Sie eine neue Datei, die die Werte für die Terraform-Variablen enthält. Es ist üblich, die Terraform-Variablendatei mit `terraform.tfvars` zu benennen, da Terraform automatisch jede Datei mit dem Namen `terraform.tfvars` (oder einem Namen nach dem Muster `*.auto.tfvars`) lädt, wenn sie im aktuellen Verzeichnis vorhanden ist. 
 
-7. Kopieren Sie den folgenden Code in die Variablendatei. Ersetzen Sie die Platzhalter wie folgt: Verwenden Sie für `subscription_id` die Azure-Abonnement-ID, die Sie beim Ausführen von `az account set` angegeben haben. Verwenden Sie für `tenant_id` den `tenant`-Wert, der von `az ad sp create-for-rbac` zurückgegeben wurde. Verwenden Sie für `client_id` den `appId`-Wert, der von `az ad sp create-for-rbac` zurückgegeben wurde. Verwenden Sie für `client_secret` den `password`-Wert, der von `az ad sp create-for-rbac` zurückgegeben wurde.
+7. Kopieren Sie den folgenden Code in die Variablendatei. Achten Sie darauf, die Platzhalter wie folgt zu ersetzen: Geben Sie für `subscription_id` die Azure-Abonnement-ID ein, die Sie beim Ausführen von `az account set` angegeben haben. Verwenden Sie für `tenant_id` den `tenant`-Wert, der von `az ad sp create-for-rbac` zurückgegeben wurde. Verwenden Sie für `client_id` den `appId`-Wert, der von `az ad sp create-for-rbac` zurückgegeben wurde. Verwenden Sie für `client_secret` den `password`-Wert, der von `az ad sp create-for-rbac` zurückgegeben wurde.
 
   ```tf
   subscription_id = "<azure-subscription-id>"

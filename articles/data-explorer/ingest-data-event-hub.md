@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 563b171177b491037e34dce891b565ea0943feda
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654103"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064694"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure-Daten-Explorer ermöglicht die Datenerfassung (das Laden von Daten) aus Event Hubs. Dabei handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. Event Hubs kann Millionen von Ereignissen pro Sekunde nahezu in Echtzeit verarbeiten. In diesem Schnellstart erstellen Sie einen Event Hub, stellen eine Verbindung über Azure-Daten-Explorer damit her und zeigen den Datenfluss durch das System an.
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure-Daten-Explorer ermöglicht die Datenerfassung (das Laden von Daten) aus Event Hubs. Dabei handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. [Event Hubs](/azure/event-hubs/event-hubs-about) kann Millionen von Ereignissen pro Sekunde nahezu in Echtzeit verarbeiten. In diesem Schnellstart erstellen Sie einen Event Hub, stellen eine Verbindung über Azure-Daten-Explorer damit her und zeigen den Datenfluss durch das System an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,7 +25,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 * [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
 
-* [Eine Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), die Daten generiert und an einen Event Hub sendet
+* [Eine Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), die Daten generiert und an einen Event Hub sendet. Laden Sie die Beispiel-App auf Ihr System herunter.
 
 * [Visual Studio 2017, Version 15.3.2 oder höher](https://www.visualstudio.com/vs/) zum Ausführen der Beispiel-App
 
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 In diesem Schnellstart generieren Sie Beispieldaten und senden diese an einen Event Hub. Der erste Schritt besteht im Erstellen eines Event Hubs. Dazu verwenden Sie eine Azure Resource Manager-Vorlage im Azure-Portal.
 
-1. Verwenden Sie die folgende Schaltfläche, um die Bereitstellung zu starten. Es empfiehlt sich, den Link in einer neuen Registerkarte oder in einem neuen Fenster öffnen, um den restlichen Schritten dieses Artikels folgen zu können.
+1. Verwenden Sie für die Event Hub-Erstellung die folgende Schaltfläche, um die Bereitstellung zu starten. Klicken Sie mit der rechten Maustaste, und wählen Sie in einer anderen Registerkarte bzw. einem anderen Fenster die Option **In neuem Fenster öffnen**, damit Sie die restlichen Schritte in diesem Artikel ausführen können.
 
     [![In Azure bereitstellen](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -79,7 +79,7 @@ Sie können jetzt eine Tabelle im Azure-Daten-Explorer erstellen, an die Event H
 
     ![Anwendungslink „Abfrage“](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. Kopieren Sie den folgenden Befehl in das Fenster, und wählen Sie **Ausführen** aus.
+1. Kopieren Sie den folgenden Befehl in das Fenster, und wählen Sie **Ausführen**, um die Tabelle (TestTable) zu erstellen, die die erfassten Daten erhalten soll.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -87,12 +87,11 @@ Sie können jetzt eine Tabelle im Azure-Daten-Explorer erstellen, an die Event H
 
     ![Abfrage erstellen, „Ausführen“](media/ingest-data-event-hub/run-create-query.png)
 
-1. Kopieren Sie den folgenden Befehl in das Fenster, und wählen Sie **Ausführen** aus.
+1. Kopieren Sie den folgenden Befehl in das Fenster, und wählen Sie **Ausführen**, um die eingehenden JSON-Daten den Spaltennamen und Datentypen der Tabelle (TestTable) zuzuordnen.
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    Mit diesem Befehl werden eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle (TestTable) zugeordnet.
 
 ## <a name="connect-to-the-event-hub"></a>Herstellen einer Verbindung mit dem Event Hub
 
@@ -112,13 +111,23 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
 
     ![Event Hub-Verbindung](media/ingest-data-event-hub/event-hub-connection.png)
 
+    Datenquelle:
+
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Name der Datenverbindung | *test-hub-connection* | Der Name der Verbindung, die Sie im Azure-Daten-Explorer erstellen möchten.|
     | Event Hub-Namespace | Ein eindeutiger Namespacename | Der von Ihnen zuvor ausgewählte Name, der Ihren Namespace identifiziert. |
     | Event Hub | *test-hub* | Der von Ihnen erstellte Event Hub. |
     | Consumergruppe | *test-group* | Die Consumergruppe, die in dem von Ihnen erstellten Event Hub definiert ist. |
-    | Zieltabelle | Lassen Sie das Kontrollkästchen **My data includes routing info** (Meine Daten enthalten Routinginformationen) deaktiviert. | Es stehen zwei Routingoptionen zur Verfügung: *statisch* und *dynamisch*. In dieser Schnellstartanleitung wird statisches Routing (Standardeinstellung) verwendet, für das der Tabellenname, das Dateiformat und die Zuordnung angegeben werden müssen. Sie können auch dynamisches Routing verwenden. Hierbei enthalten Ihre Daten die erforderlichen Routinginformationen. |
+    | | |
+
+    Zieltabelle:
+
+    Es stehen zwei Routingoptionen zur Verfügung: *statisch* und *dynamisch*. In dieser Schnellstartanleitung wird statisches Routing (Standardeinstellung) verwendet, für das der Tabellenname, das Dateiformat und die Zuordnung angegeben werden müssen. Lassen Sie das Kontrollkästchen **My data includes routing info** (Meine Daten enthalten Routinginformationen) daher deaktiviert.
+    Sie können auch dynamisches Routing verwenden. Hierbei enthalten Ihre Daten die erforderlichen Routinginformationen.
+
+     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
+    |---|---|---|
     | Table | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
     | Datenformat | *JSON* | Die Formate JSON und CSV werden unterstützt. |
     | Spaltenzuordnung | *TestMapping* | Die Zuordnung, die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen.|
@@ -138,7 +147,7 @@ Wenn Sie die in den Voraussetzungen angegebene [Beispiel-App](https://github.com
 
 ## <a name="generate-sample-data"></a>Generieren von Beispieldaten
 
-Nachdem Azure Data Explorer und der Event Hub nun miteinander verbunden sind, können Sie mithilfe der heruntergeladenen [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) Daten generieren.
+Verwenden Sie die [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), die Sie heruntergeladen haben, um die Daten zu generieren.
 
 1. Öffnen Sie die Beispiel-App-Projektmappe in Visual Studio.
 
@@ -162,8 +171,6 @@ Anhand der von der App generierten Daten können Sie den Datenfluss vom Event Hu
 
     ![Diagramm des Event Hubs](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. Wechseln Sie zurück zur Beispiel-App, und beenden Sie sie, nachdem sie Nachricht 99 erreicht hat.
-
 1. Führen Sie in Ihrer Testdatenbank die folgende Abfrage aus, um zu überprüfen, wie viele Nachrichten bisher an die Datenbank gesendet wurden:
 
     ```Kusto
@@ -177,9 +184,12 @@ Anhand der von der App generierten Daten können Sie den Datenfluss vom Event Hu
     TestTable
     ```
 
-    Das Resultset sollte wie folgt aussehen.
+    Das Resultset sollte wie folgt aussehen:
 
     ![Nachrichten-Resultset](media/ingest-data-event-hub/message-result-set.png)
+
+    > [!NOTE]
+    > ADX verfügt über eine Aggregationsrichtlinie (Batching) für die Datenerfassung, die für die Optimierung des Erfassungsprozesses konzipiert ist. Da die Richtlinie auf fünf Minuten konfiguriert wird, kann es zu Latenz kommen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

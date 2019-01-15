@@ -3,17 +3,17 @@ title: Bereitstellen von Anwendungen für VM-Skalierungsgruppen in Azure mithilf
 description: Erfahren Sie, wie Sie Ansible zum Konfigurieren einer VM-Skalierungsgruppe und Bereitstellen der Anwendung auf der VM-Skalierungsgruppe in Azure verwenden
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4f3712a45fdb2474eedeb8d4eac034060723010d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408373"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156543"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Bereitstellen von Anwendungen für VM-Skalierungsgruppen in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mithilfe von Ansible Ihre Anwendungen in Azure bereitstellen. In diesem Artikel wird veranschaulicht, wie Sie eine Java-Anwendung in einer Azure-VM-Skalierungsgruppe (VMSS) bereitstellen.  
@@ -150,7 +150,7 @@ Im folgenden Abschnitt eines Ansible-Playbooks wird die JRE (Java Runtime Enviro
 Sie können das vorstehende Ansible-Beispielplaybook als `vmss-setup-deploy.yml` speichern oder [das gesamte Beispielplaybook herunterladen](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss). 
 
 Um den Verbindungstyp „SSH“ mit Kennwörtern zu verwenden, müssen Sie das Programm SSHPASS installieren. 
-  - Führen Sie für Ubunto 16.04 den Befehl `apt-get install sshpass` aus.
+  - Führen Sie für Ubuntu 16.04 den Befehl `apt-get install sshpass` aus.
   - Führen Sie für CentOS 7.4 den Befehl `yum install sshpass` aus.
 
 Möglicherweise wird eine Fehlermeldung angezeigt, die der folgenden ähnelt: **Verwendung eines SSH-Kennworts anstelle eines Schlüssels ist nicht möglich, da die Hostschlüsselüberprüfung aktiviert ist, aber nicht von SSHPASS unterstützt wird. Fügen Sie den Fingerabdruck dieses Hosts Ihrer Datei „known_hosts“ hinzu, um diesen Host zu verwalten.** Wenn dieser Fehler angezeigt wird, können Sie die Hostschlüsselüberprüfung deaktivieren, indem Sie der Datei `/etc/ansible/ansible.cfg` oder der Datei `~/.ansible.cfg` die folgende Zeile hinzufügen:

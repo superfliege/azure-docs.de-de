@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: d116f2553ce35c2d4041f37cc3fe4567e1595adc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b3e68765fbcff12dcb5337aec38623b8994882c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258762"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156798"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit dem Bing-News-Suche-SDK für C#
 
@@ -35,14 +35,14 @@ Beim Installieren des [NuGet-Pakets mit dem SDK für die News-Suche](https://www
 * Newtonsoft.Json
 
 ## <a name="news-search-client"></a>Client für die News-Suche
-Um eine Instanz des `NewsSearchAPI`-Clients zu erstellen, fügen Sie using-Direktiven hinzu:
+Fügen Sie zum Erstellen einer `NewsSearchClient`-Instanz using-Direktiven hinzu:
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
 ```
 Instanziieren Sie dann den Client:
 ```
-var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
@@ -56,7 +56,7 @@ Analysieren Sie die Neuigkeiten, die in den Ergebnissen der vorherigen Abfrage z
 ```
 if (newsResults.Value.Count > 0)
 {
-    var firstNewsResult = newsResults.Value.First();
+    var firstNewsResult = newsResults.Value[0];
 
     Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
     Console.WriteLine($"News result count: {newsResults.Value.Count}");
@@ -64,7 +64,7 @@ if (newsResults.Value.Count > 0)
     Console.WriteLine($"First news url: {firstNewsResult.Url}");
     Console.WriteLine($"First news description: {firstNewsResult.Description}");
     Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-    Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
+    Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
 }
 
 else
@@ -88,7 +88,7 @@ namespace NewsSrchSDK
     {
         static void Main(string[] args)
         {
-            var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+            var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
             try
             {
@@ -141,7 +141,7 @@ namespace NewsSrchSDK
 ## <a name="recent-news-freshness-and-sortby-parameters"></a>Aktuelle Neuigkeiten und die Parameter „freshness“ und „sortBy“
 Suchen Sie mit Filtern über die Parameter `freshness` und `sortBy` nach den neusten Meldungen zum Stichwort „Künstliche Intelligenz“. Der Code überprüft die Anzahl der Ergebnisse und gibt für das erste Neuigkeitenergebnis `totalEstimatedMatches`, `name`, `url`, `description`, `published time` und `name` vom Anbieter aus.
 ```
-        public static void NewsSearchWithFilters(NewsSearchAPI client)
+        public static void NewsSearchWithFilters(NewsSearchClient client)
         {
             try
             {
@@ -184,7 +184,7 @@ Suchen Sie mit Filtern über die Parameter `freshness` und `sortBy` nach den neu
 ## <a name="category-news-safe-search"></a>Die Kategorie „Neuigkeiten“, sichere Suche
 Der folgende Code durchsucht die Kategorie „Neuigkeiten“ für Film- und Fernsehunterhaltung mithilfe einer sicheren Suche.  Er überprüft die Anzahl der Ergebnisse und gibt für das erste Neuigkeitenergebnis `category`, `name`, `url` ,`description`, `published time` und `name` vom Anbieter aus.
 ```
-        public static void NewsCategory(NewsSearchAPI client)
+        public static void NewsCategory(NewsSearchClient client)
         {
             try
             {
@@ -226,7 +226,7 @@ Der folgende Code durchsucht die Kategorie „Neuigkeiten“ für Film- und Fern
 ## <a name="trending-topics"></a>Beliebte Themen
 Der folgende Code durchsucht beliebte Neuigkeiten in Bing. Er überprüft die Anzahl der Ergebnisse und gibt für das erste Neuigkeitenergebnis `name`, `text of query`, `webSearchUrl` ,`newsSearchUrl` und `image.Url` vom Anbieter aus.
 ```
-        public static void TrendingTopics(NewsSearchAPI client)
+        public static void TrendingTopics(NewsSearchClient client)
         {
             try
             {

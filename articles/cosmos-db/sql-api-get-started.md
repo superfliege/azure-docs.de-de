@@ -1,23 +1,21 @@
 ---
-title: 'Azure Cosmos DB: SQL-API – Tutorial zu den ersten Schritten'
+title: 'Azure Cosmos DB: Tutorial mit ersten Schritten für die SQL-API'
 description: In diesem Tutorial werden eine Onlinedatenbank und eine C#-Konsolenanwendung mit der SQL-API erstellt.
-keywords: nosql tutorial, online database, c# console application
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 100524eacb30f77e06204fb3b31e6477dd1320a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867528"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043446"
 ---
-# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: SQL-API – Tutorial zu den ersten Schritten
+# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Tutorial mit ersten Schritten für die SQL-API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -77,7 +75,7 @@ Wir erstellen nun ein Azure Cosmos DB-Konto. Wenn Sie bereits über ein Konto ve
 
 Prima. Damit ist die Einrichtung abgeschlossen und wir können mit dem Schreiben von Code beginnen. Ein vollständiges Codeprojekt dieses Tutorials finden Sie auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).
 
-## <a id="Connect"></a>Schritt 3: Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto
+## <a id="Connect"></a>Schritt 3: Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto
 Fügen Sie zunächst in der Datei "Program.cs" am Anfang der C#-Anwendung folgende Verweise hinzu:
 
     using System;
@@ -495,7 +493,7 @@ Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich eine Azure Cosmos DB-Datenbank gelöscht.
 
-## <a id="Run"></a>Schritt 11: Ausführen der gesamten C#-Konsolenanwendung
+## <a id="Run"></a>Schritt 11: Ausführen der gesamten C#-Konsolenanwendung!
 Drücken Sie in Visual Studio F5 , um die Anwendung im Debugmodus zu erstellen.
 
 Die Ausgabe der GetStarted-App sollte in einem Konsolenfenster angezeigt werden. Die Ausgabe zeigt die Ergebnisse der hinzugefügten Abfragen an. Sie sollte mit unten stehendem Beispieltext übereinstimmen.
@@ -538,7 +536,7 @@ Das ist alles, nun müssen Sie nur noch die Erstellung durchführen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Möchten Sie ein komplexeres ASP.NET MVC-Tutorial durcharbeiten? Siehe [ASP.NET MVC-Tutorial: Entwickeln von Webanwendungen mit Azure Cosmos DB](sql-api-dotnet-application.md).
+* Möchten Sie ein komplexeres ASP.NET MVC-Tutorial durcharbeiten? Siehe [ASP.NET MVC-Tutorial: Entwicklung von Webanwendungen mit Azure Cosmos DB](sql-api-dotnet-application.md).
 * Möchten Sie Azure Cosmos DB nutzen, um Skalierungs- und Leistungstests durchzuführen? Weitere Informationen finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
 * Informationen zum [Überwachen von Anforderungen, Nutzung und Speicher in Azure Cosmos DB](monitor-accounts.md).
 * Fragen Sie unser Beispieldataset im [Query Playground](https://www.documentdb.com/sql/demo)ab.
