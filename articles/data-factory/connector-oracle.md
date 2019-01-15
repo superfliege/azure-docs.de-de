@@ -21,7 +21,7 @@ ms.lasthandoff: 11/21/2018
 ms.locfileid: "52275685"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-onprem-oracle-connector.md)
 > * [Aktuelle Version](connector-oracle.md)
 
