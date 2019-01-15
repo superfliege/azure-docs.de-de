@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 2bae07643407e8672ef26fb59da588661eb9f0d1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598889"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191818"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Speichercontainer mit dem Namen *$web* bereitstellen. Durch das Hosten in Azure Storage können Sie serverlose Architekturen, wie [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste, verwenden.
@@ -21,16 +21,16 @@ Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaSc
 Im Unterschied zum Hosten statischer Websites werden dynamische Websites, die von serverseitigem Code abhängig sind, am besten mit [Azure App Service](/azure/app-service/overview) gehostet.
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
-Wenn Sie das Hosten statischer Websites in Ihrem Speicherkonto aktivieren, wählen Sie den Namen der Standarddatei aus und geben optional einen Pfad zu einer benutzerdefinierten 404-Seite an. Wenn das Feature aktiviert wird, wird ein Container namens *$web* erstellt, wenn er noch nicht vorhanden ist. 
+Wenn Sie das Hosten statischer Websites in Ihrem Speicherkonto aktivieren, wählen Sie den Namen der Standarddatei aus und geben optional einen Pfad zu einer benutzerdefinierten 404-Seite an. Wenn das Feature aktiviert wird, wird ein Container namens *$web* erstellt, wenn er noch nicht vorhanden ist.
 
 Für Dateien im Container *$web* gilt:
 
 - Sie werden über anonyme Zugriffsanforderungen bereitgestellt.
 - Sie sind nur über Objektlesevorgänge verfügbar.
 - Erfordert eine Beachtung der Groß-/Kleinschreibung.
-- Sie sind mit folgendem Muster im öffentlichen Web verfügbar: 
+- Sie sind mit folgendem Muster im öffentlichen Web verfügbar:
     - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
-- Sie sind mit folgendem Muster über einen Blob Storage-Endpunkt verfügbar: 
+- Sie sind mit folgendem Muster über einen Blob Storage-Endpunkt verfügbar:
     - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
 
 Sie verwenden den Blob Storage-Endpunkt zum Hochladen von Dateien. Die Datei, die z.B. in diesen Speicherort hochgeladen wurde:
@@ -97,10 +97,10 @@ Fragen Sie die Webendpunkt-URL ab:
 az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch:
+Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch. Achten Sie darauf, dass Sie den Verweis auf den Container *$web* im Befehl mit Escapezeichen versehen. Wenn Sie beispielsweise die Azure-Befehlszeilenschnittstelle aus der CloudShell heraus im Azure-Portal verwenden, versehen Sie den Container *$web* mit Escapezeichen wie gezeigt:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Bereitstellung
@@ -120,7 +120,7 @@ Um Metriken auf den Seiten Ihrer statischen Website zu aktivieren, klicken Sie a
 
 Metrikdaten werden durch Einbinden verschiedener Metrik-APIs generiert. Das Portal zeigt nur die API-Elemente an, die innerhalb eines bestimmten Zeitrahmens verwendet werden. Dies ermöglicht eine Konzentration auf die Elemente, die Daten zurückgeben. Um sicherzustellen, dass Sie die erforderlichen API-Elemente auswählen können, müssen Sie zuerst den Zeitrahmen erweitern.
 
-Klicken Sie auf die Schaltfläche für den Zeitrahmen, und wählen Sie **Letzte 24 Stunden** aus. Klicken Sie dann auf **Übernehmen**. 
+Klicken Sie auf die Schaltfläche für den Zeitrahmen, und wählen Sie **Letzte 24 Stunden** aus. Klicken Sie dann auf **Übernehmen**.
 
 ![Metriken von statischen Websites in Azure Storage: Zeitbereich](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 

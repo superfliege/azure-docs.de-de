@@ -1,13 +1,10 @@
 ---
-title: Erstellen, Ändern oder Löschen eines virtuellen Azure-Netzwerks | Microsoft-Dokumentation
+title: Erstellen, Ändern oder Löschen eines virtuellen Azure-Netzwerks
+titlesuffix: Azure Virtual Network
 description: In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk in Azure erstellen, ändern oder löschen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 1c39100007d3b993031aa06cd106dfa2bf8419a2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3f158d040654b251faebceaa2e89d0462f13c217
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538088"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016024"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -41,7 +38,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 1. Wählen Sie **+ Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
 2. Geben Sie Werte für folgende Einstellungen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen**:
     - **Name**: Der Name muss in der ausgewählten [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), in der Sie das virtuelle Netzwerk erstellen möchten, eindeutig sein. Sie können den Namen nicht ändern, nachdem das virtuelle Netzwerk erstellt wurde. Sie können im Laufe der Zeit mehrere virtuelle Netzwerke erstellen. Benennungsvorschläge finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). Durch die Verwendung einer Benennungskonvention können Sie einfacher mehrere virtuelle Netzwerke verwalten.
-    - **Adressraum**: Der Adressraum für ein virtuelles Netzwerk besteht aus einem oder mehreren Adressbereichen, die sich nicht überschneiden und in der CIDR-Notation angegeben sind. Die von Ihnen definierten Adressbereiche können öffentlich oder privat (RFC 1918) sein. Ganz gleich, ob Sie den Adressbereich als öffentlich oder privat definieren – der Adressbereich ist nur innerhalb des virtuellen Netzwerks, über miteinander verbundene virtuelle Netzwerke und über beliebige lokale Netzwerke erreichbar, die Sie mit dem virtuellen Netzwerk verbunden haben. Sie können die folgenden Adressbereiche nicht hinzufügen:
+    - **Adressraum:** Der Adressraum für ein virtuelles Netzwerk besteht aus einem oder mehreren Adressbereichen, die sich nicht überschneiden und in der CIDR-Notation angegeben sind. Die von Ihnen definierten Adressbereiche können öffentlich oder privat (RFC 1918) sein. Ganz gleich, ob Sie den Adressbereich als öffentlich oder privat definieren – der Adressbereich ist nur innerhalb des virtuellen Netzwerks, über miteinander verbundene virtuelle Netzwerke und über beliebige lokale Netzwerke erreichbar, die Sie mit dem virtuellen Netzwerk verbunden haben. Sie können die folgenden Adressbereiche nicht hinzufügen:
         - 224.0.0.0/4 (Multicast)
         - 255.255.255.255/32 (Übertragung)
         - 127.0.0.0/8 (Loopback)
@@ -61,7 +58,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
       >Gelegentlich erstellen Administratoren unterschiedliche Subnetze, um das Datenverkehrsrouting zwischen ihnen zu filtern oder zu steuern. Erwägen Sie vor dem Definieren von Subnetzen, wie Sie Datenverkehr zwischen Ihren Subnetzen filtern und weiterleiten möchten. Weitere Informationen zum Filtern von Datenverkehr zwischen Subnetzen finden Sie unter [Netzwerksicherheitsgruppen](security-overview.md). Azure leitet Datenverkehr zwischen Subnetzen automatisch weiter, doch Sie können diese Standardrouten von Azure außer Kraft setzen. Weitere Informationen zum standardmäßigen Datenverkehrsrouting bei Azure-Subnetzen finden Sie in der [Übersicht über das Routing](virtual-networks-udr-overview.md).
       >
 
-    - **Subnetzadressbereich**: Der Bereich muss sich im Adressraum befinden, den Sie für das virtuelle Netzwerk eingegeben haben. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Folglich weist ein virtuelles Netzwerk mit dem Subnetzadressbereich „/29“ drei verwendbare IP-Adressen auf. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz erstellt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md).
+    - **Subnetzadressbereich:** Der Bereich muss sich im Adressraum befinden, den Sie für das virtuelle Netzwerk eingegeben haben. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Folglich weist ein virtuelles Netzwerk mit dem Subnetzadressbereich „/29“ drei verwendbare IP-Adressen auf. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz erstellt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md).
     - **Abonnement**: Wählen Sie ein [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) aus. Sie können nicht dasselbe virtuelle Netzwerk in mehreren Azure-Abonnements verwenden. Allerdings können Sie ein virtuelles Netzwerk in einem Abonnement durch [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) mit virtuellen Netzwerken in anderen Abonnements verbinden. Alle Azure-Ressource, die Sie mit dem virtuellen Netzwerk verbinden, müssen sich im selben Abonnement wie das des virtuellen Netzwerks befinden.
     - **Ressourcengruppe**: Wählen Sie eine vorhandene [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) aus, oder erstellen Sie eine neue. Azure-Ressourcen, die Sie mit dem virtuellen Netzwerk verbinden, können sich in derselben Ressourcengruppe wie die des virtuellen Netzwerks oder in einer anderen Ressourcengruppe befinden.
     - **Standort**: Wählen Sie einen Azure-[Standort](https://azure.microsoft.com/regions/) (auch als „Region“ bezeichnet) aus. Ein virtuelles Netzwerk kann sich nur an einem Azure-Standort befinden. Allerdings können Sie ein virtuelles Netzwerk an einem Standort mithilfe eines VPN-Gateways mit einem virtuellen Netzwerk an einem anderen Standort verbinden. Alle Azure-Ressource, die Sie mit dem virtuellen Netzwerk verbinden, müssen sich am selben Standort wie dem des virtuellen Netzwerks befinden.
@@ -81,12 +78,12 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
         ![Übersicht über die Netzwerkschnittstelle](./media/manage-virtual-network/vnet-overview.png)
 
       Sie können ein virtuelles Netzwerk in ein anderes Abonnement oder eine andere Ressourcengruppe verschieben, indem Sie neben dem Namen der **Ressourcengruppe** oder des **Abonnements** auf **Ändern** klicken. Informationen zum Verschieben eines virtuellen Netzwerks finden Sie unter [Verschieben von Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). In diesem Artikel erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure CLI verschieben. Alle Ressourcen, die mit dem virtuellen Netzwerk verbunden sind, müssen mit dem virtuellen Netzwerk verschoben werden.
-    - **Adressraum**: Die dem virtuellen Netzwerk zugewiesenen Adressräume werden aufgelistet. Die erforderlichen Schritte zum Hinzufügen und Entfernen eines Adressbereichs für den Adressraum werden im Abschnitt [Hinzufügen oder Entfernen eines Adressbereichs](#add-or-remove-an-address-range) erläutert.
+    - **Adressraum:** Die dem virtuellen Netzwerk zugewiesenen Adressräume werden aufgelistet. Die erforderlichen Schritte zum Hinzufügen und Entfernen eines Adressbereichs für den Adressraum werden im Abschnitt [Hinzufügen oder Entfernen eines Adressbereichs](#add-or-remove-an-address-range) erläutert.
     - **Verbundene Geräte**: Alle Ressourcen, die mit dem virtuellen Netzwerk verbunden sind, werden aufgeführt. Im vorhergehenden Screenshot werden drei Netzwerkschnittstellen und ein Load Balancer gezeigt, die mit dem virtuellen Netzwerk verbunden sind. Neue Ressourcen, die Sie erstellen und mit dem virtuellen Netzwerk verbinden, werden aufgeführt. Wenn Sie eine Ressource löschen, die mit dem virtuellen Netzwerk verbunden war, wird sie nicht mehr in der Liste angezeigt.
     - **Subnetze**: Eine Liste von Subnetzen im virtuellen Netzwerk wird angezeigt. Informationen zum Hinzufügen und Entfernen eines Subnetzes finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md).
     - **DNS-Server**: Sie können angeben, ob der interne DNS-Server von Azure oder ein benutzerdefinierter DNS-Server die Namensauflösung für Geräte bereitstellt, die mit dem virtuellen Netzwerk verbunden sind. Wenn Sie ein virtuelles Netzwerk über das Azure-Portal erstellen, werden standardmäßig die DNS-Server von Azure für die Namensauflösung in einem virtuellen Netzwerk verwendet. Führen Sie zum Ändern der DNS-Server die Schritte im Abschnitt [Ändern von DNS-Server](#change-dns-servers) in diesem Artikel durch.
     - **Peerings**: Wenn Peerings im Abonnement vorhanden sind, werden sie hier aufgeführt. Sie können die Einstellungen für vorhandene Peerings anzeigen oder Peerings erstellen, ändern oder löschen. Weitere Informationen zu Peerings finden Sie im Artikel [Peering virtueller Netzwerke](virtual-network-peering-overview.md).
-    - **Eigenschaften**: Zeigt Einstellungen des virtuellen Netzwerks an, wie z.B. seine Ressourcen-ID und das zugehörige Azure-Abonnement.
+    - **Properties:** Zeigt Einstellungen des virtuellen Netzwerks an, wie z.B. seine Ressourcen-ID und das zugehörige Azure-Abonnement.
     - **Diagramm**: Das Diagramm bietet eine visuelle Darstellung aller Geräte, die mit dem virtuellen Netzwerk verbunden sind. Das Diagramm enthält einige wichtige Informationen zu den Geräten. Zum Verwalten eines Geräts in dieser Ansicht wählen Sie es im Diagramm aus.
     - **Allgemeine Azure-Einstellungen**: Weitere Informationen zu allgemeinen Azure-Einstellungen finden Sie in den folgenden Artikeln:
         *   [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md)
