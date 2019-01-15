@@ -1,7 +1,7 @@
 ---
 title: 'Regressionsmodelltutorial: Vorbereiten von Daten'
 titleSuffix: Azure Machine Learning service
-description: Im ersten Teil dieses Tutorials erfahren Sie, wie Sie Daten in Python mit dem Azure ML SDK für die Regressionsmodellierung vorbereiten.
+description: Im ersten Teil dieses Tutorials erfahren Sie, wie Sie Daten in Python für die Regressionsmodellierung mit dem Azure Machine Learning SDK vorbereiten.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,16 +11,18 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8f7e414d2aa4962534a90a295e104f8e8ebabbd9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314685"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079237"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
-In diesem Tutorial erfahren Sie, wie Sie Daten mit dem Azure Machine Learning Data Prep SDK für die Regressionsmodellierung vorbereiten. Sie führen verschiedene Transformationen durch, um zwei Datasets für New Yorker Taxis zu filtern und miteinander zu kombinieren. Das Ziel dieser Tutorialreihe besteht darin, ein Modell auf der Grundlage von Daten wie Abholzeit, Wochentag, Fahrgastanzahl und Koordinaten zu trainieren, um die Kosten einer Taxifahrt zu prognostizieren. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
+In diesem Tutorial erfahren Sie, wie Sie Daten mit dem Azure Machine Learning Data Prep SDK für die Regressionsmodellierung vorbereiten. Sie führen verschiedene Transformationen durch, um zwei Datasets für New Yorker Taxis zu filtern und miteinander zu kombinieren.  
+
+Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe. Nach Abschluss der Tutorialreihe können Sie die Kosten für eine Taxifahrt prognostizieren, indem Sie ein Modell mit Datenfeatures trainieren. Zu den Features zählen der Abholzeitpunkt (Tag und Uhrzeit), die Anzahl der Fahrgäste und der Abholort.
 
 In diesem Tutorial führen Sie Folgendes durch:
 
@@ -28,14 +30,14 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Einrichten einer Python-Umgebung und Importieren von Paketen
 > * Laden von zwei Datasets mit unterschiedlichen Feldnamen
 > * Bereinigen der Daten, um Anomalien zu entfernen
-> * Transformieren von Daten mithilfe intelligenter Transformationen, um neue Merkmale zu erstellen
+> * Transformieren von Daten mithilfe intelligenter Transformationen, um neue Features zu erstellen
 > * Speichern Ihres Dataflowobjekts für die Verwendung in einem Regressionsmodell
 
 Sie können Ihre Daten in Python mit dem [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) vorbereiten.
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
-Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) bereitgestellt. Führen Sie das Notebook `regression-part1-data-prep.ipynb` in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
+Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) bereitgestellt. Führen Sie das Notebook **regression-part1-data-prep.ipynb** entweder in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -50,7 +52,7 @@ import azureml.dataprep as dprep
 
 ## <a name="load-data"></a>Laden von Daten
 
-Laden Sie zwei verschiedene Datasets für New Yorker Taxis in Dataflowobjekte herunter.  Die Felder dieser Datasets unterscheiden sich geringfügig. Die Methode `auto_read_file()` erkennt automatisch die Art der Eingabedatei.
+Laden Sie zwei verschiedene Datasets für New Yorker Taxis in Dataflowobjekte herunter. Die Felder dieser Datasets unterscheiden sich geringfügig. Die Methode `auto_read_file()` erkennt automatisch die Art der Eingabedatei.
 
 
 ```python
@@ -60,7 +62,7 @@ green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
 green_df = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
-# auto_read_file will automatically identify and parse the file type, and is useful if you don't know the file type
+# auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
 yellow_df = dprep.auto_read_file(path=yellow_path)
 
 display(green_df.head(5))
@@ -69,7 +71,7 @@ display(yellow_df.head(5))
 
 ## <a name="cleanse-data"></a>Bereinigen der Daten
 
-Füllen Sie als Nächstes einige Variablen mit Verknüpfungstransformationen auf, die für alle Dataflows gelten. Die Variable `drop_if_all_null` dient zum Löschen von Datensätzen, bei denen alle Felder Null sind. Die Variable `useful_columns` enthält ein Array von Spaltenbeschreibungen aus den einzelnen Dataflows.
+Füllen Sie als Nächstes einige Variablen mit Verknüpfungstransformationen auf, die für alle Dataflows gelten. Die Variable `drop_if_all_null` dient zum Löschen von Datensätzen, bei denen alle Felder Null sind. Die Variable `useful_columns` enthält ein Array von Spaltenbeschreibungen, die in allen Dataflows beibehalten werden.
 
 ```python
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
@@ -80,7 +82,7 @@ useful_columns = [
 ]
 ```
 
-Sie arbeiten zunächst mit den grünen Taxidaten und bringen diese in eine Form, die mit den gelben Taxidaten kombiniert werden kann. Erstellen Sie einen temporären Workflow namens `tmp_df`. Rufen Sie die Funktionen `replace_na()`, `drop_nulls()` und `keep_columns()` unter Verwendung der zuvor erstellten Variablen für die Verknüpfungstransformation auf. Benennen Sie außerdem alle Spalten im Datenrahmen um, sodass sie den Namen in `useful_columns` entsprechen.
+Sie arbeiten zunächst mit den grünen Taxidaten und bringen diese in eine Form, die mit den gelben Taxidaten kombiniert werden kann. Erstellen Sie einen temporären Workflow namens `tmp_df`. Rufen Sie die Funktionen `replace_na()`, `drop_nulls()` und `keep_columns()` unter Verwendung der zuvor erstellten Variablen für die Verknüpfungstransformation auf. Benennen Sie außerdem alle Spalten im Datenrahmen um, sodass sie den Namen in der Variablen `useful_columns` entsprechen.
 
 
 ```python
@@ -209,7 +211,7 @@ tmp_df.head(5)
 </table>
 </div>
 
-Überschreiben Sie die Variable `green_df` mit den Transformationen, die im vorherigen Schritt für `tmp_df` ausgeführt wurden.
+Überschreiben Sie die Variable `green_df` mit den Transformationen, die im vorherigen Schritt für den Dataflow `tmp_df` ausgeführt wurden.
 
 ```python
 green_df = tmp_df
@@ -247,7 +249,7 @@ tmp_df = (yellow_df
 tmp_df.head(5)
 ```
 
-Überschreiben Sie also erneut `yellow_df` mit `tmp_df`, und rufen Sie anschließend die Funktion `append_rows()` für die grünen Taxidaten auf, um die gelben Taxidaten anzufügen und einen neuen kombinierten Datenrahmen zu erstellen.
+Überschreiben Sie auch hier den Dataflow `yellow_df` mit dem Dataflow `tmp_df`. Rufen Sie anschließend die Funktion `append_rows()` für die grünen Taxidaten auf, um die gelben Taxidaten anzufügen. Ein neuer kombinierter Datenrahmen wird erstellt.
 
 
 ```python
@@ -257,7 +259,7 @@ combined_df = green_df.append_rows([yellow_df])
 
 ### <a name="convert-types-and-filter"></a>Konvertieren von Typen und Filtern 
 
-Überprüfen Sie die Zusammenfassungsstatistik der Start- und Zielkoordinaten, um sich mit der Datenverteilung vertraut zu machen. Definieren Sie zunächst ein Objekt vom Typ `TypeConverter`, um die Felder für Längen- und Breitengrad in einen dezimalen Datentyp zu ändern. Rufen Sie als Nächstes die Funktion `keep_columns()` auf, um die Ausgabe auf die Längen- und Breitengradfelder zu beschränken, und rufen Sie anschließend `get_profile()` auf.
+Überprüfen Sie die Zusammenfassungsstatistik der Start- und Zielkoordinaten, um sich mit der Datenverteilung vertraut zu machen. Definieren Sie zunächst ein Objekt vom Typ `TypeConverter`, um die Felder für Längen- und Breitengrad in einen dezimalen Datentyp zu ändern. Rufen Sie als Nächstes die Funktion `keep_columns()` auf, um die Ausgabe auf die Längen- und Breitengradfelder zu beschränken, und rufen Sie anschließend die Funktion `get_profile()` auf.
 
 
 ```python
@@ -401,7 +403,7 @@ combined_df.keep_columns(columns=[
 
 
 
-In der Ausgabe der Zusammenfassungsstatistik sehen Sie, dass manche Koordinaten fehlen und dass Koordinaten vorhanden sind, die sich nicht im Stadtgebiet von New York befinden. Filtern Sie Koordinaten heraus, die nicht innerhalb der Standgrenzen liegen. Verketten Sie hierzu Spaltenfilterbefehle innerhalb der Funktion `filter()`, und definieren Sie die Unter- und Obergrenze für die einzelnen Felder. Rufen Sie anschließend erneut `get_profile()` auf, um die Transformation zu überprüfen.
+In der Ausgabe der Zusammenfassungsstatistik sehen Sie, dass Koordinaten fehlen und Koordinaten vorhanden sind, die sich nicht im Stadtgebiet von New York befinden. Filtern Sie Koordinaten für Orte heraus, die sich außerhalb der Stadtgrenzen befinden. Verketten Sie die Spaltenfilterbefehle innerhalb der Funktion `filter()`, und definieren Sie die Unter- und Obergrenze für die einzelnen Felder. Rufen Sie anschließend erneut die Funktion `get_profile()` auf, um die Transformation zu überprüfen.
 
 
 ```python
@@ -553,7 +555,7 @@ tmp_df.keep_columns(columns=[
 
 
 
-Überschreiben Sie `combined_df` mit den Transformationen, die Sie für `tmp_df` ausgeführt haben.
+Überschreiben Sie den Dataflow `combined_df` mit den Transformationen, die Sie für den Dataflow `tmp_df` vorgenommen haben.
 
 
 ```python
@@ -627,14 +629,14 @@ combined_df.keep_columns(columns='store_forward').get_profile()
 
 
 
-In der Datenprofilausgabe von `store_forward` sehen Sie, dass die Daten inkonsistent sind und Werte fehlen bzw. Nullwerte vorhanden sind. Ersetzen Sie diese Werte mithilfe der Funktionen `replace()` und `fill_nulls()`, und verwenden Sie in beiden Fällen den Wert „N“.
+Die Datenprofilausgabe in der Spalte `store_forward` zeigt, dass die Daten inkonsistent sind und dass Werte fehlen oder Nullwerte vorhanden sind. Ersetzen Sie diese Werte mithilfe der Funktionen `replace()` und `fill_nulls()` durch „N“:
 
 
 ```python
 combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-Führen Sie eine andere `replace`-Funktion aus, dieses Mal für das `distance`-Feld. Hiermit werden Entfernungswerte neu formatiert, die fälschlicherweise als `.00` gekennzeichnet sind, und alle NULL-Werte mit Nullen (0) aufgefüllt. Konvertieren Sie das `distance`-Feld in ein numerisches Format.
+Führen Sie die Funktion `replace` für das Feld `distance` aus. Diese Funktion ändert das Format der Entfernungswerte, die fälschlicherweise als `.00` gekennzeichnet sind, und füllt alle NULL-Werte mit Nullen (0) auf. Konvertieren Sie das `distance`-Feld in ein numerisches Format.
 
 
 ```python
@@ -642,7 +644,7 @@ combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0
 combined_df = combined_df.to_number(["distance"])
 ```
 
-Teilen Sie die Datums-/Uhrzeitwerte für Start und Ziel in entsprechende Datums- und Uhrzeitspalten auf. Verwenden Sie dazu `split_column_by_example()`. In diesem Fall wird der optionale `example`-Parameter `split_column_by_example()` weggelassen. Dadurch bestimmt die Funktion anhand der Daten automatisch, wo die Aufteilung erfolgen soll.
+Teilen Sie die Datums-/Uhrzeitwerte für Start und Ziel in entsprechende Datums- und Uhrzeitspalten auf. Verwenden Sie zum Aufteilen die Funktion `split_column_by_example()`. In diesem Fall wird der optionale Parameter `example` der Funktion `split_column_by_example()` weggelassen. Dadurch bestimmt die Funktion anhand der Daten automatisch, wo die Aufteilung erfolgen soll.
 
 
 ```python
@@ -780,7 +782,7 @@ tmp_df.head(5)
 </div>
 
 
-Versehen Sie die von `split_column_by_example()` generierten Spalten mit aussagekräftigen Namen.
+Versehen Sie die von der Funktion `split_column_by_example()` generierten Spalten mit aussagekräftigen Namen.
 
 
 ```python
@@ -794,7 +796,7 @@ tmp_df_renamed = (tmp_df
 tmp_df_renamed.head(5)
 ```
 
-Überschreiben Sie `combined_df` durch die ausgeführten Transformationen, und rufen Sie dann `get_profile()` auf, um die vollständige Zusammenfassungsstatistik nach allen Transformationen anzuzeigen.
+Überschreiben Sie den Dataflow `combined_df` mit den ausgeführten Transformationen. Rufen Sie dann die Funktion `get_profile()` auf, um die vollständige Zusammenfassungsstatistik nach allen Transformationen anzuzeigen.
 
 
 ```python
@@ -804,9 +806,9 @@ combined_df.get_profile()
 
 ## <a name="transform-data"></a>Transformieren von Daten
 
-Teilen Sie das Start- und Zieldatum weiter nach Wochentag, Monatstag und Monat auf. Den Wochentag erhalten Sie mithilfe der Funktion `derive_column_by_example()`. Diese Funktion akzeptiert als Parameter ein Array von Beispielobjekten, die die Eingabedaten und die gewünschte Ausgabe definieren. Anschließend bestimmt die Funktion automatisch die von Ihnen gewünschte Transformation. Teilen Sie die Werte für die Start- und Zielzeitspalten in Stunde, Minute und Sekunde auf. Verwenden Sie dazu die Funktion `split_column_by_example()` ohne Beispielparameter.
+Teilen Sie das Start- und Zieldatum weiter nach Wochentag, Monatstag und Monat auf. Verwenden Sie zum Abrufen des Wochentagswerts die Funktion `derive_column_by_example()`. Die Funktion akzeptiert einen Arrayparameter mit Beispielobjekten, die die Eingabedaten definieren, sowie die gewünschte Ausgabe. Die Funktion bestimmt automatisch Ihre bevorzugte Transformation. Teilen Sie die Uhrzeit der Start- und Zielzeitspalten in Stunde, Minute und Sekunde auf. Verwenden Sie dazu die Funktion `split_column_by_example()` ohne Beispielparameter.
 
-Löschen Sie nach dem Generieren dieser neuen Merkmale die ursprünglichen Felder mithilfe von `drop_columns()` (zugunsten der neu generierten Merkmale). Benennen Sie alle verbleibenden Felder mit geeigneten Beschreibungen.
+Verwenden Sie nach dem Generieren der neuen Features die Funktion `drop_columns()`, um die ursprünglichen Felder zu löschen, da die neu generierten Features bevorzugt werden. Versehen Sie die restlichen Felder mit aussagekräftigen Beschreibungen.
 
 
 ```python
@@ -824,7 +826,7 @@ tmp_df = (combined_df
           
     .split_column_by_example(source_column="pickup_time")
     .split_column_by_example(source_column="dropoff_time")
-    # the following two split_column_by_example calls reference the generated column names from the above two calls
+    # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
     .split_column_by_example(source_column="pickup_time_1")
     .split_column_by_example(source_column="dropoff_time_1")
     .drop_columns(columns=[
@@ -999,7 +1001,7 @@ tmp_df.head(5)
 </table>
 </div>
 
-Anhand der obigen Daten sehen Sie, dass die auf der Grundlage der abgeleiteten Transformationen erzeugten Datums- und Uhrzeitkomponenten für Start und Ziel korrekt sind. Verwerfen Sie die Spalten `pickup_datetime` und `dropoff_datetime`. Sie werden nicht mehr benötigt.
+Anhand der Daten sehen Sie, dass die auf der Grundlage der abgeleiteten Transformationen erzeugten Datums- und Uhrzeitkomponenten für Start und Ziel korrekt sind. Verwerfen Sie die Spalten `pickup_datetime` und `dropoff_datetime`. Sie werden nicht mehr benötigt.
 
 
 ```python
@@ -1042,7 +1044,7 @@ tmp_df = type_infer.to_dataflow()
 tmp_df.get_profile()
 ```
 
-Wenden Sie vor dem Verpacken des Dataflows zwei abschließende Filter auf das Dataset an. Um falsche Datenpunkte zu löschen, filtern Sie den Dataflow nach Datensätzen, in denen sowohl `cost` als auch `distance` größer ist als 0 (null).
+Führen Sie vor dem Verpacken des Dataflows zwei abschließende Filter für das Dataset aus. Filtern Sie den Dataflow nach Datensätzen, in denen die Variablenwerte `cost` und `distance` größer Null sind, um falsche Datenpunkte zu löschen.
 
 ```python
 tmp_df = tmp_df.filter(dprep.col("distance") > 0)
@@ -1062,19 +1064,21 @@ package.save(file_path)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie in Ihrem aktuellen Verzeichnis die Datei `dflows.dprep` (sowohl bei lokaler Ausführung als auch bei Ausführung in Azure Notebooks), wenn Sie nicht mit Teil 2 des Tutorials fortfahren möchten. Falls Sie mit dem zweiten Teil fortfahren möchten, muss die Datei `dflows.dprep` im aktuellen Verzeichnis verbleiben.
+Für den zweiten Teil des Tutorials benötigen Sie die Datei **dflows.dprep** im aktuellen Verzeichnis.
+
+Falls Sie nicht mit dem zweiten Teil fortfahren möchten, löschen Sie die Datei **dflows.dprep** in Ihrem aktuellen Verzeichnis. Löschen Sie die Datei unabhängig davon, ob Sie für die Ausführung Ihre lokale Umgebung oder Azure Notebooks verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Im ersten Teil einer Tutorialreihe haben Sie folgende Schritte ausgeführt:
 
 > [!div class="checklist"]
-> * Einrichten der Entwicklungsumgebung
+> * Einrichten Ihrer Entwicklungsumgebung
 > * Laden und Bereinigen von Datasets
 > * Prognostizieren Ihrer Logik anhand eines Beispiels unter Verwendung intelligenter Transformationen
 > * Zusammenführen und Verpacken von Datasets zum Trainieren von maschinellem Lernen
 
-Diese Trainingsdaten können Sie nun im nächsten Teil der Tutorialreihe verwenden:
+Die Trainingsdaten sind nun für die Verwendung im zweiten Teil des Tutorials bereit:
 
 > [!div class="nextstepaction"]
-> [Tutorial 2: Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md)
+> [Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning](tutorial-auto-train-models.md)

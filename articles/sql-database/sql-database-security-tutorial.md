@@ -4,307 +4,349 @@ description: Erfahren Sie mehr über die Methoden und Funktionen zum Sichern ein
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/17/2018
-ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 12/18/2018
+ms.openlocfilehash: e0311174303fc91767d3f99e6db05927b25aea05
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558633"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051661"
 ---
-# <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>Tutorial: Sichern einer Einzeldatenbank in einer Azure SQL-Datenbank
+# <a name="tutorial-secure-a-single-database"></a>Tutorial: Schützen einer Einzeldatenbank
 
-So sichert eine SQ-Datenbank Daten in einer einzelnen Azure SQL-Datenbank:
+Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer einzelnen SQL-Datenbank zu schützen:
 
-- Beschränkung des Zugriffs auf Ihre Datenbank mithilfe von Firewallregeln
-- Verwendung von Authentifizierungsmechanismen mit Identitätsnachweis
-- Autorisierung für Daten durch rollenbasierte Mitgliedschaften und Berechtigungen
-- Sicherheit auf Zeilenebene
-- Dynamische Datenmaskierung
+- Beschränken des Zugriffs mithilfe von Firewallregeln
+- Verwenden von Authentifizierungsmechanismen mit Identitätsnachweis
+- Verwenden einer Autorisierung mit rollenbasierten Mitgliedschaften und Berechtigungen
+- Aktivieren der Sicherheitsfeatures
 
-Darüber hinaus verfügt SQL-Datenbank über ausgeklügelte Funktionen zur Überwachung, Überprüfung und Bedrohungserkennung.
+> [!NOTE]
+> Eine Azure SQL-Datenbank in einer verwalteten Instanz wird mithilfe von Netzwerksicherheitsregeln und privaten Endpunkten geschützt, wie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) und unter [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connectivity-architecture.md) beschrieben.
 
-> [!IMPORTANT]
-> Die Azure SQL-Datenbank sichert eine Datenbank in einer verwalteten Instanz, indem sie Netzwerksicherheitsregeln und private Endpunkte verwendet. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) und [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connectivity-architecture.md).
-
-Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes:
+Die Datenbanksicherheit lässt sich mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> - Einrichten einer Firewallregel auf Serverebene für Ihren Server im Azure-Portal
-> - Einrichten von Firewallregeln auf Datenbankebene für Ihre Datenbank mithilfe von SSMS
-> - Herstellen einer Verbindung mit Ihrer Datenbank mithilfe einer sicheren Verbindungszeichenfolge
-> - Konfigurieren eines Azure Active Directory-Administrators für Azure SQL
-> - Verwalten des Benutzerzugriffs
-> - Schützen von Daten durch Verschlüsselung
-> - Aktivieren der SQL-Datenbanküberwachung
-> - Aktivieren der Bedrohungserkennung der SQL-Datenbank
+> - Erstellen von Firewallregeln auf Server- und Datenbankebene
+> - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
+> - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
+> - Aktivieren von Sicherheitsfeatures (beispielsweise Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung)
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](/azure/sql-database/sql-database-security-index) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](sql-database-security-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Sie dieses Tutorial durcharbeiten können, müssen folgende Voraussetzungen erfüllt sein:
+Für dieses Tutorial wird Folgendes vorausgesetzt:
 
-- Die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) muss installiert sein.
-- Microsoft Excel muss installiert sein.
-- Ein Azure SQL Server und eine Azure SQL-Datenbank müssen erstellt sein. Siehe [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-get-started-portal.md), [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-cli-samples.md) und [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-powershell-samples.md).
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- Azure SQL-Server und -Datenbank
+    - Erstellen Sie sie über das [Azure-Portal](sql-database-get-started-portal.md), mithilfe der [Befehlszeilenschnittstelle](sql-database-cli-samples.md) oder mithilfe von [PowerShell](sql-database-powershell-samples.md).
 
-> [!NOTE]
-> Dieses Tutorial geht davon aus, dass Sie entweder Azure Active Directory bereits konfiguriert haben, oder dass Sie die anfänglich von Azure Active Directory verwaltete Domäne verwenden. Weitere Informationen zum Verwalten von Azure Active Directory für verschiedene Szenarien finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Verwalten Ihres Azure AD-Verzeichnisses](../active-directory/fundamentals/active-directory-administer.md)[ sowie unter Verwalten von Azure AD mit Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) und [erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/hybrid/reference-connect-ports.md).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+Für alle Schritte in diesem Tutorial ist eine Anmeldung beim [Azure-Portal](https://portal.azure.com/) erforderlich.
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Erstellen einer Firewallregel auf Serverebene im Azure-Portal
+## <a name="create-firewall-rules"></a>Erstellen von Firewallregeln
 
-SQL-Datenbanken werden in Azure durch eine Firewall geschützt. Standardmäßig werden alle Verbindungen zum Server und den Datenbanken im Server abgelehnt, es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+SQL-Datenbanken werden in Azure durch Firewalls geschützt. Standardmäßig werden alle Verbindungen mit dem Server und den Datenbanken abgelehnt. Davon ausgenommen sind nur Verbindungen von anderen Azure-Diensten. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
 
-Die sicherste Konfiguration besteht darin, „Zugriff auf Azure-Dienste erlauben“ auf „AUS“ festzulegen. Wenn Sie eine Verbindung zwischen der Datenbank und einer Azure-VM oder einem Clouddienst herstellen müssen, sollten Sie eine [reservierte IP (klassische Bereitstellung)](../virtual-network/virtual-networks-reserved-public-ip.md) erstellen und nur den Zugriff auf die reservierte IP-Adresse durch die Firewall zulassen. Bei Verwendung des [Resource Manager](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)-Bereitstellungsmodells wird der Ressource eine dedizierte öffentliche IP-Adresse zugewiesen, für die Sie den Zugriff durch die Firewall zulassen sollten.
-
-Führen Sie die folgenden Schritte aus, um für den Server eine [SQL-Datenbank-Firewallregel auf Serverebene](sql-database-firewall-configure.md) zu erstellen, damit Verbindungen von einer bestimmten IP-Adresse zugelassen werden.
+Die sicherste Konfiguration erhalten Sie, indem Sie **Zugriff auf Azure-Dienste erlauben** auf **AUS** festlegen. Erstellen Sie anschließend für die Ressource, die eine Verbindung herstellen muss (beispielsweise ein virtueller Computer oder ein Clouddienst), eine [reservierte IP-Adresse (klassische Bereitstellung)](../virtual-network/virtual-networks-reserved-public-ip.md), und lassen Sie den Zugriff durch die Firewall nur für diese IP-Adresse zu. Bei Verwendung des [Resource Manager-Bereitstellungsmodells](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) wird für jede Ressource eine dedizierte öffentliche IP-Adresse benötigt.
 
 > [!NOTE]
-> Wenn Sie mithilfe eines früheren Tutorials oder Schnellstarts eine Beispieldatenbank in Azure erstellt haben und dieses Tutorial auf einem Computer mit der gleichen IP-Adresse wie beim Durcharbeiten dieser Tutorials ausführen, können Sie diesen Schritt überspringen, da Sie bereits eine Firewallregel auf Serverebene erstellt haben.
+> SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihr Administrator den Port 1433 öffnet.
 
-1. Klicken Sie im linken Menü auf **SQL-Datenbanken** und anschließend auf die Datenbank, für die Sie die Firewallregel auf der Seite **SQL-Datenbanken** konfigurieren möchten. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **mynewserver20170313.database.windows.net**) und Optionen für die weitere Konfiguration enthält.
+### <a name="set-up-server-level-firewall-rules"></a>Einrichten von Firewallregeln auf Serverebene
 
-      ![Serverfirewallregel](./media/sql-database-security-tutorial/server-firewall-rule.png)
+Firewallregeln auf Serverebene wirken sich auf alle Datenbanken auf dem gleichen logischen Server aus.
 
-2. Klicken Sie auf der Symbolleiste wie in der obigen Abbildung dargestellt auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet.
+So richten Sie eine Firewallregel auf Serverebene ein:
 
-3. Klicken Sie auf der Symbolleiste auf **Client-IP hinzufügen**, um die öffentliche IP-Adresse des mit dem Portal verbundenen Computers hinzuzufügen, oder geben Sie die Firewallregel manuell ein. Klicken Sie anschließend auf **Speichern**.
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-      ![Festlegen der Serverfirewallregel](./media/sql-database-security-tutorial/server-firewall-rule-set.png)
+    ![Serverfirewallregel](./media/sql-database-security-tutorial/server-name.png)
 
-4. Klicken Sie auf **OK** und dann auf das **X**, um die Seite mit den **Firewalleinstellungen** zu schließen.
+    > [!NOTE]
+    > Kopieren Sie Ihren vollqualifizierten Servernamen (Beispiel: *<Ihr Server>.database.windows.net*). Er wird im weiteren Verlauf dieses Tutorials benötigt.
+
+1. Wählen Sie auf der Seite **Übersicht** die Option **Serverfirewall festlegen** aus. Die Seite **Firewalleinstellungen** für den Datenbankserver wird geöffnet.
+
+    1. Wählen Sie in der Symbolleiste die Option **Client-IP-Adresse hinzufügen** aus, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Die Regel kann den Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen. Wählen Sie **Speichern** aus.
+
+    ![Festlegen der Serverfirewallregel](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+
+    1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen**.
 
 Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit der angegebenen IP-Adresse oder dem angegebenen IP-Adressbereich herstellen.
 
-> [!NOTE]
-> SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
->
+> [!IMPORTANT]
+> Standardmäßig ist der Zugriff durch die SQL-Datenbankfirewall für alle Azure-Dienste aktiviert (unter **Zugriff auf Azure-Dienste erlauben**). Wählen Sie **AUS** aus, um den Zugriff für alle Azure-Dienste zu deaktivieren.
 
-## <a name="create-a-database-level-firewall-rule-using-ssms"></a>Erstellen einer Firewallregel auf Datenbankebene mithilfe von SSMS
+### <a name="setup-database-level-firewall-rules"></a>Einrichten von Firewallregeln auf Datenbankebene
 
-Mit Firewallregeln auf Datenbankebene können Sie unterschiedliche Einstellungen für verschiedene Datenbanken auf demselben logischen Server erstellen, und Sie können portable Firewallregeln erstellen, d.h., sie folgen der Datenbank während eines Failovers, und werden nicht auf dem SQL Server gespeichert. Firewallregeln auf Datenbankebene können nur mithilfe von Transact-SQL-Anweisungen und erst dann konfiguriert werden, nachdem Sie die erste Firewallregel auf Serverebene konfiguriert haben. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+Firewallregeln auf Datenbankebene gelten nur für einzelne Datenbanken. Diese Regeln sind portabel und bleiben bei einem Serverfailover für die Datenbank erhalten. Firewallregeln auf Datenbankebene können nur mithilfe von T-SQL-Anweisungen (Transact-SQL) konfiguriert werden, und es muss bereits eine Firewallregel auf Serverebene konfiguriert worden sein.
 
-Führen Sie folgende Schritte aus, um eine datenbankspezifische Firewallregel zu erstellen.
+So richten Sie eine Firewallregel auf Datenbankebene ein:
 
-1. Stellen Sie eine Verbindung mit Ihrer Datenbank her, z.B. mithilfe von [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
+1. Stellen Sie eine Verbindung mit Ihrer Datenbank her (beispielsweise mithilfe von [SQL Server Management Studio](./sql-database-connect-query-ssms.md)).
 
-2. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf die Datenbank, der eine Firewallregel hinzugefügt werden soll. Klicken Sie dann auf **Neue Abfrage**. Ein leeres Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
+1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage** aus.
 
-3. Ändern Sie im Abfragefenster die IP-Adresse in Ihre öffentliche IP-Adresse, und führen Sie anschließend die folgende Abfrage aus:
+1. Fügen Sie im Abfragefenster die folgende Anweisung hinzu, und ändern Sie die IP-Adresse in Ihre öffentliche IP-Adresse:
 
     ```sql
     EXECUTE sp_set_database_firewall_rule N'Example DB Rule','0.0.0.4','0.0.0.4';
     ```
 
-4. Klicken Sie auf der Symbolleiste auf **Ausführen**, um die Firewallregel zu erstellen.
+1. Wählen Sie auf der Symbolleiste die Option **Ausführen** aus, um die Firewallregel zu erstellen.
 
-## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>Herstellen der Verbindung einer Anwendung mit Ihrer Datenbank mithilfe einer sicheren Verbindungszeichenfolge
+> [!NOTE]
+> Sie können in SSMS mithilfe des Befehls [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) auch eine Firewallregel auf Serverebene erstellen. In diesem Fall muss allerdings eine Verbindung mit der *Masterdatenbank* bestehen.
 
-Um eine sichere, verschlüsselte Verbindung zwischen einer Clientanwendung und einer SQL-Datenbank zu gewährleisten, muss die Verbindungszeichenfolge wie folgt konfiguriert werden:
+## <a name="create-an-azure-ad-admin"></a>Erstellen eines Azure AD-Administrators
 
-- Es muss eine verschlüsselte Verbindung angefordert werden, und
-- das Serverzertifikat wird als nicht vertrauenswürdig angesehen.
+Vergewissern Sie sich, dass Sie die richtige verwaltete Azure AD-Domäne (Azure Active Directory) verwenden. Die AD-Domäne kann rechts oben im Azure-Portal ausgewählt werden. Mit diesem Prozess wird sichergestellt, dass sowohl für Azure AD als auch für die SQL Server-Instanz, die Ihre Azure SQL-Datenbank oder Ihr Data Warehouse hostet, das gleiche Abonnement verwendet wird.
 
-Hierdurch wird eine Verbindung mithilfe von Transport Layer Security (TLS) hergestellt und das Risiko von Man-in-the-Middle-Angriffen verringert. Wie für ADO.NET in diesem Screenshot dargestellt, können Sie korrekt konfigurierte Verbindungszeichenfolgen für Ihre SQL-Datenbank für unterstützte Clienttreiber aus dem Azure-Portal abrufen. Informationen zu TLS und zur Konnektivität finden Sie unter [Überlegungen zu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
+   ![Administrator auswählen](./media/sql-database-security-tutorial/8choose-ad.png)
 
-1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank.
+So legen Sie den Azure AD-Administrator fest:
 
-2. Klicken Sie auf der Seite **Überblick** Ihrer Datenbank auf **Datenbank-Verbindungszeichenfolgen anzeigen**.
+1. Wählen Sie im Azure-Portal auf der Seite **SQL Server** die Option **Active Directory-Administrator** aus. Wählen Sie als Nächstes **Administrator festlegen** aus.
 
-3. Überprüfen Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+    ![Auswählen von Active Directory](./media/sql-database-security-tutorial/admin-settings.png)  
 
-    ![ADO.NET-Verbindungszeichenfolge](./media/sql-database-security-tutorial/adonet-connection-string.png)
+    > [!IMPORTANT]
+    > Für diese Aufgabe müssen Sie entweder Unternehmensadministrator oder globaler Administrator sein.
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Bereitstellen eines Azure Active Directory-Administrators für Ihren Azure SQL-Datenbank-Server
+1. Suchen Sie auf der Seite **Administrator hinzufügen** nach dem AD-Benutzer oder der Gruppe, wählen Sie den Benutzer oder die Gruppe aus, und wählen Sie anschließend **Auswählen** aus. Alle Mitglieder und Gruppen Ihrer Active Directory-Instanz werden aufgeführt. Abgeblendete Einträge werden nicht als Azure AD-Administratoren unterstützt. Weitere Informationen finden Sie unter [Funktionen und Einschränkungen von Azure AD](sql-database-aad-authentication.md#azure-ad-features-and-limitations).
 
-Stellen Sie einen Azure Active Directory-Administrator für Ihre Azure SQL Server-Instanz unter Verwendung des Azure-Portals her.
+    ![Auswählen des Administrators](./media/sql-database-security-tutorial/admin-select.png)
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) in der oberen rechten Ecke Ihre Verbindung aus, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. Durch diesen Schritt wird die mit dem Abonnement verbundene Active Directory-Instanz mit der Azure SQL Server-Instanz verknüpft. So wird sichergestellt, dass das gleiche Abonnement sowohl für Azure AD als auch für SQL Server verwendet wird. (Die Azure SQL Server-Instanz kann entweder Azure SQL-Datenbank oder Azure SQL Data Warehouse hosten.)
+    > [!IMPORTANT]
+    > Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.
 
-    ![Administrator auswählen](./media/sql-database-aad-authentication/8choose-ad.png)
+1. Wählen Sie oben auf der Seite **Active Directory-Administrator** die Option **Speichern** aus.
 
-2. Wählen Sie auf der Seite **SQL Server** **Active Directory-Administrator**, und wählen Sie auf der Seite **Active Directory-Administrator** **Administrator festlegen**.  ![Active Directory auswählen](./media/sql-database-aad-authentication/select-active-directory.png)  
+    Das Ändern des Administrators kann mehrere Minuten dauern. Der neue Administrator wird im Feld **Active Directory-Administrator** angezeigt.
 
-   > [!IMPORTANT]
-   > Sie müssen „Unternehmensadministrator“ oder „Globaler Administrator“ sein, um diese Aufgabe ausführen zu können.
+> [!NOTE]
+> Wenn Sie einen Azure AD-Administrator festlegen, darf der Name des neuen Administrators (Benutzer oder Gruppe) nicht als SQL Server-Authentifizierungsbenutzer in der *Masterdatenbank* vorhanden sein. Andernfalls ist die Einrichtung nicht erfolgreich, und die Änderungen werden mit dem Hinweis, dass ein solcher Administratorname bereits vorhanden ist, rückgängig gemacht. Da der SQL Server-Authentifizierungsbenutzer nicht Teil von Azure AD ist, kann für den Benutzer keine Verbindung unter Verwendung der Azure AD-Authentifizierung hergestellt werden.
 
-3. Suchen Sie auf der Seite **Administrator hinzufügen** nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und wählen Sie dann **Auswählen** aus. Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Auf dem Blatt „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Siehe Liste mit unterstützten Administratoren im Abschnitt **Funktionen und Einschränkungen von Azure AD** von [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](sql-database-aad-authentication.md).) Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.
-    ![Administrator auswählen](./media/sql-database-aad-authentication/select-admin.png)  
+Informationen zum Konfigurieren von Azure AD finden Sie hier:
 
-4. Wählen Sie oben auf der Seite **Active Directory-Administrator** **SPEICHERN** aus.
-    ![Administrator speichern](./media/sql-database-aad-authentication/save-admin.png)
+- [Was ist eine Hybrididentität?](../active-directory/hybrid/whatis-hybrid-identity.md)
+- [Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal](../active-directory/active-directory-domains-add-azure-portal.md)
+- [Windows Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)
+- [Verwalten Ihres Azure AD-Verzeichnisses](../active-directory/fundamentals/active-directory-administer.md)
+- [Übersicht über Azure PowerShell](/powershell/azure/overview?view=azureadps-2.0)
+- [Erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/hybrid/reference-connect-ports.md)
 
-Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld **Active Directory-Administrator** angezeigt.
+## <a name="manage-database-access"></a>Verwalten des Datenbankzugriffs
 
-   > [!NOTE]
-   > Beim Einrichten des Azure AD-Administrators darf der Name des neuen Administrators (Benutzer oder Gruppe) in der virtuellen Masterdatenbank noch nicht als SQL Server-Authentifizierungsbenutzer vorhanden sein. Wenn er vorhanden ist, schlägt die Einrichtung des Azure AD-Administrators fehl, wobei die Erstellung rückgängig gemacht und angegeben wird, dass ein solcher Administrator (Name) bereits vorhanden ist. Da dieser SQL Server-Authentifizierungsbenutzer nicht Teil von Azure AD ist, sind alle Versuche erfolglos, unter der Azure AD-Authentifizierung eine Verbindung mit dem Server herzustellen.
+Verwalten Sie den Zugriff auf die Datenbank, indem Sie der Datenbank Benutzer hinzufügen oder Benutzern den Zugriff über sichere Verbindungszeichenfolgen ermöglichen. Verbindungszeichenfolgen sind hilfreich für externe Anwendungen. Weitere Informationen finden Sie unter [Zugriffssteuerung für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-control-access.md) sowie unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL](sql-database-aad-authentication.md).
 
-## <a name="creating-database-users"></a>Erstellen von Datenbankbenutzern
+Wählen Sie zum Hinzufügen von Benutzern den Datenbankauthentifizierungstyp aus:
 
-Vor der Erstellung von Benutzern müssen Sie zuerst einen der beiden Authentifizierungstypen wählen, die von der Azure SQL-Datenbank unterstützt werden:
+- **SQL-Authentifizierung:** Verwenden Sie für Anmeldungen eine Kombination aus Benutzername und Kennwort, die nur im Kontext einer bestimmten Datenbank auf dem Server gültig ist.
 
-**SQL-Authentifizierung**, bei der Benutzername und Kennwort für Anmeldungen und Benutzer verwendet werden, die nur im Kontext einer bestimmten Datenbank auf einem logischen Server gültig sind.
+- **Azure AD-Authentifizierung:** Verwenden Sie von Azure Active Directory verwaltete Identitäten.
 
-**Azure Active Directory-Authentifizierung**, bei der von Azure Active Directory verwaltete Identitäten verwendet werden.
+### <a name="sql-authentication"></a>SQL-Authentifizierung
 
-### <a name="create-a-user-using-sql-authentication"></a>Erstellen eines Benutzers mit SQL-Authentifizierung
+So fügen Sie einen Benutzer mit SQL-Authentifizierung hinzu:
 
-Führen Sie die folgenden Schritte aus, um einen Benutzer mit SQL-Authentifizierung zu erstellen:
+1. Stellen Sie eine Verbindung mit Ihrer Datenbank her (beispielsweise mithilfe von [SQL Server Management Studio](./sql-database-connect-query-ssms.md)).
 
-1. Stellen Sie eine Verbindung mit Ihrer Datenbank her, z.B. mit [SQL Server Management Studio](./sql-database-connect-query-ssms.md), indem Sie Ihre Anmeldeinformationen für die Serveranmeldung verwenden.
+1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage** aus.
 
-2. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf die Datenbank, der ein neuer Benutzer hinzugefügt werden soll. Klicken Sie dann auf **Neue Abfrage**. Ein leeres Abfragefenster, das mit der ausgewählten Datenbank verbunden ist, wird geöffnet.
-
-3. Geben Sie im Abfragefenster die folgende Abfrage ein:
+1. Geben Sie im Abfragefenster den folgenden Befehl ein:
 
     ```sql
     CREATE USER ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
     ```
 
-4. Klicken Sie auf der Symbolleiste auf **Ausführen**, um den Benutzer zu erstellen.
+1. Wählen Sie auf der Symbolleiste die Option **Ausführen** aus, um den Benutzer zu erstellen.
 
-5. Standardmäßig kann der Benutzer eine Verbindung zur Datenbank herstellen, besitzt jedoch keine Berechtigungen zum Lesen oder Schreiben von Daten. Um dem neu erstellten Benutzer diese Berechtigungen zu gewähren, führen Sie die folgenden zwei Befehle in einem neuen Abfragefenster aus.
+1. Standardmäßig kann der Benutzer eine Verbindung zur Datenbank herstellen, besitzt jedoch keine Berechtigungen zum Lesen oder Schreiben von Daten. Führen Sie in einem neuen Abfragefenster die folgenden Befehle aus, um diese Berechtigungen zu gewähren:
 
     ```sql
     ALTER ROLE db_datareader ADD MEMBER ApplicationUser;
     ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
     ```
 
-Es wird empfohlen, diese Nichtadministratorkonten für die Verbindung mit Ihrer Datenbank auf Datenbankebene zu erstellen, es sei denn, Sie müssen Administratoraufgaben wie die Erstellung von neuen Benutzern ausführen. Informationen zur Authentifizierung mit Azure Active Directory finden Sie im [Azure Active Directory-Tutorial](./sql-database-aad-authentication-configure.md).
+> [!NOTE]
+> Erstellen Sie auf der Datenbankebene Konten ohne Administratorrechte, es sei denn, es müssen Administratoraufgaben wie etwa die Erstellung neuer Benutzer ausgeführt werden.
 
-### <a name="create-a-user-using-azure-active-directory-authentication"></a>Erstellen eines Benutzers mit Azure Active Directory-Authentifizierung
+### <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
-Für die Azure Active Directory-Authentifizierung ist es erforderlich, dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden. Ein eigenständiger Datenbankbenutzer basierend auf einer Azure AD-Identität ist ein Datenbankbenutzer, der über keine Anmeldung für die Masterdatenbank verfügt, und der einer Identität im Azure AD-Verzeichnis zugeordnet ist, das mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
+Für die Azure Active Directory-Authentifizierung müssen Datenbankbenutzer als Benutzer für eigenständige Datenbanken erstellt werden. Benutzer für eigenständige Datenbanken sind einer Identität im Azure AD-Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist, und verfügen über keine Anmeldung in der *Masterdatenbank*. Die Azure AD-Identität kann entweder für einen einzelnen Benutzer oder für eine Gruppe verwendet werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx). Im Tutorial [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](./sql-database-aad-authentication-configure.md) finden Sie außerdem Informationen zur Authentifizierung mithilfe von Azure AD.
 
 > [!NOTE]
-> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht im Azure-Portal erstellt werden. RBAC-Rollen werden nicht auf SQL Server, SQL-Datenbank oder SQL Data Warehouse übertragen. Azure RBAC-Rollen dienen zum Verwalten von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen. Beispielsweise gewährt die Rolle **SQL Server-Mitwirkender** keinen Zugriff zum Herstellen einer Verbindung mit der SQL-Datenbank oder SQL Data Warehouse. Die Zugriffsberechtigung muss direkt in der Datenbank mithilfe von Transact-SQL-Anweisungen erteilt werden.
-> [!WARNING]
-> Sonderzeichen wie Doppelpunkt `:` oder das Und-Zeichen `&`, die als Benutzernamen in den Anweisungen „T-SQL CREATE LOGIN“ und „CREATE USER“ enthalten sind, werden nicht unterstützt.
+> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht über das Azure-Portal erstellt werden. Azure RBAC-Rollen werden nicht an SQL-basierte Server, Datenbanken oder Data Warehouses weitergegeben. Sie dienen lediglich zur Verwaltung von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen.
+>
+> So gewährt etwa die Rolle *SQL Server-Mitwirkender* keinen Zugriff für die Verbindungsherstellung mit einer Datenbank oder einem Data Warehouse. Die Berechtigung muss mithilfe von T-SQL-Anweisungen direkt in der Datenbank erteilt werden.
 
-1. Verbinden Sie sich mit Ihrem Azure SQL Server über ein Azure Active Directory-Konto mit mindestens der Berechtigung **ALTER ANY USER**.
-2. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf die Datenbank, der ein neuer Benutzer hinzugefügt werden soll. Klicken Sie dann auf **Neue Abfrage**. Ein leeres Abfragefenster, das mit der ausgewählten Datenbank verbunden ist, wird geöffnet.
+> [!IMPORTANT]
+> In den T-SQL-Anweisungen `CREATE LOGIN` und `CREATE USER` werden in Benutzernamen keine Sonderzeichen wie Doppelpunkt (`:`) oder kaufmännisches Und-Zeichen (`&`) unterstützt.
 
-3. Geben Sie im Abfragefenster die folgende Abfrage ein und ändern Sie `<Azure_AD_principal_name>` auf den gewünschten Benutzerprinzipalnamen eines Azure AD-Benutzers oder den Anzeigenamen für eine Azure AD-Gruppe:
+So fügen Sie einen Benutzer mit Azure AD-Authentifizierung hinzu:
+
+1. Stellen Sie eine Verbindung mit Ihrer Azure SQL Server-Instanz her, und verwenden Sie dabei ein Azure AD-Konto, das mindestens über die Berechtigung *ALTER ANY USER* verfügt.
+
+1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage** aus.
+
+1. Geben Sie im Abfragefenster den folgenden Befehl ein, und ändern Sie `<Azure_AD_principal_name>` in den Prinzipalnamen des Azure AD-Benutzers oder in den Anzeigenamen der Azure AD-Gruppe:
 
    ```sql
    CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
    ```
 
-   > [!NOTE]
-   > Azure AD-Benutzer werden in den Datenbankmetadaten mit dem Typ E (EXTERNAL_USER) gekennzeichnet, Gruppen mit dem Typ X (EXTERNAL_GROUPS). Weitere Informationen finden Sie unter [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> [!NOTE]
+> In den Datenbankmetadaten sind Azure AD-Benutzer mit `E (EXTERNAL_USER)` und Gruppen mit `X (EXTERNAL_GROUPS)` gekennzeichnet. Weitere Informationen finden Sie unter [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
-## <a name="protect-your-data-with-encryption"></a>Schützen von Daten durch Verschlüsselung
+### <a name="secure-connection-strings"></a>Sichere Verbindungszeichenfolgen
 
-Die TDE-Funktion (Transparent Data Encryption) der Azure SQL-Datenbank verschlüsselt automatisch Ihre ruhenden Daten, ohne Änderungen an der Anwendung, die auf die verschlüsselte Datenbank zugreift, vorzunehmen. Für neu erstellte Datenbanken ist TDE standardmäßig aktiviert. Führen Sie die folgenden Schritte aus, um TDE für Ihre Datenbank zu aktivieren bzw. um sich zu vergewissern, dass TDE aktiviert ist:
+Um eine sichere, verschlüsselte Verbindung zwischen der Clientanwendung und der SQL-Datenbank zu gewährleisten, muss die konfigurierte Verbindungszeichenfolge folgende Kriterien erfüllen:
 
-1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank.
+- Sie muss eine verschlüsselte Verbindung anfordern.
+- Sie darf dem Serverzertifikat nicht vertrauen.
 
-2. Klicken Sie auf **Transparent Data Encryption**, um die Konfigurationsseite für TDE zu öffnen.
+Die Verbindung wird unter Verwendung von Transport Layer Security (TLS) hergestellt, und die Gefahr von Man-in-the-Middle-Angriffen wird verringert. Verbindungszeichenfolgen sind pro Datenbank verfügbar und für die Unterstützung von Clienttreibern wie ADO.NET, JDBC, ODBC und PHP vorkonfiguriert. Informationen zu TLS und zur Konnektivität finden Sie unter [Überlegungen zu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 
-    ![Transparent Data Encryption](./media/sql-database-security-tutorial/transparent-data-encryption-enabled.png)
+So kopieren Sie eine sichere Verbindungszeichenfolge:
 
-3. Legen Sie **Datenverschlüsselung** auf EIN fest, und klicken Sie auf **Speichern**.
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-Der Verschlüsselungsvorgang wird im Hintergrund gestartet. Sie können den Fortschritt überwachen, indem Sie beispielsweise unter Verwendung von [SQL Server Management Studio](./sql-database-connect-query-ssms.md) eine Verbindung mit SQL-Datenbank herstellen und die Spalte „encryption_state“ der Ansicht [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) abfragen. Der Zustand „3“ gibt an, dass die Datenbank verschlüsselt ist.
+1. Wählen Sie auf der Seite **Übersicht** die Option **Datenbank-Verbindungszeichenfolgen anzeigen** aus.
 
-## <a name="enable-sql-database-auditing-if-necessary"></a>Aktivieren der SQL-Datenbanküberwachung (falls erforderlich)
+1. Wählen Sie eine Treiberregisterkarte aus, und kopieren Sie die vollständige Verbindungszeichenfolge.
 
-Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die Hinweise auf potenzielle Sicherheitsverstöße darstellen können. Führen Sie folgende Schritte aus, um eine standardmäßige Überwachungsrichtlinie für Ihre SQL-Datenbank zu erstellen:
+    ![ADO.NET-Verbindungszeichenfolge](./media/sql-database-security-tutorial/connection.png)
 
-1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank.
+## <a name="enable-security-features"></a>Aktivieren der Sicherheitsfeatures
 
-2. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**. Beachten Sie Folgendes: Die Überwachung auf Serverebene ist deaktiviert, und ein Link **Servereinstellungen anzeigen** ist vorhanden, über den Sie die Überwachungseinstellungen des Servers für diesen Kontext anzeigen oder ändern können.
+Azure SQL-Datenbank bietet Sicherheitsfeatures, die über das Azure-Portal zur Verfügung stehen. Diese Features sind sowohl für die Datenbank als auch für den Server verfügbar (mit Ausnahme der Datenmaskierung, die nur für die Datenbank zur Verfügung steht). Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure SQL-Datenbank](sql-advanced-threat-protection.md), [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md), [Dynamische Datenmaskierung für SQL-Datenbank](sql-database-dynamic-data-masking-get-started.md) und [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](transparent-data-encryption-azure-sql.md).
 
-    ![Blatt „Überwachung“](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
+### <a name="advanced-threat-protection"></a>Erweiterter Schutz vor Bedrohungen
 
-3. Wenn Sie lieber einen Überwachungstyp (oder ggf. Überwachungsort) aktivieren möchten, der sich von der Angabe auf Serverebene unterscheidet, gehen Sie wie folgt vor: Legen Sie die Überwachung auf **EIN** fest, und wählen Sie den Überwachungstyp **Blob** aus. Wenn die Serverblobüberwachung aktiviert ist, existiert die konfigurierte Datenbanküberwachung parallel zur Serverblobüberwachung.
+Das Advanced Threat Protection-Feature erkennt potenzielle Bedrohungen in Echtzeit und stellt Sicherheitswarnungen zu anomalen Aktivitäten bereit. Benutzer können diese verdächtigen Ereignisse mithilfe des Überwachungsfeatures untersuchen und so ermitteln, ob es sich bei dem Ereignis um einen Zugriffsversuch, um eine Verletzung der Datensicherheit oder um einen Missbrauch von Daten in der Datenbank handelt. Benutzern stehen zudem eine Sicherheitsübersicht mit Sicherheitsrisikobewertung sowie das Tool zur Datenermittlung und -klassifizierung zur Verfügung.
 
-    ![Aktivieren der Überwachung](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
+> [!NOTE]
+> Ein Bespiel für eine Bedrohung ist die Einschleusung von SQL-Befehlen. Dabei schleusen Angreifer schädliche SQL-Befehle in Eingaben von Anwendungen ein. Dies kann dazu führen, dass die Anwendung unwissentlich die schädlichen SQL-Befehle ausführt und Angreifern Zugriff auf die Datenbank gewährt, die dann die darin enthaltenen Daten entwenden oder manipulieren können.
 
-4. Wählen Sie **Speicherdetails** , um das Blatt „Speicherung von Überwachungsprotokollen“ zu öffnen. Wählen Sie das Azure-Speicherkonto aus, in dem die Protokolle gespeichert werden sollen, sowie die Aufbewahrungsdauer, nach der die alten Protokolle gelöscht werden. Klicken Sie anschließend unten auf **OK**.
+So aktivieren Sie den Bedrohungsschutz:
 
-   > [!TIP]
-   > Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die Berichtvorlagen für die Überwachung optimal einzusetzen.
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-5. Klicken Sie auf **Speichern**.
+1. Wählen Sie auf der Seite **Übersicht** den Link **Servername** aus. Die Datenbankserverseite wird geöffnet.
+
+1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Advanced Threat Protection** aus.
+
+    1. Wählen Sie unter **Advanced Threat Protection** die Option **EIN** aus, um das Feature zu aktivieren. Klicken Sie dann auf **Speichern**.
+
+    ![Navigationsbereich](./media/sql-database-security-tutorial/threat-settings.png)
+
+    Sie können auch E-Mail-Adressen für den Empfang von Sicherheitswarnungen sowie Speicherdetails und Bedrohungserkennungstypen konfigurieren.
+
+1. Kehren Sie zur Seite **SQL-Datenbanken** Ihrer Datenbank zurück, und wählen Sie im Abschnitt **Sicherheit** die Option **Advanced Threat Protection** aus. Hier finden Sie verschiedene Sicherheitsindikatoren für die Datenbank.
+
+    ![Bedrohungsstatus](./media/sql-database-security-tutorial/threat-status.png)
+
+Wenn anomale Aktivitäten erkannt werden, erhalten Sie eine E-Mail mit Ereignisinformationen. Hierzu zählen die Art der Aktivität, die Datenbank, der Server, der Zeitpunkt des Ereignisses, mögliche Ursachen sowie empfohlene Schritte zur Untersuchung und Abwehr der potenziellen Bedrohung. Wählen Sie in einer solchen E-Mail den Link für das **Azure SQL-Überwachungsprotokoll** aus, um das Azure-Portal zu starten und relevante Überwachungsdatensätze für den Zeitpunkt des Ereignisses anzuzeigen.
+
+   ![Bedrohungserkennungs-E-Mail](./media/sql-database-security-tutorial/threat-email.png)
+
+### <a name="auditing"></a>Überwachung
+
+Das Überwachungsfeature verfolgt Datenbankereignisse nach und schreibt Ereignisse in ein Überwachungsprotokoll (entweder in Azure-Speicher, in Log Analytics oder in einem Event Hub). Die Überwachung hilft Ihnen dabei, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität nachzuvollziehen und Einblicke in Abweichungen und Anomalien zu erhalten, die Hinweise auf potenzielle Sicherheitsverstöße darstellen können.
+
+So aktivieren Sie die Überwachung:
+
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
+
+1. Wählen Sie im Abschnitt **Sicherheit** die Option **Überwachung** aus.
+
+1. Legen Sie unter **Überwachung** die folgenden Einstellungswerte fest:
+
+    1. Legen Sie **Überwachung** auf **EIN** fest.
+
+    1. Wählen Sie unter **Ziel für Überwachungsprotokoll** eine der folgenden Optionen aus:
+
+        - **Speicher:** Ein Azure-Speicherkonto, in dem Ereignisprotokolle gespeichert werden, die dann als *XEL-Dateien* heruntergeladen werden können.
+
+           > [!TIP]
+           > Verwenden Sie zur optimalen Nutzung von Überwachungsberichtvorlagen das gleiche Speicherkonto für alle überwachten Datenbanken.
+
+        - **Log Analytics:** Speichert automatisch Ereignisse, die dann abgefragt und näher analysiert werden können.
+
+            > [!NOTE]
+            > Für erweiterte Features wie Analysen, benutzerdefinierte Warnungsregeln und Excel- oder Power BI-Berichte ist ein **Log Analytics-Arbeitsbereich** erforderlich. Ohne Arbeitsbereich ist nur der Abfrage-Editor verfügbar.
+
+        - **Event Hub:** Ermöglicht das Weiterleiten von Ereignissen für die Verwendung in anderen Anwendungen.
+
+    1. Wählen Sie **Speichern** aus.
+
+    ![Überwachungseinstellungen](./media/sql-database-security-tutorial/audit-settings.png)
+
+1. Nun können Sie **Überwachungsprotokolle anzeigen** auswählen, um Datenbankereignisdaten anzuzeigen.
+
+    ![Überwachungsdatensätze](./media/sql-database-security-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie hierfür PowerShell oder die REST-API verwenden. Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).
->
+> Informationen zur weiteren Anpassung von Überwachungsereignissen mittels PowerShell oder REST-API finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).
 
-## <a name="enable-sql-database-threat-detection"></a>Aktivieren der Bedrohungserkennung der SQL-Datenbank
+### <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung
 
-Die Bedrohungserkennung bietet eine neue Sicherheitsebene und ermöglicht es den Kunden, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitshinweise zu anormalen Aktivitäten bereitgestellt. Benutzer können verdächtige Ereignisse mithilfe der SQL-Datenbanküberwachung untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch, die Verletzung der Datensicherheit oder den Missbrauch von Daten in der Datenbank zurückzuführen sind. Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für die Datenbank, ohne das Fachwissen eines Sicherheitsexperten besitzen oder komplexe Sicherheitsüberwachungssysteme verwalten zu müssen.
-So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankaktivitäten, die auf eine potenzielle Einschleusung von SQL-Befehlen hindeuten. Die Einschleusung von SQL-Befehlen ist ein verbreitetes Sicherheitsproblem für Webanwendungen im Internet und wird für Angriffe auf datengesteuerte Anwendungen verwendet. Die Angreifer nutzen Sicherheitslücken der Anwendung, um böswillige SQL-Anweisungen in Eingabefelder der Anwendung einzuschleusen und so an die in der Datenbank enthaltenen Daten zu gelangen oder diese zu verändern.
+Das Datenmaskierungsfeature blendet sensible Daten in Ihrer Datenbank automatisch aus.
 
-1. Navigieren Sie zum Konfigurationsblatt der SQL-Datenbank, die Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**.
+So aktivieren Sie die Datenmaskierung:
 
-    ![Navigationsbereich](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
-2. Aktivieren Sie die **Überwachung auf dem Blatt für die Konfiguration** der **Überwachung und Bedrohungserkennung**. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-3. Aktivieren **Sie** die Bedrohungserkennung.
+1. Wählen Sie im Abschnitt **Sicherheit** die Option **Dynamische Datenmaskierung** aus.
 
-4. Konfigurieren Sie die Liste der E-Mail-Empfänger, die bei Erkennung anormaler Datenbankaktivitäten einen Sicherheitshinweis erhalten sollen.
+1. Wählen Sie unter **Dynamische Datenmaskierung** die Option **Maske hinzufügen** aus, um eine Maskierungsregel hinzuzufügen. Die zur Auswahl stehenden Datenbankschemas, Tabellen und Spalten werden von Azure automatisch aufgefüllt.
 
-5. Klicken Sie auf dem Blatt **Überwachung und Bedrohungserkennung** auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Überwachung und Bedrohungserkennung zu speichern.
+    ![Maskierungseinstellungen](./media/sql-database-security-tutorial/mask-settings.png)
 
-    ![Navigationsbereich](./media/sql-database-security-tutorial/td-turn-on-threat-detection.png)
+1. Wählen Sie **Speichern** aus. Die ausgewählten Informationen werden nun maskiert, um den Datenschutz zu wahren.
 
-    Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachrichtigung.  Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (wie etwa Art der anomalen Aktivitäten, Datenbankname, Servername und Zeit des Ereignisses). Darüber hinaus enthält sie Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank. In den nächsten Schritten erfahren Sie, was Sie tun sollten, falls Sie eine solche E-Mail erhalten sollten:
+    ![Maskierungsbeispiel](./media/sql-database-security-tutorial/mask-query.png)
 
-    ![Bedrohungserkennungs-E-Mail](./media/sql-database-threat-detection-get-started/4_td_email.png)
+### <a name="transparent-data-encryption"></a>Transparent Data Encryption
 
-6. Klicken Sie in der E-Mail auf den Link für das **Azure SQL-Überwachungsprotokoll**, um das Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
+Das Verschlüsselungsfeature verschlüsselt automatisch Ihre ruhenden Daten und erfordert keine Änderungen an Anwendungen, die auf die verschlüsselte Datenbank zugreifen. Bei neuen Datenbanken ist die Verschlüsselung standardmäßig aktiviert. Daten können auch mit SSMS und dem Feature [Always Encrypted](sql-database-always-encrypted.md) verschlüsselt werden.
 
-    ![Überwachungsdatensätze](./media/sql-database-threat-detection-get-started/5_td_audit_records.png)
+So aktivieren oder überprüfen Sie die Verschlüsselung:
 
-7. Klicken Sie auf die Überwachungsdatensätze, um weitere Informationen zu den verdächtigen Datenbankaktivitäten (z.B. SQL-Anweisung, Fehlerursache und Client-IP) anzuzeigen.
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-    ![Datensatzdetails](./media/sql-database-security-tutorial/6_td_audit_record_details.png)
+1. Wählen Sie im Abschnitt **Sicherheit** die Option **Transparent Data Encryption** aus.
 
-8. Klicken Sie auf dem Blatt mit den Überwachungsdatensätzen auf **In Excel öffnen**, um eine vorkonfigurierte Excel-Vorlage zu öffnen, das Überwachungsprotokoll zu importieren und eine ausführlichere Analyse für die Zeit des verdächtigen Ereignisses durchzuführen.
+1. Legen Sie bei Bedarf die Option **Datenverschlüsselung** auf **EIN** fest. Wählen Sie **Speichern** aus.
 
-    > [!NOTE]
-    > Ab Excel 2010 werden Power Query und die Einstellung **Schnelles Kombinieren** benötigt.
+    ![Transparent Data Encryption](./media/sql-database-security-tutorial/encryption-settings.png)
 
-    ![Öffnen von Datensätzen in Excel](./media/sql-database-threat-detection-get-started/7_td_audit_records_open_excel.png)
-
-9. So konfigurieren Sie die Einstellung **Schnelles Kombinieren**: Klicken Sie auf der Registerkarte **POWER QUERY** des Menübands auf **Optionen**, um das gleichnamige Dialogfeld anzuzeigen. Navigieren Sie zum Datenschutzabschnitt, und wählen Sie die zweite Option zum Ignorieren der Sicherheitsstufen und zur potenziellen Verbesserung der Leistung:
-
-    ![Excel-Einstellung „Schnelles Kombinieren“](./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png)
-
-10. Wenn Sie SQL-Überwachungsprotokolle laden möchten, vergewissern Sie sich, dass die Parameter auf der Einstellungsregisterkarte ordnungsgemäß festgelegt sind. Klicken Sie dann im Menüband auf „Daten“ und anschließend auf die Schaltfläche „Alle aktualisieren“.
-
-    ![Excel-Parameter](./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png)
-
-11. Die Ergebnisse werden auf dem Blatt mit den **SQL-Überwachungsprotokollen** angezeigt. Dadurch können Sie die erkannten anomalen Aktivitäten eingehender untersuchen und die Auswirkungen des Sicherheitsereignisses in Ihrer Anwendung begrenzen.
+> [!NOTE]
+> Stellen Sie zum Anzeigen des Verschlüsselungsstatus über [SSMS](./sql-database-connect-query-ssms.md) eine Verbindung mit der Datenbank her, und fragen Sie die Spalte `encryption_state` der Sicht [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) ab. Der Zustand `3` gibt an, dass die Datenbank verschlüsselt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern.  Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie gelernt, wie Sie mit wenigen einfachen Schritten die Sicherheit Ihrer Datenbank verbessern. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
-> - Einrichten von Firewallregeln für den Server und/oder die Datenbank
-> - Herstellen einer Verbindung mit Ihrer Datenbank mithilfe einer sicheren Verbindungszeichenfolge
-> - Konfigurieren eines Azure Active Directory-Administrators für Azure SQL
-> - Verwalten des Benutzerzugriffs
-> - Schützen von Daten durch Verschlüsselung
-> - Aktivieren der SQL-Datenbanküberwachung
-> - Aktivieren der Bedrohungserkennung der SQL-Datenbank
+> - Erstellen von Firewallregeln auf Server- und Datenbankebene
+> - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
+> - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
+> - Aktivieren von Sicherheitsfeatures (beispielsweise Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung)
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie eine geografisch verteilte Datenbank schützen.
+Im nächsten Tutorial erfahren Sie, wie Sie eine geografische Verteilung implementieren.
 
 > [!div class="nextstepaction"]
 >[Implementieren einer geografisch verteilten Datenbank](sql-database-implement-geo-distributed-database.md)

@@ -1,6 +1,6 @@
 ---
 title: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte manuell konfigurieren.
+description: Hier erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte manuell konfigurieren.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c85d3ce6ab3e84d454ddbc2550f430b87705c192
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1b25484dc536fd75b261e595332c0d92ae6cb40a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622175"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118505"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten 
 
@@ -29,16 +29,13 @@ Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie siche
 
 
 > [!TIP]
-> Wenn die Verwendung von Azure AD Connect für Sie eine Option ist, helfen Ihnen die Informationen unter [Select your scenario](hybrid-azuread-join-plan.md#select-your-scenario) (Auswählen Ihres Szenarios) weiter. Durch die Verwendung von Azure AD Connect können Sie die Konfiguration einer Azure AD-Hybrideinbindung erheblich vereinfachen.
+> Wenn die Verwendung von Azure AD Connect für Sie eine Option ist, helfen Ihnen die Informationen unter [Select your scenario](hybrid-azuread-join-plan.md#select-your-scenario) (Auswählen Ihres Szenarios) weiter. Durch die Verwendung von Azure AD Connect können Sie die Konfiguration einer Azure AD-Hybrideinbindung vereinfachen.
 
-
-
-Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. In diesem Tutorial erfahren Sie, wie Sie die Azure AD-Hybrideinbindung für Ihre Geräte manuell konfigurieren.
+Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Voraussetzungen
-> * Konfigurationsschritte
-> * Konfigurieren des Dienstverbindungspunkts
+> * Manuelles Konfigurieren der Azure AD-Hybrideinbindung
+> * Konfigurieren eines Dienstverbindungspunkts
 > * Einrichten der Ausstellung von Ansprüchen
 > * Aktivieren von kompatiblen Windows-Geräten
 > * Überprüfen der eingebundenen Geräte
@@ -52,50 +49,43 @@ Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebun
 
 In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
     
--  [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
-    
+-  [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)    
 -  [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)
-
 -  [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
 
 
-Bevor Sie beginnen, in Hybrid-Azure AD eingebundene Geräte in Ihrem Unternehmen zu aktivieren, müssen Sie Folgendes sicherstellen:
+Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie in Ihrem Unternehmen mit der Aktivierung von in Azure AD eingebundenen Hybridgeräten beginnen:
 
-- Sie führen eine aktuelle Version von Azure AD Connect aus.
-
-- Azure AD hat die Computerobjekte der Geräte für die Hybrid-Azure AD-Einbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, müssen diese OEs auch für die Synchronisierung in Azure AD Connect konfiguriert werden.
+- Sie verwenden eine aktuelle Version von Azure AD Connect.
+- Azure AD Connect hat die Computerobjekte der Geräte für die Azure AD-Hybrideinbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, müssen diese OEs ebenfalls für die Synchronisierung in Azure AD Connect konfiguriert werden.
 
   
 
 Azure AD Connect:
 
-- Sorgt dafür, dass die Zuordnung zwischen dem Computerkonto in Ihrer lokalen AD-Instanz (Active Directory) und dem Geräteobjekt in Azure AD beibehalten wird. 
-- Ermöglicht die Verwendung von anderen gerätebezogenen Features, z.B. Windows Hello for Business.
+- Pflegt die Zuordnung zwischen dem Computerkonto in Ihrer lokalen AD-Instanz und dem Geräteobjekt in Azure AD. 
+- Ermöglicht die Verwendung weiterer gerätebezogener Features (etwa Windows Hello for Business).
 
-Achten Sie darauf, dass von Computern innerhalb Ihres Unternehmensnetzwerks zur Registrierung von Computern bei Azure AD auf die folgenden URLs zugegriffen werden kann:
+Stellen Sie sicher, dass Computer innerhalb Ihres Unternehmensnetzwerks zur Registrierung von Computern bei Azure AD auf die folgenden URLs zugreifen können:
 
 - https://enterpriseregistration.windows.net
-
-- https://login.microsoftonline.com (zulassen)
+- https://login.microsoftonline.com
 - https://device.login.microsoftonline.com
+- Der STS Ihrer Organisation (für Verbunddomänen; muss in die lokalen Intraneteinstellungen des Benutzers eingeschlossen werden)
 
-- STS Ihrer Organisation (Verbunddomänen)
-
-Wenn dies noch nicht erfolgt ist, sollte der STS Ihrer Organisation (für Verbunddomänen) in den lokalen Intraneteinstellungen des Benutzers eingefügt werden.
-
-Wenn Ihre Organisation das nahtlose SSO verwenden möchte, müssen die folgenden URLs über die Computer innerhalb Ihrer Organisation erreichbar sein und zudem der lokalen Intranetzone des Benutzers hinzugefügt werden:
+Falls Ihre Organisation die Verwendung von nahtlosem einmaligem Anmelden beabsichtigt, muss die folgende URL für Computer in Ihrer Organisation erreichbar sein. Sie muss ebenfalls der lokalen Intranetzone des Benutzers hinzugefügt werden.
 
 - https://autologon.microsoftazuread-sso.com
 
-- Darüber hinaus muss die folgende Einstellung in der Intranetzone des Benutzers aktiviert werden: „Statusleistenupdates über Skript zulassen“.
+Darüber hinaus muss in der Intranetzone des Benutzers die folgende Einstellung aktiviert werden: „Statusleistenupdates über Skript zulassen“.
 
-Wenn Ihre Organisation die verwaltete Einrichtung (ohne Verbund) über lokales AD und nicht AD FS zum Herstellens eines Verbunds mit Azure AD verwendet, basiert die hybride Azure AD-Einbindung unter Windows 10 auf den Computerobjekten in AD, die mit Azure AD synchronisiert werden sollen. Stellen Sie sicher, dass alle Organisationseinheiten (OU), die die Computerobjekte enthalten, die hybrid in Azure AD eingebunden werden müssen, in der Azure AD Connect-Synchronisierungskonfiguration für die Synchronisierung aktiviert sind.
+Wenn Ihre Organisation die verwaltete Einrichtung (ohne Verbund) über lokales Active Directory und nicht Active Directory Federation Services (AD FS) zum Herstellen eines Verbunds mit Azure AD verwendet, basiert die Azure AD-Hybrideinbindung unter Windows 10 auf den Computerobjekten in Active Directory, die mit Azure AD synchronisiert werden sollen. Stellen Sie sicher, dass alle Organisationseinheiten, die die Computerobjekte enthalten, die hybrid in Azure AD eingebunden werden müssen, in der Azure AD Connect-Synchronisierungskonfiguration für die Synchronisierung aktiviert sind.
 
 Wenn Ihre Organisation für Windows 10-Geräte mit Version 1703 oder einer älteren Version Zugriff auf das Internet über einen ausgehenden Proxy benötigt, müssen Sie die automatische Ermittlung von Webproxys (Web Proxy Auto-Discovery, WPAD) implementieren, damit Windows 10-Computer bei Azure AD registriert werden können. 
 
-Ab Version 1803 von Windows 10 versucht das Gerät, die Azure AD-Hybrideinbindung unter Verwendung des synchronisierten Computers/Geräts durchzuführen, auch wenn die Azure AD-Hybrideinbindung durch ein Gerät in einer Verbunddomäne mit AD FS nicht erfolgreich war (sofern Azure AD Connect für die Synchronisierung des Computer-/Geräteobjekts mit Azure AD konfiguriert ist).
+Ab Version 1803 von Windows 10 versucht das Gerät, die Azure AD-Hybrideinbindung unter Verwendung des synchronisierten Computers/Geräts durchzuführen, auch wenn eine Azure AD-Hybrideinbindung durch ein Gerät in einer Verbunddomäne mit AD FS nicht erfolgreich war (sofern Azure AD Connect für die Synchronisierung des Computer-/Geräteobjekts mit Azure AD konfiguriert ist).
 
-## <a name="configuration-steps"></a>Konfigurationsschritte
+## <a name="verify-configuration-steps"></a>Überprüfen der Konfigurationsschritte
 
 Sie können in Azure AD eingebundene Hybridgeräte für verschiedene Windows-Geräteplattformen konfigurieren. Dieses Thema enthält die erforderlichen Schritte für alle typischen Konfigurationsszenarien.  
 
@@ -112,9 +102,9 @@ Verwenden Sie die folgende Tabelle, um eine Übersicht über die Schritte zu erh
 
 
 
-## <a name="configure-service-connection-point"></a>Konfigurieren des Dienstverbindungspunkts
+## <a name="configure-a-service-connection-point"></a>Konfigurieren eines Dienstverbindungspunkts
 
-Das SCP-Objekt (Service Connection Point, Dienstverbindungspunkt) wird von Ihren Geräten während der Registrierung verwendet, um Informationen zum Azure AD-Mandanten zu ermitteln. In Ihrer lokalen Active Directory-Instanz (AD) muss das SCP-Objekt für die in Azure AD eingebundenen Hybridgeräte in der Partition für den Konfigurationsnamenskontext der Computergesamtstruktur vorhanden sein. Es gibt nur einen Konfigurationsnamenskontext pro Gesamtstruktur. In einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen muss der Dienstverbindungspunkt in allen Gesamtstrukturen vorhanden sein, die in die Domäne eingebundene Computer enthalten.
+Ihre Geräte verwenden im Rahmen der Registrierung ein SCP-Objekt (Service Connection Point, Dienstverbindungspunkt), um Informationen zum Azure AD-Mandanten zu ermitteln. In Ihrer lokalen Active Directory-Instanz muss sich das SCP-Objekt für die in Azure AD eingebundenen Hybridgeräte in der Partition für den Konfigurationsnamenskontext der Computergesamtstruktur befinden. Es gibt nur einen Konfigurationsnamenskontext pro Gesamtstruktur. In einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen muss der Dienstverbindungspunkt in allen Gesamtstrukturen vorhanden sein, die in die Domäne eingebundene Computer enthalten.
 
 Sie können das [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx)-Cmdlet verwenden, um den Konfigurationsnamenskontext aus Ihrer Gesamtstruktur abzurufen.  
 
@@ -135,16 +125,17 @@ Mit dem folgenden Windows PowerShell-Skript können Sie das Vorhandensein des Ob
 
     $scp.Keywords;
 
-Die Ausgabe von **$scp.Keywords** enthält die Azure AD-Mandanteninformationen, z.B.:
+Die Ausgabe von **$scp.Keywords** enthält die Azure AD-Mandanteninformationen. Hier sehen Sie ein Beispiel:
 
     azureADName:microsoft.com
     azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
 
 Wenn der Dienstverbindungsendpunkt nicht vorhanden ist, können Sie ihn erstellen, indem Sie das `Initialize-ADSyncDomainJoinedComputerSync`-Cmdlet auf Ihrem Azure AD Connect-Server ausführen. Für die Ausführung dieses Cmdlets sind die Anmeldeinformationen eines Unternehmensadministrators erforderlich.  
+
 Für das Cmdlet gilt Folgendes:
 
 - Erstellt den Dienstverbindungspunkt in der Active Directory-Gesamtstruktur, mit der Azure AD Connect verbunden ist. 
-- Erfordert, dass Sie den Parameter `AdConnectorAccount` angeben. Dies ist das Konto, das in Azure AD Connect als Active Directory-Connectorkonto konfiguriert ist. 
+- Erfordert, dass Sie den Parameter `AdConnectorAccount` angeben. Dieses Konto ist als das Active Directory-Connectorkonto in Azure AD Connect konfiguriert. 
 
 
 Mit dem folgenden Skript wird ein Beispiel für die Verwendung des Cmdlets veranschaulicht. In diesem Skript ist für `$aadAdminCred = Get-Credential` die Eingabe eines Benutzernamens erforderlich. Sie müssen den Benutzernamen im UPN-Format (Benutzerprinzipalname) eingeben: `user@example.com`. 
@@ -158,17 +149,15 @@ Mit dem folgenden Skript wird ein Beispiel für die Verwendung des Cmdlets veran
 
 Für das `Initialize-ADSyncDomainJoinedComputerSync`-Cmdlet gilt Folgendes:
 
-- Es verwendet das Active Directory-PowerShell-Modul und die AD DS-Tools, die von der Ausführung von Active Directory-Webdiensten auf einem Domänencontroller abhängig sind. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
-- Es wird nur von der **MSOnline PowerShell-Modulversion 1.1.166.0** unterstützt. Dieses Modul können Sie [hier](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/) herunterladen.   
-- Wenn die AD DS-Tools nicht installiert sind, tritt bei `Initialize-ADSyncDomainJoinedComputerSync` ein Fehler auf.  Die AD DS-Tools können über Server-Manager unter „Features“ > „Remoteserver-Verwaltungstools“ > „Rollenverwaltungstools“ installiert werden.
+- Es verwendet das Active Directory-PowerShell-Modul und die Tools von Azure Active Directory Domain Services (Azure AD DS). Diese Tools basieren auf Active Directory-Webdiensten, die auf einem Domänencontroller ausgeführt werden. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
+- Es wird nur von der MSOnline PowerShell-Modulversion 1.1.166.0 unterstützt. Dieses Modul können Sie [hier](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/) herunterladen.   
+- Wenn die Azure AD DS-Tools nicht installiert sind, ist `Initialize-ADSyncDomainJoinedComputerSync` nicht erfolgreich. Die Azure AD DS-Tools können über den Server-Manager unter **Features** > **Remoteserver-Verwaltungstools** > **Rollenverwaltungstools** installiert werden.
 
-Verwenden Sie für Domänencontroller mit Windows Server 2008 oder früher das unten angegebene Skript zum Erstellen des Dienstverbindungsendpunkts.
-
-Bei einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen sollten Sie das folgende Skript verwenden, um den Dienstverbindungsendpunkt in allen Gesamtstrukturen zu erstellen, in denen Computer vorhanden sind:
+Verwenden Sie für Domänencontroller mit Windows Server 2008 oder älteren Versionen das folgende Skript, um den Dienstverbindungspunkt zu erstellen. Verwenden Sie bei einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen das folgende Skript, um den Dienstverbindungsendpunkt in allen Gesamtstrukturen zu erstellen, in denen Computer vorhanden sind.
  
     $verifiedDomain = "contoso.com"    # Replace this with any of your verified domain names in Azure AD
     $tenantID = "72f988bf-86f1-41af-91ab-2d7cd011db47"    # Replace this with you tenant ID
-    $configNC = "CN=Configuration,DC=corp,DC=contoso,DC=com"    # Replace this with your AD configuration naming context
+    $configNC = "CN=Configuration,DC=corp,DC=contoso,DC=com"    # Replace this with your Active Directory configuration naming context
 
     $de = New-Object System.DirectoryServices.DirectoryEntry
     $de.Path = "LDAP://CN=Services," + $configNC
@@ -181,27 +170,26 @@ Bei einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen sollten S
 
     $deSCP.CommitChanges()
 
-Im Skript oben
+Im obigen Skript ist `$verifiedDomain = "contoso.com"` ein Platzhalter. Ersetzen Sie ihn durch einen Ihrer überprüften Domänennamen in Azure AD. Sie müssen die Domäne besitzen, um sie verwenden zu können.
 
-- ist `$verifiedDomain = "contoso.com"` ein Platzhalter, den Sie durch einen Ihrer überprüften Domänennamen in Azure AD ersetzen müssen. Sie müssen die Domäne besitzen, bevor Sie sie verwenden können.
+Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md). 
 
-Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md).  
 Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das Cmdlet [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) verwenden. 
 
-![Get-AzureADDomain](./media/hybrid-azuread-join-manual-steps/01.png)
+![Liste mit Unternehmensdomänen](./media/hybrid-azuread-join-manual-steps/01.png)
 
-## <a name="setup-issuance-of-claims"></a>Einrichten der Ausstellung von Ansprüchen
+## <a name="set-up-issuance-of-claims"></a>Einrichten der Ausstellung von Ansprüchen
 
-Bei einer Azure AD-Verbundkonfiguration wird für Geräte AD FS (Active Directory-Verbunddienste) oder ein lokaler Drittanbieter-Verbunddienst genutzt, um die Authentifizierung bei Azure AD durchzuführen. Die Geräte führen die Authentifizierung durch, um ein Zugriffstoken für die Registrierung beim Geräteregistrierungsdienst von Azure Active Directory (Azure DRS) zu erhalten.
+In einer Azure AD-Verbundkonfiguration benötigen die Geräte für die Authentifizierung gegenüber Azure AD entweder AD FS oder einen lokalen Verbunddienst eines Microsoft-Partners. Die Geräte führen die Authentifizierung durch, um ein Zugriffstoken für die Registrierung beim Geräteregistrierungsdienst von Azure Active Directory (Azure DRS) zu erhalten.
 
-Für aktuelle Windows-Geräte wird die Authentifizierung per integrierter Windows-Authentifizierung gegenüber einem aktiven WS-Trust-Endpunkt (entweder Version 1.3 oder 2005) durchgeführt, der vom lokalen Verbunddienst gehostet wird.
+Bei aktuellen Windows-Geräten erfolgt die Authentifizierung mittels integrierter Windows-Authentifizierung gegenüber einem aktiven WS-Trust-Endpunkt (entweder Version 1.3 oder 2005), der vom lokalen Verbunddienst gehostet wird.
 
 > [!NOTE]
-> Bei Verwendung von AD FS muss entweder **adfs/services/trust/13/windowstransport** oder **adfs/services/trust/2005/windowstransport** aktiviert sein. Wenn Sie einen Webauthentifizierungsproxy verwenden, stellen Sie außerdem sicher, dass dieser Endpunkt durch den Proxy veröffentlicht wird. Sie können in der AD FS-Verwaltungskonsole unter **Dienst > Endpunkte** sehen, welche Endpunkte aktiviert sind.
+> Bei Verwendung von AD FS muss entweder **adfs/services/trust/13/windowstransport** oder **adfs/services/trust/2005/windowstransport** aktiviert sein. Bei Verwendung des Webauthentifizierungsproxys muss dieser Endpunkt zudem über den Proxy veröffentlicht werden. Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 >
->Wenn Sie AD FS nicht als lokalen Verbunddienst nutzen, können Sie der Anleitung Ihres jeweiligen Anbieters entnehmen, ob WS-Trust 1.3- oder 2005-Endpunkte unterstützt und per MEX-Datei (Metadata Exchange) veröffentlicht werden.
+>Falls Sie nicht AD FS als lokalen Verbunddienst nutzen, informieren Sie sich in der Anleitung Ihres jeweiligen Anbieters, ob WS-Trust 1.3- oder 2005-Endpunkte unterstützt und per MEX-Datei (Metadata Exchange) veröffentlicht werden.
 
-Die folgenden Ansprüche müssen im Token vorhanden sein, das von Azure DRS empfangen wird, damit die Geräteregistrierung abgeschlossen werden kann. Von Azure DRS wird ein Geräteobjekt in Azure AD mit einigen dieser Informationen erstellt, die dann von Azure AD Connect verwendet werden, um das neu erstellte Geräteobjekt dem lokalen Computerkonto zuzuordnen.
+Damit die Geräteregistrierung abgeschlossen werden kann, müssen in dem Token, das von Azure DRS empfangen wird, folgende Ansprüche enthalten sein. Azure DRS erstellt in Azure AD ein Geräteobjekt mit einigen dieser Informationen. Diese werden dann von Azure AD Connect verwendet, um das neu erstellte Geräteobjekt dem lokalen Computerkonto zuzuordnen.
 
 * `http://schemas.microsoft.com/ws/2012/01/accounttype`
 * `http://schemas.microsoft.com/identity/claims/onpremobjectguid`
@@ -211,14 +199,14 @@ Wenn Sie über mehr als einen verifizierten Domänennamen verfügen, müssen Sie
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Falls Sie bereits einen ImmutableID-Anspruch ausstellen (z.B. alternative Anmelde-ID), müssen Sie für Computer einen entsprechenden Anspruch angeben:
+Falls Sie bereits einen ImmutableID-Anspruch ausstellen (etwa eine alternative Anmelde-ID), müssen Sie einen entsprechenden Anspruch für Computer bereitstellen:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
 Die folgenden Abschnitte enthalten Informationen zu diesen Punkten:
  
-- Werte, über die jeder Anspruch verfügen sollte
-- Aussehen einer Definition in AD FS
+- Werte, über die jeder Anspruch verfügen muss
+- Definition in AD FS
 
 Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind oder ob Sie sie erstellen müssen.
 
@@ -227,7 +215,7 @@ Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind od
 
 ### <a name="issue-account-type-claim"></a>Ausstellen des Kontotypanspruchs
 
-**`http://schemas.microsoft.com/ws/2012/01/accounttype`**: Dieser Anspruch muss den Wert **DJ** enthalten, mit dem das Gerät als in die Domäne eingebundener Computer identifiziert wird. In AD FS können Sie eine Ausstellungstransformationsregel hinzufügen, die wie folgt aussieht:
+Der Anspruch `http://schemas.microsoft.com/ws/2012/01/accounttype` muss den Wert **DJ** enthalten, mit dem das Gerät als in die Domäne eingebundener Computer identifiziert wird. In AD FS können Sie eine Ausstellungstransformationsregel hinzufügen, die wie folgt aussieht:
 
     @RuleName = "Issue account type for domain-joined computers"
     c:[
@@ -242,7 +230,7 @@ Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind od
 
 ### <a name="issue-objectguid-of-the-computer-account-on-premises"></a>Ausstellen der objectGUID des lokalen Computerkontos
 
-**`http://schemas.microsoft.com/identity/claims/onpremobjectguid`**: Dieser Anspruch muss den **objectGUID**-Wert des lokalen Computerkontos enthalten. In AD FS können Sie eine Ausstellungstransformationsregel hinzufügen, die wie folgt aussieht:
+Der Anspruch `http://schemas.microsoft.com/identity/claims/onpremobjectguid` muss den **objectGUID**-Wert des lokalen Computerkontos enthalten. In AD FS können Sie eine Ausstellungstransformationsregel hinzufügen, die wie folgt aussieht:
 
     @RuleName = "Issue object GUID for domain-joined computers"
     c1:[
@@ -264,7 +252,7 @@ Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind od
  
 ### <a name="issue-objectsid-of-the-computer-account-on-premises"></a>Ausstellen der objectSID des lokalen Computerkontos
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`**: Dieser Anspruch muss den **objectSid**-Wert des lokalen Computerkontos enthalten. In AD FS können Sie eine Ausstellungstransformationsregel hinzufügen, die wie folgt aussieht:
+Der Anspruch `http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid` muss den **objectSid**-Wert des lokalen Computerkontos enthalten. In AD FS können Sie eine Ausstellungstransformationsregel hinzufügen, die wie folgt aussieht:
 
     @RuleName = "Issue objectSID for domain-joined computers"
     c1:[
@@ -279,9 +267,9 @@ Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind od
     ]
     => issue(claim = c2);
 
-### <a name="issue-issuerid-for-computer-when-multiple-verified-domain-names-in-azure-ad"></a>Ausstellen der issuerID für Computer, wenn in Azure AD mehrere verifizierte Domänennamen enthalten sind
+### <a name="issue-issuerid-for-the-computer-when-multiple-verified-domain-names-are-in-azure-ad"></a>Ausstellen der Aussteller-ID (issuerID) für den Computer, wenn in Azure AD mehrere überprüfte Domänennamen enthalten sind
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`**: Dieser Anspruch muss den URI (Uniform Resource Identifier) von einem der verifizierten Domänennamen enthalten, für die eine Verbindung mit dem lokalen Verbunddienst (AD FS oder Drittanbieter) hergestellt wird, von dem das Token ausgestellt wird. In AD FS können Sie Ausstellungstransformationsregeln hinzufügen, die wie die unten angegebenen Beispiele aussehen (in dieser spezifischen Reihenfolge nach den obigen Regeln). Beachten Sie, dass eine Regel erforderlich ist, um die Regel explizit für Benutzer auszustellen. In den unten angegebenen Regeln wird eine erste Regel hinzugefügt, mit der die Benutzer-/Computerauthentifizierung identifiziert wird.
+Der Anspruch `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` muss den URI (Uniform Resource Identifier) eines der überprüften Domänennamen enthalten, für die eine Verbindung mit dem lokalen Verbunddienst (AD FS oder Partner) hergestellt wird, der das Token ausstellt. In AD FS können Sie Ausstellungstransformationsregeln hinzufügen, die wie die unten angegebenen Beispiele aussehen (in dieser spezifischen Reihenfolge und im Anschluss an die vorhergehenden Regeln). Beachten Sie, dass eine Regel erforderlich ist, die dafür sorgt, dass die Regel explizit für Benutzer ausgestellt wird. In den folgenden Regeln wird eine erste Regel hinzugefügt, die den Benutzer identifiziert (im Gegensatz zur Computerauthentifizierung).
 
     @RuleName = "Issue account type with the value User when its not a computer"
     NOT EXISTS(
@@ -325,9 +313,7 @@ Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind od
     );
 
 
-Im Anspruch oben
-
-- ist `<verified-domain-name>` ein Platzhalter, den Sie durch einen Ihrer überprüften Domänennamen in Azure AD ersetzen müssen. Zum Beispiel: Wert = „http://contoso.com/adfs/services/trust/“
+Im obigen Anspruch ist `<verified-domain-name>` ein Platzhalter. Ersetzen Sie ihn durch einen Ihrer überprüften Domänennamen in Azure AD. Verwenden Sie z. B. `Value = "http://contoso.com/adfs/services/trust/"`.
 
 
 
@@ -335,11 +321,11 @@ Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufüg
 
 Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0)-Cmdlet verwenden. 
 
-![Get-MsolDomain](./media/hybrid-azuread-join-manual-steps/01.png)
+![Liste mit Unternehmensdomänen](./media/hybrid-azuread-join-manual-steps/01.png)
 
-### <a name="issue-immutableid-for-computer-when-one-for-users-exist-eg-alternate-login-id-is-set"></a>Ausstellen der ImmutableID für Computer, wenn ein Wert für Benutzer vorhanden ist (z.B. Angabe der alternativen Anmelde-ID)
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-an-alternate-login-id-is-set"></a>Ausstellen der unveränderlichen ID (ImmutableID) für den Computer, wenn eine für Benutzer vorhanden ist (beispielsweise, wenn eine alternative Anmelde-ID festgelegt ist)
 
-**`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`**: Dieser Anspruch muss einen gültigen Wert für Computer enthalten. In AD FS können Sie wie folgt eine Ausstellungstransformationsregel erstellen:
+Der Anspruch `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` muss einen gültigen Wert für Computer enthalten. In AD FS können Sie wie folgt eine Ausstellungstransformationsregel erstellen:
 
     @RuleName = "Issue ImmutableID for computers"
     c1:[
@@ -361,7 +347,7 @@ Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie
 
 ### <a name="helper-script-to-create-the-ad-fs-issuance-transform-rules"></a>Hilfsskript zum Erstellen der AD FS-Ausstellungstransformationsregeln
 
-Das folgende Skript dient Ihnen als Hilfe beim Erstellen der oben beschriebenen Ausstellungstransformationsregeln.
+Das folgende Skript unterstützt Sie beim Erstellen der oben beschriebenen Ausstellungstransformationsregeln.
 
     $multipleVerifiedDomainNames = $false
     $immutableIDAlreadyIssuedforUsers = $false
@@ -482,15 +468,14 @@ Das folgende Skript dient Ihnen als Hilfe beim Erstellen der oben beschriebenen 
 
     Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
 
-### <a name="remarks"></a>Anmerkungen 
+#### <a name="remarks"></a>Anmerkungen 
 
-- Mit diesem Skript werden die Regeln an die bereits vorhandenen Regeln angefügt. Führen Sie das Skript nicht zweimal aus, weil der Regelsatz dann doppelt hinzugefügt wird. Stellen Sie sicher, dass keine entsprechenden Regeln für diese Ansprüche vorhanden sind (unter den jeweiligen Bedingungen), bevor Sie das Skript erneut ausführen.
+- Mit diesem Skript werden die Regeln an die bereits vorhandenen Regeln angefügt. Führen Sie das Skript nicht zweimal aus. Andernfalls wird der Regelsatz doppelt hinzugefügt. Stellen Sie sicher, dass keine entsprechenden Regeln für diese Ansprüche vorhanden sind (unter den jeweiligen Bedingungen), bevor Sie das Skript erneut ausführen.
 
-- Wenn Sie über mehrere verifizierte Domänennamen verfügen (wie im Azure AD-Portal oder per Get-MsolDomains-Cmdlet angegeben), legen Sie den Wert von **$multipleVerifiedDomainNames** im Skript auf **$true** fest. Stellen Sie außerdem sicher, dass Sie alle vorhandenen issuerid-Ansprüche entfernen, die unter Umständen von Azure AD Connect oder auf anderem Wege erstellt wurden. Hier ist ein Beispiel für diese Regel angegeben:
+- Wenn Sie über mehrere verifizierte Domänennamen verfügen (wie im Azure AD-Portal oder über das Cmdlet **Get-MsolDomain** angegeben), legen Sie den Wert von **$multipleVerifiedDomainNames** im Skript auf **$true** fest. Entfernen Sie außerdem alle vorhandenen **issuerid**-Ansprüche, die unter Umständen von Azure AD Connect oder auf anderem Wege erstellt wurden. Hier sehen Sie ein Beispiel für diese Regel:
 
-
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
-        => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
+      c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
+      => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
 
 - Wenn Sie bereits einen **ImmutableID**-Anspruch für Benutzerkonten ausgestellt haben, legen Sie den Wert von **$immutableIDAlreadyIssuedforUsers** im Skript auf **$true** fest.
 
@@ -498,67 +483,60 @@ Das folgende Skript dient Ihnen als Hilfe beim Erstellen der oben beschriebenen 
 
 Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatible Windows-Geräte handelt, gehen Sie wie folgt vor:
 
-- Legen Sie eine Richtlinie in Azure AD fest, um Benutzern das Registrieren von Geräten zu ermöglichen.
- 
-- Konfigurieren Sie Ihren lokalen Verbunddienst für das Ausstellen von Ansprüchen, um die **Integrierte Windows-Authentifizierung (IWA)** für die Geräteregistrierung zu unterstützen.
- 
+- Legen Sie eine Richtlinie in Azure AD fest, um Benutzern das Registrieren von Geräten zu ermöglichen. 
+- Konfigurieren Sie Ihren lokalen Verbunddienst für das Ausstellen von Ansprüchen, um die integrierte Windows-Authentifizierung (IWA) für die Geräteregistrierung zu unterstützen. 
 - Fügen Sie den Endpunkt für die Azure AD-Geräteauthentifizierung den lokalen Intranetzonen hinzu, um beim Authentifizieren des Geräts Zertifikataufforderungen zu vermeiden.
+- Steuern Sie kompatible Windows-Geräte. 
 
-- Steuern kompatibler Windows-Geräte 
 
+### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Festlegen einer Richtlinie in Azure AD, um Benutzern das Registrieren von Geräten zu ermöglichen
 
-### <a name="set-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Festlegen einer Richtlinie in Azure AD, um Benutzern das Registrieren von Geräten zu ermöglichen
-
-Zum Registrieren von kompatiblen Windows-Geräten müssen Sie sicherstellen, dass die Einstellung festgelegt ist, mit der Benutzer Geräte in Azure AD registrieren können. Im Azure-Portal finden Sie diese Einstellung unter:
-
-`Azure Active Directory > Users and groups > Device settings`
+Wenn Sie kompatible Windows-Geräte registrieren möchten, vergewissern Sie sich, dass die Einstellung aktiviert ist, die es Benutzern ermöglicht, Geräte in Azure AD zu registrieren. Im Azure-Portal befindet sich diese Einstellung unter **Azure Active Directory** > **Benutzer und Gruppen** > **Geräteeinstellungen**.
     
-Die folgende Richtlinie muss auf **Alle** festgelegt sein: **Benutzer dürfen ihre Geräte für Azure AD registrieren**
+Die folgende Richtlinie muss auf **Alle** festgelegt sein: **Benutzer dürfen ihre Geräte für Azure AD registrieren**.
 
-![Registrieren von Geräten](./media/hybrid-azuread-join-manual-steps/23.png)
+![Die Schaltfläche „Alle“, die Benutzern die Geräteregistrierung ermöglicht.](./media/hybrid-azuread-join-manual-steps/23.png)
 
 
-### <a name="configure-on-premises-federation-service"></a>Konfigurieren eines lokalen Verbunddiensts 
+### <a name="configure-the-on-premises-federation-service"></a>Konfigurieren des lokalen Verbunddiensts 
 
-Ihr lokaler Verbunddienst muss das Ausstellen der Ansprüche **authenticationmethod** und **wiaormultiauthn** unterstützen, wenn eine Authentifizierungsanforderung an die vertrauende Seite von Azure AD empfangen wird, die wie unten gezeigt den Parameter „resource_params“ mit einem codierten Wert enthält:
+Ihr lokaler Verbunddienst muss das Ausstellen der Ansprüche **authenticationmethod** und **wiaormultiauthn** unterstützen, wenn er eine an die vertrauende Seite von Azure AD gerichtete Authentifizierungsanforderung empfängt, die den Parameter „resource_params“ mit dem folgenden codierten Wert enthält:
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 
     which decoded is {"Properties":[{"Key":"acr","Value":"wiaormultiauthn"}]}
 
-Wenn eine Anforderung dieser Art eingeht, muss der lokale Verbunddienst den Benutzer per integrierter Windows-Authentifizierung authentifizieren und die folgenden beiden Ansprüche ausstellen, sofern der Vorgang erfolgreich ist:
+Wenn eine Anforderung dieser Art eingeht, muss der lokale Verbunddienst den Benutzer per integrierter Windows-Authentifizierung authentifizieren. Nach erfolgreicher Authentifizierung muss der Verbunddienst die beiden folgenden Ansprüche ausstellen:
 
     http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows
     http://schemas.microsoft.com/claims/wiaormultiauthn
 
-In AD FS müssen Sie eine Ausstellungstransformationsregel hinzufügen, die die Authentifizierungsmethode weitergibt.  
+In AD FS müssen Sie eine Ausstellungstransformationsregel hinzufügen, die die Authentifizierungsmethode durchläuft. Diese Regel wird wie folgt hinzugefügt:
 
-**Gehen Sie wie folgt vor, um diese Regel hinzuzufügen:**
-
-1. Navigieren Sie in der AD FS-Verwaltungskonsole zu `AD FS > Trust Relationships > Relying Party Trusts`.
+1. Navigieren Sie in der AD FS-Verwaltungskonsole zu **AD FS** > **Vertrauensstellungen** > **Vertrauensstellungen der vertrauenden Seite**.
 2. Klicken Sie mit der rechten Maustaste auf das Vertrauensstellungsobjekt der vertrauenden Seite, „Microsoft Office 365 Identity Platform“, und wählen Sie dann **Anspruchsregeln bearbeiten** aus.
 3. Wählen Sie auf der Registerkarte **Ausstellungstransformationsregeln** die Option **Regel hinzufügen** aus.
 4. Wählen Sie in der Vorlagenliste **Anspruchsregel** die Option **Ansprüche mit benutzerdefinierter Regel senden** aus.
-5. Wählen Sie **Weiter**.
-6. Geben Sie in das Feld **Anspruchsregelname** den Text **Anspruchsregel für Authentifizierungsmethode** ein.
+5. Klicken Sie auf **Weiter**.
+6. Geben Sie **Anspruchsregel für Authentifizierungsmethode** in das Textfeld **Anspruchsregelname** ein.
 7. Geben Sie im Feld **Anspruchsregel** die folgende Regel ein:
 
     `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-8. Geben Sie auf Ihrem Verbundserver den hier dargestellten PowerShell-Befehl ein, nachdem Sie **\<RPObjectName\>** durch den Objektnamen der vertrauenden Seite für Ihr Azure AD-Vertrauensstellungsobjekt der vertrauenden Seite ersetzt haben. Dieses Objekt trägt normalerweise den Namen **Microsoft Office 365 Identity Platform**.
+8. Geben Sie auf Ihrem Verbundserver den folgenden PowerShell-Befehl ein. Ersetzen Sie **\<RPObjectName\>** durch den Objektnamen der vertrauenden Seite für Ihr Azure AD-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen **Microsoft Office 365 Identity Platform**.
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
-### <a name="add-the-azure-ad-device-authentication-end-point-to-the-local-intranet-zones"></a>Hinzufügen des Endpunkts für die Azure AD-Geräteauthentifizierung zu den lokalen Intranetzonen
+### <a name="add-the-azure-ad-device-authentication-endpoint-to-the-local-intranet-zones"></a>Hinzufügen des Endpunkts für die Azure AD-Geräteauthentifizierung zu den lokalen Intranetzonen
 
-Um die Anzeige von Zertifikataufforderungen zu vermeiden, wenn Benutzer beim Registrieren von Geräten die Authentifizierung für Azure AD durchführen, können Sie eine Richtlinie auf Ihre in die Domäne eingebundenen Geräte übertragen, um die folgende URL in Internet Explorer den lokalen Intranetzonen hinzuzufügen:
+Um die Anzeige von Zertifikataufforderungen zu vermeiden, wenn Benutzer beim Registrieren von Geräten die Authentifizierung für Azure AD durchführen, können Sie per Push eine Richtlinie an Ihre in die Domäne eingebundenen Geräte übertragen, um die folgende URL den lokalen Intranetzonen in Internet Explorer hinzuzufügen:
 
 `https://device.login.microsoftonline.com`
 
 
 ### <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte 
 
-Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Installer-Paket (.msi) aus dem Download Center herunterladen und installieren. Klicken Sie [hier](hybrid-azuread-join-control.md#control-windows-down-level-devices), um weitere Informationen zu erhalten. 
+Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Installer-Paket (.msi) aus dem Download Center herunterladen und installieren. Weitere Informationen finden Sie unter [Steuern von Azure AD Hybrid Join für Ihre Geräte](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
 
 
 
@@ -566,13 +544,13 @@ Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Instal
 
 Sie können die erfolgreiche Einbindung für die Geräte Ihrer Organisation überprüfen, indem Sie das Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden.
 
-In der Ausgabe dieses Cmdlets werden Geräte angezeigt, die in Azure AD registriert und eingebunden sind. Verwenden Sie zum Abrufen aller Geräte den Parameter **-All**, und filtern Sie sie anschließend mit der **deviceTrustType**-Eigenschaft. In die Domäne eingebundene Geräte weisen den Wert **In die Domäne eingebunden** auf.
+In der Ausgabe dieses Cmdlets werden Geräte angezeigt, die in Azure AD registriert und eingebunden sind. Verwenden Sie zum Abrufen aller Geräte den Parameter **-All**, und filtern Sie sie anschließend mithilfe der Eigenschaft **deviceTrustType**. In die Domäne eingebundene Geräte weisen den Wert **In die Domäne eingebunden** auf.
 
 
 
 ## <a name="troubleshoot-your-implementation"></a>Problembehandlung bei der Implementierung
 
-Wenn bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
+Sollten bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
 
 - [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-current.md)
 - [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-legacy.md)
