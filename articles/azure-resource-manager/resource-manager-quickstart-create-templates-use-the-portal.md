@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 515ab6a4ee832c702cfe19f2aca9022f208b409d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612787"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104725"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal
 
@@ -97,7 +97,7 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "location": {
@@ -139,7 +139,7 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
         "outputs": {}
     }
     ```
-7. Wählen Sie **Speichern**aus.
+7. Wählen Sie **Speichern** aus.
 8. Geben Sie die folgenden Werte ein:
 
     - **Ressourcengruppe**: Versehen Sie Ihre Ressourcengruppe mit einem eindeutigen Namen.
@@ -147,7 +147,7 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
     - **Standort**: Wählen Sie einen Standort für das Speicherkonto aus.  Sie können den gleichen Standort verwenden wie für die Ressourcengruppe.
     - **Kontotyp**: Geben Sie für diese Schnellstartanleitung **Standard_LRS** ein.
     - **Variante**: Geben Sie für diese Schnellstartanleitung **StorageV2** ein.
-    - **Zugriffsebene**: Geben Sie für diese Schnellstartanleitung **Heiße Zugriffsebene** ein.
+    - **Zugriffsebene**: Geben Sie für diese Schnellstartanleitung **Heiße Ebene** ein.
     - **Https Traffic Only Enabled** (Nur HTTPS-Datenverkehr aktiviert):  Wählen Sie für diese Schnellstartanleitung die Option **true** aus.
     - **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 

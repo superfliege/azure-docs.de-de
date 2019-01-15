@@ -8,26 +8,24 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 390cdddf09f6880368d4d199eef41be19b54d9f0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 61463f33491cc909a21be99efcbb82094c958edd
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339245"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063249"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet zwei Clientbibliotheken für Python: eine [Erfassungsbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) und eine [Datenbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Mit diesen Bibliotheken können Sie über Ihren Code Daten in einem Cluster erfassen (laden) und Daten abfragen. In diesem Schnellstart erstellen Sie zunächst eine Tabelle und eine Datenzuordnung in einem Testcluster. Anschließend stellen Sie die Erfassung im Cluster in eine Warteschlange und überprüfen die Ergebnisse.
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet zwei Clientbibliotheken für Python: eine [Erfassungsbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) und eine [Datenbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Mit diesen Bibliotheken können Sie über Ihren Code Daten in einem Cluster erfassen (laden) und Daten abfragen. In diesem Schnellstart erstellen Sie zunächst eine Tabelle und eine Datenzuordnung in einem Cluster. Anschließend stellen Sie die Erfassung im Cluster in eine Warteschlange und überprüfen die Ergebnisse.
 
 Dieser Schnellstart ist auch als [Azure-Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) verfügbar.
 
-Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zusätzlich zu einem Azure-Abonnement benötigen Sie zum Abschließen dieses Schnellstarts Folgendes:
+* Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-* [Testcluster und Datenbank](create-cluster-database-portal.md)
+* [Ein Cluster und eine Datenbank](create-cluster-database-portal.md)
 
 * [Python](https://www.python.org/downloads/) auf dem Entwicklungscomputer
 
@@ -42,14 +40,12 @@ pip install azure-kusto-ingest
 
 ## <a name="add-import-statements-and-constants"></a>Hinzufügen von Importanweisungen und Konstanten
 
-Importieren Sie Klassen aus den Bibliotheken sowie *datetime* und *pandas*, eine Datenanalysebibliothek.
+Importieren Sie Klassen aus „azure-kusto-data“.
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
 from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
-import pandas as pd
-import datetime
 ```
 
 Für die Authentifizierung von Anwendungen verwendet der Azure-Daten-Explorer Ihre AAD-Mandanten-ID. Um Ihre Mandanten-ID zu suchen, verwenden Sie die folgende URL, und ersetzen Sie dabei *YourDomain* durch Ihre Domäne.
@@ -70,7 +66,7 @@ Die Mandanten-ID ist in diesem Fall `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Lege
 AAD_TENANT_ID = "<TenantId>"
 KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
 KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
-KUSTO_DATABASE  = "<DatabaseName>"
+KUSTO_DATABASE = "<DatabaseName>"
 ```
 
 Erstellen Sie nun die Verbindungszeichenfolge. In diesem Beispiel wird die Geräteauthentifizierung zum Zugreifen auf den Cluster verwendet. Sie können auch das [AAD-Anwendungszertifikat](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), den [AAD-Anwendungsschlüssel](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20) und den [AAD-Benutzer mit dem zugehörigen Kennwort](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34) verwenden.
@@ -103,7 +99,7 @@ FILE_SIZE = 64158321    # in bytes
 BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + CONTAINER + "/" + FILE_PATH + SAS_TOKEN
 ```
 
-## <a name="create-a-table-on-your-test-cluster"></a>Erstellen einer Tabelle im Testcluster
+## <a name="create-a-table-on-your-cluster"></a>Erstellen einer Tabelle im Cluster
 
 Erstellen Sie eine Tabelle, die dem Schema der Daten in der Datei „StormEvents.csv“ entspricht. Wenn dieser Code ausgeführt wird, wird eine Meldung wie die folgende zurückgegeben: *Verwenden Sie zur Anmeldung einen Webbrowser, um die Seite https://microsoft.com/devicelogin zu öffnen. Geben Sie dann zur Authentifizierung den Code F3W4VWZDM ein*. Befolgen Sie die Schritte für die Anmeldung, und kehren Sie dann zurück, um den Codeblock auszuführen. Für nachfolgende Codeblöcke, die eine Verbindung herstellen, müssen Sie sich wieder anmelden.
 
@@ -118,7 +114,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="define-ingestion-mapping"></a>Definieren der Erfassungszuordnung
 
-Ordnen Sie eingehende JSON-Daten den beim Erstellen der Tabelle verwendeten Spaltennamen und Datentypen zu.
+Ordnen Sie eingehende JSON-Daten den beim Erstellen der Tabelle verwendeten Spaltennamen und Datentypen zu. Dadurch werden Quelldatenfelder zu Zieltabellenspalten zugeordnet.
 
 ```python
 CREATE_MAPPING_COMMAND = """.create table StormEvents ingestion csv mapping 'StormEvents_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'"""
@@ -136,15 +132,15 @@ Stellen Sie eine Nachricht zum Abrufen von Daten aus Blob Storage in eine Wartes
 INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES  = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv, mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
-BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)  # 10 is the raw size of the data in bytes
-INGESTION_CLIENT.ingest_from_blob(BLOB_DESCRIPTOR,ingestion_properties=INGESTION_PROPERTIES)
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv, mappingReference = DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
+BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)  # FILE_SIZE is the raw size of the data in bytes
+INGESTION_CLIENT.ingest_from_blob(BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
 
 print('Done queuing up ingestion with Azure Data Explorer')
 
 ```
 
-## <a name="validate-that-data-was-ingested-into-the-table"></a>Überprüfen, ob die Daten in der Tabelle erfasst wurden
+## <a name="query-data-that-was-ingested-into-the-table"></a>Abfragen von Daten, die in der Tabelle erfasst wurden
 
 Warten Sie fünf bis zehn Minuten, bis die Warteschlange die Erfassung geplant und die Daten in den Azure-Daten-Explorer geladen hat. Führen Sie dann den folgenden Code aus, um die Anzahl der Datensätze in der Tabelle „StormEvents“ zu erhalten.
 
@@ -169,7 +165,7 @@ Führen Sie den folgenden Befehl aus, um den Status aller Erfassungsvorgänge in
 
 ```Kusto
 .show operations
-| where StartedOn > ago(4h) and Database == "<DatabaseName>" and Operation == "DataIngestPull"
+| where StartedOn > ago(4h) and Database == "<DatabaseName>" and Table == "StormEvents" and Operation == "DataIngestPull"
 | summarize arg_max(LastUpdatedOn, *) by OperationId
 ```
 
@@ -184,4 +180,4 @@ Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalte
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Write queries](write-queries.md) (Schreiben von Abfragen)
+> [Abfragen von Daten mithilfe von Python](python-query-data.md)

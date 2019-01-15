@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 2fc81cc06063c0fee0a4f875b4b0f8bd1343cf85
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 789f58699f39f4b7eac453f4cf79ea55a5bfc8d3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810456"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory-Integration in lokales SharePoint
 
@@ -118,7 +118,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SharePoi
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
     > [!Note]
-    > Notieren Sie sich den Dateipfad, in den Sie die Zertifikatdatei heruntergeladen haben. Sie benötigen ihn später im PowerShell-Skript für die Konfiguration.
+    > Notieren Sie sich den Dateipfad, in dem Sie die Zertifikatdatei heruntergeladen haben. Sie benötigen die Datei später im PowerShell-Skript für die Konfiguration.
 
 6. Kopieren Sie im Abschnitt **SharePoint (lokal) einrichten** die entsprechenden URLs gemäß Ihren Anforderungen. Verwenden Sie für **Dienst-URL für einmalige Anmeldung** einen Wert im folgenden Format: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
@@ -134,7 +134,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SharePoi
     c. Abmelde-URL
 
     > [!NOTE]
-    > Die lokale SharePoint-Anwendung verwendet SAML 1.1-Token, sodass Azure AD eine WS-Fed-Anforderung vom SharePoint-Server erwartet und nach der Authentifizierung SAML 1.1-Token ausstellt.
+    > Die lokale SharePoint-Anwendung verwendet SAML 1.1-Token, sodass Azure AD eine WS-Fed-Anforderung vom SharePoint-Server erwartet und nach der Authentifizierung das SAML 1.1-Token ausstellt.
 
 ### <a name="configure-sharepoint-on-premises-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für SharePoint (lokal)
 
@@ -175,7 +175,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SharePoi
     ![Konfigurieren des Authentifizierungsanbieters](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
-    > Einige externe Benutzer können diese SSO-Integration nicht nutzen, da ihr UPN einen beschädigten Wert wie `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com` enthält. Wir arbeiten bereits an der Möglichkeit, eine benutzertypabhängige Behandlung des UPN in der Kunden-App zu konfigurieren. Anschließend sollten alle Gastbenutzer SSO genauso problemlos wie Mitarbeiter der Organisation verwenden können.
+    > Einige externe Benutzer können diese Integration des einmaligen Anmeldens nicht nutzen, da ihr UPN einen beschädigten Wert wie `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com` enthält. Die Möglichkeit zur benutzertypabhängigen Behandlung des UPN durch eine benutzerdefinierte App-Konfiguration wird in Kürze verfügbar gemacht. Anschließend sollten alle Gastbenutzer SSO genauso problemlos wie Mitarbeiter der Organisation verwenden können.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

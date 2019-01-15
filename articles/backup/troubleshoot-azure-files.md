@@ -8,12 +8,12 @@ ms.author: raynew
 ms.date: 10/23/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 4806ca77bda1d380d3c5f1d958a335bceddc7f16
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 56daf1bd8d0ab7752b74463759f25441924b52d2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787442"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064116"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 Die folgende Tabelle enthält Problembehandlungsinformationen für Probleme und Fehler, die bei der Verwendung der Sicherung von Azure-Dateifreigaben auftreten können.
@@ -36,7 +36,7 @@ Die Sicherung für Azure-Dateifreigaben in Speicherkonten mit Replikation vom Ty
 ## <a name="configuring-backup"></a>Konfigurieren der Sicherung
 Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 
-| Konfigurieren der Sicherung | Problemumgehung oder Lösungstipps |
+| Fehlermeldungen | Problemumgehung oder Lösungstipps |
 | ------------------ | ----------------------------- |
 | Ich habe mein Speicherkonto zum Konfigurieren der Sicherung für die Azure-Dateifreigabe nicht gefunden. | <ul><li>Warten Sie, bis die Ermittlung abgeschlossen ist. <li>Überprüfen Sie, ob eine Dateifreigabe aus dem Speicherkonto bereits durch einen anderen Recovery Services-Tresor geschützt ist. **Hinweis**: Alle Dateifreigaben in einem Speicherkonto können nur unter einem einzelnen Recovery Services-Tresor geschützt werden. <li>Vergewissern Sie sich, dass sich die Dateifreigabe nicht in einem nicht unterstützten Speicherkonto befindet.|
 | Im Portal tritt ein Fehler mit dem Hinweis auf, dass die Speicherkonten nicht erfolgreich erkannt werden konnten. | Wenn es sich bei Ihrem Abonnement um ein (CSP-fähiges) Partnerabonnement handelt, ignorieren Sie den Fehler. Falls Ihr Abonnement nicht CSP-fähig ist und Ihre Speicherkonten nicht erkannt werden, wenden Sie sich an den Support.|
@@ -64,6 +64,14 @@ Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 | Fehler beim Wiederherstellungsvorgang, weil die Zieldateifreigabe voll ist. | Erhöhen Sie das Größenkontingent der Zieldateifreigabe so, dass es für die Wiederherstellungsdaten ausreicht, und wiederholen Sie anschließend den Vorgang. |
 | Der Wiederherstellungsvorgang war nicht erfolgreich: Beim Ausführen der Wiederherstellungsvorbereitung für mit der Zieldateifreigabe verknüpfte Ressourcen des Dateisynchronisierungsdiensts ist ein Fehler aufgetreten. | Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support. |
 | Mindestens eine Datei konnte nicht erfolgreich wiederhergestellt werden. Weitere Informationen finden Sie in der Liste fehlerhafter Dateien im oben angegebenen Pfad. | <ul> <li> Die Ursachen für Fehler bei der Wiederherstellung werden in einer Datei aufgeführt. (Den Pfad finden Sie in den Auftragsdetails.) Beheben Sie die Ursachen, und wiederholen Sie den Wiederherstellungsvorgang für die Dateien, bei denen ein Fehler aufgetreten ist. <li> Häufige Fehlerursachen beim Wiederherstellen von Dateien: <br/> - Die Dateien, bei denen ein Fehler aufgetreten ist, werden gerade verwendet. <br/> - Das übergeordnete Verzeichnis enthält ein Verzeichnis mit dem gleichen Namen wie die Dateien, bei denen ein Fehler aufgetreten ist. |
+
+
+## <a name="modify-policy"></a>Richtlinie ändern
+| Fehlermeldungen | Problemumgehung oder Lösungstipps |
+| ------------------ | ----------------------------- |
+| Für dieses Element wird derzeit ein anderer Vorgang zum Konfigurieren von Schutzeinstellungen ausgeführt. | Warten Sie, bis die vorhergehende Vorgang zum Ändern der Richtlinie abgeschlossen ist, und versuchen Sie es nach einiger Zeit noch mal.|
+| Für das ausgewählte Element wird derzeit ein anderer Vorgang ausgeführt. | Warten Sie, bis dieser andere Vorgang abgeschlossen ist, und versuchen Sie es nach einiger Zeit noch mal. |
+
 
 ## <a name="see-also"></a>Siehe auch
 Weitere Informationen zum Sichern von Azure-Dateifreigaben finden Sie in den folgenden Artikeln:

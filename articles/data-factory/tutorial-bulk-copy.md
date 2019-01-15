@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 1bf93ce9aa1733634b46c2a15b587d4cc0826ba1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c15c79e90b69fd72ed6b8968d35be95da50f838b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090932"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023869"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
 In diesem Tutorial wird das **Kopieren von mehreren Tabellen aus einer Azure SQL-Datenbank in Azure SQL Data Warehouse** veranschaulicht. Sie können dieses Muster auch in anderen Kopierszenarios anwenden. So können Sie z.B. Tabellen aus SQL Server/Oracle in Azure SQL-Datenbank/Data Warehouse/Azure Blob kopieren oder verschiedene Pfade aus Blob in Azure SQL-Datenbanktabellen.
@@ -116,7 +115,7 @@ In diesem Tutorial erstellen Sie drei verknüpfte Dienste für Quell-, Senken- u
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Erstellen des verknüpften Quelldiensts Azure SQL-Datenbank
 
-1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **AzureSqlDatabaseLinkedService.json** und dem folgenden Inhalt: (Erstellen Sie den Ordner „ADFv2TutorialBulkCopy“, wenn dieser noch nicht vorhanden ist.)
+1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **AzureSqlDatabaseLinkedService.json** und dem folgenden Inhalt: (Erstellen Sie den Ordner „ADFv2TutorialBulkCopy“, falls dieser noch nicht vorhanden ist.)
 
     > [!IMPORTANT]
     > Ersetzen Sie &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; und &lt;password&gt; durch Werte Ihrer Azure SQL-Datenbank. Speichern Sie anschließend die Datei.
@@ -138,7 +137,7 @@ In diesem Tutorial erstellen Sie drei verknüpfte Dienste für Quell-, Senken- u
 
 2. Wechseln Sie in **Azure PowerShell** zum Ordner **ADFv2TutorialBulkCopy**.
 
-3. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** zum Erstellen des verknüpften Diensts **AzureSqlDatabaseLinkedService** aus. 
+3. Führen Sie das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** aus, um den folgenden verknüpften Dienst zu erstellen: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -175,7 +174,7 @@ In diesem Tutorial erstellen Sie drei verknüpfte Dienste für Quell-, Senken- u
     }
     ```
 
-2. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** zum Erstellen des verknüpften Diensts **AzureSqlDWLinkedService** aus.
+2. Führen Sie zum Erstellen des verknüpften Diensts **AzureSqlDWLinkedService** das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** aus.
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -197,7 +196,7 @@ In diesem Tutorial wird Azure Blob Storage als vorläufiger Stagingbereich zur A
 1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **AzureStorageLinkedService.json** und dem folgenden Inhalt:
 
     > [!IMPORTANT]
-    > Ersetzen Sie &lt;accountName&gt; und &lt;accountKey&gt; durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos, bevor Sie die Datei speichern.
+    > Ersetzen Sie &lt;accountname&gt; und &lt;accountkey&gt; durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos, bevor Sie die Datei speichern.
 
     ```json
     {
@@ -214,7 +213,7 @@ In diesem Tutorial wird Azure Blob Storage als vorläufiger Stagingbereich zur A
     }
     ```
 
-2. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** zum Erstellen des verknüpften Diensts **AzureStorageLinkedService** aus.
+2. Führen Sie zum Erstellen des verknüpften Diensts **AzureStorageLinkedService** das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** aus.
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -253,7 +252,7 @@ In diesem Tutorial werden Quell- und Senkendatasets erstellt, die den Speicheror
     }
     ```
 
-2. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2Dataset** zum Erstellen des Datasets **AzureSqlDatabaseDataset** aus.
+2. Führen Sie zum Erstellen des Datasets **AzureSqlDatabaseDataset** das Cmdlet **Set-AzureRmDataFactoryV2Dataset** aus.
 
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -271,7 +270,7 @@ In diesem Tutorial werden Quell- und Senkendatasets erstellt, die den Speicheror
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Erstellen eines Datasets für das Senkenwarehouse SQL Data Warehouse
 
-1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **AzureSqlDWDataset.json** und dem folgenden Inhalt: „tableName“ ist als Parameter festgelegt. Die Kopieraktivität, die auf dieses Dataset verweist, übergibt den tatsächlichen Wert später an das Dataset.
+1. Erstellen Sie im Ordner **C:\ADFv2TutorialBulkCopy** eine JSON-Datei mit dem Namen **AzureSqlDWDataset.json** und dem folgenden Inhalt: „tableName“ ist als Parameter festgelegt. Später übergibt die Kopieraktivität, die auf dieses Dataset verweist, den tatsächlichen Wert in das Dataset.
 
     ```json
     {
@@ -297,7 +296,7 @@ In diesem Tutorial werden Quell- und Senkendatasets erstellt, die den Speicheror
     }
     ```
 
-2. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2Dataset** zum Erstellen des Datasets **AzureSqlDWDataset** aus.
+2. Führen Sie zum Erstellen des Datasets **AzureSqlDWDataset** das Cmdlet **Set-AzureRmDataFactoryV2Dataset** aus.
 
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -389,7 +388,7 @@ Diese Pipeline verwendet die Liste mit den Tabellen als Parameter. Für jede Tab
     }
     ```
 
-2. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2Pipeline** zum Erstellen der Pipeline **IterateAndCopySQLTables** aus.
+2. Führen Sie zum Erstellen der Pipeline **IterateAndCopySQLTables** das Cmdlet **Set-AzureRmDataFactoryV2Pipeline** aus.
 
     ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -465,7 +464,7 @@ Mit dieser Pipeline werden zwei Schritte ausgeführt:
     }
     ```
 
-2. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2Pipeline** zum Erstellen der Pipeline **GetTableListAndTriggerCopyData** aus.
+2. Führen Sie zum Erstellen der Pipeline **GetTableListAndTriggerCopyData** das Cmdlet **Set-AzureRmDataFactoryV2Pipeline** aus.
 
     ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"

@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638239"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014895"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Vergleichen von Azure Data Factory mit Data Factory Version 1
 In diesem Artikel wird Data Factory mit Data Factory Version 1 verglichen. Eine Einführung in Data Factory finden Sie unter [Einführung in Azure Data Factory](introduction.md). Eine Einführung in Data Factory Version 1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). 
@@ -68,7 +67,7 @@ Pipelines können nach Bedarf (ereignisbasiert, d.h. Blogbeitrag) oder zeitgeste
 Mit der [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md) kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
 
 ### <a name="delta-flows"></a>Deltaabläufe
-Ein Anwendungsfall für Schlüssel in ETL-Mustern sind Deltaladevorgänge. Bei diesen Ladevorgängen werden nur die Daten geladen, die sich seit dem Laden des letzten Durchlaufs einer Pipeline geändert haben. Mit den neuen Funktionen in der aktuellen Version, z.B. [Lookup-Aktivität](control-flow-lookup-activity.md), flexible Zeitplanung und Ablaufsteuerung, wird dieser Anwendungsfall auf natürliche Weise ermöglicht. Ein Tutorial mit einer Schritt-für-Schritt-Anleitung finden Sie im Tutorial [Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage](tutorial-incremental-copy-powershell.md).
+Ein Anwendungsfall für Schlüssel in ETL-Mustern sind Deltaladevorgänge. Bei diesen Ladevorgängen werden nur die Daten geladen, die sich seit dem Laden des letzten Durchlaufs einer Pipeline geändert haben. Mit den neuen Funktionen in der aktuellen Version, z.B. [Lookup-Aktivität](control-flow-lookup-activity.md), flexible Zeitplanung und Ablaufsteuerung, wird dieser Anwendungsfall auf natürliche Weise ermöglicht. Ein Tutorial mit einer Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Inkrementelles Kopieren](tutorial-incremental-copy-powershell.md).
 
 ### <a name="other-control-flow-activities"></a>Weitere Aktivitäten der Ablaufsteuerung
 Im Folgenden finden Sie einige weitere Ablaufsteuerungsaktivitäten, die von der aktuellen Version von Data Factory unterstützt werden. 
@@ -117,11 +116,11 @@ Weitere Informationen finden Sie unter [Vergleich: Benutzerdefinierte V2-Aktivit
 ## <a name="sdks"></a>SDKs
  Die aktuelle Version von Data Factory verfügt über einen umfassenderen SDK-Satz, der zum Erstellen, Verwalten und Überwachen von Pipelines verwendet werden kann.
 
-- **.NET SDK**: Das .NET SDK wurde in der aktuellen Version aktualisiert.
+- **.NET-SDK**: Das .NET SDK wurde in der aktuellen Version aktualisiert.
 
-- **PowerShell**: Die PowerShell-Cmdlets wurden in der aktuellen Version aktualisiert. Die Cmdlets für die aktuelle Version enthalten **DataFactoryV2** im Namen, z.B. „Get-AzureRmDataFactoryV2“. 
+- **PowerShell**: Die PowerShell-Cmdlets wurden in der aktuellen Version aktualisiert. Die Cmdlets für die aktuelle Version enthalten **DataFactoryV2** im Namen, z.B. Get-AzureRmDataFactoryV2. 
 
-- **Python SDK**: Dieses SDK ist in der aktuellen Version neu enthalten.
+- **Python SDK**: Dieses SDK ist in der aktuellen Version neu.
 
 - **REST-API**: Die REST-API wurde in der aktuellen Version aktualisiert. 
 

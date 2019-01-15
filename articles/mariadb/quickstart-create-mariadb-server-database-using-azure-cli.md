@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538741"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190335"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
 
@@ -71,6 +71,10 @@ Im folgenden Beispiel wird ein Server mit dem Namen **mydemoserver** in der Regi
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
 ```
+
+> [!NOTE]
+> Ziehen Sie die Verwendung des Tarifs „Basic“ in Betracht, wenn geringe Compute- und E/A-Leistung für Ihre Workload angemessen ist. Beachten Sie, dass im Tarif „Basic“ erstellte Server später nicht auf „Universell“ oder „Arbeitsspeicheroptimiert“ skaliert werden können. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/mariadb/).
+> 
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurieren einer Firewallregel
 

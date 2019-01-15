@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4320e56b04761c6adcae1db259eeecf332fbd781
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273053"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158787"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger?  (Vorschau)
+# <a name="what-is-azure-data-box-disk"></a>Was ist ein Azure Data Box-Datenträger?
 
 Mit der Cloudlösung für Microsoft Azure Data Box-Datenträger können Sie Daten im Terabyte-Bereich schnell, kostengünstig und zuverlässig an Azure senden. Diese FAQ-Seite enthält Fragen, die bei der Verwendung von Data Box-Datenträgern im Azure-Portal aufkommen können, und die dazugehörigen Antworten. 
 
@@ -27,8 +27,6 @@ Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 - Migrieren von Daten 
 - Überprüfen und Hochladen von Daten 
 
-> [!IMPORTANT]
-> Data Box-Datenträger befinden sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen.
 
 ## <a name="about-the-service"></a>Informationen zum Dienst
 
@@ -44,19 +42,19 @@ Datenträger werden mithilfe der Microsoft-BitLocker-Laufwerkverschlüsselung ve
 A. Sie profitieren von der Verwendung von Data Box-Datenträgern, wenn Sie über 40 TB an Daten (oder weniger) verfügen, die Sie an Azure übertragen möchten.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>F: Was kosten Data Box-Datenträger?
-A. Informationen zum Preis von Data Box Disks finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+A. Informationen zum Preis von Data Box-Datenträgern finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>F: Wie erhalte ich Data Box-Datenträger? 
-A.  Um Azure Data Box-Datenträger zu erhalten, müssen Sie sich zunächst für [Data Box-Datenträger (Vorschauversion)](https://aka.ms/AzureDataBox) registrieren. Melden Sie sich als Nächstes am Azure-Portal an, und erstellen Sie einen Data Box-Auftrag für Datenträger. Geben Sie Ihre Kontaktinformationen und Benachrichtigungsdetails an. Nachdem Sie den Auftrag erstellt haben, werden die Datenträger je nach Verfügbarkeit innerhalb von zehn Tagen an Sie gesendet.   
+A.  Melden Sie sich als Nächstes am Azure-Portal an, und erstellen Sie einen Data Box-Auftrag für Datenträger, um Azure Data Box-Datenträger zu erhalten. Geben Sie Ihre Kontaktinformationen und Benachrichtigungsdetails an. Nachdem Sie den Auftrag erstellt haben, werden die Datenträger je nach Verfügbarkeit innerhalb von zehn Tagen an Sie gesendet.
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>F: Welche Menge von Daten kann ich mit Data Box-Datenträgern auf einmal übertragen?
-A. Für fünf Datenträger mit jeweils 8 TB (7 TB nutzbare Kapazität) ergibt sich eine maximal nutzbare Kapazität von 35 TB. Sie können also 35 TB an Daten auf einmal übertragen.  Um eine größere Datenmenge zu übertragen, können Sie weitere Datenträger bestellen.
+A. Für fünf Datenträger mit jeweils 8 TB (7 TB nutzbare Kapazität) ergibt sich eine maximal nutzbare Kapazität von 35 TB. Sie können also 35 TB an Daten auf einmal übertragen. Um eine größere Datenmenge zu übertragen, können Sie weitere Datenträger bestellen.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>F: Wie kann ich prüfen, ob Data Box-Datenträger in meiner Region verfügbar sind? 
-A.  Data Box-Datenträger sind während der Vorschauphase in den USA, in Kanada, in Australien und in allen Ländern der Europäischen Union verfügbar.  
+A.  Data Box-Datenträger sind derzeit in den USA, Kanada, Australien und allen Ländern der Europäischen Union verfügbar.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>F: In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
-A. Die Vorschauversion von Data Box Disk wird für alle Regionen in den USA, in Kanada, Australien, Westeuropa und Nordeuropa unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
+A. Data Box Disk wird für alle Regionen in den USA, Kanada, Australien, Westeuropa und Nordeuropa unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>F: An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
 A. Falls Probleme mit Data Box-Datenträgern auftreten, wenden Sie sich an den [Microsoft-Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -75,7 +73,7 @@ Eine Schritt-für-Schritt-Anleitung finden Sie unter den Informationen zum [Ents
 A.  Ja. Sowohl der Linux- als auch der Windows-Client können verwendet werden, um eine Verbindung herzustellen und Daten in Data Box Disk zu kopieren. Weitere Informationen finden Sie in der Liste mit den [unterstützten Betriebssystemen](data-box-disk-system-requirements.md) für Ihren Hostcomputer.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>F: Meine Datenträger wurden versendet, aber ich möchte den Auftrag jetzt stornieren. Warum ist die Schaltfläche zum Stornieren nicht verfügbar?
-A.  Sie können den Auftrag nur stornieren, wenn die Datenträger bestellt, aber noch nicht versendet wurden. Nachdem die Datenträger versendet wurden, ist eine Stornierung des Auftrags nicht mehr möglich. Während der Vorschauphase können Sie Ihre Datenträger kostenlos zurücksenden, aber dies wird sich voraussichtlich ändern, wenn die Lösung die Phase der allgemeinen Verfügbarkeit erreicht. 
+A.  Sie können den Auftrag nur stornieren, wenn die Datenträger bestellt, aber noch nicht versendet wurden. Nachdem die Datenträger versendet wurden, ist eine Stornierung des Auftrags nicht mehr möglich. Sie haben aber die Möglichkeit, Ihre Datenträger gegen eine Gebühr zurückzugeben. 
 
 ### <a name="q-can-i-connect-multiple-data-box-disks-at-the-same-to-the-host-computer-to-transfer-data"></a>F: Kann ich mehrere Data Box-Datenträger gleichzeitig an denselben Hostcomputer anschließen, um Daten zu übertragen?
 A. Ja. Mehrere Data Box-Datenträger können an denselben Hostcomputer angeschlossen werden, um Daten zu übertragen, und es können mehrere Kopieraufträge parallel durchgeführt werden.
@@ -91,10 +89,10 @@ A.  Microsoft fügt dem Versandpaket für die Data Box-Datenträger ein Versande
 ## <a name="migrate-data"></a>Migrieren von Daten
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>F: Welche Datenmenge kann für Data Box-Datenträger maximal verwendet werden?  
-A.  Bei der Lösung mit Data Box-Datenträgern können bis zu fünf Datenträger mit einer maximalen Kapazität von 35 TB genutzt werden. Die Größe der Datenträger beträgt jeweils 8 TB (7 TB nutzbar). 
+A.  Bei der Lösung mit Data Box-Datenträgern können bis zu fünf Datenträger mit einer maximalen Kapazität von 35 TB genutzt werden. Die Größe der Datenträger beträgt jeweils 8 TB (7 TB nutzbar).
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>F: Welche Größen für Blockblobs und Seitenblobs werden für Data Box-Datenträger maximal unterstützt? 
-A.  Die maximale Größe richtet sich nach den Speichergrenzwerten für Azure. Die maximale Größe für Blockblobs beträgt ca. 4,768 TiB, und die maximale Größe für Seitenblobs beträgt 8 TiB. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/common/storage-scalability-targets.md). 
+A.  Die maximale Größe richtet sich nach den Speichergrenzwerten für Azure. Die maximale Größe für Blockblobs beträgt ca. 4,768 TiB, und die maximale Größe für Seitenblobs beträgt 8 TiB. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/common/storage-scalability-targets.md).
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>F: Wie hoch ist die Datenübertragungsgeschwindigkeit für Data Box-Datenträger?
 A. Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die Datenträgerleistung bis zu 430 MB/s. Die tatsächlichen Zahlen variieren abhängig von der Größe der verwendeten Datei. Bei kleineren Dateien ist die Leistung unter Umständen etwas reduziert.
@@ -103,7 +101,7 @@ A. Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die 
 A.  Data Box-Datenträger werden per BitLocker-Verschlüsselung (AES-128 Bit) verschlüsselt, und der Hauptschlüssel ist nur über das Azure-Portal verfügbar. Melden Sie sich mit den Anmeldeinformationen für Ihr Konto am Azure-Portal an, um den Hauptschlüssel zu erhalten. Geben Sie diesen Hauptschlüssel an, wenn Sie das Tool zum Entsperren von Data Box-Datenträgern ausführen.
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>F: Wie kopiere ich die Daten auf die Data Box-Datenträger? 
-A.  Verwenden Sie ein SMB-Kopiertool, z.B. Robocopy, Diskboss oder auch Drag & Drop im Windows-Datei-Explorer, um Daten auf Datenträger zu kopieren. 
+A.  Verwenden Sie ein SMB-Kopiertool, z.B. Robocopy, Diskboss oder auch Drag & Drop im Windows-Datei-Explorer, um Daten auf Datenträger zu kopieren.
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>F: Gibt es Tipps zur Beschleunigung des Datenkopiervorgangs?
 A.  Sie können den Kopiervorgang wie folgt beschleunigen:
@@ -121,9 +119,19 @@ A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 - Stellen Sie die Daten auf einer VM bereit.
 - Kopieren Sie die Dateien auf den Datenträger der VM.
 
-
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>F: Kann ich mehrere Speicherkonten mit Data Box-Datenträgern verwenden?
-A.   Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgemein oder klassisch) unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. Während der Vorschauphase werden nur die Speicherkonten in den USA, Westeuropa und Nordeuropa unterstützt, die Teil der öffentlichen Azure-Cloud sind.
+A.   Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgemein oder klassisch) unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. Derzeit werden nur die Speicherkonten in den USA, Westeuropa und Nordeuropa unterstützt, die Teil der öffentlichen Azure-Cloud sind.
+
+### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>F: Was umfasst das Toolset, das für meine Daten für Data Box-Datenträger verfügbar ist?
+A. Das für Data Box Disk verfügbare Toolset enthält drei Tools:
+ - **Data Box Disk-Tool zum Entsperren**: Verwenden Sie dieses Tool, um die verschlüsselten Datenträger zu entsperren, die von Microsoft ausgeliefert werden. Beim Entsperren der Datenträger mit dem Tool müssen Sie einen Hauptschlüssel angeben, der in der Data Box Disk-Bestellung im Azure-Portal enthalten ist. 
+ - **Data Box Disk-Überprüfungstool**: Verwenden Sie dieses Tool, um Größe, Format und Blobnamen gemäß den Azure-Benennungskonventionen zu überprüfen. Außerdem werden damit Prüfsummen für die kopierten Daten generiert, die dann genutzt werden, um die in Azure hochgeladenen Daten zu überprüfen.
+ - **Data Box Disk-Tool zum Aufteilen/Kopieren**: Verwenden Sie dieses Tool, wenn Sie mehrere Datenträger nutzen und über ein umfangreiches Dataset verfügen, das aufgeteilt und auf alle Datenträger kopiert werden muss. Dieses Tool ist derzeit für Windows verfügbar.
+
+Das Toolset steht sowohl für Windows als auch für Linux zur Verfügung. Sie können das Toolset hier herunterladen:
+ - [Herunterladen des Data Box Disk-Toolsets für Windows](https://aka.ms/databoxdisktoolswin) 
+ - [Herunterladen des Data Box Disk-Toolsets für Linux](https://aka.ms/databoxdisktoolslinux)
+
 
 ## <a name="verify-and-upload"></a>Überprüfen und Hochladen
 
@@ -131,7 +139,7 @@ A.   Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgem
 A.  Nachdem der Auftragsstatus für das Kopieren der Daten als „Abgeschlossen“ angezeigt wird, sollten Sie sofort auf Ihre Daten zugreifen können.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>F: Wo befinden sich meine Daten nach dem Upload in Azure?
-A.  Wenn Sie die Daten in die Ordner *BlockBlob* und *PageBlob* auf Ihrem Datenträger kopieren, wird unter dem Azure-Speicherkonto für jeden Unterordner von *BlockBlob* und *PageBlob* ein Container erstellt. Falls Sie die Dateien direkt in den Ordnern *BlockBlob* und *PageBlob* abgelegt haben, befinden sich diese im Standardcontainer *$root* unter dem Azure Storage-Konto. 
+A.  Wenn Sie die Daten in die Ordner *BlockBlob* und *PageBlob* auf Ihrem Datenträger kopieren, wird unter dem Azure-Speicherkonto für jeden Unterordner von *BlockBlob* und *PageBlob* ein Container erstellt. Falls Sie die Dateien direkt in den Ordnern *BlockBlob* und *PageBlob* abgelegt haben, befinden sich diese im Standardcontainer *$root* unter dem Azure Storage-Konto.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>F: Ich habe gerade festgestellt, dass ich mich für meine Container nicht an die Azure-Anforderungen für die Benennung gehalten habe. Können meine Daten deshalb nicht in Azure hochgeladen werden?
 A. Falls die Containernamen Großbuchstaben enthalten, werden sie automatisch in Kleinbuchstaben konvertiert. Wenn die Namen auf andere Art nicht konform sind (Sonderzeichen, andere Sprachen usw.), tritt beim Upload ein Fehler auf. Weitere Informationen finden Sie unter den [Benennungskonventionen für Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions).
@@ -150,8 +158,6 @@ A. Ja. Wenn Sie sich für die Validierung Ihrer Daten entscheiden (empfohlen), m
 
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>F: Ich habe alle Datenträger zum Übertragen von Daten verwendet und muss weitere Datenträger anfordern. Gibt es eine Möglichkeit, die Bestellung ohne viel Zeitaufwand aufzugeben?
 A. Sie können Ihren vorherigen Auftrag klonen. Beim Klonen wird derselbe Auftrag noch einmal erstellt, und Sie müssen nur noch die Auftragsdetails angeben, ohne Adresse, Kontaktinformationen und Benachrichtigungsdetails erneut eingeben zu müssen. 
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/01/2018
-ms.openlocfilehash: aede3f432614023739d6967c6e76ff3aaf892cca
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/09/2019
+ms.openlocfilehash: ce4feefa1b83f81fa1160ddc93a53da56c24fd7e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537799"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189880"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
 
@@ -51,9 +51,9 @@ Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank fü
     Version | *Die aktuelle Hauptversion*| Die aktuelle Hauptversion (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
     Tarif | **Universell**, **Gen 4**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif**aus. Klicken Sie als Nächstes auf die Registerkarte **Universell**. *Gen 4*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtueller Kern**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
   
-    > [!IMPORTANT]
-    > Der hier angegebene Benutzername und das Kennwort für den Serveradministrator werden im weiteren Verlauf dieser Schnellstartanleitung für die Anmeldung beim Server und bei den dazugehörigen Datenbanken benötigt. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
-    > 
+   > [!NOTE]
+   > Ziehen Sie die Verwendung des Tarifs „Basic“ in Betracht, wenn geringe Compute- und E/A-Leistung für Ihre Workload angemessen ist. Beachten Sie, dass im Tarif „Basic“ erstellte Server später nicht auf „Universell“ oder „Arbeitsspeicheroptimiert“ skaliert werden können. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/mysql/).
+   > 
 
    ![Erstellen des Servers – Tariffenster](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
@@ -71,7 +71,7 @@ Der Dienst „Azure-Datenbank für MySQL“ erstellt eine Firewall auf der Serve
 
 2. Wählen Sie auf der Serverseite die Option **Verbindungssicherheit** aus.
 
-3.  Wählen Sie unter der Überschrift **Firewallregeln** in der Spalte **Regelname** das leere Textfeld aus, um mit der Erstellung der Firewallregel zu beginnen. Geben Sie den präzisen IP-Adressenbereich der Clients ein, die auf diesen Server zugreifen werden.
+3.  Wählen Sie unter der Überschrift **Firewallregeln** in der Spalte **Regelname** das leere Textfeld aus, um mit der Erstellung der Firewallregel zu beginnen. Geben Sie den präzisen IP-Adressbereich der Clients ein, die auf diesen Server zugreifen werden.
    
    ![Verbindungssicherheit – Firewallregeln](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
 

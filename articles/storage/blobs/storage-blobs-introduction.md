@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/19/2018
+ms.date: 01/03/2019
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 7628260efff34b52ca7d4bd4c35cce279d5474b3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 516ce9d9a6fcc73b543c7db584afebf71c2293ca
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965409"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064992"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Einführung in Azure Blob Storage
 
@@ -33,7 +33,7 @@ Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
 ### <a name="storage-accounts"></a>Speicherkonten
 
-Ein Speicherkonto bietet einen eindeutigen Namespace für Ihre Daten in Azure. Jedes Objekt, das Sie in Azure speichern, besitzt eine Adresse, die den eindeutigen Namen Ihres Speicherkontos enthält. Die Kombination aus Kontoname und Azure Storage-Dienstendpunkt bildet die Endpunkte für Ihr Speicherkonto.
+Ein Speicherkonto bietet einen eindeutigen Namespace für Ihre Daten in Azure. Jedes Objekt, das Sie in Azure speichern, besitzt eine Adresse, die den eindeutigen Namen Ihres Speicherkontos enthält. Die Kombination aus Kontoname und Azure Storage-Blobendpunkt bildet die Basisadresse für die Objekte in Ihrem Speicherkonto.
 
 Wenn Ihr Speicherkonto beispielsweise *meinspeicherkonto* heißt, lautet der Standardendpunkt für Blob Storage wie folgt:
 
@@ -56,7 +56,7 @@ Azure Storage unterstützt drei Arten von Blobs:
 
 * In **Blockblobs** werden Text- und Binärdaten bis zu einer Größe von ca. 4,7 TB gespeichert. Blockblobs bestehen aus Datenblöcken, die einzeln verwaltet werden können.
 * **Anfügeblobs** bestehen wie Blockblobs aus Blöcken, sind aber für Anfügevorgänge optimiert. Anfügeblobs sind beispielsweise ideal für Szenarien, bei denen es um das Protokollieren von Daten virtueller Computer geht.
-* In **Seitenblobs** werden Random-Access-Dateien mit einer Größe von bis zu 8 TB gespeichert. Seitenblobs speichern die VHD-Dateien (Virtual Hard Drive, virtuelle Festplatte), die als Datenträger für Azure-VMs fungieren. Weitere Informationen zu Seitenblobs finden Sie in der entsprechenden Übersicht (../articles/storage/blobs/storage-blob-pageblob-overview.md).
+* In **Seitenblobs** werden Random-Access-Dateien mit einer Größe von bis zu 8 TB gespeichert. Seitenblobs speichern die VHD-Dateien (Virtual Hard Drive, virtuelle Festplatte), die als Datenträger für Azure-VMs fungieren. Weitere Informationen über Seitenblobs finden Sie unter [Übersicht über Azure-Seitenblobs](storage-blob-pageblob-overview.md).
 
 Weitere Informationen zu den verschiedenen Blobtypen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
 

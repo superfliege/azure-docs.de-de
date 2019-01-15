@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 947e5d4004565fd10e81e703111daf26fce10368
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973518"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159008"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
 
@@ -68,11 +68,12 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
-1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** > **Speicher** > **Backup & Site Recovery (OMS)**.
-2. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird. Für diese Tutorials verwenden wir **ContosoVMVault**.
-3. In **Ressourcengruppe** verwenden wir **contosoRG**.
-4. In **Ort** verwenden wir **Europa, Westen**.
-5. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.
+1. Klicken Sie im Azure-Portal auf **+Ressource erstellen**, und suchen Sie im Marketplace nach **Wiederherstellungsdienste**.
+2. Klicken Sie auf **Backup & Site Recovery (OMS)**, und klicken Sie auf der Seite „Backup & Site Recovery“ auf **Erstellen**. 
+1. Geben Sie unter **Recovery Services-Tresor** > **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird. Für diese Tutorials verwenden wir **ContosoVMVault**.
+2. Wählen Sie in **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. Für dieses Tutorial verwenden wir **contosoRG**.
+3. Wählen Sie in **Standort** die Region aus, in der der Tresor gespeichert werden soll. verwenden wir **Europa, Westen**.
+4. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.
 
    ![Erstellen eines neuen Tresors](./media/tutorial-prepare-azure/new-vault-settings.png)
 

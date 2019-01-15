@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 07/11/2018
+ms.date: 01/02/2019
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e483997140efc1d75466d887e42383d887f8a6f4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963248"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065544"
 ---
 # <a name="introduction-to-azure-storage"></a>Einführung in Azure Storage
 
@@ -22,7 +22,7 @@ Azure Storage ist die Cloudspeicherlösung von Microsoft für moderne Datenspeic
 - **Robust und hoch verfügbar:** Mit Redundanz wird sichergestellt, dass Ihre Daten sicher sind, falls es zu vorübergehenden Hardwareausfällen kommt. Sie können sich auch für das Replizieren von Daten über Rechenzentren oder geografische Regionen hinweg entscheiden, um eine weitere Schutzebene vor lokalen Notfällen oder Naturkatastrophen zu schaffen. Daten, die auf diese Weise repliziert werden, sind bei einem unerwarteten Ausfall weiterhin hoch verfügbar. 
 - **Sicher:** Alle Daten, die in Azure Storage geschrieben werden, werden vom Dienst verschlüsselt. Bei Azure Storage können Sie genau steuern, wer Zugriff auf Ihre Daten hat.
 - **Skalierbar:** Azure Storage ist auf hohe Skalierbarkeit ausgelegt, um die Datenspeicherungs- und Leistungsanforderungen heutiger Anwendungen zu erfüllen. 
-- **Verwaltet:** Microsoft Azure übernimmt für Sie die Wartung und Behandlung aller kritischen Probleme.
+- **Verwaltet:** Microsoft Azure übernimmt die Hardwarewartung, Updates und die Behandlung kritischer Probleme für Sie.
 - **Zugänglich:** Auf Daten in Azure Storage kann weltweit per HTTP oder HTTPS zugegriffen werden. Microsoft stellt SDKs für Azure Storage in verschiedenen Sprachen – .NET, Java, Node.js, Python, PHP, Ruby, Go und anderen – sowie eine ausgereifte REST-API bereit. Azure Storage unterstützt die Skripterstellung in Azure PowerShell oder der Azure CLI. Darüber hinaus werden im Azure-Portal und über Azure Storage-Explorer einfache visuelle Lösungen für die Arbeit mit Ihren Daten bereitgestellt.  
 
 ## <a name="azure-storage-services"></a>Azure Storage-Dienste
@@ -89,30 +89,9 @@ Azure Storage umfasst auch die Funktionen für verwaltete und nicht verwaltete D
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 
-Die folgende Tabelle enthält die verschiedenen Arten von Speicherkonten sowie die Objekte, die jeweils mit den Konten verwendet werden können.
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
-|**Speicherkontotyp**|**Standard (allgemein)**|**Premium (allgemein)**|**Blobspeicher, Zugriffsebenen „Heiß“ und „Kalt“**|
-|-----|-----|-----|-----|
-|**Unterstützte Dienste**| Blob-, File-, Queue- und Tabellendienste | Blob-Dienst | Blob-Dienst|
-|**Unterstützte Blobtypen**|Blockblobs, Seitenblobs und Anfügeblobs | Seitenblobs | Blockblobs und Anfügeblobs|
-
-### <a name="general-purpose-storage-accounts"></a>Allgemeine Speicherkonten
-
-Es gibt zwei Arten von allgemeine Speicherkonten.
-
-#### <a name="standard-storage"></a>Standardspeicher
-
-Die am häufigsten genutzten Speicherkonten sind Standardspeicherkonten, die für alle Datentypen verwendet werden können. Standardspeicherkonten verwenden Datenträger zum Speichern von Daten.
-
-#### <a name="premium-storage"></a>Storage Premium
-
-Storage Premium bietet Hochleistungsspeicher für Seitenblobs, die in erster Linie für VHD-Dateien verwendet werden. Storage Premium-Konten nutzen SSD für die Datenspeicherung. Microsoft empfiehlt die Verwendung von Storage Premium für alle virtuellen Computer.
-
-### <a name="blob-storage-accounts"></a>Blob Storage-Konten
-
-Beim Blob Storage-Konto handelt es sich um ein spezielles Speicherkonto für die Speicherung von Blockblobs und Anfügeblobs. Seitenblobs können in diesen Konten nicht gespeichert werden, daher ist das Speichern von VHD-Dateien nicht möglich. Mit diesen Konten können Sie die Zugriffsebene „Heiß“ oder „Kalt“ festlegen. Die Ebene kann jederzeit geändert werden.
-
-Die Zugriffsebene „Heiß“ wird für Dateien verwendet, auf die häufig zugegriffen wird: Die Speicherkosten sind höher, die Kosten für den Zugriff auf die Blobs jedoch viel niedriger. Für Blobs, die in der Zugriffsebene „Kalt“ gespeichert sind, fallen höhere Kosten für den Zugriff auf die Blobs an. Die Kosten für die Speicherung sind jedoch viel niedriger.
+Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md). 
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>Zugreifen auf Blobs, Dateien und Warteschlangen
 
@@ -161,16 +140,7 @@ Informationen zur Notfallwiederherstellung finden Sie unter [What to do if an Az
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Übertragen von Daten in und aus Azure Storage
 
-Über das Befehlszeilenprogramm AzCopy können Sie Blob- und Dateidaten innerhalb Ihres Speicherkontos oder zwischen Speicherkonten kopieren. Weitere Anweisungen finden Sie in den folgenden Artikeln:
-
-* [Transfer data with the AzCopy on Windows](storage-use-azcopy.md) (Übertragen von Daten mit AzCopy unter Windows)
-* [Transfer data with AzCopy on Linux](storage-use-azcopy-linux.md) (Übertragen von Daten mit AzCopy unter Linux)
-
-AzCopy baut auf der [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)auf, die derzeit als Vorschau verfügbar ist.
-
-Mit dem Azure Import/Export-Dienst können große Mengen Blobdaten in das Speicherkonto importiert bzw. aus dem Speicherkonto exportiert werden. Sie bereiten mehrere Festplatten vor und senden Sie an ein Azure-Rechenzentrum. Dort werden die Daten von den bzw. auf die Festplatten übertragen und die Festplatten anschließend an sie zurückgesendet. Weitere Informationen zu diesem Dienst finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage-import-export-service.md).
-
-Wenn Sie schnell, kostengünstig und zuverlässig große Mengen an Blobdaten in Ihr Speicherkonto importieren möchten, können Sie auch Azure Data Box Disk verwenden. Microsoft sendet über einen regionalen Transportdienstleister bis zu fünf verschlüsselte SSDs (Solid State Drives) mit einer Kapazität von 40 TB an Ihr Datencenter. Sie können die Datenträger schnell konfigurieren, Daten über eine USB-Verbindung auf die Datenträger kopieren und sie anschließend wieder an Azure zurücksenden. Im Azure-Datencenter werden Ihre Daten dann automatisch in die Cloud hochgeladen. Weitere Informationen zu dieser Lösung finden Sie in der [Übersicht über Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
+Sie haben mehrere Optionen zum Verschieben von Daten in oder aus Azure Storage. Welche Option Sie auswählen, hängt von der Größe Ihres Datasets und der verfügbaren Netzwerkbandbreite ab. Weitere Informationen finden Sie unter [Auswählen einer Azure-Lösung für die Datenübertragung](storage-choose-data-transfer-solution.md).
 
 ## <a name="pricing"></a>Preise
 

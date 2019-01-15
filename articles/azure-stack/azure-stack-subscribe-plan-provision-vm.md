@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 01/09/2019
 ms.author: sethm
-ms.openlocfilehash: b6739a194f6374cf90e6508f4a4316892daaf3dd
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7de32573ac6c0d084be3fdd6ff2c3641559fc31f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079241"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118828"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Erstellen von Abonnements für Angebote in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Nachdem Sie ein [Angebot erstellt](azure-stack-create-offer.md) haben, benötigen Benutzer ein Abonnement für dieses Angebot, damit sie es nutzen können. Ein Benutzer kann auf zwei Arten ein Abonnement für ein Angebot erhalten:
 
@@ -32,7 +32,7 @@ Nachdem Sie ein [Angebot erstellt](azure-stack-create-offer.md) haben, benötige
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>Erstellen eines Abonnements als Cloudbediener
 
-Cloudbediener können im Verwaltungsportal ein Angebotsabonnement für Benutzer erstellen.  Sie können Abonnements für Mitglieder Ihres eigenen Verzeichnismandanten erstellen.  Wenn die [Mehrinstanzenfähigkeit](azure-stack-enable-multitenancy.md) aktiviert ist, können Sie auch Abonnements für Benutzer in zusätzlichen Verzeichnismandanten erstellen.
+Cloudbediener können im Verwaltungsportal ein Angebotsabonnement für Benutzer erstellen. Sie können Abonnements für Mitglieder Ihres eigenen Verzeichnismandanten erstellen. Wenn die [Mehrinstanzenfähigkeit](azure-stack-enable-multitenancy.md) aktiviert ist, können Sie auch Abonnements für Benutzer in zusätzlichen Verzeichnismandanten erstellen.
 
 Wenn Ihre Mandanten keine eigenen Abonnements erstellen sollen, legen Sie Ihre Angebote als privat fest, und erstellen Sie anschließend Abonnements für Ihre Mandanten. Dieser Ansatz kommt häufig beim Integrieren von Azure Stack in externe Abrechnungs- oder Dienstkatalogsysteme zum Einsatz.
 
@@ -48,7 +48,7 @@ Nachdem Sie ein Abonnement für einen Benutzer erstellt haben, kann er sich beim
 
      - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **AD FS:** `<user1>@<azurestack.local>` 
+     - **AD FS:** `<user1>@<azurestack.local>`
 
    - **Verzeichnismandant**: Wählen Sie den Verzeichnismandanten aus, zu dem das Benutzerkonto gehört. Wenn Sie keine Mehrinstanzenfähigkeit aktiviert haben, ist nur der lokale Verzeichnismandant verfügbar.
 
@@ -58,7 +58,7 @@ Nachdem Sie ein Abonnement für einen Benutzer erstellt haben, kann er sich beim
 
 ### <a name="to-make-an-add-on-plan-available"></a>So stellen Sie einen Add-On-Plan zur Verfügung
 
-Ein Cloudbediener kann jederzeit einen Add-On-Plan zu einem zuvor erstellten Abonnement hinzufügen:
+Ein Cloudbediener kann einem zuvor erstellten Abonnement jederzeit einen Plan hinzufügen:
 
 1. Klicken Sie im Verwaltungsportal auf **Alle Dienste** und anschließend unter der Kategorie **VERWALTUNGSRESSOURCEN** auf **Benutzerabonnements**. Wählen Sie das Abonnement aus, das Sie ändern möchten.
 
@@ -75,7 +75,7 @@ Als Benutzer können Sie sich beim Benutzerportal anmelden, um öffentliche Ange
 
 ### <a name="to-subscribe-to-an-offer"></a>So abonnieren Sie ein Angebot
 
-1. [Melden Sie sich beim Azure Stack-Benutzerportal an](azure-stack-connect-azure-stack.md) (https://portal.local.azurestack.external), und klicken Sie auf **Abonnement erwerben**.
+1. [Melden Sie sich](azure-stack-connect-azure-stack.md) beim [Azure Stack-Benutzerportal](https://portal.local.azurestack.external) an, und wählen Sie **Abonnement erwerben** aus.
 
    ![Erwerben eines Abonnements](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
@@ -84,19 +84,19 @@ Als Benutzer können Sie sich beim Benutzerportal anmelden, um öffentliche Ange
    ![Erstellen von Angeboten](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
 3. Aktualisieren Sie nach dem Abonnieren eines Angebots das Portal, um anzuzeigen, welche Dienste zum neuen Abonnement gehören.
+
 4. Klicken Sie zum Anzeigen des erstellten Abonnements auf **Alle Dienste** und anschließend unter der Kategorie **ALLGEMEIN** auf **Abonnements**. Klicken Sie auf das Abonnement, um die Abonnementdetails anzuzeigen.  
 
 ### <a name="to-subscribe-to-an-add-on-plan"></a>So abonnieren Sie einen Add-On-Plan
 
 Wenn ein Angebot einen Add-On-Plan enthält, können Sie diesen Plan jederzeit zu Ihrem Abonnement hinzufügen.  
 
-1. Klicken Sie im Benutzerportal auf **Alle Dienste**. Klicken Sie als Nächstes unter der Kategorie **ALLGEMEIN** auf **Abonnements**, und wählen Sie dann das zu ändernde Abonnement aus. Sofern Add-On-Pläne verfügbar sind, ist **+Plan hinzufügen** aktiv, und es ist eine Kachel für **Add-On-Pläne** vorhanden.
+1. Klicken Sie im Benutzerportal auf **Alle Dienste**. Klicken Sie als Nächstes unter der Kategorie **ALLGEMEIN** auf **Abonnements**, und wählen Sie dann das zu ändernde Abonnement aus. Sofern Add-On-Pläne verfügbar sind, ist **+Plan hinzufügen** aktiv, und es ist eine Kachel für **Add-On-Pläne** vorhanden. 
 
-   >[!NOTE]
-   >Ist **+Plan hinzufügen** nicht aktiv, gibt es keine Add-On-Pläne für das mit diesem Abonnement verknüpfte Angebot.
+   Ist **+Plan hinzufügen** nicht aktiv, gibt es keine Add-On-Pläne für das mit diesem Abonnement verknüpfte Angebot.
 
 1. Klicken Sie auf **+Plan hinzufügen** oder auf die Kachel **Add-On-Pläne**. Wählen Sie unter **Add-On-Pläne** den Plan aus, den Sie hinzufügen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen von virtuellen Computern](azure-stack-provision-vm.md)
+- [Bereitstellen von virtuellen Computern](azure-stack-provision-vm.md)

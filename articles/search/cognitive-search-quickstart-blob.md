@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff862dcee77fb874511ea1b9bcc907a5e4b60dcc
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998981"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015271"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten
 
@@ -26,9 +26,9 @@ In dieser Schnellstartanleitung erstellen Sie Ihre erste Anreicherungspipeline i
 
 > [!div class="checklist"]
 > * Beginnen Sie mit Beispieldaten in Azure Blob Storage
-> * Konfigurieren Sie den [Datenimport-Assistenten](search-import-data-portal.md) für kognitive Indizierung und Anreicherung 
+> * Konfigurieren Sie den [**Datenimport-Assistenten**](search-import-data-portal.md) für kognitive Indizierung und Anreicherung 
 > * Führen Sie den Assistenten aus (eine Entitäts-Qualifikation erkennt Personen, Orte und Organisationen)
-> * Verwenden Sie den [Suchexplorer](search-explorer.md), um die angereicherten Daten abzufragen
+> * Verwenden Sie den [**Suchexplorer**](search-explorer.md), um die angereicherten Daten abzufragen
 
 ## <a name="supported-regions"></a> Unterstützte Regionen
 
@@ -98,15 +98,15 @@ Die Anreicherungspipeline ruft mit Unterstützung von [Azure Search-Indexern](se
 
 1. [Laden Sie die Beispieldaten herunter](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), die aus einem kleinen Satz Dateien verschiedener Typen bestehen. 
 
-1. Registrieren Sie sich für Azure Blob-Speicher, erstellen Sie ein Speicherkonto, melden Sie sich beim Storage-Explorer an, und erstellen Sie einen Container. Legen Sie als öffentliche Zugriffsebene **Container** fest. Weitere Informationen finden Sie im [Abschnitt „Erstellen eines Containers“](../storage/blobs/storage-unstructured-search.md#create-a-container) im Tutorial zum Suchen von unstrukturierten Daten.
+1. Registrieren Sie sich für Azure Blob-Speicher, erstellen Sie ein Speicherkonto, öffnen Sie die Blobdienstseiten, und erstellen Sie einen Container. Legen Sie im Container als öffentliche Zugriffsebene **Container** fest. Weitere Informationen finden Sie im [Abschnitt „Erstellen eines Containers“](../storage/blobs/storage-unstructured-search.md#create-a-container) im Tutorial zum *Suchen von unstrukturierten Daten*.
 
-1. Klicken Sie in dem von Ihnen erstellten Container auf **Hochladen**, um die Beispieldateien hochzuladen.
+1. Klicken Sie im von Ihnen erstellten Container auf **Hochladen**, um die in einem vorherigen Schritt heruntergeladenen Beispieldateien hochzuladen.
 
   ![Quelldateien in Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>Erstellen der Anreicherungspipeline
 
-Wechseln Sie zur Dashboardseite des Azure Search-Diensts zurück, und klicken Sie auf der Befehlsleiste auf **Daten importieren**, um die kognitive Anreicherung in vier Schritten einzurichten.
+Kehren Sie zur Dashboardseite des Azure Search-Diensts zurück, und klicken Sie auf der Befehlsleiste auf **Daten importieren**, um die kognitive Anreicherung in vier Schritten einzurichten.
 
   ![Befehl zum Importieren von Daten](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 

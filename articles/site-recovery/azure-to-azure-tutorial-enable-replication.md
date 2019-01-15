@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60ecf08d7f0c40a04472b3e2bf5ef739e51c32e8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794429"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103514"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
@@ -43,7 +43,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 Erstellen Sie den Tresor in einer beliebigen Region außer der Quellregion.
 
 1. Melden Sie sich unter [Azure-Portal](https://portal.azure.com) > **Recovery Services** an.
-2. Klicken Sie auf **Ressource erstellen** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
+2. Klicken Sie auf **Ressource erstellen** > **Verwaltungstools** > **Backup & Site Recovery**.
 3. Geben Sie unter **Name**einen Anzeigenamen an, mit dem der Tresor identifiziert wird. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 4. Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene aus. Geben Sie eine Azure-Region an. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)unter „Geografische Verfügbarkeit“.
 5. Um schnell über das Dashboard auf den Tresor zuzugreifen, klicken Sie auf **An Dashboard anheften** und anschließend auf **Erstellen**.
@@ -172,7 +172,8 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
 
 5. Wenn Sie VMs einer neuen oder vorhandenen Replikationsgruppe hinzufügen möchten, wählen Sie unter **Anpassen** die Option **Ja** für Multi-VM-Konsistenz aus, um die VMs einer Replikationsgruppe hinzuzufügen. Klicken Sie dann auf **OK**.
 
-    - Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist.
+    - Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken (da der Vorgang CPU-intensiv ist) und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist.
+    - Eine Replikationsgruppe kann maximal 16 virtuelle Computer enthalten.
     - Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 gemäß den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
 
 ### <a name="configure-encryption-settings"></a>Konfigurieren der Verschlüsselungseinstellungen

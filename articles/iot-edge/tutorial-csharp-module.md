@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/25/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 758d23400dc8361aa58a8fb72b54450350160dc4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7d379be5e85d908424dae76ac148d931d1b7b4b8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342424"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052205"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Tutorial: Entwickeln und Bereitstellen eines C#-IoT Edge-Moduls für Ihr simuliertes Gerät
 
@@ -48,14 +48,14 @@ Entwicklungsressourcen:
 
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) für Visual Studio Code 
+* [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) für Visual Studio Code. 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 * [Docker CE](https://docs.docker.com/install/)
 
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-In diesem Tutorial verwenden Sie die Azure IoT Edge-Erweiterung für Visual Studio Code zum Entwickeln eines Moduls und Erstellen eines **Containerimages** aus den Dateien. Danach pushen Sie dieses Image in ein **Repository**, in dem Ihre Images gespeichert und verwaltet werden. Abschließend stellen Sie Ihr Image aus der Registrierung zur Ausführung auf dem IoT Edge-Gerät bereit.  
+In diesem Tutorial verwenden Sie die Azure IoT-Tools für Visual Studio Code zum Entwickeln eines Moduls und Erstellen eines **Containerimages** aus den Dateien. Danach pushen Sie dieses Image in ein **Repository**, in dem Ihre Images gespeichert und verwaltet werden. Abschließend stellen Sie Ihr Image aus der Registrierung zur Ausführung auf dem IoT Edge-Gerät bereit.  
 
 Sie können eine beliebige Docker-kompatible Registrierung zum Speichern Ihrer Containerimages verwenden. Zwei beliebte Docker-Registrierungsdienste sind [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) und [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). In diesem Tutorial wird Azure Container Registry verwendet. 
 
@@ -81,7 +81,7 @@ Sollten Sie noch keine Containerregistrierung besitzen, führen Sie die folgende
 7. Kopieren Sie die Werte für **Anmeldeserver**, **Benutzername** und **Kennwort**. Sie verwenden diese Werte an späterer Stelle des Tutorials, um Zugriff auf die Containerregistrierung zu gewähren. 
 
 ## <a name="create-an-iot-edge-module-project"></a>Erstellen eines IoT Edge-Modulprojekts
-Die folgenden Schritte dienen zum Erstellen eines auf dem .NET Core 2.0 SDK basierenden IoT Edge-Moduls unter Verwendung von Visual Studio Code und der Azure IoT Edge-Erweiterung.
+Die folgenden Schritte dienen zum Erstellen eines auf dem .NET Core 2.0 SDK basierenden IoT Edge-Moduls unter Verwendung von Visual Studio Code und der Azure IoT-Tools.
 
 ### <a name="create-a-new-solution"></a>Erstellen einer neuen Lösung
 
@@ -123,7 +123,7 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
 
 1. Öffnen Sie im VS Code-Explorer **Module** > **CSharpModule** > **Program.cs**.
 
-5. Fügen Sie oben im Namespace **CSharpModule** drei **using**-Anweisungen für Typen hinzu, die im weiteren Verlauf verwendet werden:
+2. Fügen Sie oben im Namespace **CSharpModule** drei **using**-Anweisungen für Typen hinzu, die im weiteren Verlauf verwendet werden:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -131,13 +131,13 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
     using Newtonsoft.Json;                // For JsonConvert
     ```
 
-6. Fügen Sie der Klasse **Program** die Variable **temperatureThreshold** hinzu. Diese Variable legt den Wert fest, den die gemessene Temperatur übersteigen muss, damit die Daten an die IoT Hub-Instanz gesendet werden. 
+3. Fügen Sie der Klasse **Program** die Variable **temperatureThreshold** hinzu. Diese Variable legt den Wert fest, den die gemessene Temperatur übersteigen muss, damit die Daten an die IoT Hub-Instanz gesendet werden. 
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-7. Fügen Sie der Klasse **Program** die Klassen **MessageBody**, **Machine** und **Ambient** hinzu. Diese Klassen definieren das erwartete Schema für den Textkörper eingehender Nachrichten.
+4. Fügen Sie der Klasse **Program** die Klassen **MessageBody**, **Machine** und **Ambient** hinzu. Diese Klassen definieren das erwartete Schema für den Textkörper eingehender Nachrichten.
 
     ```csharp
     class MessageBody
@@ -158,7 +158,7 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
     }
     ```
 
-8. In der **Init**-Methode erstellt und konfiguriert der Code ein **ModuleClient**-Objekt. Mit diesem Objekt kann das Modul die Verbindung mit der lokalen Azure IoT Edge-Runtime herstellen, um Nachrichten zu senden und zu empfangen. Die in der Methode **Init** verwendete Verbindungszeichenfolge wird durch die IoT Edge-Runtime für das Modul bereitgestellt. Nach dem Erstellen von **ModuleClient** liest der Code den Wert **temperatureThreshold** aus den gewünschten Eigenschaften des Modulzwillings. Der Code registriert einen Rückruf, um über den Endpunkt **input1** Nachrichten von einer IoT Edge Hub-Instanz zu empfangen. Ersetzen Sie die Methode **SetInputMessageHandlerAsync** durch eine neue, und fügen Sie den gewünschten Eigenschaften eine Methode vom Typ **SetDesiredPropertyUpdateCallbackAsync** hinzu. Zu diesem Zweck ersetzen Sie die letzte Zeile der **Init**-Methode durch folgenden Code:
+5. In der **Init**-Methode erstellt und konfiguriert der Code ein **ModuleClient**-Objekt. Mit diesem Objekt kann das Modul die Verbindung mit der lokalen Azure IoT Edge-Runtime herstellen, um Nachrichten zu senden und zu empfangen. Die in der Methode **Init** verwendete Verbindungszeichenfolge wird durch die IoT Edge-Runtime für das Modul bereitgestellt. Nach dem Erstellen von **ModuleClient** liest der Code den Wert **temperatureThreshold** aus den gewünschten Eigenschaften des Modulzwillings. Der Code registriert einen Rückruf, um über den Endpunkt **input1** Nachrichten von einer IoT Edge Hub-Instanz zu empfangen. Ersetzen Sie die Methode **SetInputMessageHandlerAsync** durch eine neue, und fügen Sie den gewünschten Eigenschaften eine Methode vom Typ **SetDesiredPropertyUpdateCallbackAsync** hinzu. Zu diesem Zweck ersetzen Sie die letzte Zeile der **Init**-Methode durch folgenden Code:
 
     ```csharp
     // Register a callback for messages that are received by the module.
@@ -166,13 +166,8 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
 
     // Read the TemperatureThreshold value from the module twin's desired properties
     var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
-    var moduleTwinCollection = moduleTwin.Properties.Desired;
-    try {
-        temperatureThreshold = moduleTwinCollection["TemperatureThreshold"];
-    } catch(ArgumentOutOfRangeException e) {
-        Console.WriteLine($"Property TemperatureThreshold not exist: {e.Message}"); 
-    }
-
+    OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
+    
     // Attach a callback for updates to the module twin's desired properties.
     await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
 
@@ -180,7 +175,7 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
     await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
     ```
 
-9. Fügen Sie der Klasse **Program** die Methode **onDesiredPropertiesUpdate** hinzu. Diese Methode empfängt Aktualisierungen der gewünschten Eigenschaften aus dem Modulzwilling und aktualisiert die Variable **temperatureThreshold** entsprechend. Alle Module haben ihren eigenen Modulzwilling, über den Sie den in einem Modul ausgeführten Code direkt in der Cloud konfigurieren können.
+6. Fügen Sie der Klasse **Program** die Methode **onDesiredPropertiesUpdate** hinzu. Diese Methode empfängt Aktualisierungen der gewünschten Eigenschaften aus dem Modulzwilling und aktualisiert die Variable **temperatureThreshold** entsprechend. Alle Module haben ihren eigenen Modulzwilling, über den Sie den in einem Modul ausgeführten Code direkt in der Cloud konfigurieren können.
 
     ```csharp
     static Task OnDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -211,7 +206,7 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
     }
     ```
 
-10. Ersetzen Sie die Methode **PipeMessage** durch die Methode **FilterMessages**. Diese Methode wird aufgerufen, wenn das Modul eine Nachricht vom IoT Edge-Hub empfängt. Sie filtert Nachrichten heraus, die Temperaturen unter dem über den Modulzwilling festgelegten Temperaturschwellenwert melden. Sie fügt der Nachricht außerdem die **MessageType**-Eigenschaft hinzu, deren Wert auf **Alert** festgelegt ist. 
+7. Ersetzen Sie die Methode **PipeMessage** durch die Methode **FilterMessages**. Diese Methode wird aufgerufen, wenn das Modul eine Nachricht vom IoT Edge-Hub empfängt. Sie filtert Nachrichten heraus, die Temperaturen unter dem über den Modulzwilling festgelegten Temperaturschwellenwert melden. Sie fügt der Nachricht außerdem die **MessageType**-Eigenschaft hinzu, deren Wert auf **Alert** festgelegt ist. 
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -266,17 +261,21 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
     }
     ```
 
-11. Speichern Sie diese Datei.
+8. Speichern Sie die Datei "Program.cs".
 
-12. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe. Diese Datei weist **$edgeAgent** an, zwei Module bereitzustellen: **tempSensor** und **CSharpModule**. Die Standardplattform Ihrer IoT Edge-Instanz ist auf Ihrer VS Code-Statusleiste auf **amd64** festgelegt. Das bedeutet, dass **CSharpModule** auf die Linux-amd64-Version des Images festgelegt ist. Ändern Sie die Standardplattform auf der Statusleiste von **amd64** in **arm32v7** oder **windows-amd64**, sofern es sich dabei um die Architektur Ihres IoT Edge-Geräts handelt. 
+9. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe. Über diese Datei erhält der IoT Edge-Agent die Informationen dazu, welche Module bereitgestellt werden sollen (hier: **tempSensor** und **CSharpModule**). Außerdem wird der IoT Edge-Hub angewiesen, wie die Nachrichten weitergeleitet werden sollen. Die Visual Studio Code-Erweiterung fügt zwar automatisch die meisten Informationen ein, die Sie für die Bereitstellungsvorlage benötigen, aber Sie sollten überprüfen, ob alle Angaben für Ihre Lösung stimmen: 
 
-   Stellen Sie sicher, dass die Vorlage den richtigen Modulnamen und nicht den Standardnamen **SampleModule** besitzt, den Sie beim Erstellen der IoT Edge-Lösung geändert haben.
+   1. Die Standardplattform Ihrer IoT Edge-Instanz ist auf Ihrer VS Code-Statusleiste auf **amd64** festgelegt. Das bedeutet, dass **CSharpModule** auf die Linux-amd64-Version des Images festgelegt ist. Ändern Sie die Standardplattform auf der Statusleiste von **amd64** in **arm32v7** oder **windows-amd64**, sofern es sich dabei um die Architektur Ihres IoT Edge-Geräts handelt. 
 
-   Weitere Informationen zu Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau](module-composition.md).
+      ![Aktualisieren der Modulimageplattform](./media/tutorial-csharp-module/image-platform.png)
 
-   Die Anmeldeinformationen Ihrer Docker-Registrierung werden im Abschnitt **registryCredentials** der Datei „deployment.template.json“ gespeichert. Die tatsächlichen Benutzername-/Kennwortpaare werden in der ENV-Datei gespeichert. Diese Datei wird von Git ignoriert.  
+   2. Stellen Sie sicher, dass die Vorlage den richtigen Modulnamen und nicht den Standardnamen **SampleModule** besitzt, den Sie beim Erstellen der IoT Edge-Lösung geändert haben.
 
-13. Fügen Sie dem Bereitstellungsmanifest den Modulzwilling **CSharpModule** hinzu. Fügen Sie am Ende des Abschnitts **modulesContent** nach dem Modulzwilling **$edgeHub** den folgenden JSON-Inhalt ein: 
+   3. Im Abschnitt **registryCredentials** werden Ihre Anmeldeinformationen für die Docker-Registrierung gespeichert, damit der IoT Edge-Agent Ihr Modulimage per Pullvorgang abrufen kann. Die tatsächlichen Benutzername-/Kennwortpaare werden in der ENV-Datei gespeichert. Diese Datei wird von Git ignoriert. Fügen Sie Ihre Anmeldeinformationen der ENV-Datei hinzu, falls Sie dies noch nicht durchgeführt haben.  
+
+   4. Weitere Informationen zu Bereitstellungsmanifesten finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen in IoT Edge](module-composition.md).
+
+10. Fügen Sie dem Bereitstellungsmanifest den Modulzwilling **CSharpModule** hinzu. Fügen Sie am Ende des Abschnitts **modulesContent** nach dem Modulzwilling **$edgeHub** den folgenden JSON-Inhalt ein: 
 
    ```json
        "CSharpModule": {
@@ -288,7 +287,7 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
 
    ![Hinzufügen des Modulzwillings zur Bereitstellungsvorlage](./media/tutorial-csharp-module/module-twin.png)
 
-14. Speichern Sie diese Datei.
+11. Speichern Sie die Datei „deployment.template.json“.
 
 
 ## <a name="build-your-iot-edge-solution"></a>Erstellen Ihrer IoT Edge-Projektmappe

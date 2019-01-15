@@ -9,23 +9,22 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 2baadd0bcb5aba401e2dd6cec9a82ca401b3c9bd
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 5a883d922944552b53b152546cc891a0a2f4a31f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620488"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042732"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory mit einer Azure Resource Manager-Vorlage
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory-Instanz mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuelle Version](quickstart-create-data-factory-resource-manager-template.md) 
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Data Factory erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](transform-data-using-spark.md). 
+In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Data Factory erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Daten mit Spark transformieren](transform-data-using-spark.md). 
 
 > [!NOTE]
 > Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dienst. Eine Einführung in den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](introduction.md).
@@ -39,6 +38,8 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 Allgemeine Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md). 
 
 Der folgende Abschnitt enthält die vollständige Resource Manager-Vorlage zum Definieren von Data Factory-Entitäten, damit Sie das Tutorial schnell durchlaufen und die Vorlage testen können. Informationen zum Definieren der einzelnen Data Factory-Entitäten finden Sie im Abschnitt [Data Factory-Entitäten in der Vorlage](#data-factory-entities-in-the-template).
+
+Weitere Informationen zur JSON-Syntax und Eigenschaften für Data Factory-Ressourcen in einer Vorlage finden Sie unter [Microsoft.DataFactory-Ressourcentypen](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json"></a>Data Factory-JSON 
 Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **C:\ADFTutorial**, die Folgendes enthält:
@@ -268,7 +269,7 @@ Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Para
 
 > [!IMPORTANT]
 > - Geben Sie für die Parameter **storageAccountName** und **storageAccountKey** in dieser Parameterdatei den Namen und den Schlüssel Ihres Azure Storage-Kontos an. Sie haben den Container adftutorial erstellt und die Beispieldatei (emp.txt) in den Eingabeordner dieser Azure Blob Storage-Instanz hochgeladen. 
-> - Geben Sie einen global eindeutigen Data Factory-Namen für den Parameter **dataFactoryName** an. Beispiel: ARMTutorialFactoryJohnDoe11282017. 
+> - Geben Sie einen global eindeutigen Data Factory-Namen für den Parameter **dataFactoryName** an. Beispiel:  ARMTutorialFactoryJohnDoe11282017. 
 > - Geben Sie für **triggerStartTime** den aktuellen Tag im folgenden Format an: `2017-11-28T00:00:00`.
 > - Geben Sie für **triggerEndTime** den nächsten Tag im folgenden Format an: `2017-11-29T00:00:00`. Sie können auch die aktuelle UTC-Zeit prüfen und die nächste oder übernächste Stunde als Endzeit angeben. Geben Sie beispielsweise `2017-11-29:03:00:00` als Endzeit an, wenn die aktuelle UTC-Zeit 01:32 Uhr lautet. In diesem Fall führt der Trigger die Pipeline zweimal aus (um 2 und 3 Uhr).
 

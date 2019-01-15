@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4ad93dad2044526f5825823540325b73f2d0d7ae
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087932"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053533"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -61,6 +61,22 @@ Geben Sie das Abonnement für Ihr Azure-Speicherkonto an, und wählen Sie dann I
 Ihr neuer Export wird in der Liste der Exporte angezeigt. Neue Exporte sind standardmäßig aktiviert. Wenn Sie einen geplanten Export deaktivieren oder löschen möchten, klicken Sie auf ein beliebiges Element in der Liste und anschließend entweder auf **Deaktivieren** oder **Löschen**.
 
 Zunächst kann es ein bis zwei Stunden dauern, bis der Export ausgeführt wird. Es kann jedoch bis zu vier Stunden dauern, bis die Daten in exportierten Dateien angezeigt werden.
+
+### <a name="export-schedule"></a>Exportzeitplan
+
+Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge zur gleichen Tageszeit ausgeführt. Beispiel: Sie erstellen einen täglichen Export um 13:00 Uhr. Der nächste Export wird am folgenden Tag um 13:00 Uhr ausgeführt. Die aktuelle Uhrzeit wirkt sich nach dem gleichen Prinzip auf alle anderen Exporttypen aus: Sie werden immer zur gleichen Tageszeit ausgeführt, zu der Sie den Export anfangs erstellt haben. Ein weiteres Beispiel: Sie erstellen einen wöchentlichen Export am Montag um 16:00 Uhr. Der nächste Export wird am folgenden Montag um 16:00 Uhr ausgeführt. *Exportierte Daten sind innerhalb von vier Stunden ab der Laufzeit verfügbar.*
+
+Bei jedem Export wird eine neue Datei erstellt, sodass ältere Exporte nicht überschrieben werden.
+
+Es gibt drei Typen von Exportoptionen:
+
+**Täglicher Export der Kosten für bisherigen Kalendermonat**: Der erste Export wird sofort ausgeführt. Nachfolgende Exporte werden am nächsten Tag zur gleichen Zeit wie der erste Export ausgeführt. Die aktuellen Daten werden aus vorhergehenden täglichen Exporten aggregiert.
+
+**Wöchentliche Kosten für die vergangenen sieben Tage**: Der erste Export wird sofort ausgeführt. Nachfolgende Exporte werden jeweils am gleichen Wochentag und zur gleichen Uhrzeit wie der erste Export ausgeführt. Dabei werden Kosten für die letzten sieben Tage angegeben.
+
+**Benutzerdefiniert**: Damit können Sie wöchentliche und monatliche Exporte mit Optionen für die bisherige Woche und dem bisherigen Monat planen. *Der erste Export wird sofort ausgeführt.*
+
+![Neuer Export: Registerkarte „Grundlagen“, die eine benutzerdefinierte Auswahl für wöchentliche Exporte seit Wochenbeginn zeigt](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 ## <a name="verify-that-data-is-collected"></a>Überprüfen, ob Daten gesammelt wurden
 

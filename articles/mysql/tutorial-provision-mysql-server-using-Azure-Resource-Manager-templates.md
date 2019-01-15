@@ -8,20 +8,20 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 45a4a43ae95b42174f368122f89831a356410f2b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3c89c5cc0b299852f85836dd416b5bb270757719
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004074"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061039"
 ---
-# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-templates"></a>Tutorial: Bereitstellen eines Azure Database for MySQL-Servers mithilfe von Azure Resource Manager-Vorlagen
+# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Tutorial: Bereitstellen eines Azure Database for MySQL-Servers mithilfe von Azure Resource Manager-Vorlagen
 
 Mit der [Azure Database for MySQL-REST-API](https://docs.microsoft.com/en-us/rest/api/mysql/) können DevOps-Techniker Bereitstellung, Konfiguration und Prozesse für verwaltete MySQL-Server und -Datenbanken in Azure automatisieren und integrieren.  Die API ermöglicht Erstellung, Enumeration, Verwaltung und Löschung von MySQL-Servern und -Datenbanken im Azure Database for MySQL-Dienst.
 
-Azure Resource Manager-Vorlagen nutzen die zugrunde liegende REST-API, um die für bedarfsorientierte Bereitstellungen erforderlichen Azure-Ressourcen zu deklarieren und zu programmieren und sie an das Infrastructure-as-a-Code-Konzept anzugleichen. Die Vorlage parametrisiert Name, SKU, Netzwerk, Firewallkonfiguration und Einstellungen der Azure-Ressource, sodass sie einmalig erstellt und mehrfach verwendet werden kann.  Azure Resource Manager-Vorlagen können problemlos im [Azure-Portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) oder über [Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI) erstellt werden. Sie ermöglichen das Packen, die Standardisierung und Automatisierung der Bereitstellung für die Integration in die DevOps-CI/CD-Pipeline.  Wenn Sie beispielsweise schnell eine Web-App mit Azure Database for MySQL-Back-End bereitstellen möchten, können Sie die End-to-End-Bereitstellung mit der [Schnellstartvorlage](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) aus dem GitHub-Katalog vornehmen.
+Azure Resource Manager nutzt die zugrunde liegende REST-API, um die für bedarfsorientierte Bereitstellungen erforderlichen Azure-Ressourcen zu deklarieren und zu programmieren und sie an das Infrastructure-as-a-Code-Konzept anzugleichen. Die Vorlage parametrisiert Name, SKU, Netzwerk, Firewallkonfiguration und Einstellungen der Azure-Ressource, sodass sie einmalig erstellt und mehrfach verwendet werden kann.  Azure Resource Manager-Vorlagen können problemlos im [Azure-Portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) oder über [Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI) erstellt werden. Sie ermöglichen das Packen, die Standardisierung und Automatisierung der Bereitstellung für die Integration in die DevOps-CI/CD-Pipeline.  Wenn Sie beispielsweise schnell eine Web-App mit Azure Database for MySQL-Back-End bereitstellen möchten, können Sie die End-to-End-Bereitstellung mit der [Schnellstartvorlage](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) aus dem GitHub-Katalog vornehmen.
 
-In diesem Tutorial verwenden Sie Azure Resource Manager-Vorlagen und andere Hilfsprogramme, um die Vorgehensweise bei folgenden Aufgaben kennenzulernen:
+In diesem Tutorial verwenden Sie eine Azure Resource Manager-Vorlage und andere Hilfsprogramme, um die Vorgehensweise bei folgenden Aufgaben kennenzulernen:
 
 > [!div class="checklist"]
 > * Erstellen eines Azure Database for MySQL-Servers mit VNET-Dienstendpunkt mithilfe einer Azure Resource Manager-Vorlage
@@ -32,7 +32,7 @@ In diesem Tutorial verwenden Sie Azure Resource Manager-Vorlagen und andere Hilf
 
 ## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Erstellen eines Azure Database for MySQL-Servers mit VNET-Dienstendpunkt mithilfe einer Azure Resource Manager-Vorlage
 
-Um die JSON-Vorlagenreferenz für einen Azure Database for MySQL-Server abzurufen, wechseln Sie zu der Vorlagenreferenz für Microsoft.DBforMySQL-Server https://docs.microsoft.com/en-us/azure/templates/microsoft.dbformysql/servers). Nachstehend finden Sie die JSON-Vorlage, die Sie zum Erstellen eines neuen Servers für Azure Database for MySQL mit VNet-Dienstendpunkt verwenden können.
+Um die JSON-Vorlagenreferenz für einen Azure Database for MySQL-Server abzurufen, wechseln Sie zu der Vorlagenreferenz [Microsoft.DBforMySQL-Server](/azure/templates/microsoft.dbformysql/servers). Nachstehend finden Sie die JSON-Vorlage, die Sie zum Erstellen eines neuen Servers für Azure Database for MySQL mit VNet-Dienstendpunkt verwenden können.
 ```json
 {
   "apiVersion": "2017-12-01",

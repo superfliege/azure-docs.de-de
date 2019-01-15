@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Weiterleiten von Datenverkehr an gewichtete Endpunkte mithilfe von Azure Traffic Manager | Microsoft-Dokumentation'
+title: 'Tutorial: Weiterleiten von Datenverkehr an gewichtete Endpunkte mit Azure Traffic Manager | Microsoft-Dokumentation'
 description: In diesem Tutorialartikel erfahren Sie, wie Sie Datenverkehr mithilfe von Traffic Manager an gewichtete Endpunkte weiterleiten.
 services: traffic-manager
 author: KumudD
@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: 0f5b1f3525ab75f8c14f7921e23b30a1c58e8c73
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f70f3804bb1c6f385081b56fe6139b1b680a95cf
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158821"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055012"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Tutorial: Steuern des Routings von Datenverkehr mit gewichteten Endpunkten unter Verwendung von Traffic Manager 
 
@@ -54,7 +54,7 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
 
     |Einstellung|Wert|
     |---|---|
-    |Name|Geben Sie **myIISVMEastUS** ein.|
+    |NAME|Geben Sie **myIISVMEastUS** ein.|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Ressourcengruppe| Wählen Sie **Neu** aus, und geben Sie **myResourceGroupTM1** ein.|
@@ -129,7 +129,7 @@ In diesem Abschnitt erstellen Sie den virtuellen Computer *myVMEastUS*. Mit dies
 
     |Einstellung|Wert|
     |---|---|
-    |Name|Geben Sie **myVMEastUS** ein.|
+    |NAME|Geben Sie **myVMEastUS** ein.|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupTM1** aus.|
@@ -155,7 +155,7 @@ Erstellen Sie ein Traffic Manager-Profil auf der Grundlage der Routingmethode **
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Name                   | Geben Sie einen Namen ein, der innerhalb der Zone „trafficmanager.net“ eindeutig ist. Dadurch ergibt sich der DNS-Name „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
+    | NAME                   | Geben Sie einen Namen ein, der innerhalb der Zone „trafficmanager.net“ eindeutig ist. Dadurch ergibt sich der DNS-Name „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie die Routingmethode **Gewichtet** aus.                                       |
     | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
     | Ressourcengruppe          | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupTM1** aus. |
@@ -174,7 +174,7 @@ Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server ausgef
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Typ                    | Geben Sie den Azure-Endpunkt ein.                                   |
-    | Name           | Geben Sie **myEastUSEndpoint** ein.                                        |
+    | NAME           | Geben Sie **myEastUSEndpoint** ein.                                        |
     | Zielressourcentyp           | Wählen Sie **Öffentliche IP-Adresse**.                          |
     | Zielressource          | Wählen Sie eine öffentliche IP-Adresse aus, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen **myIISVMEastUS-ip** aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|
     |  Weight      | Geben Sie **100** ein.        |

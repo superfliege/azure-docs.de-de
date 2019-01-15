@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 470d08c13d5874283794fa9a2ce06fcaad4f60c2
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 24646c9448a70af228085c99f03ab844e5af7e9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300539"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053141"
 ---
 # <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
 Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten. Dies können beispielsweise ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste sein. Sie sehen diese Komponenten unter Umständen nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem Azure-Ressourcen-Manager können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z.B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können. 
 
 ## <a name="consistent-management-layer"></a>Einheitliche Verwaltungsebene
-Der Resource Manager bietet eine einheitliche Verwaltungsebene für Aufgaben, die über Azure PowerShell, die Azure CLI, das Azure-Portal, die REST-API und über Client-SDKs ausgeführt werden. Alle Funktionen, die über das Azure-Portal verfügbar sind, stehen auch über Azure PowerShell, die Azure CLI, die Azure-REST-APIs und über Client-SDKs zur Verfügung. Funktionen, die ursprünglich über APIs veröffentlicht wurden, werden innerhalb von 180 Tagen ab der ursprünglichen Veröffentlichung in das Portal aufgenommen.
+Resource Manager bietet eine einheitliche Verwaltungsebene zum Durchführen von Aufgaben über das Azure-Portal. Alle Funktionen, die im Azure-Portal verfügbar sind, sind auch über Azure PowerShell, Azure CLI, die Azure-REST-APIs und Client-SDKs verfügbar. Funktionen, die ursprünglich über APIs veröffentlicht wurden, werden innerhalb von 180 Tagen ab der ursprünglichen Veröffentlichung in das Portal aufgenommen.
 
 Verwenden Sie die Tools und APIs, die für Sie am besten geeignet sind – sie haben die gleiche Funktion und liefern die gleichen Ergebnisse.
 
@@ -90,7 +90,7 @@ Bevor Sie mit der Bereitstellung Ihrer Ressourcen beginnen, ist es ratsam, sich 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 Mit dem Resource Manager können Sie eine Vorlage (im JSON-Format) erstellen, mit der die Infrastruktur und Konfiguration der Azure-Lösung definiert wird. Mit einer Vorlage können Sie die Lösung während ihres Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Wenn Sie eine Lösung über das Portal erstellen, enthält sie automatisch eine Bereitstellungsvorlage. Sie müssen die Vorlage nicht völlig neu erstellen, da Sie mit der Vorlage für Ihre Lösung beginnen und diese dann an die speziellen Anforderungen anpassen können. Ein Beispiel finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Sie können auch eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](resource-manager-export-template.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
 
-Weitere Informationen zum Format der Vorlage und zur Erstellung finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Die JSON-Syntax für Ressourcentypen finden Sie unter [Define resources in Azure Resource Manager templates](/azure/templates/) (Definieren von Ressourcen in Azure Resource Manager-Vorlagen).
+Informationen zum Format der Vorlage sowie deren Erstellung finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Die JSON-Syntax für Ressourcentypen finden Sie unter [Define resources in Azure Resource Manager templates](/azure/templates/) (Definieren von Ressourcen in Azure Resource Manager-Vorlagen).
 
 Der Resource Manager verarbeitet die Vorlage wie andere Anforderungen auch (siehe Abbildung für [Einheitliche Verwaltungsebene](#consistent-management-layer)). Er analysiert die Vorlage und konvertiert deren Syntax in REST-API-Vorgänge für die entsprechenden Ressourcenanbieter. Beispielsweise kann der Resource Manager eine Vorlage mit der folgenden Ressourcendefinition empfangen:
 

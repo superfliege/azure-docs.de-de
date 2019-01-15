@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 4d35ab9df17055b798207aafd0e0bdf3b17426fb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753947"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188469"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -170,8 +170,8 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
     | **Abonnententyp** |  Automatisch generiert |  Als Webhook vordefiniert |
     | **Abonnentenendpunkt** | Automatisch generiert | Verwenden Sie die Endpunkt-URL, die für Sie generiert wird. | 
     | **Name** | imageresizersub | Der Name, der Ihr neues Ereignisabonnement angibt. | 
-
-4. Klicken Sie auf **Erstellen**, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das `imageresizerfunc` auslöst, wenn ein Blob dem Container *images* hinzugefügt wird. Die Funktion passt die Größe der Bilder an und fügt sie dem Container *thumbnails* hinzu.
+4. *Optional*: Falls Sie im gleichen Blobspeicher in der Zukunft weitere Container für andere Zwecke erstellen müssen, können Sie **Betrefffilter** auf der Registerkarte **Filter** für eine feiner abgestimmte Zielgruppenadressierung von Blobereignissen verwenden, um sicherzustellen, dass Ihre Funktions-App nur aufgerufen wird, wenn Blobs speziell dem Container **Bilder** hinzugefügt werden. 
+5. Klicken Sie auf **Erstellen**, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das `imageresizerfunc` auslöst, wenn ein Blob dem Container *images* hinzugefügt wird. Die Funktion passt die Größe der Bilder an und fügt sie dem Container *thumbnails* hinzu.
 
 Nachdem die Back-End-Dienste konfiguriert wurden, testen Sie die Funktion für die Größenänderung von Bildern in der Beispiel-Web-App. 
 

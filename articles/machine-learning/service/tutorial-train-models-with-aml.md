@@ -11,18 +11,18 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 117934c83d54cb5454f476ffb3b1a1437c0fd30b
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 5008aebfea8fc284b1b85797f0523bc4fb11c7bd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811476"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075939"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service
 
 In diesem Tutorial wird ein Machine Learning-Modell sowohl lokal als auch auf Remotecomputeressourcen traininert. Hierbei wird der Trainings- und Bereitstellungsworkflow für den Azure Machine Learning Service in einem Python Jupyter Notebook verwendet. Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
 
-In diesem Tutorial wird eine einfache logistische Regression anhand des [MNIST](https://yann.lecun.com/exdb/mnist/)-Datasets und [scikit-learn](https://scikit-learn.org) mit dem Azure Machine Learning Service trainiert. MNIST ist ein populäres Dataset, das aus 70.000 Graustufenbildern besteht. Jedes Bild ist eine handgeschriebene Ziffer von null bis neun im Format von 28 × 28 Pixeln. Das Ziel besteht darin, einen Multiklassen-Klassifizierer zu erstellen, um die in einem bestimmten Bild dargestellte Ziffer zu erkennen. 
+In diesem Tutorial wird eine einfache logistische Regression anhand des [MNIST](http://yann.lecun.com/exdb/mnist/)-Datasets und [scikit-learn](https://scikit-learn.org) mit dem Azure Machine Learning Service trainiert. MNIST ist ein populäres Dataset, das aus 70.000 Graustufenbildern besteht. Jedes Bild ist eine handgeschriebene Ziffer von null bis neun im Format von 28 × 28 Pixeln. Das Ziel besteht darin, einen Multiklassen-Klassifizierer zu erstellen, um die in einem bestimmten Bild dargestellte Ziffer zu erkennen. 
 
 Erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
 
@@ -263,7 +263,7 @@ os.makedirs(script_folder, exist_ok=True)
 
 ### <a name="create-a-training-script"></a>Erstellen eines Trainingsskripts
 
-Um den Auftrag an den Cluster zu übermitteln, erstellen Sie zuerst ein Trainingsskript. Führen Sie folgenden Code aus, um in dem erstellten Verzeichnis ein Trainingsskript namens `train.py` zu erstellen. In diesem Training wird dem Trainingsalgorithmus eine Regularisierungsrate hinzugefügt.  Daher entsteht ein etwas anderes Modell als bei der lokalen Version:
+Um den Auftrag an den Cluster zu übermitteln, erstellen Sie zuerst ein Trainingsskript. Führen Sie folgenden Code aus, um in dem erstellten Verzeichnis ein Trainingsskript namens `train.py` zu erstellen. Mit diesem Training wird dem Trainingsalgorithmus eine Regularisierungsrate hinzugefügt. Damit erzeugt er ein etwas anderes Modell als die lokale Version:
 
 ```python
 %%writefile $script_folder/train.py
@@ -385,7 +385,7 @@ Was geschieht, während Sie warten:
 
 - **Skalierung**: Wenn der Remotecluster zum Ausführen mehr Knoten benötigt, als derzeit verfügbar sind, werden weitere Knoten automatisch hinzugefügt. Die Skalierung dauert normalerweise **etwa fünf Minuten**.
 
-- **Wird ausgeführt**: In dieser Phase werden die erforderlichen Skripts und Dateien an das Computeziel gesendet.  Anschließend werden die Datenspeicher eingebunden oder kopiert. Dann wird das **entry_script** ausgeführt. Während der Auftrag ausgeführt wird, werden **stdout** und das Verzeichnis **./logs** an den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Ausführung überwachen.
+- **Running**: In dieser Phase werden die erforderlichen Skripts und Dateien an das Computeziel gesendet. Anschließend werden Datenspeicher eingebunden oder kopiert. Dann wird das **entry_script** ausgeführt. Während der Auftrag ausgeführt wird, werden **stdout** und das Verzeichnis **./logs** an den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Ausführung überwachen.
 
 - **Nachbearbeitung**: Das Verzeichnis **./outputs** der Ausführung wird über den Ausführungsverlauf in Ihrem Arbeitsbereich kopiert, sodass Sie auf diese Ergebnisse zugreifen können.
 
@@ -450,7 +450,7 @@ print(model.name, model.id, model.version, sep = '\t')
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-Sie können auch nur den Azure Machine Learning-Computecluster löschen. Die automatische Skalierung ist jedoch aktiviert, und die Clustermindestanzahl beträgt null.  Deshalb entstehen durch diese spezielle Ressource bei Nichtverwendung keine zusätzlichen Computegebühren:
+Sie können auch nur den Azure Machine Learning-Computecluster löschen. Die automatische Skalierung ist jedoch aktiviert, und die Clustermindestanzahl beträgt null. Deshalb entstehen durch diese spezielle Ressource bei Nichtverwendung keine zusätzlichen Computegebühren:
 
 
 ```python

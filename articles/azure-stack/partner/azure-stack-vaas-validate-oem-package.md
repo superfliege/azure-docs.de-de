@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e3b0de577186cb7eb032a2042d234a0ffa2e3bb9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261801"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105542"
 ---
 # <a name="validate-oem-packages"></a>Überprüfen von OEM-Paketen
 
@@ -35,7 +35,7 @@ Sie können ein neues OEM-Paket testen, wenn für eine abgeschlossene Lösungsva
 
 Wenn Sie ein Paket unter Verwendung des Workflows **Paketvalidierung** überprüfen, müssen Sie eine URL zu einem **Azure Storage-Blob** angeben. Bei diesem Blob handelt es sich um das OEM-Paket, das beim Bereitstellen für die Lösung installiert wurde. Erstellen Sie das Blob unter Verwendung des Azure Storage-Kontos, das Sie im Rahmen der Einrichtung erstellt haben. (Weitere Informationen finden Sie unter [Tutorial: Einrichten von Ressourcen für Validation-as-a-Service](azure-stack-vaas-set-up-resources.md).)
 
-### <a name="prerequisite-provision-a-storage-container"></a>Voraussetzung: Erstellen eines Speichercontainers
+### <a name="prerequisite-provision-a-storage-container"></a>Voraussetzung: Bereitstellen eines Speichercontainers
 
 Erstellen Sie in Ihrem Speicherkonto einen Container für Paketblobs. Dieser Container kann für alle Paketvalidierungsdurchläufe verwendet werden.
 
@@ -113,9 +113,23 @@ Verwenden Sie die **Blob-SAS-URL**, wenn Sie im VaaS-Portal einen neuen Workflow
 
 ## <a name="run-package-validation-tests"></a>Ausführen von Paketvalidierungstests
 
-Auf der Zusammenfassungsseite der **Paketvalidierungstests**wird eine Liste mit den erforderlichen Tests für die Überprüfung angezeigt. In diesem Workflow enthaltene Tests werden ungefähr 24 Stunden lang ausgeführt.
+1. Auf der Zusammenfassungsseite der **Paketvalidierungstests**wird eine Liste mit den erforderlichen Tests für die Überprüfung angezeigt. In diesem Workflow enthaltene Tests werden ungefähr 24 Stunden lang ausgeführt.
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+    In den Validierungsworkflows werden beim **Planen** eines Tests die allgemeinen Parameter auf der Workflowebene verwendet, die Sie bei der Workflowerstellung angegeben haben (siehe [Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack](azure-stack-vaas-parameters.md)). Sollt einer der Testparameterwerte ungültig werden, muss er gemäß den Anweisungen unter [Ändern von Workflowparametern](azure-stack-vaas-monitor-test.md#change-workflow-parameters) erneut angegeben werden.
+
+    > [!NOTE]
+    > Wenn Sie einen Validierungstest für eine bereits vorhandene Instanz planen, wird die alte Instanz im Portal durch eine neu erstellte Instanz ersetzt. Die Protokolle für die alte Instanz bleiben erhalten, können aber nicht über das Portal verwendet werden.  
+    Nach erfolgreicher Ausführung eines Tests wird die **Planungsoption** deaktiviert.
+
+2. Wählen Sie den Agent aus, der den Test ausführt. Informationen zum Hinzufügen lokaler Agents für die Ausführung von Tests finden Sie unter [Bereitstellen des lokalen Agents](azure-stack-vaas-local-agent.md).
+
+3. Führen Sie für alle folgenden Tests die Schritte vier und fünf aus:
+    - Überprüfung des OEM-Erweiterungspakets
+    - Cloud-Simulationsmodul
+
+4. Klicken Sie im Kontextmenü auf **Planen**, um eine Eingabeaufforderung für die Planung der Testinstanz zu öffnen.
+
+5. Überprüfen Sie die Testparameter, und klicken Sie anschließend auf **Absenden**, um die Testausführung zu planen.
 
 Wenn alle Tests erfolgreich abgeschlossen wurden, senden Sie den Namen Ihrer VaaS-Lösung und der Paketvalidierung an [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com), um die Paketsignierung anzufordern.
 

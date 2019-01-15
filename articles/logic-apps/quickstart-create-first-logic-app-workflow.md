@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Automatisieren Ihres ersten Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Schnellstartanleitung zur Erstellung Ihrer ersten Logik-App für die Automatisierung von Aufgaben, Prozessen und Workflows mit Azure Logic Apps. Erstellen Sie Logik-Apps für Lösungen mit Systemintegration und Enterprise Application Integration (EAI) für Ihre Systeme und Clouddienste.
+title: 'Schnellstart: Erstellen und Automatisieren Ihres ersten Workflows – Azure Logic Apps | Microsoft-Dokumentation'
+description: Erstellen Sie Ihre erste Logik-App für die Automatisierung von Aufgaben, Prozessen und Workflows mit Azure Logic Apps. Erstellen Sie Logik-Apps für Lösungen mit Systemintegration und Enterprise Application Integration (EAI) für Ihre Systeme und Clouddienste.
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: fe2ca48c1cab3789f2bb501eaf00aeb9cd866b8c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233683"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065187"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal
 
@@ -38,7 +38,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
    ![Erstellen einer Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
-3. Geben Sie unter **Logik-App erstellen** Details zur Logik-App wie hier gezeigt ein. Wenn Sie fertig sind, klicken Sie auf **An Dashboard anheften** > **Erstellen**.
+3. Geben Sie unter **Logik-App erstellen** Details zur Logik-App wie hier gezeigt ein. Wenn Sie fertig sind, wählen Sie **Erstellen**.
 
    ![Angeben von Details zur Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -61,9 +61,9 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Überprüfen des RSS-Feeds mit einem Trigger
 
-1. Geben Sie im Designer „rss“ in das Suchfeld ein. Wählen Sie den folgenden Trigger aus: **RSS – Beim Veröffentlichen eines Feedelements**.
+1. Geben Sie im Designer „rss“ in das Suchfeld ein. Wählen Sie den folgenden Trigger aus: **RSS: Beim Veröffentlichen eines Feedelements**
 
-   ![Trigger „RSS – Beim Veröffentlichen eines Feedelements“ auswählen](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
+   ![Trigger auswählen: „RSS: Beim Veröffentlichen eines Feedelements“](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
 
 2. Geben Sie wie gezeigt und beschrieben die folgenden Informationen für Ihren Trigger ein: 
 
@@ -91,13 +91,13 @@ Ihre Logik-App befindet sich jetzt im Livemodus, aber es wird vorerst nur der RS
 
 Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, die eine E-Mail sendet, wenn im RSS-Feed ein neues Element erscheint. 
 
-1. Klicken Sie im Trigger **Beim Veröffentlichen eines Feedelements** auf **+ Neuer Schritt** > **Aktion hinzufügen**.
+1. Klicken Sie im Trigger **Beim Veröffentlichen eines Feedelements** auf **+ Neuer Schritt**.
 
    ![Hinzufügen einer Aktion](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. Geben Sie unter **Aktion auswählen** „E-Mail senden“ als Filter ein. Wählen Sie aus der Liste der Aktionen die Aktion "E-Mail senden" für den gewünschten E-Mail-Anbieter aus. 
+2. Geben Sie unter **Aktion auswählen** im Suchfeld „E-Mail senden“ ein. Wählen Sie unter dem Suchfeld **Alle** aus. Wählen Sie aus der Liste der Aktionen die Aktion "E-Mail senden" für den gewünschten E-Mail-Anbieter aus. 
 
-   ![Aktion „Office 365 Outlook – E-Mail senden“ auswählen](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+   ![Wählen Sie diese Aktion aus: „Office 365 Outlook – E-Mail senden“.](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
    Um die Liste der Aktionen nach einer bestimmten App oder einem Dienst zu filtern, können Sie zuerst die App oder den Dienst auswählen:
 
