@@ -15,23 +15,23 @@ ms.workload8: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: bec62b8c6b70706fa6519cbc2fd59bf69f119e9d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: eb81e5202b5705c59bae8e07cbf2ade43b03f075
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236262"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064473"
 ---
 # <a name="azure-log-integration-faq"></a>Azure-Protokollintegration – Häufig gestellte Fragen
 
 In diesem Artikel werden häufig gestellte Fragen zur Azure-Protokollintegration beantwortet.
 
 >[!IMPORTANT]
-> Die Azure-Protokollintegrationsfunktion wird ab dem 01.06.2019 als veraltet markiert. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der zukünftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
+> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
 
 Die Azure-Protokollintegration ist ein Dienst des Windows-Betriebssystems, mit dem Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) integrieren können. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Objekte, ob lokal oder in der Cloud. Sie können dann Sicherheitsereignisse für Ihre Anwendungen aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben.
 
-Die bevorzugte Methode für die Integration von Azure-Protokollen ist der Azure Monitor-Connector Ihres SIEM-Anbieters unter Verwendung dieser [Anweisungen](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Wenn jedoch der SIEM-Anbieter keinen Connector für Azure Monitor anbietet, können Sie Azure Log Integration möglicherweise als eine temporäre Lösung verwenden (sofern Ihr SIEM von Azure Log Integration unterstützt wird), bis ein solcher Connector verfügbar ist.
+Die bevorzugte Methode für die Integration von Azure-Protokollen ist der Azure Monitor-Connector Ihres SIEM-Anbieters unter Verwendung dieser [Anweisungen](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Wenn jedoch der SIEM-Anbieter keinen Connector für Azure Monitor anbietet, können Sie Azure Log Integration möglicherweise als eine temporäre Lösung verwenden (sofern Ihr SIEM von Azure Log Integration unterstützt wird), bis ein solcher Connector verfügbar ist.
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Ist die Integration der Software für die Azure-Protokollintegration kostenlos?
 
@@ -97,7 +97,7 @@ Mit dem Befehl **azlog createazureid** wird versucht, in allen Azure AD-Mandante
 
 Fehler
 
-  *Warning creating Role Assignment - AuthorizationFailed: The client janedo@microsoft.com with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.* (Warnung beim Erstellen der Rollenzuweisung: Autorisierungsfehler. Client „janedo@microsoft.com“ mit der Objekt-ID „fe9e03e4-4dad-4328-910f-fd24a9660bd2“ hat keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/70d95299-d689-4c97-b971-0d8ff000000“.)
+  *Warning creating Role Assignment - AuthorizationFailed: The client janedo@microsoft.com with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.* (Warnung beim Erstellen der Rollenzuweisung: Fehler bei der Autorisierung. Client „xxx“ mit der Objekt-ID „xxx“ hat keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/70d95299-d689-4c97-b971-0d8ff000000“.)
 
 Der Befehl **azlog authorize** weist dem mit **azlog createazureid** erstellten Azure AD-Dienstprinzipal für die angegebenen Abonnements die Rolle „Leser“ zu. Handelt es sich bei der Azure-Anmeldung nicht um einen Co-Administrator oder Besitzer des Abonnements, tritt ein Fehler mit einem Hinweis auf eine nicht erfolgreiche Autorisierung auf. Für diesen Vorgang wird die in Azure verfügbare rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) des Co-Administrators oder Besitzers benötigt.
 

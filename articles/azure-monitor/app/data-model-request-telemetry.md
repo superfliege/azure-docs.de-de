@@ -9,19 +9,19 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91f6254fe756f256a2c88429fb4d96156867ef4a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001905"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117145"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
 
-Ein Anforderungstelemetrieelement (in [Application Insights](../../application-insights/app-insights-overview.md)) stellt die logische Reihenfolge der Ausführung dar, die durch eine externe Anforderung bei der Anwendung ausgelöst wird. Jede Anforderungsausführung wird durch eine eindeutige `ID` und `url` identifiziert, die alle Ausführungsparameter enthalten. Sie können Anforderungen nach logischen `name`-Werten gruppieren und die `source` der jeweiligen Anforderung definieren. Die Codeausführung kann zu `success` oder `fail` führen und verfügt über eine bestimmte `duration`. Sowohl erfolgreiche als auch erfolglose Ausführungen können weiter nach `resultCode` gruppiert werden. Die Startzeit für die Anforderungstelemetrie wird auf Umschlagebene definiert.
+Ein Anforderungstelemetrieelement (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) stellt die logische Reihenfolge der Ausführung dar, die durch eine externe Anforderung bei der Anwendung ausgelöst wird. Jede Anforderungsausführung wird durch eine eindeutige `ID` und `url` identifiziert, die alle Ausführungsparameter enthalten. Sie können Anforderungen nach logischen `name`-Werten gruppieren und die `source` der jeweiligen Anforderung definieren. Die Codeausführung kann zu `success` oder `fail` führen und verfügt über eine bestimmte `duration`. Sowohl erfolgreiche als auch erfolglose Ausführungen können weiter nach `resultCode` gruppiert werden. Die Startzeit für die Anforderungstelemetrie wird auf Umschlagebene definiert.
 
 Die Anforderungstelemetrie unterstützt das Standarderweiterbarkeitsmodell mit benutzerdefinierten `properties` und `measurements`.
 
@@ -63,9 +63,9 @@ Max. Länge: 1024 Zeichen
 
 ## <a name="success"></a>Erfolgreich
 
-Angabe eines erfolgreichen oder fehlerhaften Aufrufs. Dies ist ein Pflichtfeld. Wenn der Wert nicht explizit auf `false` festgelegt ist, gilt die Anforderung als erfolgreich. Legen Sie diesen Wert auf `false` fest, wenn der Vorgang durch eine Ausnahme unterbrochen oder ein Fehlerergebniscode zurückgegeben wurde.
+Angabe eines erfolgreichen oder fehlerhaften Aufrufs. Dies ist ein Pflichtfeld. Wenn der Wert nicht explizit auf `false` festgelegt ist, gilt eine Anforderung als erfolgreich. Legen Sie diesen Wert auf `false` fest, wenn der Vorgang durch eine Ausnahme unterbrochen oder ein Fehlerergebniscode zurückgegeben wurde.
 
-Für Webanwendungen definiert Application Insights die Anforderung als fehlerhaft, wenn der Antwortcode kleiner als `400` oder gleich `401` ist. In manchen Fällen entspricht diese Standardzuordnung jedoch nicht der Semantik der Anwendung. Der Antwortcode `404` kann „keine Datensätze“ angeben, was Teil eines normalen Datenflusses sein kann. Er kann auch einen fehlerhaften Link angeben. Für die fehlerhaften Links können Sie sogar eine erweiterte Logik implementieren. Durch Analysieren des URL-Verweisers können Sie fehlerhafte Links nur als Fehler markieren, wenn diese sich auf derselben Website befinden. Oder Sie können sie als Fehler markieren, wenn der Zugriff darauf über die mobile Anwendung des Unternehmens erfolgt. Auf ähnliche Weise geben `301` und `302` einen Fehler an, wenn der Zugriff über einen Client erfolgt, auf dem die Umleitung nicht unterstützt wird.
+Für Webanwendungen definiert Application Insights eine Anforderung als erfolgreich, wenn der Antwortcode kleiner als `400` oder gleich `401` ist. In manchen Fällen entspricht diese Standardzuordnung jedoch nicht der Semantik der Anwendung. Der Antwortcode `404` kann „keine Datensätze“ angeben, was Teil eines normalen Datenflusses sein kann. Er kann auch einen fehlerhaften Link angeben. Für die fehlerhaften Links können Sie sogar eine erweiterte Logik implementieren. Durch Analysieren des URL-Verweisers können Sie fehlerhafte Links nur als Fehler markieren, wenn diese sich auf derselben Website befinden. Oder Sie können sie als Fehler markieren, wenn der Zugriff darauf über die mobile Anwendung des Unternehmens erfolgt. Auf ähnliche Weise geben `301` und `302` einen Fehler an, wenn der Zugriff über einen Client erfolgt, auf dem die Umleitung nicht unterstützt wird.
 
 Teilweise akzeptierter Inhalt `206` gibt möglicherweise einen Fehler einer gesamten Anforderung an. Ein Application Insights-Endpunkt empfängt beispielsweise einen Batch mit Telemetrieelementen als einzelne Anforderung. Er gibt `206` zurück, wenn einige Elemente in dem Batch nicht erfolgreich verarbeitet wurden. Eine steigende Rate von `206` deutet auf ein Problem hin, das untersucht werden muss. Eine ähnliche Logik gilt für `207` (Multistatus), wo der Erfolg der schlechteste von verschiedenen Antwortcodes sein kann.
 

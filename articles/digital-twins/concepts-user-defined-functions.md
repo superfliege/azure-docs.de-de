@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 915c57033209ff982946163c408cf8557515e2f5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999202"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106840"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Datenverarbeitung und benutzerdefinierte Funktionen
 
@@ -102,6 +102,15 @@ Benutzerdefinierte Funktionen können in JavaScript geschrieben werden. Hilfsmet
 - Hinzufügen von Graphmetadaten zu einem Sensormesswert, bevor eine Benachrichtigung gesendet wird
 
 Weitere Informationen finden Sie unter [Definieren von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md).
+
+
+#### <a name="examples"></a>Beispiele
+
+Das [GitHub-Repository mit dem C#-Beispiel für Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp/) enthält einige Beispiele für benutzerdefinierte Funktionen:
+- [Mit dieser Funktion](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) wird nach Kohlendioxid-, Bewegungs- und Temperaturwerten gesucht, um festzustellen, ob ein Raum verfügbar ist, bei dem diese Werte im zulässigen Bereich liegen. In den [Tutorials für Digital Twins](tutorial-facilities-udf.md) wird diese Funktion genauer untersucht. 
+- [Mit dieser Funktion](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) wird nach Daten von mehreren Bewegungssensoren gesucht und festgestellt, dass der Platz verfügbar ist, wenn von keinem Sensor eine Bewegung erkannt wird. Sie können die im [Schnellstart](quickstart-view-occupancy-dotnet.md) oder den [Tutorials](tutorial-facilities-setup.md) verwendete benutzerdefinierte Funktion problemlos ersetzen, indem Sie die Änderungen vornehmen, die im Kommentarabschnitt der Datei genannt sind. 
+
+
 
 ### <a name="role-assignment"></a>Rollenzuweisung
 

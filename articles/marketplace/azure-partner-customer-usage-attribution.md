@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602170"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077741"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -36,10 +36,8 @@ Die Zuordnung der Nutzung durch Kunden ist für alle [Lösungsvorlagen](./cloud-
 
 ## <a name="use-resource-manager-templates"></a>Verwenden von Resource Manager-Vorlagen
 
-Viele Partnerlösungen werden mithilfe von Resource Manager-Vorlagen im Abonnement eines Kunden bereitgestellt. Wenn Sie eine Resource Manager-Vorlage haben, die im Azure Marketplace, auf GitHub oder als Schnellstart verfügbar ist, sollte das Ändern der Vorlage für diese neue Nachverfolgungsmethode unkompliziert sein. Wenn Sie keine Azure Resource Manager-Vorlage verwenden, finden Sie hier einige Links, um Ihnen mit Azure Resource Manager-Vorlagen und deren Erstellung zu helfen: 
+Viele Partnerlösungen werden mithilfe von Resource Manager-Vorlagen im Abonnement eines Kunden bereitgestellt. Wenn Sie eine Resource Manager-Vorlage haben, die im Azure Marketplace, auf GitHub oder als Schnellstart verfügbar ist, sollte das Ändern der Vorlage für diese neue Nachverfolgungsmethode unkompliziert sein. Weitere Informationen finden Sie unter [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
 
-*   [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Erstellen einer Lösungsvorlage für Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
 ## <a name="add-a-guid-to-your-template"></a>Hinzufügen einer GUID zu Ihrer Vorlage
 
@@ -270,11 +268,15 @@ Microsoft stellt Partnern eine Ansicht der Kundenbereitstellungen ihrer Vorlagen
 
 **Wer kann einer Vorlage eine GUID hinzufügen?**
 
-Mit der Nachverfolgungsressource soll die Lösung des Partners mit der Azure-Nutzung durch den Kunden verknüpft werden. Die Nutzungsdaten sind an die Microsoft Partner Network-Identität des Partners (MPN-ID) gebunden. 
+Mit der Nachverfolgungsressource soll die Lösung des Partners mit der Azure-Nutzung durch den Kunden verknüpft werden. Die Nutzungsdaten sind an die Microsoft Partner Network-Identität des Partners (MPN-ID) gebunden. Die Berichterstellung steht Partnern im Cloud-Partnerportal (CPP) zur Verfügung.
 
 **Kann eine GUID geändert werden, nachdem sie hinzugefügt wurde?**
  
 Ja, ein Kunde oder Implementierungspartner kann die Vorlage anpassen und die GUID ändern oder entfernen. Es wird empfohlen, dass Partner ihren Kunden und Partnern proaktiv die Funktion der Ressource und der GUID beschrieben, um das Entfernen oder Ändern der Nachverfolgungs-GUID zu verhindern. Eine Änderung der GUID hat nur Auswirkungen auf neue, noch nicht vorhandene Bereitstellungen und Ressourcen.
+
+**Wann ist die Berichterstellung verfügbar?**
+
+Eine Betaversion der Berichterstellung sollte in Kürze verfügbar sein. Die Berichterstellung wird in das Cloud-Partnerportal (CPP) integriert.
 
 **Kann ich Vorlagen nachverfolgen, die nicht über ein Microsoft-Repository, sondern z.B. über GitHub bereitgestellt wurden?**
 

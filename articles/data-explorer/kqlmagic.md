@@ -8,21 +8,22 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 7152b1d09a11d5860d52b5f73ae601422bd0f722
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 179cc133e755a317c70b84acc95aafc61f4e0e68
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654459"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078166"
 ---
 # <a name="analyze-data-using-jupyter-notebook-and-kqlmagic"></a>Analysieren von Daten mithilfe von Jupyter Notebook und Kqlmagic
+
 Jupyter Notebook ist eine Open Source-Webanwendung, mit der Sie Dokumente erstellen und freigeben können, die Livecode, Gleichungen, Visualisierungen und beschreibenden Text enthalten. Die Nutzung umfasst Folgendes: Bereinigung und Transformation von Daten, numerische Simulation, statistische Modellierung, Datenvisualisierung und Machine Learning.
-[Jupyter Notebook](https://jupyter.org/) unterstützt Magic-Befehle, die die Funktionen des Kernels mit zusätzlichen Befehlen erweitern. Kqlmagic ist eine Funktion, die die Funktionen des Python-Kernels in Jupyter Notebook erweitert, damit Sie Abfragen in der Kusto-Abfragesprache nativ ausführen können. Sie können Python und die Kusto-Abfragesprache mühelos zum Abfragen und Visualisieren von Daten mithilfe der umfassenden Bibliothek „Plot.ly“ kombinieren, die mit `render`-Befehlen integriert ist. Zum Ausführen von Abfragen werden Datenquellen unterstützt. Zu diesen Datenquellen gehören Azure Data Explorer, ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Protokoll- und Telemetriedaten, sowie Log Analytics und Application Insights.
+[Jupyter Notebook](https://jupyter.org/) unterstützt Magic-Befehle, die die Funktionen des Kernels mit zusätzlichen Befehlen erweitern. Kqlmagic ist ein Befehl, der die Funktionen des Python-Kernels in Jupyter Notebook erweitert, damit Sie Abfragen in der Kusto-Sprache nativ ausführen können. Sie können Python und die Kusto-Abfragesprache mühelos zum Abfragen und Visualisieren von Daten mithilfe der umfassenden Bibliothek „Plot.ly“ kombinieren, die mit `render`-Befehlen integriert ist. Zum Ausführen von Abfragen werden Datenquellen unterstützt. Zu diesen Datenquellen gehören Azure Data Explorer, ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Protokoll- und Telemetriedaten, sowie Log Analytics und Application Insights. Kqlmagic funktioniert auch mit Azure Notebooks, Jupyter Lab und der Jupyter-Erweiterung von Visual Studio Code.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 - Ein Organisations-E-Mail-Konto, das Mitglied von Azure Active Directory (Azure AD) ist
 - Jupyter Notebook, installiert auf ihrem lokalen Computer, oder Azure Notebooks und das geklonte Beispielprojekt [Azure Notebook](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
-
 
 ## <a name="install-kqlmagic-library"></a>Installieren der Kqlmagic-Bibliothek
 
@@ -31,8 +32,10 @@ Jupyter Notebook ist eine Open Source-Webanwendung, mit der Sie Dokumente erstel
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
+    > [!NOTE]
+    > Wenn Sie Azure Notebooks verwenden, ist dieser Schritt nicht erforderlich.
 
-2. So laden Sie Kqlmagic:
+1. So laden Sie Kqlmagic:
 
     ```python
     reload_ext Kqlmagic
@@ -41,7 +44,6 @@ Jupyter Notebook ist eine Open Source-Webanwendung, mit der Sie Dokumente erstel
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Herstellen einer Verbindung mit dem Azure Data Explorer-Hilfecluster
 
 Verwenden Sie den folgenden Befehl, um eine Verbindung mit der Datenbank *Samples* herzustellen, die auf dem *Hilfecluster* gehostet wird. Wenn Sie nicht Microsoft Azure AD verwenden, ersetzen Sie den Mandantenname `Microsoft.com` durch den Namen Ihres Azure AD-Mandanten.
-
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
@@ -54,8 +56,8 @@ Fragen Sie Daten mit dem [Render-Operator](/azure/kusto/query/renderoperator) ab
 ### <a name="query-and-render-piechart"></a>Abfragen und Rendern eines Kreisdiagramms
 
 ```python
-%%kql 
-StormEvents 
+%%kql
+StormEvents
 | summarize statecount=count() by State
 | sort by statecount 
 | limit 10
@@ -75,6 +77,7 @@ StormEvents
 > Diese Diagramme sind interaktiv. Wählen Sie einen Zeitbereich aus, um einen bestimmten Zeitraum zu vergrößern.
 
 ### <a name="customize-the-chart-colors"></a>Anpassen der Diagrammfarben
+
 Wenn Ihnen die Standardfarbpalette nicht gefällt, können Sie die Diagramme mit Palettenoptionen anpassen. Die verfügbaren Paletten finden Sie auf der folgenden Website: [Choose colors palette for your Kqlmagic query chart result (Auswählen der Farbpalette für das Kqlmagic-Abfragendiagrammergebnis)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
 1. Mit folgendem Befehl rufen Sie eine Liste der Paletten auf:
@@ -87,16 +90,16 @@ Wenn Ihnen die Standardfarbpalette nicht gefällt, können Sie die Diagramme mit
 
     ```python
     %%kql -palette_name "cool"
-    StormEvents 
+    StormEvents
     | summarize statecount=count() by State
-    | sort by statecount 
+    | sort by statecount
     | limit 10
     | render piechart title="My Pie Chart by State"
     ```
 
-## <a name="parametrize-a-query-with-python"></a>Parametrisieren einer Abfrage mit Python
+## <a name="parameterize-a-query-with-python"></a>Parametrisieren einer Abfrage mit Python
 
-Kqlmagic ermöglicht einen einfachen Austausch zwischen der Kusto-Abfragesprache und Python. Weitere Informationen: [Parametrize your Kqlmagic query with Python (Parametrisieren von Kqlmagic-Abfragen mit Python)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
+Kqlmagic ermöglicht einen einfachen Austausch zwischen der Kusto-Abfragesprache und Python. Weitere Informationen: [Parametrize your Kqlmagic query with Python (Parametrisieren von Kqlmagic-Abfragen mit Python)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
 ### <a name="use-a-python-variable-in-your-kql-query"></a>Verwenden einer Python-Variablen in KQL-Abfragen
 
@@ -115,7 +118,7 @@ StormEvents
 | render timechart title = "Trend"
 ```
 
-### <a name="convert-query-results-to-pandas-dataframe"></a>Konvertieren von Abfrageergebnissen in Pandas Dataframe 
+### <a name="convert-query-results-to-pandas-dataframe"></a>Konvertieren von Abfrageergebnissen in Pandas Dataframe
 
 Sie können in Pandas DataFrame auf die Ergebnisse einer KQL-Abfrage zugreifen. Wie im folgenden Beispiel gezeigt können Sie mit der Variablen `_kql_raw_result_` auf die Ergebnisse der zuletzt ausgeführten Abfrage zugreifen und diese unkompliziert in Pandas DataFrame konvertieren:
 
@@ -124,7 +127,7 @@ df = _kql_raw_result_.to_dataframe()
 df.head(10)
 ```
 
-### <a name="example"></a>Beispiel 
+### <a name="example"></a>Beispiel
 
 In vielen Analyseszenarios sollten Sie, wiederverwendbare Notebooks erstellen, die viele Abfragen enthalten und die Ergebnisse einer Abfrage an nachfolgende Abfragen übergeben. Im folgenden Beispiel wird die Python-Variable `statefilter` verwendet, um die Daten zu filtern.
 
@@ -132,7 +135,7 @@ In vielen Analyseszenarios sollten Sie, wiederverwendbare Notebooks erstellen, d
 
     ```python
     %%kql
-    StormEvents 
+    StormEvents
     | summarize max(DamageProperty) by State
     | order by max_DamageProperty desc
     | limit 10
@@ -152,25 +155,22 @@ In vielen Analyseszenarios sollten Sie, wiederverwendbare Notebooks erstellen, d
     %%kql
     let _state = statefilter;
     StormEvents 
-    | where State in (_state) 
+    | where State in (_state)
     | summarize statecount=count() by bin(StartTime,1d), State
     | render timechart title = "Trend"
     ```
 
-1. Führen Sie den help-Befehl aus: 
+1. Führen Sie den help-Befehl aus:
 
     ```python
     %kql --help "help"
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-    
+
 Führen Sie den help-Befehl aus, um die folgenden Beispiel-Notebooks kennenzulernen, die alle unterstützten Features enthalten:
 - [Get started with Kqlmagic for Azure Data Explorer (Erste Schritte mit Kqlmagic für Azure Data Explorer)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
 - [Get started with Kqlmagic for Application Insights (Erste Schritte mit Kqlmagic für Application Insights)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
 - [Get started with Kqlmagic for Log Analytics (Erste Schritte mit Kqlmagic für Log Analytics)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
 - [Parametrize your Kqlmagic query with Python (Parametrisieren von Kqlmagic-Abfragen mit Python)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
 - [Choose colors palette for your Kqlmagic query chart result (Auswählen der Farbpalette für das Kqlmagic-Abfragendiagrammergebnis)](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
-
-
-

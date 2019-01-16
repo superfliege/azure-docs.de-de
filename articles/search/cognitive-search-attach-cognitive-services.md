@@ -1,68 +1,110 @@
 ---
-title: Hinzufügen von Cognitive Services zu Ihren Qualifikationen – Azure Search
-description: Anweisungen zum Hinzufügen eines Cognitive Services All-in-One-Abonnements zu einer kognitiven Qualifikationsgruppe
+title: Zuordnen einer Cognitive Services-Ressource zu einer Qualifikationsgruppe – Azure Search
+description: Anweisungen zum Hinzufügen eines Cognitive Services All-in-One-Abonnements zu einer Pipeline für kognitive Anreicherung in Azure Search.
 manager: cgronlun
-author: HeidiSteen
+author: LuisCabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/07/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7f604d1b94e51db11e6d6992b7f070d64ae869dd
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 509125e7c93f34b9ce28c58cb1ec96db1074d995
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317235"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119644"
 ---
-# <a name="associate-cognitive-services-resource-with-a-skillset"></a>Zuordnen einer Cognitive Services-Ressource zu einer Qualifikationsgruppe 
+# <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Zuordnen einer Cognitive Services-Ressource zu einer Qualifikationsgruppe in Azure Search 
+
+Die KI-Algorithmen, mit denen Pipelines für die [kognitive Suche](cognitive-search-concept-intro.md) zur Verarbeitung unstrukturierter Daten ausgeführt werden, basieren auf [**Cognitive Services-Ressourcen**](https://azure.microsoft.com/services/cognitive-services/). Ressourcen wie [**Maschinelles Sehen**](https://azure.microsoft.com/services/cognitive-services/computer-vision/) bieten Bildanalyse und optische Zeichenerkennung (OCR) und extrahieren Text und Struktur aus Bilddateien, während [**Textanalysen**](https://azure.microsoft.com/services/cognitive-services/text-analytics/) eine Verarbeitung natürlicher Sprache wie die Entitäts- und Schlüsselbegriffserkennung bietet, um nur einige zu nennen.
+
+Sie können eine begrenzte Anzahl von Dokumenten kostenlos anreichern, oder Sie können eine abrechenbare Cognitive Services-Ressource für größere und häufigere Workloads anfügen. In diesem Artikel erfahren Sie, wie Sie eine Cognitive Services-Ressource Ihrer kognitiven Qualifikationsgruppe zuordnen, um Daten während der Indizierung anzureichern.
+
+Wenn Ihre Pipeline ausschließlich aus [benutzerdefinierten Qualifikationen](cognitive-search-create-custom-skill-example.md) besteht, müssen Sie keine Cognitive Services-Ressource anfügen.
 
 > [!NOTE]
-> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+> Seit dem 21. Dezember 2018 können Sie einer Azure Search-Qualifikationsgruppe eine Cognitive Services-Ressource zuordnen. Dadurch können wir für die Ausführung von Qualifikationsgruppen Gebühren verlangen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
 >
-> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung [integrierter kognitiver Qualifikationen](cognitive-search-predefined-skills.md) wird nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet, und zwar zum selben Tarif wie beim Ausführen der Aufgabe unabhängig von Azure Search. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
 
 
-Die kognitive Suche extrahiert Daten und reichert diese an, um sie in Azure Search durchsuchbar zu machen. Extraktions- und Anreicherungsschritte werden als *kognitive Qualifikationen* bezeichnet. Die während der Indizierung von Inhalten aufgerufene Auswahl von Qualifikationen wird in einer *Qualifikationsgruppe* definiert. Ein Skillset kann [vordefinierte Skills](cognitive-search-predefined-skills.md) oder benutzerdefinierte Skills verwenden (Weitere Informationen finden Sie unter [Beispiel: Erstellen eines benutzerdefinierten Skills](cognitive-search-create-custom-skill-example.md)).
+## <a name="use-free-resources"></a>Verwenden kostenloser Ressourcen
 
-In diesem Artikel erfahren Sie, wie Sie die [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)-Ressource Ihrer kognitiven Qualifikationsgruppe zuordnen.
+Sie können die Option für eine begrenzte, kostenlose Verarbeitung verwenden, mit der Sie täglich 20 Dokumentanreicherungen vornehmen können. Dies ist ausreichend, um das Tutorial für die kognitive Suche und die Übungen in der Schnellstartanleitung auszuführen. 
 
-Durch die Cognitive Services-Ressource, die Sie auswählten, werden die integrierten kognitiven Qualifikationen gefördert. Diese Ressource wird auch zu Abrechnungszwecken verwendet. Alle Anreicherungen, die Sie mit den integrierten kognitiven Qualifikationen durchführen, werden für die von Ihnen ausgewählte Cognitive Services-Ressource abgerechnet. Sie werden mit der gleichen Gebühr abgerechnet, als ob Sie dieselbe Aufgabe mit einer Cognitive Services-Ressource ausgeführt hätten. Weitere Informationen finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
+> [!Important]
+> Ab dem 1. Februar 2019 ist **Free (begrenzte Anreicherung)** auf 20 Dokumente pro Tag begrenzt. 
 
-## <a name="limits-when-no-cognitive-services-resource-is-selected"></a>Grenzwerte, wenn keine Cognitive Services-Ressource ausgewählt ist
-Wenn Sie ab dem 1. Februar 2019 Ihrer Qualifikationsgruppe kein Cognitive Services Abonnement zuordnen, können Sie nur eine kleine Anzahl von Dokumenten kostenlos anreichern (20 Dokumente pro Tag). 
+1. Öffnen Sie den Assistenten **Daten importieren**.
 
-## <a name="associating-a-cognitive-services-resource-with-a-new-skillset"></a>Zuordnen einer Cognitive Services-Ressource zu einer neuen Qualifikationsgruppe
+   ![Befehl „Daten importieren“](media/search-get-started-portal/import-data-cmd2.png "Befehl „Daten importieren“")
 
-1. Nach Herstellen der Verbindung mit Ihrer Datenquelle navigieren Sie in der *Datenimport*-Umgebung zum optionalen Schritt *Kognitive Suche hinzufügen*. 
+1. Wählen Sie eine Datenquelle aus, und fahren Sie mit **Kognitive Suche hinzufügen (Optional)** fort. Eine schrittweise Anleitung für diesen Assistenten finden Sie unter [Importieren, Indizieren und Abfragen mithilfe von Portal-Tools](search-get-started-portal.md).
 
-1. Erweitern Sie den Abschnitt *Cognitive Services-Instanz anfügen*. Dadurch werden all Ihre Cognitive Services-Ressourcen in den gleichen Regionen wie Ihr Suchdienst angezeigt. 
-![Cognitive Services-Instanz anfügen, erweitert](./media/cognitive-search-attach-cognitive-services/attach1.png "Cognitive Services-Instanz anfügen, erweitert")
+1. Erweitern Sie **Cognitive Services-Instanz anfügen**, und wählen Sie **Free (begrenzte Anreicherung)** aus.
 
-1. Wählen Sie eine vorhandene Cognitive Services-Ressource aus, oder *erstellen Sie eine neue Cognitive Services-Ressource*. Bei Auswahl der Ressource *Free (begrenzte Anreicherung)* können Sie nur eine kleine Anzahl von Dokumenten kostenlos anreichern (20 Dokumente pro Tag). Wenn Sie auf *Neue Cognitive Services-Ressource erstellen* geklickt haben, wird eine neue Registerkarte geöffnet, auf der Sie die Cognitive Services-Ressource erstellen können. 
+   ![Erweiterter Bereich „Cognitive Services-Instanz anfügen“](./media/cognitive-search-attach-cognitive-services/attach1.png "Erweiterter Bereich „Cognitive Services-Instanz anfügen“")
 
-1. Wenn Sie eine neue Ressource erstellt haben, klicken Sie auf *Aktualisieren*, um die Liste der Cognitive Services-Ressourcen zu aktualisieren und die Ressource auszuwählen. 
-![Ausgewählte Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/attach2.png "Ausgewählte Cognitive Services-Ressource")
+Fahren Sie mit dem nächsten Schritt, **Anreicherungen hinzufügen**, fort. Eine Beschreibung der im Portal verfügbaren Qualifikationen finden Sie unter [Schritt 2: Kognitive Qualifikationen hinzufügen](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) in der Schnellstartanleitung zur kognitiven Suche.
 
-1. Sobald Sie dies getan haben, können Sie den Abschnitt *Anreicherungen hinzufügen* erweitern, um die spezielle kognitive Qualifikation auszuwählen, die Sie für Ihre Daten ausführen möchten, und mit dem Rest des Flows fortfahren.
+## <a name="use-billable-resources"></a>Verwenden abrechenbarer Ressourcen
 
-## <a name="associating-a-cognitive-services-resource-with-an-existing-skillset"></a>Zuordnen einer Cognitive Services-Ressource zu einer vorhandenen Qualifikationsgruppe
+Für Workloads, die sich täglich auf mehr als 20 Dokumente belaufen, benötigen Sie eine abrechenbare Cognitive Services-Ressource.
 
-1. Wählen Sie auf der Seite „Dienstübersicht“ die Registerkarte *Qualifikationsgruppen* aus. ![Registerkarte „Qualifikationsgruppen“](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Registerkarte „Qualifikationsgruppen“")
+1. Wählen Sie im Assistenten **Daten importieren** unter **Cognitive Services-Instanz anfügen** eine vorhandene Ressource aus, oder klicken Sie auf **Neue Cognitive Services-Ressource erstellen**.
 
-1. *Klicken* Sie auf die Qualifikationsgruppe, die Sie ändern möchten. Dadurch wird ein Blatt geöffnet, auf dem Sie eine Qualifikationsgruppe bearbeiten können.
+1. Wenn Sie **Neue Cognitive Services-Ressource erstellen** ausgewählt haben, wird eine neue Registerkarte geöffnet, auf der Sie die Ressource erstellen können. Geben Sie der Ressource einen eindeutigen Namen.
 
-1. Wählen Sie eine vorhandene Cognitive Services-Ressource aus, oder *erstellen Sie eine neue Cognitive Services-Ressource*. Bei Auswahl der Ressource *Free (begrenzte Anreicherung)* können Sie nur eine kleine Anzahl von Dokumenten kostenlos anreichern (20 Dokumente pro Tag). Wenn Sie auf *Neue Cognitive Services-Ressource erstellen* geklickt haben, wird eine neue Registerkarte geöffnet, auf der Sie die Cognitive Services-Ressource erstellen können. <n/> 
-<img src="./media/cognitive-search-attach-cognitive-services/attach-existing2.png" width="350">
+1. Wählen Sie den gleichen Standort wie Azure Search aus. Derzeit wird die Indizierung kognitiver Qualifikationen in den folgenden Regionen unterstützt:
 
-1. Wenn Sie eine neue Ressource erstellt haben, klicken Sie auf *Aktualisieren*, um die Liste der Cognitive Services-Ressourcen zu aktualisieren und die Ressource auszuwählen.
-1. Klicken Sie zum Bestätigen der Änderungen auf *OK*.
+  * USA, Westen-Mitte
+  * USA, Süden-Mitte
+  * USA, Osten
+  * USA, Osten 2
+  * USA, Westen 2
+  * Kanada, Mitte
+  * Europa, Westen
+  * UK, Süden
+  * Europa, Norden
+  * Brasilien, Süden
+  * Asien, Südosten
+  * Indien, Mitte
+  * Australien, Osten
 
-## <a name="associating-a-cognitive-services-resource-programmatically"></a>Programmgesteuertes Zuordnen einer Cognitive Services-Ressource
+1. Wählen Sie den All-in-One-Tarif **S0** aus. Dieser Tarif bietet die Funktionen für Sehen und Sprache, die die vordefinierten Qualifikationen in der kognitiven Suche unterstützen.
 
-Wenn Sie die Qualifikationsgruppe programmgesteuert definieren, fügen einen `cognitiveServices`-Abschnitt hinzu. Der Abschnitt sollte den Schlüssel der Cognitive Services-Ressource enthalten, die Sie der Qualifikationsgruppe zuordnen möchten, sowie @odata.type, das auf „#Microsoft.Azure.Search.CognitiveServicesByKey“ festgelegt sein sollte. Dieses Muster wird im unten gezeigten Beispiel dargestellt.
+    ![Erstellen einer neuen Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Erstellen einer neuen Cognitive Services-Ressource")
+
+1. Klicken Sie auf **Erstellen**, um die neue Cognitive Services-Ressource bereitzustellen. 
+
+1. Kehren Sie zur vorherigen Registerkarte mit dem Assistenten **Daten importieren** zurück. Klicken Sie auf **Aktualisieren**, um die Cognitive Services-Ressource anzuzeigen, und wählen Sie dann die Ressource aus.
+
+   ![Ausgewählte Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/attach2.png "Ausgewählte Cognitive Services-Ressource")
+
+1. Erweitern Sie den Abschnitt **Anreicherungen hinzufügen**, um die spezielle kognitive Qualifikation auszuwählen, die Sie für Ihre Daten ausführen möchten, und fahren Sie mit dem Rest des Flows fort. Eine Beschreibung der im Portal verfügbaren Qualifikationen finden Sie unter [Schritt 2: Kognitive Qualifikationen hinzufügen](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) in der Schnellstartanleitung zur kognitiven Suche.
+
+## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Anfügen einer vorhandenen Qualifikationsgruppe an eine Cognitive Services-Ressource
+
+Wenn Sie bereits über eine Qualifikationsgruppe verfügen, können Sie diese an eine neue oder andere Cognitive Services-Ressource anfügen.
+
+1. Klicken Sie auf der Seite **Dienstübersicht** auf **Qualifikationsgruppen**.
+
+   ![Registerkarte „Qualifikationsgruppen“](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Registerkarte „Qualifikationsgruppen“")
+
+1. Klicken Sie auf den Namen der Qualifikationsgruppe, und wählen Sie dann eine vorhandene Ressource aus, oder erstellen Sie eine neue Ressource. Klicken Sie zum Bestätigen der Änderungen auf **OK**. 
+
+   ![Ressourcenliste „Qualifikationsgruppe“](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "Ressourcenliste „Qualifikationsgruppe“")
+
+Zur Erinnerung: **Free (begrenzte Anreicherung)** ist auf 20 Dokumente täglich beschränkt, und **Neue Cognitive Services-Ressource erstellen** wird zum Bereitstellen einer neuen abrechenbaren Ressource verwendet. Wenn Sie eine neue Ressource erstellen, wählen Sie **Aktualisieren** aus, um die Liste der Cognitive Services-Ressourcen zu aktualisieren, und wählen Sie dann die Ressource aus.
+
+## <a name="attach-cognitive-services-programmatically"></a>Programmgesteuertes Anfügen von Cognitive Services
+
+Wenn Sie die Qualifikationsgruppe programmgesteuert definieren, fügen Sie einen `cognitiveServices`-Abschnitt zur Qualifikationsgruppe hinzu. Nehmen Sie in den Abschnitt den Schlüssel der Cognitive Services-Ressource auf, die Sie der Qualifikationsgruppe zuordnen möchten. Denken Sie daran, dass sich die Ressource in der gleichen Region wie Azure Search befinden muss. Nehmen Sie außerdem `@odata.type` auf, und legen Sie ihn auf `#Microsoft.Azure.Search.CognitiveServicesByKey` fest. 
+
+Das folgende Beispiel zeigt dieses Muster. Beachten Sie den Abschnitt „cognitiveServices“ am Ende der Definition.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -91,34 +133,33 @@ Content-Type: application/json
       }
     ],
     "cognitiveServices": {
-        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey"
+        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
         "description": "mycogsvcs",
-        "key": "your key goes here"
+        "key": "<your key goes here>"
     }
 }
 ```
-## <a name="example-estimating-the-cost-of-document-cracking-and-enrichment"></a>Beispiel: Schätzung der Kosten für das Aufschlüsseln und Anreichern von Dokumenten
-Möglicherweise möchten Sie schätzen, wie viel es kostet, eine bestimmte Art von Dokument anzureichern. Die Übung unten ist nur ein Beispiel, das aber hilfreich sein kann.
 
-Stellen Sie sich vor, wir haben 1000 PDFs, und im Durchschnitt umfasst jedes dieser Dokumente 6 Seiten. Nehmen wir für diese Übung weiterhin an, dass jede Seite ein Bild enthält. Außerdem gehen wir von durchschnittlich 3.000 Zeichen pro Seite aus. 
+## <a name="example-estimate-costs"></a>Beispiel: Schätzen der Kosten
 
-Angenommen, wir möchten die folgenden Schritte als Teil der Anreicherungspipeline ausführen:
-1. Im Rahmen der Dokumentenaufschlüsselung sollen die Inhalte und Bilder aus dem Dokument extrahiert werden.
-1. Im Rahmen der Anreicherung soll jede der extrahierten Seiten per OCR eingelesen und der Text für alle Seiten kombiniert werden. Anschließend jede der Organisationen im kombinierten Text aller Bilder extrahiert werden.
+Zum Schätzen der Kosten für die Indizierung der kognitiven Suche gehen Sie von einem durchschnittlichen Dokument aus, damit einige Zahlen zur Verfügung stehen. Beispielsweise kann zu Schätzzwecken Folgendes angenommen werden:
 
-Lassen Sie uns nun schätzen, wie viel es kosten würde, diese Dokumente Schritt für Schritt zu erfassen.
++ 1.000 PDFs
++ Jeweils sechs Seiten
++ Ein Bild pro Seite (6.000 Bilder)
++ 3.000 Zeichen pro Seite
 
-Für die 1000 Dokumente:
+Als Beispiel dient eine Pipeline, die Dokumententschlüsselung jeder PDF-Datei mit Bild- und Textextraktion, optische Zeichenerkennung (OCR) von Bildern und Erkennung benannter Entitäten für Organisationen umfasst. 
 
-1. Dokumentenaufschlüsselung – Es würden insgesamt 6.000 Bilder extrahiert werden. Angenommen, jeweils 1.000 extrahierte Bilder kosten 1,00 €, dann würden Kosten in Höhe von 6,00 € anfallen.
+In dieser Übung wird der höchste Preis pro Transaktion verwendet. Die tatsächlichen Kosten können aufgrund gestaffelter Preise niedriger sein. Weitere Informationen finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services).
 
-2. Wir würden den Text aus jedem dieser 6.000 Bilder extrahieren. Im Englischen verwendet die kognitive Qualifikation „OCR“ den besten Algorithmus (DescribeText). Angenommen, jeweils 1.000 zu analysierende Bilder kosten 2,50 €, dann würden für diesen Schritt 15,00 € anfallen.
+1. Im Fall der Dokumententschlüsselung mit Text- und Bildinhalten ist die Textextraktion derzeit kostenlos. Bei 6.000 Bildern und einem angenommen Preis von 1 € für jeweils 1.000 extrahierte Bilder belaufen sich die Kosten auf 6,00 € für diesen Schritt.
 
-3. Für die Extraktion von Entitäten würden insgesamt 3 Textdatensätze pro Seite entstehen (jeder Datensatz umfasse 1.000 Zeichen). 3 Textdatensätze/Seite * 6.000 Seiten = 18.000 Textdatensätze. Angenommen, die Kosten betragen 2,00 €/1.000 Textdatensätze, dann würde dieser Schritt uns 36,00 € kosten.
+2. Für die optische Zeichenerkennung (OCR) von 6.000 Bildern in Englisch verwendet die kognitive Qualifikation „OCR“ den besten Algorithmus (DescribeText). Angenommen, jeweils 1.000 zu analysierende Bilder kosten 2,50 €, dann würden für diesen Schritt 15,00 € anfallen.
 
-Insgesamt würden wir 57,00 € zahlen, um 1.000 PDF-Dokumente dieser Art mit der beschriebenen Qualifikationsgruppe zu erfassen.  In dieser Übung gingen wir von dem teuersten Preis pro Transaktion aus, er kann aufgrund von Staffelpreisen niedriger ausfallen. Weitere Informationen finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services).
+3. Für die Extraktion von Entitäten würden insgesamt 3 Textdatensätze pro Seite entstehen. Jeder Datensatz umfasst 1.000 Zeichen. 3 Textdatensätze/Seite * 6.000 Seiten = 18.000 Textdatensätze. Angenommen, die Kosten betragen 2,00 €/1.000 Textdatensätze, dann würde dieser Schritt 36,00 € kosten.
 
-
+Insgesamt würden Sie also etwa 57,00 € zahlen, um 1.000 PDF-Dokumente dieser Art mit der beschriebenen Qualifikationsgruppe zu erfassen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 + [Azure Search – Preise](https://azure.microsoft.com/pricing/details/search/)

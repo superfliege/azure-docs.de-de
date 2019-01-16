@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 3505d65b55807010904494079532fe5741e6df77
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8fd3725a5f3cd45da261aca17bf0f89a3e5a5aa0
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601167"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055182"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure-Blaupause für Sicherheit und Compliance – PaaS-Webanwendung für GESCHÜTZTE Daten (Australien, AU-PROTECTED)
 
@@ -201,7 +201,7 @@ Die folgenden Log Analytics-[Verwaltungslösungen](https://docs.microsoft.com/az
 
 **Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) bietet Überwachungsfunktionen für Organisationen und ermöglicht die Erstellung von Warnungen sowie die Archivierung von Daten (einschließlich Nachverfolgung von API-Aufrufen in ihren Azure-Ressourcen), um Benutzer beim Nachverfolgen der Leistung, beim Aufrechterhalten der Sicherheit und beim Identifizieren von Trends zu unterstützen.
 
-Azure Network Watcher: Mit Azure Network Watcher (https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung oder Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt.  Commonwealth-Entitäten sollten Network Watcher-Datenflussprotokolle für Netzwerksicherheitsgruppen und virtuelle Computer implementieren. Diese Protokolle sollten in einem dedizierten Speicherkonto gespeichert werden, in dem nur Sicherheitsprotokolle gespeichert werden, und der Zugriff auf das Speicherkonto sollte durch rollenbasierte Zugriffssteuerungen geschützt werden.
+Azure Network Watcher: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) bietet Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk.  Commonwealth-Entitäten sollten Network Watcher-Datenflussprotokolle für Netzwerksicherheitsgruppen und virtuelle Computer implementieren. Diese Protokolle sollten in einem dedizierten Speicherkonto gespeichert werden, in dem nur Sicherheitsprotokolle gespeichert werden, und der Zugriff auf das Speicherkonto sollte durch rollenbasierte Zugriffssteuerungen geschützt werden.
 
 ## <a name="threat-model"></a>Bedrohungsmodell
 

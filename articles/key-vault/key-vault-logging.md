@@ -10,16 +10,15 @@ ms.assetid: 43f96a2b-3af8-4adc-9344-bc6041fface8
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 8e3076f2176739f5b9df5776f27d7483c9fd2692
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2a36993e9406613ad9182d01c3681056114dca18
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000409"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159960"
 ---
 # <a name="azure-key-vault-logging"></a>Azure-Schlüsseltresor-Protokollierung
 
@@ -39,7 +38,7 @@ Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schl
 > [!NOTE]
 > Dieses Tutorial enthält keine Anleitung zur Erstellung von Schlüsseltresoren, Schlüsseln oder geheimen Schlüsseln. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli2.md).
 >
-> Derzeit können Sie den Azure-Schlüsseltresor nicht im Azure-Portal konfigurieren. Sie müssen stattdessen die Anweisungen für Azure PowerShell verwenden.
+> Dieser Artikel enthält Anweisungen für Azure PowerShell zum Aktualisieren der Diagnoseprotokollierung. Derselbe Vorgang kann aber auch mithilfe von Azure Monitor im Azure-Portal im Abschnitt **Diagnoseprotokolle** aktiviert werden. 
 >
 >
 
@@ -113,7 +112,7 @@ Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das S
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 ```
 
-Die Ausgabe enthält z. B. Folgendes:
+Die Ausgabe sieht dann wie folgt aus:
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -230,6 +229,7 @@ Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
 
 Gibt einen Protokolleintrag zurück, der dem unten angegebenen Wert ähnelt:
 
+```json
     {
         "records":
         [
@@ -250,6 +250,7 @@ Gibt einen Protokolleintrag zurück, der dem unten angegebenen Wert ähnelt:
             }
         ]
     }
+```
 
 In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt.
 

@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: b91d405b8ada1446a477dc10a116b5dfdf349131
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440045"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063912"
 ---
-# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Tutorial zur Azure-Protokollintegration: Verarbeiten von Azure Key Vault-Ereignissen mithilfe von Event Hubs
+# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Tutorial zu Azure Log Integration: Verarbeiten von Azure Key Vault-Ereignissen mithilfe von Event Hubs
 
 >[!IMPORTANT]
 > Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
 
 Sie können die Azure-Protokollintegration verwenden, um protokollierte Ereignisse abzurufen und sie Ihrem Sicherheits- und Ereignisverwaltungssystem (SIEM) zur Verfügung zu stellen. Dieses Tutorial veranschaulicht anhand eines Beispiels, wie Sie über Azure Event Hubs bezogene Protokolle mithilfe der Azure-Protokollintegration verarbeiten können.
 
-Die bevorzugte Methode für die Integration von Azure-Protokollen ist der Azure Monitor-Connector Ihres SIEM-Anbieters unter Verwendung dieser [Anweisungen](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Wenn jedoch der SIEM-Anbieter keinen Connector für Azure Monitor anbietet, können Sie Azure Log Integration möglicherweise als eine temporäre Lösung verwenden (sofern Ihr SIEM von Azure Log Integration unterstützt wird), bis ein solcher Connector verfügbar ist.
+Die bevorzugte Methode für die Integration von Azure-Protokollen ist der Azure Monitor-Connector Ihres SIEM-Anbieters unter Verwendung dieser [Anweisungen](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Wenn jedoch der SIEM-Anbieter keinen Connector für Azure Monitor anbietet, können Sie Azure Log Integration möglicherweise als eine temporäre Lösung verwenden (sofern Ihr SIEM von Azure Log Integration unterstützt wird), bis ein solcher Connector verfügbar ist.
 
  
 Führen Sie die einzelnen Schritte des Beispiels in diesem Tutorial aus, um zu erfahren, wie die Azure-Protokollintegration und Event Hubs zusammenarbeiten und wie der jeweilige Schritt die Lösung unterstützt. Auf der Grundlage dieser Erkenntnisse können Sie dann eigene Schritte entwickeln, die die speziellen Anforderungen Ihres Unternehmens unterstützen.
@@ -43,7 +43,7 @@ Die Informationen, die Ihnen währenddessen bereitgestellt werden, helfen Ihnen 
 
 Weitere Informationen zu den Diensten, die in diesem Tutorial verwendet werden, finden Sie hier: 
 
-- [Azure-Schlüsseltresor](../key-vault/key-vault-whatis.md)
+- [Azure Key Vault](../key-vault/key-vault-whatis.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Azure-Protokollintegration](security-azure-log-integration-overview.md)
 
@@ -80,7 +80,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 ## <a name="create-supporting-infrastructure-elements"></a>Erstellen der unterstützenden Infrastrukturelemente
 
 1. Öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten, und navigieren Sie zu **C:\Programme\Microsoft Azure Log Integration**.
-1. Importieren Sie die AzLog-Cmdlets, indem Sie das Script „LoadAzLogModule.ps1“ ausführen. Geben Sie den Befehl `.\LoadAzLogModule.ps1` ein. (Beachten Sie das „.\“ in diesem Befehl.) Die Ausgabe sollte folgendermaßen aussehen:</br>
+1. Importieren Sie die AzLog-Cmdlets, indem Sie das Script „LoadAzLogModule.ps1“ ausführen. Geben Sie den Befehl `.\LoadAzLogModule.ps1` ein. (Beachten Sie das „.\"“ in diesem Befehl.) Die Ausgabe sollte folgendermaßen aussehen:</br>
 
    ![Liste der geladenen Module](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
@@ -93,7 +93,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
    ![PowerShell-Fenster](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 1. Erstellen Sie Variablen zum Speichern von Werten, die später verwendet werden. Geben Sie jede der folgenden PowerShell-Zeilen ein. Möglicherweise müssen Sie die Werte entsprechend Ihrer Umgebung anpassen.
-    - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (Ihr Abonnementname lautet möglicherweise anders. Er wird in der Ausgabe des vorherigen Befehls angezeigt.)
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (Ihr Abonnementname lautet möglicherweise anders. Er wird in der Ausgabe des vorherigen Befehls angezeigt.)
     - ```$location = 'West US'``` (Diese Variable dient zum Übergeben des gewünschten Erstellungsorts für Ihre Ressourcen. Sie können sie auf einen beliebigen anderen Standort festlegen.)
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random``` (Der Name ist frei wählbar, sollte jedoch ausschließlich aus Kleinbuchstaben und Zahlen bestehen.)
@@ -129,7 +129,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
-    Weitere Informationen zu Azure-Protokollprofilen finden Sie unter [Overview of the Azure Activity Log (Übersicht über das Azure-Aktivitätsprotokoll)](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+    Weitere Informationen zu Azure-Protokollprofilen finden Sie unter [Overview of the Azure Activity Log (Übersicht über das Azure-Aktivitätsprotokoll)](../azure-monitor/platform/activity-logs-overview.md).
 
 > [!NOTE]
 > Möglicherweise erhalten Sie eine Fehlermeldung, wenn Sie versuchen, ein Protokollprofil zu erstellen. Sie können dann die Dokumentation zu Get-AzureRmLogProfile und Remove-AzureRmLogProfile konsultieren. Wenn Sie Get-AzureRmLogProfile ausführen, sehen Sie die Informationen zum Protokollprofil. Sie können das vorhandene Protokollprofil löschen, indem Sie den Befehl ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` eingeben.

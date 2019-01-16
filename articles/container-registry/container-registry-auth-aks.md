@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0dbdf2261b851b303a0c606e5de70354578c6d2e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752536"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078778"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 
@@ -44,7 +44,7 @@ az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>Zugreifen per Kubernetes-Geheimnis
 
-In einigen Fällen können Sie dem automatisch generierten AKS-Dienstprinzipal nicht die erforderliche Rolle für den Zugriff auf ACR zuweisen. Beispielsweise haben Sie aufgrund des Sicherheitsmodells Ihrer Organisation möglicherweise keine ausreichenden Berechtigungen in Ihrem Azure AD-Verzeichnis, um dem mit AKS generierten Dienstprinzipal eine Rolle zuzuweisen. In diesem Fall können Sie einen neuen Dienstprinzipal erstellen und diesem dann mit einem Kubernetes-Geheimnis für einen Image-Pullvorgang Zugriff auf die Containerregistrierung gewähren.
+In einigen Fällen können Sie dem automatisch generierten AKS-Dienstprinzipal nicht die erforderliche Rolle für den Zugriff auf ACR zuweisen. Beispielsweise haben Sie aufgrund des Sicherheitsmodells Ihrer Organisation möglicherweise keine ausreichenden Berechtigungen in Ihrem Azure Active Directory-Mandanten, um dem mit AKS generierten Dienstprinzipal eine Rolle zuzuweisen. Damit Sie einem Dienstprinzipal eine Rolle zuweisen können, muss Ihr Azure AD-Konto über Schreibberechtigung für Ihren Azure AD-Mandanten verfügen. Wenn diese Berechtigung nicht vorhanden ist, können Sie einen neuen Dienstprinzipal erstellen und diesem dann mit einem Kubernetes-Geheimnis für einen Image-Pullvorgang Zugriff auf die Containerregistrierung gewähren.
 
 Verwenden Sie das folgende Skript, um einen neuen Dienstprinzipal zu erstellen. (Sie verwenden dessen Anmeldeinformationen für das Kubernetes-Geheimnis für den Image-Pullvorgang.) Ändern Sie die `ACR_NAME`-Variable für Ihre Umgebung, bevor Sie das Skript ausführen.
 

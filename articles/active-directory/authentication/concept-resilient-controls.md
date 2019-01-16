@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: b6640e4ef9751e235c0310b0d725cd7e27ff2b40
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745594"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101920"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -230,7 +230,7 @@ Sie müssen die Änderungen, die Sie als Teil des aktivierten Notfallplans vorge
 Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet, können Sie die folgende Alternative erwägen:
 
 1. Wenn Sie über die ausgehende IP-Adresse des Unternehmensnetzwerks verfügen, können Sie sie zum Aktivieren der ausschließlichen Authentifizierung bei dem Unternehmensnetzwerk als vertrauenswürdige IP-Adresse hinzufügen.
- 2. Wenn Sie nicht über ausgehende IP-Adressen verfügen, oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen in einer CIDR-Notation (z.B. 192.168.1.1/24) hinzufügen.
+ 2. Wenn Sie nicht über ausgehende IP-Adressen verfügen oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen hinzufügen, indem Sie 0.0.0.0/1 und 128.0.0.0/1 angeben.
 
 >[!IMPORTANT]
  > Wenn Sie die vertrauenswürdigen IP-Adressen verwenden, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoereignisse im Zusammenhang mit IP-Adressen (z.B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.

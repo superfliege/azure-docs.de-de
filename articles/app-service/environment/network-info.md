@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630460"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191597"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -131,7 +131,7 @@ Wenn Ihre ILB-ASE den Domänennamen *contoso.net* aufweist und der App-Name *tes
 
 ## <a name="functions-and-web-jobs"></a>Funktionen und Webaufträge ##
 
-Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im Portal wird jedoch unterstützt, selbst wenn sich Ihre Apps in einer ILB-ASE befinden, solange Ihr Browser die SCM-Website erreichen kann.  Wenn Sie ein selbstsigniertes Zertifikat mit Ihrer ILB-ASE verwenden, müssen Sie Ihren Browser anweisen, diesem Zertifikat zu vertrauen.  Für Internet Explorer und Edge bedeutet dies, dass sich das Zertifikat im Vertrauensspeicher des Computers befinden muss.  Wenn Sie Chrome verwenden, müssen Sie das Zertifikat vorab im Browser akzeptieren, indem Sie direkt zur SCM-Website browsen.  Die ideale Lösung stellt die Verwendung eines kommerziellen Zertifikats dar, das in der Vertrauenskette Ihres Browsers enthalten ist.  
+Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im Portal wird jedoch unterstützt, selbst wenn sich Ihre Apps in einer ILB-ASE befinden, solange Ihr Browser die SCM-Website erreichen kann.  Wenn Sie ein selbstsigniertes Zertifikat mit Ihrer ILB-ASE verwenden, müssen Sie Ihren Browser anweisen, diesem Zertifikat zu vertrauen.  Für Internet Explorer und Microsoft Edge bedeutet dies, dass sich das Zertifikat im Vertrauensspeicher des Computers befinden muss.  Wenn Sie Chrome verwenden, müssen Sie das Zertifikat vorab im Browser akzeptieren, indem Sie direkt zur SCM-Website browsen.  Die ideale Lösung stellt die Verwendung eines kommerziellen Zertifikats dar, das in der Vertrauenskette Ihres Browsers enthalten ist.  
 
 ## <a name="ase-ip-addresses"></a>ASE-IP-Adressen ##
 

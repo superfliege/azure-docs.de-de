@@ -7,100 +7,117 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 1c37b764b47856d3a369228d3f224f2a464029bb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c53dc81da9469c0628adbd3751dc818997fa4d05
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790655"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063677"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
-Sie erhalten unter Umständen eine bestimmte Fehlermeldung, wenn Sie ihre virtuellen VMware-Computer oder Ihre physischen Server mithilfe von Azure Site Recovery schützen. Dieser Artikel beschreibt einige häufig auftretende Probleme bei der Replikation von lokalen VMware-VMs und physischen Servern in Azure mithilfe von [Azure Site Recovery](site-recovery-overview.md).
-
+Sie erhalten unter Umständen eine bestimmte Fehlermeldung, wenn Sie ihre virtuellen VMware-Computer oder Ihre physischen Server mithilfe von Azure Site Recovery schützen. Dieser Artikel beschreibt einige häufig auftretende Probleme bei der Replikation von lokalen VMware-VMs und physischen Servern in Azure mithilfe von [Site Recovery](site-recovery-overview.md).
 
 ## <a name="initial-replication-issues"></a>Probleme bei der Erstreplikation
 
-In vielen Fällen treten bei der ersten Replikation aufgrund von Konnektivitätsproblemen zwischen dem Quellserver und dem Prozessserver oder zwischen dem Prozessserver und Azure Fehler auf. In den meisten Fällen können Sie diese Probleme beheben, indem Sie die folgenden Schritte ausführen.
+Fehler bei der ersten Replikation werden häufig von Konnektivitätsproblemen zwischen dem Quellserver und dem Prozessserver oder zwischen dem Prozessserver und Azure verursacht. In den meisten Fällen können Sie diese Probleme beheben, indem Sie die Schritte in den folgenden Abschnitten ausführen.
 
-### <a name="verify-the-source-machine"></a>Überprüfen des Quellcomputers
-* Verwenden Sie in der Befehlszeile des Quellservercomputers wie unten gezeigt Telnet zum Pingen des Prozessservers mit dem https-Port (Standard: 9443), um festzustellen, ob Netzwerkkonnektivitätsprobleme bestehen oder der Port durch die Firewall blockiert wird.
+### <a name="check-the-source-machine"></a>Überprüfen des Quellcomputers
 
-    `telnet <PS IP address> <port>`
-> [!NOTE]
-    > Testen Sie die Konnektivität mit Telnet und nicht mit PING.  Wenn Telnet nicht installiert ist, führen Sie die [hier](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) angegebenen Schritte aus.
+In der folgenden Liste finden Sie mögliche Wege zum Überprüfen des Quellcomputers:
 
-Wenn keine Verbindung hergestellt werden kann, lassen Sie den eingehenden Port 9443 auf dem Prozessserver zu, und überprüfen Sie, ob das Problem weiterhin besteht. In der Vergangenheit wurde dieses Problem bereits dadurch hervorgerufen, dass sich der Prozessserver hinter DMZ befunden hat.
-
-* Prüfen Sie den Status des Diensts `InMage Scout VX Agent – Sentinel/OutpostStart`, wenn er nicht ausgeführt wird, und überprüfen Sie, ob das Problem weiterhin besteht.   
-
-### <a name="verify-the-process-server"></a>Überprüfen des Prozessservers
-
-* **Überprüfen Sie, ob der Prozessserver aktiv Daten mithilfe von Push an Azure überträgt.**
-
-Öffnen Sie den Task-Manager auf dem Prozessservercomputer (drücken Sie STRG+UMSCHALT+ESC). Wechseln Sie zur Registerkarte „Leistung“, und klicken Sie auf den Link „Ressourcenmonitor öffnen“. Wechseln Sie ausgehend vom Resource Manager zur Registerkarte „Netzwerk“. Prüfen Sie ob „cbengine.exe“ unter „Prozesse mit Netzwerkaktivität“ aktiv große Datenmengen (in MB) sendet.
-
-![Aktivieren der Replikation](./media/vmware-azure-troubleshoot-replication/cbengine.png)
-
-Führen Sie andernfalls die folgenden Schritte aus:
-
-* **Überprüfen Sie, ob der Prozessserver eine Verbindung mit dem Azure-Blob herstellen kann:** Wählen Sie „cbengine.exe“ aus, und überprüfen Sie unter „TCP-Verbindungen“, ob zwischen dem Prozessserver und der Azure Storage-Blob-URL eine Verbindung besteht.
-
-![Aktivieren der Replikation](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
-
-Navigieren Sie andernfalls zur Systemsteuerung > „Dienste“, und prüfen Sie, ob die folgenden Dienste ausgeführt werden:
-
-     * cxprocessserver
-     * InMage Scout VX Agent – Sentinel/Outpost
-     * Microsoft Azure Recovery Services Agent
-     * Microsoft Azure Site Recovery Service
-     * tmansvc
-     *
-Starten Sie alle nicht ausgeführten Dienste (bzw. starten Sie sie neu), und überprüfen Sie, ob das Problem weiterhin besteht.
-
-* **Prüfen Sie, ob der Prozessserver mithilfe von Port 443 eine Verbindung mit der öffentlichen Azure-IP-Adresse herstellen kann.**
-
-Öffnen Sie das aktuelle Fehlerprotokoll („CBEngineCurr.errlog“) unter `%programfiles%\Microsoft Azure Recovery Services Agent\Temp`, und suchen Sie nach „443“ und „connection attempt failed“.
-
-![Aktivieren der Replikation](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
-
-Wenn Probleme auftreten, verwenden Sie in der Befehlszeile des Prozessservers Telnet zum Pingen Ihrer öffentlichen Azure-IP-Adresse (im der Abbildung oben unleserlich gemacht), die Sie mithilfe von Port 443 in „CBEngineCurr.currLog“ gefunden haben.
-
-      telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443
-Wenn Sie keine Verbindung herstellen können, prüfen Sie, ob das Zugriffsproblem durch die Firewall oder den Proxy verursacht wird.
+*  Verwenden Sie in der Befehlszeile auf dem Quellserver Telnet, um den Prozessserver über den HTTPS-Port zu pingen (HTTPS-Standardport 9443), indem Sie den folgenden Befehl ausführen. Der Befehl überprüft auf Probleme mit der Netzwerkkonnektivität sowie Probleme, durch die der Firewallport blockiert wird.
 
 
-* **Vergewissern Sie sich, dass die auf IP-Adressen basierende Firewall auf dem Prozessserver den Zugriff nicht blockiert:** Wenn Sie auf IP-Adressen basierende Firewallregeln auf dem Server verwenden, laden Sie [hier](https://www.microsoft.com/download/details.aspx?id=41653) die vollständige Liste der IP-Bereiche für das Microsoft Azure-Rechenzentrum herunter, und fügen Sie diese Ihrer Firewallkonfiguration hinzu, um sicherzustellen, dass eine Kommunikation mit Azure (und dem HTTPS-Port 443) zugelassen wird.  Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
+   `telnet <process server IP address> <port>`
 
-* **Vergewissern Sie sich, dass die auf URLs basierende Firewall auf dem Prozessserver den Zugriff nicht blockiert:**  Wenn Sie URL-basierte Firewallregeln auf dem Server verwenden, stellen Sie sicher, dass der Firewallkonfiguration die folgenden URLs hinzugefügt wurden.
+
+   > [!NOTE]
+   > Verwenden Sie Telnet, um die Konnektivität zu testen. Verwenden Sie nicht `ping`. Wenn Telnet nicht installiert ist, führen Sie die unter [Installieren des Telnet-Clients](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) aufgeführten Schritte aus.
+
+   Wenn Sie keine Verbindung mit dem Prozessserver herstellen können, öffnen Sie den eingehenden Port 9443 auf dem Prozessserver. Beispielsweise müssen Sie möglicherweise den eingehenden Port 9443 auf dem Prozessserver öffnen, wenn Ihr Netzwerk über ein Umkreisnetzwerk verfügt. Überprüfen Sie dann, ob das Problem weiterhin auftritt.
+
+*  Überprüfen Sie den Status des Diensts **InMage Scout VX Agent – Sentinel/OutpostStart**. Wenn der Dienst nicht ausgeführt wird, starten Sie ihn, und überprüfen Sie dann, ob das Problem weiterhin auftritt.   
+
+### <a name="check-the-process-server"></a>Überprüfen des Prozessservers
+
+In der folgenden Liste finden Sie mögliche Wege zum Überprüfen des Prozessservers:
+
+*  **Überprüfen Sie, ob der Prozessserver aktiv Daten mithilfe von Push an Azure überträgt**.
+
+   1. Öffnen Sie auf dem Prozessserver den Task-Manager (drücken Sie STRG+UMSCHALT+ESC).
+   2. Wählen Sie die Registerkarte **Leistung** aus, und wählen Sie dann den Link **Ressourcenmonitor öffnen** aus. 
+   3. Wählen Sie auf der Seite **Ressourcenmonitor** die Registerkarte **Netzwerk** aus. Überprüfen Sie unter **Prozess mit Netzwerkaktivität**, ob **cbengine.exe** aktiv große Datenvolumen sendet.
+
+        ![Screenshot der Volumen unter „Prozesse mit Netzwerkaktivität“](./media/vmware-azure-troubleshoot-replication/cbengine.png)
+
+   Wenn „cbengine.exe“ keine großen Datenmengen sendet, führen Sie die Schritte in den folgenden Abschnitten aus.
+
+*  **Überprüfen Sie, ob der Prozessserver eine Verbindung mit dem Azure-Blob-Speicher herstellen kann**.
+
+   Wählen Sie **cbengine.exe** aus. Überprüfen Sie unter **TCP-Verbindungen**, ob eine Verbindung vom Prozessserver ausgehend mit der URL des Azure-Blob-Speichers besteht.
+
+   ![Screenshot der Konnektivität zwischen „cbengine.exe“ und der URL des Azure-Blob-Speichers](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
+
+   Wenn keine Verbindung vom Prozessserver mit der URL des Azure-Blob-Speichers besteht, wählen Sie in der Systemsteuerung **Dienste** aus. Überprüfen Sie, ob die folgenden Dienste ausgeführt werden:
+
+   *  cxprocessserver
+   *  InMage Scout VX Agent – Sentinel/Outpost
+   *  Microsoft Azure Recovery Services-Agent
+   *  Microsoft Azure Site Recovery-Dienst
+   *  tmansvc
+
+   Starten Sie jeden der Dienste, der nicht ausgeführt wird, bzw. starten Sie ihn neu. Überprüfen Sie, ob das Problem weiterhin auftritt.
+
+*  **Überprüfen Sie, ob der Prozessserver über Port 443 eine Verbindung mit der öffentlichen Azure-IP-Adresse herstellen kann**.
+
+   Öffnen Sie in „%programfiles%\Microsoft Azure Recovery Services Agent\Temp“ die neueste Datei „CBEngineCurr.errlog“. Suchen Sie in der Datei nach **443** oder nach der Zeichenfolge **connection attempt failed** (Fehler beim Verbindungsversuch).
+
+   ![Screenshot, der die Fehlerprotokolle im Ordner „Temp“ zeigt](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
+
+   Wenn Probleme angezeigt werden, verwenden Sie in der Befehlszeile auf dem Prozessserver Telnet, um Ihre öffentliche Azure-IP-Adresse zu pingen (in der vorangehenden Abbildung ist die IP-Adresse maskiert). Ihre öffentliche Azure-IP-Adresse finden Sie in der Datei „CBEngineCurr.currLog“ mithilfe von Port 443:
+
+   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
+
+   Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob das Zugriffsproblem von Firewall- oder Proxyeinstellungen verursacht wird, wie im nächsten Schritt beschrieben.
+
+*  **Überprüfen Sie, ob die IP-Adressenbasierte Firewall auf dem Prozessserver den Zugriff blockiert**.
+
+   Wenn Sie IP-Adressenbasierte Firewallregeln auf dem Server verwenden, laden Sie die vollständige Liste der [IP-Adressbereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653) herunter. Fügen Sie die IP-Adressbereiche Ihrer Firewallkonfiguration hinzu, um sicherzustellen, dass die Firewall die Kommunikation in Azure (und mit dem HTTPS-Standardport 443) zulässt. Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Azure-Region „USA, Westen“ (die für die Zugriffsteuerung und Identitätsverwaltung verwendet werden) zu.
+
+*  **Überprüfen Sie, ob eine URL-basierte Firewall auf dem Prozessserver den Zugriff blockiert**.
+
+   Wenn Sie eine URL-basierte Firewallregel auf dem Server verwenden, fügen Sie die in der folgenden Tabelle aufgeführten URLs der Firewallkonfiguration hinzu:
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
-* **Prüfen Sie, ob die Proxyeinstellungen auf dem Prozessserver den Zugriff blockieren**.  Wenn Sie einen Proxyserver verwenden, stellen Sie sicher, dass der Proxyservername durch den DNS-Server aufgelöst wird.
-So überprüfen Sie, was Sie bei der Einrichtung des Konfigurationsservers angegeben haben: Navigieren Sie zum Registrierungsschlüssel:
+*  **Überprüfen Sie, ob Proxyeinstellungen auf dem Prozessserver den Zugriff blockieren**.
 
-    `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings`
+   Wenn Sie einen Proxyserver verwenden, stellen Sie sicher, dass der Proxyservername durch den DNS-Server aufgelöst wird. Um den von Ihnen bei der Einrichtung des Konfigurationsservers angegebenen Wert zu überprüfen, wechseln Sie zum Registrierungsschlüssel **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**.
 
-Stellen Sie nun sicher, dass die gleichen Einstellungen vom Azure Site Recovery-Agent zum Senden von Daten verwendet werden.
-Suchen Sie nach „Microsoft Azure Backup“.
+   Stellen Sie nun sicher, dass dieselben Einstellungen vom Azure Site Recovery-Agent zum Senden von Daten verwendet werden: 
+      
+   1. Suchen Sie nach **Microsoft Azure Backup**. 
+   2. Öffnen Sie **Microsoft Azure Backup**, und wählen Sie dann **Aktion** > **Eigenschaften ändern** aus. 
+   3. Auf der Registerkarte **Proxykonfiguration** sollte die Proxyadresse angezeigt werden. Die Proxyadresse sollte mit der Proxyadresse übereinstimmen, die in den Registrierungseinstellungen angezeigt wird. Wenn dies nicht der Fall ist, ändern Sie diese in dieselbe Adresse.
 
-Klicken Sie nach dem Öffnen auf „Aktion“ > „Eigenschaften ändern“. Auf der Registerkarte „Proxykonfiguration“ wird Ihnen die Proxyadresse angezeigt, die mit der unter den Registrierungseinstellungen angezeigten Adresse übereinstimmen muss. Wenn dies nicht der Fall ist, passen Sie die Adresse an.
+*  **Überprüfen Sie, ob die Drosselungsbandbreite auf dem Prozessserver eingeschränkt ist**.
 
+   Erhöhen Sie die Bandbreite, und überprüfen Sie dann, ob das Problem weiterhin auftritt.
 
-* **Vergewissern Sie sich, dass die Bandbreite auf dem Prozessserver nicht eingeschränkt wird:**  Erhöhen Sie die Bandbreite, und überprüfen Sie, ob das Problem weiterhin besteht.
+## <a name="source-machine-isnt-listed-in-the-azure-portal"></a>Quellcomputer wird im Azure-Portal nicht aufgeführt
 
-## <a name="source-machine-to-be-protected-through-site-recovery-is-not-listed-on-azure-portal"></a>Der Quellcomputer, der durch Site Recovery geschützt werden soll, ist nicht im Azure-Portal aufgeführt
+Wenn Sie versuchen, den Quellcomputer auszuwählen, um Replikation mithilfe von Site Recovery zu aktivieren, steht der Computer möglicherweise aus einem der folgenden Gründe nicht zur Verfügung:
 
-Bei dem Versuch, den Quellcomputer auszuwählen, um Replikation mithilfe von Azure Site Recovery zu aktivieren, steht der Computer möglicherweise nicht für die Fortsetzung des Vorgangs zur Verfügung, aus einem der folgenden Gründe
+*  Wenn zwei virtuelle Computer im vCenter dieselbe Instanz-UUID haben, wird der erste vom Konfigurationsserver ermittelte virtuelle Computer im Azure-Portal angezeigt. Um dieses Problem zu beheben, stellen Sie sicher, dass keine zwei virtuellen Computer über dieselbe Instanz-UUID verfügen.
+*  Stellen Sie sicher, dass Sie während der Einrichtung des Konfigurationsservers mithilfe der OVF-Vorlage oder des einheitlichen Setups die richtigen vCenter-Anmeldeinformationen hinzugefügt haben. Informationen zum Überprüfen der Anmeldeinformationen, die Sie während der Einrichtung hinzugefügt haben, finden Sie unter [Ändern der Anmeldeinformationen für die automatische Ermittlung](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
+*  Wenn die für den Zugriff auf vCenter bereitgestellten Berechtigungen nicht die erforderlichen Berechtigungen umfassen, kann die Ermittlung von virtuellen Computern möglicherweise fehlschlagen. Stellen Sie sicher, dass die unter [Vorbereiten eines Kontos für die automatische Ermittlung](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) beschriebenen Berechtigungen dem vCenter-Benutzerkonto hinzugefügt werden.
+*  Wenn der virtuelle Computer bereits mithilfe von Site Recovery geschützt wird, steht er nicht mehr zur Auswahl für den Schutz im Portal zur Verfügung. Stellen Sie sicher, dass der gesuchte virtuelle Computer im Portal noch nicht von einem anderen Benutzer oder unter einem anderen Abonnement geschützt wurde.
 
-* Wenn sich unter dem vCenter zwei virtuelle Computer mit der gleichen Instanz-UUID befinden, wird der erste virtuelle Computer vom Konfigurationsserver ermittelt und im Portal angezeigt. Um das Problem zu beheben, stellen Sie sicher, dass keine zwei virtuellen Computer über die gleiche Instanz-UUID verfügen.
-* Stellen Sie sicher, dass Sie während der Einrichtung der Konfiguration mithilfe der OVF-Vorlage oder des vereinheitlichten Setups die richtigen vCenter-Anmeldeinformationen hinzugefügt haben. Informationen zum Überprüfen der hinzugefügten Anmeldeinformationen finden Sie in den [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery) veröffentlichten Richtlinien.
-* Wenn die für den Zugriff auf vCenter bereitgestellten Berechtigungen nicht ausreichend sind, kann dies zu Fehlern bei der Ermittlung von virtuellen Computern führen. Achten Sie darauf, dass die [hier](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) angegebenen Berechtigungen dem vCenter-Benutzerkonto hinzugefügt werden.
-* Wenn der virtuelle Computer bereits mithilfe von Site Recovery geschützt wird, steht er nicht für den Schutz zur Verfügung. Stellen Sie sicher, dass der in Frage stehende virtuelle Computer noch nicht durch einen anderen Benutzer oder unter einem anderen Abonnement geschützt wurde.
+## <a name="protected-virtual-machines-arent-available-in-the-portal"></a>Geschützte virtuelle Computer stehen im Portal nicht zur Verfügung
 
-## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Geschützte virtuelle Computer werden im Portal grau dargestellt
-
-Virtuelle Computer, die unter Site Recovery repliziert werden, werden grau dargestellt, wenn doppelte Einträge im System vorhanden sind. Lesen Sie die Richtlinien [hier](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx), um die veralteten Einträge zu löschen und das Problem zu beheben.
+Virtuelle Computer, die unter Site Recovery repliziert werden, sind im Azure-Portal nicht verfügbar, wenn doppelte Einträge im System vorhanden sind. Informationen zum Löschen veralteter Einträge sowie zum Beheben des Problems finden Sie unter [Azure Site Recovery VMware-zu-Azure: Gewusst wie: Bereinigen von doppelten oder veralteten Einträgen](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie weitere Unterstützung benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker wird Sie bei Ihrem Problem unterstützen.
+
+Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker kann Sie bei Ihrem Problem unterstützen.

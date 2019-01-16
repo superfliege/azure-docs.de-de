@@ -5,15 +5,15 @@ author: dkamstra
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2017
+ms.date: 4/12/2018
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: 8603ccf4643d7b1abd977cc372cde3fe24f98e07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724862"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190696"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
@@ -49,52 +49,36 @@ category | Diese Eigenschaft lautet immer **ServiceHealth**.
 Ressourcen-ID | Die Ressourcen-ID der betroffenen Ressource.
 Properties.title | Der lokalisierte Titel für diese Kommunikation. Englisch ist der Standard.
 Properties.communication | Die lokalisierten Details der Kommunikation mit HTML-Markup. Englisch ist der Standard.
-Properties.incidentType | Einer der folgenden Werte: **ActionRequired**, **Information**, **Incident**, **Wartung** oder **Sicherheit**.
+Properties.incidentType | Einer der folgenden Werte: **ActionRequired**, **Zur Information**, **Incident**, **Wartung** oder **Sicherheit**.
 Properties.trackingId | Der Incident, dem dieses Ereignis zugeordnet ist. Verwenden Sie diese Option, um die Ereignisse im Zusammenhang mit einem Vorfall zu korrelieren.
 Properties.impactedServices | Ein JSON-Blob mit Escapezeichen, das die vom Incident betroffenen Dienste und Regionen beschreibt. Die Eigenschaft umfasst eine Liste der Dienste, von denen jeder über einen **ServiceName** verfügt, sowie eine Liste der betroffenen Regionen, von denen jede einen **RegionName** aufweist.
 Properties.defaultLanguageTitle | Die Kommunikation auf Englisch.
 Properties.defaultLanguageContent | Die Kommunikation auf Englisch, entweder als HTML-Markup oder Nur-Text.
-Properties.stage | Die möglichen Werte für **Incident** und **Security** sind **Active,** **Resolved** oder **RCA**. Der einzige Wert für **ActionRequired** oder **Information** ist **Active**. Für **Wartung** sind folgende Werte möglich: **Aktiv**, **Geplant**, **InProgress**, **Abgebrochen**, **Neu geplant**, **Aufgelöst** oder **Abgeschlossen**.
+Properties.stage | Die möglichen Werte für **Incident** und **Security** sind **Active,** **Resolved** oder **RCA**. Der einzige Wert für **ActionRequired** oder **Informational** ist **Active**. Für **Wartung** sind folgende Werte möglich: **Aktiv**, **Geplant**, **InProgress**, **Abgebrochen**, **Neu geplant**, **Aufgelöst** oder **Abgeschlossen**.
 Properties.communicationId | Die Kommunikation, der dieses Ereignis ist zugeordnet ist.
 
 ### <a name="details-on-service-health-level-information"></a>Details zu Informationen zur Dienstintegritätsebene
-  <ul>
-    <li><b>Aktion erforderlich</b> (properties.incidentType == ActionRequired) <dl>
-            <dt>Zur Information</dt>
-            <dd>Aktion des Administrators erforderlich, um Auswirkungen auf bestehende Dienste zu vermeiden</dd>
-        </dl>
-    </li>
-    <li><b>Wartung</b> (properties.incidentType == Maintenance) <dl>
-            <dt>Warnung</dt>
-            <dd>Notfallwartung<dd>
-            <dt>Zur Information</dt>
-            <dd>Standardmäßig geplante Wartung</dd>
-        </dl>
-    </li>
-    <li><b>Informationen</b> (properties.incidentType == Information) <dl>
-            <dt>Zur Information</dt>
-            <dd>Administrator muss ggf. eingreifen, um Auswirkungen auf bestehende Dienste zu vermeiden</dd>
-        </dl>
-    </li>
-    <li><b>Sicherheit</b> (properties.incidentType == Security) <dl>
-            <dt>Fehler</dt>
-            <dd>Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.</dd>
-            <dt>Warnung</dt>
-            <dd>Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.</dd>
-            <dt>Zur Information</dt>
-            <dd>Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.</dd>
-        </dl>
-    </li>
-    <li><b>Dienstprobleme</b> (properties.incidentType == Incident) <dl>
-            <dt>Fehler</dt>
-            <dd>Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.</dd>
-            <dt>Warnung</dt>
-            <dd>Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.</dd>
-            <dt>Zur Information</dt>
-            <dd>Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.</dd>
-        </dl>
-    </li>
-  </ul>
+
+**Aktion erforderlich** (properties.incidentType == ActionRequired)
+    - Zur Information: Aktion des Administrators erforderlich, um Auswirkungen auf bestehende Dienste zu vermeiden
+    
+**Wartung** (properties.incidentType == Maintenance)
+    - Warnung: Notfallwartung
+    - Zur Information: standardmäßig geplante Wartung
+
+**Informationen** (properties.incidentType == Information)
+    - Zur Information: Administrator muss ggf. eingreifen, um Auswirkungen auf bestehende Dienste zu vermeiden
+
+**Sicherheit** (properties.incidentType == Security)
+    - Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.
+    - Warnung: Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.
+    - Zur Information: Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.
+
+**Dienstprobleme** (properties.incidentType == Incident)
+    - Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.
+    - Warnung: Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.
+    - Zur Information: Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.
+
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Anzeigen Ihrer Dienstintegritätsbenachrichtigungen im Azure-Portal
 1.  Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Überwachen** aus.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 4cd6b375385326889226f6d4284815dfa0f47c49
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 14f74c26822ac1dc9e781ada82809bf3a4166f18
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971306"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190900"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -188,7 +188,7 @@ Sie haben zwei Optionen zum Aufzeichnen einer F12-Ablaufverfolgung:
 3. Überprüfen Sie, ob die Registerkarte **Netzwerk** ausgewählt ist, und klicken Sie dann auf die grüne Schaltfläche **Wiedergeben**.
 4. Führen Sie die Schritte zum Reproduzieren des Problems aus.
 5. Klicken Sie auf die rote Schaltfläche **Beenden**.
-6. Klicken Sie auf die Schaltfläche **Speichern** (Datenträgersymbol), und speichern Sie die HAR-Datei (in Internet Explorer und Edge). *Oder* klicken Sie mit der rechten Maustaste auf die HAR-Datei, und wählen Sie dann **HAR mit Inhalte speichern** (in Chrome) aus.
+6. Klicken Sie auf die Schaltfläche **Speichern** (Datenträgersymbol), und speichern Sie die HAR-Datei (in Internet Explorer und Microsoft Edge), *oder* klicken Sie mit der rechten Maustaste auf die HAR-Datei, und wählen Sie dann **Als HAR mit Inhalt speichern** (in Chrome) aus.
 
 ### <a name="f12-console-output"></a>F12-Konsolenausgabe
 

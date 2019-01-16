@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 6750276cf31d0c804b38cdf3ea6e41a4505c93f1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971817"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187416"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)
 
 HTTP-Header ermöglichen dem Client und dem Server das Übergeben von zusätzlichen Informationen mit der Anforderung oder der Antwort. Durch das erneute Generieren dieser HTTP-Header können Sie verschiedene wichtige Szenarios erzielen, z. B. das Hinzufügen von sicherheitsbezogenen Headerfeldern wie HSTS/X-XSS-Protection oder das Entfernen von Antwortheaderfeldern, über die sensible Informationen wie der Back-End-Servername offengelegt werden.
 
-Application Gateway unterstützt jetzt die Möglichkeit, die Header der eingehenden HTTP-Anforderungen sowie der ausgehenden HTTP-Antworten erneut zu generieren. Sie können HTTP-Anforderungs- und -Antwortheader hinzufügen, entfernen oder aktualisieren, während die Anforderung/Antwort-Pakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können sowohl Standardheaderfelder (in [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) definiert) als auch andere Headerfelder erneut generieren.
+Application Gateway unterstützt jetzt die Möglichkeit, die Header der eingehenden HTTP-Anforderungen sowie der ausgehenden HTTP-Antworten erneut zu generieren. Sie können HTTP-Anforderungs- und -Antwortheader hinzufügen, entfernen oder aktualisieren, während die Anforderung/Antwort-Pakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können sowohl Standardheaderfelder als auch andere Headerfelder erneut generieren.
 
 > [!NOTE] 
 >
@@ -84,7 +84,11 @@ Den Wert eines Headers können Sie neu generieren als:
 
 - Eine Kombination aus den obenstehenden Möglichkeiten.
 
-Die oben erwähnten Servervariablen sind die Variablen, die Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung liefern. Diese Möglichkeit unterstützt die erneute Generierung von Headern in Form der folgenden Servervariablen:
+## <a name="server-variables"></a>Servervariablen
+
+Mit Servervariablen werden nützliche Informationen auf einem Webserver gespeichert. Diese Variablen liefern Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung, wie die IP-Adresse des Clients oder den Webbrowsertyp. Sie ändern sich dynamisch, z.B. wenn eine neue Seite geladen oder ein Formular gesendet wird.  Mithilfe dieser Variablen können Benutzer Anforderungsheader sowie Antwortheader festlegen. 
+
+Diese Möglichkeit unterstützt die erneute Generierung von Headern in Form der folgenden Servervariablen:
 
 | Unterstützte Servervariablen | BESCHREIBUNG                                                  |
 | -------------------------- | :----------------------------------------------------------- |
@@ -100,7 +104,7 @@ Die oben erwähnten Servervariablen sind die Variablen, die Informationen zum Se
 | http_status                | Sitzungsstatus, z. B. 200, 400, 403 etc.                       |
 | http_version               | Anforderungsprotokoll, normalerweise „HTTP/1.0“, „HTTP/1.1“ oder „HTTP/2.0“. |
 | query_string               | Die Liste der Variablenwertpaare nach dem „?“ in der angeforderten URL. |
-| received_byte              | Angeforderte Länge (einschließlich Anforderungszeile, Header und Anforderungstext) |
+| received_bytes             | Angeforderte Länge (einschließlich Anforderungszeile, Header und Anforderungstext) |
 | request_query              | Argumente in der Anforderungszeile                                |
 | request_scheme             | Anforderungsschema: „http“ oder „https“                            |
 | request_uri                | Die vollständige ursprüngliche Anforderungs-URI (mit Argumenten)                   |

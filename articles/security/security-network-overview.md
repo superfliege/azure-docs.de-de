@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: ad711fe998a3c250775c5d4f4d76305ffb7cf860
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a5943c1d2e6b04564e1de732b8f3924a67393753
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244592"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065680"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -316,16 +316,16 @@ Weitere Informationen:
 DDoS-Angriffe (Distributed Denial of Service) stellen eines der größten Verfügbarkeits- und Sicherheitsprobleme für Kunden dar, die ihre Anwendungen in die Cloud verschieben. Ein DDoS-Angriff hat das Ziel, die Ressourcen einer Anwendung zu verbrauchen, damit sie für berechtigte Benutzer nicht mehr verfügbar ist. Jeder Endpunkt, der öffentlich über das Internet erreichbar ist, kann Ziel von DDoS-Angriffen werden.
 Microsoft bietet DDoS Protection **Basic** als Bestandteil der Azure-Plattform. Dieser Dienst ist kostenlos und umfasst die Always On-Datenverkehrsüberwachung und Risikominderung von häufig vorkommenden Angriffen auf Netzwerkebene in Echtzeit. Zusätzlich zum Schutz durch DDoS Protection **Basic** können Sie die Option **Standard** aktivieren. Die Funktionen von DDoS Protection Standard umfassen:
 
-* **Native Plattformintegration:** nativ in Azure integriert. Umfasst die Konfiguration über das Azure-Portal. DDoS Protection Standard erkennt Ihre Ressourcen und die Ressourcenkonfiguration.
+* **Native Plattformintegration:** Nativ in Azure integriert. Umfasst die Konfiguration über das Azure-Portal. DDoS Protection Standard erkennt Ihre Ressourcen und die Ressourcenkonfiguration.
 * **Sofort einsetzbarer Schutz:** Dank vereinfachter Konfiguration sind alle Ressourcen in einem virtuellen Netzwerk sofort geschützt, sobald DDoS Protection Standard aktiviert wird. Es sind weder Benutzereingriffe noch Benutzerdefinitionen erforderlich. DDoS Protection Standard wehrt einen Angriff sofort automatisch ab, sobald er entdeckt wurde.
 * **Stets verfügbare Überwachung des Datenverkehrs:** Die Datenverkehrsmuster Ihrer Anwendungen werden 24 Stunden am Tag und 7 Tage die Woche nach Anzeichen für DDoS-Angriffe überwacht. Abwehrmaßnahmen werden bei Überschreitung der Schutzrichtlinien ausgeführt.
 * **Berichte zur Risikominderung nach Angriffen**: Diese Berichte verwenden aggregierte Flowdaten aus dem Netzwerk, um detaillierte Informationen zu Angriffen auf Ihre Ressourcen bereitzustellen.
 * **Flowprotokolle zur Risikominderung nach Angriffen**: Mit diesen Protokollen können Sie während eines aktiven DDoS-Angriffs den verworfenen Datenverkehr, den weitergeleiteten Datenverkehr und andere Daten in Zusammenhang mit dem Angriff in Echtzeit prüfen.
-* **Adaptive Optimierung:** Dank einer intelligenten Profilerstellung lernt die Funktion den Datenverkehr Ihrer Anwendung kontinuierlich besser kennen. Auf dieser Basis wird das Profil ausgewählt und aktualisiert, das am besten zu Ihrem Dienst passt. Das Profil passt sich den Veränderungen des Datenverkehrs mit der Zeit an. Schutz für Schicht 3 bis Schicht 7: bietet vollständigen DDoS-Stapelschutz bei Verwendung mit einer Webanwendungsfirewall.
+* **Adaptive Optimierung:** Dank einer intelligenten Profilerstellung lernt die Funktion den Datenverkehr Ihrer Anwendung kontinuierlich besser kennen. Auf dieser Basis wird das Profil ausgewählt und aktualisiert, das am besten zu Ihrem Dienst passt. Das Profil passt sich den Veränderungen des Datenverkehrs mit der Zeit an. Schutz für Ebene 3 bis Ebene 7: Bietet vollständigen DDoS-Stapelschutz bei Verwendung mit einer Web Application Firewall.
 * **Umfangreiche Angriffsabwehr:** Über 60 verschiedene Angriffstypen können mit einer weltweiten Kapazität zum Schutz vor den größten bekannten DDoS-Angriffen abgewehrt werden.
 * **Angriffsmetriken:** Mit Azure Monitor kann auf eine Zusammenfassung der Metriken für jeden Angriff zugegriffen werden.
 * **Angriffswarnungen:** Mit integrierten Angriffsmetriken können Warnungen am Anfang und Ende eines Angriffs sowie währenddessen konfiguriert werden. Warnungen werden in Ihre Betriebssoftware (etwa Microsoft Azure Log Analytics, Splunk, Azure Storage, E-Mail) und das Azure-Portal integriert.
-* **Kostengarantie:** Dienstguthaben für Datenübertragung und horizontale Anwendungsskalierung bei dokumentierten DDoS-Angriffen.
+* **Kostengarantie:**  Dienstguthaben für Datenübertragung und horizontale Anwendungsskalierung bei dokumentierten DDoS-Angriffen.
 * **Schnelle Reaktion bei DDoS-Angriffen**: Kunden von DDoS Protection Standard haben jetzt während eines aktiven Angriffs Zugang zum Rapid Response-Team. Rapid Response hilft bei der Untersuchung von Angriffen, beim Durchführen von kundenspezifischen Maßnahmen während eines Angriffs sowie bei der Analyse nach einem Angriff.
 
 
@@ -394,7 +394,7 @@ Weitere Informationen:
 
 Protokollierung auf Netzwerkebene ist eine entscheidende Funktion für jedes Netzwerksicherheitsszenario. In Azure können Sie Informationen für Netzwerksicherheitsgruppen protokollieren, um Protokollierungsinformationen auf Netzwerkebene zu erhalten. Mit der NSG-Protokollierung erhalten Sie Informationen aus:
 
-* [Aktivitätsprotokollen:](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) In diesen Protokollen können Sie alle Vorgänge anzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
+* [Aktivitätsprotokollen:](../azure-monitor/platform/activity-logs-overview.md) In diesen Protokollen können Sie alle Vorgänge anzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
 * Ereignisprotokollen: Diese Protokolle enthalten Informationen zu den angewendeten NSG-Regeln.
 * Leistungsindikatorenprotokollen: In diesen Protokollen ist aufgezeichnet, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 

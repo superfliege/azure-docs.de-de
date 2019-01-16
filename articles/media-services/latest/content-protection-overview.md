@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 09c8b63cddde547b0dc42cf1f15a8ac5002d0a3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725137"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187976"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -60,7 +60,7 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
 
     Zum Testen von mit AES oder CENC (Widevine und/oder PlayReady) verschlüsselten Inhalten können Sie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) verwenden. Stellen Sie sicher, dass Sie auf „Erweiterte Optionen“ klicken und Ihre Verschlüsselungsoptionen angeben.
 
-    Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome/Opera/Firefox für Widevine, MS Edge/IE11 für PlayReady, Safari unter macOS für FairPlay.
+    Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome/Opera/Firefox für Widevine, Microsoft Edge/IE11 für PlayReady, Safari unter macOS für FairPlay.
 
 3. Sicherheitstokendienst (STS), der JSON Web Token (JWT) als Zugriffstoken für den Zugriff auf die Back-End-Ressource ausgibt. Sie können die AMS-Lizenzbereitstellungsdienste als Back-End-Ressource verwenden. Ein Sicherheitstokendienst muss Folgendes definieren:
 

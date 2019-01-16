@@ -10,16 +10,15 @@ ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 44c1406c8ecd8c5ff103fed4d105ecd64d16c358
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a53e37cf2ac99dcd755f71e9a2a236f27832fbd7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002466"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079203"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Gewusst wie: Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor
 
@@ -67,7 +66,7 @@ Die folgende Tabelle enthält eine Liste mit Voraussetzungen, die beim Azure-Sch
 
 Sie verwenden die folgenden fünf Schritte zum Generieren und Übertragen Ihres Schlüssels an das HSM von Azure Key Vault:
 
-* [Schritt 1: Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation)
+* [Schritt 1: Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation)
 * [Schritt 2: Vorbereiten der verbindungslosen Arbeitsstation](#step-2-prepare-your-disconnected-workstation)
 * [Schritt 3: Generieren des Schlüssels](#step-3-generate-your-key)
 * [Schritt 4: Vorbereiten des Schlüssels für die Übertragung](#step-4-prepare-your-key-for-transfer)
@@ -332,7 +331,7 @@ So überprüfen Sie das heruntergeladene Paket
      > Die Thales-Software enthält Python unter „%NFAST_HOME%\python\bin“.
      >
      >
-2. Vergewissern Sie sich, dass Folgendes angezeigt wird, um eine erfolgreiche Überprüfung zu melden: **Result: SUCCESS** 
+2. Vergewissern Sie sich, dass Folgendes angezeigt wird, um eine erfolgreiche Überprüfung zu melden: **Result: SUCCESS**
 
 Mit diesem Skript wird die Signaturgeberkette bis zum Thales-Stammschlüssel überprüft. Der Hash dieses Stammschlüssels ist in das Skript eingebettet, und sein Wert sollte **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**lauten. Sie können diesen Wert auch separat bestätigen, indem Sie die [Thales-Website](http://www.thalesesec.com/)besuchen.
 
@@ -414,11 +413,11 @@ Führen Sie für diesen vierten Schritt die folgenden Verfahren auf der verbindu
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
-Ersetzen Sie beim Ausführen dieses Befehls *contosokey* durch den gleichen Wert, den Sie in **Schritt 3.5: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben. 
+Ersetzen Sie beim Ausführen dieses Befehls *contosokey* durch den gleichen Wert, den Sie in **Schritt 3.5: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben.
 
 Sie werden aufgefordert, Ihre Security World-Administratorkarten einzuführen.
 
-Wenn der Befehl abgeschlossen ist, wird **Result: SUCCESS** angezeigt, und die Kopie Ihres Schlüssels mit reduzierten Berechtigungen ist in der Datei „key_xferacId_<contosokey>“ enthalten. 
+Wenn der Befehl abgeschlossen ist, wird **Result: SUCCESS** angezeigt, und die Kopie Ihres Schlüssels mit reduzierten Berechtigungen ist in der Datei „key_xferacId_<contosokey>“ enthalten.
 
 Sie können die ACLs mithilfe der Thales-Hilfsprogramme mit den folgenden Befehlen überprüfen:
 
@@ -428,7 +427,7 @@ Sie können die ACLs mithilfe der Thales-Hilfsprogramme mit den folgenden Befehl
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  Ersetzen Sie beim Ausführen dieser Befehle „contosokey“ durch den gleichen Wert, den Sie in **Schritt 3.5: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben. 
+  Ersetzen Sie beim Ausführen dieser Befehle „contosokey“ durch den gleichen Wert, den Sie in **Schritt 3.5: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben.
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Schritt 4.2: Verschlüsseln des Schlüssels mit dem Schlüsselaustauschschlüssel von Microsoft
 
@@ -479,11 +478,11 @@ Führen Sie je nach geografischer Region oder Instanz von Azure einen der folgen
 
 Gehen Sie wie folgt vor, wenn Sie diesen Befehl ausführen:
 
-* Ersetzen Sie *contosokey* durch den Bezeichner, den Sie in **Schritt 3.5: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) verwendet haben. 
-* Ersetzen Sie *SubscriptionID* durch die ID des Azure-Abonnements, das Ihren Schlüsseltresor enthält. Sie haben diesen Wert vorher unter **Schritt 1.2: Abrufen der Azure-Abonnement-ID** im Schritt [Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation) abgerufen. 
+* Ersetzen Sie *contosokey* durch den Bezeichner, den Sie in **Schritt 3.5: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) verwendet haben.
+* Ersetzen Sie *SubscriptionID* durch die ID des Azure-Abonnements, das Ihren Schlüsseltresor enthält. Sie haben diesen Wert vorher unter **Schritt 1.2: Abrufen der Azure-Abonnement-ID** im Schritt [Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation) abgerufen.
 * Ersetzen Sie *ContosoFirstHSMKey* durch eine Bezeichnung, die als Name Ihrer Ausgabedatei verwendet wird.
 
-Wenn dieser Vorgang erfolgreich ist, wird **Result: SUCCESS** angezeigt, und im aktuellen Ordner ist eine neue Datei mit dem Namen „KeyTransferPackage-*ContosoFirstHSMkey*.byok“ enthalten. 
+Wenn dieser Vorgang erfolgreich ist, wird **Result: SUCCESS** angezeigt, und im aktuellen Ordner ist eine neue Datei mit dem folgenden Namen enthalten: KeyTransferPackage-*ContosoFirstHSMkey*.byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Schritt 4.3: Kopieren des Schlüsselübertragungspakets auf die Arbeitsstation mit Internetverbindung
 

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 172ddd11cb956ab6d74e1ce870e2378205dd1613
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993287"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077470"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -33,26 +33,28 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 
 Es gelten bestimmte Einschränkungen, wenn Sie Containergruppen für ein virtuelles Netzwerk bereitstellen.
 
-* Windows-Container werden nicht unterstützt.
 * Um Containergruppen in einem Subnetz bereitstellen zu können, darf das Subnetz keine anderen Ressourcentypen enthalten. Entfernen Sie alle vorhandenen Ressourcen aus einem vorhandenen Subnetz, bevor Sie Containergruppen für dieses bereitstellen, oder erstellen Sie ein neues Subnetz.
 * Containergruppen, die für ein virtuelles Netzwerk bereitgestellt werden, unterstützen derzeit keine öffentlichen IP-Adressen oder DNS-Namensbezeichnungen.
 * Aufgrund der zusätzlichen betreffenden Netzwerkressourcen erfolgt das Bereitstellen einer Containergruppe für ein virtuelles Netzwerk in der Regel etwas langsamer als die Bereitstellung einer Standardcontainerinstanz.
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-Für dieses Feature, das sich in der Vorschauphase befindet, gelten die folgenden Einschränkungen beim Bereitstellen von Containerinstanzen für ein virtuelles Netzwerk.
+Für dieses Feature, das sich in der Vorschauphase befindet, gelten die folgenden Einschränkungen beim Bereitstellen von Containerinstanzen für ein virtuelles Netzwerk. 
 
-**Unterstützte** Regionen:
+**Unterstützte Regionen und Ressourceneinschränkungen**
 
-* Europa, Norden (northeurope)
-* Europa, Westen (westeurope)
-* USA, Westen (westus)
-* USA, Osten (eastus)
+| Standort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
+| -------- | :---: | :---: | :-----------: |
+| Europa, Westen | Linux | 4 | 14 |
+| USA, Osten; USA, Westen | Linux | 2 | 3,5 |
+| Australien, Osten; Europa, Norden | Linux | 1 | 1.5 |
 
-**Nicht unterstützte** Netzwerkressourcen:
+Ressourceneinschränkungen für Container können von Einschränkungen für nicht vernetzte Containerinstanzen in diesen Regionen abweichen. Derzeit werden nur Linux-Container für dieses Feature unterstützt. Windows-Unterstützung ist geplant.
 
-* Netzwerksicherheitsgruppen (NSG)
+**Nicht unterstützte Netzwerkressourcen und Features**
+
 * Azure Load Balancer
+* Peering in virtuellen Netzwerken
 
 Für das **Löschen von Netzwerkressourcen** sind [zusätzliche Schritte](#delete-network-resources) erforderlich, nachdem Sie Containergruppen für das virtuelle Netzwerk bereitgestellt haben.
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7734ff6c5992ebb27ff63c0329afa03e5bf96a2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995081"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158855"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
-In diesem Artikel wird erklärt, wie Sie Azure-Ressourcen entweder in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe im gleichen Abonnement verschieben. Sie können das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden, um Ressourcen zu verschieben. 
+In diesem Artikel wird erklärt, wie Sie Azure-Ressourcen entweder in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe im gleichen Abonnement verschieben. Sie können das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden, um Ressourcen zu verschieben.
 
 Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank.
 
@@ -98,7 +98,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse: Die öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden. Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
-* Recovery Services-Tresor – Sie müssen für eine private Vorschauversion registriert sein. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
+* Recovery Services-Tresor – Sie müssen für eine [eingeschränkte öffentliche Vorschauversion](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) registriert sein.
 * Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Scheduler
 * Azure Search: Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
@@ -305,9 +305,9 @@ Dieser Vorgang kann einige Minuten dauern.
 
 ### <a name="recovery-services-limitations"></a>Einschränkungen von Recovery Services
 
-Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine private Vorschauversion registrieren. Schreiben Sie an AskAzureBackupTeam@microsoft.com, um die Vorschauversion zu testen.
+Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine [eingeschränkte öffentliche Vorschauversion](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) registrieren.
 
-Derzeit können Sie jeweils einen Recovery Services-Tresor pro Region verschieben. Tresore, die Azure Files, die Azure-Dateisynchronisierung oder SQL auf IaaS-VMs sichern, können nicht verschoben werden. 
+Derzeit können Sie jeweils einen Recovery Services-Tresor pro Region verschieben. Tresore, die Azure Files, die Azure-Dateisynchronisierung oder SQL auf IaaS-VMs sichern, können nicht verschoben werden.
 
 Wenn eine VM nicht zusammen mit dem Tresor verschoben wird, verbleiben die aktuellen VM-Wiederherstellungspunkte bis zu ihrem Ablauf im Tresor. Unabhängig davon, ob die VM mit dem Tresor verschoben wird oder nicht, können Sie die VM anhand des Sicherungsverlaufs im Tresor wiederherstellen.
 
