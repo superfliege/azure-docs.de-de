@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung | Microsoft Docs
+title: Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung – Azure Key Vault | Microsoft-Dokumentation
 description: Dieser Artikel bietet Informationen zum Einrichten der Schlüsselrotation und Überwachen von Schlüsseltresorprotokollen.
 services: key-vault
 documentationcenter: ''
@@ -10,16 +10,15 @@ ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302016"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077707"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung
 
@@ -414,7 +413,7 @@ Fügen Sie eine Datei namens „project.json“ mit folgendem Inhalt hinzu:
 
 Dadurch wird Azure Functions beim **Speichern** die erforderlichen Binärdateien herunterladen.
 
-Wechseln Sie zur Registerkarte **Integrieren** , und versehen Sie den Parameter „Timer“ mit einem aussagekräftigen Namen, der in der Funktion verwendet werden soll. Im obigen Code wird erwartet, dass der Timer *myTimer*heißt. Geben Sie einen [CRON-Ausdruck](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) wie folgt an: 0 \* \* \* \* \* für den Timer, der bewirkt, dass die Funktion einmal pro Minute ausgeführt wird.
+Wechseln Sie zur Registerkarte **Integrieren** , und versehen Sie den Parameter „Timer“ mit einem aussagekräftigen Namen, der in der Funktion verwendet werden soll. Im obigen Code wird erwartet, dass der Timer *myTimer*heißt. Geben Sie einen [CRON-Ausdruck](../app-service/webjobs-create.md#CreateScheduledCRON) wie folgt an: 0 \* \* \* \* \* für den Timer, der bewirkt, dass die Funktion einmal pro Minute ausgeführt wird.
 
 Fügen Sie auf der Registerkarte **Integrieren** auch eine Eingabe des Typs **Azure Blob Storage** hinzu. Diese verweist auf die Datei „sync.txt“, die den Zeitstempel des letzten Ereignisses enthält, das von der Funktion untersucht wurde. Diese Information wird in der Funktion mithilfe des Parameternamens verfügbar gemacht. Im obigen Code erwartet die Azure Blob Storage-Eingabe, dass der Parametername *inputBlob* ist. Wählen Sie das Speicherkonto aus, das die Datei „sync.txt“ enthält (dabei kann es sich um dasselbe oder ein anderes Speicherkonto handeln). Geben Sie im entsprechenden Feld den Pfad zu der Datei in diesem Format an: {container-name}/path/to/sync.txt.
 

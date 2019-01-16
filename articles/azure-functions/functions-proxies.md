@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 18398326e21ac6f3d64e43a577cf7d57cfb23438
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 81f76b31f7af3643e2b654e8e26c70d0481d60b8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139519"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017105"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -161,7 +161,7 @@ Sie können einzelne Proxys deaktivieren, indem Sie `"disabled": true` zum Proxy
             "matchCondition": {
                 "route": "/example"
             },
-            "backendUri": "www.example.com"
+            "backendUri": "https://<AnotherApp>.azurewebsites.net/api/<FunctionName>"
         }
     }
 }
@@ -176,12 +176,13 @@ Das Proxyverhalten kann über verschiedene App-Einstellungen gesteuert werden. E
 
 ### <a name="reservedChars"></a> Reservierte Zeichen (Formatierung von Zeichenfolgen)
 
-Proxys lesen alle Zeichenfolgen ohne Interpretation, mit Ausnahme von geschweiften Klammern und Schrägstrichen.
+Proxys lesen alle Zeichenfolgen aus einer JSON-Datei und verwenden \ als Escapesymbol. Proxys interpretieren auch geschweifte Klammern. Alle Beispiele hierfür finden Sie im Folgenden.
 
 |Zeichen|Escapezeichen|Beispiel|
 |-|-|-|
 |{ or }|{{ or }}|`{{ example }}` --> `{ example }`
-|/|///| `example.com///text.html` --> `example.com/text.html`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>Definieren eines requestOverrides-Objekts
 

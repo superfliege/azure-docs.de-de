@@ -1,6 +1,6 @@
 ---
 title: 'Abfragen von Daten aus HDFS-kompatiblem Azure-Speicher: Azure HDInsight'
-description: Es wird beschrieben, wie Sie Daten in Azure-Speicher und Azure Data Lake Store abfragen, um die Ergebnisse Ihrer Analyse zu speichern.
+description: Es wird beschrieben, wie Sie Daten in Azure-Speicher und Azure Data Lake Storage abfragen, um die Ergebnisse Ihrer Analyse zu speichern.
 services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,21 +8,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 359cfd5b0eba25de25ce4200a61b0103a3d0fade
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.date: 01/04/2019
+ms.openlocfilehash: a94f55449535faf0f4d061e3368f408843361063
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384801"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051967"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 
-Zum Analysieren von Daten im HDInsight-Cluster können Sie die Daten in Azure Storage, [Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen2] oder beidem speichern. Beide Speichervarianten ermöglichen das sichere Löschen der HDInsight-Cluster, die für Berechnungen verwendet werden, ohne Benutzerdaten zu verlieren.
+Zum Analysieren von Daten im HDInsight-Cluster können Sie die Daten in [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) oder beidem speichern. Beide Speichervarianten ermöglichen das sichere Löschen der HDInsight-Cluster, die für Berechnungen verwendet werden, ohne Benutzerdaten zu verlieren.
 
 Apache Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Bei der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage als Standarddateisystem angeben. Mit HDInsight 3.6 können Sie Azure Storage oder Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen2 als Standarddateisystem auswählen (mit einigen Ausnahmen). Informationen zur Unterstützung von Data Lake Storage Gen1 als Standardspeicher und als verknüpfter Speicher finden Sie unter [Verfügbarkeit für HDInsight-Cluster](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
 
-In diesem Artikel erfahren Sie, wie Azure Storage mit HDInsight-Clustern funktioniert. Informationen zur Funktionsweise von Data Lake Storage Gen1 mit HDInsight-Clustern finden Sie unter [Verwenden von Azure Data Lake Store mit Azure HDInsight-Clustern](hdinsight-hadoop-use-data-lake-store.md). Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+In diesem Artikel erfahren Sie, wie Azure Storage mit HDInsight-Clustern funktioniert. Informationen zur Funktionsweise von Data Lake Storage Gen1 mit HDInsight-Clustern finden Sie unter [Verwenden von Azure Data Lake Storage mit Azure HDInsight-Clustern](hdinsight-hadoop-use-data-lake-store.md). Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 Azure Storage stellt eine robuste, universelle Speicherlösung dar, die problemlos mit HDInsight integriert werden kann. In HDInsight kann ein Blobcontainer in Azure Storage als Standarddateisystem für den Cluster verwendet werden. Über eine HDFS-Schnittstelle (Hadoop Distributed File System) können sämtliche Komponenten in HDInsight direkt mit strukturierten oder unstrukturierten Daten arbeiten, die als Blobs gespeichert sind.
 
@@ -31,13 +31,16 @@ Azure Storage stellt eine robuste, universelle Speicherlösung dar, die probleml
 
 | Speicherkontotyp | Unterstützte Dienste | Unterstützte Leistungsstufen | Unterstützte Zugriffsebenen |
 |----------------------|--------------------|-----------------------------|------------------------|
-| Allgemein v2   | Blob               | Standard                    | Heiß, kalt, Archiv3    |
+| Allgemein v2   | Blob               | Standard                    | Heiß, Kalt, Archiv*    |
 | Allgemein v1   | Blob               | Standard                    | N/V                    |
-| Blob Storage         | Blob               | Standard                    | Heiß, kalt, Archiv3    |
+| Blob Storage         | Blob               | Standard                    | Heiß, Kalt, Archiv*    |
 
 Die Verwendung des Standard-Blobcontainers zum Speichern von Geschäftsdaten wird nicht empfohlen. Stattdessen empfiehlt es sich, den Standard-Blobcontainer nach jeder Verwendung zu löschen, um die Speicherkosten zu verringern. Beachten Sie, dass der Standardcontainer Anwendungs- und Systemprotokolle enthält. Stellen Sie sicher, dass Sie die Protokolle abrufen, bevor Sie den Container löschen.
 
 Das Freigeben eines Blobcontainers als Standarddateisystem für mehrere Cluster wird nicht unterstützt.
+ 
+ > [!NOTE]  
+ > Die Zugriffsebene „Archiv“ ist eine Offlineebene, die eine Abrufwartezeit von mehreren Stunden aufweist, und wird für die Verwendung mit HDInsight nicht empfohlen. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier">Zugriffsebene „Archiv“</a>.
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight-Speicherarchitektur
 Das folgende Diagramm bietet einen zusammenfassenden Überblick über die HDInsight-Speicherarchitektur bei der Verwendung von Azure Storage:
@@ -97,7 +100,7 @@ Der standardmäßige Blobcontainer speichert clusterspezifische Informationen wi
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
-Beim Erstellen eines HDInsight-Clusters über das Portal können Sie Optionen zum Angeben der Details zum Speicherkonto nutzen (wie unten dargestellt). Sie können auch angeben, ob dem Cluster ein zusätzliches Speicherkonto zugeordnet werden soll. Wenn ja, können Sie Data Lake Store oder ein anderes Azure Storage-Blob als zusätzlichen Speicher auswählen.
+Beim Erstellen eines HDInsight-Clusters über das Portal können Sie Optionen zum Angeben der Details zum Speicherkonto nutzen (wie unten dargestellt). Sie können auch angeben, ob dem Cluster ein zusätzliches Speicherkonto zugeordnet werden soll. Wenn ja, können Sie Data Lake Storage oder ein anderes Azure Storage-Blob als zusätzlichen Speicher auswählen.
 
 ![HDInsight, Hadoop, Erstellung, Datenquelle](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
 
@@ -330,7 +333,7 @@ In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatiblen Azure Storage mit 
 Weitere Informationen finden Sie unter
 
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
-* [Erste Schritte mit Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
+* [Erste Schritte mit Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)
 * [Hochladen von Daten in HDInsight][hdinsight-upload-data]
 * [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]
 * [Verwenden von Apache Pig mit HDInsight][hdinsight-use-pig]

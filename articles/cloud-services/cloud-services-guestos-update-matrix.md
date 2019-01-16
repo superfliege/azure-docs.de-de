@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/08/2018
+ms.date: 1/7/2019
 ms.author: raiye
-ms.openlocfilehash: 35888b205822e5d7c9576c9855610bad814901b6
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: e621d526aed3c4d98d964dfdcd7ba01e8c1fb830
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346166"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104861"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
@@ -43,6 +43,12 @@ Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Ent
 
 ## <a name="news-updates"></a>Neuigkeiten
 
+###### <a name="january-7-2019"></a>**7. Januar 2019**
+Das Gastbetriebssystem für Dezember wurde veröffentlicht.
+
+###### <a name="december-14-2018"></a>**14. Dezember 2018**
+Das Gastbetriebssystem für November wurde veröffentlicht.
+
 ###### <a name="november-8-2018"></a>**8. November 2018**
 Das Gastbetriebssystem für Oktober wurde veröffentlicht.
 
@@ -58,13 +64,6 @@ Das Gastbetriebssystem für Juli wurde veröffentlicht.
 ###### <a name="july-3-2018"></a>**3. Juli 2018**
 Das Gastbetriebssystem für Juni wurde veröffentlicht.
 
-###### <a name="june-1-2018"></a>**1. Juni 2018**
-Das Gastbetriebssystem für Mai wurde veröffentlicht.
-
-###### <a name="may-4-2018"></a>**4. Mai 2018**
-Das Gastbetriebssystem für April wurde veröffentlicht.
-
-
 ## <a name="releases"></a>Releases
 ## <a name="family-5-releases"></a>Releases von Familie 5
 **Windows Server 2016**
@@ -77,13 +76,13 @@ Installierte .NET Framework-Versionen: 3.5, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-5.24_201810-01 |8. November 2018 |Post 5.26 |
-| WA-GUEST-OS-5.23_201809-01 |12. Oktober 2018 |Post 5.25 |
+| WA-GUEST-OS-5.26_201812-01 |7. Januar 2019 |Post 5.28 |
+| WA-GUEST-OS-5.25_201811-01 |14. Dezember 2018 |Post 5.27 |
+|~~WA-GUEST-OS-5.24_201810-01~~ |8. November 2018 |7. Januar 2019 |
+|~~WA-GUEST-OS-5.23_201809-01~~ |12. Oktober 2018 |14. Dezember 2018 |
 |~~WA-GUEST-OS-5.22_201808-01~~ |12. September 2018 |8. November 2018 |
 |~~WA-GUEST-OS-5.21_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-5.20_201806-01~~ |3. Juli 2018 |12. September 2018 |
-|~~WA-GUEST-OS-5.19_201805-01~~ |1. Juni 2018 |3. August 2018 |
-|~~WA-GUEST-OS-5.18_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
 **Windows Server 2012 R2**
@@ -92,13 +91,13 @@ Installierte .NET Framework-Versionen: 3.5, 4.5.1
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-4.59_201810-01 |8. November 2018 |Post 4.61 |
-| WA-GUEST-OS-4.58_201809-01 |12. Oktober 2018 |Post 4.60 |
+| WA-GUEST-OS-4.61_201812-01 |7. Januar 2019 |Post 4.63 |
+| WA-GUEST-OS-4.60_201811-01 |14. Dezember 2018 |Post 4.62 |
+|~~WA-GUEST-OS-4.59_201810-01~~ |8. November 2018 |7. Januar 2019 |
+|~~WA-GUEST-OS-4.58_201809-01~~ |12. Oktober 2018 |14. Dezember 2018 |
 |~~WA-GUEST-OS-4.57_201808-01~~ |12. September 2018 |8. November 2018 |
 |~~WA-GUEST-OS-4.56_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-4.55_201806-01~~ |3. Juli 2018 |12. September 2018 |
-|~~WA-GUEST-OS-4.54_201805-01~~ |1. Juni 2018 |3. August 2018 |
-|~~WA-GUEST-OS-4.53_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
 **Windows Server 2012**
@@ -107,13 +106,13 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-3.66_201810-01 |8. November 2018 |Post 3.68 |
-| WA-GUEST-OS-3.65_201809-01 |12. Oktober 2018 |Post 3.67 |
+| WA-GUEST-OS-3.68_201812-01 |7. Januar 2019 |Post 3.70 |
+| WA-GUEST-OS-3.67_201811-01 |14. Dezember 2018 |Post 3.69 |
+|~~WA-GUEST-OS-3.66_201810-01~~ |8. November 2018 |7. Januar 2019 |
+|~~WA-GUEST-OS-3.65_201809-01~~ |12. Oktober 2018 |14. Dezember 2018 |
 |~~WA-GUEST-OS-3.64_201808-01~~ |12. September 2018 |8. November 2018 |
 |~~WA-GUEST-OS-3.63_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-3.62_201806-01~~ |3. Juli 2018 |12. September 2018 |
-|~~WA-GUEST-OS-3.61_201805-01~~ |1. Juni 2018 |3. August 2018 |
-|~~WA-GUEST-OS-3.60_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
@@ -122,13 +121,13 @@ Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0)
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-2.79_201810-01 |8. November 2018 |Post 2.81 |
-| WA-GUEST-OS-2.78_201809-01 |12. Oktober 2018 |Post 2.80 |
+| WA-GUEST-OS-2.81_201812-01 |7. Januar 2019 |Post 2.83 |
+| WA-GUEST-OS-2.80_201811-01 |14. Dezember 2018 |Post 2.82 |
+|~~WA-GUEST-OS-2.79_201810-01~~ |8. November 2018 |7. Januar 2019 |
+|~~WA-GUEST-OS-2.78_201809-01~~|12. Oktober 2018 |14. Dezember 2018 |
 |~~WA-GUEST-OS-2.77_201808-01~~ |12. September 2018 |8. November 2018 |
 |~~WA-GUEST-OS-2.76_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-2.75_201806-01~~ |3. Juli 2018 |12. September 2018 |
-|~~WA-GUEST-OS-2.74_201805-01~~ |1. Juni 2018 |3. August 2018|
-|~~WA-GUEST-OS-2.73_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
 
 ## <a name="msrc-patch-updates"></a>MSRC-Patch-Updates
 Die Liste der Patches, die in den einzelnen monatlichen Gastbetriebssystemreleases enthalten sind, steht [hier][patches] zur Verfügung.
