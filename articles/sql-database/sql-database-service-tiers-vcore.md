@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: f756f043a7ab3c9086b21b8bdb88a5a6a7ed60df
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.date: 01/08/2019
+ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001599"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156815"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>V-Kern-Diensttarife, Azure-Hybridvorteil und Migration
 
@@ -37,7 +37,7 @@ Das Modell mit virtuellem Kern bietet drei Diensttarife: „Universell“, Hyper
 
 Die folgende Tabelle zeigt die Unterschiede zwischen diesen drei Tarifen:
 
-||**Universell**|**Unternehmenskritisch**|**Hyperscale (Vorschau)**|
+||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale (Vorschau)**|
 |---|---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung|
 |Compute|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|
@@ -66,6 +66,29 @@ Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häuf
 Beim V-Kern-basierten Kaufmodell können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Bei diesem Azure-Vorteil können Sie Ihre lokalen SQL Server-Lizenzen nutzen, um für SQL-Datenbank bis zu 30% zu sparen, indem Sie Software Assurance für die lokalen SQL Server-Lizenzen verwenden.
 
 ![Preise](./media/sql-database-service-tiers/pricing.png)
+
+Mit dem Azure-Hybridvorteil bezahlen Sie wahlweise nur die zugrunde liegende Azure-Infrastruktur und verwenden Ihre vorhandene SQL Server-Lizenz für die eigentliche SQL-Datenbank-Engine (**BasePrice**), oder Sie bezahlen für die zugrunde liegende Infrastruktur und für die SQL Server-Lizenz (**LicenseIncluded**). Sie können Ihr Lizenzierungsmodell im Azure-Portal oder mithilfe einer der folgenden APIs auswählen oder ändern.
+
+- So legen Sie mithilfe von PowerShell den Lizenztyp fest oder aktualisieren ihn
+
+  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
+  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
+
+- So legen Sie mithilfe der Azure-Befehlszeilenschnittstelle den Lizenztyp fest oder aktualisieren ihn
+
+  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+
+- So legen Sie mithilfe der REST-API den Lizenztyp fest oder aktualisieren ihn
+
+  - [Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [Verwaltete Instanzen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [Verwaltete Instanzen – Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Migration vom DTU-Modell zum Modell mit virtuellem Kern
 

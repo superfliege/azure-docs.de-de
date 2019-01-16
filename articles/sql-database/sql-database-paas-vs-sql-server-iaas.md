@@ -1,5 +1,5 @@
 ---
-title: SQL-Datenbank (PaaS) im Vergleich zu SQL Server in der Cloud auf VMs (IaaS) | Microsoft-Dokumentation
+title: SQL-Datenbank (PaaS) im Vergleich zu SQL Server in der Cloud auf VMs (IaaS) | Microsoft Docs
 description: 'Erfahren Sie, welche SQL Server-Cloudoption sich am besten für Ihre Anwendung eignet: Azure SQL-Datenbank (PaaS) oder SQL Server in der Cloud auf Azure Virtual Machines.'
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: e9f322198cf94232dd2d87aa1f27dbbd6a282b72
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: c1ef32256569d1718f6848a968585216f43f333a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994996"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033450"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure---paas-or-iaas"></a>Auswählen der richtigen SQL Server-Option in Azure: PaaS oder IaaS
 
@@ -87,10 +87,11 @@ In der folgenden Tabelle sind die wesentlichen Merkmale von SQL-Datenbank und SQ
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>Entscheidungskriterien für die Wahl zwischen Azure SQL-Datenbank und SQL Server auf Azure Virtual Machines
 
 Es gibt verschiedene Faktoren, die Ihre Entscheidung zwischen PaaS und IaaS zum Hosten Ihrer SQL-Datenbank-Instanzen beeinflussen:
+
 - [Kosten](#cost): Sowohl PaaS als auch IaaS enthalten einen Basispreis, der die zugrunde liegende Infrastruktur und Lizenzierung abdeckt. Bei der IaaS-Option müssen Sie allerdings zusätzlich Zeit und Ressourcen für die Verwaltung Ihrer Datenbank investieren, während diese Verwaltungsfeatures bei PaaS im Preis enthalten sind. Bei der IaaS-Option können Sie zum Einsparen von Kosten Ressourcen herunterfahren, während sie nicht verwendet werden. Bei der PaaS-Option dagegen werden Ressource immer ausgeführt, wenn Sie diese nicht löschen und dann wieder neu erstellen, wenn sie benötigt werden.
 - [Verwaltung](#administration): PaaS-Optionen reduzieren die Zeit, die Sie in die Verwaltung der Datenbank investieren müssen. Sie führen jedoch auch dazu, dass Sie einige benutzerdefinierte Verwaltungsaufgaben nicht ausführen können, mit denen Sie die Leistung Ihrer Workload verbessern könnten.
 - [Vereinbarung zum Servicelevel](#service-level-agreement-sla) (Service-Level Agreement, SLA): Sowohl IaaS als auch PaaS bieten eine hohe SLA nach Branchenstandard. Die PaaS-Option garantiert eine SLA von 99,99 %. IaaS garantiert eine SLA von 99,95 % für die Infrastruktur, was bedeutet, dass Sie zusätzliche Mechanismen implementieren müssen, um die Verfügbarkeit Ihrer Datenbanken sicherzustellen. Wenn Sie eine Hochverfügbarkeitslösung implementieren möchten, die der Garantie von PaaS entspricht, müssen Sie im Extremfall möglicherweise zusätzliche SQL Server-Instanzen auf VMs erstellen und AlwaysOn-Verfügbarkeitsgruppen konfigurieren, wodurch sich die Kosten Ihrer Datenbank verdoppeln könnten.
-- [Zeitraum für die Verschiebung in die Cloud](#time-to-move-to-cloud): SQL Server-Instanzen auf Azure-VMs sind eine exakte Entsprechung Ihrer Umgebung – die Migration von der lokalen Umgebung zu Azure-SQL-VMs unterscheidet sich daher nicht von der Verschiebung der Datenbanken von einem lokalen Server auf einen anderen. Verwaltete Instanzen ermöglichen ebenfalls eine sehr einfache Migration. Allerdings müssen Sie möglicherweise einige Änderungen vornehmen, bevor Sie die Migration zu verwalteten Instanzen durchführen können.
+- [Zeitraum für die Verschiebung zu Azure](#market): SQL Server-Instanzen auf virtuellen Azure-Computern sind eine exakte Entsprechung Ihrer Umgebung – die Migration von der lokalen Umgebung zu virtuellen Azure-SQL-Computern unterscheidet sich daher nicht von der Verschiebung der Datenbanken von einem lokalen Server auf einen anderen. Verwaltete Instanzen ermöglichen ebenfalls eine sehr einfache Migration. Allerdings müssen Sie möglicherweise einige Änderungen vornehmen, bevor Sie die Migration zu verwalteten Instanzen durchführen können.
 
 Diese Faktoren werden in den folgenden Abschnitten detailliert erläutert.
 
@@ -102,10 +103,8 @@ Ob Sie ein Startup-Unternehmen mit wenig liquiden Mitteln oder ein Team in einem
 
 Derzeit sind für den Dienst **SQL-Datenbank** verschiedene Tarife mit unterschiedlichen Preisen für Ressourcen verfügbar, die nach einem festen Stundensatz je nach ausgewähltem Tarif und ausgewählter Computegröße berechnet werden.
 Bei SQL-Einzeldatenbanken können Sie aus einer Vielzahl von Preisstufen – ab einem Preis von 5 USD pro Monat für „Basic“ – den Diensttarif auswählen, der Ihre Anforderungen erfüllt.
-Mit einer verwalteten SQL-Datenbank-Instanz können Sie zudem Ihre eigene Lizenz verwenden. Weitere Informationen über das Verwenden eigener Lizenzen finden Sie unter [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/). Sie können auch den [Einsparungsrechner für den Azure-Hybridvorteil](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/#sql-database) verwenden, um zu ermitteln, wie Sie **bis zu 40 %** sparen können.
+Mit einer verwalteten SQL-Datenbank-Instanz können Sie zudem Ihre eigene Lizenz verwenden. Weitere Informationen über das Verwenden eigener Lizenzen finden Sie unter [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/). Sie können auch den [Einsparungsrechner für den Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) verwenden, um zu ermitteln, wie Sie **bis zu 40 %** sparen können.
 Außerdem wird Ihnen der ausgehende Internetdatenverkehr basierend auf den üblichen [Datenübertragungsraten](https://azure.microsoft.com/pricing/details/data-transfers/)berechnet. Sie können Tarif und Computegröße entsprechend den unterschiedlichen Durchsatzanforderungen Ihrer Anwendung dynamisch anpassen. Die neuesten Informationen zu aktuell unterstützten Dienstebenen finden Sie unter [DTU-basiertes Kaufmodell für Azure SQL-Datenbank](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md). Darüber hinaus können Sie [Pools für elastische Datenbanken](sql-database-elastic-pool.md) erstellen, um Ressourcen zwischen Datenbankinstanzen freizugeben, um Kosten zu senken und die Auslastung anzupassen.
-
-
 
 Bei **SQL-Datenbank** wird die Datenbanksoftware automatisch von Microsoft konfiguriert, gepatcht und aktualisiert. Dadurch sinken Ihre Verwaltungskosten. Darüber hinaus helfen Ihnen die [integrierten Datensicherungsfunktionen](sql-database-automated-backups.md) dabei, erhebliche Kosteneinsparungen zu erzielen, vor allem bei einer großen Anzahl von Datenbanken.
 

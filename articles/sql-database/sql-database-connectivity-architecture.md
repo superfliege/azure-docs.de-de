@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 62e4171a6895f2f425d67b9d1143fe9d3999a9b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/03/2019
+ms.openlocfilehash: 38b7c478e3b90347086c2dd005630d239db7fd89
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715901"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038210"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -26,18 +26,17 @@ In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQ
 > [!IMPORTANT]
 > **[Bevorstehende Änderung] Bei Dienstendpunktverbindungen mit Azure SQL-Servern ändert sich das Verbindungsverhalten `Default` in `Redirect`.**
 >
-> Die Änderung ist für die Regionen „Brasilien, Süden“ und „Europa, Westen“ bereits ab dem 10. November 2018 gültig. Für alle anderen Regionen tritt die Änderung am 2. Januar 2019 in Kraft.
+> Die Änderung tritt für alle Regionen am oder vor dem 2. Januar 2019 in Kraft.
 >
 > Um zu verhindern, dass infolge dieser Änderung Verbindungen über einen Dienstendpunkt in bestehenden Umgebungen unterbrochen werden, setzen wir Telemetrie für folgende Zwecke ein:
 > - Bei Servern, bei denen wir feststellen, dass der Zugriff darauf vor der Änderung über Dienstendpunkte erfolgte, wird der Verbindungstyp in `Proxy` geändert.
 > - Bei allen anderen Servern wird der Verbindungstyp in `Redirect` geändert.
 >
-> In folgenden Szenarien können Dienstendpunktbenutzer dennoch betroffen sein: 
-> - Eine Anwendung stellt nur selten eine Verbindung mit einem vorhandenen Server her, sodass die Informationen zu diesen Anwendungen nicht mithilfe der Telemetrie erfasst wurden. 
-> - Die automatisierte Bereitstellungslogik erstellt einen logischen Server unter der Annahme, dass das Standardverhalten für Dienstendpunktverbindungen `Proxy` ist. 
+> In folgenden Szenarien können Dienstendpunktbenutzer dennoch betroffen sein:
+> - Eine Anwendung stellt nur selten eine Verbindung mit einem vorhandenen Server her, sodass die Informationen zu diesen Anwendungen nicht mithilfe der Telemetrie erfasst wurden.
+> - Die automatisierte Bereitstellungslogik erstellt einen logischen Server unter der Annahme, dass das Standardverhalten für Dienstendpunktverbindungen `Proxy` ist.
 >
 > Wenn Dienstendpunktverbindungen mit Azure SQL-Server nicht hergestellt werden konnten und Sie vermuten, dass Sie von dieser Änderung betroffen sind, stellen Sie sicher, dass der Verbindungstyp explizit auf `Redirect` festgelegt ist. In diesem Fall müssen Sie VM-Firewallregeln und Netzwerksicherheitsgruppen (NSG) für alle Azure-IP-Adressen in der Region öffnen, die zum SQL-[Diensttag](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 12000 gehören. Wenn dies für Sie keine eine Option ist, schalten Sie den Server explizit auf `Proxy` um.
-
 > [!NOTE]
 > Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
 
@@ -131,7 +130,6 @@ Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenb
 
 > [!IMPORTANT]
 > Dieses Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-azurerm-ps).
->
 
 Das folgende PowerShell-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie ändern können.
 

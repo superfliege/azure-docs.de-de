@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6ec178a8cb457973f39ea2dd929a3486a7696c55
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972191"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041287"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Häufig gestellte Fragen zu Azure Backup
 
@@ -62,8 +62,8 @@ Azure Backup kann VMs mit bis zu 16 Datenträgern sichern. Die Unterstützung vo
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Unterstützt Azure Backup verwaltete SSD Standard-Datenträger?
 Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Verwaltete SSD-Datenträger stellen eine neue Art dauerhaften Speichers für Azure-VMs bereit. Die Unterstützung von verwalteten SSD-Datenträgern wird in der [aktuellen Version](backup-upgrade-to-vm-backup-stack-v2.md) von Azure Backup Stack V2 bereitgestellt.
 
-### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Können ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
-Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen. Der Ausschluss von Datenträgern für VMs mit Datenträgern mit aktivierter Schreibbeschleunigung wird nur für Abonnements unterstützt, für die ein Upgrade auf Azure VM Backup Stack V2 durchgeführt wurde. Informationen zum Upgrade auf Azure VM Backup Stack V2 finden Sie in diesem [Artikel](backup-upgrade-to-vm-backup-stack-v2.md). Dieses Feature ist aktuell in folgenden Regionen verfügbar: Japan, Osten; Europa, Norden; Asien, Südosten; USA, Osten; USA, Westen 2; Europa, Westen und USA, Osten 2.
+### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Kann ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
+Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen. Der Ausschluss von Datenträgern für VMs mit Datenträgern mit aktivierter Schreibbeschleunigung wird nur für Abonnements unterstützt, für die ein Upgrade auf Azure VM Backup Stack V2 durchgeführt wurde. Informationen zum Upgraden auf Azure VM Backup Stack V2 finden Sie in diesem [Artikel](backup-upgrade-to-vm-backup-stack-v2.md). Dieses Feature ist aktuell in folgenden Regionen verfügbar: Japan, Osten; Europa, Norden; Asien, Südosten; USA, Osten; USA, Westen 2; Europa, Westen und USA, Osten 2.
 
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Ich verfüge über eine VM mit Datenträgern mit Schreibbeschleunigung und installiertem SAP HANA. Wie kann ich diese sichern?
