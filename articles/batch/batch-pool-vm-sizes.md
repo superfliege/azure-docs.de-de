@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/07/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: a1d733e918d4b53ea9dd220f5e379e0c8133c03a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540655"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191716"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -42,6 +42,16 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen alle VM-
 | Serie „Basic A“ | Basic_A0 (A0) |
 | A-Serie | Standard_A0 |
 | B-Serie | Alle |
+| DC-Serie | Alle | 
+| In hohem Maß arbeitsspeicheroptimiert | Alle |
+| Hb-Serie<sup>1</sup> | Alle | 
+| Hc-Serie<sup>1</sup> | Alle |
+| Lsv2-Reihe | Alle |
+| NDv2-Serie<sup>1</sup> | Alle |
+| NVv2-Serie<sup>1</sup> | Alle |
+| SAP HANA | Alle |
+
+<sup>1</sup> Wird derzeit nicht unterstützt, soll aber in Zukunft unterstützt werden.
 
 Die folgenden VM-Größen werden nur für Knoten mit niedriger Priorität unterstützt:
 
