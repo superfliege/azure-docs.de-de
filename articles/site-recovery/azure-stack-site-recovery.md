@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976578"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039468"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -142,7 +142,7 @@ Die IP-Adresse für jeden zu replizierenden Computer finden Sie wie folgt:
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Schritt 2: Erstellen eines Tresors und Auswählen eines Replikationsziels
 
-1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
+1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** > **Verwaltungstools** > **Backup und Site Recovery** aus.
 2. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird. 
 3. Erstellen Sie unter **Ressourcengruppe** eine Ressourcengruppe, oder wählen Sie eine Ressourcengruppe aus. Wir verwenden **ContosoRG**.
 4. Geben Sie unter **Standort** die Azure-Region ein. verwenden wir **Europa, Westen**.
@@ -279,7 +279,7 @@ Beim Durchführen eines Testfailovers geschieht Folgendes:
 1. Eine Überprüfung der erforderlichen Komponenten wird ausgeführt, um sicherzustellen, dass alle Bedingungen für ein Failover erfüllt sind.
 2. Beim Failover werden die Daten gemäß dem angegebenen Wiederherstellungspunkt verarbeitet:
     - **Letzte Verarbeitung**: Das Failover des Computers wird auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Mit dieser Option wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
-    - **Letzte App-Konsistenz**: Das Failover des Computers wird auf den letzten app-konsistenten Wiederherstellungspunkt ausgeführt.
+    - **Letzter anwendungskonsistenter Zeitpunkt**: Das Failover des Computers wird auf den letzten app-konsistenten Wiederherstellungspunkt ausgeführt.
     - **Benutzerdefiniert**: Wählen Sie den für das Failover verwendeten Wiederherstellungspunkt aus.
 
 3. Anhand der verarbeiteten Daten wird ein virtueller Azure-Computer erstellt.

@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 950336db215bbca76f20c15527397212c6fe5ffd
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 23114a1d2fff081c802ddedc7bf5430938c45b3b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554927"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191784"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory
 
@@ -162,7 +161,7 @@ Es gibt zwei Möglichkeiten, um die Geheimnisse zu verarbeiten:
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Gewähren von Berechtigungen für den Azure Pipelines-Agent
-Beim ersten Versuch kann es sein, dass für die Azure Key Vault-Aufgabe der Fehler „Zugriff verweigert“ auftritt. Laden Sie die Protokolle für das Release herunter, und suchen Sie nach der `.ps1`-Datei mit dem Befehl zum Erteilen von Berechtigungen für den Azure Pipelines-Agent. Sie können den Befehl direkt ausführen oder die Prinzipal-ID aus der Datei kopieren und die Zugriffsrichtlinie manuell im Azure-Portal hinzufügen. (*Get* und *List* sind die mindestens erforderlichen Berechtigungen.)
+Es kann sein, dass für die Azure Key Vault-Aufgabe ein Fehler vom Typ „Zugriff verweigert“ für die Integration Runtime auftritt. Laden Sie die Protokolle für das Release herunter, und suchen Sie nach der `.ps1`-Datei mit dem Befehl zum Erteilen von Berechtigungen für den Azure Pipelines-Agent. Sie können den Befehl direkt ausführen oder die Prinzipal-ID aus der Datei kopieren und die Zugriffsrichtlinie manuell im Azure-Portal hinzufügen. (*Get* und *List* sind die mindestens erforderlichen Berechtigungen.)
 
 ### <a name="update-active-triggers"></a>Aktualisieren von aktiven Triggern
 Für die Bereitstellung kann ein Fehler auftreten, wenn Sie versuchen, aktive Trigger zu aktualisieren. Zum Aktualisieren von aktiven Triggern müssen Sie sie manuell beenden und nach der Bereitstellung wieder starten. Sie können zu diesem Zweck eine Azure PowerShell-Aufgabe hinzufügen, wie im folgenden Beispiel gezeigt:
@@ -184,7 +183,7 @@ Für die Bereitstellung kann ein Fehler auftreten, wenn Sie versuchen, aktive Tr
 Sie können ähnliche Schritte ausführen und ähnlichen Code verwenden (mit der Funktion `Start-AzureRmDataFactoryV2Trigger`), um die Trigger nach der Bereitstellung neu zu starten.
 
 > [!IMPORTANT]
-> In Continuous Integration- und Continuous Deployment-Szenarien muss der Integration Runtime-Typ in verschiedenen Umgebungen identisch sein. Wenn sich in Ihrer Entwicklungsumgebung z.B. eine Integration Runtime (IR) vom Typ *Selbstgehostet* befindet, muss dieselbe IR auch in anderen Umgebungen wie Test- und Produktionsumgebungen vom Typ *Selbstgehostet* sein. Wenn Sie Integration Runtimes in mehreren Phasen freigeben, müssen Sie die IRs in allen Umgebungen wie Entwicklungs-, Test- und Produktionsumgebungen als *Verknüpft selbstgehostet* konfigurieren.
+> In Continuous Integration- und Continuous Deployment-Szenarien muss der Integration Runtime-Typ in verschiedenen Umgebungen identisch sein. Wenn sich in Ihrer Entwicklungsumgebung z.B. eine Integration Runtime (IR) vom Typ *Selbstgehostet* befindet, muss dieselbe IR auch in anderen Umgebungen wie Test- und Produktionsumgebungen vom Typ *Selbstgehostet* sein. Wenn Sie Integration Runtimes in mehreren Phasen freigeben, müssen Sie die Integration Runtimes in allen Umgebungen wie Entwicklungs-, Test- und Produktionsumgebungen als *Verknüpft selbstgehostet* konfigurieren.
 
 ## <a name="sample-deployment-template"></a>Beispielbereitstellungsvorlage
 
@@ -854,7 +853,7 @@ Sie können für die Resource Manager-Vorlage benutzerdefinierte Parameter defin
 
 Hier sind einige Richtlinien angegeben, die Sie beim Erstellen der benutzerdefinierten Parameterdatei verwenden können. Beispiele für diese Syntax finden Sie im Abschnitt [Beispiel für eine benutzerdefinierte Parameterdatei](#sample).
 
-1. Beim Festlegen eines Arrays in der Definitionsdatei geben Sie an, dass die übereinstimmende Eigenschaft in der Vorlage ein Array ist. Data Factory durchläuft alle Objekte im Array anhand der Definition, die im ersten Objekt des Arrays angegeben ist. Das zweite Objekt (eine Zeichenfolge) wird zum Namen der Eigenschaft, der bei jeder Iteration als Name für den Parameter verwendet wird.
+1. Beim Festlegen eines Arrays in der Definitionsdatei geben Sie an, dass die übereinstimmende Eigenschaft in der Vorlage ein Array ist. Data Factory durchläuft alle Objekte im Array anhand der Definition, die im Integration Runtime-Objekt des Arrays angegeben ist. Das zweite Objekt (eine Zeichenfolge) wird zum Namen der Eigenschaft, der bei jeder Iteration als Name für den Parameter verwendet wird.
 
     ```json
     ...
@@ -989,3 +988,23 @@ Verknüpfte Resource Manager-Vorlagen verfügen in der Regel über eine Mastervo
 Denken Sie daran, die Data Factory-Skripts vor und nach dem Bereitstellungstask zu Ihrer CI/CD-Pipeline hinzuzufügen.
 
 Wenn Sie Git nicht konfiguriert haben, kann über die Geste **ARM-Vorlage exportieren** auf die verknüpften Vorlagen zugegriffen werden.
+
+## <a name="best-practices-for-cicd"></a>Bewährte Methoden für CI/CD
+
+Wenn Sie Git-Integration mit Ihrer Data Factory verwenden und über eine CI/CD-Pipeline verfügen, die Ihre Änderungen aus der Entwicklung- in die Test- und dann in die Produktionsumgebung verschiebt, empfehlen wir Ihnen die folgenden bewährten Methoden:
+
+-   **Git-Integration**. Sie müssen lediglich Ihre Entwicklungs-Data Factory mit Git-Integration konfigurieren. Änderungen an den Test- und Produktionsumgebungen werden über CI/CD bereitgestellt, und sie müssen keine Git-Integration aufweisen.
+
+-   **Data Factory-CI/CD-Skript**. Vor der Resource Manager-Bereitstellung in CI/CD müssen Sie sich um Aspekte wie das Beenden der Trigger und andere Bereinigungsaufgaben der Factory kümmern. Es wird empfohlen, [dieses Skript](#sample-script-to-stop-and-restart-triggers-and-clean-up) zu verwenden, da es all diese Aufgaben übernimmt. Führen Sie das Skript ein Mal vor der Bereitstellung und ein Mal nach der Bereitstellung mit entsprechenden Flags aus.
+
+-   **Integration Runtimes und Freigaben**. Intergration Runtimes sind eine der infrastrukturellen Komponenten Ihrer Data Factory, die weniger häufig geändert werden und in allen Phasen von CI/CD ähnlich sind. Daher erwartet Data Factory, dass sie in allen Phasen von CI/CD den gleichen Namen und den gleichen Typ von Intergration Runtimes aufweisen. Wenn Sie Integration Runtimes über alle Phasen hinweg freigeben möchten (z.B. die selbstgehosteten Integration Runtimes) ist eine Möglichkeit der Freigabe das Hosting der selbstgehosteten IR in einer ternären Factory, die nur die freigegebenen Integration Runtimes enthält. Anschließend können Sie sie in Dev/Test/Prod als verknüpften IR-Typ verwenden.
+
+-   **Key Vault**. Wenn Sie die empfohlenen, auf Azure Key Vault basierenden verknüpften Dienste verwenden, können Sie die Vorteile noch steigern, indem Sie ggf. separate Schlüsseltresore für Dev/Test /Prod verwenden. Sie können auch separate Berechtigungsstufen für jeden von ihnen konfigurieren. Sie möchten möglicherweise nicht, dass Ihre Teammitglieder Berechtigungen für die Produktionsgeheimnisse besitzen. Außerdem empfiehlt es sich, die gleichen Geheimnisnamen über alle Phasen hinweg beizubehalten. Wenn Sie die gleichen Namen beibehalten, müssen Sie Ihre Resource Manager-Vorlagen nicht CI/CD-übergreifend ändern, da das Einzige, was geändert werden muss, der Name des Schlüsseltresors ist: einer der Resource Manager-Vorlagenparameter.
+
+## <a name="unsupported-features"></a>Nicht unterstützte Funktionen
+
+-   Sie können keine einzelnen Ressourcen veröffentlichen, da Data Factory-Entitäten voneinander abhängig sind. Beispielsweise hängen Trigger von Pipelines ab, Pipelines von Datasets und anderen Pipelines usw. Es ist schwierig, sich ändernde Abhängigkeiten nachzuverfolgen. Wenn es möglich wäre, die zu veröffentlichenden Ressourcen manuell auszuwählen, wäre es möglich, nur eine Teilmenge des gesamten Änderungssatzes auszuwählen, was zu unerwartetem Verhalten nach der Veröffentlichung führen würde.
+
+-   Sie können nicht aus privaten Branches veröffentlichen.
+
+-   Sie können keine Projekte unter Bitbucket hosten.

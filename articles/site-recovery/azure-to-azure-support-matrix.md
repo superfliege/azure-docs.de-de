@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 40ee4fe15b2fde917c1d056a1454b95b9655b465
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 09d3b698edfc99b9340772aa0ffc4e8de20b286d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999729"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103764"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -44,6 +44,9 @@ In diesem Artikel sind unterstützte Konfigurationen und Komponenten zusammengef
 
 Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geografischen Cluster replizieren. Geographische Cluster werden unter Berücksichtigung von Datenlatenz und Souveränität definiert.
 
+>[!NOTE]
+>Wenn Sie während der Aktivierung der Replikation keine Region innerhalb eines geografischen Clusters sehen können, stellen Sie sicher, dass Ihr Abonnement über Zugriff verfügt, um virtuelle Computer in dieser Region zu erstellen. Wenn dies nicht der Fall ist, stellen Sie eine Supportanfrage unter dem „Problemtyp“-Abonnement.
+>
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
 Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
